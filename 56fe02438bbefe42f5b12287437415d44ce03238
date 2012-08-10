@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIMX///5s\u003d",
+        "filename": "libs/ui/FramebufferNativeWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001692
+      },
+      "writtenOn": "2012-08-10T16:32:29Z",
+      "side": 1,
+      "message": "After this patch, this statement doesn\u0027t hold true any more",
+      "revId": "56fe02438bbefe42f5b12287437415d44ce03238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIMX///5w\u003d",
+        "filename": "libs/ui/FramebufferNativeWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001692
+      },
+      "writtenOn": "2012-08-10T16:32:29Z",
+      "side": 1,
+      "message": "I believe your patch misses another free() in case of having 3 buffers",
+      "revId": "56fe02438bbefe42f5b12287437415d44ce03238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
