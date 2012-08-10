@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAIN3///8E\u003d",
+        "filename": "libs/ui/FramebufferNativeWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000793
+      },
+      "writtenOn": "2012-08-10T16:47:48Z",
+      "side": 1,
+      "message": "OK, I will change the statement here in next rev.",
+      "parentUuid": "AAAIMX///5s\u003d",
+      "revId": "56fe02438bbefe42f5b12287437415d44ce03238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAIMX///5w\u003d",
         "filename": "libs/ui/FramebufferNativeWindow.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-10T16:32:29Z",
       "side": 1,
       "message": "I believe your patch misses another free() in case of having 3 buffers",
+      "revId": "56fe02438bbefe42f5b12287437415d44ce03238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIN3///8I\u003d",
+        "filename": "libs/ui/FramebufferNativeWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000793
+      },
+      "writtenOn": "2012-08-10T16:47:48Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right, if three buffer case, it should be free the third buffer too.\n\nI will do this in next rev patch.",
+      "parentUuid": "AAAIMX///5w\u003d",
       "revId": "56fe02438bbefe42f5b12287437415d44ce03238",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
