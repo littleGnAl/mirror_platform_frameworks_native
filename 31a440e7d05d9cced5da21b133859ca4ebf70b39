@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIxn///zw\u003d",
+        "filename": "libs/ui/GraphicBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2012-08-21T17:12:03Z",
+      "side": 1,
+      "message": "The handle should be closed and deleted, not just leaked.",
+      "revId": "31a440e7d05d9cced5da21b133859ca4ebf70b39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
