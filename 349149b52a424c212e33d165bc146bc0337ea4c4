@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI2H//+ds\u003d",
+        "filename": "opengl/tests/gl_jni/jni/gl_code.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001056
+      },
+      "writtenOn": "2012-08-23T21:32:57Z",
+      "side": 0,
+      "message": "wouldn\u0027t it be simpler to just remove the name of the unused parameter?",
+      "revId": "349149b52a424c212e33d165bc146bc0337ea4c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
