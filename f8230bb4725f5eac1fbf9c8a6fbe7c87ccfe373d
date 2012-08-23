@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI2H//+dY\u003d",
+        "filename": "opengl/tests/gl2_jni/jni/gl_code.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001056
+      },
+      "writtenOn": "2012-08-23T21:34:02Z",
+      "side": 1,
+      "message": "why not just omit the parameter name?",
+      "revId": "f8230bb4725f5eac1fbf9c8a6fbe7c87ccfe373d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
