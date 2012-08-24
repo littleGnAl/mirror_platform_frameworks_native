@@ -16,6 +16,24 @@
       "revId": "f8230bb4725f5eac1fbf9c8a6fbe7c87ccfe373d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI2X//94I\u003d",
+        "filename": "opengl/tests/gl2_jni/jni/gl_code.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1010717
+      },
+      "writtenOn": "2012-08-24T14:03:04Z",
+      "side": 1,
+      "message": "In general, if we saw the function was exported, or in this case, part of a JNI interface we didn\u0027t remove parameters even if we determined the function wasn\u0027t used anywhere as it would change binary interface. Since this is a JNI function can we even remove the \u0027env\u0027 and \u0027obj\u0027 parameters?",
+      "parentUuid": "AAAI2H//+dY\u003d",
+      "revId": "f8230bb4725f5eac1fbf9c8a6fbe7c87ccfe373d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
