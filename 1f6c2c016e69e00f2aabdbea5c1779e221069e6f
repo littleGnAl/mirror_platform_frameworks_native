@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI63//8i0\u003d",
+        "filename": "libs/ui/FramebufferNativeWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000793
+      },
+      "writtenOn": "2012-08-31T03:18:09Z",
+      "side": 1,
+      "message": "the comments needs to change.",
+      "revId": "1f6c2c016e69e00f2aabdbea5c1779e221069e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI63//8iw\u003d",
+        "filename": "libs/ui/FramebufferNativeWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000793
+      },
+      "writtenOn": "2012-08-31T03:18:09Z",
+      "side": 1,
+      "message": "There is a lock bug in this line if use 3 buffer, \nThis line should change to :\n\nif (self-\u003emNumFreeBuffers \u003d\u003d 0)\n       self-\u003efront \u003d static_cast\u003cNativeBuffer*\u003e(buffer);\n\nThe reason is list in my patch: \n\n// only change the front buffer pointer when only one buffer left,\t\n // if we have buffer free, don\u0027t needs to change front pointer.\t\n    // otherwise it will dead-lock in this case in three buffer:\t\n    // queueBuffer() index\u003d2 (front become buffer[2])\t\n    // queueBuffer() index\u003d0 (front become buffer[0])\t\n    // dequeueBuffer() (return buffer[0] since bufferHead \u003d\u003d 0)\t\n    // lockBuffer()  the front \u003d\u003d dequeuedBuffer, it will the lockBuffer will infinite wait.\n\nFrom: https://android-review.googlesource.com/#/c/40580/3/libs/ui/FramebufferNativeWindow.cpp",
+      "revId": "1f6c2c016e69e00f2aabdbea5c1779e221069e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
