@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAJx3///00\u003d",
+        "filename": "libs/utils/tests/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2012-10-02T16:17:17Z",
+      "side": 1,
+      "message": "if you\u0027re using the shared library, don\u0027t the exported headers get made available to you anyway? if you can change your #includes to \u003clibz/...\u003e and so on, you might want to do that and stop putting random stuff on your include path.",
+      "revId": "7677239b54269b2dc2e195516648ec68697f3a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
