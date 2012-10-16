@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAKcn///0w\u003d",
+        "filename": "libs/utils/ZipUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2012-10-16T21:26:47Z",
+      "side": 1,
+      "message": "can\u0027t we cope with a short read? just pass zlib the amount we actually read, rather than what we\u0027d hoped for?",
+      "revId": "d611117f246213ee4bb183a3015c1fd79593074b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
