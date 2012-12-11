@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "M1FC9fgY",
+        "filename": "opengl/libs/EGL/eglApi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2012-12-11T23:37:35Z",
+      "side": 1,
+      "message": "Should be \u0027#if USE_FAST_TLS_KEY\u0027 to match the code that fills in gExtensionForwarders. Alternatively you could check at runtime: \"if (gExtensionForwarders[slot]) addr \u003d gExtensionForwarders[slot];\".",
+      "revId": "db3e76316578c917a5ab7148015a3af3fe86b1ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
