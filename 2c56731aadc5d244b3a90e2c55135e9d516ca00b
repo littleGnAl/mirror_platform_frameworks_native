@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "M5JnPDFE",
+        "filename": "libs/utils/Unicode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2012-12-11T18:28:15Z",
+      "side": 1,
+      "message": "would we be better off casting the incoming \"const char*\" to a \"const uint8_t*\" here, and then using uint8_t rather than char in the rest of this function, since we\u0027re dealing with bytes here and \"char\" is just misleading?",
+      "revId": "2c56731aadc5d244b3a90e2c55135e9d516ca00b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "M5LnMyFw",
+        "filename": "libs/utils/Unicode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2012-12-11T18:28:15Z",
+      "side": 1,
+      "message": "first_char should really be first_byte, too.",
+      "revId": "2c56731aadc5d244b3a90e2c55135e9d516ca00b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
