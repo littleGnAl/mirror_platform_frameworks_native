@@ -52,6 +52,24 @@
       "revId": "4f643860e97278572abfc46b5cc3891669f01c75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "M1PL8Z2k",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2012-12-13T18:29:33Z",
+      "side": 1,
+      "message": "You can\u0027t change it to _IOW, because that would change the ioctl number and break the api.  The ioctl number is just a number to the kernel.  The _IOWR macros provide a convenient convention to store a direction flag that most modern ioctls use, but binder does not.  The direction bits in binder ioctls are not reliable, so you\u0027ll need a manual definition in valgrind somehow.",
+      "parentUuid": "M75AH5c8",
+      "revId": "4f643860e97278572abfc46b5cc3891669f01c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
