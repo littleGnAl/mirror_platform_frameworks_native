@@ -88,6 +88,24 @@
       "revId": "4f643860e97278572abfc46b5cc3891669f01c75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "M1DJG7FE",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2012-12-13T22:51:55Z",
+      "side": 1,
+      "message": "You can add an ioctl to the driver without breaking compatibility as long as you keep the old one. If you change user-space to use it however, old kernels will not work.",
+      "parentUuid": "M1PL8Z2k",
+      "revId": "4f643860e97278572abfc46b5cc3891669f01c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
