@@ -34,6 +34,24 @@
       "revId": "4f643860e97278572abfc46b5cc3891669f01c75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "M75AH5c8",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000866
+      },
+      "writtenOn": "2012-12-13T18:23:42Z",
+      "side": 1,
+      "message": "Yeah that should be _IOW only.  Add Arve for comments.\n\nIs Valgrind smart enough to track the specific ioctl declaration and generate a warning based on that?  If so--WOW.",
+      "parentUuid": "M4psH-M8",
+      "revId": "4f643860e97278572abfc46b5cc3891669f01c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
