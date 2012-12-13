@@ -70,6 +70,24 @@
       "revId": "4f643860e97278572abfc46b5cc3891669f01c75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "M11KZ9is",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1002975
+      },
+      "writtenOn": "2012-12-13T22:51:48Z",
+      "side": 1,
+      "message": "There\u0027s a special case in\nexternal/valgrind/main/coregrind/m_syswrap/syswrap-linux.c for BINDER_VERSION. What\u0027s the exact error you\u0027re seeing?",
+      "parentUuid": "M1PL8Z2k",
+      "revId": "4f643860e97278572abfc46b5cc3891669f01c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
