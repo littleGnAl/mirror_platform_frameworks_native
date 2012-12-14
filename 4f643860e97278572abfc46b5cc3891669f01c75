@@ -106,6 +106,24 @@
       "revId": "4f643860e97278572abfc46b5cc3891669f01c75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "M3QepBHw",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2012-12-14T09:57:00Z",
+      "side": 1,
+      "message": "In general, Valgrind relies on the ioctl direction flag, but, as Kenny said, there is a special case for BINDER_VERSION that should take care of this. Reading Valgrind code, a read warning for this argument should not be possible.\n\nNote that this argument is declared as struct {long; } in binder.h (under bionic/). Does not matter on 32-bits, though.",
+      "parentUuid": "M11KZ9is",
+      "revId": "4f643860e97278572abfc46b5cc3891669f01c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
