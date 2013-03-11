@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "RYkDMLl0",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-03-11T17:03:57Z",
+      "side": 1,
+      "message": "is there a std::unique_ptr equivalent available to this code?",
+      "revId": "f07c2a84c076754c436c1b13a02f68f27e049f6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RYgC5Rrw",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-03-11T17:03:57Z",
+      "side": 1,
+      "message": "oops! looks like there should have been an \"else\" on the \"if\" after the realloc(3).",
+      "revId": "f07c2a84c076754c436c1b13a02f68f27e049f6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
