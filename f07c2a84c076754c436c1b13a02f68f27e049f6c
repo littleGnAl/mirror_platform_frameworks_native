@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "RfwbW3Lk",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1001056
+      },
+      "writtenOn": "2013-03-12T04:13:11Z",
+      "side": 1,
+      "message": "There is UniquePtr\u003c\u003e in libutils, but it\u0027s fairly recent.",
+      "parentUuid": "RYkDMLl0",
+      "revId": "f07c2a84c076754c436c1b13a02f68f27e049f6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RYgC5Rrw",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 1
