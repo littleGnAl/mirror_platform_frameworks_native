@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "Rf4aXLNk",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-03-12T04:44:10Z",
+      "side": 1,
+      "message": "i think that\u0027s just my one from libcore copied out by kroot. you\u0027re welcome to copy it here too. it\u0027s not likely to change until we have C++11, and hopefully then we\u0027ll actually have std::unique_ptr and can stop rolling our own.",
+      "parentUuid": "RfwbW3Lk",
+      "revId": "f07c2a84c076754c436c1b13a02f68f27e049f6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RYgC5Rrw",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 1
