@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "RpzvvF.k",
+        "filename": "libs/binder/MemoryBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-03-13T21:40:56Z",
+      "side": 1,
+      "message": "should we LOGW here?",
+      "revId": "981bc4c0c8b42cbee789e7e21ac036a2a670926f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
