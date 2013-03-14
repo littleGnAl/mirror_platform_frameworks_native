@@ -16,6 +16,24 @@
       "revId": "981bc4c0c8b42cbee789e7e21ac036a2a670926f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RmamRvQg",
+        "filename": "libs/binder/MemoryBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2013-03-14T00:24:20Z",
+      "side": 1,
+      "message": "Yes, we should LOGW here to complain loudly.",
+      "parentUuid": "RpzvvF.k",
+      "revId": "981bc4c0c8b42cbee789e7e21ac036a2a670926f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
