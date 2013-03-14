@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "RrlQwrPQ",
+        "filename": "include/binder/MemoryBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-03-14T03:20:43Z",
+      "side": 0,
+      "message": "i hadn\u0027t rebuilt the callers before because i was only interested in the failing app. when i try, GCC is unhappy about the ambiguous overload, even though this one is private.\n\nonly thing i can think of is to #ifdef around this and #define the guard on in the .cpp file so we can implement it, but not #define it anywhere else so that no client code sees it.",
+      "revId": "7f974ff2f317ffbf9256579109f000ec876c3037",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
