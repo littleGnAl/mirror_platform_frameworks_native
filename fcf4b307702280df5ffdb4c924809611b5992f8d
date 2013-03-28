@@ -16,6 +16,24 @@
       "revId": "fcf4b307702280df5ffdb4c924809611b5992f8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Sl6AcICQ",
+        "filename": "services/surfaceflinger/clz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010669
+      },
+      "writtenOn": "2013-03-28T19:19:33Z",
+      "side": 1,
+      "message": "Done, change is unnecessary and removed.\n\nChris Dearman of Mips first made this change in the Donut release, when clz_impl() was still in use.  We have been carrying this change forward ever since.  We did not notice how Mathias\u0027s change 7bb843ca077711 in Apr 2011 eliminated the use of clz_impl() in ICS.  We will drop this part of this change, now.",
+      "parentUuid": "Sk8kZleY",
+      "revId": "fcf4b307702280df5ffdb4c924809611b5992f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
