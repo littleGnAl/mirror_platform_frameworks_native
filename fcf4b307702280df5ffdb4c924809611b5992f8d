@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Sk8kZleY",
+        "filename": "services/surfaceflinger/clz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000483
+      },
+      "writtenOn": "2013-03-28T17:30:45Z",
+      "side": 1,
+      "message": "I didn\u0027t think this file was even built anymore.  Was this change necessary or just part of a general search \u0026 update?",
+      "revId": "fcf4b307702280df5ffdb4c924809611b5992f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
