@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Ui53VIw8",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1524,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2013-05-13T18:46:24Z",
+      "side": 1,
+      "message": "This sounds overly alarming. Could you add the display name (hw-\u003egetDisplayName()) and make it clearer that composition is only being aborted for this display?",
+      "revId": "adc6104f8c39f9c4ef38482a4e85dd8c4f4de11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
