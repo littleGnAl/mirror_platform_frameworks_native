@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "VA3NkSCY",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2013-05-28T20:08:59Z",
+      "side": 1,
+      "message": "free(data);\n\nWe know data is not null because we checked earlier during allocation.",
+      "revId": "e6292a50a4eced84739d4b0326644c555052ad66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "VAzNewFo",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1523,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2013-05-28T20:08:59Z",
+      "side": 1,
+      "message": "We should not return here.  Note that we have already called release_object for several objects.  If mObjectsSize is not updated then the code will crash later.\n\nIt\u0027s ok if realloc fails since we are merely shrinking the buffer.  Worst case we can continue to use the buffer we had before.  It\u0027s just a little too big.\n\nThe original code was correct.",
+      "revId": "e6292a50a4eced84739d4b0326644c555052ad66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
