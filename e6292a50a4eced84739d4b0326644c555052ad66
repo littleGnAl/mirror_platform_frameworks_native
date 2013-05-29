@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7dced94c_2c121367",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1016953
+      },
+      "writtenOn": "2013-05-29T01:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "VA3NkSCY",
+      "revId": "e6292a50a4eced84739d4b0326644c555052ad66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "VAzNewFo",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-28T20:08:59Z",
       "side": 1,
       "message": "We should not return here.  Note that we have already called release_object for several objects.  If mObjectsSize is not updated then the code will crash later.\n\nIt\u0027s ok if realloc fails since we are merely shrinking the buffer.  Worst case we can continue to use the buffer we had before.  It\u0027s just a little too big.\n\nThe original code was correct.",
+      "revId": "e6292a50a4eced84739d4b0326644c555052ad66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dced94c_cc26efc3",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1523,
+      "author": {
+        "id": 1016953
+      },
+      "writtenOn": "2013-05-29T01:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "VAzNewFo",
       "revId": "e6292a50a4eced84739d4b0326644c555052ad66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
