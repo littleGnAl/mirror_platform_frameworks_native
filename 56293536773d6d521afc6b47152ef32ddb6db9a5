@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a832dbd0_ca29a30c",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2013-12-19T19:16:15Z",
+      "side": 1,
+      "message": "I will push a patch to the kernel to fix this - BC_REQUEST_DEATH_NOTIFICATION claims to use struct binder_ptr_cookie, but it actually reads a int handle, void* cookie, where binder_ptr_cookie is:\n\nstruct binder_ptr_cookie {\n        void *ptr;\n        void *cookie;\n}\n\nNote that this kernel change will only affect 64bit ABI.",
+      "revId": "56293536773d6d521afc6b47152ef32ddb6db9a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
