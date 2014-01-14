@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed5785b2_eacea39e",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-14T23:00:32Z",
+      "side": 1,
+      "message": "Can you fix the kernel header instead. Right now the size of this command does not match the payload on 64 bit systems. We either need to make the handler 64 bit, (and/)or introduce a binder_handle_cookie type.",
+      "revId": "31a46410aced1785d3fb4c6f93d3dfb7c7f5ecd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
