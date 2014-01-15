@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ddb69ac_c90b917c",
+        "filename": "include/media/openmax/OMX_IVCommon.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-01-15T23:03:34Z",
+      "side": 1,
+      "message": "How is the layout of this format differ from OMX_COLOR_FormatYUV420PackedSemiPlanar?",
+      "revId": "fc1e237373ee6b297de8ada06de3081550179c1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
