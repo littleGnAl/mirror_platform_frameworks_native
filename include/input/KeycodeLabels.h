@@ -312,6 +312,8 @@ static const KeycodeLabel AXES[] = {
     { "GENERIC_14", 45 },
     { "GENERIC_15", 46 },
     { "GENERIC_16", 47 },
+    { "RELATIVE_X", 48 },
+    { "RELATIVE_Y", 49 },
 
     // NOTE: If you add a new axis here you must also add it to several other files.
     //       Refer to frameworks/base/core/java/android/view/MotionEvent.java for the full list.

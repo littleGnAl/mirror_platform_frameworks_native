@@ -390,6 +390,8 @@ enum {
     AMOTION_EVENT_AXIS_GENERIC_14 = 45,
     AMOTION_EVENT_AXIS_GENERIC_15 = 46,
     AMOTION_EVENT_AXIS_GENERIC_16 = 47,
+    AMOTION_EVENT_AXIS_RELATIVE_X = 48,
+    AMOTION_EVENT_AXIS_RELATIVE_Y = 49,
 
     // NOTE: If you add a new axis here you must also add it to several other files.
     //       Refer to frameworks/base/core/java/android/view/MotionEvent.java for the full list.
