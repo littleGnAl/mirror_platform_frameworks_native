@@ -16,6 +16,24 @@
       "revId": "b8a7ab21c06f7da1418f2e721e257f583bb11f57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220d6de_3c02e926",
+        "filename": "opengl/libs/GLES_trace/tools/genapi.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-01-28T21:26:24Z",
+      "side": 1,
+      "message": "yeah, I interpreted \"char\" as \"char*\"\n\nThat also means my search-and-replace in gltrace_api.cpp won\u0027t work, I\u0027ll have to actually get the script to run.",
+      "parentUuid": "d210a297_699141c9",
+      "revId": "b8a7ab21c06f7da1418f2e721e257f583bb11f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
