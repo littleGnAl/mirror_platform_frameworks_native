@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12731a25_eb78a5d7",
+        "filename": "cmds/servicemanager/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-01-30T23:23:48Z",
+      "side": 1,
+      "message": "We\u0027ve been trying to standardize on 64_BIT in the make files instead of 64BIT.  Leaving BINDER_IPC_32BIT is probably fine, since nobody will have to manually specify that.\n\nTARGET_ prefix is normally used to mean GCC build target (armv7, etc), maybe BOARD_KERNEL_USES_64_BIT_BINDER?",
+      "revId": "75ababd315a18d15fab1363bd55f121222345c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
