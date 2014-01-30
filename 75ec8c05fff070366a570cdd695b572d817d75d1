@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "52811216_41543693",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-30T03:08:41Z",
+      "side": 1,
+      "message": "I don\u0027t think that is needed. binder_uintptr_t must be at least as big as uintptr_t.",
+      "parentUuid": "12a87aa1_ddb84bf6",
+      "revId": "75ec8c05fff070366a570cdd695b572d817d75d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "929c6a85_212eee70",
         "filename": "cmds/servicemanager/binder.c",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2014-01-29T11:41:47Z",
       "side": 1,
       "message": "Once this are accepted I will add a patch that switches this to use:\n\nstruct binder_handle_cookie\n\nand deletes the above comment.\n\nhttps://android-review.googlesource.com/#/c/79228/4",
+      "revId": "75ec8c05fff070366a570cdd695b572d817d75d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_b092998a",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-30T03:08:41Z",
+      "side": 1,
+      "message": "Feel free to replace the patch that added the comment instead. I have already uploaded an updated header that you can use.",
+      "parentUuid": "929c6a85_013acaad",
       "revId": "75ec8c05fff070366a570cdd695b572d817d75d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
