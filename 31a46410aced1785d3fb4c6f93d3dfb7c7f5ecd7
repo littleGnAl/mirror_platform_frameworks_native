@@ -16,6 +16,29 @@
       "revId": "31a46410aced1785d3fb4c6f93d3dfb7c7f5ecd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92870a29_52716565",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-30T03:34:56Z",
+      "side": 1,
+      "message": "readbuf is still unsigned",
+      "range": {
+        "startLine": 388,
+        "startChar": 37,
+        "endLine": 388,
+        "endChar": 45
+      },
+      "revId": "31a46410aced1785d3fb4c6f93d3dfb7c7f5ecd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
