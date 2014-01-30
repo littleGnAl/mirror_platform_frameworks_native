@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52811216_b0a7f9cd",
+        "filename": "cmds/servicemanager/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-30T03:19:47Z",
+      "side": 1,
+      "message": "These changes should be in a separate change. They are unrelated to the service manager fixes.",
+      "revId": "83ed249b6fe2eae501aeadb7856b98c99a6d0bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_70ae61af",
+        "filename": "cmds/servicemanager/bctest.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-30T03:19:47Z",
+      "side": 1,
+      "message": "What does this do?",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "83ed249b6fe2eae501aeadb7856b98c99a6d0bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2b4c6fd_8347fdd8",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-30T03:19:47Z",
+      "side": 1,
+      "message": "This should be a separate change.",
+      "revId": "83ed249b6fe2eae501aeadb7856b98c99a6d0bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2b4c6fd_4341f5c1",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-30T03:19:47Z",
+      "side": 1,
+      "message": "This can go with the change to check the binder version.",
+      "revId": "83ed249b6fe2eae501aeadb7856b98c99a6d0bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
