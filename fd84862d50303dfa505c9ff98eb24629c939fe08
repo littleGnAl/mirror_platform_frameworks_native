@@ -46,6 +46,30 @@
       "revId": "fd84862d50303dfa505c9ff98eb24629c939fe08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12731a25_08b7c7dd",
+        "filename": "cmds/servicemanager/binder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2014-01-30T00:44:18Z",
+      "side": 1,
+      "message": "Actually none of these other constants appear there, so it\u0027s all a bit confusing.",
+      "parentUuid": "f2b4c6fd_36150899",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "fd84862d50303dfa505c9ff98eb24629c939fe08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
