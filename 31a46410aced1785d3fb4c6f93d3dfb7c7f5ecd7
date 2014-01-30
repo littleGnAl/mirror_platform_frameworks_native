@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d2b1820e_fe4f7d85",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-30T14:22:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed5785b2_eacea39e",
+      "revId": "31a46410aced1785d3fb4c6f93d3dfb7c7f5ecd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92870a29_52716565",
         "filename": "cmds/servicemanager/binder.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
         "endLine": 388,
         "endChar": 45
       },
+      "revId": "31a46410aced1785d3fb4c6f93d3dfb7c7f5ecd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929c6a85_c4d6303a",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-30T14:22:45Z",
+      "side": 1,
+      "message": "Done. readbuf is now uint32_t",
+      "parentUuid": "92870a29_52716565",
       "revId": "31a46410aced1785d3fb4c6f93d3dfb7c7f5ecd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
