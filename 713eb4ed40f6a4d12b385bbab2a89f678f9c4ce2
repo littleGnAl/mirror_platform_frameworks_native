@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52811216_dc43a9ca",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2014-01-30T02:20:46Z",
+      "side": 1,
+      "message": "Please make this and the read functions private, I don\u0027t think these should be used outside of the Parcel implementation (since pointers can\u0027t be marshalled across processes).  If we need to use this in IPCThreadState, make that a friend class.",
+      "revId": "713eb4ed40f6a4d12b385bbab2a89f678f9c4ce2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
