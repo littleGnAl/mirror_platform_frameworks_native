@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "929c6a85_84a828a0",
+        "filename": "cmds/servicemanager/bctest.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-30T15:12:55Z",
+      "side": 1,
+      "message": "Not needed I will drop it from the next series. I was dumping info to logcat while fixing this. Not needed any more.",
+      "parentUuid": "52811216_70ae61af",
+      "revId": "83ed249b6fe2eae501aeadb7856b98c99a6d0bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2b4c6fd_8347fdd8",
         "filename": "cmds/servicemanager/binder.c",
         "patchSetId": 1
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "12a87aa1_a0c5544c",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-30T15:12:55Z",
+      "side": 1,
+      "message": "I will group the error handling into a different patch",
+      "parentUuid": "f2b4c6fd_8347fdd8",
+      "revId": "83ed249b6fe2eae501aeadb7856b98c99a6d0bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2b4c6fd_4341f5c1",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 1
@@ -70,6 +106,24 @@
       "writtenOn": "2014-01-30T03:19:47Z",
       "side": 1,
       "message": "This can go with the change to check the binder version.",
+      "revId": "83ed249b6fe2eae501aeadb7856b98c99a6d0bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929c6a85_64240491",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-30T15:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b4c6fd_4341f5c1",
       "revId": "83ed249b6fe2eae501aeadb7856b98c99a6d0bc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
