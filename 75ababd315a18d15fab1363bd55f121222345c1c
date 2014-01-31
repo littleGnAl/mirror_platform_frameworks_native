@@ -34,6 +34,24 @@
       "revId": "75ababd315a18d15fab1363bd55f121222345c1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12ff9ab9_8564a2f3",
+        "filename": "cmds/servicemanager/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-01-31T20:48:48Z",
+      "side": 1,
+      "message": "Selecting this based on TARGET_IS_64_BIT is not what we want.  We want future 32-bit devices to be setting the flag, and in the future we will change this from\n\n ifneq ($(TARGET_USES_64_BIT_BINDER),true)\n\nto\n\n ifeq ($(TARGET_USES_64_BIT_BINDER),false)\n\nwhich will change the default to use the 64 bit interface.",
+      "parentUuid": "d2b1820e_5ee311ba",
+      "revId": "75ababd315a18d15fab1363bd55f121222345c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
