@@ -122,6 +122,24 @@
     },
     {
       "key": {
+        "uuid": "b20eceb3_f0d7988e",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-31T23:42:23Z",
+      "side": 1,
+      "message": "uintptr_t would be more accurate. Nor is the data const, as the driver will write to it.",
+      "parentUuid": "929c6a85_c403d067",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12a87aa1_c0674037",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 3
@@ -133,6 +151,24 @@
       "writtenOn": "2014-01-31T11:30:40Z",
       "side": 1,
       "message": "reinterpret_cast\u003cconst binder_size_t*\u003e ?\n\nUsed only in debug fixes so can be fixed later.",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b20eceb3_b0036068",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-31T23:42:23Z",
+      "side": 1,
+      "message": "It is only printing the address, so a void * would also work.",
+      "parentUuid": "12a87aa1_c0674037",
       "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
