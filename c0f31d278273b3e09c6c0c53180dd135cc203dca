@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f26f6639_4de55147",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2014-01-31T01:47:57Z",
+      "side": 1,
+      "message": "Let\u0027s include the Linux header directly instead of something from the private path.",
+      "revId": "c0f31d278273b3e09c6c0c53180dd135cc203dca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
