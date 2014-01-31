@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d2dfc254_2ec6e7dc",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-31T22:18:24Z",
+      "side": 1,
+      "message": "The driver expects a binder_uintptr_t now, so it is simpler to return an integer type here. No-one should touch the data returned from these functions in user-space.",
+      "parentUuid": "d2b1820e_7ebfed91",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12a87aa1_40a5701a",
         "filename": "include/binder/Parcel.h",
         "patchSetId": 3
@@ -149,6 +167,24 @@
       "writtenOn": "2014-01-31T11:30:40Z",
       "side": 1,
       "message": "binder_size_t off ?",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b20eceb3_8d95e5b6",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-01-31T22:18:24Z",
+      "side": 1,
+      "message": "That is not really needed. The offset can\u0027t be larger than 32 bits in a 32 bit process.",
+      "parentUuid": "d2b1820e_deaf2161",
       "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
