@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "929c6a85_44722028",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:30:40Z",
+      "side": 1,
+      "message": "I have added this to the previous binder patch as per Dianne\u0027s review. Now read_pointer() \u0026 write_pointer() are private.",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2b1820e_7ebfed91",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:30:40Z",
+      "side": 1,
+      "message": "binder_uintptr_t* ipcData() const; ?",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12a87aa1_40a5701a",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:30:40Z",
+      "side": 1,
+      "message": "binder_size_t*  ipcObjects() const;  ?",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929c6a85_84f70840",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:30:40Z",
+      "side": 1,
+      "message": "We will need to fix this as well, however we can do this in a later series since it is used just for debug builds. Makes assumption that \"cmd\" can iterate over ints and void* s.",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2b1820e_1e80e9dd",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:30:40Z",
+      "side": 1,
+      "message": "e.g.:",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929c6a85_c403d067",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:30:40Z",
+      "side": 1,
+      "message": "reinterpret_cast\u003cconst binder_uintptr_t*\u003e ?",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12a87aa1_c0674037",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:30:40Z",
+      "side": 1,
+      "message": "reinterpret_cast\u003cconst binder_size_t*\u003e ?\n\nUsed only in debug fixes so can be fixed later.",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929c6a85_e40ed491",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:30:40Z",
+      "side": 1,
+      "message": "(void *)obj.cookie",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2b1820e_deaf2161",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:30:40Z",
+      "side": 1,
+      "message": "binder_size_t off ?",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2b1820e_beb455b6",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:30:40Z",
+      "side": 1,
+      "message": "%zd for mDataPos - there are other places where we should use %zd for size_t s.",
+      "revId": "b191ae0c2e4db0ad65f23d8526bb64bc60541385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
