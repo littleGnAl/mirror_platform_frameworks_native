@@ -16,6 +16,24 @@
       "revId": "75ababd315a18d15fab1363bd55f121222345c1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2b1820e_5ee311ba",
+        "filename": "cmds/servicemanager/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:44:05Z",
+      "side": 1,
+      "message": "Colin - for multi-lib does the 2nd Arch pick up TARGET_IS_64_BIT ? If so we can use this flag here since both will be using the 64bit binder ABI,",
+      "parentUuid": "12731a25_eb78a5d7",
+      "revId": "75ababd315a18d15fab1363bd55f121222345c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
