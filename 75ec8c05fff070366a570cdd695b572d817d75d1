@@ -86,6 +86,24 @@
       "revId": "75ec8c05fff070366a570cdd695b572d817d75d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2b1820e_1edd89f9",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-01-31T11:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52811216_b092998a",
+      "revId": "75ec8c05fff070366a570cdd695b572d817d75d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
