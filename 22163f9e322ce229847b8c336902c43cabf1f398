@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92138adb_6914e5cf",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-02-01T00:05:09Z",
+      "side": 1,
+      "message": "uint64_t is a long on arm64.  to print it portably, include #include \u003cinttypes.h\u003e and replace %016llx with %016\"PRIu64\"",
+      "revId": "22163f9e322ce229847b8c336902c43cabf1f398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
