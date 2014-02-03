@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "9238ea5d_611df67b",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-02-03T09:42:49Z",
+      "side": 1,
+      "message": "The next patch in this series replaces unit32_t cmd[3] with binder_handle_cookie and removes the unnecessary cast.",
+      "parentUuid": "b20eceb3_b0d6c038",
+      "revId": "5fb1b8836aa5cf0f38b49bc7bfb8343b84fdf9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2e2061a_f29c4016",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 53,
         "endChar": 23
       },
+      "revId": "5fb1b8836aa5cf0f38b49bc7bfb8343b84fdf9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9238ea5d_811a7a83",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-02-03T09:42:49Z",
+      "side": 1,
+      "message": "Will add a patch to the end of the series that fixes this.",
+      "parentUuid": "f2e2061a_f29c4016",
       "revId": "5fb1b8836aa5cf0f38b49bc7bfb8343b84fdf9bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
