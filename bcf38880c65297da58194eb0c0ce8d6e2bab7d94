@@ -16,6 +16,24 @@
       "revId": "bcf38880c65297da58194eb0c0ce8d6e2bab7d94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9238ea5d_012e6aa6",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-02-03T09:35:58Z",
+      "side": 1,
+      "message": "Should I fix this by uploading a new patch set? Or fix this in a later patch?",
+      "parentUuid": "b20eceb3_90d05ce6",
+      "revId": "bcf38880c65297da58194eb0c0ce8d6e2bab7d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
