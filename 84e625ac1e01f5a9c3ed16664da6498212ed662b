@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2f8a2d4_a388ba5d",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-02-03T09:47:41Z",
+      "side": 1,
+      "message": "Maybe group private/ public members.",
+      "revId": "84e625ac1e01f5a9c3ed16664da6498212ed662b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
