@@ -34,6 +34,24 @@
       "revId": "bcf38880c65297da58194eb0c0ce8d6e2bab7d94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2e2061a_61475cda",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2014-02-03T21:15:05Z",
+      "side": 1,
+      "message": "A separate patch will be fine. I don\u0027t think there are any other targets in this process, so this should be OK for now.",
+      "parentUuid": "9238ea5d_012e6aa6",
+      "revId": "bcf38880c65297da58194eb0c0ce8d6e2bab7d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
