@@ -22,6 +22,24 @@
       "revId": "a44542ca74b7da5b44ba30c205c3244805bb0600",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3202de8d_e6847efb",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-02-03T09:39:51Z",
+      "side": 1,
+      "message": "Once the series is accepted I will add a patch that displays both binder versions.",
+      "parentUuid": "f2e2061a_72cbb060",
+      "revId": "a44542ca74b7da5b44ba30c205c3244805bb0600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
