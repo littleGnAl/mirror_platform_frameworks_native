@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fc51524_11eacec8",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2014-02-11T17:16:08Z",
+      "side": 1,
+      "message": "Shouldnt we use the macro for this:\n\nselinux_android_restorecon()",
+      "revId": "26288202e7bdf2e897a11bf31a15685d7c20945f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afbae599_2a6e7f14",
+        "filename": "cmds/installd/installd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2014-02-11T17:16:08Z",
+      "side": 1,
+      "message": "Shouldnt we use the macro for this:\n\nselinux_android_restorecon()",
+      "revId": "26288202e7bdf2e897a11bf31a15685d7c20945f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
