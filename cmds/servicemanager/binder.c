@@ -113,6 +113,8 @@ struct binder_state *binder_open(size_t mapsize)
     if ((ioctl(bs->fd, BINDER_VERSION, &vers) == -1) ||
         (vers.protocol_version != BINDER_CURRENT_PROTOCOL_VERSION)) {
         fprintf(stderr, "binder: driver version differs from user space\n");
+        fprintf(stderr, "user version: %d\n", BINDER_CURRENT_PROTOCOL_VERSION);
+        fprintf(stderr, "kern version: %d\n", vers.protocol_version);
         goto fail_open;
     }
 
