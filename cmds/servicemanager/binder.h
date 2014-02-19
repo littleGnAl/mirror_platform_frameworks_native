@@ -27,8 +27,8 @@ struct binder_death {
     void *ptr;
 };
 
-/* the one magic handle */
-#define BINDER_SERVICE_MANAGER  0U
+/* the one magic object */
+#define BINDER_SERVICE_MANAGER      NULL
 
 #define SVC_MGR_NAME "android.os.IServiceManager"
 
