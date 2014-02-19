@@ -50,7 +50,7 @@ static struct {
     { AID_KEYSTORE, "android.security.keystore" },
 };
 
-uint32_t svcmgr_handle;
+void* svcmgr_handle;
 
 const char *str8(const uint16_t *x)
 {
@@ -214,10 +214,10 @@ int svcmgr_handler(struct binder_state *bs,
     uint32_t strict_policy;
     int allow_isolated;
 
-    //ALOGI("target=%x code=%d pid=%d uid=%d\n",
-    //  txn->target.handle, txn->code, txn->sender_pid, txn->sender_euid);
+    //ALOGI("target=%p code=%d pid=%d uid=%d\n",
+    //  txn->target.ptr, txn->code, txn->sender_pid, txn->sender_euid);
 
-    if (txn->target.handle != svcmgr_handle)
+    if (txn->target.ptr != svcmgr_handle)
         return -1;
 
     if (txn->code == PING_TRANSACTION)
