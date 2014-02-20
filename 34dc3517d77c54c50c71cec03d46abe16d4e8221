@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4fbc0932_72ad367b",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-20T19:30:10Z",
+      "side": 1,
+      "message": "Ah, you\u0027re right; I guess you do need to allocate/free them unless we can take those variables global.",
+      "parentUuid": "4fbc0932_f2980668",
+      "revId": "34dc3517d77c54c50c71cec03d46abe16d4e8221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f9e91d0_d036a2fd",
         "filename": "cmds/installd/commands.c",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I didn\u0027t add because the underlying libselinux function seemed chatty when things went wrong.",
       "parentUuid": "0f9e91d0_d036a2fd",
+      "revId": "34dc3517d77c54c50c71cec03d46abe16d4e8221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fbc0932_b2831ef3",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-20T19:30:10Z",
+      "side": 1,
+      "message": "Not sure that will be propagated unless we set up a log_calback in installd as we did for init.",
+      "parentUuid": "6fb70d4d_f3a5aa51",
       "revId": "34dc3517d77c54c50c71cec03d46abe16d4e8221",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
