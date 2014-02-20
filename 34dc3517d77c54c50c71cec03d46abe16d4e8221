@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f9e91d0_d0018221",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-20T18:31:08Z",
+      "side": 1,
+      "message": "If done this way, you\u0027ll have to free them (and allocate each time).\nLooks like they are pre-created during initialization in legacy_data_dir and user_data_dir?",
+      "revId": "34dc3517d77c54c50c71cec03d46abe16d4e8221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f9e91d0_d036a2fd",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-20T18:31:08Z",
+      "side": 1,
+      "message": "Maybe add an ALOGE() call?",
+      "revId": "34dc3517d77c54c50c71cec03d46abe16d4e8221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fb70d4d_33ec52a1",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-20T18:31:08Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "34dc3517d77c54c50c71cec03d46abe16d4e8221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
