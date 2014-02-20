@@ -22,6 +22,24 @@
       "revId": "54d2ed63c84035e36bab6f16e50bb34f4d2ac8ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af64a5c8_5af815ee",
+        "filename": "opengl/tools/glgen/src/JniCodeEmitter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1301,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2014-02-20T19:53:07Z",
+      "side": 1,
+      "message": "Original code generated (GLvoid *)arg. \n\nTo change this to reinterpret_cast\u003cGLoid *\u003e(arg), two changes were required. (a) Change (GLvoid*) to reinterpret_cast\u003cGLoid *\u003e \n(b) Add extra braces around arg. The above code does the second bit.",
+      "parentUuid": "2f1c351e_f06da017",
+      "revId": "54d2ed63c84035e36bab6f16e50bb34f4d2ac8ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
