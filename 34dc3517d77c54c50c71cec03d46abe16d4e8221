@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4fbc0932_f2980668",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1013157
+      },
+      "writtenOn": "2014-02-20T19:20:47Z",
+      "side": 1,
+      "message": "Doh! Will add the frees.\n\nI see where both legacy_data_dir and user_data_dir are created but not where they are saved off. This function is only called once per boot so maybe the malloc and free aren\u0027t that bad.",
+      "parentUuid": "0f9e91d0_d0018221",
+      "revId": "34dc3517d77c54c50c71cec03d46abe16d4e8221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f9e91d0_d036a2fd",
         "filename": "cmds/installd/commands.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-02-20T18:31:08Z",
       "side": 1,
       "message": "Maybe add an ALOGE() call?",
+      "revId": "34dc3517d77c54c50c71cec03d46abe16d4e8221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fb70d4d_f3a5aa51",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1013157
+      },
+      "writtenOn": "2014-02-20T19:20:47Z",
+      "side": 1,
+      "message": "I didn\u0027t add because the underlying libselinux function seemed chatty when things went wrong.",
+      "parentUuid": "0f9e91d0_d036a2fd",
       "revId": "34dc3517d77c54c50c71cec03d46abe16d4e8221",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
