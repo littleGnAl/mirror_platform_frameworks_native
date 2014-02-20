@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f1c351e_f06da017",
+        "filename": "opengl/tools/glgen/src/JniCodeEmitter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1301,
+      "author": {
+        "id": 1000483
+      },
+      "writtenOn": "2014-02-20T18:38:23Z",
+      "side": 1,
+      "message": "What generated code does this affect?",
+      "range": {
+        "startLine": 1301,
+        "startChar": 0,
+        "endLine": 1301,
+        "endChar": 59
+      },
+      "revId": "54d2ed63c84035e36bab6f16e50bb34f4d2ac8ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
