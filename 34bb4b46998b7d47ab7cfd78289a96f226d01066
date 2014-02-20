@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef713d8d_b4078035",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-20T19:51:20Z",
+      "side": 1,
+      "message": "Coding style nit: Don\u0027t intermingle code and declarations; move this after all local variable declarations.",
+      "revId": "34bb4b46998b7d47ab7cfd78289a96f226d01066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
