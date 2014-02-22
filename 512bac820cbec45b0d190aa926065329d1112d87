@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f78b56e_c70c3ec5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-22T05:35:53Z",
+      "side": 1,
+      "message": "Have you actually verified that installd is able to successfully set the security. xattr value? Installd doesn\u0027t run as root, and I thought the kernel imposed restrictions on which processes could set security. xattrs.",
+      "revId": "512bac820cbec45b0d190aa926065329d1112d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
