@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f78b56e_c7e1a180",
+        "filename": "opengl/tools/glgen/static/egl/EGLObjectHandle.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000483
+      },
+      "writtenOn": "2014-02-22T00:18:11Z",
+      "side": 1,
+      "message": "I\u0027m wondering if there\u0027s value in adding\n\n  if ((mHandle \u0026 0xffffffffL) !\u003d mHandle) {\n    throw ...\n  }\n\nto prevent mixing \u0026 matching 64-bit pointers with getHandle().",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "8b70dfad6fdde21fc9d278379da61e8ee2b7fb3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
