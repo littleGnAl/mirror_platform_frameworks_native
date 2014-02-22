@@ -22,6 +22,24 @@
       "revId": "8b70dfad6fdde21fc9d278379da61e8ee2b7fb3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef985df7_9fa9b760",
+        "filename": "opengl/tools/glgen/static/egl/EGLObjectHandle.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2014-02-22T23:56:41Z",
+      "side": 1,
+      "message": "Good idea. How about throwing an unsupported operation exception?",
+      "parentUuid": "2f78b56e_c7e1a180",
+      "revId": "8b70dfad6fdde21fc9d278379da61e8ee2b7fb3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
