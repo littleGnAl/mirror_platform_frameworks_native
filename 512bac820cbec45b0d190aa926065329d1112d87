@@ -34,6 +34,24 @@
       "revId": "512bac820cbec45b0d190aa926065329d1112d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef469d41_860cfec3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-23T16:05:59Z",
+      "side": 1,
+      "message": "As another idea, have you considered a one-shot service triggered by init for doing the relabeling of /data/data and /data/user ? The one-shot service could reuse the existing relabeling code in init, and the service could be triggered by system_server when packages.list is in a fixed state.\n\nIt might be easier to implement too, which is nice.",
+      "parentUuid": "ef713d8d_080817f2",
+      "revId": "512bac820cbec45b0d190aa926065329d1112d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
