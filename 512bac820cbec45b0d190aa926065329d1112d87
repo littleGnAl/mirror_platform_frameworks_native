@@ -16,6 +16,24 @@
       "revId": "512bac820cbec45b0d190aa926065329d1112d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef713d8d_080817f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1013887
+      },
+      "writtenOn": "2014-02-23T15:36:33Z",
+      "side": 1,
+      "message": "Yeah, grumble. I believe installd would need to retain CAP_SYS_ADMIN to pull this off. Hold off on this til something else can be decided. I can\u0027t imagine adding back in CAP_SYS_ADMIN would be seen as a solution.",
+      "parentUuid": "2f78b56e_c70c3ec5",
+      "revId": "512bac820cbec45b0d190aa926065329d1112d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
