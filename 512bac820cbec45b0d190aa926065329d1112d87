@@ -70,6 +70,24 @@
       "revId": "512bac820cbec45b0d190aa926065329d1112d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef713d8d_c841bf7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-24T17:20:08Z",
+      "side": 1,
+      "message": "Ya, I was referring to the security.restorecon_last xattr. Sorry if that was confusing.\n\nAnother alternative is to record the hash of /seapp_contexts in system_server, and only to the relabel if the hash changed. We don\u0027t have to store it in an xattr, we can store it in system_server\u0027s home directory.",
+      "parentUuid": "af49054f_7bf33383",
+      "revId": "512bac820cbec45b0d190aa926065329d1112d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
