@@ -52,6 +52,24 @@
       "revId": "512bac820cbec45b0d190aa926065329d1112d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af49054f_7bf33383",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-24T13:23:34Z",
+      "side": 1,
+      "message": "The security.selinux attribute does not require CAP_SYS_ADMIN, since SELinux has its own relabelfrom and relabelto checks.  It does require CAP_FOWNER if the inode is owned by another UID, but installd already requires that capability.\nSo I assume the only issue is with setting security.restorecon_last?  We could perhaps relax that in the kernel as well and apply a different check there, or just go with the oneshot service approach you suggest.",
+      "parentUuid": "ef469d41_860cfec3",
+      "revId": "512bac820cbec45b0d190aa926065329d1112d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
