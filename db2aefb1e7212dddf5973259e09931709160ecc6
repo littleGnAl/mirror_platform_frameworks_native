@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cfb9535_9bdeb981",
+        "filename": "opengl/tools/glgen/stubs/egl/eglGetDisplay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000483
+      },
+      "writtenOn": "2014-02-26T17:38:53Z",
+      "side": 1,
+      "message": "I\u0027d drop this comment as well -- no need to un-hide the API if we don\u0027t have a use for it yet.",
+      "range": {
+        "startLine": 6,
+        "startChar": 6,
+        "endLine": 6,
+        "endChar": 53
+      },
+      "revId": "db2aefb1e7212dddf5973259e09931709160ecc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
