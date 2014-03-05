@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c7df19f_c8733227",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2014-03-05T16:59:44Z",
+      "side": 1,
+      "message": "Do not change types, I\u0027m guessing what happened is this file is based on \"old\" it needs to be rebased.",
+      "revId": "152e864d578aef300a1c0d237c2b2a7efe7b1f7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_c8fed219",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2014-03-05T16:59:44Z",
+      "side": 1,
+      "message": "Hopefully in L we won\u0027t need to add mainismsX, iphonesubinfoX, simphonebookX. It will be difficult to maintain.",
+      "revId": "152e864d578aef300a1c0d237c2b2a7efe7b1f7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc76f9c4_061cbfc5",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2014-03-05T16:59:44Z",
+      "side": 1,
+      "message": "remove any added trailing white space, do not remove pre-existing trailing white space.",
+      "revId": "152e864d578aef300a1c0d237c2b2a7efe7b1f7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_e8fb8e26",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2014-03-05T16:59:44Z",
+      "side": 1,
+      "message": "again, do not change types.",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "152e864d578aef300a1c0d237c2b2a7efe7b1f7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
