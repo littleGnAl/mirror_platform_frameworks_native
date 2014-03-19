@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcfbbdcb_98e76551",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-03-19T19:03:45Z",
+      "side": 1,
+      "message": "Installd doesn\u0027t have sufficient selinux capabilities to perform this operation. In particular, I\u0027m seeing the following denials when I try to perform an upgrade from Android 4.2 to tip-of-tree:\n\n\u003c5\u003e[  100.719340] type\u003d1400 audit(1395253832.270:5): avc:  denied  { relabelto } for  pid\u003d139 comm\u003d\"installd\" name\u003d\"lib\" dev\u003dmmcblk0p10 ino\u003d114693 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:app_data_file:s0 tclass\u003dlnk_file\n\n\u003c5\u003e[  100.720458] type\u003d1400 audit(1395253832.270:6): avc:  denied  { relabelto } for  pid\u003d139 comm\u003d\"installd\" name\u003d\"lib\" dev\u003dmmcblk0p10 ino\u003d114695 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:app_data_file:s0 tclass\u003dlnk_file\n\n\u003c5\u003e[  100.721537] type\u003d1400 audit(1395253832.270:7): avc:  denied  { relabelto } for  pid\u003d139 comm\u003d\"installd\" name\u003d\"lib\" dev\u003dmmcblk0p10 ino\u003d114697 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:app_data_file:s0 tclass\u003dlnk_file\n\n\u003c5\u003e[  100.722668] type\u003d1400 audit(1395253832.270:8): avc:  denied  { relabelto } for  pid\u003d139 comm\u003d\"installd\" name\u003d\"lib\" dev\u003dmmcblk0p10 ino\u003d114699 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:bluetooth_data_file:s0 tclass\u003dlnk_file\n\n\u003c5\u003e[  100.725224] type\u003d1400 audit(1395253832.270:9): avc:  denied  { relabelto } for  pid\u003d139 comm\u003d\"installd\" name\u003d\"lib\" dev\u003dmmcblk0p10 ino\u003d114701 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:app_data_file:s0 tclass\u003dlnk_file\n\n\u003c5\u003e[  100.726396] type\u003d1400 audit(1395253832.280:10): avc:  denied  { relabelto } for  pid\u003d139 comm\u003d\"installd\" name\u003d\"lib\" dev\u003dmmcblk0p10 ino\u003d114703 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:app_data_file:s0 tclass\u003dlnk_file\n\n\u003c5\u003e[  100.727488] type\u003d1400 audit(1395253832.280:11): avc:  denied  { relabelto } for  pid\u003d139 comm\u003d\"installd\" name\u003d\"lib\" dev\u003dmmcblk0p10 ino\u003d114705 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:app_data_file:s0 tclass\u003dlnk_file\n\n\u003c5\u003e[  100.728587] type\u003d1400 audit(1395253832.280:12): avc:  denied  { relabelto } for  pid\u003d139 comm\u003d\"installd\" name\u003d\"lib\" dev\u003dmmcblk0p10 ino\u003d114707 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:app_data_file:s0 tclass\u003dlnk_file\n\n\u003c5\u003e[  100.732010] type\u003d1400 audit(1395253832.280:13): avc:  denied  { relabelto } for  pid\u003d139 comm\u003d\"installd\" name\u003d\"com.android.calendar_preferences.xml\" dev\u003dmmcblk0p10 ino\u003d115007 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:app_data_file:s0 tclass\u003dfile",
+      "revId": "e9887e46cea4a095e4219927eadbe4c57bb1a5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
