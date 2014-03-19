@@ -16,6 +16,24 @@
       "revId": "e9887e46cea4a095e4219927eadbe4c57bb1a5ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc33057e_a2345ef4",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-03-19T20:16:55Z",
+      "side": 1,
+      "message": "Fixed by https://android-review.googlesource.com/88265",
+      "parentUuid": "fcfbbdcb_98e76551",
+      "revId": "e9887e46cea4a095e4219927eadbe4c57bb1a5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
