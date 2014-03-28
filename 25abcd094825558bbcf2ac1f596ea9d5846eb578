@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f91d8f5d_058db56a",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-03-28T16:09:10Z",
+      "side": 1,
+      "message": "I\u0027d prefer if we don\u0027t use PATH_MAX. See http://insanecoding.blogspot.com/2007/11/pathmax-simply-isnt.html why.",
+      "revId": "25abcd094825558bbcf2ac1f596ea9d5846eb578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f91d8f5d_2590b181",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-03-28T16:09:10Z",
+      "side": 1,
+      "message": "This feels like a big error if this occurs. Add an ALOGE() to make sure the error is visible?",
+      "revId": "25abcd094825558bbcf2ac1f596ea9d5846eb578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b935d7d3_b9f5009e",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-03-28T16:09:10Z",
+      "side": 1,
+      "message": "we can use asprintf here instead of relying on PATH_MAX.",
+      "revId": "25abcd094825558bbcf2ac1f596ea9d5846eb578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b935d7d3_39c3504c",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-03-28T16:09:10Z",
+      "side": 1,
+      "message": "This feels like a bad error if it occurs. Add an ALOGE?",
+      "revId": "25abcd094825558bbcf2ac1f596ea9d5846eb578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
