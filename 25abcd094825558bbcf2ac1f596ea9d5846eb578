@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b910773f_0e24bb93",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1013157
+      },
+      "writtenOn": "2014-03-28T16:51:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f91d8f5d_058db56a",
+      "revId": "25abcd094825558bbcf2ac1f596ea9d5846eb578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f91d8f5d_2590b181",
         "filename": "cmds/installd/commands.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2014-03-28T16:09:10Z",
       "side": 1,
       "message": "This feels like a big error if this occurs. Add an ALOGE() to make sure the error is visible?",
+      "revId": "25abcd094825558bbcf2ac1f596ea9d5846eb578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99157331_4dbcf94b",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1013157
+      },
+      "writtenOn": "2014-03-28T16:51:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f91d8f5d_2590b181",
       "revId": "25abcd094825558bbcf2ac1f596ea9d5846eb578",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "39fba735_926d8c1e",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1013157
+      },
+      "writtenOn": "2014-03-28T16:51:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b935d7d3_b9f5009e",
+      "revId": "25abcd094825558bbcf2ac1f596ea9d5846eb578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b935d7d3_39c3504c",
         "filename": "cmds/installd/commands.c",
         "patchSetId": 5
@@ -64,6 +118,24 @@
       "writtenOn": "2014-03-28T16:09:10Z",
       "side": 1,
       "message": "This feels like a bad error if it occurs. Add an ALOGE?",
+      "revId": "25abcd094825558bbcf2ac1f596ea9d5846eb578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99157331_8db2117a",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1013157
+      },
+      "writtenOn": "2014-03-28T16:51:52Z",
+      "side": 1,
+      "message": "What about \u0027.\u0027 and \u0027..\u0027? I guess we can place additional logic before this to skip without logging those?",
+      "parentUuid": "b935d7d3_39c3504c",
       "revId": "25abcd094825558bbcf2ac1f596ea9d5846eb578",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
