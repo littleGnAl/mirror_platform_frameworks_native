@@ -109,5 +109,30 @@ status_t GraphicBufferMapper::unlock(buffer_handle_t handle)
     return err;
 }
 
+status_t GraphicBufferMapper::lockAsync(buffer_handle_t handle,
+        int usage, const Rect& bounds, void** vaddr, int fd)
+{
+    ATRACE_CALL();
+    status_t err;
+
+    err = mAllocMod->lockAsync(mAllocMod, handle, usage,
+            bounds.left, bounds.top, bounds.width(), bounds.height(),
+            vaddr, fd);
+
+    ALOGW_IF(err, "lockAsync(...) failed %d (%s)", err, strerror(-err));
+    return err;
+}
+
+status_t GraphicBufferMapper::unlockAsync(buffer_handle_t handle, int* fd)
+{
+    ATRACE_CALL();
+    status_t err;
+
+    err = mAllocMod->unlockAsync(mAllocMod, handle, fd);
+
+    ALOGW_IF(err, "unlockAsync(...) failed %d (%s)", err, strerror(-err));
+    return err;
+}
+
 // ---------------------------------------------------------------------------
 }; // namespace android

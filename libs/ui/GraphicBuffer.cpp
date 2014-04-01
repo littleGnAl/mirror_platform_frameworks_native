@@ -200,6 +200,32 @@ status_t GraphicBuffer::unlock()
     return res;
 }
 
+status_t GraphicBuffer::lockAsync(uint32_t usage, void** vaddr, int fd)
+{
+    const Rect lockBounds(width, height);
+    status_t res = lockAsync(usage, lockBounds, vaddr, fd);
+    return res;
+}
+
+status_t GraphicBuffer::lockAsync(uint32_t usage, const Rect& rect, void** vaddr, int fd)
+{
+    if (rect.left < 0 || rect.right  > this->width ||
+        rect.top  < 0 || rect.bottom > this->height) {
+        ALOGE("locking pixels (%d,%d,%d,%d) outside of buffer (w=%d, h=%d)",
+                rect.left, rect.top, rect.right, rect.bottom,
+                this->width, this->height);
+        return BAD_VALUE;
+    }
+    status_t res = getBufferMapper().lockAsync(handle, usage, rect, vaddr, fd);
+    return res;
+}
+
+status_t GraphicBuffer::unlockAsync(int *fd)
+{
+    status_t res = getBufferMapper().unlockAsync(handle, fd);
+    return res;
+}
+
 size_t GraphicBuffer::getFlattenedSize() const {
     return (8 + (handle ? handle->numInts : 0))*sizeof(int);
 }
