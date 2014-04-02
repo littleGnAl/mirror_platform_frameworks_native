@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9a74f88_7a6d161b",
+        "filename": "include/media/openmax/OMX_Types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-04-02T17:58:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t follow the \"include what you use\" rule, so fails in some contexts where \u003cstdint.h\u003e was not yet included.\n\nI\u0027ll upload another patch set to fix it, along with some CLs on other projects to fix the log problems.",
+      "revId": "25f93da6317ed5229067ac4e9782724d01146c76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
