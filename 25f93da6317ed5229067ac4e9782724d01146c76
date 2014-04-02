@@ -16,6 +16,24 @@
       "revId": "25f93da6317ed5229067ac4e9782724d01146c76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9a74f88_7539a7b4",
+        "filename": "include/media/openmax/OMX_Types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-04-02T18:21:27Z",
+      "side": 1,
+      "message": "fixed in patch set 2",
+      "parentUuid": "f9a74f88_7a6d161b",
+      "revId": "25f93da6317ed5229067ac4e9782724d01146c76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
