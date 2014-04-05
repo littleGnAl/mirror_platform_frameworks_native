@@ -157,6 +157,28 @@ struct PrependSPSPPSToIDRFramesParams {
     OMX_BOOL bEnable;
 };
 
+// A pointer to this struct is passed to OMX_SetParameter when the extension
+// index for the 'OMX.google.android.index.enableHDCPEncryption' extension
+// is given.
+// A successful result indicates that encoder also performs HDCP encryption.
+// The HDCP Initialization Vector (inputCtr) is returned as OMX EXTRADATA
+// according to struct OMX_HDCP_IVDATA.
+struct EnableHDCPEncryptionParams {
+    OMX_U32 nSize;
+    OMX_VERSIONTYPE nVersion;
+    OMX_BOOL bEnable;
+};
+
+enum {
+    OMX_ExtraDataHDCPIV = OMX_ExtraDataVendorStartUnused + 100
+};
+
+struct OMX_HDCP_IVDATA {
+    OMX_U64 qwInitializationVector; // Data required to start decrypting this region
+    OMX_U64 qwBlockOffset; // Internal to AES CTR algorithm; we can leave as zero
+    OMX_U8 bByteOffset; // Internal to AES CTR algorithm; we can leave as zero
+};
+
 }  // namespace android
 
 extern android::OMXPluginBase *createOMXPlugin();
