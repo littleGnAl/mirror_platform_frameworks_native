@@ -349,7 +349,8 @@ bool SensorService::threadLoop()
             }
         }
 
-        recordLastValue(buffer, count);
+        if(count)
+            recordLastValue(buffer, count);
 
         // handle virtual sensors
         if (count && vcount) {
