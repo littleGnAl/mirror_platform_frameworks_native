@@ -604,7 +604,7 @@ static void run_dexopt(int zip_fd, int odex_fd, const char* input_file_name,
 }
 
 static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
-    const char* output_file_name, const char *pkgname)
+    const char* output_file_name, const char *pkgname, const char *instruction_set)
 {
     char dex2oat_flags[PROPERTY_VALUE_MAX];
     property_get("dalvik.vm.dex2oat-flags", dex2oat_flags, "");
@@ -612,28 +612,38 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
 
     static const char* DEX2OAT_BIN = "/system/bin/dex2oat";
     static const int MAX_INT_LEN = 12;      // '-'+10dig+'\0' -OR- 0x+8dig
+    static const unsigned int MAX_INSTRUCTION_SET_LEN = 32;
+
+    if (strlen(instruction_set) >= MAX_INSTRUCTION_SET_LEN) {
+        ALOGE("Instruction set %s longer than max length of %d",
+              instruction_set, MAX_INSTRUCTION_SET_LEN);
+        return;
+    }
+
     char zip_fd_arg[strlen("--zip-fd=") + MAX_INT_LEN];
     char zip_location_arg[strlen("--zip-location=") + PKG_PATH_MAX];
     char oat_fd_arg[strlen("--oat-fd=") + MAX_INT_LEN];
     char oat_location_arg[strlen("--oat-name=") + PKG_PATH_MAX];
-    char profile_file[strlen("--profile-file=") + PKG_PATH_MAX];
+    char profile_file_arg[strlen("--profile-file=") + PKG_PATH_MAX];
+    char instruction_set_arg[strlen("--instruction-set=") + MAX_INSTRUCTION_SET_LEN];
 
     sprintf(zip_fd_arg, "--zip-fd=%d", zip_fd);
     sprintf(zip_location_arg, "--zip-location=%s", input_file_name);
     sprintf(oat_fd_arg, "--oat-fd=%d", oat_fd);
     sprintf(oat_location_arg, "--oat-location=%s", output_file_name);
+    sprintf(instruction_set_arg, "--instruction-set=%s", instruction_set);
     if (strcmp(pkgname, "*") != 0) {
-        snprintf(profile_file, sizeof(profile_file), "--profile-file=%s/%s",
+        snprintf(profile_file_arg, sizeof(profile_file_arg), "--profile-file=%s/%s",
                  DALVIK_CACHE_PREFIX "profiles", pkgname);
     } else {
-        strcpy(profile_file, "--no-profile-file");
+        strcpy(profile_file_arg, "--no-profile-file");
     }
 
     ALOGV("Running %s in=%s out=%s\n", DEX2OAT_BIN, input_file_name, output_file_name);
     execl(DEX2OAT_BIN, DEX2OAT_BIN,
           zip_fd_arg, zip_location_arg,
           oat_fd_arg, oat_location_arg,
-          profile_file,
+          profile_file_arg, instruction_set_arg,
           strlen(dex2oat_flags) > 0 ? dex2oat_flags : NULL,
           (char*) NULL);
     ALOGE("execl(%s) failed: %s\n", DEX2OAT_BIN, strerror(errno));
@@ -666,7 +676,7 @@ static int wait_child(pid_t pid)
 }
 
 int dexopt(const char *apk_path, uid_t uid, int is_public,
-           const char *pkgname)
+           const char *pkgname, const char *instruction_set)
 {
     struct utimbuf ut;
     struct stat apk_stat, dex_stat;
@@ -758,7 +768,7 @@ int dexopt(const char *apk_path, uid_t uid, int is_public,
         if (strncmp(persist_sys_dalvik_vm_lib, "libdvm", 6) == 0) {
             run_dexopt(zip_fd, out_fd, apk_path, out_path);
         } else if (strncmp(persist_sys_dalvik_vm_lib, "libart", 6) == 0) {
-            run_dex2oat(zip_fd, out_fd, apk_path, out_path, pkgname);
+            run_dex2oat(zip_fd, out_fd, apk_path, out_path, pkgname, instruction_set);
         } else {
             exit(69);   /* Unexpected persist.sys.dalvik.vm.lib value */
         }
