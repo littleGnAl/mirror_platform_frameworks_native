@@ -266,6 +266,7 @@ void SurfaceFlinger::createBuiltinDisplayLocked(DisplayDevice::DisplayType type)
     DisplayDeviceState info(type);
     // All non-virtual displays are currently considered secure.
     info.isSecure = true;
+    info.scale = mDisplayScaleState;
     mCurrentState.displays.add(mBuiltinDisplays[type], info);
 }
 
