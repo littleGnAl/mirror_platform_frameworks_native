@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9952bbe_7e0ced54",
+        "filename": "libs/ui/Fence.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-04-15T02:00:05Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we use an explicitly sized type here (uint32_t)? It\u0027s pedantic, but fixing a variable-size type bug with another variable-size type seems odd.",
+      "revId": "8956e51ceafd9ccf9b87cafc86ade568d14bb993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
