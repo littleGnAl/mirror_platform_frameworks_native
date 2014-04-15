@@ -22,6 +22,30 @@
       "revId": "cccc663e3e5cf5f977f0469023f947f1f22ea839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_c71ee046",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-04-15T07:26:46Z",
+      "side": 1,
+      "message": "As I mentioned in another thread, we would need that for java \"shared libraries\" anyway. Brian says we should do that for all compiler output and that does seem like it would simplify things a lot.",
+      "parentUuid": "9980137b_cda70c8c",
+      "range": {
+        "startLine": 646,
+        "startChar": 1,
+        "endLine": 652,
+        "endChar": 2
+      },
+      "revId": "cccc663e3e5cf5f977f0469023f947f1f22ea839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
