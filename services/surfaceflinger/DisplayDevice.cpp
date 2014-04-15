@@ -88,8 +88,14 @@ DisplayDevice::DisplayDevice(
         config = RenderEngine::chooseEglConfig(display, format);
     }
     surface = eglCreateWindowSurface(display, config, window, NULL);
-    eglQuerySurface(display, surface, EGL_WIDTH,  &mDisplayWidth);
-    eglQuerySurface(display, surface, EGL_HEIGHT, &mDisplayHeight);
+    if (surface == EGL_NO_SURFACE) {
+        ALOGE("Failed to create display surface");
+        mDisplayWidth = 0;
+        mDisplayHeight = 0;
+    } else {
+        eglQuerySurface(display, surface, EGL_WIDTH,  &mDisplayWidth);
+        eglQuerySurface(display, surface, EGL_HEIGHT, &mDisplayHeight);
+    }
 
     // Make sure that composition can never be stalled by a virtual display
     // consumer that isn't processing buffers fast enough. We have to do this
