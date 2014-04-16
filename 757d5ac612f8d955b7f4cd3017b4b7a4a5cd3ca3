@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25f61b4a_c5afce80",
+        "filename": "libs/ui/GraphicBufferMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-04-16T21:53:43Z",
+      "side": 1,
+      "message": "This needs to check the gralloc version; if \u003c0.3 it should wait on the fence before calling lock().",
+      "revId": "757d5ac612f8d955b7f4cd3017b4b7a4a5cd3ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5f7a345_834302ce",
+        "filename": "libs/ui/GraphicBufferMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-04-16T21:53:43Z",
+      "side": 1,
+      "message": "Ditto, need a version check before calling this, with fallback to unlock().",
+      "revId": "757d5ac612f8d955b7f4cd3017b4b7a4a5cd3ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
