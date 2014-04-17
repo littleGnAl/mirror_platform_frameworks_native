@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c51d3f5e_09bb99b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000483
+      },
+      "writtenOn": "2014-04-17T20:46:22Z",
+      "side": 1,
+      "message": "Should this list all extensions (EGL_KHR_stream, EGL_KHR_stream_consumer_gltexture, EGL_KHR_stream_fifo, ...) ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "d00f79e07034855302a7cef43c3d8e451bd460d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
