@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c51d3f5e_be5df6a7",
+        "filename": "opengl/libs/EGL/egl_object.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000483
+      },
+      "writtenOn": "2014-04-17T22:46:12Z",
+      "side": 1,
+      "message": "Seems like the String8 destructor should be cleaning this up.  Is the egl_context_t destructor not running?",
+      "range": {
+        "startLine": 97,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "850e481d3d0315a931fe337c9918e99ad1b130f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
