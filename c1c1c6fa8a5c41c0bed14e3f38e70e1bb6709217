@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c51d3f5e_69f44d3b",
+        "filename": "opengl/libs/EGL/egl_object.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000483
+      },
+      "writtenOn": "2014-04-17T20:59:03Z",
+      "side": 1,
+      "message": "If glGetString() fails, and we store \"\", gl_extensions.isEmpty() will return true every time (since it\u0027s just testing for length\u003d\u003d0).  So this isn\u0027t quite true.",
+      "range": {
+        "startLine": 112,
+        "startChar": 21,
+        "endLine": 112,
+        "endChar": 73
+      },
+      "revId": "c1c1c6fa8a5c41c0bed14e3f38e70e1bb6709217",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
