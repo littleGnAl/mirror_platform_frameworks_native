@@ -436,11 +436,13 @@ void SensorService::recordLastValue(
         // record the last event of each sensor type in this buffer
         int32_t curr = buffer[i].sensor;
         if (curr != prev) {
-            mLastEventSeen.editValueFor(prev) = buffer[i-1];
+            if (prev)
+                mLastEventSeen.editValueFor(prev) = buffer[i-1];
             prev = curr;
         }
     }
-    mLastEventSeen.editValueFor(prev) = buffer[count-1];
+    if (prev)
+        mLastEventSeen.editValueFor(prev) = buffer[count-1];
 }
 
 void SensorService::sortEventBuffer(sensors_event_t* buffer, size_t count)
