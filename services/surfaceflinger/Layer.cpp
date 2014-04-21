@@ -97,6 +97,7 @@ Layer::Layer(SurfaceFlinger* flinger, const sp<Client>& client,
         mHasSurface(false),
         mClientRef(client),
         mPotentialCursor(false),
+        mInternalOnly(0),
         mQueueItemLock(),
         mQueueItemCondition(),
         mQueueItems(),
@@ -334,6 +335,8 @@ status_t Layer::setBuffers( uint32_t w, uint32_t h,
     mPotentialCursor = (flags & ISurfaceComposerClient::eCursorWindow) ? true : false;
     mProtectedByApp = (flags & ISurfaceComposerClient::eProtectedByApp) ? true : false;
     mCurrentOpacity = getOpacityForFormat(format);
+    mInternalOnly = (flags & (ISurfaceComposerClient::eInternalOnly |
+            ISurfaceComposerClient::eInternalOnlySS));
 
     mSurfaceFlingerConsumer->setDefaultBufferSize(w, h);
     mSurfaceFlingerConsumer->setDefaultBufferFormat(format);
@@ -598,6 +601,10 @@ void Layer::setGeometry(
     hwcInfo.forceClientComposition = false;
 
     if (isSecure() && !displayDevice->isSecure()) {
+        hwcInfo.forceClientComposition = true;
+    }
+
+    if (isInternalOnly(displayDevice)) {
         hwcInfo.forceClientComposition = true;
     }
 
@@ -1041,6 +1048,9 @@ void Layer::onDraw(const sp<const DisplayDevice>& hw, const Region& clip,
 {
     ATRACE_CALL();
 
+    if (CC_UNLIKELY(isInternalOnly(hw, ISurfaceComposerClient::eInternalOnly))) {
+        return;
+    }
     if (CC_UNLIKELY(mActiveBuffer == 0)) {
         // the texture has not been created yet, this Layer has
         // in fact never been drawn into. This happens frequently with
@@ -1077,7 +1087,8 @@ void Layer::onDraw(const sp<const DisplayDevice>& hw, const Region& clip,
         // is probably going to have something visibly wrong.
     }
 
-    bool blackOutLayer = isProtected() || (isSecure() && !hw->isSecure());
+    bool blackOutLayer = isProtected() || (isSecure() && !hw->isSecure()) ||
+            (isInternalOnly(hw, ISurfaceComposerClient::eInternalOnlySS));
 
     RenderEngine& engine(mFlinger->getRenderEngine());
 
@@ -1954,6 +1965,11 @@ void Layer::deferTransactionUntil(const sp<IBinder>& barrierHandle,
         uint64_t frameNumber) {
     sp<Handle> handle = static_cast<Handle*>(barrierHandle.get());
     deferTransactionUntil(handle->owner.promote(), frameNumber);
+}
+
+bool Layer::isInternalOnly(const sp<const DisplayDevice>& hw, uint32_t flags) const {
+    return (mInternalOnly & flags) &&
+            (hw->getDisplayType() != DisplayDevice::DISPLAY_PRIMARY);
 }
 
 void Layer::useSurfaceDamage() {
