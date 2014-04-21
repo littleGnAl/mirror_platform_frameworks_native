@@ -687,6 +687,10 @@ public:
     PixelFormat getPixelFormat() const { return mFormat; }
 
 private:
+    // Used only to check if layer is internal to skip it on external display
+    bool isInternalOnly(const sp<const DisplayDevice>& hw,
+            uint32_t flags = (ISurfaceComposerClient::eInternalOnly |
+                    ISurfaceComposerClient::eInternalOnlySS)) const;
 
     // -----------------------------------------------------------------------
 
@@ -793,6 +797,8 @@ private:
 
     // This layer can be a cursor on some displays.
     bool mPotentialCursor;
+    // do not output to external
+    uint32_t mInternalOnly;
 
     // Local copy of the queued contents of the incoming BufferQueue
     mutable Mutex mQueueItemLock;
