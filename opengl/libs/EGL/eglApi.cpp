@@ -965,7 +965,9 @@ __eglMustCastToProperFunctionPointerType eglGetProcAddress(const char *procname)
             }
 
             if (found) {
+#if defined (__arm__) || defined (__mips__) 
                 addr = gExtensionForwarders[slot];
+#endif
                 sGLExtentionMap.add(name, addr);
                 sGLExtentionSlot++;
             }
