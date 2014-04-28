@@ -57,7 +57,7 @@ static void dumpstate() {
     property_get("ro.baseband", radio, "(unknown)");
     property_get("ro.bootloader", bootloader, "(unknown)");
     property_get("gsm.operator.alpha", network, "(unknown)");
-    strftime(date, sizeof(date), "%Y-%m-%d %H:%M:%S", localtime(&now));
+    strftime(date, sizeof(date), "%Y-%m-%d %H:%M:%S", localtime((const time_t *)&now));
 
     printf("========================================================\n");
     printf("== dumpstate: %s\n", date);
@@ -448,7 +448,7 @@ int main(int argc, char *argv[]) {
         if (do_add_date) {
             char date[80];
             time_t now = time(NULL);
-            strftime(date, sizeof(date), "-%Y-%m-%d-%H-%M-%S", localtime(&now));
+            strftime(date, sizeof(date), "-%Y-%m-%d-%H-%M-%S", localtime((const time_t *)&now));
             strlcat(path, date, sizeof(path));
         }
         if (do_fb) {

@@ -228,7 +228,7 @@ int dump_file(const char *title, const char* path) {
         if (memcmp(path, "/proc/", 6) && memcmp(path, "/sys/", 5) && !fstat(fd, &st)) {
             char stamp[80];
             time_t mtime = st.st_mtime;
-            strftime(stamp, sizeof(stamp), "%Y-%m-%d %H:%M:%S", localtime(&mtime));
+            strftime(stamp, sizeof(stamp), "%Y-%m-%d %H:%M:%S", localtime((const time_t *)&mtime));
             printf(": %s", stamp);
         }
         printf(") ------\n");
