@@ -7,8 +7,9 @@ LOCAL_SRC_FILES:= \
 LOCAL_SHARED_LIBRARIES := \
 	libcutils \
 	libutils \
-    libui \
-    libgui
+	libui \
+	libgui \
+	libsonivox
 
 LOCAL_MODULE:= test-resize
 

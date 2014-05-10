@@ -25,6 +25,8 @@
 #include <gui/Surface.h>
 #include <gui/SurfaceComposerClient.h>
 
+#include <android/native_window.h>
+
 using namespace android;
 
 namespace android {
@@ -53,7 +55,7 @@ int main(int argc, char** argv)
     android_memset16((uint16_t*)outBuffer.bits, 0xF800, bpr*outBuffer.height);
     surface->unlockAndPost();
 
-    surface->lock(&outBuffer);
+    surface->lock(&outBuffer, NULL);
     android_memset16((uint16_t*)outBuffer.bits, 0x07E0, bpr*outBuffer.height);
     surface->unlockAndPost();
 
@@ -65,4 +67,5 @@ int main(int argc, char** argv)
     IPCThreadState::self()->joinThreadPool();
     
     return 0;
+}
 }
