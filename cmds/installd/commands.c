@@ -606,12 +606,8 @@ static void run_dexopt(int zip_fd, int odex_fd, const char* input_file_name,
 }
 
 static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
-    const char* output_file_name, const char *pkgname, const char *instruction_set)
+    const char* output_file_name, const char *pkgname, const char *instruction_set, const char *dexOptFlag)
 {
-    char dex2oat_flags[PROPERTY_VALUE_MAX];
-    property_get("dalvik.vm.dex2oat-flags", dex2oat_flags, "");
-    ALOGV("dalvik.vm.dex2oat-flags=%s\n", dex2oat_flags);
-
     static const char* DEX2OAT_BIN = "/system/bin/dex2oat";
     static const int MAX_INT_LEN = 12;      // '-'+10dig+'\0' -OR- 0x+8dig
     static const unsigned int MAX_INSTRUCTION_SET_LEN = 32;
@@ -641,12 +637,35 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
         strcpy(profile_file_arg, "--no-profile-file");
     }
 
-    ALOGV("Running %s in=%s out=%s\n", DEX2OAT_BIN, input_file_name, output_file_name);
+    char dex2oat_flags[PROPERTY_VALUE_MAX];
+    property_get("dalvik.vm.dex2oat-flags", dex2oat_flags, "");
+    ALOGV("dalvik.vm.dex2oat-flags=%s\n", dex2oat_flags);
+
+    if ((strlen(dex2oat_flags)+ strlen(dexOptFlag)) > 2*PROPERTY_VALUE_MAX) {
+        ALOGE("dex2oat flags %s longer than max length of %d", dex2oat_flags, 2*PROPERTY_VALUE_MAX);
+        return;
+    }
+
+    int argCount = strlen(dex2oat_flags)+strlen(dexOptFlag);
+    char dex2oat_flags_arg[strlen("--compiler-filter= --runtime-arg") + 2*PROPERTY_VALUE_MAX];
+
+    // check for runtime and compiler-filter options
+    if ((strlen(dex2oat_flags) > 0) && (strlen(dexOptFlag) > 0)) {
+        snprintf(dex2oat_flags_arg, sizeof(dex2oat_flags_arg), "--compiler-filter=%s --runtime-arg %s ", dexOptFlag);
+    } else if (strlen(dex2oat_flags) > 0){
+        snprintf(dex2oat_flags_arg, sizeof(dex2oat_flags_arg), "--runtime-arg %s", dex2oat_flags);
+    } else if (strlen(dexOptFlag) > 0) {
+        snprintf(dex2oat_flags_arg, sizeof(dex2oat_flags_arg), "--compiler-filter=%s", dexOptFlag);
+    }
+
+    ALOGV("Running %s in=%s out=%s with flag %s\n", DEX2OAT_BIN, input_file_name, output_file_name,
+                                                 dex2oat_flags_arg);
+
     execl(DEX2OAT_BIN, DEX2OAT_BIN,
           zip_fd_arg, zip_location_arg,
           oat_fd_arg, oat_location_arg,
           profile_file_arg, instruction_set_arg,
-          strlen(dex2oat_flags) > 0 ? dex2oat_flags : NULL,
+          argCount > 0 ? dex2oat_flags_arg : NULL,
           (char*) NULL);
     ALOGE("execl(%s) failed: %s\n", DEX2OAT_BIN, strerror(errno));
 }
@@ -678,7 +697,7 @@ static int wait_child(pid_t pid)
 }
 
 int dexopt(const char *apk_path, uid_t uid, int is_public,
-           const char *pkgname, const char *instruction_set)
+           const char *pkgname, const char *instruction_set, const char *dexOptFlag)
 {
     struct utimbuf ut;
     struct stat apk_stat, dex_stat;
@@ -774,7 +793,7 @@ int dexopt(const char *apk_path, uid_t uid, int is_public,
         if (strncmp(persist_sys_dalvik_vm_lib, "libdvm", 6) == 0) {
             run_dexopt(zip_fd, out_fd, apk_path, out_path);
         } else if (strncmp(persist_sys_dalvik_vm_lib, "libart", 6) == 0) {
-            run_dex2oat(zip_fd, out_fd, apk_path, out_path, pkgname, instruction_set);
+            run_dex2oat(zip_fd, out_fd, apk_path, out_path, pkgname, instruction_set, dexOptFlag);
         } else {
             exit(69);   /* Unexpected persist.sys.dalvik.vm.lib value */
         }
