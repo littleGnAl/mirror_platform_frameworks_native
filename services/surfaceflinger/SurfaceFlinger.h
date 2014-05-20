@@ -370,6 +370,7 @@ private:
     void doComposeSurfaces(const sp<const DisplayDevice>& hw, const Region& dirty);
 
     void postFramebuffer();
+    void debugShowFPS() const;
     void drawWormhole(const sp<const DisplayDevice>& hw, const Region& region) const;
 
     /* ------------------------------------------------------------------------
@@ -445,6 +446,7 @@ private:
     int mDebugRegion;
     int mDebugDDMS;
     int mDebugDisableHWC;
+    bool mDebugShowFpsLogcat;
     int mDebugDisableTransformHint;
     volatile nsecs_t mDebugInSwapBuffers;
     nsecs_t mLastSwapBufferTime;
