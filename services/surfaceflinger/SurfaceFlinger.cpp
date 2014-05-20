@@ -145,6 +145,7 @@ SurfaceFlinger::SurfaceFlinger()
         mDebugRegion(0),
         mDebugDDMS(0),
         mDebugDisableHWC(0),
+        mDebugShowFpsLogcat(0),
         mDebugDisableTransformHint(0),
         mDebugInSwapBuffers(0),
         mLastSwapBufferTime(0),
@@ -949,6 +950,11 @@ void SurfaceFlinger::doComposition() {
     for (size_t dpy=0 ; dpy<mDisplays.size() ; dpy++) {
         const sp<DisplayDevice>& hw(mDisplays[dpy]);
         if (hw->canDraw()) {
+            // handle FPS counting
+            if (CC_UNLIKELY(mDebugShowFpsLogcat)) {
+                debugShowFPS();
+            }
+
             // transform the dirty region into this screen's coordinate space
             const Region dirtyRegion(hw->getDirtyRegion(repaintEverything));
 
@@ -1667,6 +1673,25 @@ void SurfaceFlinger::drawWormhole(const sp<const DisplayDevice>& hw, const Regio
     const int32_t height = hw->getHeight();
     RenderEngine& engine(getRenderEngine());
     engine.fillRegionWithColor(region, height, 0, 0, 0, 0);
+}
+
+void SurfaceFlinger::debugShowFPS() const
+{
+    static int mFrameCount = 0;
+    static int mLastFrameCount = 0;
+    static nsecs_t mLastFpsTime = 0;
+    static float mFps = 0;
+
+    mFrameCount++;
+    nsecs_t now = systemTime();
+    nsecs_t diff = now - mLastFpsTime;
+    if (diff > ms2ns(250)) {
+        mFps =  ((mFrameCount - mLastFrameCount) * float(s2ns(1))) / diff;
+        mLastFpsTime = now;
+        mLastFrameCount = mFrameCount;
+
+        LOGI("refresh-rate = %.1f fps", mFps);
+    }
 }
 
 void SurfaceFlinger::addClientLayer(const sp<Client>& client,
@@ -2515,7 +2540,10 @@ status_t SurfaceFlinger::onTransact(
         int n;
         switch (code) {
             case 1000: // SHOW_CPU, NOT SUPPORTED ANYMORE
-            case 1001: // SHOW_FPS, NOT SUPPORTED ANYMORE
+                return NO_ERROR;
+            case 1001: // SHOW_FPS
+                n = data.readInt32();
+                mDebugShowFpsLogcat = n ? 1 : 0;
                 return NO_ERROR;
             case 1002:  // SHOW_UPDATES
                 n = data.readInt32();
