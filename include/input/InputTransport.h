@@ -39,6 +39,9 @@ namespace android {
 
 /*
  * Intermediate representation used to send input events and related signals.
+ *
+ * Note that this structure is used for IPCs so its layout must be identical
+ * on 64 and 32 bit processes. This is tested in StructLayout_test.cpp.
  */
 struct InputMessage {
     enum {
@@ -49,13 +52,13 @@ struct InputMessage {
 
     struct Header {
         uint32_t type;
-        uint32_t padding; // 8 byte alignment for the body that follows
     } header;
 
+    // Body *must* be 8 byte aligned.
     union Body {
         struct Key {
             uint32_t seq;
-            nsecs_t eventTime;
+            nsecs_t eventTime __attribute__((aligned(8)));
             int32_t deviceId;
             int32_t source;
             int32_t action;
@@ -64,7 +67,7 @@ struct InputMessage {
             int32_t scanCode;
             int32_t metaState;
             int32_t repeatCount;
-            nsecs_t downTime;
+            nsecs_t downTime __attribute__((aligned(8)));
 
             inline size_t size() const {
                 return sizeof(Key);
@@ -73,7 +76,7 @@ struct InputMessage {
 
         struct Motion {
             uint32_t seq;
-            nsecs_t eventTime;
+            nsecs_t eventTime __attribute__((aligned(8)));
             int32_t deviceId;
             int32_t source;
             int32_t action;
@@ -81,13 +84,14 @@ struct InputMessage {
             int32_t metaState;
             int32_t buttonState;
             int32_t edgeFlags;
-            nsecs_t downTime;
+            nsecs_t downTime __attribute__((aligned(8)));
             float xOffset;
             float yOffset;
             float xPrecision;
             float yPrecision;
             uint32_t pointerCount;
-            struct Pointer {
+            // Note that PointerCoords requires 8 byte alignment.
+            struct Pointer{
                 PointerProperties properties;
                 PointerCoords coords;
             } pointers[MAX_POINTERS];
@@ -112,7 +116,7 @@ struct InputMessage {
                 return sizeof(Finished);
             }
         } finished;
-    } body;
+    } __attribute__((aligned(8))) body;
 
     bool isValid(size_t actualSize) const;
     size_t size() const;
