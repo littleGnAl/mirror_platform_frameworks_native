@@ -55,7 +55,7 @@ struct InputMessage {
     union Body {
         struct Key {
             uint32_t seq;
-            nsecs_t eventTime;
+            nsecs_t eventTime __attribute__((aligned(8)));
             int32_t deviceId;
             int32_t source;
             int32_t action;
@@ -64,16 +64,16 @@ struct InputMessage {
             int32_t scanCode;
             int32_t metaState;
             int32_t repeatCount;
-            nsecs_t downTime;
+            nsecs_t downTime __attribute__((aligned(8)));
 
             inline size_t size() const {
                 return sizeof(Key);
             }
-        } key;
+        } __attribute__((aligned(8))) key;
 
         struct Motion {
             uint32_t seq;
-            nsecs_t eventTime;
+            nsecs_t eventTime __attribute__((aligned(8)));
             int32_t deviceId;
             int32_t source;
             int32_t action;
@@ -81,16 +81,16 @@ struct InputMessage {
             int32_t metaState;
             int32_t buttonState;
             int32_t edgeFlags;
-            nsecs_t downTime;
+            nsecs_t downTime __attribute__((aligned(8)));
             float xOffset;
             float yOffset;
             float xPrecision;
             float yPrecision;
             uint32_t pointerCount;
-            struct Pointer {
+            struct Pointer{
                 PointerProperties properties;
                 PointerCoords coords;
-            } pointers[MAX_POINTERS];
+            }pointers[MAX_POINTERS];
 
             int32_t getActionId() const {
                 uint32_t index = (action & AMOTION_EVENT_ACTION_POINTER_INDEX_MASK)
@@ -102,7 +102,7 @@ struct InputMessage {
                 return sizeof(Motion) - sizeof(Pointer) * MAX_POINTERS
                         + sizeof(Pointer) * pointerCount;
             }
-        } motion;
+        } __attribute__((aligned(8))) motion;
 
         struct Finished {
             uint32_t seq;
@@ -111,7 +111,7 @@ struct InputMessage {
             inline size_t size() const {
                 return sizeof(Finished);
             }
-        } finished;
+        } __attribute__((aligned(8))) finished;
     } body;
 
     bool isValid(size_t actualSize) const;
