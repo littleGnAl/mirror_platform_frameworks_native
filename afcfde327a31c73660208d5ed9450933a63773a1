@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f9d5828_c4656feb",
+        "filename": "include/media/hardware/HardwareAPI.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-05-23T01:16:55Z",
+      "side": 1,
+      "message": "I would rather not add OMX_EXTRADATA support.",
+      "range": {
+        "startLine": 164,
+        "startChar": 60,
+        "endLine": 164,
+        "endChar": 73
+      },
+      "revId": "afcfde327a31c73660208d5ed9450933a63773a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
