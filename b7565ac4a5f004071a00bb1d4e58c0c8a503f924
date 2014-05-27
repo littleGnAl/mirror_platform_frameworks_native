@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfed10cb_137554dd",
+        "filename": "cmds/installd/installd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-05-27T18:50:26Z",
+      "side": 1,
+      "message": "Are we planning on explicitly allowing installd unlabeled:lnk_file read? Otherwise, if we ever delete the unlabeled compatibility rules in domain.te, access() on the symlink will return false even though the symlink exists.",
+      "revId": "b7565ac4a5f004071a00bb1d4e58c0c8a503f924",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ffd0472_a606bee9",
+        "filename": "cmds/installd/installd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-05-27T18:50:26Z",
+      "side": 1,
+      "message": "I\u0027d feel more comfortable if we unconditionally did this symlink retorecon, not just when access() returned true.\n\nCan we move this to immediately before line 375?",
+      "revId": "b7565ac4a5f004071a00bb1d4e58c0c8a503f924",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
