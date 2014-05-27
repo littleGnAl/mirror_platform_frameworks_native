@@ -372,6 +372,10 @@ int initialize_directories() {
             goto fail;
         }
     }
+    // Restore the security context of the /data/user/0 symlink if necessary.
+    if (selinux_android_restorecon(primary_data_dir, 0)) {
+        goto fail;
+    }
     // Make the /data/user/0 symlink to /data/data if necessary
     if (access(primary_data_dir, R_OK) < 0) {
         if (symlink(legacy_data_dir, primary_data_dir)) {
