@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dfed10cb_ad65fd9d",
+        "filename": "include/input/InputTransport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1011068
+      },
+      "writtenOn": "2014-05-27T14:27:19Z",
+      "side": 1,
+      "message": "I agree. The padding working here needs InputMessage 8 byte aligned.\n\nAnd padding could be removed if we use __attribute__ thing. I will update the patch.\n\nMoreover, I prefer to use __attribute__ instead of padding because adding new fields must be very careful not to break the old layout if padding is used.",
+      "parentUuid": "5f34c006_2423dc44",
+      "revId": "91845f8b8cec5972bb05fe4c0f1f49f576a2c81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f34c006_8418e809",
         "filename": "include/input/InputTransport.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "bf65bc2b_88f647f7",
+        "filename": "include/input/InputTransport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1011068
+      },
+      "writtenOn": "2014-05-27T14:27:19Z",
+      "side": 1,
+      "message": "I didn\u0027t try moving the __attribute__ thing to union. So not sure whether it could work. I was trying to maintain the ARM layout not changed.\n\nYes. The union/structure alignment depends on the biggest alignment of the fields. So eventTime and downTime aligned to 8 make sure key align to 8 bytes.",
+      "parentUuid": "5f34c006_8418e809",
+      "revId": "91845f8b8cec5972bb05fe4c0f1f49f576a2c81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fa47888_09c62d27",
         "filename": "include/input/InputTransport.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-05-27T12:51:58Z",
       "side": 1,
       "message": "please revert this change",
+      "revId": "91845f8b8cec5972bb05fe4c0f1f49f576a2c81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfed10cb_6daf9570",
+        "filename": "include/input/InputTransport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1011068
+      },
+      "writtenOn": "2014-05-27T14:27:19Z",
+      "side": 1,
+      "message": "Will update the patch.",
+      "parentUuid": "9fa47888_09c62d27",
       "revId": "91845f8b8cec5972bb05fe4c0f1f49f576a2c81d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
