@@ -377,6 +377,10 @@ int initialize_directories() {
         if (symlink(legacy_data_dir, primary_data_dir)) {
             goto fail;
         }
+    } else {
+        if (selinux_android_restorecon(primary_data_dir, 0)) {
+            goto fail;
+        }
     }
 
     if (version == 0) {
