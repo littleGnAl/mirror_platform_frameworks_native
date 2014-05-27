@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ff71899_719ad062",
+        "filename": "cmds/installd/installd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-05-27T19:12:46Z",
+      "side": 1,
+      "message": "Does selinux_android_restorecon() return something like ENOENT if the symlink doesn\u0027t exist?\n\nIt feels like we want something like:\n\nif (selinux_android_restorecon(primary_data_dir, 0) \u0026\u0026 errno !\u003d ENOENT)\n\n(untested...)",
+      "revId": "1d248c530a456c9280ba379d1d5ddd36b9eada84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
