@@ -34,6 +34,24 @@
       "revId": "1fd89c9a264800915364a08ae6dbcc0a7c880bbc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfed10cb_0125fac9",
+        "filename": "cmds/installd/installd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-05-27T20:55:29Z",
+      "side": 1,
+      "message": "With the exception of /data/data and /data/user, labels are based off of the contents of /file_contexts. When /file_contexts changes, a relabeling of /data occurs. This has allowed us to minimize the number of selinux_android_restorecons sprinkled through the code, compared to the proliferation of chmod / chown / etc... calls within Android. \n\nCurrently, there are only approximately 11 calls to SELinux.restorecon(), and approximately 12 calls to selinux_android_restorecon() sprinkled throughout our code.\n\nHopefully we\u0027ll continue to keep the number of selinux_android_restorecon() calls minimized.",
+      "parentUuid": "df3fd0e6_2390ee37",
+      "revId": "1fd89c9a264800915364a08ae6dbcc0a7c880bbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
