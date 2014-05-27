@@ -16,6 +16,24 @@
       "revId": "1fd89c9a264800915364a08ae6dbcc0a7c880bbc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df3fd0e6_2390ee37",
+        "filename": "cmds/installd/installd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-05-27T20:40:47Z",
+      "side": 1,
+      "message": "We likely wouldn\u0027t; it is a corner case for handling upgrades from 4.2 with an unlabeled userdata.\nMaybe we should instead change the restorecon logic for the init.rc restorecon_recursive /data to descend into /data/user and fix up any top-level symlinks (and directories - it occurs to me that we also need to deal with any other user ID directories) as well, only pruning the actual package directories there.",
+      "parentUuid": "7ffd0472_01897412",
+      "revId": "1fd89c9a264800915364a08ae6dbcc0a7c880bbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
