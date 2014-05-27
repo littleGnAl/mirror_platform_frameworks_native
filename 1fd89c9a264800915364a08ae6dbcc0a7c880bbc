@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ffd0472_01897412",
+        "filename": "cmds/installd/installd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2014-05-27T20:19:23Z",
+      "side": 1,
+      "message": "I\u0027ll be honest, it feels like we\u0027re just sprinking these around to fixup problems as they appear.\n\nHow would we have known this was necessary if we wrote this code from scratch today?",
+      "revId": "1fd89c9a264800915364a08ae6dbcc0a7c880bbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
