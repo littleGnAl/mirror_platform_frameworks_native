@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff8c944a_4e52b311",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-05-28T21:37:50Z",
+      "side": 1,
+      "message": "i think this should just say \"Bionic\" or \"Bionic C Library\" or \"C Library\". none of the others mention systrace.",
+      "revId": "ce9b9f270a1c790a4070a1eaf71ccf10a8a66903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
