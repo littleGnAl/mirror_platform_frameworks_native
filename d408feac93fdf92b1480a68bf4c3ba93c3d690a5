@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ff408d0_c9f515ed",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-30T23:47:36Z",
+      "side": 1,
+      "message": "Ultimately we want to remove this ...",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "d408feac93fdf92b1480a68bf4c3ba93c3d690a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ff408d0_e900d924",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-30T23:47:36Z",
+      "side": 1,
+      "message": "Merde .. we will remove this if we have to go through a second pass ...",
+      "range": {
+        "startLine": 1183,
+        "startChar": 9,
+        "endLine": 1183,
+        "endChar": 17
+      },
+      "revId": "d408feac93fdf92b1480a68bf4c3ba93c3d690a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfd51034_16f0e2fd",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-30T23:47:36Z",
+      "side": 1,
+      "message": "more space issues ...",
+      "range": {
+        "startLine": 1264,
+        "startChar": 0,
+        "endLine": 1264,
+        "endChar": 8
+      },
+      "revId": "d408feac93fdf92b1480a68bf4c3ba93c3d690a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
