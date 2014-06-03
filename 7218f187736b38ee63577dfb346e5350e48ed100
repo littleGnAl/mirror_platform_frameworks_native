@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f33447f_79c11d61",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2014-06-03T23:02:43Z",
+      "side": 1,
+      "message": "false after converting to bool",
+      "range": {
+        "startLine": 148,
+        "startChar": 28,
+        "endLine": 148,
+        "endChar": 29
+      },
+      "revId": "7218f187736b38ee63577dfb346e5350e48ed100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_b70d789c",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2014-06-03T23:02:43Z",
+      "side": 1,
+      "message": "Extra space",
+      "range": {
+        "startLine": 1689,
+        "startChar": 14,
+        "endLine": 1689,
+        "endChar": 15
+      },
+      "revId": "7218f187736b38ee63577dfb346e5350e48ed100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_f8c3f1cd",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2014-06-03T23:02:43Z",
+      "side": 1,
+      "message": "I\u0027d prefer static_cast\u003cfloat\u003e, and it might be nice to split this across two lines to reduce some of the parens.",
+      "range": {
+        "startLine": 1689,
+        "startChar": 51,
+        "endLine": 1689,
+        "endChar": 56
+      },
+      "revId": "7218f187736b38ee63577dfb346e5350e48ed100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_772850ed",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2014-06-03T23:02:43Z",
+      "side": 1,
+      "message": "ALOGI?",
+      "range": {
+        "startLine": 1693,
+        "startChar": 8,
+        "endLine": 1693,
+        "endChar": 12
+      },
+      "revId": "7218f187736b38ee63577dfb346e5350e48ed100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_19d25138",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2546,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2014-06-03T23:02:43Z",
+      "side": 1,
+      "message": "\u0027true : false\u0027 after converting to bool",
+      "range": {
+        "startLine": 2546,
+        "startChar": 42,
+        "endLine": 2546,
+        "endChar": 47
+      },
+      "revId": "7218f187736b38ee63577dfb346e5350e48ed100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_2504d4e0",
+        "filename": "services/surfaceflinger/SurfaceFlinger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2014-06-03T23:02:43Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 449,
+        "startChar": 4,
+        "endLine": 449,
+        "endChar": 7
+      },
+      "revId": "7218f187736b38ee63577dfb346e5350e48ed100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
