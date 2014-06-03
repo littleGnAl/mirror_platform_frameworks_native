@@ -26,6 +26,9 @@ $(foreach file,$(test_src_files), \
     $(eval LOCAL_STATIC_LIBRARIES := $(static_libraries)) \
     $(eval LOCAL_SRC_FILES := $(file)) \
     $(eval LOCAL_MODULE := $(notdir $(file:%.cpp=%))) \
+    $(eval LOCAL_MODULE_STEM_32 := $(notdir $(file:%.cpp=%))) \
+    $(eval LOCAL_MODULE_STEM_64 := $(notdir $(file:%.cpp=%))64) \
+    $(eval LOCAL_MULTILIB := both ) \
     $(eval include $(BUILD_NATIVE_TEST)) \
 )
 
