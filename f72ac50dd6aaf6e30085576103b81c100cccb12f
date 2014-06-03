@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dffef0bb_53d786cb",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-03T18:22:26Z",
+      "side": 1,
+      "message": "Thanks for KISS advice. Without would promote the expression to long \u003cmumble\u003e.",
+      "parentUuid": "1fbfa8df_2c981d21",
+      "revId": "f72ac50dd6aaf6e30085576103b81c100cccb12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfcdbca8_06a41cd8",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-03T17:17:57Z",
       "side": 1,
       "message": "len is already size_t.",
+      "revId": "f72ac50dd6aaf6e30085576103b81c100cccb12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dffef0bb_b3e0faac",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-03T18:22:26Z",
+      "side": 1,
+      "message": "Good Catch! I do not know what possessed me!? ;-} Was a result of the gnu++11 testing I was doing when I was not sure whether the problem was the first or the second argument that prevented the linker from recognizing libutils (we eventually discovered that char16_t is irreconcilably incompatible between gnu++0x and gnu++11 and forgot to undo the test for second arg).",
+      "parentUuid": "bfcdbca8_06a41cd8",
       "revId": "f72ac50dd6aaf6e30085576103b81c100cccb12f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
