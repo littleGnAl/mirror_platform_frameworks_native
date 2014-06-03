@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fbfa8df_2c981d21",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-06-03T17:17:57Z",
+      "side": 1,
+      "message": "or just 0U",
+      "revId": "f72ac50dd6aaf6e30085576103b81c100cccb12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfcdbca8_06a41cd8",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-06-03T17:17:57Z",
+      "side": 1,
+      "message": "len is already size_t.",
+      "revId": "f72ac50dd6aaf6e30085576103b81c100cccb12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
