@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f1b2808_bd33152d",
+        "filename": "opengl/libs/EGL/getProcAddress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-06-06T23:37:12Z",
+      "side": 1,
+      "message": "Oops, no. Fixed.",
+      "parentUuid": "1f1b2808_4f47a383",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 47
+      },
+      "revId": "05797ada9698e4f7f804d570ceeb0f888cfc15b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df4350e0_25aa80aa",
         "filename": "opengl/libs/EGL/getProcAddress.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7f33447f_a8edf8db",
+        "filename": "opengl/libs/EGL/getProcAddress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-06-06T23:37:12Z",
+      "side": 1,
+      "message": "There\u0027s a #warning below if you use the partially-supported default path. Should probably change that to an #error, I guess? Would rather do that in a separate change.",
+      "parentUuid": "df4350e0_25aa80aa",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 6
+      },
+      "revId": "05797ada9698e4f7f804d570ceeb0f888cfc15b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f1b2808_6f306720",
         "filename": "opengl/libs/GLES2/gl2.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2014-06-06T16:37:35Z",
       "side": 1,
       "message": "I\u0027m wondering if this block should start with \"#if USE_SLOW_BINDING\", and this becomes a #elif, so we don\u0027t have to append it to every entry.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "05797ada9698e4f7f804d570ceeb0f888cfc15b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_6e36316e",
+        "filename": "opengl/libs/GLES2/gl2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-06-06T23:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f1b2808_6f306720",
       "range": {
         "startLine": 43,
         "startChar": 0,
