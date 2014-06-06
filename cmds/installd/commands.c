@@ -625,9 +625,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     property_get("dalvik.vm.dex2oat-flags", dex2oat_flags, "");
     ALOGV("dalvik.vm.dex2oat-flags=%s\n", dex2oat_flags);
 
-    char profiler_prop[PROPERTY_VALUE_MAX];
-    bool profiler = property_get("dalvik.vm.profiler", profiler_prop, "0")
-                    && (profiler_prop[0] == '1');
+    char prop_buf[PROPERTY_VALUE_MAX];
+    bool profiler = property_get("dalvik.vm.profiler", prop_buf, "0") && (prop_buf[0] == '1');
 
     static const char* DEX2OAT_BIN = "/system/bin/dex2oat";
     static const int MAX_INT_LEN = 12;      // '-'+10dig+'\0' -OR- 0x+8dig
@@ -643,8 +642,10 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     char zip_location_arg[strlen("--zip-location=") + PKG_PATH_MAX];
     char oat_fd_arg[strlen("--oat-fd=") + MAX_INT_LEN];
     char oat_location_arg[strlen("--oat-name=") + PKG_PATH_MAX];
-    char profile_file_arg[strlen("--profile-file=") + PKG_PATH_MAX];
     char instruction_set_arg[strlen("--instruction-set=") + MAX_INSTRUCTION_SET_LEN];
+    char profile_file_arg[strlen("--profile-file=") + PKG_PATH_MAX];
+    char profile_top_k_arg[strlen("--top-k-profile-threshold=") + PROPERTY_VALUE_MAX];
+    profile_top_k_arg[0] = '\0';
 
     sprintf(zip_fd_arg, "--zip-fd=%d", zip_fd);
     sprintf(zip_location_arg, "--zip-location=%s", input_file_name);
@@ -657,21 +658,29 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
         snprintf(profile_file, sizeof(profile_file), "%s/%s",
                  DALVIK_CACHE_PREFIX "profiles", pkgname);
         struct stat st;
-        if (stat(profile_file, &st) == -1) {
-            strcpy(profile_file_arg, "--no-profile-file");
-        } else {
+        if ((stat(profile_file, &st) == 0) && (st.st_size > 0)) {
             sprintf(profile_file_arg, "--profile-file=%s", profile_file);
+            if (property_get("dalvik.vm.profile.top-k-thr", prop_buf, NULL) > 0) {
+                snprintf(profile_top_k_arg, sizeof(profile_top_k_arg),
+                         "--top-k-profile-threshold=%s", prop_buf);
+            }
+        } else {  // Profile file does not exist or it's empty.
+            strcpy(profile_file_arg, "--no-profile-file");
         }
     } else {
         strcpy(profile_file_arg, "--no-profile-file");
     }
 
     ALOGV("Running %s in=%s out=%s\n", DEX2OAT_BIN, input_file_name, output_file_name);
+
+    bool have_top_k_arg = strlen(profile_top_k_arg) > 0;
+    bool have_dex2oat_arg = strlen(dex2oat_flags) > 0;
     execl(DEX2OAT_BIN, DEX2OAT_BIN,
           zip_fd_arg, zip_location_arg,
           oat_fd_arg, oat_location_arg,
           profile_file_arg, instruction_set_arg,
-          strlen(dex2oat_flags) > 0 ? dex2oat_flags : NULL,
+          have_top_k_arg ? profile_top_k_arg : (have_dex2oat_arg ? dex2oat_flags : NULL),
+          (have_dex2oat_arg && have_top_k_arg) ? dex2oat_flags : NULL,
           (char*) NULL);
     ALOGE("execl(%s) failed: %s\n", DEX2OAT_BIN, strerror(errno));
 }
