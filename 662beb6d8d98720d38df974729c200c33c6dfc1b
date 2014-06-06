@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f26384e_e888f7a6",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-06-06T17:39:05Z",
+      "side": 1,
+      "message": "This won\u0027t work.  It will terminate the execl argument list.  You need to pass something other than 0 (NULL)",
+      "range": {
+        "startLine": 681,
+        "startChar": 82,
+        "endLine": 681,
+        "endChar": 89
+      },
+      "revId": "662beb6d8d98720d38df974729c200c33c6dfc1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
