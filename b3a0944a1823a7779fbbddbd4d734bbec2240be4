@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfe21c19_890a6ef0",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-06-06T14:09:42Z",
+      "side": 1,
+      "message": "bad indentation.",
+      "revId": "b3a0944a1823a7779fbbddbd4d734bbec2240be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
