@@ -94,6 +94,30 @@
       "revId": "662beb6d8d98720d38df974729c200c33c6dfc1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_02a97cb1",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-06-09T15:35:52Z",
+      "side": 1,
+      "message": "ACK on the second comment Calin, but the code is very hard to read and I didn\u0027t see the second ?:.  The problem with passing NULL here to execl is that we\u0027ve been bitten by this before and someone added a new argument to the list (at the end - it didn\u0027t work sometimes).\n\nIf you want to avoid passing an argument just to say that there is no argument (although passing \"\" or \"*\" or something isn\u0027t too bad), we should probably change execl to execv and thus make it obvious.\n\nI don\u0027t like implicitly terminating the argument list early - it seems wrong and error prone.\n\nI think we should change this to execv and avoid the problem altogether - execl is only for when you always pass the same number of arguments.",
+      "parentUuid": "bf7e9c23_6f82cd41",
+      "range": {
+        "startLine": 681,
+        "startChar": 82,
+        "endLine": 681,
+        "endChar": 89
+      },
+      "revId": "662beb6d8d98720d38df974729c200c33c6dfc1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
