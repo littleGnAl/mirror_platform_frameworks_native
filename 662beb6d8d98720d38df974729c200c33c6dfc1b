@@ -22,6 +22,30 @@
       "revId": "662beb6d8d98720d38df974729c200c33c6dfc1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f81844b_3bd72bcd",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-06-09T09:48:50Z",
+      "side": 1,
+      "message": "It will terminate the argument list only if both profile_top_k_arg and dex2oat_flags are empty. Which is the right thing to do.",
+      "parentUuid": "9f26384e_e888f7a6",
+      "range": {
+        "startLine": 681,
+        "startChar": 82,
+        "endLine": 681,
+        "endChar": 89
+      },
+      "revId": "662beb6d8d98720d38df974729c200c33c6dfc1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
