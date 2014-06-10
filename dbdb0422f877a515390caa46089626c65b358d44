@@ -52,6 +52,24 @@
       "revId": "dbdb0422f877a515390caa46089626c65b358d44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fbc0831_4f1fadbc",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-06-10T13:34:09Z",
+      "side": 1,
+      "message": "ah, now I noticed. It should have been have_profile_file_arg as well. Sorry about it. \n\nI will change all to have_\u003cargument-name\u003e.",
+      "parentUuid": "5fb2005d_51bab459",
+      "revId": "dbdb0422f877a515390caa46089626c65b358d44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
