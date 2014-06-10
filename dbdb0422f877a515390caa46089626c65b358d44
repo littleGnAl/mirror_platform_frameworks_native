@@ -34,6 +34,24 @@
       "revId": "dbdb0422f877a515390caa46089626c65b358d44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fb2005d_51bab459",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-06-10T11:55:52Z",
+      "side": 1,
+      "message": "Hmm, I thought the general rule was have_\u003cargument-name\u003e, like (profile_top_k_arg, have_profile_top_k_arg) but it seems pretty inconsistent already eg. (profile_file_arg, have_profile_file). So perhaps we should choose a convention and stick to it.\n\nSide note: I found have_dex2oat_arg confusing because there is no indication that it\u0027s the same as dex2oat-flags.",
+      "parentUuid": "1fbc0831_eff6613f",
+      "revId": "dbdb0422f877a515390caa46089626c65b358d44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
