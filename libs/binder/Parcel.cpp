@@ -1237,7 +1237,13 @@ status_t Parcel::read(FlattenableHelperInterface& val) const
 
     status_t err = NO_ERROR;
     for (size_t i=0 ; i<fd_count && err==NO_ERROR ; i++) {
-        fds[i] = dup(this->readFileDescriptor());
+        // if consumer sets fd to invalid, do not return error.
+        int fd = this->readFileDescriptor();
+        if(fd < 0) {
+            fds[i] = fd;
+            continue;
+        }
+        fds[i] = dup(fd);
         if (fds[i] < 0) {
             err = BAD_VALUE;
             ALOGE("dup() failed in Parcel::read, i is %zu, fds[i] is %d, fd_count is %zu, error: %s",
