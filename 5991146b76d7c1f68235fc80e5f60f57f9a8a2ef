@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfc3fcc9_4a2dd7c8",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-06-11T23:02:13Z",
+      "side": 1,
+      "message": "selinux/android.h also includes stdbool so I removed that include statement as well.",
+      "revId": "5991146b76d7c1f68235fc80e5f60f57f9a8a2ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
