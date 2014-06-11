@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfc6f0d8_ebcc85a0",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-11T18:58:06Z",
+      "side": 1,
+      "message": "android.h includes label.h and label.h includes selinux.h so only the first #include should be necessary.",
+      "revId": "96ba35b26f7b9f292981dc4af4fb50dd56364f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fd0ec87_b14de286",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-11T18:58:06Z",
+      "side": 1,
+      "message": "I\u0027d rather keep the policy file paths in libselinux; I know that for init property service it lives in the init code but that is only because Dima insisted.\nI\u0027d also be inclined to be consistent with the other _contexts files and keep service_contexts in / rather than /system/etc/security.  We will also need to add it to the SELinuxPolicyInstallReceiver.java code and policy bundle format so that it can be updated with the rest of the policy files.",
+      "revId": "96ba35b26f7b9f292981dc4af4fb50dd56364f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfc6f0d8_aba9edb6",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-11T18:58:06Z",
+      "side": 1,
+      "message": "I\u0027d prefer to keep this within libselinux too, as we do for file_contexts, unlike the init property service, unless you feel strongly otherwise.",
+      "revId": "96ba35b26f7b9f292981dc4af4fb50dd56364f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfc6f0d8_0b9be193",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-11T18:58:06Z",
+      "side": 1,
+      "message": "Do you care about the bool vs int return values here?\nWill we run into any problems with the str8() conversion here or do we need a label backend that deals with str16?",
+      "revId": "96ba35b26f7b9f292981dc4af4fb50dd56364f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fd0ec87_b1c2026b",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-11T18:58:06Z",
+      "side": 1,
+      "message": "Take to libselinux since we now repeat it in several places (frameworks/native/cmds/installd/installd.c, frameworks/base/core/jni/android_os_SELinux.cpp)?",
+      "revId": "96ba35b26f7b9f292981dc4af4fb50dd56364f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffc9f4e9_4cd7b3cb",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-11T18:58:06Z",
+      "side": 1,
+      "message": "service\u003d?",
+      "revId": "96ba35b26f7b9f292981dc4af4fb50dd56364f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
