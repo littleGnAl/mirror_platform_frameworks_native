@@ -70,6 +70,24 @@
       "revId": "ab85f49bc40f8d661b6141c85b8ca283ed682abe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd6e483_b3404ac5",
+        "filename": "cmds/installd/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-06-12T23:00:59Z",
+      "side": 1,
+      "message": "oh ya... missed that.",
+      "parentUuid": "9fc0f8c0_6c7eefbe",
+      "revId": "ab85f49bc40f8d661b6141c85b8ca283ed682abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
