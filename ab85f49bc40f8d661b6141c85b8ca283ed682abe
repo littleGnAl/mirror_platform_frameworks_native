@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf713c8e_d4c23c3a",
+        "filename": "cmds/installd/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-06-12T13:36:06Z",
+      "side": 1,
+      "message": "this is still broken for the upgrade case. In an upgrade, the file exists, but has the old permissions. We need to fixup those files too.",
+      "revId": "ab85f49bc40f8d661b6141c85b8ca283ed682abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
