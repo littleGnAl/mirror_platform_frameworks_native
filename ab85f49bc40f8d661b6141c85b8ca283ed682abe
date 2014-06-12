@@ -52,6 +52,24 @@
       "revId": "ab85f49bc40f8d661b6141c85b8ca283ed682abe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fc0f8c0_6c7eefbe",
+        "filename": "cmds/installd/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-06-12T21:58:16Z",
+      "side": 1,
+      "message": "chown / chmod occurs unconditionally now.",
+      "parentUuid": "7f6424c8_8ed18b89",
+      "revId": "ab85f49bc40f8d661b6141c85b8ca283ed682abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
