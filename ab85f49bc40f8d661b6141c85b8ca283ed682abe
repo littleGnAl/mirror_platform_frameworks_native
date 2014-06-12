@@ -34,6 +34,24 @@
       "revId": "ab85f49bc40f8d661b6141c85b8ca283ed682abe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f6424c8_8ed18b89",
+        "filename": "cmds/installd/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-06-12T21:24:43Z",
+      "side": 1,
+      "message": "Even though the profiler isn\u0027t on, the files are created unconditionally. So we need to get them fixed up.",
+      "parentUuid": "1fd5e878_6d0b918c",
+      "revId": "ab85f49bc40f8d661b6141c85b8ca283ed682abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
