@@ -16,6 +16,24 @@
       "revId": "ab85f49bc40f8d661b6141c85b8ca283ed682abe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd5e878_6d0b918c",
+        "filename": "cmds/installd/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-06-12T13:53:51Z",
+      "side": 1,
+      "message": "I don\u0027t think we should worry about it. The profiler was never on for the public (i.e. dogfooders). (expect for a brief period of time which was caused by a mistake).",
+      "parentUuid": "bf713c8e_d4c23c3a",
+      "revId": "ab85f49bc40f8d661b6141c85b8ca283ed682abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
