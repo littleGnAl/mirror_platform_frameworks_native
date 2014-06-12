@@ -16,6 +16,23 @@
       "revId": "5991146b76d7c1f68235fc80e5f60f57f9a8a2ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e38af_169e7a83",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2014-06-12T19:01:31Z",
+      "side": 1,
+      "message": "nit: As a matter of style, I don\u0027t particularly care for function calls passed as arguments, especially when a check in the function passed-to (a few in this case) might obviate the need for it.  That being said, this is a pretty simple call and we expect in effectively all cases that the following checks pass.  These is also not a heavily used codepath so... up to you.",
+      "revId": "5991146b76d7c1f68235fc80e5f60f57f9a8a2ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
