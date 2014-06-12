@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3fd0ec87_8fed16dd",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-06-12T20:14:49Z",
+      "side": 1,
+      "message": "I\u0027d planned for it to be a follow up change but I can do it now as part of this submission.",
+      "parentUuid": "df74307d_a4266cda",
+      "revId": "f64dc8f29d880f8da0f480a8c1f9b469b9d9bc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df74307d_440d9856",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-12T20:12:09Z",
       "side": 1,
       "message": "combine line 293 and 294. Declaration and assignment on same line.",
+      "revId": "f64dc8f29d880f8da0f480a8c1f9b469b9d9bc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fd0ec87_6fea62c4",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-06-12T20:14:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df74307d_440d9856",
       "revId": "f64dc8f29d880f8da0f480a8c1f9b469b9d9bc9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
