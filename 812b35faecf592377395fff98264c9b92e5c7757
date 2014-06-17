@@ -33,6 +33,24 @@
       "revId": "812b35faecf592377395fff98264c9b92e5c7757",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c44b8572_04cdd6f8",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-06-17T13:57:42Z",
+      "side": 1,
+      "message": "It\u0027s only needed when we\u0027re upgrading from a version of the system that didn\u0027t use ISA specific cache dirs. I.e all dex files are placed under /data/dalvik-cache.\n\nEven in that scenario, we don\u0027t attempt to remove any directories under /data/dalvik-cache, just regular files. (See the change on line 1391)",
+      "parentUuid": "e44ec981_65bec654",
+      "revId": "812b35faecf592377395fff98264c9b92e5c7757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
