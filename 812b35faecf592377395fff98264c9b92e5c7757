@@ -51,6 +51,24 @@
       "revId": "812b35faecf592377395fff98264c9b92e5c7757",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0452fd22_4cc7737d",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-06-17T17:04:00Z",
+      "side": 1,
+      "message": "ah, got it. Thanks.",
+      "parentUuid": "c44b8572_04cdd6f8",
+      "revId": "812b35faecf592377395fff98264c9b92e5c7757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
