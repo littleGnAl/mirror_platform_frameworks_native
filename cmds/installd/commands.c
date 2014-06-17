@@ -1384,10 +1384,11 @@ int restorecon_data(const char* pkgName, const char* seinfo, uid_t uid)
 
 static int prune_dex_exclusion_predicate(const char *file_name, const int is_dir)
 {
-    // Don't exclude any directories, we want to inspect them
-    // recusively for files.
+    // Exclude all directories. The top level command will be
+    // given a list of ISA specific directories that are assumed
+    // to be flat.
     if (is_dir) {
-      return 0;
+      return 1;
     }
 
 
@@ -1405,6 +1406,21 @@ static int prune_dex_exclusion_predicate(const char *file_name, const int is_dir
     return 1;
 }
 
-int prune_dex_cache() {
-  return delete_dir_contents(DALVIK_CACHE_PREFIX, 0, &prune_dex_exclusion_predicate);
+int prune_dex_cache(const char* subdir) {
+    if (strcmp(subdir, ".")) {
+        char full_path[PKG_PATH_MAX];
+        snprintf(full_path, sizeof(full_path), "%s%s", DALVIK_CACHE_PREFIX, subdir);
+        return delete_dir_contents(full_path, 0, &prune_dex_exclusion_predicate);
+    }
+
+    // Don't allow the path to contain "." or ".." except for the
+    // special case above. This is much stricter than we need to be,
+    // but there's no good reason to support them.
+    if (strchr(subdir, '.' ) != NULL) {
+        return -1;
+    }
+
+    // When subdir == ".", clean the contents of the top level
+    // dalvik-cache directory.
+    return delete_dir_contents(DALVIK_CACHE_PREFIX, 0, &prune_dex_exclusion_predicate);
 }
