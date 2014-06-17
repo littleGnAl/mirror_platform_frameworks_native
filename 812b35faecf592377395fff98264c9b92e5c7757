@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44587541_08fba728",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-06-17T13:06:18Z",
+      "side": 1,
+      "message": "While you\u0027re here, would it be possible to check the subdir argument, to make sure \"..\" isn\u0027t in the path? Otherwise, this could be used to delete files outside of the /data/dalvik-cache directory.",
+      "revId": "812b35faecf592377395fff98264c9b92e5c7757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e44ec981_65bec654",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-06-17T13:06:18Z",
+      "side": 1,
+      "message": "Is this actually used? SELinux would block the deletion of the /data/dalvik-cache/profiles directory, although it wouldn\u0027t block the deletion of the contents of that directory.",
+      "revId": "812b35faecf592377395fff98264c9b92e5c7757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
