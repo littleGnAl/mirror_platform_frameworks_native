@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4ce254b_26c22a3c",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-06-19T13:00:54Z",
+      "side": 1,
+      "message": "The special case is below, not above. You\u0027ve already used subdir to build full_path on line 1412. This check makes the code below unreachable.",
+      "revId": "9f1d20648c2f959b27715e89a9a463bcd1d60d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
