@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e47c09a6_7b54370e",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-06-19T10:18:39Z",
+      "side": 1,
+      "message": "Done. I\u0027ve summarily disallowed paths that have \u0027.\u0027 in them except for the special case \".\".",
+      "parentUuid": "44587541_08fba728",
+      "revId": "812b35faecf592377395fff98264c9b92e5c7757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e44ec981_65bec654",
         "filename": "cmds/installd/commands.c",
         "patchSetId": 2
