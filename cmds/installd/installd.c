@@ -38,8 +38,8 @@ static int do_install(char **arg, char reply[REPLY_MAX])
 
 static int do_dexopt(char **arg, char reply[REPLY_MAX])
 {
-        /* apk_path, uid, is_public, pkgname, instruction_set */
-    return dexopt(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], arg[4]);
+        /* apk_path, uid, is_public, pkgname, instruction_set, dex_opt_flag */
+    return dexopt(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], arg[4], arg[5]);
 }
 
 static int do_move_dex(char **arg, char reply[REPLY_MAX])
@@ -155,7 +155,7 @@ struct cmdinfo {
 struct cmdinfo cmds[] = {
     { "ping",                 0, do_ping },
     { "install",              4, do_install },
-    { "dexopt",               5, do_dexopt },
+    { "dexopt",               6, do_dexopt },
     { "movedex",              3, do_move_dex },
     { "rmdex",                2, do_rm_dex },
     { "remove",               2, do_remove },

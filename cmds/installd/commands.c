@@ -623,11 +623,43 @@ static void run_dexopt(int zip_fd, int odex_fd, const char* input_file_name,
 }
 
 static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
-    const char* output_file_name, const char *pkgname, const char *instruction_set)
+    const char* output_file_name, const char *pkgname, const char *instruction_set,
+                                                            const char *dex_opt_flag)
 {
     char dex2oat_flags[PROPERTY_VALUE_MAX];
     bool have_dex2oat_flags = property_get("dalvik.vm.dex2oat-flags", dex2oat_flags, NULL) > 0;
     ALOGV("dalvik.vm.dex2oat-flags=%s\n", dex2oat_flags);
+
+    int dex_opt_flag_length = strlen(dex_opt_flag);
+    int dex2oat_flag_length =  strlen(dex2oat_flags);
+    int arg_count = dex2oat_flag_length + dex_opt_flag_length;
+
+    if (arg_count > 2 * PROPERTY_VALUE_MAX) {
+        ALOGE("dex2oat flags %s and %s longer than max length of %d", dex2oat_flags, dex_opt_flag, 2*PROPERTY_VALUE_MAX);
+        return;
+    }
+
+    // ignore compiler-filter flag from PackageManagerService, if system properties contain dex2oat flag
+    if (strstr(dex2oat_flags, "compiler-filter")) {
+        ALOGI("Ignoring compiler-filter flag: %s - suggestion, in favor of dex2oat_flag: %s\n",
+                                                                          dex_opt_flag, dex2oat_flags);
+        // Ignore it, below we test this to decide if we want it or not.
+        dex_opt_flag_length = 0;
+    }
+
+    char dex2oat_flags_arg[sizeof("--compiler-filter=") + 2 * PROPERTY_VALUE_MAX + 1] = "";
+
+    // check for runtime and compiler-filter options
+    // 1. both flags 2. only system properties 3. only dex_opt_flag
+    if (dex_opt_flag_length > 0) {
+      snprintf(dex2oat_flags_arg, sizeof(dex2oat_flags_arg), "--compiler-filter=%s", dex_opt_flag);
+      have_dex2oat_flags = true;
+    }
+
+    if (dex2oat_flag_length > 0) {
+      // Add a space
+      strncat(dex2oat_flags_arg, dex2oat_flags, dex2oat_flag_length);
+    }
 
     char prop_buf[PROPERTY_VALUE_MAX];
     bool profiler = (property_get("dalvik.vm.profiler", prop_buf, "0") > 0) && (prop_buf[0] == '1');
@@ -701,7 +733,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
         argv[i++] = top_k_profile_threshold_arg;
     }
     if (have_dex2oat_flags) {
-        argv[i++] = dex2oat_flags;
+        argv[i++] = dex2oat_flags_arg;
     }
     argv[i] = NULL;
 
@@ -736,7 +768,7 @@ static int wait_child(pid_t pid)
 }
 
 int dexopt(const char *apk_path, uid_t uid, int is_public,
-           const char *pkgname, const char *instruction_set)
+           const char *pkgname, const char *instruction_set, const char *dex_opt_flag)
 {
     struct utimbuf ut;
     struct stat apk_stat, dex_stat;
@@ -832,7 +864,8 @@ int dexopt(const char *apk_path, uid_t uid, int is_public,
         if (strncmp(persist_sys_dalvik_vm_lib, "libdvm", 6) == 0) {
             run_dexopt(zip_fd, out_fd, apk_path, out_path);
         } else if (strncmp(persist_sys_dalvik_vm_lib, "libart", 6) == 0) {
-            run_dex2oat(zip_fd, out_fd, apk_path, out_path, pkgname, instruction_set);
+            run_dex2oat(zip_fd, out_fd, apk_path, out_path, pkgname,
+                                               instruction_set, dex_opt_flag);
         } else {
             exit(69);   /* Unexpected persist.sys.dalvik.vm.lib value */
         }
