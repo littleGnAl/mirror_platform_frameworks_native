@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e474097d_442d9881",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-07T17:20:32Z",
+      "side": 0,
+      "message": "This likely does not matter, but just to note: the original logic here required an exact match against one of the names in the allowed[] array, whereas the SELinux check is using a label obtained using the property label backend, which uses the longest matching prefix or * if none.  So, for example, the SELinux check would permit registering nfc or nfcfoobar or nfc.foobar by the nfc domain, whereas the DAC check would only permit registering the nfc name alone.  If you want to completely match the existing logic, you would technically want a different label backend rather than reusing the property one.",
+      "revId": "357df19b14b8387a480ed68dd6ea92eeb1aa4edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
