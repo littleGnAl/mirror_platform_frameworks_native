@@ -16,6 +16,24 @@
       "revId": "357df19b14b8387a480ed68dd6ea92eeb1aa4edc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e43969b5_f3fca890",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-07T17:47:04Z",
+      "side": 0,
+      "message": "Thanks for pointing this out. I consider it a feature, not a bug. It will make it easier to use \"namespaces\" with service names, something which was more difficult to do before.\n\nI\u0027m happy with not matching the logic 100%.",
+      "parentUuid": "e474097d_442d9881",
+      "revId": "357df19b14b8387a480ed68dd6ea92eeb1aa4edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
