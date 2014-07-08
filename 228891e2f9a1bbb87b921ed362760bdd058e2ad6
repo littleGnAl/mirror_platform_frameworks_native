@@ -16,6 +16,24 @@
       "revId": "228891e2f9a1bbb87b921ed362760bdd058e2ad6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "643739c4_17ccb69c",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-08T22:07:06Z",
+      "side": 1,
+      "message": "That\u0027s a better approach than this.",
+      "parentUuid": "643739c4_b7592b70",
+      "revId": "228891e2f9a1bbb87b921ed362760bdd058e2ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
