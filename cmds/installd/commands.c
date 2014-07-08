@@ -622,12 +622,44 @@ static void run_dexopt(int zip_fd, int odex_fd, const char* input_file_name,
     ALOGE("execl(%s) failed: %s\n", DEX_OPT_BIN, strerror(errno));
 }
 
+static int split_count(const char *str)
+{
+  char prevChar = ' ';
+  int count = 0;
+  for( ; str[0]; prevChar = str[0], ++str) {
+    if (str[0] != ' ' && prevChar == ' ') {
+      ++count;
+    }
+  }
+  return count;
+}
+
+static int split(char *str, char **argv)
+{
+  char prevChar = 0;
+  int count = 0;
+  for( ; str[0]; prevChar = str[0], ++str) {
+    if (str[0] == ' ') {
+      str[0] = 0;
+    }else if (prevChar == 0) {
+      argv[count++] = str;
+    }
+  }
+  return count;
+}
+
 static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     const char* output_file_name, const char *pkgname, const char *instruction_set)
 {
     char dex2oat_flags[PROPERTY_VALUE_MAX];
-    bool have_dex2oat_flags = property_get("dalvik.vm.dex2oat-flags", dex2oat_flags, NULL) > 0;
+    int dex2oat_flags_count = property_get("dalvik.vm.dex2oat-flags",
+                                 dex2oat_flags, NULL) <= 0 ? 0 : split_count(dex2oat_flags);
     ALOGV("dalvik.vm.dex2oat-flags=%s\n", dex2oat_flags);
+
+    char dex2oat_dev_flags[PROPERTY_VALUE_MAX];
+    int dex2oat_dev_flags_count = property_get("persist.sys.dalvik.vm.oat",
+                                 dex2oat_dev_flags, NULL) <= 0 ? 0 : split_count(dex2oat_dev_flags);
+    ALOGV("persist.sys.dalvik.vm.oat=%s\n", dex2oat_dev_flags);
 
     char prop_buf[PROPERTY_VALUE_MAX];
     bool profiler = (property_get("dalvik.vm.profiler", prop_buf, "0") > 0) && (prop_buf[0] == '1');
@@ -684,7 +716,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     char* argv[9  // program name, mandatory arguments and the final NULL
                + (have_profile_file ? 1 : 0)
                + (have_top_k_profile_threshold ? 1 : 0)
-               + (have_dex2oat_flags ? 1 : 0)];
+               + dex2oat_flags_count
+               + dex2oat_dev_flags_count];
     int i = 0;
     argv[i++] = (char*)DEX2OAT_BIN;
     argv[i++] = (char*)RUNTIME_ARG;
@@ -700,13 +733,16 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     if (have_top_k_profile_threshold) {
         argv[i++] = top_k_profile_threshold_arg;
     }
-    if (have_dex2oat_flags) {
-        argv[i++] = dex2oat_flags;
+    if (dex2oat_flags_count) {
+        i += split(dex2oat_flags, argv + i);
+    }
+    if (dex2oat_dev_flags_count) {
+        i += split(dex2oat_dev_flags, argv + i);
     }
     argv[i] = NULL;
 
     execv(DEX2OAT_BIN, (char* const *)argv);
-    ALOGE("execl(%s) failed: %s\n", DEX2OAT_BIN, strerror(errno));
+    ALOGE("execv(%s) failed: %s\n", DEX2OAT_BIN, strerror(errno));
 }
 
 static int wait_child(pid_t pid)
