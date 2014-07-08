@@ -48,7 +48,7 @@ int str16eq(const uint16_t *a, const char *b)
 
 static struct selabel_handle* sehandle;
 
-static bool check_mac_perms(const char *name, pid_t spid)
+static bool check_mac_perms(const char *name, pid_t spid, const char *perm)
 {
     if (is_selinux_enabled() <= 0) {
         return true;
@@ -57,7 +57,7 @@ static bool check_mac_perms(const char *name, pid_t spid)
     bool allowed = false;
 
     const char *class = "service_manager";
-    const char *perm = "add";
+    // const char *perm = "add";
 
     char *tctx = NULL;
     char *sctx = NULL;
@@ -99,7 +99,20 @@ static bool check_mac_perms(const char *name, pid_t spid)
 
 static int svc_can_register(uid_t uid, const uint16_t *name, pid_t spid)
 {
-    return check_mac_perms(str8(name), spid) ? 1 : 0;
+    const char *perm = "add";
+    return check_mac_perms(str8(name), spid, perm) ? 1 : 0;
+}
+
+static int svc_can_list(uid_t uid, pid_t spid)
+{
+    const char *perm = "list";
+    return check_mac_perms("list", spid, perm) ? 1 : 0;
+}
+
+static int svc_can_find(uid_t uid, const uint16_t *name, pid_t spid)
+{
+    const char *perm = "find";
+    return check_mac_perms(str8(name), spid, perm) ? 1 : 0;
 }
 
 struct svcinfo
@@ -144,13 +157,13 @@ uint16_t svcmgr_id[] = {
 };
 
 
-uint32_t do_find_service(struct binder_state *bs, const uint16_t *s, size_t len, uid_t uid)
+uint32_t do_find_service(struct binder_state *bs, const uint16_t *s, size_t len, uid_t uid, pid_t spid)
 {
     struct svcinfo *si;
 
     si = find_svc(s, len);
     //ALOGI("check_service('%s') handle = %x\n", str8(s), si ? si->handle : 0);
-    if (si && si->handle) {
+    if (si && si->handle && svc_can_find(uid, s, spid)) {
         if (!si->allow_isolated) {
             // If this service doesn't allow access from isolated processes,
             // then check the uid to see if it is isolated.
@@ -260,7 +273,7 @@ int svcmgr_handler(struct binder_state *bs,
     case SVC_MGR_GET_SERVICE:
     case SVC_MGR_CHECK_SERVICE:
         s = bio_get_string16(msg, &len);
-        handle = do_find_service(bs, s, len, txn->sender_euid);
+        handle = do_find_service(bs, s, len, txn->sender_euid, txn->sender_pid);
         if (!handle)
             break;
         bio_put_ref(reply, handle);
@@ -279,7 +292,7 @@ int svcmgr_handler(struct binder_state *bs,
         uint32_t n = bio_get_uint32(msg);
 
         si = svclist;
-        while ((n-- > 0) && si)
+        while ((n-- > 0) && si && svc_can_list(txn->sender_euid, txn->sender_pid))
             si = si->next;
         if (si) {
             bio_put_string16(reply, si->name);
