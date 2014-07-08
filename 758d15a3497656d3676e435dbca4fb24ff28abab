@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2431c1d1_8aa32b8d",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-08T18:49:45Z",
+      "side": 1,
+      "message": "I guess we don\u0027t have warnings on for installd? Usually you should be warned to use snprintf.",
+      "range": {
+        "startLine": 689,
+        "startChar": 8,
+        "endLine": 689,
+        "endChar": 15
+      },
+      "revId": "758d15a3497656d3676e435dbca4fb24ff28abab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
