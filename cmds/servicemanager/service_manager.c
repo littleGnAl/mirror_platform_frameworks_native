@@ -9,6 +9,7 @@
 #include <private/android_filesystem_config.h>
 
 #include <selinux/android.h>
+#include <selinux/avc.h>
 
 #include "binder.h"
 
@@ -48,44 +49,19 @@ int str16eq(const uint16_t *a, const char *b)
 
 static struct selabel_handle* sehandle;
 
-static bool check_mac_perms(const char *name, pid_t spid)
+static bool check_mac_perms(char *tctx, pid_t spid, const char *perm, const char *name)
 {
-    if (is_selinux_enabled() <= 0) {
-        return true;
-    }
-
+    char *sctx = NULL;
+    const char *class = "service_manager";
     bool allowed = false;
 
-    const char *class = "service_manager";
-    const char *perm = "add";
-
-    char *tctx = NULL;
-    char *sctx = NULL;
-
-    if (!sehandle) {
-        ALOGE("SELinux: Failed to find sehandle %s.\n", name);
-        return false;
-    }
-
     if (getpidcon(spid, &sctx) < 0) {
-        ALOGE("SELinux: getpidcon failed to retrieve pid context.\n");
+        ALOGE("SELinux: getpidcon(pid=%d) failed to retrieve pid context.\n", spid);
         return false;
     }
 
     if (!sctx) {
-        ALOGE("SELinux: Failed to find sctx for %s.\n", name);
-        return false;
-    }
-
-    if (selabel_lookup(sehandle, &tctx, name, 1) != 0) {
-        ALOGE("SELinux: selabel_lookup failed to set tctx for %s.\n", name);
-        freecon(sctx);
-        return false;
-    }
-
-    if (!tctx) {
-        ALOGE("SELinux: Failed to find tctx for %s.\n", name);
-        freecon(sctx);
+        ALOGE("SELinux: Failed to find sctx.\n");
         return false;
     }
 
@@ -93,13 +69,79 @@ static bool check_mac_perms(const char *name, pid_t spid)
     allowed = (result == 0);
 
     freecon(sctx);
+    return allowed;
+}
+
+static bool check_mac_perms_from_getcon(pid_t spid, const char *perm)
+{
+    char *tctx = NULL;
+    bool allowed = false;
+
+    if (is_selinux_enabled() <= 0) {
+        return true;
+    }
+
+    /* sehandle is not needed here but indiciates improper initialization. */
+    if (!sehandle) {
+        ALOGE("SELinux: Failed to find sehandle. Aborting service_manager.\n");
+        abort();
+    }
+
+    if (getcon(&tctx) != 0) {
+        ALOGE("SELinux: getcon failed to get tctx.\n");
+        return false;
+    }
+
+    allowed = check_mac_perms(tctx, spid, perm, NULL);
+    freecon(tctx);
+    return true;
+}
+
+static bool check_mac_perms_from_lookup(const char *name, pid_t spid, const char *perm)
+{
+    char *tctx = NULL;
+    bool allowed = false;
+
+    if (is_selinux_enabled() <= 0) {
+        return true;
+    }
+
+    if (!sehandle) {
+        ALOGE("SELinux: Failed to find sehandle %s. Aborting service_manager.\n", name);
+        abort();
+    }
+
+    if (selabel_lookup(sehandle, &tctx, name, 1) != 0) {
+        ALOGE("SELinux: selabel_lookup failed to set tctx for %s.\n", name);
+        return false;
+    }
+
+    if (!tctx) {
+        ALOGE("SELinux: Failed to find tctx for %s.\n", name);
+        return false;
+    }
+
+    allowed = check_mac_perms(tctx, spid, perm, name);
     freecon(tctx);
     return allowed;
 }
 
-static int svc_can_register(uid_t uid, const uint16_t *name, pid_t spid)
+static int svc_can_register(const uint16_t *name, pid_t spid)
 {
-    return check_mac_perms(str8(name), spid) ? 1 : 0;
+    const char *perm = "add";
+    return check_mac_perms_from_lookup(str8(name), spid, perm) ? 1 : 0;
+}
+
+static int svc_can_list(pid_t spid)
+{
+    const char *perm = "list";
+    return check_mac_perms_from_getcon(spid, perm) ? 1 : 0;
+}
+
+static int svc_can_find(const uint16_t *name, pid_t spid)
+{
+    const char *perm = "find";
+    return check_mac_perms_from_lookup(str8(name), spid, perm) ? 1 : 0;
 }
 
 struct svcinfo
@@ -144,23 +186,29 @@ uint16_t svcmgr_id[] = {
 };
 
 
-uint32_t do_find_service(struct binder_state *bs, const uint16_t *s, size_t len, uid_t uid)
+uint32_t do_find_service(struct binder_state *bs, const uint16_t *s, size_t len, uid_t uid, pid_t spid)
 {
     struct svcinfo *si;
 
-    si = find_svc(s, len);
-    //ALOGI("check_service('%s') handle = %x\n", str8(s), si ? si->handle : 0);
-    if (si && si->handle) {
-        if (!si->allow_isolated) {
-            // If this service doesn't allow access from isolated processes,
-            // then check the uid to see if it is isolated.
-            uid_t appid = uid % AID_USER;
-            if (appid >= AID_ISOLATED_START && appid <= AID_ISOLATED_END) {
-                return 0;
+    if (svc_can_find(s, spid)) {
+        si = find_svc(s, len);
+        //ALOGI("check_service('%s') handle = %x\n", str8(s), si ? si->handle : 0);
+        if (si && si->handle) {
+            if (!si->allow_isolated) {
+                // If this service doesn't allow access from isolated processes,
+                // then check the uid to see if it is isolated.
+                uid_t appid = uid % AID_USER;
+                if (appid >= AID_ISOLATED_START && appid <= AID_ISOLATED_END) {
+                    return 0;
+                }
             }
+            return si->handle;
+        } else {
+            return 0;
         }
-        return si->handle;
     } else {
+        ALOGE("find_service('%s') uid=%d - PERMISSION DENIED\n",
+             str8(s), uid);
         return 0;
     }
 }
@@ -178,7 +226,7 @@ int do_add_service(struct binder_state *bs,
     if (!handle || (len == 0) || (len > 127))
         return -1;
 
-    if (!svc_can_register(uid, s, spid)) {
+    if (!svc_can_register(s, spid)) {
         ALOGE("add_service('%s',%x) uid=%d - PERMISSION DENIED\n",
              str8(s), handle, uid);
         return -1;
@@ -260,7 +308,7 @@ int svcmgr_handler(struct binder_state *bs,
     case SVC_MGR_GET_SERVICE:
     case SVC_MGR_CHECK_SERVICE:
         s = bio_get_string16(msg, &len);
-        handle = do_find_service(bs, s, len, txn->sender_euid);
+        handle = do_find_service(bs, s, len, txn->sender_euid, txn->sender_pid);
         if (!handle)
             break;
         bio_put_ref(reply, handle);
@@ -278,12 +326,17 @@ int svcmgr_handler(struct binder_state *bs,
     case SVC_MGR_LIST_SERVICES: {
         uint32_t n = bio_get_uint32(msg);
 
-        si = svclist;
-        while ((n-- > 0) && si)
-            si = si->next;
-        if (si) {
-            bio_put_string16(reply, si->name);
-            return 0;
+        if (svc_can_list(txn->sender_pid)) {
+            si = svclist;
+            while ((n-- > 0) && si)
+                si = si->next;
+            if (si) {
+                bio_put_string16(reply, si->name);
+                return 0;
+            }
+        } else {
+            ALOGE("list_service() uid=%d - PERMISSION DENIED\n",
+                    txn->sender_euid);
         }
         return -1;
     }
