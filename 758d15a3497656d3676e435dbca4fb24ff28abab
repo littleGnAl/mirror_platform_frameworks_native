@@ -22,6 +22,30 @@
       "revId": "758d15a3497656d3676e435dbca4fb24ff28abab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4224989_e82aeb6c",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-07-08T22:13:48Z",
+      "side": 1,
+      "message": "maybe since it is statically verifying it is safe? :) I don\u0027t believe that. In any case, I\u0027m following the existing bad patterns here. I rewrote the makefile to make sure -Wall -Werror is on and it is warning clean.",
+      "parentUuid": "2431c1d1_8aa32b8d",
+      "range": {
+        "startLine": 689,
+        "startChar": 8,
+        "endLine": 689,
+        "endChar": 15
+      },
+      "revId": "758d15a3497656d3676e435dbca4fb24ff28abab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
