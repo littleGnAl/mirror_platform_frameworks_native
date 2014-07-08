@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e43969b5_a242c473",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-08T22:59:28Z",
+      "side": 1,
+      "message": "The semantics and logic might be unnecessarily complex.",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
