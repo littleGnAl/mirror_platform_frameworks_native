@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "19fb4835_81741c51",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T23:20:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ec447a_8442e824",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19fb4835_1e750dd9",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 5
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "2431c1d1_dbe09361",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T23:20:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ec447a_2441dc1e",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79ec447a_0456d8e8",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 5
@@ -64,6 +100,24 @@
       "writtenOn": "2014-07-09T19:15:36Z",
       "side": 1,
       "message": "Could do this once at initialization and just save it in a global, as in keystore.",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19fb4835_41adf46f",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T23:20:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ec447a_0456d8e8",
       "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -138,6 +192,24 @@
     },
     {
       "key": {
+        "uuid": "79ec447a_a405ec78",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T23:20:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ec447a_a44ccc54",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19fb4835_3e67a92a",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 5
@@ -149,6 +221,30 @@
       "writtenOn": "2014-07-09T19:15:36Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 329,
+        "startChar": 16,
+        "endLine": 329,
+        "endChar": 17
+      },
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79ec447a_24df9ca0",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T23:20:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19fb4835_3e67a92a",
       "range": {
         "startLine": 329,
         "startChar": 16,
