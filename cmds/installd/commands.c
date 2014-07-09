@@ -622,6 +622,40 @@ static void run_dexopt(int zip_fd, int odex_fd, const char* input_file_name,
     ALOGE("execl(%s) failed: %s\n", DEX_OPT_BIN, strerror(errno));
 }
 
+static int split_count(const char *str)
+{
+  char *ctx;
+  int count = 0;
+  char buf[PROPERTY_VALUE_MAX];
+
+  strncpy(buf, str, sizeof(buf));
+  char *pBuf = buf;
+
+  printf("pBuf=%s\n", pBuf);
+
+  while(strtok_r(pBuf, " ", &ctx) != NULL) {
+    count++;
+    pBuf = NULL;
+  }
+
+  return count;
+}
+
+static int split(char *buf, char **argv)
+{
+  char *ctx;
+  int count = 0;
+  char *tok;
+  char *pBuf = buf;
+
+  while((tok = strtok_r(pBuf, " ", &ctx)) != NULL) {
+    argv[count++] = tok;
+    pBuf = NULL;
+  }
+
+  return count;
+}
+
 static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     const char* output_file_name, const char *pkgname, const char *instruction_set)
 {
@@ -635,7 +669,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     bool have_dex2oat_Xmx_flag = property_get("dalvik.vm.dex2oat-Xmx", dex2oat_Xmx_flag, NULL) > 0;
 
     char dex2oat_flags[PROPERTY_VALUE_MAX];
-    bool have_dex2oat_flags = property_get("dalvik.vm.dex2oat-flags", dex2oat_flags, NULL) > 0;
+    int dex2oat_flags_count = property_get("dalvik.vm.dex2oat-flags",
+                                 dex2oat_flags, NULL) <= 0 ? 0 : split_count(dex2oat_flags);
     ALOGV("dalvik.vm.dex2oat-flags=%s\n", dex2oat_flags);
 
     static const char* DEX2OAT_BIN = "/system/bin/dex2oat";
@@ -699,7 +734,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
                + (have_top_k_profile_threshold ? 1 : 0)
                + (have_dex2oat_Xms_flag ? 2 : 0)
                + (have_dex2oat_Xmx_flag ? 2 : 0)
-               + (have_dex2oat_flags ? 1 : 0)];
+               + dex2oat_flags_count];
     int i = 0;
     argv[i++] = (char*)DEX2OAT_BIN;
     argv[i++] = zip_fd_arg;
@@ -721,14 +756,14 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
         argv[i++] = (char*)RUNTIME_ARG;
         argv[i++] = dex2oat_Xmx_arg;
     }
-    if (have_dex2oat_flags) {
-        argv[i++] = dex2oat_flags;
+    if (dex2oat_flags_count) {
+        i += split(dex2oat_flags, argv + i);
     }
     // Do not add after dex2oat_flags, they should override others for debugging.
     argv[i] = NULL;
 
     execv(DEX2OAT_BIN, (char* const *)argv);
-    ALOGE("execl(%s) failed: %s\n", DEX2OAT_BIN, strerror(errno));
+    ALOGE("execv(%s) failed: %s\n", DEX2OAT_BIN, strerror(errno));
 }
 
 static int wait_child(pid_t pid)
