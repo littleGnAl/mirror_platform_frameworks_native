@@ -158,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "19fb4835_2100a899",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T23:25:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2431c1d1_bbc67f7e",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2431c1d1_fbd0f731",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 5
