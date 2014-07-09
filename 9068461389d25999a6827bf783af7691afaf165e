@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "2431c1d1_101a0a87",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T12:55:44Z",
+      "side": 1,
+      "message": "This is a bug, right?  Abort?",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2431c1d1_f0349601",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T12:55:44Z",
+      "side": 1,
+      "message": "Maybe report the pid?",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e43969b5_a242c473",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 4
@@ -37,6 +71,92 @@
     },
     {
       "key": {
+        "uuid": "e474097d_14fbcd28",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T12:55:44Z",
+      "side": 1,
+      "message": "Possible alternative:  Split this function into two functions, one of which takes a name argument (which then performs the selabel_lookup only) and one that does not (which uses a previously cached result of getcon done during initialization, as in the keystore).  Then it is always explicit as to which one you are using and any bug that yields a NULL name will not generate an incorrect permission check but will rather abort the servicemanager.",
+      "parentUuid": "e4224989_e8274b3c",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79ec447a_a1d95e2f",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T12:55:44Z",
+      "side": 1,
+      "message": "Any reason to still pass uids around?",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2431c1d1_502482ce",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T12:55:44Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2431c1d1_702186bd",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T12:55:44Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2431c1d1_30170e60",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T12:55:44Z",
+      "side": 1,
+      "message": "Any reason we can\u0027t do this check before calling find_svc(), since we are not using the svcinfo in any way for the check?  Otherwise caller can probe for the existence of a service even without permission.\nAlso, should we be doing an ALOGE...PERMISSION DENIED as in the svc_can_register() error path for each of these denials or only use the avc message?",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99e73894_22e2ee37",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 4
@@ -48,6 +168,24 @@
       "writtenOn": "2014-07-08T23:36:08Z",
       "side": 1,
       "message": "Something to think about: Can we implement the allow_isolated functionality using an SELinux policy? Longer term (not this change) I\u0027d love to see a neverallow rule which asserts that isolated_app can never do a find.",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e474097d_740a4188",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T12:55:44Z",
+      "side": 1,
+      "message": "seapp_contexts maps anything in the isolated AID range (app\u003d_isolated) to the isolated_app domain, so this is just expressed via allow isolated_app \u003cservice_type\u003e:service_manager find; or neverallow isolated_app \u003cservice_type\u003e:service_manager find; for any given service type.",
+      "parentUuid": "99e73894_22e2ee37",
       "revId": "9068461389d25999a6827bf783af7691afaf165e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
