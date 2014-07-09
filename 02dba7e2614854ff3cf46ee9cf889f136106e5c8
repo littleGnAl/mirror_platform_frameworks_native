@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79ec447a_8442e824",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T19:15:36Z",
+      "side": 1,
+      "message": "Can be const char *tctx.",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19fb4835_1e750dd9",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T19:15:36Z",
+      "side": 1,
+      "message": "Not sure if these are even necessary with SELinux mandatory...",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79ec447a_2441dc1e",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T19:15:36Z",
+      "side": 1,
+      "message": "I think I\u0027d omit this one and just leave it in the latter function where it is used.",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79ec447a_0456d8e8",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T19:15:36Z",
+      "side": 1,
+      "message": "Could do this once at initialization and just save it in a global, as in keystore.",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19fb4835_de86858d",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T19:15:36Z",
+      "side": 1,
+      "message": "Not sure we still need these checks.",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2431c1d1_bbc67f7e",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T19:15:36Z",
+      "side": 1,
+      "message": "I think the last argument is ignored for the property label backend and can just be zero?  Only matters when the label backend supports multiple types of objects and you only want to match a specific type, as with files/directories/block devices/etc for the file label backend.",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2431c1d1_fbd0f731",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T19:15:36Z",
+      "side": 1,
+      "message": "I don\u0027t think this is possible if selabel_lookup() returns 0.",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79ec447a_a44ccc54",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T19:15:36Z",
+      "side": 1,
+      "message": "Just a coding style issue, but commonly we would do something like:\nif (!svc_can_find(s, spid)) {\n   ALOGE(...);\n   return ...;\n}\n\u003cnormal processing continues here\u003e\nMakes the diff smaller FWIW.",
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19fb4835_3e67a92a",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-09T19:15:36Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 329,
+        "startChar": 16,
+        "endLine": 329,
+        "endChar": 17
+      },
+      "revId": "02dba7e2614854ff3cf46ee9cf889f136106e5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
