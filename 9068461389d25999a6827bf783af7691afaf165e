@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a41cd152_7766d867",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T14:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2431c1d1_101a0a87",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2431c1d1_f0349601",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-09T12:55:44Z",
       "side": 1,
       "message": "Maybe report the pid?",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59f1404f_807c16fa",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T14:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2431c1d1_f0349601",
       "revId": "9068461389d25999a6827bf783af7691afaf165e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "f9f75445_dd0a0b42",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T14:50:28Z",
+      "side": 1,
+      "message": "I considered that but I wasn\u0027t sure about the duplicated code. It would make the semantics of the function much more clear.",
+      "parentUuid": "e474097d_14fbcd28",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79ec447a_a1d95e2f",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 4
@@ -100,6 +154,24 @@
       "writtenOn": "2014-07-09T12:55:44Z",
       "side": 1,
       "message": "Any reason to still pass uids around?",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a41cd152_b7f05047",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T14:50:28Z",
+      "side": 1,
+      "message": "No there is not.",
+      "parentUuid": "79ec447a_a1d95e2f",
       "revId": "9068461389d25999a6827bf783af7691afaf165e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -123,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "59f1404f_608112a8",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T14:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2431c1d1_502482ce",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2431c1d1_702186bd",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 4
@@ -140,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "a41cd152_d7f5cc35",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T14:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2431c1d1_702186bd",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2431c1d1_30170e60",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 4
@@ -151,6 +259,24 @@
       "writtenOn": "2014-07-09T12:55:44Z",
       "side": 1,
       "message": "Any reason we can\u0027t do this check before calling find_svc(), since we are not using the svcinfo in any way for the check?  Otherwise caller can probe for the existence of a service even without permission.\nAlso, should we be doing an ALOGE...PERMISSION DENIED as in the svc_can_register() error path for each of these denials or only use the avc message?",
+      "revId": "9068461389d25999a6827bf783af7691afaf165e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9045004_1ce2b537",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-09T14:50:28Z",
+      "side": 1,
+      "message": "It makes sense to call it first. I\u0027ll make all of the error logging consistent with the do_add_service logging.",
+      "parentUuid": "2431c1d1_30170e60",
       "revId": "9068461389d25999a6827bf783af7691afaf165e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
