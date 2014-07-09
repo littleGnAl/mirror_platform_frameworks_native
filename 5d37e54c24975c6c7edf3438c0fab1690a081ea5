@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "043d9d9e_0299da62",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1040038
+      },
+      "writtenOn": "2014-07-09T04:51:09Z",
+      "side": 1,
+      "message": "I would suggest to use strtok_r function for this purpose.",
+      "range": {
+        "startLine": 625,
+        "startChar": 11,
+        "endLine": 625,
+        "endChar": 22
+      },
+      "revId": "5d37e54c24975c6c7edf3438c0fab1690a081ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
