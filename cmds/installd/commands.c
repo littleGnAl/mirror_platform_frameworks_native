@@ -673,6 +673,11 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
                                  dex2oat_flags, NULL) <= 0 ? 0 : split_count(dex2oat_flags);
     ALOGV("dalvik.vm.dex2oat-flags=%s\n", dex2oat_flags);
 
+    char dex2oat_dev_flags[PROPERTY_VALUE_MAX];
+    int dex2oat_dev_flags_count = property_get("persist.sys.dalvik.vm.oat",
+                                 dex2oat_dev_flags, NULL) <= 0 ? 0 : split_count(dex2oat_dev_flags);
+    ALOGV("persist.sys.dalvik.vm.oat=%s\n", dex2oat_dev_flags);
+
     static const char* DEX2OAT_BIN = "/system/bin/dex2oat";
 
     static const char* RUNTIME_ARG = "--runtime-arg";
@@ -734,6 +739,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
                + (have_top_k_profile_threshold ? 1 : 0)
                + (have_dex2oat_Xms_flag ? 2 : 0)
                + (have_dex2oat_Xmx_flag ? 2 : 0)
+               + dex2oat_dev_flags_count
                + dex2oat_flags_count];
     int i = 0;
     argv[i++] = (char*)DEX2OAT_BIN;
@@ -755,6 +761,9 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     if (have_dex2oat_Xmx_flag) {
         argv[i++] = (char*)RUNTIME_ARG;
         argv[i++] = dex2oat_Xmx_arg;
+    }
+    if (dex2oat_dev_flags_count) {
+        i += split(dex2oat_dev_flags, argv + i);
     }
     if (dex2oat_flags_count) {
         i += split(dex2oat_flags, argv + i);
