@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f94e7481_6818db10",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T21:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59586041_0ee28f37",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f94e7481_88b0b7dd",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-10T20:25:16Z",
       "side": 1,
       "message": "Technically we do not need these initializations (throughout).  Up to you as to whether you retain them as a safety precaution against future code changes.",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59586041_8ebf9fe6",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T21:42:38Z",
+      "side": 1,
+      "message": "allowed is assigned before it\u0027s ever returned so I\u0027ll remove the initialization.",
+      "parentUuid": "f94e7481_88b0b7dd",
       "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "19526823_69b90168",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T21:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94e7481_688d7b26",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f94e7481_e8804beb",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 7
@@ -64,6 +118,24 @@
       "writtenOn": "2014-07-10T20:25:16Z",
       "side": 1,
       "message": "I would order these as (pid_t spid, const char *perm, const char *name) to be consistent with check_mac_perms() in relative ordering.",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19526823_c9a91513",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T21:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94e7481_e8804beb",
       "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "19526823_89b31d81",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T21:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94e7481_c87d8f39",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19526823_09560d92",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 7
@@ -98,6 +188,24 @@
       "writtenOn": "2014-07-10T20:25:16Z",
       "side": 1,
       "message": "Or, \"No match for %s in service_contexts\"",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19526823_69e0e159",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T21:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19526823_09560d92",
       "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
