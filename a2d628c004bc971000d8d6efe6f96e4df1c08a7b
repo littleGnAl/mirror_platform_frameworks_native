@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9045004_59f4c4ed",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T15:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59586041_88579739",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f94e7481_65ca4631",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-10T15:17:10Z",
       "side": 1,
       "message": "unused",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9045004_39f9f8e5",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T15:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94e7481_65ca4631",
       "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d9045004_f90a7041",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T15:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59586041_48499f98",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59586041_283e6bf8",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2014-07-10T15:17:10Z",
       "side": 1,
       "message": "unused",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "995e582a_44dd027e",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T15:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59586041_283e6bf8",
       "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "d9045004_d907b437",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T15:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59586041_e8373317",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19526823_e6fe3e15",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 6
@@ -98,6 +188,24 @@
       "writtenOn": "2014-07-10T15:17:10Z",
       "side": 1,
       "message": "Call once and cache.",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9045004_792660d7",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T15:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19526823_e6fe3e15",
       "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "f9f75445_ba1298be",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T15:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59586041_c8346f15",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59586041_6bd33d75",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 6
@@ -132,6 +258,24 @@
       "writtenOn": "2014-07-10T15:17:10Z",
       "side": 1,
       "message": "!svc_can_list",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "995e582a_04e70a48",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-10T15:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59586041_6bd33d75",
       "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
