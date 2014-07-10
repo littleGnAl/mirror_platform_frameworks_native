@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59586041_0ee28f37",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T20:25:16Z",
+      "side": 1,
+      "message": "Sorry to be pedantic, but I\u0027d tend to reorder the arguments as: (pid_t spid, const char *tctx, const char *perm, const char *name).\nThat basically matches selinux_check_access() except that we have spid instead of sctx (but they are analogous, and the latter is derived from the former) and the class is implicit.",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f94e7481_88b0b7dd",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T20:25:16Z",
+      "side": 1,
+      "message": "Technically we do not need these initializations (throughout).  Up to you as to whether you retain them as a safety precaution against future code changes.",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f94e7481_688d7b26",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T20:25:16Z",
+      "side": 1,
+      "message": "In this case we could just return check_mac_perms() itself and drop allowed altogether.",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f94e7481_e8804beb",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T20:25:16Z",
+      "side": 1,
+      "message": "I would order these as (pid_t spid, const char *perm, const char *name) to be consistent with check_mac_perms() in relative ordering.",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f94e7481_c87d8f39",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T20:25:16Z",
+      "side": 1,
+      "message": "name doesn\u0027t really have anything to do with the error.",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19526823_09560d92",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T20:25:16Z",
+      "side": 1,
+      "message": "Or, \"No match for %s in service_contexts\"",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59586041_2ef433ed",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T20:25:16Z",
+      "side": 1,
+      "message": "Could wrap the entire block with if (selinux_enabled \u003e 0) and then omit the individual tests.",
+      "revId": "2dde98df255fd8ab35993a40830352ef15fab80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
