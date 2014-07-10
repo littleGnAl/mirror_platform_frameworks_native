@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59586041_88579739",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T15:17:10Z",
+      "side": 1,
+      "message": "Don\u0027t think we need this test; if getpidcon returned 0 we have a valid sctx.",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f94e7481_65ca4631",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T15:17:10Z",
+      "side": 1,
+      "message": "unused",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59586041_48499f98",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T15:17:10Z",
+      "side": 1,
+      "message": "If we have to retain this test, it should only be done once during initialization and cached to avoid the cost of doing it on every permission check.",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59586041_283e6bf8",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T15:17:10Z",
+      "side": 1,
+      "message": "unused",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59586041_e8373317",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T15:17:10Z",
+      "side": 1,
+      "message": "return allowed",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19526823_e6fe3e15",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T15:17:10Z",
+      "side": 1,
+      "message": "Call once and cache.",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59586041_c8346f15",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T15:17:10Z",
+      "side": 1,
+      "message": "Not possible if selabel_lookup returned 0.",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59586041_6bd33d75",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-10T15:17:10Z",
+      "side": 1,
+      "message": "!svc_can_list",
+      "revId": "a2d628c004bc971000d8d6efe6f96e4df1c08a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
