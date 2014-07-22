@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
+#include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <limits.h>
+#include <linux/prctl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/capability.h>
 #include <sys/resource.h>
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <sys/capability.h>
-#include <linux/prctl.h>
 
 #include <cutils/properties.h>
+#include <selinux/android.h>
 
 #include "private/android_filesystem_config.h"
 
@@ -42,6 +44,43 @@ static char cmdline_buf[16384] = "(unknown)";
 static const char *dump_traces_path = NULL;
 
 static char screenshot_path[PATH_MAX] = "";
+
+#define TOMBSTONE_DIR "/data/tombstones"
+#define TOMBSTONE_FILE TOMBSTONE_DIR "/tombstone_00"
+#define NUM_TOMBSTONES  10
+
+typedef struct {
+  char name[sizeof(TOMBSTONE_FILE)];
+  int fd;
+} tombstone_data_t;
+
+static tombstone_data_t tombstone_data[NUM_TOMBSTONES];
+
+/* Dump any tombstone that was modified in the last half an hour. */
+static void get_tombstone_fds(tombstone_data_t data[NUM_TOMBSTONES]) {
+    char tombstone_path[sizeof(TOMBSTONE_FILE)];
+    memcpy(tombstone_path, TOMBSTONE_FILE, sizeof(TOMBSTONE_FILE));
+    int found = 0;
+    time_t now = time(NULL) - 60*30;
+
+    if (selinux_android_restorecon(TOMBSTONE_DIR, 0) == -1) {
+        fprintf(stderr, "restorecon failed for %s: %s\n", TOMBSTONE_DIR, strerror(errno));
+    }
+
+    /* Assumes that NUM_TOMBSTONES <= 10, otherwise this will not work. */
+    for (size_t i = 0; i < NUM_TOMBSTONES; i++) {
+        struct stat st;
+        data[i].fd = -1;
+        if (stat(tombstone_path, &st) == 0 && S_ISREG(st.st_mode)) {
+            found = 1;
+            if ((time_t) st.st_mtime >= now) {
+                data[i].fd = open(tombstone_path, O_RDONLY | O_CLOEXEC);
+                strncpy(data[i].name, tombstone_path, sizeof(TOMBSTONE_FILE));
+            }
+        }
+        tombstone_path[sizeof(TOMBSTONE_FILE)-2]++;
+    }
+}
 
 /* dumps the current system state to stdout */
 static void dumpstate() {
@@ -116,7 +155,6 @@ static void dumpstate() {
     run_command("EVENT LOG", 20, "logcat", "-b", "events", "-v", "threadtime", "-d", "*:v", NULL);
     run_command("RADIO LOG", 20, "logcat", "-b", "radio", "-v", "threadtime", "-d", "*:v", NULL);
 
-
     /* show the traces we collected in main(), if that was done */
     if (dump_traces_path != NULL) {
         dump_file("VM TRACES JUST NOW", dump_traces_path);
@@ -150,6 +188,19 @@ static void dumpstate() {
             dump_file("VM TRACES WHEN SLOW", anr_traces_path);
             i++;
         }
+    }
+
+    int dumped = 0;
+    for (size_t i = 0; i < NUM_TOMBSTONES; i++) {
+        if (tombstone_data[i].fd != -1) {
+            dumped = 1;
+            dump_file_from_fd("TOMBSTONE", tombstone_data[i].name, tombstone_data[i].fd);
+            close(tombstone_data[i].fd);
+            tombstone_data[i].fd = -1;
+        }
+    }
+    if (!dumped) {
+        printf("*** NO TOMBSTONES to dump in %s\n\n", TOMBSTONE_DIR);
     }
 
     dump_file("NETWORK DEV INFO", "/proc/net/dev");
@@ -403,6 +454,9 @@ int main(int argc, char *argv[]) {
         ALOGE("prctl(PR_SET_KEEPCAPS) failed: %s\n", strerror(errno));
         return -1;
     }
+
+    /* Dump the tombstones here while we still are running as root. */
+    get_tombstone_fds(tombstone_data);
 
     /* switch to non-root user and group */
     gid_t groups[] = { AID_LOG, AID_SDCARD_R, AID_SDCARD_RW,
