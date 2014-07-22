@@ -123,8 +123,23 @@ $(LIBGLESV3): $(LIBGLESV2)
 	@echo "Symlink: $@ -> $(notdir $<)"
 	@mkdir -p $(dir $@)
 	$(hide) ln -sf $(notdir $<) $@
+
+ifneq ($(TARGET_2ND_ARCH),)
+LIBGLESV2_64 := $(subst /lib/,/lib64/,$(LOCAL_INSTALLED_MODULE))
+LIBGLESV3_64 := $(subst libGLESv2,libGLESv3,$(LIBGLESV2_64))
+$(LIBGLESV3_64): $(LIBGLESV2_64)
+	@echo "Symlink: $@ -> $(notdir $<)"
+	@mkdir -p $(dir $@)
+	$(hide) ln -sf $(notdir $<) $@
+ALL_MODULES.$(LOCAL_MODULE).INSTALLED := \
+	$(ALL_MODULES.$(LOCAL_MODULE).INSTALLED) $(LIBGLESV3) $(LIBGLESV3_64)
+LIBGLESV2_64 :=
+LIBGLESV3_64 :=
+else
 ALL_MODULES.$(LOCAL_MODULE).INSTALLED := \
 	$(ALL_MODULES.$(LOCAL_MODULE).INSTALLED) $(LIBGLESV3)
+endif
+
 LIBGLESV2 :=
 LIBGLESV3 :=
 
