@@ -34,6 +34,24 @@
       "revId": "274953f1eb5dc67ec838410dbd57359e395f0036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "193d089f_cea543d1",
+        "filename": "opengl/libs/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2014-07-23T18:54:26Z",
+      "side": 1,
+      "message": "LOCAL_POST_INSTALL_CMD is the answer to most of symlink creations.",
+      "parentUuid": "79b2845d_69a0a0be",
+      "revId": "274953f1eb5dc67ec838410dbd57359e395f0036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
