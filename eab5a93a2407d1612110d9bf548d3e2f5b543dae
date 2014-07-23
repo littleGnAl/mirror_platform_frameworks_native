@@ -2,6 +2,108 @@
   "comments": [
     {
       "key": {
+        "uuid": "59b7804c_cd171edf",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-23T02:58:59Z",
+      "side": 1,
+      "message": "likely not needed if line 65 is deleted (see below)",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59b7804c_8defd68c",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-23T02:58:59Z",
+      "side": 1,
+      "message": "you only have read access to this directory. This is always going to fail.",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59b7804c_8d3cf64b",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-23T02:58:59Z",
+      "side": 1,
+      "message": "the stat, then open (line 76) feels redundant and racy. Why not just try the open unconditionally. I don\u0027t see what value the stat gives you.\n\nIf you really want to assert it\u0027s a regular file, then do the open, fstat() the file descriptor, and then do the check.",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39bc8c31_51ad871d",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-23T02:58:59Z",
+      "side": 1,
+      "message": "O_NOFOLLOW please",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39bc8c31_b19313db",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-23T02:58:59Z",
+      "side": 1,
+      "message": "if the file isn\u0027t found (line 73 returns false), data[i].name remains uninitialized. This could cause problems later.\n\nRecommend explicitly zeroing out tombstone_data immediately before calling get_tombstones_fds()",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79b2845d_9336d7f8",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-23T02:58:59Z",
+      "side": 1,
+      "message": "This feels fragile, and definitely assumes NUM_TOMBSTONES \u003c\u003d 10 and the tombstone file format ends with digits. It might be clearer if you were to use snprintf instead.",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b7804c_cd2d5e1c",
         "filename": "cmds/dumpstate/dumpstate.c",
         "patchSetId": 2
