@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "193d089f_42e202a7",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T23:04:59Z",
+      "side": 1,
+      "message": "Yes, I changed the other stat to an open and dump file. However, it looks like there is a race where if the file exists, there is other code causing dumps to occur at the same time so dumping this file doesn\u0027t really dump the file.\n\nI think this might be a case of needing to open it before triggering the dumps.\n\nOn another note, we still have a problem that dumping the state of a bunch processes fails unless the traces.txt file already exists.",
+      "parentUuid": "d971b08d_57dd4e19",
+      "revId": "f3bbd28dfb82495ccca9049253fd0f3169deeb93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d971b08d_97a526a4",
         "filename": "cmds/dumpstate/dumpstate.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f93914b5_c14c328c",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T23:04:59Z",
+      "side": 1,
+      "message": "Oops, fixed.",
+      "parentUuid": "d971b08d_97a526a4",
+      "revId": "f3bbd28dfb82495ccca9049253fd0f3169deeb93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d971b08d_37b7f2d8",
         "filename": "cmds/dumpstate/utils.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2014-07-23T22:21:43Z",
       "side": 1,
       "message": "also known as \"return dump_file...\" :-)",
+      "revId": "f3bbd28dfb82495ccca9049253fd0f3169deeb93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f93914b5_413922eb",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T23:04:59Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "d971b08d_37b7f2d8",
       "revId": "f3bbd28dfb82495ccca9049253fd0f3169deeb93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
