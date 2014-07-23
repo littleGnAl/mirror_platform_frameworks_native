@@ -117,16 +117,12 @@ include $(BUILD_SHARED_LIBRARY)
 # Symlink libGLESv3.so -> libGLESv2.so
 # Platform modules should link against libGLESv2.so (-lGLESv2), but NDK apps
 # will be linked against libGLESv3.so.
-LIBGLESV2 := $(LOCAL_INSTALLED_MODULE)
-LIBGLESV3 := $(subst libGLESv2,libGLESv3,$(LIBGLESV2))
-$(LIBGLESV3): $(LIBGLESV2)
-	@echo "Symlink: $@ -> $(notdir $<)"
-	@mkdir -p $(dir $@)
-	$(hide) ln -sf $(notdir $<) $@
-ALL_MODULES.$(LOCAL_MODULE).INSTALLED := \
-	$(ALL_MODULES.$(LOCAL_MODULE).INSTALLED) $(LIBGLESV3)
-LIBGLESV2 :=
-LIBGLESV3 :=
+# Note we defer the evaluation of the PRIVATE_POST_INSTALL_CMD,
+# so the automatic variables will be expanded to correct value for both
+# 32-bit and 64-bit installed files in multilib build.
+$(ALL_MODULES.$(LOCAL_MODULE).INSTALLED) : PRIVATE_POST_INSTALL_CMD = \
+    $(hide) ln -sf $(notdir $@) $(dir $@)libGLESv3.so
+
 
 ###############################################################################
 # Build the ETC1 host static library
