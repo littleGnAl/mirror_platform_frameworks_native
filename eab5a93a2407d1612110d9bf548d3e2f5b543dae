@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f93914b5_f3de68a1",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T22:12:00Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "59b7804c_cd171edf",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b7804c_8defd68c",
         "filename": "cmds/dumpstate/dumpstate.c",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "193d089f_376ffac7",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T22:12:00Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "59b7804c_8defd68c",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b7804c_8d3cf64b",
         "filename": "cmds/dumpstate/dumpstate.c",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2014-07-23T02:58:59Z",
       "side": 1,
       "message": "the stat, then open (line 76) feels redundant and racy. Why not just try the open unconditionally. I don\u0027t see what value the stat gives you.\n\nIf you really want to assert it\u0027s a regular file, then do the open, fstat() the file descriptor, and then do the check.",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "193d089f_f7d3b23f",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T22:12:00Z",
+      "side": 1,
+      "message": "Changed to an open and fstat. I don\u0027t check the fd directly since the stat will fail if the file doesn\u0027t exist.",
+      "parentUuid": "59b7804c_8d3cf64b",
       "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -105,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "193d089f_17b91e05",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T22:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39bc8c31_51ad871d",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39bc8c31_b19313db",
         "filename": "cmds/dumpstate/dumpstate.c",
         "patchSetId": 2
@@ -116,6 +188,24 @@
       "writtenOn": "2014-07-23T02:58:59Z",
       "side": 1,
       "message": "if the file isn\u0027t found (line 73 returns false), data[i].name remains uninitialized. This could cause problems later.\n\nRecommend explicitly zeroing out tombstone_data immediately before calling get_tombstones_fds()",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f93914b5_f6aad69f",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T22:12:00Z",
+      "side": 1,
+      "message": "I changed this works so I don\u0027t think it requires zeroeing out the structure.",
+      "parentUuid": "39bc8c31_b19313db",
       "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -139,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "f93914b5_7697c669",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T22:12:00Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "79b2845d_9336d7f8",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b7804c_cd2d5e1c",
         "filename": "cmds/dumpstate/dumpstate.c",
         "patchSetId": 2
@@ -156,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "f93914b5_961a7260",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T22:12:00Z",
+      "side": 1,
+      "message": "That\u0027s what I\u0027m assuming.",
+      "parentUuid": "59b7804c_cd2d5e1c",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39bc8c31_d175f7dc",
         "filename": "cmds/dumpstate/utils.c",
         "patchSetId": 2
@@ -167,6 +293,24 @@
       "writtenOn": "2014-07-23T02:56:11Z",
       "side": 1,
       "message": "why not leave the close inside dump_file_from_fd, since both callers want it?",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f93914b5_f629f674",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-07-23T22:12:00Z",
+      "side": 1,
+      "message": "Yeah, I decided to move the close info the dump_file_from_fd.",
+      "parentUuid": "39bc8c31_d175f7dc",
       "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
