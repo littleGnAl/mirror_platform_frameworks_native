@@ -16,6 +16,24 @@
       "revId": "274953f1eb5dc67ec838410dbd57359e395f0036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79b2845d_69a0a0be",
+        "filename": "opengl/libs/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1040609
+      },
+      "writtenOn": "2014-07-23T16:30:31Z",
+      "side": 1,
+      "message": "I know :-). There are a few hacks like this one in the tree (some are worse). I\u0027ve sent that patch to point out the problem (and potentially give a temporary solution to people) more than having it merged as is.\n\nAlso, the build system, AFAIK, doesn\u0027t have any facility to create symlinks and several, though not a huge number, makefiles duplicate the echo/mkdir/ln sequence.",
+      "parentUuid": "39bc8c31_422c9781",
+      "revId": "274953f1eb5dc67ec838410dbd57359e395f0036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
