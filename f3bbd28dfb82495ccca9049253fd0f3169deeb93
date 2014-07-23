@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d971b08d_57dd4e19",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-07-23T22:21:43Z",
+      "side": 1,
+      "message": "isn\u0027t there another copy of this code somewhere? we should update that too.",
+      "revId": "f3bbd28dfb82495ccca9049253fd0f3169deeb93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d971b08d_97a526a4",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-07-23T22:21:43Z",
+      "side": 1,
+      "message": "shouldn\u0027t you close(fd) in this case? (since you haven\u0027t actually checked why fstat failed.)",
+      "revId": "f3bbd28dfb82495ccca9049253fd0f3169deeb93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d971b08d_37b7f2d8",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-07-23T22:21:43Z",
+      "side": 1,
+      "message": "also known as \"return dump_file...\" :-)",
+      "revId": "f3bbd28dfb82495ccca9049253fd0f3169deeb93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
