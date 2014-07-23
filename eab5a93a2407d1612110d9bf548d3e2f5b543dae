@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "79b2845d_3388cb61",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-07-23T03:02:53Z",
+      "side": 1,
+      "message": "(this is what the stat is for. but yeah, fstat on the result of open would be better all round.)",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39bc8c31_51ad871d",
         "filename": "cmds/dumpstate/dumpstate.c",
         "patchSetId": 2
