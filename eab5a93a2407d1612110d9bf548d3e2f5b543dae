@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "39bc8c31_3d87f28a",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-23T17:46:46Z",
+      "side": 1,
+      "message": "minor correction: In most cases, you won\u0027t actually see a failure here, because selinux_android_restorecon only changes the security label on the directory if it needs changing. If the security label on the directory is already correct, then this is a no-op.\n\nRegardless, this isn\u0027t needed in the dumpstate code, and if the security label was actually incorrect, the permissions granted in https://android-review.googlesource.com/102258 are insufficient to allow this to succeed.",
+      "parentUuid": "59b7804c_8defd68c",
+      "revId": "eab5a93a2407d1612110d9bf548d3e2f5b543dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b7804c_8d3cf64b",
         "filename": "cmds/dumpstate/dumpstate.c",
         "patchSetId": 2
