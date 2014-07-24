@@ -336,6 +336,7 @@ private:
     mutable bool mDebug;
     PixelFormat mFormat;
     bool mOpaqueLayer;
+    bool mHasUpdate;
 
     // these are protected by an external lock
     State mCurrentState;

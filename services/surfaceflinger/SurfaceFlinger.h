@@ -435,6 +435,7 @@ private:
     State mDrawingState;
     bool mVisibleRegionsDirty;
     bool mHwWorkListDirty;
+    bool mHwLayersChanged;
     bool mAnimCompositionPending;
 
     // this may only be written from the main thread with mStateLock held

@@ -898,6 +898,10 @@ void SurfaceFlinger::setUpHWComposer() {
                         hw->getVisibleLayersSortedByZ());
                     const size_t count = currentLayers.size();
                     if (hwc.createWorkList(id, count) == NO_ERROR) {
+                        if(mHwLayersChanged) {
+                            hwc.setHwLayersChanged(id);
+                            mHwLayersChanged = false;
+                        }
                         HWComposer::LayerListIterator cur = hwc.begin(id);
                         const HWComposer::LayerListIterator end = hwc.end(id);
                         for (size_t i=0 ; cur!=end && i<count ; ++i, ++cur) {
@@ -1279,6 +1283,7 @@ void SurfaceFlinger::handleTransactionLocked(uint32_t transactionFlags)
     if (currentLayers.size() > layers.size()) {
         // layers have been added
         mVisibleRegionsDirty = true;
+        mHwLayersChanged = true;
     }
 
     // some layers might have been removed, so
@@ -1286,6 +1291,7 @@ void SurfaceFlinger::handleTransactionLocked(uint32_t transactionFlags)
     if (mLayersRemoved) {
         mLayersRemoved = false;
         mVisibleRegionsDirty = true;
+        mHwLayersChanged = true;
         const size_t count = layers.size();
         for (size_t i=0 ; i<count ; i++) {
             const sp<Layer>& layer(layers[i]);
