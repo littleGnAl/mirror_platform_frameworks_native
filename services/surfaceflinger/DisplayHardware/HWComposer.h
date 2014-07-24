@@ -108,6 +108,9 @@ public:
     // create a work list for numLayers layer. sets HWC_GEOMETRY_CHANGED.
     status_t createWorkList(int32_t id, size_t numLayers);
 
+    //Sets flag with HWC_LAYERS_CHANGED.
+    void setHwLayersChanged(int32_t id);
+
     bool supportsFramebufferTarget() const;
 
     // does this display have layers handled by HWC
@@ -167,6 +170,7 @@ public:
         virtual void setBuffer(const sp<GraphicBuffer>& buffer) = 0;
         virtual void setAcquireFenceFd(int fenceFd) = 0;
         virtual void setPlaneAlpha(uint8_t alpha) = 0;
+        virtual void setLayerUpdateFlag(bool changed) = 0;
         virtual void onDisplayed() = 0;
     };
 

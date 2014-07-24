@@ -78,7 +78,8 @@ Layer::Layer(SurfaceFlinger* flinger, const sp<Client>& client,
         mSecure(false),
         mProtectedByApp(false),
         mHasSurface(false),
-        mClientRef(client)
+        mClientRef(client),
+        mHasUpdate(false)
 {
     mCurrentCrop.makeInvalid();
     mFlinger->getRenderEngine().genTextures(1, &mTextureName);
@@ -147,6 +148,7 @@ Layer::~Layer() {
 void Layer::onLayerDisplayed(const sp<const DisplayDevice>& hw,
         HWComposer::HWCLayerInterface* layer) {
     if (layer) {
+        mHasUpdate = false;
         layer->onDisplayed();
         mSurfaceFlingerConsumer->setReleaseFence(layer->getAndResetReleaseFence());
     }
@@ -717,6 +719,9 @@ uint32_t Layer::doTransaction(uint32_t flags) {
     const bool sizeChanged = (c.requested.w != s.requested.w) ||
                              (c.requested.h != s.requested.h);
 
+    //we enter here only if there is a valid transaction pending.
+    mHasUpdate = true;
+
     if (sizeChanged) {
         // the size changed, we need to ask our client to request a new buffer
         ALOGD_IF(DEBUG_RESIZE,
@@ -1091,6 +1096,7 @@ Region Layer::latchBuffer(bool& recomputeVisibleRegions)
             return outDirtyRegion;
         }
 
+        mHasUpdate = true;
         mRefreshPending = true;
         mFrameLatencyNeeded = true;
         if (oldActiveBuffer == NULL) {

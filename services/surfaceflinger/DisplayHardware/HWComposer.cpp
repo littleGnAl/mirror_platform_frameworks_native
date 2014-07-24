@@ -566,6 +566,16 @@ status_t HWComposer::createWorkList(int32_t id, size_t numLayers) {
     return NO_ERROR;
 }
 
+void HWComposer::setHwLayersChanged(int32_t id) {
+    if (uint32_t(id)>31 || !mAllocatedDisplayIDs.hasBit(id)) {
+        return;
+    }
+    if (mHwc) {
+        DisplayData& disp(mDisplayData[id]);
+        disp.list->flags |= HWC_LAYERS_CHANGED;
+    }
+}
+
 status_t HWComposer::setFramebufferTarget(int32_t id,
         const sp<Fence>& acquireFence, const sp<GraphicBuffer>& buf) {
     if (uint32_t(id)>31 || !mAllocatedDisplayIDs.hasBit(id)) {
@@ -726,6 +736,7 @@ status_t HWComposer::commit() {
                     disp.list->retireFenceFd = -1;
                 }
                 disp.list->flags &= ~HWC_GEOMETRY_CHANGED;
+                disp.list->flags &= ~HWC_LAYERS_CHANGED;
             }
         }
     }
@@ -953,6 +964,12 @@ public:
             getLayer()->handle = buffer->handle;
         }
     }
+    virtual void setLayerUpdateFlag(bool changed) {
+        if(changed)
+            getLayer()->flags |= HWC_LAYER_HAS_UPDATE;
+        else
+            getLayer()->flags &= ~HWC_LAYER_HAS_UPDATE;
+    }
     virtual void onDisplayed() {
         hwc_region_t& visibleRegion = getLayer()->visibleRegionScreen;
         SharedBuffer const* sb = SharedBuffer::bufferFromData(visibleRegion.rects);
@@ -964,6 +981,7 @@ public:
         }
 
         getLayer()->acquireFenceFd = -1;
+        getLayer()->flags &= ~HWC_LAYER_HAS_UPDATE;
     }
 };
 
