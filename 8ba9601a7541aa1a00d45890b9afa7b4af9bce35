@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "560aef14_ad60355c",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-07-29T19:50:29Z",
+      "side": 1,
+      "message": "this does what?",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 1
+      },
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "560aef14_8d2fb112",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-07-29T19:50:29Z",
+      "side": 1,
+      "message": "WS",
+      "range": {
+        "startLine": 652,
+        "startChar": 27,
+        "endLine": 652,
+        "endChar": 28
+      },
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7615332e_6c0d769b",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-07-29T19:50:29Z",
+      "side": 1,
+      "message": "dead code?",
+      "range": {
+        "startLine": 805,
+        "startChar": 0,
+        "endLine": 805,
+        "endChar": 5
+      },
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "560aef14_8d9451f6",
+        "filename": "cmds/installd/installd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-07-29T19:50:29Z",
+      "side": 1,
+      "message": "bool?",
+      "range": {
+        "startLine": 150,
+        "startChar": 70,
+        "endLine": 150,
+        "endChar": 71
+      },
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36f65b4a_fdfb70de",
+        "filename": "cmds/installd/installd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-07-29T19:50:29Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 218,
+        "startChar": 40,
+        "endLine": 218,
+        "endChar": 59
+      },
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
