@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "560aef14_b834eeca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2014-07-30T00:15:23Z",
+      "side": 1,
+      "message": "Removed. Misunderstanding about what this did.",
+      "parentUuid": "b6016bf5_5e25d1c8",
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "560aef14_ad60355c",
         "filename": "cmds/installd/commands.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2014-07-29T19:50:29Z",
       "side": 1,
       "message": "this does what?",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 1
+      },
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "560aef14_42d3a342",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2014-07-30T00:15:23Z",
+      "side": 1,
+      "message": "Nothing. I forgot to remove it.",
+      "parentUuid": "560aef14_ad60355c",
       "range": {
         "startLine": 562,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "36f65b4a_4efbc423",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2014-07-30T00:15:23Z",
+      "side": 1,
+      "message": "Removed. That was just a note to myself I forgot to remove.",
+      "parentUuid": "560aef14_8d2fb112",
+      "range": {
+        "startLine": 652,
+        "startChar": 27,
+        "endLine": 652,
+        "endChar": 28
+      },
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7615332e_6c0d769b",
         "filename": "cmds/installd/commands.c",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2014-07-29T19:50:29Z",
       "side": 1,
       "message": "dead code?",
+      "range": {
+        "startLine": 805,
+        "startChar": 0,
+        "endLine": 805,
+        "endChar": 5
+      },
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1624f7a2_5625b4c8",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2014-07-30T00:15:23Z",
+      "side": 1,
+      "message": "Again WIP.",
+      "parentUuid": "7615332e_6c0d769b",
       "range": {
         "startLine": 805,
         "startChar": 0,
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "36f65b4a_6e27a818",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2014-07-30T00:15:23Z",
+      "side": 1,
+      "message": "Entire block removed.",
+      "parentUuid": "360f3b26_bafe2d79",
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "360f3b26_9afb6989",
         "filename": "cmds/installd/commands.c",
         "patchSetId": 1
@@ -116,6 +224,24 @@
       "writtenOn": "2014-07-29T22:03:06Z",
       "side": 1,
       "message": "remove empty else block",
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36f65b4a_8e12ecbc",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2014-07-30T00:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "360f3b26_9afb6989",
       "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "1624f7a2_162f3ca9",
+        "filename": "cmds/installd/installd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2014-07-30T00:15:23Z",
+      "side": 1,
+      "message": "It\u0027s c. No bool.",
+      "parentUuid": "560aef14_8d9451f6",
+      "range": {
+        "startLine": 150,
+        "startChar": 70,
+        "endLine": 150,
+        "endChar": 71
+      },
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36f65b4a_fdfb70de",
         "filename": "cmds/installd/installd.h",
         "patchSetId": 1
@@ -156,6 +306,30 @@
       "writtenOn": "2014-07-29T19:50:29Z",
       "side": 1,
       "message": "bool",
+      "range": {
+        "startLine": 218,
+        "startChar": 40,
+        "endLine": 218,
+        "endChar": 59
+      },
+      "revId": "8ba9601a7541aa1a00d45890b9afa7b4af9bce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "560aef14_6224679d",
+        "filename": "cmds/installd/installd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2014-07-30T00:15:23Z",
+      "side": 1,
+      "message": "no bool in c",
+      "parentUuid": "36f65b4a_fdfb70de",
       "range": {
         "startLine": 218,
         "startChar": 40,
