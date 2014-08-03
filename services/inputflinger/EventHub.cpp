@@ -1323,6 +1323,17 @@ status_t EventHub::openDeviceLocked(const char *devicePath) {
     if (device->classes & (INPUT_DEVICE_CLASS_JOYSTICK | INPUT_DEVICE_CLASS_DPAD)
             && device->classes & INPUT_DEVICE_CLASS_GAMEPAD) {
         device->controllerNumber = getNextControllerNumberLocked(device);
+        if (device->classes & INPUT_DEVICE_CLASS_EXTERNAL) {
+            bool hasJoyStickAbsX = test_bit(ABS_X, device->absBitmask)
+                    && (getAbsAxisUsage(ABS_X, device->classes) != INPUT_DEVICE_CLASS_TOUCH);
+            bool hasJoyStickAbsHat0X = test_bit(ABS_HAT0X, device->absBitmask)
+                    && (getAbsAxisUsage(ABS_HAT0X, device->classes) != INPUT_DEVICE_CLASS_TOUCH);
+            if (hasJoyStickAbsX || hasJoyStickAbsHat0X ||
+                hasKeycodeLocked(device, AKEYCODE_BUTTON_A) ||
+                hasKeycodeLocked(device, AKEYCODE_BUTTON_X)) {
+                    device->classes &= ~INPUT_DEVICE_CLASS_ALPHAKEY;
+            }
+        }
         setLedForController(device);
     }
 
