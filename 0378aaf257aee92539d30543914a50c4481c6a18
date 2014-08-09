@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9699c785_d5846e87",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-08-09T07:30:54Z",
+      "side": 1,
+      "message": "just to be clear : does the sched_policy change survive an execv ? Logic dictates it must, but just checking.\n\n(also, it\u0027s inherited by threads spawned by this one - right ?)",
+      "revId": "0378aaf257aee92539d30543914a50c4481c6a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
