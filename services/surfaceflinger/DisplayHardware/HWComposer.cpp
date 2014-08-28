@@ -156,6 +156,14 @@ HWComposer::HWComposer(
         if (hwcHasApiVersion(mHwc, HWC_DEVICE_API_VERSION_1_3)) {
             // 1.3 adds support for virtual displays
             mNumDisplays = MAX_HWC_DISPLAYS;
+            // ... but some implementations may not support them
+            if (mHwc->query) {
+                int types;
+                mHwc->query(mHwc, HWC_DISPLAY_TYPES_SUPPORTED, &types);
+                if (!(types & HWC_DISPLAY_VIRTUAL_BIT)) {
+                    mNumDisplays = NUM_BUILTIN_DISPLAYS;
+                }
+            }
         } else if (hwcHasApiVersion(mHwc, HWC_DEVICE_API_VERSION_1_1)) {
             // 1.1 adds support for multiple displays
             mNumDisplays = NUM_BUILTIN_DISPLAYS;
