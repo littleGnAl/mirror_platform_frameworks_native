@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10523f23_d57e4631",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-09-03T22:25:14Z",
+      "side": 1,
+      "message": "-\u003equery isn\u0027t optional, no need to check for presence.",
+      "revId": "426929e0e320f00da2c9005b22f85a59d6a4fe0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
