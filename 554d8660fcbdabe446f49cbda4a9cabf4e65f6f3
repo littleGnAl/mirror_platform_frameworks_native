@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50dbd705_562284c6",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1005148
+      },
+      "writtenOn": "2014-09-04T19:24:56Z",
+      "side": 1,
+      "message": "probably i should be checking that query() succeeds - unless you are comfortable with the assumption it should never fail.",
+      "revId": "554d8660fcbdabe446f49cbda4a9cabf4e65f6f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50dbd705_36aee0b6",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1005148
+      },
+      "writtenOn": "2014-09-04T19:24:56Z",
+      "side": 1,
+      "message": "should this also query?  i guess it matters less with EXTERNAL since its not \"present\" unless hwc returns a valid config.",
+      "revId": "554d8660fcbdabe446f49cbda4a9cabf4e65f6f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
