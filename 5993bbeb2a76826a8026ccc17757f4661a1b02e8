@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10f15fa2_c2e5b2b2",
+        "filename": "services/surfaceflinger/DisplayDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-09-09T23:46:52Z",
+      "side": 1,
+      "message": "this will fail to compile if the macro is defined. __unused instead.",
+      "revId": "5993bbeb2a76826a8026ccc17757f4661a1b02e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
