@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "702b7bc3_28e8de41",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-09-11T22:05:01Z",
+      "side": 1,
+      "message": "I think you missed some:\n\naosp/frameworks/native$ grep -nr atomic_load\nlibs/binder/Binder.cpp:143:                    atomic_load_explicit(\u0026mExtras, memory_order_acquire));\nlibs/binder/Binder.cpp:166:                    atomic_load_explicit(\u0026mExtras, memory_order_acquire));\nlibs/binder/Binder.cpp:176:                    atomic_load_explicit(\u0026mExtras, memory_order_acquire));\nlibs/binder/Binder.cpp:191:                    atomic_load_explicit(\u0026mExtras, memory_order_relaxed));",
+      "revId": "c0df68bb804d8fc4bc75aa077232ea74f0d53b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
