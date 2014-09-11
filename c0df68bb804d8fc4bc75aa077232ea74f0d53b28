@@ -34,6 +34,24 @@
       "revId": "c0df68bb804d8fc4bc75aa077232ea74f0d53b28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b3c3fb_3d50371d",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-09-11T22:32:49Z",
+      "side": 1,
+      "message": "Ah, my mistake. I can check that this works under clang in a few minutes.",
+      "parentUuid": "70b9bbd7_22ebaf12",
+      "revId": "c0df68bb804d8fc4bc75aa077232ea74f0d53b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
