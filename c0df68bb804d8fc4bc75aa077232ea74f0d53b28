@@ -16,6 +16,24 @@
       "revId": "c0df68bb804d8fc4bc75aa077232ea74f0d53b28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70b9bbd7_22ebaf12",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-09-11T22:30:22Z",
+      "side": 1,
+      "message": "The others are not in const member functions.  Do they actually generate error messages?  My theory was that they\u0027re OK.\n\nI didn\u0027t actually build with clang, so I was hoping someone could check whether or not this works.  The patch works with make checkbuild, as does the unmodified tree.",
+      "parentUuid": "702b7bc3_28e8de41",
+      "revId": "c0df68bb804d8fc4bc75aa077232ea74f0d53b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
