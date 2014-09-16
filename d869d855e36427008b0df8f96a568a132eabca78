@@ -33,6 +33,24 @@
       "revId": "d869d855e36427008b0df8f96a568a132eabca78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c53b78_bcf22d00",
+        "filename": "opengl/libs/GLES_trace/src/gltrace.pb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022968
+      },
+      "writtenOn": "2014-09-16T14:26:41Z",
+      "side": 1,
+      "message": "Correction: by \"my internal 2.3-\u003e2.5 experiment\" I actually mean \"my INITIAL 2.3-\u003e2.5 experiment\".\n\nSomeone from the team managing this project said that this CL looks fine as long as the new proto stuff works :)\n\nWink will probably know more about generating C++ sources from proto files. I couldn\u0027t find any rule that could invoke aprotoc for generating C++ code. If that\u0027s too troublesome, I think it\u0027s ok to keep these two generated files checked in as source.",
+      "parentUuid": "70c53b78_79a387ce",
+      "revId": "d869d855e36427008b0df8f96a568a132eabca78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
