@@ -47,6 +47,9 @@ LOCAL_CFLAGS += -DBINDER_IPC_32BIT=1
 endif
 endif
 LOCAL_CFLAGS += -Werror
+# To allow getReturnString and friends in IPCThreadState.cpp to remain
+# undefined in LOG_NDEBUG mode
+LOCAL_CLANG_CFLAGS += -Wno-error=undefined-internal
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -59,4 +62,7 @@ LOCAL_CFLAGS += -DBINDER_IPC_32BIT=1
 endif
 endif
 LOCAL_CFLAGS += -Werror
+# To allow getReturnString and friends in IPCThreadState.cpp to remain
+# undefined in LOG_NDEBUG mode
+LOCAL_CLANG_CFLAGS += -Wno-error=undefined-internal
 include $(BUILD_STATIC_LIBRARY)
