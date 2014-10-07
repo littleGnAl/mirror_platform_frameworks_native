@@ -106,17 +106,22 @@ include $(BUILD_SHARED_LIBRARY)
 # build surfaceflinger's executable
 include $(CLEAR_VARS)
 
+LOCAL_CPP_EXTENSION := .cc
+LOCAL_LDFLAGS := -Wl,--version-script,art/sigchainlib/version-script.txt -Wl,--export-dynamic
 LOCAL_CFLAGS:= -DLOG_TAG=\"SurfaceFlinger\"
+LOCAL_CPPFLAGS:= -std=gnu++11
 
 LOCAL_SRC_FILES:= \
-	main_surfaceflinger.cpp 
+	main_surfaceflinger.cc \
+	../../../../art/sigchainlib/sigchain.cc
 
 LOCAL_SHARED_LIBRARIES := \
 	libsurfaceflinger \
 	libcutils \
 	liblog \
 	libbinder \
-	libutils
+	libutils \
+	libdl
 
 LOCAL_MODULE:= surfaceflinger
 
