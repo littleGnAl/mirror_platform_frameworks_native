@@ -16,6 +16,24 @@
       "revId": "7bce69d846dfa789186277d5f460717dfc858386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10e6c0ff_642ea033",
+        "filename": "services/surfaceflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2014-10-07T23:59:27Z",
+      "side": 1,
+      "message": "don\u0027t really want to create a separate file for the sake of LOCAL_LDFLAGS...",
+      "parentUuid": "30fbc487_36daf52c",
+      "revId": "7bce69d846dfa789186277d5f460717dfc858386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
