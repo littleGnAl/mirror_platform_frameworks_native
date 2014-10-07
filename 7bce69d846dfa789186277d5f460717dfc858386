@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30fbc487_36daf52c",
+        "filename": "services/surfaceflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-10-07T22:35:40Z",
+      "side": 1,
+      "message": "seems like we should probably have a .mk we can $include, rather than duplicate this...",
+      "revId": "7bce69d846dfa789186277d5f460717dfc858386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
