@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "10bfa0c3_1c58d9fb",
+        "filename": "services/surfaceflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2014-10-08T20:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c5985b_f8116dc1",
+      "revId": "7bce69d846dfa789186277d5f460717dfc858386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e904d0_fca6be4b",
         "filename": "services/surfaceflinger/Android.mk",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "writtenOn": "2014-10-08T05:37:07Z",
       "side": 1,
       "message": "Why did we have to change the suffix here? Does the build system only allow one C++ suffix? It\u0027s annoying to have this be different from every other file my team deals with.",
+      "revId": "7bce69d846dfa789186277d5f460717dfc858386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0992c84_7516623f",
+        "filename": "services/surfaceflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2014-10-08T20:28:03Z",
+      "side": 1,
+      "message": "yes unfortunately build system allows only one suffix.",
+      "parentUuid": "30e904d0_fca6be4b",
       "revId": "7bce69d846dfa789186277d5f460717dfc858386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
