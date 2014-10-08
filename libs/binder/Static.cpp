@@ -81,7 +81,7 @@ public:
     LibBinderIPCtStatics()
     {
     }
-    
+
     ~LibBinderIPCtStatics()
     {
         IPCThreadState::shutdown();

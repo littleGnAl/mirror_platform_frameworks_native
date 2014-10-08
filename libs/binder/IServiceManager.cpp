@@ -33,7 +33,7 @@ namespace android {
 sp<IServiceManager> defaultServiceManager()
 {
     if (gDefaultServiceManager != NULL) return gDefaultServiceManager;
-    
+
     {
         AutoMutex _l(gDefaultServiceManagerLock);
         while (gDefaultServiceManager == NULL) {
@@ -43,7 +43,7 @@ sp<IServiceManager> defaultServiceManager()
                 sleep(1);
         }
     }
-    
+
     return gDefaultServiceManager;
 }
 
@@ -71,7 +71,7 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid)
     gDefaultServiceManagerLock.lock();
     pc = gPermissionController;
     gDefaultServiceManagerLock.unlock();
-    
+
     int64_t startTime = 0;
 
     while (true) {
@@ -85,14 +85,14 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid)
                 }
                 return res;
             }
-            
+
             // Is this a permission failure, or did the controller go away?
             if (pc->asBinder()->isBinderAlive()) {
                 ALOGW("Permission failure: %s from uid=%d pid=%d",
                         String8(permission).string(), uid, pid);
                 return false;
             }
-            
+
             // Object is dead!
             gDefaultServiceManagerLock.lock();
             if (gPermissionController == pc) {
@@ -100,7 +100,7 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid)
             }
             gDefaultServiceManagerLock.unlock();
         }
-    
+
         // Need to retrieve the permission controller.
         sp<IBinder> binder = defaultServiceManager()->checkService(_permission);
         if (binder == NULL) {
@@ -113,7 +113,7 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid)
             sleep(1);
         } else {
             pc = interface_cast<IPermissionController>(binder);
-            // Install the new permission controller, and try again.        
+            // Install the new permission controller, and try again.
             gDefaultServiceManagerLock.lock();
             gPermissionController = pc;
             gDefaultServiceManagerLock.unlock();

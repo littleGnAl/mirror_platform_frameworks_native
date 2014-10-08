@@ -36,18 +36,18 @@ public:
 
             void                setContextObject(const sp<IBinder>& object);
             sp<IBinder>         getContextObject(const sp<IBinder>& caller);
-        
+
             void                setContextObject(const sp<IBinder>& object,
                                                  const String16& name);
             sp<IBinder>         getContextObject(const String16& name,
                                                  const sp<IBinder>& caller);
 
             void                startThreadPool();
-                        
+
     typedef bool (*context_check_func)(const String16& name,
                                        const sp<IBinder>& caller,
                                        void* userData);
-        
+
             bool                isContextManager(void) const;
             bool                becomeContextManager(
                                     context_check_func checkFunc,
@@ -58,38 +58,38 @@ public:
             void                expungeHandle(int32_t handle, IBinder* binder);
 
             void                spawnPooledThread(bool isMain);
-            
+
             status_t            setThreadPoolMaxThreadCount(size_t maxThreads);
             void                giveThreadPoolName();
 
 private:
     friend class IPCThreadState;
-    
+
                                 ProcessState();
                                 ~ProcessState();
 
                                 ProcessState(const ProcessState& o);
             ProcessState&       operator=(const ProcessState& o);
             String8             makeBinderThreadName();
-            
+
             struct handle_entry {
                 IBinder* binder;
                 RefBase::weakref_type* refs;
             };
-            
+
             handle_entry*       lookupHandleLocked(int32_t handle);
 
             int                 mDriverFD;
             void*               mVMStart;
-            
+
     mutable Mutex               mLock;  // protects everything below.
-            
+
             Vector<handle_entry>mHandleToObject;
 
             bool                mManagesContexts;
             context_check_func  mBinderContextCheckFunc;
             void*               mBinderContextUserData;
-            
+
             KeyedVector<String16, sp<IBinder> >
                                 mContexts;
 
@@ -98,7 +98,7 @@ private:
             bool                mThreadPoolStarted;
     volatile int32_t            mThreadPoolSeq;
 };
-    
+
 }; // namespace android
 
 // ---------------------------------------------------------------------------

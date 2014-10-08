@@ -29,10 +29,10 @@ namespace android {
 
 // ---------------------------------------------------------------------------
 
-TextOutput::TextOutput() { 
+TextOutput::TextOutput() {
 }
 
-TextOutput::~TextOutput() { 
+TextOutput::~TextOutput() {
 }
 
 // ---------------------------------------------------------------------------
