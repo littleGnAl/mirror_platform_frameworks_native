@@ -34,6 +34,40 @@
       "revId": "7bce69d846dfa789186277d5f460717dfc858386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50c5985b_f8116dc1",
+        "filename": "services/surfaceflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-10-08T05:37:07Z",
+      "side": 1,
+      "message": "Why gnu++11? I\u0027d rather use c++11.",
+      "revId": "7bce69d846dfa789186277d5f460717dfc858386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_fca6be4b",
+        "filename": "services/surfaceflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-10-08T05:37:07Z",
+      "side": 1,
+      "message": "Why did we have to change the suffix here? Does the build system only allow one C++ suffix? It\u0027s annoying to have this be different from every other file my team deals with.",
+      "revId": "7bce69d846dfa789186277d5f460717dfc858386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
