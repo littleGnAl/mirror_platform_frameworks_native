@@ -34,6 +34,7 @@ class ProcessState : public virtual RefBase
 public:
     static  sp<ProcessState>    self();
 
+            void                setTheContextObject(sp<BBinder> obj);
             void                setContextObject(const sp<IBinder>& object);
             sp<IBinder>         getContextObject(const sp<IBinder>& caller);
 

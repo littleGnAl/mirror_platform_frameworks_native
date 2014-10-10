@@ -86,6 +86,13 @@ sp<IBinder> ProcessState::getContextObject(const sp<IBinder>& /*caller*/)
     return getStrongProxyForHandle(0);
 }
 
+void ProcessState::setTheContextObject(sp<BBinder> obj)
+{
+    AutoMutex _l(mLock);
+    IPCThreadState* ipc = IPCThreadState::self();
+    ipc->setTheContextObject(obj);
+}
+
 void ProcessState::setContextObject(const sp<IBinder>& object, const String16& name)
 {
     AutoMutex _l(mLock);

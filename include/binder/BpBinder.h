@@ -60,6 +60,7 @@ public:
 
             status_t    setConstantData(const void* data, size_t size);
             void        sendObituary();
+            void        incStrongHandle();
 
     class ObjectManager
     {

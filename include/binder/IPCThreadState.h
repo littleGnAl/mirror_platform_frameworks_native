@@ -74,6 +74,7 @@ public:
                                                             BpBinder* proxy);
             status_t            clearDeathNotification( int32_t handle,
                                                         BpBinder* proxy);
+            void                setTheContextObject(sp<BBinder> obj);
 
     static  void                shutdown();
 

@@ -294,6 +294,7 @@ static bool gHaveTLS = false;
 static pthread_key_t gTLS = 0;
 static bool gShutdown = false;
 static bool gDisableBackgroundScheduling = false;
+sp<BBinder> gContextObject = NULL;
 
 IPCThreadState* IPCThreadState::self()
 {
@@ -934,11 +935,9 @@ status_t IPCThreadState::writeTransactionData(int32_t cmd, uint32_t binderFlags,
     return NO_ERROR;
 }
 
-sp<BBinder> the_context_object;
-
-void setTheContextObject(sp<BBinder> obj)
+void IPCThreadState::setTheContextObject(sp<BBinder> obj)
 {
-    the_context_object = obj;
+    gContextObject = obj;
 }
 
 status_t IPCThreadState::executeCommand(int32_t cmd)
@@ -1081,8 +1080,10 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
                 if (error < NO_ERROR) reply.setError(error);
 
             } else {
-                const status_t error = the_context_object->transact(tr.code, buffer, &reply, tr.flags);
-                if (error < NO_ERROR) reply.setError(error);
+                if (gContextObject != NULL) {
+                    const status_t error = gContextObject->transact(tr.code, buffer, &reply, tr.flags);
+                    if (error < NO_ERROR) reply.setError(error);
+                }
             }
 
             //ALOGI("<<<< TRANSACT from pid %d restore pid %d uid %d\n",
