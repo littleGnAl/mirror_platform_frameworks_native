@@ -1,0 +1,10 @@
+Code-Review+2: Stephen Hines <srhines@google.com>
+Code-Review+1: Bernhard Rosenkränzer <Bernhard.Rosenkranzer@linaro.org>
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+2: Ian Rogers <irogers@google.com>
+Verified+1: Dan Albert <danalbert@google.com>
+Submitted-by: Dan Albert <danalbert@google.com>
+Submitted-at: Wed, 15 Oct 2014 22:45:07 +0000
+Reviewed-on: https://android-review.googlesource.com/107686
+Project: platform/frameworks/native
+Branch: refs/heads/master
