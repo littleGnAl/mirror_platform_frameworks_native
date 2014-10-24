@@ -74,9 +74,8 @@ static const char* getCommandString(size_t idx);
 static const void* printReturnCommand(TextOutput& out, const void* _cmd);
 static const void* printCommand(TextOutput& out, const void* _cmd);
 
-// This will result in a missing symbol failure if the IF_LOG_COMMANDS()
-// conditionals don't get stripped...  but that is probably what we want.
-#if !LOG_NDEBUG
+// Static const and functions will be optimized out if not used,
+// when LOG_NDEBUG and references in IF_LOG_COMMANDS() are optimized out.
 static const char *kReturnStrings[] = {
     "BR_ERROR",
     "BR_OK",
@@ -287,7 +286,6 @@ static const void* printCommand(TextOutput& out, const void* _cmd)
     out << endl;
     return cmd;
 }
-#endif
 
 static pthread_mutex_t gTLSMutex = PTHREAD_MUTEX_INITIALIZER;
 static bool gHaveTLS = false;
