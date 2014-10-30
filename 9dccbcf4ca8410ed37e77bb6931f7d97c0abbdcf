@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15f87289_d40612b8",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-10-30T21:26:33Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure what\u0027s actually intended here is\n\n    ... \u003c\u003c std::hex \u003c\u003c btd-\u003eflags \u003c\u003c std::dec \u003c\u003c ...",
+      "revId": "9dccbcf4ca8410ed37e77bb6931f7d97c0abbdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
