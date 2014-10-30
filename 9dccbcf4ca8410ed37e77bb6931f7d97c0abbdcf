@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f5267ef7_449262be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-10-30T21:28:18Z",
+      "side": 1,
+      "message": "This had me confused, since this is (by number of lines) not what this patch does. I\u0027d prefer either making this line read something along the lines of \"solve some clang warnings\", or split the commit into two (I don\u0027t care which).",
+      "revId": "9dccbcf4ca8410ed37e77bb6931f7d97c0abbdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15f87289_d40612b8",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 2
