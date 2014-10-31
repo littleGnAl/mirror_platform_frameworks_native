@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d587ba27_1e061910",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-10-31T18:39:08Z",
+      "side": 1,
+      "message": "yes, now two warnings were fixed. will change the comment in the next patch set.",
+      "parentUuid": "f5267ef7_449262be",
+      "revId": "9dccbcf4ca8410ed37e77bb6931f7d97c0abbdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15f87289_d40612b8",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 2
