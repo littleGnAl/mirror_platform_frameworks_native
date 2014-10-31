@@ -51,6 +51,24 @@
       "revId": "9dccbcf4ca8410ed37e77bb6931f7d97c0abbdcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f582fe17_51d32368",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-10-31T23:55:57Z",
+      "side": 1,
+      "message": "Pulling in some offline notes from chh:\n\n\u003e frameworks/native/libs/binder/IPCThreadState.cpp:197:37: error: address of function \u0027std::hex\u0027 will always evaluate to \u0027true\u0027 [-Werror,-Wpointer-bool-conversion]\n\u003e             out \u003c\u003c \": target\u003d0x\" \u003c\u003c std::hex \u003c\u003c b \u003c\u003c \" (cookie 0x\" \u003c\u003c c \u003c\u003c std::dec\n\nThe actual problem here is that std::hex only works with streams that inherit from std::ios_base (as all should). Unfortunately, since this project is (unnecessarily?) allergic to the STL, TextOutput _doesn\u0027t_ do this.\n\nI don\u0027t think rewriting TextOutput to be based on std::ios_base is something that needs to be done right now. Do we care about changing this? I\u0027m guessing we don\u0027t, in which case (void*)(long)foo is probably fine.",
+      "parentUuid": "15f87289_d40612b8",
+      "revId": "9dccbcf4ca8410ed37e77bb6931f7d97c0abbdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
