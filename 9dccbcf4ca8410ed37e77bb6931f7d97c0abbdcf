@@ -69,6 +69,24 @@
       "revId": "9dccbcf4ca8410ed37e77bb6931f7d97c0abbdcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_d5737cda",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-11-03T18:08:24Z",
+      "side": 1,
+      "message": "I found in this and other files more cases like \"\u003c\u003c (void*) ...\".\nThe other cases don\u0027t have clang warnings because the value size is correct. Rewriting TextOutput seem like another CL to me, if we really want to do that. I would rather keep this CL as a simple incremental improvement and test it again with latest source.",
+      "parentUuid": "f582fe17_51d32368",
+      "revId": "9dccbcf4ca8410ed37e77bb6931f7d97c0abbdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
