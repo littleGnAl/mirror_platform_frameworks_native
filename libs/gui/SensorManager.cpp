@@ -123,8 +123,9 @@ status_t SensorManager::assertStateLocked() const {
     if (initSensorManager) {
         // try for 300 seconds (60*5(getService() tries for 5 seconds)) before giving up ...
         const String16 name("sensorservice");
-        for (int i = 0; i < 60; i++) {
-            status_t err = getService(name, &mSensorServer);
+        status_t err = NAME_NOT_FOUND;
+        for (int i=0 ; i < 60 ; i++) {
+            err = getService(name, &mSensorServer);
             if (err == NAME_NOT_FOUND) {
                 sleep(1);
                 continue;
@@ -134,6 +135,10 @@ status_t SensorManager::assertStateLocked() const {
             }
             break;
         }
+        /* After 4 tries, it is still possible that mSensorServer is not valid because
+           the service itself may not exist. Return NAME_NOT_FOUND in this case */
+        if (err == NAME_NOT_FOUND)
+            return err;
 
         class DeathObserver : public IBinder::DeathRecipient {
             SensorManager& mSensorManger;
