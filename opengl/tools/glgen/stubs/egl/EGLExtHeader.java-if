@@ -31,6 +31,11 @@ public class EGLExt {
 
     native private static void _nativeClassInit();
     static {
+        try {
+            Class.forName("android.opengl.EGL14");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         _nativeClassInit();
     }
 
