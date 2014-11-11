@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a4f777e_f9bed1a4",
+        "filename": "opengl/tools/glgen/stubs/egl/EGL14cHeader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2014-11-11T23:55:12Z",
+      "side": 1,
+      "message": "Where are these generated from? Any changes in this CL seem like they are going to get wiped out if/when we refresh.",
+      "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac51b23_97aeaef6",
         "filename": "opengl/tools/glgen/stubs/gles11/glDrawArraysIndirect.cpp",
         "patchSetId": 2
@@ -61,6 +78,30 @@
       "side": 1,
       "message": "The warning is a signed-compare warning on 64b, as there UINTPTR_MAX is 64b unsigned.\n\nFrom your description, the right thing here will be UINT32_MAX. Would you agree?",
       "parentUuid": "7ac51b23_224a1674",
+      "range": {
+        "startLine": 6,
+        "startChar": 53,
+        "endLine": 6,
+        "endChar": 84
+      },
+      "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a4f777e_19640dbe",
+        "filename": "opengl/tools/glgen/stubs/gles11/glDrawArraysIndirect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2014-11-11T23:55:12Z",
+      "side": 1,
+      "message": "I think UINT32_MAX is a better value to use here. It is doing exactly that (making sure that you don\u0027t have a value that won\u0027t fit in 32-bits, but only on 32-bit compiles).",
+      "parentUuid": "5a4f777e_e74ab11f",
       "range": {
         "startLine": 6,
         "startChar": 53,
