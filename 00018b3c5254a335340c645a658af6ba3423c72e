@@ -22,6 +22,30 @@
       "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac51b23_224a1674",
+        "filename": "opengl/tools/glgen/stubs/gles11/glDrawArraysIndirect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-11-11T14:44:55Z",
+      "side": 1,
+      "message": "The code is trying to check whether \u0027indirect\u0027, a signed 64-bit value, is larger than the maximum 32-bit pointer value. If not, the cast in the call to glDrawArraysIndirect will modify the bits, and the call won\u0027t do what the app intended.\n\nWhat warning are you getting here? Does the warning only happen in 64-bit builds (or only in 32-bit)?",
+      "parentUuid": "7ac51b23_97aeaef6",
+      "range": {
+        "startLine": 6,
+        "startChar": 53,
+        "endLine": 6,
+        "endChar": 84
+      },
+      "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
