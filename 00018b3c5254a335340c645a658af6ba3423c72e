@@ -225,6 +225,30 @@
       "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a405775_e026fc24",
+        "filename": "opengl/tools/glgen/stubs/gles11/glDrawArraysIndirect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-12T18:29:12Z",
+      "side": 1,
+      "message": "To be pedantic for posterity: uintptr_t is not defined to have a size equal to sizeof(void*). It is defined as being large enough to do p \u003d\u003d (void*)((uintptr_t)p) (with void* p). It is not required to be exactly the pointer size, though it usually is.\n\nSo on a 32b system, UINTPTR_MAX can well be 2^64-1, and suddenly things break...",
+      "parentUuid": "3aa8035b_4a7897ee",
+      "range": {
+        "startLine": 6,
+        "startChar": 53,
+        "endLine": 6,
+        "endChar": 84
+      },
+      "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
