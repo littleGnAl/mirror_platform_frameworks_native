@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a4f777e_b97859ef",
+        "filename": "opengl/tools/glgen/stubs/egl/EGL14cHeader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-12T00:20:00Z",
+      "side": 1,
+      "message": "Nope. This is the source for the auto-generated files in frameworks/base/core/jni. This is copied verbatim into the target files...",
+      "parentUuid": "5a4f777e_f9bed1a4",
+      "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac51b23_97aeaef6",
         "filename": "opengl/tools/glgen/stubs/gles11/glDrawArraysIndirect.cpp",
         "patchSetId": 2
