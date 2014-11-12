@@ -129,6 +129,30 @@
       "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab9efac_07ab766c",
+        "filename": "opengl/tools/glgen/stubs/gles11/glDrawArraysIndirect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-11-12T00:31:46Z",
+      "side": 1,
+      "message": "(I thought I added this comment, but apparently not. Anyway, it\u0027s not worth arguing about. Feel free to switch to UINT32_MAX).\n\nI don\u0027t get it: we cast UINTPTR_MAX to jlong, which is the same type as \u0027indirect\u0027. The types in that comparison should always match, because the code forces them to.\n\nWe want to compare against the maximum pointer value, if pointer is different size than the Java \u0027indirect\u0027 value. Using UINT32_MAX would work but it doesn\u0027t express the intent as well. Not a big deal to change it, but (as I said above) I don\u0027t understand why we need to.",
+      "parentUuid": "5a4f777e_e74ab11f",
+      "range": {
+        "startLine": 6,
+        "startChar": 53,
+        "endLine": 6,
+        "endChar": 84
+      },
+      "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
