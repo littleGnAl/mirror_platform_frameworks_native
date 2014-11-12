@@ -153,6 +153,30 @@
       "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aaefb66_2f68c964",
+        "filename": "opengl/tools/glgen/stubs/gles11/glDrawArraysIndirect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2014-11-12T00:39:40Z",
+      "side": 1,
+      "message": "For 64-bit compiles, nothing can be \u003e UINTPTR_MAX, so that it provably false. I think that is the warning that must be firing for Andreas. It is more correct to switch to UINT32_MAX, because that is the only case that you are comparing it for actually.",
+      "parentUuid": "9ab9efac_07ab766c",
+      "range": {
+        "startLine": 6,
+        "startChar": 53,
+        "endLine": 6,
+        "endChar": 84
+      },
+      "revId": "00018b3c5254a335340c645a658af6ba3423c72e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
