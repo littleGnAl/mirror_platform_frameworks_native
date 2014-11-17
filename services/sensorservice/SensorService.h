@@ -37,6 +37,11 @@
 
 #include "SensorInterface.h"
 
+// Clang warns about SensorEventConnection::dump hiding BBinder::dump
+// The cause isn't fixable without changing the API, so let's tell clang
+// this is indeed intentional.
+#pragma clang diagnostic ignored "-Woverloaded-virtual"
+
 // ---------------------------------------------------------------------------
 
 #define DEBUG_CONNECTIONS   false
