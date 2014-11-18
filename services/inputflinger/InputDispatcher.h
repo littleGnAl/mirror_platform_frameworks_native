@@ -606,6 +606,7 @@ private:
     struct Queue {
         T* head;
         T* tail;
+        uint32_t entryCount;
 
         inline Queue() : head(NULL), tail(NULL) {
         }
@@ -615,6 +616,7 @@ private:
         }
 
         inline void enqueueAtTail(T* entry) {
+            entryCount++;
             entry->prev = tail;
             if (tail) {
                 tail->next = entry;
@@ -626,6 +628,7 @@ private:
         }
 
         inline void enqueueAtHead(T* entry) {
+            entryCount++;
             entry->next = head;
             if (head) {
                 head->prev = entry;
@@ -637,6 +640,7 @@ private:
         }
 
         inline void dequeue(T* entry) {
+            entryCount--;
             if (entry->prev) {
                 entry->prev->next = entry->next;
             } else {
@@ -650,6 +654,7 @@ private:
         }
 
         inline T* dequeueAtHead() {
+            entryCount--;
             T* entry = head;
             head = entry->next;
             if (head) {
@@ -660,7 +665,9 @@ private:
             return entry;
         }
 
-        uint32_t count() const;
+        uint32_t count() const {
+            return entryCount;
+        }
     };
 
     /* Specifies which events are to be canceled and why. */
