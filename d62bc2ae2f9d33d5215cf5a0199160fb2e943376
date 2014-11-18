@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a42cfda_e891e7de",
+        "filename": "services/sensorservice/SensorService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-11-18T00:06:11Z",
+      "side": 1,
+      "message": "How about just replace the call to inforMessage.appendFormat with ALOGI?",
+      "range": {
+        "startLine": 625,
+        "startChar": 24,
+        "endLine": 625,
+        "endChar": 35
+      },
+      "revId": "d62bc2ae2f9d33d5215cf5a0199160fb2e943376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
