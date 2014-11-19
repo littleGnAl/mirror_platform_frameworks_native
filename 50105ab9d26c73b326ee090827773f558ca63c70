@@ -22,6 +22,30 @@
       "revId": "50105ab9d26c73b326ee090827773f558ca63c70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da69a7a3_9991dbe0",
+        "filename": "services/sensorservice/SensorService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-11-19T20:53:01Z",
+      "side": 1,
+      "message": "It turns out that not all AOSP projects using this header file is ignoring unknown pragma. So we will need to #if __clang__ this pragma.",
+      "parentUuid": "ba16b3da_3e84f12f",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "50105ab9d26c73b326ee090827773f558ca63c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
