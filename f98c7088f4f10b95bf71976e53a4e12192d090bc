@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5af0570f_9dc1e311",
+        "filename": "services/inputflinger/InputDispatcher.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-11-19T10:39:11Z",
+      "side": 1,
+      "message": ", entryCount(0)",
+      "revId": "f98c7088f4f10b95bf71976e53a4e12192d090bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
