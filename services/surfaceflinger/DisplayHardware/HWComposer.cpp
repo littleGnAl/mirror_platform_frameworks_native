@@ -782,7 +782,7 @@ status_t HWComposer::setPowerMode(int disp, int mode) {
         }
         if (hwcHasApiVersion(mHwc, HWC_DEVICE_API_VERSION_1_4)) {
             return (status_t)mHwc->setPowerMode(mHwc, disp, mode);
-        } else {
+        } else if (mHwc->blank) {
             return (status_t)mHwc->blank(mHwc, disp,
                     mode == HWC_POWER_MODE_OFF ? 1 : 0);
         }
