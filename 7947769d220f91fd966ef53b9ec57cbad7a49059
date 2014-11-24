@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fe001b1_525b72f6",
+        "filename": "opengl/tools/glgen/stubs/egl/EGLExtHeader.java-if",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2014-11-24T17:44:31Z",
+      "side": 1,
+      "message": "Why is this needed? Does it ensure EGL14\u0027s static initializer is run first? If so, a comment explaining that would be helpful -- it\u0027s pretty subtle, and someone looking at this code wouldn\u0027t easily understand why it\u0027s needed.\n\nOr are you trying to protect against EGL14 not existing? I think we can just assume that, it\u0027s a required part of the platform.",
+      "revId": "7947769d220f91fd966ef53b9ec57cbad7a49059",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
