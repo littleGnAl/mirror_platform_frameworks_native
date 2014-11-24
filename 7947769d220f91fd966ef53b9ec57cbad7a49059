@@ -16,6 +16,24 @@
       "revId": "7947769d220f91fd966ef53b9ec57cbad7a49059",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfdb0505_b36c22a6",
+        "filename": "opengl/tools/glgen/stubs/egl/EGLExtHeader.java-if",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-24T17:49:21Z",
+      "side": 1,
+      "message": "From my reading I think it\u0027s both. I was tempted to make a comment to move this to JNI - when we retrieve the class there we could force it to initialize. That would make things more obvious there and keep the Java side clean.",
+      "parentUuid": "9fe001b1_525b72f6",
+      "revId": "7947769d220f91fd966ef53b9ec57cbad7a49059",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
