@@ -70,6 +70,29 @@
       "revId": "7947769d220f91fd966ef53b9ec57cbad7a49059",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f298d84_749320e8",
+        "filename": "opengl/tools/glgen/stubs/egl/EGLExtHeader.java-if",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1017028
+      },
+      "writtenOn": "2014-11-25T01:31:05Z",
+      "side": 1,
+      "message": "I found this is not needed. According to VM implementation(android/art/runtime/jni_internal.cc), FindClass and GetStaticFieldID calls in _nativeClassInit() are enough to ensure EGL14 class is initialized first. So I\u0027ll remove this and submit change again.",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "7947769d220f91fd966ef53b9ec57cbad7a49059",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
