@@ -134,6 +134,12 @@ void SensorDevice::autoDisable(void *ident, int handle) {
 status_t SensorDevice::activate(void* ident, int handle, int enabled)
 {
     if (!mSensorDevice) return NO_INIT;
+    ssize_t pos = mActivationCount.indexOfKey(handle);
+    if (pos < 0) {
+       ALOGE("SensorDevice::activate FAIL: indexOfKey return (%s), ident=%p, handle=0x%08x",
+               strerror(-pos), ident, handle);
+       return NO_INIT;
+    }
     status_t err(NO_ERROR);
     bool actuateHardware = false;
 
@@ -279,6 +285,12 @@ status_t SensorDevice::setDelay(void* ident, int handle, int64_t samplingPeriodN
         samplingPeriodNs = MINIMUM_EVENTS_PERIOD;
     }
     Mutex::Autolock _l(mLock);
+    ssize_t pos = mActivationCount.indexOfKey(handle);
+    if (pos < 0) {
+       ALOGE("SensorDevice::setDelay FAIL: indexOfKey return (%s), ident=%p, handle=0x%08x",
+               strerror(-pos), ident, handle);
+       return NO_INIT;
+    }
     Info& info( mActivationCount.editValueFor(handle) );
     // If the underlying sensor is NOT in continuous mode, setDelay() should return an error.
     // Calling setDelay() in batch mode is an invalid operation.
