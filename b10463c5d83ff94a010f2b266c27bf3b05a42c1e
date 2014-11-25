@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fcc1153_74045909",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-11-25T22:03:09Z",
+      "side": 1,
+      "message": "This cast is redundant.",
+      "revId": "b10463c5d83ff94a010f2b266c27bf3b05a42c1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
