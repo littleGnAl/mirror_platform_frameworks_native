@@ -31,10 +31,14 @@ LOCAL_SHARED_LIBRARIES := libcutils libhardware libutils liblog libpixelflinger 
 LOCAL_SRC_FILES_arm += fixed_asm.S iterators.S
 LOCAL_CFLAGS_arm += -fstrict-aliasing
 
+ifndef ARCH_MIPS_REV6
 LOCAL_SRC_FILES_mips += arch-mips/fixed_asm.S
+endif
 LOCAL_CFLAGS_mips += -fstrict-aliasing
 # The graphics code can generate division by zero
 LOCAL_CFLAGS_mips += -mno-check-zero-division
+
+# TODO: create mips64 asm code
 
 # we need to access the private Bionic header <bionic_tls.h>
 LOCAL_C_INCLUDES += bionic/libc/private
