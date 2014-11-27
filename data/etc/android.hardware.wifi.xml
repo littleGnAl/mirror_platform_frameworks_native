@@ -17,4 +17,7 @@
 <!-- This is the standard feature indicating that the device includes WiFi. -->
 <permissions>
     <feature name="android.hardware.wifi" />
+    <!-- add android.hardware.wifi.nocoex feature  -->
+    <feature name="android.hardware.wifi.nocoex" />
+
 </permissions>
