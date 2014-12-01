@@ -20,6 +20,8 @@
 
 #include <android/native_window.h>
 
+#include <sync/sync.h>
+
 #include <binder/Parcel.h>
 
 #include <utils/Log.h>
@@ -991,8 +993,14 @@ status_t Surface::lock(
         if (canCopyBack) {
             // copy the area that is invalid and not repainted this round
             const Region copyback(mDirtyRegion.subtract(newDirtyRegion));
-            if (!copyback.isEmpty())
+            if (!copyback.isEmpty()) {
+                if (fenceFd >= 0) {
+                    sync_wait(fenceFd, -1);
+                    close(fenceFd);
+                    fenceFd = -1;
+                }
                 copyBlt(backBuffer, frontBuffer, copyback);
+            }
         } else {
             // if we can't copy-back anything, modify the user's dirty
             // region to make sure they redraw the whole buffer
