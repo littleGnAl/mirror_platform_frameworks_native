@@ -77,7 +77,7 @@ static const TracingCategory k_categories[] = {
     { "webview",    "WebView",          ATRACE_TAG_WEBVIEW, { } },
     { "wm",         "Window Manager",   ATRACE_TAG_WINDOW_MANAGER, { } },
     { "am",         "Activity Manager", ATRACE_TAG_ACTIVITY_MANAGER, { } },
-    { "sync",       "Sync Manager",     ATRACE_TAG_SYNC_MANAGER, { } },
+    { "sm",         "Sync Manager",     ATRACE_TAG_SYNC_MANAGER, { } },
     { "audio",      "Audio",            ATRACE_TAG_AUDIO, { } },
     { "video",      "Video",            ATRACE_TAG_VIDEO, { } },
     { "camera",     "Camera",           ATRACE_TAG_CAMERA, { } },
@@ -123,7 +123,7 @@ static const TracingCategory k_categories[] = {
     { "load",       "CPU Load",         0, {
         { REQ,      "/sys/kernel/debug/tracing/events/cpufreq_interactive/enable" },
     } },
-    { "sync",       "Synchronization",  0, {
+    { "sync", "Synchronization",  0, {
         { REQ,      "/sys/kernel/debug/tracing/events/sync/enable" },
     } },
     { "workq",      "Kernel Workqueues", 0, {
