@@ -123,7 +123,7 @@ static const TracingCategory k_categories[] = {
     { "load",       "CPU Load",         0, {
         { REQ,      "/sys/kernel/debug/tracing/events/cpufreq_interactive/enable" },
     } },
-    { "sync",       "Synchronization",  0, {
+    { "nativesync", "Synchronization",  0, {
         { REQ,      "/sys/kernel/debug/tracing/events/sync/enable" },
     } },
     { "workq",      "Kernel Workqueues", 0, {
