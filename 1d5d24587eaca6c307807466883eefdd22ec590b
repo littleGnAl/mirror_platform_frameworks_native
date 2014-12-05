@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c43aaec4_b1e520de",
+        "filename": "libs/gui/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-12-05T21:59:37Z",
+      "side": 1,
+      "message": "btw, as of a couple days ago you can actually just use -std\u003dc++14 (no need to change it, they\u0027re synonyms, but new changes can).",
+      "revId": "1d5d24587eaca6c307807466883eefdd22ec590b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
