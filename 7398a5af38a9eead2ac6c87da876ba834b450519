@@ -22,6 +22,30 @@
       "revId": "7398a5af38a9eead2ac6c87da876ba834b450519",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c488eee4_4f464ca2",
+        "filename": "libs/gui/Surface.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2014-12-09T18:37:48Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s right. I bungled it when I added that method in June. :-(",
+      "parentUuid": "c488eee4_39679a07",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "7398a5af38a9eead2ac6c87da876ba834b450519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
