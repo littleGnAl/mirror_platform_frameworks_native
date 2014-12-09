@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c488eee4_39679a07",
+        "filename": "libs/gui/Surface.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-12-09T04:44:56Z",
+      "side": 1,
+      "message": "Please confirm that that\u0027s the intended semantics.",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "7398a5af38a9eead2ac6c87da876ba834b450519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
