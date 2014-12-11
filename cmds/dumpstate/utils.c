@@ -301,16 +301,41 @@ static int64_t nanotime() {
     return (int64_t)ts.tv_sec * NANOS_PER_SEC + ts.tv_nsec;
 }
 
+int signal_fd = -1;
+
+void sigchld_handler(int s)
+{
+    write(signal_fd, &s, 1);
+}
+
 /* forks a command and waits for it to finish */
 int run_command(const char *title, int timeout_seconds, const char *command, ...) {
     fflush(stdout);
     int64_t start = nanotime();
+    int ret;
+
+    int s[2];
+    int err = socketpair(AF_UNIX, SOCK_STREAM, 0, s);
+    if (err < 0) {
+        printf("*** socketpair: %s\n", strerror(errno));
+        return -1;
+    }
+    fcntl(s[0], F_SETFL, O_NONBLOCK);
+    fcntl(s[1], F_SETFL, O_NONBLOCK);
+    signal_fd = s[1];
+
+    struct sigaction act, oldact;
+    memset(&act, 0, sizeof(act));
+    act.sa_handler = sigchld_handler;
+    sigaction(SIGCHLD, &act, &oldact);
+
     pid_t pid = fork();
 
     /* handle error case */
     if (pid < 0) {
         printf("*** fork: %s\n", strerror(errno));
-        return pid;
+        ret = pid;
+        goto done;
     }
 
     /* handle child case */
@@ -345,28 +370,35 @@ int run_command(const char *title, int timeout_seconds, const char *command, ...
     }
 
     /* handle parent case */
-    for (;;) {
-        int status;
-        pid_t p = waitpid(pid, &status, WNOHANG);
-        int64_t elapsed = nanotime() - start;
-        if (p == pid) {
-            if (WIFSIGNALED(status)) {
-                printf("*** %s: Killed by signal %d\n", command, WTERMSIG(status));
-            } else if (WIFEXITED(status) && WEXITSTATUS(status) > 0) {
-                printf("*** %s: Exit code %d\n", command, WEXITSTATUS(status));
-            }
-            if (title) printf("[%s: %.3fs elapsed]\n\n", command, (float)elapsed / NANOS_PER_SEC);
-            return status;
-        }
+    fd_set readfds;
+    FD_ZERO(&readfds);
+    FD_SET(s[0], &readfds);
+    struct timeval timeout = { timeout_seconds, 0 };
+    do {
+        err = select(s[0] + 1, &readfds, NULL, NULL, &timeout);
+    } while (err < 0 && errno == EINTR);
 
-        if (timeout_seconds && elapsed / NANOS_PER_SEC > timeout_seconds) {
-            printf("*** %s: Timed out after %ds (killing pid %d)\n", command, (int) elapsed, pid);
-            kill(pid, SIGTERM);
-            return -1;
+    pid_t p = waitpid(pid, &ret, WNOHANG);
+    int64_t elapsed = nanotime() - start;
+    if (p == pid) {
+        if (WIFSIGNALED(ret)) {
+            printf("*** %s: Killed by signal %d\n", command, WTERMSIG(ret));
+        } else if (WIFEXITED(ret) && WEXITSTATUS(ret) > 0) {
+            printf("*** %s: Exit code %d\n", command, WEXITSTATUS(ret));
         }
-
-        usleep(100000);  // poll every 0.1 sec
+        if (title) printf("[%s: %.3fs elapsed]\n\n", command, (float)elapsed / NANOS_PER_SEC);
+        goto done;
     }
+
+    printf("*** %s: Timed out after %ds (killing pid %d)\n", command, (int) elapsed, pid);
+    kill(pid, SIGTERM);
+    ret = -1;
+
+done:
+    sigaction(SIGCHLD, &oldact, NULL);
+    close(s[0]);
+    close(s[1]);
+    return ret;
 }
 
 size_t num_props = 0;
