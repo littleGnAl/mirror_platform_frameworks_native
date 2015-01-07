@@ -732,6 +732,9 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     bool have_dex2oat_isa_variant = property_get(dex2oat_isa_variant_key,
                                                  dex2oat_isa_variant, NULL) > 0;
 
+    const char *dex2oat_norelocation = "-Xnorelocate";
+    bool have_dex2oat_relocation_skip_flag = false;
+
     char dex2oat_flags[PROPERTY_VALUE_MAX];
     int dex2oat_flags_count = property_get("dalvik.vm.dex2oat-flags",
                                  dex2oat_flags, NULL) <= 0 ? 0 : split_count(dex2oat_flags);
@@ -804,6 +807,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     if (skip_compilation) {
         strcpy(dex2oat_compiler_filter_arg, "--compiler-filter=verify-none");
         have_dex2oat_compiler_filter_flag = true;
+        have_dex2oat_relocation_skip_flag = true;
     } else if (vm_safe_mode) {
         strcpy(dex2oat_compiler_filter_arg, "--compiler-filter=interpret-only");
         have_dex2oat_compiler_filter_flag = true;
@@ -822,6 +826,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
                + (have_dex2oat_Xmx_flag ? 2 : 0)
                + (have_dex2oat_compiler_filter_flag ? 1 : 0)
                + (have_dex2oat_swap_fd ? 1 : 0)
+               + (have_dex2oat_relocation_skip_flag ? 2 : 0)
                + dex2oat_flags_count];
     int i = 0;
     argv[i++] = (char*)DEX2OAT_BIN;
@@ -858,6 +863,10 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     }
     if (dex2oat_flags_count) {
         i += split(dex2oat_flags, argv + i);
+    }
+    if (have_dex2oat_relocation_skip_flag) {
+        argv[i++] = (char*)RUNTIME_ARG;
+        argv[i++] = (char*)dex2oat_norelocation;
     }
     // Do not add after dex2oat_flags, they should override others for debugging.
     argv[i] = NULL;
