@@ -759,7 +759,8 @@ void Surface::freeAllBuffers() {
 static status_t copyBlt(
         const sp<GraphicBuffer>& dst,
         const sp<GraphicBuffer>& src,
-        const Region& reg)
+        const Region& reg,
+        int *dstFenceFd)
 {
     // src and dst with, height and format must be identical. no verification
     // is done here.
@@ -770,9 +771,10 @@ static status_t copyBlt(
     ALOGE_IF(err, "error locking src buffer %s", strerror(-err));
 
     uint8_t* dst_bits = NULL;
-    err = dst->lock(GRALLOC_USAGE_SW_WRITE_OFTEN, reg.bounds(),
-            reinterpret_cast<void**>(&dst_bits));
+    err = dst->lockAsync(GRALLOC_USAGE_SW_WRITE_OFTEN, reg.bounds(),
+            reinterpret_cast<void**>(&dst_bits), *dstFenceFd);
     ALOGE_IF(err, "error locking dst buffer %s", strerror(-err));
+    *dstFenceFd = -1;
 
     Region::const_iterator head(reg.begin());
     Region::const_iterator tail(reg.end());
@@ -806,7 +808,7 @@ static status_t copyBlt(
         src->unlock();
 
     if (dst_bits)
-        dst->unlock();
+        dst->unlockAsync(dstFenceFd);
 
     return err;
 }
@@ -857,12 +859,7 @@ status_t Surface::lock(
             // copy the area that is invalid and not repainted this round
             const Region copyback(mDirtyRegion.subtract(newDirtyRegion));
             if (!copyback.isEmpty()) {
-                if (fenceFd >= 0) {
-                    sync_wait(fenceFd, -1);
-                    close(fenceFd);
-                    fenceFd = -1;
-                }
-                copyBlt(backBuffer, frontBuffer, copyback);
+                copyBlt(backBuffer, frontBuffer, copyback, &fenceFd);
             }
         } else {
             // if we can't copy-back anything, modify the user's dirty
