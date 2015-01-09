@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2efc49c4_ab8acafc",
+        "filename": "services/inputflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-09T23:58:35Z",
+      "side": 1,
+      "message": "michaelwr: the fact that you ask for this library gets you the openssl headers.",
+      "revId": "5ea47f7a3222357c4b16500ad66ce493d017ebb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
