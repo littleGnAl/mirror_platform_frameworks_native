@@ -16,6 +16,24 @@
       "revId": "5ea47f7a3222357c4b16500ad66ce493d017ebb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce380d5f_8465a800",
+        "filename": "services/inputflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2015-01-10T00:02:55Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "2efc49c4_ab8acafc",
+      "revId": "5ea47f7a3222357c4b16500ad66ce493d017ebb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
