@@ -59,6 +59,10 @@ public:
 
     status_t unlockAsync(buffer_handle_t handle, int *fenceFd);
 
+    status_t copyBuffer(buffer_handle_t src, buffer_handle_t dst, int *fenceFd);
+
+    int apiVersion();
+
     // dumps information about the mapping of this handle
     void dump(buffer_handle_t handle);
 

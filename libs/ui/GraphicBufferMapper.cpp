@@ -183,5 +183,31 @@ status_t GraphicBufferMapper::unlockAsync(buffer_handle_t handle, int *fenceFd)
     return err;
 }
 
+status_t GraphicBufferMapper::copyBuffer(buffer_handle_t src,
+                                         buffer_handle_t dst,
+                                         int *fenceFd)
+{
+    ATRACE_CALL();
+    status_t err;
+
+    if (mAllocMod->common.module_api_version >= GRALLOC_MODULE_API_VERSION_0_4) {
+        err = mAllocMod->copyBuffer(mAllocMod, src, dst, fenceFd);
+    } else {
+        if (*fenceFd >= 0) {
+            close(*fenceFd);
+            *fenceFd = -1;
+        }
+        err = -EPERM;
+    }
+
+    ALOGW_IF(err, "copyBuffer(...) failed %d (%s)", err, strerror(-err));
+    return err;
+}
+
+int GraphicBufferMapper::apiVersion()
+{
+    return mAllocMod->common.module_api_version;
+}
+
 // ---------------------------------------------------------------------------
 }; // namespace android

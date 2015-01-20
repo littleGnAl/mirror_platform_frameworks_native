@@ -29,6 +29,7 @@
 #include <utils/NativeHandle.h>
 
 #include <ui/Fence.h>
+#include <ui/GraphicBufferMapper.h>
 
 #include <gui/IProducerListener.h>
 #include <gui/ISurfaceComposer.h>
@@ -756,7 +757,7 @@ void Surface::freeAllBuffers() {
 // ----------------------------------------------------------------------
 // the lock/unlock APIs must be used from the same thread
 
-static status_t copyBlt(
+static status_t copyBltCpu(
         const sp<GraphicBuffer>& dst,
         const sp<GraphicBuffer>& src,
         const Region& reg,
@@ -811,6 +812,34 @@ static status_t copyBlt(
         dst->unlockAsync(dstFenceFd);
 
     return err;
+}
+
+static status_t copyBlt(
+        const sp<GraphicBuffer>& dst,
+        const sp<GraphicBuffer>& src,
+        const Region& reg,
+        int *dstFenceFd)
+{
+    GraphicBufferMapper &mapper = GraphicBufferMapper::get();
+
+    if (mapper.apiVersion() >= GRALLOC_MODULE_API_VERSION_0_4) {
+        // Use hardware accelerated buffer copy.
+        // This copies the entire contents but should still be more efficient
+        // than a CPU copy of each non-dirty rect.
+        // Take a dup of dstFenceFd, as copyBuffer will take ownership of this,
+        // but we may need it again for CPU fallback.
+        int fd = *dstFenceFd >= 0 ? dup(*dstFenceFd) : -1;
+        status_t err = mapper.copyBuffer(src->handle, dst->handle, dstFenceFd);
+        if (!err) {
+            if (fd >= 0)
+                close(fd);
+            return 0;
+        }
+
+        *dstFenceFd = fd;
+    }
+
+    return copyBltCpu(dst, src, reg, dstFenceFd);
 }
 
 // ----------------------------------------------------------------------------
