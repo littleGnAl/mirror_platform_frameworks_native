@@ -1,7 +1,7 @@
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES:= bugreport.c
+LOCAL_SRC_FILES:= bugreport.cpp
 
 LOCAL_MODULE:= bugreport
 
