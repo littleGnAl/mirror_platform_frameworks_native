@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b4e970c_de6b81df",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-23T04:10:21Z",
+      "side": 1,
+      "message": "it\u0027s never occurred to me until now that \u0027main\u0027 is a special case that doesn\u0027t get mangled by default.",
+      "revId": "74c605e3b5e6697b134da030ad9ce90a467ea64e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb1ce3fc_1ac01dba",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-23T04:10:21Z",
+      "side": 1,
+      "message": "\u003d\u003d -1",
+      "revId": "74c605e3b5e6697b134da030ad9ce90a467ea64e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb1ce3fc_3abde132",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-23T04:10:21Z",
+      "side": 1,
+      "message": ": %s\\n\", strerror(errno)",
+      "revId": "74c605e3b5e6697b134da030ad9ce90a467ea64e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb1ce3fc_faef6941",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-23T04:10:21Z",
+      "side": 1,
+      "message": "\u003d\u003d -1",
+      "revId": "74c605e3b5e6697b134da030ad9ce90a467ea64e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b519ba8_1c27b520",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-23T04:10:21Z",
+      "side": 1,
+      "message": "we really out to add ReadFully and WriteFully to libcutils...",
+      "revId": "74c605e3b5e6697b134da030ad9ce90a467ea64e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
