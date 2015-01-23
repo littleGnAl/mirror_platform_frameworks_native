@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "2b519ba8_bcd0018d",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-23T04:12:55Z",
+      "side": 1,
+      "message": "actually, on second thoughts, all the fprintfs in this file would probably be better as perrors. i hadn\u0027t noticed that the printf is deliberately writing to std*out* because that\u0027s where we\u0027re copying output to. worth a comment? (at least it\u0027ll stand out if everything else is perror.)",
+      "parentUuid": "eb1ce3fc_3abde132",
+      "revId": "74c605e3b5e6697b134da030ad9ce90a467ea64e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb1ce3fc_faef6941",
         "filename": "cmds/bugreport/bugreport.cpp",
         "patchSetId": 3
