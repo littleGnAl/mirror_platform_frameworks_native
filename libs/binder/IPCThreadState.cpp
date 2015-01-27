@@ -35,12 +35,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#ifdef HAVE_PTHREADS
+#if !defined(_WIN32)
 #include <pthread.h>
 #include <sched.h>
 #include <sys/resource.h>
-#endif
-#ifdef HAVE_WIN32_THREADS
+
+#else
 #include <windows.h>
 #endif
 

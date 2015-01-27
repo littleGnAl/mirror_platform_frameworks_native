@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#if defined(HAVE_PTHREADS)
+#if !defined(_WIN32)
 #include <sys/resource.h>
 #endif
 
@@ -39,7 +39,7 @@ int main(int, char**) {
     // instantiate surfaceflinger
     sp<SurfaceFlinger> flinger = new SurfaceFlinger();
 
-#if defined(HAVE_PTHREADS)
+#if !defined(_WIN32)
     setpriority(PRIO_PROCESS, 0, PRIORITY_URGENT_DISPLAY);
 #endif
     set_sched_policy(0, SP_FOREGROUND);
