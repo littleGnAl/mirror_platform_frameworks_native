@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57fbd733_c4e47236",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-27T04:18:49Z",
+      "side": 1,
+      "message": "maybe flip this so it says if _WIN32 #include \u003cwindows.h\u003e instead?\n\n(presumably this doesn\u0027t build for Mac OS? so defined(__linux__) would be an alternative?)",
+      "revId": "f867d5791e993733676e81800b724cd585d8e62e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
