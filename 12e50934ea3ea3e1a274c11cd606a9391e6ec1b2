@@ -46,6 +46,30 @@
       "revId": "12e50934ea3ea3e1a274c11cd606a9391e6ec1b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d6d3d9_31ed9014",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2015-01-28T08:41:01Z",
+      "side": 1,
+      "message": "I don\u0027t think selinux is to blame here.\n\nRemoving the \"list\" (i.e., running \"ip link\" instead of \"ip link list\") fixes the problem. strace and some netlink decoding reveals that \"ip link list\" sends an RTM_NEWLINK message using sendto(), gets EACCES, ignores it, and hangs calling recvfrom().\n\n\"ip link\" sends an RTM_GETLINK, which works.\n\nThis seems to be a bug in our version of ip.",
+      "parentUuid": "57975702_216d28ed",
+      "range": {
+        "startLine": 221,
+        "startChar": 42,
+        "endLine": 221,
+        "endChar": 46
+      },
+      "revId": "12e50934ea3ea3e1a274c11cd606a9391e6ec1b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
