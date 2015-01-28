@@ -1,3 +1,6 @@
+/**
+ * @file obb.h
+ */
 /*
  * Copyright (C) 2010 The Android Open Source Project
  *
@@ -24,10 +27,14 @@
 extern "C" {
 #endif
 
+/// TODO: DOCUMENT
 struct AObbInfo;
+/// TODO: DOCUMENT
 typedef struct AObbInfo AObbInfo;
 
+/// TODO: DOCUMENT
 enum {
+/// TODO: DOCUMENT
     AOBBINFO_OVERLAY = 0x0001,
 };
 

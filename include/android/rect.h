@@ -1,3 +1,6 @@
+/**
+ * @file rect.h
+ */
 /*
  * Copyright (C) 2010 The Android Open Source Project
  *
@@ -24,13 +27,19 @@
 extern "C" {
 #endif
 
+/// TODO: DOCUMENT
 typedef struct ARect {
 #ifdef __cplusplus
+/// TODO: DOCUMENT
     typedef int32_t value_type;
 #endif
+/// TODO: DOCUMENT
     int32_t left;
+/// TODO: DOCUMENT
     int32_t top;
+/// TODO: DOCUMENT
     int32_t right;
+/// TODO: DOCUMENT
     int32_t bottom;
 } ARect;
 

@@ -1,3 +1,6 @@
+/**
+ * @file asset_manager.h
+ */
 /*
  * Copyright (C) 2010 The Android Open Source Project
  *
@@ -22,20 +25,33 @@
 extern "C" {
 #endif
 
+/// TODO: DOCUMENT
 struct AAssetManager;
+
+/// TODO: DOCUMENT
 typedef struct AAssetManager AAssetManager;
 
+/// TODO: DOCUMENT
 struct AAssetDir;
+
+/// TODO: DOCUMENT
 typedef struct AAssetDir AAssetDir;
 
+/// TODO: DOCUMENT
 struct AAsset;
+
+/// TODO: DOCUMENT
 typedef struct AAsset AAsset;
 
-/* Available modes for opening assets */
+/// Available modes for opening assets
 enum {
+/// TODO: DOCUMENT
     AASSET_MODE_UNKNOWN      = 0,
+/// TODO: DOCUMENT
     AASSET_MODE_RANDOM       = 1,
+/// TODO: DOCUMENT
     AASSET_MODE_STREAMING    = 2,
+/// TODO: DOCUMENT
     AASSET_MODE_BUFFER       = 3
 };
 

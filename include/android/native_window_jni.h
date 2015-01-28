@@ -1,3 +1,6 @@
+/**
+ * @file native_window_jni.h
+ */
 /*
  * Copyright (C) 2010 The Android Open Source Project
  *

@@ -1,3 +1,6 @@
+/**
+ * @file asset_manager_jni.h
+ */
 /*
  * Copyright (C) 2010 The Android Open Source Project
  *

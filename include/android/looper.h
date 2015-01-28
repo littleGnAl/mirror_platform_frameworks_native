@@ -1,3 +1,6 @@
+/**
+ * @file looper.h
+ */
 /*
  * Copyright (C) 2010 The Android Open Source Project
  *
@@ -36,6 +39,8 @@ extern "C" {
  * A thread can have only one ALooper associated with it.
  */
 struct ALooper;
+
+/// TODO: DOCUMENT
 typedef struct ALooper ALooper;
 
 /**
@@ -44,6 +49,7 @@ typedef struct ALooper ALooper;
  */
 ALooper* ALooper_forThread();
 
+/// TODO: DOCUMENT
 enum {
     /**
      * Option for ALooper_prepare: this looper will accept calls to
@@ -64,6 +70,7 @@ enum {
  */
 ALooper* ALooper_prepare(int opts);
 
+/// TODO: DOCUMENT
 enum {
     /**
      * Result from ALooper_pollOnce() and ALooper_pollAll():

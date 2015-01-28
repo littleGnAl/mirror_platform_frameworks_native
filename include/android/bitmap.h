@@ -1,3 +1,6 @@
+/**
+ * @file bitmap.h
+ */
 /*
  * Copyright (C) 2009 The Android Open Source Project
  *
@@ -24,27 +27,43 @@
 extern "C" {
 #endif
 
+/// TODO: DOCUMENT
 #define ANDROID_BITMAP_RESULT_SUCCESS            0
+/// TODO: DOCUMENT
 #define ANDROID_BITMAP_RESULT_BAD_PARAMETER     -1
+/// TODO: DOCUMENT
 #define ANDROID_BITMAP_RESULT_JNI_EXCEPTION     -2
+/// TODO: DOCUMENT
 #define ANDROID_BITMAP_RESULT_ALLOCATION_FAILED -3
 
-/* Backward compatibility: this macro used to be misspelled. */
+/// Backward compatibility; this macro used to be misspelled.
 #define ANDROID_BITMAP_RESUT_SUCCESS ANDROID_BITMAP_RESULT_SUCCESS
 
+/// TODO: DOCUMENT
 enum AndroidBitmapFormat {
+/// TODO: DOCUMENT
     ANDROID_BITMAP_FORMAT_NONE      = 0,
+/// TODO: DOCUMENT
     ANDROID_BITMAP_FORMAT_RGBA_8888 = 1,
+/// TODO: DOCUMENT
     ANDROID_BITMAP_FORMAT_RGB_565   = 4,
+/// TODO: DOCUMENT
     ANDROID_BITMAP_FORMAT_RGBA_4444 = 7,
+/// TODO: DOCUMENT
     ANDROID_BITMAP_FORMAT_A_8       = 8,
 };
 
+/// TODO: DOCUMENT
 typedef struct {
+/// TODO: DOCUMENT
     uint32_t    width;
+/// TODO: DOCUMENT
     uint32_t    height;
+/// TODO: DOCUMENT
     uint32_t    stride;
+/// TODO: DOCUMENT
     int32_t     format;
+/// TODO: DOCUMENT
     uint32_t    flags;      // 0 for now
 } AndroidBitmapInfo;
 
