@@ -22,6 +22,30 @@
       "revId": "12e50934ea3ea3e1a274c11cd606a9391e6ec1b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57975702_216d28ed",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-28T05:23:08Z",
+      "side": 1,
+      "message": "shouldn\u0027t we be fixing the selinux policy rather than running everything with su?",
+      "parentUuid": "57975702_21e8c803",
+      "range": {
+        "startLine": 221,
+        "startChar": 42,
+        "endLine": 221,
+        "endChar": 46
+      },
+      "revId": "12e50934ea3ea3e1a274c11cd606a9391e6ec1b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
