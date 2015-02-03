@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7f92bff_617ef297",
+        "filename": "opengl/libs/EGL/getProcAddress.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1010669
+      },
+      "writtenOn": "2015-02-03T00:35:16Z",
+      "side": 0,
+      "message": "This line is required, for mips32r1 builds.\nThe rdhwr instruction then traps out but is emulated by the kernel.",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 68
+      },
+      "revId": "8f3ade0c9ab52a1e4f13d6ff1922dd98e3ccdbcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17515fa8_e5526cac",
+        "filename": "opengl/libs/GLES2/gl2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1010669
+      },
+      "writtenOn": "2015-02-03T00:35:16Z",
+      "side": 0,
+      "message": "This line is required, for mips32r1 builds.",
+      "revId": "8f3ade0c9ab52a1e4f13d6ff1922dd98e3ccdbcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7f92bff_c149c678",
+        "filename": "opengl/libs/GLES_CM/gl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1010669
+      },
+      "writtenOn": "2015-02-03T00:35:16Z",
+      "side": 0,
+      "message": "This line is required, for mips32r1 builds.",
+      "revId": "8f3ade0c9ab52a1e4f13d6ff1922dd98e3ccdbcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
