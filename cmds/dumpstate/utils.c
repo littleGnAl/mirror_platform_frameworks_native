@@ -53,6 +53,12 @@ static const char* native_processes_to_dump[] = {
         NULL,
 };
 
+static uint64_t nanotime() {
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return (uint64_t)ts.tv_sec * NANOS_PER_SEC + ts.tv_nsec;
+}
+
 void for_each_userid(void (*func)(int), const char *header) {
     DIR *d;
     struct dirent *de;
@@ -252,7 +258,7 @@ void do_showmap(int pid, const char *name) {
 
 /* prints the contents of a file */
 int dump_file(const char *title, const char *path) {
-    int fd = open(path, O_RDONLY);
+    int fd = TEMP_FAILURE_RETRY(open(path, O_RDONLY | O_NONBLOCK | O_CLOEXEC));
     if (fd < 0) {
         int err = errno;
         if (title) printf("------ %s (%s) ------\n", title, path);
@@ -264,8 +270,6 @@ int dump_file(const char *title, const char *path) {
 }
 
 int dump_file_from_fd(const char *title, const char *path, int fd) {
-    char buffer[32768];
-
     if (title) printf("------ %s (%s", title, path);
 
     if (title) {
@@ -279,26 +283,47 @@ int dump_file_from_fd(const char *title, const char *path, int fd) {
         printf(") ------\n");
     }
 
-    int newline = 0;
-    for (;;) {
-        int ret = read(fd, buffer, sizeof(buffer));
-        if (ret > 0) {
-            newline = (buffer[ret - 1] == '\n');
-            ret = fwrite(buffer, ret, 1, stdout);
+    bool newline = false;
+    fd_set read_set;
+    struct timeval tm;
+    while (1) {
+        FD_ZERO(&read_set);
+        FD_SET(fd, &read_set);
+        /* Only allow 30 seconds before timing out. */
+        tm.tv_sec = 30;
+        tm.tv_usec = 0;
+        uint64_t elapsed = nanotime();
+        int ret = TEMP_FAILURE_RETRY(select(fd + 1, &read_set, NULL, NULL, &tm));
+        if (ret == -1) {
+            printf("*** dump file %s: select failed: %s\n", path, strerror(errno));
+            newline = true;
+            break;
+        } else if (ret == 0) {
+            elapsed = nanotime() - elapsed;
+            printf("*** dump file %s: Timed out after %.3fs\n", path,
+                   (float) elapsed / NANOS_PER_SEC);
+            newline = true;
+            break;
+        } else {
+            char buffer[65536];
+            ssize_t bytes_read = TEMP_FAILURE_RETRY(read(fd, buffer, sizeof(buffer)));
+            if (bytes_read > 0) {
+                fwrite(buffer, bytes_read, 1, stdout);
+                newline = (buffer[bytes_read-1] == '\n');
+            } else {
+                if (bytes_read == -1) {
+                    printf("*** dump file %s: Failed to read from fd: %s", path, strerror(errno));
+                    newline = true;
+                }
+                break;
+            }
         }
-        if (ret <= 0) break;
     }
-    close(fd);
+    TEMP_FAILURE_RETRY(close(fd));
 
     if (!newline) printf("\n");
     if (title) printf("\n");
     return 0;
-}
-
-static int64_t nanotime() {
-    struct timespec ts;
-    clock_gettime(CLOCK_MONOTONIC, &ts);
-    return (int64_t)ts.tv_sec * NANOS_PER_SEC + ts.tv_nsec;
 }
 
 bool waitpid_with_timeout(pid_t pid, int timeout_seconds, int* status) {
@@ -348,7 +373,7 @@ bool waitpid_with_timeout(pid_t pid, int timeout_seconds, int* status) {
 /* forks a command and waits for it to finish */
 int run_command(const char *title, int timeout_seconds, const char *command, ...) {
     fflush(stdout);
-    int64_t start = nanotime();
+    uint64_t start = nanotime();
     pid_t pid = fork();
 
     /* handle error case */
@@ -612,7 +637,7 @@ const char *dump_traces() {
             }
 
             ++dalvik_found;
-            int64_t start = nanotime();
+            uint64_t start = nanotime();
             if (kill(pid, SIGQUIT)) {
                 fprintf(stderr, "kill(%d, SIGQUIT): %s\n", pid, strerror(errno));
                 continue;
@@ -642,7 +667,7 @@ const char *dump_traces() {
                 fprintf(stderr, "lseek: %s\n", strerror(errno));
             } else {
                 static uint16_t timeout_failures = 0;
-                int64_t start = nanotime();
+                uint64_t start = nanotime();
 
                 /* If 3 backtrace dumps fail in a row, consider debuggerd dead. */
                 if (timeout_failures == 3) {
