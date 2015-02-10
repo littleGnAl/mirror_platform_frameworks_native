@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71bf0bdf_77483051",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-10T00:43:38Z",
+      "side": 1,
+      "message": "comment out of date.",
+      "revId": "971ecde6e4037cf5452f0b485b6fc9df77326ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
