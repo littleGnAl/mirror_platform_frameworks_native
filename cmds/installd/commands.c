@@ -930,7 +930,8 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
     char *end;
     const char *input_file;
     char in_odex_path[PKG_PATH_MAX];
-    int res, input_fd=-1, out_fd=-1, swap_fd=-1;
+    char tmp_path[PKG_PATH_MAX];
+    int res, input_fd=-1, out_fd=-1, swap_fd=-1, is_patchoat_preloaded=0;
 
     // Early best-effort check whether we can fit the the path into our buffers.
     // Note: the cache path will require an additional 5 bytes for ".swap", but we'll try to run
@@ -982,6 +983,17 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
     stat(input_file, &input_stat);
 
     input_fd = open(input_file, O_RDONLY, 0);
+    if (input_fd < 0 && is_patchoat && !access(out_path, F_OK)) {
+        is_patchoat_preloaded = 1;
+        ALOGI("installd cannot open '%s' but '%s' already exists.. try to patch it",
+                input_file, out_path);
+        strcpy(tmp_path, out_path);
+        strcat(tmp_path, ".tmp");
+        rename(out_path, tmp_path);
+        input_fd = open(tmp_path, O_RDONLY, 0);
+        input_file = tmp_path;
+    }
+
     if (input_fd < 0) {
         ALOGE("installd cannot open '%s' for input during dexopt\n", input_file);
         return -1;
@@ -1088,6 +1100,9 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
 
     close(out_fd);
     close(input_fd);
+    if (is_patchoat_preloaded) {
+        unlink(input_file);
+    }
     if (swap_fd != -1) {
         close(swap_fd);
     }
@@ -1100,6 +1115,9 @@ fail:
     }
     if (input_fd >= 0) {
         close(input_fd);
+    }
+    if (is_patchoat_preloaded) {
+        unlink(input_file);
     }
     return -1;
 }
