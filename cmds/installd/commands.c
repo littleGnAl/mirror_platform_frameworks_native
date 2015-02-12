@@ -1125,11 +1125,20 @@ fail:
 int mark_boot_complete(const char* instruction_set)
 {
   char boot_marker_path[PKG_PATH_MAX];
+  char preloaded_marker_path[PKG_PATH_MAX];
   sprintf(boot_marker_path,"%s%s/.booting", DALVIK_CACHE_PREFIX, instruction_set);
+  sprintf(preloaded_marker_path,"%s%s/.preloaded", DALVIK_CACHE_PREFIX, instruction_set);
 
   ALOGV("mark_boot_complete : %s", boot_marker_path);
   if (unlink(boot_marker_path) != 0) {
       ALOGE("Unable to unlink boot marker at %s, error=%s", boot_marker_path,
+            strerror(errno));
+      return -1;
+  }
+
+  ALOGV("mark_boot_complete : %s", preloaded_marker_path);
+  if (unlink(preloaded_marker_path) != 0) {
+      ALOGE("Unable to unlink preload marker at %s, error=%s", preloaded_marker_path,
             strerror(errno));
       return -1;
   }
