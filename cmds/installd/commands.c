@@ -931,9 +931,22 @@ static bool ShouldUseSwapFileForDexopt() {
     return (strcmp(low_mem_buf, "true") == 0);
 }
 
+/*
+ * Current version of odex file is not up to date.
+ * Decision to compile or patch has been taken by IsDexOptNeededInternal
+ *
+ * We need to :
+ * 1) Compile the odex from the dex available in the apk
+ *
+ * 2) Relocate and patch if WITH_DEXPREOPT_PIC is not set.
+ *    This will happen in two ways:
+ *      a) Relocate an odex from system and patch it in the dalvik-cache
+ *      b) Patch in place a dalvik-cache version
+ */
 int dexopt(const char *apk_path, uid_t uid, bool is_public,
            const char *pkgname, const char *instruction_set,
-           bool vm_safe_mode, bool is_patchoat, bool debuggable)
+           bool vm_safe_mode, bool is_patchoat, bool is_self_patchoat,
+           bool debuggable)
 {
     struct utimbuf ut;
     struct stat input_stat, dex_stat;
@@ -969,7 +982,9 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
         return -1;
     }
 
-    if (is_patchoat) {
+    if (is_self_patchoat) {
+        input_file = out_path;
+    } else if (is_patchoat) {
         /* /system/framework/whatever.jar -> /system/framework/<isa>/whatever.odex */
         strcpy(in_odex_path, apk_path);
         end = strrchr(in_odex_path, '/');
@@ -993,14 +1008,31 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
     memset(&input_stat, 0, sizeof(input_stat));
     stat(input_file, &input_stat);
 
-    input_fd = open(input_file, O_RDONLY, 0);
+    /*
+     * IsDexOptNeededInternal has taken the decision to patch.
+     * If this is not for the system version, we have a dalvik-cache version
+     * to patch, we verify this here. If this is the case, we patch in place.
+     * This should happen rarely, one example is if userdata was preloaded
+     * with odex files.
+     */
+    if (is_self_patchoat) {
+        input_fd = open(out_path, O_RDWR | O_EXCL, 0644);
+    } else {
+        input_fd = open(input_file, O_RDONLY, 0);
+    }
+
     if (input_fd < 0) {
         ALOGE("installd cannot open '%s' for input during dexopt\n", input_file);
         return -1;
     }
 
-    unlink(out_path);
-    out_fd = open(out_path, O_RDWR | O_CREAT | O_EXCL, 0644);
+    if (is_self_patchoat) {
+        out_fd = input_fd;
+    } else {
+        unlink(out_path);
+        out_fd = open(out_path, O_RDWR | O_CREAT | O_EXCL, 0644);
+    }
+
     if (out_fd < 0) {
         ALOGE("installd cannot open '%s' for output during dexopt\n", out_path);
         goto fail;
@@ -1103,7 +1135,9 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
     utime(out_path, &ut);
 
     close(out_fd);
-    close(input_fd);
+    if (!is_self_patchoat) {
+        close(input_fd);
+    }
     if (swap_fd != -1) {
         close(swap_fd);
     }
@@ -1114,7 +1148,7 @@ fail:
         close(out_fd);
         unlink(out_path);
     }
-    if (input_fd >= 0) {
+    if (input_fd >= 0 && !is_self_patchoat) {
         close(input_fd);
     }
     return -1;
@@ -1123,11 +1157,20 @@ fail:
 int mark_boot_complete(const char* instruction_set)
 {
   char boot_marker_path[PKG_PATH_MAX];
+  char preloaded_marker_path[PKG_PATH_MAX];
   sprintf(boot_marker_path,"%s%s/.booting", DALVIK_CACHE_PREFIX, instruction_set);
+  sprintf(preloaded_marker_path, "%s%s/.preloaded", DALVIK_CACHE_PREFIX, instruction_set);
 
   ALOGV("mark_boot_complete : %s", boot_marker_path);
   if (unlink(boot_marker_path) != 0) {
       ALOGE("Unable to unlink boot marker at %s, error=%s", boot_marker_path,
+            strerror(errno));
+      return -1;
+  }
+
+  ALOGV("mark_boot_complete : %s", preloaded_marker_path);
+  if (unlink(preloaded_marker_path) != 0) {
+      ALOGE("Unable to unlink preload marker at %s, error=%s", preloaded_marker_path,
             strerror(errno));
       return -1;
   }

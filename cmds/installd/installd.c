@@ -39,8 +39,8 @@ static int do_install(char **arg, char reply[REPLY_MAX] __unused)
 static int do_dexopt(char **arg, char reply[REPLY_MAX] __unused)
 {
     /* apk_path, uid, is_public, pkgname, instruction_set, vm_safe_mode, should_relocate,
-       debuggable */
-    return dexopt(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], arg[4], atoi(arg[5]), 0,
+       should_patch_in_place, debuggable */
+    return dexopt(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], arg[4], atoi(arg[5]), 0, 0,
                   atoi(arg[6]));
 }
 
@@ -154,8 +154,14 @@ static int do_restorecon_data(char **arg, char reply[REPLY_MAX] __attribute__((u
 
 static int do_patchoat(char **arg, char reply[REPLY_MAX] __unused) {
     /* apk_path, uid, is_public, pkgname, instruction_set, vm_safe_mode, should_relocate,
-       debuggable */
-    return dexopt(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], arg[4], 0, 1, 0);
+       should_patch_in_place, debuggable */
+    return dexopt(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], arg[4], 0, 1, 0, 0);
+}
+
+static int do_self_patchoat(char **arg, char reply[REPLY_MAX] __unused) {
+    /* apk_path, uid, is_public, pkgname, instruction_set, vm_safe_mode, should_relocate,
+       should_patch_in_place, debuggable */
+    return dexopt(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], arg[4], 0, 1, 1, 0);
 }
 
 struct cmdinfo {
@@ -187,6 +193,7 @@ struct cmdinfo cmds[] = {
     { "idmap",                3, do_idmap },
     { "restorecondata",       3, do_restorecon_data },
     { "patchoat",             5, do_patchoat },
+    { "selfpatchoat",         5, do_self_patchoat },
 };
 
 static int readx(int s, void *_buf, int count)
