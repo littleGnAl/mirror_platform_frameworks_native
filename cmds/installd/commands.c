@@ -930,6 +930,18 @@ static bool ShouldUseSwapFileForDexopt() {
     return (strcmp(low_mem_buf, "true") == 0);
 }
 
+/*
+ * Current version of odex file is not up to date.
+ * Decision to compile or patch has been taken by IsDexOptNeededInternal
+ *
+ * We need to :
+ * 1) Compile the odex from the dex available in the apk
+ *
+ * 2) Relocate and patch if WITH_DEXPREOPT_PIC is not set.
+ *    This will happen in two ways:
+ *      a) Relocate an odex from system and patch it in the dalvik-cache
+ *      b) Patch in place a dalvik-cache version
+ */
 int dexopt(const char *apk_path, uid_t uid, bool is_public,
            const char *pkgname, const char *instruction_set,
            bool vm_safe_mode, bool is_patchoat, bool debuggable)
@@ -941,7 +953,8 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
     char *end;
     const char *input_file;
     char in_odex_path[PKG_PATH_MAX];
-    int res, input_fd=-1, out_fd=-1, swap_fd=-1;
+    char tmp_path[PKG_PATH_MAX];
+    int res, input_fd=-1, out_fd=-1, swap_fd=-1, patch_in_place=0;
 
     // Early best-effort check whether we can fit the the path into our buffers.
     // Note: the cache path will require an additional 5 bytes for ".swap", but we'll try to run
@@ -993,13 +1006,34 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
     stat(input_file, &input_stat);
 
     input_fd = open(input_file, O_RDONLY, 0);
+
+    /*
+     * IsDexOptNeededInternal has taken the decision to patch.
+     * If this is not for the system version, we have a dalvik-cache version
+     * to patch, we verify this here. If this is the case, we patch in place.
+     * This should happen rarely, one example is if userdata was preloaded
+     * with odex files.
+     */
+    if (input_fd < 0 && is_patchoat && !access(out_path, F_OK)) {
+        patch_in_place = 1;
+        ALOGI("installd cannot open '%s' but '%s' already exists.. try to patch it",
+                input_file, out_path);
+        input_fd = open(out_path, O_RDWR | O_EXCL, 0644);
+        input_file = out_path;
+    }
+
     if (input_fd < 0) {
         ALOGE("installd cannot open '%s' for input during dexopt\n", input_file);
         return -1;
     }
 
-    unlink(out_path);
-    out_fd = open(out_path, O_RDWR | O_CREAT | O_EXCL, 0644);
+    if (!patch_in_place) {
+        unlink(out_path);
+        out_fd = open(out_path, O_RDWR | O_CREAT | O_EXCL, 0644);
+    } else {
+        out_fd = input_fd;
+    }
+
     if (out_fd < 0) {
         ALOGE("installd cannot open '%s' for output during dexopt\n", out_path);
         goto fail;
@@ -1098,7 +1132,9 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
     utime(out_path, &ut);
 
     close(out_fd);
-    close(input_fd);
+    if (!patch_in_place) {
+        close(input_fd);
+    }
     if (swap_fd != -1) {
         close(swap_fd);
     }
@@ -1109,7 +1145,7 @@ fail:
         close(out_fd);
         unlink(out_path);
     }
-    if (input_fd >= 0) {
+    if (input_fd >= 0 && !patch_in_place) {
         close(input_fd);
     }
     return -1;
