@@ -26,6 +26,8 @@
 
 #include <gui/BufferQueue.h>
 #include <gui/IProducerListener.h>
+#include <IGraphicBufferProducer_test.h>
+
 
 #include <vector>
 
@@ -37,19 +39,6 @@
 #define TEST_API_OTHER NATIVE_WINDOW_API_EGL // valid API that's not TEST_API
 #define TEST_CONTROLLED_BY_APP false
 #define TEST_PRODUCER_USAGE_BITS (0)
-
-// TODO: Make these public constants in a header
-enum {
-    // Default dimensions before setDefaultBufferSize is called
-    DEFAULT_WIDTH = 1,
-    DEFAULT_HEIGHT = 1,
-
-    // Default format before setDefaultBufferFormat is called
-    DEFAULT_FORMAT = HAL_PIXEL_FORMAT_RGBA_8888,
-
-    // Default transform hint before setTransformHint is called
-    DEFAULT_TRANSFORM_HINT = 0,
-};
 
 namespace android {
 
@@ -264,9 +253,6 @@ TEST_F(IGraphicBufferProducerTest, Disconnect_ReturnsError) {
 TEST_F(IGraphicBufferProducerTest, Query_Succeeds) {
     ASSERT_NO_FATAL_FAILURE(ConnectProducer());
 
-    // TODO: Make these constants in header
-    const int DEFAULT_CONSUMER_USAGE_BITS = 0;
-
     int value = -1;
     EXPECT_OK(mProducer->query(NATIVE_WINDOW_WIDTH, &value));
     EXPECT_EQ(DEFAULT_WIDTH, value);
@@ -291,9 +277,6 @@ TEST_F(IGraphicBufferProducerTest, Query_Succeeds) {
 
 TEST_F(IGraphicBufferProducerTest, Query_ReturnsError) {
     ASSERT_NO_FATAL_FAILURE(ConnectProducer());
-
-    // One past the end of the last 'query' enum value. Update this if we add more enums.
-    const int NATIVE_WINDOW_QUERY_LAST_OFF_BY_ONE = NATIVE_WINDOW_CONSUMER_USAGE_BITS + 1;
 
     int value;
     // What was out of range
