@@ -15,6 +15,7 @@
  */
 
 #include <gui/DisplayEventReceiver.h>
+#include <android/looper.h>
 #include <utils/Looper.h>
 
 using namespace android;
