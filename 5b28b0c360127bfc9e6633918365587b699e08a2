@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd55878_c719be7b",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-02-18T17:13:12Z",
+      "side": 1,
+      "message": "No error checking. Just because the existing code is crap doesn\u0027t mean new contributions are allowed to forego standard practices.",
+      "range": {
+        "startLine": 992,
+        "startChar": 8,
+        "endLine": 992,
+        "endChar": 35
+      },
+      "revId": "5b28b0c360127bfc9e6633918365587b699e08a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abdbd0ab_e9e2d5d7",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-02-18T17:13:12Z",
+      "side": 1,
+      "message": "Why not unlink immediately, as a file descriptor is available? That keeps the code together and makes sure that even with something unexpected happening the tmp file will be cleaned up.",
+      "range": {
+        "startLine": 1103,
+        "startChar": 4,
+        "endLine": 1105,
+        "endChar": 5
+      },
+      "revId": "5b28b0c360127bfc9e6633918365587b699e08a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
