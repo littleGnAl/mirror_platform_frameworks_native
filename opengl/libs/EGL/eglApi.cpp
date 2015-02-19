@@ -80,6 +80,7 @@ struct extention_map_t {
 extern char const * const gBuiltinExtensionString =
         "EGL_KHR_get_all_proc_addresses "
         "EGL_ANDROID_presentation_time "
+        "EGL_EXT_swap_buffers_with_damage "
         ;
 extern char const * const gExtensionString  =
         "EGL_KHR_image "                        // mandatory
@@ -100,6 +101,7 @@ extern char const * const gExtensionString  =
         "EGL_ANDROID_image_native_buffer "      // mandatory
         "EGL_KHR_wait_sync "                    // strongly recommended
         "EGL_ANDROID_recordable "               // mandatory
+        "EGL_KHR_partial_update "               // strongly recommended
         ;
 
 // extensions not exposed to applications but used by the ANDROID system
@@ -152,6 +154,14 @@ static const extention_map_t sExtensionMap[] = {
     // EGL_ANDROID_presentation_time
     { "eglPresentationTimeANDROID",
             (__eglMustCastToProperFunctionPointerType)&eglPresentationTimeANDROID },
+
+    // EGL_EXT_swap_buffers_with_damage
+    { "eglSwapBuffersWithDamageEXT",
+            (__eglMustCastToProperFunctionPointerType)&eglSwapBuffersWithDamageEXT },
+
+    // EGL_KHR_partial_update
+    { "eglSetDamageRegionKHR",
+            (__eglMustCastToProperFunctionPointerType)&eglSetDamageRegionKHR },
 };
 
 /*
@@ -1043,7 +1053,8 @@ private:
     Mutex mMutex;
 };
 
-EGLBoolean eglSwapBuffers(EGLDisplay dpy, EGLSurface draw)
+EGLBoolean eglSwapBuffersWithDamageEXT(EGLDisplay dpy, EGLSurface draw,
+        EGLint *rects, EGLint n_rects)
 {
     ATRACE_CALL();
     clearError();
@@ -1102,7 +1113,23 @@ EGLBoolean eglSwapBuffers(EGLDisplay dpy, EGLSurface draw)
         }
     }
 
-    return s->cnx->egl.eglSwapBuffers(dp->disp.dpy, s->surface);
+    if (n_rects == 0) {
+        return s->cnx->egl.eglSwapBuffers(dp->disp.dpy, s->surface);
+    }
+
+    // TODO: Set surface damage on ANativeWindow
+
+    if (s->cnx->egl.eglSwapBuffersWithDamageEXT) {
+        return s->cnx->egl.eglSwapBuffersWithDamageEXT(dp->disp.dpy, s->surface,
+                rects, n_rects);
+    } else {
+        return s->cnx->egl.eglSwapBuffers(dp->disp.dpy, s->surface);
+    }
+}
+
+EGLBoolean eglSwapBuffers(EGLDisplay dpy, EGLSurface surface)
+{
+    return eglSwapBuffersWithDamageEXT(dpy, surface, NULL, 0);
 }
 
 EGLBoolean eglCopyBuffers(  EGLDisplay dpy, EGLSurface surface,
@@ -1590,4 +1617,33 @@ EGLuint64NV eglGetSystemTimeNV()
     }
 
     return setErrorQuiet(EGL_BAD_DISPLAY, 0);
+}
+
+// ----------------------------------------------------------------------------
+// Partial update extension
+// ----------------------------------------------------------------------------
+EGLBoolean eglSetDamageRegionKHR(EGLDisplay dpy, EGLSurface surface,
+        EGLint *rects, EGLint n_rects)
+{
+    clearError();
+
+    const egl_display_ptr dp = validate_display(dpy);
+    if (!dp) {
+        setError(EGL_BAD_DISPLAY, EGL_FALSE);
+        return EGL_FALSE;
+    }
+
+    SurfaceRef _s(dp.get(), surface);
+    if (!_s.get()) {
+        setError(EGL_BAD_SURFACE, EGL_FALSE);
+        return EGL_FALSE;
+    }
+
+    egl_surface_t const * const s = get_surface(surface);
+    if (s->cnx->egl.eglSetDamageRegionKHR) {
+        return s->cnx->egl.eglSetDamageRegionKHR(dp->disp.dpy, s->surface,
+                rects, n_rects);
+    }
+
+    return EGL_FALSE;
 }
