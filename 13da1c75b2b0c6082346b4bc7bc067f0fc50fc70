@@ -50,6 +50,24 @@
       "revId": "13da1c75b2b0c6082346b4bc7bc067f0fc50fc70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28dc462f_7deab7f8",
+        "filename": "opengl/libs/EGL/eglApi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-02-20T01:13:23Z",
+      "side": 1,
+      "message": "Michael raised this, too. I did it this way so that if there are no rects, we don\u0027t call the ANW::setDamage or whatever we end up adding. If we fold it in, we either need to pass (0, NULL) into setDamage or add another if statement to decide whether to call setDamage later on.",
+      "parentUuid": "0866a236_daf5a5d7",
+      "revId": "13da1c75b2b0c6082346b4bc7bc067f0fc50fc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
