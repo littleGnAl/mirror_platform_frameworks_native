@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "48ab3a9e_3ec609ce",
+        "filename": "opengl/include/EGL/eglext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-02-20T17:51:02Z",
+      "side": 1,
+      "message": "We\u0027re pretty far out of sync with that, but I at least copy-pasted these sections from that version into ours close to the nearest common prior definition we have.",
+      "parentUuid": "0866a236_577b2ed5",
+      "revId": "13da1c75b2b0c6082346b4bc7bc067f0fc50fc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0866a236_f7699a08",
         "filename": "opengl/libs/EGL/eglApi.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-02-20T01:07:40Z",
       "side": 1,
       "message": "\"strongly recommended\"? HWUI and surfaceflinger will (eventually) take advantage of it.",
+      "revId": "13da1c75b2b0c6082346b4bc7bc067f0fc50fc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88a1b2bc_e3800ce0",
+        "filename": "opengl/libs/EGL/eglApi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-02-20T17:51:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0866a236_f7699a08",
       "revId": "13da1c75b2b0c6082346b4bc7bc067f0fc50fc70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
