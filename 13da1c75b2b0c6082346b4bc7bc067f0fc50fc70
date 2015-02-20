@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0866a236_577b2ed5",
+        "filename": "opengl/include/EGL/eglext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-02-20T01:07:40Z",
+      "side": 1,
+      "message": "Have you compared this with the latest khronos version? I try to minimize diffs versus that one. https://www.khronos.org/registry/egl/api/EGL/eglext.h",
+      "revId": "13da1c75b2b0c6082346b4bc7bc067f0fc50fc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0866a236_f7699a08",
+        "filename": "opengl/libs/EGL/eglApi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-02-20T01:07:40Z",
+      "side": 1,
+      "message": "\"strongly recommended\"? HWUI and surfaceflinger will (eventually) take advantage of it.",
+      "revId": "13da1c75b2b0c6082346b4bc7bc067f0fc50fc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0866a236_daf5a5d7",
+        "filename": "opengl/libs/EGL/eglApi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-02-20T01:07:40Z",
+      "side": 1,
+      "message": "Is there a reason for the separate special case? Couldn\u0027t you fold this into the \"if (s-\u003ecnx-\u003eegl.eglSwapBuffersWithDamageEXT)\" check below?",
+      "revId": "13da1c75b2b0c6082346b4bc7bc067f0fc50fc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
