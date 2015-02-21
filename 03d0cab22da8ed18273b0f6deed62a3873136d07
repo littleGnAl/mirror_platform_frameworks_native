@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a80d96eb_3991cf69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-21T07:28:01Z",
+      "side": 1,
+      "message": "time for unit tests, or at least a test script?",
+      "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8f94eff_9bb8cbf4",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-21T07:28:01Z",
+      "side": 1,
+      "message": "you didn\u0027t TEMP_FAILURE_RETRY the other opens. why this one?",
+      "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "880292b9_b83e7956",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-21T07:28:01Z",
+      "side": 1,
+      "message": "that\u0027s not really true. it\u0027s 30s each time round the loop.",
+      "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80d96eb_59880337",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-21T07:28:01Z",
+      "side": 1,
+      "message": "would it make more sense to just use SIGALRM? this seems pretty complicated, and you could just have a regular copy loop without TEMP_FAILURE_RETRY in that case.",
+      "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
