@@ -157,6 +157,24 @@
       "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4826da9d_a6b666b6",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-02-23T21:49:52Z",
+      "side": 1,
+      "message": "I added some comments in a couple of places. See if they make sense.",
+      "parentUuid": "2823668f_6550e6ca",
+      "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
