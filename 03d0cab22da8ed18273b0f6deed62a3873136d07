@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "08722291_f431f8e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-02-23T21:26:00Z",
+      "side": 1,
+      "message": "Unfortunately, this code really doesn\u0027t easily lend itself to something like this. I\u0027ve filed a bug to do that.",
+      "parentUuid": "a80d96eb_3991cf69",
+      "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8f94eff_9bb8cbf4",
         "filename": "cmds/dumpstate/utils.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-02-21T07:28:01Z",
       "side": 1,
       "message": "you didn\u0027t TEMP_FAILURE_RETRY the other opens. why this one?",
+      "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a86916a4_bc6a0dd0",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-02-23T21:26:00Z",
+      "side": 1,
+      "message": "I\u0027ve added them everywhere. I was doing them as I came across them, but it doesn\u0027t hurt to do them all.",
+      "parentUuid": "e8f94eff_9bb8cbf4",
       "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a86916a4_3c77ddb9",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-02-23T21:26:00Z",
+      "side": 1,
+      "message": "Fixed the comment.",
+      "parentUuid": "880292b9_b83e7956",
+      "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a80d96eb_59880337",
         "filename": "cmds/dumpstate/utils.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2015-02-21T07:28:01Z",
       "side": 1,
       "message": "would it make more sense to just use SIGALRM? this seems pretty complicated, and you could just have a regular copy loop without TEMP_FAILURE_RETRY in that case.",
+      "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c832cad2_6a1517b9",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-02-23T21:26:00Z",
+      "side": 1,
+      "message": "So I tried rewriting it that way and it didn\u0027t feel that less complicated and it caused another problem. Some files can get stuck at the open, and using O_NONBLOCK allows you to get out of the open and time out properly.\n\nSo it\u0027s slightly more complicated, but I think it also provides a little extra chance of timing out if something goes horribly wrong.",
+      "parentUuid": "a80d96eb_59880337",
       "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
