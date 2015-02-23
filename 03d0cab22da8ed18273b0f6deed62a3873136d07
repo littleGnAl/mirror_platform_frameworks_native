@@ -139,6 +139,24 @@
       "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2823668f_6550e6ca",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-23T21:28:53Z",
+      "side": 1,
+      "message": "that\u0027s pretty subtle. worth commenting?",
+      "parentUuid": "c832cad2_6a1517b9",
+      "revId": "03d0cab22da8ed18273b0f6deed62a3873136d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
