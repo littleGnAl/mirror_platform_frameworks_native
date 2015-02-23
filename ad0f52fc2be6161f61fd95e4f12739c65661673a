@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a86916a4_1ff5ab88",
+        "filename": "opengl/tools/glgen/stubs/egl/eglGetDisplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-02-23T18:56:58Z",
+      "side": 1,
+      "message": "If you use EGLNativeDisplayType here, you can avoid the cast on EGL_DEFAULT_DISPLAY.",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "ad0f52fc2be6161f61fd95e4f12739c65661673a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
