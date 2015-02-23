@@ -22,6 +22,47 @@
       "revId": "ad0f52fc2be6161f61fd95e4f12739c65661673a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e50179f4_5bdde3e4",
+        "filename": "opengl/tools/glgen/stubs/egl/eglGetDisplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-02-23T22:08:59Z",
+      "side": 1,
+      "message": "This cast is actually the one that is problematic. This can\u0027t be casted to a pointer or the warning will fire (because sizeof(display_id) !\u003d sizeof(EGLNativeDisplayType) on lp64).",
+      "parentUuid": "a86916a4_1ff5ab88",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "ad0f52fc2be6161f61fd95e4f12739c65661673a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e86eaeaf_3350e89b",
+        "filename": "opengl/tools/glgen/stubs/gles11/glDrawElementsInstanced.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-02-23T22:08:59Z",
+      "side": 1,
+      "message": "I\u0027m a little less certain about this one. Offset from what?",
+      "revId": "ad0f52fc2be6161f61fd95e4f12739c65661673a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
