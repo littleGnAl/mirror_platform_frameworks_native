@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a534e107_21358ed1",
+        "filename": "opengl/tools/glgen/stubs/egl/eglGetDisplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-02-24T04:53:01Z",
+      "side": 1,
+      "message": "Yeah, this is a slightly more frightening warning where an int is casted to a pointer of a different size (and is thus either zero-extended or truncated). Turning it on globally because it\u0027s found a bug in pretty much every project that fired it.",
+      "parentUuid": "05a84d5a_44664eba",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "ad0f52fc2be6161f61fd95e4f12739c65661673a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e86eaeaf_3350e89b",
         "filename": "opengl/tools/glgen/stubs/gles11/glDrawElementsInstanced.cpp",
         "patchSetId": 1
