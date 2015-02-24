@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "05a84d5a_44664eba",
+        "filename": "opengl/tools/glgen/stubs/egl/eglGetDisplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-02-24T03:36:23Z",
+      "side": 1,
+      "message": "Oh, I see. I missed the point and thought the warning was about pointer/int comparison.",
+      "parentUuid": "e50179f4_5bdde3e4",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "ad0f52fc2be6161f61fd95e4f12739c65661673a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e86eaeaf_3350e89b",
         "filename": "opengl/tools/glgen/stubs/gles11/glDrawElementsInstanced.cpp",
         "patchSetId": 1
@@ -60,6 +84,24 @@
       "writtenOn": "2015-02-23T22:08:59Z",
       "side": 1,
       "message": "I\u0027m a little less certain about this one. Offset from what?",
+      "revId": "ad0f52fc2be6161f61fd95e4f12739c65661673a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05a84d5a_4455ee94",
+        "filename": "opengl/tools/glgen/stubs/gles11/glDrawElementsInstanced.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-02-24T03:36:23Z",
+      "side": 1,
+      "message": "This is a horrible GL-ism. It\u0027s a byte offset from the beginning of the buffer currently bound to the GL_ELEMENT_ARRAY_BUFFER binding point. If there is no element array buffer bound, then it\u0027s a real pointer to the element data.\n\nIn Java the only really valid way to use this is as an offset into an element array buffer. But it\u0027s technically possible on 32-bit to pass a real pointer from native through Java and into here.\n\nI suspect we should probably check that an element array buffer is bound and throw an exception if not. We\u0027ll possibly break some apps (unlikely), but those wouldn\u0027t be 64-bit safe anyway. There\u0027s several other GL calls that use this same awful offset-or-pointer pattern.",
+      "parentUuid": "e86eaeaf_3350e89b",
       "revId": "ad0f52fc2be6161f61fd95e4f12739c65661673a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
