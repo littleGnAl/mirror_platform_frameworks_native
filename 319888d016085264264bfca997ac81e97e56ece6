@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45432581_5e74f5b2",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-24T04:50:15Z",
+      "side": 1,
+      "message": "do you want to check that with fcntl F_GETFD?",
+      "revId": "319888d016085264264bfca997ac81e97e56ece6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
