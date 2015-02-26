@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a234d707_e1a0c637",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-02-26T00:57:09Z",
+      "side": 1,
+      "message": "Note: I\u0027m not sure this is exactly the correct reasoning, but it seems to give the right value.",
+      "revId": "0f80eb85a62a0322cad214a9d3364d999e208b81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a234d707_a1087ea3",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-02-26T00:57:09Z",
+      "side": 1,
+      "message": "This will probably need to change to PRId64 before final submission.",
+      "revId": "0f80eb85a62a0322cad214a9d3364d999e208b81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
