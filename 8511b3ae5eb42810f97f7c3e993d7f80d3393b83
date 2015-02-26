@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2e54b1d_b2112053",
+        "filename": "libs/gui/tests/IGraphicBufferProducer_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-02-26T19:09:32Z",
+      "side": 0,
+      "message": "The original TODO was to put these into one of the include/gui headers, not into a test header.\n\nThis way the code that was implementing IGraphicBuffer* wouldn\u0027t need to hardcode or copy around the DEFAULT_ values.",
+      "revId": "8511b3ae5eb42810f97f7c3e993d7f80d3393b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
