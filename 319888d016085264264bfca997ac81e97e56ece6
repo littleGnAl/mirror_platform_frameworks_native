@@ -16,6 +16,24 @@
       "revId": "319888d016085264264bfca997ac81e97e56ece6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2f7af97_abf68991",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-02-26T04:01:09Z",
+      "side": 1,
+      "message": "I decided to rework this a bit so that I would check if someone calls the exported function dump_file_from_fd, but otherwise wouldn\u0027t bother.",
+      "parentUuid": "45432581_5e74f5b2",
+      "revId": "319888d016085264264bfca997ac81e97e56ece6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
