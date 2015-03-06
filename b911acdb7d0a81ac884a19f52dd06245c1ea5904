@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7f17ca4_8eb47bc9",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1051574
+      },
+      "writtenOn": "2015-03-06T15:01:31Z",
+      "side": 1,
+      "message": "coding style.",
+      "range": {
+        "startLine": 1130,
+        "startChar": 31,
+        "endLine": 1130,
+        "endChar": 34
+      },
+      "revId": "b911acdb7d0a81ac884a19f52dd06245c1ea5904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
