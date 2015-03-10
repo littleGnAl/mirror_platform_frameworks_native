@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fcd59900_6063f21a",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-03-10T15:20:05Z",
+      "side": 1,
+      "message": "I\u0027m working on a documentation page.",
+      "parentUuid": "3c6d71ed_9a602dbb",
+      "range": {
+        "startLine": 822,
+        "startChar": 31,
+        "endLine": 822,
+        "endChar": 58
+      },
+      "revId": "598c25e23f7c97470e09a2316513ddf2efdfb670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcf161a4_0ec24b83",
         "filename": "cmds/installd/installd.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-10T10:26:02Z",
       "side": 1,
       "message": "Did you change patchoat to accept --debuggable? Why does it need to know?",
+      "range": {
+        "startLine": 157,
+        "startChar": 7,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "598c25e23f7c97470e09a2316513ddf2efdfb670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcd59900_405eee4f",
+        "filename": "cmds/installd/installd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-03-10T15:20:05Z",
+      "side": 1,
+      "message": "It doesn\u0027t. This is installd setup. As you can see, we use the same intermediate method for dex2oat and patchoat.\n\nActual patchoat is done in run_patchoat, which doesn\u0027t take a debuggable flag.",
+      "parentUuid": "bcf161a4_0ec24b83",
       "range": {
         "startLine": 157,
         "startChar": 7,
