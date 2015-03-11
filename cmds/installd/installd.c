@@ -33,7 +33,8 @@ static int do_ping(char **arg __unused, char reply[REPLY_MAX] __unused)
 
 static int do_install(char **arg, char reply[REPLY_MAX] __unused)
 {
-    return install(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3]); /* pkgname, uid, gid, seinfo */
+    return install(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3]);
+                      /* pkgname, uid, gid, seinfo */
 }
 
 static int do_dexopt(char **arg, char reply[REPLY_MAX] __unused)
@@ -117,8 +118,8 @@ static int do_rm_user_data(char **arg, char reply[REPLY_MAX] __unused)
 
 static int do_mk_user_data(char **arg, char reply[REPLY_MAX] __unused)
 {
-    return make_user_data(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3]);
-                             /* pkgname, uid, userid, seinfo */
+    return make_user_data(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], atoi(arg[4]));
+                             /* pkgname, uid, userid, seinfo, profile-owner */
 }
 
 static int do_mk_user_config(char **arg, char reply[REPLY_MAX] __unused)
@@ -148,8 +149,8 @@ static int do_idmap(char **arg, char reply[REPLY_MAX] __unused)
 
 static int do_restorecon_data(char **arg, char reply[REPLY_MAX] __attribute__((unused)))
 {
-    return restorecon_data(arg[0], arg[1], atoi(arg[2]));
-                             /* pkgName, seinfo, uid*/
+    return restorecon_data(arg[0], arg[1], atoi(arg[2]), atoi(arg[3]), arg[4]);
+                             /* pkgName, seinfo, uid, num_p_ids, profile_uids */
 }
 
 static int do_patchoat(char **arg, char reply[REPLY_MAX] __unused) {
@@ -181,11 +182,11 @@ struct cmdinfo cmds[] = {
     { "rmuserdata",           2, do_rm_user_data },
     { "movefiles",            0, do_movefiles },
     { "linklib",              3, do_linklib },
-    { "mkuserdata",           4, do_mk_user_data },
+    { "mkuserdata",           5, do_mk_user_data },
     { "mkuserconfig",         1, do_mk_user_config },
     { "rmuser",               1, do_rm_user },
     { "idmap",                3, do_idmap },
-    { "restorecondata",       3, do_restorecon_data },
+    { "restorecondata",       5, do_restorecon_data },
     { "patchoat",             5, do_patchoat },
 };
 

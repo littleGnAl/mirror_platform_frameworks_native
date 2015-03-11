@@ -15,6 +15,7 @@
 */
 
 #include <inttypes.h>
+#include <string.h>
 #include <sys/capability.h>
 #include <sys/file.h>
 #include "installd.h"
@@ -22,6 +23,8 @@
 #include <diskusage/dirsize.h>
 #include <selinux/android.h>
 #include <system/thread_defs.h>
+
+#include <private/android_filesystem_config.h>
 
 /* Directory records that are used in execution of commands. */
 dir_rec_t android_data_dir;
@@ -88,7 +91,7 @@ int install(const char *pkgname, uid_t uid, gid_t gid, const char *seinfo)
         }
     }
 
-    if (selinux_android_setfilecon(pkgdir, pkgname, seinfo, uid) < 0) {
+    if (selinux_android_setfilecon(pkgdir, pkgname, seinfo, uid, uid/AID_USER) < 0) {
         ALOGE("cannot setfilecon dir '%s': %s\n", pkgdir, strerror(errno));
         unlink(libsymlink);
         unlink(pkgdir);
@@ -188,7 +191,7 @@ int delete_user_data(const char *pkgname, userid_t userid)
     return delete_dir_contents(pkgdir, 0, NULL);
 }
 
-int make_user_data(const char *pkgname, uid_t uid, userid_t userid, const char* seinfo)
+int make_user_data(const char *pkgname, uid_t uid, userid_t userid, const char* seinfo, uid_t profile_owner)
 {
     char pkgdir[PKG_PATH_MAX];
     char applibdir[PKG_PATH_MAX];
@@ -242,7 +245,7 @@ int make_user_data(const char *pkgname, uid_t uid, userid_t userid, const char* 
         }
     }
 
-    if (selinux_android_setfilecon(pkgdir, pkgname, seinfo, uid) < 0) {
+    if (selinux_android_setfilecon(pkgdir, pkgname, seinfo, uid, profile_owner) < 0) {
         ALOGE("cannot setfilecon dir '%s': %s\n", pkgdir, strerror(errno));
         unlink(libsymlink);
         unlink(pkgdir);
@@ -1578,7 +1581,14 @@ fail:
     return -1;
 }
 
-int restorecon_data(const char* pkgName, const char* seinfo, uid_t uid)
+struct managed_user_pair {
+    uid_t managed_user;
+    uid_t owning_user;
+    struct managed_user_pair *next;
+};
+
+int restorecon_data(const char* pkgName, const char* seinfo, uid_t uid,
+        int num_p_uids, char* profile_uids)
 {
     struct dirent *entry;
     DIR *d;
@@ -1586,6 +1596,10 @@ int restorecon_data(const char* pkgName, const char* seinfo, uid_t uid)
     char *userdir;
     char *primarydir;
     char *pkgdir;
+    char *pair_token, *inn_token, *pair_saveptr, *inn_saveptr;
+    struct managed_user_pair *mngd_usr_list = NULL, *mngd_pair = NULL;
+    uid_t owner_uid;
+    int i;
     int ret = 0;
 
     // SELINUX_ANDROID_RESTORECON_DATADATA flag is set by libselinux. Not needed here.
@@ -1600,23 +1614,64 @@ int restorecon_data(const char* pkgName, const char* seinfo, uid_t uid)
         return -1;
     }
 
+
+    if (num_p_uids != 0) {
+        // validate and populate profile_uids
+        i = 0;
+        pair_token = strtok_r(profile_uids, ":", &pair_saveptr);
+        while (pair_token != NULL) {
+             mngd_pair= calloc(1, sizeof(*mngd_pair));
+             if (!mngd_pair) {
+                 ALOGE("Ran out of memory allocating manged profile pair.");
+                 ret = -1;
+                 goto mngd_list_err;
+             }
+            // grab profile uid pair
+            inn_token = strtok_r(pair_token, ",", &inn_saveptr);
+            if (!inn_token) {
+                ALOGE("Improperly formatted profile_uids while trying to restorecon.");
+                ret = -1;
+                goto mngd_list_err;
+            }
+
+            mngd_pair->managed_user = atoi(inn_token);
+            inn_token = strtok_r(NULL, ",", &inn_saveptr);
+            if (!inn_token) {
+                ALOGE("Improperly formatted profile_uids while trying to restorecon.");
+                ret = -1;
+                goto mngd_list_err;
+            }
+            mngd_pair->owning_user = atoi(inn_token);
+            mngd_pair->next = mngd_usr_list;
+            mngd_usr_list = mngd_pair;
+            pair_token = strtok_r(NULL, ":", &pair_saveptr);
+                  mngd_usr_list->managed_user, mngd_usr_list->owning_user);
+            i++;
+        }
+
+        if (i != num_p_uids) {
+            ALOGE("Wrong number of profile_uid pairs encountered.");
+            ret = -1;
+            goto mngd_list_err;
+        }
+    }
+
     // Relabel for primary user.
-    if (selinux_android_restorecon_pkgdir(primarydir, seinfo, uid, flags) < 0) {
+    if (selinux_android_restorecon_pkgdir(primarydir, seinfo, uid, 0, flags) < 0) {
         ALOGE("restorecon failed for %s: %s\n", primarydir, strerror(errno));
-        ret |= -1;
+        ret = -1;
     }
 
     if (asprintf(&userdir, "%s%s", android_data_dir.path, SECONDARY_USER_PREFIX) < 0) {
-        free(primarydir);
-        return -1;
+        ret = -1;
+        goto primd_err;
     }
 
     // Relabel package directory for all secondary users.
     d = opendir(userdir);
     if (d == NULL) {
-        free(primarydir);
-        free(userdir);
         return -1;
+        goto usrd_err;
     }
 
     while ((entry = readdir(d))) {
@@ -1645,16 +1700,33 @@ int restorecon_data(const char* pkgName, const char* seinfo, uid_t uid)
             continue;
         }
 
-        if (selinux_android_restorecon_pkgdir(pkgdir, seinfo, s.st_uid, flags) < 0) {
+        // check if selinux label should be based on profile owner
+        uid_t userid = s.st_uid/AID_USER;
+        mngd_pair = mngd_usr_list;
+        while (mngd_pair) {
+            if (mngd_pair->managed_user == userid) {
+                userid = mngd_pair->owning_user;
+                break;
+            }
+            mngd_pair = mngd_pair->next;
+        }
+        if (selinux_android_restorecon_pkgdir(pkgdir, seinfo, s.st_uid, userid, flags) < 0) {
             ALOGE("restorecon failed for %s: %s\n", pkgdir, strerror(errno));
-            ret |= -1;
+            ret = -1;
         }
         free(pkgdir);
     }
-
     closedir(d);
-    free(primarydir);
+usrd_err:
     free(userdir);
+primd_err:
+    free(primarydir);
+mngd_list_err:
+    mngd_pair = mngd_usr_list;
+    while (mngd_pair) {
+        mngd_usr_list = mngd_pair->next;
+        free(mngd_pair);
+        mngd_pair = mngd_usr_list;
+    }
     return ret;
 }
-

@@ -207,7 +207,7 @@ int uninstall(const char *pkgname, userid_t userid);
 int renamepkg(const char *oldpkgname, const char *newpkgname);
 int fix_uid(const char *pkgname, uid_t uid, gid_t gid);
 int delete_user_data(const char *pkgname, userid_t userid);
-int make_user_data(const char *pkgname, uid_t uid, userid_t userid, const char* seinfo);
+int make_user_data(const char *pkgname, uid_t uid, userid_t userid, const char* seinfo, uid_t profileUid);
 int make_user_config(userid_t userid);
 int delete_user(userid_t userid);
 int delete_cache(const char *pkgname, userid_t userid);
