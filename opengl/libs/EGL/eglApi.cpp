@@ -1096,7 +1096,7 @@ EGLBoolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface draw,
         return s->cnx->egl.eglSwapBuffers(dp->disp.dpy, s->surface);
     }
 
-    // TODO: Set surface damage on ANativeWindow
+    native_window_set_surface_damage(s->win.get(), rects, n_rects);
 
     if (s->cnx->egl.eglSwapBuffersWithDamageKHR) {
         return s->cnx->egl.eglSwapBuffersWithDamageKHR(dp->disp.dpy, s->surface,
