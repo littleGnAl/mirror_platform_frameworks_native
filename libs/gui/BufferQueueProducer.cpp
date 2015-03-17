@@ -525,6 +525,7 @@ status_t BufferQueueProducer::queueBuffer(int slot,
     sp<Fence> fence;
     input.deflate(&timestamp, &isAutoTimestamp, &dataSpace, &crop, &scalingMode,
             &transform, &async, &fence, &stickyTransform);
+    Region surfaceDamage = input.getSurfaceDamage();
 
     if (fence == NULL) {
         BQ_LOGE("queueBuffer: fence is NULL");
@@ -621,6 +622,27 @@ status_t BufferQueueProducer::queueBuffer(int slot,
         item.mSlot = slot;
         item.mFence = fence;
         item.mIsDroppable = mCore->mDequeueBufferCannotBlock || async;
+
+        // If we received an invalid Rect as damage, then it means that we are
+        // defaulting to full-buffer damage, and should pass that down
+        if (surfaceDamage.bounds() == Rect{0, 0, -1, -1}) {
+            item.mSurfaceDamage = Region({0, 0, -1, -1});
+        } else {
+            // The incoming surface damage uses the OpenGL ES convention of the
+            // origin being in the bottom-left corner. Here we flip to the
+            // convention that the rest of the system uses (top-left corner) by
+            // subtracting all top/bottom coordinates from the buffer height.
+            Region flippedDamage;
+            for (auto rect : surfaceDamage) {
+                // We have to flip top and bottom since we stored them
+                // "upside-down" to make the Region class happy
+                auto top = graphicBuffer->height - rect.bottom;
+                auto bottom = graphicBuffer->height - rect.top;
+                Rect flippedRect(rect.left, top, rect.right, bottom);
+                flippedDamage.orSelf(flippedRect);
+            }
+            item.mSurfaceDamage = flippedDamage;
+        }
 
         mStickyTransform = stickyTransform;
 

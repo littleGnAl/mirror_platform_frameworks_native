@@ -518,8 +518,12 @@ bool Region::validate(const Region& reg, const char* name, bool silent)
     Rect b(*prev);
     while (cur != tail) {
         if (cur->isValid() == false) {
-            ALOGE_IF(!silent, "%s: region contains an invalid Rect", name);
-            result = false;
+            // We allow this particular flavor of invalid Rect, since it is used
+            // as a signal value in various parts of the system
+            if (*cur != Rect{0, 0, -1, -1}) {
+                ALOGE_IF(!silent, "%s: region contains an invalid Rect", name);
+                result = false;
+            }
         }
         if (cur->right > region_operator<Rect>::max_value) {
             ALOGE_IF(!silent, "%s: rect->right > max_value", name);
@@ -691,7 +695,9 @@ void Region::boolean_operation(int op, Region& dst,
         const Region& lhs,
         const Rect& rhs, int dx, int dy)
 {
-    if (!rhs.isValid()) {
+    // We allow this particular flavor of invalid Rect, since it is used as a
+    // signal value in various parts of the system
+    if (!rhs.isValid() && rhs != Rect{0, 0, -1, -1}) {
         ALOGE("Region::boolean_operation(op=%d) invalid Rect={%d,%d,%d,%d}",
                 op, rhs.left, rhs.top, rhs.right, rhs.bottom);
         return;
