@@ -525,6 +525,7 @@ status_t BufferQueueProducer::queueBuffer(int slot,
     sp<Fence> fence;
     input.deflate(&timestamp, &isAutoTimestamp, &dataSpace, &crop, &scalingMode,
             &transform, &async, &fence, &stickyTransform);
+    Region surfaceDamage = input.getSurfaceDamage();
 
     if (fence == NULL) {
         BQ_LOGE("queueBuffer: fence is NULL");
@@ -621,6 +622,16 @@ status_t BufferQueueProducer::queueBuffer(int slot,
         item.mSlot = slot;
         item.mFence = fence;
         item.mIsDroppable = mCore->mDequeueBufferCannotBlock || async;
+
+        // The incoming surface damage uses the OpenGL ES convention of the
+        // origin being in the bottom-left corner. Here we flip to the
+        // convention that the rest of the system uses (top-left corner) by
+        // subtracting all top/bottom coordinates from the buffer height.
+        for (auto rect : surfaceDamage) {
+            rect.top = graphicBuffer->height - rect.top;
+            rect.bottom = graphicBuffer->height - rect.bottom;
+        }
+        item.mSurfaceDamage = surfaceDamage;
 
         mStickyTransform = stickyTransform;
 
