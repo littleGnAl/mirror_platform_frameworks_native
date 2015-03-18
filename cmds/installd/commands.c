@@ -970,7 +970,12 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
     }
 
     if (is_patchoat) {
-        /* /system/framework/whatever.jar -> /system/framework/<isa>/whatever.odex */
+        /* /system/framework/whatever.jar -> /system/framework/oat/<isa>/whatever.odex */
+        if (strlen(apk_path) + strlen("oat/") + strlen(instruction_set) + strlen("odex") >= (PKG_PATH_MAX - 1)) {
+          ALOGE("apk_path '%s' is too long to form odex file path.\n", apk_path);
+          return -1;
+        }
+
         strcpy(in_odex_path, apk_path);
         end = strrchr(in_odex_path, '/');
         if (end == NULL) {
@@ -978,7 +983,9 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
             return -1;
         }
         const char *apk_end = apk_path + (end - in_odex_path); // strrchr(apk_path, '/');
-        strcpy(end + 1, instruction_set); // in_odex_path now is /system/framework/<isa>\0
+        strcpy(end + 1, "oat/");  // in_odex_path now is /system/framework/oat/\0
+
+        strcat(in_odex_path, instruction_set); // in_odex_path now is /system/framework/oat/<isa>\0
         strcat(in_odex_path, apk_end);
         end = strrchr(in_odex_path, '.');
         if (end == NULL) {
