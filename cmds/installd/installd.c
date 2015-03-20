@@ -146,6 +146,11 @@ static int do_idmap(char **arg, char reply[REPLY_MAX] __unused)
     return idmap(arg[0], arg[1], atoi(arg[2]));
 }
 
+static int do_rm_idmap(char **arg, char reply[REPLY_MAX])
+{
+    return rm_idmap(arg[0]);
+}
+
 static int do_restorecon_data(char **arg, char reply[REPLY_MAX] __attribute__((unused)))
 {
     return restorecon_data(arg[0], arg[1], atoi(arg[2]));
@@ -185,6 +190,7 @@ struct cmdinfo cmds[] = {
     { "mkuserconfig",         1, do_mk_user_config },
     { "rmuser",               1, do_rm_user },
     { "idmap",                3, do_idmap },
+    { "rmidmap",              1, do_rm_idmap },
     { "restorecondata",       3, do_restorecon_data },
     { "patchoat",             5, do_patchoat },
 };

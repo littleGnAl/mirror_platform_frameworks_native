@@ -225,4 +225,5 @@ int mark_boot_complete(const char *instruction_set);
 int movefiles();
 int linklib(const char* target, const char* source, int userId);
 int idmap(const char *target_path, const char *overlay_path, uid_t uid);
+int rm_idmap(const char *overlay_path);
 int restorecon_data();
