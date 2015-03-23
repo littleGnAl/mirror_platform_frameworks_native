@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a69cf0d8_35e262c9",
+        "filename": "libs/ui/Fence.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-23T21:34:52Z",
+      "side": 1,
+      "message": "It looks like your previous patch took this out, probably because it wasn\u0027t obvious why it was there.  Maybe a comment so someone else doesn\u0027t take it out in the future?",
+      "revId": "b36b4a04826569683c45c543e29ac22eca163cf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
