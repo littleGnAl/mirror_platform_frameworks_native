@@ -130,7 +130,7 @@ nsecs_t Fence::getSignalTime() const {
 }
 
 size_t Fence::getFlattenedSize() const {
-    return 1;
+    return 4;
 }
 
 size_t Fence::getFdCount() const {
@@ -141,7 +141,7 @@ status_t Fence::flatten(void*& buffer, size_t& size, int*& fds, size_t& count) c
     if (size < getFlattenedSize() || count < getFdCount()) {
         return NO_MEMORY;
     }
-    FlattenableUtils::write(buffer, size, getFdCount());
+    FlattenableUtils::write(buffer, size, static_cast<uint32_t>(getFdCount()));
     if (isValid()) {
         *fds++ = mFenceFd;
         count--;
