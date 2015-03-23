@@ -1725,7 +1725,12 @@ bool SurfaceFlinger::handlePageFlip()
             frameQueued = true;
             if (layer->shouldPresentNow(mPrimaryDispSync)) {
                 layersWithQueuedFrames.push_back(layer.get());
+                layer->useSurfaceDamage();
+            } else {
+                layer->useEmptyDamage();
             }
+        } else {
+            layer->useEmptyDamage();
         }
     }
     for (size_t i = 0, count = layersWithQueuedFrames.size() ; i<count ; i++) {

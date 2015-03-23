@@ -512,6 +512,9 @@ void Layer::setPerFrameData(const sp<const DisplayDevice>& hw,
     const Transform& tr = hw->getTransform();
     Region visible = tr.transform(visibleRegion.intersect(hw->getViewport()));
     layer.setVisibleRegionScreen(visible);
+    Region surfaceDamage =
+            tr.transform(surfaceDamageRegion.intersect(hw->getViewport()));
+    layer.setSurfaceDamage(surfaceDamage);
 
     if (mSidebandStream.get()) {
         layer.setSidebandStream(mSidebandStream);
@@ -1034,6 +1037,14 @@ bool Layer::setLayerStack(uint32_t layerStack) {
     return true;
 }
 
+void Layer::useSurfaceDamage() {
+    surfaceDamageRegion = mSurfaceFlingerConsumer->getSurfaceDamage();
+}
+
+void Layer::useEmptyDamage() {
+    surfaceDamageRegion.clear();
+}
+
 // ----------------------------------------------------------------------------
 // pageflip handling...
 // ----------------------------------------------------------------------------
@@ -1349,6 +1360,7 @@ void Layer::dump(String8& result, Colorizer& colorizer) const
 
     s.activeTransparentRegion.dump(result, "transparentRegion");
     visibleRegion.dump(result, "visibleRegion");
+    surfaceDamageRegion.dump(result, "surfaceDamageRegion");
     sp<Client> client(mClientRef.promote());
 
     result.appendFormat(            "      "
