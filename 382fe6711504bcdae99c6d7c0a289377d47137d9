@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3fb9632_3246b881",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-03-24T20:44:58Z",
+      "side": 1,
+      "message": "Should we add an ALOGE here, like there is for \u0027/\u0027?",
+      "range": {
+        "startLine": 962,
+        "startChar": 6,
+        "endLine": 962,
+        "endChar": 19
+      },
+      "revId": "382fe6711504bcdae99c6d7c0a289377d47137d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
