@@ -22,6 +22,30 @@
       "revId": "ceee9492f273c58c016e11907c5f1834ec26b8bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "666d98b3_bc084060",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-03-24T16:04:31Z",
+      "side": 1,
+      "message": "Almost every other call to ALOGE in this file has the \\n at the end. Even if it\u0027s not needed, I would rather be consistent now and save the cleanup for a different change.",
+      "parentUuid": "86ce0ca2_542bec7a",
+      "range": {
+        "startLine": 976,
+        "startChar": 66,
+        "endLine": 976,
+        "endChar": 68
+      },
+      "revId": "ceee9492f273c58c016e11907c5f1834ec26b8bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
