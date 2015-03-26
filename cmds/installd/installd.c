@@ -23,7 +23,7 @@
 
 
 #define BUFFER_MAX    1024  /* input buffer for commands */
-#define TOKEN_MAX     8     /* max number of arguments in buffer */
+#define TOKEN_MAX     9     /* max number of arguments in buffer */
 #define REPLY_MAX     256   /* largest reply allowed */
 
 static int do_ping(char **arg __unused, char reply[REPLY_MAX] __unused)
@@ -38,10 +38,10 @@ static int do_install(char **arg, char reply[REPLY_MAX] __unused)
 
 static int do_dexopt(char **arg, char reply[REPLY_MAX] __unused)
 {
-    /* apk_path, uid, is_public, pkgname, instruction_set, vm_safe_mode, should_relocate,
-       debuggable */
-    return dexopt(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], arg[4], atoi(arg[5]), 0,
-                  atoi(arg[6]));
+    /* apk_path, uid, is_public, pkgname, instruction_set,
+     * dexopt_needed, vm_safe_mode, debuggable */
+    return dexopt(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], arg[4], atoi(arg[5]),
+                  atoi(arg[6]), atoi(arg[7]));
 }
 
 static int do_mark_boot_complete(char **arg, char reply[REPLY_MAX] __unused)
@@ -152,12 +152,6 @@ static int do_restorecon_data(char **arg, char reply[REPLY_MAX] __attribute__((u
                              /* pkgName, seinfo, uid*/
 }
 
-static int do_patchoat(char **arg, char reply[REPLY_MAX] __unused) {
-    /* apk_path, uid, is_public, pkgname, instruction_set, vm_safe_mode, should_relocate,
-       debuggable */
-    return dexopt(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3], arg[4], 0, 1, 0);
-}
-
 struct cmdinfo {
     const char *name;
     unsigned numargs;
@@ -167,7 +161,7 @@ struct cmdinfo {
 struct cmdinfo cmds[] = {
     { "ping",                 0, do_ping },
     { "install",              4, do_install },
-    { "dexopt",               7, do_dexopt },
+    { "dexopt",               8, do_dexopt },
     { "markbootcomplete",     1, do_mark_boot_complete },
     { "movedex",              3, do_move_dex },
     { "rmdex",                2, do_rm_dex },
@@ -186,7 +180,6 @@ struct cmdinfo cmds[] = {
     { "rmuser",               1, do_rm_user },
     { "idmap",                3, do_idmap },
     { "restorecondata",       3, do_restorecon_data },
-    { "patchoat",             5, do_patchoat },
 };
 
 static int readx(int s, void *_buf, int count)
