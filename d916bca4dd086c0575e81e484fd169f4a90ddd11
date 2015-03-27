@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3ae3665_46e972ac",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1069378
+      },
+      "writtenOn": "2015-03-27T02:52:06Z",
+      "side": 1,
+      "message": "hwc_region_t\u0026 surfaceDamage",
+      "range": {
+        "startLine": 1027,
+        "startChar": 62,
+        "endLine": 1027,
+        "endChar": 63
+      },
+      "revId": "d916bca4dd086c0575e81e484fd169f4a90ddd11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
