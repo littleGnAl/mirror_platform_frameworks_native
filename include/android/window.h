@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * @file window.h
+ */
 
 #ifndef ANDROID_WINDOW_H
 #define ANDROID_WINDOW_H
