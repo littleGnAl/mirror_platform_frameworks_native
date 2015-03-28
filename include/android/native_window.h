@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/**
+ * @file native_window.h
+ */
+
 #ifndef ANDROID_NATIVE_WINDOW_H
 #define ANDROID_NATIVE_WINDOW_H
 
@@ -23,18 +27,31 @@
 extern "C" {
 #endif
 
-/*
+/**
  * Pixel formats that a window can use.
  */
 enum {
+    /** red: 8 bits, green: 8 bits, blue: 8 bits, alpha: 8 bits **/  
     WINDOW_FORMAT_RGBA_8888          = 1,
+    /** red: 8 bits, green: 8 bits, blue: 8 bits, unused: 8 bits **/    
     WINDOW_FORMAT_RGBX_8888          = 2,
+    /** red: 5 bits, green: 6 bits, blue: 5 bits **/        
     WINDOW_FORMAT_RGB_565            = 4,
 };
 
 struct ANativeWindow;
+/**
+ * {@link ANativeWindow} is opaque type that provides access to a native window.
+ *
+ * A pointer can be obtained using ANativeWindow_fromSurface().
+ */
 typedef struct ANativeWindow ANativeWindow;
 
+/**
+ * {@link ANativeWindow} is a struct that represents a windows buffer.
+ *
+ * A pointer can be obtained using ANativeWindow_lock().
+ */
 typedef struct ANativeWindow_Buffer {
     // The number of pixels that are show horizontally.
     int32_t width;

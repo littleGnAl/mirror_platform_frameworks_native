@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * @file native_activity.h
+ */
 
 #ifndef ANDROID_NATIVE_ACTIVITY_H
 #define ANDROID_NATIVE_ACTIVITY_H
@@ -31,6 +34,9 @@
 extern "C" {
 #endif
 
+/**
+ * {@link ANativeActivityCallbacks}
+ */
 struct ANativeActivityCallbacks;
 
 /**
