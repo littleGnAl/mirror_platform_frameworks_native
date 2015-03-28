@@ -55,10 +55,47 @@ extern "C" {
  */
 
 enum {
+   /*
+    * {@link ASENSOR_TYPE_ACCELEROMETER}
+    * reporting-mode: continuous
+    *
+    *  All values are in SI units (m/s^2) and measure the acceleration of the
+    *  device minus the force of gravity.
+    */
     ASENSOR_TYPE_ACCELEROMETER      = 1,
+   /*
+    * {@link ASENSOR_TYPE_MAGNETIC_FIELD}
+    * reporting-mode: continuous
+    *
+    *  All values are in micro-Tesla (uT) and measure the geomagnetic
+    *  field in the X, Y and Z axis.
+    */
     ASENSOR_TYPE_MAGNETIC_FIELD     = 2,
+   /*
+    * {@link ASENSOR_TYPE_GYROSCOPE}
+    * reporting-mode: continuous
+    *
+    *  All values are in radians/second and measure the rate of rotation
+    *  around the X, Y and Z axis.
+    */
     ASENSOR_TYPE_GYROSCOPE          = 4,
+   /*
+    * {@link ASENSOR_TYPE_LIGHT}
+    * reporting-mode: on-change
+    *
+    * The light sensor value is returned in SI lux units.
+    */
     ASENSOR_TYPE_LIGHT              = 5,
+   /*
+    * {@link SENSOR_TYPE_PROXIMITY}
+    * reporting-mode: on-change
+    *
+    * The proximity sensor which turns the screen off and back on during calls is the
+    * wake-up proximity sensor. Implement wake-up proximity sensor before implementing
+    * a non wake-up proximity sensor. For the wake-up proximity sensor set the flag
+    * SENSOR_FLAG_WAKE_UP.
+    * The value corresponds to the distance to the nearest object in centimeters.
+    */
     ASENSOR_TYPE_PROXIMITY          = 8
 };
 
