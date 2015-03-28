@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/**
+ * @file input.h
+ */
+
 #ifndef _ANDROID_INPUT_H
 #define _ANDROID_INPUT_H
 
@@ -49,247 +53,271 @@
 extern "C" {
 #endif
 
-/*
+/**
  * Key states (may be returned by queries about the current state of a
  * particular key code, scan code or switch).
  */
 enum {
-    /* The key state is unknown or the requested key itself is not supported. */
+    /** The key state is unknown or the requested key itself is not supported. */
     AKEY_STATE_UNKNOWN = -1,
 
-    /* The key is up. */
+    /** The key is up. */
     AKEY_STATE_UP = 0,
 
-    /* The key is down. */
+    /** The key is down. */
     AKEY_STATE_DOWN = 1,
 
-    /* The key is down but is a virtual key press that is being emulated by the system. */
+    /** The key is down but is a virtual key press that is being emulated by the system. */
     AKEY_STATE_VIRTUAL = 2
 };
 
-/*
+/**
  * Meta key / modifer state.
  */
 enum {
-    /* No meta keys are pressed. */
+    /** No meta keys are pressed. */
     AMETA_NONE = 0,
 
-    /* This mask is used to check whether one of the ALT meta keys is pressed. */
+    /** This mask is used to check whether one of the ALT meta keys is pressed. */
     AMETA_ALT_ON = 0x02,
 
-    /* This mask is used to check whether the left ALT meta key is pressed. */
+    /** This mask is used to check whether the left ALT meta key is pressed. */
     AMETA_ALT_LEFT_ON = 0x10,
 
-    /* This mask is used to check whether the right ALT meta key is pressed. */
+    /** This mask is used to check whether the right ALT meta key is pressed. */
     AMETA_ALT_RIGHT_ON = 0x20,
 
-    /* This mask is used to check whether one of the SHIFT meta keys is pressed. */
+    /** This mask is used to check whether one of the SHIFT meta keys is pressed. */
     AMETA_SHIFT_ON = 0x01,
 
-    /* This mask is used to check whether the left SHIFT meta key is pressed. */
+    /** This mask is used to check whether the left SHIFT meta key is pressed. */
     AMETA_SHIFT_LEFT_ON = 0x40,
 
-    /* This mask is used to check whether the right SHIFT meta key is pressed. */
+    /** This mask is used to check whether the right SHIFT meta key is pressed. */
     AMETA_SHIFT_RIGHT_ON = 0x80,
 
-    /* This mask is used to check whether the SYM meta key is pressed. */
+    /** This mask is used to check whether the SYM meta key is pressed. */
     AMETA_SYM_ON = 0x04,
 
-    /* This mask is used to check whether the FUNCTION meta key is pressed. */
+    /** This mask is used to check whether the FUNCTION meta key is pressed. */
     AMETA_FUNCTION_ON = 0x08,
 
-    /* This mask is used to check whether one of the CTRL meta keys is pressed. */
+    /** This mask is used to check whether one of the CTRL meta keys is pressed. */
     AMETA_CTRL_ON = 0x1000,
 
-    /* This mask is used to check whether the left CTRL meta key is pressed. */
+    /** This mask is used to check whether the left CTRL meta key is pressed. */
     AMETA_CTRL_LEFT_ON = 0x2000,
 
-    /* This mask is used to check whether the right CTRL meta key is pressed. */
+    /** This mask is used to check whether the right CTRL meta key is pressed. */
     AMETA_CTRL_RIGHT_ON = 0x4000,
 
-    /* This mask is used to check whether one of the META meta keys is pressed. */
+    /** This mask is used to check whether one of the META meta keys is pressed. */
     AMETA_META_ON = 0x10000,
 
-    /* This mask is used to check whether the left META meta key is pressed. */
+    /** This mask is used to check whether the left META meta key is pressed. */
     AMETA_META_LEFT_ON = 0x20000,
 
-    /* This mask is used to check whether the right META meta key is pressed. */
+    /** This mask is used to check whether the right META meta key is pressed. */
     AMETA_META_RIGHT_ON = 0x40000,
 
-    /* This mask is used to check whether the CAPS LOCK meta key is on. */
+    /** This mask is used to check whether the CAPS LOCK meta key is on. */
     AMETA_CAPS_LOCK_ON = 0x100000,
 
-    /* This mask is used to check whether the NUM LOCK meta key is on. */
+    /** This mask is used to check whether the NUM LOCK meta key is on. */
     AMETA_NUM_LOCK_ON = 0x200000,
 
-    /* This mask is used to check whether the SCROLL LOCK meta key is on. */
+    /** This mask is used to check whether the SCROLL LOCK meta key is on. */
     AMETA_SCROLL_LOCK_ON = 0x400000,
 };
 
-/*
+struct AInputEvent;
+/**
  * Input events.
  *
  * Input events are opaque structures.  Use the provided accessors functions to
  * read their properties.
  */
-struct AInputEvent;
 typedef struct AInputEvent AInputEvent;
 
-/*
+/**
  * Input event types.
  */
 enum {
-    /* Indicates that the input event is a key event. */
+    /** Indicates that the input event is a key event. */
     AINPUT_EVENT_TYPE_KEY = 1,
 
-    /* Indicates that the input event is a motion event. */
+    /** Indicates that the input event is a motion event. */
     AINPUT_EVENT_TYPE_MOTION = 2
 };
 
-/*
+/**
  * Key event actions.
  */
 enum {
-    /* The key has been pressed down. */
+    /** The key has been pressed down. */
     AKEY_EVENT_ACTION_DOWN = 0,
 
-    /* The key has been released. */
+    /** The key has been released. */
     AKEY_EVENT_ACTION_UP = 1,
 
-    /* Multiple duplicate key events have occurred in a row, or a complex string is
-     * being delivered.  The repeat_count property of the key event contains the number
-     * of times the given key code should be executed.
+    /**
+     * Multiple duplicate key events have occurred in a row, or a
+     * complex string is being delivered.  The repeat_count property
+     * of the key event contains the number of times the given key
+     * code should be executed.
      */
     AKEY_EVENT_ACTION_MULTIPLE = 2
 };
 
-/*
+/**
  * Key event flags.
  */
 enum {
-    /* This mask is set if the device woke because of this key event. */
+    /** This mask is set if the device woke because of this key event. */
     AKEY_EVENT_FLAG_WOKE_HERE = 0x1,
 
-    /* This mask is set if the key event was generated by a software keyboard. */
+    /** This mask is set if the key event was generated by a software keyboard. */
     AKEY_EVENT_FLAG_SOFT_KEYBOARD = 0x2,
 
-    /* This mask is set if we don't want the key event to cause us to leave touch mode. */
+    /** This mask is set if we don't want the key event to cause us to leave touch mode. */
     AKEY_EVENT_FLAG_KEEP_TOUCH_MODE = 0x4,
 
-    /* This mask is set if an event was known to come from a trusted part
-     * of the system.  That is, the event is known to come from the user,
-     * and could not have been spoofed by a third party component. */
+    /**
+     * This mask is set if an event was known to come from a trusted
+     * part of the system.  That is, the event is known to come from
+     * the user, and could not have been spoofed by a third party
+     * component.
+     */
     AKEY_EVENT_FLAG_FROM_SYSTEM = 0x8,
 
-    /* This mask is used for compatibility, to identify enter keys that are
+    /**
+     * This mask is used for compatibility, to identify enter keys that are
      * coming from an IME whose enter key has been auto-labelled "next" or
      * "done".  This allows TextView to dispatch these as normal enter keys
      * for old applications, but still do the appropriate action when
-     * receiving them. */
+     * receiving them.
+     */
     AKEY_EVENT_FLAG_EDITOR_ACTION = 0x10,
 
-    /* When associated with up key events, this indicates that the key press
+    /**
+     * When associated with up key events, this indicates that the key press
      * has been canceled.  Typically this is used with virtual touch screen
      * keys, where the user can slide from the virtual key area on to the
      * display: in that case, the application will receive a canceled up
      * event and should not perform the action normally associated with the
      * key.  Note that for this to work, the application can not perform an
      * action for a key until it receives an up or the long press timeout has
-     * expired. */
+     * expired.
+     */
     AKEY_EVENT_FLAG_CANCELED = 0x20,
 
-    /* This key event was generated by a virtual (on-screen) hard key area.
+    /**
+     * This key event was generated by a virtual (on-screen) hard key area.
      * Typically this is an area of the touchscreen, outside of the regular
-     * display, dedicated to "hardware" buttons. */
+     * display, dedicated to "hardware" buttons.
+     */
     AKEY_EVENT_FLAG_VIRTUAL_HARD_KEY = 0x40,
 
-    /* This flag is set for the first key repeat that occurs after the
-     * long press timeout. */
+    /**
+     * This flag is set for the first key repeat that occurs after the
+     * long press timeout.
+     */
     AKEY_EVENT_FLAG_LONG_PRESS = 0x80,
 
-    /* Set when a key event has AKEY_EVENT_FLAG_CANCELED set because a long
-     * press action was executed while it was down. */
+    /**
+     * Set when a key event has AKEY_EVENT_FLAG_CANCELED set because a long
+     * press action was executed while it was down.
+     */
     AKEY_EVENT_FLAG_CANCELED_LONG_PRESS = 0x100,
 
-    /* Set for AKEY_EVENT_ACTION_UP when this event's key code is still being
+    /**
+     * Set for AKEY_EVENT_ACTION_UP when this event's key code is still being
      * tracked from its initial down.  That is, somebody requested that tracking
      * started on the key down and a long press has not caused
-     * the tracking to be canceled. */
+     * the tracking to be canceled.
+     */
     AKEY_EVENT_FLAG_TRACKING = 0x200,
 
-    /* Set when a key event has been synthesized to implement default behavior
+    /**
+     * Set when a key event has been synthesized to implement default behavior
      * for an event that the application did not handle.
      * Fallback key events are generated by unhandled trackball motions
      * (to emulate a directional keypad) and by certain unhandled key presses
      * that are declared in the key map (such as special function numeric keypad
-     * keys when numlock is off). */
+     * keys when numlock is off).
+     */
     AKEY_EVENT_FLAG_FALLBACK = 0x400,
 };
 
-/*
- * Motion event actions.
- */
-
-/* Bit shift for the action bits holding the pointer index as
+/**
+ * Bit shift for the action bits holding the pointer index as
  * defined by AMOTION_EVENT_ACTION_POINTER_INDEX_MASK.
  */
 #define AMOTION_EVENT_ACTION_POINTER_INDEX_SHIFT 8
 
+/** Motion event actions */
 enum {
-    /* Bit mask of the parts of the action code that are the action itself.
-     */
+    /** Bit mask of the parts of the action code that are the action itself. */
     AMOTION_EVENT_ACTION_MASK = 0xff,
 
-    /* Bits in the action code that represent a pointer index, used with
+    /**
+     * Bits in the action code that represent a pointer index, used with
      * AMOTION_EVENT_ACTION_POINTER_DOWN and AMOTION_EVENT_ACTION_POINTER_UP.  Shifting
      * down by AMOTION_EVENT_ACTION_POINTER_INDEX_SHIFT provides the actual pointer
      * index where the data for the pointer going up or down can be found.
      */
     AMOTION_EVENT_ACTION_POINTER_INDEX_MASK  = 0xff00,
 
-    /* A pressed gesture has started, the motion contains the initial starting location.
-     */
+    /** A pressed gesture has started, the motion contains the initial starting location. */
     AMOTION_EVENT_ACTION_DOWN = 0,
 
-    /* A pressed gesture has finished, the motion contains the final release location
+    /**
+     * A pressed gesture has finished, the motion contains the final release location
      * as well as any intermediate points since the last down or move event.
      */
     AMOTION_EVENT_ACTION_UP = 1,
 
-    /* A change has happened during a press gesture (between AMOTION_EVENT_ACTION_DOWN and
+    /**
+     * A change has happened during a press gesture (between AMOTION_EVENT_ACTION_DOWN and
      * AMOTION_EVENT_ACTION_UP).  The motion contains the most recent point, as well as
      * any intermediate points since the last down or move event.
      */
     AMOTION_EVENT_ACTION_MOVE = 2,
 
-    /* The current gesture has been aborted.
+    /**
+     * The current gesture has been aborted.
      * You will not receive any more points in it.  You should treat this as
      * an up event, but not perform any action that you normally would.
      */
     AMOTION_EVENT_ACTION_CANCEL = 3,
 
-    /* A movement has happened outside of the normal bounds of the UI element.
+    /**
+     * A movement has happened outside of the normal bounds of the UI element.
      * This does not provide a full gesture, but only the initial location of the movement/touch.
      */
     AMOTION_EVENT_ACTION_OUTSIDE = 4,
 
-    /* A non-primary pointer has gone down.
+    /**
+     * A non-primary pointer has gone down.
      * The bits in AMOTION_EVENT_ACTION_POINTER_INDEX_MASK indicate which pointer changed.
      */
     AMOTION_EVENT_ACTION_POINTER_DOWN = 5,
 
-    /* A non-primary pointer has gone up.
+    /**
+     * A non-primary pointer has gone up.
      * The bits in AMOTION_EVENT_ACTION_POINTER_INDEX_MASK indicate which pointer changed.
      */
     AMOTION_EVENT_ACTION_POINTER_UP = 6,
 
-    /* A change happened but the pointer is not down (unlike AMOTION_EVENT_ACTION_MOVE).
+    /**
+     * A change happened but the pointer is not down (unlike AMOTION_EVENT_ACTION_MOVE).
      * The motion contains the most recent point, as well as any intermediate points since
      * the last hover move event.
      */
     AMOTION_EVENT_ACTION_HOVER_MOVE = 7,
 
-    /* The motion event contains relative vertical and/or horizontal scroll offsets.
+    /**
+     * The motion event contains relative vertical and/or horizontal scroll offsets.
      * Use getAxisValue to retrieve the information from AMOTION_EVENT_AXIS_VSCROLL
      * and AMOTION_EVENT_AXIS_HSCROLL.
      * The pointer may or may not be down when this event is dispatched.
@@ -298,20 +326,19 @@ enum {
      */
     AMOTION_EVENT_ACTION_SCROLL = 8,
 
-    /* The pointer is not down but has entered the boundaries of a window or view.
-     */
+    /** The pointer is not down but has entered the boundaries of a window or view. */
     AMOTION_EVENT_ACTION_HOVER_ENTER = 9,
 
-    /* The pointer is not down but has exited the boundaries of a window or view.
-     */
+    /** The pointer is not down but has exited the boundaries of a window or view. */
     AMOTION_EVENT_ACTION_HOVER_EXIT = 10,
 };
 
-/*
+/**
  * Motion event flags.
  */
 enum {
-    /* This flag indicates that the window that received this motion event is partly
+    /**
+     * This flag indicates that the window that received this motion event is partly
      * or wholly obscured by another visible window above it.  This flag is set to true
      * even if the event did not directly pass through the obscured area.
      * A security sensitive application can check this flag to identify situations in which
@@ -323,148 +350,225 @@ enum {
     AMOTION_EVENT_FLAG_WINDOW_IS_OBSCURED = 0x1,
 };
 
-/*
+/**
  * Motion event edge touch flags.
  */
 enum {
-    /* No edges intersected */
+    /** No edges intersected */
     AMOTION_EVENT_EDGE_FLAG_NONE = 0,
 
-    /* Flag indicating the motion event intersected the top edge of the screen. */
+    /** Flag indicating the motion event intersected the top edge of the screen. */
     AMOTION_EVENT_EDGE_FLAG_TOP = 0x01,
 
-    /* Flag indicating the motion event intersected the bottom edge of the screen. */
+    /** Flag indicating the motion event intersected the bottom edge of the screen. */
     AMOTION_EVENT_EDGE_FLAG_BOTTOM = 0x02,
 
-    /* Flag indicating the motion event intersected the left edge of the screen. */
+    /** Flag indicating the motion event intersected the left edge of the screen. */
     AMOTION_EVENT_EDGE_FLAG_LEFT = 0x04,
 
-    /* Flag indicating the motion event intersected the right edge of the screen. */
+    /** Flag indicating the motion event intersected the right edge of the screen. */
     AMOTION_EVENT_EDGE_FLAG_RIGHT = 0x08
 };
 
-/*
+/**
  * Constants that identify each individual axis of a motion event.
  * Refer to the documentation on the MotionEvent class for descriptions of each axis.
  */
 enum {
+    /** x axis */
     AMOTION_EVENT_AXIS_X = 0,
+    /** y axis */
     AMOTION_EVENT_AXIS_Y = 1,
+    /** pressure */
     AMOTION_EVENT_AXIS_PRESSURE = 2,
+    /** size */
     AMOTION_EVENT_AXIS_SIZE = 3,
+    /** touch major */
     AMOTION_EVENT_AXIS_TOUCH_MAJOR = 4,
+    /** touch minor */
     AMOTION_EVENT_AXIS_TOUCH_MINOR = 5,
+    /** tool major */
     AMOTION_EVENT_AXIS_TOOL_MAJOR = 6,
+    /** tool minor */
     AMOTION_EVENT_AXIS_TOOL_MINOR = 7,
+    /** orientation */
     AMOTION_EVENT_AXIS_ORIENTATION = 8,
+    /** v-scroll */
     AMOTION_EVENT_AXIS_VSCROLL = 9,
+    /** h-scroll */
     AMOTION_EVENT_AXIS_HSCROLL = 10,
+    /** z */
     AMOTION_EVENT_AXIS_Z = 11,
+    /** rx */
     AMOTION_EVENT_AXIS_RX = 12,
+    /** ry */
     AMOTION_EVENT_AXIS_RY = 13,
+    /** rz */
     AMOTION_EVENT_AXIS_RZ = 14,
+    /** hat x */
     AMOTION_EVENT_AXIS_HAT_X = 15,
+    /** hat y */
     AMOTION_EVENT_AXIS_HAT_Y = 16,
+    /** l-trigger */
     AMOTION_EVENT_AXIS_LTRIGGER = 17,
+    /** r-trigger */
     AMOTION_EVENT_AXIS_RTRIGGER = 18,
+    /** throttle */
     AMOTION_EVENT_AXIS_THROTTLE = 19,
+    /** rudder */
     AMOTION_EVENT_AXIS_RUDDER = 20,
+    /** wheel */
     AMOTION_EVENT_AXIS_WHEEL = 21,
+    /** gas */
     AMOTION_EVENT_AXIS_GAS = 22,
+    /** brake */
     AMOTION_EVENT_AXIS_BRAKE = 23,
+    /** distance */
     AMOTION_EVENT_AXIS_DISTANCE = 24,
+    /** tilt */
     AMOTION_EVENT_AXIS_TILT = 25,
+    /** generic 1*/
     AMOTION_EVENT_AXIS_GENERIC_1 = 32,
+    /** generic 2 */
     AMOTION_EVENT_AXIS_GENERIC_2 = 33,
+    /** generic 3 */
     AMOTION_EVENT_AXIS_GENERIC_3 = 34,
+    /** generic 4 */
     AMOTION_EVENT_AXIS_GENERIC_4 = 35,
+    /** generic 5 */
     AMOTION_EVENT_AXIS_GENERIC_5 = 36,
+    /** generic 6 */
     AMOTION_EVENT_AXIS_GENERIC_6 = 37,
+    /** generic 7 */
     AMOTION_EVENT_AXIS_GENERIC_7 = 38,
+    /** generic 8 */
     AMOTION_EVENT_AXIS_GENERIC_8 = 39,
+    /** generic 9 */
     AMOTION_EVENT_AXIS_GENERIC_9 = 40,
+    /** generic 10 */
     AMOTION_EVENT_AXIS_GENERIC_10 = 41,
+    /** generic 11 */
     AMOTION_EVENT_AXIS_GENERIC_11 = 42,
+    /** generic 12 */
     AMOTION_EVENT_AXIS_GENERIC_12 = 43,
+    /** generic 13 */
     AMOTION_EVENT_AXIS_GENERIC_13 = 44,
+    /** generic 14 */
     AMOTION_EVENT_AXIS_GENERIC_14 = 45,
+    /** generic 15 */
     AMOTION_EVENT_AXIS_GENERIC_15 = 46,
+    /** generic 16 */
     AMOTION_EVENT_AXIS_GENERIC_16 = 47,
 
     // NOTE: If you add a new axis here you must also add it to several other files.
     //       Refer to frameworks/base/core/java/android/view/MotionEvent.java for the full list.
 };
 
-/*
+/**
  * Constants that identify buttons that are associated with motion events.
  * Refer to the documentation on the MotionEvent class for descriptions of each button.
  */
 enum {
+    /** primary */
     AMOTION_EVENT_BUTTON_PRIMARY = 1 << 0,
+    /** secondary */
     AMOTION_EVENT_BUTTON_SECONDARY = 1 << 1,
+    /** tertiary */
     AMOTION_EVENT_BUTTON_TERTIARY = 1 << 2,
+    /** back */
     AMOTION_EVENT_BUTTON_BACK = 1 << 3,
+    /** forward */
     AMOTION_EVENT_BUTTON_FORWARD = 1 << 4,
 };
 
-/*
+/**
  * Constants that identify tool types.
  * Refer to the documentation on the MotionEvent class for descriptions of each tool type.
  */
 enum {
+    /** unknown */
     AMOTION_EVENT_TOOL_TYPE_UNKNOWN = 0,
+    /** finger */
     AMOTION_EVENT_TOOL_TYPE_FINGER = 1,
+    /** stylus */
     AMOTION_EVENT_TOOL_TYPE_STYLUS = 2,
+    /** mouse */
     AMOTION_EVENT_TOOL_TYPE_MOUSE = 3,
+    /** eraser */
     AMOTION_EVENT_TOOL_TYPE_ERASER = 4,
 };
 
-/*
- * Input sources.
+/**
+ * Input source masks.
  *
  * Refer to the documentation on android.view.InputDevice for more details about input sources
  * and their correct interpretation.
  */
 enum {
+    /** mask */
     AINPUT_SOURCE_CLASS_MASK = 0x000000ff,
 
+    /** none */
     AINPUT_SOURCE_CLASS_NONE = 0x00000000,
+    /** button */
     AINPUT_SOURCE_CLASS_BUTTON = 0x00000001,
+    /** pointer */
     AINPUT_SOURCE_CLASS_POINTER = 0x00000002,
+    /** navigation */
     AINPUT_SOURCE_CLASS_NAVIGATION = 0x00000004,
+    /** position */
     AINPUT_SOURCE_CLASS_POSITION = 0x00000008,
+    /** joystick */
     AINPUT_SOURCE_CLASS_JOYSTICK = 0x00000010,
 };
 
+/** 
+ * Input sources.
+ */
 enum {
+    /** unknown */
     AINPUT_SOURCE_UNKNOWN = 0x00000000,
 
+    /** keyboard */
     AINPUT_SOURCE_KEYBOARD = 0x00000100 | AINPUT_SOURCE_CLASS_BUTTON,
+    /** dpad */
     AINPUT_SOURCE_DPAD = 0x00000200 | AINPUT_SOURCE_CLASS_BUTTON,
+    /** gamepad */
     AINPUT_SOURCE_GAMEPAD = 0x00000400 | AINPUT_SOURCE_CLASS_BUTTON,
+    /** touchscreen */
     AINPUT_SOURCE_TOUCHSCREEN = 0x00001000 | AINPUT_SOURCE_CLASS_POINTER,
+    /** mouse */
     AINPUT_SOURCE_MOUSE = 0x00002000 | AINPUT_SOURCE_CLASS_POINTER,
+    /** stylus */
     AINPUT_SOURCE_STYLUS = 0x00004000 | AINPUT_SOURCE_CLASS_POINTER,
+    /** trackball */
     AINPUT_SOURCE_TRACKBALL = 0x00010000 | AINPUT_SOURCE_CLASS_NAVIGATION,
+    /** touchpad */
     AINPUT_SOURCE_TOUCHPAD = 0x00100000 | AINPUT_SOURCE_CLASS_POSITION,
+    /** navigation */
     AINPUT_SOURCE_TOUCH_NAVIGATION = 0x00200000 | AINPUT_SOURCE_CLASS_NONE,
+    /** joystick */
     AINPUT_SOURCE_JOYSTICK = 0x01000000 | AINPUT_SOURCE_CLASS_JOYSTICK,
 
+    /** any */
     AINPUT_SOURCE_ANY = 0xffffff00,
 };
 
-/*
+/**
  * Keyboard types.
  *
  * Refer to the documentation on android.view.InputDevice for more details.
  */
 enum {
+    /** none */
     AINPUT_KEYBOARD_TYPE_NONE = 0,
+    /** non alphabetic */
     AINPUT_KEYBOARD_TYPE_NON_ALPHABETIC = 1,
+    /** alphabetic */
     AINPUT_KEYBOARD_TYPE_ALPHABETIC = 2,
 };
 
-/*
+/**
  * Constants used to retrieve information about the range of motion for a particular
  * coordinate of a motion event.
  *
@@ -474,19 +578,28 @@ enum {
  * DEPRECATION NOTICE: These constants are deprecated.  Use AMOTION_EVENT_AXIS_* constants instead.
  */
 enum {
+    /** x */
     AINPUT_MOTION_RANGE_X = AMOTION_EVENT_AXIS_X,
+    /** y */
     AINPUT_MOTION_RANGE_Y = AMOTION_EVENT_AXIS_Y,
+    /** pressure */
     AINPUT_MOTION_RANGE_PRESSURE = AMOTION_EVENT_AXIS_PRESSURE,
+    /** size */
     AINPUT_MOTION_RANGE_SIZE = AMOTION_EVENT_AXIS_SIZE,
+    /** touch major */
     AINPUT_MOTION_RANGE_TOUCH_MAJOR = AMOTION_EVENT_AXIS_TOUCH_MAJOR,
+    /** touch minor */
     AINPUT_MOTION_RANGE_TOUCH_MINOR = AMOTION_EVENT_AXIS_TOUCH_MINOR,
+    /** tool major */
     AINPUT_MOTION_RANGE_TOOL_MAJOR = AMOTION_EVENT_AXIS_TOOL_MAJOR,
+    /** tool minor */
     AINPUT_MOTION_RANGE_TOOL_MINOR = AMOTION_EVENT_AXIS_TOOL_MINOR,
+    /** orientation */
     AINPUT_MOTION_RANGE_ORIENTATION = AMOTION_EVENT_AXIS_ORIENTATION,
 } __attribute__ ((deprecated));
 
 
-/*
+/**
  * Input event accessors.
  *
  * Note that most functions can only be used on input events that are of a given type.
@@ -495,10 +608,10 @@ enum {
 
 /*** Accessors for all input events. ***/
 
-/* Get the input event type. */
+/** Get the input event type. */
 int32_t AInputEvent_getType(const AInputEvent* event);
 
-/* Get the id for the device that an input event came from.
+/** Get the id for the device that an input event came from.
  *
  * Input events can be generated by multiple different input devices.
  * Use the input device id to obtain information about the input
@@ -510,272 +623,351 @@ int32_t AInputEvent_getType(const AInputEvent* event);
  */
 int32_t AInputEvent_getDeviceId(const AInputEvent* event);
 
-/* Get the input event source. */
+/** Get the input event source. */
 int32_t AInputEvent_getSource(const AInputEvent* event);
 
 /*** Accessors for key events only. ***/
 
-/* Get the key event action. */
+/** Get the key event action. */
 int32_t AKeyEvent_getAction(const AInputEvent* key_event);
 
-/* Get the key event flags. */
+/** Get the key event flags. */
 int32_t AKeyEvent_getFlags(const AInputEvent* key_event);
 
-/* Get the key code of the key event.
- * This is the physical key that was pressed, not the Unicode character. */
+/**
+ * Get the key code of the key event.
+ * This is the physical key that was pressed, not the Unicode character.
+ */
 int32_t AKeyEvent_getKeyCode(const AInputEvent* key_event);
 
-/* Get the hardware key id of this key event.
- * These values are not reliable and vary from device to device. */
+/**
+ * Get the hardware key id of this key event.
+ * These values are not reliable and vary from device to device.
+ */
 int32_t AKeyEvent_getScanCode(const AInputEvent* key_event);
 
-/* Get the meta key state. */
+/** Get the meta key state. */
 int32_t AKeyEvent_getMetaState(const AInputEvent* key_event);
 
-/* Get the repeat count of the event.
+/**
+ * Get the repeat count of the event.
  * For both key up an key down events, this is the number of times the key has
  * repeated with the first down starting at 0 and counting up from there.  For
- * multiple key events, this is the number of down/up pairs that have occurred. */
+ * multiple key events, this is the number of down/up pairs that have occurred.
+ */
 int32_t AKeyEvent_getRepeatCount(const AInputEvent* key_event);
 
-/* Get the time of the most recent key down event, in the
+/**
+ * Get the time of the most recent key down event, in the
  * java.lang.System.nanoTime() time base.  If this is a down event,
  * this will be the same as eventTime.
  * Note that when chording keys, this value is the down time of the most recently
- * pressed key, which may not be the same physical key of this event. */
+ * pressed key, which may not be the same physical key of this event.
+ */
 int64_t AKeyEvent_getDownTime(const AInputEvent* key_event);
 
-/* Get the time this event occurred, in the
- * java.lang.System.nanoTime() time base. */
+/**
+ * Get the time this event occurred, in the
+ * java.lang.System.nanoTime() time base.
+ */
 int64_t AKeyEvent_getEventTime(const AInputEvent* key_event);
 
 /*** Accessors for motion events only. ***/
 
-/* Get the combined motion event action code and pointer index. */
+/** Get the combined motion event action code and pointer index. */
 int32_t AMotionEvent_getAction(const AInputEvent* motion_event);
 
-/* Get the motion event flags. */
+/** Get the motion event flags. */
 int32_t AMotionEvent_getFlags(const AInputEvent* motion_event);
 
-/* Get the state of any meta / modifier keys that were in effect when the
- * event was generated. */
+/**
+ * Get the state of any meta / modifier keys that were in effect when the
+ * event was generated.
+ */
 int32_t AMotionEvent_getMetaState(const AInputEvent* motion_event);
 
-/* Get the button state of all buttons that are pressed. */
+/** Get the button state of all buttons that are pressed. */
 int32_t AMotionEvent_getButtonState(const AInputEvent* motion_event);
 
-/* Get a bitfield indicating which edges, if any, were touched by this motion event.
+/**
+ * Get a bitfield indicating which edges, if any, were touched by this motion event.
  * For touch events, clients can use this to determine if the user's finger was
- * touching the edge of the display. */
+ * touching the edge of the display.
+ */
 int32_t AMotionEvent_getEdgeFlags(const AInputEvent* motion_event);
 
-/* Get the time when the user originally pressed down to start a stream of
- * position events, in the java.lang.System.nanoTime() time base. */
+/**
+ * Get the time when the user originally pressed down to start a stream of
+ * position events, in the java.lang.System.nanoTime() time base.
+ */
 int64_t AMotionEvent_getDownTime(const AInputEvent* motion_event);
 
-/* Get the time when this specific event was generated,
- * in the java.lang.System.nanoTime() time base. */
+/**
+ * Get the time when this specific event was generated,
+ * in the java.lang.System.nanoTime() time base.
+ */
 int64_t AMotionEvent_getEventTime(const AInputEvent* motion_event);
 
-/* Get the X coordinate offset.
+/**
+ * Get the X coordinate offset.
  * For touch events on the screen, this is the delta that was added to the raw
  * screen coordinates to adjust for the absolute position of the containing windows
- * and views. */
+ * and views.
+ */
 float AMotionEvent_getXOffset(const AInputEvent* motion_event);
 
-/* Get the Y coordinate offset.
+/**
+ * Get the Y coordinate offset.
  * For touch events on the screen, this is the delta that was added to the raw
  * screen coordinates to adjust for the absolute position of the containing windows
- * and views. */
+ * and views.
+ */
 float AMotionEvent_getYOffset(const AInputEvent* motion_event);
 
-/* Get the precision of the X coordinates being reported.
+/**
+ * Get the precision of the X coordinates being reported.
  * You can multiply this number with an X coordinate sample to find the
- * actual hardware value of the X coordinate. */
+ * actual hardware value of the X coordinate.
+ */
 float AMotionEvent_getXPrecision(const AInputEvent* motion_event);
 
-/* Get the precision of the Y coordinates being reported.
+/**
+ * Get the precision of the Y coordinates being reported.
  * You can multiply this number with a Y coordinate sample to find the
- * actual hardware value of the Y coordinate. */
+ * actual hardware value of the Y coordinate.
+ */
 float AMotionEvent_getYPrecision(const AInputEvent* motion_event);
 
-/* Get the number of pointers of data contained in this event.
- * Always >= 1. */
+/**
+ * Get the number of pointers of data contained in this event.
+ * Always >= 1.
+ */
 size_t AMotionEvent_getPointerCount(const AInputEvent* motion_event);
 
-/* Get the pointer identifier associated with a particular pointer
+/**
+ * Get the pointer identifier associated with a particular pointer
  * data index in this event.  The identifier tells you the actual pointer
  * number associated with the data, accounting for individual pointers
- * going up and down since the start of the current gesture. */
+ * going up and down since the start of the current gesture.
+ */
 int32_t AMotionEvent_getPointerId(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the tool type of a pointer for the given pointer index.
+/**
+ * Get the tool type of a pointer for the given pointer index.
  * The tool type indicates the type of tool used to make contact such as a
- * finger or stylus, if known. */
+ * finger or stylus, if known.
+ */
 int32_t AMotionEvent_getToolType(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the original raw X coordinate of this event.
+/**
+ * Get the original raw X coordinate of this event.
  * For touch events on the screen, this is the original location of the event
  * on the screen, before it had been adjusted for the containing window
- * and views. */
+ * and views.
+ */
 float AMotionEvent_getRawX(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the original raw X coordinate of this event.
+/**
+ * Get the original raw X coordinate of this event.
  * For touch events on the screen, this is the original location of the event
  * on the screen, before it had been adjusted for the containing window
- * and views. */
+ * and views.
+ */
 float AMotionEvent_getRawY(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the current X coordinate of this event for the given pointer index.
+/**
+ * Get the current X coordinate of this event for the given pointer index.
  * Whole numbers are pixels; the value may have a fraction for input devices
- * that are sub-pixel precise. */
+ * that are sub-pixel precise.
+ */
 float AMotionEvent_getX(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the current Y coordinate of this event for the given pointer index.
+/**
+ * Get the current Y coordinate of this event for the given pointer index.
  * Whole numbers are pixels; the value may have a fraction for input devices
- * that are sub-pixel precise. */
+ * that are sub-pixel precise.
+ */
 float AMotionEvent_getY(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the current pressure of this event for the given pointer index.
+/**
+ * Get the current pressure of this event for the given pointer index.
  * The pressure generally ranges from 0 (no pressure at all) to 1 (normal pressure),
  * although values higher than 1 may be generated depending on the calibration of
- * the input device. */
+ * the input device.
+ */
 float AMotionEvent_getPressure(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the current scaled value of the approximate size for the given pointer index.
+/**
+ * Get the current scaled value of the approximate size for the given pointer index.
  * This represents some approximation of the area of the screen being
  * pressed; the actual value in pixels corresponding to the
  * touch is normalized with the device specific range of values
  * and scaled to a value between 0 and 1.  The value of size can be used to
- * determine fat touch events. */
+ * determine fat touch events.
+ */
 float AMotionEvent_getSize(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the current length of the major axis of an ellipse that describes the touch area
- * at the point of contact for the given pointer index. */
+/**
+ * Get the current length of the major axis of an ellipse that describes the touch area
+ * at the point of contact for the given pointer index.
+ */
 float AMotionEvent_getTouchMajor(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the current length of the minor axis of an ellipse that describes the touch area
- * at the point of contact for the given pointer index. */
+/**
+ * Get the current length of the minor axis of an ellipse that describes the touch area
+ * at the point of contact for the given pointer index.
+ */
 float AMotionEvent_getTouchMinor(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the current length of the major axis of an ellipse that describes the size
+/**
+ * Get the current length of the major axis of an ellipse that describes the size
  * of the approaching tool for the given pointer index.
  * The tool area represents the estimated size of the finger or pen that is
- * touching the device independent of its actual touch area at the point of contact. */
+ * touching the device independent of its actual touch area at the point of contact.
+ */
 float AMotionEvent_getToolMajor(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the current length of the minor axis of an ellipse that describes the size
+/**
+ * Get the current length of the minor axis of an ellipse that describes the size
  * of the approaching tool for the given pointer index.
  * The tool area represents the estimated size of the finger or pen that is
- * touching the device independent of its actual touch area at the point of contact. */
+ * touching the device independent of its actual touch area at the point of contact.
+ */
 float AMotionEvent_getToolMinor(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the current orientation of the touch area and tool area in radians clockwise from
+/**
+ * Get the current orientation of the touch area and tool area in radians clockwise from
  * vertical for the given pointer index.
  * An angle of 0 degrees indicates that the major axis of contact is oriented
  * upwards, is perfectly circular or is of unknown orientation.  A positive angle
  * indicates that the major axis of contact is oriented to the right.  A negative angle
  * indicates that the major axis of contact is oriented to the left.
  * The full range is from -PI/2 radians (finger pointing fully left) to PI/2 radians
- * (finger pointing fully right). */
+ * (finger pointing fully right).
+ */
 float AMotionEvent_getOrientation(const AInputEvent* motion_event, size_t pointer_index);
 
-/* Get the value of the request axis for the given pointer index. */
+/** Get the value of the request axis for the given pointer index. */
 float AMotionEvent_getAxisValue(const AInputEvent* motion_event,
         int32_t axis, size_t pointer_index);
 
-/* Get the number of historical points in this event.  These are movements that
+/**
+ * Get the number of historical points in this event.  These are movements that
  * have occurred between this event and the previous event.  This only applies
  * to AMOTION_EVENT_ACTION_MOVE events -- all other actions will have a size of 0.
- * Historical samples are indexed from oldest to newest. */
+ * Historical samples are indexed from oldest to newest.
+ */
 size_t AMotionEvent_getHistorySize(const AInputEvent* motion_event);
 
-/* Get the time that a historical movement occurred between this event and
- * the previous event, in the java.lang.System.nanoTime() time base. */
+/**
+ * Get the time that a historical movement occurred between this event and
+ * the previous event, in the java.lang.System.nanoTime() time base.
+ */
 int64_t AMotionEvent_getHistoricalEventTime(const AInputEvent* motion_event,
         size_t history_index);
 
-/* Get the historical raw X coordinate of this event for the given pointer index that
+/**
+ * Get the historical raw X coordinate of this event for the given pointer index that
  * occurred between this event and the previous motion event.
  * For touch events on the screen, this is the original location of the event
  * on the screen, before it had been adjusted for the containing window
  * and views.
  * Whole numbers are pixels; the value may have a fraction for input devices
- * that are sub-pixel precise. */
+ * that are sub-pixel precise.
+ */
 float AMotionEvent_getHistoricalRawX(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the historical raw Y coordinate of this event for the given pointer index that
+/**
+ * Get the historical raw Y coordinate of this event for the given pointer index that
  * occurred between this event and the previous motion event.
  * For touch events on the screen, this is the original location of the event
  * on the screen, before it had been adjusted for the containing window
  * and views.
  * Whole numbers are pixels; the value may have a fraction for input devices
- * that are sub-pixel precise. */
+ * that are sub-pixel precise.
+ */
 float AMotionEvent_getHistoricalRawY(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the historical X coordinate of this event for the given pointer index that
+/**
+ * Get the historical X coordinate of this event for the given pointer index that
  * occurred between this event and the previous motion event.
  * Whole numbers are pixels; the value may have a fraction for input devices
- * that are sub-pixel precise. */
+ * that are sub-pixel precise.
+ */
 float AMotionEvent_getHistoricalX(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the historical Y coordinate of this event for the given pointer index that
+/**
+ * Get the historical Y coordinate of this event for the given pointer index that
  * occurred between this event and the previous motion event.
  * Whole numbers are pixels; the value may have a fraction for input devices
- * that are sub-pixel precise. */
+ * that are sub-pixel precise.
+ */
 float AMotionEvent_getHistoricalY(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the historical pressure of this event for the given pointer index that
+/**
+ * Get the historical pressure of this event for the given pointer index that
  * occurred between this event and the previous motion event.
  * The pressure generally ranges from 0 (no pressure at all) to 1 (normal pressure),
  * although values higher than 1 may be generated depending on the calibration of
- * the input device. */
+ * the input device.
+ */
 float AMotionEvent_getHistoricalPressure(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the current scaled value of the approximate size for the given pointer index that
+/**
+ * Get the current scaled value of the approximate size for the given pointer index that
  * occurred between this event and the previous motion event.
  * This represents some approximation of the area of the screen being
  * pressed; the actual value in pixels corresponding to the
  * touch is normalized with the device specific range of values
  * and scaled to a value between 0 and 1.  The value of size can be used to
- * determine fat touch events. */
+ * determine fat touch events.
+ */
 float AMotionEvent_getHistoricalSize(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the historical length of the major axis of an ellipse that describes the touch area
+/**
+ * Get the historical length of the major axis of an ellipse that describes the touch area
  * at the point of contact for the given pointer index that
- * occurred between this event and the previous motion event. */
+ * occurred between this event and the previous motion event.
+ */
 float AMotionEvent_getHistoricalTouchMajor(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the historical length of the minor axis of an ellipse that describes the touch area
+/**
+ * Get the historical length of the minor axis of an ellipse that describes the touch area
  * at the point of contact for the given pointer index that
- * occurred between this event and the previous motion event. */
+ * occurred between this event and the previous motion event.
+ */
 float AMotionEvent_getHistoricalTouchMinor(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the historical length of the major axis of an ellipse that describes the size
+/**
+ * Get the historical length of the major axis of an ellipse that describes the size
  * of the approaching tool for the given pointer index that
  * occurred between this event and the previous motion event.
  * The tool area represents the estimated size of the finger or pen that is
- * touching the device independent of its actual touch area at the point of contact. */
+ * touching the device independent of its actual touch area at the point of contact.
+ */
 float AMotionEvent_getHistoricalToolMajor(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the historical length of the minor axis of an ellipse that describes the size
+/**
+ * Get the historical length of the minor axis of an ellipse that describes the size
  * of the approaching tool for the given pointer index that
  * occurred between this event and the previous motion event.
  * The tool area represents the estimated size of the finger or pen that is
- * touching the device independent of its actual touch area at the point of contact. */
+ * touching the device independent of its actual touch area at the point of contact.
+ */
 float AMotionEvent_getHistoricalToolMinor(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the historical orientation of the touch area and tool area in radians clockwise from
+/**
+ * Get the historical orientation of the touch area and tool area in radians clockwise from
  * vertical for the given pointer index that
  * occurred between this event and the previous motion event.
  * An angle of 0 degrees indicates that the major axis of contact is oriented
@@ -783,51 +975,54 @@ float AMotionEvent_getHistoricalToolMinor(const AInputEvent* motion_event, size_
  * indicates that the major axis of contact is oriented to the right.  A negative angle
  * indicates that the major axis of contact is oriented to the left.
  * The full range is from -PI/2 radians (finger pointing fully left) to PI/2 radians
- * (finger pointing fully right). */
+ * (finger pointing fully right).
+ */
 float AMotionEvent_getHistoricalOrientation(const AInputEvent* motion_event, size_t pointer_index,
         size_t history_index);
 
-/* Get the historical value of the request axis for the given pointer index
- * that occurred between this event and the previous motion event. */
+/**
+ * Get the historical value of the request axis for the given pointer index
+ * that occurred between this event and the previous motion event.
+ */
 float AMotionEvent_getHistoricalAxisValue(const AInputEvent* motion_event,
         int32_t axis, size_t pointer_index, size_t history_index);
 
 
-/*
+struct AInputQueue;
+/**
  * Input queue
  *
  * An input queue is the facility through which you retrieve input
  * events.
  */
-struct AInputQueue;
 typedef struct AInputQueue AInputQueue;
 
-/*
+/**
  * Add this input queue to a looper for processing.  See
  * ALooper_addFd() for information on the ident, callback, and data params.
  */
 void AInputQueue_attachLooper(AInputQueue* queue, ALooper* looper,
         int ident, ALooper_callbackFunc callback, void* data);
 
-/*
+/**
  * Remove the input queue from the looper it is currently attached to.
  */
 void AInputQueue_detachLooper(AInputQueue* queue);
 
-/*
+/**
  * Returns true if there are one or more events available in the
  * input queue.  Returns 1 if the queue has events; 0 if
  * it does not have events; and a negative value if there is an error.
  */
 int32_t AInputQueue_hasEvents(AInputQueue* queue);
 
-/*
+/**
  * Returns the next available event from the queue.  Returns a negative
  * value if no events are available or an error has occurred.
  */
 int32_t AInputQueue_getEvent(AInputQueue* queue, AInputEvent** outEvent);
 
-/*
+/**
  * Sends the key for standard pre-dispatching -- that is, possibly deliver
  * it to the current IME to be consumed before the app.  Returns 0 if it
  * was not pre-dispatched, meaning you can process it right now.  If non-zero
@@ -837,7 +1032,7 @@ int32_t AInputQueue_getEvent(AInputQueue* queue, AInputEvent** outEvent);
  */
 int32_t AInputQueue_preDispatchEvent(AInputQueue* queue, AInputEvent* event);
 
-/*
+/**
  * Report that dispatching has finished with the given event.
  * This must be called after receiving an event with AInputQueue_get_event().
  */
