@@ -32,6 +32,11 @@ enum {
     WINDOW_FORMAT_RGB_565            = 4,
 };
 
+/**
+ * {@link ANativeWindow} provides access to a native window.
+ *
+ * An instance can be obtained using {@link ANativeWindow_fromSurface}.
+ */
 struct ANativeWindow;
 typedef struct ANativeWindow ANativeWindow;
 

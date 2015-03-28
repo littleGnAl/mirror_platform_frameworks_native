@@ -49,7 +49,7 @@ typedef struct {
 } AndroidBitmapInfo;
 
 /**
- * Given a java bitmap object, fill out the AndroidBitmap struct for it.
+ * Given a java bitmap object, fill out the AndroidBitmapInfo struct for it.
  * If the call fails, the info parameter will be ignored
  */
 int AndroidBitmap_getInfo(JNIEnv* env, jobject jbitmap,
@@ -71,7 +71,7 @@ int AndroidBitmap_getInfo(JNIEnv* env, jobject jbitmap,
 int AndroidBitmap_lockPixels(JNIEnv* env, jobject jbitmap, void** addrPtr);
 
 /**
- * Call this to balanace a successful call to AndroidBitmap_lockPixels
+ * Call this to balanae a successful call to AndroidBitmap_lockPixels
  */
 int AndroidBitmap_unlockPixels(JNIEnv* env, jobject jbitmap);
 
