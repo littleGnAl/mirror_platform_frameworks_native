@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * @file looper.h
+ */
 
 #ifndef ANDROID_LOOPER_H
 #define ANDROID_LOOPER_H
