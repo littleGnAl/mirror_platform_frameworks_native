@@ -378,7 +378,7 @@ enum {
 enum {
     /** x axis */
     AMOTION_EVENT_AXIS_X = 0,
-    /** y axis */    
+    /** y axis */
     AMOTION_EVENT_AXIS_Y = 1,
     /** pressure */
     AMOTION_EVENT_AXIS_PRESSURE = 2,
@@ -390,7 +390,7 @@ enum {
     AMOTION_EVENT_AXIS_TOUCH_MINOR = 5,
     /** tool major */
     AMOTION_EVENT_AXIS_TOOL_MAJOR = 6,
-    /** tool minor */    
+    /** tool minor */
     AMOTION_EVENT_AXIS_TOOL_MINOR = 7,
     /** orientation */
     AMOTION_EVENT_AXIS_ORIENTATION = 8,
