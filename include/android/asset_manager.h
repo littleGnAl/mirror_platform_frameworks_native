@@ -22,20 +22,49 @@
 extern "C" {
 #endif
 
+/**
+ * {@link AAssetManager} provides access to an application's raw assets by
+ * creating {@link AAsset} objects.
+ *
+ * AAssetManager is a wrapper to the low-level native implementation
+ * of the java {@link AssetManager}, an instance can be obtained using
+ * {@link AAssetManager_fromJava}.
+ *
+ * The asset hierarchy may be examined like a filesystem, using
+ * {@link AAssetDir} objects to peruse a single directory.
+ *
+ * A native {@link AAssetManager} instance may be shared across multiple threads.
+ */
 struct AAssetManager;
 typedef struct AAssetManager AAssetManager;
 
+/*
+ * {@link AAssetDir} provides access to a chunk of the asset hierarchy as if
+ * it were a single directory. The contents are populated by the
+ * {@link AAssetManager}.
+ *
+ * The list of files will be sorted in ascending order by ASCII value.
+ */
 struct AAssetDir;
 typedef struct AAssetDir AAssetDir;
 
+/*
+ * {@link AAsset} provides access to a read-only asset.
+ *
+ * {@link AAsset} objects are NOT thread-safe, and should not be shared across
+ * threads.
+ */
 struct AAsset;
 typedef struct AAsset AAsset;
 
-/* Available modes for opening assets */
+/* Available access modes for opening assets */
 enum {
     AASSET_MODE_UNKNOWN      = 0,
+    /* read chunks, and seek forward and backward */
     AASSET_MODE_RANDOM       = 1,
+    /* read sequentially, with an occasional forward seek */
     AASSET_MODE_STREAMING    = 2,
+    /* caller plans to ask for a read-only buffer with all data */
     AASSET_MODE_BUFFER       = 3
 };
 
