@@ -31,6 +31,9 @@
 extern "C" {
 #endif
 
+/**
+ * {@link ANativeActivityCallbacks}
+ */
 struct ANativeActivityCallbacks;
 
 /**
