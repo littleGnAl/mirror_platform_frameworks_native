@@ -1,0 +1,75 @@
+body {
+    color: #222 !important;
+    background-color: #F9F9F9 !important;
+    font-family: Roboto, sans-serif;
+    margin-left: 20px;
+    margin-right: 20px;    
+}
+
+#side-nav {
+    left: auto;
+    top: auto;
+}
+
+#projectname {
+    font-size: 16px;
+    font-family: Roboto, sans-serif;    
+}
+
+#projectlogo {
+    vertical-align: middle;
+}
+
+.glow {
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+#top .tablist li, #top .tablist a, #top .tabs, #top .tabs2, #top .tabs3, #nav-tree .selected {
+    background-image: none;
+    text-shadow: none;
+    color: #333;
+}
+
+#titlearea {
+    border-bottom: 1px solid #f80;    
+}
+
+#top .tabs, #top .tabs2, #top .tabs3 {
+    border-bottom: 1px solid #ccc;
+}
+
+#nav-tree, #doc-content, div.header {
+    background-image: none;
+}
+
+#top a:link, #top a:visited {
+     font-weight: normal;
+     color: #333;
+}
+
+#nav-tree .selected a, #top .tablist li.current a {
+    color: #F80
+}
+
+#doc-content a:link, #doc-content a:visited {
+    text-decoration: none;
+    color: #258aaf;
+}
+
+#doc-content a:hover {
+  color: #33B5E5;
+}
+
+.navpath ul {
+    background-image: none;
+    border: none;
+}
+
+#nav-sync {
+    display: none;
+}
+
+.ui-resizable-e {
+    width: 1px;
+}
