@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/**
+ * @file native_window.h
+ */
+
 #ifndef ANDROID_NATIVE_WINDOW_H
 #define ANDROID_NATIVE_WINDOW_H
 
@@ -32,6 +36,11 @@ enum {
     WINDOW_FORMAT_RGB_565            = 4,
 };
 
+/**
+ * {@link ANativeWindow} provides access to a native window.
+ *
+ * An instance can be obtained using {@link ANativeWindow_fromSurface}.
+ */
 struct ANativeWindow;
 typedef struct ANativeWindow ANativeWindow;
 
