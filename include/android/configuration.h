@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/**
+ * @file configuration.h
+ */
+
 #ifndef ANDROID_CONFIGURATION_H
 #define ANDROID_CONFIGURATION_H
 
@@ -24,6 +28,15 @@ extern "C" {
 #endif
 
 struct AConfiguration;
+/**
+ * {@link AConfiguration} is an opaque type use to get and set
+ * display, orientation, touchscreen, keyboard, navigation, keyboard,
+ * UI and storage configuration.
+ *
+ * A {@link AConfiguration} pointer can be obtained using:
+ * - AConfiguration_new()
+ * - AConfiguration_fromAssetManager()
+ */
 typedef struct AConfiguration AConfiguration;
 
 enum {
