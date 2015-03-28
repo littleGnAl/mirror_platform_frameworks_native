@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * @file asset_manager_jni.h
+ */
 
 #ifndef ANDROID_ASSET_MANAGER_JNI_H
 #define ANDROID_ASSET_MANAGER_JNI_H
