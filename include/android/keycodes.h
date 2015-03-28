@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/**
+ * @file keycodes.h
+ */
+
 #ifndef _ANDROID_KEYCODES_H
 #define _ANDROID_KEYCODES_H
 
@@ -39,7 +43,7 @@
 extern "C" {
 #endif
 
-/*
+/**
  * Key codes.
  */
 enum {

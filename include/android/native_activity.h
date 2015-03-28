@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * @file native_activity.h
+ */
 
 #ifndef ANDROID_NATIVE_ACTIVITY_H
 #define ANDROID_NATIVE_ACTIVITY_H
@@ -31,6 +34,9 @@
 extern "C" {
 #endif
 
+/**
+ * {@link ANativeActivityCallbacks}
+ */
 struct ANativeActivityCallbacks;
 
 /**
@@ -273,7 +279,16 @@ void ANativeActivity_setWindowFlags(ANativeActivity* activity,
  * API for documentation.
  */
 enum {
+    /**
+     * Implicit request to show the input window, not as the result
+     * of a direct request by the user.
+     */
     ANATIVEACTIVITY_SHOW_SOFT_INPUT_IMPLICIT = 0x0001,
+    /** 
+     * The user has forced the input method open (such as by
+     * long-pressing menu) so it should not be closed until they
+     * explicitly do so.
+     */
     ANATIVEACTIVITY_SHOW_SOFT_INPUT_FORCED = 0x0002,
 };
 
@@ -290,7 +305,15 @@ void ANativeActivity_showSoftInput(ANativeActivity* activity, uint32_t flags);
  * API for documentation.
  */
 enum {
+    /** 
+     * The soft input window should only be hidden if it was not
+     * explicitly shown by the user.
+     */
     ANATIVEACTIVITY_HIDE_SOFT_INPUT_IMPLICIT_ONLY = 0x0001,
+    /**
+     * The soft input window should normally be hidden, unless it was
+     * originally shown with {@link ANATIVEACTIVITY_SHOW_SOFT_INPUT_FORCED}.
+     */
     ANATIVEACTIVITY_HIDE_SOFT_INPUT_NOT_ALWAYS = 0x0002,
 };
 
