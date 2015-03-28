@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * @file rect.h
+ */
 
 #ifndef ANDROID_RECT_H
 #define ANDROID_RECT_H
