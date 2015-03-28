@@ -22,20 +22,46 @@
 extern "C" {
 #endif
 
+/*
+ * AAssetManager is used to read AAsset, an instance can be
+ * obtained from a AssetManager java object using
+ * AAssetManager_fromJava.
+ *
+ * The asset hierarchy may be examined like a filesystem, using
+ * AAssetDir objects to peruse a single directory.
+ *
+ * A native AAssetManager instance may be shared across multiple threads.
+ */
 struct AAssetManager;
 typedef struct AAssetManager AAssetManager;
 
+/*
+ * AAssetDir provides access to a chunk of the asset hierarchy as if
+ * it were a single directory. The contents are populated by the
+ * AssetManager.
+ *
+ * The list of files will be sorted in ascending order by ASCII value.
+ */  
 struct AAssetDir;
 typedef struct AAssetDir AAssetDir;
 
+/*
+ * AAsset provides access to a read-only asset. 
+ * 
+ * Asset objects are NOT thread-safe, and should not be shared across
+ * threads.
+ */
 struct AAsset;
 typedef struct AAsset AAsset;
 
-/* Available modes for opening assets */
+/* Available access modes for opening assets */
 enum {
     AASSET_MODE_UNKNOWN      = 0,
+    /* read chunks, and seek forward and backward */
     AASSET_MODE_RANDOM       = 1,
+    /* read sequentially, with an occasional forward seek */
     AASSET_MODE_STREAMING    = 2,
+    /* caller plans to ask for a read-only buffer with all data */
     AASSET_MODE_BUFFER       = 3
 };
 
