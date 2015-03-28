@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/**
+ * @file input.h
+ */
+
 #ifndef _ANDROID_INPUT_H
 #define _ANDROID_INPUT_H
 

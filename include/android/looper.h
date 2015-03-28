@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * @file looper.h
+ */
 
 #ifndef ANDROID_LOOPER_H
 #define ANDROID_LOOPER_H
@@ -190,6 +193,10 @@ int ALooper_pollOnce(int timeoutMillis, int* outFd, int* outEvents, void** outDa
  * Like ALooper_pollOnce(), but performs all pending callbacks until all
  * data has been consumed or a file descriptor is available with no callback.
  * This function will never return ALOOPER_POLL_CALLBACK.
+ *
+ * Returns a value >= 0 containing the same identifier `ident` passed
+ * to ALooper_addFd() if its file descriptor has data or {@link
+ * ALOOPER_POLL_TIMEOUT}.
  */
 int ALooper_pollAll(int timeoutMillis, int* outFd, int* outEvents, void** outData);
 
