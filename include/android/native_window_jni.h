@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/**
+ * @file native_window_jni.h
+ */
+
 #ifndef ANDROID_NATIVE_WINDOW_JNI_H
 #define ANDROID_NATIVE_WINDOW_JNI_H
 
