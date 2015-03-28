@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/**
+ * @file configuration.h
+ */
+
 #ifndef ANDROID_CONFIGURATION_H
 #define ANDROID_CONFIGURATION_H
 
