@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * @file rect.h
+ */
 
 #ifndef ANDROID_RECT_H
 #define ANDROID_RECT_H
@@ -24,6 +27,13 @@
 extern "C" {
 #endif
 
+/**
+ * {@link ARect} is a struct that represents a rectangular window area.
+ * 
+ * It is used with {@link
+ * ANativeActivityCallbacks::onContentRectChanged} event callback and
+ * ANativeWindow_lock() function.
+ */
 typedef struct ARect {
 #ifdef __cplusplus
     typedef int32_t value_type;

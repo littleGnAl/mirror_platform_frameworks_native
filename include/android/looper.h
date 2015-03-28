@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * @file looper.h
+ */
 
 #ifndef ANDROID_LOOPER_H
 #define ANDROID_LOOPER_H
@@ -22,6 +25,7 @@
 extern "C" {
 #endif
 
+struct ALooper;
 /**
  * ALooper
  *
@@ -35,7 +39,6 @@ extern "C" {
  *
  * A thread can have only one ALooper associated with it.
  */
-struct ALooper;
 typedef struct ALooper ALooper;
 
 /**
@@ -176,10 +179,12 @@ typedef int (*ALooper_callbackFunc)(int fd, int events, void* data);
  *
  * Returns ALOOPER_POLL_ERROR if an error occurred.
  *
- * Returns a value >= 0 containing an identifier if its file descriptor has data
- * and it has no callback function (requiring the caller here to handle it).
- * In this (and only this) case outFd, outEvents and outData will contain the poll
- * events and data associated with the fd, otherwise they will be set to NULL.
+ * Returns a value >= 0 containing an identifier (the same identifier
+ * `ident` passed to ALooper_addFd()) if its file descriptor has data
+ * and it has no callback function (requiring the caller here to
+ * handle it).  In this (and only this) case outFd, outEvents and
+ * outData will contain the poll events and data associated with the
+ * fd, otherwise they will be set to NULL.
  *
  * This method does not return until it has finished invoking the appropriate callbacks
  * for all file descriptors that were signalled.

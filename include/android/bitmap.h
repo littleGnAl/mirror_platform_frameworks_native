@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/**
+ * @file bitmap.h
+ */
+
 #ifndef ANDROID_BITMAP_H
 #define ANDROID_BITMAP_H
 
@@ -34,22 +38,32 @@ extern "C" {
 
 enum AndroidBitmapFormat {
     ANDROID_BITMAP_FORMAT_NONE      = 0,
+    /** red: 8 bits, green: 8 bits, blue: 8 bits, alpha: 8 bits **/
     ANDROID_BITMAP_FORMAT_RGBA_8888 = 1,
+    /** red: 5 bits, green: 6 bits, blue: 5 bits **/    
     ANDROID_BITMAP_FORMAT_RGB_565   = 4,
+    /** red: 4 bits, green: 4 bits, blue: 4 bits, alpha: 4 bits **/        
     ANDROID_BITMAP_FORMAT_RGBA_4444 = 7,
+    /** Deprecated */
     ANDROID_BITMAP_FORMAT_A_8       = 8,
 };
 
+/** Bitmap info, see AndroidBitmap_getInfo() */
 typedef struct {
+    /** bitmap width in pixels */
     uint32_t    width;
+    /** bitmap height in pixels */
     uint32_t    height;
+    /** number of byte per row */
     uint32_t    stride;
+    /** see {@link AndroidBitmapFormat} */  
     int32_t     format;
+    /** unused */
     uint32_t    flags;      // 0 for now
 } AndroidBitmapInfo;
 
 /**
- * Given a java bitmap object, fill out the AndroidBitmap struct for it.
+ * Given a java bitmap object, fill out the AndroidBitmapInfo struct for it.
  * If the call fails, the info parameter will be ignored
  */
 int AndroidBitmap_getInfo(JNIEnv* env, jobject jbitmap,
@@ -71,7 +85,7 @@ int AndroidBitmap_getInfo(JNIEnv* env, jobject jbitmap,
 int AndroidBitmap_lockPixels(JNIEnv* env, jobject jbitmap, void** addrPtr);
 
 /**
- * Call this to balanace a successful call to AndroidBitmap_lockPixels
+ * Call this to balanae a successful call to AndroidBitmap_lockPixels
  */
 int AndroidBitmap_unlockPixels(JNIEnv* env, jobject jbitmap);
 
