@@ -31,11 +31,14 @@ typedef struct AAssetDir AAssetDir;
 struct AAsset;
 typedef struct AAsset AAsset;
 
-/* Available modes for opening assets */
+/* Available access modes for opening assets */
 enum {
     AASSET_MODE_UNKNOWN      = 0,
+    /* read chunks, and seek forward and backward */
     AASSET_MODE_RANDOM       = 1,
+    /* read sequentially, with an occasional forward seek */    
     AASSET_MODE_STREAMING    = 2,
+    /* caller plans to ask for a read-only buffer with all data */
     AASSET_MODE_BUFFER       = 3
 };
 
