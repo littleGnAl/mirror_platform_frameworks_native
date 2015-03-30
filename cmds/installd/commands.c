@@ -658,7 +658,8 @@ static int split(char *buf, const char **argv)
 }
 
 static void run_patchoat(int input_fd, int oat_fd, const char* input_file_name,
-    const char* output_file_name, const char *pkgname __unused, const char *instruction_set)
+    const char* output_file_name, const char *pkgname __unused, const char *instruction_set,
+    int is_gz, int swap_fd)
 {
     static const int MAX_INT_LEN = 12;      // '-'+10dig+'\0' -OR- 0x+8dig
     static const unsigned int MAX_INSTRUCTION_SET_LEN = 7;
@@ -671,27 +672,37 @@ static void run_patchoat(int input_fd, int oat_fd, const char* input_file_name,
     }
 
     /* input_file_name/input_fd should be the .odex/.oat file that is precompiled. I think*/
+    const char* input_option = is_gz ? "--input-oat-gz-fd=" : "--input-oat-fd=";
     char instruction_set_arg[strlen("--instruction-set=") + MAX_INSTRUCTION_SET_LEN];
     char output_oat_fd_arg[strlen("--output-oat-fd=") + MAX_INT_LEN];
-    char input_oat_fd_arg[strlen("--input-oat-fd=") + MAX_INT_LEN];
+    char input_oat_fd_arg[strlen(input_option) + MAX_INT_LEN];
     const char* patched_image_location_arg = "--patched-image-location=/system/framework/boot.art";
+    char swap_fd_str[strlen("--swap-fd=") + MAX_INT_LEN];
+
     // The caller has already gotten all the locks we need.
     const char* no_lock_arg = "--no-lock-output";
     sprintf(instruction_set_arg, "--instruction-set=%s", instruction_set);
     sprintf(output_oat_fd_arg, "--output-oat-fd=%d", oat_fd);
-    sprintf(input_oat_fd_arg, "--input-oat-fd=%d", input_fd);
-    ALOGV("Running %s isa=%s in-fd=%d (%s) out-fd=%d (%s)\n",
-          PATCHOAT_BIN, instruction_set, input_fd, input_file_name, oat_fd, output_file_name);
+    sprintf(input_oat_fd_arg, "%s%d", input_option, input_fd);
+
+    if (swap_fd >= 0) {
+        sprintf(swap_fd_str, "--swap-fd=%d", swap_fd);
+    }
 
     /* patchoat, patched-image-location, no-lock, isa, input-fd, output-fd */
-    char* argv[7];
+    char* argv[8];
     argv[0] = (char*) PATCHOAT_BIN;
     argv[1] = (char*) patched_image_location_arg;
     argv[2] = (char*) no_lock_arg;
     argv[3] = instruction_set_arg;
     argv[4] = output_oat_fd_arg;
     argv[5] = input_oat_fd_arg;
-    argv[6] = NULL;
+    argv[6] = swap_fd != -1 ? swap_fd_str : NULL;
+    argv[7] = NULL;
+
+    ALOGE("Patching from '%s' to '%s': %s %s %s %s %s %s %s",
+          input_file_name, output_file_name, argv[0], argv[1], argv[2], argv[3],
+          argv[4], argv[5], argv[6] == NULL ? "" : argv[6]);
 
     execv(PATCHOAT_BIN, (char* const *)argv);
     ALOGE("execv(%s) failed: %s\n", PATCHOAT_BIN, strerror(errno));
@@ -997,7 +1008,9 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
     char *end;
     const char *input_file;
     char in_odex_path[PKG_PATH_MAX];
-    int res, input_fd=-1, out_fd=-1, swap_fd=-1;
+    char gz_file[PKG_PATH_MAX];
+    char tmp_path[PKG_PATH_MAX];
+    int res, input_fd=-1, out_fd=-1, swap_fd=-1, is_gz=0;
 
     // Early best-effort check whether we can fit the the path into our buffers.
     // Note: the cache path will require an additional 5 bytes for ".swap", but we'll try to run
@@ -1024,19 +1037,29 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
         return -1;
     }
 
+    if (!calculate_odex_file_path(in_odex_path, apk_path, instruction_set)) {
+      return -1;
+    }
+
     if (is_patchoat) {
-        if (!calculate_odex_file_path(in_odex_path, apk_path, instruction_set)) {
-          return -1;
-        }
         input_file = in_odex_path;
     } else {
-        input_file = apk_path;
+        strcpy(gz_file, in_odex_path);
+        strcat(gz_file, ".gz");
+        if (!access(gz_file, F_OK)) {
+          is_patchoat = 1;
+          is_gz = 1;
+          input_file = gz_file;
+        } else {
+          input_file = apk_path;
+        }
     }
 
     memset(&input_stat, 0, sizeof(input_stat));
     stat(input_file, &input_stat);
 
     input_fd = open(input_file, O_RDONLY, 0);
+
     if (input_fd < 0) {
         ALOGE("installd cannot open '%s' for input during dexopt\n", input_file);
         return -1;
@@ -1065,7 +1088,7 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
     }
 
     // Create a swap file if necessary.
-    if (!is_patchoat && ShouldUseSwapFileForDexopt()) {
+    if (is_gz || (!is_patchoat && ShouldUseSwapFileForDexopt())) {
         // Make sure there really is enough space.
         size_t out_len = strlen(out_path);
         if (out_len + strlen(".swap") + 1 <= PKG_PATH_MAX) {
@@ -1125,7 +1148,8 @@ int dexopt(const char *apk_path, uid_t uid, bool is_public,
         }
 
         if (is_patchoat) {
-            run_patchoat(input_fd, out_fd, input_file, out_path, pkgname, instruction_set);
+            run_patchoat(input_fd, out_fd, input_file, out_path, pkgname,
+                         instruction_set, is_gz, swap_fd);
         } else {
             run_dex2oat(input_fd, out_fd, input_file, out_path, swap_fd, pkgname, instruction_set,
                         vm_safe_mode, debuggable);
