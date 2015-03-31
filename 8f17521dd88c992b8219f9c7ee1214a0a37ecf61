@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "630f4a79_22c59b3e",
+        "filename": "include/android/asset_manager.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-03-31T18:21:09Z",
+      "side": 1,
+      "message": "is there any documentation for the unknown mode?",
+      "revId": "8f17521dd88c992b8219f9c7ee1214a0a37ecf61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83143e89_ba024e08",
+        "filename": "include/android/bitmap.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-03-31T18:21:09Z",
+      "side": 1,
+      "message": "These come from PixelFormat.",
+      "revId": "8f17521dd88c992b8219f9c7ee1214a0a37ecf61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "630f4a79_c2dc8712",
+        "filename": "include/android/sensor.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-03-31T18:21:09Z",
+      "side": 1,
+      "message": "Wow!  This list is way way way out of date.",
+      "revId": "8f17521dd88c992b8219f9c7ee1214a0a37ecf61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
