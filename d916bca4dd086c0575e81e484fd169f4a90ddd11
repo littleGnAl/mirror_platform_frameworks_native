@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e37fbae4_5b15033e",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-01T18:51:23Z",
+      "side": 1,
+      "message": "Nice catch. Fixed.",
+      "parentUuid": "c3ae3665_46e972ac",
+      "range": {
+        "startLine": 1027,
+        "startChar": 62,
+        "endLine": 1027,
+        "endChar": 63
+      },
+      "revId": "d916bca4dd086c0575e81e484fd169f4a90ddd11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83143e89_44d9cef7",
         "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2015-03-30T23:06:00Z",
       "side": 1,
       "message": "\u003d\u003d Rect::INVALID_RECT?",
+      "revId": "d916bca4dd086c0575e81e484fd169f4a90ddd11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e37fbae4_fb0cf73c",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-01T18:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83143e89_44d9cef7",
       "revId": "d916bca4dd086c0575e81e484fd169f4a90ddd11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
