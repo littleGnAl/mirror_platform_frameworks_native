@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2386322e_8ca9075c",
+        "filename": "include/android/asset_manager.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1070099
+      },
+      "writtenOn": "2015-04-01T20:19:21Z",
+      "side": 1,
+      "message": "Looking at the underlying impl in androidfw, I don\u0027t see mAccessMode being used anywhere.\n\nAm I missing something?",
+      "parentUuid": "630f4a79_22c59b3e",
+      "revId": "8f17521dd88c992b8219f9c7ee1214a0a37ecf61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83143e89_ba024e08",
         "filename": "include/android/bitmap.h",
         "patchSetId": 13
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "4383261d_2a847fe1",
+        "filename": "include/android/bitmap.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1070099
+      },
+      "writtenOn": "2015-04-01T20:19:21Z",
+      "side": 1,
+      "message": "Those looks pretty self explanatory.\n\nMarking A_8 as deprecated (it is in PixelFormat.java)",
+      "parentUuid": "83143e89_ba024e08",
+      "revId": "8f17521dd88c992b8219f9c7ee1214a0a37ecf61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "630f4a79_c2dc8712",
         "filename": "include/android/sensor.h",
         "patchSetId": 13
@@ -47,6 +83,24 @@
       "writtenOn": "2015-03-31T18:21:09Z",
       "side": 1,
       "message": "Wow!  This list is way way way out of date.",
+      "revId": "8f17521dd88c992b8219f9c7ee1214a0a37ecf61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6392ea67_0b417dfa",
+        "filename": "include/android/sensor.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1070099
+      },
+      "writtenOn": "2015-04-01T20:19:21Z",
+      "side": 1,
+      "message": "I took the comment from sensors.h, should we add other sensors enum there too?",
+      "parentUuid": "630f4a79_c2dc8712",
       "revId": "8f17521dd88c992b8219f9c7ee1214a0a37ecf61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
