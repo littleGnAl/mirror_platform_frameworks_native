@@ -109,6 +109,7 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_MODULE := libsurfaceflinger
 
 LOCAL_CFLAGS += -Wall -Werror -Wunused -Wunreachable-code
+LOCAL_CFLAGS += -DHAS_CONTEXT_PRIORITY
 
 include $(BUILD_SHARED_LIBRARY)
 
