@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "63de6a5c_990cf6ee",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-04-02T23:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8370be19_8dcd89b4",
+      "range": {
+        "startLine": 1012,
+        "startChar": 5,
+        "endLine": 1014,
+        "endChar": 5
+      },
+      "revId": "1b896d17151d99d4f7a98dc3facd4d69ed6fc9f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a371421d_2ec56b3e",
         "filename": "cmds/installd/commands.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-01T18:07:34Z",
       "side": 1,
       "message": "This should be up top, see my earlier comment.",
+      "range": {
+        "startLine": 1113,
+        "startChar": 9,
+        "endLine": 1116,
+        "endChar": 9
+      },
+      "revId": "1b896d17151d99d4f7a98dc3facd4d69ed6fc9f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_76aa607e",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-04-02T23:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a371421d_2ec56b3e",
       "range": {
         "startLine": 1113,
         "startChar": 9,
