@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2312b2d8_8993995a",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-04-02T08:18:10Z",
+      "side": 1,
+      "message": "and this should have been \"kernel\"",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "032cc3ade5d1c640c066d78d82a0becd648f799f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
