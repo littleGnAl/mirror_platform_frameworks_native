@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63de6a5c_ea1fa25d",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-02T19:30:44Z",
+      "side": 1,
+      "message": "why does this even exist? it\u0027s only assigned to in one place, and it\u0027s assigned a constant value. it\u0027s only read in one place. so shouldn\u0027t we just replace that one read with the constant?",
+      "revId": "471471ed5d9e04a51f94a4647ec461c8ddb08c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
