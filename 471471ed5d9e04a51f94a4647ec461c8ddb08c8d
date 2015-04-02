@@ -34,6 +34,24 @@
       "revId": "471471ed5d9e04a51f94a4647ec461c8ddb08c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63de6a5c_e89e8ae1",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2015-04-02T21:31:25Z",
+      "side": 1,
+      "message": "That would also be fine. My complaint was that it is comparing this to the wrong union member (which is a different size in the 64 bit interface) in the handler.",
+      "parentUuid": "63de6a5c_ea1fa25d",
+      "revId": "471471ed5d9e04a51f94a4647ec461c8ddb08c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
