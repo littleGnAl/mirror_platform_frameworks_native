@@ -16,6 +16,24 @@
       "revId": "471471ed5d9e04a51f94a4647ec461c8ddb08c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2312b2d8_0cfe9731",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-04-02T21:26:41Z",
+      "side": 1,
+      "message": "You are right Elliott. We could! At the time I tried modifying this as less as possible.\n\nIn my opinion servicemanager could reuse most of the code in libbinder. There is no point in rewriting the message parsing. I had a go at doing this some time back and here is the link to the result:\n\nhttps://android-review.googlesource.com/#/c/110522/1\n\nPlease note that it is not complete (and it uses a nasty hack to bypass some of the pthread.join() API).",
+      "parentUuid": "63de6a5c_ea1fa25d",
+      "revId": "471471ed5d9e04a51f94a4647ec461c8ddb08c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
