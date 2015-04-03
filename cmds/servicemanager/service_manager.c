@@ -22,8 +22,6 @@
 #include <cutils/log.h>
 #endif
 
-uint32_t svcmgr_handle;
-
 const char *str8(const uint16_t *x, size_t x_len)
 {
     static char buf[128];
@@ -257,7 +255,7 @@ int svcmgr_handler(struct binder_state *bs,
     //ALOGI("target=%x code=%d pid=%d uid=%d\n",
     //  txn->target.handle, txn->code, txn->sender_pid, txn->sender_euid);
 
-    if (txn->target.handle != svcmgr_handle)
+    if (txn->target.handle != BINDER_SERVICE_MANAGER)
         return -1;
 
     if (txn->code == PING_TRANSACTION)
@@ -381,7 +379,6 @@ int main(int argc, char **argv)
     cb.func_log = selinux_log_callback;
     selinux_set_callback(SELINUX_CB_LOG, cb);
 
-    svcmgr_handle = BINDER_SERVICE_MANAGER;
     binder_loop(bs, svcmgr_handler);
 
     return 0;
