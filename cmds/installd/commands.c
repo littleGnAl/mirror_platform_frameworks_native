@@ -1711,11 +1711,11 @@ int create_oat_dir(const char* oat_dir, const char* instruction_set)
         ALOGE("invalid apk path '%s' (bad prefix)\n", oat_dir);
         return -1;
     }
-    if ((mkdir(oat_dir, S_IRWXU|S_IRWXG|S_IXOTH) < 0) && (errno != EEXIST))  {
+    if ((mkdir(oat_dir, S_IRWXU | S_IRWXG | S_IXOTH | S_IROTH) < 0) && (errno != EEXIST))  {
         ALOGE("cannot create dir '%s': %s\n", oat_dir, strerror(errno));
         return -1;
     }
-    if (chmod(oat_dir, S_IRWXU|S_IRWXG|S_IXOTH) < 0) {
+    if (chmod(oat_dir, S_IRWXU | S_IRWXG | S_IXOTH | S_IROTH) < 0) {
         ALOGE("cannot chmod dir '%s': %s\n", oat_dir, strerror(errno));
         return -1;
     }
@@ -1724,11 +1724,11 @@ int create_oat_dir(const char* oat_dir, const char* instruction_set)
         return -1;
     }
     snprintf(oat_instr_dir, PKG_PATH_MAX, "%s/%s", oat_dir, instruction_set);
-    if ((mkdir(oat_instr_dir, S_IRWXU|S_IRWXG|S_IXOTH) < 0)  && (errno != EEXIST)) {
+    if ((mkdir(oat_instr_dir, S_IRWXU | S_IRWXG | S_IXOTH | S_IROTH) < 0)  && (errno != EEXIST)) {
         ALOGE("cannot create dir '%s': %s\n", oat_instr_dir, strerror(errno));
         return -1;
     }
-    if (chmod(oat_instr_dir, S_IRWXU|S_IRWXG|S_IXOTH) < 0) {
+    if (chmod(oat_instr_dir, S_IRWXU | S_IRWXG | S_IXOTH | S_IROTH) < 0) {
         ALOGE("cannot chmod dir '%s': %s\n", oat_dir, strerror(errno));
         return -1;
     }
