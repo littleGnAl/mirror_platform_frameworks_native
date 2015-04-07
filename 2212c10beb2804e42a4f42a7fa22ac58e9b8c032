@@ -22,6 +22,30 @@
       "revId": "2212c10beb2804e42a4f42a7fa22ac58e9b8c032",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a32b0216_091d391e",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1059418
+      },
+      "writtenOn": "2015-04-07T18:24:24Z",
+      "side": 1,
+      "message": "Done. Thank you for pointing that out. No code is best code ;)",
+      "parentUuid": "a32b0216_e9bf9da2",
+      "range": {
+        "startLine": 1706,
+        "startChar": 0,
+        "endLine": 1707,
+        "endChar": 1
+      },
+      "revId": "2212c10beb2804e42a4f42a7fa22ac58e9b8c032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
