@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2320f22c_42bea3a3",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2015-04-07T02:56:32Z",
+      "side": 1,
+      "message": "Hmm, I\u0027d rather not leave wide open for everyone to read.\n\nCan we consider chown\u0027ing these directories to the system UID and installd GID instead?  (From a brief glance at a device, they\u0027ll end up as system UID, app GID anyway when the install is finished.)",
+      "range": {
+        "startLine": 1714,
+        "startChar": 0,
+        "endLine": 1714,
+        "endChar": 92
+      },
+      "revId": "68f335b754df6727383bd6bd7b07906a5760e76b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
