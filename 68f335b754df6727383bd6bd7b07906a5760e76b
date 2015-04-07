@@ -46,6 +46,54 @@
       "revId": "68f335b754df6727383bd6bd7b07906a5760e76b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "832a7e12_5dc44fbe",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1059418
+      },
+      "writtenOn": "2015-04-07T17:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2320f22c_42bea3a3",
+      "range": {
+        "startLine": 1714,
+        "startChar": 0,
+        "endLine": 1714,
+        "endChar": 92
+      },
+      "revId": "68f335b754df6727383bd6bd7b07906a5760e76b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63258a42_59dd430a",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1059418
+      },
+      "writtenOn": "2015-04-07T17:12:55Z",
+      "side": 1,
+      "message": "Acknowledged. Apps shouldn\u0027t be able to write to dalvikcache_data_file",
+      "parentUuid": "e3197a0f_97672421",
+      "range": {
+        "startLine": 1714,
+        "startChar": 0,
+        "endLine": 1714,
+        "endChar": 92
+      },
+      "revId": "68f335b754df6727383bd6bd7b07906a5760e76b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
