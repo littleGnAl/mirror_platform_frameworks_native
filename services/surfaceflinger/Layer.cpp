@@ -1235,9 +1235,18 @@ Region Layer::latchBuffer(bool& recomputeVisibleRegions)
             return outDirtyRegion;
         }
 
-        // Remove this buffer from our internal queue tracker
         { // Autolock scope
+            auto currentTimestamp = mSurfaceFlingerConsumer->getTimestamp();
+
             Mutex::Autolock lock(mQueueItemLock);
+
+            // Remove any stale buffers that have been dropped during
+            // updateTexImage
+            while (mQueueItems.size() > 0 && mQueueItems[0].mTimestamp < currentTimestamp) {
+                mQueueItems.removeAt(0);
+            }
+
+            // Remove this buffer from our internal queue tracker
             mQueueItems.removeAt(0);
         }
 
