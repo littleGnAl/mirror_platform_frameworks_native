@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a32b0216_e9bf9da2",
+        "filename": "cmds/installd/commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2015-04-07T18:11:10Z",
+      "side": 1,
+      "message": "Actually, could you switch to using fs_prepare_dir instead()?  It essentially does what you\u0027re doing here, but is a bit more robust.",
+      "range": {
+        "startLine": 1706,
+        "startChar": 0,
+        "endLine": 1707,
+        "endChar": 1
+      },
+      "revId": "2212c10beb2804e42a4f42a7fa22ac58e9b8c032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
