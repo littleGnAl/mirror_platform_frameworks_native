@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "83fd1eeb_9cc44543",
+        "filename": "cmds/installd/installd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-08T09:11:44Z",
+      "side": 1,
+      "message": "would\u0027ve been nice if we had used C++ style casts (reinterpret_cast\u003cchar*\u003e(buf)) here and below.",
+      "revId": "19803807cd7ae01868fcfa50305f4a7dd13765e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f39619_9e1f1d5f",
+        "filename": "cmds/installd/installd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-08T09:11:44Z",
+      "side": 1,
+      "message": "this change looks unrelated to the move to C++ . why did you make it here ?",
+      "revId": "19803807cd7ae01868fcfa50305f4a7dd13765e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23e3924b_a11c7e23",
         "filename": "cmds/installd/installd.h",
         "patchSetId": 2
@@ -13,6 +47,23 @@
       "writtenOn": "2015-04-07T21:04:29Z",
       "side": 1,
       "message": "eh? ... how was this compiling before?",
+      "revId": "19803807cd7ae01868fcfa50305f4a7dd13765e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83fd1eeb_3cb411c4",
+        "filename": "cmds/installd/tests/installd_utils_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-08T09:11:44Z",
+      "side": 1,
+      "message": "you use strdup elsewhere when assigning to .path, why ?",
       "revId": "19803807cd7ae01868fcfa50305f4a7dd13765e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
