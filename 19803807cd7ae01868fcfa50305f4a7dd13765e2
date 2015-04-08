@@ -139,6 +139,24 @@
       "revId": "19803807cd7ae01868fcfa50305f4a7dd13765e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ec1a3e_25b7da39",
+        "filename": "cmds/installd/tests/installd_utils_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-08T15:16:43Z",
+      "side": 1,
+      "message": "(i didn\u0027t comment on the assumption that a later patch will move to std::string anyway, and all this cruft just disappears. [and the missing free(3)s magically appear!])",
+      "parentUuid": "a3eea234_e37cc636",
+      "revId": "19803807cd7ae01868fcfa50305f4a7dd13765e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
