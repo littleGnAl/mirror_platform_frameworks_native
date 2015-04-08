@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3ec1a3e_9f5b93db",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2015-04-08T03:18:49Z",
+      "side": 1,
+      "message": "CHECK triggers abort() internally when matched, which might be a bit too aggressive.  I just verified that all inputs on framework side are coming from internal sources, so we might be okay with the daemon being kicked and restarted.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 52
+      },
+      "revId": "c03de09173f98506e73e7cf7df21fe11795d4b24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
