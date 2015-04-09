@@ -696,26 +696,57 @@ void Layer::drawWithOpenGL(const sp<const DisplayDevice>& hw,
 
     computeGeometry(hw, mMesh, useIdentityTransform);
 
+    float left;
+    float top;
+    float right;
+    float bottom;
     /*
-     * NOTE: the way we compute the texture coordinates here produces
-     * different results than when we take the HWC path -- in the later case
-     * the "source crop" is rounded to texel boundaries.
-     * This can produce significantly different results when the texture
-     * is scaled by a large amount.
-     *
-     * The GL code below is more logical (imho), and the difference with
-     * HWC is due to a limitation of the HWC API to integers -- a question
-     * is suspend is whether we should ignore this problem or revert to
-     * GL composition when a buffer scaling is applied (maybe with some
-     * minimal value)? Or, we could make GL behave like HWC -- but this feel
-     * like more of a hack.
+     * Use rectangle computed for hwc when cropping is set. Previous
+     * implementation (see else statement) respected only cropping in layer
+     * space, cropping in buffer space was omitted. Buffer crop values are
+     * computed in GLConsumer::getCurrentCrop(). Crop rectangle computed for
+     * hwc respects cropping in both spaces - layer and buffer. (See
+     * Layer::computeCrop() for details). The reason, why hwc crop rect is only
+     * used for NATIVE_WINDOW_SCALING_MODE_SCALE_CROP and not for other flags
+     * is explained in NOTE below.
      */
-    const Rect win(computeBounds());
+    if (mCurrentScalingMode == NATIVE_WINDOW_SCALING_MODE_SCALE_CROP) {
+        FloatRect crop = computeCrop(hw);
+        float w = getActiveBuffer()->getWidth();
+        float h = getActiveBuffer()->getHeight();
+        if (mCurrentTransform & NATIVE_WINDOW_TRANSFORM_ROT_90) {
+            top    = float(crop.left)   / w;
+            left   = float(crop.top)    / h;
+            bottom = float(crop.right)  / w;
+            right  = float(crop.bottom) / h;
+        } else {
+            left   = float(crop.left)   / w;
+            top    = float(crop.top)    / h;
+            right  = float(crop.right)  / w;
+            bottom = float(crop.bottom) / h;
+        }
+    } else {
+        /*
+         * NOTE: the way we compute the texture coordinates here produces
+         * different results than when we take the HWC path -- in the later case
+         * the "source crop" is rounded to texel boundaries.
+         * This can produce significantly different results when the texture
+         * is scaled by a large amount.
+         *
+         * The GL code below is more logical (imho), and the difference with
+         * HWC is due to a limitation of the HWC API to integers -- a question
+         * is suspend is wether we should ignore this problem or revert to
+         * GL composition when a buffer scaling is applied (maybe with some
+         * minimal value)? Or, we could make GL behave like HWC -- but this feel
+         * like more of a hack.
+         */
+        const Rect win(computeBounds());
 
-    float left   = float(win.left)   / float(s.active.w);
-    float top    = float(win.top)    / float(s.active.h);
-    float right  = float(win.right)  / float(s.active.w);
-    float bottom = float(win.bottom) / float(s.active.h);
+        left   = float(win.left)   / float(s.active.w);
+        top    = float(win.top)    / float(s.active.h);
+        right  = float(win.right)  / float(s.active.w);
+        bottom = float(win.bottom) / float(s.active.h);
+    }
 
     // TODO: we probably want to generate the texture coords with the mesh
     // here we assume that we only have 4 vertices

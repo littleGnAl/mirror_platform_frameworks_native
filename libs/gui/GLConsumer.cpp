@@ -884,14 +884,21 @@ Rect GLConsumer::getCurrentCrop() const {
 
     Rect outCrop = mCurrentCrop;
     if (mCurrentScalingMode == NATIVE_WINDOW_SCALING_MODE_SCALE_CROP) {
+        uint32_t defaultWidth = mDefaultWidth;
+        uint32_t defaultHeight = mDefaultHeight;
+        if (mCurrentTransform & NATIVE_WINDOW_TRANSFORM_ROT_90) {
+           defaultWidth = mDefaultHeight;
+           defaultHeight = mDefaultWidth;
+        }
+
         uint32_t newWidth = static_cast<uint32_t>(mCurrentCrop.width());
         uint32_t newHeight = static_cast<uint32_t>(mCurrentCrop.height());
 
-        if (newWidth * mDefaultHeight > newHeight * mDefaultWidth) {
-            newWidth = newHeight * mDefaultWidth / mDefaultHeight;
+        if (newWidth * defaultHeight > newHeight * defaultWidth) {
+            newWidth = newHeight * defaultWidth / defaultHeight;
             GLC_LOGV("too wide: newWidth = %d", newWidth);
-        } else if (newWidth * mDefaultHeight < newHeight * mDefaultWidth) {
-            newHeight = newWidth * mDefaultHeight / mDefaultWidth;
+        } else if (newWidth * defaultHeight < newHeight * defaultWidth) {
+            newHeight = newWidth * defaultHeight / defaultWidth;
             GLC_LOGV("too tall: newHeight = %d", newHeight);
         }
 
