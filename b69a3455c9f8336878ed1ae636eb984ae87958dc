@@ -46,6 +46,30 @@
       "revId": "b69a3455c9f8336878ed1ae636eb984ae87958dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e356daec_bef665a6",
+        "filename": "libs/binder/Blueprints",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-09T23:04:01Z",
+      "side": 1,
+      "message": "The configuration sounds flexible.\nI am still wondering the meaning of \"create rules as needed\": if the library is never referenced by anyone, will the rule be created when you do a checkbuild?",
+      "parentUuid": "234d525a_66aab47e",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "b69a3455c9f8336878ed1ae636eb984ae87958dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
