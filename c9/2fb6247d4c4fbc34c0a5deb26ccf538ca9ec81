@@ -1,0 +1,7 @@
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+2: Fyodor Kupolov <fkupolov@google.com>
+Submitted-by: Richard Uhler <ruhler@google.com>
+Submitted-at: Thu, 09 Apr 2015 14:13:27 +0000
+Reviewed-on: https://android-review.googlesource.com/144281
+Project: platform/frameworks/native
+Branch: refs/heads/master
