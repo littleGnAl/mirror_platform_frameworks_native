@@ -94,6 +94,30 @@
       "revId": "b69a3455c9f8336878ed1ae636eb984ae87958dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e356daec_fecaadea",
+        "filename": "libs/binder/Blueprints",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-09T23:21:21Z",
+      "side": 1,
+      "message": "Ah, got it. So the rules will be always defined in the ninja file; whereas the module will be built or not is as needed, similar to how the current build system handles multilib build.",
+      "parentUuid": "234d525a_464e90c6",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "b69a3455c9f8336878ed1ae636eb984ae87958dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
