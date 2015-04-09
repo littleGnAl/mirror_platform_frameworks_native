@@ -70,6 +70,30 @@
       "revId": "b69a3455c9f8336878ed1ae636eb984ae87958dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "234d525a_464e90c6",
+        "filename": "libs/binder/Blueprints",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-09T23:15:10Z",
+      "side": 1,
+      "message": "Yes, the build.ninja file will have rules for both, and the checkbuild target has dependencies on both.",
+      "parentUuid": "e356daec_bef665a6",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "b69a3455c9f8336878ed1ae636eb984ae87958dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
