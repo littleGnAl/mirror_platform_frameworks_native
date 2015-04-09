@@ -22,6 +22,30 @@
       "revId": "b69a3455c9f8336878ed1ae636eb984ae87958dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "234d525a_66aab47e",
+        "filename": "libs/binder/Blueprints",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-09T22:52:42Z",
+      "side": 1,
+      "message": "It will create rules to build static and shared libraries as needed.  The shared library will link in the .o files produced by the static library, and the static and shared libraries can also add .o files and cflags that only affect those .o files using static: { srcs: [\"file.c\"], cflags: [\"-DSTATIC\"] }",
+      "parentUuid": "234d525a_6b4b5db5",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "b69a3455c9f8336878ed1ae636eb984ae87958dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
