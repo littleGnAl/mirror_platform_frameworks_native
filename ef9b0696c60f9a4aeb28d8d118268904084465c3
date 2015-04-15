@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b07b4aac_f757f328",
+        "filename": "include/android/asset_manager.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-04-15T20:40:38Z",
+      "side": 1,
+      "message": "This one is undocumented?",
+      "revId": "ef9b0696c60f9a4aeb28d8d118268904084465c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b07b4aac_7744437c",
+        "filename": "include/android/asset_manager.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-04-15T20:40:38Z",
+      "side": 1,
+      "message": "Summary should start with a capital letter and end with a period.",
+      "revId": "ef9b0696c60f9a4aeb28d8d118268904084465c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d080bec6_cb1c9596",
+        "filename": "include/android/bitmap.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-04-15T20:40:38Z",
+      "side": 1,
+      "message": "/** AndroidBitmap result code: Operation was successful. */",
+      "revId": "ef9b0696c60f9a4aeb28d8d118268904084465c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b07b4aac_d780b7fa",
+        "filename": "include/android/bitmap.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-04-15T20:40:38Z",
+      "side": 1,
+      "message": "You can make these into an anonymous enum if you like.",
+      "revId": "ef9b0696c60f9a4aeb28d8d118268904084465c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b07b4aac_979b1f72",
+        "filename": "include/android/bitmap.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-04-15T20:40:38Z",
+      "side": 1,
+      "message": "The bitmap pixel format.  See ...",
+      "revId": "ef9b0696c60f9a4aeb28d8d118268904084465c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d080bec6_2b3e69de",
+        "filename": "include/android/configuration.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-04-15T20:40:38Z",
+      "side": 1,
+      "message": "Orientation: any orientation.",
+      "revId": "ef9b0696c60f9a4aeb28d8d118268904084465c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "907ac6a8_1ba65c8c",
+        "filename": "include/android/input.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-04-15T20:40:38Z",
+      "side": 1,
+      "message": "you can find docs for this stuff in MotionEvent.java",
+      "revId": "ef9b0696c60f9a4aeb28d8d118268904084465c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "907ac6a8_bbb2c8c2",
+        "filename": "include/android/keycodes.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-04-15T20:40:38Z",
+      "side": 1,
+      "message": "You can find docs for this stuff on KeyEvent.java.",
+      "revId": "ef9b0696c60f9a4aeb28d8d118268904084465c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b07b4aac_b725fba7",
+        "filename": "include/android/window.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2015-04-15T20:40:38Z",
+      "side": 1,
+      "message": "These are defined in WindowManager.java.",
+      "revId": "ef9b0696c60f9a4aeb28d8d118268904084465c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
