@@ -16,7 +16,7 @@
 
 #define LOG_TAG "BufferQueueCore"
 #define ATRACE_TAG ATRACE_TAG_GRAPHICS
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #define EGL_EGLEXT_PROTOTYPES
 
@@ -53,6 +53,8 @@ BufferQueueCore::BufferQueueCore(const sp<IGraphicBufferAlloc>& allocator) :
     mConnectedProducerListener(),
     mSlots(),
     mQueue(),
+    mFreeSlots(),
+    mFreeBuffers(),
     mOverrideMaxBufferCount(0),
     mDequeueCondition(),
     mUseAsyncBuffer(true),
@@ -75,6 +77,9 @@ BufferQueueCore::BufferQueueCore(const sp<IGraphicBufferAlloc>& allocator) :
         if (mAllocator == NULL) {
             BQ_LOGE("createGraphicBufferAlloc failed");
         }
+    }
+    for (int slot = 0; slot < BufferQueueDefs::NUM_BUFFER_SLOTS; ++slot) {
+        mFreeSlots.insert(slot);
     }
 }
 
@@ -190,9 +195,16 @@ status_t BufferQueueCore::setDefaultMaxBufferCountLocked(int count) {
 
 void BufferQueueCore::freeBufferLocked(int slot) {
     BQ_LOGV("freeBufferLocked: slot %d", slot);
+    bool hadBuffer = mSlots[slot].mGraphicBuffer != NULL;
     mSlots[slot].mGraphicBuffer.clear();
     if (mSlots[slot].mBufferState == BufferSlot::ACQUIRED) {
         mSlots[slot].mNeedsCleanupOnRelease = true;
+    }
+    if (mSlots[slot].mBufferState != BufferSlot::FREE) {
+        mFreeSlots.insert(slot);
+    } else if (hadBuffer) {
+        mFreeBuffers.remove(slot);
+        mFreeSlots.insert(slot);
     }
     mSlots[slot].mBufferState = BufferSlot::FREE;
     mSlots[slot].mFrameNumber = UINT32_MAX;
@@ -204,6 +216,7 @@ void BufferQueueCore::freeBufferLocked(int slot) {
         mSlots[slot].mEglFence = EGL_NO_SYNC_KHR;
     }
     mSlots[slot].mFence = Fence::NO_FENCE;
+    validateConsistencyLocked();
 }
 
 void BufferQueueCore::freeAllBuffersLocked() {
@@ -233,6 +246,52 @@ void BufferQueueCore::waitWhileAllocatingLocked() const {
     ATRACE_CALL();
     while (mIsAllocating) {
         mIsAllocatingCondition.wait(mMutex);
+    }
+}
+
+void BufferQueueCore::validateConsistencyLocked() const {
+    for (int slot = 0; slot < 64; ++slot) {
+        if (mSlots[slot].mBufferState == BufferSlot::FREE) {
+            if (mSlots[slot].mGraphicBuffer == NULL) {
+                if (mFreeSlots.count(slot) != 1) {
+                    BQ_LOGE("*** CONSISTENCY CHECK FAILED ***");
+                    BQ_LOGE("slot %d is FREE but is not in mFreeSlots", slot);
+                    usleep(3000000);
+                }
+                if (std::find(mFreeBuffers.cbegin(), mFreeBuffers.cend(), slot) !=
+                        mFreeBuffers.cend()) {
+                    BQ_LOGE("*** CONSISTENCY CHECK FAILED ***");
+                    BQ_LOGE("slot %d is in mFreeSlots but is also in mFreeBuffers", slot);
+                    usleep(3000000);
+                }
+            } else {
+                if (std::find(mFreeBuffers.cbegin(), mFreeBuffers.cend(), slot) ==
+                        mFreeBuffers.cend()) {
+                    BQ_LOGE("*** CONSISTENCY CHECK FAILED ***");
+                    BQ_LOGE("slot %d is FREE but is not in mFreeBuffers", slot);
+                    usleep(3000000);
+                }
+                if (mFreeSlots.count(slot) != 0) {
+                    BQ_LOGE("*** CONSISTENCY CHECK FAILED ***");
+                    BQ_LOGE("slot %d is in mFreeBuffers but is also in mFreeSlots", slot);
+                    usleep(3000000);
+                }
+            }
+        } else {
+            if (mFreeSlots.count(slot) != 0) {
+                BQ_LOGE("*** CONSISTENCY CHECK FAILED ***");
+                BQ_LOGE("slot %d is in mFreeSlots but is not FREE (%d)",
+                        slot, mSlots[slot].mBufferState);
+                usleep(3000000);
+            }
+            if (std::find(mFreeBuffers.cbegin(), mFreeBuffers.cend(), slot) !=
+                    mFreeBuffers.cend()) {
+                BQ_LOGE("*** CONSISTENCY CHECK FAILED ***");
+                BQ_LOGE("slot %d is in mFreeBuffers but is not FREE (%d)",
+                        slot, mSlots[slot].mBufferState);
+                usleep(3000000);
+            }
+        }
     }
 }
 
