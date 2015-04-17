@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "904c868c_f3b27a75",
+        "filename": "include/gui/BufferQueueCore.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-04-17T04:26:42Z",
+      "side": 1,
+      "message": "mFreeBuffers",
+      "range": {
+        "startLine": 191,
+        "startChar": 7,
+        "endLine": 191,
+        "endChar": 17
+      },
+      "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "904c868c_33a01219",
+        "filename": "libs/gui/BufferQueueConsumer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-04-17T04:26:42Z",
+      "side": 1,
+      "message": "There may be a subtlety I\u0027m missing, but it looks like the old code would use FREE slots with buffers in them before FREE slots without buffers (since the ones with buffers would usually be in lower-numbered slots); the new code does the opposite. That\u0027s going to use more slots / higher-numbered slots. Which is all fine and should work in theory, but I\u0027d be prepared to hit bugs in code that\u0027s making invalid assumptions.",
+      "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506daeeb_949b1c72",
+        "filename": "libs/gui/BufferQueueCore.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-04-17T04:26:42Z",
+      "side": 1,
+      "message": "BufferQueueDefs::NUM_BUFFER_SLOTS",
+      "range": {
+        "startLine": 255,
+        "startChar": 30,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506daeeb_b483c005",
+        "filename": "libs/gui/BufferQueueCore.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-04-17T04:26:42Z",
+      "side": 1,
+      "message": "Just a stylistic suggestion, feel free to disagree. There\u0027s a lot of duplication of \"is it in mFreeSlots?\" and \"is it in mFreeBuffers?\". I\u0027d probably just do those once and store the answer at the top:\n\nbool slotInFreeSlots \u003d mFreeSlots.count(slot) \u003e\u003d 1;\nbool slotInFreeBufs \u003d std::find(...) !\u003d mFreeBuffers.cend();\n\nand then express all the subsequent checks in terms of those. Reading the individual checks then expresses what it\u0027s looking for, rather than how it\u0027s looking for it. And the positive/negative sense (\"is in ..\" vs. \"is not in\") would be easier to see.",
+      "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
