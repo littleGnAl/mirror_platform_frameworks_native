@@ -366,4 +366,27 @@ TEST_F(BufferQueueTest, MoveFromConsumerToProducer) {
     ASSERT_EQ(OK, item.mGraphicBuffer->unlock());
 }
 
+TEST_F(BufferQueueTest, TestDisallowingAllocation) {
+    createBufferQueue();
+    sp<DummyConsumer> dc(new DummyConsumer);
+    ASSERT_EQ(OK, mConsumer->consumerConnect(dc, true));
+    IGraphicBufferProducer::QueueBufferOutput output;
+    ASSERT_EQ(OK, mProducer->connect(new DummyProducerListener,
+            NATIVE_WINDOW_API_CPU, true, &output));
+
+    int slot;
+    sp<Fence> fence;
+    sp<GraphicBuffer> buffer;
+    // This should return an error since it would require an allocation
+    ASSERT_EQ(OK, mProducer->allowAllocation(false));
+    ASSERT_EQ(WOULD_BLOCK, mProducer->dequeueBuffer(&slot, &fence, false, 0, 0,
+            0, GRALLOC_USAGE_SW_WRITE_OFTEN));
+
+    // This should succeed, now that we've lifted the prohibition
+    ASSERT_EQ(OK, mProducer->allowAllocation(true));
+    ASSERT_EQ(IGraphicBufferProducer::BUFFER_NEEDS_REALLOCATION,
+            mProducer->dequeueBuffer(&slot, &fence, false, 0, 0, 0,
+            GRALLOC_USAGE_SW_WRITE_OFTEN));
+}
+
 } // namespace android
