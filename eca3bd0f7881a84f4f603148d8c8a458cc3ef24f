@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "10597645_4f762f85",
+        "filename": "libs/gui/BufferQueueConsumer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-17T16:11:01Z",
+      "side": 1,
+      "message": "My thinking here was that if we\u0027re configured such that dequeue can\u0027t allocate (which this change is laying the groundwork for), clobbering existing buffers is bad, since it reduces the number of available buffers in the system. This will use more slots, but I\u0027m prepared to break existing code, especially since there aren\u0027t many clients of attach/detach yet.",
+      "parentUuid": "904c868c_33a01219",
+      "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "506daeeb_949b1c72",
         "filename": "libs/gui/BufferQueueCore.cpp",
         "patchSetId": 4
@@ -76,6 +94,24 @@
       "writtenOn": "2015-04-17T04:26:42Z",
       "side": 1,
       "message": "Just a stylistic suggestion, feel free to disagree. There\u0027s a lot of duplication of \"is it in mFreeSlots?\" and \"is it in mFreeBuffers?\". I\u0027d probably just do those once and store the answer at the top:\n\nbool slotInFreeSlots \u003d mFreeSlots.count(slot) \u003e\u003d 1;\nbool slotInFreeBufs \u003d std::find(...) !\u003d mFreeBuffers.cend();\n\nand then express all the subsequent checks in terms of those. Reading the individual checks then expresses what it\u0027s looking for, rather than how it\u0027s looking for it. And the positive/negative sense (\"is in ..\" vs. \"is not in\") would be easier to see.",
+      "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d080bec6_7ff40a04",
+        "filename": "libs/gui/BufferQueueCore.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-17T16:11:01Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a good point. I had looked at this code as somewhat temporary, since once we\u0027re reasonably sure that we\u0027re keeping things in sync, we could strip out the validation, but temporary code has a way of becoming at least semi-permanent, so it should all be clean. I\u0027ll fix it up.",
+      "parentUuid": "506daeeb_b483c005",
       "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
