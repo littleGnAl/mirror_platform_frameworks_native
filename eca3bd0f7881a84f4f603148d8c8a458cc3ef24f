@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0c51e25_942f8c37",
+        "filename": "include/gui/BufferQueueCore.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-17T16:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "904c868c_f3b27a75",
+      "range": {
+        "startLine": 191,
+        "startChar": 7,
+        "endLine": 191,
+        "endChar": 17
+      },
+      "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "904c868c_33a01219",
         "filename": "libs/gui/BufferQueueConsumer.cpp",
         "patchSetId": 4
@@ -83,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "907ac6a8_8c369b91",
+        "filename": "libs/gui/BufferQueueCore.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-17T16:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506daeeb_949b1c72",
+      "range": {
+        "startLine": 255,
+        "startChar": 30,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "506daeeb_b483c005",
         "filename": "libs/gui/BufferQueueCore.cpp",
         "patchSetId": 4
@@ -112,6 +160,24 @@
       "side": 1,
       "message": "Yeah, that\u0027s a good point. I had looked at this code as somewhat temporary, since once we\u0027re reasonably sure that we\u0027re keeping things in sync, we could strip out the validation, but temporary code has a way of becoming at least semi-permanent, so it should all be clean. I\u0027ll fix it up.",
       "parentUuid": "506daeeb_b483c005",
+      "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0c51e25_14771c52",
+        "filename": "libs/gui/BufferQueueCore.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-17T16:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d080bec6_7ff40a04",
       "revId": "eca3bd0f7881a84f4f603148d8c8a458cc3ef24f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
