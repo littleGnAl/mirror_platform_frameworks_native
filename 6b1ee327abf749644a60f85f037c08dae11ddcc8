@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30cf5a74_61da1667",
+        "filename": "libs/gui/tests/BufferQueue_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-04-20T21:33:37Z",
+      "side": 1,
+      "message": "Might also be good to test that it correctly denies allocation if there is a buffer free that has the wrong properties.",
+      "revId": "6b1ee327abf749644a60f85f037c08dae11ddcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
