@@ -16,6 +16,24 @@
       "revId": "6b1ee327abf749644a60f85f037c08dae11ddcc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "302afabf_8f9c79b7",
+        "filename": "libs/gui/tests/BufferQueue_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-20T22:09:42Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "30cf5a74_61da1667",
+      "revId": "6b1ee327abf749644a60f85f037c08dae11ddcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
