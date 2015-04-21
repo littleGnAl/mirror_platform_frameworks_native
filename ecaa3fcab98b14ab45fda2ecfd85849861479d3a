@@ -46,6 +46,30 @@
       "revId": "ecaa3fcab98b14ab45fda2ecfd85849861479d3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0150a85_c5865ae5",
+        "filename": "libs/ui/GraphicBuffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-21T00:23:45Z",
+      "side": 1,
+      "message": "The intention is that every bit set in the requested usage must also be set in the buffer\u0027s usage, but the buffer may have usage bits beyond what is requested. Hopefully that\u0027s what\u0027s reflected here.",
+      "parentUuid": "302afabf_98fb21ba",
+      "range": {
+        "startLine": 161,
+        "startChar": 8,
+        "endLine": 161,
+        "endChar": 59
+      },
+      "revId": "ecaa3fcab98b14ab45fda2ecfd85849861479d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
