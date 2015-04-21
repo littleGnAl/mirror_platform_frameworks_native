@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f02302ea_3c6dc585",
+        "filename": "libs/ui/GraphicBuffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-04-21T00:09:49Z",
+      "side": 1,
+      "message": "does this allow extending usage on purpose?",
+      "range": {
+        "startLine": 161,
+        "startChar": 8,
+        "endLine": 161,
+        "endChar": 59
+      },
+      "revId": "ecaa3fcab98b14ab45fda2ecfd85849861479d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
