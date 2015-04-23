@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10a416b9_2ca63e8c",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-23T20:39:19Z",
+      "side": 1,
+      "message": "This is the difference from the original change. We were allocating all slots instead of only slots up to the max buffer count, which had the effect of preventing dequeue from blocking correctly.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 17
+      },
+      "revId": "0de7ea752900b5da29ad19c2799040235477f3c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
