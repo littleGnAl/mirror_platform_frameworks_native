@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70de325c_8bc70d95",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1015153
+      },
+      "writtenOn": "2015-04-25T08:48:53Z",
+      "side": 1,
+      "message": "Please, considering when the mQueueItems size is 0.\nThe infinity loop occur when the video play 120fps contents.",
+      "range": {
+        "startLine": 1277,
+        "startChar": 12,
+        "endLine": 1277,
+        "endChar": 71
+      },
+      "revId": "18272218beebfbe8300f0a1c8d524a7e04d070af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
