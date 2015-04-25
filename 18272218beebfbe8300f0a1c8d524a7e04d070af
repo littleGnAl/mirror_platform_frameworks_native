@@ -22,6 +22,30 @@
       "revId": "18272218beebfbe8300f0a1c8d524a7e04d070af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_0762f6bd",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-25T16:13:34Z",
+      "side": 1,
+      "message": "Checking the size of mQueueItems is not a valid fix. It means that the invariant that mQueueItems shadows the incoming BufferQueue has been broken and behavior is going to be incorrect moving forward. Can you provide a test clip and/or a reproduction case so I can figure out why we\u0027re getting out of sync in the first place?",
+      "parentUuid": "70de325c_8bc70d95",
+      "range": {
+        "startLine": 1277,
+        "startChar": 12,
+        "endLine": 1277,
+        "endChar": 71
+      },
+      "revId": "18272218beebfbe8300f0a1c8d524a7e04d070af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
