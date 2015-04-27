@@ -16,6 +16,24 @@
       "revId": "702add8952c0556eb564230a5ccae6308053d353",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_5e879913",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-27T15:10:52Z",
+      "side": 1,
+      "message": "I think a style guide would be good. In ART we usually prefer to put constants outside the functions, though strings aren\u0027t clear-cut. I\u0027ll move it.",
+      "parentUuid": "30375a6d_e1a5862c",
+      "revId": "702add8952c0556eb564230a5ccae6308053d353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
