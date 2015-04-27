@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d42a38_4cc372a7",
+        "filename": "libs/gui/Surface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-04-27T18:20:08Z",
+      "side": 1,
+      "message": "nitpicking, but since you\u0027ve verified outBuffer is not null, why not just pass it into mGBP-\u003edetachNextBuffer instead of creating another sp\u003c\u003e just for that?",
+      "range": {
+        "startLine": 665,
+        "startChar": 3,
+        "endLine": 665,
+        "endChar": 35
+      },
+      "revId": "745ac038b986d826a767ddc891a224b59165e9fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
