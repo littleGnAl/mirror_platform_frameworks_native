@@ -22,6 +22,30 @@
       "revId": "745ac038b986d826a767ddc891a224b59165e9fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_4feec404",
+        "filename": "libs/gui/Surface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-27T18:24:57Z",
+      "side": 1,
+      "message": "It avoids potentially modifying outBuffer (or outFence) if detachNextBuffer returns an error.",
+      "parentUuid": "b0d42a38_4cc372a7",
+      "range": {
+        "startLine": 665,
+        "startChar": 3,
+        "endLine": 665,
+        "endChar": 35
+      },
+      "revId": "745ac038b986d826a767ddc891a224b59165e9fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
