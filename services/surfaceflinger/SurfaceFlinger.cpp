@@ -1840,18 +1840,7 @@ void SurfaceFlinger::doDisplayComposition(const sp<const DisplayDevice>& hw,
         }
     }
 
-    if (CC_LIKELY(!mDaltonize && !mHasColorMatrix)) {
-        if (!doComposeSurfaces(hw, dirtyRegion)) return;
-    } else {
-        RenderEngine& engine(getRenderEngine());
-        mat4 colorMatrix = mColorMatrix;
-        if (mDaltonize) {
-            colorMatrix = colorMatrix * mDaltonizer();
-        }
-        engine.beginGroup(colorMatrix);
-        doComposeSurfaces(hw, dirtyRegion);
-        engine.endGroup();
-    }
+    if (!doComposeSurfaces(hw, dirtyRegion)) return;
 
     // update the swap region and clear the dirty region
     hw->swapRegion.orSelf(dirtyRegion);
@@ -1879,7 +1868,13 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& hw, const 
             }
             return false;
         }
-
+        if (CC_UNLIKELY(mDaltonize || mHasColorMatrix)) {
+            mat4 colorMatrix = mColorMatrix;
+            if (mDaltonize) {
+                colorMatrix = colorMatrix * mDaltonizer();
+            }
+            engine.beginGroup(colorMatrix);
+        }
         // Never touch the framebuffer if we don't have any framebuffer layers
         const bool hasHwcComposition = hwc.hasHwcComposition(id);
         if (hasHwcComposition) {
@@ -1985,6 +1980,9 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& hw, const 
 
     // disable scissor at the end of the frame
     engine.disableScissor();
+    if (CC_UNLIKELY(mDaltonize || mHasColorMatrix)) {
+        engine.endGroup();
+    }
     return true;
 }
 
