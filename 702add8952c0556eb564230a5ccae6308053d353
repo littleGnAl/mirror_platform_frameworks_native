@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30375a6d_e1a5862c",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-27T09:20:37Z",
+      "side": 1,
+      "message": "move this inside run_dex2oat like all its other \"static const char*\"s ?",
+      "revId": "702add8952c0556eb564230a5ccae6308053d353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
