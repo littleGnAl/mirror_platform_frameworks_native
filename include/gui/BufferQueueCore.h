@@ -270,6 +270,13 @@ private:
     // mAllowAllocation determines whether dequeueBuffer is allowed to allocate
     // new buffers
     bool mAllowAllocation;
+
+    // mConsumerHasShadowQueue determines if acquireBuffer should be more
+    // cautious about dropping buffers so that it always returns a buffer that
+    // is represented in the consumer's shadow queue.
+    bool mConsumerHasShadowQueue;
+    size_t mConsumerShadowQueueSize;
+
 }; // class BufferQueueCore
 
 } // namespace android

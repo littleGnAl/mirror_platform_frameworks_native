@@ -70,7 +70,9 @@ BufferQueueCore::BufferQueueCore(const sp<IGraphicBufferAlloc>& allocator) :
     mTransformHint(0),
     mIsAllocating(false),
     mIsAllocatingCondition(),
-    mAllowAllocation(true)
+    mAllowAllocation(true),
+    mConsumerHasShadowQueue(false),
+    mConsumerShadowQueueSize(0)
 {
     if (allocator == NULL) {
         sp<ISurfaceComposer> composer(ComposerService::getComposerService());
