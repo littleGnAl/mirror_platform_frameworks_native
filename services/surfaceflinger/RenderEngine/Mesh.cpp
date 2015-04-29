@@ -16,14 +16,28 @@
 
 #include "Mesh.h"
 
+#include <utils/Log.h>
+
 namespace android {
 
 Mesh::Mesh(Primitive primitive, size_t vertexCount, size_t vertexSize, size_t texCoordSize)
     : mVertexCount(vertexCount), mVertexSize(vertexSize), mTexCoordsSize(texCoordSize),
       mPrimitive(primitive)
 {
-    mVertices = new float[(vertexSize + texCoordSize) * vertexCount];
-    mStride = mVertexSize + mTexCoordsSize;
+    size_t stride = vertexSize + texCoordSize;
+    if ((stride < vertexSize) || ((stride * vertexCount) < stride)) {
+        ALOGE("Overflow in Mesh(..., %zu, %zu, %zu)", vertexCount, vertexSize,
+                texCoordSize);
+        mVertices = new float[1];
+        mVertices[0] = 0.0f;
+        mVertexCount = 0;
+        mVertexSize = 0;
+        mTexCoordsSize = 0;
+        mStride = 0;
+        return;
+    }
+    mVertices = new float[stride * vertexCount];
+    mStride = stride;
 }
 
 Mesh::~Mesh() {
