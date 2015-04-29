@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "300cbaed_5cebd1f2",
+        "filename": "services/surfaceflinger/RenderEngine/Mesh.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2015-04-29T20:39:28Z",
+      "side": 1,
+      "message": "This does not handle:\n\nstride \u003d 0x80000000\nvertexCount \u003d 3",
+      "revId": "ac295da7ac9f0e77be05d00fee40942fdb0fa9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
