@@ -34,6 +34,24 @@
       "revId": "ac295da7ac9f0e77be05d00fee40942fdb0fa9a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_5c97518f",
+        "filename": "services/surfaceflinger/RenderEngine/Mesh.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2015-04-29T21:06:01Z",
+      "side": 1,
+      "message": "Generally the way these are checked is like below.\n\nsize_t maxFloats \u003d (SIZE_MAX / sizeof(float));\nsize_t maxVertices \u003d maxFloats / stride;\nif(maxVertices \u003e\u003d vertexCount) error\n\nAlternately, you can use Chromium\u0027s SafeInt library for overflow-safe arithmetic.",
+      "parentUuid": "90fd66eb_bf95b33f",
+      "revId": "ac295da7ac9f0e77be05d00fee40942fdb0fa9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
