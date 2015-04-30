@@ -897,6 +897,7 @@ status_t BufferQueueProducer::disconnect(int api) {
             case NATIVE_WINDOW_API_MEDIA:
             case NATIVE_WINDOW_API_CAMERA:
                 if (mCore->mConnectedApi == api) {
+                    mCore->mQueue.clear();
                     mCore->freeAllBuffersLocked();
 
                     // Remove our death notification callback if we have one
