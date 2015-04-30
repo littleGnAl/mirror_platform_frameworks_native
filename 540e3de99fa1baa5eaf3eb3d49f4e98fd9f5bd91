@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "300cbaed_3676e88c",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-30T20:04:34Z",
+      "side": 1,
+      "message": "dump_files is _almost_ a superset of dump_dev_files, except for dealing with links. A followup to this would be to remove dump_dev_files in favour of this new util function with the enhancement for DT_LNK detection.",
+      "range": {
+        "startLine": 195,
+        "startChar": 4,
+        "endLine": 195,
+        "endChar": 19
+      },
+      "revId": "540e3de99fa1baa5eaf3eb3d49f4e98fd9f5bd91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
