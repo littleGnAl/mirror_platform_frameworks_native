@@ -39,7 +39,6 @@ BufferQueueProducer::BufferQueueProducer(const sp<BufferQueueCore>& core) :
     mSlots(core->mSlots),
     mConsumerName(),
     mStickyTransform(0),
-    mLastQueueBufferFence(Fence::NO_FENCE),
     mCallbackMutex(),
     mNextCallbackTicket(0),
     mCurrentCallbackTicket(0),
@@ -693,8 +692,8 @@ status_t BufferQueueProducer::queueBuffer(int slot,
         // Waiting here allows for two full buffers to be queued but not a
         // third. In the event that frames take varying time, this makes a
         // small trade-off in favor of latency rather than throughput.
-        mLastQueueBufferFence->waitForever("Throttling EGL Production");
-        mLastQueueBufferFence = fence;
+        mCore->mLastQueueBufferFence->waitForever("Throttling EGL Production");
+        mCore->mLastQueueBufferFence = fence;
     }
 
     // Don't send the GraphicBuffer through the callback, and don't send
@@ -898,6 +897,7 @@ status_t BufferQueueProducer::disconnect(int api) {
             case NATIVE_WINDOW_API_CAMERA:
                 if (mCore->mConnectedApi == api) {
                     mCore->freeAllBuffersLocked();
+                    mCore->mLastQueueBufferFence = Fence::NO_FENCE;
 
                     // Remove our death notification callback if we have one
                     if (mCore->mConnectedProducerListener != NULL) {

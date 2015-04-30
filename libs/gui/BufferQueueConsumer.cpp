@@ -388,6 +388,7 @@ status_t BufferQueueConsumer::disconnect() {
     mCore->mConsumerListener = NULL;
     mCore->mQueue.clear();
     mCore->freeAllBuffersLocked();
+    mCore->mLastQueueBufferFence = Fence::NO_FENCE;
     mCore->mDequeueCondition.broadcast();
     return NO_ERROR;
 }

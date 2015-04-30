@@ -274,6 +274,12 @@ private:
     // mBufferAge tracks the age of the contents of the most recently dequeued
     // buffer as the number of frames that have elapsed since it was last queued
     uint64_t mBufferAge;
+
+    // This saves the fence from the last queueBuffer, such that the
+    // next queueBuffer call can throttle buffer production. The prior
+    // queueBuffer's fence is not nessessarily available elsewhere,
+    // since the previous buffer might have already been acquired.
+    sp<Fence> mLastQueueBufferFence;
 }; // class BufferQueueCore
 
 } // namespace android
