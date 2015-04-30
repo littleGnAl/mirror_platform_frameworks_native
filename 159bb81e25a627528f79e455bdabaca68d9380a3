@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "90fd66eb_dc7b6276",
+        "filename": "services/surfaceflinger/RenderEngine/Mesh.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-30T19:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01c3e21_f6c800f9",
+      "revId": "159bb81e25a627528f79e455bdabaca68d9380a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "100336c0_fbd90b72",
         "filename": "services/surfaceflinger/RenderEngine/Mesh.cpp",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2015-04-30T04:48:06Z",
       "side": 1,
       "message": "I\u0027m having trouble figuring out what exactly is being checked by these two lines. remainder and the remainder !\u003d stride check is for stride*vertexCount overflowing, but why are you checking stride\u003cvertexSize rather than vertexSize+texCoordSize? Are these two checks in one condition because it might be valid for remainder!\u003dstride if the first condition is true, or are they unrelated to each other and just two kinds of overflow?\n\nI feel like either one of the expressions must be wrong somehow, or a comment would be really helpful.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 57
+      },
+      "revId": "159bb81e25a627528f79e455bdabaca68d9380a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90fd66eb_fc7a9e6f",
+        "filename": "services/surfaceflinger/RenderEngine/Mesh.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-30T19:45:52Z",
+      "side": 1,
+      "message": "Let me know if that comment is still unclear",
+      "parentUuid": "100336c0_fbd90b72",
       "range": {
         "startLine": 35,
         "startChar": 1,
