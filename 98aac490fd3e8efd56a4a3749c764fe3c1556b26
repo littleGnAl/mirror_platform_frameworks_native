@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d2e5992_cbd8f5f2",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1017028
+      },
+      "writtenOn": "2015-05-06T05:51:47Z",
+      "side": 1,
+      "message": "This line may not be needed because queued buffers are not cleared here.",
+      "range": {
+        "startLine": 900,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 67
+      },
+      "revId": "98aac490fd3e8efd56a4a3749c764fe3c1556b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
