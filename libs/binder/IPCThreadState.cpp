@@ -86,7 +86,8 @@ static const char *kReturnStrings[] = {
     "BR_FINISHED",
     "BR_DEAD_BINDER",
     "BR_CLEAR_DEATH_NOTIFICATION_DONE",
-    "BR_FAILED_REPLY"
+    "BR_FAILED_REPLY",
+    "BR_LSM_DENIED"
 };
 
 static const char *kCommandStrings[] = {
@@ -718,7 +719,11 @@ status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
         case BR_FAILED_REPLY:
             err = FAILED_TRANSACTION;
             goto finish;
-        
+
+        case BR_LSM_DENIED:
+            err = PERMISSION_DENIED;
+            goto finish;
+
         case BR_ACQUIRE_RESULT:
             {
                 ALOG_ASSERT(acquireResult != NULL, "Unexpected brACQUIRE_RESULT");

@@ -71,6 +71,7 @@ const char *cmd_name(uint32_t cmd)
         NAME(BR_TRANSACTION);
         NAME(BR_REPLY);
         NAME(BR_FAILED_REPLY);
+        NAME(BR_LSM_DENIED);
         NAME(BR_DEAD_REPLY);
         NAME(BR_DEAD_BINDER);
     default: return "???";
@@ -272,6 +273,9 @@ int binder_parse(struct binder_state *bs, struct binder_io *bio,
             break;
         }
         case BR_FAILED_REPLY:
+            r = -1;
+            break;
+        case BR_LSM_DENIED:
             r = -1;
             break;
         case BR_DEAD_REPLY:
