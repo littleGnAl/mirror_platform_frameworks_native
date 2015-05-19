@@ -43,6 +43,8 @@ LOCAL_CFLAGS += -DLOG_TAG=\"libEGL\"
 LOCAL_CFLAGS += -DGL_GLEXT_PROTOTYPES -DEGL_EGLEXT_PROTOTYPES
 LOCAL_CFLAGS += -fvisibility=hidden
 LOCAL_CFLAGS += -DEGL_TRACE=1
+# egl_early_init dereferences type-punned pointers
+LOCAL_CFLAGS += -fno-strict-aliasing
 
 ifeq ($(BOARD_ALLOW_EGL_HIBERNATION),true)
   LOCAL_CFLAGS += -DBOARD_ALLOW_EGL_HIBERNATION

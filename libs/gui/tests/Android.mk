@@ -38,6 +38,8 @@ LOCAL_SHARED_LIBRARIES := \
 	libui \
 	libutils \
 
+LOCAL_CFLAGS += -fno-strict-aliasing
+
 # Build the binary to $(TARGET_OUT_DATA_NATIVE_TESTS)/$(LOCAL_MODULE)
 # to integrate with auto-test framework.
 include $(BUILD_NATIVE_TEST)

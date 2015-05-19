@@ -39,16 +39,19 @@ int acceptClientConnection(char *sockname) {
         return -1;
     }
 
-    struct sockaddr_un server, client;
+    union {
+        struct sockaddr sa;
+        struct sockaddr_un un;
+    } server, client;
 
     memset(&server, 0, sizeof server);
-    server.sun_family = AF_UNIX;
+    server.un.sun_family = AF_UNIX;
     // the first byte of sun_path should be '\0' for abstract namespace
-    strcpy(server.sun_path + 1, sockname);
+    strcpy(server.un.sun_path + 1, sockname);
 
     // note that sockaddr_len should be set to the exact size of the buffer that is used.
-    socklen_t sockaddr_len = sizeof(server.sun_family) + strlen(sockname) + 1;
-    if (bind(serverSocket, (struct sockaddr *) &server, sockaddr_len) < 0) {
+    socklen_t sockaddr_len = sizeof(server.un.sun_family) + strlen(sockname) + 1;
+    if (bind(serverSocket, &server.sa, sockaddr_len) < 0) {
         close(serverSocket);
         ALOGE("Failed to bind the server socket");
         return -1;
@@ -62,7 +65,7 @@ int acceptClientConnection(char *sockname) {
 
     ALOGD("gltrace::waitForClientConnection: server listening @ path %s", sockname);
 
-    int clientSocket = accept(serverSocket, (struct sockaddr *)&client, &sockaddr_len);
+    int clientSocket = accept(serverSocket, &client.sa, &sockaddr_len);
     if (clientSocket < 0) {
         close(serverSocket);
         ALOGE("Failed to accept client connection");
