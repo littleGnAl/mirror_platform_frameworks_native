@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d37016d_1bfa4089",
+        "filename": "opengl/libs/GLES_trace/src/gltrace_transport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-05-20T16:52:41Z",
+      "side": 1,
+      "message": "Being pedantic (but strict aliasing is all about being pedantic, so..), but I don\u0027t think using a union to do type-punning is well-defined; you can only expect to read sensible data from the same union field you wrote it into. Using a memcpy from sockaddr_un to sockaddr is the 100% well-defined way to do this.",
+      "revId": "1b6616a5f0edbed2282fa4e380d0b105c3b99185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfdb1c1_ddf94695",
+        "filename": "opengl/libs/GLES_trace/src/gltrace_transport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-05-20T16:52:41Z",
+      "side": 1,
+      "message": "Since client.un is never used, can client just be a sockaddr instead of the union?",
+      "revId": "1b6616a5f0edbed2282fa4e380d0b105c3b99185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
