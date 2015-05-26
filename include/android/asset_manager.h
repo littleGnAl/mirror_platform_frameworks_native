@@ -35,11 +35,11 @@ struct AAssetManager;
  * {@link AAssetManager} provides access to an application's raw assets by
  * creating {@link AAsset} objects.
  *
- * AAssetManager is a wrapper to the low-level native implementation
- * of the java {@link AAssetManager}, a pointer can be obtained using
- * AAssetManager_fromJava().
+ * <code>AAssetManager</code> is a wrapper to the low-level native implementation
+ * of the Java {@link AAssetManager}. A pointer can be obtained using
+ * {@link AAssetManager_fromJava()}.
  *
- * The asset hierarchy may be examined like a filesystem, using
+ * The asset hierarchy may be examined as if it were a filesystem, using
  * {@link AAssetDir} objects to peruse a single directory.
  *
  * A native {@link AAssetManager} pointer may be shared across multiple threads.
@@ -52,7 +52,7 @@ struct AAssetDir;
  * it were a single directory. The contents are populated by the
  * {@link AAssetManager}.
  *
- * The list of files will be sorted in ascending order by ASCII value.
+ * The list of files is sorted in ascending order by ASCII value.
  */
 typedef struct AAssetDir AAssetDir;
 
@@ -79,66 +79,67 @@ enum {
 
 
 /**
- * Open the named directory within the asset hierarchy.  The directory can then
- * be inspected with the AAssetDir functions.  To open the top-level directory,
- * pass in "" as the dirName.
+ * Open the specified directory within the asset hierarchy.  The directory can then
+ * be inspected with the {@link AAssetDir} functions.  To open the top-level directory,
+ * pass in "" as the <code>dirName</code>.
  *
- * The object returned here should be freed by calling AAssetDir_close().
+ * The object returned here should be freed by calling {@link AAssetDir_close()}.
  */
 AAssetDir* AAssetManager_openDir(AAssetManager* mgr, const char* dirName);
 
 /**
  * Open an asset.
  *
- * The object returned here should be freed by calling AAsset_close().
+ * The object returned here should be freed by calling {@link AAsset_close()}.
  */
 AAsset* AAssetManager_open(AAssetManager* mgr, const char* filename, int mode);
 
 /**
- * Iterate over the files in an asset directory.  A NULL string is returned
+ * Iterate over the files in an asset directory.  A <code>NULL</code> string is returned
  * when all the file names have been returned.
  *
- * The returned file name is suitable for passing to AAssetManager_open().
+ * The returned file name is suitable for passing to {@link AAssetManager_open()}.
  *
- * The string returned here is owned by the AssetDir implementation and is not
- * guaranteed to remain valid if any other calls are made on this AAssetDir
+ * The string returned here is owned by the <code>AssetDir</code> implementation and is not
+ * TODO: @proppy: "AssetDir"? Not "AAsetDir?"
+ * guaranteed to remain valid if any other calls are made on this <code>AAssetDir</code>
  * instance.
  */
 const char* AAssetDir_getNextFileName(AAssetDir* assetDir);
 
 /**
- * Reset the iteration state of AAssetDir_getNextFileName() to the beginning.
+ * Reset the iteration state of {@link AAssetDir_getNextFileName()} to the beginning.
  */
 void AAssetDir_rewind(AAssetDir* assetDir);
 
 /**
- * Close an opened AAssetDir, freeing any related resources.
+ * Close an opened <code>AAssetDir</code>, freeing any related resources.
  */
 void AAssetDir_close(AAssetDir* assetDir);
 
 /**
- * Attempt to read 'count' bytes of data from the current offset.
+ * Attempt to read <code>count</code> bytes of data from the current offset.
  *
- * Returns the number of bytes read, zero on EOF, or < 0 on error.
+ * Returns the number of bytes read: zero on EOF, or < 0 on error.
  */
 int AAsset_read(AAsset* asset, void* buf, size_t count);
 
 /**
- * Seek to the specified offset within the asset data.  'whence' uses the
- * same constants as lseek()/fseek().
+ * Seek to the specified offset within the asset data.  <code>whence</code> uses the
+ * same constants as <code>lseek()</code> and <code>fseek()</code>.
  *
- * Returns the new position on success, or (off_t) -1 on error.
+ * Returns the new position on success, or <code>(off_t)</code> -1 on error.
  */
 off_t AAsset_seek(AAsset* asset, off_t offset, int whence);
 
 /**
  * Seek to the specified offset within the asset data.  'whence' uses the
- * same constants as lseek()/fseek().
+ * same constants as <code>lseek()</code> and <code>fseek()</code>.
  *
  * Uses 64-bit data type for large files as opposed to the 32-bit type used
- * by AAsset_seek.
+ * by <code>AAsset_seek</code>.
  *
- * Returns the new position on success, or (off64_t) -1 on error.
+ * Returns the new position on success, or <code>(off64_t)</code> -1 on error.
  */
 off64_t AAsset_seek64(AAsset* asset, off64_t offset, int whence);
 
@@ -161,7 +162,7 @@ off_t AAsset_getLength(AAsset* asset);
 
 /**
  * Report the total size of the asset data. Reports the size using a 64-bit
- * number insted of 32-bit as AAsset_getLength.
+ * number insted of 32-bit as <code>AAsset_getLength</code>.
  */
 off64_t AAsset_getLength64(AAsset* asset);
 
@@ -173,16 +174,17 @@ off_t AAsset_getRemainingLength(AAsset* asset);
 /**
  * Report the total amount of asset data that can be read from the current position.
  *
- * Uses a 64-bit number instead of a 32-bit number as AAsset_getRemainingLength does.
+ * Uses a 64-bit number instead of a 32-bit number as
+ * <code>AAsset_getRemainingLength</code> does.
  */
 off64_t AAsset_getRemainingLength64(AAsset* asset);
 
 /**
  * Open a new file descriptor that can be used to read the asset data. If the
  * start or length cannot be represented by a 32-bit number, it will be
- * truncated. If the file is large, use AAsset_openFileDescriptor64 instead.
+ * truncated. If the file is large, use <code>AAsset_openFileDescriptor64</code> instead.
  *
- * Returns < 0 if direct fd access is not possible (for example, if the asset is
+ * Returns < 0 if direct <code>fd</code> access is not possible (for example, if the asset is
  * compressed).
  */
 int AAsset_openFileDescriptor(AAsset* asset, off_t* outStart, off_t* outLength);
@@ -191,9 +193,9 @@ int AAsset_openFileDescriptor(AAsset* asset, off_t* outStart, off_t* outLength);
  * Open a new file descriptor that can be used to read the asset data.
  *
  * Uses a 64-bit number for the offset and length instead of 32-bit instead of
- * as AAsset_openFileDescriptor does.
+ * as <code>AAsset_openFileDescriptor</code> does.
  *
- * Returns < 0 if direct fd access is not possible (for example, if the asset is
+ * Returns < 0 if direct <code>fd access</code> is not possible (for example, if the asset is
  * compressed).
  */
 int AAsset_openFileDescriptor64(AAsset* asset, off64_t* outStart, off64_t* outLength);

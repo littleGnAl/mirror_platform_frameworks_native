@@ -33,11 +33,11 @@
 extern "C" {
 #endif
 
-/** AndroidBitmap functions result code. */
+/** Result codes for <code> AndroidBitmap*</code> functions. */
 enum {
-    /** Operation was successful. */
+    /** Operation completed successfully. */
     ANDROID_BITMAP_RESULT_SUCCESS           = 0,
-    /** Bad parameter. */
+    /** A bad parameter was passed. */
     ANDROID_BITMAP_RESULT_BAD_PARAMETER     = -1,
     /** JNI exception occured. */
     ANDROID_BITMAP_RESULT_JNI_EXCEPTION     = -2,
@@ -45,7 +45,7 @@ enum {
     ANDROID_BITMAP_RESULT_ALLOCATION_FAILED = -3,
 };
 
-/** Backward compatibility: this macro used to be misspelled. */
+/** For backward compatibility with a macro that used to be misspelled. */
 #define ANDROID_BITMAP_RESUT_SUCCESS ANDROID_BITMAP_RESULT_SUCCESS
 
 /** Bitmap pixel format. */
@@ -62,44 +62,44 @@ enum AndroidBitmapFormat {
     ANDROID_BITMAP_FORMAT_A_8       = 8,
 };
 
-/** Bitmap info, see AndroidBitmap_getInfo(). */
+/** Bitmap info. For more information, see {@link AndroidBitmap_getInfo()}. */
 typedef struct {
     /** The bitmap width in pixels. */
     uint32_t    width;
     /** The bitmap height in pixels. */
     uint32_t    height;
-    /** The number of byte per row. */
+    /** The number of bytes per row. */
     uint32_t    stride;
-    /** The bitmap pixel format. See {@link AndroidBitmapFormat} */
+    /** The bitmap pixel format. For more information, see {@link AndroidBitmapFormat} */
     int32_t     format;
     /** Unused. */
     uint32_t    flags;      // 0 for now
 } AndroidBitmapInfo;
 
 /**
- * Given a java bitmap object, fill out the AndroidBitmapInfo struct for it.
- * If the call fails, the info parameter will be ignored.
+ * Given a Java <code>bitmap</code> object, fill out the AndroidBitmapInfo struct for it.
+ * If the call fails, the info parameter is ignored.
  */
 int AndroidBitmap_getInfo(JNIEnv* env, jobject jbitmap,
                           AndroidBitmapInfo* info);
 
 /**
- * Given a java bitmap object, attempt to lock the pixel address.
- * Locking will ensure that the memory for the pixels will not move
- * until the unlockPixels call, and ensure that, if the pixels had been
- * previously purged, they will have been restored.
+ * Given a Java <code>bitmap</code> object, attempt to lock the pixel address.
+ * Locking ensures that the memory for the pixels does not move
+ * until the {@link AndroidBitmap_unlockPixels()} call, and ensure that previously
+ * purged pixels are restored.
  *
  * If this call succeeds, it must be balanced by a call to
- * AndroidBitmap_unlockPixels, after which time the address of the pixels should
- * no longer be used.
- *
- * If this succeeds, *addrPtr will be set to the pixel address. If the call
- * fails, addrPtr will be ignored.
+ * AndroidBitmap_unlockPixels(), after which the address of the pixels should
+ * no longer be used. (TODO: @proppy: The following sentence is also if _lockPixels
+ * succeeds, right?) Further, <code>*addrPtr</code> is set to the pixel address.
+ * If the call fails, <code>addrPtr</code> is ignored.
  */
 int AndroidBitmap_lockPixels(JNIEnv* env, jobject jbitmap, void** addrPtr);
 
 /**
- * Call this to balance a successful call to AndroidBitmap_lockPixels.
+ * Unlocks pixels that AndroidBitmap_lockPixels() had successfully locked. Required
+ * in order to balance out AndroidBitmap_lockPixels()
  */
 int AndroidBitmap_unlockPixels(JNIEnv* env, jobject jbitmap);
 
