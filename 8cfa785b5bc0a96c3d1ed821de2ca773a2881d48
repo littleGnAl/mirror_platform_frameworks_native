@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d11f908_bca66537",
+        "filename": "include/android/asset_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1070099
+      },
+      "writtenOn": "2015-05-26T17:52:44Z",
+      "side": 1,
+      "message": "Any specific reason you\u0027re using html instead of doxygen syntax here (@code \\code)",
+      "revId": "8cfa785b5bc0a96c3d1ed821de2ca773a2881d48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d162dff_63d38c55",
+        "filename": "include/android/asset_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1070099
+      },
+      "writtenOn": "2015-05-26T17:52:44Z",
+      "side": 1,
+      "message": "AAssetDir",
+      "revId": "8cfa785b5bc0a96c3d1ed821de2ca773a2881d48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d11f908_3c9b75f0",
+        "filename": "include/android/bitmap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1070099
+      },
+      "writtenOn": "2015-05-26T17:52:44Z",
+      "side": 1,
+      "message": "yes.",
+      "revId": "8cfa785b5bc0a96c3d1ed821de2ca773a2881d48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d162dff_c3e0a017",
+        "filename": "include/android/configuration.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1070099
+      },
+      "writtenOn": "2015-05-26T17:52:44Z",
+      "side": 1,
+      "message": "I think it\u0027s \"enumeration\", not enumerator, or just \"enums\".",
+      "revId": "8cfa785b5bc0a96c3d1ed821de2ca773a2881d48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d11f908_fc09fdb2",
+        "filename": "include/android/configuration.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1070099
+      },
+      "writtenOn": "2015-05-26T17:52:44Z",
+      "side": 1,
+      "message": "\"The value of this enum\" reads weird, technically an enumeration holds multiple values.",
+      "revId": "8cfa785b5bc0a96c3d1ed821de2ca773a2881d48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
