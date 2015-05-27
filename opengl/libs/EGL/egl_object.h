@@ -146,6 +146,7 @@ private:
     ANativeWindow* win;
 public:
     egl_connection_t const* cnx;
+    unsigned int framecounter;
 private:
     bool connected;
     void disconnect();
