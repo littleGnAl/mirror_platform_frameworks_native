@@ -60,6 +60,20 @@ struct extention_map_t {
     __eglMustCastToProperFunctionPointerType address;
 };
 
+ /* The defines and variables below are for fps measurments. */
+#define PROPERTY_PROFILE_FRAME_COUNTER "debug.hwui.profile.counter"
+#define PROPERTY_PROFILE_FRAME_COUNTER_X "debug.hwui.profile.counter.x"
+#define PROPERTY_PROFILE_FRAME_COUNTER_Y "debug.hwui.profile.counter.y"
+#define PROPERTY_PROFILE_FRAME_COUNTER_SIZE_CHECK "debug.hwui.profile.counter.size"
+#define PROPERTY_PROFILE_FRAME_COUNTER_LAYER_W "debug.hwui.profile.counter.w"
+#define PROPERTY_PROFILE_FRAME_COUNTER_LAYER_H "debug.hwui.profile.counter.h"
+static bool gShowFrameCounter = false;
+static GLuint gCounterSize = 0;
+static GLint gSetX = 0;
+static GLint gSetY = 0;
+static const unsigned char counterPosY[8] = {0, 1, 2, 2, 2, 1, 0, 0};
+static const unsigned char counterPosX[8] = {0, 0, 0, 1, 2, 2, 2, 1};
+
 /*
  * This is the list of EGL extensions exposed to applications.
  *
@@ -294,6 +308,44 @@ EGLDisplay eglGetDisplay(EGLNativeDisplayType display)
 // ----------------------------------------------------------------------------
 // Initialization
 // ----------------------------------------------------------------------------
+
+static int process_name_cmp(const char *s1, size_t n)
+{
+    char process_name[PROPERTY_VALUE_MAX] = {'\0',};
+    char proc_path[] = "/proc/self/cmdline";
+
+    FILE *fp = NULL;
+    fp = fopen(proc_path, "r");
+    if (fp == NULL) {
+        perror("/proc/self/cmdline");
+        return (0);
+    }
+    fread(process_name, sizeof(char), PROPERTY_VALUE_MAX, fp);
+    if (fp != NULL) {
+        fclose(fp);
+    }
+
+    return !strncmp(s1, process_name, n);
+}
+
+void initFramecounter()
+{
+    char buf[PROPERTY_VALUE_MAX] = {'\0',};
+    if (property_get(PROPERTY_PROFILE_FRAME_COUNTER, buf, "") > 0) {
+        gShowFrameCounter = !strncmp(buf, "all", PROPERTY_VALUE_MAX) ||
+            process_name_cmp(buf, PROPERTY_VALUE_MAX);
+    } else {
+        gShowFrameCounter = false;
+    }
+    if (gShowFrameCounter) {
+        unsigned density = property_get_int32("ro.sf.lcd_density", 160); // default: mdpi=160
+        gSetX = property_get_int32(PROPERTY_PROFILE_FRAME_COUNTER_X, -1);
+        gSetY = property_get_int32(PROPERTY_PROFILE_FRAME_COUNTER_Y, -1);
+        // See SurfaceFlinger.cpp: SurfaceFlinger::getDisplayConfigs()
+        // See DrawProfiler.cpp: dpToPx()
+        gCounterSize = 3 * (7 * density / 16 + 5) / 10;
+    }
+}
 
 EGLBoolean eglInitialize(EGLDisplay dpy, EGLint *major, EGLint *minor)
 {
@@ -577,6 +629,7 @@ EGLSurface eglCreateWindowSurface(  EGLDisplay dpy, EGLConfig config,
         if (surface != EGL_NO_SURFACE) {
             egl_surface_t* s = new egl_surface_t(dp.get(), config, window,
                     surface, cnx);
+            initFramecounter();
             return s;
         }
 
@@ -601,6 +654,7 @@ EGLSurface eglCreatePixmapSurface(  EGLDisplay dpy, EGLConfig config,
         if (surface != EGL_NO_SURFACE) {
             egl_surface_t* s = new egl_surface_t(dp.get(), config, NULL,
                     surface, cnx);
+            initFramecounter();
             return s;
         }
     }
@@ -620,6 +674,7 @@ EGLSurface eglCreatePbufferSurface( EGLDisplay dpy, EGLConfig config,
         if (surface != EGL_NO_SURFACE) {
             egl_surface_t* s = new egl_surface_t(dp.get(), config, NULL,
                     surface, cnx);
+            initFramecounter();
             return s;
         }
     }
@@ -1138,6 +1193,12 @@ private:
     std::mutex mMutex;
 };
 
+// we're building without STL, so make our own min() function.
+template <typename T>
+static T inline min(T a, T b) {
+    return (a < b) ? a : b;
+}
+
 EGLBoolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface draw,
         EGLint *rects, EGLint n_rects)
 {
@@ -1150,6 +1211,83 @@ EGLBoolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface draw,
     SurfaceRef _s(dp.get(), draw);
     if (!_s.get())
         return setError(EGL_BAD_SURFACE, (EGLBoolean)EGL_FALSE);
+
+    if (CC_UNLIKELY(gShowFrameCounter)){
+        bool showFrameCounterSizeCheck =
+            property_get_bool(PROPERTY_PROFILE_FRAME_COUNTER_SIZE_CHECK, false);
+        GLint targetWidth  = property_get_int32(PROPERTY_PROFILE_FRAME_COUNTER_LAYER_W, -1);
+        GLint targetHeight = property_get_int32(PROPERTY_PROFILE_FRAME_COUNTER_LAYER_H, -1);
+        int layerWidth = 0, layerHeight = 0;
+        eglQuerySurface(dpy, draw, EGL_WIDTH,  &layerWidth);
+        eglQuerySurface(dpy, draw, EGL_HEIGHT, &layerHeight);
+        bool isSizeMatched = (layerWidth == targetWidth) & (layerHeight == targetHeight);
+
+        if(!showFrameCounterSizeCheck || showFrameCounterSizeCheck & isSizeMatched){
+            // our counter may be outside the dirty rects, so force full-surface update
+            n_rects = 0;
+
+            // We need the surface and context to draw.
+            egl_surface_t * sur = get_surface(draw);
+            EGLContext ctx = egl_tls_t::getContext();
+            egl_context_t const * c = get_context(ctx);
+
+            // get viewport width and height
+            GLint viewport[4];
+            // TODO: are viewport X and Y != 0 in any real use case? I haven't found any yet...
+            gl_hooks_t* gl_hooks = sur->cnx->hooks[c->version];
+            gl_hooks->gl.glGetIntegerv(GL_VIEWPORT, viewport);
+            unsigned w = viewport[2];
+            unsigned h = viewport[3];
+
+            // calculate black box size, making sure that it's not larger than the viewport
+            unsigned blackSize = min(3 * gCounterSize, min(w,h));
+
+            // try to keep the same physical position even if the device is rotated
+            // however, we can't differentiate between landscape and "reverse" landscape
+            int x, y;
+            if (h > w) { // portrait
+                x = min(w - blackSize, gSetX >= 0 ? gSetX : 0u);
+                y = min(h - blackSize, gSetY >= 0 ? gSetY : (h - blackSize) / 2);
+                // now, correct for inverted Y axis.
+                y = h - (y + blackSize); // this is always within bounds, because y was.
+            } else { // landscape
+                x = min(w - blackSize, gSetY >= 0 ? gSetY : (w - blackSize) / 2);
+                y = min(h - blackSize, gSetX >= 0 ? gSetX : 0u);
+            }
+
+            gl_hooks->gl.glFlush();
+            // save old state
+            GLfloat oldClear[4];
+            GLfloat oldScissor[4];
+            GLboolean oldScissorEnable;
+            gl_hooks->gl.glGetFloatv(GL_COLOR_CLEAR_VALUE, oldClear);
+            gl_hooks->gl.glGetFloatv(GL_SCISSOR_BOX, oldScissor);
+            gl_hooks->gl.glGetBooleanv(GL_SCISSOR_TEST, &oldScissorEnable);
+
+            // Draw black square
+            gl_hooks->gl.glEnable(GL_SCISSOR_TEST);
+            gl_hooks->gl.glScissor(x, y, blackSize, blackSize);
+            gl_hooks->gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            gl_hooks->gl.glClear(GL_COLOR_BUFFER_BIT);
+
+            // Draw white square on top of black square
+            unsigned whiteSize = blackSize / 3;
+            sur->framecounter++;
+            int posIndex = sur->framecounter & 7;
+            x += counterPosX[posIndex] * whiteSize;
+            y += counterPosY[posIndex] * whiteSize;
+            gl_hooks->gl.glScissor(x, y, whiteSize, whiteSize);
+            gl_hooks->gl.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+            gl_hooks->gl.glClear(GL_COLOR_BUFFER_BIT);
+
+            // restore old state
+            gl_hooks->gl.glClearColor(oldClear[0], oldClear[1], oldClear[2], oldClear[3]);
+            gl_hooks->gl.glScissor(oldScissor[0], oldScissor[1], oldScissor[2], oldScissor[3]);
+            if (!oldScissorEnable) {
+                gl_hooks->gl.glDisable(GL_SCISSOR_TEST);
+            }
+        }
+    }
 
     egl_surface_t const * const s = get_surface(draw);
 
