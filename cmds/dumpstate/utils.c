@@ -420,9 +420,13 @@ bool waitpid_with_timeout(pid_t pid, int timeout_seconds, int* status) {
         printf("*** sigprocmask failed: %s\n", strerror(errno));
         return false;
     }
-
+    struct stat st;
+    fstat(fileno(stdout), &st);
     struct timespec ts;
-    ts.tv_sec = timeout_seconds;
+
+data_flowing:
+
+    ts.tv_sec = (timeout_seconds > 0) ? timeout_seconds : -timeout_seconds;
     ts.tv_nsec = 0;
     int ret = TEMP_FAILURE_RETRY(sigtimedwait(&child_mask, NULL, &ts));
     int saved_errno = errno;
@@ -437,6 +441,16 @@ bool waitpid_with_timeout(pid_t pid, int timeout_seconds, int* status) {
         errno = saved_errno;
         if (errno == EAGAIN) {
             errno = ETIMEDOUT;
+            if (timeout_seconds < 0) {
+                struct stat new_st;
+                fstat(fileno(stdout), &new_st);
+                if ((new_st.st_mtime != st.st_mtime)
+                        && (new_st.st_blocks != st.st_blocks)) {
+                    st.st_mtime = new_st.st_mtime;
+                    st.st_blocks = new_st.st_blocks;
+                    goto data_flowing;
+                }
+            }
         } else {
             printf("*** sigtimedwait failed: %s\n", strerror(errno));
         }
