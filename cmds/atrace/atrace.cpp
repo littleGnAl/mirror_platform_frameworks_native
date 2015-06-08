@@ -140,6 +140,15 @@ static const TracingCategory k_categories[] = {
     { "regulators",  "Voltage and Current Regulators", 0, {
         { REQ,      "/sys/kernel/debug/tracing/events/regulator/enable" },
     } },
+    { "binder_driver", "Binder Kernel driver", 0, {
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_transaction/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_transaction_received/enable" },
+    } },
+    { "binder_lock", "Binder global lock trace", 0, {
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_lock/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_locked/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_unlock/enable" },
+    } },
 };
 
 /* Command line options */
@@ -349,11 +358,10 @@ static bool clearTrace()
 static bool setTraceBufferSizeKB(int size)
 {
     char str[32] = "1";
-    int len;
     if (size < 1) {
         size = 1;
     }
-    snprintf(str, 32, "%d", size);
+    snprintf(str, sizeof(str), "%d", size);
     return writeStr(k_traceBufferSizePath, str);
 }
 
@@ -571,7 +579,6 @@ static bool setKernelTraceFuncs(const char* funcs)
 static bool setUpTrace()
 {
     bool ok = true;
-
     // Set up the tracing options.
     ok &= setTraceOverwriteEnable(g_traceOverwrite);
     ok &= setTraceBufferSizeKB(g_traceBufferSizeKB);
