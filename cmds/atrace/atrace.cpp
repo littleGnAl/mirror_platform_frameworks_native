@@ -140,12 +140,22 @@ static const TracingCategory k_categories[] = {
     { "regulators",  "Voltage and Current Regulators", 0, {
         { REQ,      "/sys/kernel/debug/tracing/events/regulator/enable" },
     } },
+    { "binder_driver", "Binder Kernel driver", 0, {
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_transaction/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_transaction_received/enable" },
+    } },
+    { "binder_lock", "Binder global lock trace", 0, {
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_lock/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_locked/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_unlock/enable" },
+    } },
 };
 
 /* Command line options */
 static int g_traceDurationSeconds = 5;
 static bool g_traceOverwrite = false;
 static int g_traceBufferSizeKB = 2048;
+static int g_traceCmdlineLen = 256;
 static bool g_compress = false;
 static bool g_nohup = false;
 static int g_initialSleepSecs = 0;
@@ -162,6 +172,9 @@ static const char* k_traceClockPath =
 
 static const char* k_traceBufferSizePath =
     "/sys/kernel/debug/tracing/buffer_size_kb";
+
+static const char* k_traceCmdlineLenPath =
+    "/sys/kernel/debug/tracing/cmdline_buffer_len";
 
 static const char* k_tracingOverwriteEnablePath =
     "/sys/kernel/debug/tracing/options/overwrite";
@@ -349,13 +362,23 @@ static bool clearTrace()
 static bool setTraceBufferSizeKB(int size)
 {
     char str[32] = "1";
-    int len;
     if (size < 1) {
         size = 1;
     }
-    snprintf(str, 32, "%d", size);
+    snprintf(str, sizeof(str), "%d", size);
     return writeStr(k_traceBufferSizePath, str);
 }
+
+static bool setTraceCmdlineLength(int amount)
+{
+    char str[32];
+    if (amount < 256) {
+	amount = 256;
+    }
+    snprintf(str, sizeof(str), "%d", amount);
+    return writeStr(k_traceCmdlineLenPath, str);
+}
+
 
 // Read the trace_clock sysfs file and return true if it matches the requested
 // value.  The trace_clock file format is:
@@ -571,10 +594,10 @@ static bool setKernelTraceFuncs(const char* funcs)
 static bool setUpTrace()
 {
     bool ok = true;
-
     // Set up the tracing options.
     ok &= setTraceOverwriteEnable(g_traceOverwrite);
     ok &= setTraceBufferSizeKB(g_traceBufferSizeKB);
+    ok &= setTraceCmdlineLength(g_traceCmdlineLen);
     ok &= setGlobalClockEnable(true);
     ok &= setPrintTgidEnableIfPresent(true);
     ok &= setKernelTraceFuncs(g_kernelTraceFuncs);
@@ -631,6 +654,7 @@ static void cleanUpTrace()
     // Set the options back to their defaults.
     setTraceOverwriteEnable(true);
     setTraceBufferSizeKB(1);
+    setTraceCmdlineLength(256);
     setGlobalClockEnable(false);
     setPrintTgidEnableIfPresent(false);
     setKernelTraceFuncs(NULL);
@@ -808,6 +832,7 @@ static void showHelp(const char *cmd)
                     "  -a appname      enable app-level tracing for a comma "
                         "separated list of cmdlines\n"
                     "  -b N            use a trace buffer size of N KB\n"
+                    "  -l N            use cmdline and tgid buffer of length N\n"
                     "  -c              trace into a circular buffer\n"
                     "  -k fname,...    trace the listed kernel functions\n"
                     "  -n              ignore signals\n"
@@ -846,7 +871,7 @@ int main(int argc, char **argv)
             {           0,                0, 0,  0 }
         };
 
-        ret = getopt_long(argc, argv, "a:b:ck:ns:t:z",
+        ret = getopt_long(argc, argv, "a:b:l:ck:ns:t:z",
                           long_options, &option_index);
 
         if (ret < 0) {
@@ -867,6 +892,9 @@ int main(int argc, char **argv)
             case 'b':
                 g_traceBufferSizeKB = atoi(optarg);
             break;
+
+            case 'l':
+		g_traceCmdlineLen = atoi(optarg);
 
             case 'c':
                 g_traceOverwrite = true;
