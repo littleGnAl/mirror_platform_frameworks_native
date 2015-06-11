@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79254042_6dc15921",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-06-11T17:12:07Z",
+      "side": 1,
+      "message": "I think I\u0027d call this mDisplayLock, since I think it\u0027s actually trying to protect mDisplayData. I\u0027d also move this line up right above mDisplayData and explain in the comment that it\u0027s protecting mDisplayData from races between prepare and dump.",
+      "revId": "02681b0724e64ba030172b83cc966b85104f37d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
