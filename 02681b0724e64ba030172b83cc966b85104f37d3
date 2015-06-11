@@ -16,6 +16,24 @@
       "revId": "02681b0724e64ba030172b83cc966b85104f37d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "596b1c6a_303bd0a8",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1004371
+      },
+      "writtenOn": "2015-06-11T22:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79254042_6dc15921",
+      "revId": "02681b0724e64ba030172b83cc966b85104f37d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
