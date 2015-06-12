@@ -16,6 +16,24 @@
       "revId": "f989162bb89dff6387f2021101306a1be6d875f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "390ca8ed_4e95cf46",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-06-12T22:59:23Z",
+      "side": 1,
+      "message": "dumpstate is single-threaded, and all activities are sequential \u0027dumpstate()\u0027.",
+      "parentUuid": "390ca8ed_739d20b5",
+      "revId": "f989162bb89dff6387f2021101306a1be6d875f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
