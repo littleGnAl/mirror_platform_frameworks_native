@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "390ca8ed_739d20b5",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-06-12T22:51:22Z",
+      "side": 1,
+      "message": "Not worried about race conditions modifying this global? I suppose the only consequence would be the possibility of missing the actual worst case if two threads are writing, but this seems like something we could live with.",
+      "revId": "f989162bb89dff6387f2021101306a1be6d875f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
