@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19652496_7c6a8114",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-06-12T02:21:29Z",
+      "side": 1,
+      "message": "must we use goto?  A while loop seems cleaner.",
+      "range": {
+        "startLine": 451,
+        "startChar": 20,
+        "endLine": 451,
+        "endChar": 37
+      },
+      "revId": "fe6e89f0c28f40b87309e06999c2ce440a7e4ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
