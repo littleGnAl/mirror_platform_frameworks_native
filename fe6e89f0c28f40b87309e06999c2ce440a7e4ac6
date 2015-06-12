@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "390ca8ed_39e8afa2",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-06-12T16:12:35Z",
+      "side": 1,
+      "message": "As indicated, untested (logcat is typically _done_ in 40ms, I need to to run longer, can only happen with a bad eMMC), and at this stage a prototype. I have to prove that fstat works in all cases.\n\nI am hoping to come up with other ideas that can address storage device sluggishness?",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 31
+      },
+      "revId": "fe6e89f0c28f40b87309e06999c2ce440a7e4ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19652496_7c6a8114",
         "filename": "cmds/dumpstate/utils.c",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2015-06-12T02:21:29Z",
       "side": 1,
       "message": "must we use goto?  A while loop seems cleaner.",
+      "range": {
+        "startLine": 451,
+        "startChar": 20,
+        "endLine": 451,
+        "endChar": 37
+      },
+      "revId": "fe6e89f0c28f40b87309e06999c2ce440a7e4ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_06f43f82",
+        "filename": "cmds/dumpstate/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-06-12T16:12:35Z",
+      "side": 1,
+      "message": "Yes. At this stage still a prototype to show an idea and test it. I was looking for low-impact rather than a rewrite. Alas, a point well taken when time comes to harden the code.\n\nNB: This is the fourth prototype in a year using Gerrit, each time I got spanked. I should probably learn my lesson ;-}",
+      "parentUuid": "19652496_7c6a8114",
       "range": {
         "startLine": 451,
         "startChar": 20,
