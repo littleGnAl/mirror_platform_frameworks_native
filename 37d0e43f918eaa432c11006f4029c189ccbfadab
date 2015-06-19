@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5efea270_55985ef8",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1048235
+      },
+      "writtenOn": "2015-06-19T22:32:22Z",
+      "side": 1,
+      "message": "binder_driver?",
+      "revId": "37d0e43f918eaa432c11006f4029c189ccbfadab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
