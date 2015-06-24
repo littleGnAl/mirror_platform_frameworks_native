@@ -718,7 +718,15 @@ enum {
      * CEC User Control Code. */
     AKEYCODE_TV_TIMER_PROGRAMMING = 258,
     /** Help key. */
-    AKEYCODE_HELP            = 259
+    AKEYCODE_HELP            = 259,
+    /** Primary stem key. */
+    AKEYCODE_STEM_PRIMARY = 260,
+    /** Generic stem key 1. */
+    AKEYCODE_STEM_1 = 261,
+    /** Generic stem key 2. */
+    AKEYCODE_STEM_2 = 262,
+    /** Generic stem key 3. */
+    AKEYCODE_STEM_3 = 263
 
     // NOTE: If you add a new keycode here you must also add it to several other files.
     //       Refer to frameworks/base/core/java/android/view/KeyEvent.java for the full list.
