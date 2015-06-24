@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e098aaf_71660a21",
+        "filename": "services/surfaceflinger/RenderEngine/RenderEngine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2015-06-24T21:32:08Z",
+      "side": 1,
+      "message": "You can\u0027t just do this unconditionally if the eglext.h defines the extension, you need a runtime check for whether the driver supports the extension.",
+      "revId": "31c17088654e3546cdd562700db5e9417d02eefe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
