@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9efd7aeb_5fe0efb7",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1048235
+      },
+      "writtenOn": "2015-06-24T23:57:24Z",
+      "side": 1,
+      "message": "Remove this diff - it\u0027s not needed.",
+      "revId": "ef5749f7fb803570c478a661e6a1a17d411773cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efd7aeb_bf99335a",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1048235
+      },
+      "writtenOn": "2015-06-24T23:57:24Z",
+      "side": 1,
+      "message": "Remove whitespace diff.",
+      "revId": "ef5749f7fb803570c478a661e6a1a17d411773cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
