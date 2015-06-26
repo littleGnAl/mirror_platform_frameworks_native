@@ -16,6 +16,24 @@
       "revId": "31c17088654e3546cdd562700db5e9417d02eefe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "338769d3_21d68e35",
+        "filename": "services/surfaceflinger/RenderEngine/RenderEngine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1047548
+      },
+      "writtenOn": "2015-06-26T20:42:33Z",
+      "side": 1,
+      "message": "Will add. Is it ok to remove the HAS_CONTEXT_PRIORITY completely then? It seems to be set for specific targets and used in SurfaceFlinger.cpp as well.",
+      "parentUuid": "1e098aaf_71660a21",
+      "revId": "31c17088654e3546cdd562700db5e9417d02eefe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
