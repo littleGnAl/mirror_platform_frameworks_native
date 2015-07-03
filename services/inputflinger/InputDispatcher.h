@@ -1043,8 +1043,7 @@ private:
     void pokeUserActivityLocked(const EventEntry* eventEntry);
     bool checkInjectionPermission(const sp<InputWindowHandle>& windowHandle,
             const InjectionState* injectionState);
-    bool isWindowObscuredAtPointLocked(const sp<InputWindowHandle>& windowHandle,
-            int32_t x, int32_t y) const;
+    bool isWindowObscuredLocked(const sp<InputWindowHandle>& windowHandle) const;
     String8 getApplicationWindowLabelLocked(const sp<InputApplicationHandle>& applicationHandle,
             const sp<InputWindowHandle>& windowHandle);
 

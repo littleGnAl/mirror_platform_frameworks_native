@@ -1209,7 +1209,7 @@ int32_t InputDispatcher::findTouchedWindowTargetsLocked(nsecs_t currentTime,
                 if (maskedAction == AMOTION_EVENT_ACTION_DOWN
                         && (flags & InputWindowInfo::FLAG_WATCH_OUTSIDE_TOUCH)) {
                     int32_t outsideTargetFlags = InputTarget::FLAG_DISPATCH_AS_OUTSIDE;
-                    if (isWindowObscuredAtPointLocked(windowHandle, x, y)) {
+                    if (isWindowObscuredLocked(windowHandle)) {
                         outsideTargetFlags |= InputTarget::FLAG_WINDOW_IS_OBSCURED;
                     }
 
@@ -1246,7 +1246,7 @@ int32_t InputDispatcher::findTouchedWindowTargetsLocked(nsecs_t currentTime,
         if (isSplit) {
             targetFlags |= InputTarget::FLAG_SPLIT;
         }
-        if (isWindowObscuredAtPointLocked(newTouchedWindowHandle, x, y)) {
+        if (isWindowObscuredLocked(newTouchedWindowHandle)) {
             targetFlags |= InputTarget::FLAG_WINDOW_IS_OBSCURED;
         }
 
@@ -1309,7 +1309,7 @@ int32_t InputDispatcher::findTouchedWindowTargetsLocked(nsecs_t currentTime,
                 if (isSplit) {
                     targetFlags |= InputTarget::FLAG_SPLIT;
                 }
-                if (isWindowObscuredAtPointLocked(newTouchedWindowHandle, x, y)) {
+                if (isWindowObscuredLocked(newTouchedWindowHandle)) {
                     targetFlags |= InputTarget::FLAG_WINDOW_IS_OBSCURED;
                 }
 
@@ -1597,9 +1597,9 @@ bool InputDispatcher::checkInjectionPermission(const sp<InputWindowHandle>& wind
     return true;
 }
 
-bool InputDispatcher::isWindowObscuredAtPointLocked(
-        const sp<InputWindowHandle>& windowHandle, int32_t x, int32_t y) const {
+bool InputDispatcher::isWindowObscuredLocked(const sp<InputWindowHandle>& windowHandle) const {
     int32_t displayId = windowHandle->getInfo()->displayId;
+    const InputWindowInfo* windowInfo = windowHandle->getInfo();
     size_t numWindows = mWindowHandles.size();
     for (size_t i = 0; i < numWindows; i++) {
         sp<InputWindowHandle> otherHandle = mWindowHandles.itemAt(i);
@@ -1610,7 +1610,7 @@ bool InputDispatcher::isWindowObscuredAtPointLocked(
         const InputWindowInfo* otherInfo = otherHandle->getInfo();
         if (otherInfo->displayId == displayId
                 && otherInfo->visible && !otherInfo->isTrustedOverlay()
-                && otherInfo->frameContainsPoint(x, y)) {
+                && otherInfo->overlaps(windowInfo)) {
             return true;
         }
     }

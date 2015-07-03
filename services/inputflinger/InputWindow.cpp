@@ -35,15 +35,17 @@ bool InputWindowInfo::touchableRegionContainsPoint(int32_t x, int32_t y) const {
     return touchableRegion.contains(x,y);
 }
 
-bool InputWindowInfo::frameContainsPoint(int32_t x, int32_t y) const {
-    return x >= frameLeft && x <= frameRight
-            && y >= frameTop && y <= frameBottom;
+bool InputWindowInfo::overlaps(const InputWindowInfo* other) const {
+    return frameLeft < other->frameRight && frameRight > other->frameLeft
+            && frameTop < other->frameBottom && frameBottom > other->frameTop;
 }
 
 bool InputWindowInfo::isTrustedOverlay() const {
     return layoutParamsType == TYPE_INPUT_METHOD
             || layoutParamsType == TYPE_INPUT_METHOD_DIALOG
             || layoutParamsType == TYPE_MAGNIFICATION_OVERLAY
+            || layoutParamsType == TYPE_STATUS_BAR
+            || layoutParamsType == TYPE_NAVIGATION_BAR
             || layoutParamsType == TYPE_SECURE_SYSTEM_OVERLAY;
 }
 

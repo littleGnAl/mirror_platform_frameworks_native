@@ -136,7 +136,7 @@ struct InputWindowInfo {
     void addTouchableRegion(const Rect& region);
 
     bool touchableRegionContainsPoint(int32_t x, int32_t y) const;
-    bool frameContainsPoint(int32_t x, int32_t y) const;
+    bool overlaps(const InputWindowInfo* other) const;
 
     /* Returns true if the window is of a trusted type that is allowed to silently
      * overlay other windows for the purpose of implementing the secure views feature.
