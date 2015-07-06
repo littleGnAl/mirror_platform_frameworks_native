@@ -264,8 +264,8 @@ typedef struct OMX_CONFIG_METADATAITEMTYPE
     OMX_U8 nKeySizeUsed;
     OMX_U8 nKey[128];
     OMX_METADATACHARSETTYPE eValueCharset;
-    OMX_STRING sLanguageCountry;
-    OMX_U32 nValueMaxSize;
+    OMX_STRING sLanguageCountry __attribute__((aligned(8)));
+    OMX_U32 nValueMaxSize __attribute__((aligned(8)));
     OMX_U32 nValueSizeUsed;
     OMX_U8 nValue[1];
 } OMX_CONFIG_METADATAITEMTYPE;
@@ -289,8 +289,8 @@ typedef struct OMX_CONFIG_CONTAINERNODEIDTYPE
     OMX_U32 nParentNodeID;
     OMX_U32 nNodeIndex;
     OMX_U32 nNodeID;
-    OMX_STRING cNodeName;
-    OMX_BOOL bIsLeafType;
+    OMX_STRING cNodeName __attribute__((aligned(8)));
+    OMX_BOOL bIsLeafType __attribute__((aligned(8)));
 } OMX_CONFIG_CONTAINERNODEIDTYPE;
 
 /** @ingroup metadata */

@@ -119,11 +119,11 @@ typedef enum OMX_AUDIO_CODINGTYPE {
  *  OMX_AUDIO_PARAM_PCMMODETYPE structure to supply the extra parameters for the port.
  */
 typedef struct OMX_AUDIO_PORTDEFINITIONTYPE {
-    OMX_STRING cMIMEType;            /**< MIME type of data for the port */
-    OMX_NATIVE_DEVICETYPE pNativeRender; /** < platform specific reference
+    OMX_STRING cMIMEType __attribute__((aligned(8)));            /**< MIME type of data for the port */
+    OMX_NATIVE_DEVICETYPE pNativeRender __attribute__((aligned(8))); /** < platform specific reference
                                                for an output device,
                                                otherwise this field is 0 */
-    OMX_BOOL bFlagErrorConcealment;  /**< Turns on error concealment if it is
+    OMX_BOOL bFlagErrorConcealment __attribute__((aligned(8)));  /**< Turns on error concealment if it is
                                           supported by the OMX component */
     OMX_AUDIO_CODINGTYPE eEncoding;  /**< Type of data expected for this
                                           port (e.g. PCM, AMR, MP3, etc) */

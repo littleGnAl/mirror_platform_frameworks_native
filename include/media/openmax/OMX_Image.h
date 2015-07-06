@@ -126,16 +126,17 @@ typedef enum OMX_IMAGE_CODINGTYPE {
  *                          display sink , otherwise this field is 0x0.
  */
 typedef struct OMX_IMAGE_PORTDEFINITIONTYPE {
-    OMX_STRING cMIMEType;
-    OMX_NATIVE_DEVICETYPE pNativeRender;
-    OMX_U32 nFrameWidth;
+    OMX_STRING cMIMEType __attribute__((aligned(8)));
+    OMX_NATIVE_DEVICETYPE pNativeRender __attribute__((aligned(8)));
+    OMX_U32 nFrameWidth __attribute__((aligned(8)));
     OMX_U32 nFrameHeight;
     OMX_S32 nStride;
     OMX_U32 nSliceHeight;
     OMX_BOOL bFlagErrorConcealment;
     OMX_IMAGE_CODINGTYPE eCompressionFormat;
     OMX_COLOR_FORMATTYPE eColorFormat;
-    OMX_NATIVE_WINDOWTYPE pNativeWindow;
+    OMX_NATIVE_WINDOWTYPE pNativeWindow __attribute__((aligned(8)));;
+    OMX_U32 padding[0] __attribute__((aligned(8)));
 } OMX_IMAGE_PORTDEFINITIONTYPE;
 
 

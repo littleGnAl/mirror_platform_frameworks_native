@@ -85,8 +85,9 @@ struct StoreMetaDataInBuffersParams {
 // Meta data buffer layout used to transport output frames to the decoder for
 // dynamic buffer handling.
 struct VideoDecoderOutputMetaData {
-  MetadataBufferType eType;
-  buffer_handle_t pHandle;
+  MetadataBufferType eType __attribute__ ((aligned(8)));
+  buffer_handle_t pHandle __attribute__ ((aligned(8)));
+  OMX_U32 padding[0] __attribute__((aligned(8)));
 };
 
 // A pointer to this struct is passed to OMX_SetParameter() when the extension
@@ -123,9 +124,10 @@ struct UseAndroidNativeBufferParams {
     OMX_U32 nSize;
     OMX_VERSIONTYPE nVersion;
     OMX_U32 nPortIndex;
-    OMX_PTR pAppPrivate;
-    OMX_BUFFERHEADERTYPE **bufferHeader;
-    const sp<ANativeWindowBuffer>& nativeBuffer;
+    OMX_PTR pAppPrivate __attribute__((aligned(8)));
+    OMX_BUFFERHEADERTYPE **bufferHeader __attribute__((aligned(8)));
+    const sp<ANativeWindowBuffer>& nativeBuffer __attribute__((aligned(8)));
+    OMX_U32 padding[0] __attribute__((aligned(8)));
 };
 
 // A pointer to this struct is passed to OMX_GetParameter when the extension
