@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "38d586cf_710c78af",
+        "filename": "include/media/hardware/HardwareAPI.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-10T18:54:14Z",
+      "side": 1,
+      "message": "I believe the makefile can use TARGET_IS_64_BIT. Check build/core/config.mk.",
+      "parentUuid": "731ba15b_1275b241",
+      "range": {
+        "startLine": 88,
+        "startChar": 27,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "f1e2dfe0e91c4af4cdfece590b1cfee840fe2ce6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98a11261_70353866",
         "filename": "include/media/hardware/HardwareAPI.h",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "In a 32bit lib, the pHandle occupies 32bit.\nAs the pHandle is the last variable and starts at an 8 bytes aligned address, the outside data structure which wraps VideoDecoderOutputMetaData may put the next variable closely.\nOMX_U32 padding[0] __attribute__((aligned(8))) is to avoid this.\nIn 32/64 libs, sizeof(VideoDecoderOutputMetaData) is always 16 bytes.\n\nDo you mean this coding style?\n#define OMX_END_ALIGN(8) OMX_U32 padding[0] __attribute__((aligned(8)))",
       "parentUuid": "98a11261_70353866",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 49
+      },
+      "revId": "f1e2dfe0e91c4af4cdfece590b1cfee840fe2ce6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58d23ae8_f50cd244",
+        "filename": "include/media/hardware/HardwareAPI.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-10T18:54:14Z",
+      "side": 1,
+      "message": "I was just pointing out the choice of type for the end padding variable might be able to alleviate the explicit alignment directive.\n\nThinking some more, I don\u0027t think end padding is necessary. The structure size sizeof(VideoDecoderOutputMetaData) due to array construction must be a multiple of the largest alignment of any element. Since the element is aligned to 8 bytes, the size of the struct must be a multiple of 8 bytes; so technically speaking, explicit end padding is not needed here, or elsewhere :-).\n\nSee https://en.wikipedia.org/wiki/Data_structure_alignment",
+      "parentUuid": "d3260d9c_ec8e7f85",
       "range": {
         "startLine": 90,
         "startChar": 0,
