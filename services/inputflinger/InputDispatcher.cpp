@@ -2843,6 +2843,8 @@ void InputDispatcher::setInputWindows(const Vector<sp<InputWindowHandle> >& inpu
                 ALOGD("Focus entered window: %s",
                         newFocusedWindowHandle->getName().string());
 #endif
+                if (isAppSwitchPendingLocked())
+                    resetPendingAppSwitchLocked(false);
             }
             mFocusedWindowHandle = newFocusedWindowHandle;
         }
