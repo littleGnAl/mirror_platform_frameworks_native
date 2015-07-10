@@ -2845,6 +2845,9 @@ void InputDispatcher::setInputWindows(const Vector<sp<InputWindowHandle> >& inpu
 #endif
             }
             mFocusedWindowHandle = newFocusedWindowHandle;
+
+            if (isAppSwitchPendingLocked())
+                resetPendingAppSwitchLocked(false);
         }
 
         for (size_t d = 0; d < mTouchStatesByDisplay.size(); d++) {
