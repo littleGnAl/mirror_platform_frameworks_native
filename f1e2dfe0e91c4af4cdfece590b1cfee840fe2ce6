@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "731ba15b_1275b241",
+        "filename": "include/media/hardware/HardwareAPI.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1004496
+      },
+      "writtenOn": "2015-07-10T03:31:59Z",
+      "side": 1,
+      "message": "For 32bit only env, this alignment could be turned off to save memory.\n\nFor 64p and 64a, we need to make this data structure as large as 64bit only ones, so that 32bit client \u003c--\u003e 64bit mediaserver and 64bit \u003c--\u003e 32bit mediaserver can talk.\n\nMaybe I can use TARGET_ARCH and TARGET_2ND_ARCH to determine if the target is a 32bit only system?",
+      "parentUuid": "789c5e2a_8fb9c51a",
+      "range": {
+        "startLine": 88,
+        "startChar": 27,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "f1e2dfe0e91c4af4cdfece590b1cfee840fe2ce6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98a11261_70353866",
         "filename": "include/media/hardware/HardwareAPI.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-09T21:53:48Z",
       "side": 1,
       "message": "maybe make a macro of this, too?  OMX_END_ALIGN(8)?  Would OMX_U64 padding[0] avoid the attribute requirement?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 49
+      },
+      "revId": "f1e2dfe0e91c4af4cdfece590b1cfee840fe2ce6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3260d9c_ec8e7f85",
+        "filename": "include/media/hardware/HardwareAPI.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1004496
+      },
+      "writtenOn": "2015-07-10T03:31:59Z",
+      "side": 1,
+      "message": "In a 32bit lib, the pHandle occupies 32bit.\nAs the pHandle is the last variable and starts at an 8 bytes aligned address, the outside data structure which wraps VideoDecoderOutputMetaData may put the next variable closely.\nOMX_U32 padding[0] __attribute__((aligned(8))) is to avoid this.\nIn 32/64 libs, sizeof(VideoDecoderOutputMetaData) is always 16 bytes.\n\nDo you mean this coding style?\n#define OMX_END_ALIGN(8) OMX_U32 padding[0] __attribute__((aligned(8)))",
+      "parentUuid": "98a11261_70353866",
       "range": {
         "startLine": 90,
         "startChar": 0,
