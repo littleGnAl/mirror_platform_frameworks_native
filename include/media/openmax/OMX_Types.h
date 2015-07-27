@@ -54,6 +54,12 @@
 extern "C" {
 #endif /* __cplusplus */
 
+#ifdef HAVE_OMX_ALIGNMENT
+#define OMX_ALIGN8 __attribute__((aligned(8)))
+#else
+#define OMX_ALIGN8
+#endif
+
 /** The OMX_API and OMX_APIENTRY are platform specific definitions used
  *  to declare OMX function prototypes.  They are modified to meet the
  *  requirements for a particular platform */
