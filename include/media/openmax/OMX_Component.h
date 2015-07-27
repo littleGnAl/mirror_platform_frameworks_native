@@ -52,7 +52,6 @@ extern "C" {
 #endif /* __cplusplus */
 
 
-
 /* Each OMX header must include all required header files to allow the
  *  header to compile without errors.  The includes below are required
  *  for this header file to compile successfully
@@ -264,8 +263,8 @@ typedef struct OMX_CONFIG_METADATAITEMTYPE
     OMX_U8 nKeySizeUsed;
     OMX_U8 nKey[128];
     OMX_METADATACHARSETTYPE eValueCharset;
-    OMX_STRING sLanguageCountry;
-    OMX_U32 nValueMaxSize;
+    OMX_STRING sLanguageCountry OMX_ALIGN8;
+    OMX_U32 nValueMaxSize OMX_ALIGN8;
     OMX_U32 nValueSizeUsed;
     OMX_U8 nValue[1];
 } OMX_CONFIG_METADATAITEMTYPE;
@@ -289,8 +288,8 @@ typedef struct OMX_CONFIG_CONTAINERNODEIDTYPE
     OMX_U32 nParentNodeID;
     OMX_U32 nNodeIndex;
     OMX_U32 nNodeID;
-    OMX_STRING cNodeName;
-    OMX_BOOL bIsLeafType;
+    OMX_STRING cNodeName OMX_ALIGN8;
+    OMX_BOOL bIsLeafType OMX_ALIGN8;
 } OMX_CONFIG_CONTAINERNODEIDTYPE;
 
 /** @ingroup metadata */
