@@ -144,9 +144,9 @@ typedef enum OMX_VIDEO_CODINGTYPE {
  *                          display sink , otherwise this field is 0x0.
  */
 typedef struct OMX_VIDEO_PORTDEFINITIONTYPE {
-    OMX_STRING cMIMEType;
-    OMX_NATIVE_DEVICETYPE pNativeRender;
-    OMX_U32 nFrameWidth;
+    OMX_STRING cMIMEType OMX_ALIGN8;
+    OMX_NATIVE_DEVICETYPE pNativeRender OMX_ALIGN8;
+    OMX_U32 nFrameWidth OMX_ALIGN8;
     OMX_U32 nFrameHeight;
     OMX_S32 nStride;
     OMX_U32 nSliceHeight;
@@ -155,7 +155,7 @@ typedef struct OMX_VIDEO_PORTDEFINITIONTYPE {
     OMX_BOOL bFlagErrorConcealment;
     OMX_VIDEO_CODINGTYPE eCompressionFormat;
     OMX_COLOR_FORMATTYPE eColorFormat;
-    OMX_NATIVE_WINDOWTYPE pNativeWindow;
+    OMX_NATIVE_WINDOWTYPE pNativeWindow OMX_ALIGN8;
 } OMX_VIDEO_PORTDEFINITIONTYPE;
 
 /**
