@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1808c262_10b70478",
+        "filename": "include/media/hardware/HardwareAPI.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1004496
+      },
+      "writtenOn": "2015-07-29T01:56:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38d586cf_710c78af",
+      "range": {
+        "startLine": 88,
+        "startChar": 27,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "f1e2dfe0e91c4af4cdfece590b1cfee840fe2ce6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98a11261_70353866",
         "filename": "include/media/hardware/HardwareAPI.h",
         "patchSetId": 1
