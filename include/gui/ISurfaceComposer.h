@@ -146,6 +146,9 @@ public:
             bool useIdentityTransform,
             Rotation rotation = eRotateNone) = 0;
 
+    virtual bool updateCaptureDisabled(const sp<IBinder>& display,
+            int userId, bool disabled) = 0;
+
     /* Clears the frame statistics for animations.
      *
      * Requires the ACCESS_SURFACE_FLINGER permission.
@@ -184,6 +187,7 @@ public:
         GET_ANIMATION_FRAME_STATS,
         SET_POWER_MODE,
         GET_DISPLAY_STATS,
+        UPDATE_CAPTURE_DISABLED,
     };
 
     virtual status_t onTransact(uint32_t code, const Parcel& data,

@@ -187,6 +187,8 @@ public:
             uint32_t minLayerZ, uint32_t maxLayerZ,
             bool useIdentityTransform);
 
+    static bool updateCaptureDisabled(const sp<IBinder>& display, int userId, bool disabled);
+
 private:
     mutable sp<CpuConsumer> mCpuConsumer;
     mutable sp<IGraphicBufferProducer> mProducer;

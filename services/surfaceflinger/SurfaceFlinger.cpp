@@ -3098,6 +3098,10 @@ status_t SurfaceFlinger::captureScreen(const sp<IBinder>& display,
             ALOGW("FB is protected: PERMISSION_DENIED");
             return PERMISSION_DENIED;
         }
+        if (CC_UNLIKELY(hw->getCaptureDisabled())) {
+            ALOGW("Screen capture is disabled: PERMISSION_DENIED");
+            return PERMISSION_DENIED;
+        }
     }
 
     // Convert to surfaceflinger's internal rotation type.
@@ -3186,6 +3190,19 @@ status_t SurfaceFlinger::captureScreen(const sp<IBinder>& display,
     return res;
 }
 
+bool SurfaceFlinger::updateCaptureDisabled(const sp<IBinder>& display, int /* userId */, bool disabled) {
+    if (CC_UNLIKELY(display == 0)) {
+        return false;
+    }
+
+    Mutex::Autolock _l(mStateLock);
+    sp<DisplayDevice> hw(getDisplayDevice(display));
+    if (hw == NULL) {
+        return false;
+    }
+
+    return hw->setCaptureDisabled(disabled);
+}
 
 void SurfaceFlinger::renderScreenImplLocked(
         const sp<const DisplayDevice>& hw,

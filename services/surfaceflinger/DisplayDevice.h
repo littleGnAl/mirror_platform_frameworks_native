@@ -148,6 +148,14 @@ public:
     EGLBoolean makeCurrent(EGLDisplay dpy, EGLContext ctx) const;
     void setViewportAndProjection() const;
 
+    bool setCaptureDisabled(bool disabled) {
+        mCapureDisabled = disabled;
+        return true;
+    }
+    bool getCaptureDisabled() const {
+        return mCapureDisabled;
+    }
+
     /* ------------------------------------------------------------------------
      * Display power mode management.
      */
@@ -193,6 +201,7 @@ private:
     mutable uint32_t mPageFlipCount;
     String8         mDisplayName;
     bool            mIsSecure;
+    bool            mCapureDisabled;
 
     /*
      * Can only accessed from the main thread, these members

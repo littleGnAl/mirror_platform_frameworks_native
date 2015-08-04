@@ -695,6 +695,12 @@ status_t ScreenshotClient::capture(
             reqWidth, reqHeight, minLayerZ, maxLayerZ, useIdentityTransform);
 }
 
+bool ScreenshotClient::updateCaptureDisabled(const sp<IBinder>& display, int userId, bool disabled) {
+    sp<ISurfaceComposer> s(ComposerService::getComposerService());
+    if (s == NULL) return false;
+    return s->updateCaptureDisabled(display, userId, disabled);
+}
+
 ScreenshotClient::ScreenshotClient()
     : mHaveBuffer(false) {
     memset(&mBuffer, 0, sizeof(mBuffer));

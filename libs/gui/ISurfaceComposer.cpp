@@ -120,6 +120,26 @@ public:
         return reply.readInt32();
     }
 
+    virtual bool updateCaptureDisabled(const sp<IBinder>& display,
+            int userId, bool disabled)
+    {
+        Parcel data, reply;
+        int err = NO_ERROR;
+        data.writeInterfaceToken(ISurfaceComposer::getInterfaceDescriptor());
+        data.writeStrongBinder(display);
+        data.writeInt32(userId);
+        data.writeInt32(disabled ? 1 : 0);
+        remote()->transact(BnSurfaceComposer::UPDATE_CAPTURE_DISABLED, data, &reply);
+        int32_t result = 0;
+        err = reply.readInt32(&result);
+        if (err != NO_ERROR) {
+            ALOGE("ISurfaceComposer::updateCaptureDisabled: error "
+                    "retrieving result: %s (%d)", strerror(-err), -err);
+            return false;
+        }
+        return result != 0;
+    }
+
     virtual bool authenticateSurfaceTexture(
             const sp<IGraphicBufferProducer>& bufferProducer) const
     {
@@ -367,6 +387,15 @@ status_t BnSurfaceComposer::onTransact(
                     useIdentityTransform,
                     static_cast<ISurfaceComposer::Rotation>(rotation));
             reply->writeInt32(res);
+            return NO_ERROR;
+        }
+        case UPDATE_CAPTURE_DISABLED: {
+            CHECK_INTERFACE(ISurfaceComposer, data, reply);
+            sp<IBinder> display = data.readStrongBinder();
+            int userId = data.readInt32();
+            bool disabled = data.readInt32() > 0 ? true : false;
+            bool res = updateCaptureDisabled(display, userId, disabled);
+            reply->writeInt32(res ? 1 : 0);
             return NO_ERROR;
         }
         case AUTHENTICATE_SURFACE: {

@@ -86,7 +86,8 @@ DisplayDevice::DisplayDevice(
       mLayerStack(NO_LAYER_STACK),
       mOrientation(),
       mPowerMode(HWC_POWER_MODE_OFF),
-      mActiveConfig(0)
+      mActiveConfig(0),
+      mCapureDisabled(false)
 {
     mNativeWindow = new Surface(producer, false);
     ANativeWindow* const window = mNativeWindow.get();
