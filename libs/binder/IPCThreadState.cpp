@@ -2,7 +2,7 @@
  * Copyright (C) 2005 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+
  * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
@@ -32,6 +32,8 @@
 #include <errno.h>
 #include <pthread.h>
 #include <sched.h>
+#include <selinux/android.h>
+#include <selinux/selinux.h>
 #include <signal.h>
 #include <stdio.h>
 #include <sys/ioctl.h>
@@ -59,7 +61,6 @@
 #endif
 
 // ---------------------------------------------------------------------------
-
 namespace android {
 
 static const char* getReturnString(size_t idx);
@@ -276,6 +277,10 @@ static bool gHaveTLS = false;
 static pthread_key_t gTLS = 0;
 static bool gShutdown = false;
 static bool gDisableBackgroundScheduling = false;
+static struct selabel_handle *sehandle = NULL;
+static bool selinux_initialized = false;
+static bool selinux_enabled = false;
+
 
 IPCThreadState* IPCThreadState::self()
 {
@@ -1084,6 +1089,57 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             }
             if (tr.target.ptr) {
                 sp<BBinder> b((BBinder*)tr.cookie);
+
+                /* SELinux binder transaction access control */
+                if (!selinux_initialized) {  // need lock!! pthread_t me
+
+                    /* need to set up SELinux */
+                    selinux_enabled = is_selinux_enabled() == 1 ? true : false;
+                    if (selinux_enabled)
+                        sehandle = selinux_android_bdr_txn_context_handle();
+                    if (!sehandle) {
+                        ALOGI("dacashman - ABORT! no sehandle!\n");
+                        abort();
+                    }
+                    selinux_initialized = true;
+                    // debug
+                    pid_t mPid = getpid();
+                    ALOGI("dacashman SELinux initialized in IPCThreadState for pid: %d\n", mPid);
+                }
+                if (selinux_enabled) {
+                    // interface as char*
+                    String16 interface = b->getInterfaceDescriptor();
+                    ssize_t str_len = utf16_to_utf8_length(interface.string(), interface.size());
+                    char *iface_name = (char *) malloc(str_len + 1);
+                    utf16_to_utf8(interface.string(), interface.size(), iface_name);
+                    int txn = tr.code;
+
+                    char *scon = NULL;
+                    if (getpidcon(mCallingPid, &scon))
+                        ALOGE("dacashman error getting source context for pid: %d\n", mCallingPid);
+                    char *tcon = NULL;
+                    selabel_lookup(sehandle, &tcon, iface_name, txn);
+                    const char *av_class = "bdr_svc_txn";
+                    const char *av_perm = "call";
+
+                    pid_t mPid = getpid();
+                    char *svc_con = NULL;
+                    if (getpidcon(mPid, &svc_con))
+                        ALOGE("dacashman error getting svc_context from pid %d!\n", mPid);
+
+                    ALOGI("dacashman SELinux calling pid: %d to svc pid: %d, bdr hook tuple: <%s> <%s>:<%s> <%s>\n",
+                          mCallingPid, mPid, scon, tcon, av_class, av_perm);
+                    if (!mCallingPid) {
+                        if (tr.flags & TF_ONE_WAY)
+                            ALOGI("dacashman pid 0 w/one-way txn\n");
+                        else
+                            ALOGE("dacashman WTF!!! pid 0 is not one-way txn!\n");
+                    }
+                    freecon(scon);
+                    freecon(tcon);
+                } else {
+                    ALOGI("SELinux not enabled!");
+                }
                 error = b->transact(tr.code, buffer, &reply, tr.flags);
 
             } else {
