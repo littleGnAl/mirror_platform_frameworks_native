@@ -1063,6 +1063,8 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             }
             if (tr.target.ptr) {
                 sp<BBinder> b((BBinder*)tr.cookie);
+                String8 interface =  String8(b->getInterfaceDescriptor().string());
+                //ALOGI("SELinux hook here: BBinder interface: %s with code: %d", interface.string(), tr.code);
                 error = b->transact(tr.code, buffer, &reply, tr.flags);
 
             } else {
