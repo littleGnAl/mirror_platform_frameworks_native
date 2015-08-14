@@ -17,5 +17,15 @@ LOCAL_MODULE := dumpstate
 LOCAL_SHARED_LIBRARIES := libcutils liblog libselinux
 LOCAL_HAL_STATIC_LIBRARIES := libdumpstate
 LOCAL_CFLAGS += -Wall -Wno-unused-parameter -std=gnu99
+LOCAL_REQUIRED_MODULES := dumpstate.rc
 
 include $(BUILD_EXECUTABLE)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := dumpstate.rc
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT)/init
+
+include $(BUILD_PREBUILT)

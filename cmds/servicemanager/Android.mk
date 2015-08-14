@@ -22,4 +22,12 @@ LOCAL_SHARED_LIBRARIES := liblog libselinux
 LOCAL_SRC_FILES := service_manager.c binder.c
 LOCAL_CFLAGS += $(svc_c_flags)
 LOCAL_MODULE := servicemanager
+LOCAL_REQUIRED_MODULES := servicemanager.rc
 include $(BUILD_EXECUTABLE)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := servicemanager.rc
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT)/init
+include $(BUILD_PREBUILT)

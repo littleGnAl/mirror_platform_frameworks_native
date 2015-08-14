@@ -122,6 +122,8 @@ LOCAL_LDFLAGS := -Wl,--version-script,art/sigchainlib/version-script.txt -Wl,--e
 LOCAL_CFLAGS := -DLOG_TAG=\"SurfaceFlinger\"
 LOCAL_CPPFLAGS := -std=c++11
 
+LOCAL_REQUIRED_MODULES := surfaceflinger.rc
+
 LOCAL_SRC_FILES := \
     main_surfaceflinger.cpp
 
@@ -169,3 +171,12 @@ LOCAL_CFLAGS += -Wall -Werror -Wunused -Wunreachable-code
 
 include $(BUILD_SHARED_LIBRARY)
 endif # libnativehelper
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := surfaceflinger.rc
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT)/init
+
+include $(BUILD_PREBUILT)
