@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4a9e95f_792a01b3",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-08-19T01:08:54Z",
+      "side": 1,
+      "message": "I would write all of these using member functions.  mExtras.load(std::memory_order_acquire) looks cleaner, now that we have the option.",
+      "range": {
+        "startLine": 162,
+        "startChar": 16,
+        "endLine": 162,
+        "endChar": 79
+      },
+      "revId": "3beab7e8ccf7fd2f1602aaaf0c5d2e8ad9297b11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
