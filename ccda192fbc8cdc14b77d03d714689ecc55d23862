@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c471e91c_11c7efab",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-08-19T21:31:49Z",
+      "side": 1,
+      "message": "Presumably the destructor has to happen after all other updates, and hence this cannot actually race with the mState update below?  Otherwise this code would make no sense, because its value could change after the test.\n\nI would leave this as memory_order_relaxed, which is approximately what it was before.",
+      "range": {
+        "startLine": 240,
+        "startChar": 8,
+        "endLine": 240,
+        "endChar": 72
+      },
+      "revId": "ccda192fbc8cdc14b77d03d714689ecc55d23862",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4434d7f_d6cf3324",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-08-19T21:31:49Z",
+      "side": 1,
+      "message": "That indeed seems to be what it was before.  But a release without a corresponding acquire makes no sense.  And there seems to be no use of mState except in this file, meaning this can only happen concurrently with itself.  I would change this to relaxed as well.\n\nIt\u0027s unclear to me why mState is not replaced by\n\natomic\u003cbool\u003e mRemoteAcquired;\n\nOnly one bit seems to be used?  But that may be a more major change than you want to make, and I don\u0027t understand the design enough to recommend it.",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 63
+      },
+      "revId": "ccda192fbc8cdc14b77d03d714689ecc55d23862",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
