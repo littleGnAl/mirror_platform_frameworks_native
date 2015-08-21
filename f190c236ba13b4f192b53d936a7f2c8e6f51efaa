@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84253145_02fd1478",
+        "filename": "include/android/sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-21T03:38:24Z",
+      "side": 1,
+      "message": "sensors.h",
+      "revId": "f190c236ba13b4f192b53d936a7f2c8e6f51efaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_408a3ea3",
+        "filename": "include/android/sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-21T03:38:24Z",
+      "side": 1,
+      "message": "correct this in hardware/sensors.h too?",
+      "revId": "f190c236ba13b4f192b53d936a7f2c8e6f51efaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
