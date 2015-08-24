@@ -163,6 +163,7 @@ status_t BufferQueueProducer::waitForFreeSlotThenRelock(const char* caller,
 
         int dequeuedCount = 0;
         int acquiredCount = 0;
+        int queuedCount = 0;
         for (int s = 0; s < maxBufferCount; ++s) {
             switch (mSlots[s].mBufferState) {
                 case BufferSlot::DEQUEUED:
@@ -170,6 +171,9 @@ status_t BufferQueueProducer::waitForFreeSlotThenRelock(const char* caller,
                     break;
                 case BufferSlot::ACQUIRED:
                     ++acquiredCount;
+                    break;
+                case BufferSlot::QUEUED:
+                    ++queuedCount;
                     break;
                 default:
                     break;
@@ -215,7 +219,24 @@ status_t BufferQueueProducer::waitForFreeSlotThenRelock(const char* caller,
             BQ_LOGV("%s: queue size is %zu, waiting", caller,
                     mCore->mQueue.size());
         } else {
-            if (!mCore->mFreeBuffers.empty()) {
+            bool freeBuffers = false;
+            if (!mCore->mFreeBuffers.empty())
+            {
+                // GRALLOC_USAGE_HW_FB means framebuffer, need keep 3 buffers
+                if (mCore->mConsumerUsageBits & GRALLOC_USAGE_HW_FB)
+                {
+                    if (dequeuedCount + acquiredCount + queuedCount + static_cast<int>(mCore->mFreeBuffers.size()) >= static_cast<int>(mCore->mDefaultMaxBufferCount ))
+                    {
+                        freeBuffers = true;
+                    }
+                }
+                else
+                {
+                    freeBuffers = true;
+                }
+            }
+
+            if ( freeBuffers ) {
                 auto slot = mCore->mFreeBuffers.begin();
                 *found = *slot;
                 mCore->mFreeBuffers.erase(slot);
