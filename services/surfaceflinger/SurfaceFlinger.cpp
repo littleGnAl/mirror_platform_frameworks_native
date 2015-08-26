@@ -3363,7 +3363,7 @@ status_t SurfaceFlinger::captureScreenImplLocked(
                         if (DEBUG_SCREENSHOTS) {
                             uint32_t* pixels = new uint32_t[reqWidth*reqHeight];
                             getRenderEngine().readPixels(0, 0, reqWidth, reqHeight, pixels);
-                            checkScreenshot(reqWidth, reqHeight, reqWidth, pixels,
+                            checkScreenshot(reqWidth, reqWidth, reqHeight, pixels,
                                     hw, minLayerZ, maxLayerZ);
                             delete [] pixels;
                         }
