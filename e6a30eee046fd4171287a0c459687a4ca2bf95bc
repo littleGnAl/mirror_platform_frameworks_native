@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "84d4522f_b3524fd8",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1553,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-09-10T21:12:47Z",
+      "side": 1,
+      "message": "Fwiw, the crash I saw was supposedly on this line (well, its internal-master equivalent), not the one below. Possible the stack trace was wrong though, I didn\u0027t check it further.",
+      "parentUuid": "24c9e69c_1fb34646",
+      "revId": "e6a30eee046fd4171287a0c459687a4ca2bf95bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4ef2afe_c8d6f784",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 1
