@@ -1550,9 +1550,11 @@ void Parcel::freeDataNoInit()
         if (mData) {
             LOG_ALLOC("Parcel %p: freeing with %zu capacity", this, mDataCapacity);
             pthread_mutex_lock(&gParcelGlobalAllocSizeLock);
-            gParcelGlobalAllocSize -= mDataCapacity;
-            gParcelGlobalAllocCount--;
-            pthread_mutex_unlock(&gParcelGlobalAllocSizeLock);
+	    gParcelGlobalAllocSize = gParcelGlobalAllocSize - mDataCapacity;
+	    if (gParcelGlobalAllocCount > 0) {
+	      gParcelGlobalAllocCount--;
+	    }
+	    pthread_mutex_unlock(&gParcelGlobalAllocSizeLock);
             free(mData);
         }
         if (mObjects) free(mObjects);
