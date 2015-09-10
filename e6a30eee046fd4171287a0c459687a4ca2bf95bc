@@ -75,6 +75,30 @@
       "revId": "e6a30eee046fd4171287a0c459687a4ca2bf95bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6442fedf_bd98ffb2",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-09-10T21:26:31Z",
+      "side": 1,
+      "message": "ya, this strikes me as odd too... Same question.",
+      "parentUuid": "c4ef2afe_c8d6f784",
+      "range": {
+        "startLine": 1555,
+        "startChar": 0,
+        "endLine": 1555,
+        "endChar": 33
+      },
+      "revId": "e6a30eee046fd4171287a0c459687a4ca2bf95bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
