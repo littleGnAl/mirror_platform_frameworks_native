@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a905afc4_17ef747a",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-09-22T23:38:20Z",
+      "side": 1,
+      "message": "Instead of using \"i - 1\" everywhere, can you please modify the loop to be:\n\n  for (size_t i \u003d mBatches.size(); i \u003e 0; ) {\n    i--;\n    ...\n  }\n\nThis will result in fewer lines touched, and be closer to the intended logic.",
+      "revId": "a31db1b5cfae06551e9b12ed69fe0bcbd0a776b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9b7434b_3019e8b4",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-09-22T23:38:20Z",
+      "side": 1,
+      "message": "same here. Move i-- into the for block.",
+      "revId": "a31db1b5cfae06551e9b12ed69fe0bcbd0a776b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
