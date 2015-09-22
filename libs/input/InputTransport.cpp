@@ -510,12 +510,12 @@ status_t InputConsumer::consume(InputEventFactoryInterface* factory,
 status_t InputConsumer::consumeBatch(InputEventFactoryInterface* factory,
         nsecs_t frameTime, uint32_t* outSeq, InputEvent** outEvent) {
     status_t result;
-    for (size_t i = mBatches.size(); i-- > 0; ) {
-        Batch& batch = mBatches.editItemAt(i);
+    for (size_t i = mBatches.size(); i > 0; i--) {
+        Batch& batch = mBatches.editItemAt(i - 1);
         if (frameTime < 0) {
             result = consumeSamples(factory, batch, batch.samples.size(),
                     outSeq, outEvent);
-            mBatches.removeAt(i);
+            mBatches.removeAt(i - 1);
             return result;
         }
 
@@ -531,7 +531,7 @@ status_t InputConsumer::consumeBatch(InputEventFactoryInterface* factory,
         result = consumeSamples(factory, batch, split + 1, outSeq, outEvent);
         const InputMessage* next;
         if (batch.samples.isEmpty()) {
-            mBatches.removeAt(i);
+            mBatches.removeAt(i - 1);
             next = NULL;
         } else {
             next = &batch.samples.itemAt(0);
@@ -815,16 +815,17 @@ status_t InputConsumer::sendFinishedSignal(uint32_t seq, bool handled) {
         uint32_t currentSeq = seq;
         uint32_t chainSeqs[seqChainCount];
         size_t chainIndex = 0;
-        for (size_t i = seqChainCount; i-- > 0; ) {
-             const SeqChain& seqChain = mSeqChains.itemAt(i);
+        for (size_t i = seqChainCount; i > 0; i--) {
+             const SeqChain& seqChain = mSeqChains.itemAt(i - 1);
              if (seqChain.seq == currentSeq) {
                  currentSeq = seqChain.chain;
                  chainSeqs[chainIndex++] = currentSeq;
-                 mSeqChains.removeAt(i);
+                 mSeqChains.removeAt(i - 1);
              }
         }
         status_t status = OK;
-        while (!status && chainIndex-- > 0) {
+        while (!status && chainIndex > 0) {
+            chainIndex--;
             status = sendUnchainedFinishedSignal(chainSeqs[chainIndex], handled);
         }
         if (status) {
@@ -834,7 +835,8 @@ status_t InputConsumer::sendFinishedSignal(uint32_t seq, bool handled) {
                 seqChain.seq = chainIndex != 0 ? chainSeqs[chainIndex - 1] : seq;
                 seqChain.chain = chainSeqs[chainIndex];
                 mSeqChains.push(seqChain);
-            } while (chainIndex-- > 0);
+                chainIndex--;
+            } while (chainIndex > 0);
             return status;
         }
     }
