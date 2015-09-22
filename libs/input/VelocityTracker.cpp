@@ -46,17 +46,19 @@ static const nsecs_t ASSUME_POINTER_STOPPED_TIME = 40 * NANOS_PER_MS;
 
 static float vectorDot(const float* a, const float* b, uint32_t m) {
     float r = 0;
-    while (m--) {
+    while (m) {
         r += *(a++) * *(b++);
+        m--;
     }
     return r;
 }
 
 static float vectorNorm(const float* a, uint32_t m) {
     float r = 0;
-    while (m--) {
+    while (m) {
         float t = *(a++);
         r += t * t;
+        m--;
     }
     return sqrtf(r);
 }
@@ -479,7 +481,6 @@ static bool solveLeastSquares(const float* x, const float* y,
 #endif
             return false;
         }
-
         float invNorm = 1.0f / norm;
         for (uint32_t h = 0; h < m; h++) {
             q[j][h] *= invNorm;
@@ -511,12 +512,12 @@ static bool solveLeastSquares(const float* x, const float* y,
     for (uint32_t h = 0; h < m; h++) {
         wy[h] = y[h] * w[h];
     }
-    for (uint32_t i = n; i-- != 0; ) {
-        outB[i] = vectorDot(&q[i][0], wy, m);
-        for (uint32_t j = n - 1; j > i; j--) {
-            outB[i] -= r[i][j] * outB[j];
+    for (uint32_t i = n; i != 0; i--) {
+        outB[i - 1] = vectorDot(&q[i - 1][0], wy, m);
+        for (uint32_t j = n - 1; j > i - 1; j--) {
+            outB[i - 1] -= r[i - 1][j] * outB[j];
         }
-        outB[i] /= r[i][i];
+        outB[i - 1] /= r[i - 1][i - 1];
     }
 #if DEBUG_STRATEGY
     ALOGD("  - b=%s", vectorToString(outB, n).string());
