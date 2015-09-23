@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a905afc4_17d5b457",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-09-23T00:29:45Z",
+      "side": 1,
+      "message": "space between \"if\" and \"(\"",
+      "range": {
+        "startLine": 840,
+        "startChar": 18,
+        "endLine": 840,
+        "endChar": 19
+      },
+      "revId": "afe42b1b5ff577e91b4cf1f463fdb8f0d4eaef3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
