@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e52b121_4fe3e5c3",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-24T21:52:30Z",
+      "side": 1,
+      "message": "Check that no other unknown bits are set, to make sure things stay somewhat in sync.",
+      "range": {
+        "startLine": 1056,
+        "startChar": 4,
+        "endLine": 1060,
+        "endChar": 55
+      },
+      "revId": "2c8eddbf0007add1f69f0f8283028c1f50176afe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
