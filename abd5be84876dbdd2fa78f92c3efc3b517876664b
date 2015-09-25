@@ -164,6 +164,30 @@
       "revId": "abd5be84876dbdd2fa78f92c3efc3b517876664b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee616dea_0b295420",
+        "filename": "cmds/installd/installd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2015-09-25T22:36:48Z",
+      "side": 1,
+      "message": "fiiiiine! :P",
+      "parentUuid": "ae5bf53d_7f1aca03",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 111
+      },
+      "revId": "abd5be84876dbdd2fa78f92c3efc3b517876664b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
