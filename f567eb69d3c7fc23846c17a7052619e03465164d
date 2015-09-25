@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee86cdd4_b0a506ec",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T17:30:31Z",
+      "side": 1,
+      "message": "I\u0027d be stronger, this is at least ALOGE. Somebody isn\u0027t playing by the rules...\n\n(E.g., if the framework passes unknown flags to the runtime after fork, we do LOG(ERROR) - and I believe we should be doing LOG(FATAL), otherwise people won\u0027t notice).",
+      "range": {
+        "startLine": 1062,
+        "startChar": 8,
+        "endLine": 1062,
+        "endChar": 56
+      },
+      "revId": "f567eb69d3c7fc23846c17a7052619e03465164d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
