@@ -22,6 +22,30 @@
       "revId": "f567eb69d3c7fc23846c17a7052619e03465164d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee86cdd4_3b09d76e",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2015-09-25T17:44:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee86cdd4_b0a506ec",
+      "range": {
+        "startLine": 1062,
+        "startChar": 8,
+        "endLine": 1062,
+        "endChar": 56
+      },
+      "revId": "f567eb69d3c7fc23846c17a7052619e03465164d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
