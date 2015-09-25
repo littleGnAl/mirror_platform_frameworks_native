@@ -98,7 +98,15 @@
 #define DEXOPT_SAFEMODE     (1 << 2)
 #define DEXOPT_DEBUGGABLE   (1 << 3)
 #define DEXOPT_BOOTCOMPLETE (1 << 4)
-#define DEXOPT_MASK (DEXOPT_PUBLIC | DEXOPT_SAFEMODE | DEXOPT_DEBUGGABLE | DEXOPT_BOOTCOMPLETE)
+#define DEXOPT_USEJIT       (1 << 5)
+
+/* all known values for dexopt flags */
+constexpr int DEXOPT_MASK =
+    DEXOPT_PUBLIC
+    | DEXOPT_SAFEMODE
+    | DEXOPT_DEBUGGABLE
+    | DEXOPT_BOOTCOMPLETE
+    | DEXOPT_USEJIT;
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(*(a)))
 
