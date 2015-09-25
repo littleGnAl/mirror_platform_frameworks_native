@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e4d7d85_a724b98d",
+        "filename": "cmds/installd/installd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T22:44:42Z",
+      "side": 1,
+      "message": "Typos.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 9
+      },
+      "revId": "93c7e8a0d0c85cc70b7991179d1c35a1f5abc2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
