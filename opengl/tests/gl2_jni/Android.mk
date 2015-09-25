@@ -9,8 +9,6 @@ TOP_LOCAL_PATH:= $(call my-dir)
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_MODULE_TAGS := optional
-
 LOCAL_SRC_FILES := $(call all-subdir-java-files)
 
 LOCAL_PACKAGE_NAME := GL2JNI
@@ -27,13 +25,12 @@ LOCAL_PATH:= $(LOCAL_PATH)/jni
 
 include $(CLEAR_VARS)
 
-# Optional tag would mean it doesn't get installed by default
-LOCAL_MODULE_TAGS := optional
-
 LOCAL_CFLAGS := -Werror -Wno-error=unused-parameter
 
 LOCAL_SRC_FILES:= \
   gl_code.cpp
+
+LOCAL_C_INCLUDES := $(JNI_H_INCLUDE)
 
 LOCAL_SHARED_LIBRARIES := \
 	libutils \
