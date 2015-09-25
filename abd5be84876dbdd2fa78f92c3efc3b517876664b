@@ -140,6 +140,30 @@
       "revId": "abd5be84876dbdd2fa78f92c3efc3b517876664b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae5bf53d_7f1aca03",
+        "filename": "cmds/installd/installd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T22:30:15Z",
+      "side": 1,
+      "message": "That was half-assed. :-) How about the other ones?",
+      "parentUuid": "4e4c398b_c4ca1387",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 111
+      },
+      "revId": "abd5be84876dbdd2fa78f92c3efc3b517876664b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
