@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ee616dea_cbb45cb6",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T21:59:13Z",
+      "side": 1,
+      "message": "Please put a comment here.",
+      "range": {
+        "startLine": 825,
+        "startChar": 4,
+        "endLine": 825,
+        "endChar": 64
+      },
+      "revId": "abd5be84876dbdd2fa78f92c3efc3b517876664b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce582944_12c50998",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T21:59:13Z",
+      "side": 1,
+      "message": "It does seem that installd uses 100-column line wrap, which means use_jit fits on the previous line...",
+      "range": {
+        "startLine": 1205,
+        "startChar": 24,
+        "endLine": 1205,
+        "endChar": 33
+      },
+      "revId": "abd5be84876dbdd2fa78f92c3efc3b517876664b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e4c398b_c19fa5c4",
         "filename": "cmds/installd/installd.h",
         "patchSetId": 1
