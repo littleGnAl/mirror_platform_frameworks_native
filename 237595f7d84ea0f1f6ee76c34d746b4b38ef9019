@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e4c398b_04acabd7",
+        "filename": "opengl/tests/gl2_jni/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-09-26T00:06:40Z",
+      "side": 1,
+      "message": "The build system adds automatically in binary.mk (I don\u0027t know why):\n  my_c_includes +\u003d $(JNI_H_INCLUDE)\n\nAre we going to remove that?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "237595f7d84ea0f1f6ee76c34d746b4b38ef9019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
