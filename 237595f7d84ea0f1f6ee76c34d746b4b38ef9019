@@ -22,6 +22,30 @@
       "revId": "237595f7d84ea0f1f6ee76c34d746b4b38ef9019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e52b121_a3402dfd",
+        "filename": "opengl/tests/gl2_jni/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-09-28T21:06:53Z",
+      "side": 1,
+      "message": "Hmm, good question. There are several hundred files that use \u003cjni.h\u003e, but less than a hundred makefile that use JNI_H_INCLUDE. I\u0027m not sure what the overlap is.",
+      "parentUuid": "4e4c398b_04acabd7",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "237595f7d84ea0f1f6ee76c34d746b4b38ef9019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
