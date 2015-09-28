@@ -730,9 +730,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
                                                      dex2oat_threads_buf,
                                                      NULL) > 0;
         }
-        // If there's neither, fall back to the default property.
-    }
-    if (!have_dex2oat_threads_flag) {
+    } else {
         have_dex2oat_threads_flag = property_get("dalvik.vm.dex2oat-threads",
                                                  dex2oat_threads_buf,
                                                  NULL) > 0;
