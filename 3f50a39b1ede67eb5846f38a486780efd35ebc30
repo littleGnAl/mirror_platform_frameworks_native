@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95d8063c_df101b1d",
+        "filename": "include/powermanager/IPowerManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-09-30T21:08:58Z",
+      "side": 1,
+      "message": "i didn\u0027t bother with the ids after this one, as i think i\u0027m unlikely to need them anytime soon (or at all). let me know if you\u0027d prefer that i added them for completeness, though.",
+      "revId": "3f50a39b1ede67eb5846f38a486780efd35ebc30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
