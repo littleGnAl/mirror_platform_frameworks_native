@@ -23,6 +23,11 @@
 #include <cutils/log.h>
 #endif
 
+struct audit_data {
+    pid_t pid;
+    const char* name;
+};
+
 const char *str8(const uint16_t *x, size_t x_len)
 {
     static char buf[128];
@@ -61,13 +66,17 @@ static bool check_mac_perms(pid_t spid, const char *tctx, const char *perm, cons
     char *sctx = NULL;
     const char *class = "service_manager";
     bool allowed;
+    struct audit_data ad;
 
     if (getpidcon(spid, &sctx) < 0) {
         ALOGE("SELinux: getpidcon(pid=%d) failed to retrieve pid context.\n", spid);
         return false;
     }
 
-    int result = selinux_check_access(sctx, tctx, class, perm, (void *) name);
+    ad.pid = spid;
+    ad.name = name;
+
+    int result = selinux_check_access(sctx, tctx, class, perm, (void *) &ad);
     allowed = (result == 0);
 
     freecon(sctx);
@@ -340,7 +349,13 @@ int svcmgr_handler(struct binder_state *bs,
 
 static int audit_callback(void *data, security_class_t cls, char *buf, size_t len)
 {
-    snprintf(buf, len, "service=%s", !data ? "NULL" : (char *)data);
+    struct audit_data *ad = (struct audit_data *)data;
+    if (!ad) {
+        snprintf(buf, len, "No service manager audit data");
+        return 0;
+    }
+
+    snprintf(buf, len, "service=%s pid=%d", ad->name, ad->pid);
     return 0;
 }
 
