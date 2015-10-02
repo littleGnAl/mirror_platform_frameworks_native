@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f597825c_655f605c",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-10-02T14:54:18Z",
+      "side": 1,
+      "message": "Nit: should be \"const char *name;\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "20e5d82d70d64e34a9deac40b761ddc7bdc67b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "156b3632_663cf0a5",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-10-02T14:54:18Z",
+      "side": 1,
+      "message": "Nit: Blank line after \"struct ....\"",
+      "range": {
+        "startLine": 352,
+        "startChar": 4,
+        "endLine": 353,
+        "endChar": 14
+      },
+      "revId": "20e5d82d70d64e34a9deac40b761ddc7bdc67b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5d50a02_63af7cf9",
         "filename": "cmds/servicemanager/service_manager.c",
         "patchSetId": 1
