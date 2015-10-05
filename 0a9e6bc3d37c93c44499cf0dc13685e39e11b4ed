@@ -22,6 +22,30 @@
       "revId": "0a9e6bc3d37c93c44499cf0dc13685e39e11b4ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9555663b_6ad91a13",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-05T15:07:44Z",
+      "side": 1,
+      "message": "Yeah this is not ready to go yet based on our decisions on property service. Ill mark with a -1 just to make that explicit. Also we need to log uid from the binder header.",
+      "parentUuid": "35e91ad0_22548af4",
+      "range": {
+        "startLine": 354,
+        "startChar": 3,
+        "endLine": 357,
+        "endChar": 5
+      },
+      "revId": "0a9e6bc3d37c93c44499cf0dc13685e39e11b4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
