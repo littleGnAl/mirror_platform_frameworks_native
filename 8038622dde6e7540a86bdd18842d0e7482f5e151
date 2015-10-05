@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb90200c_e2e8a8dc",
+        "filename": "cmds/servicemanager/service_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-05T18:26:44Z",
+      "side": 1,
+      "message": "This has got to go.",
+      "revId": "8038622dde6e7540a86bdd18842d0e7482f5e151",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
