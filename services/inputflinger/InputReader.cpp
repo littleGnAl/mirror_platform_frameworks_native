@@ -6476,6 +6476,7 @@ void MultiTouchInputMapper::syncTouch(nsecs_t when, RawState* outState) {
     size_t inCount = mMultiTouchMotionAccumulator.getSlotCount();
     size_t outCount = 0;
     BitSet32 newPointerIdBits;
+    bool needRecomputePointerIds = false;
 
     for (size_t inIndex = 0; inIndex < inCount; inIndex++) {
         const MultiTouchMotionAccumulator::Slot* inSlot =
@@ -6537,6 +6538,7 @@ void MultiTouchInputMapper::syncTouch(nsecs_t when, RawState* outState) {
             }
         }
         if (id < 0) {
+            needRecomputePointerIds = true;
             mHavePointerIds = false;
             outState->rawPointerData.clearIdBits();
             newPointerIdBits.clear();
@@ -6548,6 +6550,10 @@ void MultiTouchInputMapper::syncTouch(nsecs_t when, RawState* outState) {
         }
 
         outCount += 1;
+    }
+
+    if (needRecomputePointerIds) {
+        mHavePointerIds = false;
     }
 
     outState->rawPointerData.pointerCount = outCount;
