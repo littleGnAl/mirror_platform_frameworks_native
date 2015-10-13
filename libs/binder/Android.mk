@@ -52,6 +52,9 @@ ifneq ($(TARGET_IS_64_BIT),true)
 LOCAL_CFLAGS += -DBINDER_IPC_32BIT=1
 endif
 endif
+ifdef BRILLO
+  LOCAL_CFLAGS += -D__BRILLO__
+endif
 LOCAL_CFLAGS += -Werror
 include $(BUILD_SHARED_LIBRARY)
 
@@ -63,6 +66,9 @@ ifneq ($(TARGET_USES_64_BIT_BINDER),true)
 ifneq ($(TARGET_IS_64_BIT),true)
 LOCAL_CFLAGS += -DBINDER_IPC_32BIT=1
 endif
+endif
+ifdef BRILLO
+  LOCAL_CFLAGS += -D__BRILLO__
 endif
 LOCAL_CFLAGS += -Werror
 include $(BUILD_STATIC_LIBRARY)
