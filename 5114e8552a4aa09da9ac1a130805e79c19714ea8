@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa43ea7f_a7552888",
+        "filename": "libs/binder/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-10-14T14:05:32Z",
+      "side": 1,
+      "message": "sure, unindented",
+      "parentUuid": "5fa8725b_996b4769",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "5114e8552a4aa09da9ac1a130805e79c19714ea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfb7aeb4_c6bf9735",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bf908e0a_3f730717",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-10-14T14:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfb7aeb4_c6bf9735",
+      "range": {
+        "startLine": 71,
+        "startChar": 63,
+        "endLine": 71,
+        "endChar": 74
+      },
+      "revId": "5114e8552a4aa09da9ac1a130805e79c19714ea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f2b7617_69262dcc",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2015-10-14T04:13:05Z",
       "side": 1,
       "message": "Maybe kill this extra space while you\u0027re here?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 4
+      },
+      "revId": "5114e8552a4aa09da9ac1a130805e79c19714ea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea588243_2e6b13b4",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-10-14T14:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f2b7617_69262dcc",
       "range": {
         "startLine": 79,
         "startChar": 0,
