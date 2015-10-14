@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fa8725b_996b4769",
+        "filename": "libs/binder/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-10-14T04:13:05Z",
+      "side": 1,
+      "message": "Looks like the rest of the file doesn\u0027t indent ifdefs?",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "5114e8552a4aa09da9ac1a130805e79c19714ea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfb7aeb4_c6bf9735",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-10-14T04:13:05Z",
+      "side": 1,
+      "message": "Android framework permissions?",
+      "range": {
+        "startLine": 71,
+        "startChar": 63,
+        "endLine": 71,
+        "endChar": 74
+      },
+      "revId": "5114e8552a4aa09da9ac1a130805e79c19714ea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f2b7617_69262dcc",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-10-14T04:13:05Z",
+      "side": 1,
+      "message": "Maybe kill this extra space while you\u0027re here?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 4
+      },
+      "revId": "5114e8552a4aa09da9ac1a130805e79c19714ea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
