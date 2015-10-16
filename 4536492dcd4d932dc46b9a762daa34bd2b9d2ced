@@ -34,6 +34,24 @@
       "revId": "4536492dcd4d932dc46b9a762daa34bd2b9d2ced",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d90802ae_ceef5723",
+        "filename": "libs/binder/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-10-16T23:22:55Z",
+      "side": 1,
+      "message": "Yeah lets add it as a global define when BRILLO is set. Have no problem with having it, just as long as its used sparingly :)",
+      "parentUuid": "d98ba26e_904e34aa",
+      "revId": "4536492dcd4d932dc46b9a762daa34bd2b9d2ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
