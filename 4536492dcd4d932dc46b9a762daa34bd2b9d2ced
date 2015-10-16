@@ -52,6 +52,24 @@
       "revId": "4536492dcd4d932dc46b9a762daa34bd2b9d2ced",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9198e10_f749c0a4",
+        "filename": "libs/binder/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-10-16T23:48:27Z",
+      "side": 1,
+      "message": "great. yeah, __ANDROID__ is still the correct thing to use to protect brillo-specific parts of code that is also built on chrome os. __BRILLO__ is only for brillo-specific parts of code that is also built for non-brillo android.",
+      "parentUuid": "d90802ae_ceef5723",
+      "revId": "4536492dcd4d932dc46b9a762daa34bd2b9d2ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
