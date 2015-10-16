@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79c3965a_3583f004",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-16T00:40:21Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure if I remember the generated Java correctly, they do this with an explicit readInt32() !\u003d 0.",
+      "revId": "15881722ea94bbe9d101b14e3caabd360d504a57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99ae8a64_7b1f63a7",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-16T00:40:21Z",
+      "side": 1,
+      "message": "nit: pointers to the left, to the left",
+      "revId": "15881722ea94bbe9d101b14e3caabd360d504a57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
