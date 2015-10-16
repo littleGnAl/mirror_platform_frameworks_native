@@ -16,6 +16,24 @@
       "revId": "4536492dcd4d932dc46b9a762daa34bd2b9d2ced",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d98ba26e_904e34aa",
+        "filename": "libs/binder/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-10-16T23:09:45Z",
+      "side": 1,
+      "message": "i agree that defining __BRILLO__ globally seems like it\u0027d be much safer (i.e. no risk of forgetting to define it before #include-ing a header that depends on it).\n\ncc-ing lee and gaurav to see if they have any objections to doing this.",
+      "parentUuid": "79fd56bf_686a9b1b",
+      "revId": "4536492dcd4d932dc46b9a762daa34bd2b9d2ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
