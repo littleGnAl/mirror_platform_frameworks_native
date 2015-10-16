@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79fd56bf_686a9b1b",
+        "filename": "libs/binder/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-10-16T21:37:10Z",
+      "side": 1,
+      "message": "you\u0027re not setting this globally in build/? that seems like a bad idea?",
+      "revId": "4536492dcd4d932dc46b9a762daa34bd2b9d2ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
