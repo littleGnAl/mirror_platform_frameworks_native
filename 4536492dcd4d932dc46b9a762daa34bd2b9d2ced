@@ -70,6 +70,24 @@
       "revId": "4536492dcd4d932dc46b9a762daa34bd2b9d2ced",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9ec2e3d_c5a0aece",
+        "filename": "libs/binder/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1072350
+      },
+      "writtenOn": "2015-10-19T18:25:44Z",
+      "side": 1,
+      "message": "sgtm as well",
+      "parentUuid": "b9198e10_f749c0a4",
+      "revId": "4536492dcd4d932dc46b9a762daa34bd2b9d2ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
