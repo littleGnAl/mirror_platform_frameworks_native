@@ -163,6 +163,30 @@
       "revId": "424ff6edcacb5b37485ece98fba14d50a7e1e1dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39111e0a_1cfdd498",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T22:59:34Z",
+      "side": 1,
+      "message": "disregard this.  spurious output from an old patchset.",
+      "parentUuid": "791716fc_de5a39dc",
+      "range": {
+        "startLine": 1761,
+        "startChar": 8,
+        "endLine": 1761,
+        "endChar": 35
+      },
+      "revId": "424ff6edcacb5b37485ece98fba14d50a7e1e1dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
