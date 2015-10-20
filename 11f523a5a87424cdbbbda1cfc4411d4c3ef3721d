@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79d47637_f960a28c",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-10-20T02:03:51Z",
+      "side": 1,
+      "message": "the existing style seems to always use braces. (i thought google3 style was either braces or if and return on same line?)",
+      "revId": "11f523a5a87424cdbbbda1cfc4411d4c3ef3721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
