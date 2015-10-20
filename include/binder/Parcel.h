@@ -25,6 +25,8 @@
 #include <utils/Flattenable.h>
 #include <linux/binder.h>
 
+#include <vector>
+
 // ---------------------------------------------------------------------------
 namespace android {
 
@@ -112,6 +114,15 @@ public:
     status_t            writeChar(char16_t val);
     status_t            writeByte(int8_t val);
 
+    status_t            writeByteVector(const std::vector<int8_t>& val);
+    status_t            writeInt32Vector(const std::vector<int32_t>& val);
+    status_t            writeInt64Vector(const std::vector<int64_t>& val);
+    status_t            writeFloatVector(const std::vector<float>& val);
+    status_t            writeDoubleVector(const std::vector<double>& val);
+    status_t            writeBoolVector(const std::vector<bool>& val);
+    status_t            writeCharVector(const std::vector<char16_t>& val);
+    status_t            writeString16Vector(const std::vector<String16>& val);
+
     template<typename T>
     status_t            write(const Flattenable<T>& val);
 
@@ -182,9 +193,19 @@ public:
     const char*         readCString() const;
     String8             readString8() const;
     String16            readString16() const;
+    status_t            readString16(String16* pArg) const;
     const char16_t*     readString16Inplace(size_t* outLen) const;
     sp<IBinder>         readStrongBinder() const;
     wp<IBinder>         readWeakBinder() const;
+
+    status_t            readByteVector(std::vector<int8_t>* val) const;
+    status_t            readInt32Vector(std::vector<int32_t>* val) const;
+    status_t            readInt64Vector(std::vector<int64_t>* val) const;
+    status_t            readFloatVector(std::vector<float>* val) const;
+    status_t            readDoubleVector(std::vector<double>* val) const;
+    status_t            readBoolVector(std::vector<bool>* val) const;
+    status_t            readCharVector(std::vector<char16_t>* val) const;
+    status_t            readString16Vector(std::vector<String16>* val) const;
 
     template<typename T>
     status_t            read(Flattenable<T>& val) const;

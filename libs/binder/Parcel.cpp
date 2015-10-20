@@ -717,6 +717,142 @@ restart_write:
     return NULL;
 }
 
+status_t Parcel::writeByteVector(const std::vector<int8_t>& val)
+{
+    status_t status = writeInt32(val.size());
+
+    if (status)
+        return status;
+
+    for (const auto& item : val) {
+        status = writeByte(item);
+
+        if (status)
+            return status;
+    }
+
+    return 0;
+}
+
+status_t Parcel::writeInt32Vector(const std::vector<int32_t>& val)
+{
+    status_t status = writeInt32(val.size());
+
+    if (status)
+        return status;
+
+    for (const auto& item : val) {
+        status = writeInt32(item);
+
+        if (status)
+            return status;
+    }
+
+    return 0;
+}
+
+status_t Parcel::writeInt64Vector(const std::vector<int64_t>& val)
+{
+    status_t status = writeInt32(val.size());
+
+    if (status)
+        return status;
+
+    for (const auto& item : val) {
+        status = writeInt64(item);
+
+        if (status)
+            return status;
+    }
+
+    return 0;
+}
+
+status_t Parcel::writeFloatVector(const std::vector<float>& val)
+{
+    status_t status = writeInt32(val.size());
+
+    if (status)
+        return status;
+
+    for (const auto& item : val) {
+        status = writeFloat(item);
+
+        if (status)
+            return status;
+    }
+
+    return 0;
+}
+
+status_t Parcel::writeDoubleVector(const std::vector<double>& val)
+{
+    status_t status = writeInt32(val.size());
+
+    if (status)
+        return status;
+
+    for (const auto& item : val) {
+        status = writeDouble(item);
+
+        if (status)
+            return status;
+    }
+
+    return 0;
+}
+
+status_t Parcel::writeBoolVector(const std::vector<bool>& val)
+{
+    status_t status = writeInt32(val.size());
+
+    if (status)
+        return status;
+
+    for (const auto& item : val) {
+        status = writeBool(item);
+
+        if (status)
+            return status;
+    }
+
+    return 0;
+}
+
+status_t Parcel::writeCharVector(const std::vector<char16_t>& val)
+{
+    status_t status = writeInt32(val.size());
+
+    if (status)
+        return status;
+
+    for (const auto& item : val) {
+        status = writeChar(item);
+
+        if (status)
+            return status;
+    }
+
+    return 0;
+}
+
+status_t Parcel::writeString16Vector(const std::vector<String16>& val)
+{
+    status_t status = writeInt32(val.size());
+
+    if (status)
+        return status;
+
+    for (const auto& item : val) {
+        status = writeString16(item);
+
+        if (status)
+            return status;
+    }
+
+    return 0;
+}
+
 status_t Parcel::writeInt32(int32_t val)
 {
     return writeAligned(val);
@@ -1149,6 +1285,200 @@ restart_write:
     return err;
 }
 
+status_t Parcel::readByteVector(std::vector<int8_t>* val) const {
+    val->clear();
+
+    int32_t size;
+    status_t status = readInt32(&size);
+
+    if (status != 0)
+        return status;
+
+    val->resize(size);
+
+    while (size-- > 0) {
+        int8_t data;
+        status = readByte(&data);
+
+        if (status != 0)
+            return status;
+
+        val->push_back(data);
+    }
+
+    return 0;
+}
+
+status_t Parcel::readInt32Vector(std::vector<int32_t>* val) const {
+    val->clear();
+
+    int32_t size;
+    status_t status = readInt32(&size);
+
+    if (status != 0)
+        return status;
+
+    val->resize(size);
+
+    while (size-- > 0) {
+        int32_t data;
+        status = readInt32(&data);
+
+        if (status != 0)
+            return status;
+
+        val->push_back(data);
+    }
+
+    return 0;
+}
+
+status_t Parcel::readInt64Vector(std::vector<int64_t>* val) const {
+    val->clear();
+
+    int32_t size;
+    status_t status = readInt32(&size);
+
+    if (status != 0)
+        return status;
+
+    val->resize(size);
+
+    while (size-- > 0) {
+        int64_t data;
+        status = readInt64(&data);
+
+        if (status != 0)
+            return status;
+
+        val->push_back(data);
+    }
+
+    return 0;
+}
+
+status_t Parcel::readFloatVector(std::vector<float>* val) const {
+    val->clear();
+
+    int32_t size;
+    status_t status = readInt32(&size);
+
+    if (status != 0)
+        return status;
+
+    val->resize(size);
+
+    while (size-- > 0) {
+        float data;
+        status = readFloat(&data);
+
+        if (status != 0)
+            return status;
+
+        val->push_back(data);
+    }
+
+    return 0;
+}
+
+status_t Parcel::readDoubleVector(std::vector<double>* val) const {
+    val->clear();
+
+    int32_t size;
+    status_t status = readInt32(&size);
+
+    if (status != 0)
+        return status;
+
+    val->resize(size);
+
+    while (size-- > 0) {
+        double data;
+        status = readDouble(&data);
+
+        if (status != 0)
+            return status;
+
+        val->push_back(data);
+    }
+
+    return 0;
+}
+
+status_t Parcel::readBoolVector(std::vector<bool>* val) const {
+    val->clear();
+
+    int32_t size;
+    status_t status = readInt32(&size);
+
+    if (status != 0)
+        return status;
+
+    val->resize(size);
+
+    while (size-- > 0) {
+        bool data;
+        status = readBool(&data);
+
+        if (status != 0)
+            return status;
+
+        val->push_back(data);
+    }
+
+    return 0;
+}
+
+status_t Parcel::readCharVector(std::vector<char16_t>* val) const {
+    val->clear();
+
+    int32_t size;
+    status_t status = readInt32(&size);
+
+    if (status != 0)
+        return status;
+
+    val->resize(size);
+
+    while (size-- > 0) {
+        char16_t data;
+        status = readChar(&data);
+
+        if (status != 0)
+            return status;
+
+        val->push_back(data);
+    }
+
+    return 0;
+}
+
+status_t Parcel::readString16Vector(std::vector<String16>* val) const {
+    val->clear();
+
+    int32_t size;
+    status_t status = readInt32(&size);
+
+    if (status != 0)
+        return status;
+
+    val->resize(size);
+
+    while (size-- > 0) {
+        const char16_t *data;
+        size_t size;
+        data = readString16Inplace(&size);
+
+        if (data == nullptr)
+            return UNKNOWN_ERROR;
+
+        val->emplace_back(data, size);
+    }
+
+    return 0;
+}
+
+
 status_t Parcel::readInt32(int32_t *pArg) const
 {
     return readAligned(pArg);
@@ -1341,6 +1671,19 @@ String16 Parcel::readString16() const
     if (str) return String16(str, len);
     ALOGE("Reading a NULL string not supported here.");
     return String16();
+}
+
+status_t Parcel::readString16(String16* pArg) const
+{
+    size_t len;
+    const char16_t* str = readString16Inplace(&len);
+    if (str) {
+        *pArg = String16(str, len);
+        return 0;
+    } else {
+        *pArg = String16();
+        return UNKNOWN_ERROR;
+    }
 }
 
 const char16_t* Parcel::readString16Inplace(size_t* outLen) const
