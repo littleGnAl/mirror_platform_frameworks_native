@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "b9ec2e3d_d40fba47",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T16:30:13Z",
+      "side": 1,
+      "message": "nit: this probably should go above the system library includes.",
+      "revId": "11f523a5a87424cdbbbda1cfc4411d4c3ef3721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f91146d4_8156c53b",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T16:30:13Z",
+      "side": 1,
+      "message": "All these methods looks exactly the same modulo the write method.  Could you refactor this so that we delegated to one writeVector\u003cT\u003e method and use writeAligned\u003cT\u003e to do the member writes?  There will probably be a few special cases that don\u0027t template well, and we can specialize those.",
+      "revId": "11f523a5a87424cdbbbda1cfc4411d4c3ef3721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f3ea1a_8defed6e",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T16:30:13Z",
+      "side": 1,
+      "message": "Shouldn\u0027t all these writes have explicit checks that val.size() \u003c\u003d std::numeric_limits\u003cint32_t\u003e::max()?",
+      "revId": "11f523a5a87424cdbbbda1cfc4411d4c3ef3721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79d47637_f960a28c",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 1
@@ -13,6 +64,81 @@
       "writtenOn": "2015-10-20T02:03:51Z",
       "side": 1,
       "message": "the existing style seems to always use braces. (i thought google3 style was either braces or if and return on same line?)",
+      "revId": "11f523a5a87424cdbbbda1cfc4411d4c3ef3721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9ec2e3d_b414b659",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T16:30:13Z",
+      "side": 1,
+      "message": "+1 for following in file style here\n\nHowever, we\u0027ve been taking the open source guide as our muse in general, and it makes no recommendations for single statement conditionals:\n\nhttp://google.github.io/styleguide/cppguide.html#Conditionals\n\nOf course, it also recommends a number of things which Android saw fit to disregard in its own style.",
+      "parentUuid": "79d47637_f960a28c",
+      "revId": "11f523a5a87424cdbbbda1cfc4411d4c3ef3721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79d47637_6c518e9c",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T16:30:13Z",
+      "side": 1,
+      "message": "Similarly re templating.",
+      "range": {
+        "startLine": 1288,
+        "startChar": 26,
+        "endLine": 1288,
+        "endChar": 27
+      },
+      "revId": "11f523a5a87424cdbbbda1cfc4411d4c3ef3721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d90802ae_8517f511",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T16:30:13Z",
+      "side": 1,
+      "message": "Definitely check that size is a positive number.  This is untrusted data!",
+      "revId": "11f523a5a87424cdbbbda1cfc4411d4c3ef3721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99020a8c_fbead314",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T16:30:13Z",
+      "side": 1,
+      "message": "It\u0027s probably worth it to use something like readAligned\u003cT\u003e(\u0026val[i]) here.   That would half the memory traffic.",
       "revId": "11f523a5a87424cdbbbda1cfc4411d4c3ef3721d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
