@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79d47637_85512d9f",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T22:52:54Z",
+      "side": 1,
+      "message": "nit: return OK or status here and below",
+      "range": {
+        "startLine": 740,
+        "startChar": 11,
+        "endLine": 740,
+        "endChar": 12
+      },
+      "revId": "8f1d844075589d86e902abdd77cda4a7b8c2c739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39111e0a_88b24333",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1490,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T22:52:54Z",
+      "side": 1,
+      "message": "Seems appropriate to use an int32_t since that matches the types of size.",
+      "range": {
+        "startLine": 1490,
+        "startChar": 9,
+        "endLine": 1490,
+        "endChar": 12
+      },
+      "revId": "8f1d844075589d86e902abdd77cda4a7b8c2c739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99020a8c_a39b0d40",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-20T22:52:54Z",
+      "side": 1,
+      "message": "use pArg-\u003esetTo(str, len);",
+      "range": {
+        "startLine": 1761,
+        "startChar": 15,
+        "endLine": 1761,
+        "endChar": 25
+      },
+      "revId": "8f1d844075589d86e902abdd77cda4a7b8c2c739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
