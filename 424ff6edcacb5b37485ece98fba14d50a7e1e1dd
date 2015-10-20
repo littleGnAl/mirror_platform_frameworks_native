@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99f3ea1a_93070e32",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-10-20T20:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "791716fc_b8183518",
+      "range": {
+        "startLine": 1342,
+        "startChar": 14,
+        "endLine": 1342,
+        "endChar": 20
+      },
+      "revId": "424ff6edcacb5b37485ece98fba14d50a7e1e1dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39111e0a_6d99b9eb",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 2
@@ -59,6 +83,54 @@
       "writtenOn": "2015-10-20T20:26:17Z",
       "side": 1,
       "message": "This is a perfect example why this should be done as:\n\nfor (auto\u0026 v : *val) {\n  status \u003d readByte(\u0026val);\n  if (status !\u003d OK) {\n    return status;\n  }\n}",
+      "range": {
+        "startLine": 1352,
+        "startChar": 4,
+        "endLine": 1352,
+        "endChar": 37
+      },
+      "revId": "424ff6edcacb5b37485ece98fba14d50a7e1e1dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d90802ae_8385add4",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1352,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-10-20T20:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39111e0a_6d99b9eb",
+      "range": {
+        "startLine": 1352,
+        "startChar": 9,
+        "endLine": 1352,
+        "endChar": 12
+      },
+      "revId": "424ff6edcacb5b37485ece98fba14d50a7e1e1dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99020a8c_b0e0f5a9",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1352,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-10-20T20:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f91146d4_5763ef1a",
       "range": {
         "startLine": 1352,
         "startChar": 4,
