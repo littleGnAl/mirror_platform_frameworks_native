@@ -221,7 +221,6 @@ void printHexData(int32_t indent, const void *buf, size_t length,
         for (word = 0; word < bytesPerLine; ) {
 
             const size_t startIndex = word+(alignment-(alignment?1:0));
-            const ssize_t dir = -1;
 
             for (index = 0; index < alignment || (alignment == 0 && index < bytesPerLine); index++) {
             
@@ -231,7 +230,7 @@ void printHexData(int32_t indent, const void *buf, size_t length,
                     }
                 
                     if (remain-- > 0) {
-                        const unsigned char val = *(pos+startIndex+(index*dir));
+                        const unsigned char val = *(pos+startIndex-index);
                         *c++ = makehexdigit(val>>4);
                         *c++ = makehexdigit(val);
                     } else if (!oneLine) {
@@ -248,7 +247,7 @@ void printHexData(int32_t indent, const void *buf, size_t length,
                             *c++ = '0';
                             *c++ = 'x';
                         }
-                        const unsigned char val = *(pos+startIndex+(index*dir));
+                        const unsigned char val = *(pos+startIndex-index);
                         *c++ = makehexdigit(val>>4);
                         *c++ = makehexdigit(val);
                         remain--;
