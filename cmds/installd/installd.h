@@ -190,7 +190,7 @@ int create_move_path(char path[PKG_PATH_MAX],
 int is_valid_package_name(const char* pkgname);
 
 int create_cache_path(char path[PKG_PATH_MAX], const char *src,
-                      const char *instruction_set);
+                      const char *instruction_set, const char* postfix);
 
 int delete_dir_contents(const char *pathname,
                         int also_delete_dir,

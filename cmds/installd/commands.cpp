@@ -453,8 +453,8 @@ int move_dex(const char *src, const char *dst, const char *instruction_set)
         return -1;
     }
 
-    if (create_cache_path(src_dex, src, instruction_set)) return -1;
-    if (create_cache_path(dst_dex, dst, instruction_set)) return -1;
+    if (create_cache_path(src_dex, src, instruction_set, DALVIK_CACHE_POSTFIX)) return -1;
+    if (create_cache_path(dst_dex, dst, instruction_set, DALVIK_CACHE_POSTFIX)) return -1;
 
     ALOGV("move %s -> %s\n", src_dex, dst_dex);
     if (rename(src_dex, dst_dex) < 0) {
@@ -474,7 +474,7 @@ int rm_dex(const char *path, const char *instruction_set)
         return -1;
     }
 
-    if (create_cache_path(dex_path, path, instruction_set)) return -1;
+    if (create_cache_path(dex_path, path, instruction_set, DALVIK_CACHE_POSTFIX)) return -1;
 
     ALOGV("unlink %s\n", dex_path);
     if (unlink(dex_path) < 0) {
@@ -528,7 +528,7 @@ int get_size(const char *uuid, const char *pkgname, int userid, const char *apkp
     }
 
     /* count the cached dexfile as code */
-    if (!create_cache_path(path, apkpath, instruction_set)) {
+    if (!create_cache_path(path, apkpath, instruction_set, DALVIK_CACHE_POSTFIX)) {
         if (stat(path, &s) == 0) {
             codesize += stat_size(&s);
         }
@@ -621,7 +621,8 @@ int get_size(const char *uuid, const char *pkgname, int userid, const char *apkp
     return 0;
 }
 
-int create_cache_path(char path[PKG_PATH_MAX], const char *src, const char *instruction_set)
+int create_cache_path(char path[PKG_PATH_MAX], const char *src, const char *instruction_set,
+                      const char* postfix)
 {
     char *tmp;
     int srclen;
@@ -640,7 +641,7 @@ int create_cache_path(char path[PKG_PATH_MAX], const char *src, const char *inst
 
     dstlen = srclen + strlen(DALVIK_CACHE_PREFIX) +
         strlen(instruction_set) +
-        strlen(DALVIK_CACHE_POSTFIX) + 2;
+        strlen(postfix) + 2;
 
     if (dstlen > PKG_PATH_MAX) {
         return -1;
@@ -650,7 +651,7 @@ int create_cache_path(char path[PKG_PATH_MAX], const char *src, const char *inst
             DALVIK_CACHE_PREFIX,
             instruction_set,
             src + 1, /* skip the leading / */
-            DALVIK_CACHE_POSTFIX);
+            postfix);
 
     for(tmp = path + strlen(DALVIK_CACHE_PREFIX) + strlen(instruction_set) + 1; *tmp; tmp++) {
         if (*tmp == '/') {
@@ -742,7 +743,7 @@ static bool check_boolean_property(const char* property_name, bool default_value
     return strcmp(tmp_property_value, "true") == 0;
 }
 
-static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
+static void run_dex2oat(int zip_fd, int oat_fd, int image_fd, const char* input_file_name,
     const char* output_file_name, int swap_fd, const char *instruction_set,
     bool vm_safe_mode, bool debuggable, bool post_bootcomplete, bool use_jit)
 {
@@ -822,6 +823,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     char dex2oat_compiler_filter_arg[strlen("--compiler-filter=") + PROPERTY_VALUE_MAX];
     bool have_dex2oat_swap_fd = false;
     char dex2oat_swap_fd[strlen("--swap-fd=") + MAX_INT_LEN];
+    bool have_dex2oat_image_fd = false;
+    char dex2oat_image_fd[strlen("--app-image-fd=") + MAX_INT_LEN];
 
     sprintf(zip_fd_arg, "--zip-fd=%d", zip_fd);
     sprintf(zip_location_arg, "--zip-location=%s", input_file_name);
@@ -833,6 +836,10 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     if (swap_fd >= 0) {
         have_dex2oat_swap_fd = true;
         sprintf(dex2oat_swap_fd, "--swap-fd=%d", swap_fd);
+    }
+    if (image_fd >= 0) {
+        have_dex2oat_image_fd = true;
+        sprintf(dex2oat_image_fd, "--app-image-fd=%d", image_fd);
     }
 
     // use the JIT if either it's specified as a dexopt flag or if the property is set
@@ -875,6 +882,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
                      + (have_dex2oat_compiler_filter_flag ? 1 : 0)
                      + (have_dex2oat_threads_flag ? 1 : 0)
                      + (have_dex2oat_swap_fd ? 1 : 0)
+                     + (have_dex2oat_image_fd ? 1 : 0)
                      + (have_dex2oat_relocation_skip_flag ? 2 : 0)
                      + (generate_debug_info ? 1 : 0)
                      + (debuggable ? 1 : 0)
@@ -908,6 +916,9 @@ static void run_dex2oat(int zip_fd, int oat_fd, const char* input_file_name,
     }
     if (have_dex2oat_swap_fd) {
         argv[i++] = dex2oat_swap_fd;
+    }
+    if (have_dex2oat_image_fd) {
+        argv[i++] = dex2oat_image_fd;
     }
     if (generate_debug_info) {
         argv[i++] = "--generate-debug-info";
@@ -1057,9 +1068,10 @@ int dexopt(const char *apk_path, uid_t uid, const char *pkgname, const char *ins
     struct stat input_stat;
     char out_path[PKG_PATH_MAX];
     char swap_file_name[PKG_PATH_MAX];
+    char image_path[PKG_PATH_MAX];
     const char *input_file;
     char in_odex_path[PKG_PATH_MAX];
-    int res, input_fd=-1, out_fd=-1, swap_fd=-1;
+    int res, input_fd=-1, out_fd=-1, image_fd=-1, swap_fd=-1;
     bool is_public = (dexopt_flags & DEXOPT_PUBLIC) != 0;
     bool vm_safe_mode = (dexopt_flags & DEXOPT_SAFEMODE) != 0;
     bool debuggable = (dexopt_flags & DEXOPT_DEBUGGABLE) != 0;
@@ -1087,7 +1099,7 @@ int dexopt(const char *apk_path, uid_t uid, const char *pkgname, const char *ins
             return -1;
         }
     } else {
-        if (create_cache_path(out_path, apk_path, instruction_set)) {
+        if (create_cache_path(out_path, apk_path, instruction_set, DALVIK_CACHE_POSTFIX)) {
             return -1;
         }
     }
@@ -1162,6 +1174,33 @@ int dexopt(const char *apk_path, uid_t uid, const char *pkgname, const char *ins
         }
     }
 
+    // Open the image file if there is room in the file path.
+    if (strlen(out_path) + strlen(".art") < PKG_PATH_MAX) {
+        strcpy(image_path, out_path);
+        // Trim the extension.
+        int pos = strlen(image_path);
+        for (; pos >= 0 && image_path[pos] != '.'; --pos) {}
+        if (pos != 0) {
+          image_path[pos] = '\0';  // Trim extension
+        }
+        strcat(image_path, ".art");
+        unlink(image_path);
+        image_fd = open(image_path, O_RDWR | O_CREAT | O_EXCL, 0600);
+        if (image_fd < 0) {
+            // Could not create swap file. Optimistically go on and hope that we can compile
+            // without it.
+            ALOGE("installd could not create '%s' for image file during dexopt\n", image_path);
+        } else if (fchmod(image_fd,
+                       S_IRUSR|S_IWUSR|S_IRGRP |
+                       (is_public ? S_IROTH : 0)) < 0) {
+            ALOGE("installd cannot chmod '%s' during dexopt\n", image_path);
+            image_fd = -1;
+        } else if (fchown(image_fd, AID_SYSTEM, uid) < 0) {
+            ALOGE("installd cannot chown '%s' during dexopt\n", image_path);
+            image_fd = -1;
+        }
+     }
+
     ALOGV("DexInv: --- BEGIN '%s' ---\n", input_file);
 
     pid_t pid;
@@ -1202,7 +1241,7 @@ int dexopt(const char *apk_path, uid_t uid, const char *pkgname, const char *ins
             } else {
                 input_file_name++;
             }
-            run_dex2oat(input_fd, out_fd, input_file_name, out_path, swap_fd,
+            run_dex2oat(input_fd, out_fd, image_fd, input_file_name, out_path, swap_fd,
                         instruction_set, vm_safe_mode, debuggable, boot_complete, use_jit);
         } else {
             ALOGE("Invalid dexopt needed: %d\n", dexopt_needed);
@@ -1225,8 +1264,11 @@ int dexopt(const char *apk_path, uid_t uid, const char *pkgname, const char *ins
 
     close(out_fd);
     close(input_fd);
-    if (swap_fd != -1) {
+    if (swap_fd >= 0) {
         close(swap_fd);
+    }
+    if (image_fd >= 0) {
+        close(image_fd);
     }
     return 0;
 
@@ -1237,6 +1279,12 @@ fail:
     }
     if (input_fd >= 0) {
         close(input_fd);
+    }
+    if (swap_fd >= 0) {
+        close(swap_fd);
+    }
+    if (image_fd >= 0) {
+        close(image_fd);
     }
     return -1;
 }
