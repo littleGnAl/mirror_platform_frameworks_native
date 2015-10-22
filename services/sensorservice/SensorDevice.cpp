@@ -302,9 +302,13 @@ status_t SensorDevice::setDelay(void* ident, int handle, int64_t samplingPeriodN
     }
     BatchParams& params = info.batchParams.editValueAt(index);
     params.batchDelay = samplingPeriodNs;
+    BatchParams prevBestBatchParams = info.bestBatchParams;
     info.selectBatchParams();
-    return mSensorDevice->setDelay(reinterpret_cast<struct sensors_poll_device_t *>(mSensorDevice),
+    if (prevBestBatchParams != info.bestBatchParams)
+        return mSensorDevice->setDelay(reinterpret_cast<struct sensors_poll_device_t *>(mSensorDevice),
                                    handle, info.bestBatchParams.batchDelay);
+    else
+        return 0;
 }
 
 int SensorDevice::getHalDeviceVersion() const {
