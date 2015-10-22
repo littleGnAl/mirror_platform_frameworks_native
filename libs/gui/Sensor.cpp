@@ -346,6 +346,10 @@ int32_t Sensor::getMaxDelay() const {
     return mMaxDelay;
 }
 
+nsecs_t Sensor::getMaxDelayNs() const {
+    return getMaxDelay() * 1000;
+}
+
 uint32_t Sensor::getFlags() const {
     return mFlags;
 }

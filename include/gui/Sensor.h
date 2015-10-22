@@ -74,6 +74,7 @@ public:
     bool isRequiredPermissionRuntime() const;
     int32_t getRequiredAppOp() const;
     int32_t getMaxDelay() const;
+    nsecs_t getMaxDelayNs() const;
     uint32_t getFlags() const;
     bool isWakeUpSensor() const;
     int32_t getReportingMode() const;
