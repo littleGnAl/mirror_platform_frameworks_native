@@ -78,8 +78,8 @@ Sensor::Sensor(struct sensor_t const* hwSensor, int halVersion)
             mMaxDelay = static_cast<int32_t>(hwSensor->maxDelay);
         }
     } else {
-        // For older hals set maxDelay to 0.
-        mMaxDelay = 0;
+        // For older hals set maxDelay to 200000us (SENSOR_DELAY_NORMAL).
+        mMaxDelay = 200000;
     }
 
     // Ensure existing sensors have correct string type, required permissions and reporting mode.
@@ -344,6 +344,10 @@ int32_t Sensor::getRequiredAppOp() const {
 
 int32_t Sensor::getMaxDelay() const {
     return mMaxDelay;
+}
+
+nsecs_t Sensor::getMaxDelayNs() const {
+    return getMaxDelay() * 1000;
 }
 
 uint32_t Sensor::getFlags() const {
