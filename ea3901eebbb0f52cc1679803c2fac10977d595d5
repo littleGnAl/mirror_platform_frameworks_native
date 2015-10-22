@@ -16,6 +16,24 @@
       "revId": "ea3901eebbb0f52cc1679803c2fac10977d595d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1636e9de_527a747a",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-10-22T01:36:24Z",
+      "side": 1,
+      "message": "oh, heh. yeah, i dunno how i missed that. i must\u0027ve just eyeballed the file instead of doing an \"s/  *$//\". i\u0027ll manually get this one too (my workstation is busted until i come in tomorrow so i don\u0027t have a real editor right now...).",
+      "parentUuid": "194a9a42_c1d50ca6",
+      "revId": "ea3901eebbb0f52cc1679803c2fac10977d595d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
