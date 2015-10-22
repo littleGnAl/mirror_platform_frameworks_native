@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "194a9a42_c1d50ca6",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-10-22T01:29:16Z",
+      "side": 1,
+      "message": "i personally prefer to move forwards, and it\u0027s not like it touches many lines. it\u0027s just odd that you left this, for example, while removing the kind of trailing whitespace that gerrit _doesn\u0027t_ care about :-)",
+      "revId": "ea3901eebbb0f52cc1679803c2fac10977d595d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
