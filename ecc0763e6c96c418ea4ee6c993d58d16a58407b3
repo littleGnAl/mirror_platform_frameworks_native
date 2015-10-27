@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6b795e1_2e5e3b0b",
+        "filename": "libs/gui/Sensor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1021902
+      },
+      "writtenOn": "2015-10-27T17:55:11Z",
+      "side": 0,
+      "message": "Can\u0027t change maxDelay when it is not specified by the HAL, this is a part of the sensor API definition.",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "ecc0763e6c96c418ea4ee6c993d58d16a58407b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
