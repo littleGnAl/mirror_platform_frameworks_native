@@ -22,6 +22,30 @@
       "revId": "ecc0763e6c96c418ea4ee6c993d58d16a58407b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36e4cdf6_1307d7ec",
+        "filename": "libs/gui/Sensor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1043015
+      },
+      "writtenOn": "2015-10-27T18:57:09Z",
+      "side": 0,
+      "message": "I thought \"0\" would be more dangerous value than 200ms, by default.\nBut as you say, we should keep the max delay to be 0 by default.\nI will change it back to 0 and hence change the enable function call as well.\n\nMainly, this patch focus on \"not\" enabling the sensor with 0 ms by default.\nInstead enable it with max delay possible or 200 ms so that enabling the sensor without a delay value shall not affect the delay of other parallel running native/android applications using the same sensor.\nCould you please review that part ?",
+      "parentUuid": "f6b795e1_2e5e3b0b",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "ecc0763e6c96c418ea4ee6c993d58d16a58407b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
