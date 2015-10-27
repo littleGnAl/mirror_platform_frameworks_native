@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56fce1c4_64888ab4",
+        "filename": "libs/gui/Sensor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2015-10-27T21:43:00Z",
+      "side": 1,
+      "message": "potential overflow.",
+      "range": {
+        "startLine": 350,
+        "startChar": 11,
+        "endLine": 350,
+        "endChar": 31
+      },
+      "revId": "193f59f483c973d7289fda57e219bffca2b776fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
