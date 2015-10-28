@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6d0d18a_6b6b7d6b",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-28T20:47:59Z",
+      "side": 1,
+      "message": "Pull the implementation to the bottom of the file.  This seems consistent with the rest of the file.\n\nAlso, we use 4 spaces in this file, and braces for single line statements from my cursory reading.",
+      "revId": "6149c13e51a1717ee40a61386a92195c0c733393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
