@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56c4e1d1_0ae3dffd",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-28T20:19:01Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this call delegate to the other?",
+      "range": {
+        "startLine": 1789,
+        "startChar": 20,
+        "endLine": 1789,
+        "endChar": 36
+      },
+      "revId": "60776554e9b327e4db619c680e2c9aa939b437d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
