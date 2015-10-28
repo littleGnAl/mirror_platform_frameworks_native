@@ -22,6 +22,30 @@
       "revId": "193f59f483c973d7289fda57e219bffca2b776fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7642c5df_26d7fc22",
+        "filename": "libs/gui/Sensor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1043015
+      },
+      "writtenOn": "2015-10-28T02:51:35Z",
+      "side": 1,
+      "message": "getMaxDelay returns a 32 bit number and is limited to INT_MAX.\nnsecs_t is a 64 bit number so here 32 bit number is multiplied by 100.\nSo overflow does not seem to be happening here... right ?",
+      "parentUuid": "56fce1c4_64888ab4",
+      "range": {
+        "startLine": 350,
+        "startChar": 11,
+        "endLine": 350,
+        "endChar": 31
+      },
+      "revId": "193f59f483c973d7289fda57e219bffca2b776fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
