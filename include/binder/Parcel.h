@@ -27,6 +27,8 @@
 #include <utils/Flattenable.h>
 #include <linux/binder.h>
 
+#include <binder/IInterface.h>
+
 // ---------------------------------------------------------------------------
 namespace android {
 
@@ -196,7 +198,18 @@ public:
     status_t            readString16(String16* pArg) const;
     const char16_t*     readString16Inplace(size_t* outLen) const;
     sp<IBinder>         readStrongBinder() const;
+    status_t            readStrongBinder(sp<IBinder>* val) const;
     wp<IBinder>         readWeakBinder() const;
+
+    template<typename T>
+    status_t readStrongBinder(sp<T>* val) const {
+      sp<IBinder> tmp;
+      status_t ret = readStrongBinder(&tmp);
+
+      if (ret == OK)
+        *val = interface_cast<T>(tmp);
+      return ret;
+    }
 
     status_t            readByteVector(std::vector<int8_t>* val) const;
     status_t            readInt32Vector(std::vector<int32_t>* val) const;
