@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56c4e1d1_6a1ff370",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-10-28T20:56:02Z",
+      "side": 1,
+      "message": "Sorry, I should have caught this earlier.  interface_cast\u003c\u003e can actually fail and return a nullptr (or the equivalent sp\u003cT\u003e instance).\n\nWe should catch that and return some error code.",
+      "range": {
+        "startLine": 445,
+        "startChar": 15,
+        "endLine": 445,
+        "endChar": 29
+      },
+      "revId": "7b3fd1b0ac6fb4171877a636c12417d333bb2c19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
