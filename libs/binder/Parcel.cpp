@@ -1781,6 +1781,11 @@ const char16_t* Parcel::readString16Inplace(size_t* outLen) const
     return NULL;
 }
 
+status_t Parcel::readStrongBinder(sp<IBinder>* val) const
+{
+    return unflatten_binder(ProcessState::self(), *this, val);
+}
+
 sp<IBinder> Parcel::readStrongBinder() const
 {
     sp<IBinder> val;
