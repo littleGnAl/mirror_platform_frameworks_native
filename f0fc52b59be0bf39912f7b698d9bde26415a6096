@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "765c8636_c10c461b",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-11-02T19:09:17Z",
+      "side": 1,
+      "message": "....why?",
+      "range": {
+        "startLine": 724,
+        "startChar": 8,
+        "endLine": 725,
+        "endChar": 22
+      },
+      "revId": "f0fc52b59be0bf39912f7b698d9bde26415a6096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
