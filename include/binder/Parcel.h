@@ -23,6 +23,7 @@
 #include <utils/Errors.h>
 #include <utils/RefBase.h>
 #include <utils/String16.h>
+#include <utils/SmartFileDescriptor.h>
 #include <utils/Vector.h>
 #include <utils/Flattenable.h>
 #include <linux/binder.h>
@@ -149,6 +150,16 @@ public:
     // will be closed once the parcel is destroyed.
     status_t            writeDupFileDescriptor(int fd);
 
+    // Place a file descriptor into the parcel.  This will not affect the
+    // semantics of the smart file descriptor, and any new descriptors created
+    // will be closed when the parcel is destroyed.
+    status_t            writeSmartFileDescriptor(const android::sfd& fd);
+
+    // Place a vector of file desciptors into the parcel. Each descriptor is
+    // dup'd as in writeDupFileDescriptor
+    status_t            writeSmartFileDescriptorVector(
+                            const std::vector<android::sfd>& val);
+
     // Writes a blob to the parcel.
     // If the blob is small, then it is stored in-place, otherwise it is
     // transferred by way of an anonymous shared memory region.  Prefer sending
@@ -240,6 +251,13 @@ public:
     // Retrieve a file descriptor from the parcel.  This returns the raw fd
     // in the parcel, which you do not own -- use dup() to get your own copy.
     int                 readFileDescriptor() const;
+
+    // Retrieve a smart file descriptor from the parcel.
+    status_t            readSmartFileDescriptor(android::sfd* val) const;
+
+
+    // Retrieve a vector of smart file descriptors from the parcel.
+    status_t            readSmartFileDescriptorVector(std::vector<android::sfd>* val) const;
 
     // Reads a blob from the parcel.
     // The caller should call release() on the blob after reading its contents.

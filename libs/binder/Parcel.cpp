@@ -1141,10 +1141,38 @@ status_t Parcel::writeDupFileDescriptor(int fd)
         return -errno;
     }
     status_t err = writeFileDescriptor(dupFd, true /*takeOwnership*/);
-    if (err) {
+    if (err != OK) {
         close(dupFd);
     }
     return err;
+}
+
+status_t Parcel::writeSmartFileDescriptor(const android::sfd& fd) {
+    return writeDupFileDescriptor(fd.get());
+}
+
+
+status_t Parcel::writeSmartFileDescriptorVector(const std::vector<android::sfd>& val)
+{
+    if (val.size() > std::numeric_limits<int32_t>::max()) {
+        return BAD_VALUE;
+    }
+
+    status_t status = writeInt32(val.size());
+
+    if (status != OK) {
+        return status;
+    }
+
+    for (const auto& item : val) {
+        status = writeSmartFileDescriptor(item);
+
+        if (status != OK) {
+            return status;
+        }
+    }
+
+    return OK;
 }
 
 status_t Parcel::writeBlob(size_t len, bool mutableCopy, WritableBlob* outBlob)
@@ -1895,14 +1923,58 @@ native_handle* Parcel::readNativeHandle() const
 int Parcel::readFileDescriptor() const
 {
     const flat_binder_object* flat = readObject(true);
-    if (flat) {
-        switch (flat->type) {
-            case BINDER_TYPE_FD:
-                //ALOGI("Returning file descriptor %ld from parcel %p", flat->handle, this);
-                return flat->handle;
+
+    if (flat && flat->type == BINDER_TYPE_FD) {
+        return flat->handle;
+    }
+
+    return BAD_TYPE;
+}
+
+status_t Parcel::readSmartFileDescriptor(android::sfd* val) const
+{
+    int got = readFileDescriptor();
+
+    if (got == BAD_TYPE) {
+        return BAD_TYPE;
+    }
+
+    *val = android::sfd::dup(got);
+
+    if (val->get() < 0) {
+        return BAD_VALUE;
+    }
+
+    return OK;
+}
+
+
+status_t Parcel::readSmartFileDescriptorVector(std::vector<android::sfd>* val) const
+{
+    val->clear();
+
+    int32_t size;
+    status_t status = readInt32(&size);
+
+    if (status != OK) {
+        return status;
+    }
+
+    if (size < 0) {
+        return BAD_VALUE;
+    }
+
+    val->resize(size);
+
+    for (auto& v: *val) {
+        status = readSmartFileDescriptor(&v);
+
+        if (status != OK) {
+            return status;
         }
     }
-    return BAD_TYPE;
+
+    return OK;
 }
 
 status_t Parcel::readBlob(size_t len, ReadableBlob* outBlob) const
