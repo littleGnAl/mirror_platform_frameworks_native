@@ -149,6 +149,11 @@ public:
     // will be closed once the parcel is destroyed.
     status_t            writeDupFileDescriptor(int fd);
 
+    // Place a vector of file desciptors into the parcel. Each descriptor is
+    // dup'd as in writeDupFileDescriptor
+    status_t            writeDupFileDescriptorVector(
+                            const std::vector<int>& val);
+
     // Writes a blob to the parcel.
     // If the blob is small, then it is stored in-place, otherwise it is
     // transferred by way of an anonymous shared memory region.  Prefer sending
@@ -240,6 +245,15 @@ public:
     // Retrieve a file descriptor from the parcel.  This returns the raw fd
     // in the parcel, which you do not own -- use dup() to get your own copy.
     int                 readFileDescriptor() const;
+
+    // Retrieve a file descriptor from the parcel.  This returns a new fd which
+    // you must close.
+    status_t            readDupFileDescriptor(int* val) const;
+
+
+    // Retrieve a vector of file descriptors from the parcel.  This returns new
+    // fds which you must close.
+    status_t            readDupFileDescriptorVector(std::vector<int>* val) const;
 
     // Reads a blob from the parcel.
     // The caller should call release() on the blob after reading its contents.
