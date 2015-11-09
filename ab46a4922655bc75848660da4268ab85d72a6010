@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b69d1e72_9315971b",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-09T16:04:12Z",
+      "side": 1,
+      "message": "Ooops, did not see this when making comments before about dumpstate, belay my concern.",
+      "range": {
+        "startLine": 697,
+        "startChar": 50,
+        "endLine": 697,
+        "endChar": 63
+      },
+      "revId": "ab46a4922655bc75848660da4268ab85d72a6010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
