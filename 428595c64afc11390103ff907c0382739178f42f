@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6d7f27c_8ad06bd4",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-09T23:03:55Z",
+      "side": 1,
+      "message": "These should probably be wrapped with objects that close the contained file descriptor all the way down here.",
+      "revId": "428595c64afc11390103ff907c0382739178f42f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
