@@ -19,6 +19,7 @@ sources := \
     BpBinder.cpp \
     BufferedTextOutput.cpp \
     Debug.cpp \
+    Error.cpp \
     IAppOpsCallback.cpp \
     IAppOpsService.cpp \
     IBatteryStats.cpp \
