@@ -22,6 +22,7 @@
 #include <binder/IPCThreadState.h>
 #include <binder/Binder.h>
 #include <binder/BpBinder.h>
+#include <binder/Error.h>
 #include <binder/ProcessState.h>
 #include <binder/TextOutput.h>
 
@@ -1300,7 +1301,8 @@ restart_write:
 
 status_t Parcel::writeNoException()
 {
-    return writeInt32(0);
+    binder::Error error;
+    return error.writeToParcel(this);
 }
 
 void Parcel::remove(size_t /*start*/, size_t /*amt*/)
@@ -1850,18 +1852,9 @@ wp<IBinder> Parcel::readWeakBinder() const
 
 int32_t Parcel::readExceptionCode() const
 {
-  int32_t exception_code = readAligned<int32_t>();
-  if (exception_code == EX_HAS_REPLY_HEADER) {
-    int32_t header_start = dataPosition();
-    int32_t header_size = readAligned<int32_t>();
-    // Skip over fat responses headers.  Not used (or propagated) in
-    // native code
-    setDataPosition(header_start + header_size);
-    // And fat response headers are currently only used when there are no
-    // exceptions, so return no error:
-    return 0;
-  }
-  return exception_code;
+    binder::Error error;
+    error.readFromParcel(*this);
+    return int32_t(error.exception_code());
 }
 
 native_handle* Parcel::readNativeHandle() const
