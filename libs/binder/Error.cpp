@@ -113,6 +113,10 @@ void Error::setFromStatusT(status_t status) {
             exception_ = Exception::EX_NONE;
             message_.clear();
             break;
+        case UNEXPECTED_NULL:
+            exception_ = Exception::EX_NULL_POINTER;
+            message_.setTo("Unexpected null reference in Parcel");
+            break;
         default:
             exception_ = Exception::EX_TRANSACTION_FAILED;
             message_.setTo("Transaction failed");
