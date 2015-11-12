@@ -1,0 +1,243 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1648aa4e_d50f8e07",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "this seems like an ambiguous header guard name, but i guess it matches the rest of libbinder\u0027s headers. :-(",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b636fec5_af02bd1f",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "would something like remote_error be a clearer name?",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36392eb5_708eeee1",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "does this actually compile, or do you need to put extra parentheses around all of these assignments to avoid compiler warnings?",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f642362f_aec477b5",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "you don\u0027t need android:: here.\n\nalso, should the message be a const ref? that appears to be used for other read-only String8s in libbinder, and also setException() below.",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "563ea29c_d41b14ae",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "nit: \"copyable\" might be more common",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "765726ea_4113d4a5",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "how does this differ from fromStatusT()? can you make it be private if you don\u0027t expect outside callers to use it?",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36392eb5_90599a43",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "should this return a const ref instead?",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "563ea29c_f42010dd",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "nit: add a blank line after this method",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b636fec5_2f0fad47",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "whoa, this is super-surprising. i\u0027d rather you just drop operator bool() instead of having it return the opposite of what most people would expect.",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f642362f_0eb4ab3e",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "i don\u0027t think you need these; this is all in the android namespace",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "563ea29c_5430042a",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "nit: delete extra blank line",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96549ae5_3996130c",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "nit: just use String8()",
+      "range": {
+        "startLine": 28,
+        "startChar": 40,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36392eb5_d053221d",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-11-12T20:51:35Z",
+      "side": 1,
+      "message": "be consistent with indentation here and elsewhere -- you\u0027re mostly using 4-space indent",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
