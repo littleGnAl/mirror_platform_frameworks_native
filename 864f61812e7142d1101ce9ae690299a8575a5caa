@@ -412,6 +412,24 @@
     },
     {
       "key": {
+        "uuid": "bb3987d2_00637090",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-12T22:25:27Z",
+      "side": 1,
+      "message": "I\u0027m OK with dropping it, I don\u0027t think I\u0027d want to personally use it due to the ambiguity. So doesn\u0027t sound like it has any champions.",
+      "parentUuid": "3b2597a9_1364f4c6",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb2e9f8f_ce800320",
         "filename": "include/binder/Status.h",
         "patchSetId": 2
