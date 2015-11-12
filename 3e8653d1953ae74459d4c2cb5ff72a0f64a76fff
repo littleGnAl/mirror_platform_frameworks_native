@@ -56,6 +56,23 @@
       "revId": "3e8653d1953ae74459d4c2cb5ff72a0f64a76fff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_f3be08f0",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:27:30Z",
+      "side": 1,
+      "message": "If you sync, you should be able to use the templated version and get consistent null reference detection.",
+      "revId": "3e8653d1953ae74459d4c2cb5ff72a0f64a76fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
