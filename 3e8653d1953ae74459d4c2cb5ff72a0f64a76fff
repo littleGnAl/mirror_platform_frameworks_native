@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b2597a9_5045d248",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T18:13:39Z",
+      "side": 1,
+      "message": "nit: sort",
+      "revId": "3e8653d1953ae74459d4c2cb5ff72a0f64a76fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_90657af2",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T18:13:39Z",
+      "side": 1,
+      "message": "The nice thing about sfd is that it defines its ownership semantics without a lot of documentation.  You may mention that this will dup() sfd internally, since that\u0027s interesting from a global resources management perspective.",
+      "range": {
+        "startLine": 153,
+        "startChar": 49,
+        "endLine": 154,
+        "endChar": 45
+      },
+      "revId": "3e8653d1953ae74459d4c2cb5ff72a0f64a76fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b3453db_2fc7851b",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T18:13:39Z",
+      "side": 1,
+      "message": "Thanks",
+      "revId": "3e8653d1953ae74459d4c2cb5ff72a0f64a76fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
