@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b6da7ea7_d7267f61",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-12T21:15:10Z",
+      "side": 1,
+      "message": "STATUS is ambiguous enough that I\u0027d go with\nANDROID_BINDER_STATUS_H\nThe other classes here are (relatively) uniquely-named.",
+      "parentUuid": "1648aa4e_d50f8e07",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b636fec5_af02bd1f",
         "filename": "include/binder/Status.h",
         "patchSetId": 2
@@ -47,6 +65,23 @@
       "writtenOn": "2015-11-12T20:51:35Z",
       "side": 1,
       "message": "does this actually compile, or do you need to put extra parentheses around all of these assignments to avoid compiler warnings?",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_f16cc24f",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-12T21:15:10Z",
+      "side": 1,
+      "message": "would be good to indicate what \u0027those\u0027 are (in my understanding, errors in the Binder layer itself)",
       "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -167,6 +202,41 @@
     },
     {
       "key": {
+        "uuid": "bb3987d2_65b00e20",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-12T21:15:10Z",
+      "side": 1,
+      "message": "It does match the existing semantics of status_t (where OK \u003d 0), though generally I do see code written as\n\n  status_t res \u003d foo();\n  if (res !\u003d OK) { ...}\n\ninstead of\n\n  if (res) {...}\n\nto avoid ambiguity.\nIt\u0027s clearer when it\u0027s called error:\n\n   status_t err \u003d foo();\n   if (err) { ... }\n\nwhich would be an argument for calling this Error instead of Status. \nBut I\u0027ve seen code use both \u0027err\u0027 and \u0027res\u0027 as names for status_t, so I don\u0027t think changing Status to Error would necessarily disambiguate.\n\nBTW, would\n\n   Status res \u003d foo();\n   if (res !\u003d Status::Ok()) { ...}\n\nwork? I\u0027m assuming no, without a explicit operator\u003d. I\u0027m not sure if it\u0027s worth supporting, note, especially since there\u0027s\n\n   if (!res.isOk()) { ... }\n\nwhich should be sufficient.\n\nPerhaps dropping the bool makes sense, given isOk(), but I think I\u0027m fine with leaving it in.",
+      "parentUuid": "b636fec5_2f0fad47",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb2e9f8f_ce800320",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-12T21:15:10Z",
+      "side": 1,
+      "message": "Android native code (incl. the rest of the binder code in lib/binder) mostly uses the mException member variable syntax.",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f642362f_0eb4ab3e",
         "filename": "libs/binder/Status.cpp",
         "patchSetId": 2
@@ -235,6 +305,41 @@
       "writtenOn": "2015-11-12T20:51:35Z",
       "side": 1,
       "message": "be consistent with indentation here and elsewhere -- you\u0027re mostly using 4-space indent",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_134f5469",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-12T21:15:10Z",
+      "side": 1,
+      "message": "yes, please stick to 4-space, for Android style consistency.",
+      "parentUuid": "36392eb5_d053221d",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b3453db_12998cec",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-12T21:15:10Z",
+      "side": 1,
+      "message": "whitespace",
       "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
