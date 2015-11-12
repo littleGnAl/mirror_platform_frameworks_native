@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b6da7ea7_f76f4205",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Certainly.",
+      "parentUuid": "b6da7ea7_d7267f61",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b636fec5_af02bd1f",
         "filename": "include/binder/Status.h",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2015-11-12T20:51:35Z",
       "side": 1,
       "message": "would something like remote_error be a clearer name?",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b25eb9e_25fb18a3",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "b636fec5_af02bd1f",
       "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "5b2a4b7b_5445c448",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Sure doesn\u0027t.  Added parens.",
+      "parentUuid": "36392eb5_708eeee1",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b2a4b7b_f16cc24f",
         "filename": "include/binder/Status.h",
         "patchSetId": 2
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "96d1fa8e_636c394f",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Split them up and added meaningful comments.  Writing this code by hand is pretty bad/error prone, but for the sake of future me, I\u0027ll write down what\u0027s gone wrong in these situations.",
+      "parentUuid": "5b2a4b7b_f16cc24f",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f642362f_aec477b5",
         "filename": "include/binder/Status.h",
         "patchSetId": 2
@@ -99,6 +171,30 @@
       "writtenOn": "2015-11-12T20:51:35Z",
       "side": 1,
       "message": "you don\u0027t need android:: here.\n\nalso, should the message be a const ref? that appears to be used for other read-only String8s in libbinder, and also setException() below.",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3987d2_602ebc83",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Doing so prevents copy elision in the construction of this object.  I guess I could make it const\u0026 anyway, and then add an overload for const char*?",
+      "parentUuid": "f642362f_aec477b5",
       "range": {
         "startLine": 72,
         "startChar": 35,
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "bb3987d2_e0306ce5",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "563ea29c_d41b14ae",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765726ea_4113d4a5",
         "filename": "include/binder/Status.h",
         "patchSetId": 2
@@ -145,6 +265,24 @@
       "writtenOn": "2015-11-12T20:51:35Z",
       "side": 1,
       "message": "how does this differ from fromStatusT()? can you make it be private if you don\u0027t expect outside callers to use it?",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3987d2_204f9469",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "One mutates an existing instance, the other is a factory.  I found when I was updating our integration tests that it\u0027s pretty common to \"return OK\" and that\u0027s super annoying if I tell you know have to write:\n\n  Status ret;\n  status.setFromStatusT(status);\n  return ret;",
+      "parentUuid": "765726ea_4113d4a5",
       "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -168,6 +306,24 @@
     },
     {
       "key": {
+        "uuid": "b6da7ea7_b7d4aa12",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Good thought.",
+      "parentUuid": "36392eb5_90599a43",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563ea29c_f42010dd",
         "filename": "include/binder/Status.h",
         "patchSetId": 2
@@ -179,6 +335,24 @@
       "writtenOn": "2015-11-12T20:51:35Z",
       "side": 1,
       "message": "nit: add a blank line after this method",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b3453db_72269065",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "563ea29c_f42010dd",
       "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -220,6 +394,24 @@
     },
     {
       "key": {
+        "uuid": "3b2597a9_1364f4c6",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "I actually hate the bool operator, precisely because the convention is arbitrary.  I\u0027m accustomed to returning false on error, so I get upset to see:\n\n  if (service-\u003eDoSomething()) {\n    // this is an error????\n  }\n\nbut yet, this is consistent with status_t\u0027s non-zero means error convention.  When I use status_t, I like to always write: if (status !\u003d OK) { ... }.\n\nIf etalvala@ is ok with dropping the bool operator, I\u0027d like to do so.  I included it mostly because I inferred he was interested. I much prefer to read:\n\n  if (!service-\u003eDoSomething().isOk())\n    ...\n\nor\n\n  auto status \u003d service-\u003eDoSomething();\n  if (!status.isOk())\n    ...",
+      "parentUuid": "bb3987d2_65b00e20",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb2e9f8f_ce800320",
         "filename": "include/binder/Status.h",
         "patchSetId": 2
@@ -231,6 +423,24 @@
       "writtenOn": "2015-11-12T21:15:10Z",
       "side": 1,
       "message": "Android native code (incl. the rest of the binder code in lib/binder) mostly uses the mException member variable syntax.",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3987d2_40ae185a",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "My mistake.  I did a pretty good job faking comfort with the style guide elsewhere didn\u0027t I? :)",
+      "parentUuid": "fb2e9f8f_ce800320",
       "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -254,6 +464,24 @@
     },
     {
       "key": {
+        "uuid": "96d1fa8e_becac670",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f642362f_0eb4ab3e",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563ea29c_5430042a",
         "filename": "libs/binder/Status.cpp",
         "patchSetId": 2
@@ -271,6 +499,24 @@
     },
     {
       "key": {
+        "uuid": "b6da7ea7_f7ee2272",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "563ea29c_5430042a",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96549ae5_3996130c",
         "filename": "libs/binder/Status.cpp",
         "patchSetId": 2
@@ -282,6 +528,30 @@
       "writtenOn": "2015-11-12T20:51:35Z",
       "side": 1,
       "message": "nit: just use String8()",
+      "range": {
+        "startLine": 28,
+        "startChar": 40,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3987d2_00b5b03c",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96549ae5_3996130c",
       "range": {
         "startLine": 28,
         "startChar": 40,
@@ -329,6 +599,24 @@
     },
     {
       "key": {
+        "uuid": "76d4867d_f9ee1572",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "My bad.",
+      "parentUuid": "3b2597a9_134f5469",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b3453db_12998cec",
         "filename": "libs/binder/Status.cpp",
         "patchSetId": 2
@@ -340,6 +628,24 @@
       "writtenOn": "2015-11-12T21:15:10Z",
       "side": 1,
       "message": "whitespace",
+      "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb2e9f8f_11e50ccc",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-12T22:19:34Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "1b3453db_12998cec",
       "revId": "864f61812e7142d1101ce9ae690299a8575a5caa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
