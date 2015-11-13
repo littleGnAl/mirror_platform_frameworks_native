@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb3987d2_0e9b9ae4",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-13T21:51:51Z",
+      "side": 1,
+      "message": "nit: put all these functions in an anonymous namespace.",
+      "revId": "7ae72e1c37bff1be0c890069180127d1fd901739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_2203149e",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-13T21:51:51Z",
+      "side": 1,
+      "message": "nit: indentation, { on same line",
+      "range": {
+        "startLine": 757,
+        "startChar": 0,
+        "endLine": 758,
+        "endChar": 1
+      },
+      "revId": "7ae72e1c37bff1be0c890069180127d1fd901739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
