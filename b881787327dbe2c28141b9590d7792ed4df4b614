@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bfc0b2b_61cc708d",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-13T04:15:58Z",
+      "side": 1,
+      "message": "Obviously not in this CL, but we should add a matching note to Parcel.java.",
+      "revId": "b881787327dbe2c28141b9590d7792ed4df4b614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
