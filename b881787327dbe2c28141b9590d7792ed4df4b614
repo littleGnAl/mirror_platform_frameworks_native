@@ -16,6 +16,52 @@
       "revId": "b881787327dbe2c28141b9590d7792ed4df4b614",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36392eb5_f6c49664",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2015-11-17T18:38:24Z",
+      "side": 1,
+      "message": "To match method caps style guide, \"ok\" or \"buildOk\" or \"fromOk\"?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 23
+      },
+      "revId": "b881787327dbe2c28141b9590d7792ed4df4b614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1648aa4e_06ae4ea8",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2015-11-17T18:38:24Z",
+      "side": 1,
+      "message": "Logic is just a touch funky to read.  Maybe:\n\n  if (status \u003d\u003d OK \u0026\u0026 mEx !\u003d EX_NONE) {\n    writeString\n  }\n  return status;",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 5
+      },
+      "revId": "b881787327dbe2c28141b9590d7792ed4df4b614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
