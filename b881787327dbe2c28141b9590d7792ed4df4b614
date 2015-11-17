@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "96d1fa8e_af8f2b4c",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-17T20:18:00Z",
+      "side": 1,
+      "message": "I like ok().  Will change.",
+      "parentUuid": "36392eb5_f6c49664",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 23
+      },
+      "revId": "b881787327dbe2c28141b9590d7792ed4df4b614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1648aa4e_06ae4ea8",
         "filename": "libs/binder/Status.cpp",
         "patchSetId": 3
@@ -53,6 +77,30 @@
       "writtenOn": "2015-11-17T18:38:24Z",
       "side": 1,
       "message": "Logic is just a touch funky to read.  Maybe:\n\n  if (status \u003d\u003d OK \u0026\u0026 mEx !\u003d EX_NONE) {\n    writeString\n  }\n  return status;",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 5
+      },
+      "revId": "b881787327dbe2c28141b9590d7792ed4df4b614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb75bfb9_59ff0359",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-17T20:18:00Z",
+      "side": 1,
+      "message": "Agreed that this is kind of hard to read. I can break it up and add some comments inline that will make it a little easier?\n\nThe intent of doing it this way was to avoid a lot of if-nesting.  The next change proposed by the green doc (link in the bug) is to add support for an application specific error that contains both an int and a string message.  This error would allow service writers to express specific error conditions to client code in a standard way.\n\nThis method would then change to look like:\n\nstatus_t Status::writeToParcel(Parcel* parcel) const {\n    status_t status \u003d parcel-\u003ewriteInt32(mException);\n    if (status !\u003d OK) { return status; }\n    if (mException \u003d\u003d EX_NONE) {\n        // We have no more information to write.\n        return status;\n    }\n    status \u003d parcel-\u003ewriteString16(String16(mMessage));\n    if (status !\u003d OK) { return status; }\n    if (mException !\u003d EX_APPLICATION_SPECIFIC) {\n        // We have no more information to write.\n        return status;\n    }\n    status \u003d parcel-\u003ewriteInt32(mApplicationErrorCode);\n    return status;\n}\n\nBut I don\u0027t feel too strongly about this, we\u0027re only talking about 2 levels of nesting.  If you aren\u0027t satisfied with comments, I can change this as you suggest.",
+      "parentUuid": "1648aa4e_06ae4ea8",
       "range": {
         "startLine": 79,
         "startChar": 0,
