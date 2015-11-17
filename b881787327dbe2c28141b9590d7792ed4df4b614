@@ -110,6 +110,30 @@
       "revId": "b881787327dbe2c28141b9590d7792ed4df4b614",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b91cf0c_4272b47f",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2015-11-17T20:46:01Z",
+      "side": 1,
+      "message": "I\u0027m okay with either approach; the current version in the patchset now, or the new verbose mode.  (If you\u0027re going to iterate and add the richer app version later, I\u0027m fine with the current patchset.)",
+      "parentUuid": "fb75bfb9_59ff0359",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 5
+      },
+      "revId": "b881787327dbe2c28141b9590d7792ed4df4b614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
