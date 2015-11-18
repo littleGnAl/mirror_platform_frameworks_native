@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "76d4867d_b24ca2c2",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-11-18T20:02:55Z",
+      "side": 1,
+      "message": "Ok, The line is now too long, but, your jam.",
+      "parentUuid": "1b3453db_6716c228",
+      "revId": "c1eec0e60f3f8ed6d1fcdd7b5364d941bd24b895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76d4867d_a638ec7c",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 7
