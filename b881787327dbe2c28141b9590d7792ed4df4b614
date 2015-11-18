@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "fb75bfb9_a785d2ee",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-18T00:42:20Z",
+      "side": 1,
+      "message": "good catch. exceptionCode and exceptionMessage()",
+      "parentUuid": "962d7a79_6bd43d69",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 61
+      },
+      "revId": "b881787327dbe2c28141b9590d7792ed4df4b614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1648aa4e_06ae4ea8",
         "filename": "libs/binder/Status.cpp",
         "patchSetId": 3
