@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b3453db_6716c228",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-18T00:56:28Z",
+      "side": 1,
+      "message": "nit: { on the same line, and what\u0027s up with this indentation?",
+      "revId": "c1eec0e60f3f8ed6d1fcdd7b5364d941bd24b895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_a638ec7c",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1695,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-18T00:56:28Z",
+      "side": 1,
+      "message": "nit: val-\u003ereset(dup(got));",
+      "range": {
+        "startLine": 1695,
+        "startChar": 9,
+        "endLine": 1695,
+        "endChar": 30
+      },
+      "revId": "c1eec0e60f3f8ed6d1fcdd7b5364d941bd24b895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b25eb9e_6db32bc3",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1706,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-18T00:56:28Z",
+      "side": 1,
+      "message": "same nits re indentation and {",
+      "revId": "c1eec0e60f3f8ed6d1fcdd7b5364d941bd24b895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
