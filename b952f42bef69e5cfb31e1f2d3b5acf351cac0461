@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76d4867d_d83b3578",
+        "filename": "opengl/libs/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-11-19T01:53:41Z",
+      "side": 1,
+      "message": "Looks like bad idea to have two (almost) identical files in the system.img.\nWould the following work?\nLOCAL_SRC_FILES :\u003d dummpy.cpp  # build an empty .so\nLOCAL_SHARED_LIBRARIES :\u003d libGLESv2  # with libGLESv2 in DT_NEEDED.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "b952f42bef69e5cfb31e1f2d3b5acf351cac0461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
