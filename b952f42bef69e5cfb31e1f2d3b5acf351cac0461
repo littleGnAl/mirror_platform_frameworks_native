@@ -22,6 +22,30 @@
       "revId": "b952f42bef69e5cfb31e1f2d3b5acf351cac0461",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_584e2518",
+        "filename": "opengl/libs/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2015-11-19T01:58:21Z",
+      "side": 1,
+      "message": "Well, it will work is most cases but with a bit different symbol lookup order, we need to export the symbols from libGLESv3.so in order to ensure the correct lookup order.\n\nI know that we are wasting a little bit of space here - but I do not really see other reliable way of solving dt_soname problem.",
+      "parentUuid": "76d4867d_d83b3578",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "b952f42bef69e5cfb31e1f2d3b5acf351cac0461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
