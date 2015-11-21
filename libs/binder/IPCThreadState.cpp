@@ -1026,10 +1026,31 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
     case BR_TRANSACTION:
         {
             binder_transaction_data tr;
+            uint32_t sctx_sz;
+            char *sctx;
+
             result = mIn.read(&tr, sizeof(tr));
             ALOG_ASSERT(result == NO_ERROR,
                 "Not enough command data for brTRANSACTION");
             if (result != NO_ERROR) break;
+            result = mIn.read(&sctx_sz, sizeof(sctx_sz));
+            ALOG_ASSERT(result == NO_ERROR,
+                "Not enough command data for brTRANSACTION");
+            if (result != NO_ERROR) break;
+
+            if (sctx_sz) {
+                sctx = (char *) calloc(sctx_sz + 1, sizeof(*sctx));
+                if (!sctx) {
+                    ALOGE("Out of memory.");
+                    break;
+                }
+                result = mIn.read(sctx, sctx_sz);
+                ALOG_ASSERT(result == NO_ERROR,
+                "Not enough command data for brTRANSACTION");
+                sctx[sctx_sz] = '\0';
+                free(sctx);
+            }
+
             
             Parcel buffer;
             buffer.ipcSetDataReference(

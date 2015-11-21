@@ -234,6 +234,28 @@ int binder_parse(struct binder_state *bs, struct binder_io *bio,
                 return -1;
             }
             binder_dump_txn(txn);
+            ptr += sizeof(*txn);
+
+            /* read secctx */
+            uint32_t secctx_sz = 0;
+            uint32_t padlen = 0;
+            char *secctx = NULL;
+
+            secctx_sz = *(uint32_t *) ptr;
+            ptr += sizeof(secctx_sz);
+            if (secctx_sz) {
+                secctx = malloc(secctx_sz + 1);
+                if (!secctx) {
+                    ALOGE("Out of memory, BR_TRANSACTION failed.");
+                    return -1;
+                }
+                memcpy(secctx, (void *)ptr, secctx_sz);
+                secctx[secctx_sz] = '\0';
+                padlen = (secctx_sz + 3 /* PAD_AMT */) & ~3 /* PAD_AMT */;
+                ptr += padlen;
+                free(secctx);
+            }
+
             if (func) {
                 unsigned rdata[256/4];
                 struct binder_io msg;
