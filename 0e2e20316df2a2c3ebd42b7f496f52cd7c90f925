@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bfc537c_c6dae63f",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-23T19:32:21Z",
+      "side": 1,
+      "message": "I think it might be good to have a few sentences about what errorCode means, relative to exceptionCode. that is, how one should interpret the errors. My understanding is that:\n\n  1. ExceptionCode is the primary error code.\n  2. If ExceptionCode is EX_NONE, no error occurred, and message and error code are nil.\n  2. If ExceptionCode is other than EX_NONE, there will be a message.\n  3. But if it is EX_TRANSACTION_FAILED, then the errorCode indicates the binder transaction error code, and there\u0027s no message.\n  4. But if it is EX_APPLICATION_SPECIFIC, then the errorCode indicates the application-specific error code, and there is generally a message.\n\nIs that correct?",
+      "revId": "0e2e20316df2a2c3ebd42b7f496f52cd7c90f925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb2a67bd_1dd283dc",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-23T19:32:21Z",
+      "side": 1,
+      "message": "Is this meant to be OK? Or just a \u0027no error code set\u0027 value?\nIf the former, might as well use OK.",
+      "range": {
+        "startLine": 27,
+        "startChar": 33,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "0e2e20316df2a2c3ebd42b7f496f52cd7c90f925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
