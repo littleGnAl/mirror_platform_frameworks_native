@@ -306,6 +306,7 @@ void DisplayDevice::setViewportAndProjection() const {
 // ----------------------------------------------------------------------------
 
 void DisplayDevice::setVisibleLayersSortedByZ(const Vector< sp<Layer> >& layers) {
+    mVisibleLayersSortedByZLast = mVisibleLayersSortedByZ;
     mVisibleLayersSortedByZ = layers;
     mSecureLayerVisible = false;
     size_t count = layers.size();
