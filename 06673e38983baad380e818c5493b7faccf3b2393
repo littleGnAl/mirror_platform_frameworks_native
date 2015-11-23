@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bfc537c_e1d1cc22",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-23T22:22:19Z",
+      "side": 1,
+      "message": "nit: this should fit on one line",
+      "revId": "06673e38983baad380e818c5493b7faccf3b2393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1b2bb8_00a85af6",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-23T22:22:19Z",
+      "side": 1,
+      "message": "nit: this should fit on one line.",
+      "revId": "06673e38983baad380e818c5493b7faccf3b2393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
