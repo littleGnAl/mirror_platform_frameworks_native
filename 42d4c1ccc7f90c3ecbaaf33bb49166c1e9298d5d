@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbe4dff8_c762118b",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-27T18:38:20Z",
+      "side": 1,
+      "message": "Maybe make this an enum and keep the same VAL_* naming scheme from Parcel.java?  That makes the constants show up in code search the same way.",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbe4dff8_275ad5cd",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-27T18:38:20Z",
+      "side": 1,
+      "message": "This seems useful to consumers of the bundle.  Maybe declare/define PersistableBundle::empty() and PersistableBundle::size()?",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbe4dff8_87fe49d1",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-27T18:38:20Z",
+      "side": 1,
+      "message": "Add a comment that notes that the length includes the length header",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bdbd73a_e08d3c55",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-27T18:38:20Z",
+      "side": 1,
+      "message": "Use std::numeric_limits for this.",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bea93c4_3f958364",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-27T18:38:20Z",
+      "side": 1,
+      "message": "It looks like all these methods return a binary exists or not value.  Could they return a bool instead of a status_t?",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb0f7f76_6c178fd4",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-27T18:38:20Z",
+      "side": 1,
+      "message": "I\u0027d mildly prefer this read more like:\n\nreturnIfFailed(parcel.writeString16(key_val_pair.first));\n\nThat way you can write one macro and not have to get the type right twice (once in the macro, once in the callsite to the macro.  What do you think?",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
