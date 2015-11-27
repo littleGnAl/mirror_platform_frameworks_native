@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbc1db6d_fd254357",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-27T20:31:58Z",
+      "side": 1,
+      "message": "The strings themselves can also be null",
+      "revId": "f08457b8e7de7421b203c31f48e374af8371c08e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbc1db6d_dd2a7f25",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-27T20:31:58Z",
+      "side": 1,
+      "message": "Probably should be unique_ptr\u003cT\u003e",
+      "revId": "f08457b8e7de7421b203c31f48e374af8371c08e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
