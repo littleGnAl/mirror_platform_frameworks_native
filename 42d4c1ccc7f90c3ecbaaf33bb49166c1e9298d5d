@@ -101,6 +101,29 @@
       "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5be08be0_e7b8f003",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-27T20:24:46Z",
+      "side": 1,
+      "message": "seems like BAD_INDEX might be a good value to use here given the semantics of emplace",
+      "range": {
+        "startLine": 463,
+        "startChar": 60,
+        "endLine": 463,
+        "endChar": 73
+      },
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
