@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9bbbe3f1_d2e14452",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-28T14:49:03Z",
+      "side": 1,
+      "message": "That is correct.  I guess you\u0027d like that to be written up here?\n\nMaybe mSubError would be a more descriptive name?",
+      "parentUuid": "1bfc537c_c6dae63f",
+      "revId": "0e2e20316df2a2c3ebd42b7f496f52cd7c90f925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb2a67bd_1dd283dc",
         "filename": "libs/binder/Status.cpp",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2015-11-23T19:32:21Z",
       "side": 1,
       "message": "Is this meant to be OK? Or just a \u0027no error code set\u0027 value?\nIf the former, might as well use OK.",
+      "range": {
+        "startLine": 27,
+        "startChar": 33,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "0e2e20316df2a2c3ebd42b7f496f52cd7c90f925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b2123e5_63f3125d",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-28T14:49:03Z",
+      "side": 1,
+      "message": "It\u0027s sort of \"no value set\".  You\u0027re right, I could use NO_ERR",
+      "parentUuid": "bb2a67bd_1dd283dc",
       "range": {
         "startLine": 27,
         "startChar": 33,
