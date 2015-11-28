@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "dbe63b28_32d5300f",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-28T15:04:06Z",
+      "side": 1,
+      "message": "I\u0027m just going to change the getter to specifically reference status_t to make the usage clearer.  You\u0027re right that if I have to explicitly comment on what the confusing API should mean, then I should just clean up the API.",
+      "parentUuid": "9bbbe3f1_d2e14452",
+      "revId": "0e2e20316df2a2c3ebd42b7f496f52cd7c90f925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb2a67bd_1dd283dc",
         "filename": "libs/binder/Status.cpp",
         "patchSetId": 1
