@@ -16,6 +16,24 @@
       "revId": "b3c558568a89098ce68b76f310dc3703926262ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db0f1bb0_cdc63d96",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-11-30T20:48:08Z",
+      "side": 1,
+      "message": "Your understanding is correct. How about transactionError()?",
+      "parentUuid": "bbe987fc_71e85812",
+      "revId": "b3c558568a89098ce68b76f310dc3703926262ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
