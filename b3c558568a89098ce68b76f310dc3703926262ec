@@ -34,6 +34,24 @@
       "revId": "b3c558568a89098ce68b76f310dc3703926262ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bf043de_b3492266",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-30T20:56:36Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "db0f1bb0_cdc63d96",
+      "revId": "b3c558568a89098ce68b76f310dc3703926262ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
