@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbe987fc_71e85812",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-11-30T19:11:42Z",
+      "side": 1,
+      "message": "(cont from CL1)\nNot sure this is still totally clear.\napplicationErrorCode() seems fine, but reading the class fresh, I\u0027m not sure I\u0027d know what the difference between \u0027isOk\u0027 and \u0027statusT \u003d\u003d OK\u0027 would be.\n\nWe can get statusT() \u003d\u003d OK and also !isOk() at the same time, which seems confusing. Is there a name for statusT() that would make it clear that it\u0027s about transaction failures, not general status? (assuming I\u0027m understanding it correctly myself?)",
+      "revId": "b3c558568a89098ce68b76f310dc3703926262ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
