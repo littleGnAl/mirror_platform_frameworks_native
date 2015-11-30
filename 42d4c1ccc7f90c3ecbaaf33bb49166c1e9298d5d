@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9b1763d8_d8aaadae",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-11-30T23:03:08Z",
+      "side": 1,
+      "message": "Done. I have also put put these const variables in an anonymous enum, as per instructions the style guide.",
+      "parentUuid": "fbe4dff8_c762118b",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbe4dff8_275ad5cd",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2015-11-27T18:38:20Z",
       "side": 1,
       "message": "This seems useful to consumers of the bundle.  Maybe declare/define PersistableBundle::empty() and PersistableBundle::size()?",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bf38fea_9513a4a6",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-11-30T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbe4dff8_275ad5cd",
       "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3bd59733_73dbb845",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-11-30T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbe4dff8_87fe49d1",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bdbd73a_e08d3c55",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2015-11-27T18:38:20Z",
       "side": 1,
       "message": "Use std::numeric_limits for this.",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb1267d6_cfa2b1be",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-11-30T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bdbd73a_e08d3c55",
       "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "9bf043de_b645902a",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-11-30T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bea93c4_3f958364",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb0f7f76_6c178fd4",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 3
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "bb1267d6_2fbcaddc",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-11-30T23:03:08Z",
+      "side": 1,
+      "message": "Done. I like this suggestion a lot since it cuts down the number of macros used in this file.",
+      "parentUuid": "fb0f7f76_6c178fd4",
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5be08be0_e7b8f003",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 3
@@ -115,6 +223,30 @@
       "writtenOn": "2015-11-27T20:24:46Z",
       "side": 1,
       "message": "seems like BAD_INDEX might be a good value to use here given the semantics of emplace",
+      "range": {
+        "startLine": 463,
+        "startChar": 60,
+        "endLine": 463,
+        "endChar": 73
+      },
+      "revId": "42d4c1ccc7f90c3ecbaaf33bb49166c1e9298d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1be45325_32bbe890",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-11-30T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5be08be0_e7b8f003",
       "range": {
         "startLine": 463,
         "startChar": 60,
