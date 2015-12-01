@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b1763d8_cc274fa3",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T19:20:20Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be unique_ptr\u003cT\u003e?",
+      "range": {
+        "startLine": 144,
+        "startChar": 80,
+        "endLine": 144,
+        "endChar": 81
+      },
+      "revId": "9069227f2651cedb610a068e946b3ed148198def",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db0f1bb0_e47596d8",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T19:20:20Z",
+      "side": 1,
+      "message": "All the nullable versions should have a consistent naming scheme.  I don\u0027t know that I care particularly whether they call out the nullable property explicitly (eg. writeNullableParcelable) or just overload the const ref version of the function, but we should be consistent.",
+      "revId": "9069227f2651cedb610a068e946b3ed148198def",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbe987fc_45afcae8",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T19:20:20Z",
+      "side": 1,
+      "message": "nit: Could we give this a separate name (e.g. readNullableTypedVector?  That would make it clearer to callsites that we\u0027re doing something related to nullable support here.\n\nThere are a whole bunch below that should also have separate names.",
+      "revId": "9069227f2651cedb610a068e946b3ed148198def",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bf043de_ff876bf9",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T19:20:20Z",
+      "side": 1,
+      "message": "indentation, here, and a couple places below",
+      "revId": "9069227f2651cedb610a068e946b3ed148198def",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
