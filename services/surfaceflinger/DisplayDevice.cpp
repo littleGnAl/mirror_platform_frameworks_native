@@ -88,7 +88,8 @@ DisplayDevice::DisplayDevice(
       mPowerMode(HWC_POWER_MODE_OFF),
       mActiveConfig(0)
 {
-    mNativeWindow = new Surface(producer, false);
+    Surface* windowSurface;
+    mNativeWindow = windowSurface = new Surface(producer, false);
     ANativeWindow* const window = mNativeWindow.get();
 
     /*
@@ -142,6 +143,10 @@ DisplayDevice::DisplayDevice(
 
     // initialize the display orientation transform.
     setProjection(DisplayState::eOrientationDefault, mViewport, mFrame);
+
+#ifdef NUM_FRAMEBUFFER_SURFACE_BUFFERS
+    windowSurface->allocateBuffers();
+#endif
 }
 
 DisplayDevice::~DisplayDevice() {
