@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db0f1bb0_44ea22ca",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T18:30:57Z",
+      "side": 1,
+      "message": "Woah, you\u0027re calling status (which is a method call) twice.  This should definitely look like:\n\n#define RETURN_IF_FAILED(calledOnce)                        \\\n  {                                                         \\\n    returnIfFailedStatus \u003d calledOnce;                      \\\n    if (returnIfFailedStatus) return returnIfFailedStatus;  \\\n  }\n\nMaybe declare a companion macro:\n\n#define RETURN_IF_FAILED_INIT status_t returnIfFailedStatus \u003d OK;",
+      "revId": "5fb77de2422d1023411709276279865fc960c07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b0923b2_d1949669",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T18:30:57Z",
+      "side": 1,
+      "message": "Probably should return the status_t of readFromParcelInner",
+      "revId": "5fb77de2422d1023411709276279865fc960c07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbde9f59_7a4ee5bb",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T18:30:57Z",
+      "side": 1,
+      "message": "Unfortunately, I don\u0027t think this allows you to overwrite values right?  Doesn\u0027t this have to look like:\n\nauto it \u003d mIntMap.find(key);\nif (it !\u003d mIntMap.end()) {\n  it-\u003esecond \u003d value;\n} else {\n  mIntMap.emplace_hint(it, key, value);\n}\n\nThat could probably just become a templated function in an anonymous namespace:\n\n\nnamespace {\n\ntemplate\u003ctypename T\u003e\nvoid putValue(const String16\u0026 key,\n              const T\u0026 value,\n              std::map\u003cString16, T\u003e* theMap) {\n  auto it \u003d theMap-\u003efind(key);\n  if (it !\u003d theMap-\u003eend()) {\n    it-\u003esecond \u003d value;\n  } else {\n    theMap-\u003eemplace_hint(it, key, value);\n  }\n}\n\n}  // namespace",
+      "revId": "5fb77de2422d1023411709276279865fc960c07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbde9f59_ba91ed38",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T18:30:57Z",
+      "side": 1,
+      "message": "nit: this should probably be a templated function too",
+      "revId": "5fb77de2422d1023411709276279865fc960c07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1be45325_004f7613",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T18:30:57Z",
+      "side": 1,
+      "message": "Weird.  Why?  We have |length|?",
+      "range": {
+        "startLine": 346,
+        "startChar": 9,
+        "endLine": 346,
+        "endChar": 32
+      },
+      "revId": "5fb77de2422d1023411709276279865fc960c07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
