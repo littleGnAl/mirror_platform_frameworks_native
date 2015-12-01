@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bf043de_24372abc",
+        "filename": "services/surfaceflinger/DisplayDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-12-01T14:59:07Z",
+      "side": 1,
+      "message": "I would actually prefer calling this \u0027surface\u0027 and renaming the EGL variable below to \u0027EGLSurface eglSurface\u0027. It\u0027s a little confusing for this to be called windowSurface, since it\u0027s not the result of eglCreateWindowSurface.",
+      "revId": "0c55d487058f219b5089debc5b676d84621ecb1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
