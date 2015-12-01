@@ -31,6 +31,7 @@
 #include <unistd.h>
 
 #include <cutils/properties.h>
+#include <hardware_legacy/power.h>
 
 #include "private/android_filesystem_config.h"
 
@@ -42,6 +43,7 @@
 /* read before root is shed */
 static char cmdline_buf[16384] = "(unknown)";
 static const char *dump_traces_path = NULL;
+static const char *WAKE_LOCK_ID = "BugReport";
 
 static char screenshot_path[PATH_MAX] = "";
 
@@ -607,6 +609,10 @@ static void vibrate(FILE* vibrator, int ms) {
     fflush(vibrator);
 }
 
+void atexit_handler() {
+    release_wake_lock(WAKE_LOCK_ID);
+}
+
 int main(int argc, char *argv[]) {
     struct sigaction sigact;
     int do_add_date = 0;
@@ -624,6 +630,9 @@ int main(int argc, char *argv[]) {
         // correct program.
         return execl("/system/bin/bugreport", "/system/bin/bugreport", NULL);
     }
+
+    acquire_wake_lock(PARTIAL_WAKE_LOCK, WAKE_LOCK_ID);
+    atexit(atexit_handler);
 
     ALOGI("begin\n");
 
