@@ -51,6 +51,24 @@
       "revId": "f08457b8e7de7421b203c31f48e374af8371c08e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1be45325_92a97cb9",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-12-01T00:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc1db6d_dd2a7f25",
+      "revId": "f08457b8e7de7421b203c31f48e374af8371c08e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
