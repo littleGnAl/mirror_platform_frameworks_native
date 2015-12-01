@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b1deb19_96770c70",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T21:24:31Z",
+      "side": 1,
+      "message": "nit: we tend not to explicitly write this-\u003e elsewhere.  Can we omit this-\u003e here and below?",
+      "range": {
+        "startLine": 648,
+        "startChar": 15,
+        "endLine": 648,
+        "endChar": 21
+      },
+      "revId": "db9cc113a8cd94fe9a5bfefb7bf3805b0a0f239d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbae3bf9_f2bac82d",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T21:24:31Z",
+      "side": 1,
+      "message": "nit: I think we omit the space between unary operator and operand elsewhere in this file.",
+      "revId": "db9cc113a8cd94fe9a5bfefb7bf3805b0a0f239d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb113f0a_f6459e29",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-01T21:24:31Z",
+      "side": 1,
+      "message": "heh, fine",
+      "revId": "db9cc113a8cd94fe9a5bfefb7bf3805b0a0f239d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
