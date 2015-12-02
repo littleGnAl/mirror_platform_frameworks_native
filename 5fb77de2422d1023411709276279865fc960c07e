@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1bac5306_a0c62294",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-02T21:48:38Z",
+      "side": 1,
+      "message": "Thanks for catching this. I have fixed this up.",
+      "parentUuid": "db0f1bb0_44ea22ca",
+      "revId": "5fb77de2422d1023411709276279865fc960c07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b0923b2_d1949669",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2015-12-01T18:30:57Z",
       "side": 1,
       "message": "Probably should return the status_t of readFromParcelInner",
+      "revId": "5fb77de2422d1023411709276279865fc960c07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbae3bf9_a6af5ebc",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-02T21:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b0923b2_d1949669",
       "revId": "5fb77de2422d1023411709276279865fc960c07e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3b18372c_24319ce8",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-02T21:48:38Z",
+      "side": 1,
+      "message": "operator[] will also do what we want here, albeit a little more inefficiently. I prefer this because it is clean and readable. We can replace this with the template function you suggested if we choose to optimize this in the future.",
+      "parentUuid": "fbde9f59_7a4ee5bb",
+      "revId": "5fb77de2422d1023411709276279865fc960c07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbde9f59_ba91ed38",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 5
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "5ba24b12_75f1978d",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-02T21:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbde9f59_ba91ed38",
+      "revId": "5fb77de2422d1023411709276279865fc960c07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1be45325_004f7613",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 5
@@ -81,6 +153,30 @@
       "writtenOn": "2015-12-01T18:30:57Z",
       "side": 1,
       "message": "Weird.  Why?  We have |length|?",
+      "range": {
+        "startLine": 346,
+        "startChar": 9,
+        "endLine": 346,
+        "endChar": 32
+      },
+      "revId": "5fb77de2422d1023411709276279865fc960c07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bac5306_e0d02a4c",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-02T21:48:38Z",
+      "side": 1,
+      "message": "It turns out that checking parcel-\u003edataAvail() is not appropriate, since the parcel might have other stuff serialized after the PersistableBundle. I have switched back to checking |length|.",
+      "parentUuid": "1be45325_004f7613",
       "range": {
         "startLine": 346,
         "startChar": 9,
