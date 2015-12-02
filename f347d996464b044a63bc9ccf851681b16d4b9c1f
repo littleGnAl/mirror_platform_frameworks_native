@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b1deb19_8aa87bf9",
+        "filename": "include/binder/PersistableBundle.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-02T21:56:57Z",
+      "side": 1,
+      "message": "Don\u0027t do this.  Just return ! lhs \u003d\u003d rhs",
+      "revId": "f347d996464b044a63bc9ccf851681b16d4b9c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb113f0a_c8eb9bd1",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-02T21:56:57Z",
+      "side": 1,
+      "message": "nit: you could express this with less duplication as size() \u003d\u003d 0u",
+      "revId": "f347d996464b044a63bc9ccf851681b16d4b9c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b17f3fd_63642c64",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-02T21:56:57Z",
+      "side": 1,
+      "message": "Still true?",
+      "revId": "f347d996464b044a63bc9ccf851681b16d4b9c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bac5306_009a9692",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-02T21:56:57Z",
+      "side": 1,
+      "message": "auto it \u003d mStringVectorMap.find(key);\nif (it !\u003d mStringVectorMap.end()) {\n  return BAD_INDEX;\n}\n\nRETURN_IF_FAILED(parcel-\u003ereadString16Vector(\u0026mStringVectorMap[key]);",
+      "revId": "f347d996464b044a63bc9ccf851681b16d4b9c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
