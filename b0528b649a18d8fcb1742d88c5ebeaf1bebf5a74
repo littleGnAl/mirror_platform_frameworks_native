@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "00486077_638b620a",
+        "filename": "include/binder/PersistableBundle.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-03T18:56:55Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "c0148835_19c3eb5e",
+      "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "201f2457_7420a8df",
         "filename": "include/binder/PersistableBundle.h",
         "patchSetId": 7
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "00486077_832adeb8",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-03T18:56:55Z",
+      "side": 1,
+      "message": "I will test for the empty bundles and trailing data in the integration tests.",
+      "parentUuid": "a00b1417_581b9dbe",
+      "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60259c9f_d6066463",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 7
@@ -64,6 +100,24 @@
       "writtenOn": "2015-12-03T17:11:17Z",
       "side": 1,
       "message": "Two notes:\n\n1) Kind of scary to return with no error code here\n2) What should be the behavior?  Will the Java overwrite the existing value?  I suspect this is the more intuitive behavior.",
+      "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8091b00f_5fefebe1",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-03T18:56:55Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I guess the correct thing to do here would be to delete the existing key (if it exists in some other map), then add this new key-value pair. I can change hasKey() to deleteEntryIfExists() to perform this deletion.",
+      "parentUuid": "60259c9f_d6066463",
       "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
