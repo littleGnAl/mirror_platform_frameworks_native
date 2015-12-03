@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bbb18759_9a58ac7f",
+        "filename": "include/binder/PersistableBundle.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-03T01:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1deb19_8aa87bf9",
+      "revId": "f347d996464b044a63bc9ccf851681b16d4b9c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb113f0a_c8eb9bd1",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2015-12-02T21:56:57Z",
       "side": 1,
       "message": "nit: you could express this with less duplication as size() \u003d\u003d 0u",
+      "revId": "f347d996464b044a63bc9ccf851681b16d4b9c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbb18759_3a34201f",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-03T01:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb113f0a_c8eb9bd1",
       "revId": "f347d996464b044a63bc9ccf851681b16d4b9c1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1bac5306_e6fde25d",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-03T01:24:49Z",
+      "side": 1,
+      "message": "Yes, this is still true. However, this really shouldn\u0027t happen if both the Java and C++ API are kept in sync and are serializing key-type-value triplets properly.",
+      "parentUuid": "1b17f3fd_63642c64",
+      "revId": "f347d996464b044a63bc9ccf851681b16d4b9c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bac5306_009a9692",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2015-12-02T21:56:57Z",
       "side": 1,
       "message": "auto it \u003d mStringVectorMap.find(key);\nif (it !\u003d mStringVectorMap.end()) {\n  return BAD_INDEX;\n}\n\nRETURN_IF_FAILED(parcel-\u003ereadString16Vector(\u0026mStringVectorMap[key]);",
+      "revId": "f347d996464b044a63bc9ccf851681b16d4b9c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ba24b12_2bb20e55",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-03T01:24:49Z",
+      "side": 1,
+      "message": "I decided to check for key uniqueness in each of the put* methods. Since the Java API enforces unique keys by putting all key-value pairs in a single Java Map, we can assume when reading a PersistableBundle from a Parcel that all keys will be unique.\n\nI have added an comment from lines 337-340 that explicitly states this assumption.",
+      "parentUuid": "1bac5306_009a9692",
       "revId": "f347d996464b044a63bc9ccf851681b16d4b9c1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
