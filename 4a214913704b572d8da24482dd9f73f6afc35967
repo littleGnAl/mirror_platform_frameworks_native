@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40933818_a065b4f3",
+        "filename": "include/binder/PersistableBundle.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-03T21:14:43Z",
+      "side": 1,
+      "message": "If you returned a size_t here, the API would be consistent with std::map::erase():\n\nhttp://www.cplusplus.com/reference/map/map/erase/\n\nYou might call it erase()?",
+      "revId": "4a214913704b572d8da24482dd9f73f6afc35967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
