@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0148835_19c3eb5e",
+        "filename": "include/binder/PersistableBundle.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-03T17:11:17Z",
+      "side": 1,
+      "message": "Maybe explicitly declare the copy constructor \u003d default?",
+      "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "201f2457_7420a8df",
+        "filename": "include/binder/PersistableBundle.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-03T17:11:17Z",
+      "side": 1,
+      "message": "maybe hasKey()?",
+      "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a00b1417_581b9dbe",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-03T17:11:17Z",
+      "side": 1,
+      "message": "Phew, this is special.  We ought to test the empty bundle case with trailing data in integration tests",
+      "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60259c9f_d6066463",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-03T17:11:17Z",
+      "side": 1,
+      "message": "Two notes:\n\n1) Kind of scary to return with no error code here\n2) What should be the behavior?  Will the Java overwrite the existing value?  I suspect this is the more intuitive behavior.",
+      "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
