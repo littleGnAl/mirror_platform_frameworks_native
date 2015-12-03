@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e06d0cee_7a98b999",
+        "filename": "include/binder/PersistableBundle.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-03T21:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00486077_638b620a",
+      "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "201f2457_7420a8df",
         "filename": "include/binder/PersistableBundle.h",
         "patchSetId": 7
@@ -48,6 +66,24 @@
       "writtenOn": "2015-12-03T17:11:17Z",
       "side": 1,
       "message": "maybe hasKey()?",
+      "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00486077_43ad06c7",
+        "filename": "include/binder/PersistableBundle.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-03T21:00:46Z",
+      "side": 1,
+      "message": "Changed this method entirely.",
+      "parentUuid": "201f2457_7420a8df",
       "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -118,6 +154,24 @@
       "side": 1,
       "message": "Thanks for pointing this out. I guess the correct thing to do here would be to delete the existing key (if it exists in some other map), then add this new key-value pair. I can change hasKey() to deleteEntryIfExists() to perform this deletion.",
       "parentUuid": "60259c9f_d6066463",
+      "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0842cce_421dd2ee",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-03T21:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8091b00f_5fefebe1",
       "revId": "b0528b649a18d8fcb1742d88c5ebeaf1bebf5a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
