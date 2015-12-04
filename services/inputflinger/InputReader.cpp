@@ -16,7 +16,7 @@
 
 #define LOG_TAG "InputReader"
 
-//#define LOG_NDEBUG 0
+// #define LOG_NDEBUG 0
 
 // Log debug messages for each raw event received from the EventHub.
 #define DEBUG_RAW_EVENTS 0
@@ -43,6 +43,8 @@
 #define DEBUG_STYLUS_FUSION 0
 
 #include "InputReader.h"
+
+#include <hardware/twitter.h>
 
 #include <cutils/log.h>
 #include <input/Keyboard.h>
@@ -260,6 +262,8 @@ InputReader::InputReader(const sp<EventHubInterface>& eventHub,
 
         refreshConfigurationLocked(0);
         updateGlobalMetaStateLocked();
+
+        twitter_init();
     } // release lock
 }
 
@@ -267,6 +271,7 @@ InputReader::~InputReader() {
     for (size_t i = 0; i < mDevices.size(); i++) {
         delete mDevices.valueAt(i);
     }
+    twitter_fini();
 }
 
 void InputReader::loopOnce() {
@@ -513,6 +518,44 @@ void InputReader::processEventsForDeviceLocked(int32_t deviceId,
         //ALOGD("Discarding event for ignored deviceId %d.", deviceId);
         return;
     }
+
+#define DEBUG_INPUT_LATENCY
+#ifdef DEBUG_INPUT_LATENCY
+    if (device->getClasses() & INPUT_DEVICE_CLASS_TOUCH) {
+      static long x = 0;
+      static long y = 0;
+      const char *str_event = NULL;
+      int nevents = count;
+      for (const RawEvent* rawEvent = rawEvents; nevents--; rawEvent++) {
+        if (rawEvent->type == EV_ABS) {
+          if(rawEvent->code == ABS_X) {
+            x = rawEvent->value;
+            str_event = "finger-down (moving)";
+          }
+          if(rawEvent->code == ABS_Y) {
+            y = rawEvent->value;
+            str_event = "finger-down (moving)";
+          }
+        }
+        if (rawEvent->type == EV_KEY && rawEvent->code == BTN_TOUCH) {
+          if(device->isKeyPressed(BTN_TOUCH)) {
+            str_event = "finger-down";
+          } else {
+            str_event = "finger-up";
+          }
+        }
+      }
+      if(str_event != NULL) {
+        //        ALOGD("F1: %ld F2: %ld F3: %s", x, y, str_event);
+        char msg[MAX_TWEET_LEN] = { 0 };
+        snprintf(msg, MAX_TWEET_LEN, "F1: %-16s F2: %-8ld F3: %-8ld",
+                 str_event, x, y);
+        send_tweet(msg);
+      }
+    }
+#endif // DEBUG_INPUT_LATENCY
+
+
 
     device->process(rawEvents, count);
 }
@@ -1037,7 +1080,6 @@ void InputDevice::process(const RawEvent* rawEvents, size_t count) {
                 rawEvent->deviceId, rawEvent->type, rawEvent->code, rawEvent->value,
                 rawEvent->when);
 #endif
-
         if (mDropUntilNextSync) {
             if (rawEvent->type == EV_SYN && rawEvent->code == SYN_REPORT) {
                 mDropUntilNextSync = false;
@@ -1627,7 +1669,6 @@ void SingleTouchMotionAccumulator::process(const RawEvent* rawEvent) {
         }
     }
 }
-
 
 // --- MultiTouchMotionAccumulator ---
 
