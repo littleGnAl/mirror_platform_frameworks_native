@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40933818_a6c94781",
+        "filename": "include/binder/IBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1087027
+      },
+      "writtenOn": "2015-12-04T22:29:14Z",
+      "side": 1,
+      "message": "Why can\u0027t you include linux/binder.h instead of duplicating it?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "a5a9454ca5a484909b0e0da90bd1c6aab603facb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
