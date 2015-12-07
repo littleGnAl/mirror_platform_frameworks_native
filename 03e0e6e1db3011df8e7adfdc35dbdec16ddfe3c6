@@ -16,6 +16,24 @@
       "revId": "03e0e6e1db3011df8e7adfdc35dbdec16ddfe3c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0b50cdb_bdb8cb02",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-07T22:31:14Z",
+      "side": 1,
+      "message": "Oops, I totally missed this. Thanks for catching that.",
+      "parentUuid": "c0b808d7_ff64f766",
+      "revId": "03e0e6e1db3011df8e7adfdc35dbdec16ddfe3c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
