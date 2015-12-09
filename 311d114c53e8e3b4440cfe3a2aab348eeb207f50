@@ -16,6 +16,24 @@
       "revId": "311d114c53e8e3b4440cfe3a2aab348eeb207f50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05487277_c33216ea",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-09T17:57:01Z",
+      "side": 1,
+      "message": "I guess my thought here was that exceptions have 3 parts:\n 1) exception type\n 2) exception message\n 3) exception subtype (only for service specific exceptions)\n\nSince service specific exceptions already define the exception type, I just omitted that parameter, and left the other two pieces in the same order.\n\nI guess I can see that this is an internal detail, and that for both the general and service specific exception, we\u0027re sort of picking an exception \"type\" (a more important concept than the message itself).\n\n\nI\u0027ll change this to be errorCode first.",
+      "parentUuid": "0054e0af_a6a6a8e7",
+      "revId": "311d114c53e8e3b4440cfe3a2aab348eeb207f50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
