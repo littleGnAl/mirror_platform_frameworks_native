@@ -16,6 +16,24 @@
       "revId": "ce7acf4ffe232da78e3a9462dda4af18bd41d4d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "855c6237_41f6164b",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-12-10T22:00:36Z",
+      "side": 1,
+      "message": "bugreports are already too full with noise, not adding noise upon noise! If this is missing, we know it is because the field does not exist, or has been blocked by permissions; silence in that case is golden for this kind of data.",
+      "parentUuid": "05487277_fde92718",
+      "revId": "ce7acf4ffe232da78e3a9462dda4af18bd41d4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
