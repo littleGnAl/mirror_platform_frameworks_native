@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05487277_fde92718",
+        "filename": "cmds/dumpstate/dumpstate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-12-10T21:52:16Z",
+      "side": 1,
+      "message": "No reporting? Wouldn\u0027t it be useful to get at least errno for why there was no emmc info recovered?",
+      "revId": "ce7acf4ffe232da78e3a9462dda4af18bd41d4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
