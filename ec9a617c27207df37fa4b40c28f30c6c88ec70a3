@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65e04ee1_de04a55d",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-12-11T21:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05487277_4f9c008c",
+      "range": {
+        "startLine": 152,
+        "startChar": 24,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "ec9a617c27207df37fa4b40c28f30c6c88ec70a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6553ee27_818f6913",
         "filename": "include/binder/Parcel.h",
         "patchSetId": 5
@@ -36,6 +60,24 @@
       "writtenOn": "2015-12-11T18:53:07Z",
       "side": 1,
       "message": "Could this be private?",
+      "revId": "ec9a617c27207df37fa4b40c28f30c6c88ec70a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65984e34_48bdf022",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-12-11T21:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6553ee27_818f6913",
       "revId": "ec9a617c27207df37fa4b40c28f30c6c88ec70a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
