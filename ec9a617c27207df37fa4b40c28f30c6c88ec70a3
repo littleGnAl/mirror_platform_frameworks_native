@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05487277_4f9c008c",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-11T18:53:07Z",
+      "side": 1,
+      "message": "Probably make this a private method and call it something like writeNullableParcelable.  We don\u0027t want to encourage people calling it directly.",
+      "range": {
+        "startLine": 152,
+        "startChar": 24,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "ec9a617c27207df37fa4b40c28f30c6c88ec70a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6553ee27_818f6913",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-11T18:53:07Z",
+      "side": 1,
+      "message": "Could this be private?",
+      "revId": "ec9a617c27207df37fa4b40c28f30c6c88ec70a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
