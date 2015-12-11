@@ -967,6 +967,10 @@ status_t Parcel::writeParcelable(const Parcelable& parcelable) {
     return parcelable.writeToParcel(this);
 }
 
+status_t Parcel::writePersistableBundle(const os::PersistableBundle& persistable_bundle) {
+    return persistable_bundle.writeToParcel(this);
+}
+
 status_t Parcel::writeNativeHandle(const native_handle* handle)
 {
     if (!handle || handle->version != sizeof(native_handle))
@@ -1595,6 +1599,10 @@ status_t Parcel::readParcelable(Parcelable* parcelable) const {
         return UNEXPECTED_NULL;
     }
     return parcelable->readFromParcel(this);
+}
+
+status_t Parcel::readPersistableBundle(os::PersistableBundle* persistable_bundle) const {
+    return persistable_bundle->readFromParcel(this);
 }
 
 int32_t Parcel::readExceptionCode() const
