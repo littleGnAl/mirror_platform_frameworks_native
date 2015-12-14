@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0593126b_eea27f19",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-14T20:55:45Z",
+      "side": 1,
+      "message": "This should UNEXPECTED_NULL",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05e5d2f2_01aeaeed",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 12
@@ -136,6 +159,30 @@
       "side": 1,
       "message": "This is what I previously did, and that caused integration tests to fail. The extra int (|have_parcelable|) written to the Parcel is not handled by Java\u0027s Parcel.readPersistableBundle().",
       "parentUuid": "e598be91_02cf6a35",
+      "range": {
+        "startLine": 423,
+        "startChar": 45,
+        "endLine": 423,
+        "endChar": 63
+      },
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25fc967c_2fdaa59a",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-14T20:55:45Z",
+      "side": 1,
+      "message": "speaking offline: this should read...\n\nRETURN_IF_FAILED(mPersistableBundleMap[key].readFromParcel(parcel));",
+      "parentUuid": "25157684_2d6755d3",
       "range": {
         "startLine": 423,
         "startChar": 45,
