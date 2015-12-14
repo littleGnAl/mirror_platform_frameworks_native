@@ -16,6 +16,24 @@
       "revId": "66213bdbdfdd6d57aeffb52013066f9d4a2a4317",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05e5d2f2_01b4ee0a",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-14T17:57:35Z",
+      "side": 1,
+      "message": "The reason for this is that we need to stay in sync with the [read|write]PersistableBundle methods in Parcel.java.\n\nThe [read|write]Parcelable methods attach an extra type to the Parcelable. In C++, an int (|have_parcelable|) is attached to indicate whether the Parcelable is null. In Java, the name of a Parcelable Creator is attached. (Note: reading and writing Parcelables will probably not work across C++ and Java because of this difference.)\n\nI call bad design on this one.",
+      "parentUuid": "85d9c240_a86ebf46",
+      "revId": "66213bdbdfdd6d57aeffb52013066f9d4a2a4317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
