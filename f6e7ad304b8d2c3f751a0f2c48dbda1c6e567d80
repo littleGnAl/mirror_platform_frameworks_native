@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "85a542c9_a2b440a8",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-14T21:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0593126b_eea27f19",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05e5d2f2_01aeaeed",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 12
@@ -124,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "651beeb8_494d6550",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-14T21:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5cc3e7f_eb04415d",
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e598be91_02cf6a35",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 12
@@ -183,6 +225,30 @@
       "side": 1,
       "message": "speaking offline: this should read...\n\nRETURN_IF_FAILED(mPersistableBundleMap[key].readFromParcel(parcel));",
       "parentUuid": "25157684_2d6755d3",
+      "range": {
+        "startLine": 423,
+        "startChar": 45,
+        "endLine": 423,
+        "endChar": 63
+      },
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85a542c9_62975807",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-14T21:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25fc967c_2fdaa59a",
       "range": {
         "startLine": 423,
         "startChar": 45,
