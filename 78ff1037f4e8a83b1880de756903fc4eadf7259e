@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25ead6c4_8514881d",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-12-14T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a57de6ee_288f2b15",
+      "revId": "78ff1037f4e8a83b1880de756903fc4eadf7259e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0593126b_8bff2d1a",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2015-12-14T17:39:00Z",
       "side": 1,
       "message": "Pretty sure you don\u0027t need to edit this function.",
+      "revId": "78ff1037f4e8a83b1880de756903fc4eadf7259e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45a7cad1_5d82fb71",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-12-14T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0593126b_8bff2d1a",
       "revId": "78ff1037f4e8a83b1880de756903fc4eadf7259e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "45a7cad1_fd70a778",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-12-14T19:30:17Z",
+      "side": 1,
+      "message": "Done. Should I keep the diff and apply these later?",
+      "parentUuid": "c5865a2d_293d6d0d",
+      "revId": "78ff1037f4e8a83b1880de756903fc4eadf7259e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45db4a39_511c04b5",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 6
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "25157684_6d9cad8c",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-12-14T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45db4a39_511c04b5",
+      "revId": "78ff1037f4e8a83b1880de756903fc4eadf7259e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05e5d2f2_e1f38203",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 6
@@ -81,6 +153,24 @@
       "writtenOn": "2015-12-14T17:39:00Z",
       "side": 1,
       "message": "Yeah, reading over this again, it\u0027s always more efficient to simply read the int32_t directly in the nullable functions and then reset the data pointer if we need to.  Both nullable vectors, regardless of the null-ness of the vector, we will:\n\nreadAligned will:\n  - copy the 4 bytes\n  - increment data position\n\npeekInt32 will:\n  - reset the data position\n\nrepeat readAligned (either to read the vector, or consume the null marker).\n\nI think every place we write:\n\n  int32_t size;\n  status \u003d peekInt32(\u0026size);\n  if (status !\u003d OK || size \u003c 0) { \n    readInt32();  // unchecked read kind of smells anyway\n    return status;\n  }\n\nWe just as well may have written:\n\n  const int32_t start \u003d dataPosition();\n  int32_t size;\n  status \u003d readInt32(\u0026size);\n  if (status !\u003d OK || size \u003c 0) { \n    return status;\n  }\n  setDataPosition(start);\n\npeekInt32 seems pretty easy to misuse.",
+      "revId": "78ff1037f4e8a83b1880de756903fc4eadf7259e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a57de6ee_c8f12f8e",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2015-12-14T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e5d2f2_e1f38203",
       "revId": "78ff1037f4e8a83b1880de756903fc4eadf7259e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
