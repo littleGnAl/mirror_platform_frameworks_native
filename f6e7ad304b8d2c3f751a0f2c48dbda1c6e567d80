@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "05107294_2cc0f77b",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-14T18:10:19Z",
+      "side": 1,
+      "message": "This comment was taken from the Java method this function mirrors:\n\nhttps://cs.corp.google.com/#android/frameworks/base/core/java/android/os/BaseBundle.java\u0026l\u003d1357\n\nI\u0027d prefer to keep this here so these comments are mirrored.",
+      "parentUuid": "05e5d2f2_01aeaeed",
+      "range": {
+        "startLine": 347,
+        "startChar": 34,
+        "endLine": 347,
+        "endChar": 50
+      },
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05e5d2f2_21248a5c",
         "filename": "libs/binder/PersistableBundle.cpp",
         "patchSetId": 12
@@ -36,6 +60,24 @@
       "writtenOn": "2015-12-14T16:36:46Z",
       "side": 1,
       "message": "You needn\u0027t comment about what num_entries means, it\u0027s actually pretty obvious from usage.  However, you might move these comments about the equivalence between BaseBundle.unparcel() and Parcel.readArrayMapInternal() to the top of this method or something.",
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65e04ee1_24a65686",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-14T18:10:19Z",
+      "side": 1,
+      "message": "I will remove the explanation of what num_entries mean. I would, however, prefer to keep the reference to BaseBundle.unparcel() here, since I already have another comment about the unused length value up top.",
+      "parentUuid": "05e5d2f2_21248a5c",
       "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -70,6 +112,30 @@
       "writtenOn": "2015-12-14T16:36:46Z",
       "side": 1,
       "message": "Yeah, I\u0027m pretty sure you could just call readParcelable here.",
+      "range": {
+        "startLine": 423,
+        "startChar": 45,
+        "endLine": 423,
+        "endChar": 63
+      },
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25157684_2d6755d3",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1077754
+      },
+      "writtenOn": "2015-12-14T18:10:19Z",
+      "side": 1,
+      "message": "This is what I previously did, and that caused integration tests to fail. The extra int (|have_parcelable|) written to the Parcel is not handled by Java\u0027s Parcel.readPersistableBundle().",
+      "parentUuid": "e598be91_02cf6a35",
       "range": {
         "startLine": 423,
         "startChar": 45,
