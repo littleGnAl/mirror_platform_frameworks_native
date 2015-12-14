@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85d9c240_a86ebf46",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-14T16:30:47Z",
+      "side": 1,
+      "message": "Surely PersistableBundle subclasses Parcelable.  Why are these additional type specific versions necessary?",
+      "revId": "66213bdbdfdd6d57aeffb52013066f9d4a2a4317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
