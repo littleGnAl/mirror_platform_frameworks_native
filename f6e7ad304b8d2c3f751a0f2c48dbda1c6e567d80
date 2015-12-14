@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05e5d2f2_01aeaeed",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-14T16:36:46Z",
+      "side": 1,
+      "message": "nit: I think this case is just for PersistableBundle right?  the end of data bit is confusing to readers",
+      "range": {
+        "startLine": 347,
+        "startChar": 34,
+        "endLine": 347,
+        "endChar": 50
+      },
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05e5d2f2_21248a5c",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-14T16:36:46Z",
+      "side": 1,
+      "message": "You needn\u0027t comment about what num_entries means, it\u0027s actually pretty obvious from usage.  However, you might move these comments about the equivalence between BaseBundle.unparcel() and Parcel.readArrayMapInternal() to the top of this method or something.",
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5cc3e7f_eb04415d",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-14T16:36:46Z",
+      "side": 1,
+      "message": "nit: prefer a for loop in this situation",
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e598be91_02cf6a35",
+        "filename": "libs/binder/PersistableBundle.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-14T16:36:46Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m pretty sure you could just call readParcelable here.",
+      "range": {
+        "startLine": 423,
+        "startChar": 45,
+        "endLine": 423,
+        "endChar": 63
+      },
+      "revId": "f6e7ad304b8d2c3f751a0f2c48dbda1c6e567d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
