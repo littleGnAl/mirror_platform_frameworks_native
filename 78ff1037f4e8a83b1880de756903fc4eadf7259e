@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "25ead6c4_704738fc",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-15T01:05:03Z",
+      "side": 1,
+      "message": "I\u0027d rather not.  I notice that they are consistent with, for instance, the statements in the very next function.",
+      "parentUuid": "45a7cad1_fd70a778",
+      "revId": "78ff1037f4e8a83b1880de756903fc4eadf7259e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45db4a39_511c04b5",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 6
