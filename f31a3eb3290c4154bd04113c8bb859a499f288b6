@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5422228b_1fba1b28",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-01T21:30:02Z",
+      "side": 1,
+      "message": "Note: we could detect the \"getspecific always returns null\" case by using another boolean: it\u0027s only expected (during normal execution) to hit this when gHaveTLS was wrong when the method started executing.",
+      "range": {
+        "startLine": 287,
+        "startChar": 8,
+        "endLine": 287,
+        "endChar": 34
+      },
+      "revId": "f31a3eb3290c4154bd04113c8bb859a499f288b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b486fe94_278419c8",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 1
