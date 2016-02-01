@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d468d2a0_b14dcb4b",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1074234
+      },
+      "writtenOn": "2016-02-01T23:22:04Z",
+      "side": 1,
+      "message": "If a layer with source alpha is marked opaque and has non-ff plane alpha, HWC has no way of knowing whether it should drop source alpha\"\n\"HWC would end up applying premult to source alpha, whereas it should have dropped source alpha\"",
+      "range": {
+        "startLine": 463,
+        "startChar": 22,
+        "endLine": 463,
+        "endChar": 23
+      },
+      "revId": "0abb9efe182f6161b937275f87bc3e24e97a2b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
