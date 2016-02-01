@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b486fe94_278419c8",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-01T21:27:44Z",
+      "side": 1,
+      "message": "I could argue we should abort, but I wanted to keep the old semantics.",
+      "range": {
+        "startLine": 291,
+        "startChar": 7,
+        "endLine": 292,
+        "endChar": 20
+      },
+      "revId": "f31a3eb3290c4154bd04113c8bb859a499f288b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "749006cb_485690df",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-01T21:27:44Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 300,
+        "startChar": 12,
+        "endLine": 301,
+        "endChar": 48
+      },
+      "revId": "f31a3eb3290c4154bd04113c8bb859a499f288b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
