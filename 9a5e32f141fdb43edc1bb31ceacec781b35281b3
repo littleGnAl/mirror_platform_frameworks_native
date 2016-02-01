@@ -22,6 +22,30 @@
       "revId": "9a5e32f141fdb43edc1bb31ceacec781b35281b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d468d2a0_b636a1b5",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2016-02-01T21:21:18Z",
+      "side": 1,
+      "message": "For posterity, this family of functions is how String{16,8} implements their unicode support.",
+      "parentUuid": "d468d2a0_1b2db681",
+      "range": {
+        "startLine": 765,
+        "startChar": 4,
+        "endLine": 765,
+        "endChar": 51
+      },
+      "revId": "9a5e32f141fdb43edc1bb31ceacec781b35281b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
