@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9124acf4_5b2ec37e",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-02T23:11:25Z",
+      "side": 1,
+      "message": "atomic_load_explicit(...memory_order_acquire)\n\nGood citizenship award. Would help reduce the window for multiple threads to be running the following code. a mutex is considered too costly and thus precludes being able to run any of this in a signal handler (nbd ... and ick).",
+      "range": {
+        "startLine": 104,
+        "startChar": 17,
+        "endLine": 104,
+        "endChar": 45
+      },
+      "revId": "a7851556c0e3ac6e0efdf37903b0eb59f559010c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f7dc9a_34a2f66d",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-02T23:11:25Z",
+      "side": 1,
+      "message": "atomic_store_explicit(...memory_order_release) as counter to the above.\n\nIn any case, this is dealing with a rare and meaningless corner case of doing this on thread startups. A particularly mean actor could start 1000 threads and thus 1000 attempts to open /dev/ashmem if the first thing they did was a binder acquire.\n\nNo one does that :-)\n\nThe alternative is to deploy a mutex to stop such behavior in its tracks. After the first call, mutex could cause continuing syscall overhead.",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 48
+      },
+      "revId": "a7851556c0e3ac6e0efdf37903b0eb59f559010c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
