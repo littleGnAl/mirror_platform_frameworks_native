@@ -18,7 +18,9 @@
 //#define LOG_NDEBUG 0
 
 #include <errno.h>
+#include <fcntl.h>
 #include <inttypes.h>
+#include <stdatomic.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -95,6 +97,40 @@ enum {
     BLOB_ASHMEM_MUTABLE = 2,
 };
 
+static atomic_int_fast64_t __ashmem_rdev;
+
+static dev_t ashmem_rdev()
+{
+    dev_t rdev = atomic_load(&__ashmem_rdev);
+
+    if (rdev) {
+        return rdev;
+    }
+
+    rdev = makedev(10, 50); // WAG
+
+    int fd = TEMP_FAILURE_RETRY(open("/dev/ashmem", O_RDONLY));
+    if (fd < 0) {
+        return rdev;
+    }
+
+    struct stat st;
+    int ret = TEMP_FAILURE_RETRY(fstat(fd, &st));
+    close(fd);
+
+    if (ret < 0) {
+        return rdev;
+    }
+
+    if (!S_ISCHR(st.st_mode)) {
+        return rdev;
+    }
+
+    rdev = st.st_rdev;
+    atomic_store(&__ashmem_rdev, (int64_t)rdev);
+    return rdev;
+}
+
 void acquire_object(const sp<ProcessState>& proc,
     const flat_binder_object& obj, const void* who, size_t* outAshmemSize)
 {
@@ -126,7 +162,7 @@ void acquire_object(const sp<ProcessState>& proc,
             if ((obj.cookie != 0) && (outAshmemSize != NULL)) {
                 struct stat st;
                 int ret = fstat(obj.handle, &st);
-                if (!ret && S_ISCHR(st.st_mode)) {
+                if (!ret && S_ISCHR(st.st_mode) && (st.st_rdev == ashmem_rdev())) {
                     // If we own an ashmem fd, keep track of how much memory it refers to.
                     int size = ashmem_get_size_region(obj.handle);
                     if (size > 0) {
@@ -179,7 +215,7 @@ static void release_object(const sp<ProcessState>& proc,
                 if (outAshmemSize != NULL) {
                     struct stat st;
                     int ret = fstat(obj.handle, &st);
-                    if (!ret && S_ISCHR(st.st_mode)) {
+                    if (!ret && S_ISCHR(st.st_mode) && (st.st_rdev == ashmem_rdev())) {
                         int size = ashmem_get_size_region(obj.handle);
                         if (size > 0) {
                             *outAshmemSize -= size;
