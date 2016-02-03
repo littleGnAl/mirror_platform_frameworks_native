@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "b121b0e4_57017698",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-03T20:19:33Z",
+      "side": 1,
+      "message": "This is bad practice, zero will prevent match.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 34
+      },
+      "revId": "a7851556c0e3ac6e0efdf37903b0eb59f559010c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11f7dc9a_34a2f66d",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 1
