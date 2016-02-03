@@ -2389,9 +2389,9 @@ void Layer::dump(String8& result, Colorizer& colorizer) const
             "isOpaque=%1d, invalidate=%1d, "
             "dataspace=%s, pixelformat=%s "
 #ifdef USE_HWC2
-            "alpha=%.3f, flags=0x%08x, tr=[%.2f, %.2f][%.2f, %.2f]\n"
+            "alpha=%.3f, flags=0x%08x, secure=%1d, tr=[%.2f, %.2f][%.2f, %.2f]\n"
 #else
-            "alpha=0x%02x, flags=0x%08x, tr=[%.2f, %.2f][%.2f, %.2f]\n"
+            "alpha=0x%02x, flags=0x%08x, secure=%1d, tr=[%.2f, %.2f][%.2f, %.2f]\n"
 #endif
             "      client=%p\n",
             getLayerStack(), s.z,
@@ -2403,7 +2403,7 @@ void Layer::dump(String8& result, Colorizer& colorizer) const
             s.finalCrop.right, s.finalCrop.bottom,
             isOpaque(s), contentDirty,
             dataspaceDetails(getDataSpace()).c_str(), decodePixelFormat(pf).c_str(),
-            s.alpha, s.flags,
+            s.alpha, s.flags, isSecure(),
             s.active.transform[0][0], s.active.transform[0][1],
             s.active.transform[1][0], s.active.transform[1][1],
             client.get());
