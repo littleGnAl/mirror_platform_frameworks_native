@@ -114,7 +114,7 @@ static const char mmcblk0[] = "/sys/block/mmcblk0/";
 unsigned long worst_write_perf = 20000; /* in KB/s */
 
 static int dump_stat_from_fd(const char *title __unused, const char *path, int fd) {
-    unsigned long fields[11], read_perf, write_perf;
+    unsigned long long fields[11];
     bool z;
     char *cp, *buffer = NULL;
     size_t i = 0;
@@ -134,7 +134,7 @@ static int dump_stat_from_fd(const char *title __unused, const char *path, int f
     }
     z = true;
     for (cp = buffer, i = 0; i < (sizeof(fields) / sizeof(fields[0])); ++i) {
-        fields[i] = strtol(cp, &cp, 0);
+        fields[i] = strtoull(cp, &cp, 10);
         if (fields[i] != 0) {
             z = false;
         }
@@ -151,17 +151,41 @@ static int dump_stat_from_fd(const char *title __unused, const char *path, int f
     printf("%s: %s\n", path, buffer);
     free(buffer);
 
-    read_perf = 0;
-    if (fields[3]) {
-        read_perf = 512 * fields[2] / fields[3];
-    }
-    write_perf = 0;
-    if (fields[7]) {
-        write_perf = 512 * fields[6] / fields[7];
-    }
-    printf("%s: read: %luKB/s write: %luKB/s\n", path, read_perf, write_perf);
-    if ((write_perf > 1) && (write_perf < worst_write_perf)) {
-        worst_write_perf = write_perf;
+    if (fields[9]) {
+        unsigned long read_perf = 0;
+        unsigned long read_ios = 0;
+        if (fields[3]) {
+            unsigned long long divisor = fields[3] * fields[9];
+            read_perf = (512ULL * fields[2] * fields[10] + (divisor >> 1))
+                                        / divisor;
+            read_ios = (1000ULL * fields[0] * fields[10] + (divisor >> 1))
+                                        / divisor;
+        }
+
+        unsigned long write_perf = 0;
+        unsigned long write_ios = 0;
+        if (fields[7]) {
+            unsigned long long divisor = fields[7] * fields[9];
+            write_perf = (512ULL * fields[6] * fields[10] + (divisor >> 1))
+                                        / divisor;
+            write_ios = (1000ULL * fields[4] * fields[10] + (divisor >> 1))
+                                        / divisor;
+        }
+
+        unsigned queue = (fields[10] + (fields[9] >> 1)) / fields[9];
+
+        if (!write_perf && !write_ios) {
+            printf("%s: perf(ios) rd: %luKB/s(%lu/s) q: %u\n",
+                   path, read_perf, read_ios, queue);
+        } else {
+            printf("%s: perf(ios) rd: %luKB/s(%lu/s) wr: %luKB/s(%lu/s) q: %u\n",
+                   path, read_perf, read_ios, write_perf, write_ios, queue);
+        }
+
+        /* bugreport timeout factor adjustment */
+        if ((write_perf > 1) && (write_perf < worst_write_perf)) {
+            worst_write_perf = write_perf;
+        }
     }
     return 0;
 }
