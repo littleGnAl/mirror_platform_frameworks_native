@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "515a34de_c8972f5e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-05T19:18:45Z",
+      "side": 1,
+      "message": "uint64_t would be too specific and make printing/debugging more difficult to handle (PRIu64), just want to make sure it is the longest value the user space platform supports efficiently to handle what the kernel can dish out.",
+      "parentUuid": "11543cb0_63f98230",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 22
+      },
+      "revId": "7b2ca69d3cfa58bcccbc49638d764fe2d6e5084b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "515a34de_2554eea2",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-05T18:56:39Z",
       "side": 1,
       "message": "it could be clearer what fields[N] is. Consider making constants for field array indices.",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 17
+      },
+      "revId": "7b2ca69d3cfa58bcccbc49638d764fe2d6e5084b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f16b2868_ea79c75d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-05T19:18:45Z",
+      "side": 1,
+      "message": "I mentioned to mkayyash that I was willing to figure out a means to deal with this. My proposal was a union of the array and structure, field indexes will do. I was researching if anyone has ever referenced these fields by name (they are numerical indexes in the kernel) and take them as my own.\n\nexternal/toybox/posix/ps.c has names and indexes, so thats a good start.",
+      "parentUuid": "515a34de_2554eea2",
       "range": {
         "startLine": 154,
         "startChar": 8,
