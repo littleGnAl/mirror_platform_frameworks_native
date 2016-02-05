@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11543cb0_63f98230",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2016-02-05T18:56:39Z",
+      "side": 1,
+      "message": "int64_t?",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 22
+      },
+      "revId": "7b2ca69d3cfa58bcccbc49638d764fe2d6e5084b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "515a34de_2554eea2",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2016-02-05T18:56:39Z",
+      "side": 1,
+      "message": "it could be clearer what fields[N] is. Consider making constants for field array indices.",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 17
+      },
+      "revId": "7b2ca69d3cfa58bcccbc49638d764fe2d6e5084b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
