@@ -22,6 +22,30 @@
       "revId": "70f3665f8272b2f6d05e77ff0c17683b4b7f82b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91682c72_e79ca282",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-05T17:31:46Z",
+      "side": 1,
+      "message": "How strongly do you feel about this?\n\n[TL;DR]\n\nThis carries a cost as we move this from BSS to DATA. Linux coding standard (I know this is application space, and CPP, not pure C) strictly prohibits zero/nul initializations and is reported as a coding error. We are guaranteed that bss is zero\u0027d (all-bits-zero) on all platforms except fringe embedded environments (crt0\u0027s duty) which we are not.\n\nBSS is close to r/o text segments and furthest away from stack; and thus is least likely to be interfered with when programs run amok. Application boot time is reduced when bss is traded to data. data initializers take space in the executable image increasing shipping weight, and depending on platform (crt0 \u0026 linker), share with the r/o text segment and r/o data segment continuing to reside in memory (so double the amount of memory is taken). The C runtime would need to unmap the segments associated with data initializers once they are copied to move the page into the free pool, I checked and I do not see this happening (?) (maybe the linker?)\n\nCounterpoint: this is 8 bytes, not worth taking a stand. The Android coding standard does _not_ talk about this issue. https://docs.google.com/document/d/1QivJI_03TcfRAyMGWkTNHEdiQh8h_F-rYGup9soSeLA/edit#heading\u003dh.to9xa261xn1w",
+      "parentUuid": "3115c084_ff6798f4",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "70f3665f8272b2f6d05e77ff0c17683b4b7f82b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
