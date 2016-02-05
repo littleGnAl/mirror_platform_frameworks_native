@@ -46,6 +46,30 @@
       "revId": "70f3665f8272b2f6d05e77ff0c17683b4b7f82b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11543cb0_c397165e",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2016-02-05T17:42:00Z",
+      "side": 1,
+      "message": "Just a nit. Didn\u0027t know that it would carry a cost like that. Great to know. LGTM",
+      "parentUuid": "91682c72_e79ca282",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "70f3665f8272b2f6d05e77ff0c17683b4b7f82b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
