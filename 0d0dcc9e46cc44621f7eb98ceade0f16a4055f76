@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d89b03a_6d44d523",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-09T15:21:46Z",
+      "side": 1,
+      "message": "This is an internal concept, not available in AOSP yet. NEed to port it first.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 24
+      },
+      "revId": "0d0dcc9e46cc44621f7eb98ceade0f16a4055f76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
