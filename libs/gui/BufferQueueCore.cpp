@@ -24,6 +24,7 @@
 
 #include <gui/BufferItem.h>
 #include <gui/BufferQueueCore.h>
+#include <gui/GraphicBufferAlloc.h>
 #include <gui/IConsumerListener.h>
 #include <gui/IGraphicBufferAlloc.h>
 #include <gui/IProducerListener.h>
@@ -75,8 +76,17 @@ BufferQueueCore::BufferQueueCore(const sp<IGraphicBufferAlloc>& allocator) :
     mGenerationNumber(0)
 {
     if (allocator == NULL) {
+
+#ifdef HAVE_NO_SURFACE_FLINGER
+        // Without a SurfaceFlinger, allocate in-process.  This only makes
+        // sense in systems with static SELinux configurations and no
+        // applications (since applications need dynamic SELinux policy).
+        mAllocator = new GraphicBufferAlloc();
+#else
         sp<ISurfaceComposer> composer(ComposerService::getComposerService());
         mAllocator = composer->createGraphicBufferAlloc();
+#endif  // HAVE_NO_SURFACE_FLINGER
+
         if (mAllocator == NULL) {
             BQ_LOGE("createGraphicBufferAlloc failed");
         }
