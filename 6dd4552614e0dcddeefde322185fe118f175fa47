@@ -22,6 +22,30 @@
       "revId": "6dd4552614e0dcddeefde322185fe118f175fa47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ddaf464_0362dce6",
+        "filename": "libs/binder/AppOpsManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2016-02-12T23:29:05Z",
+      "side": 1,
+      "message": "std::lock_guard rather",
+      "parentUuid": "5df328ea_38c98870",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "6dd4552614e0dcddeefde322185fe118f175fa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
