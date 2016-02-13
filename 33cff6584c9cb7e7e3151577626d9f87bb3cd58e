@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dd0d03a_8f75e9d5",
+        "filename": "libs/gui/BufferQueueCore.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2016-02-13T00:06:59Z",
+      "side": 1,
+      "message": "Where are you planning on defining this? Typically this kind of stuff is set as a make variable in BoardConfig.mk, which we then have to convert into a -D option in the local Android.mk. See TARGET_DISABLE_TRIPLE_BUFFERING in services/surfaceflinger/Android.mk for a good example.",
+      "revId": "33cff6584c9cb7e7e3151577626d9f87bb3cd58e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
