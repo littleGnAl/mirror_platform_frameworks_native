@@ -22,6 +22,30 @@
       "revId": "8ed4270fea554ced8898be205727279db1c5c677",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd82644f_9284fccc",
+        "filename": "libs/binder/AppOpsManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2016-02-16T16:47:17Z",
+      "side": 1,
+      "message": "That seems kind of racy doesn\u0027t it?  While it is true that it is unlikely that the service would stay down sufficiently long on a full Android system to trigger this case, I wouldn\u0027t rule it out in exceptional edge cases.  I actually kind of appreciated that this code degraded nicely in the face of service unavailability.",
+      "parentUuid": "ddc9d89d_d0edbdac",
+      "range": {
+        "startLine": 93,
+        "startChar": 13,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "8ed4270fea554ced8898be205727279db1c5c677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
