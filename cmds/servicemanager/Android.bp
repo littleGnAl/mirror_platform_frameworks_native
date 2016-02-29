@@ -15,13 +15,21 @@ cc_defaults {
     shared_libs: ["liblog"],
 }
 
+cc_library {
+    name: "libcbinder",
+    srcs: [
+        "binder.c",
+    ],
+    export_include_dirs: [ "include" ],
+}
+
 cc_binary {
     name: "bctest",
     defaults: ["servicemanager_flags"],
     srcs: [
         "bctest.c",
-        "binder.c",
     ],
+    whole_static_libs: [ "libcbinder" ],
 }
 
 cc_binary {
@@ -29,8 +37,8 @@ cc_binary {
     defaults: ["servicemanager_flags"],
     srcs: [
         "service_manager.c",
-        "binder.c",
     ],
     shared_libs: ["libcutils", "libselinux"],
+    whole_static_libs: [ "libcbinder" ],
     init_rc: ["servicemanager.rc"],
 }
