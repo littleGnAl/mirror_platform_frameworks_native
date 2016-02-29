@@ -22,6 +22,7 @@
 
 static void bio_init_from_txn(struct binder_io* io,
                               struct binder_transaction_data* txn);
+static struct flat_binder_object* _bio_get_obj(struct binder_io* bio);
 
 #if TRACE
 void hexdump(void* _data, size_t len)
@@ -261,10 +262,23 @@ int binder_parse(struct binder_state* bs, struct binder_io* bio,
                 struct binder_io msg;
                 struct binder_io reply;
                 int res;
+                struct flat_binder_object *obj;
 
                 bio_init(&reply, rdata, sizeof(rdata), 4);
                 bio_init_from_txn(&msg, txn);
                 res = func(bs, txn, &msg, &reply);
+
+                /* binder object destruction */
+
+                /* Remaining content not pulled by func that needs cleanup */
+                while ((obj = _bio_get_obj(&msg))) {
+                    if ((obj->type == BINDER_TYPE_FD) &&
+                        (obj->handle != (uint32_t)-1)) {
+                        close(obj->handle);
+                    }
+                }
+
+                /* clear shared buffer by response or locally if not two way */
                 if (txn->flags & TF_ONE_WAY) {
                     binder_free_buffer(bs, txn->data.ptr.buffer);
                 } else {
@@ -557,6 +571,21 @@ void bio_put_ref(struct binder_io* bio, uint32_t handle)
     obj->cookie = 0;
 }
 
+void bio_put_fd(struct binder_io* bio, uint32_t fd)
+{
+    struct flat_binder_object* obj;
+
+    obj = bio_alloc_obj(bio);
+    if (!obj) {
+        return;
+    }
+
+    obj->flags = 0x7f | FLAT_BINDER_FLAG_ACCEPTS_FDS;
+    obj->type = BINDER_TYPE_FD;
+    obj->handle = dup(fd);
+    obj->cookie = 0;
+}
+
 void bio_put_string16(struct binder_io* bio, const uint16_t* str)
 {
     size_t len;
@@ -679,4 +708,22 @@ uint32_t bio_get_ref(struct binder_io* bio)
     }
 
     return 0;
+}
+
+uint32_t bio_get_fd(struct binder_io* bio)
+{
+    uint32_t fd = (uint32_t)-1;
+    struct flat_binder_object* obj;
+
+    obj = _bio_get_obj(bio);
+    if (!obj) {
+        return fd;
+    }
+
+    if (obj->type == BINDER_TYPE_FD) {
+        fd = obj->handle;
+        obj->handle = (uint32_t)-1;
+    }
+
+    return fd;
 }
