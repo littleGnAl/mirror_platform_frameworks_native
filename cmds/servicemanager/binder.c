@@ -8,6 +8,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <sched.h>
 #include <sys/mman.h>
 
 #include "binder.h"
@@ -138,8 +139,9 @@ fail_open:
 
 void binder_close(struct binder_state *bs)
 {
-    munmap(bs->mapped, bs->mapsize);
     close(bs->fd);
+    sched_yield();
+    munmap(bs->mapped, bs->mapsize);
     free(bs);
 }
 
