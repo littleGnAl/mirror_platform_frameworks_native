@@ -10,8 +10,16 @@ endif
 endif
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := libcbinder
+LOCAL_SRC_FILES := binder.c
+LOCAL_CFLAGS := -Werror $(svc_c_flags)
+LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/
+include $(BUILD_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
 LOCAL_SHARED_LIBRARIES := liblog
-LOCAL_SRC_FILES := bctest.c binder.c
+LOCAL_STATIC_LIBRARIES := libcbinder
+LOCAL_SRC_FILES := bctest.c
 LOCAL_CFLAGS += $(svc_c_flags)
 LOCAL_MODULE := bctest
 LOCAL_MODULE_TAGS := optional
@@ -19,7 +27,8 @@ include $(BUILD_EXECUTABLE)
 
 include $(CLEAR_VARS)
 LOCAL_SHARED_LIBRARIES := liblog libselinux
-LOCAL_SRC_FILES := service_manager.c binder.c
+LOCAL_STATIC_LIBRARIES := libcbinder
+LOCAL_SRC_FILES := service_manager.c
 LOCAL_CFLAGS += $(svc_c_flags)
 LOCAL_MODULE := servicemanager
 LOCAL_INIT_RC := servicemanager.rc
