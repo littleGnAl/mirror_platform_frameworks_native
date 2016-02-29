@@ -522,6 +522,20 @@ void bio_put_ref(struct binder_io *bio, uint32_t handle)
     obj->cookie = 0;
 }
 
+void bio_put_fd(struct binder_io *bio, uint32_t fd)
+{
+    struct flat_binder_object *obj;
+
+    obj = bio_alloc_obj(bio);
+    if (!obj)
+        return;
+
+    obj->flags = 0x7f | FLAT_BINDER_FLAG_ACCEPTS_FDS;
+    obj->type = BINDER_TYPE_FD;
+    obj->handle = fd;
+    obj->cookie = 0;
+}
+
 void bio_put_string16(struct binder_io *bio, const uint16_t *str)
 {
     size_t len;
@@ -635,6 +649,20 @@ uint32_t bio_get_ref(struct binder_io *bio)
         return 0;
 
     if (obj->type == BINDER_TYPE_HANDLE)
+        return obj->handle;
+
+    return 0;
+}
+
+uint32_t bio_get_fd(struct binder_io *bio)
+{
+    struct flat_binder_object *obj;
+
+    obj = _bio_get_obj(bio);
+    if (!obj)
+        return 0;
+
+    if (obj->type == BINDER_TYPE_FD)
         return obj->handle;
 
     return 0;
