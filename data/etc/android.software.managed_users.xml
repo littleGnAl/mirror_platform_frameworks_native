@@ -16,5 +16,5 @@
 
 <!-- This is the standard feature indicating that the device supports managed users. -->
 <permissions>
-    <feature name="android.software.managed_users" />
+    <feature name="android.software.managed_users" notLowRam="true" />
 </permissions>
