@@ -1014,6 +1014,7 @@ void GLConsumer::freeBufferLocked(int slotIndex) {
 
 void GLConsumer::abandonLocked() {
     GLC_LOGV("abandonLocked");
+    Mutex::Autolock lock(mMutex);
     mCurrentTextureImage.clear();
     ConsumerBase::abandonLocked();
 }
