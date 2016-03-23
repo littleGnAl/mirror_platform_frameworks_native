@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf63e9d_64214c88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-03-23T16:26:21Z",
+      "side": 1,
+      "message": "\"Buffer overflow\" has a very specific meaning in security contexts.  AFAICT there\u0027s no buffer overflow here: when the input is too large, atrace safely truncates it.  (Which might cause atrace to unexpected reject inputs, but it doesn\u0027t open security holes in the way a buffer overflow would.)",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "beaeb2c6be69df38d379994e41b21b8783efbe1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf63e9d_64530ce4",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-03-23T16:26:21Z",
+      "side": 1,
+      "message": "Android support for the C++ standard library has significantly improved since this code was written.  If this code needs to be changed, it should be updated to use C++ string and file I/O classes.  This will let you get rid of the fixed-sized buffer *and* make the code significantly easier to understand.\n\nWe have a helper in libbase that should be able to reduce the entire file-reading routine to just a few lines of code:\n\nstd::string buf;\nif (!android::base::ReadFileToString(k_ftraceFilterPath, \u0026buf)) {\n  // log error and return false\n}\nstd::string funcList \u003d \"\\n\" + buf;",
+      "range": {
+        "startLine": 528,
+        "startChar": 4,
+        "endLine": 559,
+        "endChar": 52
+      },
+      "revId": "beaeb2c6be69df38d379994e41b21b8783efbe1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
