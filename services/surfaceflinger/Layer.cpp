@@ -750,11 +750,32 @@ void Layer::drawWithOpenGL(const sp<const DisplayDevice>& hw,
      * like more of a hack.
      */
     const Rect win(computeBounds());
+    float w_rate = 1.0;
+    float h_rate = 1.0;
 
-    float left   = float(win.left)   / float(s.active.w);
-    float top    = float(win.top)    / float(s.active.h);
-    float right  = float(win.right)  / float(s.active.w);
-    float bottom = float(win.bottom) / float(s.active.h);
+    if (!mCurrentCrop.isEmpty())
+    {
+        sp<const GraphicBuffer> buf(mActiveBuffer);
+        uint32_t buf_w = buf->getWidth();
+        uint32_t buf_h = buf->getHeight();
+        uint32_t buf_crop_w = mCurrentCrop.getWidth();
+        uint32_t buf_crop_h = mCurrentCrop.getHeight();
+
+        if (buf_crop_w < buf_w)
+        {
+            w_rate = float(buf_crop_w) / float(buf_w);
+        }
+
+        if (buf_crop_h < buf_h)
+        {
+            h_rate = float(buf_crop_h) / float(buf_h);
+        }
+    }
+
+    float left   = float(win.left)   / float(s.active.w) * w_rate;
+    float top    = float(win.top)    / float(s.active.h) * h_rate;
+    float right  = float(win.right)  / float(s.active.w) * w_rate;
+    float bottom = float(win.bottom) / float(s.active.h) * h_rate;
 
     // TODO: we probably want to generate the texture coords with the mesh
     // here we assume that we only have 4 vertices
