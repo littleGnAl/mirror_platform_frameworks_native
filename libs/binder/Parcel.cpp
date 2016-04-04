@@ -1188,7 +1188,10 @@ status_t Parcel::writeBlob(size_t len, bool mutableCopy, WritableBlob* outBlob)
 
     ALOGV("writeBlob: write to ashmem");
     int fd = ashmem_create_region("Parcel Blob", len);
-    if (fd < 0) return NO_MEMORY;
+    if (fd < 0) {
+        ALOGE("Creating ashmem failed. error %d %s", errno, strerror(errno));
+        return NO_MEMORY;
+    }
 
     int result = ashmem_set_prot_region(fd, PROT_READ | PROT_WRITE);
     if (result < 0) {
