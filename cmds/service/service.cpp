@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <android-base/strings.h>
 #include <binder/Parcel.h>
 #include <binder/ProcessState.h>
 #include <binder/IServiceManager.h>
@@ -22,10 +23,11 @@
 #include <getopt.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string>
 #include <string.h>
 #include <unistd.h>
 #include <sys/time.h>
-
+#include <vector>
 using namespace android;
 
 void writeString16(Parcel& parcel, const char* string)
@@ -155,6 +157,36 @@ int main(int argc, char* const argv[])
                                 break;
                             }
                             data.writeInt64(atoll(argv[optind++]));
+                        } else if (strcmp(argv[optind], "i32a") == 0) {
+                            optind++;
+                            if (optind >= argc) {
+                                aerr << "service: no array supplied for 'i32a'" << endl;
+                                wantsUsage = true;
+                                result = 10;
+                                break;
+                            }
+
+                            std::string s(argv[optind]);
+                            // validate the formt
+                            bool validFormat = std::all_of(s.begin(), s.end(),
+                                        [] (unsigned char c) -> bool {
+                                            return (c == ',') || std::isdigit(c);
+                                        });
+                            if (!validFormat) {
+                                aerr << "service: array format supplied for 'i32a' is not correct" << endl;
+                                wantsUsage = true;
+                                result = 10;
+                                break;
+                            }
+
+                            std::vector<std::string> v = android::base::Split(s,",");
+                            std::vector<int> params(v.size());
+                            std::transform(v.begin(), v.end(), params.begin(),
+                                           [](const std::string &c) -> int {
+                                               return atoi(c.c_str());
+                                           });
+                            data.writeInt32Array(params.size(), params.data());
+                            optind++;
                         } else if (strcmp(argv[optind], "s16") == 0) {
                             optind++;
                             if (optind >= argc) {
@@ -299,13 +331,14 @@ int main(int argc, char* const argv[])
         aout << "Usage: service [-h|-?]\n"
                 "       service list\n"
                 "       service check SERVICE\n"
-                "       service call SERVICE CODE [i32 N | i64 N | f N | d N | s16 STR ] ...\n"
+                "       service call SERVICE CODE [i32 N | i64 N | f N | d N | s16 STR | i32 N1,N2,... ] ...\n"
                 "Options:\n"
                 "   i32: Write the 32-bit integer N into the send parcel.\n"
                 "   i64: Write the 64-bit integer N into the send parcel.\n"
                 "   f:   Write the 32-bit single-precision number N into the send parcel.\n"
                 "   d:   Write the 64-bit double-precision number N into the send parcel.\n"
-                "   s16: Write the UTF-16 string STR into the send parcel.\n";
+                "   s16: Write the UTF-16 string STR into the send parcel.\n"
+                "   i32a: Write the 32-bit integer array N1,N2,... into the send parcel.\n";
 //                "   intent: Write and Intent int the send parcel. ARGS can be\n"
 //                "       action=STR data=STR type=STR launchFlags=INT component=STR categories=STR[,STR,...]\n";
         return result;
