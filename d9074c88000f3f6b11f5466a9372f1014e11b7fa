@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ba24e63_7c96796b",
+        "filename": "libs/gui/SensorManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1054390
+      },
+      "writtenOn": "2016-04-08T21:19:31Z",
+      "side": 1,
+      "message": "coding style.\nfor (int i \u003d 0; i \u003c 60; i++)",
+      "revId": "d9074c88000f3f6b11f5466a9372f1014e11b7fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ba24e63_1c9bb592",
+        "filename": "libs/gui/SensorManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1054390
+      },
+      "writtenOn": "2016-04-08T21:19:31Z",
+      "side": 1,
+      "message": "coding style. need { } even for single line.",
+      "revId": "d9074c88000f3f6b11f5466a9372f1014e11b7fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
