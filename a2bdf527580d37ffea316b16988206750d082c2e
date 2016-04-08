@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e09ecb1_a4fd4616",
+        "filename": "cmds/service/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-08T03:15:40Z",
+      "side": 1,
+      "message": "use android::base::Split.",
+      "revId": "a2bdf527580d37ffea316b16988206750d082c2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
