@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8b671e0e_9ec1fd6f",
+        "filename": "libs/gui/SensorManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1099238
+      },
+      "writtenOn": "2016-04-10T22:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ba24e63_7c96796b",
+      "revId": "d9074c88000f3f6b11f5466a9372f1014e11b7fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ba24e63_1c9bb592",
         "filename": "libs/gui/SensorManager.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-04-08T21:19:31Z",
       "side": 1,
       "message": "coding style. need { } even for single line.",
+      "revId": "d9074c88000f3f6b11f5466a9372f1014e11b7fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b671e0e_fec4b980",
+        "filename": "libs/gui/SensorManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1099238
+      },
+      "writtenOn": "2016-04-10T22:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ba24e63_1c9bb592",
       "revId": "d9074c88000f3f6b11f5466a9372f1014e11b7fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
