@@ -45,6 +45,30 @@
       "revId": "beaeb2c6be69df38d379994e41b21b8783efbe1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf7badf_661c104f",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1102448
+      },
+      "writtenOn": "2016-04-12T23:52:34Z",
+      "side": 1,
+      "message": "Hi Greg\nI may have miss something, however it seems to me that you suggestion does not work with a file that can have a string that is larger than 1024 bytes.\n\nandroid::base::ReadFileToString uses ReadFdToString do call to ReadFdToString to read from fd for a max of 1024 bytes, at least on M and N code base I have access to.\n\nSo I don\u0027t see how android::base::ReadFileToString is going to read the big string created by an atrace command that uses wildcards on kernel trace point.\n\nAre you referring to improvements made to ReadFileToString on very recent N release that makes ReadFileToString only limited by memory available when reading a string ?",
+      "parentUuid": "dcf63e9d_64530ce4",
+      "range": {
+        "startLine": 528,
+        "startChar": 4,
+        "endLine": 559,
+        "endChar": 52
+      },
+      "revId": "beaeb2c6be69df38d379994e41b21b8783efbe1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
