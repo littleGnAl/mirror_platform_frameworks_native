@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "0bac0e06_75ffda0d",
+        "filename": "services/nativeperms/android/os/IPermissionController.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-04-13T19:38:51Z",
+      "side": 1,
+      "message": "This file is copied verbatim, and it does say IPowerManager.aidl unfortunately. I\u0027d rather not change anything here.",
+      "parentUuid": "0bac0e06_d20984cb",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 54
+      },
+      "revId": "7a71f4976ec8d3be4c60832730aeda82f3b83a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bac0e06_12ecac1a",
         "filename": "services/nativeperms/android/os/IPermissionController.aidl",
         "patchSetId": 1
@@ -105,6 +129,24 @@
       "writtenOn": "2016-04-13T18:52:55Z",
       "side": 1,
       "message": "In frameworks native, the style is defined thusly:\n\nhttps://docs.google.com/document/d/1QivJI_03TcfRAyMGWkTNHEdiQh8h_F-rYGup9soSeLA/",
+      "revId": "7a71f4976ec8d3be4c60832730aeda82f3b83a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bac0e06_b532e2d0",
+        "filename": "services/nativeperms/nativeperms.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-04-13T19:38:51Z",
+      "side": 1,
+      "message": "Eff me.",
+      "parentUuid": "0bac0e06_92d1bc4b",
       "revId": "7a71f4976ec8d3be4c60832730aeda82f3b83a2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
