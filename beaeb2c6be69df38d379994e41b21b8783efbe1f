@@ -69,6 +69,30 @@
       "revId": "beaeb2c6be69df38d379994e41b21b8783efbe1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf7badf_495fe54a",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-04-13T00:24:26Z",
+      "side": 1,
+      "message": "android::base::ReadFdToString reads into an internal 1024-byte buffer, but it will keep read()ing and append()ing to the output string as long as the read() call succeeds (https://android.googlesource.com/platform/system/core/+/master/base/file.cpp#43).\n\nAFAICT this has been the case ever since ReadFileToString was exposed through libbase in early 2015.\n\nAre you seeing different behavior in practice?  I just ran a quick test and had no issue fully reading /system/framework/framework-res.apk with ReadFileToString(), which is ~28 MB on my dev board.",
+      "parentUuid": "ebf7badf_661c104f",
+      "range": {
+        "startLine": 528,
+        "startChar": 4,
+        "endLine": 559,
+        "endChar": 52
+      },
+      "revId": "beaeb2c6be69df38d379994e41b21b8783efbe1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
