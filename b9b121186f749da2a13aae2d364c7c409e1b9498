@@ -94,6 +94,30 @@
       "revId": "b9b121186f749da2a13aae2d364c7c409e1b9498",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bac0e06_2696cac5",
+        "filename": "services/nativeperms/nativeperms.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-04-13T22:02:18Z",
+      "side": 1,
+      "message": "Still, no harm done in checking for NULL.",
+      "parentUuid": "0bac0e06_a6891aae",
+      "range": {
+        "startLine": 48,
+        "startChar": 61,
+        "endLine": 48,
+        "endChar": 73
+      },
+      "revId": "b9b121186f749da2a13aae2d364c7c409e1b9498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
