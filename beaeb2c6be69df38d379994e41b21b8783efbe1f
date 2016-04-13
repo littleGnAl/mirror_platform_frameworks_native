@@ -93,6 +93,30 @@
       "revId": "beaeb2c6be69df38d379994e41b21b8783efbe1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf7badf_293149c8",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1102448
+      },
+      "writtenOn": "2016-04-13T00:39:38Z",
+      "side": 1,
+      "message": "I have been busy those weeks and as I\u0027m travelling I have no board to try out this week.\nI was just reading code to try to understand what ReadFielToString() is doing. Obviously  I miss something in the code.\n\nSo I\u0027ll take care of this when back at office (next week)",
+      "parentUuid": "ebf7badf_495fe54a",
+      "range": {
+        "startLine": 528,
+        "startChar": 4,
+        "endLine": 559,
+        "endChar": 52
+      },
+      "revId": "beaeb2c6be69df38d379994e41b21b8783efbe1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
