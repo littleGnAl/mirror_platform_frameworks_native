@@ -737,7 +737,27 @@ enum {
     AKEYCODE_MEDIA_STEP_FORWARD = 274,
     AKEYCODE_MEDIA_STEP_BACKWARD = 275,
     /** Put device to sleep unless a wakelock is held. */
-    AKEYCODE_SOFT_SLEEP = 276
+    AKEYCODE_SOFT_SLEEP = 276,
+    /** Function key 1 */
+    AKEYCODE_USER_FUNCTION_1 = 280,
+    /** Function key 2 */
+    AKEYCODE_USER_FUNCTION_2 = 281,
+    /** Function key 3 */
+    AKEYCODE_USER_FUNCTION_3 = 282,
+    /** Function key 4 */
+    AKEYCODE_USER_FUNCTION_4 = 283,
+    /** SIM Switch key */
+    AKEYCODE_SIM_SWITCH = 284,
+    /** Rotation key */
+    AKEYCODE_ROTATION = 285,
+    /** Message key */
+    AKEYCODE_MESSAGE = 286,
+    /** Accessory camera key */
+    AKEYCODE_ACCESSORY_CAMERA = 287,
+    /** OK Key on the VR device */
+    AKEYCODE_VR_OK = 288,
+    /** BACK Key on the VR device */
+    AKEYCODE_VR_BACK = 289
 
     // NOTE: If you add a new keycode here you must also add it to several other files.
     //       Refer to frameworks/base/core/java/android/view/KeyEvent.java for the full list.
