@@ -757,7 +757,45 @@ enum {
     /** Copy key. */
     AKEYCODE_COPY = 278,
     /** Paste key. */
-    AKEYCODE_PASTE = 279
+    AKEYCODE_PASTE = 279,
+    /** MEMO key */
+    AKEYCODE_MEMO = 280,
+    /** CUSTOM_APP_1 key */
+    AKEYCODE_CUSTOM_APP_1 = 281,
+    /** SIM Switch key */
+    AKEYCODE_SIM_SWITCH = 282,
+    /** Rotation key */
+    AKEYCODE_ROTATION = 283,
+    /** Message key */
+    AKEYCODE_MESSAGING = 284,
+    /** Camera on/off key */
+    AKEYCODE_CAMERA_TOGGLE = 285,
+    /** APERTURE Priority Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_APERTURE_PRIORITY = 286,
+    /** AUTO Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_AUTO = 287,
+    /** CAMCORDER Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_CAMCORDER = 288,
+    /** MANUAL Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_MANUAL = 289,
+    /** PROGRAM Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_PROGRAM = 290,
+    /** SHUTTER Priority Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_SHUTTER_PRIORITY = 291,
+    /** POPOUT Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_POPOUT = 292,
+    /** MULTIVIEW Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_MULTIVIEW = 293,
+    /** SNAP Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_SNAP = 294,
+    /** PANORAMA Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_PANORAMA = 295,
+    /** SLOWMOTION Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_SLOWMOTION = 296,
+    /** TIMELAPSE Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_TIMELAPSE = 297,
+    /** Custom mode key for camera device */
+    AKEYCODE_CAMERA_MODE_CUSTOM = 298
 
     // NOTE: If you add a new keycode here you must also add it to several other files.
     //       Refer to frameworks/base/core/java/android/view/KeyEvent.java for the full list.
