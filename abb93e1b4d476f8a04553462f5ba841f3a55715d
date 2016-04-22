@@ -63,6 +63,30 @@
       "revId": "abb93e1b4d476f8a04553462f5ba841f3a55715d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e87a6032_433eaa0d",
+        "filename": "services/sensorservice/SensorService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1059954
+      },
+      "writtenOn": "2016-04-22T18:39:23Z",
+      "side": 1,
+      "message": "Thanks - yes - we need to clean things up a little.",
+      "parentUuid": "e87a6032_b88459ff",
+      "range": {
+        "startLine": 1109,
+        "startChar": 70,
+        "endLine": 1109,
+        "endChar": 71
+      },
+      "revId": "abb93e1b4d476f8a04553462f5ba841f3a55715d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
