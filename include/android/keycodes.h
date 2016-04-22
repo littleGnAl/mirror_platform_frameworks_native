@@ -737,7 +737,67 @@ enum {
     AKEYCODE_MEDIA_STEP_FORWARD = 274,
     AKEYCODE_MEDIA_STEP_BACKWARD = 275,
     /** Put device to sleep unless a wakelock is held. */
-    AKEYCODE_SOFT_SLEEP = 276
+    AKEYCODE_SOFT_SLEEP = 276,
+    /** Function key 1 */
+    AKEYCODE_USER_FUNCTION_1 = 280,
+    /** Function key 2 */
+    AKEYCODE_USER_FUNCTION_2 = 281,
+    /** Function key 3 */
+    AKEYCODE_USER_FUNCTION_3 = 282,
+    /** Function key 4 */
+    AKEYCODE_USER_FUNCTION_4 = 283,
+    /** SIM Switch key */
+    AKEYCODE_SIM_SWITCH = 284,
+    /** Rotation key */
+    AKEYCODE_ROTATION = 285,
+    /** Message key */
+    AKEYCODE_MESSAGE = 286,
+    /** Accessory camera key */
+    AKEYCODE_ACCESSORY_CAMERA = 287,
+    /** OK Key on the VR device */
+    AKEYCODE_VR_OK = 288,
+    /** BACK Key on the VR device */
+    AKEYCODE_VR_BACK = 289,
+    /** APERTURE Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_APERTURE = 290,
+    /** AUTO Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_AUTO = 291,
+    /** CAMCORDER Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_CAMCORDER = 292,
+    /** MANUAL Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_MANUAL = 293,
+    /** PROGRAM Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_PROGRAM = 294,
+    /** SHUTTER Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_SHUTTER = 295,
+    /** POPOUT Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_POPOUT = 296,
+    /** MULTIVIEW Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_MULTIVIEW = 297,
+    /** SNAP Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_SNAP = 298,
+    /** PANORAMA Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_PANORAMA = 299,
+    /** SLOWMOTION Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_SLOWMOTION = 300,
+    /** TIMELAPSE Mode key for camera device */
+    AKEYCODE_CAMERA_MODE_TIMELAPSE = 301,
+    /** Camera scene 1 for camera device */
+    AKEYCODE_CAMERA_SCENE_1 = 302,
+    /** Camera scene 2 for camera device */
+    AKEYCODE_CAMERA_SCENE_2 = 303,
+    /** Camera scene 3 for camera device */
+    AKEYCODE_CAMERA_SCENE_3 = 304,
+    /** Camera scene custom for camera device */
+    AKEYCODE_CAMERA_SCENE_CUSTOM = 305,
+    /** Next key for camera device */
+    AKEYCODE_CAMERA_CONTROL_NEXT = 306,
+    /** Previous key for camera device */
+    AKEYCODE_CAMERA_CONTROL_PREVIOUS = 307,
+    /** Record key for camera device */
+    AKEYCODE_CAMERA_RECORD = 308,
+    /** Power key for camera device */
+    AKEYCODE_CAMERA_POWER = 309
 
     // NOTE: If you add a new keycode here you must also add it to several other files.
     //       Refer to frameworks/base/core/java/android/view/KeyEvent.java for the full list.
