@@ -39,6 +39,30 @@
       "revId": "abb93e1b4d476f8a04553462f5ba841f3a55715d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e87a6032_b88459ff",
+        "filename": "services/sensorservice/SensorService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1023211
+      },
+      "writtenOn": "2016-04-22T18:11:19Z",
+      "side": 1,
+      "message": "I think %d would be more consistent with the rest of this project. I noticed this when clang threw a warning (below), however bionic doesn\u0027t seems to mind. It ran fine when I tried running ALOGI(\"%D %d\", 1, 1).\n \nI\u0027ll reword the commit message to clarify.\n\n    frameworks/native/services/sensorservice/SensorService.cpp:1123:71: warning: invalid conversion specifier \u0027D\u0027 [-Wformat-invalid-specifier]\n            ALOGE(\"%s a sensor (%s) without enabled required app op: %D\",",
+      "parentUuid": "e87a6032_98107da7",
+      "range": {
+        "startLine": 1109,
+        "startChar": 70,
+        "endLine": 1109,
+        "endChar": 71
+      },
+      "revId": "abb93e1b4d476f8a04553462f5ba841f3a55715d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
