@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e87a6032_780b517d",
+        "filename": "services/sensorservice/SensorService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1059954
+      },
+      "writtenOn": "2016-04-22T17:52:04Z",
+      "side": 1,
+      "message": "This is fine. Perhaps even better would be to use \"%\" PRIx32 to explictly call out the int32_t format. I will accept the change anyways.",
+      "revId": "abb93e1b4d476f8a04553462f5ba841f3a55715d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
