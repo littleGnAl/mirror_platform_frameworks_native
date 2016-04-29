@@ -222,7 +222,10 @@ struct egl_window_surface_v2_t : public egl_surface_t
 
     ~egl_window_surface_v2_t();
 
-    virtual     bool        initCheck() const { return true; } // TODO: report failure if ctor fails
+    virtual     bool        initCheck() const {
+        return NULL != module;
+    }
+
     virtual     EGLBoolean  swapBuffers();
     virtual     EGLBoolean  bindDrawSurface(ogles_context_t* gl);
     virtual     EGLBoolean  bindReadSurface(ogles_context_t* gl);
@@ -346,7 +349,9 @@ egl_window_surface_v2_t::egl_window_surface_v2_t(EGLDisplay dpy,
     bits(NULL)
 {
     hw_module_t const* pModule;
-    hw_get_module(GRALLOC_HARDWARE_MODULE_ID, &pModule);
+    if (hw_get_module(GRALLOC_HARDWARE_MODULE_ID, &pModule) != 0) {
+        return;
+    }
     module = reinterpret_cast<gralloc_module_t const*>(pModule);
 
     pixelFormatTable = gglGetPixelFormatTable();
