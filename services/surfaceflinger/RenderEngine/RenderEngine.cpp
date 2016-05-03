@@ -317,7 +317,7 @@ class EGLAttributeVector {
     KeyedVector<Attribute, EGLint> mList;
     struct Attribute {
         Attribute() {};
-        Attribute(EGLint v) : v(v) { }
+        explicit Attribute(EGLint v) : v(v) { }
         EGLint v;
         bool operator < (const Attribute& other) const {
             // this places EGL_NONE at the end
