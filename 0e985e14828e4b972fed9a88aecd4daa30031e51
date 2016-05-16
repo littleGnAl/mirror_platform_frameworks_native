@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f2725490_adb2b109",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-05-16T19:55:14Z",
+      "side": 1,
+      "message": "Sounds like we will need a dup() here, a dup() in sender, and close() in obj destruction.",
+      "parentUuid": "f2725490_cdc60dac",
+      "revId": "0e985e14828e4b972fed9a88aecd4daa30031e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2725490_8d3fb574",
         "filename": "cmds/servicemanager/binder.c",
         "patchSetId": 1
