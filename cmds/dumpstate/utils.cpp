@@ -951,7 +951,8 @@ void dump_emmc_ecsd(const char *ext_csd_path) {
         return;
     }
 
-    bytes_read = TEMP_FAILURE_RETRY(read(fd, buffer, sizeof(buffer)));
+    bytes_read = TEMP_FAILURE_RETRY(read(fd, buffer,
+                                         sizeof(buffer) - sizeof(buffer[0])));
     close(fd);
     if (bytes_read < 0) {
         printf("*** %s: %s\n\n", ext_csd_path, strerror(errno));
@@ -961,6 +962,8 @@ void dump_emmc_ecsd(const char *ext_csd_path) {
         printf("*** %s: truncated content %zd\n\n", ext_csd_path, bytes_read);
         return;
     }
+
+    reinterpret_cast<char*>(buffer)[bytes_read] = '\0'; // turn into asciiz
 
     ext_csd_rev = 0;
     if (sscanf(buffer[EXT_CSD_REV].str, "%02x", &ext_csd_rev) != 1) {
