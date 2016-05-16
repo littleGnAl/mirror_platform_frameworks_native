@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2725490_cdc60dac",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-05-16T19:40:40Z",
+      "side": 1,
+      "message": "This has strange ownership semantics, as the caller must make sure to keep the fd open until the some later function has passed the object to the binder driver.  This will become especially problematic when combined with proper scoped fds.",
+      "revId": "0e985e14828e4b972fed9a88aecd4daa30031e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2725490_8d3fb574",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-05-16T19:40:40Z",
+      "side": 1,
+      "message": "This seems really dangerous - if this function doesn\u0027t get called for some reason (like an error), won\u0027t there be a leaked fd in the binder object?  I think libbinder has the binder object own the fds and close them when the binder object is destroyed, and then the function that retrieves the fd returns a dup\u0027d copy.",
+      "revId": "0e985e14828e4b972fed9a88aecd4daa30031e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
