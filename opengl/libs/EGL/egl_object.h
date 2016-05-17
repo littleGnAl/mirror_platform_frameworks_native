@@ -51,6 +51,8 @@ public:
     void destroy();
 
     inline int32_t incRef() { return android_atomic_inc(&count); }
+    // decRef only provides release semantics.  A barrier is needed before
+    // acting on the result.
     inline int32_t decRef() { return android_atomic_dec(&count); }
     inline egl_display_t* getDisplay() const { return display; }
 
