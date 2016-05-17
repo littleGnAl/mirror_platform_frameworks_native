@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2725490_ed89ff36",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-05-17T15:15:32Z",
+      "side": 1,
+      "message": "No need to adjust the size of the buffer given the current set of indexes.",
+      "range": {
+        "startLine": 929,
+        "startChar": 0,
+        "endLine": 932,
+        "endChar": 18
+      },
+      "revId": "6d0ad5e72c7fdaec0b605cb28360c34128cca268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
