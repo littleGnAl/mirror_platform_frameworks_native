@@ -22,6 +22,29 @@
       "revId": "6d0ad5e72c7fdaec0b605cb28360c34128cca268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7caa238_eb9cf16a",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-05-17T15:39:47Z",
+      "side": 1,
+      "message": "or just android::base::ReadFileToString and then cast in the opposite direction?\n\nthe length check seems odd too. oh, there are more length checks as we go along. still seems a little odd, but maybe it\u0027s legit? or is that another reason that this code should use ReadFileToString and the truncations are actually because this code doesn\u0027t handle short reads?",
+      "range": {
+        "startLine": 947,
+        "startChar": 0,
+        "endLine": 966,
+        "endChar": 75
+      },
+      "revId": "6d0ad5e72c7fdaec0b605cb28360c34128cca268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
