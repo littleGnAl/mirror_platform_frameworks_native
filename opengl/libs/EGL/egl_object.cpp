@@ -52,6 +52,7 @@ void egl_object_t::terminate() {
 
 void egl_object_t::destroy() {
     if (decRef() == 1) {
+        android_memory_barrier();
         delete this;
     }
 }

@@ -74,6 +74,12 @@ void EGLBufferObjectManager::incStrong(const void* /*id*/) const {
 }
 void EGLBufferObjectManager::decStrong(const void* /*id*/) const {
     if (android_atomic_dec(&mCount) == 1) {
+        // android_atomic_dec has only release semantics.
+        // We need to ensure that "prior" updates are visible to destructor.
+        // That requires acquire semantics here as well.
+        // TODO: Convert to C++ standard atomics, and removed barrier in
+        // incStrong.
+        android_memory_barrier();
         delete this;
     }
 }

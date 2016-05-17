@@ -1430,6 +1430,9 @@ EGLBoolean eglInitialize(EGLDisplay dpy, EGLint *major, EGLint *minor)
     egl_display_t& d = egl_display_t::get_display(dpy);
 
     if (android_atomic_inc(&d.initialized) == 0) {
+        // TODO: android_atomic_inc provides release memory ordering.
+        // Acquire ordering is needed here, since a nonzero read should
+        // ensure that later code sees initialized data.
         // initialize stuff here if needed
         //pthread_mutex_lock(&gInitMutex);
         //pthread_mutex_unlock(&gInitMutex);
