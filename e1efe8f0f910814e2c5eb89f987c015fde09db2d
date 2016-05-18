@@ -16,6 +16,24 @@
       "revId": "e1efe8f0f910814e2c5eb89f987c015fde09db2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57f312ea_b8833ddf",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-05-18T21:56:56Z",
+      "side": 1,
+      "message": "I was also using this to catch empty contents, but on second thoughts, present but empty probably deserves a truncated content message ...",
+      "parentUuid": "57f312ea_d8904154",
+      "revId": "e1efe8f0f910814e2c5eb89f987c015fde09db2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
