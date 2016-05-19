@@ -548,8 +548,8 @@ void Layer::setPerFrameData(const sp<const DisplayDevice>& hw,
     // Apply this display's projection's viewport to the visible region
     // before giving it to the HWC HAL.
     const Transform& tr = hw->getTransform();
-    Region visible = tr.transform(visibleRegion.intersect(hw->getViewport()));
-    layer.setVisibleRegionScreen(visible);
+    visibleRegionScreen = tr.transform(visibleRegion.intersect(hw->getViewport()));
+    layer.setVisibleRegionScreen(visibleRegionScreen);
     layer.setSurfaceDamage(surfaceDamageRegion);
 
     if (mSidebandStream.get()) {

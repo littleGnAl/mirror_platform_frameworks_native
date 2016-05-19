@@ -1037,9 +1037,8 @@ public:
     }
     virtual void setVisibleRegionScreen(const Region& reg) {
         hwc_region_t& visibleRegion = getLayer()->visibleRegionScreen;
-        mVisibleRegion = reg;
         visibleRegion.rects = reinterpret_cast<hwc_rect_t const *>(
-                mVisibleRegion.getArray(&visibleRegion.numRects));
+                reg.getArray(&visibleRegion.numRects));
     }
     virtual void setSurfaceDamage(const Region& reg) {
         if (!hwcHasApiVersion(mHwc, HWC_DEVICE_API_VERSION_1_5)) {
@@ -1053,9 +1052,8 @@ public:
             surfaceDamage.rects = NULL;
             return;
         }
-        mSurfaceDamage = reg;
         surfaceDamage.rects = reinterpret_cast<hwc_rect_t const *>(
-                mSurfaceDamage.getArray(&surfaceDamage.numRects));
+                reg.getArray(&surfaceDamage.numRects));
     }
     virtual void setSidebandStream(const sp<NativeHandle>& stream) {
         ALOG_ASSERT(stream->handle() != NULL);
@@ -1079,13 +1077,6 @@ public:
     virtual void onDisplayed() {
         getLayer()->acquireFenceFd = -1;
     }
-
-protected:
-    // We need to hold "copies" of these for memory management purposes. The
-    // actual hwc_layer_1_t holds pointers to the memory within. Vector<>
-    // internally doesn't copy the memory unless one of the copies is modified.
-    Region mVisibleRegion;
-    Region mSurfaceDamage;
 };
 
 /*

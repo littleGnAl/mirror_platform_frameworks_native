@@ -77,6 +77,8 @@ public:
     Region coveredRegion;
     Region visibleNonTransparentRegion;
     Region surfaceDamageRegion;
+    // visible region passed to HWC needed to be held here.
+    Region visibleRegionScreen;
 
     // Layer serial number.  This gives layers an explicit ordering, so we
     // have a stable sort order when their layer stack and Z-order are
