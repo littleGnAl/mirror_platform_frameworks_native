@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7ae0ef8_817844e1",
+        "filename": "opengl/libagl/egl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2016-05-20T17:06:42Z",
+      "side": 1,
+      "message": "This config has an identical CONFIG_ID to config_4_attribute_list, which isn\u0027t valid.\n\nIt\u0027s also the same in every other attribute except EGL_NATIVE_VISUAL_ID. How do clients differentiate between these two (i.e. how do they know which one to pick), considering that the GGL_PIXEL_FORMAT enum is private to libagl and meaningless to clients?",
+      "revId": "3c78909aff822a426e591f89475cbb6d2db52086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
