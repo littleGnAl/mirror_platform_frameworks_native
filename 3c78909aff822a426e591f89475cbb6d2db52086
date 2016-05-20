@@ -16,6 +16,24 @@
       "revId": "3c78909aff822a426e591f89475cbb6d2db52086",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "573072cd_c7699eeb",
+        "filename": "opengl/libagl/egl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1031448
+      },
+      "writtenOn": "2016-05-20T19:01:49Z",
+      "side": 1,
+      "message": "\u003e This config has an identical CONFIG_ID to config_4_attribute_list,\n \u003e which isn\u0027t valid.\n \u003e \n \u003e It\u0027s also the same in every other attribute except\n \u003e EGL_NATIVE_VISUAL_ID.\n\nWe did copy config_4_attribute_list with an intention of creating a custom BGRA_8888 EGL_NATIVE_VISUAL_ID and this CONFIG_ID mixup is indeed an oversight. Thanks for pointing that out, we will fix that.\n\n \u003e How do clients differentiate between these\n \u003e two (i.e. how do they know which one to pick), considering that the\n \u003e GGL_PIXEL_FORMAT enum is private to libagl and meaningless to\n \u003e clients?\n\nI did not understand what you mean by the client part. Did you mean opengles client? We don\u0027t use any external clients for software rendering. We just use whatever comes bundled with libGLES_android.",
+      "parentUuid": "b7ae0ef8_817844e1",
+      "revId": "3c78909aff822a426e591f89475cbb6d2db52086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
