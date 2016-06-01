@@ -900,6 +900,13 @@ status_t SensorService::enable(const sp<SensorEventConnection>& connection,
             handle, connection.get());
     }
 
+    // Check maximum delay for the sensor.
+    // This is effective for Hal Version >= 1_3 as max delay value is 0 for HAL Version < 1_3.
+    nsecs_t maxDelayNs = sensor->getSensor().getMaxDelay()*1000;
+    if (maxDelayNs > 0 && (samplingPeriodNs > maxDelayNs)) {
+        samplingPeriodNs = maxDelayNs;
+    }
+
     nsecs_t minDelayNs = sensor->getSensor().getMinDelayNs();
     if (samplingPeriodNs < minDelayNs) {
         samplingPeriodNs = minDelayNs;
