@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae9cfe2a_e783cd68",
+        "filename": "opengl/libs/EGL/eglApi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2016-06-22T14:04:36Z",
+      "side": 1,
+      "message": "Extension has been ratified, remove comment",
+      "revId": "1f1438b7e5f8d29b8c09e661aed729064038d1be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
