@@ -16,6 +16,23 @@
       "revId": "1f1438b7e5f8d29b8c09e661aed729064038d1be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ee926fa_31bbf0d6",
+        "filename": "opengl/libs/EGL/eglApi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1095973
+      },
+      "writtenOn": "2016-06-22T20:04:43Z",
+      "side": 1,
+      "message": "I would just completely remove this #define everywhere in this file.",
+      "revId": "1f1438b7e5f8d29b8c09e661aed729064038d1be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
