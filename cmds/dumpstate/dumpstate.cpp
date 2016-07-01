@@ -30,6 +30,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+#include <android-base/stringprintf.h>
 #include <cutils/properties.h>
 
 #include "private/android_filesystem_config.h"
@@ -38,6 +39,8 @@
 #include <cutils/log.h>
 
 #include "dumpstate.h"
+
+using android::base::StringPrintf;
 
 /* read before root is shed */
 static char cmdline_buf[16384] = "(unknown)";
@@ -578,8 +581,15 @@ static void dumpstate() {
     run_command("IPTABLE RAW", 10, SU_PATH, "root", "iptables", "-t", "raw", "-L", "-nvx", NULL);
     run_command("IP6TABLE RAW", 10, SU_PATH, "root", "ip6tables", "-t", "raw", "-L", "-nvx", NULL);
 
+    char wifi_iface[PROPERTY_VALUE_MAX];
+    property_get("wifi.interface", wifi_iface, "wlan0");
+    if (!wifi_iface[0]) {
+        strcpy(wifi_iface, "wlan0");
+    }
+
     run_command("WIFI NETWORKS", 20,
-            SU_PATH, "root", "wpa_cli", "IFNAME=wlan0", "list_networks", NULL);
+            SU_PATH, "root", "wpa_cli", StringPrintf("IFNAME=%s", wifi_iface).c_str(),
+            "list_networks", NULL);
 
 #ifdef FWDUMP_bcmdhd
     run_command("ND OFFLOAD TABLE", 5,
@@ -598,7 +608,7 @@ static void dumpstate() {
 
 #ifdef FWDUMP_bcmdhd
     run_command("DUMP WIFI STATUS", 20,
-            SU_PATH, "root", "dhdutil", "-i", "wlan0", "dump", NULL);
+            SU_PATH, "root", "dhdutil", "-i", wifi_iface, "dump", NULL);
 
     run_command("DUMP WIFI INTERNAL COUNTERS (2)", 20,
             SU_PATH, "root", "wlutil", "counters", NULL);
