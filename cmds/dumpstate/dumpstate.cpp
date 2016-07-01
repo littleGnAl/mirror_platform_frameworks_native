@@ -385,6 +385,7 @@ static void dumpstate() {
     char radio[PROPERTY_VALUE_MAX], bootloader[PROPERTY_VALUE_MAX];
     char network[PROPERTY_VALUE_MAX], date[80];
     char build_type[PROPERTY_VALUE_MAX];
+    char wifi_iface[PROPERTY_VALUE_MAX];
 
     property_get("ro.build.display.id", build, "(unknown)");
     property_get("ro.build.fingerprint", fingerprint, "(unknown)");
@@ -392,6 +393,7 @@ static void dumpstate() {
     property_get("ro.baseband", radio, "(unknown)");
     property_get("ro.bootloader", bootloader, "(unknown)");
     property_get("gsm.operator.alpha", network, "(unknown)");
+    property_get("wifi.interface", wifi_iface, "wlan0");
     strftime(date, sizeof(date), "%Y-%m-%d %H:%M:%S", localtime(&now));
 
     printf("========================================================\n");
@@ -578,8 +580,11 @@ static void dumpstate() {
     run_command("IPTABLE RAW", 10, SU_PATH, "root", "iptables", "-t", "raw", "-L", "-nvx", NULL);
     run_command("IP6TABLE RAW", 10, SU_PATH, "root", "ip6tables", "-t", "raw", "-L", "-nvx", NULL);
 
+    char ifname[PROPERTY_VALUE_MAX + 8];
+    snprintf(ifname, sizeof(ifname),"IF_NAME=%s", wifi_iface);
+
     run_command("WIFI NETWORKS", 20,
-            SU_PATH, "root", "wpa_cli", "IFNAME=wlan0", "list_networks", NULL);
+            SU_PATH, "root", "wpa_cli", ifname, "list_networks", NULL);
 
 #ifdef FWDUMP_bcmdhd
     run_command("ND OFFLOAD TABLE", 5,
@@ -598,7 +603,7 @@ static void dumpstate() {
 
 #ifdef FWDUMP_bcmdhd
     run_command("DUMP WIFI STATUS", 20,
-            SU_PATH, "root", "dhdutil", "-i", "wlan0", "dump", NULL);
+            SU_PATH, "root", "dhdutil", "-i", wifi_iface, "dump", NULL);
 
     run_command("DUMP WIFI INTERNAL COUNTERS (2)", 20,
             SU_PATH, "root", "wlutil", "counters", NULL);
