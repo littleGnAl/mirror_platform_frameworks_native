@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3df04adc_9085f4ee",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2016-07-04T01:11:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "606e977c_7db27faa",
+      "range": {
+        "startLine": 396,
+        "startChar": 4,
+        "endLine": 396,
+        "endChar": 56
+      },
+      "revId": "0920fa9f6369ab29142fc016d8f7faab8f4c6deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d11e241_542004a1",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-01T16:01:30Z",
       "side": 1,
       "message": "This is C++, new code must try to use std::string.\n\nstd::string ifname(\"IF_NAME\u003d\");\nifname +\u003d wifi_iface;\nrun_command(....., ifname.c_str(), ...)\n\nor use libbase StringPrintf since the scope can be an rval:\n\nrun_command(...., StringPrintf(\"IF_NAME\u003d%s\", wifi_iface).c_str(), ...)",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 62
+      },
+      "revId": "0920fa9f6369ab29142fc016d8f7faab8f4c6deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3df04adc_706bb006",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2016-07-04T01:11:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d11e241_542004a1",
       "range": {
         "startLine": 583,
         "startChar": 0,
