@@ -16,6 +16,7 @@
 
 #define LOG_TAG "IMemory"
 
+#include <atomic>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,7 +29,6 @@
 #include <binder/IMemory.h>
 #include <utils/KeyedVector.h>
 #include <utils/threads.h>
-#include <utils/Atomic.h>
 #include <binder/Parcel.h>
 #include <utils/CallStack.h>
 
@@ -55,12 +55,15 @@ private:
     struct heap_info_t {
         sp<IMemoryHeap> heap;
         int32_t         count;
+        // Note that this cannot be meaningfully copied.
     };
 
     void free_heap(const wp<IBinder>& binder);
 
-    Mutex mHeapCacheLock;
+    Mutex mHeapCacheLock;  // Protects entire vector below.
     KeyedVector< wp<IBinder>, heap_info_t > mHeapCache;
+    // We do not use the copy-on-write capabilities of KeyedVector.
+    // TODO: Reimplemement based on standard C++ container?
 };
 
 static sp<HeapCache> gHeapCache = new HeapCache();
@@ -104,7 +107,7 @@ private:
     void assertMapped() const;
     void assertReallyMapped() const;
 
-    mutable volatile int32_t mHeapId;
+    mutable std::atomic<int32_t> mHeapId;
     mutable void*       mBase;
     mutable size_t      mSize;
     mutable uint32_t    mFlags;
@@ -236,8 +239,9 @@ BpMemoryHeap::BpMemoryHeap(const sp<IBinder>& impl)
 }
 
 BpMemoryHeap::~BpMemoryHeap() {
-    if (mHeapId != -1) {
-        close(mHeapId);
+    int32_t heapId = mHeapId.load(memory_order_relaxed);
+    if (heapId != -1) {
+        close(heapId);
         if (mRealHeap) {
             // by construction we're the last one
             if (mBase != MAP_FAILED) {
@@ -245,7 +249,7 @@ BpMemoryHeap::~BpMemoryHeap() {
 
                 if (VERBOSE) {
                     ALOGD("UNMAPPING binder=%p, heap=%p, size=%zu, fd=%d",
-                            binder.get(), this, mSize, mHeapId);
+                            binder.get(), this, mSize, heapId);
                     CallStack stack(LOG_TAG);
                 }
 
@@ -261,17 +265,22 @@ BpMemoryHeap::~BpMemoryHeap() {
 
 void BpMemoryHeap::assertMapped() const
 {
-    if (mHeapId == -1) {
+    int32_t heapId = mHeapId.load(memory_order_acquire);
+    if (heapId == -1) {
         sp<IBinder> binder(IInterface::asBinder(const_cast<BpMemoryHeap*>(this)));
         sp<BpMemoryHeap> heap(static_cast<BpMemoryHeap*>(find_heap(binder).get()));
         heap->assertReallyMapped();
         if (heap->mBase != MAP_FAILED) {
             Mutex::Autolock _l(mLock);
-            if (mHeapId == -1) {
+            if (mHeapId.load(memory_order_relaxed) == -1) {
                 mBase   = heap->mBase;
                 mSize   = heap->mSize;
                 mOffset = heap->mOffset;
-                android_atomic_write( dup( heap->mHeapId ), &mHeapId );
+                mHeapId.store(dup( heap->mHeapId.load(memory_order_relaxed) ),
+                        memory_order_release);
+            } else {
+                // Need to make sure other fields are also visible after this.
+                std::atomic_thread_fence(memory_order_acquire);
             }
         } else {
             // something went wrong
@@ -282,7 +291,8 @@ void BpMemoryHeap::assertMapped() const
 
 void BpMemoryHeap::assertReallyMapped() const
 {
-    if (mHeapId == -1) {
+    int32_t heapId = mHeapId.load(memory_order_acquire);
+    if (heapId == -1) {
 
         // remote call without mLock held, worse case scenario, we end up
         // calling transact() from multiple threads, but that's not a problem,
@@ -310,7 +320,7 @@ void BpMemoryHeap::assertReallyMapped() const
         }
 
         Mutex::Autolock _l(mLock);
-        if (mHeapId == -1) {
+        if (mHeapId.load(memory_order_relaxed) == -1) {
             mRealHeap = true;
             mBase = mmap(0, size, access, MAP_SHARED, fd, offset);
             if (mBase == MAP_FAILED) {
@@ -321,15 +331,18 @@ void BpMemoryHeap::assertReallyMapped() const
                 mSize = size;
                 mFlags = flags;
                 mOffset = offset;
-                android_atomic_write(fd, &mHeapId);
+                mHeapId.store(fd, memory_order_release);
             }
+        } else {
+            std::atomic_thread_fence(memory_order_acquire);
         }
     }
 }
 
 int BpMemoryHeap::getHeapID() const {
     assertMapped();
-    return mHeapId;
+    // We either stored mHeapId ourselves, or loaded it with acquire semantics.
+    return mHeapId.load(memory_order_relaxed);
 }
 
 void* BpMemoryHeap::getBase() const {
@@ -406,9 +419,10 @@ sp<IMemoryHeap> HeapCache::find_heap(const sp<IBinder>& binder)
                 "found binder=%p, heap=%p, size=%zu, fd=%d, count=%d",
                 binder.get(), info.heap.get(),
                 static_cast<BpMemoryHeap*>(info.heap.get())->mSize,
-                static_cast<BpMemoryHeap*>(info.heap.get())->mHeapId,
+                static_cast<BpMemoryHeap*>(info.heap.get())
+                ->mHeapId.load(memory_order_relaxed),
                 info.count);
-        android_atomic_inc(&info.count);
+        ++info.count;
         return info.heap;
     } else {
         heap_info_t info;
@@ -433,13 +447,13 @@ void HeapCache::free_heap(const wp<IBinder>& binder)
         ssize_t i = mHeapCache.indexOfKey(binder);
         if (i>=0) {
             heap_info_t& info(mHeapCache.editValueAt(i));
-            int32_t c = android_atomic_dec(&info.count);
-            if (c == 1) {
+            if (--info.count == 0) {
                 ALOGD_IF(VERBOSE,
                         "removing binder=%p, heap=%p, size=%zu, fd=%d, count=%d",
                         binder.unsafe_get(), info.heap.get(),
                         static_cast<BpMemoryHeap*>(info.heap.get())->mSize,
-                        static_cast<BpMemoryHeap*>(info.heap.get())->mHeapId,
+                        static_cast<BpMemoryHeap*>(info.heap.get())
+                        ->mHeapId.load(memory_order_relaxed),
                         info.count);
                 rel = mHeapCache.valueAt(i).heap;
                 mHeapCache.removeItemsAt(i);
@@ -470,7 +484,7 @@ void HeapCache::dump_heaps()
         ALOGD("hey=%p, heap=%p, count=%d, (fd=%d, base=%p, size=%zu)",
                 mHeapCache.keyAt(i).unsafe_get(),
                 info.heap.get(), info.count,
-                h->mHeapId, h->mBase, h->mSize);
+                h->mHeapId.load(memory_order_relaxed), h->mBase, h->mSize);
     }
 }
 
