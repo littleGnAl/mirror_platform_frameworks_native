@@ -157,6 +157,8 @@ public:
 
     template<typename T>
     status_t            writeNullableParcelable(const std::unique_ptr<T>& parcelable);
+    template<typename T>
+    status_t            writeNullableParcelable(const sp<T>& parcelable);
 
     status_t            writeParcelable(const Parcelable& parcelable);
 
@@ -266,6 +268,9 @@ public:
 
     template<typename T>
     status_t            readParcelable(std::unique_ptr<T>* parcelable) const;
+
+    template<typename T>
+    status_t            readParcelable(sp<T>* parcelable) const;
 
     template<typename T>
     status_t            readStrongBinder(sp<T>* val) const;
@@ -761,7 +766,35 @@ status_t Parcel::readParcelable(std::unique_ptr<T>* parcelable) const {
 }
 
 template<typename T>
+status_t Parcel::readParcelable(sp<T>* parcelable) const {
+    const int32_t start = dataPosition();
+    int32_t present;
+    status_t status = readInt32(&present);
+    parcelable->clear();
+
+    if (status != OK || !present) {
+        return status;
+    }
+
+    setDataPosition(start);
+    *parcelable = new T();
+
+    status = readParcelable(parcelable->get());
+
+    if (status != OK) {
+        parcelable->clear();
+    }
+
+    return status;
+}
+
+template<typename T>
 status_t Parcel::writeNullableParcelable(const std::unique_ptr<T>& parcelable) {
+    return writeRawNullableParcelable(parcelable.get());
+}
+
+template<typename T>
+status_t Parcel::writeNullableParcelable(const sp<T>& parcelable) {
     return writeRawNullableParcelable(parcelable.get());
 }
 
