@@ -1834,13 +1834,50 @@ const char* Parcel::readCString() const
 
 String8 Parcel::readString8() const
 {
-    int32_t size = readInt32();
-    // watch for potential int overflow adding 1 for trailing NUL
-    if (size > 0 && size < INT32_MAX) {
-        const char* str = (const char*)readInplace(size+1);
-        if (str) return String8(str, size);
-    }
+    size_t len;
+    const char* str = readString8Inplace(readInt32(), &len);
+    if (str) return String8(str, len);
+    // This might genuinely return |NULL| for empty strings, but we don't care
+    // about errors here, so just return an empty string.
     return String8();
+}
+
+status_t Parcel::readString8(String8* pArg) const
+{
+    int32_t size;
+    status_t status = readInt32(&size);
+    if (status != OK) {
+        return status;
+    }
+    if (size < 0) {
+        return BAD_VALUE;
+    }
+    // |writeString8| writes nothing for empty string.
+    if (size == 0) {
+	*pArg = String8();
+        return OK;
+    }
+    size_t outLen;
+    const char* str = readString8Inplace(size, &outLen);
+    if (str) {
+        pArg->setTo(str, outLen);
+        return OK;
+    } else {
+        return UNEXPECTED_NULL;
+    }
+}
+
+const char* Parcel::readString8Inplace(int32_t size, size_t* outLen) const
+{
+    if (size > 0 && size < INT32_MAX) {
+        *outLen = size;
+        const char* str = (const char*)readInplace(size+1);
+        if (str != NULL) {
+            return str;
+        }
+    }
+    *outLen = 0;
+    return NULL;
 }
 
 String16 Parcel::readString16() const
