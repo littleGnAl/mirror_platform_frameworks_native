@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bac440d3_accd6e6a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1870,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2016-07-18T21:28:56Z",
+      "side": 1,
+      "message": "Could you just not write this function?  It\u0027s pretty hard to understand how to use this from the header, and very few people should be doing this anyway.  Just put the critical logic  into status_t readString8(String8*) and have the non-error code version reset to an empty string on UNEXPECTED_NULL?",
+      "revId": "f915ed2ea65ef6171423ac707c25e46da390c779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
