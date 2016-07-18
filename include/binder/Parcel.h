@@ -246,6 +246,8 @@ public:
 
     const char*         readCString() const;
     String8             readString8() const;
+    status_t            readString8(String8* pArg) const;
+    const char*         readString8Inplace(size_t* inLen, size_t* outLen) const;
     String16            readString16() const;
     status_t            readString16(String16* pArg) const;
     status_t            readString16(std::unique_ptr<String16>* pArg) const;
