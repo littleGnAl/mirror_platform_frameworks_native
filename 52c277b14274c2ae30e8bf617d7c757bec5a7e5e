@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bac440d3_f6f45327",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2016-07-18T20:03:30Z",
+      "side": 1,
+      "message": "This ignores an error condition: reaching the end of the buffer.",
+      "revId": "52c277b14274c2ae30e8bf617d7c757bec5a7e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
