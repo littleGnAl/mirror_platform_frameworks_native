@@ -1834,13 +1834,43 @@ const char* Parcel::readCString() const
 
 String8 Parcel::readString8() const
 {
-    int32_t size = readInt32();
-    // watch for potential int overflow adding 1 for trailing NUL
-    if (size > 0 && size < INT32_MAX) {
-        const char* str = (const char*)readInplace(size+1);
-        if (str) return String8(str, size);
-    }
+    size_t inLen, outLen;
+    const char* str = readString8Inplace(&inLen, &outLen);
+    // Empty strings will also return |NULL|, so check if inLen == 0.
+    if (str || (inLen == 0)) return String8(str, outLen);
+    ALOGE("Reading a NULL string not supported here.");
     return String8();
+}
+
+String8 Parcel::readString8(String8* pArg) const
+{
+    size_t inLen, outLen;
+    const char* str = readString8Inplace(&inLen, &outLen);
+    // Empty strings will also return |NULL|, so check if inLen == 0.
+    if (str || (inLen == 0)) {
+        pArg->setTo(str, outLen);
+        return 0;
+    } else {
+        *pArg = String8();
+        return UNEXPECTED_NULL;
+    }
+}
+
+const char* Parcel::readString8Inplace(size_t* inLen, size_t* outLen) const
+{
+    int32_t size = readInt32();
+    *inLen = size;
+    // watch for potential int overflow adding 1 for trailing NUL
+    // |writeString8| writes nothing for empty string.
+    if (size > 0 && size < INT32_MAX) {
+        *outLen = size;
+        const char* str = (const char*)readInplace(size+1);
+        if (str != NULL) {
+            return str;
+        }
+    }
+    *outLen = 0;
+    return NULL;
 }
 
 String16 Parcel::readString16() const
