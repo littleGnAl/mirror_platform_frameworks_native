@@ -402,14 +402,18 @@ void *Loader::load_driver(const char* kind,
         char const * const * api = egl_names;
         while (*api) {
             char const * name = *api;
-            __eglMustCastToProperFunctionPointerType f =
-                (__eglMustCastToProperFunctionPointerType)dlsym(dso, name);
-            if (f == NULL) {
-                // couldn't find the entry-point, use eglGetProcAddress()
+            __eglMustCastToProperFunctionPointerType f;
+            // extension api get by eglGetProcAddress.
+            // core api get by dlsym.
+            if (isEGLExtension(name)) {
                 f = getProcAddress(name);
-                if (f == NULL) {
-                    f = (__eglMustCastToProperFunctionPointerType)0;
-                }
+            }
+            else {
+                f = (__eglMustCastToProperFunctionPointerType)dlsym(dso, name);
+            }
+
+            if (f == NULL) {
+                f = (__eglMustCastToProperFunctionPointerType)0;
             }
             *curr++ = f;
             api++;
