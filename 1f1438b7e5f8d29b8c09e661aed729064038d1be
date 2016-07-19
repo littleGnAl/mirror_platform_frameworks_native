@@ -51,6 +51,24 @@
       "revId": "1f1438b7e5f8d29b8c09e661aed729064038d1be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a425b4c_e463e013",
+        "filename": "opengl/libs/EGL/eglApi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1099483
+      },
+      "writtenOn": "2016-07-19T15:40:58Z",
+      "side": 1,
+      "message": "Sorry for the delay - I forgot to set up forwarding in my gpartner-nvidia gmail account and missed the updates.\n\nI will upload another patch with Pablo\u0027s suggested change.",
+      "parentUuid": "bac440d3_5dbd8a76",
+      "revId": "1f1438b7e5f8d29b8c09e661aed729064038d1be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
