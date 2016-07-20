@@ -62,6 +62,7 @@ extern char const * const egl_names[];
 
 extern egl_connection_t gEGLImpl;
 
+extern bool isEGLExtension(const char* name);
 // ----------------------------------------------------------------------------
 }; // namespace android
 // ----------------------------------------------------------------------------

@@ -209,7 +209,17 @@ static const extention_map_t sExtensionMap[] = {
          !strcmp((procname), "eglAwakenProcessIMG")         ||    \
          !strcmp((procname), "eglDupNativeFenceFDANDROID"))
 
+bool isEGLExtension(const char* name)
+{
+    for (uint32_t i=0; i<NELEM(sExtensionMap); i++) {
+        if (!strcmp(name, sExtensionMap[i].name)) {
+            return true;
+        }
+    }
 
+    bool extension = FILTER_EXTENSIONS(name);
+    return extension;
+}
 
 // accesses protected by sExtensionMapMutex
 static DefaultKeyedVector<String8, __eglMustCastToProperFunctionPointerType> sGLExtentionMap;
