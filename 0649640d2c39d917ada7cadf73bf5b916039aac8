@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2aa1dfaa_d6439446",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1859,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2016-07-21T00:25:56Z",
+      "side": 1,
+      "message": "Argh.",
+      "parentUuid": "2aa1dfaa_d382c6a3",
+      "revId": "0649640d2c39d917ada7cadf73bf5b916039aac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aa1dfaa_b3638214",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-07-20T23:45:39Z",
       "side": 1,
       "message": "This isn\u0027t really what that error code means.  Strictly speaking, it means that someone wrote a null value into the parcel (e.g. they passed in null, which encodes as 0 here).   The problem is that the wire format for String8 makes no difference between null and 0 length, so you can\u0027t validly return this.  In this context, because you\u0027ve checked the bounds already above, a nullptr return means not enough data in the parcel.\n\nSo BAD_VALUE?",
+      "revId": "0649640d2c39d917ada7cadf73bf5b916039aac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2aa1dfaa_b6461058",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2016-07-21T00:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aa1dfaa_b3638214",
       "revId": "0649640d2c39d917ada7cadf73bf5b916039aac8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
