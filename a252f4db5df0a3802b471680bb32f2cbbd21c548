@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a359761_25e298c9",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2016-07-22T17:03:22Z",
+      "side": 1,
+      "message": "Is this check necessary? Won\u0027t you abort if memory can\u0027t be allocated?",
+      "range": {
+        "startLine": 780,
+        "startChar": 8,
+        "endLine": 780,
+        "endChar": 26
+      },
+      "revId": "a252f4db5df0a3802b471680bb32f2cbbd21c548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a359761_652f40f4",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2016-07-22T17:03:22Z",
+      "side": 1,
+      "message": "As long as you are here, any chance of changing this to a non-c style cast?",
+      "range": {
+        "startLine": 812,
+        "startChar": 20,
+        "endLine": 812,
+        "endChar": 28
+      },
+      "revId": "a252f4db5df0a3802b471680bb32f2cbbd21c548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a359761_852cc4fe",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2016-07-22T17:03:22Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 832,
+        "startChar": 16,
+        "endLine": 832,
+        "endChar": 24
+      },
+      "revId": "a252f4db5df0a3802b471680bb32f2cbbd21c548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
