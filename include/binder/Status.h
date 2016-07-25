@@ -94,6 +94,10 @@ public:
     static Status fromServiceSpecificError(int32_t serviceSpecificErrorCode,
                                            const char* message);
 
+    static Status fromLegacyError(status_t status) {
+        return (status == NO_ERROR) ? ok() : fromServiceSpecificError(status);
+    }
+
     static Status fromStatusT(status_t status);
 
     Status() = default;
@@ -126,6 +130,17 @@ public:
     }
     int32_t serviceSpecificErrorCode() const {
         return mException == EX_SERVICE_SPECIFIC ? mErrorCode : 0;
+    }
+    status_t legacyError() const {
+        switch (mException) {
+        case EX_NONE:
+            return NO_ERROR;
+        case EX_SERVICE_SPECIFIC:
+        case EX_TRANSACTION_FAILED:
+            return mErrorCode;
+        default:
+            return UNKNOWN_ERROR;
+        }
     }
 
     bool isOk() const { return mException == EX_NONE; }
