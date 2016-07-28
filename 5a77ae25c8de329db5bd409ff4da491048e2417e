@@ -22,6 +22,30 @@
       "revId": "5a77ae25c8de329db5bd409ff4da491048e2417e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f9e257e_a1067eea",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1096171
+      },
+      "writtenOn": "2016-07-28T16:26:28Z",
+      "side": 1,
+      "message": "You are right that it is bad.  But \"legacy\" here means the use predates binder::Status.  I want it to be first-class citizen to help convert existing native services to binder::Status.  New code should not use it.\n\nThere can be code that does\n\n  status_t ret \u003d producer-\u003edequeueBuffer(...);\n  if (ret \u003d\u003d WOULD_BLOCK) {\n    // do something\n  } else if (ret !\u003d NO_ERROR) {\n    // bail\n  }\n\nisOk() is not enough.",
+      "parentUuid": "cfd21544_0de79c17",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 139,
+        "endChar": 35
+      },
+      "revId": "5a77ae25c8de329db5bd409ff4da491048e2417e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
