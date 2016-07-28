@@ -278,7 +278,7 @@ void BpBinder::reportOneDeath(const Obituary& obit)
     ALOGV("Reporting death to recipient: %p\n", recipient.get());
     if (recipient == NULL) return;
 
-    recipient->binderDied(this);
+    recipient->binderDied(wp<BpBinder>(this));
 }
 
 

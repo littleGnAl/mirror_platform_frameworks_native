@@ -130,7 +130,7 @@ void Layer::onFirstRef() {
     mProducer = new MonitoredProducer(producer, mFlinger);
     mSurfaceFlingerConsumer = new SurfaceFlingerConsumer(consumer, mTextureName);
     mSurfaceFlingerConsumer->setConsumerUsageBits(getEffectiveUsage(0));
-    mSurfaceFlingerConsumer->setContentsChangedListener(this);
+    mSurfaceFlingerConsumer->setContentsChangedListener(wp<ContentsChangedListener>(this));
     mSurfaceFlingerConsumer->setName(mName);
 
 #ifdef TARGET_DISABLE_TRIPLE_BUFFERING

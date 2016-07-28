@@ -236,7 +236,7 @@ sp<IBinder> SurfaceFlinger::createDisplay(const String8& displayName,
         virtual ~DisplayToken() {
              // no more references, this display must be terminated
              Mutex::Autolock _l(flinger->mStateLock);
-             flinger->mCurrentState.displays.removeItem(this);
+             flinger->mCurrentState.displays.removeItem(wp<IBinder>(this));
              flinger->setTransactionFlags(eDisplayTransactionNeeded);
          }
      public:

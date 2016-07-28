@@ -914,8 +914,8 @@ status_t BufferQueueProducer::disconnect(int api) {
                                 IInterface::asBinder(mCore->mConnectedProducerListener);
                         // This can fail if we're here because of the death
                         // notification, but we just ignore it
-                        token->unlinkToDeath(
-                                static_cast<IBinder::DeathRecipient*>(this));
+                        token->unlinkToDeath(wp<IBinder::DeathRecipient>(
+                                static_cast<IBinder::DeathRecipient*>(this)));
                     }
                     mCore->mConnectedProducerListener = NULL;
                     mCore->mConnectedApi = BufferQueueCore::NO_CONNECTED_API;
