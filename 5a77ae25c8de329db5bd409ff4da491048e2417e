@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfd21544_0de79c17",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2016-07-28T15:53:57Z",
+      "side": 1,
+      "message": "When you read this, it allows you to confuse transport and SSE.  If you don\u0027t care, then you should simply use isOk() below.",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 139,
+        "endChar": 35
+      },
+      "revId": "5a77ae25c8de329db5bd409ff4da491048e2417e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
