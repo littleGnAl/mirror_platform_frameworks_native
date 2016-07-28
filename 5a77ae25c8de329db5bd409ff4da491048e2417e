@@ -46,6 +46,30 @@
       "revId": "5a77ae25c8de329db5bd409ff4da491048e2417e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfd21544_0898aac1",
+        "filename": "include/binder/Status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2016-07-28T16:57:23Z",
+      "side": 1,
+      "message": "This code is still confuses service specific and transport errors, since it confuses a transport error WOULD_BLOCK with a service specific WOULD_BLOCK.  Right?\n\nYou really need:\n\nStatus ret \u003d producer-\u003edequeueBuffer(...);\n\nif (!ret.isOk()) {\n  if (ret.serviceSpecificErrorCode() \u003d\u003d WOULD_BLOCK) {\n    // detected your particular error condition\n  } else {\n    // bail\n  }\n}",
+      "parentUuid": "4f9e257e_a1067eea",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 139,
+        "endChar": 35
+      },
+      "revId": "5a77ae25c8de329db5bd409ff4da491048e2417e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
