@@ -152,24 +152,29 @@ status_t Fence::flatten(void*& buffer, size_t& size, int*& fds, size_t& count) c
 }
 
 status_t Fence::unflatten(void const*& buffer, size_t& size, int const*& fds, size_t& count) {
+    status_t ret = NO_ERROR;
     if (mFenceFd != -1) {
         // Don't unflatten if we already have a valid fd.
-        return INVALID_OPERATION;
+        ret = INVALID_OPERATION;
+        goto free;
     }
 
     if (size < 1) {
-        return NO_MEMORY;
+        ret = NO_MEMORY;
+        goto free;
     }
 
     uint32_t numFds;
     FlattenableUtils::read(buffer, size, numFds);
 
     if (numFds > 1) {
-        return BAD_VALUE;
+        ret = BAD_VALUE;
+        goto free;
     }
 
     if (count < numFds) {
-        return NO_MEMORY;
+        ret = NO_MEMORY;
+        goto free;
     }
 
     if (numFds) {
@@ -178,6 +183,14 @@ status_t Fence::unflatten(void const*& buffer, size_t& size, int const*& fds, si
     }
 
     return NO_ERROR;
+
+free:
+    // If a fd is not retained by unflatten() it must be
+    // explicitly closed.
+    for(size_t i = 0; i < count; i++) {
+        close(fds[i]);
+    }
+    return ret;
 }
 
 } // namespace android

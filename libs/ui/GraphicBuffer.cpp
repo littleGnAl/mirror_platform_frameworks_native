@@ -328,32 +328,51 @@ status_t GraphicBuffer::flatten(void*& buffer, size_t& size, int*& fds, size_t& 
 
 status_t GraphicBuffer::unflatten(
         void const*& buffer, size_t& size, int const*& fds, size_t& count) {
-    if (size < 11 * sizeof(int)) return NO_MEMORY;
+    status_t ret = NO_ERROR;
+    int const* buf = NULL;
+    size_t numFds = 0;
+    size_t numInts = 0;
+    const size_t maxNumber = 4096;
+    size_t sizeNeeded = 0;
+    size_t fdCountNeeded = 0;
+    if (size < 11 * sizeof(int)) {
+        ret = NO_MEMORY;
+        goto free;
+    }
 
-    int const* buf = static_cast<int const*>(buffer);
-    if (buf[0] != 'GBFR') return BAD_TYPE;
+    buf = static_cast<int const*>(buffer);
+    if (buf[0] != 'GBFR') {
+        ret = BAD_TYPE;
+        goto free;
+    }
 
-    const size_t numFds  = static_cast<size_t>(buf[9]);
-    const size_t numInts = static_cast<size_t>(buf[10]);
+    numFds = static_cast<size_t>(buf[9]);
+    numInts = static_cast<size_t>(buf[10]);
 
     // Limit the maxNumber to be relatively small. The number of fds or ints
     // should not come close to this number, and the number itself was simply
     // chosen to be high enough to not cause issues and low enough to prevent
     // overflow problems.
-    const size_t maxNumber = 4096;
     if (numFds >= maxNumber || numInts >= (maxNumber - 11)) {
         width = height = stride = format = usage = 0;
         handle = NULL;
         ALOGE("unflatten: numFds or numInts is too large: %zd, %zd",
                 numFds, numInts);
-        return BAD_VALUE;
+        ret = BAD_VALUE;
+        goto free;
     }
 
-    const size_t sizeNeeded = (11 + numInts) * sizeof(int);
-    if (size < sizeNeeded) return NO_MEMORY;
+    sizeNeeded = (11 + numInts) * sizeof(int);
+    if (size < sizeNeeded) {
+        ret = NO_MEMORY;
+        goto free;
+    }
 
-    size_t fdCountNeeded = numFds;
-    if (count < fdCountNeeded) return NO_MEMORY;
+    fdCountNeeded = numFds;
+    if (count < fdCountNeeded) {
+        ret = NO_MEMORY;
+        goto free;
+    }
 
     if (handle) {
         // free previous handle if any
@@ -372,7 +391,8 @@ status_t GraphicBuffer::unflatten(
             width = height = stride = format = usage = 0;
             handle = NULL;
             ALOGE("unflatten: native_handle_create failed");
-            return NO_MEMORY;
+            ret = NO_MEMORY;
+            goto free;
         }
         memcpy(h->data, fds, numFds * sizeof(int));
         memcpy(h->data + numFds, &buf[11], numInts * sizeof(int));
@@ -393,10 +413,13 @@ status_t GraphicBuffer::unflatten(
         status_t err = mBufferMapper.registerBuffer(handle);
         if (err != NO_ERROR) {
             width = height = stride = format = usage = 0;
+            // Must delete handle before setting to NULL
+            native_handle_delete(const_cast<native_handle*>(handle));
             handle = NULL;
             ALOGE("unflatten: registerBuffer failed: %s (%d)",
                     strerror(-err), err);
-            return err;
+            ret = err;
+            goto free;
         }
     }
 
@@ -406,6 +429,14 @@ status_t GraphicBuffer::unflatten(
     count -= numFds;
 
     return NO_ERROR;
+
+free:
+    // If a fd is not retained by unflatten() it must be
+    // explicitly closed.
+    for(size_t i = 0; i < count; i++) {
+        close(fds[i]);
+    }
+    return ret;
 }
 
 // ---------------------------------------------------------------------------

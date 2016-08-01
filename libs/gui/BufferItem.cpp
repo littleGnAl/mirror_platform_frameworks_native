@@ -165,6 +165,9 @@ status_t BufferItem::unflatten(
         void const*& buffer, size_t& size, int const*& fds, size_t& count) {
 
     if (size < sizeof(uint32_t)) {
+        for (size_t i = 0; i < count; i++) {
+            close(fds[i]);
+        }
         return NO_MEMORY;
     }
 
