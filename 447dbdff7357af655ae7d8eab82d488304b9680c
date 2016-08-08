@@ -39,6 +39,24 @@
       "revId": "447dbdff7357af655ae7d8eab82d488304b9680c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99e1320_09eb5c77",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-08T22:54:52Z",
+      "side": 1,
+      "message": "The complaint when we did that was it duplicated the content of dmesg (except printed with realtime stamps). So we backed off. Here it adds value to the common logs by inserting the kernel logs in as user space activities are performed.\n\nI am not married to this because people that want correlated kernel activities want to see them merged with radio or events log buffers as well. Having a separate section will allow one to look back and forth.\n\nYour tool would have no problem merging the content in for each right? Can I see main, system, crash and events buffer merged together in your tool for example? If so, then landing it as a separate one is not a problem.",
+      "parentUuid": "b99e1320_1584d1b1",
+      "revId": "447dbdff7357af655ae7d8eab82d488304b9680c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
