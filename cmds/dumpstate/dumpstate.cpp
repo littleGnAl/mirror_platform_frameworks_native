@@ -450,11 +450,12 @@ static void dumpstate() {
 
     // dump_file("EVENT LOG TAGS", "/etc/event-log-tags");
     // calculate timeout
-    timeout = logcat_timeout("main") + logcat_timeout("system") + logcat_timeout("crash");
+    timeout = logcat_timeout("main") + logcat_timeout("system") + logcat_timeout("crash") + logcat_timeout("kernel");
     if (timeout < 20000) {
         timeout = 20000;
     }
-    run_command("SYSTEM LOG", timeout / 1000, "logcat", "-v", "threadtime",
+    run_command("SYSTEM LOG", timeout / 1000, "logcat", "-b", "default,kernel",
+                                                        "-v", "threadtime",
                                                         "-v", "printable",
                                                         "-d",
                                                         "*:v", NULL);
