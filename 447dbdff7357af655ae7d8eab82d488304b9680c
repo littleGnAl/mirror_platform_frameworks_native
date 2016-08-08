@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b99e1320_0327bebb",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-08T19:51:40Z",
+      "side": 1,
+      "message": "blew past the 100 character limit",
+      "range": {
+        "startLine": 453,
+        "startChar": 92,
+        "endLine": 453,
+        "endChar": 117
+      },
+      "revId": "447dbdff7357af655ae7d8eab82d488304b9680c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
