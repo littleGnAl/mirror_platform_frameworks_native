@@ -22,6 +22,23 @@
       "revId": "447dbdff7357af655ae7d8eab82d488304b9680c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99e1320_1584d1b1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1079753
+      },
+      "writtenOn": "2016-08-08T20:37:30Z",
+      "side": 1,
+      "message": "Given the kernel messages are somewhat distinct from main/system/crash should this go in it\u0027s own section, like events and radio?",
+      "revId": "447dbdff7357af655ae7d8eab82d488304b9680c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
