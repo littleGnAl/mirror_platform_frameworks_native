@@ -57,6 +57,24 @@
       "revId": "447dbdff7357af655ae7d8eab82d488304b9680c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99e1320_a90a6827",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1079753
+      },
+      "writtenOn": "2016-08-08T23:01:22Z",
+      "side": 1,
+      "message": "My tool can pull from wherever :). Take a look at the combined view, which pulls logs from all over. Currently they get a tag of \"Kernel\" when they are formatted.\n\nI would prefer it separate as it gives people the option to turn it off. From looking at the logd output there would be no way to differentiate them otherwise.",
+      "parentUuid": "b99e1320_09eb5c77",
+      "revId": "447dbdff7357af655ae7d8eab82d488304b9680c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
