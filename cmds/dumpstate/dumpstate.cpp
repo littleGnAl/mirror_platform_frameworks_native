@@ -476,6 +476,15 @@ static void dumpstate() {
                                                        "-v", "printable",
                                                        "-d",
                                                        "*:v", NULL);
+    timeout = logcat_timeout("kernel");
+    if (timeout < 20000) {
+        timeout = 20000;
+    }
+    run_command("KERNEL LOG", timeout / 1000, "logcat", "-b", "kernel",
+                                                        "-v", "threadtime",
+                                                        "-v", "printable",
+                                                        "-d",
+                                                        "*:v", NULL);
 
     run_command("LOG STATISTICS", 10, "logcat", "-b", "all", "-S", NULL);
 
