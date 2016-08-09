@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9a907a8_c04ce0cf",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1079753
+      },
+      "writtenOn": "2016-08-09T17:53:42Z",
+      "side": 1,
+      "message": "any chance we could call this something else? the dmesg kernel log is called \"KERNEL LOG\". Or rename the dmesg section",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 27
+      },
+      "revId": "deda1d4bc9ee932b07ce21e6cb7c86276c693ce2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
