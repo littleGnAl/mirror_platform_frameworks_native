@@ -46,6 +46,30 @@
       "revId": "deda1d4bc9ee932b07ce21e6cb7c86276c693ce2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a907a8_c06740f6",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1079753
+      },
+      "writtenOn": "2016-08-09T18:21:04Z",
+      "side": 1,
+      "message": "KENERL LOGCAT seems good as it makes it clear it\u0027s not just the kernel logs.",
+      "parentUuid": "d9a907a8_e0547c2f",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 27
+      },
+      "revId": "deda1d4bc9ee932b07ce21e6cb7c86276c693ce2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
