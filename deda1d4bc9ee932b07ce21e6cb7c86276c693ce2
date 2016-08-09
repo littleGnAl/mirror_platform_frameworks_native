@@ -22,6 +22,30 @@
       "revId": "deda1d4bc9ee932b07ce21e6cb7c86276c693ce2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a907a8_e0547c2f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-09T18:06:45Z",
+      "side": 1,
+      "message": "dmesg is a legacy first class citizen (however I search for it using dmesg, not KERNEL), what about KERNEL BUFFER LOG? I could be tempted to do KERNEL LOGCAT to be shorter? straw poll ...",
+      "parentUuid": "d9a907a8_c04ce0cf",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 27
+      },
+      "revId": "deda1d4bc9ee932b07ce21e6cb7c86276c693ce2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
