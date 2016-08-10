@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "39cea3f0_c8db8fe2",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-08-10T11:50:42Z",
+      "side": 1,
+      "message": "it\u0027s a pity that we cannot (easily) ask the compiler to enforce this, given how it\u0027s used.",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "60f2118eeb053da9fae731fc92fddb09490838ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39b5c344_500c6c90",
         "filename": "libs/binder/IMemory.cpp",
         "patchSetId": 1
