@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39b5c344_500c6c90",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-10T10:03:56Z",
+      "side": 1,
+      "message": "Doesn\u0027t acquiring the mutex above imply the fence? Or do we need to have another fence after the load on line 275?",
+      "revId": "60f2118eeb053da9fae731fc92fddb09490838ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b5c344_906ed431",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-10T10:03:56Z",
+      "side": 1,
+      "message": "Style: why break the line? This fits into a single 100-character line.",
+      "revId": "60f2118eeb053da9fae731fc92fddb09490838ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59dd179f_a969fd2d",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-10T10:03:56Z",
+      "side": 1,
+      "message": "Style: In ART, I would break the line after \u0027(\u0027 and add 4-space indentation.",
+      "range": {
+        "startLine": 456,
+        "startChar": 38,
+        "endLine": 456,
+        "endChar": 39
+      },
+      "revId": "60f2118eeb053da9fae731fc92fddb09490838ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
