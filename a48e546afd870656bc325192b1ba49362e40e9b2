@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19d39f97_7beb4777",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-08-10T19:10:47Z",
+      "side": 1,
+      "message": "else close(fd)?",
+      "range": {
+        "startLine": 333,
+        "startChar": 8,
+        "endLine": 333,
+        "endChar": 9
+      },
+      "revId": "a48e546afd870656bc325192b1ba49362e40e9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
