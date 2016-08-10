@@ -22,6 +22,30 @@
       "revId": "a48e546afd870656bc325192b1ba49362e40e9b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19d39f97_bb0bff27",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T20:08:19Z",
+      "side": 1,
+      "message": "Yes. Good catch. That does indeed look broken in all versions.\n\nSince you started looking at system call hygiene, the previous function doesn\u0027t check dup() for an error return. Fixing that as well.",
+      "parentUuid": "19d39f97_7beb4777",
+      "range": {
+        "startLine": 333,
+        "startChar": 8,
+        "endLine": 333,
+        "endChar": 9
+      },
+      "revId": "a48e546afd870656bc325192b1ba49362e40e9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
