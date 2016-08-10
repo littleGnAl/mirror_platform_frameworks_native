@@ -95,6 +95,24 @@
     },
     {
       "key": {
+        "uuid": "99a5cf1d_cbb6f53f",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-10T19:18:57Z",
+      "side": 1,
+      "message": "At least add the 4-space indentation for consistency.",
+      "parentUuid": "19d39f97_0d46555c",
+      "revId": "60f2118eeb053da9fae731fc92fddb09490838ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59dd179f_a969fd2d",
         "filename": "libs/binder/IMemory.cpp",
         "patchSetId": 1
