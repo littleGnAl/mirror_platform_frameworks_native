@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "19d39f97_bb7bff21",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T19:13:03Z",
+      "side": 1,
+      "message": "Good point. mHeapId is only modified while holding the lock, so prior updates synchronize with the lock acquisition here.\n\nMutexes don\u0027t really act as fences, in that they only establish ordering if the same mutex is acquired in both threads. But that is true here.",
+      "parentUuid": "39b5c344_500c6c90",
+      "revId": "60f2118eeb053da9fae731fc92fddb09490838ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39b5c344_906ed431",
         "filename": "libs/binder/IMemory.cpp",
         "patchSetId": 1
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "19d39f97_0d46555c",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T19:13:03Z",
+      "side": 1,
+      "message": "This seems to be kind of, sort of, mostly formatted to 80 columns. What do we usually do in such cases? Just format to 100?",
+      "parentUuid": "39b5c344_906ed431",
+      "revId": "60f2118eeb053da9fae731fc92fddb09490838ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59dd179f_a969fd2d",
         "filename": "libs/binder/IMemory.cpp",
         "patchSetId": 1
@@ -70,6 +106,30 @@
       "writtenOn": "2016-08-10T10:03:56Z",
       "side": 1,
       "message": "Style: In ART, I would break the line after \u0027(\u0027 and add 4-space indentation.",
+      "range": {
+        "startLine": 456,
+        "startChar": 38,
+        "endLine": 456,
+        "endChar": 39
+      },
+      "revId": "60f2118eeb053da9fae731fc92fddb09490838ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19d39f97_cd3d5d74",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T19:13:03Z",
+      "side": 1,
+      "message": "It still doesn\u0027t quite fit in 80 columns. I took your 4 columns indent suggestion, since I find it a lot easier to read. If we decide on a 100 columns, I\u0027ll take the rest of this, too.",
+      "parentUuid": "59dd179f_a969fd2d",
       "range": {
         "startLine": 456,
         "startChar": 38,
