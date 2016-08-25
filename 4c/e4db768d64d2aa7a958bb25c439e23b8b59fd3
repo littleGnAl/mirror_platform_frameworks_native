@@ -1,0 +1,8 @@
+Verified+1: Hans Boehm <hboehm@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Hans Boehm <hboehm@google.com>
+Submitted-by: Hans Boehm <hboehm@google.com>
+Submitted-at: Thu, 25 Aug 2016 18:39:01 +0000
+Reviewed-on: https://android-review.googlesource.com/249940
+Project: platform/frameworks/native
+Branch: refs/heads/master
