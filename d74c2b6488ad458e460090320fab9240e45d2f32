@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "058256cd_39cc8b90",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2016-08-25T17:16:49Z",
+      "side": 1,
+      "message": "The contract in many of these functions is that the passed in out pointers are not allowed to be NULL.  Is there some reason why this particular function is special?",
+      "revId": "d74c2b6488ad458e460090320fab9240e45d2f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
