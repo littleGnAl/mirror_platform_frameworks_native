@@ -16,6 +16,24 @@
       "revId": "d74c2b6488ad458e460090320fab9240e45d2f32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5111e9a_44a0ae89",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 1042518
+      },
+      "writtenOn": "2016-08-26T02:16:21Z",
+      "side": 1,
+      "message": "I agree with you. Just wondering if we can do better than just crash in case NULL is passed in. Maybe pass by reference can make the contract more explicit and safe? But that won\u0027t be an optional now, since it will break the legacy code.",
+      "parentUuid": "058256cd_39cc8b90",
+      "revId": "d74c2b6488ad458e460090320fab9240e45d2f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
