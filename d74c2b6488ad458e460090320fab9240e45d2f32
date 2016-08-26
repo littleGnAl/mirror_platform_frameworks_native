@@ -34,6 +34,24 @@
       "revId": "d74c2b6488ad458e460090320fab9240e45d2f32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5ac6270_53aa871a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2016-08-26T16:05:33Z",
+      "side": 1,
+      "message": "This is actually a pretty common pattern:\n\nhttps://google.github.io/styleguide/cppguide.html#Function_Parameter_Ordering\n\nThe idea is that you would never call this function unless you actually wanted to read a Parcelable from the Parcel.  So typically:\n\n  MyParcelable mp;\n  status \u003d parcel.readParcelable(\u0026mp);  // Calls the templated wrapper\n  if (status !\u003d OK) ...",
+      "parentUuid": "c5111e9a_44a0ae89",
+      "revId": "d74c2b6488ad458e460090320fab9240e45d2f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
