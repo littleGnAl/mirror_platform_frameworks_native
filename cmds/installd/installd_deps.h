@@ -37,7 +37,8 @@ constexpr size_t kPropertyKeyMax = 32u;
 constexpr size_t kPropertyValueMax = 92u;
 
 // Compute the output path for dex2oat.
-extern bool calculate_oat_file_path(char path[PKG_PATH_MAX],
+extern bool calculate_oat_file_path(char oat_path[PKG_PATH_MAX],
+                                    char vdex_path[PKG_PATH_MAX],
                                     const char *oat_dir,
                                     const char *apk_path,
                                     const char *instruction_set);
@@ -53,7 +54,8 @@ extern bool calculate_odex_file_path(char path[PKG_PATH_MAX],
                                      const char *instruction_set);
 
 // Compute the output path into the dalvik cache.
-extern bool create_cache_path(char path[PKG_PATH_MAX],
+extern bool create_cache_path(char oat_path[PKG_PATH_MAX],
+                              char vdex_path[PKG_PATH_MAX],
                               const char *src,
                               const char *instruction_set);
 
