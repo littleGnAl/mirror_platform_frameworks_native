@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25a4baca_1f48e387",
+        "filename": "cmds/installd/installd_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-26T17:53:32Z",
+      "side": 1,
+      "message": "I\u0027d prefer not to mix cleanups with new code. Can you split this out?",
+      "range": {
+        "startLine": 52,
+        "startChar": 50,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "5070aeebf7d7d314ea0658ed0ae4dda84026dabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
