@@ -52,6 +52,24 @@
       "revId": "d74c2b6488ad458e460090320fab9240e45d2f32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45144ed4_78bb61b2",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 1042518
+      },
+      "writtenOn": "2016-08-27T01:06:30Z",
+      "side": 1,
+      "message": "I was trying to see if can make the code more robust in following case, when the user forget the `if (mp)` checking.\n\nvoid doSOmethihg(int intput, MyParceable *mp) {\n  marshalling the input to parcel\n  call the BnSide and get the reply\n  if (mp) {\n      reply.readParclale(tmp);\n  }\n}\n\nAn example: \nhttps://android-review.googlesource.com/#/c/263512/1/keystore/IKeystoreService.cpp line 1065",
+      "parentUuid": "e5ac6270_53aa871a",
+      "revId": "d74c2b6488ad458e460090320fab9240e45d2f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
