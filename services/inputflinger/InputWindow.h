@@ -196,7 +196,7 @@ public:
     void releaseInfo();
 
 protected:
-    InputWindowHandle(const sp<InputApplicationHandle>& inputApplicationHandle);
+    InputWindowHandle(const sp<InputApplicationHandle>& inputApplicationHandle);  // NOLINT(implicit)
     virtual ~InputWindowHandle();
 
     InputWindowInfo* mInfo;

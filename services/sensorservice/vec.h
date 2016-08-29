@@ -322,12 +322,12 @@ public:
 
     vec() { }
     vec(const vec& rhs)  : base(rhs) { }
-    vec(const base& rhs) : base(rhs) { }
+    explicit vec(const base& rhs) : base(rhs) { }
 
     // -----------------------------------------------------------------------
     // conversion constructors
 
-    vec(pTYPE rhs) {
+    explicit vec(pTYPE rhs) {
         for (size_t i=0 ; i<SIZE ; i++)
             base::operator[](i) = rhs;
     }
