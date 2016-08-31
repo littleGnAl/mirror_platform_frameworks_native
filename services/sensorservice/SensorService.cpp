@@ -931,9 +931,11 @@ status_t SensorService::resetToNormalMode() {
 
 status_t SensorService::resetToNormalModeLocked() {
     SensorDevice& dev(SensorDevice::getInstance());
-    dev.enableAllSensors();
     status_t err = dev.setMode(NORMAL);
-    mCurrentOperatingMode = NORMAL;
+    err |= dev.enableAllSensors();
+    if (err == NO_ERROR) {
+        mCurrentOperatingMode = NORMAL;
+    }
     return err;
 }
 
