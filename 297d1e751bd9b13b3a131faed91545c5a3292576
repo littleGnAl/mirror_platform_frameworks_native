@@ -188,6 +188,30 @@
       "revId": "297d1e751bd9b13b3a131faed91545c5a3292576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1d26943_74526169",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2016-09-01T05:32:23Z",
+      "side": 1,
+      "message": "\u003e This is fine for Android since bionic maintains portability here.\n \u003e If one wants to be portable outside our garden, one is supposed to\n \u003e use sysconf(_SC_PAGESIZE) according to the man page. getpagesize\n \u003e has been deprecated in POSIX.1-2001.\n\nThanks for your suggestion.\nsysconf(_SC_PAGE_SIZE) is better.\nThanks.",
+      "parentUuid": "11b0ddbd_0d60729f",
+      "range": {
+        "startLine": 43,
+        "startChar": 40,
+        "endLine": 43,
+        "endChar": 51
+      },
+      "revId": "297d1e751bd9b13b3a131faed91545c5a3292576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
