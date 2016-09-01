@@ -966,6 +966,10 @@ static bool ShouldUseSwapFileForDexopt() {
     return kDefaultProvideSwapFile;
 }
 
+static bool ShouldUseAppImageForDexopt(bool profile_guided, bool vm_safe_mode) {
+    return profile_guided && !vm_safe_mode;
+}
+
 static void SetDex2OatAndPatchOatScheduling(bool set_to_bg) {
     if (set_to_bg) {
         if (set_sched_policy(0, SP_BACKGROUND) < 0) {
@@ -1486,33 +1490,35 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     }
 
     // Avoid generating an app image for extract only since it will not contain any classes.
-    strcpy(image_path, out_path);
-    trim_extension(image_path);
-    if (add_extension_to_file_name(image_path, ".art")) {
-      char app_image_format[kPropertyValueMax];
-      bool have_app_image_format =
-              get_property("dalvik.vm.appimageformat", app_image_format, NULL) > 0;
-      // Use app images only if it is enabled (by a set image format) and we are compiling
-      // profile-guided (so the app image doesn't conservatively contain all classes).
-      if (profile_guided && have_app_image_format) {
-          // Recreate is true since we do not want to modify a mapped image. If the app is already
-          // running and we modify the image file, it can cause crashes (b/27493510).
-          image_fd = open_output_file(image_path, /*recreate*/true, /*permissions*/0600);
-          if (image_fd < 0) {
-              // Could not create application image file. Go on since we can compile without it.
-              ALOGE("installd could not create '%s' for image file during dexopt\n", image_path);
-          } else if (!set_permissions_and_ownership(image_fd, is_public, uid, image_path)) {
-              image_fd = -1;
-          }
-      }
-      // If we have a valid image file path but no image fd, erase the image file.
-      if (image_fd < 0) {
-          if (unlink(image_path) < 0) {
-              if (errno != ENOENT) {
-                  PLOG(ERROR) << "Couldn't unlink image file " << image_path;
-              }
-          }
-      }
+    // Use app images only if it is enabled (by a set image format) and we are compiling
+    // profile-guided (so the app image doesn't conservatively contain all classes).
+    if (ShouldUseAppImageForDexopt(profile_guided, vm_safe_mode)) {
+        strcpy(image_path, out_path);
+        trim_extension(image_path);
+        if (add_extension_to_file_name(image_path, ".art")) {
+            char app_image_format[kPropertyValueMax];
+            bool have_app_image_format =
+                    get_property("dalvik.vm.appimageformat", app_image_format, NULL) > 0;
+            if (have_app_image_format) {
+                // Recreate is true since we do not want to modify a mapped image. If the app is already
+                // running and we modify the image file, it can cause crashes (b/27493510).
+                image_fd = open_output_file(image_path, /*recreate*/true, /*permissions*/0600);
+                if (image_fd < 0) {
+                    // Could not create application image file. Go on since we can compile without it.
+                    ALOGE("installd could not create '%s' for image file during dexopt\n", image_path);
+                } else if (!set_permissions_and_ownership(image_fd, is_public, uid, image_path)) {
+                    image_fd = -1;
+                }
+            }
+            // If we have a valid image file path but no image fd, erase the image file.
+            if (image_fd < 0) {
+                if (unlink(image_path) < 0) {
+                    if (errno != ENOENT) {
+                        PLOG(ERROR) << "Couldn't unlink image file " << image_path;
+                    }
+                }
+            }
+        }
     }
 
     ALOGV("DexInv: --- BEGIN '%s' ---\n", input_file);
