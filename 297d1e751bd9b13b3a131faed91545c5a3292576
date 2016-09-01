@@ -236,6 +236,30 @@
       "revId": "297d1e751bd9b13b3a131faed91545c5a3292576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1d26943_74d021bf",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2016-09-01T05:33:43Z",
+      "side": 1,
+      "message": "\u003e If we change this to getpagesize(), it\u0027s presumably because we\u0027re\n \u003e worried about non-4K pages. We\u0027d then also presumably need a sanity\n \u003e check to guard against at least some future getpagesize() \u003e\u003d 512K.\n \u003e Since there is no hard requirement for this to be page aligned, the\n \u003e original seems cleaner to me.\n\nIf in the future pagesize is 512KB, maybe we need use 2M-getpagesize() to give enough vm area for binder.\nIf we use -8KB in system with 512KB pagesize, kernel vm area will have a lot of fragment.\n\nThanks",
+      "parentUuid": "b1e391ef_1bfa9b61",
+      "range": {
+        "startLine": 43,
+        "startChar": 40,
+        "endLine": 43,
+        "endChar": 51
+      },
+      "revId": "297d1e751bd9b13b3a131faed91545c5a3292576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
