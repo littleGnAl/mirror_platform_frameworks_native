@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f1d26943_4ff4714d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2016-09-01T03:08:19Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t understand.  How could the vm area size not be a multiple\n \u003e of the page size?\n\nYou are right, vm area will be multiple of pagesize. \n\nSystem with 64KB pagesize, kernel will alloc (1MB + 64KB) vm area size. And the binder vm area need to be aligned in 512KB which calculated by below formula in kernel __get_vm_area_node()：\n---\t\t\nalign \u003d 1ul \u003c\u003c clamp_t(int, fls_long(size),\n\t       PAGE_SHIFT, IOREMAP_MAX_ORDER);\n\u003d\u003e\nalign \u003d 1ul \u003c\u003c min(max(19, 12), 19) \u003d 512KB\n---\nIf the binder mmap() is called successively， the next binder area will start at (1MB + 512KB), (512 - 64)KB fragment will exist in vm area.\n\nThanks.",
+      "parentUuid": "b1e391ef_fba88f79",
+      "range": {
+        "startLine": 13,
+        "startChar": 52,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "297d1e751bd9b13b3a131faed91545c5a3292576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11b0ddbd_0d60729f",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 1
