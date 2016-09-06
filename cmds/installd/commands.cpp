@@ -530,23 +530,26 @@ int free_cache(const char *uuid, int64_t free_size) {
 int rm_dex(const char *path, const char *instruction_set)
 {
     char dex_path[PKG_PATH_MAX];
+    char vdex_path[PKG_PATH_MAX];
 
     if (validate_apk_path(path) && validate_system_app_path(path)) {
         ALOGE("invalid apk path '%s' (bad prefix)\n", path);
         return -1;
     }
 
-    if (!create_cache_path(dex_path, path, instruction_set)) return -1;
+    if (!create_cache_path(dex_path, vdex_path, path, instruction_set)) return -1;
 
-    ALOGV("unlink %s\n", dex_path);
-    if (unlink(dex_path) < 0) {
-        if (errno != ENOENT) {
-            ALOGE("Couldn't unlink %s: %s\n", dex_path, strerror(errno));
+    bool success = true;
+    for (auto file : { dex_path, vdex_path }) {
+        ALOGV("unlink %s\n", file);
+        if (unlink(file) < 0) {
+            if (errno != ENOENT) {
+                ALOGE("Couldn't unlink %s: %s\n", file, strerror(errno));
+            }
+            success = false;
         }
-        return -1;
-    } else {
-        return 0;
     }
+    return success ? 0 : -1;
 }
 
 static void add_app_data_size(std::string& path, int64_t *codesize, int64_t *datasize,
@@ -671,8 +674,8 @@ static int split(char *buf, const char **argv)
   return count;
 }
 
-static void run_patchoat(int input_fd, int oat_fd, const char* input_file_name,
-    const char* output_file_name, const char *pkgname ATTRIBUTE_UNUSED, const char *instruction_set)
+static void run_patchoat(int input_fd, int oat_fd, int vdex_fd, const char* input_file_name,
+    const char* oat_file_name, const char *pkgname ATTRIBUTE_UNUSED, const char *instruction_set)
 {
     static const int MAX_INT_LEN = 12;      // '-'+10dig+'\0' -OR- 0x+8dig
     static const unsigned int MAX_INSTRUCTION_SET_LEN = 7;
@@ -695,7 +698,7 @@ static void run_patchoat(int input_fd, int oat_fd, const char* input_file_name,
     sprintf(output_oat_fd_arg, "--output-oat-fd=%d", oat_fd);
     sprintf(input_oat_fd_arg, "--input-oat-fd=%d", input_fd);
     ALOGV("Running %s isa=%s in-fd=%d (%s) out-fd=%d (%s)\n",
-          PATCHOAT_BIN, instruction_set, input_fd, input_file_name, oat_fd, output_file_name);
+          PATCHOAT_BIN, instruction_set, input_fd, input_file_name, oat_fd, oat_file_name);
 
     /* patchoat, patched-image-location, no-lock, isa, input-fd, output-fd */
     char* argv[7];
@@ -711,10 +714,10 @@ static void run_patchoat(int input_fd, int oat_fd, const char* input_file_name,
     ALOGE("execv(%s) failed: %s\n", PATCHOAT_BIN, strerror(errno));
 }
 
-static void run_dex2oat(int zip_fd, int oat_fd, int image_fd, const char* input_file_name,
-        const char* output_file_name, int swap_fd, const char *instruction_set,
-        const char* compiler_filter, bool vm_safe_mode, bool debuggable, bool post_bootcomplete,
-        int profile_fd, const char* shared_libraries) {
+static void run_dex2oat(int zip_fd, int oat_fd, int vdex_fd, int image_fd,
+        const char* input_file_name, const char* oat_file_name, int swap_fd,
+        const char *instruction_set, const char* compiler_filter, bool vm_safe_mode,
+        bool debuggable, bool post_bootcomplete, int profile_fd, const char* shared_libraries) {
     static const unsigned int MAX_INSTRUCTION_SET_LEN = 7;
 
     if (strlen(instruction_set) >= MAX_INSTRUCTION_SET_LEN) {
@@ -797,6 +800,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, int image_fd, const char* input_
     char zip_location_arg[strlen("--zip-location=") + PKG_PATH_MAX];
     char oat_fd_arg[strlen("--oat-fd=") + MAX_INT_LEN];
     char oat_location_arg[strlen("--oat-location=") + PKG_PATH_MAX];
+    char vdex_fd_arg[strlen("--vdex-fd=") + MAX_INT_LEN];
     char instruction_set_arg[strlen("--instruction-set=") + MAX_INSTRUCTION_SET_LEN];
     char instruction_set_variant_arg[strlen("--instruction-set-variant=") + kPropertyValueMax];
     char instruction_set_features_arg[strlen("--instruction-set-features=") + kPropertyValueMax];
@@ -811,7 +815,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, int image_fd, const char* input_
     sprintf(zip_fd_arg, "--zip-fd=%d", zip_fd);
     sprintf(zip_location_arg, "--zip-location=%s", input_file_name);
     sprintf(oat_fd_arg, "--oat-fd=%d", oat_fd);
-    sprintf(oat_location_arg, "--oat-location=%s", output_file_name);
+    sprintf(oat_location_arg, "--oat-location=%s", oat_file_name);
+    sprintf(vdex_fd_arg, "--vdex-fd=%d", vdex_fd);
     sprintf(instruction_set_arg, "--instruction-set=%s", instruction_set);
     sprintf(instruction_set_variant_arg, "--instruction-set-variant=%s", dex2oat_isa_variant);
     sprintf(instruction_set_features_arg, "--instruction-set-features=%s", dex2oat_isa_features);
@@ -870,9 +875,9 @@ static void run_dex2oat(int zip_fd, int oat_fd, int image_fd, const char* input_
     }
 
 
-    ALOGV("Running %s in=%s out=%s\n", DEX2OAT_BIN, input_file_name, output_file_name);
+    ALOGV("Running %s in=%s out=%s\n", DEX2OAT_BIN, input_file_name, oat_file_name);
 
-    const char* argv[7  // program name, mandatory arguments and the final NULL
+    const char* argv[8  // program name, mandatory arguments and the final NULL
                      + (have_dex2oat_isa_variant ? 1 : 0)
                      + (have_dex2oat_isa_features ? 1 : 0)
                      + (have_dex2oat_Xms_flag ? 2 : 0)
@@ -895,6 +900,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, int image_fd, const char* input_
     argv[i++] = zip_location_arg;
     argv[i++] = oat_fd_arg;
     argv[i++] = oat_location_arg;
+    argv[i++] = vdex_fd_arg;
     argv[i++] = instruction_set_arg;
     if (have_dex2oat_isa_variant) {
         argv[i++] = instruction_set_variant_arg;
@@ -1409,8 +1415,8 @@ static bool set_permissions_and_ownership(int fd, bool is_public, int uid, const
     return true;
 }
 
-static bool create_oat_out_path(const char* apk_path, const char* instruction_set,
-            const char* oat_dir, /*out*/ char* out_path) {
+static bool create_output_path(const char* apk_path, const char* instruction_set,
+            const char* oat_dir, /*out*/ char* oat_path, /*out*/ char* vdex_path) {
     // Early best-effort check whether we can fit the the path into our buffers.
     // Note: the cache path will require an additional 5 bytes for ".swap", but we'll try to run
     // without a swap file, if necessary. Reference profiles file also add an extra ".prof"
@@ -1425,11 +1431,11 @@ static bool create_oat_out_path(const char* apk_path, const char* instruction_se
             ALOGE("invalid oat_dir '%s'\n", oat_dir);
             return false;
         }
-        if (!calculate_oat_file_path(out_path, oat_dir, apk_path, instruction_set)) {
+        if (!calculate_oat_file_path(oat_path, vdex_path, oat_dir, apk_path, instruction_set)) {
             return false;
         }
     } else {
-        if (!create_cache_path(out_path, apk_path, instruction_set)) {
+        if (!create_cache_path(oat_path, vdex_path, apk_path, instruction_set)) {
             return false;
         }
     }
@@ -1571,8 +1577,9 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
         LOG_FATAL("dexopt flags contains unknown fields\n");
     }
 
-    char out_path[PKG_PATH_MAX];
-    if (!create_oat_out_path(apk_path, instruction_set, oat_dir, out_path)) {
+    char oat_path[PKG_PATH_MAX];
+    char vdex_path[PKG_PATH_MAX];
+    if (!create_output_path(apk_path, instruction_set, oat_dir, oat_path, vdex_path)) {
         return false;
     }
 
@@ -1591,7 +1598,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
             break;
 
         case DEXOPT_SELF_PATCHOAT_NEEDED:
-            input_file = out_path;
+            input_file = oat_path;
             break;
 
         default:
@@ -1609,15 +1616,27 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
         return -1;
     }
 
-    const std::string out_path_str(out_path);
-    Dex2oatFileWrapper<std::function<void ()>> out_fd(
-            open_output_file(out_path, /*recreate*/true, /*permissions*/0644),
-            [out_path_str]() { unlink(out_path_str.c_str()); });
-    if (out_fd.get() < 0) {
-        ALOGE("installd cannot open '%s' for output during dexopt\n", out_path);
+    const std::string oat_path_str(oat_path);
+    Dex2oatFileWrapper<std::function<void ()>> oat_fd(
+            open_output_file(oat_path, /*recreate*/true, /*permissions*/0644),
+            [oat_path_str]() { unlink(oat_path_str.c_str()); });
+    if (oat_fd.get() < 0) {
+        ALOGE("installd cannot open '%s' for output during dexopt\n", oat_path);
         return -1;
     }
-    if (!set_permissions_and_ownership(out_fd.get(), is_public, uid, out_path)) {
+    if (!set_permissions_and_ownership(oat_fd.get(), is_public, uid, oat_path)) {
+        return -1;
+    }
+
+    const std::string vdex_path_str(vdex_path);
+    Dex2oatFileWrapper<std::function<void ()>> vdex_fd(
+            open_output_file(vdex_path, /*recreate*/true, /*permissions*/0644),
+            [vdex_path_str]() { unlink(vdex_path_str.c_str()); });
+    if (vdex_fd.get() < 0) {
+        ALOGE("installd cannot open '%s' for output during dexopt\n", vdex_path);
+        return -1;
+    }
+    if (!set_permissions_and_ownership(vdex_fd.get(), is_public, uid, vdex_path)) {
         return -1;
     }
 
@@ -1626,7 +1645,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     if (ShouldUseSwapFileForDexopt()) {
         // Make sure there really is enough space.
         char swap_file_name[PKG_PATH_MAX];
-        strcpy(swap_file_name, out_path);
+        strcpy(swap_file_name, oat_path);
         if (add_extension_to_file_name(swap_file_name, ".swap")) {
             swap_fd.reset(open_output_file(swap_file_name, /*recreate*/true, /*permissions*/0600));
         }
@@ -1644,7 +1663,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
 
     // Avoid generating an app image for extract only since it will not contain any classes.
     Dex2oatFileWrapper<std::function<void ()>> image_fd;
-    const std::string image_path = create_image_filename(out_path);
+    const std::string image_path = create_image_filename(oat_path);
     if (!image_path.empty()) {
         char app_image_format[kPropertyValueMax];
         bool have_app_image_format =
@@ -1690,27 +1709,33 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
         drop_capabilities(uid);
 
         SetDex2OatAndPatchOatScheduling(boot_complete);
-        if (flock(out_fd.get(), LOCK_EX | LOCK_NB) != 0) {
-            ALOGE("flock(%s) failed: %s\n", out_path, strerror(errno));
+        if (flock(oat_fd.get(), LOCK_EX | LOCK_NB) != 0) {
+            ALOGE("flock(%s) failed: %s\n", oat_path, strerror(errno));
+            _exit(67);
+        }
+        if (flock(vdex_fd.get(), LOCK_EX | LOCK_NB) != 0) {
+            ALOGE("flock(%s) failed: %s\n", vdex_path, strerror(errno));
             _exit(67);
         }
 
         if (dexopt_needed == DEXOPT_PATCHOAT_NEEDED
             || dexopt_needed == DEXOPT_SELF_PATCHOAT_NEEDED) {
             run_patchoat(input_fd.get(),
-                         out_fd.get(),
+                         oat_fd.get(),
+                         vdex_fd.get(),
                          input_file,
-                         out_path,
+                         oat_path,
                          pkgname,
                          instruction_set);
         } else if (dexopt_needed == DEXOPT_DEX2OAT_NEEDED) {
             // Pass dex2oat the relative path to the input file.
             const char *input_file_name = get_location_from_path(input_file);
             run_dex2oat(input_fd.get(),
-                        out_fd.get(),
+                        oat_fd.get(),
+                        vdex_fd.get(),
                         image_fd.get(),
                         input_file_name,
-                        out_path,
+                        oat_path,
                         swap_fd.get(),
                         instruction_set,
                         compiler_filter,
@@ -1737,10 +1762,12 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     struct utimbuf ut;
     ut.actime = input_stat.st_atime;
     ut.modtime = input_stat.st_mtime;
-    utime(out_path, &ut);
+    utime(oat_path, &ut);
+    utime(vdex_path, &ut);
 
     // We've been successful, don't delete output.
-    out_fd.SetCleanup(false);
+    oat_fd.SetCleanup(false);
+    vdex_fd.SetCleanup(false);
     image_fd.SetCleanup(false);
     reference_profile_fd.SetCleanup(false);
 
@@ -2141,38 +2168,41 @@ int move_ab(const char* apk_path, const char* instruction_set, const char* oat_d
         return -1;
     }
 
-    char a_path[PKG_PATH_MAX];
-    if (!calculate_oat_file_path(a_path, oat_dir, apk_path, instruction_set)) {
+    char a_oat_path[PKG_PATH_MAX];
+    char a_vdex_path[PKG_PATH_MAX];
+    if (!calculate_oat_file_path(a_oat_path, a_vdex_path, oat_dir, apk_path, instruction_set)) {
         return -1;
     }
-    const std::string a_image_path = create_image_filename(a_path);
+    const std::string a_image_path = create_image_filename(a_oat_path);
 
-    // B path = A path + slot suffix.
-    const std::string b_path = StringPrintf("%s.%s", a_path, slot_suffix.c_str());
-    const std::string b_image_path = StringPrintf("%s.%s",
-                                                  a_image_path.c_str(),
-                                                  slot_suffix.c_str());
+    bool success = true;
+    for (const char* a_path : { a_oat_path, a_vdex_path }) {
+        // B path = A path + slot suffix.
+        const std::string b_path = StringPrintf("%s.%s", a_path, slot_suffix.c_str());
+        const std::string b_image_path = StringPrintf("%s.%s",
+                                                      a_image_path.c_str(),
+                                                      slot_suffix.c_str());
 
-    bool oat_success = move_ab_path(b_path, a_path);
-    bool success;
+        bool oat_success = move_ab_path(b_path, a_path);
 
-    if (oat_success) {
-        // Note: we can live without an app image. As such, ignore failure to move the image file.
-        //       If we decide to require the app image, or the app image being moved correctly,
-        //       then change accordingly.
-        constexpr bool kIgnoreAppImageFailure = true;
+        if (oat_success) {
+            // Note: we can live without an app image. As such, ignore failure to move the image file.
+            //       If we decide to require the app image, or the app image being moved correctly,
+            //       then change accordingly.
+            constexpr bool kIgnoreAppImageFailure = true;
 
-        bool art_success = true;
-        if (!a_image_path.empty()) {
-            art_success = move_ab_path(b_image_path, a_image_path);
+            bool art_success = true;
+            if (!a_image_path.empty()) {
+                art_success = move_ab_path(b_image_path, a_image_path);
+            }
+
+            success &= (art_success || kIgnoreAppImageFailure);
+        } else {
+            // Cleanup: delete B image, ignore errors.
+            unlink(b_image_path.c_str());
+
+            success = false;
         }
-
-        success = art_success || kIgnoreAppImageFailure;
-    } else {
-        // Cleanup: delete B image, ignore errors.
-        unlink(b_image_path.c_str());
-
-        success = false;
     }
 
     return success ? 0 : -1;

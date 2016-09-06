@@ -36,6 +36,8 @@
 #include <installd_deps.h>  // Need to fill in requirements of commands.
 #include <utils.h>
 
+#include <algorithm>
+
 #ifndef LOG_TAG
 #define LOG_TAG "installd"
 #endif
@@ -61,7 +63,8 @@ int get_property(const char *key, char *value, const char *default_value) {
 }
 
 // Compute the output path of
-bool calculate_oat_file_path(char path[PKG_PATH_MAX],
+bool calculate_oat_file_path(char oat_path[PKG_PATH_MAX],
+                             char vdex_path[PKG_PATH_MAX],
                              const char *oat_dir,
                              const char *apk_path,
                              const char *instruction_set) {
@@ -86,7 +89,8 @@ bool calculate_oat_file_path(char path[PKG_PATH_MAX],
     file_name[file_name_len] = '\0';
 
     // <apk_parent_dir>/oat/<isa>/<file_name>.odex
-    snprintf(path, PKG_PATH_MAX, "%s/%s/%s.odex", oat_dir, instruction_set, file_name);
+    snprintf(oat_path, PKG_PATH_MAX, "%s/%s/%s.odex", oat_dir, instruction_set, file_name);
+    snprintf(vdex_path, PKG_PATH_MAX, "%s/%s/%s.vdex", oat_dir, instruction_set, file_name);
     return true;
 }
 
@@ -125,7 +129,8 @@ bool calculate_odex_file_path(char path[PKG_PATH_MAX],
     return true;
 }
 
-bool create_cache_path(char path[PKG_PATH_MAX],
+bool create_cache_path(char oat_path[PKG_PATH_MAX],
+                       char vdex_path[PKG_PATH_MAX],
                        const char *src,
                        const char *instruction_set) {
     /* demand that we are an absolute path */
@@ -145,20 +150,20 @@ bool create_cache_path(char path[PKG_PATH_MAX],
         1 +
         strlen(instruction_set) +
         srclen +
-        strlen(DALVIK_CACHE_POSTFIX) + 2;
+        std::max(strlen(DALVIK_CACHE_POSTFIX_OAT), strlen(DALVIK_CACHE_POSTFIX_VDEX)) + 2;
 
     if (dstlen > PKG_PATH_MAX) {
         return false;
     }
 
-    sprintf(path,"%s%s/%s/%s",
+    sprintf(oat_path,"%s%s/%s/%s",
             android_data_dir.path,
             DALVIK_CACHE,
             instruction_set,
             src + 1 /* skip the leading / */);
 
     char* tmp =
-            path +
+            oat_path +
             android_data_dir.len +
             strlen(DALVIK_CACHE) +
             1 +
@@ -170,7 +175,10 @@ bool create_cache_path(char path[PKG_PATH_MAX],
         }
     }
 
-    strcat(path, DALVIK_CACHE_POSTFIX);
+    strcpy(vdex_path, oat_path);
+    strcat(oat_path, DALVIK_CACHE_POSTFIX_OAT);
+    strcat(vdex_path, DALVIK_CACHE_POSTFIX_VDEX);
+
     return true;
 }
 
