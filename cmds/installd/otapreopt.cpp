@@ -568,7 +568,8 @@ bool calculate_odex_file_path(char path[PKG_PATH_MAX], const char *apk_path,
     return true;
 }
 
-bool create_cache_path(char path[PKG_PATH_MAX],
+bool create_cache_path(char oat_path[PKG_PATH_MAX],
+                       char vdex_path[PKG_PATH_MAX],
                        const char *src,
                        const char *instruction_set) {
     size_t srclen = strlen(src);
@@ -585,17 +586,24 @@ bool create_cache_path(char path[PKG_PATH_MAX],
     std::string from_src = std::string(src + 1);
     std::replace(from_src.begin(), from_src.end(), '/', '@');
 
-    std::string assembled_path = StringPrintf("%s/%s/%s/%s%s",
+    std::string assembled_path = StringPrintf("%s/%s/%s/%s",
                                               OTAPreoptService::kOTADataDirectory,
                                               DALVIK_CACHE,
                                               instruction_set,
-                                              from_src.c_str(),
-                                              DALVIK_CACHE_POSTFIX);
+                                              from_src.c_str());
 
-    if (assembled_path.length() + 1 > PKG_PATH_MAX) {
+    std::string assembled_path_oat = assembled_path + DALVIK_CACHE_POSTFIX_OAT;
+    std::string assembled_path_vdex = assembled_path + DALVIK_CACHE_POSTFIX_VDEX;
+
+    size_t oat_buf_length = assembled_path_oat.length() + 1;
+    size_t vdex_buf_length = assembled_path_vdex.length() + 1;
+
+    if ((oat_buf_length > PKG_PATH_MAX) || (vdex_buf_length > PKG_PATH_MAX)) {
         return false;
     }
-    strcpy(path, assembled_path.c_str());
+
+    strcpy(oat_path, assembled_path_oat.c_str());
+    strcpy(vdex_path, assembled_path_vdex.c_str());
 
     return true;
 }
