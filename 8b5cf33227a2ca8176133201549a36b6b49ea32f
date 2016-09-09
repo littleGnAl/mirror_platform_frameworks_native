@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b6eea0d_76f2b085",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2236,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-09T09:49:49Z",
+      "side": 1,
+      "message": "How about (feel free to combine the ifs if you prefer):\n\nif (!a_image_path.empty()) {\n  if (!move_ab_path()) {\n    if (!kIgnore) {\n      success \u003d false;\n    }\n  }\n}",
+      "range": {
+        "startLine": 2231,
+        "startChar": 0,
+        "endLine": 2236,
+        "endChar": 54
+      },
+      "revId": "8b5cf33227a2ca8176133201549a36b6b49ea32f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
