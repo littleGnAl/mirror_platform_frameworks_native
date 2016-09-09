@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b556e39_97aca491",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-09-09T09:19:32Z",
+      "side": 1,
+      "message": "This is just for debugging, no question. Want me to remove it?",
+      "parentUuid": "0bfd0a27_de36859d",
+      "range": {
+        "startLine": 701,
+        "startChar": 29,
+        "endLine": 701,
+        "endChar": 40
+      },
+      "revId": "ea955edbe60d8c2979fc3b3e04ef66287ed0ff8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b601ae6_2a3adff5",
         "filename": "cmds/installd/commands.cpp",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-08T20:54:47Z",
       "side": 1,
       "message": "Add a comment.",
+      "range": {
+        "startLine": 1635,
+        "startChar": 0,
+        "endLine": 1648,
+        "endChar": 5
+      },
+      "revId": "ea955edbe60d8c2979fc3b3e04ef66287ed0ff8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bff3a6b_f2c40834",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-09-09T09:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b601ae6_2a3adff5",
       "range": {
         "startLine": 1635,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8bff3a6b_d2c10422",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1676,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-09-09T09:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b562216_c81b4f89",
+      "range": {
+        "startLine": 1650,
+        "startChar": 0,
+        "endLine": 1676,
+        "endChar": 5
+      },
+      "revId": "ea955edbe60d8c2979fc3b3e04ef66287ed0ff8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bf48e40_df479b46",
         "filename": "cmds/installd/commands.cpp",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2016-09-08T20:54:47Z",
       "side": 1,
       "message": "You probably also clean up b_path, if it\u0027s the vdex_path that failed?",
+      "range": {
+        "startLine": 2235,
+        "startChar": 0,
+        "endLine": 2236,
+        "endChar": 37
+      },
+      "revId": "ea955edbe60d8c2979fc3b3e04ef66287ed0ff8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b054249_b0ba78b9",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2236,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-09-09T09:19:32Z",
+      "side": 1,
+      "message": "Pretty confusing with unlinks inside move_ab_path. Moved things around but still not happy.",
+      "parentUuid": "2bf48e40_df479b46",
       "range": {
         "startLine": 2235,
         "startChar": 0,
