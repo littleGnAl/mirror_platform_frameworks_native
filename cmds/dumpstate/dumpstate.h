@@ -19,7 +19,7 @@
 
 /* When defined, skips the real dumps and just print the section headers.
    Useful when debugging dumpstate itself. */
-//#define _DUMPSTATE_DRY_RUN_
+#define _DUMPSTATE_DRY_RUN_
 
 #ifdef _DUMPSTATE_DRY_RUN_
 #define ON_DRY_RUN_RETURN(X) return X
