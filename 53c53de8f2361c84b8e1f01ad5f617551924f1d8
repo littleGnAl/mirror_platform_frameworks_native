@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b6c9a82_42746161",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2016-09-14T23:14:48Z",
+      "side": 1,
+      "message": "I would prefer that this file was accessible by shell and dumped after root is drop - would that be doable?",
+      "revId": "53c53de8f2361c84b8e1f01ad5f617551924f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
