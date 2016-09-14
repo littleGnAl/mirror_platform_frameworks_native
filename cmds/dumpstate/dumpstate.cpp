@@ -1296,6 +1296,9 @@ int main(int argc, char *argv[]) {
     add_mountinfo();
     dump_iptables();
 
+    /* Dump Bluetooth HCI logs */
+    add_zip_entry("btsnoop_hci.log", "/data/misc/bluedroid/btsnoop_hci.log");
+
     if (!drop_root_user()) {
         return -1;
     }
