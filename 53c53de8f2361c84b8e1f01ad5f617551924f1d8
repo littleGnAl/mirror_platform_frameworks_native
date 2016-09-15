@@ -16,6 +16,24 @@
       "revId": "53c53de8f2361c84b8e1f01ad5f617551924f1d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b6c9a82_585c541d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1077498
+      },
+      "writtenOn": "2016-09-15T00:13:32Z",
+      "side": 1,
+      "message": "I did some tests and found out that chmod 777ing both the file and the directory allowed me to move this line to a section that isn\u0027t ran as root, the issue now is I do not know how to allow dumpstate to access the /data/misc/bluedroid directory.",
+      "parentUuid": "8b6c9a82_42746161",
+      "revId": "53c53de8f2361c84b8e1f01ad5f617551924f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
