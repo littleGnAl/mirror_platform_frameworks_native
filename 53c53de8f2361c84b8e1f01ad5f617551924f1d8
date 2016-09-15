@@ -34,6 +34,24 @@
       "revId": "53c53de8f2361c84b8e1f01ad5f617551924f1d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb3b56ab_b38ce090",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-09-15T18:16:26Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m starting to see how this change is qcom specific.  We really want to keep the generic framework bits vendor-agnostic.\n\nIs there a method to add all files under a directory to the bugreport?  Then we could write this as adding \"/data/misc/bluetooth/logs/*\" and vendors can name the actual files whatever they want.",
+      "parentUuid": "8b6c9a82_585c541d",
+      "revId": "53c53de8f2361c84b8e1f01ad5f617551924f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
