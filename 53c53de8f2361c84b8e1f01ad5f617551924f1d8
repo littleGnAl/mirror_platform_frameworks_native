@@ -52,6 +52,24 @@
       "revId": "53c53de8f2361c84b8e1f01ad5f617551924f1d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb3b56ab_36ce1e25",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1058798
+      },
+      "writtenOn": "2016-09-15T18:38:50Z",
+      "side": 1,
+      "message": "Just to be clear here, there is *nothing* vendor specific about this. Though I do like your idea to add /data/misc/bluetooth/logs/*.\nIn lieu of updating the current config file locations in bluedroid/, we can at least start collecting the logs in bluetooth/... and switch the rest over at a later point.",
+      "parentUuid": "eb3b56ab_b38ce090",
+      "revId": "53c53de8f2361c84b8e1f01ad5f617551924f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
