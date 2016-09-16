@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb3b56ab_1bd4dd3a",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-09-16T16:19:11Z",
+      "side": 1,
+      "message": "If we switch the dirs over to using only AID_BLUETOOTH GID then we won\u0027t need NET_BT_STACK.",
+      "range": {
+        "startLine": 832,
+        "startChar": 27,
+        "endLine": 832,
+        "endChar": 43
+      },
+      "revId": "7fe0b5d2424e69d1a4d2367117a3d7d18532b655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
