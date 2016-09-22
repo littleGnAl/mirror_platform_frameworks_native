@@ -422,7 +422,8 @@ size_t Sensor::getFlattenedSize() const {
             sizeof(mVersion) + sizeof(mHandle) + sizeof(mType) +
             sizeof(mMinValue) + sizeof(mMaxValue) + sizeof(mResolution) +
             sizeof(mPower) + sizeof(mMinDelay) + sizeof(mFifoMaxEventCount) +
-            sizeof(mFifoMaxEventCount) + sizeof(mRequiredPermissionRuntime) +
+            sizeof(mFifoMaxEventCount) +
+            FlattenableUtils::align<4>(sizeof(mRequiredPermissionRuntime)) +
             sizeof(mRequiredAppOp) + sizeof(mMaxDelay) + sizeof(mFlags) + sizeof(mUuid);
 
     size_t variableSize =
@@ -453,7 +454,10 @@ status_t Sensor::flatten(void* buffer, size_t size) const {
     FlattenableUtils::write(buffer, size, mFifoMaxEventCount);
     flattenString8(buffer, size, mStringType);
     flattenString8(buffer, size, mRequiredPermission);
+    // Some compilers generate code that requires we stay on 4-byte alignment so
+    // we need to add padding after this bool (b/31671510).
     FlattenableUtils::write(buffer, size, mRequiredPermissionRuntime);
+    size += FlattenableUtils::align<4>(buffer);
     FlattenableUtils::write(buffer, size, mRequiredAppOp);
     FlattenableUtils::write(buffer, size, mMaxDelay);
     FlattenableUtils::write(buffer, size, mFlags);
@@ -507,13 +511,14 @@ status_t Sensor::unflatten(void const* buffer, size_t size) {
     }
 
     size_t fixedSize2 =
-            sizeof(mRequiredPermissionRuntime) + sizeof(mRequiredAppOp) + sizeof(mMaxDelay) +
-            sizeof(mFlags) + sizeof(mUuid);
+            FlattenableUtils::align<4>(sizeof(mRequiredPermissionRuntime)) +
+            sizeof(mRequiredAppOp) + sizeof(mMaxDelay) + sizeof(mFlags) + sizeof(mUuid);
     if (size < fixedSize2) {
         return NO_MEMORY;
     }
 
     FlattenableUtils::read(buffer, size, mRequiredPermissionRuntime);
+    size += FlattenableUtils::align<4>(buffer);
     FlattenableUtils::read(buffer, size, mRequiredAppOp);
     FlattenableUtils::read(buffer, size, mMaxDelay);
     FlattenableUtils::read(buffer, size, mFlags);
