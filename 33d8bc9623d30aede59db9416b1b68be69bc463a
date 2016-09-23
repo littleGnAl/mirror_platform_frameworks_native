@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f08d07b7_c961c43e",
+        "filename": "libs/gui/Sensor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2016-09-23T00:54:48Z",
+      "side": 1,
+      "message": "Can we add a static assert so that when some 8-byte alignment is around one day, we do not fail again?",
+      "range": {
+        "startLine": 457,
+        "startChar": 61,
+        "endLine": 457,
+        "endChar": 78
+      },
+      "revId": "33d8bc9623d30aede59db9416b1b68be69bc463a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
