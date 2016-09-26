@@ -2623,4 +2623,6 @@ void Parcel::Blob::clear() {
     mMutable = false;
 }
 
+Parcel::FlattenableHelperInterface::~FlattenableHelperInterface() = default;
+
 }; // namespace android

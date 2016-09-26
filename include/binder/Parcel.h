@@ -465,7 +465,7 @@ private:
 
     class FlattenableHelperInterface {
     protected:
-        ~FlattenableHelperInterface() { }
+        virtual ~FlattenableHelperInterface();
     public:
         virtual size_t getFlattenedSize() const = 0;
         virtual size_t getFdCount() const = 0;
