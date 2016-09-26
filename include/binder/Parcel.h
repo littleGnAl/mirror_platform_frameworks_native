@@ -463,6 +463,9 @@ private:
         bool mMutable;
     };
 
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wweak-vtables"
+
     class FlattenableHelperInterface {
     protected:
         ~FlattenableHelperInterface() { }
@@ -472,6 +475,8 @@ private:
         virtual status_t flatten(void* buffer, size_t size, int* fds, size_t count) const = 0;
         virtual status_t unflatten(void const* buffer, size_t size, int const* fds, size_t count) = 0;
     };
+
+    #pragma clang diagnostic pop
 
     template<typename T>
     class FlattenableHelper : public FlattenableHelperInterface {
