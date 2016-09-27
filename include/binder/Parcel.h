@@ -531,7 +531,7 @@ template<typename T>
 status_t Parcel::write(const LightFlattenable<T>& val) {
     size_t size(val.getFlattenedSize());
     if (!val.isFixedSize()) {
-        status_t err = writeInt32(size);
+        status_t err = writeInt32(static_cast<int32_t>(size));
         if (err != NO_ERROR) {
             return err;
         }
@@ -562,7 +562,7 @@ status_t Parcel::read(LightFlattenable<T>& val) const {
         if (err != NO_ERROR) {
             return err;
         }
-        size = s;
+        size = static_cast<size_t>(s);
     }
     if (size) {
         void const* buffer = readInplace(size);
@@ -689,7 +689,7 @@ status_t Parcel::readTypedVector(std::vector<T>* val,
 template<typename T>
 status_t Parcel::readNullableTypedVector(std::unique_ptr<std::vector<T>>* val,
                                          status_t(Parcel::*read_func)(T*) const) const {
-    const int32_t start = dataPosition();
+    const size_t start = dataPosition();
     int32_t size;
     status_t status = readInt32(&size);
     val->reset();
@@ -773,7 +773,7 @@ status_t Parcel::readParcelableVector(std::vector<T>* val) const {
 
 template<typename T>
 status_t Parcel::readParcelableVector(std::unique_ptr<std::vector<std::unique_ptr<T>>>* val) const {
-    const int32_t start = dataPosition();
+    const size_t start = dataPosition();
     int32_t size;
     status_t status = readInt32(&size);
     val->reset();
@@ -796,7 +796,7 @@ status_t Parcel::readParcelableVector(std::unique_ptr<std::vector<std::unique_pt
 
 template<typename T>
 status_t Parcel::readParcelable(std::unique_ptr<T>* parcelable) const {
-    const int32_t start = dataPosition();
+    const size_t start = dataPosition();
     int32_t present;
     status_t status = readInt32(&present);
     parcelable->reset();
