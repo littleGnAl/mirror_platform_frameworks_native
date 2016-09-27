@@ -426,7 +426,7 @@ static int32_t getKeyCodeByLabel(const char* label) {
 }
 
 static const char* getLabelByKeyCode(int32_t keyCode) {
-    if (keyCode >= 0 && keyCode < size(KEYCODES)) {
+    if (keyCode >= 0 && keyCode < static_cast<int32_t>(size(KEYCODES))) {
         return KEYCODES[keyCode].literal;
     }
     return NULL;
