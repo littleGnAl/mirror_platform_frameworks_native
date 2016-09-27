@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f08d07b7_85479447",
+        "filename": "include/android/native_window_jni.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-09-27T21:05:30Z",
+      "side": 1,
+      "message": "This was in the NDK headers but not in the frameworks. It\u0027s been missing here since at least the move from frameworks/base to frameworks/native.",
+      "revId": "494ed550f5aea1332984fb9f0f11036fc58bd716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
