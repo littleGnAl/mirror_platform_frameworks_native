@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#define LOG_TAG "dumpstate"
+
 #include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -36,11 +38,9 @@
 #include <vector>
 #include <sys/prctl.h>
 
-#define LOG_TAG "dumpstate"
-
+#include <android/log.h>
 #include <android-base/file.h>
 #include <cutils/debugger.h>
-#include <cutils/log.h>
 #include <cutils/properties.h>
 #include <cutils/sockets.h>
 #include <private/android_filesystem_config.h>

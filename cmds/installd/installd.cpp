@@ -23,9 +23,9 @@
 #include <sys/socket.h>
 #include <sys/stat.h>
 
+#include <android/log.h>              // TODO: Move everything to base::logging.
 #include <android-base/logging.h>
 #include <cutils/fs.h>
-#include <cutils/log.h>               // TODO: Move everything to base::logging.
 #include <cutils/properties.h>
 #include <cutils/sockets.h>
 #include <private/android_filesystem_config.h>

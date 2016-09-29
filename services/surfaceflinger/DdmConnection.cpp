@@ -16,7 +16,7 @@
 
 #include <dlfcn.h>
 
-#include <cutils/log.h>
+#include <android/log.h>
 
 #include "jni.h"
 #include "DdmConnection.h"
