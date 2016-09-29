@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#define LOG_TAG "dumpstate"
+
 #include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -34,14 +36,11 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+#include <android/log.h>
 #include <android-base/stringprintf.h>
 #include <android-base/unique_fd.h>
 #include <cutils/properties.h>
-
-#include "private/android_filesystem_config.h"
-
-#define LOG_TAG "dumpstate"
-#include <cutils/log.h>
+#include <private/android_filesystem_config.h>
 
 #include "dumpstate.h"
 #include "ziparchive/zip_writer.h"
