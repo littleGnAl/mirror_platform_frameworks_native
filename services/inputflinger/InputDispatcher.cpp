@@ -43,18 +43,18 @@
 // Log debug messages about hover events.
 #define DEBUG_HOVER 0
 
-#include "InputDispatcher.h"
+#include <errno.h>
+#include <limits.h>
+#include <stddef.h>
+#include <time.h>
+#include <unistd.h>
 
+#include <android/log.h>
 #include <utils/Trace.h>
-#include <cutils/log.h>
 #include <powermanager/PowerManager.h>
 #include <ui/Region.h>
 
-#include <stddef.h>
-#include <unistd.h>
-#include <errno.h>
-#include <limits.h>
-#include <time.h>
+#include "InputDispatcher.h"
 
 #define INDENT "  "
 #define INDENT2 "    "

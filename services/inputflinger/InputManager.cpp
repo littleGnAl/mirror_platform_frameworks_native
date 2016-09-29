@@ -18,9 +18,9 @@
 
 //#define LOG_NDEBUG 0
 
-#include "InputManager.h"
+#include <android/log.h>
 
-#include <cutils/log.h>
+#include "InputManager.h"
 
 namespace android {
 

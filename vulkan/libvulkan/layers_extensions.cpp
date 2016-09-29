@@ -20,15 +20,15 @@
 #include <dirent.h>
 #include <dlfcn.h>
 #include <mutex>
-#include <sys/prctl.h>
 #include <string>
 #include <string.h>
+#include <sys/prctl.h>
 #include <vector>
 
-#include <android-base/strings.h>
+#include <android/log.h>
 #include <android/dlext.h>
+#include <android-base/strings.h>
 #include <cutils/properties.h>
-#include <log/log.h>
 #include <ziparchive/zip_archive.h>
 
 #include <vulkan/vulkan_loader_data.h>

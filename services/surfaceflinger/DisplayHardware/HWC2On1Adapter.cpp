@@ -20,16 +20,16 @@
 #define LOG_TAG "HWC2On1Adapter"
 #define ATRACE_TAG ATRACE_TAG_GRAPHICS
 
-#include "HWC2On1Adapter.h"
-
-#include <hardware/hwcomposer.h>
-#include <log/log.h>
-#include <utils/Trace.h>
-
-#include <cstdlib>
 #include <chrono>
+#include <cstdlib>
 #include <inttypes.h>
 #include <sstream>
+
+#include <android/log.h>
+#include <hardware/hwcomposer.h>
+#include <utils/Trace.h>
+
+#include "HWC2On1Adapter.h"
 
 using namespace std::chrono_literals;
 

@@ -29,12 +29,12 @@
 #include <sys/xattr.h>
 #include <unistd.h>
 
+#include <android/log.h>               // TODO: Move everything to base/logging.
 #include <android-base/logging.h>
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <android-base/unique_fd.h>
 #include <cutils/fs.h>
-#include <cutils/log.h>               // TODO: Move everything to base/logging.
 #include <cutils/sched_policy.h>
 #include <diskusage/dirsize.h>
 #include <logwrap/logwrap.h>
