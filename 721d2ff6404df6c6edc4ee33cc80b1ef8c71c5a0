@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45ba9338_7914e04e",
+        "filename": "include/gui/BufferQueueProducer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2016-09-29T17:20:31Z",
+      "side": 1,
+      "message": "This is fine, but I think it\u0027s technically outside the scope of this particular CL",
+      "revId": "721d2ff6404df6c6edc4ee33cc80b1ef8c71c5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
