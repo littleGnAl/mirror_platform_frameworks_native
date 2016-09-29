@@ -16,9 +16,9 @@
 
 #define LOG_TAG "InputApplication"
 
-#include "InputApplication.h"
+#include <android/log.h>
 
-#include <cutils/log.h>
+#include "InputApplication.h"
 
 namespace android {
 

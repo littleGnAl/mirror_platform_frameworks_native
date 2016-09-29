@@ -17,9 +17,9 @@
 #define LOG_TAG "InputWindow"
 #define LOG_NDEBUG 0
 
-#include "InputWindow.h"
+#include <android/log.h>
 
-#include <cutils/log.h>
+#include "InputWindow.h"
 
 #include <ui/Rect.h>
 #include <ui/Region.h>

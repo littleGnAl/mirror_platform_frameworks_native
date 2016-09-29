@@ -14,17 +14,20 @@
  * limitations under the License.
  */
 
-#include <algorithm>
-#include <array>
+#define LOG_TAG "vkinfo"
+
 #include <inttypes.h>
 #include <stdlib.h>
+#include <unistd.h>
+
+#include <algorithm>
+#include <array>
 #include <sstream>
 #include <vector>
 
-#include <vulkan/vulkan.h>
+#include <android/log.h>
 
-#define LOG_TAG "vkinfo"
-#include <log/log.h>
+#include <vulkan/vulkan.h>
 
 namespace {
 

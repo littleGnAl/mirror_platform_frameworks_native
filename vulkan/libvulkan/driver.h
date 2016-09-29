@@ -17,10 +17,11 @@
 #ifndef LIBVULKAN_DRIVER_H
 #define LIBVULKAN_DRIVER_H 1
 
-#include <inttypes.h>
 #include <bitset>
+#include <inttypes.h>
 #include <type_traits>
-#include <log/log.h>
+
+#include <android/log.h>
 
 #include <vulkan/vulkan.h>
 #include <hardware/hwvulkan.h>
