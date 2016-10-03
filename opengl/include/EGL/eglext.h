@@ -145,11 +145,13 @@ typedef khronos_utime_nanoseconds_t EGLTimeKHR;
 #define EGL_FOREVER_KHR				0xFFFFFFFFFFFFFFFFull
 #define EGL_NO_SYNC_KHR				((EGLSyncKHR)0)
 #ifdef EGL_EGLEXT_PROTOTYPES
+#if __ANDROID_API__ >= 18
 EGLAPI EGLSyncKHR EGLAPIENTRY eglCreateSyncKHR(EGLDisplay dpy, EGLenum type, const EGLint *attrib_list);
 EGLAPI EGLBoolean EGLAPIENTRY eglDestroySyncKHR(EGLDisplay dpy, EGLSyncKHR sync);
 EGLAPI EGLint EGLAPIENTRY eglClientWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLint flags, EGLTimeKHR timeout);
 EGLAPI EGLBoolean EGLAPIENTRY eglSignalSyncKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLenum mode);
 EGLAPI EGLBoolean EGLAPIENTRY eglGetSyncAttribKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLint attribute, EGLint *value);
+#endif /* __ANDROID_API__ >= 18 */
 #endif /* EGL_EGLEXT_PROTOTYPES */
 typedef EGLSyncKHR (EGLAPIENTRYP PFNEGLCREATESYNCKHRPROC) (EGLDisplay dpy, EGLenum type, const EGLint *attrib_list);
 typedef EGLBoolean (EGLAPIENTRYP PFNEGLDESTROYSYNCKHRPROC) (EGLDisplay dpy, EGLSyncKHR sync);
