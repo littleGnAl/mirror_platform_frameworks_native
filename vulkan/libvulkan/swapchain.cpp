@@ -585,17 +585,12 @@ VkResult CreateSwapchainKHR(VkDevice device,
     }
 
     int gralloc_usage = 0;
-    // TODO(jessehall): Remove conditional once all drivers have been updated
-    if (dispatch.GetSwapchainGrallocUsageANDROID) {
-        result = dispatch.GetSwapchainGrallocUsageANDROID(
-            device, create_info->imageFormat, create_info->imageUsage,
-            &gralloc_usage);
-        if (result != VK_SUCCESS) {
-            ALOGE("vkGetSwapchainGrallocUsageANDROID failed: %d", result);
-            return VK_ERROR_INITIALIZATION_FAILED;
-        }
-    } else {
-        gralloc_usage = GRALLOC_USAGE_HW_RENDER | GRALLOC_USAGE_HW_TEXTURE;
+    result = dispatch.GetSwapchainGrallocUsageANDROID(
+        device, create_info->imageFormat, create_info->imageUsage,
+        &gralloc_usage);
+    if (result != VK_SUCCESS) {
+        ALOGE("vkGetSwapchainGrallocUsageANDROID failed: %d", result);
+        return VK_ERROR_INITIALIZATION_FAILED;
     }
     err = native_window_set_usage(surface.window.get(), gralloc_usage);
     if (err != 0) {
