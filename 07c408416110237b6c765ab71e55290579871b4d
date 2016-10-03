@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c20e797c_cf7150d6",
+        "filename": "opengl/include/EGL/eglext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-03T19:40:57Z",
+      "side": 1,
+      "message": "In case either of you haven\u0027t seen the new thing yet: https://android.googlesource.com/platform/ndk/+/master/docs/PlatformApis.md#Headers\n\nThe headers in the NDK need to be able to be included for any given platform level. For anything we own, we\u0027ve been adding guards like this.\n\nThese headers are just copied in from some upstream source, right? Would you rather we didn\u0027t add the guards to all the OpenGL/Vulkan headers? Not including the guards means that the user gets a link time error rather than a compile time one. It\u0027s slightly worse UX, but not that bad.\n\nI should note that the EGL_EGLEXT_PROTOTYPES guard here doesn\u0027t guard only things added in android-18. Some other groups were in android-9.",
+      "revId": "07c408416110237b6c765ab71e55290579871b4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
