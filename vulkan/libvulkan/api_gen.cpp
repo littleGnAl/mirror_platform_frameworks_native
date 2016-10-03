@@ -29,11 +29,11 @@ namespace api {
 
 #define UNLIKELY(expr) __builtin_expect((expr), 0)
 
-#define INIT_PROC(obj, proc)                                           \
+#define INIT_PROC(obj, proc, optional)                                 \
     do {                                                               \
         data.dispatch.proc =                                           \
             reinterpret_cast<PFN_vk##proc>(get_proc(obj, "vk" #proc)); \
-        if (UNLIKELY(!data.dispatch.proc)) {                           \
+        if (UNLIKELY(!data.dispatch.proc) && !optional) {              \
             ALOGE("missing " #obj " proc: vk" #proc);                  \
             success = false;                                           \
         }                                                              \
@@ -41,10 +41,10 @@ namespace api {
 
 // Exported extension functions may be invoked even when their extensions
 // are disabled.  Dispatch to stubs when that happens.
-#define INIT_PROC_EXT(ext, obj, proc)            \
+#define INIT_PROC_EXT(ext, obj, proc, optional)  \
     do {                                         \
         if (extensions[driver::ProcHook::ext])   \
-            INIT_PROC(obj, proc);                \
+            INIT_PROC(obj, proc, optional);      \
         else                                     \
             data.dispatch.proc = disabled##proc; \
     } while (0)
@@ -118,24 +118,24 @@ bool InitDispatchTable(
     bool success = true;
 
     // clang-format off
-    INIT_PROC(instance, DestroyInstance);
-    INIT_PROC(instance, EnumeratePhysicalDevices);
-    INIT_PROC(instance, GetInstanceProcAddr);
-    INIT_PROC(instance, GetPhysicalDeviceProperties);
-    INIT_PROC(instance, GetPhysicalDeviceQueueFamilyProperties);
-    INIT_PROC(instance, GetPhysicalDeviceMemoryProperties);
-    INIT_PROC(instance, GetPhysicalDeviceFeatures);
-    INIT_PROC(instance, GetPhysicalDeviceFormatProperties);
-    INIT_PROC(instance, GetPhysicalDeviceImageFormatProperties);
-    INIT_PROC(instance, CreateDevice);
-    INIT_PROC(instance, EnumerateDeviceExtensionProperties);
-    INIT_PROC(instance, GetPhysicalDeviceSparseImageFormatProperties);
-    INIT_PROC_EXT(KHR_surface, instance, DestroySurfaceKHR);
-    INIT_PROC_EXT(KHR_surface, instance, GetPhysicalDeviceSurfaceSupportKHR);
-    INIT_PROC_EXT(KHR_surface, instance, GetPhysicalDeviceSurfaceCapabilitiesKHR);
-    INIT_PROC_EXT(KHR_surface, instance, GetPhysicalDeviceSurfaceFormatsKHR);
-    INIT_PROC_EXT(KHR_surface, instance, GetPhysicalDeviceSurfacePresentModesKHR);
-    INIT_PROC_EXT(KHR_android_surface, instance, CreateAndroidSurfaceKHR);
+    INIT_PROC(instance, DestroyInstance, false);
+    INIT_PROC(instance, EnumeratePhysicalDevices, false);
+    INIT_PROC(instance, GetInstanceProcAddr, false);
+    INIT_PROC(instance, GetPhysicalDeviceProperties, false);
+    INIT_PROC(instance, GetPhysicalDeviceQueueFamilyProperties, false);
+    INIT_PROC(instance, GetPhysicalDeviceMemoryProperties, false);
+    INIT_PROC(instance, GetPhysicalDeviceFeatures, false);
+    INIT_PROC(instance, GetPhysicalDeviceFormatProperties, false);
+    INIT_PROC(instance, GetPhysicalDeviceImageFormatProperties, false);
+    INIT_PROC(instance, CreateDevice, false);
+    INIT_PROC(instance, EnumerateDeviceExtensionProperties, false);
+    INIT_PROC(instance, GetPhysicalDeviceSparseImageFormatProperties, false);
+    INIT_PROC_EXT(KHR_surface, instance, DestroySurfaceKHR, false);
+    INIT_PROC_EXT(KHR_surface, instance, GetPhysicalDeviceSurfaceSupportKHR, false);
+    INIT_PROC_EXT(KHR_surface, instance, GetPhysicalDeviceSurfaceCapabilitiesKHR, false);
+    INIT_PROC_EXT(KHR_surface, instance, GetPhysicalDeviceSurfaceFormatsKHR, false);
+    INIT_PROC_EXT(KHR_surface, instance, GetPhysicalDeviceSurfacePresentModesKHR, false);
+    INIT_PROC_EXT(KHR_android_surface, instance, CreateAndroidSurfaceKHR, false);
     // clang-format on
 
     return success;
@@ -149,132 +149,132 @@ bool InitDispatchTable(
     bool success = true;
 
     // clang-format off
-    INIT_PROC(dev, GetDeviceProcAddr);
-    INIT_PROC(dev, DestroyDevice);
-    INIT_PROC(dev, GetDeviceQueue);
-    INIT_PROC(dev, QueueSubmit);
-    INIT_PROC(dev, QueueWaitIdle);
-    INIT_PROC(dev, DeviceWaitIdle);
-    INIT_PROC(dev, AllocateMemory);
-    INIT_PROC(dev, FreeMemory);
-    INIT_PROC(dev, MapMemory);
-    INIT_PROC(dev, UnmapMemory);
-    INIT_PROC(dev, FlushMappedMemoryRanges);
-    INIT_PROC(dev, InvalidateMappedMemoryRanges);
-    INIT_PROC(dev, GetDeviceMemoryCommitment);
-    INIT_PROC(dev, GetBufferMemoryRequirements);
-    INIT_PROC(dev, BindBufferMemory);
-    INIT_PROC(dev, GetImageMemoryRequirements);
-    INIT_PROC(dev, BindImageMemory);
-    INIT_PROC(dev, GetImageSparseMemoryRequirements);
-    INIT_PROC(dev, QueueBindSparse);
-    INIT_PROC(dev, CreateFence);
-    INIT_PROC(dev, DestroyFence);
-    INIT_PROC(dev, ResetFences);
-    INIT_PROC(dev, GetFenceStatus);
-    INIT_PROC(dev, WaitForFences);
-    INIT_PROC(dev, CreateSemaphore);
-    INIT_PROC(dev, DestroySemaphore);
-    INIT_PROC(dev, CreateEvent);
-    INIT_PROC(dev, DestroyEvent);
-    INIT_PROC(dev, GetEventStatus);
-    INIT_PROC(dev, SetEvent);
-    INIT_PROC(dev, ResetEvent);
-    INIT_PROC(dev, CreateQueryPool);
-    INIT_PROC(dev, DestroyQueryPool);
-    INIT_PROC(dev, GetQueryPoolResults);
-    INIT_PROC(dev, CreateBuffer);
-    INIT_PROC(dev, DestroyBuffer);
-    INIT_PROC(dev, CreateBufferView);
-    INIT_PROC(dev, DestroyBufferView);
-    INIT_PROC(dev, CreateImage);
-    INIT_PROC(dev, DestroyImage);
-    INIT_PROC(dev, GetImageSubresourceLayout);
-    INIT_PROC(dev, CreateImageView);
-    INIT_PROC(dev, DestroyImageView);
-    INIT_PROC(dev, CreateShaderModule);
-    INIT_PROC(dev, DestroyShaderModule);
-    INIT_PROC(dev, CreatePipelineCache);
-    INIT_PROC(dev, DestroyPipelineCache);
-    INIT_PROC(dev, GetPipelineCacheData);
-    INIT_PROC(dev, MergePipelineCaches);
-    INIT_PROC(dev, CreateGraphicsPipelines);
-    INIT_PROC(dev, CreateComputePipelines);
-    INIT_PROC(dev, DestroyPipeline);
-    INIT_PROC(dev, CreatePipelineLayout);
-    INIT_PROC(dev, DestroyPipelineLayout);
-    INIT_PROC(dev, CreateSampler);
-    INIT_PROC(dev, DestroySampler);
-    INIT_PROC(dev, CreateDescriptorSetLayout);
-    INIT_PROC(dev, DestroyDescriptorSetLayout);
-    INIT_PROC(dev, CreateDescriptorPool);
-    INIT_PROC(dev, DestroyDescriptorPool);
-    INIT_PROC(dev, ResetDescriptorPool);
-    INIT_PROC(dev, AllocateDescriptorSets);
-    INIT_PROC(dev, FreeDescriptorSets);
-    INIT_PROC(dev, UpdateDescriptorSets);
-    INIT_PROC(dev, CreateFramebuffer);
-    INIT_PROC(dev, DestroyFramebuffer);
-    INIT_PROC(dev, CreateRenderPass);
-    INIT_PROC(dev, DestroyRenderPass);
-    INIT_PROC(dev, GetRenderAreaGranularity);
-    INIT_PROC(dev, CreateCommandPool);
-    INIT_PROC(dev, DestroyCommandPool);
-    INIT_PROC(dev, ResetCommandPool);
-    INIT_PROC(dev, AllocateCommandBuffers);
-    INIT_PROC(dev, FreeCommandBuffers);
-    INIT_PROC(dev, BeginCommandBuffer);
-    INIT_PROC(dev, EndCommandBuffer);
-    INIT_PROC(dev, ResetCommandBuffer);
-    INIT_PROC(dev, CmdBindPipeline);
-    INIT_PROC(dev, CmdSetViewport);
-    INIT_PROC(dev, CmdSetScissor);
-    INIT_PROC(dev, CmdSetLineWidth);
-    INIT_PROC(dev, CmdSetDepthBias);
-    INIT_PROC(dev, CmdSetBlendConstants);
-    INIT_PROC(dev, CmdSetDepthBounds);
-    INIT_PROC(dev, CmdSetStencilCompareMask);
-    INIT_PROC(dev, CmdSetStencilWriteMask);
-    INIT_PROC(dev, CmdSetStencilReference);
-    INIT_PROC(dev, CmdBindDescriptorSets);
-    INIT_PROC(dev, CmdBindIndexBuffer);
-    INIT_PROC(dev, CmdBindVertexBuffers);
-    INIT_PROC(dev, CmdDraw);
-    INIT_PROC(dev, CmdDrawIndexed);
-    INIT_PROC(dev, CmdDrawIndirect);
-    INIT_PROC(dev, CmdDrawIndexedIndirect);
-    INIT_PROC(dev, CmdDispatch);
-    INIT_PROC(dev, CmdDispatchIndirect);
-    INIT_PROC(dev, CmdCopyBuffer);
-    INIT_PROC(dev, CmdCopyImage);
-    INIT_PROC(dev, CmdBlitImage);
-    INIT_PROC(dev, CmdCopyBufferToImage);
-    INIT_PROC(dev, CmdCopyImageToBuffer);
-    INIT_PROC(dev, CmdUpdateBuffer);
-    INIT_PROC(dev, CmdFillBuffer);
-    INIT_PROC(dev, CmdClearColorImage);
-    INIT_PROC(dev, CmdClearDepthStencilImage);
-    INIT_PROC(dev, CmdClearAttachments);
-    INIT_PROC(dev, CmdResolveImage);
-    INIT_PROC(dev, CmdSetEvent);
-    INIT_PROC(dev, CmdResetEvent);
-    INIT_PROC(dev, CmdWaitEvents);
-    INIT_PROC(dev, CmdPipelineBarrier);
-    INIT_PROC(dev, CmdBeginQuery);
-    INIT_PROC(dev, CmdEndQuery);
-    INIT_PROC(dev, CmdResetQueryPool);
-    INIT_PROC(dev, CmdWriteTimestamp);
-    INIT_PROC(dev, CmdCopyQueryPoolResults);
-    INIT_PROC(dev, CmdPushConstants);
-    INIT_PROC(dev, CmdBeginRenderPass);
-    INIT_PROC(dev, CmdNextSubpass);
-    INIT_PROC(dev, CmdEndRenderPass);
-    INIT_PROC(dev, CmdExecuteCommands);
-    INIT_PROC_EXT(KHR_swapchain, dev, CreateSwapchainKHR);
-    INIT_PROC_EXT(KHR_swapchain, dev, DestroySwapchainKHR);
-    INIT_PROC_EXT(KHR_swapchain, dev, GetSwapchainImagesKHR);
-    INIT_PROC_EXT(KHR_swapchain, dev, AcquireNextImageKHR);
-    INIT_PROC_EXT(KHR_swapchain, dev, QueuePresentKHR);
+    INIT_PROC(dev, GetDeviceProcAddr, false);
+    INIT_PROC(dev, DestroyDevice, false);
+    INIT_PROC(dev, GetDeviceQueue, false);
+    INIT_PROC(dev, QueueSubmit, false);
+    INIT_PROC(dev, QueueWaitIdle, false);
+    INIT_PROC(dev, DeviceWaitIdle, false);
+    INIT_PROC(dev, AllocateMemory, false);
+    INIT_PROC(dev, FreeMemory, false);
+    INIT_PROC(dev, MapMemory, false);
+    INIT_PROC(dev, UnmapMemory, false);
+    INIT_PROC(dev, FlushMappedMemoryRanges, false);
+    INIT_PROC(dev, InvalidateMappedMemoryRanges, false);
+    INIT_PROC(dev, GetDeviceMemoryCommitment, false);
+    INIT_PROC(dev, GetBufferMemoryRequirements, false);
+    INIT_PROC(dev, BindBufferMemory, false);
+    INIT_PROC(dev, GetImageMemoryRequirements, false);
+    INIT_PROC(dev, BindImageMemory, false);
+    INIT_PROC(dev, GetImageSparseMemoryRequirements, false);
+    INIT_PROC(dev, QueueBindSparse, false);
+    INIT_PROC(dev, CreateFence, false);
+    INIT_PROC(dev, DestroyFence, false);
+    INIT_PROC(dev, ResetFences, false);
+    INIT_PROC(dev, GetFenceStatus, false);
+    INIT_PROC(dev, WaitForFences, false);
+    INIT_PROC(dev, CreateSemaphore, false);
+    INIT_PROC(dev, DestroySemaphore, false);
+    INIT_PROC(dev, CreateEvent, false);
+    INIT_PROC(dev, DestroyEvent, false);
+    INIT_PROC(dev, GetEventStatus, false);
+    INIT_PROC(dev, SetEvent, false);
+    INIT_PROC(dev, ResetEvent, false);
+    INIT_PROC(dev, CreateQueryPool, false);
+    INIT_PROC(dev, DestroyQueryPool, false);
+    INIT_PROC(dev, GetQueryPoolResults, false);
+    INIT_PROC(dev, CreateBuffer, false);
+    INIT_PROC(dev, DestroyBuffer, false);
+    INIT_PROC(dev, CreateBufferView, false);
+    INIT_PROC(dev, DestroyBufferView, false);
+    INIT_PROC(dev, CreateImage, false);
+    INIT_PROC(dev, DestroyImage, false);
+    INIT_PROC(dev, GetImageSubresourceLayout, false);
+    INIT_PROC(dev, CreateImageView, false);
+    INIT_PROC(dev, DestroyImageView, false);
+    INIT_PROC(dev, CreateShaderModule, false);
+    INIT_PROC(dev, DestroyShaderModule, false);
+    INIT_PROC(dev, CreatePipelineCache, false);
+    INIT_PROC(dev, DestroyPipelineCache, false);
+    INIT_PROC(dev, GetPipelineCacheData, false);
+    INIT_PROC(dev, MergePipelineCaches, false);
+    INIT_PROC(dev, CreateGraphicsPipelines, false);
+    INIT_PROC(dev, CreateComputePipelines, false);
+    INIT_PROC(dev, DestroyPipeline, false);
+    INIT_PROC(dev, CreatePipelineLayout, false);
+    INIT_PROC(dev, DestroyPipelineLayout, false);
+    INIT_PROC(dev, CreateSampler, false);
+    INIT_PROC(dev, DestroySampler, false);
+    INIT_PROC(dev, CreateDescriptorSetLayout, false);
+    INIT_PROC(dev, DestroyDescriptorSetLayout, false);
+    INIT_PROC(dev, CreateDescriptorPool, false);
+    INIT_PROC(dev, DestroyDescriptorPool, false);
+    INIT_PROC(dev, ResetDescriptorPool, false);
+    INIT_PROC(dev, AllocateDescriptorSets, false);
+    INIT_PROC(dev, FreeDescriptorSets, false);
+    INIT_PROC(dev, UpdateDescriptorSets, false);
+    INIT_PROC(dev, CreateFramebuffer, false);
+    INIT_PROC(dev, DestroyFramebuffer, false);
+    INIT_PROC(dev, CreateRenderPass, false);
+    INIT_PROC(dev, DestroyRenderPass, false);
+    INIT_PROC(dev, GetRenderAreaGranularity, false);
+    INIT_PROC(dev, CreateCommandPool, false);
+    INIT_PROC(dev, DestroyCommandPool, false);
+    INIT_PROC(dev, ResetCommandPool, false);
+    INIT_PROC(dev, AllocateCommandBuffers, false);
+    INIT_PROC(dev, FreeCommandBuffers, false);
+    INIT_PROC(dev, BeginCommandBuffer, false);
+    INIT_PROC(dev, EndCommandBuffer, false);
+    INIT_PROC(dev, ResetCommandBuffer, false);
+    INIT_PROC(dev, CmdBindPipeline, false);
+    INIT_PROC(dev, CmdSetViewport, false);
+    INIT_PROC(dev, CmdSetScissor, false);
+    INIT_PROC(dev, CmdSetLineWidth, false);
+    INIT_PROC(dev, CmdSetDepthBias, false);
+    INIT_PROC(dev, CmdSetBlendConstants, false);
+    INIT_PROC(dev, CmdSetDepthBounds, false);
+    INIT_PROC(dev, CmdSetStencilCompareMask, false);
+    INIT_PROC(dev, CmdSetStencilWriteMask, false);
+    INIT_PROC(dev, CmdSetStencilReference, false);
+    INIT_PROC(dev, CmdBindDescriptorSets, false);
+    INIT_PROC(dev, CmdBindIndexBuffer, false);
+    INIT_PROC(dev, CmdBindVertexBuffers, false);
+    INIT_PROC(dev, CmdDraw, false);
+    INIT_PROC(dev, CmdDrawIndexed, false);
+    INIT_PROC(dev, CmdDrawIndirect, false);
+    INIT_PROC(dev, CmdDrawIndexedIndirect, false);
+    INIT_PROC(dev, CmdDispatch, false);
+    INIT_PROC(dev, CmdDispatchIndirect, false);
+    INIT_PROC(dev, CmdCopyBuffer, false);
+    INIT_PROC(dev, CmdCopyImage, false);
+    INIT_PROC(dev, CmdBlitImage, false);
+    INIT_PROC(dev, CmdCopyBufferToImage, false);
+    INIT_PROC(dev, CmdCopyImageToBuffer, false);
+    INIT_PROC(dev, CmdUpdateBuffer, false);
+    INIT_PROC(dev, CmdFillBuffer, false);
+    INIT_PROC(dev, CmdClearColorImage, false);
+    INIT_PROC(dev, CmdClearDepthStencilImage, false);
+    INIT_PROC(dev, CmdClearAttachments, false);
+    INIT_PROC(dev, CmdResolveImage, false);
+    INIT_PROC(dev, CmdSetEvent, false);
+    INIT_PROC(dev, CmdResetEvent, false);
+    INIT_PROC(dev, CmdWaitEvents, false);
+    INIT_PROC(dev, CmdPipelineBarrier, false);
+    INIT_PROC(dev, CmdBeginQuery, false);
+    INIT_PROC(dev, CmdEndQuery, false);
+    INIT_PROC(dev, CmdResetQueryPool, false);
+    INIT_PROC(dev, CmdWriteTimestamp, false);
+    INIT_PROC(dev, CmdCopyQueryPoolResults, false);
+    INIT_PROC(dev, CmdPushConstants, false);
+    INIT_PROC(dev, CmdBeginRenderPass, false);
+    INIT_PROC(dev, CmdNextSubpass, false);
+    INIT_PROC(dev, CmdEndRenderPass, false);
+    INIT_PROC(dev, CmdExecuteCommands, false);
+    INIT_PROC_EXT(KHR_swapchain, dev, CreateSwapchainKHR, false);
+    INIT_PROC_EXT(KHR_swapchain, dev, DestroySwapchainKHR, false);
+    INIT_PROC_EXT(KHR_swapchain, dev, GetSwapchainImagesKHR, false);
+    INIT_PROC_EXT(KHR_swapchain, dev, AcquireNextImageKHR, false);
+    INIT_PROC_EXT(KHR_swapchain, dev, QueuePresentKHR, false);
     // clang-format on
 
     return success;
