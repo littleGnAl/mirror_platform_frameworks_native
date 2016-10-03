@@ -881,8 +881,22 @@ VkResult GetSwapchainGrallocUsageANDROID(VkDevice,
                                          VkFormat,
                                          VkImageUsageFlags,
                                          int* grallocUsage) {
+    ALOGE(
+        "vkGetSwapchainGrallocUsageANDROID called even though "
+        "GetSwapchainGrallocUsage2ANDROID is available");
     // The null driver never reads or writes the gralloc buffer
     *grallocUsage = 0;
+    return VK_SUCCESS;
+}
+
+VkResult GetSwapchainGrallocUsage2ANDROID(VkDevice,
+                                          VkFormat,
+                                          VkImageUsageFlags,
+                                          uint64_t* grallocConsumerUsage,
+                                          uint64_t* grallocProducerUsage) {
+    // The null driver never reads or writes the gralloc buffer
+    *grallocConsumerUsage = 0;
+    *grallocProducerUsage = 0;
     return VK_SUCCESS;
 }
 

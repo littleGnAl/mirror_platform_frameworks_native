@@ -510,6 +510,43 @@ void FreeDeviceData(DeviceData* data, const VkAllocationCallbacks& allocator) {
     allocator.pfnFree(allocator.pUserData, data);
 }
 
+bool CheckOptionalExtensions(
+    VkPhysicalDevice physical_device,
+    VkDevice logical_device,
+    const std::bitset<ProcHook::EXTENSION_COUNT>& hal_extensions) {
+    PFN_vkEnumerateDeviceExtensionProperties
+        enumerate_device_extension_properties =
+            GetData(physical_device).driver.EnumerateDeviceExtensionProperties;
+
+    uint32_t count;
+    if (enumerate_device_extension_properties(physical_device, nullptr, &count,
+                                              nullptr) != VK_SUCCESS)
+        return false;
+    auto exts = std::make_unique<VkExtensionProperties[]>(size_t(count));
+    if (enumerate_device_extension_properties(physical_device, nullptr, &count,
+                                              exts.get()) != VK_SUCCESS)
+        return false;
+
+    uint32_t android_native_buffer_version = 0;
+    for (uint32_t i = 0; i < count; i++) {
+        if (strcmp(exts[i].extensionName,
+                   VK_ANDROID_NATIVE_BUFFER_EXTENSION_NAME) == 0)
+            android_native_buffer_version = exts[i].specVersion;
+    }
+
+    const DeviceDriverTable& driver_funcs = GetData(logical_device).driver;
+    if (hal_extensions[ProcHook::ANDROID_native_buffer] &&
+        android_native_buffer_version >= 6 &&
+        !driver_funcs.GetSwapchainGrallocUsage2ANDROID) {
+        ALOGE(
+            "Driver supports " VK_ANDROID_NATIVE_BUFFER_EXTENSION_NAME
+            " version >=6 but doesn't have vkGetSwapchainGrallocUsage2ANDROID");
+        return false;
+    }
+
+    return true;
+}
+
 }  // anonymous namespace
 
 bool Debuggable() {
@@ -787,7 +824,9 @@ VkResult CreateDevice(VkPhysicalDevice physicalDevice,
     // initialize DeviceDriverTable
     if (!SetData(dev, *data) ||
         !InitDriverTable(dev, instance_data.get_device_proc_addr,
-                         wrapper.GetHalExtensions())) {
+                         wrapper.GetHalExtensions()) ||
+        !CheckOptionalExtensions(physicalDevice, dev,
+                                 wrapper.GetHalExtensions())) {
         data->driver.DestroyDevice = reinterpret_cast<PFN_vkDestroyDevice>(
             instance_data.get_device_proc_addr(dev, "vkDestroyDevice"));
         if (data->driver.DestroyDevice)
