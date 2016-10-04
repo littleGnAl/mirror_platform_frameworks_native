@@ -16,6 +16,24 @@
       "revId": "07c408416110237b6c765ab71e55290579871b4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0275f106_f4ede67b",
+        "filename": "opengl/include/EGL/eglext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2016-10-04T15:36:21Z",
+      "side": 1,
+      "message": "We\u0027ve been trying to keep this a pure clone of upstream, so I\u0027d prefer not to add it. Dealing with extensions that may or may not be available is pretty well understood and common practice when dealing with EGL/GLES.",
+      "parentUuid": "c20e797c_cf7150d6",
+      "revId": "07c408416110237b6c765ab71e55290579871b4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
