@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0275f106_4e9f0767",
+        "filename": "opengl/libs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-04T06:58:51Z",
+      "side": 1,
+      "message": "Colin, any ideas here?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 10
+      },
+      "revId": "6befe150366e23abaab4df1acea94bebfc6b5880",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
