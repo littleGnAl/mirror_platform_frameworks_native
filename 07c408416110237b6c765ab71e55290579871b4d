@@ -34,6 +34,24 @@
       "revId": "07c408416110237b6c765ab71e55290579871b4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22775548_0e930b61",
+        "filename": "opengl/include/EGL/eglext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-04T18:07:46Z",
+      "side": 1,
+      "message": "Works for me. That\u0027s less work anyway :)\n\nI\u0027ll have a handful of CLs for these libs up in a bit.",
+      "parentUuid": "0275f106_f4ede67b",
+      "revId": "07c408416110237b6c765ab71e55290579871b4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
