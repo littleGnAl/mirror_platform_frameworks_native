@@ -16,6 +16,24 @@
       "revId": "5799f61cce3518f4bfc4f06fe234ec4800ab1fb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df3014eb_b29f5801",
+        "filename": "vulkan/libvulkan/libvulkan.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-05T22:20:13Z",
+      "side": 1,
+      "message": "I\u0027ve been generating these based on the current definition of the library in the NDK: https://android.googlesource.com/platform/development/+/master/ndk/platforms/android-24/arch-arm/symbols/libvulkan.so.functions.txt\n\nThese functions are currently exposed in the NDK, so I guess we found a bug.",
+      "parentUuid": "bfffe021_8f67a54c",
+      "revId": "5799f61cce3518f4bfc4f06fe234ec4800ab1fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
