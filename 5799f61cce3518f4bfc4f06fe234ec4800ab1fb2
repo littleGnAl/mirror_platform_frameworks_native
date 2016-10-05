@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfffe021_8f67a54c",
+        "filename": "vulkan/libvulkan/libvulkan.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2016-10-05T20:36:09Z",
+      "side": 1,
+      "message": "How did this list get generated? None of the *Display* functions should be here, and the system libvulkan.so doesn\u0027t have them.",
+      "revId": "5799f61cce3518f4bfc4f06fe234ec4800ab1fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
