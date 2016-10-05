@@ -34,6 +34,24 @@
       "revId": "5799f61cce3518f4bfc4f06fe234ec4800ab1fb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df3014eb_52d95448",
+        "filename": "vulkan/libvulkan/libvulkan.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2016-10-05T22:42:30Z",
+      "side": 1,
+      "message": "I don\u0027t remember how I generated that list.\nI\u0027ll scrub those out.\nProbably should update the header to latest version as well.",
+      "parentUuid": "df3014eb_b29f5801",
+      "revId": "5799f61cce3518f4bfc4f06fe234ec4800ab1fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
