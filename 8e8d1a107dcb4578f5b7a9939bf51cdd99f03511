@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42ec493c_fedbb86f",
+        "filename": "libs/gui/BufferItem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2016-10-05T16:52:49Z",
+      "side": 1,
+      "message": "Can we initialize these?",
+      "revId": "8e8d1a107dcb4578f5b7a9939bf51cdd99f03511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
