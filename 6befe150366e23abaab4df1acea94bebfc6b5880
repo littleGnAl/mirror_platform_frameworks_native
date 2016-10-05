@@ -22,6 +22,30 @@
       "revId": "6befe150366e23abaab4df1acea94bebfc6b5880",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42ec493c_7ec16893",
+        "filename": "opengl/libs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-05T16:48:40Z",
+      "side": 1,
+      "message": "The linker does some automatic dlopen path munging, maybe this isn\u0027t necessary?  Look for g_is_asan in linker.cpp",
+      "parentUuid": "0275f106_4e9f0767",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 10
+      },
+      "revId": "6befe150366e23abaab4df1acea94bebfc6b5880",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
