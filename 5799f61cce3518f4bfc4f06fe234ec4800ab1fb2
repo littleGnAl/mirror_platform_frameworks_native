@@ -52,6 +52,24 @@
       "revId": "5799f61cce3518f4bfc4f06fe234ec4800ab1fb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df3014eb_b5098290",
+        "filename": "vulkan/libvulkan/libvulkan.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-05T22:49:32Z",
+      "side": 1,
+      "message": "jessehall: Should I just remove everything mentioning \"Display\" from this CL? Or should I just submit this and you can submit a follow up to fix it?",
+      "parentUuid": "df3014eb_52d95448",
+      "revId": "5799f61cce3518f4bfc4f06fe234ec4800ab1fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
