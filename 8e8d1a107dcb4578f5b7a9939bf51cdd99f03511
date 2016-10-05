@@ -16,6 +16,24 @@
       "revId": "8e8d1a107dcb4578f5b7a9939bf51cdd99f03511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42ec493c_7e904852",
+        "filename": "libs/gui/BufferItem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-05T17:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42ec493c_fedbb86f",
+      "revId": "8e8d1a107dcb4578f5b7a9939bf51cdd99f03511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
