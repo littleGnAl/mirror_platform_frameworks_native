@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f99cc37_47fba45c",
+        "filename": "vulkan/libvulkan/libvulkan.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2016-10-06T01:11:24Z",
+      "side": 1,
+      "message": "vkCreateSharedSwapchainsKHR should also be removed. Sorry I missed this one earlier.",
+      "revId": "d75519a4471d85d59e8646969ad6ab8bed51514e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
