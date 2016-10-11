@@ -57,11 +57,6 @@ ifneq ($(MAX_EGL_CACHE_SIZE),)
   LOCAL_CFLAGS += -DMAX_EGL_CACHE_SIZE=$(MAX_EGL_CACHE_SIZE)
 endif
 
-ifneq ($(filter address,$(SANITIZE_TARGET)),)
-  LOCAL_CFLAGS_32 += -DEGL_WRAPPER_DIR=\"/$(TARGET_COPY_OUT_DATA)/lib\"
-  LOCAL_CFLAGS_64 += -DEGL_WRAPPER_DIR=\"/$(TARGET_COPY_OUT_DATA)/lib64\"
-endif
-
 LOCAL_REQUIRED_MODULES := $(egl.cfg_config_module)
 egl.cfg_config_module :=
 
