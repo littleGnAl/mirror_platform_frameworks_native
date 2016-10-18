@@ -432,7 +432,7 @@ status_t IPCThreadState::getAndExecuteCommand()
         cmd = mIn.readInt32();
         IF_LOG_COMMANDS() {
             alog << "Processing top-level Command: "
-                 << getReturnString(cmd) << endl;
+                 << getReturnString(cmd & 0xff) << endl;
         }
 
         pthread_mutex_lock(&mProcess->mThreadCountLock);
@@ -746,7 +746,7 @@ status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
         
         IF_LOG_COMMANDS() {
             alog << "Processing waitForResponse Command: "
-                << getReturnString(cmd) << endl;
+                << getReturnString(cmd & 0xff) << endl;
         }
 
         switch (cmd) {
