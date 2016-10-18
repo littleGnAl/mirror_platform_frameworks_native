@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c6b9b00_cde8443c",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-18T20:32:56Z",
+      "side": 1,
+      "message": "can you change this to getReturnString(uint32_t cmd) instead, and do the \u0026 0xff in here?",
+      "revId": "a1c3a01113dbf59ae43ec4faf0397c59bc571f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
