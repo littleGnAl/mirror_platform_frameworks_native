@@ -64,7 +64,7 @@
 
 namespace android {
 
-static const char* getReturnString(size_t idx);
+static const char* getReturnString(uint32_t cmd);
 static const void* printReturnCommand(TextOutput& out, const void* _cmd);
 static const void* printCommand(TextOutput& out, const void* _cmd);
 
@@ -111,8 +111,9 @@ static const char *kCommandStrings[] = {
     "BC_DEAD_BINDER_DONE"
 };
 
-static const char* getReturnString(size_t idx)
+static const char* getReturnString(uint32_t cmd)
 {
+    size_t idx = cmd & 0xff;
     if (idx < sizeof(kReturnStrings) / sizeof(kReturnStrings[0]))
         return kReturnStrings[idx];
     else
