@@ -2873,6 +2873,8 @@ TouchInputMapper::TouchInputMapper(InputDevice* device) :
         mSource(0), mDeviceMode(DEVICE_MODE_DISABLED),
         mSurfaceWidth(-1), mSurfaceHeight(-1), mSurfaceLeft(0), mSurfaceTop(0),
         mSurfaceOrientation(DISPLAY_ORIENTATION_0) {
+        mXTranslate = 0.0;
+        mYTranslate = 0.0;
 }
 
 TouchInputMapper::~TouchInputMapper() {
@@ -3361,6 +3363,8 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
         }
     }
 
+    configureSurfaceForMosaic();
+
     // If moving between pointer modes, need to reset some state.
     bool deviceModeChanged = mDeviceMode != oldDeviceMode;
     if (deviceModeChanged) {
@@ -3386,8 +3390,8 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
         // Configure X and Y factors.
         mXScale = float(mSurfaceWidth) / rawWidth;
         mYScale = float(mSurfaceHeight) / rawHeight;
-        mXTranslate = -mSurfaceLeft;
-        mYTranslate = -mSurfaceTop;
+        mXTranslate = mSurfaceLeft;
+        mYTranslate = mSurfaceTop;
         mXPrecision = 1.0f / mXScale;
         mYPrecision = 1.0f / mYScale;
 
@@ -6495,6 +6499,25 @@ void TouchInputMapper::assignPointerIds(const RawState* last, RawState* current)
         ALOGD("assignPointerIds - assigned: cur=%d, id=%d",
                 currentPointerIndex, id);
 #endif
+    }
+}
+
+void TouchInputMapper::configureSurfaceForMosaic() {
+    bool enableMosaic;
+    String8 mosaicLeft, mosaicRight;
+    int32_t width = mSurfaceWidth/2;
+
+    // Share same idc file when two same Touch controller are applied, then check its phys
+    enableMosaic = getDevice()->getConfiguration().tryGetProperty(String8("touch.mosaic.left"), mosaicLeft);
+    enableMosaic |= getDevice()->getConfiguration().tryGetProperty(String8("touch.mosaic.right"), mosaicRight);
+    if (enableMosaic) {
+        if (!strcmp(mosaicLeft, getDeviceLocation().string()) || !strcmp(mosaicLeft, "true")) {
+            mSurfaceWidth = width;
+        } else if (!strcmp(mosaicRight, getDeviceLocation().string()) || !strcmp(mosaicRight, "true")) {
+            mSurfaceLeft += width;
+            mSurfaceWidth = width;
+        } else
+            ALOGE("Mosaic setting error on device %s\n", getDeviceLocation().string());
     }
 }
 
