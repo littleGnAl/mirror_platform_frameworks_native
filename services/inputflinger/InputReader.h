@@ -590,6 +590,7 @@ public:
     inline int32_t getControllerNumber() const { return mControllerNumber; }
     inline int32_t getGeneration() const { return mGeneration; }
     inline const String8& getName() const { return mIdentifier.name; }
+    inline const String8& getLocation() const { return mIdentifier.location; }
     inline const String8& getDescriptor() { return mIdentifier.descriptor; }
     inline uint32_t getClasses() const { return mClasses; }
     inline uint32_t getSources() const { return mSources; }
@@ -1013,6 +1014,7 @@ public:
     inline InputDevice* getDevice() { return mDevice; }
     inline int32_t getDeviceId() { return mDevice->getId(); }
     inline const String8 getDeviceName() { return mDevice->getName(); }
+    inline const String8 getDeviceLocation() { return mDevice->getLocation(); }
     inline InputReaderContext* getContext() { return mContext; }
     inline InputReaderPolicyInterface* getPolicy() { return mContext->getPolicy(); }
     inline InputListenerInterface* getListener() { return mContext->getListener(); }
@@ -1882,6 +1884,10 @@ private:
     const VirtualKey* findVirtualKeyHit(int32_t x, int32_t y);
 
     static void assignPointerIds(const RawState* last, RawState* current);
+    // Configure surface for Mosaic display mode, which means Android UX content is
+    // spanned across both 2 displays as if they were a single display. In this mode,
+    // Touch input from each display will only reflected on the content of its own display.
+    void configureSurfaceForMosaic();
 };
 
 
