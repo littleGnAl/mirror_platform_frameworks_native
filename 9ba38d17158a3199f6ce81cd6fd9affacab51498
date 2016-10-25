@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e147008e_1506c4f9",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-25T17:02:35Z",
+      "side": 1,
+      "message": "Can you fix this one too?  Use ALOGV",
+      "revId": "9ba38d17158a3199f6ce81cd6fd9affacab51498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e147008e_f50238e3",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-25T17:02:35Z",
+      "side": 1,
+      "message": "Can you fix this one too?  Use ALOGV",
+      "revId": "9ba38d17158a3199f6ce81cd6fd9affacab51498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
