@@ -1168,7 +1168,7 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
         break;
         
     default:
-        printf("*** BAD COMMAND %d received from Binder driver\n", cmd);
+        ALOGE("*** BAD COMMAND %d received from Binder driver\n", cmd);
         result = UNKNOWN_ERROR;
         break;
     }
