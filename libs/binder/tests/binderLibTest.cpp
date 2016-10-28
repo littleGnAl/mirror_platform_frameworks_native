@@ -23,14 +23,34 @@
 
 #include <gtest/gtest.h>
 
+#if USE_HW_BINDER
+#include <hidl/IServiceManager.h>
+#include <hwbinder/binder_kernel.h>
+#include <hwbinder/Binder.h>
+#include <hwbinder/IBinder.h>
+#include <hwbinder/IPCThreadState.h>
+#include <hwbinder/Parcel.h>
+#else
 #include <binder/Binder.h>
 #include <binder/IBinder.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
+#endif
 
 #define ARRAY_SIZE(array) (sizeof array / sizeof array[0])
 
 using namespace android;
+#if USE_HW_BINDER
+using android::hardware::IBinder;
+using android::hardware::BBinder;
+using android::hardware::IServiceManager;
+using android::hardware::defaultServiceManager;
+using android::hardware::Parcel;
+using android::hardware::IPCThreadState;
+using android::hardware::ProcessState;
+using android::hardware::hidl_version;
+using android::hardware::make_hidl_version;
+#endif
 
 static testing::Environment* binder_env;
 static char *binderservername;
@@ -127,7 +147,11 @@ class BinderLibTestEnv : public ::testing::Environment {
 
             sp<IServiceManager> sm = defaultServiceManager();
             //printf("%s: pid %d, get service\n", __func__, m_pid);
+#if USE_HW_BINDER
+            m_server = sm->getService(binderLibTestServiceName, make_hidl_version(1,0));
+#else
             m_server = sm->getService(binderLibTestServiceName);
+#endif
             ASSERT_TRUE(m_server != NULL);
             //printf("%s: pid %d, get service done\n", __func__, m_pid);
         }
@@ -291,7 +315,11 @@ class BinderLibTestCallBack : public BBinder, public BinderLibTestEvent
     private:
         virtual status_t onTransact(uint32_t code,
                                     const Parcel& data, Parcel* reply,
+#if USE_HW_BINDER
+                                    uint32_t flags = 0, TransactCallback callback = nullptr)
+#else
                                     uint32_t flags = 0)
+#endif
         {
             (void)reply;
             (void)flags;
@@ -687,7 +715,12 @@ class BinderLibTestService : public BBinder
         }
         virtual status_t onTransact(uint32_t code,
                                     const Parcel& data, Parcel* reply,
+#if USE_HW_BINDER
+                                    uint32_t flags = 0,
+                                    TransactCallback callback = nullptr) {
+#else
                                     uint32_t flags = 0) {
+#endif
             //printf("%s: code %d\n", __func__, code);
             (void)flags;
 
@@ -860,8 +893,11 @@ class BinderLibTestService : public BBinder
                 sp<IBinder> strong;
                 Parcel data2, reply2;
                 sp<IServiceManager> sm = defaultServiceManager();
+#if USE_HW_BINDER
+                sp<IBinder> server = sm->getService(binderLibTestServiceName, make_hidl_version(1,0));
+#else
                 sp<IBinder> server = sm->getService(binderLibTestServiceName);
-
+#endif
                 weak = data.readWeakBinder();
                 if (weak == NULL) {
                     return BAD_VALUE;
@@ -907,9 +943,17 @@ int run_server(int index, int readypipefd)
     {
         sp<BinderLibTestService> testService = new BinderLibTestService(index);
         if (index == 0) {
+#if USE_HW_BINDER
+            ret = sm->addService(binderLibTestServiceName, testService, make_hidl_version(1, 0));
+#else
             ret = sm->addService(binderLibTestServiceName, testService);
+#endif
         } else {
+#if USE_HW_BINDER
+            sp<IBinder> server = sm->getService(binderLibTestServiceName, make_hidl_version(1,0));
+#else
             sp<IBinder> server = sm->getService(binderLibTestServiceName);
+#endif
             Parcel data, reply;
             data.writeInt32(index);
             data.writeStrongBinder(testService);

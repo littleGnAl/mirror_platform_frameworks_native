@@ -35,6 +35,17 @@ cc_test {
 }
 
 cc_test {
+    name: "hwBinderLibTest",
+    srcs: ["binderLibTest.cpp"],
+    cflags: ["-DUSE_HW_BINDER"],
+    shared_libs: [
+        "libhidl",
+        "libhwbinder",
+        "libutils",
+    ],
+}
+
+cc_test {
     name: "binderThroughputTest",
     srcs: ["binderThroughputTest.cpp"],
     shared_libs: [
