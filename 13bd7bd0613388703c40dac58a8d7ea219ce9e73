@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "011ed449_a428224e",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-10-28T08:43:58Z",
+      "side": 1,
+      "message": "this parameter is not an offset. It stores a handle, which you need to pass in subsequent readEmbeddedBuffer() calls for buffers that are embedded in this buffer, to allow libhwbinder to do verification. (In this case, since you have no embedded buffers, you could also pass nullptr to readBuffer()).",
+      "range": {
+        "startLine": 720,
+        "startChar": 72,
+        "endLine": 720,
+        "endChar": 78
+      },
+      "revId": "13bd7bd0613388703c40dac58a8d7ea219ce9e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "011ed449_e4321abe",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-10-28T08:43:58Z",
+      "side": 1,
+      "message": "this is not needed.",
+      "range": {
+        "startLine": 721,
+        "startChar": 4,
+        "endLine": 721,
+        "endChar": 19
+      },
+      "revId": "13bd7bd0613388703c40dac58a8d7ea219ce9e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e11aa056_e69b00fc",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-10-28T08:43:58Z",
+      "side": 1,
+      "message": "nit: technically this buffer is the \"parent\" and so using parentHandle might make more sense.",
+      "range": {
+        "startLine": 738,
+        "startChar": 49,
+        "endLine": 738,
+        "endChar": 55
+      },
+      "revId": "13bd7bd0613388703c40dac58a8d7ea219ce9e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "011ed449_44220e6b",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-10-28T08:43:58Z",
+      "side": 1,
+      "message": "parentHandle",
+      "range": {
+        "startLine": 747,
+        "startChar": 72,
+        "endLine": 747,
+        "endChar": 78
+      },
+      "revId": "13bd7bd0613388703c40dac58a8d7ea219ce9e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "011ed449_24151200",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-10-28T08:43:58Z",
+      "side": 1,
+      "message": "instead of this, call:\n\nreply.readEmbeddedBuffer(\u0026handle /*for storing handle of this buffer */, parent_handle, 0 /* offset at which you expected fixup */);\n\nand verify that is successful. Note that that call is not necessary for getting the data correctly; it\u0027s just needed so that libhwbinder can verify that the kernel did fixup in places you expected it to.",
+      "range": {
+        "startLine": 748,
+        "startChar": 3,
+        "endLine": 748,
+        "endChar": 19
+      },
+      "revId": "13bd7bd0613388703c40dac58a8d7ea219ce9e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
