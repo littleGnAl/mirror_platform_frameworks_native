@@ -23,6 +23,12 @@
 
 #include <gtest/gtest.h>
 
+#include <hidl/IServiceManager.h>
+#include <hwbinder/binder_kernel.h>
+#include <hwbinder/Binder.h>
+#include <hwbinder/IBinder.h>
+#include <hwbinder/IPCThreadState.h>
+#include <hwbinder/Parcel.h>
 #include <binder/Binder.h>
 #include <binder/IBinder.h>
 #include <binder/IPCThreadState.h>
@@ -30,7 +36,30 @@
 
 #define ARRAY_SIZE(array) (sizeof array / sizeof array[0])
 
+#if USE_HW_BINDER
+using namespace android::hardware;
+
+using android::String16;
+using android::status_t;
+using android::sp;
+using android::wp;
+using android::BAD_VALUE;
+using android::DEAD_OBJECT;
+using android::INVALID_OPERATION;
+using android::NO_ERROR;
+using android::NO_INIT;
+using android::NOT_ENOUGH_DATA;
+using android::PERMISSION_DENIED;
+using android::TIMED_OUT;
+using android::UNKNOWN_ERROR;
+using android::UNKNOWN_TRANSACTION;
+
+#define HW_BINDER_HIDL_VERSION_ARG , make_hidl_version(1, 0)
+
+#else
 using namespace android;
+#define HW_BINDER_HIDL_VERSION_ARG
+#endif
 
 static testing::Environment* binder_env;
 static char *binderservername;
@@ -127,7 +156,7 @@ class BinderLibTestEnv : public ::testing::Environment {
 
             sp<IServiceManager> sm = defaultServiceManager();
             //printf("%s: pid %d, get service\n", __func__, m_pid);
-            m_server = sm->getService(binderLibTestServiceName);
+            m_server = sm->getService(binderLibTestServiceName HW_BINDER_HIDL_VERSION_ARG);
             ASSERT_TRUE(m_server != NULL);
             //printf("%s: pid %d, get service done\n", __func__, m_pid);
         }
@@ -291,7 +320,11 @@ class BinderLibTestCallBack : public BBinder, public BinderLibTestEvent
     private:
         virtual status_t onTransact(uint32_t code,
                                     const Parcel& data, Parcel* reply,
+#if USE_HW_BINDER
+                                    uint32_t flags = 0, TransactCallback callback = nullptr)
+#else
                                     uint32_t flags = 0)
+#endif
         {
             (void)reply;
             (void)flags;
@@ -324,6 +357,7 @@ TEST_F(BinderLibTest, NopTransaction) {
     EXPECT_EQ(NO_ERROR, ret);
 }
 
+#ifndef USE_HW_BINDER
 TEST_F(BinderLibTest, SetError) {
     int32_t testValue[] = { 0, -123, 123 };
     for (size_t i = 0; i < ARRAY_SIZE(testValue); i++) {
@@ -334,6 +368,7 @@ TEST_F(BinderLibTest, SetError) {
         EXPECT_EQ(testValue[i], ret);
     }
 }
+#endif
 
 TEST_F(BinderLibTest, GetId) {
     status_t ret;
@@ -687,7 +722,12 @@ class BinderLibTestService : public BBinder
         }
         virtual status_t onTransact(uint32_t code,
                                     const Parcel& data, Parcel* reply,
+#if USE_HW_BINDER
+                                    uint32_t flags = 0,
+                                    TransactCallback callback = nullptr) {
+#else
                                     uint32_t flags = 0) {
+#endif
             //printf("%s: code %d\n", __func__, code);
             (void)flags;
 
@@ -860,8 +900,8 @@ class BinderLibTestService : public BBinder
                 sp<IBinder> strong;
                 Parcel data2, reply2;
                 sp<IServiceManager> sm = defaultServiceManager();
-                sp<IBinder> server = sm->getService(binderLibTestServiceName);
-
+                sp<IBinder> server =
+                    sm->getService(binderLibTestServiceName HW_BINDER_HIDL_VERSION_ARG);
                 weak = data.readWeakBinder();
                 if (weak == NULL) {
                     return BAD_VALUE;
@@ -907,9 +947,9 @@ int run_server(int index, int readypipefd)
     {
         sp<BinderLibTestService> testService = new BinderLibTestService(index);
         if (index == 0) {
-            ret = sm->addService(binderLibTestServiceName, testService);
+            ret = sm->addService(binderLibTestServiceName, testService HW_BINDER_HIDL_VERSION_ARG);
         } else {
-            sp<IBinder> server = sm->getService(binderLibTestServiceName);
+            sp<IBinder> server = sm->getService(binderLibTestServiceName HW_BINDER_HIDL_VERSION_ARG);
             Parcel data, reply;
             data.writeInt32(index);
             data.writeStrongBinder(testService);

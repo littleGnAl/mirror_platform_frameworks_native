@@ -29,7 +29,20 @@ cc_test {
     name: "binderLibTest",
     srcs: ["binderLibTest.cpp"],
     shared_libs: [
+        "libhidl",
+        "libhwbinder",
         "libbinder",
+        "libutils",
+    ],
+}
+
+cc_test {
+    name: "hwBinderLibTest",
+    srcs: ["binderLibTest.cpp"],
+    cflags: ["-DUSE_HW_BINDER"],
+    shared_libs: [
+        "libhidl",
+        "libhwbinder",
         "libutils",
     ],
 }
