@@ -85,6 +85,9 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_EXIT_TRANSACTION,
     BINDER_LIB_TEST_DELAYED_EXIT_TRANSACTION,
     BINDER_LIB_TEST_GET_PTR_SIZE_TRANSACTION,
+#if USE_HW_BINDER
+    BINDER_LIB_TEST_SG_TRANSACTION,
+#endif
 };
 
 pid_t start_server_process(int arg2)
@@ -705,6 +708,54 @@ TEST_F(BinderLibTest, PromoteRemote) {
     EXPECT_GE(ret, 0);
 }
 
+#if USE_HW_BINDER
+TEST_F(BinderLibTest, ScatterGather) {
+    int ret;
+    Parcel data, reply;
+    binder_size_t sz = 64;
+    data.writeBool(false /* not embedded */);
+    data.writeUint64(sz);
+    uint8_t *buf = new uint8_t[sz];
+    for (binder_size_t i = 0; i < sz; i++) {
+        buf[i] = i;
+    }
+    ret = data.writeBuffer(buf, sz, nullptr);
+    ASSERT_EQ(NO_ERROR, ret);
+    ret = m_server->transact(BINDER_LIB_TEST_SG_TRANSACTION, data, &reply);
+    ASSERT_EQ(NO_ERROR, ret);
+    const uint8_t *buf2 = static_cast<const uint8_t*>(reply.readBuffer(nullptr));
+    ASSERT_EQ(0, memcmp(buf, buf2, sz));
+    free(buf);
+}
+
+TEST_F(BinderLibTest, EmbeddedScatterGather) {
+    int ret;
+    Parcel data, reply;
+    binder_size_t sz = 64;
+    data.writeBool(true /* embedded */);
+    data.writeUint64(sz);
+    uint8_t *buf = new uint8_t[sz];
+    for (binder_size_t i = 0; i < sz; i++) {
+        buf[i] = i;
+    }
+    binder_uintptr_t *ptr = reinterpret_cast<binder_uintptr_t*>(buf);
+    size_t parentHandle, handle;
+    ret = data.writeBuffer(ptr, sizeof(ptr[0]), &parentHandle);
+    ASSERT_EQ(NO_ERROR, ret);
+
+    ret = data.writeEmbeddedBuffer(buf, sz, &handle, parentHandle, 0);
+    ASSERT_EQ(NO_ERROR, ret);
+
+    ret = m_server->transact(BINDER_LIB_TEST_SG_TRANSACTION, data, &reply);
+    ASSERT_EQ(NO_ERROR, ret);
+    const uint8_t *buf2 = static_cast<const uint8_t*>
+        (reply.readEmbeddedBuffer(&handle /* store handle of this buffer */, parentHandle,
+                                  0 /* offset at which fixup is expected */));
+    ASSERT_EQ(0, memcmp(buf, buf2, sz));
+    free(buf);
+}
+#endif
+
 class BinderLibTestService : public BBinder
 {
     public:
@@ -917,6 +968,29 @@ class BinderLibTestService : public BBinder
                 }
                 return NO_ERROR;
             }
+#if USE_HW_BINDER
+            case BINDER_LIB_TEST_SG_TRANSACTION: {
+                size_t handle;
+                bool embedded = data.readBool();
+                binder_size_t sz = data.readUint64();
+                const uint8_t *buf;
+                if (!embedded) {
+                    buf = reinterpret_cast<const uint8_t*>(data.readBuffer(nullptr));
+                } else {
+                    const uint8_t *ptrBuf = reinterpret_cast<const uint8_t*>(data.readBuffer(&handle));
+                    buf = *reinterpret_cast<uint8_t* const *>(ptrBuf);
+                    if (buf != data.readEmbeddedBuffer(nullptr, handle, 0)) {
+                        return BAD_VALUE;
+                    }
+                }
+                if (buf == nullptr)
+                    return BAD_VALUE;
+                uint8_t *buf2 = new uint8_t[sz];
+                memcpy(buf2, buf, sz);
+                reply->writeBuffer(buf2, sz, nullptr);
+                return NO_ERROR;
+            }
+#endif
             case BINDER_LIB_TEST_DELAYED_EXIT_TRANSACTION:
                 alarm(10);
                 return NO_ERROR;
