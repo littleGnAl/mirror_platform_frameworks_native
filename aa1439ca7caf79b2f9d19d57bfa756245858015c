@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "a6eefe70_c087b3f4",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2016-10-28T03:04:45Z",
+      "side": 1,
+      "message": "Can we add this to the same test app instead so a single run can test both libs.",
+      "revId": "aa1439ca7caf79b2f9d19d57bfa756245858015c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21c918eb_e77af19c",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2016-10-28T03:04:45Z",
+      "side": 1,
+      "message": "Could you define a HW_BINDER_HIDL_VERSION_ARG with the , for hw binder and empty for libbinder and avoid #if#else on every service manager call?",
+      "revId": "aa1439ca7caf79b2f9d19d57bfa756245858015c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6eefe70_adcca821",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
