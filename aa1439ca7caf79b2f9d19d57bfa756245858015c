@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6eefe70_adcca821",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2016-10-28T01:13:56Z",
+      "side": 1,
+      "message": "These tests fail, the error that is returned is 0 for all 3 transactions. Is this a bug or does the test need to be written differently for hwbinder?",
+      "range": {
+        "startLine": 356,
+        "startChar": 31,
+        "endLine": 356,
+        "endChar": 40
+      },
+      "revId": "aa1439ca7caf79b2f9d19d57bfa756245858015c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
