@@ -63,6 +63,11 @@ cc_library_shared {
         "libutils",
         "liblog",
     ],
+
+    export_include_dirs: ["include"],
+
+    export_shared_lib_headers: ["libhardware"],
+
 }
 
 subdirs = ["tests"]

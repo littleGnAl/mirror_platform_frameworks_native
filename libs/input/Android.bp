@@ -37,6 +37,8 @@ cc_library {
         "libcutils",
     ],
 
+    export_include_dirs: ["include"],
+
     target: {
         android: {
             srcs: [
