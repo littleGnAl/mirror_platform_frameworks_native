@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_2b432b5f",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-11-03T20:18:16Z",
+      "side": 1,
+      "message": "Yeah, but this affects compilation times. It also doesn\u0027t seem very clean to not include things we won\u0027t use.",
+      "parentUuid": "86b57a46_6104397c",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "aa1439ca7caf79b2f9d19d57bfa756245858015c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21c918eb_e77af19c",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
@@ -113,6 +137,24 @@
       "side": 1,
       "message": "I added smoreland@, because he is currently working on the IServiceManager interface in hwbinder, which might affect these tests.",
       "parentUuid": "21c918eb_e77af19c",
+      "revId": "aa1439ca7caf79b2f9d19d57bfa756245858015c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86b57a46_6bca53aa",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-11-03T20:18:16Z",
+      "side": 1,
+      "message": "Yep, these have already been changed, it is now \u0027get\u0027 instead of \u0027getService\u0027 (and the types of arguments have changed). I\u0027m about to change it again soon as well for b/31861268.\n\nCan you look at system/libhwbinder/tests/benchmarks/Benchmark_throughput.cpp for a reference?",
+      "parentUuid": "011ed449_648aaa35",
       "revId": "aa1439ca7caf79b2f9d19d57bfa756245858015c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
