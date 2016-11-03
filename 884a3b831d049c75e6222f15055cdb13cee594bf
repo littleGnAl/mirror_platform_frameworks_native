@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86b57a46_65e9e2cf",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2016-11-03T18:12:45Z",
+      "side": 1,
+      "message": "Actually I think this is wrong as well, I\u0027ll fix it shortly.",
+      "range": {
+        "startLine": 980,
+        "startChar": 20,
+        "endLine": 981,
+        "endChar": 81
+      },
+      "revId": "884a3b831d049c75e6222f15055cdb13cee594bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
