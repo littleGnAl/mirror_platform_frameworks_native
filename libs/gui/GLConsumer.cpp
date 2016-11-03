@@ -1217,26 +1217,35 @@ EGLImageKHR GLConsumer::EglImage::createImage(EGLDisplay dpy,
     const bool createProtectedImage =
             (graphicBuffer->getUsage() & GRALLOC_USAGE_PROTECTED) &&
             hasEglProtectedContent();
+    int i = 10;
     EGLint attrs[] = {
         EGL_IMAGE_PRESERVED_KHR,        EGL_TRUE,
         EGL_IMAGE_CROP_LEFT_ANDROID,    crop.left,
         EGL_IMAGE_CROP_TOP_ANDROID,     crop.top,
         EGL_IMAGE_CROP_RIGHT_ANDROID,   crop.right,
         EGL_IMAGE_CROP_BOTTOM_ANDROID,  crop.bottom,
-        createProtectedImage ? EGL_PROTECTED_CONTENT_EXT : EGL_NONE,
-        createProtectedImage ? EGL_TRUE : EGL_NONE,
+        EGL_NONE, EGL_NONE, // place holder for protected image
         EGL_NONE,
     };
     if (!crop.isValid()) {
         // No crop rect to set, so terminate the attrib array before the crop.
-        attrs[2] = EGL_NONE;
+        i = 2;
     } else if (!isEglImageCroppable(crop)) {
         // The crop rect is not at the origin, so we can't set the crop on the
         // EGLImage because that's not allowed by the EGL_ANDROID_image_crop
         // extension.  In the future we can add a layered extension that
         // removes this restriction if there is hardware that can support it.
-        attrs[2] = EGL_NONE;
+        i = 2;
     }
+
+    if (createProtectedImage) {
+        attrs[i]   = EGL_PROTECTED_CONTENT_EXT;
+        attrs[i+1] = EGL_TRUE;
+        attrs[i+2] = EGL_NONE;
+    } else {
+        attrs[i] = EGL_NONE;
+    }
+
     eglInitialize(dpy, 0, 0);
     EGLImageKHR image = eglCreateImageKHR(dpy, EGL_NO_CONTEXT,
             EGL_NATIVE_BUFFER_ANDROID, cbuf, attrs);
