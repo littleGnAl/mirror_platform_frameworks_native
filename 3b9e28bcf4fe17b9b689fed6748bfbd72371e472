@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86b57a46_eb2123bc",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-11-03T20:18:16Z",
+      "side": 1,
+      "message": "-\u003e ServiceManagement.h",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "3b9e28bcf4fe17b9b689fed6748bfbd72371e472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
