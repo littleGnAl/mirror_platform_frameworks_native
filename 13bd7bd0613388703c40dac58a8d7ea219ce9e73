@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_057c5661",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2016-11-03T18:02:41Z",
+      "side": 1,
+      "message": "OK, this makes much more sense - should be fixed now",
+      "parentUuid": "011ed449_a428224e",
+      "range": {
+        "startLine": 720,
+        "startChar": 72,
+        "endLine": 720,
+        "endChar": 78
+      },
+      "revId": "13bd7bd0613388703c40dac58a8d7ea219ce9e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "011ed449_e4321abe",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
