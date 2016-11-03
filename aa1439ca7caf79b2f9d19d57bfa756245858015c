@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_21ea3188",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2016-11-03T00:35:33Z",
+      "side": 1,
+      "message": "Yes, but I\u0027m going to make this a separate CL since it requires significant additional changes",
+      "parentUuid": "a6eefe70_c087b3f4",
+      "revId": "aa1439ca7caf79b2f9d19d57bfa756245858015c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "011ed449_2490b267",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-10-28T08:45:01Z",
       "side": 1,
       "message": "these namespaces shouldn\u0027t collide, so this one should be safe to remove at least.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "aa1439ca7caf79b2f9d19d57bfa756245858015c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86b57a46_6104397c",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2016-11-03T00:35:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "011ed449_2490b267",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -112,6 +154,30 @@
       "side": 1,
       "message": "This is actually a userspace difference; binder userspace allows using the return value both for transport errors, as well as for service errors like this one (that have nothing to do with the binder transport itself).\n\nhwbinder supports multiple return values for methods (through callbacks), and therefore the return value of a transact() call always only reflects transport errors. In this case the transaction was successful, so you\u0027ll get 0.\n\nit probably makes most sense to not execute this particular test for hwbinder.",
       "parentUuid": "a6eefe70_adcca821",
+      "range": {
+        "startLine": 356,
+        "startChar": 31,
+        "endLine": 356,
+        "endChar": 40
+      },
+      "revId": "aa1439ca7caf79b2f9d19d57bfa756245858015c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86b57a46_4101356a",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2016-11-03T00:35:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "011ed449_448dae4a",
       "range": {
         "startLine": 356,
         "startChar": 31,
