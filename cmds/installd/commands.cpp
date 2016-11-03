@@ -79,6 +79,7 @@ static constexpr int FLAG_CLEAR_CODE_CACHE_ONLY = 1 << 9;
 static constexpr int DEXOPT_DEX2OAT_NEEDED       = 1;
 static constexpr int DEXOPT_PATCHOAT_NEEDED      = 2;
 static constexpr int DEXOPT_SELF_PATCHOAT_NEEDED = 3;
+static constexpr int DEXOPT_UPDATE_VDEX_NEEDED   = 4;
 
 #define MIN_RESTRICTED_HOME_SDK_VERSION 24 // > M
 
@@ -1603,6 +1604,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     char in_odex_path[PKG_PATH_MAX];
     switch (dexopt_needed) {
         case DEXOPT_DEX2OAT_NEEDED:
+        case DEXOPT_UPDATE_VDEX_NEEDED:
             input_file = apk_path;
             break;
 
@@ -1668,16 +1670,20 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     if (out_vdex_path_str.empty()) {
         return -1;
     }
+
+    bool recreate_vdex = (dexopt_needed != DEXOPT_UPDATE_VDEX_NEEDED);
     Dex2oatFileWrapper<std::function<void ()>> out_vdex_fd(
-            open_output_file(out_vdex_path_str.c_str(), /*recreate*/true, /*permissions*/0644),
+            open_output_file(out_vdex_path_str.c_str(), recreate_vdex, /*permissions*/0644),
             [out_vdex_path_str]() { unlink(out_vdex_path_str.c_str()); });
     if (out_vdex_fd.get() < 0) {
         ALOGE("installd cannot open '%s' for output during dexopt\n", out_vdex_path_str.c_str());
         return -1;
     }
-    if (!set_permissions_and_ownership(out_vdex_fd.get(), is_public,
-                uid, out_vdex_path_str.c_str())) {
-        return -1;
+    if (recreate_vdex) {
+        if (!set_permissions_and_ownership(out_vdex_fd.get(), is_public,
+                    uid, out_vdex_path_str.c_str())) {
+            return -1;
+        }
     }
 
     // Create a swap file if necessary.
@@ -1766,7 +1772,8 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
                          out_vdex_path_str.c_str(),
                          pkgname,
                          instruction_set);
-        } else if (dexopt_needed == DEXOPT_DEX2OAT_NEEDED) {
+        } else if (dexopt_needed == DEXOPT_DEX2OAT_NEEDED
+                   || dexopt_needed == DEXOPT_UPDATE_VDEX_NEEDED) {
             // Pass dex2oat the relative path to the input file.
             const char *input_file_name = get_location_from_path(input_file);
             run_dex2oat(input_fd.get(),
