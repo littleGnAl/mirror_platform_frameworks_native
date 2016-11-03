@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "2625ae91_a8eab396",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-11-03T20:29:10Z",
+      "side": 1,
+      "message": "This was in light of Arve\u0027s comment, where we get rid of the USE_HW_BINDER altogether and test both in the same binary.",
+      "parentUuid": "86b57a46_2b432b5f",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "aa1439ca7caf79b2f9d19d57bfa756245858015c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21c918eb_e77af19c",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
