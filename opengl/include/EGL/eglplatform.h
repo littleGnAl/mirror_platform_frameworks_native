@@ -121,4 +121,10 @@ typedef EGLNativeWindowType  NativeWindowType;
  */
 typedef khronos_int32_t EGLint;
 
+#if defined(__cplusplus)
+#define EGL_CAST(_k,_t,_v) (_k<_t>(_v))
+#else
+#define EGL_CAST(_k,_t,_v) ((_t) (_v))
+#endif
+
 #endif /* __eglplatform_h */
