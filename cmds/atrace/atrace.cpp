@@ -96,6 +96,7 @@ static const TracingCategory k_categories[] = {
     { "video",      "Video",            ATRACE_TAG_VIDEO, { } },
     { "camera",     "Camera",           ATRACE_TAG_CAMERA, { } },
     { "hal",        "Hardware Modules", ATRACE_TAG_HAL, { } },
+    { "hidl",       "HIDL Interfaces",  ATRACE_TAG_HIDL, { } },
     { "app",        "Application",      ATRACE_TAG_APP, { } },
     { "res",        "Resource Loading", ATRACE_TAG_RESOURCES, { } },
     { "dalvik",     "Dalvik VM",        ATRACE_TAG_DALVIK, { } },
