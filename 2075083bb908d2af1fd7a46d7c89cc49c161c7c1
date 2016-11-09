@@ -16,6 +16,29 @@
       "revId": "2075083bb908d2af1fd7a46d7c89cc49c161c7c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bb823f7_a1e564c7",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000866
+      },
+      "writtenOn": "2016-11-09T16:43:50Z",
+      "side": 1,
+      "message": "Avoid mentioning HIDL--it\u0027s just an IDL.  Recycle the \"hal\" tag, since this is what we want to monitor.",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 37
+      },
+      "revId": "2075083bb908d2af1fd7a46d7c89cc49c161c7c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
