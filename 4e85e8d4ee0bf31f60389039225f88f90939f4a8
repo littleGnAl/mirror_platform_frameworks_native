@@ -22,6 +22,30 @@
       "revId": "4e85e8d4ee0bf31f60389039225f88f90939f4a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bba0f39_2f59894a",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1697,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-10T17:52:08Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve added a comment line 1679.",
+      "parentUuid": "6bba0f39_af445969",
+      "range": {
+        "startLine": 1686,
+        "startChar": 0,
+        "endLine": 1697,
+        "endChar": 9
+      },
+      "revId": "4e85e8d4ee0bf31f60389039225f88f90939f4a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
