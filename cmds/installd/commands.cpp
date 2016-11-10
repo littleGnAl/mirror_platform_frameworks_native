@@ -722,7 +722,7 @@ static void run_patchoat(int input_oat_fd, int input_vdex_fd, int out_oat_fd, in
     ALOGE("execv(%s) failed: %s\n", PATCHOAT_BIN, strerror(errno));
 }
 
-static void run_dex2oat(int zip_fd, int oat_fd, int vdex_fd, int image_fd,
+static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vdex_fd, int image_fd,
         const char* input_file_name, const char* output_file_name, int swap_fd,
         const char *instruction_set, const char* compiler_filter, bool vm_safe_mode,
         bool debuggable, bool post_bootcomplete, int profile_fd, const char* shared_libraries) {
@@ -806,7 +806,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, int vdex_fd, int image_fd,
 
     char zip_fd_arg[strlen("--zip-fd=") + MAX_INT_LEN];
     char zip_location_arg[strlen("--zip-location=") + PKG_PATH_MAX];
-    char vdex_fd_arg[strlen("--vdex-fd=") + MAX_INT_LEN];
+    char input_vdex_fd_arg[strlen("--input-vdex-fd=") + MAX_INT_LEN];
+    char output_vdex_fd_arg[strlen("--output-vdex-fd=") + MAX_INT_LEN];
     char oat_fd_arg[strlen("--oat-fd=") + MAX_INT_LEN];
     char oat_location_arg[strlen("--oat-location=") + PKG_PATH_MAX];
     char instruction_set_arg[strlen("--instruction-set=") + MAX_INSTRUCTION_SET_LEN];
@@ -822,7 +823,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, int vdex_fd, int image_fd,
 
     sprintf(zip_fd_arg, "--zip-fd=%d", zip_fd);
     sprintf(zip_location_arg, "--zip-location=%s", input_file_name);
-    sprintf(vdex_fd_arg, "--vdex-fd=%d", vdex_fd);
+    sprintf(input_vdex_fd_arg, "--input-vdex-fd=%d", input_vdex_fd);
+    sprintf(output_vdex_fd_arg, "--output-vdex-fd=%d", output_vdex_fd);
     sprintf(oat_fd_arg, "--oat-fd=%d", oat_fd);
     sprintf(oat_location_arg, "--oat-location=%s", output_file_name);
     sprintf(instruction_set_arg, "--instruction-set=%s", instruction_set);
@@ -885,7 +887,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, int vdex_fd, int image_fd,
 
     ALOGV("Running %s in=%s out=%s\n", DEX2OAT_BIN, input_file_name, output_file_name);
 
-    const char* argv[8  // program name, mandatory arguments and the final NULL
+    const char* argv[9  // program name, mandatory arguments and the final NULL
                      + (have_dex2oat_isa_variant ? 1 : 0)
                      + (have_dex2oat_isa_features ? 1 : 0)
                      + (have_dex2oat_Xms_flag ? 2 : 0)
@@ -906,7 +908,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, int vdex_fd, int image_fd,
     argv[i++] = DEX2OAT_BIN;
     argv[i++] = zip_fd_arg;
     argv[i++] = zip_location_arg;
-    argv[i++] = vdex_fd_arg;
+    argv[i++] = input_vdex_fd_arg;
+    argv[i++] = output_vdex_fd_arg;
     argv[i++] = oat_fd_arg;
     argv[i++] = oat_location_arg;
     argv[i++] = instruction_set_arg;
@@ -1634,22 +1637,6 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
         return -1;
     }
 
-    // If invoking patchoat, open the VDEX associated with the OAT too.
-    std::string in_vdex_path_str;
-    base::unique_fd input_vdex_fd;
-    if (dexopt_needed == DEXOPT_PATCHOAT_NEEDED
-        || dexopt_needed == DEXOPT_SELF_PATCHOAT_NEEDED) {
-        in_vdex_path_str = create_vdex_filename(input_file);
-        if (in_vdex_path_str.empty()) {
-            return -1;
-        }
-        input_vdex_fd.reset(open(in_vdex_path_str.c_str(), O_RDONLY, 0));
-        if (input_vdex_fd.get() < 0) {
-            ALOGE("installd cannot open '%s' for input during dexopt\n", in_vdex_path_str.c_str());
-            return -1;
-        }
-    }
-
     // Create the output OAT file.
     const std::string out_oat_path_str(out_oat_path);
     Dex2oatFileWrapper<std::function<void ()>> out_oat_fd(
@@ -1661,6 +1648,39 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     }
     if (!set_permissions_and_ownership(out_oat_fd.get(), is_public, uid, out_oat_path)) {
         return -1;
+    }
+
+    // Open the existing VDEX. We do this before creating the new output VDEX, which will
+    // unlink the old one.
+    base::unique_fd in_vdex_fd;
+    std::string in_vdex_path_str;
+    if (dexopt_needed == DEXOPT_PATCHOAT_NEEDED
+        || dexopt_needed == DEXOPT_SELF_PATCHOAT_NEEDED) {
+        // `input_file` is the OAT file to be relocated.
+        in_vdex_path_str = create_vdex_filename(input_file);
+        if (in_vdex_path_str.empty()) {
+            ALOGE("installd cannot compute input vdex location for '%s'\n", input_file);
+            return -1;
+        }
+        in_vdex_fd.reset(open(in_vdex_path_str.c_str(), O_RDONLY, 0));
+        if (in_vdex_fd.get() < 0) {
+            ALOGE("installd cannot open '%s' for input during dexopt\n", in_vdex_path_str.c_str());
+            return -1;
+        }
+    } else {
+        // Open the possibly existing vdex in the `out_oat_path`.
+        in_vdex_path_str = create_vdex_filename(out_oat_path);
+        CHECK(!in_vdex_path_str.empty());
+        in_vdex_fd.reset(open(in_vdex_path_str.c_str(), O_RDONLY, 0));
+        if (in_vdex_fd.get() < 0 && oat_dir == nullptr) {
+            // If there is no vdex file for a /system apk, check if we have a vdex
+            // file next to the odex file.
+            if (calculate_odex_file_path(in_odex_path, apk_path, instruction_set)) {
+              in_vdex_path_str = create_vdex_filename(std::string(in_odex_path));
+              CHECK(!in_vdex_path_str.empty());
+              in_vdex_fd.reset(open(in_vdex_path_str.c_str(), O_RDONLY, 0));
+            }
+        }
     }
 
     // Infer the name of the output VDEX and create it.
@@ -1757,7 +1777,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
         if (dexopt_needed == DEXOPT_PATCHOAT_NEEDED
             || dexopt_needed == DEXOPT_SELF_PATCHOAT_NEEDED) {
             run_patchoat(input_fd.get(),
-                         input_vdex_fd.get(),
+                         in_vdex_fd.get(),
                          out_oat_fd.get(),
                          out_vdex_fd.get(),
                          input_file,
@@ -1771,6 +1791,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
             const char *input_file_name = get_location_from_path(input_file);
             run_dex2oat(input_fd.get(),
                         out_oat_fd.get(),
+                        in_vdex_fd.get(),
                         out_vdex_fd.get(),
                         image_fd.get(),
                         input_file_name,
