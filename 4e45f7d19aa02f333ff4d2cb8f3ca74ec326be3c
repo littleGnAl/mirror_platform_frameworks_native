@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abe6c757_e143265d",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-10T16:04:07Z",
+      "side": 1,
+      "message": "got a better name for this:\n\nOutputIsDalvikCache(...) or along this line.\n\nWhat null encodes here is that we should compile to dalvik cache. You can add a TODO then: that we should fix it at PM-installd level by passing a flag.\n\nIt will make the code more readable as well.",
+      "range": {
+        "startLine": 1438,
+        "startChar": 12,
+        "endLine": 1438,
+        "endChar": 25
+      },
+      "revId": "4e45f7d19aa02f333ff4d2cb8f3ca74ec326be3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbe13b42_e22a0695",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1442,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-10T16:04:07Z",
+      "side": 1,
+      "message": "i\u0027d remove this as the rules are a bit more complicated. If you want to keep it mention all the case:\n\n- non-updated system apps\n- forward-locked apps\n- apps installed in ASEC containers",
+      "range": {
+        "startLine": 1442,
+        "startChar": 29,
+        "endLine": 1442,
+        "endChar": 35
+      },
+      "revId": "4e45f7d19aa02f333ff4d2cb8f3ca74ec326be3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b56f3b8_246952d5",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1662,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-10T16:04:07Z",
+      "side": 1,
+      "message": "where does this happen? you only open RDONLY.",
+      "range": {
+        "startLine": 1662,
+        "startChar": 7,
+        "endLine": 1662,
+        "endChar": 13
+      },
+      "revId": "4e45f7d19aa02f333ff4d2cb8f3ca74ec326be3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bf2d718_dd4ecbac",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-10T16:04:07Z",
+      "side": 1,
+      "message": "add another comment saying you expect the vdex to be there. It will be easier to follow the tests below.",
+      "range": {
+        "startLine": 1667,
+        "startChar": 8,
+        "endLine": 1667,
+        "endChar": 56
+      },
+      "revId": "4e45f7d19aa02f333ff4d2cb8f3ca74ec326be3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b56f3b8_645f4a26",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1681,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-10T16:04:07Z",
+      "side": 1,
+      "message": "Be consistent and lo an error instead of crashing.\nWe should handle errors gracefully at this level.",
+      "range": {
+        "startLine": 1681,
+        "startChar": 8,
+        "endLine": 1681,
+        "endChar": 41
+      },
+      "revId": "4e45f7d19aa02f333ff4d2cb8f3ca74ec326be3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbe13b42_222d0eab",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1683,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-10T16:04:07Z",
+      "side": 1,
+      "message": "you should test for ENOENT here to match the comment.",
+      "range": {
+        "startLine": 1683,
+        "startChar": 12,
+        "endLine": 1683,
+        "endChar": 22
+      },
+      "revId": "4e45f7d19aa02f333ff4d2cb8f3ca74ec326be3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf54bfd_fe98e101",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-10T16:04:07Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 1688,
+        "startChar": 14,
+        "endLine": 1688,
+        "endChar": 19
+      },
+      "revId": "4e45f7d19aa02f333ff4d2cb8f3ca74ec326be3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
