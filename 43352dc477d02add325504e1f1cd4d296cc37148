@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb527fc5_83903e9a",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1675,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-11T10:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb527fc5_036c4ee4",
+      "range": {
+        "startLine": 1675,
+        "startChar": 12,
+        "endLine": 1675,
+        "endChar": 99
+      },
+      "revId": "43352dc477d02add325504e1f1cd4d296cc37148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb527fc5_23694ad5",
         "filename": "cmds/installd/commands.cpp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-11T09:29:05Z",
       "side": 1,
       "message": "but what about other failure cases ? do you want to return -1 there ? (i.e, errno !\u003d ENOENT ?",
+      "range": {
+        "startLine": 1687,
+        "startChar": 9,
+        "endLine": 1699,
+        "endChar": 5
+      },
+      "revId": "43352dc477d02add325504e1f1cd4d296cc37148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb527fc5_a3953a89",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-11T10:04:48Z",
+      "side": 1,
+      "message": "Yes, this is best effort. If for any reason we fail opening, we are just going to generate a new one.",
+      "parentUuid": "eb527fc5_23694ad5",
       "range": {
         "startLine": 1687,
         "startChar": 9,
