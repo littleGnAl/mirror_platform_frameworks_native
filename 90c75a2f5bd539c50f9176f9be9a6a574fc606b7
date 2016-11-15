@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f04a7097_bc8896b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1087673
+      },
+      "writtenOn": "2016-11-15T19:29:54Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a case of what ARM vendors support, but BGRA8888 is the default format for DRM framebuffer emulation when 32-bpp is selected. So this patch is necessary to support DRM based framebuffer drivers.",
+      "revId": "90c75a2f5bd539c50f9176f9be9a6a574fc606b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
