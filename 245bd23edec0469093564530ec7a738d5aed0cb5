@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b028f8c6_ea7d2788",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-11-16T15:13:13Z",
+      "side": 1,
+      "message": "it would be nice to have sm-\u003eget(fqInstanceName) also for clients using sm-\u003elist() - will file a bug.",
+      "range": {
+        "startLine": 531,
+        "startChar": 16,
+        "endLine": 531,
+        "endChar": 20
+      },
+      "revId": "245bd23edec0469093564530ec7a738d5aed0cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
