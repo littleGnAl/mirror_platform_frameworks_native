@@ -70,6 +70,30 @@
       "revId": "245bd23edec0469093564530ec7a738d5aed0cb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f04a7097_a4150d6a",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1000866
+      },
+      "writtenOn": "2016-11-16T23:30:16Z",
+      "side": 1,
+      "message": "I was going to suggest that too.  Ideally, you need a hidl_map\u003cK,V\u003e that list() could return.  K would the the FQName for a HIDL package, and V a hidl_vec\u003chidl_string\u003e containing all of the instance names.\n\nCould be a follow-up CL.",
+      "parentUuid": "b028f8c6_6a5db706",
+      "range": {
+        "startLine": 531,
+        "startChar": 16,
+        "endLine": 531,
+        "endChar": 20
+      },
+      "revId": "245bd23edec0469093564530ec7a738d5aed0cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
