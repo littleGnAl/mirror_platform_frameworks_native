@@ -80,46 +80,46 @@ namespace android {
 
 #elif defined(__i386__)
 
-    #define API_ENTRY(_api) __attribute__((noinline,optimize("omit-frame-pointer"))) _api
+    #define API_ENTRY(_api) __attribute__((naked,noinline)) _api
 
     #define CALL_GL_EXTENSION_API(_api)                         \
-         register void** fn;                                    \
          __asm__ volatile(                                      \
-            "mov %%gs:0, %[fn]\n"                               \
-            "mov %P[tls](%[fn]), %[fn]\n"                       \
-            "test %[fn], %[fn]\n"                               \
-            "cmovne %P[api](%[fn]), %[fn]\n"                    \
-            "test %[fn], %[fn]\n"                               \
+            "mov %%gs:0, %%eax\n"                               \
+            "mov %P[tls](%%eax), %%eax\n"                       \
+            "test %%eax, %%eax\n"                               \
+            "cmovne %P[api](%%eax), %%eax\n"                    \
+            "test %%eax, %%eax\n"                               \
             "je 1f\n"                                           \
-            "jmp *%[fn]\n"                                      \
+            "jmp *%%eax\n"                                      \
             "1:\n"                                              \
-            : [fn] "=r" (fn)                                    \
+            :                                                   \
             : [tls] "i" (TLS_SLOT_OPENGL_API*sizeof(void*)),    \
               [api] "i" (__builtin_offsetof(gl_hooks_t,         \
                                       ext.extensions[_api]))    \
-            : "cc"                                              \
+            : "cc", "%eax"                                      \
             );
 
 #elif defined(__x86_64__)
 
-    #define API_ENTRY(_api) __attribute__((noinline,optimize("omit-frame-pointer"))) _api
+    #define API_ENTRY(_api) __attribute__((naked,noinline)) _api
 
     #define CALL_GL_EXTENSION_API(_api)                         \
-         register void** fn;                                    \
          __asm__ volatile(                                      \
-            "mov %%fs:0, %[fn]\n"                               \
-            "mov %P[tls](%[fn]), %[fn]\n"                       \
-            "test %[fn], %[fn]\n"                               \
-            "cmovne %P[api](%[fn]), %[fn]\n"                    \
-            "test %[fn], %[fn]\n"                               \
+            "mov %%fs:0, %%rax\n"                               \
+            "mov %P[tls](%%rax), %%rax\n"                       \
+            "test %%rax, %%rax\n"                               \
+            "cmovne %P[api](%%rax), %%rax\n"                    \
+            "test %%rax, %%rax\n"                               \
             "je 1f\n"                                           \
-            "jmp *%[fn]\n"                                      \
+            "jmp *%%rax\n"                                      \
             "1:\n"                                              \
-            : [fn] "=r" (fn)                                    \
+            :                                                   \
             : [tls] "i" (TLS_SLOT_OPENGL_API*sizeof(void*)),    \
               [api] "i" (__builtin_offsetof(gl_hooks_t,         \
                                       ext.extensions[_api]))    \
-            : "cc"                                              \
+            : "cc", "%rdi", "%rsi", "%rdx", "%rcx", "%r8",      \
+              "%r9", "%xmm0", "%xmm1", "%xmm2", "%xmm3",        \
+              "%xmm4", "%xmm5", "%xmm6", "%xmm7"                \
             );
 
 #elif defined(__mips64)
