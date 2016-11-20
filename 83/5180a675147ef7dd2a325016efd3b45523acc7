@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Verified+1: Wei Wang <wvw@google.com>
+Autosubmit+1: Wei Wang <wvw@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Sun, 20 Nov 2016 16:22:22 +0000
+Reviewed-on: https://android-review.googlesource.com/305581
+Project: platform/frameworks/native
+Branch: refs/heads/master
