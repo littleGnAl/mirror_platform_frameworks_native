@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30d6c837_96962cd8",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1096171
+      },
+      "writtenOn": "2016-11-21T03:12:39Z",
+      "side": 1,
+      "message": "Since we have VkAllocationCallbacks readily available at this point, we should use it in theory.  But I am fine either way.\n\nI guess I am also fine removing this function entirely.  But since it is already here, I see no harm keeping it.",
+      "revId": "ada7f6ff85c81bfd0b4c1451dd77d50713995992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
