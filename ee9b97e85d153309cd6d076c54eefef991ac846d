@@ -22,6 +22,30 @@
       "revId": "ee9b97e85d153309cd6d076c54eefef991ac846d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50f25ce7_f2468699",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-11-21T19:03:22Z",
+      "side": 1,
+      "message": "It\u0027s definitely bad style in a header, in a .cpp it\u0027s ok?",
+      "parentUuid": "903a1454_c374fd3f",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "ee9b97e85d153309cd6d076c54eefef991ac846d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
