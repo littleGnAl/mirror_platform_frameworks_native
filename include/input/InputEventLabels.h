@@ -319,6 +319,7 @@ static const InputEventLabel KEYCODES[] = {
     DEFINE_KEYCODE(CUT),
     DEFINE_KEYCODE(COPY),
     DEFINE_KEYCODE(PASTE),
+    DEFINE_KEYCODE(PTT),
 
     { NULL, 0 }
 };
