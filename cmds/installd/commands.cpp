@@ -76,9 +76,11 @@ static constexpr int FLAG_CLEAR_CACHE_ONLY = 1 << 8;
 static constexpr int FLAG_CLEAR_CODE_CACHE_ONLY = 1 << 9;
 
 /* dexopt needed flags matching those in dalvik.system.DexFile */
-static constexpr int DEXOPT_DEX2OAT_NEEDED       = 1;
-static constexpr int DEXOPT_PATCHOAT_NEEDED      = 2;
-static constexpr int DEXOPT_SELF_PATCHOAT_NEEDED = 3;
+static constexpr int DEX2OAT_FROM_SCRATCH        = 1;
+static constexpr int DEX2OAT_FOR_BOOT_IMAGE      = 2;
+static constexpr int DEX2OAT_FOR_FILTER          = 3;
+static constexpr int DEX2OAT_FOR_RELOCATION      = 4;
+static constexpr int PATCHOAT_FOR_RELOCATION     = 5;
 
 #define MIN_RESTRICTED_HOME_SDK_VERSION 24 // > M
 
@@ -1612,20 +1614,24 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
 
     const char *input_file;
     char in_odex_path[PKG_PATH_MAX];
-    switch (dexopt_needed) {
-        case DEXOPT_DEX2OAT_NEEDED:
+    switch (abs(dexopt_needed)) {
+        case DEX2OAT_FROM_SCRATCH:
+        case DEX2OAT_FOR_BOOT_IMAGE:
+        case DEX2OAT_FOR_FILTER:
+        case DEX2OAT_FOR_RELOCATION:
             input_file = apk_path;
             break;
 
-        case DEXOPT_PATCHOAT_NEEDED:
-            if (!calculate_odex_file_path(in_odex_path, apk_path, instruction_set)) {
-                return -1;
+        case PATCHOAT_FOR_RELOCATION:
+            if (dexopt_needed > 0) {
+                input_file = out_oat_path;
+            } else {
+                input_file = out_oat_path;
+                if (!calculate_odex_file_path(in_odex_path, apk_path, instruction_set)) {
+                    return -1;
+                }
+                input_file = in_odex_path;
             }
-            input_file = in_odex_path;
-            break;
-
-        case DEXOPT_SELF_PATCHOAT_NEEDED:
-            input_file = out_oat_path;
             break;
 
         default:
@@ -1662,8 +1668,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     // unlink the old one.
     base::unique_fd in_vdex_fd;
     std::string in_vdex_path_str;
-    if (dexopt_needed == DEXOPT_PATCHOAT_NEEDED
-        || dexopt_needed == DEXOPT_SELF_PATCHOAT_NEEDED) {
+    if (abs(dexopt_needed) == PATCHOAT_FOR_RELOCATION) {
         // `input_file` is the OAT file to be relocated. The VDEX has to be there as well.
         in_vdex_path_str = create_vdex_filename(input_file);
         if (in_vdex_path_str.empty()) {
@@ -1740,7 +1745,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     // Avoid generating an app image for extract only since it will not contain any classes.
     Dex2oatFileWrapper<std::function<void ()>> image_fd;
     const std::string image_path = create_image_filename(out_oat_path);
-    if (dexopt_needed == DEXOPT_DEX2OAT_NEEDED && !image_path.empty()) {
+    if (abs(dexopt_needed) != PATCHOAT_FOR_RELOCATION && !image_path.empty()) {
         char app_image_format[kPropertyValueMax];
         bool have_app_image_format =
                 get_property("dalvik.vm.appimageformat", app_image_format, NULL) > 0;
@@ -1790,8 +1795,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
             _exit(67);
         }
 
-        if (dexopt_needed == DEXOPT_PATCHOAT_NEEDED
-            || dexopt_needed == DEXOPT_SELF_PATCHOAT_NEEDED) {
+        if (abs(dexopt_needed) == PATCHOAT_FOR_RELOCATION) {
             run_patchoat(input_fd.get(),
                          in_vdex_fd.get(),
                          out_oat_fd.get(),
@@ -1802,7 +1806,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
                          out_vdex_path_str.c_str(),
                          pkgname,
                          instruction_set);
-        } else if (dexopt_needed == DEXOPT_DEX2OAT_NEEDED) {
+        } else {
             // Pass dex2oat the relative path to the input file.
             const char *input_file_name = get_location_from_path(input_file);
             run_dex2oat(input_fd.get(),
@@ -1820,9 +1824,6 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
                         boot_complete,
                         reference_profile_fd.get(),
                         shared_libraries);
-        } else {
-            ALOGE("Invalid dexopt needed: %d\n", dexopt_needed);
-            _exit(73);
         }
         _exit(68);   /* only get here on exec failure */
     } else {
