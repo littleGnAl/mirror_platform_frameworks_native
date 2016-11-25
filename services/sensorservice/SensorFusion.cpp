@@ -18,6 +18,8 @@
 #include "SensorFusion.h"
 #include "SensorService.h"
 
+#include <inttypes.h>
+
 namespace android {
 // ---------------------------------------------------------------------------
 
@@ -57,10 +59,11 @@ SensorFusion::SensorFusion()
             mGyro = uncalibratedGyro;
         }
 
-        // 200 Hz for gyro events is a good compromise between precision
-        // and power/cpu usage.
-        mEstimatedGyroRate = 200;
-        mTargetDelayNs = 1000000000LL/mEstimatedGyroRate;
+        // Choose minimum possible delay to achieve maximum precision,
+        // which is a good compromise with power/cpu usage
+        mTargetDelayNs = mGyro.getMinDelayNs();
+        if (mTargetDelayNs > 0)
+            mEstimatedGyroRate = 1000000000LL / mTargetDelayNs;
 
         for (int i = 0; i<NUM_FUSION_MODE; ++i) {
             mFusions[i].init(i);
@@ -157,6 +160,11 @@ status_t SensorFusion::activate(int mode, void* ident, bool enabled) {
 }
 
 status_t SensorFusion::setDelay(int mode, void* ident, int64_t ns) {
+
+    ALOGD_IF(DEBUG_CONNECTIONS,
+            "SensorFusion::setDelay[acc=%" PRId64 ", mag=%" PRId64 ",
+              gyro=%" PRId64 "]", ns, ms2ns(20), mTargetDelayNs);
+
     // Call batch with timeout zero instead of setDelay().
     if (ns > (int64_t)5e7) {
         ns = (int64_t)(5e7);
