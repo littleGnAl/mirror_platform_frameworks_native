@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "103c64a3_2d088dd9",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1580,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-25T15:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103c64a3_ed46851e",
+      "range": {
+        "startLine": 1580,
+        "startChar": 15,
+        "endLine": 1580,
+        "endChar": 21
+      },
+      "revId": "1bc45e4f5745a531fe8a47336e9d05e09e81543d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "103c64a3_2d396d94",
         "filename": "cmds/installd/commands.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "103c64a3_4d15d9f0",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-25T15:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103c64a3_2d396d94",
+      "range": {
+        "startLine": 1580,
+        "startChar": 0,
+        "endLine": 1586,
+        "endChar": 1
+      },
+      "revId": "1bc45e4f5745a531fe8a47336e9d05e09e81543d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "103c64a3_6d3375b2",
         "filename": "cmds/installd/commands.cpp",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2016-11-25T14:47:32Z",
       "side": 1,
       "message": "You can avoid duplicating code here by using the condition to determine the filename, then trying to open the vdex file.",
+      "range": {
+        "startLine": 1705,
+        "startChar": 6,
+        "endLine": 1710,
+        "endChar": 74
+      },
+      "revId": "1bc45e4f5745a531fe8a47336e9d05e09e81543d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "103c64a3_ed05a5c3",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1710,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-25T15:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103c64a3_6d3375b2",
       "range": {
         "startLine": 1705,
         "startChar": 6,
