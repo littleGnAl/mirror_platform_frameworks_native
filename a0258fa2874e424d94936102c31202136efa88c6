@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dfd8f27_2c8c1154",
+        "filename": "services/sensorservice/SensorFusion.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2016-11-28T22:25:38Z",
+      "side": 1,
+      "message": "Would you please keep this part as is and add checks in SensorDevice?",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 59
+      },
+      "revId": "a0258fa2874e424d94936102c31202136efa88c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dfd8f27_ec83c992",
+        "filename": "services/sensorservice/SensorFusion.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2016-11-28T22:25:38Z",
+      "side": 1,
+      "message": "Please put the string on the same line.",
+      "range": {
+        "startLine": 167,
+        "startChar": 68,
+        "endLine": 167,
+        "endChar": 69
+      },
+      "revId": "a0258fa2874e424d94936102c31202136efa88c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
