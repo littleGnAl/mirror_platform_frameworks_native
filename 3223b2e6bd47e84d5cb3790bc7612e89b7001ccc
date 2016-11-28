@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "103c64a3_1023ea1b",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2016-11-28T09:10:41Z",
+      "side": 1,
+      "message": "should be \u0027else if (dexopt_action !\u003d DEX2OAT_FROM_SCRATCH)\u0027 to avoid passing a bad vdex to dex2oat.",
+      "range": {
+        "startLine": 1685,
+        "startChar": 6,
+        "endLine": 1685,
+        "endChar": 12
+      },
+      "revId": "3223b2e6bd47e84d5cb3790bc7612e89b7001ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
