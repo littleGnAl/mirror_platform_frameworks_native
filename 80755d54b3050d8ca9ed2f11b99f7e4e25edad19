@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6def8770_5574863e",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2016-11-29T07:12:38Z",
+      "side": 1,
+      "message": "We don\u0027t put spaces inside parenthesis, and don\u0027t use Yoda-conditionals (display \u003d\u003d NULL vs NULL \u003d\u003d display).",
+      "revId": "80755d54b3050d8ca9ed2f11b99f7e4e25edad19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6def8770_35790235",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2016-11-29T07:12:38Z",
+      "side": 1,
+      "message": "Irrelevant formatting change?",
+      "revId": "80755d54b3050d8ca9ed2f11b99f7e4e25edad19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
