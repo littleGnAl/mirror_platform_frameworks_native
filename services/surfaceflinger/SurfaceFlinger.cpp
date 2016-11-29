@@ -646,6 +646,10 @@ status_t SurfaceFlinger::getDisplayStats(const sp<IBinder>& /* display */,
 }
 
 int SurfaceFlinger::getActiveConfig(const sp<IBinder>& display) {
+    if ( NULL == display ) {
+        ALOGE("%s : display is NULL", __func__);
+        return BAD_VALUE;
+    }
     sp<DisplayDevice> device(getDisplayDevice(display));
     if (device != NULL) {
         return device->getActiveConfig();
@@ -674,6 +678,7 @@ void SurfaceFlinger::setActiveConfigInternal(const sp<DisplayDevice>& hw, int mo
 }
 
 status_t SurfaceFlinger::setActiveConfig(const sp<IBinder>& display, int mode) {
+
     class MessageSetActiveConfig: public MessageBase {
         SurfaceFlinger& mFlinger;
         sp<IBinder> mDisplay;
