@@ -1054,11 +1054,6 @@ status_t SensorService::enable(const sp<SensorEventConnection>& connection,
             handle, connection.get());
     }
 
-    nsecs_t minDelayNs = sensor->getSensor().getMinDelayNs();
-    if (samplingPeriodNs < minDelayNs) {
-        samplingPeriodNs = minDelayNs;
-    }
-
     ALOGD_IF(DEBUG_CONNECTIONS, "Calling batch handle==%d flags=%d"
                                 "rate=%" PRId64 " timeout== %" PRId64"",
              handle, reservedFlags, samplingPeriodNs, maxBatchReportLatencyNs);
@@ -1183,11 +1178,6 @@ status_t SensorService::setEventRate(const sp<SensorEventConnection>& connection
 
     if (ns < 0)
         return BAD_VALUE;
-
-    nsecs_t minDelayNs = sensor->getSensor().getMinDelayNs();
-    if (ns < minDelayNs) {
-        ns = minDelayNs;
-    }
 
     return sensor->setDelay(connection.get(), handle, ns);
 }
