@@ -39,6 +39,8 @@
 
 #include <android/hidl/manager/1.0/IServiceManager.h>
 #include <hidl/ServiceManagement.h>
+#include <hwbinder/IBinder.h>
+#include <hwbinder/Parcel.h>
 #include <cutils/properties.h>
 
 #include <utils/String8.h>
@@ -529,9 +531,7 @@ static void pokeHalServices()
             hidl_string fqInterfaceName = fqInstanceName.substr(0, n);
             hidl_string instanceName = fqInstanceName.substr(n+1, std::string::npos);
             sm->get(fqInterfaceName, instanceName, [&](const auto &interface) {
-                // TODO(b/32756130)
-                // Once IServiceManager returns IBase, use interface->notifySyspropsChanged() here
-                interface->transact(IBinder::SYSPROPS_TRANSACTION, data, nullptr, 0, nullptr);
+                interface->notifySyspropsChanged();
             });
         }
     });
