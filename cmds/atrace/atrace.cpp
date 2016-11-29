@@ -105,6 +105,7 @@ static const TracingCategory k_categories[] = {
     { "pm",         "Package Manager",  ATRACE_TAG_PACKAGE_MANAGER, { } },
     { "ss",         "System Server",    ATRACE_TAG_SYSTEM_SERVER, { } },
     { "database",   "Database",         ATRACE_TAG_DATABASE, { } },
+    { "adb",        "ADB",              ATRACE_TAG_ADB, { } },
     { k_coreServiceCategory, "Core services", 0, { } },
     { "sched",      "CPU Scheduling",   0, {
         { REQ,      "/sys/kernel/debug/tracing/events/sched/sched_switch/enable" },
