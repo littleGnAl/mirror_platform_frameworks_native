@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6def8770_360a25d3",
+        "filename": "services/sensorservice/SensorService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2016-11-30T00:00:28Z",
+      "side": 0,
+      "message": "Would you please retain the checks in sensorservice as well as it will cover the dynamic sensor cases?",
+      "range": {
+        "startLine": 1057,
+        "startChar": 0,
+        "endLine": 1060,
+        "endChar": 5
+      },
+      "revId": "b29c82b67e05c9093d2accfa23e6007dc601f96b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
