@@ -22,6 +22,30 @@
       "revId": "b29c82b67e05c9093d2accfa23e6007dc601f96b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd187371_36c8f6b2",
+        "filename": "services/sensorservice/SensorService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1085198
+      },
+      "writtenOn": "2016-11-30T03:50:12Z",
+      "side": 0,
+      "message": "Done.\nThanks!",
+      "parentUuid": "6def8770_360a25d3",
+      "range": {
+        "startLine": 1057,
+        "startChar": 0,
+        "endLine": 1060,
+        "endChar": 5
+      },
+      "revId": "b29c82b67e05c9093d2accfa23e6007dc601f96b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
