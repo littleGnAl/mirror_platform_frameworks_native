@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "6def8770_46df34c5",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2016-11-30T18:28:45Z",
+      "side": 1,
+      "message": "is this supposed to be notifySyspropsChanged() as well? or should be kept as is?",
+      "range": {
+        "startLine": 496,
+        "startChar": 16,
+        "endLine": 497,
+        "endChar": 27
+      },
+      "revId": "4f06a747c890aafa396350c66f18b8a0977a053b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "103c64a3_d3896c7a",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 1
