@@ -22,6 +22,30 @@
       "revId": "2e5d544e424bbf4f6c5180715ddac05087fe157e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd47938e_a481a84f",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2016-12-01T01:11:19Z",
+      "side": 1,
+      "message": "Even if not isOk(), we cannot do anything here besides printing errors...",
+      "parentUuid": "cd47938e_8472acc1",
+      "range": {
+        "startLine": 519,
+        "startChar": 4,
+        "endLine": 519,
+        "endChar": 12
+      },
+      "revId": "2e5d544e424bbf4f6c5180715ddac05087fe157e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
