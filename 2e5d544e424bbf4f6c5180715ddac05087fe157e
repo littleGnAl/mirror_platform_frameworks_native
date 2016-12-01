@@ -70,6 +70,30 @@
       "revId": "2e5d544e424bbf4f6c5180715ddac05087fe157e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd47938e_e4df3050",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2016-12-01T01:15:17Z",
+      "side": 1,
+      "message": "will do (in a separate CL)",
+      "parentUuid": "cd47938e_64cde0c2",
+      "range": {
+        "startLine": 519,
+        "startChar": 4,
+        "endLine": 519,
+        "endChar": 12
+      },
+      "revId": "2e5d544e424bbf4f6c5180715ddac05087fe157e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
