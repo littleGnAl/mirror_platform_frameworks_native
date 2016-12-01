@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd47938e_8472acc1",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-12-01T01:07:51Z",
+      "side": 1,
+      "message": "Return\u003cvoid\u003e ret \u003d ...\nret.isOk()?\n\nSame for sm-\u003eget\nand interface-\u003enotifySyspropsChanged?\n\nOtherwise, it\u0027ll be weird if it fails, right?",
+      "range": {
+        "startLine": 519,
+        "startChar": 4,
+        "endLine": 519,
+        "endChar": 12
+      },
+      "revId": "2e5d544e424bbf4f6c5180715ddac05087fe157e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
