@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Yifan Hong <elsk@google.com>
+Autosubmit+1: Yifan Hong <elsk@google.com>
+Code-Review+2: Steven Moreland <smoreland@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 02 Dec 2016 19:19:33 +0000
+Reviewed-on: https://android-review.googlesource.com/308887
+Project: platform/frameworks/native
+Branch: refs/heads/master
