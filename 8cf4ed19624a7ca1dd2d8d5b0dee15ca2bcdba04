@@ -46,6 +46,30 @@
       "revId": "8cf4ed19624a7ca1dd2d8d5b0dee15ca2bcdba04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_85b6d28b",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2016-12-02T21:33:14Z",
+      "side": 1,
+      "message": "Actually, let me wait for https://android-review.googlesource.com/#/c/307475/4/cmds/atrace/atrace.cpp to merge, then in a follow up CL I\u0027ll check the return value of notifySyspropsChanged()",
+      "parentUuid": "8decbb0b_94a5eae9",
+      "range": {
+        "startLine": 534,
+        "startChar": 16,
+        "endLine": 534,
+        "endChar": 25
+      },
+      "revId": "8cf4ed19624a7ca1dd2d8d5b0dee15ca2bcdba04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
