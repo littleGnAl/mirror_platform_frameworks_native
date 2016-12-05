@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_7f825254",
+        "filename": "cmds/installd/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-05T19:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8decbb0b_3fd60aaf",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "f4e59bb48a78c83e74b35e92d05e40a8c2575ed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8decbb0b_7f613229",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-05T18:50:36Z",
       "side": 1,
       "message": "Sorting?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "f4e59bb48a78c83e74b35e92d05e40a8c2575ed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_dfc7fea3",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-05T19:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8decbb0b_7f613229",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_9fbbb60c",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-05T19:06:45Z",
+      "side": 1,
+      "message": "Most of the stuff in this file is copypasta from netd, so we should bug the netd folks to fix their stuff to prevent it from spreading.",
+      "parentUuid": "8decbb0b_bf543a42",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "f4e59bb48a78c83e74b35e92d05e40a8c2575ed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8decbb0b_1f46a69b",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-12-05T18:50:36Z",
       "side": 1,
       "message": "Is that Android style? Otherwise, char*.",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 43
+      },
+      "revId": "f4e59bb48a78c83e74b35e92d05e40a8c2575ed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_ff108239",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-05T19:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8decbb0b_1f46a69b",
       "range": {
         "startLine": 44,
         "startChar": 37,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_1ff586d4",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-05T19:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8decbb0b_df1dbe8e",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "f4e59bb48a78c83e74b35e92d05e40a8c2575ed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8decbb0b_df793ee7",
         "filename": "cmds/installd/InstalldNativeService.h",
         "patchSetId": 1
@@ -151,6 +271,24 @@
       "writtenOn": "2016-12-05T18:50:36Z",
       "side": 1,
       "message": "Is this empty line required in the Android style?",
+      "revId": "f4e59bb48a78c83e74b35e92d05e40a8c2575ed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_3f7cca87",
+        "filename": "cmds/installd/InstalldNativeService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-05T19:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8decbb0b_df793ee7",
       "revId": "f4e59bb48a78c83e74b35e92d05e40a8c2575ed5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
