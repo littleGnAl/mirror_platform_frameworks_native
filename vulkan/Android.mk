@@ -1,1 +1,1 @@
-include $(call all-named-subdir-makefiles, libvulkan nulldrv tools)
+include $(call all-named-subdir-makefiles, nulldrv tools)
