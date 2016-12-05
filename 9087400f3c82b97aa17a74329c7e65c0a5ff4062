@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "8decbb0b_68573573",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-12-05T22:03:32Z",
+      "side": 1,
+      "message": "\u003cstring\u003e here too?",
+      "revId": "9087400f3c82b97aa17a74329c7e65c0a5ff4062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_c8398135",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-12-05T22:03:32Z",
+      "side": 1,
+      "message": "WriteFully?",
+      "revId": "9087400f3c82b97aa17a74329c7e65c0a5ff4062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_a84d1de2",
+        "filename": "cmds/installd/InstalldNativeService.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-12-05T22:03:32Z",
+      "side": 1,
+      "message": "did you mean \u003cstring\u003e?",
+      "revId": "9087400f3c82b97aa17a74329c7e65c0a5ff4062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8decbb0b_7f6ed119",
         "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
         "patchSetId": 2
