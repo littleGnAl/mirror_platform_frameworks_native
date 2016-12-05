@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8decbb0b_7f6ed119",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2016-12-05T19:28:48Z",
+      "side": 1,
+      "message": "Just out of curiosity ...\n\nIs \"in\" here necessary? seems String is immutable [well, at least in Java]. Do we need the \"in\" for the native binding?",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "9087400f3c82b97aa17a74329c7e65c0a5ff4062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
