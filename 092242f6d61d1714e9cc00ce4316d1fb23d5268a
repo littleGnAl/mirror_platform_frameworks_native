@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8decbb0b_7ecc8a4a",
+        "filename": "libs/gui/Sensor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2016-12-06T04:54:02Z",
+      "side": 1,
+      "message": "This change (and the 3 instances below) does not seems necessary as flattenString8 write string size as uint32_t.",
+      "range": {
+        "startLine": 429,
+        "startChar": 19,
+        "endLine": 429,
+        "endChar": 25
+      },
+      "revId": "092242f6d61d1714e9cc00ce4316d1fb23d5268a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
