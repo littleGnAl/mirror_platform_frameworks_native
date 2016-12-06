@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_7964a928",
+        "filename": "vulkan/nulldrv/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-12-06T00:23:52Z",
+      "side": 1,
+      "message": "Yeah, I assume this is just for copying and pasting into real drivers",
+      "parentUuid": "8decbb0b_6e14ddf6",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "1bb4344cc9236c71d3921af3c585134dbb786f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8decbb0b_2ef6d5b9",
         "filename": "vulkan/nulldrv/Android.bp",
         "patchSetId": 2
