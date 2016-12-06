@@ -16,6 +16,24 @@
       "revId": "2b7ed7dc07dc9aa086689c6ac4faa5ebdab72a08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d490f02_3e862935",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1131858
+      },
+      "writtenOn": "2016-12-06T11:41:25Z",
+      "side": 1,
+      "message": "clang ignores gcc specific omit-frame-pointer optimization attribute and thus generates incorrect assembly for i386/x86_64 wrappers.",
+      "parentUuid": "8decbb0b_abc2b23f",
+      "revId": "2b7ed7dc07dc9aa086689c6ac4faa5ebdab72a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
