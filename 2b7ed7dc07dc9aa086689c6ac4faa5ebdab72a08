@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8decbb0b_abc2b23f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2016-12-06T04:06:32Z",
+      "side": 1,
+      "message": "Is there a bug explaining what is wrong with clang here? Why should this code be changed? There really needs to be more rationale as to why this change is being made than this.",
+      "revId": "2b7ed7dc07dc9aa086689c6ac4faa5ebdab72a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
