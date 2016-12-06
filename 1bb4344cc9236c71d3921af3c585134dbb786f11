@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8decbb0b_4e1b5936",
+        "filename": "vulkan/libvulkan/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-06T00:05:44Z",
+      "side": 1,
+      "message": "This seems unnecessary (and would be better placed in conlyflags, if there were any c files)",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "1bb4344cc9236c71d3921af3c585134dbb786f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_6e14ddf6",
+        "filename": "vulkan/nulldrv/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-06T00:05:44Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually get exported to make yet, but maybe that\u0027s ok?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "1bb4344cc9236c71d3921af3c585134dbb786f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_2ef6d5b9",
+        "filename": "vulkan/nulldrv/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-06T00:05:44Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "1bb4344cc9236c71d3921af3c585134dbb786f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_8ef021b1",
+        "filename": "vulkan/tools/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-06T00:05:44Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "1bb4344cc9236c71d3921af3c585134dbb786f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
