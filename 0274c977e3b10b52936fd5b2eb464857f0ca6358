@@ -22,6 +22,30 @@
       "revId": "0274c977e3b10b52936fd5b2eb464857f0ca6358",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1edff1_c0f392ed",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-06T18:40:49Z",
+      "side": 1,
+      "message": "Yep, this is just trying to keep the diff sizes manageable during the transition.",
+      "parentUuid": "ad1edff1_20c04ee8",
+      "range": {
+        "startLine": 496,
+        "startChar": 16,
+        "endLine": 496,
+        "endChar": 25
+      },
+      "revId": "0274c977e3b10b52936fd5b2eb464857f0ca6358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
