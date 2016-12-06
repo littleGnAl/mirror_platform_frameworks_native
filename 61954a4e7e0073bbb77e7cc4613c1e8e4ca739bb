@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d490f02_21a12879",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-12-06T15:07:43Z",
+      "side": 1,
+      "message": "bleh we should get rid of this some time.",
+      "range": {
+        "startLine": 532,
+        "startChar": 50,
+        "endLine": 532,
+        "endChar": 59
+      },
+      "revId": "61954a4e7e0073bbb77e7cc4613c1e8e4ca739bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
