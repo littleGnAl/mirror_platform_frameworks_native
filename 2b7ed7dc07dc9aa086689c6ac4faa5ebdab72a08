@@ -34,6 +34,24 @@
       "revId": "2b7ed7dc07dc9aa086689c6ac4faa5ebdab72a08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d3afb53_84ee0840",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1131878
+      },
+      "writtenOn": "2016-12-06T13:29:21Z",
+      "side": 1,
+      "message": "The fact that Clang implements omit-frame-pointer feature differently than GCC it is one thing, but second thing is that Clang does not support __attribute__((optimize)) at all.",
+      "parentUuid": "8decbb0b_abc2b23f",
+      "revId": "2b7ed7dc07dc9aa086689c6ac4faa5ebdab72a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
