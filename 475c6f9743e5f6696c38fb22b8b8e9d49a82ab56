@@ -22,6 +22,30 @@
       "revId": "475c6f9743e5f6696c38fb22b8b8e9d49a82ab56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1edff1_8fa1347b",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-07T22:38:44Z",
+      "side": 1,
+      "message": "Yeah, most of this is \"glue\" code to keep the refactoring CL deltas small.\n\nLonger-term we want everyone moving over to std::string (best-practices), which will clean up all of these awkward conversions.",
+      "parentUuid": "ad1edff1_5d1e7927",
+      "range": {
+        "startLine": 726,
+        "startChar": 16,
+        "endLine": 726,
+        "endChar": 20
+      },
+      "revId": "475c6f9743e5f6696c38fb22b8b8e9d49a82ab56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
