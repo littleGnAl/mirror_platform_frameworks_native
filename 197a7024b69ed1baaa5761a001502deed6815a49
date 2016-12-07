@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad1edff1_eb978ed4",
+        "filename": "libs/gui/tests/SRGB_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2016-12-07T06:24:26Z",
+      "side": 1,
+      "message": "If these are now defined in eglext.h (causing the macro redefinition errors) we should just remove the hacky local definitions that we used while waiting for them to make it into the official eglext.h.",
+      "revId": "197a7024b69ed1baaa5761a001502deed6815a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
