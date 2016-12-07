@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad1edff1_5d1e7927",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2016-12-07T22:34:37Z",
+      "side": 1,
+      "message": "would it make sense to create a common standard for referring to the C version of strings? in this CL alone, I see four different styles for naming the C versions of the C++ string SomeValue -- somevalue_, otherName, some_value_string and some_value",
+      "range": {
+        "startLine": 726,
+        "startChar": 16,
+        "endLine": 726,
+        "endChar": 20
+      },
+      "revId": "475c6f9743e5f6696c38fb22b8b8e9d49a82ab56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
