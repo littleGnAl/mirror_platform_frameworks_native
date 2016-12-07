@@ -435,6 +435,8 @@ TEST_F(SRGBTest, DISABLED_RenderToSRGBSurface) {
     ASSERT_EQ(NO_ERROR, mCpuConsumer->unlockBuffer(mLockedBuffer));
 
     // Switch to SRGB window surface
+#undef EGL_GL_COLORSPACE_KHR
+#undef EGL_GL_COLORSPACE_SRGB_KHR
 #define EGL_GL_COLORSPACE_KHR      EGL_VG_COLORSPACE
 #define EGL_GL_COLORSPACE_SRGB_KHR EGL_VG_COLORSPACE_sRGB
 
