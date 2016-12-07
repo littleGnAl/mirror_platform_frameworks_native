@@ -16,6 +16,24 @@
       "revId": "197a7024b69ed1baaa5761a001502deed6815a49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1edff1_ae0a01d1",
+        "filename": "libs/gui/tests/SRGB_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2016-12-07T19:09:41Z",
+      "side": 1,
+      "message": "SGTM.\n\nAs an aside, EGL_GL_COLORSPACE_KHR, as defined in eglext.h, is 0x309D, whereas EGL_VG_COLORSPACE seems to be 0x3087. Given that this test is currently disabled and not intended to work, it\u0027s a bit difficult for me to tell what that change will do. :)",
+      "parentUuid": "ad1edff1_eb978ed4",
+      "revId": "197a7024b69ed1baaa5761a001502deed6815a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
