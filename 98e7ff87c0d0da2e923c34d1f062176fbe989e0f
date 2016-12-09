@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a26a7ad_aca14c49",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2016-12-09T22:51:49Z",
+      "side": 1,
+      "message": "you can remove \"in\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 23,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "98e7ff87c0d0da2e923c34d1f062176fbe989e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_0cd960dd",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2016-12-09T22:51:49Z",
+      "side": 1,
+      "message": "nit: pretty much all of the other methods have uuid and packageName as the first two arguments [if they have uuid \u0026 package name :)]",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "98e7ff87c0d0da2e923c34d1f062176fbe989e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_6cf8d408",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2016-12-09T22:51:49Z",
+      "side": 1,
+      "message": "this looks like a departure from existing behaviour that ensures there are no nullptr\u0027s [in do_dexopt()]\n\nis it safe to pass nullptr to dexopt() ?",
+      "range": {
+        "startLine": 2066,
+        "startChar": 61,
+        "endLine": 2066,
+        "endChar": 68
+      },
+      "revId": "98e7ff87c0d0da2e923c34d1f062176fbe989e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
