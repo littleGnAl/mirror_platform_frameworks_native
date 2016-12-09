@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a26a7ad_4cccf8c9",
+        "filename": "cmds/installd/installd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-09T22:55:32Z",
+      "side": 1,
+      "message": "This isn\u0027t C, you can define it where it\u0027s close to its use.",
+      "range": {
+        "startLine": 309,
+        "startChar": 4,
+        "endLine": 309,
+        "endChar": 12
+      },
+      "revId": "6c2c056193010cf93b4264810d462c120ce801c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
