@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a26a7ad_a5304843",
+        "filename": "services/surfaceflinger/RenderEngine/RenderEngine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1074228
+      },
+      "writtenOn": "2016-12-09T07:41:50Z",
+      "side": 1,
+      "message": "This fix is specific to below code in DisplayDevice.cpp\n\nDisplayDevice::DisplayDevice(\nconst sp\u0026 flinger,\nDisplayType type,\nint32_t hwcId,\n#ifndef USE_HWC2\nint format,\n#endif\nbool isSecure,\nconst wp\u0026 displayToken,\nconst sp\u0026 displaySurface,\nconst sp\u0026 producer,\nEGLConfig config)\n...\n#ifdef USE_HWC2\nconfig \u003d RenderEngine::chooseEglConfig(display, PIXEL_FORMAT_RGBA_8888);\n#else\nconfig \u003d RenderEngine::chooseEglConfig(display, format);\n#endif",
+      "range": {
+        "startLine": 383,
+        "startChar": 21,
+        "endLine": 383,
+        "endChar": 47
+      },
+      "revId": "237aae5ed46169f997b678b11dec8cac4080aa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
