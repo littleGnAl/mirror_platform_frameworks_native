@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a26a7ad_e7363df8",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-09T23:46:35Z",
+      "side": 1,
+      "message": "Gah, I keep forgetting this lol.",
+      "parentUuid": "3a26a7ad_aca14c49",
+      "range": {
+        "startLine": 23,
+        "startChar": 23,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "98e7ff87c0d0da2e923c34d1f062176fbe989e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a26a7ad_0cd960dd",
         "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3a26a7ad_e74d1d8c",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-09T23:46:35Z",
+      "side": 1,
+      "message": "As much as possible I\u0027m trying to keep the signatures identical through these changes.  (Keeping the CLs focused purely on the Binder transition.)\n\nAlso, I\u0027ve heard that the UUID argument to this method is actually no longer needed, and it\u0027ll be removed at some point.",
+      "parentUuid": "3a26a7ad_0cd960dd",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "98e7ff87c0d0da2e923c34d1f062176fbe989e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a26a7ad_6cf8d408",
         "filename": "cmds/installd/commands.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-12-09T22:51:49Z",
       "side": 1,
       "message": "this looks like a departure from existing behaviour that ensures there are no nullptr\u0027s [in do_dexopt()]\n\nis it safe to pass nullptr to dexopt() ?",
+      "range": {
+        "startLine": 2066,
+        "startChar": 61,
+        "endLine": 2066,
+        "endChar": 68
+      },
+      "revId": "98e7ff87c0d0da2e923c34d1f062176fbe989e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_270315f2",
+        "filename": "cmds/installd/commands.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-09T23:46:35Z",
+      "side": 1,
+      "message": "Note that do_dexopt() did that nullptr CHECK()\u0027ing *before* it called parse_null() internally.  So nullptr values are allowed for some vars.  (And you can see PackageManagerService does call them with null in some cases based on dexoptNeeded value.)",
+      "parentUuid": "3a26a7ad_6cf8d408",
       "range": {
         "startLine": 2066,
         "startChar": 61,
