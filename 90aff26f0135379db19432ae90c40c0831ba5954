@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fa632f25_1d143728",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-12T22:50:39Z",
+      "side": 1,
+      "message": "Because cutils is yucky, just ask enh, who\u0027s trying to kill it with fire.",
+      "parentUuid": "fa632f25_fa33414e",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "90aff26f0135379db19432ae90c40c0831ba5954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa632f25_7a1731bd",
         "filename": "cmds/installd/dexopt.h",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Just copying your team\u0027s existing code.  :)",
       "parentUuid": "fa632f25_7a1731bd",
+      "range": {
+        "startLine": 42,
+        "startChar": 22,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "90aff26f0135379db19432ae90c40c0831ba5954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa632f25_bd0263ea",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-12T22:50:39Z",
+      "side": 1,
+      "message": "With \"few minor changes\"",
+      "parentUuid": "fa632f25_3aa13948",
       "range": {
         "startLine": 42,
         "startChar": 22,
