@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a26a7ad_debb076f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-12T18:52:39Z",
+      "side": 1,
+      "message": "\"using\" ? This is C++... :-)",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "423e746ac7d4b3a3d772dd0e01bdb9fd6029d439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_5e82579e",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-12T18:52:39Z",
+      "side": 1,
+      "message": "Remove and return in line 735?",
+      "range": {
+        "startLine": 731,
+        "startChar": 4,
+        "endLine": 731,
+        "endChar": 30
+      },
+      "revId": "423e746ac7d4b3a3d772dd0e01bdb9fd6029d439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_be9a8bfd",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-12T18:52:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 954,
+        "startChar": 4,
+        "endLine": 954,
+        "endChar": 30
+      },
+      "revId": "423e746ac7d4b3a3d772dd0e01bdb9fd6029d439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
