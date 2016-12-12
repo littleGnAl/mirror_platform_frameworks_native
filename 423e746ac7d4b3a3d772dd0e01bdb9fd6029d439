@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a26a7ad_d9fe8140",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-12T19:38:02Z",
+      "side": 1,
+      "message": "Sadly results in compiler error:\n\nframeworks/native/cmds/installd/InstalldNativeService.cpp:57:32: error: using declaration cannot refer to class member",
+      "parentUuid": "3a26a7ad_debb076f",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "423e746ac7d4b3a3d772dd0e01bdb9fd6029d439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a26a7ad_5e82579e",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
