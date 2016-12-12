@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa632f25_baa38983",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-12T21:57:36Z",
+      "side": 1,
+      "message": "Yucky!",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "90aff26f0135379db19432ae90c40c0831ba5954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa632f25_7a1731bd",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-12T21:57:36Z",
+      "side": 1,
+      "message": "Consistency?",
+      "range": {
+        "startLine": 42,
+        "startChar": 22,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "90aff26f0135379db19432ae90c40c0831ba5954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa632f25_9a1deddc",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-12T21:57:36Z",
+      "side": 1,
+      "message": "Consistency?",
+      "range": {
+        "startLine": 43,
+        "startChar": 19,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "90aff26f0135379db19432ae90c40c0831ba5954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
