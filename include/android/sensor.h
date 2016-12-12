@@ -402,6 +402,11 @@ int ASensorEventQueue_registerSensor(ASensorEventQueue* queue, ASensor const* se
         int32_t samplingPeriodUs, int maxBatchReportLatencyUs);
 
 /**
+ * Disable the selected sensor. Returns a negative error code on failure.
+ */
+int ASensorEventQueue_unregisterSensor(ASensorEventQueue* queue, ASensor const* sensor);
+
+/**
  * Enable the selected sensor. Returns a negative error code on failure.
  */
 int ASensorEventQueue_enableSensor(ASensorEventQueue* queue, ASensor const* sensor);
