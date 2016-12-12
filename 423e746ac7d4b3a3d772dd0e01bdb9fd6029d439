@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3a6ea70e_96a02c78",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-12T20:12:53Z",
+      "side": 1,
+      "message": "Doh, at first I thought these two methods were using the \"always do all operations until failure encountered, no early bailing\" but after looking closer, we do actually want them to bail early.\n\nFollow-up CL shortly.",
+      "parentUuid": "3a26a7ad_5e82579e",
+      "range": {
+        "startLine": 731,
+        "startChar": 4,
+        "endLine": 731,
+        "endChar": 30
+      },
+      "revId": "423e746ac7d4b3a3d772dd0e01bdb9fd6029d439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a26a7ad_be9a8bfd",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
