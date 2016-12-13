@@ -58,8 +58,9 @@ public:
     binder::Status getAppDataInode(const std::unique_ptr<std::string>& uuid,
             const std::string& packageName, int32_t userId, int32_t flags, int64_t* _aidl_return);
     binder::Status getAppSize(const std::unique_ptr<std::string>& uuid,
-            const std::string& packageName, int32_t userId, int32_t flags, int64_t ceDataInode,
-            const std::string& codePath, std::vector<int64_t>* _aidl_return);
+            const std::string& packageName, int32_t userId, int32_t flags, int32_t appId,
+            int64_t ceDataInode, const std::string& codePath,
+            const std::unique_ptr<std::string>& externalUuid, std::vector<int64_t>* _aidl_return);
 
     binder::Status moveCompleteApp(const std::unique_ptr<std::string>& fromUuid,
             const std::unique_ptr<std::string>& toUuid, const std::string& packageName,

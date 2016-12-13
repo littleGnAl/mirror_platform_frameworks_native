@@ -34,7 +34,8 @@ interface IInstalld {
     long getAppDataInode(@nullable @utf8InCpp String uuid, @utf8InCpp String packageName,
             int userId, int flags);
     long[] getAppSize(@nullable @utf8InCpp String uuid, @utf8InCpp String packageName,
-            int userId, int flags, long ceDataInode, @utf8InCpp String codePath);
+            int userId, int flags, int appId, long ceDataInode, @utf8InCpp String codePath,
+            @nullable @utf8InCpp String externalUuid);
 
     void moveCompleteApp(@nullable @utf8InCpp String fromUuid, @nullable @utf8InCpp String toUuid,
             @utf8InCpp String packageName, @utf8InCpp String dataAppName, int appId,
