@@ -45,6 +45,54 @@
       "revId": "c4b90667764fbf5d7f1d4bdbd0ad94d0722f134f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aed7f06_10cd8449",
+        "filename": "include/android/sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1085198
+      },
+      "writtenOn": "2016-12-14T05:36:44Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ba845725_59d6ef11",
+      "range": {
+        "startLine": 400,
+        "startChar": 100,
+        "endLine": 400,
+        "endChar": 101
+      },
+      "revId": "c4b90667764fbf5d7f1d4bdbd0ad94d0722f134f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aed7f06_50d30cee",
+        "filename": "include/android/sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1085198
+      },
+      "writtenOn": "2016-12-14T05:36:44Z",
+      "side": 1,
+      "message": "Right, this is better.",
+      "parentUuid": "ba845725_19f637df",
+      "range": {
+        "startLine": 400,
+        "startChar": 41,
+        "endLine": 400,
+        "endChar": 110
+      },
+      "revId": "c4b90667764fbf5d7f1d4bdbd0ad94d0722f134f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
