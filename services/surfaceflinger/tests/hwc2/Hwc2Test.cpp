@@ -353,6 +353,22 @@ public:
         }
     }
 
+    void setCursorPosition(hwc2_display_t display, hwc2_layer_t layer,
+            int32_t x, int32_t y, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_CURSOR_POSITION>(
+                getFunction(HWC2_FUNCTION_SET_CURSOR_POSITION));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer, x,
+                y));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set cursor position";
+        }
+    }
+
     void setLayerBlendMode(hwc2_display_t display, hwc2_layer_t layer,
             hwc2_blend_mode_t mode, hwc2_error_t* outErr = nullptr)
     {
@@ -1639,6 +1655,98 @@ TEST_F(Hwc2Test, SET_LAYER_COMPOSITION_TYPE_update)
 
             [] (Hwc2TestLayer* testLayer) {
                     return testLayer->advanceComposition();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_CURSOR_POSITION)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(display,
+                            layer, HWC2_COMPOSITION_CURSOR, &err));
+                EXPECT_EQ(err, HWC2_ERROR_NONE) << "returned wrong error code";
+
+                std::pair<int32_t, int32_t> cursor = testLayer->getCursor();
+                EXPECT_NO_FATAL_FAILURE(test->setCursorPosition(display,
+                        layer, cursor.first, cursor.second));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceCursor();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_CURSOR_POSITION_bad_display)
+{
+    hwc2_display_t display;
+    hwc2_layer_t layer = 0;
+    int32_t x = 0, y = 0;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(getBadDisplay(&display));
+
+    ASSERT_NO_FATAL_FAILURE(setCursorPosition(display, layer, x, y, &err));
+    EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+}
+
+TEST_F(Hwc2Test, SET_CURSOR_POSITION_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(HWC2_TEST_COVERAGE_DEFAULT,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                std::pair<int32_t, int32_t> cursor = testLayer->getCursor();
+                ASSERT_NO_FATAL_FAILURE(test->setCursorPosition(display,
+                        layer, cursor.first, cursor.second, &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_CURSOR_POSITION_composition_type_unset)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                std::pair<int32_t, int32_t> cursor = testLayer->getCursor();
+                EXPECT_NO_FATAL_FAILURE(test->setCursorPosition(display,
+                        layer, cursor.first, cursor.second));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceCursor();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_CURSOR_POSITION_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(display,
+                        layer, HWC2_COMPOSITION_CURSOR, &err));
+                EXPECT_EQ(err, HWC2_ERROR_NONE) << "returned wrong error code";
+
+                std::pair<int32_t, int32_t> cursor = testLayer->getCursor();
+                EXPECT_NO_FATAL_FAILURE(test->setCursorPosition(display,
+                        layer, cursor.first, cursor.second));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceCursor();
             }
     ));
 }

@@ -160,6 +160,28 @@ protected:
 };
 
 
+class Hwc2TestCursor : public Hwc2TestProperty<std::pair<int32_t, int32_t>> {
+public:
+    Hwc2TestCursor(hwc2_test_coverage_t coverage, int32_t displayWidth,
+            int32_t displayHeight);
+
+    std::string dump() const;
+
+protected:
+    void update();
+
+    const std::vector<float>& mScalars;
+    static const std::vector<float> mDefaultScalars;
+    static const std::vector<float> mBasicScalars;
+    static const std::vector<float> mCompleteScalars;
+
+    int32_t mDisplayWidth;
+    int32_t mDisplayHeight;
+
+    std::vector<std::pair<int32_t, int32_t>> mCursors;
+};
+
+
 class Hwc2TestDataspace : public Hwc2TestProperty<android_dataspace_t> {
 public:
     Hwc2TestDataspace(hwc2_test_coverage_t coverage);
