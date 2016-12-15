@@ -424,6 +424,27 @@ public:
         ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer dataspace";
     }
 
+    void set_layer_display_frame(hwc2_display_t display, hwc2_layer_t layer,
+            const hwc_rect_t &display_frame, hwc2_error_t *out_err)
+    {
+        HWC2_PFN_SET_LAYER_DISPLAY_FRAME pfn =
+                (HWC2_PFN_SET_LAYER_DISPLAY_FRAME)
+                get_function(HWC2_FUNCTION_SET_LAYER_DISPLAY_FRAME);
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        *out_err = (hwc2_error_t) pfn(hwc2_device, display, layer,
+                display_frame);
+    }
+
+    void set_layer_display_frame(hwc2_display_t display, hwc2_layer_t layer,
+            const hwc_rect_t &display_frame)
+    {
+        hwc2_error_t err = HWC2_ERROR_NONE;
+        ASSERT_NO_FATAL_FAILURE(set_layer_display_frame(display, layer,
+                display_frame, &err));
+        ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer display frame";
+    }
+
     void set_layer_plane_alpha(hwc2_display_t display, hwc2_layer_t layer,
             float alpha, hwc2_error_t *out_err)
     {
@@ -576,6 +597,26 @@ protected:
             *out_display = vsync_display;
         if (out_timestamp)
             *out_timestamp = vsync_timestamp;
+    }
+
+    void get_active_config_attribute(hwc2_display_t display,
+            hwc2_attribute_t attribute, int32_t *out_value)
+    {
+        hwc2_config_t config;
+        ASSERT_NO_FATAL_FAILURE(get_active_config(display, &config));
+        ASSERT_NO_FATAL_FAILURE(get_display_attribute(display, config,
+                attribute, out_value));
+        ASSERT_GE(*out_value, 0) << "failed to get valid "
+                << getAttributeName(attribute);
+    }
+
+    void get_active_dimensions(hwc2_display_t display, int32_t *out_width,
+            int32_t *out_height)
+    {
+        ASSERT_NO_FATAL_FAILURE(get_active_config_attribute(display,
+                HWC2_ATTRIBUTE_WIDTH, out_width));
+        ASSERT_NO_FATAL_FAILURE(get_active_config_attribute(display,
+                HWC2_ATTRIBUTE_HEIGHT, out_height));
     }
 
     hwc2_device_t *hwc2_device;
@@ -1308,12 +1349,14 @@ TEST_F(hwc2_test, SET_LAYER_COMPOSITION_TYPE)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer;
+    int32_t width, height;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_BASIC);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_BASIC, width, height);
 
         do {
             ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
@@ -1331,13 +1374,15 @@ TEST_F(hwc2_test, SET_LAYER_COMPOSITION_TYPE_bad_layer)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer = 0;
+    int32_t width, height;
     hwc2_error_t err = HWC2_ERROR_NONE;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT, width, height);
 
         ASSERT_NO_FATAL_FAILURE(set_layer_composition_type(display, layer,
                 test_layer.get_composition(), &err));
@@ -1384,13 +1429,15 @@ TEST_F(hwc2_test, SET_LAYER_COMPOSITION_TYPE_unsupported)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer;
+    int32_t width, height;
     hwc2_error_t err = HWC2_ERROR_NONE;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         do {
             ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
@@ -1410,13 +1457,15 @@ TEST_F(hwc2_test, SET_LAYER_COMPOSITION_TYPE_update)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer;
+    int32_t width, height;
     hwc2_error_t err = HWC2_ERROR_NONE;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
 
@@ -1435,13 +1484,15 @@ TEST_F(hwc2_test, SET_LAYER_BLEND_MODE)
 {
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
+    int32_t width, height;
     hwc2_layer_t layer;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         do {
             ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
@@ -1458,6 +1509,7 @@ TEST_F(hwc2_test, SET_LAYER_BLEND_MODE_bad_layer)
 {
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
+    int32_t width, height;
     hwc2_layer_t layer = 0;
     hwc2_error_t err = HWC2_ERROR_NONE;
 
@@ -1465,7 +1517,8 @@ TEST_F(hwc2_test, SET_LAYER_BLEND_MODE_bad_layer)
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT, width, height);
 
         ASSERT_NO_FATAL_FAILURE(set_layer_blend_mode(display, layer,
                 test_layer.get_blend_mode(), &err));
@@ -1512,13 +1565,15 @@ TEST_F(hwc2_test, SET_LAYER_BLEND_MODE_update)
 {
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
+    int32_t width, height;
     hwc2_layer_t layer;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
 
@@ -1536,13 +1591,15 @@ TEST_F(hwc2_test, SET_LAYER_COLOR)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer;
+    int32_t width, height;
     hwc2_error_t err = HWC2_ERROR_NONE;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         do {
             ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
@@ -1569,13 +1626,15 @@ TEST_F(hwc2_test, SET_LAYER_COLOR_bad_layer)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer = 0;
+    int32_t width, height;
     hwc2_error_t err = HWC2_ERROR_NONE;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT, width, height);
 
         ASSERT_NO_FATAL_FAILURE(set_layer_color(display, layer,
                 test_layer.get_color(), &err));
@@ -1599,13 +1658,15 @@ TEST_F(hwc2_test, SET_LAYER_COLOR_composition_type_unset)
 {
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
+    int32_t width, height;
     hwc2_layer_t layer;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_BASIC);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_BASIC, width, height);
 
         do {
             ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
@@ -1623,13 +1684,15 @@ TEST_F(hwc2_test, SET_LAYER_COLOR_update)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer;
+    int32_t width, height;
     hwc2_error_t err = HWC2_ERROR_NONE;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
 
@@ -1656,12 +1719,14 @@ TEST_F(hwc2_test, SET_LAYER_DATSPACE)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer;
+    int32_t width, height;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         do {
             ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
@@ -1679,13 +1744,15 @@ TEST_F(hwc2_test, SET_LAYER_DATSPACE_bad_layer)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer = 0;
+    int32_t width, height;
     hwc2_error_t err = HWC2_ERROR_NONE;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT, width, height);
 
         ASSERT_NO_FATAL_FAILURE(set_layer_dataspace(display, layer,
                 test_layer.get_dataspace(), &err));
@@ -1709,13 +1776,15 @@ TEST_F(hwc2_test, SET_LAYER_DATSPACE_update)
 {
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
+    int32_t width, height;
     hwc2_layer_t layer;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
 
@@ -1728,17 +1797,102 @@ TEST_F(hwc2_test, SET_LAYER_DATSPACE_update)
     }
 }
 
-TEST_F(hwc2_test, SET_LAYER_PLANE_ALPHA)
+TEST_F(hwc2_test, SET_LAYER_DISPLAY_FRAME)
 {
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer;
+    int32_t width, height;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
+
+        do {
+            ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
+
+            EXPECT_NO_FATAL_FAILURE(set_layer_display_frame(display, layer,
+                    test_layer.get_display_frame()));
+
+            ASSERT_NO_FATAL_FAILURE(destroy_layer(display, layer));
+        } while (test_layer.advance_display_frame());
+    }
+}
+
+TEST_F(hwc2_test, SET_LAYER_DISPLAY_FRAME_bad_layer)
+{
+    hwc2_display_t display = HWC_DISPLAY_PRIMARY;
+    std::vector<hwc2_config_t> configs;
+    hwc2_layer_t layer = 0;
+    int32_t width, height;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
+
+    for (hwc2_config_t config: configs) {
+        ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT, width, height);
+
+        ASSERT_NO_FATAL_FAILURE(set_layer_display_frame(display, layer,
+                test_layer.get_display_frame(), &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+
+        ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
+
+        ASSERT_NO_FATAL_FAILURE(set_layer_display_frame(display, layer + 1,
+                test_layer.get_display_frame(), &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(display, layer));
+
+        ASSERT_NO_FATAL_FAILURE(set_layer_display_frame(display, layer,
+                test_layer.get_display_frame(), &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+    }
+}
+
+TEST_F(hwc2_test, SET_LAYER_DISPLAY_FRAME_update)
+{
+    hwc2_display_t display = HWC_DISPLAY_PRIMARY;
+    std::vector<hwc2_config_t> configs;
+    hwc2_layer_t layer;
+    int32_t width, height;
+
+    ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
+
+    for (hwc2_config_t config: configs) {
+        ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
+
+        ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
+
+        do {
+            EXPECT_NO_FATAL_FAILURE(set_layer_display_frame(display, layer,
+                    test_layer.get_display_frame()));
+        } while (test_layer.advance_display_frame());
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(display, layer));
+    }
+}
+
+TEST_F(hwc2_test, SET_LAYER_PLANE_ALPHA)
+{
+    hwc2_display_t display = HWC_DISPLAY_PRIMARY;
+    std::vector<hwc2_config_t> configs;
+    hwc2_layer_t layer;
+    int32_t width, height;
+
+    ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
+
+    for (hwc2_config_t config: configs) {
+        ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         do {
             do {
@@ -1760,13 +1914,15 @@ TEST_F(hwc2_test, SET_LAYER_PLANE_ALPHA_bad_layer)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer = 0;
+    int32_t width, height;
     hwc2_error_t err = HWC2_ERROR_NONE;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT, width, height);
 
         ASSERT_NO_FATAL_FAILURE(set_layer_plane_alpha(display, layer,
                 test_layer.get_plane_alpha(), &err));
@@ -1791,12 +1947,14 @@ TEST_F(hwc2_test, SET_LAYER_PLANE_ALPHA_update)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer;
+    int32_t width, height;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
 
@@ -1818,12 +1976,14 @@ TEST_F(hwc2_test, SET_LAYER_TRANSFORM)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer;
+    int32_t width, height;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         do {
             ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
@@ -1841,13 +2001,15 @@ TEST_F(hwc2_test, SET_LAYER_TRANSFORM_bad_layer)
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
     hwc2_layer_t layer = 0;
+    int32_t width, height;
     hwc2_error_t err = HWC2_ERROR_NONE;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT, width, height);
 
         ASSERT_NO_FATAL_FAILURE(set_layer_transform(display, layer,
                 test_layer.get_transform(), &err));
@@ -1871,13 +2033,15 @@ TEST_F(hwc2_test, SET_LAYER_TRANSFORM_update)
 {
     hwc2_display_t display = HWC_DISPLAY_PRIMARY;
     std::vector<hwc2_config_t> configs;
+    int32_t width, height;
     hwc2_layer_t layer;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
-        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
+        hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
 
         ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer));
 
@@ -1896,14 +2060,17 @@ TEST_F(hwc2_test, SET_LAYER_Z_ORDER)
     std::vector<hwc2_config_t> configs;
     size_t layer_cnt = 10;
     std::vector<hwc2_layer_t> layers;
+    int32_t width, height;
 
     ASSERT_NO_FATAL_FAILURE(get_display_configs(display, &configs));
 
     for (hwc2_config_t config: configs) {
         ASSERT_NO_FATAL_FAILURE(set_active_config(display, config));
+        ASSERT_NO_FATAL_FAILURE(get_active_dimensions(display, &width, &height));
 
         ASSERT_NO_FATAL_FAILURE(create_layers(display, layers, layer_cnt));
-        hwc2_test_layers test_layers(layers, HWC2_TEST_COVERAGE_COMPLETE);
+        hwc2_test_layers test_layers(layers, HWC2_TEST_COVERAGE_COMPLETE,
+                width, height);
 
         for (auto layer: layers)
             EXPECT_NO_FATAL_FAILURE(set_layer_z_order(display, layer,
