@@ -18,6 +18,7 @@
 #include <unordered_set>
 #include <gtest/gtest.h>
 #include <dlfcn.h>
+#include <android-base/unique_fd.h>
 #include <hardware/hardware.h>
 
 #define HWC2_INCLUDE_STRINGIFICATION
@@ -389,6 +390,23 @@ public:
         }
     }
 
+    void setLayerBuffer(hwc2_display_t display, hwc2_layer_t layer,
+            buffer_handle_t buffer, int32_t acquireFence,
+            hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_BUFFER>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_BUFFER));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                buffer, acquireFence));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer buffer";
+        }
+    }
+
     void setLayerColor(hwc2_display_t display, hwc2_layer_t layer,
             hwc_color_t color, hwc2_error_t* outErr = nullptr)
     {
@@ -666,19 +684,19 @@ protected:
      * Hwc2TestLayer to hwc2_layer_t on hwc2_display_t */
     using TestLayerPropertyFunction = void (*)(Hwc2Test* test,
             hwc2_display_t display, hwc2_layer_t layer,
-            const Hwc2TestLayer& testLayer);
+            Hwc2TestLayer* testLayer);
 
     /* Calls a set property functions from Hwc2Test to set property values from
      * Hwc2TestLayers to hwc2_layer_t on hwc2_display_t */
     using TestLayerPropertiesFunction = void (*)(Hwc2Test* test,
             hwc2_display_t display, hwc2_layer_t layer,
-            const Hwc2TestLayers& testLayers);
+            Hwc2TestLayers* testLayers);
 
     /* Calls a set property function from Hwc2Test to set a bad property value
      * on hwc2_layer_t on hwc2_display_t */
     using TestLayerPropertyBadLayerFunction = void (*)(Hwc2Test* test,
             hwc2_display_t display, hwc2_layer_t layer,
-            const Hwc2TestLayer& testLayer, hwc2_error_t* err);
+            Hwc2TestLayer* testLayer, hwc2_error_t* err);
 
     /* Calls a set property function from Hwc2Test to set a bad property value
      * on hwc2_layer_t on hwc2_display_t */
@@ -712,7 +730,7 @@ protected:
                     ASSERT_NO_FATAL_FAILURE(createLayer(display, &layer));
 
                     ASSERT_NO_FATAL_FAILURE(function(this, display, layer,
-                            testLayer));
+                            &testLayer));
 
                     ASSERT_NO_FATAL_FAILURE(destroyLayer(display, layer));
                 } while (advance(&testLayer));
@@ -744,7 +762,7 @@ protected:
 
                 do {
                     ASSERT_NO_FATAL_FAILURE(function(this, display, layer,
-                            testLayer));
+                            &testLayer));
                 } while (advance(&testLayer));
 
                 ASSERT_NO_FATAL_FAILURE(destroyLayer(display, layer));
@@ -777,7 +795,7 @@ protected:
 
                 for (auto layer : layers) {
                     EXPECT_NO_FATAL_FAILURE(function(this, display, layer,
-                            testLayers));
+                            &testLayers));
                 }
 
                 ASSERT_NO_FATAL_FAILURE(destroyLayers(display, std::move(layers)));
@@ -811,19 +829,19 @@ protected:
                 Hwc2TestLayer testLayer(coverage, width, height);
 
                 ASSERT_NO_FATAL_FAILURE(function(this, display, layer,
-                        testLayer, &err));
+                        &testLayer, &err));
                 EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
 
                 ASSERT_NO_FATAL_FAILURE(createLayer(display, &layer));
 
                 ASSERT_NO_FATAL_FAILURE(function(this, display, layer + 1,
-                        testLayer, &err));
+                        &testLayer, &err));
                 EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
 
                 ASSERT_NO_FATAL_FAILURE(destroyLayer(display, layer));
 
                 ASSERT_NO_FATAL_FAILURE(function(this, display, layer,
-                        testLayer, &err));
+                        &testLayer, &err));
                 EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
             }
         }
@@ -922,6 +940,13 @@ void hwc2TestVsyncCallback(hwc2_callback_data_t callbackData,
 bool advanceBlendMode(Hwc2TestLayer* testLayer)
 {
     return testLayer->advanceBlendMode();
+}
+
+bool advanceBuffer(Hwc2TestLayer* testLayer)
+{
+    if (testLayer->advanceComposition())
+        return true;
+    return testLayer->advanceBufferArea();
 }
 
 bool advanceColor(Hwc2TestLayer* testLayer)
@@ -1791,10 +1816,10 @@ TEST_F(Hwc2Test, SET_LAYER_COMPOSITION_TYPE)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Basic,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerCompositionType(display,
-                        layer, testLayer.getComposition()));
+                        layer, testLayer->getComposition()));
             },
 
             advanceComposition));
@@ -1806,12 +1831,12 @@ TEST_F(Hwc2Test, SET_LAYER_COMPOSITION_TYPE_update)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 hwc2_error_t err = HWC2_ERROR_NONE;
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(display,
-                        layer, testLayer.getComposition(), &err));
+                        layer, testLayer->getComposition(), &err));
                 EXPECT_TRUE(err == HWC2_ERROR_NONE
                         || err == HWC2_ERROR_UNSUPPORTED)
                          << "returned wrong error code";
@@ -1825,10 +1850,10 @@ TEST_F(Hwc2Test, SET_LAYER_COMPOSITION_TYPE_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
-                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(display,
-                        badLayer, testLayer.getComposition(), outErr));
+                        badLayer, testLayer->getComposition(), outErr));
             }
     ));
 }
@@ -1854,9 +1879,9 @@ TEST_F(Hwc2Test, SET_LAYER_COMPOSITION_TYPE_unsupported)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
-                hwc2_composition_t composition = testLayer.getComposition();
+                hwc2_composition_t composition = testLayer->getComposition();
                 hwc2_error_t err = HWC2_ERROR_NONE;
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(display,
@@ -1880,7 +1905,7 @@ TEST_F(Hwc2Test, SET_CURSOR_POSITION)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 hwc2_error_t err = HWC2_ERROR_NONE;
 
@@ -1888,7 +1913,7 @@ TEST_F(Hwc2Test, SET_CURSOR_POSITION)
                             layer, HWC2_COMPOSITION_CURSOR, &err));
                 EXPECT_EQ(err, HWC2_ERROR_NONE) << "returned wrong error code";
 
-                Point cursor = testLayer.getCursor();
+                Point cursor = testLayer->getCursor();
                 EXPECT_NO_FATAL_FAILURE(test->setCursorPosition(display,
                         layer, cursor.x, cursor.y));
             },
@@ -1901,7 +1926,7 @@ TEST_F(Hwc2Test, SET_CURSOR_POSITION_update)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 hwc2_error_t err = HWC2_ERROR_NONE;
 
@@ -1909,7 +1934,7 @@ TEST_F(Hwc2Test, SET_CURSOR_POSITION_update)
                         layer, HWC2_COMPOSITION_CURSOR, &err));
                 EXPECT_EQ(err, HWC2_ERROR_NONE) << "returned wrong error code";
 
-                Point cursor = testLayer.getCursor();
+                Point cursor = testLayer->getCursor();
                 EXPECT_NO_FATAL_FAILURE(test->setCursorPosition(display,
                         layer, cursor.x, cursor.y));
             },
@@ -1923,9 +1948,9 @@ TEST_F(Hwc2Test, SET_CURSOR_POSITION_composition_type_unset)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
-                Point cursor = testLayer.getCursor();
+                Point cursor = testLayer->getCursor();
                 EXPECT_NO_FATAL_FAILURE(test->setCursorPosition(display,
                         layer, cursor.x, cursor.y));
             },
@@ -1953,9 +1978,9 @@ TEST_F(Hwc2Test, SET_CURSOR_POSITION_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
-                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
 
-                Point cursor = testLayer.getCursor();
+                Point cursor = testLayer->getCursor();
                 ASSERT_NO_FATAL_FAILURE(test->setCursorPosition(display,
                         badLayer, cursor.x, cursor.y, outErr));
             }
@@ -1967,10 +1992,10 @@ TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerBlendMode(display, layer,
-                        testLayer.getBlendMode()));
+                        testLayer->getBlendMode()));
             },
 
             advanceBlendMode));
@@ -1981,10 +2006,10 @@ TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_update)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerBlendMode(display,
-                        layer, testLayer.getBlendMode()));
+                        layer, testLayer->getBlendMode()));
             },
 
             advanceBlendMode));
@@ -1995,10 +2020,10 @@ TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
-                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerBlendMode(display, badLayer,
-                        testLayer.getBlendMode(), outErr));
+                        testLayer->getBlendMode(), outErr));
             }
     ));
 }
@@ -2016,12 +2041,109 @@ TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_bad_parameter)
     ));
 }
 
+/* TESTCASE: Tests that the HWC2 can set the buffer of a layer. */
+TEST_F(Hwc2Test, SET_LAYER_BUFFER)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                    buffer_handle_t handle;
+                    android::base::unique_fd acquireFence;
+                    hwc2_composition_t composition = testLayer->getComposition();
+
+                    if (composition == HWC2_COMPOSITION_CLIENT
+                            || composition == HWC2_COMPOSITION_SOLID_COLOR
+                            || composition == HWC2_COMPOSITION_SIDEBAND)
+                        return;
+
+                    if (testLayer->getBuffer(&handle, &acquireFence) < 0)
+                        return;
+
+                    ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(
+                            display, layer, composition));
+
+                    EXPECT_NO_FATAL_FAILURE(test->setLayerBuffer(display, layer,
+                            handle, acquireFence));
+            },
+
+            advanceBuffer));
+}
+
+/* TESTCASE: Tests that the HWC2 can update the buffer of a layer. */
+TEST_F(Hwc2Test, SET_LAYER_BUFFER_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                    buffer_handle_t handle;
+                    android::base::unique_fd acquireFence;
+                    hwc2_composition_t composition = testLayer->getComposition();
+
+                    if (composition == HWC2_COMPOSITION_CLIENT
+                            || composition == HWC2_COMPOSITION_SOLID_COLOR
+                            || composition == HWC2_COMPOSITION_SIDEBAND)
+                        return;
+
+                    if (testLayer->getBuffer(&handle, &acquireFence) < 0)
+                        return;
+
+                    ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(
+                            display, layer, composition));
+
+                    EXPECT_NO_FATAL_FAILURE(test->setLayerBuffer(display, layer,
+                            handle, acquireFence));
+            },
+
+            advanceBuffer));
+}
+
+/* TESTCASE: Tests that the HWC2 cannot set the buffer of a bad layer. */
+TEST_F(Hwc2Test, SET_LAYER_BUFFER_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
+
+                buffer_handle_t handle = nullptr;
+                android::base::unique_fd acquireFence;
+
+                /* If there is not available buffer for the given buffer
+                 * properties, it should not fail this test case */
+                if (testLayer->getBuffer(&handle, &acquireFence) == 0) {
+                    *outErr = HWC2_ERROR_BAD_LAYER;
+                    return;
+                }
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerBuffer(display, badLayer,
+                        handle, acquireFence, outErr));
+            }
+    ));
+}
+
+/* TESTCASE: Tests that the HWC2 can set an invalid buffer for a layer. */
+TEST_F(Hwc2Test, SET_LAYER_BUFFER_bad_parameter)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadParameter(
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    hwc2_error_t* outErr) {
+
+                buffer_handle_t handle = nullptr;
+                int32_t acquireFence = -1;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerBuffer(display, layer,
+                        handle, acquireFence, outErr));
+            }
+    ));
+}
+
 /* TESTCASE: Tests that the HWC2 can set the color of a layer. */
 TEST_F(Hwc2Test, SET_LAYER_COLOR)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 hwc2_error_t err = HWC2_ERROR_NONE;
 
@@ -2032,7 +2154,7 @@ TEST_F(Hwc2Test, SET_LAYER_COLOR)
                             " error code";
                 } else {
                     EXPECT_NO_FATAL_FAILURE(test->setLayerColor(display, layer,
-                            testLayer.getColor()));
+                            testLayer->getColor()));
                 }
             },
 
@@ -2044,7 +2166,7 @@ TEST_F(Hwc2Test, SET_LAYER_COLOR_update)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 hwc2_error_t err = HWC2_ERROR_NONE;
 
@@ -2055,7 +2177,7 @@ TEST_F(Hwc2Test, SET_LAYER_COLOR_update)
                             " error code";
                 } else {
                     EXPECT_NO_FATAL_FAILURE(test->setLayerColor(display, layer,
-                            testLayer.getColor()));
+                            testLayer->getColor()));
                 }
             },
 
@@ -2068,10 +2190,10 @@ TEST_F(Hwc2Test, SET_LAYER_COLOR_composition_type_unset)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Basic,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerColor(display, layer,
-                        testLayer.getColor()));
+                        testLayer->getColor()));
             },
 
             advanceColor));
@@ -2082,10 +2204,10 @@ TEST_F(Hwc2Test, SET_LAYER_COLOR_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
-                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerColor(display, badLayer,
-                        testLayer.getColor(), outErr));
+                        testLayer->getColor(), outErr));
             }
     ));
 }
@@ -2095,10 +2217,10 @@ TEST_F(Hwc2Test, SET_LAYER_DATASPACE)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerDataspace(display, layer,
-                        testLayer.getDataspace()));
+                        testLayer->getDataspace()));
             },
 
             advanceDataspace));
@@ -2109,10 +2231,10 @@ TEST_F(Hwc2Test, SET_LAYER_DATASPACE_update)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerDataspace(display,
-                        layer, testLayer.getDataspace()));
+                        layer, testLayer->getDataspace()));
             },
 
             advanceDataspace));
@@ -2123,10 +2245,10 @@ TEST_F(Hwc2Test, SET_LAYER_DATASPACE_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
-                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerDataspace(display, badLayer,
-                        testLayer.getDataspace(), outErr));
+                        testLayer->getDataspace(), outErr));
             }
     ));
 }
@@ -2136,10 +2258,10 @@ TEST_F(Hwc2Test, SET_LAYER_DISPLAY_FRAME)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerDisplayFrame(display,
-                        layer, testLayer.getDisplayFrame()));
+                        layer, testLayer->getDisplayFrame()));
             },
 
             advanceDisplayFrame));
@@ -2150,10 +2272,10 @@ TEST_F(Hwc2Test, SET_LAYER_DISPLAY_FRAME_update)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerDisplayFrame(display,
-                        layer, testLayer.getDisplayFrame()));
+                        layer, testLayer->getDisplayFrame()));
             },
 
             advanceDisplayFrame));
@@ -2164,10 +2286,10 @@ TEST_F(Hwc2Test, SET_LAYER_DISPLAY_FRAME_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
-                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerDisplayFrame(display,
-                        badLayer, testLayer.getDisplayFrame(), outErr));
+                        badLayer, testLayer->getDisplayFrame(), outErr));
             }
     ));
 }
@@ -2177,12 +2299,12 @@ TEST_F(Hwc2Test, SET_LAYER_PLANE_ALPHA)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerBlendMode(display, layer,
-                        testLayer.getBlendMode()));
+                        testLayer->getBlendMode()));
                 EXPECT_NO_FATAL_FAILURE(test->setLayerPlaneAlpha(display, layer,
-                        testLayer.getPlaneAlpha()));
+                        testLayer->getPlaneAlpha()));
             },
 
             advancePlaneAlpha));
@@ -2193,12 +2315,12 @@ TEST_F(Hwc2Test, SET_LAYER_PLANE_ALPHA_update)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerBlendMode(display, layer,
-                        testLayer.getBlendMode()));
+                        testLayer->getBlendMode()));
                 EXPECT_NO_FATAL_FAILURE(test->setLayerPlaneAlpha(display, layer,
-                        testLayer.getPlaneAlpha()));
+                        testLayer->getPlaneAlpha()));
             },
 
             advancePlaneAlpha));
@@ -2209,10 +2331,10 @@ TEST_F(Hwc2Test, SET_LAYER_PLANE_ALPHA_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
-                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerPlaneAlpha(display, badLayer,
-                        testLayer.getPlaneAlpha(), outErr));
+                        testLayer->getPlaneAlpha(), outErr));
             }
     ));
 }
@@ -2222,10 +2344,10 @@ TEST_F(Hwc2Test, SET_LAYER_SOURCE_CROP)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerSourceCrop(display, layer,
-                        testLayer.getSourceCrop()));
+                        testLayer->getSourceCrop()));
             },
 
             advanceSourceCrop));
@@ -2236,10 +2358,10 @@ TEST_F(Hwc2Test, SET_LAYER_SOURCE_CROP_update)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerSourceCrop(display, layer,
-                        testLayer.getSourceCrop()));
+                        testLayer->getSourceCrop()));
             },
 
             advanceSourceCrop));
@@ -2250,10 +2372,10 @@ TEST_F(Hwc2Test, SET_LAYER_SOURCE_CROP_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
-                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerSourceCrop(display,
-                        badLayer, testLayer.getSourceCrop(), outErr));
+                        badLayer, testLayer->getSourceCrop(), outErr));
             }
     ));
 }
@@ -2263,10 +2385,10 @@ TEST_F(Hwc2Test, SET_LAYER_SURFACE_DAMAGE)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerSurfaceDamage(display, layer,
-                        testLayer.getSurfaceDamage()));
+                        testLayer->getSurfaceDamage()));
             },
 
             advanceSurfaceDamage));
@@ -2277,10 +2399,10 @@ TEST_F(Hwc2Test, SET_LAYER_SURFACE_DAMAGE_update)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerSurfaceDamage(display, layer,
-                        testLayer.getSurfaceDamage()));
+                        testLayer->getSurfaceDamage()));
             },
 
             advanceSurfaceDamage));
@@ -2291,10 +2413,10 @@ TEST_F(Hwc2Test, SET_LAYER_SURFACE_DAMAGE_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
-                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerSurfaceDamage(display,
-                        badLayer, testLayer.getSurfaceDamage(), outErr));
+                        badLayer, testLayer->getSurfaceDamage(), outErr));
             }
     ));
 }
@@ -2304,10 +2426,10 @@ TEST_F(Hwc2Test, SET_LAYER_TRANSFORM)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerTransform(display, layer,
-                        testLayer.getTransform()));
+                        testLayer->getTransform()));
             },
 
             advanceTransform));
@@ -2318,10 +2440,10 @@ TEST_F(Hwc2Test, SET_LAYER_TRANSFORM_update)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& testLayer) {
+                    Hwc2TestLayer* testLayer) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerTransform(display,
-                        layer, testLayer.getTransform()));
+                        layer, testLayer->getTransform()));
             },
 
             advanceTransform));
@@ -2332,10 +2454,10 @@ TEST_F(Hwc2Test, SET_LAYER_TRANSFORM_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
-                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* testLayer, hwc2_error_t* outErr) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerTransform(display, badLayer,
-                        testLayer.getTransform(), outErr));
+                        testLayer->getTransform(), outErr));
             }
     ));
 }
@@ -2345,10 +2467,10 @@ TEST_F(Hwc2Test, SET_LAYER_Z_ORDER)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerProperties(Hwc2TestCoverage::Complete, 10,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayers& testLayers) {
+                    Hwc2TestLayers* testLayers) {
 
                 EXPECT_NO_FATAL_FAILURE(test->setLayerZOrder(display, layer,
-                        testLayers.getZOrder(layer)));
+                        testLayers->getZOrder(layer)));
             }
     ));
 }
@@ -2387,7 +2509,7 @@ TEST_F(Hwc2Test, SET_LAYER_Z_ORDER_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
-                    const Hwc2TestLayer& /*testLayer*/, hwc2_error_t* outErr) {
+                    Hwc2TestLayer* /*testLayer*/, hwc2_error_t* outErr) {
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerZOrder(display, layer, 0,
                         outErr));

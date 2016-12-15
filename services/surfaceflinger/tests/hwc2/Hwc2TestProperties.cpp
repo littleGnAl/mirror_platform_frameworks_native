@@ -40,6 +40,15 @@ std::string Hwc2TestBufferArea::dump() const
     return dmp.str();
 }
 
+void Hwc2TestBufferArea::setDependent(Hwc2TestBuffer* buffer)
+{
+    mBuffer = buffer;
+    if (buffer) {
+        const Area& curr = get();
+        buffer->updateBufferArea(curr.width, curr.height);
+    }
+}
+
 void Hwc2TestBufferArea::setDependent(Hwc2TestSourceCrop* sourceCrop)
 {
     mSourceCrop = sourceCrop;
@@ -79,6 +88,8 @@ void Hwc2TestBufferArea::updateDependents()
 {
     const Area& curr = get();
 
+    if (mBuffer)
+        mBuffer->updateBufferArea(curr.width, curr.height);
     if (mSourceCrop)
         mSourceCrop->updateBufferArea(curr.width, curr.height);
     if (mSurfaceDamage)

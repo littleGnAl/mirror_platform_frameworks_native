@@ -26,6 +26,8 @@
 #undef HWC2_INCLUDE_STRINGIFICATION
 #undef HWC2_USE_CPP11
 
+#include "Hwc2TestBuffer.h"
+
 enum class Hwc2TestCoverage {
     Default = 0,
     Basic,
@@ -112,6 +114,7 @@ public:
 
     std::string dump() const override;
 
+    void setDependent(Hwc2TestBuffer* buffer);
     void setDependent(Hwc2TestSourceCrop* source_crop);
     void setDependent(Hwc2TestSurfaceDamage* surfaceDamage);
 
@@ -127,6 +130,7 @@ protected:
     int32_t mDisplayWidth;
     int32_t mDisplayHeight;
 
+    Hwc2TestBuffer* mBuffer = nullptr;
     Hwc2TestSourceCrop* mSourceCrop = nullptr;
     Hwc2TestSurfaceDamage* mSurfaceDamage = nullptr;
 
