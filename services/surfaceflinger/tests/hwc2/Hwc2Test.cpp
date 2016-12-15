@@ -27,6 +27,7 @@
 #undef HWC2_USE_CPP11
 
 #include "Hwc2TestLayer.h"
+#include "Hwc2TestLayers.h"
 
 void hwc2TestHotplugCallback(hwc2_callback_data_t callbackData,
         hwc2_display_t display, int32_t connected);
@@ -416,6 +417,23 @@ public:
         } else {
             ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer transform "
                     << getTransformName(transform);
+        }
+    }
+
+    void setLayerZOrder(hwc2_display_t display, hwc2_layer_t layer,
+            uint32_t zOrder, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_Z_ORDER>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_Z_ORDER));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                zOrder));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer z order "
+                    << zOrder;
         }
     }
 
@@ -1756,4 +1774,72 @@ TEST_F(Hwc2Test, SET_LAYER_TRANSFORM_update)
                     return testLayer->advanceTransform();
             }
     ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_Z_ORDER)
+{
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        const size_t layerCnt = 10;
+
+        for (auto config : configs) {
+            std::vector<hwc2_layer_t> layers;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+
+            ASSERT_NO_FATAL_FAILURE(createLayers(display, &layers, layerCnt));
+            Hwc2TestLayers testLayers(layers, HWC2_TEST_COVERAGE_COMPLETE);
+
+            for (auto layer : layers)
+                EXPECT_NO_FATAL_FAILURE(setLayerZOrder(display, layer,
+                        testLayers.getZOrder(layer)));
+
+            ASSERT_NO_FATAL_FAILURE(destroyLayers(display, &layers));
+        }
+    }
+}
+
+TEST_F(Hwc2Test, SET_LAYER_Z_ORDER_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(HWC2_TEST_COVERAGE_DEFAULT,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* /*testLayer*/) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerZOrder(display, layer, 0,
+                        &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_Z_ORDER_update)
+{
+    const std::vector<uint32_t> zOrders = { static_cast<uint32_t>(0),
+            static_cast<uint32_t>(1), static_cast<uint32_t>(UINT32_MAX / 4),
+            static_cast<uint32_t>(UINT32_MAX / 2),
+            static_cast<uint32_t>(UINT32_MAX) };
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            hwc2_layer_t layer;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+
+            ASSERT_NO_FATAL_FAILURE(createLayer(display, &layer));
+
+            for (uint32_t zOrder : zOrders)
+                EXPECT_NO_FATAL_FAILURE(setLayerZOrder(display, layer, zOrder));
+
+            ASSERT_NO_FATAL_FAILURE(destroyLayer(display, layer));
+        }
+    }
 }
