@@ -520,6 +520,23 @@ public:
         }
     }
 
+    void setLayerVisibleRegion(hwc2_display_t display, hwc2_layer_t layer,
+            const hwc_region_t& visibleRegion, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_VISIBLE_REGION>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_VISIBLE_REGION));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                visibleRegion));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer visible"
+                    " region";
+        }
+    }
+
     void setLayerZOrder(hwc2_display_t display, hwc2_layer_t layer,
             uint32_t zOrder, hwc2_error_t* outErr = nullptr)
     {
@@ -2400,6 +2417,52 @@ TEST_F(Hwc2Test, SET_LAYER_TRANSFORM_update)
 
             [] (Hwc2TestLayer* testLayer) {
                     return testLayer->advanceTransform();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_VISIBLE_REGION)
+{
+    const size_t layerCnt = 5;
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            int32_t width, height;
+            std::vector<hwc2_layer_t> layers;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+            ASSERT_NO_FATAL_FAILURE(getActiveDimensions(display, &width, &height));
+
+            ASSERT_NO_FATAL_FAILURE(createLayers(display, &layers, layerCnt));
+            Hwc2TestLayers testLayers(layers, HWC2_TEST_COVERAGE_BASIC, width,
+                    height);
+
+            do {
+                for (auto layer : layers)
+                    EXPECT_NO_FATAL_FAILURE(setLayerVisibleRegion(display,
+                            layer, testLayers.getVisibleRegion(layer)));
+            } while (testLayers.advanceVisibleRegions());
+
+            ASSERT_NO_FATAL_FAILURE(destroyLayers(display, &layers));
+        }
+    }
+}
+
+TEST_F(Hwc2Test, SET_LAYER_VISIBLE_REGION_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(HWC2_TEST_COVERAGE_DEFAULT,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* /*testLayer*/) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerVisibleRegion(display,
+                        layer, { }, &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
             }
     ));
 }
