@@ -388,6 +388,23 @@ public:
         }
     }
 
+    void setLayerPlaneAlpha(hwc2_display_t display, hwc2_layer_t layer,
+            float alpha, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_PLANE_ALPHA>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_PLANE_ALPHA));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                alpha));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer plane alpha "
+                    << alpha;
+        }
+    }
+
 protected:
     hwc2_function_pointer_t getFunction(hwc2_function_descriptor_t descriptor)
     {
@@ -730,6 +747,11 @@ bool advanceComposition(Hwc2TestLayer* testLayer)
 bool advanceDataspace(Hwc2TestLayer* testLayer)
 {
     return testLayer->advanceDataspace();
+}
+
+bool advancePlaneAlpha(Hwc2TestLayer* testLayer)
+{
+    return testLayer->advancePlaneAlpha();
 }
 
 
@@ -1725,6 +1747,51 @@ TEST_F(Hwc2Test, SET_LAYER_DATASPACE_bad_layer)
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerDataspace(display, badLayer,
                         testLayer.getDataspace(), outErr));
+            }
+    ));
+}
+
+/* TESTCASE: Tests that the HWC2 can set the plane alpha of a layer. */
+TEST_F(Hwc2Test, SET_LAYER_PLANE_ALPHA)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    const Hwc2TestLayer& testLayer) {
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerBlendMode(display, layer,
+                        testLayer.getBlendMode()));
+                EXPECT_NO_FATAL_FAILURE(test->setLayerPlaneAlpha(display, layer,
+                        testLayer.getPlaneAlpha()));
+            },
+
+            advancePlaneAlpha));
+}
+
+/* TESTCASE: Tests that the HWC2 can update the plane alpha of a layer. */
+TEST_F(Hwc2Test, SET_LAYER_PLANE_ALPHA_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    const Hwc2TestLayer& testLayer) {
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerBlendMode(display, layer,
+                        testLayer.getBlendMode()));
+                EXPECT_NO_FATAL_FAILURE(test->setLayerPlaneAlpha(display, layer,
+                        testLayer.getPlaneAlpha()));
+            },
+
+            advancePlaneAlpha));
+}
+
+/* TESTCASE: Tests that the HWC2 cannot set a plane alpha for a bad layer. */
+TEST_F(Hwc2Test, SET_LAYER_PLANE_ALPHA_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
+                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerPlaneAlpha(display, badLayer,
+                        testLayer.getPlaneAlpha(), outErr));
             }
     ));
 }
