@@ -40,29 +40,34 @@ public:
     android_dataspace_t    getDataspace() const;
     hwc_rect_t             getDisplayFrame() const;
     float                  getPlaneAlpha() const;
+    hwc_frect_t            getSourceCrop() const;
     hwc_transform_t        getTransform() const;
     uint32_t               getZOrder() const;
 
     bool advanceBlendMode();
+    bool advanceBufferArea();
     bool advanceColor();
     bool advanceComposition();
     bool advanceDataspace();
     bool advanceDisplayFrame();
     bool advancePlaneAlpha();
+    bool advanceSourceCrop();
     bool advanceTransform();
 
 private:
-    std::array<Hwc2TestContainer*, 7> mProperties = {{
+    std::array<Hwc2TestContainer*, 8> mProperties = {{
         &mBlendMode, &mColor, &mComposition, &mDataspace, &mDisplayFrame,
-        &mPlaneAlpha, &mTransform
+        &mPlaneAlpha, &mSourceCrop, &mTransform
     }};
 
     Hwc2TestBlendMode mBlendMode;
+    Hwc2TestBufferArea mBufferArea;
     Hwc2TestColor mColor;
     Hwc2TestComposition mComposition;
     Hwc2TestDataspace mDataspace;
     Hwc2TestDisplayFrame mDisplayFrame;
     Hwc2TestPlaneAlpha mPlaneAlpha;
+    Hwc2TestSourceCrop mSourceCrop;
     Hwc2TestTransform mTransform;
 
     uint32_t mZOrder;

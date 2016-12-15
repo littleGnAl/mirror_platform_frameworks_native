@@ -21,13 +21,18 @@
 Hwc2TestLayer::Hwc2TestLayer(Hwc2TestCoverage coverage, int32_t displayWidth,
         int32_t displayHeight, uint32_t zOrder)
     : mBlendMode(coverage),
+      mBufferArea(coverage, displayWidth, displayHeight),
       mColor(coverage),
       mComposition(coverage),
       mDataspace(coverage),
       mDisplayFrame(coverage, displayWidth, displayHeight),
       mPlaneAlpha(coverage),
+      mSourceCrop(coverage),
       mTransform(coverage),
-      mZOrder(zOrder) { }
+      mZOrder(zOrder)
+{
+    mBufferArea.setDependent(&mSourceCrop);
+}
 
 std::string Hwc2TestLayer::dump() const
 {
@@ -81,6 +86,11 @@ float Hwc2TestLayer::getPlaneAlpha() const
     return mPlaneAlpha.get();
 }
 
+hwc_frect_t Hwc2TestLayer::getSourceCrop() const
+{
+    return mSourceCrop.get();
+}
+
 hwc_transform_t Hwc2TestLayer::getTransform() const
 {
     return mTransform.get();
@@ -94,6 +104,11 @@ uint32_t Hwc2TestLayer::getZOrder() const
 bool Hwc2TestLayer::advanceBlendMode()
 {
     return mBlendMode.advance();
+}
+
+bool Hwc2TestLayer::advanceBufferArea()
+{
+    return mBufferArea.advance();
 }
 
 bool Hwc2TestLayer::advanceColor()
@@ -119,6 +134,11 @@ bool Hwc2TestLayer::advanceDisplayFrame()
 bool Hwc2TestLayer::advancePlaneAlpha()
 {
     return mPlaneAlpha.advance();
+}
+
+bool Hwc2TestLayer::advanceSourceCrop()
+{
+    return mSourceCrop.advance();
 }
 
 bool Hwc2TestLayer::advanceTransform()
