@@ -446,6 +446,26 @@ public:
                 << alpha;
     }
 
+    void set_layer_transform(hwc2_display_t display, hwc2_layer_t layer,
+            hwc_transform_t transform, hwc2_error_t *out_err)
+    {
+        HWC2_PFN_SET_LAYER_TRANSFORM pfn = (HWC2_PFN_SET_LAYER_TRANSFORM)
+                get_function(HWC2_FUNCTION_SET_LAYER_TRANSFORM);
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        *out_err = (hwc2_error_t) pfn(hwc2_device, display, layer, transform);
+    }
+
+    void set_layer_transform(hwc2_display_t display, hwc2_layer_t layer,
+            hwc_transform_t transform)
+    {
+        hwc2_error_t err = HWC2_ERROR_NONE;
+        ASSERT_NO_FATAL_FAILURE(set_layer_transform(display, layer, transform,
+                &err));
+        ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer transform "
+                << getTransformName(transform);
+    }
+
 protected:
     hwc2_function_pointer_t get_function(hwc2_function_descriptor_t descriptor)
     {
@@ -1802,6 +1822,89 @@ TEST_F(hwc2_test, SET_LAYER_PLANE_ALPHA_update)
                             test_layer.get_plane_alpha()));
                 } while (test_layer.advance_plane_alpha());
             } while (test_layer.advance_blend_mode());
+
+            ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, layer));
+        }
+    }
+}
+
+TEST_F(hwc2_test, SET_LAYER_TRANSFORM)
+{
+    std::vector<hwc2_config_t> configs;
+    hwc2_layer_t layer;
+
+    for (auto display = get_displays_begin(); display != get_displays_end();
+            display++) {
+        ASSERT_NO_FATAL_FAILURE(get_display_configs(*display, &configs));
+
+        for (hwc2_config_t config: configs) {
+            ASSERT_NO_FATAL_FAILURE(set_active_config(*display, config));
+            hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+
+            do {
+                ASSERT_NO_FATAL_FAILURE(create_layer(*display, &layer));
+
+                EXPECT_NO_FATAL_FAILURE(set_layer_transform(*display, layer,
+                        test_layer.get_transform()));
+
+                ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, layer));
+            } while (test_layer.advance_transform());
+        }
+    }
+}
+
+TEST_F(hwc2_test, SET_LAYER_TRANSFORM_bad_layer)
+{
+    std::vector<hwc2_config_t> configs;
+    hwc2_layer_t layer = 0;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    for (auto display = get_displays_begin(); display != get_displays_end();
+            display++) {
+        ASSERT_NO_FATAL_FAILURE(get_display_configs(*display, &configs));
+
+        for (hwc2_config_t config: configs) {
+            ASSERT_NO_FATAL_FAILURE(set_active_config(*display, config));
+            hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_DEFAULT);
+
+            ASSERT_NO_FATAL_FAILURE(set_layer_transform(*display, layer,
+                    test_layer.get_transform(), &err));
+            EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+
+            ASSERT_NO_FATAL_FAILURE(create_layer(*display, &layer));
+
+            ASSERT_NO_FATAL_FAILURE(set_layer_transform(*display, layer + 1,
+                    test_layer.get_transform(), &err));
+            EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+
+            ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, layer));
+
+            ASSERT_NO_FATAL_FAILURE(set_layer_transform(*display, layer,
+                    test_layer.get_transform(), &err));
+            EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+        }
+    }
+}
+
+TEST_F(hwc2_test, SET_LAYER_TRANSFORM_update)
+{
+    std::vector<hwc2_config_t> configs;
+    hwc2_layer_t layer;
+
+    for (auto display = get_displays_begin(); display != get_displays_end();
+            display++) {
+        ASSERT_NO_FATAL_FAILURE(get_display_configs(*display, &configs));
+
+        for (hwc2_config_t config: configs) {
+            ASSERT_NO_FATAL_FAILURE(set_active_config(*display, config));
+            hwc2_test_layer test_layer(HWC2_TEST_COVERAGE_COMPLETE);
+
+            ASSERT_NO_FATAL_FAILURE(create_layer(*display, &layer));
+
+            do {
+                EXPECT_NO_FATAL_FAILURE(set_layer_transform(*display, layer,
+                        test_layer.get_transform()));
+            } while (test_layer.advance_transform());
 
             ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, layer));
         }
