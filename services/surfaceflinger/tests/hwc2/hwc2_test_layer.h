@@ -30,16 +30,20 @@
 class hwc2_test_layer {
 public:
     hwc2_test_layer(hwc2_test_coverage_t coverage, int32_t display_width,
-            int32_t display_height, uint32_t z_order = 0);
+            int32_t display_height);
 
     std::string dump() const;
 
     int get_buffer(buffer_handle_t *out_handle,
             android::base::unique_fd *out_acquire_fence);
 
+    void set_z_order(uint32_t z_order);
+    void set_visible_region(const android::Region &region);
+
     void reset();
 
     hwc2_blend_mode_t      get_blend_mode() const;
+    const std::pair<int32_t, int32_t> get_buffer_area() const;
     const hwc_color_t      get_color() const;
     hwc2_composition_t     get_composition() const;
     const std::pair<int32_t, int32_t> get_cursor() const;
@@ -49,6 +53,7 @@ public:
     const hwc_frect_t      get_source_crop() const;
     const hwc_region_t     get_surface_damage() const;
     hwc_transform_t        get_transform() const;
+    const hwc_region_t     get_visible_region() const;
     uint32_t               get_z_order() const;
 
     bool advance_blend_mode();
@@ -62,11 +67,12 @@ public:
     bool advance_source_crop();
     bool advance_surface_damage();
     bool advance_transform();
+    bool advance_visible_region();
 
 private:
-    std::array<hwc2_test_container *, 10> properties = {{
-        &blend_mode, &color, &composition, &cursor, &dataspace, &display_frame,
-        &plane_alpha, &source_crop, &surface_damage, &transform
+    std::array<hwc2_test_container *, 11> properties = {{
+        &blend_mode, &buffer_area, &color, &composition, &cursor, &dataspace,
+        &display_frame, &plane_alpha, &source_crop, &surface_damage, &transform
     }};
 
     hwc2_test_buffer buffer;
@@ -82,6 +88,7 @@ private:
     hwc2_test_source_crop source_crop;
     hwc2_test_surface_damage surface_damage;
     hwc2_test_transform transform;
+    hwc2_test_visible_region visible_region;
 
     uint32_t z_order;
 };
