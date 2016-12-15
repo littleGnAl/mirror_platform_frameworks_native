@@ -139,6 +139,28 @@ protected:
 };
 
 
+class Hwc2TestDisplayFrame : public Hwc2TestProperty<hwc_rect_t> {
+public:
+    Hwc2TestDisplayFrame(hwc2_test_coverage_t coverage,
+            int32_t displayWidth, int32_t displayHeight);
+
+    std::string dump() const;
+
+protected:
+    void update();
+
+    const std::vector<hwc_frect_t>& mFrectScalars;
+    const static std::vector<hwc_frect_t> mDefaultFrectScalars;
+    const static std::vector<hwc_frect_t> mBasicFrectScalars;
+    const static std::vector<hwc_frect_t> mCompleteFrectScalars;
+
+    int32_t mDisplayWidth;
+    int32_t mDisplayHeight;
+
+    std::vector<hwc_rect_t> mDisplayFrames;
+};
+
+
 class Hwc2TestPlaneAlpha : public Hwc2TestProperty<float> {
 public:
     Hwc2TestPlaneAlpha(hwc2_test_coverage_t coverage);

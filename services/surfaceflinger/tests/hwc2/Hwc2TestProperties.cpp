@@ -183,6 +183,66 @@ const std::vector<android_dataspace_t> Hwc2TestDataspace::completeDataspaces = {
 };
 
 
+Hwc2TestDisplayFrame::Hwc2TestDisplayFrame(hwc2_test_coverage_t coverage,
+        int32_t displayWidth, int32_t displayHeight)
+    : Hwc2TestProperty(mDisplayFrames),
+      mFrectScalars((coverage == HWC2_TEST_COVERAGE_COMPLETE)? mCompleteFrectScalars:
+            (coverage == HWC2_TEST_COVERAGE_BASIC)? mBasicFrectScalars:
+            mDefaultFrectScalars),
+      mDisplayWidth(displayWidth),
+      mDisplayHeight(displayHeight)
+{
+    update();
+}
+
+std::string Hwc2TestDisplayFrame::dump() const
+{
+    std::stringstream dmp;
+    const hwc_rect_t& displayFrame = get();
+    dmp << "\tdisplay frame: left " << displayFrame.left << ", top "
+            << displayFrame.top << ", right " << displayFrame.right
+            << ", bottom " << displayFrame.bottom << "\n";
+    return dmp.str();
+}
+
+void Hwc2TestDisplayFrame::update()
+{
+    mDisplayFrames.clear();
+
+    if (mDisplayWidth == 0 && mDisplayHeight == 0) {
+        mDisplayFrames.push_back({0, 0, 0, 0});
+        return;
+    }
+
+    for (const auto& frectScalar : mFrectScalars)
+        mDisplayFrames.push_back({
+                static_cast<int>(frectScalar.left * mDisplayWidth),
+                static_cast<int>(frectScalar.top * mDisplayHeight),
+                static_cast<int>(frectScalar.right * mDisplayWidth),
+                static_cast<int>(frectScalar.bottom * mDisplayHeight)});
+}
+
+const std::vector<hwc_frect_t> Hwc2TestDisplayFrame::mDefaultFrectScalars = {
+    {0.0, 0.0, 1.0, 1.0},
+};
+
+const std::vector<hwc_frect_t> Hwc2TestDisplayFrame::mBasicFrectScalars = {
+    {0.0, 0.0, 1.0, 1.0},
+    {0.0, 0.0, 1.0, 0.05},
+    {0.0, 0.95, 1.0, 1.0},
+};
+
+const std::vector<hwc_frect_t> Hwc2TestDisplayFrame::mCompleteFrectScalars = {
+    {0.0, 0.0, 1.0, 1.0},
+    {0.0, 0.05, 1.0, 0.95},
+    {0.0, 0.05, 1.0, 1.0},
+    {0.0, 0.0, 1.0, 0.05},
+    {0.0, 0.95, 1.0, 1.0},
+    {0.25, 0.0, 0.75, 0.35},
+    {0.25, 0.25, 0.75, 0.75},
+};
+
+
 Hwc2TestPlaneAlpha::Hwc2TestPlaneAlpha(hwc2_test_coverage_t coverage)
     : Hwc2TestProperty(coverage, mCompletePlaneAlphas, mBasicPlaneAlphas,
             mDefaultPlaneAlphas) { }

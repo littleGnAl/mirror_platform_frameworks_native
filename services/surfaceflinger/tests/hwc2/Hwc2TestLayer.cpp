@@ -18,11 +18,13 @@
 
 #include "Hwc2TestLayer.h"
 
-Hwc2TestLayer::Hwc2TestLayer(hwc2_test_coverage_t coverage, uint32_t zOrder)
+Hwc2TestLayer::Hwc2TestLayer(hwc2_test_coverage_t coverage,
+        int32_t displayWidth, int32_t displayHeight, uint32_t zOrder)
     : mBlendMode(coverage),
       mColor(coverage),
       mComposition(coverage),
       mDataspace(coverage),
+      mDisplayFrame(coverage, displayWidth, displayHeight),
       mPlaneAlpha(coverage),
       mTransform(coverage),
       mZOrder(zOrder) { }
@@ -67,6 +69,11 @@ android_dataspace_t Hwc2TestLayer::getDataspace() const
     return mDataspace.get();
 }
 
+hwc_rect_t Hwc2TestLayer::getDisplayFrame() const
+{
+    return mDisplayFrame.get();
+}
+
 float Hwc2TestLayer::getPlaneAlpha() const
 {
     return mPlaneAlpha.get();
@@ -100,6 +107,11 @@ bool Hwc2TestLayer::advanceComposition()
 bool Hwc2TestLayer::advanceDataspace()
 {
     return mDataspace.advance();
+}
+
+bool Hwc2TestLayer::advanceDisplayFrame()
+{
+    return mDisplayFrame.advance();
 }
 
 bool Hwc2TestLayer::advancePlaneAlpha()
