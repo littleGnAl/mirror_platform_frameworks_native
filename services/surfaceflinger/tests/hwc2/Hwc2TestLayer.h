@@ -34,6 +34,7 @@ public:
     void reset();
 
     hwc2_blend_mode_t      getBlendMode() const;
+    hwc_color_t            getColor() const;
     hwc2_composition_t     getComposition() const;
     android_dataspace_t    getDataspace() const;
     float                  getPlaneAlpha() const;
@@ -41,17 +42,20 @@ public:
     uint32_t               getZOrder() const;
 
     bool advanceBlendMode();
+    bool advanceColor();
     bool advanceComposition();
     bool advanceDataspace();
     bool advancePlaneAlpha();
     bool advanceTransform();
 
 private:
-    std::array<Hwc2TestContainer*, 5> mProperties = {{
-        &mBlendMode, &mComposition, &mDataspace, &mPlaneAlpha, &mTransform
+    std::array<Hwc2TestContainer*, 6> mProperties = {{
+        &mBlendMode, &mColor, &mComposition, &mDataspace, &mPlaneAlpha,
+        &mTransform
     }};
 
     Hwc2TestBlendMode mBlendMode;
+    Hwc2TestColor mColor;
     Hwc2TestComposition mComposition;
     Hwc2TestDataspace mDataspace;
     Hwc2TestPlaneAlpha mPlaneAlpha;

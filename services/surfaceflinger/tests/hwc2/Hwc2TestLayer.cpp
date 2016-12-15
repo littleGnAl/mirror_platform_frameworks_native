@@ -20,6 +20,7 @@
 
 Hwc2TestLayer::Hwc2TestLayer(Hwc2TestCoverage coverage, uint32_t zOrder)
     : mBlendMode(coverage),
+      mColor(coverage),
       mComposition(coverage),
       mDataspace(coverage),
       mPlaneAlpha(coverage),
@@ -53,6 +54,11 @@ hwc2_blend_mode_t Hwc2TestLayer::getBlendMode() const
     return mBlendMode.get();
 }
 
+hwc_color_t Hwc2TestLayer::getColor() const
+{
+    return mColor.get();
+}
+
 hwc2_composition_t Hwc2TestLayer::getComposition() const
 {
     return mComposition.get();
@@ -81,6 +87,11 @@ uint32_t Hwc2TestLayer::getZOrder() const
 bool Hwc2TestLayer::advanceBlendMode()
 {
     return mBlendMode.advance();
+}
+
+bool Hwc2TestLayer::advanceColor()
+{
+    return mColor.advance();
 }
 
 bool Hwc2TestLayer::advanceComposition()
