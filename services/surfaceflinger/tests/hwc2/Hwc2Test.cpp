@@ -405,6 +405,23 @@ public:
         }
     }
 
+    void setLayerTransform(hwc2_display_t display, hwc2_layer_t layer,
+            hwc_transform_t transform, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_TRANSFORM>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_TRANSFORM));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                transform));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer transform "
+                    << getTransformName(transform);
+        }
+    }
+
 protected:
     hwc2_function_pointer_t getFunction(hwc2_function_descriptor_t descriptor)
     {
@@ -752,6 +769,11 @@ bool advanceDataspace(Hwc2TestLayer* testLayer)
 bool advancePlaneAlpha(Hwc2TestLayer* testLayer)
 {
     return testLayer->advancePlaneAlpha();
+}
+
+bool advanceTransform(Hwc2TestLayer* testLayer)
+{
+    return testLayer->advanceTransform();
 }
 
 
@@ -1792,6 +1814,47 @@ TEST_F(Hwc2Test, SET_LAYER_PLANE_ALPHA_bad_layer)
 
                 ASSERT_NO_FATAL_FAILURE(test->setLayerPlaneAlpha(display, badLayer,
                         testLayer.getPlaneAlpha(), outErr));
+            }
+    ));
+}
+
+/* TESTCASE: Tests that the HWC2 can set the transform value of a layer. */
+TEST_F(Hwc2Test, SET_LAYER_TRANSFORM)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    const Hwc2TestLayer& testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerTransform(display, layer,
+                        testLayer.getTransform()));
+            },
+
+            advanceTransform));
+}
+
+/* TESTCASE: Tests that the HWC2 can update the transform value of a layer. */
+TEST_F(Hwc2Test, SET_LAYER_TRANSFORM_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    const Hwc2TestLayer& testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerTransform(display,
+                        layer, testLayer.getTransform()));
+            },
+
+            advanceTransform));
+}
+
+/* TESTCASE: Tests that the HWC2 cannot set the transform for a bad layer. */
+TEST_F(Hwc2Test, SET_LAYER_TRANSFORM_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerTransform(display, layer,
+                        testLayer.getTransform(), outErr));
             }
     ));
 }
