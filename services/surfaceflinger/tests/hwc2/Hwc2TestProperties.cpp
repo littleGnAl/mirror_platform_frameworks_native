@@ -15,6 +15,7 @@
  */
 
 #include <sstream>
+#include <cutils/log.h>
 
 #include "Hwc2TestProperties.h"
 
@@ -42,7 +43,19 @@ std::string Hwc2TestBufferArea::dump() const
 void Hwc2TestBufferArea::setDependent(Hwc2TestSourceCrop* sourceCrop)
 {
     mSourceCrop = sourceCrop;
-    updateDependents();
+    if (mSourceCrop) {
+        const std::pair<int32_t, int32_t>& curr = get();
+        mSourceCrop->updateBufferArea(curr.first, curr.second);
+    }
+}
+
+void Hwc2TestBufferArea::setDependent(Hwc2TestSurfaceDamage* surfaceDamage)
+{
+    mSurfaceDamage = surfaceDamage;
+    if (mSurfaceDamage) {
+        const std::pair<int32_t, int32_t>& curr = get();
+        mSurfaceDamage->updateBufferArea(curr.first, curr.second);
+    }
 }
 
 void Hwc2TestBufferArea::update()
@@ -66,6 +79,8 @@ void Hwc2TestBufferArea::updateDependents()
 
     if (mSourceCrop)
         mSourceCrop->updateBufferArea(curr.first, curr.second);
+    if (mSurfaceDamage)
+        mSurfaceDamage->updateBufferArea(curr.first, curr.second);
 }
 
 const std::vector<float> Hwc2TestBufferArea::mDefaultScalars = {
@@ -441,6 +456,104 @@ const std::vector<hwc_frect_t> Hwc2TestSourceCrop::mCompleteFrectScalars = {
     {0.5, 0.5, 1.0, 1.0},
     {0.0, 0.0, 0.25, 0.25},
     {0.25, 0.25, 0.75, 0.75},
+};
+
+
+Hwc2TestSurfaceDamage::Hwc2TestSurfaceDamage(hwc2_test_coverage_t coverage)
+    : Hwc2TestProperty(mSurfaceDamages),
+      mRegionScalars((coverage == HWC2_TEST_COVERAGE_COMPLETE)? mCompleteRegionScalars:
+            (coverage == HWC2_TEST_COVERAGE_BASIC)? mBasicRegionScalars:
+            mDefaultRegionScalars)
+{
+    update();
+}
+
+Hwc2TestSurfaceDamage::~Hwc2TestSurfaceDamage()
+{
+    freeSurfaceDamages();
+}
+
+std::string Hwc2TestSurfaceDamage::dump() const
+{
+    std::stringstream dmp;
+
+    const hwc_region_t& curr = get();
+    dmp << "\tsurface damage: region count " << curr.numRects << "\n";
+    for (size_t i = 0; i < curr.numRects; i++) {
+        const hwc_rect_t& rect = curr.rects[i];
+        dmp << "\t\trect: left " << rect.left << ", top " << rect.top
+                << ", right " << rect.right << ", bottom " << rect.bottom << "\n";
+    }
+
+    return dmp.str();
+}
+
+void Hwc2TestSurfaceDamage::updateBufferArea(int32_t bufferWidth,
+        int32_t bufferHeight)
+{
+    mBufferWidth = bufferWidth;
+    mBufferHeight = bufferHeight;
+    update();
+}
+
+void Hwc2TestSurfaceDamage::update()
+{
+    freeSurfaceDamages();
+
+    if (mBufferWidth == 0 && mBufferHeight == 0) {
+        mSurfaceDamages.push_back({0, nullptr});
+        return;
+    }
+
+    hwc_region_t damage;
+
+    for (const auto& regionScalar : mRegionScalars) {
+        damage.numRects = mRegionScalars.size();
+
+        if (damage.numRects > 0) {
+            hwc_rect_t* rects = new hwc_rect_t[damage.numRects];
+            if (!rects) {
+                ALOGW("failed to allocate new hwc_rect_t array");
+                continue;
+            }
+
+            for (size_t i = 0; i < regionScalar.size(); i++) {
+                rects[i].left = regionScalar[i].left * mBufferWidth;
+                rects[i].top = regionScalar[i].top * mBufferHeight;
+                rects[i].right = regionScalar[i].right * mBufferWidth;
+                rects[i].bottom = regionScalar[i].bottom * mBufferHeight;
+            }
+
+            damage.rects = static_cast<hwc_rect_t const*>(rects);
+        } else {
+            damage.rects = nullptr;
+        }
+
+        mSurfaceDamages.push_back(damage);
+    }
+}
+
+void Hwc2TestSurfaceDamage::freeSurfaceDamages()
+{
+    for (const auto& surfaceDamage : mSurfaceDamages)
+        if (surfaceDamage.numRects > 0 && surfaceDamage.rects)
+            delete[] surfaceDamage.rects;
+    mSurfaceDamages.clear();
+}
+
+const std::vector<std::vector<hwc_frect_t>> Hwc2TestSurfaceDamage::mDefaultRegionScalars = {
+    {{}},
+};
+
+const std::vector<std::vector<hwc_frect_t>> Hwc2TestSurfaceDamage::mBasicRegionScalars = {
+    {{}},
+    {{0.0, 0.0, 1.0, 1.0}},
+};
+
+const std::vector<std::vector<hwc_frect_t>> Hwc2TestSurfaceDamage::mCompleteRegionScalars = {
+    {{}},
+    {{0.0, 0.0, 1.0, 1.0}},
+    {{0.0, 0.0, 0.5, 0.5}, {0.5, 0.5, 1.0, 1.0}},
 };
 
 

@@ -468,6 +468,23 @@ public:
         }
     }
 
+    void setLayerSurfaceDamage(hwc2_display_t display, hwc2_layer_t layer,
+            const hwc_region_t& surfaceDamage, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_SURFACE_DAMAGE>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_SURFACE_DAMAGE));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                surfaceDamage));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer surface"
+                    " damage";
+        }
+    }
+
     void setLayerTransform(hwc2_display_t display, hwc2_layer_t layer,
             hwc_transform_t transform, hwc2_error_t* outErr = nullptr)
     {
@@ -2088,6 +2105,57 @@ TEST_F(Hwc2Test, SET_LAYER_SOURCE_CROP_update)
 
             [] (Hwc2TestLayer* testLayer) {
                     if (testLayer->advanceSourceCrop())
+                        return true;
+                    return testLayer->advanceBufferArea();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_SURFACE_DAMAGE)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerSurfaceDamage(display, layer,
+                        testLayer->getSurfaceDamage()));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    if (testLayer->advanceSurfaceDamage())
+                        return true;
+                    return testLayer->advanceBufferArea();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_SURFACE_DAMAGE_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(HWC2_TEST_COVERAGE_DEFAULT,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerSurfaceDamage(display, layer,
+                        testLayer->getSurfaceDamage(), &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_SURFACE_DAMAGE_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerSurfaceDamage(display, layer,
+                        testLayer->getSurfaceDamage()));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    if (testLayer->advanceSurfaceDamage())
                         return true;
                     return testLayer->advanceBufferArea();
             }

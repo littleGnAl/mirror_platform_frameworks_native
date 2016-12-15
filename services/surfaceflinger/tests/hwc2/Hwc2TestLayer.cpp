@@ -29,10 +29,12 @@ Hwc2TestLayer::Hwc2TestLayer(hwc2_test_coverage_t coverage,
       mDisplayFrame(coverage, displayWidth, displayHeight),
       mPlaneAlpha(coverage),
       mSourceCrop(coverage),
+      mSurfaceDamage(coverage),
       mTransform(coverage),
       mZOrder(zOrder)
 {
     mBufferArea.setDependent(&mSourceCrop);
+    mBufferArea.setDependent(&mSurfaceDamage);
 }
 
 std::string Hwc2TestLayer::dump() const
@@ -95,6 +97,11 @@ hwc_frect_t Hwc2TestLayer::getSourceCrop() const
     return mSourceCrop.get();
 }
 
+hwc_region_t Hwc2TestLayer::getSurfaceDamage() const
+{
+    return mSurfaceDamage.get();
+}
+
 hwc_transform_t Hwc2TestLayer::getTransform() const
 {
     return mTransform.get();
@@ -148,6 +155,11 @@ bool Hwc2TestLayer::advancePlaneAlpha()
 bool Hwc2TestLayer::advanceSourceCrop()
 {
     return mSourceCrop.advance();
+}
+
+bool Hwc2TestLayer::advanceSurfaceDamage()
+{
+    return mSurfaceDamage.advance();
 }
 
 bool Hwc2TestLayer::advanceTransform()
