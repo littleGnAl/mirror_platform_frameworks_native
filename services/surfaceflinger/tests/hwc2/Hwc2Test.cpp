@@ -1007,6 +1007,23 @@ public:
         }
     }
 
+    void dump(std::string* outBuffer)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_DUMP>(
+                getFunction(HWC2_FUNCTION_DUMP));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        uint32_t size = 0;
+
+        pfn(mHwc2Device, &size, nullptr);
+
+        std::vector<char> buffer(size);
+
+        pfn(mHwc2Device, &size, buffer.data());
+
+        outBuffer->assign(buffer.data());
+    }
+
 protected:
     hwc2_function_pointer_t getFunction(hwc2_function_descriptor_t descriptor)
     {
@@ -4582,4 +4599,11 @@ TEST_F(Hwc2Test, SET_OUTPUT_BUFFER_unsupported)
 
         } while (testVirtualDisplay.advance());
     }
+}
+
+TEST_F(Hwc2Test, DUMP)
+{
+    std::string buffer;
+
+    ASSERT_NO_FATAL_FAILURE(dump(&buffer));
 }
