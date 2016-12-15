@@ -35,7 +35,8 @@ public:
         : hwc2_device(nullptr),
           hotplug_mutex(),
           hotplug_cv(),
-          receiving_hotplugs(false) { }
+          receiving_hotplugs(false),
+          layers() { }
 
     virtual void SetUp()
     {
@@ -55,6 +56,16 @@ public:
 
     virtual void TearDown()
     {
+        hwc2_display_t display;
+        hwc2_layer_t layer;
+
+        for (auto itr = layers.begin(); itr != layers.end();) {
+            display = itr->first;
+            layer = itr->second;
+            itr++;
+            destroy_layer(display, layer);
+        }
+
         if (hwc2_device)
             hwc2_close(hwc2_device);
     }
@@ -108,6 +119,46 @@ public:
             displays.insert(display);
 
         hotplug_cv.notify_all();
+    }
+
+    void create_layer(hwc2_display_t display, hwc2_layer_t *out_layer,
+            hwc2_error_t *out_err)
+    {
+        HWC2_PFN_CREATE_LAYER pfn = (HWC2_PFN_CREATE_LAYER)
+                get_function(HWC2_FUNCTION_CREATE_LAYER);
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        *out_err = (hwc2_error_t) pfn(hwc2_device, display, out_layer);
+
+        if (*out_err == HWC2_ERROR_NONE)
+            layers.insert(std::make_pair(display, *out_layer));
+    }
+
+    void create_layer(hwc2_display_t display, hwc2_layer_t *out_layer)
+    {
+        hwc2_error_t err = HWC2_ERROR_NONE;
+        ASSERT_NO_FATAL_FAILURE(create_layer(display, out_layer, &err));
+        ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to create layer";
+    }
+
+    void destroy_layer(hwc2_display_t display, hwc2_layer_t layer,
+            hwc2_error_t *out_err)
+    {
+        HWC2_PFN_DESTROY_LAYER pfn = (HWC2_PFN_DESTROY_LAYER)
+                get_function(HWC2_FUNCTION_DESTROY_LAYER);
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        *out_err = (hwc2_error_t) pfn(hwc2_device, display, layer);
+
+        if (*out_err == HWC2_ERROR_NONE)
+            layers.erase(std::make_pair(display, layer));
+    }
+
+    void destroy_layer(hwc2_display_t display, hwc2_layer_t layer)
+    {
+        hwc2_error_t err = HWC2_ERROR_NONE;
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(display, layer, &err));
+        ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to destroy layer " << layer;
     }
 
 protected:
@@ -166,12 +217,47 @@ protected:
                 " are registered. This should never happen.";
     }
 
+    /* NOTE: will create min(new_layer_cnt, max supported layers) layers */
+    void create_layers(hwc2_display_t display,
+            std::vector<hwc2_layer_t> &layers, size_t new_layer_cnt)
+    {
+        std::vector<hwc2_layer_t> new_layers;
+        hwc2_layer_t layer;
+        hwc2_error_t err = HWC2_ERROR_NONE;
+
+        for (size_t i = 0; i < new_layer_cnt; i++) {
+
+            EXPECT_NO_FATAL_FAILURE(create_layer(display, &layer, &err));
+            if (err == HWC2_ERROR_NO_RESOURCES)
+                break;
+            if (err != HWC2_ERROR_NONE) {
+                new_layers.clear();
+                ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to create layer";
+            }
+            new_layers.push_back(layer);
+        }
+
+        layers.insert(layers.end(), new_layers.begin(), new_layers.end());
+    }
+
+    void destroy_layers(hwc2_display_t display,
+            std::vector<hwc2_layer_t> &layers)
+    {
+        for (hwc2_layer_t layer: layers)
+            EXPECT_NO_FATAL_FAILURE(destroy_layer(display, layer));
+        layers.clear();
+    }
+
     hwc2_device_t *hwc2_device;
 
     std::mutex hotplug_mutex;
     std::condition_variable hotplug_cv;
     bool receiving_hotplugs;
     std::unordered_set<hwc2_display_t> displays;
+
+    /* Store all created layers that have not been destroyed. If an ASSERT_*
+     * fails, then destroy the layers on exit */
+    std::set<std::pair<hwc2_display_t, hwc2_layer_t>> layers;
 };
 
 void hwc2_test_hotplug_callback(hwc2_callback_data_t callback_data,
@@ -311,4 +397,97 @@ TEST_F(hwc2_test, GET_DISPLAY_TYPE_bad_display)
 
     ASSERT_NO_FATAL_FAILURE(get_display_type(display, &type, &err));
     EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+}
+
+TEST_F(hwc2_test, CREATE_DESTROY_LAYER)
+{
+    hwc2_layer_t layer;
+
+    for (auto display = get_displays_begin(); display != get_displays_end();
+            display++) {
+        ASSERT_NO_FATAL_FAILURE(create_layer(*display, &layer));
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, layer));
+    }
+}
+
+TEST_F(hwc2_test, CREATE_LAYER_bad_display)
+{
+    hwc2_display_t display;
+    hwc2_layer_t layer;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(get_bad_display(&display));
+
+    ASSERT_NO_FATAL_FAILURE(create_layer(display, &layer, &err));
+    EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+}
+
+TEST_F(hwc2_test, CREATE_LAYER_no_resources)
+{
+    std::vector<hwc2_layer_t> layers;
+    size_t layer_cnt = 1000;
+
+    for (auto display = get_displays_begin(); display != get_displays_end();
+            display++) {
+        ASSERT_NO_FATAL_FAILURE(create_layers(*display, layers, layer_cnt));
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layers(*display, layers));
+    }
+}
+
+TEST_F(hwc2_test, DESTROY_LAYER_bad_display)
+{
+    hwc2_display_t bad_display;
+    hwc2_layer_t layer = 0;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(get_bad_display(&bad_display));
+
+    for (auto display = get_displays_begin(); display != get_displays_end();
+            display++) {
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(bad_display, layer, &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+
+        ASSERT_NO_FATAL_FAILURE(create_layer(*display, &layer));
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(bad_display, layer, &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, layer));
+    }
+}
+
+TEST_F(hwc2_test, DESTROY_LAYER_bad_layer)
+{
+    hwc2_layer_t layer;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    for (auto display = get_displays_begin(); display != get_displays_end();
+            display++) {
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, UINT64_MAX / 2, &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, 0, &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, UINT64_MAX - 1, &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, 1, &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, UINT64_MAX, &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+
+        ASSERT_NO_FATAL_FAILURE(create_layer(*display, &layer));
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, layer + 1, &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, layer));
+
+        ASSERT_NO_FATAL_FAILURE(destroy_layer(*display, layer, &err));
+        EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+    }
 }
