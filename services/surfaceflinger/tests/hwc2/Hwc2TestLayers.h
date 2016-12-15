@@ -31,7 +31,8 @@
 class Hwc2TestLayers {
 public:
     Hwc2TestLayers(const std::vector<hwc2_layer_t>& layers,
-            Hwc2TestCoverage coverage);
+            Hwc2TestCoverage coverage, int32_t displayWidth,
+            int32_t displayHeight);
 
     std::string dump() const;
 
