@@ -74,6 +74,16 @@ LOCAL_SRC_FILES := \
 	SurfaceComposerClient.cpp \
 	SyncFeatures.cpp \
 
+# FIXME:
+# GraphicsEnv.cpp includes a private linker header file, dlext_namespaces.h.
+#
+# THIS IS BAD.
+#
+# We need the linker to export android_create_namespace() in
+# <android/dlext.h>; until then, do this so at least we'll know at compile
+# time if something changes.
+LOCAL_C_INCLUDES += system/core/libnativeloader
+
 LOCAL_SHARED_LIBRARIES := \
 	libbinder \
 	libcutils \

@@ -18,7 +18,10 @@
 #define LOG_TAG "GraphicsEnv"
 #include <gui/GraphicsEnv.h>
 
+#include <mutex>
+
 #include <log/log.h>
+#include <dlext_namespaces.h> // system/core/libnativeloader
 
 namespace android {
 
@@ -35,6 +38,22 @@ void GraphicsEnv::setDriverPath(const std::string path) {
     }
     ALOGV("setting driver path to '%s'", path.c_str());
     mDriverPath = path;
+}
+
+android_namespace_t* GraphicsEnv::getDriverNamespace() {
+    static std::once_flag once;
+    std::call_once(once, [this]() {
+        if (!mDriverPath.empty()) {
+            mDriverNamespace = android_create_namespace(
+                    "gfx driver",
+                    nullptr,                    // ld_library_path
+                    mDriverPath.c_str(),        // default_library_path
+                    ANDROID_NAMESPACE_TYPE_CHILD,
+                    nullptr,                    // permitted_when_isolated_path
+                    nullptr);                   // parent
+        }
+    });
+    return mDriverNamespace;
 }
 
 } // namespace android

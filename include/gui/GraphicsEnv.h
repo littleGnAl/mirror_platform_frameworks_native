@@ -19,6 +19,8 @@
 
 #include <string>
 
+struct android_namespace_t;
+
 namespace android {
 
 class GraphicsEnv {
@@ -26,10 +28,12 @@ public:
     static GraphicsEnv& getInstance();
 
     void setDriverPath(const std::string path);
+    android_namespace_t* getDriverNamespace();
 
 private:
-    GraphicsEnv() = default;
+    GraphicsEnv() : mDriverNamespace(nullptr) {}
     std::string mDriverPath;
+    android_namespace_t* mDriverNamespace;
 };
 
 } // namespace android
