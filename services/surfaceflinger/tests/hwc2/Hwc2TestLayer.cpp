@@ -18,19 +18,41 @@
 
 #include "Hwc2TestLayer.h"
 
+hwc2_test_coverage_t getCoverage(hwc2_test_property_t property,
+        hwc2_test_coverage_t coverage, const std::map<hwc2_test_property_t,
+        hwc2_test_coverage_t>& coverageExceptions)
+{
+    auto exception = coverageExceptions.find(property);
+    return (exception != coverageExceptions.end())? exception->second : coverage;
+}
+
 Hwc2TestLayer::Hwc2TestLayer(hwc2_test_coverage_t coverage,
         int32_t displayWidth, int32_t displayHeight)
-    : mBlendMode(coverage),
-      mBufferArea(coverage, displayWidth, displayHeight),
-      mColor(coverage),
-      mComposition(coverage),
-      mCursor(coverage, displayWidth, displayHeight),
-      mDataspace(coverage),
-      mDisplayFrame(coverage, displayWidth, displayHeight),
-      mPlaneAlpha(coverage),
-      mSourceCrop(coverage),
-      mSurfaceDamage(coverage),
-      mTransform(coverage)
+    : Hwc2TestLayer(coverage, displayWidth, displayHeight,
+            std::map<hwc2_test_property_t, hwc2_test_coverage_t>()) { }
+
+Hwc2TestLayer::Hwc2TestLayer(hwc2_test_coverage_t coverage,
+        int32_t displayWidth, int32_t displayHeight, const std::map<
+        hwc2_test_property_t, hwc2_test_coverage_t>& coverageExceptions)
+    : mBlendMode(getCoverage(HWC2_TEST_BLEND_MODE, coverage,
+           coverageExceptions)),
+      mBufferArea(getCoverage(HWC2_TEST_BUFFER_AREA, coverage,
+           coverageExceptions), displayWidth, displayHeight),
+      mColor(getCoverage(HWC2_TEST_COLOR, coverage, coverageExceptions)),
+      mComposition(getCoverage(HWC2_TEST_COMPOSITION, coverage,
+           coverageExceptions)),
+      mCursor(getCoverage(HWC2_TEST_CURSOR, coverage, coverageExceptions),
+           displayWidth, displayHeight),
+      mDataspace(getCoverage(HWC2_TEST_DATASPACE, coverage, coverageExceptions)),
+      mDisplayFrame(getCoverage(HWC2_TEST_DISPLAY_FRAME, coverage,
+           coverageExceptions), displayWidth, displayHeight),
+      mPlaneAlpha(getCoverage(HWC2_TEST_PLANE_ALPHA, coverage,
+           coverageExceptions)),
+      mSourceCrop(getCoverage(HWC2_TEST_SOURCE_CROP, coverage,
+           coverageExceptions)),
+      mSurfaceDamage(getCoverage(HWC2_TEST_SURFACE_DAMAGE, coverage,
+           coverageExceptions)),
+      mTransform(getCoverage(HWC2_TEST_TRANSFORM, coverage, coverageExceptions))
 {
     mBufferArea.setDependent(&mBuffer);
     mBufferArea.setDependent(&mSourceCrop);

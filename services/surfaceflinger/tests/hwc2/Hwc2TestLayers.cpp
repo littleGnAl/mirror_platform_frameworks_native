@@ -20,13 +20,20 @@
 Hwc2TestLayers::Hwc2TestLayers(const std::vector<hwc2_layer_t>& layers,
         hwc2_test_coverage_t coverage, int32_t displayWidth,
         int32_t displayHeight)
+    : Hwc2TestLayers(layers, coverage, displayWidth, displayHeight,
+            std::map<hwc2_test_property_t, hwc2_test_coverage_t>()) { }
+
+Hwc2TestLayers::Hwc2TestLayers(const std::vector<hwc2_layer_t>& layers,
+        hwc2_test_coverage_t coverage, int32_t displayWidth,
+        int32_t displayHeight, const std::map<hwc2_test_property_t,
+        hwc2_test_coverage_t>& coverageExceptions)
     : mDisplayWidth(displayWidth),
       mDisplayHeight(displayHeight)
 {
     for (auto layer : layers)
         mTestLayers.emplace(std::piecewise_construct,
                 std::forward_as_tuple(layer), std::forward_as_tuple(coverage,
-                displayWidth, displayHeight));
+                displayWidth, displayHeight, coverageExceptions));
 
     /* Iterate over the layers in order and assign z orders in the same order.
      * This allows us to iterate over z orders in the same way when computing

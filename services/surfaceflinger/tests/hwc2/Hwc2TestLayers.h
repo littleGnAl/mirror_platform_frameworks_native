@@ -34,6 +34,11 @@ public:
             hwc2_test_coverage_t coverage, int32_t displayWidth,
             int32_t displayHeight);
 
+    Hwc2TestLayers(const std::vector<hwc2_layer_t>& layers,
+            hwc2_test_coverage_t coverage, int32_t displayWidth,
+            int32_t displayHeight, const std::map<hwc2_test_property_t,
+            hwc2_test_coverage_t>& coverageExceptions);
+
     std::string dump() const;
 
     void reset();
