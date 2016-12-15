@@ -22,7 +22,8 @@ Hwc2TestLayer::Hwc2TestLayer(hwc2_test_coverage_t coverage)
     : mBlendMode(coverage),
       mComposition(coverage),
       mDataspace(coverage),
-      mPlaneAlpha(coverage) { }
+      mPlaneAlpha(coverage),
+      mTransform(coverage) { }
 
 std::string Hwc2TestLayer::dump() const
 {
@@ -62,6 +63,11 @@ float Hwc2TestLayer::getPlaneAlpha() const
     return mPlaneAlpha.get();
 }
 
+hwc_transform_t Hwc2TestLayer::getTransform() const
+{
+    return mTransform.get();
+}
+
 bool Hwc2TestLayer::advanceBlendMode()
 {
     return mBlendMode.advance();
@@ -80,4 +86,9 @@ bool Hwc2TestLayer::advanceDataspace()
 bool Hwc2TestLayer::advancePlaneAlpha()
 {
     return mPlaneAlpha.advance();
+}
+
+bool Hwc2TestLayer::advanceTransform()
+{
+    return mTransform.advance();
 }

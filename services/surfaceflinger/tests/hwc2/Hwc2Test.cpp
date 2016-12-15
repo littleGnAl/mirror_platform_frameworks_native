@@ -402,6 +402,23 @@ public:
         }
     }
 
+    void setLayerTransform(hwc2_display_t display, hwc2_layer_t layer,
+            hwc_transform_t transform, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_TRANSFORM>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_TRANSFORM));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                transform));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer transform "
+                    << getTransformName(transform);
+        }
+    }
+
 protected:
     hwc2_function_pointer_t getFunction(hwc2_function_descriptor_t descriptor)
     {
@@ -1690,6 +1707,53 @@ TEST_F(Hwc2Test, SET_LAYER_PLANE_ALPHA_update)
                     if (testLayer->advanceBlendMode())
                         return true;
                     return testLayer->advancePlaneAlpha();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_TRANSFORM)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerTransform(display, layer,
+                        testLayer->getTransform()));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceTransform();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_TRANSFORM_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(HWC2_TEST_COVERAGE_DEFAULT,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerTransform(display, layer,
+                        testLayer->getTransform(), &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_TRANSFORM_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerTransform(display,
+                        layer, testLayer->getTransform()));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceTransform();
             }
     ));
 }
