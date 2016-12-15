@@ -45,6 +45,49 @@ const std::vector<hwc2_blend_mode_t> Hwc2TestBlendMode::mCompleteBlendModes = {
 };
 
 
+Hwc2TestColor::Hwc2TestColor(hwc2_test_coverage_t coverage)
+    : Hwc2TestProperty(coverage, mCompleteColors, mBasicColors,
+            mDefaultColors) { }
+
+std::string Hwc2TestColor::dump() const
+{
+    std::stringstream dmp;
+    const hwc_color_t& color = get();
+    dmp << "\tcolor: r " << std::to_string(color.r) << ", g "
+            << std::to_string(color.g) << ", b " << std::to_string(color.b)
+            << ", a " << std::to_string(color.a) << "\n";
+    return dmp.str();
+}
+
+const std::vector<hwc_color_t> Hwc2TestColor::mDefaultColors = {
+    {UINT8_MAX, UINT8_MAX, UINT8_MAX, UINT8_MAX},
+};
+
+const std::vector<hwc_color_t> Hwc2TestColor::mBasicColors = {
+    {UINT8_MAX, UINT8_MAX, UINT8_MAX, UINT8_MAX},
+    {        0,         0,         0,         0},
+};
+
+const std::vector<hwc_color_t> Hwc2TestColor::mCompleteColors = {
+    {UINT8_MAX, UINT8_MAX, UINT8_MAX, UINT8_MAX},
+    {UINT8_MAX, UINT8_MAX, UINT8_MAX,         0},
+    {UINT8_MAX, UINT8_MAX,         0, UINT8_MAX},
+    {UINT8_MAX, UINT8_MAX,         0,         0},
+    {UINT8_MAX,         0, UINT8_MAX, UINT8_MAX},
+    {UINT8_MAX,         0, UINT8_MAX,         0},
+    {UINT8_MAX,         0,         0, UINT8_MAX},
+    {UINT8_MAX,         0,         0,         0},
+    {        0, UINT8_MAX, UINT8_MAX, UINT8_MAX},
+    {        0, UINT8_MAX, UINT8_MAX,         0},
+    {        0, UINT8_MAX,         0, UINT8_MAX},
+    {        0, UINT8_MAX,         0,         0},
+    {        0,         0, UINT8_MAX, UINT8_MAX},
+    {        0,         0, UINT8_MAX,         0},
+    {        0,         0,         0, UINT8_MAX},
+    {        0,         0,         0,         0},
+};
+
+
 Hwc2TestComposition::Hwc2TestComposition(hwc2_test_coverage_t coverage)
     : Hwc2TestProperty(coverage, mCompleteCompositions, mBasicCompositions,
             mDefaultCompositions) { }

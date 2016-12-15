@@ -370,6 +370,22 @@ public:
         }
     }
 
+    void setLayerColor(hwc2_display_t display, hwc2_layer_t layer,
+            hwc_color_t color, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_COLOR>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_COLOR));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                color));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer color";
+        }
+    }
+
     void setLayerDataspace(hwc2_display_t display, hwc2_layer_t layer,
             android_dataspace_t dataspace, hwc2_error_t* outErr = nullptr)
     {
@@ -1623,6 +1639,87 @@ TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_update)
 
             [] (Hwc2TestLayer* testLayer) {
                     return testLayer->advanceBlendMode();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_COLOR)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(display,
+                            layer, HWC2_COMPOSITION_SOLID_COLOR, &err));
+                if (err != HWC2_ERROR_NONE) {
+                    EXPECT_EQ(err, HWC2_ERROR_UNSUPPORTED) << "returned wrong"
+                            " error code";
+                } else {
+                    EXPECT_NO_FATAL_FAILURE(test->setLayerColor(display, layer,
+                            testLayer->getColor()));
+                }
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceColor();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_COLOR_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(HWC2_TEST_COVERAGE_DEFAULT,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerColor(display, layer,
+                        testLayer->getColor(), &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_COLOR_composition_type_unset)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(HWC2_TEST_COVERAGE_BASIC,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerColor(display, layer,
+                        testLayer->getColor()));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceColor();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_COLOR_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(display,
+                            layer, HWC2_COMPOSITION_SOLID_COLOR, &err));
+                if (err != HWC2_ERROR_NONE) {
+                    EXPECT_EQ(err, HWC2_ERROR_UNSUPPORTED) << "returned wrong"
+                            " error code";
+                } else {
+                    EXPECT_NO_FATAL_FAILURE(test->setLayerColor(display, layer,
+                            testLayer->getColor()));
+                }
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceColor();
             }
     ));
 }

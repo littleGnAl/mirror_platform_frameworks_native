@@ -100,6 +100,19 @@ protected:
 };
 
 
+class Hwc2TestColor : public Hwc2TestProperty<hwc_color_t> {
+public:
+    Hwc2TestColor(hwc2_test_coverage_t coverage);
+
+    std::string dump() const;
+
+protected:
+    static const std::vector<hwc_color_t> mDefaultColors;
+    static const std::vector<hwc_color_t> mBasicColors;
+    static const std::vector<hwc_color_t> mCompleteColors;
+};
+
+
 class Hwc2TestComposition : public Hwc2TestProperty<hwc2_composition_t> {
 public:
     Hwc2TestComposition(hwc2_test_coverage_t coverage);
