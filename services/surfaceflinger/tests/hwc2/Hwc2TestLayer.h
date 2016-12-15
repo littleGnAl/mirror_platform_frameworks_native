@@ -30,16 +30,20 @@
 class Hwc2TestLayer {
 public:
     Hwc2TestLayer(Hwc2TestCoverage coverage, int32_t displayWidth,
-            int32_t displayHeight, uint32_t zOrder = 0);
+            int32_t displayHeight);
 
     std::string dump() const;
 
     int getBuffer(buffer_handle_t* outHandle,
             android::base::unique_fd* outAcquireFence);
 
+    void setZOrder(uint32_t zOrder);
+    void setVisibleRegion(const android::Region& region);
+
     void reset();
 
     hwc2_blend_mode_t      getBlendMode() const;
+    Area                   getBufferArea() const;
     hwc_color_t            getColor() const;
     hwc2_composition_t     getComposition() const;
     Point                  getCursor() const;
@@ -49,6 +53,7 @@ public:
     hwc_frect_t            getSourceCrop() const;
     hwc_region_t           getSurfaceDamage() const;
     hwc_transform_t        getTransform() const;
+    hwc_region_t           getVisibleRegion() const;
     uint32_t               getZOrder() const;
 
     bool advanceBlendMode();
@@ -62,11 +67,13 @@ public:
     bool advanceSourceCrop();
     bool advanceSurfaceDamage();
     bool advanceTransform();
+    bool advanceVisibleRegion();
 
 private:
-    std::array<Hwc2TestContainer*, 10> mProperties = {{
-        &mBlendMode, &mColor, &mComposition, &mCursor, &mDataspace,
-        &mDisplayFrame, &mPlaneAlpha, &mSourceCrop, &mSurfaceDamage, &mTransform
+    std::array<Hwc2TestContainer*, 11> mProperties = {{
+        &mBlendMode, &mBufferArea, &mColor, &mComposition, &mCursor,
+        &mDataspace, &mDisplayFrame, &mPlaneAlpha, &mSourceCrop,
+        &mSurfaceDamage, &mTransform
     }};
 
     Hwc2TestBuffer mBuffer;
@@ -82,8 +89,9 @@ private:
     Hwc2TestSourceCrop mSourceCrop;
     Hwc2TestSurfaceDamage mSurfaceDamage;
     Hwc2TestTransform mTransform;
+    Hwc2TestVisibleRegion mVisibleRegion;
 
-    uint32_t mZOrder;
+    uint32_t mZOrder = -1;
 };
 
 #endif /* ifndef _HWC2_TEST_LAYER_H */

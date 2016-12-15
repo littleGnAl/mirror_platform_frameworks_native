@@ -21,14 +21,22 @@
 Hwc2TestLayers::Hwc2TestLayers(const std::vector<hwc2_layer_t>& layers,
         Hwc2TestCoverage coverage, int32_t displayWidth, int32_t displayHeight)
 {
-    uint32_t nextZOrder = 0;
-
     for (auto layer : layers) {
         mTestLayers.emplace(std::piecewise_construct,
                 std::forward_as_tuple(layer),
-                std::forward_as_tuple(coverage, displayWidth, displayHeight,
-                nextZOrder++));
+                std::forward_as_tuple(coverage, displayWidth, displayHeight));
     }
+
+    /* Iterate over the layers in order and assign z orders in the same order.
+     * This allows us to iterate over z orders in the same way when computing
+     * visible regions */
+    uint32_t nextZOrder = layers.size();
+
+    for (auto& testLayer : mTestLayers) {
+        testLayer.second.setZOrder(nextZOrder--);
+    }
+
+    setVisibleRegions();
 }
 
 std::string Hwc2TestLayers::dump() const
@@ -45,6 +53,28 @@ void Hwc2TestLayers::reset()
     for (auto& testLayer : mTestLayers) {
         testLayer.second.reset();
     }
+
+    setVisibleRegions();
+}
+
+bool Hwc2TestLayers::advanceVisibleRegions()
+{
+    for (auto& testLayer : mTestLayers) {
+        if (testLayer.second.advanceVisibleRegion()) {
+            setVisibleRegions();
+            return true;
+        }
+        testLayer.second.reset();
+    }
+    return false;
+}
+
+hwc_region_t Hwc2TestLayers::getVisibleRegion(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getVisibleRegion();
 }
 
 uint32_t Hwc2TestLayers::getZOrder(hwc2_layer_t layer) const
@@ -53,4 +83,39 @@ uint32_t Hwc2TestLayers::getZOrder(hwc2_layer_t layer) const
     if (testLayer == mTestLayers.end())
         [] () { GTEST_FAIL(); }();
     return testLayer->second.getZOrder();
+}
+
+void Hwc2TestLayers::setVisibleRegions()
+{
+    /* The region of the display that is covered by layers above the current
+     * layer */
+    android::Region aboveOpaqueLayers;
+
+    /* Iterate over test layers from max z order to min z order. */
+    for (auto& testLayer : mTestLayers) {
+        android::Region visibleRegion;
+
+        /* Set the visible region of this layer */
+        if (testLayer.second.getComposition() != HWC2_COMPOSITION_CURSOR) {
+            const auto displayFrame = testLayer.second.getDisplayFrame();
+
+            visibleRegion.set(android::Rect(displayFrame.left, displayFrame.top,
+                    displayFrame.right, displayFrame.bottom));
+        } else {
+            const auto bufferArea = testLayer.second.getBufferArea();
+
+            visibleRegion.set(android::Rect(0, 0, bufferArea.width,
+                    bufferArea.height));
+        }
+
+        /* Remove the area covered by opaque layers above this layer
+         * from this layer's visible region */
+        visibleRegion.subtractSelf(aboveOpaqueLayers);
+
+        testLayer.second.setVisibleRegion(visibleRegion);
+
+        /* If this layer is opaque, store the region it covers */
+        if (testLayer.second.getPlaneAlpha() == 1.0f)
+            aboveOpaqueLayers.orSelf(visibleRegion);
+    }
 }
