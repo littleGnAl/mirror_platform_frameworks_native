@@ -318,11 +318,7 @@ public:
     /* Guarentees the correct format across all devices */
     buffer_handle_t generate_buffer()
     {
-        sp<GraphicBuffer> graphic_buffer = graphic_buffers.at(next_graphic_buffer);
-
-        next_graphic_buffer++;
-        if (next_graphic_buffer >= graphic_buffers.size())
-            next_graphic_buffer = 0;
+        sp<GraphicBuffer> graphic_buffer = get_next_graphic_buffer();
 
         if (graphic_buffer == nullptr)
             return nullptr;
@@ -357,7 +353,192 @@ public:
         return graphic_buffer->handle;
     }
 
+    /* Guarentees the correct format across all devices */
+    buffer_handle_t generate_buffer(const hwc2_test_layers *test_layers,
+            const std::set<hwc2_layer_t> *client_layers,
+            const std::set<hwc2_layer_t> *clear_layers)
+    {
+        sp<GraphicBuffer> graphic_buffer = get_next_graphic_buffer();
+
+        if (graphic_buffer == nullptr)
+            return nullptr;
+
+        uint8_t *img;
+        graphic_buffer->lock(GRALLOC_USAGE_SW_WRITE_OFTEN, (void **)(&img));
+
+        uint32_t stride = graphic_buffer->getStride();
+
+        float df_l, df_t, df_r, df_b, df_w, df_h;
+        float sc_l, sc_t;
+        float df_w_div_sc_w;
+        float df_h_div_sc_h;
+        float x_pos, y_pos;
+        float max, min;
+        float tmp;
+        hwc_transform_t transform;
+        hwc2_blend_mode_t blend_mode;
+        float plane_alpha;
+
+        float bw_3 = buffer_width / 3;
+        float bw_2_3 = buffer_width * 2 / 3;
+        float bh_3 = buffer_height / 3;
+        float bh_2_3 = buffer_height * 2 / 3;
+
+        for (int32_t y = 0; y < buffer_height; y++) {
+            for (int32_t x = 0; x < buffer_width; x++) {
+
+                uint8_t r = 0, g = 0, b = 0;
+                float a = 0.0f;
+
+                for (auto layer = client_layers->rbegin();
+                        layer != client_layers->rend(); ++layer) {
+
+                    if (test_layers->get_composition(*layer)
+                            != HWC2_COMPOSITION_CURSOR) {
+                        hwc_rect_t display_frame = test_layers->get_display_frame(*layer);
+                        df_l = display_frame.left;
+                        df_t = display_frame.top;
+                        df_r = display_frame.right;
+                        df_b = display_frame.bottom;
+                    } else {
+                        auto &buffer_area = test_layers->get_buffer_area(*layer);
+                        auto &cursor = test_layers->get_cursor(*layer);
+                        df_l = cursor.first;
+                        df_t = cursor.second;
+                        df_r = cursor.first + buffer_area.first;
+                        df_b = cursor.second + buffer_area.second;
+                    }
+
+                    if (x < df_l || x >= df_r || y < df_t || y >= df_b)
+                        continue;
+
+                    if (clear_layers->find(*layer) != clear_layers->end()) {
+                        r = 0;
+                        g = 0;
+                        b = 0;
+                        a = 0.0f;
+                        continue;
+                    }
+
+                    if (test_layers->get_composition(*layer)
+                            == HWC2_COMPOSITION_SOLID_COLOR) {
+                        hwc_color_t color = test_layers->get_color(*layer);
+                        r = color.r;
+                        g = color.g;
+                        b = color.b;
+                        a = color.a * test_layers->get_plane_alpha(*layer);
+                        continue;
+                    }
+
+                    x_pos = x;
+                    y_pos = y;
+
+                    transform = test_layers->get_transform(*layer);
+
+                    df_w = df_r - df_l;
+                    df_h = df_b - df_t;
+
+                    if (transform > 0) {
+                        /* Change origin */
+                        x_pos = x_pos - df_l - df_w / 2.0;
+                        y_pos = y_pos - df_t - df_h / 2.0;
+
+                        /* Flip Horizontal */
+                        if (transform & HWC_TRANSFORM_FLIP_H)
+                            x_pos = -x_pos;
+
+                        /* Flip vertical */
+                        if (transform & HWC_TRANSFORM_FLIP_V)
+                            y_pos = -y_pos;
+
+                        /* Rotate 90 */
+                        if (transform & HWC_TRANSFORM_ROT_90) {
+                            tmp = x_pos;
+                            x_pos = -y_pos * df_w / df_h;
+                            y_pos = tmp * df_h / df_w;
+                        }
+
+                        /* Change origin back */
+                        x_pos = x_pos + df_l + df_w / 2.0;
+                        y_pos = y_pos + df_t + df_h / 2.0;
+                    }
+
+                    hwc_frect_t source_crop = test_layers->get_source_crop(*layer);
+                    sc_l = source_crop.left;
+                    sc_t = source_crop.top;
+
+                    df_w_div_sc_w = df_w / (source_crop.right - sc_l);
+                    df_h_div_sc_h = df_h / (source_crop.bottom - sc_t);
+
+                    max = 255;
+                    min = 0;
+
+                    if (y_pos < ((bh_3) - sc_t) * df_h_div_sc_h + df_t)
+                        min = 255 / 2;
+                    else if (y_pos >= ((bh_2_3) - sc_t) * df_h_div_sc_h + df_t)
+                        max = 255 / 2;
+
+                    uint8_t r_cur = min, g_cur = min, b_cur = min;
+                    float a_cur = 1.0f;
+
+                    if (x_pos < ((bw_3) - sc_l) * (df_w_div_sc_w) + df_l)
+                        r_cur = max;
+                    else if (x_pos < ((bw_2_3) - sc_l) * (df_w_div_sc_w) + df_l)
+                        g_cur = max;
+                    else
+                        b_cur = max;
+
+
+                    blend_mode = test_layers->get_blend_mode(*layer);
+                    plane_alpha = test_layers->get_plane_alpha(*layer);
+
+                    if (blend_mode == HWC2_BLEND_MODE_PREMULTIPLIED) {
+                        r_cur *= plane_alpha;
+                        g_cur *= plane_alpha;
+                        b_cur *= plane_alpha;
+                    }
+
+                    a_cur *= plane_alpha;
+
+                    if (blend_mode == HWC2_BLEND_MODE_PREMULTIPLIED) {
+                        r = r_cur + r * (1.0 - a_cur);
+                        g = g_cur + g * (1.0 - a_cur);
+                        b = b_cur + b * (1.0 - a_cur);
+                        a = a_cur + a * (1.0 - a_cur);
+                    } else if (blend_mode == HWC2_BLEND_MODE_COVERAGE) {
+                        r = r_cur * a_cur + r * (1.0 - a_cur);
+                        g = g_cur * a_cur + g * (1.0 - a_cur);
+                        b = b_cur * a_cur + b * (1.0 - a_cur);
+                        a = a_cur * a_cur + a * (1.0 - a_cur);
+                    } else {
+                        r = r_cur;
+                        g = g_cur;
+                        b = b_cur;
+                        a = a_cur;
+                    }
+                }
+
+                set_color(x, y, format, stride, img, r, g, b, a * 255);
+            }
+        }
+
+        graphic_buffer->unlock();
+
+        return graphic_buffer->handle;
+    }
+
 private:
+    sp<GraphicBuffer> get_next_graphic_buffer()
+    {
+        sp<GraphicBuffer> graphic_buffer = graphic_buffers.at(next_graphic_buffer);
+
+        next_graphic_buffer++;
+        if (next_graphic_buffer >= graphic_buffers.size())
+            next_graphic_buffer = 0;
+
+        return graphic_buffer;
+    }
+
     hwc2_test_surface_manager surface_manager;
     hwc2_test_egl_manager egl_manager;
 
@@ -420,7 +601,10 @@ void hwc2_test_buffer::set_fence(int32_t fence)
     cv.notify_all();
 }
 
-int hwc2_test_buffer::get(buffer_handle_t *out_handle, int32_t *out_fence)
+int hwc2_test_buffer::get(buffer_handle_t *out_handle, int32_t *out_fence,
+        const hwc2_test_layers *test_layers,
+        const std::set<hwc2_layer_t> *client_layers,
+        const std::set<hwc2_layer_t> *clear_layers)
 {
     if (buffer_width == -1 || buffer_height == -1)
         return -EINVAL;
@@ -444,7 +628,11 @@ int hwc2_test_buffer::get(buffer_handle_t *out_handle, int32_t *out_fence)
     if (ret < 0)
         return ret;
 
-    *out_handle = buffer_generator->generate_buffer();
+    if (test_layers && client_layers && clear_layers)
+        *out_handle = buffer_generator->generate_buffer(test_layers,
+                client_layers, clear_layers);
+    else
+        *out_handle = buffer_generator->generate_buffer();
 
     while (pending != true)
         if (cv.wait_for(lock, std::chrono::seconds(2)) == std::cv_status::timeout)
