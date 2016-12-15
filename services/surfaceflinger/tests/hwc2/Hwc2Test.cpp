@@ -18,6 +18,7 @@
 #include <unordered_set>
 #include <gtest/gtest.h>
 #include <dlfcn.h>
+#include <android-base/unique_fd.h>
 #include <hardware/hardware.h>
 
 #define HWC2_INCLUDE_STRINGIFICATION
@@ -383,6 +384,23 @@ public:
         } else {
             ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer blend mode "
                     << getBlendModeName(mode);
+        }
+    }
+
+    void setLayerBuffer(hwc2_display_t display, hwc2_layer_t layer,
+            buffer_handle_t buffer, int32_t acquireFence,
+            hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_BUFFER>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_BUFFER));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                buffer, acquireFence));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer buffer";
         }
     }
 
@@ -1828,6 +1846,183 @@ TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_update)
                     return testLayer->advanceBlendMode();
             }
     ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_BUFFER)
+{
+    const std::vector<hwc2_composition_t> compositions = {
+            HWC2_COMPOSITION_DEVICE, HWC2_COMPOSITION_CURSOR};
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            int32_t width, height;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+            ASSERT_NO_FATAL_FAILURE(getActiveDimensions(display, &width, &height));
+            Hwc2TestLayer testLayer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
+
+            for (auto composition : compositions) {
+                do {
+                    hwc2_layer_t layer;
+                    buffer_handle_t handle;
+                    android::base::unique_fd acquireFence;
+                    hwc2_error_t err = HWC2_ERROR_NONE;
+
+                    if (testLayer.getBuffer(&handle, &acquireFence) < 0)
+                        continue;
+                    ASSERT_NO_FATAL_FAILURE(createLayer(display, &layer));
+
+                    ASSERT_NO_FATAL_FAILURE(setLayerCompositionType(display,
+                            layer, composition, &err));
+                    EXPECT_EQ(err, HWC2_ERROR_NONE) << "returned wrong error code";
+
+                    EXPECT_NO_FATAL_FAILURE(setLayerBuffer(display, layer,
+                            handle, acquireFence));
+
+                    ASSERT_NO_FATAL_FAILURE(destroyLayer(display, layer));
+
+                } while (testLayer.advanceBufferArea());
+                testLayer.reset();
+            }
+        }
+    }
+}
+
+TEST_F(Hwc2Test, SET_LAYER_BUFFER_bad_composition)
+{
+    const std::vector<hwc2_composition_t> compositions = {
+            HWC2_COMPOSITION_CLIENT, HWC2_COMPOSITION_SOLID_COLOR,
+            HWC2_COMPOSITION_SIDEBAND};
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            int32_t width, height;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+            ASSERT_NO_FATAL_FAILURE(getActiveDimensions(display, &width, &height));
+            Hwc2TestLayer testLayer(HWC2_TEST_COVERAGE_BASIC, width, height);
+
+            for (auto composition : compositions) {
+                do {
+                    hwc2_layer_t layer;
+                    buffer_handle_t handle;
+                    android::base::unique_fd acquireFence;
+                    hwc2_error_t err = HWC2_ERROR_NONE;
+
+                    if (testLayer.getBuffer(&handle, &acquireFence) < 0)
+                        continue;
+                    ASSERT_NO_FATAL_FAILURE(createLayer(display, &layer));
+
+                    ASSERT_NO_FATAL_FAILURE(setLayerCompositionType(display,
+                            layer, composition, &err));
+                    if (composition == HWC2_COMPOSITION_SIDEBAND &&
+                            err == HWC2_ERROR_UNSUPPORTED) {
+                        EXPECT_NE(composition, HWC2_COMPOSITION_CLIENT)
+                                << "returned wrong error code";
+                    } else {
+                        EXPECT_EQ(err, HWC2_ERROR_NONE) << "returned wrong error code";
+                    }
+
+                    EXPECT_NO_FATAL_FAILURE(setLayerBuffer(display, layer,
+                            handle, acquireFence));
+
+                    ASSERT_NO_FATAL_FAILURE(destroyLayer(display, layer));
+
+                } while (testLayer.advanceBufferArea());
+                testLayer.reset();
+            }
+        }
+    }
+}
+
+TEST_F(Hwc2Test, SET_LAYER_BUFFER_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(HWC2_TEST_COVERAGE_DEFAULT,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                buffer_handle_t handle = nullptr;
+                android::base::unique_fd acquireFence;
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                if (testLayer->getBuffer(&handle, &acquireFence) == 0)
+                    return;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerBuffer(display, layer,
+                        handle, acquireFence, &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_BUFFER_bad_parameter)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadParameter(
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer) {
+
+                buffer_handle_t handle = nullptr;
+                int32_t acquireFence = -1;
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerBuffer(display, layer,
+                        handle, acquireFence, &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_PARAMETER)
+                        << "returned wrong error code";
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_BUFFER_update)
+{
+    const std::vector<hwc2_composition_t> compositions = {
+            HWC2_COMPOSITION_DEVICE, HWC2_COMPOSITION_CURSOR};
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            int32_t width, height;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+            ASSERT_NO_FATAL_FAILURE(getActiveDimensions(display, &width, &height));
+            Hwc2TestLayer testLayer(HWC2_TEST_COVERAGE_COMPLETE, width, height);
+
+            for (auto composition : compositions) {
+                hwc2_layer_t layer;
+                buffer_handle_t handle;
+                android::base::unique_fd acquireFence;
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(createLayer(display, &layer));
+
+                do {
+                    if (testLayer.getBuffer(&handle, &acquireFence) < 0)
+                        continue;
+
+                    ASSERT_NO_FATAL_FAILURE(setLayerCompositionType(display,
+                            layer, composition, &err));
+                    EXPECT_EQ(err, HWC2_ERROR_NONE) << "returned wrong error code";
+
+                    EXPECT_NO_FATAL_FAILURE(setLayerBuffer(display, layer,
+                            handle, acquireFence));
+
+                } while (testLayer.advanceBufferArea());
+                testLayer.reset();
+
+                ASSERT_NO_FATAL_FAILURE(destroyLayer(display, layer));
+            }
+        }
+    }
 }
 
 TEST_F(Hwc2Test, SET_LAYER_COLOR)
