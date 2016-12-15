@@ -355,6 +355,23 @@ public:
         }
     }
 
+    void setLayerBlendMode(hwc2_display_t display, hwc2_layer_t layer,
+            hwc2_blend_mode_t mode, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_BLEND_MODE>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_BLEND_MODE));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                mode));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer blend mode "
+                    << getBlendModeName(mode);
+        }
+    }
+
 protected:
     hwc2_function_pointer_t getFunction(hwc2_function_descriptor_t descriptor)
     {
@@ -682,6 +699,11 @@ void hwc2TestVsyncCallback(hwc2_callback_data_t callbackData,
     if (callbackData)
         static_cast<Hwc2Test*>(callbackData)->vsyncCallback(display,
                 timestamp);
+}
+
+bool advanceBlendMode(Hwc2TestLayer* testLayer)
+{
+    return testLayer->advanceBlendMode();
 }
 
 bool advanceComposition(Hwc2TestLayer* testLayer)
@@ -1589,4 +1611,58 @@ TEST_F(Hwc2Test, SET_LAYER_COMPOSITION_TYPE_unsupported)
             },
 
             advanceComposition));
+}
+
+/* TESTCASE: Tests that the HWC2 can set a blend mode value of a layer. */
+TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    const Hwc2TestLayer& testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerBlendMode(display, layer,
+                        testLayer.getBlendMode()));
+            },
+
+            advanceBlendMode));
+}
+
+/* TESTCASE: Tests that the HWC2 can update a blend mode value of a layer. */
+TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    const Hwc2TestLayer& testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerBlendMode(display,
+                        layer, testLayer.getBlendMode()));
+            },
+
+            advanceBlendMode));
+}
+
+/* TESTCASE: Tests that the HWC2 cannot set a blend mode for a bad layer. */
+TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
+                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerBlendMode(display, badLayer,
+                        testLayer.getBlendMode(), outErr));
+            }
+    ));
+}
+
+/* TESTCASE: Tests that the HWC2 cannot set an invalid blend mode. */
+TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_bad_parameter)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadParameter(
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    hwc2_error_t* outErr) {
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerBlendMode(display,
+                        layer, HWC2_BLEND_MODE_INVALID, outErr));
+            }
+    ));
 }
