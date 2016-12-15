@@ -70,9 +70,11 @@ public:
     {
         if (mListIdx + 1 < mList.size()) {
             mListIdx++;
+            updateDependents();
             return true;
         }
         reset();
+        updateDependents();
         return false;
     }
 
@@ -82,8 +84,40 @@ public:
     }
 
 protected:
+    /* If a derived class has dependents, override this function */
+    virtual void updateDependents() { }
+
     const std::vector<T>& mList;
     size_t mListIdx = 0;
+};
+
+
+class Hwc2TestSourceCrop;
+
+class Hwc2TestBufferArea : public Hwc2TestProperty<std::pair<int32_t, int32_t>> {
+public:
+    Hwc2TestBufferArea(hwc2_test_coverage_t coverage, int32_t displayWidth,
+            int32_t displayHeight);
+
+    std::string dump() const;
+
+    void setDependent(Hwc2TestSourceCrop* source_crop);
+
+protected:
+    void update();
+    void updateDependents();
+
+    const std::vector<float>& mScalars;
+    static const std::vector<float> mDefaultScalars;
+    static const std::vector<float> mBasicScalars;
+    static const std::vector<float> mCompleteScalars;
+
+    int32_t mDisplayWidth;
+    int32_t mDisplayHeight;
+
+    Hwc2TestSourceCrop* mSourceCrop = nullptr;
+
+    std::vector<std::pair<int32_t, int32_t>> mBufferAreas;
 };
 
 
@@ -171,6 +205,30 @@ protected:
     static const std::vector<float> mDefaultPlaneAlphas;
     static const std::vector<float> mBasicPlaneAlphas;
     static const std::vector<float> mCompletePlaneAlphas;
+};
+
+
+class Hwc2TestSourceCrop : public Hwc2TestProperty<hwc_frect_t> {
+public:
+    Hwc2TestSourceCrop(hwc2_test_coverage_t coverage, float bufferWidth = 0,
+            float bufferHeight = 0);
+
+    std::string dump() const;
+
+    void updateBufferArea(float bufferWidth, float bufferHeight);
+
+protected:
+    void update();
+
+    const std::vector<hwc_frect_t>& mFrectScalars;
+    const static std::vector<hwc_frect_t> mDefaultFrectScalars;
+    const static std::vector<hwc_frect_t> mBasicFrectScalars;
+    const static std::vector<hwc_frect_t> mCompleteFrectScalars;
+
+    float mBufferWidth;
+    float mBufferHeight;
+
+    std::vector<hwc_frect_t> mSourceCrops;
 };
 
 
