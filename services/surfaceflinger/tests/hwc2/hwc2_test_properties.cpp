@@ -27,6 +27,7 @@ hwc2_test_buffer_area::hwc2_test_buffer_area(hwc2_test_coverage_t coverage,
             default_scalars),
       display_width(display_width),
       display_height(display_height),
+      buffer(nullptr),
       source_crop(nullptr),
       surface_damage(nullptr),
       buffer_areas()
@@ -41,6 +42,15 @@ std::string hwc2_test_buffer_area::dump() const
     dmp << "\tbuffer area: width " << curr.first << ", height " << curr.second
             << "\n";
     return dmp.str();
+}
+
+void hwc2_test_buffer_area::set_dependent(hwc2_test_buffer *buffer)
+{
+    this->buffer = buffer;
+    if (buffer) {
+        const std::pair<int32_t, int32_t> &curr = get();
+        buffer->update_buffer_area(curr.first, curr.second);
+    }
 }
 
 void hwc2_test_buffer_area::set_dependent(hwc2_test_source_crop *source_crop)
@@ -80,6 +90,8 @@ void hwc2_test_buffer_area::update_dependents()
 {
     const std::pair<int32_t, int32_t> &curr = get();
 
+    if (buffer)
+        buffer->update_buffer_area(curr.first, curr.second);
     if (source_crop)
         source_crop->update_buffer_area(curr.first, curr.second);
     if (surface_damage)

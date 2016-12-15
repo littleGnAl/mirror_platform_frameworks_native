@@ -17,6 +17,8 @@
 #ifndef _HWC2_TEST_LAYER_H
 #define _HWC2_TEST_LAYER_H
 
+#include <android-base/unique_fd.h>
+
 #include "hwc2_test_properties.h"
 
 #define HWC2_INCLUDE_STRINGIFICATION
@@ -31,6 +33,9 @@ public:
             int32_t display_height, uint32_t z_order = 0);
 
     std::string dump() const;
+
+    int get_buffer(buffer_handle_t *out_handle,
+            android::base::unique_fd *out_acquire_fence);
 
     void reset();
 
@@ -63,6 +68,8 @@ private:
         &blend_mode, &color, &composition, &cursor, &dataspace, &display_frame,
         &plane_alpha, &source_crop, &surface_damage, &transform
     }};
+
+    hwc2_test_buffer buffer;
 
     hwc2_test_blend_mode blend_mode;
     hwc2_test_buffer_area buffer_area;

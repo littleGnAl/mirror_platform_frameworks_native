@@ -20,7 +20,8 @@
 
 hwc2_test_layer::hwc2_test_layer(hwc2_test_coverage_t coverage,
         int32_t display_width, int32_t display_height, uint32_t z_order)
-    : blend_mode(coverage),
+    : buffer(),
+      blend_mode(coverage),
       buffer_area(coverage, display_width, display_height),
       color(coverage),
       composition(coverage),
@@ -33,6 +34,7 @@ hwc2_test_layer::hwc2_test_layer(hwc2_test_coverage_t coverage,
       transform(coverage),
       z_order(z_order)
 {
+    buffer_area.set_dependent(&buffer);
     buffer_area.set_dependent(&source_crop);
     buffer_area.set_dependent(&surface_damage);
 }
@@ -49,6 +51,15 @@ std::string hwc2_test_layer::dump() const
     dmp << "\tz order: " << z_order << "\n";
 
     return dmp.str();
+}
+
+int hwc2_test_layer::get_buffer(buffer_handle_t *out_handle,
+        android::base::unique_fd *out_acquire_fence)
+{
+    int32_t acquire_fence;
+    int ret = buffer.get(out_handle, &acquire_fence);
+    out_acquire_fence->reset(acquire_fence);
+    return ret;
 }
 
 void hwc2_test_layer::reset()
