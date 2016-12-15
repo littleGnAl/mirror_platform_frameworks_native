@@ -407,6 +407,23 @@ public:
         }
     }
 
+    void setLayerDisplayFrame(hwc2_display_t display, hwc2_layer_t layer,
+            const hwc_rect_t& displayFrame, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_DISPLAY_FRAME>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_DISPLAY_FRAME));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                displayFrame));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer display"
+                    " frame";
+        }
+    }
+
     void setLayerPlaneAlpha(hwc2_display_t display, hwc2_layer_t layer,
             float alpha, hwc2_error_t* outErr = nullptr)
     {
@@ -634,9 +651,12 @@ protected:
 
             for (auto config : configs) {
                 hwc2_layer_t layer;
+                Area displayArea;
 
                 ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
-                Hwc2TestLayer testLayer(coverage);
+                ASSERT_NO_FATAL_FAILURE(getActiveDisplayArea(display,
+                        &displayArea));
+                Hwc2TestLayer testLayer(coverage, displayArea);
 
                 do {
                     ASSERT_NO_FATAL_FAILURE(createLayer(display, &layer));
@@ -663,9 +683,12 @@ protected:
 
             for (auto config : configs) {
                 hwc2_layer_t layer;
+                Area displayArea;
 
                 ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
-                Hwc2TestLayer testLayer(coverage);
+                ASSERT_NO_FATAL_FAILURE(getActiveDisplayArea(display,
+                        &displayArea));
+                Hwc2TestLayer testLayer(coverage, displayArea);
 
                 ASSERT_NO_FATAL_FAILURE(createLayer(display, &layer));
 
@@ -693,11 +716,14 @@ protected:
 
             for (auto config : configs) {
                 std::vector<hwc2_layer_t> layers;
+                Area displayArea;
 
                 ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+                ASSERT_NO_FATAL_FAILURE(getActiveDisplayArea(display,
+                        &displayArea));
 
                 ASSERT_NO_FATAL_FAILURE(createLayers(display, &layers, layerCnt));
-                Hwc2TestLayers testLayers(layers, coverage);
+                Hwc2TestLayers testLayers(layers, coverage, displayArea);
 
                 for (auto layer : layers) {
                     EXPECT_NO_FATAL_FAILURE(function(this, display, layer,
@@ -726,10 +752,13 @@ protected:
 
             for (auto config : configs) {
                 hwc2_layer_t layer = 0;
+                Area displayArea;
                 hwc2_error_t err = HWC2_ERROR_NONE;
 
                 ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
-                Hwc2TestLayer testLayer(coverage);
+                ASSERT_NO_FATAL_FAILURE(getActiveDisplayArea(display,
+                        &displayArea));
+                Hwc2TestLayer testLayer(coverage, displayArea);
 
                 ASSERT_NO_FATAL_FAILURE(function(this, display, layer,
                         testLayer, &err));
@@ -775,6 +804,25 @@ protected:
                 ASSERT_NO_FATAL_FAILURE(destroyLayer(display, layer));
             }
         }
+    }
+
+    void getActiveConfigAttribute(hwc2_display_t display,
+            hwc2_attribute_t attribute, int32_t* outValue)
+    {
+        hwc2_config_t config;
+        ASSERT_NO_FATAL_FAILURE(getActiveConfig(display, &config));
+        ASSERT_NO_FATAL_FAILURE(getDisplayAttribute(display, config,
+                attribute, outValue));
+        ASSERT_GE(*outValue, 0) << "failed to get valid "
+                << getAttributeName(attribute);
+    }
+
+    void getActiveDisplayArea(hwc2_display_t display, Area* displayArea)
+    {
+        ASSERT_NO_FATAL_FAILURE(getActiveConfigAttribute(display,
+                HWC2_ATTRIBUTE_WIDTH, &displayArea->width));
+        ASSERT_NO_FATAL_FAILURE(getActiveConfigAttribute(display,
+                HWC2_ATTRIBUTE_HEIGHT, &displayArea->height));
     }
 
     hwc2_device_t* mHwc2Device = nullptr;
@@ -866,6 +914,13 @@ void setDataspace(Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
             testLayer.getDataspace(), outErr));
 }
 
+void setDisplayFrame(Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+        const Hwc2TestLayer& testLayer, hwc2_error_t* outErr)
+{
+    EXPECT_NO_FATAL_FAILURE(test->setLayerDisplayFrame(display, layer,
+            testLayer.getDisplayFrame(), outErr));
+}
+
 void setPlaneAlpha(Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
         const Hwc2TestLayer& testLayer, hwc2_error_t *outErr)
 {
@@ -909,6 +964,11 @@ bool advanceComposition(Hwc2TestLayer* testLayer)
 bool advanceDataspace(Hwc2TestLayer* testLayer)
 {
     return testLayer->advanceDataspace();
+}
+
+bool advanceDisplayFrame(Hwc2TestLayer* testLayer)
+{
+    return testLayer->advanceDisplayFrame();
 }
 
 bool advancePlaneAlpha(Hwc2TestLayer* testLayer)
@@ -1864,6 +1924,27 @@ TEST_F(Hwc2Test, SET_LAYER_DATASPACE_bad_layer)
 {
     ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
             setDataspace));
+}
+
+/* TESTCASE: Tests that the HWC2 can set the display frame of a layer. */
+TEST_F(Hwc2Test, SET_LAYER_DISPLAY_FRAME)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
+            setDisplayFrame, advanceDisplayFrame));
+}
+
+/* TESTCASE: Tests that the HWC2 can update the display frame of a layer. */
+TEST_F(Hwc2Test, SET_LAYER_DISPLAY_FRAME_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
+            setDisplayFrame, advanceDisplayFrame));
+}
+
+/* TESTCASE: Tests that the HWC2 cannot set the display frame of a bad layer. */
+TEST_F(Hwc2Test, SET_LAYER_DISPLAY_FRAME_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
+            setDisplayFrame));
 }
 
 /* TESTCASE: Tests that the HWC2 can set the plane alpha of a layer. */
