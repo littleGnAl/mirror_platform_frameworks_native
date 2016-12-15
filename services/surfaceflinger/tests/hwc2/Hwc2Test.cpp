@@ -369,6 +369,22 @@ public:
         }
     }
 
+    void setLayerDataspace(hwc2_display_t display, hwc2_layer_t layer,
+            android_dataspace_t dataspace, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_DATASPACE>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_DATASPACE));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display,
+                layer, dataspace));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer dataspace";
+        }
+    }
+
 protected:
     hwc2_function_pointer_t getFunction(hwc2_function_descriptor_t descriptor)
     {
@@ -1555,6 +1571,53 @@ TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_update)
 
             [] (Hwc2TestLayer* testLayer) {
                     return testLayer->advanceBlendMode();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_DATASPACE)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerDataspace(display, layer,
+                        testLayer->getDataspace()));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceDataspace();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_DATASPACE_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(HWC2_TEST_COVERAGE_DEFAULT,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerDataspace(display, layer,
+                        testLayer->getDataspace(), &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_DATASPACE_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerDataspace(display,
+                        layer, testLayer->getDataspace()));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceDataspace();
             }
     ));
 }
