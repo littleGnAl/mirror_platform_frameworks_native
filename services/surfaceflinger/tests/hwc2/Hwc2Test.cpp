@@ -356,6 +356,22 @@ public:
         }
     }
 
+    void setCursorPosition(hwc2_display_t display, hwc2_layer_t layer,
+            int32_t x, int32_t y, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_CURSOR_POSITION>(
+                getFunction(HWC2_FUNCTION_SET_CURSOR_POSITION));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer, x,
+                y));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set cursor position";
+        }
+    }
+
     void setLayerBlendMode(hwc2_display_t display, hwc2_layer_t layer,
             hwc2_blend_mode_t mode, hwc2_error_t* outErr = nullptr)
     {
@@ -899,6 +915,11 @@ bool advanceColor(Hwc2TestLayer* testLayer)
 bool advanceComposition(Hwc2TestLayer* testLayer)
 {
     return testLayer->advanceComposition();
+}
+
+bool advanceCursor(Hwc2TestLayer* testLayer)
+{
+    return testLayer->advanceCursor();
 }
 
 bool advanceDataspace(Hwc2TestLayer* testLayer)
@@ -1828,6 +1849,93 @@ TEST_F(Hwc2Test, SET_LAYER_COMPOSITION_TYPE_unsupported)
             },
 
             advanceComposition));
+}
+
+/* TESTCASE: Tests that the HWC2 can set the cursor position of a layer. */
+TEST_F(Hwc2Test, SET_CURSOR_POSITION)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    const Hwc2TestLayer& testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(display,
+                            layer, HWC2_COMPOSITION_CURSOR, &err));
+                EXPECT_EQ(err, HWC2_ERROR_NONE) << "returned wrong error code";
+
+                Point cursor = testLayer.getCursor();
+                EXPECT_NO_FATAL_FAILURE(test->setCursorPosition(display,
+                        layer, cursor.x, cursor.y));
+            },
+
+            advanceCursor));
+}
+
+/* TESTCASE: Tests that the HWC2 can update the cursor position of a layer. */
+TEST_F(Hwc2Test, SET_CURSOR_POSITION_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    const Hwc2TestLayer& testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerCompositionType(display,
+                        layer, HWC2_COMPOSITION_CURSOR, &err));
+                EXPECT_EQ(err, HWC2_ERROR_NONE) << "returned wrong error code";
+
+                Point cursor = testLayer.getCursor();
+                EXPECT_NO_FATAL_FAILURE(test->setCursorPosition(display,
+                        layer, cursor.x, cursor.y));
+            },
+
+            advanceCursor));
+}
+
+/* TESTCASE: Tests that the HWC2 can set the cursor position of a layer when the
+ * composition type has not been set to HWC2_COMPOSITION_CURSOR. */
+TEST_F(Hwc2Test, SET_CURSOR_POSITION_composition_type_unset)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(Hwc2TestCoverage::Complete,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    const Hwc2TestLayer& testLayer) {
+
+                Point cursor = testLayer.getCursor();
+                EXPECT_NO_FATAL_FAILURE(test->setCursorPosition(display,
+                        layer, cursor.x, cursor.y));
+            },
+
+            advanceCursor));
+}
+
+/* TESTCASE: Tests that the HWC2 cannot set the cursor position of a bad
+ * display. */
+TEST_F(Hwc2Test, SET_CURSOR_POSITION_bad_display)
+{
+    hwc2_display_t display;
+    hwc2_layer_t layer = 0;
+    int32_t x = 0, y = 0;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(getBadDisplay(&display));
+
+    ASSERT_NO_FATAL_FAILURE(setCursorPosition(display, layer, x, y, &err));
+    EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+}
+
+/* TESTCASE: Tests that the HWC2 cannot set the cursor position of a bad layer. */
+TEST_F(Hwc2Test, SET_CURSOR_POSITION_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(Hwc2TestCoverage::Default,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t badLayer,
+                    const Hwc2TestLayer& testLayer, hwc2_error_t* outErr) {
+
+                Point cursor = testLayer.getCursor();
+                ASSERT_NO_FATAL_FAILURE(test->setCursorPosition(display,
+                        badLayer, cursor.x, cursor.y, outErr));
+            }
+    ));
 }
 
 /* TESTCASE: Tests that the HWC2 can set a blend mode value of a layer. */

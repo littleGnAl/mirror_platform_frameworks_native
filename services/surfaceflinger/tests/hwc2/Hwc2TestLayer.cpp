@@ -24,6 +24,7 @@ Hwc2TestLayer::Hwc2TestLayer(Hwc2TestCoverage coverage, int32_t displayWidth,
       mBufferArea(coverage, displayWidth, displayHeight),
       mColor(coverage),
       mComposition(coverage),
+      mCursor(coverage, displayWidth, displayHeight),
       mDataspace(coverage),
       mDisplayFrame(coverage, displayWidth, displayHeight),
       mPlaneAlpha(coverage),
@@ -69,6 +70,11 @@ hwc_color_t Hwc2TestLayer::getColor() const
 hwc2_composition_t Hwc2TestLayer::getComposition() const
 {
     return mComposition.get();
+}
+
+Point Hwc2TestLayer::getCursor() const
+{
+    return mCursor.get();
 }
 
 android_dataspace_t Hwc2TestLayer::getDataspace() const
@@ -119,6 +125,11 @@ bool Hwc2TestLayer::advanceColor()
 bool Hwc2TestLayer::advanceComposition()
 {
     return mComposition.advance();
+}
+
+bool Hwc2TestLayer::advanceCursor()
+{
+    return mCursor.advance();
 }
 
 bool Hwc2TestLayer::advanceDataspace()

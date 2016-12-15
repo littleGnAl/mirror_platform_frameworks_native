@@ -38,6 +38,12 @@ public:
     int32_t height;
 };
 
+class Point {
+public:
+    int32_t x;
+    int32_t y;
+};
+
 class Hwc2TestContainer {
 public:
     virtual ~Hwc2TestContainer() = default;
@@ -161,6 +167,28 @@ protected:
     static const std::vector<hwc2_composition_t> mDefaultCompositions;
     static const std::vector<hwc2_composition_t> mBasicCompositions;
     static const std::vector<hwc2_composition_t> mCompleteCompositions;
+};
+
+
+class Hwc2TestCursor : public Hwc2TestProperty<Point> {
+public:
+    Hwc2TestCursor(Hwc2TestCoverage coverage, int32_t displayWidth,
+            int32_t displayHeight);
+
+    std::string dump() const override;
+
+protected:
+    void update();
+
+    const std::vector<float>& mScalars;
+    static const std::vector<float> mDefaultScalars;
+    static const std::vector<float> mBasicScalars;
+    static const std::vector<float> mCompleteScalars;
+
+    int32_t mDisplayWidth;
+    int32_t mDisplayHeight;
+
+    std::vector<Point> mCursors;
 };
 
 
