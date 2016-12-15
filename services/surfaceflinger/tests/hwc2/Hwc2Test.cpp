@@ -846,6 +846,101 @@ public:
         }
     }
 
+    void getColorModes(hwc2_display_t display,
+            std::vector<android_color_mode_t>* outColorModes,
+            hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_GET_COLOR_MODES>(
+                getFunction(HWC2_FUNCTION_GET_COLOR_MODES));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        uint32_t numColorModes = 0;
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display,
+                &numColorModes, nullptr));
+        if (err == HWC2_ERROR_NONE) {
+            outColorModes->resize(numColorModes);
+
+            err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display,
+                    &numColorModes,
+                    reinterpret_cast<int32_t*>(outColorModes->data())));
+        }
+
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to get color modes for"
+                    " display " << display;
+        }
+    }
+
+    void setColorMode(hwc2_display_t display, android_color_mode_t colorMode,
+            hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_COLOR_MODE>(
+                getFunction(HWC2_FUNCTION_SET_COLOR_MODE));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display,
+                static_cast<int32_t>(colorMode)));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set color mode "
+                    << colorMode;
+        }
+    }
+
+    void getHdrCapabilities(hwc2_display_t display,
+            std::vector<android_hdr_t>* outTypes, float* outMaxLuminance,
+            float* outMaxAverageLuminance, float* outMinLuminance,
+            hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_GET_HDR_CAPABILITIES>(
+                getFunction(HWC2_FUNCTION_GET_HDR_CAPABILITIES));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        uint32_t numTypes = 0;
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display,
+                &numTypes, nullptr, outMaxLuminance, outMaxAverageLuminance,
+                outMinLuminance));
+
+        if (err == HWC2_ERROR_NONE) {
+            outTypes->resize(numTypes);
+
+            err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, &numTypes,
+                    reinterpret_cast<int32_t*>(outTypes->data()), outMaxLuminance,
+                    outMaxAverageLuminance, outMinLuminance));
+        }
+
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to get hdr capabilities"
+                    " for display " << display;
+        }
+    }
+
+    void setColorTransform(hwc2_display_t display,
+            const std::array<float, 16>& matrix, android_color_transform_t hint,
+            hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_COLOR_TRANSFORM>(
+                getFunction(HWC2_FUNCTION_SET_COLOR_TRANSFORM));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display,
+                matrix.data(), hint));
+
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set color transform "
+                    << hint;
+        }
+    }
+
 protected:
     hwc2_function_pointer_t getFunction(hwc2_function_descriptor_t descriptor)
     {
@@ -3918,4 +4013,268 @@ TEST_F(Hwc2Test, GET_RELEASE_FENCES_bad_display)
 
     ASSERT_NO_FATAL_FAILURE(getReleaseFences(display, &layers, &fences, &err));
     EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+}
+
+static const std::array<android_color_mode, 9> androidColorModes = {{
+    HAL_COLOR_MODE_NATIVE,
+    HAL_COLOR_MODE_STANDARD_BT601_625,
+    HAL_COLOR_MODE_STANDARD_BT601_625_UNADJUSTED,
+    HAL_COLOR_MODE_STANDARD_BT601_525,
+    HAL_COLOR_MODE_STANDARD_BT601_525_UNADJUSTED,
+    HAL_COLOR_MODE_STANDARD_BT709,
+    HAL_COLOR_MODE_DCI_P3,
+    HAL_COLOR_MODE_SRGB,
+    HAL_COLOR_MODE_ADOBE_RGB,
+}};
+
+TEST_F(Hwc2Test, GET_COLOR_MODES)
+{
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            std::vector<android_color_mode_t> colorModes;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+
+            ASSERT_NO_FATAL_FAILURE(getColorModes(display, &colorModes));
+
+            EXPECT_NE(std::count(colorModes.begin(), colorModes.end(),
+                    HAL_COLOR_MODE_NATIVE), 0) << "all displays"
+                    " must support HAL_COLOR_MODE_NATIVE";
+
+            colorModes.clear();
+        }
+    }
+}
+
+TEST_F(Hwc2Test, GET_COLOR_MODES_bad_display)
+{
+    hwc2_display_t display;
+    std::vector<android_color_mode_t> colorModes;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(getBadDisplay(&display));
+
+    ASSERT_NO_FATAL_FAILURE(getColorModes(display, &colorModes, &err));
+    EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+}
+
+TEST_F(Hwc2Test, SET_COLOR_MODES)
+{
+    const android_color_mode_t colorMode = HAL_COLOR_MODE_NATIVE;
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (hwc2_config_t config : configs) {
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+
+            EXPECT_NO_FATAL_FAILURE(setColorMode(display, colorMode));
+        }
+    }
+}
+
+TEST_F(Hwc2Test, SET_COLOR_MODES_bad_display)
+{
+    hwc2_display_t display;
+    const android_color_mode_t colorMode = HAL_COLOR_MODE_NATIVE;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(getBadDisplay(&display));
+
+    ASSERT_NO_FATAL_FAILURE(setColorMode(display, colorMode, &err));
+    EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+}
+
+TEST_F(Hwc2Test, SET_COLOR_MODES_bad_parameter)
+{
+    const android_color_mode_t colorMode = static_cast<android_color_mode_t>(-1);
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            hwc2_error_t err = HWC2_ERROR_NONE;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+
+            ASSERT_NO_FATAL_FAILURE(setColorMode(display, colorMode, &err));
+            EXPECT_EQ(err, HWC2_ERROR_BAD_PARAMETER) << "returned wrong error code";
+        }
+    }
+}
+
+TEST_F(Hwc2Test, SET_COLOR_MODES_unsupported)
+{
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+
+            for (auto colorMode : androidColorModes) {
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(setColorMode(display, colorMode, &err));
+
+                EXPECT_TRUE(err == HWC2_ERROR_NONE || err == HWC2_ERROR_UNSUPPORTED)
+                        << "returned wrong error code";
+            }
+        }
+    }
+}
+
+TEST_F(Hwc2Test, GET_HDR_CAPABILITIES)
+{
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            std::vector<android_hdr_t> hdrCapabilities;
+            float maxLuminance, maxAverageLuminance, minLuminance;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+
+            EXPECT_NO_FATAL_FAILURE(getHdrCapabilities(display, &hdrCapabilities,
+                    &maxLuminance, &maxAverageLuminance, &minLuminance));
+
+            if (hdrCapabilities.empty())
+                continue;
+
+            EXPECT_GE(maxLuminance, maxAverageLuminance);
+            EXPECT_GE(maxAverageLuminance, maxLuminance);
+
+            hdrCapabilities.clear();
+        }
+    }
+}
+
+TEST_F(Hwc2Test, GET_HDR_CAPABILITIES_bad_display)
+{
+    hwc2_display_t display;
+    std::vector<android_hdr_t> hdrCapabilities;
+    float maxLuminance, maxAverageLuminance, minLuminance;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(getBadDisplay(&display));
+
+    ASSERT_NO_FATAL_FAILURE(getHdrCapabilities(display, &hdrCapabilities,
+            &maxLuminance, &maxAverageLuminance, &minLuminance, &err));
+    EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+}
+
+static const std::array<float, 16> identityMatrix = {{
+    1.0,  0.0,  0.0,  0.0,
+    0.0,  1.0,  0.0,  0.0,
+    0.0,  0.0,  1.0,  0.0,
+    0.0,  0.0,  0.0,  1.0,
+}};
+
+static const std::array<const std::array<float, 16>, 7> exampleMatrices = {{
+    identityMatrix,
+    {{ 0.0,  0.0,  0.0,  0.0,
+       0.0,  0.0,  0.0,  0.0,
+       0.0,  0.0,  0.0,  0.0,
+       0.0,  0.0,  0.0,  1.0}},
+    {{ 2.0,  0.0,  0.0,  0.0,
+       0.0,  0.5,  0.0,  0.0,
+       0.0,  0.0,  1.5,  0.0,
+       0.0,  0.0,  0.0,  1.0}},
+    {{ 1.0,  0.0,  0.0,  0.0,
+       0.5,  1.0,  0.0,  0.0,
+       0.0,  0.0,  1.0,  0.0,
+       0.0,  0.0,  0.0,  1.0}},
+    {{ 1.0,  0.0,  0.0,  0.0,
+       0.0,  1.0,  0.0,  0.0,
+       0.0,  0.0,  1.0,  0.0,
+       5.0,  2.0,  9.0,  1.0}},
+    {{ 1.0,  1.0,  1.0,  0.0,
+       1.0,  1.0,  1.0,  0.0,
+       1.0,  1.0,  1.0,  0.0,
+       1.0,  1.0,  1.0,  1.0}},
+    {{ 1.6, -0.5, -0.2,  0.0,
+      -0.4,  2.3, -0.3,  0.0,
+      -0.7, -0.1,  3.0,  0.0,
+       0.9,  0.8,  1.6,  1.0}},
+}};
+
+TEST_F(Hwc2Test, SET_COLOR_TRANSFORM)
+{
+    const android_color_transform_t hint = HAL_COLOR_TRANSFORM_IDENTITY;
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+
+            EXPECT_NO_FATAL_FAILURE(setColorTransform(display, identityMatrix,
+                    hint));
+        }
+    }
+}
+
+TEST_F(Hwc2Test, SET_COLOR_TRANSFORM_bad_display)
+{
+    hwc2_display_t display;
+    android_color_transform_t hint = HAL_COLOR_TRANSFORM_IDENTITY;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(getBadDisplay(&display));
+
+    ASSERT_NO_FATAL_FAILURE(setColorTransform(display, identityMatrix, hint,
+            &err));
+    EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+}
+
+TEST_F(Hwc2Test, SET_COLOR_TRANSFORM_bad_parameter)
+{
+    const android_color_transform_t hint = static_cast<android_color_transform_t>(-1);
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            hwc2_error_t err = HWC2_ERROR_NONE;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+
+            ASSERT_NO_FATAL_FAILURE(setColorTransform(display, identityMatrix,
+                    hint, &err));
+            EXPECT_EQ(err, HWC2_ERROR_BAD_PARAMETER) << "returned wrong error code";
+        }
+    }
+}
+
+TEST_F(Hwc2Test, SET_COLOR_TRANSFORM_arbitrary_matrix)
+{
+    const android_color_transform_t hint = HAL_COLOR_TRANSFORM_ARBITRARY_MATRIX;
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+
+            for (const std::array<float, 16>& matrix : exampleMatrices)
+                EXPECT_NO_FATAL_FAILURE(setColorTransform(display, matrix, hint));
+        }
+    }
 }
