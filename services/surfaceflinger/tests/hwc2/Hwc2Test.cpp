@@ -352,6 +352,23 @@ public:
         }
     }
 
+    void setLayerBlendMode(hwc2_display_t display, hwc2_layer_t layer,
+            hwc2_blend_mode_t mode, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_LAYER_BLEND_MODE>(
+                getFunction(HWC2_FUNCTION_SET_LAYER_BLEND_MODE));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, layer,
+                mode));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set layer blend mode "
+                    << getBlendModeName(mode);
+        }
+    }
+
 protected:
     hwc2_function_pointer_t getFunction(hwc2_function_descriptor_t descriptor)
     {
@@ -1476,6 +1493,68 @@ TEST_F(Hwc2Test, SET_LAYER_COMPOSITION_TYPE_update)
 
             [] (Hwc2TestLayer* testLayer) {
                     return testLayer->advanceComposition();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerProperty(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerBlendMode(display, layer,
+                        testLayer->getBlendMode()));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceBlendMode();
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_bad_layer)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadLayer(HWC2_TEST_COVERAGE_DEFAULT,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerBlendMode(display, layer,
+                        testLayer->getBlendMode(), &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_LAYER) << "returned wrong error code";
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_bad_parameter)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyBadParameter(
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer) {
+
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                ASSERT_NO_FATAL_FAILURE(test->setLayerBlendMode(display,
+                        layer, HWC2_BLEND_MODE_INVALID, &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_PARAMETER) << "returned wrong"
+                        " error code";
+            }
+    ));
+}
+
+TEST_F(Hwc2Test, SET_LAYER_BLEND_MODE_update)
+{
+    ASSERT_NO_FATAL_FAILURE(setLayerPropertyUpdate(HWC2_TEST_COVERAGE_COMPLETE,
+            [] (Hwc2Test* test, hwc2_display_t display, hwc2_layer_t layer,
+                    Hwc2TestLayer* testLayer) {
+
+                EXPECT_NO_FATAL_FAILURE(test->setLayerBlendMode(display,
+                        layer, testLayer->getBlendMode()));
+            },
+
+            [] (Hwc2TestLayer* testLayer) {
+                    return testLayer->advanceBlendMode();
             }
     ));
 }
