@@ -1157,8 +1157,11 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     if (out_vdex_path_str.empty()) {
         return -1;
     }
+    // If we are compiling because the boot image is out of date, we do not
+    // need to recreate a vdex, and can use the same existing one.
+    bool recreate_vdex = (dexopt_action != DEX2OAT_FOR_BOOT_IMAGE);
     Dex2oatFileWrapper<std::function<void ()>> out_vdex_fd(
-            open_output_file(out_vdex_path_str.c_str(), /*recreate*/true, /*permissions*/0644),
+            open_output_file(out_vdex_path_str.c_str(), recreate_vdex, /*permissions*/0644),
             [out_vdex_path_str]() { unlink(out_vdex_path_str.c_str()); });
     if (out_vdex_fd.get() < 0) {
         ALOGE("installd cannot open '%s' for output during dexopt\n", out_vdex_path_str.c_str());
