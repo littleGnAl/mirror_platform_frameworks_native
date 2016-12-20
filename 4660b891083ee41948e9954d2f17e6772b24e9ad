@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7c9e645_d11f64d1",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2016-12-20T00:05:34Z",
+      "side": 1,
+      "message": "just curious on your thoughts about code style ...\n\nevery path above should either return something or \"goto\" somewhere. would it be clear/safer if we remove the \"else\" clause and always return -1 if we hit this point?",
+      "range": {
+        "startLine": 297,
+        "startChar": 6,
+        "endLine": 297,
+        "endChar": 10
+      },
+      "revId": "4660b891083ee41948e9954d2f17e6772b24e9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7c9e645_f137003d",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2016-12-20T00:05:34Z",
+      "side": 1,
+      "message": "why not protected by MEASURE_EXTERNAL?",
+      "range": {
+        "startLine": 1010,
+        "startChar": 8,
+        "endLine": 1010,
+        "endChar": 12
+      },
+      "revId": "4660b891083ee41948e9954d2f17e6772b24e9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
