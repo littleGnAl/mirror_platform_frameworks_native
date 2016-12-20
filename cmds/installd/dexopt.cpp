@@ -1157,14 +1157,24 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     if (out_vdex_path_str.empty()) {
         return -1;
     }
-    Dex2oatFileWrapper<std::function<void ()>> out_vdex_fd(
+    Dex2oatFileWrapper<std::function<void ()>> out_vdex_wrapper_fd;
+    int out_vdex_fd = -1;
+
+    // If we are compiling because the boot image is out of date, we do not
+    // need to recreate a vdex, and can use the same existing one.
+    if (dexopt_action == DEX2OAT_FOR_BOOT_IMAGE) {
+      out_vdex_fd = in_vdex_fd;
+    } else {
+      out_vdex_wrapper_fd.reset(
             open_output_file(out_vdex_path_str.c_str(), /*recreate*/true, /*permissions*/0644),
             [out_vdex_path_str]() { unlink(out_vdex_path_str.c_str()); });
-    if (out_vdex_fd.get() < 0) {
+      out_vdex_fd = out_vdex_wrapper_fd.get();
+    }
+    if (out_vdex_fd < 0) {
         ALOGE("installd cannot open '%s' for output during dexopt\n", out_vdex_path_str.c_str());
         return -1;
     }
-    if (!set_permissions_and_ownership(out_vdex_fd.get(), is_public,
+    if (!set_permissions_and_ownership(out_vdex_fd, is_public,
                 uid, out_vdex_path_str.c_str())) {
         return -1;
     }
@@ -1247,7 +1257,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
             run_patchoat(input_fd.get(),
                          in_vdex_fd.get(),
                          out_oat_fd.get(),
-                         out_vdex_fd.get(),
+                         out_vdex_fd,
                          input_file,
                          in_vdex_path_str.c_str(),
                          out_oat_path,
@@ -1260,7 +1270,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
             run_dex2oat(input_fd.get(),
                         out_oat_fd.get(),
                         in_vdex_fd.get(),
-                        out_vdex_fd.get(),
+                        out_vdex_fd,
                         image_fd.get(),
                         input_file_name,
                         out_oat_path,
@@ -1291,7 +1301,7 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
 
     // We've been successful, don't delete output.
     out_oat_fd.SetCleanup(false);
-    out_vdex_fd.SetCleanup(false);
+    out_vdex_wrapper_fd.SetCleanup(false);
     image_fd.SetCleanup(false);
     reference_profile_fd.SetCleanup(false);
 
