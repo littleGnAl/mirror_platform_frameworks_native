@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "d7c9e645_00eef4d3",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-20T16:01:38Z",
+      "side": 1,
+      "message": "Yep, you\u0027re right this could be structured better; I\u0027ll take a second pass.",
+      "parentUuid": "d7c9e645_d11f64d1",
+      "range": {
+        "startLine": 297,
+        "startChar": 6,
+        "endLine": 297,
+        "endChar": 10
+      },
+      "revId": "4660b891083ee41948e9954d2f17e6772b24e9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7c9e645_e0f088b0",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-20T16:01:38Z",
+      "side": 1,
+      "message": "Note for future self: need to switch this to post-order traversal so we handle battery pulls.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 19
+      },
+      "revId": "4660b891083ee41948e9954d2f17e6772b24e9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7c9e645_f137003d",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
@@ -36,6 +83,30 @@
       "writtenOn": "2016-12-20T00:05:34Z",
       "side": 1,
       "message": "why not protected by MEASURE_EXTERNAL?",
+      "range": {
+        "startLine": 1010,
+        "startChar": 8,
+        "endLine": 1010,
+        "endChar": 12
+      },
+      "revId": "4660b891083ee41948e9954d2f17e6772b24e9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7c9e645_80cbc462",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-20T16:01:38Z",
+      "side": 1,
+      "message": "The first collectQuotaStats() above would have already counted the external storage stats if they\u0027re on the same block device; this block here is handling the case where the app and external storage are stored on different block devices.  (There isn\u0027t a way to tease apart internal-vs-external storage usage when they\u0027re on the same block device.)\n\n(Also, we haven\u0027t wired up the external storage UID/GID memberships yet, which is why we\u0027re skipping it below so we continue to read identical numbers between the two measurement mechanisms.)",
+      "parentUuid": "d7c9e645_f137003d",
       "range": {
         "startLine": 1010,
         "startChar": 8,
