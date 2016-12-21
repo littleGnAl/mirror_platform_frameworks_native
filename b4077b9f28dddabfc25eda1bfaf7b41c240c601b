@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "372b2280_d11c26df",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-21T10:24:14Z",
+      "side": 1,
+      "message": "You\u0027d get a different fd, and we opted for passing the same fd to dex2oat.\n\nAlso, we need Dex2oatFileWrapper for the scoped unlink.",
+      "parentUuid": "372b2280_3116cac2",
+      "range": {
+        "startLine": 1160,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 25
+      },
+      "revId": "b4077b9f28dddabfc25eda1bfaf7b41c240c601b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "372b2280_b1b75ab5",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 3
