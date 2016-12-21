@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "372b2280_3116cac2",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-12-21T10:21:57Z",
+      "side": 1,
+      "message": "Was there any reason why we did not go for dup(in_vdex_fd) ?",
+      "parentUuid": "372b2280_71e332c2",
+      "range": {
+        "startLine": 1160,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 25
+      },
+      "revId": "b4077b9f28dddabfc25eda1bfaf7b41c240c601b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "372b2280_b1b75ab5",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 3
