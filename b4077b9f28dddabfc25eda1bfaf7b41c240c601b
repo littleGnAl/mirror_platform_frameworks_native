@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "372b2280_31c48a32",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2016-12-21T09:05:39Z",
+      "side": 1,
+      "message": "It feels awkward to me that you have two copies of the fd, but I can\u0027t think of a cleaner way to manage the conditional closing of the fd.",
+      "range": {
+        "startLine": 1160,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 25
+      },
+      "revId": "b4077b9f28dddabfc25eda1bfaf7b41c240c601b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "372b2280_51bf1692",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2016-12-21T09:05:39Z",
+      "side": 1,
+      "message": "Use base::unique_fd instead of Dex2oatFileWrapper, given there is no cleanup action?",
+      "range": {
+        "startLine": 1170,
+        "startChar": 12,
+        "endLine": 1170,
+        "endChar": 33
+      },
+      "revId": "b4077b9f28dddabfc25eda1bfaf7b41c240c601b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
