@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "372b2280_b1b75ab5",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2016-12-21T09:24:17Z",
+      "side": 1,
+      "message": "Also check for in_vdex_fd !\u003d -1",
+      "range": {
+        "startLine": 1165,
+        "startChar": 8,
+        "endLine": 1165,
+        "endChar": 47
+      },
+      "revId": "b4077b9f28dddabfc25eda1bfaf7b41c240c601b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "372b2280_51bf1692",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 3
@@ -36,6 +59,30 @@
       "writtenOn": "2016-12-21T09:05:39Z",
       "side": 1,
       "message": "Use base::unique_fd instead of Dex2oatFileWrapper, given there is no cleanup action?",
+      "range": {
+        "startLine": 1170,
+        "startChar": 12,
+        "endLine": 1170,
+        "endChar": 33
+      },
+      "revId": "b4077b9f28dddabfc25eda1bfaf7b41c240c601b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "372b2280_f1ade268",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2016-12-21T09:24:17Z",
+      "side": 1,
+      "message": "nevermind. I see the unlink now.",
+      "parentUuid": "372b2280_51bf1692",
       "range": {
         "startLine": 1170,
         "startChar": 12,
