@@ -445,7 +445,7 @@ void *Loader::load_driver(const char* kind,
             char const * name = *api;
             __eglMustCastToProperFunctionPointerType f =
                 (__eglMustCastToProperFunctionPointerType)dlsym(dso, name);
-            if (f == NULL) {
+            if (f == NULL && getProcAddress) {
                 // couldn't find the entry-point, use eglGetProcAddress()
                 f = getProcAddress(name);
                 if (f == NULL) {
