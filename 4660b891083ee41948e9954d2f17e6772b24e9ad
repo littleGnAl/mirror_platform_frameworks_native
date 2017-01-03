@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d7c9e645_3be195b5",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2017-01-03T17:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7c9e645_00eef4d3",
+      "range": {
+        "startLine": 297,
+        "startChar": 6,
+        "endLine": 297,
+        "endChar": 10
+      },
+      "revId": "4660b891083ee41948e9954d2f17e6772b24e9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7c9e645_e0f088b0",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2016-12-20T16:01:38Z",
       "side": 1,
       "message": "Note for future self: need to switch this to post-order traversal so we handle battery pulls.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 19
+      },
+      "revId": "4660b891083ee41948e9954d2f17e6772b24e9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7c9e645_1bde19f9",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2017-01-03T17:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7c9e645_e0f088b0",
       "range": {
         "startLine": 312,
         "startChar": 0,
