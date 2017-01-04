@@ -160,4 +160,5 @@ cc_library_shared {
     shared_libs: ["libutils"],
 
     cflags: ["-DLOG_TAG=\"libGLESv3\""],
+    version_script: "libGLESv3.map.txt",
 }
