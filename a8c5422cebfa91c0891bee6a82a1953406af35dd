@@ -34,6 +34,24 @@
       "revId": "a8c5422cebfa91c0891bee6a82a1953406af35dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_5984435f",
+        "filename": "opengl/libs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2017-01-04T23:15:48Z",
+      "side": 1,
+      "message": "in this case v2 is effectively a copy of v3. I think it is better to do it for both of them.",
+      "parentUuid": "17c7fe66_b7b37b9a",
+      "revId": "a8c5422cebfa91c0891bee6a82a1953406af35dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
