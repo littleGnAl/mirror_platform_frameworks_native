@@ -52,6 +52,24 @@
       "revId": "a8c5422cebfa91c0891bee6a82a1953406af35dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_dc1a8195",
+        "filename": "opengl/libs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-04T23:49:46Z",
+      "side": 1,
+      "message": "The version script for v2 exposes a lot less, and if we use it the platform doesn\u0027t build. We might want to just merge the two, but I think we need to figure out of the NDK API just needs to be expanded or if the missing things should just be platform only.",
+      "parentUuid": "97c76e81_5984435f",
+      "revId": "a8c5422cebfa91c0891bee6a82a1953406af35dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
