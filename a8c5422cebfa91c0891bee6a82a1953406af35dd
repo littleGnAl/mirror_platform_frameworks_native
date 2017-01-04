@@ -16,6 +16,24 @@
       "revId": "a8c5422cebfa91c0891bee6a82a1953406af35dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17c7fe66_b7b37b9a",
+        "filename": "opengl/libs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-04T21:55:17Z",
+      "side": 1,
+      "message": "Was trying to do this in more granular steps (mostly in case we need to revert something), but I can do them all at once if that\u0027s better.",
+      "parentUuid": "17c7fe66_57630758",
+      "revId": "a8c5422cebfa91c0891bee6a82a1953406af35dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
