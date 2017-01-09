@@ -70,6 +70,24 @@
       "revId": "a8c5422cebfa91c0891bee6a82a1953406af35dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_af440995",
+        "filename": "opengl/libs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2017-01-09T06:01:53Z",
+      "side": 1,
+      "message": "I want to keep ES3-only functions out of libGLESv2.so, so that apps can find out at link time if they\u0027re accidentally using any ES3 functions (which will be present, but will be no-ops, on devices that only support ES2).\n\nThe missing functions are probably ES2 extensions, though, and we could add those to the NDK, I guess? Though it\u0027s possible (but unlikely) that an OEM would have modified the list of symbols in the libGLESv2.so library compared to what we shipped in AOSP. Extension functions all have an all-caps suffix (KHR, OES, EXT, ANDROID, etc.).",
+      "parentUuid": "97c76e81_dc1a8195",
+      "revId": "a8c5422cebfa91c0891bee6a82a1953406af35dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
