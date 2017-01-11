@@ -16,12 +16,16 @@
 
 #include "../dumpsys.h"
 
+#include <libgen.h>
+#include <sys/stat.h>
 #include <vector>
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
 #include <android-base/file.h>
+#include <android-base/stringprintf.h>
+#include <android-base/test_utils.h>
 #include <utils/String16.h>
 #include <utils/Vector.h>
 
@@ -31,11 +35,13 @@ using ::testing::_;
 using ::testing::Action;
 using ::testing::ActionInterface;
 using ::testing::DoAll;
+using ::testing::EndsWith;
 using ::testing::Eq;
 using ::testing::HasSubstr;
 using ::testing::MakeAction;
 using ::testing::Not;
 using ::testing::Return;
+using ::testing::StartsWith;
 using ::testing::StrEq;
 using ::testing::Test;
 using ::testing::WithArg;
@@ -160,7 +166,7 @@ class DumpsysTest : public Test {
             .WillRepeatedly(DoAll(Sleep(timeout_s), WithArg<0>(WriteOnFd(output)), Return(0)));
     }
 
-    void CallMain(const std::vector<std::string>& args) {
+    void CallMain(const std::vector<std::string>& args, int expected_status = 0) {
         const char* argv[1024] = {"/some/virtual/dir/dumpsys"};
         int argc = (int)args.size() + 1;
         int i = 1;
@@ -172,7 +178,7 @@ class DumpsysTest : public Test {
         int status = dump_.main(argc, const_cast<char**>(argv));
         stdout_ = GetCapturedStdout();
         stderr_ = GetCapturedStderr();
-        EXPECT_THAT(status, Eq(0));
+        EXPECT_THAT(status, Eq(expected_status));
     }
 
     void AssertRunningServices(const std::vector<std::string>& services) {
@@ -195,8 +201,45 @@ class DumpsysTest : public Test {
         EXPECT_THAT(stdout_, HasSubstr("DUMP OF SERVICE " + service + ":\n" + dump));
     }
 
+    // Need functions that returns void to use assertions -
+    // https://github.com/google/googletest/blob/master/googletest/docs/AdvancedGuide.md#assertion-placement
+    void ReadFileToString(const std::string& path, std::string* content) {
+        ASSERT_TRUE(android::base::ReadFileToString(path, content))
+            << "could not read contents from " << path;
+    }
+
+    void AssertDumpedOnFile(const std::string& path, const std::string& dump) {
+        std::string content;
+        ReadFileToString(path, &content);
+        EXPECT_THAT(content, StrEq(dump));
+    }
+
+    void AssertDumpedOnDir(const std::string& dir, const std::string& service,
+                           const std::string& dump, bool assert_duration = true) {
+        std::string path = dir + "/" + service + ".txt";
+        EXPECT_THAT(stderr_, HasSubstr("DUMP OF SERVICE " + service + " ON " + path));
+
+        std::string content;
+        ReadFileToString(path, &content);
+
+        if (assert_duration) {
+            EXPECT_THAT(content, StartsWith(dump));
+            EXPECT_THAT(content, EndsWith(" was the duration\n"));
+        } else {
+            EXPECT_THAT(content, StrEq(dump));
+        }
+    }
+
     void AssertNotDumped(const std::string& dump) {
         EXPECT_THAT(stdout_, Not(HasSubstr(dump)));
+    }
+
+    void AssertNotDumpedOnDir(const std::string& dir, const std::string& service) {
+        std::string path = dir + "/" + service + ".txt";
+        struct stat buffer;
+        bool exists = stat(path.c_str(), &buffer) == 0;
+
+        ASSERT_FALSE(exists) << "file " << path << " should not exist";
     }
 
     void AssertStopped(const std::string& service) {
@@ -297,3 +340,76 @@ TEST_F(DumpsysTest, DumpWithSkip) {
     AssertNotDumped("dump3");
     AssertNotDumped("dump5");
 }
+
+// Tests 'dumpsys -d DIRECTORY', which dumps all services in the given directory
+TEST_F(DumpsysTest, DumpOnDirectoryMultiple) {
+    TemporaryDir root;
+    std::string dir = root.path;
+
+    ExpectListServices({"running1", "stopped2", "running3"});
+    ExpectDump("running1", "dump1");
+    ExpectCheckService("stopped2", false);
+    ExpectDump("running3", "dump3");
+
+    CallMain({"-d", root.path});
+
+    AssertRunningServices({"running1", "running3"});
+
+    AssertDumpedOnDir(root.path, "running1", "dump1");
+    AssertDumpedOnDir(root.path, "running3", "dump3");
+
+    AssertNotDumpedOnDir(root.path, "stopped2");
+    AssertStopped("stopped2");
+}
+
+// Tests 'dumpsys -d DIRECTORY service_name', which is not valid
+TEST_F(DumpsysTest, DumpOnDirectorySingleService) {
+    TemporaryDir root;
+    CallMain({"-d", root.path, "Valet"}, 1);
+    AssertNotDumpedOnDir(root.path, "Valet");
+}
+
+// Tests 'dumpsys -d DIRECTORY --skip skipped3 skipped5', which should skip these services
+TEST_F(DumpsysTest, DumpOnDirectorySkips) {
+    TemporaryDir root;
+
+    ExpectListServices({"running1", "stopped2", "skipped3", "running4", "skipped5"});
+    ExpectDump("running1", "dump1");
+    ExpectCheckService("stopped2", false);
+    ExpectDump("skipped3", "dump3");
+    ExpectDump("running4", "dump4");
+    ExpectDump("skipped5", "dump5");
+
+    CallMain({"-d", root.path, "--skip", "skipped3", "skipped5"});
+
+    AssertRunningServices({"running1", "running4", "skipped3 (skipped)", "skipped5 (skipped)"});
+    AssertDumpedOnDir(root.path, "running1", "dump1");
+    AssertDumpedOnDir(root.path, "running4", "dump4");
+
+    AssertNotDumpedOnDir(root.path, "stopped2");
+    AssertStopped("stopped2");
+
+    AssertNotDumpedOnDir(root.path, "skipped3");
+    AssertNotDumpedOnDir(root.path, "skipped5");
+}
+
+// Tests 'dumpsys -o FILE service_name', which dumps just one service using a custom file name
+TEST_F(DumpsysTest, DumpOnFile) {
+    TemporaryDir root;
+    std::string path = android::base::StringPrintf("%s/Valet.txt", root.path);
+
+    ExpectDump("Valet", "Here's your car");
+
+    CallMain({"-o", path, "Valet"});
+
+    AssertDumpedOnFile(path, "Here's your car");
+}
+
+// Tests 'dumpsys -o FILE', which is not valid
+TEST_F(DumpsysTest, DumpOnFileMultipleServices) {
+    TemporaryDir root;
+    std::string path = android::base::StringPrintf("%s/Y_U_NO_FAIL.txt", root.path);
+
+    CallMain({"-o", path}, 1);
+}
+// TODO(felipeal): test file errors (dir not found, cannot write dir, file not found, etc...)
