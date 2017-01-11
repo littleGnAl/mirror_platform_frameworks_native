@@ -24,7 +24,6 @@
 #include <binder/Parcel.h>
 #include <binder/ProcessState.h>
 #include <binder/TextOutput.h>
-#include <utils/Log.h>
 #include <utils/Vector.h>
 
 #include <fcntl.h>
@@ -51,16 +50,21 @@ static int sort_func(const String16* lhs, const String16* rhs)
 }
 
 static void usage() {
-    fprintf(stderr,
+    fprintf(
+        stderr,
         "usage: dumpsys\n"
-            "         To dump all services.\n"
-            "or:\n"
-            "       dumpsys [-t TIMEOUT] [--help | -l | --skip SERVICES | SERVICE [ARGS]]\n"
-            "         --help: shows this help\n"
-            "         -l: only list services, do not dump them\n"
-            "         -t TIMEOUT: TIMEOUT to use in seconds instead of default 10 seconds\n"
-            "         --skip SERVICES: dumps all services but SERVICES (comma-separated list)\n"
-            "         SERVICE [ARGS]: dumps only service SERVICE, optionally passing ARGS to it\n");
+        "         To dump all services to stdout.\n"
+        "or:\n"
+        "       dumpsys [-t TIMEOUT] [-d DIR] [--help | -l | --skip SERVICES | [-o FILE ] SERVICE "
+        "[ARGS]]\n"
+        "         --help: shows this help\n"
+        "         -d DIR: dumps services in the given directory, using a service.txt file for each "
+        "service\n"
+        "         -l: only list services, do not dump them\n"
+        "         -t TIMEOUT: TIMEOUT to use in seconds instead of default 10 seconds\n"
+        "         --skip SERVICES: dumps all services but SERVICES (comma-separated list)\n"
+        "         -o FILE: dumps the specific service in the given file (or stdout if not set)\n"
+        "         SERVICE [ARGS]: dumps only service SERVICE, optionally passing ARGS to it\n");
 }
 
 static bool IsSkipped(const Vector<String16>& skipped, const String16& service) {
@@ -72,27 +76,38 @@ static bool IsSkipped(const Vector<String16>& skipped, const String16& service) 
     return false;
 }
 
+static int OpenFile(const std::string& path) {
+    int fd =
+        TEMP_FAILURE_RETRY(open(path.c_str(), O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC | O_NOFOLLOW,
+                                S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
+    if (fd < 0) {
+        fprintf(stderr, "Failed to open file %s: %s\n", path.c_str(), strerror(errno));
+        exit(1);
+    }
+    return fd;
+}
+
 int Dumpsys::main(int argc, char* const argv[]) {
     Vector<String16> services;
     Vector<String16> args;
-    Vector<String16> skippedServices;
-    bool showListOnly = false;
-    bool skipServices = false;
-    int timeoutArg = 10;
-    static struct option longOptions[] = {
-        {"skip", no_argument, 0,  0 },
-        {"help", no_argument, 0,  0 },
-        {     0,           0, 0,  0 }
-    };
+    Vector<String16> skipped_services;
+    bool show_list_only = false;
+    bool skip_services = false;
+    int timeout_arg = 10;
+    std::string dump_dir = "";
+    std::string dump_file = "";
+
+    static struct option long_options[] = {
+        {"skip", no_argument, 0, 0}, {"help", no_argument, 0, 0}, {0, 0, 0, 0}};
 
     // Must reset optind, otherwise subsequent calls will fail (wouldn't happen on main.cpp, but
     // happens on test cases).
     optind = 1;
     while (1) {
         int c;
-        int optionIndex = 0;
+        int option_index = 0;
 
-        c = getopt_long(argc, argv, "+t:l", longOptions, &optionIndex);
+        c = getopt_long(argc, argv, "+t:ld:o:", long_options, &option_index);
 
         if (c == -1) {
             break;
@@ -100,9 +115,9 @@ int Dumpsys::main(int argc, char* const argv[]) {
 
         switch (c) {
         case 0:
-            if (!strcmp(longOptions[optionIndex].name, "skip")) {
-                skipServices = true;
-            } else if (!strcmp(longOptions[optionIndex].name, "help")) {
+            if (!strcmp(long_options[option_index].name, "skip")) {
+                skip_services = true;
+            } else if (!strcmp(long_options[option_index].name, "help")) {
                 usage();
                 return 0;
             }
@@ -111,8 +126,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
         case 't':
             {
                 char *endptr;
-                timeoutArg = strtol(optarg, &endptr, 10);
-                if (*endptr != '\0' || timeoutArg <= 0) {
+                timeout_arg = strtol(optarg, &endptr, 10);
+                if (*endptr != '\0' || timeout_arg <= 0) {
                     fprintf(stderr, "Error: invalid timeout number: '%s'\n", optarg);
                     return -1;
                 }
@@ -120,7 +135,15 @@ int Dumpsys::main(int argc, char* const argv[]) {
             break;
 
         case 'l':
-            showListOnly = true;
+            show_list_only = true;
+            break;
+
+        case 'd':
+            dump_dir = optarg;
+            break;
+
+        case 'o':
+            dump_file = optarg;
             break;
 
         default:
@@ -131,8 +154,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
     }
 
     for (int i = optind; i < argc; i++) {
-        if (skipServices) {
-            skippedServices.add(String16(argv[i]));
+        if (skip_services) {
+            skipped_services.add(String16(argv[i]));
         } else {
             if (i == optind) {
                 services.add(String16(argv[i]));
@@ -142,13 +165,25 @@ int Dumpsys::main(int argc, char* const argv[]) {
         }
     }
 
-    if ((skipServices && skippedServices.empty()) ||
-            (showListOnly && (!services.empty() || !skippedServices.empty()))) {
+    if (!dump_dir.empty() && !services.empty()) {
+        fprintf(stderr, "Cannot use -d on a single service; use -o instead\n");
+        ;
+        return 1;
+    }
+
+    if (!dump_file.empty() && services.empty()) {
+        fprintf(stderr, "Cannot use -o on a multiples services; use -d instead\n");
+        ;
+        return 1;
+    }
+
+    if ((skip_services && skipped_services.empty()) ||
+        (show_list_only && (!services.empty() || !skipped_services.empty()))) {
         usage();
         return -1;
     }
 
-    if (services.empty() || showListOnly) {
+    if (services.empty() || show_list_only) {
         // gets all services
         services = sm_->listServices();
         services.sort(sort_func);
@@ -156,6 +191,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
     }
 
     const size_t N = services.size();
+    bool dump_on_dir = !dump_dir.empty();
+    bool dump_on_file = !dump_file.empty();
 
     if (N > 1) {
         // first print a list of the current services
@@ -165,19 +202,21 @@ int Dumpsys::main(int argc, char* const argv[]) {
             sp<IBinder> service = sm_->checkService(services[i]);
 
             if (service != nullptr) {
-                bool skipped = IsSkipped(skippedServices, services[i]);
+                bool skipped = IsSkipped(skipped_services, services[i]);
                 aout << "  " << services[i] << (skipped ? " (skipped)" : "") << endl;
             }
         }
     }
 
-    if (showListOnly) {
+    if (show_list_only) {
         return 0;
     }
 
+    int fd = STDOUT_FILENO;
+
     for (size_t i = 0; i < N; i++) {
         String16 service_name = std::move(services[i]);
-        if (IsSkipped(skippedServices, service_name)) continue;
+        if (IsSkipped(skipped_services, service_name)) continue;
 
         sp<IBinder> service = sm_->checkService(service_name);
         if (service != nullptr) {
@@ -189,15 +228,26 @@ int Dumpsys::main(int argc, char* const argv[]) {
                 continue;
             }
 
+            if (N > 1) {
+                if (dump_on_dir) {
+                    std::string path = dump_dir + "/" + String16::std_string(service_name) + ".txt";
+                    fd = OpenFile(path);
+                    aout << "DUMP OF SERVICE " << service_name << " ON " << path << endl;
+                } else {
+                    aout << "------------------------------------------------------------"
+                            "-------------------"
+                         << endl;
+                    aout << "DUMP OF SERVICE " << service_name << ":" << endl;
+                }
+            } else {
+                if (dump_on_file) {
+                    fd = OpenFile(dump_file);
+                }
+            }
+
             unique_fd local_end(sfd[0]);
             unique_fd remote_end(sfd[1]);
             sfd[0] = sfd[1] = -1;
-
-            if (N > 1) {
-                aout << "------------------------------------------------------------"
-                        "-------------------" << endl;
-                aout << "DUMP OF SERVICE " << service_name << ":" << endl;
-            }
 
             // dump blocks until completion, so spawn a thread..
             std::thread dump_thread([=, remote_end { std::move(remote_end) }]() mutable {
@@ -215,7 +265,7 @@ int Dumpsys::main(int argc, char* const argv[]) {
                 }
             });
 
-            auto timeout = std::chrono::seconds(timeoutArg);
+            auto timeout = std::chrono::seconds(timeout_arg);
             auto start = std::chrono::steady_clock::now();
             auto end = start + timeout;
 
@@ -257,7 +307,7 @@ int Dumpsys::main(int argc, char* const argv[]) {
                     break;
                 }
 
-                if (!WriteFully(STDOUT_FILENO, buf, rc)) {
+                if (!WriteFully(fd, buf, rc)) {
                     aerr << "Failed to write while dumping service " << service_name << ": "
                          << strerror(errno) << endl;
                     error = true;
@@ -267,7 +317,7 @@ int Dumpsys::main(int argc, char* const argv[]) {
 
             if (timed_out) {
                 aout << endl
-                     << "*** SERVICE '" << service_name << "' DUMP TIMEOUT (" << timeoutArg
+                     << "*** SERVICE '" << service_name << "' DUMP TIMEOUT (" << timeout_arg
                      << "s) EXPIRED ***" << endl
                      << endl;
             }
@@ -281,8 +331,12 @@ int Dumpsys::main(int argc, char* const argv[]) {
             if (N > 1) {
               std::chrono::duration<double> elapsed_seconds =
                   std::chrono::steady_clock::now() - start;
-              aout << StringPrintf("--------- %.3fs ", elapsed_seconds.count()).c_str()
-                   << "was the duration of dumpsys " << service_name << endl;
+              if (dump_on_dir) {
+                  dprintf(fd, "--------- %.3fs was the duration\n", elapsed_seconds.count());
+              } else {
+                  aout << StringPrintf("--------- %.3fs ", elapsed_seconds.count()).c_str()
+                       << "was the duration of dumpsys " << service_name << endl;
+              }
             }
         } else {
             aerr << "Can't find service: " << service_name << endl;
