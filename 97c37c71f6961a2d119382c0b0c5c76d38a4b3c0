@@ -22,6 +22,30 @@
       "revId": "97c37c71f6961a2d119382c0b0c5c76d38a4b3c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a364350b_ce7a5cd3",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-01-11T22:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a364350b_98434a55",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "97c37c71f6961a2d119382c0b0c5c76d38a4b3c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
