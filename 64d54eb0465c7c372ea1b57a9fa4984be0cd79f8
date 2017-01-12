@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a364350b_d4009f23",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-01-12T18:24:49Z",
+      "side": 1,
+      "message": "Should these fprintf\u0027s get commented as well?",
+      "range": {
+        "startLine": 539,
+        "startChar": 16,
+        "endLine": 539,
+        "endChar": 23
+      },
+      "revId": "64d54eb0465c7c372ea1b57a9fa4984be0cd79f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
