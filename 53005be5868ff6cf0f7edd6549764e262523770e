@@ -22,6 +22,30 @@
       "revId": "53005be5868ff6cf0f7edd6549764e262523770e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a364350b_44dceb26",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-01-12T00:03:33Z",
+      "side": 1,
+      "message": "clang is not formatting it now, but I didn\u0027t rescued it properly :-(",
+      "parentUuid": "a364350b_a43dc731",
+      "range": {
+        "startLine": 100,
+        "startChar": 7,
+        "endLine": 100,
+        "endChar": 23
+      },
+      "revId": "53005be5868ff6cf0f7edd6549764e262523770e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
