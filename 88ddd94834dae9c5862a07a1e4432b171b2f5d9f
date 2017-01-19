@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "082efe90_bdb15dee",
+        "filename": "cmds/installd/CacheItem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2017-01-19T16:14:28Z",
+      "side": 1,
+      "message": "And I should switch these over to using \u003c\u003c operator overloads.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "88ddd94834dae9c5862a07a1e4432b171b2f5d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3662dd0_0ed81b29",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
