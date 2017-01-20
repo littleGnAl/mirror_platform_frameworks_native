@@ -8,6 +8,8 @@ cc_test {
         "libbase",
         "libbinder",
         "libutils",
+        "android.hidl.manager@1.0",
+        "libhidlbase"
     ],
 
     static_libs: [
