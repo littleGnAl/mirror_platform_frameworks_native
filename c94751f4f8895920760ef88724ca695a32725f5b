@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "082efe90_35e322bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-01-21T00:47:44Z",
+      "side": 1,
+      "message": "Could you please add new tests on dumpsys_test.cpp?",
+      "revId": "c94751f4f8895920760ef88724ca695a32725f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "082efe90_d57a9e23",
         "filename": "cmds/dumpsys/dumpsys.cpp",
         "patchSetId": 2
