@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "atrace"
+ #define LOG_TAG "atrace"
 
 #include <errno.h>
 #include <fcntl.h>
@@ -112,81 +112,81 @@ static const TracingCategory k_categories[] = {
     { "adb",        "ADB",              ATRACE_TAG_ADB, { } },
     { k_coreServiceCategory, "Core services", 0, { } },
     { "sched",      "CPU Scheduling",   0, {
-        { REQ,      "events/sched/sched_switch/enable" },
-        { REQ,      "events/sched/sched_wakeup/enable" },
-        { OPT,      "events/sched/sched_blocked_reason/enable" },
-        { OPT,      "events/sched/sched_cpu_hotplug/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/sched/sched_switch/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/sched/sched_wakeup/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/sched/sched_blocked_reason/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/sched/sched_cpu_hotplug/enable" },
     } },
     { "irq",        "IRQ Events",   0, {
-        { REQ,      "events/irq/enable" },
-        { OPT,      "events/ipi/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/irq/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/ipi/enable" },
     } },
     { "i2c",        "I2C Events",   0, {
-        { REQ,      "events/i2c/enable" },
-        { REQ,      "events/i2c/i2c_read/enable" },
-        { REQ,      "events/i2c/i2c_write/enable" },
-        { REQ,      "events/i2c/i2c_result/enable" },
-        { REQ,      "events/i2c/i2c_reply/enable" },
-        { OPT,      "events/i2c/smbus_read/enable" },
-        { OPT,      "events/i2c/smbus_write/enable" },
-        { OPT,      "events/i2c/smbus_result/enable" },
-        { OPT,      "events/i2c/smbus_reply/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/i2c/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/i2c/i2c_read/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/i2c/i2c_write/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/i2c/i2c_result/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/i2c/i2c_reply/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/i2c/smbus_read/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/i2c/smbus_write/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/i2c/smbus_result/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/i2c/smbus_reply/enable" },
     } },
     { "freq",       "CPU Frequency",    0, {
-        { REQ,      "events/power/cpu_frequency/enable" },
-        { OPT,      "events/power/clock_set_rate/enable" },
-        { OPT,      "events/power/cpu_frequency_limits/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/power/cpu_frequency/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/power/clock_set_rate/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/power/cpu_frequency_limits/enable" },
     } },
     { "membus",     "Memory Bus Utilization", 0, {
-        { REQ,      "events/memory_bus/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/memory_bus/enable" },
     } },
     { "idle",       "CPU Idle",         0, {
-        { REQ,      "events/power/cpu_idle/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/power/cpu_idle/enable" },
     } },
     { "disk",       "Disk I/O",         0, {
-        { OPT,      "events/f2fs/f2fs_sync_file_enter/enable" },
-        { OPT,      "events/f2fs/f2fs_sync_file_exit/enable" },
-        { OPT,      "events/f2fs/f2fs_write_begin/enable" },
-        { OPT,      "events/f2fs/f2fs_write_end/enable" },
-        { OPT,      "events/ext4/ext4_da_write_begin/enable" },
-        { OPT,      "events/ext4/ext4_da_write_end/enable" },
-        { OPT,      "events/ext4/ext4_sync_file_enter/enable" },
-        { OPT,      "events/ext4/ext4_sync_file_exit/enable" },
-        { REQ,      "events/block/block_rq_issue/enable" },
-        { REQ,      "events/block/block_rq_complete/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/f2fs/f2fs_sync_file_enter/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/f2fs/f2fs_sync_file_exit/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/f2fs/f2fs_write_begin/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/f2fs/f2fs_write_end/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/ext4/ext4_da_write_begin/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/ext4/ext4_da_write_end/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/ext4/ext4_sync_file_enter/enable" },
+        { OPT,      "/sys/kernel/debug/tracing/events/ext4/ext4_sync_file_exit/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/block/block_rq_issue/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/block/block_rq_complete/enable" },
     } },
     { "mmc",        "eMMC commands",    0, {
-        { REQ,      "events/mmc/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/mmc/enable" },
     } },
     { "load",       "CPU Load",         0, {
-        { REQ,      "events/cpufreq_interactive/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/cpufreq_interactive/enable" },
     } },
     { "sync",       "Synchronization",  0, {
-        { REQ,      "events/sync/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/sync/enable" },
     } },
     { "workq",      "Kernel Workqueues", 0, {
-        { REQ,      "events/workqueue/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/workqueue/enable" },
     } },
     { "memreclaim", "Kernel Memory Reclaim", 0, {
-        { REQ,      "events/vmscan/mm_vmscan_direct_reclaim_begin/enable" },
-        { REQ,      "events/vmscan/mm_vmscan_direct_reclaim_end/enable" },
-        { REQ,      "events/vmscan/mm_vmscan_kswapd_wake/enable" },
-        { REQ,      "events/vmscan/mm_vmscan_kswapd_sleep/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/vmscan/mm_vmscan_direct_reclaim_begin/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/vmscan/mm_vmscan_direct_reclaim_end/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/vmscan/mm_vmscan_kswapd_wake/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/vmscan/mm_vmscan_kswapd_sleep/enable" },
     } },
     { "regulators",  "Voltage and Current Regulators", 0, {
-        { REQ,      "events/regulator/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/regulator/enable" },
     } },
     { "binder_driver", "Binder Kernel driver", 0, {
-        { REQ,      "events/binder/binder_transaction/enable" },
-        { REQ,      "events/binder/binder_transaction_received/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_transaction/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_transaction_received/enable" },
     } },
     { "binder_lock", "Binder global lock trace", 0, {
-        { REQ,      "events/binder/binder_lock/enable" },
-        { REQ,      "events/binder/binder_locked/enable" },
-        { REQ,      "events/binder/binder_unlock/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_lock/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_locked/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/binder/binder_unlock/enable" },
     } },
     { "pagecache",  "Page cache", 0, {
-        { REQ,      "events/filemap/enable" },
+        { REQ,      "/sys/kernel/debug/tracing/events/filemap/enable" },
     } },
 };
 
@@ -205,62 +205,61 @@ static const char* g_outputFile = nullptr;
 /* Global state */
 static bool g_traceAborted = false;
 static bool g_categoryEnables[NELEM(k_categories)] = {};
-static std::string g_traceFolder;
 
 /* Sys file paths */
 static const char* k_traceClockPath =
-    "trace_clock";
+    "/sys/kernel/debug/tracing/trace_clock";
 
 static const char* k_traceBufferSizePath =
-    "buffer_size_kb";
+    "/sys/kernel/debug/tracing/buffer_size_kb";
 
 static const char* k_tracingOverwriteEnablePath =
-    "options/overwrite";
+    "/sys/kernel/debug/tracing/options/overwrite";
 
 static const char* k_currentTracerPath =
-    "current_tracer";
+    "/sys/kernel/debug/tracing/current_tracer";
 
 static const char* k_printTgidPath =
-    "options/print-tgid";
+    "/sys/kernel/debug/tracing/options/print-tgid";
 
 static const char* k_funcgraphAbsTimePath =
-    "options/funcgraph-abstime";
+    "/sys/kernel/debug/tracing/options/funcgraph-abstime";
 
 static const char* k_funcgraphCpuPath =
-    "options/funcgraph-cpu";
+    "/sys/kernel/debug/tracing/options/funcgraph-cpu";
 
 static const char* k_funcgraphProcPath =
-    "options/funcgraph-proc";
+    "/sys/kernel/debug/tracing/options/funcgraph-proc";
 
 static const char* k_funcgraphFlatPath =
-    "options/funcgraph-flat";
+    "/sys/kernel/debug/tracing/options/funcgraph-flat";
 
 static const char* k_funcgraphDurationPath =
-    "options/funcgraph-duration";
+    "/sys/kernel/debug/tracing/options/funcgraph-duration";
 
 static const char* k_ftraceFilterPath =
-    "set_ftrace_filter";
+    "/sys/kernel/debug/tracing/set_ftrace_filter";
 
 static const char* k_tracingOnPath =
-    "tracing_on";
+    "/sys/kernel/debug/tracing/tracing_on";
 
 static const char* k_tracePath =
-    "trace";
+    "/sys/kernel/debug/tracing/trace";
 
 static const char* k_traceStreamPath =
-    "trace_pipe";
+    "/sys/kernel/debug/tracing/trace_pipe";
 
 static const char* k_traceMarkerPath =
-    "trace_marker";
+    "/sys/kernel/debug/tracing/trace_marker";
 
 // Check whether a file exists.
 static bool fileExists(const char* filename) {
-    return access((g_traceFolder + filename).c_str(), F_OK) != -1;
+    return access(filename, F_OK) != -1;
 }
 
 // Check whether a file is writable.
 static bool fileIsWritable(const char* filename) {
-    return access((g_traceFolder + filename).c_str(), W_OK) != -1;
+    return access(filename, W_OK) != -1;
 }
 
 // Truncate a file.
@@ -269,9 +268,9 @@ static bool truncateFile(const char* path)
     // This uses creat rather than truncate because some of the debug kernel
     // device nodes (e.g. k_ftraceFilterPath) currently aren't changed by
     // calls to truncate, but they are cleared by calls to creat.
-    int traceFD = creat((g_traceFolder + path).c_str(), 0);
+    int traceFD = creat(path, 0);
     if (traceFD == -1) {
-        fprintf(stderr, "error truncating %s: %s (%d)\n", (g_traceFolder + path).c_str(),
+        fprintf(stderr, "error truncating %s: %s (%d)\n", path,
             strerror(errno), errno);
         return false;
     }
@@ -283,10 +282,9 @@ static bool truncateFile(const char* path)
 
 static bool _writeStr(const char* filename, const char* str, int flags)
 {
-    std::string fullFilename = g_traceFolder + filename;
-    int fd = open(fullFilename.c_str(), flags);
+    int fd = open(filename, flags);
     if (fd == -1) {
-        fprintf(stderr, "error opening %s: %s (%d)\n", fullFilename.c_str(),
+        fprintf(stderr, "error opening %s: %s (%d)\n", filename,
                 strerror(errno), errno);
         return false;
     }
@@ -294,7 +292,7 @@ static bool _writeStr(const char* filename, const char* str, int flags)
     bool ok = true;
     ssize_t len = strlen(str);
     if (write(fd, str, len) != len) {
-        fprintf(stderr, "error writing to %s: %s (%d)\n", fullFilename.c_str(),
+        fprintf(stderr, "error writing to %s: %s (%d)\n", filename,
                 strerror(errno), errno);
         ok = false;
     }
@@ -320,7 +318,7 @@ static void writeClockSyncMarker()
 {
   char buffer[128];
   int len = 0;
-  int fd = open((g_traceFolder + k_traceMarkerPath).c_str(), O_WRONLY);
+  int fd = open(k_traceMarkerPath, O_WRONLY);
   if (fd == -1) {
       fprintf(stderr, "error opening %s: %s (%d)\n", k_traceMarkerPath,
               strerror(errno), errno);
@@ -441,7 +439,7 @@ static bool setTraceBufferSizeKB(int size)
 // local [global] counter uptime perf
 static bool isTraceClock(const char *mode)
 {
-    int fd = open((g_traceFolder + k_traceClockPath).c_str(), O_RDONLY);
+    int fd = open(k_traceClockPath, O_RDONLY);
     if (fd == -1) {
         fprintf(stderr, "error opening %s: %s (%d)\n", k_traceClockPath,
             strerror(errno), errno);
@@ -654,7 +652,7 @@ static bool disableKernelTraceEvents() {
 static bool verifyKernelTraceFuncs(const char* funcs)
 {
     std::string buf;
-    if (!android::base::ReadFileToString(g_traceFolder + k_ftraceFilterPath, &buf)) {
+    if (!android::base::ReadFileToString(k_ftraceFilterPath, &buf)) {
          fprintf(stderr, "error opening %s: %s (%d)\n", k_ftraceFilterPath,
             strerror(errno), errno);
          return false;
@@ -875,7 +873,7 @@ static void stopTrace()
 static void streamTrace()
 {
     char trace_data[4096];
-    int traceFD = open((g_traceFolder + k_traceStreamPath).c_str(), O_RDWR);
+    int traceFD = open(k_traceStreamPath, O_RDWR);
     if (traceFD == -1) {
         fprintf(stderr, "error opening %s: %s (%d)\n", k_traceStreamPath,
                 strerror(errno), errno);
@@ -900,7 +898,7 @@ static void streamTrace()
 static void dumpTrace(int outFd)
 {
     ALOGI("Dumping trace");
-    int traceFD = open((g_traceFolder + k_tracePath).c_str(), O_RDWR);
+    int traceFD = open(k_tracePath, O_RDWR);
     if (traceFD == -1) {
         fprintf(stderr, "error opening %s: %s (%d)\n", k_tracePath,
                 strerror(errno), errno);
@@ -1055,29 +1053,6 @@ static void showHelp(const char *cmd)
             );
 }
 
-bool findTraceFiles()
-{
-    static const std::string debugfs_path = "/sys/kernel/debug/tracing/";
-    static const std::string tracefs_path = "/sys/kernel/tracing/";
-    static const std::string trace_file = "trace_marker";
-
-    bool tracefs = access((tracefs_path + trace_file).c_str(), F_OK) != -1;
-    bool debugfs = access((debugfs_path + trace_file).c_str(), F_OK) != -1;
-
-    if (!tracefs && !debugfs) {
-        fprintf(stderr, "Error: Did not find trace folder\n");
-        return false;
-    }
-
-    if (tracefs) {
-        g_traceFolder = tracefs_path;
-    } else {
-        g_traceFolder = debugfs_path;
-    }
-
-    return true;
-}
-
 int main(int argc, char **argv)
 {
     bool async = false;
@@ -1089,11 +1064,6 @@ int main(int argc, char **argv)
     if (argc == 2 && 0 == strcmp(argv[1], "--help")) {
         showHelp(argv[0]);
         exit(0);
-    }
-
-    if (!findTraceFiles()) {
-        fprintf(stderr, "No trace folder found\n");
-        exit(-1);
     }
 
     for (;;) {
