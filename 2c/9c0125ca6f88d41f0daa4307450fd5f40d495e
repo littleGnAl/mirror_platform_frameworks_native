@@ -1,0 +1,10 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Pirama Arumuga Nainar <pirama@google.com>
+Code-Review+2: Stephen Hines <srhines@google.com>
+Verified+1: Stephen Hines <srhines@google.com>
+Autosubmit+1: Stephen Hines <srhines@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 24 Jan 2017 01:15:06 +0000
+Reviewed-on: https://android-review.googlesource.com/314122
+Project: platform/frameworks/native
+Branch: refs/heads/master
