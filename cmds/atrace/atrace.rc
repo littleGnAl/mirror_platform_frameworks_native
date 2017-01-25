@@ -131,7 +131,12 @@ on post-fs
     chmod 0660 /sys/kernel/tracing/trace
 
 on property:persist.debug.atrace.boottrace=1
+    write /sys/kernel/debug/tracing/saved_cmdlines_size 5120
     start boottrace
+
+on property:persist.debug.atrace.boottrace=0
+    # restore to kernel default value
+    write /sys/kernel/debug/tracing/saved_cmdlines_size 128
 
 # Run atrace with the categories written in a file
 service boottrace /system/bin/atrace --async_start -f /data/misc/boottrace/categories
