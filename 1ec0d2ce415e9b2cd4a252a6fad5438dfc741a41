@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31e19dd8_a5e05d74",
+        "filename": "cmds/lshal/lshal.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-01-26T06:35:18Z",
+      "side": 1,
+      "message": ":D learn something new everyday",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "1ec0d2ce415e9b2cd4a252a6fad5438dfc741a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49167099_a4149b08",
+        "filename": "cmds/lshal/lshal.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-01-26T06:35:18Z",
+      "side": 1,
+      "message": "nit",
+      "range": {
+        "startLine": 45,
+        "startChar": 58,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "1ec0d2ce415e9b2cd4a252a6fad5438dfc741a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db64c3b1_cb318629",
+        "filename": "cmds/lshal/lshal.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-01-26T06:35:18Z",
+      "side": 1,
+      "message": ":D",
+      "range": {
+        "startLine": 79,
+        "startChar": 19,
+        "endLine": 79,
+        "endChar": 24
+      },
+      "revId": "1ec0d2ce415e9b2cd4a252a6fad5438dfc741a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8812ba8d_fafdb6af",
+        "filename": "cmds/lshal/lshal.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-01-26T06:35:18Z",
+      "side": 1,
+      "message": "\u0027h\u0027 here instead",
+      "range": {
+        "startLine": 96,
+        "startChar": 33,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "1ec0d2ce415e9b2cd4a252a6fad5438dfc741a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
