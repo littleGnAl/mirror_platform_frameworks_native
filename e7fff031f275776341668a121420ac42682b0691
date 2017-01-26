@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ed60be9_a6614190",
+        "filename": "services/surfaceflinger/main_surfaceflinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-01-26T19:10:34Z",
+      "side": 1,
+      "message": "We generally don\u0027t use Yoda conditionals, prefer:\n\n  if (prctl(...) !\u003d 0)",
+      "revId": "e7fff031f275776341668a121420ac42682b0691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
