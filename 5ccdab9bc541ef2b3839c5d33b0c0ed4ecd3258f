@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45a3cd91_01526116",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-01-26T21:09:38Z",
+      "side": 1,
+      "message": "please make sure dumpstate_test pass after this change and then describe it here...",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "5ccdab9bc541ef2b3839c5d33b0c0ed4ecd3258f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
