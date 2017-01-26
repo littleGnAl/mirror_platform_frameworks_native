@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "03757b33_9aace2a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-01-26T19:21:31Z",
+      "side": 1,
+      "message": "Please test: make cts \u0026\u0026 cts-tradefed run cts -m CtsCompilationTestCases\n\nand \nadb shell rm /data/misc/profiles/ref/com.google.android.gms/primary.prof;\n\nadb shel package cmd package compile -m speed-profile -f com.google.android.gms\n\nadb shell ls /data/misc/profiles/ref/com.google.android.gms/primary.prof\n\nthe file should be there and no errors to logcat.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "eac5d8a44650810e6bde3996dbf93ec9d50a0640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bf2afef_439341c9",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
