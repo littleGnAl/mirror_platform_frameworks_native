@@ -15,7 +15,7 @@
  */
 
 #include <sys/resource.h>
-
+#include <sys/prctl.h>
 #include <sched.h>
 
 #include <cutils/sched_policy.h>
@@ -29,6 +29,11 @@
 using namespace android;
 
 int main(int, char**) {
+    // Allow debuggerd and crash_dump to generate callstack.
+    if (prctl(PR_SET_DUMPABLE, 1) != 0) {
+        ALOGE("Unable to make surfaceflinger dumpable '%s'", strerror(errno));
+    }
+
     signal(SIGPIPE, SIG_IGN);
     // When SF is launched in its own process, limit the number of
     // binder threads to 4.
