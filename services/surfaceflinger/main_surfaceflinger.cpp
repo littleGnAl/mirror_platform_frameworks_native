@@ -29,6 +29,11 @@
 using namespace android;
 
 int main(int, char**) {
+    // Allow debuggerd and crash_dump to generate callstack.
+    if (0 > prctl(PR_SET_DUMPABLE, 1)) {
+        ALOGE("Unable to make surfaceflinger dumpable.");
+    }
+
     signal(SIGPIPE, SIG_IGN);
     // When SF is launched in its own process, limit the number of
     // binder threads to 4.
