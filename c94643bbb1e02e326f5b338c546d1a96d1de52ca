@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b72c5633_8d473c26",
+        "filename": "services/inputflinger/InputDispatcher.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 1055808
+      },
+      "writtenOn": "2017-01-27T20:54:45Z",
+      "side": 1,
+      "message": "Here\u0027s what seems breaking manual apk installation, removing it fixes the issue",
+      "range": {
+        "startLine": 1713,
+        "startChar": 59,
+        "endLine": 1713,
+        "endChar": 68
+      },
+      "revId": "c94643bbb1e02e326f5b338c546d1a96d1de52ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
