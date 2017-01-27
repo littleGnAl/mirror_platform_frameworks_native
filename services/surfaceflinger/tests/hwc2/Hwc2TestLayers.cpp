@@ -20,6 +20,8 @@
 
 Hwc2TestLayers::Hwc2TestLayers(const std::vector<hwc2_layer_t>& layers,
         Hwc2TestCoverage coverage, int32_t displayWidth, int32_t displayHeight)
+    : mDisplayWidth(displayWidth),
+      mDisplayHeight(displayHeight)
 {
     for (auto layer : layers) {
         mTestLayers.emplace(std::piecewise_construct,
@@ -57,6 +59,18 @@ void Hwc2TestLayers::reset()
     setVisibleRegions();
 }
 
+bool Hwc2TestLayers::advance()
+{
+    for (auto& testLayer : mTestLayers) {
+        if (testLayer.second.advance()) {
+            setVisibleRegions();
+            return true;
+        }
+        testLayer.second.reset();
+    }
+    return false;
+}
+
 bool Hwc2TestLayers::advanceVisibleRegions()
 {
     for (auto& testLayer : mTestLayers) {
@@ -67,6 +81,100 @@ bool Hwc2TestLayers::advanceVisibleRegions()
         testLayer.second.reset();
     }
     return false;
+}
+
+bool Hwc2TestLayers::contains(hwc2_layer_t layer) const
+{
+    return mTestLayers.count(layer) != 0;
+}
+
+int Hwc2TestLayers::getBuffer(hwc2_layer_t layer, buffer_handle_t* outHandle,
+        int32_t* outAcquireFence)
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getBuffer(outHandle, outAcquireFence);
+}
+
+hwc2_blend_mode_t Hwc2TestLayers::getBlendMode(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getBlendMode();
+}
+
+hwc_color_t Hwc2TestLayers::getColor(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getColor();
+}
+
+hwc2_composition_t Hwc2TestLayers::getComposition(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getComposition();
+}
+
+Point Hwc2TestLayers::getCursor(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getCursor();
+}
+
+android_dataspace_t Hwc2TestLayers::getDataspace(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getDataspace();
+}
+
+hwc_rect_t Hwc2TestLayers::getDisplayFrame(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getDisplayFrame();
+}
+
+float Hwc2TestLayers::getPlaneAlpha(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getPlaneAlpha();
+}
+
+hwc_frect_t Hwc2TestLayers::getSourceCrop(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getSourceCrop();
+}
+
+hwc_region_t Hwc2TestLayers::getSurfaceDamage(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getSurfaceDamage();
+}
+
+hwc_transform_t Hwc2TestLayers::getTransform(hwc2_layer_t layer) const
+{
+    auto testLayer = mTestLayers.find(layer);
+    if (testLayer == mTestLayers.end())
+        [] () { GTEST_FAIL(); }();
+    return testLayer->second.getTransform();
 }
 
 hwc_region_t Hwc2TestLayers::getVisibleRegion(hwc2_layer_t layer) const

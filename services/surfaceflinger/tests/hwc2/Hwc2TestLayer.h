@@ -36,11 +36,13 @@ public:
 
     int getBuffer(buffer_handle_t* outHandle,
             android::base::unique_fd* outAcquireFence);
+    int getBuffer(buffer_handle_t* outHandle, int32_t* outAcquireFence);
 
     void setZOrder(uint32_t zOrder);
     void setVisibleRegion(const android::Region& region);
 
     void reset();
+    bool advance();
 
     hwc2_blend_mode_t      getBlendMode() const;
     Area                   getBufferArea() const;
@@ -71,9 +73,9 @@ public:
 
 private:
     std::array<Hwc2TestContainer*, 11> mProperties = {{
-        &mBlendMode, &mBufferArea, &mColor, &mComposition, &mCursor,
-        &mDataspace, &mDisplayFrame, &mPlaneAlpha, &mSourceCrop,
-        &mSurfaceDamage, &mTransform
+        &mBlendMode, &mTransform, &mColor, &mCursor, &mDataspace, &mPlaneAlpha,
+        &mSourceCrop, &mSurfaceDamage, &mBufferArea, &mDisplayFrame,
+        &mComposition
     }};
 
     Hwc2TestBuffer mBuffer;
