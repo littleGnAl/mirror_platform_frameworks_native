@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "c485bef5_d9f0a032",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-01-27T21:33:50Z",
+      "side": 1,
+      "message": "Thanks for the detailed instructions!\n\n\u003e make cts \u0026\u0026 cts-tradefed run cts -m CtsCompilationTestCases\n\nAll 10 tests pass.\n\n\u003e and [...]\n\nHm. That failed because apparently it couldn\u0027t find com.google.android.gms. I just went into /data/misc/profiles/ref (which didn\u0027t have GMS) and did \n\nrm */primary.prof\nfor i in *; do cmd package compile -m speed-profile -f $i; done\nls -l */primary.prof\n\nWithout the patch, all the primary.profs were generated without any permissions (5/70 succeeded). With it, all had 0600 (5/70 succeeded). In either case, no errors appeared in logcat for successful compilations.\n\nHappy to test GMS in particular if there\u0027s something special about it. :)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "eac5d8a44650810e6bde3996dbf93ec9d50a0640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bf2afef_439341c9",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
@@ -36,6 +59,29 @@
       "writtenOn": "2017-01-26T19:16:28Z",
       "side": 1,
       "message": "0600",
+      "range": {
+        "startLine": 498,
+        "startChar": 87,
+        "endLine": 498,
+        "endChar": 91
+      },
+      "revId": "eac5d8a44650810e6bde3996dbf93ec9d50a0640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c436aceb_effe4905",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-01-27T21:33:50Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 498,
         "startChar": 87,
