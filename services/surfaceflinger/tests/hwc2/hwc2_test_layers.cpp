@@ -20,7 +20,9 @@
 hwc2_test_layers::hwc2_test_layers(const std::vector<hwc2_layer_t> &layers,
         hwc2_test_coverage_t coverage, int32_t display_width,
         int32_t display_height)
-    : test_layers()
+    : test_layers(),
+      display_width(display_width),
+      display_height(display_height)
 {
     for (auto layer: layers)
         test_layers.emplace(std::piecewise_construct,
@@ -53,6 +55,18 @@ void hwc2_test_layers::reset()
     set_visible_regions();
 }
 
+bool hwc2_test_layers::advance()
+{
+    for (auto &test_layer: test_layers) {
+        if (test_layer.second.advance()) {
+            set_visible_regions();
+            return true;
+        }
+        test_layer.second.reset();
+    }
+    return false;
+}
+
 bool hwc2_test_layers::advance_visible_regions()
 {
     for (auto &test_layer: test_layers) {
@@ -63,6 +77,69 @@ bool hwc2_test_layers::advance_visible_regions()
         test_layer.second.reset();
     }
     return false;
+}
+
+bool hwc2_test_layers::contains(hwc2_layer_t layer) const
+{
+    return test_layers.find(layer) != test_layers.end();
+}
+
+int hwc2_test_layers::get_buffer(hwc2_layer_t layer,
+        buffer_handle_t *out_handle, int32_t *out_acquire_fence)
+{
+    return test_layers.find(layer)->second.get_buffer(out_handle,
+            out_acquire_fence);
+}
+
+hwc2_blend_mode_t hwc2_test_layers::get_blend_mode(hwc2_layer_t layer) const
+{
+    return test_layers.find(layer)->second.get_blend_mode();
+}
+
+const hwc_color_t hwc2_test_layers::get_color(hwc2_layer_t layer) const
+{
+    return test_layers.find(layer)->second.get_color();
+}
+
+hwc2_composition_t hwc2_test_layers::get_composition(hwc2_layer_t layer) const
+{
+    return test_layers.find(layer)->second.get_composition();
+}
+
+const std::pair<int32_t, int32_t> hwc2_test_layers::get_cursor(
+        hwc2_layer_t layer) const
+{
+    return test_layers.find(layer)->second.get_cursor();
+}
+
+android_dataspace_t hwc2_test_layers::get_dataspace(hwc2_layer_t layer) const
+{
+    return test_layers.find(layer)->second.get_dataspace();
+}
+
+const hwc_rect_t hwc2_test_layers::get_display_frame(hwc2_layer_t layer) const
+{
+    return test_layers.find(layer)->second.get_display_frame();
+}
+
+float hwc2_test_layers::get_plane_alpha(hwc2_layer_t layer) const
+{
+    return test_layers.find(layer)->second.get_plane_alpha();
+}
+
+const hwc_frect_t hwc2_test_layers::get_source_crop(hwc2_layer_t layer) const
+{
+    return test_layers.find(layer)->second.get_source_crop();
+}
+
+const hwc_region_t hwc2_test_layers::get_surface_damage(hwc2_layer_t layer) const
+{
+    return test_layers.find(layer)->second.get_surface_damage();
+}
+
+hwc_transform_t hwc2_test_layers::get_transform(hwc2_layer_t layer) const
+{
+    return test_layers.find(layer)->second.get_transform();
 }
 
 const hwc_region_t hwc2_test_layers::get_visible_region(hwc2_layer_t layer) const
