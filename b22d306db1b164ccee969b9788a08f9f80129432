@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4d41a70_f66ef423",
+        "filename": "cmds/lshal/lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-02-02T00:03:28Z",
+      "side": 1,
+      "message": "This is one of the two bad things about this change: lshal needs root",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 69
+      },
+      "revId": "b22d306db1b164ccee969b9788a08f9f80129432",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
