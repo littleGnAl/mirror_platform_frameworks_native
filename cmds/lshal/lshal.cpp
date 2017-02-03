@@ -28,7 +28,9 @@
 #include <android/hidl/manager/1.0/IServiceManager.h>
 #include <hidl/ServiceManagement.h>
 
+using ::android::sp;
 using ::android::hardware::hidl_string;
+using ::android::hidl::manager::V1_0::IServiceManager;
 
 template <typename A, typename B, typename C, typename D, typename E, typename F>
 void printColumn(std::stringstream &stream,
@@ -45,6 +47,21 @@ void printColumn(std::stringstream &stream,
            << endl;
 }
 
+template <typename A>
+std::string join(const A &components, const std::string &separator) {
+    std::stringstream out;
+    bool first = true;
+    for (const auto &component : components) {
+        if (!first) {
+            out << separator;
+        }
+        out << component;
+
+        first = false;
+    }
+    return out.str();
+}
+
 std::string toHexString(uint64_t t) {
     std::ostringstream os;
     os << std::hex << std::setfill('0') << std::setw(16) << t;
@@ -59,12 +76,12 @@ std::pair<hidl_string, hidl_string> split(const hidl_string &s, char c) {
     return {hidl_string(s.c_str(), pos - s.c_str()), hidl_string(pos + 1)};
 }
 
-::android::status_t getReferencedPids(
+bool getReferencedPids(
         pid_t serverPid, std::map<uint64_t, std::string> *objects) {
 
     std::ifstream ifs("/d/binder/proc/" + std::to_string(serverPid));
     if (!ifs.is_open()) {
-        return ::android::PERMISSION_DENIED;
+        return false;
     }
 
     static const std::regex prefix("^\\s*node \\d+:\\s+u([0-9a-f]+)\\s+c([0-9a-f]+)\\s+");
@@ -89,19 +106,65 @@ std::pair<hidl_string, hidl_string> split(const hidl_string &s, char c) {
             (*objects)[ptr] += line.substr(pos + proc.size());
         }
     }
-    return ::android::OK;
+    return true;
 }
 
-void dumpBinderized(std::stringstream &stream, const std::string &mode,
-            const ::android::sp<::android::hidl::manager::V1_0::IServiceManager> &manager) {
+void dumpAllLibraries(std::stringstream &stream, const std::string &mode,
+            const sp<IServiceManager> &manager) {
     using namespace ::std;
     using namespace ::android::hardware;
     using namespace ::android::hidl::manager::V1_0;
     using namespace ::android::hidl::base::V1_0;
-    if (manager == nullptr) {
-        cerr << "Failed to get IServiceManager for " << mode << "!" << endl;
-        return;
+    auto ret = manager->list([&] (const auto &fqInstanceNames) {
+        for (const auto &fqInstanceName : fqInstanceNames) {
+            const auto pair = split(fqInstanceName, '/');
+            const auto &serviceName = pair.first;
+            const auto &instanceName = pair.second;
+            printColumn(stream,
+                serviceName,
+                instanceName,
+                mode,
+                "N/A",
+                "N/A",
+                "N/A");
+        }
+    });
+    if (!ret.isOk()) {
+        cerr << "Error: Failed to call debugDump on defaultServiceManager(): "
+             << ret.description() << endl;
     }
+}
+
+void dumpPassthrough(std::stringstream &stream, const std::string &mode,
+            const sp<IServiceManager> &manager) {
+    using namespace ::std;
+    using namespace ::android::hardware;
+    using namespace ::android::hidl::manager::V1_0;
+    using namespace ::android::hidl::base::V1_0;
+    auto ret = manager->debugDump([&] (const auto &infos) {
+        for (const auto &info : infos) {
+
+            printColumn(stream,
+                info.interfaceName,
+                info.instanceName,
+                mode,
+                info.clientPids.size() == 1 ? std::to_string(info.clientPids[0]) : "N/A",
+                "N/A",
+                join(info.clientPids, " "));
+        }
+    });
+    if (!ret.isOk()) {
+        cerr << "Error: Failed to call debugDump on defaultServiceManager(): "
+             << ret.description() << endl;
+    }
+}
+
+void dumpBinderized(std::stringstream &stream, const std::string &mode,
+            const sp<IServiceManager> &manager) {
+    using namespace ::std;
+    using namespace ::android::hardware;
+    using namespace ::android::hidl::manager::V1_0;
+    using namespace ::android::hidl::base::V1_0;
     auto listRet = manager->list([&] (const auto &fqInstanceNames) {
         // server pid, .ptr value of binder object, child pids
         std::map<std::string, DebugInfo> allDebugInfos;
@@ -117,7 +180,7 @@ void dumpBinderized(std::stringstream &stream, const std::string &mode,
                      << getRet.description() << endl;
                 continue;
             }
-            ::android::sp<IBase> service = getRet;
+            sp<IBase> service = getRet;
             if (service == nullptr) {
                 cerr << "Warning: Skipping \"" << fqInstanceName << "\": "
                      << "cannot be fetched from service manager (null)";
@@ -137,7 +200,7 @@ void dumpBinderized(std::stringstream &stream, const std::string &mode,
         }
         for (auto &pair : allPids) {
             pid_t serverPid = pair.first;
-            if (getReferencedPids(serverPid, &allPids[serverPid]) != ::android::OK) {
+            if (!getReferencedPids(serverPid, &allPids[serverPid])) {
                 std::cerr << "Warning: no information for PID " << serverPid
                           << ", are you root?" << std::endl;
             }
@@ -148,16 +211,23 @@ void dumpBinderized(std::stringstream &stream, const std::string &mode,
             const auto &instanceName = pair.second;
             auto it = allDebugInfos.find(fqInstanceName);
             if (it == allDebugInfos.end()) {
-                continue; // Skipped; error emitted before
+                printColumn(stream,
+                    serviceName,
+                    instanceName,
+                    mode,
+                    "N/A",
+                    "N/A",
+                    ""
+                );
+                continue;
             }
             const DebugInfo &info = it->second;
-
             printColumn(stream,
                 serviceName,
                 instanceName,
                 mode,
                 info.pid < 0 ? "N/A" : std::to_string(info.pid),
-                info.ptr,
+                info.ptr == 0 ? "N/A" : toHexString(info.ptr),
                 info.pid < 0 || info.ptr == 0 ? "" : allPids[info.pid][info.ptr]
             );
         }
@@ -179,7 +249,21 @@ int dump() {
     stream << left;
     printColumn(stream, "Interface", "Instance", "Transport", "Server", "PTR", "Clients");
 
-    dumpBinderized(stream, "hwbinder", defaultServiceManager());
+    auto bManager = defaultServiceManager();
+    if (bManager == nullptr) {
+        cerr << "Failed to get defaultServiceManager()!" << endl;
+    } else {
+        dumpBinderized(stream, "hwbinder", bManager);
+        // Passthrough PIDs are registered to the binderized manager as well.
+        dumpPassthrough(stream, "passthrough", bManager);
+    }
+
+    auto pManager = getPassthroughServiceManager();
+    if (pManager == nullptr) {
+        cerr << "Failed to get getPassthroughServiceManager()!" << endl;
+    } else {
+        dumpAllLibraries(stream, "passthrough", pManager);
+    }
 
     cout << stream.rdbuf();
     return 0;
