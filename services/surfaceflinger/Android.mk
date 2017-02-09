@@ -99,6 +99,12 @@ endif
 # [1] https://developer.android.com/studio/profile/systrace.html
 # [2] https://developer.android.com/training/testing/performance.html
 
+# On HWC2, SurfaceFlinger races against hardware vsync on untuned video-mode panels,
+# which can result in a significant number of dropped frames. HWC1 does not have this
+# issue, so set 1ms offset on HWC2 and 0 for HWC1.
+
+ifeq ($(TARGET_USES_HWC2),true)
+
 ifneq ($(VSYNC_EVENT_PHASE_OFFSET_NS),)
     LOCAL_CFLAGS += -DVSYNC_EVENT_PHASE_OFFSET_NS=$(VSYNC_EVENT_PHASE_OFFSET_NS)
 else
@@ -110,6 +116,23 @@ ifneq ($(SF_VSYNC_EVENT_PHASE_OFFSET_NS),)
 else
     LOCAL_CFLAGS += -DSF_VSYNC_EVENT_PHASE_OFFSET_NS=1000000
 endif
+
+else
+
+ifneq ($(VSYNC_EVENT_PHASE_OFFSET_NS),)
+    LOCAL_CFLAGS += -DVSYNC_EVENT_PHASE_OFFSET_NS=$(VSYNC_EVENT_PHASE_OFFSET_NS)
+else
+    LOCAL_CFLAGS += -DVSYNC_EVENT_PHASE_OFFSET_NS=0
+endif
+
+ifneq ($(SF_VSYNC_EVENT_PHASE_OFFSET_NS),)
+    LOCAL_CFLAGS += -DSF_VSYNC_EVENT_PHASE_OFFSET_NS=$(SF_VSYNC_EVENT_PHASE_OFFSET_NS)
+else
+    LOCAL_CFLAGS += -DSF_VSYNC_EVENT_PHASE_OFFSET_NS=0
+endif
+
+endif #TARGET_USES_HWC2
+
 
 ifneq ($(PRESENT_TIME_OFFSET_FROM_VSYNC_NS),)
     LOCAL_CFLAGS += -DPRESENT_TIME_OFFSET_FROM_VSYNC_NS=$(PRESENT_TIME_OFFSET_FROM_VSYNC_NS)
