@@ -62,7 +62,7 @@ int main(int argc, char **argv)
     uint32_t svcmgr = BINDER_SERVICE_MANAGER;
     uint32_t handle;
 
-    bs = binder_open(128*1024);
+    bs = binder_open(BINDER_VM_SIZE);
     if (!bs) {
         fprintf(stderr, "failed to open binder driver\n");
         return -1;
