@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db3c91d2_ae8c8338",
+        "filename": "include/android/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2017-02-09T19:07:02Z",
+      "side": 1,
+      "message": "Each pixel is stored on 1 byte, not 4 bytes. You could just say:\n\nAlpha: 8 bits.",
+      "revId": "75a0309d28b00a806cd940bcd5263460f4beebd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
