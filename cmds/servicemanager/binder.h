@@ -32,6 +32,8 @@ struct binder_death {
 
 #define SVC_MGR_NAME "android.os.IServiceManager"
 
+#define BINDER_VM_SIZE ((1*1024*1024) - (sysconf(_SC_PAGE_SIZE) *2))
+
 enum {
     /* Must match definitions in IBinder.h and IServiceManager.h */
     PING_TRANSACTION  = B_PACK_CHARS('_','P','N','G'),
