@@ -16,6 +16,24 @@
       "revId": "75a0309d28b00a806cd940bcd5263460f4beebd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4df3560_59193e8b",
+        "filename": "include/android/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1060551
+      },
+      "writtenOn": "2017-02-09T19:27:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db3c91d2_ae8c8338",
+      "revId": "75a0309d28b00a806cd940bcd5263460f4beebd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
