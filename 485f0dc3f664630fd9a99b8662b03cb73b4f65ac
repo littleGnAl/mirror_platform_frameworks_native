@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8289164_c4710c66",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-09T18:47:24Z",
+      "side": 1,
+      "message": "Need an bio_init_from_txn(\u0026msg, txn) here to reset, we are not to do remaining, but also deal with improper argument order handling.",
+      "range": {
+        "startLine": 273,
+        "startChar": 16,
+        "endLine": 273,
+        "endChar": 77
+      },
+      "revId": "485f0dc3f664630fd9a99b8662b03cb73b4f65ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30eba6b0_eb66529f",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-09T18:47:24Z",
+      "side": 1,
+      "message": "eg: if BINDER_TYPE_FD, we need to clean up as a result of _bio_get_obj ... so the gc above really should have reset to txn!",
+      "range": {
+        "startLine": 706,
+        "startChar": 4,
+        "endLine": 706,
+        "endChar": 42
+      },
+      "revId": "485f0dc3f664630fd9a99b8662b03cb73b4f65ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
