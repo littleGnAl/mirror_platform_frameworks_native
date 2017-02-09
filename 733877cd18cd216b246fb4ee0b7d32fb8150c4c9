@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "117c3158_e6400268",
+        "filename": "cmds/servicemanager/binder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-09T18:57:24Z",
+      "side": 1,
+      "message": "Move TRACE on line 21 to top. #if TRACE here. So that we can confirm no fprintf activity below.\n\n(maybe include inttypes.h as well for cleanliness, ALOG macros are not using this feature)",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "733877cd18cd216b246fb4ee0b7d32fb8150c4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7504324a_9284ba75",
         "filename": "cmds/servicemanager/include/binder.h",
         "patchSetId": 2
