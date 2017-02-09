@@ -365,7 +365,7 @@ int main()
     struct binder_state *bs;
     union selinux_callback cb;
 
-    bs = binder_open(128*1024);
+    bs = binder_open(BINDER_VM_SIZE);
     if (!bs) {
         ALOGE("failed to open binder driver\n");
         return -1;
