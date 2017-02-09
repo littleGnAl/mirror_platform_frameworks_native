@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7504324a_9284ba75",
+        "filename": "cmds/servicemanager/include/binder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-09T18:53:07Z",
+      "side": 1,
+      "message": "missed a spot :-(",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "733877cd18cd216b246fb4ee0b7d32fb8150c4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
