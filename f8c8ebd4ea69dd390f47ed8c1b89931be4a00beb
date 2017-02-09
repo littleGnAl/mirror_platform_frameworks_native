@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29fbc55a_8daf8c57",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-09T19:05:09Z",
+      "side": 1,
+      "message": "Missing shared_libs: [ \"liblog\" ],",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "f8c8ebd4ea69dd390f47ed8c1b89931be4a00beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
