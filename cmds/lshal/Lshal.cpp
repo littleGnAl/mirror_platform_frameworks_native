@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
+#include "Lshal.h"
 
 #include <getopt.h>
 
-#include <map>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <map>
 #include <sstream>
 #include <regex>
 
@@ -28,12 +29,14 @@
 #include <android/hidl/manager/1.0/IServiceManager.h>
 #include <hidl/ServiceManagement.h>
 
-using ::android::sp;
 using ::android::hardware::hidl_string;
 using ::android::hidl::manager::V1_0::IServiceManager;
 
+namespace android {
+namespace lshal {
+
 template <typename A, typename B, typename C, typename D, typename E, typename F>
-void printColumn(std::stringstream &stream,
+void printColumn(std::ostream &stream,
         const A &a, const B &b, const C &c, const D &d, const E &, const F &f) {
     using namespace ::std;
     stream << left
@@ -62,13 +65,13 @@ std::string join(const A &components, const std::string &separator) {
     return out.str();
 }
 
-std::string toHexString(uint64_t t) {
+static std::string toHexString(uint64_t t) {
     std::ostringstream os;
     os << std::hex << std::setfill('0') << std::setw(16) << t;
     return os.str();
 }
 
-std::pair<hidl_string, hidl_string> split(const hidl_string &s, char c) {
+static std::pair<hidl_string, hidl_string> split(const hidl_string &s, char c) {
     const char *pos = strchr(s.c_str(), c);
     if (pos == nullptr) {
         return {s, {}};
@@ -76,8 +79,23 @@ std::pair<hidl_string, hidl_string> split(const hidl_string &s, char c) {
     return {hidl_string(s.c_str(), pos - s.c_str()), hidl_string(pos + 1)};
 }
 
-bool getReferencedPids(
-        pid_t serverPid, std::map<uint64_t, std::string> *objects) {
+static std::vector<std::string> split(const std::string &s, char c) {
+    std::vector<std::string> components{};
+    size_t startPos = 0;
+    size_t matchPos;
+    while ((matchPos = s.find(c, startPos)) != std::string::npos) {
+        components.push_back(s.substr(startPos, matchPos - startPos));
+        startPos = matchPos + 1;
+    }
+
+    if (startPos <= s.length()) {
+        components.push_back(s.substr(startPos));
+    }
+    return components;
+}
+
+bool Lshal::getReferencedPids(
+        pid_t serverPid, std::map<uint64_t, Pids> *objects) const {
 
     std::ifstream ifs("/d/binder/proc/" + std::to_string(serverPid));
     if (!ifs.is_open()) {
@@ -97,21 +115,42 @@ bool getReferencedPids(
         uint64_t ptr;
         if (!::android::base::ParseUint(ptrString.c_str(), &ptr)) {
             // Should not reach here, but just be tolerant.
-            std::cerr << "Could not parse number " << ptrString << std::endl;
+            mErr << "Could not parse number " << ptrString << std::endl;
             continue;
         }
         const std::string proc = " proc ";
         auto pos = line.rfind(proc);
         if (pos != std::string::npos) {
-            (*objects)[ptr] += line.substr(pos + proc.size());
+            for (const std::string &pidStr : split(line.substr(pos + proc.size()), ' ')) {
+                int32_t pid;
+                if (!::android::base::ParseInt(pidStr, &pid)) {
+                    mErr << "Could not parse number " << pidStr << std::endl;
+                    continue;
+                }
+                (*objects)[ptr].push_back(pid);
+            }
         }
     }
     return true;
 }
 
-void dumpAllLibraries(std::stringstream &stream, const std::string &mode,
-            const sp<IServiceManager> &manager) {
-    using namespace ::std;
+void Lshal::dump() const {
+    mOut << "All services:" << std::endl;
+    printColumn(mOut, "Interface", "Instance", "Transport", "Server", "PTR", "Clients");
+    for (const auto &entry : mTable) {
+        printColumn(mOut, entry.interfaceName, entry.instanceName,
+                entry.transport,
+                entry.serverPid == NO_PID ? "N/A" : std::to_string(entry.serverPid),
+                entry.serverObjectAddress == NO_PTR ? "N/A" : toHexString(entry.serverObjectAddress),
+                join(entry.clientPids, " "));
+    }
+}
+
+void Lshal::putEntry(TableEntry &&entry) {
+    mTable.push_back(std::forward<TableEntry>(entry));
+}
+
+Status Lshal::fetchAllLibraries(const sp<IServiceManager> &manager) {
     using namespace ::android::hardware;
     using namespace ::android::hidl::manager::V1_0;
     using namespace ::android::hidl::base::V1_0;
@@ -120,70 +159,76 @@ void dumpAllLibraries(std::stringstream &stream, const std::string &mode,
             const auto pair = split(fqInstanceName, '/');
             const auto &serviceName = pair.first;
             const auto &instanceName = pair.second;
-            printColumn(stream,
-                serviceName,
-                instanceName,
-                mode,
-                "N/A",
-                "N/A",
-                "N/A");
+            putEntry({
+                .interfaceName = pair.first,
+                .instanceName = pair.second,
+                .transport = "passthrough",
+                .serverPid = NO_PID,
+                .serverObjectAddress = NO_PTR,
+                .clientPids = {}
+            });
         }
     });
     if (!ret.isOk()) {
-        cerr << "Error: Failed to call debugDump on defaultServiceManager(): "
-             << ret.description() << endl;
+        mErr << "Error: Failed to call list on getPassthroughServiceManager(): "
+             << ret.description() << std::endl;
+        return DUMP_ALL_LIBS_ERROR;
     }
+    return OK;
 }
 
-void dumpPassthrough(std::stringstream &stream, const std::string &mode,
-            const sp<IServiceManager> &manager) {
-    using namespace ::std;
+Status Lshal::fetchPassthrough(const sp<IServiceManager> &manager) {
     using namespace ::android::hardware;
     using namespace ::android::hidl::manager::V1_0;
     using namespace ::android::hidl::base::V1_0;
     auto ret = manager->debugDump([&] (const auto &infos) {
         for (const auto &info : infos) {
-
-            printColumn(stream,
-                info.interfaceName,
-                info.instanceName,
-                mode,
-                info.clientPids.size() == 1 ? std::to_string(info.clientPids[0]) : "N/A",
-                "N/A",
-                join(info.clientPids, " "));
+            putEntry({
+                .interfaceName = info.interfaceName,
+                .instanceName = info.instanceName,
+                .transport = "passthrough",
+                .serverPid = info.clientPids.size() == 1 ? info.clientPids[0] : NO_PID,
+                .serverObjectAddress = NO_PTR,
+                .clientPids = info.clientPids
+            });
         }
     });
     if (!ret.isOk()) {
-        cerr << "Error: Failed to call debugDump on defaultServiceManager(): "
-             << ret.description() << endl;
+        mErr << "Error: Failed to call debugDump on defaultServiceManager(): "
+             << ret.description() << std::endl;
+        return DUMP_PASSTHROUGH_ERROR;
     }
+    return OK;
 }
 
-void dumpBinderized(std::stringstream &stream, const std::string &mode,
-            const sp<IServiceManager> &manager) {
+Status Lshal::fetchBinderized(const sp<IServiceManager> &manager) {
     using namespace ::std;
     using namespace ::android::hardware;
     using namespace ::android::hidl::manager::V1_0;
     using namespace ::android::hidl::base::V1_0;
+    const std::string mode = "hwbinder";
+    Status status = OK;
     auto listRet = manager->list([&] (const auto &fqInstanceNames) {
         // server pid, .ptr value of binder object, child pids
         std::map<std::string, DebugInfo> allDebugInfos;
-        std::map<pid_t, std::map<uint64_t, std::string>> allPids;
+        std::map<pid_t, std::map<uint64_t, Pids>> allPids;
         for (const auto &fqInstanceName : fqInstanceNames) {
             const auto pair = split(fqInstanceName, '/');
             const auto &serviceName = pair.first;
             const auto &instanceName = pair.second;
             auto getRet = manager->get(serviceName, instanceName);
             if (!getRet.isOk()) {
-                cerr << "Warning: Skipping \"" << fqInstanceName << "\": "
+                mErr << "Warning: Skipping \"" << fqInstanceName << "\": "
                      << "cannot be fetched from service manager:"
-                     << getRet.description() << endl;
+                     << getRet.description() << std::endl;
+                status |= DUMP_BINDERIZED_ERROR;
                 continue;
             }
             sp<IBase> service = getRet;
             if (service == nullptr) {
-                cerr << "Warning: Skipping \"" << fqInstanceName << "\": "
+                mErr << "Warning: Skipping \"" << fqInstanceName << "\": "
                      << "cannot be fetched from service manager (null)";
+                status |= DUMP_BINDERIZED_ERROR;
                 continue;
             }
             auto debugRet = service->getDebugInfo([&] (const auto &debugInfo) {
@@ -193,16 +238,18 @@ void dumpBinderized(std::stringstream &stream, const std::string &mode,
                 }
             });
             if (!debugRet.isOk()) {
-                cerr << "Warning: Skipping \"" << fqInstanceName << "\": "
+                mErr << "Warning: Skipping \"" << fqInstanceName << "\": "
                      << "debugging information cannot be retrieved:"
-                     << debugRet.description() << endl;
+                     << debugRet.description() << std::endl;
+                status |= DUMP_BINDERIZED_ERROR;
             }
         }
         for (auto &pair : allPids) {
             pid_t serverPid = pair.first;
             if (!getReferencedPids(serverPid, &allPids[serverPid])) {
-                std::cerr << "Warning: no information for PID " << serverPid
+                mErr << "Warning: no information for PID " << serverPid
                           << ", are you root?" << std::endl;
+                status |= DUMP_BINDERIZED_ERROR;
             }
         }
         for (const auto &fqInstanceName : fqInstanceNames) {
@@ -211,76 +258,69 @@ void dumpBinderized(std::stringstream &stream, const std::string &mode,
             const auto &instanceName = pair.second;
             auto it = allDebugInfos.find(fqInstanceName);
             if (it == allDebugInfos.end()) {
-                printColumn(stream,
-                    serviceName,
-                    instanceName,
-                    mode,
-                    "N/A",
-                    "N/A",
-                    ""
-                );
+                putEntry({
+                    .interfaceName = pair.first,
+                    .instanceName = pair.second,
+                    .transport = mode,
+                    .serverPid = NO_PID,
+                    .serverObjectAddress = NO_PTR,
+                    .clientPids = {}
+                });
                 continue;
             }
             const DebugInfo &info = it->second;
-            printColumn(stream,
-                serviceName,
-                instanceName,
-                mode,
-                info.pid < 0 ? "N/A" : std::to_string(info.pid),
-                info.ptr == 0 ? "N/A" : toHexString(info.ptr),
-                info.pid < 0 || info.ptr == 0 ? "" : allPids[info.pid][info.ptr]
-            );
+            putEntry({
+                .interfaceName = pair.first,
+                .instanceName = pair.second,
+                .transport = mode,
+                .serverPid = info.pid,
+                .serverObjectAddress = info.ptr,
+                .clientPids = info.pid == NO_PID || info.ptr == NO_PTR
+                        ? Pids{} : allPids[info.pid][info.ptr]
+            });
         }
 
     });
     if (!listRet.isOk()) {
-        cerr << "Error: Failed to list services for " << mode << ": "
-             << listRet.description() << endl;
+        mErr << "Error: Failed to list services for " << mode << ": "
+             << listRet.description() << std::endl;
+        status |= DUMP_BINDERIZED_ERROR;
     }
+    return status;
 }
 
-int dump() {
-    using namespace ::std;
-    using namespace ::android::hardware;
-
-    std::stringstream stream;
-
-    stream << "All services:" << endl;
-    stream << left;
-    printColumn(stream, "Interface", "Instance", "Transport", "Server", "PTR", "Clients");
-
-    auto bManager = defaultServiceManager();
+Status Lshal::fetch() {
+    Status status = OK;
+    auto bManager = ::android::hardware::defaultServiceManager();
     if (bManager == nullptr) {
-        cerr << "Failed to get defaultServiceManager()!" << endl;
+        mErr << "Failed to get defaultServiceManager()!" << std::endl;
+        status |= NO_BINDERIZED_MANAGER;
     } else {
-        dumpBinderized(stream, "hwbinder", bManager);
+        status |= fetchBinderized(bManager);
         // Passthrough PIDs are registered to the binderized manager as well.
-        dumpPassthrough(stream, "passthrough", bManager);
+        status |= fetchPassthrough(bManager);
     }
 
-    auto pManager = getPassthroughServiceManager();
+    auto pManager = ::android::hardware::getPassthroughServiceManager();
     if (pManager == nullptr) {
-        cerr << "Failed to get getPassthroughServiceManager()!" << endl;
+        mErr << "Failed to get getPassthroughServiceManager()!" << std::endl;
+        status |= NO_PASSTHROUGH_MANAGER;
     } else {
-        dumpAllLibraries(stream, "passthrough", pManager);
+        status |= fetchAllLibraries(pManager);
     }
-
-    cout << stream.rdbuf();
-    return 0;
+    return status;
 }
 
-int usage() {
-    using namespace ::std;
-    cerr
-        << "usage: lshal" << endl
-        << "           To dump all hals." << endl
-        << "or:" << endl
-        << "       lshal [-h|--help]" << endl
-        << "           -h, --help: show this help information." << endl;
-    return -1;
+void Lshal::usage() const {
+    mErr
+        << "usage: lshal" << std::endl
+        << "           To dump all hals." << std::endl
+        << "or:" << std::endl
+        << "       lshal [-h|--help]" << std::endl
+        << "           -h, --help: show this help information." << std::endl;
 }
 
-int main(int argc, char **argv) {
+Status Lshal::parseArgs(int argc, char **argv) {
     static struct option longOptions[] = {
         {"help", no_argument, 0, 'h' },
         { 0,               0, 0,  0  }
@@ -298,9 +338,26 @@ int main(int argc, char **argv) {
         switch (c) {
         case 'h': // falls through
         default: // see unrecognized options
-            return usage();
+            usage();
+            return USAGE;
         }
     }
-    return dump();
+    return OK;
+}
 
+int Lshal::main(int argc, char **argv) {
+    Status status = parseArgs(argc, argv);
+    if (status != OK) {
+        return status;
+    }
+    status = fetch();
+    dump();
+    return status;
+}
+
+}  // namespace lshal
+}  // namespace android
+
+int main(int argc, char **argv) {
+    exit(::android::lshal::Lshal{}.main(argc, argv));
 }
