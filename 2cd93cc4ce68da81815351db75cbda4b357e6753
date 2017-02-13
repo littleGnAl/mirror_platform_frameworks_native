@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "244b9f93_50d27816",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2017-02-13T07:06:49Z",
+      "side": 1,
+      "message": "This line is causing an selinux denial:\n\n10-11 00:33:18.766     1     1 W init    : type\u003d1400 audit(0.0:18): avc: denied { write } for name\u003d\"tracing\" dev\u003d\"sysfs\" ino\u003d95 scontext\u003du:r:init:s0 tcontext\u003du:object_r:sysfs:s0 tclass\u003ddir permissive\u003d0",
+      "revId": "2cd93cc4ce68da81815351db75cbda4b357e6753",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
