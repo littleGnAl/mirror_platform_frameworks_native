@@ -23,6 +23,8 @@
 #include <math.h>
 
 #include <algorithm>
+#include <condition_variable>
+#include <mutex>
 
 #include <log/log.h>
 #include <utils/String8.h>
@@ -76,25 +78,24 @@ public:
 
     void updateModel(nsecs_t period, nsecs_t phase, nsecs_t referenceTime) {
         if (kTraceDetailedInfo) ATRACE_CALL();
-        Mutex::Autolock lock(mMutex);
+        std::lock_guard<std::mutex> lock(mMutex);
         mPeriod = period;
         mPhase = phase;
         mReferenceTime = referenceTime;
         ALOGV("[%s] updateModel: mPeriod = %" PRId64 ", mPhase = %" PRId64
                 " mReferenceTime = %" PRId64, mName, ns2us(mPeriod),
                 ns2us(mPhase), ns2us(mReferenceTime));
-        mCond.signal();
+        mCond.notify_one();
     }
 
     void stop() {
         if (kTraceDetailedInfo) ATRACE_CALL();
-        Mutex::Autolock lock(mMutex);
+        std::lock_guard<std::mutex> lock(mMutex);
         mStop = true;
-        mCond.signal();
+        mCond.notify_one();
     }
 
     virtual bool threadLoop() {
-        status_t err;
         nsecs_t now = systemTime(SYSTEM_TIME_MONOTONIC);
 
         while (true) {
@@ -103,7 +104,7 @@ public:
             nsecs_t targetTime = 0;
 
             { // Scope for lock
-                Mutex::Autolock lock(mMutex);
+                std::unique_lock<std::mutex> lock(mMutex);
 
                 if (kTraceDetailedInfo) {
                     ATRACE_INT64("DispSync:Frame", mFrameNumber);
@@ -116,12 +117,7 @@ public:
                 }
 
                 if (mPeriod == 0) {
-                    err = mCond.wait(mMutex);
-                    if (err != NO_ERROR) {
-                        ALOGE("error waiting for new events: %s (%d)",
-                                strerror(-err), err);
-                        return false;
-                    }
+                    mCond.wait(lock);
                     continue;
                 }
 
@@ -134,19 +130,16 @@ public:
 
                     if (targetTime == INT64_MAX) {
                         ALOGV("[%s] Waiting forever", mName);
-                        err = mCond.wait(mMutex);
+                        mCond.wait(lock);
                     } else {
                         ALOGV("[%s] Waiting until %" PRId64, mName,
                                 ns2us(targetTime));
-                        err = mCond.waitRelative(mMutex, targetTime - now);
-                    }
-
-                    if (err == TIMED_OUT) {
-                        isWakeup = true;
-                    } else if (err != NO_ERROR) {
-                        ALOGE("error waiting for next event: %s (%d)",
-                                strerror(-err), err);
-                        return false;
+                        auto waitTime =
+                                std::chrono::nanoseconds(targetTime - now);
+                        auto status = mCond.wait_for(lock, waitTime);
+                        if (status == std::cv_status::timeout) {
+                            isWakeup = true;
+                        }
                     }
                 }
 
@@ -179,7 +172,7 @@ public:
     status_t addEventListener(const char* name, nsecs_t phase,
             const sp<DispSync::Callback>& callback) {
         if (kTraceDetailedInfo) ATRACE_CALL();
-        Mutex::Autolock lock(mMutex);
+        std::lock_guard<std::mutex> lock(mMutex);
 
         for (size_t i = 0; i < mEventListeners.size(); i++) {
             if (mEventListeners[i].mCallback == callback) {
@@ -199,19 +192,19 @@ public:
 
         mEventListeners.push(listener);
 
-        mCond.signal();
+        mCond.notify_one();
 
         return NO_ERROR;
     }
 
     status_t removeEventListener(const sp<DispSync::Callback>& callback) {
         if (kTraceDetailedInfo) ATRACE_CALL();
-        Mutex::Autolock lock(mMutex);
+        std::lock_guard<std::mutex> lock(mMutex);
 
         for (size_t i = 0; i < mEventListeners.size(); i++) {
             if (mEventListeners[i].mCallback == callback) {
                 mEventListeners.removeAt(i);
-                mCond.signal();
+                mCond.notify_one();
                 return NO_ERROR;
             }
         }
@@ -222,7 +215,7 @@ public:
     // This method is only here to handle the kIgnorePresentFences case.
     bool hasAnyEventListeners() {
         if (kTraceDetailedInfo) ATRACE_CALL();
-        Mutex::Autolock lock(mMutex);
+        std::lock_guard<std::mutex> lock(mMutex);
         return !mEventListeners.empty();
     }
 
@@ -356,8 +349,8 @@ private:
 
     Vector<EventListener> mEventListeners;
 
-    Mutex mMutex;
-    Condition mCond;
+    std::mutex mMutex;
+    std::condition_variable mCond;
 };
 
 #undef LOG_TAG
