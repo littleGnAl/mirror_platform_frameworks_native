@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6c74cfeb_3b9d6703",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-02-15T23:54:39Z",
+      "side": 1,
+      "message": "This is expected, for PT.\nThe way PT reports PIDs are dispatching a call to binderized manager, but there is no way to clean up that PID when that hold is gone. So the PIDs might refer to dead processes.",
+      "parentUuid": "1a2b769b_67dca891",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 9
+      },
+      "revId": "e456afb4ae9d39fc9ba7cf07d221bea6f557a72b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78eb9c9a_3b64aee4",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 4
