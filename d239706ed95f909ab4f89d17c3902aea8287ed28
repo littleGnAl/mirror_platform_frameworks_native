@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "676e9af3_88e46e25",
+        "filename": "cmds/lshal/Timeout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-02-15T23:36:42Z",
+      "side": 1,
+      "message": "you should just check to see if wait_until returns std::cv_status::timeout",
+      "range": {
+        "startLine": 42,
+        "startChar": 29,
+        "endLine": 42,
+        "endChar": 67
+      },
+      "revId": "d239706ed95f909ab4f89d17c3902aea8287ed28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
