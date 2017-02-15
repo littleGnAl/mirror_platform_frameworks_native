@@ -22,6 +22,30 @@
       "revId": "3e3f335961a54eb9769300288ac23ff707370740",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7f7659a_e85cb3f1",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-02-15T02:13:34Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "3feb3cf9_d2ea720c",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 1
+      },
+      "revId": "3e3f335961a54eb9769300288ac23ff707370740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
