@@ -22,6 +22,30 @@
       "revId": "f1ed0b55f5f4db58fd458945d56a91ada8d2d5d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "316a9dd9_2907ec01",
+        "filename": "cmds/lshal/Timeout.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-02-15T02:20:39Z",
+      "side": 1,
+      "message": "I was worrying about the thread running in background after its desctructor is called, and so accessing \u0026state and \u0026func inside the thread might segfault.\n\nLooks like std::terminate will be called on a thread in its desctructor, so waitStart won\u0027t be needed. Will remove it in next PS.",
+      "parentUuid": "a2f6e19b_a41fc175",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 22
+      },
+      "revId": "f1ed0b55f5f4db58fd458945d56a91ada8d2d5d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
