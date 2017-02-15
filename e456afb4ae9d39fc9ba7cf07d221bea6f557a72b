@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a2b769b_67dca891",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-02-15T23:44:28Z",
+      "side": 1,
+      "message": "this seems unexpected",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 9
+      },
+      "revId": "e456afb4ae9d39fc9ba7cf07d221bea6f557a72b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78eb9c9a_3b64aee4",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 4
