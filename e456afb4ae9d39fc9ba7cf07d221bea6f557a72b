@@ -45,6 +45,30 @@
       "revId": "e456afb4ae9d39fc9ba7cf07d221bea6f557a72b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54085e27_a8652d6f",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-02-15T23:44:38Z",
+      "side": 1,
+      "message": "(see comment for Lshal::getCmdlines(); it modifies pids to remove the dead processes)",
+      "parentUuid": "78eb9c9a_3b64aee4",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "e456afb4ae9d39fc9ba7cf07d221bea6f557a72b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
