@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78eb9c9a_3b64aee4",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-02-15T23:43:12Z",
+      "side": 1,
+      "message": "why not just use Lshal::getCmdline while you\u0027re printing things out?",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "e456afb4ae9d39fc9ba7cf07d221bea6f557a72b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
