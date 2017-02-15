@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "703b3ed5_5fa5c954",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-02-15T02:06:56Z",
+      "side": 1,
+      "message": "why a tab instead of spaces out of curiosity? You\u0027re already doing \u0027setw\u0027\n\nI\u0027d honestly prefer you just not using a tab and increasing setw",
+      "range": {
+        "startLine": 133,
+        "startChar": 50,
+        "endLine": 133,
+        "endChar": 54
+      },
+      "revId": "8cc13e809b2048fff2080c229f1542bc205fe9cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60e25ce0_2dbd9337",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-02-15T02:06:56Z",
+      "side": 1,
+      "message": "I\u0027d always like to see these coupled together. One without the other is missing information.",
+      "range": {
+        "startLine": 348,
+        "startChar": 9,
+        "endLine": 349,
+        "endChar": 50
+      },
+      "revId": "8cc13e809b2048fff2080c229f1542bc205fe9cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
