@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2f6e19b_a41fc175",
+        "filename": "cmds/lshal/Timeout.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-02-15T02:09:40Z",
+      "side": 1,
+      "message": "why not just wait for the end?",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 22
+      },
+      "revId": "f1ed0b55f5f4db58fd458945d56a91ada8d2d5d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
