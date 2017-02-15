@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4acb40f3_8a1af6bc",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-02-15T02:17:04Z",
+      "side": 1,
+      "message": "If the column is longer than 70 characters it will blow up. Putting a \\t makes the column not aligned but still more readable than a space.",
+      "parentUuid": "703b3ed5_5fa5c954",
+      "range": {
+        "startLine": 133,
+        "startChar": 50,
+        "endLine": 133,
+        "endChar": 54
+      },
+      "revId": "8cc13e809b2048fff2080c229f1542bc205fe9cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60e25ce0_2dbd9337",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-15T02:06:56Z",
       "side": 1,
       "message": "I\u0027d always like to see these coupled together. One without the other is missing information.",
+      "range": {
+        "startLine": 348,
+        "startChar": 9,
+        "endLine": 349,
+        "endChar": 50
+      },
+      "revId": "8cc13e809b2048fff2080c229f1542bc205fe9cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "139949e3_ab11c4ff",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-02-15T02:17:04Z",
+      "side": 1,
+      "message": "I will add a follow up CL to put them together (that way I don\u0027t need to split them in the first place)",
+      "parentUuid": "60e25ce0_2dbd9337",
       "range": {
         "startLine": 348,
         "startChar": 9,
