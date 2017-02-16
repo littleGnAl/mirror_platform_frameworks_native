@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c12346ca_c21389de",
+        "filename": "cmds/lshal/Timeout.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-02-16T01:41:08Z",
+      "side": 1,
+      "message": "now that I think about it, this function will still be running in the background. It could corrupt other state, could end up running multiple synchronous callback at the same time.",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "e2dadf0c4f132d3a39309f4e274f1a35f7caaaed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
