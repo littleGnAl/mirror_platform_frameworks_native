@@ -20,6 +20,8 @@
 #include <mutex>
 #include <thread>
 
+#include <iostream>
+
 #include <hidl/Status.h>
 
 namespace android {
@@ -66,10 +68,8 @@ typename std::result_of<Function(I *, Args...)>::type
 timeoutIPC(const sp<I> &interfaceObject, Function &&func, Args &&... args) {
     using ::android::hardware::Status;
     typename std::result_of<Function(I *, Args...)>::type ret{Status::ok()};
-    auto boundFunc = std::bind(std::forward<Function>(func),
-            interfaceObject.get(), std::forward<Args>(args)...);
-    bool success = timeout(IPC_CALL_WAIT, [&ret, &boundFunc] {
-        ret = boundFunc();
+    bool success = timeout(IPC_CALL_WAIT, [&ret, func, interfaceObject, &args...] {
+        ret = std::move(((*interfaceObject.get()).*func)(args...));
     });
     if (!success) {
         return Status::fromStatusT(TIMED_OUT);
