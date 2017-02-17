@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee9fab06_296c0c61",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:59:39Z",
+      "side": 1,
+      "message": "This would be a pretty sweet one(ish)-liner with structured bindings and a range-based for (if structured bindings are working in AOSP).\n\n(https://skebanga.github.io/structured-bindings/)",
+      "revId": "c4a191458c5d36ca510b81d0f4877a3afda573b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "019d5e6a_2ef806e3",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:59:39Z",
+      "side": 1,
+      "message": "If this is expected to be a sink for layers, you could take layers by \u0026\u0026 to emphasize that that vector is going to be dead after this call (since you\u0027ll have to either create a temp or std::move the vector in). Otherwise, for out or in-out, we tend to prefer * over \u0026 to emphasize that the function can modify the value.",
+      "revId": "c4a191458c5d36ca510b81d0f4877a3afda573b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f26d847_c9f8ccfd",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:59:39Z",
+      "side": 1,
+      "message": "I personally slightly prefer to define a struct rather than use a pair (so the member names are semantically-meaningful)",
+      "revId": "c4a191458c5d36ca510b81d0f4877a3afda573b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1858a1a1_04d6dec1",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:59:39Z",
+      "side": 1,
+      "message": "Range-based for?",
+      "revId": "c4a191458c5d36ca510b81d0f4877a3afda573b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "638ddc65_1f5b5e1c",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:59:39Z",
+      "side": 1,
+      "message": "Once more and then I\u0027ll stop saying it: I\u0027d move declarations inside as many scopes as possible and/or as close as possible to the point of definition",
+      "revId": "c4a191458c5d36ca510b81d0f4877a3afda573b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e980a24e_31f51765",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:59:39Z",
+      "side": 1,
+      "message": "layer_cnt could be const, and we might want to standardize somewhere the requirement on the number of layers",
+      "revId": "c4a191458c5d36ca510b81d0f4877a3afda573b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
