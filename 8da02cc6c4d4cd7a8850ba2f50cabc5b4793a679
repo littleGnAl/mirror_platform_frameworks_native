@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73ee35fe_8abb23d4",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:11:49Z",
+      "side": 1,
+      "message": "We generally prefer C++-style casts, but it\u0027s also okay to use auto so you don\u0027t have to repeat yourself, so you could say:\n\n  auto pfn \u003d reinterpret_cast\u003cHWC2_PFN_REGISTER_CALLBACK\u003e(\n          getFunction(HWC2_FUNCTION_REGISTER_CALLBACK));",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 69
+      },
+      "revId": "8da02cc6c4d4cd7a8850ba2f50cabc5b4793a679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a371052_61d608a2",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:11:49Z",
+      "side": 1,
+      "message": "Nit: We conventionally put spaces on both sides of this colon",
+      "range": {
+        "startLine": 178,
+        "startChar": 46,
+        "endLine": 178,
+        "endChar": 48
+      },
+      "revId": "8da02cc6c4d4cd7a8850ba2f50cabc5b4793a679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
