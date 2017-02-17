@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5fe33f7_36f60a9c",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:27:55Z",
+      "side": 1,
+      "message": "The mutex and CV don\u0027t need to be initialized here (since they\u0027re properly default-initialized) (and receiving_hotplugs could be initialized similarly to my initial suggestion for hwc2_device to completely kill this constructor again)",
+      "revId": "b0e2b565cf5287af574f56b82ad7b9c39b4c145a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51c2b9f_f1368dec",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:27:55Z",
+      "side": 1,
+      "message": "Nit: 80-char (only because you mostly seem to be following it)",
+      "revId": "b0e2b565cf5287af574f56b82ad7b9c39b4c145a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54dbc816_6f712789",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:27:55Z",
+      "side": 1,
+      "message": "std::mutex?",
+      "range": {
+        "startLine": 102,
+        "startChar": 24,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "b0e2b565cf5287af574f56b82ad7b9c39b4c145a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "292e4c7f_92813b42",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:27:55Z",
+      "side": 1,
+      "message": "Is this threadsafe relative to the hotplug_callback?",
+      "revId": "b0e2b565cf5287af574f56b82ad7b9c39b4c145a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d6977d0_6cf9ddae",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:27:55Z",
+      "side": 1,
+      "message": "Hard tab should be 4 spaces",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 1
+      },
+      "revId": "b0e2b565cf5287af574f56b82ad7b9c39b4c145a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03747ff9_4baf2f54",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:27:55Z",
+      "side": 1,
+      "message": "What do these provide over just using displays.begin() or displays.end() directly?",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 5
+      },
+      "revId": "b0e2b565cf5287af574f56b82ad7b9c39b4c145a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5c8e9c1_0d29272f",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:27:55Z",
+      "side": 1,
+      "message": "Could simplify to displays.count(display) \u003d\u003d 0",
+      "revId": "b0e2b565cf5287af574f56b82ad7b9c39b4c145a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1adfa90c_b3af9084",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:27:55Z",
+      "side": 1,
+      "message": "You can say that again ;-)",
+      "revId": "b0e2b565cf5287af574f56b82ad7b9c39b4c145a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "111deafb_bec6fb19",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:27:55Z",
+      "side": 1,
+      "message": "Nit: I\u0027d move this inside the for scope since it doesn\u0027t need to persist outside of it",
+      "revId": "b0e2b565cf5287af574f56b82ad7b9c39b4c145a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd345789_3483612c",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:27:55Z",
+      "side": 1,
+      "message": "for (auto display : displays)?",
+      "revId": "b0e2b565cf5287af574f56b82ad7b9c39b4c145a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
