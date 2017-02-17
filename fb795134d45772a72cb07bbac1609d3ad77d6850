@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5b1a980_7d076292",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:05:57Z",
+      "side": 1,
+      "message": "We tend to group * and \u0026 left rather than right in SF\n\n(For this and all other comments, it\u0027s likely they\u0027re going to apply to basically every change, so instead of flagging them everywhere, I\u0027m going to just mention it the first time I notice it. Several of them are going to be stylistic conventions that we tend to follow in SF, but if it\u0027s too much work to fix all of the tests, I think it matters less than the code in SF proper.)",
+      "revId": "fb795134d45772a72cb07bbac1609d3ad77d6850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d42015c9_978923b1",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:05:57Z",
+      "side": 1,
+      "message": "You could initialize this here:\n\n  hwc2_device_t* hwc2_device \u003d nullptr;\n\nWhich would save even needing to define the default constructor.",
+      "revId": "fb795134d45772a72cb07bbac1609d3ad77d6850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58aea7d3_8d67d026",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:05:57Z",
+      "side": 1,
+      "message": "Conventionally we use mMemberName for members and localVariable for locals in SF",
+      "revId": "fb795134d45772a72cb07bbac1609d3ad77d6850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48729fcd_bb2904f2",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:05:57Z",
+      "side": 1,
+      "message": "Could (static?) assert that the last element of the array is non-0 to make sure that the defined size matches the number of elements (if it\u0027s too small, then it should fail to compile).",
+      "revId": "fb795134d45772a72cb07bbac1609d3ad77d6850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aa185e2_eb9c38f1",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-17T23:05:57Z",
+      "side": 1,
+      "message": "I\u0027d just declare this at :125",
+      "revId": "fb795134d45772a72cb07bbac1609d3ad77d6850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
