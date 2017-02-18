@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "296a81a5_14670886",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:43:56Z",
+      "side": 1,
+      "message": "std::mutex?",
+      "range": {
+        "startLine": 328,
+        "startChar": 24,
+        "endLine": 328,
+        "endChar": 41
+      },
+      "revId": "9c0cfa62e8f624b24f4f63a5cbdbc8ca56767362",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "177d3d26_670ae73f",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:43:56Z",
+      "side": 1,
+      "message": "Could make an RAII object to hold the screen on inside a scope (seems to be a bit of an idiom in here)",
+      "revId": "9c0cfa62e8f624b24f4f63a5cbdbc8ca56767362",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "432a674c_002857af",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:43:56Z",
+      "side": 1,
+      "message": "correct",
+      "range": {
+        "startLine": 1147,
+        "startChar": 64,
+        "endLine": 1147,
+        "endChar": 70
+      },
+      "revId": "9c0cfa62e8f624b24f4f63a5cbdbc8ca56767362",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4232bd7_4f11ad64",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:43:56Z",
+      "side": 1,
+      "message": "const (and below)",
+      "revId": "9c0cfa62e8f624b24f4f63a5cbdbc8ca56767362",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
