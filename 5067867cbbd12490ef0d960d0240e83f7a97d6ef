@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4429dc6_2a1d6326",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:48:06Z",
+      "side": 1,
+      "message": "I don\u0027t think this was actually required by the header",
+      "revId": "5067867cbbd12490ef0d960d0240e83f7a97d6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e36b0153_1033f250",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:48:06Z",
+      "side": 1,
+      "message": "Prefer vector to naked new/delete",
+      "revId": "5067867cbbd12490ef0d960d0240e83f7a97d6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b1534ad_42da5e45",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:48:06Z",
+      "side": 1,
+      "message": "Not sure it\u0027s worth testing that memory allocation is working",
+      "revId": "5067867cbbd12490ef0d960d0240e83f7a97d6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd2f5f6_df7ffd54",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:48:06Z",
+      "side": 1,
+      "message": "Same caveat about a name being required",
+      "revId": "5067867cbbd12490ef0d960d0240e83f7a97d6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
