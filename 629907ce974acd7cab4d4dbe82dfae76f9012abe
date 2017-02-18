@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58c8831f_e146bc16",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:36:16Z",
+      "side": 1,
+      "message": "Personal nit (as opposed to official SF convention): I dislike implicit int \u003c--\u003e bool conversions",
+      "revId": "629907ce974acd7cab4d4dbe82dfae76f9012abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be5a139c_b3a0eacf",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:36:16Z",
+      "side": 1,
+      "message": "Trivially true after :998",
+      "revId": "629907ce974acd7cab4d4dbe82dfae76f9012abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a73adff2_3699fa2e",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:36:16Z",
+      "side": 1,
+      "message": "I\u0027d expect these to be UNSUPPORTED if support !\u003d 1 (not when support \u003d\u003d 1)",
+      "revId": "629907ce974acd7cab4d4dbe82dfae76f9012abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
