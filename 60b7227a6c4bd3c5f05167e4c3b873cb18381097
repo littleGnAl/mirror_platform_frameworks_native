@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "880f0f80_72deb5de",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:17:26Z",
+      "side": 1,
+      "message": "What\u0027s the idea behind separating these two functions? Would checking for out_err \u003d\u003d nullptr and defaulting it simplify it much?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 5
+      },
+      "revId": "60b7227a6c4bd3c5f05167e4c3b873cb18381097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ef8fc6f_64a062e3",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:17:26Z",
+      "side": 1,
+      "message": "Similar comments to get_bad_display",
+      "revId": "60b7227a6c4bd3c5f05167e4c3b873cb18381097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
