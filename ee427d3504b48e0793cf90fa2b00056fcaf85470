@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c226b89_705aa2ad",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-18T00:26:54Z",
+      "side": 1,
+      "message": "Prefer adding {} for if-elses",
+      "revId": "ee427d3504b48e0793cf90fa2b00056fcaf85470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
