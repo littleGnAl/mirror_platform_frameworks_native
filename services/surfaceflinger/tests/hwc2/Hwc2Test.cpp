@@ -49,6 +49,23 @@ public:
             hwc2_close(mHwc2Device);
     }
 
+    void registerCallback(hwc2_callback_descriptor_t descriptor,
+            hwc2_callback_data_t callbackData, hwc2_function_pointer_t pointer,
+            hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_REGISTER_CALLBACK>(
+                getFunction(HWC2_FUNCTION_REGISTER_CALLBACK));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, descriptor,
+                callbackData, pointer));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to register callback";
+        }
+    }
+
 protected:
     hwc2_function_pointer_t getFunction(hwc2_function_descriptor_t descriptor)
     {
@@ -139,4 +156,38 @@ TEST_F(Hwc2Test, GET_CAPABILITIES)
 
     EXPECT_EQ(std::count(capabilities.begin(), capabilities.end(),
             HWC2_CAPABILITY_INVALID), 0);
+}
+
+static const std::array<hwc2_callback_descriptor_t, 3> callbackDescriptors = {{
+    HWC2_CALLBACK_HOTPLUG,
+    HWC2_CALLBACK_REFRESH,
+    HWC2_CALLBACK_VSYNC,
+}};
+
+TEST_F(Hwc2Test, REGISTER_CALLBACK)
+{
+    hwc2_callback_data_t data = (hwc2_callback_data_t) "data";
+
+    for (auto descriptor : callbackDescriptors)
+        ASSERT_NO_FATAL_FAILURE(registerCallback(descriptor, data,
+                []() { return; }));
+}
+
+TEST_F(Hwc2Test, REGISTER_CALLBACK_bad_parameter)
+{
+    hwc2_callback_data_t data = (hwc2_callback_data_t) "data";
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(registerCallback(HWC2_CALLBACK_INVALID, data,
+            []() { return; }, &err));
+    EXPECT_EQ(err, HWC2_ERROR_BAD_PARAMETER) << "returned wrong error code";
+}
+
+TEST_F(Hwc2Test, REGISTER_CALLBACK_null_data)
+{
+    hwc2_callback_data_t data = nullptr;
+
+    for (auto descriptor : callbackDescriptors)
+        ASSERT_NO_FATAL_FAILURE(registerCallback(descriptor, data,
+                []() { return; }));
 }
