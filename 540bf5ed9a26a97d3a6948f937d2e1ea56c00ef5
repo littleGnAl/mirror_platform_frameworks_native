@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "281220eb_d2c4085b",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-02-21T21:50:09Z",
+      "side": 1,
+      "message": "The logic is very similar for most of the set_layer_X code. Do you mean passing a lambda test case into a function that does loop through displays and configs? I am not sure gtests support lambdas but I will give it a try.",
+      "parentUuid": "5805a884_b053becc",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e6deeb6_59345af8",
         "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-21T21:23:21Z",
       "side": 1,
       "message": "Random thought: how long does this test suite take in total? While it\u0027s not bad to check these layer methods for each config, I\u0027m not sure how much value it adds (relative to one config/display). If it\u0027s still relatively fast, though, I don\u0027t see any reason not to (just to catch more obscure bugs).",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc372a6e_d0bb57d2",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-02-21T21:50:09Z",
+      "side": 1,
+      "message": "The test suite can take quite some time. Most of the time is spent on presentDisplay test functions. For the most part, setting the layer properties is negligible. It would definitely be possible to remove testing for multiple configs and displays. Removing configs/displays from presentDisplay would make the test suite faster.",
+      "parentUuid": "0e6deeb6_59345af8",
       "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "df2a54c4_85606ef1",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-02-21T21:50:09Z",
+      "side": 1,
+      "message": "COLOR and CURSOR are not supported by many display controllers. I believe SurfaceFlinger currently ignores the error code and requires the HWC2 to set the composition to client after validate.",
+      "parentUuid": "8cb10569_62d8d1e1",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63ff6a0f_ccb40404",
         "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2017-02-21T21:23:21Z",
       "side": 1,
       "message": "It was about this point that I realized that it might be nice to add a quick comment to each TEST_F describing the high-level goal of the test. It took me a second to pick out the difference between _unsupported and _update.",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6be91ce4_70291fdd",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-02-21T21:50:09Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "63ff6a0f_ccb40404",
       "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -121,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "b0e4b5e3_71e75e74",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-02-21T21:50:09Z",
+      "side": 1,
+      "message": "This will be fixed with the variable name changes (mList)",
+      "parentUuid": "dcb062ef_10982f76",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d622a0a6_f3c9328b",
         "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
         "patchSetId": 2
@@ -132,6 +222,24 @@
       "writtenOn": "2017-02-21T21:23:21Z",
       "side": 1,
       "message": "Strictly speaking, I think this could always be true on 64-bit, so I\u0027d use size_t instead of uint32_t for list_idx. In practice it\u0027s not going to matter though.",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de1e42f_70bfafa5",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-02-21T21:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d622a0a6_f3c9328b",
       "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
