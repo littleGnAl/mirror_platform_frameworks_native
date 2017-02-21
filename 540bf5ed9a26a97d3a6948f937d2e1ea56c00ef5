@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5805a884_b053becc",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:23:21Z",
+      "side": 1,
+      "message": "Would it be worth creating a construct for performing a given task on every display or every config (maybe taking a lambda or something)? I\u0027m guessing it happens a lot.\n\nIn general, especially in the context of the final form of this file (which I haven\u0027t gotten to yet), consider ways to reduce code duplication, since already a lot of these tests are starting to look pretty similar (for each display: [get configs and for each config: ...]).",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e6deeb6_59345af8",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:23:21Z",
+      "side": 1,
+      "message": "Random thought: how long does this test suite take in total? While it\u0027s not bad to check these layer methods for each config, I\u0027m not sure how much value it adds (relative to one config/display). If it\u0027s still relatively fast, though, I don\u0027t see any reason not to (just to catch more obscure bugs).",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cb10569_62d8d1e1",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:23:21Z",
+      "side": 1,
+      "message": "Is this rigorous enough? None of these should return UNSUPPORTED except maybe SIDEBAND (we say that it\u0027s only required when the capability is present, so I don\u0027t know what I would expect to happen if we requested it on a device that doesn\u0027t provide the capability); rather they should probably return ERROR_NONE and request a change to CLIENT after validateDisplay.",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ff6a0f_ccb40404",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:23:21Z",
+      "side": 1,
+      "message": "It was about this point that I realized that it might be nice to add a quick comment to each TEST_F describing the high-level goal of the test. It took me a second to pick out the difference between _unsupported and _update.",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec7d7ed_f2e292d5",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:23:21Z",
+      "side": 1,
+      "message": "Could also use external/fmtlib if you prefer",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "541d3eb4_70e8ece5",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:23:21Z",
+      "side": 1,
+      "message": "I assume this is used for more than one type in a future change",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcb062ef_10982f76",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:23:21Z",
+      "side": 1,
+      "message": "I think some warning levels will take issue with a parameter shadowing a member, even though this is unambiguous",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d622a0a6_f3c9328b",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:23:21Z",
+      "side": 1,
+      "message": "Strictly speaking, I think this could always be true on 64-bit, so I\u0027d use size_t instead of uint32_t for list_idx. In practice it\u0027s not going to matter though.",
+      "revId": "540bf5ed9a26a97d3a6948f937d2e1ea56c00ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
