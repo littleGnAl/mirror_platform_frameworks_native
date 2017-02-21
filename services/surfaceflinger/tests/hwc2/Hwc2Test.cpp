@@ -29,6 +29,7 @@
 
 #include "Hwc2TestLayer.h"
 #include "Hwc2TestLayers.h"
+#include "Hwc2TestClientTarget.h"
 
 void hwc2TestHotplugCallback(hwc2_callback_data_t callbackData,
         hwc2_display_t display, int32_t connected);
@@ -762,6 +763,41 @@ public:
             *outErr = err;
         } else {
             ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to accept display changes";
+        }
+    }
+
+    void getClientTargetSupport(hwc2_display_t display, int32_t width,
+            int32_t height, android_pixel_format_t format,
+            android_dataspace_t dataspace, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_GET_CLIENT_TARGET_SUPPORT>(
+                getFunction(HWC2_FUNCTION_GET_CLIENT_TARGET_SUPPORT));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, width,
+                height, format, dataspace));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to get client target"
+                    " support";
+        }
+    }
+
+    void setClientTarget(hwc2_display_t display, buffer_handle_t handle,
+            int32_t acquireFence, android_dataspace_t dataspace,
+            hwc_region_t damage, hwc2_error_t* outErr = nullptr)
+    {
+        auto pfn = reinterpret_cast<HWC2_PFN_SET_CLIENT_TARGET>(
+                getFunction(HWC2_FUNCTION_SET_CLIENT_TARGET));
+        ASSERT_TRUE(pfn) << "failed to get function";
+
+        auto err = static_cast<hwc2_error_t>(pfn(mHwc2Device, display, handle,
+                acquireFence, dataspace, damage));
+        if (outErr) {
+            *outErr = err;
+        } else {
+            ASSERT_EQ(err, HWC2_ERROR_NONE) << "failed to set client target";
         }
     }
 
@@ -3119,4 +3155,199 @@ TEST_F(Hwc2Test, ACCEPT_DISPLAY_CHANGES_not_validated)
                         << "returned wrong error code";
             }
     ));
+}
+
+TEST_F(Hwc2Test, GET_CLIENT_TARGET_SUPPORT)
+{
+    const android_pixel_format_t format = HAL_PIXEL_FORMAT_RGBA_8888;
+    const android_dataspace_t dataspace = HAL_DATASPACE_UNKNOWN;
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            int32_t width, height;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+            ASSERT_NO_FATAL_FAILURE(getActiveDimensions(display, &width, &height));
+
+            ASSERT_NO_FATAL_FAILURE(getClientTargetSupport(display, width,
+                    height, format, dataspace));
+        }
+    }
+}
+
+TEST_F(Hwc2Test, GET_CLIENT_TARGET_SUPPORT_bad_display)
+{
+    const android_pixel_format_t format = HAL_PIXEL_FORMAT_RGBA_8888;
+    hwc2_display_t bad_display;
+
+    ASSERT_NO_FATAL_FAILURE(getBadDisplay(&bad_display));
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            int32_t width, height;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+            ASSERT_NO_FATAL_FAILURE(getActiveDimensions(display, &width, &height));
+            Hwc2TestClientTargetSupport testClientTargetSupport(
+                    HWC2_TEST_COVERAGE_DEFAULT, width, height);
+
+            do {
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                const std::pair<int32_t, int32_t> bufferArea =
+                        testClientTargetSupport.getBufferArea();
+                ASSERT_NO_FATAL_FAILURE(getClientTargetSupport(bad_display,
+                        bufferArea.first, bufferArea.second, format,
+                        testClientTargetSupport.getDataspace(), &err));
+                EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
+            } while (testClientTargetSupport.advance());
+        }
+    }
+}
+
+TEST_F(Hwc2Test, GET_CLIENT_TARGET_SUPPORT_unsupported)
+{
+    const android_pixel_format_t format = HAL_PIXEL_FORMAT_RGBA_8888;
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            int32_t width, height;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+            ASSERT_NO_FATAL_FAILURE(getActiveDimensions(display, &width, &height));
+            Hwc2TestClientTargetSupport testClientTargetSupport(
+                    HWC2_TEST_COVERAGE_DEFAULT, width, height);
+
+            do {
+                hwc2_error_t err = HWC2_ERROR_NONE;
+
+                const std::pair<int32_t, int32_t> bufferArea =
+                        testClientTargetSupport.getBufferArea();
+                ASSERT_NO_FATAL_FAILURE(getClientTargetSupport(display,
+                        bufferArea.first, bufferArea.second, format,
+                        testClientTargetSupport.getDataspace(), &err));
+                EXPECT_TRUE(err == HWC2_ERROR_NONE
+                        || err == HWC2_ERROR_UNSUPPORTED)
+                        << "returned wrong error code";
+            } while (testClientTargetSupport.advance());
+        }
+    }
+}
+
+TEST_F(Hwc2Test, SET_CLIENT_TARGET_basic)
+{
+    const android_dataspace_t dataspace = HAL_DATASPACE_UNKNOWN;
+    const hwc_region_t damage = { };
+    const size_t layerCnt = 1;
+
+    for (auto display : mDisplays) {
+        std::vector<hwc2_config_t> configs;
+
+        ASSERT_NO_FATAL_FAILURE(setPowerMode(display, HWC2_POWER_MODE_ON));
+
+        ASSERT_NO_FATAL_FAILURE(getDisplayConfigs(display, &configs));
+
+        for (auto config : configs) {
+            int32_t width, height;
+            std::vector<hwc2_layer_t> layers;
+
+            ASSERT_NO_FATAL_FAILURE(setActiveConfig(display, config));
+            ASSERT_NO_FATAL_FAILURE(getActiveDimensions(display, &width, &height));
+
+            ASSERT_NO_FATAL_FAILURE(createLayers(display, &layers, layerCnt));
+            Hwc2TestLayers testLayers(layers, HWC2_TEST_COVERAGE_BASIC, width,
+                    height);
+
+            if (!testLayers.optimizeLayouts())
+                continue;
+
+            Hwc2TestClientTarget testClientTarget;
+
+            do {
+                std::set<hwc2_layer_t> clientLayers;
+                std::set<hwc2_layer_t> clearLayers;
+                uint32_t numTypes, numRequests;
+                bool hasChanges, skip;
+                bool flipClientTarget;
+                buffer_handle_t handle;
+                int32_t acquireFence;
+
+                ASSERT_NO_FATAL_FAILURE(setLayerProperties(display, layers,
+                        &testLayers, &skip));
+                if (skip)
+                    continue;
+
+                ASSERT_NO_FATAL_FAILURE(validateDisplay(display, &numTypes,
+                        &numRequests, &hasChanges));
+                if (hasChanges)
+                    EXPECT_LE(numTypes, layers.size())
+                            << "wrong number of requests";
+
+                ASSERT_NO_FATAL_FAILURE(manageCompositionChanges(display,
+                        testLayers, layers, numTypes, &clientLayers));
+                ASSERT_NO_FATAL_FAILURE(manageRequests(display, layers,
+                        numRequests, &clearLayers, &flipClientTarget));
+                ASSERT_EQ(testClientTarget.getBuffer(testLayers, clientLayers,
+                        clearLayers, flipClientTarget, width,
+                        height, &handle, &acquireFence), 0);
+                EXPECT_NO_FATAL_FAILURE(setClientTarget(display, handle,
+                        acquireFence, dataspace, damage));
+
+                if (acquireFence >= 0)
+                    close(acquireFence);
+
+                clientLayers.clear();
+                clearLayers.clear();
+
+            } while (testLayers.advance());
+
+            ASSERT_NO_FATAL_FAILURE(destroyLayers(display, &layers));
+        }
+
+        ASSERT_NO_FATAL_FAILURE(setPowerMode(display, HWC2_POWER_MODE_OFF));
+    }
+}
+
+TEST_F(Hwc2Test, SET_CLIENT_TARGET_bad_display)
+{
+    hwc2_display_t display;
+    std::vector<hwc2_layer_t> layers;
+    int32_t width = 0, height = 0;
+    Hwc2TestLayers testLayers(layers, HWC2_TEST_COVERAGE_DEFAULT, width, height);
+    std::set<hwc2_layer_t> clientLayers;
+    std::set<hwc2_layer_t> flipClientTargetLayers;
+    bool flipClientTarget = true;
+    const android_dataspace_t dataspace = HAL_DATASPACE_UNKNOWN;
+    const hwc_region_t damage = { };
+    buffer_handle_t handle;
+    int32_t acquireFence;
+    hwc2_error_t err = HWC2_ERROR_NONE;
+
+    ASSERT_NO_FATAL_FAILURE(getBadDisplay(&display));
+
+    Hwc2TestClientTarget testClientTarget;
+
+    ASSERT_EQ(testClientTarget.getBuffer(testLayers, clientLayers,
+            flipClientTargetLayers, flipClientTarget, width, height,
+            &handle, &acquireFence), 0);
+
+    EXPECT_NO_FATAL_FAILURE(setClientTarget(display, handle,
+            acquireFence, dataspace, damage, &err));
+
+    if (acquireFence >= 0)
+        close(acquireFence);
+
+    EXPECT_EQ(err, HWC2_ERROR_BAD_DISPLAY) << "returned wrong error code";
 }

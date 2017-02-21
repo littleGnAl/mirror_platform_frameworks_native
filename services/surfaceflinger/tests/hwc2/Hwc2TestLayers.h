@@ -41,12 +41,15 @@ public:
     bool advance();
     bool advanceVisibleRegions();
 
+    bool optimizeLayouts();
+
     bool contains(hwc2_layer_t layer) const;
 
     int  getBuffer(hwc2_layer_t layer, buffer_handle_t* outHandle,
             int32_t* outAcquireFence);
 
     hwc2_blend_mode_t      getBlendMode(hwc2_layer_t layer) const;
+    std::pair<int32_t, int32_t> getBufferArea(hwc2_layer_t layer) const;
     hwc_color_t            getColor(hwc2_layer_t layer) const;
     hwc2_composition_t     getComposition(hwc2_layer_t layer) const;
     std::pair<int32_t, int32_t> getCursor(hwc2_layer_t layer) const;
@@ -61,12 +64,14 @@ public:
     uint32_t               getZOrder(hwc2_layer_t layer) const;
 
 private:
-    void setVisibleRegions();
+    bool setVisibleRegions();
 
     std::map<hwc2_layer_t, Hwc2TestLayer> mTestLayers;
 
     int32_t mDisplayWidth;
     int32_t mDisplayHeight;
+
+    bool mOptimize = false;
 };
 
 #endif /* ifndef _HWC2_TEST_LAYERS_H */

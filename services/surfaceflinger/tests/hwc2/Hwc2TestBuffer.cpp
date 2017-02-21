@@ -306,11 +306,7 @@ public:
     /* Guarentees the correct format across all devices */
     buffer_handle_t generateBuffer()
     {
-        sp<GraphicBuffer> graphicBuffer = mGraphicBuffers.at(mNextGraphicBuffer);
-
-        mNextGraphicBuffer++;
-        if (mNextGraphicBuffer >= mGraphicBuffers.size())
-            mNextGraphicBuffer = 0;
+        sp<GraphicBuffer> graphicBuffer = getNextGraphicBuffer();
 
         if (graphicBuffer == nullptr)
             return nullptr;
@@ -346,7 +342,184 @@ public:
         return graphicBuffer->handle;
     }
 
+    /* Guarentees the correct format across all devices */
+    buffer_handle_t generateBuffer(const Hwc2TestLayers* testLayers,
+            const std::set<hwc2_layer_t>* clientLayers,
+            const std::set<hwc2_layer_t>* clearLayers)
+    {
+        sp<GraphicBuffer> graphicBuffer = getNextGraphicBuffer();
+
+        if (graphicBuffer == nullptr)
+            return nullptr;
+
+        uint8_t* img;
+        graphicBuffer->lock(GRALLOC_USAGE_SW_WRITE_OFTEN, (void**)(&img));
+
+        uint32_t stride = graphicBuffer->getStride();
+
+        float bWDiv3 = mBufferWidth / 3;
+        float bW2Div3 = mBufferWidth * 2 / 3;
+        float bHDiv3 = mBufferHeight / 3;
+        float bH2Div3 = mBufferHeight * 2 / 3;
+
+        for (int32_t y = 0; y < mBufferHeight; y++) {
+            for (int32_t x = 0; x < mBufferWidth; x++) {
+
+                uint8_t r = 0, g = 0, b = 0;
+                float a = 0.0f;
+
+                for (auto layer = clientLayers->rbegin();
+                        layer != clientLayers->rend(); ++layer) {
+
+                    float dfL, dfT, dfR, dfB;
+
+                    if (testLayers->getComposition(*layer)
+                            != HWC2_COMPOSITION_CURSOR) {
+                        const hwc_rect_t df = testLayers->getDisplayFrame(*layer);
+                        dfL = df.left;
+                        dfT = df.top;
+                        dfR = df.right;
+                        dfB = df.bottom;
+                    } else {
+                        const auto bufferArea = testLayers->getBufferArea(*layer);
+                        const auto cursor = testLayers->getCursor(*layer);
+                        dfL = cursor.first;
+                        dfT = cursor.second;
+                        dfR = cursor.first + bufferArea.first;
+                        dfB = cursor.second + bufferArea.second;
+                    }
+
+                    if (x < dfL || x >= dfR || y < dfT || y >= dfB)
+                        continue;
+
+                    if (clearLayers->count(*layer) != 0) {
+                        r = 0;
+                        g = 0;
+                        b = 0;
+                        a = 0.0f;
+                        continue;
+                    }
+
+                    float planeAlpha = testLayers->getPlaneAlpha(*layer);
+
+                    if (testLayers->getComposition(*layer)
+                            == HWC2_COMPOSITION_SOLID_COLOR) {
+                        const auto color = testLayers->getColor(*layer);
+                        r = color.r;
+                        g = color.g;
+                        b = color.b;
+                        a = color.a * planeAlpha;
+                        continue;
+                    }
+
+                    float xPos = x;
+                    float yPos = y;
+
+                    hwc_transform_t transform = testLayers->getTransform(*layer);
+
+                    float dfW = dfR - dfL;
+                    float dfH = dfB - dfT;
+
+                    if (transform > 0) {
+                        /* Change origin */
+                        xPos = xPos - dfL - dfW / 2.0;
+                        yPos = yPos - dfT - dfH / 2.0;
+
+                        /* Flip Horizontal */
+                        if (transform & HWC_TRANSFORM_FLIP_H)
+                            xPos = -xPos;
+
+                        /* Flip vertical */
+                        if (transform & HWC_TRANSFORM_FLIP_V)
+                            yPos = -yPos;
+
+                        /* Rotate 90 */
+                        if (transform & HWC_TRANSFORM_ROT_90) {
+                            float tmp = xPos;
+                            xPos = -yPos * dfW / dfH;
+                            yPos = tmp * dfH / dfW;
+                        }
+
+                        /* Change origin back */
+                        xPos = xPos + dfL + dfW / 2.0;
+                        yPos = yPos + dfT + dfH / 2.0;
+                    }
+
+                    hwc_frect_t sc = testLayers->getSourceCrop(*layer);
+                    float scL = sc.left, scT = sc.top;
+
+                    float dfWDivScW = dfW / (sc.right - scL);
+                    float dfHDivScH = dfH / (sc.bottom - scT);
+
+                    float max = 255, min = 0;
+
+                    if (yPos < ((bHDiv3) - scT) * dfHDivScH + dfT) {
+                        min = 255 / 2;
+                    } else if (yPos >= ((bH2Div3) - scT) * dfHDivScH + dfT) {
+                        max = 255 / 2;
+                    }
+
+                    uint8_t rCur = min, gCur = min, bCur = min;
+                    float aCur = 1.0f;
+
+                    if (xPos < ((bWDiv3) - scL) * (dfWDivScW) + dfL) {
+                        rCur = max;
+                    } else if (xPos < ((bW2Div3) - scL) * (dfWDivScW) + dfL) {
+                        gCur = max;
+                    } else {
+                        bCur = max;
+                    }
+
+
+                    hwc2_blend_mode_t blendMode = testLayers->getBlendMode(*layer);
+
+                    if (blendMode == HWC2_BLEND_MODE_PREMULTIPLIED) {
+                        rCur *= planeAlpha;
+                        gCur *= planeAlpha;
+                        bCur *= planeAlpha;
+                    }
+
+                    aCur *= planeAlpha;
+
+                    if (blendMode == HWC2_BLEND_MODE_PREMULTIPLIED) {
+                        r = rCur + r * (1.0 - aCur);
+                        g = gCur + g * (1.0 - aCur);
+                        b = bCur + b * (1.0 - aCur);
+                        a = aCur + a * (1.0 - aCur);
+                    } else if (blendMode == HWC2_BLEND_MODE_COVERAGE) {
+                        r = rCur * aCur + r * (1.0 - aCur);
+                        g = gCur * aCur + g * (1.0 - aCur);
+                        b = bCur * aCur + b * (1.0 - aCur);
+                        a = aCur * aCur + a * (1.0 - aCur);
+                    } else {
+                        r = rCur;
+                        g = gCur;
+                        b = bCur;
+                        a = aCur;
+                    }
+                }
+
+                setColor(x, y, mFormat, stride, img, r, g, b, a * 255);
+            }
+        }
+
+        graphicBuffer->unlock();
+
+        return graphicBuffer->handle;
+    }
+
 private:
+    sp<GraphicBuffer> getNextGraphicBuffer()
+    {
+        sp<GraphicBuffer> graphicBuffer = mGraphicBuffers.at(mNextGraphicBuffer);
+
+        mNextGraphicBuffer++;
+        if (mNextGraphicBuffer >= mGraphicBuffers.size())
+            mNextGraphicBuffer = 0;
+
+        return graphicBuffer;
+    }
+
     Hwc2TestSurfaceManager mSurfaceManager;
     Hwc2TestEglManager mEglManager;
 
@@ -401,7 +574,10 @@ void Hwc2TestBuffer::setFence(int32_t fence)
     mCv.notify_all();
 }
 
-int Hwc2TestBuffer::get(buffer_handle_t* outHandle, int32_t* outFence)
+int Hwc2TestBuffer::get(buffer_handle_t* outHandle, int32_t* outFence,
+        const Hwc2TestLayers* testLayers,
+        const std::set<hwc2_layer_t>* clientLayers,
+        const std::set<hwc2_layer_t>* clearLayers)
 {
     if (mBufferWidth == -1 || mBufferHeight == -1)
         return -EINVAL;
@@ -425,7 +601,12 @@ int Hwc2TestBuffer::get(buffer_handle_t* outHandle, int32_t* outFence)
     if (ret < 0)
         return ret;
 
-    *outHandle = mBufferGenerator->generateBuffer();
+    if (testLayers && clientLayers && clearLayers) {
+        *outHandle = mBufferGenerator->generateBuffer(testLayers,
+                clientLayers, clearLayers);
+    } else {
+        *outHandle = mBufferGenerator->generateBuffer();
+    }
 
     while (mPending != true)
         if (mCv.wait_for(lock, std::chrono::seconds(2)) == std::cv_status::timeout)

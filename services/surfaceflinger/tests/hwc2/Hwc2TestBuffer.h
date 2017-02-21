@@ -18,9 +18,12 @@
 #define _HWC2_TEST_BUFFER_H
 
 #include <android-base/unique_fd.h>
+#include <set>
+
 #include <hardware/hwcomposer2.h>
 
 class Hwc2TestBufferGenerator;
+class Hwc2TestLayers;
 
 class Hwc2TestBuffer {
 public:
@@ -29,7 +32,10 @@ public:
 
     void updateBufferArea(int32_t bufferWidth, int32_t bufferHeight);
 
-    int  get(buffer_handle_t* outHandle, int32_t* outFence);
+    int  get(buffer_handle_t* outHandle, int32_t* outFence,
+            const Hwc2TestLayers* testLayers = nullptr,
+            const std::set<hwc2_layer_t>* clientLayers = nullptr,
+            const std::set<hwc2_layer_t>* clearLayers = nullptr);
 
     void setFence(int32_t fence);
 
