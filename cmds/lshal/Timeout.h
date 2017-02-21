@@ -56,8 +56,11 @@ bool timeout(std::chrono::duration<R, P> delay, const std::function<void(void)> 
         func();
         state.notify();
     });
-    t.detach();
     bool success = state.wait(now + delay);
+    if (!success) {
+        pthread_kill(t.native_handle(), SIGINT);
+    }
+    t.join();
     return success;
 }
 
