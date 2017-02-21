@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87e8396f_66163bb6",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:44:33Z",
+      "side": 1,
+      "message": "DATASPACE (this and friends)",
+      "range": {
+        "startLine": 1617,
+        "startChar": 28,
+        "endLine": 1617,
+        "endChar": 36
+      },
+      "revId": "fab6d6196b4c52eed85862ba33b5ea12ff5d4c4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a072cef7_e2f6d19c",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:44:33Z",
+      "side": 1,
+      "message": "Could this and the other hwc2_test_property derivatives be defined based on a single template class instead of each one having its own class declaration in the header? You\u0027d still need to define them in specializations in the .cpp, but it would clean up the header a bit.",
+      "revId": "fab6d6196b4c52eed85862ba33b5ea12ff5d4c4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
