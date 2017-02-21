@@ -39,6 +39,24 @@
       "revId": "fab6d6196b4c52eed85862ba33b5ea12ff5d4c4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "241fbdd5_a9b13e8f",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-02-21T21:57:05Z",
+      "side": 1,
+      "message": "It would clean up the code for most properties. Some properties such as display frame, source crop, cursor position, etc. are based on display/buffer dimensions. As of now, their correct coverage is computed when they are instantiated. If they were based on a single template, several new properties could require 2x the work. \n\nIt would be possible to compute only the correct coverage in the constructor and leave the other vectors empty. It wouldn\u0027t be particularly clean but it should work.",
+      "parentUuid": "a072cef7_e2f6d19c",
+      "revId": "fab6d6196b4c52eed85862ba33b5ea12ff5d4c4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
