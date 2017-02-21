@@ -36,6 +36,20 @@ enum class Hwc2TestCoverage {
     Complete,
 };
 
+enum class Hwc2TestPropertyName {
+    BlendMode = 1,
+    BufferArea,
+    Color,
+    Composition,
+    Cursor,
+    Dataspace,
+    DisplayFrame,
+    PlaneAlpha,
+    SourceCrop,
+    SurfaceDamage,
+    Transform,
+};
+
 class Area {
 public:
     int32_t width;
@@ -47,6 +61,7 @@ public:
     int32_t x;
     int32_t y;
 };
+
 
 class Hwc2TestContainer {
 public:
