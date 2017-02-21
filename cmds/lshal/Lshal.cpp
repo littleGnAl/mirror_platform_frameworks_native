@@ -469,9 +469,18 @@ int Lshal::main(int argc, char **argv) {
     return status;
 }
 
+void signalHandler(int sig) {
+    if (sig == SIGINT) {
+        std::cerr << "INTERRUPTED" << std::endl; // FIXME remove
+        int retVal;
+        pthread_exit(&retVal);
+    }
+}
+
 }  // namespace lshal
 }  // namespace android
 
 int main(int argc, char **argv) {
+    signal(SIGINT, ::android::lshal::signalHandler);
     return ::android::lshal::Lshal{}.main(argc, argv);
 }
