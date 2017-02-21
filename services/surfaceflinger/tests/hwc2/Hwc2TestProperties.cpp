@@ -346,6 +346,67 @@ const std::array<bool, 6> Hwc2TestDataspace::mCompositionSupport = {{
 }};
 
 
+Hwc2TestDisplayDimension::Hwc2TestDisplayDimension(hwc2_test_coverage_t coverage)
+    : Hwc2TestProperty(
+            (coverage == HWC2_TEST_COVERAGE_COMPLETE)? mCompleteDisplayDimensions:
+            (coverage == HWC2_TEST_COVERAGE_BASIC)? mBasicDisplayDimensions:
+            mDefaultDisplayDimensions, mCompositionSupport) { }
+
+std::string Hwc2TestDisplayDimension::dump() const
+{
+    std::stringstream dmp;
+    const std::pair<int32_t, int32_t>& curr = get();
+    dmp << "\tdisplay dimension: " << curr.first << " x " << curr.second << "\n";
+    return dmp.str();
+}
+
+void Hwc2TestDisplayDimension::setDependent(Hwc2TestBuffer* buffer)
+{
+    mBuffer = buffer;
+    updateDependents();
+}
+
+void Hwc2TestDisplayDimension::updateDependents()
+{
+    const std::pair<int32_t, int32_t>& curr = get();
+
+    if (mBuffer)
+        mBuffer->updateBufferArea(curr.first, curr.second);
+}
+
+const std::vector<std::pair<int32_t, int32_t>>
+        Hwc2TestDisplayDimension::mDefaultDisplayDimensions = {
+    {1920, 1080},
+};
+
+const std::vector<std::pair<int32_t, int32_t>>
+        Hwc2TestDisplayDimension::mBasicDisplayDimensions = {
+    {640, 480},
+    {1280, 720},
+    {1920, 1080},
+    {1920, 1200},
+    {3840, 2160},
+};
+
+const std::vector<std::pair<int32_t, int32_t>>
+        Hwc2TestDisplayDimension::mCompleteDisplayDimensions = {
+    {320, 240},
+    {480, 320},
+    {640, 480},
+    {1280, 720},
+    {1920, 1080},
+    {1920, 1200},
+    {2560, 1440},
+    {2560, 1600},
+    {3840, 2160},
+    {4096, 2160},
+};
+
+const std::array<bool, 6> Hwc2TestDisplayDimension::mCompositionSupport = {{
+    false, true, true, true, true, true,
+}};
+
+
 Hwc2TestDisplayFrame::Hwc2TestDisplayFrame(hwc2_test_coverage_t coverage,
         int32_t displayWidth, int32_t displayHeight)
     : Hwc2TestProperty(mDisplayFrames, mCompositionSupport),

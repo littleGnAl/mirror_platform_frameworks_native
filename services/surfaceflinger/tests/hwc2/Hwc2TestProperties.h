@@ -243,6 +243,27 @@ protected:
 };
 
 
+class Hwc2TestDisplayDimension : public Hwc2TestProperty<std::pair<int32_t, int32_t>> {
+public:
+    Hwc2TestDisplayDimension(hwc2_test_coverage_t coverage);
+
+    std::string dump() const;
+
+    void setDependent(Hwc2TestBuffer* buffer);
+
+private:
+    void updateDependents();
+
+    Hwc2TestBuffer* mBuffer;
+
+    static const std::vector<std::pair<int32_t, int32_t>> mDefaultDisplayDimensions;
+    static const std::vector<std::pair<int32_t, int32_t>> mBasicDisplayDimensions;
+    static const std::vector<std::pair<int32_t, int32_t>> mCompleteDisplayDimensions;
+
+    static const std::array<bool, 6> mCompositionSupport;
+};
+
+
 class Hwc2TestDisplayFrame : public Hwc2TestProperty<hwc_rect_t> {
 public:
     Hwc2TestDisplayFrame(hwc2_test_coverage_t coverage,
