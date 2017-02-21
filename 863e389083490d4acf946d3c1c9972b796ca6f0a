@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9e254eb_8cba93c5",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:48:50Z",
+      "side": 1,
+      "message": "Since we specify that it\u0027s the range [0.0, 1.0] in the header, I\u0027d think \"basic\" would be 1.0 and 0.0 (those are probably special case), and would leave the incremental ones for \"complete\"",
+      "range": {
+        "startLine": 167,
+        "startChar": 10,
+        "endLine": 167,
+        "endChar": 14
+      },
+      "revId": "863e389083490d4acf946d3c1c9972b796ca6f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
