@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44e6baaf_f923eca2",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-21T21:53:59Z",
+      "side": 1,
+      "message": "Based on the enum values, I might make the basic cases 0, FLIP_H (1), FLIP_V (2), and ROT_90 (4) and leave the combinations as part of complete",
+      "revId": "6781323d080588eb42e7da4c82a5d1a7cff2d2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
