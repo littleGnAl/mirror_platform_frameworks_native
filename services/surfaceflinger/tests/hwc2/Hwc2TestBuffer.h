@@ -18,12 +18,15 @@
 #define _HWC2_TEST_BUFFER_H
 
 #include <android-base/unique_fd.h>
+#include <set>
+
 #include <hardware/hwcomposer2.h>
 
 #include <gui/GraphicBufferAlloc.h>
 #include <ui/GraphicBuffer.h>
 
 class Hwc2TestFenceGenerator;
+class Hwc2TestLayers;
 
 class Hwc2TestBuffer {
 public:
@@ -37,10 +40,6 @@ public:
 protected:
     int generateBuffer();
 
-    void setColor(int32_t x, int32_t y, android_pixel_format_t format,
-            uint32_t stride, uint8_t* img, uint8_t r, uint8_t g, uint8_t b,
-            uint8_t a);
-
     android::GraphicBufferAlloc mGraphicBufferAlloc;
     android::sp<android::GraphicBuffer> mGraphicBuffer;
 
@@ -52,6 +51,27 @@ protected:
 
     bool mValidBuffer = false;
     buffer_handle_t mHandle = nullptr;
+};
+
+
+class Hwc2TestClientTargetBuffer {
+public:
+    Hwc2TestClientTargetBuffer();
+    ~Hwc2TestClientTargetBuffer();
+
+    int  get(buffer_handle_t* outHandle, int32_t* outFence,
+            int32_t bufferWidth, int32_t bufferHeight,
+            const Hwc2TestLayers* testLayers,
+            const std::set<hwc2_layer_t>* clientLayers,
+            const std::set<hwc2_layer_t>* clearLayers);
+
+protected:
+    android::GraphicBufferAlloc mGraphicBufferAlloc;
+    android::sp<android::GraphicBuffer> mGraphicBuffer;
+
+    std::unique_ptr<Hwc2TestFenceGenerator> mFenceGenerator;
+
+    const android_pixel_format_t mFormat = HAL_PIXEL_FORMAT_RGBA_8888;
 };
 
 #endif /* ifndef _HWC2_TEST_BUFFER_H */
