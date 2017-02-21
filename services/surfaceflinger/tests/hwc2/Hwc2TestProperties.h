@@ -56,6 +56,12 @@ public:
     int32_t height;
 };
 
+class DisplayDimension {
+public:
+    uint32_t width;
+    uint32_t height;
+};
+
 class Point {
 public:
     int32_t x;
@@ -249,6 +255,27 @@ protected:
     static const std::vector<android_dataspace_t> defaultDataspaces;
     static const std::vector<android_dataspace_t> basicDataspaces;
     static const std::vector<android_dataspace_t> completeDataspaces;
+
+    static const std::array<bool, 6> mCompositionSupport;
+};
+
+
+class Hwc2TestDisplayDimension : public Hwc2TestProperty<DisplayDimension> {
+public:
+    Hwc2TestDisplayDimension(Hwc2TestCoverage coverage);
+
+    std::string dump() const;
+
+    void setDependent(Hwc2TestBuffer* buffer);
+
+private:
+    void updateDependents();
+
+    Hwc2TestBuffer* mBuffer;
+
+    static const std::vector<DisplayDimension> mDefaultDisplayDimensions;
+    static const std::vector<DisplayDimension> mBasicDisplayDimensions;
+    static const std::vector<DisplayDimension> mCompleteDisplayDimensions;
 
     static const std::array<bool, 6> mCompositionSupport;
 };

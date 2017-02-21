@@ -326,6 +326,66 @@ const std::vector<android_dataspace_t> Hwc2TestDataspace::completeDataspaces = {
 };
 
 
+Hwc2TestDisplayDimension::Hwc2TestDisplayDimension(Hwc2TestCoverage coverage)
+    : Hwc2TestProperty(
+            (coverage == Hwc2TestCoverage::Complete)? mCompleteDisplayDimensions:
+            (coverage == Hwc2TestCoverage::Basic)? mBasicDisplayDimensions:
+            mDefaultDisplayDimensions, mCompositionSupport) { }
+
+std::string Hwc2TestDisplayDimension::dump() const
+{
+    std::stringstream dmp;
+    const DisplayDimension& curr = get();
+    dmp << "\tdisplay dimension: " << curr.width<< " x " << curr.height<< "\n";
+    return dmp.str();
+}
+
+void Hwc2TestDisplayDimension::setDependent(Hwc2TestBuffer* buffer)
+{
+    mBuffer = buffer;
+    updateDependents();
+}
+
+void Hwc2TestDisplayDimension::updateDependents()
+{
+    const DisplayDimension& curr = get();
+
+    if (mBuffer)
+        mBuffer->updateBufferArea(curr.width, curr.height);
+}
+
+const std::vector<DisplayDimension>
+        Hwc2TestDisplayDimension::mDefaultDisplayDimensions = {
+    {1920, 1080},
+};
+
+const std::vector<DisplayDimension>
+        Hwc2TestDisplayDimension::mBasicDisplayDimensions = {
+    {640, 480},
+    {1280, 720},
+    {1920, 1080},
+    {1920, 1200},
+};
+
+const std::vector<DisplayDimension>
+        Hwc2TestDisplayDimension::mCompleteDisplayDimensions = {
+    {320, 240},
+    {480, 320},
+    {640, 480},
+    {1280, 720},
+    {1920, 1080},
+    {1920, 1200},
+    {2560, 1440},
+    {2560, 1600},
+    {3840, 2160},
+    {4096, 2160},
+};
+
+const std::array<bool, 6> Hwc2TestDisplayDimension::mCompositionSupport = {{
+    false, true, true, true, true, true,
+}};
+
+
 Hwc2TestDisplayFrame::Hwc2TestDisplayFrame(Hwc2TestCoverage coverage,
         int32_t displayWidth, int32_t displayHeight)
     : Hwc2TestProperty(mDisplayFrames, mCompositionSupport),
