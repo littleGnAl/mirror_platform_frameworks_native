@@ -34,6 +34,10 @@ cc_library {
         "libcutils",
     ],
 
+    header_libs: [
+        "libutils_headers",
+    ],
+
     target: {
         android: {
             srcs: [
