@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "052c8073_12522884",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-22T00:25:11Z",
+      "side": 1,
+      "message": "Integer division would probably be fine here (and read a bit cleaner)",
+      "revId": "c8e8f55c837023ae0cbbbb41dd40403149839d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
