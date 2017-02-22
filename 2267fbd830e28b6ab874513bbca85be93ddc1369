@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2a9aa3e_5c79611e",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_layer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-22T00:30:02Z",
+      "side": 1,
+      "message": "Not much point in making this const, I think",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "2267fbd830e28b6ab874513bbca85be93ddc1369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27df672c_e89e3226",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-22T00:30:02Z",
+      "side": 1,
+      "message": "Half of these colors would be invalid if blended as premultiplied. I wonder if we want to specifically test premultiplied vs coverage for SOLID_COLOR.",
+      "revId": "2267fbd830e28b6ab874513bbca85be93ddc1369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
