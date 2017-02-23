@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59def401_97882ae4",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T18:46:47Z",
+      "side": 1,
+      "message": "Range-based for here?",
+      "revId": "42fc3b5056248ec8eca8c525972e605985d04908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d6606bf_9ab61fe2",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T18:46:47Z",
+      "side": 1,
+      "message": "newLayerCnt?",
+      "range": {
+        "startLine": 198,
+        "startChar": 29,
+        "endLine": 198,
+        "endChar": 37
+      },
+      "revId": "42fc3b5056248ec8eca8c525972e605985d04908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87abea73_62f60926",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T18:46:47Z",
+      "side": 1,
+      "message": "Do we rely somewhere on preserving existing layers in outLayers? If not, we could just do *outLayers \u003d std::move(newLayers)",
+      "revId": "42fc3b5056248ec8eca8c525972e605985d04908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86916949_e51cb008",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T18:46:47Z",
+      "side": 1,
+      "message": "I think I mentioned this before, but if this is a sink, you could take this by \u0026\u0026 to make it more obvious at the call site that it will clear out the vector.",
+      "revId": "42fc3b5056248ec8eca8c525972e605985d04908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
