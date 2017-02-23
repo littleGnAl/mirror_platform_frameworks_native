@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa8bceb_6282879d",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4413,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:59:14Z",
+      "side": 1,
+      "message": "A weird, but possibly useful, test would be to call destroyVirtualDisplay on a real hotplugged display and make sure it just errors out in the destroy call but doesn\u0027t prevent validate/present from working on that display. (This could easily be in a future CL)",
+      "revId": "bd976e911a766e872155911eb1a83bfc03d0eace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37e36778_eb963e3a",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4475,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:59:14Z",
+      "side": 1,
+      "message": "This should work, but we might want to restrict the dimensions to 1080p at highest, since the max count doesn\u0027t mean that they have to be able to create them at arbitrary dimensions. (e.g., they could return a max count of 3 assuming 1080p, but only be able to support 1 at 4k)",
+      "revId": "bd976e911a766e872155911eb1a83bfc03d0eace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa20c71e_46d670d1",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4527,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:59:14Z",
+      "side": 1,
+      "message": "If these are all valid physical displays, my reading of the header is that the only valid error code is UNSUPPORTED (not BAD_DISPLAY, which would indicate an invalid display id), and UNSUPPORTED is handled correctly below, so I think you should be getting a bad display handle to pass in here instead.",
+      "revId": "bd976e911a766e872155911eb1a83bfc03d0eace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a39dc06f_c2d727e3",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4542,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:59:14Z",
+      "side": 1,
+      "message": "const",
+      "revId": "bd976e911a766e872155911eb1a83bfc03d0eace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba2e84a_ce31fc1c",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:59:14Z",
+      "side": 1,
+      "message": "I probably wouldn\u0027t include 4k in basic, but otherwise these look reasonable.",
+      "revId": "bd976e911a766e872155911eb1a83bfc03d0eace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa9ba113_2efe017d",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:59:14Z",
+      "side": 1,
+      "message": "Include these when you comment and/or group later",
+      "revId": "bd976e911a766e872155911eb1a83bfc03d0eace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9367c36_353f385a",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:59:14Z",
+      "side": 1,
+      "message": "Named type",
+      "range": {
+        "startLine": 259,
+        "startChar": 29,
+        "endLine": 259,
+        "endChar": 56
+      },
+      "revId": "bd976e911a766e872155911eb1a83bfc03d0eace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
