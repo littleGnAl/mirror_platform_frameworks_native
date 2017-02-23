@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd2cf51d_02c9639e",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1808,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T19:57:43Z",
+      "side": 1,
+      "message": "Just noticed: you might want to call this badLayer for this particular function (and other similar ones)",
+      "range": {
+        "startLine": 1808,
+        "startChar": 69,
+        "endLine": 1808,
+        "endChar": 74
+      },
+      "revId": "7be1b410bf6dc307651adc82cfbbcf93109e7b71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db3ab7bc_99df1267",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestLayers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T19:57:43Z",
+      "side": 1,
+      "message": "Nit: I might wrap here to keep the forward_as_tuple together",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "7be1b410bf6dc307651adc82cfbbcf93109e7b71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
