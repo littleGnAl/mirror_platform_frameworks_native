@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "594bb264_0d04e90b",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T19:21:38Z",
+      "side": 1,
+      "message": "Remaining C-style casts in this file",
+      "revId": "abc3da5a3d552afc3a173d8fd1038c7d3a38cd71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
