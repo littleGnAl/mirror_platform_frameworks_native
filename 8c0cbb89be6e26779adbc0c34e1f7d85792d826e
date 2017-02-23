@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2270181_615b2b36",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:38:23Z",
+      "side": 1,
+      "message": "It might be nice to have a medium-length block comment at the top of the file explaining how the various pieces of this file interact to provide buffers/fences for use by the test.",
+      "revId": "8c0cbb89be6e26779adbc0c34e1f7d85792d826e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d4e5ea_b0b5c2c0",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:38:23Z",
+      "side": 1,
+      "message": "I think this should be OR\u0027d into the usage by the EGL driver (so you should only need to specify how you as a consumer intend to access the buffer)",
+      "range": {
+        "startLine": 82,
+        "startChar": 46,
+        "endLine": 82,
+        "endChar": 69
+      },
+      "revId": "8c0cbb89be6e26779adbc0c34e1f7d85792d826e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b88ff8_9487f73f",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:38:23Z",
+      "side": 1,
+      "message": "Typo?",
+      "range": {
+        "startLine": 129,
+        "startChar": 29,
+        "endLine": 129,
+        "endChar": 43
+      },
+      "revId": "8c0cbb89be6e26779adbc0c34e1f7d85792d826e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47f7d965_63782c6c",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:38:23Z",
+      "side": 1,
+      "message": "guaranteed (and guarantees later)",
+      "range": {
+        "startLine": 267,
+        "startChar": 17,
+        "endLine": 267,
+        "endChar": 27
+      },
+      "revId": "8c0cbb89be6e26779adbc0c34e1f7d85792d826e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b224564b_ed935603",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:38:23Z",
+      "side": 1,
+      "message": "A few comments in here would be nice, too, especially about the CV waits",
+      "revId": "8c0cbb89be6e26779adbc0c34e1f7d85792d826e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
