@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2aa3dc6a_87aec225",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T19:18:04Z",
+      "side": 1,
+      "message": "Probably if (support !\u003d 1) in case it\u0027s some other value (though that should be caught by other tests) (here and :981, though that would make the ASSERT_EQ at :984 superfluous)",
+      "revId": "c2364712a74cf83887a39a4593dabb1268371fb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
