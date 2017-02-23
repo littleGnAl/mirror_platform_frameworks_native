@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed14c2ff_3f711ad5",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T17:52:15Z",
+      "side": 1,
+      "message": "Missed C-style cast",
+      "revId": "adc07ef5419cfa245e66960569896c7f8fe21d63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40667cbe_e6a9ca9e",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T17:52:15Z",
+      "side": 1,
+      "message": "Prefer brackets around for loops",
+      "revId": "adc07ef5419cfa245e66960569896c7f8fe21d63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
