@@ -49,6 +49,9 @@ cc_library_shared {
         "-Wno-exit-time-destructors",
         "-Wno-global-constructors",
         "-Wno-zero-length-array",
+
+        // The Vulkan headers aren't currently clean for this warning.
+        "-Wno-missing-prototypes",
     ],
 
     srcs: [
