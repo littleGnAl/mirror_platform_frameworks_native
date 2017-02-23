@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b62a7577_eacc4d9b",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2426,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:47:50Z",
+      "side": 1,
+      "message": "I\u0027d move this closer to :2440 since it\u0027s only used there (or optionally inline it)",
+      "revId": "26ce28d3800b0510b1f246a9f7ed9f33617d5a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a3f6b2_1e0b385f",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestLayer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:47:50Z",
+      "side": 1,
+      "message": "Another place a named type would be nice",
+      "revId": "26ce28d3800b0510b1f246a9f7ed9f33617d5a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb7757c_f7bfb21e",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestLayers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:47:50Z",
+      "side": 1,
+      "message": "Maybe explain why CURSOR is the odd one out?",
+      "revId": "26ce28d3800b0510b1f246a9f7ed9f33617d5a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
