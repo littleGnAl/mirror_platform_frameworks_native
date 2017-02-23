@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eb2589f_57d784a8",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T01:01:52Z",
+      "side": 1,
+      "message": "else should have brackets here",
+      "revId": "cbc74ed6a96f0d1a367c70da4754053a172059c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab1b21fe_e0c265b6",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T01:01:52Z",
+      "side": 1,
+      "message": "I know this is tough to do in a generic way, but it might be nice to test a very small surface damage (maybe put some very specific floats and do some math in update to ensure it\u0027s always \u003e 0).",
+      "revId": "cbc74ed6a96f0d1a367c70da4754053a172059c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
