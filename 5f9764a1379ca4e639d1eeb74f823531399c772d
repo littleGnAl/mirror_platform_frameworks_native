@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe8faa9d_c7c5e2ff",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3591,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:40:57Z",
+      "side": 1,
+      "message": "Maybe explain the reasoning between some being true and some being false to help people add test cases in the future (along with general documentation of the test cases here)",
+      "revId": "5f9764a1379ca4e639d1eeb74f823531399c772d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb7b6cd_70d703b1",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestLayer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:40:57Z",
+      "side": 1,
+      "message": "Could probably be unordered here",
+      "range": {
+        "startLine": 22,
+        "startChar": 50,
+        "endLine": 22,
+        "endChar": 53
+      },
+      "revId": "5f9764a1379ca4e639d1eeb74f823531399c772d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
