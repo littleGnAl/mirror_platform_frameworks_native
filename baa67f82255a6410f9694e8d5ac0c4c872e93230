@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f871f3b8_e536bbdf",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4080,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:48:16Z",
+      "side": 1,
+      "message": "Should there be a test that tries to set every reported color mode and expects no error?",
+      "revId": "baa67f82255a6410f9694e8d5ac0c4c872e93230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba823873_81e0bcba",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4156,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:48:16Z",
+      "side": 1,
+      "message": "Doesn\u0027t this say that maxLuminance must equal maxAverageLuminance? That\u0027s probably not true. Maybe we should be comparing to minLuminance?",
+      "revId": "baa67f82255a6410f9694e8d5ac0c4c872e93230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ffb49fa_81cdae56",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4210,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:48:16Z",
+      "side": 1,
+      "message": "Not sure if these are random or plucked from somewhere, but if they\u0027re an actual matrix, you could add a comment to that effect. It might be nice to check all of the ones used for accessibility (color blindness and color inversion) by the framework, and to find reasonable ones corresponding to the hints to try all the hints.",
+      "revId": "baa67f82255a6410f9694e8d5ac0c4c872e93230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
