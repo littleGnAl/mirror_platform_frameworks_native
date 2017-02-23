@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94f8049d_6b5b503f",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestLayers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:54:51Z",
+      "side": 1,
+      "message": "Should any of these log/assert if they fail to find the layer?",
+      "revId": "7a2fe047bfa264d6893a872c577f6d044b3fdd41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e07b86eb_aea0bb6b",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:54:51Z",
+      "side": 1,
+      "message": "Maybe some explanation here and elsewhere where these magic bools come from. I might also group them together if they\u0027re somehow related.",
+      "revId": "7a2fe047bfa264d6893a872c577f6d044b3fdd41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
