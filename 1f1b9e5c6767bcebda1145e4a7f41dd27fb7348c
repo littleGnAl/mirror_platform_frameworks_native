@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f544d05f_f8665ed0",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T19:36:53Z",
+      "side": 1,
+      "message": "Modern C++ guidance is to use a using declaration instead of a typedef for this stuff:\n\n  using AdvanceProperty \u003d bool (*)(HWC2TestLayer* testLayer);",
+      "revId": "1f1b9e5c6767bcebda1145e4a7f41dd27fb7348c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "191fcb39_df9385e9",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T19:36:53Z",
+      "side": 1,
+      "message": "Anywhere you use a lambda more than once (for advanceComposition or below for setLayerCompositionType), I\u0027d probably name it, maybe definining, e.g., advanceComposition around :1394 for use in these TEST_Fs.",
+      "revId": "1f1b9e5c6767bcebda1145e4a7f41dd27fb7348c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d9e984_669d094c",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T19:36:53Z",
+      "side": 1,
+      "message": "Slightly prefer enum classes, but it doesn\u0027t matter much for a test",
+      "revId": "1f1b9e5c6767bcebda1145e4a7f41dd27fb7348c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ccd2d15_fadf574b",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T19:36:53Z",
+      "side": 1,
+      "message": "override?",
+      "revId": "1f1b9e5c6767bcebda1145e4a7f41dd27fb7348c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
