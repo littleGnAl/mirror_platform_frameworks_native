@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "881a2e0a_c45f87ec",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T20:34:19Z",
+      "side": 1,
+      "message": "In general, I might put the main test and the _update test next to each other, since they\u0027re often going to be using the same function object parameters (hopefully reused).",
+      "revId": "be89502183877867fb60301d7e30b26cfe6bde34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
