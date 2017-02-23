@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c33331ad_7c4edafd",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T00:53:48Z",
+      "side": 1,
+      "message": "I think we should probably test 1.0f, since the cursor could be mostly off-screen with just one pixel in the bottom-right corner.",
+      "revId": "f65eb2d6b1274487273ad73b7f4efd31381db92d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
