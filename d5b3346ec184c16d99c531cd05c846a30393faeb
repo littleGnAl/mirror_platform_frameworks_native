@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb98247e_7a4e7344",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2142,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T21:04:37Z",
+      "side": 1,
+      "message": "If this line is common to the _bad_layer tests, could we just pass it in as an out param and test in setLayerPropertyBadLayer?",
+      "revId": "d5b3346ec184c16d99c531cd05c846a30393faeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
