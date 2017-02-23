@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67ee0372_30cc81e5",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestLayer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T20:57:28Z",
+      "side": 1,
+      "message": "Slightly prefer a named class for this, since pos.x and pos.y are easier to read than p.first and p.second.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "5ce86f9bf1f0ad3787fb6f0959b1136d5be64a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
