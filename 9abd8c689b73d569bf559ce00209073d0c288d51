@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3fa1f25_08194828",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T00:51:43Z",
+      "side": 1,
+      "message": "What\u0027s the general idea behind having these scalars? It looks like it just expands the space of source crops.",
+      "revId": "9abd8c689b73d569bf559ce00209073d0c288d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
