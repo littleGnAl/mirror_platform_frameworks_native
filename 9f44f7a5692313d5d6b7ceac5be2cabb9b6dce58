@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1904ef07_1b65d788",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1502,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T19:47:19Z",
+      "side": 1,
+      "message": "Feel free to double-check me on this, but I think the point of ASSERT_NO_FATAL_FAILURE is to propagate failures up the stack. That is, it would prevent more code running after :1513. However, since for most of these there\u0027s only one top-level call, we might be able to eliminate the ASSERT_NO_FATAL_FAILURE calls (and a level of nesting).",
+      "revId": "9f44f7a5692313d5d6b7ceac5be2cabb9b6dce58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
