@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43d9f9ed_2ff01d7a",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3298,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:30:58Z",
+      "side": 1,
+      "message": "Random note here, though it\u0027s obviously not the first place you\u0027ve used it, but I might say \"handle*\" rather than \"manage*\"",
+      "range": {
+        "startLine": 3298,
+        "startChar": 40,
+        "endLine": 3298,
+        "endChar": 46
+      },
+      "revId": "efb4f7971db1ded46b386c6d5341a6bec8f35d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1c03cbd_f020f7f8",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:30:58Z",
+      "side": 1,
+      "message": "Guarantees",
+      "range": {
+        "startLine": 345,
+        "startChar": 7,
+        "endLine": 345,
+        "endChar": 17
+      },
+      "revId": "efb4f7971db1ded46b386c6d5341a6bec8f35d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a19f93a_7119bc09",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-02-23T22:30:58Z",
+      "side": 1,
+      "message": "I\u0027m not really sure where to begin here. It would be really helpful to break this out into helpers and/or document the crap out of it.",
+      "revId": "efb4f7971db1ded46b386c6d5341a6bec8f35d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
