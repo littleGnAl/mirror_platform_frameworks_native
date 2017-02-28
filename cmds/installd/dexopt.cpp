@@ -155,7 +155,7 @@ static int split(char *buf, const char **argv)
 
 static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vdex_fd, int image_fd,
         const char* input_file_name, const char* output_file_name, int swap_fd,
-        const char *instruction_set, const char* compiler_filter, bool vm_safe_mode,
+        const char *instruction_set, const char* compiler_filter, bool skip_compilation,
         bool debuggable, bool post_bootcomplete, int profile_fd, const char* shared_libraries) {
     static const unsigned int MAX_INSTRUCTION_SET_LEN = 7;
 
@@ -201,13 +201,6 @@ static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vd
     int dex2oat_flags_count = get_property("dalvik.vm.dex2oat-flags",
                                  dex2oat_flags, NULL) <= 0 ? 0 : split_count(dex2oat_flags);
     ALOGV("dalvik.vm.dex2oat-flags=%s\n", dex2oat_flags);
-
-    // If we booting without the real /data, don't spend time compiling.
-    char vold_decrypt[kPropertyValueMax];
-    bool have_vold_decrypt = get_property("vold.decrypt", vold_decrypt, "") > 0;
-    bool skip_compilation = (have_vold_decrypt &&
-                             (strcmp(vold_decrypt, "trigger_restart_min_framework") == 0 ||
-                             (strcmp(vold_decrypt, "1") == 0)));
 
     bool generate_debug_info = property_get_bool("debug.generate-debug-info", false);
 
@@ -283,13 +276,10 @@ static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vd
 
     bool have_dex2oat_compiler_filter_flag;
     if (skip_compilation) {
-        strcpy(dex2oat_compiler_filter_arg, "--compiler-filter=verify-none");
-        have_dex2oat_compiler_filter_flag = true;
         have_dex2oat_relocation_skip_flag = true;
-    } else if (vm_safe_mode) {
-        strcpy(dex2oat_compiler_filter_arg, "--compiler-filter=interpret-only");
-        have_dex2oat_compiler_filter_flag = true;
-    } else if (compiler_filter != nullptr &&
+    }
+
+    if (compiler_filter != nullptr &&
             strlen(compiler_filter) + strlen("--compiler-filter=") <
                     arraysize(dex2oat_compiler_filter_arg)) {
         sprintf(dex2oat_compiler_filter_arg, "--compiler-filter=%s", compiler_filter);
@@ -1220,6 +1210,23 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
     bool vm_safe_mode = (dexopt_flags & DEXOPT_SAFEMODE) != 0;
     bool debuggable = (dexopt_flags & DEXOPT_DEBUGGABLE) != 0;
     bool boot_complete = (dexopt_flags & DEXOPT_BOOTCOMPLETE) != 0;
+
+    const char* real_compiler_filter = compiler_filter;
+
+    // If we booting without the real /data, don't spend time compiling.
+    char vold_decrypt[kPropertyValueMax];
+    bool have_vold_decrypt = get_property("vold.decrypt", vold_decrypt, "") > 0;
+    bool skip_compilation = (have_vold_decrypt &&
+                            (strcmp(vold_decrypt, "trigger_restart_min_framework") == 0 ||
+                            (strcmp(vold_decrypt, "1") == 0)));
+    if (skip_compilation) {
+        real_compiler_filter = "verify-none";
+        dexopt_flags &= ~DEXOPT_PROFILE_GUIDED;
+    } else if (vm_safe_mode) {
+        real_compiler_filter = "interpret-only";
+        dexopt_flags &= ~DEXOPT_PROFILE_GUIDED;
+    }
+
     bool profile_guided = (dexopt_flags & DEXOPT_PROFILE_GUIDED) != 0;
 
     // Open the input file.
@@ -1280,8 +1287,8 @@ int dexopt(const char* apk_path, uid_t uid, const char* pkgname, const char* ins
                     out_oat_path,
                     swap_fd.get(),
                     instruction_set,
-                    compiler_filter,
-                    vm_safe_mode,
+                    real_compiler_filter,
+                    skip_compilation,
                     debuggable,
                     boot_complete,
                     reference_profile_fd.get(),
