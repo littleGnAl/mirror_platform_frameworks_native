@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee6a80c8_a85af9ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-03-01T03:58:31Z",
+      "side": 1,
+      "message": ".xml?",
+      "range": {
+        "startLine": 11,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "76971761991014b31b847a7465c1edbad9919073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78b25102_e5c72707",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-03-01T03:58:31Z",
+      "side": 1,
+      "message": "can this be \u0027init-vintf\u0027 or \u0027init_vintf\u0027? I want to emphasize that this is not a complete solution, just a starting point\n\nThis is essentially like \u0027audit2allow\u0027. \n\nActually, how about \"lshal --ls2vintf\"?",
+      "range": {
+        "startLine": 494,
+        "startChar": 10,
+        "endLine": 494,
+        "endChar": 15
+      },
+      "revId": "76971761991014b31b847a7465c1edbad9919073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0414f881_fabd9aaf",
+        "filename": "cmds/lshal/Timeout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-03-01T03:58:31Z",
+      "side": 1,
+      "message": "why do you have this change here as well?",
+      "range": {
+        "startLine": 28,
+        "startChar": 57,
+        "endLine": 28,
+        "endChar": 61
+      },
+      "revId": "76971761991014b31b847a7465c1edbad9919073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
