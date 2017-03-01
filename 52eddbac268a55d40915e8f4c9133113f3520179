@@ -22,6 +22,30 @@
       "revId": "52eddbac268a55d40915e8f4c9133113f3520179",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "923970ce_82262d74",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-03-01T23:27:03Z",
+      "side": 1,
+      "message": "yeah, there\u0027s other property stuff in this file. we could move you to the std::string \u003candroid-base/properties.h\u003e instead though...",
+      "parentUuid": "001ff504_d2b61afc",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "52eddbac268a55d40915e8f4c9133113f3520179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
