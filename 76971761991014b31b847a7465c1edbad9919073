@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c6cc9748_538a6027",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-01T04:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee6a80c8_a85af9ea",
+      "range": {
+        "startLine": 11,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "76971761991014b31b847a7465c1edbad9919073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78b25102_e5c72707",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-01T03:58:31Z",
       "side": 1,
       "message": "can this be \u0027init-vintf\u0027 or \u0027init_vintf\u0027? I want to emphasize that this is not a complete solution, just a starting point\n\nThis is essentially like \u0027audit2allow\u0027. \n\nActually, how about \"lshal --ls2vintf\"?",
+      "range": {
+        "startLine": 494,
+        "startChar": 10,
+        "endLine": 494,
+        "endChar": 15
+      },
+      "revId": "76971761991014b31b847a7465c1edbad9919073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1b85d90_04722739",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-01T04:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78b25102_e5c72707",
       "range": {
         "startLine": 494,
         "startChar": 10,
