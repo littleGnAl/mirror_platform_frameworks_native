@@ -25,7 +25,7 @@
 namespace android {
 namespace lshal {
 
-static constexpr std::chrono::milliseconds IPC_CALL_WAIT{500};
+static constexpr std::chrono::milliseconds IPC_CALL_WAIT{1000};
 
 class BackgroundTaskState {
 public:
