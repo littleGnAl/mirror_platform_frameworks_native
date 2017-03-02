@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "291ab99d_d841f59a",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1096239
+      },
+      "writtenOn": "2017-03-02T05:36:58Z",
+      "side": 1,
+      "message": "yes, this logic should in PackageDexoptimizer,\nI will upload a patch without this logic.",
+      "parentUuid": "dfdfd484_ae1d5547",
+      "range": {
+        "startLine": 1231,
+        "startChar": 4,
+        "endLine": 1239,
+        "endChar": 5
+      },
+      "revId": "896100f6be5e72bfb15fdd9d237def97f3777321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0f5cb17_10e7067f",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 3
