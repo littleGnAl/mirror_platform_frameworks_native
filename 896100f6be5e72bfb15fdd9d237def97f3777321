@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dfc6bf44_ea0430d3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1096239
+      },
+      "writtenOn": "2017-03-02T02:26:11Z",
+      "side": 1,
+      "message": "as we know, if the InstallerConnection require a profile guide compilation, and the program run into L1223 or L1226， the \"compiler-filter\" will be changed，and \"dexopt_flags\" change to \"no profile guide\".\n\nAnd if the compiler-filter changed to be same as the installation of application, there is no need to do this time compilation, the same work has been done while install the application.",
+      "parentUuid": "21df728b_3e93d8cb",
+      "range": {
+        "startLine": 1231,
+        "startChar": 4,
+        "endLine": 1239,
+        "endChar": 5
+      },
+      "revId": "896100f6be5e72bfb15fdd9d237def97f3777321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0f5cb17_10e7067f",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 3
@@ -83,6 +107,30 @@
       "writtenOn": "2017-03-02T02:00:58Z",
       "side": 1,
       "message": "delete L1213.",
+      "range": {
+        "startLine": 1241,
+        "startChar": 3,
+        "endLine": 1241,
+        "endChar": 65
+      },
+      "revId": "896100f6be5e72bfb15fdd9d237def97f3777321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b65fbc3f_471208d8",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1096239
+      },
+      "writtenOn": "2017-03-02T02:26:11Z",
+      "side": 1,
+      "message": "line1225/line1228 may modify the dexopt_flags, and in line1234, we need to know whether the original compilation requirement is profile-guided.",
+      "parentUuid": "c0f5cb17_10e7067f",
       "range": {
         "startLine": 1241,
         "startChar": 3,
