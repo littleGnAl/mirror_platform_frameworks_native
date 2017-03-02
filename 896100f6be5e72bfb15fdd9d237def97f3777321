@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "dfdfd484_ae1d5547",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-02T03:32:26Z",
+      "side": 1,
+      "message": "It is not correct if the install filter is set to speed-profile for example.\n\nAnd in general this sort of logic should go in the PackageDexOptimizer, not here. The decision to do or not do a compilation is taken there.",
+      "parentUuid": "dfc6bf44_ea0430d3",
+      "range": {
+        "startLine": 1231,
+        "startChar": 4,
+        "endLine": 1239,
+        "endChar": 5
+      },
+      "revId": "896100f6be5e72bfb15fdd9d237def97f3777321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0f5cb17_10e7067f",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 3
