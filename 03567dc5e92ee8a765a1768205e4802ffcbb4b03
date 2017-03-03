@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e40054f9_4a096f2d",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-03T15:27:03Z",
+      "side": 1,
+      "message": "loss of clarity.\n\nEveryone knows what 1024 * 1024 means.\n\n20% of software developers have to pause to know what 1 \u003c\u003c 20 is.",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "03567dc5e92ee8a765a1768205e4802ffcbb4b03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
