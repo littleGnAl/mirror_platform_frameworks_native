@@ -44,6 +44,7 @@ struct TableEntry {
     Pids clientPids;
     std::vector<std::string> clientCmdlines;
     TableEntrySource source;
+    ::android::hidl::base::V1_0::Architecture arch;
 
     static bool sortByInterfaceName(const TableEntry &a, const TableEntry &b) {
         return a.interfaceName < b.interfaceName;
@@ -61,7 +62,8 @@ enum : unsigned int {
     ENABLE_TRANSPORT      = 1 << 1,
     ENABLE_SERVER_PID     = 1 << 2,
     ENABLE_SERVER_ADDR    = 1 << 3,
-    ENABLE_CLIENT_PIDS    = 1 << 4
+    ENABLE_CLIENT_PIDS    = 1 << 4,
+    ENABLE_ARCH           = 1 << 5
 };
 
 using TableEntrySelect = unsigned int;
