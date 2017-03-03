@@ -22,6 +22,30 @@
       "revId": "b44790219f43369883b3dd8eaf3971bdc5fe656b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c0faa9_00012433",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-03T18:54:27Z",
+      "side": 0,
+      "message": "Yes. The title above is explanatory enough, so the transport column can be misleading.",
+      "parentUuid": "f436e7d7_d450591f",
+      "range": {
+        "startLine": 627,
+        "startChar": 18,
+        "endLine": 627,
+        "endChar": 34
+      },
+      "revId": "b44790219f43369883b3dd8eaf3971bdc5fe656b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

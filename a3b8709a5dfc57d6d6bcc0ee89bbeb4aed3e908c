@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82ecc5a4_d9a7f285",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-03T18:54:27Z",
+      "side": 1,
+      "message": "No, I don\u0027t want to do this if I don\u0027t have the --init-vintf option; I do want to show I*/* in normal output",
+      "parentUuid": "7f658783_6cf857df",
+      "range": {
+        "startLine": 228,
+        "startChar": 11,
+        "endLine": 231,
+        "endChar": 13
+      },
+      "revId": "a3b8709a5dfc57d6d6bcc0ee89bbeb4aed3e908c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6242ec3_f7939926",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-03T08:55:14Z",
       "side": 1,
       "message": "returned as a",
+      "range": {
+        "startLine": 328,
+        "startChar": 55,
+        "endLine": 328,
+        "endChar": 63
+      },
+      "revId": "a3b8709a5dfc57d6d6bcc0ee89bbeb4aed3e908c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffcc1f57_eee1e424",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-03T18:54:27Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "d6242ec3_f7939926",
       "range": {
         "startLine": 328,
         "startChar": 55,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2c96050e_0c566c25",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-03T18:54:27Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "8adefb7d_59313e71",
+      "range": {
+        "startLine": 330,
+        "startChar": 24,
+        "endLine": 330,
+        "endChar": 34
+      },
+      "revId": "a3b8709a5dfc57d6d6bcc0ee89bbeb4aed3e908c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b1de8ba_ea78f7d2",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-03-03T08:55:14Z",
       "side": 1,
       "message": "fetched",
+      "range": {
+        "startLine": 333,
+        "startChar": 30,
+        "endLine": 333,
+        "endChar": 35
+      },
+      "revId": "a3b8709a5dfc57d6d6bcc0ee89bbeb4aed3e908c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f26054b_0f327e37",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-03T18:54:27Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "7b1de8ba_ea78f7d2",
       "range": {
         "startLine": 333,
         "startChar": 30,
