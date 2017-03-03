@@ -22,6 +22,30 @@
       "revId": "8d7e2247cca7d5f759d7ba9cec643235b750f19c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28b6e405_fbb7e037",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2017-03-03T01:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d681be75_4e2304ac",
+      "range": {
+        "startLine": 43,
+        "startChar": 64,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "8d7e2247cca7d5f759d7ba9cec643235b750f19c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
