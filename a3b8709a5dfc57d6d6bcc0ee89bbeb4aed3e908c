@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f658783_6cf857df",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-03-03T08:55:14Z",
+      "side": 1,
+      "message": "no big deal, but can you do this locally before inserting in the table?",
+      "range": {
+        "startLine": 228,
+        "startChar": 11,
+        "endLine": 231,
+        "endChar": 13
+      },
+      "revId": "a3b8709a5dfc57d6d6bcc0ee89bbeb4aed3e908c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6242ec3_f7939926",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-03-03T08:55:14Z",
+      "side": 1,
+      "message": "returned as a",
+      "range": {
+        "startLine": 328,
+        "startChar": 55,
+        "endLine": 328,
+        "endChar": 63
+      },
+      "revId": "a3b8709a5dfc57d6d6bcc0ee89bbeb4aed3e908c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8adefb7d_59313e71",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-03-03T08:55:14Z",
+      "side": 1,
+      "message": "relinquished",
+      "range": {
+        "startLine": 330,
+        "startChar": 24,
+        "endLine": 330,
+        "endChar": 34
+      },
+      "revId": "a3b8709a5dfc57d6d6bcc0ee89bbeb4aed3e908c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b1de8ba_ea78f7d2",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-03-03T08:55:14Z",
+      "side": 1,
+      "message": "fetched",
+      "range": {
+        "startLine": 333,
+        "startChar": 30,
+        "endLine": 333,
+        "endChar": 35
+      },
+      "revId": "a3b8709a5dfc57d6d6bcc0ee89bbeb4aed3e908c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
