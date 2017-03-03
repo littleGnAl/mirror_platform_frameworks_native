@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c95efa8_07decacd",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-03-03T08:47:55Z",
+      "side": 1,
+      "message": "Ok, this is an uber-nit, but my OCD-self really likes \"32+64\"...order please! :-)",
+      "range": {
+        "startLine": 282,
+        "startChar": 41,
+        "endLine": 282,
+        "endChar": 46
+      },
+      "revId": "b44790219f43369883b3dd8eaf3971bdc5fe656b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5fcf099_a1ad5d8e",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-03-03T08:47:55Z",
+      "side": 1,
+      "message": "Out of curiosity, why can\u0027t this just be interfaceName? That would make a copy, but is that cheaper than temporary + std::move?",
+      "range": {
+        "startLine": 352,
+        "startChar": 28,
+        "endLine": 352,
+        "endChar": 54
+      },
+      "revId": "b44790219f43369883b3dd8eaf3971bdc5fe656b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
