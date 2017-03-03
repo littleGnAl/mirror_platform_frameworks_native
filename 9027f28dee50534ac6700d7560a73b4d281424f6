@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "563847cb_c44fcd30",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-03T23:58:29Z",
+      "side": 1,
+      "message": "We could probably go down the rabbit hole of connect/disconnect/connect during the receiving window, but this should be okay in most cases",
+      "revId": "9027f28dee50534ac6700d7560a73b4d281424f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
