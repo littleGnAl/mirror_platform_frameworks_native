@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "647e2bad_eac032b0",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-03T19:01:32Z",
+      "side": 1,
+      "message": "Yes!",
+      "parentUuid": "2c95efa8_07decacd",
+      "range": {
+        "startLine": 282,
+        "startChar": 41,
+        "endLine": 282,
+        "endChar": 46
+      },
+      "revId": "b44790219f43369883b3dd8eaf3971bdc5fe656b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5fcf099_a1ad5d8e",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-03T08:47:55Z",
       "side": 1,
       "message": "Out of curiosity, why can\u0027t this just be interfaceName? That would make a copy, but is that cheaper than temporary + std::move?",
+      "range": {
+        "startLine": 352,
+        "startChar": 28,
+        "endLine": 352,
+        "endChar": 54
+      },
+      "revId": "b44790219f43369883b3dd8eaf3971bdc5fe656b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d24d63be_860232bb",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-03T19:01:32Z",
+      "side": 1,
+      "message": "You are right; I think I had a compilation problem on this line about type inductions and I was too lazy to investigate why...",
+      "parentUuid": "c5fcf099_a1ad5d8e",
       "range": {
         "startLine": 352,
         "startChar": 28,
