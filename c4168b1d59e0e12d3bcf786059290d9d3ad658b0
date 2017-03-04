@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a800dd40_a9ff5ffd",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-04T00:09:55Z",
+      "side": 1,
+      "message": "Not sure if I\u0027ve mentioned this in a previous comment, but the set is probably unnecessary, since a linear search on a vector with a typical number of configs is probably going to be cache-resident and pretty darn fast.",
+      "revId": "c4168b1d59e0e12d3bcf786059290d9d3ad658b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
