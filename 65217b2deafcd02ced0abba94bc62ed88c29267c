@@ -46,6 +46,30 @@
       "revId": "65217b2deafcd02ced0abba94bc62ed88c29267c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa1445bd_c4321f72",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-04T00:28:04Z",
+      "side": 1,
+      "message": "Ah, that makes sense. Sorry I missed your comment at :59.",
+      "parentUuid": "31e707a6_d0038626",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 9
+      },
+      "revId": "65217b2deafcd02ced0abba94bc62ed88c29267c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
