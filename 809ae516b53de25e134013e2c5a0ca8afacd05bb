@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c411d610_7aaa9e4e",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-04T00:01:35Z",
+      "side": 1,
+      "message": "Strictly speaking this shouldn\u0027t be necessary, since layers should be destroyed when we leave this function scope.",
+      "revId": "809ae516b53de25e134013e2c5a0ca8afacd05bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e2f47a7_22ad564c",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-04T00:01:35Z",
+      "side": 1,
+      "message": "will return",
+      "range": {
+        "startLine": 442,
+        "startChar": 6,
+        "endLine": 442,
+        "endChar": 16
+      },
+      "revId": "809ae516b53de25e134013e2c5a0ca8afacd05bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
