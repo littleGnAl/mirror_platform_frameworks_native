@@ -22,6 +22,30 @@
       "revId": "65217b2deafcd02ced0abba94bc62ed88c29267c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e707a6_d0038626",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-03-04T00:17:17Z",
+      "side": 1,
+      "message": "destroyLayer removes the layer from the vector and I don\u0027t think range based for loops can handle it.\nsetPowerMode similarly removes the display. I should add a comment above it.",
+      "parentUuid": "c9e3754c_546cea3c",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 9
+      },
+      "revId": "65217b2deafcd02ced0abba94bc62ed88c29267c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
