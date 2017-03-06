@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5451025b_6f5c2ac8",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:12:56Z",
+      "side": 1,
+      "message": "I like that you defined this, though generally I\u0027ll just go with struct rather than class for POD types",
+      "revId": "a349be49adffa20b6d4a4cb3724e04a8e471ac8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58847711_4b4d50e0",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:12:56Z",
+      "side": 1,
+      "message": "Now that you have an Area, I\u0027d use it wherever applicable.",
+      "revId": "a349be49adffa20b6d4a4cb3724e04a8e471ac8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
