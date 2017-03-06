@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2925edf0_647b08a9",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:00:51Z",
+      "side": 1,
+      "message": "We still need to update these to set the blend mode as well while testing (pending your investigation of how DimLayer works)",
+      "revId": "a0485c3bcf4e8c9da9f296833ad82d3d864e10d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
