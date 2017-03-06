@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f84a05af_12806863",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:19:10Z",
+      "side": 1,
+      "message": "This (and its testLayer counterpart) could be advanceCursorPosition (if you take my other rename)",
+      "range": {
+        "startLine": 920,
+        "startChar": 5,
+        "endLine": 920,
+        "endChar": 18
+      },
+      "revId": "12d803b62c17fd49db8319eb89d4ff9c2219dd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5e90b7_f595d694",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestLayer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:19:10Z",
+      "side": 1,
+      "message": "Sorry this is a bit late, but I might prefer getCursorPosition if it\u0027s not too much trouble",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "12d803b62c17fd49db8319eb89d4ff9c2219dd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "207dacad_e49a8500",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:19:10Z",
+      "side": 1,
+      "message": "Not in scope for this change, but if we\u0027re keeping a list of test enhancements, I\u0027d like to be able to test all 4 corners",
+      "revId": "12d803b62c17fd49db8319eb89d4ff9c2219dd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd7e664_0c4b5b28",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:19:10Z",
+      "side": 1,
+      "message": "Could put defaults for these: int32_t x \u003d 0;",
+      "revId": "12d803b62c17fd49db8319eb89d4ff9c2219dd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
