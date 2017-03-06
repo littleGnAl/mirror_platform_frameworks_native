@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4f34998_faf93c18",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestBuffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:56:14Z",
+      "side": 1,
+      "message": "Nit: using",
+      "revId": "ff2ec4bfd1b8207928c6af567a0c014491c8e2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3866c5_54fb11e7",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestBuffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:56:14Z",
+      "side": 1,
+      "message": "guaranteed (missed one, I guess)",
+      "range": {
+        "startLine": 112,
+        "startChar": 24,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "ff2ec4bfd1b8207928c6af567a0c014491c8e2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c5e1a2a_37d933c2",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:56:14Z",
+      "side": 1,
+      "message": "It looks like it would make sense for these to take Area (or const Area\u0026). In general, now that you have nice Area and Point structs, you shouldn\u0027t need to access their members unless you care about the specific values (i.e., you shouldn\u0027t need to access them to pass them around/copy them).",
+      "range": {
+        "startLine": 92,
+        "startChar": 17,
+        "endLine": 92,
+        "endChar": 33
+      },
+      "revId": "ff2ec4bfd1b8207928c6af567a0c014491c8e2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
