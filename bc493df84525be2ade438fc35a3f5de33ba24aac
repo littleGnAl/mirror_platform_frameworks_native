@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d839d0ad_02074b15",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1639,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T22:37:42Z",
+      "side": 1,
+      "message": "This seems to be the same as :1620. When applicable, can we factor these out into a named function? It seems like in most cases TEST_FOO and TEST_FOO_update should basically have identical bodies except for the setLayerProperty[Update].",
+      "range": {
+        "startLine": 1634,
+        "startChar": 0,
+        "endLine": 1639,
+        "endChar": 14
+      },
+      "revId": "bc493df84525be2ade438fc35a3f5de33ba24aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
