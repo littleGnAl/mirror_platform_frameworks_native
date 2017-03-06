@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7b4c8d6_569ff07f",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-06T23:30:55Z",
+      "side": 1,
+      "message": "This is a bit confusing. We allocate rects using damage.numRects, which is mRegionScalars.size(), but we populate it using regionScalar.size()?",
+      "range": {
+        "startLine": 526,
+        "startChar": 35,
+        "endLine": 526,
+        "endChar": 54
+      },
+      "revId": "840aedb7ca1ee9873aa4c9ee137d2abbf4f7b832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
