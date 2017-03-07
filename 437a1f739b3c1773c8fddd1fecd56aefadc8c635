@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e3a9948_5945eaf3",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestLayers.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-03-07T18:15:45Z",
+      "side": 1,
+      "message": "It would be cleaner to have it as a separate helper function but it makes the stack trace on failure a bit hard to read. It is easy enough for me to follow but I imagine it would be hard for someone who is not familiar with the code.\n\nIt prints the helper function failure line and the parent calling function in Hwc2Test.cpp. It does not print the line that called the helper function. So if we were getting blend mode, it would not show that line 102 in getBlendMode was the caller of the helper function.\n\nUnfortunately we can\u0027t put an ASSERT in these functions because the return type isn\u0027t void.",
+      "parentUuid": "ee08159d_9f829ee8",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "437a1f739b3c1773c8fddd1fecd56aefadc8c635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9bf117fe_1f196fe6",
         "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.cpp",
         "patchSetId": 4
