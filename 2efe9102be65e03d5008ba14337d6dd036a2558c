@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a93bac78_37a73bd5",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1774,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-07T00:57:36Z",
+      "side": 1,
+      "message": "I may be missing it, but where is this done?",
+      "range": {
+        "startLine": 1773,
+        "startChar": 72,
+        "endLine": 1774,
+        "endChar": 64
+      },
+      "revId": "2efe9102be65e03d5008ba14337d6dd036a2558c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9590d20f_fc05a4c5",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 4569,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-07T00:57:36Z",
+      "side": 1,
+      "message": "Nit: space",
+      "range": {
+        "startLine": 4569,
+        "startChar": 43,
+        "endLine": 4569,
+        "endChar": 45
+      },
+      "revId": "2efe9102be65e03d5008ba14337d6dd036a2558c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d077692_b45f9ec8",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-07T00:57:36Z",
+      "side": 1,
+      "message": "Should this go adjacent to the others?",
+      "revId": "2efe9102be65e03d5008ba14337d6dd036a2558c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
