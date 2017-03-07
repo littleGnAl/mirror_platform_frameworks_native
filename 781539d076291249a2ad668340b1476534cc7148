@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ad3fb6d_ffaea3d0",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3661,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-07T00:49:56Z",
+      "side": 1,
+      "message": "Nit: I might call these \u0027exceptions\u0027",
+      "range": {
+        "startLine": 3661,
+        "startChar": 63,
+        "endLine": 3661,
+        "endChar": 72
+      },
+      "revId": "781539d076291249a2ad668340b1476534cc7148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
