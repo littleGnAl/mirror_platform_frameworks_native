@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21c4268b_c208851f",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 4271,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-07T00:53:09Z",
+      "side": 1,
+      "message": "I\u0027m not sure if the spec actually requires this, but it sounds reasonable to me :-)",
+      "revId": "d9b7b843a12f8611760700b01f7cafe7613fee38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2e5c64_2747ce6c",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 4304,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-07T00:53:09Z",
+      "side": 1,
+      "message": "Were we planning on adding more of these before submitting?",
+      "revId": "d9b7b843a12f8611760700b01f7cafe7613fee38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1139d3d8_aba777cb",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 4316,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-07T00:53:09Z",
+      "side": 1,
+      "message": "I might just inline this here",
+      "range": {
+        "startLine": 4316,
+        "startChar": 40,
+        "endLine": 4316,
+        "endChar": 44
+      },
+      "revId": "d9b7b843a12f8611760700b01f7cafe7613fee38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
