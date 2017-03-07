@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec024aab_7be7b972",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3330,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-07T00:47:13Z",
+      "side": 1,
+      "message": "can do what?",
+      "range": {
+        "startLine": 3330,
+        "startChar": 33,
+        "endLine": 3330,
+        "endChar": 38
+      },
+      "revId": "2063198d977fb58c76c7a10384654942039d5c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
