@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee08159d_9f829ee8",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestLayers.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-07T00:13:36Z",
+      "side": 1,
+      "message": "This looks a lot like a helper function that takes a lambda",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "437a1f739b3c1773c8fddd1fecd56aefadc8c635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bf117fe_1f196fe6",
+        "filename": "services/surfaceflinger/tests/hwc2/Hwc2TestProperties.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-03-07T00:13:36Z",
+      "side": 1,
+      "message": "I\u0027m normally opposed to space alignment for the sake of alignment, but in this case it might be nice to align the true/false values with a header around :680 (and maybe a second copy at the bottom around :723) so it becomes something of a tabular layout and makes it easier to tell what value 3 in :718 means:\n\n/* INVALID  CLIENT  DEVICE */\nconst std::array... {{\n   false,   true,   true\n}};\n\nconst std::array... {{\n   false,   false,  false\n}};\n/* INVALID  CLIENT  DEVICE */",
+      "revId": "437a1f739b3c1773c8fddd1fecd56aefadc8c635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
