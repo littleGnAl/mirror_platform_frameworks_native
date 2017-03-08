@@ -160,13 +160,13 @@ bool Lshal::getReferencedPids(
 }
 
 void Lshal::forEachTable(const std::function<void(Table &)> &f) {
-    for (const Table &table : {mServicesTable, mPassthroughRefTable, mImplementationsTable}) {
-        f(const_cast<Table &>(table));
+    for (Table *table : {&mServicesTable, &mPassthroughRefTable, &mImplementationsTable}) {
+        f(*table);
     }
 }
 void Lshal::forEachTable(const std::function<void(const Table &)> &f) const {
-    for (const Table &table : {mServicesTable, mPassthroughRefTable, mImplementationsTable}) {
-        f(table);
+    for (const Table *table : {&mServicesTable, &mPassthroughRefTable, &mImplementationsTable}) {
+        f(*table);
     }
 }
 
