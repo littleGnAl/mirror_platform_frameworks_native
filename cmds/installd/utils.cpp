@@ -235,11 +235,26 @@ std::string create_data_dalvik_cache_path() {
     return "/data/dalvik-cache";
 }
 
-// Keep profile paths in sync with ActivityThread.
+// Keep profile paths in sync with ActivityThread and LoadedApk.
 constexpr const char* PRIMARY_PROFILE_NAME = "primary.prof";
+constexpr const char* SECONDARY_PROFILE_EXT = ".prof";
 
 std::string create_primary_profile(const std::string& profile_dir) {
     return StringPrintf("%s/%s", profile_dir.c_str(), PRIMARY_PROFILE_NAME);
+}
+
+std::string create_secondary_dex_profile(const std::string& dex_path) {
+    return StringPrintf("%s/%s", dex_path.c_str(), SECONDARY_PROFILE_EXT);
+}
+
+std::string create_secondary_dex_reference_profile(const std::string& dex_path) {
+    unsigned long dirIndex = dex_path.rfind('/');
+    CHECK(dirIndex != std::string::npos)
+            << "Unexpected dir structure for secondary dex " << dex_path;
+
+    std::string dex_dir = dex_path.substr(0, dirIndex);
+    std::string dex_name = dex_path.substr(dirIndex +1);
+    return StringPrintf("%s/oat/%s%s", dex_dir.c_str(), dex_name.c_str(), SECONDARY_PROFILE_EXT);
 }
 
 std::vector<userid_t> get_known_users(const char* volume_uuid) {
