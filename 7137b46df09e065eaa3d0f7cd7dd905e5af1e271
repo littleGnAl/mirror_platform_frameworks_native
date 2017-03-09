@@ -22,6 +22,30 @@
       "revId": "7137b46df09e065eaa3d0f7cd7dd905e5af1e271",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "415b4f9f_e6a79c28",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-09T00:41:08Z",
+      "side": 1,
+      "message": "No, in fact Table \u0026table : {mServicesTable...} will simply be a compilation error (that\u0027s why in the old code I have the const and const_cast)",
+      "parentUuid": "c31f0d57_7565f1a0",
+      "range": {
+        "startLine": 163,
+        "startChar": 9,
+        "endLine": 163,
+        "endChar": 21
+      },
+      "revId": "7137b46df09e065eaa3d0f7cd7dd905e5af1e271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
