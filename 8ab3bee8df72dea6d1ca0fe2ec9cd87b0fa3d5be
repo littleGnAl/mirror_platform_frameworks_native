@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce873fca_d85cc7bd",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-03-09T01:13:51Z",
+      "side": 1,
+      "message": "note, you could just call the other forEachTable function here",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 29
+      },
+      "revId": "8ab3bee8df72dea6d1ca0fe2ec9cd87b0fa3d5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
