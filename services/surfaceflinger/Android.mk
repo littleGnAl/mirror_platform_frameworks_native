@@ -99,6 +99,7 @@ endif
 # [1] https://developer.android.com/studio/profile/systrace.html
 # [2] https://developer.android.com/training/testing/performance.html
 
+# These are left just for non-treble devices
 ifneq ($(VSYNC_EVENT_PHASE_OFFSET_NS),)
     LOCAL_CFLAGS += -DVSYNC_EVENT_PHASE_OFFSET_NS=$(VSYNC_EVENT_PHASE_OFFSET_NS)
 else
@@ -125,12 +126,19 @@ endif
 
 LOCAL_CFLAGS += -fvisibility=hidden -Werror=format
 
-LOCAL_STATIC_LIBRARIES := libvkjson
+LOCAL_STATIC_LIBRARIES := \
+    android.hardware.configstore-utils \
+	libvkjson
+
 LOCAL_SHARED_LIBRARIES := \
+    android.hardware.configstore@1.0 \
     libcutils \
     liblog \
     libdl \
     libhardware \
+	libhidlbase \
+	libhidltransport \
+	libhwbinder \
     libutils \
     libEGL \
     libGLESv1_CM \
@@ -140,6 +148,11 @@ LOCAL_SHARED_LIBRARIES := \
     libgui \
     libpowermanager \
     libvulkan
+
+LOCAL_EXPORT_SHARED_LIBRARY_HEADERS := \
+    libhidlbase \
+    libhidltransport \
+    libhwbinder
 
 LOCAL_MODULE := libsurfaceflinger
 
