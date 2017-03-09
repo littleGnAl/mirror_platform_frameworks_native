@@ -103,6 +103,8 @@ std::string create_data_ref_profile_package_path(const std::string& package_name
 std::string create_data_dalvik_cache_path();
 
 std::string create_primary_profile(const std::string& profile_dir);
+std::string create_secondary_dex_profile(const std::string& dex_path);
+std::string create_secondary_dex_reference_profile(const std::string& dex_path);
 
 std::vector<userid_t> get_known_users(const char* volume_uuid);
 

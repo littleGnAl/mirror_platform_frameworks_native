@@ -545,6 +545,15 @@ TEST_F(UtilsTest, CreatePrimaryProfile) {
     EXPECT_EQ("/data/misc/profiles/ref/com.example/primary.prof",
         create_primary_profile("/data/misc/profiles/ref/com.example"));
 }
+TEST_F(UtilsTest, CreateSecondaryDexProfile) {
+    EXPECT_EQ("/data/user/0/com.example/secondary.dex.prof",
+        create_secondary_dex_profile("/data/user/0/com.example/secondary.dex"));
+}
+
+TEST_F(UtilsTest, CreateSecondaryDexReferenceProfile) {
+    EXPECT_EQ("/data/user/0/com.example/oat/secondary.dex.prof",
+        create_secondary_dex_reference_profile("/data/user/0/com.example/secondary.dex"));
+}
 
 }  // namespace installd
 }  // namespace android
