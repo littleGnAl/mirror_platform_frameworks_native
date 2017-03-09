@@ -35,6 +35,8 @@
 #define TEST_SYSTEM_DIR1 "/system/app/"
 #define TEST_SYSTEM_DIR2 "/vendor/app/"
 
+#define TEST_PROFILE_DIR "/data/misc/profiles"
+
 #define REALLY_LONG_APP_NAME "com.example." \
         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa." \
         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa." \
@@ -74,6 +76,9 @@ protected:
 
         android_system_dirs.dirs[1].path = (char*) TEST_SYSTEM_DIR2;
         android_system_dirs.dirs[1].len = strlen(TEST_SYSTEM_DIR2);
+
+        android_profiles_dir.path = (char*) TEST_PROFILE_DIR;
+        android_profiles_dir.len = strlen(TEST_PROFILE_DIR);
     }
 
     virtual void TearDown() {
@@ -506,6 +511,32 @@ TEST_F(UtilsTest, CreateDataUserPackagePath) {
             create_data_user_ce_package_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0, "com.example"));
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/user/10/com.example",
             create_data_user_ce_package_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 10, "com.example"));
+}
+
+TEST_F(UtilsTest, CreateDataUserProfilePath) {
+    EXPECT_EQ("/data/misc/profiles/cur/0", create_data_user_profile_path(0));
+    EXPECT_EQ("/data/misc/profiles/cur/1", create_data_user_profile_path(1));
+}
+
+TEST_F(UtilsTest, CreateDataUserProfilePackagePath) {
+    EXPECT_EQ("/data/misc/profiles/cur/0/com.example",
+            create_data_user_profile_package_path(0, "com.example"));
+    EXPECT_EQ("/data/misc/profiles/cur/1/com.example",
+            create_data_user_profile_package_path(1, "com.example"));
+}
+
+TEST_F(UtilsTest, CreateDataRefProfilePath) {
+    EXPECT_EQ("/data/misc/profiles/ref", create_data_ref_profile_path());
+}
+
+TEST_F(UtilsTest, CreateDataRefProfilePackagePath) {
+    EXPECT_EQ("/data/misc/profiles/ref/com.example",
+        create_data_ref_profile_package_path("com.example"));
+}
+
+TEST_F(UtilsTest, CreatePrimaryProfile) {
+    EXPECT_EQ("/data/misc/profiles/ref/com.example/primary.prof",
+        create_primary_profile("/data/misc/profiles/ref/com.example"));
 }
 
 }  // namespace installd
