@@ -94,15 +94,19 @@ std::string create_data_media_package_path(const char* volume_uuid, userid_t use
 
 std::string create_data_misc_legacy_path(userid_t userid);
 
-std::string create_data_user_profile_path(userid_t userid);
-std::string create_data_user_profile_package_path(userid_t user, const std::string& package_name);
-
-std::string create_data_ref_profile_path();
-std::string create_data_ref_profile_package_path(const std::string& package_name);
-
 std::string create_data_dalvik_cache_path();
 
-std::string create_primary_profile(const std::string& profile_dir);
+std::string create_primary_cur_profile_dir_path(userid_t userid);
+std::string create_primary_cur_profile_package_dir_path(
+        userid_t user, const std::string& package_name);
+
+std::string create_primary_ref_profile_dir_path();
+std::string create_primary_ref_profile_package_dir_path(const std::string& package_name);
+
+std::string create_current_profile_path(
+        userid_t user, const std::string& package_name, bool is_secondary_dex);
+std::string create_reference_profile_path(
+        const std::string& package_name, bool is_secondary_dex);
 
 std::vector<userid_t> get_known_users(const char* volume_uuid);
 
