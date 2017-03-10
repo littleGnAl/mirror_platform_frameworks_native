@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63f7970a_f0832e0c",
+        "filename": "cmds/installd/tests/installd_utils_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-03-10T09:39:39Z",
+      "side": 1,
+      "message": "FYI, for future reference: gtest provides EXPECT_TRUE and EXPECT_FALSE as well",
+      "range": {
+        "startLine": 500,
+        "startChar": 3,
+        "endLine": 500,
+        "endChar": 54
+      },
+      "revId": "53690adc5f9075c9faa7d8ddefef91f1ac32e7d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
