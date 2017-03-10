@@ -22,6 +22,30 @@
       "revId": "53690adc5f9075c9faa7d8ddefef91f1ac32e7d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02a8ccc9_26dcaaad",
+        "filename": "cmds/installd/tests/installd_utils_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2017-03-10T21:49:23Z",
+      "side": 1,
+      "message": "Oh sweet, thanks for the heads up!  :)",
+      "parentUuid": "63f7970a_f0832e0c",
+      "range": {
+        "startLine": 500,
+        "startChar": 3,
+        "endLine": 500,
+        "endChar": 54
+      },
+      "revId": "53690adc5f9075c9faa7d8ddefef91f1ac32e7d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
