@@ -22,6 +22,7 @@
 #include <android-base/unique_fd.h>
 #include <hardware/hardware.h>
 #include <sync/sync.h>
+#include <cutils/properties.h>
 
 #define HWC2_INCLUDE_STRINGIFICATION
 #define HWC2_USE_CPP11
@@ -44,9 +45,15 @@ public:
 
     virtual void SetUp()
     {
+        /* Because SurfaceFlinger is not running, support libraries may want to
+         * initialize differently. Set config.headless to inform them. */
+        int err = property_set("config.headless", "1");
+        ASSERT_GE(err, 0) << "failed to set config.headless: "
+                << strerror(-err);
+
         hw_module_t const* hwc2Module;
 
-        int err = hw_get_module(HWC_HARDWARE_MODULE_ID, &hwc2Module);
+        err = hw_get_module(HWC_HARDWARE_MODULE_ID, &hwc2Module);
         ASSERT_GE(err, 0) << "failed to get hwc hardware module: "
                 << strerror(-err);
 
