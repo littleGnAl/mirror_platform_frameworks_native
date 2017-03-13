@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "26650137_178030fc",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-03-13T16:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bd8e278_f8d1c4ec",
+      "range": {
+        "startLine": 39,
+        "startChar": 35,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "aea7b15a0daf6c5ebe332cb1259484fe2789a3fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6baf0404_95cd8360",
         "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
         "patchSetId": 2
@@ -88,6 +112,24 @@
       "writtenOn": "2017-02-21T21:35:58Z",
       "side": 1,
       "message": "This doesn\u0027t appear to need to be virtual, and for the ones that actually are virtual, I\u0027d say (e.g.):\n\n  void reset() override;\n\nrather than\n\n  virtual void reset();",
+      "revId": "aea7b15a0daf6c5ebe332cb1259484fe2789a3fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5365b619_8bbc445f",
+        "filename": "services/surfaceflinger/tests/hwc2/hwc2_test_properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2017-03-13T16:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2dd18f6_a9935288",
       "revId": "aea7b15a0daf6c5ebe332cb1259484fe2789a3fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
