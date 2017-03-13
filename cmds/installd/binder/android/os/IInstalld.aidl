@@ -60,8 +60,9 @@ interface IInstalld {
     void clearAppProfiles(@utf8InCpp String packageName);
     void destroyAppProfiles(@utf8InCpp String packageName);
 
-    void idmap(@utf8InCpp String targetApkPath, @utf8InCpp String overlayApkPath, int uid);
-    void removeIdmap(@utf8InCpp String overlayApkPath);
+    void createIdmap(@utf8InCpp String targetApkPath, @utf8InCpp String overlayApkPath, int uid,
+            @utf8InCpp String idmapPath);
+    void removeIdmap(@utf8InCpp String idmapPath);
     void rmPackageDir(@utf8InCpp String packageDir);
     void markBootComplete(@utf8InCpp String instructionSet);
     void freeCache(@nullable @utf8InCpp String uuid, long targetFreeBytes,
