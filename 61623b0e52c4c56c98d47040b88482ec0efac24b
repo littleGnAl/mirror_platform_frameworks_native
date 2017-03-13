@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e8a8a4f_290e013b",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "Having \u0027create\u0027 in the name here isn\u0027t very intuitive. Should the method have \"path\" in its name?",
+      "range": {
+        "startLine": 109,
+        "startChar": 29,
+        "endLine": 109,
+        "endChar": 35
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f670df8_9118135f",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "Add a comment.",
+      "range": {
+        "startLine": 551,
+        "startChar": 38,
+        "endLine": 551,
+        "endChar": 45
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61887038_99c9888a",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 553,
+        "startChar": 66,
+        "endLine": 553,
+        "endChar": 76
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "291e4d91_ee75d639",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 561,
+        "startChar": 8,
+        "endLine": 561,
+        "endChar": 25
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d57151d0_0d805ca4",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "Comment.",
+      "range": {
+        "startLine": 563,
+        "startChar": 0,
+        "endLine": 563,
+        "endChar": 31
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93a6d6d7_f4102668",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 667,
+        "startChar": 45,
+        "endLine": 667,
+        "endChar": 51
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "152fe220_2c2c0a87",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 668,
+        "startChar": 8,
+        "endLine": 668,
+        "endChar": 17
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7a1df23_2265d31c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "that makes it ?",
+      "range": {
+        "startLine": 738,
+        "startChar": 71,
+        "endLine": 738,
+        "endChar": 76
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbfe1424_1089840a",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "Should the comment emphasize that this method is not for secondary dex files?",
+      "range": {
+        "startLine": 742,
+        "startChar": 52,
+        "endLine": 742,
+        "endChar": 59
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc4f1204_d8ae1d40",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "I\u0027d put more comments here on what dexoptanalyzer does and about the arguments being passed.",
+      "range": {
+        "startLine": 1270,
+        "startChar": 0,
+        "endLine": 1272,
+        "endChar": 61
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "833807d9_f7b3471d",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-13T13:55:31Z",
+      "side": 1,
+      "message": "PROFILE_EXT and use it in PRIMARY_PROFILE_NAME?",
+      "range": {
+        "startLine": 240,
+        "startChar": 22,
+        "endLine": 240,
+        "endChar": 43
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
