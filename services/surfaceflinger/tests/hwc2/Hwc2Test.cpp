@@ -22,6 +22,7 @@
 #include <android-base/unique_fd.h>
 #include <hardware/hardware.h>
 #include <sync/sync.h>
+#include <cutils/properties.h>
 
 #define HWC2_INCLUDE_STRINGIFICATION
 #define HWC2_USE_CPP11
@@ -48,6 +49,23 @@ public:
 
         int err = hw_get_module(HWC_HARDWARE_MODULE_ID, &hwc2Module);
         ASSERT_GE(err, 0) << "failed to get hwc hardware module: "
+                << strerror(-err);
+
+        /* Because SurfaceFlinger is not running, support libraries may want to
+         * initialize differently. Set config.headless to inform them without
+         * having to recompile.
+         *
+         * If a test case is stopped before headless is set back to 0, the
+         * system will be in an invalid state. It will not harm repeated
+         * attempts to run the test cases but it can cause problems when
+         * SurfaceFlinger is restarted. The only way to recover is to
+         * manually set the property back or to reboot the device. On some
+         * devices, it is not immediately obvious that the system is in a bad
+         * state. For these reasons DO NOT SUBMIT THIS CHANGE!
+         *
+         * This change will become unnecessary in the near future. */
+        err = property_set("config.headless", "1");
+        ASSERT_GE(err, 0) << "failed to set config.headless: "
                 << strerror(-err);
 
         /* The following method will fail if you have not run
@@ -87,6 +105,11 @@ public:
 
         if (mHwc2Device)
             hwc2_close(mHwc2Device);
+
+        /* Reset the headless property. */
+        int err = property_set("config.headless", "0");
+        ASSERT_GE(err, 0) << "failed to set config.headless: "
+                << strerror(-err);
     }
 
     void registerCallback(hwc2_callback_descriptor_t descriptor,
