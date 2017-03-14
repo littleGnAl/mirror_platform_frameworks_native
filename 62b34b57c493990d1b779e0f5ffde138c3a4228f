@@ -16,6 +16,24 @@
       "revId": "62b34b57c493990d1b779e0f5ffde138c3a4228f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77f1824c_bb9946d1",
+        "filename": "docs/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-03-14T21:13:47Z",
+      "side": 0,
+      "message": "Okay, I\u0027ll fix the header/footer stuff. I just didn\u0027t see the point in having both (it takes time).",
+      "parentUuid": "529c7ef7_62be00a7",
+      "revId": "62b34b57c493990d1b779e0f5ffde138c3a4228f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
