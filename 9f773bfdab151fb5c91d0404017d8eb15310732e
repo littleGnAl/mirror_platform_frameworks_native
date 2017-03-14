@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "07590979_c3174063",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-14T00:22:18Z",
+      "side": 1,
+      "message": "done by adding an invalid_unique_fd(). It will make obvious we should have an invalid fd there.",
+      "parentUuid": "e0f034a5_c84fc594",
+      "range": {
+        "startLine": 514,
+        "startChar": 15,
+        "endLine": 514,
+        "endChar": 26
+      },
+      "revId": "9f773bfdab151fb5c91d0404017d8eb15310732e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae965d0f_538b0ea1",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c86a4f57_d31ec171",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-14T00:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae965d0f_538b0ea1",
+      "range": {
+        "startLine": 528,
+        "startChar": 4,
+        "endLine": 528,
+        "endChar": 38
+      },
+      "revId": "9f773bfdab151fb5c91d0404017d8eb15310732e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "966d720e_4d2ef89a",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-03-13T13:36:53Z",
       "side": 1,
       "message": "nit: everything else here uses \u003c 0 but this uses -1, why ?",
+      "range": {
+        "startLine": 610,
+        "startChar": 32,
+        "endLine": 610,
+        "endChar": 64
+      },
+      "revId": "9f773bfdab151fb5c91d0404017d8eb15310732e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b44a1860_6262aeff",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-14T00:22:18Z",
+      "side": 1,
+      "message": "don\u0027t know :). Historical overlook I guess. Done.",
+      "parentUuid": "966d720e_4d2ef89a",
       "range": {
         "startLine": 610,
         "startChar": 32,
