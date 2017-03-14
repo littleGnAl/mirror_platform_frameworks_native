@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dca8b924_29d274fd",
+        "filename": "docs/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-14T22:42:49Z",
+      "side": 1,
+      "message": "This is wrong if you have OUT_DIR or OUT_DIR_COMMON_BASE set",
+      "range": {
+        "startLine": 1,
+        "startChar": 35,
+        "endLine": 1,
+        "endChar": 39
+      },
+      "revId": "2bb8ad83e84c5dc9f2b8fb22306c4405d2e2a3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c5622c4_7af11309",
+        "filename": "docs/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-14T22:42:49Z",
+      "side": 1,
+      "message": "$(sort $(shell find ...)) works though",
+      "range": {
+        "startLine": 3,
+        "startChar": 17,
+        "endLine": 3,
+        "endChar": 66
+      },
+      "revId": "2bb8ad83e84c5dc9f2b8fb22306c4405d2e2a3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09a38a4_068e4ef3",
+        "filename": "docs/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-14T22:42:49Z",
+      "side": 1,
+      "message": "If you need to know where the output directory is anyways for the ndk headers, why not write there too? Then these would work even under conditions like gitc that has a readonly source.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "2bb8ad83e84c5dc9f2b8fb22306c4405d2e2a3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
