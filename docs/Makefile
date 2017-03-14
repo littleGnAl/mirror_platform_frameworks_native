@@ -1,12 +1,15 @@
-HEADERS := $(wildcard ../include/android/*.h)
+HEADERS_DIR := $(ANDROID_BUILD_TOP)/out/soong/ndk/sysroot/usr/include
 
-all: html website
+# This is wrong, but there isn't a good recursive wildcard in make. Integrate
+# into the real build and just depend on the "ndk" target.
+HEADERS := $(wildcard $(HEADERS_DIR)/*.h)
+
+all: html
 
 html: $(HEADERS) Doxyfile
 	mkdir -p html
-	doxygen
+	( cat Doxyfile; echo "INPUT=$(HEADERS_DIR)" ) | doxygen -
 
-website: $(HEADERS) Doxyfile header.html
-	mkdir -p website
-	HTML_HEADER=header.html HTML_FOOTER=footer.html HTML_OUTPUT=website doxygen
-	rm -f website/index.html
+clean:
+	rm -rf html
+.PHONY: clean
