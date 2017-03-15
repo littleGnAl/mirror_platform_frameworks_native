@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68579197_a4ae1063",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "I know we\u0027re up for big names and potentially new naming discussions, but I think it would read better with cur -\u003e current and ref -\u003e reference. Some method names you\u0027ve added already use current/reference.",
+      "range": {
+        "startLine": 355,
+        "startChar": 35,
+        "endLine": 355,
+        "endChar": 38
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffb103c4_141bb268",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "why would it not be there? Please add a comment.",
+      "range": {
+        "startLine": 490,
+        "startChar": 30,
+        "endLine": 490,
+        "endChar": 57
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9f9902d_7d55bc48",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "Can we ever have a symlink?",
+      "range": {
+        "startLine": 493,
+        "startChar": 4,
+        "endLine": 493,
+        "endChar": 52
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65d8d1ab_4a01a8e3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "grammar",
+      "range": {
+        "startLine": 500,
+        "startChar": 61,
+        "endLine": 501,
+        "endChar": 84
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04380211_a8452107",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "I think this needs to be put in context with line 490. Is that comment for the no O_CREATE case?",
+      "range": {
+        "startLine": 499,
+        "startChar": 1,
+        "endLine": 503,
+        "endChar": 58
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d28086f_16294239",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "Maybe worth having one method doing the creation?",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 5
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c8880ea_486e7b1f",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "Extend comment by saying it\u0027s fine to just pass the current user?",
+      "range": {
+        "startLine": 539,
+        "startChar": 4,
+        "endLine": 539,
+        "endChar": 93
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96dc1f7a_d740b3b3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "Maybe add a helper method and share it with line 542?",
+      "range": {
+        "startLine": 682,
+        "startChar": 44,
+        "endLine": 682,
+        "endChar": 70
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e89578d1_82ad61c3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "be",
+      "range": {
+        "startLine": 1224,
+        "startChar": 52,
+        "endLine": 1224,
+        "endChar": 53
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d81fabf8_05f79245",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "Decide",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f14d7b2c_f63b8bc2",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:40:07Z",
+      "side": 1,
+      "message": "plural? Do you want to mention splits?",
+      "range": {
+        "startLine": 45,
+        "startChar": 40,
+        "endLine": 45,
+        "endChar": 44
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
