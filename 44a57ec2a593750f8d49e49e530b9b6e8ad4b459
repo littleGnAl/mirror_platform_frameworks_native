@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6a09c2f_ad8bf89a",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68579197_a4ae1063",
+      "range": {
+        "startLine": 355,
+        "startChar": 35,
+        "endLine": 355,
+        "endChar": 38
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffb103c4_141bb268",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-15T11:40:07Z",
       "side": 1,
       "message": "why would it not be there? Please add a comment.",
+      "range": {
+        "startLine": 490,
+        "startChar": 30,
+        "endLine": 490,
+        "endChar": 57
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6fdeac6_394ad647",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffb103c4_141bb268",
       "range": {
         "startLine": 490,
         "startChar": 30,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dcbd2ec9_a06d9e14",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "I was planning to address this in a follow up, but you force me do it now :).\n\nFor secondary dex files, yes, we could have had a symlink here and we would had a denial. And that\u0027s fine. We really don\u0027t want to follow symlinks blindly. \n\nI extended the validation process to make sure we check the real path and so the answer is: no, we can\u0027t get a symlink here anymore.",
+      "parentUuid": "c9f9902d_7d55bc48",
+      "range": {
+        "startLine": 493,
+        "startChar": 4,
+        "endLine": 493,
+        "endChar": 52
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65d8d1ab_4a01a8e3",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2017-03-15T11:40:07Z",
       "side": 1,
       "message": "grammar",
+      "range": {
+        "startLine": 500,
+        "startChar": 61,
+        "endLine": 501,
+        "endChar": 84
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9d3befe_c76a71af",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65d8d1ab_4a01a8e3",
       "range": {
         "startLine": 500,
         "startChar": 61,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "47e2a2b5_016c7bc4",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "I added an extra comment at L490 and I expanded this one.\n\nThere are two different cases:\nL490 covers the fact we create the reference profile on the fly.\nThis covers the cases when we actually don\u0027t find the profiles (e.g. multi-user or the secondary dex files).",
+      "parentUuid": "04380211_a8452107",
+      "range": {
+        "startLine": 499,
+        "startChar": 1,
+        "endLine": 503,
+        "endChar": 58
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d28086f_16294239",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2017-03-15T11:40:07Z",
       "side": 1,
       "message": "Maybe worth having one method doing the creation?",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 5
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e380c33_8d89bdd8",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d28086f_16294239",
       "range": {
         "startLine": 508,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0ef0fd68_9c1e1fef",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c8880ea_486e7b1f",
+      "range": {
+        "startLine": 539,
+        "startChar": 4,
+        "endLine": 539,
+        "endChar": 93
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96dc1f7a_d740b3b3",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 7
@@ -174,6 +342,30 @@
       "writtenOn": "2017-03-15T11:40:07Z",
       "side": 1,
       "message": "Maybe add a helper method and share it with line 542?",
+      "range": {
+        "startLine": 682,
+        "startChar": 44,
+        "endLine": 682,
+        "endChar": 70
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "766f352e_36ecae86",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "I added a comment. A helper method doesn\u0027t really help here because this is just one line.",
+      "parentUuid": "96dc1f7a_d740b3b3",
       "range": {
         "startLine": 682,
         "startChar": 44,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "fb0c69c8_3fb0fa84",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e89578d1_82ad61c3",
+      "range": {
+        "startLine": 1224,
+        "startChar": 52,
+        "endLine": 1224,
+        "endChar": 53
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d81fabf8_05f79245",
         "filename": "cmds/installd/dexopt.h",
         "patchSetId": 7
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "21655527_61097811",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d81fabf8_05f79245",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f14d7b2c_f63b8bc2",
         "filename": "cmds/installd/dexopt.h",
         "patchSetId": 7
@@ -243,6 +483,30 @@
       "writtenOn": "2017-03-15T11:40:07Z",
       "side": 1,
       "message": "plural? Do you want to mention splits?",
+      "range": {
+        "startLine": 45,
+        "startChar": 40,
+        "endLine": 45,
+        "endChar": 44
+      },
+      "revId": "44a57ec2a593750f8d49e49e530b9b6e8ad4b459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abe9300d_9d4fb567",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f14d7b2c_f63b8bc2",
       "range": {
         "startLine": 45,
         "startChar": 40,

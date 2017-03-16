@@ -516,6 +516,30 @@
       "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a06f2e81_84db961f",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffeb90f2_ab416e82",
+      "range": {
+        "startLine": 240,
+        "startChar": 22,
+        "endLine": 240,
+        "endChar": 43
+      },
+      "revId": "61623b0e52c4c56c98d47040b88482ec0efac24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
