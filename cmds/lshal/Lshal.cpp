@@ -29,10 +29,9 @@
 #include <android/hidl/manager/1.0/IServiceManager.h>
 #include <hidl/ServiceManagement.h>
 #include <hidl-util/FQName.h>
+#include <hidl-util/Timeout.h>
 #include <vintf/HalManifest.h>
 #include <vintf/parse_xml.h>
-
-#include "Timeout.h"
 
 using ::android::hardware::hidl_string;
 using ::android::hidl::manager::V1_0::IServiceManager;

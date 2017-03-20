@@ -23,6 +23,9 @@ cc_binary {
         "libvintf",
         "android.hidl.manager@1.0",
     ],
+    header_libs: [
+        "libhidlutils",
+    ],
     srcs: [
         "Lshal.cpp"
     ],
