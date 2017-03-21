@@ -22,6 +22,30 @@
       "revId": "013f02e58b0b17b5b9fb4b4a2b3dc482eecfc434",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2271140_3d094c71",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-21T14:55:23Z",
+      "side": 0,
+      "message": "I\u0027d rather not pull in more (every single dependency means cross-release OTAs are more likely to break). But if Richard thinks it\u0027s a good idea, I\u0027ll look into it.",
+      "parentUuid": "cb2348d9_e898ec3b",
+      "range": {
+        "startLine": 578,
+        "startChar": 9,
+        "endLine": 578,
+        "endChar": 88
+      },
+      "revId": "013f02e58b0b17b5b9fb4b4a2b3dc482eecfc434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
