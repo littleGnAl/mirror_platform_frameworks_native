@@ -1478,8 +1478,7 @@ static bool process_secondary_dex_dexopt(const char* original_dex_path, const ch
 int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* instruction_set,
         int dexopt_needed, const char* oat_dir, int dexopt_flags, const char* compiler_filter,
         const char* volume_uuid, const char* shared_libraries) {
-    CHECK(pkgname != nullptr);
-    CHECK(pkgname[0] != 0);
+    CHECK(pkgname != nullptr && pkgname[0] != 0);
     if ((dexopt_flags & ~DEXOPT_MASK) != 0) {
         LOG_FATAL("dexopt flags contains unknown fields\n");
     }
