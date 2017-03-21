@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "134f590d_0cd0dce8",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-03-21T20:00:23Z",
+      "side": 1,
+      "message": "oh",
+      "range": {
+        "startLine": 422,
+        "startChar": 14,
+        "endLine": 422,
+        "endChar": 31
+      },
+      "revId": "1b7c7d6f8dbbfd4c048d4ab53561e082b277db7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
