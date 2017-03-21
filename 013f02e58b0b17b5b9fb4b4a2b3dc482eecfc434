@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb2348d9_e898ec3b",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-21T14:48:12Z",
+      "side": 0,
+      "message": "Could we explicitly check that instead (maybe using dexoptanalyzer?)",
+      "range": {
+        "startLine": 578,
+        "startChar": 9,
+        "endLine": 578,
+        "endChar": 88
+      },
+      "revId": "013f02e58b0b17b5b9fb4b4a2b3dc482eecfc434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
