@@ -46,6 +46,30 @@
       "revId": "013f02e58b0b17b5b9fb4b4a2b3dc482eecfc434",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d76fb26_9807dec2",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-21T14:56:54Z",
+      "side": 0,
+      "message": "Isn\u0027t the dex2oat exit code similar to a dependency?",
+      "parentUuid": "e2271140_3d094c71",
+      "range": {
+        "startLine": 578,
+        "startChar": 9,
+        "endLine": 578,
+        "endChar": 88
+      },
+      "revId": "013f02e58b0b17b5b9fb4b4a2b3dc482eecfc434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
