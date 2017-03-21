@@ -70,6 +70,30 @@
       "revId": "013f02e58b0b17b5b9fb4b4a2b3dc482eecfc434",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ffe82a4_20abfa98",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-21T15:04:12Z",
+      "side": 0,
+      "message": "But it\u0027s nothing I have to exec, it\u0027s a lot simpler than running yet another tool.",
+      "parentUuid": "4d76fb26_9807dec2",
+      "range": {
+        "startLine": 578,
+        "startChar": 9,
+        "endLine": 578,
+        "endChar": 88
+      },
+      "revId": "013f02e58b0b17b5b9fb4b4a2b3dc482eecfc434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
