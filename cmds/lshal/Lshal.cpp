@@ -426,6 +426,9 @@ Status Lshal::fetchAllLibraries(const sp<IServiceManager> &manager) {
     auto ret = timeoutIPC(manager, &IServiceManager::debugDump, [&] (const auto &infos) {
         std::map<std::string, TableEntry> entries;
         for (const auto &info : infos) {
+            if (info.clientPids.size() <= 0) {
+                continue;
+            }
             std::string interfaceName = std::string{info.interfaceName.c_str()} + "/" +
                     std::string{info.instanceName.c_str()};
             entries.emplace(interfaceName, TableEntry{
