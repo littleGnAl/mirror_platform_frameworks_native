@@ -86,6 +86,8 @@
 #include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
 #include <configstore/Utils.h>
 
+#include "DisplayHardware/CalcFps.h"
+
 #define DISPLAY_COUNT       1
 
 /*
@@ -224,6 +226,8 @@ SurfaceFlinger::SurfaceFlinger()
     property_get("ro.sf.disable_triple_buffer", value, "1");
     mLayerTripleBufferingDisabled = atoi(value);
     ALOGI_IF(mLayerTripleBufferingDisabled, "Disabling Triple Buffering");
+
+    CALCFPS_INIT();
 }
 
 void SurfaceFlinger::onFirstRef()
@@ -1822,6 +1826,8 @@ void SurfaceFlinger::setUpHWComposer() {
         status_t result = displayDevice->prepareFrame(*mHwc);
         ALOGE_IF(result != NO_ERROR, "prepareFrame for display %zd failed:"
                 " %d (%s)", displayId, result, strerror(-result));
+        const auto hwcType = displayDevice->getDisplayType();
+        CALCFPS_CACHEDCHK(hwcType, displayDevice->getVisibleLayersSortedByZ());
     }
 }
 
@@ -1861,8 +1867,11 @@ void SurfaceFlinger::postFramebuffer()
             continue;
         }
         const auto hwcId = displayDevice->getHwcDisplayId();
+        const auto hwcType = displayDevice->getDisplayType();
         if (hwcId >= 0) {
+            CALCFPS_START();
             mHwc->presentAndGetReleaseFences(hwcId);
+            CALCFPS_LAP(hwcType, displayDevice->getVisibleLayersSortedByZ());
         }
         displayDevice->onSwapBuffersCompleted();
         displayDevice->makeCurrent(mEGLDisplay, mEGLContext);
