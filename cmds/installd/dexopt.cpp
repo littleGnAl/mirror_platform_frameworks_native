@@ -34,6 +34,7 @@
 #include <cutils/fs.h>
 #include <cutils/properties.h>
 #include <cutils/sched_policy.h>
+#include <dexoptanalyzer_return_codes.h>
 #include <log/log.h>               // TODO: Move everything to base/logging.
 #include <private/android_filesystem_config.h>
 #include <system/thread_defs.h>
@@ -1338,29 +1339,34 @@ static int constexpr DEXOPTANALYZER_BIN_EXEC_ERROR = 200;
 static bool process_dexoptanalyzer_result(const std::string& dex_path, int result,
             int* dexopt_needed_out) {
     // The result values are defined in dexoptanalyzer.
-    switch (result) {
-        case 0:  // no_dexopt_needed
+    switch (static_cast<art::dexoptanalyzer::ReturnCodes>(result)) {
+        case art::dexoptanalyzer::ReturnCodes::kNoDexOptNeeded:
             *dexopt_needed_out = NO_DEXOPT_NEEDED; return true;
-        case 1:  // dex2oat_from_scratch
+        case art::dexoptanalyzer::ReturnCodes::kDex2OatFromScratch:
             *dexopt_needed_out = DEX2OAT_FROM_SCRATCH; return true;
-        case 5:  // dex2oat_for_bootimage_odex
+        case art::dexoptanalyzer::ReturnCodes::kDex2OatForBootImageOdex:
             *dexopt_needed_out = -DEX2OAT_FOR_BOOT_IMAGE; return true;
-        case 6:  // dex2oat_for_filter_odex
+        case art::dexoptanalyzer::ReturnCodes::kDex2OatForFilterOdex:
             *dexopt_needed_out = -DEX2OAT_FOR_FILTER; return true;
-        case 7:  // dex2oat_for_relocation_odex
+        case art::dexoptanalyzer::ReturnCodes::kDex2OatForRelocationOdex:
             *dexopt_needed_out = -DEX2OAT_FOR_RELOCATION; return true;
-        case 2:  // dex2oat_for_bootimage_oat
-        case 3:  // dex2oat_for_filter_oat
-        case 4:  // dex2oat_for_relocation_oat
-            LOG(ERROR) << "Dexoptnalyzer return the status of an oat file."
+        case art::dexoptanalyzer::ReturnCodes::kDex2OatForBootImageOat:
+        case art::dexoptanalyzer::ReturnCodes::kDex2OatForFilterOat:
+        case art::dexoptanalyzer::ReturnCodes::kDex2OatForRelocationOat:
+            LOG(ERROR) << "Dexoptanalyzer returned the status of an oat file."
                     << " Expected odex file status for secondary dex " << dex_path
                     << " : dexoptanalyzer result=" << result;
             return false;
-        default:
-            LOG(ERROR) << "Unexpected result for dexoptanalyzer " << dex_path
-                    << " exec_dexoptanalyzer result=" << result;
-            return false;
+
+        // Enumerate failure cases. This allows -Wswitch to complain if we're missing something.
+        case art::dexoptanalyzer::ReturnCodes::kErrorInvalidArguments:
+        case art::dexoptanalyzer::ReturnCodes::kErrorCannotCreateRuntime:
+        case art::dexoptanalyzer::ReturnCodes::kErrorUnknownDexOptNeeded:
+            break;
     }
+    LOG(ERROR) << "Unexpected result for dexoptanalyzer " << dex_path
+            << " exec_dexoptanalyzer result=" << result;
+    return false;
 }
 
 // Processes the dex_path as a secondary dex files and return true if the path dex file should
