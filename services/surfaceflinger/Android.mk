@@ -28,6 +28,7 @@ LOCAL_SRC_FILES := \
     DisplayHardware/HWComposerBufferCache.cpp \
     DisplayHardware/PowerHAL.cpp \
     DisplayHardware/VirtualDisplaySurface.cpp \
+    DisplayHardware/CalcFps.cpp \
     Effects/Daltonizer.cpp \
     EventLog/EventLogTags.logtags \
     EventLog/EventLog.cpp \
@@ -68,6 +69,10 @@ LOCAL_STATIC_LIBRARIES := \
     libvkjson \
     libvr_manager \
     libvrflinger
+
+ifneq (,$(filter eng userdebug,$(TARGET_BUILD_VARIANT)))
+LOCAL_CFLAGS += -DDEBUG_CALC_FPS_SF
+endif
 
 LOCAL_SHARED_LIBRARIES := \
     android.frameworks.vr.composer@1.0 \
