@@ -14,6 +14,7 @@ cc_defaults {
         "utils.cpp",
         "binder/android/os/IInstalld.aidl",
     ],
+    header_libs: ["dexoptanalyzer_headers"],
     shared_libs: [
         "libbase",
         "libbinder",
