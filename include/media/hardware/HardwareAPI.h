@@ -127,11 +127,11 @@ struct StoreMetaDataInBuffersParams {
 // Meta data buffer layout used to transport output frames to the decoder for
 // dynamic buffer handling.
 struct VideoGrallocMetadata {
-    MetadataBufferType eType;               // must be kMetadataBufferTypeGrallocSource
+    MetadataBufferType eType OMX_ALIGN8;    // must be kMetadataBufferTypeGrallocSource
 #ifdef OMX_ANDROID_COMPILE_AS_32BIT_ON_64BIT_PLATFORMS
-    OMX_PTR pHandle;
+    OMX_PTR pHandle OMX_ALIGN8;
 #else
-    buffer_handle_t pHandle;
+    buffer_handle_t pHandle OMX_ALIGN8;
 #endif
 };
 
@@ -139,23 +139,23 @@ struct VideoGrallocMetadata {
 struct VideoDecoderOutputMetaData : public VideoGrallocMetadata {};
 
 struct VideoNativeMetadata {
-    MetadataBufferType eType;               // must be kMetadataBufferTypeANWBuffer
+    MetadataBufferType eType OMX_ALIGN8;    // must be kMetadataBufferTypeANWBuffer
 #ifdef OMX_ANDROID_COMPILE_AS_32BIT_ON_64BIT_PLATFORMS
-    OMX_PTR pBuffer;
+    OMX_PTR pBuffer OMX_ALIGN8;
 #else
-    struct ANativeWindowBuffer* pBuffer;
+    struct ANativeWindowBuffer* pBuffer OMX_ALIGN8;
 #endif
     int nFenceFd;                           // -1 if unused
 };
 
 // Meta data buffer layout for passing a native_handle to codec
 struct VideoNativeHandleMetadata {
-    MetadataBufferType eType;               // must be kMetadataBufferTypeNativeHandleSource
+    MetadataBufferType eType OMX_ALIGN8;    // must be kMetadataBufferTypeNativeHandleSource
 
 #ifdef OMX_ANDROID_COMPILE_AS_32BIT_ON_64BIT_PLATFORMS
-    OMX_PTR pHandle;
+    OMX_PTR pHandle OMX_ALIGN8;
 #else
-    native_handle_t *pHandle;
+    native_handle_t *pHandle OMX_ALIGN8;
 #endif
 };
 
@@ -193,9 +193,9 @@ struct UseAndroidNativeBufferParams {
     OMX_U32 nSize;
     OMX_VERSIONTYPE nVersion;
     OMX_U32 nPortIndex;
-    OMX_PTR pAppPrivate;
-    OMX_BUFFERHEADERTYPE **bufferHeader;
-    const sp<ANativeWindowBuffer>& nativeBuffer;
+    OMX_PTR pAppPrivate OMX_ALIGN8;
+    OMX_BUFFERHEADERTYPE **bufferHeader OMX_ALIGN8;
+    const sp<ANativeWindowBuffer>& nativeBuffer OMX_ALIGN8;
 };
 
 // A pointer to this struct is passed to OMX_GetParameter when the extension
