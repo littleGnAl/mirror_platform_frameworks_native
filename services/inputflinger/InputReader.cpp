@@ -3296,7 +3296,9 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
 
     // Get associated display dimensions.
     DisplayViewport newViewport;
-    if (mParameters.hasAssociatedDisplay) {
+    if (mParameters.hasAssociatedDisplay &&
+            !(mParameters.deviceType == Parameters::DEVICE_TYPE_POINTER &&
+            !mConfig.pointerGesturesEnabled)) {
         if (!mConfig.getDisplayInfo(mParameters.associatedDisplayIsExternal, &newViewport)) {
             ALOGI(INDENT "Touch device '%s' could not query the properties of its associated "
                     "display.  The device will be inoperable until the display size "
