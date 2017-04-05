@@ -1265,6 +1265,12 @@ status_t EventHub::openDeviceLocked(const char *devicePath) {
         }
     }
 
+    // Check if this device is an accelerometer.
+    // Classified as joysticks to reuse joystick mapper.
+    if (test_bit(INPUT_PROP_ACCELEROMETER, device->propBitmask)) {
+        device->classes |= INPUT_DEVICE_CLASS_JOYSTICK | INPUT_DEVICE_CLASS_ACCELEROMETER;
+    }
+
     // Check whether this device has switches.
     for (int i = 0; i <= SW_MAX; i++) {
         if (test_bit(i, device->swBitmask)) {
