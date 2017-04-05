@@ -1906,6 +1906,14 @@ void InputDispatcher::enqueueDispatchEntryLocked(
 
     case EventEntry::TYPE_MOTION: {
         MotionEntry* motionEntry = static_cast<MotionEntry*>(eventEntry);
+        const InputWindowInfo* info = mFocusedWindowHandle->getInfo();
+
+        if (((motionEntry->source & AINPUT_SOURCE_ACCELEROMETER) == AINPUT_SOURCE_ACCELEROMETER) &&
+                ((info->inputFeatures & InputWindowInfo::INPUT_FEATURE_ENABLE_MOTION_SENSORS) == 0)) {
+            delete dispatchEntry;
+            return; // skip the disabled accelerometer event
+        }
+
         if (dispatchMode & InputTarget::FLAG_DISPATCH_AS_OUTSIDE) {
             dispatchEntry->resolvedAction = AMOTION_EVENT_ACTION_OUTSIDE;
         } else if (dispatchMode & InputTarget::FLAG_DISPATCH_AS_HOVER_EXIT) {
@@ -1946,6 +1954,7 @@ void InputDispatcher::enqueueDispatchEntryLocked(
             delete dispatchEntry;
             return; // skip the inconsistent event
         }
+
         break;
     }
     }
