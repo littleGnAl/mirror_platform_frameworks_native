@@ -150,7 +150,9 @@ EventHub::Device::Device(int fd, int32_t id, const String8& path,
         fd(fd), id(id), path(path), identifier(identifier),
         classes(0), configuration(NULL), virtualKeyMap(NULL),
         ffEffectPlaying(false), ffEffectId(-1), controllerNumber(0),
-        timestampOverrideSec(0), timestampOverrideUsec(0) {
+        timestampOverrideSec(0), timestampOverrideUsec(0),
+        prevTimestampValid(false), prevIevTimeTvSec(0), prevIevTimeTvUsec(0),
+        prevMscTimestamp(0) {
     memset(keyBitmask, 0, sizeof(keyBitmask));
     memset(absBitmask, 0, sizeof(absBitmask));
     memset(relBitmask, 0, sizeof(relBitmask));
@@ -857,10 +859,36 @@ size_t EventHub::getEvents(int timeoutMillis, RawEvent* buffer, size_t bufferSiz
                         // Some input devices may have a better concept of the time
                         // when an input event was actually generated than the kernel
                         // which simply timestamps all events on entry to evdev.
-                        // This is a custom Android extension of the input protocol
-                        // mainly intended for use with uinput based device drivers.
                         if (iev.type == EV_MSC) {
-                            if (iev.code == MSC_ANDROID_TIME_SEC) {
+                            if (iev.code == MSC_TIMESTAMP) {
+                                if (!device->prevTimestampValid) {
+                                    device->prevIevTimeTvSec = iev.time.tv_sec;
+                                    device->prevIevTimeTvUsec = iev.time.tv_usec;
+                                    device->prevTimestampValid = true;
+                                } else {
+                                    uint32_t dt = (device->prevMscTimestamp > (uint32_t)iev.value) ?
+                                                  (UINT32_MAX - device->prevMscTimestamp + (uint32_t)iev.value + 1) :
+                                                  ((uint32_t)iev.value - device->prevMscTimestamp);
+                                    while (dt >= 1000000) {
+                                        device->timestampOverrideSec = device->prevIevTimeTvSec + 1;
+                                        dt -= 1000000;
+                                    }
+                                    if (device->prevIevTimeTvUsec + dt >= 1000000) {
+                                        device->timestampOverrideSec = device->prevIevTimeTvSec + 1;
+                                        device->timestampOverrideUsec = device->prevIevTimeTvUsec + dt - 1000000;
+                                    } else {
+                                        device->timestampOverrideSec = device->prevIevTimeTvSec;
+                                        device->timestampOverrideUsec = device->prevIevTimeTvUsec + dt;
+                                    }
+                                    device->prevIevTimeTvSec = device->timestampOverrideSec;
+                                    device->prevIevTimeTvUsec = device->timestampOverrideUsec;
+                                }
+                                device->prevMscTimestamp = (uint32_t)iev.value;
+                                continue;
+                            // MSC_ANDROID_TIME_SEC and MSC_ANDROID_TIME_USEC are custom Android
+                            // extension of the input protocol, mainly intended for use with
+                            // uinput based device drivers.
+                            } else if (iev.code == MSC_ANDROID_TIME_SEC) {
                                 device->timestampOverrideSec = iev.value;
                                 continue;
                             } else if (iev.code == MSC_ANDROID_TIME_USEC) {
@@ -921,6 +949,7 @@ size_t EventHub::getEvents(int timeoutMillis, RawEvent* buffer, size_t bufferSiz
                                         "Using current time instead.",
                                         device->path.string(), event->when, time, now);
                                 event->when = time;
+                                device->prevTimestampValid = false;
                             } else {
                                 ALOGV("Event time is ok but failed the fast path and required "
                                         "an extra call to systemTime: "
