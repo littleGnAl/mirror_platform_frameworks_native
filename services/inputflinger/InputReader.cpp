@@ -502,8 +502,16 @@ InputDevice* InputReader::createDeviceLocked(int32_t deviceId, int32_t controlle
     }
 
     // Joystick-like devices.
+    uint32_t joystickSource = 0;
     if (classes & INPUT_DEVICE_CLASS_JOYSTICK) {
-        device->addMapper(new JoystickInputMapper(device));
+        joystickSource |= AINPUT_SOURCE_JOYSTICK;
+    }
+    if (classes & INPUT_DEVICE_CLASS_ACCELEROMETER) {
+        joystickSource |= AINPUT_SOURCE_ACCELEROMETER;
+    }
+
+    if (joystickSource != 0) {
+        device->addMapper(new JoystickInputMapper(device, joystickSource));
     }
 
     // External stylus-like devices.
@@ -6846,15 +6854,16 @@ void ExternalStylusInputMapper::sync(nsecs_t when) {
 
 // --- JoystickInputMapper ---
 
-JoystickInputMapper::JoystickInputMapper(InputDevice* device) :
-        InputMapper(device) {
+JoystickInputMapper::JoystickInputMapper(InputDevice* device,
+        uint32_t source) :
+        InputMapper(device), mSource(source) {
 }
 
 JoystickInputMapper::~JoystickInputMapper() {
 }
 
 uint32_t JoystickInputMapper::getSources() {
-    return AINPUT_SOURCE_JOYSTICK;
+    return mSource;
 }
 
 void JoystickInputMapper::populateDeviceInfo(InputDeviceInfo* info) {
@@ -6862,25 +6871,25 @@ void JoystickInputMapper::populateDeviceInfo(InputDeviceInfo* info) {
 
     for (size_t i = 0; i < mAxes.size(); i++) {
         const Axis& axis = mAxes.valueAt(i);
-        addMotionRange(axis.axisInfo.axis, axis, info);
+        addMotionRange(axis.axisInfo.axis, mSource, axis, info);
 
         if (axis.axisInfo.mode == AxisInfo::MODE_SPLIT) {
-            addMotionRange(axis.axisInfo.highAxis, axis, info);
+            addMotionRange(axis.axisInfo.highAxis, mSource, axis, info);
 
         }
     }
 }
 
-void JoystickInputMapper::addMotionRange(int32_t axisId, const Axis& axis,
-        InputDeviceInfo* info) {
-    info->addMotionRange(axisId, AINPUT_SOURCE_JOYSTICK,
+void JoystickInputMapper::addMotionRange(int32_t axisId, uint32_t source,
+        const Axis& axis, InputDeviceInfo* info) {
+    info->addMotionRange(axisId, source,
             axis.min, axis.max, axis.flat, axis.fuzz, axis.resolution);
     /* In order to ease the transition for developers from using the old axes
      * to the newer, more semantically correct axes, we'll continue to register
      * the old axes as duplicates of their corresponding new ones.  */
     int32_t compatAxis = getCompatAxis(axisId);
     if (compatAxis >= 0) {
-        info->addMotionRange(compatAxis, AINPUT_SOURCE_JOYSTICK,
+        info->addMotionRange(compatAxis, source,
                 axis.min, axis.max, axis.flat, axis.fuzz, axis.resolution);
     }
 }
@@ -7165,7 +7174,7 @@ void JoystickInputMapper::sync(nsecs_t when, bool force) {
     // TODO: Use the input device configuration to control this behavior more finely.
     uint32_t policyFlags = 0;
 
-    NotifyMotionArgs args(when, getDeviceId(), AINPUT_SOURCE_JOYSTICK, policyFlags,
+    NotifyMotionArgs args(when, getDeviceId(), mSource, policyFlags,
             AMOTION_EVENT_ACTION_MOVE, 0, 0, metaState, buttonState, AMOTION_EVENT_EDGE_FLAG_NONE,
             ADISPLAY_ID_NONE, 1, &pointerProperties, &pointerCoords, 0, 0, 0);
     getListener()->notifyMotion(&args);
