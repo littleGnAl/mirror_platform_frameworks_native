@@ -1902,7 +1902,7 @@ private:
 
 class JoystickInputMapper : public InputMapper {
 public:
-    explicit JoystickInputMapper(InputDevice* device);
+    explicit JoystickInputMapper(InputDevice* device, uint32_t source);
     virtual ~JoystickInputMapper();
 
     virtual uint32_t getSources();
@@ -1913,6 +1913,8 @@ public:
     virtual void process(const RawEvent* rawEvent);
 
 private:
+    uint32_t mSource;
+
     struct Axis {
         RawAbsoluteAxisInfo rawAxisInfo;
         AxisInfo axisInfo;
@@ -1981,7 +1983,7 @@ private:
     static bool isCenteredAxis(int32_t axis);
     static int32_t getCompatAxis(int32_t axis);
 
-    static void addMotionRange(int32_t axisId, const Axis& axis, InputDeviceInfo* info);
+    static void addMotionRange(int32_t axisId, uint32_t source, const Axis& axis, InputDeviceInfo* info);
     static void setPointerCoordsAxisValue(PointerCoords* pointerCoords, int32_t axis,
             float value);
 };
