@@ -366,6 +366,11 @@ private:
         int32_t timestampOverrideSec;
         int32_t timestampOverrideUsec;
 
+        bool     prevTimestampValid;
+        int32_t  prevIevTimeTvSec;
+        int32_t  prevIevTimeTvUsec;
+        uint32_t prevMscTimestamp;
+
         Device(int fd, int32_t id, const String8& path, const InputDeviceIdentifier& identifier);
         ~Device();
 
