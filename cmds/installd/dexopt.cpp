@@ -1540,6 +1540,21 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
             _exit(67);
         }
 
+        // Get the directory of the apk to run dex2oat in.
+        std::string apk_dir(dex_path);
+        unsigned long dirIndex = apk_dir.rfind('/');
+        if (dirIndex != std::string::npos) {
+            apk_dir = apk_dir.substr(0, dirIndex);
+        } else {
+            apk_dir = "/";
+        }
+
+        // Chdir into the directory of the input file.
+        if (chdir(apk_dir.c_str()) != 0) {
+            ALOGE("chdir(%s) failed.", apk_dir.c_str());
+            _exit(67);
+        }
+
         // Pass dex2oat the relative path to the input file.
         const char *input_file_name = get_location_from_path(dex_path);
         run_dex2oat(input_fd.get(),
