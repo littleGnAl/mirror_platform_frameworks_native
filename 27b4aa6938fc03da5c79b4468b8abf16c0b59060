@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93f9ae60_8d60a1bb",
+        "filename": "services/inputflinger/InputDispatcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2017-04-06T14:09:24Z",
+      "side": 1,
+      "message": "Check for NULL. Both mFocusedWindowHandle and info can be NULL (shouldn\u0027t, but could).",
+      "revId": "27b4aa6938fc03da5c79b4468b8abf16c0b59060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4c3a9e8_f2cc8eb9",
+        "filename": "services/inputflinger/InputDispatcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2017-04-06T14:09:24Z",
+      "side": 1,
+      "message": "nit: Unnecessary change (remove the new line you added).",
+      "revId": "27b4aa6938fc03da5c79b4468b8abf16c0b59060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
