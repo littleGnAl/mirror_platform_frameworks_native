@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5c35d19_c1f8b348",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2017-04-06T14:12:14Z",
+      "side": 1,
+      "message": "nit: Shorten the title, e.g. \n\n \"\n   Add condition to setNonDisplayViewport()...\n\n\n   ... when gestures are disabled for POINTER device.\n   In that case the device becomes a toucpad that has no\n   associated display etc.etc.\n \"",
+      "revId": "a1e72d9367c7fe66c25a951d737a1ee7e961e31d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
