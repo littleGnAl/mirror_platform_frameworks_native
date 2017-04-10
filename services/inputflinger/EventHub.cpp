@@ -633,7 +633,7 @@ void EventHub::assignDescriptorLocked(InputDeviceIdentifier& identifier) {
             identifier.descriptor.string());
 }
 
-void EventHub::vibrate(int32_t deviceId, nsecs_t duration) {
+void EventHub::vibrate(int32_t deviceId, VibrationEvent event) {
     AutoMutex _l(mLock);
     Device* device = getDeviceLocked(deviceId);
     if (device && !device->isVirtual()) {
@@ -641,9 +641,9 @@ void EventHub::vibrate(int32_t deviceId, nsecs_t duration) {
         memset(&effect, 0, sizeof(effect));
         effect.type = FF_RUMBLE;
         effect.id = device->ffEffectId;
-        effect.u.rumble.strong_magnitude = 0xc000;
-        effect.u.rumble.weak_magnitude = 0xc000;
-        effect.replay.length = (duration + 999999LL) / 1000000LL;
+        effect.u.rumble.strong_magnitude = event.strongMagnitude;
+        effect.u.rumble.weak_magnitude = event.weakMagnitude;
+        effect.replay.length = (event.duration + 999999LL) / 1000000LL;
         effect.replay.delay = 0;
         if (ioctl(device->fd, EVIOCSFF, &effect)) {
             ALOGW("Could not upload force feedback effect to device %s due to error %d.",
@@ -1500,7 +1500,7 @@ bool EventHub::hasKeycodeLocked(Device* device, int keycode) const {
     if (!device->keyMap.haveKeyLayout()) {
         return false;
     }
-    
+
     Vector<int32_t> scanCodes;
     device->keyMap.keyLayoutMap->findScanCodesForKey(keycode, &scanCodes);
     const size_t N = scanCodes.size();
@@ -1510,7 +1510,7 @@ bool EventHub::hasKeycodeLocked(Device* device, int keycode) const {
             return true;
         }
     }
-    
+
     return false;
 }
 

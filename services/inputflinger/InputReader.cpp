@@ -767,14 +767,14 @@ void InputReader::requestRefreshConfiguration(uint32_t changes) {
     }
 }
 
-void InputReader::vibrate(int32_t deviceId, const nsecs_t* pattern, size_t patternSize,
+void InputReader::vibrate(int32_t deviceId, const VibrationEvent* events, size_t eventsSize,
         ssize_t repeat, int32_t token) {
     AutoMutex _l(mLock);
 
     ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
     if (deviceIndex >= 0) {
         InputDevice* device = mDevices.valueAt(deviceIndex);
-        device->vibrate(pattern, patternSize, repeat, token);
+        device->vibrate(events, eventsSize, repeat, token);
     }
 }
 
@@ -1161,12 +1161,12 @@ bool InputDevice::markSupportedKeyCodes(uint32_t sourceMask, size_t numCodes,
     return result;
 }
 
-void InputDevice::vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat,
+void InputDevice::vibrate(const VibrationEvent* events, size_t eventsSize, ssize_t repeat,
         int32_t token) {
     size_t numMappers = mMappers.size();
     for (size_t i = 0; i < numMappers; i++) {
         InputMapper* mapper = mMappers[i];
-        mapper->vibrate(pattern, patternSize, repeat, token);
+        mapper->vibrate(events, eventsSize, repeat, token);
     }
 }
 
@@ -1897,7 +1897,7 @@ bool InputMapper::markSupportedKeyCodes(uint32_t sourceMask, size_t numCodes,
     return false;
 }
 
-void InputMapper::vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat,
+void InputMapper::vibrate(const VibrationEvent* events, size_t eventsSize, ssize_t repeat,
         int32_t token) {
 }
 
@@ -2025,23 +2025,26 @@ void VibratorInputMapper::process(const RawEvent* rawEvent) {
     // TODO: Handle FF_STATUS, although it does not seem to be widely supported.
 }
 
-void VibratorInputMapper::vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat,
-        int32_t token) {
+void VibratorInputMapper::vibrate(const VibrationEvent* events, size_t eventsSize,
+        ssize_t repeat, int32_t token) {
 #if DEBUG_VIBRATOR
-    String8 patternStr;
-    for (size_t i = 0; i < patternSize; i++) {
+    String8 eventsStr;
+    for (size_t i = 0; i < eventsSize; i++) {
         if (i != 0) {
-            patternStr.append(", ");
+            eventsStr.append(", ");
         }
-        patternStr.appendFormat("%lld", pattern[i]);
+
+        VibrationEvent event = events[i];
+        eventsStr.appendFormat("[[strong:%hd, weak:%hd]: %lld ns]",
+                event.strongMagnitude, event.weakMagnitude, event.duration);
     }
-    ALOGD("vibrate: deviceId=%d, pattern=[%s], repeat=%ld, token=%d",
-            getDeviceId(), patternStr.string(), repeat, token);
+    ALOGD("vibrate: deviceId=%d, events=[%s], repeat=%zd, token=%d",
+            getDeviceId(), eventsStr.string(), repeat, token);
 #endif
 
     mVibrating = true;
-    memcpy(mPattern, pattern, patternSize * sizeof(nsecs_t));
-    mPatternSize = patternSize;
+    memcpy(mEvents, events, eventsSize * sizeof(struct VibrationEvent));
+    mEventsSize = eventsSize;
     mRepeat = repeat;
     mToken = token;
     mIndex = -1;
@@ -2071,7 +2074,7 @@ void VibratorInputMapper::timeoutExpired(nsecs_t when) {
 
 void VibratorInputMapper::nextStep() {
     mIndex += 1;
-    if (size_t(mIndex) >= mPatternSize) {
+    if (size_t(mIndex) >= mEventsSize) {
         if (mRepeat < 0) {
             // We are done.
             stopVibrating();
@@ -2080,14 +2083,15 @@ void VibratorInputMapper::nextStep() {
         mIndex = mRepeat;
     }
 
-    bool vibratorOn = mIndex & 1;
-    nsecs_t duration = mPattern[mIndex];
+    VibrationEvent event = mEvents[mIndex];
+    bool vibratorOn = (event.strongMagnitude != 0) || (event.weakMagnitude != 0);
     if (vibratorOn) {
 #if DEBUG_VIBRATOR
-        ALOGD("nextStep: sending vibrate deviceId=%d, duration=%lld",
-                getDeviceId(), duration);
+        ALOGD("nextStep: sending vibrate deviceId=%d, event=[[strong:%hd, weak:"
+                "%hd]: %lld ns]", getDeviceId(), event.strongMagnitude,
+                event.weakMagnitude, event.duration);
 #endif
-        getEventHub()->vibrate(getDeviceId(), duration);
+        getEventHub()->vibrate(getDeviceId(), event);
     } else {
 #if DEBUG_VIBRATOR
         ALOGD("nextStep: sending cancel vibrate deviceId=%d", getDeviceId());
@@ -2095,10 +2099,10 @@ void VibratorInputMapper::nextStep() {
         getEventHub()->cancelVibrate(getDeviceId());
     }
     nsecs_t now = systemTime(SYSTEM_TIME_MONOTONIC);
-    mNextStepTime = now + duration;
+    mNextStepTime = now + event.duration;
     getContext()->requestTimeoutAtTime(mNextStepTime);
 #if DEBUG_VIBRATOR
-    ALOGD("nextStep: scheduled timeout in %0.3fms", duration * 0.000001f);
+    ALOGD("nextStep: scheduled timeout in %0.3fms", ((float) event.duration) * 0.000001f);
 #endif
 }
 

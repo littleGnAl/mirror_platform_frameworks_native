@@ -690,7 +690,7 @@ private:
         return false;
     }
 
-    virtual void vibrate(int32_t, nsecs_t) {
+    virtual void vibrate(int32_t, VibrationEvent) {
     }
 
     virtual void cancelVibrate(int32_t) {
