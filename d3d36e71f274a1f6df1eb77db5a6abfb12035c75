@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0138d09_8aadace5",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-04-11T23:00:27Z",
+      "side": 1,
+      "message": "(we really ought to have a Copy too...)",
+      "range": {
+        "startLine": 979,
+        "startChar": 32,
+        "endLine": 979,
+        "endChar": 42
+      },
+      "revId": "d3d36e71f274a1f6df1eb77db5a6abfb12035c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
