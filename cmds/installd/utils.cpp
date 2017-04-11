@@ -170,12 +170,20 @@ std::string create_data_app_path(const char* volume_uuid) {
 
 /**
  * Create the path name for user data for a certain userid.
+ * Keep same implementation as vold to minimize path walking overhead
  */
 std::string create_data_user_ce_path(const char* volume_uuid, userid_t userid) {
     std::string data(create_data_path(volume_uuid));
     if (volume_uuid == nullptr) {
         if (userid == 0) {
-            return StringPrintf("%s/data", data.c_str());
+            std::string legacy = StringPrintf("%s/data", data.c_str());
+            struct stat sb;
+            if (lstat(legacy.c_str(), &sb) == 0 && S_ISDIR(sb.st_mode)) {
+                /* /data/data is dir, return /data/data for legacy system */
+                return legacy;
+            } else {
+                return StringPrintf("%s/user/%u", data.c_str(), userid);
+            }
         } else {
             return StringPrintf("%s/user/%u", data.c_str(), userid);
         }
