@@ -469,6 +469,11 @@ InputDevice* InputReader::createDeviceLocked(int32_t deviceId, int32_t controlle
         device->addMapper(new VibratorInputMapper(device));
     }
 
+    // LED-like devices.
+    if (classes & INPUT_DEVICE_CLASS_LEDS) {
+        device->addMapper(new LedInputMapper(device));
+    }
+
     // Keyboard-like devices.
     uint32_t keyboardSource = 0;
     int32_t keyboardType = AINPUT_KEYBOARD_TYPE_NON_ALPHABETIC;
@@ -786,6 +791,90 @@ void InputReader::cancelVibrate(int32_t deviceId, int32_t token) {
         InputDevice* device = mDevices.valueAt(deviceIndex);
         device->cancelVibrate(token);
     }
+}
+
+int32_t InputReader::hasLeds(int32_t deviceId) {
+    AutoMutex _l(mLock);
+
+    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
+    if (deviceIndex >= 0) {
+        InputDevice* device = mDevices.valueAt(deviceIndex);
+        return device->hasLeds();
+    }
+
+    return 0;
+}
+
+const String8 InputReader::getLedName(int32_t deviceId, int32_t ledId) {
+    AutoMutex _l(mLock);
+
+    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
+    if (deviceIndex >= 0) {
+        InputDevice* device = mDevices.valueAt(deviceIndex);
+        return device->getLedName(ledId);
+    }
+
+    return String8();
+}
+
+int32_t InputReader::getLedMaxBrightness(int32_t deviceId, int32_t ledId) {
+    AutoMutex _l(mLock);
+
+    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
+    if (deviceIndex >= 0) {
+        InputDevice* device = mDevices.valueAt(deviceIndex);
+        return device->getLedMaxBrightness(ledId);
+    }
+
+    return -ENODEV;
+}
+
+int32_t InputReader::getLedBrightness(int32_t deviceId, int32_t ledId) {
+    AutoMutex _l(mLock);
+
+    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
+    if (deviceIndex >= 0) {
+        InputDevice* device = mDevices.valueAt(deviceIndex);
+        return device->getLedBrightness(ledId);
+    }
+
+    return -ENODEV;
+}
+
+int32_t InputReader::setLedBrightness(int32_t deviceId, int32_t ledId, int32_t brightness) {
+    AutoMutex _l(mLock);
+
+    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
+    if (deviceIndex >= 0) {
+        InputDevice* device = mDevices.valueAt(deviceIndex);
+        return device->setLedBrightness(ledId, brightness);
+    }
+
+    return -ENODEV;
+}
+
+int32_t InputReader::getLedBlink(int32_t deviceId, int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs) {
+    AutoMutex _l(mLock);
+
+    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
+    if (deviceIndex >= 0) {
+        InputDevice* device = mDevices.valueAt(deviceIndex);
+        return device->getLedBlink(ledId, blinkOnMs, blinkOffMs);
+    }
+
+    return -ENODEV;
+}
+
+int32_t InputReader::setLedBlink(int32_t deviceId, int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs) {
+    AutoMutex _l(mLock);
+
+    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
+    if (deviceIndex >= 0) {
+        InputDevice* device = mDevices.valueAt(deviceIndex);
+        return device->setLedBlink(ledId, blinkOnMs, blinkOffMs);
+    }
+
+    return -ENODEV;
 }
 
 void InputReader::dump(String8& dump) {
@@ -1184,6 +1273,97 @@ void InputDevice::cancelTouch(nsecs_t when) {
         InputMapper* mapper = mMappers[i];
         mapper->cancelTouch(when);
     }
+}
+
+int32_t InputDevice::hasLeds() {
+    size_t numMappers = mMappers.size();
+    int32_t result;
+    for (size_t i = 0; i < numMappers; i++) {
+        InputMapper* mapper = mMappers[i];
+        result = mapper->hasLeds();
+        if (result > 0)
+            return result;
+    }
+
+    return 0;
+}
+
+const String8 InputDevice::getLedName(int32_t ledId) {
+    size_t numMappers = mMappers.size();
+    String8 result;
+    for (size_t i = 0; i < numMappers; i++) {
+        InputMapper* mapper = mMappers[i];
+        result = mapper->getLedName(ledId);
+        if (!result.isEmpty())
+            return result;
+    }
+
+    return String8();
+}
+
+int32_t InputDevice::getLedMaxBrightness(int32_t ledId) {
+    size_t numMappers = mMappers.size();
+    int32_t result;
+    for (size_t i = 0; i < numMappers; i++) {
+        InputMapper* mapper = mMappers[i];
+        result = mapper->getLedMaxBrightness(ledId);
+        if (result >= 0)
+            return result;
+    }
+
+    return -ENOSYS;
+}
+
+int32_t InputDevice::getLedBrightness(int32_t ledId) {
+    size_t numMappers = mMappers.size();
+    int32_t result;
+    for (size_t i = 0; i < numMappers; i++) {
+        InputMapper* mapper = mMappers[i];
+        result = mapper->getLedBrightness(ledId);
+        if (result >= 0)
+            return result;
+    }
+
+    return -ENOSYS;
+}
+
+int32_t InputDevice::setLedBrightness(int32_t ledId, int32_t brightness) {
+    size_t numMappers = mMappers.size();
+    int32_t result;
+    for (size_t i = 0; i < numMappers; i++) {
+        InputMapper* mapper = mMappers[i];
+        result = mapper->setLedBrightness(ledId, brightness);
+        if (result >= 0)
+            return result;
+    }
+
+    return -ENOSYS;
+}
+
+int32_t InputDevice::getLedBlink(int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs) {
+    size_t numMappers = mMappers.size();
+    int32_t result;
+    for (size_t i = 0; i < numMappers; i++) {
+        InputMapper* mapper = mMappers[i];
+        result = mapper->getLedBlink(ledId, blinkOnMs, blinkOffMs);
+        if (result >= 0)
+            return result;
+    }
+
+    return -ENOSYS;
+}
+
+int32_t InputDevice::setLedBlink(int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs) {
+    size_t numMappers = mMappers.size();
+    int32_t result;
+    for (size_t i = 0; i < numMappers; i++) {
+        InputMapper* mapper = mMappers[i];
+        result = mapper->setLedBlink(ledId, blinkOnMs, blinkOffMs);
+        if (result >= 0)
+            return result;
+    }
+
+    return -ENOSYS;
 }
 
 int32_t InputDevice::getMetaState() {
@@ -1907,6 +2087,34 @@ void InputMapper::cancelVibrate(int32_t token) {
 void InputMapper::cancelTouch(nsecs_t when) {
 }
 
+int32_t InputMapper::hasLeds() {
+    return 0;
+}
+
+const String8 InputMapper::getLedName(int32_t ledId) {
+    return String8();
+}
+
+int32_t InputMapper::getLedMaxBrightness(int32_t ledId) {
+    return -ENODEV;
+}
+
+int32_t InputMapper::getLedBrightness(int32_t ledId) {
+    return -ENODEV;
+}
+
+int32_t InputMapper::setLedBrightness(int32_t ledId, int32_t brightness) {
+    return -ENODEV;
+}
+
+int32_t InputMapper::getLedBlink(int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs) {
+    return -ENODEV;
+}
+
+int32_t InputMapper::setLedBlink(int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs) {
+    return -ENODEV;
+}
+
 int32_t InputMapper::getMetaState() {
     return 0;
 }
@@ -2113,6 +2321,74 @@ void VibratorInputMapper::stopVibrating() {
 void VibratorInputMapper::dump(String8& dump) {
     dump.append(INDENT2 "Vibrator Input Mapper:\n");
     dump.appendFormat(INDENT3 "Vibrating: %s\n", toString(mVibrating));
+}
+
+
+// --- LedInputMapper ---
+
+LedInputMapper::LedInputMapper(InputDevice* device) :
+        InputMapper(device) {
+}
+
+LedInputMapper::~LedInputMapper() {
+}
+
+uint32_t LedInputMapper::getSources() {
+    return 0;
+}
+
+void LedInputMapper::populateDeviceInfo(InputDeviceInfo* info) {
+    InputMapper::populateDeviceInfo(info);
+
+    info->setLed(true);
+}
+
+void LedInputMapper::process(const RawEvent* rawEvent) {
+    // TODO: Handle EV_LED if there is a need for it
+}
+
+int32_t LedInputMapper::hasLeds() {
+    return getEventHub()->hasLeds(getDeviceId());
+}
+
+const String8 LedInputMapper::getLedName(int32_t ledId) {
+    return getEventHub()->getLedName(getDeviceId(), ledId);
+}
+
+int32_t LedInputMapper::getLedMaxBrightness(int32_t ledId) {
+    return getEventHub()->getLedMaxBrightness(getDeviceId(), ledId);
+}
+
+int32_t LedInputMapper::getLedBrightness(int32_t ledId) {
+    return getEventHub()->getLedBrightness(getDeviceId(), ledId);
+}
+
+int32_t LedInputMapper::setLedBrightness(int32_t ledId, int32_t brightness) {
+    return getEventHub()->setLedBrightness(getDeviceId(), ledId, brightness);
+}
+
+int32_t LedInputMapper::getLedBlink(int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs) {
+    return getEventHub()->getLedBlink(getDeviceId(), ledId, blinkOnMs, blinkOffMs);
+}
+
+int32_t LedInputMapper::setLedBlink(int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs) {
+    return getEventHub()->setLedBlink(getDeviceId(), ledId, blinkOnMs, blinkOffMs);
+}
+
+void LedInputMapper::dump(String8& dump) {
+    dump.append(INDENT2 "LED Input Mapper:\n");
+    int32_t numLeds = hasLeds();
+    dump.appendFormat(INDENT3 "Number of LEDs: %d\n", numLeds);
+    for (int32_t i = 0; i < numLeds; i++) {
+        dump.appendFormat(INDENT4 "%s:\n", getLedName(i).string());
+        dump.appendFormat(INDENT5 "Max brightness: %d\n", getLedMaxBrightness(i));
+        dump.appendFormat(INDENT5 "Brightness: %d\n", getLedBrightness(i));
+        int32_t blinkOnMs = 0;
+        int32_t blinkOffMs = 0;
+        getLedBlink(i, blinkOnMs, blinkOffMs);
+        dump.appendFormat(INDENT5 "Blinking interval (on): %d ms\n", blinkOnMs);
+        dump.appendFormat(INDENT5 "Blinking interval (off): %d ms\n", blinkOffMs);
+    }
 }
 
 

@@ -140,6 +140,9 @@ enum {
     /* The input device has a rotary encoder */
     INPUT_DEVICE_CLASS_ROTARY_ENCODER = 0x00001000,
 
+    /* The input device has LED(s). */
+    INPUT_DEVICE_CLASS_LEDS         = 0x00004000,
+
     /* The input device is virtual (not a real device, not part of UI configuration). */
     INPUT_DEVICE_CLASS_VIRTUAL       = 0x40000000,
 
@@ -256,6 +259,15 @@ public:
     virtual void vibrate(int32_t deviceId, nsecs_t duration) = 0;
     virtual void cancelVibrate(int32_t deviceId) = 0;
 
+    /* Control the LED(s). */
+    virtual int32_t hasLeds(int32_t deviceId) const = 0;
+    virtual const String8 getLedName(int32_t deviceId, int32_t ledId) const = 0;
+    virtual int32_t getLedMaxBrightness(int32_t deviceId, int32_t ledId) const = 0;
+    virtual int32_t getLedBrightness(int32_t deviceId, int32_t ledId) const = 0;
+    virtual int32_t setLedBrightness(int32_t deviceId, int32_t ledId, int32_t brightness) = 0;
+    virtual int32_t getLedBlink(int32_t deviceId, int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs) const = 0;
+    virtual int32_t setLedBlink(int32_t deviceId, int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs) = 0;
+
     /* Requests the EventHub to reopen all input devices on the next call to getEvents(). */
     virtual void requestReopenDevices() = 0;
 
@@ -321,6 +333,14 @@ public:
     virtual void vibrate(int32_t deviceId, nsecs_t duration);
     virtual void cancelVibrate(int32_t deviceId);
 
+    virtual int32_t hasLeds(int32_t deviceId) const;
+    virtual const String8 getLedName(int32_t deviceId, int32_t ledId) const;
+    virtual int32_t getLedMaxBrightness(int32_t deviceId, int32_t ledId) const;
+    virtual int32_t getLedBrightness(int32_t deviceId, int32_t ledId) const;
+    virtual int32_t setLedBrightness(int32_t deviceId, int32_t ledId, int32_t brightness);
+    virtual int32_t getLedBlink(int32_t deviceId, int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs) const;
+    virtual int32_t setLedBlink(int32_t deviceId, int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs);
+
     virtual void requestReopenDevices();
 
     virtual void wake();
@@ -361,6 +381,10 @@ private:
         bool ffEffectPlaying;
         int16_t ffEffectId; // initially -1
 
+        String8 ledSysfsPath;
+        int32_t numLeds;
+        KeyedVector<int32_t, String8> ledsName;
+
         int32_t controllerNumber;
 
         int32_t timestampOverrideSec;
@@ -397,6 +421,9 @@ private:
     Device* getDeviceByDescriptorLocked(String8& descriptor) const;
     Device* getDeviceLocked(int32_t deviceId) const;
     Device* getDeviceByPathLocked(const char* devicePath) const;
+
+    bool searchInputPathLocked(String8& searchPath) const;
+    bool getLedSysfsPathLocked(const String8& eventName, String8& ledSysfsPath) const;
 
     bool hasKeycodeLocked(Device* device, int keycode) const;
 

@@ -375,6 +375,15 @@ public:
     virtual void vibrate(int32_t deviceId, const nsecs_t* pattern, size_t patternSize,
             ssize_t repeat, int32_t token) = 0;
     virtual void cancelVibrate(int32_t deviceId, int32_t token) = 0;
+
+    /* Controls the LED(s) of a particular input device. */
+    virtual int32_t hasLeds(int32_t deviceId) = 0;
+    virtual const String8 getLedName(int32_t deviceId, int32_t ledId) = 0;
+    virtual int32_t getLedMaxBrightness(int32_t deviceId, int32_t ledId) = 0;
+    virtual int32_t getLedBrightness(int32_t deviceId, int32_t ledId) = 0;
+    virtual int32_t setLedBrightness(int32_t deviceId, int32_t ledId, int32_t brightness) = 0;
+    virtual int32_t getLedBlink(int32_t deviceId, int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs) = 0;
+    virtual int32_t setLedBlink(int32_t deviceId, int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs) = 0;
 };
 
 struct StylusState {
@@ -474,6 +483,14 @@ public:
     virtual void vibrate(int32_t deviceId, const nsecs_t* pattern, size_t patternSize,
             ssize_t repeat, int32_t token);
     virtual void cancelVibrate(int32_t deviceId, int32_t token);
+
+    virtual int32_t hasLeds(int32_t deviceId);
+    virtual const String8 getLedName(int32_t deviceId, int32_t ledId);
+    virtual int32_t getLedMaxBrightness(int32_t deviceId, int32_t ledId);
+    virtual int32_t getLedBrightness(int32_t deviceId, int32_t ledId);
+    virtual int32_t setLedBrightness(int32_t deviceId, int32_t ledId, int32_t brightness);
+    virtual int32_t getLedBlink(int32_t deviceId, int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs);
+    virtual int32_t setLedBlink(int32_t deviceId, int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs);
 
 protected:
     // These members are protected so they can be instrumented by test cases.
@@ -619,6 +636,14 @@ public:
     void vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat, int32_t token);
     void cancelVibrate(int32_t token);
     void cancelTouch(nsecs_t when);
+
+    int32_t hasLeds();
+    const String8 getLedName(int32_t ledId);
+    int32_t getLedMaxBrightness(int32_t ledId);
+    int32_t getLedBrightness(int32_t ledId);
+    int32_t setLedBrightness(int32_t ledId, int32_t brightness);
+    int32_t getLedBlink(int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs);
+    int32_t setLedBlink(int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs);
 
     int32_t getMetaState();
     void updateMetaState(int32_t keyCode);
@@ -1036,6 +1061,14 @@ public:
     virtual void cancelVibrate(int32_t token);
     virtual void cancelTouch(nsecs_t when);
 
+    virtual int32_t hasLeds();
+    virtual const String8 getLedName(int32_t ledId);
+    virtual int32_t getLedMaxBrightness(int32_t ledId);
+    virtual int32_t getLedBrightness(int32_t ledId);
+    virtual int32_t setLedBrightness(int32_t ledId, int32_t brightness);
+    virtual int32_t getLedBlink(int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs);
+    virtual int32_t setLedBlink(int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs);
+
     virtual int32_t getMetaState();
     virtual void updateMetaState(int32_t keyCode);
 
@@ -1102,6 +1135,26 @@ private:
 
     void nextStep();
     void stopVibrating();
+};
+
+
+class LedInputMapper : public InputMapper {
+public:
+    LedInputMapper(InputDevice* device);
+    virtual ~LedInputMapper();
+
+    virtual uint32_t getSources();
+    virtual void populateDeviceInfo(InputDeviceInfo* deviceInfo);
+    virtual void process(const RawEvent* rawEvent);
+
+    virtual int32_t hasLeds();
+    virtual const String8 getLedName(int32_t ledId);
+    virtual int32_t getLedMaxBrightness(int32_t ledId);
+    virtual int32_t getLedBrightness(int32_t ledId);
+    virtual int32_t setLedBrightness(int32_t ledId, int32_t brightness);
+    virtual int32_t getLedBlink(int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs);
+    virtual int32_t setLedBlink(int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs);
+    virtual void dump(String8& dump);
 };
 
 

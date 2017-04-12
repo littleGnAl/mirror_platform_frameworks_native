@@ -696,6 +696,28 @@ private:
     virtual void cancelVibrate(int32_t) {
     }
 
+    virtual int32_t hasLeds(int32_t deviceId) const {
+        return 0;
+    }
+    virtual const String8 getLedName(int32_t deviceId, int32_t ledId) const {
+        return String8();
+    }
+    virtual int32_t getLedMaxBrightness(int32_t deviceId, int32_t ledId) const {
+        return -ENODEV;
+    }
+    virtual int32_t getLedBrightness(int32_t deviceId, int32_t ledId) const {
+        return -ENODEV;
+    }
+    virtual int32_t setLedBrightness(int32_t deviceId, int32_t ledId, int32_t brightness) {
+        return -ENODEV;
+    }
+    virtual int32_t getLedBlink(int32_t deviceId, int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs) const {
+        return -ENODEV;
+    }
+    virtual int32_t setLedBlink(int32_t deviceId, int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs) {
+        return -ENODEV;
+    }
+
     virtual bool isExternal(int32_t) const {
         return false;
     }
