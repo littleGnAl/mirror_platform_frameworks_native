@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7eb22870_31803571",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-12T17:50:43Z",
+      "side": 1,
+      "message": "I think this is faster because of the small buffer, and not because of sendfile vs. read/write.  The trace buffer is implemented using seq_printf, which allocates a small buffer (1 page), fills it, and if it overflows throws it away and starts over with the buffer doubled in size.  In addition, the buffer is allocated physically contiguous.  By requesting a 64 MB buffer you are causing the kernel to do ~128MB of output, half of which is thrown away, plus some very large physically contiguous allocations.\n\nTLDR; use a small buffer with sendfile",
+      "revId": "d3d36e71f274a1f6df1eb77db5a6abfb12035c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0138d09_8aadace5",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 1
