@@ -703,6 +703,344 @@ void EventHub::cancelVibrate(int32_t deviceId) {
     }
 }
 
+int32_t EventHub::hasLeds(int32_t deviceId) const {
+    AutoMutex _l(mLock);
+    Device* device = getDeviceLocked(deviceId);
+
+    if (!device) {
+        return -ENODEV;
+    }
+
+    return device->numLeds;
+}
+
+const String8 EventHub::getLedName(int32_t deviceId, int32_t ledId) const {
+    AutoMutex _l(mLock);
+    Device* device = getDeviceLocked(deviceId);
+
+    if (!device) {
+        return String8();
+    }
+
+    return device->ledsName.valueAt(ledId);
+}
+
+int32_t EventHub::getLedMaxBrightness(int32_t deviceId, int32_t ledId) const {
+    AutoMutex _l(mLock);
+    Device* device = getDeviceLocked(deviceId);
+    char ledData[8];
+    String8 ledPath;
+    int32_t ledFd;
+
+    if (device && !device->isVirtual) {
+        ledPath = device->ledSysfsPath
+                +device->ledsName.valueAt(ledId) +String8("/max_brightness");
+        ledFd = open(ledPath.string(), O_RDONLY);
+        if (ledFd < 0) {
+            ALOGW("Could not open file %s on device %s due to error %d.",
+                    ledPath.string(), device->identifier.name.string(), errno);
+            return -errno;
+        }
+        else {
+            int32_t rc = read(ledFd, &ledData, sizeof(ledData));
+            close(ledFd);
+            if (rc < 0)
+            {
+                ALOGW("Could not read maximum brightness on device %s led %s due to error %d.",
+                        device->identifier.name.string(),
+                        device->ledsName.valueAt(ledId).string(), errno);
+                return -errno;
+            }
+            return atoi(ledData);
+        }
+    }
+
+    return -ENODEV;
+}
+
+int32_t EventHub::getLedBrightness(int32_t deviceId, int32_t ledId) const {
+    AutoMutex _l(mLock);
+    Device* device = getDeviceLocked(deviceId);
+
+    char ledData[8];
+    String8 ledPath;
+    int32_t ledFd;
+
+    if (device && !device->isVirtual) {
+        ledPath = device->ledSysfsPath
+                +device->ledsName.valueAt(ledId) +String8("/brightness");
+        ledFd = open(ledPath.string(), O_RDONLY);
+        if (ledFd < 0) {
+            ALOGW("Could not open file %s on device %s due to error %d.",
+                    ledPath.string(), device->identifier.name.string(), errno);
+            return -errno;
+        }
+        else {
+            int32_t rc = read(ledFd, &ledData, sizeof(ledData));
+            close(ledFd);
+            if (rc < 0)
+            {
+                ALOGW("Could not read brightness on device %s led %s due to error %d.",
+                        device->identifier.name.string(),
+                        device->ledsName.valueAt(ledId).string(), errno);
+                return -errno;
+            }
+            return atoi(ledData);
+        }
+    }
+
+    return -ENODEV;
+}
+
+int32_t EventHub::setLedBrightness(int32_t deviceId, int32_t ledId, int32_t brightness) {
+    AutoMutex _l(mLock);
+    Device* device = getDeviceLocked(deviceId);
+    char ledData[8];
+    String8 ledPath;
+    int32_t ledFd;
+
+    if (device && !device->isVirtual) {
+        sprintf(ledData, "%d", brightness);
+        ledPath = device->ledSysfsPath
+                +device->ledsName.valueAt(ledId) +String8("/brightness");
+        ledFd = open(ledPath.string(), O_WRONLY);
+        if (ledFd < 0) {
+            ALOGW("Could not open file %s on device %s due to error %d.",
+                    ledPath.string(), device->identifier.name.string(), errno);
+            return -errno;
+        }
+        else {
+            int32_t rc = write(ledFd, &ledData, sizeof(ledData));
+            close(ledFd);
+            if (rc < 0)
+            {
+                ALOGW("Could not write brightness on device %s led %s due to error %d.",
+                        device->identifier.name.string(),
+                        device->ledsName.valueAt(ledId).string(), errno);
+                return -errno;
+            }
+            return 0;
+        }
+    }
+
+    return -ENODEV;
+}
+
+int32_t EventHub::getLedBlink(int32_t deviceId, int32_t ledId, int32_t &blinkOnMs, int32_t &blinkOffMs) const {
+    AutoMutex _l(mLock);
+    Device* device = getDeviceLocked(deviceId);
+
+    char ledData[512];
+    String8 ledPath;
+    int32_t ledFd;
+
+    if (!device || device->isVirtual) {
+        return -ENODEV;
+    }
+
+    // Read trigger mode
+    ledPath = device->ledSysfsPath
+            +device->ledsName.valueAt(ledId) +String8("/trigger");
+    ledFd = open(ledPath.string(), O_RDWR);
+    if (ledFd < 0) {
+        ALOGW("Could not open file %s on device %s due to error %d.",
+                ledPath.string(), device->identifier.name.string(), errno);
+        return -errno;
+    }
+    else {
+        int32_t rc = read(ledFd, &ledData, sizeof(ledData));
+        close(ledFd);
+        if (rc < 0)
+        {
+            ALOGW("Could not read trigger on device %s led %s due to error %d.",
+                    device->identifier.name.string(),
+                    device->ledsName.valueAt(ledId).string(), errno);
+            return -errno;
+        }
+    }
+
+    // If 'timer' trigger mode is not available
+    if (String8(ledData).find("timer") < 0) {
+        ALOGW("'timer' trigger mode is not available on device %s led %s.",
+                device->identifier.name.string(),
+                device->ledsName.valueAt(ledId).string());
+        return -ENOSYS;
+    }
+
+    // If trigger mode is not in [timer], return blinkOnMs/blinkOffMs=0
+    if (String8(ledData).find("[timer]") < 0) {
+        blinkOnMs = 0;
+        blinkOffMs = 0;
+        return 0;
+    }
+
+    // read blinking interval
+    ledPath = device->ledSysfsPath
+            +device->ledsName.valueAt(ledId) +String8("/delay_on");
+    ledFd = open(ledPath.string(), O_RDONLY);
+    if (ledFd < 0) {
+        ALOGW("Could not open file %s on device %s due to error %d.",
+                ledPath.string(), device->identifier.name.string(), errno);
+        return -errno;
+    }
+    else {
+        int32_t rc = read(ledFd, &ledData, sizeof(ledData));
+        close(ledFd);
+        if (rc < 0)
+        {
+            ALOGW("Could not read delay_on on device %s led %s due to error %d.",
+                    device->identifier.name.string(),
+                    device->ledsName.valueAt(ledId).string(), errno);
+            return -errno;
+        }
+        blinkOnMs = atoi(ledData);
+    }
+
+    ledPath = device->ledSysfsPath
+            +device->ledsName.valueAt(ledId) +String8("/delay_off");
+    ledFd = open(ledPath.string(), O_RDONLY);
+    if (ledFd < 0) {
+        ALOGW("Could not open file %s on device %s due to error %d.",
+                ledPath.string(), device->identifier.name.string(), errno);
+        return -errno;
+    }
+    else {
+        int32_t rc = read(ledFd, &ledData, sizeof(ledData));
+        close(ledFd);
+        if (rc < 0)
+        {
+            ALOGW("Could not read delay_off on device %s led %s due to error %d.",
+                    device->identifier.name.string(),
+                    device->ledsName.valueAt(ledId).string(), errno);
+            return -errno;
+        }
+        blinkOffMs = atoi(ledData);
+    }
+
+    return 1;
+}
+
+int32_t EventHub::setLedBlink(int32_t deviceId, int32_t ledId, int32_t blinkOnMs, int32_t blinkOffMs) {
+    AutoMutex _l(mLock);
+    Device* device = getDeviceLocked(deviceId);
+    char ledData[512];
+    String8 ledPath;
+    int32_t ledFd;
+
+    if (!device || device->isVirtual) {
+        return -ENODEV;
+    }
+
+    // Read trigger mode
+    ledPath = device->ledSysfsPath
+            +device->ledsName.valueAt(ledId) +String8("/trigger");
+    ledFd = open(ledPath.string(), O_RDWR);
+    if (ledFd < 0) {
+        ALOGW("Could not open file %s on device %s due to error %d.",
+                ledPath.string(), device->identifier.name.string(), errno);
+        return -errno;
+    }
+    else {
+        int32_t rc = read(ledFd, &ledData, sizeof(ledData));
+        if (rc < 0)
+        {
+            ALOGW("Could not read trigger on device %s led %s due to error %d.",
+                    device->identifier.name.string(),
+                    device->ledsName.valueAt(ledId).string(), errno);
+            close(ledFd);
+            return -errno;
+        }
+    }
+
+    // If 'timer' trigger mode is not available
+    if (String8(ledData).find("timer") < 0) {
+        ALOGW("'timer' trigger mode is not available on device %s led %s.",
+                device->identifier.name.string(),
+                device->ledsName.valueAt(ledId).string());
+        close(ledFd);
+        return -ENOSYS;
+    }
+
+    // If trigger mode is not in [timer], set to [timer]
+    if (String8(ledData).find("[timer]") < 0) {
+        sprintf(ledData, "timer");
+        ledPath = device->ledSysfsPath
+                +device->ledsName.valueAt(ledId) +String8("/trigger");
+        int32_t rc = write(ledFd, &ledData, sizeof(ledData));
+        if (rc < 0)
+        {
+            ALOGW("Could not write trigger on device %s led %s due to error %d.",
+                    device->identifier.name.string(),
+                    device->ledsName.valueAt(ledId).string(), errno);
+            close(ledFd);
+            return -errno;
+        }
+    }
+    close(ledFd);
+
+    // Wait up to 100ms for the delay_on/delay_off nodes to be writable.
+    // The nodes get created very quickly, but the write permission can
+    // take a while.
+    ledPath = device->ledSysfsPath
+            +device->ledsName.valueAt(ledId) +String8("/delay_on");
+    for (int32_t i = 0; i < 10; i++) {
+        if (access(ledPath.string(), W_OK) == 0) {
+            ledPath = device->ledSysfsPath
+                    +device->ledsName.valueAt(ledId) +String8("/delay_off");
+            if (access(ledPath.string(), W_OK) == 0) {
+                break;
+            }
+        } else {
+            usleep(10000);
+        }
+    }
+
+    // write blinking interval
+    sprintf(ledData, "%d", blinkOnMs);
+    ledPath = device->ledSysfsPath
+            +device->ledsName.valueAt(ledId) +String8("/delay_on");
+    ledFd = open(ledPath.string(), O_WRONLY);
+    if (ledFd < 0) {
+        ALOGW("Could not open file %s on device %s due to error %d.",
+                ledPath.string(), device->identifier.name.string(), errno);
+        return -errno;
+    }
+    else {
+        int32_t rc = write(ledFd, &ledData, sizeof(ledData));
+        close(ledFd);
+        if (rc < 0)
+        {
+            ALOGW("Could not write delay_on on device %s led %s due to error %d.",
+                    device->identifier.name.string(),
+                    device->ledsName.valueAt(ledId).string(), errno);
+            return -errno;
+        }
+    }
+
+    sprintf(ledData, "%d", blinkOffMs);
+    ledPath = device->ledSysfsPath
+            +device->ledsName.valueAt(ledId) +String8("/delay_off");
+    ledFd = open(ledPath.string(), O_WRONLY);
+    if (ledFd < 0) {
+        ALOGW("Could not open file %s on device %s due to error %d.",
+                ledPath.string(), device->identifier.name.string(), errno);
+        return -errno;
+    }
+    else {
+        int32_t rc = write(ledFd, &ledData, sizeof(ledData));
+        close(ledFd);
+        if (rc < 0)
+        {
+            ALOGW("Could not write delay_off on device %s led %s due to error %d.",
+                    device->identifier.name.string(),
+                    device->ledsName.valueAt(ledId).string(), errno);
+            return -errno;
+        }
+    }
+
+    return 0;
+}
+
 EventHub::Device* EventHub::getDeviceByDescriptorLocked(String8& descriptor) const {
     size_t size = mDevices.size();
     for (size_t i = 0; i < size; i++) {
@@ -730,6 +1068,78 @@ EventHub::Device* EventHub::getDeviceByPathLocked(const char* devicePath) const 
         }
     }
     return NULL;
+}
+
+bool EventHub::searchLedsPathLocked(String8& searchPath) const {
+    DIR *dir = opendir(searchPath.string());
+    struct dirent *dirEntry = NULL;
+    bool found = false;
+
+    if (dir == NULL) {
+        closedir(dir);
+        return false;
+    }
+    ALOGD("Searching for leds directory in %s", searchPath.string());
+    while((dirEntry = readdir(dir)) != NULL) {
+        String8 dirEntryString(dirEntry->d_name);
+        ALOGD("Got entry in search path: %s", dirEntryString.string());
+
+        if (dirEntryString.find("leds",0) >= 0) {
+            // searchPath = searchPath/leds
+            searchPath += String8("/") +dirEntryString;
+            ALOGD("Found %s", searchPath.string());
+            found = true;
+            break;
+        }
+    }
+    closedir(dir);
+
+    return found;
+}
+
+bool EventHub::getLedSysfsPathLocked(const String8& eventName, String8& ledSysfsPath) const {
+    // We need to find all the LEDs in /sys/class/leds/ that correspond to
+    // this device based on the eventName (i.e. eventX).
+    // Different devices may expose its LED through a different path structure,
+    // as such, there is a need to search through multiple paths.
+    // Xpad for example, does not expose its LED on /sys/class/input/eventX/, therefore
+    // all searches need to be on the realpath.
+    //
+    // Search order:
+    // - Search for leds directory in realpath(/sys/class/input/eventX) + "/device/device"
+    // - Search for leds directory in realpath(/sys/class/input/eventX) + "/device"
+    // - Search for leds directory in realpath(/sys/class/input/eventX) + "/../../../.."
+    // - Search for leds directory in realpath(/sys/class/input/eventX)
+    // - Search for leds directory in realpath(/sys/class/input/eventX) + "/.."
+    // - Search for leds directory in realpath(/sys/class/input/eventX) + "/../.."
+    // - Search for leds directory in realpath(/sys/class/input/eventX) + "/../../.."
+
+    // e.g. sysClassInputPath = /sys/class/input/event10
+    String8 sysClassInputPath = String8("/sys/class/input/") + eventName;
+    // e.g. eventRealPath = /sys/devices/soc/6a00000.ssusb/6a00000.dwc3/xhci-hcd.0.auto/usb1/1-1/1-1.2/1-1.2:1.3/0003:054C:09CC.0001/input/input10/event12
+    String8 eventRealPath(realpath(sysClassInputPath, NULL));
+
+    // search for leds directory
+    String8 searchPath[7] = {(eventRealPath + "/device/device"), // e.g. dualshock4 = /sys/devices/soc/6a00000.ssusb/6a00000.dwc3/xhci-hcd.0.auto/usb1/1-1/1-1.2/1-1.2:1.3/0003:054C:09CC.0001/input/input10/event12/device/device
+                             (eventRealPath + "/device"),
+                             (eventRealPath.getPathDir().getPathDir().getPathDir().getPathDir()), // e.g. xpad = /sys/devices/soc/6a00000.ssusb/6a00000.dwc3/xhci-hcd.0.auto/usb1/1-1/1-1.4/1-1.4:1.0/input/input10/event9/../../../..
+                             (eventRealPath),
+                             (eventRealPath.getPathDir()),
+                             (eventRealPath.getPathDir().getPathDir()),
+                             (eventRealPath.getPathDir().getPathDir().getPathDir())};
+
+    bool found;
+    for (int i=0; i<7; i++) {
+        found = searchLedsPathLocked(searchPath[i]);
+        if (found) {
+            ledSysfsPath = searchPath[i] + String8("/");
+            ALOGI("Found LED sysfs path for %s: %s",
+                    eventName.string(), ledSysfsPath.string());
+            return true;
+        }
+    }
+
+    return false;
 }
 
 size_t EventHub::getEvents(int timeoutMillis, RawEvent* buffer, size_t bufferSize) {
@@ -1348,6 +1758,42 @@ status_t EventHub::openDeviceLocked(const char *devicePath) {
     // Determine whether the device has a mic.
     if (deviceHasMicLocked(device)) {
         device->classes |= INPUT_DEVICE_CLASS_MIC;
+    }
+
+    // Find event number
+    String8 devicePathStr(devicePath);
+    int32_t pos = devicePathStr.find("event",0);
+
+    // Determine whether the device has LEDs through sysfs
+    device->ledSysfsPath = "";
+    if (pos != -1) {
+        String8 eventName;
+        eventName.append(devicePath+pos);
+
+        if (getLedSysfsPathLocked(eventName, device->ledSysfsPath)) {
+            device->numLeds = 0;
+
+            DIR *ledsDir = opendir(device->ledSysfsPath.string());
+            struct dirent *ledsEntry = NULL;
+            bool found = false;
+
+            if (ledsDir != NULL) {
+                // Record all available LEDs
+                while((ledsEntry = readdir(ledsDir)) != NULL) {
+                    String8 ledsEntryString(ledsEntry->d_name);
+                    if (ledsEntryString == "." || ledsEntryString == "..") {
+                        continue;
+                    }
+                    ALOGD("Got entry in %s: %s",
+                            device->ledSysfsPath.string(), ledsEntryString.string());
+
+                    device->ledsName.add(device->numLeds++, ledsEntryString);
+                }
+
+                device->classes |= INPUT_DEVICE_CLASS_LEDS;
+            }
+            closedir(ledsDir);
+        }
     }
 
     // Determine whether the device is external or internal.
