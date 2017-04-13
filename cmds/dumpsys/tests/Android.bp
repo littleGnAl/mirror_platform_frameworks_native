@@ -2,6 +2,7 @@
 cc_test {
     name: "dumpsys_test",
     test_suites: ["device-tests"],
+    test_suites: ["device-tests"],
 
     srcs: ["dumpsys_test.cpp"],
 
