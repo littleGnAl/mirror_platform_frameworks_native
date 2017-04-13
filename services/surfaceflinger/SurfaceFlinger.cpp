@@ -2146,8 +2146,7 @@ bool SurfaceFlinger::doComposeSurfaces(
                     case HWC2::Composition::Sideband:
                     case HWC2::Composition::SolidColor: {
                         const Layer::State& state(layer->getDrawingState());
-                        if (layer->getClearClientTarget(hwcId) && !firstLayer &&
-                                layer->isOpaque(state) && (state.alpha == 1.0f)
+                        if (layer->getClearClientTarget(hwcId) && !firstLayer
                                 && hasClientComposition) {
                             // never clear the very first layer since we're
                             // guaranteed the FB is already cleared
@@ -2156,6 +2155,7 @@ bool SurfaceFlinger::doComposeSurfaces(
                         break;
                     }
                     case HWC2::Composition::Client: {
+                        firstLayer = true;
                         layer->draw(displayDevice, clip);
                         break;
                     }
@@ -2165,7 +2165,6 @@ bool SurfaceFlinger::doComposeSurfaces(
             } else {
                 ALOGV("  Skipping for empty clip");
             }
-            firstLayer = false;
         }
     } else {
         // we're not using h/w composer
