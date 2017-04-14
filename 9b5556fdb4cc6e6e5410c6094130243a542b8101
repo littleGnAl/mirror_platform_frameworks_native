@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f5c9d9c_213b9cc7",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1060907
+      },
+      "writtenOn": "2017-04-14T20:33:29Z",
+      "side": 1,
+      "message": "The triple nesting here is a bit much. Can we refactor this so that \"return StringPrintf(\"%s/user/%u\", data.c_str(), userid)\" only appears once, perhaps by putting it last and removing all the \"else\" branches? We can also combine the first two \"if\" statements into one.",
+      "revId": "9b5556fdb4cc6e6e5410c6094130243a542b8101",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
