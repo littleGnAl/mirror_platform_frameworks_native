@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c79c80c2_13627088",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2017-04-17T18:21:47Z",
+      "side": 1,
+      "message": "Use HWC_DISPLAY_PRIMARY instead of 0?",
+      "revId": "d490f1b8e76f5501d15d42e1a63f1085b9ae4ca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
