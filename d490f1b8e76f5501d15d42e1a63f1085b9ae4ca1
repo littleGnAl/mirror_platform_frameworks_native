@@ -16,6 +16,24 @@
       "revId": "d490f1b8e76f5501d15d42e1a63f1085b9ae4ca1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01b24de4_b0787f31",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1157249
+      },
+      "writtenOn": "2017-04-17T21:38:11Z",
+      "side": 1,
+      "message": "Fabien: mDisplays is a sorted vector, when we add/remove displays, it\u0027s index may change. We met the case when virtual display connected, and primary display index changed to 1.",
+      "parentUuid": "c79c80c2_13627088",
+      "revId": "d490f1b8e76f5501d15d42e1a63f1085b9ae4ca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
