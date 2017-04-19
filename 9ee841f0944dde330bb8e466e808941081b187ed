@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7745ead2_743c2c28",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-04-19T01:42:59Z",
+      "side": 1,
+      "message": "meh :)",
+      "parentUuid": "13f17e0f_19181268",
+      "range": {
+        "startLine": 318,
+        "startChar": 24,
+        "endLine": 318,
+        "endChar": 28
+      },
+      "revId": "9ee841f0944dde330bb8e466e808941081b187ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "faadafa3_ab7764df",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-19T01:37:19Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 340,
+        "startChar": 16,
+        "endLine": 340,
+        "endChar": 20
+      },
+      "revId": "9ee841f0944dde330bb8e466e808941081b187ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63e158fe_58a74c34",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-04-19T01:42:59Z",
+      "side": 1,
+      "message": "meh :)\nI\u0027d like them in std::cerr",
+      "parentUuid": "faadafa3_ab7764df",
       "range": {
         "startLine": 340,
         "startChar": 16,
