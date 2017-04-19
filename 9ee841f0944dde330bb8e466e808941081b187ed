@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13f17e0f_19181268",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-04-19T01:37:19Z",
+      "side": 1,
+      "message": "nit: print comment error in file",
+      "range": {
+        "startLine": 318,
+        "startChar": 24,
+        "endLine": 318,
+        "endChar": 28
+      },
+      "revId": "9ee841f0944dde330bb8e466e808941081b187ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "faadafa3_ab7764df",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-04-19T01:37:19Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 340,
+        "startChar": 16,
+        "endLine": 340,
+        "endChar": 20
+      },
+      "revId": "9ee841f0944dde330bb8e466e808941081b187ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
