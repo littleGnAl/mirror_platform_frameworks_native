@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b2facd7_2a7d5476",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-26T18:55:43Z",
+      "side": 1,
+      "message": "of",
+      "range": {
+        "startLine": 1138,
+        "startChar": 39,
+        "endLine": 1138,
+        "endChar": 42
+      },
+      "revId": "344fab0c668f4e41c9428718f6632cc248d0c678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
