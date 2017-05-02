@@ -61,7 +61,7 @@ public:
     class ProxyConsumerListener : public BnConsumerListener {
     public:
         explicit ProxyConsumerListener(const wp<ConsumerListener>& consumerListener);
-        virtual ~ProxyConsumerListener();
+        virtual ~ProxyConsumerListener() override;
         virtual void onFrameAvailable(const BufferItem& item) override;
         virtual void onFrameReplaced(const BufferItem& item) override;
         virtual void onBuffersReleased() override;
