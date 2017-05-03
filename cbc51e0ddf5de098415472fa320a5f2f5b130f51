@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20f23f5e_67a44130",
+        "filename": "include/gui/BufferQueue.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-05-03T21:58:54Z",
+      "side": 1,
+      "message": "This change is fine in general, but please remove \u0027virtual\u0027 anywhere you add \u0027override\u0027 (it\u0027s redundant)",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "cbc51e0ddf5de098415472fa320a5f2f5b130f51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
