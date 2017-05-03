@@ -1995,6 +1995,7 @@ HWC2On1Adapter::Layer::Layer(Display& display)
 
 bool HWC2On1Adapter::SortLayersByZ::operator()(
         const std::shared_ptr<Layer>& lhs, const std::shared_ptr<Layer>& rhs)
+    const
 {
     return lhs->getZ() < rhs->getZ();
 }
