@@ -16,6 +16,24 @@
       "revId": "c0268d05598526757fe6d762f7e2739d61e91dae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31b0f34b_5c0cf7e0",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2On1Adapter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-05-03T21:55:20Z",
+      "side": 1,
+      "message": "Our new formatting for this line would be:\n\n  bool HWC2On1Adapter::SortLayersByZ::operator()(const std::shared_ptr\u003cLayer\u003e\u0026 lhs,\n                                                 const std::shared_ptr\u003cLayer\u003e\u0026 rhs) const {",
+      "parentUuid": "586129fb_1ba412fc",
+      "revId": "c0268d05598526757fe6d762f7e2739d61e91dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
