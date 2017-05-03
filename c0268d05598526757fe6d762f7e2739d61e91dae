@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "586129fb_1ba412fc",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2On1Adapter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-05-03T21:47:50Z",
+      "side": 1,
+      "message": "Is this clang-formatted correctly? I feel like they use clang-format.",
+      "revId": "c0268d05598526757fe6d762f7e2739d61e91dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
