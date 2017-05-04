@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cc104b4_87c66dea",
+        "filename": "include/gui/GraphicBufferAlloc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-05-04T02:27:25Z",
+      "side": 1,
+      "message": "stoza: FYI, this seems like it was inconsistent before too. Might be worth a followup pass as well to remove the other redundant virtuals.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "ca0385170e75244f0c4f7cfec4f47ba1c0307176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6d4dacb_19ef296e",
+        "filename": "include/ui/HdrCapabilities.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-05-04T02:27:25Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "ca0385170e75244f0c4f7cfec4f47ba1c0307176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
