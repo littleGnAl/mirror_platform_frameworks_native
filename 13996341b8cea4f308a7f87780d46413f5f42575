@@ -22,6 +22,30 @@
       "revId": "13996341b8cea4f308a7f87780d46413f5f42575",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "707b49c0_97e0d70b",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-04T01:22:21Z",
+      "side": 0,
+      "message": "you\u0027ll also need to adjust the mask and fix /cmds/installd/otapreopt.cpp",
+      "parentUuid": "294b852a_b5cf17c6",
+      "range": {
+        "startLine": 1484,
+        "startChar": 40,
+        "endLine": 1484,
+        "endChar": 55
+      },
+      "revId": "13996341b8cea4f308a7f87780d46413f5f42575",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
