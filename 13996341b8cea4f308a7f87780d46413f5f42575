@@ -46,6 +46,30 @@
       "revId": "13996341b8cea4f308a7f87780d46413f5f42575",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a40c0145_5afae412",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-04T11:54:12Z",
+      "side": 0,
+      "message": "I\u0027ll do that as a follow-up. Removing DEXOPT_SAFEMODE seems riskier than this change.",
+      "parentUuid": "707b49c0_97e0d70b",
+      "range": {
+        "startLine": 1484,
+        "startChar": 40,
+        "endLine": 1484,
+        "endChar": 55
+      },
+      "revId": "13996341b8cea4f308a7f87780d46413f5f42575",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
