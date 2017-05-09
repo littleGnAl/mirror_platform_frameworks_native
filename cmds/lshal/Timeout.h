@@ -80,7 +80,7 @@ bool timeout(std::chrono::duration<R, P> delay, std::function<void(void)> &&func
 template<class Function, class I, class... Args>
 typename std::result_of<Function(I *, Args...)>::type
 timeoutIPC(const sp<I> &interfaceObject, Function &&func, Args &&... args) {
-    using ::android::hardware::Status;
+    using ::android::hardware::details::Status;
     typename std::result_of<Function(I *, Args...)>::type ret{Status::ok()};
     auto boundFunc = std::bind(std::forward<Function>(func),
             interfaceObject.get(), std::forward<Args>(args)...);
