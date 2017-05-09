@@ -152,6 +152,30 @@
       "revId": "695a4fa1c3e188c9b32ff14513107312815b7368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dedca308_a8a3d551",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-09T21:54:09Z",
+      "side": 1,
+      "message": "Rather than disallow this, why not just take the following form:\n\nlshal -d --debug-options android.hardware.foo@1.0::IFoo \u003cany number of arguments\u003e\n\nThe first option to options is considered to be the interface. All the arguments following this up to argc are considered arguments of the debug call.",
+      "parentUuid": "1ef32d94_6319501d",
+      "range": {
+        "startLine": 822,
+        "startChar": 24,
+        "endLine": 822,
+        "endChar": 33
+      },
+      "revId": "695a4fa1c3e188c9b32ff14513107312815b7368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
