@@ -74,6 +74,15 @@ static std::pair<String, String> splitFirst(const String &s, char c) {
     return {String(s.c_str(), pos - s.c_str()), String(pos + 1)};
 }
 
+template<typename String>
+static std::pair<String, String> splitLast(const String &s, char c) {
+    const char *pos = strrchr(s.c_str(), c);
+    if (pos == nullptr) {
+        return {s, {}};
+    }
+    return {String(s.c_str(), pos - s.c_str()), String(pos + 1)};
+}
+
 static std::vector<std::string> split(const std::string &s, char c) {
     std::vector<std::string> components{};
     size_t startPos = 0;
@@ -416,6 +425,18 @@ void Lshal::emitDebugInfo(
     fdHandle->data[0] = relay.fd();
 
     hardware::hidl_vec<hardware::hidl_string> options;
+    auto it = mServiceDebugOptionsByName.find(interfaceName);
+    if (it != mServiceDebugOptionsByName.end()) {
+        auto optionStrings = split(it->second, ',');
+        size_t numOptions = optionStrings.size();
+
+        options.resize(numOptions);
+
+        for (size_t i = 0; i < numOptions; ++i) {
+            options[i] = optionStrings[i];
+        }
+    }
+
     hardware::Return<void> ret = base->debug(fdHandle.get(), options);
 
     if (!ret.isOk()) {
@@ -692,7 +713,8 @@ void Lshal::usage() const {
         << "           -c, --clients: print the client PIDs, or client cmdlines if -m is set"
                                                                               << std::endl
         << "           -m, --cmdline: print cmdline instead of PIDs" << std::endl
-        << "           -d, --debug: emit debug info from IBase::debug" << std::endl
+        << "           -d, --debug[=output-file]: emit debug info from IBase::debug" << std::endl
+        << "           --debug-option=interface:option[,option]*" << std::endl
         << "           --sort=i, --sort=interface: sort by interface name" << std::endl
         << "           --sort=p, --sort=pid: sort by server pid" << std::endl
         << "           --init-vintf=path: form a skeleton HAL manifest to specified file " << std::endl
@@ -715,9 +737,10 @@ Status Lshal::parseArgs(int argc, char **argv) {
         {"debug",     optional_argument, 0, 'd' },
 
         // long options without short alternatives
-        {"sort",      required_argument, 0, 's' },
-        {"init-vintf",optional_argument, 0, 'v' },
-        { 0,          0,                 0,  0  }
+        {"sort",         required_argument, 0, 's' },
+        {"init-vintf",   optional_argument, 0, 'v' },
+        {"debug-option", required_argument, 0, 'o' },
+        { 0,             0,                 0,  0  }
     };
 
     int optionIndex;
@@ -793,6 +816,11 @@ Status Lshal::parseArgs(int argc, char **argv) {
                 }
                 chown(optarg, AID_SHELL, AID_SHELL);
             }
+            break;
+        }
+        case 'o': {
+            auto pair = splitLast(std::string(optarg), ':');
+            mServiceDebugOptionsByName.insert(pair);
             break;
         }
         case 'h': // falls through
