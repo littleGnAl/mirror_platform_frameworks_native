@@ -102,6 +102,9 @@ private:
     // If an entry exist but is an empty string, process might have died.
     // If an entry exist and not empty, it contains the cached content of /proc/{pid}/cmdline.
     std::map<pid_t, std::string> mCmdlines;
+
+    // A map from service name to a comma-separated list of option string.
+    std::map<std::string, std::string> mServiceDebugOptionsByName;
 };
 
 
