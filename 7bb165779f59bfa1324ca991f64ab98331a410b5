@@ -22,6 +22,30 @@
       "revId": "7bb165779f59bfa1324ca991f64ab98331a410b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89427ffc_20bb2c8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-09T16:57:15Z",
+      "side": 1,
+      "message": "Not sure what you mean? The process was installd -\u003e dex2oat; then kill dex2oat. Then installd removes vdex.",
+      "parentUuid": "a696c221_aee1f318",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "7bb165779f59bfa1324ca991f64ab98331a410b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
