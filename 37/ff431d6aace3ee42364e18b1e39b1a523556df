@@ -1,0 +1,9 @@
+Code-Review+2: Kenny Root <kroot@google.com>
+Verified+1: Alex Klyubin <klyubin@google.com>
+Autosubmit+1: Alex Klyubin <klyubin@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Alex Klyubin <klyubin@google.com>
+Submitted-at: Wed, 10 May 2017 19:25:30 +0000
+Reviewed-on: https://android-review.googlesource.com/392012
+Project: platform/frameworks/native
+Branch: refs/heads/master
