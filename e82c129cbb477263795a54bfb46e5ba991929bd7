@@ -91,6 +91,30 @@
       "revId": "e82c129cbb477263795a54bfb46e5ba991929bd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd3e860a_56de9d3f",
+        "filename": "cmds/lshal/DebugCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-10T23:37:42Z",
+      "side": 1,
+      "message": "likewise, if the interface name isn\u0027t provided and there is only one thing in the package",
+      "parentUuid": "ce65590e_ec0fa50c",
+      "range": {
+        "startLine": 50,
+        "startChar": 47,
+        "endLine": 50,
+        "endChar": 54
+      },
+      "revId": "e82c129cbb477263795a54bfb46e5ba991929bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
