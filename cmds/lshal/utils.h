@@ -36,6 +36,7 @@ enum : unsigned int {
     DUMP_PASSTHROUGH_ERROR                  = 1 << 4,
     DUMP_ALL_LIBS_ERROR                     = 1 << 5,
     IO_ERROR                                = 1 << 6,
+    NO_INTERFACE                            = 1 << 7,
 };
 using Status = unsigned int;
 
