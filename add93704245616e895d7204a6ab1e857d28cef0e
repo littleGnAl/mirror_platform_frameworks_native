@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9131095b_9b1f91dc",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-10T23:01:45Z",
+      "side": 1,
+      "message": "malchev also wants lshal to be machine parsable. You should followup and add a flag to lshal that makes the output minimal.",
+      "range": {
+        "startLine": 339,
+        "startChar": 4,
+        "endLine": 339,
+        "endChar": 18
+      },
+      "revId": "add93704245616e895d7204a6ab1e857d28cef0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
