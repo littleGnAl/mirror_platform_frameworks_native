@@ -30,7 +30,17 @@ namespace lshal {
 
 using ::android::hidl::manager::V1_0::IServiceManager;
 
-Lshal::Lshal() {
+Lshal::Lshal()
+    : mErr(std::cerr), mOut(std::cout),
+      mServiceManager(::android::hardware::defaultServiceManager()),
+      mPassthroughManager(::android::hardware::getPassthroughServiceManager()) {
+}
+
+Lshal::Lshal(std::ostream &err, std::ostream &out,
+            sp<hidl::manager::V1_0::IServiceManager> serviceManager,
+            sp<hidl::manager::V1_0::IServiceManager> passthroughManager)
+    : mErr(err), mOut(out), mServiceManager(serviceManager), mPassthroughManager(passthroughManager) {
+
 }
 
 void Lshal::usage(const std::string &command) const {
@@ -121,8 +131,7 @@ Status Lshal::emitDebugInfo(
         std::ostream &out) const {
     using android::hidl::base::V1_0::IBase;
 
-    hardware::Return<sp<IBase>> retBase =
-        ::android::hardware::defaultServiceManager()->get(interfaceName, instanceName);
+    hardware::Return<sp<IBase>> retBase = serviceManager()->get(interfaceName, instanceName);
 
     sp<IBase> base;
     if (!retBase.isOk() || (base = retBase) == nullptr) {
@@ -176,7 +185,17 @@ Status Lshal::parseArgs(const Arg &arg) {
     return USAGE;
 }
 
+void signalHandler(int sig) {
+    if (sig == SIGINT) {
+        int retVal;
+        pthread_exit(&retVal);
+    }
+}
+
 Status Lshal::main(const Arg &arg) {
+    // Allow SIGINT to terminate all threads.
+    signal(SIGINT, signalHandler);
+
     Status status = parseArgs(arg);
     if (status != OK) {
         return status;
@@ -203,18 +222,13 @@ NullableOStream<std::ostream> Lshal::out() const {
     return mOut;
 }
 
-void signalHandler(int sig) {
-    if (sig == SIGINT) {
-        int retVal;
-        pthread_exit(&retVal);
-    }
+const sp<IServiceManager> &Lshal::serviceManager() const {
+    return mServiceManager;
+}
+
+const sp<IServiceManager> &Lshal::passthroughManager() const {
+    return mPassthroughManager;
 }
 
 }  // namespace lshal
 }  // namespace android
-
-int main(int argc, char **argv) {
-    using namespace ::android::lshal;
-    signal(SIGINT, signalHandler);
-    return Lshal{}.main(Arg{argc, argv});
-}

@@ -16,8 +16,6 @@
 
 #include "DebugCommand.h"
 
-#include <hidl/ServiceManagement.h>
-
 #include "Lshal.h"
 
 namespace android {
