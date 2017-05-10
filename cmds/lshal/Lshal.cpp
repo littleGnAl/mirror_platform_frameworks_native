@@ -19,6 +19,9 @@
 #include <set>
 #include <string>
 
+#include <hidl/ServiceManagement.h>
+
+#include "DebugCommand.h"
 #include "ListCommand.h"
 #include "PipeRelay.h"
 
@@ -111,29 +114,27 @@ static hardware::hidl_vec<hardware::hidl_string> convert(const std::vector<std::
     return hv;
 }
 
-// static
-void Lshal::emitDebugInfo(
-        const sp<IServiceManager> &serviceManager,
+Status Lshal::emitDebugInfo(
         const std::string &interfaceName,
         const std::string &instanceName,
         const std::vector<std::string> &options,
-        std::ostream &out) {
+        std::ostream &out) const {
     using android::hidl::base::V1_0::IBase;
 
     hardware::Return<sp<IBase>> retBase =
-        serviceManager->get(interfaceName, instanceName);
+        ::android::hardware::defaultServiceManager()->get(interfaceName, instanceName);
 
     sp<IBase> base;
     if (!retBase.isOk() || (base = retBase) == nullptr) {
         mErr << interfaceName << "/" << instanceName << " does not exist.";
-        return;
+        return NO_INTERFACE;
     }
 
     PipeRelay relay(out);
 
     if (relay.initCheck() != OK) {
         mErr << "PipeRelay::initCheck() FAILED w/ " << relay.initCheck();
-        return;
+        return IO_ERROR;
     }
 
     deleted_unique_ptr<native_handle_t> fdHandle(
@@ -145,12 +146,10 @@ void Lshal::emitDebugInfo(
     hardware::Return<void> ret = base->debug(fdHandle.get(), convert(options));
 
     if (!ret.isOk()) {
-        LOG(ERROR)
-            << interfaceName
-            << "::debug(...) FAILED. (instance "
-            << instanceName
-            << ")";
+        mErr << "debug() FAILED on " << interfaceName << "/" << instanceName;
+        return IO_ERROR;
     }
+    return OK;
 }
 
 Status Lshal::parseArgs(const Arg &arg) {
@@ -191,8 +190,7 @@ Status Lshal::main(const Arg &arg) {
         return ListCommand{*this}.main(mCommand, arg);
     }
     if (mCommand == "debug") {
-        // TODO(b/37725279) implement this
-        return OK;
+        return DebugCommand{*this}.main(mCommand, arg);
     }
     usage();
     return USAGE;
