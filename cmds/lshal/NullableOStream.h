@@ -25,8 +25,8 @@ namespace lshal {
 template<typename S>
 class NullableOStream {
 public:
-    NullableOStream(S &os) : mOs(&os) {}
-    NullableOStream(S *os) : mOs(os) {}
+    NullableOStream(S &os, bool restoreErrno = false) : mOs(&os), mRestoreErrno(restoreErrno) {}
+    NullableOStream(S *os, bool restoreErrno = false) : mOs(os),  mRestoreErrno(restoreErrno) {}
     NullableOStream &operator=(S &os) {
         mOs = &os;
         return *this;
@@ -42,15 +42,23 @@ public:
     }
 
     const NullableOStream &operator<<(std::ostream& (*pf)(std::ostream&)) const {
+        auto savedErrno = errno;
         if (mOs) {
             (*mOs) << pf;
+        }
+        if (mRestoreErrno) {
+            errno = savedErrno;
         }
         return *this;
     }
     template<typename T>
     const NullableOStream &operator<<(const T &rhs) const {
+        auto savedErrno = errno;
         if (mOs) {
             (*mOs) << rhs;
+        }
+        if (mRestoreErrno) {
+            errno = savedErrno;
         }
         return *this;
     }
@@ -65,6 +73,7 @@ private:
     friend class NullableOStream;
 
     S *mOs = nullptr;
+    bool mRestoreErrno;
 };
 
 }  // namespace lshal

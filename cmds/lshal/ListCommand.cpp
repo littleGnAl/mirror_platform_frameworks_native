@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+#define LOG_TAG "Lshal"
+#include <android-base/logging.h>
+
 #include "ListCommand.h"
 
 #include <getopt.h>
@@ -350,15 +353,6 @@ void ListCommand::dumpTable() {
         printLine("Interface", "Transport", "Arch", "Server", "Server CMD",
                   "PTR", "Clients", "Clients CMD");
 
-        // We're only interested in dumping debug info for already
-        // instantiated services. There's little value in dumping the
-        // debug info for a service we create on the fly, so we only operate
-        // on the "mServicesTable".
-        sp<IServiceManager> serviceManager;
-        if (mEmitDebugInfo && &table == &mServicesTable) {
-            serviceManager = ::android::hardware::defaultServiceManager();
-        }
-
         for (const auto &entry : table) {
             printLine(entry.interfaceName,
                     entry.transport,
@@ -369,9 +363,17 @@ void ListCommand::dumpTable() {
                     join(entry.clientPids, " "),
                     join(entry.clientCmdlines, ";"));
 
-            if (serviceManager != nullptr) {
+            // We're only interested in dumping debug info for already
+            // instantiated services. There's little value in dumping the
+            // debug info for a service we create on the fly, so we only operate
+            // on the "mServicesTable".
+            if (mEmitDebugInfo && &table == &mServicesTable) {
                 auto pair = splitFirst(entry.interfaceName, '/');
-                mLshal.emitDebugInfo(serviceManager, pair.first, pair.second, {}, mOut.buf());
+                // TODO fix this
+                auto errorStream = WOULD_LOG(ERROR)
+                        ? NullableOStream<std::ostream>(LOG_STREAM(ERROR), true /* restoreErrno */)
+                        : NullableOStream<std::ostream>(nullptr);
+                mLshal.emitDebugInfo(pair.first, pair.second, {}, mOut.buf(), errorStream);
             }
         }
         mOut << std::endl;
