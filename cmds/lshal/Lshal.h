@@ -25,6 +25,7 @@
 #include <utils/StrongPointer.h>
 
 #include "NullableOStream.h"
+#include "MockableServiceManager.h"
 #include "utils.h"
 
 namespace android {
@@ -33,10 +34,16 @@ namespace lshal {
 class Lshal {
 public:
     Lshal();
+    // for testing purposes
+    Lshal(std::ostream &out, std::ostream &err,
+            sp<MockableServiceManager> serviceManager,
+            sp<MockableServiceManager> passthroughManager);
     Status main(const Arg &arg);
     void usage(const std::string &command = "") const;
     NullableOStream<std::ostream> err() const;
     NullableOStream<std::ostream> out() const;
+    const sp<MockableServiceManager> &serviceManager() const;
+    const sp<MockableServiceManager> &passthroughManager() const;
 
     Status emitDebugInfo(
             const std::string &interfaceName,
@@ -47,8 +54,10 @@ private:
     Status parseArgs(const Arg &arg);
     std::string mCommand;
     Arg mCmdArgs;
-    NullableOStream<std::ostream> mErr = std::cerr;
-    NullableOStream<std::ostream> mOut = std::cout;
+    NullableOStream<std::ostream> mErr;
+    NullableOStream<std::ostream> mOut;
+    sp<MockableServiceManager> mServiceManager;
+    sp<MockableServiceManager> mPassthroughManager;
 
     DISALLOW_COPY_AND_ASSIGN(Lshal);
 };

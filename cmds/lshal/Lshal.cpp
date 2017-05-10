@@ -33,7 +33,21 @@ namespace lshal {
 
 using ::android::hidl::manager::V1_0::IServiceManager;
 
-Lshal::Lshal() {
+Lshal::Lshal()
+        : mErr(std::cerr), mOut(std::cout),
+          mServiceManager(new MockableServiceManager(
+                ::android::hardware::defaultServiceManager())),
+          mPassthroughManager(new MockableServiceManager(
+                ::android::hardware::getPassthroughServiceManager())) {
+}
+
+Lshal::Lshal(std::ostream &out, std::ostream &err,
+        sp<MockableServiceManager> serviceManager,
+        sp<MockableServiceManager> passthroughManager)
+        : mErr(err),
+          mOut(out),
+          mServiceManager(serviceManager),
+          mPassthroughManager(passthroughManager) {
 }
 
 void Lshal::usage(const std::string &command) const {
@@ -125,7 +139,7 @@ Status Lshal::emitDebugInfo(
     using android::hidl::base::V1_0::IBase;
 
     hardware::Return<sp<IBase>> retBase =
-        ::android::hardware::defaultServiceManager()->get(interfaceName, instanceName);
+        serviceManager()->get(interfaceName, instanceName);
 
     sp<IBase> base;
     if (!retBase.isOk() || (base = retBase) == nullptr) {
@@ -184,7 +198,16 @@ Status Lshal::parseArgs(const Arg &arg) {
     return USAGE;
 }
 
+static void signalHandler(int sig) {
+    if (sig == SIGINT) {
+        int retVal;
+        pthread_exit(&retVal);
+    }
+}
+
 Status Lshal::main(const Arg &arg) {
+    signal(SIGINT, signalHandler);
+
     Status status = parseArgs(arg);
     if (status != OK) {
         return status;
@@ -210,19 +233,13 @@ NullableOStream<std::ostream> Lshal::err() const {
 NullableOStream<std::ostream> Lshal::out() const {
     return mOut;
 }
-
-void signalHandler(int sig) {
-    if (sig == SIGINT) {
-        int retVal;
-        pthread_exit(&retVal);
-    }
+const sp<MockableServiceManager> &Lshal::serviceManager() const {
+    return mServiceManager;
+}
+const sp<MockableServiceManager> &Lshal::passthroughManager() const {
+    return mPassthroughManager;
 }
 
 }  // namespace lshal
 }  // namespace android
 
-int main(int argc, char **argv) {
-    using namespace ::android::lshal;
-    signal(SIGINT, signalHandler);
-    return Lshal{}.main(Arg{argc, argv});
-}

@@ -26,6 +26,7 @@
 #include <android-base/macros.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
 
+#include "MockableServiceManager.h"
 #include "NullableOStream.h"
 #include "TableEntry.h"
 #include "utils.h"
@@ -45,9 +46,9 @@ private:
     void postprocess();
     void dump();
     void putEntry(TableEntrySource source, TableEntry &&entry);
-    Status fetchPassthrough(const sp<::android::hidl::manager::V1_0::IServiceManager> &manager);
-    Status fetchBinderized(const sp<::android::hidl::manager::V1_0::IServiceManager> &manager);
-    Status fetchAllLibraries(const sp<::android::hidl::manager::V1_0::IServiceManager> &manager);
+    Status fetchPassthrough(const sp<MockableServiceManager> &manager);
+    Status fetchBinderized(const sp<MockableServiceManager> &manager);
+    Status fetchAllLibraries(const sp<MockableServiceManager> &manager);
     bool getReferencedPids(
         pid_t serverPid, std::map<uint64_t, Pids> *objects) const;
     void dumpTable();

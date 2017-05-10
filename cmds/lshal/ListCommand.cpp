@@ -29,7 +29,6 @@
 #include <regex>
 
 #include <android-base/parseint.h>
-#include <android/hidl/manager/1.0/IServiceManager.h>
 #include <hidl/ServiceManagement.h>
 #include <hidl-util/FQName.h>
 #include <private/android_filesystem_config.h>
@@ -43,7 +42,6 @@
 #include "utils.h"
 
 using ::android::hardware::hidl_string;
-using ::android::hidl::manager::V1_0::IServiceManager;
 
 namespace android {
 namespace lshal {
@@ -408,11 +406,11 @@ void ListCommand::putEntry(TableEntrySource source, TableEntry &&entry) {
     }
 }
 
-Status ListCommand::fetchAllLibraries(const sp<IServiceManager> &manager) {
+Status ListCommand::fetchAllLibraries(const sp<MockableServiceManager> &manager) {
     using namespace ::android::hardware;
     using namespace ::android::hidl::manager::V1_0;
     using namespace ::android::hidl::base::V1_0;
-    auto ret = timeoutIPC(manager, &IServiceManager::debugDump, [&] (const auto &infos) {
+    auto ret = timeoutIPC(manager, &MockableServiceManager::debugDump, [&] (const auto &infos) {
         std::map<std::string, TableEntry> entries;
         for (const auto &info : infos) {
             std::string interfaceName = std::string{info.interfaceName.c_str()} + "/" +
@@ -438,12 +436,12 @@ Status ListCommand::fetchAllLibraries(const sp<IServiceManager> &manager) {
     return OK;
 }
 
-Status ListCommand::fetchPassthrough(const sp<IServiceManager> &manager) {
+Status ListCommand::fetchPassthrough(const sp<MockableServiceManager> &manager) {
     using namespace ::android::hardware;
     using namespace ::android::hardware::details;
     using namespace ::android::hidl::manager::V1_0;
     using namespace ::android::hidl::base::V1_0;
-    auto ret = timeoutIPC(manager, &IServiceManager::debugDump, [&] (const auto &infos) {
+    auto ret = timeoutIPC(manager, &MockableServiceManager::debugDump, [&] (const auto &infos) {
         for (const auto &info : infos) {
             if (info.clientPids.size() <= 0) {
                 continue;
@@ -468,7 +466,7 @@ Status ListCommand::fetchPassthrough(const sp<IServiceManager> &manager) {
     return OK;
 }
 
-Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
+Status ListCommand::fetchBinderized(const sp<MockableServiceManager> &manager) {
     using namespace ::std;
     using namespace ::android::hardware;
     using namespace ::android::hidl::manager::V1_0;
@@ -477,7 +475,7 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
 
     hidl_vec<hidl_string> fqInstanceNames;
     // copying out for timeoutIPC
-    auto listRet = timeoutIPC(manager, &IServiceManager::list, [&] (const auto &names) {
+    auto listRet = timeoutIPC(manager, &MockableServiceManager::list, [&] (const auto &names) {
         fqInstanceNames = names;
     });
     if (!listRet.isOk()) {
@@ -494,7 +492,7 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
         const auto pair = splitFirst(fqInstanceName, '/');
         const auto &serviceName = pair.first;
         const auto &instanceName = pair.second;
-        auto getRet = timeoutIPC(manager, &IServiceManager::get, serviceName, instanceName);
+        auto getRet = timeoutIPC(manager, &MockableServiceManager::get, serviceName, instanceName);
         if (!getRet.isOk()) {
             mErr << "Warning: Skipping \"" << fqInstanceName << "\": "
                  << "cannot be fetched from service manager:"
@@ -559,8 +557,8 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
 
 Status ListCommand::fetch() {
     Status status = OK;
-    auto bManager = ::android::hardware::defaultServiceManager();
-    if (bManager == nullptr) {
+    auto bManager = mLshal.serviceManager();
+    if (!bManager->hasImplementation()) {
         mErr << "Failed to get defaultServiceManager()!" << std::endl;
         status |= NO_BINDERIZED_MANAGER;
     } else {
@@ -569,8 +567,8 @@ Status ListCommand::fetch() {
         status |= fetchPassthrough(bManager);
     }
 
-    auto pManager = ::android::hardware::getPassthroughServiceManager();
-    if (pManager == nullptr) {
+    auto pManager = mLshal.passthroughManager();
+    if (!pManager->hasImplementation()) {
         mErr << "Failed to get getPassthroughServiceManager()!" << std::endl;
         status |= NO_PASSTHROUGH_MANAGER;
     } else {
