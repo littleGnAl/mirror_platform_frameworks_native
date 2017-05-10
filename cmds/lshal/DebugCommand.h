@@ -14,46 +14,36 @@
  * limitations under the License.
  */
 
-#ifndef FRAMEWORK_NATIVE_CMDS_LSHAL_LSHAL_H_
-#define FRAMEWORK_NATIVE_CMDS_LSHAL_LSHAL_H_
+#ifndef FRAMEWORK_NATIVE_CMDS_LSHAL_DEBUG_COMMAND_H_
+#define FRAMEWORK_NATIVE_CMDS_LSHAL_DEBUG_COMMAND_H_
 
-#include <iostream>
 #include <string>
 
 #include <android-base/macros.h>
-#include <android/hidl/manager/1.0/IServiceManager.h>
-#include <utils/StrongPointer.h>
 
-#include "NullableOStream.h"
 #include "utils.h"
 
 namespace android {
 namespace lshal {
 
-class Lshal {
-public:
-    Lshal();
-    Status main(const Arg &arg);
-    void usage(const std::string &command = "") const;
-    NullableOStream<std::ostream> err() const;
-    NullableOStream<std::ostream> out() const;
+class Lshal;
 
-    Status emitDebugInfo(
-            const std::string &interfaceName,
-            const std::string &instanceName,
-            const std::vector<std::string> &options,
-            std::ostream &out) const;
+class DebugCommand {
+public:
+    DebugCommand(Lshal &lshal);
+    Status main(const Arg &arg);
 private:
     Status parseArgs(const Arg &arg);
-    std::string mCommand;
-    Arg mCmdArgs;
-    NullableOStream<std::ostream> mErr = std::cerr;
-    NullableOStream<std::ostream> mOut = std::cout;
 
-    DISALLOW_COPY_AND_ASSIGN(Lshal);
+    Lshal &mLshal;
+    std::string mInterfaceName;
+    std::vector<std::string> mOptions;
+
+    DISALLOW_COPY_AND_ASSIGN(DebugCommand);
 };
+
 
 }  // namespace lshal
 }  // namespace android
 
-#endif  // FRAMEWORK_NATIVE_CMDS_LSHAL_LSHAL_H_
+#endif  // FRAMEWORK_NATIVE_CMDS_LSHAL_DEBUG_COMMAND_H_
