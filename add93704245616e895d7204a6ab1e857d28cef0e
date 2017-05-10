@@ -22,6 +22,30 @@
       "revId": "add93704245616e895d7204a6ab1e857d28cef0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a15cbfd1_c8a0d4a5",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-10T23:14:02Z",
+      "side": 1,
+      "message": "as a workaround, --init-vintf can be used instead for now.\n\nDo we have an open bug for this?",
+      "parentUuid": "9131095b_9b1f91dc",
+      "range": {
+        "startLine": 339,
+        "startChar": 4,
+        "endLine": 339,
+        "endChar": 18
+      },
+      "revId": "add93704245616e895d7204a6ab1e857d28cef0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
