@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c54ea32d_ac2a03fa",
+        "filename": "cmds/lshal/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-11T00:12:28Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "0d3e69d4_a9c4658f",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "6489cb9b953cf90be6f8abb2619b1312aa0b6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe43328f_d52f448b",
         "filename": "cmds/lshal/Android.bp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8a2bbe34_c66b9e84",
+        "filename": "cmds/lshal/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-11T00:12:28Z",
+      "side": 1,
+      "message": "yeah, but I like it explicit",
+      "parentUuid": "fe43328f_d52f448b",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "6489cb9b953cf90be6f8abb2619b1312aa0b6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9373d6ec_ebddb460",
         "filename": "cmds/lshal/MockableServiceManager.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-10T22:58:32Z",
       "side": 1,
       "message": "hmm, why not instead just have an implementation of IServiceManager and then mock getService using gmock to return the desired one. Don\u0027t have to rewrite it all, but I think it would do two things:\n- make it so all the code doesn\u0027t have to be written using MockableServiceManager (and therefore reduce complexity that testing adds)\n- don\u0027t need to branch in every function inside of MockableServiceManager. Rather, you just take advantage of polymorphism.",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "6489cb9b953cf90be6f8abb2619b1312aa0b6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2779fbf7_43b8b40b",
+        "filename": "cmds/lshal/MockableServiceManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-11T00:12:28Z",
+      "side": 1,
+      "message": "will remove",
+      "parentUuid": "9373d6ec_ebddb460",
       "range": {
         "startLine": 25,
         "startChar": 6,
