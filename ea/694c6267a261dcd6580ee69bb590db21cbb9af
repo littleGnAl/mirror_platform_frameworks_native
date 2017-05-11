@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Verified+1: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-by: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-at: Thu, 11 May 2017 09:42:23 +0000
+Reviewed-on: https://android-review.googlesource.com/393241
+Project: platform/frameworks/native
+Branch: refs/heads/master
