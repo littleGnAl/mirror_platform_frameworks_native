@@ -22,6 +22,30 @@
       "revId": "ec87d67402857afa057ae6195e85bbe60b45c631",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b031f2c5_339faed1",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-11T18:01:33Z",
+      "side": 1,
+      "message": "what do you mean? and what is std version? (C++ version?)",
+      "parentUuid": "a2398ead_8d255fae",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 41
+      },
+      "revId": "ec87d67402857afa057ae6195e85bbe60b45c631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
