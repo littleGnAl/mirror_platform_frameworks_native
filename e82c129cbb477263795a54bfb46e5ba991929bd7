@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "0dbd8612_bf9e4908",
+        "filename": "cmds/lshal/DebugCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-11T23:30:46Z",
+      "side": 1,
+      "message": "And I prefer the tool to be very nice to people and try to figure out what they mean. It\u0027s only for debugging.",
+      "parentUuid": "63e3fab5_414b6dff",
+      "range": {
+        "startLine": 50,
+        "startChar": 47,
+        "endLine": 50,
+        "endChar": 54
+      },
+      "revId": "e82c129cbb477263795a54bfb46e5ba991929bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a1efe8d_21078267",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 1
