@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70a3de20_849876b0",
+        "filename": "cmds/lshal/DebugCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-11T00:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1252dfd_96208f35",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "e82c129cbb477263795a54bfb46e5ba991929bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b3eb39e_3cb6bbd9",
         "filename": "cmds/lshal/DebugCommand.cpp",
         "patchSetId": 1
