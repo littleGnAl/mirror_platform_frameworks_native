@@ -46,6 +46,30 @@
       "revId": "ec87d67402857afa057ae6195e85bbe60b45c631",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2b1a189_f44dbf3e",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-11T20:00:07Z",
+      "side": 1,
+      "message": "Err, nevermind, you can just say:\n\nusing ::android::hardware::Return, but I guess this is required since you are renaming, not sure",
+      "parentUuid": "b031f2c5_339faed1",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 41
+      },
+      "revId": "ec87d67402857afa057ae6195e85bbe60b45c631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
