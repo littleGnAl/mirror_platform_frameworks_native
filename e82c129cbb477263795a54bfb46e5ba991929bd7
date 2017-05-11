@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "940fbd36_695f1e67",
+        "filename": "cmds/lshal/DebugCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-11T00:20:12Z",
+      "side": 1,
+      "message": "\"should emit error if this is not formatted properly.\"\nhandled by hwservicemanager\n\n\"should emit error if it doesn\u0027t exist on the phone.\"\nhandled in emitDebugInfo",
+      "parentUuid": "b2ba74e0_644def6f",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "e82c129cbb477263795a54bfb46e5ba991929bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce65590e_ec0fa50c",
         "filename": "cmds/lshal/DebugCommand.cpp",
         "patchSetId": 1
@@ -118,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "63e3fab5_414b6dff",
+        "filename": "cmds/lshal/DebugCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-11T00:20:12Z",
+      "side": 1,
+      "message": "We would have to list and find the ones that satisfy the requirement. Lshal will need to make sense of the fqname.\n\nI would prefer just dropping the default at all (so that ppl have to type the fully qualified instance name)",
+      "parentUuid": "ce65590e_ec0fa50c",
+      "range": {
+        "startLine": 50,
+        "startChar": 47,
+        "endLine": 50,
+        "endChar": 54
+      },
+      "revId": "e82c129cbb477263795a54bfb46e5ba991929bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a1efe8d_21078267",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 1
@@ -129,6 +177,24 @@
       "writtenOn": "2017-05-10T23:40:06Z",
       "side": 1,
       "message": "nit: if something doesn\u0027t implement debug, this shows empty output. Only if the mode is debug, we should print out the interface name as well, or something like that",
+      "revId": "e82c129cbb477263795a54bfb46e5ba991929bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a3a88a5_7d07d58f",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-11T00:20:12Z",
+      "side": 1,
+      "message": "This indeed shows empty output for interfaces that doesn\u0027t implement debug. What do you mean by \"mode is debug\"?",
+      "parentUuid": "6a1efe8d_21078267",
       "revId": "e82c129cbb477263795a54bfb46e5ba991929bd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
