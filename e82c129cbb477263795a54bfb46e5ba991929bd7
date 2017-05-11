@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "d6517cbd_373655e4",
+        "filename": "cmds/lshal/DebugCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-11T23:53:42Z",
+      "side": 1,
+      "message": "(I am fine with this though for now, don\u0027t remove default pls)",
+      "parentUuid": "0dbd8612_bf9e4908",
+      "range": {
+        "startLine": 50,
+        "startChar": 47,
+        "endLine": 50,
+        "endChar": 54
+      },
+      "revId": "e82c129cbb477263795a54bfb46e5ba991929bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a1efe8d_21078267",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 1
