@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2398ead_8d255fae",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-11T17:50:02Z",
+      "side": 1,
+      "message": "you should be able to omit the template/typename stuff depending on the std version.",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 41
+      },
+      "revId": "ec87d67402857afa057ae6195e85bbe60b45c631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
