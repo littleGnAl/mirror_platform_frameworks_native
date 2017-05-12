@@ -16,6 +16,24 @@
       "revId": "2e9462e199a440a878625143da3cb047deb6b47e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a45d9d0_c0993b21",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-12T00:28:13Z",
+      "side": 0,
+      "message": "See new PS.",
+      "parentUuid": "e8a96d24_4909b01c",
+      "revId": "2e9462e199a440a878625143da3cb047deb6b47e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
