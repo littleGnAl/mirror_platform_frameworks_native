@@ -22,6 +22,30 @@
       "revId": "48dc9f8586c288e152bdd5e14423281764f8db5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8213c34_218cd4fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-12T22:23:27Z",
+      "side": 1,
+      "message": "Sorry, I meant\nBug: 37725279",
+      "parentUuid": "d495615f_4386d3c8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "48dc9f8586c288e152bdd5e14423281764f8db5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
