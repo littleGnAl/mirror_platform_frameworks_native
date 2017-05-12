@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7123ce7f_a1f5a122",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-12T02:14:09Z",
+      "side": 1,
+      "message": "Need to fix this",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 32
+      },
+      "revId": "16964bc99a560286bf5321e9aa960b1a057b619d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
