@@ -119,6 +119,7 @@ DisplayDevice::DisplayDevice(
     Surface* surface;
     mNativeWindow = surface = new Surface(producer, false);
     ANativeWindow* const window = mNativeWindow.get();
+    char property[PROPERTY_VALUE_MAX];
 
 #ifdef USE_HWC2
     mActiveColorMode = HAL_COLOR_MODE_NATIVE;
@@ -168,6 +169,11 @@ DisplayDevice::DisplayDevice(
     // virtual displays are always considered enabled
     mPowerMode = (mType >= DisplayDevice::DISPLAY_VIRTUAL) ?
                   HWC_POWER_MODE_NORMAL : HWC_POWER_MODE_OFF;
+
+    mPanelMountFlip = 0;
+    // 1: H-Flip, 2: V-Flip, 3: 180 (HV Flip)
+    property_get("persist.panel.mountflip", property, "0");
+    mPanelMountFlip = atoi(property);
 
     // initialize the display orientation transform.
     setProjection(DisplayState::eOrientationDefault, mViewport, mFrame);
@@ -493,6 +499,11 @@ status_t DisplayDevice::orientationToTransfrom(
     default:
         return BAD_VALUE;
     }
+
+    if (DISPLAY_PRIMARY == mHwcDisplayId) {
+        flags = flags ^ getPanelMountFlip();
+    }
+
     tr->set(flags, w, h);
     return NO_ERROR;
 }
