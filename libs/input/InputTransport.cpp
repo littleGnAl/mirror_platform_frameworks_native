@@ -849,8 +849,10 @@ status_t InputConsumer::sendFinishedSignal(uint32_t seq, bool handled) {
                 mSeqChains.push(seqChain);
                 if (chainIndex != 0) {
                     chainIndex--;
+                } else {
+                    break;
                 }
-            } while (chainIndex > 0);
+            } while (chainIndex >= 0);
             return status;
         }
     }
