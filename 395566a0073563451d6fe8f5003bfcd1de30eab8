@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1e66a60_780d5b2b",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1106243
+      },
+      "writtenOn": "2017-05-17T08:22:53Z",
+      "side": 1,
+      "message": "I am a bit confused\nIn order to prevent the overflow, we did a lot of things\nwhy not change chainIndex into Signed int",
+      "range": {
+        "startLine": 855,
+        "startChar": 36,
+        "endLine": 855,
+        "endChar": 38
+      },
+      "revId": "395566a0073563451d6fe8f5003bfcd1de30eab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
