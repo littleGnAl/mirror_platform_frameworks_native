@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "1d3b9de8_c159aca5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-18T16:04:44Z",
+      "side": 1,
+      "message": "drop leading spaces, limit lines to 70 characters.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "395566a0073563451d6fe8f5003bfcd1de30eab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a0ebf17_46651904",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-18T16:04:44Z",
+      "side": 1,
+      "message": "This is the footer, keep them together (drop whitespace)\n\nFixes: footer is supposed to be labelled Bug:\nMerged-In: is not a footer we care about, and this information is part of the Gerrit/Git history.\nSigned-off-by: must be first footer, and Change-Id: must be last footer (actually a linux commit coding standard, lets not fight it though).\nTest: I do not understand \u0027Input\u0027, what was the test sequence or command?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "395566a0073563451d6fe8f5003bfcd1de30eab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daf8d99c_1c46ff86",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-18T16:04:44Z",
+      "side": 1,
+      "message": "if (!chainIndex) break;\nchainIndex--;",
+      "range": {
+        "startLine": 850,
+        "startChar": 0,
+        "endLine": 854,
+        "endChar": 17
+      },
+      "revId": "395566a0073563451d6fe8f5003bfcd1de30eab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1e66a60_780d5b2b",
         "filename": "libs/input/InputTransport.cpp",
         "patchSetId": 2
@@ -18,6 +87,29 @@
         "startChar": 36,
         "endLine": 855,
         "endChar": 38
+      },
+      "revId": "395566a0073563451d6fe8f5003bfcd1de30eab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4240d1a5_dbc8c192",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-18T16:04:44Z",
+      "side": 1,
+      "message": "This will always be true. Perhaps change this into a for(;;chainIndex--) loop?",
+      "range": {
+        "startLine": 855,
+        "startChar": 21,
+        "endLine": 855,
+        "endChar": 36
       },
       "revId": "395566a0073563451d6fe8f5003bfcd1de30eab8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
