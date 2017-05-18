@@ -16,6 +16,7 @@
 
 #define LOG_TAG "atrace"
 
+#include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <getopt.h>
@@ -31,6 +32,7 @@
 #include <zlib.h>
 
 #include <memory>
+#include <vector>
 
 #include <binder/IBinder.h>
 #include <binder/IServiceManager.h>
@@ -51,6 +53,7 @@
 using namespace android;
 
 using std::string;
+using std::vector;
 
 #define MAX_SYS_FILES 10
 #define MAX_PACKAGES 16
@@ -62,7 +65,7 @@ const char* k_traceAppsPropertyTemplate = "debug.atrace.app_%d";
 const char* k_coreServiceCategory = "core_services";
 const char* k_coreServicesProp = "ro.atrace.core.services";
 
-typedef enum { OPT, REQ } requiredness  ;
+typedef enum { OPT, REQ } requiredness;
 
 struct TracingCategory {
     // The name identifying the category.
@@ -189,6 +192,8 @@ static const TracingCategory k_categories[] = {
         { REQ,      "events/filemap/enable" },
     } },
 };
+
+static vector<string> wild_card_categories;
 
 /* Command line options */
 static int g_traceDurationSeconds = 5;
@@ -625,6 +630,21 @@ static bool setAppCmdlineProperty(char* cmdline)
     return true;
 }
 
+void setAllDir(const string& path, bool enable) {
+    struct dirent* entry;
+    string apath = g_traceFolder + path;
+    std::unique_ptr<DIR, int (*)(DIR*)> dir(opendir(apath.c_str()), closedir);
+    while ((entry = readdir(dir.get())) != NULL) {
+        if (entry->d_type == DT_DIR) {
+            if (!strcmp(entry->d_name, ".") || !strcmp(entry->d_name, "..")) continue;
+            string path_enable = path + "/" + entry->d_name + "/enable";
+            if (fileIsWritable(path_enable.c_str())) {
+                setKernelOptionEnable(path_enable.c_str(), enable);
+            }
+        }
+    }
+}
+
 // Disable all /sys/ enable files.
 static bool disableKernelTraceEvents() {
     bool ok = true;
@@ -636,6 +656,9 @@ static bool disableKernelTraceEvents() {
                 ok &= setKernelOptionEnable(path, false);
             }
         }
+    }
+    for( string wcc: wild_card_categories) {
+        setAllDir("events/"+wcc, false);
     }
     return ok;
 }
@@ -734,6 +757,12 @@ static bool setCategoryEnable(const char* name, bool enable)
             }
         }
     }
+    string s = name;
+    size_t p = s.find("*");
+    if( p != string::npos ) {
+    	wild_card_categories.push_back(s.substr(0, p));
+    	return true;
+    }
     fprintf(stderr, "error: unknown tracing category \"%s\"\n", name);
     return false;
 }
@@ -812,17 +841,20 @@ static bool setUpTrace()
             const TracingCategory &c = k_categories[i];
             for (int j = 0; j < MAX_SYS_FILES; j++) {
                 const char* path = c.sysfiles[j].path;
-                bool required = c.sysfiles[j].required == REQ;
+                requiredness required = c.sysfiles[j].required;
                 if (path != NULL) {
                     if (fileIsWritable(path)) {
                         ok &= setKernelOptionEnable(path, true);
-                    } else if (required) {
+                    } else if (required == REQ) {
                         fprintf(stderr, "error writing file %s\n", path);
                         ok = false;
                     }
                 }
             }
         }
+    }
+    for( string wcc: wild_card_categories) {
+        setAllDir("events/"+wcc, true);
     }
 
     return ok;
