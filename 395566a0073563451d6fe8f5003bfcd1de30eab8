@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "c4623a0c_e45b893f",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1106243
+      },
+      "writtenOn": "2017-05-19T00:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daf8d99c_1c46ff86",
+      "range": {
+        "startLine": 850,
+        "startChar": 0,
+        "endLine": 854,
+        "endChar": 17
+      },
+      "revId": "395566a0073563451d6fe8f5003bfcd1de30eab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1e66a60_780d5b2b",
         "filename": "libs/input/InputTransport.cpp",
         "patchSetId": 2
@@ -105,6 +129,30 @@
       "writtenOn": "2017-05-18T16:04:44Z",
       "side": 1,
       "message": "This will always be true. Perhaps change this into a for(;;chainIndex--) loop?",
+      "range": {
+        "startLine": 855,
+        "startChar": 21,
+        "endLine": 855,
+        "endChar": 36
+      },
+      "revId": "395566a0073563451d6fe8f5003bfcd1de30eab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "761e7604_2e2e0741",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1106243
+      },
+      "writtenOn": "2017-05-19T00:08:33Z",
+      "side": 1,
+      "message": "thanks for your replay\nfirst:\n    Use do while here，this should do once in any case,\n    because chainIndex probably 0 in here.\nsecond:\n    see：\n    https://android-review.googlesource.com/#/c/172237/\n    Earlier time it was chainIndex--,\n    but will make a overflow conditions.\n\nSo I think in order to avoid overflow,\nNo matter what we do for this code,\nit will look not too clean.\nMaybe change chainIndex into ssize_t and revert last change\u0027s logic.\nBecause, we don\u0027t care about what value chainIndex has, after the loop is done.\nIf you think ssize_t is ok, I will do this.",
+      "parentUuid": "4240d1a5_dbc8c192",
       "range": {
         "startLine": 855,
         "startChar": 21,
