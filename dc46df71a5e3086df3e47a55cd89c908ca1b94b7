@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d19ba4f0_281ce0f9",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-19T14:23:03Z",
+      "side": 1,
+      "message": "This is always true, we can not have this in our codebase. It is cargo cult to keep a do while loop under this pretense.\n\nReconsider a for(;;) loop",
+      "range": {
+        "startLine": 852,
+        "startChar": 21,
+        "endLine": 852,
+        "endChar": 36
+      },
+      "revId": "dc46df71a5e3086df3e47a55cd89c908ca1b94b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
