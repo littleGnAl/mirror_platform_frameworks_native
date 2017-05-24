@@ -22,6 +22,30 @@
       "revId": "f78679ab1b07c5af43dfb85441624436811edcb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc041fb3_166f3cf8",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-24T21:42:55Z",
+      "side": 1,
+      "message": "good catch --",
+      "parentUuid": "6821161c_8ff0de46",
+      "range": {
+        "startLine": 97,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 23
+      },
+      "revId": "f78679ab1b07c5af43dfb85441624436811edcb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
