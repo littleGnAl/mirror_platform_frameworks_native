@@ -140,7 +140,7 @@ static const void* printReturnCommand(TextOutput& out, const void* _cmd)
 {
     static const size_t N = sizeof(kReturnStrings)/sizeof(kReturnStrings[0]);
     const int32_t* cmd = (const int32_t*)_cmd;
-    uint32_t code = (uint32_t)*cmd++;
+    int32_t code = *cmd++;
     size_t cmdIndex = code & 0xff;
     if (code == BR_ERROR) {
         out << "BR_ERROR: " << (void*)(long)(*cmd++) << endl;
@@ -201,7 +201,7 @@ static const void* printCommand(TextOutput& out, const void* _cmd)
 {
     static const size_t N = sizeof(kCommandStrings)/sizeof(kCommandStrings[0]);
     const int32_t* cmd = (const int32_t*)_cmd;
-    uint32_t code = (uint32_t)*cmd++;
+    int32_t code = *cmd++;
     size_t cmdIndex = code & 0xff;
 
     if (cmdIndex >= N) {
@@ -716,7 +716,7 @@ status_t IPCThreadState::sendReply(const Parcel& reply, uint32_t flags)
 
 status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
 {
-    uint32_t cmd;
+    int32_t cmd;
     int32_t err;
 
     while (1) {
@@ -725,7 +725,7 @@ status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
         if (err < NO_ERROR) break;
         if (mIn.dataAvail() == 0) continue;
 
-        cmd = (uint32_t)mIn.readInt32();
+        cmd = mIn.readInt32();
 
         IF_LOG_COMMANDS() {
             alog << "Processing waitForResponse Command: "
@@ -955,7 +955,7 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
     RefBase::weakref_type* refs;
     status_t result = NO_ERROR;
 
-    switch ((uint32_t)cmd) {
+    switch (cmd) {
     case BR_ERROR:
         result = mIn.readInt32();
         break;
