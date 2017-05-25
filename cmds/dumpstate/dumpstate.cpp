@@ -683,6 +683,7 @@ static void print_header(std::string version) {
     printf("Command line: %s\n", strtok(cmdline_buf, "\n"));
     printf("Bugreport format version: %s\n", version.c_str());
     printf("Dumpstate info: id=%lu pid=%d\n", id, getpid());
+    run_command("UPTIME", 10, "uptime", NULL);
     printf("\n");
 }
 
@@ -879,7 +880,6 @@ static void dumpstate(const std::string& screenshot_path, const std::string& ver
     DurationReporter duration_reporter("DUMPSTATE");
 
     dump_dev_files("TRUSTY VERSION", "/sys/bus/platform/drivers/trusty", "trusty_version");
-    run_command("UPTIME", 10, "uptime", NULL);
     dump_files("UPTIME MMC PERF", mmcblk0, skip_not_stat, dump_stat_from_fd);
     dump_emmc_ecsd("/d/mmc0/mmc0:0001/ext_csd");
     dump_file("MEMORY INFO", "/proc/meminfo");
