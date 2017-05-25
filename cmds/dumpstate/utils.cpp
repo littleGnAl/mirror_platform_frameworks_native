@@ -36,10 +36,13 @@
 #include <time.h>
 #include <unistd.h>
 
+#include <memory>
 #include <string>
 #include <vector>
 
 #include <android-base/file.h>
+#include <android-base/stringprintf.h>
+#include <android-base/unique_fd.h>
 #include <cutils/properties.h>
 #include <cutils/sockets.h>
 #include <debuggerd/client.h>
@@ -964,16 +967,147 @@ static bool should_dump_native_traces(const char* path) {
     return false;
 }
 
+const char *dump_traces(const char* traces_path);
+const char *dump_traces_tombstoned(const std::string& traces_path);
+
 /* dump Dalvik and native stack traces, return the trace file location (NULL if none) */
 const char *dump_traces() {
     DurationReporter duration_reporter("DUMP TRACES", NULL);
     ON_DRY_RUN_RETURN(NULL);
-    const char* result = NULL;
 
     char traces_path[PROPERTY_VALUE_MAX] = "";
-    property_get("dalvik.vm.stack-trace-file", traces_path, "");
-    if (!traces_path[0]) return NULL;
+    property_get("dalvik.vm.stack-trace-dir", traces_path, "");
+    if (traces_path[0]) {
+        return dump_traces_tombstoned(traces_path);
+    }
 
+    property_get("dalvik.vm.stack-trace-file", traces_path, "");
+    if (traces_path[0]) {
+        return dump_traces(traces_path);
+    }
+
+    return NULL;
+}
+
+static bool is_zygote(int pid) {
+    static const std::string kZygotePrefix = "zygote";
+
+    std::string cmdline;
+    if (!android::base::ReadFileToString(
+            android::base::StringPrintf("/proc/%d/cmdline", pid),
+            &cmdline)) {
+         return true;
+    }
+
+    return (cmdline.find(kZygotePrefix) == 0);
+}
+
+const char *dump_traces_tombstoned(const std::string& traces_dir) {
+    const std::string temp_file_pattern = traces_dir + "/dumptrace_XXXXXX";
+
+    const size_t buf_size = temp_file_pattern.length() + 1;
+    std::unique_ptr<char[]> file_name_buf(new char[buf_size]);
+    memcpy(file_name_buf.get(), temp_file_pattern.c_str(), buf_size);
+
+    // Create a new, empty file to receive all trace dumps.
+    //
+    // TODO: This can be simplified once we remove support for the old style
+    // dumps. We can have a file descriptor passed in to dump_traces instead
+    // of creating a file, closing it and then reopening it again.
+    android::base::unique_fd fd(mkostemp(file_name_buf.get(), O_APPEND | O_CLOEXEC));
+    if (fd < 0) {
+        MYLOGE("mkostemp on pattern %s: %s\n", file_name_buf.get(), strerror(errno));
+        return nullptr;
+    }
+
+    // Nobody should have access to this temporary file except dumpstate, but we
+    // temporarily grant 'read' to 'others' here because this file is created
+    // when tombstoned is still running as root, but dumped after dropping. This
+    // can go away once support for old style dumping has.
+    const int chmod_ret = fchmod(fd, 0644);
+    if (chmod_ret < 0) {
+        MYLOGE("fchmod on %s failed: %s\n", file_name_buf.get(), strerror(errno));
+        return nullptr;
+    }
+
+    std::unique_ptr<DIR, decltype(&closedir)> proc(opendir("/proc"), closedir);
+    if (proc.get() == nullptr) {
+        MYLOGE("opendir /proc failed: %s\n", strerror(errno));
+        return nullptr;
+    }
+
+    // Number of times process dumping has timed out. If we encounter too many
+    // failures, we'll give up.
+    uint16_t timeout_failures = 0;
+    uint32_t dalvik_found = 0;
+
+    struct dirent *d;
+    while ((d = readdir(proc.get()))) {
+        int pid = atoi(d->d_name);
+        if (pid <= 0) {
+            continue;
+        }
+
+        const std::string link_name = android::base::StringPrintf("/proc/%d/exe", pid);
+        std::string exe;
+        if (!android::base::Readlink(link_name, &exe)) {
+            continue;
+        }
+
+        bool is_java_process;
+        if (exe == "/system/bin/app_process32" || exe == "/system/bin/app_process64") {
+            // Don't bother dumping backtraces for the zygote.
+            if (is_zygote(pid)) {
+                continue;
+            }
+
+            ++dalvik_found;
+            is_java_process = true;
+        } else if (should_dump_native_traces(exe.c_str())) {
+            is_java_process = false;
+        } else {
+            // Probably a native process we don't care about, continue.
+            continue;
+        }
+
+        // If 3 backtrace dumps fail in a row, consider debuggerd dead.
+        if (timeout_failures == 3) {
+            dprintf(fd, "ERROR: Too many stack dump failures, exiting.\n");
+            break;
+        }
+
+        const uint64_t start = DurationReporter::nanotime();
+        const int ret = dump_backtrace_to_file_timeout( pid,
+                is_java_process ? kDebuggerdJavaBacktrace : kDebuggerdNativeBacktrace,
+                is_java_process ? 5 : 20,
+                fd);
+
+        if (ret == -1) {
+            dprintf(fd, "dumping failed, likely due to a timeout\n");
+            timeout_failures++;
+            continue;
+        }
+
+        // We've successfully dumped stack traces, reset the failure count
+        // and write a summary of the elapsed time to the file and continue with the
+        // next process.
+        timeout_failures = 0;
+
+        dprintf(fd, "[dump %s stack %d: %.3fs elapsed]\n",
+                is_java_process ? "dalvik" : "native",
+                pid, (float)(DurationReporter::nanotime() - start) / NANOS_PER_SEC);
+    }
+
+
+    if (dalvik_found == 0) {
+        MYLOGE("Warning: no Dalvik processes found to dump stacks\n");
+    }
+
+    return file_name_buf.release();
+}
+
+const char *dump_traces(const char* traces_path) {
+    char* result = NULL;
     /* move the old traces.txt (if any) out of the way temporarily */
     char anr_traces_path[PATH_MAX];
     strlcpy(anr_traces_path, traces_path, sizeof(anr_traces_path));
@@ -1087,7 +1221,7 @@ const char *dump_traces() {
                 /* If 3 backtrace dumps fail in a row, consider debuggerd dead. */
                 if (timeout_failures == 3) {
                     dprintf(fd, "too many stack dump failures, skipping...\n");
-                } else if (dump_backtrace_to_file_timeout(pid, fd, 20) == -1) {
+                } else if (dump_backtrace_to_file_timeout(pid, kDebuggerdNativeBacktrace, 20, fd) == -1) {
                     dprintf(fd, "dumping failed, likely due to a timeout\n");
                     timeout_failures++;
                 } else {

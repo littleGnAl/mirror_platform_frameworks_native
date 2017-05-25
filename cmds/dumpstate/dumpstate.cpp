@@ -23,6 +23,7 @@
 #include <memory>
 #include <regex>
 #include <set>
+#include <vector>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -76,19 +77,27 @@ static std::string suffix;
 #define LOGPERSIST_DATA_DIR "/data/misc/logd"
 #define PROFILE_DATA_DIR_CUR "/data/misc/profiles/cur"
 #define PROFILE_DATA_DIR_REF "/data/misc/profiles/ref"
-#define TOMBSTONE_DIR "/data/tombstones"
-#define TOMBSTONE_FILE_PREFIX TOMBSTONE_DIR "/tombstone_"
-/* Can accomodate a tombstone number up to 9999. */
-#define TOMBSTONE_MAX_LEN (sizeof(TOMBSTONE_FILE_PREFIX) + 4)
-#define NUM_TOMBSTONES  10
 #define WLUTIL "/vendor/xbin/wlutil"
 
-typedef struct {
-  char name[TOMBSTONE_MAX_LEN];
-  int fd;
-} tombstone_data_t;
+// NOTE: Keep this information in sync with tombstoned:
+// File: system/core/debuggerd/tombstoned/tombstoned.cpp
+static const std::string TOMBSTONE_DIR = "/data/tombstones";
+static const std::string TOMBSTONE_FILE_PREFIX = "/data/tombstones/tombstone_";
+static const std::string ANR_DIR = "/data/anr";
+static const std::string ANR_FILE_PREFIX = "/data/anr/anr_";
 
-static tombstone_data_t tombstone_data[NUM_TOMBSTONES];
+struct DumpData {
+    std::string name;
+    int fd;
+    time_t mtime;
+};
+
+static bool operator<(const DumpData& d1, const DumpData& d2) {
+    return d1.mtime < d2.mtime;
+}
+
+static std::unique_ptr<std::vector<DumpData>> tombstone_data;
+static std::unique_ptr<std::vector<DumpData>> anr_data;
 
 const std::string ZIP_ROOT_DIR = "FS";
 std::string bugreport_dir;
@@ -104,23 +113,77 @@ bool is_user_build() {
     return 0 == strncmp(build_type, "user", PROPERTY_VALUE_MAX - 1);
 }
 
-/* gets the tombstone data, according to the bugreport type: if zipped gets all tombstones,
- * otherwise gets just those modified in the last half an hour. */
-static void get_tombstone_fds(tombstone_data_t data[NUM_TOMBSTONES]) {
-    time_t thirty_minutes_ago = now - 60*30;
-    for (size_t i = 0; i < NUM_TOMBSTONES; i++) {
-        snprintf(data[i].name, sizeof(data[i].name), "%s%02zu", TOMBSTONE_FILE_PREFIX, i);
-        int fd = TEMP_FAILURE_RETRY(open(data[i].name,
-                                         O_RDONLY | O_CLOEXEC | O_NOFOLLOW | O_NONBLOCK));
-        struct stat st;
-        if (fstat(fd, &st) == 0 && S_ISREG(st.st_mode) &&
-            (zip_writer || (time_t) st.st_mtime >= thirty_minutes_ago)) {
-        data[i].fd = fd;
-        } else {
-        close(fd);
-            data[i].fd = -1;
+/*
+ * Returns a vector of dump fds under |file_prefix|. The returned vector
+ * is sorted by the mtimes of the dumps. If |limit_by_mtime| is set, the
+ * vector only contains files that were written in the last 30 minutes.
+ */
+static std::vector<DumpData>* get_dump_fds(const std::string file_prefix, bool limit_by_mtime) {
+    static const time_t thirty_minutes_ago = now - 60*30;
+
+    size_t i = 0;
+    std::unique_ptr<std::vector<DumpData>> dump_data(new std::vector<DumpData>);
+    while (true) {
+        const std::string name = android::base::StringPrintf("%s%02zu",
+                file_prefix.c_str(), i++);
+        android::base::unique_fd fd(TEMP_FAILURE_RETRY(
+               open(name.c_str(), O_RDONLY | O_CLOEXEC | O_NOFOLLOW | O_NONBLOCK)));
+        if (fd == -1) {
+            if (errno != ENOENT) {
+                MYLOGW("Unable to open dump file: %s %s", name.c_str(), strerror(errno));
+            }
+
+            break;
         }
+
+        struct stat st;
+        if (fstat(fd, &st) == -1) {
+            MYLOGW("Unable to stat dump file: %s %s", name.c_str(), strerror(errno));
+            continue;
+        }
+
+        if (!S_ISREG(st.st_mode)) {
+            MYLOGW("Unexpected mode for dump file: %s %x", name.c_str(), st.st_mode);
+            continue;
+        }
+
+        if (limit_by_mtime && st.st_mtime >= thirty_minutes_ago) {
+            MYLOGI("Excluding stale dump file: %s", name.c_str());
+            continue;
+        }
+
+        DumpData data = {
+            .name = name,
+            .fd = fd.release(),
+            .mtime = st.st_mtime
+        };
+
+        dump_data->push_back(data);
     }
+
+    std::sort(dump_data->begin(), dump_data->end());
+
+    return dump_data.release();
+}
+
+static bool add_dumps(const std::vector<DumpData>& dump_list, const char* type_name) {
+    bool dumped = false;
+    for (size_t i = 0; i < dump_list.size(); i++) {
+        const std::string& name = dump_list[i].name;
+        const int fd = dump_list[i].fd;
+        dumped = true;
+        if (zip_writer) {
+            if (!add_zip_entry_from_fd(ZIP_ROOT_DIR + name, fd)) {
+                MYLOGE("Unable to add %s %s to zip file\n", name.c_str(), type_name);
+            }
+        } else {
+            dump_file_from_fd(type_name, name.c_str(), fd);
+        }
+
+        close(fd);
+    }
+
+    return dumped;
 }
 
 // for_each_pid() callback to get mount info about a process.
@@ -924,25 +987,45 @@ static void dumpstate(const std::string& screenshot_path, const std::string& ver
 
     do_logcat();
 
+    char anr_traces_path[PATH_MAX];
+    bool is_global_trace_file = true;
+    property_get("dalvik.vm.stack-trace-dir", anr_traces_path, "");
+    if (!anr_traces_path[0]) {
+        property_get("dalvik.vm.stack-trace-file", anr_traces_path, "");
+    } else {
+        is_global_trace_file = false;
+    }
+
     /* show the traces we collected in main(), if that was done */
     if (dump_traces_path != NULL) {
         dump_file("VM TRACES JUST NOW", dump_traces_path);
+        if (!is_global_trace_file) {
+            if (unlink(dump_traces_path) == -1) {
+                MYLOGE("Unable to unlink trace file %s: %s", dump_traces_path, strerror(errno));
+            }
+        }
     }
 
     /* only show ANR traces if they're less than 15 minutes old */
     struct stat st;
-    char anr_traces_path[PATH_MAX];
-    property_get("dalvik.vm.stack-trace-file", anr_traces_path, "");
     if (!anr_traces_path[0]) {
-        printf("*** NO VM TRACES FILE DEFINED (dalvik.vm.stack-trace-file)\n\n");
+        printf("*** NO VM TRACES DESTINATION DEFINED (dalvik.vm.stack-trace-[file|dir])\n\n");
     } else {
-      int fd = TEMP_FAILURE_RETRY(open(anr_traces_path,
-                                       O_RDONLY | O_CLOEXEC | O_NOFOLLOW | O_NONBLOCK));
-      if (fd < 0) {
-          printf("*** NO ANR VM TRACES FILE (%s): %s\n\n", anr_traces_path, strerror(errno));
-      } else {
-          dump_file_from_fd("VM TRACES AT LAST ANR", anr_traces_path, fd);
-      }
+        std::string file_path;
+        if (is_global_trace_file) {
+            file_path = anr_traces_path;
+        } else {
+            file_path = anr_data->front().name;
+        }
+
+        int fd = TEMP_FAILURE_RETRY(open(file_path.c_str(),
+                                         O_RDONLY | O_CLOEXEC | O_NOFOLLOW | O_NONBLOCK));
+        if (fd < 0) {
+            printf("*** NO ANR VM TRACES FILE (%s): %s\n\n", file_path.c_str(), strerror(errno));
+        } else {
+            // NOTE: dump_file_from_fd closes the FD.
+            dump_file_from_fd("VM TRACES AT LAST ANR", file_path.c_str(), fd);
+        }
     }
 
     /* slow traces for slow operations */
@@ -963,25 +1046,14 @@ static void dumpstate(const std::string& screenshot_path, const std::string& ver
         }
     }
 
-    int dumped = 0;
-    for (size_t i = 0; i < NUM_TOMBSTONES; i++) {
-        if (tombstone_data[i].fd != -1) {
-            const char *name = tombstone_data[i].name;
-            int fd = tombstone_data[i].fd;
-            dumped = 1;
-            if (zip_writer) {
-                if (!add_zip_entry_from_fd(ZIP_ROOT_DIR + name, fd)) {
-                    MYLOGE("Unable to add tombstone %s to zip file\n", name);
-                }
-            } else {
-                dump_file_from_fd("TOMBSTONE", name, fd);
-            }
-            close(fd);
-            tombstone_data[i].fd = -1;
-        }
+    const bool tombstones_dumped = add_dumps(*tombstone_data, "TOMBSTONE");
+    if (!tombstones_dumped) {
+        printf("*** NO TOMBSTONES to dump in %s\n\n", TOMBSTONE_DIR.c_str());
     }
-    if (!dumped) {
-        printf("*** NO TOMBSTONES to dump in %s\n\n", TOMBSTONE_DIR);
+
+    const bool anr_traces_dumped = add_dumps(*anr_data, "ANR");
+    if (!anr_traces_dumped) {
+        printf("*** NO ANRs to dump in %s\n\n", ANR_DIR.c_str());
     }
 
     dump_file("NETWORK DEV INFO", "/proc/net/dev");
@@ -1507,7 +1579,9 @@ int main(int argc, char *argv[]) {
         dump_traces_path = dump_traces();
 
         /* Run some operations that require root. */
-        get_tombstone_fds(tombstone_data);
+        tombstone_data.reset(get_dump_fds(TOMBSTONE_FILE_PREFIX, !zip_writer));
+        anr_data.reset(get_dump_fds(ANR_FILE_PREFIX, !zip_writer));
+
         add_dir(RECOVERY_DIR, true);
         add_dir(RECOVERY_DATA_DIR, true);
         add_dir(LOGPERSIST_DATA_DIR, false);
