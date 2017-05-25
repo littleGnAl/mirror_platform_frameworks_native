@@ -22,6 +22,30 @@
       "revId": "c7d85254596e549a40afcff1de62317c340d9a3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289a1cb8_5e82235b",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-05-25T02:54:01Z",
+      "side": 1,
+      "message": "Cant think of a good way to pass an option to Passthrough service manager to disable parsing /proc/xxx/maps though, but on the other hand I also think that belongs in ServiceManagement.h, because only service manager knows about library file path and names.",
+      "parentUuid": "1741ffb8_27f3efac",
+      "range": {
+        "startLine": 418,
+        "startChar": 30,
+        "endLine": 418,
+        "endChar": 35
+      },
+      "revId": "c7d85254596e549a40afcff1de62317c340d9a3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
