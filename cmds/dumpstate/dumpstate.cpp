@@ -683,6 +683,9 @@ static void print_header(std::string version) {
     printf("Command line: %s\n", strtok(cmdline_buf, "\n"));
     printf("Bugreport format version: %s\n", version.c_str());
     printf("Dumpstate info: id=%lu pid=%d\n", id, getpid());
+
+    printf("Uptime: ");
+    run_command(NULL, 10, "uptime", NULL);
     printf("\n");
 }
 
