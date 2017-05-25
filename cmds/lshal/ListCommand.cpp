@@ -415,24 +415,28 @@ Status ListCommand::fetchAllLibraries(const sp<IServiceManager> &manager) {
     using namespace ::android::hardware;
     using namespace ::android::hidl::manager::V1_0;
     using namespace ::android::hidl::base::V1_0;
-    auto ret = timeoutIPC(manager, &IServiceManager::debugDump, [&] (const auto &infos) {
-        std::map<std::string, TableEntry> entries;
-        for (const auto &info : infos) {
-            std::string interfaceName = std::string{info.interfaceName.c_str()} + "/" +
-                    std::string{info.instanceName.c_str()};
-            entries.emplace(interfaceName, TableEntry{
-                .interfaceName = interfaceName,
-                .transport = "passthrough",
-                .serverPid = NO_PID,
-                .serverObjectAddress = NO_PTR,
-                .clientPids = {},
-                .arch = ARCH_UNKNOWN
-            }).first->second.arch |= fromBaseArchitecture(info.arch);
-        }
-        for (auto &&pair : entries) {
-            putEntry(LIST_DLLIB, std::move(pair.second));
-        }
-    });
+    auto ret = timeoutIPCTime(20000 /* wait ms */, manager, &IServiceManager::debugDump,
+            [&] (const auto &infos) {
+                std::map<std::string, TableEntry> entries;
+                for (const auto &info : infos) {
+                    std::string interfaceName = std::string{info.interfaceName.c_str()} + "/" +
+                            std::string{info.instanceName.c_str()};
+                    TableEntry& entry = entries.emplace(interfaceName, TableEntry{
+                        .interfaceName = interfaceName,
+                        .transport = "passthrough",
+                        .serverPid = NO_PID,
+                        .serverObjectAddress = NO_PTR,
+                        .clientPids = {},
+                        .arch = ARCH_UNKNOWN
+                    }).first->second;
+                    entry.arch |= fromBaseArchitecture(info.arch);
+                    entry.clientPids.insert(entry.clientPids.end(),
+                            info.clientPids.begin(), info.clientPids.end());
+                }
+                for (auto &&pair : entries) {
+                    putEntry(LIST_DLLIB, std::move(pair.second));
+                }
+            });
     if (!ret.isOk()) {
         mErr << "Error: Failed to call list on getPassthroughServiceManager(): "
              << ret.description() << std::endl;
