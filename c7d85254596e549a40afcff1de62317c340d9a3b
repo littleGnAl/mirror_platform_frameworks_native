@@ -46,6 +46,30 @@
       "revId": "c7d85254596e549a40afcff1de62317c340d9a3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31956d5f_26f5539e",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-25T20:46:02Z",
+      "side": 1,
+      "message": "This is a really long time. I don\u0027t think we can afford to make lshal take this long :(",
+      "parentUuid": "289a1cb8_5e82235b",
+      "range": {
+        "startLine": 418,
+        "startChar": 30,
+        "endLine": 418,
+        "endChar": 35
+      },
+      "revId": "c7d85254596e549a40afcff1de62317c340d9a3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
