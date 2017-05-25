@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb69a58b_9b8222f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-25T15:01:02Z",
+      "side": 1,
+      "message": "Only OtaDexoptService. Testing this may be tricky. Something like this:\n\n * find an app that doesn\u0027t start immediately after install\n * install it on device\n * Fill up /data until it crosses the triggering threshold (750M free should be good)\n * Serve an OTA\n * Check the app\u0027s oat directory",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "0c94b4b9e724c699e9b79ee37aee6fe1c3881932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
