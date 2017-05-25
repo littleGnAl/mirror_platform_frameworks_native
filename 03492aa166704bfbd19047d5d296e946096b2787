@@ -22,6 +22,29 @@
       "revId": "03492aa166704bfbd19047d5d296e946096b2787",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fac6a7_0b9e423a",
+        "filename": "cmds/lshal/Timeout.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-25T22:06:55Z",
+      "side": 1,
+      "message": "nit: why not just pass a std::chrono::duration here? It\u0027s very nice. Can pass in 2s",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "03492aa166704bfbd19047d5d296e946096b2787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
