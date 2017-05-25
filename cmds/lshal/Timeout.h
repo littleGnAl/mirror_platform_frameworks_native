@@ -25,7 +25,7 @@
 namespace android {
 namespace lshal {
 
-static constexpr std::chrono::milliseconds IPC_CALL_WAIT{500};
+static constexpr uint64_t IPC_CALL_WAIT_MS = 500;
 
 class BackgroundTaskState {
 public:
@@ -79,12 +79,12 @@ bool timeout(std::chrono::duration<R, P> delay, std::function<void(void)> &&func
 
 template<class Function, class I, class... Args>
 typename std::result_of<Function(I *, Args...)>::type
-timeoutIPC(const sp<I> &interfaceObject, Function &&func, Args &&... args) {
+timeoutIPCTime(uint64_t waitMs, const sp<I> &interfaceObject, Function &&func, Args &&... args) {
     using ::android::hardware::Status;
     typename std::result_of<Function(I *, Args...)>::type ret{Status::ok()};
     auto boundFunc = std::bind(std::forward<Function>(func),
             interfaceObject.get(), std::forward<Args>(args)...);
-    bool success = timeout(IPC_CALL_WAIT, [&ret, &boundFunc] {
+    bool success = timeout(std::chrono::milliseconds{waitMs}, [&ret, &boundFunc] {
         ret = std::move(boundFunc());
     });
     if (!success) {
@@ -92,6 +92,13 @@ timeoutIPC(const sp<I> &interfaceObject, Function &&func, Args &&... args) {
     }
     return ret;
 }
+
+template<class Function, class I, class... Args>
+typename std::result_of<Function(I *, Args...)>::type
+timeoutIPC(const sp<I> &interfaceObject, Function &&func, Args &&... args) {
+    return timeoutIPCTime(IPC_CALL_WAIT_MS, interfaceObject, func, args...);
+}
+
 
 }  // namespace lshal
 }  // namespace android
