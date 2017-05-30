@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30258948_06648e32",
+        "filename": "include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1001056
+      },
+      "writtenOn": "2017-05-30T19:58:24Z",
+      "side": 1,
+      "message": "no no, this shouldn\u0027t be here. FlattenableHelper is supposed to be just an adapter to \"virtualize\" flattenable. \nIt absolutely should not have any \"logic\", and certainly not a lot of code that gets inlined.",
+      "range": {
+        "startLine": 504,
+        "startChar": 1,
+        "endLine": 511,
+        "endChar": 1
+      },
+      "revId": "364c066692265272a9c5fcfa7c31970357df7c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
