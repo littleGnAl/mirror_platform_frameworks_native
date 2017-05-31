@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a389764f_d5eb9eaf",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T08:01:32Z",
+      "side": 0,
+      "message": "If we envision this coming back at some point, maybe it makes sense to guard this with if a \"constexpr bool kInplaceVDexEnabled \u003d false\". But then again, no point keeping around dead code that will probably bit rot. Fine either way..",
+      "range": {
+        "startLine": 1192,
+        "startChar": 8,
+        "endLine": 1192,
+        "endChar": 54
+      },
+      "revId": "2410cd179d60b14ac9ad639a930a7b9c712b8463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
