@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b8c63c0_cef100c6",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "I\u0027d prefer to do that in a follow up - it\u0027s going to be another multi project merge-conflict wrangle and this isn\u0027t really a regression (see LHS).",
+      "parentUuid": "c1c3b18d_e60bbb2f",
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68e37f0d_debe5d25",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -65,6 +83,54 @@
     },
     {
       "key": {
+        "uuid": "2c1326f3_3f22bd8e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68e37f0d_debe5d25",
+      "range": {
+        "startLine": 121,
+        "startChar": 54,
+        "endLine": 121,
+        "endChar": 60
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75d30b37_23772f19",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8404831c_129b863a",
+      "range": {
+        "startLine": 121,
+        "startChar": 30,
+        "endLine": 121,
+        "endChar": 42
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8c2fa02_f3920f3c",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2017-05-31T04:57:45Z",
       "side": 1,
       "message": "could you please declare the constants in the top of the file? Otherwise it\u0027s hard to find them later.\n\nAlso, shouldn\u0027t it be kThirtyMinutesAgo?",
+      "range": {
+        "startLine": 122,
+        "startChar": 24,
+        "endLine": 122,
+        "endChar": 42
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a91a89c_744866c1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done, but please note this is existing code.",
+      "parentUuid": "e8c2fa02_f3920f3c",
       "range": {
         "startLine": 122,
         "startChar": 24,
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "215aa2ca_c4227571",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17f599fe_b992cc06",
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e8ae883_b48621e7",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -116,6 +224,30 @@
       "writtenOn": "2017-05-31T04:57:45Z",
       "side": 1,
       "message": "please use \\n in the MYLOGx macros because they\u0027re also sent to stderr",
+      "range": {
+        "startLine": 133,
+        "startChar": 48,
+        "endLine": 133,
+        "endChar": 49
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29afd816_beff459a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8ae883_b48621e7",
       "range": {
         "startLine": 133,
         "startChar": 48,
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "c8799e71_72f42395",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "I\u0027d prefer to leave that to a follow up. There are several (existing) weird lifecycle related quirks that I\u0027d prefer to address in a followup. This change doesn\u0027t make things worse.",
+      "parentUuid": "0fd26ad9_4cc6ced3",
+      "range": {
+        "startLine": 157,
+        "startChar": 18,
+        "endLine": 157,
+        "endChar": 31
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f4f93b5_f1ff5e61",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "543d6439_e2358e0b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f4f93b5_f1ff5e61",
+      "range": {
+        "startLine": 175,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 22
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff58fd08_6155f4da",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -185,6 +365,30 @@
       "writtenOn": "2017-05-31T04:57:45Z",
       "side": 1,
       "message": "This function is gone on our internal master, it belongs to DumpstateUtil.h , and you will have a hard time merging this CL.\n\nI think it would be better to do it on our master, and push back to AOSP later (the other option is to pull all dumpstate changes to AOSP, but I\u0027m not sure how easy that would be).",
+      "range": {
+        "startLine": 176,
+        "startChar": 17,
+        "endLine": 176,
+        "endChar": 38
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbfc3319_b5adb29e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff58fd08_6155f4da",
       "range": {
         "startLine": 176,
         "startChar": 17,
@@ -243,6 +447,30 @@
     },
     {
       "key": {
+        "uuid": "e526d10a_3e7f4812",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8f5b0c0_74acf13a",
+      "range": {
+        "startLine": 992,
+        "startChar": 4,
+        "endLine": 992,
+        "endChar": 16
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6381101_8b88d01d",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -266,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "fcd0561d_2c51bd62",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6381101_8b88d01d",
+      "range": {
+        "startLine": 993,
+        "startChar": 8,
+        "endLine": 993,
+        "endChar": 27
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b0af50d_d1325bcf",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -277,6 +529,24 @@
       "writtenOn": "2017-05-31T04:57:45Z",
       "side": 1,
       "message": "!\u003d nullptr",
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e608738b_c9b448db",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0af50d_d1325bcf",
       "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -346,6 +616,30 @@
     },
     {
       "key": {
+        "uuid": "3d0628eb_3ed7098b",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e759004_af6ee675",
+      "range": {
+        "startLine": 970,
+        "startChar": 12,
+        "endLine": 970,
+        "endChar": 49
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75af65fc_6ef0b751",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 1
@@ -369,6 +663,30 @@
     },
     {
       "key": {
+        "uuid": "6f9b08ee_b19cca81",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75af65fc_6ef0b751",
+      "range": {
+        "startLine": 980,
+        "startChar": 23,
+        "endLine": 980,
+        "endChar": 24
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf0c8f0f_42cff016",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 1
@@ -380,6 +698,30 @@
       "writtenOn": "2017-05-31T04:57:45Z",
       "side": 1,
       "message": "C++ API?",
+      "range": {
+        "startLine": 984,
+        "startChar": 4,
+        "endLine": 984,
+        "endChar": 16
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bca7445_18529529",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf0c8f0f_42cff016",
       "range": {
         "startLine": 984,
         "startChar": 4,
@@ -432,6 +774,24 @@
     },
     {
       "key": {
+        "uuid": "e3c55d82_b93bd1da",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "I have to release() it as the return value of this method.",
+      "parentUuid": "083186ca_08cc131c",
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2bac68c_f367ab30",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 1
@@ -443,6 +803,30 @@
       "writtenOn": "2017-05-31T05:07:30Z",
       "side": 1,
       "message": "This is an oddly specific type. Just use int?",
+      "range": {
+        "startLine": 1041,
+        "startChar": 4,
+        "endLine": 1041,
+        "endChar": 12
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a5742a8_cd6fbca2",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2bac68c_f367ab30",
       "range": {
         "startLine": 1041,
         "startChar": 4,
@@ -478,6 +862,30 @@
     },
     {
       "key": {
+        "uuid": "87798e2c_64a12c87",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3110b54_2a09af82",
+      "range": {
+        "startLine": 1042,
+        "startChar": 25,
+        "endLine": 1042,
+        "endChar": 26
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b720ce1a_25fe53bd",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 1
@@ -489,6 +897,30 @@
       "writtenOn": "2017-05-31T04:57:45Z",
       "side": 1,
       "message": "if you change to bool , no need to compare to 0",
+      "range": {
+        "startLine": 1102,
+        "startChar": 8,
+        "endLine": 1102,
+        "endChar": 20
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf5eaf58_3499615b",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-31T18:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b720ce1a_25fe53bd",
       "range": {
         "startLine": 1102,
         "startChar": 8,
