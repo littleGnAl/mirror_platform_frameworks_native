@@ -1,0 +1,337 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68e37f0d_debe5d25",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "const std::string\u0026 ?",
+      "range": {
+        "startLine": 121,
+        "startChar": 54,
+        "endLine": 121,
+        "endChar": 60
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8404831c_129b863a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "We\u0027re using camel-case for functions now, could you please use GetDumpFds()?",
+      "range": {
+        "startLine": 121,
+        "startChar": 30,
+        "endLine": 121,
+        "endChar": 42
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8c2fa02_f3920f3c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "could you please declare the constants in the top of the file? Otherwise it\u0027s hard to find them later.\n\nAlso, shouldn\u0027t it be kThirtyMinutesAgo?",
+      "range": {
+        "startLine": 122,
+        "startChar": 24,
+        "endLine": 122,
+        "endChar": 42
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e8ae883_b48621e7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "please use \\n in the MYLOGx macros because they\u0027re also sent to stderr",
+      "range": {
+        "startLine": 133,
+        "startChar": 48,
+        "endLine": 133,
+        "endChar": 49
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f4f93b5_f1ff5e61",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "zip_writer !\u003d nullptr\n\n(I know technically it\u0027s the same, but we\u0027re using this approach now for readability)",
+      "range": {
+        "startLine": 175,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 22
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff58fd08_6155f4da",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "This function is gone on our internal master, it belongs to DumpstateUtil.h , and you will have a hard time merging this CL.\n\nI think it would be better to do it on our master, and push back to AOSP later (the other option is to pull all dumpstate changes to AOSP, but I\u0027m not sure how easy that would be).",
+      "range": {
+        "startLine": 176,
+        "startChar": 17,
+        "endLine": 176,
+        "endChar": 38
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8f5b0c0_74acf13a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "shouldn\u0027t we use the new, C++-based property API?",
+      "range": {
+        "startLine": 992,
+        "startChar": 4,
+        "endLine": 992,
+        "endChar": 16
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b0af50d_d1325bcf",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "!\u003d nullptr",
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e759004_af6ee675",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "DumpTraces.\nAlso, can it take a const std::string instead?",
+      "range": {
+        "startLine": 970,
+        "startChar": 12,
+        "endLine": 970,
+        "endChar": 49
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba362c3f_3a414197",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "FYI, the utils.cpp / dumpstate.h is deprecated - we\u0027re moving \"common\" code (that can be used by device-level dumpstate) into DumpstateUtils.h, and the \"private\" code into dumpstate.cpp itself (or DumpstateInternals.h when it can be used in more than one place in the dramework code).",
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75af65fc_6ef0b751",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "!\u003d nullptr (same below :-)",
+      "range": {
+        "startLine": 980,
+        "startChar": 23,
+        "endLine": 980,
+        "endChar": 24
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf0c8f0f_42cff016",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "C++ API?",
+      "range": {
+        "startLine": 984,
+        "startChar": 4,
+        "endLine": 984,
+        "endChar": 16
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87129092_b2a6b877",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "optional: I wonder if we should encapsualte this logic int oa getCmdLine() sort of function..",
+      "range": {
+        "startLine": 996,
+        "startChar": 24,
+        "endLine": 996,
+        "endChar": 40
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3110b54_2a09af82",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "bool dalvik_found ?",
+      "range": {
+        "startLine": 1042,
+        "startChar": 25,
+        "endLine": 1042,
+        "endChar": 26
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b720ce1a_25fe53bd",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T04:57:45Z",
+      "side": 1,
+      "message": "if you change to bool , no need to compare to 0",
+      "range": {
+        "startLine": 1102,
+        "startChar": 8,
+        "endLine": 1102,
+        "endChar": 20
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
