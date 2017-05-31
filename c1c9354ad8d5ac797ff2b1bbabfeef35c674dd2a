@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6daab8c6_b1df9f2a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T03:20:31Z",
+      "side": 0,
+      "message": "We can\u0027t remove an item such as uptime because it might break tools that expect it.\n\nPlease file a external bug, keep this entry, and add a:\n\n// TODO(bug number): remove once tools don\u0027t depend on it\n\nabove it...",
+      "range": {
+        "startLine": 882,
+        "startChar": 29,
+        "endLine": 882,
+        "endChar": 30
+      },
+      "revId": "c1c9354ad8d5ac797ff2b1bbabfeef35c674dd2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

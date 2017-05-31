@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e1af0d4_b48844d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T03:20:31Z",
+      "side": 1,
+      "message": "Please add Bug: BUG_NUMBER entry here once you file a bug (see my other comment)",
+      "revId": "d9793829a596664c5906cc1ab74558143890d409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83721c98_8c59f873",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-05-31T03:20:31Z",
+      "side": 1,
+      "message": "This is the dumpstate \"header\", we should keep it consistent with the other entries and use:\n\nprintf(\"Uptime: \");\nrun_command(NULL, 10, \"uptime\", NULL);\n\nAlso, I\u0027d move it a couple lines above, since this is logically similar to kernel version / command line (and not bugreport format / info).",
+      "range": {
+        "startLine": 686,
+        "startChar": 17,
+        "endLine": 686,
+        "endChar": 23
+      },
+      "revId": "d9793829a596664c5906cc1ab74558143890d409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
