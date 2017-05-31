@@ -22,6 +22,30 @@
       "revId": "2410cd179d60b14ac9ad639a930a7b9c712b8463",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "954962d6_3fb9002f",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-05-31T20:25:38Z",
+      "side": 0,
+      "message": "I don\u0027t see a way it can come back given how pervasive the size issue is.",
+      "parentUuid": "a389764f_d5eb9eaf",
+      "range": {
+        "startLine": 1192,
+        "startChar": 8,
+        "endLine": 1192,
+        "endChar": 54
+      },
+      "revId": "2410cd179d60b14ac9ad639a930a7b9c712b8463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
