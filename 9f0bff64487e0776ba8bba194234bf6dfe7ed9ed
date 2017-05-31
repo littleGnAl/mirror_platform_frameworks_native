@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c1c3b18d_e60bbb2f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T05:07:30Z",
+      "side": 1,
+      "message": "Can we just expose this stuff in a header?",
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68e37f0d_debe5d25",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -71,6 +88,23 @@
     },
     {
       "key": {
+        "uuid": "17f599fe_b992cc06",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T05:07:30Z",
+      "side": 1,
+      "message": "nit: ()",
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e8ae883_b48621e7",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -87,6 +121,29 @@
         "startChar": 48,
         "endLine": 133,
         "endChar": 49
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fd26ad9_4cc6ced3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T05:07:30Z",
+      "side": 1,
+      "message": "Make this field a unique_fd instead?",
+      "range": {
+        "startLine": 157,
+        "startChar": 18,
+        "endLine": 157,
+        "endChar": 31
       },
       "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -140,6 +197,29 @@
     },
     {
       "key": {
+        "uuid": "342761fa_e4042289",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T05:07:30Z",
+      "side": 1,
+      "message": "(and this is why dump_file_from_fd should take a unique_fd :-)",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 13
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8f5b0c0_74acf13a",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -163,6 +243,29 @@
     },
     {
       "key": {
+        "uuid": "e6381101_8b88d01d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T05:07:30Z",
+      "side": 1,
+      "message": "I prefer \"anr_traces_path[0] \u003d\u003d \u0027\\0\u0027\" to be explicit about the types, but I don\u0027t care that much.",
+      "range": {
+        "startLine": 993,
+        "startChar": 8,
+        "endLine": 993,
+        "endChar": 27
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b0af50d_d1325bcf",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -174,6 +277,29 @@
       "writtenOn": "2017-05-31T04:57:45Z",
       "side": 1,
       "message": "!\u003d nullptr",
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab810a77_6b546bb0",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T05:07:30Z",
+      "side": 1,
+      "message": "Make it take a unique_fd instead?",
+      "range": {
+        "startLine": 1026,
+        "startChar": 21,
+        "endLine": 1026,
+        "endChar": 52
+      },
       "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -282,6 +408,46 @@
         "startChar": 24,
         "endLine": 996,
         "endChar": 40
+      },
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "083186ca_08cc131c",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T05:07:30Z",
+      "side": 1,
+      "message": "Why not just std::string? You can get a char* from it via \u0026foo[0]. (or just .data(), in c++17)",
+      "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2bac68c_f367ab30",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T05:07:30Z",
+      "side": 1,
+      "message": "This is an oddly specific type. Just use int?",
+      "range": {
+        "startLine": 1041,
+        "startChar": 4,
+        "endLine": 1041,
+        "endChar": 12
       },
       "revId": "9f0bff64487e0776ba8bba194234bf6dfe7ed9ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
