@@ -52,6 +52,8 @@ bool dump_profiles(int32_t uid, const std::string& pkgname, const char* code_pat
 
 bool delete_odex(const char* apk_path, const char* instruction_set, const char* output_path);
 
+bool delete_vdex(const char* apk_path, const char* instruction_set, const char* output_path);
+
 bool reconcile_secondary_dex_file(const std::string& dex_path,
         const std::string& pkgname, int uid, const std::vector<std::string>& isas,
         const std::unique_ptr<std::string>& volumeUuid, int storage_flag,

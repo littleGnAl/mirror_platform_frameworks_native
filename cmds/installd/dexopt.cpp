@@ -1866,6 +1866,27 @@ bool delete_odex(const char* apk_path, const char* instruction_set, const char* 
     return return_value_oat && return_value_art;
 }
 
+bool delete_vdex(const char* apk_path, const char* instruction_set, const char* oat_dir) {
+    // Delete the vdex file.
+    char out_path[PKG_PATH_MAX];
+
+    auto unlink_and_check = [](const char* path) -> bool {
+      int result = unlink(path);
+      if (result != 0) {
+          if (errno == EACCES || errno == EPERM) {
+              return false;
+          }
+      }
+      return true;
+    };
+
+    if (!create_oat_out_path(apk_path, instruction_set, oat_dir,
+        /*is_secondary_dex*/false, out_path)) {
+        return false;
+    }
+    return unlink_and_check(create_vdex_filename(out_path).c_str());
+}
+
 int dexopt(const char* const params[DEXOPT_PARAM_COUNT]) {
     return dexopt(params[0],                    // apk_path
                   atoi(params[1]),              // uid
