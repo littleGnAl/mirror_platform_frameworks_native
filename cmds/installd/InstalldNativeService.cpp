@@ -1936,9 +1936,29 @@ binder::Status InstalldNativeService::deleteOdex(const std::string& apkPath,
 
     const char* apk_path = apkPath.c_str();
     const char* instruction_set = instructionSet.c_str();
-    const char* oat_dir = outputPath.c_str();
+    bool res;
+    if (outputPath.size() != 0) {
+        res = delete_odex(apk_path, instruction_set, outputPath.c_str());
+    } else {
+        res = delete_odex(apk_path, instruction_set, nullptr);
+    }
 
-    bool res = delete_odex(apk_path, instruction_set, oat_dir);
+    return res ? ok() : error();
+}
+
+binder::Status InstalldNativeService::deleteVdex(const std::string& apkPath,
+        const std::string& instructionSet, const std::string& outputPath) {
+    ENFORCE_UID(AID_SYSTEM);
+    std::lock_guard<std::recursive_mutex> lock(mLock);
+
+    const char* apk_path = apkPath.c_str();
+    const char* instruction_set = instructionSet.c_str();
+    bool res;
+    if (outputPath.size() != 0) {
+        res = delete_vdex(apk_path, instruction_set, outputPath.c_str());
+    } else {
+        res = delete_vdex(apk_path, instruction_set, nullptr);
+    }
     return res ? ok() : error();
 }
 
