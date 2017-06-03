@@ -1936,9 +1936,13 @@ binder::Status InstalldNativeService::deleteOdex(const std::string& apkPath,
 
     const char* apk_path = apkPath.c_str();
     const char* instruction_set = instructionSet.c_str();
-    const char* oat_dir = outputPath ? outputPath->c_str() : nullptr;
+    bool res;
+    if (outputPath != nullptr) {
+        res = delete_odex(apk_path, instruction_set, outputPath->c_str());
+    } else {
+        res = delete_odex(apk_path, instruction_set, nullptr);
+    }
 
-    bool res = delete_odex(apk_path, instruction_set, oat_dir);
     return res ? ok() : error();
 }
 
