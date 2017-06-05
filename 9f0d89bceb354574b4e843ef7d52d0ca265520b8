@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "501bb442_161edf0b",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-05T14:36:25Z",
+      "side": 1,
+      "message": "line too long",
+      "range": {
+        "startLine": 1203,
+        "startChar": 100,
+        "endLine": 1203,
+        "endChar": 101
+      },
+      "revId": "9f0d89bceb354574b4e843ef7d52d0ca265520b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f132846_263debbf",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-05T14:36:25Z",
+      "side": 1,
+      "message": "is there a CHECK in the compiler? Let\u0027s add one if not. And I mean CHECK not DCHECK.",
+      "range": {
+        "startLine": 1205,
+        "startChar": 14,
+        "endLine": 1205,
+        "endChar": 59
+      },
+      "revId": "9f0d89bceb354574b4e843ef7d52d0ca265520b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e220508b_60edc99c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-05T14:36:25Z",
+      "side": 1,
+      "message": "line too long",
+      "range": {
+        "startLine": 1205,
+        "startChar": 100,
+        "endLine": 1205,
+        "endChar": 101
+      },
+      "revId": "9f0d89bceb354574b4e843ef7d52d0ca265520b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0b9d69f_210c7dcd",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-05T14:36:25Z",
+      "side": 1,
+      "message": "this can still fail. Error handling?",
+      "range": {
+        "startLine": 1219,
+        "startChar": 38,
+        "endLine": 1219,
+        "endChar": 42
+      },
+      "revId": "9f0d89bceb354574b4e843ef7d52d0ca265520b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
