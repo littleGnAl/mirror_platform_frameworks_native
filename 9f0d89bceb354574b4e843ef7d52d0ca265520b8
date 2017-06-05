@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0032d679_def095d2",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-06-05T15:07:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "501bb442_161edf0b",
+      "range": {
+        "startLine": 1203,
+        "startChar": 100,
+        "endLine": 1203,
+        "endChar": 101
+      },
+      "revId": "9f0d89bceb354574b4e843ef7d52d0ca265520b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f132846_263debbf",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "5c17a658_cb8ead5b",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-06-05T15:07:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e220508b_60edc99c",
+      "range": {
+        "startLine": 1205,
+        "startChar": 100,
+        "endLine": 1205,
+        "endChar": 101
+      },
+      "revId": "9f0d89bceb354574b4e843ef7d52d0ca265520b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49c70435_36193c59",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-06-05T15:07:12Z",
+      "side": 1,
+      "message": ";-) DCHECK here: https://cs.corp.google.com/android/art/compiler/oat_writer.cc?type\u003dcs\u0026q\u003dupdate_input_vdex\u0026sq\u003dpackage:%5Eandroid$\u0026l\u003d522.\n\nWill make it a CHECK.",
+      "parentUuid": "6f132846_263debbf",
+      "range": {
+        "startLine": 1205,
+        "startChar": 14,
+        "endLine": 1205,
+        "endChar": 59
+      },
+      "revId": "9f0d89bceb354574b4e843ef7d52d0ca265520b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0b9d69f_210c7dcd",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-06-05T14:36:25Z",
       "side": 1,
       "message": "this can still fail. Error handling?",
+      "range": {
+        "startLine": 1219,
+        "startChar": 38,
+        "endLine": 1219,
+        "endChar": 42
+      },
+      "revId": "9f0d89bceb354574b4e843ef7d52d0ca265520b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a6c0d08_df2ad68d",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-06-05T15:07:12Z",
+      "side": 1,
+      "message": "No need, the input-vdex will be -1, and we\u0027ll use the apk (and note that this isn\u0027t code I have changed, see 1..2)",
+      "parentUuid": "a0b9d69f_210c7dcd",
       "range": {
         "startLine": 1219,
         "startChar": 38,
