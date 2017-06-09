@@ -22,6 +22,30 @@
       "revId": "6c9a7bd2f338e7a0c96191e546ce1003540171c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba937b4e_d20aeb5b",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1944,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-06-09T17:05:58Z",
+      "side": 1,
+      "message": "Yeah, it is. I refactored my code on Nicolas\u0027s change which made some edits regarding the method\u0027s behavior. I failed to observe the change carefully.",
+      "parentUuid": "cf3f883b_244f5a9d",
+      "range": {
+        "startLine": 1940,
+        "startChar": 4,
+        "endLine": 1944,
+        "endChar": 5
+      },
+      "revId": "6c9a7bd2f338e7a0c96191e546ce1003540171c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
