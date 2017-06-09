@@ -62,6 +62,24 @@
       "revId": "a9d93e6eac52f8ea14c2ef58473939ab00966c82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "293b9dd5_d273b0e3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-06-09T01:12:11Z",
+      "side": 1,
+      "message": "Yeah, while writing the method I was planning to remove this later. Anyway, we don\u0027t need this method as Nicolas pointed out that we now also remove vdex in the other method.",
+      "parentUuid": "c768bfdd_deb7532b",
+      "revId": "a9d93e6eac52f8ea14c2ef58473939ab00966c82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
