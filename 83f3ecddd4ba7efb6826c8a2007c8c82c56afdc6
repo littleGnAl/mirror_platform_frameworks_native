@@ -22,6 +22,30 @@
       "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0070a19d_8f09b7d1",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2017-06-14T05:34:17Z",
+      "side": 1,
+      "message": "I don\u0027t know if changing product_variables would result in side effect.\nDan, could you share your idea?\n\nNot using BINDER_IPC_32BIT seems difficult because BINDER_IPC_32BIT is used by data structures in a common header linux/android/binder.h, and we can\u0027t redefine all of them.",
+      "parentUuid": "7388d31b_a37db805",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
