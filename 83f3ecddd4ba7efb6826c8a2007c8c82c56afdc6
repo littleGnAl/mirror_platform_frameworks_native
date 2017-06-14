@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7388d31b_a37db805",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2017-06-14T04:08:51Z",
+      "side": 1,
+      "message": "is this possible to build both 32-bit and 64-bit binaries out of this one target?\n\nthe source code can be perhaps extended so that it knows how it\u0027s built (e.g., integer length without using DBINDER_IPC_32BIT)?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
