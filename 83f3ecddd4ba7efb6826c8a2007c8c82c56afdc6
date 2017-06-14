@@ -46,6 +46,30 @@
       "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f83b07e2_c838d785",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2017-06-14T14:49:42Z",
+      "side": 1,
+      "message": "Dan, is there any way we can use this one module def and produce two different 32-bit and 64-bit test binaries? the current solution looks like a hack which build system ext can help us avoid.",
+      "parentUuid": "0070a19d_8f09b7d1",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
