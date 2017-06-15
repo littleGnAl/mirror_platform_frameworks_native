@@ -194,6 +194,7 @@ static const TracingCategory k_categories[] = {
 };
 
 static vector<string> wild_card_categories;
+static vector<string> kprobe_syms;
 
 /* Command line options */
 static int g_traceDurationSeconds = 5;
@@ -257,6 +258,8 @@ static const char* k_traceStreamPath =
 
 static const char* k_traceMarkerPath =
     "trace_marker";
+
+static const char* k_kprobeEvents = "kprobe_events";
 
 // Check whether a file exists.
 static bool fileExists(const char* filename) {
@@ -665,6 +668,9 @@ static bool disableKernelTraceEvents() {
     for (string wcc : wild_card_categories) {
         setAllDir("events/" + wcc, false);
     }
+    if (fileExists(k_kprobeEvents)) {
+        setAllDir("events/kprobes", false);
+    }
     return ok;
 }
 
@@ -768,6 +774,16 @@ static bool setCategoryEnable(const char* name, bool enable)
         wild_card_categories.push_back(s.substr(0, p));
         return true;
     }
+    p = s.find("+");
+    if (p != string::npos) {
+        if (!fileExists(k_kprobeEvents)) {
+            fprintf(stderr, "error: no kprobe.\n");
+            return false;
+        }
+        kprobe_syms.push_back(s.substr(0, p));
+        return true;
+    }
+
     fprintf(stderr, "error: unknown tracing category \"%s\"\n", name);
     return false;
 }
@@ -861,7 +877,19 @@ static bool setUpTrace()
     for (string wcc : wild_card_categories) {
         setAllDir("events/" + wcc, true);
     }
-
+    if (fileExists(k_kprobeEvents)) {
+        truncateFile(k_kprobeEvents);
+        for (string sym : kprobe_syms) {
+            char sta[128], end[128];
+            snprintf(sta, sizeof(sta), "p:kp_%s %s", sym.c_str(), sym.c_str());
+            writeStr(k_kprobeEvents, sta);
+            snprintf(sta, sizeof(sta), "r:kp_%s_done %s $retval", sym.c_str(), sym.c_str());
+            writeStr(k_kprobeEvents, end);
+        }
+        if (fileExists("events/kprobes")) {
+            setAllDir("events/kprobes", true);
+        }
+    }
     return ok;
 }
 
