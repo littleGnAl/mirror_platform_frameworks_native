@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5eb4f1d4_f532d4e6",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2017-06-15T17:17:53Z",
+      "side": 1,
+      "message": "instead of \u0027+\u0027, I think \u0027kprobe:\u0027 would be better and more self explanatory",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 20
+      },
+      "revId": "a9042e518302931753c5e23285ebf6eda661d66d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
