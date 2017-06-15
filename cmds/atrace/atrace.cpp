@@ -194,6 +194,7 @@ static const TracingCategory k_categories[] = {
 };
 
 static vector<string> wild_card_categories;
+static vector<string> kprobe_syms;
 
 /* Command line options */
 static int g_traceDurationSeconds = 5;
@@ -257,6 +258,12 @@ static const char* k_traceStreamPath =
 
 static const char* k_traceMarkerPath =
     "trace_marker";
+
+static const char* k_kprobeEventCtrl =
+	"kprobe_events";
+
+static const char* k_kprobeEvents =
+	"events/kprobes";
 
 // Check whether a file exists.
 static bool fileExists(const char* filename) {
@@ -665,6 +672,9 @@ static bool disableKernelTraceEvents() {
     for (string wcc : wild_card_categories) {
         setAllDir("events/" + wcc, false);
     }
+    if (fileExists(k_kprobeEvents)) {
+        setAllDir(k_kprobeEvents, false);
+    }
     return ok;
 }
 
@@ -768,7 +778,17 @@ static bool setCategoryEnable(const char* name, bool enable)
         wild_card_categories.push_back(s.substr(0, p));
         return true;
     }
-    fprintf(stderr, "error: unknown tracing category \"%s\"\n", name);
+    const char* tag = "kprobe:";
+    if (s.find(tag) == 0) {
+        if (!fileExists(k_kprobeEventCtrl) || !fileIsWritable(k_kprobeEventCtrl)) {
+            fprintf(stderr, "error: no kprobe.\n");
+            return false;
+        }
+        kprobe_syms.push_back(s.substr(strlen(tag)));
+        return true;
+    }
+
+    fprintf(stderr, "error: unknown tracing item\"%s\"\n", name);
     return false;
 }
 
@@ -861,7 +881,19 @@ static bool setUpTrace()
     for (string wcc : wild_card_categories) {
         setAllDir("events/" + wcc, true);
     }
-
+    if (fileExists(k_kprobeEventCtrl) && fileIsWritable(k_kprobeEventCtrl)) {
+        truncateFile(k_kprobeEventCtrl);
+        for (string sym : kprobe_syms) {
+            char sta[128], end[128];
+            snprintf(sta, sizeof(sta), "p:kp_%s %s", sym.c_str(), sym.c_str());
+            writeStr(k_kprobeEventCtrl, sta);
+            snprintf(end, sizeof(end), "r:kp_%s_done %s $retval", sym.c_str(), sym.c_str());
+            writeStr(k_kprobeEventCtrl, end);
+        }
+        if (fileExists(k_kprobeEvents)) {
+            setAllDir(k_kprobeEvents, true);
+        }
+    }
     return ok;
 }
 
