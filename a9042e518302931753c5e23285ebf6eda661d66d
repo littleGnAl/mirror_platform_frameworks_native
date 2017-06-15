@@ -22,6 +22,29 @@
       "revId": "a9042e518302931753c5e23285ebf6eda661d66d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6469d8a_13987f98",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2017-06-15T17:21:10Z",
+      "side": 1,
+      "message": "Is it possible to drop kp_ and make the regular binder parser work with it?",
+      "range": {
+        "startLine": 884,
+        "startChar": 42,
+        "endLine": 884,
+        "endChar": 50
+      },
+      "revId": "a9042e518302931753c5e23285ebf6eda661d66d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
