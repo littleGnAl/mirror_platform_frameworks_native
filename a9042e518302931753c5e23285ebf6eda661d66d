@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a9b2759_60368bc8",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1135739
+      },
+      "writtenOn": "2017-06-16T03:44:53Z",
+      "side": 1,
+      "message": "Sounds good, refined.",
+      "parentUuid": "5eb4f1d4_f532d4e6",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 20
+      },
+      "revId": "a9042e518302931753c5e23285ebf6eda661d66d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6469d8a_13987f98",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-15T17:21:10Z",
       "side": 1,
       "message": "Is it possible to drop kp_ and make the regular binder parser work with it?",
+      "range": {
+        "startLine": 884,
+        "startChar": 42,
+        "endLine": 884,
+        "endChar": 50
+      },
+      "revId": "a9042e518302931753c5e23285ebf6eda661d66d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89305fa6_d327ce7a",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1135739
+      },
+      "writtenOn": "2017-06-16T03:44:53Z",
+      "side": 1,
+      "message": "Technically, yes. The major concern here is we should also make the html importer to handle all the events instead of only those starts with a \"kp_\" and unfortunately current atrace, for some reasons, chooses not to turn off all the events before starting a new session, which may bring too much noise if we remove the \"kp_\" prefix.",
+      "parentUuid": "c6469d8a_13987f98",
       "range": {
         "startLine": 884,
         "startChar": 42,
