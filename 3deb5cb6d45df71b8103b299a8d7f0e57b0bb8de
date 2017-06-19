@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1215b04_a9cfb4bf",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-06-19T20:15:47Z",
+      "side": 1,
+      "message": "rather than do this, it\u0027s cleaner to just add \"export_header_lib_headers\" of libbinder_headers. This way, if header libs are imported/exported from libbinder_headers, that\u0027s automatically reflected here.",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "3deb5cb6d45df71b8103b299a8d7f0e57b0bb8de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
