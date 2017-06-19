@@ -70,6 +70,30 @@
       "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8c2cb20_88ba4f57",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-19T16:04:34Z",
+      "side": 1,
+      "message": "The current solution is a hack, one the build system isn\u0027t going to support either.\n\nIdeally VTS doesn\u0027t depend on anything that needs build-time product-specific configuration, since that means that things like this will happen.\n\nI think it\u0027s possible to run a 32-bit userspace with a 32-bit kernel and the 64-bit binder interface, perhaps we should be standardizing on the 64-bit binder kernel interface?",
+      "parentUuid": "f83b07e2_c838d785",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
