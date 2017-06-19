@@ -94,6 +94,30 @@
       "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d11f29b5_d2c67cf1",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-06-19T22:58:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure hwbinder supports the 32 bit interface at all, so it is probably better to just require the 64 bit binder interface.",
+      "parentUuid": "e8c2cb20_88ba4f57",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
