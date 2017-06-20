@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "403d270e_c55f2e2c",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1197464
+      },
+      "writtenOn": "2017-06-20T13:20:49Z",
+      "side": 1,
+      "message": "This doesn\u0027t look very good as it duplicates code in setupTrace.",
+      "revId": "cadf451c25af398739127b9d6a6b8c1624819bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8cc8e770_a489cb23",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1197464
+      },
+      "writtenOn": "2017-06-20T13:20:49Z",
+      "side": 1,
+      "message": "I think using \u0027/\u0027 may be closer to your intention than \u0027*\u0027?\nFor example:\n\nif (s[0] \u0026\u0026 s[strlen(s) - 1] \u003d\u003d \u0027/\u0027) {\n  ...\n}",
+      "revId": "cadf451c25af398739127b9d6a6b8c1624819bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
