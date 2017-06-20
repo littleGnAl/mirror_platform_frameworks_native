@@ -118,6 +118,30 @@
       "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ec5acd2_7254dc85",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2017-06-20T15:44:23Z",
+      "side": 1,
+      "message": "Sounds like the 64-bit binder interface has been discussed. Do we have a bug number for it?",
+      "parentUuid": "d11f29b5_d2c67cf1",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "83f3ecddd4ba7efb6826c8a2007c8c82c56afdc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
