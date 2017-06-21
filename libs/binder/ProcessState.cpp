@@ -75,6 +75,12 @@ sp<ProcessState> ProcessState::self()
     return gProcess;
 }
 
+sp<ProcessState> ProcessState::selfOrNull()
+{
+    Mutex::Autolock _l(gProcessMutex);
+    return gProcess;
+}
+
 void ProcessState::setContextObject(const sp<IBinder>& object)
 {
     setContextObject(object, String16("default"));
@@ -159,6 +165,33 @@ bool ProcessState::becomeContextManager(context_check_func checkFunc, void* user
         }
     }
     return mManagesContexts;
+}
+
+// Get references to userspace objects held by the kernel binder driver
+// Writes up to count elements into buf, and returns the total number
+// of references the kernel has, which may be larger than count.
+// buf may be NULL if count is 0.
+ssize_t ProcessState::getKernelReferences(size_t count, uintptr_t* buf)
+{
+    binder_uintptr_t tmp_buf[count];
+
+    binder_references ref = {};
+    ref.count = count;
+    ref.buf = tmp_buf;
+
+    status_t result = ioctl(mDriverFD, BINDER_GET_REFERENCES, &ref);
+    if (ref.count > SSIZE_MAX) {
+        return -1;
+    }
+
+    if (result == 0) {
+        for (size_t i = 0; i < ref.count && i < count; i++) {
+            buf[i] = tmp_buf[i];
+        }
+        return ref.count;
+    } else {
+        return -1;
+    }
 }
 
 ProcessState::handle_entry* ProcessState::lookupHandleLocked(int32_t handle)
