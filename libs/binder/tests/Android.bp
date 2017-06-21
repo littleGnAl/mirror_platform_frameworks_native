@@ -22,7 +22,7 @@ cc_test {
     },
 
     name: "binderDriverInterfaceTest",
-    srcs: ["binderDriverInterfaceTest.cpp"],
+    srcs: ["binderDriverInterfaceTest.cpp", "binderDriverInterfaceTest32.cpp"],
 }
 
 cc_test {
