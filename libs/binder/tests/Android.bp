@@ -13,18 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
-cc_test {
-    product_variables: {
-        binder32bit: {
-            cflags: ["-DBINDER_IPC_32BIT=1"],
-        },
-    },
-
-    name: "binderDriverInterfaceTest",
-    srcs: ["binderDriverInterfaceTest.cpp"],
-}
-
 cc_test {
     name: "binderLibTest",
     srcs: ["binderLibTest.cpp"],

@@ -1,0 +1,5 @@
+#define BinderDriverInterfaceTestEnv BinderDriverInterfaceTestEnv32
+#define BinderDriverInterfaceTest BinderDriverInterfaceTest32
+#define getBinderDriverInterfaceTestEnv getBinderDriverInterfaceTestEnv32
+#define BINDER_IPC_32BIT 1
+#include "binderDriverInterfaceTest_inc.cpp"
