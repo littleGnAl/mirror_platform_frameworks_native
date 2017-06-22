@@ -1294,7 +1294,7 @@ void update_out_oat_access_times(const char* apk_path, const char* out_oat_path)
 // If this is for a profile guided compilation, profile_was_updated will tell whether or not
 // the profile has changed.
 static void exec_dexoptanalyzer(const std::string& dex_file, const char* instruction_set,
-        const char* compiler_filter, bool profile_was_updated) {
+        const char* compiler_filter, bool profile_was_updated, bool downgrade) {
     static const char* DEXOPTANALYZER_BIN = "/system/bin/dexoptanalyzer";
     static const unsigned int MAX_INSTRUCTION_SET_LEN = 7;
 
@@ -1308,13 +1308,17 @@ static void exec_dexoptanalyzer(const std::string& dex_file, const char* instruc
     char isa_arg[strlen("--isa=") + MAX_INSTRUCTION_SET_LEN];
     char compiler_filter_arg[strlen("--compiler-filter=") + kPropertyValueMax];
     const char* assume_profile_changed = "--assume-profile-changed";
+    const char* downgrade_flag = "--downgrade";
 
     sprintf(dex_file_arg, "--dex-file=%s", dex_file.c_str());
     sprintf(isa_arg, "--isa=%s", instruction_set);
     sprintf(compiler_filter_arg, "--compiler-filter=%s", compiler_filter);
 
     // program name, dex file, isa, filter, the final NULL
-    const char* argv[5 + (profile_was_updated ? 1 : 0)];
+    const int argc = 5 +
+        (profile_was_updated ? 1 : 0) +
+        (downgrade ? 1 : 0);
+    const char* argv[argc];
     int i = 0;
     argv[i++] = DEXOPTANALYZER_BIN;
     argv[i++] = dex_file_arg;
@@ -1322,6 +1326,9 @@ static void exec_dexoptanalyzer(const std::string& dex_file, const char* instruc
     argv[i++] = compiler_filter_arg;
     if (profile_was_updated) {
         argv[i++] = assume_profile_changed;
+    }
+    if (downgrade) {
+        argv[i++] = downgrade_flag;
     }
     argv[i] = NULL;
 
@@ -1408,7 +1415,7 @@ static bool process_dexoptanalyzer_result(const std::string& dex_path, int resul
 static bool process_secondary_dex_dexopt(const char* original_dex_path, const char* pkgname,
         int dexopt_flags, const char* volume_uuid, int uid, const char* instruction_set,
         const char* compiler_filter, int* dexopt_needed_out, std::string* oat_dir_out,
-        std::string* dex_path_out) {
+        std::string* dex_path_out, bool downgrade) {
     int storage_flag;
 
     if ((dexopt_flags & DEXOPT_STORAGE_CE) != 0) {
@@ -1468,7 +1475,8 @@ static bool process_secondary_dex_dexopt(const char* original_dex_path, const ch
         // child -- drop privileges before continuing.
         drop_capabilities(uid);
         // Run dexoptanalyzer to get dexopt_needed code.
-        exec_dexoptanalyzer(dex_path, instruction_set, compiler_filter, profile_was_updated);
+        exec_dexoptanalyzer(dex_path, instruction_set, compiler_filter, profile_was_updated,
+                            downgrade);
         exit(DEXOPTANALYZER_BIN_EXEC_ERROR);
     }
 
@@ -1495,7 +1503,7 @@ static bool process_secondary_dex_dexopt(const char* original_dex_path, const ch
 
 int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* instruction_set,
         int dexopt_needed, const char* oat_dir, int dexopt_flags, const char* compiler_filter,
-        const char* volume_uuid, const char* shared_libraries) {
+        const char* volume_uuid, const char* shared_libraries, bool downgrade) {
     CHECK(pkgname != nullptr);
     CHECK(pkgname[0] != 0);
     if ((dexopt_flags & ~DEXOPT_MASK) != 0) {
@@ -1513,7 +1521,8 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
     std::string dex_real_path;
     if (is_secondary_dex) {
         if (process_secondary_dex_dexopt(dex_path, pkgname, dexopt_flags, volume_uuid, uid,
-                instruction_set, compiler_filter, &dexopt_needed, &oat_dir_str, &dex_real_path)) {
+                instruction_set, compiler_filter, &dexopt_needed, &oat_dir_str, &dex_real_path,
+                downgrade)) {
             oat_dir = oat_dir_str.c_str();
             dex_path = dex_real_path.c_str();
             if (dexopt_needed == NO_DEXOPT_NEEDED) {
@@ -1893,7 +1902,8 @@ int dexopt(const char* const params[DEXOPT_PARAM_COUNT]) {
                   atoi(params[6]),              // dexopt_flags
                   params[7],                    // compiler_filter
                   parse_null(params[8]),        // volume_uuid
-                  parse_null(params[9]));       // shared_libraries
+                  parse_null(params[9]),         // shared_libraries
+                  false /* downgrade */);
     static_assert(DEXOPT_PARAM_COUNT == 10U, "Unexpected dexopt param count");
 }
 
