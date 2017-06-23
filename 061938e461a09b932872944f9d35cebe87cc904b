@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "773d4a80_f7a4fc05",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-06-23T22:05:21Z",
+      "side": 1,
+      "message": "it\u0027s a shame that libbinder_headers don\u0027t include these headers as well. This is kind of a problem with a lot of header libs",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 6
+      },
+      "revId": "061938e461a09b932872944f9d35cebe87cc904b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
