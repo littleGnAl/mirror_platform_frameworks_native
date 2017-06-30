@@ -22,6 +22,30 @@
       "revId": "061938e461a09b932872944f9d35cebe87cc904b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cad080c_b08c31ac",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1183376
+      },
+      "writtenOn": "2017-06-30T16:59:01Z",
+      "side": 1,
+      "message": "Agreed. Gives problems on o-preview.",
+      "parentUuid": "773d4a80_f7a4fc05",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 6
+      },
+      "revId": "061938e461a09b932872944f9d35cebe87cc904b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
