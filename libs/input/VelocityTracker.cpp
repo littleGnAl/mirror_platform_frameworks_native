@@ -67,7 +67,8 @@ static float vectorNorm(const float* a, uint32_t m) {
 static String8 vectorToString(const float* a, uint32_t m) {
     String8 str;
     str.append("[");
-    while (m--) {
+    while (m) {
+        m--;
         str.appendFormat(" %f", *(a++));
         if (m) {
             str.append(",");
