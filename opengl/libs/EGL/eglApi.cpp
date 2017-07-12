@@ -124,12 +124,12 @@ extern char const * const gExtensionString  =
         "EGL_EXT_yuv_surface "
         "EGL_EXT_protected_content "
         "EGL_IMG_context_priority "
+        "EGL_ANDROID_native_fence_sync "
         ;
 
 // extensions not exposed to applications but used by the ANDROID system
 //      "EGL_ANDROID_blob_cache "               // strongly recommended
 //      "EGL_IMG_hibernate_process "            // optional
-//      "EGL_ANDROID_native_fence_sync "        // strongly recommended
 //      "EGL_ANDROID_framebuffer_target "       // mandatory for HWC 1.1
 //      "EGL_ANDROID_image_crop "               // optional
 
