@@ -141,6 +141,7 @@ cache_t* start_cache_collection();
 
 int get_path_inode(const std::string& path, ino_t *inode);
 
+int remove_path_inode(const std::string& parent, const char* inode_xattr);
 int write_path_inode(const std::string& parent, const char* name, const char* inode_xattr);
 std::string read_path_inode(const std::string& parent, const char* name, const char* inode_xattr);
 

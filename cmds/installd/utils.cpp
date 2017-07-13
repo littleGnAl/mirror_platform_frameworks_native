@@ -903,6 +903,19 @@ int get_path_inode(const std::string& path, ino_t *inode) {
 }
 
 /**
+ * Remove the inode of a specific child file into the given xattr on the
+ * parent directory. We need to remove the xattr if we delete the relative folders.
+ */
+int remove_path_inode(const std::string& parent, const char* inode_xattr) {
+    if (removexattr(parent.c_str(), inode_xattr) != 0 && errno != EOPNOTSUPP) {
+        PLOG(ERROR) << "Failed to remove xattr " << inode_xattr << " at " << parent;
+        return -1;
+    } else {
+        return 0;
+    }
+}
+
+/**
  * Write the inode of a specific child file into the given xattr on the
  * parent directory. This allows you to find the child later, even if its
  * name is encrypted.
