@@ -6,6 +6,12 @@ ndk_headers {
     license: "NOTICE",
 }
 
+cc_library_headers {
+    name: "libandroid_input_headers",
+    vendor: true,
+    export_include_dirs: ["include_input"],
+}
+
 subdirs = [
     "cmds/*",
     "libs/*",
