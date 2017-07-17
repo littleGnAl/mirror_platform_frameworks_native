@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5040983e_4311613a",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-17T15:19:53Z",
+      "side": 1,
+      "message": "This is C++, please move closer to use. (I\u0027m surprised you need this at all.)",
+      "range": {
+        "startLine": 496,
+        "startChar": 4,
+        "endLine": 497,
+        "endChar": 0
+      },
+      "revId": "8ddc7ebaa763ef02bcd2623d9d9c58a1e2cce789",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4588e7ab_77c8c950",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-17T15:19:53Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 920,
+        "startChar": 0,
+        "endLine": 920,
+        "endChar": 102
+      },
+      "revId": "8ddc7ebaa763ef02bcd2623d9d9c58a1e2cce789",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca551e12_73f5e1e1",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-17T15:19:53Z",
+      "side": 1,
+      "message": "Wrong indent.",
+      "range": {
+        "startLine": 921,
+        "startChar": 8,
+        "endLine": 927,
+        "endChar": 7
+      },
+      "revId": "8ddc7ebaa763ef02bcd2623d9d9c58a1e2cce789",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
