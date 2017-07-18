@@ -22,6 +22,30 @@
       "revId": "eab5af99417c6d46cddf4a6f13a3945132e2961b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2005bee_67a47ad5",
+        "filename": "include/android/asset_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-07-18T18:57:02Z",
+      "side": 1,
+      "message": "Why? It\u0027s useful for bionic and most NDK headers, this is just a weird NDK header that also gets used on the host (by aapt)",
+      "parentUuid": "a7a8132d_3883083d",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "eab5af99417c6d46cddf4a6f13a3945132e2961b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
