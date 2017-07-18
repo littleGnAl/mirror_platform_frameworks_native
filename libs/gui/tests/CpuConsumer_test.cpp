@@ -635,7 +635,7 @@ TEST_P(CpuConsumerTest, FromCpuLockMax) {
 
     // Consume
 
-    CpuConsumer::LockedBuffer *b = new CpuConsumer::LockedBuffer[params.maxLockedBuffers];
+    std::unique_ptr<CpuConsumer::LockedBuffer []> b(new CpuConsumer::LockedBuffer[params.maxLockedBuffers]);
     for (int i = 0; i < params.maxLockedBuffers; i++) {
         ALOGV("Locking frame %d", i);
         err = mCC->lockNextBuffer(&b[i]);
@@ -684,9 +684,6 @@ TEST_P(CpuConsumerTest, FromCpuLockMax) {
     for (int i = 1; i < params.maxLockedBuffers; i++) {
         mCC->unlockBuffer(b[i]);
     }
-
-    delete[] b;
-
 }
 
 CpuConsumerTestParams y8TestSets[] = {
