@@ -34,7 +34,6 @@ LOCAL_SHARED_LIBRARIES := \
     libutils \
 
 LOCAL_STATIC_LIBRARIES := libdiskusage
-LOCAL_CLANG := true
 include $(BUILD_EXECUTABLE)
 
 # OTA slot script

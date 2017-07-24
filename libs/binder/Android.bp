@@ -101,7 +101,6 @@ cc_library {
         "include",
     ],
 
-    clang: true,
     sanitize: {
         misc_undefined: ["integer"],
     },

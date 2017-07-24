@@ -15,8 +15,6 @@
 cc_test {
     name: "libsensor_test",
 
-    clang: true,
-
     srcs: [
         "Sensor_test.cpp",
     ],

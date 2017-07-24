@@ -1,8 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_CLANG := true
-
 LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 LOCAL_SRC_FILES := \
     Client.cpp \
@@ -112,8 +110,6 @@ include $(BUILD_SHARED_LIBRARY)
 # build surfaceflinger's executable
 include $(CLEAR_VARS)
 
-LOCAL_CLANG := true
-
 LOCAL_LDFLAGS_32 := -Wl,--version-script,art/sigchainlib/version-script32.txt -Wl,--export-dynamic
 LOCAL_LDFLAGS_64 := -Wl,--version-script,art/sigchainlib/version-script64.txt -Wl,--export-dynamic
 LOCAL_CFLAGS := -DLOG_TAG=\"SurfaceFlinger\"
@@ -161,8 +157,6 @@ include $(BUILD_EXECUTABLE)
 # uses jni which may not be available in PDK
 ifneq ($(wildcard libnativehelper/include),)
 include $(CLEAR_VARS)
-
-LOCAL_CLANG := true
 
 LOCAL_CFLAGS := -DLOG_TAG=\"SurfaceFlinger\"
 

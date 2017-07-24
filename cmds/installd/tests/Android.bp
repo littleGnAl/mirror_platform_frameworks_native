@@ -1,7 +1,6 @@
 // Build the unit tests for installd
 cc_test {
     name: "installd_utils_test",
-    clang: true,
     srcs: ["installd_utils_test.cpp"],
     shared_libs: [
         "libbase",
@@ -17,7 +16,6 @@ cc_test {
 
 cc_test {
     name: "installd_cache_test",
-    clang: true,
     srcs: ["installd_cache_test.cpp"],
     shared_libs: [
         "libbase",
@@ -36,7 +34,6 @@ cc_test {
 
 cc_test {
     name: "installd_service_test",
-    clang: true,
     srcs: ["installd_service_test.cpp"],
     shared_libs: [
         "libbase",

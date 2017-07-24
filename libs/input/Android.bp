@@ -31,8 +31,6 @@ cc_library {
         "VirtualKeyMap.cpp",
     ],
 
-    clang: true,
-
     shared_libs: [
         "liblog",
         "libcutils",
