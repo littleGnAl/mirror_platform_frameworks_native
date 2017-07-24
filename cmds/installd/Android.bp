@@ -23,8 +23,6 @@ cc_defaults {
         "libselinux",
         "libutils",
     ],
-
-    clang: true,
 }
 
 //
@@ -63,7 +61,6 @@ cc_binary {
         "-Wall",
         "-Werror",
     ],
-    clang: true,
 
     srcs: ["otapreopt_chroot.cpp"],
     shared_libs: [

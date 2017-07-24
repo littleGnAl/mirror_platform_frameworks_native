@@ -48,7 +48,6 @@ cc_test {
         "libbinder",
         "libutils",
     ],
-    clang: true,
     cflags: [
         "-g",
         "-Wall",

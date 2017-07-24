@@ -15,7 +15,6 @@
 cc_library_shared {
     name: "libui",
 
-    clang: true,
     cppflags: [
         "-Weverything",
         "-Werror",
