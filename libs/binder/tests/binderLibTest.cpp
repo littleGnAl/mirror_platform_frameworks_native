@@ -29,6 +29,7 @@
 #include <binder/IServiceManager.h>
 
 #define ARRAY_SIZE(array) (sizeof array / sizeof array[0])
+#define IS_ALIGNED(x, a) (((x) & ((typeof(x))(a) - 1)) == 0)
 
 using namespace android;
 
@@ -44,6 +45,7 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_REGISTER_SERVER,
     BINDER_LIB_TEST_ADD_SERVER,
     BINDER_LIB_TEST_CALL_BACK,
+    BINDER_LIB_TEST_CALL_BACK_VERIFY_BUF,
     BINDER_LIB_TEST_NOP_CALL_BACK,
     BINDER_LIB_TEST_GET_SELF_TRANSACTION,
     BINDER_LIB_TEST_GET_ID_TRANSACTION,
@@ -302,12 +304,26 @@ class BinderLibTestCallBack : public BBinder, public BinderLibTestEvent
                 m_result = data.readInt32();
                 triggerEvent();
                 return NO_ERROR;
+            case BINDER_LIB_TEST_CALL_BACK_VERIFY_BUF:
+                int32_t size;
+                m_result = data.readInt32(&size);
+                buf = data.readInplace(size);
+                if (prev_end)
+                    EXPECT_TRUE((size_t)((uint8_t *)buf - (uint8_t *)prev_end)
+                                <= sizeof(void *));
+                else
+                    EXPECT_TRUE(IS_ALIGNED((unsigned long)((uint8_t *)buf - sizeof(size)),
+                                           PAGE_SIZE));
+                prev_end = (void *)((uint8_t *)buf + size);
+                triggerEvent();
             default:
                 return UNKNOWN_TRANSACTION;
             }
         }
 
         status_t m_result;
+        const void *buf;
+        const void *prev_end = NULL;
 };
 
 class TestDeathRecipient : public IBinder::DeathRecipient, public BinderLibTestEvent
@@ -725,6 +741,32 @@ TEST_F(BinderLibTest, FreedBinder) {
          * the wrong handle.
          */
         strong->handle = oldHandle;
+    }
+}
+
+TEST_F(BinderLibTest, CheckNoHeaderMappedInUser) {
+    status_t ret;
+    Parcel data, reply;
+    sp<BinderLibTestCallBack> callBack = new BinderLibTestCallBack();
+    int32_t size[3] = { 0, PAGE_SIZE / 2, PAGE_SIZE };
+    data.writeInt32(ARRAY_SIZE(size));
+    for (size_t i = 0; i < ARRAY_SIZE(size); i++) {
+        BinderLibTestBundle datai;
+        data.writeStrongBinder(callBack);
+        data.writeInt32(BINDER_LIB_TEST_CALL_BACK_VERIFY_BUF);
+        datai.writeInt32(size[i]);
+        datai.writeInplace(size[i]);
+        datai.appendTo(&data);
+    }
+
+    ret = m_server->transact(BINDER_LIB_TEST_INDIRECT_TRANSACTION, data, &reply);
+    EXPECT_EQ(NO_ERROR, ret);
+
+    for (size_t i = 0; i < ARRAY_SIZE(size); i++) {
+        ret = callBack->waitEvent(5);
+        EXPECT_EQ(NO_ERROR, ret);
+        ret = callBack->getResult();
+        EXPECT_EQ(NO_ERROR, ret);
     }
 }
 
