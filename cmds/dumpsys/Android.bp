@@ -16,8 +16,6 @@ cc_defaults {
         "liblog",
         "libbinder",
     ],
-
-    clang: true,
 }
 
 //

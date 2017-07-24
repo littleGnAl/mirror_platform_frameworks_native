@@ -32,8 +32,6 @@ cc_library {
     name: "libnativewindow",
     export_include_dirs: ["include"],
 
-    clang: true,
-
     cppflags: [
         "-std=c++1z"
     ],

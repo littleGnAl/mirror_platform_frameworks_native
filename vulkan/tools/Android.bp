@@ -15,7 +15,6 @@
 cc_binary {
     name: "vkinfo",
 
-    clang: true,
     cflags: [
         "-fvisibility=hidden",
         "-fstrict-aliasing",

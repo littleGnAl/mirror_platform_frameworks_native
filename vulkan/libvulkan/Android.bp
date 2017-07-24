@@ -22,7 +22,6 @@ ndk_library {
 
 cc_library_shared {
     name: "libvulkan",
-    clang: true,
     sanitize: {
         misc_undefined: ["integer"],
     },

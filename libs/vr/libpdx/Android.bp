@@ -1,6 +1,5 @@
 cc_library_static {
     name: "libpdx",
-    clang: true,
     cflags: [
         "-Wall",
         "-Wextra",
@@ -17,7 +16,6 @@ cc_library_static {
 
 cc_test {
     name: "pdx_tests",
-    clang: true,
     cflags: [
         "-Wall",
         "-Wextra",
@@ -44,7 +42,6 @@ cc_test {
 // Code analysis target.
 cc_test {
     name: "pdx_encoder_performance_test",
-    clang: true,
     cflags: [
         "-Wall",
         "-Wextra",

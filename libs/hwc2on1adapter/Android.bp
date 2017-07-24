@@ -16,7 +16,6 @@ cc_library_shared {
     name: "libhwc2on1adapter",
     vendor: true,
 
-    clang: true,
     cppflags: [
         "-Weverything",
         "-Wall",
