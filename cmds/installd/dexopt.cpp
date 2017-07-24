@@ -28,6 +28,7 @@
 #include <unistd.h>
 
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <android-base/unique_fd.h>
@@ -274,7 +275,11 @@ static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vd
                 dex2oat_large_app_threshold);
     }
 
-    static const char* DEX2OAT_BIN = "/system/bin/dex2oat";
+    // If the runtime was requested to use libartd.so, we'll run dex2oatd, otherwise dex2oat.
+    const char* dex2oat_bin =
+            android::base::GetProperty("persist.sys.dalvik.vm.lib.2", "") == "libartd.so"
+                    ? "/system/bin/dex2oatd"
+                    : "/system/bin/dex2oat";
 
     static const char* RUNTIME_ARG = "--runtime-arg";
 
@@ -377,7 +382,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vd
     }
 
 
-    ALOGV("Running %s in=%s out=%s\n", DEX2OAT_BIN, relative_input_file_name, output_file_name);
+    ALOGV("Running %s in=%s out=%s\n", dex2oat_bin, relative_input_file_name, output_file_name);
 
     const char* argv[9  // program name, mandatory arguments and the final NULL
                      + (have_dex2oat_isa_variant ? 1 : 0)
@@ -398,7 +403,7 @@ static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vd
                      + (has_base_dir ? 1 : 0)
                      + (have_dex2oat_large_app_threshold ? 1 : 0)];
     int i = 0;
-    argv[i++] = DEX2OAT_BIN;
+    argv[i++] = dex2oat_bin;
     argv[i++] = zip_fd_arg;
     argv[i++] = zip_location_arg;
     argv[i++] = input_vdex_fd_arg;
@@ -466,8 +471,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vd
     // Do not add after dex2oat_flags, they should override others for debugging.
     argv[i] = NULL;
 
-    execv(DEX2OAT_BIN, (char * const *)argv);
-    ALOGE("execv(%s) failed: %s\n", DEX2OAT_BIN, strerror(errno));
+    execv(dex2oat_bin, (char * const *)argv);
+    ALOGE("execv(%s) failed: %s\n", dex2oat_bin, strerror(errno));
 }
 
 /*
