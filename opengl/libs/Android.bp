@@ -97,6 +97,9 @@ cc_library_static {
 cc_library_shared {
     name: "libEGL",
     defaults: ["egl_libs_defaults"],
+    vndk: {
+        enabled: true,
+    },
     srcs: [
         "EGL/egl_tls.cpp",
         "EGL/egl_cache.cpp",
@@ -143,6 +146,9 @@ cc_library_shared {
 cc_library_shared {
     name: "libGLESv2",
     defaults: ["gles_libs_defaults"],
+    vndk: {
+        enabled: true,
+    },
     srcs: ["GLES2/gl2.cpp"],
 
     shared_libs: ["libutils"],
