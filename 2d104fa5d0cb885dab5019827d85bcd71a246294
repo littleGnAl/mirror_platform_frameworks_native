@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e60ab5b_797b7a18",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-07-27T11:11:03Z",
+      "side": 1,
+      "message": "Most Android user-space code uses spaces for indentation.",
+      "revId": "2d104fa5d0cb885dab5019827d85bcd71a246294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
