@@ -1810,6 +1810,7 @@ Region Layer::latchBuffer(bool& recomputeVisibleRegions)
         // mSidebandStreamChanged was true
         mSidebandStream = mSurfaceFlingerConsumer->getSidebandStream();
         if (mSidebandStream != NULL) {
+            mCurrentState.modified = true;
             setTransactionFlags(eTransactionNeeded);
             mFlinger->setTransactionFlags(eTraversalNeeded);
         }
