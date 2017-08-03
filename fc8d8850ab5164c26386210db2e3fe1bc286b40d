@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07831ffd_18050a0d",
+        "filename": "libs/gui/BufferQueueConsumer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-03T14:42:15Z",
+      "side": 1,
+      "message": "The caller does not get a response in this path, result should get _something_ I would guess? Perhaps incorporate into permission check below?\n\nAlso, the permission model appear to be either you have permissions to android.permission.DUMP or AID_SHELL always has access. Not knowing AID_SHELL means that we still can dump if the other check allows it.",
+      "range": {
+        "startLine": 742,
+        "startChar": 0,
+        "endLine": 742,
+        "endChar": 15
+      },
+      "revId": "fc8d8850ab5164c26386210db2e3fe1bc286b40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a2f5215_30679e78",
+        "filename": "libs/gui/BufferQueueConsumer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-03T14:42:15Z",
+      "side": 1,
+      "message": "if ((!shellUid || (uid !\u003d shellUid)) \u0026\u0026\n !PermissionCache::checkPermission(String16(\"android.permission.DUMP\"), pid, uid)) {\n    if (!shellUid) {\n        BQ_LOGE(\"Cannot get AID_SHELL\");\n    }\n\nmight serve as a better check as it would mean if we have no idea what shell is, we still will gate the accessibility via android.permission.DUMP check.",
+      "range": {
+        "startLine": 748,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 91
+      },
+      "revId": "fc8d8850ab5164c26386210db2e3fe1bc286b40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
