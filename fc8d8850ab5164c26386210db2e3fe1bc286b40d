@@ -45,6 +45,30 @@
       "revId": "fc8d8850ab5164c26386210db2e3fe1bc286b40d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49b83798_040a8551",
+        "filename": "libs/gui/BufferQueueConsumer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-08-03T18:22:02Z",
+      "side": 1,
+      "message": "This does sound better, but to avoid additional conflicts, I\u0027ll do this in a follow-up change.",
+      "parentUuid": "4a2f5215_30679e78",
+      "range": {
+        "startLine": 748,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 91
+      },
+      "revId": "fc8d8850ab5164c26386210db2e3fe1bc286b40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
