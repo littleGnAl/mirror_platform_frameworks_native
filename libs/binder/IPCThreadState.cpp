@@ -465,22 +465,22 @@ status_t IPCThreadState::getAndExecuteCommand()
 void IPCThreadState::processPendingDerefs()
 {
     if (mIn.dataPosition() >= mIn.dataSize()) {
-        size_t numPending = mPendingWeakDerefs.size();
-        if (numPending > 0) {
-            for (size_t i = 0; i < numPending; i++) {
-                RefBase::weakref_type* refs = mPendingWeakDerefs[i];
-                refs->decWeak(mProcess.get());
-            }
-            mPendingWeakDerefs.clear();
+        /*
+         * The decWeak()/decStorng() calls may cause a destructor to run,
+         * which in turn could have initiated an outgoing transaction,
+         * which in turn could cause us to add to the pending refs
+         * vectors; so instead of simply iterating, loop until they're empty.
+         */
+        while (mPendingWeakDerefs.size() > 0) {
+            RefBase::weakref_type* refs = mPendingWeakDerefs[0];
+            mPendingWeakDerefs.removeAt(0);
+            refs->decWeak(mProcess.get());
         }
 
-        numPending = mPendingStrongDerefs.size();
-        if (numPending > 0) {
-            for (size_t i = 0; i < numPending; i++) {
-                BBinder* obj = mPendingStrongDerefs[i];
-                obj->decStrong(mProcess.get());
-            }
-            mPendingStrongDerefs.clear();
+        while (mPendingStrongDerefs.size() > 0) {
+            BBinder* obj = mPendingStrongDerefs[0];
+            mPendingStrongDerefs.removeAt(0);
+            obj->decStrong(mProcess.get());
         }
     }
 }
