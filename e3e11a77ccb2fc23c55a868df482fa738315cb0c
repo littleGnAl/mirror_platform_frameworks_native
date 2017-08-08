@@ -22,6 +22,30 @@
       "revId": "e3e11a77ccb2fc23c55a868df482fa738315cb0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0027e75f_b7667cf5",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2017-08-08T15:29:38Z",
+      "side": 1,
+      "message": "\u003e I consider that a risk since there are no comments indicating that one depends on the other to mitigate\n\nThey don\u0027t depend on each other though; the fact that they happen to be the same is fortunate for this section of code, but InputMessage::TYPE_MOTION is only ever used when publishing / reading InputMessage headers and AINPUT_EVENT_TYPE_MOTION should only ever be used when querying an InputEvent (InputEvent#getType if you\u0027re in the platform, AInputEvent_getType if you\u0027re using the NDK).\n\nThis code certainly could be updated to use an enum class to avoid this kind of error, however.",
+      "parentUuid": "77aab602_1236d108",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 39
+      },
+      "revId": "e3e11a77ccb2fc23c55a868df482fa738315cb0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
