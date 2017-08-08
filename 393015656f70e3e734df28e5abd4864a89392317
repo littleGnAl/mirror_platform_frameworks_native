@@ -70,6 +70,30 @@
       "revId": "393015656f70e3e734df28e5abd4864a89392317",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da018013_4359ede1",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-08T21:57:11Z",
+      "side": 1,
+      "message": "Can\u0027t you just remove the numPending variable and change the for loops to check mPendingStrongDerefs.size() / mPendingWeakDerefs.size() directly?",
+      "parentUuid": "78114080_864853dc",
+      "range": {
+        "startLine": 475,
+        "startChar": 15,
+        "endLine": 476,
+        "endChar": 29
+      },
+      "revId": "393015656f70e3e734df28e5abd4864a89392317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
