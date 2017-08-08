@@ -22,6 +22,30 @@
       "revId": "393015656f70e3e734df28e5abd4864a89392317",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2f16a68_2bf1e2f5",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-08T18:00:20Z",
+      "side": 1,
+      "message": "When we queue a acq/inc command we move the work to the thread queue. We do not move it back to the proc queue when we queue a rel/dec command. I think it is possible to trigger this. For instance:\n- a transaction needs a strong ref to a node, but only has a weak ref \u003d\u003e queue node work\n- transaction fails, and no longer needs a strong ref.\n- another thread releases the last weak ref.\n- process node work and see that weak ref is no longer needed.\n\nI think this can happen with fine-grained locking. It can probably not happen with the global lock. There may be other ways to trigger this problem too though.",
+      "parentUuid": "5d8fea9e_3aa5b8cc",
+      "range": {
+        "startLine": 475,
+        "startChar": 15,
+        "endLine": 476,
+        "endChar": 29
+      },
+      "revId": "393015656f70e3e734df28e5abd4864a89392317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
