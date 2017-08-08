@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77aab602_1236d108",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-08T15:20:56Z",
+      "side": 1,
+      "message": "This is but one spot in _many_ that is begging for a cleanup IMHO.\n\nAINPUT_EVENT_TYPE_MOTION is defined in android/input.h for all low level C functions and NDK support, and is not directly used to derive InputMessage::TYPE_MOTION in input/InputTransport.h. I consider that a risk since there are no comments indicating that one depends on the other to mitigate (I understand why it is missing in android/input.h because such messages do not belong in an NDK).\n\nI half expected instead that InputTransport.h to include the input.h, and do things like \u0027TYPE_MOTION \u003d AINPUT_EVENT_TYPE_MOTION,\u0027 ... We do this in other places in the code tree, why not in InputTransport.h? Then it is an easy low-risk stance that all C files use the macro, all C++ using the class.\n\nStandalone, this is movement forward, but I would like to see a more substantive clearing of the technical debt.",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 39
+      },
+      "revId": "e3e11a77ccb2fc23c55a868df482fa738315cb0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
