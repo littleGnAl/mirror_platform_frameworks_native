@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d8fea9e_3aa5b8cc",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-08T13:52:38Z",
+      "side": 1,
+      "message": "Arve, remind me how this can happen again? I looked at the driver, and we never queue BR_RELEASE/BR_DECREFS to a thread workqueue...but if we make an outgoing transaction, we should only look at the thread workqueue.",
+      "range": {
+        "startLine": 475,
+        "startChar": 15,
+        "endLine": 476,
+        "endChar": 29
+      },
+      "revId": "393015656f70e3e734df28e5abd4864a89392317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
