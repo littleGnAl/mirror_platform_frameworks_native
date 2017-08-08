@@ -46,6 +46,30 @@
       "revId": "393015656f70e3e734df28e5abd4864a89392317",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78114080_864853dc",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-08T21:20:19Z",
+      "side": 1,
+      "message": "Ahh yes I remember now, thanks! Does this fix look ok to you?",
+      "parentUuid": "b2f16a68_2bf1e2f5",
+      "range": {
+        "startLine": 475,
+        "startChar": 15,
+        "endLine": 476,
+        "endChar": 29
+      },
+      "revId": "393015656f70e3e734df28e5abd4864a89392317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
