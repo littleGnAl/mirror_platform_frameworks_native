@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bdd8e7a_8328e63e",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-09T18:25:30Z",
+      "side": 1,
+      "message": "didn\u0027t realize new kernel headers were already in AOSP, too.",
+      "range": {
+        "startLine": 683,
+        "startChar": 14,
+        "endLine": 683,
+        "endChar": 26
+      },
+      "revId": "7060431a6f0eb395bdc32171aecc51c25fbe7dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
