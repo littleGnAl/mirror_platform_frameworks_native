@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41c815ea_859b8d34",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2017-08-10T16:00:41Z",
+      "side": 1,
+      "message": "won\u0027t this break any script that uses \"--binderserver\"? Can we make argv[5] be the poll option (and optional)?",
+      "range": {
+        "startLine": 1281,
+        "startChar": 7,
+        "endLine": 1281,
+        "endChar": 37
+      },
+      "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
