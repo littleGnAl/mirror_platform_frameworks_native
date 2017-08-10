@@ -46,6 +46,30 @@
       "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5903d9e2_4fdfffe7",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-10T17:31:28Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be called externally. It uses pipes to talk to the parent process so calling this from a script would not work.",
+      "parentUuid": "ced16bfe_3828d285",
+      "range": {
+        "startLine": 1281,
+        "startChar": 7,
+        "endLine": 1281,
+        "endChar": 37
+      },
+      "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
