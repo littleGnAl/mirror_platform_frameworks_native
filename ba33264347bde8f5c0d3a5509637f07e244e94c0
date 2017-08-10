@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "cdafc538_039d3f5d",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-10T17:48:35Z",
+      "side": 1,
+      "message": "2",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a7dd154_96775ec7",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-10T17:48:35Z",
+      "side": 1,
+      "message": "why not pass the command in and have addServer and addPollServer call addServerEtc",
+      "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "695456a1_5a49f90f",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-10T17:48:35Z",
+      "side": 1,
+      "message": "you fall through to the next case statement here. If that is intentional add a /* fall-though */ comment.",
+      "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41c815ea_859b8d34",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
