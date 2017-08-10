@@ -1038,7 +1038,7 @@ class BinderLibTestService : public BBinder
                 if (binder == NULL) {
                     return BAD_VALUE;
                 }
-                reply2.writeInt32(NO_ERROR);
+                data2.writeInt32(NO_ERROR);
                 binder->transact(BINDER_LIB_TEST_CALL_BACK, data2, &reply2);
                 return NO_ERROR;
             }
