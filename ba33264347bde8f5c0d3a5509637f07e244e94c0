@@ -22,6 +22,30 @@
       "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ced16bfe_3828d285",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-10T16:03:31Z",
+      "side": 1,
+      "message": "ah I wasn\u0027t aware there were any scripts running this externally. Yes, I will swap them.",
+      "parentUuid": "41c815ea_859b8d34",
+      "range": {
+        "startLine": 1281,
+        "startChar": 7,
+        "endLine": 1281,
+        "endChar": 37
+      },
+      "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
