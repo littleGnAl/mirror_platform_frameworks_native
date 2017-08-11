@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1f5d3ed_ff38786d",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-11T20:30:58Z",
+      "side": 1,
+      "message": "if (I would not use a loop here as the original code releases weak refs first)",
+      "range": {
+        "startLine": 486,
+        "startChar": 12,
+        "endLine": 486,
+        "endChar": 17
+      },
+      "revId": "b40de01c9b9a650c03e539667ff3ee813b304829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
