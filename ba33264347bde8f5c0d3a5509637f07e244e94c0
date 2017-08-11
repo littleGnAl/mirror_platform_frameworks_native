@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "faa3163a_0965e9e2",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-11T09:02:04Z",
+      "side": 1,
+      "message": "you mean something like PS2?",
+      "parentUuid": "4a7dd154_96775ec7",
+      "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "695456a1_5a49f90f",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
@@ -53,6 +71,24 @@
       "writtenOn": "2017-08-10T17:48:35Z",
       "side": 1,
       "message": "you fall through to the next case statement here. If that is intentional add a /* fall-though */ comment.",
+      "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3472422_afacffd6",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-11T09:02:04Z",
+      "side": 1,
+      "message": "mm no it wasn\u0027t intentional, fixed it.",
+      "parentUuid": "695456a1_5a49f90f",
       "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -118,6 +154,30 @@
       "side": 1,
       "message": "I don\u0027t think this should be called externally. It uses pipes to talk to the parent process so calling this from a script would not work.",
       "parentUuid": "ced16bfe_3828d285",
+      "range": {
+        "startLine": 1281,
+        "startChar": 7,
+        "endLine": 1281,
+        "endChar": 37
+      },
+      "revId": "ba33264347bde8f5c0d3a5509637f07e244e94c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ded74a37_02599504",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-11T09:02:04Z",
+      "side": 1,
+      "message": "Ok. Left it as is.",
+      "parentUuid": "5903d9e2_4fdfffe7",
       "range": {
         "startLine": 1281,
         "startChar": 7,
