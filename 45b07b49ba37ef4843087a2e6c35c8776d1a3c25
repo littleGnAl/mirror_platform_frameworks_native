@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "047d79e3_4605097c",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-11T20:11:26Z",
+      "side": 1,
+      "message": "You\u0027re right. You would need to make a third call get the result, which probably be more complicated than the call back you have now.",
+      "parentUuid": "2cfafeaa_2e74bec9",
+      "revId": "45b07b49ba37ef4843087a2e6c35c8776d1a3c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f3a5b74_7bb956ec",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 2
