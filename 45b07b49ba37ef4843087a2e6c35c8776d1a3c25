@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a374acb8_718dd193",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-11T18:08:22Z",
+      "side": 1,
+      "message": "I think it would be simpler to use two opcodes. One to queue the call-back and a separate opcode to check if it it pending (which could return that information directly).",
+      "revId": "45b07b49ba37ef4843087a2e6c35c8776d1a3c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f3a5b74_7bb956ec",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-11T18:08:22Z",
+      "side": 1,
+      "message": "I don\u0027t think \u003d\u003d 1 is needed here",
+      "range": {
+        "startLine": 1288,
+        "startChar": 69,
+        "endLine": 1288,
+        "endChar": 74
+      },
+      "revId": "45b07b49ba37ef4843087a2e6c35c8776d1a3c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
