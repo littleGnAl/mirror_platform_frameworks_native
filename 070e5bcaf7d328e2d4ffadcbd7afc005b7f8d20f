@@ -105,6 +105,24 @@
       "revId": "070e5bcaf7d328e2d4ffadcbd7afc005b7f8d20f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb100ac2_68e035e7",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-08-11T20:17:01Z",
+      "side": 1,
+      "message": "You can nest the loops to avoid that. e.g.:\nwhile (mPendingStrongDerefs.size() \u003e 0 || \n       mPendingWeakDerefs.size() \u003e 0) {\n    while (mPendingWeakDerefs.size() \u003e 0) {\n        //decWeak\n    }\n    // decStrong\n}",
+      "parentUuid": "cf14bed7_fd4bcf17",
+      "revId": "070e5bcaf7d328e2d4ffadcbd7afc005b7f8d20f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
