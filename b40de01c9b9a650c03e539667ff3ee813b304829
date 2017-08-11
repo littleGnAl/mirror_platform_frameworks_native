@@ -22,6 +22,30 @@
       "revId": "b40de01c9b9a650c03e539667ff3ee813b304829",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8302fa87_d2550291",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-11T20:39:50Z",
+      "side": 1,
+      "message": "Good point. Fixed.",
+      "parentUuid": "b1f5d3ed_ff38786d",
+      "range": {
+        "startLine": 486,
+        "startChar": 12,
+        "endLine": 486,
+        "endChar": 17
+      },
+      "revId": "b40de01c9b9a650c03e539667ff3ee813b304829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
