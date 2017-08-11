@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93b38d3b_fe8261e9",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-11T18:21:11Z",
+      "side": 1,
+      "message": "Yeah - decWeak() may cause a destructor to be run on the same thread, which could then call into the kernel through a new binder transaction, and the kernel could queue a BR_DECREFS back to this same thread (eg in the scenario Arve described).\n\nThis vector should only be touched from this specific thread (as it belongs to thread-specific state).",
+      "parentUuid": "c2a304b0_b91a997c",
+      "revId": "070e5bcaf7d328e2d4ffadcbd7afc005b7f8d20f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96aa4cb4_d91e4d9c",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-08-11T17:42:04Z",
       "side": 1,
       "message": "Can this result in additions to the mPendingWeakDerefs vector?",
+      "revId": "070e5bcaf7d328e2d4ffadcbd7afc005b7f8d20f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e96ca8d_b47f8aae",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-11T18:21:11Z",
+      "side": 1,
+      "message": "Yes, the kernel could queue a BR_DECREFS command to this thread as a result of this call, which we would store in mPendingWeakDerefs. But I don\u0027t think it matters since that command is not lost anymore. We will just process it in the next iteration of the thread loop (joinThreadPool() below).\n\nI could rewrite this to a\n\nwhile (mPendingStrongDerefs.size() \u003e 0 || mPendingWeakDerefs.size() \u003e 0)\n\nif you prefer.",
+      "parentUuid": "96aa4cb4_d91e4d9c",
       "revId": "070e5bcaf7d328e2d4ffadcbd7afc005b7f8d20f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
