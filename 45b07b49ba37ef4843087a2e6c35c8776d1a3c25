@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa60ba0_6503c301",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-11T09:01:53Z",
+      "side": 0,
+      "message": "this would actually return 0 (OK) if there was no data in the Parcel.",
+      "range": {
+        "startLine": 335,
+        "startChar": 16,
+        "endLine": 335,
+        "endChar": 44
+      },
+      "revId": "45b07b49ba37ef4843087a2e6c35c8776d1a3c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
