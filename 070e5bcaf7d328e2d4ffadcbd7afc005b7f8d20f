@@ -69,6 +69,24 @@
       "revId": "070e5bcaf7d328e2d4ffadcbd7afc005b7f8d20f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a381c0ba_888b3da6",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2017-08-11T18:42:01Z",
+      "side": 1,
+      "message": "If processing in the next iteration is sufficient, then this is fine.",
+      "parentUuid": "8e96ca8d_b47f8aae",
+      "revId": "070e5bcaf7d328e2d4ffadcbd7afc005b7f8d20f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
