@@ -87,6 +87,24 @@
       "revId": "070e5bcaf7d328e2d4ffadcbd7afc005b7f8d20f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf14bed7_fd4bcf17",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-11T18:52:05Z",
+      "side": 1,
+      "message": "I was just thinking about this more: if we add to mPendingWeakDerefs in this part of the call, then indeed it won\u0027t get lost. But the call to getAndExecuteCommand() below would actually block until we get a new command from the driver, which may take a while. So the decWeak() will get done, but it may be delayed until the next time this thread receives a call.\n\nSo it may still be better to rewrite it, though that could change the order of handling the strong/weak decrements...I need to think about this more.",
+      "parentUuid": "a381c0ba_888b3da6",
+      "revId": "070e5bcaf7d328e2d4ffadcbd7afc005b7f8d20f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
