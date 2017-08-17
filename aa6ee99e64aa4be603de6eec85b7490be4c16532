@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c40a4ec_8b1b5bf6",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2017-08-17T16:21:57Z",
+      "side": 1,
+      "message": "Looks like this command isn\u0027t even doing what it was meant for. Do we even need to keep this case statement? Or have the \"binaries been updated\"?",
+      "revId": "aa6ee99e64aa4be603de6eec85b7490be4c16532",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
