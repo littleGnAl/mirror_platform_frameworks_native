@@ -16,6 +16,24 @@
       "revId": "aa6ee99e64aa4be603de6eec85b7490be4c16532",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89e354e6_d6c88088",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-08-21T13:12:24Z",
+      "side": 1,
+      "message": "I tend to agree it\u0027s not necessary; my guess is the binaries refer to binaries we don\u0027t have source to ourselves; if they are linked against the current version of libbinder and have a class that inherits from BHwBinder (all Stub classes do), we can\u0027t just add another virtual member here without breaking stuff.\n\nDianne, are you ok with removing SHELL_COMMAND_TRANSACTION here?",
+      "parentUuid": "2c40a4ec_8b1b5bf6",
+      "revId": "aa6ee99e64aa4be603de6eec85b7490be4c16532",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
