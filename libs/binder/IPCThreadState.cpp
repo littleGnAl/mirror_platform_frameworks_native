@@ -284,7 +284,9 @@ restart:
         const pthread_key_t k = gTLS;
         IPCThreadState* st = (IPCThreadState*)pthread_getspecific(k);
         if (st) return st;
-        return new IPCThreadState;
+        st = new IPCThreadState;
+        pthread_setspecific(gTLS, st);
+        return st;
     }
 
     if (gShutdown) {
@@ -710,7 +712,6 @@ IPCThreadState::IPCThreadState()
       mStrictModePolicy(0),
       mLastTransactionBinderFlags(0)
 {
-    pthread_setspecific(gTLS, this);
     clearCaller();
     mIn.setDataCapacity(256);
     mOut.setDataCapacity(256);
