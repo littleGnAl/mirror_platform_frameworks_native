@@ -1828,6 +1828,11 @@ bool Layer::setAlpha(uint8_t alpha) {
     mCurrentState.alpha = alpha;
     mCurrentState.modified = true;
     setTransactionFlags(eTransactionNeeded);
+    for (const sp<Layer>& child : mCurrentChildren) {
+        if (child != nullptr) {
+            child->setAlpha(alpha);
+        }
+    }
     return true;
 }
 bool Layer::setMatrix(const layer_state_t::matrix22_t& matrix) {
