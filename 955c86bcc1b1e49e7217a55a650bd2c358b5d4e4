@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "44084f08_3f042b01",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-08-30T17:28:07Z",
+      "side": 1,
+      "message": "Note that this also needs mSelectedColumns and mEnableCmdlines. These are details that I don\u0027t want to put into TextTable.",
+      "parentUuid": "e50d8d09_d06dcb56",
+      "range": {
+        "startLine": 210,
+        "startChar": 37,
+        "endLine": 210,
+        "endChar": 46
+      },
+      "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88a8510f_1134fa39",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 5
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "same same :)",
       "parentUuid": "88a8510f_1134fa39",
+      "range": {
+        "startLine": 397,
+        "startChar": 26,
+        "endLine": 397,
+        "endChar": 35
+      },
+      "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc6b45fe_6a61afbf",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-08-30T17:28:07Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "2eeced37_be2126c9",
       "range": {
         "startLine": 397,
         "startChar": 26,
