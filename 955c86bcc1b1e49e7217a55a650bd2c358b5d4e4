@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e50d8d09_d06dcb56",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-08-30T17:12:45Z",
+      "side": 1,
+      "message": "This is a `lshal specific detail`. TextTable is just a 2D array of strings",
+      "parentUuid": "3ec9b7e5_0710c646",
+      "range": {
+        "startLine": 210,
+        "startChar": 37,
+        "endLine": 210,
+        "endChar": 46
+      },
+      "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88a8510f_1134fa39",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 5
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "0391f8a1_1d7abecb",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-08-30T17:12:45Z",
+      "side": 1,
+      "message": "just ignore unrecognized options, will fix in follow up CL.",
+      "parentUuid": "09e6c653_6ad68cfc",
+      "range": {
+        "startLine": 778,
+        "startChar": 4,
+        "endLine": 781,
+        "endChar": 5
+      },
+      "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15fa3fda_bed6af1c",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 5
@@ -130,6 +178,30 @@
       "writtenOn": "2017-08-30T15:10:04Z",
       "side": 1,
       "message": "Error instead? A user could miss this output.",
+      "range": {
+        "startLine": 783,
+        "startChar": 4,
+        "endLine": 785,
+        "endChar": 5
+      },
+      "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b453c43_45f3ae13",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-08-30T17:12:45Z",
+      "side": 1,
+      "message": "will fix in follow up CL.",
+      "parentUuid": "15fa3fda_bed6af1c",
       "range": {
         "startLine": 783,
         "startChar": 4,
