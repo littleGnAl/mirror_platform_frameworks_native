@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "4316ba8f_ae2a0196",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-08-30T17:49:36Z",
+      "side": 1,
+      "message": "I\u0027ll incorporate the feature to select columns into TextTable... but in a follow up CL.",
+      "parentUuid": "44084f08_3f042b01",
+      "range": {
+        "startLine": 210,
+        "startChar": 37,
+        "endLine": 210,
+        "endChar": 46
+      },
+      "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88a8510f_1134fa39",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 5
