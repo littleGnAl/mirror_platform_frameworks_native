@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ec9b7e5_0710c646",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-08-30T15:10:04Z",
+      "side": 1,
+      "message": "I assume the reasoning behind this is that G3 C++ guidelines require either const\u0026 or *.\n\nWhat I really think is that this should be a method on TextTable.",
+      "parentUuid": "4a5a4dc4_92c6cba4",
+      "range": {
+        "startLine": 210,
+        "startChar": 37,
+        "endLine": 210,
+        "endChar": 46
+      },
+      "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88a8510f_1134fa39",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 5
@@ -45,6 +69,76 @@
       "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2eeced37_be2126c9",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-08-30T15:10:04Z",
+      "side": 1,
+      "message": "same same :)",
+      "parentUuid": "88a8510f_1134fa39",
+      "range": {
+        "startLine": 397,
+        "startChar": 26,
+        "endLine": 397,
+        "endChar": 35
+      },
+      "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09e6c653_6ad68cfc",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-08-30T15:10:04Z",
+      "side": 1,
+      "message": "also, why doesn\u0027t this error?",
+      "range": {
+        "startLine": 778,
+        "startChar": 4,
+        "endLine": 781,
+        "endChar": 5
+      },
+      "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15fa3fda_bed6af1c",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-08-30T15:10:04Z",
+      "side": 1,
+      "message": "Error instead? A user could miss this output.",
+      "range": {
+        "startLine": 783,
+        "startChar": 4,
+        "endLine": 785,
+        "endChar": 5
+      },
+      "revId": "955c86bcc1b1e49e7217a55a650bd2c358b5d4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
