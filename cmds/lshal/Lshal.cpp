@@ -63,7 +63,7 @@ void Lshal::usage(const std::string &command) const {
             "list:\n"
             "    lshal\n"
             "    lshal list\n"
-            "        List all hals with default ordering and columns (`lshal list -ipc`)\n"
+            "        List all hals with default ordering and columns (`lshal list -iepc`)\n"
             "    lshal list [-h|--help]\n"
             "        -h, --help: Print help message for list (`lshal help list`)\n"
             "    lshal [list] [--interface|-i] [--transport|-t] [-r|--arch] [-e|--threads]\n"
