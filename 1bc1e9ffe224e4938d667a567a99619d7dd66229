@@ -69,6 +69,30 @@
       "revId": "1bc1e9ffe224e4938d667a567a99619d7dd66229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f57cb510_7f1e98e6",
+        "filename": "cmds/lshal/TextTable.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-08-31T01:25:14Z",
+      "side": 1,
+      "message": "See https://android-review.googlesource.com/c/platform/frameworks/native/+/472959",
+      "parentUuid": "e2f4e664_169e6b66",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "1bc1e9ffe224e4938d667a567a99619d7dd66229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
