@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a833cf67_92852b15",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1082465
+      },
+      "writtenOn": "2017-08-31T21:16:31Z",
+      "side": 1,
+      "message": "libGLES_android isn\u0027t going to work, just fyi, since this is api24+ no gles1 compositoin\n\nbut we can leave it like this for now until we build swiftshader on aosp master as well, and then port over the swiftshader in guest fixes",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 66
+      },
+      "revId": "3adf9e1403bee30d1ef79c3a8cf310292df4745f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
