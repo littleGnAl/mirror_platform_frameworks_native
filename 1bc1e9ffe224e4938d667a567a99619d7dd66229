@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0e23741_8dcfbe01",
+        "filename": "cmds/lshal/TextTable.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-08-31T00:13:41Z",
+      "side": 1,
+      "message": "nit: maxWidth",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "1bc1e9ffe224e4938d667a567a99619d7dd66229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "432e9f9d_c8520cf6",
+        "filename": "cmds/lshal/TextTable.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-08-31T00:13:41Z",
+      "side": 1,
+      "message": "nit: other pieces of this code prevent this from causing an out of range error, but they are really far from this. You should probably check v.size() !\u003d 0 or similar.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "1bc1e9ffe224e4938d667a567a99619d7dd66229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
