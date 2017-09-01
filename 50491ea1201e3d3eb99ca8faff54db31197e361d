@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f436e27_a05ad460",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1096171
+      },
+      "writtenOn": "2017-09-01T17:09:30Z",
+      "side": 1,
+      "message": "There may be bug somewhere else if you are experiencing issues.  But I don\u0027t think this CL is correct.  In Layer::getAlpha, parent layer\u0027s alpha is applied to all children layers.",
+      "revId": "50491ea1201e3d3eb99ca8faff54db31197e361d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
