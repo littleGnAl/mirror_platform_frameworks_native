@@ -24,7 +24,6 @@
 #include <memory>
 #include <regex>
 #include <set>
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
