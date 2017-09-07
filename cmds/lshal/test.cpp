@@ -166,6 +166,40 @@ TEST_F(DebugTest, Debug3) {
     EXPECT_THAT(err.str(), HasSubstr("does not exist"));
 }
 
+class MockMainLshal : public Lshal {
+public:
+    MockMainLshal() {}
+    ~MockMainLshal() = default;
+    MOCK_METHOD1(listMain, Status(const Arg&));
+    MOCK_METHOD1(debugMain, Status(const Arg&));
+};
+
+class LshalTest : public ::testing::Test {
+public:
+    void SetUp() override {
+        mockLshal = std::make_unique<NiceMock<MockMainLshal>>();
+    }
+    std::unique_ptr<MockMainLshal> mockLshal;
+};
+
+TEST_F(LshalTest, Command1) {
+    EXPECT_CALL(*mockLshal, listMain(_)).Times(1);
+    EXPECT_CALL(*mockLshal, debugMain(_)).Times(0);
+    EXPECT_EQ(0u, callMain(mockLshal, {"lshal"}));
+}
+
+TEST_F(LshalTest, Command2) {
+    EXPECT_CALL(*mockLshal, listMain(_)).Times(1);
+    EXPECT_CALL(*mockLshal, debugMain(_)).Times(0);
+    EXPECT_EQ(0u, callMain(mockLshal, {"lshal", "list"}));
+}
+
+TEST_F(LshalTest, Command3) {
+    EXPECT_CALL(*mockLshal, listMain(_)).Times(0);
+    EXPECT_CALL(*mockLshal, debugMain(_)).Times(1);
+    EXPECT_EQ(0u, callMain(mockLshal, {"lshal", "debug"}));
+}
+
 } // namespace lshal
 } // namespace android
 
