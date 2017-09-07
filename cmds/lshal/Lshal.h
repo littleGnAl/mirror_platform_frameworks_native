@@ -18,6 +18,7 @@
 #define FRAMEWORK_NATIVE_CMDS_LSHAL_LSHAL_H_
 
 #include <iostream>
+#include <stack>
 #include <string>
 
 #include <android-base/macros.h>
