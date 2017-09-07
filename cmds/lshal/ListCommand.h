@@ -39,6 +39,7 @@ class Lshal;
 class ListCommand {
 public:
     ListCommand(Lshal &lshal);
+    ~ListCommand() = default;
     Status main(const std::string &command, const Arg &arg);
 private:
     Status parseArgs(const std::string &command, const Arg &arg);
@@ -57,8 +58,8 @@ private:
     };
     bool getPidInfo(pid_t serverPid, PidInfo *info) const;
 
-    void dumpTable();
-    void dumpVintf() const;
+    void dumpTable(const NullableOStream<std::ostream>& out);
+    void dumpVintf(const NullableOStream<std::ostream>& out);
     void addLine(TextTable *table, const std::string &interfaceName, const std::string &transport,
                  const std::string &arch, const std::string &threadUsage, const std::string &server,
                  const std::string &serverCmdline, const std::string &address,
@@ -72,15 +73,16 @@ private:
     void forEachTable(const std::function<void(Table &)> &f);
     void forEachTable(const std::function<void(const Table &)> &f) const;
 
+    NullableOStream<std::ostream> err() const;
+    NullableOStream<std::ostream> out() const;
+
     Lshal &mLshal;
 
     Table mServicesTable{};
     Table mPassthroughRefTable{};
     Table mImplementationsTable{};
 
-    NullableOStream<std::ostream> mErr;
-    NullableOStream<std::ostream> mOut;
-    NullableOStream<std::ofstream> mFileOutput = nullptr;
+    std::unique_ptr<std::ofstream> mFileOutput;
     TableEntryCompare mSortColumn = nullptr;
 
     bool mEmitDebugInfo = false;
