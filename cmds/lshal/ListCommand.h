@@ -39,8 +39,8 @@ class Lshal;
 class ListCommand {
 public:
     ListCommand(Lshal &lshal);
+    virtual ~ListCommand() = default;
     Status main(const std::string &command, const Arg &arg);
-private:
     Status parseArgs(const std::string &command, const Arg &arg);
     Status fetch();
     void postprocess();
