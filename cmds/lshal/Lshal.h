@@ -34,6 +34,7 @@ namespace lshal {
 class Lshal {
 public:
     Lshal();
+    virtual ~Lshal() = default;
     Lshal(std::ostream &out, std::ostream &err,
             sp<hidl::manager::V1_0::IServiceManager> serviceManager,
             sp<hidl::manager::V1_0::IServiceManager> passthroughManager);
@@ -53,6 +54,10 @@ public:
 
 private:
     Status parseArgs(const Arg &arg);
+
+    virtual Status listMain(const Arg& arg);
+    virtual Status debugMain(const Arg& arg);
+
     std::string mCommand;
     Arg mCmdArgs;
     NullableOStream<std::ostream> mOut;
