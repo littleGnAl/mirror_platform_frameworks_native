@@ -44,7 +44,15 @@ using ::android::hidl::manager::V1_0::IServiceManager;
 namespace android {
 namespace lshal {
 
-ListCommand::ListCommand(Lshal &lshal) : mLshal(lshal), mErr(lshal.err()), mOut(lshal.out()) {
+ListCommand::ListCommand(Lshal &lshal) : mLshal(lshal) {
+}
+
+NullableOStream<std::ostream> ListCommand::out() const {
+    return mLshal.out();
+}
+
+NullableOStream<std::ostream> ListCommand::err() const {
+    return mLshal.err();
 }
 
 std::string getCmdline(pid_t pid) {
@@ -113,7 +121,7 @@ bool ListCommand::getPidInfo(
             uint64_t ptr;
             if (!::android::base::ParseUint(ptrString.c_str(), &ptr)) {
                 // Should not reach here, but just be tolerant.
-                mErr << "Could not parse number " << ptrString << std::endl;
+                err() << "Could not parse number " << ptrString << std::endl;
                 return;
             }
             const std::string proc = " proc ";
@@ -122,7 +130,7 @@ bool ListCommand::getPidInfo(
                 for (const std::string &pidStr : split(line.substr(pos + proc.size()), ' ')) {
                     int32_t pid;
                     if (!::android::base::ParseInt(pidStr, &pid)) {
-                        mErr << "Could not parse number " << pidStr << std::endl;
+                        err() << "Could not parse number " << pidStr << std::endl;
                         return;
                     }
                     pidInfo->refPids[ptr].push_back(pid);
@@ -216,9 +224,9 @@ static inline bool findAndBumpVersion(vintf::ManifestHal* hal, const vintf::Vers
     return false;
 }
 
-void ListCommand::dumpVintf() const {
+void ListCommand::dumpVintf(const NullableOStream<std::ostream>& out) {
     using vintf::operator|=;
-    mOut << "<!-- " << std::endl
+    out << "<!-- " << std::endl
          << "    This is a skeleton device manifest. Notes: " << std::endl
          << "    1. android.hidl.*, android.frameworks.*, android.system.* are not included." << std::endl
          << "    2. If a HAL is supported in both hwbinder and passthrough transport, " << std::endl
@@ -245,7 +253,7 @@ void ListCommand::dumpVintf() const {
             auto splittedFqInstanceName = splitFirst(fqInstanceName, '/');
             FQName fqName(splittedFqInstanceName.first);
             if (!fqName.isValid()) {
-                mErr << "Warning: '" << splittedFqInstanceName.first
+                err() << "Warning: '" << splittedFqInstanceName.first
                      << "' is not a valid FQName." << std::endl;
                 continue;
             }
@@ -278,12 +286,12 @@ void ListCommand::dumpVintf() const {
                         arch = vintf::Arch::ARCH_32_64; break;
                     case lshal::ARCH_UNKNOWN: // fallthrough
                     default:
-                        mErr << "Warning: '" << fqName.package()
+                        err() << "Warning: '" << fqName.package()
                              << "' doesn't have bitness info, assuming 32+64." << std::endl;
                         arch = vintf::Arch::ARCH_32_64;
                 }
             } else {
-                mErr << "Warning: '" << entry.transport << "' is not a valid transport." << std::endl;
+                err() << "Warning: '" << entry.transport << "' is not a valid transport." << std::endl;
                 continue;
             }
 
@@ -291,7 +299,7 @@ void ListCommand::dumpVintf() const {
             for (vintf::ManifestHal *hal : manifest.getHals(fqName.package())) {
                 if (hal->transport() != transport) {
                     if (transport != vintf::Transport::PASSTHROUGH) {
-                        mErr << "Fatal: should not reach here. Generated result may be wrong for '"
+                        err() << "Fatal: should not reach here. Generated result may be wrong for '"
                              << hal->name << "'."
                              << std::endl;
                     }
@@ -322,11 +330,11 @@ void ListCommand::dumpVintf() const {
                     .versions = {version},
                     .transportArch = {transport, arch},
                     .interfaces = interfaces})) {
-                mErr << "Warning: cannot add hal '" << fqInstanceName << "'" << std::endl;
+                err() << "Warning: cannot add hal '" << fqInstanceName << "'" << std::endl;
             }
         }
     });
-    mOut << vintf::gHalManifestConverter(manifest);
+    out << vintf::gHalManifestConverter(manifest);
 }
 
 static Architecture fromBaseArchitecture(::android::hidl::base::V1_0::DebugInfo::Architecture a) {
@@ -341,10 +349,10 @@ static Architecture fromBaseArchitecture(::android::hidl::base::V1_0::DebugInfo:
     }
 }
 
-void ListCommand::dumpTable() {
+void ListCommand::dumpTable(const NullableOStream<std::ostream>& out) {
     if (mNeat) {
         MergedTable({&mServicesTable, &mPassthroughRefTable, &mImplementationsTable})
-            .createTextTable().dump(mOut.buf());
+            .createTextTable().dump(out.buf());
         return;
     }
 
@@ -360,7 +368,7 @@ void ListCommand::dumpTable() {
     mImplementationsTable.setDescription(
             "All available passthrough implementations (all -impl.so files)");
 
-    forEachTable([this](const Table &table) {
+    forEachTable([this, &out](const Table &table) {
 
         // We're only interested in dumping debug info for already
         // instantiated services. There's little value in dumping the
@@ -369,30 +377,38 @@ void ListCommand::dumpTable() {
         std::function<std::string(const std::string&)> emitDebugInfo = nullptr;
         if (mEmitDebugInfo && &table == &mServicesTable) {
             emitDebugInfo = [this](const auto& iName) {
-                std::stringstream out;
+                std::stringstream ss;
                 auto pair = splitFirst(iName, '/');
-                mLshal.emitDebugInfo(pair.first, pair.second, {}, out,
+                mLshal.emitDebugInfo(pair.first, pair.second, {}, ss,
                                      NullableOStream<std::ostream>(nullptr));
-                return out.str();
+                return ss.str();
             };
         }
-        table.createTextTable(mNeat, emitDebugInfo).dump(mOut.buf());
-        mOut << std::endl;
+        table.createTextTable(mNeat, emitDebugInfo).dump(out.buf());
+        out << std::endl;
     });
 }
 
-void ListCommand::dump() {
-    if (mVintf) {
-        dumpVintf();
-        if (!!mFileOutput) {
-            mFileOutput.buf().close();
-            delete &mFileOutput.buf();
-            mFileOutput = nullptr;
-        }
-        mOut = std::cout;
-    } else {
-        dumpTable();
+Status ListCommand::dump() {
+    auto dump = mVintf ? &ListCommand::dumpVintf : &ListCommand::dumpTable;
+
+    if (mFileOutputPath.empty()) {
+        (*this.*dump)(out());
+        return OK;
     }
+
+    std::ofstream fileOutput(mFileOutputPath);
+    if (!fileOutput.is_open()) {
+        err() << "Could not open file '" << mFileOutputPath << "'." << std::endl;
+        return IO_ERROR;
+    }
+    chown(mFileOutputPath.c_str(), AID_SHELL, AID_SHELL);
+
+    (*this.*dump)(NullableOStream<std::ostream>(fileOutput));
+
+    fileOutput.flush();
+    fileOutput.close();
+    return OK;
 }
 
 void ListCommand::putEntry(TableEntrySource source, TableEntry &&entry) {
@@ -405,7 +421,7 @@ void ListCommand::putEntry(TableEntrySource source, TableEntry &&entry) {
         case LIST_DLLIB :
             table = &mImplementationsTable; break;
         default:
-            mErr << "Error: Unknown source of entry " << source << std::endl;
+            err() << "Error: Unknown source of entry " << source << std::endl;
     }
     if (table) {
         table->add(std::forward<TableEntry>(entry));
@@ -436,7 +452,7 @@ Status ListCommand::fetchAllLibraries(const sp<IServiceManager> &manager) {
         }
     });
     if (!ret.isOk()) {
-        mErr << "Error: Failed to call list on getPassthroughServiceManager(): "
+        err() << "Error: Failed to call list on getPassthroughServiceManager(): "
              << ret.description() << std::endl;
         return DUMP_ALL_LIBS_ERROR;
     }
@@ -466,7 +482,7 @@ Status ListCommand::fetchPassthrough(const sp<IServiceManager> &manager) {
         }
     });
     if (!ret.isOk()) {
-        mErr << "Error: Failed to call debugDump on defaultServiceManager(): "
+        err() << "Error: Failed to call debugDump on defaultServiceManager(): "
              << ret.description() << std::endl;
         return DUMP_PASSTHROUGH_ERROR;
     }
@@ -486,7 +502,7 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
         fqInstanceNames = names;
     });
     if (!listRet.isOk()) {
-        mErr << "Error: Failed to list services for " << mode << ": "
+        err() << "Error: Failed to list services for " << mode << ": "
              << listRet.description() << std::endl;
         return DUMP_BINDERIZED_ERROR;
     }
@@ -501,7 +517,7 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
         const auto &instanceName = pair.second;
         auto getRet = timeoutIPC(manager, &IServiceManager::get, serviceName, instanceName);
         if (!getRet.isOk()) {
-            mErr << "Warning: Skipping \"" << fqInstanceName << "\": "
+            err() << "Warning: Skipping \"" << fqInstanceName << "\": "
                  << "cannot be fetched from service manager:"
                  << getRet.description() << std::endl;
             status |= DUMP_BINDERIZED_ERROR;
@@ -509,7 +525,7 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
         }
         sp<IBase> service = getRet;
         if (service == nullptr) {
-            mErr << "Warning: Skipping \"" << fqInstanceName << "\": "
+            err() << "Warning: Skipping \"" << fqInstanceName << "\": "
                  << "cannot be fetched from service manager (null)"
                  << std::endl;
             status |= DUMP_BINDERIZED_ERROR;
@@ -522,7 +538,7 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
             }
         });
         if (!debugRet.isOk()) {
-            mErr << "Warning: Skipping \"" << fqInstanceName << "\": "
+            err() << "Warning: Skipping \"" << fqInstanceName << "\": "
                  << "debugging information cannot be retrieved:"
                  << debugRet.description() << std::endl;
             status |= DUMP_BINDERIZED_ERROR;
@@ -532,7 +548,7 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
     for (auto &pair : allPids) {
         pid_t serverPid = pair.first;
         if (!getPidInfo(serverPid, &allPids[serverPid])) {
-            mErr << "Warning: no information for PID " << serverPid
+            err() << "Warning: no information for PID " << serverPid
                       << ", are you root?" << std::endl;
             status |= DUMP_BINDERIZED_ERROR;
         }
@@ -573,7 +589,7 @@ Status ListCommand::fetch() {
     Status status = OK;
     auto bManager = mLshal.serviceManager();
     if (bManager == nullptr) {
-        mErr << "Failed to get defaultServiceManager()!" << std::endl;
+        err() << "Failed to get defaultServiceManager()!" << std::endl;
         status |= NO_BINDERIZED_MANAGER;
     } else {
         status |= fetchBinderized(bManager);
@@ -583,7 +599,7 @@ Status ListCommand::fetch() {
 
     auto pManager = mLshal.passthroughManager();
     if (pManager == nullptr) {
-        mErr << "Failed to get getPassthroughServiceManager()!" << std::endl;
+        err() << "Failed to get getPassthroughServiceManager()!" << std::endl;
         status |= NO_PASSTHROUGH_MANAGER;
     } else {
         status |= fetchAllLibraries(pManager);
@@ -632,22 +648,16 @@ Status ListCommand::parseArgs(const std::string &command, const Arg &arg) {
             } else if (strcmp(optarg, "pid") == 0 || strcmp(optarg, "p") == 0) {
                 mSortColumn = TableEntry::sortByServerPid;
             } else {
-                mErr << "Unrecognized sorting column: " << optarg << std::endl;
+                err() << "Unrecognized sorting column: " << optarg << std::endl;
                 mLshal.usage(command);
                 return USAGE;
             }
             break;
         }
         case 'v': {
-            if (optarg) {
-                mFileOutput = new std::ofstream{optarg};
-                mOut = mFileOutput;
-                if (!mFileOutput.buf().is_open()) {
-                    mErr << "Could not open file '" << optarg << "'." << std::endl;
-                    return IO_ERROR;
-                }
-            }
             mVintf = true;
+            if (optarg) mFileOutputPath = optarg;
+            break;
         }
         case 'i': {
             selectedColumns.push_back(TableColumnType::INTERFACE_NAME);
@@ -683,16 +693,7 @@ Status ListCommand::parseArgs(const std::string &command, const Arg &arg) {
         }
         case 'd': {
             mEmitDebugInfo = true;
-
-            if (optarg) {
-                mFileOutput = new std::ofstream{optarg};
-                mOut = mFileOutput;
-                if (!mFileOutput.buf().is_open()) {
-                    mErr << "Could not open file '" << optarg << "'." << std::endl;
-                    return IO_ERROR;
-                }
-                chown(optarg, AID_SHELL, AID_SHELL);
-            }
+            if (optarg) mFileOutputPath = optarg;
             break;
         }
         case 'n': {
@@ -707,13 +708,13 @@ Status ListCommand::parseArgs(const std::string &command, const Arg &arg) {
     }
     if (optind < arg.argc) {
         // see non option
-        mErr << "Unrecognized option `" << arg.argv[optind] << "`" << std::endl;
+        err() << "Unrecognized option `" << arg.argv[optind] << "`" << std::endl;
         mLshal.usage(command);
         return USAGE;
     }
 
     if (mNeat && mEmitDebugInfo) {
-        mErr << "Error: --neat should not be used with --debug." << std::endl;
+        err() << "Error: --neat should not be used with --debug." << std::endl;
         mLshal.usage(command);
         return USAGE;
     }
@@ -748,7 +749,7 @@ Status ListCommand::main(const std::string &command, const Arg &arg) {
     }
     status = fetch();
     postprocess();
-    dump();
+    status |= dump();
     return status;
 }
 
