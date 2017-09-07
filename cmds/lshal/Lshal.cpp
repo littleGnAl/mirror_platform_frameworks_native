@@ -214,6 +214,17 @@ void signalHandler(int sig) {
     }
 }
 
+std::unique_ptr<Command> Lshal::selectCommand(const std::string& command) {
+    // Default command is list
+    if (command == "list" || command == "") {
+        return std::make_unique<ListCommand>(*this);
+    }
+    if (command == "debug") {
+        return std::make_unique<DebugCommand>(*this);
+    }
+    return nullptr;
+}
+
 Status Lshal::main(const Arg &arg) {
     // Allow SIGINT to terminate all threads.
     signal(SIGINT, signalHandler);
@@ -226,12 +237,9 @@ Status Lshal::main(const Arg &arg) {
         usage(optind < arg.argc ? arg.argv[optind] : "");
         return USAGE;
     }
-    // Default command is list
-    if (mCommand == "list" || mCommand == "") {
-        return ListCommand{*this}.main(mCommand, arg);
-    }
-    if (mCommand == "debug") {
-        return DebugCommand{*this}.main(mCommand, arg);
+    auto c = selectCommand(mCommand);
+    if (c != nullptr) {
+        return c->main(mCommand, arg);
     }
     usage();
     return USAGE;
