@@ -18,6 +18,7 @@
 #define FRAMEWORK_NATIVE_CMDS_LSHAL_LSHAL_H_
 
 #include <iostream>
+#include <stack>
 #include <string>
 
 #include <android-base/macros.h>
@@ -38,8 +39,8 @@ public:
             sp<hidl::manager::V1_0::IServiceManager> passthroughManager);
     Status main(const Arg &arg);
     void usage(const std::string &command = "") const;
-    NullableOStream<std::ostream> err() const;
-    NullableOStream<std::ostream> out() const;
+    virtual NullableOStream<std::ostream> err() const;
+    virtual NullableOStream<std::ostream> out() const;
     const sp<hidl::manager::V1_0::IServiceManager> &serviceManager() const;
     const sp<hidl::manager::V1_0::IServiceManager> &passthroughManager() const;
 
@@ -49,6 +50,7 @@ public:
             const std::vector<std::string> &options,
             std::ostream &out,
             NullableOStream<std::ostream> err) const;
+
 private:
     Status parseArgs(const Arg &arg);
     std::string mCommand;
