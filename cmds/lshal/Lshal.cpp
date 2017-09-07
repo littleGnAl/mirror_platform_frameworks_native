@@ -34,7 +34,7 @@ namespace lshal {
 using ::android::hidl::manager::V1_0::IServiceManager;
 
 Lshal::Lshal()
-    : mOut(std::cout), mErr(std::cerr),
+    : mOut({std::cout}), mErr(std::cerr),
       mServiceManager(::android::hardware::defaultServiceManager()),
       mPassthroughManager(::android::hardware::getPassthroughServiceManager()) {
 }
@@ -42,7 +42,7 @@ Lshal::Lshal()
 Lshal::Lshal(std::ostream &out, std::ostream &err,
             sp<hidl::manager::V1_0::IServiceManager> serviceManager,
             sp<hidl::manager::V1_0::IServiceManager> passthroughManager)
-    : mOut(out), mErr(err),
+    : mOut({out}), mErr(err),
       mServiceManager(serviceManager),
       mPassthroughManager(passthroughManager) {
 
@@ -109,15 +109,15 @@ void Lshal::usage(const std::string &command) const {
             "        Print help message for debug\n";
 
     if (command == "list") {
-        mErr << list;
+        err() << list;
         return;
     }
     if (command == "debug") {
-        mErr << debug;
+        err() << debug;
         return;
     }
 
-    mErr << helpSummary << "\n" << list << "\n" << debug << "\n" << help;
+    err() << helpSummary << "\n" << list << "\n" << debug << "\n" << help;
 }
 
 // A unique_ptr type using a custom deleter function.
@@ -206,7 +206,7 @@ Status Lshal::parseArgs(const Arg &arg) {
         return OK;
     }
 
-    mErr << arg.argv[0] << ": unrecognized option `" << arg.argv[optind] << "`" << std::endl;
+    err() << arg.argv[0] << ": unrecognized option `" << arg.argv[optind] << "`" << std::endl;
     usage();
     return USAGE;
 }
@@ -245,7 +245,15 @@ NullableOStream<std::ostream> Lshal::err() const {
     return mErr;
 }
 NullableOStream<std::ostream> Lshal::out() const {
-    return mOut;
+    return mOut.top();
+}
+
+void Lshal::pushOutputStream(NullableOStream<std::ostream> out) {
+    mOut.push(std::move(out));
+}
+
+void Lshal::popOutputStream() {
+    mOut.pop();
 }
 
 const sp<IServiceManager> &Lshal::serviceManager() const {
