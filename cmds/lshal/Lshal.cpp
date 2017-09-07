@@ -218,6 +218,14 @@ void signalHandler(int sig) {
     }
 }
 
+Status Lshal::listMain(const Arg& arg) {
+    return ListCommand{*this}.main(mCommand, arg);
+}
+
+Status Lshal::debugMain(const Arg& arg) {
+    return DebugCommand{*this}.main(mCommand, arg);
+}
+
 Status Lshal::main(const Arg &arg) {
     // Allow SIGINT to terminate all threads.
     signal(SIGINT, signalHandler);
@@ -232,10 +240,10 @@ Status Lshal::main(const Arg &arg) {
     }
     // Default command is list
     if (mCommand == "list" || mCommand == "") {
-        return ListCommand{*this}.main(mCommand, arg);
+        return listMain(arg);
     }
     if (mCommand == "debug") {
-        return DebugCommand{*this}.main(mCommand, arg);
+        return debugMain(arg);
     }
     usage();
     return USAGE;
