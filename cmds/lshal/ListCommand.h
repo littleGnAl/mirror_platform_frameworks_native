@@ -39,9 +39,9 @@ class Lshal;
 class ListCommand {
 public:
     ListCommand(Lshal &lshal);
-    ~ListCommand() = default;
+    virtual ~ListCommand() = default;
     Status main(const std::string &command, const Arg &arg);
-private:
+protected:
     Status parseArgs(const std::string &command, const Arg &arg);
     Status fetch();
     void postprocess();
@@ -73,8 +73,8 @@ private:
     void forEachTable(const std::function<void(Table &)> &f);
     void forEachTable(const std::function<void(const Table &)> &f) const;
 
-    virtual NullableOStream<std::ostream> err() const;
-    virtual NullableOStream<std::ostream> out() const;
+    NullableOStream<std::ostream> err() const;
+    NullableOStream<std::ostream> out() const;
 
     Lshal &mLshal;
 
