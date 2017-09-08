@@ -36,6 +36,12 @@ namespace lshal {
 
 class Lshal;
 
+struct PidInfo {
+    std::map<uint64_t, Pids> refPids; // pids that are referenced
+    uint32_t threadUsage; // number of threads in use
+    uint32_t threadCount; // number of threads total
+};
+
 class ListCommand {
 public:
     ListCommand(Lshal &lshal);
@@ -51,12 +57,7 @@ protected:
     Status fetchBinderized(const sp<::android::hidl::manager::V1_0::IServiceManager> &manager);
     Status fetchAllLibraries(const sp<::android::hidl::manager::V1_0::IServiceManager> &manager);
 
-    struct PidInfo {
-        std::map<uint64_t, Pids> refPids; // pids that are referenced
-        uint32_t threadUsage; // number of threads in use
-        uint32_t threadCount; // number of threads total
-    };
-    bool getPidInfo(pid_t serverPid, PidInfo *info) const;
+    virtual bool getPidInfo(pid_t serverPid, PidInfo *info) const;
 
     void dumpTable();
     void dumpVintf(const NullableOStream<std::ostream>& out) const;
@@ -65,6 +66,8 @@ protected:
                  const std::string &serverCmdline, const std::string &address,
                  const std::string &clients, const std::string &clientCmdlines) const;
     void addLine(TextTable *table, const TableEntry &entry);
+    // Read and return /proc/{pid}/cmdline.
+    virtual std::string parseCmdline(pid_t pid);
     // Return /proc/{pid}/cmdline if it exists, else empty string.
     const std::string &getCmdline(pid_t pid);
     // Call getCmdline on all pid in pids. If it returns empty string, the process might
