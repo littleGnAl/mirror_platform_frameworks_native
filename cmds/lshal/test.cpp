@@ -26,6 +26,7 @@
 #include <gmock/gmock.h>
 #include <android/hardware/tests/baz/1.0/IQuux.h>
 #include <hidl/HidlTransportSupport.h>
+#include <vintf/parse_xml.h>
 
 #include "ListCommand.h"
 #include "Lshal.h"
@@ -34,6 +35,7 @@
 
 using namespace testing;
 
+using ::android::hidl::base::V1_0::DebugInfo;
 using ::android::hidl::base::V1_0::IBase;
 using ::android::hidl::manager::V1_0::IServiceManager;
 using ::android::hidl::manager::V1_0::IServiceNotification;
@@ -41,6 +43,8 @@ using ::android::hardware::hidl_death_recipient;
 using ::android::hardware::hidl_handle;
 using ::android::hardware::hidl_string;
 using ::android::hardware::hidl_vec;
+
+using InstanceDebugInfo = IServiceManager::InstanceDebugInfo;
 
 namespace android {
 namespace hardware {
@@ -76,7 +80,6 @@ struct Quux : android::hardware::tests::baz::V1_0::IQuux {
 } // namespace hardware
 
 namespace lshal {
-
 
 class MockServiceManager : public IServiceManager {
 public:
@@ -187,6 +190,13 @@ public:
     void forEachTable(const std::function<void(const Table &)> &f) const {
         return ListCommand::forEachTable(f);
     }
+    Status fetch() { return ListCommand::fetch(); }
+    void dumpVintf(const NullableOStream<std::ostream>& out) {
+        return ListCommand::dumpVintf(out);
+    }
+
+    MOCK_CONST_METHOD2(getPidInfo, bool(pid_t, PidInfo*));
+    MOCK_CONST_METHOD1(parseCmdline, std::string(pid_t));
 };
 
 class ListParseArgsTest : public ::testing::Test {
@@ -252,6 +262,217 @@ TEST_F(ListParseArgsTest, DebugAndNeat) {
     ON_CALL(*mockLshal, err()).WillByDefault(Return(NullableOStream<std::ostream>(output)));
     EXPECT_NE(0u, mockList->parseArgs(createArg({"lshal", "--neat", "-d"})));
     EXPECT_THAT(output.str(), StrNe(""));
+}
+
+/// Fetch Test
+
+// A set of deterministic functions to generate fake debug infos.
+static uint64_t getPtr(pid_t serverId) { return 10000 + serverId; }
+static std::vector<pid_t> getClients(pid_t serverId) {
+    return {serverId + 1, serverId + 3};
+}
+static PidInfo getPidInfoFromId(pid_t serverId) {
+    PidInfo info;
+    info.refPids[getPtr(serverId)] = getClients(serverId);
+    info.threadUsage = 10 + serverId;
+    info.threadCount = 20 + serverId;
+    return info;
+}
+static std::string getInterfaceName(pid_t serverId) {
+    return "a.h.foo" + std::to_string(serverId) + "@" + std::to_string(serverId) + ".0::IFoo";
+}
+static std::string getInstanceName(pid_t serverId) {
+    return std::to_string(serverId);
+}
+static pid_t getIdFromInstanceName(const hidl_string& instance) {
+    return atoi(instance.c_str());
+}
+static std::string getFqInstanceName(pid_t serverId) {
+    return getInterfaceName(serverId) + "/" + getInstanceName(serverId);
+}
+static std::string getCmdlineFromId(pid_t serverId) {
+    return "command_line_" + std::to_string(serverId);
+}
+
+// Fake service returned by mocked IServiceManager::get.
+class TestService : public IBase {
+public:
+    TestService(DebugInfo&& info) : mInfo(std::move(info)) {}
+    hardware::Return<void> getDebugInfo(getDebugInfo_cb cb) override {
+        cb(mInfo);
+        return hardware::Void();
+    }
+private:
+    DebugInfo mInfo;
+};
+
+class ListFetchTest : public ::testing::Test {
+public:
+    void SetUp() override {
+        serviceManager = new testing::NiceMock<MockServiceManager>();
+        passthruManager = new testing::NiceMock<MockServiceManager>();
+        lshal = std::make_unique<Lshal>(out, err, serviceManager, passthruManager);
+        mockList = std::make_unique<NiceMock<MockListCommand>>(lshal.get());
+
+        initMockList();
+        initMockServiceManager();
+    }
+
+    void initMockList() {
+        ON_CALL(*mockList, getPidInfo(_,_)).WillByDefault(Invoke(
+            [](pid_t serverPid, PidInfo* info) {
+                *info = getPidInfoFromId(serverPid);
+                return true;
+            }));
+        ON_CALL(*mockList, parseCmdline(_)).WillByDefault(Invoke(&getCmdlineFromId));
+    }
+
+    void initMockServiceManager() {
+        using A = DebugInfo::Architecture;
+        ON_CALL(*serviceManager, list(_)).WillByDefault(Invoke(
+            [] (IServiceManager::list_cb cb) {
+                cb({ getFqInstanceName(1), getFqInstanceName(2) });
+                return hardware::Void();
+            }));
+
+        ON_CALL(*serviceManager, get(_, _)).WillByDefault(Invoke(
+            [&](const hidl_string&, const hidl_string& instance) {
+                int id = getIdFromInstanceName(instance);
+                return sp<IBase>(new TestService({ id /* pid */, getPtr(id), A::IS_64BIT }));
+            }));
+
+        ON_CALL(*serviceManager, debugDump(_)).WillByDefault(Invoke(
+            [] (IServiceManager::debugDump_cb cb) {
+                cb({InstanceDebugInfo{getInterfaceName(3), getInstanceName(3), 3,
+                                      getClients(3), A::IS_32BIT},
+                    InstanceDebugInfo{getInterfaceName(4), getInstanceName(4), 4,
+                                      getClients(4), A::IS_32BIT}});
+                return hardware::Void();
+            }));
+
+        ON_CALL(*passthruManager, debugDump(_)).WillByDefault(Invoke(
+            [] (IServiceManager::debugDump_cb cb) {
+                cb({InstanceDebugInfo{getInterfaceName(5), getInstanceName(5), 5,
+                                      getClients(5), A::IS_32BIT},
+                    InstanceDebugInfo{getInterfaceName(6), getInstanceName(6), 6,
+                                      getClients(6), A::IS_32BIT}});
+                return hardware::Void();
+            }));
+    }
+
+    std::stringstream err;
+    std::stringstream out;
+    std::unique_ptr<Lshal> lshal;
+    std::unique_ptr<MockListCommand> mockList;
+    sp<MockServiceManager> serviceManager;
+    sp<MockServiceManager> passthruManager;
+};
+
+TEST_F(ListFetchTest, Fetch) {
+    EXPECT_EQ(0u, mockList->fetch());
+    std::array<std::string, 6> transports{{"hwbinder", "hwbinder", "passthrough",
+                                          "passthrough", "passthrough", "passthrough"}};
+    std::array<Architecture, 6> archs{{ARCH64, ARCH64, ARCH32, ARCH32, ARCH32, ARCH32}};
+    int id = 1;
+    mockList->forEachTable([&](const Table& table) {
+        ASSERT_EQ(2u, table.size());
+        for (const auto& entry : table) {
+            const auto& transport = transports[id - 1];
+            TableEntry expected{
+                .interfaceName = getFqInstanceName(id),
+                .transport = transport,
+                .serverPid = transport == "hwbinder" ? id : NO_PID,
+                .threadUsage = transport == "hwbinder" ? getPidInfoFromId(id).threadUsage : 0,
+                .threadCount = transport == "hwbinder" ? getPidInfoFromId(id).threadCount : 0,
+                .serverCmdline = {},
+                .serverObjectAddress = transport == "hwbinder" ? getPtr(id) : NO_PTR,
+                .clientPids = getClients(id),
+                .clientCmdlines = {},
+                .arch = archs[id - 1],
+            };
+            EXPECT_EQ(expected, entry) << expected.to_string() << " vs. " << entry.to_string();
+
+            ++id;
+        }
+    });
+
+}
+
+TEST_F(ListFetchTest, DumpVintf) {
+    const std::string xml =
+        "<!-- \n"
+        "    This is a skeleton device manifest. Notes: \n"
+        "    1. android.hidl.*, android.frameworks.*, android.system.* are not included.\n"
+        "    2. If a HAL is supported in both hwbinder and passthrough transport, \n"
+        "       only hwbinder is shown.\n"
+        "    3. It is likely that HALs in passthrough transport does not have\n"
+        "       <interface> declared; users will have to write them by hand.\n"
+        "    4. A HAL with lower minor version can be overridden by a HAL with\n"
+        "       higher minor version if they have the same name and major version.\n"
+        "    5. sepolicy version is set to 0.0. It is recommended that the entry\n"
+        "       is removed from the manifest file and written by assemble_vintf\n"
+        "       at build time.\n"
+        "-->\n"
+        "<manifest version=\"1.0\" type=\"device\">\n"
+        "    <hal format=\"hidl\">\n"
+        "        <name>a.h.foo1</name>\n"
+        "        <transport>hwbinder</transport>\n"
+        "        <version>1.0</version>\n"
+        "        <interface>\n"
+        "            <name>IFoo</name>\n"
+        "            <instance>1</instance>\n"
+        "        </interface>\n"
+        "    </hal>\n"
+        "    <hal format=\"hidl\">\n"
+        "        <name>a.h.foo2</name>\n"
+        "        <transport>hwbinder</transport>\n"
+        "        <version>2.0</version>\n"
+        "        <interface>\n"
+        "            <name>IFoo</name>\n"
+        "            <instance>2</instance>\n"
+        "        </interface>\n"
+        "    </hal>\n"
+        "    <hal format=\"hidl\">\n"
+        "        <name>a.h.foo3</name>\n"
+        "        <transport arch=\"32\">passthrough</transport>\n"
+        "        <version>3.0</version>\n"
+        "        <interface>\n"
+        "            <name>IFoo</name>\n"
+        "            <instance>3</instance>\n"
+        "        </interface>\n"
+        "    </hal>\n"
+        "    <hal format=\"hidl\">\n"
+        "        <name>a.h.foo4</name>\n"
+        "        <transport arch=\"32\">passthrough</transport>\n"
+        "        <version>4.0</version>\n"
+        "        <interface>\n"
+        "            <name>IFoo</name>\n"
+        "            <instance>4</instance>\n"
+        "        </interface>\n"
+        "    </hal>\n"
+        "    <hal format=\"hidl\">\n"
+        "        <name>a.h.foo5</name>\n"
+        "        <transport arch=\"32\">passthrough</transport>\n"
+        "        <version>5.0</version>\n"
+        "    </hal>\n"
+        "    <hal format=\"hidl\">\n"
+        "        <name>a.h.foo6</name>\n"
+        "        <transport arch=\"32\">passthrough</transport>\n"
+        "        <version>6.0</version>\n"
+        "    </hal>\n"
+        "    <sepolicy>\n"
+        "        <version>0.0</version>\n"
+        "    </sepolicy>\n"
+        "</manifest>\n";
+    EXPECT_EQ(0u, mockList->fetch());
+    std::stringstream ss;
+    mockList->dumpVintf(ss);
+    EXPECT_EQ(xml, ss.str());
+
+    vintf::HalManifest m;
+    EXPECT_EQ(true, vintf::gHalManifestConverter(&m, ss.str()))
+        << "--init-vintf does not emit valid HAL manifest: "
+        << vintf::gHalManifestConverter.lastError();
 }
 
 } // namespace lshal
