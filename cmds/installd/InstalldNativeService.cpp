@@ -511,6 +511,7 @@ binder::Status InstalldNativeService::clearAppData(const std::unique_ptr<std::st
     binder::Status res = ok();
     if (flags & FLAG_STORAGE_CE) {
         auto path = create_data_user_ce_package_path(uuid_, userId, pkgname, ceDataInode);
+        auto package_path = path;
         if (flags & FLAG_CLEAR_CACHE_ONLY) {
             path = read_path_inode(path, "cache", kXattrInodeCache);
         } else if (flags & FLAG_CLEAR_CODE_CACHE_ONLY) {
@@ -519,6 +520,14 @@ binder::Status InstalldNativeService::clearAppData(const std::unique_ptr<std::st
         if (access(path.c_str(), F_OK) == 0) {
             if (delete_dir_contents(path) != 0) {
                 res = error("Failed to delete contents of " + path);
+            }
+            if (package_path == path) {
+                remove_path_inode(package_path, kXattrInodeCache);
+                remove_path_inode(package_path, kXattrInodeCodeCache);
+            } else if (flags & FLAG_CLEAR_CACHE_ONLY) {
+                remove_path_inode(package_path, kXattrInodeCache);
+            } else {
+                remove_path_inode(package_path, kXattrInodeCodeCache);
             }
         }
     }
