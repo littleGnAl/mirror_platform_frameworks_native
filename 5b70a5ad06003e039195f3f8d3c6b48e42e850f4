@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "634649fa_bda2a825",
+        "filename": "cmds/lshal/ListCommand.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-11T18:10:15Z",
+      "side": 0,
+      "message": "why drop const? Should still be const.",
+      "range": {
+        "startLine": 61,
+        "startChar": 21,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "5b70a5ad06003e039195f3f8d3c6b48e42e850f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
