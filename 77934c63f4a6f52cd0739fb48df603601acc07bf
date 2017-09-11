@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7afaf435_8105f688",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-11T20:25:00Z",
+      "side": 1,
+      "message": "dropped const for dumpVintf because here (dumpVintf and dumpTable doesn\u0027t have the same signature.\n\nMaybe I should make dumpTable const instead...",
+      "range": {
+        "startLine": 393,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 74
+      },
+      "revId": "77934c63f4a6f52cd0739fb48df603601acc07bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
