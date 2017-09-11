@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33eb6c39_41860ba7",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-11T18:08:42Z",
+      "side": 1,
+      "message": "seems like a bit much since we are comparing output as well.\n\nDo we really care that mockList is \u0027isDumpVintf\u0027? I care more that it\u0027s valid XML.\n\nThis is testing implementation and will make it hard to work on lshal.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 1
+      },
+      "revId": "8ec24409c2afaff394ad01996a25a0c48c899562",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
