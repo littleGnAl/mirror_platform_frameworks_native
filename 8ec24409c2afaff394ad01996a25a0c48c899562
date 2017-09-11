@@ -46,6 +46,30 @@
       "revId": "8ec24409c2afaff394ad01996a25a0c48c899562",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc324e3_6b805325",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-11T20:23:32Z",
+      "side": 1,
+      "message": "I\u0027ll still keep the last one though (to ensure that --neat and -d cannot coexist)",
+      "parentUuid": "c621c836_2703e646",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 1
+      },
+      "revId": "8ec24409c2afaff394ad01996a25a0c48c899562",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
