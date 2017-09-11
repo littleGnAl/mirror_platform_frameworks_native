@@ -22,6 +22,30 @@
       "revId": "966e5f38e0a57baac1c97ff7153eb2b300b62f42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25a93a27_2ae0f5ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-11T19:41:55Z",
+      "side": 1,
+      "message": "Table. TextTable is not touched. TextTable remains to be a plain 2D table that prints widths correctly.",
+      "parentUuid": "ef2cf507_e0eb3bcc",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "966e5f38e0a57baac1c97ff7153eb2b300b62f42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
