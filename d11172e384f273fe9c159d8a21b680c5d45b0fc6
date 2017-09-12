@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38834a19_265743e8",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-12T08:35:48Z",
+      "side": 0,
+      "message": "Was this intended for removal as part of this CL? I can look into getting an internal merge of this approved (to avoid the conflicts preventing this from being submitted), but I want to confirm this first. Thanks.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 6
+      },
+      "revId": "d11172e384f273fe9c159d8a21b680c5d45b0fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
