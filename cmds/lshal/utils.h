@@ -27,7 +27,7 @@
 namespace android {
 namespace lshal {
 
-enum : unsigned int {
+enum : uint32_t {
     OK                                      = 0,
     // Return to Lshal::main to print help info.
     USAGE                                   = 1 << 0,
@@ -40,7 +40,7 @@ enum : unsigned int {
     NO_INTERFACE                            = 1 << 7,
     TRANSACTION_ERROR                       = 1 << 8,
 };
-using Status = unsigned int;
+using Status = uint32_t;
 
 struct Arg {
     int argc;
