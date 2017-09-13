@@ -23,6 +23,7 @@
 #include <string>
 
 #include <hidl/ServiceManagement.h>
+#include <utils/NativeHandle.h>
 
 #include "DebugCommand.h"
 #include "ListCommand.h"
@@ -120,10 +121,6 @@ void Lshal::usage(const std::string &command) const {
     err() << helpSummary << "\n" << list << "\n" << debug << "\n" << help;
 }
 
-// A unique_ptr type using a custom deleter function.
-template<typename T>
-using deleted_unique_ptr = std::unique_ptr<T, std::function<void(T *)> >;
-
 static hardware::hidl_vec<hardware::hidl_string> convert(const std::vector<std::string> &v) {
     hardware::hidl_vec<hardware::hidl_string> hv;
     hv.resize(v.size());
@@ -169,13 +166,12 @@ Status Lshal::emitDebugInfo(
         return IO_ERROR;
     }
 
-    deleted_unique_ptr<native_handle_t> fdHandle(
-        native_handle_create(1 /* numFds */, 0 /* numInts */),
-        native_handle_delete);
+    native_handle_t* fdHandle = native_handle_create(1 /* numFds */, 0 /* numInts */);
+    sp<NativeHandle> spHandle = NativeHandle::create(fdHandle, true /* ownsHandle */);
 
     fdHandle->data[0] = relay.fd();
 
-    hardware::Return<void> ret = base->debug(fdHandle.get(), convert(options));
+    hardware::Return<void> ret = base->debug(fdHandle, convert(options));
 
     if (!ret.isOk()) {
         std::string msg = "debug() FAILED on " + interfaceName + "/" + instanceName + ": "
