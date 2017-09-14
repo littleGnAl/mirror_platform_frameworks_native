@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4cdf32a9_3efe6339",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-14T20:34:58Z",
+      "side": 1,
+      "message": "I need to compare this value. See Line 744 below.",
+      "parentUuid": "c2ea13f1_0b29c967",
+      "range": {
+        "startLine": 695,
+        "startChar": 15,
+        "endLine": 695,
+        "endChar": 18
+      },
+      "revId": "1fcb13b358eb06f4d67879ca0fe4efa3fb506788",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "961ae6be_5f52795e",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-14T20:30:50Z",
       "side": 1,
       "message": "nit: make this kind of a thing a function on option? This section is kind of hard to read",
+      "range": {
+        "startLine": 849,
+        "startChar": 8,
+        "endLine": 855,
+        "endChar": 9
+      },
+      "revId": "1fcb13b358eb06f4d67879ca0fe4efa3fb506788",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6595f3b4_ac696723",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-14T20:34:58Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "961ae6be_5f52795e",
       "range": {
         "startLine": 849,
         "startChar": 8,
