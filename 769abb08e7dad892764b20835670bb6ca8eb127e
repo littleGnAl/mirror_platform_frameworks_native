@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd570513_8614571e",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-14T20:47:45Z",
+      "side": 1,
+      "message": "https://stackoverflow.com/questions/25827435/any-way-to-initialize-a-vector-of-unique-ptr\n\nIt is very annoying, I agree",
+      "parentUuid": "ddf4857c_acd7df71",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "769abb08e7dad892764b20835670bb6ca8eb127e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5b14f28_63a12d12",
         "filename": "cmds/lshal/Lshal.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-14T20:25:10Z",
       "side": 1,
       "message": "nit: I\u0027m not a big fan of this recursion.",
+      "range": {
+        "startLine": 177,
+        "startChar": 15,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "769abb08e7dad892764b20835670bb6ca8eb127e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16733c88_79d0b02a",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-14T20:47:45Z",
+      "side": 1,
+      "message": "I don\u0027t want to duplicate the for loop below (since mRegisteredCommands is not a map, and it is not a map because of ordering inside the map)",
+      "parentUuid": "f5b14f28_63a12d12",
       "range": {
         "startLine": 177,
         "startChar": 15,
