@@ -46,31 +46,31 @@ static std::string getTitle(TableColumnType type) {
     switch (type) {
         case TableColumnType::INTERFACE_NAME: {
             return "Interface";
-        } break;
+        }
         case TableColumnType::TRANSPORT: {
             return "Transport";
-        } break;
+        }
         case TableColumnType::SERVER_PID: {
             return "Server";
-        } break;
+        }
         case TableColumnType::SERVER_CMD: {
             return "Server CMD";
         }
         case TableColumnType::SERVER_ADDR: {
             return "PTR";
-        } break;
+        }
         case TableColumnType::CLIENT_PIDS: {
             return "Clients";
-        } break;
+        }
         case TableColumnType::CLIENT_CMDS: {
             return "Clients CMD";
-        } break;
+        }
         case TableColumnType::ARCH: {
             return "Arch";
-        } break;
+        }
         case TableColumnType::THREADS: {
             return "Thread Use";
-        } break;
+        }
         default: {
             LOG(FATAL) << "Should not reach here.";
             return "";
@@ -82,31 +82,31 @@ std::string TableEntry::getField(TableColumnType type) const {
     switch (type) {
         case TableColumnType::INTERFACE_NAME: {
             return interfaceName;
-        } break;
+        }
         case TableColumnType::TRANSPORT: {
             return transport;
-        } break;
+        }
         case TableColumnType::SERVER_PID: {
             return serverPid == NO_PID ? "N/A" : std::to_string(serverPid);
-        } break;
+        }
         case TableColumnType::SERVER_CMD: {
             return serverCmdline;
-        } break;
+        }
         case TableColumnType::SERVER_ADDR: {
             return serverObjectAddress == NO_PTR ? "N/A" : toHexString(serverObjectAddress);
-        } break;
+        }
         case TableColumnType::CLIENT_PIDS: {
             return join(clientPids, " ");
-        } break;
+        }
         case TableColumnType::CLIENT_CMDS: {
             return join(clientCmdlines, ";");
-        } break;
+        }
         case TableColumnType::ARCH: {
             return getArchString(arch);
-        } break;
+        }
         case TableColumnType::THREADS: {
             return getThreadUsage();
-        } break;
+        }
         default: {
             LOG(FATAL) << "Should not reach here.";
             return "";
