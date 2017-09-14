@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a06e6c63_ef6c9b40",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-14T23:26:51Z",
+      "side": 0,
+      "message": "smoreland@ you are right that these tests are testing implementation details. Hence removed.",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "34d7b0a44c438b807a0003730d77dda4e2e6517a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "070c528e_ff61e091",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-14T23:26:51Z",
+      "side": 0,
+      "message": "smoreland@ you are right that these tests are testing implementation details. Updated here.",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 0
+      },
+      "revId": "34d7b0a44c438b807a0003730d77dda4e2e6517a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
