@@ -22,6 +22,30 @@
       "revId": "0e806fa0f581faa132ea36d649986de4b72857c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d67ffc0_43a86663",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-14T20:30:00Z",
+      "side": 1,
+      "message": "This is cleaned up in a follow up CL. CL:484657",
+      "parentUuid": "6786873c_ecec6697",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "0e806fa0f581faa132ea36d649986de4b72857c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
