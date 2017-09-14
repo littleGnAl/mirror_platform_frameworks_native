@@ -32,6 +32,8 @@ cc_library_shared {
         "-fvisibility=hidden"
     ],
 
+    include_dirs: ["system/libvintf/include"],
+
     shared_libs: [
         "libcutils",
         "libhardware",
@@ -45,6 +47,7 @@ cc_library_shared {
         "libhidlbase",
         "libhidltransport",
         "libhwbinder",
+        "libvintf",
         "android.hardware.sensors@1.0",
     ],
 
