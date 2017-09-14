@@ -46,6 +46,30 @@
       "revId": "0e806fa0f581faa132ea36d649986de4b72857c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d309a8af_26093093",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-14T20:31:40Z",
+      "side": 1,
+      "message": "Sorry, I mean CL:484656",
+      "parentUuid": "1d67ffc0_43a86663",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "0e806fa0f581faa132ea36d649986de4b72857c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
