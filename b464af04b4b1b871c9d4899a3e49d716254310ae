@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75017384_fa233d56",
+        "filename": "cmds/lshal/TableEntry.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-14T20:31:38Z",
+      "side": 1,
+      "message": "why not remove the braces as well? It would make this section much more readable to have it in columns.",
+      "range": {
+        "startLine": 47,
+        "startChar": 46,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "b464af04b4b1b871c9d4899a3e49d716254310ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
