@@ -26,6 +26,9 @@ LOCAL_CFLAGS += -Wall -Werror -Wextra
 
 LOCAL_CFLAGS += -fvisibility=hidden
 
+LOCAL_C_INCLUDES := \
+    system/libvintf/include
+
 LOCAL_SHARED_LIBRARIES := \
     libcutils \
     libhardware \
@@ -39,6 +42,7 @@ LOCAL_SHARED_LIBRARIES := \
     libhidlbase \
     libhidltransport \
     libhwbinder \
+    libvintf \
     android.hardware.sensors@1.0
 
 LOCAL_STATIC_LIBRARIES := \
