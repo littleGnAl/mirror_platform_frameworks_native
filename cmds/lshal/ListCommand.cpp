@@ -27,6 +27,7 @@
 
 #include <android-base/parseint.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
+#include <hidl-hash/Hash.h>
 #include <hidl-util/FQName.h>
 #include <private/android_filesystem_config.h>
 #include <sys/stat.h>
@@ -514,6 +515,7 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
     Status status = OK;
     // server pid, .ptr value of binder object, child pids
     std::map<std::string, DebugInfo> allDebugInfos;
+    std::map<std::string, std::string> allHashes;
     std::map<pid_t, PidInfo> allPids;
     for (const auto &fqInstanceName : fqInstanceNames) {
         const auto pair = splitFirst(fqInstanceName, '/');
@@ -524,7 +526,7 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
             err() << "Warning: Skipping \"" << fqInstanceName << "\": "
                  << "cannot be fetched from service manager:"
                  << getRet.description() << std::endl;
-            status |= DUMP_BINDERIZED_ERROR;
+            status |= DUMP_BINDERIZED_ERROR | TRANSACTION_ERROR;
             continue;
         }
         sp<IBase> service = getRet;
@@ -532,7 +534,7 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
             err() << "Warning: Skipping \"" << fqInstanceName << "\": "
                  << "cannot be fetched from service manager (null)"
                  << std::endl;
-            status |= DUMP_BINDERIZED_ERROR;
+            status |= DUMP_BINDERIZED_ERROR | NO_INTERFACE;
             continue;
         }
         auto debugRet = timeoutIPC(service, &IBase::getDebugInfo, [&] (const auto &debugInfo) {
@@ -545,7 +547,60 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
             err() << "Warning: Skipping \"" << fqInstanceName << "\": "
                  << "debugging information cannot be retrieved:"
                  << debugRet.description() << std::endl;
-            status |= DUMP_BINDERIZED_ERROR;
+            status |= DUMP_BINDERIZED_ERROR | TRANSACTION_ERROR;
+        }
+
+        ssize_t hashIndex = -1;
+        auto interfaceChainRet = timeoutIPC(service, &IBase::interfaceChain, [&] (const auto& c) {
+            if (c.size() == 0) {
+                err() << "Warning: Skipping \"" << fqInstanceName << "\": "
+                      << "No interface descriptor is returned by interfaceChain." << std::endl;
+                status |= DUMP_BINDERIZED_ERROR | BAD_IMPL;
+                return;
+            }
+            for (size_t i = 0; i < c.size(); ++i) {
+                if (serviceName == c[i]) {
+                    hashIndex = static_cast<ssize_t>(i);
+                    break;
+                }
+            }
+        });
+        if (!interfaceChainRet.isOk()) {
+            err() << "Warning: Skipping \"" << fqInstanceName << "\": "
+                  << "interfaceChain fails: " << interfaceChainRet.description() << std::endl;
+            status |= DUMP_BINDERIZED_ERROR | TRANSACTION_ERROR;
+            continue; // skip getHashChain
+        }
+        if (hashIndex < 0) {
+            err() << "Warning: Skipping \"" << fqInstanceName << "\": "
+                  << "Service name does not exist in interfaceChain." << std::endl;
+            status |= DUMP_BINDERIZED_ERROR | BAD_IMPL;
+            continue; // skip getHashChain
+        }
+        auto hashRet = timeoutIPC(service, &IBase::getHashChain, [&] (const auto& hashChain) {
+            if (hashChain.size() == 0) {
+                err() << "Warning: Skipping \"" << fqInstanceName << "\": "
+                     << "No hash is returned by getHashChain." << std::endl;
+                status |= DUMP_BINDERIZED_ERROR| BAD_IMPL;
+                return;
+            }
+            if (static_cast<size_t>(hashIndex) >= hashChain.size()) {
+                err() << "Warning: Skipping \"" << fqInstanceName << "\": "
+                      << "interfaceChain indicates position " << hashIndex
+                      << " but getHashChain returns " << hashChain.size() << " hashes"
+                      << std::endl;
+                status |= DUMP_BINDERIZED_ERROR| BAD_IMPL;
+                return;
+            }
+
+            auto&& hashArray = hashChain[hashIndex];
+            std::vector<uint8_t> hashVec{hashArray.data(), hashArray.data() + hashArray.size()};
+            allHashes[fqInstanceName] = Hash::hexString(hashVec);
+        });
+        if (!hashRet.isOk()) {
+            err() << "Warning: Skipping \"" << fqInstanceName << "\": "
+                 << "getHashChain failed: " << hashRet.description() << std::endl;
+            status |= DUMP_BINDERIZED_ERROR | TRANSACTION_ERROR;
         }
     }
 
@@ -558,33 +613,28 @@ Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
         }
     }
     for (const auto &fqInstanceName : fqInstanceNames) {
-        auto it = allDebugInfos.find(fqInstanceName);
-        if (it == allDebugInfos.end()) {
-            putEntry(HWSERVICEMANAGER_LIST, {
-                .interfaceName = fqInstanceName,
-                .transport = mode,
-                .serverPid = NO_PID,
-                .serverObjectAddress = NO_PTR,
-                .clientPids = {},
-                .threadUsage = 0,
-                .threadCount = 0,
-                .arch = ARCH_UNKNOWN
-            });
-            continue;
-        }
-        const DebugInfo &info = it->second;
-        bool writePidInfo = info.pid != NO_PID && info.ptr != NO_PTR;
+        TableEntry entry{};
+        entry.interfaceName = fqInstanceName;
+        entry.transport = mode;
 
-        putEntry(HWSERVICEMANAGER_LIST, {
-            .interfaceName = fqInstanceName,
-            .transport = mode,
-            .serverPid = info.pid,
-            .serverObjectAddress = info.ptr,
-            .clientPids = writePidInfo ? allPids[info.pid].refPids[info.ptr] : Pids{},
-            .threadUsage = writePidInfo ? allPids[info.pid].threadUsage : 0,
-            .threadCount = writePidInfo ? allPids[info.pid].threadCount : 0,
-            .arch = fromBaseArchitecture(info.arch),
-        });
+        auto debugIt = allDebugInfos.find(fqInstanceName);
+        if (debugIt != allDebugInfos.end()) {
+            const DebugInfo &info = debugIt->second;
+            bool writePidInfo = info.pid != NO_PID && info.ptr != NO_PTR;
+            entry.serverPid = info.pid;
+            entry.serverObjectAddress = info.ptr;
+            entry.clientPids = writePidInfo ? allPids[info.pid].refPids[info.ptr] : Pids{};
+            entry.threadUsage = writePidInfo ? allPids[info.pid].threadUsage : 0;
+            entry.threadCount = writePidInfo ? allPids[info.pid].threadCount : 0;
+            entry.arch = fromBaseArchitecture(info.arch);
+        }
+
+        auto hashIt = allHashes.find(fqInstanceName);
+        if (hashIt != allHashes.end()) {
+            entry.hash = hashIt->second;
+        }
+
+        putEntry(HWSERVICEMANAGER_LIST, std::move(entry));
     }
     return status;
 }
@@ -623,6 +673,10 @@ void ListCommand::registerAllOptions() {
         thiz->mSelectedColumns.push_back(TableColumnType::INTERFACE_NAME);
         return OK;
     }, "print the instance name column"});
+    mOptions.push_back({'l', "released", no_argument, v++, [](ListCommand* thiz, const char*) {
+        thiz->mSelectedColumns.push_back(TableColumnType::RELEASED);
+        return OK;
+    }, "print the 'is released?' column\n(Y=released, N=unreleased, empty=unknown)"});
     mOptions.push_back({'t', "transport", no_argument, v++, [](ListCommand* thiz, const char*) {
         thiz->mSelectedColumns.push_back(TableColumnType::TRANSPORT);
         return OK;
@@ -631,6 +685,10 @@ void ListCommand::registerAllOptions() {
         thiz->mSelectedColumns.push_back(TableColumnType::ARCH);
         return OK;
     }, "print the bitness column"});
+    mOptions.push_back({'s', "hash", no_argument, v++, [](ListCommand* thiz, const char*) {
+        thiz->mSelectedColumns.push_back(TableColumnType::HASH);
+        return OK;
+    }, "print hash of the interface"});
     mOptions.push_back({'p', "pid", no_argument, v++, [](ListCommand* thiz, const char*) {
         thiz->mSelectedColumns.push_back(TableColumnType::SERVER_PID);
         return OK;
@@ -773,7 +831,8 @@ Status ListCommand::parseArgs(const Arg &arg) {
     }
 
     if (mSelectedColumns.empty()) {
-        mSelectedColumns = {TableColumnType::INTERFACE_NAME, TableColumnType::THREADS,
+        mSelectedColumns = {TableColumnType::INTERFACE_NAME,
+                            TableColumnType::RELEASED, TableColumnType::THREADS,
                             TableColumnType::SERVER_PID, TableColumnType::CLIENT_PIDS};
     }
 
@@ -841,7 +900,7 @@ void ListCommand::usage() const {
     err() << "list:" << std::endl
           << "    lshal" << std::endl
           << "    lshal list" << std::endl
-          << "        List all hals with default ordering and columns (`lshal list -iepc`)" << std::endl
+          << "        List all hals with default ordering and columns (`lshal list -irepc`)" << std::endl
           << "    lshal list [-h|--help]" << std::endl
           << "        -h, --help: Print help message for list (`lshal help list`)" << std::endl
           << "    lshal [list] [OPTIONS...]" << std::endl;
