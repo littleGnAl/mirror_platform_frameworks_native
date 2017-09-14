@@ -39,12 +39,15 @@ using ::android::hidl::base::V1_0::DebugInfo;
 using ::android::hidl::base::V1_0::IBase;
 using ::android::hidl::manager::V1_0::IServiceManager;
 using ::android::hidl::manager::V1_0::IServiceNotification;
+using ::android::hardware::hidl_array;
 using ::android::hardware::hidl_death_recipient;
 using ::android::hardware::hidl_handle;
 using ::android::hardware::hidl_string;
 using ::android::hardware::hidl_vec;
 
 using InstanceDebugInfo = IServiceManager::InstanceDebugInfo;
+
+using hidl_hash = hidl_array<uint8_t, 32>;
 
 namespace android {
 namespace hardware {
@@ -196,6 +199,9 @@ public:
         return ListCommand::dumpVintf(out);
     }
     void internalPostprocess() { ListCommand::postprocess(); }
+    const PidInfo* getPidInfoCached(pid_t serverPid) {
+        return ListCommand::getPidInfoCached(serverPid);
+    }
 
     MOCK_METHOD0(postprocess, void());
     MOCK_CONST_METHOD2(getPidInfo, bool(pid_t, PidInfo*));
@@ -215,16 +221,6 @@ public:
     std::stringstream output;
 };
 
-TEST_F(ListParseArgsTest, Default) {
-    // default args
-    EXPECT_EQ(0u, mockList->parseArgs(createArg({})));
-    mockList->forEachTable([](const Table& table) {
-        EXPECT_EQ(SelectedColumns({TableColumnType::INTERFACE_NAME, TableColumnType::THREADS,
-                                   TableColumnType::SERVER_PID, TableColumnType::CLIENT_PIDS}),
-                  table.getSelectedColumns());
-    });
-}
-
 TEST_F(ListParseArgsTest, Args) {
     EXPECT_EQ(0u, mockList->parseArgs(createArg({"lshal", "-p", "-i", "-a", "-c"})));
     mockList->forEachTable([](const Table& table) {
@@ -237,9 +233,14 @@ TEST_F(ListParseArgsTest, Args) {
 TEST_F(ListParseArgsTest, Cmds) {
     EXPECT_EQ(0u, mockList->parseArgs(createArg({"lshal", "-m"})));
     mockList->forEachTable([](const Table& table) {
-        EXPECT_EQ(SelectedColumns({TableColumnType::INTERFACE_NAME, TableColumnType::THREADS,
-                                   TableColumnType::SERVER_CMD, TableColumnType::CLIENT_CMDS}),
-                  table.getSelectedColumns());
+        EXPECT_THAT(table.getSelectedColumns(), Not(Contains(TableColumnType::SERVER_PID)))
+                << "should not print server PID with -m";
+        EXPECT_THAT(table.getSelectedColumns(), Not(Contains(TableColumnType::CLIENT_PIDS)))
+                << "should not print client PIDs with -m";
+        EXPECT_THAT(table.getSelectedColumns(), Contains(TableColumnType::SERVER_CMD))
+                << "should print server cmd with -m";
+        EXPECT_THAT(table.getSelectedColumns(), Contains(TableColumnType::CLIENT_CMDS))
+                << "should print client cmds with -m";
     });
 }
 
@@ -279,17 +280,34 @@ static std::string getCmdlineFromId(pid_t serverId) {
     if (serverId == NO_PID) return "";
     return "command_line_" + std::to_string(serverId);
 }
+static bool getIsReleasedFromId(pid_t p) { return p % 2 == 0; }
+static hidl_hash getHashFromId(pid_t serverId) {
+    hidl_hash hash;
+    bool isReleased = getIsReleasedFromId(serverId);
+    for (size_t i = 0; i < hash.size(); ++i) {
+        hash[i] = isReleased ? static_cast<uint8_t>(serverId) : 0u;
+    }
+    return hash;
+}
 
 // Fake service returned by mocked IServiceManager::get.
 class TestService : public IBase {
 public:
-    TestService(DebugInfo&& info) : mInfo(std::move(info)) {}
+    TestService(pid_t id) : mId(id) {}
     hardware::Return<void> getDebugInfo(getDebugInfo_cb cb) override {
-        cb(mInfo);
+        cb({ mId /* pid */, getPtr(mId), DebugInfo::Architecture::IS_64BIT });
+        return hardware::Void();
+    }
+    hardware::Return<void> interfaceChain(interfaceChain_cb cb) override {
+        cb({getInterfaceName(mId), IBase::descriptor});
+        return hardware::Void();
+    }
+    hardware::Return<void> getHashChain(getHashChain_cb cb) override {
+        cb({getHashFromId(mId), getHashFromId(0xff)});
         return hardware::Void();
     }
 private:
-    DebugInfo mInfo;
+    pid_t mId;
 };
 
 class ListTest : public ::testing::Test {
@@ -330,7 +348,7 @@ public:
         ON_CALL(*serviceManager, get(_, _)).WillByDefault(Invoke(
             [&](const hidl_string&, const hidl_string& instance) {
                 int id = getIdFromInstanceName(instance);
-                return sp<IBase>(new TestService({ id /* pid */, getPtr(id), A::IS_64BIT }));
+                return sp<IBase>(new TestService(id));
             }));
 
         ON_CALL(*serviceManager, debugDump(_)).WillByDefault(Invoke(
@@ -359,6 +377,13 @@ public:
     sp<MockServiceManager> serviceManager;
     sp<MockServiceManager> passthruManager;
 };
+
+TEST_F(ListTest, GetPidInfoCached) {
+    EXPECT_CALL(*mockList, getPidInfo(5, _)).Times(1);
+
+    EXPECT_NE(nullptr, mockList->getPidInfoCached(5));
+    EXPECT_NE(nullptr, mockList->getPidInfoCached(5));
+}
 
 TEST_F(ListTest, Fetch) {
     EXPECT_EQ(0u, mockList->fetch());
@@ -468,6 +493,55 @@ TEST_F(ListTest, DumpVintf) {
         << vintf::gHalManifestConverter.lastError();
 }
 
+// test default columns
+TEST_F(ListTest, DumpDefault) {
+    const std::string expected =
+        "[fake description 0]\n"
+        "Interface            R Thread Use Server Clients\n"
+        "a.h.foo1@1.0::IFoo/1 N 11/21      1      2 4\n"
+        "a.h.foo2@2.0::IFoo/2 Y 12/22      2      3 5\n"
+        "\n"
+        "[fake description 1]\n"
+        "Interface            R Thread Use Server Clients\n"
+        "a.h.foo3@3.0::IFoo/3   N/A        N/A    4 6\n"
+        "a.h.foo4@4.0::IFoo/4   N/A        N/A    5 7\n"
+        "\n"
+        "[fake description 2]\n"
+        "Interface            R Thread Use Server Clients\n"
+        "a.h.foo5@5.0::IFoo/5   N/A        N/A    6 8\n"
+        "a.h.foo6@6.0::IFoo/6   N/A        N/A    7 9\n"
+        "\n";
+
+    optind = 1; // mimic Lshal::parseArg()
+    EXPECT_EQ(0u, mockList->main(createArg({"lshal"})));
+    EXPECT_EQ(expected, out.str());
+    EXPECT_EQ("", err.str());
+}
+
+TEST_F(ListTest, DumpHash) {
+    const std::string expected =
+        "[fake description 0]\n"
+        "Interface            R Hash\n"
+        "a.h.foo1@1.0::IFoo/1 N 0000000000000000000000000000000000000000000000000000000000000000\n"
+        "a.h.foo2@2.0::IFoo/2 Y 0202020202020202020202020202020202020202020202020202020202020202\n"
+        "\n"
+        "[fake description 1]\n"
+        "Interface            R Hash\n"
+        "a.h.foo3@3.0::IFoo/3   \n"
+        "a.h.foo4@4.0::IFoo/4   \n"
+        "\n"
+        "[fake description 2]\n"
+        "Interface            R Hash\n"
+        "a.h.foo5@5.0::IFoo/5   \n"
+        "a.h.foo6@6.0::IFoo/6   \n"
+        "\n";
+
+    optind = 1; // mimic Lshal::parseArg()
+    EXPECT_EQ(0u, mockList->main(createArg({"lshal", "-ils"})));
+    EXPECT_EQ(expected, out.str());
+    EXPECT_EQ("", err.str());
+}
+
 TEST_F(ListTest, Dump) {
     const std::string expected =
         "[fake description 0]\n"
@@ -526,7 +600,7 @@ TEST_F(ListTest, DumpNeat) {
         "a.h.foo6@6.0::IFoo/6 N/A   N/A 7 9\n";
 
     optind = 1; // mimic Lshal::parseArg()
-    EXPECT_EQ(0u, mockList->main(createArg({"lshal", "--neat"})));
+    EXPECT_EQ(0u, mockList->main(createArg({"lshal", "-iepc", "--neat"})));
     EXPECT_EQ(expected, out.str());
     EXPECT_EQ("", err.str());
 }
