@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25e7d841_accb754f",
+        "filename": "cmds/lshal/TableEntry.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-15T18:34:10Z",
+      "side": 1,
+      "message": "I guess we should generate host constant stubs.",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "22ea7b851dbe753eda2a703952bbc803c1dcfc1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
