@@ -16,6 +16,24 @@
       "revId": "24add387010e92b1870c47227f87045dfdd567ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c4e3090_5fd6f561",
+        "filename": "cmds/lshal/TableEntry.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-09-15T19:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1795a3ea_0c13e163",
+      "revId": "24add387010e92b1870c47227f87045dfdd567ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
