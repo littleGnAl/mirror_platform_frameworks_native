@@ -22,6 +22,30 @@
       "revId": "41bab14921a11244a10c48aef54f2ac580833043",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0323cdb_6b17e983",
+        "filename": "opengl/tests/configdump/configdump.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2017-09-15T18:56:04Z",
+      "side": 1,
+      "message": "Curious, is this documented in a style guide somewhere?\nWhat\u0027s best way to promote such a change? E.g. do I submit an update to our internal repo and cherry-pick to aosp? I haven\u0027t worked much with aosp so not sure on protocol.",
+      "parentUuid": "dae9bd83_b32fc076",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "41bab14921a11244a10c48aef54f2ac580833043",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
