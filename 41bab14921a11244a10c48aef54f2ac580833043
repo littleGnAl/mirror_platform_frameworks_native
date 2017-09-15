@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dae9bd83_b32fc076",
+        "filename": "opengl/tests/configdump/configdump.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-15T16:25:16Z",
+      "side": 1,
+      "message": "I would have preferred \"/* argc */\" in the original change. But meh. Courtney, you want to follow up?",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "41bab14921a11244a10c48aef54f2ac580833043",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
