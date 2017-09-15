@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da910864_b851c196",
+        "filename": "cmds/lshal/ListCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-15T18:31:48Z",
+      "side": 1,
+      "message": "nit: I prefer getPidInfo and getPidInfoInternal/Uncached",
+      "range": {
+        "startLine": 92,
+        "startChar": 19,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "1243ddeac9e35eaf1ca8f665eff24a89226b2f01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
