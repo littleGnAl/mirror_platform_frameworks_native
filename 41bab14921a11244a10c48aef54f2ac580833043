@@ -46,6 +46,30 @@
       "revId": "41bab14921a11244a10c48aef54f2ac580833043",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b93ae71c_f798c3a4",
+        "filename": "opengl/tests/configdump/configdump.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1135414
+      },
+      "writtenOn": "2017-09-18T06:12:34Z",
+      "side": 1,
+      "message": "I\u0027m not sure about documentation in the style guide or the best way to promote such a change. I guess you could make the change here, get rid of the Merged-In tag so it will merge on downstream branches, then cherry-pick this CL to relevant branches that are not downstream. Steven, any suggestions?",
+      "parentUuid": "b0323cdb_6b17e983",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "41bab14921a11244a10c48aef54f2ac580833043",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
