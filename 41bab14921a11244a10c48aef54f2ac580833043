@@ -70,6 +70,30 @@
       "revId": "41bab14921a11244a10c48aef54f2ac580833043",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d07cb0d_fb829a6f",
+        "filename": "opengl/tests/configdump/configdump.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1135414
+      },
+      "writtenOn": "2017-09-19T01:42:41Z",
+      "side": 1,
+      "message": "Actually scratch what I said above. If the extra spaces are included in this CL then there will be a merge conflict downstream in internal master since the base is different. If you wanted to add the spaces I think that should be a separate CL, after this one gets merged. That separate CL can be uploaded to AOSP or internal first then CP\u0027ed to AOSP. \n\nRegardless I believe this CL should be merged as is to match the sync with internal master.",
+      "parentUuid": "b93ae71c_f798c3a4",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "41bab14921a11244a10c48aef54f2ac580833043",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
