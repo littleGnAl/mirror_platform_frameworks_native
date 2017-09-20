@@ -323,29 +323,7 @@ static void* load_system_driver(const char* kind) {
     public:
         static std::string find(const char* kind) {
             std::string result;
-            int emulationStatus = checkGlesEmulationStatus();
-            switch (emulationStatus) {
-                case 0:
-#if defined(__LP64__)
-                    result = "/vendor/lib64/egl/libGLES_android.so";
-#else
-                    result = "/vendor/lib/egl/libGLES_android.so";
-#endif
-                    return result;
-                case 1:
-                    // Use host-side OpenGL through the "emulation" library
-#if defined(__LP64__)
-                    result = std::string("/vendor/lib64/egl/lib") + kind + "_emulation.so";
-#else
-                    result = std::string("/vendor/lib/egl/lib") + kind + "_emulation.so";
-#endif
-                    return result;
-                default:
-                    // Not in emulator, or use other guest-side implementation
-                    break;
-            }
-
-            std::string pattern = std::string("lib") + kind;
+            std::string pattern;
             const char* const searchPaths[] = {
 #if defined(__LP64__)
                     "/vendor/lib64/egl",
@@ -355,29 +333,53 @@ static void* load_system_driver(const char* kind) {
                     "/system/lib/egl"
 #endif
             };
+            int emulationStatus = checkGlesEmulationStatus();
+            switch (emulationStatus) {
+                case 0:
+                    pattern = "libGLES_android";
+                    for (size_t i=0 ; i<NELEM(searchPaths) ; i++) {
+                        if (find(result, pattern, searchPaths[i], true)) {
+                            return result;
+                        }
+                    }
+                    break;
+                case 1:
+                    // Use host-side OpenGL through the "emulation" library
+                    pattern = std::string("lib") + kind + std::string("_emulation");
+                    for (size_t i=0 ; i<NELEM(searchPaths) ; i++) {
+                        if (find(result, pattern, searchPaths[i], true)) {
+                            return result;
+                        }
+                    }
+                    break;
+                default:
+                    // Not in emulator, or use other guest-side implementation
+                    pattern = std::string("lib") + kind;
 
-            // first, we search for the exact name of the GLES userspace
-            // driver in both locations.
-            // i.e.:
-            //      libGLES.so, or:
-            //      libEGL.so, libGLESv1_CM.so, libGLESv2.so
+                    // first, we search for the exact name of the GLES userspace
+                    // driver in both locations.
+                    // i.e.:
+                    //      libGLES.so, or:
+                    //      libEGL.so, libGLESv1_CM.so, libGLESv2.so
 
-            for (size_t i=0 ; i<NELEM(searchPaths) ; i++) {
-                if (find(result, pattern, searchPaths[i], true)) {
-                    return result;
-                }
-            }
+                    for (size_t i=0 ; i<NELEM(searchPaths) ; i++) {
+                        if (find(result, pattern, searchPaths[i], true)) {
+                            return result;
+                        }
+                    }
 
-            // for compatibility with the old "egl.cfg" naming convention
-            // we look for files that match:
-            //      libGLES_*.so, or:
-            //      libEGL_*.so, libGLESv1_CM_*.so, libGLESv2_*.so
+                    // for compatibility with the old "egl.cfg" naming convention
+                    // we look for files that match:
+                    //      libGLES_*.so, or:
+                    //      libEGL_*.so, libGLESv1_CM_*.so, libGLESv2_*.so
 
-            pattern.append("_");
-            for (size_t i=0 ; i<NELEM(searchPaths) ; i++) {
-                if (find(result, pattern, searchPaths[i], false)) {
-                    return result;
-                }
+                    pattern.append("_");
+                    for (size_t i=0 ; i<NELEM(searchPaths) ; i++) {
+                        if (find(result, pattern, searchPaths[i], false)) {
+                            return result;
+                        }
+                    }
+                    break;
             }
 
             // we didn't find the driver. gah.
