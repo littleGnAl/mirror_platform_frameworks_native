@@ -22,6 +22,30 @@
       "revId": "b206dc4c77797731c2af3a14b438e5111c70ab8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a271e6c7_2d798a15",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1086824
+      },
+      "writtenOn": "2017-09-20T06:35:46Z",
+      "side": 1,
+      "message": "1. We could clean the code if it\u0027s necessary\n\nHowever:\n2. Some emulation platform still need software rendering because it doesn\u0027t support GPU emulation, especially when simulating SoC model which does\u0027t include GPU model.\n\n3. It\u0027s true that Android O only support openGL2.0 or newer version and libGLES_android only support openGL1.2. But it\u0027s really needed to keep libGLES_android.so to simulate SoC running on Android without GPU model.",
+      "parentUuid": "b8ca55f8_efc0d2d3",
+      "range": {
+        "startLine": 336,
+        "startChar": 34,
+        "endLine": 336,
+        "endChar": 58
+      },
+      "revId": "b206dc4c77797731c2af3a14b438e5111c70ab8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
