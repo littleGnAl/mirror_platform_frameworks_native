@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cea50ade_92cf2f3b",
+        "filename": "opengl/tests/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2017-09-20T15:29:46Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we be taking out lib as well?",
+      "revId": "74e2e66139dfad2f263d7609351f1997629d0834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
