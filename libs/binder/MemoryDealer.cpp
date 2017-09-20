@@ -289,7 +289,9 @@ SimpleBestFitAllocator::SimpleBestFitAllocator(size_t size)
 SimpleBestFitAllocator::~SimpleBestFitAllocator()
 {
     while(!mList.isEmpty()) {
-        delete mList.remove(mList.head());
+        chunk_t* removed = mList.remove(mList.head());
+        LOG_ALWAYS_FATAL_IF(mList.head() == removed);
+        delete removed;
     }
 }
 
