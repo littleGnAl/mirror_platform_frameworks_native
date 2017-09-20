@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8ca55f8_efc0d2d3",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1046320
+      },
+      "writtenOn": "2017-09-20T06:02:42Z",
+      "side": 1,
+      "message": "can you get rid of the emulator specific code ?\ngiven that mode 0 is not supported anymore ?",
+      "range": {
+        "startLine": 336,
+        "startChar": 34,
+        "endLine": 336,
+        "endChar": 58
+      },
+      "revId": "b206dc4c77797731c2af3a14b438e5111c70ab8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
