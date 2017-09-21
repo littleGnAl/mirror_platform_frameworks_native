@@ -16,6 +16,24 @@
       "revId": "8007bdd7d229ca0befb580a63525d2eda604ffa7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3aa9d47_57c419a9",
+        "filename": "opengl/tests/include/EGLUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1135414
+      },
+      "writtenOn": "2017-09-21T02:00:54Z",
+      "side": 0,
+      "message": "This CL is a cherry-pick of you original CL on internal master: https://googleplex-android-review.git.corp.google.com/#/c/platform/frameworks/native/+/2212184/\n\nAs I noted in my previous comment, this CL should have been cherry-picked to AOSP before https://android-review.googlesource.com/#/c/platform/frameworks/native/+/485664/ , this is my mistake. Because opengl/tests/lib/include/EGLUtils.h was created as a new file (due to the new path) in the previous cherry-pick, in this cherry-pick the old version of EGLUtils.h at opengl/tests/include/EGLUtils.h appears as Deleted. So although it seems that EGLUtils.h no longer exists in the source code in this CL, EGLUtils.h does exist in aosp-master under lib/include/ (https://cs.corp.google.com/aosp-master/frameworks/native/opengl/tests/lib/include/EGLUtils.h?sq\u003dpackage:%5Eaosp-master$\u0026dr\u003dCSs)\n\nThese CLs are an effort to match the code sync between internal master and AOSP, to the extent that it is required for VNDK development on AOSP.",
+      "parentUuid": "c76b5f73_f5a31088",
+      "revId": "8007bdd7d229ca0befb580a63525d2eda604ffa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
