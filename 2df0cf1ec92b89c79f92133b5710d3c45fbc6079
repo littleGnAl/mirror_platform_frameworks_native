@@ -22,6 +22,30 @@
       "revId": "2df0cf1ec92b89c79f92133b5710d3c45fbc6079",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c74ef072_9a3c66e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-09-21T17:54:54Z",
+      "side": 1,
+      "message": "Ha :) right. Did not catch this when cherry-picking.",
+      "parentUuid": "40d1fba4_6ca15654",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "2df0cf1ec92b89c79f92133b5710d3c45fbc6079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
