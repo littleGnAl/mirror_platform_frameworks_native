@@ -38,6 +38,7 @@
 #include <time.h>
 #include <unistd.h>
 
+#include <chrono>
 #include <set>
 #include <string>
 #include <vector>
@@ -945,15 +946,13 @@ const char *dump_traces() {
             }
 
             /* wait for the writable-close notification from inotify */
-            struct pollfd pfd = { ifd, POLLIN, 0 };
-            int ret = poll(&pfd, 1, TRACE_DUMP_TIMEOUT_MS);
-            if (ret < 0) {
-                MYLOGE("poll: %s\n", strerror(errno));
-            } else if (ret == 0) {
-                MYLOGE("warning: timed out dumping pid %d\n", pid);
-            } else {
-                struct inotify_event ie;
-                read(ifd, &ie, sizeof(ie));
+            {
+                std::string content;
+                if (!android::base::ReadFdToString(
+                        ifd, &content, sizeof(struct inotify_event),
+                        std::chrono::milliseconds(TRACE_DUMP_TIMEOUT_MS))) {
+                    MYLOGE("warning: timed out dumping pid %d\n", pid);
+                }
             }
 
             if (lseek(fd, 0, SEEK_END) < 0) {
