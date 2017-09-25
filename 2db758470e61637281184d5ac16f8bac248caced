@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29f59ae4_f47df566",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-25T15:34:26Z",
+      "side": 1,
+      "message": "Since following is short-lived, the size of content is limited to sizeof(struct inotify_event), there is no real need to limit the scope of std::string content in this manner. Save a level of indent.",
+      "range": {
+        "startLine": 956,
+        "startChar": 12,
+        "endLine": 956,
+        "endChar": 13
+      },
+      "revId": "2db758470e61637281184d5ac16f8bac248caced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
