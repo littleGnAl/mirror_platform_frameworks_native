@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1def1698_2078d1b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-09-25T16:47:57Z",
+      "side": 1,
+      "message": "\u0027dumpstate\u0027 can only be called by root, so this is not a good test because you won\u0027t get failures for commands that require su.\n\nYou should test it by taking a real bugreport instead (for example, by calling \u0027adb shell cmd activity bug-report\u0027)",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "6e826d2ae5e9ed6ea491ab5d6ed87e5ce2c84309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e11bec79_8d5b261c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-09-25T16:47:57Z",
+      "side": 1,
+      "message": "Doesn\u0027t ip require root?\n\nIf so, it should be \n\nRunCommand(\"IP XFRM POLICY\", {\"ip\", \"xfrm\", \"policy\"}, \n  CommandOptions::WithTimeout(10).AsRoot.Build());\n\nOr even better:\n\nRunCommand(\"IP XFRM POLICY\", {\"ip\", \"xfrm\", \"policy\"},\n  CommandOptions::AS_ROOT);",
+      "range": {
+        "startLine": 869,
+        "startChar": 0,
+        "endLine": 869,
+        "endChar": 56
+      },
+      "revId": "6e826d2ae5e9ed6ea491ab5d6ed87e5ce2c84309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "166000ef_e6cea50d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-09-25T16:47:57Z",
+      "side": 1,
+      "message": "This is the same as the DEFAULT command:\nCommandOptions CommandOptions::DEFAULT \u003d CommandOptions::WithTimeout(10).Build();\n\n\nWhich is set by, well, default :-)\n\nI.E., you could use just:\n\n RunCommand(\"IP XFRM POLICY\", {\"ip\", \"xfrm\", \"policy\"});\n\nPS: I know you moved the existing commands below, but I didn\u0027t realize this mistake when that code was initially added to dumpstate",
+      "range": {
+        "startLine": 874,
+        "startChar": 0,
+        "endLine": 874,
+        "endChar": 56
+      },
+      "revId": "6e826d2ae5e9ed6ea491ab5d6ed87e5ce2c84309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77c9a713_40d257a1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-09-25T16:47:57Z",
+      "side": 1,
+      "message": "Looks like this one requires root too",
+      "range": {
+        "startLine": 876,
+        "startChar": 0,
+        "endLine": 876,
+        "endChar": 63
+      },
+      "revId": "6e826d2ae5e9ed6ea491ab5d6ed87e5ce2c84309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
