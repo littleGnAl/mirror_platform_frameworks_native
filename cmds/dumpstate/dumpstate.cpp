@@ -860,6 +860,24 @@ static void DumpIpTables() {
     RunCommand("IP6TABLES RAW", {"ip6tables", "-t", "raw", "-L", "-nvx"});
 }
 
+static void DumpIpNetworkState() {
+    DumpIpTables();
+
+    // Capture any IPSec policies in play.  No keys are exposed here.
+    // TODO: enable on user builds.
+    RunCommand("IP XFRM POLICY", {"ip", "xfrm", "policy"},
+               CommandOptions::WithTimeout(10).Build());
+
+    // Run ss as root so we can see socket marks.
+    // TODO: enable on user builds.
+    RunCommand("DETAILED SOCKET STATE", {"ss", "-eionptu"},
+               CommandOptions::WithTimeout(10).Build());
+
+    RunCommand("CONNTRACK", {"cat", "/proc/net/ip_conntrack"});
+    RunCommand("EPHEMERAL PORTS", {"cat", "/proc/sys/net/ipv4/ip_local_port_range"});
+    RunCommand("RESERVED PORTS", {"cat", "/proc/sys/net/ipv4/ip_local_reserved_ports"});
+}
+
 static void AddAnrTraceFiles() {
     bool add_to_zip = ds.IsZipping() && ds.version_ == VERSION_SPLIT_ANR;
     std::string dump_traces_dir;
@@ -1716,15 +1734,7 @@ int main(int argc, char *argv[]) {
             ds.AddDir(PROFILE_DATA_DIR_REF, true);
         }
         add_mountinfo();
-        DumpIpTables();
-
-        // Capture any IPSec policies in play.  No keys are exposed here.
-        RunCommand("IP XFRM POLICY", {"ip", "xfrm", "policy"},
-                   CommandOptions::WithTimeout(10).Build());
-
-        // Run ss as root so we can see socket marks.
-        RunCommand("DETAILED SOCKET STATE", {"ss", "-eionptu"},
-                   CommandOptions::WithTimeout(10).Build());
+        DumpIpNetworkState();
 
         if (!DropRootUser()) {
             return -1;
