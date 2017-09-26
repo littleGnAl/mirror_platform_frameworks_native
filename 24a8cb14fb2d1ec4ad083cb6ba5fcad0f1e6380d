@@ -22,6 +22,30 @@
       "revId": "24a8cb14fb2d1ec4ad083cb6ba5fcad0f1e6380d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6d1a99d_f3a7514b",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1182749
+      },
+      "writtenOn": "2017-09-26T17:00:54Z",
+      "side": 1,
+      "message": "I\u0027ve checked proposed version: replace whole body of the function on two lines: mSensors \u003d ISensors::getService(); return (mSensors !\u003d nullptr);. In my case (device without sensors) it works as expected - without any delays. But if you decide to simplify this code then better solution will be remove the `connectHidlService` function at all and perform this code in the constructor, isn\u0027t it?",
+      "parentUuid": "20dd813b_c18cf847",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "24a8cb14fb2d1ec4ad083cb6ba5fcad0f1e6380d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
