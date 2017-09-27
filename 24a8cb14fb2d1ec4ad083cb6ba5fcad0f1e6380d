@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "9dfa89bd_b52b2b31",
+        "filename": "services/sensorservice/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-27T00:08:40Z",
+      "side": 1,
+      "message": "these headers should be exported as well",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "24a8cb14fb2d1ec4ad083cb6ba5fcad0f1e6380d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4338da_18f8e358",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-27T00:08:40Z",
+      "side": 1,
+      "message": "also, better is probably just \u0027mSensors-\u003eping().isOk()\u0027 depending on what you\u0027re trying to accomplish here",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 80
+      },
+      "revId": "24a8cb14fb2d1ec4ad083cb6ba5fcad0f1e6380d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20dd813b_c18cf847",
         "filename": "services/sensorservice/SensorDevice.cpp",
         "patchSetId": 2
@@ -61,6 +107,30 @@
       "side": 1,
       "message": "Is this always guaranteed even when hal service just crashed? I remember this logic was added to prevent situation that cause no sensor hal being found in some cases.\n\nAlso, poll check is necessary workaround for stuck poll thread. So I cannot replace the whole block with getService().",
       "parentUuid": "20dd813b_c18cf847",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "24a8cb14fb2d1ec4ad083cb6ba5fcad0f1e6380d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9966eb6f_a6acff6b",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-27T00:08:40Z",
+      "side": 1,
+      "message": "If the hal service just crashed, getService will still wait on it to startup.",
+      "parentUuid": "647d49d8_95f3a0c2",
       "range": {
         "startLine": 104,
         "startChar": 4,
