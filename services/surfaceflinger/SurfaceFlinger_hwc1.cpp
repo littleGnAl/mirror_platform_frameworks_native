@@ -2274,6 +2274,12 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& hw, const 
                         }
                         break;
                     }
+                    case HWC_SIDEBAND: {
+                        // for sideband stream because the FB
+                        // is not cleared, so clear it here before draw.
+                        layer->clearWithOpenGL(hw, clip);
+                        break;
+                    }
                     case HWC_FRAMEBUFFER: {
                         layer->draw(hw, clip);
                         break;
