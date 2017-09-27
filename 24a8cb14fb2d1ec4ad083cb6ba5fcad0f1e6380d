@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34339fa2_218453f5",
+        "filename": "services/sensorservice/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1182749
+      },
+      "writtenOn": "2017-09-27T12:40:34Z",
+      "side": 1,
+      "message": "Do you mean that this line is redundant? I can\u0027t test it with Android.bp, but for Android.mk line `LOCAL_C_INCLUDES :\u003d system/libvintf/include` is required.",
+      "parentUuid": "9dfa89bd_b52b2b31",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "24a8cb14fb2d1ec4ad083cb6ba5fcad0f1e6380d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e4338da_18f8e358",
         "filename": "services/sensorservice/SensorDevice.cpp",
         "patchSetId": 2
