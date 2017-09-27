@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "84b3d188_a16f63a1",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-09-27T00:28:34Z",
+      "side": 1,
+      "message": "ping() does not work. This was a workaround of a problem sourced from incompatibility of legacy hal and treble.\n\nThis should be solved in ISensors 2.0.",
+      "parentUuid": "6e4338da_18f8e358",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 80
+      },
+      "revId": "24a8cb14fb2d1ec4ad083cb6ba5fcad0f1e6380d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20dd813b_c18cf847",
         "filename": "services/sensorservice/SensorDevice.cpp",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "If the hal service just crashed, getService will still wait on it to startup.",
       "parentUuid": "647d49d8_95f3a0c2",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "24a8cb14fb2d1ec4ad083cb6ba5fcad0f1e6380d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88431b21_d7d2dfd5",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-09-27T00:28:34Z",
+      "side": 1,
+      "message": "I see.",
+      "parentUuid": "9966eb6f_a6acff6b",
       "range": {
         "startLine": 104,
         "startChar": 4,
