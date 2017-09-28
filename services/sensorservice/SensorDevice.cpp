@@ -21,6 +21,7 @@
 #include <utils/Atomic.h>
 #include <utils/Errors.h>
 #include <utils/Singleton.h>
+#include <cutils/properties.h>
 
 #include <chrono>
 #include <cinttypes>
@@ -87,6 +88,17 @@ SensorDevice::SensorDevice() : mHidlTransportErrors(20) {
 }
 
 bool SensorDevice::connectHidlService() {
+    char value[PROPERTY_VALUE_MAX] = {};
+    property_get("sys.boot_completed", value, "0");
+    const bool isBooting = atoi(value) ? false : true;
+    if (isBooting) {
+        mSensors = ISensors::getService();
+        if (mSensors == nullptr) {
+            ALOGI("Skip connection to ISensors hidl service since no sensor services are defined in the manifest.");
+            return false;
+        }
+    }
+
     // SensorDevice may wait upto 100ms * 10 = 1s for hidl service.
     constexpr auto RETRY_DELAY = std::chrono::milliseconds(100);
     size_t retry = 10;
