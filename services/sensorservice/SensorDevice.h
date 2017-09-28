@@ -17,6 +17,7 @@
 #ifndef ANDROID_SENSOR_DEVICE_H
 #define ANDROID_SENSOR_DEVICE_H
 
+#include "SensorDeviceUtils.h"
 #include "SensorServiceUtils.h"
 
 #include <sensor/Sensor.h>
@@ -39,38 +40,13 @@
 namespace android {
 
 // ---------------------------------------------------------------------------
+using namespace android::hardware::sensors::V1_0;
+using SensorDeviceUtils::HidlTransportErrorLog;
+using SensorDeviceUtils::ServiceRestartWaiter;
 using SensorServiceUtil::Dumpable;
-using hardware::Return;
 
 class SensorDevice : public Singleton<SensorDevice>, public Dumpable {
 public:
-
-    class HidlTransportErrorLog {
-     public:
-
-        HidlTransportErrorLog() {
-            mTs = 0;
-            mCount = 0;
-        }
-
-        HidlTransportErrorLog(time_t ts, int count) {
-            mTs = ts;
-            mCount = count;
-        }
-
-        String8 toString() const {
-            String8 result;
-            struct tm *timeInfo = localtime(&mTs);
-            result.appendFormat("%02d:%02d:%02d :: %d", timeInfo->tm_hour, timeInfo->tm_min,
-                                timeInfo->tm_sec, mCount);
-            return result;
-        }
-
-    private:
-        time_t mTs; // timestamp of the error
-        int mCount;   // number of transport errors observed
-    };
-
     ssize_t getSensorList(sensor_t const** list);
 
     void handleDynamicSensorConnection(int handle, bool connected);
@@ -105,7 +81,7 @@ public:
 private:
     friend class Singleton<SensorDevice>;
 
-    sp<android::hardware::sensors::V1_0::ISensors> mSensors;
+    sp<ISensors> mSensors;
     Vector<sensor_t> mSensorList;
     std::unordered_map<int32_t, sensor_t*> mConnectedDynamicSensors;
 
@@ -167,6 +143,7 @@ private:
     bool connectHidlService();
 
     static void handleHidlDeath(const std::string &detail);
+
     template<typename T>
     static Return<T> checkReturn(Return<T> &&ret) {
         if (!ret.isOk()) {
@@ -174,6 +151,7 @@ private:
         }
         return std::move(ret);
     }
+    sp<ServiceRestartWaiter<ISensors>> mRestartWaiter;
 
     bool isClientDisabled(void* ident);
     bool isClientDisabledLocked(void* ident);
