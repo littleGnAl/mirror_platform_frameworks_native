@@ -17,6 +17,7 @@
 #ifndef ANDROID_SENSOR_DEVICE_H
 #define ANDROID_SENSOR_DEVICE_H
 
+#include "SensorDeviceUtils.h"
 #include "SensorServiceUtils.h"
 
 #include <sensor/Sensor.h>
@@ -39,12 +40,12 @@
 namespace android {
 
 // ---------------------------------------------------------------------------
+using namespace android::hardware::sensors::V1_0;
+using SensorDeviceUtils::HidlServiceRegistrationWaiter;
 using SensorServiceUtil::Dumpable;
-using hardware::Return;
 
 class SensorDevice : public Singleton<SensorDevice>, public Dumpable {
 public:
-
     class HidlTransportErrorLog {
      public:
 
@@ -105,7 +106,7 @@ public:
 private:
     friend class Singleton<SensorDevice>;
 
-    sp<android::hardware::sensors::V1_0::ISensors> mSensors;
+    sp<ISensors> mSensors;
     Vector<sensor_t> mSensorList;
     std::unordered_map<int32_t, sensor_t*> mConnectedDynamicSensors;
 
@@ -167,6 +168,7 @@ private:
     bool connectHidlService();
 
     static void handleHidlDeath(const std::string &detail);
+
     template<typename T>
     static Return<T> checkReturn(Return<T> &&ret) {
         if (!ret.isOk()) {
@@ -174,6 +176,7 @@ private:
         }
         return std::move(ret);
     }
+    sp<HidlServiceRegistrationWaiter> mRestartWaiter;
 
     bool isClientDisabled(void* ident);
     bool isClientDisabledLocked(void* ident);
