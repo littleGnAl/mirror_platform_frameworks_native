@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bf9ff55_cc530790",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2651,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-28T15:27:13Z",
+      "side": 1,
+      "message": "nit: this form allows us to reduce the indent because of else-return stanza. Normally I\u0027d keep that to myself, but the indent has a wrap in it (even if the reduction of indent does not solve the wrap, which it doesn\u0027t, it makes the code more readable):\n\nif (desire \u003c mDataCapacity) {\n    uint8_t* data \u003d (uint8_t*)realloc(mData, desired);\n    if (!data) {\n        mError \u003d NO_MEMORY;\n        return NO_MEMORY;\n    }\n    LOG_ALLOC(\"Parcel %p: continue from %zu to %zu capacity\",\n              this, mDataCapacity, desired);\n    pthread_mutex_lock(\u0026gParcelGlobalAllocSizeLock);\n    gParcelGlobalAllocSize +\u003d desired;\n    gParcelGlobalAllocSize -\u003d mDataCapacity;\n    pthread_mutex_unlock(\u0026gParcelGlobalAllocSizeLock);\n    mData \u003d data;\n    mDataCapacity \u003d desired;\n} else {\n\nI would accept log message adjustment to improve logging S/N and prevent wrap:\n\nLOG_ALLOC(\"Parcel %p: continue from size %zu to %zu\", this, mDataCapacity, desired);",
+      "range": {
+        "startLine": 2639,
+        "startChar": 0,
+        "endLine": 2651,
+        "endChar": 13
+      },
+      "revId": "ade8989a1b97af2d2c7482da05600d2fb95e254e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
