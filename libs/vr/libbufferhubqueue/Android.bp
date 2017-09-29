@@ -47,6 +47,10 @@ cc_library {
     cflags: [
         "-DLOG_TAG=\"libbufferhubqueue\"",
         "-DTRACE=0",
+        "-Wall",
+        "-Werror",
+        "-Wno-error=sign-compare",
+        "-Wno-error=unused-variable",
     ],
     srcs: sourceFiles,
     export_include_dirs: includeFiles,

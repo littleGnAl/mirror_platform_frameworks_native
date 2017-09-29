@@ -43,6 +43,12 @@ cc_library_shared {
 
   cflags: [
     "-DLOG_TAG=\"vr_hwc\"",
+    "-Wall",
+    "-Werror",
+    "-Wno-error=missing-declarations",
+    "-Wno-error=sign-compare",
+    "-Wno-error=unused-private-field",
+    "-Wno-unused-parameter",
   ],
 
 }
@@ -56,6 +62,7 @@ cc_library_static {
     "aidl/android/dvr/parcelable_composer_layer.cpp",
     "aidl/android/dvr/parcelable_unique_fd.cpp",
   ],
+  cflags: ["-Wall", "-Werror"],
   aidl: {
     include_dirs: ["frameworks/native/services/vr/hardware_composer/aidl"],
     export_aidl_headers: true,
@@ -91,6 +98,8 @@ cc_library_static {
   ],
   cflags: [
     "-DLOG_TAG=\"vr_hwc\"",
+    "-Wall",
+    "-Werror",
   ],
 }
 
@@ -119,6 +128,8 @@ cc_binary {
   ],
   cflags: [
     "-DLOG_TAG=\"vr_hwc\"",
+    "-Wall",
+    "-Werror",
   ],
   init_rc: [
     "vr_hwc.rc",
@@ -129,6 +140,7 @@ cc_test {
   name: "vr_hwc_test",
   gtest: true,
   srcs: ["tests/vr_composer_test.cpp"],
+  cflags: ["-Wall", "-Werror"],
   static_libs: [
     "libgtest",
     "libvr_hwc-impl",

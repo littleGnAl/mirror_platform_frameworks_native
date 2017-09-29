@@ -20,9 +20,14 @@ cc_library_shared {
     },
 
     clang: true,
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wno-error=unused-function",
+        "-Wno-error=unused-variable",
+    ],
     cppflags: [
         "-Weverything",
-        "-Werror",
 
         // The static constructors and destructors in this library have not been noted to
         // introduce significant overheads

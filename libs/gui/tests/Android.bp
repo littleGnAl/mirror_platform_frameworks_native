@@ -7,6 +7,11 @@ cc_test {
     test_suites: ["device-tests"],
 
     clang: true,
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wno-error=unused-variable",
+    ],
 
     srcs: [
         "BufferItemConsumer_test.cpp",

@@ -21,6 +21,9 @@ cc_library_headers {
 
 cflags = [
     "-DLOG_TAG=\"libdvr\"",
+    "-Wall",
+    "-Werror",
+    "-Wno-error=missing-declarations",
 ]
 
 srcs = [
