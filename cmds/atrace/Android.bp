@@ -3,6 +3,12 @@
 cc_binary {
     name: "atrace",
     srcs: ["atrace.cpp"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wno-unused-function",
+        "-Wno-unused-variable",
+    ],
 
     shared_libs: [
         "libbinder",
