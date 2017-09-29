@@ -46,6 +46,30 @@
       "revId": "40ccccae70d23c41e650a5fbb55fb6542efefd6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0310a45b_6c9b4513",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-29T20:39:01Z",
+      "side": 1,
+      "message": "The problem is:\ngetService() -\u003e returns\npoll -\u003e really quick\ngetService() -\u003e gets called immediately\n\nBetter is to just make a call to get notifications for ISensors rather than getting it over and over again when it might still be starting up/in the process of dying",
+      "parentUuid": "e5438933_1b0b88e0",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "40ccccae70d23c41e650a5fbb55fb6542efefd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
