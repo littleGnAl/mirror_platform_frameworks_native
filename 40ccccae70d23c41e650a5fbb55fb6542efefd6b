@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e3a77cd_1ef21402",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-09-29T18:08:42Z",
+      "side": 1,
+      "message": "it\u0027s unlikely there will be enough time for the service to restart if you don\u0027t sleep\n\nInstead of trying to getService over and over again, why not just call ISensors::registerForNotifications?",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "40ccccae70d23c41e650a5fbb55fb6542efefd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
