@@ -70,6 +70,30 @@
       "revId": "40ccccae70d23c41e650a5fbb55fb6542efefd6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bd80270_5de02ac4",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-09-29T23:59:23Z",
+      "side": 1,
+      "message": "Done. Although it is not observed that 2nd getService() get called to soon and return dying hidl service, the change do speed up in the restart (adb shell \"stop;start\") case as getService 1s timeout is avoided.",
+      "parentUuid": "0310a45b_6c9b4513",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "40ccccae70d23c41e650a5fbb55fb6542efefd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
