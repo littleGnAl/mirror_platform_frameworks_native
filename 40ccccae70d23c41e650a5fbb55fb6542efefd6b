@@ -22,6 +22,30 @@
       "revId": "40ccccae70d23c41e650a5fbb55fb6542efefd6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5438933_1b0b88e0",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-09-29T18:11:29Z",
+      "side": 1,
+      "message": "ISensors::getService() is supposed to block until the service is up, right?",
+      "parentUuid": "2e3a77cd_1ef21402",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "40ccccae70d23c41e650a5fbb55fb6542efefd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
