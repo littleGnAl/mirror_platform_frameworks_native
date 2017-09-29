@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8dd3683_02d7495d",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-29T16:22:52Z",
+      "side": 0,
+      "message": "Three things gained by this check:\n\n1) We do not log that we are about to SEND data, increasing the logging S/N, silently (appropriately?) reporting error back.\n2) do not waste time updating status (it gets updated appropriately enough on line 592)\n3) (minor) improved cache locality on invalid data, not wasting a subroutine call to log, or writeTransactionData; letting caller take action as needed.",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 26
+      },
+      "revId": "2560692961211fe25857fea729ad8d839619bb4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
