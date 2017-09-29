@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfe98a3f_fe93cb2e",
+        "filename": "vulkan/api/vulkan.api",
+        "patchSetId": 1
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1097779
+      },
+      "writtenOn": "2017-09-29T22:28:16Z",
+      "side": 1,
+      "message": "The vulkan.h header kept both VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES2_EXT and VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT with the same value.  It is not clear if future uses of vulkan.api would be better off with two matching entries or one newer form.\nThere doesn\u0027t seem to be any use of these declarations yet.",
+      "revId": "7772622fc8cf6e856fca73de8ce5fee917b09b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
