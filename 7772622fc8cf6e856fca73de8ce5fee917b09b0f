@@ -16,6 +16,24 @@
       "revId": "7772622fc8cf6e856fca73de8ce5fee917b09b0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c40028f3_8182f79e",
+        "filename": "vulkan/api/vulkan.api",
+        "patchSetId": 1
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2017-09-30T03:47:47Z",
+      "side": 1,
+      "message": "I think it will only matter if we ever try to generate a perfect replica of the existing vulkan.h from this API file. We used to be able to do that, but haven\u0027t cared about it for a while -- there\u0027s probably several other things missing.\n\nSo in general, I haven\u0027t tried to add backwards-compatibility stuff to this: we have the luxury of being able to update all users of this file atomically if we make a source-incompatible change.",
+      "parentUuid": "bfe98a3f_fe93cb2e",
+      "revId": "7772622fc8cf6e856fca73de8ce5fee917b09b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
