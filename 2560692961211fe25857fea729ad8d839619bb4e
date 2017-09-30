@@ -22,6 +22,30 @@
       "revId": "2560692961211fe25857fea729ad8d839619bb4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1f79843_bcbef7cc",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2017-09-30T01:44:14Z",
+      "side": 0,
+      "message": "data.errorCheck() \u003d\u003d NO_ERROR is the common case.\nThen in the normal case, we need to call data.errorCheck()\ntwice which may waste cpu time.\n\nLOG_ONEWAY() is only log code in debug mode where LOG_NDEBUG is enabled.\n\nIn my humble opinion, code running efficiency is the most important thing especially in the critical code path.\n\nThanks.",
+      "parentUuid": "f8dd3683_02d7495d",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 26
+      },
+      "revId": "2560692961211fe25857fea729ad8d839619bb4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
