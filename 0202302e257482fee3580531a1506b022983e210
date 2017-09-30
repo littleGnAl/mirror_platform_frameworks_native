@@ -1,0 +1,412 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be1d081b_10241247",
+        "filename": "cmds/atrace/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-function\n-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fd367e4_371d4caa",
+        "filename": "cmds/lshal/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-private-field",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562742be_46b86db5",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-private-field\n-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34574474_0b16fa6a",
+        "filename": "libs/gui/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-variable\n\nCan you move this into cppflags instead too? I know why -Wall -Werror are in cflags (to make this easier to later move to our default build configuration), but I think everything else here is C++.",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c2017d7_705cf1cb",
+        "filename": "libs/gui/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1043eaab_6f4ee92d",
+        "filename": "libs/hwc2on1adapter/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-user-defined-warnings\n\nAlso move this into cppflags as well.",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5093b61a_14df8067",
+        "filename": "libs/input/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-sign-compare - However, this is usually not a great warning to suppress. Any idea if it would be easier to just fix this?",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f80638e7_92fe33b6",
+        "filename": "libs/input/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a14b0ded_2c43e261",
+        "filename": "libs/nativewindow/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-function",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43257e09_6a898fd4",
+        "filename": "libs/ui/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-function\n-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a85bc95b_ed9b0249",
+        "filename": "libs/vr/libbufferhubqueue/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-sign-compare - Same question about just fixing this.\n-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26d94fea_249e976d",
+        "filename": "libs/vr/libbufferhubqueue/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-sign-compare - Same question about just fixing this.",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0851073d_5f80d65e",
+        "filename": "libs/vr/libdisplay/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-missing-declarations - Can this one get fixed too?",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c971a2f_b041b0fe",
+        "filename": "libs/vr/libdvr/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-missing-declarations - Same question about fixing this.",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0172ff3_7c150649",
+        "filename": "libs/vr/libdvr/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-missing-declarations - Same question about just fixing.\n-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "386a7bd1_ba3d9780",
+        "filename": "libs/vr/libdvrcommon/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-parameter",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc04c900_81e1ea74",
+        "filename": "libs/vr/libvrflinger/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-missing-declarations - Same question about fixing this.\n-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6bfb362_41652713",
+        "filename": "libs/vr/libvrsensor/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-missing-declarations - Same question about fixing this.",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4cbf477_a44336d2",
+        "filename": "opengl/libs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "658afef2_ce3c5326",
+        "filename": "opengl/libs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-deprecated-register - Wow, but this is probably because of checked in old headers.\n-Wno-unknown-attributes\n-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e70d50c7_30e891cd",
+        "filename": "services/inputflinger/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-function\n-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3dae1c60_33ae3fff",
+        "filename": "services/vr/hardware_composer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-missing-declarations - Fix?\n-Wno-sign-compare - Fix?\n-Wno-unused-private-field\n-Wno-unused-parameter",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbdbb32f_08a79be1",
+        "filename": "services/vr/virtual_touchpad/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-function\n\nPossibly move this into cppflags instead.",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a14d9681_cebb82a5",
+        "filename": "services/vr/virtual_touchpad/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-30T02:10:02Z",
+      "side": 1,
+      "message": "-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
