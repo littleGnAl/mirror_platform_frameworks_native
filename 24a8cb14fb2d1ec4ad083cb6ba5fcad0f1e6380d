@@ -260,6 +260,30 @@
       "revId": "24a8cb14fb2d1ec4ad083cb6ba5fcad0f1e6380d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b49a8ff9_c61ae080",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1182749
+      },
+      "writtenOn": "2017-10-02T09:59:57Z",
+      "side": 1,
+      "message": "\u003e this whole section should just be replaced by:\n \u003e mSensors \u003d ISensors::getService()\n \u003e \n \u003e hwservicemanager internally handles this, and accessing libvintf\n \u003e here will cost reading and processing XML files (which\n \u003e hwservicemanager has already done).\n\n\u003e So I cannot replace the whole block with getService().\n\nThe explicit call of `libvintf` is replaced by `ISensors::getService()`.",
+      "parentUuid": "20dd813b_c18cf847",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "24a8cb14fb2d1ec4ad083cb6ba5fcad0f1e6380d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
