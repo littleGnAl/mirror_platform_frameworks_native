@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbab319d_b3e3f208",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2017-10-02T16:37:14Z",
+      "side": 1,
+      "message": "Hmm, this feels a bit off.\n\nYou probably want to mirror the logic above: if the caller requested CLEAR_CODE_CACHE_ONLY, then you only want to remove that xattr, and leave the normal kXattrInodeCache intact.",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 62
+      },
+      "revId": "c7342f8e3b317dcae128e21bb6a9ecf21856a678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
