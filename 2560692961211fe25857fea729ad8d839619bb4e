@@ -46,6 +46,30 @@
       "revId": "2560692961211fe25857fea729ad8d839619bb4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01532401_89faa840",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-02T16:43:38Z",
+      "side": 0,
+      "message": "The change in behavior (positive or negative, not judging) needs to be noted in the commit message, as we will now LOG_ONEWAY even if the current state of the data parcel is already in an error state.\n\nNote in the commit messsage as well that the NO_ERROR common case means the negative hit of logging and calling IPCThreadSTate::writeTransactionData() is in the grand scheme negligible.\n\n[TL;DR]\n\nLOG_NDEBUG is true on all our performance checks :-( for eng and userdebug builds, ~6-20us performance hit each transaction of LOG_ONEWAY.\n\nThanks, as NO_ERROR is considered the common case, that part sgtm. However I disagree that calling errorCheck() causes much overhead if called multiple times.\n\nHowever if efficiency is truly the concern (this admittedly may be outside the scope of this change) then errorCheck should be inline defined in include/binder/Parcel.h:\n\n    status_t errorCheck() const { return mError; }\n\nso as to minimize it\u0027s already very minimal impact. Concern being that the compiler could(?) incur a cache-miss making a non-local subroutine call, linker optimization(?) notwithstanding. I expect library internal it is already inlined _and_ also externally exported, externally would always be a subroutine call (please check? make sure it is smaller to grab mError than to call Parse::errorCheck() wrt code size).",
+      "parentUuid": "d1f79843_bcbef7cc",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 26
+      },
+      "revId": "2560692961211fe25857fea729ad8d839619bb4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
