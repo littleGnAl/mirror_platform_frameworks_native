@@ -1,0 +1,9 @@
+Verified+1: Jesse Hall <jessehall@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Anders Pedersen <anders.pedersen@arm.com>
+Code-Review+2: Mike Stroyan <stroyan@google.com>
+Submitted-by: Jesse Hall <jessehall@google.com>
+Submitted-at: Mon, 02 Oct 2017 16:16:05 +0000
+Reviewed-on: https://android-review.googlesource.com/498631
+Project: platform/frameworks/native
+Branch: refs/heads/master
