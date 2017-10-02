@@ -20,15 +20,15 @@
 #include <binder/IMemoryHidl.h>
 #include <binder/MemoryBase.h>
 #include <binder/MemoryHeapBase.h>
-#include <hidl/HidlAshmem.h>
 #include <log/log.h>
 
 #define VERBOSE 0
 
 namespace android {
 
-using ::android::hardware::HidlAshmem;
 using ::android::hardware::hidl_memory;
+using ::android::hardware::HidlMemory;
+using ::android::hardware::createHidlMemory;
 using ::android::hidl::allocator::V1_1::IAllocator;
 using ::android::hidl::memory::V1_1::memblk;
 
@@ -53,7 +53,7 @@ public:
 
     static sp<IMemoryHeap> newInstance(const hidl_memory& mem, int64_t heapID) {
         std::unique_lock<std::mutex> lock(mutex);
-        int fd = HidlAshmem::fd(mem);
+        int fd = hidl_memory::fd(mem);
         if (fd < 0 || heapID < 0) return nullptr;
         sp<IMemoryHeap> instance = new MemoryHeapBaseHidl(fd, mem.size(), heapID);
         return instance;
@@ -75,13 +75,13 @@ private:
 
 std::map<int64_t, wp<IMemoryHeap> > MemoryHeapBaseHidl::active;
 
-sp<HidlAshmem> toHidl(const sp<IMemoryHeap>& heap) {
+HidlMemory toHidl(const sp<IMemoryHeap>& heap) {
     int fd = static_cast<int>(heap->getHeapID());
-    return HidlAshmem::getInstance(fd, heap->getSize());
+    return createHidlMemory(fd, heap->getSize());
 }
 
 sp<IMemoryHeap> toBinder(hardware::hidl_memory& mem) {
-    int fd = HidlAshmem::fd(mem);
+    int fd = hidl_memory::fd(mem);
     // not a "ashmem" binderable hidl_memory object
     if (mem.name() != kMemName || fd < 0) {
         ALOGE("toBinder, an unbinderable hidl_memory");
@@ -134,7 +134,7 @@ static int64_t registerHeap(sp<IMemory> mem) {
             active.erase(key);
         }
     }
-    sp<HidlAshmem> hidl_mem = toHidl(heap);
+    HidlMemory hidl_mem = toHidl(heap);
     sp<IAllocator> allocator = IAllocator::getService(kMemName);
     int64_t heapID = allocator->add(*hidl_mem);
 

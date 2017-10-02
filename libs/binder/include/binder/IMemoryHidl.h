@@ -19,11 +19,10 @@
 
 #include <android/hidl/memory/1.1/IMapper.h>
 #include <binder/IMemory.h>
-#include <hidl/HidlAshmem.h>
 #include <hidl/HidlSupport.h>
 namespace android {
 
-sp<::android::hardware::HidlAshmem> toHidl(const sp<IMemoryHeap>& heap);
+::android::hardware::HidlMemory toHidl(const sp<IMemoryHeap>& heap);
 
 sp<IMemoryHeap> toBinder(const hardware::hidl_memory& mem);
 
