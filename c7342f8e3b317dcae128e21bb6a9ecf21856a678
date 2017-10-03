@@ -22,6 +22,30 @@
       "revId": "c7342f8e3b317dcae128e21bb6a9ecf21856a678",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c34a2d2_73fde484",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1102318
+      },
+      "writtenOn": "2017-10-03T02:49:39Z",
+      "side": 1,
+      "message": "Thanks for the comment, in my understanding,\n\n1. If CLEAR_CODE_CACHE_ONLY is requested, code_cache directory is NOT removed (the data in code_cache is removed).\n2. FLAG_CLEAR_CACHE_ONLY is as well as #1.\n3. If both FLAG_CLEAR_CACHE_ONLY and CLEAR_CODE_CACHE_ONLY are NOT requested, all directory and data are removed under /data/data/\u003capp\u003e/ . (then, code_cache directory is removed.)\n\nThus this implementation checks #3 case and removes kXattrInodeCodeCache and kXattrInodeCache, since directories are removed.",
+      "parentUuid": "bbab319d_b3e3f208",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 62
+      },
+      "revId": "c7342f8e3b317dcae128e21bb6a9ecf21856a678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
