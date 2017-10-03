@@ -477,6 +477,48 @@ TEST_F(DumpstateTest, RunCommandAsRootNonUserBuild) {
     EXPECT_THAT(err, StrEq("stderr\n"));
 }
 
+TEST_F(DumpstateTest, RunCommandAsRootIfDebugOnUserBuild) {
+    if (!IsStandalone()) {
+        // TODO: temporarily disabled because it might cause other tests to fail after dropping
+        // to Shell - need to refactor tests to avoid this problem)
+        MYLOGE("Skipping DumpstateTest.RunCommandAsRootIfDebugOnUserBuild() on test suite\n")
+        return;
+    }
+    if (!PropertiesHelper::IsUserBuild()) {
+        // Emulates user build if necessarily.
+        SetBuildType("user");
+    }
+
+    DropRoot();
+
+    EXPECT_EQ(0, RunCommand("", {kSimpleCommand, "--uid"},
+                            CommandOptions::WithTimeout(1).AsRootIfDebug().Build()));
+
+    EXPECT_THAT(out, StrEq("2000\nstdout\n"));
+    EXPECT_THAT(err, StrEq("stderr\n"));
+}
+
+TEST_F(DumpstateTest, RunCommandAsRootIfDebugOnDebugBuild) {
+    if (!IsStandalone()) {
+        // TODO: temporarily disabled because it might cause other tests to fail after dropping
+        // to Shell - need to refactor tests to avoid this problem)
+        MYLOGE("Skipping DumpstateTest.RunCommandAsRootIfDebugOnDebugBuild() on test suite\n")
+        return;
+    }
+    if (PropertiesHelper::IsUserBuild()) {
+        ALOGI("Skipping RunCommandAsRootNonUserBuild on user builds\n");
+        return;
+    }
+
+    DropRoot();
+
+    EXPECT_EQ(0, RunCommand("", {kSimpleCommand, "--uid"},
+                            CommandOptions::WithTimeout(1).AsRootIfDebug().Build()));
+
+    EXPECT_THAT(out, StrEq("0\nstdout\n"));
+    EXPECT_THAT(err, StrEq("stderr\n"));
+}
+
 TEST_F(DumpstateTest, DumpFileNotFoundNoTitle) {
     EXPECT_EQ(-1, DumpFile("", "/I/cant/believe/I/exist"));
     EXPECT_THAT(out,

@@ -89,6 +89,8 @@ static bool waitpid_with_timeout(pid_t pid, int timeout_seconds, int* status) {
 
 CommandOptions CommandOptions::DEFAULT = CommandOptions::WithTimeout(10).Build();
 CommandOptions CommandOptions::AS_ROOT = CommandOptions::WithTimeout(10).AsRoot().Build();
+CommandOptions CommandOptions::AS_ROOT_IF_DEBUG =
+    CommandOptions::WithTimeout(10).AsRootIfDebug().Build();
 
 CommandOptions::CommandOptionsBuilder::CommandOptionsBuilder(int64_t timeout) : values(timeout) {
 }
@@ -100,6 +102,12 @@ CommandOptions::CommandOptionsBuilder& CommandOptions::CommandOptionsBuilder::Al
 
 CommandOptions::CommandOptionsBuilder& CommandOptions::CommandOptionsBuilder::AsRoot() {
     values.account_mode_ = SU_ROOT;
+    return *this;
+}
+
+CommandOptions::CommandOptionsBuilder& CommandOptions::CommandOptionsBuilder::AsRootIfDebug() {
+    if (!PropertiesHelper::IsUserBuild())
+        values.account_mode_ = SU_ROOT;
     return *this;
 }
 

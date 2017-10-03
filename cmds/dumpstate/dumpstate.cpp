@@ -972,14 +972,14 @@ static void dumpstate() {
         RunCommand(
                 "HARDWARE HALS",
                 {"lshal", std::string("--debug=") + kLsHalDebugPath},
-                CommandOptions::AS_ROOT);
+                CommandOptions::AS_ROOT_IF_DEBUG);
 
         ds.AddZipEntry("lshal-debug.txt", kLsHalDebugPath);
 
         unlink(kLsHalDebugPath.c_str());
     } else {
         RunCommand(
-                "HARDWARE HALS", {"lshal", "--debug"}, CommandOptions::AS_ROOT);
+                "HARDWARE HALS", {"lshal", "--debug"}, CommandOptions::AS_ROOT_IF_DEBUG);
     }
 
     RunCommand("PRINTENV", {"printenv"});
