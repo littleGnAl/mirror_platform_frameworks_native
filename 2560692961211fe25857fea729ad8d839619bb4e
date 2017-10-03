@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f47f334_7eac0e2b",
+        "filename": "services/sensorservice/SensorDevice.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-03T00:15:27Z",
+      "side": 0,
+      "message": "nit: move in a separate CL, also, just delete this class. It only appears to be used to add things to a list (mHidlTransportErrors) which is not ever used. If in doubt, just #if 0 this out.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 6
+      },
+      "revId": "2560692961211fe25857fea729ad8d839619bb4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
