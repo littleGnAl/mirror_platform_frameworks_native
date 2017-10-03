@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "771ca5c2_34dc7384",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-03T22:52:26Z",
+      "side": 1,
+      "message": "Felipe should probably followup and move this into a helper method:\n\nif (!PropertiesHelper::IsUserBuild()) {\n    SetBuildType(\"user\");\n    // presumably\n    CHECK(PropertiesHelper::IsUserBuild());\n}\n\n?",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 490,
+        "endChar": 5
+      },
+      "revId": "48e83a152179d5fe45dbef2ec7efc509f5f3adc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
