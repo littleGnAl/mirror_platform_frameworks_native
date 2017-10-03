@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "33d7a8ac_5a414815",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-10-03T22:35:25Z",
+      "side": 1,
+      "message": "Ah, ok, nevermind then.\n\nYou actually might need ALOGI, because MYLOGE outputs to the stderr, and it can interfere in the test expectations..",
+      "parentUuid": "036b72fc_cc9efbe8",
+      "range": {
+        "startLine": 509,
+        "startChar": 8,
+        "endLine": 509,
+        "endChar": 13
+      },
+      "revId": "db7a9fafb2779426e90cabf013ed62443506cb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96174496_d54277e2",
         "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
         "patchSetId": 1
