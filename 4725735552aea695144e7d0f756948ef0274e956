@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2920ccc_4f6aff8e",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-03T22:03:39Z",
+      "side": 1,
+      "message": "this assumes that all the manifests are up to date (which they aren\u0027t)",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 17
+      },
+      "revId": "4725735552aea695144e7d0f756948ef0274e956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
