@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96174496_d54277e2",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-03T22:00:23Z",
+      "side": 1,
+      "message": "nit: I prefer one with\nif(isUser) {...} else {...}",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 5
+      },
+      "revId": "db7a9fafb2779426e90cabf013ed62443506cb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
