@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a16eeac7_9ea77f55",
+        "filename": "cmds/dumpstate/DumpstateUtil.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-10-03T22:42:29Z",
+      "side": 1,
+      "message": "Also, the documentation should be something like:\n\n\u0027Sets the command\u0027s PrivilegeMode as `SU_ROOT` when available.\n\nThis option is useful when running commands that ideally should run as root, but could also run as shell.\u0027",
+      "parentUuid": "08d8871a_d3814f9b",
+      "range": {
+        "startLine": 93,
+        "startChar": 31,
+        "endLine": 93,
+        "endChar": 44
+      },
+      "revId": "db7a9fafb2779426e90cabf013ed62443506cb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8546744f_fdfdf7d4",
         "filename": "cmds/dumpstate/DumpstateUtil.h",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "If so I won\u0027t even bother adding AsRootIfAvailable at all",
       "parentUuid": "8546744f_fdfdf7d4",
+      "range": {
+        "startLine": 127,
+        "startChar": 26,
+        "endLine": 127,
+        "endChar": 42
+      },
+      "revId": "db7a9fafb2779426e90cabf013ed62443506cb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39034f39_7228db9d",
+        "filename": "cmds/dumpstate/DumpstateUtil.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-10-03T22:42:29Z",
+      "side": 1,
+      "message": "Adding the property is still easier than letting the caller handles the logic; OTOH, I guess it doesn\u0027t hurt to add the constant too, just call it AS_ROOT_IF_AVAILABLE (or WHEN - whatever we use in the property)",
+      "parentUuid": "bdc9edee_d013c476",
       "range": {
         "startLine": 127,
         "startChar": 26,
