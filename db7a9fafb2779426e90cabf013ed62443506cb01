@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "08d8871a_d3814f9b",
+        "filename": "cmds/dumpstate/DumpstateUtil.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-10-03T22:18:14Z",
+      "side": 1,
+      "message": "I think something like AsRootIfPossible, AsRootWhenPossible or AsRootWhenAvailable/AsRootIfAvailable is better, since it doesn\u0027t restrict it to just debug,",
+      "range": {
+        "startLine": 93,
+        "startChar": 31,
+        "endLine": 93,
+        "endChar": 44
+      },
+      "revId": "db7a9fafb2779426e90cabf013ed62443506cb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8546744f_fdfdf7d4",
+        "filename": "cmds/dumpstate/DumpstateUtil.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-10-03T22:18:14Z",
+      "side": 1,
+      "message": "if this is going to be used just by one lshal invocation, I\u0027d rather not create a default / constant option for it...",
+      "range": {
+        "startLine": 127,
+        "startChar": 26,
+        "endLine": 127,
+        "endChar": 42
+      },
+      "revId": "db7a9fafb2779426e90cabf013ed62443506cb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fd72f01_ab839143",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-10-03T22:18:14Z",
+      "side": 1,
+      "message": "Please use MYLOGE for consistency",
+      "range": {
+        "startLine": 509,
+        "startChar": 8,
+        "endLine": 509,
+        "endChar": 13
+      },
+      "revId": "db7a9fafb2779426e90cabf013ed62443506cb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96174496_d54277e2",
         "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
         "patchSetId": 1
