@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e3f261fc_3c593a11",
+        "filename": "services/sensorservice/SensorDeviceUtils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-03T18:09:14Z",
+      "side": 1,
+      "message": "Template makes it useful for other HAL to use. But for here, I only cares about ISensors, will remove the template.\n\nTo be honest, I think this waiter class should be provided as a HIDL utility if getService() cannot be relied on to get the most up-to-date service.",
+      "parentUuid": "2f3d4beb_fe2e1691",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "34dc352034642e4db6d443b002585256c556ecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23351efa_58b23577",
         "filename": "services/sensorservice/SensorDeviceUtils.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-03T00:15:27Z",
       "side": 1,
       "message": "is this constructor required?",
+      "range": {
+        "startLine": 42,
+        "startChar": 51,
+        "endLine": 42,
+        "endChar": 63
+      },
+      "revId": "34dc352034642e4db6d443b002585256c556ecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a36e4ac0_c47f39e1",
+        "filename": "services/sensorservice/SensorDeviceUtils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-03T18:09:14Z",
+      "side": 1,
+      "message": "Not any more if the code is written specifically for ISensors.",
+      "parentUuid": "23351efa_58b23577",
       "range": {
         "startLine": 42,
         "startChar": 51,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "60a44f45_4dd124e2",
+        "filename": "services/sensorservice/SensorDeviceUtils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-03T18:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3865c113_b1cfe351",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "34dc352034642e4db6d443b002585256c556ecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c521eb8_932a875e",
         "filename": "services/sensorservice/SensorDeviceUtils.h",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-10-03T00:15:27Z",
       "side": 1,
       "message": "preexisting means that it was already registered at the time that registerForNotifications was called. This is documented in IServiceManager.hal, but I don\u0027t think this indicates that a restart occured.",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "34dc352034642e4db6d443b002585256c556ecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25089fe5_cfb2d63e",
+        "filename": "services/sensorservice/SensorDeviceUtils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-03T18:09:14Z",
+      "side": 1,
+      "message": "With reset(), checks to preexising is not necessary. Will remove.",
+      "parentUuid": "6c521eb8_932a875e",
       "range": {
         "startLine": 55,
         "startChar": 12,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "22b66c01_a422f241",
+        "filename": "services/sensorservice/SensorDeviceUtils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-03T18:09:14Z",
+      "side": 1,
+      "message": "I do not view !mRegistered an error condition (thus ALOGW). But it is fair.",
+      "parentUuid": "7a1ab300_132105a5",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 9
+      },
+      "revId": "34dc352034642e4db6d443b002585256c556ecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d93cc56_a3d08555",
         "filename": "services/sensorservice/SensorDeviceUtils.h",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2017-10-03T00:15:27Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 8
+      },
+      "revId": "34dc352034642e4db6d443b002585256c556ecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a1032f3_1e484440",
+        "filename": "services/sensorservice/SensorDeviceUtils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-03T18:09:14Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "8d93cc56_a3d08555",
       "range": {
         "startLine": 88,
         "startChar": 4,

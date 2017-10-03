@@ -22,6 +22,30 @@
       "revId": "2560692961211fe25857fea729ad8d839619bb4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02bc6604_bd26e2e1",
+        "filename": "services/sensorservice/SensorDevice.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-03T18:09:14Z",
+      "side": 0,
+      "message": "Make sense, will recover in this CL.",
+      "parentUuid": "8f47f334_7eac0e2b",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 6
+      },
+      "revId": "2560692961211fe25857fea729ad8d839619bb4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
