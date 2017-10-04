@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "484558ed_655e7b20",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-04T21:58:49Z",
+      "side": 1,
+      "message": "There is still a race condition here:\n\nimagine in lines 96 and 97, the hal dies and restarts, and you get the notification, then when reset is called, it clears mRestartObserved.\n\nNow line 102 will fail, so you\u0027ll set mSensors again and then wait for another restart, however, the sensors hal has already restarted, so you\u0027ll wait forever.\n\n\nIn order to fix this the right way, you need to hold the mRestartWaiter lock during part of this function as well, I believe.",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "revId": "594faaefa637bbfd7b3d0041cf0a206c0cdd265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc8b956_f406a498",
+        "filename": "services/sensorservice/SensorDevice.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-04T21:58:49Z",
+      "side": 1,
+      "message": "missed this before, this will dump all of these into the android namespace. I recommend putting these inside of SensorDevice.",
+      "revId": "594faaefa637bbfd7b3d0041cf0a206c0cdd265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ebfab1_33cb42d6",
+        "filename": "services/sensorservice/SensorDevice.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-04T21:58:49Z",
+      "side": 1,
+      "message": "I thought this was remove once sensor hals get rid of the polling interface? Also, always TODO with a bug. Otherwise these things get forgotten about.",
+      "revId": "594faaefa637bbfd7b3d0041cf0a206c0cdd265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd36e6d_830f3d28",
+        "filename": "services/sensorservice/SensorDeviceUtils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-04T21:58:49Z",
+      "side": 1,
+      "message": "nit: just \"default\"",
+      "range": {
+        "startLine": 32,
+        "startChar": 57,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "594faaefa637bbfd7b3d0041cf0a206c0cdd265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
