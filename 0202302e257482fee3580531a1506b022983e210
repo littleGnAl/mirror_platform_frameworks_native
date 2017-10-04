@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "87732a8e_0958af65",
+        "filename": "cmds/atrace/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be1d081b_10241247",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fd367e4_371d4caa",
         "filename": "cmds/lshal/Android.bp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-unused-private-field",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1598b6a_8c94b2e2",
+        "filename": "cmds/lshal/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fd367e4_371d4caa",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b94340b7_80b74257",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "562742be_46b86db5",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34574474_0b16fa6a",
         "filename": "libs/gui/Android.bp",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-unused-variable\n\nCan you move this into cppflags instead too? I know why -Wall -Werror are in cflags (to make this easier to later move to our default build configuration), but I think everything else here is C++.",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "193eda64_f19cd48f",
+        "filename": "libs/gui/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34574474_0b16fa6a",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "820cc8fb_fcf807bd",
+        "filename": "libs/gui/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2017d7_705cf1cb",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1043eaab_6f4ee92d",
         "filename": "libs/hwc2on1adapter/Android.bp",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-user-defined-warnings\n\nAlso move this into cppflags as well.",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3396d348_267d7cb4",
+        "filename": "libs/hwc2on1adapter/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1043eaab_6f4ee92d",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "2ac3494b_186ec9ef",
+        "filename": "libs/input/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "sign-compare to be fixed later.",
+      "parentUuid": "5093b61a_14df8067",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f80638e7_92fe33b6",
         "filename": "libs/input/tests/Android.bp",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b1b0bdc_4784e7e9",
+        "filename": "libs/input/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80638e7_92fe33b6",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "81d0c9bd_026cb3d3",
+        "filename": "libs/nativewindow/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a14b0ded_2c43e261",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43257e09_6a898fd4",
         "filename": "libs/ui/Android.bp",
         "patchSetId": 1
@@ -166,6 +328,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-unused-function\n-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b92d8ce0_0332cc2b",
+        "filename": "libs/ui/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43257e09_6a898fd4",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "ad2b67cf_26747997",
+        "filename": "libs/vr/libbufferhubqueue/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done, sign-compare to fix later.",
+      "parentUuid": "a85bc95b_ed9b0249",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26d94fea_249e976d",
         "filename": "libs/vr/libbufferhubqueue/tests/Android.bp",
         "patchSetId": 1
@@ -200,6 +398,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-sign-compare - Same question about just fixing this.",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7324244_56f23a4d",
+        "filename": "libs/vr/libbufferhubqueue/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "to fix later",
+      "parentUuid": "26d94fea_249e976d",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "a8795a23_6f9ea2dd",
+        "filename": "libs/vr/libdisplay/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0851073d_5f80d65e",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c971a2f_b041b0fe",
         "filename": "libs/vr/libdvr/Android.bp",
         "patchSetId": 1
@@ -234,6 +468,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-missing-declarations - Same question about fixing this.",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7c12f1_a2a22941",
+        "filename": "libs/vr/libdvr/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c971a2f_b041b0fe",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -257,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "dd674853_550c72c8",
+        "filename": "libs/vr/libdvr/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0172ff3_7c150649",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "386a7bd1_ba3d9780",
         "filename": "libs/vr/libdvrcommon/Android.bp",
         "patchSetId": 1
@@ -268,6 +538,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-unused-parameter",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3660479_11e737aa",
+        "filename": "libs/vr/libdvrcommon/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "386a7bd1_ba3d9780",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -291,6 +579,24 @@
     },
     {
       "key": {
+        "uuid": "de0835e3_6bb9b158",
+        "filename": "libs/vr/libvrflinger/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc04c900_81e1ea74",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6bfb362_41652713",
         "filename": "libs/vr/libvrsensor/Android.bp",
         "patchSetId": 1
@@ -308,6 +614,24 @@
     },
     {
       "key": {
+        "uuid": "73446509_4e09a591",
+        "filename": "libs/vr/libvrsensor/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6bfb362_41652713",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4cbf477_a44336d2",
         "filename": "opengl/libs/Android.bp",
         "patchSetId": 1
@@ -319,6 +643,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f9fba40_7dcf436d",
+        "filename": "opengl/libs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4cbf477_a44336d2",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -359,6 +701,24 @@
     },
     {
       "key": {
+        "uuid": "f63fc07c_20d15bd8",
+        "filename": "services/inputflinger/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e70d50c7_30e891cd",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dae1c60_33ae3fff",
         "filename": "services/vr/hardware_composer/Android.bp",
         "patchSetId": 1
@@ -370,6 +730,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-missing-declarations - Fix?\n-Wno-sign-compare - Fix?\n-Wno-unused-private-field\n-Wno-unused-parameter",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ffde35a_dd228a4c",
+        "filename": "services/vr/hardware_composer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done, sign-compare warnings to be fixed later.",
+      "parentUuid": "3dae1c60_33ae3fff",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -393,6 +771,24 @@
     },
     {
       "key": {
+        "uuid": "de197a6a_ebfe229c",
+        "filename": "services/vr/virtual_touchpad/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbdbb32f_08a79be1",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a14d9681_cebb82a5",
         "filename": "services/vr/virtual_touchpad/Android.bp",
         "patchSetId": 1
@@ -404,6 +800,24 @@
       "writtenOn": "2017-09-30T02:10:02Z",
       "side": 1,
       "message": "-Wno-unused-variable",
+      "revId": "0202302e257482fee3580531a1506b022983e210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3eacf98c_ce83bf3e",
+        "filename": "services/vr/virtual_touchpad/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-04T21:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a14d9681_cebb82a5",
       "revId": "0202302e257482fee3580531a1506b022983e210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
