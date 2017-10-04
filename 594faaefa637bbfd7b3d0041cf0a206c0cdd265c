@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "13ba0937_2db00e76",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-04T23:24:22Z",
+      "side": 1,
+      "message": "getService already does the wait (waiting for the service before the 1 second sleep is ever called).\n\ngetService basically looks like this:\n\nservice \u003d get from hwservicemanager\nreturn if ok\nwaitForService\nservice \u003d get from hwservicemanager\nreturn if ok\nrepeat {\n    sleep 1\n    waitForService\n    service \u003d get from hwservicemanager\n    return if ok\n}\n\nSince the manifests are updated, I highly recommend going with the simplest solution (rather than re-implementing some of the complicated logic in getService).",
+      "parentUuid": "44326e77_1b86ce7a",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "revId": "594faaefa637bbfd7b3d0041cf0a206c0cdd265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcc8b956_f406a498",
         "filename": "services/sensorservice/SensorDevice.h",
         "patchSetId": 6
