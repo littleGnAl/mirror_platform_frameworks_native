@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44326e77_1b86ce7a",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-04T22:52:28Z",
+      "side": 1,
+      "message": "There will be always a race condition between getService() and reset(). The hal service can crash right before getService() returns. The wait on line 110 will timeout in 1 sec and will not wait forever.\n\nThe only right place to wait is inside getService(). This should be all fixed after resolution of b/67425500.",
+      "parentUuid": "484558ed_655e7b20",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "revId": "594faaefa637bbfd7b3d0041cf0a206c0cdd265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcc8b956_f406a498",
         "filename": "services/sensorservice/SensorDevice.h",
         "patchSetId": 6
@@ -36,6 +60,24 @@
       "writtenOn": "2017-10-04T21:58:49Z",
       "side": 1,
       "message": "missed this before, this will dump all of these into the android namespace. I recommend putting these inside of SensorDevice.",
+      "revId": "594faaefa637bbfd7b3d0041cf0a206c0cdd265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce57ea71_fdbb6068",
+        "filename": "services/sensorservice/SensorDevice.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-04T22:52:28Z",
+      "side": 1,
+      "message": "Done by moving it back to cpp file and use full name in header.",
+      "parentUuid": "dcc8b956_f406a498",
       "revId": "594faaefa637bbfd7b3d0041cf0a206c0cdd265c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "b1978873_8ed8da31",
+        "filename": "services/sensorservice/SensorDevice.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-04T22:52:28Z",
+      "side": 1,
+      "message": "Removing the troublesome poll() is also something to be done. But it will be for next interface version.\n\nAdded bug number as advised.",
+      "parentUuid": "c2ebfab1_33cb42d6",
+      "revId": "594faaefa637bbfd7b3d0041cf0a206c0cdd265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdd36e6d_830f3d28",
         "filename": "services/sensorservice/SensorDeviceUtils.cpp",
         "patchSetId": 6
@@ -70,6 +130,30 @@
       "writtenOn": "2017-10-04T21:58:49Z",
       "side": 1,
       "message": "nit: just \"default\"",
+      "range": {
+        "startLine": 32,
+        "startChar": 57,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "594faaefa637bbfd7b3d0041cf0a206c0cdd265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3540694_375ec8ba",
+        "filename": "services/sensorservice/SensorDeviceUtils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2017-10-04T22:52:28Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "cdd36e6d_830f3d28",
       "range": {
         "startLine": 32,
         "startChar": 57,
