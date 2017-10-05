@@ -40,7 +40,10 @@ cc_library {
     srcs: sourceFiles,
     cflags: [
         "-DLOG_TAG=\"libbufferhub\"",
-        "-DTRACE=0"
+        "-DTRACE=0",
+        "-DATRACE_TAG=ATRACE_TAG_GRAPHICS",
+        "-Wall",
+        "-Werror",
     ],
     export_include_dirs: localIncludeFiles,
     static_libs: staticLibraries,
@@ -54,5 +57,6 @@ cc_test {
     static_libs: ["libbufferhub"] + staticLibraries,
     shared_libs: sharedLibraries,
     name: "bufferhub_tests",
+    cflags: ["-Wall", "-Werror"],
 }
 
