@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7dd84aa_dec2dc59",
+        "filename": "cmds/atrace/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-05T21:25:01Z",
+      "side": 1,
+      "message": "there are a lot?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "b98d477cc834decba3398b91d1d48fd9dd2cea11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c268d2_fd6ff361",
+        "filename": "cmds/lshal/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-05T21:25:01Z",
+      "side": 1,
+      "message": "delete them?",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "b98d477cc834decba3398b91d1d48fd9dd2cea11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
