@@ -70,6 +70,30 @@
       "revId": "2560692961211fe25857fea729ad8d839619bb4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4826bab9_254798d2",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-10-05T07:55:35Z",
+      "side": 0,
+      "message": "+1, at least update the commit message to reflect the new behavior. Otherwise LGTM.",
+      "parentUuid": "01532401_89faa840",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 26
+      },
+      "revId": "2560692961211fe25857fea729ad8d839619bb4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
