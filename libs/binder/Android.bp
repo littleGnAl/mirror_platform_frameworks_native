@@ -50,6 +50,7 @@ cc_library {
         "IInterface.cpp",
         "IMediaResourceMonitor.cpp",
         "IMemory.cpp",
+        "IMemoryHidl.cpp",
         "IPCThreadState.cpp",
         "IPermissionController.cpp",
         "IProcessInfoService.cpp",
@@ -87,6 +88,12 @@ cc_library {
         "liblog",
         "libcutils",
         "libutils",
+        "libhidlbase",
+        "libhidltransport",
+        "libhidlmemory",
+        "libhwbinder",
+        "android.hidl.memory@1.0",
+        "android.hidl.memory.token@1.0",
     ],
 
     header_libs: [
