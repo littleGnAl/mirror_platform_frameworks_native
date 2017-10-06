@@ -2298,6 +2298,17 @@ binder::Status InstalldNativeService::deleteOdex(const std::string& apkPath,
     return res ? ok() : error();
 }
 
+binder::Status InstalldNativeService::installApkVerity(const std::string& /*filePath*/,
+        const ::android::base::unique_fd& /*verityInput*/) {
+    ENFORCE_UID(AID_SYSTEM);
+    if (!property_get_bool("ro.apk_verity.enabled", false)) {
+        return true;
+    }
+    // TODO: Append verity to filePath then issue ioctl to enable
+    // it and hide the tree.  See b/30972906.
+    return error("not implemented yet");
+}
+
 binder::Status InstalldNativeService::reconcileSecondaryDexFile(
         const std::string& dexPath, const std::string& packageName, int32_t uid,
         const std::vector<std::string>& isas, const std::unique_ptr<std::string>& volumeUuid,
