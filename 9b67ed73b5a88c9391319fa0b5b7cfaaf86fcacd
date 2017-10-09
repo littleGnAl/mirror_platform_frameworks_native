@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ca4215d_1ff2c489",
+        "filename": "services/surfaceflinger/SurfaceFlinger_hwc1.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2017-10-09T18:20:23Z",
+      "side": 1,
+      "message": "Dan, we should probably have some conditions like in the case above (clear_fb hint, not bottom layer, etc.), right? If the sideband layer is z-ordered above the FB contents, or if the hwcomposer can support holes in the fb when it knows there\u0027s no real layer above the sideband layer, then this wastes bandwidth and needlessly wakes up the gpu.",
+      "revId": "9b67ed73b5a88c9391319fa0b5b7cfaaf86fcacd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
