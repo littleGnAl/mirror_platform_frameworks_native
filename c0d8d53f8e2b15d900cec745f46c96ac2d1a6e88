@@ -22,6 +22,23 @@
       "revId": "c0d8d53f8e2b15d900cec745f46c96ac2d1a6e88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abdfe8cd_835bdd99",
+        "filename": "libs/gui/tests/Surface_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-09T20:15:08Z",
+      "side": 1,
+      "message": "this could be a timing thing. Might run the test",
+      "revId": "c0d8d53f8e2b15d900cec745f46c96ac2d1a6e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
