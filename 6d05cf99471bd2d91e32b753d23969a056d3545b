@@ -16,6 +16,24 @@
       "revId": "6d05cf99471bd2d91e32b753d23969a056d3545b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "540dcbf0_ca1fd3b2",
+        "filename": "libs/binder/MemoryDealer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1087371
+      },
+      "writtenOn": "2017-10-10T01:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb3f4e22_6070e96c",
+      "revId": "6d05cf99471bd2d91e32b753d23969a056d3545b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
