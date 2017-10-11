@@ -28,7 +28,7 @@ import platform "platform.api"
 // API version (major.minor.patch)
 define VERSION_MAJOR 1
 define VERSION_MINOR 0
-define VERSION_PATCH 61
+define VERSION_PATCH 62
 
 // API limits
 define VK_MAX_PHYSICAL_DEVICE_NAME_SIZE 256
@@ -161,6 +161,10 @@ define NULL_HANDLE 0
 // 42
 @extension("VK_AMD_texture_gather_bias_lod") define VK_AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION 1
 @extension("VK_AMD_texture_gather_bias_lod") define VK_AMD_TEXTURE_GATHER_BIAS_LOD_EXTENSION_NAME "VK_AMD_texture_gather_bias_lod"
+
+// 47
+@extension("VK_AMD_shader_image_load_store_lod") define VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION 1
+@extension("VK_AMD_shader_image_load_store_lod") define VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_EXTENSION_NAME "VK_AMD_shader_image_load_store_lod"
 
 // 54
 @extension("VK_KHX_multiview") define VK_KHX_MULTIVIEW_SPEC_VERSION 1
@@ -5030,7 +5034,7 @@ class VkRenderPassSampleLocationsBeginInfoEXT {
     u32                                             attachmentInitialSampleLocationsCount
     const VkAttachmentSampleLocationsEXT*           pAttachmentInitialSampleLocations
     u32                                             postSubpassSampleLocationsCount
-    const VkSubpassSampleLocationsEXT*              pSubpassSampleLocations
+    const VkSubpassSampleLocationsEXT*              pPostSubpassSampleLocations
 }
 
 @extension("VK_EXT_sample_locations") // 144
