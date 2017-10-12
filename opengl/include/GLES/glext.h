@@ -34,6 +34,8 @@ extern "C" {
 **   https://github.com/KhronosGroup/OpenGL-Registry
 */
 
+#include <GLES/gl.h>
+
 #ifndef GL_APIENTRYP
 #define GL_APIENTRYP GL_APIENTRY*
 #endif
