@@ -22,6 +22,30 @@
       "revId": "a0de06fde5956d6fe341d3535ab41b3ed6b70b00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66020325_ed288781",
+        "filename": "libs/gui/Surface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-13T23:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce7a42a_11f080ff",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "a0de06fde5956d6fe341d3535ab41b3ed6b70b00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
