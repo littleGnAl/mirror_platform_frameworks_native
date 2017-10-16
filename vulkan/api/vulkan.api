@@ -28,7 +28,7 @@ import platform "platform.api"
 // API version (major.minor.patch)
 define VERSION_MAJOR 1
 define VERSION_MINOR 0
-define VERSION_PATCH 62
+define VERSION_PATCH 63
 
 // API limits
 define VK_MAX_PHYSICAL_DEVICE_NAME_SIZE 256
@@ -453,6 +453,10 @@ define NULL_HANDLE 0
 // 165
 @extension("VK_EXT_shader_viewport_index_layer") define VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION 1
 @extension("VK_EXT_shader_viewport_index_layer") define VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_EXTENSION_NAME "VK_EXT_shader_viewport_index_layer"
+
+// 175
+@extension("VK_EXT_global_priority") define VK_EXT_GLOBAL_PRIORITY_SPEC_VERSION 1
+@extension("VK_EXT_global_priority") define VK_EXT_GLOBAL_PRIORITY_EXTENSION_NAME "VK_EXT_global_priority"
 
 /////////////
 //  Types  //
@@ -1458,6 +1462,9 @@ enum VkResult {
 
     //@extension("VK_KHR_external_memory") // 73
     VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR                    = 0xC4641CBD, // -1000072003
+
+    // @extension("VK_EXT_global_priority") // 175
+    VK_ERROR_NOT_PERMITTED_EXT                              = 0xC4628E4F, // -1000174001
 }
 
 enum VkDynamicState {
@@ -1534,6 +1541,9 @@ enum VkObjectType {
 
     //@extension("VK_EXT_validation_cache") // 161
     VK_OBJECT_TYPE_VALIDATION_CACHE_EXT                     = 1000160000,
+
+    //@extension("VK_EXT_global_priority") // 175
+    VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT = 1000174000,
 }
 
 @extension("VK_KHR_surface") // 1
@@ -1747,6 +1757,14 @@ enum VkChromaLocationKHR {
 @extension("VK_EXT_validation_cache") // 161
 enum VkValidationCacheHeaderVersionEXT {
     VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT              = 1,
+}
+
+@extension("VK_EXT_global_priority") // 175
+enum VkQueueGlobalPriorityEXT {
+    VK_QUEUE_GLOBAL_PRIORITY_LOW                            = 128,
+    VK_QUEUE_GLOBAL_PRIORITY_MEDIUM                         = 256,
+    VK_QUEUE_GLOBAL_PRIORITY_HIGH                           = 512,
+    VK_QUEUE_GLOBAL_PRIORITY_REALTIME                       = 1024,
 }
 
 /////////////////
@@ -5236,6 +5254,14 @@ class VkShaderModuleValidationCacheCreateInfoEXT {
     const void*                                     pNext
     VkValidationCacheEXT                            validationCache
 }
+
+@extension("VK_EXT_global_priority") // 175
+class VkDeviceQueueGlobalPriorityCreateInfoEXT {
+    VkStructureType             sType
+    const void*                 pNext
+    VkQueueGlobalPriorityEXT    globalPriority
+}
+
 
 ////////////////
 //  Commands  //
