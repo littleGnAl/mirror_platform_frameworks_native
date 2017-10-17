@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7049603_ff2d3182",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-17T15:48:18Z",
+      "side": 1,
+      "message": "scope of all minus tr should start after line 1058\u0027s break;",
+      "range": {
+        "startLine": 1047,
+        "startChar": 0,
+        "endLine": 1053,
+        "endChar": 27
+      },
+      "revId": "29a057d28dc2b1fadd1ee153148dce58210a36f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
