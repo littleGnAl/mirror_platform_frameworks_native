@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "47343ac4_29c0994b",
+        "filename": "services/surfaceflinger/SurfaceFlinger_hwc1.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-10-17T20:27:21Z",
+      "side": 1,
+      "message": "Does this only affect the HWC1 path? If not, then a similar change should be made to SurfaceFlinger.cpp.",
+      "revId": "9b67ed73b5a88c9391319fa0b5b7cfaaf86fcacd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ca4215d_1ff2c489",
         "filename": "services/surfaceflinger/SurfaceFlinger_hwc1.cpp",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2017-10-09T18:20:23Z",
       "side": 1,
       "message": "Dan, we should probably have some conditions like in the case above (clear_fb hint, not bottom layer, etc.), right? If the sideband layer is z-ordered above the FB contents, or if the hwcomposer can support holes in the fb when it knows there\u0027s no real layer above the sideband layer, then this wastes bandwidth and needlessly wakes up the gpu.",
+      "revId": "9b67ed73b5a88c9391319fa0b5b7cfaaf86fcacd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61db6f73_38c82247",
+        "filename": "services/surfaceflinger/SurfaceFlinger_hwc1.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-10-17T20:27:21Z",
+      "side": 1,
+      "message": "Agreed. It would be helpful to get some more context on the particular repro case (including information like a \u0027dumpsys SurfaceFlinger\u0027) to see what exactly is going wrong here.",
+      "parentUuid": "8ca4215d_1ff2c489",
       "revId": "9b67ed73b5a88c9391319fa0b5b7cfaaf86fcacd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
