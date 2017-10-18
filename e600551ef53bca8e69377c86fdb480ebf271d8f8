@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49315417_b0f4e268",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T14:58:17Z",
+      "side": 1,
+      "message": "As nit\u0027d before, scope and Android Coding standard of definition before use. Initialization and instantiation should be delayed until after the break statement on 1047.",
+      "range": {
+        "startLine": 1037,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 25
+      },
+      "revId": "e600551ef53bca8e69377c86fdb480ebf271d8f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de866ec6_9160c235",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T14:58:17Z",
+      "side": 1,
+      "message": "lets delete this line (or consider merging content into IF_LOG_TRANSACTION() block, but that is out of scope for this CL).",
+      "range": {
+        "startLine": 1061,
+        "startChar": 0,
+        "endLine": 1061,
+        "endChar": 87
+      },
+      "revId": "e600551ef53bca8e69377c86fdb480ebf271d8f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1762dfcb_a8be2761",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T14:58:17Z",
+      "side": 1,
+      "message": "lets delete this as well.",
+      "range": {
+        "startLine": 1091,
+        "startChar": 0,
+        "endLine": 1092,
+        "endChar": 54
+      },
+      "revId": "e600551ef53bca8e69377c86fdb480ebf271d8f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "308faf0d_bd637601",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T14:58:17Z",
+      "side": 1,
+      "message": "This causes a subtle change in behavior that I am not comfortable with.\n\nIf data.errCheck() returns the codified error, Status code is landed and signaled in tr.flags and sent back with a BC_REPLY. If this is NULL, nothing is sent back.\n\nA case scope status_t statusBuffer should be retained and pointer passed, unless of course someone that understands the implication of this change in packet transactions can give us more insight...",
+      "range": {
+        "startLine": 1096,
+        "startChar": 67,
+        "endLine": 1096,
+        "endChar": 72
+      },
+      "revId": "e600551ef53bca8e69377c86fdb480ebf271d8f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
