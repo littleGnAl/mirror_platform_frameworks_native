@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2495351d_3d2404ad",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-19T16:04:06Z",
+      "side": 1,
+      "message": "git history will hold on to this if future debugging is necessary. Android coding standard does not allow commented out code to remain as clutter.",
+      "parentUuid": "1e2c5d8c_1742e1b3",
+      "range": {
+        "startLine": 1061,
+        "startChar": 0,
+        "endLine": 1061,
+        "endChar": 87
+      },
+      "revId": "e600551ef53bca8e69377c86fdb480ebf271d8f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1762dfcb_a8be2761",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 5
