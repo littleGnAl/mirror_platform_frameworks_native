@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ca36f13_d89da996",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-10-19T11:45:29Z",
+      "side": 1,
+      "message": "the current implementation can\u0027t return anything else than NO_ERROR (if you pass in statusBuffer), but I would still prefer for the return value here to be checked. I guess you can just store the result of this call in \u0027result\u0027, and then \u0027break\u0027 if result !\u003d NO_ERROR?",
+      "range": {
+        "startLine": 1098,
+        "startChar": 20,
+        "endLine": 1098,
+        "endChar": 40
+      },
+      "revId": "19a11e482bc55c519cbb67ac1e3609f75e88ed48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
