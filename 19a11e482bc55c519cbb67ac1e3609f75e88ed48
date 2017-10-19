@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5abe4f4a_aa61f48c",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-19T16:10:25Z",
+      "side": 1,
+      "message": "these are still being initialized before the error break, scope issue remains.",
+      "range": {
+        "startLine": 1037,
+        "startChar": 0,
+        "endLine": 1040,
+        "endChar": 75
+      },
+      "revId": "19a11e482bc55c519cbb67ac1e3609f75e88ed48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ca36f13_d89da996",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 6
