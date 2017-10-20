@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fb1e2704_4a36d1c8",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2017-10-20T03:18:31Z",
+      "side": 1,
+      "message": "Thanks for your patience.\nWill fix. Thanks.",
+      "parentUuid": "5abe4f4a_aa61f48c",
+      "range": {
+        "startLine": 1037,
+        "startChar": 0,
+        "endLine": 1040,
+        "endChar": 75
+      },
+      "revId": "19a11e482bc55c519cbb67ac1e3609f75e88ed48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ca36f13_d89da996",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 6
