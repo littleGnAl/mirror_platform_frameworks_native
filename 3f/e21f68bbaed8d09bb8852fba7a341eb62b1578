@@ -1,0 +1,12 @@
+Verified+1: Jesse Hall <jessehall@google.com>
+Verified+1: Ian Elliott <ianelliott@google.com>
+Code-Review+2: Jesse Hall <jessehall@google.com>
+Code-Review+2: Ian Elliott <ianelliott@google.com>
+Autosubmit+1: Jesse Hall <jessehall@google.com>
+Autosubmit+1: Ian Elliott <ianelliott@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 20 Oct 2017 19:55:56 +0000
+Reviewed-on: https://android-review.googlesource.com/517182
+Project: platform/frameworks/native
+Branch: refs/heads/master
