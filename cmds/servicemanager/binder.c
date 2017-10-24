@@ -186,14 +186,12 @@ void binder_send_reply(struct binder_state *bs,
                        int status)
 {
     struct {
-        uint32_t cmd_free;
-        binder_uintptr_t buffer;
         uint32_t cmd_reply;
         struct binder_transaction_data txn;
+        uint32_t cmd_free;
+        binder_uintptr_t buffer;
     } __attribute__((packed)) data;
 
-    data.cmd_free = BC_FREE_BUFFER;
-    data.buffer = buffer_to_free;
     data.cmd_reply = BC_REPLY;
     data.txn.target.ptr = 0;
     data.txn.cookie = 0;
@@ -211,6 +209,9 @@ void binder_send_reply(struct binder_state *bs,
         data.txn.data.ptr.buffer = (uintptr_t)reply->data0;
         data.txn.data.ptr.offsets = (uintptr_t)reply->offs0;
     }
+    data.cmd_free = BC_FREE_BUFFER;
+    data.buffer = buffer_to_free;
+
     binder_write(bs, &data, sizeof(data));
 }
 
