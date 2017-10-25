@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62c1b60c_ef71d8bd",
+        "filename": "opengl/include/GLES2/gl2ext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2017-10-25T14:04:33Z",
+      "side": 1,
+      "message": "gl2.h already includes gl2platform.h",
+      "revId": "68bb3a5c9a50ef13d115cc10ce35a3b905017f2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
