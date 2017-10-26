@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40f6be2c_929901ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-10-26T16:44:51Z",
+      "side": 1,
+      "message": "Sorry for being pedantic, but that bug doesn\u0027t really say what it\u0027s about - could you please change it\u0027s title and add a comment explaining?\n\nAlso, change this line to:\n\nFixes: 62214821",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "d4bd84f8541889cf205b9811eb63a6bac43c0467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65fea385_01d15e2b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-10-26T16:44:51Z",
+      "side": 1,
+      "message": "Please move it before the \"bug report format\" line, since this log is more related to the kernel then bugreport infra.",
+      "range": {
+        "startLine": 686,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 42
+      },
+      "revId": "d4bd84f8541889cf205b9811eb63a6bac43c0467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1301e355_5a6aebcd",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-10-26T16:44:51Z",
+      "side": 1,
+      "message": "Please add a reminder such as:\n\n// TODO: remove duplicated uptime call when tools use it from header",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 46
+      },
+      "revId": "d4bd84f8541889cf205b9811eb63a6bac43c0467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
