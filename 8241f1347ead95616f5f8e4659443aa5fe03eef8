@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d9573fe_44e309ed",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-10-27T09:28:49Z",
+      "side": 1,
+      "message": "Super nit: I\u0027d prefer to see this after line 1045 to have all definitions in the same place, reads easier.",
+      "range": {
+        "startLine": 1052,
+        "startChar": 16,
+        "endLine": 1055,
+        "endChar": 87
+      },
+      "revId": "8241f1347ead95616f5f8e4659443aa5fe03eef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d84bf958_00371673",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-10-27T09:28:49Z",
+      "side": 1,
+      "message": "see my comment from PS6.",
+      "range": {
+        "startLine": 1099,
+        "startChar": 20,
+        "endLine": 1099,
+        "endChar": 40
+      },
+      "revId": "8241f1347ead95616f5f8e4659443aa5fe03eef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
