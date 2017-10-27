@@ -930,9 +930,11 @@ static void AddAnrTraceDir(const bool add_to_zip, const std::string& anr_traces_
                  "VM TRACES AT LAST ANR", add_to_zip);
 
         if (anr_data->size() > 1) {
-            // NOTE: Historical ANRs are always added as separate entries in the
-            // bugreport zip file.
-            AddDumps(anr_data->begin() + 1, anr_data->end(),
+            // The "last" ANR will always be included as separate entry in the zip file. In addition,
+            // it will be present in the body of the main entry if |add_to_zip| == false.
+            //
+            // Historical ANRs are always included as separate entries in the bugreport zip file.
+            AddDumps(anr_data->begin() + ((add_to_zip) ? 1 : 0), anr_data->end(),
                      "HISTORICAL ANR", true /* add_to_zip */);
         }
     } else {
