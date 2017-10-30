@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70b94d66_c604e3e2",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2017-10-30T02:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d9573fe_44e309ed",
+      "range": {
+        "startLine": 1052,
+        "startChar": 16,
+        "endLine": 1055,
+        "endChar": 87
+      },
+      "revId": "8241f1347ead95616f5f8e4659443aa5fe03eef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d84bf958_00371673",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-27T09:28:49Z",
       "side": 1,
       "message": "see my comment from PS6.",
+      "range": {
+        "startLine": 1099,
+        "startChar": 20,
+        "endLine": 1099,
+        "endChar": 40
+      },
+      "revId": "8241f1347ead95616f5f8e4659443aa5fe03eef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b56d5975_980e0401",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2017-10-30T02:23:36Z",
+      "side": 1,
+      "message": "Sorry for forgetting change this line.\n\nI modified and tested the code in my local project(android N). And then port them to latest master branch manually.:)",
+      "parentUuid": "d84bf958_00371673",
       "range": {
         "startLine": 1099,
         "startChar": 20,
