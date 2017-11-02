@@ -22,6 +22,30 @@
       "revId": "13a77ae241bf9d0a97285b7260d5a321c34e8b48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18d719a3_5c200848",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2017-11-02T01:30:35Z",
+      "side": 1,
+      "message": "Thanks for your review.\n\nMy thought here is to keep the code logic the same as the original.\nThe original code does not check the return value of sendReply(),\nso the BC_REPLY at line 1115 will always be logged.\n\nAs I am not familiar with binder logging mechanism. I will take\nyour advice.\n\nThanks.",
+      "parentUuid": "88fe487e_41bb3ca2",
+      "range": {
+        "startLine": 1099,
+        "startChar": 20,
+        "endLine": 1099,
+        "endChar": 26
+      },
+      "revId": "13a77ae241bf9d0a97285b7260d5a321c34e8b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
