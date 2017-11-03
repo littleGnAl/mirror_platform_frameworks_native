@@ -53,6 +53,11 @@ using android::base::unique_fd;
 namespace android {
 namespace installd {
 
+// Should minidebug info be included in compiled artifacts? Even if this value is
+// "true," usage might still be conditional to other constraints, e.g., background
+// compilation.
+static constexpr bool kEnableMinidebugInfo = true;
+
 // Deleter using free() for use with std::unique_ptr<>. See also UniqueCPtr<> below.
 struct FreeDelete {
   // NOTE: Deleting a const object is valid but free() takes a non-const pointer.
@@ -286,6 +291,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vd
         dex2oat_bin = kDex2oatDebugPath;
     }
 
+    bool generate_minidebug_info = kEnableMinidebugInfo && background_job_compile;
+
     static const char* RUNTIME_ARG = "--runtime-arg";
 
     static const int MAX_INT_LEN = 12;      // '-'+10dig+'\0' -OR- 0x+8dig
@@ -413,7 +420,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vd
                      + (profile_fd == -1 ? 0 : 1)
                      + (class_loader_context != nullptr ? 1 : 0)
                      + (has_base_dir ? 1 : 0)
-                     + (have_dex2oat_large_app_threshold ? 1 : 0)];
+                     + (have_dex2oat_large_app_threshold ? 1 : 0)
+                     + (generate_minidebug_info ? 1 : 0)];
     int i = 0;
     argv[i++] = dex2oat_bin;
     argv[i++] = zip_fd_arg;
@@ -476,6 +484,9 @@ static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vd
     }
     if (class_loader_context != nullptr) {
         argv[i++] = class_loader_context_arg;
+    }
+    if (generate_minidebug_info) {
+        argv[i++] = "--generate-mini-debug-info";
     }
 
     // Do not add after dex2oat_flags, they should override others for debugging.
