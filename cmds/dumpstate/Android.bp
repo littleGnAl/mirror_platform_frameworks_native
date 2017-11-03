@@ -24,9 +24,21 @@ cc_defaults {
     ],
 }
 
-cc_library_headers {
-    name: "dumpstate_headers",
+cc_library_shared {
+    name: "libdumpstateutil",
+    defaults: ["dumpstate_defaults"],
     vendor_available: true,
+    vndk: {
+        enabled: true,
+    },
+    srcs: [
+        "DumpstateInternal.cpp",
+        "DumpstateUtil.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "liblog",
+    ],
     export_include_dirs: ["."],
     header_libs: [
         "libbase_headers",
@@ -35,25 +47,6 @@ cc_library_headers {
     export_header_lib_headers: [
         "libbase_headers",
         "libutils_headers",
-    ],
-}
-
-cc_library_shared {
-    name: "libdumpstateutil",
-    defaults: ["dumpstate_defaults"],
-    vendor_available: true,
-    vndk: {
-        enabled: true,
-    },
-    header_libs: ["dumpstate_headers"],
-    export_header_lib_headers: ["dumpstate_headers"],
-    srcs: [
-        "DumpstateInternal.cpp",
-        "DumpstateUtil.cpp",
-    ],
-    shared_libs: [
-        "libbase",
-        "liblog",
     ],
 }
 
@@ -78,7 +71,6 @@ cc_library_shared {
 cc_binary {
     name: "dumpstate",
     defaults: ["dumpstate_defaults"],
-    header_libs: ["dumpstate_headers"],
     shared_libs: [
         "android.hardware.dumpstate@1.0",
         "libziparchive",
@@ -106,7 +98,6 @@ cc_binary {
 cc_test {
     name: "dumpstate_test",
     defaults: ["dumpstate_defaults"],
-    header_libs: ["dumpstate_headers"],
     shared_libs: [
         "libziparchive",
         "libbase",
