@@ -46,6 +46,30 @@
       "revId": "26a80d0d090b8f02d4103ab60384e20efcc357fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d543490c_f753caf2",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-11-03T15:22:36Z",
+      "side": 1,
+      "message": "I guess it was used prior to O, where the device-specific code was statically linked (while now it\u0027s based on HIDL).",
+      "parentUuid": "c2b1d0de_8d5531ff",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "26a80d0d090b8f02d4103ab60384e20efcc357fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
