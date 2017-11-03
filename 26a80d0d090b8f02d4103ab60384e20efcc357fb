@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a739e916_e42f828c",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-03T00:30:07Z",
+      "side": 1,
+      "message": "Nothing outside this module actually uses this -- why isn\u0027t this handled by the libraries themselves? (maybe even in the cc_defaults?)",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "26a80d0d090b8f02d4103ab60384e20efcc357fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
