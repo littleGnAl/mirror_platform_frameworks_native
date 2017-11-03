@@ -22,6 +22,30 @@
       "revId": "26a80d0d090b8f02d4103ab60384e20efcc357fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2b1d0de_8d5531ff",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-03T05:33:44Z",
+      "side": 1,
+      "message": "I did that for no good reason. I will amend this in a follow-up CL.",
+      "parentUuid": "a739e916_e42f828c",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "26a80d0d090b8f02d4103ab60384e20efcc357fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
