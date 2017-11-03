@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "594164cb_7d122348",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2017-11-03T15:24:42Z",
+      "side": 1,
+      "message": "Could you please make sure the tests are still built and run?\n\nTypically I do this:\n\nTest: mmm -j32 frameworks/native/cmds/dumpstate/ \u0026\u0026 adb sync \u0026\u0026 \\\n      adb shell /data/nativetest/dumpstate_test/dumpstate_test \u0026\u0026 \\\n      adb shell /data/nativetest64/dumpstate_test/dumpstate_test \u0026\u0026 \\\n      printf \"\\n\\n#### ALL TESTS PASSED ####\\n\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 61
+      },
+      "revId": "26a80d0d090b8f02d4103ab60384e20efcc357fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a739e916_e42f828c",
         "filename": "cmds/dumpstate/Android.bp",
         "patchSetId": 3
