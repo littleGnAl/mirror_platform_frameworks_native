@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "612db87b_b7f7d612",
+        "filename": "services/vr/performanced/directory_reader.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-11-06T22:42:48Z",
+      "side": 1,
+      "message": "Yes, this is the semantics of fdopendir(). If it succeeds, the input fd is now owned by the system.",
+      "range": {
+        "startLine": 22,
+        "startChar": 60,
+        "endLine": 22,
+        "endChar": 61
+      },
+      "revId": "e27d5eb7339ac12222e60002ca2697d95b23f1c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
