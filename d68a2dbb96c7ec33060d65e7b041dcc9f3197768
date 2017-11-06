@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff1ff2d6_05320704",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-06T01:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "715a2868_2442189a",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "d68a2dbb96c7ec33060d65e7b041dcc9f3197768",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9023886_e8e8e607",
         "filename": "cmds/dumpstate/Android.bp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-03T20:47:26Z",
       "side": 1,
       "message": "Is this actually needed for libdumpstateutil, or only for dumpstate/dumpstate_test which already includes the real version?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "d68a2dbb96c7ec33060d65e7b041dcc9f3197768",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a3bb48_11563de4",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-06T01:07:58Z",
+      "side": 1,
+      "message": "It\u0027s the latter. Removed.",
+      "parentUuid": "f9023886_e8e8e607",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "d68a2dbb96c7ec33060d65e7b041dcc9f3197768",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f48f9169_f48320f7",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-06T01:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01a4af25_f8df618b",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "d68a2dbb96c7ec33060d65e7b041dcc9f3197768",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
