@@ -22,6 +22,30 @@
       "revId": "e27d5eb7339ac12222e60002ca2697d95b23f1c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3e83dbe_f12df49a",
+        "filename": "services/vr/performanced/directory_reader.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-07T00:13:13Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "612db87b_b7f7d612",
+      "range": {
+        "startLine": 22,
+        "startChar": 60,
+        "endLine": 22,
+        "endChar": 61
+      },
+      "revId": "e27d5eb7339ac12222e60002ca2697d95b23f1c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
