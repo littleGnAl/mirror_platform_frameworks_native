@@ -164,38 +164,6 @@ bool clear_primary_current_profile(const std::string& pkgname, userid_t user) {
     return clear_current_profile(pkgname, user, /*is_secondary_dex*/false);
 }
 
-static int split_count(const char *str)
-{
-  char *ctx;
-  int count = 0;
-  char buf[kPropertyValueMax];
-
-  strlcpy(buf, str, sizeof(buf));
-  char *pBuf = buf;
-
-  while(strtok_r(pBuf, " ", &ctx) != NULL) {
-    count++;
-    pBuf = NULL;
-  }
-
-  return count;
-}
-
-static int split(char *buf, const char **argv)
-{
-  char *ctx;
-  int count = 0;
-  char *tok;
-  char *pBuf = buf;
-
-  while((tok = strtok_r(pBuf, " ", &ctx)) != NULL) {
-    argv[count++] = tok;
-    pBuf = NULL;
-  }
-
-  return count;
-}
-
 static const char* get_location_from_path(const char* path) {
     static constexpr char kLocationSeparator = '/';
     const char *location = strrchr(path, kLocationSeparator);
@@ -207,296 +175,317 @@ static const char* get_location_from_path(const char* path) {
     }
 }
 
+class Dex2oatOptions {
+  public:
+    class Processor {
+      private:
+        enum Mode {
+            kNone,
+            kCopyProperty,
+            kBoolProperty,
+            kLiteral,
+        };
+
+      public:
+        ~Processor() {
+            Run();
+        }
+
+        Processor& CopyFrom(const char* prop) {
+            CHECK_EQ(Mode::kNone, mode_);
+            CHECK(prop != nullptr);
+            mode_ = Mode::kCopyProperty;
+            prop_name_ = prop;
+            return *this;
+        }
+        Processor& Bool(const char* prop) {
+            CHECK_EQ(Mode::kNone, mode_);
+            CHECK(prop != nullptr);
+            mode_ = Mode::kBoolProperty;
+            prop_name_ = prop;
+            return *this;
+        }
+        Processor& Literal(const char* literal) {
+            CHECK_EQ(Mode::kNone, mode_);
+            CHECK(literal != nullptr);
+            mode_ = Mode::kLiteral;
+            literal_ = literal;
+            return *this;
+        }
+        Processor& Default(const char* def_prop_value) {
+            CHECK_EQ(Mode::kCopyProperty, mode_);
+            default_property_str_value_ = def_prop_value;
+            return *this;
+        }
+        Processor& Default(bool def_prop_value) {
+            CHECK_EQ(Mode::kBoolProperty, mode_);
+            default_property_bool_value_ = def_prop_value;
+            return *this;
+        }
+        Processor& OnTrue(const char* true_val) {
+            CHECK_EQ(Mode::kBoolProperty, mode_);
+            bool_true_val_ = true_val;
+            return *this;
+        }
+        Processor& OnFalse(const char* false_val) {
+            CHECK_EQ(Mode::kBoolProperty, mode_);
+            bool_false_val_ = false_val;
+            return *this;
+        }
+        Processor& Prefix(const char* prefix) {
+            arg_prefix_ = prefix;
+            return *this;
+        }
+        Processor& RuntimeArg() {
+            runtime_arg_prefix_ = true;
+            return *this;
+        }
+
+      private:
+        Processor(Dex2oatOptions* parent)
+            : dex2oat_options_(parent),
+              mode_(Mode::kNone),
+              runtime_arg_prefix_(false),
+              default_property_bool_value_(false),
+              prop_name_(nullptr),
+              default_property_str_value_(nullptr),
+              arg_prefix_(nullptr),
+              bool_true_val_(nullptr),
+              bool_false_val_(nullptr),
+              literal_("") {
+        }
+
+        void Run() {
+            switch (mode_) {
+                case Mode::kNone:
+                    LOG(FATAL) << "Should not reach here.";
+                case Mode::kCopyProperty:
+                    RunCopyProp();
+                    return;
+                case Mode::kBoolProperty:
+                    RunBoolProp();
+                    return;
+                case Mode::kLiteral:
+                    RunLiteral();
+                    return;
+            }
+            LOG(FATAL) << "Should not reach here.";
+        }
+
+        void RunBoolProp() {
+            bool prop_value = android::base::GetBoolProperty(prop_name_,
+                                                             default_property_bool_value_);
+            if (prop_value) {
+                if (bool_true_val_ != nullptr) {
+                    AddArg(bool_true_val_);
+                }
+            } else {
+                if (bool_false_val_ != nullptr) {
+                    AddArg(bool_false_val_);
+                }
+            }
+        }
+        void RunCopyProp() {
+            std::string prop_value = android::base::GetProperty(prop_name_,
+                    default_property_str_value_ == nullptr ? "" : default_property_str_value_);
+            if (!prop_value.empty()) {
+                AddArg(prop_value.c_str());
+            }
+        }
+        void RunLiteral() {
+            AddArg(literal_.c_str());
+        }
+        void AddArg(const char* arg) {
+            if (runtime_arg_prefix_) {
+                dex2oat_options_->AddArgument("--runtime-arg");
+            }
+            if (arg_prefix_ != nullptr) {
+                dex2oat_options_->AddArgument(std::string(arg_prefix_).append(arg));
+            } else {
+                dex2oat_options_->AddArgument(arg);
+            }
+        }
+
+        Dex2oatOptions* dex2oat_options_;
+        Mode mode_;
+        bool runtime_arg_prefix_;
+        bool default_property_bool_value_;
+        const char* prop_name_;
+        const char* default_property_str_value_;
+        const char* arg_prefix_;
+        const char* bool_true_val_;
+        const char* bool_false_val_;
+        std::string literal_;
+
+        friend class Dex2oatOptions;
+    };
+
+    Processor Process() {
+        return Processor(this);
+    }
+
+    void AddArgument(const char* arg) {
+        arguments_.emplace_back(arg);
+    }
+    void AddArgument(const std::string& arg) {
+        arguments_.push_back(arg);
+    }
+
+    size_t Size() {
+        return arguments_.size();
+    }
+    std::vector<std::string>::iterator begin() {
+        return arguments_.begin();
+    }
+    std::vector<std::string>::iterator end() {
+        return arguments_.end();
+    }
+
+  private:
+    std::vector<std::string> arguments_;
+};
+
 static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vdex_fd, int image_fd,
         const char* input_file_name, const char* output_file_name, int swap_fd,
         const char* instruction_set, const char* compiler_filter,
         bool debuggable, bool post_bootcomplete, bool background_job_compile, int profile_fd,
         const char* class_loader_context) {
-    static const unsigned int MAX_INSTRUCTION_SET_LEN = 7;
-
-    if (strlen(instruction_set) >= MAX_INSTRUCTION_SET_LEN) {
-        ALOGE("Instruction set %s longer than max length of %d",
-              instruction_set, MAX_INSTRUCTION_SET_LEN);
-        return;
-    }
-
     // Get the relative path to the input file.
     const char* relative_input_file_name = get_location_from_path(input_file_name);
 
-    char dex2oat_Xms_flag[kPropertyValueMax];
-    bool have_dex2oat_Xms_flag = get_property("dalvik.vm.dex2oat-Xms", dex2oat_Xms_flag, NULL) > 0;
+    Dex2oatOptions dex2oat_options;
 
-    char dex2oat_Xmx_flag[kPropertyValueMax];
-    bool have_dex2oat_Xmx_flag = get_property("dalvik.vm.dex2oat-Xmx", dex2oat_Xmx_flag, NULL) > 0;
+    dex2oat_options.Process().Literal(StringPrintf("--zip-fd=%d", zip_fd).c_str());
+    dex2oat_options.Process().Literal(
+            StringPrintf("--zip-location=%s", relative_input_file_name).c_str());
+    dex2oat_options.Process().Literal(StringPrintf("--input-vdex-fd=%d", input_vdex_fd).c_str());
+    dex2oat_options.Process().Literal(StringPrintf("--output-vdex-fd=%d", output_vdex_fd).c_str());
+    dex2oat_options.Process().Literal(StringPrintf("--oat-fd=%d", oat_fd).c_str());
+    dex2oat_options.Process().Literal(StringPrintf("--oat-location=%s", output_file_name).c_str());
+    dex2oat_options.Process().Literal(
+            StringPrintf("--instruction-set=%s", instruction_set).c_str());
 
-    char dex2oat_threads_buf[kPropertyValueMax];
-    bool have_dex2oat_threads_flag = get_property(post_bootcomplete
-                                                      ? "dalvik.vm.dex2oat-threads"
-                                                      : "dalvik.vm.boot-dex2oat-threads",
-                                                  dex2oat_threads_buf,
-                                                  NULL) > 0;
-    char dex2oat_threads_arg[kPropertyValueMax + 2];
-    if (have_dex2oat_threads_flag) {
-        sprintf(dex2oat_threads_arg, "-j%s", dex2oat_threads_buf);
+    dex2oat_options.Process().RuntimeArg().CopyFrom("dalvik.vm.dex2oat-Xms").Prefix("-Xms");
+    dex2oat_options.Process().RuntimeArg().CopyFrom("dalvik.vm.dex2oat-Xmx").Prefix("-Xmx");
+
+    if (post_bootcomplete) {
+        dex2oat_options.Process().CopyFrom("dalvik.vm.dex2oat-threads").Prefix("-j");
+    } else {
+        dex2oat_options.Process().CopyFrom("dalvik.vm.boot-dex2oat-threads").Prefix("-j");
     }
 
-    char dex2oat_isa_features_key[kPropertyKeyMax];
-    sprintf(dex2oat_isa_features_key, "dalvik.vm.isa.%s.features", instruction_set);
-    char dex2oat_isa_features[kPropertyValueMax];
-    bool have_dex2oat_isa_features = get_property(dex2oat_isa_features_key,
-                                                  dex2oat_isa_features, NULL) > 0;
+    dex2oat_options.Process().
+            CopyFrom(StringPrintf("dalvik.vm.isa.%s.variant", instruction_set).c_str()).
+            Prefix("--instruction-set-variant=");
+    dex2oat_options.Process().
+            CopyFrom(StringPrintf("dalvik.vm.isa.%s.features", instruction_set).c_str()).
+            Prefix("--instruction-set-features=");
 
-    char dex2oat_isa_variant_key[kPropertyKeyMax];
-    sprintf(dex2oat_isa_variant_key, "dalvik.vm.isa.%s.variant", instruction_set);
-    char dex2oat_isa_variant[kPropertyValueMax];
-    bool have_dex2oat_isa_variant = get_property(dex2oat_isa_variant_key,
-                                                 dex2oat_isa_variant, NULL) > 0;
-
-    const char *dex2oat_norelocation = "-Xnorelocate";
-    bool have_dex2oat_relocation_skip_flag = false;
-
-    char dex2oat_flags[kPropertyValueMax];
-    int dex2oat_flags_count = get_property("dalvik.vm.dex2oat-flags",
-                                 dex2oat_flags, NULL) <= 0 ? 0 : split_count(dex2oat_flags);
-    ALOGV("dalvik.vm.dex2oat-flags=%s\n", dex2oat_flags);
-
-    // If we are booting without the real /data, don't spend time compiling.
-    char vold_decrypt[kPropertyValueMax];
-    bool have_vold_decrypt = get_property("vold.decrypt", vold_decrypt, "") > 0;
-    bool skip_compilation = (have_vold_decrypt &&
-                             (strcmp(vold_decrypt, "trigger_restart_min_framework") == 0 ||
-                             (strcmp(vold_decrypt, "1") == 0)));
-
-    bool generate_debug_info = property_get_bool("debug.generate-debug-info", false);
-
-    char app_image_format[kPropertyValueMax];
-    char image_format_arg[strlen("--image-format=") + kPropertyValueMax];
-    bool have_app_image_format =
-            image_fd >= 0 && get_property("dalvik.vm.appimageformat", app_image_format, NULL) > 0;
-    if (have_app_image_format) {
-        sprintf(image_format_arg, "--image-format=%s", app_image_format);
+    dex2oat_options.Process().Bool("debug.generate-debug-info").OnTrue("--generate-debug-info");
+    if (kEnableMinidebugInfo) {
+        dex2oat_options.Process().
+                Bool(kMinidebugInfoSystemProperty).
+                Default(kMinidebugInfoSystemPropertyDefault).
+                OnTrue(kMinidebugDex2oatFlag);
     }
 
-    char dex2oat_large_app_threshold[kPropertyValueMax];
-    bool have_dex2oat_large_app_threshold =
-            get_property("dalvik.vm.dex2oat-very-large", dex2oat_large_app_threshold, NULL) > 0;
-    char dex2oat_large_app_threshold_arg[strlen("--very-large-app-threshold=") + kPropertyValueMax];
-    if (have_dex2oat_large_app_threshold) {
-        sprintf(dex2oat_large_app_threshold_arg,
-                "--very-large-app-threshold=%s",
-                dex2oat_large_app_threshold);
+    if (image_fd >= 0) {
+        dex2oat_options.Process().
+                CopyFrom("dalvik.vm.appimageformat").
+                Prefix("--image-format=");
     }
+
+    dex2oat_options.Process().
+            CopyFrom("dalvik.vm.dex2oat-very-large").
+            Prefix("--very-large-app-threshold=");
 
     // If the runtime was requested to use libartd.so, we'll run dex2oatd, otherwise dex2oat.
     const char* dex2oat_bin = "/system/bin/dex2oat";
-    static const char* kDex2oatDebugPath = "/system/bin/dex2oatd";
+    constexpr const char* kDex2oatDebugPath = "/system/bin/dex2oatd";
     if (is_debug_runtime() || (background_job_compile && is_debuggable_build())) {
         DCHECK(access(kDex2oatDebugPath, X_OK) == 0);
         dex2oat_bin = kDex2oatDebugPath;
     }
 
-    bool generate_minidebug_info = kEnableMinidebugInfo &&
-            android::base::GetBoolProperty(kMinidebugInfoSystemProperty,
-                                           kMinidebugInfoSystemPropertyDefault);
-
-    static const char* RUNTIME_ARG = "--runtime-arg";
-
-    static const int MAX_INT_LEN = 12;      // '-'+10dig+'\0' -OR- 0x+8dig
-
-    // clang FORTIFY doesn't let us use strlen in constant array bounds, so we
-    // use arraysize instead.
-    char zip_fd_arg[arraysize("--zip-fd=") + MAX_INT_LEN];
-    char zip_location_arg[arraysize("--zip-location=") + PKG_PATH_MAX];
-    char input_vdex_fd_arg[arraysize("--input-vdex-fd=") + MAX_INT_LEN];
-    char output_vdex_fd_arg[arraysize("--output-vdex-fd=") + MAX_INT_LEN];
-    char oat_fd_arg[arraysize("--oat-fd=") + MAX_INT_LEN];
-    char oat_location_arg[arraysize("--oat-location=") + PKG_PATH_MAX];
-    char instruction_set_arg[arraysize("--instruction-set=") + MAX_INSTRUCTION_SET_LEN];
-    char instruction_set_variant_arg[arraysize("--instruction-set-variant=") + kPropertyValueMax];
-    char instruction_set_features_arg[arraysize("--instruction-set-features=") + kPropertyValueMax];
-    char dex2oat_Xms_arg[arraysize("-Xms") + kPropertyValueMax];
-    char dex2oat_Xmx_arg[arraysize("-Xmx") + kPropertyValueMax];
-    char dex2oat_compiler_filter_arg[arraysize("--compiler-filter=") + kPropertyValueMax];
-    bool have_dex2oat_swap_fd = false;
-    char dex2oat_swap_fd[arraysize("--swap-fd=") + MAX_INT_LEN];
-    bool have_dex2oat_image_fd = false;
-    char dex2oat_image_fd[arraysize("--app-image-fd=") + MAX_INT_LEN];
-    size_t class_loader_context_size = arraysize("--class-loader-context=") + PKG_PATH_MAX;
-    char class_loader_context_arg[class_loader_context_size];
-    if (class_loader_context != nullptr) {
-        snprintf(class_loader_context_arg, class_loader_context_size, "--class-loader-context=%s",
-            class_loader_context);
-    }
-
-    sprintf(zip_fd_arg, "--zip-fd=%d", zip_fd);
-    sprintf(zip_location_arg, "--zip-location=%s", relative_input_file_name);
-    sprintf(input_vdex_fd_arg, "--input-vdex-fd=%d", input_vdex_fd);
-    sprintf(output_vdex_fd_arg, "--output-vdex-fd=%d", output_vdex_fd);
-    sprintf(oat_fd_arg, "--oat-fd=%d", oat_fd);
-    sprintf(oat_location_arg, "--oat-location=%s", output_file_name);
-    sprintf(instruction_set_arg, "--instruction-set=%s", instruction_set);
-    sprintf(instruction_set_variant_arg, "--instruction-set-variant=%s", dex2oat_isa_variant);
-    sprintf(instruction_set_features_arg, "--instruction-set-features=%s", dex2oat_isa_features);
     if (swap_fd >= 0) {
-        have_dex2oat_swap_fd = true;
-        sprintf(dex2oat_swap_fd, "--swap-fd=%d", swap_fd);
+        dex2oat_options.Process().Literal(StringPrintf("--swap-fd=%d", swap_fd).c_str());
     }
     if (image_fd >= 0) {
-        have_dex2oat_image_fd = true;
-        sprintf(dex2oat_image_fd, "--app-image-fd=%d", image_fd);
-    }
-
-    if (have_dex2oat_Xms_flag) {
-        sprintf(dex2oat_Xms_arg, "-Xms%s", dex2oat_Xms_flag);
-    }
-    if (have_dex2oat_Xmx_flag) {
-        sprintf(dex2oat_Xmx_arg, "-Xmx%s", dex2oat_Xmx_flag);
+        dex2oat_options.Process().Literal(StringPrintf("--app-image-fd=%d", image_fd).c_str());
     }
 
     // Compute compiler filter.
-
-    bool have_dex2oat_compiler_filter_flag = false;
+    // If we are booting without the real /data, don't spend time compiling.
+    bool skip_compilation = false;
+    {
+        std::string vold_decrypt = android::base::GetProperty("vold.decrypt", "");
+        if (!vold_decrypt.empty()) {
+            skip_compilation = (vold_decrypt == "trigger_restart_min_framework") ||
+                    (vold_decrypt == "1");
+        }
+    }
     if (skip_compilation) {
-        strlcpy(dex2oat_compiler_filter_arg, "--compiler-filter=extract",
-                sizeof(dex2oat_compiler_filter_arg));
-        have_dex2oat_compiler_filter_flag = true;
-        have_dex2oat_relocation_skip_flag = true;
+        dex2oat_options.Process().Literal("--compiler-filter=extract");
+        dex2oat_options.Process().RuntimeArg().Literal("-Xnorelocate");
     } else if (compiler_filter != nullptr) {
-        if (strlen(compiler_filter) + strlen("--compiler-filter=") <
-                    arraysize(dex2oat_compiler_filter_arg)) {
-            sprintf(dex2oat_compiler_filter_arg, "--compiler-filter=%s", compiler_filter);
-            have_dex2oat_compiler_filter_flag = true;
-        } else {
-            ALOGW("Compiler filter name '%s' is too large (max characters is %zu)",
-                  compiler_filter,
-                  kPropertyValueMax);
-        }
+        dex2oat_options.Process().Literal(
+                StringPrintf("--compiler-filter=%s", compiler_filter).c_str());
+    } else {
+        dex2oat_options.Process().
+                CopyFrom("dalvik.vm.dex2oat-filter").
+                Prefix("--compiler-filter=");
     }
 
-    if (!have_dex2oat_compiler_filter_flag) {
-        char dex2oat_compiler_filter_flag[kPropertyValueMax];
-        have_dex2oat_compiler_filter_flag = get_property("dalvik.vm.dex2oat-filter",
-                                                         dex2oat_compiler_filter_flag, NULL) > 0;
-        if (have_dex2oat_compiler_filter_flag) {
-            sprintf(dex2oat_compiler_filter_arg,
-                    "--compiler-filter=%s",
-                    dex2oat_compiler_filter_flag);
-        }
+    // Check whether all apps should be compiled debuggable, and add argument.
+    if (debuggable || android::base::GetBoolProperty("dalvik.vm.always_debuggable", false)) {
+        dex2oat_options.Process().Literal("--debuggable");
     }
 
-    // Check whether all apps should be compiled debuggable.
-    if (!debuggable) {
-        char prop_buf[kPropertyValueMax];
-        debuggable =
-                (get_property("dalvik.vm.always_debuggable", prop_buf, "0") > 0) &&
-                (prop_buf[0] == '1');
-    }
-    char profile_arg[strlen("--profile-file-fd=") + MAX_INT_LEN];
     if (profile_fd != -1) {
-        sprintf(profile_arg, "--profile-file-fd=%d", profile_fd);
+        dex2oat_options.Process().Literal(
+                StringPrintf("--profile-file-fd=%d", profile_fd).c_str());
     }
 
     // Get the directory of the apk to pass as a base classpath directory.
-    char base_dir[arraysize("--classpath-dir=") + PKG_PATH_MAX];
-    std::string apk_dir(input_file_name);
-    unsigned long dir_index = apk_dir.rfind('/');
-    bool has_base_dir = dir_index != std::string::npos;
-    if (has_base_dir) {
-        apk_dir = apk_dir.substr(0, dir_index);
-        sprintf(base_dir, "--classpath-dir=%s", apk_dir.c_str());
+    {
+        std::string apk_dir(input_file_name);
+        size_t dir_index = apk_dir.rfind('/');
+        if (dir_index != std::string::npos) {
+            apk_dir = apk_dir.substr(0, dir_index);
+            dex2oat_options.Process().Literal(
+                    StringPrintf("--classpath-dir=%s", apk_dir.c_str()).c_str());
+        }
     }
 
-
-    ALOGV("Running %s in=%s out=%s\n", dex2oat_bin, relative_input_file_name, output_file_name);
-
-    const char* argv[9  // program name, mandatory arguments and the final NULL
-                     + (have_dex2oat_isa_variant ? 1 : 0)
-                     + (have_dex2oat_isa_features ? 1 : 0)
-                     + (have_dex2oat_Xms_flag ? 2 : 0)
-                     + (have_dex2oat_Xmx_flag ? 2 : 0)
-                     + (have_dex2oat_compiler_filter_flag ? 1 : 0)
-                     + (have_dex2oat_threads_flag ? 1 : 0)
-                     + (have_dex2oat_swap_fd ? 1 : 0)
-                     + (have_dex2oat_image_fd ? 1 : 0)
-                     + (have_dex2oat_relocation_skip_flag ? 2 : 0)
-                     + (generate_debug_info ? 1 : 0)
-                     + (debuggable ? 1 : 0)
-                     + (have_app_image_format ? 1 : 0)
-                     + dex2oat_flags_count
-                     + (profile_fd == -1 ? 0 : 1)
-                     + (class_loader_context != nullptr ? 1 : 0)
-                     + (has_base_dir ? 1 : 0)
-                     + (have_dex2oat_large_app_threshold ? 1 : 0)
-                     + (generate_minidebug_info ? 1 : 0)];
-    int i = 0;
-    argv[i++] = dex2oat_bin;
-    argv[i++] = zip_fd_arg;
-    argv[i++] = zip_location_arg;
-    argv[i++] = input_vdex_fd_arg;
-    argv[i++] = output_vdex_fd_arg;
-    argv[i++] = oat_fd_arg;
-    argv[i++] = oat_location_arg;
-    argv[i++] = instruction_set_arg;
-    if (have_dex2oat_isa_variant) {
-        argv[i++] = instruction_set_variant_arg;
-    }
-    if (have_dex2oat_isa_features) {
-        argv[i++] = instruction_set_features_arg;
-    }
-    if (have_dex2oat_Xms_flag) {
-        argv[i++] = RUNTIME_ARG;
-        argv[i++] = dex2oat_Xms_arg;
-    }
-    if (have_dex2oat_Xmx_flag) {
-        argv[i++] = RUNTIME_ARG;
-        argv[i++] = dex2oat_Xmx_arg;
-    }
-    if (have_dex2oat_compiler_filter_flag) {
-        argv[i++] = dex2oat_compiler_filter_arg;
-    }
-    if (have_dex2oat_threads_flag) {
-        argv[i++] = dex2oat_threads_arg;
-    }
-    if (have_dex2oat_swap_fd) {
-        argv[i++] = dex2oat_swap_fd;
-    }
-    if (have_dex2oat_image_fd) {
-        argv[i++] = dex2oat_image_fd;
-    }
-    if (generate_debug_info) {
-        argv[i++] = "--generate-debug-info";
-    }
-    if (debuggable) {
-        argv[i++] = "--debuggable";
-    }
-    if (have_app_image_format) {
-        argv[i++] = image_format_arg;
-    }
-    if (have_dex2oat_large_app_threshold) {
-        argv[i++] = dex2oat_large_app_threshold_arg;
-    }
-    if (dex2oat_flags_count) {
-        i += split(dex2oat_flags, argv + i);
-    }
-    if (have_dex2oat_relocation_skip_flag) {
-        argv[i++] = RUNTIME_ARG;
-        argv[i++] = dex2oat_norelocation;
-    }
-    if (profile_fd != -1) {
-        argv[i++] = profile_arg;
-    }
-    if (has_base_dir) {
-        argv[i++] = base_dir;
-    }
     if (class_loader_context != nullptr) {
-        argv[i++] = class_loader_context_arg;
-    }
-    if (generate_minidebug_info) {
-        argv[i++] = kMinidebugDex2oatFlag;
+        dex2oat_options.Process().Literal(
+                StringPrintf("--class-loader-context=%s", class_loader_context).c_str());
     }
 
+    std::vector<std::string> dex2oat_flags;
+    {
+        std::string dex2oat_flags_prop = android::base::GetProperty("dalvik.vm.dex2oat-flags", "");
+        if (!dex2oat_flags_prop.empty()) {
+            dex2oat_flags = android::base::Split(dex2oat_flags_prop, " ");
+        }
+    }
+
+    LOG(VERBOSE) << "Running " << dex2oat_bin << " in=" << relative_input_file_name << " out="
+            << output_file_name;
+
+    const char* argv[2  // Program name and the final null.
+                     + dex2oat_options.Size()
+                     + dex2oat_flags.size()];
+    size_t i = 0;
+    argv[i++] = dex2oat_bin;
+    for (const std::string& str : dex2oat_options) {
+        argv[i++] = str.c_str();
+    }
+    for (const std::string& str : dex2oat_flags) {
+        argv[i++] = str.c_str();
+    }
     // Do not add after dex2oat_flags, they should override others for debugging.
-    argv[i] = NULL;
+    argv[i] = nullptr;
 
     execv(dex2oat_bin, (char * const *)argv);
     ALOGE("execv(%s) failed: %s\n", dex2oat_bin, strerror(errno));
