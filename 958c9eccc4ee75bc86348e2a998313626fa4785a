@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "460f7357_751371f3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-11-10T00:48:57Z",
+      "side": 1,
+      "message": "Counterargument: Infrastructure \"complexity\" is OK if it makes the usage easier.\n\nYou\u0027ll get functions with a million arguments that you don\u0027t care about, instead of a fluent-interface style describing relatively tersely and concisely specific invocations. Especially with all the const char* types, methods give some protection from messing up argument order.",
+      "parentUuid": "83a78228_0fdd2a1a",
+      "range": {
+        "startLine": 201,
+        "startChar": 19,
+        "endLine": 201,
+        "endChar": 23
+      },
+      "revId": "958c9eccc4ee75bc86348e2a998313626fa4785a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c18a5e1_04333dbc",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-10T00:25:59Z",
       "side": 1,
       "message": "Don\u0027t the subsequent calls .Default().OnTrue() override the value of .Bool()? You are updating the same Process object before it\u0027s destructed and calls Run.",
+      "range": {
+        "startLine": 387,
+        "startChar": 16,
+        "endLine": 389,
+        "endChar": 45
+      },
+      "revId": "958c9eccc4ee75bc86348e2a998313626fa4785a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be128b80_1475d994",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-11-10T00:48:57Z",
+      "side": 1,
+      "message": "No, they just update the fields. Bool() says to parse a boolean property with said name.\nDefault() sets the default property value (in this case to true). OnTrue() says to add the \"--generate-minidebug-info\" if the property value really ended up \"true\" or \"1\" or the default applied.",
+      "parentUuid": "4c18a5e1_04333dbc",
       "range": {
         "startLine": 387,
         "startChar": 16,
