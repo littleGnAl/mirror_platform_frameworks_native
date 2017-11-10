@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83a78228_0fdd2a1a",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-10T00:25:59Z",
+      "side": 1,
+      "message": "I don\u0027t think you really need this inner Processor class. It makes things hard to follow.\n\nI think if you merge all this methods in DexOptions class and just add the props directly in arguments it would be simpler and shorter.\n\ni.e. something like: \nDexOptions::Bool(...) {\n  RunArg(kModeBoolProperty,...);\n}\n\nwdyt?",
+      "range": {
+        "startLine": 201,
+        "startChar": 19,
+        "endLine": 201,
+        "endChar": 23
+      },
+      "revId": "958c9eccc4ee75bc86348e2a998313626fa4785a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c18a5e1_04333dbc",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-10T00:25:59Z",
+      "side": 1,
+      "message": "Don\u0027t the subsequent calls .Default().OnTrue() override the value of .Bool()? You are updating the same Process object before it\u0027s destructed and calls Run.",
+      "range": {
+        "startLine": 387,
+        "startChar": 16,
+        "endLine": 389,
+        "endChar": 45
+      },
+      "revId": "958c9eccc4ee75bc86348e2a998313626fa4785a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
