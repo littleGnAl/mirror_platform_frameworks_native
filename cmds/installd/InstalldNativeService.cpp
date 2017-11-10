@@ -462,11 +462,18 @@ binder::Status InstalldNativeService::migrateAppData(const std::unique_ptr<std::
     auto ce_path = create_data_user_ce_package_path(uuid_, userId, pkgname);
     auto de_path = create_data_user_de_package_path(uuid_, userId, pkgname);
 
-    // If neither directory is marked as default, assume CE is default
+    // If neither directory is marked as default, assume CE or DE is default by flags
     if (getxattr(ce_path.c_str(), kXattrDefault, nullptr, 0) == -1
             && getxattr(de_path.c_str(), kXattrDefault, nullptr, 0) == -1) {
-        if (setxattr(ce_path.c_str(), kXattrDefault, nullptr, 0, 0) != 0) {
-            return error("Failed to mark default storage " + ce_path);
+
+        if (flags & FLAG_STORAGE_DE) {
+            if (setxattr(de_path.c_str(), kXattrDefault, nullptr, 0, 0) != 0) {
+                return error("Failed to mark default storage " + de_path);
+            }
+        } else {
+            if (setxattr(ce_path.c_str(), kXattrDefault, nullptr, 0, 0) != 0) {
+                return error("Failed to mark default storage " + ce_path);
+            }
         }
     }
 
