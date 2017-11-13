@@ -22,6 +22,30 @@
       "revId": "e19008350e91367c3d18410dad5cedf369ea3258",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc0e282a_8a4fe66a",
+        "filename": "libs/vr/libbufferhubqueue/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-13T20:05:10Z",
+      "side": 1,
+      "message": "Yes, some of those warnings i think should be fixed, but i\u0027m not sure what the owners will like.",
+      "parentUuid": "64132202_494d2f72",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "e19008350e91367c3d18410dad5cedf369ea3258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
