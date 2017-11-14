@@ -22,6 +22,30 @@
       "revId": "3be092ad2e052e56c8751dd674cb6e6cabb9506e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa6e02cf_29ada04c",
+        "filename": "opengl/tests/configdump/configdump.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-14T23:35:46Z",
+      "side": 1,
+      "message": "Agree. But I think we need to cherry pick this as-is  from goog/master first and mark this CL as already merged-in.\nWhen we make further change, we should submit to AOSP and let it merge into goog/master.",
+      "parentUuid": "11ecd6d0_055ae054",
+      "range": {
+        "startLine": 81,
+        "startChar": 13,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "3be092ad2e052e56c8751dd674cb6e6cabb9506e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
