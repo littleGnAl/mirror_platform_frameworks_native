@@ -132,7 +132,6 @@ static int initGraphics(EGLint samples, const WindowSurface& windowSurface)
     EGLContext context;
     EGLConfig config;
     EGLSurface surface;
-    EGLint w, h;
     EGLDisplay dpy;
 
     EGLNativeWindowType window = windowSurface.getSurface();
