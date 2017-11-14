@@ -118,7 +118,6 @@ int main(int /*argc*/, char** /*argv*/) {
     checkEglError("eglQuerySurface");
     eglQuerySurface(dpy, surface, EGL_HEIGHT, &h);
     checkEglError("eglQuerySurface");
-    GLint dim = w < h ? w : h;
 
     glViewport(0, 0, w, h);
 
