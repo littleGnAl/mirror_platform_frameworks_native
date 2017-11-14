@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11ecd6d0_055ae054",
+        "filename": "opengl/tests/configdump/configdump.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-11-14T23:32:25Z",
+      "side": 1,
+      "message": "Slightly prefer uint32_t",
+      "range": {
+        "startLine": 81,
+        "startChar": 13,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "3be092ad2e052e56c8751dd674cb6e6cabb9506e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
