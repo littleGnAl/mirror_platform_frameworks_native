@@ -141,6 +141,7 @@ int main(int argc, char** argv)
      //glDrawTexiOES(0, 0, 0, dim, dim);
      
      const GLfloat fdim = dim;
+#if !USE_DRAW_TEXTURE || !GL_OES_draw_texture
      const GLfloat vertices[4][2] = {
              { 0,     0    },
              { 0,     fdim },
@@ -154,6 +155,7 @@ int main(int argc, char** argv)
              { 1,  1 },
              { 1,  0 }
      };
+#endif
      
      if (!usePbuffer) {
          eglSwapBuffers(dpy, surface);
