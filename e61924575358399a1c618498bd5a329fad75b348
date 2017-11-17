@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffef84ae_682941c7",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-11-17T18:28:01Z",
+      "side": 1,
+      "message": "Do you call this from anywhere else?",
+      "range": {
+        "startLine": 417,
+        "startChar": 45,
+        "endLine": 417,
+        "endChar": 59
+      },
+      "revId": "e61924575358399a1c618498bd5a329fad75b348",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef22741_3b834514",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-11-17T18:28:01Z",
+      "side": 1,
+      "message": "Why not use a single mDeferFreeBuffer flag or something like that?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 42
+      },
+      "revId": "e61924575358399a1c618498bd5a329fad75b348",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
