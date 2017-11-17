@@ -411,6 +411,16 @@ void IPCThreadState::flushCommands()
     talkWithDriver(false);
 }
 
+void IPCThreadState::flushIfNeeded()
+{
+    // In case this thread is not a looper and has never made any outgoing transactions,
+    // always flush pending commands such as BC_FREE_BUFFER, to prevent them from getting
+    // stuck in this thread's out buffer.
+    if (!mIsLooper && !mMadeOutgoingTransaction) {
+        flushCommands();
+    }
+}
+
 void IPCThreadState::blockUntilThreadAvailable()
 {
     pthread_mutex_lock(&mProcess->mThreadCountLock);
@@ -507,6 +517,7 @@ void IPCThreadState::joinThreadPool(bool isMain)
 
     mOut.writeInt32(isMain ? BC_ENTER_LOOPER : BC_REGISTER_LOOPER);
 
+    mIsLooper = true;
     status_t result;
     do {
         processPendingDerefs();
@@ -530,6 +541,7 @@ void IPCThreadState::joinThreadPool(bool isMain)
         (void*)pthread_self(), getpid(), result);
 
     mOut.writeInt32(BC_EXIT_LOOPER);
+    mIsLooper = false;
     talkWithDriver(false);
 }
 
@@ -589,6 +601,8 @@ status_t IPCThreadState::transact(int32_t handle,
     if (err != NO_ERROR) {
         if (reply) reply->setError(err);
         return (mLastError = err);
+    } else {
+        mMadeOutgoingTransaction = true;
     }
 
     if ((flags & TF_ONE_WAY) == 0) {
@@ -706,7 +720,9 @@ status_t IPCThreadState::clearDeathNotification(int32_t handle, BpBinder* proxy)
 IPCThreadState::IPCThreadState()
     : mProcess(ProcessState::self()),
       mStrictModePolicy(0),
-      mLastTransactionBinderFlags(0)
+      mLastTransactionBinderFlags(0),
+      mIsLooper(false),
+      mMadeOutgoingTransaction(false)
 {
     pthread_setspecific(gTLS, this);
     clearCaller();
@@ -1189,6 +1205,7 @@ void IPCThreadState::freeBuffer(Parcel* parcel, const uint8_t* data,
     IPCThreadState* state = self();
     state->mOut.writeInt32(BC_FREE_BUFFER);
     state->mOut.writePointer((uintptr_t)data);
+    state->flushIfNeeded();
 }
 
 }; // namespace android
