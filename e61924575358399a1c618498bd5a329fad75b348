@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "290fb645_89d74b19",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-11-17T18:53:29Z",
+      "side": 1,
+      "message": "Not right now, but I was thinking about using it for refcount operations as well.",
+      "parentUuid": "ffef84ae_682941c7",
+      "range": {
+        "startLine": 417,
+        "startChar": 45,
+        "endLine": 417,
+        "endChar": 59
+      },
+      "revId": "e61924575358399a1c618498bd5a329fad75b348",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aef22741_3b834514",
         "filename": "libs/binder/include/binder/IPCThreadState.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-17T18:28:01Z",
       "side": 1,
       "message": "Why not use a single mDeferFreeBuffer flag or something like that?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 42
+      },
+      "revId": "e61924575358399a1c618498bd5a329fad75b348",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30741186_26aa7ce1",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-11-17T18:53:29Z",
+      "side": 1,
+      "message": "we actually wanted to have an \"isBinderThread()\" API for other reasons, so I\u0027d figure we\u0027d just expose this separately. I can delay doing that until we actually need it.",
+      "parentUuid": "aef22741_3b834514",
       "range": {
         "startLine": 130,
         "startChar": 0,
