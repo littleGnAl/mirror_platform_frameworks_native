@@ -479,6 +479,17 @@ void IPCThreadState::flushCommands()
     }
 }
 
+void IPCThreadState::flushIfNeeded()
+{
+    // In case this thread is not a looper and is not currently serving a binder transaction,
+    // there's no guarantee that this thread will call back into the kernel driver any time
+    // soon. Therefore, flush pending commands such as BC_FREE_BUFFER, to prevent them from getting
+    // stuck in this thread's out buffer.
+    if (!mIsLooper && !isServingCall()) {
+        flushCommands();
+    }
+}
+
 void IPCThreadState::blockUntilThreadAvailable()
 {
     pthread_mutex_lock(&mProcess->mThreadCountLock);
@@ -590,6 +601,7 @@ void IPCThreadState::joinThreadPool(bool isMain)
 
     mOut.writeInt32(isMain ? BC_ENTER_LOOPER : BC_REGISTER_LOOPER);
 
+    mIsLooper = true;
     status_t result;
     do {
         processPendingDerefs();
@@ -612,6 +624,7 @@ void IPCThreadState::joinThreadPool(bool isMain)
         (void*)pthread_self(), getpid(), result);
 
     mOut.writeInt32(BC_EXIT_LOOPER);
+    mIsLooper = false;
     talkWithDriver(false);
 }
 
@@ -807,7 +820,8 @@ IPCThreadState::IPCThreadState()
       mPropagateWorkSource(false),
       mStrictModePolicy(0),
       mLastTransactionBinderFlags(0),
-      mCallRestriction(mProcess->mCallRestriction)
+      mCallRestriction(mProcess->mCallRestriction),
+      mIsLooper(false)
 {
     pthread_setspecific(gTLS, this);
     clearCaller();
@@ -1323,6 +1337,7 @@ void IPCThreadState::freeBuffer(Parcel* parcel, const uint8_t* data,
     IPCThreadState* state = self();
     state->mOut.writeInt32(BC_FREE_BUFFER);
     state->mOut.writePointer((uintptr_t)data);
+    state->flushIfNeeded();
 }
 
 } // namespace android
