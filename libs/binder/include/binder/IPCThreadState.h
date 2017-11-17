@@ -75,6 +75,7 @@ public:
             int                 setupPolling(int* fd);
             status_t            handlePolledCommands();
             void                flushCommands();
+            void                flushIfNeeded();
 
             void                joinThreadPool(bool isMain = true);
             
@@ -194,6 +195,7 @@ private:
             IPCThreadStateBase  *mIPCThreadStateBase;
 
             ProcessState::CallRestriction mCallRestriction;
+            bool                mIsLooper;
 };
 
 } // namespace android
