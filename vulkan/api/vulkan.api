@@ -28,7 +28,7 @@ import platform "platform.api"
 // API version (major.minor.patch)
 define VERSION_MAJOR 1
 define VERSION_MINOR 0
-define VERSION_PATCH 63
+define VERSION_PATCH 65
 
 // API limits
 define VK_MAX_PHYSICAL_DEVICE_NAME_SIZE 256
@@ -95,7 +95,7 @@ define NULL_HANDLE 0
 @extension("VK_ANDROID_native_buffer") define VK_ANDROID_NATIVE_BUFFER_NAME             "VK_ANDROID_native_buffer"
 
 // 12
-@extension("VK_EXT_debug_report") define VK_EXT_DEBUG_REPORT_SPEC_VERSION       8
+@extension("VK_EXT_debug_report") define VK_EXT_DEBUG_REPORT_SPEC_VERSION       9
 @extension("VK_EXT_debug_report") define VK_EXT_DEBUG_REPORT_NAME               "VK_EXT_debug_report"
 
 // 13
@@ -161,6 +161,10 @@ define NULL_HANDLE 0
 // 42
 @extension("VK_AMD_texture_gather_bias_lod") define VK_AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION 1
 @extension("VK_AMD_texture_gather_bias_lod") define VK_AMD_TEXTURE_GATHER_BIAS_LOD_EXTENSION_NAME "VK_AMD_texture_gather_bias_lod"
+
+// 43
+@extension("VK_AMD_shader_info") define VK_AMD_SHADER_INFO_SPEC_VERSION 1
+@extension("VK_AMD_shader_info") define VK_AMD_SHADER_INFO_EXTENSION_NAME "VK_AMD_shader_info"
 
 // 47
 @extension("VK_AMD_shader_image_load_store_lod") define VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION 1
@@ -1629,6 +1633,13 @@ enum VkDebugReportObjectTypeEXT {
 enum VkRasterizationOrderAMD {
     VK_RASTERIZATION_ORDER_STRICT_AMD                       = 0,
     VK_RASTERIZATION_ORDER_RELAXED_AMD                      = 1,
+}
+
+@extension("VK_AMD_shader_info") // 43
+enum VkShaderInfoTypeAMD {
+    VK_SHADER_INFO_TYPE_STATISTICS_AMD                      = 0,
+    VK_SHADER_INFO_TYPE_BINARY_AMD                          = 1,
+    VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD                     = 2,
 }
 
 @extension("VK_EXT_validation_flags") // 62
@@ -3976,6 +3987,26 @@ class VkTextureLODGatherFormatPropertiesAMD {
     VkStructureType                             sType
     void*                                       pNext
     VkBool32                                    supportsTextureGatherLODBiasAMD
+}
+
+@extension("VK_AMD_shader_info") // 43
+class VkShaderResourceUsageAMD {
+    u32                                         numUsedVgprs
+    u32                                         numUsedSgprs
+    u32                                         ldsSizePerLocalWorkGroup
+    platform.size_t                             ldsUsageSizeInBytes
+    platform.size_t                             scratchMemUsageInBytes
+}
+
+@extension("VK_AMD_shader_info") // 43
+class VkShaderStatisticsInfoAMD {
+    VkShaderStageFlags                          shaderStageMask
+    VkShaderResourceUsageAMD                    resourceUsage
+    u32                                         numPhysicalVgprs
+    u32                                         numPhysicalSgprs
+    u32                                         numAvailableVgprs
+    u32                                         numAvailableSgprs
+    u32[3]                                      computeWorkGroupSize
 }
 
 @extension("VK_KHX_multiview") // 54
@@ -7932,6 +7963,17 @@ cmd void vkCmdDrawIndexedIndirectCountAMD(
         VkDeviceSize                                countBufferOffset,
         u32                                         maxDrawCount,
         u32                                         stride) {
+}
+
+@extension("VK_AMD_shader_info") // 43
+cmd VkResult vkGetShaderInfoAMD(
+        VkDevice                                    device,
+        VkPipeline                                  pipeline,
+        VkShaderStageFlagBits                       shaderStage,
+        VkShaderInfoTypeAMD                         infoType,
+        platform.size_t*                            pInfoSize,
+        void*                                       pInfo) {
+    return ?
 }
 
 @extension("VK_NV_external_memory_capabilities") // 56
