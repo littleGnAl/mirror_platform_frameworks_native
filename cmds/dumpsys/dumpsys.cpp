@@ -59,7 +59,9 @@ static void usage() {
             "       dumpsys [-t TIMEOUT] [--help | -l | --skip SERVICES | SERVICE [ARGS]]\n"
             "         --help: shows this help\n"
             "         -l: only list services, do not dump them\n"
-            "         -t TIMEOUT: TIMEOUT to use in seconds instead of default 10 seconds\n"
+
+            "         -t TIMEOUT_SEC: TIMEOUT to use in seconds instead of default 10 seconds\n"
+            "         -T TIMEOUT_MS: TIMEOUT to use in milliseconds instead of default 10 seconds\n"
             "         --skip SERVICES: dumps all services but SERVICES (comma-separated list)\n"
             "         SERVICE [ARGS]: dumps only service SERVICE, optionally passing ARGS to it\n");
 }
@@ -79,12 +81,13 @@ int Dumpsys::main(int argc, char* const argv[]) {
     Vector<String16> skippedServices;
     bool showListOnly = false;
     bool skipServices = false;
-    int timeoutArg = 10;
+    int timeoutArgMs = 10000;
     static struct option longOptions[] = {
         {"skip", no_argument, 0,  0 },
         {"help", no_argument, 0,  0 },
         {     0,           0, 0,  0 }
     };
+
 
     // Must reset optind, otherwise subsequent calls will fail (wouldn't happen on main.cpp, but
     // happens on test cases).
@@ -93,7 +96,7 @@ int Dumpsys::main(int argc, char* const argv[]) {
         int c;
         int optionIndex = 0;
 
-        c = getopt_long(argc, argv, "+t:l", longOptions, &optionIndex);
+        c = getopt_long(argc, argv, "+t:T:l", longOptions, &optionIndex);
 
         if (c == -1) {
             break;
@@ -111,10 +114,22 @@ int Dumpsys::main(int argc, char* const argv[]) {
 
         case 't':
             {
-                char *endptr;
-                timeoutArg = strtol(optarg, &endptr, 10);
-                if (*endptr != '\0' || timeoutArg <= 0) {
-                    fprintf(stderr, "Error: invalid timeout number: '%s'\n", optarg);
+                char* endptr;
+                timeoutArgMs = strtol(optarg, &endptr, 10);
+                timeoutArgMs = timeoutArgMs * 1000;
+                if (*endptr != '\0' || timeoutArgMs <= 0) {
+                    fprintf(stderr, "Error: invalid timeout(seconds) number: '%s'\n", optarg);
+                    return -1;
+                }
+            }
+            break;
+
+        case 'T':
+            {
+                char* endptr;
+                timeoutArgMs = strtol(optarg, &endptr, 10);
+                if (*endptr != '\0' || timeoutArgMs <= 0) {
+                    fprintf(stderr, "Error: invalid timeout(milliseconds) number: '%s'\n", optarg);
                     return -1;
                 }
             }
@@ -216,7 +231,7 @@ int Dumpsys::main(int argc, char* const argv[]) {
                 }
             });
 
-            auto timeout = std::chrono::seconds(timeoutArg);
+            auto timeout = std::chrono::milliseconds(timeoutArgMs);
             auto start = std::chrono::steady_clock::now();
             auto end = start + timeout;
 
@@ -268,8 +283,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
 
             if (timed_out) {
                 aout << endl
-                     << "*** SERVICE '" << service_name << "' DUMP TIMEOUT (" << timeoutArg
-                     << "s) EXPIRED ***" << endl
+                     << "*** SERVICE '" << service_name << "' DUMP TIMEOUT (" << timeoutArgMs
+                     << "ms) EXPIRED ***" << endl
                      << endl;
             }
 
