@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bee88bb7_b37ca0df",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:30:06Z",
+      "side": 1,
+      "message": "Please define what that is.",
+      "range": {
+        "startLine": 53,
+        "startChar": 13,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b13668ef_ad188c15",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:30:06Z",
+      "side": 1,
+      "message": "Create",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 10
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a07770d_9a5be51e",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:30:06Z",
+      "side": 1,
+      "message": "and",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a62e378_f9f59e9e",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:30:06Z",
+      "side": 1,
+      "message": "Add comments why you need this.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 36
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9de71620_4b926dc6",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:30:06Z",
+      "side": 1,
+      "message": "Maybe too late but kind of looks inconsistent to have cur/ref/snapshot. Given cur/ref were there first, you probably want \"snap\" :)",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 34
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a7493f8_66fb28bd",
+        "filename": "cmds/installd/tests/test_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:30:06Z",
+      "side": 1,
+      "message": "Mention what\u0027s broken with it?",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 44
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73a3b687_ffe20b17",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:30:06Z",
+      "side": 1,
+      "message": "consistency: SNAPSHOT_PROFILE_EXT",
+      "range": {
+        "startLine": 239,
+        "startChar": 18,
+        "endLine": 239,
+        "endChar": 38
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
