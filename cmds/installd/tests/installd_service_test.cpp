@@ -56,11 +56,12 @@ bool create_cache_path(char path[PKG_PATH_MAX], const char *src, const char *ins
     return create_cache_path_default(path, src, instruction_set);
 }
 
-static void mkdir(const char* path, uid_t owner, gid_t group, mode_t mode) {
+static std::string mkdir(const char* path, uid_t owner, gid_t group, mode_t mode) {
     const char* fullPath = StringPrintf("/data/local/tmp/user/0/%s", path).c_str();
     ::mkdir(fullPath, mode);
     ::chown(fullPath, owner, group);
     ::chmod(fullPath, mode);
+    return std::string(fullPath);
 }
 
 static void touch(const char* path, uid_t owner, gid_t group, mode_t mode) {
@@ -81,6 +82,18 @@ static int stat_mode(const char* path) {
     struct stat buf;
     ::stat(StringPrintf("/data/local/tmp/user/0/%s", path).c_str(), &buf);
     return buf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO | S_ISGID);
+}
+
+static ssize_t testGetxattr(const char *path, const char *name) {
+    uint64_t raw = 0;
+    int errnoXattr = 0;
+    ssize_t result = getxattr(path, name, &raw, sizeof(raw));
+    if (result < 0) {
+        errnoXattr = errno;
+    }
+    LOG(DEBUG) << "getxattr " << path << ": " << name << "=" << raw
+         << " (result=" << result << " errno=" << errnoXattr << ")";
+    return result;
 }
 
 class ServiceTest : public testing::Test {
@@ -171,6 +184,28 @@ TEST_F(ServiceTest, CalculateCache) {
 
     EXPECT_TRUE(create_cache_path(buf, "/path/to/file.apk", "isa"));
     EXPECT_EQ("/data/dalvik-cache/isa/path@to@file.apk@classes.dex", std::string(buf));
+}
+
+TEST_F(ServiceTest, ClearAppData_InodeCache) {
+    LOG(INFO) << "ClearAppData_InodeCache";
+
+    std::string packageName = std::string("com.example");
+    std::string appPath = mkdir(packageName.c_str(), 10000, 10000, 0700);
+
+    service->createAppData(testUuid, packageName, 0, FLAG_STORAGE_CE,
+        10000, std::string("default:targetSdkVersion=26"), 26, nullptr);
+
+    EXPECT_NE(-1, testGetxattr(appPath.c_str(), kXattrInodeCache))
+        << "Failed to get " << kXattrInodeCache;
+    EXPECT_NE(-1, testGetxattr(appPath.c_str(), kXattrInodeCodeCache))
+        << "Failed to get " << kXattrInodeCodeCache;
+
+    service->clearAppData(testUuid, packageName, 0, FLAG_STORAGE_CE, 0);
+
+    EXPECT_EQ(-1, testGetxattr(appPath.c_str(), kXattrInodeCache))
+        << kXattrInodeCache  << " xattr is not removed after clearAppData.";
+    EXPECT_EQ(-1, testGetxattr(appPath.c_str(), kXattrInodeCodeCache))
+        << kXattrInodeCodeCache << " xattr is not removed after clearAppData.";
 }
 
 }  // namespace installd
