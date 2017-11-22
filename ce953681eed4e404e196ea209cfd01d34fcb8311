@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "068aa0af_a28ecee2",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-22T22:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b13668ef_ad188c15",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 10
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52b9afc4_a2eb534c",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-22T22:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bee88bb7_b37ca0df",
+      "range": {
+        "startLine": 53,
+        "startChar": 13,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a07770d_9a5be51e",
         "filename": "cmds/installd/dexopt.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-11-22T09:30:06Z",
       "side": 1,
       "message": "and",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca0b91a8_9b98e8ea",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-22T22:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a07770d_9a5be51e",
       "range": {
         "startLine": 57,
         "startChar": 31,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "429c4860_129ad868",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-22T22:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a62e378_f9f59e9e",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 36
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9de71620_4b926dc6",
         "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2017-11-22T09:30:06Z",
       "side": 1,
       "message": "Maybe too late but kind of looks inconsistent to have cur/ref/snapshot. Given cur/ref were there first, you probably want \"snap\" :)",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 34
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6617a7f5_cae3100f",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-22T22:00:32Z",
+      "side": 1,
+      "message": "It\u0027s not really late for it but here\u0027s the rationale:\n\n- I though about it (having a dedicated ../profiles/snap/)\n- I decided against it because of the extra complexity (yet another set of directories, one for each app!, new set of selinux policies and extra code to create them)\n- Consistency seems to be the only benefit here, but I\u0027m not sure it\u0027s worthwhile.\n\n- Snapshots are really the reference profiles. We don\u0027t take them directly because the bg job might not have executed so this offers more flexibility when it comes. So storing them in /ref/ seems natural.\n- Note that `cur` vs `ref` is a different use case which required a better separation. I.e. `cur` is per user; `ref` is per app. Similar, `snap` is per app (aggregated across users).",
+      "parentUuid": "9de71620_4b926dc6",
       "range": {
         "startLine": 416,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "dcf29695_aec8b064",
+        "filename": "cmds/installd/tests/test_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-22T22:00:32Z",
+      "side": 1,
+      "message": "I filed b/69678790 and mentioned it here.",
+      "parentUuid": "8a7493f8_66fb28bd",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 44
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73a3b687_ffe20b17",
         "filename": "cmds/installd/utils.cpp",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2017-11-22T09:30:06Z",
       "side": 1,
       "message": "consistency: SNAPSHOT_PROFILE_EXT",
+      "range": {
+        "startLine": 239,
+        "startChar": 18,
+        "endLine": 239,
+        "endChar": 38
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d22607c_37066cda",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-22T22:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73a3b687_ffe20b17",
       "range": {
         "startLine": 239,
         "startChar": 18,
