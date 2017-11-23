@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f08b745_7f7e1670",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-23T10:57:05Z",
+      "side": 1,
+      "message": "from all users?",
+      "range": {
+        "startLine": 55,
+        "startChar": 33,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "25446ff33db95cb37656523bfd50863bad292c8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

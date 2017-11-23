@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "f551c263_f0f044e3",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-23T10:57:05Z",
+      "side": 1,
+      "message": "Not fully :) Could you also say why this test needs it?",
+      "parentUuid": "429c4860_129ad868",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 36
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9de71620_4b926dc6",
         "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
         "patchSetId": 2
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "It\u0027s not really late for it but here\u0027s the rationale:\n\n- I though about it (having a dedicated ../profiles/snap/)\n- I decided against it because of the extra complexity (yet another set of directories, one for each app!, new set of selinux policies and extra code to create them)\n- Consistency seems to be the only benefit here, but I\u0027m not sure it\u0027s worthwhile.\n\n- Snapshots are really the reference profiles. We don\u0027t take them directly because the bg job might not have executed so this offers more flexibility when it comes. So storing them in /ref/ seems natural.\n- Note that `cur` vs `ref` is a different use case which required a better separation. I.e. `cur` is per user; `ref` is per app. Similar, `snap` is per app (aggregated across users).",
       "parentUuid": "9de71620_4b926dc6",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 34
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd7359d7_36009b50",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-23T10:57:05Z",
+      "side": 1,
+      "message": "Note: I was only commenting on the naming :)",
+      "parentUuid": "6617a7f5_cae3100f",
       "range": {
         "startLine": 416,
         "startChar": 0,
