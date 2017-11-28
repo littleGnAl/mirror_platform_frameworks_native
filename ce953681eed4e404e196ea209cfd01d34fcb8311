@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "bdf5d7cc_b3b93c41",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-28T03:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f551c263_f0f044e3",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 36
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9de71620_4b926dc6",
         "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
         "patchSetId": 2
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "Note: I was only commenting on the naming :)",
       "parentUuid": "6617a7f5_cae3100f",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 34
+      },
+      "revId": "ce953681eed4e404e196ea209cfd01d34fcb8311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5777515e_483edb39",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-28T03:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd7359d7_36009b50",
       "range": {
         "startLine": 416,
         "startChar": 0,
