@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8330255_b3090818",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2017-11-29T17:11:46Z",
+      "side": 1,
+      "message": "Take a peek at the normal \"fs_prepare_dir\" implementation; I think it might do most (all?) of the logic you\u0027re writing above in this CL.\n\nThe normal method will fixup things if they don\u0027t match; the \"strict\" method will leave things untouched when they don\u0027t match.",
+      "range": {
+        "startLine": 422,
+        "startChar": 8,
+        "endLine": 422,
+        "endChar": 29
+      },
+      "revId": "2b22a703262e291ee030b93a6a5710df7804afb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
