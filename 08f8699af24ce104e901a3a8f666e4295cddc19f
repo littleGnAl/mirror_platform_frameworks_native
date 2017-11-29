@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c14f86c_2b4aad53",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-29T10:02:27Z",
+      "side": 1,
+      "message": "continue",
+      "range": {
+        "startLine": 353,
+        "startChar": 69,
+        "endLine": 353,
+        "endChar": 76
+      },
+      "revId": "08f8699af24ce104e901a3a8f666e4295cddc19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ef05e28_41f369d4",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-29T10:02:27Z",
+      "side": 1,
+      "message": "calin",
+      "range": {
+        "startLine": 353,
+        "startChar": 16,
+        "endLine": 353,
+        "endChar": 21
+      },
+      "revId": "08f8699af24ce104e901a3a8f666e4295cddc19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
