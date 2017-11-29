@@ -22,6 +22,30 @@
       "revId": "2b22a703262e291ee030b93a6a5710df7804afb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9379d3d_b7e6438f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-29T18:44:12Z",
+      "side": 1,
+      "message": "I considered using the fs_prepare_dir() but that fixes the group owner and that\u0027s important to remain the same and not be updated (similar reasoning to what we chatted yesterday, about defensively not changing the ownership of directories).",
+      "parentUuid": "b8330255_b3090818",
+      "range": {
+        "startLine": 422,
+        "startChar": 8,
+        "endLine": 422,
+        "endChar": 29
+      },
+      "revId": "2b22a703262e291ee030b93a6a5710df7804afb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
