@@ -342,6 +342,38 @@ static int prepare_app_quota(const std::unique_ptr<std::string>& uuid, const std
 #endif
 }
 
+// Prepares the reference profile directory for snapshots by assigning its owner to AID_SYSTEM.
+static bool fixup_profile_dir_for_snapshot(const std::string& package_name) {
+    std::string ref_profile_dir = create_primary_reference_profile_package_dir_path(package_name);
+    struct stat st;
+    if (TEMP_FAILURE_RETRY(stat(ref_profile_dir.c_str(), &st)) != 0) {
+        PLOG(ERROR) << "Failed to stat profile path " << ref_profile_dir;
+        return false;
+    }
+    if ((st.st_mode & S_IFDIR) == 0) {
+        LOG(ERROR) << "Profile dir not a directory? " << ref_profile_dir;
+        return false;
+    }
+
+    // We need to fixup only if the uid is not the system or if the mode is wrong (which indicate
+    // a pre-P install).
+    bool needs_fixup = (st.st_uid != AID_SYSTEM) || (st.st_mode != (S_IFDIR & 0770));
+    if (needs_fixup) {
+        LOG(INFO) << "Preparing reference profile dir for snapshot: " << package_name;
+        if (TEMP_FAILURE_RETRY(chmod(ref_profile_dir.c_str(), 0770)) != 0) {
+            PLOG(ERROR) << "Failed to chmod profile path " << ref_profile_dir;
+            return false;
+        }
+        if (TEMP_FAILURE_RETRY(chown(ref_profile_dir.c_str(), AID_SYSTEM, st.st_gid)) == -1) {
+            PLOG(ERROR) << "Failed to chown profile path " << ref_profile_dir;
+            return false;
+        }
+
+    }
+    return true;
+}
+
+
 static bool prepare_app_profile_dir(const std::string& packageName, int32_t appId, int32_t userId) {
     if (!property_get_bool("dalvik.vm.usejitprofiles", false)) {
         return true;
@@ -373,13 +405,26 @@ static bool prepare_app_profile_dir(const std::string& packageName, int32_t appI
 
     const std::string ref_profile_path =
             create_primary_reference_profile_package_dir_path(packageName);
-    // dex2oat/profman runs under the shared app gid and it needs to read/write reference
-    // profiles.
+
+    struct stat st;
+    if (TEMP_FAILURE_RETRY(stat(ref_profile_path.c_str(), &st)) == 0) {
+        // If the profile directory exists we need to fixup the owner and permissions.
+        // Starting with P, the owner of the directory is AID_SYSTEM.
+        if (!fixup_profile_dir_for_snapshot(packageName)) {
+            return false;
+        }
+    }
+
+    // Prepare the reference profile directory. Note that we do this even if the directory
+    // exists. The preparation will ensure that the ownership is correct.
+    //
+    // dex2oat/profman runs under the shared app gid and it needs to read/write reference profiles.
     if (fs_prepare_dir_strict(
-            ref_profile_path.c_str(), 0701, shared_app_gid, shared_app_gid) != 0) {
+            ref_profile_path.c_str(), 0770, AID_SYSTEM, shared_app_gid) != 0) {
         PLOG(ERROR) << "Failed to prepare " << ref_profile_path;
         return false;
     }
+
     return true;
 }
 
