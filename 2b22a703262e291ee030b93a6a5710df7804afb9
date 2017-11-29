@@ -46,6 +46,30 @@
       "revId": "2b22a703262e291ee030b93a6a5710df7804afb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc03fde1_b32308ec",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-11-29T23:01:08Z",
+      "side": 1,
+      "message": "Thinking more about this. I do need to fix the gid because of your previous fixes. So fs_preapre_dir is the right thing here. That\u0027s safe because the uid was already validated by the previous prepare_dirs.",
+      "parentUuid": "d9379d3d_b7e6438f",
+      "range": {
+        "startLine": 422,
+        "startChar": 8,
+        "endLine": 422,
+        "endChar": 29
+      },
+      "revId": "2b22a703262e291ee030b93a6a5710df7804afb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
