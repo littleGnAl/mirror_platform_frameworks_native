@@ -1207,7 +1207,7 @@ static void dumpstate() {
     printf("========================================================\n");
 
     RunDumpsys("DUMPSYS", {"--skip", "meminfo", "cpuinfo"}, CommandOptions::WithTimeout(90).Build(),
-               10);
+               SEC_TO_MSEC(10));
 
     printf("========================================================\n");
     printf("== Checkins\n");
@@ -1279,8 +1279,10 @@ static void DumpstateTelephonyOnly() {
     printf("== Android Framework Services\n");
     printf("========================================================\n");
 
-    RunDumpsys("DUMPSYS", {"connectivity"}, CommandOptions::WithTimeout(90).Build(), 10);
-    RunDumpsys("DUMPSYS", {"carrier_config"}, CommandOptions::WithTimeout(90).Build(), 10);
+    RunDumpsys("DUMPSYS", {"connectivity"}, CommandOptions::WithTimeout(90).Build(),
+               SEC_TO_MSEC(10));
+    RunDumpsys("DUMPSYS", {"carrier_config"}, CommandOptions::WithTimeout(90).Build(),
+               SEC_TO_MSEC(10));
 
     printf("========================================================\n");
     printf("== Running Application Services\n");
