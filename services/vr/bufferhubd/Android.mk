@@ -26,7 +26,6 @@ headerLibraries := \
 	libdvr_headers
 
 staticLibraries := \
-	libperformance \
 	libpdx_default_transport \
 	libbufferhub
 
