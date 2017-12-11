@@ -77,6 +77,17 @@ class BinderDriverInterfaceTest : public ::testing::Test {
         virtual void TearDown() {
         }
     protected:
+        /* Either return expect_ret, or else errno must be expect_errno */
+        void binderTestIoctlRetOrError(int cmd, void *arg, int expect_ret, int expect_errno) {
+            int ret;
+
+            ret = ioctl(m_binderFd, cmd, arg);
+            if (ret != expect_ret) {
+                if (errno != expect_errno)
+                    EXPECT_EQ(expect_errno, errno);
+            }
+        }
+
         void binderTestIoctlRetErr2(int cmd, void *arg, int expect_ret, int expect_errno, int accept_errno) {
             int ret;
 
@@ -256,7 +267,7 @@ TEST_F(BinderDriverInterfaceTest, Transaction) {
 
     {
         SCOPED_TRACE("1st WriteRead");
-        binderTestIoctl(BINDER_WRITE_READ, &bwr);
+        binderTestIoctlRetOrError(BINDER_WRITE_READ, &bwr, 0, EAGAIN);
     }
     EXPECT_EQ(sizeof(bc1), bwr.write_consumed);
     if (bwr.read_consumed < offsetof(typeof(br), pad)) {
