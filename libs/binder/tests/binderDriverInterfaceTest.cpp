@@ -256,7 +256,7 @@ TEST_F(BinderDriverInterfaceTest, Transaction) {
 
     {
         SCOPED_TRACE("1st WriteRead");
-        binderTestIoctl(BINDER_WRITE_READ, &bwr);
+        binderTestIoctlRetErr2(BINDER_WRITE_READ, &bwr, 0, 0, EAGAIN);
     }
     EXPECT_EQ(sizeof(bc1), bwr.write_consumed);
     if (bwr.read_consumed < offsetof(typeof(br), pad)) {
