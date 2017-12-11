@@ -446,34 +446,26 @@ status_t HWComposer::prepare(DisplayDevice& displayDevice) {
 
     // First try to skip validate altogether if the HWC supports it.
     displayData.validateWasSkipped = false;
-    if (hasCapability(HWC2::Capability::SkipValidate) &&
-            !displayData.hasClientComposition) {
-        sp<android::Fence> outPresentFence;
-        uint32_t state = UINT32_MAX;
-        error = hwcDisplay->presentOrValidate(&numTypes, &numRequests, &outPresentFence , &state);
-        if (error != HWC2::Error::None && error != HWC2::Error::HasChanges) {
-            ALOGV("skipValidate: Failed to Present or Validate");
-            return UNKNOWN_ERROR;
-        }
-        if (state == 1) { //Present Succeeded.
-            std::unordered_map<HWC2::Layer*, sp<Fence>> releaseFences;
-            error = hwcDisplay->getReleaseFences(&releaseFences);
-            displayData.releaseFences = std::move(releaseFences);
-            displayData.lastPresentFence = outPresentFence;
-            displayData.validateWasSkipped = true;
-            displayData.presentError = error;
-            return NO_ERROR;
-        }
-        // Present failed but Validate ran.
-    } else {
-        error = hwcDisplay->validate(&numTypes, &numRequests);
-    }
-    ALOGV("SkipValidate failed, Falling back to SLOW validate/present");
+    sp<android::Fence> outPresentFence;
+    uint32_t state = UINT32_MAX;
+    error = hwcDisplay->presentOrValidate(&numTypes, &numRequests, &outPresentFence, &state);
     if (error != HWC2::Error::None && error != HWC2::Error::HasChanges) {
         ALOGE("prepare: validate failed for display %d: %s (%d)", displayId,
                 to_string(error).c_str(), static_cast<int32_t>(error));
         return BAD_INDEX;
     }
+    if (state == 1) { //Present Succeeded.
+        std::unordered_map<HWC2::Layer*, sp<Fence>> releaseFences;
+        error = hwcDisplay->getReleaseFences(&releaseFences);
+        displayData.releaseFences = std::move(releaseFences);
+        displayData.lastPresentFence = outPresentFence;
+        displayData.validateWasSkipped = true;
+        displayData.presentError = error;
+        return NO_ERROR;
+    }
+
+    // Present failed but Validate ran.
+    ALOGV("SkipValidate failed, Falling back to SLOW validate/present");
 
     std::unordered_map<HWC2::Layer*, HWC2::Composition> changedTypes;
     changedTypes.reserve(numTypes);

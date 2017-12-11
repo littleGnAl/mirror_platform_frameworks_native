@@ -238,8 +238,6 @@ public:
             const android::sp<android::Fence>& releaseFence);
     [[clang::warn_unused_result]] Error setPowerMode(PowerMode mode);
     [[clang::warn_unused_result]] Error setVsyncEnabled(Vsync enabled);
-    [[clang::warn_unused_result]] Error validate(uint32_t* outNumTypes,
-            uint32_t* outNumRequests);
     [[clang::warn_unused_result]] Error presentOrValidate(uint32_t* outNumTypes,
                                                  uint32_t* outNumRequests,
                                                           android::sp<android::Fence>* outPresentFence, uint32_t* state);
