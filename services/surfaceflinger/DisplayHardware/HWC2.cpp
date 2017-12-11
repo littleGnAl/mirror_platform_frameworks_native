@@ -593,21 +593,6 @@ Error Display::setVsyncEnabled(Vsync enabled)
     return static_cast<Error>(intError);
 }
 
-Error Display::validate(uint32_t* outNumTypes, uint32_t* outNumRequests)
-{
-    uint32_t numTypes = 0;
-    uint32_t numRequests = 0;
-    auto intError = mComposer.validateDisplay(mId, &numTypes, &numRequests);
-    auto error = static_cast<Error>(intError);
-    if (error != Error::None && error != Error::HasChanges) {
-        return error;
-    }
-
-    *outNumTypes = numTypes;
-    *outNumRequests = numRequests;
-    return error;
-}
-
 Error Display::presentOrValidate(uint32_t* outNumTypes, uint32_t* outNumRequests,
                                  sp<android::Fence>* outPresentFence, uint32_t* state) {
 
