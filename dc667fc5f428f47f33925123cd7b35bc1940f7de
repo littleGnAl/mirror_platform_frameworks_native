@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bb36e86_fa3e500c",
+        "filename": "libs/binder/tests/binderDriverInterfaceTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2017-12-11T21:16:13Z",
+      "side": 1,
+      "message": "If you pass anything other than 0 here, you may read a stale errno value if the ioctl does not fail",
+      "range": {
+        "startLine": 81,
+        "startChar": 59,
+        "endLine": 81,
+        "endChar": 73
+      },
+      "revId": "dc667fc5f428f47f33925123cd7b35bc1940f7de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
