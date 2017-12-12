@@ -22,6 +22,30 @@
       "revId": "7b5495932f6cb57c0b5771641655b70218a690fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ace411d_65740eda",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1096171
+      },
+      "writtenOn": "2017-12-12T18:58:55Z",
+      "side": 1,
+      "message": "In HWC-\u003eGLES case, there is no client target acquire fence.  This should have no impact.\n\nIn GLES-\u003eGLES case, backpressure is actually disabled.",
+      "parentUuid": "ebcf62f1_4d2fb787",
+      "range": {
+        "startLine": 1941,
+        "startChar": 13,
+        "endLine": 1941,
+        "endChar": 0
+      },
+      "revId": "7b5495932f6cb57c0b5771641655b70218a690fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
