@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebcf62f1_4d2fb787",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1066828
+      },
+      "writtenOn": "2017-12-12T18:18:35Z",
+      "side": 1,
+      "message": "Is this check needed only if backpressure is disabled? If it is enabled and we are here it means the previous client composition finished already and was pushed to screen successfully? That is, just obtaining a fence from HWC is sufficient if backpressure is enabled?",
+      "range": {
+        "startLine": 1941,
+        "startChar": 13,
+        "endLine": 1941,
+        "endChar": 0
+      },
+      "revId": "7b5495932f6cb57c0b5771641655b70218a690fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
