@@ -1,0 +1,10 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Autosubmit+1: Justin Yun <justinyun@google.com>
+Verified+1: Justin Yun <justinyun@google.com>
+Code-Review+1: Jiyong Park <jiyong@google.com>
+Code-Review+2: Andrew Hsieh <andrewhsieh@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 13 Dec 2017 04:34:31 +0000
+Reviewed-on: https://android-review.googlesource.com/548701
+Project: platform/frameworks/native
+Branch: refs/heads/master
