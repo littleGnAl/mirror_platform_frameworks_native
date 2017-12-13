@@ -3517,7 +3517,7 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
 
     // Get associated display dimensions.
     DisplayViewport newViewport;
-    if (mParameters.hasAssociatedDisplay) {
+    if (mParameters.hasAssociatedDisplay && mDeviceMode != DEVICE_MODE_UNSCALED) {
         const String8* uniqueDisplayId = NULL;
         ViewportType viewportTypeToUse;
 
