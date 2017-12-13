@@ -3510,7 +3510,9 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
 
     // Get associated display dimensions.
     DisplayViewport newViewport;
-    if (mParameters.hasAssociatedDisplay) {
+    if (mParameters.hasAssociatedDisplay &&
+            !(mParameters.deviceType == Parameters::DEVICE_TYPE_POINTER &&
+            !mConfig.pointerGesturesEnabled)) {
         const String8* uniqueDisplayId = NULL;
         ViewportType viewportTypeToUse;
 
