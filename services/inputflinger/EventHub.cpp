@@ -647,7 +647,8 @@ void EventHub::assignDescriptorLocked(InputDeviceIdentifier& identifier) {
             identifier.descriptor.string());
 }
 
-void EventHub::vibrate(int32_t deviceId, nsecs_t duration) {
+void EventHub::vibrate(int32_t deviceId, nsecs_t duration, uint16_t strongMagnitude,
+        uint16_t weakMagnitude) {
     AutoMutex _l(mLock);
     Device* device = getDeviceLocked(deviceId);
     if (device && device->hasValidFd()) {
@@ -655,8 +656,8 @@ void EventHub::vibrate(int32_t deviceId, nsecs_t duration) {
         memset(&effect, 0, sizeof(effect));
         effect.type = FF_RUMBLE;
         effect.id = device->ffEffectId;
-        effect.u.rumble.strong_magnitude = 0xc000;
-        effect.u.rumble.weak_magnitude = 0xc000;
+        effect.u.rumble.strong_magnitude = strongMagnitude;
+        effect.u.rumble.weak_magnitude = weakMagnitude;
         effect.replay.length = (duration + 999999LL) / 1000000LL;
         effect.replay.delay = 0;
         if (ioctl(device->fd, EVIOCSFF, &effect)) {
