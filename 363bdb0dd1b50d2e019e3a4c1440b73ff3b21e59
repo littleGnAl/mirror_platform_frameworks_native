@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dadb5454_d58abf5f",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2017-12-13T21:08:19Z",
+      "side": 1,
+      "message": "Nit: stray space",
+      "range": {
+        "startLine": 451,
+        "startChar": 83,
+        "endLine": 451,
+        "endChar": 84
+      },
+      "revId": "363bdb0dd1b50d2e019e3a4c1440b73ff3b21e59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
