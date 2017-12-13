@@ -252,7 +252,8 @@ public:
     virtual bool setKeyboardLayoutOverlay(int32_t deviceId, const sp<KeyCharacterMap>& map) = 0;
 
     /* Control the vibrator. */
-    virtual void vibrate(int32_t deviceId, nsecs_t duration) = 0;
+    virtual void vibrate(int32_t deviceId, nsecs_t duration, uint16_t strongMagnitude,
+            uint16_t weakMagnitude) = 0;
     virtual void cancelVibrate(int32_t deviceId) = 0;
 
     /* Requests the EventHub to reopen all input devices on the next call to getEvents(). */
@@ -326,7 +327,8 @@ public:
     virtual sp<KeyCharacterMap> getKeyCharacterMap(int32_t deviceId) const;
     virtual bool setKeyboardLayoutOverlay(int32_t deviceId, const sp<KeyCharacterMap>& map);
 
-    virtual void vibrate(int32_t deviceId, nsecs_t duration);
+    virtual void vibrate(int32_t deviceId, nsecs_t duration, uint16_t strongMagnitude,
+            uint16_t weakMagnitude);
     virtual void cancelVibrate(int32_t deviceId);
 
     virtual void requestReopenDevices();
