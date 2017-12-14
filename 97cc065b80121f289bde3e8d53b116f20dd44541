@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72c44859_2b3256f7",
+        "filename": "services/surfaceflinger/tests/fakehwc/FakeComposerClient.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1096171
+      },
+      "writtenOn": "2017-12-14T21:22:04Z",
+      "side": 1,
+      "message": "Attempted to fix a build error.",
+      "revId": "97cc065b80121f289bde3e8d53b116f20dd44541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
