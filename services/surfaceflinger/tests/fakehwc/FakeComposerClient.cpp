@@ -182,6 +182,12 @@ void FakeComposerClient::hotplugDisplay(Display display, IComposerCallback::Conn
     }
 }
 
+void FakeComposerClient::refreshDisplay(Display display) {
+    if (mCallbacksOn) {
+        mClient->onRefresh(display);
+    }
+}
+
 uint32_t FakeComposerClient::getMaxVirtualDisplayCount() {
     ALOGV("getMaxVirtualDisplayCount");
     return 1;
