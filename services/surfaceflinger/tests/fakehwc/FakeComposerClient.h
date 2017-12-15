@@ -16,8 +16,15 @@
 
 #pragma once
 
+#define HWC2_USE_CPP11
+#define HWC2_INCLUDE_STRINGIFICATION
 #include "ComposerClient.h"
+#undef HWC2_USE_CPP11
+#undef HWC2_INCLUDE_STRINGIFICATION
 #include "RenderState.h"
+
+// Needed for display type/ID enums
+#include <hardware/hwcomposer_defs.h>
 
 #include <utils/Condition.h>
 
@@ -39,6 +46,13 @@ class SurfaceComposerClient;
 } // namespace android
 
 namespace sftest {
+
+// NOTE: The ID's need to be exactly these. VR composer and parts of
+// the SurfaceFlinger assume the display IDs to have these values
+// despite the enum being documented as a display type.
+// TODO: Reference to actual documentation
+constexpr Display PRIMARY_DISPLAY = static_cast<Display>(HWC_DISPLAY_PRIMARY);
+constexpr Display EXTERNAL_DISPLAY = static_cast<Display>(HWC_DISPLAY_EXTERNAL);
 
 class FakeComposerClient : public ComposerBase {
 public:
@@ -128,6 +142,7 @@ public:
     Layer getLayer(size_t index) const;
 
     void hotplugDisplay(Display display, IComposerCallback::Connection state);
+    void refreshDisplay(Display display);
 
 private:
     LayerImpl& getLayerImpl(Layer handle);

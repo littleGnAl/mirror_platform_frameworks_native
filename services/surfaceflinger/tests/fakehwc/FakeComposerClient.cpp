@@ -36,7 +36,6 @@
 #include <thread>
 
 constexpr Config NULL_DISPLAY_CONFIG = static_cast<Config>(0);
-constexpr Display DEFAULT_DISPLAY = static_cast<Display>(1);
 
 using namespace sftest;
 
@@ -172,13 +171,19 @@ void FakeComposerClient::enableCallback(bool enable) {
     ALOGV("enableCallback");
     mCallbacksOn = enable;
     if (mCallbacksOn) {
-        mClient->onHotplug(DEFAULT_DISPLAY, IComposerCallback::Connection::CONNECTED);
+        mClient->onHotplug(PRIMARY_DISPLAY, IComposerCallback::Connection::CONNECTED);
     }
 }
 
 void FakeComposerClient::hotplugDisplay(Display display, IComposerCallback::Connection state) {
     if (mCallbacksOn) {
         mClient->onHotplug(display, state);
+    }
+}
+
+void FakeComposerClient::refreshDisplay(Display display) {
+    if (mCallbacksOn) {
+        mClient->onRefresh(display);
     }
 }
 
@@ -511,7 +516,7 @@ void FakeComposerClient::requestVSync(uint64_t vsyncTime) {
         if (mSurfaceComposer != nullptr) {
             mSurfaceComposer->injectVSync(timestamp);
         } else {
-            mClient->onVsync(DEFAULT_DISPLAY, timestamp);
+            mClient->onVsync(PRIMARY_DISPLAY, timestamp);
         }
     }
 }

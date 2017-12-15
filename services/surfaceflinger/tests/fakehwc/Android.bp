@@ -6,6 +6,9 @@ cc_test {
          "FakeComposerUtils.cpp",
          "SFFakeHwc_test.cpp"
     ],
+    cflags: [
+        "-DUSE_HWC2",
+    ],
     shared_libs: [
         "libcutils",
         "libutils",
