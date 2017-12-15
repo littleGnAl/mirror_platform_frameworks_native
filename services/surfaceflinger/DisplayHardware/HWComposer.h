@@ -139,7 +139,7 @@ public:
     // DisplayDevice::DisplayType of the display is returned as an output param.
     bool onVsync(hwc2_display_t displayId, int64_t timestamp,
                  int32_t* outDisplay);
-    void onHotplug(hwc2_display_t displayId, HWC2::Connection connection);
+    void onHotplug(hwc2_display_t displayId, int32_t displayType, HWC2::Connection connection);
 
     void setVsyncEnabled(int32_t displayId, HWC2::Vsync enabled);
 
@@ -165,6 +165,9 @@ public:
     void dump(String8& out) const;
 
     android::Hwc2::Composer* getComposer() const { return mHwcDevice->getComposer(); }
+
+    bool getHwcDisplayId(int32_t displayId, hwc2_display_t* outId) const;
+
 private:
     static const int32_t VIRTUAL_DISPLAY_ID_BASE = 2;
 
