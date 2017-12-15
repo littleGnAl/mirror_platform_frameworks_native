@@ -64,14 +64,12 @@ class Layer;
 // from different hardware composer instances.
 class ComposerCallback {
  public:
-    virtual void onHotplugReceived(int32_t sequenceId, hwc2_display_t display,
-                                   Connection connection,
-                                   bool primaryDisplay) = 0;
-    virtual void onRefreshReceived(int32_t sequenceId,
-                                   hwc2_display_t display) = 0;
-    virtual void onVsyncReceived(int32_t sequenceId, hwc2_display_t display,
-                                 int64_t timestamp) = 0;
-    virtual ~ComposerCallback() = default;
+     virtual void onHotplugReceived(int32_t sequenceId, hwc2_display_t display,
+                                    Connection connection) = 0;
+     virtual void onRefreshReceived(int32_t sequenceId, hwc2_display_t display) = 0;
+     virtual void onVsyncReceived(int32_t sequenceId, hwc2_display_t display,
+                                  int64_t timestamp) = 0;
+     virtual ~ComposerCallback() = default;
 };
 
 // C++ Wrapper around hwc2_device_t. Load all functions pointers
