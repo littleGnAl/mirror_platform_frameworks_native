@@ -819,6 +819,12 @@ private:
 #endif
 
     float mSaturation = 1.0f;
+
+public:
+    int getHwOrientation() { return mHwOrientation; }
+private:
+    // for phyical panel orientation info
+    int mHwOrientation;
 };
 }; // namespace android
 
