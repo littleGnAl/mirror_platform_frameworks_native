@@ -16,6 +16,24 @@
       "revId": "28b48f29d5c76f1ef097904d3bc3c5c0cd5dadb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32882504_48769294",
+        "filename": "libs/math/tests/mat_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2017-12-27T23:19:51Z",
+      "side": 0,
+      "message": "OK, will do so for the rest of constructors as well.",
+      "parentUuid": "6dd59852_7ada7700",
+      "revId": "28b48f29d5c76f1ef097904d3bc3c5c0cd5dadb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
