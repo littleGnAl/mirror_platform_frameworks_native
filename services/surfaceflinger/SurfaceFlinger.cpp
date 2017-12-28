@@ -779,6 +779,7 @@ status_t SurfaceFlinger::getDisplayConfigs(const sp<IBinder>& display,
 
     ConditionalLock _l(mStateLock,
             std::this_thread::get_id() != mMainThreadId);
+    const auto& activeConfig = getHwComposer().getActiveConfig(type);
     for (const auto& hwConfig : getHwComposer().getConfigs(type)) {
         DisplayInfo info = DisplayInfo();
 
@@ -837,6 +838,17 @@ status_t SurfaceFlinger::getDisplayConfigs(const sp<IBinder>& display,
         info.secure = true;
 
         configs->push_back(info);
+
+        // Update the active config index
+        if (hwConfig == activeConfig) {
+            sp<DisplayDevice> device(getDisplayDevice(display));
+            if (device != NULL) {
+                int index = configs->size()-1;
+                if (device->getActiveConfig() != index) {
+                    device->setActiveConfig(index);
+                }
+            }
+        }
     }
 
     return NO_ERROR;
