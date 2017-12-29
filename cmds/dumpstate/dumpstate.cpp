@@ -91,6 +91,9 @@ static const std::string TOMBSTONE_FILE_PREFIX = "tombstone_";
 static const std::string ANR_DIR = "/data/anr/";
 static const std::string ANR_FILE_PREFIX = "anr_";
 
+// If enabled, use "logcat -b kernel" instead of "dmesg"
+static constexpr const char* PROPERTY_LOG_PERSIST = "ro.logd.kernel";
+
 struct DumpData {
     std::string name;
     int fd;
@@ -828,6 +831,17 @@ static void DoKmsg() {
     }
 }
 
+static void DoKernelLogcat() {
+    unsigned long timeout_ms = logcat_timeout("kernel");
+    if (timeout_ms < 20000) {
+        timeout_ms = 20000;
+    }
+    RunCommand("KERNEL LOG",
+               {"logcat", "-b", "kernel", "-v", "threadtime", "-v", "printable", "-v", "uid",
+                        "-d", "*:v"},
+               CommandOptions::WithTimeoutInMs(timeout_ms).Build());
+}
+
 static void DoLogcat() {
     unsigned long timeout_ms;
     // DumpFile("EVENT LOG TAGS", "/etc/event-log-tags");
@@ -1106,7 +1120,12 @@ static void dumpstate() {
         RunCommand("LSMOD", {"lsmod"});
     }
 
-    do_dmesg();
+    if (__android_logger_property_get_bool(PROPERTY_LOG_PERSIST,
+            BOOL_DEFAULT_TRUE | BOOL_DEFAULT_FLAG_ENG | BOOL_DEFAULT_FLAG_SVELTE)) {
+        DoKernelLogcat();
+    } else {
+        do_dmesg();
+    }
 
     RunCommand("LIST OF OPEN FILES", {"lsof"}, CommandOptions::AS_ROOT);
     for_each_pid(do_showmap, "SMAPS OF ALL PROCESSES");
