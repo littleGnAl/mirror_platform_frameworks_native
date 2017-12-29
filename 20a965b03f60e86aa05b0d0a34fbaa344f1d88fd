@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffaeeae4_98f3fc59",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2017-12-29T02:23:46Z",
+      "side": 1,
+      "message": "This needs to be changed to 10 -\u003e SEC_TO_MSEC(10). Missed this change in my initial change and had to fix it later. Can you cherry-pick this as well ag/3296185? Or do you just want aosp to compile?",
+      "range": {
+        "startLine": 1190,
+        "startChar": 15,
+        "endLine": 1190,
+        "endChar": 17
+      },
+      "revId": "20a965b03f60e86aa05b0d0a34fbaa344f1d88fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1687eb1_9da76425",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2017-12-29T02:23:46Z",
+      "side": 1,
+      "message": "10 -\u003e SEC_TO_MSEC(10)",
+      "range": {
+        "startLine": 1262,
+        "startChar": 87,
+        "endLine": 1262,
+        "endChar": 88
+      },
+      "revId": "20a965b03f60e86aa05b0d0a34fbaa344f1d88fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71dd9a9_5427455a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2017-12-29T02:23:46Z",
+      "side": 1,
+      "message": "10 -\u003e SEC_TO_MSEC(10)",
+      "range": {
+        "startLine": 1263,
+        "startChar": 87,
+        "endLine": 1263,
+        "endChar": 89
+      },
+      "revId": "20a965b03f60e86aa05b0d0a34fbaa344f1d88fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
