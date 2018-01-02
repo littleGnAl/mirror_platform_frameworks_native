@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "930b9798_62ae84b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-01-02T22:28:37Z",
+      "side": 1,
+      "message": "Yes, see my first comment where the CL was marked as \"presubmit ready\":\nHad to modify it a bit to not include priority stuff and proto stuff.",
+      "parentUuid": "a50f7c4f_c30c3844",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "ada806d2f669861d52bf526cd8a1adcf03f5829a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45539642_d57331fb",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 3
