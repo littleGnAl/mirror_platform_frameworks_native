@@ -955,6 +955,17 @@ status_t BufferQueueProducer::queueBuffer(int slot,
         item.mGraphicBuffer.clear();
     }
 
+    // Update and get FrameEventHistory before onFrameAvailable().
+    nsecs_t postedTime = systemTime(SYSTEM_TIME_MONOTONIC);
+    NewFrameEventsEntry newFrameEventsEntry = {
+        currentFrameNumber,
+        postedTime,
+        requestedPresentTimestamp,
+        std::move(acquireFenceTime)
+    };
+    addAndGetFrameTimestamps(&newFrameEventsEntry,
+            getFrameTimestamps ? &output->frameTimestamps : nullptr);
+
     // Don't send the slot number through the callback since the consumer shouldn't need it
     item.mSlot = BufferItem::INVALID_BUFFER_SLOT;
 
@@ -994,17 +1005,6 @@ status_t BufferQueueProducer::queueBuffer(int slot,
         // small trade-off in favor of latency rather than throughput.
         lastQueuedFence->waitForever("Throttling EGL Production");
     }
-
-    // Update and get FrameEventHistory.
-    nsecs_t postedTime = systemTime(SYSTEM_TIME_MONOTONIC);
-    NewFrameEventsEntry newFrameEventsEntry = {
-        currentFrameNumber,
-        postedTime,
-        requestedPresentTimestamp,
-        std::move(acquireFenceTime)
-    };
-    addAndGetFrameTimestamps(&newFrameEventsEntry,
-            getFrameTimestamps ? &output->frameTimestamps : nullptr);
 
     return NO_ERROR;
 }
