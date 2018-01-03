@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fe483caf_7ad7087a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2018-01-03T00:19:35Z",
+      "side": 1,
+      "message": "This line can be removed. It was added by mistake.",
+      "parentUuid": "1e4616fc_9790a706",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 56
+      },
+      "revId": "ada806d2f669861d52bf526cd8a1adcf03f5829a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a50f7c4f_c30c3844",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -83,6 +107,30 @@
       "writtenOn": "2018-01-02T22:25:13Z",
       "side": 1,
       "message": "probably should have been done with std:chrono ...",
+      "range": {
+        "startLine": 205,
+        "startChar": 20,
+        "endLine": 205,
+        "endChar": 43
+      },
+      "revId": "ada806d2f669861d52bf526cd8a1adcf03f5829a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38c32bee_dbe9a780",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2018-01-03T00:19:35Z",
+      "side": 1,
+      "message": "Agreed. Dumpsys and parts of dumpstate is being refactored and will use std:chrono where possible. See ag/3387166",
+      "parentUuid": "45539642_d57331fb",
       "range": {
         "startLine": 205,
         "startChar": 20,
