@@ -1025,6 +1025,9 @@ EGLBoolean eglMakeCurrent(  EGLDisplay dpy, EGLSurface draw,
             egl_tls_t::setContext(EGL_NO_CONTEXT);
         }
     } else {
+        // this will ALOGE the error
+        egl_connection_t* const cnx = &gEGLImpl;
+        result = setError(cnx->egl.eglGetError(), EGL_FALSE);
 
         if (cur_c != NULL) {
             // Force return to current context for drivers that cannot handle errors
@@ -1057,9 +1060,6 @@ EGLBoolean eglMakeCurrent(  EGLDisplay dpy, EGLSurface draw,
                 ALOGE("Could not restore original EGL context");
             }
         }
-        // this will ALOGE the error
-        egl_connection_t* const cnx = &gEGLImpl;
-        result = setError(cnx->egl.eglGetError(), (EGLBoolean)EGL_FALSE);
     }
     return result;
 }
