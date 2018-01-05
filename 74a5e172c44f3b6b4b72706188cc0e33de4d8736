@@ -22,6 +22,30 @@
       "revId": "74a5e172c44f3b6b4b72706188cc0e33de4d8736",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b903267_98793499",
+        "filename": "libs/ui/include/ui/Rect.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2018-01-05T00:43:12Z",
+      "side": 1,
+      "message": "The approximation here isn\u0027t really where we fix the problem. The big win in this CL is that we store things as floats instead of truncating to/expanding from integers in the middle of the calculation. By the point we\u0027re performing the rounding here, we should be well within 0.5f of the actual integer coordinates, so the slight difference between this method and the slightly-more-correct round-to-nearest-even method should be negligible.",
+      "parentUuid": "6b534f57_3f43b62b",
+      "range": {
+        "startLine": 74,
+        "startChar": 41,
+        "endLine": 74,
+        "endChar": 54
+      },
+      "revId": "74a5e172c44f3b6b4b72706188cc0e33de4d8736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
