@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b534f57_3f43b62b",
+        "filename": "libs/ui/include/ui/Rect.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2018-01-05T00:35:10Z",
+      "side": 1,
+      "message": "Is there a way to \"prove\" this approximation doesn\u0027t have an issue?\nOtherwise sounds like we\u0027ve only reduced the occurrence rate and made it really hard to repro.",
+      "range": {
+        "startLine": 74,
+        "startChar": 41,
+        "endLine": 74,
+        "endChar": 54
+      },
+      "revId": "74a5e172c44f3b6b4b72706188cc0e33de4d8736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
