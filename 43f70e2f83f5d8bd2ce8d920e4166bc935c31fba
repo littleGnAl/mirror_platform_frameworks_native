@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49dd2f13_f0867597",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-01-05T17:09:27Z",
+      "side": 1,
+      "message": "We recently increased the timeout to 50ms and introduced a constant - please CP ag/3378693 into AOSP first and then use that constant here",
+      "range": {
+        "startLine": 836,
+        "startChar": 21,
+        "endLine": 836,
+        "endChar": 26
+      },
+      "revId": "43f70e2f83f5d8bd2ce8d920e4166bc935c31fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c568c7b7_4bd32783",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-01-05T17:09:27Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure if this is indented right, please make sure to run:\n\ngit clang-format --style\u003dfile HEAD~",
+      "range": {
+        "startLine": 838,
+        "startChar": 4,
+        "endLine": 841,
+        "endChar": 37
+      },
+      "revId": "43f70e2f83f5d8bd2ce8d920e4166bc935c31fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
