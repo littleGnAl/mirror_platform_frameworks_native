@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be3d4c03_9e907c3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1096171
+      },
+      "writtenOn": "2018-01-08T17:48:01Z",
+      "side": 1,
+      "message": "In addition to Change-Id, try adding\n\n  Merged-In: Id498b2a87e7eb50f64e0af1533d22c52d9bc0942\n\nas well.",
+      "revId": "c65ee8b7234810757d694f7114cfafd321af04e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
