@@ -46,6 +46,30 @@
       "revId": "3481c9a54213f2ad708aa2eaff2c327002b77072",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51affa23_c2cd05fb",
+        "filename": "cmds/lshal/DebugCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-01-08T23:03:05Z",
+      "side": 1,
+      "message": "\"This case should never really be hit here\"\nYeah, because when isIdentifier() is true, then the whole thing must only match the regex [a-zA-Z0-9]+ , thus isFullyQualified will be false.\n\nAnyway, it\u0027s fine :)",
+      "parentUuid": "131d927d_6b1027c0",
+      "range": {
+        "startLine": 55,
+        "startChar": 29,
+        "endLine": 55,
+        "endChar": 54
+      },
+      "revId": "3481c9a54213f2ad708aa2eaff2c327002b77072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
