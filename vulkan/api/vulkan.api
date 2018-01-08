@@ -28,7 +28,7 @@ import platform "platform.api"
 // API version (major.minor.patch)
 define VERSION_MAJOR 1
 define VERSION_MINOR 0
-define VERSION_PATCH 66
+define VERSION_PATCH 67
 
 // API limits
 define VK_MAX_PHYSICAL_DEVICE_NAME_SIZE 256
@@ -331,6 +331,10 @@ define NULL_HANDLE 0
 // 100
 @extension("VK_EXT_discard_rectangles") define VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION 1
 @extension("VK_EXT_discard_rectangles") define VK_EXT_DISCARD_RECTANGLES_EXTENSION_NAME "VK_EXT_discard_rectangles"
+
+// 102
+@extension("VK_EXT_conservative_rasterization") define VK_EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION 1
+@extension("VK_EXT_conservative_rasterization") define VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME "VK_EXT_conservative_rasterization"
 
 // 105
 @extension("VK_EXT_swapchain_colorspace") define VK_EXT_SWAPCHAIN_COLORSPACE_SPEC_VERSION 3
@@ -1327,6 +1331,10 @@ enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT  = 1000099000,
     VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT  = 1000099001,
 
+    //@extension("VK_EXT_conservative_rasterization") // 102
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT = 1000101000,
+    VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT = 1000101001,
+
     //@extension("VK_EXT_hdr_metadata") // 106
     VK_STRUCTURE_TYPE_HDR_METADATA_EXT                          = 1000105000,
 
@@ -1727,6 +1735,13 @@ enum VkViewportCoordinateSwizzleNV {
 enum VkDiscardRectangleModeEXT {
     VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT = 0,
     VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT = 1,
+}
+
+@extension("VK_EXT_conservative_rasterization") // 102
+enum VkConservativeRasterizationModeEXT {
+    VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT         = 0,
+    VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT     = 1,
+    VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT    = 2,
 }
 
 @extension("VK_KHR_maintenance2") // 118
@@ -2570,6 +2585,12 @@ type VkFlags VkPipelineViewportSwizzleStateCreateFlagsNV
 type VkFlags VkPipelineDiscardRectangleStateCreateFlagsEXT
 //@extension("VK_EXT_discard_rectangles") // 100
 //bitfield VkPipelineDiscardRectangleStateCreateFlagBitsEXT {
+//}
+
+@extension("VK_EXT_conservative_rasterization") // 102
+type VkFlags VkPipelineRasterizationConservativeStateCreateFlagsEXT
+//@extension("VK_EXT_conservative_rasterization") // 102
+//bitfield VkPipelineRasterizationConservativeStateCreateFlagBitsEXT {
 //}
 
 @extension("VK_KHR_external_fence_capabilities") // 113
@@ -4864,6 +4885,30 @@ class VkPipelineDiscardRectangleStateCreateInfoEXT {
     VkDiscardRectangleModeEXT                       discardRectangleMode
     u32                                             discardRectangleCount
     const VkRect2D*                                 pDiscardRectangles
+}
+
+@extension("VK_EXT_conservative_rasterization") // 102
+class VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
+    VkStructureType                             sType
+    void*                                       pNext
+    f32                                         primitiveOverestimationSize
+    f32                                         maxExtraPrimitiveOverestimationSize
+    f32                                         extraPrimitiveOverestimationSizeGranularity
+    VkBool32                                    primitiveUnderestimation
+    VkBool32                                    conservativePointAndLineRasterization
+    VkBool32                                    degenerateTrianglesRasterized
+    VkBool32                                    degenerateLinesRasterized
+    VkBool32                                    fullyCoveredFragmentShaderInputVariable
+    VkBool32                                    conservativeRasterizationPostDepthCoverage
+}
+
+@extension("VK_EXT_conservative_rasterization") // 102
+class VkPipelineRasterizationConservativeStateCreateInfoEXT {
+    VkStructureType                                           sType
+    const void*                                               pNext
+    VkPipelineRasterizationConservativeStateCreateFlagsEXT    flags
+    VkConservativeRasterizationModeEXT                        conservativeRasterizationMode
+    f32                                                       extraPrimitiveOverestimationSize
 }
 
 @extension("VK_EXT_hdr_metadata") // 106
