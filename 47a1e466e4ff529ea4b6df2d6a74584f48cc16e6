@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5a2b4f7_2cf81b87",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2018-01-09T22:07:28Z",
+      "side": 1,
+      "message": "Please add:\n\n  [[clang::warn_unused_result]] Error getActiveConfigIndex(int* outIndex) const;\n\nLike getActiveConfig, this should call into the composer implementation. Unlike it, it should return the index in the vector returned by getConfigs() that the active config would be in.\n\nHint: the implementation can use std::distance to determine the effective index from the position in the map.",
+      "revId": "47a1e466e4ff529ea4b6df2d6a74584f48cc16e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6e7e67_ec0357f8",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2018-01-09T22:07:28Z",
+      "side": 1,
+      "message": "Please add a new function here:\n\n  int HWComposer::getActiveConfigIndex(int32_t displayId) const;\n\nand much like getActiveConfig(), have it pass the call to the HWC2.h/.cpp implementation.",
+      "revId": "47a1e466e4ff529ea4b6df2d6a74584f48cc16e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f893722_082fc4a0",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1305,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2018-01-09T22:07:28Z",
+      "side": 1,
+      "message": "Note: I happen to have a change that consolidates DisplayDevice creation. This call will go away at some point in the near future leaving only the second creation call further down in this file.\n\nAfter creating a new DisplayDevice, initialize the active config here:\n\n  hw-\u003esetActiveConfig(getHwComposer().getActiveConfigIndex(DisplayDevice::DISPLAY_PRIMARY));",
+      "revId": "47a1e466e4ff529ea4b6df2d6a74584f48cc16e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "206f714a_2872c163",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2018-01-09T22:07:28Z",
+      "side": 1,
+      "message": "Add here:\n\n  if (!state.isVirtualDisplay()) {\n    hw-\u003esetActiveConfig(getHwComposer().getActiveConfigIndex(state.type));\n  }",
+      "revId": "47a1e466e4ff529ea4b6df2d6a74584f48cc16e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
