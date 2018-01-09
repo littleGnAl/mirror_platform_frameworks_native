@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fea8af2_2f2f4af1",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-09T09:35:39Z",
+      "side": 1,
+      "message": "Just like passing speed-profile aborts in dex2oat with update-input-vdex, please also abort if passing a compact dex level that is not None.",
+      "range": {
+        "startLine": 64,
+        "startChar": 55,
+        "endLine": 64,
+        "endChar": 79
+      },
+      "revId": "b41ffcc92bb91a68947bf715bca9ddab617795bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
