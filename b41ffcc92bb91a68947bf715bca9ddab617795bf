@@ -46,6 +46,30 @@
       "revId": "b41ffcc92bb91a68947bf715bca9ddab617795bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d35d0b5_d7e6a45b",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-09T17:27:23Z",
+      "side": 1,
+      "message": "Agree that this is a good idea, I\u0027m planning on bringing that check back.",
+      "parentUuid": "8482d6f5_a4e5cc87",
+      "range": {
+        "startLine": 64,
+        "startChar": 55,
+        "endLine": 64,
+        "endChar": 79
+      },
+      "revId": "b41ffcc92bb91a68947bf715bca9ddab617795bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
