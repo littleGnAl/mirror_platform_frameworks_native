@@ -137,6 +137,7 @@ uint64_t SurfaceFlinger::maxVirtualDisplaySize;
 bool SurfaceFlinger::hasSyncFramework;
 bool SurfaceFlinger::useVrFlinger;
 int64_t SurfaceFlinger::maxFrameBufferAcquiredBuffers;
+// TODO(courtneygo): Rename hasWideColorDisplay to clarify its actual meaning.
 bool SurfaceFlinger::hasWideColorDisplay;
 
 
@@ -2216,41 +2217,37 @@ void SurfaceFlinger::processDisplayChangesLocked() {
 
                 if (dispSurface != NULL) {
                     bool useWideColorMode = hasWideColorDisplay;
-                    if (state.isMainDisplay()) {
-                        bool hasWideColorModes = false;
-                        std::vector<android_color_mode_t> modes =
-                                getHwComposer().getColorModes(state.type);
-                        for (android_color_mode_t colorMode : modes) {
-                            switch (colorMode) {
-                                case HAL_COLOR_MODE_DISPLAY_P3:
-                                case HAL_COLOR_MODE_ADOBE_RGB:
-                                case HAL_COLOR_MODE_DCI_P3:
-                                    hasWideColorModes = true;
-                                    break;
-                                default:
-                                    break;
-                            }
+                    bool hasWideColorModes = false;
+                    std::vector<android_color_mode_t> modes =
+                            getHwComposer().getColorModes(state.type);
+                    for (android_color_mode_t colorMode : modes) {
+                        switch (colorMode) {
+                            case HAL_COLOR_MODE_DISPLAY_P3:
+                            case HAL_COLOR_MODE_ADOBE_RGB:
+                            case HAL_COLOR_MODE_DCI_P3:
+                                hasWideColorModes = true;
+                                break;
+                            default:
+                                break;
                         }
-                        useWideColorMode = hasWideColorModes && hasWideColorDisplay;
                     }
+                    useWideColorMode = hasWideColorModes && hasWideColorDisplay;
 
                     sp<DisplayDevice> hw =
                             new DisplayDevice(this, state.type, hwcId, state.isSecure, display,
                                               dispSurface, producer, mRenderEngine->getEGLConfig(),
                                               useWideColorMode);
 
-                    if (state.isMainDisplay()) {
-                        android_color_mode defaultColorMode = HAL_COLOR_MODE_NATIVE;
-                        if (useWideColorMode) {
-                            defaultColorMode = HAL_COLOR_MODE_SRGB;
-                        }
-                        setActiveColorModeInternal(hw, defaultColorMode);
-                        hw->setCompositionDataSpace(HAL_DATASPACE_UNKNOWN);
+                    android_color_mode defaultColorMode = HAL_COLOR_MODE_NATIVE;
+                    if (useWideColorMode) {
+                        defaultColorMode = HAL_COLOR_MODE_SRGB;
                     }
-
+                    setActiveColorModeInternal(hw, defaultColorMode);
+                    hw->setCompositionDataSpace(HAL_DATASPACE_UNKNOWN);
                     hw->setLayerStack(state.layerStack);
                     hw->setProjection(state.orientation, state.viewport, state.frame);
                     hw->setDisplayName(state.displayName);
+
                     mDisplays.add(display, hw);
                     if (!state.isVirtualDisplay()) {
                         mEventThread->onHotplugReceived(state.type, true);
