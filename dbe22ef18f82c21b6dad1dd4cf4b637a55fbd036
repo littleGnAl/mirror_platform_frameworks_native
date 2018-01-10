@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6a7efe0b_b0ea3a66",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2302,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-10T22:02:35Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct.  To answer the security concern of incoming data, yes, we don\u0027t have any protection here but trust the system. But if it\u0027s compromised, upon reboot before any apps run, we will verify the root hash signature (and the cert has to match the one in /system).  The app will be removed if it does not verify.",
+      "parentUuid": "d4e02fe0_5932966f",
+      "range": {
+        "startLine": 2302,
+        "startChar": 31,
+        "endLine": 2302,
+        "endChar": 40
+      },
+      "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecc6329c_9f1c02c1",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce02544f_8284db30",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2304,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-10T22:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecc6329c_9f1c02c1",
+      "range": {
+        "startLine": 2304,
+        "startChar": 12,
+        "endLine": 2304,
+        "endChar": 23
+      },
+      "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +154,30 @@
       "writtenOn": "2018-01-10T21:55:44Z",
       "side": 1,
       "message": "Since you have a kernel locally, can you actually flesh out the ioctl() logic here?",
+      "parentUuid": "d6b0b0ef_9b1297a4",
+      "range": {
+        "startLine": 2306,
+        "startChar": 0,
+        "endLine": 2306,
+        "endChar": 40
+      },
+      "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2220f2da_c81d891b",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-10T22:02:35Z",
+      "side": 1,
+      "message": "I only have a drafting patch but is still waiting for the kernel engineer to make it actually work.\n\nDone by returning success if the feature is not enabled.",
       "parentUuid": "d6b0b0ef_9b1297a4",
       "range": {
         "startLine": 2306,
