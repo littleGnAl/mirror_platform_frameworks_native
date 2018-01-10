@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4e02fe0_5932966f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2302,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2018-01-10T21:55:44Z",
+      "side": 1,
+      "message": "Ah, nevermind, I just re-read the design document, and I understand that the framework is building the tree separately, and the tree isn\u0027t included anywhere in the APK, can you confirm that?",
+      "parentUuid": "c0520cac_b716c81f",
+      "range": {
+        "startLine": 2302,
+        "startChar": 31,
+        "endLine": 2302,
+        "endChar": 40
+      },
+      "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecc6329c_9f1c02c1",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2018-01-10T21:49:34Z",
       "side": 1,
       "message": "Per commit message, I\u0027d expect to see us checking the system property around this area?  (So we\u0027d return success when the feature isn\u0027t enabled.)",
+      "range": {
+        "startLine": 2306,
+        "startChar": 0,
+        "endLine": 2306,
+        "endChar": 40
+      },
+      "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a1e4740_cadd76a7",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2018-01-10T21:55:44Z",
+      "side": 1,
+      "message": "Since you have a kernel locally, can you actually flesh out the ioctl() logic here?",
+      "parentUuid": "d6b0b0ef_9b1297a4",
       "range": {
         "startLine": 2306,
         "startChar": 0,
