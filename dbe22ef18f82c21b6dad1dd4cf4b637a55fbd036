@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0520cac_b716c81f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2302,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2018-01-10T21:49:34Z",
+      "side": 1,
+      "message": "Hmm, the tree information is already inside the APK file, right?  Can we pass down a start/end range to ensure the data comes from exactly the APK itself, instead of a stream that risks the data coming from outside the APK?  (You could imagine someone feeding in a broken tree to effectively cause GmsCore to break.)\n\nAlso, how complex is the logic to have installd discover the offset of the signing block internally itself?",
+      "range": {
+        "startLine": 2302,
+        "startChar": 31,
+        "endLine": 2302,
+        "endChar": 40
+      },
+      "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc6329c_9f1c02c1",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2304,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2018-01-10T21:49:34Z",
+      "side": 1,
+      "message": "We don\u0027t use LDAPs in TODOs in the Android tree.",
+      "range": {
+        "startLine": 2304,
+        "startChar": 12,
+        "endLine": 2304,
+        "endChar": 23
+      },
+      "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6b0b0ef_9b1297a4",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2018-01-10T21:49:34Z",
+      "side": 1,
+      "message": "Per commit message, I\u0027d expect to see us checking the system property around this area?  (So we\u0027d return success when the feature isn\u0027t enabled.)",
+      "range": {
+        "startLine": 2306,
+        "startChar": 0,
+        "endLine": 2306,
+        "endChar": 40
+      },
+      "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
