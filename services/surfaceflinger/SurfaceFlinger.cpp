@@ -1291,6 +1291,7 @@ void SurfaceFlinger::createDefaultDisplayDevice() {
     sp<DisplayDevice> hw = new DisplayDevice(this, DisplayDevice::DISPLAY_PRIMARY, type, isSecure,
                                              token, fbs, producer, mRenderEngine->getEGLConfig(),
                                              hasWideColorModes && hasWideColorDisplay);
+    hw->setActiveConfig(getHwComposer().getActiveConfigIndex(DisplayDevice::DISPLAY_PRIMARY));
     mDisplays.add(token, hw);
     android_color_mode defaultColorMode = HAL_COLOR_MODE_NATIVE;
     if (hasWideColorModes && hasWideColorDisplay) {
@@ -2262,6 +2263,9 @@ void SurfaceFlinger::handleTransactionLocked(uint32_t transactionFlags)
                                                   dispSurface, producer,
                                                   mRenderEngine->getEGLConfig(),
                                                   hasWideColorDisplay);
+                        if (!state.isVirtualDisplay()) {
+                            hw->setActiveConfig(getHwComposer().getActiveConfigIndex(state.type));
+                        }
                         hw->setLayerStack(state.layerStack);
                         hw->setProjection(state.orientation,
                                 state.viewport, state.frame);

@@ -32,6 +32,7 @@
 
 #include <algorithm>
 #include <inttypes.h>
+#include <iterator>
 
 using android::Fence;
 using android::FloatRect;
@@ -340,6 +341,35 @@ Error Display::getActiveConfig(
         // Return no error, but the caller needs to check for a null pointer to
         // detect this case
         *outConfig = nullptr;
+    }
+
+    return Error::None;
+}
+
+Error Display::getActiveConfigIndex(int* outIndex) const
+{
+    ALOGV("[%" PRIu64 "] getActiveConfigIndex", mId);
+    hwc2_config_t configId = 0;
+    auto intError = mDevice.mComposer->getActiveConfig(mId, &configId);
+    auto error = static_cast<Error>(intError);
+
+    if (error != Error::None) {
+        ALOGE("Unable to get active config for mId:[%" PRIu64 "]", mId);
+        *outIndex = -1;
+        return error;
+    }
+
+    std::unordered_map<hwc2_config_t,
+            std::shared_ptr<const Config>>::const_iterator pos;
+    pos = mConfigs.find(configId);
+    if (pos != mConfigs.end()) {
+        *outIndex = std::distance(mConfigs.begin(), pos);
+    } else {
+        ALOGE("[%" PRIu64 "] getActiveConfig returned unknown config %u", mId,
+                configId);
+        // Return no error, but the caller needs to check for a negative index
+        // to detect this case
+        *outIndex = -1;
     }
 
     return Error::None;
