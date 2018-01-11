@@ -35,7 +35,6 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
-#include <map>
 
 namespace android {
     class Fence;
@@ -203,6 +202,8 @@ public:
     [[clang::warn_unused_result]] Error destroyLayer(Layer* layer);
     [[clang::warn_unused_result]] Error getActiveConfig(
             std::shared_ptr<const Config>* outConfig) const;
+    [[clang::warn_unused_result]] Error getActiveConfigIndex(
+            int* outIndex) const;
     [[clang::warn_unused_result]] Error getChangedCompositionTypes(
             std::unordered_map<Layer*, Composition>* outTypes);
     [[clang::warn_unused_result]] Error getColorModes(
@@ -277,9 +278,7 @@ private:
     bool mIsConnected;
     DisplayType mType;
     std::unordered_map<hwc2_layer_t, std::unique_ptr<Layer>> mLayers;
-    // The ordering in this map matters, for getConfigs(), when it is
-    // converted to a vector
-    std::map<hwc2_config_t, std::shared_ptr<const Config>> mConfigs;
+    std::unordered_map<hwc2_config_t, std::shared_ptr<const Config>> mConfigs;
 };
 
 // Convenience C++ class to access hwc2_device_t Layer functions directly.

@@ -154,6 +154,7 @@ public:
 
     std::shared_ptr<const HWC2::Display::Config>
             getActiveConfig(int32_t displayId) const;
+    int getActiveConfigIndex(int32_t displayId) const;
 
     std::vector<android_color_mode_t> getColorModes(int32_t displayId) const;
 
