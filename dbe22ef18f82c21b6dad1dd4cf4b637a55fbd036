@@ -188,6 +188,30 @@
       "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d9a9fc_74aacaaf",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2018-01-11T23:30:45Z",
+      "side": 1,
+      "message": "So just to confirm, per discussion in meeting yesterday, you need to merge the ioctl() logic here before IC deadline, even if the kernel isn\u0027t ready.\n\nDo you intend to have another CL with that ioctl() added before IC?",
+      "parentUuid": "2220f2da_c81d891b",
+      "range": {
+        "startLine": 2306,
+        "startChar": 0,
+        "endLine": 2306,
+        "endChar": 40
+      },
+      "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
