@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d730e4d9_d0c36bbb",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2304,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-11T00:33:42Z",
+      "side": 1,
+      "message": "I made a small change to not use bi-state, so that we have the flexibility to switch/migrate between potentially different implementation in the kernel once upstreamed.",
+      "range": {
+        "startLine": 2304,
+        "startChar": 28,
+        "endLine": 2304,
+        "endChar": 46
+      },
+      "revId": "fa7f304d4b6c23d070f23fe0c0afb8f8cb27c4cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
