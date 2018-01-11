@@ -212,6 +212,30 @@
       "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f5d01c_ee80194f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-11T23:38:17Z",
+      "side": 1,
+      "message": "Yes.  I\u0027m waiting for the kernel side to be ready.  Thanks for checking.",
+      "parentUuid": "c5d9a9fc_74aacaaf",
+      "range": {
+        "startLine": 2306,
+        "startChar": 0,
+        "endLine": 2306,
+        "endChar": 40
+      },
+      "revId": "dbe22ef18f82c21b6dad1dd4cf4b637a55fbd036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

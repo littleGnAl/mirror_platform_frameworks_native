@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "7ec923e6_2e50d07a",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2304,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-11T23:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "194f0181_322083f1",
+      "range": {
+        "startLine": 2304,
+        "startChar": 28,
+        "endLine": 2304,
+        "endChar": 46
+      },
+      "revId": "fa7f304d4b6c23d070f23fe0c0afb8f8cb27c4cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbda9f9a_6e7e9f1d",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 3
@@ -80,6 +104,24 @@
       "revId": "fa7f304d4b6c23d070f23fe0c0afb8f8cb27c4cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14616351_f51b1b40",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-11T23:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbda9f9a_6e7e9f1d",
+      "revId": "fa7f304d4b6c23d070f23fe0c0afb8f8cb27c4cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
