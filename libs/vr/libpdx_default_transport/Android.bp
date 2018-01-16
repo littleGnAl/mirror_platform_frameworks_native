@@ -5,6 +5,7 @@ cc_defaults {
         "-Wall",
         "-Wextra",
         "-Werror",
+        "-Wno-tautological-type-limit-compare",
     ],
 }
 

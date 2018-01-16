@@ -522,6 +522,7 @@ inline constexpr EncodingType EncodeType(const bool& value) {
 // and 'unsigned char'. Treating it as an unsigned 8-bit value is safe for
 // encoding purposes and nicely handles 7-bit ASCII encodings as FIXINT.
 inline constexpr EncodingType EncodeType(const char& value) {
+  // BUG? 'const char' < -128 is always false when char is signed char.
   if (value < static_cast<char>(1 << 7))
     return value;
   else
