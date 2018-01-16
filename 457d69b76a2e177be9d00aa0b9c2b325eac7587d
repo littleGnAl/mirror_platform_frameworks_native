@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27e039cc_fbea4389",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-16T20:55:07Z",
+      "side": 1,
+      "message": "I\u0027d retitle this change. The main part here is passing targetSdkVersion to installd/dexopt. The rev-ing to v4 is an otadexopt-specific side-effect (and thus I\u0027d put that as a line in the commit message body).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "457d69b76a2e177be9d00aa0b9c2b325eac7587d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f05d5ac_041f7594",
+        "filename": "cmds/installd/InstalldNativeService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-16T20:55:07Z",
+      "side": 1,
+      "message": "int32_t",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "457d69b76a2e177be9d00aa0b9c2b325eac7587d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a88a9d_1b37300f",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-16T20:55:07Z",
+      "side": 1,
+      "message": "At some point we should clean this up, considering that the binder code now is a clean int32_t.",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "457d69b76a2e177be9d00aa0b9c2b325eac7587d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
