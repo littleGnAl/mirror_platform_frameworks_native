@@ -80,6 +80,7 @@ cc_library {
         "-Wall",
         "-Wextra",
         "-Werror",
+        "-Wno-tautological-type-limit-compare",
     ],
     product_variables: {
         binder32bit: {
