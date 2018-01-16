@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6e45fd0f_786b985b",
+        "filename": "cmds/installd/InstalldNativeService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-01-16T22:13:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f05d5ac_041f7594",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "457d69b76a2e177be9d00aa0b9c2b325eac7587d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08e67027_3d7a478d",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2018-01-16T21:52:59Z",
       "side": 1,
       "message": "Why the -X and not --? (de2oat flags usually don\u0027t have -X).",
+      "range": {
+        "startLine": 326,
+        "startChar": 43,
+        "endLine": 326,
+        "endChar": 45
+      },
+      "revId": "457d69b76a2e177be9d00aa0b9c2b325eac7587d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f01ff814_67fd3663",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-01-16T22:13:14Z",
+      "side": 1,
+      "message": "I made it a runtime argument, which is where the property variable resides. Those you pass with `--runtime-arg -Xproperty:value` and they\u0027re different from dex2oat arguments. I will turn it into a dex2oat argument if you want, but this seemed like the right thing to do. Otherwise we get dex2oat parsing the argument, storing the value, setting up Runtime and immediately changing one of its properties, instead of setting up Runtime with the right value from the start.",
+      "parentUuid": "08e67027_3d7a478d",
       "range": {
         "startLine": 326,
         "startChar": 43,
