@@ -5,6 +5,7 @@ cc_library_static {
         "-Wall",
         "-Wextra",
         "-Werror",
+        "-Wno-tautological-type-limit-compare",
         "-DLOG_TAG=\"libpdx_uds\"",
         "-DTRACE=0",
     ],
@@ -18,6 +19,11 @@ cc_library_static {
         "ipc_helper.cpp",
         "service_endpoint.cpp",
     ],
+    arch: {
+        arm: {
+            instruction_set: "arm",
+        },
+    },
     static_libs: [
         "libcutils",
         "libbase",
@@ -35,6 +41,7 @@ cc_test {
         "-Wall",
         "-Wextra",
         "-Werror",
+        "-Wno-tautological-type-limit-compare",
     ],
     srcs: [
         "client_channel_tests.cpp",

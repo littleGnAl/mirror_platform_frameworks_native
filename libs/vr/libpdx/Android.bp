@@ -5,9 +5,15 @@ cc_library_static {
         "-Wall",
         "-Wextra",
         "-Werror",
+        "-Wno-tautological-type-limit-compare",
         "-DLOG_TAG=\"libpdx\"",
         "-DTRACE=0",
     ],
+    arch: {
+        arm: {
+            instruction_set: "arm",
+        },
+    },
     export_include_dirs: ["private"],
     local_include_dirs: ["private"],
     srcs: [
@@ -25,6 +31,7 @@ cc_test {
         "-Wall",
         "-Wextra",
         "-Werror",
+        "-Wno-tautological-type-limit-compare",
     ],
     srcs: [
         "client_tests.cpp",
@@ -53,6 +60,7 @@ cc_test {
         "-Wall",
         "-Wextra",
         "-Werror",
+        "-Wno-tautological-type-limit-compare",
         "-O2",
     ],
     srcs: [
