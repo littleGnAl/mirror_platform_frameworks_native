@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9015076b_8e10f265",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-16T22:14:01Z",
+      "side": 1,
+      "message": "Oh right, I agree no need to duplicate the flag.",
+      "parentUuid": "f01ff814_67fd3663",
+      "range": {
+        "startLine": 326,
+        "startChar": 43,
+        "endLine": 326,
+        "endChar": 45
+      },
+      "revId": "457d69b76a2e177be9d00aa0b9c2b325eac7587d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6a88a9d_1b37300f",
         "filename": "cmds/installd/dexopt.h",
         "patchSetId": 1
