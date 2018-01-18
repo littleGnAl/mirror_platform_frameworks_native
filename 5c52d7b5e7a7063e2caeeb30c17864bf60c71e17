@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ba78530_d5da8fa3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-01-18T22:01:25Z",
+      "side": 1,
+      "message": "That is peculiar. I have a phone that boots and dexopts with this CL. You are absolutely correct and I will investigate tomorrow.\n\nThat said, TreeHugger really is failing because of a conflict during merging:\nCONFLICT: Your changes failed to cherry-pick against build 4552340 (could not apply 2a5b261... Set DEXOPT_DISABLE_HIDDEN_API_CHECKS for system apps).",
+      "parentUuid": "283d3fb5_0b0b66f8",
+      "range": {
+        "startLine": 1785,
+        "startChar": 4,
+        "endLine": 1785,
+        "endChar": 45
+      },
+      "revId": "5c52d7b5e7a7063e2caeeb30c17864bf60c71e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51d8fbc2_9faf1646",
         "filename": "cmds/installd/installd_constants.h",
         "patchSetId": 3
