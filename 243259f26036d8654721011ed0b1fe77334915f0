@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77e53166_09e7e866",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2018-01-18T06:02:42Z",
+      "side": 1,
+      "message": "This really isn\u0027t the goal. The goal is to move our primary access control mechanism from an odd combo of seinux/unix to just selinux. Traceur app will continue to have permission (just as it always did). \n\nHistory: per-file selinux labeling of debugfs/tracefs is fairly new. As recently as Android M access control on debugfs was only possible through Unix permissions. Moving to selinux makes permissions static, and testing in CTS trivial.",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 64
+      },
+      "revId": "243259f26036d8654721011ed0b1fe77334915f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fd7537c_c065deeb",
+        "filename": "cmds/atrace/atrace_userdebug.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2018-01-18T06:02:42Z",
+      "side": 1,
+      "message": "How about \"Grant unix world read/write permissions to allow the Traceur app to enable kernel tracepoints. Access control to these files is now entirely in selinux policy.\"",
+      "range": {
+        "startLine": 4,
+        "startChar": 2,
+        "endLine": 4,
+        "endChar": 16
+      },
+      "revId": "243259f26036d8654721011ed0b1fe77334915f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
