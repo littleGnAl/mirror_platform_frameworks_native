@@ -812,8 +812,9 @@ void GLConsumer::computeCurrentTransformMatrixLocked() {
         GLC_LOGD("computeCurrentTransformMatrixLocked: "
                 "mCurrentTextureImage is NULL");
     }
+    Rect cropRect = getCurrentCropLocked();
     computeTransformMatrix(mCurrentTransformMatrix, buf,
-        isEglImageCroppable(mCurrentCrop) ? Rect::EMPTY_RECT : mCurrentCrop,
+        isEglImageCroppable(cropRect) ? Rect::EMPTY_RECT : cropRect,
         mCurrentTransform, mFilteringEnabled);
 }
 
@@ -943,9 +944,7 @@ sp<GraphicBuffer> GLConsumer::getCurrentBuffer(int* outSlot) const {
             nullptr : mCurrentTextureImage->graphicBuffer();
 }
 
-Rect GLConsumer::getCurrentCrop() const {
-    Mutex::Autolock lock(mMutex);
-
+Rect GLConsumer::getCurrentCropLocked() const {
     Rect outCrop = mCurrentCrop;
     if (mCurrentScalingMode == NATIVE_WINDOW_SCALING_MODE_SCALE_CROP) {
         uint32_t newWidth = static_cast<uint32_t>(mCurrentCrop.width());
@@ -984,6 +983,11 @@ Rect GLConsumer::getCurrentCrop() const {
     }
 
     return outCrop;
+}
+
+Rect GLConsumer::getCurrentCrop() const {
+    Mutex::Autolock lock(mMutex);
+    return getCurrentCropLocked();
 }
 
 uint32_t GLConsumer::getCurrentTransform() const {
