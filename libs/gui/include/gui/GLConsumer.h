@@ -368,6 +368,9 @@ private:
     // mCurrentTextureImage must not be NULL.
     void computeCurrentTransformMatrixLocked();
 
+    // getCurrentCrop returns the cropping rectangle of the current buffer.
+    Rect getCurrentCropLocked() const;
+
     // doGLFenceWaitLocked inserts a wait command into the OpenGL ES command
     // stream to ensure that it is safe for future OpenGL ES commands to
     // access the current texture buffer.
