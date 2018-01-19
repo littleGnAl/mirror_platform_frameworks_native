@@ -1,0 +1,9 @@
+Code-Review+2: Andreas Gampe <agampe@google.com>
+Verified+1: David Brazdil <dbrazdil@google.com>
+Autosubmit+1: David Brazdil <dbrazdil@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 19 Jan 2018 01:16:26 +0000
+Reviewed-on: https://android-review.googlesource.com/593135
+Project: platform/frameworks/native
+Branch: refs/heads/master
