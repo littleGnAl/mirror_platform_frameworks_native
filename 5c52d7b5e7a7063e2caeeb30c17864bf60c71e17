@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7bd5057a_6da7f2cb",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-01-19T11:35:00Z",
+      "side": 1,
+      "message": "Okay, the reason is that LOG_FATAL is defined as:\n\n  #if LOG_NDEBUG\n  #define LOG_FATAL(...) ((void)0)\n  #else\n  #define LOG_FATAL(...) LOG_ALWAYS_FATAL(__VA_ARGS__)\n  #endif\n\nand my userdebug build builds this with -DNDEBUG. I don\u0027t want to spend too much time digging into this. I presume this only kicks in for eng build - is that the intent? Or should this be changed to LOG_ALWAYS_FATAL?",
+      "parentUuid": "6ba78530_d5da8fa3",
+      "range": {
+        "startLine": 1785,
+        "startChar": 4,
+        "endLine": 1785,
+        "endChar": 45
+      },
+      "revId": "5c52d7b5e7a7063e2caeeb30c17864bf60c71e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51d8fbc2_9faf1646",
         "filename": "cmds/installd/installd_constants.h",
         "patchSetId": 3
