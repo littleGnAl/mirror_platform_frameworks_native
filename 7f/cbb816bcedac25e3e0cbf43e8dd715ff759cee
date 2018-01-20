@@ -1,0 +1,9 @@
+Code-Review+2: Calin Juravle <calin@google.com>
+Verified+1: David Brazdil <dbrazdil@google.com>
+Autosubmit+1: David Brazdil <dbrazdil@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Sat, 20 Jan 2018 12:50:48 +0000
+Reviewed-on: https://android-review.googlesource.com/592393
+Project: platform/frameworks/native
+Branch: refs/heads/master
