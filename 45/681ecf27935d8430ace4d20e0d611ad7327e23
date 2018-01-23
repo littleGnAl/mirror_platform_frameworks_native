@@ -1,0 +1,9 @@
+Code-Review+2: Xin Li <delphij@google.com>
+Verified+1: Keun Soo Yim <yim@google.com>
+Autosubmit+1: Keun Soo Yim <yim@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 23 Jan 2018 22:02:56 +0000
+Reviewed-on: https://android-review.googlesource.com/596819
+Project: platform/frameworks/native
+Branch: refs/heads/oreo-vts-dev
