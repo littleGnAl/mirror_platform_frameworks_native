@@ -370,20 +370,37 @@ private:
         }
     }
 
-    bool ReadArgumentsV2(int argc ATTRIBUTE_UNUSED, char** argv, bool versioned) {
+    void InitializeVersionedArgs(Parameters& parameters) {
+        // Set se_info to null. It is only relevant for secondary dex files, which we won't
+        // receive from a v1 A side.
+        parameters.se_info = nullptr;
+
+        // Set downgrade to false. It is only relevant when downgrading compiler
+        // filter, which is not the case during ota.
+        parameters.downgrade = false;
+
+        // Set target_sdk_version to 0, ie the platform SDK version. This is
+        // conservative and may force some classes to verify at runtime.
+        parameters.target_sdk_version = 0;
+    }
+
+    template <typename NextHandler>
+    int32_t ReadArguments(int argc ATTRIBUTE_UNUSED, char** argv, bool versioned, NextHandler fn) {
+        InitializeVersionedArgs(package_parameters_);
+
         size_t dexopt_index = versioned ? 3 : 2;
 
         // Check for "dexopt".
         if (argv[dexopt_index] == nullptr) {
             LOG(ERROR) << "Missing parameters";
-            return false;
+            return -1;
         }
         if (std::string("dexopt").compare(argv[dexopt_index]) != 0) {
             LOG(ERROR) << "Expected \"dexopt\"";
-            return false;
+            return -1;
         }
 
-        size_t param_index = 0;
+        int32_t param_index = 0;
         for (;; ++param_index) {
             const char* param = argv[dexopt_index + 1 + param_index];
             if (param == nullptr) {
@@ -436,198 +453,90 @@ private:
                     break;
 
                 default:
-                    LOG(ERROR) << "Too many arguments, got " << param;
-                    return false;
+                    if (!fn(param_index, param)) {
+                        return -1;
+                    }
+                    break;
             }
         }
+        return param_index;
+    }
 
-        // Set downgrade to false. It is only relevant when downgrading compiler
-        // filter, which is not the case during ota.
-        package_parameters_.downgrade = false;
+    static bool NoMoreArgsExpected(size_t param_index ATTRIBUTE_UNUSED,
+                            const char* param ATTRIBUTE_UNUSED) {
+        LOG(ERROR) << "Too many arguments, got " << param;
+        return false;
+    }
 
-        // Set target_sdk_version to 0, ie the platform SDK version. This is
-        // conservative and may force some classes to verify at runtime.
-        package_parameters_.target_sdk_version = 0;
-
+    template <typename NextHandler>
+    int32_t ReadArgumentsV2(int argc, char** argv, bool versioned, NextHandler fn) {
+        InitializeVersionedArgs(package_parameters_);
+        auto next_handler = [&](size_t param_index, const char* param) {
+            return fn(param_index, param);
+        };
+        return ReadArguments(argc, argv, versioned, next_handler);
+    }
+    bool ReadArgumentsV2(int argc, char** argv, bool versioned) {
+        int32_t param_index = ReadArgumentsV2(argc, argv, versioned, NoMoreArgsExpected);
+        if (param_index == -1) {
+            return false;
+        }
         if (param_index != 11) {
             LOG(ERROR) << "Not enough parameters";
             return false;
         }
-
         return true;
     }
 
-    bool ReadArgumentsV3(int argc ATTRIBUTE_UNUSED, char** argv) {
-        size_t dexopt_index = 3;
-
-        // Check for "dexopt".
-        if (argv[dexopt_index] == nullptr) {
-            LOG(ERROR) << "Missing parameters";
-            return false;
-        }
-        if (std::string("dexopt").compare(argv[dexopt_index]) != 0) {
-            LOG(ERROR) << "Expected \"dexopt\"";
-            return false;
-        }
-
-        size_t param_index = 0;
-        for (;; ++param_index) {
-            const char* param = argv[dexopt_index + 1 + param_index];
-            if (param == nullptr) {
-                break;
-            }
-
+    template <typename NextHandler>
+    int32_t ReadArgumentsV3(int argc, char** argv, NextHandler fn) {
+        auto next_handler = [&](size_t param_index, const char* param) {
             switch (param_index) {
-                case 0:
-                    package_parameters_.apk_path = param;
-                    break;
-
-                case 1:
-                    package_parameters_.uid = atoi(param);
-                    break;
-
-                case 2:
-                    package_parameters_.pkgName = param;
-                    break;
-
-                case 3:
-                    package_parameters_.instruction_set = param;
-                    break;
-
-                case 4:
-                    package_parameters_.dexopt_needed = atoi(param);
-                    break;
-
-                case 5:
-                    package_parameters_.oat_dir = param;
-                    break;
-
-                case 6:
-                    package_parameters_.dexopt_flags = atoi(param);
-                    break;
-
-                case 7:
-                    package_parameters_.compiler_filter = param;
-                    break;
-
-                case 8:
-                    package_parameters_.volume_uuid = ParseNull(param);
-                    break;
-
-                case 9:
-                    package_parameters_.shared_libraries = ParseNull(param);
-                    break;
-
-                case 10:
-                    package_parameters_.se_info = ParseNull(param);
-                    break;
-
                 case 11:
                     package_parameters_.downgrade = ParseBool(param);
-                    break;
+                    return true;
 
                 default:
-                    LOG(ERROR) << "Too many arguments, got " << param;
-                    return false;
+                    return fn(param_index, param);
             }
+        };
+        return ReadArgumentsV2(argc, argv, true, next_handler);
+    }
+    bool ReadArgumentsV3(int argc, char** argv) {
+        int32_t param_index = ReadArgumentsV3(argc, argv, NoMoreArgsExpected);
+        if (param_index == -1) {
+            return false;
         }
-
-        // Set target_sdk_version to 0, ie the platform SDK version. This is
-        // conservative and may force some classes to verify at runtime.
-        package_parameters_.target_sdk_version = 0;
-
         if (param_index != 12) {
             LOG(ERROR) << "Not enough parameters";
             return false;
         }
-
         return true;
     }
 
-    bool ReadArgumentsV4(int argc ATTRIBUTE_UNUSED, char** argv) {
-        size_t dexopt_index = 3;
-
-        // Check for "dexopt".
-        if (argv[dexopt_index] == nullptr) {
-            LOG(ERROR) << "Missing parameters";
-            return false;
-        }
-        if (std::string("dexopt").compare(argv[dexopt_index]) != 0) {
-            LOG(ERROR) << "Expected \"dexopt\"";
-            return false;
-        }
-
-        size_t param_index = 0;
-        for (;; ++param_index) {
-            const char* param = argv[dexopt_index + 1 + param_index];
-            if (param == nullptr) {
-                break;
-            }
-
+    template <typename NextHandler>
+    int32_t ReadArgumentsV4(int argc, char** argv, NextHandler fn) {
+        auto next_handler = [&](size_t param_index, const char* param) {
             switch (param_index) {
-                case 0:
-                    package_parameters_.apk_path = param;
-                    break;
-
-                case 1:
-                    package_parameters_.uid = atoi(param);
-                    break;
-
-                case 2:
-                    package_parameters_.pkgName = param;
-                    break;
-
-                case 3:
-                    package_parameters_.instruction_set = param;
-                    break;
-
-                case 4:
-                    package_parameters_.dexopt_needed = atoi(param);
-                    break;
-
-                case 5:
-                    package_parameters_.oat_dir = param;
-                    break;
-
-                case 6:
-                    package_parameters_.dexopt_flags = atoi(param);
-                    break;
-
-                case 7:
-                    package_parameters_.compiler_filter = param;
-                    break;
-
-                case 8:
-                    package_parameters_.volume_uuid = ParseNull(param);
-                    break;
-
-                case 9:
-                    package_parameters_.shared_libraries = ParseNull(param);
-                    break;
-
-                case 10:
-                    package_parameters_.se_info = ParseNull(param);
-                    break;
-
-                case 11:
-                    package_parameters_.downgrade = ParseBool(param);
-                    break;
-
                 case 12:
                     package_parameters_.target_sdk_version = atoi(param);
-                    break;
+                    return true;
 
                 default:
-                    LOG(ERROR) << "Too many arguments, got " << param;
-                    return false;
+                    return fn(param_index, param);
             }
+        };
+        return ReadArgumentsV3(argc, argv, next_handler);
+    }
+    bool ReadArgumentsV4(int argc ATTRIBUTE_UNUSED, char** argv) {
+        int32_t param_index = ReadArgumentsV4(argc, argv, NoMoreArgsExpected);
+        if (param_index == -1) {
+            return false;
         }
-
         if (param_index != 13) {
             LOG(ERROR) << "Not enough parameters";
             return false;
         }
-
         return true;
     }
 
@@ -635,7 +544,10 @@ private:
         return (input & old_mask) != 0 ? new_mask : 0;
     }
 
+    // V1 is special, as a lot more mapping has to be done.
     bool ReadArgumentsV1(int argc ATTRIBUTE_UNUSED, char** argv) {
+        InitializeVersionedArgs(package_parameters_);
+
         // Check for "dexopt".
         if (argv[2] == nullptr) {
             LOG(ERROR) << "Missing parameters";
@@ -725,18 +637,6 @@ private:
             LOG(ERROR) << "Not enough parameters";
             return false;
         }
-
-        // Set se_info to null. It is only relevant for secondary dex files, which we won't
-        // receive from a v1 A side.
-        package_parameters_.se_info = nullptr;
-
-        // Set downgrade to false. It is only relevant when downgrading compiler
-        // filter, which is not the case during ota.
-        package_parameters_.downgrade = false;
-
-        // Set target_sdk_version to 0, ie the platform SDK version. This is
-        // conservative and may force some classes to verify at runtime.
-        package_parameters_.target_sdk_version = 0;
 
         return true;
     }
