@@ -58,6 +58,7 @@ status_t LayerDebugInfo::writeToParcel(Parcel* parcel) const {
     RETURN_ON_ERROR(parcel->writeBool(mRefreshPending));
     RETURN_ON_ERROR(parcel->writeBool(mIsOpaque));
     RETURN_ON_ERROR(parcel->writeBool(mContentDirty));
+    RETURN_ON_ERROR(parcel->writeBool(mSecure));
     return NO_ERROR;
 }
 
@@ -96,6 +97,7 @@ status_t LayerDebugInfo::readFromParcel(const Parcel* parcel) {
     RETURN_ON_ERROR(parcel->readBool(&mRefreshPending));
     RETURN_ON_ERROR(parcel->readBool(&mIsOpaque));
     RETURN_ON_ERROR(parcel->readBool(&mContentDirty));
+    RETURN_ON_ERROR(parcel->readBool(&mSecure));
     return NO_ERROR;
 }
 
@@ -116,8 +118,8 @@ std::string to_string(const LayerDebugInfo& info) {
     result.appendFormat("isOpaque=%1d, invalidate=%1d, ", info.mIsOpaque, info.mContentDirty);
     result.appendFormat("dataspace=%s, ", dataspaceDetails(info.mDataSpace).c_str());
     result.appendFormat("pixelformat=%s, ", decodePixelFormat(info.mPixelFormat).c_str());
-    result.appendFormat("alpha=%.3f, flags=0x%08x, ",
-            static_cast<double>(info.mAlpha), info.mFlags);
+    result.appendFormat("alpha=%.3f, flags=0x%08x, secure=%1d, ",
+            static_cast<double>(info.mAlpha), info.mFlags, info.mSecure);
     result.appendFormat("tr=[%.2f, %.2f][%.2f, %.2f]",
             static_cast<double>(info.mMatrix[0][0]), static_cast<double>(info.mMatrix[0][1]),
             static_cast<double>(info.mMatrix[1][0]), static_cast<double>(info.mMatrix[1][1]));
