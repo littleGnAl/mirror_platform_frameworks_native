@@ -2477,6 +2477,7 @@ LayerDebugInfo Layer::getLayerDebugInfo() const {
     info.mRefreshPending = isBufferLatched();
     info.mIsOpaque = isOpaque(ds);
     info.mContentDirty = contentDirty;
+    info.mSecure = isSecure();
     return info;
 }
 
