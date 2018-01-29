@@ -66,6 +66,7 @@ public:
     bool mRefreshPending = false;
     bool mIsOpaque = false;
     bool mContentDirty = false;
+    bool mSecure = false;
 };
 
 std::string to_string(const LayerDebugInfo& info);
