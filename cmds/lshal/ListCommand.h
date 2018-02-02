@@ -26,6 +26,7 @@
 
 #include <android-base/macros.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
+#include <hidl-util/FQName.h>
 
 #include "Command.h"
 #include "NullableOStream.h"
@@ -108,6 +109,13 @@ protected:
     // Call getCmdline on all pid in pids. If it returns empty string, the process might
     // have died, and the pid is removed from pids.
     void removeDeadProcesses(Pids *pids);
+
+    Partition getPartition(pid_t pid);
+    Partition getPartitionFromExe(pid_t pid) const;
+    Partition getPartitionFromCmdline(pid_t pid);
+    Partition getPartitionFromRealpath(const std::string& path) const;
+    Partition resolvePartition(Partition processPartition, const FQName& fqName) const;
+
     void forEachTable(const std::function<void(Table &)> &f);
     void forEachTable(const std::function<void(const Table &)> &f) const;
 
@@ -125,8 +133,9 @@ protected:
 
     bool mEmitDebugInfo = false;
 
-    // If true, output in VINTF format.
+    // If true, output in VINTF format. Output only entries from the specified partition.
     bool mVintf = false;
+    Partition mVintfPartition = Partition::UNKNOWN;
 
     // If true, explanatory text are not emitted.
     bool mNeat = false;
@@ -138,6 +147,9 @@ protected:
 
     // Cache for getPidInfo.
     std::map<pid_t, PidInfo> mCachedPidInfos;
+
+    // Cache for getPartition.
+    std::map<pid_t, Partition> mPartitions;
 
     RegisteredOptions mOptions;
     // All selected columns

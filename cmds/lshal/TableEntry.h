@@ -64,6 +64,13 @@ enum {
     NO_PTR = 0
 };
 
+enum class Partition {
+    UNKNOWN = 0,
+    SYSTEM,
+    VENDOR,
+    ODM,
+};
+
 struct TableEntry {
     std::string interfaceName{};
     std::string transport{};
@@ -77,6 +84,7 @@ struct TableEntry {
     Architecture arch{ARCH_UNKNOWN};
     // empty: unknown, all zeros: unreleased, otherwise: released
     std::string hash{};
+    Partition partition{Partition::UNKNOWN};
 
     static bool sortByInterfaceName(const TableEntry &a, const TableEntry &b) {
         return a.interfaceName < b.interfaceName;
