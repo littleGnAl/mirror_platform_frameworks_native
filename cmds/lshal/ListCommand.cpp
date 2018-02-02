@@ -25,6 +25,7 @@
 #include <sstream>
 #include <regex>
 
+#include <android-base/file.h>
 #include <android-base/parseint.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
 #include <hidl-hash/Hash.h>
@@ -47,6 +48,23 @@ using ::android::hidl::manager::V1_0::IServiceManager;
 
 namespace android {
 namespace lshal {
+
+Partition parsePartition(const std::string& s) {
+    if (s == "system") {
+        return Partition::SYSTEM;
+    }
+    if (s == "vendor") {
+        return Partition::VENDOR;
+    }
+    if (s == "odm") {
+        return Partition::ODM;
+    }
+    return Partition::UNKNOWN;
+}
+
+vintf::SchemaType toSchemaType(Partition p) {
+    return (p == Partition::SYSTEM) ? vintf::SchemaType::FRAMEWORK : vintf::SchemaType::DEVICE;
+}
 
 NullableOStream<std::ostream> ListCommand::out() const {
     return mLshal.out();
@@ -87,6 +105,84 @@ void ListCommand::removeDeadProcesses(Pids *pids) {
     pids->erase(std::remove_if(pids->begin(), pids->end(), [this](auto pid) {
         return pid == myPid || this->getCmdline(pid).empty();
     }), pids->end());
+}
+
+Partition ListCommand::getPartition(pid_t pid) {
+    auto it = mPartitions.find(pid);
+    if (it != mPartitions.end()) {
+        return it->second;
+    }
+    Partition partition = getPartitionFromExe(pid);
+    if (partition == Partition::UNKNOWN) {
+        partition = getPartitionFromCmdline(pid);
+    }
+    mPartitions.emplace(pid, partition);
+    return partition;
+}
+
+Partition ListCommand::getPartitionFromCmdline(pid_t pid) {
+    const auto& cmdline = getCmdline(pid);
+    if (cmdline == "system_server") {
+        return Partition::SYSTEM;
+    }
+    if (cmdline.empty() || cmdline.front() != '/') {
+        return Partition::UNKNOWN;
+    }
+    return getPartitionFromRealpath(cmdline);
+}
+
+Partition ListCommand::getPartitionFromExe(pid_t pid) const {
+    std::string exe;
+    std::string real;
+    if (!android::base::Readlink("/proc/" + std::to_string(pid) + "/exe", &exe)) {
+        return Partition::UNKNOWN;
+    }
+    if (!android::base::Realpath(exe, &real)) {
+        return Partition::UNKNOWN;
+    }
+    if (real.empty() || real.front() != '/') {
+        return Partition::UNKNOWN;
+    }
+    return getPartitionFromRealpath(real);
+}
+
+Partition ListCommand::getPartitionFromRealpath(const std::string& path) const {
+    if (path == "/system/bin/app_process64" ||
+        path == "/system/bin/app_process32") {
+
+        return Partition::UNKNOWN;
+    }
+
+    size_t backslash = path.find_first_of('/', 1);
+    std::string partition = (backslash != std::string::npos) ? path.substr(1, backslash - 1) : path;
+
+    return parsePartition(partition);
+}
+
+// Give sensible defaults when nothing can be inferred from runtime.
+// process: Partition inferred from executable location or cmdline.
+Partition ListCommand::resolvePartition(Partition process, const FQName& fqName) const {
+    if (fqName.inPackage("vendor") ||
+        fqName.inPackage("com")) {
+        return Partition::VENDOR;
+    }
+
+    if (fqName.inPackage("android.frameworks") ||
+        fqName.inPackage("android.system") ||
+        fqName.inPackage("android.hidl")) {
+        return Partition::SYSTEM;
+    }
+
+    // Some android.hardware HALs are served from system. Check the value from executable
+    // location / cmdline first.
+    if (fqName.inPackage("android.hardware")) {
+        if (process != Partition::UNKNOWN) {
+            return process;
+        }
+        return Partition::VENDOR;
+    }
+
+    return process;
 }
 
 static bool scanBinderContext(pid_t pid,
@@ -209,6 +305,9 @@ void ListCommand::postprocess() {
                 entry.clientCmdlines.push_back(this->getCmdline(pid));
             }
         }
+        for (TableEntry& entry : table) {
+            entry.partition = getPartition(entry.serverPid);
+        }
     });
     // use a double for loop here because lshal doesn't care about efficiency.
     for (TableEntry &packageEntry : mImplementationsTable) {
@@ -258,12 +357,11 @@ void ListCommand::dumpVintf(const NullableOStream<std::ostream>& out) const {
     using vintf::operator|=;
     out << "<!-- " << std::endl
          << "    This is a skeleton device manifest. Notes: " << std::endl
-         << "    1. android.hidl.*, android.frameworks.*, android.system.* are not included." << std::endl
-         << "    2. If a HAL is supported in both hwbinder and passthrough transport, " << std::endl
+         << "    1. If a HAL is supported in both hwbinder and passthrough transport, " << std::endl
          << "       only hwbinder is shown." << std::endl
-         << "    3. It is likely that HALs in passthrough transport does not have" << std::endl
+         << "    2. It is likely that HALs in passthrough transport does not have" << std::endl
          << "       <interface> declared; users will have to write them by hand." << std::endl
-         << "    4. A HAL with lower minor version can be overridden by a HAL with" << std::endl
+         << "    3. A HAL with lower minor version can be overridden by a HAL with" << std::endl
          << "       higher minor version if they have the same name and major version." << std::endl
          << "    5. sepolicy version is set to 0.0. It is recommended that the entry" << std::endl
          << "       is removed from the manifest file and written by assemble_vintf" << std::endl
@@ -271,6 +369,7 @@ void ListCommand::dumpVintf(const NullableOStream<std::ostream>& out) const {
          << "-->" << std::endl;
 
     vintf::HalManifest manifest;
+    manifest.setType(toSchemaType(mVintfPartition));
     forEachTable([this, &manifest] (const Table &table) {
         for (const TableEntry &entry : table) {
 
@@ -287,12 +386,23 @@ void ListCommand::dumpVintf(const NullableOStream<std::ostream>& out) const {
                      << "' is not a valid FQName." << std::endl;
                 continue;
             }
-            // Strip out system libs.
-            if (fqName.inPackage("android.hidl") ||
-                fqName.inPackage("android.frameworks") ||
-                fqName.inPackage("android.system")) {
+
+            if (fqName.package() == gIBaseFqName.package()) {
+                continue; // always remove IBase from manifest
+            }
+
+            Partition partition = resolvePartition(entry.partition, fqName);
+
+            if (partition == Partition::UNKNOWN) {
+                err() << "Warning: Cannot guess the partition of instance " << fqInstanceName
+                      << ". It is removed from the generated manifest." << std::endl;
                 continue;
             }
+
+            if (partition != mVintfPartition) {
+                continue; // strip out instances that is in a different partition.
+            }
+
             std::string interfaceName =
                     &table == &mImplementationsTable ? "" : fqName.name();
             std::string instanceName =
@@ -712,9 +822,18 @@ void ListCommand::registerAllOptions() {
     // long options without short alternatives
     mOptions.push_back({'\0', "init-vintf", no_argument, v++, [](ListCommand* thiz, const char* arg) {
         thiz->mVintf = true;
+        if (thiz->mVintfPartition == Partition::UNKNOWN)
+            thiz->mVintfPartition = Partition::VENDOR;
         if (arg) thiz->mFileOutputPath = arg;
         return OK;
     }, "form a skeleton HAL manifest to specified file,\nor stdout if no file specified."});
+    mOptions.push_back({'\0', "init-vintf-partition", required_argument, v++, [](ListCommand* thiz, const char* arg) {
+        if (!arg) return USAGE;
+        thiz->mVintfPartition = parsePartition(arg);
+        if (thiz->mVintfPartition == Partition::UNKNOWN) return USAGE;
+        return OK;
+    }, "Specify the partition of the HAL manifest\ngenerated by --init-vintf.\n"
+       "Valid values are 'system', 'vendor', and 'odm'. Default is 'vendor'."});
     mOptions.push_back({'\0', "sort", required_argument, v++, [](ListCommand* thiz, const char* arg) {
         if (strcmp(arg, "interface") == 0 || strcmp(arg, "i") == 0) {
             thiz->mSortColumn = TableEntry::sortByInterfaceName;
