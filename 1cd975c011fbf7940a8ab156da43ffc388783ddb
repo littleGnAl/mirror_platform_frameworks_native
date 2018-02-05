@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "c7900d68_3c7a454e",
+        "filename": "cmds/lshal/libprocpartition/include/procpartition/procpartition.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-05T23:45:20Z",
+      "side": 1,
+      "message": "nit: don\u0027t expose these (unless you need them in lshal)",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "1cd975c011fbf7940a8ab156da43ffc388783ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7636c756_e7e354e2",
         "filename": "cmds/lshal/libprocpartition/procpartition.cpp",
         "patchSetId": 1
