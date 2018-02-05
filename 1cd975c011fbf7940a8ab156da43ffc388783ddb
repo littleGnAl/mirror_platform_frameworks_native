@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1515bb7_c7e38a53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-05T23:40:38Z",
+      "side": 1,
+      "message": "does vts_treble_vintf_test depend on this now? I don\u0027t see the CL",
+      "revId": "1cd975c011fbf7940a8ab156da43ffc388783ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7636c756_e7e354e2",
+        "filename": "cmds/lshal/libprocpartition/procpartition.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-05T23:40:38Z",
+      "side": 1,
+      "message": "nit: vts_treble_vintf_test needs to differentiate between app and non-app",
+      "range": {
+        "startLine": 73,
+        "startChar": 15,
+        "endLine": 73,
+        "endChar": 33
+      },
+      "revId": "1cd975c011fbf7940a8ab156da43ffc388783ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e7a7801_439cdb9a",
+        "filename": "cmds/lshal/libprocpartition/procpartition.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-05T23:40:38Z",
+      "side": 1,
+      "message": "why is this special?",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "1cd975c011fbf7940a8ab156da43ffc388783ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
