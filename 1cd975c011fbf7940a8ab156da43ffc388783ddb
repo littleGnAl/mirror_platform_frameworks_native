@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "c2a2265d_ae8e7d7a",
+        "filename": "cmds/lshal/libprocpartition/procpartition.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-02-05T23:42:33Z",
+      "side": 1,
+      "message": "and it doesn\u0027t (even right now)",
+      "parentUuid": "7636c756_e7e354e2",
+      "range": {
+        "startLine": 73,
+        "startChar": 15,
+        "endLine": 73,
+        "endChar": 33
+      },
+      "revId": "1cd975c011fbf7940a8ab156da43ffc388783ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e7a7801_439cdb9a",
         "filename": "cmds/lshal/libprocpartition/procpartition.cpp",
         "patchSetId": 1
@@ -53,6 +77,30 @@
       "writtenOn": "2018-02-05T23:40:38Z",
       "side": 1,
       "message": "why is this special?",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "1cd975c011fbf7940a8ab156da43ffc388783ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1b38c2_9738bc38",
+        "filename": "cmds/lshal/libprocpartition/procpartition.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-02-05T23:42:33Z",
+      "side": 1,
+      "message": "cmdline doesn\u0027t have an absolute path for system_server. Just adding a few common cases here.",
+      "parentUuid": "0e7a7801_439cdb9a",
       "range": {
         "startLine": 83,
         "startChar": 20,
