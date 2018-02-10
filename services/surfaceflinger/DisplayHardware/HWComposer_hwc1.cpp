@@ -313,10 +313,7 @@ void HWComposer::hotplug(int disp, int connected) {
         return;
     }
     queryDisplayProperties(disp);
-    // Do not teardown or recreate the primary display
-    if (disp != HWC_DISPLAY_PRIMARY) {
-        mEventHandler.onHotplugReceived(this, disp, bool(connected));
-    }
+    mEventHandler.onHotplugReceived(this, disp, bool(connected));
 }
 
 static float getDefaultDensity(uint32_t width, uint32_t height) {

@@ -587,7 +587,10 @@ void SurfaceFlinger::init() {
 
     // make the GLContext current so that we can create textures when creating Layers
     // (which may happens before we render something)
-    getDefaultDisplayDeviceLocked()->makeCurrent(mEGLDisplay, mEGLContext);
+    const sp<const DisplayDevice> defaultDisplay(getDefaultDisplayDeviceLocked());
+    if (defaultDisplay != NULL) {
+        defaultDisplay->makeCurrent(mEGLDisplay, mEGLContext);
+    }
 
     mEventControlThread = new EventControlThread(this);
     mEventControlThread->run("EventControl", PRIORITY_URGENT_DISPLAY);
@@ -721,7 +724,7 @@ status_t SurfaceFlinger::getDisplayConfigs(const sp<IBinder>& display,
 
             // TODO: this needs to go away (currently needed only by webkit)
             sp<const DisplayDevice> hw(getDefaultDisplayDevice());
-            info.orientation = hw->getOrientation();
+            info.orientation = hw ? hw->getOrientation() : 0;
         } else {
             // TODO: where should this value come from?
             static const int TV_DENSITY = 213;
@@ -1291,7 +1294,7 @@ void SurfaceFlinger::postComposition(nsecs_t refreshStartTime)
 
     mGlCompositionDoneTimeline.updateSignalTimes();
     std::shared_ptr<FenceTime> glCompositionDoneFenceTime;
-    if (getHwComposer().hasGlesComposition(hw->getHwcDisplayId())) {
+    if (hw != NULL && getHwComposer().hasGlesComposition(hw->getHwcDisplayId())) {
         glCompositionDoneFenceTime =
                 std::make_shared<FenceTime>(hw->getClientTargetAcquireFence());
         mGlCompositionDoneTimeline.push(glCompositionDoneFenceTime);
@@ -1348,7 +1351,7 @@ void SurfaceFlinger::postComposition(nsecs_t refreshStartTime)
 
         if (retireFenceTime->isValid()) {
             mAnimFrameTracker.setActualPresentFence(std::move(retireFenceTime));
-        } else {
+        } else if (mHwc->isConnected(HWC_DISPLAY_PRIMARY)) {
             // The HWC doesn't support present fences, so use the refresh
             // timestamp instead.
             nsecs_t presentTime = hwc.getRefreshTimestamp(HWC_DISPLAY_PRIMARY);
@@ -1357,7 +1360,7 @@ void SurfaceFlinger::postComposition(nsecs_t refreshStartTime)
         mAnimFrameTracker.advanceFrame();
     }
 
-    if (hw->getPowerMode() == HWC_POWER_MODE_OFF) {
+    if (mHwc->isConnected(HWC_DISPLAY_PRIMARY) && hw->getPowerMode() == HWC_POWER_MODE_OFF) {
         return;
     }
 
@@ -1551,13 +1554,17 @@ void SurfaceFlinger::postFramebuffer()
     const nsecs_t now = systemTime();
     mDebugInSwapBuffers = now;
 
+    const sp<const DisplayDevice> hw(getDefaultDisplayDevice());
+
     HWComposer& hwc(getHwComposer());
     if (hwc.initCheck() == NO_ERROR) {
         if (!hwc.supportsFramebufferTarget()) {
             // EGL spec says:
             //   "surface must be bound to the calling thread's current context,
             //    for the current rendering API."
-            getDefaultDisplayDevice()->makeCurrent(mEGLDisplay, mEGLContext);
+            if (hw != NULL) {
+                hw->makeCurrent(mEGLDisplay, mEGLContext);
+            }
         }
         hwc.commit();
     }
@@ -1566,12 +1573,16 @@ void SurfaceFlinger::postFramebuffer()
     // deal with dequeueBuffer() being called outside of the composition loop; however
     // the code below can call glFlush() which is allowed (and does in some case) call
     // dequeueBuffer().
-    getDefaultDisplayDevice()->makeCurrent(mEGLDisplay, mEGLContext);
+    if (hw != NULL) {
+        hw->makeCurrent(mEGLDisplay, mEGLContext);
+    }
 
     for (size_t dpy=0 ; dpy<mDisplays.size() ; dpy++) {
         sp<const DisplayDevice> hw(mDisplays[dpy]);
         const Vector< sp<Layer> >& currentLayers(hw->getVisibleLayersSortedByZ());
-        hw->onSwapBuffersCompleted(hwc);
+        if (hw != NULL) {
+            hw->onSwapBuffersCompleted(hwc);
+        }
         const size_t count = currentLayers.size();
         int32_t id = hw->getHwcDisplayId();
         if (id >=0 && hwc.initCheck() == NO_ERROR) {
@@ -1590,9 +1601,11 @@ void SurfaceFlinger::postFramebuffer()
     mLastSwapBufferTime = systemTime() - now;
     mDebugInSwapBuffers = 0;
 
-    uint32_t flipCount = getDefaultDisplayDevice()->getPageFlipCount();
-    if (flipCount % LOG_FRAME_STATS_PERIOD == 0) {
-        logFrameStats();
+    if (mHwc->isConnected(HWC_DISPLAY_PRIMARY)) {
+        uint32_t flipCount = hw != NULL ? hw->getPageFlipCount() : 0;
+        if (flipCount % LOG_FRAME_STATS_PERIOD == 0) {
+            logFrameStats();
+        }
     }
 }
 
@@ -1659,20 +1672,18 @@ void SurfaceFlinger::processDisplayChangesLocked() {
             const ssize_t j = curr.indexOfKey(draw.keyAt(i));
             if (j < 0) {
                 // in drawing state but not in current state
-                if (!draw[i].isMainDisplay()) {
-                    // Call makeCurrent() on the primary display so we can
-                    // be sure that nothing associated with this display
-                    // is current.
-                    const sp<const DisplayDevice> defaultDisplay(getDefaultDisplayDeviceLocked());
+                // Call makeCurrent() on the primary display so we can
+                // be sure that nothing associated with this display
+                // is current.
+                const sp<const DisplayDevice> defaultDisplay(getDefaultDisplayDeviceLocked());
+                if (defaultDisplay != NULL) {
                     defaultDisplay->makeCurrent(mEGLDisplay, mEGLContext);
-                    sp<DisplayDevice> hw(getDisplayDeviceLocked(draw.keyAt(i)));
-                    if (hw != NULL) hw->disconnect(getHwComposer());
-                    if (draw[i].type < DisplayDevice::NUM_BUILTIN_DISPLAY_TYPES)
-                        mEventThread->onHotplugReceived(draw[i].type, false);
-                    mDisplays.removeItem(draw.keyAt(i));
-                } else {
-                    ALOGW("trying to remove the main display");
                 }
+                sp<DisplayDevice> hw(getDisplayDeviceLocked(draw.keyAt(i)));
+                if (hw != NULL) hw->disconnect(getHwComposer());
+                if (draw[i].type < DisplayDevice::NUM_BUILTIN_DISPLAY_TYPES)
+                    mEventThread->onHotplugReceived(draw[i].type, false);
+                mDisplays.removeItem(draw.keyAt(i));
             } else {
                 // this display is in both lists. see if something changed.
                 const DisplayDeviceState& state(curr[j]);
@@ -1875,7 +1886,9 @@ void SurfaceFlinger::handleTransactionLocked(uint32_t transactionFlags)
                 // screen off/on times.
                 disp = getDefaultDisplayDeviceLocked();
             }
-            layer->updateTransformHint(disp);
+            if (disp != NULL) {
+                layer->updateTransformHint(disp);
+            }
 
             first = false;
         });
@@ -2234,8 +2247,9 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& hw, const 
             ALOGW("DisplayDevice::makeCurrent failed. Aborting surface composition for display %s",
                   hw->getDisplayName().string());
             eglMakeCurrent(mEGLDisplay, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
-            if(!getDefaultDisplayDevice()->makeCurrent(mEGLDisplay, mEGLContext)) {
-              ALOGE("DisplayDevice::makeCurrent on default display failed. Aborting.");
+            const sp<const DisplayDevice> hw(getDefaultDisplayDevice());
+            if (hw == NULL || hw->makeCurrent(mEGLDisplay, mEGLContext)) {
+                ALOGE("DisplayDevice::makeCurrent on default display failed. Aborting.");
             }
             return false;
         }
@@ -3340,9 +3354,11 @@ void SurfaceFlinger::dumpAllLocked(const Vector<String16>& args, size_t& index,
 
     mRenderEngine->dump(result);
 
-    hw->undefinedRegion.dump(result, "undefinedRegion");
-    result.appendFormat("  orientation=%d, isDisplayOn=%d\n",
-            hw->getOrientation(), hw->isDisplayOn());
+    if (hw != NULL) {
+        hw->undefinedRegion.dump(result, "undefinedRegion");
+        result.appendFormat("  orientation=%d, isDisplayOn=%d\n", hw->getOrientation(),
+                            hw->isDisplayOn());
+    }
     result.appendFormat(
             "  last eglSwapBuffers() time: %f us\n"
             "  last transaction time     : %f us\n"
@@ -3536,7 +3552,9 @@ status_t SurfaceFlinger::onTransact(
             case 1013: {
                 Mutex::Autolock _l(mStateLock);
                 sp<const DisplayDevice> hw(getDefaultDisplayDevice());
-                reply->writeInt32(hw->getPageFlipCount());
+                if (hw != NULL) {
+                    reply->writeInt32(hw->getPageFlipCount());
+                }
                 return NO_ERROR;
             }
             case 1014: {
