@@ -708,14 +708,17 @@ private:
     FenceTimeline mGlCompositionDoneTimeline;
     FenceTimeline mDisplayTimeline;
 
-#ifdef USE_HWC2
     struct HotplugEvent {
+#ifdef USE_HWC2
         hwc2_display_t display;
         HWC2::Connection connection = HWC2::Connection::Invalid;
+#else
+        DisplayDevice::DisplayType type;
+        bool connected = false;
+#endif
     };
     // protected by mStateLock
     std::vector<HotplugEvent> mPendingHotplugEvents;
-#endif
 
 
     // this may only be written from the main thread with mStateLock held
