@@ -1101,18 +1101,16 @@ void SurfaceFlinger::onHotplugReceived(HWComposer* /*composer*/, int type, bool 
         return;
     }
 
-    if (uint32_t(type) < DisplayDevice::NUM_BUILTIN_DISPLAY_TYPES) {
-        Mutex::Autolock _l(mStateLock);
-        if (connected) {
-            createBuiltinDisplayLocked((DisplayDevice::DisplayType)type);
-        } else {
-            mCurrentState.displays.removeItem(mBuiltinDisplays[type]);
-            mBuiltinDisplays[type].clear();
-        }
-        setTransactionFlags(eDisplayTransactionNeeded);
-
-        // Defer EventThread notification until SF has updated mDisplays.
+    if (uint32_t(type) >= DisplayDevice::NUM_BUILTIN_DISPLAY_TYPES) {
+        return;
     }
+
+    Mutex::Autolock _l(mStateLock);
+
+    mPendingHotplugEvents.emplace_back(
+            HotplugEvent{static_cast<DisplayDevice::DisplayType>(type), connected});
+
+    setTransactionFlags(eDisplayTransactionNeeded);
 }
 
 void SurfaceFlinger::onInvalidateReceived(HWComposer* /*composer*/) {
@@ -1627,6 +1625,21 @@ void SurfaceFlinger::handleTransaction(uint32_t transactionFlags)
     // here the transaction has been committed
 }
 
+void SurfaceFlinger::processDisplayHotplugEventsLocked() {
+    for (const auto& event : mPendingHotplugEvents) {
+        DisplayDevice::DisplayType type = event.type;
+        if (event.connected) {
+            createBuiltinDisplayLocked(type);
+        } else {
+            mCurrentState.displays.removeItem(mBuiltinDisplays[type]);
+            mBuiltinDisplays[type].clear();
+        }
+
+        processDisplayChangesLocked();
+    }
+    mPendingHotplugEvents.clear();
+}
+
 void SurfaceFlinger::processDisplayChangesLocked() {
     // here we take advantage of Vector's copy-on-write semantics to
     // improve performance by skipping the transaction entirely when
@@ -1771,6 +1784,8 @@ void SurfaceFlinger::processDisplayChangesLocked() {
             }
         }
     }
+
+    mDrawingState.displays = mCurrentState.displays;
 }
 
 void SurfaceFlinger::handleTransactionLocked(uint32_t transactionFlags)
@@ -1802,6 +1817,7 @@ void SurfaceFlinger::handleTransactionLocked(uint32_t transactionFlags)
 
     if (transactionFlags & eDisplayTransactionNeeded) {
         processDisplayChangesLocked();
+        processDisplayHotplugEventsLocked();
     }
 
     if (transactionFlags & (eTraversalNeeded|eDisplayTransactionNeeded)) {
