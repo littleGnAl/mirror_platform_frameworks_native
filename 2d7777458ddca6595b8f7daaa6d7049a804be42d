@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b82e6ffb_e364a7c8",
+        "filename": "libs/vr/libpdx/service_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-02-13T19:08:01Z",
+      "side": 1,
+      "message": "Corey, this issue stems from the use of uid_t and other typedefs for GetEffectiveUserId() while the underlying storage for MessageInfo in service_endpoint.h is always specified as int. This seems like something that could possibly be corrected there too. I think Chih-hung\u0027s fix here is the simplest thing for now, but you probably should refactor this to use the same sign for the types (in addition to any other potential issues with these typedefs).",
+      "revId": "2d7777458ddca6595b8f7daaa6d7049a804be42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
