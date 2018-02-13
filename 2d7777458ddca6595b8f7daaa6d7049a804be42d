@@ -34,6 +34,24 @@
       "revId": "2d7777458ddca6595b8f7daaa6d7049a804be42d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dc5b82f_eb9a5a0d",
+        "filename": "libs/vr/libpdx/service_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-02-13T19:54:50Z",
+      "side": 1,
+      "message": "Among many EXPECT_EQ lines I found, some compare signed with signed and some unsigned with unsigned. Maybe EXPECT_EQ could be more generic to accept mixed types. Here I only do minimal change to get it compile without warning.",
+      "parentUuid": "e53ef777_d4f3cf83",
+      "revId": "2d7777458ddca6595b8f7daaa6d7049a804be42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
