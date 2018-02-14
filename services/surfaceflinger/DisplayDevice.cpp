@@ -202,7 +202,7 @@ void DisplayDevice::disconnect(HWComposer& hwc) {
     if (mHwcDisplayId >= 0) {
         hwc.disconnectDisplay(mHwcDisplayId);
 #ifndef USE_HWC2
-        if (mHwcDisplayId >= DISPLAY_VIRTUAL)
+        if (mType >= DISPLAY_VIRTUAL)
             hwc.freeDisplayId(mHwcDisplayId);
 #endif
         mHwcDisplayId = -1;
@@ -642,8 +642,8 @@ void DisplayDevice::dump(String8& result) const {
                         "transform:[[%0.3f,%0.3f,%0.3f][%0.3f,%0.3f,%0.3f][%0.3f,%0.3f,%0.3f]]\n",
                         mViewport.left, mViewport.top, mViewport.right, mViewport.bottom,
                         mFrame.left, mFrame.top, mFrame.right, mFrame.bottom, mScissor.left,
-                        mScissor.top, mScissor.right, mScissor.bottom, tr[0][0], tr[1][0], tr[2][0],
-                        tr[0][1], tr[1][1], tr[2][1], tr[0][2], tr[1][2], tr[2][2]);
+                        mScissor.top, mScissor.right, mScissor.bottom, tr[0][0], tr[1][0],
+                       	tr[2][0], tr[0][1], tr[1][1], tr[2][1], tr[0][2], tr[1][2], tr[2][2]);
 
     String8 surfaceDump;
     mDisplaySurface->dumpAsString(surfaceDump);
@@ -652,8 +652,10 @@ void DisplayDevice::dump(String8& result) const {
 
 std::atomic<int32_t> DisplayDeviceState::nextDisplayId(1);
 
-DisplayDeviceState::DisplayDeviceState(DisplayDevice::DisplayType type, bool isSecure)
+DisplayDeviceState::DisplayDeviceState(DisplayDevice::DisplayType type, int32_t hwcId,
+                                       bool isSecure)
     : type(type),
+      hwcId(hwcId),
       layerStack(DisplayDevice::NO_LAYER_STACK),
       orientation(0),
       width(0),
