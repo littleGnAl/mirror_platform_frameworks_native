@@ -202,7 +202,7 @@ void DisplayDevice::disconnect(HWComposer& hwc) {
     if (mHwcDisplayId >= 0) {
         hwc.disconnectDisplay(mHwcDisplayId);
 #ifndef USE_HWC2
-        if (mHwcDisplayId >= DISPLAY_VIRTUAL)
+        if (mType >= DISPLAY_VIRTUAL)
             hwc.freeDisplayId(mHwcDisplayId);
 #endif
         mHwcDisplayId = -1;
@@ -652,8 +652,9 @@ void DisplayDevice::dump(String8& result) const {
 
 std::atomic<int32_t> DisplayDeviceState::nextDisplayId(1);
 
-DisplayDeviceState::DisplayDeviceState(DisplayDevice::DisplayType type, bool isSecure)
+DisplayDeviceState::DisplayDeviceState(DisplayDevice::DisplayType type, int32_t hwcId, bool isSecure)
     : type(type),
+      hwcId(hwcId),
       layerStack(DisplayDevice::NO_LAYER_STACK),
       orientation(0),
       width(0),
