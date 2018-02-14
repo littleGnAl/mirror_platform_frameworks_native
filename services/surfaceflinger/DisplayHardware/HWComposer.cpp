@@ -75,6 +75,7 @@ HWComposer::HWComposer(const std::string& serviceName)
 
     mHwcDevice = std::make_unique<HWC2::Device>(serviceName);
     mRemainingHwcVirtualDisplays = mHwcDevice->getMaxVirtualDisplayCount();
+    mExternalDisplayIdOffset = HWC_DISPLAY_VIRTUAL + mRemainingHwcVirtualDisplays;
 }
 
 HWComposer::~HWComposer() {}
@@ -129,12 +130,32 @@ void HWComposer::onHotplug(hwc2_display_t displayId,
                 " display would be connected");
         mDisplayData[0].hwcDisplay = mHwcDevice->getDisplayById(displayId);
         mHwcDisplaySlots[displayId] = 0;
-    } else {
+    } else if (displayId == 1) {
         // Disconnect is handled through HWComposer::disconnectDisplay via
         // SurfaceFlinger's onHotplugReceived callback handling
         if (connection == HWC2::Connection::Connected) {
             mDisplayData[1].hwcDisplay = mHwcDevice->getDisplayById(displayId);
             mHwcDisplaySlots[displayId] = 1;
+        }
+    } else {
+        // To keep backward compability, the layout of displayId was set to:
+        // 0: Primary
+        // 1: External
+        // 2~2+maxHwcVirtualDisplays-1: Virtual
+        // 2+maxHwcVirtualDisplays~inf: External
+        size_t maxHwcVirtualDisplays = mHwcDevice->getMaxVirtualDisplayCount();
+        ALOGE_IF(displayId < 2 + maxHwcVirtualDisplays, "displayId is less"
+                " than max virtualId");
+        if (mDisplayData.size() <= displayId) {
+            // Reserve slots for virtual displays
+            for (size_t i=mDisplayData.size(); i<maxHwcVirtualDisplays + 2; i++) {
+                mFreeDisplaySlots.insert(i);
+            }
+            mDisplayData.resize(displayId + 1);
+        }
+        if (connection == HWC2::Connection::Connected) {
+            mDisplayData[displayId].hwcDisplay = mHwcDevice->getDisplayById(displayId);
+            mHwcDisplaySlots[displayId] = displayId;
         }
     }
 }
@@ -366,7 +387,8 @@ status_t HWComposer::setActiveColorMode(int32_t displayId, android_color_mode_t 
 
 
 void HWComposer::setVsyncEnabled(int32_t displayId, HWC2::Vsync enabled) {
-    if (displayId < 0 || displayId >= HWC_DISPLAY_VIRTUAL) {
+    if (displayId < 0 || (displayId >= HWC_DISPLAY_VIRTUAL && 
+	    displayId < HWC_DISPLAY_VIRTUAL + (int32_t)mHwcDevice->getMaxVirtualDisplayCount())) {
         ALOGD("setVsyncEnabled: Ignoring for virtual display %d", displayId);
         return;
     }
@@ -649,7 +671,8 @@ status_t HWComposer::setPowerMode(int32_t displayId, int32_t intMode) {
         ALOGE("setPowerMode: Bad display");
         return BAD_INDEX;
     }
-    if (displayId >= VIRTUAL_DISPLAY_ID_BASE) {
+    if (displayId >= VIRTUAL_DISPLAY_ID_BASE && 
+        displayId < VIRTUAL_DISPLAY_ID_BASE + (int32_t)mHwcDevice->getMaxVirtualDisplayCount()) {
         ALOGE("setPowerMode: Virtual display %d passed in, returning",
                 displayId);
         return BAD_INDEX;
