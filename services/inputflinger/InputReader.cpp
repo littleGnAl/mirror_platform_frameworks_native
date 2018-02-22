@@ -3303,6 +3303,7 @@ void TouchInputMapper::configure(nsecs_t when,
 
     bool resetNeeded = false;
     if (!changes || (changes & (InputReaderConfiguration::CHANGE_DISPLAY_INFO
+            | InputReaderConfiguration::CHANGE_POINTER_CAPTURE
             | InputReaderConfiguration::CHANGE_POINTER_GESTURE_ENABLEMENT
             | InputReaderConfiguration::CHANGE_SHOW_TOUCHES
             | InputReaderConfiguration::CHANGE_EXTERNAL_STYLUS_PRESENCE))) {
@@ -3479,7 +3480,8 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
 
     // Determine device mode.
     if (mParameters.deviceType == Parameters::DEVICE_TYPE_POINTER
-            && mConfig.pointerGesturesEnabled) {
+            && mConfig.pointerGesturesEnabled
+            && !mConfig.pointerCapture) {
         mSource = AINPUT_SOURCE_MOUSE;
         mDeviceMode = DEVICE_MODE_POINTER;
         if (hasStylus()) {
@@ -3517,7 +3519,7 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
 
     // Get associated display dimensions.
     DisplayViewport newViewport;
-    if (mParameters.hasAssociatedDisplay) {
+    if (mParameters.hasAssociatedDisplay && mDeviceMode != DEVICE_MODE_UNSCALED) {
         const String8* uniqueDisplayId = NULL;
         ViewportType viewportTypeToUse;
 
