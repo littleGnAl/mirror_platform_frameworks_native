@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3edc04b0_f637c4e2",
+        "filename": "opengl/tests/testFramerate/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-02-22T17:23:39Z",
+      "side": 1,
+      "message": "note: builds successfully with system_current in internal master. I\u0027ll send a separate patch there.",
+      "revId": "d8b1200c86770ed2375b0cbfdd930d7acb14e3d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
