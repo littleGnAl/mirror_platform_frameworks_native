@@ -153,6 +153,7 @@ EventHub::Device::Device(int fd, int32_t id, const String8& path,
     memset(ledBitmask, 0, sizeof(ledBitmask));
     memset(ffBitmask, 0, sizeof(ffBitmask));
     memset(propBitmask, 0, sizeof(propBitmask));
+    batteryState = new BatteryState();
 }
 
 EventHub::Device::~Device() {
@@ -703,6 +704,85 @@ void EventHub::cancelVibrate(int32_t deviceId) {
     }
 }
 
+bool EventHub::hasBattery(int32_t deviceId) const {
+    AutoMutex _l(mLock);
+    Device* device = getDeviceLocked(deviceId);
+
+    if (!device) {
+        return -ENODEV;
+    }
+
+    return !device->batteryName.isEmpty();
+}
+
+int32_t EventHub::readSysfs(String8 path, String8& result) const {
+    // Constant char arrays in power_supply_sysfs.c don't exceed 48 chars.
+    char data[48];
+
+    int32_t fd = open(path.string(), O_RDONLY);
+    if (fd < 0) {
+        ALOGW("Could not open file %s due to error %d.",
+                path.string(), errno);
+        return -errno;
+    }
+    else {
+        int32_t rc = read(fd, &data, sizeof(data));
+        close(fd);
+        if (rc < 0)
+        {
+            ALOGW("Could not read file %s due to error %d.",
+                    path.string(), errno);
+            return -errno;
+        }
+        result = String8(data, rc - 1);
+        return 0;
+    }
+}
+
+int32_t EventHub::getBatteryInfo(int32_t deviceId) const {
+    AutoMutex _l(mLock);
+    Device* device = getDeviceLocked(deviceId);
+    String8 batteryPath;
+    int32_t ret;
+
+    if (!device) {
+        return -ENODEV;
+    }
+
+    batteryPath = device->batterySysfsPath + device->batteryName + String8("/scope");
+    if ((ret = readSysfs(batteryPath, device->batteryState->scope)) < 0)
+        return ret;
+
+    batteryPath = device->batterySysfsPath + device->batteryName + String8("/type");
+    if ((ret = readSysfs(batteryPath, device->batteryState->type)) < 0)
+        return ret;
+
+    return 0;
+}
+
+BatteryState* EventHub::getBatteryState(int32_t deviceId) const {
+    AutoMutex _l(mLock);
+    Device* device = getDeviceLocked(deviceId);
+    String8 batteryPath;
+    int32_t ret;
+
+    if (!device) {
+        return NULL;
+    }
+
+    batteryPath = device->batterySysfsPath + device->batteryName + String8("/capacity");
+    String8 capacity;
+    if ((ret = readSysfs(batteryPath, capacity)) < 0)
+        return NULL;
+    device->batteryState->capacity = atoi(capacity);
+
+    batteryPath = device->batterySysfsPath + device->batteryName + String8("/status");
+    if ((ret = readSysfs(batteryPath, device->batteryState->status)) < 0)
+        return NULL;
+
+    return device->batteryState;
+}
+
 EventHub::Device* EventHub::getDeviceByDescriptorLocked(String8& descriptor) const {
     size_t size = mDevices.size();
     for (size_t i = 0; i < size; i++) {
@@ -730,6 +810,76 @@ EventHub::Device* EventHub::getDeviceByPathLocked(const char* devicePath) const 
         }
     }
     return NULL;
+}
+
+bool EventHub::searchBatteryPathLocked(String8& searchPath) const {
+    DIR *dir = opendir(searchPath.string());
+    struct dirent *dirEntry = NULL;
+    bool found = false;
+
+    if (dir == NULL) {
+        closedir(dir);
+        return false;
+    }
+    ALOGD("Searching for battery directory in %s", searchPath.string());
+    while((dirEntry = readdir(dir)) != NULL) {
+        String8 dirEntryString(dirEntry->d_name);
+        ALOGD("Got entry in search path: %s", dirEntryString.string());
+
+        if (dirEntryString.find("power_supply",0) >= 0) {
+            // searchPath = searchPath/power_supply
+            searchPath += String8("/") +dirEntryString;
+            ALOGD("Found %s", searchPath.string());
+            found = true;
+            break;
+        }
+    }
+    closedir(dir);
+
+    return found;
+}
+
+bool EventHub::getBatterySysfsPathLocked(const String8& eventName, String8& batterySysfsPath) const {
+    // We need to find the battery in /sys/class/power/ that correspond to
+    // this device based on the eventName (i.e. eventX).
+    // Different devices may expose its battery through a different path structure,
+    // as such, there is a need to search through multiple paths.
+    //
+    // Search order:
+    // - Search for battery directory in realpath(/sys/class/input/eventX) + "/device/device"
+    // - Search for battery directory in realpath(/sys/class/input/eventX) + "/device"
+    // - Search for battery directory in realpath(/sys/class/input/eventX) + "/../../../.."
+    // - Search for battery directory in realpath(/sys/class/input/eventX)
+    // - Search for battery directory in realpath(/sys/class/input/eventX) + "/.."
+    // - Search for battery directory in realpath(/sys/class/input/eventX) + "/../.."
+    // - Search for battery directory in realpath(/sys/class/input/eventX) + "/../../.."
+
+    // e.g. sysClassInputPath = /sys/class/input/event10
+    String8 sysClassInputPath = String8("/sys/class/input/") + eventName;
+    // e.g. eventRealPath = /sys/devices/soc/6a00000.ssusb/6a00000.dwc3/xhci-hcd.0.auto/usb1/1-1/1-1.2/1-1.2:1.3/0003:054C:09CC.0001/input/input10/event12
+    String8 eventRealPath(realpath(sysClassInputPath, NULL));
+
+    // search for battery directory
+    String8 searchPath[7] = {(eventRealPath + "/device/device"), // e.g. dualshock4 = /sys/devices/soc/6a00000.ssusb/6a00000.dwc3/xhci-hcd.0.auto/usb1/1-1/1-1.2/1-1.2:1.3/0003:054C:09CC.0001/input/input10/event12/device/device
+                             (eventRealPath + "/device"),
+                             (eventRealPath.getPathDir().getPathDir().getPathDir().getPathDir()),
+                             (eventRealPath),
+                             (eventRealPath.getPathDir()),
+                             (eventRealPath.getPathDir().getPathDir()),
+                             (eventRealPath.getPathDir().getPathDir().getPathDir())};
+
+    bool found;
+    for (int i=0; i<7; i++) {
+        found = searchBatteryPathLocked(searchPath[i]);
+        if (found) {
+            batterySysfsPath = searchPath[i] + String8("/");
+            ALOGI("Found battery sysfs path for %s: %s",
+                    eventName.string(), batterySysfsPath.string());
+            return true;
+        }
+    }
+
+    return false;
 }
 
 size_t EventHub::getEvents(int timeoutMillis, RawEvent* buffer, size_t bufferSize) {
@@ -1343,6 +1493,39 @@ status_t EventHub::openDeviceLocked(const char *devicePath) {
                 deviceId, devicePath, device->identifier.name.string());
         delete device;
         return -1;
+    }
+
+    // Find event number
+    String8 devicePathStr(devicePath);
+    int32_t pos = devicePathStr.find("event",0);
+
+    // Determine whether the device has battery through sysfs
+    device->batterySysfsPath = "";
+    if (pos != -1) {
+        String8 eventName;
+        eventName.append(devicePath+pos);
+
+        if (getBatterySysfsPathLocked(eventName, device->batterySysfsPath)) {
+            DIR *batteryDir = opendir(device->batterySysfsPath.string());
+            struct dirent *batteryEntry = NULL;
+
+            if (batteryDir != NULL) {
+                while((batteryEntry = readdir(batteryDir)) != NULL) {
+                    String8 batteryEntryString(batteryEntry->d_name);
+                    if (batteryEntryString == "." || batteryEntryString == "..") {
+                        continue;
+                    }
+                    ALOGD("Got entry in %s: %s",
+                            device->batterySysfsPath.string(), batteryEntryString.string());
+
+                    device->batteryName = batteryEntryString;
+                    break;
+                }
+
+                device->classes |= INPUT_DEVICE_CLASS_BATTERY;
+            }
+            closedir(batteryDir);
+        }
     }
 
     // Determine whether the device has a mic.

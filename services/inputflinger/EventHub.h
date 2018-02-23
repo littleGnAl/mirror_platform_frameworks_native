@@ -96,6 +96,29 @@ struct RawAbsoluteAxisInfo {
     }
 };
 
+struct BatteryState {
+    String8 scope;
+    String8 type;
+    /* Capacity as reported by the device, from 0 to 100. */
+    int capacity;
+    /* Example status: Charging, Full, Discharging. */
+    String8 status;
+
+    void copyFrom(const BatteryState& other) {
+        scope = other.scope;
+        type = other.type;
+        capacity = other.capacity;
+        status = other.status;
+    }
+
+    void clear() {
+        scope = "";
+        type = "";
+        capacity = 0;
+        status = "";
+    }
+};
+
 /*
  * Input device classes.
  */
@@ -138,6 +161,9 @@ enum {
 
     /* The input device has a rotary encoder */
     INPUT_DEVICE_CLASS_ROTARY_ENCODER = 0x00001000,
+
+    /* The input device has a battery */
+    INPUT_DEVICE_CLASS_BATTERY       = 0x00008000,
 
     /* The input device is virtual (not a real device, not part of UI configuration). */
     INPUT_DEVICE_CLASS_VIRTUAL       = 0x40000000,
@@ -255,6 +281,12 @@ public:
     virtual void vibrate(int32_t deviceId, nsecs_t duration) = 0;
     virtual void cancelVibrate(int32_t deviceId) = 0;
 
+    /* Get battery status. */
+    virtual int32_t readSysfs(String8 path, String8& data) const = 0;
+    virtual bool hasBattery(int32_t deviceId) const = 0;
+    virtual int32_t getBatteryInfo(int32_t deviceId) const = 0;
+    virtual BatteryState* getBatteryState(int32_t deviceId) const = 0;
+
     /* Requests the EventHub to reopen all input devices on the next call to getEvents(). */
     virtual void requestReopenDevices() = 0;
 
@@ -329,6 +361,11 @@ public:
     virtual void vibrate(int32_t deviceId, nsecs_t duration);
     virtual void cancelVibrate(int32_t deviceId);
 
+    virtual int32_t readSysfs(String8 path, String8& data) const;
+    virtual int32_t getBatteryInfo(int32_t deviceId) const;
+    virtual bool hasBattery(int32_t deviceId) const;
+    virtual BatteryState* getBatteryState(int32_t deviceId) const;
+
     virtual void requestReopenDevices();
 
     virtual void wake();
@@ -368,6 +405,10 @@ private:
 
         bool ffEffectPlaying;
         int16_t ffEffectId; // initially -1
+
+        String8 batterySysfsPath;
+        String8 batteryName;
+        BatteryState* batteryState;
 
         int32_t controllerNumber;
 
@@ -417,6 +458,9 @@ private:
     Device* getDeviceByDescriptorLocked(String8& descriptor) const;
     Device* getDeviceLocked(int32_t deviceId) const;
     Device* getDeviceByPathLocked(const char* devicePath) const;
+
+    bool searchBatteryPathLocked(String8& searchPath) const;
+    bool getBatterySysfsPathLocked(const String8& eventName, String8& sysfsPath) const;
 
     bool hasKeycodeLocked(Device* device, int keycode) const;
 

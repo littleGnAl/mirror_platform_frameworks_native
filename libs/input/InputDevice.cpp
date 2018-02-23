@@ -142,7 +142,8 @@ InputDeviceInfo::InputDeviceInfo(const InputDeviceInfo& other) :
         mIdentifier(other.mIdentifier), mAlias(other.mAlias), mIsExternal(other.mIsExternal),
         mHasMic(other.mHasMic), mSources(other.mSources),
         mKeyboardType(other.mKeyboardType), mKeyCharacterMap(other.mKeyCharacterMap),
-        mHasVibrator(other.mHasVibrator), mHasButtonUnderPad(other.mHasButtonUnderPad),
+        mHasVibrator(other.mHasVibrator), mHasBattery(other.mHasBattery),
+        mHasButtonUnderPad(other.mHasButtonUnderPad),
         mMotionRanges(other.mMotionRanges) {
 }
 
@@ -162,6 +163,7 @@ void InputDeviceInfo::initialize(int32_t id, int32_t generation, int32_t control
     mSources = 0;
     mKeyboardType = AINPUT_KEYBOARD_TYPE_NONE;
     mHasVibrator = false;
+    mHasBattery = false;
     mHasButtonUnderPad = false;
     mMotionRanges.clear();
 }

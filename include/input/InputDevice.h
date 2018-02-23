@@ -109,6 +109,9 @@ public:
     inline void setVibrator(bool hasVibrator) { mHasVibrator = hasVibrator; }
     inline bool hasVibrator() const { return mHasVibrator; }
 
+    inline void setBattery(bool hasBattery) { mHasBattery = hasBattery; }
+    inline bool hasBattery() const { return mHasBattery; }
+
     inline void setButtonUnderPad(bool hasButton) { mHasButtonUnderPad = hasButton; }
     inline bool hasButtonUnderPad() const { return mHasButtonUnderPad; }
 
@@ -128,6 +131,7 @@ private:
     int32_t mKeyboardType;
     sp<KeyCharacterMap> mKeyCharacterMap;
     bool mHasVibrator;
+    bool mHasBattery;
     bool mHasButtonUnderPad;
 
     Vector<MotionRange> mMotionRanges;

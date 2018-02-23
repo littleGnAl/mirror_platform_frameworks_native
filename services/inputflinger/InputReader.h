@@ -337,6 +337,9 @@ public:
     virtual void vibrate(int32_t deviceId, const nsecs_t* pattern, size_t patternSize,
             ssize_t repeat, int32_t token) = 0;
     virtual void cancelVibrate(int32_t deviceId, int32_t token) = 0;
+
+    /* Get the battery state of a particular input device. */
+    virtual BatteryState* getBatteryState(int32_t deviceId) = 0;
 };
 
 struct StylusState {
@@ -438,6 +441,8 @@ public:
     virtual void vibrate(int32_t deviceId, const nsecs_t* pattern, size_t patternSize,
             ssize_t repeat, int32_t token);
     virtual void cancelVibrate(int32_t deviceId, int32_t token);
+
+    virtual BatteryState* getBatteryState(int32_t deviceId);
 
 protected:
     // These members are protected so they can be instrumented by test cases.
@@ -586,6 +591,8 @@ public:
     void vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat, int32_t token);
     void cancelVibrate(int32_t token);
     void cancelTouch(nsecs_t when);
+
+    BatteryState* getBatteryState();
 
     int32_t getMetaState();
     void updateMetaState(int32_t keyCode);
@@ -1003,6 +1010,8 @@ public:
     virtual void cancelVibrate(int32_t token);
     virtual void cancelTouch(nsecs_t when);
 
+    virtual BatteryState* getBatteryState();
+
     virtual int32_t getMetaState();
     virtual void updateMetaState(int32_t keyCode);
 
@@ -1069,6 +1078,21 @@ private:
 
     void nextStep();
     void stopVibrating();
+};
+
+
+class BatteryInputMapper : public InputMapper {
+public:
+    explicit BatteryInputMapper(InputDevice* device);
+    virtual ~BatteryInputMapper();
+
+    virtual uint32_t getSources();
+    virtual void populateDeviceInfo(InputDeviceInfo* deviceInfo);
+    virtual void process(const RawEvent* rawEvent);
+
+    virtual bool hasBattery();
+    virtual BatteryState* getBatteryState();
+    virtual void dump(String8& dump);
 };
 
 

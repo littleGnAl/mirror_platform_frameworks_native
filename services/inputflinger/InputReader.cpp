@@ -542,6 +542,11 @@ InputDevice* InputReader::createDeviceLocked(int32_t deviceId, int32_t controlle
         device->addMapper(new VibratorInputMapper(device));
     }
 
+    // Devices with battery.
+    if (classes & INPUT_DEVICE_CLASS_BATTERY) {
+        device->addMapper(new BatteryInputMapper(device));
+    }
+
     // Keyboard-like devices.
     uint32_t keyboardSource = 0;
     int32_t keyboardType = AINPUT_KEYBOARD_TYPE_NON_ALPHABETIC;
@@ -859,6 +864,18 @@ void InputReader::cancelVibrate(int32_t deviceId, int32_t token) {
         InputDevice* device = mDevices.valueAt(deviceIndex);
         device->cancelVibrate(token);
     }
+}
+
+BatteryState* InputReader::getBatteryState(int32_t deviceId) {
+    AutoMutex _l(mLock);
+
+    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
+    if (deviceIndex >= 0) {
+        InputDevice* device = mDevices.valueAt(deviceIndex);
+        return device->getBatteryState();
+    }
+
+    return NULL;
 }
 
 bool InputReader::isInputDeviceEnabled(int32_t deviceId) {
@@ -1299,6 +1316,19 @@ void InputDevice::cancelTouch(nsecs_t when) {
         InputMapper* mapper = mMappers[i];
         mapper->cancelTouch(when);
     }
+}
+
+BatteryState* InputDevice::getBatteryState() {
+    size_t numMappers = mMappers.size();
+    BatteryState* result;
+    for (size_t i = 0; i < numMappers; i++) {
+        InputMapper* mapper = mMappers[i];
+        result = mapper->getBatteryState();
+        if (result != NULL)
+            return result;
+    }
+
+    return NULL;
 }
 
 int32_t InputDevice::getMetaState() {
@@ -2022,6 +2052,10 @@ void InputMapper::cancelVibrate(int32_t token) {
 void InputMapper::cancelTouch(nsecs_t when) {
 }
 
+BatteryState* InputMapper::getBatteryState() {
+    return NULL;
+}
+
 int32_t InputMapper::getMetaState() {
     return 0;
 }
@@ -2228,6 +2262,48 @@ void VibratorInputMapper::stopVibrating() {
 void VibratorInputMapper::dump(String8& dump) {
     dump.append(INDENT2 "Vibrator Input Mapper:\n");
     dump.appendFormat(INDENT3 "Vibrating: %s\n", toString(mVibrating));
+}
+
+
+// --- BatteryInputMapper ---
+
+BatteryInputMapper::BatteryInputMapper(InputDevice* device) :
+        InputMapper(device) {
+}
+
+BatteryInputMapper::~BatteryInputMapper() {
+}
+
+uint32_t BatteryInputMapper::getSources() {
+    return 0;
+}
+
+void BatteryInputMapper::populateDeviceInfo(InputDeviceInfo* info) {
+    InputMapper::populateDeviceInfo(info);
+
+    if (getEventHub()->hasBattery(getDeviceId())) {
+        getEventHub()->getBatteryInfo(getDeviceId());
+        info->setBattery(true);
+    }
+}
+
+void BatteryInputMapper::process(const RawEvent* rawEvent) {
+}
+
+bool BatteryInputMapper::hasBattery() {
+    return getEventHub()->hasBattery(getDeviceId());
+}
+
+BatteryState* BatteryInputMapper::getBatteryState() {
+    return getEventHub()->getBatteryState(getDeviceId());
+}
+
+void BatteryInputMapper::dump(String8& dump) {
+    dump.append(INDENT2 "Battery Input Mapper:\n");
+    dump.appendFormat(INDENT3 "Scope: %s\n", getBatteryState()->scope.string());
+    dump.appendFormat(INDENT3 "Type: %s\n", getBatteryState()->type.string());
+    dump.appendFormat(INDENT3 "Capacity: %d\n", getBatteryState()->capacity);
+    dump.appendFormat(INDENT3 "Status: %s\n", getBatteryState()->status.string());
 }
 
 
