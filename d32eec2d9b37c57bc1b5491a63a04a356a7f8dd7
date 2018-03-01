@@ -22,6 +22,30 @@
       "revId": "d32eec2d9b37c57bc1b5491a63a04a356a7f8dd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d18eabd_2e23b803",
+        "filename": "cmds/installd/installd_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-01T16:31:57Z",
+      "side": 1,
+      "message": "No, this *is* the fix. The LOG_FATAL in the dexopt() code actually isn\u0027t a LOG(FATAL) - because that\u0027s frameworks logging which isn\u0027t doing anything in NDEBUG (the right thing would have been LOG_ALWAYS_FATAL, because of course there needs to be two versions...), so of course we didn\u0027t notice this going wrong. So when I switched to CHECK, it actually broke.\n\nThis mask is supposed to have all flags dexopt() can see - and this is certainly such a flag.",
+      "parentUuid": "e8c945ea_abbfa385",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "d32eec2d9b37c57bc1b5491a63a04a356a7f8dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
