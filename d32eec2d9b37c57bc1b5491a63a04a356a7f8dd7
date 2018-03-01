@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8c945ea_abbfa385",
+        "filename": "cmds/installd/installd_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-01T11:31:32Z",
+      "side": 1,
+      "message": "This doesn\u0027t look related, but a fix for something else? Maybe the commit message should talk about this fix, and mention that it\u0027s also fixing the way we\u0027re checking it?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "d32eec2d9b37c57bc1b5491a63a04a356a7f8dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
