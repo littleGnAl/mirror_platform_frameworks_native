@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f6981fe_636197e8",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1749,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-01T19:32:42Z",
+      "side": 1,
+      "message": "I wanted the minimal diff and inherited this terrible scheme from you. :-) Considering that the follow-up is breaking this up, I\u0027d like to postpone that to the next CL.",
+      "parentUuid": "09df2f1d_6b7594a9",
+      "range": {
+        "startLine": 1749,
+        "startChar": 2,
+        "endLine": 1749,
+        "endChar": 38
+      },
+      "revId": "97d98605cc787a7e1fab29830bce8f9d6e000081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "255739ae_c9c5656a",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-01T19:27:18Z",
       "side": 1,
       "message": "\u0027+\u0027 is shorter but I don\u0027t mind.",
+      "range": {
+        "startLine": 1839,
+        "startChar": 75,
+        "endLine": 1839,
+        "endChar": 81
+      },
+      "revId": "97d98605cc787a7e1fab29830bce8f9d6e000081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adbe6ed9_6df275b3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-01T19:32:42Z",
+      "side": 1,
+      "message": "\u0027+\u0027 will get clang-tidy to yell at you for perceived suboptimal performance... :-(",
+      "parentUuid": "255739ae_c9c5656a",
       "range": {
         "startLine": 1839,
         "startChar": 75,
