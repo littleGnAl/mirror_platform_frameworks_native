@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b1b04b74_4a4effc0",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-01T19:53:41Z",
+      "side": 1,
+      "message": "What is the \"other side\" in this context? Are you saying you\u0027d like the larger refactor of moving all \"parent-process\" error logging into the driver (InstalldNativeService/otapreopt)? If so, can we do this incrementally?",
+      "parentUuid": "52335472_c0cf4232",
+      "range": {
+        "startLine": 1966,
+        "startChar": 11,
+        "endLine": 1966,
+        "endChar": 37
+      },
+      "revId": "023b22415ba9ce046f649817da27e40db8893451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16245554_39c11ece",
         "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-01T19:31:55Z",
       "side": 1,
       "message": "Can we just check the return code and not the string?",
+      "range": {
+        "startLine": 502,
+        "startChar": 17,
+        "endLine": 502,
+        "endChar": 92
+      },
+      "revId": "023b22415ba9ce046f649817da27e40db8893451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e0566cc_a90cfa21",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-01T19:53:41Z",
+      "side": 1,
+      "message": "I wanted to check the string explicitly to ensure we\u0027re getting the right info out of the exceptions.",
+      "parentUuid": "16245554_39c11ece",
       "range": {
         "startLine": 502,
         "startChar": 17,
