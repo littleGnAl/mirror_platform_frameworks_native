@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "30fc8a73_a4396037",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-01T19:37:49Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "6940af03_9a9439fe",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "db8d1b29b8786a37454195117320ebc01933b963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8435cb28_5600bdb0",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Not really, because dexopt() doesn\u0027t know what called exit() - the forked child directly or dex2oat. So *someone* needs to ensure that those exit codes do not overlap so that they can be distinguished...",
       "parentUuid": "8435cb28_5600bdb0",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 72
+      },
+      "revId": "db8d1b29b8786a37454195117320ebc01933b963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22bf453d_9377773e",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-01T19:37:49Z",
+      "side": 1,
+      "message": "annoying :) Could you add this comment here?",
+      "parentUuid": "3968be89_67446593",
       "range": {
         "startLine": 158,
         "startChar": 0,
