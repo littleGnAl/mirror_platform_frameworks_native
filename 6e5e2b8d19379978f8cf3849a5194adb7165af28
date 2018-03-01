@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cce74c06_866a33d9",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-01T19:27:51Z",
+      "side": 1,
+      "message": "rename to kConstant.",
+      "range": {
+        "startLine": 1750,
+        "startChar": 2,
+        "endLine": 1750,
+        "endChar": 52
+      },
+      "revId": "6e5e2b8d19379978f8cf3849a5194adb7165af28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
