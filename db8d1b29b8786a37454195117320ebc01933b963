@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6940af03_9a9439fe",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-01T19:31:27Z",
+      "side": 1,
+      "message": "Sure, I can create a header. I don\u0027t think we should add .cc files w/o getting our own directory...",
+      "parentUuid": "1c6ef8e1_055d9ff3",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "db8d1b29b8786a37454195117320ebc01933b963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8435cb28_5600bdb0",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-01T19:24:36Z",
       "side": 1,
       "message": "can we have a simple conversions to from art::dex2oat codes to DexoptReturnCodes? We wouldn\u0027t need to think about \"do they overlap?\"",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 72
+      },
+      "revId": "db8d1b29b8786a37454195117320ebc01933b963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3968be89_67446593",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-01T19:31:27Z",
+      "side": 1,
+      "message": "Not really, because dexopt() doesn\u0027t know what called exit() - the forked child directly or dex2oat. So *someone* needs to ensure that those exit codes do not overlap so that they can be distinguished...",
+      "parentUuid": "8435cb28_5600bdb0",
       "range": {
         "startLine": 158,
         "startChar": 0,
