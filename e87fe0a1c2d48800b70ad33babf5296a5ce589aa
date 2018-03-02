@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df95b917_3407f6b9",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-02T10:22:23Z",
+      "side": 1,
+      "message": "... and dex2oatd is present on device, ...",
+      "range": {
+        "startLine": 309,
+        "startChar": 53,
+        "endLine": 309,
+        "endChar": 54
+      },
+      "revId": "e87fe0a1c2d48800b70ad33babf5296a5ce589aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
