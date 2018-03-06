@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37ca5e35_2752eec9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-06T22:19:35Z",
+      "side": 1,
+      "message": "run installd dexopt test.\n\ne.g.\nadb sync data\nadb shell /data/nativetest64/installd_dexopt_test/installd_dexopt_test",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "77bdf4ca8d4dd2a5e5c48a20138b8bbdb251da5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
