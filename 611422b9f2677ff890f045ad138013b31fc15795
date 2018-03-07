@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ff96516_1175cf86",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-07T23:49:05Z",
+      "side": 1,
+      "message": "you need to move this call before the for-loop",
+      "range": {
+        "startLine": 233,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 33
+      },
+      "revId": "611422b9f2677ff890f045ad138013b31fc15795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456b3c79_06f693ce",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-07T23:49:05Z",
+      "side": 1,
+      "message": "dexopt_flgs |\u003d atoi(param) should be enough",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 81
+      },
+      "revId": "611422b9f2677ff890f045ad138013b31fc15795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
