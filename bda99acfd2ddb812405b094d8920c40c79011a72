@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab9e15ec_4b9e8208",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-03-07T21:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "353d6be9_c82f29ff",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "bda99acfd2ddb812405b094d8920c40c79011a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dbe437a_bba93858",
         "filename": "cmds/installd/otapreopt_parameters.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "bda99acfd2ddb812405b094d8920c40c79011a72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca9b414_7dc58f78",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-03-07T21:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbe437a_bba93858",
+      "range": {
+        "startLine": 246,
+        "startChar": 8,
+        "endLine": 246,
+        "endChar": 46
+      },
+      "revId": "bda99acfd2ddb812405b094d8920c40c79011a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "821d3034_4b3292e9",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-03-07T21:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cef2ef2c_fc2eec91",
+      "range": {
+        "startLine": 309,
+        "startChar": 16,
+        "endLine": 311,
+        "endChar": 81
+      },
+      "revId": "bda99acfd2ddb812405b094d8920c40c79011a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c768ace_c6664767",
         "filename": "cmds/installd/tests/installd_otapreopt_test.cpp",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "bda99acfd2ddb812405b094d8920c40c79011a72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e728150_9fefdaf6",
+        "filename": "cmds/installd/tests/installd_otapreopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-03-07T21:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c768ace_c6664767",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 73
+      },
+      "revId": "bda99acfd2ddb812405b094d8920c40c79011a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
