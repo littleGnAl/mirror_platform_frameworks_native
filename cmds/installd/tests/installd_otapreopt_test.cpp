@@ -20,6 +20,7 @@
 #include <android-base/logging.h>
 #include <gtest/gtest.h>
 
+#include "installd_constants.h"
 #include "otapreopt_parameters.h"
 
 namespace android {
@@ -61,7 +62,9 @@ protected:
         ASSERT_STREQ(params.instruction_set, args[i++]);
         ASSERT_EQ(params.dexopt_needed, atoi(args[i++]));
         ASSERT_STREQ(params.oat_dir, args[i++]);
-        ASSERT_EQ(params.dexopt_flags, atoi(args[i++]));
+        int dexopt_flags = atoi(args[i++]);
+        dexopt_flags |= (version < 8) ? DEXOPT_GENERATE_COMPACT_DEX : 0u;
+        ASSERT_EQ(params.dexopt_flags, dexopt_flags);
         ASSERT_STREQ(params.compiler_filter, args[i++]);
         ASSERT_STREQ(params.volume_uuid, ParseNull(args[i++]));
         ASSERT_STREQ(params.shared_libraries, ParseNull(args[i++]));
@@ -106,6 +109,7 @@ protected:
             case 5: return "5";
             case 6: return "6";
             case 7: return "7";
+            case 8: return "8";
         }
         return nullptr;
     }

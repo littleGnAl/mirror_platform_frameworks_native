@@ -133,6 +133,9 @@ void OTAPreoptParameters::SetDefaultsForPostV1Arguments() {
 
     // The compilation reason is ab-ota (match the system property pm.dexopt.ab-ota)
     compilation_reason = "ab-ota";
+
+    // Flag is enabled by default for A/B otas.
+    dexopt_flags |= DEXOPT_GENERATE_COMPACT_DEX;
 }
 
 bool OTAPreoptParameters::ReadArgumentsV1(const char** argv) {
@@ -239,7 +242,8 @@ bool OTAPreoptParameters::ReadArgumentsPostV1(uint32_t version, const char** arg
         case 4: num_args_expected = 13; break;
         case 5: num_args_expected = 14; break;
         case 6: num_args_expected = 15; break;
-        case 7: num_args_expected = 16; break;
+        case 7:
+        case 8: num_args_expected = 16; break;
         default:
             LOG(ERROR) << "Don't know how to read arguments for version " << version;
             return false;
@@ -302,6 +306,9 @@ bool OTAPreoptParameters::ReadArgumentsPostV1(uint32_t version, const char** arg
 
             case 6:
                 dexopt_flags = atoi(param);
+                // Add CompactDex generation flag for versions less than 8 since it wasn't passed
+                // from the package manager.
+                dexopt_flags |= (version < 8) ? DEXOPT_GENERATE_COMPACT_DEX : 0u;
                 break;
 
             case 7:
