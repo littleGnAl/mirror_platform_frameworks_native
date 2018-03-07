@@ -1,0 +1,8 @@
+Code-Review+2: Calin Juravle <calin@google.com>
+Verified+1: Mathieu Chartier <mathieuc@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Mathieu Chartier <mathieuc@google.com>
+Submitted-at: Wed, 07 Mar 2018 01:44:34 +0000
+Reviewed-on: https://android-review.googlesource.com/634705
+Project: platform/frameworks/native
+Branch: refs/heads/master
