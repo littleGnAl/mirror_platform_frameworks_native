@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "353d6be9_c82f29ff",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-07T21:25:55Z",
+      "side": 1,
+      "message": "dexopt_flags may not be initialized to 0. So you have to initialize it. \n\nI think it\u0027s better to move the call from L232 before the read, and then ensure that dexopt_flags reads with \"|\u003d\" instead of \"\u003d\".\n\nAnd check that DEXOPT_GENERATE_COMPACT_DEX does not overlap with OLD_DEXOPT_ things, (see L192)",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "bda99acfd2ddb812405b094d8920c40c79011a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbe437a_bba93858",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-07T21:25:55Z",
+      "side": 1,
+      "message": "Add a comment: \n\n// Version 8 adds a new dexopt flag: DEXOPT_GENERATE_COMPACT_DEX",
+      "range": {
+        "startLine": 246,
+        "startChar": 8,
+        "endLine": 246,
+        "endChar": 46
+      },
+      "revId": "bda99acfd2ddb812405b094d8920c40c79011a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef2ef2c_fc2eec91",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-07T21:25:55Z",
+      "side": 1,
+      "message": "use |\u003d at L308 instead of this.",
+      "range": {
+        "startLine": 309,
+        "startChar": 16,
+        "endLine": 311,
+        "endChar": 81
+      },
+      "revId": "bda99acfd2ddb812405b094d8920c40c79011a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c768ace_c6664767",
+        "filename": "cmds/installd/tests/installd_otapreopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-07T21:25:55Z",
+      "side": 1,
+      "message": "could you rewrite this similar to the (version \u003e X) checks and move after the last \u0027version \u003e 6\u0027. It makes the test consistent and no-brainer to read and see differences between versions.",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 73
+      },
+      "revId": "bda99acfd2ddb812405b094d8920c40c79011a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
