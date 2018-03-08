@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6801577a_86256efc",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1004371
+      },
+      "writtenOn": "2018-03-08T02:39:44Z",
+      "side": 1,
+      "message": "\u003e100",
+      "revId": "c5ef208a2441624257c5da7287d0bbeeedfe0787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77ec694e_e2335250",
+        "filename": "services/surfaceflinger/EventThread.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1004371
+      },
+      "writtenOn": "2018-03-08T02:39:44Z",
+      "side": 1,
+      "message": "\u003e100",
+      "revId": "c5ef208a2441624257c5da7287d0bbeeedfe0787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "589295c7_9177de24",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1004371
+      },
+      "writtenOn": "2018-03-08T02:39:44Z",
+      "side": 1,
+      "message": "\u003e100",
+      "range": {
+        "startLine": 1306,
+        "startChar": 99,
+        "endLine": 1306,
+        "endChar": 102
+      },
+      "revId": "c5ef208a2441624257c5da7287d0bbeeedfe0787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
