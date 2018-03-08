@@ -117,6 +117,30 @@
       "revId": "611422b9f2677ff890f045ad138013b31fc15795",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5afa1b6_52aaf711",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-03-08T00:23:00Z",
+      "side": 1,
+      "message": "That\u0027s the plan currently, I suppose it doesn\u0027t matter either way. The package manager should already be passing the flag.",
+      "parentUuid": "8c64e616_492eaddd",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 81
+      },
+      "revId": "611422b9f2677ff890f045ad138013b31fc15795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
