@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "085e3612_52815326",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-08T00:29:24Z",
+      "side": 1,
+      "message": "yep.",
+      "parentUuid": "7f38d92b_c9e48336",
+      "range": {
+        "startLine": 233,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 33
+      },
+      "revId": "611422b9f2677ff890f045ad138013b31fc15795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "456b3c79_06f693ce",
         "filename": "cmds/installd/otapreopt_parameters.cpp",
         "patchSetId": 3
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "That\u0027s the plan currently, I suppose it doesn\u0027t matter either way. The package manager should already be passing the flag.",
       "parentUuid": "8c64e616_492eaddd",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 81
+      },
+      "revId": "611422b9f2677ff890f045ad138013b31fc15795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ab1a018_28017a28",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-03-08T00:29:24Z",
+      "side": 1,
+      "message": "It matters if you plan to disable cdex for P-OTA, cause then it\u0027s not a simple flag change anymore\n\nI don\u0027t see another way to do this, so I guess it\u0027s ok. Please update the comment and say that\u0027s intended.",
+      "parentUuid": "a5afa1b6_52aaf711",
       "range": {
         "startLine": 311,
         "startChar": 0,
