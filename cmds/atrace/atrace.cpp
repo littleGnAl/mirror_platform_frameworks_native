@@ -93,6 +93,7 @@ struct TracingCategory {
 static const TracingCategory k_categories[] = {
     { "gfx",        "Graphics",         ATRACE_TAG_GRAPHICS, {
         { OPT,      "events/mdss/enable" },
+        { OPT,      "events/sde/enable" },
     } },
     { "input",      "Input",            ATRACE_TAG_INPUT, { } },
     { "view",       "View System",      ATRACE_TAG_VIEW, { } },
@@ -115,6 +116,7 @@ static const TracingCategory k_categories[] = {
     { "database",   "Database",         ATRACE_TAG_DATABASE, { } },
     { "network",    "Network",          ATRACE_TAG_NETWORK, { } },
     { "adb",        "ADB",              ATRACE_TAG_ADB, { } },
+    { "vibrator",   "Vibrator",         ATRACE_TAG_VIBRATOR, {}},
     { k_coreServiceCategory, "Core services", 0, { } },
     { k_pdxServiceCategory, "PDX services", 0, { } },
     { "sched",      "CPU Scheduling",   0, {
@@ -128,6 +130,14 @@ static const TracingCategory k_categories[] = {
     { "irq",        "IRQ Events",   0, {
         { REQ,      "events/irq/enable" },
         { OPT,      "events/ipi/enable" },
+    } },
+    { "irqoff",     "IRQ-disabled code section tracing", 0, {
+        { REQ,      "events/preemptirq/irq_enable/enable" },
+        { REQ,      "events/preemptirq/irq_disable/enable" },
+    } },
+    { "preemptoff", "Preempt-disabled code section tracing", 0, {
+        { REQ,      "events/preemptirq/preempt_enable/enable" },
+        { REQ,      "events/preemptirq/preempt_disable/enable" },
     } },
     { "i2c",        "I2C Events",   0, {
         { REQ,      "events/i2c/enable" },
@@ -143,6 +153,11 @@ static const TracingCategory k_categories[] = {
     { "freq",       "CPU Frequency",    0, {
         { REQ,      "events/power/cpu_frequency/enable" },
         { OPT,      "events/power/clock_set_rate/enable" },
+        { OPT,      "events/power/clock_disable/enable" },
+        { OPT,      "events/power/clock_enable/enable" },
+        { OPT,      "events/clk/clk_set_rate/enable" },
+        { OPT,      "events/clk/clk_disable/enable" },
+        { OPT,      "events/clk/clk_enable/enable" },
         { OPT,      "events/power/cpu_frequency_limits/enable" },
     } },
     { "membus",     "Memory Bus Utilization", 0, {
@@ -759,21 +774,9 @@ static bool setCategoriesEnableFromFile(const char* categories_file)
     return ok;
 }
 
-// Set all the kernel tracing settings to the desired state for this trace
-// capture.
-static bool setUpTrace()
+static bool setUpUserspaceTracing()
 {
     bool ok = true;
-
-    // Set up the tracing options.
-    ok &= setCategoriesEnableFromFile(g_categoriesFile);
-    ok &= setTraceOverwriteEnable(g_traceOverwrite);
-    ok &= setTraceBufferSizeKB(g_traceBufferSizeKB);
-    // TODO: Re-enable after stabilization
-    //ok &= setCmdlineSize();
-    ok &= setClock();
-    ok &= setPrintTgidEnableIfPresent(true);
-    ok &= setKernelTraceFuncs(g_kernelTraceFuncs);
 
     // Set up the tags property.
     uint64_t tags = 0;
@@ -812,6 +815,39 @@ static bool setUpTrace()
         ok &= ServiceUtility::PokeServices();
     }
 
+    return ok;
+}
+
+static void cleanUpUserspaceTracing()
+{
+    setTagsProperty(0);
+    clearAppProperties();
+    pokeBinderServices();
+
+    if (g_tracePdx) {
+        ServiceUtility::PokeServices();
+    }
+}
+
+
+// Set all the kernel tracing settings to the desired state for this trace
+// capture.
+static bool setUpTrace()
+{
+    bool ok = true;
+
+    // Set up the tracing options.
+    ok &= setCategoriesEnableFromFile(g_categoriesFile);
+    ok &= setTraceOverwriteEnable(g_traceOverwrite);
+    ok &= setTraceBufferSizeKB(g_traceBufferSizeKB);
+    // TODO: Re-enable after stabilization
+    //ok &= setCmdlineSize();
+    ok &= setClock();
+    ok &= setPrintTgidEnableIfPresent(true);
+    ok &= setKernelTraceFuncs(g_kernelTraceFuncs);
+
+    ok &= setUpUserspaceTracing();
+
     // Disable all the sysfs enables.  This is done as a separate loop from
     // the enables to allow the same enable to exist in multiple categories.
     ok &= disableKernelTraceEvents();
@@ -845,13 +881,7 @@ static void cleanUpTrace()
     disableKernelTraceEvents();
 
     // Reset the system properties.
-    setTagsProperty(0);
-    clearAppProperties();
-    pokeBinderServices();
-
-    if (g_tracePdx) {
-        ServiceUtility::PokeServices();
-    }
+    cleanUpUserspaceTracing();
 
     // Set the options back to their defaults.
     setTraceOverwriteEnable(true);
@@ -859,7 +889,6 @@ static void cleanUpTrace()
     setPrintTgidEnableIfPresent(false);
     setKernelTraceFuncs(NULL);
 }
-
 
 // Enable tracing in the kernel.
 static bool startTrace()
@@ -1092,6 +1121,8 @@ int main(int argc, char **argv)
     bool traceStop = true;
     bool traceDump = true;
     bool traceStream = false;
+    bool enableUserspace = false;
+    bool disableUserspace = false;
 
     if (argc == 2 && 0 == strcmp(argv[1], "--help")) {
         showHelp(argv[0]);
@@ -1107,12 +1138,14 @@ int main(int argc, char **argv)
         int ret;
         int option_index = 0;
         static struct option long_options[] = {
-            {"async_start",     no_argument, 0,  0 },
-            {"async_stop",      no_argument, 0,  0 },
-            {"async_dump",      no_argument, 0,  0 },
-            {"list_categories", no_argument, 0,  0 },
-            {"stream",          no_argument, 0,  0 },
-            {           0,                0, 0,  0 }
+            {"async_start",       no_argument, 0,  0 },
+            {"async_stop",        no_argument, 0,  0 },
+            {"async_dump",        no_argument, 0,  0 },
+            {"enable_userspace",  no_argument, 0,  0 },
+            {"disable_userspace", no_argument, 0,  0 },
+            {"list_categories",   no_argument, 0,  0 },
+            {"stream",            no_argument, 0,  0 },
+            {           0,                  0, 0,  0 }
         };
 
         ret = getopt_long(argc, argv, "a:b:cf:k:ns:t:zo:",
@@ -1182,6 +1215,18 @@ int main(int argc, char **argv)
                     async = true;
                     traceStart = false;
                     traceStop = false;
+                } else if (!strcmp(long_options[option_index].name, "enable_userspace")) {
+                    async = false;
+                    traceStart = false;
+                    traceStop = false;
+                    traceDump = false;
+                    enableUserspace = true;
+                } else if (!strcmp(long_options[option_index].name, "disable_userspace")) {
+                    async = false;
+                    traceStart = false;
+                    traceStop = false;
+                    traceDump = false;
+                    disableUserspace = true;
                 } else if (!strcmp(long_options[option_index].name, "stream")) {
                     traceStream = true;
                     traceDump = false;
@@ -1206,10 +1251,19 @@ int main(int argc, char **argv)
     }
 
     bool ok = true;
-    ok &= setUpTrace();
-    ok &= startTrace();
+
+    if (enableUserspace) {
+        ok &= setUpUserspaceTracing();
+    }
+
+    if (disableUserspace) {
+        ok &= cleanUpUserspaceTracing();
+    }
 
     if (ok && traceStart) {
+        ok &= setUpTrace();
+        ok &= startTrace();
+
         if (!traceStream) {
             printf("capturing trace...");
             fflush(stdout);
