@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e8d2533_6b6a1d65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-03-12T15:57:17Z",
+      "side": 1,
+      "message": "Plz add some lines explaining why we are doing this.\nMention explicitly the fact that Perfetto is able to fetch ftrace data independently but needs atrace to poke at userspace, at least in P.\nExplain that this is to avoid atrace to uselessly fetch the kernel ftrace buffer after perfetto has already drained it. Also avoid that atrace interferes with perfetto ftrace config while we use it to enable userspace.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8658a60e_e9fb5182",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-03-12T15:57:17Z",
+      "side": 1,
+      "message": "I think some comments got lost moving the CL (or maybe I forgot to press \"reply\" there).\nAnyhow, I think s/System/UserspaceTracing/ makes it a bit more clear",
+      "range": {
+        "startLine": 762,
+        "startChar": 17,
+        "endLine": 762,
+        "endChar": 23
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "840d4d6e_03b72b35",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-03-12T15:57:17Z",
+      "side": 1,
+      "message": "ditto here",
+      "range": {
+        "startLine": 806,
+        "startChar": 19,
+        "endLine": 806,
+        "endChar": 25
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6ad949d_f17c4542",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-03-12T15:57:17Z",
+      "side": 1,
+      "message": "KernelTracing",
+      "range": {
+        "startLine": 820,
+        "startChar": 17,
+        "endLine": 820,
+        "endChar": 22
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c35c3c64_1b50847a",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-03-12T15:57:17Z",
+      "side": 1,
+      "message": "--enable_userspace \"Enables forwarding of userspace events into the trace marker. Does not record any trace.\"\n--disable_userspace \"Enables forwarding of userspace events into the trace marker\"",
+      "range": {
+        "startLine": 1068,
+        "startChar": 25,
+        "endLine": 1068,
+        "endChar": 44
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b81435cf_b973cc93",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-03-12T15:57:17Z",
+      "side": 1,
+      "message": "enableUserspace / disableUserspace (same below)",
+      "range": {
+        "startLine": 1111,
+        "startChar": 9,
+        "endLine": 1111,
+        "endChar": 21
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52d9348d_f91f11e3",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-03-12T15:57:17Z",
+      "side": 1,
+      "message": "I think these two should be true by default",
+      "range": {
+        "startLine": 1111,
+        "startChar": 24,
+        "endLine": 1111,
+        "endChar": 29
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a428522b_ae66def0",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-03-12T15:57:17Z",
+      "side": 1,
+      "message": "enable userspace tracing",
+      "range": {
+        "startLine": 1241,
+        "startChar": 42,
+        "endLine": 1241,
+        "endChar": 50
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98ba4a70_e3ea57ba",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-03-12T15:57:17Z",
+      "side": 1,
+      "message": "shouldn\u0027t this go down below after\n   if (traceStop)\n        cleanUpTrace(); ?",
+      "range": {
+        "startLine": 1244,
+        "startChar": 0,
+        "endLine": 1246,
+        "endChar": 5
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
