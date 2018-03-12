@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "874119d4_8c1aeda9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-12T16:39:14Z",
+      "side": 1,
+      "message": "ptal",
+      "parentUuid": "2e8d2533_6b6a1d65",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8658a60e_e9fb5182",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94db1ebe_be7fea44",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-12T16:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8658a60e_e9fb5182",
+      "range": {
+        "startLine": 762,
+        "startChar": 17,
+        "endLine": 762,
+        "endChar": 23
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0c109121_f93f2d4f",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-12T16:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840d4d6e_03b72b35",
+      "range": {
+        "startLine": 806,
+        "startChar": 19,
+        "endLine": 806,
+        "endChar": 25
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6ad949d_f17c4542",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "046e6bf3_4fa87558",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-12T16:39:14Z",
+      "side": 1,
+      "message": "Only makes sense if I remove ok \u0026\u003d setUpSystem(); lets discuss offline.",
+      "parentUuid": "d6ad949d_f17c4542",
+      "range": {
+        "startLine": 820,
+        "startChar": 17,
+        "endLine": 820,
+        "endChar": 22
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c35c3c64_1b50847a",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2018-03-12T15:57:17Z",
       "side": 1,
       "message": "--enable_userspace \"Enables forwarding of userspace events into the trace marker. Does not record any trace.\"\n--disable_userspace \"Enables forwarding of userspace events into the trace marker\"",
+      "range": {
+        "startLine": 1068,
+        "startChar": 25,
+        "endLine": 1068,
+        "endChar": 44
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3471097e_a9724959",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-12T16:39:14Z",
+      "side": 1,
+      "message": "In the previous CL you asked me to remove this, shall I put it back?",
+      "parentUuid": "c35c3c64_1b50847a",
       "range": {
         "startLine": 1068,
         "startChar": 25,
@@ -163,6 +283,54 @@
     },
     {
       "key": {
+        "uuid": "4609fa41_726a7836",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-12T16:39:14Z",
+      "side": 1,
+      "message": "Lets discuss.",
+      "parentUuid": "52d9348d_f91f11e3",
+      "range": {
+        "startLine": 1111,
+        "startChar": 24,
+        "endLine": 1111,
+        "endChar": 29
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13901c91_9bc76f47",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-12T16:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b81435cf_b973cc93",
+      "range": {
+        "startLine": 1111,
+        "startChar": 9,
+        "endLine": 1111,
+        "endChar": 21
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a428522b_ae66def0",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 1
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "15bd8471_20975a1d",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-12T16:39:14Z",
+      "side": 1,
+      "message": "Removed per comment on old CL.",
+      "parentUuid": "a428522b_ae66def0",
+      "range": {
+        "startLine": 1241,
+        "startChar": 42,
+        "endLine": 1241,
+        "endChar": 50
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98ba4a70_e3ea57ba",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 1
@@ -197,6 +389,30 @@
       "writtenOn": "2018-03-12T15:57:17Z",
       "side": 1,
       "message": "shouldn\u0027t this go down below after\n   if (traceStop)\n        cleanUpTrace(); ?",
+      "range": {
+        "startLine": 1244,
+        "startChar": 0,
+        "endLine": 1246,
+        "endChar": 5
+      },
+      "revId": "438b9da6af73d36ef3e8bc316e2bfac5595aaa0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a75ab1d7_bf4a6126",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-12T16:39:14Z",
+      "side": 1,
+      "message": "Let\u0027s discuss offline.",
+      "parentUuid": "98ba4a70_e3ea57ba",
       "range": {
         "startLine": 1244,
         "startChar": 0,
