@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b65a301f_d27d607c",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-03-13T00:28:05Z",
+      "side": 1,
+      "message": "instead of two options can we instead do something like --userspace-only that disables the kernel aspects of either async_start or async_stop? I\u0027m not really a fan of trace starting/stopping being 4 states of fun combinations. There\u0027s already too much local state nonsense going on here.",
+      "range": {
+        "startLine": 1139,
+        "startChar": 12,
+        "endLine": 1140,
+        "endChar": 55
+      },
+      "revId": "be61ccf73da9c5cc21d777de0161f6cf75ec84d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
