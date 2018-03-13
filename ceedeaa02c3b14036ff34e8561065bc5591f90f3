@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6909fcdd_2d3f7537",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-03-13T16:37:23Z",
+      "side": 1,
+      "message": "The part inside this block isn\u0027t related to kernel tracing management, doesn\u0027t seem like onlyUserspace should be controlling this?",
+      "range": {
+        "startLine": 1247,
+        "startChar": 29,
+        "endLine": 1247,
+        "endChar": 42
+      },
+      "revId": "ceedeaa02c3b14036ff34e8561065bc5591f90f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63c6f9b3_93ed28d3",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-03-13T16:37:23Z",
+      "side": 1,
+      "message": "this breaks --async_dump --only_userspace in non-obvious ways which probably isn\u0027t desired.\n\nI\u0027m guessing the point of this is to prevent dumping in async_stop specifically? There should probably be a check after parsing the command line options that if onlyUserspace \u003d true then traceStart or traceStop is true as well. Possibly also enforce async \u003d true since that seems to be desired as well?",
+      "range": {
+        "startLine": 1283,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 0
+      },
+      "revId": "ceedeaa02c3b14036ff34e8561065bc5591f90f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
