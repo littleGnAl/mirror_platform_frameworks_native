@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd9ce9ca_ab4b9c27",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-03-14T22:21:44Z",
+      "side": 0,
+      "message": "huh, now that I think about it. Wasn\u0027t this leaking FDs?",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 68
+      },
+      "revId": "5e22392cca5c3762a502d8c2d4c281912ef223c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
