@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e3969856_9741619e",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-14T12:48:03Z",
+      "side": 1,
+      "message": "The big thing I would like to avoid is the call to clearTrace() (ideally we would also avoid printf(\"capturing trace...\"); since it\u0027s a bit misleading with onlyUserspace). I\u0027ve pushed the check down, let me know your thoughts. Thanks!",
+      "parentUuid": "6909fcdd_2d3f7537",
+      "range": {
+        "startLine": 1247,
+        "startChar": 29,
+        "endLine": 1247,
+        "endChar": 42
+      },
+      "revId": "ceedeaa02c3b14036ff34e8561065bc5591f90f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63c6f9b3_93ed28d3",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 16
@@ -45,6 +69,30 @@
       "revId": "ceedeaa02c3b14036ff34e8561065bc5591f90f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b85746b6_bfd3ee10",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2018-03-14T12:48:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63c6f9b3_93ed28d3",
+      "range": {
+        "startLine": 1283,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 0
+      },
+      "revId": "ceedeaa02c3b14036ff34e8561065bc5591f90f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
