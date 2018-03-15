@@ -22,6 +22,30 @@
       "revId": "e131003ee2ffefa38242f1b6ec7a1c2588f6536a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c1f4dc3_5d395add",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-03-15T16:09:38Z",
+      "side": 1,
+      "message": "yeah, i was waiting for the other changes to come in to test them all at once.",
+      "parentUuid": "0357745e_13db4cdd",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "e131003ee2ffefa38242f1b6ec7a1c2588f6536a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

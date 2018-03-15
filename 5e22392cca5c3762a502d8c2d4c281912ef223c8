@@ -46,6 +46,30 @@
       "revId": "5e22392cca5c3762a502d8c2d4c281912ef223c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2018dfb_d5a462e7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-03-15T16:09:38Z",
+      "side": 0,
+      "message": "I see. do you want me to move this to the internal branch first in that case?",
+      "parentUuid": "d5f2bc23_84d8a15d",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 68
+      },
+      "revId": "5e22392cca5c3762a502d8c2d4c281912ef223c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
