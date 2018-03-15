@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0357745e_13db4cdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-03-15T09:07:14Z",
+      "side": 1,
+      "message": "This is insufficient - i\u0027m guessing you tested this manually by running dumpstate or \"adb bugreport\" so please mention the details of the manual tests here.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "e131003ee2ffefa38242f1b6ec7a1c2588f6536a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
