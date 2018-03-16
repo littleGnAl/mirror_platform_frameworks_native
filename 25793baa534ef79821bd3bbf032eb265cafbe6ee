@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63eba847_e301d865",
+        "filename": "cmds/dumpstate/DumpstateInternal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-16T22:22:02Z",
+      "side": 1,
+      "message": "poll?",
+      "range": {
+        "startLine": 164,
+        "startChar": 37,
+        "endLine": 164,
+        "endChar": 43
+      },
+      "revId": "25793baa534ef79821bd3bbf032eb265cafbe6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
