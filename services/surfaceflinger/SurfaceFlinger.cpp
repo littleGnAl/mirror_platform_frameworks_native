@@ -294,6 +294,19 @@ void SurfaceFlinger::binderDied(const wp<IBinder>& /* who */)
     // restore initial conditions (default device unblank, etc)
     initializeDisplays();
 
+    int RETRY = 50;
+    char anim_state[PROPERTY_VALUE_MAX];
+
+    int cnt = 0;
+    while(cnt < RETRY) {
+        property_get("init.svc.bootanim", anim_state, "stopped");
+        if (!strcmp(anim_state, "stopped")) {
+            break;
+        }
+        usleep(40000);
+        cnt++;
+    }
+
     // restart the boot-animation
     startBootAnim();
 }
