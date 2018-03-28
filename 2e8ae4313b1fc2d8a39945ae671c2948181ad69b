@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d911acf_59db7707",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2018-03-28T12:48:02Z",
+      "side": 0,
+      "message": "same comments from the sepolicy review: some of these are unrelated to file name resolution.",
+      "revId": "2e8ae4313b1fc2d8a39945ae671c2948181ad69b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
