@@ -1,0 +1,10 @@
+Presubmit-Ready+1: Florian Mayer <fmayer@google.com>
+Presubmit-Ready+1: Primiano Tucci <primiano@google.com>
+Code-Review+2: Jeffrey Vander Stoep <jeffv@google.com>
+Verified+1: Primiano Tucci <primiano@google.com>
+Autosubmit+1: Primiano Tucci <primiano@google.com>
+Submitted-by: Primiano Tucci <primiano@google.com>
+Submitted-at: Thu, 29 Mar 2018 20:11:42 +0000
+Reviewed-on: https://android-review.googlesource.com/650961
+Project: platform/frameworks/native
+Branch: refs/heads/master
