@@ -26,6 +26,19 @@ __BEGIN_DECLS
 
 const native_handle_t* AHardwareBuffer_getNativeHandle(const AHardwareBuffer* buffer);
 
+/**
+ * Create a AHardwareBuffer from a native handle.
+ *
+ * This function takes ownership of a native handle, registers/imports it, and wraps it in a
+ * AHardwareBuffer suitable for use by applications or other parts of the system. The contents of
+ * desc will be returned by AHardwareBuffer_describe().
+ *
+ * If the function fails, it does not take ownership of the native handle, and the caller is
+ * responsible for closing it. On success, the AHardwareBuffer does take ownership, and the handle
+ * will be closed when the AHardwareBuffer is destroyed.
+ */
+int AHardwareBuffer_createFromHandle(const AHardwareBuffer_Desc* desc,
+        const native_handle_t* handle, AHardwareBuffer** outBuffer);
 
 /**
  * Buffer pixel formats.
