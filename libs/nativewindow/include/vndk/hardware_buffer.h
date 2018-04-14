@@ -26,6 +26,8 @@ __BEGIN_DECLS
 
 const native_handle_t* AHardwareBuffer_getNativeHandle(const AHardwareBuffer* buffer);
 
+int AHardwareBuffer_createFromHandle(const AHardwareBuffer_Desc* desc, uint32_t stride,
+        const native_handle_t* handle, AHardwareBuffer** outBuffer);
 
 /**
  * Buffer pixel formats.

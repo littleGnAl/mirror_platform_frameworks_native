@@ -279,6 +279,38 @@ const native_handle_t* AHardwareBuffer_getNativeHandle(
     return gbuffer->handle;
 }
 
+int AHardwareBuffer_createFromHandle(const AHardwareBuffer_Desc* desc, uint32_t stride,
+        const native_handle_t* handle, AHardwareBuffer** outBuffer)
+{
+    if (!desc || !handle || !outBuffer)
+        return BAD_VALUE;
+    if (desc->rfu0 != 0 || desc->rfu1 != 0) {
+        ALOGE("AHardwareBuffer_Desc::rfu fields must be 0");
+        return BAD_VALUE;
+    }
+    if (desc->format == AHARDWAREBUFFER_FORMAT_BLOB && desc->height != 1) {
+        ALOGE("Height must be 1 when using the AHARDWAREBUFFER_FORMAT_BLOB format");
+        return BAD_VALUE;
+    }
+
+    // We're relying on AHardwareBuffer_convertToPixelFormat *not* doing validation:
+    // if given a non-AHB format, it just returns that format unmodified. That allows drivers to
+    // create GraphicBuffer/AHardwareBuffer with non-public formats, which is already possible
+    // through other paths, e.g. buffers that come from camera or codecs.
+    int format = AHardwareBuffer_convertToPixelFormat(desc->format);
+    uint64_t usage =  AHardwareBuffer_convertToGrallocUsageBits(desc->usage);
+    sp<GraphicBuffer> gbuffer(new GraphicBuffer(handle, GraphicBuffer::TAKE_HANDLE,
+            desc->width, desc->height, format, desc->layers, usage, stride));
+    status_t err = gbuffer->initCheck();
+    if (err != 0 || gbuffer->handle == 0)
+        return err;
+
+    *outBuffer = AHardwareBuffer_from_GraphicBuffer(gbuffer.get());
+
+    // Ensure the buffer doesn't get destroyed when the sp<> goes away.
+    AHardwareBuffer_acquire(*outBuffer);
+    return NO_ERROR;
+}
 
 // ----------------------------------------------------------------------------
 // Helpers implementation
