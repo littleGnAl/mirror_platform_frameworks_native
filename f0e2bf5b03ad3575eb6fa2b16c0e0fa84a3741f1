@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ae408c5_61857f68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-04-17T19:03:32Z",
+      "side": 1,
+      "message": "Please add a Bug: entry",
+      "revId": "f0e2bf5b03ad3575eb6fa2b16c0e0fa84a3741f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
