@@ -44,6 +44,9 @@ cc_library_shared {
 
         // Don't warn about struct padding
         "-Wno-padded",
+
+        // tautological-* warnings are not ready for prime time yet
+        "-Wno-tautological-type-limit-compare",
     ],
 
     sanitize: {
