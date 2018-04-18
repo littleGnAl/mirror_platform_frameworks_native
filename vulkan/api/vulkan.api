@@ -28,7 +28,7 @@ import platform "platform.api"
 // API version (major.minor.patch)
 define VERSION_MAJOR 1
 define VERSION_MINOR 1
-define VERSION_PATCH 72
+define VERSION_PATCH 74
 
 // API limits
 define VK_MAX_PHYSICAL_DEVICE_NAME_SIZE 256
