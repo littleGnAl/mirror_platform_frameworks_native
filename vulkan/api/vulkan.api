@@ -28,7 +28,7 @@ import platform "platform.api"
 // API version (major.minor.patch)
 define VERSION_MAJOR 1
 define VERSION_MINOR 1
-define VERSION_PATCH 72
+define VERSION_PATCH 75
 
 // API limits
 define VK_MAX_PHYSICAL_DEVICE_NAME_SIZE 256
@@ -4192,6 +4192,16 @@ class VkDispatchIndirectCommand {
     u32                                         x
     u32                                         y
     u32                                         z
+}
+
+class VkBaseOutStructure {
+    VkStructureType                             sType
+    void*                                       pNext
+}
+
+class VkBaseInStructure {
+    VkStructureType                             sType
+    const void*                                 pNext
 }
 
 //@vulkan1_1 structures
