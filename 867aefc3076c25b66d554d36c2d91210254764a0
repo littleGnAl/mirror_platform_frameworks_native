@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5c7f47b_937fa6f9",
+        "filename": "libs/nativewindow/AHardwareBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1308437
+      },
+      "writtenOn": "2018-04-20T02:59:22Z",
+      "side": 1,
+      "message": "After some testing, it looks like we will need to have the \"HandleWrapMethod method\" explicitly passed to this function, after all. Based on the handle use, we may need to TAKE_UNREGISTERED_HANDLE (as it has been done below) and sometimes to just clone it with CLONE_HANDLE, since we usually register our handles on creation.",
+      "range": {
+        "startLine": 283,
+        "startChar": 67,
+        "endLine": 283,
+        "endChar": 0
+      },
+      "revId": "867aefc3076c25b66d554d36c2d91210254764a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
