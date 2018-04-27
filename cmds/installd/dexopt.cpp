@@ -740,7 +740,8 @@ static constexpr int PROFMAN_BIN_RETURN_CODE_ERROR_LOCKING = 4;
 static void run_profman(const std::vector<unique_fd>& profile_fds,
                         const unique_fd& reference_profile_fd,
                         const std::vector<unique_fd>* apk_fds,
-                        bool copy_and_update) {
+                        bool copy_and_update,
+                        bool skip_apk_verification = false) {
     const char* profman_bin = is_debug_runtime() ? "/system/bin/profmand" : "/system/bin/profman";
 
     if (copy_and_update) {
@@ -776,6 +777,10 @@ static void run_profman(const std::vector<unique_fd>& profile_fds,
     if (copy_and_update) {
         argv[i++] = "--copy-and-update-profile-key";
     }
+
+    if (skip_apk_verification) {
+        argv[i++] = "--skip-apk-verification";
+    }
     // Do not add after dex2oat_flags, they should override others for debugging.
     argv[i] = NULL;
 
@@ -787,8 +792,10 @@ static void run_profman(const std::vector<unique_fd>& profile_fds,
 [[ noreturn ]]
 static void run_profman_merge(const std::vector<unique_fd>& profiles_fd,
                               const unique_fd& reference_profile_fd,
-                              const std::vector<unique_fd>* apk_fds = nullptr) {
-    run_profman(profiles_fd, reference_profile_fd, apk_fds, /*copy_and_update*/false);
+                              const std::vector<unique_fd>* apk_fds = nullptr,
+                              bool skip_apk_verification = false) {
+    run_profman(profiles_fd, reference_profile_fd, apk_fds, /*copy_and_update*/false,
+            skip_apk_verification);
 }
 
 [[ noreturn ]]
@@ -2721,7 +2728,10 @@ static bool create_boot_image_profile_snapshot(const std::string& package_name,
             /* child -- drop privileges before continuing */
             drop_capabilities(AID_SYSTEM);
 
-            run_profman_merge(profiles_fd, snapshot_fd, &apk_fds);
+            // The introduction of new access flags into boot jars causes them to
+            // fail dex file verification.
+            run_profman_merge(profiles_fd, snapshot_fd, &apk_fds,
+                    /* skip_apk_verification */ false);
         }
 
         /* parent */
