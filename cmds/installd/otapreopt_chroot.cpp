@@ -17,6 +17,7 @@
 #include <fcntl.h>
 #include <linux/unistd.h>
 #include <sys/mount.h>
+#include <sys/stat.h>
 #include <sys/wait.h>
 
 #include <sstream>
@@ -52,6 +53,35 @@ static void CloseDescriptor(const char* descriptor_string) {
     if (!stream.fail()) {
         CloseDescriptor(fd);
     }
+}
+
+static void MaybeMountABPartition(const char* pname,
+                                  const char* slot,
+                                  const char* mnt_point) {
+    // Quick check: does mnt_point exist and is not a link?
+    {
+        struct stat tmp;
+        if (lstat(mnt_point, &tmp) != 0) {  // Use lstat to _not_ follow a link.
+            return;
+        }
+        if (S_ISLNK(tmp.st_mode)) {
+            // Link, skip.
+            return;
+        }
+    }
+
+    // Now check the source in /dev.
+    std::string dev_path = StringPrintf("/dev/block/by-name/%s%s", pname, slot);
+    {
+        struct stat tmp;
+        if (stat(dev_path.c_str(), &tmp) != 0) {
+            return;
+        }
+    }
+
+    // Try to mount.
+    int mount_result = mount(dev_path.c_str(), mnt_point, "ext4", MS_RDONLY, /* data */ nullptr);
+    UNUSED(mount_result);
 }
 
 // Entry for otapreopt_chroot. Expected parameters are:
@@ -114,29 +144,9 @@ static int otapreopt_chroot(const int argc, char **arg) {
         LOG(ERROR) << "Target slot suffix not legal: " << arg[2];
         exit(207);
     }
-    {
-      std::string vendor_partition = StringPrintf("/dev/block/by-name/vendor%s",
-                                                  arg[2]);
-      int vendor_result = mount(vendor_partition.c_str(),
-                                "/postinstall/vendor",
-                                "ext4",
-                                MS_RDONLY,
-                                /* data */ nullptr);
-      UNUSED(vendor_result);
-    }
-
-    // Try to mount the product partition. update_engine doesn't do this for us, but we
-    // want it for product APKs. Same notes as vendor above.
-    {
-      std::string product_partition = StringPrintf("/dev/block/by-name/product%s",
-                                                   arg[2]);
-      int product_result = mount(product_partition.c_str(),
-                                 "/postinstall/product",
-                                 "ext4",
-                                 MS_RDONLY,
-                                 /* data */ nullptr);
-      UNUSED(product_result);
-    }
+    // Try to mount other B partitions.
+    MaybeMountABPartition("vendor", arg[2], "/postinstall/vendor");
+    MaybeMountABPartition("product", arg[2], "/postinstall/product");
 
     // Chdir into /postinstall.
     if (chdir("/postinstall") != 0) {
