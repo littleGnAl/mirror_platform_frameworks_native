@@ -484,6 +484,16 @@ status_t IPCThreadState::getAndExecuteCommand()
         pthread_mutex_unlock(&mProcess->mThreadCountLock);
     }
 
+    if (UNLIKELY(!mPostCommandTasks.empty())) {
+        // make a copy in case the post transaction task makes a binder
+        // call and that other process calls back into us
+        std::vector<std::function<void(void)>> tasks = mPostCommandTasks;
+        mPostCommandTasks.clear();
+        for (auto func : tasks) {
+            func();
+        }
+    }
+
     return result;
 }
 
@@ -1017,6 +1027,10 @@ sp<BBinder> the_context_object;
 void setTheContextObject(sp<BBinder> obj)
 {
     the_context_object = obj;
+}
+
+void IPCThreadState::addPostCommandTask(const std::function<void(void)>& task) {
+    mPostCommandTasks.push_back(task);
 }
 
 status_t IPCThreadState::executeCommand(int32_t cmd)
