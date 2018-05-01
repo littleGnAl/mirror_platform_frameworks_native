@@ -22,6 +22,8 @@
 #include <binder/ProcessState.h>
 #include <utils/Vector.h>
 
+#include <functional>
+
 #if defined(_WIN32)
 typedef  int  uid_t;
 #endif
@@ -118,9 +120,13 @@ public:
             // infer information about thread state.
             bool                isServingCall() const;
 
-private:
-                                IPCThreadState();
-                                ~IPCThreadState();
+            // Tasks which are done on the binder thread after the thread returns to the
+            // threadpool.
+            void addPostCommandTask(const std::function<void(void)>& task);
+
+           private:
+            IPCThreadState();
+            ~IPCThreadState();
 
             status_t            sendReply(const Parcel& reply, uint32_t flags);
             status_t            waitForResponse(Parcel *reply,
@@ -160,6 +166,8 @@ private:
             IPCThreadStateBase  *mIPCThreadStateBase;
 
             ProcessState::CallRestriction mCallRestriction;
+
+            std::vector<std::function<void(void)>> mPostCommandTasks;
 };
 
 }; // namespace android
