@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1af2dd52_4add8ac0",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-02T21:54:08Z",
+      "side": 1,
+      "message": "Hang on, why do you want to add the info in commit message here? I suspect you mean that I add to the output of lshal --init-vintf?\n\nI write it below; See PS3.",
+      "parentUuid": "e37cde30_2d9b6991",
+      "range": {
+        "startLine": 283,
+        "startChar": 13,
+        "endLine": 283,
+        "endChar": 86
+      },
+      "revId": "5473b68c80810defbab0dc38d8d920cd96cd5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c935f13_6da42698",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "The indentation has changed, hence it is hard for git to resolve this.",
       "parentUuid": "8c935f13_6da42698",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 12
+      },
+      "revId": "5473b68c80810defbab0dc38d8d920cd96cd5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79961650_68d34502",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-02T21:54:08Z",
+      "side": 1,
+      "message": "Yeah; indentation is bad. See PS2 for an unsuccessful change.",
+      "parentUuid": "a7d6cee1_4bd6b912",
       "range": {
         "startLine": 305,
         "startChar": 0,
@@ -140,6 +188,30 @@
       "revId": "5473b68c80810defbab0dc38d8d920cd96cd5167",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee3a4c8_d2c8d8f3",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-02T21:54:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc421cf9_0aa76ca8",
+      "range": {
+        "startLine": 355,
+        "startChar": 14,
+        "endLine": 355,
+        "endChar": 21
+      },
+      "revId": "5473b68c80810defbab0dc38d8d920cd96cd5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
