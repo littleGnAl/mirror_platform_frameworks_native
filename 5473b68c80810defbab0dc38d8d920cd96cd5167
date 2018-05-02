@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e37cde30_2d9b6991",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-02T21:34:43Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "a18eb405_7090cdda",
+      "range": {
+        "startLine": 283,
+        "startChar": 13,
+        "endLine": 283,
+        "endChar": 86
+      },
+      "revId": "5473b68c80810defbab0dc38d8d920cd96cd5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c935f13_6da42698",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a7d6cee1_4bd6b912",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-02T21:34:43Z",
+      "side": 1,
+      "message": "The indentation has changed, hence it is hard for git to resolve this.",
+      "parentUuid": "8c935f13_6da42698",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 12
+      },
+      "revId": "5473b68c80810defbab0dc38d8d920cd96cd5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5e4bc3d_05a34250",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-02T21:02:08Z",
       "side": 1,
       "message": "false (readability, and also to show your intent)",
+      "range": {
+        "startLine": 355,
+        "startChar": 14,
+        "endLine": 355,
+        "endChar": 21
+      },
+      "revId": "5473b68c80810defbab0dc38d8d920cd96cd5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc421cf9_0aa76ca8",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-02T21:34:43Z",
+      "side": 1,
+      "message": "wasn\u0027t thinking :)",
+      "parentUuid": "f5e4bc3d_05a34250",
       "range": {
         "startLine": 355,
         "startChar": 14,
