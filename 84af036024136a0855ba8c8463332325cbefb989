@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "037f271e_4afe8faf",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-02T23:00:12Z",
+      "side": 1,
+      "message": "should not use fqname as the required entry for a required HAL. They might need to in other cases (e.x. like we did for DRM).",
+      "range": {
+        "startLine": 415,
+        "startChar": 40,
+        "endLine": 415,
+        "endChar": 46
+      },
+      "revId": "84af036024136a0855ba8c8463332325cbefb989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
