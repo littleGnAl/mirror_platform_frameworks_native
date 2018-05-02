@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a18eb405_7090cdda",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-02T21:02:08Z",
+      "side": 1,
+      "message": "please add the information in the commit message here as well",
+      "range": {
+        "startLine": 283,
+        "startChar": 13,
+        "endLine": 283,
+        "endChar": 86
+      },
+      "revId": "5473b68c80810defbab0dc38d8d920cd96cd5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c935f13_6da42698",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-02T21:02:08Z",
+      "side": 1,
+      "message": "this is a really large diff with a lot of unchanged code. Can you avoid making it such an extreme change?",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 12
+      },
+      "revId": "5473b68c80810defbab0dc38d8d920cd96cd5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5e4bc3d_05a34250",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-02T21:02:08Z",
+      "side": 1,
+      "message": "false (readability, and also to show your intent)",
+      "range": {
+        "startLine": 355,
+        "startChar": 14,
+        "endLine": 355,
+        "endChar": 21
+      },
+      "revId": "5473b68c80810defbab0dc38d8d920cd96cd5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
