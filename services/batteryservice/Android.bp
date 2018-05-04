@@ -3,8 +3,6 @@ cc_library_headers {
     recovery_available: true,
     vendor_available: true,
     export_include_dirs: ["include"],
-    header_libs: ["libbinder_headers"],
-    export_header_lib_headers: ["libbinder_headers"],
 }
 
 cc_library {
