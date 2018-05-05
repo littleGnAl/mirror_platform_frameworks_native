@@ -501,6 +501,21 @@ void IPCThreadState::processPendingDerefs()
     }
 }
 
+void IPCThreadState::processPostWriteDerefs()
+{
+    for (size_t i = 0; i < mPostWriteWeakDerefs.size(); i++) {
+        RefBase::weakref_type* refs = mPostWriteWeakDerefs[i];
+        refs->decWeak(mProcess.get());
+    }
+    mPostWriteWeakDerefs.clear();
+
+    for (size_t i = 0; i < mPostWriteStrongDerefs.size(); i++) {
+        RefBase* obj = mPostWriteStrongDerefs[i];
+        obj->decStrong(mProcess.get());
+    }
+    mPostWriteStrongDerefs.clear();
+}
+
 void IPCThreadState::joinThreadPool(bool isMain)
 {
     LOG_THREADPOOL("**** THREAD %p (PID %d) IS JOINING THE THREAD POOL\n", (void*)pthread_self(), getpid());
@@ -627,11 +642,14 @@ status_t IPCThreadState::transact(int32_t handle,
     return err;
 }
 
-void IPCThreadState::incStrongHandle(int32_t handle)
+void IPCThreadState::incStrongHandle(int32_t handle, BpBinder *proxy)
 {
     LOG_REMOTEREFS("IPCThreadState::incStrongHandle(%d)\n", handle);
     mOut.writeInt32(BC_ACQUIRE);
     mOut.writeInt32(handle);
+    // Create a temp reference until the driver has handled this command.
+    proxy->incStrong(mProcess.get());
+    mPostWriteStrongDerefs.push(proxy);
 }
 
 void IPCThreadState::decStrongHandle(int32_t handle)
@@ -641,11 +659,14 @@ void IPCThreadState::decStrongHandle(int32_t handle)
     mOut.writeInt32(handle);
 }
 
-void IPCThreadState::incWeakHandle(int32_t handle)
+void IPCThreadState::incWeakHandle(int32_t handle, BpBinder *proxy)
 {
     LOG_REMOTEREFS("IPCThreadState::incWeakHandle(%d)\n", handle);
     mOut.writeInt32(BC_INCREFS);
     mOut.writeInt32(handle);
+    // Create a temp reference until the driver has handled this command.
+    proxy->getWeakRefs()->incWeak(mProcess.get());
+    mPostWriteWeakDerefs.push(proxy->getWeakRefs());
 }
 
 void IPCThreadState::decWeakHandle(int32_t handle)
@@ -897,8 +918,10 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
         if (bwr.write_consumed > 0) {
             if (bwr.write_consumed < mOut.dataSize())
                 mOut.remove(0, bwr.write_consumed);
-            else
+            else {
                 mOut.setDataSize(0);
+                processPostWriteDerefs();
+            }
         }
         if (bwr.read_consumed > 0) {
             mIn.setDataSize(bwr.read_consumed);

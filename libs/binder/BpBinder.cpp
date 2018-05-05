@@ -96,7 +96,7 @@ BpBinder::BpBinder(int32_t handle)
     ALOGV("Creating BpBinder %p handle %d\n", this, mHandle);
 
     extendObjectLifetime(OBJECT_LIFETIME_WEAK);
-    IPCThreadState::self()->incWeakHandle(handle);
+    IPCThreadState::self()->incWeakHandle(handle, this);
 }
 
 bool BpBinder::isDescriptorCached() const {
@@ -340,7 +340,7 @@ void BpBinder::onFirstRef()
 {
     ALOGV("onFirstRef BpBinder %p handle %d\n", this, mHandle);
     IPCThreadState* ipc = IPCThreadState::self();
-    if (ipc) ipc->incStrongHandle(mHandle);
+    if (ipc) ipc->incStrongHandle(mHandle, this);
 }
 
 void BpBinder::onLastStrongRef(const void* /*id*/)
