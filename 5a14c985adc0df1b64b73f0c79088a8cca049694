@@ -46,6 +46,30 @@
       "revId": "5a14c985adc0df1b64b73f0c79088a8cca049694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c43e038_912f5149",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-05-05T01:07:37Z",
+      "side": 1,
+      "message": "I could get the handle from BpBinder also BTW, and make this just take a BpBinder.",
+      "parentUuid": "af561e61_73b8914f",
+      "range": {
+        "startLine": 67,
+        "startChar": 64,
+        "endLine": 67,
+        "endChar": 73
+      },
+      "revId": "5a14c985adc0df1b64b73f0c79088a8cca049694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
