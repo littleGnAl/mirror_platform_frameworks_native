@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb6651bb_7a9d2d9b",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2018-05-08T19:35:37Z",
+      "side": 1,
+      "message": "can we log a warning if mOut.dataSize() is not 0 at this point?",
+      "revId": "a17eb176eac7a28c5c09195ae230aa7c7832b487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
