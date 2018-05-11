@@ -89,6 +89,9 @@ struct InputReaderConfiguration {
         // The set of disabled input devices (disabledDevices) has changed.
         CHANGE_ENABLED_STATE = 1 << 9,
 
+        // The raw pointer mode has changed.
+        CHANGE_RAW_POINTER = 1 << 10,
+
         // All devices must be reopened.
         CHANGE_MUST_REOPEN = 1 << 31,
     };
@@ -182,6 +185,9 @@ struct InputReaderConfiguration {
     // The set of currently disabled input devices.
     SortedVector<int32_t> disabledDevices;
 
+    // True if raw pointer is enabled.
+    bool rawPointer;
+
     InputReaderConfiguration() :
             virtualKeyQuietTime(0),
             pointerVelocityControlParameters(1.0f, 500.0f, 3000.0f, 3.0f),
@@ -198,7 +204,8 @@ struct InputReaderConfiguration {
             pointerGestureSwipeMaxWidthRatio(0.25f),
             pointerGestureMovementSpeedRatio(0.8f),
             pointerGestureZoomSpeedRatio(0.3f),
-            showTouches(false) { }
+            showTouches(false),
+            rawPointer(false) { }
 
     bool getDisplayViewport(ViewportType viewportType, const String8* displayId,
             DisplayViewport* outViewport) const;
@@ -1190,6 +1197,8 @@ private:
 
     float mVWheelScale;
     float mHWheelScale;
+
+    bool isRawPointer;
 
     // Velocity controls for mouse pointer and wheel movements.
     // The controls for X and Y wheel movements are separate to keep them decoupled.
