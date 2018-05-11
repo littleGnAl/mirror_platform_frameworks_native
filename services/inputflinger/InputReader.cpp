@@ -2665,6 +2665,7 @@ void CursorInputMapper::configure(nsecs_t when,
 
         mVWheelScale = 1.0f;
         mHWheelScale = 1.0f;
+        isRawPointer = false;
     }
 
     if ((!changes && config->pointerCapture)
@@ -2696,6 +2697,14 @@ void CursorInputMapper::configure(nsecs_t when,
         mPointerVelocityControl.setParameters(config->pointerVelocityControlParameters);
         mWheelXVelocityControl.setParameters(config->wheelVelocityControlParameters);
         mWheelYVelocityControl.setParameters(config->wheelVelocityControlParameters);
+    }
+
+    if (!changes || (changes & InputReaderConfiguration::CHANGE_RAW_POINTER)) {
+        if (config->rawPointer) {
+            isRawPointer = true;
+        } else {
+            isRawPointer = false;
+        }
     }
 
     if (!changes || (changes & InputReaderConfiguration::CHANGE_DISPLAY_INFO)) {
@@ -2829,7 +2838,9 @@ void CursorInputMapper::sync(nsecs_t when) {
     mWheelYVelocityControl.move(when, NULL, &vscroll);
     mWheelXVelocityControl.move(when, &hscroll, NULL);
 
-    mPointerVelocityControl.move(when, &deltaX, &deltaY);
+    if (!isRawPointer) {
+        mPointerVelocityControl.move(when, &deltaX, &deltaY);
+    }
 
     int32_t displayId;
     if (mSource == AINPUT_SOURCE_MOUSE) {
