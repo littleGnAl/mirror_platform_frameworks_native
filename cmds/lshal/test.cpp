@@ -206,6 +206,7 @@ public:
     MOCK_METHOD0(postprocess, void());
     MOCK_CONST_METHOD2(getPidInfo, bool(pid_t, PidInfo*));
     MOCK_CONST_METHOD1(parseCmdline, std::string(pid_t));
+    MOCK_METHOD1(getPartition, Partition(pid_t));
 };
 
 class ListParseArgsTest : public ::testing::Test {
@@ -333,6 +334,7 @@ public:
                 table.setDescription("[fake description " + std::to_string(i++) + "]");
             });
         }));
+        ON_CALL(*mockList, getPartition(_)).WillByDefault(Return(Partition::VENDOR));
     }
 
     void initMockServiceManager() {
@@ -416,75 +418,35 @@ TEST_F(ListTest, Fetch) {
 }
 
 TEST_F(ListTest, DumpVintf) {
-    const std::string expected =
-        "<!-- \n"
-        "    This is a skeleton device manifest. Notes: \n"
-        "    1. android.hidl.*, android.frameworks.*, android.system.* are not included.\n"
-        "    2. If a HAL is supported in both hwbinder and passthrough transport, \n"
-        "       only hwbinder is shown.\n"
-        "    3. It is likely that HALs in passthrough transport does not have\n"
-        "       <interface> declared; users will have to write them by hand.\n"
-        "    4. A HAL with lower minor version can be overridden by a HAL with\n"
-        "       higher minor version if they have the same name and major version.\n"
-        "    5. sepolicy version is set to 0.0. It is recommended that the entry\n"
-        "       is removed from the manifest file and written by assemble_vintf\n"
-        "       at build time.\n"
-        "-->\n"
-        "<manifest version=\"1.0\" type=\"device\">\n"
-        "    <hal format=\"hidl\">\n"
-        "        <name>a.h.foo1</name>\n"
-        "        <transport>hwbinder</transport>\n"
-        "        <version>1.0</version>\n"
-        "        <interface>\n"
-        "            <name>IFoo</name>\n"
-        "            <instance>1</instance>\n"
-        "        </interface>\n"
-        "    </hal>\n"
-        "    <hal format=\"hidl\">\n"
-        "        <name>a.h.foo2</name>\n"
-        "        <transport>hwbinder</transport>\n"
-        "        <version>2.0</version>\n"
-        "        <interface>\n"
-        "            <name>IFoo</name>\n"
-        "            <instance>2</instance>\n"
-        "        </interface>\n"
-        "    </hal>\n"
-        "    <hal format=\"hidl\">\n"
-        "        <name>a.h.foo3</name>\n"
-        "        <transport arch=\"32\">passthrough</transport>\n"
-        "        <version>3.0</version>\n"
-        "        <interface>\n"
-        "            <name>IFoo</name>\n"
-        "            <instance>3</instance>\n"
-        "        </interface>\n"
-        "    </hal>\n"
-        "    <hal format=\"hidl\">\n"
-        "        <name>a.h.foo4</name>\n"
-        "        <transport arch=\"32\">passthrough</transport>\n"
-        "        <version>4.0</version>\n"
-        "        <interface>\n"
-        "            <name>IFoo</name>\n"
-        "            <instance>4</instance>\n"
-        "        </interface>\n"
-        "    </hal>\n"
-        "    <hal format=\"hidl\">\n"
-        "        <name>a.h.foo5</name>\n"
-        "        <transport arch=\"32\">passthrough</transport>\n"
-        "        <version>5.0</version>\n"
-        "    </hal>\n"
-        "    <hal format=\"hidl\">\n"
-        "        <name>a.h.foo6</name>\n"
-        "        <transport arch=\"32\">passthrough</transport>\n"
-        "        <version>6.0</version>\n"
-        "    </hal>\n"
-        "    <sepolicy>\n"
-        "        <version>0.0</version>\n"
-        "    </sepolicy>\n"
-        "</manifest>\n";
+    const std::string expected = "<manifest version=\"1.0\" type=\"device\">\n"
+                                 "    <hal format=\"hidl\">\n"
+                                 "        <name>a.h.foo1</name>\n"
+                                 "        <transport>hwbinder</transport>\n"
+                                 "        <fqname>@1.0::IFoo/1</fqname>\n"
+                                 "    </hal>\n"
+                                 "    <hal format=\"hidl\">\n"
+                                 "        <name>a.h.foo2</name>\n"
+                                 "        <transport>hwbinder</transport>\n"
+                                 "        <fqname>@2.0::IFoo/2</fqname>\n"
+                                 "    </hal>\n"
+                                 "    <hal format=\"hidl\">\n"
+                                 "        <name>a.h.foo3</name>\n"
+                                 "        <transport arch=\"32\">passthrough</transport>\n"
+                                 "        <fqname>@3.0::IFoo/3</fqname>\n"
+                                 "    </hal>\n"
+                                 "    <hal format=\"hidl\">\n"
+                                 "        <name>a.h.foo4</name>\n"
+                                 "        <transport arch=\"32\">passthrough</transport>\n"
+                                 "        <fqname>@4.0::IFoo/4</fqname>\n"
+                                 "    </hal>\n"
+                                 "</manifest>";
 
     optind = 1; // mimic Lshal::parseArg()
     EXPECT_EQ(0u, mockList->main(createArg({"lshal", "--init-vintf"})));
-    EXPECT_EQ(expected, out.str());
+    auto output = out.str();
+    EXPECT_THAT(output, HasSubstr(expected));
+    EXPECT_THAT(output, HasSubstr("a.h.foo5@5.0::IFoo/5"));
+    EXPECT_THAT(output, HasSubstr("a.h.foo6@6.0::IFoo/6"));
     EXPECT_EQ("", err.str());
 
     vintf::HalManifest m;
