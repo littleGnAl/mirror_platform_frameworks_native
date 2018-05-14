@@ -26,6 +26,8 @@
 
 #include <android-base/macros.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
+#include <hidl-util/FqInstance.h>
+#include <vintf/HalManifest.h>
 
 #include "Command.h"
 #include "NullableOStream.h"
@@ -75,6 +77,8 @@ public:
     // key: value returned by getopt_long
     using RegisteredOptions = std::vector<RegisteredOption>;
 
+    static std::string INIT_VINTF_NOTES;
+
 protected:
     Status parseArgs(const Arg &arg);
     Status fetch();
@@ -104,10 +108,14 @@ protected:
     // Read and return /proc/{pid}/cmdline.
     virtual std::string parseCmdline(pid_t pid) const;
     // Return /proc/{pid}/cmdline if it exists, else empty string.
-    const std::string &getCmdline(pid_t pid);
+    const std::string& getCmdline(pid_t pid);
     // Call getCmdline on all pid in pids. If it returns empty string, the process might
     // have died, and the pid is removed from pids.
     void removeDeadProcesses(Pids *pids);
+
+    virtual Partition getPartition(pid_t pid);
+    Partition resolvePartition(Partition processPartition, const FqInstance &fqInstance) const;
+
     void forEachTable(const std::function<void(Table &)> &f);
     void forEachTable(const std::function<void(const Table &)> &f) const;
 
@@ -115,6 +123,10 @@ protected:
     NullableOStream<std::ostream> out() const;
 
     void registerAllOptions();
+
+    // helper functions to dumpVintf.
+    bool addEntryWithInstance(const TableEntry &entry, vintf::HalManifest *manifest) const;
+    bool addEntryWithoutInstance(const TableEntry &entry, const vintf::HalManifest *manifest) const;
 
     Table mServicesTable{};
     Table mPassthroughRefTable{};
@@ -125,8 +137,9 @@ protected:
 
     bool mEmitDebugInfo = false;
 
-    // If true, output in VINTF format.
+    // If true, output in VINTF format. Output only entries from the specified partition.
     bool mVintf = false;
+    Partition mVintfPartition = Partition::UNKNOWN;
 
     // If true, explanatory text are not emitted.
     bool mNeat = false;
@@ -138,6 +151,9 @@ protected:
 
     // Cache for getPidInfo.
     std::map<pid_t, PidInfo> mCachedPidInfos;
+
+    // Cache for getPartition.
+    std::map<pid_t, Partition> mPartitions;
 
     RegisteredOptions mOptions;
     // All selected columns

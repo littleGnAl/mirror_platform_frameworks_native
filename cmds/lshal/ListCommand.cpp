@@ -19,12 +19,14 @@
 #include <getopt.h>
 
 #include <fstream>
+#include <functional>
 #include <iomanip>
 #include <iostream>
 #include <map>
-#include <sstream>
 #include <regex>
+#include <sstream>
 
+#include <android-base/file.h>
 #include <android-base/parseint.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
 #include <hidl-hash/Hash.h>
@@ -32,6 +34,7 @@
 #include <private/android_filesystem_config.h>
 #include <sys/stat.h>
 #include <vintf/HalManifest.h>
+#include <vintf/parse_string.h>
 #include <vintf/parse_xml.h>
 
 #include "Lshal.h"
@@ -47,6 +50,10 @@ using ::android::hidl::manager::V1_0::IServiceManager;
 
 namespace android {
 namespace lshal {
+
+vintf::SchemaType toSchemaType(Partition p) {
+    return (p == Partition::SYSTEM) ? vintf::SchemaType::FRAMEWORK : vintf::SchemaType::DEVICE;
+}
 
 NullableOStream<std::ostream> ListCommand::out() const {
     return mLshal.out();
@@ -64,13 +71,7 @@ std::string ListCommand::getSimpleDescription() const {
 }
 
 std::string ListCommand::parseCmdline(pid_t pid) const {
-    std::ifstream ifs("/proc/" + std::to_string(pid) + "/cmdline");
-    std::string cmdline;
-    if (!ifs.is_open()) {
-        return "";
-    }
-    ifs >> cmdline;
-    return cmdline;
+    return android::procpartition::getCmdline(pid);
 }
 
 const std::string &ListCommand::getCmdline(pid_t pid) {
@@ -87,6 +88,40 @@ void ListCommand::removeDeadProcesses(Pids *pids) {
     pids->erase(std::remove_if(pids->begin(), pids->end(), [this](auto pid) {
         return pid == myPid || this->getCmdline(pid).empty();
     }), pids->end());
+}
+
+Partition ListCommand::getPartition(pid_t pid) {
+    auto it = mPartitions.find(pid);
+    if (it != mPartitions.end()) {
+        return it->second;
+    }
+    Partition partition = android::procpartition::getPartition(pid);
+    mPartitions.emplace(pid, partition);
+    return partition;
+}
+
+// Give sensible defaults when nothing can be inferred from runtime.
+// process: Partition inferred from executable location or cmdline.
+Partition ListCommand::resolvePartition(Partition process, const FqInstance& fqInstance) const {
+    if (fqInstance.inPackage("vendor") || fqInstance.inPackage("com")) {
+        return Partition::VENDOR;
+    }
+
+    if (fqInstance.inPackage("android.frameworks") || fqInstance.inPackage("android.system") ||
+        fqInstance.inPackage("android.hidl")) {
+        return Partition::SYSTEM;
+    }
+
+    // Some android.hardware HALs are served from system. Check the value from executable
+    // location / cmdline first.
+    if (fqInstance.inPackage("android.hardware")) {
+        if (process != Partition::UNKNOWN) {
+            return process;
+        }
+        return Partition::VENDOR;
+    }
+
+    return process;
 }
 
 static bool scanBinderContext(pid_t pid,
@@ -209,20 +244,23 @@ void ListCommand::postprocess() {
                 entry.clientCmdlines.push_back(this->getCmdline(pid));
             }
         }
+        for (TableEntry& entry : table) {
+            entry.partition = getPartition(entry.serverPid);
+        }
     });
     // use a double for loop here because lshal doesn't care about efficiency.
     for (TableEntry &packageEntry : mImplementationsTable) {
         std::string packageName = packageEntry.interfaceName;
-        FQName fqPackageName{packageName.substr(0, packageName.find("::"))};
-        if (!fqPackageName.isValid()) {
+        FQName fqPackageName;
+        if (!FQName::parse(packageName.substr(0, packageName.find("::")), &fqPackageName)) {
             continue;
         }
         for (TableEntry &interfaceEntry : mPassthroughRefTable) {
             if (interfaceEntry.arch != ARCH_UNKNOWN) {
                 continue;
             }
-            FQName interfaceName{splitFirst(interfaceEntry.interfaceName, '/').first};
-            if (!interfaceName.isValid()) {
+            FQName interfaceName;
+            if (!FQName::parse(splitFirst(interfaceEntry.interfaceName, '/').first, &interfaceName)) {
                 continue;
             }
             if (interfaceName.getPackageAndVersion() == fqPackageName) {
@@ -241,131 +279,143 @@ void ListCommand::postprocess() {
             "The Clients / Clients CMD column shows all process that have ever dlopen'ed \n"
             "the library and successfully fetched the passthrough implementation.");
     mImplementationsTable.setDescription(
-            "All available passthrough implementations (all -impl.so files)");
+            "All available passthrough implementations (all -impl.so files).\n"
+            "These may return subclasses through their respective HIDL_FETCH_I* functions.");
 }
 
-static inline bool findAndBumpVersion(vintf::ManifestHal* hal, const vintf::Version& version) {
-    for (vintf::Version& v : hal->versions) {
-        if (v.majorVer == version.majorVer) {
-            v.minorVer = std::max(v.minorVer, version.minorVer);
-            return true;
-        }
+bool ListCommand::addEntryWithInstance(const TableEntry& entry,
+                                       vintf::HalManifest* manifest) const {
+    FqInstance fqInstance;
+    if (!fqInstance.setTo(entry.interfaceName)) {
+        err() << "Warning: '" << entry.interfaceName << "' is not a valid FqInstance." << std::endl;
+        return false;
     }
-    return false;
+
+    if (fqInstance.getPackage() == gIBaseFqName.package()) {
+        return true; // always remove IBase from manifest
+    }
+
+    Partition partition = resolvePartition(entry.partition, fqInstance);
+
+    if (partition == Partition::UNKNOWN) {
+        err() << "Warning: Cannot guess the partition of FqInstance " << fqInstance.string()
+              << std::endl;
+        return false;
+    }
+
+    if (partition != mVintfPartition) {
+        return true; // strip out instances that is in a different partition.
+    }
+
+    vintf::Transport transport;
+    vintf::Arch arch;
+    if (entry.transport == "hwbinder") {
+        transport = vintf::Transport::HWBINDER;
+        arch = vintf::Arch::ARCH_EMPTY;
+    } else if (entry.transport == "passthrough") {
+        transport = vintf::Transport::PASSTHROUGH;
+        switch (entry.arch) {
+            case lshal::ARCH32:
+                arch = vintf::Arch::ARCH_32;
+                break;
+            case lshal::ARCH64:
+                arch = vintf::Arch::ARCH_64;
+                break;
+            case lshal::ARCH_BOTH:
+                arch = vintf::Arch::ARCH_32_64;
+                break;
+            case lshal::ARCH_UNKNOWN: // fallthrough
+            default:
+                err() << "Warning: '" << entry.interfaceName << "' doesn't have bitness info.";
+                return false;
+        }
+    } else {
+        err() << "Warning: '" << entry.transport << "' is not a valid transport." << std::endl;
+        return false;
+    }
+
+    std::string e;
+    if (!manifest->insertInstance(fqInstance, transport, arch, vintf::HalFormat::HIDL, &e)) {
+        err() << "Warning: Cannot insert '" << fqInstance.string() << ": " << e << std::endl;
+        return false;
+    }
+    return true;
+}
+
+bool ListCommand::addEntryWithoutInstance(const TableEntry& entry,
+                                          const vintf::HalManifest* manifest) const {
+    const auto& packageAndVersion = splitFirst(splitFirst(entry.interfaceName, ':').first, '@');
+    const auto& package = packageAndVersion.first;
+    vintf::Version version;
+    if (!vintf::parse(packageAndVersion.second, &version)) {
+        err() << "Warning: Cannot parse version '" << packageAndVersion.second << "' for entry '"
+              << entry.interfaceName << "'" << std::endl;
+        return false;
+    }
+
+    bool found = false;
+    (void)manifest->forEachInstanceOfVersion(package, version, [&found](const auto&) {
+        found = true;
+        return false; // break
+    });
+    return found;
 }
 
 void ListCommand::dumpVintf(const NullableOStream<std::ostream>& out) const {
     using vintf::operator|=;
-    out << "<!-- " << std::endl
-         << "    This is a skeleton device manifest. Notes: " << std::endl
-         << "    1. android.hidl.*, android.frameworks.*, android.system.* are not included." << std::endl
-         << "    2. If a HAL is supported in both hwbinder and passthrough transport, " << std::endl
-         << "       only hwbinder is shown." << std::endl
-         << "    3. It is likely that HALs in passthrough transport does not have" << std::endl
-         << "       <interface> declared; users will have to write them by hand." << std::endl
-         << "    4. A HAL with lower minor version can be overridden by a HAL with" << std::endl
-         << "       higher minor version if they have the same name and major version." << std::endl
-         << "    5. sepolicy version is set to 0.0. It is recommended that the entry" << std::endl
-         << "       is removed from the manifest file and written by assemble_vintf" << std::endl
-         << "       at build time." << std::endl
-         << "-->" << std::endl;
+    using vintf::operator<<;
+    using namespace std::placeholders;
 
     vintf::HalManifest manifest;
-    forEachTable([this, &manifest] (const Table &table) {
-        for (const TableEntry &entry : table) {
+    manifest.setType(toSchemaType(mVintfPartition));
 
-            std::string fqInstanceName = entry.interfaceName;
+    std::vector<std::string> error;
+    for (const TableEntry& entry : mServicesTable)
+        if (!addEntryWithInstance(entry, &manifest)) error.push_back(entry.interfaceName);
+    for (const TableEntry& entry : mPassthroughRefTable)
+        if (!addEntryWithInstance(entry, &manifest)) error.push_back(entry.interfaceName);
 
-            if (&table == &mImplementationsTable) {
-                // Quick hack to work around *'s
-                replaceAll(&fqInstanceName, '*', 'D');
-            }
-            auto splittedFqInstanceName = splitFirst(fqInstanceName, '/');
-            FQName fqName(splittedFqInstanceName.first);
-            if (!fqName.isValid()) {
-                err() << "Warning: '" << splittedFqInstanceName.first
-                     << "' is not a valid FQName." << std::endl;
-                continue;
-            }
-            // Strip out system libs.
-            if (fqName.inPackage("android.hidl") ||
-                fqName.inPackage("android.frameworks") ||
-                fqName.inPackage("android.system")) {
-                continue;
-            }
-            std::string interfaceName =
-                    &table == &mImplementationsTable ? "" : fqName.name();
-            std::string instanceName =
-                    &table == &mImplementationsTable ? "" : splittedFqInstanceName.second;
+    std::vector<std::string> passthrough;
+    for (const TableEntry& entry : mImplementationsTable)
+        if (!addEntryWithoutInstance(entry, &manifest)) passthrough.push_back(entry.interfaceName);
 
-            vintf::Version version{fqName.getPackageMajorVersion(),
-                                   fqName.getPackageMinorVersion()};
-            vintf::Transport transport;
-            vintf::Arch arch;
-            if (entry.transport == "hwbinder") {
-                transport = vintf::Transport::HWBINDER;
-                arch = vintf::Arch::ARCH_EMPTY;
-            } else if (entry.transport == "passthrough") {
-                transport = vintf::Transport::PASSTHROUGH;
-                switch (entry.arch) {
-                    case lshal::ARCH32:
-                        arch = vintf::Arch::ARCH_32;    break;
-                    case lshal::ARCH64:
-                        arch = vintf::Arch::ARCH_64;    break;
-                    case lshal::ARCH_BOTH:
-                        arch = vintf::Arch::ARCH_32_64; break;
-                    case lshal::ARCH_UNKNOWN: // fallthrough
-                    default:
-                        err() << "Warning: '" << fqName.package()
-                             << "' doesn't have bitness info, assuming 32+64." << std::endl;
-                        arch = vintf::Arch::ARCH_32_64;
-                }
-            } else {
-                err() << "Warning: '" << entry.transport << "' is not a valid transport." << std::endl;
-                continue;
-            }
-
-            bool done = false;
-            for (vintf::ManifestHal *hal : manifest.getHals(fqName.package())) {
-                if (hal->transport() != transport) {
-                    if (transport != vintf::Transport::PASSTHROUGH) {
-                        err() << "Fatal: should not reach here. Generated result may be wrong for '"
-                             << hal->name << "'."
-                             << std::endl;
-                    }
-                    done = true;
-                    break;
-                }
-                if (findAndBumpVersion(hal, version)) {
-                    if (&table != &mImplementationsTable) {
-                        hal->interfaces[interfaceName].name = interfaceName;
-                        hal->interfaces[interfaceName].instances.insert(instanceName);
-                    }
-                    hal->transportArch.arch |= arch;
-                    done = true;
-                    break;
-                }
-            }
-            if (done) {
-                continue; // to next TableEntry
-            }
-            decltype(vintf::ManifestHal::interfaces) interfaces;
-            if (&table != &mImplementationsTable) {
-                interfaces[interfaceName].name = interfaceName;
-                interfaces[interfaceName].instances.insert(instanceName);
-            }
-            if (!manifest.add(vintf::ManifestHal{
-                    .format = vintf::HalFormat::HIDL,
-                    .name = fqName.package(),
-                    .versions = {version},
-                    .transportArch = {transport, arch},
-                    .interfaces = interfaces})) {
-                err() << "Warning: cannot add hal '" << fqInstanceName << "'" << std::endl;
-            }
+    out << "<!-- " << std::endl
+        << "    This is a skeleton " << manifest.type() << " manifest. Notes: " << std::endl
+        << INIT_VINTF_NOTES;
+    if (!error.empty()) {
+        out << std::endl << "    The following HALs are not added; see warnings." << std::endl;
+        for (const auto& e : error) {
+            out << "        " << e << std::endl;
         }
-    });
-    out << vintf::gHalManifestConverter(manifest);
+    }
+    if (!passthrough.empty()) {
+        out << std::endl
+            << "    The following HALs are passthrough and no interface or instance " << std::endl
+            << "    names can be inferred." << std::endl;
+        for (const auto& e : passthrough) {
+            out << "        " << e << std::endl;
+        }
+    }
+    out << "-->" << std::endl;
+    out << vintf::gHalManifestConverter(manifest, vintf::SerializeFlag::HALS_ONLY);
 }
+
+std::string ListCommand::INIT_VINTF_NOTES{
+    "    1. If a HAL is supported in both hwbinder and passthrough transport,\n"
+    "       only hwbinder is shown.\n"
+    "    2. It is likely that HALs in passthrough transport does not have\n"
+    "       <interface> declared; users will have to write them by hand.\n"
+    "    3. A HAL with lower minor version can be overridden by a HAL with\n"
+    "       higher minor version if they have the same name and major version.\n"
+    "    4. This output is intended for launch devices.\n"
+    "       Upgrading devices should not use this tool to generate device\n"
+    "       manifest and replace the existing manifest directly, but should\n"
+    "       edit the existing manifest manually.\n"
+    "       Specifically, devices which launched at Android O-MR1 or earlier\n"
+    "       should not use the 'fqname' format for required HAL entries and\n"
+    "       should instead use the legacy package, name, instance-name format\n"
+    "       until they are updated.\n"
+};
 
 static Architecture fromBaseArchitecture(::android::hidl::base::V1_0::DebugInfo::Architecture a) {
     switch (a) {
@@ -397,7 +447,8 @@ void ListCommand::dumpTable(const NullableOStream<std::ostream>& out) const {
             emitDebugInfo = [this](const auto& iName) {
                 std::stringstream ss;
                 auto pair = splitFirst(iName, '/');
-                mLshal.emitDebugInfo(pair.first, pair.second, {}, ss,
+                mLshal.emitDebugInfo(pair.first, pair.second, {},
+                                     false /* excludesParentInstances */, ss,
                                      NullableOStream<std::ostream>(nullptr));
                 return ss.str();
             };
@@ -712,9 +763,18 @@ void ListCommand::registerAllOptions() {
     // long options without short alternatives
     mOptions.push_back({'\0', "init-vintf", no_argument, v++, [](ListCommand* thiz, const char* arg) {
         thiz->mVintf = true;
+        if (thiz->mVintfPartition == Partition::UNKNOWN)
+            thiz->mVintfPartition = Partition::VENDOR;
         if (arg) thiz->mFileOutputPath = arg;
         return OK;
     }, "form a skeleton HAL manifest to specified file,\nor stdout if no file specified."});
+    mOptions.push_back({'\0', "init-vintf-partition", required_argument, v++, [](ListCommand* thiz, const char* arg) {
+        if (!arg) return USAGE;
+        thiz->mVintfPartition = android::procpartition::parsePartition(arg);
+        if (thiz->mVintfPartition == Partition::UNKNOWN) return USAGE;
+        return OK;
+    }, "Specify the partition of the HAL manifest\ngenerated by --init-vintf.\n"
+       "Valid values are 'system', 'vendor', and 'odm'. Default is 'vendor'."});
     mOptions.push_back({'\0', "sort", required_argument, v++, [](ListCommand* thiz, const char* arg) {
         if (strcmp(arg, "interface") == 0 || strcmp(arg, "i") == 0) {
             thiz->mSortColumn = TableEntry::sortByInterfaceName;
