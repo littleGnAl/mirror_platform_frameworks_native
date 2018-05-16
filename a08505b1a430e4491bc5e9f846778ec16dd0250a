@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "51932262_83228064",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-16T19:32:03Z",
+      "side": 1,
+      "message": "Just \"Fixes\" or \"Bug\", not both",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ed184ca_61dcd6c8",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 1
