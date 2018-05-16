@@ -220,16 +220,20 @@ const PidInfo* ListCommand::getPidInfoCached(pid_t serverPid) {
     return &pair.first->second;
 }
 
+bool ListCommand::isReportHalType(const HalType &type) const {
+    return (mListTypes.find(type) != mListTypes.end());
+}
+
 // Must process hwbinder services first, then passthrough services.
 void ListCommand::forEachTable(const std::function<void(Table &)> &f) {
-    f(mServicesTable);
-    f(mPassthroughRefTable);
-    f(mImplementationsTable);
+    if (isReportHalType(HalType::BINDERIZED_SERVICES)) { f(mServicesTable); }
+    if (isReportHalType(HalType::PASSTHROUGH_CLIENTS)) { f(mPassthroughRefTable); }
+    if (isReportHalType(HalType::PASSTHROUGH_LIBRARIES)) { f(mImplementationsTable); }
 }
 void ListCommand::forEachTable(const std::function<void(const Table &)> &f) const {
-    f(mServicesTable);
-    f(mPassthroughRefTable);
-    f(mImplementationsTable);
+    if (isReportHalType(HalType::BINDERIZED_SERVICES)) { f(mServicesTable); }
+    if (isReportHalType(HalType::PASSTHROUGH_CLIENTS)) { f(mPassthroughRefTable); }
+    if (isReportHalType(HalType::PASSTHROUGH_LIBRARIES)) { f(mImplementationsTable); }
 }
 
 void ListCommand::postprocess() {
@@ -498,6 +502,8 @@ void ListCommand::putEntry(TableEntrySource source, TableEntry &&entry) {
 }
 
 Status ListCommand::fetchAllLibraries(const sp<IServiceManager> &manager) {
+    if (!isReportHalType(HalType::PASSTHROUGH_LIBRARIES)) { return OK; }
+
     using namespace ::android::hardware;
     using namespace ::android::hidl::manager::V1_0;
     using namespace ::android::hidl::base::V1_0;
@@ -526,6 +532,8 @@ Status ListCommand::fetchAllLibraries(const sp<IServiceManager> &manager) {
 }
 
 Status ListCommand::fetchPassthrough(const sp<IServiceManager> &manager) {
+    if (!isReportHalType(HalType::PASSTHROUGH_CLIENTS)) { return OK; }
+
     using namespace ::android::hardware;
     using namespace ::android::hardware::details;
     using namespace ::android::hidl::manager::V1_0;
@@ -555,8 +563,9 @@ Status ListCommand::fetchPassthrough(const sp<IServiceManager> &manager) {
 }
 
 Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
-    const std::string mode = "hwbinder";
+    if (!isReportHalType(HalType::BINDERIZED_SERVICES)) { return OK; }
 
+    const std::string mode = "hwbinder";
     hidl_vec<hidl_string> fqInstanceNames;
     // copying out for timeoutIPC
     auto listRet = timeoutIPC(manager, &IServiceManager::list, [&] (const auto &names) {
@@ -705,6 +714,22 @@ Status ListCommand::fetch() {
     return status;
 }
 
+static std::vector<std::string> splitString(const std::string &s, char c) {
+    std::vector<std::string> components;
+
+    size_t startPos = 0;
+    size_t matchPos;
+    while ((matchPos = s.find(c, startPos)) != std::string::npos) {
+        components.push_back(s.substr(startPos, matchPos - startPos));
+        startPos = matchPos + 1;
+    }
+
+    if (startPos <= s.length()) {
+        components.push_back(s.substr(startPos));
+    }
+    return components;
+}
+
 void ListCommand::registerAllOptions() {
     int v = mOptions.size();
     // A list of acceptable command line options
@@ -790,6 +815,25 @@ void ListCommand::registerAllOptions() {
         thiz->mNeat = true;
         return OK;
     }, "output is machine parsable (no explanatory text).\nCannot be used with --debug."});
+    mOptions.push_back({'\0', "types", required_argument, v++, [](ListCommand* thiz, const char* arg) {
+        if (!arg) { return USAGE; }
+        std::vector<std::string> hal_types = splitString(std::string(arg), ',');
+
+        thiz->mListTypes.clear();
+        for (const auto& hal_type : hal_types) {
+
+            if (hal_type.empty()) { continue; } // Gracefully handle empty argument strings
+            else if (hal_type == "bin") { thiz->mListTypes.insert(HalType::BINDERIZED_SERVICES); }
+            else if (hal_type == "pt_cli") { thiz->mListTypes.insert(HalType::PASSTHROUGH_CLIENTS); }
+            else if (hal_type == "pt_lib") { thiz->mListTypes.insert(HalType::PASSTHROUGH_LIBRARIES); }
+            else { thiz->err() << "Unrecognized HAL type: " << hal_type << std::endl; return USAGE; }
+        }
+
+        if (thiz->mListTypes.empty()) { return USAGE; }
+        return OK;
+    }, "comma-separated list of one or more HAL types.\nThe output is restricted to the selected "
+       "association(s). Valid options are:\n'bin' (Binderized), 'pt_cli' (Passthrough Clients), "
+       "'pt_lib' (Passthrough\nLibraries). By default, lists all available HALs."});
 }
 
 // Create 'longopts' argument to getopt_long. Caller is responsible for maintaining
@@ -916,22 +960,6 @@ Status ListCommand::main(const Arg &arg) {
     postprocess();
     status |= dump();
     return status;
-}
-
-static std::vector<std::string> splitString(const std::string &s, char c) {
-    std::vector<std::string> components;
-
-    size_t startPos = 0;
-    size_t matchPos;
-    while ((matchPos = s.find(c, startPos)) != std::string::npos) {
-        components.push_back(s.substr(startPos, matchPos - startPos));
-        startPos = matchPos + 1;
-    }
-
-    if (startPos <= s.length()) {
-        components.push_back(s.substr(startPos));
-    }
-    return components;
 }
 
 const std::string& ListCommand::RegisteredOption::getHelpMessageForArgument() const {

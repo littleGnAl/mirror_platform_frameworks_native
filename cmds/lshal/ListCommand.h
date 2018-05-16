@@ -21,6 +21,7 @@
 #include <stdint.h>
 
 #include <fstream>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -44,6 +45,12 @@ struct PidInfo {
     std::map<uint64_t, Pids> refPids; // pids that are referenced
     uint32_t threadUsage; // number of threads in use
     uint32_t threadCount; // number of threads total
+};
+
+enum HalType {
+    BINDERIZED_SERVICES = 0,
+    PASSTHROUGH_CLIENTS,
+    PASSTHROUGH_LIBRARIES
 };
 
 class ListCommand : public Command {
@@ -128,6 +135,9 @@ protected:
     bool addEntryWithInstance(const TableEntry &entry, vintf::HalManifest *manifest) const;
     bool addEntryWithoutInstance(const TableEntry &entry, const vintf::HalManifest *manifest) const;
 
+    // Helper function. Whether to list entries corresponding to a given HAL type.
+    bool isReportHalType(const HalType &type) const;
+
     Table mServicesTable{};
     Table mPassthroughRefTable{};
     Table mImplementationsTable{};
@@ -143,6 +153,9 @@ protected:
 
     // If true, explanatory text are not emitted.
     bool mNeat = false;
+
+    // Type(s) of HAL associations to list. By default, report all.
+    std::set<HalType> mListTypes = { BINDERIZED_SERVICES, PASSTHROUGH_CLIENTS, PASSTHROUGH_LIBRARIES };
 
     // If an entry does not exist, need to ask /proc/{pid}/cmdline to get it.
     // If an entry exist but is an empty string, process might have died.
