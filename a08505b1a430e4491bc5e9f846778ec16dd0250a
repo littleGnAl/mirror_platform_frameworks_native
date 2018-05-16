@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "a69c22b0_3d651bbf",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-16T19:30:52Z",
+      "side": 1,
+      "message": "Suggest:\nif (\"binderized\".startsWith(hal_type)) {...}",
+      "parentUuid": "8de1a8fb_c40e4ba1",
+      "range": {
+        "startLine": 826,
+        "startChar": 34,
+        "endLine": 826,
+        "endChar": 37
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e7b0178_ab2d8dfc",
         "filename": "cmds/lshal/ListCommand.h",
         "patchSetId": 1
@@ -179,6 +203,29 @@
         "startChar": 9,
         "endLine": 139,
         "endChar": 24
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5afbe894_092a3ceb",
+        "filename": "cmds/lshal/ListCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-16T19:30:52Z",
+      "side": 1,
+      "message": "Suggest to use a std::vector, and the order of arguments will be the order of these types.\n\nAlso, this has gone over 100 chars. Did you run clang-format?\n\n(It should run automatically when you run `repo upload --verify`)",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 12
       },
       "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",

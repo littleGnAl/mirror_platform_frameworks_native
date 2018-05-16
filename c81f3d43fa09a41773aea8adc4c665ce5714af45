@@ -22,6 +22,30 @@
       "revId": "c81f3d43fa09a41773aea8adc4c665ce5714af45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12fa873f_a7724abb",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-16T19:30:52Z",
+      "side": 0,
+      "message": "Yes, please do it in a separate CL (to move this function to utils.h/cpp)\n\nOr just change everything to android::base::SplitString...",
+      "parentUuid": "c8b8f5c7_8cff924c",
+      "range": {
+        "startLine": 921,
+        "startChar": 0,
+        "endLine": 935,
+        "endChar": 1
+      },
+      "revId": "c81f3d43fa09a41773aea8adc4c665ce5714af45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
