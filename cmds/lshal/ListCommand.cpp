@@ -18,6 +18,7 @@
 
 #include <getopt.h>
 
+#include <algorithm>
 #include <fstream>
 #include <functional>
 #include <iomanip>
@@ -220,16 +221,30 @@ const PidInfo* ListCommand::getPidInfoCached(pid_t serverPid) {
     return &pair.first->second;
 }
 
+bool ListCommand::shouldReportHalType(const HalType &type) const {
+    return (std::find(mListTypes.begin(), mListTypes.end(), type) != mListTypes.end());
+}
+
 // Must process hwbinder services first, then passthrough services.
 void ListCommand::forEachTable(const std::function<void(Table &)> &f) {
-    f(mServicesTable);
-    f(mPassthroughRefTable);
-    f(mImplementationsTable);
+    for (const auto& type : mListTypes) {
+        if (type == HalType::BINDERIZED_SERVICES) { f(mServicesTable); }
+        else if (type == HalType::PASSTHROUGH_CLIENTS) { f(mPassthroughRefTable); }
+        else if (type == HalType::PASSTHROUGH_LIBRARIES) { f(mImplementationsTable); }
+        else {
+            err() << "Error: Unknown HAL type" << std::endl;
+        }
+    }
 }
 void ListCommand::forEachTable(const std::function<void(const Table &)> &f) const {
-    f(mServicesTable);
-    f(mPassthroughRefTable);
-    f(mImplementationsTable);
+    for (const auto& type : mListTypes) {
+        if (type == HalType::BINDERIZED_SERVICES) { f(mServicesTable); }
+        else if (type == HalType::PASSTHROUGH_CLIENTS) { f(mPassthroughRefTable); }
+        else if (type == HalType::PASSTHROUGH_LIBRARIES) { f(mImplementationsTable); }
+        else {
+            err() << "Error: Unknown HAL type" << std::endl;
+        }
+    }
 }
 
 void ListCommand::postprocess() {
@@ -498,6 +513,8 @@ void ListCommand::putEntry(TableEntrySource source, TableEntry &&entry) {
 }
 
 Status ListCommand::fetchAllLibraries(const sp<IServiceManager> &manager) {
+    if (!shouldReportHalType(HalType::PASSTHROUGH_LIBRARIES)) { return OK; }
+
     using namespace ::android::hardware;
     using namespace ::android::hidl::manager::V1_0;
     using namespace ::android::hidl::base::V1_0;
@@ -526,6 +543,8 @@ Status ListCommand::fetchAllLibraries(const sp<IServiceManager> &manager) {
 }
 
 Status ListCommand::fetchPassthrough(const sp<IServiceManager> &manager) {
+    if (!shouldReportHalType(HalType::PASSTHROUGH_CLIENTS)) { return OK; }
+
     using namespace ::android::hardware;
     using namespace ::android::hardware::details;
     using namespace ::android::hidl::manager::V1_0;
@@ -555,8 +574,9 @@ Status ListCommand::fetchPassthrough(const sp<IServiceManager> &manager) {
 }
 
 Status ListCommand::fetchBinderized(const sp<IServiceManager> &manager) {
-    const std::string mode = "hwbinder";
+    if (!shouldReportHalType(HalType::BINDERIZED_SERVICES)) { return OK; }
 
+    const std::string mode = "hwbinder";
     hidl_vec<hidl_string> fqInstanceNames;
     // copying out for timeoutIPC
     auto listRet = timeoutIPC(manager, &IServiceManager::list, [&] (const auto &names) {
@@ -790,6 +810,38 @@ void ListCommand::registerAllOptions() {
         thiz->mNeat = true;
         return OK;
     }, "output is machine parsable (no explanatory text).\nCannot be used with --debug."});
+    mOptions.push_back({'T', "types", required_argument, v++, [](ListCommand* thiz, const char* arg) {
+        if (!arg) { return USAGE; }
+        std::vector<std::string> hal_types_args = split(std::string(arg), ',');
+
+        for (const auto& hal_type_arg : hal_types_args) {
+            // Gracefully handle empty argument strings
+            if (hal_type_arg.empty()) { continue; }
+            HalType hal_type; // Current HAL type
+
+            if (hal_type_arg == "binderized" || hal_type_arg == "b") {
+                hal_type = HalType::BINDERIZED_SERVICES;
+            } else if (hal_type_arg == "passthrough_clients" || hal_type_arg == "c") {
+                hal_type = HalType::PASSTHROUGH_CLIENTS;
+            } else if (hal_type_arg == "passthrough_libs" || hal_type_arg == "l") {
+                hal_type = HalType::PASSTHROUGH_LIBRARIES;
+            } else {
+                thiz->err() << "Unrecognized HAL type: " << hal_type_arg << std::endl;
+                return USAGE;
+            }
+
+            // Append unique (non-repeated) HAL types to the reporting list
+            if (std::find(thiz->mListTypes.begin(), thiz->mListTypes.end(), hal_type) ==
+                thiz->mListTypes.end()) {
+                thiz->mListTypes.push_back(hal_type);
+            }
+        }
+
+        if (thiz->mListTypes.empty()) { return USAGE; }
+        return OK;
+    }, "comma-separated list of one or more HAL types.\nThe output is restricted to the selected "
+       "association(s). Valid options\nare: (b|binderized), (c|passthrough_clients), and (l|"
+       "passthrough_libs).\nBy default, lists all available HALs."});
 }
 
 // Create 'longopts' argument to getopt_long. Caller is responsible for maintaining
@@ -900,6 +952,12 @@ Status ListCommand::parseArgs(const Arg &arg) {
         }
     }
 
+    // By default, list all HAL types
+    if (mListTypes.empty()) {
+        mListTypes = { HalType::BINDERIZED_SERVICES, HalType::PASSTHROUGH_CLIENTS,
+                       HalType::PASSTHROUGH_LIBRARIES };
+    }
+
     forEachTable([this] (Table& table) {
         table.setSelectedColumns(this->mSelectedColumns);
     });
@@ -916,22 +974,6 @@ Status ListCommand::main(const Arg &arg) {
     postprocess();
     status |= dump();
     return status;
-}
-
-static std::vector<std::string> splitString(const std::string &s, char c) {
-    std::vector<std::string> components;
-
-    size_t startPos = 0;
-    size_t matchPos;
-    while ((matchPos = s.find(c, startPos)) != std::string::npos) {
-        components.push_back(s.substr(startPos, matchPos - startPos));
-        startPos = matchPos + 1;
-    }
-
-    if (startPos <= s.length()) {
-        components.push_back(s.substr(startPos));
-    }
-    return components;
 }
 
 const std::string& ListCommand::RegisteredOption::getHelpMessageForArgument() const {
@@ -969,7 +1011,7 @@ void ListCommand::usage() const {
         if (!e.longOption.empty())
             err() << "--" << e.longOption << e.getHelpMessageForArgument();
         err() << ": ";
-        std::vector<std::string> lines = splitString(e.help, '\n');
+        std::vector<std::string> lines = split(e.help, '\n');
         for (const auto& line : lines) {
             if (&line != &lines.front())
                 err() << "            ";
