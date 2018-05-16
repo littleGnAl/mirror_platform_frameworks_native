@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ed184ca_61dcd6c8",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-16T18:54:15Z",
+      "side": 1,
+      "message": "Can you use android::base::split instead?",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 731,
+        "endChar": 1
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28961ae_7e999f0e",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-16T18:54:15Z",
+      "side": 1,
+      "message": "can we get a short option as well?",
+      "range": {
+        "startLine": 818,
+        "startChar": 25,
+        "endLine": 818,
+        "endChar": 27
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86083c05_19e9f788",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-16T18:54:15Z",
+      "side": 1,
+      "message": "Can you also append to this list? `lshal --type binderized --type clients` might as well also work\n\n(then of course, the init logic will have to be changed, or maybe in the isReportHalType method, you could return mListTypes.empty() || x in mListTypes)",
+      "range": {
+        "startLine": 822,
+        "startChar": 14,
+        "endLine": 822,
+        "endChar": 24
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b78fe78_891411df",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-16T18:54:15Z",
+      "side": 1,
+      "message": "Can you move this up one line so it is on its own?",
+      "range": {
+        "startLine": 825,
+        "startChar": 12,
+        "endLine": 825,
+        "endChar": 47
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27ab3c8f_ba8822f0",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-16T18:54:15Z",
+      "side": 1,
+      "message": "unnecessary else",
+      "range": {
+        "startLine": 826,
+        "startChar": 12,
+        "endLine": 826,
+        "endChar": 17
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de1a8fb_c40e4ba1",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-16T18:54:15Z",
+      "side": 1,
+      "message": "Now these aren\u0027t as clear as they could be. What if we have a long and a short form?\n\ne.x.:\nlshal --type binderized,passthrough_clients,passthrough_lib\nlshal --type b,c,l\nlshal -T b,c,l",
+      "range": {
+        "startLine": 826,
+        "startChar": 34,
+        "endLine": 826,
+        "endChar": 37
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e7b0178_ab2d8dfc",
+        "filename": "cmds/lshal/ListCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-16T18:54:15Z",
+      "side": 1,
+      "message": "enum class",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1819bef_32ef3b02",
+        "filename": "cmds/lshal/ListCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-16T18:54:15Z",
+      "side": 1,
+      "message": "maybe isReportedHalType, shouldReportHalType, shouldListHalType",
+      "range": {
+        "startLine": 139,
+        "startChar": 9,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
