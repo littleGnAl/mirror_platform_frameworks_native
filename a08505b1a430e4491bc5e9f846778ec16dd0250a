@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "052bc85f_ac6c5b96",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-16T19:39:00Z",
+      "side": 1,
+      "message": "Also, note that I have a \"split\" function in utils.h/cpp as well... Duplication of code due to bad refactoring :(\n\nYou could change everything to base::SplitString in another CL, or just ignore this and use \"split\" here instead.",
+      "range": {
+        "startLine": 820,
+        "startChar": 45,
+        "endLine": 820,
+        "endChar": 56
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86083c05_19e9f788",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 1
