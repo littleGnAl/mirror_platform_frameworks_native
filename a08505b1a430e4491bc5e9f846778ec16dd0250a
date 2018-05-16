@@ -164,6 +164,30 @@
     },
     {
       "key": {
+        "uuid": "f40c183e_857a1297",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-16T19:31:30Z",
+      "side": 1,
+      "message": "or \"binderized\".contains(hal_type)",
+      "parentUuid": "a69c22b0_3d651bbf",
+      "range": {
+        "startLine": 826,
+        "startChar": 34,
+        "endLine": 826,
+        "endChar": 37
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e7b0178_ab2d8dfc",
         "filename": "cmds/lshal/ListCommand.h",
         "patchSetId": 1
