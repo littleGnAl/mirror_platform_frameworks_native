@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f58ace2e_8d0532c8",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-17T00:30:03Z",
+      "side": 1,
+      "message": "nit: consider switch",
+      "revId": "62b1a4b52544fdcdac3f103f02bf8e3bed52810f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf63df9c_22fea60c",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-17T00:30:03Z",
+      "side": 1,
+      "message": "this should be a harder error. Right now, it doesn\u0027t appear to cause the binary to return 1. Since this would indicate an internal error in the program, you might even just assert/CHECK here.",
+      "range": {
+        "startLine": 235,
+        "startChar": 12,
+        "endLine": 235,
+        "endChar": 60
+      },
+      "revId": "62b1a4b52544fdcdac3f103f02bf8e3bed52810f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96fa74e6_7bf4b2b0",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-17T00:30:03Z",
+      "side": 1,
+      "message": "nit: I would have dropped the comments, the brackets around continue, and put a newline above \u0027HalType hal_type;\u0027 since it is more related to the below if statements, but this is just minor style.",
+      "range": {
+        "startLine": 818,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 0
+      },
+      "revId": "62b1a4b52544fdcdac3f103f02bf8e3bed52810f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "834c1370_1a9ca7f7",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-17T00:30:03Z",
+      "side": 1,
+      "message": "+1 for using this here even though you could use shouldListHalTypes. It would be inappropriate to use that here :)",
+      "range": {
+        "startLine": 834,
+        "startChar": 16,
+        "endLine": 835,
+        "endChar": 38
+      },
+      "revId": "62b1a4b52544fdcdac3f103f02bf8e3bed52810f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
