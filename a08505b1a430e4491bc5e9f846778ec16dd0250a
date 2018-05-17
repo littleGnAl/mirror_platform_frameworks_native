@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c8993490_6d58517e",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T00:09:50Z",
+      "side": 1,
+      "message": "Done. Replaced with split() from utils.cpp (please refer to Yifan\u0027s comment below)",
+      "parentUuid": "1ed184ca_61dcd6c8",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 731,
+        "endChar": 1
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c28961ae_7e999f0e",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 1
@@ -68,6 +92,30 @@
       "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "972c4889_b2edfca4",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T00:09:50Z",
+      "side": 1,
+      "message": "Ack. There seems to be an issue passing arguments for short-options (doesn\u0027t work for -d, either). I\u0027ll file a bug to myself and address this in a later CL. Thanks!",
+      "parentUuid": "c28961ae_7e999f0e",
+      "range": {
+        "startLine": 818,
+        "startChar": 25,
+        "endLine": 818,
+        "endChar": 27
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "9f416996_b13b6ff6",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T00:09:50Z",
+      "side": 1,
+      "message": "Done. There are just two references to splitString() in this file, so I\u0027ll replace them with split() in this CL. Thanks!",
+      "parentUuid": "052bc85f_ac6c5b96",
+      "range": {
+        "startLine": 820,
+        "startChar": 45,
+        "endLine": 820,
+        "endChar": 56
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86083c05_19e9f788",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 1
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "d8089c6d_afe051b7",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T00:09:50Z",
+      "side": 1,
+      "message": "Done. The list is now default-initialized at the end of parseArgs (if the user hasn\u0027t specified --types).",
+      "parentUuid": "86083c05_19e9f788",
+      "range": {
+        "startLine": 822,
+        "startChar": 14,
+        "endLine": 822,
+        "endChar": 24
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b78fe78_891411df",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 1
@@ -137,6 +233,30 @@
       "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e06c6bee_531111b2",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T00:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b78fe78_891411df",
+      "range": {
+        "startLine": 825,
+        "startChar": 12,
+        "endLine": 825,
+        "endChar": 47
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -234,6 +354,54 @@
     },
     {
       "key": {
+        "uuid": "dd2b6322_f400527a",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T00:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27ab3c8f_ba8822f0",
+      "range": {
+        "startLine": 826,
+        "startChar": 12,
+        "endLine": 826,
+        "endChar": 17
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94f99784_9bd2b7e3",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T00:09:50Z",
+      "side": 1,
+      "message": "Done. Thanks, Steven!\n\nYifan: The contains/startsWith is a great idea, but I\u0027m concerned that it\u0027ll be ambiguous (or break) for non-unique sub-phrases (\"passthrough_\"). As such, I\u0027ve kept the \u003d\u003d for consistency.",
+      "parentUuid": "f40c183e_857a1297",
+      "range": {
+        "startLine": 826,
+        "startChar": 34,
+        "endLine": 826,
+        "endChar": 37
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e7b0178_ab2d8dfc",
         "filename": "cmds/lshal/ListCommand.h",
         "patchSetId": 1
@@ -254,6 +422,30 @@
       "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63a1d019_29418e00",
+        "filename": "cmds/lshal/ListCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T00:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e7b0178_ab2d8dfc",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -280,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "35842cc2_120ae3b6",
+        "filename": "cmds/lshal/ListCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T00:09:50Z",
+      "side": 1,
+      "message": "Done. Naming is always the hardest part :)",
+      "parentUuid": "d1819bef_32ef3b02",
+      "range": {
+        "startLine": 139,
+        "startChar": 9,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5afbe894_092a3ceb",
         "filename": "cmds/lshal/ListCommand.h",
         "patchSetId": 1
@@ -300,6 +516,30 @@
       "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ba60a7_70d485a0",
+        "filename": "cmds/lshal/ListCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T00:09:50Z",
+      "side": 1,
+      "message": "Done. Good idea, thanks!\n\nAlso, sorry, didn\u0027t know how to invoke the linter. I\u0027ll run it in the next revision!",
+      "parentUuid": "5afbe894_092a3ceb",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 12
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
