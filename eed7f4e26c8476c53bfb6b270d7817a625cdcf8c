@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "20a31c09_85d874d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-17T00:37:10Z",
+      "side": 1,
+      "message": "Can you also add corresponding tests to \"lshal_test\"?",
+      "revId": "eed7f4e26c8476c53bfb6b270d7817a625cdcf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e754879_299924a3",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 3
