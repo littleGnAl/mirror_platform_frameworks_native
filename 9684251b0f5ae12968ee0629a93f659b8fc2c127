@@ -22,6 +22,30 @@
       "revId": "9684251b0f5ae12968ee0629a93f659b8fc2c127",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e20598ef_22f6031d",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T17:30:58Z",
+      "side": 1,
+      "message": "\"I don\u0027t always define const static structures... but when I do, I put the declarations inside for loops\"",
+      "parentUuid": "6c3b2b4e_a4a06cd2",
+      "range": {
+        "startLine": 828,
+        "startChar": 50,
+        "endLine": 828,
+        "endChar": 60
+      },
+      "revId": "9684251b0f5ae12968ee0629a93f659b8fc2c127",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
