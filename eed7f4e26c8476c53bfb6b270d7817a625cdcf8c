@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e754879_299924a3",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-17T00:36:29Z",
+      "side": 1,
+      "message": "halTypesArgs (same below)\n\nAndroid doesn\u0027t have a consistent style for variable naming, but make sure it is consistent within the file; see other code.",
+      "range": {
+        "startLine": 815,
+        "startChar": 33,
+        "endLine": 815,
+        "endChar": 47
+      },
+      "revId": "eed7f4e26c8476c53bfb6b270d7817a625cdcf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a02258e8_7a7fa822",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-17T00:36:29Z",
+      "side": 1,
+      "message": "nit: If you are not doing what I said in the comment, then I suggest to convert this \"if else\" into:\n\nstatic map\u003cstring, HalType\u003e foo{\n    {\"binderized\", B},\n    {\"b\", B},\n    ...\n};\nauto type \u003d foo.find(halTypeArg);\nif (type \u003d\u003d foo.end()) ...;",
+      "range": {
+        "startLine": 821,
+        "startChar": 0,
+        "endLine": 831,
+        "endChar": 13
+      },
+      "revId": "eed7f4e26c8476c53bfb6b270d7817a625cdcf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "375da174_98d3d7b8",
+        "filename": "cmds/lshal/ListCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-17T00:36:29Z",
+      "side": 1,
+      "message": "Suggest to keep the default list",
+      "range": {
+        "startLine": 157,
+        "startChar": 25,
+        "endLine": 157,
+        "endChar": 35
+      },
+      "revId": "eed7f4e26c8476c53bfb6b270d7817a625cdcf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

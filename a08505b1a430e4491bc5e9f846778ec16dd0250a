@@ -402,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "9f18141b_e9297a00",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-17T00:36:29Z",
+      "side": 1,
+      "message": "Yeah, my suggestion is to make the following case work:\n\n-T passthrough \u003d\u003e passthrough_clients + passthrough_libs, for example\n\nAnd remove all the \"else\".\n\nif (\"binderized\".contains(halType)) {...}\nif (\"passthrough_clients\".contains(halType)) {...}\nif (\"passthrough_libs\".contains(halType)) {...}\n\nSteven, what do you think?\n\nBut of course, just a nit. I am okay with it right now.",
+      "parentUuid": "94f99784_9bd2b7e3",
+      "range": {
+        "startLine": 826,
+        "startChar": 34,
+        "endLine": 826,
+        "endChar": 37
+      },
+      "revId": "a08505b1a430e4491bc5e9f846778ec16dd0250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e7b0178_ab2d8dfc",
         "filename": "cmds/lshal/ListCommand.h",
         "patchSetId": 1
