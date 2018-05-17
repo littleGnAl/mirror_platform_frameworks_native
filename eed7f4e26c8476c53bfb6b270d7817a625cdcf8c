@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "af096ab9_8685b956",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T17:02:48Z",
+      "side": 1,
+      "message": "Ack. Sure, I\u0027ll add them in the following commit.",
+      "parentUuid": "20a31c09_85d874d7",
+      "revId": "eed7f4e26c8476c53bfb6b270d7817a625cdcf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e754879_299924a3",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "eed7f4e26c8476c53bfb6b270d7817a625cdcf8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b1fb730_05733fd1",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T17:02:48Z",
+      "side": 1,
+      "message": "Done. Sorry, not sure how I missed this!",
+      "parentUuid": "6e754879_299924a3",
+      "range": {
+        "startLine": 815,
+        "startChar": 33,
+        "endLine": 815,
+        "endChar": 47
+      },
+      "revId": "eed7f4e26c8476c53bfb6b270d7817a625cdcf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "afa23610_aa6207f7",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T17:02:48Z",
+      "side": 1,
+      "message": "Done. Great suggestion, very clean!",
+      "parentUuid": "a02258e8_7a7fa822",
+      "range": {
+        "startLine": 821,
+        "startChar": 0,
+        "endLine": 831,
+        "endChar": 13
+      },
+      "revId": "eed7f4e26c8476c53bfb6b270d7817a625cdcf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "375da174_98d3d7b8",
         "filename": "cmds/lshal/ListCommand.h",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "eed7f4e26c8476c53bfb6b270d7817a625cdcf8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "786a2f0f_6bc7fc58",
+        "filename": "cmds/lshal/ListCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1320646
+      },
+      "writtenOn": "2018-05-17T17:02:48Z",
+      "side": 1,
+      "message": "I moved the list initialization to the end of parseArgs. (Steven requested support for something of the form \"--types\u003db --types\u003dl\", which precludes the possibility of init until user input is known).",
+      "parentUuid": "375da174_98d3d7b8",
+      "range": {
+        "startLine": 157,
+        "startChar": 25,
+        "endLine": 157,
+        "endChar": 35
+      },
+      "revId": "eed7f4e26c8476c53bfb6b270d7817a625cdcf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
