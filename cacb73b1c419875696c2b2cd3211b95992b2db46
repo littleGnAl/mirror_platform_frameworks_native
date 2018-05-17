@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6031fb67_032472e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-05-17T23:04:40Z",
+      "side": 1,
+      "message": "Just keep one",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "cacb73b1c419875696c2b2cd3211b95992b2db46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1c8bd7e_a41ef7f5",
         "filename": "cmds/lshal/ListCommand.h",
         "patchSetId": 6
