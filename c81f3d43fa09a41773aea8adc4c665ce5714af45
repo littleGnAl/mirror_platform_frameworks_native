@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20b70227_ab7bbd4b",
+        "filename": "libs/binder/Static.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-05-22T17:37:40Z",
+      "side": 0,
+      "message": "(i see if nothing else, IPCThreadState::shutdown is used in a test, so it makes sense to leave it for now at least.)",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "c81f3d43fa09a41773aea8adc4c665ce5714af45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
