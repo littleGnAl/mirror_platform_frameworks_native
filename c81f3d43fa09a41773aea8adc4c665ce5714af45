@@ -22,6 +22,30 @@
       "revId": "c81f3d43fa09a41773aea8adc4c665ce5714af45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839288d9_13bb31ef",
+        "filename": "libs/binder/Static.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-22T18:26:54Z",
+      "side": 0,
+      "message": "Not to mention also by wpa_supplicant which (unfortunately) means it will likely be in some prebuilts (I could check if anyone is curious).",
+      "parentUuid": "20b70227_ab7bbd4b",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "c81f3d43fa09a41773aea8adc4c665ce5714af45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
