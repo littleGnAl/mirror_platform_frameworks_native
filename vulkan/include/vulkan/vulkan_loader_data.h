@@ -19,12 +19,14 @@
 
 #include <string>
 
-struct android_namespace_t;
+namespace android {
+class NativeLoaderNamespace;
+}
 
 namespace vulkan {
     struct LoaderData {
         std::string layer_path;
-        android_namespace_t* app_namespace;
+        android::NativeLoaderNamespace* app_namespace;
 
         __attribute__((visibility("default"))) static LoaderData& GetInstance();
     };
