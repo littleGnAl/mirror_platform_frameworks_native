@@ -16,6 +16,24 @@
       "revId": "a17eb176eac7a28c5c09195ae230aa7c7832b487",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2b7adfb_9e35af70",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-05-22T10:48:54Z",
+      "side": 1,
+      "message": "Addresses this on internal CL.",
+      "parentUuid": "eb6651bb_7a9d2d9b",
+      "revId": "a17eb176eac7a28c5c09195ae230aa7c7832b487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
