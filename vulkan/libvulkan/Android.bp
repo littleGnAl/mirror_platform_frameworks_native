@@ -42,6 +42,13 @@ cc_library_shared {
         //"-DLOG_NDEBUG=0",
     ],
 
+    target: {
+        arm_on_x86: {
+            cflags: ["-DBUILD_ARM_FOR_X86"],
+            shared_libs: ["libnativebridge"],
+        },
+    },
+
     cppflags: [
         "-std=c++14",
         "-Wno-c99-extensions",
@@ -79,6 +86,8 @@ cc_library_shared {
         "libutils",
         "libcutils",
         "libz",
+        "libnativebridge",
+        "libnativeloader",
         "libnativewindow",
         "android.hardware.graphics.common@1.0",
     ],
