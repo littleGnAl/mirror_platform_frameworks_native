@@ -34,6 +34,10 @@
 
 #include <vulkan/vulkan_loader_data.h>
 
+#ifdef BUILD_ARM_FOR_X86
+#include <nativebridge/native_bridge.h>
+#endif
+
 // TODO(jessehall): The whole way we deal with extensions is pretty hokey, and
 // not a good long-term solution. Having a hard-coded enum of extensions is
 // bad, of course. Representing sets of extensions (requested, supported, etc.)
@@ -70,11 +74,14 @@ const char kSystemLayerLibraryDir[] = "/data/local/debug/vulkan";
 class LayerLibrary {
    public:
     explicit LayerLibrary(const std::string& path)
-        : path_(path), dlhandle_(nullptr), refcount_(0) {}
+        : path_(path), dlhandle_(nullptr), native_bridge_(false), refcount_(0) {}
 
     LayerLibrary(LayerLibrary&& other)
         : path_(std::move(other.path_)),
           dlhandle_(other.dlhandle_),
+#ifdef BUILD_ARM_FOR_X86
+          native_bridge_(other.native_bridge_),
+#endif
           refcount_(other.refcount_) {
         other.dlhandle_ = nullptr;
         other.refcount_ = 0;
@@ -95,10 +102,24 @@ class LayerLibrary {
                  size_t gpa_name_len) const;
 
    private:
+    template<typename Func = void*>
+    Func GetTrampoline(const char* name) const {
+#ifdef BUILD_ARM_FOR_X86 
+        if (native_bridge_) {
+            return reinterpret_cast<Func>(android::NativeBridgeGetTrampoline(
+                dlhandle_, name, nullptr, 0));
+        }
+#endif
+        return reinterpret_cast<Func>(dlsym(dlhandle_, name));
+    }
+
     const std::string path_;
 
     std::mutex mutex_;
     void* dlhandle_;
+#ifdef BUILD_ARM_FOR_X86
+    bool native_bridge_;
+#endif
     size_t refcount_;
 };
 
@@ -123,10 +144,24 @@ bool LayerLibrary::Open() {
             dlhandle_ = dlopen(path_.c_str(), RTLD_NOW | RTLD_LOCAL);
         }
         if (!dlhandle_) {
+#ifdef BUILD_ARM_FOR_X86
+            std::string dlerr = dlerror();
+            if (android::base::EndsWith(dlerr,
+                                        "has unexpected e_machine: 40 (EM_ARM)")) {
+                dlhandle_ = android::NativeBridgeLoadLibrary(path_.c_str(), RTLD_NOW);
+                native_bridge_ = true;
+            } else {
+              ALOGE("failed to load layer library '%s': %s", path_.c_str(),
+                    dlerr.c_str());
+              refcount_ = 0;
+              return false;
+            }
+#else
             ALOGE("failed to load layer library '%s': %s", path_.c_str(),
                   dlerror());
             refcount_ = 0;
             return false;
+#endif
         }
     }
     return true;
@@ -144,11 +179,11 @@ void LayerLibrary::Close() {
 bool LayerLibrary::EnumerateLayers(size_t library_idx,
                                    std::vector<Layer>& instance_layers) const {
     PFN_vkEnumerateInstanceLayerProperties enumerate_instance_layers =
-        reinterpret_cast<PFN_vkEnumerateInstanceLayerProperties>(
-            dlsym(dlhandle_, "vkEnumerateInstanceLayerProperties"));
+        GetTrampoline<PFN_vkEnumerateInstanceLayerProperties>(
+            "vkEnumerateInstanceLayerProperties");
     PFN_vkEnumerateInstanceExtensionProperties enumerate_instance_extensions =
-        reinterpret_cast<PFN_vkEnumerateInstanceExtensionProperties>(
-            dlsym(dlhandle_, "vkEnumerateInstanceExtensionProperties"));
+        GetTrampoline<PFN_vkEnumerateInstanceExtensionProperties>(
+            "vkEnumerateInstanceExtensionProperties");
     if (!enumerate_instance_layers || !enumerate_instance_extensions) {
         ALOGE("layer library '%s' missing some instance enumeration functions",
               path_.c_str());
@@ -157,11 +192,11 @@ bool LayerLibrary::EnumerateLayers(size_t library_idx,
 
     // device functions are optional
     PFN_vkEnumerateDeviceLayerProperties enumerate_device_layers =
-        reinterpret_cast<PFN_vkEnumerateDeviceLayerProperties>(
-            dlsym(dlhandle_, "vkEnumerateDeviceLayerProperties"));
+        GetTrampoline<PFN_vkEnumerateDeviceLayerProperties>(
+            "vkEnumerateDeviceLayerProperties");
     PFN_vkEnumerateDeviceExtensionProperties enumerate_device_extensions =
-        reinterpret_cast<PFN_vkEnumerateDeviceExtensionProperties>(
-            dlsym(dlhandle_, "vkEnumerateDeviceExtensionProperties"));
+        GetTrampoline<PFN_vkEnumerateDeviceExtensionProperties>(
+            "vkEnumerateDeviceExtensionProperties");
 
     // get layer counts
     uint32_t num_instance_layers = 0;
@@ -292,10 +327,10 @@ void* LayerLibrary::GetGPA(const Layer& layer,
     char* name = static_cast<char*>(alloca(layer_name_len + gpa_name_len + 1));
     strcpy(name, layer.properties.layerName);
     strcpy(name + layer_name_len, gpa_name);
-    if (!(gpa = dlsym(dlhandle_, name))) {
+    if (!(gpa = GetTrampoline(name))) {
         strcpy(name, "vk");
         strcpy(name + 2, gpa_name);
-        gpa = dlsym(dlhandle_, name);
+        gpa = GetTrampoline(name);
     }
     return gpa;
 }
