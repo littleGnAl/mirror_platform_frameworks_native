@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec0bfea4_76388ebf",
+        "filename": "cmds/lshal/TableEntry.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-26T00:27:50Z",
+      "side": 1,
+      "message": "-\u003e \u0027?\u0027\n\n:) in a followup pls!",
+      "revId": "9c3910a934418a2e26a1c3384a275fe7512dd950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
