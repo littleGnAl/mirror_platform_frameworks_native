@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "566b5a63_39955878",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-26T00:36:07Z",
+      "side": 1,
+      "message": "(void) object\n\nfor consistency...\n\nplease add unused result or make it consistent or something :9",
+      "range": {
+        "startLine": 150,
+        "startChar": 4,
+        "endLine": 150,
+        "endChar": 10
+      },
+      "revId": "f4ae9e89e890e9ccea68a9312a5ebc189fa63b60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "426c02fa_ecc12cdd",
+        "filename": "cmds/lshal/TableEntry.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-26T00:36:07Z",
+      "side": 1,
+      "message": "really, no brackets.. ? :(",
+      "revId": "f4ae9e89e890e9ccea68a9312a5ebc189fa63b60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
