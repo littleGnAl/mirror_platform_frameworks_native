@@ -39,6 +39,29 @@
       "revId": "9c3910a934418a2e26a1c3384a275fe7512dd950",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5693dd3c_d57b1389",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-05-26T00:41:49Z",
+      "side": 1,
+      "message": "should use \u0027at\u0027 so it will range check",
+      "range": {
+        "startLine": 402,
+        "startChar": 43,
+        "endLine": 402,
+        "endChar": 51
+      },
+      "revId": "9c3910a934418a2e26a1c3384a275fe7512dd950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
