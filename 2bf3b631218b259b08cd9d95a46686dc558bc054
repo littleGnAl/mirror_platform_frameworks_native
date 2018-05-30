@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "297cc067_5a2ccc48",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2018-05-30T14:47:15Z",
+      "side": 1,
+      "message": "+tomcherry. This sounds useful :)",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 29
+      },
+      "revId": "2bf3b631218b259b08cd9d95a46686dc558bc054",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
