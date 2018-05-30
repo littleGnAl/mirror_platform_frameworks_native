@@ -37,8 +37,7 @@
 #include <binder/IServiceManager.h>
 #include <binder/Parcel.h>
 
-#include <android/hidl/manager/1.0/IServiceManager.h>
-#include <hidl/ServiceManagement.h>
+#include <android/hidl/manager/1.2/IServiceManager.h>
 
 #include <pdx/default_transport/service_utility.h>
 #include <utils/String8.h>
@@ -556,47 +555,20 @@ static bool pokeBinderServices()
 // their system properties.
 static void pokeHalServices()
 {
-    using ::android::hidl::base::V1_0::IBase;
-    using ::android::hidl::manager::V1_0::IServiceManager;
-    using ::android::hardware::hidl_string;
     using ::android::hardware::Return;
+    using ::android::hidl::manager::V1_2::IServiceManager;
 
-    sp<IServiceManager> sm = ::android::hardware::defaultServiceManager();
+    sp<IServiceManager> sm = IServiceManager::getService();
 
     if (sm == nullptr) {
         fprintf(stderr, "failed to get IServiceManager to poke hal services\n");
         return;
     }
 
-    auto listRet = sm->list([&](const auto &interfaces) {
-        for (size_t i = 0; i < interfaces.size(); i++) {
-            string fqInstanceName = interfaces[i];
-            string::size_type n = fqInstanceName.find('/');
-            if (n == std::string::npos || interfaces[i].size() == n+1)
-                continue;
-            hidl_string fqInterfaceName = fqInstanceName.substr(0, n);
-            hidl_string instanceName = fqInstanceName.substr(n+1, std::string::npos);
-            Return<sp<IBase>> interfaceRet = sm->get(fqInterfaceName, instanceName);
-            if (!interfaceRet.isOk()) {
-                // ignore
-                continue;
-            }
+    Return<void> ret = sm->broadcastNotifySyspropsChanged();
 
-            sp<IBase> interface = interfaceRet;
-            if (interface == nullptr) {
-                // ignore
-                continue;
-            }
-
-            auto notifyRet = interface->notifySyspropsChanged();
-            if (!notifyRet.isOk()) {
-                // ignore
-            }
-        }
-    });
-    if (!listRet.isOk()) {
-        // TODO(b/34242478) fix this when we determine the correct ACL
-        //fprintf(stderr, "failed to list services: %s\n", listRet.description().c_str());
+    if (!ret.isOk()) {
+        fprintf(stderr, "failed to poke hal services %s\n", ret.description().c_str());
     }
 }
 
