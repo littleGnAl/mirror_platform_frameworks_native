@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b589d2ed_536ef5a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-05-31T15:23:58Z",
+      "side": 1,
+      "message": "Can you run a manual OTA to confirm? go/manual-ab-ota. The target build would need to include this change (e.g., you need to flash _to_ the build containing this CL).",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "a251f25ada91110541b34595b7597ac5c3af4022",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
