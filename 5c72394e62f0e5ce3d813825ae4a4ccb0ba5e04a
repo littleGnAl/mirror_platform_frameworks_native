@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaa81359_256a6ffe",
+        "filename": "libs/nativewindow/AHardwareBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1308437
+      },
+      "writtenOn": "2018-06-15T18:22:08Z",
+      "side": 1,
+      "message": "Just a minor nitpick here, sine the compiler emits\nwarning: comparison of two values with different enumeration types (\u0027CreateFromHandleMethod\u0027 and \u0027android::GraphicBuffer::HandleWrapMethod\u0027) [-Wenum-compare]\n\nI would cast this and the following line with integer, something like:\nstatic_assert((unsigned)AHARDWAREBUFFER_CREATE_FROM_HANDLE_METHOD_REGISTER \u003d\u003d (unsigned)GraphicBuffer::TAKE_UNREGISTERED_HANDLE)",
+      "range": {
+        "startLine": 285,
+        "startChar": 18,
+        "endLine": 285,
+        "endChar": 111
+      },
+      "revId": "5c72394e62f0e5ce3d813825ae4a4ccb0ba5e04a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
