@@ -22,6 +22,46 @@
       "revId": "5c72394e62f0e5ce3d813825ae4a4ccb0ba5e04a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3382626d_a4f9d4b7",
+        "filename": "libs/nativewindow/AHardwareBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2018-06-15T18:28:43Z",
+      "side": 1,
+      "message": "Nit: these could be const",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 75
+      },
+      "revId": "5c72394e62f0e5ce3d813825ae4a4ccb0ba5e04a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7f3feb5_bf6d92ca",
+        "filename": "libs/nativewindow/AHardwareBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2018-06-15T18:28:43Z",
+      "side": 1,
+      "message": "Nit: I\u0027d run \u0027git clang-format -style\u003dfile\u0027 over this change",
+      "revId": "5c72394e62f0e5ce3d813825ae4a4ccb0ba5e04a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
