@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15b71cc5_a85d7ccc",
+        "filename": "services/batteryservice/include/batteryservice/IBatteryPropertiesListener.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-06-18T20:31:16Z",
+      "side": 0,
+      "message": "Ah okay... we can\u0027t remove this in AOSP yet...",
+      "revId": "958d81f21153e64432b646d729fa68e52465a041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
