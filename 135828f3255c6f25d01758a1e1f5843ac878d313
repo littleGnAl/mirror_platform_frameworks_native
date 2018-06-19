@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4ade395_6cdc33c2",
+        "filename": "data/etc/android.hardware.usb.accessory.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-06-19T10:31:30Z",
+      "side": 0,
+      "message": "what do you think about building (optional) generation of this \u003cfeature\u003e tag into java_sdk_library ?  Something like java_sdk_library(..., generate_feature \u003d True)",
+      "revId": "135828f3255c6f25d01758a1e1f5843ac878d313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
