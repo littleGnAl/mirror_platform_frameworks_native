@@ -34,6 +34,24 @@
       "revId": "135828f3255c6f25d01758a1e1f5843ac878d313",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a61d1172_62ce0759",
+        "filename": "data/etc/android.hardware.usb.accessory.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-20T01:20:51Z",
+      "side": 0,
+      "message": "feature_name \u003d \"android.hardware.usb.accessory\" will do that. But I am not sure whether we really need that...",
+      "parentUuid": "3b6f191f_6a323449",
+      "revId": "135828f3255c6f25d01758a1e1f5843ac878d313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
