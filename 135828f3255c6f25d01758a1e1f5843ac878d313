@@ -16,6 +16,24 @@
       "revId": "135828f3255c6f25d01758a1e1f5843ac878d313",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b6f191f_6a323449",
+        "filename": "data/etc/android.hardware.usb.accessory.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-06-20T01:13:39Z",
+      "side": 0,
+      "message": "I will do it for feature tag. But this tag doesn\u0027t have same name with jar file. So I believe that we can\u0027t delete this file.",
+      "parentUuid": "c4ade395_6cdc33c2",
+      "revId": "135828f3255c6f25d01758a1e1f5843ac878d313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
