@@ -50,7 +50,8 @@ struct PidInfo {
 enum class HalType {
     BINDERIZED_SERVICES = 0,
     PASSTHROUGH_CLIENTS,
-    PASSTHROUGH_LIBRARIES
+    PASSTHROUGH_LIBRARIES,
+    VINTF_MANIFEST,
 };
 
 class ListCommand : public Command {
@@ -97,6 +98,7 @@ protected:
     Status fetchPassthrough(const sp<::android::hidl::manager::V1_0::IServiceManager> &manager);
     Status fetchBinderized(const sp<::android::hidl::manager::V1_0::IServiceManager> &manager);
     Status fetchAllLibraries(const sp<::android::hidl::manager::V1_0::IServiceManager> &manager);
+    Status fetchManifestHals();
 
     Status fetchBinderizedEntry(const sp<::android::hidl::manager::V1_0::IServiceManager> &manager,
                                 TableEntry *entry);
@@ -146,12 +148,21 @@ protected:
     bool addEntryWithInstance(const TableEntry &entry, vintf::HalManifest *manifest) const;
     bool addEntryWithoutInstance(const TableEntry &entry, const vintf::HalManifest *manifest) const;
 
-    // Helper function. Whether to list entries corresponding to a given HAL type.
-    bool shouldReportHalType(const HalType &type) const;
+    // Helper function. Whether to fetch entries corresponding to a given HAL type.
+    bool shouldFetchHalType(const HalType &type) const;
+
+    void initFetchTypes();
+
+    // Helper function. Add HALs that are listed in VINTF manifest to BINDERIZED_SERVICES and
+    // PASSTHROUGH_LIBRARIES table.
+    void addLazyHals();
+    bool hasHwbinderEntry(const TableEntry& entry) const;
+    bool hasPassthroughEntry(const TableEntry& entry) const;
 
     Table mServicesTable{};
     Table mPassthroughRefTable{};
     Table mImplementationsTable{};
+    Table mManifestHalsTable{};
 
     std::string mFileOutputPath;
     TableEntryCompare mSortColumn = nullptr;
@@ -165,9 +176,10 @@ protected:
     // If true, explanatory text are not emitted.
     bool mNeat = false;
 
-    // Type(s) of HAL associations to list. By default, report all.
-    std::vector<HalType> mListTypes{HalType::BINDERIZED_SERVICES, HalType::PASSTHROUGH_CLIENTS,
-                                    HalType::PASSTHROUGH_LIBRARIES};
+    // Type(s) of HAL associations to list.
+    std::vector<HalType> mListTypes{};
+    // Type(s) of HAL associations to fetch.
+    std::set<HalType> mFetchTypes{};
 
     // If an entry does not exist, need to ask /proc/{pid}/cmdline to get it.
     // If an entry exist but is an empty string, process might have died.
@@ -185,6 +197,8 @@ protected:
     std::vector<TableColumnType> mSelectedColumns;
     // If true, emit cmdlines instead of PIDs
     bool mEnableCmdlines = false;
+    // If true, list lazy HALs.
+    bool mLazyHals = true;
 
 private:
     DISALLOW_COPY_AND_ASSIGN(ListCommand);
