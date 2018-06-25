@@ -147,6 +147,9 @@ protected:
     // Helper function. Whether to list entries corresponding to a given HAL type.
     bool shouldReportHalType(const HalType &type) const;
 
+    Table* tableForType(HalType type);
+    const Table* tableForType(HalType type) const;
+
     Table mServicesTable{};
     Table mPassthroughRefTable{};
     Table mImplementationsTable{};
