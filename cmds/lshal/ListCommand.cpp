@@ -287,6 +287,22 @@ bool ListCommand::shouldReportHalType(const HalType &type) const {
     return (std::find(mListTypes.begin(), mListTypes.end(), type) != mListTypes.end());
 }
 
+Table* ListCommand::tableForType(HalType type) {
+    switch (type) {
+        case HalType::BINDERIZED_SERVICES:
+            return &mServicesTable;
+        case HalType::PASSTHROUGH_CLIENTS:
+            return &mPassthroughRefTable;
+        case HalType::PASSTHROUGH_LIBRARIES:
+            return &mImplementationsTable;
+        default:
+            return nullptr;
+    }
+}
+const Table* ListCommand::tableForType(HalType type) const {
+    return const_cast<ListCommand*>(this)->tableForType(type);
+}
+
 void ListCommand::forEachTable(const std::function<void(Table &)> &f) {
     f(mServicesTable);
     f(mPassthroughRefTable);
@@ -490,7 +506,10 @@ void ListCommand::dumpTable(const NullableOStream<std::ostream>& out) const {
         return;
     }
 
-    forEachTable([this, &out](const Table &table) {
+    for (HalType listType : mListTypes) {
+        const Table* tp = tableForType(listType);
+        if (!tp) LOG(FATAL) << "Unknown HalType " << static_cast<int64_t>(listType);
+        const Table& table = *tp;
 
         // We're only interested in dumping debug info for already
         // instantiated services. There's little value in dumping the
@@ -509,7 +528,7 @@ void ListCommand::dumpTable(const NullableOStream<std::ostream>& out) const {
         }
         table.createTextTable(mNeat, emitDebugInfo).dump(out.buf());
         out << std::endl;
-    });
+    };
 }
 
 Status ListCommand::dump() {
@@ -535,20 +554,12 @@ Status ListCommand::dump() {
 }
 
 void ListCommand::putEntry(HalType type, TableEntry &&entry) {
-    Table *table = nullptr;
-    switch (type) {
-        case HalType::BINDERIZED_SERVICES :
-            table = &mServicesTable; break;
-        case HalType::PASSTHROUGH_CLIENTS :
-            table = &mPassthroughRefTable; break;
-        case HalType::PASSTHROUGH_LIBRARIES :
-            table = &mImplementationsTable; break;
-        default:
-            err() << "Error: Unknown type of entry " << static_cast<int64_t>(type) << std::endl;
+    Table *table = tableForType(type);
+    if (!table) {
+        err() << "Error: Unknown type of entry " << static_cast<int64_t>(type) << std::endl;
+        return;
     }
-    if (table) {
-        table->add(std::forward<TableEntry>(entry));
-    }
+    table->add(std::forward<TableEntry>(entry));
 }
 
 Status ListCommand::fetchAllLibraries(const sp<IServiceManager> &manager) {
