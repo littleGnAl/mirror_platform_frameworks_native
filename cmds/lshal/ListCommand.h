@@ -50,7 +50,8 @@ struct PidInfo {
 enum class HalType {
     BINDERIZED_SERVICES = 0,
     PASSTHROUGH_CLIENTS,
-    PASSTHROUGH_LIBRARIES
+    PASSTHROUGH_LIBRARIES,
+    LAZY_SERVICES,
 };
 
 class ListCommand : public Command {
@@ -153,6 +154,7 @@ protected:
     Table mServicesTable{};
     Table mPassthroughRefTable{};
     Table mImplementationsTable{};
+    Table mLazyServicesTable{};
 
     std::string mFileOutputPath;
     TableEntryCompare mSortColumn = nullptr;

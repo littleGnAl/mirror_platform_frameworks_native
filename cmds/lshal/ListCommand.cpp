@@ -295,6 +295,8 @@ Table* ListCommand::tableForType(HalType type) {
             return &mPassthroughRefTable;
         case HalType::PASSTHROUGH_LIBRARIES:
             return &mImplementationsTable;
+        case HalType::LAZY_SERVICES:
+            return &mLazyServicesTable; break;
         default:
             return nullptr;
     }
@@ -360,6 +362,11 @@ void ListCommand::postprocess() {
         }
     }
 
+    mLazyServicesTable.push_back(TableEntry{
+        // FIXME
+        .interfaceName = "foobar"
+    });
+
     mServicesTable.setDescription(
             "All binderized services (registered services through hwservicemanager)");
     mPassthroughRefTable.setDescription(
@@ -372,6 +379,8 @@ void ListCommand::postprocess() {
     mImplementationsTable.setDescription(
             "All available passthrough implementations (all -impl.so files).\n"
             "These may return subclasses through their respective HIDL_FETCH_I* functions.");
+    mLazyServicesTable.setDescription(
+            "All lazy HALs that are not started but in VINTF manifest.")
 }
 
 bool ListCommand::addEntryWithInstance(const TableEntry& entry,
@@ -452,6 +461,8 @@ void ListCommand::dumpVintf(const NullableOStream<std::ostream>& out) const {
         if (!addEntryWithInstance(entry, &manifest)) error.push_back(entry.interfaceName);
     for (const TableEntry& entry : mPassthroughRefTable)
         if (!addEntryWithInstance(entry, &manifest)) error.push_back(entry.interfaceName);
+    for (const TableEntry& entry : mLazyServicesTable)
+        if (!addEntryWithInstance(entry, &manifest)) error.push_back(entry.interfaceName);
 
     std::vector<std::string> passthrough;
     for (const TableEntry& entry : mImplementationsTable)
@@ -509,7 +520,8 @@ static vintf::Arch fromBaseArchitecture(::android::hidl::base::V1_0::DebugInfo::
 
 void ListCommand::dumpTable(const NullableOStream<std::ostream>& out) const {
     if (mNeat) {
-        MergedTable({&mServicesTable, &mPassthroughRefTable, &mImplementationsTable})
+        MergedTable({&mServicesTable, &mPassthroughRefTable, &mImplementationsTable,
+                     &mLazyServicesTable})
             .createTextTable().dump(out.buf());
         return;
     }
@@ -885,7 +897,9 @@ void ListCommand::registerAllOptions() {
             {"passthrough_clients", HalType::PASSTHROUGH_CLIENTS},
             {"c", HalType::PASSTHROUGH_CLIENTS},
             {"passthrough_libs", HalType::PASSTHROUGH_LIBRARIES},
-            {"l", HalType::PASSTHROUGH_LIBRARIES}
+            {"l", HalType::PASSTHROUGH_LIBRARIES},
+            {"lazy", HalType::LAZY_SERVICES},
+            {"z", HalType::LAZY_SERVICES},
         };
 
         std::vector<std::string> halTypesArgs = split(std::string(arg), ',');
