@@ -349,13 +349,13 @@ public:
         ON_CALL(*mockList, getPartition(_)).WillByDefault(Return(Partition::VENDOR));
 
         ON_CALL(*mockList, getDeviceManifest())
-                .WillByDefault(Return(VintfObject::GetDeviceHalManifest()));
+                .WillByDefault(Return(std::make_shared<HalManifest>()));
         ON_CALL(*mockList, getDeviceMatrix())
-                .WillByDefault(Return(VintfObject::GetDeviceCompatibilityMatrix()));
+                .WillByDefault(Return(std::make_shared<CompatibilityMatrix>()));
         ON_CALL(*mockList, getFrameworkManifest())
-                .WillByDefault(Return(VintfObject::GetFrameworkHalManifest()));
+                .WillByDefault(Return(std::make_shared<HalManifest>()));
         ON_CALL(*mockList, getFrameworkMatrix())
-                .WillByDefault(Return(VintfObject::GetFrameworkCompatibilityMatrix()));
+                .WillByDefault(Return(std::make_shared<CompatibilityMatrix>()));
     }
 
     void initMockServiceManager() {
@@ -409,16 +409,22 @@ TEST_F(ListTest, GetPidInfoCached) {
 }
 
 TEST_F(ListTest, Fetch) {
-    EXPECT_EQ(0u, mockList->fetch());
+    optind = 1; // mimic Lshal::parseArg()
+    ASSERT_EQ(0u, mockList->parseArgs(createArg({"lshal"})));
+    ASSERT_EQ(0u, mockList->fetch());
     vintf::TransportArch hwbinder{Transport::HWBINDER, Arch::ARCH_64};
     vintf::TransportArch passthrough{Transport::PASSTHROUGH, Arch::ARCH_32};
     std::array<vintf::TransportArch, 6> transportArchs{{hwbinder, hwbinder, passthrough,
                                                         passthrough, passthrough, passthrough}};
-    int id = 1;
+    int i = 0;
     mockList->forEachTable([&](const Table& table) {
-        ASSERT_EQ(2u, table.size());
         for (const auto& entry : table) {
-            auto transport = transportArchs.at(id - 1).transport;
+            if (i >= transportArchs.size()) {
+                break;
+            }
+
+            int id = i + 1;
+            auto transport = transportArchs.at(i).transport;
             TableEntry expected{
                 .interfaceName = getFqInstanceName(id),
                 .transport = transport,
@@ -431,13 +437,15 @@ TEST_F(ListTest, Fetch) {
                 .serverObjectAddress = transport == Transport::HWBINDER ? getPtr(id) : NO_PTR,
                 .clientPids = getClients(id),
                 .clientCmdlines = {},
-                .arch = transportArchs.at(id - 1).arch,
+                .arch = transportArchs.at(i).arch,
             };
             EXPECT_EQ(expected, entry) << expected.to_string() << " vs. " << entry.to_string();
 
-            ++id;
+            ++i;
         }
     });
+
+    EXPECT_EQ(transportArchs.size(), i) << "Not all entries are tested.";
 
 }
 

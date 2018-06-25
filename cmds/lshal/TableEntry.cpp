@@ -73,7 +73,7 @@ std::string TableEntry::getField(TableColumnType type) const {
         case TableColumnType::INTERFACE_NAME:
             return interfaceName;
         case TableColumnType::TRANSPORT:
-            return vintf::to_string(transport);
+            return getTransportString();
         case TableColumnType::SERVER_PID:
             return serverPid == NO_PID ? "N/A" : std::to_string(serverPid);
         case TableColumnType::SERVER_CMD:
@@ -127,6 +127,32 @@ std::string TableEntry::getVintfInfo() const {
     }
     auto joined = base::Join(ret, ',');
     return joined.empty() ? "X" : joined;
+}
+
+std::string to_string(ServiceStatus s) {
+    switch (s) {
+        case ServiceStatus::ALIVE: return "alive";
+        case ServiceStatus::DEAD_OBJECT: return "registered;dead";
+        case ServiceStatus::DECLARED: return "VINTF";
+
+        case ServiceStatus::UNKNOWN: // fallthough
+        default:
+            return "N/A";
+    }
+}
+
+std::string TableEntry::getTransportString() const {
+    std::string s = vintf::to_string(transport);
+    if (s.empty()) s = "N/A";
+
+    bool shouldAppendServiceStatus =
+        !(transport == vintf::Transport::HWBINDER && serviceStatus == ServiceStatus::ALIVE) &&
+        !(transport == vintf::Transport::PASSTHROUGH && serviceStatus == ServiceStatus::UNKNOWN);
+
+    if (shouldAppendServiceStatus) {
+        s += "(" + lshal::to_string(serviceStatus) + ")";
+    }
+    return s;
 }
 
 TextTable Table::createTextTable(bool neat,
