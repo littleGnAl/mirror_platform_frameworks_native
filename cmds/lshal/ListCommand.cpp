@@ -288,32 +288,14 @@ bool ListCommand::shouldReportHalType(const HalType &type) const {
 }
 
 void ListCommand::forEachTable(const std::function<void(Table &)> &f) {
-    for (const auto& type : mListTypes) {
-        switch (type) {
-            case HalType::BINDERIZED_SERVICES:
-                f(mServicesTable); break;
-            case HalType::PASSTHROUGH_CLIENTS:
-                f(mPassthroughRefTable); break;
-            case HalType::PASSTHROUGH_LIBRARIES:
-                f(mImplementationsTable); break;
-            default:
-                LOG(FATAL) << __func__ << "Unknown HAL type.";
-        }
-    }
+    f(mServicesTable);
+    f(mPassthroughRefTable);
+    f(mImplementationsTable);
 }
 void ListCommand::forEachTable(const std::function<void(const Table &)> &f) const {
-    for (const auto& type : mListTypes) {
-        switch (type) {
-            case HalType::BINDERIZED_SERVICES:
-                f(mServicesTable); break;
-            case HalType::PASSTHROUGH_CLIENTS:
-                f(mPassthroughRefTable); break;
-            case HalType::PASSTHROUGH_LIBRARIES:
-                f(mImplementationsTable); break;
-            default:
-                LOG(FATAL) << __func__ << "Unknown HAL type.";
-        }
-    }
+    f(mServicesTable);
+    f(mPassthroughRefTable);
+    f(mImplementationsTable);
 }
 
 void ListCommand::postprocess() {
