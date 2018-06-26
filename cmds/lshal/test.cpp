@@ -596,17 +596,17 @@ TEST_F(ListTest, DumpSingleHalType) {
 
 TEST_F(ListTest, DumpReorderedHalTypes) {
     const std::string expected =
-        "[fake description 0]\n"
+        "[fake description 1]\n"
         "Interface            Transport   Arch Thread Use Server PTR Clients\n"
         "a.h.foo3@3.0::IFoo/3 passthrough 32   N/A        N/A    N/A 4 6\n"
         "a.h.foo4@4.0::IFoo/4 passthrough 32   N/A        N/A    N/A 5 7\n"
         "\n"
-        "[fake description 1]\n"
+        "[fake description 2]\n"
         "Interface            Transport   Arch Thread Use Server PTR Clients\n"
         "a.h.foo5@5.0::IFoo/5 passthrough 32   N/A        N/A    N/A 6 8\n"
         "a.h.foo6@6.0::IFoo/6 passthrough 32   N/A        N/A    N/A 7 9\n"
         "\n"
-        "[fake description 2]\n"
+        "[fake description 0]\n"
         "Interface            Transport Arch Thread Use Server PTR              Clients\n"
         "a.h.foo1@1.0::IFoo/1 hwbinder  64   11/21      1      0000000000002711 2 4\n"
         "a.h.foo2@2.0::IFoo/2 hwbinder  64   12/22      2      0000000000002712 3 5\n"
@@ -621,12 +621,12 @@ TEST_F(ListTest, DumpReorderedHalTypes) {
 
 TEST_F(ListTest, DumpAbbreviatedHalTypes) {
     const std::string expected =
-        "[fake description 0]\n"
+        "[fake description 1]\n"
         "Interface            Transport   Arch Thread Use Server PTR Clients\n"
         "a.h.foo3@3.0::IFoo/3 passthrough 32   N/A        N/A    N/A 4 6\n"
         "a.h.foo4@4.0::IFoo/4 passthrough 32   N/A        N/A    N/A 5 7\n"
         "\n"
-        "[fake description 1]\n"
+        "[fake description 2]\n"
         "Interface            Transport   Arch Thread Use Server PTR Clients\n"
         "a.h.foo5@5.0::IFoo/5 passthrough 32   N/A        N/A    N/A 6 8\n"
         "a.h.foo6@6.0::IFoo/6 passthrough 32   N/A        N/A    N/A 7 9\n"
@@ -640,12 +640,12 @@ TEST_F(ListTest, DumpAbbreviatedHalTypes) {
 
 TEST_F(ListTest, DumpEmptyAndDuplicateHalTypes) {
     const std::string expected =
-        "[fake description 0]\n"
+        "[fake description 1]\n"
         "Interface            Transport   Arch Thread Use Server PTR Clients\n"
         "a.h.foo3@3.0::IFoo/3 passthrough 32   N/A        N/A    N/A 4 6\n"
         "a.h.foo4@4.0::IFoo/4 passthrough 32   N/A        N/A    N/A 5 7\n"
         "\n"
-        "[fake description 1]\n"
+        "[fake description 2]\n"
         "Interface            Transport   Arch Thread Use Server PTR Clients\n"
         "a.h.foo5@5.0::IFoo/5 passthrough 32   N/A        N/A    N/A 6 8\n"
         "a.h.foo6@6.0::IFoo/6 passthrough 32   N/A        N/A    N/A 7 9\n"
