@@ -481,28 +481,17 @@ TEST_F(ListTest, DumpVintf) {
 
 // test default columns
 TEST_F(ListTest, DumpDefault) {
-    const std::string expected =
-        "[fake description 0]\n"
-        "R Interface            Thread Use Server Clients\n"
-        "N a.h.foo1@1.0::IFoo/1 11/21      1      2 4\n"
-        "Y a.h.foo2@2.0::IFoo/2 12/22      2      3 5\n"
-        "\n"
-        "[fake description 1]\n"
-        "R Interface            Thread Use Server Clients\n"
-        "? a.h.foo3@3.0::IFoo/3 N/A        N/A    4 6\n"
-        "? a.h.foo4@4.0::IFoo/4 N/A        N/A    5 7\n"
-        "\n"
-        "[fake description 2]\n"
-        "R Interface            Thread Use Server Clients\n"
-        "? a.h.foo5@5.0::IFoo/5 N/A        N/A    6 8\n"
-        "? a.h.foo6@6.0::IFoo/6 N/A        N/A    7 9\n"
-        "\n";
-
     optind = 1; // mimic Lshal::parseArg()
     EXPECT_EQ(0u, mockList->main(createArg({"lshal"})));
-    EXPECT_EQ(expected, out.str());
+    EXPECT_THAT(out.str(), HasSubstr("R"));
+    EXPECT_THAT(out.str(), HasSubstr("Interface"));
+    EXPECT_THAT(out.str(), HasSubstr("Transport"));
+    EXPECT_THAT(out.str(), HasSubstr("Thread Use"));
+    EXPECT_THAT(out.str(), HasSubstr("Server"));
+    EXPECT_THAT(out.str(), HasSubstr("Clients"));
     EXPECT_EQ("", err.str());
 }
+
 
 TEST_F(ListTest, DumpHash) {
     const std::string expected =

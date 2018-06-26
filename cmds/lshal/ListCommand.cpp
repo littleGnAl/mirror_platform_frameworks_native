@@ -1011,6 +1011,7 @@ Status ListCommand::parseArgs(const Arg &arg) {
     if (mSelectedColumns.empty()) {
         mSelectedColumns = {TableColumnType::RELEASED,
                             TableColumnType::INTERFACE_NAME, TableColumnType::THREADS,
+                            TableColumnType::TRANSPORT,
                             TableColumnType::SERVER_PID, TableColumnType::CLIENT_PIDS};
     }
 
@@ -1068,7 +1069,7 @@ void ListCommand::usage() const {
     err() << "list:" << std::endl
           << "    lshal" << std::endl
           << "    lshal list" << std::endl
-          << "        List all hals with default ordering and columns (`lshal list -riepc`)" << std::endl
+          << "        List all hals with default ordering and columns (`lshal list -lietpc`)" << std::endl
           << "    lshal list [-h|--help]" << std::endl
           << "        -h, --help: Print help message for list (`lshal help list`)" << std::endl
           << "    lshal [list] [OPTIONS...]" << std::endl;
