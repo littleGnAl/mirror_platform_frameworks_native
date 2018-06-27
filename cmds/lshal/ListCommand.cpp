@@ -501,8 +501,13 @@ static vintf::Arch fromBaseArchitecture(::android::hidl::base::V1_0::DebugInfo::
 
 void ListCommand::dumpTable(const NullableOStream<std::ostream>& out) const {
     if (mNeat) {
-        MergedTable({&mServicesTable, &mPassthroughRefTable, &mImplementationsTable})
-            .createTextTable().dump(out.buf());
+        std::vector<const Table*> tables;
+        for (HalType listType : mListTypes) {
+            const Table* tp = tableForType(listType);
+            if (!tp) LOG(FATAL) << "Unknown HalType " << static_cast<int64_t>(listType);
+            tables.push_back(tp);
+        }
+        MergedTable(std::move(tables)).createTextTable().dump(out.buf());
         return;
     }
 
