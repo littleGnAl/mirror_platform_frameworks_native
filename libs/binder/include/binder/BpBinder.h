@@ -37,6 +37,7 @@ public:
     inline  int32_t     handle() const { return mHandle; }
 
     virtual const String16&    getInterfaceDescriptor() const;
+            uint32_t    getInterfaceVersion() const; /* non-virtual */
     virtual bool        isBinderAlive() const;
     virtual status_t    pingBinder();
     virtual status_t    dump(int fd, const Vector<String16>& args);
@@ -139,6 +140,9 @@ private:
     static uint32_t                             sBinderProxyCountHighWatermark;
     static uint32_t                             sBinderProxyCountLowWatermark;
     static bool                                 sBinderProxyThrottleCreate;
+
+    mutable uint32_t            mVersionCache;
+    mutable bool                mIsVersionCached;
 };
 
 }; // namespace android

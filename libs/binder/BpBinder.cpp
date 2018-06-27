@@ -146,6 +146,7 @@ BpBinder::BpBinder(int32_t handle, int32_t trackedUid)
     , mObitsSent(0)
     , mObituaries(nullptr)
     , mTrackedUid(trackedUid)
+    , mIsVersionCached(false)
 {
     ALOGV("Creating BpBinder %p handle %d\n", this, mHandle);
 
@@ -180,6 +181,34 @@ const String16& BpBinder::getInterfaceDescriptor() const
     // (usually) safe because they are reference-counted.
 
     return mDescriptorCache;
+}
+
+/**
+ * Transact to the remote object to read the interface version that
+ * the object is currently implementing. The result is cached once
+ * read.
+ */
+uint32_t BpBinder::getInterfaceVersion() const
+{
+    {
+        Mutex::Autolock _l(mLock);
+        if (mIsVersionCached) {
+            return mVersionCache;
+        }
+    }
+    Parcel send;
+    Parcel reply;
+    status_t err = const_cast<BpBinder*>(this)->transact(
+            VERSION_TRANSACTION, send, &reply);
+    if (err == NO_ERROR) {
+        uint32_t ver = reply.readUint32();
+        Mutex::Autolock _l(mLock);
+        if (!mIsVersionCached) {
+            mIsVersionCached = true;
+            mVersionCache = ver;
+        }
+    }
+    return mVersionCache;
 }
 
 bool BpBinder::isBinderAlive() const
