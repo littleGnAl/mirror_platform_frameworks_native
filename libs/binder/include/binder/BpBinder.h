@@ -32,6 +32,7 @@ public:
     inline  int32_t     handle() const { return mHandle; }
 
     virtual const String16&    getInterfaceDescriptor() const;
+            uint32_t    getInterfaceVersion() const; /* non-virtual */
     virtual bool        isBinderAlive() const;
     virtual status_t    pingBinder();
     virtual status_t    dump(int fd, const Vector<String16>& args);
@@ -115,6 +116,8 @@ private:
             ObjectManager       mObjects;
             Parcel*             mConstantData;
     mutable String16            mDescriptorCache;
+    mutable uint32_t            mVersionCache;
+    mutable bool                mIsVersionCached;
 };
 
 }; // namespace android
