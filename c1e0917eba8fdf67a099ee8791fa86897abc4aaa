@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21a9b552_0b8cb5dc",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-27T22:19:06Z",
+      "side": 1,
+      "message": "This list is module names, but many of these are toybox binaries.  Unfortunately required modules that don\u0027t exist are not considered errors.\n\nWe may not want some of these on user builds?  procrank is useless if it can\u0027t run as root.",
+      "revId": "c1e0917eba8fdf67a099ee8791fa86897abc4aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
