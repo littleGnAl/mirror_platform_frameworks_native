@@ -30,6 +30,8 @@ public:
             IInterface();
             static sp<IBinder>  asBinder(const IInterface*);
             static sp<IBinder>  asBinder(const sp<IInterface>&);
+            /* Shortcut for asBinder(iface).getInterfaceVersion() */
+            uint32_t            queryVersion();
 
 protected:
     virtual                     ~IInterface();
@@ -52,6 +54,9 @@ class BnInterface : public INTERFACE, public BBinder
 public:
     virtual sp<IInterface>      queryLocalInterface(const String16& _descriptor);
     virtual const String16&     getInterfaceDescriptor() const;
+    virtual status_t            onTransact(uint32_t code, const Parcel& data,
+                                           Parcel* reply, uint32_t flags);
+            uint32_t            getInterfaceVersion(); /* non-virtual */
 
 protected:
     virtual IBinder*            onAsBinder();
@@ -77,6 +82,7 @@ public:                                                                 \
     static ::android::sp<I##INTERFACE> asInterface(                     \
             const ::android::sp<::android::IBinder>& obj);              \
     virtual const ::android::String16& getInterfaceDescriptor() const;  \
+    static const uint32_t version;                                      \
     I##INTERFACE();                                                     \
     virtual ~I##INTERFACE();                                            \
     static bool setDefaultImpl(std::unique_ptr<I##INTERFACE> impl);     \
@@ -87,6 +93,9 @@ public:                                                                 \
 
 
 #define IMPLEMENT_META_INTERFACE(INTERFACE, NAME)                       \
+    IMPLEMENT_VERSIONED_META_INTERFACE(INTERFACE, NAME, 0)              \
+
+#define IMPLEMENT_VERSIONED_META_INTERFACE(INTERFACE, NAME, VERSION)    \
     const ::android::String16 I##INTERFACE::descriptor(NAME);           \
     const ::android::String16&                                          \
             I##INTERFACE::getInterfaceDescriptor() const {              \
@@ -119,6 +128,7 @@ public:                                                                 \
     {                                                                   \
         return I##INTERFACE::default_impl;                              \
     }                                                                   \
+    const uint32_t I##INTERFACE::version(VERSION);                      \
     I##INTERFACE::I##INTERFACE() { }                                    \
     I##INTERFACE::~I##INTERFACE() { }                                   \
 
@@ -142,6 +152,31 @@ template<typename INTERFACE>
 inline const String16& BnInterface<INTERFACE>::getInterfaceDescriptor() const
 {
     return INTERFACE::getInterfaceDescriptor();
+}
+
+template<typename INTERFACE>
+inline uint32_t BnInterface<INTERFACE>::getInterfaceVersion()
+{
+    return INTERFACE::version;
+}
+
+// This is to call Parcel::writeUint32 without including Parcel.h here.
+// Including Parcel.h here is impossible as Parcel.h is already including
+// this header.
+status_t Parcel_writeUint32(Parcel* parcel, uint32_t val);
+
+template<typename INTERFACE>
+status_t BnInterface<INTERFACE>::onTransact(
+    uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
+{
+    switch (code) {
+        case VERSION_TRANSACTION:
+            Parcel_writeUint32(reply, INTERFACE::version);
+            return NO_ERROR;
+        default:
+            return ::android::BBinder::onTransact(
+                code, data, reply, flags);
+    }
 }
 
 template<typename INTERFACE>

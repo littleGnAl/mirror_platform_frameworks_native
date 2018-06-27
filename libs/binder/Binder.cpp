@@ -81,6 +81,20 @@ status_t IBinder::shellCommand(const sp<IBinder>& target, int in, int out, int e
     return target->transact(SHELL_COMMAND_TRANSACTION, send, &reply);
 }
 
+uint32_t IBinder::getInterfaceVersion()
+{
+    BpBinder* proxy = remoteBinder();
+    if (proxy != nullptr) {
+        return proxy->getInterfaceVersion();
+    }
+    // For local binder (server side), the call can't reach here unless
+    // explicitly called via IBinder::getInterfaceVersion(). In normal case,
+    // call to getInterfaceVersion() should be served by
+    // BnInterface<INTERFACE>::getInterfaceVersion().
+    ALOGW("reached IBinder::getInterfaceVersion (this=%p)", this);
+    return 0;
+}
+
 // ---------------------------------------------------------------------------
 
 class BBinder::Extras

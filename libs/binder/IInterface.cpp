@@ -17,6 +17,7 @@
 #define LOG_TAG "IInterface"
 #include <utils/Log.h>
 #include <binder/IInterface.h>
+#include <binder/Parcel.h>
 
 namespace android {
 
@@ -43,6 +44,19 @@ sp<IBinder> IInterface::asBinder(const sp<IInterface>& iface)
     return iface->onAsBinder();
 }
 
+uint32_t IInterface::queryVersion()
+{
+    IBinder* binder = onAsBinder();
+    if (binder == nullptr) {
+        ALOGW("cannot get version from an interface (%p) not associated to a binder.", this);
+        return 0;
+    }
+    return binder->getInterfaceVersion();
+}
+
+status_t Parcel_writeUint32(Parcel* parcel, uint32_t val) {
+    return parcel->writeUint32(val);
+}
 
 // ---------------------------------------------------------------------------
 

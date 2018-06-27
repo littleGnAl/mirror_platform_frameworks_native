@@ -59,6 +59,7 @@ public:
         SHELL_COMMAND_TRANSACTION = B_PACK_CHARS('_','C','M','D'),
         INTERFACE_TRANSACTION   = B_PACK_CHARS('_', 'N', 'T', 'F'),
         SYSPROPS_TRANSACTION    = B_PACK_CHARS('_', 'S', 'P', 'R'),
+        VERSION_TRANSACTION     = B_PACK_CHARS('_', 'V', 'E', 'R'),
 
         // Corresponds to TF_ONE_WAY -- an asynchronous call.
         FLAG_ONEWAY             = 0x00000001
@@ -78,6 +79,12 @@ public:
      * object.
      */
     virtual const String16& getInterfaceDescriptor() const = 0;
+
+    /**
+     * Return the version number of the interface that this binder
+     * object is implementing.
+     */
+    uint32_t getInterfaceVersion(); /* non-virtual */
 
     virtual bool            isBinderAlive() const = 0;
     virtual status_t        pingBinder() = 0;

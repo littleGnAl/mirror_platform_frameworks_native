@@ -23,6 +23,7 @@
 #include <utils/threads.h>
 
 #include <unordered_map>
+#include <utility>
 
 // ---------------------------------------------------------------------------
 namespace android {
@@ -37,6 +38,7 @@ public:
     inline  int32_t     handle() const { return mHandle; }
 
     virtual const String16&    getInterfaceDescriptor() const;
+            uint32_t    getInterfaceVersion() const; /* non-virtual */
     virtual bool        isBinderAlive() const;
     virtual status_t    pingBinder();
     virtual status_t    dump(int fd, const Vector<String16>& args);
@@ -139,6 +141,8 @@ private:
     static uint32_t                             sBinderProxyCountHighWatermark;
     static uint32_t                             sBinderProxyCountLowWatermark;
     static bool                                 sBinderProxyThrottleCreate;
+
+    mutable std::pair<uint32_t, bool> mVersionCache; // version, is_cached
 };
 
 }; // namespace android
