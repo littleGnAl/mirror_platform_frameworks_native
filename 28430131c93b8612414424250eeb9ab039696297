@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "faa42cd9_4b9a6d5f",
+        "filename": "libs/gui/GLConsumer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2018-06-27T23:30:57Z",
+      "side": 1,
+      "message": "Nit: const",
+      "range": {
+        "startLine": 815,
+        "startChar": 4,
+        "endLine": 815,
+        "endChar": 8
+      },
+      "revId": "28430131c93b8612414424250eeb9ab039696297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
