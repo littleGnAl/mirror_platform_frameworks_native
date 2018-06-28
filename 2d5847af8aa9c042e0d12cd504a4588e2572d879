@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b7d6948_a0589f21",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T17:48:57Z",
+      "side": 1,
+      "message": "This could be accidentally used on any string. Why don\u0027t you just use an actual FqInstance type?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "2d5847af8aa9c042e0d12cd504a4588e2572d879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c65902a2_25e60028",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T17:48:57Z",
+      "side": 1,
+      "message": "I was expecting 5 options:\nbinderized\npassthrough clients\npassthrough libs\nvintf\nvintf - binderized (the lazy hals intersection that we thought was interesting)\n\nWhy put the intersection in a separate boolean variable that can only be used in a specific context?",
+      "range": {
+        "startLine": 1018,
+        "startChar": 0,
+        "endLine": 1025,
+        "endChar": 43
+      },
+      "revId": "2d5847af8aa9c042e0d12cd504a4588e2572d879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a244d770_17596aeb",
+        "filename": "cmds/lshal/TableEntry.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T17:48:57Z",
+      "side": 1,
+      "message": "we really should investigate why this is happening sometimes\n\nand also not conflate dead with failed transactions/timeouts/etc..",
+      "range": {
+        "startLine": 138,
+        "startChar": 28,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "2d5847af8aa9c042e0d12cd504a4588e2572d879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a72b5f1_78d2e4d9",
+        "filename": "cmds/lshal/TableEntry.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T17:48:57Z",
+      "side": 1,
+      "message": "CHECK(false) inconsistent state",
+      "range": {
+        "startLine": 142,
+        "startChar": 8,
+        "endLine": 142,
+        "endChar": 16
+      },
+      "revId": "2d5847af8aa9c042e0d12cd504a4588e2572d879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
