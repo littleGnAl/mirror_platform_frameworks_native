@@ -22,6 +22,30 @@
       "revId": "ae4b43ae441bbf70376f6403740a3f9741bfe5b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90c8c00f_ae7cd3f9",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-06-28T18:06:29Z",
+      "side": 1,
+      "message": "It requires some refactoring. Let me do it in a follow-up CL.",
+      "parentUuid": "b7e0414c_8df770eb",
+      "range": {
+        "startLine": 1072,
+        "startChar": 84,
+        "endLine": 1072,
+        "endChar": 90
+      },
+      "revId": "ae4b43ae441bbf70376f6403740a3f9741bfe5b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
