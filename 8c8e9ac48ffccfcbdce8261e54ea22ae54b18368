@@ -46,6 +46,30 @@
       "revId": "8c8e9ac48ffccfcbdce8261e54ea22ae54b18368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3852622e_5d373ad5",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T18:12:17Z",
+      "side": 1,
+      "message": "Yeah, but what if, for instance, every line of the \u0027debug\u0027 output started with an \u0027@@@\u0027 or something else? It\u0027s still possible to support this usecase.\n\nyou could do it another time though",
+      "parentUuid": "0dcc1255_c917d9ad",
+      "range": {
+        "startLine": 265,
+        "startChar": 38,
+        "endLine": 265,
+        "endChar": 77
+      },
+      "revId": "8c8e9ac48ffccfcbdce8261e54ea22ae54b18368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
