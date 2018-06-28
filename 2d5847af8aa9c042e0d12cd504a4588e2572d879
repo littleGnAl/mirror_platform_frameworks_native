@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "7b6bf829_df946ffe",
+        "filename": "cmds/lshal/TableEntry.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-06-28T21:12:54Z",
+      "side": 1,
+      "message": "Will do (you mean in code or in text?)",
+      "parentUuid": "f72bcaa6_85fcb0d5",
+      "range": {
+        "startLine": 138,
+        "startChar": 28,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "2d5847af8aa9c042e0d12cd504a4588e2572d879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a72b5f1_78d2e4d9",
         "filename": "cmds/lshal/TableEntry.cpp",
         "patchSetId": 3
