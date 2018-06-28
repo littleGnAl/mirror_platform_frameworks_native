@@ -45,6 +45,30 @@
       "revId": "db730530656f717cdb925c058461a4485db4b32b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d0b5734_f512bd91",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-06-28T21:16:30Z",
+      "side": 1,
+      "message": "No. I have to have a return statement for each branch.",
+      "parentUuid": "9dab0bd7_4483ae69",
+      "range": {
+        "startLine": 300,
+        "startChar": 12,
+        "endLine": 300,
+        "endChar": 27
+      },
+      "revId": "db730530656f717cdb925c058461a4485db4b32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
