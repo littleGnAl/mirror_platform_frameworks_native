@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe7d96f3_ccc50b19",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T17:49:51Z",
+      "side": 1,
+      "message": "why prohibit it? it\u0027s stupid, but meh?",
+      "range": {
+        "startLine": 265,
+        "startChar": 38,
+        "endLine": 265,
+        "endChar": 77
+      },
+      "revId": "8c8e9ac48ffccfcbdce8261e54ea22ae54b18368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
