@@ -34,6 +34,24 @@
       "revId": "c1e0917eba8fdf67a099ee8791fa86897abc4aaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c3386a0_984750cc",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-28T17:55:32Z",
+      "side": 1,
+      "message": "I thought bugreports on user devices had no procrank information.  procrank has to read /proc/pid/pagemap for every process, which includes the physical address of every page.",
+      "parentUuid": "f4e6e1ad_91a42121",
+      "revId": "c1e0917eba8fdf67a099ee8791fa86897abc4aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
