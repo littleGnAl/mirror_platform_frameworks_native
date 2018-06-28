@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fc5eada_42bc50ad",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T21:08:15Z",
+      "side": 1,
+      "message": "should actually be a print to stderr. We probably shouldn\u0027t make any LOG calls in lshal actually since it\u0027s always a user (or stdout/stderr) that we\u0027re interested in.",
+      "range": {
+        "startLine": 299,
+        "startChar": 12,
+        "endLine": 299,
+        "endChar": 23
+      },
+      "revId": "db730530656f717cdb925c058461a4485db4b32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dab0bd7_4483ae69",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T21:08:15Z",
+      "side": 1,
+      "message": "nit: can you remove this statement?\n\nIt also looks weird since you\u0027re de-referencing it below, but I know what LOG(FATAL) does :)",
+      "range": {
+        "startLine": 300,
+        "startChar": 12,
+        "endLine": 300,
+        "endChar": 27
+      },
+      "revId": "db730530656f717cdb925c058461a4485db4b32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
