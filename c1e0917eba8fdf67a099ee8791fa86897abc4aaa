@@ -16,6 +16,24 @@
       "revId": "c1e0917eba8fdf67a099ee8791fa86897abc4aaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e6e1ad_91a42121",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-06-28T15:32:03Z",
+      "side": 1,
+      "message": "I thought the setup is such that dumpstate is run with far-reaching privileges? Looking at the rc file, I don\u0027t see a user/group restriction. And the selinux rules look like they give it permission to go look into /proc for all processes...",
+      "parentUuid": "21a9b552_0b8cb5dc",
+      "revId": "c1e0917eba8fdf67a099ee8791fa86897abc4aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
