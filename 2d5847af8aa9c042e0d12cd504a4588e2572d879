@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "564aa6b0_c04c6496",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-06-28T18:30:47Z",
+      "side": 1,
+      "message": "It works on the output from passthroughServiceManager as well, like\n\na.h.foo@1.0::I*/* (vendorname)",
+      "parentUuid": "1b7d6948_a0589f21",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "2d5847af8aa9c042e0d12cd504a4588e2572d879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c65902a2_25e60028",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "48481d33_631f9b1b",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-06-28T18:30:47Z",
+      "side": 1,
+      "message": "the lazy HALs go into the binderized / passthrough section with a different \"ServiceStatus\" column. If I am to put this in a new section, there are inter-dependencies between sections (i.e. lazy section needs to depend on binderized section), and I need CL:710300 again. Do you actually want me to do it?\n\nRight now the way to query lazy HALs is just (the --lazy option is implicit)\n\nlshal -iS | grep \"declared\" | cut -f1 -d\u0027 \u0027",
+      "parentUuid": "c65902a2_25e60028",
+      "range": {
+        "startLine": 1018,
+        "startChar": 0,
+        "endLine": 1025,
+        "endChar": 43
+      },
+      "revId": "2d5847af8aa9c042e0d12cd504a4588e2572d879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a244d770_17596aeb",
         "filename": "cmds/lshal/TableEntry.cpp",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2018-06-28T17:48:57Z",
       "side": 1,
       "message": "we really should investigate why this is happening sometimes\n\nand also not conflate dead with failed transactions/timeouts/etc..",
+      "range": {
+        "startLine": 138,
+        "startChar": 28,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "2d5847af8aa9c042e0d12cd504a4588e2572d879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6437410_1d15f9bd",
+        "filename": "cmds/lshal/TableEntry.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-06-28T18:30:47Z",
+      "side": 1,
+      "message": "It means HAL is non-responsive. Some calls failed (maybe all threads are occupied).\nCan you suggest some other wording?",
+      "parentUuid": "a244d770_17596aeb",
       "range": {
         "startLine": 138,
         "startChar": 28,
