@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c45f10f5_dfeea999",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T21:10:46Z",
+      "side": 1,
+      "message": "nit: passthrough/hwbinder HALs with no implementation, since the first line sounds more like they are lazy",
+      "range": {
+        "startLine": 395,
+        "startChar": 21,
+        "endLine": 395,
+        "endChar": 32
+      },
+      "revId": "80fb3b5a3a502de388c48717cb4a01a55a5db2ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "279d0187_6cf0a8d5",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T21:10:46Z",
+      "side": 1,
+      "message": "have",
+      "range": {
+        "startLine": 395,
+        "startChar": 42,
+        "endLine": 395,
+        "endChar": 45
+      },
+      "revId": "80fb3b5a3a502de388c48717cb4a01a55a5db2ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
