@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a1e30b1_82a21201",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-06-28T21:16:42Z",
+      "side": 1,
+      "message": "But it is LOG(FATAL) and shouldn\u0027t happen at all besides programmer error.\nIt is normal that crash logs go to logcat. There is no other non-fatal LOGs to logcat.",
+      "parentUuid": "5fc5eada_42bc50ad",
+      "range": {
+        "startLine": 299,
+        "startChar": 12,
+        "endLine": 299,
+        "endChar": 23
+      },
+      "revId": "db730530656f717cdb925c058461a4485db4b32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9dab0bd7_4483ae69",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 4
