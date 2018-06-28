@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8024be18_aecf4bcc",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T17:54:54Z",
+      "side": 1,
+      "message": "this should be a hard failure",
+      "range": {
+        "startLine": 565,
+        "startChar": 12,
+        "endLine": 565,
+        "endChar": 15
+      },
+      "revId": "211839975c9eddabbeb9c08eb03b624f48148cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
