@@ -45,6 +45,30 @@
       "revId": "80fb3b5a3a502de388c48717cb4a01a55a5db2ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85564a81_ce44ad72",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-06-28T21:55:02Z",
+      "side": 1,
+      "message": "but this is the \"lazy\" section for hwbinder HALs...\n\nwill fix",
+      "parentUuid": "c45f10f5_dfeea999",
+      "range": {
+        "startLine": 395,
+        "startChar": 21,
+        "endLine": 395,
+        "endChar": 32
+      },
+      "revId": "80fb3b5a3a502de388c48717cb4a01a55a5db2ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
