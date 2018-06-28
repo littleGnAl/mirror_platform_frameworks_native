@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "eb70620c_fd7427d2",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T19:56:31Z",
+      "side": 1,
+      "message": "ugh:( I still would like a better way to do it. Is there a reason we need to parse the output from there?\n\nMaybe we should clean it up and put it in the \u0027proper\u0027 format",
+      "parentUuid": "564aa6b0_c04c6496",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "2d5847af8aa9c042e0d12cd504a4588e2572d879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c65902a2_25e60028",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 3
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "It means HAL is non-responsive. Some calls failed (maybe all threads are occupied).\nCan you suggest some other wording?",
       "parentUuid": "a244d770_17596aeb",
+      "range": {
+        "startLine": 138,
+        "startChar": 28,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "2d5847af8aa9c042e0d12cd504a4588e2572d879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df948f64_7b58170d",
+        "filename": "cmds/lshal/TableEntry.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T19:56:31Z",
+      "side": 1,
+      "message": "How about just \"non-responsive\" ? :D",
+      "parentUuid": "c6437410_1d15f9bd",
       "range": {
         "startLine": 138,
         "startChar": 28,
