@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7e0414c_8df770eb",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T17:50:24Z",
+      "side": 1,
+      "message": "can this default list be constructed by the default options so that it is always consistent?",
+      "range": {
+        "startLine": 1072,
+        "startChar": 84,
+        "endLine": 1072,
+        "endChar": 90
+      },
+      "revId": "ae4b43ae441bbf70376f6403740a3f9741bfe5b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
