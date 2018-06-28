@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5231120d_c69f72d2",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1170070
+      },
+      "writtenOn": "2018-06-28T22:41:10Z",
+      "side": 1,
+      "message": "Would you mind adding a comment to this function with the explanation that joel gave in b/110757800#comment17 ? That these two flags mean the same thing but the filename changed between kernels? I feel like otherwise it\u0027ll be really hard to dig up why we have the two options here in the future.",
+      "revId": "e757b1c339f27172d2fe8a386095bfd5ceb93496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
