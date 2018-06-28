@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc8dc67b_163a8054",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-06-28T17:52:35Z",
+      "side": 1,
+      "message": "can you not put this check inside of tableForType? Or are they not always added (then I think the current way makes sense)",
+      "range": {
+        "startLine": 507,
+        "startChar": 21,
+        "endLine": 507,
+        "endChar": 88
+      },
+      "revId": "7dacc0ad95ca654d0db8273c7325ad77447e2607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
