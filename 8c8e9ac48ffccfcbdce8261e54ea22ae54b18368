@@ -22,6 +22,30 @@
       "revId": "8c8e9ac48ffccfcbdce8261e54ea22ae54b18368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dcc1255_c917d9ad",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-06-28T18:07:12Z",
+      "side": 1,
+      "message": "because --neat is meant for machine-readable format and --debug inserts debug info inline.",
+      "parentUuid": "fe7d96f3_ccc50b19",
+      "range": {
+        "startLine": 265,
+        "startChar": 38,
+        "endLine": 265,
+        "endChar": 77
+      },
+      "revId": "8c8e9ac48ffccfcbdce8261e54ea22ae54b18368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
