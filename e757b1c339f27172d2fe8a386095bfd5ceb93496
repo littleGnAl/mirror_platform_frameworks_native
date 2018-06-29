@@ -16,6 +16,24 @@
       "revId": "e757b1c339f27172d2fe8a386095bfd5ceb93496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adaf523_c094b05b",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-06-29T18:12:55Z",
+      "side": 1,
+      "message": "Oops missed this request, will do in a follow up. But \u0027git blame\u0027 also works pretty well to answer that question",
+      "parentUuid": "5231120d_c69f72d2",
+      "revId": "e757b1c339f27172d2fe8a386095bfd5ceb93496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
