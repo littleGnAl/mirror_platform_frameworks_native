@@ -34,6 +34,24 @@
       "revId": "e757b1c339f27172d2fe8a386095bfd5ceb93496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a208a73b_846479ab",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1170070
+      },
+      "writtenOn": "2018-06-29T18:50:48Z",
+      "side": 1,
+      "message": "Yeah I don\u0027t disagree and I might not have commented if the git changeset description had a concise explanation, but I prefer the explanation be less detective work than \"no comment\" -\u003e git blame -\u003e clicking through to bug -\u003e reading through the long back and forth on that bug.\n\nThanks for the followup and sorry bout that! I was hoping to streamline things not make them more complicated!",
+      "parentUuid": "5adaf523_c094b05b",
+      "revId": "e757b1c339f27172d2fe8a386095bfd5ceb93496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
