@@ -16,6 +16,29 @@
       "revId": "6ba8570486ca22ff38f0c648103a3392962fb209",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c75002f_607bda1d",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1090594
+      },
+      "writtenOn": "2018-07-03T12:09:13Z",
+      "side": 1,
+      "message": "int32_t hwrotation \u003d property_get_int32(\"ro.sf.hwrotation\", value, 0);",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 33
+      },
+      "revId": "6ba8570486ca22ff38f0c648103a3392962fb209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
