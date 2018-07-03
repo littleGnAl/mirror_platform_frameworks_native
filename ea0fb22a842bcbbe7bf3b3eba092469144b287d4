@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "daf46d11_2fce3972",
+        "filename": "services/surfaceflinger/DisplayDevice.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1226402
+      },
+      "writtenOn": "2018-07-03T11:49:37Z",
+      "side": 1,
+      "message": "It\u0027s related to coding convention. We can modify.",
+      "parentUuid": "f179df88_ce03c774",
+      "range": {
+        "startLine": 580,
+        "startChar": 12,
+        "endLine": 580,
+        "endChar": 20
+      },
+      "revId": "ea0fb22a842bcbbe7bf3b3eba092469144b287d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11fc3e6c_372ed2b1",
         "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8b53823b_07602d2e",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1226402
+      },
+      "writtenOn": "2018-07-03T11:49:37Z",
+      "side": 1,
+      "message": "We usually use property_get, but we can change to use property_get_int32 here.",
+      "parentUuid": "11fc3e6c_372ed2b1",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 16
+      },
+      "revId": "ea0fb22a842bcbbe7bf3b3eba092469144b287d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be75f2ff_4a1dacc3",
         "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2018-07-03T08:45:43Z",
       "side": 1,
       "message": "Can be removed as default case already handles that.\nAlso, this whole block can probably be done with a hwrotation / 90 cast to the enum.",
+      "range": {
+        "startLine": 249,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 18
+      },
+      "revId": "ea0fb22a842bcbbe7bf3b3eba092469144b287d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000a6d15_5cd07c92",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1226402
+      },
+      "writtenOn": "2018-07-03T11:49:37Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "be75f2ff_4a1dacc3",
       "range": {
         "startLine": 249,
         "startChar": 8,
