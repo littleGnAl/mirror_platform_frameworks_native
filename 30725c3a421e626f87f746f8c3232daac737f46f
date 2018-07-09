@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10c331eb_deac47c4",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2018-07-09T16:45:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure I\u0027m comfortable assuming the enum values like this, even though it is many fewer lines of code",
+      "revId": "30725c3a421e626f87f746f8c3232daac737f46f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
