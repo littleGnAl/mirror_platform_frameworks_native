@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "541b04a6_6cd11c2a",
+        "filename": "vulkan/libvulkan/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-07-09T20:57:04Z",
+      "side": 1,
+      "message": "You also have this in the general shared-libs, so this is superfluous?",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "8bb49ecdce71f2df9159527bc11ca6b17502cb89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78648e13_729f54de",
+        "filename": "vulkan/libvulkan/layers_extensions.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-07-09T20:57:04Z",
+      "side": 1,
+      "message": "Superfluous with line 33?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "8bb49ecdce71f2df9159527bc11ca6b17502cb89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
