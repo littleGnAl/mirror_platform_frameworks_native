@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00482aba_ab5d7f0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-07-10T05:49:17Z",
+      "side": 1,
+      "message": "dito. add \u0027Merged-In: \u003cchange id\u003e\u0027",
+      "revId": "24cb0617e0850b1a7e1622e2f8aa00a57d59a305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b31d1778_34057ba0",
+        "filename": "vulkan/libvulkan/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-07-10T05:49:17Z",
+      "side": 1,
+      "message": "Why do we need this given line 90?",
+      "revId": "24cb0617e0850b1a7e1622e2f8aa00a57d59a305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
