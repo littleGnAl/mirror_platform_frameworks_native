@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e98a0bd_68af9a7e",
+        "filename": "libs/binder/BufferedTextOutput.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-13T20:32:51Z",
+      "side": 1,
+      "message": "to answer the question from the other patch about why i\u0027m not removing the #include yet...\n\nthe thread_store_get/thread_store_set stuff still comes from cutils. given the intricacies of emutls, it seems easier to wait until we have ELF TLS in Q before replacing users of that with C++ thread locals.\n\ntoday i\u0027m just trying to kill the cutils mutex. (three callers, two of which are the two copies of this file.)",
+      "revId": "5bf516f8b7ac0721cb2e68d11ff123a16c97d5e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
