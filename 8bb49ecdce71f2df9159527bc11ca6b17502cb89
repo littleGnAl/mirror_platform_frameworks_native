@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81c359bf_a49adf99",
+        "filename": "vulkan/libvulkan/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2018-07-15T21:13:20Z",
+      "side": 1,
+      "message": "Sorry. Mxied up two CLs. Removed.",
+      "parentUuid": "541b04a6_6cd11c2a",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "8bb49ecdce71f2df9159527bc11ca6b17502cb89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78648e13_729f54de",
         "filename": "vulkan/libvulkan/layers_extensions.cpp",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-09T20:57:04Z",
       "side": 1,
       "message": "Superfluous with line 33?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "8bb49ecdce71f2df9159527bc11ca6b17502cb89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c91a2f6c_0d0b827f",
+        "filename": "vulkan/libvulkan/layers_extensions.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2018-07-15T21:13:20Z",
+      "side": 1,
+      "message": "The same.\n\nOriginally that change only used NativeBridge as fallback with arm-onx86 case but Dimitry convinced me that it would be better to always call it... but after rebase two versions of change were mixed together...",
+      "parentUuid": "78648e13_729f54de",
       "range": {
         "startLine": 39,
         "startChar": 0,

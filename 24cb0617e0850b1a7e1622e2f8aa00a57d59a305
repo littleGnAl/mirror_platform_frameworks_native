@@ -33,6 +33,24 @@
       "revId": "24cb0617e0850b1a7e1622e2f8aa00a57d59a305",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6f05032_596a7090",
+        "filename": "vulkan/libvulkan/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2018-07-15T21:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b31d1778_34057ba0",
+      "revId": "24cb0617e0850b1a7e1622e2f8aa00a57d59a305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
