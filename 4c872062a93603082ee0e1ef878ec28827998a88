@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59d11075_8e8a42e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-07-15T22:13:39Z",
+      "side": 1,
+      "message": "\u0027Merged-In: \u003cchange id\u003e\u0027?",
+      "revId": "4c872062a93603082ee0e1ef878ec28827998a88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
