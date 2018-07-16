@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beec4863_3ea5ea96",
+        "filename": "libs/vr/libvr_manager/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-07-16T18:16:02Z",
+      "side": 0,
+      "message": "also, this style of using variables is very makefile-ish and it doesn\u0027t make sense to make these variables for all of the sub-directories. I\u0027ve cleaned them up.\n\nYou can read b/64318482 for more context.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "10d5e4dc7124d900c9339b1495d88f8a4f86ad90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
