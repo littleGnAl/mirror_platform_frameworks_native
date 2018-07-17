@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27125810_eb688372",
+        "filename": "libs/vr/libvr_manager/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-17T00:36:11Z",
+      "side": 1,
+      "message": "this isn\u0027t ideal, but don\u0027t need to be addressed in this CL.",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 21,
+        "endChar": 59
+      },
+      "revId": "dde313c926c15ca9817e60a97ae9b1fe3a0760cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
