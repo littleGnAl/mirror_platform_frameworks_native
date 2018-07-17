@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74683a1b_dd66701f",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-17T17:11:31Z",
+      "side": 0,
+      "message": "replace these with toybox? or do we just assume that we\u0027re guaranteed these from shell_and_utilties?",
+      "range": {
+        "startLine": 92,
+        "startChar": 9,
+        "endLine": 92,
+        "endChar": 11
+      },
+      "revId": "1e89d96564a1dc20d46e00f08fb8742dcf66235d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62c05d0b_bb6d6d07",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-17T17:11:31Z",
+      "side": 0,
+      "message": "this is an optional executable, so isn\u0027t the fix here to convert that Android.mk to Android.bp?",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "1e89d96564a1dc20d46e00f08fb8742dcf66235d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be9bffc9_0444454f",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-17T17:11:31Z",
+      "side": 0,
+      "message": "does this even exist? codesearch thinks that the dumpstate call to this is the only reference in the codebase...",
+      "range": {
+        "startLine": 104,
+        "startChar": 9,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "1e89d96564a1dc20d46e00f08fb8742dcf66235d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4586813c_b38663d6",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-17T17:11:31Z",
+      "side": 0,
+      "message": "this is an optional vendor component?",
+      "range": {
+        "startLine": 114,
+        "startChar": 9,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "1e89d96564a1dc20d46e00f08fb8742dcf66235d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
