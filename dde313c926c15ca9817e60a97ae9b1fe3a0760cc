@@ -22,6 +22,30 @@
       "revId": "dde313c926c15ca9817e60a97ae9b1fe3a0760cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db825bea_58aa767b",
+        "filename": "libs/vr/libvr_manager/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-07-17T00:44:14Z",
+      "side": 1,
+      "message": "I did think about fixing it in the same CL, and now I\u0027m regretting not doing so since my name will show up on blame...",
+      "parentUuid": "27125810_eb688372",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 21,
+        "endChar": 59
+      },
+      "revId": "dde313c926c15ca9817e60a97ae9b1fe3a0760cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
