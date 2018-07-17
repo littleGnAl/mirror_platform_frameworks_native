@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ab53ba78_f0945f83",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-07-17T22:35:05Z",
+      "side": 0,
+      "message": "probably, but it shouldn\u0027t be required here then",
+      "parentUuid": "62c05d0b_bb6d6d07",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "1e89d96564a1dc20d46e00f08fb8742dcf66235d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be9bffc9_0444454f",
         "filename": "cmds/dumpstate/Android.bp",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "243d1650_a3d49d04",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-07-17T22:35:05Z",
+      "side": 0,
+      "message": "we should probably remove it entirely then :(",
+      "parentUuid": "be9bffc9_0444454f",
+      "range": {
+        "startLine": 104,
+        "startChar": 9,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "1e89d96564a1dc20d46e00f08fb8742dcf66235d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4586813c_b38663d6",
         "filename": "cmds/dumpstate/Android.bp",
         "patchSetId": 1
@@ -82,6 +130,30 @@
       "writtenOn": "2018-07-17T17:11:31Z",
       "side": 0,
       "message": "this is an optional vendor component?",
+      "range": {
+        "startLine": 114,
+        "startChar": 9,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "1e89d96564a1dc20d46e00f08fb8742dcf66235d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc50febc_a3992d32",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-07-17T22:35:05Z",
+      "side": 0,
+      "message": "we really shouldn\u0027t be referencing it from here then",
+      "parentUuid": "4586813c_b38663d6",
       "range": {
         "startLine": 114,
         "startChar": 9,
