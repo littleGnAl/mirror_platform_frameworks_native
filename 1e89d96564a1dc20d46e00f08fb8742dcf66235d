@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "17c200d9_25a2a2d2",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-18T00:57:38Z",
+      "side": 0,
+      "message": "no, i mean \"it\u0027s marked optional in its Android.mk, but it\u0027s required by dumpstate\".",
+      "parentUuid": "ab53ba78_f0945f83",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "1e89d96564a1dc20d46e00f08fb8742dcf66235d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be9bffc9_0444454f",
         "filename": "cmds/dumpstate/Android.bp",
         "patchSetId": 1
@@ -154,6 +178,30 @@
       "side": 0,
       "message": "we really shouldn\u0027t be referencing it from here then",
       "parentUuid": "4586813c_b38663d6",
+      "range": {
+        "startLine": 114,
+        "startChar": 9,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "1e89d96564a1dc20d46e00f08fb8742dcf66235d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba1a1046_dcc4a71d",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-18T00:57:38Z",
+      "side": 0,
+      "message": "i think this was intended as a hook for vendors?",
+      "parentUuid": "dc50febc_a3992d32",
       "range": {
         "startLine": 114,
         "startChar": 9,
