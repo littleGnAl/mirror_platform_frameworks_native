@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28a68484_dc29d4f6",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-07-19T01:46:52Z",
+      "side": 1,
+      "message": "this is kind of an annoying pattern to have. It just encourages manual implementations.\n\nI would really prefer to auto-generate these so that old implementations using this will be more interested in updating to have auto-generated parceling code for the method calls.",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "756142338ce1541603ec29fb75a1dcc525739223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e28f4b7_0ee8c1ab",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-07-19T01:46:52Z",
+      "side": 1,
+      "message": "nit: this could be exposing new things in old interfaces",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "756142338ce1541603ec29fb75a1dcc525739223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
