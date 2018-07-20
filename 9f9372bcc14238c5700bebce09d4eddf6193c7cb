@@ -46,6 +46,30 @@
       "revId": "9f9372bcc14238c5700bebce09d4eddf6193c7cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29efe5e_65ab3c88",
+        "filename": "libs/nativewindow/include/android/native_window.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-20T22:04:13Z",
+      "side": 0,
+      "message": "ah, i see. yeah, just leaving it out is fine. (though the fact that you need different DT_NEEDEDs seems likely to cause pain.)",
+      "parentUuid": "1d87ecda_8dd9df0d",
+      "range": {
+        "startLine": 111,
+        "startChar": 50,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "9f9372bcc14238c5700bebce09d4eddf6193c7cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
