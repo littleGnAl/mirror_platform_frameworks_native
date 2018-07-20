@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5c32cb4_089bd4ae",
+        "filename": "libs/nativewindow/include/android/native_window.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-20T15:26:29Z",
+      "side": 0,
+      "message": "we don\u0027t want to _remove_ and __INTRODUCED_INs, do we?",
+      "range": {
+        "startLine": 111,
+        "startChar": 50,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "9f9372bcc14238c5700bebce09d4eddf6193c7cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
