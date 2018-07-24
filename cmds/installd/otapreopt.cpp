@@ -859,7 +859,15 @@ bool create_cache_path(char path[PKG_PATH_MAX],
         return false;
     }
 
-    std::string from_src = std::string(src + 1);
+    char resolved_path[PATH_MAX]={0};
+    std::string from_src;
+    char *ret = realpath(src,resolved_path);
+    if (nullptr != ret) {
+        from_src = std::string(resolved_path + 1);
+    } else {
+        from_src = std::string(src + 1);
+    }
+
     std::replace(from_src.begin(), from_src.end(), '/', '@');
 
     std::string assembled_path = StringPrintf("%s/%s/%s/%s%s",
