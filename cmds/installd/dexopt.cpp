@@ -2599,6 +2599,12 @@ bool create_cache_path_default(char path[PKG_PATH_MAX], const char *src,
     if (!is_absolute_path(src_)) return false;
     if (!is_valid_instruction_set(instruction_set_)) return false;
 
+    char resolved_path[PATH_MAX]={0};
+    char *ret = realpath(src,resolved_path);
+    if (nullptr != ret) {
+        src_ = std::string(resolved_path + 1);
+    }
+
     for (auto it = src_.begin() + 1; it < src_.end(); ++it) {
         if (*it == '/') {
             *it = '@';
