@@ -1,0 +1,8 @@
+Code-Review+2: Martijn Coenen <maco@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Yi Kong <yikong@google.com>
+Submitted-by: Yi Kong <yikong@google.com>
+Submitted-at: Tue, 24 Jul 2018 17:34:21 +0000
+Reviewed-on: https://android-review.googlesource.com/720936
+Project: platform/frameworks/native
+Branch: refs/heads/master
