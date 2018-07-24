@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e74a3932_fbdd0612",
+        "filename": "libs/binder/IInterface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-24T17:59:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "042e53f8_5201eb8e",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "bae1449fb41b686e565aa05b4655e5be62c762f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4440b9f7_ffaa00e7",
         "filename": "libs/binder/include/binder/BpBinder.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-24T15:29:53Z",
       "side": 1,
       "message": "Rather than having this in a separate variable, could you create a small class for a cached value? or just use a pair to keep them together or similar? or even just use -1 for it?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 49
+      },
+      "revId": "bae1449fb41b686e565aa05b4655e5be62c762f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0268690_458d3b08",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-24T17:59:30Z",
+      "side": 1,
+      "message": "a class looks like an overkill. pair seems to be enough. Done.\n\n(std::options would be the best but I would like to wait until c++17 becomes the default)",
+      "parentUuid": "4440b9f7_ffaa00e7",
       "range": {
         "startLine": 144,
         "startChar": 0,
