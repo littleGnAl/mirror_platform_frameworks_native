@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "042e53f8_5201eb8e",
+        "filename": "libs/binder/IInterface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-07-24T15:29:53Z",
+      "side": 1,
+      "message": "nit:\n\nif (error) {\n    error\n    return 0;\n}\n\nreturn binder-\u003egetInterfaceVersion();",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "bae1449fb41b686e565aa05b4655e5be62c762f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4440b9f7_ffaa00e7",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-07-24T15:29:53Z",
+      "side": 1,
+      "message": "Rather than having this in a separate variable, could you create a small class for a cached value? or just use a pair to keep them together or similar? or even just use -1 for it?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 49
+      },
+      "revId": "bae1449fb41b686e565aa05b4655e5be62c762f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
