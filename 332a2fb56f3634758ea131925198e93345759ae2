@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "787745f3_7e7f12fe",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T09:30:14Z",
+      "side": 1,
+      "message": "technically you don\u0027t even need a pair if \u00270\u0027 means error or uncached (assuming you want to try again in case there was an error). You could even use an atomic and drop the lock, though I\u0027m not sure that would actually be faster since this lock shouldn\u0027t be contended.",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ec2ba3_39d94233",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T09:30:14Z",
+      "side": 1,
+      "message": "is a return value of \u00270\u0027 an error?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 8
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "168fc67c_6521f9f1",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T09:30:14Z",
+      "side": 1,
+      "message": "since this method can actually change state (store mIsAlive in case of dead remote), maybe just drop the const? Also gets rid of the ugly const_cast below.",
+      "range": {
+        "startLine": 191,
+        "startChar": 41,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7bfcc0_7ae72342",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T09:30:14Z",
+      "side": 1,
+      "message": "nit: indent",
+      "range": {
+        "startLine": 196,
+        "startChar": 10,
+        "endLine": 196,
+        "endChar": 37
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad37c803_90a3f9fe",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T09:30:14Z",
+      "side": 1,
+      "message": "as mentioned above, you could just store the version unconditionally; two threads might get in this block, but storing the same value twice doesn\u0027t hurt as long as it\u0027s done atomically.",
+      "range": {
+        "startLine": 206,
+        "startChar": 8,
+        "endLine": 207,
+        "endChar": 39
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ab26fe_f2741ac6",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T09:30:14Z",
+      "side": 1,
+      "message": "theoretically this is not safe without the lock; thread T1/T2 could both reach line 201; T1 could then complete the next few lines, and be in the process of storing something in mVersionCache.first; T2 meanwhile could have a transaction error, and return a partially stored value in mVersionCache.first\n\nI don\u0027t think this can happen on any of the archs we support (writes to aligned ints should be atomic), but all the same it\u0027s safer to just return \"ver\" here (and default to 0).",
+      "range": {
+        "startLine": 211,
+        "startChar": 11,
+        "endLine": 211,
+        "endChar": 31
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20da691d_258a88de",
+        "filename": "libs/binder/IInterface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T09:30:14Z",
+      "side": 1,
+      "message": "Erm this feels wrong...",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77238efd_fc52b8ee",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T09:30:14Z",
+      "side": 1,
+      "message": "0 means error... ?",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 30
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0cc08c4_09b6e8a8",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T09:30:14Z",
+      "side": 1,
+      "message": "This class is not supposed to know about this stuff; I suggest implementing VERSION_TRANSACTION in BBinder, and calling getInterfaceVersion() in the implementation over there. That will then get the result of the overriden variant implemented by IMPLEMENT_META_INTERFACE.\n\nMay have to make that virtual, but that also makes it consistent with the rest.",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe98fd8_01db8006",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T09:30:14Z",
+      "side": 1,
+      "message": "which also allows you to get rid of this :)",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 58
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
