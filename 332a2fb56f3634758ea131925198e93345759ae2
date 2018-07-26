@@ -593,6 +593,30 @@
     },
     {
       "key": {
+        "uuid": "82b3b632_42b9734d",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T12:19:46Z",
+      "side": 1,
+      "message": "Works for me. Another alternative would be to have an additional base class for VAIDL interfaces, but I don\u0027t think the added complexity is worth it.",
+      "parentUuid": "9554e726_fac2e779",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fe98fd8_01db8006",
         "filename": "libs/binder/include/binder/IInterface.h",
         "patchSetId": 3
