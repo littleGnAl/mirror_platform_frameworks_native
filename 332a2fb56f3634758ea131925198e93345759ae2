@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "61149046_0fa8d01c",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-26T10:00:03Z",
+      "side": 1,
+      "message": "0 is not an error. It\u0027s unspecified - an interface built with version unspecified.",
+      "parentUuid": "787745f3_7e7f12fe",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05ec2ba3_39d94233",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-26T09:30:14Z",
       "side": 1,
       "message": "is a return value of \u00270\u0027 an error?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 8
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88126ce1_c77516d9",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-26T10:00:03Z",
+      "side": 1,
+      "message": "no...",
+      "parentUuid": "05ec2ba3_39d94233",
       "range": {
         "startLine": 186,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4dfa1a56_89653f5f",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-26T10:00:03Z",
+      "side": 1,
+      "message": "Oh I just followed the pattern at getInterfaceDescriptor() which essentially does the same thing. Doing the same thing in different ways would look weird. Do you want me to drop const from getInterfaceDescriptor as well?",
+      "parentUuid": "168fc67c_6521f9f1",
+      "range": {
+        "startLine": 191,
+        "startChar": 41,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b7bfcc0_7ae72342",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2018-07-26T09:30:14Z",
       "side": 1,
       "message": "nit: indent",
+      "range": {
+        "startLine": 196,
+        "startChar": 10,
+        "endLine": 196,
+        "endChar": 37
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93453ffa_6713a19c",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-26T10:00:03Z",
+      "side": 1,
+      "message": "yes I will",
+      "parentUuid": "7b7bfcc0_7ae72342",
       "range": {
         "startLine": 196,
         "startChar": 10,
@@ -209,6 +305,30 @@
     },
     {
       "key": {
+        "uuid": "c617c699_512b0f7b",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-26T10:00:03Z",
+      "side": 1,
+      "message": "Yeah, that was my first approach. I had to make getInterfaceVersion() as virtual and it broke existing prebuilts (as expected).",
+      "parentUuid": "b0cc08c4_09b6e8a8",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fe98fd8_01db8006",
         "filename": "libs/binder/include/binder/IInterface.h",
         "patchSetId": 3
@@ -220,6 +340,30 @@
       "writtenOn": "2018-07-26T09:30:14Z",
       "side": 1,
       "message": "which also allows you to get rid of this :)",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 58
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4088bffa_61f07db7",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-26T10:00:03Z",
+      "side": 1,
+      "message": "I would love to.. but existing prebuilts.. :(",
+      "parentUuid": "5fe98fd8_01db8006",
       "range": {
         "startLine": 163,
         "startChar": 0,
