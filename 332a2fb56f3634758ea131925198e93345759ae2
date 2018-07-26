@@ -497,6 +497,30 @@
     },
     {
       "key": {
+        "uuid": "06217a3c_ac4c2ca4",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-26T11:54:15Z",
+      "side": 1,
+      "message": "in other words, my question is \"can part of meta-interface be implemented outside of libbinder\"?",
+      "parentUuid": "43dc828f_6333dec1",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fe98fd8_01db8006",
         "filename": "libs/binder/include/binder/IInterface.h",
         "patchSetId": 3
