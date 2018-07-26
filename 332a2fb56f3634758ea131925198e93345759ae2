@@ -569,6 +569,30 @@
     },
     {
       "key": {
+        "uuid": "16ffa5f6_d773030e",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-26T12:16:36Z",
+      "side": 1,
+      "message": "Ok then getInterfaceVersion() is not part of the meta-interface, but just an extra method that is emitted by the aidl compiler in addition to the user-defined methods.\n\nThen, of course, we need to do the same for the Java side. aosp/712625 is not needed.\n\nI am okay with that because we would like to enforce automatic code generation for the \u0027versioned\u0027 interfaces.",
+      "parentUuid": "9554e726_fac2e779",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fe98fd8_01db8006",
         "filename": "libs/binder/include/binder/IInterface.h",
         "patchSetId": 3
