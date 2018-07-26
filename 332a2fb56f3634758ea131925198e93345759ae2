@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e765f58d_645b4bf2",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T10:07:53Z",
+      "side": 1,
+      "message": "do you want to distinguish the error case vs the unspecified case then?",
+      "parentUuid": "61149046_0fa8d01c",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05ec2ba3_39d94233",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 3
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Oh I just followed the pattern at getInterfaceDescriptor() which essentially does the same thing. Doing the same thing in different ways would look weird. Do you want me to drop const from getInterfaceDescriptor as well?",
       "parentUuid": "168fc67c_6521f9f1",
+      "range": {
+        "startLine": 191,
+        "startChar": 41,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e100c61_89b30a1c",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T10:07:53Z",
+      "side": 1,
+      "message": "ah I didn\u0027t see that, it seems more correct to drop it there as well, but if you prefer to keep it this way I don\u0027t feel too strongly about it.",
+      "parentUuid": "4dfa1a56_89653f5f",
       "range": {
         "startLine": 191,
         "startChar": 41,
@@ -317,6 +365,30 @@
       "side": 1,
       "message": "Yeah, that was my first approach. I had to make getInterfaceVersion() as virtual and it broke existing prebuilts (as expected).",
       "parentUuid": "b0cc08c4_09b6e8a8",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf1fb03_a7dc4de2",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T10:07:53Z",
+      "side": 1,
+      "message": "bleh that is pretty horrible :(( In that case, could we not implement VERSION_TRANSACTION in all the auto-generated interface code? I know that technically it belongs to the interface, but having these things here makes me really sad.",
+      "parentUuid": "c617c699_512b0f7b",
       "range": {
         "startLine": 57,
         "startChar": 32,
