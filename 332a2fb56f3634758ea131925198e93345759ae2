@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "c701dd91_7a70c461",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T12:02:53Z",
+      "side": 1,
+      "message": "sounds good to me. Is it supposed to be a major/minor format?",
+      "parentUuid": "a8065a18_0725e2a0",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05ec2ba3_39d94233",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 3
@@ -508,6 +532,30 @@
       "writtenOn": "2018-07-26T11:54:15Z",
       "side": 1,
       "message": "in other words, my question is \"can part of meta-interface be implemented outside of libbinder\"?",
+      "parentUuid": "43dc828f_6333dec1",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "332a2fb56f3634758ea131925198e93345759ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9554e726_fac2e779",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-07-26T12:02:53Z",
+      "side": 1,
+      "message": "I think your second suggestion is what I meant; for the stub case, don\u0027t change libbinder at all, and instead implement this purely in the generated code.\n\nI don\u0027t think you\u0027re wrong about that not being a nice dependency, though I do prefer it over this. One other idea: how about not making libbinder aware of this at all? You could also auto-generate the proxy version of this completely. In case people always call this on an instantiated version (not IBinder, but IFoo), that should be ok. You would still do the correct thing for interfaces not implementing it, because you can simply map UNKNOWN_TRANSACTION to 0.",
       "parentUuid": "43dc828f_6333dec1",
       "range": {
         "startLine": 57,
