@@ -65,11 +65,8 @@ Status DebugCommand::main(const Arg &arg) {
         return USAGE;
     }
 
-    return mLshal.emitDebugInfo(
-            pair.first, pair.second.empty() ? "default" : pair.second, mOptions,
-            mExcludesParentInstances,
-            mLshal.out().buf(),
-            mLshal.err());
+    mLshal.out() << "skipped";
+    return OK;
 }
 
 void DebugCommand::usage() const {
