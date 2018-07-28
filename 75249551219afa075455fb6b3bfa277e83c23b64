@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6955b956_fecc73c1",
+        "filename": "include/android/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2018-07-28T00:11:53Z",
+      "side": 1,
+      "message": "It looks like this file header is also being dropped. I would\u0027ve suggested @file sync on the other CL, but I guess it doesn\u0027t work.",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "75249551219afa075455fb6b3bfa277e83c23b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38536e6d_25c1bf0a",
+        "filename": "include/android/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2018-07-28T00:11:53Z",
+      "side": 1,
+      "message": "Doxygen isn\u0027t handling this bit so well:\n\n    Note: At this time the vertical bar character \u0027|\u0027 and newline character \u0027\n    \u0027 are used internally by the tracing mechanism.\n\nMay as well fix it too. Not sure how...  \u0027\\\\n\u0027 ?\n\nhttps://irina-dot-devsite.googleplex.com/ndk/reference/group/tracing#group___tracing_1gac2ce1ca066c4b46af39546c9d82d5def",
+      "range": {
+        "startLine": 56,
+        "startChar": 75,
+        "endLine": 56,
+        "endChar": 79
+      },
+      "revId": "75249551219afa075455fb6b3bfa277e83c23b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
