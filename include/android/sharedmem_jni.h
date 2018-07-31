@@ -21,6 +21,7 @@
 
 /**
  * @file sharedmem_jni.h
+ * @brief Shared memory buffers that can be shared across process.
  */
 
 #ifndef ANDROID_SHARED_MEMORY_JNI_H
@@ -44,10 +45,6 @@
  *   - DO NOT MODIFY CONSTANTS OR FUNCTIONAL MACROS
  *   - DO NOT CHANGE THE SIGNATURE OF FUNCTIONS IN ANY WAY
  *   - DO NOT CHANGE THE LAYOUT OR SIZE OF STRUCTURES
- */
-
-/**
- * Structures and functions for a shared memory buffer that can be shared across process.
  */
 
 #ifdef __cplusplus
