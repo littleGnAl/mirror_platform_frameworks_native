@@ -1061,6 +1061,7 @@ static void dumpstate() {
 
     RunDumpsys("NETWORK DIAGNOSTICS", {"connectivity", "--diag"},
                CommandOptions::WithTimeout(10).Build());
+    RunDumpsys("EBPF MAP STATS", {"netd", "trafficcontroller"});
 
     RunCommand("SYSTEM PROPERTIES", {"getprop"});
 
