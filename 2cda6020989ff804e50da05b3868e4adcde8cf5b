@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "935c8f6b_22aa6c27",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1198563
+      },
+      "writtenOn": "2018-08-07T21:42:31Z",
+      "side": 1,
+      "message": "BINDER_LIB_TEST_MODIFY_IN_BUF_SIZE? That\u0027s really what this code is doing?",
+      "parentUuid": "326fb69f_843aca2d",
+      "revId": "2cda6020989ff804e50da05b3868e4adcde8cf5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2aa2467_06de56e1",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2018-08-07T20:02:34Z",
       "side": 1,
       "message": "this comment seems wrong",
+      "range": {
+        "startLine": 955,
+        "startChar": 32,
+        "endLine": 955,
+        "endChar": 58
+      },
+      "revId": "2cda6020989ff804e50da05b3868e4adcde8cf5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e550d2d8_6de8fb97",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1198563
+      },
+      "writtenOn": "2018-08-07T21:42:31Z",
+      "side": 1,
+      "message": "Should I just remove this comment? I don\u0027t know what else it is skipping. Or should I find out?",
+      "parentUuid": "c2aa2467_06de56e1",
       "range": {
         "startLine": 955,
         "startChar": 32,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "a1fbef15_526dd6ec",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1198563
+      },
+      "writtenOn": "2018-08-07T21:42:31Z",
+      "side": 1,
+      "message": "OnewayQueueing uses 0.5 before sending the callback for the second transaction to end up on the async_todo list. Maybe we can use the same time?",
+      "parentUuid": "86b0f5b8_d728f27e",
+      "revId": "2cda6020989ff804e50da05b3868e4adcde8cf5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ffd09b7_7dab7750",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
@@ -70,6 +130,24 @@
       "writtenOn": "2018-08-07T20:02:34Z",
       "side": 1,
       "message": "ever? or on the fixed version?",
+      "revId": "2cda6020989ff804e50da05b3868e4adcde8cf5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f482aea7_9c6cef93",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1198563
+      },
+      "writtenOn": "2018-08-07T21:42:31Z",
+      "side": 1,
+      "message": "On the fixed version, so this would fail if the kernel is not fixed with my other change.",
+      "parentUuid": "1ffd09b7_7dab7750",
       "revId": "2cda6020989ff804e50da05b3868e4adcde8cf5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
