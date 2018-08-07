@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "840459e2_8e4c6c5d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-08-07T19:11:07Z",
+      "side": 1,
+      "message": "this doesn\u0027t seems like the right place to add it, I think it makes more sense to move it to the network stuff above (~ lines 1058-1063)",
+      "range": {
+        "startLine": 1116,
+        "startChar": 0,
+        "endLine": 1117,
+        "endChar": 0
+      },
+      "revId": "39eff3ed424cde3285700a8368641d288abd0636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
