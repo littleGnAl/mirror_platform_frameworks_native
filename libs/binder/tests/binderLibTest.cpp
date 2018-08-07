@@ -25,7 +25,9 @@
 
 #include <binder/Binder.h>
 #include <binder/IBinder.h>
+#define private public
 #include <binder/IPCThreadState.h>
+#undef private
 #include <binder/IServiceManager.h>
 
 #include <sys/epoll.h>
@@ -70,11 +72,13 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_DELAYED_EXIT_TRANSACTION,
     BINDER_LIB_TEST_GET_PTR_SIZE_TRANSACTION,
     BINDER_LIB_TEST_CREATE_BINDER_TRANSACTION,
+    BINDER_LIB_TEST_MODIFY_IN_BUF_SIZE,
 };
 
 enum ServerType {
     BINDER_LIB_TEST_SERVER_REGULAR = 0,
     BINDER_LIB_TEST_SERVER_POLL,
+    BINDER_LIB_TEST_SERVER_SINGLE_THREAD,
 };
 
 pid_t start_server_process(int arg2,
@@ -908,10 +912,14 @@ TEST_F(BinderLibTest, OnewayQueueing)
 
     sp<BinderLibTestCallBack> callBack = new BinderLibTestCallBack();
     data.writeStrongBinder(callBack);
+    data.writeInt32(TF_ONE_WAY);
+    data.writeInt32(0); // no skip
     data.writeInt32(500000); // delay in us before calling back
 
     sp<BinderLibTestCallBack> callBack2 = new BinderLibTestCallBack();
     data2.writeStrongBinder(callBack2);
+    data.writeInt32(TF_ONE_WAY);
+    data.writeInt32(0); // no skip
     data2.writeInt32(0); // delay in us
 
     ret = pollServer->transact(BINDER_LIB_TEST_DELAYED_CALL_BACK, data, nullptr, TF_ONE_WAY);
@@ -935,6 +943,45 @@ TEST_F(BinderLibTest, OnewayQueueing)
     EXPECT_EQ(NO_ERROR, ret);
 }
 
+TEST_F(BinderLibTest, NoOutgoingTransactionWhenThreadToDo)
+{
+    status_t ret;
+    Parcel data, data2, reply;
+    sp<IBinder> singleThreadServer = addServer(nullptr, BINDER_LIB_TEST_SERVER_SINGLE_THREAD);
+    sp<BinderLibTestCallBack> callBack = new BinderLibTestCallBack();
+
+    data.writeStrongBinder(callBack);
+    data.writeInt32(0); // synchronous callback
+
+    // skip calling the callback 3 times:
+    // 1) transaction that sets the callback
+    // 2) nop
+    // 3) transaction that sets the buffer size
+    data.writeInt32(3);
+    data.writeInt32(0);
+
+    // setup callback
+    ret = singleThreadServer->transact(BINDER_LIB_TEST_DELAYED_CALL_BACK, data, nullptr, TF_ONE_WAY);
+    EXPECT_EQ(NO_ERROR, ret);
+
+    // modify buffer size so that the next thread todo can't be processed
+    data2.writeUint64(8);
+    ret = singleThreadServer->transact(BINDER_LIB_TEST_MODIFY_IN_BUF_SIZE, data2, nullptr, TF_ONE_WAY);
+    EXPECT_EQ(NO_ERROR, ret);
+
+    // wait for the previous two transactions to be processed
+    usleep(500000);
+
+    // queue on thread todo
+    ret = singleThreadServer->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, nullptr, TF_ONE_WAY);
+    EXPECT_EQ(NO_ERROR, ret);
+
+    // does not receive callback in the kernel that disallows sending outgoing transactions where
+    // there is work on thread todo
+    ret = callBack->waitEvent(2);
+    EXPECT_EQ(TIMED_OUT, ret);
+}
+
 class BinderLibTestService : public BBinder
 {
     public:
@@ -943,6 +990,9 @@ class BinderLibTestService : public BBinder
             , m_nextServerId(id + 1)
             , m_serverStartRequested(false)
             , m_callback(nullptr)
+            , m_callbackFlags(0)
+            , m_callbackSkipCount(0)
+            , m_savedDataCapacity(0)
         {
             pthread_mutex_init(&m_serverWaitMutex, nullptr);
             pthread_cond_init(&m_serverWaitCond, nullptr);
@@ -953,11 +1003,20 @@ class BinderLibTestService : public BBinder
         }
 
         void processPendingCall() {
-            if (m_callback != nullptr) {
-                Parcel data;
-                data.writeInt32(NO_ERROR);
-                m_callback->transact(BINDER_LIB_TEST_CALL_BACK, data, nullptr, TF_ONE_WAY);
-                m_callback = nullptr;
+            if (m_callbackSkipCount != 0) {
+                m_callbackSkipCount--;
+            } else {
+                if (m_callback != nullptr) {
+                    Parcel data;
+                    status_t ret;
+                    data.writeInt32(NO_ERROR);
+                    if (m_savedDataCapacity) {
+                        IPCThreadState::self()->mIn.restartWrite(m_savedDataCapacity);
+                        m_savedDataCapacity = 0;
+                    }
+                    ret = m_callback->transact(BINDER_LIB_TEST_CALL_BACK, data, nullptr, m_callbackFlags);
+                    m_callback = nullptr;
+                }
             }
         }
 
@@ -1052,6 +1111,8 @@ class BinderLibTestService : public BBinder
                     callback->transact(BINDER_LIB_TEST_CALL_BACK, data2, nullptr, TF_ONE_WAY);
                 } else {
                     m_callback = data.readStrongBinder();
+                    m_callbackFlags = data.readInt32();
+                    m_callbackSkipCount = data.readInt32();
                     int32_t delayUs = data.readInt32();
                     /*
                      * It's necessary that we sleep here, so the next
@@ -1233,6 +1294,11 @@ class BinderLibTestService : public BBinder
                 }
                 return NO_ERROR;
             }
+            case BINDER_LIB_TEST_MODIFY_IN_BUF_SIZE: {
+                size_t new_size = data.readUint64();
+                m_savedDataCapacity = IPCThreadState::self()->mIn.mDataCapacity;
+                return IPCThreadState::self()->mIn.restartWrite(new_size);
+            }
             default:
                 return UNKNOWN_TRANSACTION;
             };
@@ -1245,8 +1311,10 @@ class BinderLibTestService : public BBinder
         bool m_serverStartRequested;
         sp<IBinder> m_serverStarted;
         sp<IBinder> m_strongRef;
-        bool m_callbackPending;
         sp<IBinder> m_callback;
+        bool m_callbackFlags;
+        int m_callbackSkipCount;
+        size_t m_savedDataCapacity;
 };
 
 int run_server(int index, int readypipefd, ServerType stype)
@@ -1307,7 +1375,7 @@ int run_server(int index, int readypipefd, ServerType stype)
               * We simulate a single-threaded process using the binder poll
               * interface; besides handling binder commands, it can also
               * issue outgoing transactions, by storing a callback in
-              * m_callback and setting m_callbackPending.
+              * m_callback.
               *
               * processPendingCall() will then issue that transaction.
               */
@@ -1324,6 +1392,15 @@ int run_server(int index, int readypipefd, ServerType stype)
                  IPCThreadState::self()->flushCommands(); // flush BC_FREE_BUFFER
                  testServicePtr->processPendingCall();
              }
+        }
+    } else if (stype == BINDER_LIB_TEST_SERVER_SINGLE_THREAD) {
+        IPCThreadState::self()->mOut.writeInt32(BC_ENTER_LOOPER);
+
+        status_t result;
+        while (1) {
+            IPCThreadState::self()->processPendingDerefs();
+            IPCThreadState::self()->getAndExecuteCommand();
+            testServicePtr->processPendingCall();
         }
     } else {
         ProcessState::self()->startThreadPool();
