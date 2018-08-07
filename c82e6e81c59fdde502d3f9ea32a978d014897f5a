@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "114a600a_2c84e500",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2018-08-07T23:19:39Z",
+      "side": 1,
+      "message": "why are you not using the constant here?",
+      "revId": "c82e6e81c59fdde502d3f9ea32a978d014897f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b67eecf9_9452f3fd",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2018-08-07T23:19:39Z",
+      "side": 1,
+      "message": "...",
+      "revId": "c82e6e81c59fdde502d3f9ea32a978d014897f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fa0e02d_05e87453",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2018-08-07T23:19:39Z",
+      "side": 1,
+      "message": "why 3 times and not 2?",
+      "revId": "c82e6e81c59fdde502d3f9ea32a978d014897f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fbe7e9f_7bf75f7f",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2018-08-07T23:19:39Z",
+      "side": 1,
+      "message": "add {}",
+      "revId": "c82e6e81c59fdde502d3f9ea32a978d014897f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4abc094b_e1592b45",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2018-08-07T23:19:39Z",
+      "side": 1,
+      "message": "why are you calling exit here instead of returning the error?",
+      "revId": "c82e6e81c59fdde502d3f9ea32a978d014897f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c67df0_72ee728a",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2018-08-07T23:19:39Z",
+      "side": 1,
+      "message": "why remove only the comment and not also the stale variable?",
+      "revId": "c82e6e81c59fdde502d3f9ea32a978d014897f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
