@@ -1113,6 +1113,7 @@ static void dumpstate() {
     RunDumpsys("CHECKIN PROCSTATS", {"procstats", "-c"});
     RunDumpsys("CHECKIN USAGESTATS", {"usagestats", "-c"});
     RunDumpsys("CHECKIN PACKAGE", {"package", "--checkin"});
+    RunDumpsys("EBPF MAP STATS", {"netd", "trafficcontroller"});
 
     printf("========================================================\n");
     printf("== Running Application Activities\n");
