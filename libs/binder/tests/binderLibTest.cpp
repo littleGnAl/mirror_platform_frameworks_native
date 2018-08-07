@@ -52,7 +52,6 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_NOP_TRANSACTION = IBinder::FIRST_CALL_TRANSACTION,
     BINDER_LIB_TEST_REGISTER_SERVER,
     BINDER_LIB_TEST_ADD_SERVER,
-    BINDER_LIB_TEST_ADD_POLL_SERVER,
     BINDER_LIB_TEST_CALL_BACK,
     BINDER_LIB_TEST_CALL_BACK_VERIFY_BUF,
     BINDER_LIB_TEST_DELAYED_CALL_BACK,
@@ -73,7 +72,13 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_CREATE_BINDER_TRANSACTION,
 };
 
-pid_t start_server_process(int arg2, bool usePoll = false)
+enum ServerType {
+    BINDER_LIB_TEST_SERVER_REGULAR = 0,
+    BINDER_LIB_TEST_SERVER_POLL,
+};
+
+pid_t start_server_process(int arg2,
+                           ServerType stype = BINDER_LIB_TEST_SERVER_REGULAR)
 {
     int ret;
     pid_t pid;
@@ -81,13 +86,13 @@ pid_t start_server_process(int arg2, bool usePoll = false)
     int pipefd[2];
     char stri[16];
     char strpipefd1[16];
-    char usepoll[2];
+    char stypestr[2];
     char *childargv[] = {
         binderservername,
         binderserverarg,
         stri,
         strpipefd1,
-        usepoll,
+        stypestr,
         binderserversuffix,
         nullptr
     };
@@ -98,7 +103,7 @@ pid_t start_server_process(int arg2, bool usePoll = false)
 
     snprintf(stri, sizeof(stri), "%d", arg2);
     snprintf(strpipefd1, sizeof(strpipefd1), "%d", pipefd[1]);
-    snprintf(usepoll, sizeof(usepoll), "%d", usePoll ? 1 : 0);
+    snprintf(stypestr, sizeof(stypestr), "%d", stype);
 
     pid = fork();
     if (pid == -1)
@@ -183,14 +188,16 @@ class BinderLibTest : public ::testing::Test {
         virtual void TearDown() {
         }
     protected:
-        sp<IBinder> addServerEtc(int32_t *idPtr, int code)
+    sp<IBinder> addServer(int32_t *idPtr = NULL,
+                          ServerType stype = BINDER_LIB_TEST_SERVER_REGULAR)
         {
             int ret;
             int32_t id;
             Parcel data, reply;
             sp<IBinder> binder;
 
-            ret = m_server->transact(code, data, &reply);
+            data.writeInt32(stype);
+            ret = m_server->transact(BINDER_LIB_TEST_ADD_SERVER, data, &reply);
             EXPECT_EQ(NO_ERROR, ret);
 
             EXPECT_FALSE(binder != nullptr);
@@ -201,16 +208,6 @@ class BinderLibTest : public ::testing::Test {
             if (idPtr)
                 *idPtr = id;
             return binder;
-        }
-
-        sp<IBinder> addServer(int32_t *idPtr = nullptr)
-        {
-            return addServerEtc(idPtr, BINDER_LIB_TEST_ADD_SERVER);
-        }
-
-        sp<IBinder> addPollServer(int32_t *idPtr = nullptr)
-        {
-            return addServerEtc(idPtr, BINDER_LIB_TEST_ADD_POLL_SERVER);
         }
 
         void waitForReadData(int fd, int timeout_ms) {
@@ -907,7 +904,7 @@ TEST_F(BinderLibTest, OnewayQueueing)
     status_t ret;
     Parcel data, data2;
 
-    sp<IBinder> pollServer = addPollServer();
+    sp<IBinder> pollServer = addServer(nullptr, BINDER_LIB_TEST_SERVER_POLL);
 
     sp<BinderLibTestCallBack> callBack = new BinderLibTestCallBack();
     data.writeStrongBinder(callBack);
@@ -995,11 +992,11 @@ class BinderLibTestService : public BBinder
                 pthread_mutex_unlock(&m_serverWaitMutex);
                 return NO_ERROR;
             }
-            case BINDER_LIB_TEST_ADD_POLL_SERVER:
             case BINDER_LIB_TEST_ADD_SERVER: {
                 int ret;
                 uint8_t buf[1] = { 0 };
                 int serverid;
+                ServerType stype;
 
                 if (m_id != 0) {
                     return INVALID_OPERATION;
@@ -1010,10 +1007,10 @@ class BinderLibTestService : public BBinder
                 } else {
                     serverid = m_nextServerId++;
                     m_serverStartRequested = true;
-                    bool usePoll = code == BINDER_LIB_TEST_ADD_POLL_SERVER;
+                    stype = static_cast<ServerType>(data.readInt32());
 
                     pthread_mutex_unlock(&m_serverWaitMutex);
-                    ret = start_server_process(serverid, usePoll);
+                    ret = start_server_process(serverid, stype);
                     pthread_mutex_lock(&m_serverWaitMutex);
                 }
                 if (ret > 0) {
@@ -1252,7 +1249,7 @@ class BinderLibTestService : public BBinder
         sp<IBinder> m_callback;
 };
 
-int run_server(int index, int readypipefd, bool usePoll)
+int run_server(int index, int readypipefd, ServerType stype)
 {
     binderLibTestServiceName += String16(binderserversuffix);
 
@@ -1285,7 +1282,7 @@ int run_server(int index, int readypipefd, bool usePoll)
     if (ret)
         return 1;
     //printf("%s: joinThreadPool\n", __func__);
-    if (usePoll) {
+    if (stype == BINDER_LIB_TEST_SERVER_POLL) {
         int fd;
         struct epoll_event ev;
         int epoll_fd;
@@ -1347,7 +1344,7 @@ int main(int argc, char **argv) {
 
     if (argc == 6 && !strcmp(argv[1], binderserverarg)) {
         binderserversuffix = argv[5];
-        return run_server(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]) == 1);
+        return run_server(atoi(argv[2]), atoi(argv[3]), static_cast<ServerType>(atoi(argv[4])));
     }
     binderserversuffix = new char[16];
     snprintf(binderserversuffix, 16, "%d", getpid());
