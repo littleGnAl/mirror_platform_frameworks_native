@@ -1302,6 +1302,8 @@ static void dumpstate() {
 
     RunDumpsysHigh();
 
+    RunDumpsys("EBPF MAP STATS", {"netd", "trafficcontroller"});
+
     RunCommand("SYSTEM PROPERTIES", {"getprop"});
 
     RunCommand("STORAGED IO INFO", {"storaged", "-u", "-p"});
