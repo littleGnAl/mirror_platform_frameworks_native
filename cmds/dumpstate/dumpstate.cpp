@@ -1137,6 +1137,7 @@ static void dumpstate() {
     printf("========================================================\n");
 
     RunDumpsys("DROPBOX SYSTEM SERVER CRASHES", {"dropbox", "-p", "system_server_crash"});
+    RunDumpsys("DROPBOX SYSTEM TOMBSTONE", {"dropbox", "-p", "SYSTEM_TOMBSTONE"});
     RunDumpsys("DROPBOX SYSTEM APP CRASHES", {"dropbox", "-p", "system_app_crash"});
 
     printf("========================================================\n");
