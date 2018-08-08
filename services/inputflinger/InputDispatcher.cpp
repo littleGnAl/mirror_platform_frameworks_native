@@ -574,6 +574,7 @@ void InputDispatcher::dropInboundEventLocked(EventEntry* entry, DropReason dropR
     switch (entry->type) {
     case EventEntry::TYPE_KEY: {
         CancelationOptions options(CancelationOptions::CANCEL_NON_POINTER_EVENTS, reason);
+        options.keyCode = keyEntry->keyCode;
         synthesizeCancelationEventsForAllConnectionsLocked(options);
         break;
     }
