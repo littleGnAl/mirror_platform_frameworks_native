@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "4abc7274_7c20b77a",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2018-08-08T01:16:54Z",
+      "side": 1,
+      "message": "you should identify what the extra command is and make sure it is not send or not sent as a result of a race condition.",
+      "parentUuid": "551fc781_403808a0",
+      "revId": "c82e6e81c59fdde502d3f9ea32a978d014897f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fbe7e9f_7bf75f7f",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 2
