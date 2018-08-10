@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Autosubmit+1: Siarhei Vishniakou <svv@google.com>
+Code-Review+2: Michael Wright <michaelwr@google.com>
+Verified+1: Siarhei Vishniakou <svv@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 10 Aug 2018 17:58:58 +0000
+Reviewed-on: https://android-review.googlesource.com/728919
+Project: platform/frameworks/native
+Branch: refs/heads/master
