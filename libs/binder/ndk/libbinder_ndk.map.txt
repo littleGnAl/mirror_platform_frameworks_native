@@ -1,0 +1,25 @@
+LIBBINDER_NDK {
+  global:
+    AParcel_new;
+    AParcel_delete;
+    AParcel_writeInt32;
+    AParcel_writeUint32;
+    AParcel_writeInt64;
+    AParcel_writeUint64;
+    AParcel_writeFloat;
+    AParcel_writeDouble;
+    AParcel_writeBool;
+    AParcel_writeChar;
+    AParcel_writeByte;
+    AParcel_readInt32;
+    AParcel_readUint32;
+    AParcel_readInt64;
+    AParcel_readUint64;
+    AParcel_readFloat;
+    AParcel_readDouble;
+    AParcel_readBool;
+    AParcel_readChar;
+    AParcel_readByte;
+  local:
+    *;
+};
