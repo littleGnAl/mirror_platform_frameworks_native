@@ -2048,13 +2048,19 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
     // Create a swap file if necessary.
     unique_fd swap_fd = maybe_open_dexopt_swap_file(out_oat_path);
 
-    // Create the app image file if needed.
-    Dex2oatFileWrapper image_fd = maybe_open_app_image(
-            out_oat_path, generate_app_image, is_public, uid, is_secondary_dex);
-
     // Open the reference profile if needed.
     Dex2oatFileWrapper reference_profile_fd = maybe_open_reference_profile(
             pkgname, dex_path, profile_name, profile_guided, is_public, uid, is_secondary_dex);
+
+    if (profile_guided && reference_profile_fd.get() == -1) {
+      // We don't create an app image without reference profile,
+      // so the app image doesn't conservatively contain all classes.
+      generate_app_image = false;
+    }
+
+    // Create the app image file if needed.
+    Dex2oatFileWrapper image_fd = maybe_open_app_image(
+            out_oat_path, generate_app_image, is_public, uid, is_secondary_dex);
 
     unique_fd dex_metadata_fd;
     if (dex_metadata_path != nullptr) {
