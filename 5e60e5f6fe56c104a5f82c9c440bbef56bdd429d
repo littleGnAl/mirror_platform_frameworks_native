@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "590ebd01_1b661c2a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1305,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-08-22T02:07:42Z",
+      "side": 1,
+      "message": "Should we run this just after where we dump the contents of /proc/net/xt_qtaguid/... ?",
+      "range": {
+        "startLine": 1305,
+        "startChar": 43,
+        "endLine": 1305,
+        "endChar": 60
+      },
+      "revId": "5e60e5f6fe56c104a5f82c9c440bbef56bdd429d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
