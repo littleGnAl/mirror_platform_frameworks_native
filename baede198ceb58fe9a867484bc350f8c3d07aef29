@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4765a1c_69f24b06",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "I originally had a FIXME based on this decision (since we only actually need to know the interface descriptor in order to call checkInterface), but I chose this direction for these reasons:\n1). You need this if you read a binder and it is also served from the same process (see the second test case). You could only require setting the class if you find out that it is actually an in-process object, but it seemed simpler to me to make the API handle this automatically.\n2). If you\u0027re actually going to use the class, you should already have a full definition of this class. For AIDL, you\u0027ll always have this, and so that is the main usecase that I want to support.\n3). Future compatibility: right now, we only need checkInterface, but if we need other pieces of information, I want these to be made available to use by default.",
+      "parentUuid": "9a8d0f3d_c73f99f3",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f863230_00c7777b",
         "filename": "libs/binder/ndk/AIBinder_internal.h",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "83871ee6_30b84ac7",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "It\u0027s a bad habit that I learned from hidl-gen, and it usually doesn\u0027t matter in practice. However, in this case, this type must be referable from C. It has to be a struct (even if non-POD).",
+      "parentUuid": "0f863230_00c7777b",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abdb2692_24586b66",
         "filename": "libs/binder/ndk/AIBinder_internal.h",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-23T07:09:55Z",
       "side": 1,
       "message": "why is this needed? can\u0027t we know this by calling mBinder-\u003elocalBinder() and remoteBinder()?",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e38b6cb_06e33fe7",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "See the FIXME right above this. The reason is that localBinder/remoteBinder are non-const. I think this is a bug in the API.\n\nI could also make setClass require a non-const AIBinder object, but that seems stupid to me.",
+      "parentUuid": "abdb2692_24586b66",
       "range": {
         "startLine": 49,
         "startChar": 4,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8c21e78d_d3637b5a",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "I\u0027ll update the comment to be clearer. It should say \u0027For simplicity, must be set...\u0027. Alternatively, we could just keep the interfaceDescriptor (in order to call checkInterface), but see comment on previous file as I\u0027m fairly confident with this decision.",
+      "parentUuid": "7231d517_a3398a36",
+      "range": {
+        "startLine": 53,
+        "startChar": 33,
+        "endLine": 53,
+        "endChar": 83
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d40b9f6e_0b753a80",
         "filename": "libs/binder/ndk/AIBinder_internal.h",
         "patchSetId": 10
@@ -114,6 +210,30 @@
       "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deaa367d_b2c8f2bc",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "I think subclassing here would be too much. I think maybe I could move this object into LocalNdkBinder.",
+      "parentUuid": "d40b9f6e_0b753a80",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 30
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "938de2f9_6073ae6f",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "This one is also to match the declaration in the C API.",
+      "parentUuid": "881af604_4f105678",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "686e18c0_aaba52d9",
         "filename": "libs/binder/ndk/NdkBinder.cpp",
         "patchSetId": 10
@@ -160,6 +304,30 @@
       "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad51d745_614a6c58",
+        "filename": "libs/binder/ndk/NdkBinder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "Didn\u0027t realize that. I\u0027ll update these and the comments as well and clean this up.",
+      "parentUuid": "686e18c0_aaba52d9",
+      "range": {
+        "startLine": 38,
+        "startChar": 47,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "67ae8a25_cd6a69df",
+        "filename": "libs/binder/ndk/NdkBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "Two reasons:\n- prevent strong reference cycle between LocalNdkBinder and BBinder\n- handle error case where LocalNdkBinder object is held onto, but the AIBinder object is deleted. There is a pretty error for this now, and it should only be possible when there is a mistake in this implementation.",
+      "parentUuid": "6605442e_e4007cac",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88407bfd_7118db85",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 10
@@ -206,6 +398,30 @@
       "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8d5fb2_380e28ae",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "You mean getting rid of the extra star? yeah, I can.",
+      "parentUuid": "88407bfd_7118db85",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "90d34233_77768b1a",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d15743bb_b8333cfb",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9a4f3a5_46fe191c",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 10
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "76c6cf3c_536358a4",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "This is called from the AIBinder destructor. We can\u0027t safely pass an AIBinder which is being destructed.",
+      "parentUuid": "f9a4f3a5_46fe191c",
+      "range": {
+        "startLine": 68,
+        "startChar": 41,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dade0eda_38ae7da0",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 10
@@ -266,6 +530,30 @@
       "writtenOn": "2018-08-23T07:09:55Z",
       "side": 1,
       "message": "Instead of this, I think it would be better for us to have \n\nconst char* AIBInder_getInterfaceDescriptor(AIBinder*)\n\nand probably something like AIBinder_isBinderLive, AIBinder_pingBinder, etc.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 70
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c46e67b1_4b3a3c81",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "You mean setInterfaceDescriptor? Let\u0027s continue this conversation on the other thread.\n\nI haven\u0027t added isBinderLive/pingBinder/death notifications/etc.. yet, and right now these just fail if they are attempted. I will add more features like this once I finish cleaning this up and addressing other high level comments.",
+      "parentUuid": "dade0eda_38ae7da0",
       "range": {
         "startLine": 108,
         "startChar": 0,
@@ -298,6 +586,30 @@
       "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c433344f_b86aa5db",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-23T17:45:25Z",
+      "side": 1,
+      "message": "Done (I really like this rename btw)",
+      "parentUuid": "fae36d97_79857d21",
+      "range": {
+        "startLine": 117,
+        "startChar": 29,
+        "endLine": 117,
+        "endChar": 37
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
