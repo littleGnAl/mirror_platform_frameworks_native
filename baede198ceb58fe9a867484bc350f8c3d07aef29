@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a8d0f3d_c73f99f3",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "I don\u0027t understand the need for this. AIBinder_Class is only in the servicing side. So only LocalNdkBinder needs to know this.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f863230_00c7777b",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "why struct? The guide says that struct is for the case when there is no invariant among its fields.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abdb2692_24586b66",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "why is this needed? can\u0027t we know this by calling mBinder-\u003elocalBinder() and remoteBinder()?",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7231d517_a3398a36",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "Why? If this AIBinder is for the client side (a remote binder), then we can simply call AIBinder_transact to start transaction on it. I don\u0027t understand why we need this.",
+      "range": {
+        "startLine": 53,
+        "startChar": 33,
+        "endLine": 53,
+        "endChar": 83
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d40b9f6e_0b753a80",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "This motivates me to have subclasses of AIBinder; ABpBinder and ABBinder, which corresponds to BpBinder and BBinder respectively.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 30
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "881af604_4f105678",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "struct might be okay here, but I don\u0027t see a strong reason to prefer struct to class here.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "686e18c0_aaba52d9",
+        "filename": "libs/binder/ndk/NdkBinder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "why excluding LAST_CALL_TRANSACTION? Clients are allowed to use it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 47,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6605442e_e4007cac",
+        "filename": "libs/binder/ndk/NdkBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "why is this wp? Isn\u0027t the lifetime of AIBinder the same as that of LocalNdkBinder?",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88407bfd_7118db85",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we use C/C++ style comment? This is Java style.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d15743bb_b8333cfb",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "I think the name is misleading here. It isn\u0027t a class impl but an instance data as written in the comment. I think it should be just void*, because we really don\u0027t care what it is and the clients will probably have their own type (struct) for this.",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9a4f3a5_46fe191c",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "AIBinder* binder as we can get the userdata from it.",
+      "range": {
+        "startLine": 68,
+        "startChar": 41,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dade0eda_38ae7da0",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "Instead of this, I think it would be better for us to have \n\nconst char* AIBInder_getInterfaceDescriptor(AIBinder*)\n\nand probably something like AIBinder_isBinderLive, AIBinder_pingBinder, etc.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 70
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae36d97_79857d21",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-23T07:09:55Z",
+      "side": 1,
+      "message": "just getUserData or similar.",
+      "range": {
+        "startLine": 117,
+        "startChar": 29,
+        "endLine": 117,
+        "endChar": 37
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
