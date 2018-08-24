@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d35a20a5_44e3ff40",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-24T15:59:18Z",
+      "side": 1,
+      "message": "(1) no longer matters because I changed things so that there is guaranteed to be only one copy of an AIBinder object for a given IFoo.\n\nI understand your argument, Jiyong. You are right, onTransact/onCreate/onDestroy are not required at all. I\u0027m not arguing that. However, I still like the feeling that it gives the API (and possible future proofing). If you want to use a binder, you should know what type it is. Since this interfaces might have callbacks, etc, you\u0027re going to have the IFoo AIBinder_Class object available if you have the IFooCallback AIBinder_Class object available.\n\nLet me leave this around for the time being. I\u0027ll add an item to the commit message to revisit this during the API review (the important thing is AIBinder_associateClass regardless of implementation details).",
+      "parentUuid": "17a62145_f45c6e97",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f863230_00c7777b",
         "filename": "libs/binder/ndk/AIBinder_internal.h",
         "patchSetId": 10
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Well, we could define AIBinder as void* for clients - since this is really an opaque handle for them - and define this as \u0027class BinderHandle\u0027 or something.",
       "parentUuid": "83871ee6_30b84ac7",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58109b54_22287679",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-24T15:59:18Z",
+      "side": 1,
+      "message": "I don\u0027t think that would be worth it since we would lose the type safety. In C++ struct/class have no real functional differences.",
+      "parentUuid": "6dace0f9_1cb39c30",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -510,6 +558,30 @@
       "side": 1,
       "message": "How AIBinder can be deleted by the client? It\u0027s just a handle.",
       "parentUuid": "67ae8a25_cd6a69df",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35b572e8_3d7d3a7b",
+        "filename": "libs/binder/ndk/NdkBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-24T15:59:18Z",
+      "side": 1,
+      "message": "They need to call AIBinder_decStrong on it to remove a reference count for it. I think I might need to re-think the ownership model a little bit though. Right now, we have this:\n\nIFoo -\u003e AIBinder -\u003e IBinder\n\nBut, it should be:\n\nIBinder -\u003e AIBinder -\u003e IFoo\n\n(since you also want a remote reference to keep IFoo alive)",
+      "parentUuid": "b90f1752_704a7e57",
       "range": {
         "startLine": 39,
         "startChar": 4,
