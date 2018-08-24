@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "17a62145_f45c6e97",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-24T05:24:16Z",
+      "side": 1,
+      "message": "Sorry, I still don\u0027t get it. \n\ncheckInterface is to ensure that the binder in the parcel is of specific name. We can get the descriptor name of a binder via mBinder.\n\nAIBinder_Class is just an abstraction of the callbacks; primarily onTransact. We need to register it only when we create a service object. We don\u0027t need this to use (calling a method) a binder even if the binder is in the same process.",
+      "parentUuid": "a4765a1c_69f24b06",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f863230_00c7777b",
         "filename": "libs/binder/ndk/AIBinder_internal.h",
         "patchSetId": 10
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "It\u0027s a bad habit that I learned from hidl-gen, and it usually doesn\u0027t matter in practice. However, in this case, this type must be referable from C. It has to be a struct (even if non-POD).",
       "parentUuid": "0f863230_00c7777b",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dace0f9_1cb39c30",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-24T05:24:16Z",
+      "side": 1,
+      "message": "Well, we could define AIBinder as void* for clients - since this is really an opaque handle for them - and define this as \u0027class BinderHandle\u0027 or something.",
+      "parentUuid": "83871ee6_30b84ac7",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -140,6 +188,30 @@
       "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88bdb18_c0eb723f",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-24T05:24:16Z",
+      "side": 1,
+      "message": "oh you removed. cool.",
+      "parentUuid": "9e38b6cb_06e33fe7",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "9b899fd1_bedfbb69",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-24T05:24:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "deaa367d_b2c8f2bc",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 30
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "881af604_4f105678",
         "filename": "libs/binder/ndk/AIBinder_internal.h",
         "patchSetId": 10
@@ -272,6 +368,30 @@
       "side": 1,
       "message": "This one is also to match the declaration in the C API.",
       "parentUuid": "881af604_4f105678",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e33b566e_64e4a8de",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-24T05:24:16Z",
+      "side": 1,
+      "message": "oh, right.",
+      "parentUuid": "938de2f9_6073ae6f",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -378,6 +498,30 @@
     },
     {
       "key": {
+        "uuid": "b90f1752_704a7e57",
+        "filename": "libs/binder/ndk/NdkBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-24T05:24:16Z",
+      "side": 1,
+      "message": "How AIBinder can be deleted by the client? It\u0027s just a handle.",
+      "parentUuid": "67ae8a25_cd6a69df",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88407bfd_7118db85",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 10
@@ -413,6 +557,30 @@
       "side": 1,
       "message": "You mean getting rid of the extra star? yeah, I can.",
       "parentUuid": "88407bfd_7118db85",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a613fa6f_cfa5a665",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-24T05:24:16Z",
+      "side": 1,
+      "message": ":)",
+      "parentUuid": "bf8d5fb2_380e28ae",
       "range": {
         "startLine": 31,
         "startChar": 1,
@@ -507,6 +675,30 @@
       "side": 1,
       "message": "This is called from the AIBinder destructor. We can\u0027t safely pass an AIBinder which is being destructed.",
       "parentUuid": "f9a4f3a5_46fe191c",
+      "range": {
+        "startLine": 68,
+        "startChar": 41,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46c1ef45_0967e22f",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-24T05:24:16Z",
+      "side": 1,
+      "message": "AIBinder is just an opaque handle. It\u0027s not unsafe for the client to have it. \n\nI think giving userData here is more dangerous.\n\nuserData can\u0027t and shouldn\u0027t be used as the handle that distinguishes different AIBinder. For example, what if AIBinder_Class_onCreate always returns the same userdata (i.e. statically allocated object)?",
+      "parentUuid": "76c6cf3c_536358a4",
       "range": {
         "startLine": 68,
         "startChar": 41,
