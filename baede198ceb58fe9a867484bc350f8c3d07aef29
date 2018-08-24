@@ -666,6 +666,30 @@
     },
     {
       "key": {
+        "uuid": "edf0f787_51a5863e",
+        "filename": "libs/binder/ndk/NdkBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-24T23:48:56Z",
+      "side": 1,
+      "message": "I\u0027ll just need to add the concept of a weak reference to an AIBinder object in order to make it possible.",
+      "parentUuid": "7b85b7c8_99eeddad",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "baede198ceb58fe9a867484bc350f8c3d07aef29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88407bfd_7118db85",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 10
