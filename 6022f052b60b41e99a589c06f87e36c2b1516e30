@@ -45,6 +45,167 @@
       "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9d80d4_2b5432d5",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-27T19:41:39Z",
+      "side": 1,
+      "message": "what\u0027s the free() for this pointer?",
+      "range": {
+        "startLine": 86,
+        "startChar": 36,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55cad2cf_54cf6410",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-27T19:41:39Z",
+      "side": 1,
+      "message": "does this need to be part of the API surface, or can AIBinder just have a _new() and _delete() and if people need/want refcounting on top of that they can toss it in a std::shared_ptr\u003c\u003e or whatever?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 52
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e1350c7_a2d60b14",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-27T19:41:39Z",
+      "side": 1,
+      "message": "same as above, is this necessary for the API surface?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 55
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b40e46_c7673f09",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-27T19:41:39Z",
+      "side": 1,
+      "message": "if promotion fails, what is returned?",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 75
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "403c4074_ef6d8db5",
+        "filename": "libs/binder/ndk/include_ndk/binder/AParcel.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-27T19:41:39Z",
+      "side": 1,
+      "message": "you can\u0027t toss a generated header into the API surface. These all need to be documented and should not be generated as they cannot change.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 7
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae23f53_d70832ca",
+        "filename": "libs/binder/ndk/include_ndk/binder/AStatus.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-27T19:41:39Z",
+      "side": 1,
+      "message": "If it\u0027s Java-specific remove it from the NDK?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86376d22_62119679",
+        "filename": "libs/binder/ndk/include_ndk/binder/AStatus.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-27T19:41:39Z",
+      "side": 1,
+      "message": "is this C++ specific? If so this should say NDK probably instead as there\u0027s no C++ anywhere in these files.",
+      "range": {
+        "startLine": 39,
+        "startChar": 38,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
