@@ -22,6 +22,30 @@
       "revId": "2fb1d47d09e2d3d0df8526d7c0e06261a409f516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4300fcb1_bf6af9e6",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2018-08-27T20:54:49Z",
+      "side": 1,
+      "message": "The three multinetwork.h APIs were declared as 23 in the map.txt file, but 24 in the header file. They were switched to 23 in the header file when __INTRODUCED_IN was added.\n\nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/4367223/1/include/android/multinetwork.h#b63\n\nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/4367223/1..2/include/android/multinetwork.h",
+      "parentUuid": "54685346_20f627db",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 25
+      },
+      "revId": "2fb1d47d09e2d3d0df8526d7c0e06261a409f516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
