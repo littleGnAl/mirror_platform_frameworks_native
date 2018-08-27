@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "57eff0d8_b9fe94c5",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-08-27T20:14:31Z",
+      "side": 1,
+      "message": "Especially the last one. \"For debugging only!\" sure sounds a lot like \"this shouldn\u0027t be part of the API\" to me.",
+      "parentUuid": "55cad2cf_54cf6410",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 52
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e1350c7_a2d60b14",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 21
