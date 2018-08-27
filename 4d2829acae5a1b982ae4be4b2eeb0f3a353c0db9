@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90954851_f7148716",
+        "filename": "libs/binder/ndk/include_ndk/binder/AStatus.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T23:36:28Z",
+      "side": 1,
+      "message": "These seem like they are sometimes conflated. Perhaps I\u0027m missing something? I\u0027ll likely clean up this story as I continue adding this as an AIDL backend.",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "4d2829acae5a1b982ae4be4b2eeb0f3a353c0db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

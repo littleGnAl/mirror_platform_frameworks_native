@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f0e1ef6a_c4e66641",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T23:36:28Z",
+      "side": 1,
+      "message": "John/Dan, any suggestion here? (specifically things like \u0027AStatus.h\u0027)",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e06dbc7_a8291d90",
         "filename": "/COMMIT_MSG",
         "patchSetId": 21
@@ -13,6 +36,30 @@
       "writtenOn": "2018-08-27T07:12:21Z",
       "side": 1,
       "message": "essentially, how to allow Java/C APIs to interoperate? Is there a way to create an NDK/SDK function which allows you to convert between an NDK type and an SDK type?",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281d3e00_13155a1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T23:36:28Z",
+      "side": 1,
+      "message": "Ping, John/Dan? (I need to figure out how to do this in order to write meaningful CTS tests. This might be somewhat difficult even then though because it requires multiple processes to test effectively).",
+      "parentUuid": "9e06dbc7_a8291d90",
       "range": {
         "startLine": 11,
         "startChar": 2,
@@ -59,6 +106,30 @@
       "writtenOn": "2018-08-27T19:41:39Z",
       "side": 1,
       "message": "what\u0027s the free() for this pointer?",
+      "range": {
+        "startLine": 86,
+        "startChar": 36,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b092e1eb_97ff60fd",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T23:36:28Z",
+      "side": 1,
+      "message": "It doesn\u0027t exist since it is depending on by AIBinder instances. Usually, this class will be defined for the duration of the process (in fact, defined by loading a library). I can add it (but it would also involve refcounting on AIBinder instances so that it doesn\u0027t get deleted out from under them). This is then dangerous incase these functions depend on state that the class uses. So, it would also involve adding a decStrong (to make it explicit that it might not actually be deleted).\n\nAnother thing I could do is create a delete and then invalidate all of the AIBinder objects that are using it, but I find this approach kind of messy (and inefficient), and in practice, if someone wants to unload one of these libraries, they should also themselves unload their code that depends on it.\n\nAre you guys okay with decStrong here as well?",
+      "parentUuid": "1c9d80d4_2b5432d5",
       "range": {
         "startLine": 86,
         "startChar": 36,
@@ -118,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "e968c8bd_304f1099",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T23:36:28Z",
+      "side": 1,
+      "message": "incStrong/decStrong is required since you can get multiple instances of the same AIBinder object in your process (for instance, by registering a service and then getting it multiple times).\n\nI can remove \u0027debugGetRefCount\u0027 (or move it to the non-NDK part of this surface), but is generally helpful for debugging. This API is a direct rip-off of \u0027sp\u0027 in StrongPointer.h. It is considered a debugging API in my mind for two reasons:\n- well written code should never need to access it\n- it isn\u0027t guaranteed to be 100% accurate when other processes hold some of the references\n\nIs it okay if I leave it in?",
+      "parentUuid": "57eff0d8_b9fe94c5",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 52
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e1350c7_a2d60b14",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 21
@@ -129,6 +224,30 @@
       "writtenOn": "2018-08-27T19:41:39Z",
       "side": 1,
       "message": "same as above, is this necessary for the API surface?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 55
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f4c538_bf1192bc",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T23:36:28Z",
+      "side": 1,
+      "message": ":) This is a tricky one (and perhaps Dianne has a better idea since she didn\u0027t suggest the need for this in her original API), but I\u0027m quite convinced it is necessary. Notice you have this ownership model (where an arrow is a strong pointer):\n\nBpFoo -\u003e AIBinder (ABpBinder) --process-boundary--\u003e AIBinder (ABBinder) -\u003e UserData -\u003e IFoo\n\nThis line of strong pointers is required to make sure that a remote BpFoo instance represents a strong pointer to the IFoo. This allows you, for instance, to create a callback, pass it to a remote process, not keep a strong reference to it, and when the remote process drops it (or dies), the callback in your process automatically gets cleaned up.\n\nThe reason why you need a weak pointer here is so that if the \u0027IFoo\u0027 object is sent out to another process multiple times, you always send the exact same AIBinder object. One of the amazing features about the binder driver is that if you send the same object into it multiple times, you\u0027ll get the same object out of it multiple times. So, if you\u0027ve already sent IFoo to another process, the ABpBinder proxies a binder object, and if you send IFoo to that same process again, you\u0027ll recover the same ABBinder object (with the wp), send it to the same process, and the ABpBinder on the other side will proxy the same binder object. This allows you for instance to know that those two ABpBinder objects point to the same binder object (I will at some point add an AIBinder_equals method to take advantage of this).\n\nPointing out the obvious, we also can\u0027t have IFoo keep a strong pointer here because it would create a cycle between ABBinder/UserData/IFoo.\n\n\nYou\u0027ll also note that this is something I wanted feedback on earlier. Whether we should always return the same ABpBinder object back (and also recover the same BpFoo object back) so that they support pointer equality. HIDL doesn\u0027t support this, and it\u0027s my understanding that AIDL doesn\u0027t either (something to do with the way that each BpFoo object maintains its own state wrt linkToDeath/unlinkToDeath, also not implemented in this specific CL).",
+      "parentUuid": "1e1350c7_a2d60b14",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -164,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "781d4d13_7b2638be",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T23:36:28Z",
+      "side": 1,
+      "message": "nullptr, Done",
+      "parentUuid": "45b40e46_c7673f09",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 75
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "403c4074_ef6d8db5",
         "filename": "libs/binder/ndk/include_ndk/binder/AParcel.h",
         "patchSetId": 21
@@ -175,6 +318,30 @@
       "writtenOn": "2018-08-27T19:41:39Z",
       "side": 1,
       "message": "you can\u0027t toss a generated header into the API surface. These all need to be documented and should not be generated as they cannot change.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 7
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6847e7ae_8a3d221c",
+        "filename": "libs/binder/ndk/include_ndk/binder/AParcel.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T23:36:28Z",
+      "side": 1,
+      "message": "re-documentation: Done\n\n- The generation is guided by a script, so it is fully compatible with NDK tooling.\n- The generation is to make sure they are consistent, make it easy to add new types in the future, etc.. The intention is not to change the APIs all of the time.\n\n(if you have a problem with the @START/@END tags, can you suggest something else?)",
+      "parentUuid": "403c4074_ef6d8db5",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -210,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "07d905e9_a4c805fd",
+        "filename": "libs/binder/ndk/include_ndk/binder/AStatus.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T23:36:28Z",
+      "side": 1,
+      "message": "This indicates that the end of the parcel contains an additional item which is used in Java for additional error information and is required for NDK\u003c-\u003eJava. If this API is used to communicate with some Java code, then it is required for this case to be handled.\n\nIs it preferable to duplicate the specifics of this information here? I can do so.\n\n\nAlthough, thinking about this more, Dianne, would you consider these more of AIDL\u0027s ABI or part of libhwbinder\u0027s?",
+      "parentUuid": "aae23f53_d70832ca",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86376d22_62119679",
         "filename": "libs/binder/ndk/include_ndk/binder/AStatus.h",
         "patchSetId": 21
@@ -221,6 +412,30 @@
       "writtenOn": "2018-08-27T19:41:39Z",
       "side": 1,
       "message": "is this C++ specific? If so this should say NDK probably instead as there\u0027s no C++ anywhere in these files.",
+      "range": {
+        "startLine": 39,
+        "startChar": 38,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26979dd7_abfc8635",
+        "filename": "libs/binder/ndk/include_ndk/binder/AStatus.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T23:36:28Z",
+      "side": 1,
+      "message": "I will update the comment. It\u0027s specific to native.",
+      "parentUuid": "86376d22_62119679",
       "range": {
         "startLine": 39,
         "startChar": 38,
