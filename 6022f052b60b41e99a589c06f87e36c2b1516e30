@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e06dbc7_a8291d90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T07:12:21Z",
+      "side": 1,
+      "message": "essentially, how to allow Java/C APIs to interoperate? Is there a way to create an NDK/SDK function which allows you to convert between an NDK type and an SDK type?",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e03c9d79_123869fb",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-27T07:12:21Z",
+      "side": 1,
+      "message": "One thing to note in the current implementation, if you have multiple binders to a remote object, you also have multiple ABpBinder/BpFoo objects. I believe I could fix this with IBinder::attachObject, but AIDL doesn\u0027t appear to handle this either.",
+      "range": {
+        "startLine": 116,
+        "startChar": 37,
+        "endLine": 116,
+        "endChar": 54
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
