@@ -165,8 +165,14 @@ void LayerLibrary::Close() {
     std::lock_guard<std::mutex> lock(mutex_);
     if (--refcount_ == 0) {
         ALOGV("closing layer library '%s'", path_.c_str());
-        dlclose(dlhandle_);
-        dlhandle_ = nullptr;
+        int ret = android::CloseNativeLibrary(dlhandle_, native_bridge_);
+        if (ret != 0) {
+            ALOGE("failed to unload library '%s'", path_.c_str());
+            refcount_++;
+            return ;
+        } else {
+           dlhandle_ = nullptr;
+        }
     }
 }
 
