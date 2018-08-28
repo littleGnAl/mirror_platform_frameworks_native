@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c454665e_8000b8c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-28T17:53:45Z",
+      "side": 1,
+      "message": "for headers the style would be all lower-case without the A prefix.\n\ntypically the headers are in an android/ folder or a module folder if that\u0027s more appropriate, and then the header itself can be simple.\n\nSo I\u0027d suggest either:\n\nandroid/binder_status.h\nandroid/binder_parcel.h\nandroid/binder_iterface.h\n\nor\n\nbinder/status.h\nbinder/parcel.h\nbinder/interface.h (or even just binder/binder.h)\n\nSomething like that. Since it\u0027s its own library the binder/*.h probably makes more sense.",
+      "parentUuid": "f0e1ef6a_c4e66641",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e06dbc7_a8291d90",
         "filename": "/COMMIT_MSG",
         "patchSetId": 21
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Ping, John/Dan? (I need to figure out how to do this in order to write meaningful CTS tests. This might be somewhat difficult even then though because it requires multiple processes to test effectively).",
       "parentUuid": "9e06dbc7_a8291d90",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76df4dda_b537074e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-28T17:53:45Z",
+      "side": 1,
+      "message": "The pattern for Java interop is to have an NDK API in a \u003cclass\u003e_jni.h header that takes a JNIEnv* \u0026 jobject and you gives you back the NDK equivalent. Same for the reverse, native API that returns the jobject.\n\nAn example would be ANativeWindow_fromSurface and ANativeWindow_toSurface",
+      "parentUuid": "281d3e00_13155a1a",
       "range": {
         "startLine": 11,
         "startChar": 2,
