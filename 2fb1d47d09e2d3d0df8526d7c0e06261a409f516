@@ -46,6 +46,30 @@
       "revId": "2fb1d47d09e2d3d0df8526d7c0e06261a409f516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb9effc_82181318",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-08-28T00:26:08Z",
+      "side": 1,
+      "message": "Thanks for confirming.",
+      "parentUuid": "4300fcb1_bf6af9e6",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 25
+      },
+      "revId": "2fb1d47d09e2d3d0df8526d7c0e06261a409f516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
