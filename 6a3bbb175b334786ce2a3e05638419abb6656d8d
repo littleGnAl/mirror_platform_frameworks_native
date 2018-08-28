@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b9648e8_0cb126dd",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-08-28T18:14:56Z",
+      "side": 1,
+      "message": "We use `#pragma once` all over libc these days. This is fine from a technical point. Preferable imo, but it\u0027s really a stylistic thing, so if jreck and co want to keep the frameworks APIs on include guards I\u0027ll defer to them; just know that it wouldn\u0027t be the first NDK header to use `#pragma once` :)",
+      "parentUuid": "b595b663_ba05fcaa",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 12
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bc86b9b_d62f0a18",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 23
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "72f29532_8fbe4ebd",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-08-28T18:14:56Z",
+      "side": 1,
+      "message": "I\u0027m fairly certain the toolchain team still isn\u0027t okay with guaranteeing C++ ABI stability (it\u0027s very difficult to do so), but make sure you CC android-llvm if you do start that discussion. It would certainly make for nicer APIs, but I just don\u0027t think we can do it from a technical standpoint.\n\nIf you do want to expose a nicer API, we do have some cases (NN API iirc) where we expose a C API and also a header-only C++ API that wraps the C API in a more convenient package. It\u0027s fairly annoying that we have to go from C++ wrapper -\u003e C API -\u003e C++ implementation, but so far we don\u0027t have a better option.",
+      "parentUuid": "c2d0ddcc_c65d10ca",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72497c76_ed879880",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 23
@@ -88,6 +136,23 @@
         "endLine": 33,
         "endChar": 28
       },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62337573_aedaa5a4",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-08-28T18:14:56Z",
+      "side": 1,
+      "message": "Note that no documentation will be generated for this file unless it\u0027s in doxygen format (start\u0027s with `/**` instead of `/*`). You should also include an @file block at the top of the file, and need to wrap the whole file (everything after the #includes, include the @file block) with a @defgroup or @addtogroup in order for the API to actually be listed on dac.",
       "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
