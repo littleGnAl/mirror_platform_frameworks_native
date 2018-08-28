@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "32c050f7_864db365",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-08-28T19:30:53Z",
+      "side": 1,
+      "message": "Fair point. I was speaking generally about C++ ABIs, but this would be safe.\n\nI do agree that I don\u0027t think it\u0027s worth preventing the use of this API from C though. Explicitly sized enums help us, not the user.",
+      "parentUuid": "35cd6fe8_2a00c6d3",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72497c76_ed879880",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 23
