@@ -17,6 +17,7 @@
 #include <android/binder_ibinder.h>
 #include "ibinder_internal.h"
 
+#include <android/binder_auto_utils.h>
 #include <android/binder_status.h>
 #include "parcel_internal.h"
 #include "status_internal.h"
@@ -447,7 +448,7 @@ binder_status_t AIBinder_transact(AIBinder* binder, transaction_code_t code, APa
     using AutoParcelDestroyer = std::unique_ptr<AParcel*, void (*)(AParcel**)>;
     // This object is the input to the transaction. This function takes ownership of it and deletes
     // it.
-    AutoParcelDestroyer forIn(in, AParcel_delete);
+    ::android::AutoAParcel forIn(*in);
 
     if (!isUserCommand(code)) {
         LOG(ERROR) << __func__ << ": Only user-defined transactions can be made from the NDK.";
