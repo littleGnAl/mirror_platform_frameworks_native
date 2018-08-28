@@ -79,7 +79,7 @@ binder_status_t AParcel_writeString(AParcel* parcel, const char* string, int32_t
 
     const ssize_t len16 = utf8_to_utf16_length(str8, len8);
 
-    if (len16 < 0 || len16 > std::numeric_limits<int32_t>::max()) {
+    if (len16 < 0 || len16 >= std::numeric_limits<int32_t>::max()) {
         LOG(WARNING) << __func__ << ": Invalid string length: " << len16;
         return STATUS_BAD_VALUE;
     }
