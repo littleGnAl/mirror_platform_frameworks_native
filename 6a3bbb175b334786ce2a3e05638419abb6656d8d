@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "01618c0b_c03d1dbc",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-28T18:24:45Z",
+      "side": 1,
+      "message": "if it\u0027s already used in libc then LGTM",
+      "parentUuid": "7b9648e8_0cb126dd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 12
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bc86b9b_d62f0a18",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 23
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "I\u0027m fairly certain the toolchain team still isn\u0027t okay with guaranteeing C++ ABI stability (it\u0027s very difficult to do so), but make sure you CC android-llvm if you do start that discussion. It would certainly make for nicer APIs, but I just don\u0027t think we can do it from a technical standpoint.\n\nIf you do want to expose a nicer API, we do have some cases (NN API iirc) where we expose a C API and also a header-only C++ API that wraps the C API in a more convenient package. It\u0027s fairly annoying that we have to go from C++ wrapper -\u003e C API -\u003e C++ implementation, but so far we don\u0027t have a better option.",
       "parentUuid": "c2d0ddcc_c65d10ca",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35cd6fe8_2a00c6d3",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-28T18:24:45Z",
+      "side": 1,
+      "message": "This wouldn\u0027t be an ABI stability issue as this is declaring an enum of a fixed-type uint32_t. It\u0027s actually better for ABI in that regards. But it won\u0027t work if it\u0027s being compiled from C and not C++. As in, users of this API would be unable to write their code in C. That seems unfortunate and probably not worth doing?",
+      "parentUuid": "72f29532_8fbe4ebd",
       "range": {
         "startLine": 28,
         "startChar": 0,
