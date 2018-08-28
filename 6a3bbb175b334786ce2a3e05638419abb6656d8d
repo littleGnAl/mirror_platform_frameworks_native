@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b595b663_ba05fcaa",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-08-28T17:56:59Z",
+      "side": 1,
+      "message": "even though we only support building with toolchains that understand this it shouldn\u0027t be a hard _requirement_ to use the NDK.\n\nSo these should be the standard-conforming #ifndef/define/endif guards instead.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 12
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
