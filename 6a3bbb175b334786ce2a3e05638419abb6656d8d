@@ -287,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "eadcb2dc_6d3977e5",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-08-29T18:08:51Z",
+      "side": 1,
+      "message": "\u003e our only concern has always been STL-related issues\n\nNot *always*. Pre-treble there was definitely a concern about the stability of non-STL C++ code.\n\nHappy to hear that\u0027s no longer the case though. I\u0027ll start a thread on android-ndk-api-council about whether or not we want to start allowing C++ NDK APIs (I\u0027ll make sure you\u0027re CC\u0027d).",
+      "parentUuid": "91efdc4b_dc33c300",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72497c76_ed879880",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 23
