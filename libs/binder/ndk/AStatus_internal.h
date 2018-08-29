@@ -14,26 +14,18 @@
  * limitations under the License.
  */
 
-cc_library {
-    name: "libbinder_ndk",
-    vendor_available: false,
+#pragma once
 
-    export_include_dirs: [
-        "include_ndk",
-        "include_apex",
-    ],
+#include <android/binder_status.h>
 
-    srcs: [
-        "ABinderProcess.cpp",
-        "AIBinder.cpp",
-        "AParcel.cpp",
-        "AServiceManager.cpp",
-        "AStatus.cpp",
-    ],
+#include <binder/Status.h>
 
-    shared_libs: [
-        "libbase",
-        "libbinder",
-        "libutils",
-    ],
-}
+struct AStatus {
+    AStatus() {} // ok
+    AStatus(::android::binder::Status&& status) : mStatus(std::move(status)) {}
+    ::android::binder::Status* operator->() { return &mStatus; }
+    const ::android::binder::Status* operator->() const { return &mStatus; }
+
+private:
+    ::android::binder::Status mStatus;
+};

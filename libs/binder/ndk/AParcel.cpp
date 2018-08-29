@@ -18,6 +18,7 @@
 #include "AParcel_internal.h"
 
 #include "AIBinder_internal.h"
+#include "AStatus_internal.h"
 
 #include <binder/Parcel.h>
 
@@ -47,6 +48,17 @@ binder_status_t AParcel_readNullableStrongBinder(const AParcel* parcel, AIBinder
     *binder = new ABpBinder(readBinder);
     AIBinder_incStrong(*binder);
     return status;
+}
+binder_status_t AParcel_writeStatusHeader(AParcel* parcel, const AStatus* status) {
+    return (*status)->writeToParcel(parcel->operator->());
+}
+binder_status_t AParcel_readStatusHeader(const AParcel* parcel, AStatus** status) {
+    ::android::binder::Status bstatus;
+    binder_status_t ret = bstatus.readFromParcel(*parcel->operator->());
+    if (ret == EX_NONE) {
+        *status = new AStatus(std::move(bstatus));
+    }
+    return ret;
 }
 
 // See gen_parcel_helper.py. These auto-generated read/write methods use the same types for
