@@ -22,6 +22,30 @@
       "revId": "97fd9c0bc83e2277b2df7c06666df5cc73acbbb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84df842f_e67aabd0",
+        "filename": "libs/binder/ndk/scripts/init_map.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T09:27:11Z",
+      "side": 1,
+      "message": "Ah, thanks. I need to update this (and also add AStatus)",
+      "parentUuid": "44c3a5de_2657cd4f",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "97fd9c0bc83e2277b2df7c06666df5cc73acbbb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
