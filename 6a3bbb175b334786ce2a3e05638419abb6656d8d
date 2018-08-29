@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1c420811_5be4aa16",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "I am very, very happy to be able to keep this :) It\u0027s enough that we have transitive headers... Thanks!",
+      "parentUuid": "01618c0b_c03d1dbc",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 12
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bc86b9b_d62f0a18",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 23
@@ -93,6 +117,30 @@
       "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c5afee6_6b3da9d0",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "I\u0027ll leave this reference in here for the more curious (if that\u0027s okay). Also added additional docs. Done.",
+      "parentUuid": "8bc86b9b_d62f0a18",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -191,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "783b89a4_b7505b0f",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "You guys think highly of me. I wasn\u0027t trying to introduce C++ in this header :) I\u0027ve filed b/113359184 since I believe this should be caught by the ndk_headers checks/stubs checks/something.\n\nI\u0027ve also updated this here.",
+      "parentUuid": "32c050f7_864db365",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72497c76_ed879880",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 23
@@ -214,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "0d56586c_eb84a30c",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Yes, my bad. Updated.",
+      "parentUuid": "72497c76_ed879880",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62337573_aedaa5a4",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 23
@@ -225,6 +321,24 @@
       "writtenOn": "2018-08-28T18:14:56Z",
       "side": 1,
       "message": "Note that no documentation will be generated for this file unless it\u0027s in doxygen format (start\u0027s with `/**` instead of `/*`). You should also include an @file block at the top of the file, and need to wrap the whole file (everything after the #includes, include the @file block) with a @defgroup or @addtogroup in order for the API to actually be listed on dac.",
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927a282c_b82d2f54",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Hahaha. https://android-review.googlesource.com/c/platform/frameworks/native/+/735505/10/libs/binder/ndk/include_ndk/binder/AIBinder.h#31\n\nwrt /** /*, done\n\n\nCan @file not be derived? Can @addtogroup not be set in ndk_headers? Is the output respectable if I omit these? It seems like @file is WET, and @addtogroup would be less redundant and easier to declare elsewhere. Are these required?",
+      "parentUuid": "62337573_aedaa5a4",
       "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -245,6 +359,24 @@
       "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "541515c1_7c2278dd",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Done (everywhere I could find, and I\u0027ll keep this in mind).",
+      "parentUuid": "d3893bc3_9a98d2df",
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -271,6 +403,30 @@
     },
     {
       "key": {
+        "uuid": "9ab54d00_f61d5743",
+        "filename": "libs/binder/ndk/include_ndk/binder/AParcel.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f3a210d2_c6028815",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c68aa06e_f3ab520f",
         "filename": "libs/binder/ndk/include_ndk/binder/AParcel.h",
         "patchSetId": 23
@@ -291,6 +447,30 @@
       "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f3f9bd1_9c219361",
+        "filename": "libs/binder/ndk/include_ndk/binder/AParcel.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c68aa06e_f3ab520f",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 91
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

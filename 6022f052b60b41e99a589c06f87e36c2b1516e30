@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0150fa1c_4f97ceb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Done w/ android/*.h. Thank you! This is exactly what I needed.\n\nI like this more than \u0027binder/status.h\u0027 since it looks too much like \u0027binder/Status.h\u0027.",
+      "parentUuid": "c454665e_8000b8c9",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e06dbc7_a8291d90",
         "filename": "/COMMIT_MSG",
         "patchSetId": 21
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "The pattern for Java interop is to have an NDK API in a \u003cclass\u003e_jni.h header that takes a JNIEnv* \u0026 jobject and you gives you back the NDK equivalent. Same for the reverse, native API that returns the jobject.\n\nAn example would be ANativeWindow_fromSurface and ANativeWindow_toSurface",
       "parentUuid": "281d3e00_13155a1a",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4557b00_2f730e63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Great. Thank you! :)",
+      "parentUuid": "76df4dda_b537074e",
       "range": {
         "startLine": 11,
         "startChar": 2,
@@ -214,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "aac42b90_75f79dc3",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f7de33cf_a28b115c",
+      "range": {
+        "startLine": 86,
+        "startChar": 36,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55cad2cf_54cf6410",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 21
@@ -309,6 +381,30 @@
     },
     {
       "key": {
+        "uuid": "0864ea90_7a518e9e",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Let me think about this a bit more.\n\nI think I could do this:\n- go back to using LocalNdkBinder (you can see some early patchsets)\n- make LocalNdkBinder have a strong pointer to user data\n\nI need to remember if there were any other reasons why I switched from that to this. One thing we would lose is pointer-equality of AIBinder objects in the same process. That might be worth it though since it is not guaranteed in the remote case (we\u0027ll need AIBinder_equals).\n\nDianne, do you have any thoughts on this? I may end up doing it soon, I just want to avoid potentially fruitless refactoring, and this would be easy to change later.",
+      "parentUuid": "8294a0ac_37d95145",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 52
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bdf3553e_1f7e9368",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 21
@@ -329,6 +425,30 @@
       "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef08732a_9349c7c6",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "I hadn\u0027t considered using an AIBinder**, and I agree that would be much easier.",
+      "parentUuid": "bdf3553e_1f7e9368",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 93
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -355,6 +475,30 @@
     },
     {
       "key": {
+        "uuid": "26c74dd3_305f888d",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "It\u0027s also useful to recover IFoo from an arbitrary AIBinder object (not needed in the current CL since I\u0027m not passing/receiving a binder object in a transaction.",
+      "parentUuid": "ad589aac_37896ee2",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 45
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33990fc0_69ead225",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 21
@@ -375,6 +519,30 @@
       "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f1295f4_58f0c2bb",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "This is the parcel that is going into the transaction. It is going into the remote process. It\u0027s created for you here (with the appropriate header). It\u0027s the one that is being sent. I\u0027ll clarify in the comments more (although also see the comment above as well \"A transaction is a series of calls\" ...)",
+      "parentUuid": "33990fc0_69ead225",
+      "range": {
+        "startLine": 157,
+        "startChar": 72,
+        "endLine": 157,
+        "endChar": 74
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -401,6 +569,30 @@
     },
     {
       "key": {
+        "uuid": "2258f4fa_dc21b18e",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Updated with additional comments (these functions handle the ownership of the parcel, and the out parcel still contains information from the kernel if it is oneway).",
+      "parentUuid": "b51cd579_0ac9e8a9",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 41
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe2d54fa_ef12e8e4",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 21
@@ -421,6 +613,30 @@
       "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76efdb54_82555a5a",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Updated in comments. Ownership is taken and the parcel is deleted (so no const)",
+      "parentUuid": "fe2d54fa_ef12e8e4",
+      "range": {
+        "startLine": 162,
+        "startChar": 77,
+        "endLine": 162,
+        "endChar": 88
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -467,6 +683,54 @@
       "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d48e03c_092dcf39",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Done (the actual transaction is in the above method, I\u0027ve added documentation there. I\u0027ve noted in all these functions that ownership of AIBinder is unchanged, and I\u0027ve also noted how these functions completely control the lifetime of the parcel object).",
+      "parentUuid": "a3754c1b_16da5c7f",
+      "range": {
+        "startLine": 165,
+        "startChar": 37,
+        "endLine": 165,
+        "endChar": 94
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "745e9e3f_01033471",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8f5f20c_6e32fb6f",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 32
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -538,6 +802,30 @@
       "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "460fa25e_9fd55792",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:14:48Z",
+      "side": 1,
+      "message": "I\u0027ve now updated comments above (on AIBinder/AIBinder_Weak) to this affect. I\u0027ve also renamed it.",
+      "parentUuid": "ea32768c_a8acbcae",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 55
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
