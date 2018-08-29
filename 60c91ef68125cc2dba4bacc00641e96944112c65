@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c9bf547_5dd545f2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T09:14:34Z",
+      "side": 1,
+      "message": "uploading this to ask do you think it\u0027s okay to just have:\n\nstruct AStatus {\n    binder_status_t error;\n    binder_status_t exception;\n    char* message;\n};\n\n?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "60c91ef68125cc2dba4bacc00641e96944112c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
