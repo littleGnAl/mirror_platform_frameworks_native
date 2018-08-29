@@ -14,26 +14,20 @@
  * limitations under the License.
  */
 
-cc_library {
-    name: "libbinder_ndk",
-    vendor_available: false,
+#include <android/binder_status.h>
+#include "AStatus_internal.h"
 
-    export_include_dirs: [
-        "include_ndk",
-        "include_apex",
-    ],
+using ::android::binder::Status;
 
-    srcs: [
-        "ABinderProcess.cpp",
-        "AIBinder.cpp",
-        "AParcel.cpp",
-        "AServiceManager.cpp",
-        "AStatus.cpp",
-    ],
-
-    shared_libs: [
-        "libbase",
-        "libbinder",
-        "libutils",
-    ],
+AStatus* AStatus_newOk() {
+    return new AStatus();
+}
+AStatus* AStatus_fromServiceSpecificError(binder_status_t ex) {
+    return new AStatus(Status::fromServiceSpecificError(ex));
+}
+AStatus* AStatus_fromServiceSpecificErrorWithMessage(binder_status_t ex, const char* message) {
+    return new AStatus(Status::fromServiceSpecificError(ex, message));
+}
+void AStatus_delete(AStatus* status) {
+    delete status;
 }

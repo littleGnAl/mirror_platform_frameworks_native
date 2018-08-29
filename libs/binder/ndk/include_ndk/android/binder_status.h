@@ -35,12 +35,6 @@ enum {
     EX_PARCELABLE = -9,
 
     /**
-     * This is special and Java specific; see Parcel.java.
-     * This should be considered a success, and the next readInt32 bytes can be ignored.
-     */
-    EX_HAS_REPLY_HEADER = -128,
-
-    /**
      * This is special, and indicates to native binder proxies that the
      * transaction has failed at a low level.
      */
@@ -48,9 +42,37 @@ enum {
 };
 
 /**
- * One of the above values or -errno.
- * By convention, positive values are considered to mean service-specific exceptions.
+ * One of the above values, -errno, or positive for custom service return values.
  */
 typedef int32_t binder_status_t;
+
+/**
+ * This is a helper class that encapsulates a standard way to keep track of and chain binder errors along with service specific errors.
+ *
+ * It is not required to be used in order to parcel/receive transactions, but it is required in order
+ * to be compatible with standard AIDL transactions.
+ */
+struct AStatus;
+typedef struct AStatus AStatus;
+
+/**
+ * New object which is considered a success.
+ */
+AStatus* AStatus_newOk();
+
+/**
+ * New object with a service speciic error.
+ */
+AStatus* AStatus_newServiceSpecific(binder_status_t ex);
+
+/**
+ * New object with a service specific error and message.
+ */
+AStatus* AStatus_newServiceSpecificWithMessage(binder_status_t ex, const char* message);
+
+/**
+ * Deletes memory associated with the status object.
+ */
+void AStatus_delete(AStatus* status);
 
 __END_DECLS
