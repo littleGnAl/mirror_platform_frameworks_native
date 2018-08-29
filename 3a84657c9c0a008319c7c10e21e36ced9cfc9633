@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "657fbf9b_7ab2b8a5",
+        "filename": "libs/binder/ndk/ABinderProcess.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-29T18:41:29Z",
+      "side": 1,
+      "message": "any particular reason to hide the error return value? I guess we can\u0027t use these in the NDK?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1f5fb0_64f81aa9",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-29T18:41:29Z",
+      "side": 1,
+      "message": "are you saying, somebody should never call associateClass() on a ABBinder? If so, maybe do this CHECK() earlier in this function? It just confused me here after the descriptor checking.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 61
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad767be_839071ee",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-29T18:41:29Z",
+      "side": 1,
+      "message": "how does this happen? I don\u0027t think this happens in regular libbinder; if you receive a reference to an object that is local in your process, the kernel will give a pointer to the node, which should be associated with the ABBinder - we don\u0027t wrap a proxy around it. I\u0027m pretty sure this doesn\u0027t happen in Java either (which solves a similar usecase).",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0def0676_f5573b50",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-29T18:41:29Z",
+      "side": 1,
+      "message": "aren\u0027t they always the same object? I guess the only case where that isn\u0027t true is where a proxy wraps a BBinder, which is a case I hope we should be able to prevent. In that case you could also get rid of the refcount ops here.",
+      "range": {
+        "startLine": 212,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2472e78_8f6e869a",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-29T18:41:29Z",
+      "side": 1,
+      "message": "nit: inconsistent with line 223 etc :)",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b2b106d_0ddcbba6",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-29T18:41:29Z",
+      "side": 1,
+      "message": "do you keep the Parcel in the binder only for sanity checking?",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 30
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3370abc_b5197906",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-29T18:41:29Z",
+      "side": 1,
+      "message": "Don\u0027t do this - it prevents us from settings flags that are introduced later, which may mean nothing to the binder NDK, but it may mean something to the kernel.",
+      "range": {
+        "startLine": 276,
+        "startChar": 4,
+        "endLine": 276,
+        "endChar": 38
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9838c4b0_bb176a56",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-29T18:41:29Z",
+      "side": 1,
+      "message": "nit: inconsistent with *in",
+      "range": {
+        "startLine": 295,
+        "startChar": 67,
+        "endLine": 295,
+        "endChar": 73
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90968063_4f0da7c1",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-29T18:41:29Z",
+      "side": 1,
+      "message": "similar to checking flags, it\u0027s a nice sanity check, but I wonder if it will limit us in the future. Would LOG(WARNING) do?",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
