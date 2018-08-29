@@ -405,6 +405,30 @@
     },
     {
       "key": {
+        "uuid": "9d9d5871_4a5c4e50",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T02:36:57Z",
+      "side": 1,
+      "message": "This would also require extra allocations:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/740001/2/libs/binder/ndk/utils/include/binder-utils/AutoAIBinder.h#31\n\nLet me really think about this for a bit. I\u0027ve noted it in the commit message, and I\u0027m sure no one will forget to revisit it. :)",
+      "parentUuid": "0864ea90_7a518e9e",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 52
+      },
+      "revId": "6022f052b60b41e99a589c06f87e36c2b1516e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bdf3553e_1f7e9368",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 21
