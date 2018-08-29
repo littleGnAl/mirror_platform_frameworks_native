@@ -1,0 +1,47 @@
+LIBBINDER_NDK {
+  global:
+    AIBinder_associateClass; # introduced=29
+    AIBinder_Class_define; # introduced=29
+    AIBinder_DeathRecipient_delete; # introduced=29
+    AIBinder_DeathRecipient_new; # introduced=29
+    AIBinder_debugGetRefCount; # introduced=29
+    AIBinder_decStrong; # introduced=29
+    AIBinder_getClass; # introduced=29
+    AIBinder_getUserData; # introduced=29
+    AIBinder_incStrong; # introduced=29
+    AIBinder_isAlive; # introduced=29
+    AIBinder_isRemote; # introduced=29
+    AIBinder_linkToDeath; # introduced=29
+    AIBinder_new; # introduced=29
+    AIBinder_ping; # introduced=29
+    AIBinder_prepareTransaction; # introduced=29
+    AIBinder_transact; # introduced=29
+    AIBinder_unlinkToDeath; # introduced=29
+    AIBinder_Weak_delete; # introduced=29
+    AIBinder_Weak_new; # introduced=29
+    AIBinder_Weak_promote; # introduced=29
+    AParcel_delete; # introduced=29
+    AParcel_readBool; # introduced=29
+    AParcel_readByte; # introduced=29
+    AParcel_readChar; # introduced=29
+    AParcel_readDouble; # introduced=29
+    AParcel_readFloat; # introduced=29
+    AParcel_readInt32; # introduced=29
+    AParcel_readInt64; # introduced=29
+    AParcel_readNullableStrongBinder; # introduced=29
+    AParcel_readStrongBinder; # introduced=29
+    AParcel_readUint32; # introduced=29
+    AParcel_readUint64; # introduced=29
+    AParcel_writeBool; # introduced=29
+    AParcel_writeByte; # introduced=29
+    AParcel_writeChar; # introduced=29
+    AParcel_writeDouble; # introduced=29
+    AParcel_writeFloat; # introduced=29
+    AParcel_writeInt32; # introduced=29
+    AParcel_writeInt64; # introduced=29
+    AParcel_writeStrongBinder; # introduced=29
+    AParcel_writeUint32; # introduced=29
+    AParcel_writeUint64; # introduced=29
+  local:
+    *;
+};
