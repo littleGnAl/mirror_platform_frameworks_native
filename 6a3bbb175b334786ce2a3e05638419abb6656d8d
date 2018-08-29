@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "91efdc4b_dc33c300",
+        "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-08-29T07:51:18Z",
+      "side": 1,
+      "message": "I commented on the bug about getting a test for NDK headers to remain C-only. As far as C++ ABI stability, our only concern has always been STL-related issues. If you can avoid exporting APIs with the STL, C++ APIs should be fine. Any actual compiler ABI change is going to require all sorts of troubling compatibility work for the entire platform (because of VNDK, etc.), so we ultimately would have to still produce the same mangled symbol name + a working implementation for those cases.",
+      "parentUuid": "783b89a4_b7505b0f",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "6a3bbb175b334786ce2a3e05638419abb6656d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72497c76_ed879880",
         "filename": "libs/binder/ndk/include_ndk/binder/AIBinder.h",
         "patchSetId": 23
