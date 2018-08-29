@@ -20,21 +20,45 @@
 #include <stdint.h>
 #include <sys/types.h>
 
+#include <utils/Flattenable.h>
 #include <utils/Timers.h>
 
 namespace android {
 
-struct DisplayInfo {
-    uint32_t w{0};
-    uint32_t h{0};
-    float xdpi{0};
-    float ydpi{0};
-    float fps{0};
-    float density{0};
-    uint8_t orientation{0};
-    bool secure{false};
-    nsecs_t appVsyncOffset{0};
-    nsecs_t presentationDeadline{0};
+class DisplayInfo : public LightFlattenable<DisplayInfo>
+{
+public:
+    constexpr DisplayInfo(uint32_t _w=0, uint32_t _h=0, float _xdpi=0.0, float _ydpi=0.0,
+                          float _fps=0.0, float _density=0.0, uint8_t _orientation=0,
+                          bool _secure=false, nsecs_t _appVsyncOffset=0,
+                          nsecs_t _presentationDeadline=0)
+    : w(_w),
+      h(_h),
+      xdpi(_xdpi),
+      ydpi(_ydpi),
+      fps(_fps),
+      density(_density),
+      orientation(_orientation),
+      secure(_secure),
+      appVsyncOffset(_appVsyncOffset),
+      presentationDeadline(_presentationDeadline) {}
+
+    uint32_t w;
+    uint32_t h;
+    float xdpi;
+    float ydpi;
+    float fps;
+    float density;
+    uint8_t orientation;
+    bool secure;
+    nsecs_t appVsyncOffset;
+    nsecs_t presentationDeadline;
+
+    // Flattenable protocol
+    inline bool isFixedSize() const { return false; }
+    size_t getFlattenedSize() const;
+    status_t flatten(void* buffer, size_t size) const;
+    status_t unflatten(void const* buffer, size_t size);
 };
 
 /* Display orientations as defined in Surface.java and ISurfaceComposer.h. */

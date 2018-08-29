@@ -144,6 +144,9 @@ protected:
         ssize_t displayWidth = info.w;
         ssize_t displayHeight = info.h;
 
+        ASSERT_GT(displayWidth, 0) << "invalid display width";
+        ASSERT_GT(displayHeight, 0) << "invalid display height";
+
         // Background surface
         mBGSurfaceControl = mComposerClient->createSurface(
                 String8("BG Interceptor Test Surface"), displayWidth, displayHeight,

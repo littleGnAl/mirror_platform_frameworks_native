@@ -308,9 +308,9 @@ public:
             configs->clear();
             configs->resize(numConfigs);
             for (size_t c = 0; c < numConfigs; ++c) {
-                memcpy(&(configs->editItemAt(c)),
-                        reply.readInplace(sizeof(DisplayInfo)),
-                        sizeof(DisplayInfo));
+                result = reply.read(configs->editItemAt(c));
+                if (result != NO_ERROR)
+                    break;
             }
         }
         return result;
@@ -706,11 +706,12 @@ status_t BnSurfaceComposer::onTransact(
             if (result == NO_ERROR) {
                 reply->writeUint32(static_cast<uint32_t>(configs.size()));
                 for (size_t c = 0; c < configs.size(); ++c) {
-                    memcpy(reply->writeInplace(sizeof(DisplayInfo)),
-                            &configs[c], sizeof(DisplayInfo));
-                }
+                    result = reply->write(configs[c]);
+                    if (result != NO_ERROR)
+                        break;
+               }
             }
-            return NO_ERROR;
+            return result;
         }
         case GET_DISPLAY_STATS: {
             CHECK_INTERFACE(ISurfaceComposer, data, reply);

@@ -387,6 +387,9 @@ private:
         mDisplayWidth = info.w;
         mDisplayHeight = info.h;
 
+        ASSERT_GT(mDisplayWidth, 0u) << "invalid display width";
+        ASSERT_GT(mDisplayHeight, 0u) << "invalid display height";
+
         // After a new buffer is queued, SurfaceFlinger is notified and will
         // latch the new buffer on next vsync.  Let's heuristically wait for 3
         // vsyncs.
@@ -1514,6 +1517,9 @@ protected:
 
         ssize_t displayWidth = info.w;
         ssize_t displayHeight = info.h;
+
+        ASSERT_GT(displayWidth, 0) << "invalid display width";
+        ASSERT_GT(displayHeight, 0) << "invalid display height";
 
         // Background surface
         mBGSurfaceControl =
