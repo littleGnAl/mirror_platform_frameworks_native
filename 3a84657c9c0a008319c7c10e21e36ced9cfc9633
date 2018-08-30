@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d226a31_eee1e6a9",
+        "filename": "libs/binder/ndk/ABinderProcess.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T01:11:45Z",
+      "side": 1,
+      "message": "I may completely redo this part of the API (depending on how APEX works out), so I didn\u0027t spend much time on it. This API already logs its failures. No real reason to expose the complexity for now.",
+      "parentUuid": "657fbf9b_7ab2b8a5",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc1f5fb0_64f81aa9",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -45,6 +69,30 @@
       "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca56d66_7a144c83",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T01:11:45Z",
+      "side": 1,
+      "message": "No, it\u0027s just handled above. If they call it on an ABBinder, it\u0027s guaranteed to be resolved at this point.",
+      "parentUuid": "dc1f5fb0_64f81aa9",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 61
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "df905a34_1cab89c4",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T01:11:45Z",
+      "side": 1,
+      "message": "This is something I\u0027ll need to find a solution for in regular binder as well (and I\u0027ll have to add another patchset to handle or disable libbinder\u003c-\u003elibbinder_ndk transactions).\n\nEssentially, I don\u0027t know if this is an ABBinder object until I can confirm that it is with the descriptor. It could be a BnInterface object (or a subclass of that), and so casting it to that type isn\u0027t valid.\n\nThis really should use something like IBinder::attachObject to confirm the situation further, but I don\u0027t want to handle that in this CL (it\u0027s already too big).",
+      "parentUuid": "aad767be_839071ee",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0def0676_f5573b50",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -91,6 +163,30 @@
       "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "563bb7a1_02cead87",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T01:11:45Z",
+      "side": 1,
+      "message": "They aren\u0027t the same in the above case when we understand that a local ABpBinder object\u0027s remote is actually an ABBinder.",
+      "parentUuid": "0def0676_f5573b50",
+      "range": {
+        "startLine": 212,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "de83632c_b1c23409",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T01:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2472e78_8f6e869a",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b2b106d_0ddcbba6",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -137,6 +257,30 @@
       "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d9f0e71_069d94c3",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T01:11:45Z",
+      "side": 1,
+      "message": "Yes and the reason I went to such great lengths is so that if I need to use a value from the AIBinder in finalizeTransaction, I am guaranteed that a developer didn\u0027t actually mix up binders. It\u0027s also a helpful warning to the developer as you never want to do this.",
+      "parentUuid": "9b2b106d_0ddcbba6",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 30
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "cf17656f_ef2f30de",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T01:11:45Z",
+      "side": 1,
+      "message": "This prevents the user of the NDK binder API from setting flags. If I want to expose more to them, I\u0027ll also have to add things here.",
+      "parentUuid": "a3370abc_b5197906",
+      "range": {
+        "startLine": 276,
+        "startChar": 4,
+        "endLine": 276,
+        "endChar": 38
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9838c4b0_bb176a56",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "b1dc37d3_1e10a979",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T01:11:45Z",
+      "side": 1,
+      "message": "the signature of transact is \u0027..., const Parcel\u0026 data, Parcel* reply\u0027. This inconsistency is because in is of type AParcel*, but out is of type AParcel**. However, they are now fixed. I think using operator-\u003e like this is gross, and may rename it to \u0027getBinderParcel\u0027 at some point, but meh.",
+      "parentUuid": "9838c4b0_bb176a56",
+      "range": {
+        "startLine": 295,
+        "startChar": 67,
+        "endLine": 295,
+        "endChar": 73
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90968063_4f0da7c1",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -206,6 +398,30 @@
       "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6551eca_b7f40835",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T01:11:45Z",
+      "side": 1,
+      "message": "Better to error now and fix it later if we have to. This is something we can always fix (best case, here, worst case, :(, \u0027finalizePartialTransaction\u0027). Before I forget, I filed b/113542980 to check this for AIDL/HIDL as it may expose some bugs there.",
+      "parentUuid": "90968063_4f0da7c1",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
