@@ -761,6 +761,30 @@
     },
     {
       "key": {
+        "uuid": "051ad9a3_a00bd9f0",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T09:04:14Z",
+      "side": 1,
+      "message": "But you will print the error message here for no reason, and EX_ILLEGAL_STATE may be different from what you want to return. For the record, I still don\u0027t think we should do this anywhere, but if we do it, libbinder is probably a better place.",
+      "parentUuid": "03fa72d2_5a4b525c",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7a3101d_23ebe9eb",
         "filename": "libs/binder/ndk/AServiceManager.cpp",
         "patchSetId": 29
@@ -844,6 +868,30 @@
       "side": 1,
       "message": "If it is local, it may be an instance of *BnInterface (I said BpInterface before incorrectly). I can\u0027t cast a BnInterface object to an ABBinder object.",
       "parentUuid": "b747afba_108f3476",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38d14a35_5b930b76",
+        "filename": "libs/binder/ndk/AServiceManager.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T09:04:14Z",
+      "side": 1,
+      "message": "No, but could you do the descriptor checking similar to what you do in AIBinder::attachClass() here, and return nullptr if it fails? It just seems wrong to wrap this in a proxy class just to be able to do sanity checking later, and then unpack it back to a ABBinder.",
+      "parentUuid": "f329f4ce_a5c9c3ad",
       "range": {
         "startLine": 44,
         "startChar": 20,
