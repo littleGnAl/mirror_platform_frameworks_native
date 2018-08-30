@@ -523,6 +523,30 @@
     },
     {
       "key": {
+        "uuid": "26980968_b4064f2e",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T08:58:21Z",
+      "side": 1,
+      "message": "Dan/John?",
+      "parentUuid": "cd6c6e58_14eb19e7",
+      "range": {
+        "startLine": 276,
+        "startChar": 4,
+        "endLine": 276,
+        "endChar": 38
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9838c4b0_bb176a56",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -713,6 +737,30 @@
     },
     {
       "key": {
+        "uuid": "03fa72d2_5a4b525c",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T08:58:21Z",
+      "side": 1,
+      "message": "wrt complicated error handling, you just call this method to clean up the parcel, and it returns an error (which you were already going to return anyway)\nwrt doing this here and not in libbinder, I\u0027m going to investigate it in libbinder, and if I am able to add it there, I\u0027ll remove it here.",
+      "parentUuid": "a87c67bf_e74d1e00",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7a3101d_23ebe9eb",
         "filename": "libs/binder/ndk/AServiceManager.cpp",
         "patchSetId": 29
@@ -772,6 +820,30 @@
       "side": 1,
       "message": "I\u0027m trying to say, why not use binder-\u003eremoteBinder() to determine if this is remote or not? Wrapping a local object in a proxy is never the right thing to do, independent of how we solve the problem of binder NDK vs libbinder objects.",
       "parentUuid": "a20af5a1_d3424c81",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f329f4ce_a5c9c3ad",
+        "filename": "libs/binder/ndk/AServiceManager.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T08:58:21Z",
+      "side": 1,
+      "message": "If it is local, it may be an instance of *BnInterface (I said BpInterface before incorrectly). I can\u0027t cast a BnInterface object to an ABBinder object.",
+      "parentUuid": "b747afba_108f3476",
       "range": {
         "startLine": 44,
         "startChar": 20,
