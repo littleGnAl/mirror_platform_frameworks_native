@@ -475,6 +475,30 @@
     },
     {
       "key": {
+        "uuid": "765fa9b3_89d8e8d7",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T08:00:43Z",
+      "side": 1,
+      "message": "AFAIK, the mechanisms for deprecation are slightly different in the NDK. If you upgrade your target level to use new things, you\u0027re not allowed to ship on the old devices. I could be misunderstanding this.\n\nIf this is a problem though, I can remove the check. Dan/John?",
+      "parentUuid": "3e8528d4_d5c77445",
+      "range": {
+        "startLine": 276,
+        "startChar": 4,
+        "endLine": 276,
+        "endChar": 38
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9838c4b0_bb176a56",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -617,6 +641,30 @@
     },
     {
       "key": {
+        "uuid": "6b2d321a_f0723ba9",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T08:00:43Z",
+      "side": 1,
+      "message": "I think my other comment is the case. For instance, imagine I fix this problem by adding a method like \u0027AParcel_setDataPosition\u0027 (also for getting/getting data available, etc..). People wanting to not read all the data should then just set the data position to the end. However, there is no way for these people to link against this method on old devices (or use it since it doesn\u0027t exist). If we aggressively used weak symbols in our headers, we could add new APIs like this (and be expected to have forwards compatibility like you are suggesting), but we don\u0027t do this. Alternatively, we could just require app developers to read all the data on devices until this restriction was removed.\n\nEither way, I don\u0027t want to lift this specific restriction. I\u0027ll probably add setDataPosition in a follow-up CL relatively soon in this release. I think being knowledgeable about the state that you might accidentally forget (by throwing this error) is really helpful and a good for developers.",
+      "parentUuid": "1272b76b_08b7d7ac",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7a3101d_23ebe9eb",
         "filename": "libs/binder/ndk/AServiceManager.cpp",
         "patchSetId": 29
@@ -628,6 +676,30 @@
       "writtenOn": "2018-08-30T07:40:25Z",
       "side": 1,
       "message": "I guess this is the place where you can wrap a ABBinder with ABpBinder. So I guess what you really want to do here is verify that this is an AIBinder; and if it is, you can check if it\u0027s remote, and then return a proxy, or otherwise just return the object. If it\u0027s not an AIBinder, I guess you can\u0027t use it (unless we find some way to deal with that...).\n\nFor now I guess you could also just assume this is an AIBinder, use isRemote() to determine if it\u0027s a proxy or not, and then forget about the wrapping case. You anyway don\u0027t deal with the fact that this could be another object in this PS, so why wrap it. But up to you.",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a20af5a1_d3424c81",
+        "filename": "libs/binder/ndk/AServiceManager.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T08:00:43Z",
+      "side": 1,
+      "message": "You\u0027re allowed to use AServiceManager_getService if you\u0027re using this library in any context that is not an app. If this library is loaded into a process that has already pulled in another service using libbinder, then calling getService on that service will give you a subclass of BpInterface. So, I can\u0027t make that assumption here.\n\nAlso, I did try using attachObject on IBinder to make this distinction in this place a couple of days ago. I got it to work (some minor problems, maybe in my attempt), but that API isn\u0027t well tested and is a bit hairy. Once I have a chance to look into this more, I\u0027ll fix interactions between this and libbinder (and also HIDL as well). This would also mean simplifying AIBinder_associateClass.",
+      "parentUuid": "e7a3101d_23ebe9eb",
       "range": {
         "startLine": 44,
         "startChar": 20,
