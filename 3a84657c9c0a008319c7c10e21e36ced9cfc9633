@@ -857,6 +857,30 @@
     },
     {
       "key": {
+        "uuid": "4f138a63_5ad78207",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T11:48:53Z",
+      "side": 1,
+      "message": "I\u0027m going to follow this up in that separate bug.",
+      "parentUuid": "4a871aa9_aaed29b3",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7a3101d_23ebe9eb",
         "filename": "libs/binder/ndk/AServiceManager.cpp",
         "patchSetId": 29
@@ -1012,6 +1036,30 @@
       "side": 1,
       "message": "No, this PS is assuming that if it receives an IBinder, and its interface descriptor matches the one that you pass into AIBinder::associateClass(), then that it must be an AIBinder object. It\u0027s TBD whether that logic will suffice, and I\u0027m fine ignoring that for now. But my point is that that logic doesn\u0027t belong in the proxy class. You shouldn\u0027t have to instantiate an ABpBinder to determine if something is really an ABpBinder or in fact a ABBinder.",
       "parentUuid": "d5864068_d8f9a0d8",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4986f7e2_bd3084c6",
+        "filename": "libs/binder/ndk/AServiceManager.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T11:48:53Z",
+      "side": 1,
+      "message": "It checks pointer equality on the class object, not just descriptor equality. Like I said, I already have a plan for fixing this to avoid having to create this here, but this CL is already too big. For now, it\u0027s accurate with what it has got.\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/735505/29/libs/binder/ndk/AIBinder.cpp#44",
+      "parentUuid": "103e8b83_2244b432",
       "range": {
         "startLine": 44,
         "startChar": 20,
