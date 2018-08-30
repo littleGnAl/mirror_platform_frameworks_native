@@ -1093,6 +1093,30 @@
       "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee087e7f_a10f4644",
+        "filename": "libs/binder/ndk/AServiceManager.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T11:55:36Z",
+      "side": 1,
+      "message": "That is besides the point; whatever you check, checking it in the proxy is the wrong place for it. BTW, isn\u0027t pointer equality on the class also dangerous? An unaware user of this API could instantiate two different classes with the same content, expecting things to work?\n\nIf you\u0027re telling me that whatever is going to ship won\u0027t wrap native objects in proxy objects, I\u0027m fine with that. I just thought this PS would become smaller and easier to understand for those who still want to review it later.",
+      "parentUuid": "4986f7e2_bd3084c6",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
