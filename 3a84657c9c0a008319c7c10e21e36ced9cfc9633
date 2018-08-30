@@ -547,6 +547,30 @@
     },
     {
       "key": {
+        "uuid": "b2711ca0_bb218bbf",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T09:25:16Z",
+      "side": 1,
+      "message": "(pinging not out of impatience but due to these other longer responses)",
+      "parentUuid": "26980968_b4064f2e",
+      "range": {
+        "startLine": 276,
+        "startChar": 4,
+        "endLine": 276,
+        "endChar": 38
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9838c4b0_bb176a56",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -785,6 +809,30 @@
     },
     {
       "key": {
+        "uuid": "85553b7c_e1447dbc",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T09:25:16Z",
+      "side": 1,
+      "message": "All current usages of AIDL/HIDL that I can think of right now assume they read the whole parcel. Requiring extra work to ignore possible errors and explicitly calling out when they want to do this is okay, especially when it\u0027s a hypothetical case (do you have an example?). This is like how a compiler throws a warning when a variable is unused. Accidentally missing information like this could cause some pretty insidious errors. The exact layout of the parcel/how it works is a blackbox to most (including myself until I started working on this). Having this notification that something is going wrong is very helpful to the developer. Since that developer is going to be me for the time being, I\u0027d prefer to keep this in for now.\n\nThere is also a more abstract motivation behind this (and part of the reason why I have hesitated to add setDataPos/getDataPos/etc...). Being able to do these things means that you can make really complicated data structures. For instance, you could design algorithms where you have to jump back and forth in the parcel to read the information. This is totally unnecessary. I don\u0027t want anyone even approaching this. Binder is already unforgiving. Even with scatter gather, you still read (therefore copy) the parcel itself serially. No craziness is necessary here. I would be pleasantly surprised to find a case where this would be justified.\n\n\u003e EX_ILLEGAL_STATE may be different from what you want to return\n\nIn this hypothetical case, they should be aware of it and can return whatever code they want choose to. Perhaps I should add something like EX_REMAINING_PARCEL_DATA? I\u0027ll look into this in b/113542980.\n\n\nI\u0027ve also noted your concerns on b/113542980#comment2.",
+      "parentUuid": "051ad9a3_a00bd9f0",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7a3101d_23ebe9eb",
         "filename": "libs/binder/ndk/AServiceManager.cpp",
         "patchSetId": 29
@@ -892,6 +940,30 @@
       "side": 1,
       "message": "No, but could you do the descriptor checking similar to what you do in AIBinder::attachClass() here, and return nullptr if it fails? It just seems wrong to wrap this in a proxy class just to be able to do sanity checking later, and then unpack it back to a ABBinder.",
       "parentUuid": "f329f4ce_a5c9c3ad",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5864068_d8f9a0d8",
+        "filename": "libs/binder/ndk/AServiceManager.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T09:25:16Z",
+      "side": 1,
+      "message": "You\u0027re assuming that a given AIDL interface will only ever use libbinder or only ever use libbinder_ndk (that it won\u0027t support both). That is TBD. We can do this in a completely memory safe way by tagging the base object (IBinder). That seems like the right solution to me in general, so there is no reason to even allow accidentally collisions of descriptors in the same process.",
+      "parentUuid": "38d14a35_5b930b76",
       "range": {
         "startLine": 44,
         "startChar": 20,
