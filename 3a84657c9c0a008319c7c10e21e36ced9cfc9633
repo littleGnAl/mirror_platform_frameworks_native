@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a244891a_ec848df3",
+        "filename": "libs/binder/ndk/ABinderProcess.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T07:40:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d226a31_eee1e6a9",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc1f5fb0_64f81aa9",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "No, it\u0027s just handled above. If they call it on an ABBinder, it\u0027s guaranteed to be resolved at this point.",
       "parentUuid": "dc1f5fb0_64f81aa9",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 61
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b6449d3_c764ff38",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T07:40:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ca56d66_7a144c83",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "b4691bbf_eaee3404",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T07:40:25Z",
+      "side": 1,
+      "message": "Ah understood - see comment in AServiceManager also.",
+      "parentUuid": "df905a34_1cab89c4",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0def0676_f5573b50",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -178,6 +250,30 @@
       "side": 1,
       "message": "They aren\u0027t the same in the above case when we understand that a local ABpBinder object\u0027s remote is actually an ABBinder.",
       "parentUuid": "0def0676_f5573b50",
+      "range": {
+        "startLine": 212,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1da7bcbf_d474003b",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T07:40:25Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I meant. We should prevent that case (but ok to do in future PS).",
+      "parentUuid": "563bb7a1_02cead87",
       "range": {
         "startLine": 212,
         "startChar": 7,
@@ -284,6 +380,30 @@
     },
     {
       "key": {
+        "uuid": "91a12c05_3cd99747",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T07:40:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d9f0e71_069d94c3",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 30
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3370abc_b5197906",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -331,6 +451,30 @@
     },
     {
       "key": {
+        "uuid": "3e8528d4_d5c77445",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T07:40:25Z",
+      "side": 1,
+      "message": "My concern is that this limits future use of flags against code linking against an old version of the NDK. These flags are just a pass-through and don\u0027t affect the behavior of the NDK implementation. Example: We introduce a new flag in NDK v20, which has a certain behavior on new platforms, but is a no-op on older platforms. An app builds against NDK v20 and uses the constant; now it gets deployed to devices running an older version of the NDK, which will now reject such transactions because of the check here.\n\nMaybe there are common NDK patterns to prevent this?",
+      "parentUuid": "cf17656f_ef2f30de",
+      "range": {
+        "startLine": 276,
+        "startChar": 4,
+        "endLine": 276,
+        "endChar": 38
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9838c4b0_bb176a56",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -366,6 +510,30 @@
       "side": 1,
       "message": "the signature of transact is \u0027..., const Parcel\u0026 data, Parcel* reply\u0027. This inconsistency is because in is of type AParcel*, but out is of type AParcel**. However, they are now fixed. I think using operator-\u003e like this is gross, and may rename it to \u0027getBinderParcel\u0027 at some point, but meh.",
       "parentUuid": "9838c4b0_bb176a56",
+      "range": {
+        "startLine": 295,
+        "startChar": 67,
+        "endLine": 295,
+        "endChar": 73
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3feb861b_799a8957",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T07:40:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b1dc37d3_1e10a979",
       "range": {
         "startLine": 295,
         "startChar": 67,
@@ -418,6 +586,53 @@
         "startChar": 4,
         "endLine": 321,
         "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1272b76b_08b7d7ac",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T07:40:25Z",
+      "side": 1,
+      "message": "Right, the worry here is the same as above; if we want to allow this in the future for whatever reason, we can\u0027t go back and retro-actively change the NDK on already shipped devices.",
+      "parentUuid": "a6551eca_b7f40835",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a3101d_23ebe9eb",
+        "filename": "libs/binder/ndk/AServiceManager.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T07:40:25Z",
+      "side": 1,
+      "message": "I guess this is the place where you can wrap a ABBinder with ABpBinder. So I guess what you really want to do here is verify that this is an AIBinder; and if it is, you can check if it\u0027s remote, and then return a proxy, or otherwise just return the object. If it\u0027s not an AIBinder, I guess you can\u0027t use it (unless we find some way to deal with that...).\n\nFor now I guess you could also just assume this is an AIBinder, use isRemote() to determine if it\u0027s a proxy or not, and then forget about the wrapping case. You anyway don\u0027t deal with the fact that this could be another object in this PS, so why wrap it. But up to you.",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 42
       },
       "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
