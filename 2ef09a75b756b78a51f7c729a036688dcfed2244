@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfe16601_249886ef",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-08-30T01:07:46Z",
+      "side": 1,
+      "message": "Can\u0027t do something like ASSERT_TRUE(cond(..., \u0026error_msg)) \u003c\u003c error_msg?",
+      "range": {
+        "startLine": 223,
+        "startChar": 8,
+        "endLine": 226,
+        "endChar": 9
+      },
+      "revId": "2ef09a75b756b78a51f7c729a036688dcfed2244",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
