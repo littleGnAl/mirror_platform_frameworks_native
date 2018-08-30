@@ -1117,6 +1117,30 @@
       "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf6b298_a8e0ff14",
+        "filename": "libs/binder/ndk/AServiceManager.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-30T12:06:25Z",
+      "side": 1,
+      "message": "In practice, it really doesn\u0027t matter here right now, and I will be fixing it in another patchset. I could do as your suggesting and make this patchset shorter, but I\u0027d rather just fix it the right way w/ attachObject next.",
+      "parentUuid": "ee087e7f_a10f4644",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
