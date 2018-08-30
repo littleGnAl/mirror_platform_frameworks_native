@@ -1,0 +1,10 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Code-Review+2: Jeff Sharkey <jsharkey@google.com>
+Verified+1: Andreas Gampe <agampe@google.com>
+Autosubmit+1: Andreas Gampe <agampe@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 30 Aug 2018 14:52:49 +0000
+Reviewed-on: https://android-review.googlesource.com/741507
+Project: platform/frameworks/native
+Branch: refs/heads/master
