@@ -22,6 +22,30 @@
       "revId": "2ef09a75b756b78a51f7c729a036688dcfed2244",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75c52b4f_7d007aa2",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-08-30T14:52:34Z",
+      "side": 1,
+      "message": "Returning an AssertionResult object is the standard GoogleTest idiom for helper functions, as it allows to change control-flow in the caller and shows the right failure line (in the caller, not in the helper - which is important as no stack is shown). So this is intentional.",
+      "parentUuid": "cfe16601_249886ef",
+      "range": {
+        "startLine": 223,
+        "startChar": 8,
+        "endLine": 226,
+        "endChar": 9
+      },
+      "revId": "2ef09a75b756b78a51f7c729a036688dcfed2244",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
