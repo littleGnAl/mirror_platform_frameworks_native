@@ -833,6 +833,30 @@
     },
     {
       "key": {
+        "uuid": "4a871aa9_aaed29b3",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T11:42:48Z",
+      "side": 1,
+      "message": "I do agree this makes sense for auto-generated code sitting on top of this, which can\u0027t know what parts of the Parcel are relevant or not, and so has to pass everything on to the receiver. And in those cases it would probably be a bug if you don\u0027t read it all, though I think such bugs would easily be discovered (as I said, I don\u0027t recall having that issue with libbinder, but perhaps others have).\n\nI\u0027m more worried about manual use in the NDK, where you can couple the data in the Parcel with local state; for example, let\u0027s say you ask another process about meta-data for something which is identified by some integer; then when you get the return Parcel, you could read that integer first, and depending on the value and your current state, you may not care about reading the rest of the Parcel. Then being forced to call a setDataPos() API to prevent an unrecoverable error here is unfortunate.\n\nIn the end how you interpret the contents of the Parcel and whether you need all of it is out-of-scope for this library, which is just concerned with reading/writing it and sending it over binder.\n\nPerhaps a flag or another way to indicate that you want this, and not enable it by default? Or, offer a dataRemaining() API for auto-gen code to use to ensure it read it all?\n\nI\u0027d also be curious to know what others think about this.",
+      "parentUuid": "85553b7c_e1447dbc",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7a3101d_23ebe9eb",
         "filename": "libs/binder/ndk/AServiceManager.cpp",
         "patchSetId": 29
@@ -964,6 +988,30 @@
       "side": 1,
       "message": "You\u0027re assuming that a given AIDL interface will only ever use libbinder or only ever use libbinder_ndk (that it won\u0027t support both). That is TBD. We can do this in a completely memory safe way by tagging the base object (IBinder). That seems like the right solution to me in general, so there is no reason to even allow accidentally collisions of descriptors in the same process.",
       "parentUuid": "38d14a35_5b930b76",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "103e8b83_2244b432",
+        "filename": "libs/binder/ndk/AServiceManager.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T11:42:48Z",
+      "side": 1,
+      "message": "No, this PS is assuming that if it receives an IBinder, and its interface descriptor matches the one that you pass into AIBinder::associateClass(), then that it must be an AIBinder object. It\u0027s TBD whether that logic will suffice, and I\u0027m fine ignoring that for now. But my point is that that logic doesn\u0027t belong in the proxy class. You shouldn\u0027t have to instantiate an ABpBinder to determine if something is really an ABpBinder or in fact a ABBinder.",
+      "parentUuid": "d5864068_d8f9a0d8",
       "range": {
         "startLine": 44,
         "startChar": 20,
