@@ -499,6 +499,30 @@
     },
     {
       "key": {
+        "uuid": "cd6c6e58_14eb19e7",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T08:54:31Z",
+      "side": 1,
+      "message": "I think you\u0027re right. It does seem like a waste though - if we want to add a new flag which doesn\u0027t break older platforms, you\u0027re now forced to drop support for all older platforms, even when there was no real need to. Is APP_PLATFORM actually enforced at run-time (eg you can\u0027t download/run an app which with APP_PLATFORM set to Y on a device with MIN_SDK \u003c Y), or is it more of a we don\u0027t support this, and good luck if you screw it up?",
+      "parentUuid": "765fa9b3_89d8e8d7",
+      "range": {
+        "startLine": 276,
+        "startChar": 4,
+        "endLine": 276,
+        "endChar": 38
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9838c4b0_bb176a56",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
@@ -665,6 +689,30 @@
     },
     {
       "key": {
+        "uuid": "a87c67bf_e74d1e00",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T08:54:31Z",
+      "side": 1,
+      "message": "I think the answer to this hinges on the answer above.\n\nBut I can also think of quite some scenarios where you don\u0027t want to bother reading the rest of the Parcel (eg error scenarios when parsing), and now you need to reset the position with your new API in all those cases. I\u0027m just not sure it\u0027ll benefit us that much, given that most parsing code will be auto-generated (and correct), and you\u0027d find out pretty quickly if you don\u0027t have data that you need. I don\u0027t think this particular thing has ever bitten us with regular binder.\n\nAlso this lib is mostly a C API around libbinder, and it feels like the wrong place to do some of this sanity checking.",
+      "parentUuid": "6b2d321a_f0723ba9",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7a3101d_23ebe9eb",
         "filename": "libs/binder/ndk/AServiceManager.cpp",
         "patchSetId": 29
@@ -700,6 +748,30 @@
       "side": 1,
       "message": "You\u0027re allowed to use AServiceManager_getService if you\u0027re using this library in any context that is not an app. If this library is loaded into a process that has already pulled in another service using libbinder, then calling getService on that service will give you a subclass of BpInterface. So, I can\u0027t make that assumption here.\n\nAlso, I did try using attachObject on IBinder to make this distinction in this place a couple of days ago. I got it to work (some minor problems, maybe in my attempt), but that API isn\u0027t well tested and is a bit hairy. Once I have a chance to look into this more, I\u0027ll fix interactions between this and libbinder (and also HIDL as well). This would also mean simplifying AIBinder_associateClass.",
       "parentUuid": "e7a3101d_23ebe9eb",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b747afba_108f3476",
+        "filename": "libs/binder/ndk/AServiceManager.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-08-30T08:54:31Z",
+      "side": 1,
+      "message": "I\u0027m trying to say, why not use binder-\u003eremoteBinder() to determine if this is remote or not? Wrapping a local object in a proxy is never the right thing to do, independent of how we solve the problem of binder NDK vs libbinder objects.",
+      "parentUuid": "a20af5a1_d3424c81",
       "range": {
         "startLine": 44,
         "startChar": 20,
