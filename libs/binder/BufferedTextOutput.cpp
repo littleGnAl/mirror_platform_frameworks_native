@@ -189,13 +189,13 @@ status_t BufferedTextOutput::print(const char* txt, size_t len)
                 // them out without going through the buffer.
                 
                 // Slurp up all of the lines.
-                const char* lastLine = txt+1;
+                const char* lastLine = txt;
                 while (txt < end) {
                     if (*txt++ == '\n') lastLine = txt;
                 }
                 struct iovec vec;
                 vec.iov_base = (void*)first;
-                vec.iov_len = lastLine-first;
+                vec.iov_len = lastLine-first-1;
                 //printf("Writing %d bytes of data!\n", vec.iov_len);
                 writeLines(vec, 1);
                 txt = lastLine;
