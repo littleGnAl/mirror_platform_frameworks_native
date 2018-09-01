@@ -34,7 +34,7 @@ cc_library_shared {
         "liblog",
         "libutils",
         "libui",
-        "libhardware_legacy",
+        "libpower",
     ],
 
     cflags: [

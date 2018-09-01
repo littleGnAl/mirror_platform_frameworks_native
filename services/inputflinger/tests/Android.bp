@@ -18,7 +18,7 @@ cc_test {
         "liblog",
         "libutils",
         "libhardware",
-        "libhardware_legacy",
+        "libpower",
         "libui",
         "libinput",
         "libinputflinger",
