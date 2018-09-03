@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d42a5feb_bea28447",
+        "filename": "services/inputflinger/EventHub.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1283092
+      },
+      "writtenOn": "2018-09-03T17:20:44Z",
+      "side": 1,
+      "message": "Consider using a struct for better readability",
+      "revId": "7c105bb64f93396431d9bd58826885f0791399f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419c9dfe_6f8deb3a",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1283092
+      },
+      "writtenOn": "2018-09-03T17:20:44Z",
+      "side": 1,
+      "message": "Consider creating a separate named const for \"2\".\nBTW, why 2?",
+      "revId": "7c105bb64f93396431d9bd58826885f0791399f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "552fe85e_c2785439",
+        "filename": "services/inputflinger/InputReader.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1283092
+      },
+      "writtenOn": "2018-09-03T17:20:44Z",
+      "side": 1,
+      "message": "Consider using a typedef for better readability",
+      "revId": "7c105bb64f93396431d9bd58826885f0791399f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
