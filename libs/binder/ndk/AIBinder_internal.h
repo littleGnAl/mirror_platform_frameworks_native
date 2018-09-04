@@ -108,3 +108,20 @@ private:
     // one.
     const ::android::String16 mInterfaceDescriptor;
 };
+
+struct AIBinder_DeathRecipient {
+    struct FunctionOnDeath : ::android::IBinder::DeathRecipient {
+        FunctionOnDeath(AIBinder_DeathRecipient_onBinderDied onDied) : mOnDied(onDied) {}
+        void binderDied(const ::android::wp<::android::IBinder>& /*who*/) override { mOnDied(); }
+
+    private:
+        AIBinder_DeathRecipient_onBinderDied mOnDied;
+    };
+
+    AIBinder_DeathRecipient(AIBinder_DeathRecipient_onBinderDied onDied);
+
+    ::android::sp<FunctionOnDeath> getRecipient() { return mDeathRecipient; }
+
+private:
+    ::android::sp<FunctionOnDeath> mDeathRecipient;
+};
