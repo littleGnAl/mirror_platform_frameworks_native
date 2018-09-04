@@ -97,6 +97,12 @@ struct AIBinder_Weak;
 typedef struct AIBinder_Weak AIBinder_Weak;
 
 /**
+ * Represents a handle on a death notification. See AIBinder_linkToDeath/AIBinder_unlinkToDeath.
+ */
+struct AIBinder_DeathRecipient;
+typedef struct AIBinder_DeathRecipient AIBinder_DeathRecipient;
+
+/**
  * This is called whenever a new AIBinder object is needed of a specific class.
  *
  * These arguments are passed from AIBinder_new. The return value is stored and can be retrieved
@@ -156,6 +162,21 @@ bool AIBinder_isAlive(const AIBinder* binder);
  * Built-in transaction for all binder objects. This sends a transaction and returns no data.
  */
 binder_status_t AIBinder_ping(AIBinder* binder);
+
+/**
+ * Registers for notifications that the associated binder is dead. The same death recipient may be
+ * associated with multiple different binders. If the binder is local, then no death recipient will
+ * be given (since if the local process dies, then no recipient will exist to recieve a
+ * transaction).
+ */
+binder_status_t AIBinder_linkToDeath(AIBinder* binder, AIBinder_DeathRecipient* recipient,
+                                     void* cookie);
+
+/**
+ * Stops registration for the associated binder dying. Does not delete the recipient.
+ */
+binder_status_t AIBinder_unlinkToDeath(AIBinder* binder, AIBinder_DeathRecipient* recipient,
+                                       void* cookie);
 
 /**
  * This can only be called if a strong reference to this object already exists in process.
@@ -247,5 +268,23 @@ void AIBinder_Weak_delete(AIBinder_Weak* weakBinder);
  * nullptr.
  */
 __attribute__((warn_unused_result)) AIBinder* AIBinder_Weak_promote(AIBinder_Weak* weakBinder);
+
+/**
+ * This function is executed on death receipt. See AIBinder_linkToDeath/AIBinder_unlinkToDeath.
+ */
+typedef void (*AIBinder_DeathRecipient_onBinderDied)();
+
+/**
+ * Creates a new binder death recipient. This can be attached to multiple different binder objects.
+ */
+__attribute__((warn_unused_result)) AIBinder_DeathRecipient* AIBinder_DeathRecipient_new(
+        AIBinder_DeathRecipient_onBinderDied onBinderDied);
+
+/**
+ * Deletes a binder death recipient. It is not necessary to call AIBinder_unlinkToDeath before
+ * calling this, but this will not necessarily clean up the memory associated with the linked entry
+ * immediately.
+ */
+void AIBinder_DeathRecipient_delete(AIBinder_DeathRecipient** recipient);
 
 __END_DECLS

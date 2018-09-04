@@ -22,6 +22,8 @@
 
 #include <android-base/logging.h>
 
+using DeathRecipient = ::android::IBinder::DeathRecipient;
+
 using ::android::IBinder;
 using ::android::Parcel;
 using ::android::sp;
@@ -168,6 +170,13 @@ AIBinder_Class* AIBinder_Class_define(const char* interfaceDescriptor,
     return new AIBinder_Class(interfaceDescriptor, onCreate, onDestroy, onTransact);
 }
 
+AIBinder_DeathRecipient::AIBinder_DeathRecipient(AIBinder_DeathRecipient_onBinderDied onDied)
+      : mDeathRecipient(new FunctionOnDeath(onDied)) {
+    CHECK(onDied != nullptr);
+}
+
+// start of C-API methods
+
 AIBinder* AIBinder_new(const AIBinder_Class* clazz, void* args) {
     if (clazz == nullptr) {
         LOG(ERROR) << __func__ << ": Must provide class to construct local binder.";
@@ -205,6 +214,26 @@ binder_status_t AIBinder_ping(AIBinder* binder) {
     }
 
     return binder->getBinder()->pingBinder();
+}
+
+binder_status_t AIBinder_linkToDeath(AIBinder* binder, AIBinder_DeathRecipient* recipient,
+                                     void* cookie) {
+    if (binder == nullptr || recipient == nullptr) {
+        LOG(ERROR) << __func__ << ": Must provide binder and recipient.";
+        return EX_NULL_POINTER;
+    }
+
+    return binder->getBinder()->linkToDeath(recipient->getRecipient(), cookie, 0 /*flags*/);
+}
+
+binder_status_t AIBinder_unlinkToDeath(AIBinder* binder, AIBinder_DeathRecipient* recipient,
+                                       void* cookie) {
+    if (binder == nullptr || recipient == nullptr) {
+        LOG(ERROR) << __func__ << ": Must provide binder and recipient.";
+        return EX_NULL_POINTER;
+    }
+
+    return binder->getBinder()->unlinkToDeath(recipient->getRecipient(), cookie, 0 /*flags*/);
 }
 
 void AIBinder_incStrong(AIBinder* binder) {
@@ -333,4 +362,22 @@ binder_status_t AIBinder_transact(AIBinder* binder, transaction_code_t code, APa
     }
 
     return parcelStatus;
+}
+
+AIBinder_DeathRecipient* AIBinder_DeathRecipient_new(
+        AIBinder_DeathRecipient_onBinderDied onBinderDied) {
+    if (onBinderDied == nullptr) {
+        LOG(ERROR) << __func__ << ": requires non-null onBinderDied parameter.";
+        return nullptr;
+    }
+    return new AIBinder_DeathRecipient(onBinderDied);
+}
+
+void AIBinder_DeathRecipient_delete(AIBinder_DeathRecipient** recipient) {
+    if (recipient == nullptr) {
+        return;
+    }
+
+    delete *recipient;
+    *recipient = nullptr;
 }
