@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "200f11f5_d1027e35",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-04T23:39:13Z",
+      "side": 1,
+      "message": "Actually, I just realized, the semantics don\u0027t work well here. I\u0027ll update it here pending the \u0027AIBinder as a handle or as a binder\u0027 discussion",
+      "parentUuid": "bfa0b1cc_d977569e",
+      "range": {
+        "startLine": 157,
+        "startChar": 5,
+        "endLine": 157,
+        "endChar": 23
+      },
+      "revId": "b06455326a240ed11cec68614d2c82462c94b4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91ea047a_43091ed4",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "40f67d13_3acc6671",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-04T23:39:13Z",
+      "side": 1,
+      "message": "Done in a CL below this.",
+      "parentUuid": "b7357eca_3b218e49",
+      "range": {
+        "startLine": 232,
+        "startChar": 5,
+        "endLine": 232,
+        "endChar": 25
+      },
+      "revId": "b06455326a240ed11cec68614d2c82462c94b4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d6f23a6_4da00ca1",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 1
@@ -116,6 +164,30 @@
       "revId": "b06455326a240ed11cec68614d2c82462c94b4d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c52661a_1ceaeaa2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-04T23:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d6f23a6_4da00ca1",
+      "range": {
+        "startLine": 40,
+        "startChar": 20,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "b06455326a240ed11cec68614d2c82462c94b4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
