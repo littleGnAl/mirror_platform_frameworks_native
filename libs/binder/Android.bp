@@ -16,6 +16,7 @@ cc_library_headers {
     name: "libbinder_headers",
     export_include_dirs: ["include"],
     vendor_available: true,
+    recovery_available: true,
     header_libs: [
         "libbase_headers",
         "libcutils_headers",
@@ -36,6 +37,7 @@ cc_library_shared {
     vndk: {
         enabled: true,
     },
+    recovery_available: true,
     double_loadable: true,
 
     srcs: [
