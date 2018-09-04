@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d640377_03a3d1fe",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-04T23:38:41Z",
+      "side": 1,
+      "message": "this is for consistency of style",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 5
+      },
+      "revId": "5ccb70f849d19327af3411a35397bd9dc014d76b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
