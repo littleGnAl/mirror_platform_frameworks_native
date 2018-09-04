@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d6f23a6_4da00ca1",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-04T22:20:38Z",
+      "side": 1,
+      "message": "AParcel** \u0026 null it",
+      "range": {
+        "startLine": 40,
+        "startChar": 20,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "b06455326a240ed11cec68614d2c82462c94b4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
