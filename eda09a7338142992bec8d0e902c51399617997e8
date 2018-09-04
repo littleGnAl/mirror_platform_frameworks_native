@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8ec0cb6_787219bb",
+        "filename": "vulkan/libvulkan/layers_extensions.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2018-09-04T18:01:38Z",
+      "side": 1,
+      "message": "this yields nullptr is this action was performed by native bridge.",
+      "range": {
+        "startLine": 171,
+        "startChar": 18,
+        "endLine": 171,
+        "endChar": 25
+      },
+      "revId": "eda09a7338142992bec8d0e902c51399617997e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
