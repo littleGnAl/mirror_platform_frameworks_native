@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d4a3621_be686191",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-04T23:22:38Z",
+      "side": 1,
+      "message": "WIP since I\u0027m thinking about how to provide something useful here. I can\u0027t return a strong pointer to an AIBinder because it isn\u0027t guaranteed to exist.\n\nIs just the cookie okay? It\u0027ll take some work and extra object instantiations, but I can make it happy. I\u0027ll come back to this.",
+      "range": {
+        "startLine": 275,
+        "startChar": 52,
+        "endLine": 275,
+        "endChar": 54
+      },
+      "revId": "535bafae2894065bf5c85d60820a5b9510ad17a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
