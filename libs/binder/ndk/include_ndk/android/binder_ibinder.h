@@ -186,10 +186,9 @@ void* AIBinder_getUserData(AIBinder* binder);
 /**
  * A transaction is a series of calls to these functions which looks this
  * - call AIBinder_prepareTransaction
- * - fill out parcel with in parameters (lifetime of the 'in' variable)
+ * - fill out the in parcel with parameters (lifetime of the 'in' variable)
  * - call AIBinder_transact
- * - fill out parcel with out parameters (lifetime of the 'out' variable)
- * - call AIBinder_finalizeTransaction
+ * - read results from the out parcel (lifetime of the 'out' variable)
  */
 
 /**
@@ -200,7 +199,9 @@ void* AIBinder_getUserData(AIBinder* binder);
  * can be avoided. This AIBinder must be either built with a class or associated with a class before
  * using this API.
  *
- * This does not affect the ownership of binder.
+ * This does not affect the ownership of binder. After filling in the in parcel returned from this
+ * function, in success cases in order to actually execute the transaction, it must be passed into
+ * the AIBinder_transact function. In error cases, it may instead be deleted with AParcel_delete.
  */
 binder_status_t AIBinder_prepareTransaction(AIBinder* binder, AParcel** in);
 
@@ -213,18 +214,11 @@ binder_status_t AIBinder_prepareTransaction(AIBinder* binder, AParcel** in);
  * remote process has processed the transaction, and the out parcel will contain the output data
  * from transaction.
  *
- * This does not affect the ownership of binder.
+ * This does not affect the ownership of binder. The out parcel's ownership is passed out to the
+ * caller and after being read, it must be deleted with AParcel_delete.
  */
 binder_status_t AIBinder_transact(AIBinder* binder, transaction_code_t code, AParcel** in,
                                   AParcel** out, binder_flags_t flags);
-
-/**
- * This takes ownership of the out parcel and automatically deletes it. Additional checks for
- * security or debugging maybe performed internally.
- *
- * This does not affect the ownership of binder.
- */
-binder_status_t AIBinder_finalizeTransaction(AIBinder* binder, AParcel** out);
 
 /*
  * This does not take any ownership of the input binder, but it can be used to retrieve it if
