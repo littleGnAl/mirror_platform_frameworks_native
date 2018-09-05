@@ -22,6 +22,30 @@
       "revId": "eda09a7338142992bec8d0e902c51399617997e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29683ac8_5060187f",
+        "filename": "vulkan/libvulkan/layers_extensions.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1361641
+      },
+      "writtenOn": "2018-09-05T02:31:38Z",
+      "side": 1,
+      "message": "We will provide new patch with no dlerror(). Thank you for your comment.",
+      "parentUuid": "c8ec0cb6_787219bb",
+      "range": {
+        "startLine": 171,
+        "startChar": 18,
+        "endLine": 171,
+        "endChar": 25
+      },
+      "revId": "eda09a7338142992bec8d0e902c51399617997e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
