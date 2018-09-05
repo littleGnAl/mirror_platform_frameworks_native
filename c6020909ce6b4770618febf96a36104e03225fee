@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "257a14bd_5b0b2e94",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T23:46:32Z",
+      "side": 1,
+      "message": "we could expose the mutex on an IBinder object as protected in order to avoid this lock, but I was going to call that a separate optimization (esp. since attachObject/findObject/detachObject are on the mutex that would be ideally exposed, and so we would also need protected methods like attachObjectLocked since I would consider changing BpBinder to using a recursive mutex a bad choice as well if not prebuilt-prohibited).\n\nThis lock is needed for atomic groups of operations including multiple attaches/finds even though each one of these operations by themselves is atomic.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 24
+      },
+      "revId": "c6020909ce6b4770618febf96a36104e03225fee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a5d8cec_1f907082",
+        "filename": "libs/binder/ndk/test/main_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T23:46:32Z",
+      "side": 1,
+      "message": "this is the result of this change",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "c6020909ce6b4770618febf96a36104e03225fee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3148441_ce76af7f",
+        "filename": "libs/binder/ndk/test/main_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T23:46:32Z",
+      "side": 1,
+      "message": "this test is pretty inconsequential since it doesn\u0027t help us with OBJECT_LIFETIME_WEAK, but no sense in deleting it",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "c6020909ce6b4770618febf96a36104e03225fee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
