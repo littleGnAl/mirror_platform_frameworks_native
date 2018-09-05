@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e411882_7d4eddfc",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T01:03:52Z",
+      "side": 1,
+      "message": "this is the main things I\u0027m not sure about. HIDL has flags but not cookies. Not familiar with binder :) so I didn\u0027t add the flags, but I\u0027m thinking I could if people think that would be useful.",
+      "range": {
+        "startLine": 275,
+        "startChar": 53,
+        "endLine": 275,
+        "endChar": 65
+      },
+      "revId": "c0c3afa2989013746b0d71f60983139b43713f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
