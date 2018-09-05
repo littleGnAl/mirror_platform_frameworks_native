@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6f4d5fa_b0f14c2a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T18:40:22Z",
+      "side": 1,
+      "message": "Re rewording: done\n\nRe need: this is what I thought originally as well. Then I realized what Martijn had been getting out. Failures during parceling/unparceling are common. This is more common during unparceling. For instance, you think there is a binder on the binder buffer, but it is actually malformed, so you have to just delete the transaction.\n\nIf prepareTransaction returns an error, you also don\u0027t have to clean up the parcel. I\u0027ve noted this here.",
+      "parentUuid": "378b7272_d990f7d4",
+      "range": {
+        "startLine": 202,
+        "startChar": 49,
+        "endLine": 204,
+        "endChar": 97
+      },
+      "revId": "cb4a736dab2769de126aae4ee9b3d0cb654ed0fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1275a8bb_364b88b9",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "cb4a736dab2769de126aae4ee9b3d0cb654ed0fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c54537d8_36f3ef0f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T18:40:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1275a8bb_364b88b9",
+      "range": {
+        "startLine": 218,
+        "startChar": 10,
+        "endLine": 219,
+        "endChar": 0
+      },
+      "revId": "cb4a736dab2769de126aae4ee9b3d0cb654ed0fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
