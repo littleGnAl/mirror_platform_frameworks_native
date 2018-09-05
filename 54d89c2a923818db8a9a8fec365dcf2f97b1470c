@@ -22,6 +22,30 @@
       "revId": "54d89c2a923818db8a9a8fec365dcf2f97b1470c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b38921_99e14c9b",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T23:41:00Z",
+      "side": 1,
+      "message": "TIL OBJECT_LIFETIME_WEAK.",
+      "parentUuid": "cca53eaf_2468dbd0",
+      "range": {
+        "startLine": 163,
+        "startChar": 8,
+        "endLine": 163,
+        "endChar": 27
+      },
+      "revId": "54d89c2a923818db8a9a8fec365dcf2f97b1470c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
