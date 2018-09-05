@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f6a195e_292193b8",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-05T17:43:12Z",
+      "side": 1,
+      "message": "Love it! My only gripe is this: could this function be outside of ABpBinder - eg a standalone one? It feels kinda weird to ask BpBinder to cast a generic binder object to ABBinder or ABpBinder.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 85
+      },
+      "revId": "71cddc3c7f8a6bf6791643598e80b6f76bbef475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
