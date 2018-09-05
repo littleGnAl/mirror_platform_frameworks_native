@@ -46,6 +46,30 @@
       "revId": "eda09a7338142992bec8d0e902c51399617997e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294ac2c4_7f67c0e7",
+        "filename": "vulkan/libvulkan/layers_extensions.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1058939
+      },
+      "writtenOn": "2018-09-05T17:13:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29683ac8_5060187f",
+      "range": {
+        "startLine": 171,
+        "startChar": 18,
+        "endLine": 171,
+        "endChar": 25
+      },
+      "revId": "eda09a7338142992bec8d0e902c51399617997e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
