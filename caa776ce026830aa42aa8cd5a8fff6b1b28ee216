@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baf5d951_5342fb58",
+        "filename": "libs/binder/ndk/test/iface.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-05T20:23:26Z",
+      "side": 1,
+      "message": "could toss an assert that parcelOut \u003d\u003d nullptr after this",
+      "revId": "caa776ce026830aa42aa8cd5a8fff6b1b28ee216",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
