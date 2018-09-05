@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bc55c6e_0d7394b6",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-05T23:08:53Z",
+      "side": 1,
+      "message": "It looks like the combination of recipient pointer plus cookie forms the \"key\". The docs here are a bit ambiguous in whether this is just a user context or if it\u0027s a critical component.\n\nSuggest clarifying that this serves a dual purpose of allowing the same recipient to be re-used with different cookies and that the cookie can be used to hold user context data. And that the cookie address used for linkToDeath _must_ be identical to the cookie passed to unlinkToDeath.",
+      "range": {
+        "startLine": 179,
+        "startChar": 17,
+        "endLine": 181,
+        "endChar": 52
+      },
+      "revId": "9e12c7192b369c15095148d63d18c40329c70907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a32896_aae8279c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-05T23:08:53Z",
+      "side": 1,
+      "message": "add that the cookie must match the one passed to linkToDeath.\n\nFormat the return value like so (most of these methods will need updating to use the formatted return syntax):\n\n* \\return 0 on success, EX_ILLEGAL_ARGUMENT if the death recipient cannot be found, etc...\n\nThe \\return will cause it to be doc\u0027d appropriately\n\nShould map -ENOENT to whatever the equivalent binder_status_t enum is since this is returning a binder_status_t not an int errno code. You can do errno\u0027s if it makes more sense here, just that\u0027s not the current return value.",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 19
+      },
+      "revId": "9e12c7192b369c15095148d63d18c40329c70907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
