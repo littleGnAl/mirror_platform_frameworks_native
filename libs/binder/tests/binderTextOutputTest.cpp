@@ -32,7 +32,7 @@ static void CheckMessage(const CapturedStderr& cap,
                          const char* expected,
                          bool singleline) {
     std::string output;
-    ASSERT_EQ(0, lseek(cap.fd(), 0, SEEK_SET));
+    //ASSERT_EQ(0, lseek(cap.fd(), 0, SEEK_SET));
     android::base::ReadFdToString(cap.fd(), &output);
     if (singleline)
         output.erase(std::remove(output.begin(), output.end(), '\n'));
