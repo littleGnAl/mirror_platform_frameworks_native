@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8679d5d6_4cb297a1",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T17:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2836e1b_0157d638",
+      "range": {
+        "startLine": 151,
+        "startChar": 33,
+        "endLine": 151,
+        "endChar": 55
+      },
+      "revId": "9190aef92e3871abfcaf0c52e9fd0c5d280144d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22e06f1b_313ecdb1",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2018-09-05T16:56:17Z",
       "side": 1,
       "message": "elaborate a bit on what this is useful for or how it\u0027s supposed to be used since it returns no data (does \"no data\" include whether or not the remote end is alive? Does this block for a \u0027pong\u0027? etc...)",
+      "revId": "9190aef92e3871abfcaf0c52e9fd0c5d280144d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8acaf1_ed14c694",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T17:24:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "22e06f1b_313ecdb1",
       "revId": "9190aef92e3871abfcaf0c52e9fd0c5d280144d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
