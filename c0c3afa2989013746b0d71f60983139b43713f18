@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6e29952_69917179",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T17:24:38Z",
+      "side": 1,
+      "message": "Done above (on AIBinder).",
+      "parentUuid": "896f4528_45e21f32",
+      "range": {
+        "startLine": 167,
+        "startChar": 51,
+        "endLine": 167,
+        "endChar": 65
+      },
+      "revId": "c0c3afa2989013746b0d71f60983139b43713f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b899321e_1ac43a11",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-05T17:00:03Z",
       "side": 1,
       "message": "what can this return and why?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 15
+      },
+      "revId": "c0c3afa2989013746b0d71f60983139b43713f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869cc315_b0340e31",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T17:24:38Z",
+      "side": 1,
+      "message": "I\u0027ve documented them. If you think I should document EX_NULL_POINTER as a possible return value (it is from many functions), then I\u0027d like to do that universally in another CL (or do it in the header).",
+      "parentUuid": "b899321e_1ac43a11",
       "range": {
         "startLine": 172,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0ce56be0_4c97fb87",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T17:24:38Z",
+      "side": 1,
+      "message": "Done (good catch)",
+      "parentUuid": "2d2928e7_108deb57",
+      "range": {
+        "startLine": 173,
+        "startChar": 37,
+        "endLine": 173,
+        "endChar": 49
+      },
+      "revId": "c0c3afa2989013746b0d71f60983139b43713f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7472093_9b7dad9a",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "c0c3afa2989013746b0d71f60983139b43713f18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a5e7c1_26571e3e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-05T17:24:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7472093_9b7dad9a",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 15
+      },
+      "revId": "c0c3afa2989013746b0d71f60983139b43713f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
