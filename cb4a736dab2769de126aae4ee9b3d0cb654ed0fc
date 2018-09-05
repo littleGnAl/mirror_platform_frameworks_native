@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "378b7272_d990f7d4",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-05T17:09:36Z",
+      "side": 1,
+      "message": "The wording here is a bit clunky, particularly with all the commas. Suggest re-wording.\n\nBut why do they ever need to AParcel_delete? If prepareTransaction fails then in shouldn\u0027t have been created and if transact fails why didn\u0027t transact do the cleanup anyway?",
+      "range": {
+        "startLine": 202,
+        "startChar": 49,
+        "endLine": 204,
+        "endChar": 97
+      },
+      "revId": "cb4a736dab2769de126aae4ee9b3d0cb654ed0fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1275a8bb_364b88b9",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-05T17:09:36Z",
+      "side": 1,
+      "message": "Suggest tweaking to something like:\n\n\"The out parcel\u0027s ownership is passed to the caller and must be released with AParcel_delete when finished reading.\"",
+      "range": {
+        "startLine": 218,
+        "startChar": 10,
+        "endLine": 219,
+        "endChar": 0
+      },
+      "revId": "cb4a736dab2769de126aae4ee9b3d0cb654ed0fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0901afa_6e556963",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-05T17:09:36Z",
+      "side": 1,
+      "message": "document that it will null out the parcel param.",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "cb4a736dab2769de126aae4ee9b3d0cb654ed0fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
