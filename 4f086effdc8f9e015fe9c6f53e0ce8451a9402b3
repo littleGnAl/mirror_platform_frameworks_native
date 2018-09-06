@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51701973_37a98d32",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2018-09-06T18:32:07Z",
+      "side": 1,
+      "message": "Seems like a good place to use std::optional, IMO.",
+      "revId": "4f086effdc8f9e015fe9c6f53e0ce8451a9402b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
