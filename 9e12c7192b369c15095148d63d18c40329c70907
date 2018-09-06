@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1cf7823e_7dd266be",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-06T01:17:27Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5bc55c6e_0d7394b6",
+      "range": {
+        "startLine": 179,
+        "startChar": 17,
+        "endLine": 181,
+        "endChar": 52
+      },
+      "revId": "9e12c7192b369c15095148d63d18c40329c70907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5a32896_aae8279c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-05T23:08:53Z",
       "side": 1,
       "message": "add that the cookie must match the one passed to linkToDeath.\n\nFormat the return value like so (most of these methods will need updating to use the formatted return syntax):\n\n* \\return 0 on success, EX_ILLEGAL_ARGUMENT if the death recipient cannot be found, etc...\n\nThe \\return will cause it to be doc\u0027d appropriately\n\nShould map -ENOENT to whatever the equivalent binder_status_t enum is since this is returning a binder_status_t not an int errno code. You can do errno\u0027s if it makes more sense here, just that\u0027s not the current return value.",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 19
+      },
+      "revId": "9e12c7192b369c15095148d63d18c40329c70907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d918194_781e86c9",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-06T01:17:27Z",
+      "side": 1,
+      "message": "Re \\return: I\u0027ve added this as a note and I will cleanup all these functions to have the correct format. Is there a syntax for parameters as well? Is there some place that I can read things like this and @file/@addtogroup from so that I can update all these comments and avoid future fidgeting with them? I\u0027ll do this all in one big sweep. It\u0027s possible I could have missed this information before as well.\n\nRe: -ENOENT, these values are completely confused in libbinder (that is, since status_t is really just -ENOENT). I don\u0027t know if that was the original design or what, and I totally agree that this is disgusting. The values collide (and don\u0027t even have similar meanings when they do), and the APIs don\u0027t do a good job of distinguishing them (or merge them underneath).\n\nThis is where it is documented in my API:\nhttps://android.googlesource.com/platform/frameworks/native/+/master/libs/binder/ndk/include_ndk/android/binder_status.h#51\n\nHere is BpBinder::pingBinder mixing them up (this is far from the only place, but it is fresh in my mind):\nhttps://android.googlesource.com/platform/frameworks/native/+/master/libs/binder/BpBinder.cpp#189\n\nThe Status object is meant to add sanity here, but it isn\u0027t used consistently. Java avoids this problem by replacing everything with exceptions. My choices seem to be this:\n- replace these returns with bool (loses data)\n- fix lib(hw)binder in this respect (this is a lot of work and would also encounter problems wrt prebuilts, doable maybe in the scope of libbinder_ndk, but not in the scope of this CL)\n- pass combined values (how the CL is working currently)",
+      "parentUuid": "b5a32896_aae8279c",
       "range": {
         "startLine": 187,
         "startChar": 3,
