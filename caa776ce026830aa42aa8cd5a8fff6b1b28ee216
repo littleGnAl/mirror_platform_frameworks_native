@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8c51f9e_f767357e",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-06T21:38:48Z",
+      "side": 1,
+      "message": "I\u0027ll correct myself to say that this is not true in general.\n\njreck pointed out a case where it would be problematic:\nstd::unique_ptr\u003cAParcel, ...\u003e(\u0026AParcel_new(...), \u0026AParcel_delete);\n\nThis is invalid since the return from AParcel_new is on the stack. However, AParcel_new like this also doesn\u0027t exist in this API. This argument would apply to AIBinder_Weak_delete though (slightly funny to keep a std::unique_ptr to that though).",
+      "parentUuid": "3889e785_96aed04d",
+      "range": {
+        "startLine": 289,
+        "startChar": 3,
+        "endLine": 289,
+        "endChar": 79
+      },
+      "revId": "caa776ce026830aa42aa8cd5a8fff6b1b28ee216",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2c17378_11615312",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 4
