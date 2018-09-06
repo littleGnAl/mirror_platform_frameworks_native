@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d2c17378_11615312",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-06T02:09:59Z",
+      "side": 1,
+      "message": "it was pointed out on a different CL that this makes it impossible to use with std::unique_ptr. So this was bad advice, sorry",
+      "range": {
+        "startLine": 40,
+        "startChar": 20,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "caa776ce026830aa42aa8cd5a8fff6b1b28ee216",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "baf5d951_5342fb58",
         "filename": "libs/binder/ndk/test/iface.cpp",
         "patchSetId": 4
