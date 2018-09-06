@@ -141,6 +141,30 @@
       "revId": "9e12c7192b369c15095148d63d18c40329c70907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a47cdff1_819ba46e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-06T16:50:28Z",
+      "side": 1,
+      "message": "D is B since the values returned by libbinder APIs are already muddled in places. I\u0027ve tagged you to a section I carved out in the android-binder-c doc and I think I\u0027ve come up with a solution.",
+      "parentUuid": "f098ab53_6398de6c",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 19
+      },
+      "revId": "9e12c7192b369c15095148d63d18c40329c70907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
