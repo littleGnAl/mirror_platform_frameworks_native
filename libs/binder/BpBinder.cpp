@@ -86,6 +86,14 @@ void* BpBinder::ObjectManager::find(const void* objectID) const
 
 void BpBinder::ObjectManager::detach(const void* objectID)
 {
+    const ssize_t i = mObjects.indexOfKey(objectID);
+    if (i < 0) return;
+
+    const entry_t& e = mObjects.valueAt(i);
+    if (e.func != nullptr) {
+        e.func(objectID, e.object, e.cleanupCookie);
+    }
+
     mObjects.removeItem(objectID);
 }
 
