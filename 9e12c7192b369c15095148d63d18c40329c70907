@@ -93,6 +93,30 @@
       "revId": "9e12c7192b369c15095148d63d18c40329c70907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0aeb81d_027d8559",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-06T01:36:43Z",
+      "side": 1,
+      "message": "I\u0027ve moved the part of this conversation about errno to the android-binder-c doc in order to make sure it is better facilitated.",
+      "parentUuid": "2d918194_781e86c9",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 19
+      },
+      "revId": "9e12c7192b369c15095148d63d18c40329c70907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
