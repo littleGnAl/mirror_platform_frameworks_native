@@ -43,7 +43,9 @@ static bool has(const sp<IBinder>& binder) {
 
 } // namespace ABBinderTag
 
-AIBinder::AIBinder(const AIBinder_Class* clazz) : mClazz(clazz) {}
+AIBinder::AIBinder(const AIBinder_Class* clazz) : mClazz(clazz) {
+    CHECK(false);
+}
 AIBinder::~AIBinder() {}
 
 bool AIBinder::associateClass(const AIBinder_Class* clazz) {
