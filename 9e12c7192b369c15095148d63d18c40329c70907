@@ -117,6 +117,30 @@
       "revId": "9e12c7192b369c15095148d63d18c40329c70907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f098ab53_6398de6c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-06T02:02:35Z",
+      "side": 1,
+      "message": "Re doc formatting: I\u0027m unsure if there\u0027s docs on it and honestly I don\u0027t know if there\u0027s a difference between \\return and @return. But there is \\param \u0026 @param, and you can see an example in NdkCaptureRequest.h which renders like so: https://developer.android.com/ndk/reference/group/camera#acapturerequest_getconstentry\n\nRe errors: There\u0027s also option D: Re-map the underlying errors to NDK errors in the NDK layer. You can then return the set of errors that you expect a developer to actual react to in a meaningful way (eg, EX_ILLEGAL_ARGUMENT for a well-defined \"you passed in nonsense\" such that they can then quickly debug why something isn\u0027t working), and have a catch-all EX_UNKNOWN for the stuff that nobody understands why it failed or when you can\u0027t tell what the actual error return was (value collision). It\u0027s better than a bool but more feasible than necessarily surfacing the exact underlying error reliably.\n\nThe errors just need to be verbose enough to distinguish between:\n\n1) You\u0027re using the API wrong (eg, illegal argument)\n2) Expected error condition to handle gracefully (eg, remote process died)\n3) Something unexpected went bad (out of memory, kernel said go away, whatever)\n\nA bit more granular than that, but they don\u0027t need to know necessarily the exact underlying error code in all cases. So you can always merge, remap, or de-dupe at the NDK layer as appropriate. Recognize the cases they need to handle, and toss everything else under an ERROR_UNKNOWN.",
+      "parentUuid": "c0aeb81d_027d8559",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 19
+      },
+      "revId": "9e12c7192b369c15095148d63d18c40329c70907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
