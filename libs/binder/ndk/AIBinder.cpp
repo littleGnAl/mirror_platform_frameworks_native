@@ -119,6 +119,7 @@ ABpBinder::ABpBinder(const ::android::sp<::android::IBinder>& binder)
       : AIBinder(nullptr /*clazz*/), BpRefBase(binder) {
     CHECK(binder != nullptr);
 }
+
 ABpBinder::~ABpBinder() {}
 
 sp<AIBinder> ABpBinder::fromBinder(const ::android::sp<::android::IBinder>& binder) {
@@ -267,6 +268,10 @@ binder_status_t AIBinder_prepareTransaction(AIBinder* binder, AParcel** in) {
                    << ": Class must be defined for a remote binder transaction. See "
                       "AIBinder_associateClass.";
         return EX_ILLEGAL_STATE;
+    }
+
+    if (!binder->isRemote()) {
+        LOG(WARNING) << "A binder object at " << binder << " is being transacted on, however, this object is in the same process as its proxy. Transacting with this binder is expensive compared to just calling the corresponding functionality in the same process.";
     }
 
     *in = new AParcel(binder);
