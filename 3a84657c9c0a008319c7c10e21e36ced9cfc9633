@@ -595,6 +595,30 @@
     },
     {
       "key": {
+        "uuid": "65326ebb_612990a6",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-09-06T01:20:45Z",
+      "side": 1,
+      "message": "Copy/paste from email thread that we seemed to agree on:\n\nQuoting maco@google.com:\n\n  Yeah, so I think an approach we can work with is:\n  1) NDK implementation restricts flags to known ones (as already implemented)\n  2) NDK can add new flags and document they only work on SDK (or NDK?) version \u003e\u003dx\n  3) Clients must check the currently running SDK version \u003e\u003dx before setting such a flag",
+      "parentUuid": "93bba600_572d5fc1",
+      "range": {
+        "startLine": 276,
+        "startChar": 4,
+        "endLine": 276,
+        "endChar": 38
+      },
+      "revId": "3a84657c9c0a008319c7c10e21e36ced9cfc9633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9838c4b0_bb176a56",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 29
