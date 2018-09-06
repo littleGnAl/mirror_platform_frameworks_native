@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a46e480e_92654812",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-06T18:03:38Z",
+      "side": 1,
+      "message": "this refers to this which has not been submitted yet:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/748214/3/libs/binder/ndk/AIBinder.cpp#149\n\n(and will not be if this change makes it in first)",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 52
+      },
+      "revId": "b7dcc20588be513ad178e35a8c8b7be6a367a823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e81f672_1aac2d52",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-06T18:03:38Z",
+      "side": 1,
+      "message": "I considered using \u0027ssize_t removeItemsAt(size_t index, size_t count \u003d 1)\u0027 here instead, but the plural \u0027Items\u0027 looks so vile to me in this context, I couldn\u0027t bring myself to do it. Here I have traded aesthetics for correctness, I guess...",
+      "range": {
+        "startLine": 97,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 23
+      },
+      "revId": "b7dcc20588be513ad178e35a8c8b7be6a367a823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
