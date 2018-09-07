@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ac6ca70d_33ae3b86",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T16:33:18Z",
+      "side": 1,
+      "message": "The alternative is exposing the lock in BpBinder/BBinder as a protected field. That can be done separately if it turns out to be necessary.",
+      "parentUuid": "cd58396c_4f396ad3",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 24
+      },
+      "revId": "c6020909ce6b4770618febf96a36104e03225fee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a5d8cec_1f907082",
         "filename": "libs/binder/ndk/test/main_client.cpp",
         "patchSetId": 2

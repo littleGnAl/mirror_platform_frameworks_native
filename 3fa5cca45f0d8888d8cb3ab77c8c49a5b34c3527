@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "47cc0ac7_5fdb5da2",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T16:33:18Z",
+      "side": 1,
+      "message": "Yes. Based on offline discussion, just going to set the wp to nullptr.",
+      "parentUuid": "c185cd26_c62962c1",
+      "range": {
+        "startLine": 156,
+        "startChar": 8,
+        "endLine": 156,
+        "endChar": 50
+      },
+      "revId": "3fa5cca45f0d8888d8cb3ab77c8c49a5b34c3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67efa6f8_bd153303",
         "filename": "libs/binder/ndk/AIBinder.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-07T12:12:24Z",
       "side": 1,
       "message": "remote binder object?",
+      "range": {
+        "startLine": 170,
+        "startChar": 43,
+        "endLine": 170,
+        "endChar": 61
+      },
+      "revId": "3fa5cca45f0d8888d8cb3ab77c8c49a5b34c3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f27ff8cb_6b8d0b1b",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T16:33:18Z",
+      "side": 1,
+      "message": "No. It will be local if the binder object is local but not an ABBinder (for instance, one created by Java or libbinder).",
+      "parentUuid": "67efa6f8_bd153303",
       "range": {
         "startLine": 170,
         "startChar": 43,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "10fb0b37_c96b50a4",
+        "filename": "libs/binder/ndk/AIBinder_internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T16:33:18Z",
+      "side": 1,
+      "message": "I\u0027m considering it part of b/112664205 to handle this case (see b/112664205#comment4, not interest in creating the overhead of too many bugs).",
+      "parentUuid": "7f46f5b9_722e8765",
+      "range": {
+        "startLine": 84,
+        "startChar": 71,
+        "endLine": 85,
+        "endChar": 88
+      },
+      "revId": "3fa5cca45f0d8888d8cb3ab77c8c49a5b34c3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a7294f5_57acbe68",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "3fa5cca45f0d8888d8cb3ab77c8c49a5b34c3527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d58005e4_002b2796",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T16:33:18Z",
+      "side": 1,
+      "message": "Done \u0027the same object (whether that object is local or remote)\u0027",
+      "parentUuid": "3a7294f5_57acbe68",
+      "range": {
+        "startLine": 93,
+        "startChar": 83,
+        "endLine": 94,
+        "endChar": 87
+      },
+      "revId": "3fa5cca45f0d8888d8cb3ab77c8c49a5b34c3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
