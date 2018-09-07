@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5d4316e6_5f754d90",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T21:53:03Z",
+      "side": 1,
+      "message": "Done. And there is no lock here because that lock is kept by BpBinder for me. You are also right about double calls (I just double-checked, see BpBinder::sendObituary).",
+      "parentUuid": "60185a0b_395a185b",
+      "revId": "d9618cc4b17807abf72e439c18ac4c1b6fbc0cae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39267c8b_5028b3e9",
         "filename": "libs/binder/ndk/AIBinder_internal.h",
         "patchSetId": 9
@@ -65,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "ee8ce682_aa04def7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T21:53:03Z",
+      "side": 1,
+      "message": "I know. See jreck\u0027s comment and the section in the android-binder-c about it. I have you tagged there. I want to handle this situation in another CL (whether it is before or after this one), but I need a consensus on which type of error I should destroy information from, if I should re-write sections of libbinder, or what.",
+      "parentUuid": "942d7887_5020e8f3",
+      "range": {
+        "startLine": 188,
+        "startChar": 86,
+        "endLine": 190,
+        "endChar": 19
+      },
+      "revId": "d9618cc4b17807abf72e439c18ac4c1b6fbc0cae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6299db86_ce64664a",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 9
@@ -76,6 +118,30 @@
       "writtenOn": "2018-09-07T12:48:46Z",
       "side": 1,
       "message": "this is a bit vague. When will it be cleaned up, and should the caller worry about it?",
+      "range": {
+        "startLine": 299,
+        "startChar": 37,
+        "endLine": 301,
+        "endChar": 15
+      },
+      "revId": "d9618cc4b17807abf72e439c18ac4c1b6fbc0cae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48055e87_9cdd73d6",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T21:53:03Z",
+      "side": 1,
+      "message": "This vagueness is the manifestation of the vagueness in my own mind about this. Do you know when this gets cleaned up?",
+      "parentUuid": "6299db86_ce64664a",
       "range": {
         "startLine": 299,
         "startChar": 37,

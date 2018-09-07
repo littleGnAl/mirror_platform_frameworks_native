@@ -188,6 +188,30 @@
       "revId": "9e12c7192b369c15095148d63d18c40329c70907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c09898_764626af",
+        "filename": "libs/binder/ndk/test/main_client.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T21:53:03Z",
+      "side": 1,
+      "message": "Here is what I had imagined for this:\n- onServiceConnected/onServiceDisconnected (for app cases, this will already be started, for non-app cases (perhaps for APEX), these APIs will have to detect that there is no threadpool and set a default)\n- unclear if AIDL backend can do this, but likely it won\u0027t be able to do it since these threadpool APIs are outside of the NDK, and I want to generate the same library for apps and non-app usages there, so I might have to add a flag to AParcel and start it after a successful AIBinder_transact.\n\nI have marked this TODO item on my personal list, and it will also be noticed if I don\u0027t do it.",
+      "parentUuid": "f5c9bcf2_05b14c13",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "9e12c7192b369c15095148d63d18c40329c70907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
