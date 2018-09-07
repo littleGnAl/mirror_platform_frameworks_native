@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da068fde_6ec983f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-07T15:00:58Z",
+      "side": 1,
+      "message": "As discussed over chat, this API should have returned the object, but even though it doesn\u0027t, I don\u0027t think we should change this now because detach() doesn\u0027t mean free. Also at the small risk that some vendor we don\u0027t know about is using a prebuilt which will now crash with a double-free.\n\nIIUC the remaining concern is:\nThread A               Thread B\nattach(id, X);\n                       detach(id);\n                       attach(id, Y);\n// now X will never be cleaned up\n\nI think it\u0027s ok because:\nIf you don\u0027t ever need to reuse the tag, just don\u0027t detach() and let the destructor clean it up\n\nIf you do need to reuse the tag, you can fix this by simply requiring that you are responsible for cleaning up the objects you detach, eg:\n\nThread A              Thread B\nattach(id, X);\n                      X \u003d find(id);\n                      detach(id);\n                      delete(X);\n                      attach(id, Y);\n\nYes, another thread could race you to detach and attach another object Z with the same tag, but then you have a race in your code anyway; it would be random whether Y or Z gets attached, which is not what you want. With the current API design, it\u0027s up to the caller to ensure atomic use, and that extends to the proper use of find()/detach().",
+      "parentUuid": "37fb3ac5_178d5a5d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "b7dcc20588be513ad178e35a8c8b7be6a367a823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a46e480e_92654812",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
