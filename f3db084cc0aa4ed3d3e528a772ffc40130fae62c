@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d10a51b_e2500645",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-09-07T15:32:21Z",
+      "side": 1,
+      "message": "https://developer.android.com/reference/android/os/IBinder seems to have far more comments. You might want to expand comments here or reference the SDK.",
+      "revId": "f3db084cc0aa4ed3d3e528a772ffc40130fae62c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b33c38_e0596ba6",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-09-07T15:32:21Z",
+      "side": 1,
+      "message": "Same comment",
+      "revId": "f3db084cc0aa4ed3d3e528a772ffc40130fae62c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a9b14c1_8724e3e0",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-09-07T15:32:21Z",
+      "side": 1,
+      "message": "Documentation?",
+      "revId": "f3db084cc0aa4ed3d3e528a772ffc40130fae62c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
