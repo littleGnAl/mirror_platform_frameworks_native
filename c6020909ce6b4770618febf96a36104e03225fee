@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd58396c_4f396ad3",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-07T12:13:48Z",
+      "side": 1,
+      "message": "Ack, I think the lock is necessary here.",
+      "parentUuid": "257a14bd_5b0b2e94",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 24
+      },
+      "revId": "c6020909ce6b4770618febf96a36104e03225fee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a5d8cec_1f907082",
         "filename": "libs/binder/ndk/test/main_client.cpp",
         "patchSetId": 2
