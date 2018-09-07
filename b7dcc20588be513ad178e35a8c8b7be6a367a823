@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "37fb3ac5_178d5a5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T14:17:26Z",
+      "side": 1,
+      "message": "This is the reason why. If the client wants to use get the object before deleting it, they\u0027ll have to findObject + detachObject now. However, in most cases, they can just take advantage of the destructor/the cleanup function to get ahold of data that they need.\n\nThese functions aren\u0027t really used in many places either, and so I\u0027d rather support the common use case without the client having to worry about locks.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "b7dcc20588be513ad178e35a8c8b7be6a367a823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a46e480e_92654812",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
