@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "c20bb75d_5ded4568",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-07T11:41:33Z",
+      "side": 1,
+      "message": "I think the semantics of detach shouldn\u0027t imply deletion; it suggests the lifecycle of the object is no longer tied to this object, but that the object continues to exist.\n\nI think this is what you\u0027re trying to say in the commit message as well, by saying that it would be nice if we could somehow force the caller to clean up instead.\n\nWhy can\u0027t you let the BpHwBinder destructor clean this up? I guess it\u0027s because you hold a wp\u003c\u003e to the BpHwBinder in the attached object itself? I\u0027d say there\u0027s nothing wrong with code that cleans up the reference manually (as you have it right now), but if you really want to deal with this here, I think we should just add a new function.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 1
+      },
+      "revId": "b7dcc20588be513ad178e35a8c8b7be6a367a823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e81f672_1aac2d52",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 1
