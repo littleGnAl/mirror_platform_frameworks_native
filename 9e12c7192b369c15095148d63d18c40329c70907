@@ -165,6 +165,29 @@
       "revId": "9e12c7192b369c15095148d63d18c40329c70907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5c9bcf2_05b14c13",
+        "filename": "libs/binder/ndk/test/main_client.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-07T12:48:46Z",
+      "side": 1,
+      "message": "which reminds me, we should fix this to deal with the 1 thread startThreadPool() starts by default, like we did in libhwbinder.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "9e12c7192b369c15095148d63d18c40329c70907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
