@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "30c0dad3_4e1d044f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-09T19:22:39Z",
+      "side": 1,
+      "message": "I have more comments on the associated types (example here). In Java, since the type is equated with the file, this comment at the top of the docs page is the comment on IBinder. I have comments in line.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "f3db084cc0aa4ed3d3e528a772ffc40130fae62c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25b33c38_e0596ba6",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 1
@@ -47,6 +70,24 @@
       "writtenOn": "2018-09-07T15:32:21Z",
       "side": 1,
       "message": "Documentation?",
+      "revId": "f3db084cc0aa4ed3d3e528a772ffc40130fae62c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452a5e18_81297e0d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-09T19:22:39Z",
+      "side": 1,
+      "message": "Didn\u0027t seem like there was a need to add an \u0027@brief\u0027 on a file so small.",
+      "parentUuid": "0a9b14c1_8724e3e0",
       "revId": "f3db084cc0aa4ed3d3e528a772ffc40130fae62c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
