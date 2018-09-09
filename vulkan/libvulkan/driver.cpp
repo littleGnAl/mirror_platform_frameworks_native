@@ -38,6 +38,8 @@
 #include "driver.h"
 #include "stubhal.h"
 
+using std::min;
+
 using namespace android::hardware::configstore;
 using namespace android::hardware::configstore::V1_0;
 
@@ -1165,32 +1167,38 @@ VkResult EnumeratePhysicalDeviceGroups(
         result = EnumeratePhysicalDevices(instance, &device_count, nullptr);
         if (result < 0)
             return result;
+
         if (!pPhysicalDeviceGroupProperties) {
             *pPhysicalDeviceGroupCount = device_count;
-            return result;
+            return VK_SUCCESS;
         }
 
-        device_count = std::min(device_count, *pPhysicalDeviceGroupCount);
-        if (!device_count) {
-            *pPhysicalDeviceGroupCount = 0;
-            return result;
+        // Do not write to outputs until all errors are eliminated.
+        const uint32_t out_capacity = *pPhysicalDeviceGroupCount;
+        const uint32_t out_count = min(device_count, out_capacity);
+
+        if (out_capacity > 0) {
+            android::Vector<VkPhysicalDevice> devices;
+            devices.resize(device_count);
+
+            result = EnumeratePhysicalDevices(instance, &device_count,
+                                              devices.editArray());
+            if (result < 0)
+                return result;
+
+            for (uint32_t i = 0; i < out_count; ++i) {
+                pPhysicalDeviceGroupProperties[i].physicalDeviceCount = 1;
+                pPhysicalDeviceGroupProperties[i].physicalDevices[0] = devices[i];
+                pPhysicalDeviceGroupProperties[i].subsetAllocation = 0;
+            }
         }
 
-        android::Vector<VkPhysicalDevice> devices;
-        devices.resize(device_count);
+        *pPhysicalDeviceGroupCount = out_count;
 
-        result = EnumeratePhysicalDevices(instance, &device_count,
-                                          devices.editArray());
-        if (result < 0)
-            return result;
+        if (out_count < device_count)
+            return VK_INCOMPLETE;
 
-        devices.resize(device_count);
-        *pPhysicalDeviceGroupCount = device_count;
-        for (uint32_t i = 0; i < device_count; ++i) {
-            pPhysicalDeviceGroupProperties[i].physicalDeviceCount = 1;
-            pPhysicalDeviceGroupProperties[i].physicalDevices[0] = devices[i];
-            pPhysicalDeviceGroupProperties[i].subsetAllocation = 0;
-        }
+        return VK_SUCCESS;
     } else {
         result = data.driver.EnumeratePhysicalDeviceGroups(
             instance, pPhysicalDeviceGroupCount,
