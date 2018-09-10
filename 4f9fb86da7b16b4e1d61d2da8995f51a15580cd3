@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddff51b2_66a833fd",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-10T07:55:41Z",
+      "side": 1,
+      "message": "\u0027at most one\u0027",
+      "revId": "4f9fb86da7b16b4e1d61d2da8995f51a15580cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
