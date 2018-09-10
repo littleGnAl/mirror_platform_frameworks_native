@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c0ac553_f35afc45",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-10T07:54:20Z",
+      "side": 1,
+      "message": "should you now allow \"null\" values, because somebody can still call unlinkToDeath() after the recipient fires, and I think you still want those to free up the memory here.",
+      "range": {
+        "startLine": 222,
+        "startChar": 34,
+        "endLine": 222,
+        "endChar": 53
+      },
+      "revId": "620653052bf0fadd8af66bbd2f598edad5124138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc9cb6f5_6b33ba45",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-10T07:54:20Z",
+      "side": 1,
+      "message": "I think once you delete AIBinder_DeathRecipient, all the TransferDeathRecipients contained within will die, and BpBinder will only hold a wp\u003c\u003e to them, so it\u0027s not really costing you any memory, besides the wp\u003c\u003e vector entries.\n\nMaybe a more explicit model is to call unlinkToDeath() for every registered recipient in AIBinder_DeathRecipient destructor?\n\nI don\u0027t feel too strongly about it either way - the client should normally anyway get rid of the proxy when it\u0027s dead, which will free up the remaining memory.",
+      "range": {
+        "startLine": 299,
+        "startChar": 37,
+        "endLine": 301,
+        "endChar": 15
+      },
+      "revId": "620653052bf0fadd8af66bbd2f598edad5124138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
