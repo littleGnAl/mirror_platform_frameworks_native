@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71040f54_c1bf1781",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-09-11T20:10:12Z",
+      "side": 1,
+      "message": "typo: device_count",
+      "range": {
+        "startLine": 1190,
+        "startChar": 33,
+        "endLine": 1190,
+        "endChar": 42
+      },
+      "revId": "f3102944657ee2abedfc11d374e38ac4847a89fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
