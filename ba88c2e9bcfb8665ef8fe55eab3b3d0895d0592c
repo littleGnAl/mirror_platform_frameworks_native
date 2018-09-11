@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9216237f_8a893486",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-09-11T18:55:48Z",
+      "side": 0,
+      "message": "Copy fix here:\n      if (!device_count) {\n          *pPhysicalDeviceGroupCount \u003d 0;\n          return result;\n      }\n      device_count \u003d std::min(device_count, *pPhysicalDeviceGroupCount);\n      if (!device_count)\n          return VK_INCOMPLETE;",
+      "range": {
+        "startLine": 1173,
+        "startChar": 0,
+        "endLine": 1177,
+        "endChar": 9
+      },
+      "revId": "ba88c2e9bcfb8665ef8fe55eab3b3d0895d0592c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
