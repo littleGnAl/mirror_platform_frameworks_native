@@ -16,6 +16,29 @@
       "revId": "4f9fb86da7b16b4e1d61d2da8995f51a15580cd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e1c613_d399be42",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-12T20:07:45Z",
+      "side": 1,
+      "message": "this comment seems to suggest that multiple AIBinder\u0027s for a given class is a bug, but that\u0027s not really true. A basic example would be a unique AIBinder for each client connection. It would then be important to not give the same client 2 different AIBinder\u0027s, but it\u0027s also important to give each client a different AIBinder. Multiple binder instances of the same class is also used as simply a transaction id, where each transaction has a new instance to get a new id.\n\nI think these comments can be tweaked to more document the useful property of pointer equality without being quite so prescriptive on a particular usage.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 80
+      },
+      "revId": "4f9fb86da7b16b4e1d61d2da8995f51a15580cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
