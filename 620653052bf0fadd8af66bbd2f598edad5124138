@@ -45,6 +45,30 @@
       "revId": "620653052bf0fadd8af66bbd2f598edad5124138",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d269de8b_4a7c4aa8",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-12T20:00:44Z",
+      "side": 1,
+      "message": "This comment is overly descriptive. It\u0027s sufficient to just say that it\u0027s not necessary to call AIBinder_unlinkToDeath before calling AIBinder_DeathRecipient_delete(), and leave the exact sequence events as an implementation detail.",
+      "parentUuid": "dc9cb6f5_6b33ba45",
+      "range": {
+        "startLine": 299,
+        "startChar": 37,
+        "endLine": 301,
+        "endChar": 15
+      },
+      "revId": "620653052bf0fadd8af66bbd2f598edad5124138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
