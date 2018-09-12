@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "21681bcd_9b221e26",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-12T20:07:44Z",
+      "side": 1,
+      "message": "Good catch. I hadn\u0027t anticipated this. It also means that I will need per-TransferDeathRecipient locks (to make sure that the unlink and the binderDied don\u0027t interact). Done.",
+      "parentUuid": "6c0ac553_f35afc45",
+      "range": {
+        "startLine": 222,
+        "startChar": 34,
+        "endLine": 222,
+        "endChar": 53
+      },
+      "revId": "620653052bf0fadd8af66bbd2f598edad5124138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc9cb6f5_6b33ba45",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 12
@@ -69,6 +93,30 @@
       "revId": "620653052bf0fadd8af66bbd2f598edad5124138",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ff7f08_9b3f30a5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-12T20:07:44Z",
+      "side": 1,
+      "message": "Done. I\u0027d rather not call unlinkToDeath explicitly when the destructors will handle this. Let me remove this ambiguity. I was thinking before that a remote object might hold a pointer to this proxy, but it should all be local.",
+      "parentUuid": "dc9cb6f5_6b33ba45",
+      "range": {
+        "startLine": 299,
+        "startChar": 37,
+        "endLine": 301,
+        "endChar": 15
+      },
+      "revId": "620653052bf0fadd8af66bbd2f598edad5124138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
