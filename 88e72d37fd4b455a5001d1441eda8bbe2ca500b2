@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e457d72_be03ea6f",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-13T11:59:00Z",
+      "side": 1,
+      "message": "this will deadlock if the death handler calls unlinkToDeath().\n\nDo you really need the lock? I think we can assume pointer reads/writes are atomic, so you either get the old value and compare it, or you get nullptr.\n\nThis gets at another question - if binder + cookie is what makes a death recipient unique, what happens if you create a single AIBinder_DeathRecipient, then register death recipients for two AIBinder\u0027s with the same cookie, and both AIBinder\u0027s die? In that case, unlink() with the cookie will just clean up a random entry.",
+      "range": {
+        "startLine": 222,
+        "startChar": 8,
+        "endLine": 222,
+        "endChar": 67
+      },
+      "revId": "88e72d37fd4b455a5001d1441eda8bbe2ca500b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcb1f564_4b1b9958",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-13T11:59:00Z",
+      "side": 1,
+      "message": "I don\u0027t think this can happen, you CHECK() this on top.",
+      "range": {
+        "startLine": 225,
+        "startChar": 13,
+        "endLine": 225,
+        "endChar": 30
+      },
+      "revId": "88e72d37fd4b455a5001d1441eda8bbe2ca500b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
