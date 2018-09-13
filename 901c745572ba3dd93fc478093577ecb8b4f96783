@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d389018_54e52326",
+        "filename": "libs/binder/ndk/AIBinder.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-13T14:23:06Z",
+      "side": 1,
+      "message": "for posterity, if you do this:\nlinkToDeath();\nbinder dies -\u003e mWho is set to nullptr\n...\nunlinkToDeath()\n\nthis unlink() will now return -ENOENT, even though the client never explicitly unregistered it. It\u0027s probably better to return OK in that case.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 0
+      },
+      "revId": "901c745572ba3dd93fc478093577ecb8b4f96783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
