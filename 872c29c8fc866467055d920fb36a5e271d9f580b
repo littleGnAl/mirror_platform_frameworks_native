@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ed06e5d_48443713",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 28
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-13T17:30:49Z",
+      "side": 1,
+      "message": "these should have an # introduced\u003d29 comment after each method like so:\n\nAIBinder_associateClass; # introduced\u003d29\nAIBinder_Class_define; # introduced\u003d29\n\netc..",
+      "revId": "872c29c8fc866467055d920fb36a5e271d9f580b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
