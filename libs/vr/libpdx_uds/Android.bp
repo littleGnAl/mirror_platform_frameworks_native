@@ -23,12 +23,10 @@ cc_library_static {
         "libcutils",
         "libbase",
         "libpdx",
+        "libselinux",
     ],
     shared_libs: [
         "libbinder",
-    ],
-    whole_static_libs: [
-        "libselinux",
     ],
 }
 
