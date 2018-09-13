@@ -25,40 +25,59 @@
 
 #pragma once
 
+#include <errno.h>
 #include <stdint.h>
 #include <sys/cdefs.h>
 
 __BEGIN_DECLS
 
-// Keep the exception codes in sync with android/os/Parcel.java.
 enum {
-    EX_NONE = 0,
-    EX_SECURITY = -1,
-    EX_BAD_PARCELABLE = -2,
-    EX_ILLEGAL_ARGUMENT = -3,
-    EX_NULL_POINTER = -4,
-    EX_ILLEGAL_STATE = -5,
-    EX_NETWORK_MAIN_THREAD = -6,
-    EX_UNSUPPORTED_OPERATION = -7,
-    EX_SERVICE_SPECIFIC = -8,
-    EX_PARCELABLE = -9,
+    STATUS_OK = 0,
 
-    /**
-     * This is special and Java specific; see Parcel.java.
-     * This should be considered a success, and the next readInt32 bytes can be ignored.
-     */
-    EX_HAS_REPLY_HEADER = -128,
+    STATUS_UNKNOWN_ERROR = (-2147483647 - 1), // INT32_MIN value
+    STATUS_NO_MEMORY = -ENOMEM,
+    STATUS_INVALID_OPERATION = -ENOSYS,
+    STATUS_BAD_VALUE = -EINVAL,
+    STATUS_BAD_TYPE = (STATUS_UNKNOWN_ERROR + 1),
+    STATUS_NAME_NOT_FOUND = -ENOENT,
+    STATUS_PERMISSION_DENIED = -EPERM,
+    STATUS_NO_INIT = -ENODEV,
+    STATUS_ALREADY_EXISTS = -EEXIST,
+    STATUS_DEAD_OBJECT = -EPIPE,
+    STATUS_FAILED_TRANSACTION = (STATUS_UNKNOWN_ERROR + 2),
+    STATUS_BAD_INDEX = -EOVERFLOW,
+    STATUS_NOT_ENOUGH_DATA = -ENODATA,
+    STATUS_WOULD_BLOCK = -EWOULDBLOCK,
+    STATUS_TIMED_OUT = -ETIMEDOUT,
+    STATUS_UNKNOWN_TRANSACTION = -EBADMSG,
+    STATUS_FDS_NOT_ALLOWED = (STATUS_UNKNOWN_ERROR + 7),
+    STATUS_UNEXPECTED_NULL = (STATUS_UNKNOWN_ERROR + 8),
+
+    EXCEPTION_SECURITY = STATUS_UNKNOWN_ERROR + 1000 - 1,
+    EXCEPTION_BAD_PARCELABLE = STATUS_UNKNOWN_ERROR + 1000 - 2,
+    EXCEPTION_ILLEGAL_ARGUMENT = STATUS_UNKNOWN_ERROR + 1000 - 3,
+    EXCEPTION_NULL_POINTER = STATUS_UNKNOWN_ERROR + 1000 - 4,
+    EXCEPTION_ILLEGAL_STATE = STATUS_UNKNOWN_ERROR + 1000 - 5,
+    EXCEPTION_NETWORK_MAIN_THREAD = STATUS_UNKNOWN_ERROR + 1000 - 6,
+    EXCEPTION_UNSUPPORTED_OPERATION = STATUS_UNKNOWN_ERROR + 1000 - 7,
+
+    // Service specific exceptions are positive values.
+
+    EXCEPTION_PARCELABLE = STATUS_UNKNOWN_ERROR + 1000 - 9,
 
     /**
      * This is special, and indicates to native binder proxies that the
      * transaction has failed at a low level.
      */
-    EX_TRANSACTION_FAILED = -129,
+    EXCEPTION_TRANSACTION_FAILED = STATUS_UNKNOWN_ERROR + 1000 - 129,
 };
 
 /**
- * One of the above values or -errno.
+ * One of the above values.
+ *
  * By convention, positive values are considered to mean service-specific exceptions.
+ *
+ * All unrecognized negative values are coerced into STATUS_UNKNOWN.
  */
 typedef int32_t binder_status_t;
 
