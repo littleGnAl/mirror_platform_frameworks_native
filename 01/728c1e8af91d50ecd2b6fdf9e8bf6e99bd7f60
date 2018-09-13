@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Jianxun Zhang <jianxun.zhang@intel.com>
+Code-Review+2: Yiwei Zhang <zzyiwei@google.com>
+Verified+1: Dimitry Ivanov <dimitry@google.com>
+Submitted-by: Dimitry Ivanov <dimitry@google.com>
+Submitted-at: Thu, 13 Sep 2018 23:24:26 +0000
+Reviewed-on: https://android-review.googlesource.com/746170
+Project: platform/frameworks/native
+Branch: refs/heads/master
