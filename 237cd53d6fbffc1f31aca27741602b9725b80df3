@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecc4ea60_638e7df8",
+        "filename": "libs/binder/ndk/AParcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-13T17:19:11Z",
+      "side": 1,
+      "message": "ew, is there not just a get()? calling operator-\u003e() is pretty ugly.",
+      "range": {
+        "startLine": 57,
+        "startChar": 48,
+        "endLine": 57,
+        "endChar": 70
+      },
+      "revId": "237cd53d6fbffc1f31aca27741602b9725b80df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11da8468_b1fe2c4d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-13T17:19:11Z",
+      "side": 1,
+      "message": "specific",
+      "range": {
+        "startLine": 64,
+        "startChar": 29,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "237cd53d6fbffc1f31aca27741602b9725b80df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4703b6_f6048a4b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-13T17:19:11Z",
+      "side": 1,
+      "message": "Missing the methods to inspect an AStatus. Right now you can create, write, and read one - you just can\u0027t do anything with the read result.",
+      "revId": "237cd53d6fbffc1f31aca27741602b9725b80df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
