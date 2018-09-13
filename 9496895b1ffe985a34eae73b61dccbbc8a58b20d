@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "638fb35b_81d54b31",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-13T17:39:02Z",
+      "side": 1,
+      "message": "this makes it sound like the 1-1 for a unique object is broken if a second object is created, which isn\u0027t true.\n\nI\u0027d suggest just removing this line, I think it just adds confusion rather than clarity.",
+      "range": {
+        "startLine": 95,
+        "startChar": 36,
+        "endLine": 96,
+        "endChar": 66
+      },
+      "revId": "9496895b1ffe985a34eae73b61dccbbc8a58b20d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13294dbb_0814fe95",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-13T17:39:02Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure this helps. Maybe something like:\n\n\"Creates a new unique AIBinder instance of the given class. This instance retainers pointer-equality across transactions such that if an AIBinder is passed to a remote service and then sent back it will have the same pointer, thus allowing it to be used to uniquely identify a particular client or transaction if such a mapping is maintained. Each AIBinder_new call will generate a new unique object rather than returning an existing instance.\"",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 73
+      },
+      "revId": "9496895b1ffe985a34eae73b61dccbbc8a58b20d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
