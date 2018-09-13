@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a8ab4c7_d05c3658",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-13T22:09:54Z",
+      "side": 1,
+      "message": "I started this change because I had written this and I had believed it, but now I am thinking it is not true. Any ideas?",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "2104fe71446be5231ef04fc72b837a3939a1cdea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
