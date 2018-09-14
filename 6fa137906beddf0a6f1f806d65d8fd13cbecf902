@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "10160313_2e8baee6",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-14T20:14:31Z",
+      "side": 1,
+      "message": "Hmmm. This sounds bad. I mean, I think it means the same thing either way \u0027all attached objects [to it]\u0027, but it\u0027s more explicit now. Thanks!",
+      "parentUuid": "c7429887_a768cd07",
+      "range": {
+        "startLine": 156,
+        "startChar": 7,
+        "endLine": 156,
+        "endChar": 8
+      },
+      "revId": "6fa137906beddf0a6f1f806d65d8fd13cbecf902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad800f0d_c7f2b6ec",
         "filename": "libs/binder/include/binder/IBinder.h",
         "patchSetId": 3
