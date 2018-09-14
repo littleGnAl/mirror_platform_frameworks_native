@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2114416_75bf7d45",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 32
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-09-14T23:41:54Z",
+      "side": 1,
+      "message": "You can actually put the `# introduced\u003d29` up here and then you don\u0027t have to add it for every function in the block if you\u0027d prefer.",
+      "revId": "02acc130b13abda0ad68b57621199289ce6d8891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
