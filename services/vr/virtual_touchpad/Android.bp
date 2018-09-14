@@ -91,7 +91,7 @@ cc_binary {
     name: "virtual_touchpad",
     init_rc: ["virtual_touchpad.rc"],
     compile_multilib: "64",
-    stl: "libc++_static",
+    stl: "libc++",
 }
 
 // Touchpad client library.
