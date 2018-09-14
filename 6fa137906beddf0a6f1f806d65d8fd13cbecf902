@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "294553a5_af37fe03",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-14T11:25:16Z",
+      "side": 1,
+      "message": "this",
+      "range": {
+        "startLine": 156,
+        "startChar": 7,
+        "endLine": 156,
+        "endChar": 8
+      },
+      "revId": "6fa137906beddf0a6f1f806d65d8fd13cbecf902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad800f0d_c7f2b6ec",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-14T11:25:16Z",
+      "side": 1,
+      "message": "don\u0027t detach, and instead let",
+      "range": {
+        "startLine": 173,
+        "startChar": 21,
+        "endLine": 173,
+        "endChar": 25
+      },
+      "revId": "6fa137906beddf0a6f1f806d65d8fd13cbecf902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
