@@ -45,24 +45,6 @@ cc_library_shared {
     ],
 }
 
-cc_library_shared {
-    name: "libdumpstateaidl",
-    defaults: ["dumpstate_cflag_defaults"],
-    shared_libs: [
-        "libbinder",
-        "libutils",
-    ],
-    aidl: {
-        local_include_dirs: ["binder"],
-        export_aidl_headers: true,
-    },
-    srcs: [
-        "binder/android/os/IDumpstate.aidl",
-        "binder/android/os/IDumpstateListener.aidl",
-        "binder/android/os/IDumpstateToken.aidl",
-    ],
-}
-
 cc_defaults {
     name: "dumpstate_defaults",
     defaults: ["dumpstate_cflag_defaults"],

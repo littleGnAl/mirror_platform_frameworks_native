@@ -97,6 +97,7 @@ filegroup {
     srcs: [
         "binder/android/os/IInstalld.aidl",
     ],
+    path: "binder",
 }
 
 //

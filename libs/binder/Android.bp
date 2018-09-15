@@ -141,6 +141,7 @@ filegroup {
     srcs: [
         "aidl/android/content/pm/IPackageManagerNative.aidl",
     ],
+    path: "aidl",
 }
 
 subdirs = ["tests"]
