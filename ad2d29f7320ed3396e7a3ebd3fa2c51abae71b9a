@@ -22,6 +22,30 @@
       "revId": "ad2d29f7320ed3396e7a3ebd3fa2c51abae71b9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fce1e984_10cf1d85",
+        "filename": "services/thermalservice/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-17T17:51:07Z",
+      "side": 1,
+      "message": "That behavior was this same where this was copy-pasted from (services/thermalservice/Android.bp)",
+      "parentUuid": "fc3d0887_bb3a1a65",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "ad2d29f7320ed3396e7a3ebd3fa2c51abae71b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
