@@ -16,6 +16,24 @@
       "revId": "02acc130b13abda0ad68b57621199289ce6d8891",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed92561c_6df8b87e",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 32
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-17T18:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2114416_75bf7d45",
+      "revId": "02acc130b13abda0ad68b57621199289ce6d8891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
