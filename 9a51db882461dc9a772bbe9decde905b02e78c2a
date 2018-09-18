@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca8f5968_a5529775",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-09-18T01:34:57Z",
+      "side": 1,
+      "message": "\u0026\u0026 status !\u003d nullptr ?\n\nYou can fix it later though.",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "9a51db882461dc9a772bbe9decde905b02e78c2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
