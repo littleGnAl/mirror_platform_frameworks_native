@@ -32,7 +32,7 @@ using binder_proxy_limit_callback = void(*)(int);
 class BpBinder : public IBinder
 {
 public:
-    static BpBinder*    create(int32_t handle);
+    static BpBinder*    create(int32_t handle, int32_t& DumpUid);
 
     inline  int32_t     handle() const { return mHandle; }
 
@@ -73,6 +73,7 @@ public:
     static void         setCountByUidEnabled(bool enable);
     static void         setLimitCallback(binder_proxy_limit_callback cb);
     static void         setBinderProxyCountWatermarks(int high, int low);
+    static void         triggerLimitCallback(int32_t uid);
 
     class ObjectManager
     {

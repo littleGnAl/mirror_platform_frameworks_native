@@ -250,8 +250,9 @@ ProcessState::handle_entry* ProcessState::lookupHandleLocked(int32_t handle)
 sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
 {
     sp<IBinder> result;
+    int32_t DumpUid = -1;
 
-    AutoMutex _l(mLock);
+    mLock.lock();
 
     handle_entry* e = lookupHandleLocked(handle);
 
@@ -284,11 +285,13 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
                 Parcel data;
                 status_t status = IPCThreadState::self()->transact(
                         0, IBinder::PING_TRANSACTION, data, nullptr, 0);
-                if (status == DEAD_OBJECT)
+                if (status == DEAD_OBJECT) {
+                   mLock.unlock();
                    return nullptr;
+                }
             }
 
-            b = BpBinder::create(handle);
+            b = BpBinder::create(handle, DumpUid);
             e->binder = b;
             if (b) e->refs = b->getWeakRefs();
             result = b;
@@ -301,14 +304,20 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
         }
     }
 
+    mLock.unlock();
+
+    if (DumpUid != -1)
+           BpBinder::triggerLimitCallback(DumpUid);
+
     return result;
 }
 
 wp<IBinder> ProcessState::getWeakProxyForHandle(int32_t handle)
 {
     wp<IBinder> result;
+    int32_t DumpUid = -1;
 
-    AutoMutex _l(mLock);
+    mLock.lock();
 
     handle_entry* e = lookupHandleLocked(handle);
 
@@ -322,7 +331,7 @@ wp<IBinder> ProcessState::getWeakProxyForHandle(int32_t handle)
         // arriving from the driver.
         IBinder* b = e->binder;
         if (b == nullptr || !e->refs->attemptIncWeak(this)) {
-            b = BpBinder::create(handle);
+            b = BpBinder::create(handle, DumpUid);
             result = b;
             e->binder = b;
             if (b) e->refs = b->getWeakRefs();
@@ -331,6 +340,11 @@ wp<IBinder> ProcessState::getWeakProxyForHandle(int32_t handle)
             e->refs->decWeak(this);
         }
     }
+
+    mLock.unlock();
+
+    if (DumpUid != -1)
+	    BpBinder::triggerLimitCallback(DumpUid);
 
     return result;
 }
