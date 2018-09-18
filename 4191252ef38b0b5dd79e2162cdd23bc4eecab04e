@@ -46,6 +46,30 @@
       "revId": "4191252ef38b0b5dd79e2162cdd23bc4eecab04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c6644b8_b4d864dd",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-09-18T19:13:14Z",
+      "side": 1,
+      "message": "right :), mention that explicitly.",
+      "parentUuid": "533dbc29_abd3d895",
+      "range": {
+        "startLine": 370,
+        "startChar": 22,
+        "endLine": 370,
+        "endChar": 28
+      },
+      "revId": "4191252ef38b0b5dd79e2162cdd23bc4eecab04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
