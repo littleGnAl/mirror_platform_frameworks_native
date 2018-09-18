@@ -106,7 +106,7 @@ void BpBinder::ObjectManager::kill()
 // ---------------------------------------------------------------------------
 
 
-BpBinder* BpBinder::create(int32_t handle) {
+BpBinder* BpBinder::create(int32_t handle, int32_t& DumpUid) {
     int32_t trackedUid = -1;
     if (sCountByUidEnabled) {
         trackedUid = IPCThreadState::self()->getCallingUid();
@@ -121,7 +121,7 @@ BpBinder* BpBinder::create(int32_t handle) {
                 ALOGE("Too many binder proxy objects sent to uid %d from uid %d (%d proxies held)",
                       getuid(), trackedUid, trackedValue);
                 sTrackingMap[trackedUid] |= LIMIT_REACHED_MASK;
-                if (sLimitCallback) sLimitCallback(trackedUid);
+                DumpUid = trackedUid;
                 if (sBinderProxyThrottleCreate) {
                     ALOGI("Throttling binder proxy creates from uid %d in uid %d until binder proxy"
                           " count drops below %d",
@@ -465,6 +465,10 @@ void BpBinder::setBinderProxyCountWatermarks(int high, int low) {
     sBinderProxyCountLowWatermark = low;
 }
 
+void BpBinder::triggerLimitCallback(int32_t uid) {
+  AutoMutex _l(sTrackingLock);
+  if (sLimitCallback) sLimitCallback(uid);
+}
 // ---------------------------------------------------------------------------
 
 }; // namespace android
