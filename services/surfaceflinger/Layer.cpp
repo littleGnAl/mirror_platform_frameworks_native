@@ -544,7 +544,8 @@ void Layer::setGeometry(const sp<const DisplayDevice>& displayDevice, uint32_t z
 
     // computeBounds returns a FloatRect to provide more accuracy during the
     // transformation. We then round upon constructing 'frame'.
-    Rect frame{t.transform(computeBounds(activeTransparentRegion))};
+    Rect layerBound(computeBounds(activeTransparentRegion));
+    Rect frame{t.transform(layerBound,true)};
     if (!s.finalCrop.isEmpty()) {
         if (!frame.intersect(s.finalCrop, &frame)) {
             frame.clear();
