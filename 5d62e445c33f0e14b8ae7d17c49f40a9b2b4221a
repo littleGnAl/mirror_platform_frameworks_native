@@ -22,6 +22,30 @@
       "revId": "5d62e445c33f0e14b8ae7d17c49f40a9b2b4221a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e6314b3_d0f88883",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-18T16:05:07Z",
+      "side": 1,
+      "message": "AIDL returns BAD_TYPE for this in C++. Good catch. -\u003e https://android-review.googlesource.com/c/platform/frameworks/native/+/759922",
+      "parentUuid": "152df81c_e749f6ed",
+      "range": {
+        "startLine": 125,
+        "startChar": 19,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "5d62e445c33f0e14b8ae7d17c49f40a9b2b4221a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
