@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f1f2e2e1_4bba2926",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-18T07:16:24Z",
+      "side": 1,
+      "message": "This sounds rather ominous :-) I\u0027d rather say what it does mean: If it\u0027s 0, the transaction did reach the other side (right?), but the server may still have thrown an exception or a service-specific error. Use AStatus_isOk() to determine if the whole transaction was a success.",
+      "range": {
+        "startLine": 161,
+        "startChar": 42,
+        "endLine": 162,
+        "endChar": 33
+      },
+      "revId": "9a51db882461dc9a772bbe9decde905b02e78c2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca8f5968_a5529775",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 3
