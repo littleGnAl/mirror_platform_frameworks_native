@@ -22,6 +22,30 @@
       "revId": "4191252ef38b0b5dd79e2162cdd23bc4eecab04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "533dbc29_abd3d895",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-09-18T18:54:35Z",
+      "side": 1,
+      "message": "Actual shared libraries?",
+      "parentUuid": "d843a01a_d8fd92c7",
+      "range": {
+        "startLine": 370,
+        "startChar": 22,
+        "endLine": 370,
+        "endChar": 28
+      },
+      "revId": "4191252ef38b0b5dd79e2162cdd23bc4eecab04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
