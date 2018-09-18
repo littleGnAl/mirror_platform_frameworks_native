@@ -22,6 +22,30 @@
       "revId": "9a51db882461dc9a772bbe9decde905b02e78c2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a497438_18e874bc",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-18T02:07:13Z",
+      "side": 1,
+      "message": "I might also mark it as __attribute__((nonnull)) and comment this in the header to avoid this checks when anyone parceling it should care about this value.",
+      "parentUuid": "ca8f5968_a5529775",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "9a51db882461dc9a772bbe9decde905b02e78c2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
