@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d843a01a_d8fd92c7",
+        "filename": "cmds/installd/otapreopt_parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-09-18T18:44:23Z",
+      "side": 1,
+      "message": "is there any case which still sends it?\n\nIf not I think it safe to reject it all the time.",
+      "range": {
+        "startLine": 370,
+        "startChar": 22,
+        "endLine": 370,
+        "endChar": 28
+      },
+      "revId": "4191252ef38b0b5dd79e2162cdd23bc4eecab04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
