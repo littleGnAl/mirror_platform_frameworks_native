@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "152df81c_e749f6ed",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-18T07:02:40Z",
+      "side": 1,
+      "message": "I think STATUS_BAD_VALUE or STATUS_INVALID_OPERATION is a better match here; permission denied suggests you could fix this with permissions, but the caller is just doing something they\u0027re not supposed to, and it can\u0027t really be fixed.",
+      "range": {
+        "startLine": 125,
+        "startChar": 19,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "5d62e445c33f0e14b8ae7d17c49f40a9b2b4221a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
