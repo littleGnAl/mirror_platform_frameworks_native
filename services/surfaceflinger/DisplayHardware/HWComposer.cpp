@@ -513,6 +513,12 @@ status_t HWComposer::prepare(DisplayDevice& displayDevice) {
         }
     }
 
+    // If layer list is empty, the framebuffer target will still be passed to
+    // hwcomposer for presentation. So need to ensure the content is not stale.
+    if (!displayData.hasDeviceComposition) {
+        displayData.hasClientComposition = true;
+    }
+
     error = hwcDisplay->acceptChanges();
     RETURN_IF_HWC_ERROR_FOR("acceptChanges", error, displayId, BAD_INDEX);
 
