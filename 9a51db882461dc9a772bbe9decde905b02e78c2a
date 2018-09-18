@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0fc18eb5_624c71c1",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-18T15:37:58Z",
+      "side": 1,
+      "message": "If it is a service-specific error, then the transaction reached the other side. In fact, the other side could be forwarding an error from a further failed transaction (or returning any other error code it may please), so no matter what type of error it is, it\u0027s unclear if it reached the other side or not.\n\nUpdated for clarity:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/759919",
+      "parentUuid": "f1f2e2e1_4bba2926",
+      "range": {
+        "startLine": 161,
+        "startChar": 42,
+        "endLine": 162,
+        "endChar": 33
+      },
+      "revId": "9a51db882461dc9a772bbe9decde905b02e78c2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca8f5968_a5529775",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 3
