@@ -118,6 +118,30 @@
       "revId": "41bab14921a11244a10c48aef54f2ac580833043",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "504e62f3_407c59e8",
+        "filename": "opengl/tests/configdump/configdump.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2018-09-19T23:46:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c60e64c_462c6c60",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "41bab14921a11244a10c48aef54f2ac580833043",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
