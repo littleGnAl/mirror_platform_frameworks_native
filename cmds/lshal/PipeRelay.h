@@ -47,6 +47,7 @@ private:
     sp<RelayThread> mThread;
 
     static void CloseFd(int *fd);
+    static void SetNonBlock(int *fd);
 
     DISALLOW_COPY_AND_ASSIGN(PipeRelay);
 };

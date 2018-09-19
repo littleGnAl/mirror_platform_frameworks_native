@@ -16,6 +16,9 @@
 
 #include "PipeRelay.h"
 
+#include <unistd.h>
+#include <fcntl.h>
+
 #include <utils/Thread.h>
 
 namespace android {
@@ -77,11 +80,27 @@ void PipeRelay::CloseFd(int *fd) {
 
 PipeRelay::~PipeRelay() {
     CloseFd(&mFds[1]);
-    CloseFd(&mFds[0]);
+
+    SetNonBlock(&mFds[0]);
 
     if (mThread != nullptr) {
         mThread->join();
         mThread.clear();
+    }
+
+    CloseFd(&mFds[0]);
+}
+
+void PipeRelay::SetNonBlock(int *fd) {
+    int flag = fcntl(*fd, F_GETFL);
+    if (flag == -1) {
+        CloseFd(fd); // force interrupt read
+        return;
+    }
+    int ret = fcntl(*fd, F_SETFL, flag | O_NONBLOCK);
+    if (ret == -1) {
+        CloseFd(fd); // force interrupt read
+        return;
     }
 }
 
