@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd1828f3_1a3e4dc2",
+        "filename": "opengl/ANGLE.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2018-09-20T21:41:53Z",
+      "side": 1,
+      "message": "This line needs to be moved outside of the code block, so the markdown link is rendered correctly.",
+      "revId": "fd62fcc24635e6dbd198ed511b3aca1f49374fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32d3233d_48b915f4",
+        "filename": "opengl/ANGLE.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2018-09-20T21:41:53Z",
+      "side": 1,
+      "message": "This should be inside backticks to make an inlined code block.   The angle brackets aren\u0027t rendering correctly for me otherwise (could just be my markdown editor though).",
+      "range": {
+        "startLine": 119,
+        "startChar": 196,
+        "endLine": 119,
+        "endChar": 235
+      },
+      "revId": "fd62fcc24635e6dbd198ed511b3aca1f49374fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50d4d240_8b6c2ae2",
+        "filename": "opengl/ANGLE.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2018-09-20T21:41:53Z",
+      "side": 1,
+      "message": "This should be in a code block.",
+      "revId": "fd62fcc24635e6dbd198ed511b3aca1f49374fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d40b2df_3a8ad83c",
+        "filename": "opengl/ANGLE.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2018-09-20T21:41:53Z",
+      "side": 1,
+      "message": "Same. Put inside code block.",
+      "revId": "fd62fcc24635e6dbd198ed511b3aca1f49374fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef483421_7c84dabc",
+        "filename": "opengl/ANGLE.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2018-09-20T21:41:53Z",
+      "side": 1,
+      "message": "Same with the rest of these adb commands.",
+      "revId": "fd62fcc24635e6dbd198ed511b3aca1f49374fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
