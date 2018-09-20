@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e71f2718_52990d30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2018-09-20T15:52:06Z",
+      "side": 1,
+      "message": "This isn\u0027t actually how we expect HWC to behave. It\u0027s not stated in hwcomposer2.h, but in hwcomposer.h, we say:\n\n     * IMPORTANT NOTE: There is an implicit layer containing opaque black\n     * pixels behind all the layers in the list. It is the responsibility of\n     * the hwcomposer module to make sure black pixels are output (or blended\n     * from).\n\nWhile we don\u0027t specifically say it for HWC2, the expectation remains the same. As such, if the layer list is empty, we expect the screen to be black.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "40b91abd421bacc077d9ee20563b04a926d24150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41f2b022_d58ecd7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2018-09-20T15:52:06Z",
+      "side": 1,
+      "message": "This is actually the issue I would dig into, because we usually don\u0027t see an empty layer list except in the presence of WindowManager bugs, and certainly not during normal app launch.",
+      "range": {
+        "startLine": 15,
+        "startChar": 59,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "40b91abd421bacc077d9ee20563b04a926d24150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
