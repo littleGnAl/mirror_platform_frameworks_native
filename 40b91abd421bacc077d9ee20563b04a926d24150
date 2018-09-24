@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd783f0b_77c6166c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1044843
+      },
+      "writtenOn": "2018-09-24T07:45:39Z",
+      "side": 1,
+      "message": "Yes understood, and our HWC does behave as though there is this implicit black background (for example, when the layer list is not empty, but there is parts of the display frame not covered by any layer).\n\nWhen the layer list is empty, I take it that our HWC should NOT show the framebuffer target? This is how it currently behaves. Originally I think we did this from a long time ago, due to how the boot animation worked, and that it was drawn in the framebuffer target (before any app layers had been added). I can\u0027t remember the exact details, but it was something like that.",
+      "parentUuid": "e71f2718_52990d30",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "40b91abd421bacc077d9ee20563b04a926d24150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41f2b022_d58ecd7d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -41,6 +65,53 @@
         "startChar": 59,
         "endLine": 16,
         "endChar": 56
+      },
+      "revId": "40b91abd421bacc077d9ee20563b04a926d24150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d12029_e12b33da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1044843
+      },
+      "writtenOn": "2018-09-24T07:45:39Z",
+      "side": 1,
+      "message": "During the app-start transition, there is some odd behaviour with the layer list. There are multiple create-layer/destroy-layer calls, for the same layer. And at one point, HWC is asked to present while that layer list is empty. Not sure if this is due to WindowManager, or perhaps some order-of-event issue in surfaceflinger.",
+      "parentUuid": "41f2b022_d58ecd7d",
+      "range": {
+        "startLine": 15,
+        "startChar": 59,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "40b91abd421bacc077d9ee20563b04a926d24150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e886cf_409db4fa",
+        "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1044843
+      },
+      "writtenOn": "2018-09-24T07:45:39Z",
+      "side": 1,
+      "message": "This logic brings it in line with the HWC1 behaviour, in DisplayHardware/HWComposer_hwc1.cpp HWComposer::prepare().\n\nThere it uses the variables hasFbComp and hasOvComp, which are equivalent to the HWC2 hasClientComposition and hasDeviceComposition variables.\n\nIf the layer list is empty, the HWC1 path will always enable hasFbComp.",
+      "range": {
+        "startLine": 518,
+        "startChar": 4,
+        "endLine": 520,
+        "endChar": 5
       },
       "revId": "40b91abd421bacc077d9ee20563b04a926d24150",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
