@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d847939_66d8d0e7",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-09-25T12:00:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d1b7f4c_13f5347e",
+      "range": {
+        "startLine": 315,
+        "startChar": 14,
+        "endLine": 315,
+        "endChar": 20
+      },
+      "revId": "84538affd6c1f3f0e3245363bbbef5bdf3b4b1da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2527d5dc_40b9e1bc",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "84538affd6c1f3f0e3245363bbbef5bdf3b4b1da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bcbc353_5afb7945",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-09-25T12:00:00Z",
+      "side": 1,
+      "message": "Hmm but the do_ ones cannot be expressed as is_ or use_, can they? The common theme I see is that they are all verb_option (except for telephony_only \u0026 wifi_only). Apart from do_fb, they seem fairly readable too. But happy to make them more readable or give better names if you or anyone else has suggestions.",
+      "parentUuid": "2527d5dc_40b9e1bc",
+      "range": {
+        "startLine": 322,
+        "startChar": 13,
+        "endLine": 322,
+        "endChar": 16
+      },
+      "revId": "84538affd6c1f3f0e3245363bbbef5bdf3b4b1da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
