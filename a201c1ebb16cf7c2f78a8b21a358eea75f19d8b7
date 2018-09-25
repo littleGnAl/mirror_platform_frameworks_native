@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04fd2280_9edee68c",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2018-09-25T19:44:26Z",
+      "side": 1,
+      "message": "This defeats the whole point in a different way, doesn\u0027t it? If the pipe is not written to before you get to read from it, for example, you\u0027ll just see an EAGAIN returned from ::read() and exit.",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "a201c1ebb16cf7c2f78a8b21a358eea75f19d8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
