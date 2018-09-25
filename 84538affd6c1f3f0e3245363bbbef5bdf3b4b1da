@@ -93,6 +93,30 @@
       "revId": "84538affd6c1f3f0e3245363bbbef5bdf3b4b1da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85c1c761_92235555",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-09-25T13:13:35Z",
+      "side": 1,
+      "message": "Ack, makes sense. Pretty low priority at this stage, anyway.",
+      "parentUuid": "6bcbc353_5afb7945",
+      "range": {
+        "startLine": 322,
+        "startChar": 13,
+        "endLine": 322,
+        "endChar": 16
+      },
+      "revId": "84538affd6c1f3f0e3245363bbbef5bdf3b4b1da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
