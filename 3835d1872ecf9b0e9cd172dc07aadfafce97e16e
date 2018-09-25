@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ba5d2ca_0a2aa35e",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-25T18:17:04Z",
+      "side": 1,
+      "message": "this is also already specified here",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "3835d1872ecf9b0e9cd172dc07aadfafce97e16e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ef4702_b2f69090",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-25T18:17:04Z",
+      "side": 1,
+      "message": "this is already annotated here",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "3835d1872ecf9b0e9cd172dc07aadfafce97e16e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
