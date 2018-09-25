@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd024efc_fc987ed0",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-09-25T13:55:04Z",
+      "side": 1,
+      "message": "Returning -1 on success is unexpected for me.\n\nAn alternative would be to consider the case of \u0027-h\u0027 as a valid option. Add \"do_show_help\" or some such, and check for and appropriately handle that option in the caller of ParseCommandlineOptions. Then this function could return a boolean.",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 298,
+        "endChar": 7
+      },
+      "revId": "a11b0559cc9925e9d5e5a08bd3406dc0e45f99c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c2ffa53_eb0c975a",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-09-25T13:55:04Z",
+      "side": 1,
+      "message": "Does it work to do \u0027ds.options_ \u003d DumpOptions();\u0027 instead?",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 27
+      },
+      "revId": "a11b0559cc9925e9d5e5a08bd3406dc0e45f99c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e163275a_ffcb82c8",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-09-25T13:55:04Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment.\n\nDo you mean that ds.ParseCommandlineOptions modifies the provided argv? If so, maybe note that in the comment describing the ParseCommandlineOptions method.\n\nRegardless, it\u0027s okay to call ds.ParseCommandlineOptions again as long as you pass a different argv, right?",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 54
+      },
+      "revId": "a11b0559cc9925e9d5e5a08bd3406dc0e45f99c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
