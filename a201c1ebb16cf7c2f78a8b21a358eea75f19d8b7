@@ -70,6 +70,30 @@
       "revId": "a201c1ebb16cf7c2f78a8b21a358eea75f19d8b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a5fe85_65dea307",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2018-09-25T19:56:23Z",
+      "side": 1,
+      "message": "alternatively, switch back to a socketpair (which I thought was cleanest and worked because of shutdown()) and remove the stupid \"neverallow\" rule from sepolicy.",
+      "parentUuid": "9fa17c71_710c9a23",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "a201c1ebb16cf7c2f78a8b21a358eea75f19d8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
