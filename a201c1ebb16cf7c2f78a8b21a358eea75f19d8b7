@@ -22,6 +22,30 @@
       "revId": "a201c1ebb16cf7c2f78a8b21a358eea75f19d8b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "973a32ba_f2d0106d",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-09-25T19:50:17Z",
+      "side": 1,
+      "message": "Yeah.\nWill an fsync on the service ensure that the data is read here? There is no other way I can think of from lshal to know the data is fully read, without kernel changes (which are still pending).\nThis is better than just closing directly because it will read a little bit more data. At least, in the old code, lshal debug sometimes emits no result at all. Now, it writes correctly and much more reliably.",
+      "parentUuid": "04fd2280_9edee68c",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "a201c1ebb16cf7c2f78a8b21a358eea75f19d8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
