@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e1f286b0_15b4d3ef",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-09-25T15:12:38Z",
+      "side": 1,
+      "message": "Okay by me to leave a TODO and revisit later.",
+      "parentUuid": "2bb4588a_a8d8418a",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 298,
+        "endChar": 7
+      },
+      "revId": "a11b0559cc9925e9d5e5a08bd3406dc0e45f99c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c2ffa53_eb0c975a",
         "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
         "patchSetId": 3
@@ -140,6 +164,30 @@
       "revId": "a11b0559cc9925e9d5e5a08bd3406dc0e45f99c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eaae9d40_5861fee0",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-09-25T15:12:38Z",
+      "side": 1,
+      "message": "Your explanation helps. It\u0027s worth documenting that ParseCommandlineOptions can only be called once.\n\nMaybe \u0027optind \u003d 1\u0027 instead of putenv(\"OPTIND+1\"), and you could do it in ParseCommandlineOptions instead of in the test so that ParseCommandlineOptions can be called more than once? I\u0027m fine if you rather not play around with optind in this CL.",
+      "parentUuid": "e0ae2415_dabeac41",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 54
+      },
+      "revId": "a11b0559cc9925e9d5e5a08bd3406dc0e45f99c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
