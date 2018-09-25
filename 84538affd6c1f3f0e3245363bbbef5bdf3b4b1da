@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d1b7f4c_13f5347e",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-09-25T11:39:16Z",
+      "side": 1,
+      "message": "use std::string instead ?",
+      "range": {
+        "startLine": 315,
+        "startChar": 14,
+        "endLine": 315,
+        "endChar": 20
+      },
+      "revId": "84538affd6c1f3f0e3245363bbbef5bdf3b4b1da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2527d5dc_40b9e1bc",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-09-25T11:39:16Z",
+      "side": 1,
+      "message": "I find this naming a little inconsistent. some of these options are prefixed with do_ others with use_, and some others with is_.. Not necessarily actionable for this change and besides, there might be a theme that i\u0027ve missed.",
+      "range": {
+        "startLine": 322,
+        "startChar": 13,
+        "endLine": 322,
+        "endChar": 16
+      },
+      "revId": "84538affd6c1f3f0e3245363bbbef5bdf3b4b1da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
