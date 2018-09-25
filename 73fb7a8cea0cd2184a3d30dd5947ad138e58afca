@@ -69,6 +69,40 @@
       "revId": "73fb7a8cea0cd2184a3d30dd5947ad138e58afca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "692c6a64_f34e7247",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder_jni.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-25T16:20:35Z",
+      "side": 1,
+      "message": "missing API #ifdef guard",
+      "revId": "73fb7a8cea0cd2184a3d30dd5947ad138e58afca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "694e19f3_24c1d72c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder_jni.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-25T16:20:35Z",
+      "side": 1,
+      "message": "Mention that need to decStrong to release the AIBinder*",
+      "revId": "73fb7a8cea0cd2184a3d30dd5947ad138e58afca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
