@@ -46,6 +46,30 @@
       "revId": "a201c1ebb16cf7c2f78a8b21a358eea75f19d8b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fa17c71_710c9a23",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2018-09-25T19:55:33Z",
+      "side": 1,
+      "message": "If you really want to hack this why not keep the original code (the one that on occasion hangs forever) and before reading select() on the read-end with a timeout of, say, 5 secs. If it times out assume it\u0027d have hung and exit the loop manually. It\u0027s still a hack though. It\u0027s worrying that these file descriptors are just \"stuck\" somewhere.",
+      "parentUuid": "973a32ba_f2d0106d",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "a201c1ebb16cf7c2f78a8b21a358eea75f19d8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
