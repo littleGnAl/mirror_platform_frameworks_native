@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf5a7d9c_ddb3831f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1096171
+      },
+      "writtenOn": "2018-09-25T16:45:59Z",
+      "side": 1,
+      "message": "This is a hack....",
+      "revId": "fc9f74dac937c4ea89d51c21aaafb1f337675acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
