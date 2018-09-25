@@ -54,6 +54,8 @@ using ::testing::internal::CaptureStdout;
 using ::testing::internal::GetCapturedStderr;
 using ::testing::internal::GetCapturedStdout;
 
+#define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
+
 class DumpstateListenerMock : public IDumpstateListener {
   public:
     MOCK_METHOD1(onProgressUpdated, binder::Status(int32_t progress));
@@ -144,6 +146,23 @@ class DumpstateTest : public DumpstateBaseTest {
         ds.progress_.reset(new Progress());
         ds.update_progress_ = false;
         ds.update_progress_threshold_ = 0;
+        ResetDumpOptions();
+    }
+
+    void ResetDumpOptions() {
+        ds.options_.do_add_date = false;
+        ds.options_.do_zip_file = false;
+        ds.options_.do_vibrate = true;
+        ds.options_.use_outfile = nullptr;
+        ds.options_.use_socket = false;
+        ds.options_.use_control_socket = false;
+        ds.options_.do_fb = false;
+        ds.options_.do_broadcast = false;
+        ds.options_.is_remote_mode = false;
+        ds.options_.show_header_only = false;
+        ds.options_.do_start_service = false;
+        ds.options_.telephony_only = false;
+        ds.options_.wifi_only = false;
     }
 
     // Runs a command and capture `stdout` and `stderr`.
@@ -200,6 +219,106 @@ class DumpstateTest : public DumpstateBaseTest {
 
     Dumpstate& ds = Dumpstate::GetInstance();
 };
+
+TEST_F(DumpstateTest, ParseCommandlineOptionsNone) {
+    // clang-format off
+    char* argv[] = {
+        const_cast<char*>("dumpstate")
+    };
+    // clang-format on
+
+    int ret = ds.ParseCommandlineOptions(ARRAY_SIZE(argv), argv);
+    EXPECT_EQ(-1, ret);
+    EXPECT_FALSE(ds.options_.do_add_date);
+    EXPECT_FALSE(ds.options_.do_zip_file);
+    EXPECT_EQ(nullptr, ds.options_.use_outfile);
+    EXPECT_FALSE(ds.options_.use_socket);
+    EXPECT_FALSE(ds.options_.use_control_socket);
+    EXPECT_FALSE(ds.options_.show_header_only);
+    EXPECT_TRUE(ds.options_.do_vibrate);
+    EXPECT_FALSE(ds.options_.do_fb);
+    EXPECT_FALSE(ds.update_progress_);
+    EXPECT_FALSE(ds.options_.is_remote_mode);
+    EXPECT_FALSE(ds.options_.do_broadcast);
+}
+
+// Note that getopt can be called only once per execution.
+// So subsequent tests if any will not parse correctly
+TEST_F(DumpstateTest, ParseCommandlineOptions) {
+  // clang-format off
+    char* argv[] = {
+        const_cast<char*>("dumpstate"),
+        const_cast<char*>("-d"),
+        const_cast<char*>("-z"),
+        const_cast<char*>("-o abc"),
+        const_cast<char*>("-s"),
+        const_cast<char*>("-S"),
+        const_cast<char*>("-v"),
+        const_cast<char*>("-q"),
+        const_cast<char*>("-p"),
+        const_cast<char*>("-P")
+    };
+  // clang-format on
+  int ret = ds.ParseCommandlineOptions(ARRAY_SIZE(argv), argv);
+  EXPECT_EQ(-1, ret);
+  EXPECT_TRUE(ds.options_.do_add_date);
+  EXPECT_TRUE(ds.options_.do_zip_file);
+  // TODO: Maybe we should trim the filename
+  EXPECT_EQ(" abc", std::string(ds.options_.use_outfile));
+  EXPECT_TRUE(ds.options_.use_socket);
+  EXPECT_TRUE(ds.options_.use_control_socket);
+  EXPECT_TRUE(ds.options_.show_header_only);
+  EXPECT_FALSE(ds.options_.do_vibrate);
+  EXPECT_TRUE(ds.options_.do_fb);
+  EXPECT_TRUE(ds.update_progress_);
+
+  // Other options retain default values
+  EXPECT_FALSE(ds.options_.is_remote_mode);
+  EXPECT_FALSE(ds.options_.do_broadcast);
+}
+
+TEST_F(DumpstateTest, ValidateOptionsNeedOutfile1) {
+    ds.options_.do_zip_file = true;
+    EXPECT_FALSE(ds.ValidateOptions());
+    ds.options_.use_outfile = "a/b/c";
+    EXPECT_TRUE(ds.ValidateOptions());
+}
+
+TEST_F(DumpstateTest, ValidateOptionsNeedOutfile2) {
+    ds.options_.do_broadcast = true;
+    EXPECT_FALSE(ds.ValidateOptions());
+    ds.options_.use_outfile = "a/b/c";
+    EXPECT_TRUE(ds.ValidateOptions());
+}
+
+TEST_F(DumpstateTest, ValidateOptionsNeedZipfile) {
+    ds.options_.use_control_socket = true;
+    EXPECT_FALSE(ds.ValidateOptions());
+
+    ds.options_.do_zip_file = true;
+    ds.options_.use_outfile = "a/b/c";  // do_zip_file needs outfile
+    EXPECT_TRUE(ds.ValidateOptions());
+}
+
+TEST_F(DumpstateTest, ValidateOptionsUpdateProgressNeedsBroadcast) {
+    ds.update_progress_ = true;
+    ds.options_.use_outfile = "a/b/c";  // update_progress_ needs outfile
+    EXPECT_FALSE(ds.ValidateOptions());
+
+    ds.options_.do_broadcast = true;
+    EXPECT_TRUE(ds.ValidateOptions());
+}
+
+TEST_F(DumpstateTest, ValidateOptionsRemoteMode) {
+    ds.options_.is_remote_mode = true;
+    EXPECT_FALSE(ds.ValidateOptions());
+
+    ds.options_.do_broadcast = true;
+    ds.options_.do_zip_file = true;
+    ds.options_.do_add_date = true;
+    ds.options_.use_outfile = "a/b/c";  // do_broadcast needs outfile
+    EXPECT_TRUE(ds.ValidateOptions());
+}
 
 TEST_F(DumpstateTest, RunCommandNoArgs) {
     EXPECT_EQ(-1, RunCommand("", {}));
