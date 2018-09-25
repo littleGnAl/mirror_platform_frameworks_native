@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ce5e1b3_53922fe7",
+        "filename": "libs/binder/ndk/ibinder_jni.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-25T15:21:26Z",
+      "side": 1,
+      "message": "Good catch. This isn\u0027t the only offender in the codebase though. I\u0027m thinking of just removing the error messages. SGTU?",
+      "parentUuid": "59546bc3_8d762805",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 23
+      },
+      "revId": "73fb7a8cea0cd2184a3d30dd5947ad138e58afca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0691a859_2f337e05",
         "filename": "libs/binder/ndk/ibinder_jni.cpp",
         "patchSetId": 4
