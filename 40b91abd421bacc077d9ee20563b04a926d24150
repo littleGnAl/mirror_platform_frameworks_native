@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d51c613d_e8b4f4e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2018-09-25T20:24:09Z",
+      "side": 1,
+      "message": "I still think this is probably where you need to do some more digging. We haven\u0027t seen this on the devices we have worked on, though we did find (and fix) an issue with it occurring during the boot animation --\u003e lock screen transition.\n\nOut of curiosity, are you using the 2on1 adapter? I don\u0027t believe we ever saw the issue there, either, but I\u0027d be more likely to believe one exists in the adapter code than in SF proper, based on what we\u0027ve seen.",
+      "parentUuid": "06d12029_e12b33da",
+      "range": {
+        "startLine": 15,
+        "startChar": 59,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "40b91abd421bacc077d9ee20563b04a926d24150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0e886cf_409db4fa",
         "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
         "patchSetId": 1
