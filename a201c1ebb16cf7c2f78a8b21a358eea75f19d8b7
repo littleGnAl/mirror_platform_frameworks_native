@@ -94,6 +94,30 @@
       "revId": "a201c1ebb16cf7c2f78a8b21a358eea75f19d8b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a7cc58_d057f462",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-25T23:27:29Z",
+      "side": 1,
+      "message": "No exceptions.",
+      "parentUuid": "d3a5fe85_65dea307",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "a201c1ebb16cf7c2f78a8b21a358eea75f19d8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
