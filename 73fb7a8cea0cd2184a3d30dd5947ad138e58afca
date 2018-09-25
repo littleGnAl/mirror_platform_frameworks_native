@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59546bc3_8d762805",
+        "filename": "libs/binder/ndk/ibinder_jni.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-25T08:35:41Z",
+      "side": 1,
+      "message": "this can return nullptr, which will make lookupOrCreateFromBinder return nullptr, in which case AIBinder_incStrong() logs an error.",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 23
+      },
+      "revId": "73fb7a8cea0cd2184a3d30dd5947ad138e58afca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0691a859_2f337e05",
+        "filename": "libs/binder/ndk/ibinder_jni.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-09-25T08:35:41Z",
+      "side": 1,
+      "message": "grmbl :-)",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "73fb7a8cea0cd2184a3d30dd5947ad138e58afca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
