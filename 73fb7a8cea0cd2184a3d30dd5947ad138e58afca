@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "f26f1f6a_fc06ffc0",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder_jni.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-09-25T16:45:01Z",
+      "side": 1,
+      "message": "the new methods should be guarded with:\n\n#if __ANDROID_API__ \u003e\u003d __ANDROID_API_Q__\n#endif\n\nalso missing __INTRODUCED_IN(29) on each of the methods.",
+      "parentUuid": "78c06123_8d910e3d",
+      "revId": "73fb7a8cea0cd2184a3d30dd5947ad138e58afca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "694e19f3_24c1d72c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder_jni.h",
         "patchSetId": 4
