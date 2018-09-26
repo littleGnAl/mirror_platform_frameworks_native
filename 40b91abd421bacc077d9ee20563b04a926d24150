@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "f8ae1da4_1475ab81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1096171
+      },
+      "writtenOn": "2018-09-26T17:44:04Z",
+      "side": 1,
+      "message": "This sounds like a legitimate issue if reproducible, because the screen will blank for a short period of time.",
+      "parentUuid": "f256347b_4df430fa",
+      "range": {
+        "startLine": 15,
+        "startChar": 59,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "40b91abd421bacc077d9ee20563b04a926d24150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0e886cf_409db4fa",
         "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
         "patchSetId": 1
