@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "f256347b_4df430fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2018-09-26T13:37:03Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll give this a shot on my device to see if somehow we\u0027re missing something.",
+      "parentUuid": "488a6d83_5f492106",
+      "range": {
+        "startLine": 15,
+        "startChar": 59,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "40b91abd421bacc077d9ee20563b04a926d24150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0e886cf_409db4fa",
         "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
         "patchSetId": 1
