@@ -16,19 +16,38 @@
 
 #include "PipeRelay.h"
 
-#include <utils/Thread.h>
+#include <thread>
+
+#include <android-base/logging.h>
+
+#include <chrono>
+#include <mutex>
+
 
 namespace android {
 namespace lshal {
 
-struct PipeRelay::RelayThread : public Thread {
+constexpr std::chrono::milliseconds READ_TIMEOUT{100};
+
+struct PipeRelay::RelayThread {
     explicit RelayThread(int fd, std::ostream &os);
 
-    bool threadLoop() override;
+    bool threadLoop();
+    int run(const char* name);
+
+    template<typename R, typename P>
+    void waitUntilFinished(std::chrono::duration<R, P> timeout);
 
 private:
     int mFd;
     std::ostream &mOutStream;
+    std::unique_ptr<std::thread> mThread;
+
+    std::mutex mMutex;
+    std::condition_variable mCv;
+    bool mFinished;
+
+    void notifyFinished();
 
     DISALLOW_COPY_AND_ASSIGN(RelayThread);
 };
@@ -37,7 +56,16 @@ private:
 
 PipeRelay::RelayThread::RelayThread(int fd, std::ostream &os)
     : mFd(fd),
-      mOutStream(os) {
+      mOutStream(os),
+      mFinished(false) {
+
+}
+
+int PipeRelay::RelayThread::RelayThread::run(const char* name) {
+    mThread = std::make_unique<std::thread>([this] {
+        while (threadLoop());
+    });
+    return pthread_setname_np(mThread->native_handle(), name);
 }
 
 bool PipeRelay::RelayThread::threadLoop() {
@@ -45,12 +73,36 @@ bool PipeRelay::RelayThread::threadLoop() {
     ssize_t n = read(mFd, buffer, sizeof(buffer));
 
     if (n <= 0) {
+        notifyFinished();
         return false;
     }
 
     mOutStream.write(buffer, n);
 
     return true;
+}
+
+template<typename R, typename P>
+void PipeRelay::RelayThread::waitUntilFinished(std::chrono::duration<R, P> timeout) {
+    std::unique_lock<std::mutex> lock(mMutex);
+    mCv.wait_for(lock, timeout, [this] { return mFinished; });
+
+    if (!mFinished) {
+        LOG(WARNING) << "debug: timeout has reached. Output may be truncated.";
+        pthread_kill(mThread->native_handle(), SIGINT);
+    }
+
+    lock.unlock();
+
+    mThread->join();
+    mThread.reset();
+}
+
+void PipeRelay::RelayThread::notifyFinished() {
+    std::unique_lock<std::mutex> lock(mMutex);
+    mFinished = true;
+    lock.unlock();
+    mCv.notify_all();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -64,7 +116,7 @@ PipeRelay::PipeRelay(std::ostream &os)
         return;
     }
 
-    mThread = new RelayThread(mFds[0], os);
+    mThread = std::make_unique<RelayThread>(mFds[0], os);
     mInitCheck = mThread->run("RelayThread");
 }
 
@@ -77,12 +129,14 @@ void PipeRelay::CloseFd(int *fd) {
 
 PipeRelay::~PipeRelay() {
     CloseFd(&mFds[1]);
-    CloseFd(&mFds[0]);
 
     if (mThread != nullptr) {
-        mThread->join();
-        mThread.clear();
+        mThread->waitUntilFinished(READ_TIMEOUT);
+        mThread.reset();
     }
+
+    CloseFd(&mFds[0]);
+
 }
 
 status_t PipeRelay::initCheck() const {

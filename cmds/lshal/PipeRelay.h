@@ -21,7 +21,7 @@
 #include <android-base/macros.h>
 #include <ostream>
 #include <utils/Errors.h>
-#include <utils/RefBase.h>
+#include <memory>
 
 namespace android {
 namespace lshal {
@@ -44,7 +44,7 @@ private:
 
     status_t mInitCheck;
     int mFds[2];
-    sp<RelayThread> mThread;
+    std::unique_ptr<RelayThread> mThread;
 
     static void CloseFd(int *fd);
 
