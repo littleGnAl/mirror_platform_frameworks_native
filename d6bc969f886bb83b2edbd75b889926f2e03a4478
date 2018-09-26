@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ee1efd2b_71bb6b3c",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-09-26T23:34:59Z",
+      "side": 1,
+      "message": "It does :)\nI am going to run `while true; do lshal debug` overnight and see if there are more problems",
+      "parentUuid": "a7b1fa45_2fbea002",
+      "revId": "d6bc969f886bb83b2edbd75b889926f2e03a4478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "000ed1b2_e75b6c1e",
         "filename": "cmds/lshal/PipeRelay.cpp",
         "patchSetId": 10
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9d11870e_c9c150bc",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-09-26T23:34:59Z",
+      "side": 1,
+      "message": "Will do. What about read below?",
+      "parentUuid": "000ed1b2_e75b6c1e",
+      "revId": "d6bc969f886bb83b2edbd75b889926f2e03a4478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2752070_7a0aefec",
         "filename": "cmds/lshal/PipeRelay.cpp",
         "patchSetId": 10
@@ -47,6 +83,24 @@
       "writtenOn": "2018-09-26T23:23:52Z",
       "side": 1,
       "message": "Is this actually any different from mFinished \u003d true, which I find easier on the eyes?",
+      "revId": "d6bc969f886bb83b2edbd75b889926f2e03a4478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df2c033d_e46b9410",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-09-26T23:34:59Z",
+      "side": 1,
+      "message": "No :)\nIn fact I can drop the store() and load().",
+      "parentUuid": "f2752070_7a0aefec",
       "revId": "d6bc969f886bb83b2edbd75b889926f2e03a4478",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
