@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "569ceadd_ced0b68c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-09-26T17:13:06Z",
+      "side": 1,
+      "message": "Optional: I\u0027d use something like:\n\nTest: mmm -j frameworks/native/cmds/dumpstate/ \u0026\u0026 \\\n  adb push ${OUT}/data/nativetest64/dumpstate_test* \\\n  /data/nativetest64 \u0026\u0026 \\\n  adb shell /data/nativetest64/dumpstate_test/dumpstate_test \u0026\u0026\n  printf \"\\n\\n#### GOOD NEWS, EVERYONE: ALL TESTS PASSED! ####\\n\"\n\n\nSo you\u0027d make sure the tests passed when you see the message, otherwise you might miss a failure if dumpstate_test crashed (it happened to me in the past, it\u0027s hard to notice based on test output)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "a11b0559cc9925e9d5e5a08bd3406dc0e45f99c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd024efc_fc987ed0",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 3
