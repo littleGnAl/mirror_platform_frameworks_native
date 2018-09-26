@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81767986_28c69064",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-09-26T10:56:00Z",
+      "side": 1,
+      "message": "It likes to inline it more, so multiple items per line. I don\u0027t mind either way, just following the style in this directory.\n\nbtw had forgotten to run clang-format before, but did now.",
+      "parentUuid": "d017d2e8_763a3c17",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 21
+      },
+      "revId": "749d6a4b6017feff7fde4546a12eda5a92dfd54a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9662491_ec32ea16",
         "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "749d6a4b6017feff7fde4546a12eda5a92dfd54a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d81a6daa_12289cbd",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-09-26T10:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9662491_ec32ea16",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 41
+      },
+      "revId": "749d6a4b6017feff7fde4546a12eda5a92dfd54a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
