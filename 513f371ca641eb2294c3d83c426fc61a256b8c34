@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cff13945_f262559e",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2018-09-26T19:38:11Z",
+      "side": 1,
+      "message": "why didn\u0027t you simply use select() here that would have timed out cleanly without the necessity to kill threads? (as I suggested yesterday)",
+      "revId": "513f371ca641eb2294c3d83c426fc61a256b8c34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
