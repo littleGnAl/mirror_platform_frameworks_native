@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7b1fa45_2fbea002",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2018-09-26T23:23:52Z",
+      "side": 1,
+      "message": "I\u0027d have chosen a longer timeout (maybe 5 secs), but this should most likely work as well.",
+      "revId": "d6bc969f886bb83b2edbd75b889926f2e03a4478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000ed1b2_e75b6c1e",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2018-09-26T23:23:52Z",
+      "side": 1,
+      "message": "select can still (like many blocking calls) fail spuriously with EINTR. Consider using TEMP_FAILURE_RETRY.",
+      "revId": "d6bc969f886bb83b2edbd75b889926f2e03a4478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2752070_7a0aefec",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2018-09-26T23:23:52Z",
+      "side": 1,
+      "message": "Is this actually any different from mFinished \u003d true, which I find easier on the eyes?",
+      "revId": "d6bc969f886bb83b2edbd75b889926f2e03a4478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
