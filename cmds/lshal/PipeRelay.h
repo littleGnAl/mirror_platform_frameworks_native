@@ -18,10 +18,11 @@
 
 #define FRAMEWORKS_NATIVE_CMDS_LSHAL_PIPE_RELAY_H_
 
-#include <android-base/macros.h>
+#include <memory>
 #include <ostream>
+
+#include <android-base/macros.h>
 #include <utils/Errors.h>
-#include <utils/RefBase.h>
 
 namespace android {
 namespace lshal {
@@ -44,7 +45,7 @@ private:
 
     status_t mInitCheck;
     int mFds[2];
-    sp<RelayThread> mThread;
+    std::unique_ptr<RelayThread> mThread;
 
     static void CloseFd(int *fd);
 
