@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "488a6d83_5f492106",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1044843
+      },
+      "writtenOn": "2018-09-26T07:35:48Z",
+      "side": 1,
+      "message": "We implement our own lightweight HWC2, that sits in front of our existing HWC1 codebase. So from surfaceflinger\u0027s point of view, it just sees an HWC2 device.\n\nBut, I\u0027m pretty sure this \u0027empty layer list\u0027 scenario is not related to HWC.\nFor example, I can put an assert in surfaceflinger/DisplayHardware/HWComposer.cpp android::HWComposer::prepare().\n\n    assert(!displayDevice.getVisibleLayersSortedByZ().isEmpty());\n\nThis will fire during the app-starting transition, and thats before any interaction with HWC.",
+      "parentUuid": "d51c613d_e8b4f4e0",
+      "range": {
+        "startLine": 15,
+        "startChar": 59,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "40b91abd421bacc077d9ee20563b04a926d24150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0e886cf_409db4fa",
         "filename": "services/surfaceflinger/DisplayHardware/HWComposer.cpp",
         "patchSetId": 1
