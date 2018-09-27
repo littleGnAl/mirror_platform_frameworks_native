@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97dcb98c_3c967681",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-09-27T16:34:58Z",
+      "side": 1,
+      "message": "Nit: Prepares instead of \"Does preparation\".\n\nAlthough I\u0027d probably skip this paragraph (the method name is already explaining that :-) and leave just the \"Prepares state...\" part.",
+      "range": {
+        "startLine": 1714,
+        "startChar": 3,
+        "endLine": 1714,
+        "endChar": 20
+      },
+      "revId": "5560edb98cb16073c058fafb7bb7824a8ebfb503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6fefb57_75e32322",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-09-27T16:34:58Z",
+      "side": 1,
+      "message": "I\u0027d probably rephrase here too, as we\u0027re doing other stuff like writing the final command (OK / FAIL) for the bugreportz scenario, renaming the file, etc...",
+      "range": {
+        "startLine": 1770,
+        "startChar": 2,
+        "endLine": 1772,
+        "endChar": 54
+      },
+      "revId": "5560edb98cb16073c058fafb7bb7824a8ebfb503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc57c7f5_105540b4",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1888,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-09-27T16:34:58Z",
+      "side": 1,
+      "message": "I\u0027d move this function to be close to the other DumpstateXXX, preferably before the others (as this is the \"main\" dumpstate scenario).",
+      "range": {
+        "startLine": 1888,
+        "startChar": 12,
+        "endLine": 1888,
+        "endChar": 28
+      },
+      "revId": "5560edb98cb16073c058fafb7bb7824a8ebfb503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb24114_622b77a7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2250,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-09-27T16:34:58Z",
+      "side": 1,
+      "message": "Rename to SendBroadcast() or SendBugreportFinishedBroadcast()?",
+      "range": {
+        "startLine": 2250,
+        "startChar": 8,
+        "endLine": 2250,
+        "endChar": 21
+      },
+      "revId": "5560edb98cb16073c058fafb7bb7824a8ebfb503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
