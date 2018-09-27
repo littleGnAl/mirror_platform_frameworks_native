@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "fff9b6f8_b9f45df5",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2018-09-27T00:54:02Z",
+      "side": 1,
+      "message": "That\u0027s a good question. I don\u0027t believe I\u0027ve ever _seen_ a read with the corresponding fd bit set from select fail with EINTR but then I always guard against it even for the read call.",
+      "parentUuid": "9d11870e_c9c150bc",
+      "revId": "d6bc969f886bb83b2edbd75b889926f2e03a4478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2752070_7a0aefec",
         "filename": "cmds/lshal/PipeRelay.cpp",
         "patchSetId": 10
