@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d05d0b9_651e6ade",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2018-09-28T15:05:21Z",
+      "side": 1,
+      "message": "nit: can you check that target \u003d\u003d 0 instead?\n\nThat\u0027s more inline with what I\u0027d expect given the comment, and makes fraction \u003d\u003d 0 do the expected thing (i.e. require the exact number).",
+      "revId": "4ff90b979af04f1fcd5d49c4428c862ecaf02f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
