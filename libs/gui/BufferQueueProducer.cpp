@@ -1124,6 +1124,9 @@ int BufferQueueProducer::query(int what, int *outValue) {
         case NATIVE_WINDOW_MAX_BUFFER_COUNT:
             value = static_cast<int32_t>(mCore->mMaxBufferCount);
             break;
+        case NATIVE_WINDOW_QUERY_API:
+            value = static_cast<int32_t>(mCore->mConnectedApi);
+            break;
         default:
             return BAD_VALUE;
     }

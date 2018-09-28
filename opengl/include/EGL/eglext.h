@@ -1296,6 +1296,8 @@ EGLAPI EGLuint64NV EGLAPIENTRY eglGetSystemTimeNV (void);
 #define EGL_IMAGE_CROP_BOTTOM_ANDROID     0x314B
 #endif
 
+#define EGL_IS_INVALID_EXT    0x43210001
+
 #ifdef __cplusplus
 }
 #endif
