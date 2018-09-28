@@ -47,6 +47,9 @@
 #include "egl_tls.h"
 #include "egl_trace.h"
 
+#include <system/window.h>
+#include <utils/Errors.h>
+
 using namespace android;
 
 // ----------------------------------------------------------------------------
@@ -884,6 +887,24 @@ EGLBoolean eglQuerySurface( EGLDisplay dpy, EGLSurface surface,
     } else if (s->getCta8613Attribute(attribute, value)) {
         return EGL_TRUE;
     }
+
+    if (attribute == EGL_IS_INVALID_EXT) {
+        int tmp_w;
+        EGLNativeWindowType win = (EGLNativeWindowType)s->getNativeWindow();
+        if (!win) return EGL_FALSE;
+        switch (win->query(win, NATIVE_WINDOW_QUERY_API, &tmp_w)) {
+            case NO_INIT:
+                *value = 1;
+                break;
+            case NO_ERROR:
+                *value = tmp_w == 0 ? 1 : 0;
+                break;
+            default:
+                *value = 0;
+        }
+        return EGL_TRUE;
+    }
+
     return s->cnx->egl.eglQuerySurface(dp->disp.dpy, s->surface, attribute, value);
 }
 

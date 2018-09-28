@@ -237,6 +237,10 @@ enum {
     NATIVE_WINDOW_GET_CONSUMER_USAGE64          = 31,
     NATIVE_WINDOW_SET_BUFFERS_SMPTE2086_METADATA = 32,
     NATIVE_WINDOW_SET_BUFFERS_CTA861_3_METADATA = 33,
+    /*
+     * Returns the producer connected api.
+     */
+    NATIVE_WINDOW_QUERY_API = 100,
 // clang-format on
 };
 
