@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef29e6f3_3376a158",
+        "filename": "libs/ui/HdrCapabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2018-10-01T21:03:21Z",
+      "side": 1,
+      "message": "You don\u0027t need to add \"noexcept\" to \u003ddefault constructors and operators. The compiler will figure this out based on the members and base classes.",
+      "range": {
+        "startLine": 27,
+        "startChar": 58,
+        "endLine": 27,
+        "endChar": 66
+      },
+      "revId": "5bc849f6065971eb92e7a7696b13d90d9add2d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
