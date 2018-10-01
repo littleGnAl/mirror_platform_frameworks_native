@@ -39,6 +39,7 @@ public:
         eProtectedByApp = 0x00000800,
         eProtectedByDRM = 0x00001000,
         eCursorWindow = 0x00002000,
+        eAbstract = 0x00100000,
 
         eFXSurfaceNormal = 0x00000000,
         eFXSurfaceColor = 0x00020000,

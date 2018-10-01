@@ -788,6 +788,9 @@ protected:
 
     mutable LayerBE mBE;
 
+    // when creation flag has abstract bit, ignore the check of buffer size
+    bool mIsAbstract;
+
 private:
     /**
      * Returns an unsorted vector of all layers that are part of this tree.
