@@ -67,6 +67,7 @@ BufferLayer::BufferLayer(SurfaceFlinger* flinger, const sp<Client>& client, cons
     mTexture.init(Texture::TEXTURE_EXTERNAL, mTextureName);
 
     if (flags & ISurfaceComposerClient::eNonPremultiplied) mPremultipliedAlpha = false;
+    if (flags & ISurfaceComposerClient::eAbstract) mIsAbstract = true;
 
     mCurrentState.requested = mCurrentState.active;
 
@@ -119,7 +120,7 @@ status_t BufferLayer::setBuffers(uint32_t w, uint32_t h, PixelFormat format, uin
 
     // never allow a surface larger than what our underlying GL implementation
     // can handle.
-    if ((uint32_t(w) > maxSurfaceDims) || (uint32_t(h) > maxSurfaceDims)) {
+    if (((uint32_t(w) > maxSurfaceDims) || (uint32_t(h) > maxSurfaceDims)) && !mIsAbstract) {
         ALOGE("dimensions too large %u x %u", uint32_t(w), uint32_t(h));
         return BAD_VALUE;
     }
