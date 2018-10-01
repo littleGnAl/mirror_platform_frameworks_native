@@ -22,6 +22,30 @@
       "revId": "5bc849f6065971eb92e7a7696b13d90d9add2d9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db1b6af3_5ce2233b",
+        "filename": "libs/ui/HdrCapabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-10-01T22:13:15Z",
+      "side": 1,
+      "message": "The explicit declaration could catch errors like we found in b/116857907.\nWhen a move constructor is declared noexcept \u003d default, but one of its member type android::sp\u003c...\u003e is not declared noexcept, the compiler reported:\nsystem/libhidl/base/include/hidl/Status.h:227:5: error: exception specification of explicitly defaulted move constructor does not match the calculated one\nFor the same reason, it\u0027s important to declare noexcept for android::sp and other system/frameworks core classes.",
+      "parentUuid": "ef29e6f3_3376a158",
+      "range": {
+        "startLine": 27,
+        "startChar": 58,
+        "endLine": 27,
+        "endChar": 66
+      },
+      "revId": "5bc849f6065971eb92e7a7696b13d90d9add2d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
