@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48632965_62622c2e",
+        "filename": "cmds/dumpstate/binder/android/os/DumpstateOptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-10-01T16:47:24Z",
+      "side": 1,
+      "message": "license notice",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a121001e_45c96a37",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-10-01T16:47:24Z",
+      "side": 1,
+      "message": "It might worth to mention that for now we\u0027re just refactoring the existing workflow, so we\u0027re explicitly passing an int type, but eventually the type will be part of the bugreport request.",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae7f9a1e_a949cd0e",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-10-01T16:47:24Z",
+      "side": 1,
+      "message": "I think this comment is redundant, we aren\u0027t using this convention on Dumpstate",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
