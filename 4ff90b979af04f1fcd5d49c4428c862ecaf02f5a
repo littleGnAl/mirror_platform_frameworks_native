@@ -16,6 +16,24 @@
       "revId": "4ff90b979af04f1fcd5d49c4428c862ecaf02f5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50d6395c_4ad36b9a",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-10-01T20:42:47Z",
+      "side": 1,
+      "message": "Refactored to use target, and require exact match if fraction is zero.",
+      "parentUuid": "7d05d0b9_651e6ade",
+      "revId": "4ff90b979af04f1fcd5d49c4428c862ecaf02f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
