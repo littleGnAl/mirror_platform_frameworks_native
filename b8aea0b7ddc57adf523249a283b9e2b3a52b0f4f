@@ -140,6 +140,30 @@
       "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52c48c9b_84e1f1a3",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-10-02T16:25:45Z",
+      "side": 1,
+      "message": "I meant that right now clients call ActivityManager.requestBugreport(int type), but in the long term they will pass some sort of flag / options object which will define what parts should be included. But that\u0027s probably post Q",
+      "parentUuid": "b3b94e9e_68c8bc83",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
