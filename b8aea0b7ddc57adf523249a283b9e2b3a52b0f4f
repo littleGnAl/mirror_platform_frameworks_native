@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a12430ea_0d434b20",
+        "filename": "cmds/dumpstate/binder/android/os/DumpstateOptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-10-02T10:52:24Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "48632965_62622c2e",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a121001e_45c96a37",
         "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
         "patchSetId": 2
@@ -68,6 +92,54 @@
       "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3b94e9e_68c8bc83",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-10-02T10:52:24Z",
+      "side": 1,
+      "message": "Sorry, not sure what you mean by bugreport request here.",
+      "parentUuid": "a121001e_45c96a37",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f4b9cac_b54eb3d8",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-10-02T10:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7f9a1e_a949cd0e",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
