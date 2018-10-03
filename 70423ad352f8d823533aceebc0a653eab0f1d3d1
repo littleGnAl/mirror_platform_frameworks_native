@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "754e0a9b_ac4f6265",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-03T22:00:14Z",
+      "side": 1,
+      "message": "It\u0027s really long though already. SpAIBinder?",
+      "parentUuid": "8e78a4ca_6e3e9a62",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95eaa3aa_a1465df9",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 17
@@ -215,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "815f43c7_1548aba6",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-03T22:00:14Z",
+      "side": 1,
+      "message": "Yeah, they probably shouldn\u0027t ever use it. I\u0027ll comment to that effect.",
+      "parentUuid": "2ce476d6_e43f5a8c",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "338b756d_c474d51c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 17
@@ -345,6 +393,30 @@
       "side": 1,
       "message": "This is used for arbitrary types? Or can we get close enough by instead specializing std::default_delete?\n\nIt seems cleaner to build this out of unique_ptr if we can.",
       "parentUuid": "6a5fe105_4be3ce7d",
+      "range": {
+        "startLine": 70,
+        "startChar": 6,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d0534d_145249ab",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-03T22:00:14Z",
+      "side": 1,
+      "message": "Yeah, originally I was trying to do this w/o libc++ dependencies. I can change it to composing unique_ptr. I\u0027d rather not inherit from unique_ptr though since I want to do things like:\n\nclass AutoStatus : AutoA\u003c...\u003e {\n    bool isOk() {\n        return AStatus_isOk(mT);\n    }\n    ...\n}\n\nbelow.",
+      "parentUuid": "94ef809e_e7a07faa",
       "range": {
         "startLine": 70,
         "startChar": 6,

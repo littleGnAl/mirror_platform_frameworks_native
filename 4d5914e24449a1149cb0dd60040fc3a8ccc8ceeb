@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "fccb3587_7362cbb4",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-03T22:00:14Z",
+      "side": 1,
+      "message": "It doesn\u0027t have to be here.",
+      "parentUuid": "53853b06_e477d7ec",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "4d5914e24449a1149cb0dd60040fc3a8ccc8ceeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aea90a5b_790472c9",
         "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
         "patchSetId": 18
@@ -59,6 +83,30 @@
       "writtenOn": "2018-10-03T21:00:27Z",
       "side": 1,
       "message": "Use std::call_once instead?",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "4d5914e24449a1149cb0dd60040fc3a8ccc8ceeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d03ba72_e7dcb92f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-03T22:00:14Z",
+      "side": 1,
+      "message": "TIL. Will do.",
+      "parentUuid": "aea90a5b_790472c9",
       "range": {
         "startLine": 37,
         "startChar": 8,
