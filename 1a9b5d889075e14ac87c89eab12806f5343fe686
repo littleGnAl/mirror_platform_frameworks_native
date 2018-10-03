@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "725dd186_2ce4c6b2",
+        "filename": "cmds/dumpstate/binder/android/os/DumpstateOptions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-03T09:37:25Z",
+      "side": 1,
+      "message": "do you need this or is just Parcelable.h enough?",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "1a9b5d889075e14ac87c89eab12806f5343fe686",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
