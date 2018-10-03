@@ -164,6 +164,30 @@
       "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b492b4e_a533871d",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-10-03T09:12:49Z",
+      "side": 1,
+      "message": "I already have the option object so I can move it right away.",
+      "parentUuid": "52c48c9b_84e1f1a3",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "b8aea0b7ddc57adf523249a283b9e2b3a52b0f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
