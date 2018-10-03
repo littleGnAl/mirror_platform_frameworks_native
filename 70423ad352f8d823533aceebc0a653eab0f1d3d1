@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f3e4a4a_ef0c1ab9",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T01:30:12Z",
+      "side": 1,
+      "message": "Maybe too reminiscent of std::auto_ptr, which has a deservedly bad reputation.",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95eaa3aa_a1465df9",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T01:30:12Z",
+      "side": 1,
+      "message": "Do you want to explicitly check for data races here, as we now do in sp\u003c\u003e? The problem here is that races are unexpectedly destructive. Simultaneous assignment of null to the same pointer can result in a double free, which is almost impossible to debug.",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 60
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40fa6777_4355588d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T01:30:12Z",
+      "side": 1,
+      "message": "Why not just pass a pointer to the AutoAIBinder? As it stands, this seems to require an explicit increment in SomeInitFunction, which seems really error prone.",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "338b756d_c474d51c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T01:30:12Z",
+      "side": 1,
+      "message": "If this is as intended, can we avoid it? This seems like a bit of a bug magnet since it doesn\u0027t decrement the reference count. I\u0027m not quite sure what the goal is. Is swap() a better API? AFAICT, shared_ptr doesn\u0027t have this for a reason.",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 25
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6f48b1a_e71a0865",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T01:30:12Z",
+      "side": 1,
+      "message": "Why not just use std::unique_ptr?",
+      "range": {
+        "startLine": 70,
+        "startChar": 6,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c43bc2c1_8ce916bb",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T01:30:12Z",
+      "side": 1,
+      "message": "// Takes ownership of T.",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19c24641_83417e35",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T01:30:12Z",
+      "side": 1,
+      "message": "I suspect you need this one and swap to make this generally usable.",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 39
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
