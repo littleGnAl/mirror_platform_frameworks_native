@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8e78a4ca_6e3e9a62",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T21:00:27Z",
+      "side": 1,
+      "message": "\"StrongPtrAIBinder\" or some variant/abbreviation thereof, maybe, if it roughly follows sp\u003c\u003e conventions?",
+      "parentUuid": "bdcaf8da_ed9ca6ba",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95eaa3aa_a1465df9",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 17
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I think it would be too expensive to add a lock here. This is similar to shared_ptr: multiple simultaneous access to the same instance is dangerous, but access to different instances is okay. Do you think it would be worth it anyway?",
       "parentUuid": "95eaa3aa_a1465df9",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 60
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "182bc960_350f1246",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T21:00:27Z",
+      "side": 1,
+      "message": "I was not suggesting a lock. See https://cs.corp.google.com/android/system/core/libutils/include/utils/StrongPointer.h?q\u003dStrongPointer.h\u0026dr\u0026l\u003d167 for what I had in mind.\n\nThere\u0027s a subtle difference between sp\u003c\u003e and shared_ptr, in that shared_ptr is required to do the decrement/destruction after the assignment. In some dubious cases, that gets you slightly better semantics. It also makes it much harder to do this kind of race checking, while reducing the window during which such races can cause visible problems. I prefer the sp\u003c\u003e semantics with race checking, but that\u0027s controversial.",
+      "parentUuid": "679e1fd7_10505d13",
       "range": {
         "startLine": 44,
         "startChar": 8,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "2ce476d6_e43f5a8c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T21:00:27Z",
+      "side": 1,
+      "message": "So the NDK functions effectively return a raw pointer, but increment the reference count?\n\nI assume the InitFunction needs to have a pointer it can directly assign through, as opposed to calling a special function to do the assignment? In the latter case we could at least do some sanity checking.\n\nIf we can\u0027t do any of this, can we strongly discourage use in other cases, add a comment about the required nonzero reference count, and check that mBinder is null when this is called?\n\nIf we let this be used in a more general setting, then the user has to understand some intricacies of reference counting, notably increment first, then decrement. That seems like it\u0027s going to result in lots of impossible-to-debug heap corruption bugs.",
+      "parentUuid": "64777668_7673fee4",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "338b756d_c474d51c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 17
@@ -190,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "eeda71d8_fe775b3a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T21:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ddd08bb_654de4a7",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 25
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6f48b1a_e71a0865",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 17
@@ -225,6 +321,30 @@
       "side": 1,
       "message": "Because you have to specify the destroy function every time you instantiate it. I could compose std::unique_ptr though if you think that would be better.",
       "parentUuid": "e6f48b1a_e71a0865",
+      "range": {
+        "startLine": 70,
+        "startChar": 6,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ef809e_e7a07faa",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T21:00:27Z",
+      "side": 1,
+      "message": "This is used for arbitrary types? Or can we get close enough by instead specializing std::default_delete?\n\nIt seems cleaner to build this out of unique_ptr if we can.",
+      "parentUuid": "6a5fe105_4be3ce7d",
       "range": {
         "startLine": 70,
         "startChar": 6,
@@ -307,6 +427,30 @@
     },
     {
       "key": {
+        "uuid": "ec718049_99ac82ca",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T21:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f45ea0e_ce75c165",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19c24641_83417e35",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 17
@@ -342,6 +486,30 @@
       "side": 1,
       "message": "Ack. You\u0027re likely right, but I\u0027m trying to add them as I need them.",
       "parentUuid": "19c24641_83417e35",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 39
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f27889ea_258ec0d5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-03T21:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0651fcaf_71e46dfa",
       "range": {
         "startLine": 102,
         "startChar": 4,
