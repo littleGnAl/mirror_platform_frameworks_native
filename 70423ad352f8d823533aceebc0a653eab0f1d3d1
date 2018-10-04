@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "26ee0ed7_e66a43e3",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T16:22:00Z",
+      "side": 1,
+      "message": "I may wait to do a rename like this until after these patchsets are in or at least until they are settled down a bit. There are too many places. Do you want the same thing below with the other Auto types? Actually, even if it is reminiscent of auto_ptr, the arguments I see against auto_ptr are its peculiar semantics and unclear name. Is there something else? If you don\u0027t mind too much, I\u0027m rather inclined to keep it how it is.",
+      "parentUuid": "3f0667e3_1a2319d0",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95eaa3aa_a1465df9",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 17
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "I was not suggesting a lock. See https://cs.corp.google.com/android/system/core/libutils/include/utils/StrongPointer.h?q\u003dStrongPointer.h\u0026dr\u0026l\u003d167 for what I had in mind.\n\nThere\u0027s a subtle difference between sp\u003c\u003e and shared_ptr, in that shared_ptr is required to do the decrement/destruction after the assignment. In some dubious cases, that gets you slightly better semantics. It also makes it much harder to do this kind of race checking, while reducing the window during which such races can cause visible problems. I prefer the sp\u003c\u003e semantics with race checking, but that\u0027s controversial.",
       "parentUuid": "679e1fd7_10505d13",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 60
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e464d4_0c0b72ae",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T16:22:00Z",
+      "side": 1,
+      "message": "So something like this:\n        AIBinder* old \u003d mBinder;\n        if (old !\u003d nullptr) AIBinder_decStrong(old);\n        if (mBinder !\u003d old) report_race();\n        mBinder \u003d binder;\n\n?\n\nI do feel a bit weird about importing and exporting Android logging from this code, but I guess I can do it.",
+      "parentUuid": "182bc960_350f1246",
       "range": {
         "startLine": 44,
         "startChar": 8,
@@ -284,6 +332,30 @@
       "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d551aa5_4724bf21",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T16:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "815f43c7_1548aba6",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "70423ad352f8d823533aceebc0a653eab0f1d3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {

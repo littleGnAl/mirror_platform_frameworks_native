@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b7cf01e2_684e0816",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T16:22:00Z",
+      "side": 1,
+      "message": "Alright, I agree it should be done. Just trying to find the best way now (I can only think of importing android logs in the headers) or if there is another way that is more standard.",
+      "parentUuid": "f98b8790_5f52a91a",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "4d5914e24449a1149cb0dd60040fc3a8ccc8ceeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aea90a5b_790472c9",
         "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
         "patchSetId": 18
@@ -140,6 +164,30 @@
       "revId": "4d5914e24449a1149cb0dd60040fc3a8ccc8ceeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88ec857b_d37f4311",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T16:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d03ba72_e7dcb92f",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "4d5914e24449a1149cb0dd60040fc3a8ccc8ceeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
