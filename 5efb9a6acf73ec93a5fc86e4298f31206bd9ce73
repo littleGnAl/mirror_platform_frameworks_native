@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29a47c5a_59d1f44d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-04T17:54:57Z",
+      "side": 1,
+      "message": "why int32_t length and not size_t?",
+      "range": {
+        "startLine": 94,
+        "startChar": 73,
+        "endLine": 94,
+        "endChar": 87
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5932d3a4_bc3b4054",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-04T17:54:57Z",
+      "side": 1,
+      "message": "document the parameters. What is void* data? Should probably call it void* userContext?\n\nwhy int32_t length and not size_t?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb33099_edb2598c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-04T17:54:57Z",
+      "side": 1,
+      "message": "where is the resulting char* that comes out of the allocator?\n\nSuggest renaming the void* data to void* userContext. \"data\" is vague and unclear.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 67
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "431bb970_1ffafcd7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-04T17:54:57Z",
+      "side": 1,
+      "message": "str.data()",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
