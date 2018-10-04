@@ -145,6 +145,53 @@
     },
     {
       "key": {
+        "uuid": "63e4901f_96907713",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-04T23:57:10Z",
+      "side": 1,
+      "message": "The implementation here already uses readString16InPlace and copies the result to a char* buffer. I\u0027m suggesting that make that two APIs rather than one. The actual ABI from the system would be `binder_status_t AParcel_readString16(const AParcel* parcel, char16_t** str, size_t* len)`. `str` is an out param that is allocated by the API, and len is also an out param. I was thinking we\u0027d also provide a std:;string and char* variant, they would just be implemented in terms of that rather than relying on the odd reallocator interface (the fact that the user can\u0027t just pass malloc/realloc makes me feel like we\u0027re exposing not quite the right API there).\n\n... but then I discovered that POSIX is a jerk and provides wcsrtombs, but not c16srtombs, only c16rtomb, so that would get messy fast for the C variant. The C++ variant is ugly but at least it\u0027s only a handful of lines.",
+      "parentUuid": "4ed1475d_5f422416",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12552acd_b3beb0ff",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-04T23:57:10Z",
+      "side": 1,
+      "message": "Regardless of how it\u0027s implemented, I\u0027m worried that the differences in naming between the NDK API and the platform API might confuse people. This reads a UTF-16 string and coverts it for you. For the platform APIs, readT reads a T and performs no conversion. It looks like there\u0027s a Parcel::readUtf8FromUtf16 that performs the operation similar to this one?",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 109,
+        "endChar": 34
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c53b0f2_c8313d9c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 1
