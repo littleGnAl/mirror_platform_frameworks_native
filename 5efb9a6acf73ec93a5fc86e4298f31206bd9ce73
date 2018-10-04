@@ -246,6 +246,30 @@
       "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b4e5020_ceaf25c7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-04T21:38:14Z",
+      "side": 1,
+      "message": ".data() is now, but I\u0027d rather a const_cast on .data() or .c_str() to this hack.",
+      "parentUuid": "288c25cd_b8869ce2",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
