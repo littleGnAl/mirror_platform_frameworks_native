@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ddfd6f9_36bb0147",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-04T23:30:57Z",
+      "side": 1,
+      "message": "I don\u0027t like this. It overly couples the allocator, which is where should the string be placed, with how you get the return value back. Just have a char** output on readString so the return value can be returned.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 88
+      },
+      "revId": "7c4b70749742536f3745979a12d1bba0a69f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
