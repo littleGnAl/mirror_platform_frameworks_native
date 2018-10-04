@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f7ec137a_9515e62a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T17:19:39Z",
+      "side": 1,
+      "message": "Actually, I started doing this, and then I remembered why I did this convoluted way.\n\nThe NDK library needs the buffer to do the utf16_to_utf8 transformation onto. Doing it your way would require an extra copy (even though it is a cleaner API).\n\nI justify breaking into the std::string since the internal data array is guaranteed to be contiguous w/ C++11.\n\nI think I\u0027ll use your method for other data types which will never need transformations like this.\n\nAlso, with your method, I would still need a void* data. I would want something like \"AParcel_readString(AParcel*, void(*callback)(void* data, const char*, size_t), void*)\" so that the client can also pass the data structure they want to fill out to the allocator without having to deal with some global variable.\n\nAlso, it\u0027s possible to use the current API without std::string. For instance (but you can also imagine String8, std::vector, etc..):\nstatic inline char* AParcel_char_star_allocator(void* data, int32_t length) {\n    char** str \u003d static_cast\u003cchar**\u003e(data);\n    *str \u003d malloc(length * sizeof(char));\n    return *str;\n}",
+      "parentUuid": "2d59fd61_f1728d72",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c53b0f2_c8313d9c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 1
