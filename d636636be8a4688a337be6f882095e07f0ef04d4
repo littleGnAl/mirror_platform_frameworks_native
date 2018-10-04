@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f6a8491_083efb01",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T03:45:01Z",
+      "side": 1,
+      "message": "I\u0027ll probably be repeating this pattern for arrays + vectors. If someone has a better suggestion, let me know.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb6c53e8_98ab30b3",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T03:45:01Z",
+      "side": 1,
+      "message": "I\u0027m a little bit sad that utf16_to_utf8_length and other methods return -1 in this degenerate case. I\u0027m tempted to fix them, but it would have to be a follow-up.",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
