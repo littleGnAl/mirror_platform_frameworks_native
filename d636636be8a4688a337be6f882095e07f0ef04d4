@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "8c53b0f2_c8313d9c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T03:59:14Z",
+      "side": 1,
+      "message": "also, at the api council, is there a preference for something like this to be in a namespace? In the CL after this, I\u0027m putting them in an \u0027::android\u0027 namespace",
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb6c53e8_98ab30b3",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 1
