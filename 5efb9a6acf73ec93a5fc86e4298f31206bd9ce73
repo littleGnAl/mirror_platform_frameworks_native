@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "90c653a2_6a56cfc1",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T23:12:43Z",
+      "side": 1,
+      "message": "Done (this was an implementation detail being exposed, now it just fails if it is too big)",
+      "parentUuid": "7f567b44_98447659",
+      "range": {
+        "startLine": 94,
+        "startChar": 73,
+        "endLine": 94,
+        "endChar": 87
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5932d3a4_bc3b4054",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 3
@@ -93,6 +117,30 @@
       "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44eb2520_ef2753cf",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T23:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca5f40ff_3b499aa2",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "eba1f357_43c40bcf",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T23:12:43Z",
+      "side": 1,
+      "message": "Done. I\u0027ve renamed it to stringData though in order to distinguish it from userData (on AIBinder). Also, I\u0027ve amended the documentation to be more clear.",
+      "parentUuid": "f4855c27_afe16d15",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 67
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e970f17b_b6fc4cf6",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 3
@@ -175,6 +247,24 @@
       "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "309af708_dd19c451",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T23:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6652365e_2ef039b7",
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -261,6 +351,30 @@
       "side": 1,
       "message": ".data() is now, but I\u0027d rather a const_cast on .data() or .c_str() to this hack.",
       "parentUuid": "288c25cd_b8869ce2",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3622ae0b_6f0f7a2f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T23:12:43Z",
+      "side": 1,
+      "message": "Either way, it\u0027s returning a reference to the same exact memory in practice. \u0026s[0] is also used a lot in our codebase already. Specifically C++11 section 21.4.1.5, defines contiguity with this identity: \"\u0026*(s.begin() + n) \u003d\u003d \u0026*s.begin() + n\". Since *s.begin() \u003d\u003d s[0], the standard is suggesting to use a buffer like this. The one downside to my solution is that it assumes \u0026s[0] + s.size() \u003d\u003d \u0027\\0\u0027. The standard heavily suggests this since c_str must be null terminated and return in constant time. In any implementation Android would use, this is the case, but \u0026s[s.size()] is technically considered to be undefined behavior. So, I\u0027ve updated the current patchset to allocate an extra byte for correctness. Let me know if you still feel strongly about the const_cast, and I can change it.",
+      "parentUuid": "4b4e5020_ceaf25c7",
       "range": {
         "startLine": 28,
         "startChar": 11,
