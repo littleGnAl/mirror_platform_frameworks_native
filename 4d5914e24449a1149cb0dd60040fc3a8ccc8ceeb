@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f98b8790_5f52a91a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-04T00:27:34Z",
+      "side": 1,
+      "message": "Do we want that? Or do we want the RefBase behavior of requiring that you create an sp\u003c\u003e during the object\u0027s lifetime?\n\nIn any case, we should probably clarify the usage rules here. Is it acceptable to use such an object without reference counting at all? With reference counting that doesn\u0027t use ref()? Requiring that you use ref()-based reference counting makes it easier to catch a bunch of abuses at the cost of flexibility.",
+      "parentUuid": "fccb3587_7362cbb4",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "4d5914e24449a1149cb0dd60040fc3a8ccc8ceeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aea90a5b_790472c9",
         "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
         "patchSetId": 18
