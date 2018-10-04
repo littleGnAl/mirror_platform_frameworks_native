@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f567b44_98447659",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T21:32:30Z",
+      "side": 1,
+      "message": "Will change (once the utf16/utf8 discussion is resolved).",
+      "parentUuid": "29a47c5a_59d1f44d",
+      "range": {
+        "startLine": 94,
+        "startChar": 73,
+        "endLine": 94,
+        "endChar": 87
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5932d3a4_bc3b4054",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-04T17:54:57Z",
       "side": 1,
       "message": "document the parameters. What is void* data? Should probably call it void* userContext?\n\nwhy int32_t length and not size_t?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5f40ff_3b499aa2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T21:32:30Z",
+      "side": 1,
+      "message": "Will change (once the utf16/utf8 discussion is resolved).",
+      "parentUuid": "5932d3a4_bc3b4054",
       "range": {
         "startLine": 97,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f4855c27_afe16d15",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T21:32:30Z",
+      "side": 1,
+      "message": "Will change (once the utf16/utf8 discussion is solved).",
+      "parentUuid": "2bb33099_edb2598c",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 67
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e970f17b_b6fc4cf6",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2018-10-04T21:09:23Z",
       "side": 1,
       "message": "IMO if we\u0027re going to expose any C++ wrappers they should go further than this. An actual AParcel class would be worthwhile.",
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6652365e_2ef039b7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T21:32:30Z",
+      "side": 1,
+      "message": "This file just has wrappers for std::string. You can see that full AParcel class here:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/740001\n\nAlthough it is still very minimal.",
+      "parentUuid": "e970f17b_b6fc4cf6",
       "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -123,6 +213,30 @@
       "side": 1,
       "message": "or even just str.c_str()",
       "parentUuid": "431bb970_1ffafcd7",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "288c25cd_b8869ce2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T21:32:30Z",
+      "side": 1,
+      "message": "It\u0027s not mutable.",
+      "parentUuid": "87188ef6_44b106c5",
       "range": {
         "startLine": 28,
         "startChar": 11,
