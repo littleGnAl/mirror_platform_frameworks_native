@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2d59fd61_f1728d72",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-04T16:57:48Z",
+      "side": 1,
+      "message": "I\u0027ll change this to that. I like it better. Thanks!",
+      "parentUuid": "a1c7ca9a_227a63f4",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c53b0f2_c8313d9c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 1
