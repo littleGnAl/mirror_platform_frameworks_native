@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "d16bdee7_8b2cd681",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-04T21:09:23Z",
+      "side": 1,
+      "message": "\u003e The NDK library needs the buffer to do the utf16_to_utf8 transformation onto.\n\nIt\u0027s a little weird to me that we aren\u0027t exposing this as a char16_t API. It might be better to perform that minimum task and handle char* and std::string conversions elsewhere. We\u0027d be able to do so with a cleaner interface anyway since the char16_t API could just report the size that it read rather than requiring that user to pass in an allocator (that is sometimes a reallocator, but might not be).",
+      "parentUuid": "f7ec137a_9515e62a",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c53b0f2_c8313d9c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 1

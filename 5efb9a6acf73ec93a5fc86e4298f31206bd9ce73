@@ -71,6 +71,23 @@
     },
     {
       "key": {
+        "uuid": "e970f17b_b6fc4cf6",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-04T21:09:23Z",
+      "side": 1,
+      "message": "IMO if we\u0027re going to expose any C++ wrappers they should go further than this. An actual AParcel class would be worthwhile.",
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "431bb970_1ffafcd7",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 3
