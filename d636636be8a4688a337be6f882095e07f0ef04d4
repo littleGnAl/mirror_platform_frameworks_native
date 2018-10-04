@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a1c7ca9a_227a63f4",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-04T16:36:45Z",
+      "side": 1,
+      "message": "The need for \u0027data\u0027 makes me uncomfortable. It looks like it is designed with std::string in mind. Also, you will be directly writing into the internal data array of std::string, which is actually breaking abstraction.\n\nIf I were you, I would like to design the API as follows:\n\nAParcel_readString(AParcel*, void (*callback)(const char*, size_t))\n\nThe callback can just point to the data on parcel without copying. The clients can then choose to use it in-place (e.g. printf) or copy it to somewhere (e.g. std::string)",
+      "parentUuid": "7f6a8491_083efb01",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c53b0f2_c8313d9c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 1
@@ -36,6 +60,29 @@
       "writtenOn": "2018-10-04T03:59:14Z",
       "side": 1,
       "message": "also, at the api council, is there a preference for something like this to be in a namespace? In the CL after this, I\u0027m putting them in an \u0027::android\u0027 namespace",
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb3bff2e_69eb1fe9",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-04T16:36:45Z",
+      "side": 1,
+      "message": "I don\u0027t like this...",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 21
+      },
       "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
