@@ -88,6 +88,36 @@ binder_status_t AParcel_writeStatusHeader(AParcel* parcel, const AStatus* status
 binder_status_t AParcel_readStatusHeader(const AParcel* parcel, AStatus** status)
         __INTRODUCED_IN(29);
 
+/**
+ * Writes string value to the next location in a non-null parcel.
+ */
+binder_status_t AParcel_writeString(AParcel* parcel, const char* string, size_t length)
+        __INTRODUCED_IN(29);
+
+/**
+ * This is called whenever a transaction needs to be processed by a local implementation.
+ *
+ * The length here includes the space required to insert a '\0' for a properly formed c-str. If the
+ * buffer returned from this function is retStr, it will be filled by AParcel_readString with the
+ * data from the remote process, and it will be filled such that retStr[length] == '\0'.
+ *
+ * If allocation fails, null should be returned.
+ */
+typedef char* (*AParcel_string_allocator)(void* stringData, size_t length);
+
+/**
+ * Reads and allocates string value from the next location in a non-null parcel.
+ *
+ * Data is passed to the string allocator once the string size is known. This data should be used to
+ * point to the string data that is allocated with AParcel_string_allocator. For instance, it could
+ * be a char**, and string allocator could use it to allocate the properly sized buffer.
+ *
+ * If this function returns a success, the buffer returned by allocator when passed stringData will
+ * contain a null-terminated c-str read from the binder.
+ */
+binder_status_t AParcel_readString(const AParcel* parcel, AParcel_string_allocator allocator,
+                                   void* stringData) __INTRODUCED_IN(29);
+
 // @START
 /**
  * Writes int32_t value to the next location in a non-null parcel.
