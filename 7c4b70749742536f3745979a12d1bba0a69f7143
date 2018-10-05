@@ -70,6 +70,30 @@
       "revId": "7c4b70749742536f3745979a12d1bba0a69f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc5b2363_222aea32",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-05T01:27:31Z",
+      "side": 1,
+      "message": "Let\u0027s imagine how this can be extended to things like readStringArray or readMap, etc.\n\ntypedef char*[] (*AParcel_stringarray_allocator)(void* data, size_t length)\ntypedef char* (*AParcel_string_allocator)(void* data, size_t length)\n\nAParcel_readStringArray(AParcel*, \n    AParcel_stringarray_allocator array_alloc, \n    AParcel_string_allocator string_alloc, void* data);\n\nThis doesn\u0027t work because there is no way for you to provide \u0027data\u0027 - which would be std::string - to the string_allocator.\n\n-------------\nI strongly believe you can greatly simply these APIs by returning the raw pointer to the parcel to the client and let the client to do the necessary conversion if needed.\n\nAParcel_readUtf16String(AParcel* parcel, void (*callback)(char16_t*, size_t))\nAParcel_readUtf16StringArray(AParcel* parcel void (*callback)(char16_t*[] array, size_t[] str_sizes, size_t array_size)\n\nThe array and str_sizes arrays are created by the API and are destroyed after the callback is returned. The important point is that strings themselves are never copied.\n\nI think this is okay because you will wrap these with the generated API from AIDL compiler where you can convert it to std::string in one pass.",
+      "parentUuid": "153eeb57_84dc22ce",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 88
+      },
+      "revId": "7c4b70749742536f3745979a12d1bba0a69f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
