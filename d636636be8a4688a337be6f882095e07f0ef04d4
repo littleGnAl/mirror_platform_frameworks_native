@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "a27996ef_469fe962",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-05T00:11:44Z",
+      "side": 1,
+      "message": "readString16InPlace doesn\u0027t make a copy but gives a pointer to the kernel-owned buffer which will be invalidated when the transaction is over. Assuming I also created a nice C++ wrapper to convert utf16-\u003eutf8, readString16 would require two copies (one to copy from the binder buffer and one to convert to utf8). If I did make it AParcel_readString16, I would also need to make an AParcel_deleteString or similar API to allow the client to clean up the string when it is done. This isn\u0027t always amenable to all situations. See my reply to jreck to see my consideration of AString which would help embed the need to use this delete into the API, but that applies here as well.\n\nI agree it would be nicer that you could pass malloc/realloc directly into the API, but the primary idea is to allow the client to control the structure that the data is put into. If there is a need for it, I would be happy to add malloc/new etc.. wrapppers.",
+      "parentUuid": "63e4901f_96907713",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12552acd_b3beb0ff",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 1
@@ -180,6 +204,30 @@
       "writtenOn": "2018-10-04T23:57:10Z",
       "side": 1,
       "message": "Regardless of how it\u0027s implemented, I\u0027m worried that the differences in naming between the NDK API and the platform API might confuse people. This reads a UTF-16 string and coverts it for you. For the platform APIs, readT reads a T and performs no conversion. It looks like there\u0027s a Parcel::readUtf8FromUtf16 that performs the operation similar to this one?",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 109,
+        "endChar": 34
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5418fd7c_9df2460e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-05T00:11:44Z",
+      "side": 1,
+      "message": "I\u0027m writing it to coincide with the SDK API:\nhttps://developer.android.com/reference/android/os/Parcel.html#writeString(java.lang.String)\n\nI\u0027m happy to change the name if you want, but I didn\u0027t want the client to know or care that they are writing a utf16 string. As far as I\u0027m concerned, that is an implementation detail of libbinder.",
+      "parentUuid": "12552acd_b3beb0ff",
       "range": {
         "startLine": 109,
         "startChar": 16,

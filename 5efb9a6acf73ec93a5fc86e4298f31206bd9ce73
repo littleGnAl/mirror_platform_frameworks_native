@@ -384,6 +384,30 @@
       "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b66c6dd_2fd9d159",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-05T00:11:44Z",
+      "side": 1,
+      "message": "\u003e .data() is now\n\nI agree that is better, but it does appear to be C++17.",
+      "parentUuid": "3622ae0b_6f0f7a2f",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

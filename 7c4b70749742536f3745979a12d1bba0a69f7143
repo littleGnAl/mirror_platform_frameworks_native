@@ -46,6 +46,30 @@
       "revId": "7c4b70749742536f3745979a12d1bba0a69f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "153eeb57_84dc22ce",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-05T00:11:44Z",
+      "side": 1,
+      "message": "The client of AParcel_readString will have some sort of a string representation locally (std::string, String8, MyString, MyBuffer, std::vector\u003cchar\u003e, etc...). This object (ideally pointed to by stringData so that the allocator has access to it) is what is actually interesting to the client. It\u0027s only in the trivial case where a char* is used that the char** would actually be interesting. In all other cases (including the one in binder_parcel_utils.h, the only Android user of this API, what AIDL is using which the vast majority of NDK users will use in order to continue to use AIDL trivially and seamlessly create Java \u003c-\u003e native interfaces), the char* will be dropped/ignored because it is also contained in stringData.\n\nThis example I\u0027m using in this header is degenerate, I agree, but the API is designed this way in order to support the following criteria:\n- the same side of the NDK library boundary has to allocate and de-allocate this stringt\n- libbinder_ndk copies the data from the wire only once\n- libbinder_ndk doesn\u0027t know the size of a string until it starts being read\n\nAnother way I could solve this problem is by creating a class like \"AString\" which allows libbinder_ndk to control the allocation/deletion of the string. Then we would need an AutoAString helper. I don\u0027t really like this (and don\u0027t want to do it for arrays/other data types/etc..). You also have shared your aversion with me to redefining structures like this (see b/68197287#comment10) which is why I didn\u0027t give this solution a second thought although I had considered it before.\n\nAlso, the current solution allows APIs built on top of this API to use whatever string representation they want to (std::string, etc..). This is a huge benefit since when large existing codebases use type X, they can continue to use that type w/o either a copy or refactoring the codebase.\n\n\n\u003e Probably not a noticable amount of overhead given that we\u0027re talking about IPC though?\nSure, but it is some overhead. We avoid it in HIDL. If these strings are kilobytes, it can add up. This has also been drilled into me as the reason why AIDL cpp originally chose to use utf16 in C++, hence why I am even more concerned about it. Personally, I\u0027m willing to abandon aesthetics in favor of performance. Especially since as I mentioned above the only likely user of this API provides a much nicer API w/ std::string in binder_parcel_utils.h and I can add more APIs for char* etc.. as needed.",
+      "parentUuid": "4ddfd6f9_36bb0147",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 88
+      },
+      "revId": "7c4b70749742536f3745979a12d1bba0a69f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
