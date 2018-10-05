@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcde6619_f2aed505",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-05T23:23:22Z",
+      "side": 1,
+      "message": "Other NDK API folks: I don\u0027t believe we have precedent here. Would we rather this header do nothing if the user mistakenly includes it from C, or be an error? I\u0027m leaning toward the latter but don\u0027t feel strongly about it.\n\nIf this #ifdef stays, should probably move the #includes inside it so the header only has an effect if it\u0027s usable.",
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17c6b7c0_e336040c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-05T23:23:22Z",
+      "side": 1,
+      "message": "Everything here should be covered by doxygen since it\u0027s in the NDK sysroot. It\u0027s mostly wrapping other things so fine by me to just refer to the wrapped APIs, but we need to have *something* or it won\u0027t show up at all on the docs page (don\u0027t forget @file and @defgroup)",
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51a00911_bd2207b6",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-05T23:23:22Z",
+      "side": 1,
+      "message": "I really don\u0027t like this name. We (at least within the bionic/ART side of the tree) usually name these Scoped rather than Auto.\n\nAScopedResource or something maybe? AutoAResource if we\u0027re sticking with auto, but the name as-is leaves me hanging. Auto Android what? Maybe s/Resource/Ptr/ ?",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc3096b_f40d31a7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-05T23:23:22Z",
+      "side": 1,
+      "message": "Why is this INTERFACE but other things are Child?",
+      "range": {
+        "startLine": 64,
+        "startChar": 19,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3377e4f2_6bc88e5c",
+        "filename": "libs/binder/ndk/test/main_client.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-05T23:23:22Z",
+      "side": 1,
+      "message": "Tests?",
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
