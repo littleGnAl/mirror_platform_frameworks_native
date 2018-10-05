@@ -480,6 +480,30 @@
       "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ce527df_272daecd",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-10-05T01:43:42Z",
+      "side": 1,
+      "message": "OK, let me elaborate more.\n\n1) 21.4.7.1 says that\n- c_str() and data() are identical, so let\u0027s think only data().\n- data() returns a pointer p such that p + i \u003d\u003d \u0026operator[](i) for i in [0, size()]. Note that size() is included in the range.\n\n2) 21.4.5 says that operator[](size()) is a reference with value charT()\n\nSo data() + size() \u003d\u003d \u0026operator[](size()), its value is always charT(), and it\u0027s perfectly fine to write \u0026s[0].",
+      "parentUuid": "9317a3c2_031f6c88",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
