@@ -94,6 +94,30 @@
       "revId": "7c4b70749742536f3745979a12d1bba0a69f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6bc6dbe_0fdb4b80",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-05T01:38:29Z",
+      "side": 1,
+      "message": "The problem is that it isn\u0027t easy to let the client do the conversion (many lines of code), and doing so would require exposing utf16 here (which I want to keep an implementation detail and avoid exposing). It would also require either an extra copy OR giving the client access to a pointer which is on the binder window (I wanted to avoid doing this as well since I don\u0027t want to have to expose the idea of a binder window in the NDK).\n\nFor the array/map/list cases, I can do something similar to here (the allocator will just be called multiple times and there will also be a vector allocator). This is similar to the cost of the existing libbinder wrappers (which have to call the std::vector/String16 function calls). For arrays of primitives, these will be read contiguously at once. In every case, this will have the same performance profile as the existing cpp backend sans some number of in-process function re-directs (which is the minimum I can provide).",
+      "parentUuid": "dc5b2363_222aea32",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 88
+      },
+      "revId": "7c4b70749742536f3745979a12d1bba0a69f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
