@@ -22,6 +22,30 @@
       "revId": "7c4b70749742536f3745979a12d1bba0a69f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b330882a_6caeff5f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-05T00:04:49Z",
+      "side": 1,
+      "message": "That also would be fine by me, but I think he was trying to avoid the extra copy that would be needed to go to a std::string if it were implemented that way.\n\nProbably not a noticable amount of overhead given that we\u0027re talking about IPC though?",
+      "parentUuid": "4ddfd6f9_36bb0147",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 88
+      },
+      "revId": "7c4b70749742536f3745979a12d1bba0a69f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
