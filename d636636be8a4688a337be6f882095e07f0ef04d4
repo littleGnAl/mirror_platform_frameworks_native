@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "4faa9bdd_0c54b454",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-05T18:05:19Z",
+      "side": 1,
+      "message": "The parcels are alive when AIBinder_Class_onTransact is called. If I give out a handle to data on the binder buffer, it will be invalidated after that method returns.",
+      "parentUuid": "d7cef48f_292ce28f",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12552acd_b3beb0ff",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 1
@@ -276,6 +300,30 @@
       "side": 1,
       "message": "\u003e As far as I\u0027m concerned, that is an implementation detail of libbinder.\n\nIs it? Based on the platform\u0027s Parcel API it looks like it supports multiple types of strings, so the choice to read a UTF-16 string here is important. I\u0027m not at all familiar with these APIs though, so I could be wrong.\n\nIf I\u0027m the only one worried about this, ignore me. The other people on this review have a lot more experience with this stuff than I do.",
       "parentUuid": "5418fd7c_9df2460e",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 109,
+        "endChar": 34
+      },
+      "revId": "d636636be8a4688a337be6f882095e07f0ef04d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f5c55e9_a4e3b036",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-05T18:05:19Z",
+      "side": 1,
+      "message": "The libbinder Parcel API allows all kinds of things to be written to it, yes, but the Parcel SDK API in Java only has \u0027read/writeString\u0027:\n\nhttps://developer.android.com/reference/android/os/Parcel\n\nFor AIDL, the exact layout of the wire protocol isn\u0027t important. For instance, I could change readString in the SDK to write a utf8 string to the wire protocol and have the NDK read it w/o conversion. I could also add a header or change the type of the header without breaking anything.\n\nUsers should never use libbinder Parcel calls directly to read things that AIDL parcels. AIDL always creates read/writes in pairs. They have flexibility in their API to write whatever to the parcels in order to support custom services and parceling of high complexity. For the NDK case, I explicitly don\u0027t want to support that in the short term. At a later date, it would be possible to add \u0027writeUtf8String\u0027 or \u0027writeUtf16String\u0027 but these would have matching read functions and they wouldn\u0027t be intended to interoperate with AIDL/Java/the read/writeString methods.",
+      "parentUuid": "fdc16fbd_d15187f5",
       "range": {
         "startLine": 109,
         "startChar": 16,
