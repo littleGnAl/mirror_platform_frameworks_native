@@ -504,6 +504,30 @@
       "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bdd9cf7_e529f7c0",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-05T01:52:25Z",
+      "side": 1,
+      "message": "Ah, I missed that data() + size() \u003d\u003d \u0026operator[](size()). Not subtle at all. I\u0027ll change my implementation back. Thank you!",
+      "parentUuid": "3ce527df_272daecd",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
