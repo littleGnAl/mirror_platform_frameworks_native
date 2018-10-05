@@ -408,6 +408,30 @@
       "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d26f5db5_c61b72e8",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-10-05T01:20:27Z",
+      "side": 1,
+      "message": "FYI, referring C++11 21.4.5 and 21.4.7.1, \u0026s[s.size()] is not an undefined behavior since C++11, and it is guaranteed that 1) value of s[s.size()] is always charT(), 2) c_str()[i] \u003d\u003d data[i] \u003d\u003d \u0026operator[](i) for i in [0, size()].",
+      "parentUuid": "5b66c6dd_2fd9d159",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
