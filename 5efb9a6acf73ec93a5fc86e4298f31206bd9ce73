@@ -456,6 +456,30 @@
       "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9317a3c2_031f6c88",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-05T01:30:20Z",
+      "side": 1,
+      "message": "Yeah, but see 21.4.5.2, talking about operator[].\n\nIt says: \"*(begin() + pos) if pos \u003c size(), otherwise a reference to an object of type T with value charT(); the referenced value shall not be modified.\"\n\nSo it seems operator[] when pos \u003d\u003d size() will return charT(), but it isn\u0027t guaranteed (anywhere that I can find) that the location in memory at \u0026s[0] + s.size() is actually guaranteed to be charT() or to be valid. In practice, it always will be, but now the current patchset is pedantically correct at the cost of one extra byte per string. I definitely prefer using \"\u0026s[0]\" and \"resize(length-1)\", but I still think it is UB.",
+      "parentUuid": "d26f5db5_c61b72e8",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "5efb9a6acf73ec93a5fc86e4298f31206bd9ce73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
