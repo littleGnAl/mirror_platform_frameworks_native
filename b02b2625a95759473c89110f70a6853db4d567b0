@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8840615b_b4e0a34f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-06T00:24:57Z",
+      "side": 1,
+      "message": "I\u0027ve added this to the design doc to make sure it doesn\u0027t get lost.",
+      "parentUuid": "dcde6619_f2aed505",
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17c6b7c0_e336040c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 27
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f13da64b_4cbad954",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-06T00:24:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17c6b7c0_e336040c",
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51a00911_bd2207b6",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 27
@@ -47,6 +83,30 @@
       "writtenOn": "2018-10-05T23:23:22Z",
       "side": 1,
       "message": "I really don\u0027t like this name. We (at least within the bionic/ART side of the tree) usually name these Scoped rather than Auto.\n\nAScopedResource or something maybe? AutoAResource if we\u0027re sticking with auto, but the name as-is leaves me hanging. Auto Android what? Maybe s/Resource/Ptr/ ?",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6180f1_3a5c5a26",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-06T00:24:57Z",
+      "side": 1,
+      "message": "I like \u0027Scoped\u0027 much more. However, I would like to change this after the current topic goes in (since this CL is over a month old, and there are many CLs involved).\n\nSince I\u0027m doing this, I\u0027ll also definitely make the \u0027AutoAIBinder -\u003e SpAIBinder\u0027 change I talked about with hboehm above.",
+      "parentUuid": "51a00911_bd2207b6",
       "range": {
         "startLine": 72,
         "startChar": 6,
@@ -79,6 +139,30 @@
       "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a0c273_614f9f90",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-06T00:24:57Z",
+      "side": 1,
+      "message": "I\u0027m assuming this is a comment about the case which I have now fixed. If it is about the meaning (INTERFACE vs. CHILD), it is because SharedRefBase is more generic than ICInterface.",
+      "parentUuid": "cfc3096b_f40d31a7",
+      "range": {
+        "startLine": 64,
+        "startChar": 19,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
