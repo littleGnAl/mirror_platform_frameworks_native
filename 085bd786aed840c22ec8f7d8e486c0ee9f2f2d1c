@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d02d32e6_21137383",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-06T00:35:51Z",
+      "side": 1,
+      "message": "After talking with danalbert, this API is preferred since it matches realloc and static_cast if used w/ char*. It didn\u0027t occur to me to do this form, but effectively, my original function is the composition of these two.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 57
+      },
+      "revId": "085bd786aed840c22ec8f7d8e486c0ee9f2f2d1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
