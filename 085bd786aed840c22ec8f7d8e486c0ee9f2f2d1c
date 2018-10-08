@@ -22,6 +22,29 @@
       "revId": "085bd786aed840c22ec8f7d8e486c0ee9f2f2d1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "027db081_2fd4a6cc",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-08T18:13:07Z",
+      "side": 1,
+      "message": "I think this should be a **. For the char* flavor of this function, L124 would need to be\n\n    *stringData \u003d reallocator(*stringData, len8);\n\nfor realloc to be usable as the reallocator (otherwise the caller doesn\u0027t get the possibly updated pointer).",
+      "range": {
+        "startLine": 102,
+        "startChar": 65,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "085bd786aed840c22ec8f7d8e486c0ee9f2f2d1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
