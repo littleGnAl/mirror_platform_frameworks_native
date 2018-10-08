@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7fbb8160_faa31874",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-08T18:14:17Z",
+      "side": 1,
+      "message": "Fine by me.",
+      "parentUuid": "fe6180f1_3a5c5a26",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfc3096b_f40d31a7",
         "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
         "patchSetId": 27
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "I\u0027m assuming this is a comment about the case which I have now fixed. If it is about the meaning (INTERFACE vs. CHILD), it is because SharedRefBase is more generic than ICInterface.",
       "parentUuid": "cfc3096b_f40d31a7",
+      "range": {
+        "startLine": 64,
+        "startChar": 19,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "b02b2625a95759473c89110f70a6853db4d567b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9254a3fc_eb1fb9c0",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-08T18:14:17Z",
+      "side": 1,
+      "message": "Yes, I was asking about the case.",
+      "parentUuid": "b6a0c273_614f9f90",
       "range": {
         "startLine": 64,
         "startChar": 19,
