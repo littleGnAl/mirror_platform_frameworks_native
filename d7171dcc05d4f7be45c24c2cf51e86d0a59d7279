@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99e05856_543cb3a2",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-08T07:53:51Z",
+      "side": 1,
+      "message": "needs updating",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 47
+      },
+      "revId": "d7171dcc05d4f7be45c24c2cf51e86d0a59d7279",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
