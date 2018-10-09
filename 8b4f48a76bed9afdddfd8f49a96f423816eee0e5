@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5c281b0b_ea6395f4",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-10-09T20:21:51Z",
+      "side": 1,
+      "message": "Why isn\u0027t this just wrapping std::shared_ptr ?",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "8b4f48a76bed9afdddfd8f49a96f423816eee0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af4cb726_f0045c2c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 2
@@ -61,6 +84,30 @@
       "side": 1,
       "message": "I will follow-up and change this to unique_resource.",
       "parentUuid": "af4cb726_f0045c2c",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "8b4f48a76bed9afdddfd8f49a96f423816eee0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f48f5a2_e22d06c8",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-10-09T20:21:51Z",
+      "side": 1,
+      "message": "For this particular change, just use std::unique_ptr with custom deleter.. why does this need the extended power of std::unique_resource?\n\n----------------\nIn C++ library putting them inside of a detail namespace or adding impl suffix is usually more than enough for people to not use it.",
+      "parentUuid": "7b6d6650_133ee1bc",
       "range": {
         "startLine": 111,
         "startChar": 6,
