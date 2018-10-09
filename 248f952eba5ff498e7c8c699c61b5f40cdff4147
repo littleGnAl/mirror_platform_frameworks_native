@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b56bfce_8adf2668",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-09T16:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec70ec7_25363da4",
+      "range": {
+        "startLine": 41,
+        "startChar": 36,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "248f952eba5ff498e7c8c699c61b5f40cdff4147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a78acc0e_258a1770",
         "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-09T11:05:59Z",
       "side": 1,
       "message": "BnInterface and BpInterface do not exist in NDK either. Shall we use Java counterparts?",
+      "range": {
+        "startLine": 88,
+        "startChar": 21,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "248f952eba5ff498e7c8c699c61b5f40cdff4147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4421de8_91ac3328",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-09T16:00:40Z",
+      "side": 1,
+      "message": "Done, but there is only IInterface in Java, so I had to write descriptions here instead.",
+      "parentUuid": "a78acc0e_258a1770",
       "range": {
         "startLine": 88,
         "startChar": 21,
