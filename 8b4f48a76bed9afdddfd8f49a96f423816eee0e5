@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "af4cb726_f0045c2c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-09T18:36:48Z",
+      "side": 1,
+      "message": "ScopedAResource? This still makes me think \"scoped Android what?\", and ScopedAResource at least somewhat lines up with std::unique_resource.\n\ntbh, I wouldn\u0027t be opposed to __ABINDER_IMPLEMENTATION_DETAIL_DO_NOT_USE_SCOPED_RESOURCE. We can\u0027t actually prevent people from using this (if we actually want to provide a helper API like this for the NDK, it should go in a different header). Since this is just an implementation detail it\u0027d be preferable for it to be inaccessible, but there isn\u0027t a way for us to do that, so the best we can do is make it super obvious so when people do complain if and when we change it we can point at the name and close it as WAI.\n\nOutside the scope of the CL, maybe adding an ndk::unique_resource that matches the current proposal so we can trivially switch to it when it\u0027s available would be the way to go.",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "8b4f48a76bed9afdddfd8f49a96f423816eee0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbcc2744_0f8e36f8",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 2
