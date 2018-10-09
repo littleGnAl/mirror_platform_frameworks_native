@@ -27,8 +27,14 @@
 
 #pragma once
 
+#ifndef LOG_TAG
+#define LOG_TAG "binder_interface_utils"
+#endif
+
 #include <android/binder_auto_utils.h>
 #include <android/binder_ibinder.h>
+
+#include <android/log.h>
 
 #ifdef __cplusplus
 
@@ -43,7 +49,12 @@ namespace ndk {
 class SharedRefBase {
 public:
     SharedRefBase() {}
-    virtual ~SharedRefBase() {}
+    virtual ~SharedRefBase() {
+        std::call_once(mFlagThis, [&]() {
+            __android_log_write(ANDROID_LOG_FATAL, LOG_TAG,
+                                "SharedRefBase: no ref created during lifetime");
+        });
+    }
 
     /**
      * A shared_ptr must be held to this object when this is called. This must be called once during
