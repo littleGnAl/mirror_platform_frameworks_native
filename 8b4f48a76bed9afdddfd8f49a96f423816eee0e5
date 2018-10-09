@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3baf7e32_d57a42ac",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-09T18:48:50Z",
+      "side": 1,
+      "message": "This is an improvement over AutoA, so allowing further renames to be a follow up so this isn\u0027t blocked on treehugger for a day.",
+      "parentUuid": "af4cb726_f0045c2c",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "8b4f48a76bed9afdddfd8f49a96f423816eee0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbcc2744_0f8e36f8",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 2
