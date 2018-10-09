@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e08410_23be1993",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-09T17:38:24Z",
+      "side": 1,
+      "message": "this is a pretty small window to hit, and I think the compiler is allowed to optimize this away. Take a look at the object code?",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 29
+      },
+      "revId": "e7a8f3d475e007ff91dae1491f68d913a9d1a2b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d5064f0_66802a20",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-09T17:38:24Z",
+      "side": 1,
+      "message": "this one I think is very useful though.",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 5
+      },
+      "revId": "e7a8f3d475e007ff91dae1491f68d913a9d1a2b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
