@@ -46,6 +46,30 @@
       "revId": "1cfc56cc36c2106ddf5ee75868a01333e8c42352",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abd5ddda_28200b53",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-09T16:10:43Z",
+      "side": 1,
+      "message": "I guess to answer your question directly according to my understanding: people should not be writing code that is subject to this race, it\u0027s inefficient to actually have a lock here, and the detection might help (which is why it is done at all).",
+      "parentUuid": "6f76cd5e_3fbe6813",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "1cfc56cc36c2106ddf5ee75868a01333e8c42352",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
