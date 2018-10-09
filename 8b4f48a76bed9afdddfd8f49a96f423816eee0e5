@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee825094_86407922",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-09T20:27:07Z",
+      "side": 1,
+      "message": "AIBinder is an NDK object with a refcount associated with it. There is no std::shared_ptr to use or wrap. I could pass around a std::shared_ptr over an object which owns an AIBinder, but this would add layering of the refcounts (which isn\u0027t necessary).",
+      "parentUuid": "5c281b0b_ea6395f4",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "8b4f48a76bed9afdddfd8f49a96f423816eee0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af4cb726_f0045c2c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "writtenOn": "2018-10-09T20:23:51Z",
       "side": 1,
       "message": "I like the idea of using an extra namespace",
+      "parentUuid": "6f48f5a2_e22d06c8",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "8b4f48a76bed9afdddfd8f49a96f423816eee0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f14a77cb_21d944a6",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-09T20:27:07Z",
+      "side": 1,
+      "message": "I could wrap a unique_ptr instead. It sounded like this class was closer to a unique_resource though.",
       "parentUuid": "6f48f5a2_e22d06c8",
       "range": {
         "startLine": 111,
