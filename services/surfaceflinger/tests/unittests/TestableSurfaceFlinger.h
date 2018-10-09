@@ -217,14 +217,26 @@ public:
             return *this;
         }
 
-        auto& addCapability(HWC2::Capability cap) {
-            mCapabilities.emplace(cap);
+        auto& setCapabilities(const std::unordered_set<HWC2::Capability>* capabilities) {
+            mCapabilities = capabilities;
             return *this;
         }
 
         void inject(TestableSurfaceFlinger* flinger, Hwc2::Composer* composer) {
+<<<<<<< HEAD   (710191 Merge "Snap for 5450365 from 94c1d740cfe001e5faf62d3c447c4e1)
             auto display = std::make_unique<HWC2Display>(*composer, mPowerAdvisor, mCapabilities,
                                                          mHwcDisplayId, mHwcDisplayType);
+=======
+            static const std::unordered_set<HWC2::Capability> defaultCapabilities;
+            if (mCapabilities == nullptr) mCapabilities = &defaultCapabilities;
+
+            // Caution - Make sure that any values passed by reference here do
+            // not refer to an instance owned by FakeHwcDisplayInjector. This
+            // class has temporary lifetime, while the constructed HWC2::Display
+            // is much longer lived.
+            auto display = std::make_unique<HWC2Display>(*composer, *mCapabilities, mHwcDisplayId,
+                                                         mHwcDisplayType);
+>>>>>>> CHANGE (08c662 [SF] Fix unittest crash)
 
             auto config = HWC2::Display::Config::Builder(*display, mActiveConfig);
             config.setWidth(mWidth);
@@ -253,8 +265,12 @@ public:
         int32_t mDpiX = DEFAULT_DPI;
         int32_t mDpiY = DEFAULT_DPI;
         int32_t mActiveConfig = DEFAULT_ACTIVE_CONFIG;
+<<<<<<< HEAD   (710191 Merge "Snap for 5450365 from 94c1d740cfe001e5faf62d3c447c4e1)
         std::unordered_set<HWC2::Capability> mCapabilities;
         FakePowerAdvisor mPowerAdvisor;
+=======
+        const std::unordered_set<HWC2::Capability>* mCapabilities = nullptr;
+>>>>>>> CHANGE (08c662 [SF] Fix unittest crash)
     };
 
     class FakeDisplayDeviceInjector {
