@@ -26,9 +26,15 @@
 
 #pragma once
 
+#ifndef LOG_TAG
+#define LOG_TAG "binder_auto_utils"
+#endif
+
 #include <android/binder_ibinder.h>
 #include <android/binder_parcel.h>
 #include <android/binder_status.h>
+
+#include <android/log.h>
 
 #ifdef __cplusplus
 
@@ -76,7 +82,11 @@ public:
      * Takes ownership of one strong refcount of binder
      */
     void set(AIBinder* binder) {
-        if (mBinder != nullptr) AIBinder_decStrong(mBinder);
+        AIBinder* old = mBinder;
+        if (old != nullptr) AIBinder_decStrong(old);
+        if (mBinder != old) {
+            __android_log_write(ANDROID_LOG_FATAL, LOG_TAG, "Race detected.");
+        }
         mBinder = binder;
     }
 
