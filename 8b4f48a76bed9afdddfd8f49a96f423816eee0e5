@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "410f11fb_472be034",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-09T20:23:51Z",
+      "side": 1,
+      "message": "I like the idea of using an extra namespace",
+      "parentUuid": "6f48f5a2_e22d06c8",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "8b4f48a76bed9afdddfd8f49a96f423816eee0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbcc2744_0f8e36f8",
         "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
         "patchSetId": 2
