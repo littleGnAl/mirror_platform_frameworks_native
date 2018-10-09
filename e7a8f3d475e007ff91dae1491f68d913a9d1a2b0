@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e6960b06_feec6500",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-09T18:18:25Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/native/+/782580/1/libs/binder/ndk/include_ndk/android/binder_auto_utils.h#89\n\nSee the thread pointed to by this thread. I agree, but it is in order to match sp.",
+      "parentUuid": "f0e08410_23be1993",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 29
+      },
+      "revId": "e7a8f3d475e007ff91dae1491f68d913a9d1a2b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d5064f0_66802a20",
         "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e7a8f3d475e007ff91dae1491f68d913a9d1a2b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26ee56da_d3616846",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-09T18:18:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d5064f0_66802a20",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 5
+      },
+      "revId": "e7a8f3d475e007ff91dae1491f68d913a9d1a2b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
