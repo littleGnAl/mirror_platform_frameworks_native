@@ -22,6 +22,30 @@
       "revId": "1cfc56cc36c2106ddf5ee75868a01333e8c42352",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f76cd5e_3fbe6813",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-09T15:56:46Z",
+      "side": 1,
+      "message": "Multiple threads shouldn\u0027t be modifying the same SpAIBinder concurrently (like shared_ptr/sp). Here is the original context for this change:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/740001/17/libs/binder/ndk/include_ndk/android/binder_auto_utils.h#44",
+      "parentUuid": "78b0db15_856854e5",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "1cfc56cc36c2106ddf5ee75868a01333e8c42352",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
