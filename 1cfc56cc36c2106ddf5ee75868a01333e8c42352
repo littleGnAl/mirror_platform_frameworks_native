@@ -70,6 +70,30 @@
       "revId": "1cfc56cc36c2106ddf5ee75868a01333e8c42352",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8d813a6_75ba8f91",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-10T06:58:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "abd5ddda_28200b53",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "1cfc56cc36c2106ddf5ee75868a01333e8c42352",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
