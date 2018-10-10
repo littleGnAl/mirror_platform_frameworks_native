@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1645493f_f1017d24",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-10-10T17:57:25Z",
+      "side": 1,
+      "message": "The windows is often not that small, since presumably decStrong recursively decrements and invokes destructors. And at a minimum, the atomic acquire/release decrement is typically at least a few dozen cycles. In experiments with Skia, this seemed to get at least as many race manages as actual crashes, when there was a race. (The double deallocate/crash window is of similar size.)\n\nThe sp\u003c\u003e code does volatile loads of the equivalent of mBinder. That prevents coalescing of the two loads. I\u0027m not sure that\u0027s absolutely necessary here, since the compiler often won\u0027t have enough context to determine that the decStrong call doesn\u0027t touch mBinder, but I would do it here as well, in spite of the ugliness. (The Linux kernel uses a READ_ONCE macro to alleviate such ugliness; we could conceivably do something similar.)",
+      "parentUuid": "e6960b06_feec6500",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 29
+      },
+      "revId": "e7a8f3d475e007ff91dae1491f68d913a9d1a2b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d5064f0_66802a20",
         "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
         "patchSetId": 2
