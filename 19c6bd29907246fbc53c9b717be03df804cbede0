@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70eec10f_8ca25dbc",
+        "filename": "cmds/dumpstate/binder/android/os/DumpstateOptions.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-10-11T16:03:56Z",
+      "side": 1,
+      "message": "notify is also a verb, so it can sound like a function too. is \"get_section_callbacks\" better?",
+      "parentUuid": "ab172403_a98878e3",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "19c6bd29907246fbc53c9b717be03df804cbede0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dc051dc_19ec6770",
         "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
         "patchSetId": 5
