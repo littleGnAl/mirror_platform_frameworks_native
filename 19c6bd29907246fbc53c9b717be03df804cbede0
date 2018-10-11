@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "87d0759e_0e5845b9",
+        "filename": "cmds/dumpstate/binder/android/os/DumpstateOptions.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-10-11T16:12:04Z",
+      "side": 1,
+      "message": "It\u0027s still much clear for me what this variable will do. I guess we shouldn\u0027t worry too much about that now, we can always change it latter...",
+      "parentUuid": "70eec10f_8ca25dbc",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "19c6bd29907246fbc53c9b717be03df804cbede0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dc051dc_19ec6770",
         "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
         "patchSetId": 5
