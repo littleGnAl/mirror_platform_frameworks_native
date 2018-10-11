@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab172403_a98878e3",
+        "filename": "cmds/dumpstate/binder/android/os/DumpstateOptions.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-10-11T15:46:07Z",
+      "side": 1,
+      "message": "This name is name is kind of confusing because it looks like a function (get...).\n\nIf it\u0027s meant for the notification callback, perhaps we should call it \u0027notify_progress\u0027 or something like that?",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "19c6bd29907246fbc53c9b717be03df804cbede0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dc051dc_19ec6770",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-10-11T15:46:07Z",
+      "side": 1,
+      "message": "As Yoda would say: \"a or an, both not\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "19c6bd29907246fbc53c9b717be03df804cbede0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
