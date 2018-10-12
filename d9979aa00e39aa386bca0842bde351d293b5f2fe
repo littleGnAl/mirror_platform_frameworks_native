@@ -94,6 +94,30 @@
       "revId": "d9979aa00e39aa386bca0842bde351d293b5f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57d9c701_e63c8292",
+        "filename": "vulkan/vkjson/vkjson.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-10-12T21:35:45Z",
+      "side": 1,
+      "message": "FALLTHROUGH_INTENDED is a macro defined in several places.\nYou can reuse one of them that works for multiple compilers, C or C++.",
+      "parentUuid": "10c924f9_d1fe715c",
+      "range": {
+        "startLine": 769,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 17
+      },
+      "revId": "d9979aa00e39aa386bca0842bde351d293b5f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
