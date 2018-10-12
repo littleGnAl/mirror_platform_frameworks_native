@@ -22,6 +22,30 @@
       "revId": "d9979aa00e39aa386bca0842bde351d293b5f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc282acc_0e5e0af6",
+        "filename": "vulkan/vkjson/vkjson.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-10-12T01:48:39Z",
+      "side": 1,
+      "message": "vkjson lives in ndk. AFAIK, is ndk dedicated to clang compiler?",
+      "parentUuid": "a6a596c7_a6e9f950",
+      "range": {
+        "startLine": 769,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 17
+      },
+      "revId": "d9979aa00e39aa386bca0842bde351d293b5f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
