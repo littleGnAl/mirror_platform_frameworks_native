@@ -46,6 +46,30 @@
       "revId": "d9979aa00e39aa386bca0842bde351d293b5f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b78f151_d25d339f",
+        "filename": "vulkan/vkjson/vkjson.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2018-10-12T15:15:47Z",
+      "side": 1,
+      "message": "Hang on, I may have given Yiwei a bad steer yesterday when he was asking about this. If it\u0027s just the (mangled) copy of vkjson in frameworks/native/ we can use FALLTHROUGH_INTENDED.\n\nFor the other LVL bits (which _are_ in NDK) we can\u0027t unilaterally do this; upstream for them is external and needs to support many other compilers.",
+      "parentUuid": "bc282acc_0e5e0af6",
+      "range": {
+        "startLine": 769,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 17
+      },
+      "revId": "d9979aa00e39aa386bca0842bde351d293b5f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
