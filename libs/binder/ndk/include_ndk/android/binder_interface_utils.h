@@ -68,7 +68,7 @@ public:
     /**
      * Convenience method for making an object directly with a reference.
      */
-    template<class T, class... Args>
+    template <class T, class... Args>
     static std::shared_ptr<T> make(Args&&... args) {
         T* t = new T(std::forward<Args>(args)...);
         return t->template ref<T>();
