@@ -31,6 +31,159 @@ using ::android::Parcel;
 using ::android::sp;
 using ::android::status_t;
 
+template <typename T>
+using ContiguousArrayGetter = T* (*)(void* arrayData);
+template <typename T>
+using ArrayGetter = T (*)(const void* arrayData, size_t index);
+template <typename T>
+using ArraySetter = void (*)(void* arrayData, size_t index, T value);
+
+template <typename T>
+binder_status_t WriteArray(AParcel* parcel, const T* array, size_t length) {
+    if (length > std::numeric_limits<int32_t>::max()) return STATUS_BAD_VALUE;
+
+    Parcel* rawParcel = parcel->get();
+
+    status_t status = rawParcel->writeInt32(static_cast<int32_t>(length));
+    if (status != STATUS_OK) return PruneStatusT(status);
+
+    int32_t size = 0;
+    if (__builtin_smul_overflow(sizeof(T), length, &size)) return STATUS_NO_MEMORY;
+
+    void* const data = rawParcel->writeInplace(size);
+    if (data == nullptr) return STATUS_NO_MEMORY;
+
+    memcpy(data, array, size);
+
+    return STATUS_OK;
+}
+
+// Each element in a char16_t array is converted to an int32_t (not packed).
+template <>
+binder_status_t WriteArray<char16_t>(AParcel* parcel, const char16_t* array, size_t length) {
+    if (length > std::numeric_limits<int32_t>::max()) return STATUS_BAD_VALUE;
+
+    Parcel* rawParcel = parcel->get();
+
+    status_t status = rawParcel->writeInt32(static_cast<int32_t>(length));
+    if (status != STATUS_OK) return PruneStatusT(status);
+
+    int32_t size = 0;
+    if (__builtin_smul_overflow(sizeof(char16_t), length, &size)) return STATUS_NO_MEMORY;
+
+    for (int32_t i = 0; i < length; i++) {
+        status = rawParcel->writeChar(array[i]);
+
+        if (status != STATUS_OK) return PruneStatusT(status);
+    }
+
+    return STATUS_OK;
+}
+
+template <typename T>
+binder_status_t ReadArray(const AParcel* parcel, void** arrayData,
+                          AParcel_array_reallocator reallocator, ContiguousArrayGetter<T> getter) {
+    const Parcel* rawParcel = parcel->get();
+
+    int32_t length;
+    status_t status = rawParcel->readInt32(&length);
+
+    if (status != STATUS_OK) return PruneStatusT(status);
+    if (length < 0) return STATUS_UNEXPECTED_NULL;
+
+    *arrayData = reallocator(*arrayData, length);
+    if (*arrayData == nullptr) return STATUS_NO_MEMORY;
+
+    T* array = getter(*arrayData);
+    if (array == nullptr) return STATUS_NO_MEMORY;
+
+    int32_t size = 0;
+    if (__builtin_smul_overflow(sizeof(T), length, &size)) return STATUS_NO_MEMORY;
+
+    const void* data = rawParcel->readInplace(size);
+    if (data == nullptr) return STATUS_NO_MEMORY;
+
+    memcpy(array, data, size);
+
+    return STATUS_OK;
+}
+
+// Each element in a char16_t array is converted to an int32_t (not packed)
+template <>
+binder_status_t ReadArray<char16_t>(const AParcel* parcel, void** arrayData,
+                                    AParcel_array_reallocator reallocator,
+                                    ContiguousArrayGetter<char16_t> getter) {
+    const Parcel* rawParcel = parcel->get();
+
+    int32_t length;
+    status_t status = rawParcel->readInt32(&length);
+
+    if (status != STATUS_OK) return PruneStatusT(status);
+    if (length < 0) return STATUS_UNEXPECTED_NULL;
+
+    *arrayData = reallocator(*arrayData, length);
+    if (*arrayData == nullptr) return STATUS_NO_MEMORY;
+
+    char16_t* array = getter(*arrayData);
+    if (array == nullptr) return STATUS_NO_MEMORY;
+
+    int32_t size = 0;
+    if (__builtin_smul_overflow(sizeof(char16_t), length, &size)) return STATUS_NO_MEMORY;
+
+    for (int32_t i = 0; i < length; i++) {
+        status = rawParcel->readChar(array + i);
+
+        if (status != STATUS_OK) return PruneStatusT(status);
+    }
+
+    return STATUS_OK;
+}
+
+template <typename T>
+binder_status_t WriteArray(AParcel* parcel, const void* arrayData, ArrayGetter<T> getter,
+                           size_t length, status_t (Parcel::*write)(T)) {
+    if (length > std::numeric_limits<int32_t>::max()) return STATUS_BAD_VALUE;
+
+    Parcel* rawParcel = parcel->get();
+
+    status_t status = rawParcel->writeInt32(static_cast<int32_t>(length));
+    if (status != STATUS_OK) return PruneStatusT(status);
+
+    for (size_t i = 0; i < length; i++) {
+        status = (rawParcel->*write)(getter(arrayData, i));
+
+        if (status != STATUS_OK) return PruneStatusT(status);
+    }
+
+    return STATUS_OK;
+}
+
+template <typename T>
+binder_status_t ReadArray(const AParcel* parcel, void** arrayData,
+                          AParcel_array_reallocator reallocator, ArraySetter<T> setter,
+                          status_t (Parcel::*read)(T*) const) {
+    const Parcel* rawParcel = parcel->get();
+
+    int32_t length;
+    status_t status = rawParcel->readInt32(&length);
+
+    if (status != STATUS_OK) return PruneStatusT(status);
+    if (length < 0) return STATUS_UNEXPECTED_NULL;
+
+    *arrayData = reallocator(*arrayData, length);
+    if (*arrayData == nullptr) return STATUS_NO_MEMORY;
+
+    for (size_t i = 0; i < length; i++) {
+        T readTarget;
+        status = (rawParcel->*read)(&readTarget);
+        if (status != STATUS_OK) return PruneStatusT(status);
+
+        setter(*arrayData, i, readTarget);
+    }
+
+    return STATUS_OK;
+}
+
 void AParcel_delete(AParcel* parcel) {
     delete parcel;
 }
@@ -122,6 +275,11 @@ binder_status_t AParcel_readString(const AParcel* parcel, AParcel_string_realloc
     }
 
     *stringData = reallocator(*stringData, len8);
+
+    if (*stringData == nullptr) {
+        return STATUS_NO_MEMORY;
+    }
+
     char* str8 = getter(*stringData);
 
     if (str8 == nullptr) {
@@ -225,6 +383,97 @@ binder_status_t AParcel_readChar(const AParcel* parcel, char16_t* value) {
 binder_status_t AParcel_readByte(const AParcel* parcel, int8_t* value) {
     status_t status = parcel->get()->readByte(value);
     return PruneStatusT(status);
+}
+
+binder_status_t AParcel_writeInt32Array(AParcel* parcel, const int32_t* value, size_t length) {
+    return WriteArray<int32_t>(parcel, value, length);
+}
+
+binder_status_t AParcel_writeUint32Array(AParcel* parcel, const uint32_t* value, size_t length) {
+    return WriteArray<uint32_t>(parcel, value, length);
+}
+
+binder_status_t AParcel_writeInt64Array(AParcel* parcel, const int64_t* value, size_t length) {
+    return WriteArray<int64_t>(parcel, value, length);
+}
+
+binder_status_t AParcel_writeUint64Array(AParcel* parcel, const uint64_t* value, size_t length) {
+    return WriteArray<uint64_t>(parcel, value, length);
+}
+
+binder_status_t AParcel_writeFloatArray(AParcel* parcel, const float* value, size_t length) {
+    return WriteArray<float>(parcel, value, length);
+}
+
+binder_status_t AParcel_writeDoubleArray(AParcel* parcel, const double* value, size_t length) {
+    return WriteArray<double>(parcel, value, length);
+}
+
+binder_status_t AParcel_writeBoolArray(AParcel* parcel, const void* arrayData,
+                                       AParcel_bool_array_getter getter, size_t length) {
+    return WriteArray<bool>(parcel, arrayData, getter, length, &Parcel::writeBool);
+}
+
+binder_status_t AParcel_writeCharArray(AParcel* parcel, const char16_t* value, size_t length) {
+    return WriteArray<char16_t>(parcel, value, length);
+}
+
+binder_status_t AParcel_writeByteArray(AParcel* parcel, const int8_t* value, size_t length) {
+    return WriteArray<int8_t>(parcel, value, length);
+}
+
+binder_status_t AParcel_readInt32Array(const AParcel* parcel, void** arrayData,
+                                       AParcel_array_reallocator reallocator,
+                                       AParcel_int32_array_getter getter) {
+    return ReadArray<int32_t>(parcel, arrayData, reallocator, getter);
+}
+
+binder_status_t AParcel_readUint32Array(const AParcel* parcel, void** arrayData,
+                                        AParcel_array_reallocator reallocator,
+                                        AParcel_uint32_array_getter getter) {
+    return ReadArray<uint32_t>(parcel, arrayData, reallocator, getter);
+}
+
+binder_status_t AParcel_readInt64Array(const AParcel* parcel, void** arrayData,
+                                       AParcel_array_reallocator reallocator,
+                                       AParcel_int64_array_getter getter) {
+    return ReadArray<int64_t>(parcel, arrayData, reallocator, getter);
+}
+
+binder_status_t AParcel_readUint64Array(const AParcel* parcel, void** arrayData,
+                                        AParcel_array_reallocator reallocator,
+                                        AParcel_uint64_array_getter getter) {
+    return ReadArray<uint64_t>(parcel, arrayData, reallocator, getter);
+}
+
+binder_status_t AParcel_readFloatArray(const AParcel* parcel, void** arrayData,
+                                       AParcel_array_reallocator reallocator,
+                                       AParcel_float_array_getter getter) {
+    return ReadArray<float>(parcel, arrayData, reallocator, getter);
+}
+
+binder_status_t AParcel_readDoubleArray(const AParcel* parcel, void** arrayData,
+                                        AParcel_array_reallocator reallocator,
+                                        AParcel_double_array_getter getter) {
+    return ReadArray<double>(parcel, arrayData, reallocator, getter);
+}
+
+binder_status_t AParcel_readBoolArray(const AParcel* parcel, void** arrayData,
+                                      AParcel_array_reallocator reallocator,
+                                      AParcel_bool_array_setter setter) {
+    return ReadArray<bool>(parcel, arrayData, reallocator, setter, &Parcel::readBool);
+}
+
+binder_status_t AParcel_readCharArray(const AParcel* parcel, void** arrayData,
+                                      AParcel_array_reallocator reallocator,
+                                      AParcel_char_array_getter getter) {
+    return ReadArray<char16_t>(parcel, arrayData, reallocator, getter);
+}
+
+binder_status_t AParcel_readByteArray(const AParcel* parcel, void** arrayData,
+                                      AParcel_array_reallocator reallocator,
+                                      AParcel_byte_array_getter getter) {
+    return ReadArray<int8_t>(parcel, arrayData, reallocator, getter);
 }
 
 // @END
