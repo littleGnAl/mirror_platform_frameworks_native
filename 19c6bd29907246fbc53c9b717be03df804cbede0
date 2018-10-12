@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d9f54b7a_122def9b",
+        "filename": "cmds/dumpstate/binder/android/os/DumpstateOptions.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-10-12T14:26:44Z",
+      "side": 1,
+      "message": "let\u0027s change it later then",
+      "parentUuid": "87d0759e_0e5845b9",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "19c6bd29907246fbc53c9b717be03df804cbede0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dc051dc_19ec6770",
         "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
         "patchSetId": 5
@@ -93,6 +117,30 @@
       "revId": "19c6bd29907246fbc53c9b717be03df804cbede0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ce4241_c1b200fd",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-10-12T14:26:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dc051dc_19ec6770",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "19c6bd29907246fbc53c9b717be03df804cbede0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
