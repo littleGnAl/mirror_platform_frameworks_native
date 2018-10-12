@@ -70,6 +70,30 @@
       "revId": "d9979aa00e39aa386bca0842bde351d293b5f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c924f9_d1fe715c",
+        "filename": "vulkan/vkjson/vkjson.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-10-12T20:59:18Z",
+      "side": 1,
+      "message": "That makes sense ; ) No components inside external LVL are built with android normal build process anymore. Originally there\u0027s cjson and vkjson. Fully decoupled at this moment.",
+      "parentUuid": "5b78f151_d25d339f",
+      "range": {
+        "startLine": 769,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 17
+      },
+      "revId": "d9979aa00e39aa386bca0842bde351d293b5f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
