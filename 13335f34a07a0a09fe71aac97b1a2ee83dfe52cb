@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d52759a_5a66ffeb",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-12T18:59:23Z",
+      "side": 1,
+      "message": "so, this API is different (and related ones)",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 85
+      },
+      "revId": "13335f34a07a0a09fe71aac97b1a2ee83dfe52cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1355cc45_19d932e9",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-12T18:59:23Z",
+      "side": 1,
+      "message": "specifically, this could be optimized for libbinder as well (or here) but isn\u0027t currently",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "13335f34a07a0a09fe71aac97b1a2ee83dfe52cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72613ef0_e4d82d01",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-12T18:59:23Z",
+      "side": 1,
+      "message": "vs: can\u0027t optimize this",
+      "revId": "13335f34a07a0a09fe71aac97b1a2ee83dfe52cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
