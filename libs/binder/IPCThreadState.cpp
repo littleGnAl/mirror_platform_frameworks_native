@@ -24,6 +24,7 @@
 #include <binder/TextOutput.h>
 
 #include <cutils/sched_policy.h>
+#include <utils/CallStack.h>
 #include <utils/Log.h>
 #include <utils/SystemClock.h>
 #include <utils/threads.h>
@@ -1132,6 +1133,12 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
 
             } else {
                 error = the_context_object->transact(tr.code, buffer, &reply, tr.flags);
+            }
+
+            size_t avail = buffer.dataAvail();
+            if (avail > 0) {
+                ALOGE("Parcel destroyed with remaining data: %zu code: %x", avail, tr.code);
+                CallStack::logStack("Parcel data remaining", CallStack::getCurrent(10).get(), ANDROID_LOG_ERROR);
             }
 
             mIPCThreadStateBase->popCurrentState();
