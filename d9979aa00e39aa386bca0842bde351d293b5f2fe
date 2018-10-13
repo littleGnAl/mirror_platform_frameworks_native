@@ -118,6 +118,30 @@
       "revId": "d9979aa00e39aa386bca0842bde351d293b5f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20bb7c48_cd68908e",
+        "filename": "vulkan/vkjson/vkjson.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-10-13T01:09:46Z",
+      "side": 1,
+      "message": "I\u0027ve updated with the macro. Since vkjson still needs to build a ndk static lib, and libbase haeder doesn\u0027t have the lib ready. So I just define the macro locally.",
+      "parentUuid": "57d9c701_e63c8292",
+      "range": {
+        "startLine": 769,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 17
+      },
+      "revId": "d9979aa00e39aa386bca0842bde351d293b5f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
