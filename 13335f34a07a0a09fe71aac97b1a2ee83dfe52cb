@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "8fea8edf_3e87f723",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-13T09:52:43Z",
+      "side": 1,
+      "message": "This doesn\u0027t look nice, but might not be a problem since I think no one will actually use the C APIs directly.",
+      "parentUuid": "6d52759a_5a66ffeb",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 85
+      },
+      "revId": "13335f34a07a0a09fe71aac97b1a2ee83dfe52cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9696ded1_3fd9a61b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-13T09:52:43Z",
+      "side": 1,
+      "message": "const std::vector\u003cint32_t\u003e\u0026 ? (like you did for string)",
+      "range": {
+        "startLine": 61,
+        "startChar": 71,
+        "endLine": 61,
+        "endChar": 92
+      },
+      "revId": "13335f34a07a0a09fe71aac97b1a2ee83dfe52cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1355cc45_19d932e9",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 2
