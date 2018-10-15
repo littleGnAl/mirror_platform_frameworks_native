@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dab474aa_c48b2424",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-15T18:27:35Z",
+      "side": 1,
+      "message": "Yep. Oops. Done. Thanks!",
+      "parentUuid": "9696ded1_3fd9a61b",
+      "range": {
+        "startLine": 61,
+        "startChar": 71,
+        "endLine": 61,
+        "endChar": 92
+      },
+      "revId": "13335f34a07a0a09fe71aac97b1a2ee83dfe52cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1355cc45_19d932e9",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 2
