@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9efe3f13_5005bac1",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-16T20:53:07Z",
+      "side": 1,
+      "message": "I\u0027m thinking about moving all of these implementation details into the Parcel class. All of the existing methods to do this are for std::vector, so they can\u0027t be used without copying all of this data.",
+      "revId": "e3bf22cad77608abecbfba8a531c85ff4ce2b5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6714d9c3_b4448f02",
+        "filename": "libs/binder/ndk/scripts/gen_parcel_helper.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-16T20:53:07Z",
+      "side": 1,
+      "message": "ignore this file.",
+      "revId": "e3bf22cad77608abecbfba8a531c85ff4ce2b5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
