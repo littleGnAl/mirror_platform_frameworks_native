@@ -22,6 +22,30 @@
       "revId": "835e484c5893630e8c3d62e46026663f506b7979",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccc4573e_64c4fac2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-10-16T20:08:00Z",
+      "side": 1,
+      "message": "I just update the nit.",
+      "parentUuid": "49d09856_9e9edd8e",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "835e484c5893630e8c3d62e46026663f506b7979",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
