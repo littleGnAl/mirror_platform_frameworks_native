@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a11bbab4_bc937a32",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-17T23:43:05Z",
+      "side": 1,
+      "message": "Make this templatized so you can dedup all the near-copies of it?",
+      "revId": "6f323c7d7764e48a0fb555a369e49771b174e7c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0cbb2f4_77bd68fc",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-17T23:43:05Z",
+      "side": 1,
+      "message": "These could all be `AParcel_writeArray\u003cT\u003e`/`AParcel_readArray\u003cT\u003e` as well, right?",
+      "revId": "6f323c7d7764e48a0fb555a369e49771b174e7c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
