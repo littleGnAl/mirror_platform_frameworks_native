@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b895669e_518a13e5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-17T00:51:48Z",
+      "side": 1,
+      "message": "Simply by looking at the name, this function looks non-destructive, but it actually is - the vector is resized.",
+      "range": {
+        "startLine": 339,
+        "startChar": 38,
+        "endLine": 339,
+        "endChar": 52
+      },
+      "revId": "27560aa5e148108b1b8da4aa63bcee3ea2d2d88e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ea0e03_0d5ca0e5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-17T00:51:48Z",
+      "side": 1,
+      "message": "who will be using this?",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 1
+      },
+      "revId": "27560aa5e148108b1b8da4aa63bcee3ea2d2d88e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
