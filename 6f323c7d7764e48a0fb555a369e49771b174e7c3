@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1938909e_fc6069c3",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-17T23:45:50Z",
+      "side": 1,
+      "message": "Definitely will do. Wow. Thanks!",
+      "parentUuid": "a11bbab4_bc937a32",
+      "revId": "6f323c7d7764e48a0fb555a369e49771b174e7c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0cbb2f4_77bd68fc",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 12
@@ -33,6 +51,24 @@
       "revId": "6f323c7d7764e48a0fb555a369e49771b174e7c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac363a3_3c53853d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-17T23:45:50Z",
+      "side": 1,
+      "message": "These ones have to be different because they have to call into the different AParcel_* functions.",
+      "parentUuid": "c0cbb2f4_77bd68fc",
+      "revId": "6f323c7d7764e48a0fb555a369e49771b174e7c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
