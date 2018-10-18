@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ec13434e_d2ad9a9c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-18T00:20:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1938909e_fc6069c3",
+      "revId": "6f323c7d7764e48a0fb555a369e49771b174e7c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0cbb2f4_77bd68fc",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 12
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Or do you mean to go ahead and make them specializations of a \u0027writeArray\u0027 function? Let me do that as well.",
       "parentUuid": "6ac363a3_3c53853d",
+      "revId": "6f323c7d7764e48a0fb555a369e49771b174e7c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48514bb6_864f01a1",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-18T00:20:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94af4f39_ef785c91",
       "revId": "6f323c7d7764e48a0fb555a369e49771b174e7c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
