@@ -284,6 +284,11 @@ Error Composer::createVirtualDisplay(uint32_t width, uint32_t height,
 
 Error Composer::destroyVirtualDisplay(Display display)
 {
+    Error error = execute();
+    if (error != Error::NONE) {
+        return error;
+    }
+
     auto ret = mClient->destroyVirtualDisplay(display);
     return unwrapRet(ret);
 }
@@ -313,6 +318,11 @@ Error Composer::createLayer(Display display, Layer* outLayer)
 
 Error Composer::destroyLayer(Display display, Layer layer)
 {
+    Error error = execute();
+    if (error != Error::NONE) {
+        return error;
+    }
+
     auto ret = mClient->destroyLayer(display, layer);
     return unwrapRet(ret);
 }
