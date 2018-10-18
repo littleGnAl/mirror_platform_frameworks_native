@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "611e5171_865c6f9d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-18T17:32:20Z",
+      "side": 1,
+      "message": "Done (and added CL to do this for pre-existing string on top as well)",
+      "parentUuid": "6037f7a2_9ce74222",
+      "range": {
+        "startLine": 65,
+        "startChar": 19,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "bec0e94636cde80101197a5b8901853273eff0aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d4efb17_f7339435",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 13
