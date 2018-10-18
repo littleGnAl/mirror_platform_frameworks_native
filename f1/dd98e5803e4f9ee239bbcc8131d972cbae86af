@@ -1,0 +1,10 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Stephen Hines <srhines@google.com>
+Code-Review+1: Andreas Gampe <agampe@google.com>
+Code-Review+1: Calin Juravle <calin@google.com>
+Verified+1: Chih-hung Hsieh <chh@google.com>
+Submitted-by: Chih-hung Hsieh <chh@google.com>
+Submitted-at: Thu, 18 Oct 2018 18:33:31 +0000
+Reviewed-on: https://android-review.googlesource.com/791476
+Project: platform/frameworks/native
+Branch: refs/heads/master
