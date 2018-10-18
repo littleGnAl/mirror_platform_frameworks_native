@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6037f7a2_9ce74222",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-18T16:33:41Z",
+      "side": 1,
+      "message": "Ack. Thanks. Will do.",
+      "parentUuid": "84de1bbf_35269d48",
+      "range": {
+        "startLine": 65,
+        "startChar": 19,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "bec0e94636cde80101197a5b8901853273eff0aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d4efb17_f7339435",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 13
@@ -39,6 +63,24 @@
       "revId": "bec0e94636cde80101197a5b8901853273eff0aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e26250d7_d8a7a09f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-18T16:33:41Z",
+      "side": 1,
+      "message": "The reason is that bool arrays are non-contiguous in vector\u003cbool\u003e (or other data formats people might want to store them in).",
+      "parentUuid": "5d4efb17_f7339435",
+      "revId": "bec0e94636cde80101197a5b8901853273eff0aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
