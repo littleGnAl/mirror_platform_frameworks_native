@@ -23,6 +23,7 @@
 #include <limits>
 
 #include <android-base/logging.h>
+#include <android-base/unique_fd.h>
 #include <binder/Parcel.h>
 #include <utils/Unicode.h>
 
@@ -218,6 +219,19 @@ binder_status_t AParcel_readNullableStrongBinder(const AParcel* parcel, AIBinder
     *binder = ret.get();
     return PruneStatusT(status);
 }
+
+binder_status_t AParcel_writeParcelFileDescriptor(AParcel* parcel, int fd) {
+    status_t status = parcel->get()->writeDupParcelFileDescriptor(fd);
+    return PruneStatusT(status);
+}
+
+binder_status_t AParcel_readParcelFileDescriptor(const AParcel* parcel, int* fd) {
+    ::android::base::unique_fd ret;
+    status_t status = parcel->get()->readUniqueParcelFileDescriptor(&ret);
+    *fd = ret.release();
+    return PruneStatusT(status);
+}
+
 binder_status_t AParcel_writeStatusHeader(AParcel* parcel, const AStatus* status) {
     return PruneStatusT(status->get()->writeToParcel(parcel->get()));
 }
