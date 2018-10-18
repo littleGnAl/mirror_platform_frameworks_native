@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84de1bbf_35269d48",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-10-18T14:51:19Z",
+      "side": 1,
+      "message": "AParcel_int32ArrayGetter would be more consistent with the rest of the NDK API.",
+      "range": {
+        "startLine": 65,
+        "startChar": 19,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "bec0e94636cde80101197a5b8901853273eff0aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d4efb17_f7339435",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-10-18T14:51:19Z",
+      "side": 1,
+      "message": "This isn\u0027t symmetric with the reads, why is there only a bool_array_getter and no other getters?",
+      "revId": "bec0e94636cde80101197a5b8901853273eff0aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
