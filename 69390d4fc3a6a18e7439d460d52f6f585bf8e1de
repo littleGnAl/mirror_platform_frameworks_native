@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0890afb_bb5bc2fc",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-22T20:03:24Z",
+      "side": 1,
+      "message": "nit: before the loop since it is only needed there",
+      "revId": "69390d4fc3a6a18e7439d460d52f6f585bf8e1de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "424353e5_e536fc92",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2527,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-22T20:03:24Z",
+      "side": 1,
+      "message": "nit: is there any reason not to check against the member variable? and a forloop as well? (rather than using this temporary variable so much)",
+      "range": {
+        "startLine": 2525,
+        "startChar": 4,
+        "endLine": 2527,
+        "endChar": 5
+      },
+      "revId": "69390d4fc3a6a18e7439d460d52f6f585bf8e1de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
