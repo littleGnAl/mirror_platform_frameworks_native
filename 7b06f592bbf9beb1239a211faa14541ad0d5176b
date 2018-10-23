@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbdba858_13d4c56d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-23T22:23:45Z",
+      "side": 1,
+      "message": "what is retStr?",
+      "range": {
+        "startLine": 101,
+        "startChar": 41,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4134134_2d82a185",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-23T22:23:45Z",
+      "side": 1,
+      "message": "Document what \u0027stringData\u0027 is. And rename it to \u0027userContext\u0027 or something since it\u0027s not the string data at all. It\u0027s completely up to the caller what this data is.",
+      "range": {
+        "startLine": 106,
+        "startChar": 50,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c812d1c_f26d870c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-23T22:23:45Z",
+      "side": 1,
+      "message": "should just be string_allocator. It\u0027s not reallocating anything, there\u0027s no existing allocation that\u0027s resized.",
+      "range": {
+        "startLine": 106,
+        "startChar": 16,
+        "endLine": 106,
+        "endChar": 42
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c87ad349_32ccf1b7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-23T22:23:45Z",
+      "side": 1,
+      "message": "the string allocator should just return a char* and this shouldn\u0027t exist.",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 37
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee47cdcd_ad161942",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-23T22:23:45Z",
+      "side": 1,
+      "message": "what data?",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 7
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
