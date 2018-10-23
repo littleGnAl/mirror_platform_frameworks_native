@@ -71,7 +71,7 @@ LayerBE::LayerBE()
 int32_t Layer::sSequence = 1;
 
 Layer::Layer(SurfaceFlinger* flinger, const sp<Client>& client, const String8& name, uint32_t w,
-             uint32_t h, uint32_t flags)
+             uint32_t h, uint32_t flags, bool isMainThread)
       : contentDirty(false),
         sequence(uint32_t(android_atomic_inc(&sSequence))),
         mFlinger(flinger),
@@ -100,7 +100,8 @@ Layer::Layer(SurfaceFlinger* flinger, const sp<Client>& client, const String8& n
         mAutoRefresh(false),
         mFreezeGeometryUpdates(false),
         mCurrentChildren(LayerVector::StateSet::Current),
-        mDrawingChildren(LayerVector::StateSet::Drawing) {
+        mDrawingChildren(LayerVector::StateSet::Drawing),
+        mIsCreatedFromMainThread(isMainThread) {
     mCurrentCrop.makeInvalid();
 
     uint32_t layerFlags = 0;

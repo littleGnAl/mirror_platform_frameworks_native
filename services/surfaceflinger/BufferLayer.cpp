@@ -51,8 +51,8 @@
 namespace android {
 
 BufferLayer::BufferLayer(SurfaceFlinger* flinger, const sp<Client>& client, const String8& name,
-                         uint32_t w, uint32_t h, uint32_t flags)
-      : Layer(flinger, client, name, w, h, flags),
+                         uint32_t w, uint32_t h, uint32_t flags, bool isMainThread)
+      : Layer(flinger, client, name, w, h, flags, isMainThread),
         mConsumer(nullptr),
         mTextureName(UINT32_MAX),
         mFormat(PIXEL_FORMAT_NONE),
