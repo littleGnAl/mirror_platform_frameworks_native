@@ -4878,7 +4878,7 @@ status_t SurfaceFlinger::captureLayers(const sp<IBinder>& layerHandleBinder,
                 Rect bounds = getBounds();
                 screenshotParentLayer =
                         new ContainerLayer(mFlinger, nullptr, String8("Screenshot Parent"),
-                                           bounds.getWidth(), bounds.getHeight(), 0);
+                                           bounds.getWidth(), bounds.getHeight(), 0, true);
 
                 ReparentForDrawing reparent(mLayer, screenshotParentLayer);
                 drawLayers();

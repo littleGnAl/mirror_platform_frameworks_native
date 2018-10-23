@@ -57,7 +57,7 @@ namespace android {
 class BufferLayer : public Layer, public BufferLayerConsumer::ContentsChangedListener {
 public:
     BufferLayer(SurfaceFlinger* flinger, const sp<Client>& client, const String8& name, uint32_t w,
-                uint32_t h, uint32_t flags);
+                uint32_t h, uint32_t flags, bool isMainThread = false);
 
     ~BufferLayer() override;
 
