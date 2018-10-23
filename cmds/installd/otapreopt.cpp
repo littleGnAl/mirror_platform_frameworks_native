@@ -323,6 +323,17 @@ private:
         }
         const char* isa = parameters_.instruction_set;
 
+        // Check whether we have an image in /system.
+        {
+            std::string file_prefix = "/system/framework/" + isa + "/boot.";
+            std::string art_path = file_prefix + "art";
+            std::string oat_path = file_prefix + "oat";
+            if (access(art_path.c_str(), F_OK) == 0 && access(oat_path.c_str(), F_OK) == 0) {
+                // Note: we ignore |force| here.
+                return true;
+            }
+        }
+
         // Check whether the file exists where expected.
         std::string dalvik_cache = GetOTADataDirectory() + "/" + DALVIK_CACHE;
         std::string isa_path = dalvik_cache + "/" + isa;
