@@ -222,7 +222,7 @@ public:
     };
 
     Layer(SurfaceFlinger* flinger, const sp<Client>& client, const String8& name, uint32_t w,
-          uint32_t h, uint32_t flags);
+          uint32_t h, uint32_t flags, bool isMainThread = false);
     virtual ~Layer();
 
     void setPrimaryDisplayOnly() { mPrimaryDisplayOnly = true; }
@@ -361,9 +361,10 @@ public:
     virtual bool isFixedSize() const { return true; }
 
     // Most layers aren't created from the main thread, and therefore need to
-    // grab the SF state lock to access HWC, but ContainerLayer does, so we need
-    // to avoid grabbing the lock again to avoid deadlock
-    virtual bool isCreatedFromMainThread() const { return false; }
+    // grab the SF state lock to access HWC, but ContainerLayer does when SF
+    // creates it to render screenshot, so we need to avoid grabbing the lock
+    // again to avoid deadlock
+    virtual bool isCreatedFromMainThread() const { return mIsCreatedFromMainThread; }
 
 
     bool isPendingRemoval() const { return mPendingRemoval; }
@@ -792,6 +793,8 @@ protected:
     wp<Layer> mDrawingParent;
 
     mutable LayerBE mBE;
+
+    bool mIsCreatedFromMainThread;
 
 private:
     /**
