@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e120e04e_99a7bc77",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:04Z",
+      "side": 1,
+      "message": "This is to match the string API. The reason is to make the reallocator match \u0027realloc\u0027.",
+      "parentUuid": "4215001d_6b49eac4",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 75
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9f57370_459c1e3d",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 15
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-23T21:39:41Z",
       "side": 1,
       "message": "The documentation of all of these is woefully inadequate. Need to document the parameter, the return value, and the expectation of the implementer.\n\nIt is extremely hard to look at this header by itself and have any clue what you\u0027re supposed to do to read an array, which is a very critical aspect of making a public API. There isn\u0027t even an example in the form of the tests as it\u0027s buried under so many helpers \u0026 abstractions.\n\nAlso \"getter\" is a bad verb here. It\u0027s not getting the int32 array, it\u0027s getting a write location. It\u0027s more akin to an allocator than anything else.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 62
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aec5679_f6e81985",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:04Z",
+      "side": 1,
+      "message": "Ack, will fix all of this (once the reallocator question is fixed up).",
+      "parentUuid": "f9f57370_459c1e3d",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8bfc9e46_f4b98503",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:04Z",
+      "side": 1,
+      "message": "Moving this to original discussion since it is just moved in this CL:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/777004/8/libs/binder/ndk/include_ndk/android/binder_parcel.h#101",
+      "parentUuid": "f000b19d_1f8f73d7",
+      "range": {
+        "startLine": 133,
+        "startChar": 93,
+        "endLine": 134,
+        "endChar": 47
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1e0d7e6_ac595971",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 15
@@ -82,6 +154,30 @@
       "writtenOn": "2018-10-23T21:39:41Z",
       "side": 1,
       "message": "what\u0027s a \"stringData object\"? This is all completely meaningless. You need to completely forget everything you know about implementing this API and document it from that perspective.",
+      "range": {
+        "startLine": 142,
+        "startChar": 43,
+        "endLine": 142,
+        "endChar": 60
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45eb0562_c8fc63ad",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:04Z",
+      "side": 1,
+      "message": "Moving this to original discussion since it is just moved in this CL:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/777004/8/libs/binder/ndk/include_ndk/android/binder_parcel.h#111",
+      "parentUuid": "e1e0d7e6_ac595971",
       "range": {
         "startLine": 142,
         "startChar": 43,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f6b17f5f_9e5af532",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:04Z",
+      "side": 1,
+      "message": "ack, will do",
+      "parentUuid": "b9e673cc_566baee3",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 92
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be607815_36c359bb",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 15
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "605e7fe4_68711684",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:04Z",
+      "side": 1,
+      "message": "Implementation in C++ of bool arrays aren\u0027t typically contiguous. This allows each value to be set in the reallocated array. I\u0027ll add more comments to this effect.",
+      "parentUuid": "be607815_36c359bb",
+      "range": {
+        "startLine": 398,
+        "startChar": 38,
+        "endLine": 398,
+        "endChar": 68
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f2e69f3_80f740d0",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
         "patchSetId": 15
@@ -151,6 +295,30 @@
       "writtenOn": "2018-10-23T21:39:41Z",
       "side": 1,
       "message": "why are all of these templates? there\u0027s no actual templating involved in any of them?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed00fa2a_eca9a1a3",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:04Z",
+      "side": 1,
+      "message": "This allows a client to use AParcel_readVector in code templated for vector. This is a specialization of the method on line 83. Templates are used to select the C method name which isn\u0027t compatible with templates (in this case AParcel_writeInt32Array).\n\nYou can see the original discussion around this here:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/788463/12/libs/binder/ndk/include_ndk/android/binder_parcel_utils.h#62",
+      "parentUuid": "9f2e69f3_80f740d0",
       "range": {
         "startLine": 95,
         "startChar": 0,
