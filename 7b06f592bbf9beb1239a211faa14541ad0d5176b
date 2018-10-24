@@ -167,6 +167,54 @@
     },
     {
       "key": {
+        "uuid": "69d36013_ae4eaa21",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-24T18:23:37Z",
+      "side": 1,
+      "message": "\u003e This was renamed from data -\u003e stringData (in an early patchset) because whatever data is here, it must represent a string\n\nDoes it? It doesn\u0027t look like it has to be anything in particular at all. AParcel itself doesn\u0027t ever touch this or try to understand it. It\u0027s purely user context for implementing the \"getter\".\n\nThus the name should reflect that, this is up to the user to decide what it is and what to do with it. It very critically is *not* the string data in the AParcel, which is what it sounds like it is.",
+      "parentUuid": "383a460e_511fbd37",
+      "range": {
+        "startLine": 106,
+        "startChar": 50,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcf6c2d7_9c8dfe52",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-24T18:23:37Z",
+      "side": 1,
+      "message": "Given the void* is not used by AParcel how can this ever be used to reallocate? It\u0027s a strictly 1-1 mapping of a call to AParcel_readString resulting in a single call to AParcel_string_reallocator, right?\n\nBut I think merging the allocator and getter makes this clearer in what it should be doing.",
+      "parentUuid": "5eb57857_c2d427a7",
+      "range": {
+        "startLine": 106,
+        "startChar": 16,
+        "endLine": 106,
+        "endChar": 42
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c87ad349_32ccf1b7",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 8
@@ -202,6 +250,30 @@
       "side": 1,
       "message": "That design was in a previous patchset, but it was changed in order to make the reallocator function the same as realloc.\n\nDo you still think I can change it? If so, I\u0027d like to setup a meeting to get consensus.",
       "parentUuid": "c87ad349_32ccf1b7",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 37
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a5b553_fd79ad41",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-24T18:23:37Z",
+      "side": 1,
+      "message": "Yes, it should be merged because it can\u0027t be used in isolation. These aren\u0027t composible and you can\u0027t just use realloc directly and get any savings as you need to implement the getter still.\n\nSo right now to use realloc it looks like this:\n\nchar* realloc_cast(void* data) { return (char*) data; }\n\nvoid foo() {\n   char* str \u003d nullptr; // \u003c- must be null or things go real bad, real fast\n   AParcel_readString(parcel, realloc, realloc_cast, \u0026str);\n}\n\nCompare that to if the getter \u0026 allocator were merged:\n\nchar* allocstr(void* data, size_t length) { return (char*) malloc(length); }\n\nvoid foo() {\n   char* str; // \u003c- can be anything since it\u0027s not used, simple output-only case\n   AParcel_readString(parcel, allocstr, \u0026str);\n}\n\nNothing was really saved to allow passing in realloc directly - the user still had to implement a custom function. Now what gets really messy is when you want to use this with std::string as you split the single implementation up into 2 different callbacks:\n\nvoid* stdstring_alloc(void* data, size_t length) {\n   auto str \u003d (std::string*) data;\n   str-\u003ereserve(length);\n   return data;\n}\n\nchar* stdstring_getter(void* data) {\n   return ((std::string*) data)-\u003edata();\n}\n\nvoid foo() {\n   std::string str;\n   void* tmp \u003d \u0026str;\n   AParcel_readString(parcel, stdstring_alloc, stdstring_getter, \u0026tmp);\n}\n\nWhereas if combined:\n\nchar* stdstring_alloc(void* data, size_t length) {\n   auto str \u003d (std::string*) data;\n   str-\u003ereserve(length);\n   return str-\u003edata();\n}\n\nvoid foo() {\n   std::string str;\n   void* tmp \u003d \u0026str;\n   AParcel_readString(parcel, stdstring_alloc, \u0026tmp);\n}",
+      "parentUuid": "80106c06_79445168",
       "range": {
         "startLine": 111,
         "startChar": 16,
