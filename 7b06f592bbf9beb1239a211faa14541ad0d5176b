@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "422d100d_f274d16e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:12Z",
+      "side": 1,
+      "message": "This should be stringData. Will change.",
+      "parentUuid": "cbdba858_13d4c56d",
+      "range": {
+        "startLine": 101,
+        "startChar": 41,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4134134_2d82a185",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 8
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "5eb57857_c2d427a7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:12Z",
+      "side": 1,
+      "message": "stringData may already be allocated when it is passed into the allocator. However, right now, we\u0027re only taking advantage of the trivial case (allocating from 0 -\u003e size).\n\nSo, this is named reallocator since it is capable of reallocating, and it also can be used with realloc if stringData is a char*.",
+      "parentUuid": "2c812d1c_f26d870c",
+      "range": {
+        "startLine": 106,
+        "startChar": 16,
+        "endLine": 106,
+        "endChar": 42
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383a460e_511fbd37",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:12Z",
+      "side": 1,
+      "message": "This was renamed from data -\u003e stringData (in an early patchset) because whatever data is here, it must represent a string, and also, to distinguish it from AIBinder userData. I think it makes sense as is. Do you feel strongly about this?",
+      "parentUuid": "c4134134_2d82a185",
+      "range": {
+        "startLine": 106,
+        "startChar": 50,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c87ad349_32ccf1b7",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 8
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "80106c06_79445168",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:12Z",
+      "side": 1,
+      "message": "That design was in a previous patchset, but it was changed in order to make the reallocator function the same as realloc.\n\nDo you still think I can change it? If so, I\u0027d like to setup a meeting to get consensus.",
+      "parentUuid": "c87ad349_32ccf1b7",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 37
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee47cdcd_ad161942",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 8
@@ -105,6 +201,30 @@
       "writtenOn": "2018-10-23T22:23:45Z",
       "side": 1,
       "message": "what data?",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 7
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e878c2_019c002d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:43:12Z",
+      "side": 1,
+      "message": "\u0027*stringData\u0027. Ack, will update.",
+      "parentUuid": "ee47cdcd_ad161942",
       "range": {
         "startLine": 116,
         "startChar": 3,
