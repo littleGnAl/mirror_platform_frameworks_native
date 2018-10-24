@@ -328,6 +328,30 @@
       "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a8f2dd_9751bf45",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-24T18:37:00Z",
+      "side": 1,
+      "message": "But you\u0027re not actually templating or specializing on any templates. All this is really doing is method overloading, which you could just do. The allocator/getter stays as a template, that part is find, but all the readVector/writeVectors aren\u0027t actually templating anything.\n\nAs in you can just do this:\n\ninline binder_status_t AParcel_writeVector(AParcel* parcel,\n                                                    const std::vector\u003cint32_t\u003e\u0026 vec) {\n    return AParcel_writeInt32Array(parcel, vec.data(), vec.size());\n}\n\ninline binder_status_t AParcel_readVector(const AParcel* parcel,\n                                                   std::vector\u003cint32_t\u003e* vec) {\n    void* vectorData \u003d static_cast\u003cvoid*\u003e(vec);\n    return AParcel_readInt32Array(parcel, \u0026vectorData, \u0026AParcel_stdVectorReallocator\u003cint32_t\u003e,\n                                  AParcel_stdVectorGetter\u003cint32_t\u003e);\n}\n\ninline binder_status_t AParcel_writeVector(AParcel* parcel,\n                                                     const std::vector\u003cuint32_t\u003e\u0026 vec) {\n    return AParcel_writeUint32Array(parcel, vec.data(), vec.size());\n}\n\ninline binder_status_t AParcel_readVector(const AParcel* parcel,\n                                                    std::vector\u003cuint32_t\u003e* vec) {\n    void* vectorData \u003d static_cast\u003cvoid*\u003e(vec);\n    return AParcel_readUint32Array(parcel, \u0026vectorData, \u0026AParcel_stdVectorReallocator\u003cuint32_t\u003e,\n                                   AParcel_stdVectorGetter\u003cuint32_t\u003e);\n}\n\netc...",
+      "parentUuid": "ed00fa2a_eca9a1a3",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
