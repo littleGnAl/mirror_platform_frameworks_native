@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "796da103_039b6dbe",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T17:51:12Z",
+      "side": 1,
+      "message": "Sorry, what it is saying is this:\n\nLet\u0027s call the string returned from this function foo.\n(foo might be stringData reallocated or it might be a new value, just like the void* in realloc)\nfoo[length] \u003d\u003d \u0027\\0\u0027\n\nAlso, I\u0027ve just realized this means that this function isn\u0027t precisely like realloc (since it has to allocate an extra byte for the null terminator). I\u0027ll fix that up (assuming we still want to keep these semantics).",
+      "parentUuid": "422d100d_f274d16e",
+      "range": {
+        "startLine": 101,
+        "startChar": 41,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4134134_2d82a185",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 8
