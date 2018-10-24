@@ -352,6 +352,30 @@
       "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf145725_f4cbba07",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T18:55:23Z",
+      "side": 1,
+      "message": "Haha. You\u0027re right. I see. Oops. Will fix this as well.",
+      "parentUuid": "e8a8f2dd_9751bf45",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
