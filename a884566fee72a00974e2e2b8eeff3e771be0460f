@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "21bf77af_eda253e8",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-25T22:01:20Z",
+      "side": 1,
+      "message": "This will be updated based on the outcome of this CL:\nhttps://android-review.googlesource.com/c/platform/cts/+/802109",
+      "parentUuid": "e120e04e_99a7bc77",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 75
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9f57370_459c1e3d",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 15
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "3b42cdfd_f17fd0f7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-25T22:01:20Z",
+      "side": 1,
+      "message": "This will also be updated based on the outcome of this CL:\nhttps://android-review.googlesource.com/c/platform/cts/+/802109",
+      "parentUuid": "8bfc9e46_f4b98503",
+      "range": {
+        "startLine": 133,
+        "startChar": 93,
+        "endLine": 134,
+        "endChar": 47
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1e0d7e6_ac595971",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 15
@@ -187,6 +235,30 @@
       "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ebff94e_3ffd4e6d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-25T22:01:20Z",
+      "side": 1,
+      "message": "This will also be updated based on the outcome of this CL:\nhttps://android-review.googlesource.com/c/platform/cts/+/802109",
+      "parentUuid": "45eb0562_c8fc63ad",
+      "range": {
+        "startLine": 142,
+        "startChar": 43,
+        "endLine": 142,
+        "endChar": 60
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "7d7b38c3_92dfd6a7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-25T22:01:20Z",
+      "side": 1,
+      "message": "This also will be updated based on the outcome of this CL:\nhttps://android-review.googlesource.com/c/platform/cts/+/802109",
+      "parentUuid": "f6b17f5f_9e5af532",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 92
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be607815_36c359bb",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 15
@@ -281,6 +377,30 @@
       "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f175c7_48885753",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-25T22:01:20Z",
+      "side": 1,
+      "message": "Comments for this will be updated based on the outcome of this CL:\nhttps://android-review.googlesource.com/c/platform/cts/+/802109",
+      "parentUuid": "605e7fe4_68711684",
+      "range": {
+        "startLine": 398,
+        "startChar": 38,
+        "endLine": 398,
+        "endChar": 68
+      },
+      "revId": "a884566fee72a00974e2e2b8eeff3e771be0460f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
