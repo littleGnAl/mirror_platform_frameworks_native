@@ -286,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "079021de_cf2a6fc1",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-25T21:58:35Z",
+      "side": 1,
+      "message": "This will be updated based on the outcome of this CL:\nhttps://android-review.googlesource.com/c/platform/cts/+/802109\n\n(we also talked offline, this was the original implementation I had gone for. I can change it back, but I\u0027m wanting to get consensus, hence the above test CL demonstrating this API)",
+      "parentUuid": "c8a5b553_fd79ad41",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 37
+      },
+      "revId": "7b06f592bbf9beb1239a211faa14541ad0d5176b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee47cdcd_ad161942",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 8
