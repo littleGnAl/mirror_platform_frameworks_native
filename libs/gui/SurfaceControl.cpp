@@ -118,7 +118,7 @@ status_t SurfaceControl::validate() const
 {
     if (mHandle==0 || mClient==0) {
         ALOGE("invalid handle (%p) or client (%p)",
-                mHandle.get(), mClient.get());
+                mHandle, mClient);
         return NO_INIT;
     }
     return NO_ERROR;
