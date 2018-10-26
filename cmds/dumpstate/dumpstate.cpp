@@ -2090,6 +2090,13 @@ int run_main(int argc, char* argv[]) {
         exit(0);
     }
 
+    if (PropertiesHelper::IsUnroot()) {
+        MYLOGI("Dropping root right away (to disable it, call 'setprop dumpstate.unroot false')\n");
+        if (!DropRootUser()) {
+            MYLOGE("Failed to drop root");
+        }
+    }
+
     // Redirect output if needed
     bool is_redirecting = !options.use_socket && !options.use_outfile.empty();
 
