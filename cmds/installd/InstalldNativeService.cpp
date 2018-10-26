@@ -31,7 +31,6 @@
 #include <sys/file.h>
 #include <sys/ioctl.h>
 #include <sys/mman.h>
-#include <sys/quota.h>
 #include <sys/resource.h>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
@@ -64,6 +63,7 @@
 
 #include "CacheTracker.h"
 #include "MatchExtensionGen.h"
+#include "QuotaUtils.h"
 
 #ifndef LOG_TAG
 #define LOG_TAG "installd"
@@ -264,11 +264,6 @@ status_t InstalldNativeService::dump(int fd, const Vector<String16> & /* args */
         std::lock_guard<std::recursive_mutex> lock(mMountsLock);
         out << endl << "Storage mounts:" << endl;
         for (const auto& n : mStorageMounts) {
-            out << "    " << n.first << " = " << n.second << endl;
-        }
-
-        out << endl << "Quota reverse mounts:" << endl;
-        for (const auto& n : mQuotaReverseMounts) {
             out << "    " << n.first << " = " << n.second << endl;
         }
     }
@@ -952,7 +947,6 @@ binder::Status InstalldNativeService::freeCache(const std::unique_ptr<std::strin
 
     const char* uuid_ = uuid ? uuid->c_str() : nullptr;
     auto data_path = create_data_path(uuid_);
-    auto device = findQuotaDeviceForUuid(uuid);
     auto noop = (flags & FLAG_FREE_CACHE_NOOP);
 
     int64_t free = data_disk_free(data_path);
@@ -999,7 +993,7 @@ binder::Status InstalldNativeService::freeCache(const std::unique_ptr<std::strin
                         search->second->addDataPath(p->fts_path);
                     } else {
                         auto tracker = std::shared_ptr<CacheTracker>(new CacheTracker(
-                                multiuser_get_user_id(uid), multiuser_get_app_id(uid), device));
+                                multiuser_get_user_id(uid), multiuser_get_app_id(uid), uuid));
                         tracker->addDataPath(p->fts_path);
                         {
                             std::lock_guard<std::recursive_mutex> lock(mQuotasLock);
@@ -1164,53 +1158,26 @@ static std::string toString(std::vector<int64_t> values) {
 }
 #endif
 
-static void collectQuotaStats(const std::string& device, int32_t userId,
+static void collectQuotaStats(const std::unique_ptr<std::string>& uuid, int32_t userId,
         int32_t appId, struct stats* stats, struct stats* extStats) {
-    if (device.empty()) return;
-
-    struct dqblk dq;
-
+    int space;
     if (stats != nullptr) {
         uid_t uid = multiuser_get_uid(userId, appId);
-        if (quotactl(QCMD(Q_GETQUOTA, USRQUOTA), device.c_str(), uid,
-                reinterpret_cast<char*>(&dq)) != 0) {
-            if (errno != ESRCH) {
-                PLOG(ERROR) << "Failed to quotactl " << device << " for UID " << uid;
-            }
-        } else {
-#if MEASURE_DEBUG
-            LOG(DEBUG) << "quotactl() for UID " << uid << " " << dq.dqb_curspace;
-#endif
-            stats->dataSize += dq.dqb_curspace;
+        if ((space = getOccupiedSpaceForUid(uuid, uid)) != -1) {
+            stats->dataSize += space;
         }
 
         int cacheGid = multiuser_get_cache_gid(userId, appId);
         if (cacheGid != -1) {
-            if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), cacheGid,
-                    reinterpret_cast<char*>(&dq)) != 0) {
-                if (errno != ESRCH) {
-                    PLOG(ERROR) << "Failed to quotactl " << device << " for GID " << cacheGid;
-                }
-            } else {
-#if MEASURE_DEBUG
-                LOG(DEBUG) << "quotactl() for GID " << cacheGid << " " << dq.dqb_curspace;
-#endif
-                stats->cacheSize += dq.dqb_curspace;
+            if ((space = getOccupiedSpaceForGid(uuid, cacheGid)) != -1) {
+                stats->cacheSize += space;
             }
         }
 
         int sharedGid = multiuser_get_shared_gid(0, appId);
         if (sharedGid != -1) {
-            if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), sharedGid,
-                    reinterpret_cast<char*>(&dq)) != 0) {
-                if (errno != ESRCH) {
-                    PLOG(ERROR) << "Failed to quotactl " << device << " for GID " << sharedGid;
-                }
-            } else {
-#if MEASURE_DEBUG
-                LOG(DEBUG) << "quotactl() for GID " << sharedGid << " " << dq.dqb_curspace;
-#endif
-                stats->codeSize += dq.dqb_curspace;
+            if ((space = getOccupiedSpaceForGid(uuid, sharedGid)) != -1) {
+                stats->codeSize += space;
             }
         }
     }
@@ -1218,32 +1185,16 @@ static void collectQuotaStats(const std::string& device, int32_t userId,
     if (extStats != nullptr) {
         int extGid = multiuser_get_ext_gid(userId, appId);
         if (extGid != -1) {
-            if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), extGid,
-                    reinterpret_cast<char*>(&dq)) != 0) {
-                if (errno != ESRCH) {
-                    PLOG(ERROR) << "Failed to quotactl " << device << " for GID " << extGid;
-                }
-            } else {
-#if MEASURE_DEBUG
-                LOG(DEBUG) << "quotactl() for GID " << extGid << " " << dq.dqb_curspace;
-#endif
-                extStats->dataSize += dq.dqb_curspace;
+            if ((space = getOccupiedSpaceForGid(uuid, extGid)) != -1) {
+                extStats->dataSize += space;
             }
         }
 
         int extCacheGid = multiuser_get_ext_cache_gid(userId, appId);
         if (extCacheGid != -1) {
-            if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), extCacheGid,
-                    reinterpret_cast<char*>(&dq)) != 0) {
-                if (errno != ESRCH) {
-                    PLOG(ERROR) << "Failed to quotactl " << device << " for GID " << extCacheGid;
-                }
-            } else {
-#if MEASURE_DEBUG
-                LOG(DEBUG) << "quotactl() for GID " << extCacheGid << " " << dq.dqb_curspace;
-#endif
-                extStats->dataSize += dq.dqb_curspace;
-                extStats->cacheSize += dq.dqb_curspace;
+            if ((space = getOccupiedSpaceForGid(uuid, extCacheGid)) != -1) {
+                extStats->dataSize += space;
+                extStats->cacheSize += space;
             }
         }
     }
@@ -1409,8 +1360,7 @@ binder::Status InstalldNativeService::getAppSize(const std::unique_ptr<std::stri
 
     const char* uuid_ = uuid ? uuid->c_str() : nullptr;
 
-    auto device = findQuotaDeviceForUuid(uuid);
-    if (device.empty()) {
+    if (!::android::installd::isQuotaSupported(uuid)) {
         flags &= ~FLAG_USE_QUOTA;
     }
 
@@ -1430,7 +1380,7 @@ binder::Status InstalldNativeService::getAppSize(const std::unique_ptr<std::stri
         ATRACE_END();
 
         ATRACE_BEGIN("quota");
-        collectQuotaStats(device, userId, appId, &stats, &extStats);
+        collectQuotaStats(uuid, userId, appId, &stats, &extStats);
         ATRACE_END();
     } else {
         ATRACE_BEGIN("code");
@@ -1515,25 +1465,16 @@ binder::Status InstalldNativeService::getUserSize(const std::unique_ptr<std::str
 
     const char* uuid_ = uuid ? uuid->c_str() : nullptr;
 
-    auto device = findQuotaDeviceForUuid(uuid);
-    if (device.empty()) {
+    if (!::android::installd::isQuotaSupported(uuid)) {
         flags &= ~FLAG_USE_QUOTA;
     }
 
     if (flags & FLAG_USE_QUOTA) {
-        struct dqblk dq;
+        int space;
 
         ATRACE_BEGIN("obb");
-        if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), AID_MEDIA_OBB,
-                reinterpret_cast<char*>(&dq)) != 0) {
-            if (errno != ESRCH) {
-                PLOG(ERROR) << "Failed to quotactl " << device << " for GID " << AID_MEDIA_OBB;
-            }
-        } else {
-#if MEASURE_DEBUG
-            LOG(DEBUG) << "quotactl() for GID " << AID_MEDIA_OBB << " " << dq.dqb_curspace;
-#endif
-            extStats.codeSize += dq.dqb_curspace;
+        if ((space = getOccupiedSpaceForGid(uuid, AID_MEDIA_OBB)) != -1) {
+            extStats.codeSize += space;
         }
         ATRACE_END();
 
@@ -1558,17 +1499,9 @@ binder::Status InstalldNativeService::getUserSize(const std::unique_ptr<std::str
         }
 
         ATRACE_BEGIN("external");
-        uid_t uid = multiuser_get_uid(userId, AID_MEDIA_RW);
-        if (quotactl(QCMD(Q_GETQUOTA, USRQUOTA), device.c_str(), uid,
-                reinterpret_cast<char*>(&dq)) != 0) {
-            if (errno != ESRCH) {
-                PLOG(ERROR) << "Failed to quotactl " << device << " for UID " << uid;
-            }
-        } else {
-#if MEASURE_DEBUG
-            LOG(DEBUG) << "quotactl() for UID " << uid << " " << dq.dqb_curspace;
-#endif
-            extStats.dataSize += dq.dqb_curspace;
+        uid_t uid = multiuser_get_uid(userId, AID_MEDIA_RW);    
+        if ((space = getOccupiedSpaceForUid(uuid, uid)) != -1) {
+            extStats.dataSize += space;
         }
         ATRACE_END();
 
@@ -1585,7 +1518,7 @@ binder::Status InstalldNativeService::getUserSize(const std::unique_ptr<std::str
         int64_t dataSize = extStats.dataSize;
         for (auto appId : appIds) {
             if (appId >= AID_APP_START) {
-                collectQuotaStats(device, userId, appId, &stats, &extStats);
+                collectQuotaStats(uuid, userId, appId, &stats, &extStats);
 
 #if MEASURE_DEBUG
                 // Sleep to make sure we don't lose logs
@@ -1676,58 +1609,33 @@ binder::Status InstalldNativeService::getExternalSize(const std::unique_ptr<std:
     int64_t appSize = 0;
     int64_t obbSize = 0;
 
-    auto device = findQuotaDeviceForUuid(uuid);
-    if (device.empty()) {
+    if (!::android::installd::isQuotaSupported(uuid)) {
         flags &= ~FLAG_USE_QUOTA;
     }
 
     if (flags & FLAG_USE_QUOTA) {
-        struct dqblk dq;
+        int space;
 
         ATRACE_BEGIN("quota");
         uid_t uid = multiuser_get_uid(userId, AID_MEDIA_RW);
-        if (quotactl(QCMD(Q_GETQUOTA, USRQUOTA), device.c_str(), uid,
-                reinterpret_cast<char*>(&dq)) != 0) {
-            if (errno != ESRCH) {
-                PLOG(ERROR) << "Failed to quotactl " << device << " for UID " << uid;
-            }
-        } else {
-#if MEASURE_DEBUG
-            LOG(DEBUG) << "quotactl() for UID " << uid << " " << dq.dqb_curspace;
-#endif
-            totalSize = dq.dqb_curspace;
+        if ((space = getOccupiedSpaceForUid(uuid, uid)) != -1) {
+            totalSize = space;
         }
 
         gid_t audioGid = multiuser_get_uid(userId, AID_MEDIA_AUDIO);
-        if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), audioGid,
-                reinterpret_cast<char*>(&dq)) == 0) {
-#if MEASURE_DEBUG
-            LOG(DEBUG) << "quotactl() for GID " << audioGid << " " << dq.dqb_curspace;
-#endif
-            audioSize = dq.dqb_curspace;
+        if ((space = getOccupiedSpaceForGid(uuid, audioGid)) != -1) {
+            audioSize = space;
         }
         gid_t videoGid = multiuser_get_uid(userId, AID_MEDIA_VIDEO);
-        if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), videoGid,
-                reinterpret_cast<char*>(&dq)) == 0) {
-#if MEASURE_DEBUG
-            LOG(DEBUG) << "quotactl() for GID " << videoGid << " " << dq.dqb_curspace;
-#endif
-            videoSize = dq.dqb_curspace;
+        if ((space = getOccupiedSpaceForGid(uuid, videoGid)) != -1) {
+            videoSize = space;
         }
         gid_t imageGid = multiuser_get_uid(userId, AID_MEDIA_IMAGE);
-        if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), imageGid,
-                reinterpret_cast<char*>(&dq)) == 0) {
-#if MEASURE_DEBUG
-            LOG(DEBUG) << "quotactl() for GID " << imageGid << " " << dq.dqb_curspace;
-#endif
-            imageSize = dq.dqb_curspace;
+        if ((space = getOccupiedSpaceForGid(uuid, imageGid)) != -1) {
+            imageSize = space;
         }
-        if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), AID_MEDIA_OBB,
-                reinterpret_cast<char*>(&dq)) == 0) {
-#if MEASURE_DEBUG
-            LOG(DEBUG) << "quotactl() for GID " << AID_MEDIA_OBB << " " << dq.dqb_curspace;
-#endif
-            obbSize = dq.dqb_curspace;
+        if ((space = getOccupiedSpaceForGid(uuid, AID_MEDIA_OBB)) != -1) {
+            obbSize = space;
         }
         ATRACE_END();
 
@@ -1736,7 +1644,7 @@ binder::Status InstalldNativeService::getExternalSize(const std::unique_ptr<std:
         memset(&extStats, 0, sizeof(extStats));
         for (auto appId : appIds) {
             if (appId >= AID_APP_START) {
-                collectQuotaStats(device, userId, appId, nullptr, &extStats);
+                collectQuotaStats(uuid, userId, appId, nullptr, &extStats);
             }
         }
         appSize = extStats.dataSize;
@@ -2524,7 +2432,12 @@ binder::Status InstalldNativeService::invalidateMounts() {
     std::lock_guard<std::recursive_mutex> lock(mMountsLock);
 
     mStorageMounts.clear();
-    mQuotaReverseMounts.clear();
+
+#if !BYPASS_QUOTA
+    if (!invalidateQuotaMounts()) {
+        return error("Failed to read mounts");
+    }
+#endif
 
     std::ifstream in("/proc/mounts");
     if (!in.is_open()) {
@@ -2545,18 +2458,8 @@ binder::Status InstalldNativeService::invalidateMounts() {
             mStorageMounts[source] = target;
         }
 #endif
-
-#if !BYPASS_QUOTA
-        if (source.compare(0, 11, "/dev/block/") == 0) {
-            struct dqblk dq;
-            if (quotactl(QCMD(Q_GETQUOTA, USRQUOTA), source.c_str(), 0,
-                    reinterpret_cast<char*>(&dq)) == 0) {
-                LOG(DEBUG) << "Found quota mount " << source << " at " << target;
-                mQuotaReverseMounts[target] = source;
-            }
-        }
-#endif
     }
+
     return ok();
 }
 
@@ -2573,16 +2476,9 @@ std::string InstalldNativeService::findDataMediaPath(
     return StringPrintf("%s/%u", resolved.c_str(), userid);
 }
 
-std::string InstalldNativeService::findQuotaDeviceForUuid(
-        const std::unique_ptr<std::string>& uuid) {
-    std::lock_guard<std::recursive_mutex> lock(mMountsLock);
-    auto path = create_data_path(uuid ? uuid->c_str() : nullptr);
-    return mQuotaReverseMounts[path];
-}
-
 binder::Status InstalldNativeService::isQuotaSupported(
         const std::unique_ptr<std::string>& volumeUuid, bool* _aidl_return) {
-    *_aidl_return = !findQuotaDeviceForUuid(volumeUuid).empty();
+    *_aidl_return = ::android::installd::isQuotaSupported(volumeUuid);
     return ok();
 }
 
