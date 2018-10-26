@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "598e01ab_5ee1bd20",
+        "filename": "cmds/dumpstate/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-10-26T16:09:18Z",
+      "side": 1,
+      "message": "nit: 1 extra newline here",
+      "revId": "61415ca63f3dd842255c315b29be5320604db0bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
