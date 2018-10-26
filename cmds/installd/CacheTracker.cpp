@@ -19,13 +19,13 @@
 #include "CacheTracker.h"
 
 #include <fts.h>
-#include <sys/quota.h>
 #include <sys/xattr.h>
 #include <utils/Trace.h>
 
 #include <android-base/logging.h>
 #include <android-base/stringprintf.h>
 
+#include "QuotaUtils.h"
 #include "utils.h"
 
 using android::base::StringPrintf;
@@ -33,8 +33,9 @@ using android::base::StringPrintf;
 namespace android {
 namespace installd {
 
-CacheTracker::CacheTracker(userid_t userId, appid_t appId, const std::string& quotaDevice) :
-        cacheUsed(0), cacheQuota(0), mUserId(userId), mAppId(appId), mQuotaDevice(quotaDevice),
+CacheTracker::CacheTracker(userid_t userId, appid_t appId, const std::unique_ptr<std::string>& uuid) :
+        cacheUsed(0), cacheQuota(0), mUserId(userId), mAppId(appId),
+        mUuid(uuid ? std::make_unique<std::string>(*uuid) : nullptr),
         mItemsLoaded(false) {
 }
 
@@ -72,26 +73,18 @@ void CacheTracker::loadStats() {
 bool CacheTracker::loadQuotaStats() {
     int cacheGid = multiuser_get_cache_gid(mUserId, mAppId);
     int extCacheGid = multiuser_get_ext_cache_gid(mUserId, mAppId);
-    if (!mQuotaDevice.empty() && cacheGid != -1 && extCacheGid != -1) {
-        struct dqblk dq;
-        if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), mQuotaDevice.c_str(), cacheGid,
-                reinterpret_cast<char*>(&dq)) != 0) {
-            if (errno != ESRCH) {
-                PLOG(ERROR) << "Failed to quotactl " << mQuotaDevice << " for GID " << cacheGid;
-            }
-            return false;
+    if (isQuotaSupported(mUuid) && cacheGid != -1 && extCacheGid != -1) {
+		int space;
+        if ((space = getOccupiedSpaceForGid(mUuid, cacheGid)) != -1) {
+            cacheUsed += space;
         } else {
-            cacheUsed += dq.dqb_curspace;
+            return false;
         }
 
-        if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), mQuotaDevice.c_str(), extCacheGid,
-                reinterpret_cast<char*>(&dq)) != 0) {
-            if (errno != ESRCH) {
-                PLOG(ERROR) << "Failed to quotactl " << mQuotaDevice << " for GID " << cacheGid;
-            }
-            return false;
+        if ((space = getOccupiedSpaceForGid(mUuid, extCacheGid)) != -1) {
+            cacheUsed += space;
         } else {
-            cacheUsed += dq.dqb_curspace;
+            return false;
         }
         return true;
     } else {
