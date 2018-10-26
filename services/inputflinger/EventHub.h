@@ -41,6 +41,8 @@
 #define BTN_FIRST 0x100  // first button code
 #define BTN_LAST 0x15f   // last button code
 
+#define MAX_VIBRATION_CHANNELS 16  // maximum channels for a vibrator device
+
 /*
  * These constants are used privately in Android to pass raw timestamps
  * through evdev from uinput device drivers because there is currently no
@@ -143,6 +145,16 @@ enum {
 
     /* The input device is external (not built-in). */
     INPUT_DEVICE_CLASS_EXTERNAL      = 0x80000000,
+};
+
+/*
+ * Describes a rumble effect
+ */
+struct VibrationElement
+{
+    nsecs_t duration;
+    size_t channelCount;
+    uint16_t channels[MAX_VIBRATION_CHANNELS];
 };
 
 /*
@@ -251,7 +263,7 @@ public:
     virtual bool setKeyboardLayoutOverlay(int32_t deviceId, const sp<KeyCharacterMap>& map) = 0;
 
     /* Control the vibrator. */
-    virtual void vibrate(int32_t deviceId, nsecs_t duration) = 0;
+    virtual void vibrate(int32_t deviceId, const VibrationElement& effect) = 0;
     virtual void cancelVibrate(int32_t deviceId) = 0;
 
     /* Requests the EventHub to reopen all input devices on the next call to getEvents(). */
@@ -325,7 +337,7 @@ public:
     virtual sp<KeyCharacterMap> getKeyCharacterMap(int32_t deviceId) const;
     virtual bool setKeyboardLayoutOverlay(int32_t deviceId, const sp<KeyCharacterMap>& map);
 
-    virtual void vibrate(int32_t deviceId, nsecs_t duration);
+    virtual void vibrate(int32_t deviceId, const VibrationElement& effect);
     virtual void cancelVibrate(int32_t deviceId);
 
     virtual void requestReopenDevices();

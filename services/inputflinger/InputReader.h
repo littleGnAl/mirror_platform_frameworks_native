@@ -333,7 +333,7 @@ public:
     virtual void requestRefreshConfiguration(uint32_t changes) = 0;
 
     /* Controls the vibrator of a particular input device. */
-    virtual void vibrate(int32_t deviceId, const nsecs_t* pattern, size_t patternSize,
+    virtual void vibrate(int32_t deviceId, const VibrationElement* pattern, size_t patternSize,
             ssize_t repeat, int32_t token) = 0;
     virtual void cancelVibrate(int32_t deviceId, int32_t token) = 0;
 };
@@ -434,7 +434,7 @@ public:
 
     virtual void requestRefreshConfiguration(uint32_t changes);
 
-    virtual void vibrate(int32_t deviceId, const nsecs_t* pattern, size_t patternSize,
+    virtual void vibrate(int32_t deviceId, const VibrationElement* pattern, size_t patternSize,
             ssize_t repeat, int32_t token);
     virtual void cancelVibrate(int32_t deviceId, int32_t token);
 
@@ -582,7 +582,8 @@ public:
     int32_t getSwitchState(uint32_t sourceMask, int32_t switchCode);
     bool markSupportedKeyCodes(uint32_t sourceMask, size_t numCodes,
             const int32_t* keyCodes, uint8_t* outFlags);
-    void vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat, int32_t token);
+    void vibrate(const VibrationElement* pattern, size_t patternSize, ssize_t repeat,
+            int32_t token);
     void cancelVibrate(int32_t token);
     void cancelTouch(nsecs_t when);
 
@@ -999,7 +1000,7 @@ public:
     virtual int32_t getSwitchState(uint32_t sourceMask, int32_t switchCode);
     virtual bool markSupportedKeyCodes(uint32_t sourceMask, size_t numCodes,
             const int32_t* keyCodes, uint8_t* outFlags);
-    virtual void vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat,
+    virtual void vibrate(const VibrationElement* pattern, size_t patternSize, ssize_t repeat,
             int32_t token);
     virtual void cancelVibrate(int32_t token);
     virtual void cancelTouch(nsecs_t when);
@@ -1053,7 +1054,7 @@ public:
     virtual void populateDeviceInfo(InputDeviceInfo* deviceInfo);
     virtual void process(const RawEvent* rawEvent);
 
-    virtual void vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat,
+    virtual void vibrate(const VibrationElement* pattern, size_t patternSize, ssize_t repeat,
             int32_t token);
     virtual void cancelVibrate(int32_t token);
     virtual void timeoutExpired(nsecs_t when);
@@ -1061,7 +1062,7 @@ public:
 
 private:
     bool mVibrating;
-    nsecs_t mPattern[MAX_VIBRATE_PATTERN_SIZE];
+    VibrationElement mPattern[MAX_VIBRATE_PATTERN_SIZE];
     size_t mPatternSize;
     ssize_t mRepeat;
     int32_t mToken;
