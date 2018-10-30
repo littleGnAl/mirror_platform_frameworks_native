@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5de8c103_b3fc508e",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-10-30T17:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ba51bf_cf7c4a74",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "3bb8a2cfee99d6b51444832543e58cb034b7b135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "644667a5_dfafe8e8",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-30T17:16:38Z",
       "side": 1,
       "message": "Is this necessary? I think the only special-casing is the empty() below.",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 34
+      },
+      "revId": "3bb8a2cfee99d6b51444832543e58cb034b7b135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e06e7f53_8a9a2d2e",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-10-30T17:25:30Z",
+      "side": 1,
+      "message": "Ah, had misread base::Split, it does work fine when the delimiter is not found.",
+      "parentUuid": "644667a5_dfafe8e8",
       "range": {
         "startLine": 187,
         "startChar": 4,
