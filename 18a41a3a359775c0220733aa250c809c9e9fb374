@@ -46,6 +46,30 @@
       "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0bb54f7_2d79ef0e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-30T23:11:04Z",
+      "side": 1,
+      "message": "do we need an AParcelFileDescriptor? Why?",
+      "parentUuid": "a862ec0d_3de054b7",
+      "range": {
+        "startLine": 170,
+        "startChar": 71,
+        "endLine": 170,
+        "endChar": 73
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
