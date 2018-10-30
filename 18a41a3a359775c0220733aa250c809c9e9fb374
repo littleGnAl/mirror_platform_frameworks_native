@@ -22,6 +22,30 @@
       "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a862ec0d_3de054b7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-30T16:21:42Z",
+      "side": 1,
+      "message": "Ah, I missed the first part of b/115607973#comment11 (which we would need AParcelFileDescriptor* to support).\n\nSo, then we will also need:\nAParcelFileDescriptor_create\nAParcelFileDescriptor_delete\nAParcelFileDescriptor_setFileDescriptor\nAParcelFileDescriptor_getFileDescriptor\nAParcelFileDescriptor_releaseFileDescriptor\n\nIs this what you want?",
+      "parentUuid": "71ecb81d_7d917013",
+      "range": {
+        "startLine": 170,
+        "startChar": 71,
+        "endLine": 170,
+        "endChar": 73
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
