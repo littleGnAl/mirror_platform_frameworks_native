@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d5d907a_afade581",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-30T23:23:58Z",
+      "side": 1,
+      "message": "document that this doesn\u0027t take ownership of the fd",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 69
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e52e2c_7e7b6bff",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-30T23:23:58Z",
+      "side": 1,
+      "message": "clarify this is compatible with the Java ParcelFileDescriptor.",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 32
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71ecb81d_7d917013",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 3
@@ -66,6 +112,29 @@
         "startChar": 71,
         "endLine": 170,
         "endChar": 73
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "098b9620_f1ea810f",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-30T23:23:58Z",
+      "side": 1,
+      "message": "this could all be simplified by just doing parcel-\u003eget()-\u003ewriteDupParcelFileDescriptor(fd);\n\nWhich then means no weird games need to be played with unique_fd\n\nSame with the below readParcelFileDescriptor()",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 32
       },
       "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
