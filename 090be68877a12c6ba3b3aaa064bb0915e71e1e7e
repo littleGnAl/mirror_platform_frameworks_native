@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9c1a858_cfdcc836",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-10-30T18:32:41Z",
+      "side": 1,
+      "message": "nit: extra ;",
+      "range": {
+        "startLine": 2267,
+        "startChar": 4,
+        "endLine": 2267,
+        "endChar": 5
+      },
+      "revId": "090be68877a12c6ba3b3aaa064bb0915e71e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3278a08e_1fdf67ef",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2280,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-10-30T18:32:41Z",
+      "side": 1,
+      "message": "nit: I\u0027d break, for consistency",
+      "range": {
+        "startLine": 2280,
+        "startChar": 12,
+        "endLine": 2280,
+        "endChar": 21
+      },
+      "revId": "090be68877a12c6ba3b3aaa064bb0915e71e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
