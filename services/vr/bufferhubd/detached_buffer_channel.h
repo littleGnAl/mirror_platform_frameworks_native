@@ -6,6 +6,8 @@
 #include <pdx/channel_handle.h>
 #include <pdx/file_handle.h>
 
+#include <memory>
+
 namespace android {
 namespace dvr {
 
@@ -15,8 +17,8 @@ class DetachedBufferChannel : public BufferHubChannel {
 
   template <typename... Args>
   static std::unique_ptr<DetachedBufferChannel> Create(Args&&... args) {
-    auto buffer = std::unique_ptr<DetachedBufferChannel>(
-        new DetachedBufferChannel(std::forward<Args>(args)...));
+    auto buffer = std::make_unique<DetachedBufferChannel>(
+        std::forward<Args>(args)...);
     return buffer->IsValid() ? std::move(buffer) : nullptr;
   }
 
