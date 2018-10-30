@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9686cebd_222060b0",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-10-30T17:38:43Z",
+      "side": 1,
+      "message": "The function can be annotated to do format parameter checking. +enh (Not sure whether that requires a const char* parameter, though)",
+      "range": {
+        "startLine": 227,
+        "startChar": 24,
+        "endLine": 227,
+        "endChar": 38
+      },
+      "revId": "1da7630fde85b01eb46ec4882e4de4f88a2884e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
