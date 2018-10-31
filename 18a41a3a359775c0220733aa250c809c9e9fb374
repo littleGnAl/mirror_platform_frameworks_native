@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b34d45a9_1cd53af2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-31T00:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d5d907a_afade581",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 69
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63e52e2c_7e7b6bff",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58176ff3_40af34a5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-31T00:43:18Z",
+      "side": 1,
+      "message": "This was meant to refer to that. Updated to use the namespace and call it out in the SDK.",
+      "parentUuid": "63e52e2c_7e7b6bff",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 32
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "47b35d54_5500c6f3",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-31T00:43:18Z",
+      "side": 1,
+      "message": "It is if we want to ever support mCommFd (b/115607973#comment9). Although, we could also add a new API in that case (as it stands, we could add new APIs that read/write both fds, but in Jiyong\u0027s world, we would add other APIs to get/set the fds). Jiyong?",
+      "parentUuid": "f0bb54f7_2d79ef0e",
+      "range": {
+        "startLine": 170,
+        "startChar": 71,
+        "endLine": 170,
+        "endChar": 73
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "098b9620_f1ea810f",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 3
@@ -139,6 +211,30 @@
       "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac72a4a_61a6ce3b",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-31T00:43:18Z",
+      "side": 1,
+      "message": "That doesn\u0027t work unless I also read/write a 1/0 like read/writeParcelable does (you can see I was doing this incorrectly in old patchsets). Doing that also will require weird games with unique_fd (or creating another API in addition to readUniqueParcelFileDescriptor).",
+      "parentUuid": "098b9620_f1ea810f",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 32
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
