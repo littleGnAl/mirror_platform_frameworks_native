@@ -45,6 +45,29 @@
       "revId": "090be68877a12c6ba3b3aaa064bb0915e71e1e7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cabfb05_548f89d8",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-10-31T10:03:27Z",
+      "side": 1,
+      "message": "nit: This comment doesn\u0027t really add anything. Maybe instead say something like \"main entry point for taking a complete bugreport\".",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 66
+      },
+      "revId": "090be68877a12c6ba3b3aaa064bb0915e71e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
