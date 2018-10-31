@@ -46,6 +46,30 @@
       "revId": "063f236689aa009bde8e20e221be07c8dd67c906",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83ebe74b_abba53be",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-31T20:11:44Z",
+      "side": 1,
+      "message": "I think readFileDescriptor isn\u0027t passing ownership out and this is why readUniqueParcelFileDescriptor (which is being used here) is calling F_DUPFD_CLOEXEC, so it shouldn\u0027t be leaked.",
+      "parentUuid": "51acbb91_ddac90cb",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 21
+      },
+      "revId": "063f236689aa009bde8e20e221be07c8dd67c906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
