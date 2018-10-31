@@ -94,6 +94,30 @@
       "revId": "063f236689aa009bde8e20e221be07c8dd67c906",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ea5f51_2dfdd00b",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-31T20:30:52Z",
+      "side": 1,
+      "message": "Yeah, good point. I guess that still needs to be fixed up. Will do.",
+      "parentUuid": "efd412c5_ae52f805",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 21
+      },
+      "revId": "063f236689aa009bde8e20e221be07c8dd67c906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
