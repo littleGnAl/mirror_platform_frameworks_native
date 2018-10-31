@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "c4114e64_48752939",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-31T07:43:21Z",
+      "side": 1,
+      "message": "\u003e Is this what you want?\nYes, and it is partially because of mCommFd. But more importantly, ParcelFileDescriptor and FileDescriptor are distinct concepts in Android API. The former is a parcelable while the latter isn\u0027t. It is also possible to wrap a ParcelFileDescriptor inside a ParcelFileDescriptor. The former is auto-closeable while the latter isn\u0027t.\n\n\u003e Although, we could also add a new API in that case\nYes, but then I think these functions should be named as [read|write]FileDescriptor",
+      "parentUuid": "47b35d54_5500c6f3",
+      "range": {
+        "startLine": 170,
+        "startChar": 71,
+        "endLine": 170,
+        "endChar": 73
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "098b9620_f1ea810f",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 3
