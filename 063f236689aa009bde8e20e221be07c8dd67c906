@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ce66d5f_48420231",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-31T17:10:00Z",
+      "side": 1,
+      "message": "I think the implementation of this isn\u0027t entirely correct. It looks like this ultimately results in:\n\nint Parcel::readParcelFileDescriptor() const\n{\n    int32_t hasComm \u003d readInt32();\n    int fd \u003d readFileDescriptor();\n    if (hasComm !\u003d 0) {\n        // skip\n        readFileDescriptor();\n    }\n    return fd;\n}\n\nwhich just leaks the commFd? That should probably be writing the DETACHED status to the commFd and then closing it, which is what Java\u0027s PFD#detachFd() does.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 21
+      },
+      "revId": "063f236689aa009bde8e20e221be07c8dd67c906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
