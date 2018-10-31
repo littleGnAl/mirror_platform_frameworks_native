@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c44f6de9_f4189e9e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2280,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-10-31T13:01:36Z",
+      "side": 1,
+      "message": "I assumed Felipe meant replace the \u0027return 0;\u0027 with \u0027break;\u0027, rather than add a break after the return. The code looks a bit funny to me now with \u0027return 0; break; return 0\u0027.\n\nMaybe consider doing a cleanup of this code in a future CL, for example, use \u0027exit(0)\u0027 for the OK case, or refactor the code to \u0027return 1\u0027, \u0027return -1\u0027, etc in the other cases.",
+      "parentUuid": "23a7284a_c027b9c4",
+      "range": {
+        "startLine": 2280,
+        "startChar": 12,
+        "endLine": 2280,
+        "endChar": 21
+      },
+      "revId": "090be68877a12c6ba3b3aaa064bb0915e71e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cabfb05_548f89d8",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 2
