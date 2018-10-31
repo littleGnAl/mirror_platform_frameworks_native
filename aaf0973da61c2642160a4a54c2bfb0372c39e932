@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c3d11a4_2e30e401",
+        "filename": "cmds/installd/CacheTracker.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2018-10-31T21:02:20Z",
+      "side": 1,
+      "message": "Would shared_ptr work here?",
+      "range": {
+        "startLine": 64,
+        "startChar": 9,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "aaf0973da61c2642160a4a54c2bfb0372c39e932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63541d43_48c571a3",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2018-10-31T21:02:20Z",
+      "side": 1,
+      "message": "\"Is\" uppercase to follow Google3 C++ style guide",
+      "range": {
+        "startLine": 1468,
+        "startChar": 30,
+        "endLine": 1468,
+        "endChar": 31
+      },
+      "revId": "aaf0973da61c2642160a4a54c2bfb0372c39e932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e911396_e85839bd",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2018-10-31T21:02:20Z",
+      "side": 1,
+      "message": "int64_t?",
+      "range": {
+        "startLine": 1617,
+        "startChar": 8,
+        "endLine": 1617,
+        "endChar": 11
+      },
+      "revId": "aaf0973da61c2642160a4a54c2bfb0372c39e932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3d07084_f3b9ab2c",
+        "filename": "cmds/installd/QuotaUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2018-10-31T21:02:20Z",
+      "side": 1,
+      "message": "string\u0026?",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "aaf0973da61c2642160a4a54c2bfb0372c39e932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95cabdf6_f69be08d",
+        "filename": "cmds/installd/QuotaUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2018-10-31T21:02:20Z",
+      "side": 1,
+      "message": "H_",
+      "range": {
+        "startLine": 41,
+        "startChar": 39,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "aaf0973da61c2642160a4a54c2bfb0372c39e932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
