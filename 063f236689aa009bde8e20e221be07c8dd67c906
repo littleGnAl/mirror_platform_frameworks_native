@@ -70,6 +70,30 @@
       "revId": "063f236689aa009bde8e20e221be07c8dd67c906",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efd412c5_ae52f805",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-31T20:25:42Z",
+      "side": 1,
+      "message": "ah ok, so not leaking but also not really treating the commFd appropriately?",
+      "parentUuid": "83ebe74b_abba53be",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 21
+      },
+      "revId": "063f236689aa009bde8e20e221be07c8dd67c906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
