@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "e090fe5e_a7c63854",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-10-31T17:05:04Z",
+      "side": 1,
+      "message": "\u003e But more importantly, ParcelFileDescriptor and FileDescriptor are distinct concepts in Android API. \n\nI\u0027d argue that\u0027s a bug not a feature. It only works like that because FileDescriptor isn\u0027t an Android API but rather it\u0027s a Java one and thus couldn\u0027t be extended and/or fixed (java\u0027s FileDescriptor is pretty broken and useless).\n\nThe NDK doesn\u0027t have this problem as FDs are first class citizens with real support and features, so why complicate this with a wrapper?\n\nmCommFd sort of would be an argument, but I\u0027d question how often it\u0027s used and I don\u0027t think it\u0027s a blocker to prevent this simpler API from landing.",
+      "parentUuid": "c4114e64_48752939",
+      "range": {
+        "startLine": 170,
+        "startChar": 71,
+        "endLine": 170,
+        "endChar": 73
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "098b9620_f1ea810f",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 3
