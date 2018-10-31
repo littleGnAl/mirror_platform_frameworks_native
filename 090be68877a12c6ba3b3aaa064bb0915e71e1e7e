@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "330e8389_4da05d0e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2280,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-10-31T13:12:43Z",
+      "side": 1,
+      "message": "Yes, I believe you are right about Felipe\u0027s comment.\n\nExiting execution from the functions is the confusing (and unnecessary) part and you are right - from main it makes more sense to just return.\n\nWill fix soon",
+      "parentUuid": "c44f6de9_f4189e9e",
+      "range": {
+        "startLine": 2280,
+        "startChar": 12,
+        "endLine": 2280,
+        "endChar": 21
+      },
+      "revId": "090be68877a12c6ba3b3aaa064bb0915e71e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cabfb05_548f89d8",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 2
