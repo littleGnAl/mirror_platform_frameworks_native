@@ -143,6 +143,13 @@ static const char kDexFile[] =
     "AAAACADojmFLPcugSwoBAAAUAgAACwAYAAAAAAAAAAAAoIEAAAAAY2xhc3Nlcy5kZXhVVAUAA/Ns"
     "+ll1eAsAAQQj5QIABIgTAABQSwUGAAAAAAEAAQBRAAAATwEAAAAA";
 
+class DexoptTestEnvTest : public testing::Test {
+};
+
+TEST_F(DexoptTestEnvTest, CheckSelinux) {
+    ASSERT_EQ(1, is_selinux_enabled());
+    ASSERT_EQ(1, security_getenforce());
+}
 
 class DexoptTest : public testing::Test {
 protected:
