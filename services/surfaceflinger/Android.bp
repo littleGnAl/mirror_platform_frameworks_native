@@ -55,7 +55,6 @@ cc_defaults {
     static_libs: [
         "libserviceutils",
         "libtrace_proto",
-        "libvkjson",
         "libvr_manager",
         "libvrflinger",
     ],
@@ -106,7 +105,6 @@ filegroup {
         "EventLog/EventLog.cpp",
         "EventThread.cpp",
         "FrameTracker.cpp",
-        "GpuService.cpp",
         "Layer.cpp",
         "LayerProtoHelper.cpp",
         "LayerRejecter.cpp",
