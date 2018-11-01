@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45fed330_daff1348",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-01T21:31:26Z",
+      "side": 1,
+      "message": "Does this need a helper like the other fd function you fixed up (fdopen?), Josh? What if null is returned?",
+      "range": {
+        "startLine": 1039,
+        "startChar": 12,
+        "endLine": 1044,
+        "endChar": 13
+      },
+      "revId": "c5624f66d64256f549c021ae31bc58e6f1926b1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
