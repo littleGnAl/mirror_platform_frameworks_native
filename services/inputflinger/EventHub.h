@@ -33,6 +33,8 @@
 #include <utils/KeyedVector.h>
 #include <utils/BitSet.h>
 
+#include <vector>
+
 #include <linux/input.h>
 #include <sys/epoll.h>
 
@@ -146,6 +148,16 @@ enum {
 };
 
 /*
+ * Describes a rumble effect
+ */
+struct VibrationElement {
+    nsecs_t duration;
+    std::vector<uint16_t> channels;
+
+    void dump(std::string& dump) const;
+};
+
+/*
  * Gets the class that owns an axis, in cases where multiple classes might claim
  * the same axis for different purposes.
  */
@@ -251,7 +263,7 @@ public:
     virtual bool setKeyboardLayoutOverlay(int32_t deviceId, const sp<KeyCharacterMap>& map) = 0;
 
     /* Control the vibrator. */
-    virtual void vibrate(int32_t deviceId, nsecs_t duration) = 0;
+    virtual void vibrate(int32_t deviceId, const VibrationElement& effect) = 0;
     virtual void cancelVibrate(int32_t deviceId) = 0;
 
     /* Requests the EventHub to reopen all input devices on the next call to getEvents(). */
@@ -325,7 +337,7 @@ public:
     virtual sp<KeyCharacterMap> getKeyCharacterMap(int32_t deviceId) const;
     virtual bool setKeyboardLayoutOverlay(int32_t deviceId, const sp<KeyCharacterMap>& map);
 
-    virtual void vibrate(int32_t deviceId, nsecs_t duration);
+    virtual void vibrate(int32_t deviceId, const VibrationElement& effect);
     virtual void cancelVibrate(int32_t deviceId);
 
     virtual void requestReopenDevices();

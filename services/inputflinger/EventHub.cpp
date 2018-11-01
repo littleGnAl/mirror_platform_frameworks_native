@@ -69,6 +69,8 @@ using android::base::StringPrintf;
 
 namespace android {
 
+static const nsecs_t NANOS_PER_MS = 1000000LL;
+
 static const char *WAKE_LOCK_ID = "KeyEvents";
 static const char *DEVICE_PATH = "/dev/input";
 
@@ -137,6 +139,21 @@ uint32_t getAbsAxisUsage(int32_t axis, uint32_t deviceClasses) {
 
     // Joystick devices get the rest.
     return deviceClasses & INPUT_DEVICE_CLASS_JOYSTICK;
+}
+
+// --- VibrationElement ---
+
+void VibrationElement::dump(std::string& dump) const {
+    dump += StringPrintf("[duration=%" PRId64 ", channels=[", duration);
+
+    if (channels.size() > 0) {
+        dump += std::to_string(channels[0]);
+        for (auto channel = channels.begin() + 1; channel != channels.end(); channel++) {
+            dump += ", ";
+            dump += std::to_string(*channel);
+        }
+    }
+    dump += "]]";
 }
 
 // --- EventHub::Device ---
@@ -650,7 +667,7 @@ void EventHub::assignDescriptorLocked(InputDeviceIdentifier& identifier) {
             identifier.descriptor.string());
 }
 
-void EventHub::vibrate(int32_t deviceId, nsecs_t duration) {
+void EventHub::vibrate(int32_t deviceId, const VibrationElement& element) {
     AutoMutex _l(mLock);
     Device* device = getDeviceLocked(deviceId);
     if (device && device->hasValidFd()) {
@@ -658,9 +675,15 @@ void EventHub::vibrate(int32_t deviceId, nsecs_t duration) {
         memset(&effect, 0, sizeof(effect));
         effect.type = FF_RUMBLE;
         effect.id = device->ffEffectId;
-        effect.u.rumble.strong_magnitude = 0xc000;
-        effect.u.rumble.weak_magnitude = 0xc000;
-        effect.replay.length = (duration + 999999LL) / 1000000LL;
+        // evdev FF_RUMBLE effect only supports two channels of vibration.
+        if (element.channels.size() > 0) {
+            effect.u.rumble.strong_magnitude = element.channels[0];
+        }
+        if (element.channels.size() > 1) {
+            effect.u.rumble.weak_magnitude = element.channels[1];
+        }
+        // Convert nanoseconds to milliseconds, rounding to the next millisecond.
+        effect.replay.length = (element.duration + NANOS_PER_MS - 1) / NANOS_PER_MS;
         effect.replay.delay = 0;
         if (ioctl(device->fd, EVIOCSFF, &effect)) {
             ALOGW("Could not upload force feedback effect to device %s due to error %d.",
