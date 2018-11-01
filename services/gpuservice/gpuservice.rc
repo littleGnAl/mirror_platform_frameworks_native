@@ -1,0 +1,4 @@
+service gpuservice /system/bin/gpuservice
+    class core
+    user system
+    group graphics
