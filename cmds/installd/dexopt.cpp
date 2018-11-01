@@ -2693,6 +2693,11 @@ static bool create_boot_image_profile_snapshot(const std::string& package_name,
         return false;
     }
 
+    // Return false for empty class path.
+    if (classpath.empty()) {
+        return false;
+    }
+
     // Open and create the snapshot profile.
     unique_fd snapshot_fd = open_spnashot_profile(AID_SYSTEM, package_name, profile_name);
 
