@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fa8f6fd_d07dad68",
+        "filename": "cmds/installd/CacheTracker.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2018-11-01T21:37:13Z",
+      "side": 1,
+      "message": "nit: two spaces",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "8503cbc325fbb7c137e0c2a0703fa8e6721d7eaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc062dcc_dd6afd8d",
+        "filename": "cmds/installd/QuotaUtils.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2018-11-01T21:37:13Z",
+      "side": 1,
+      "message": "empty() ? nullptr : uuid.c_str()\n\n?",
+      "range": {
+        "startLine": 40,
+        "startChar": 33,
+        "endLine": 40,
+        "endChar": 44
+      },
+      "revId": "8503cbc325fbb7c137e0c2a0703fa8e6721d7eaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
