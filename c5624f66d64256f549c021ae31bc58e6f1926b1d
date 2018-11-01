@@ -70,6 +70,30 @@
       "revId": "c5624f66d64256f549c021ae31bc58e6f1926b1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350a2ecf_3709452f",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-11-01T21:45:28Z",
+      "side": 1,
+      "message": "Oops, yes, that\u0027s right, this will leak an fd if fdopendir fails.",
+      "parentUuid": "9a91670d_048fb8c4",
+      "range": {
+        "startLine": 1039,
+        "startChar": 12,
+        "endLine": 1044,
+        "endChar": 13
+      },
+      "revId": "c5624f66d64256f549c021ae31bc58e6f1926b1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
