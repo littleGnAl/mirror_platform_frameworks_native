@@ -843,14 +843,14 @@ void InputReader::requestRefreshConfiguration(uint32_t changes) {
     }
 }
 
-void InputReader::vibrate(int32_t deviceId, const nsecs_t* pattern, size_t patternSize,
+void InputReader::vibrate(int32_t deviceId, const std::vector<VibrationElement>& pattern,
         ssize_t repeat, int32_t token) {
     AutoMutex _l(mLock);
 
     ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
     if (deviceIndex >= 0) {
         InputDevice* device = mDevices.valueAt(deviceIndex);
-        device->vibrate(pattern, patternSize, repeat, token);
+        device->vibrate(pattern, repeat, token);
     }
 }
 
@@ -1279,12 +1279,12 @@ bool InputDevice::markSupportedKeyCodes(uint32_t sourceMask, size_t numCodes,
     return result;
 }
 
-void InputDevice::vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat,
+void InputDevice::vibrate(const std::vector<VibrationElement>& pattern, ssize_t repeat,
         int32_t token) {
     size_t numMappers = mMappers.size();
     for (size_t i = 0; i < numMappers; i++) {
         InputMapper* mapper = mMappers[i];
-        mapper->vibrate(pattern, patternSize, repeat, token);
+        mapper->vibrate(pattern, repeat, token);
     }
 }
 
@@ -2018,7 +2018,7 @@ bool InputMapper::markSupportedKeyCodes(uint32_t sourceMask, size_t numCodes,
     return false;
 }
 
-void InputMapper::vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat,
+void InputMapper::vibrate(const std::vector<VibrationElement>& pattern, ssize_t repeat,
         int32_t token) {
 }
 
@@ -2146,23 +2146,17 @@ void VibratorInputMapper::process(const RawEvent* rawEvent) {
     // TODO: Handle FF_STATUS, although it does not seem to be widely supported.
 }
 
-void VibratorInputMapper::vibrate(const nsecs_t* pattern, size_t patternSize, ssize_t repeat,
+void VibratorInputMapper::vibrate(const std::vector<VibrationElement>& pattern, ssize_t repeat,
         int32_t token) {
 #if DEBUG_VIBRATOR
     std::string patternStr;
-    for (size_t i = 0; i < patternSize; i++) {
-        if (i != 0) {
-            patternStr += ", ";
-        }
-        patternStr += StringPrintf("%" PRId64, pattern[i]);
-    }
-    ALOGD("vibrate: deviceId=%d, pattern=[%s], repeat=%zd, token=%d",
+    dumpPattern(patternStr);
+    ALOGD("vibrate: deviceId=%d, pattern=%s, repeat=%zd, token=%d",
             getDeviceId(), patternStr.c_str(), repeat, token);
 #endif
 
     mVibrating = true;
-    memcpy(mPattern, pattern, patternSize * sizeof(nsecs_t));
-    mPatternSize = patternSize;
+    mPattern = pattern;
     mRepeat = repeat;
     mToken = token;
     mIndex = -1;
@@ -2192,7 +2186,7 @@ void VibratorInputMapper::timeoutExpired(nsecs_t when) {
 
 void VibratorInputMapper::nextStep() {
     mIndex += 1;
-    if (size_t(mIndex) >= mPatternSize) {
+    if (size_t(mIndex) >= mPattern.size()) {
         if (mRepeat < 0) {
             // We are done.
             stopVibrating();
@@ -2201,13 +2195,22 @@ void VibratorInputMapper::nextStep() {
         mIndex = mRepeat;
     }
 
-    bool vibratorOn = mIndex & 1;
-    nsecs_t duration = mPattern[mIndex];
+    const VibrationElement& effect = mPattern[mIndex];
+
+    // vibrator is on if any of its channels are non-zero
+    bool vibratorOn = std::any_of(effect.channels.begin(), effect.channels.end(),
+            [] (const auto& channel) {
+        return channel != 0;
+    });
+
     if (vibratorOn) {
 #if DEBUG_VIBRATOR
-        ALOGD("nextStep: sending vibrate deviceId=%d, duration=%" PRId64, getDeviceId(), duration);
+        std::string channelStr;
+        effect.dump(channelStr);
+        ALOGD("nextStep: sending vibrate deviceId=%d, element=%s",
+                getDeviceId(), channelStr.c_str());
 #endif
-        getEventHub()->vibrate(getDeviceId(), duration);
+        getEventHub()->vibrate(getDeviceId(), effect);
     } else {
 #if DEBUG_VIBRATOR
         ALOGD("nextStep: sending cancel vibrate deviceId=%d", getDeviceId());
@@ -2215,10 +2218,10 @@ void VibratorInputMapper::nextStep() {
         getEventHub()->cancelVibrate(getDeviceId());
     }
     nsecs_t now = systemTime(SYSTEM_TIME_MONOTONIC);
-    mNextStepTime = now + duration;
+    mNextStepTime = now + effect.duration;
     getContext()->requestTimeoutAtTime(mNextStepTime);
 #if DEBUG_VIBRATOR
-    ALOGD("nextStep: scheduled timeout in %0.3fms", duration * 0.000001f);
+    ALOGD("nextStep: scheduled timeout in %0.3fms", effect.duration * 0.000001f);
 #endif
 }
 
@@ -2233,8 +2236,25 @@ void VibratorInputMapper::stopVibrating() {
 void VibratorInputMapper::dump(std::string& dump) {
     dump += INDENT2 "Vibrator Input Mapper:\n";
     dump += StringPrintf(INDENT3 "Vibrating: %s\n", toString(mVibrating));
+    if (mPattern) {
+        dump += INDENT3 "Pattern: ";
+        dumpPattern(dump);
+        dump += "\n";
+    }
 }
 
+void VibratorInputMapper::dumpPattern(std::string& dump) const {
+    dump += "[";
+
+    if (mPattern.size() > 0) {
+        mPattern[0].dump(dump);
+        std::for_each(mPattern.begin() + 1, mPattern.end(), [&dump] (const auto& element) {
+            dump += ", ";
+            element.dump(dump);
+        });
+    }
+    dump += "]";
+}
 
 // --- KeyboardInputMapper ---
 

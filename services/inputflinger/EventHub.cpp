@@ -139,6 +139,21 @@ uint32_t getAbsAxisUsage(int32_t axis, uint32_t deviceClasses) {
     return deviceClasses & INPUT_DEVICE_CLASS_JOYSTICK;
 }
 
+// --- VibrationElement ---
+
+void VibrationElement::dump(std::string& dump) const {
+    dump += StringPrintf("[duration=%" PRId64 ", channels=[", duration);
+
+    if (channels.size() > 0) {
+        dump += std::to_string(channels[0]);
+        std::for_each(channels.begin() + 1, channels.end(), [&dump] (const auto& channel) {
+            dump += ", ";
+            dump += std::to_string(channel);
+        });
+    }
+    dump += "]]";
+}
+
 // --- EventHub::Device ---
 
 EventHub::Device::Device(int fd, int32_t id, const String8& path,
@@ -650,7 +665,7 @@ void EventHub::assignDescriptorLocked(InputDeviceIdentifier& identifier) {
             identifier.descriptor.string());
 }
 
-void EventHub::vibrate(int32_t deviceId, nsecs_t duration) {
+void EventHub::vibrate(int32_t deviceId, const VibrationElement& element) {
     AutoMutex _l(mLock);
     Device* device = getDeviceLocked(deviceId);
     if (device && device->hasValidFd()) {
@@ -658,9 +673,15 @@ void EventHub::vibrate(int32_t deviceId, nsecs_t duration) {
         memset(&effect, 0, sizeof(effect));
         effect.type = FF_RUMBLE;
         effect.id = device->ffEffectId;
-        effect.u.rumble.strong_magnitude = 0xc000;
-        effect.u.rumble.weak_magnitude = 0xc000;
-        effect.replay.length = (duration + 999999LL) / 1000000LL;
+        // evdev FF_RUMBLE effect only supports two channels of vibration.
+        if (element.channels.size() > 0) {
+            effect.u.rumble.strong_magnitude = element.channels[0];
+        }
+        if (element.channels.size() > 1) {
+            effect.u.rumble.weak_magnitude = element.channels[1];
+        }
+        // Convert nanoseconds to milliseconds, rounding to the next millisecond.
+        effect.replay.length = (element.duration + 999999LL) / 1000000LL;
         effect.replay.delay = 0;
         if (ioctl(device->fd, EVIOCSFF, &effect)) {
             ALOGW("Could not upload force feedback effect to device %s due to error %d.",
