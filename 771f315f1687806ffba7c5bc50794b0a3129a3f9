@@ -22,6 +22,30 @@
       "revId": "771f315f1687806ffba7c5bc50794b0a3129a3f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733fe22e_5a6d1ec7",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2699,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-11-01T20:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8ed15c9_c97bb846",
+      "range": {
+        "startLine": 2696,
+        "startChar": 0,
+        "endLine": 2699,
+        "endChar": 5
+      },
+      "revId": "771f315f1687806ffba7c5bc50794b0a3129a3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
