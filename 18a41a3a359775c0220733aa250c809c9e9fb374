@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "a8821b12_a4e209e2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-01T02:10:21Z",
+      "side": 1,
+      "message": "Ok. I agree with you.",
+      "parentUuid": "e090fe5e_a7c63854",
+      "range": {
+        "startLine": 170,
+        "startChar": 71,
+        "endLine": 170,
+        "endChar": 73
+      },
+      "revId": "18a41a3a359775c0220733aa250c809c9e9fb374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "098b9620_f1ea810f",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 3
