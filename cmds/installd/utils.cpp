@@ -1036,7 +1036,7 @@ static bool collect_profiles(DIR* d,
                 continue;
             }
 
-            DIR* subdir = fdopendir(subdir_fd);
+            DIR* subdir = Fdopendir(subdir_fd);
             if (subdir == nullptr) {
                 PLOG(WARNING) << "Could not open dir path " << local_path;
                 result = false;
