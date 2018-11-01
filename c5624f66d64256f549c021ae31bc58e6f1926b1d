@@ -22,6 +22,30 @@
       "revId": "c5624f66d64256f549c021ae31bc58e6f1926b1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "702ecc19_568a1ea4",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-11-01T21:34:53Z",
+      "side": 1,
+      "message": "Good point, the docs seem to say that on a successful call the fd is taken over.",
+      "parentUuid": "45fed330_daff1348",
+      "range": {
+        "startLine": 1039,
+        "startChar": 12,
+        "endLine": 1044,
+        "endChar": 13
+      },
+      "revId": "c5624f66d64256f549c021ae31bc58e6f1926b1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
