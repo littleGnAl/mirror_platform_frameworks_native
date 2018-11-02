@@ -106,8 +106,9 @@ CommandOptions::CommandOptionsBuilder& CommandOptions::CommandOptionsBuilder::As
 }
 
 CommandOptions::CommandOptionsBuilder& CommandOptions::CommandOptionsBuilder::AsRootIfAvailable() {
-    if (!PropertiesHelper::IsUserBuild())
+    if (!PropertiesHelper::IsUserBuild() && !PropertiesHelper::IsUnroot()) {
         values.account_mode_ = SU_ROOT;
+    }
     return *this;
 }
 
@@ -176,6 +177,7 @@ CommandOptions::CommandOptionsBuilder CommandOptions::WithTimeoutInMs(int64_t ti
 
 std::string PropertiesHelper::build_type_ = "";
 int PropertiesHelper::dry_run_ = -1;
+int PropertiesHelper::unroot_ = -1;
 
 bool PropertiesHelper::IsUserBuild() {
     if (build_type_.empty()) {
@@ -189,6 +191,13 @@ bool PropertiesHelper::IsDryRun() {
         dry_run_ = android::base::GetBoolProperty("dumpstate.dry_run", false) ? 1 : 0;
     }
     return dry_run_ == 1;
+}
+
+bool PropertiesHelper::IsUnroot() {
+    if (unroot_ == -1) {
+        unroot_ = android::base::GetBoolProperty("dumpstate.unroot", false) ? 1 : 0;
+    }
+    return unroot_ == 1;
 }
 
 int DumpFileToFd(int out_fd, const std::string& title, const std::string& path) {
