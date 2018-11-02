@@ -192,7 +192,7 @@ def main():
         read_args += ["parcel"]
         read_args += ["vectorData"]
         if nca:
-            read_args += ["AParcel_stdVectorBoolAllocator"]
+            read_args += ["AParcel_stdVectorExternalAllocator<bool>"]
             read_args += ["AParcel_stdVectorSetter<" + cpp + ">"]
         else:
             read_args += ["AParcel_stdVectorAllocator<" + cpp + ">"]
