@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4c7ce0d_3770dc62",
+        "filename": "cmds/dumpstate/DumpstateUtil.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-11-02T18:51:03Z",
+      "side": 1,
+      "message": "We need to update this description.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 60
+      },
+      "revId": "a9b618a531270ab7202bfef3edd6c7526dfbf864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a49532f8_2bada954",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-11-02T18:51:03Z",
+      "side": 1,
+      "message": "RunCommandUnrootUserDebugBuild",
+      "range": {
+        "startLine": 687,
+        "startChar": 39,
+        "endLine": 687,
+        "endChar": 55
+      },
+      "revId": "a9b618a531270ab7202bfef3edd6c7526dfbf864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
