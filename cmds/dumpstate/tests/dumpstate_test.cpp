@@ -85,6 +85,10 @@ class DumpstateBaseTest : public Test {
         PropertiesHelper::build_type_ = build_type;
     }
 
+    void SetUnroot(bool unroot) const {
+        PropertiesHelper::unroot_ = unroot;
+    }
+
     bool IsStandalone() const {
         return calls_ == 1;
     }
@@ -142,6 +146,7 @@ class DumpstateTest : public DumpstateBaseTest {
     void SetUp() {
         DumpstateBaseTest::SetUp();
         SetDryRun(false);
+        SetUnroot(false);
         SetBuildType(android::base::GetProperty("ro.build.type", "(unknown)"));
         ds.progress_.reset(new Progress());
         ds.update_progress_ = false;
@@ -672,6 +677,29 @@ TEST_F(DumpstateTest, RunCommandAsRootIfAvailableOnDebugBuild) {
                             CommandOptions::WithTimeout(1).AsRootIfAvailable().Build()));
 
     EXPECT_THAT(out, StrEq("0\nstdout\n"));
+    EXPECT_THAT(err, StrEq("stderr\n"));
+}
+
+TEST_F(DumpstateTest, RunCommandUnrootUserDebugBuild) {
+    if (!IsStandalone()) {
+        // TODO: temporarily disabled because it might cause other tests to fail after dropping
+        // to Shell - need to refactor tests to avoid this problem)
+        MYLOGE("Skipping DumpstateTest.RunCommandUnroot() on test suite\n")
+        return;
+    }
+    if (PropertiesHelper::IsUserBuild()) {
+        ALOGI("Skipping RunCommandUnrootUserDebugBuild on user builds\n");
+        return;
+    }
+    SetUnroot(true);
+
+    DropRoot();
+
+    EXPECT_EQ(0, RunCommand("", {kSimpleCommand, "--uid"},
+                            CommandOptions::WithTimeout(1).AsRootIfAvailable().Build()));
+
+    // It's a userdebug build, so "su root" should be available, but unroot=true overrides it.
+    EXPECT_THAT(out, StrEq("2000\nstdout\n"));
     EXPECT_THAT(err, StrEq("stderr\n"));
 }
 

@@ -106,8 +106,9 @@ CommandOptions::CommandOptionsBuilder& CommandOptions::CommandOptionsBuilder::As
 }
 
 CommandOptions::CommandOptionsBuilder& CommandOptions::CommandOptionsBuilder::AsRootIfAvailable() {
-    if (!PropertiesHelper::IsUserBuild())
+    if (!PropertiesHelper::IsUserBuild() && !PropertiesHelper::IsUnroot()) {
         values.account_mode_ = SU_ROOT;
+    }
     return *this;
 }
 
