@@ -47,6 +47,11 @@ cc_defaults {
                 "-DUSE_ARC",
             ],
         },
+        // TODO(b/113373927): Remove this conditional when all
+        // products include the Android Runtime APEX.
+        dont_include_runtime_apex: {
+            cflags: ["-DDONT_INCLUDE_RUNTIME_APEX"],
+        },
     },
 
     clang: true,
@@ -207,4 +212,13 @@ cc_binary {
         "libselinux",
         "libutils",
     ],
+
+    product_variables: {
+        // TODO(b/113373927): Remove this conditional when all
+        // products include the Android Runtime APEX.
+        dont_include_runtime_apex: {
+            cflags: ["-DDONT_INCLUDE_RUNTIME_APEX"],
+        },
+    },
+
 }
