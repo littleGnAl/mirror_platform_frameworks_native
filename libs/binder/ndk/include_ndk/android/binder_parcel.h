@@ -50,6 +50,44 @@ typedef struct AParcel AParcel;
  */
 void AParcel_delete(AParcel* parcel) __INTRODUCED_IN(29);
 
+/**
+ * This is called to allocate a buffer for a C-style string (null-terminated). The returned buffer
+ * should include space for length plus one additional space for the null-terminator. length will
+ * always be strictly less than the maximum size that can be held in a size_t.
+ *
+ * See also AParcel_readString.
+ *
+ * If allocation fails, null should be returned.
+ */
+typedef char* (*AParcel_stringAllocator)(void* stringData, size_t length);
+
+/**
+ * This is called to allocate an array of length length.
+ *
+ * See also AParcel_readStringArray
+ */
+typedef bool (*AParcel_stringArrayAllocator)(void* arrayData, size_t length);
+
+/**
+ * This is called to allocate a string inside of an array that was allocated by an
+ * AParcel_stringArrayAllocator.
+ *
+ * The index returned will always be within the range [0, length of arrayData). The returned buffer
+ * should be null if there is an error. The returned buffer should include space for length plus the
+ * null-terminator.
+ *
+ * See also AParcel_readStringArray
+ */
+typedef char* (*AParcel_stringArrayElementAllocator)(void* arrayData, size_t index, size_t length);
+
+/**
+ * This returns the length and buffer of an array at a specific index in an arrayData object.
+ *
+ * See also AParcel_writeStringArray
+ */
+typedef const char* (*AParcel_stringArrayElementGetter)(const void* arrayData, size_t index,
+                                                        size_t* length);
+
 // @START-PRIMITIVE-VECTOR-GETTERS
 /**
  * This is called to get the underlying data from an arrayData object.
@@ -164,16 +202,6 @@ typedef int8_t* (*AParcel_byteArrayAllocator)(void* arrayData, size_t length);
 // @END-PRIMITIVE-VECTOR-GETTERS
 
 /**
- * This is called to allocate a buffer for a C-style string (null-terminated). The buffer should be
- * of length length which includes space for the null-terminator.
- *
- * See also AParcel_readString.
- *
- * If allocation fails, null should be returned.
- */
-typedef char* (*AParcel_stringAllocator)(void* stringData, size_t length);
-
-/**
  * Writes an AIBinder to the next location in a non-null parcel. Can be null.
  */
 binder_status_t AParcel_writeStrongBinder(AParcel* parcel, AIBinder* binder) __INTRODUCED_IN(29);
@@ -241,8 +269,33 @@ binder_status_t AParcel_writeString(AParcel* parcel, const char* string, size_t 
  * space for the null-terminator of this string. This allocator returns a buffer which is used as
  * the output buffer from this read.
  */
-binder_status_t AParcel_readString(const AParcel* parcel, AParcel_stringAllocator allocator,
-                                   void* stringData) __INTRODUCED_IN(29);
+binder_status_t AParcel_readString(const AParcel* parcel, void* stringData,
+                                   AParcel_stringAllocator allocator) __INTRODUCED_IN(29);
+
+/**
+ * Writes array data to the next location in a non-null parcel.
+ *
+ * length is the length of the array. AParcel_stringArrayElementGetter will be called for all
+ * indices in range [0, length) with the arrayData provided here. The string length and buffer
+ * returned from this function will be used to fill out the data from the parcel.
+ */
+binder_status_t AParcel_writeStringArray(AParcel* parcel, const void* arrayData, size_t length,
+                                         AParcel_stringArrayElementGetter getter)
+        __INTRODUCED_IN(29);
+
+/**
+ * Reads and allocates string array value from the next location in a non-null parcel.
+ *
+ * First, AParcel_stringArrayAllocator will be called with the size of the array to be read where
+ * length is the length of the array to be read from the parcel. Then, for each index i in [0,
+ * length), AParcel_stringArrayElementAllocator will be called with the length of the string to be
+ * read from the parcel. The resultant buffer from each of these calls will be filled according to
+ * the contents of the string that is read.
+ */
+binder_status_t AParcel_readStringArray(const AParcel* parcel, void* arrayData,
+                                        AParcel_stringArrayAllocator allocator,
+                                        AParcel_stringArrayElementAllocator elementAllocator)
+        __INTRODUCED_IN(29);
 
 // @START-PRIMITIVE-READ-WRITE
 /**
