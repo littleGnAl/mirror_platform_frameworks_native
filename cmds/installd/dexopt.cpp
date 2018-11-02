@@ -309,8 +309,8 @@ static void run_dex2oat(int zip_fd, int oat_fd, int input_vdex_fd, int output_vd
     }
 
     // If the runtime was requested to use libartd.so, we'll run dex2oatd, otherwise dex2oat.
-    const char* dex2oat_bin = "/system/bin/dex2oat";
-    constexpr const char* kDex2oatDebugPath = "/system/bin/dex2oatd";
+    const char* dex2oat_bin = "/apex/com.android.runtime/bin/dex2oat";
+    constexpr const char* kDex2oatDebugPath = "/apex/com.android.runtime/bin/dex2oatd";
     // Do not use dex2oatd for release candidates (give dex2oat more soak time).
     bool is_release = android::base::GetProperty("ro.build.version.codename", "") == "REL";
     if (is_debug_runtime() || (background_job_compile && is_debuggable_build() && !is_release)) {
@@ -748,7 +748,10 @@ static void run_profman(const std::vector<unique_fd>& profile_fds,
                         const std::vector<unique_fd>* apk_fds,
                         const std::vector<std::string>* dex_locations,
                         bool copy_and_update) {
-    const char* profman_bin = is_debug_runtime() ? "/system/bin/profmand" : "/system/bin/profman";
+    const char* profman_bin =
+        is_debug_runtime()
+            ? "/apex/com.android.runtime/bin/profmand"
+            : "/apex/com.android.runtime/bin/profman";
 
     if (copy_and_update) {
         CHECK_EQ(1u, profile_fds.size());
@@ -930,7 +933,7 @@ static void run_profman_dump(const std::vector<unique_fd>& profile_fds,
                              const std::vector<unique_fd>& apk_fds,
                              const unique_fd& output_fd) {
     std::vector<std::string> profman_args;
-    static const char* PROFMAN_BIN = "/system/bin/profman";
+    static const char* PROFMAN_BIN = "/apex/com.android.runtime/bin/profman";
     profman_args.push_back(PROFMAN_BIN);
     profman_args.push_back("--dump-only");
     profman_args.push_back(StringPrintf("--dump-output-to-fd=%d", output_fd.get()));
@@ -1581,8 +1584,8 @@ static void exec_dexoptanalyzer(const std::string& dex_file, int vdex_fd, int oa
     CHECK_GE(zip_fd, 0);
     const char* dexoptanalyzer_bin =
             is_debug_runtime()
-                    ? "/system/bin/dexoptanalyzerd"
-                    : "/system/bin/dexoptanalyzer";
+                    ? "/apex/com.android.runtime/bin/dexoptanalyzerd"
+                    : "/apex/com.android.runtime/bin/dexoptanalyzer";
     static const unsigned int MAX_INSTRUCTION_SET_LEN = 7;
 
     if (instruction_set.size() >= MAX_INSTRUCTION_SET_LEN) {
