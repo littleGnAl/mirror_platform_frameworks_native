@@ -94,6 +94,30 @@
       "revId": "c5624f66d64256f549c021ae31bc58e6f1926b1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04f54627_7b797d7f",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-11-02T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "350a2ecf_3709452f",
+      "range": {
+        "startLine": 1039,
+        "startChar": 12,
+        "endLine": 1044,
+        "endChar": 13
+      },
+      "revId": "c5624f66d64256f549c021ae31bc58e6f1926b1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
