@@ -162,9 +162,17 @@ class PropertiesHelper {
      */
     static bool IsDryRun();
 
+    /**
+     * Checks whether root availability should be overridden.
+     *
+     * Useful to verify how dumpstate would work in a device with an user build.
+     */
+    static bool IsUnroot();
+
   private:
     static std::string build_type_;
     static int dry_run_;
+    static int unroot_;
 };
 
 /*
