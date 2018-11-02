@@ -89,6 +89,13 @@ static_assert(DEXOPT_MASK           == (0x1dfe | DEXOPT_IDLE_BACKGROUND_JOB),
               "DEXOPT_MASK unexpected.");
 
 
+// TODO(b/113373927): Remove when all products include the Android Runtime APEX.
+#ifdef DONT_INCLUDE_RUNTIME_APEX
+static constexpr bool kUseRuntimeApex = false;
+#else
+static constexpr bool kUseRuntimeApex = true;
+#endif
+
 template<typename T>
 static constexpr bool IsPowerOfTwo(T x) {
   static_assert(std::is_integral<T>::value, "T must be integral");
@@ -440,7 +447,8 @@ private:
                           const char* isa) const {
         // This needs to be kept in sync with ART, see art/runtime/gc/space/image_space.cc.
         std::vector<std::string> cmd;
-        cmd.push_back("/system/bin/dex2oat");
+        cmd.push_back(
+            kUseRuntimeApex ? "/apex/com.android.runtime/bin/dex2oat" : "/system/bin/dex2oat");
         cmd.push_back(StringPrintf("--image=%s", art_path.c_str()));
         for (const std::string& boot_part : Split(boot_cp, ":")) {
             cmd.push_back(StringPrintf("--dex-file=%s", boot_part.c_str()));
