@@ -28,6 +28,7 @@ cc_defaults {
         "libbinder",
         "libcrypto",
         "libcutils",
+        "libprocessgroup",
         "liblog",
         "liblogwrap",
         "libselinux",
@@ -167,6 +168,7 @@ cc_library_static {
     shared_libs: [
         "libbase",
         "libcutils",
+        "libprocessgroup",
         "liblog",
         "libutils",
     ],
@@ -202,6 +204,7 @@ cc_binary {
         "libbase",
         "libcrypto",
         "libcutils",
+        "libprocessgroup",
         "liblog",
         "liblogwrap",
         "libselinux",

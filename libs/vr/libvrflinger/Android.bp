@@ -44,6 +44,7 @@ sharedLibraries = [
     "libbase",
     "libbufferhubqueue",
     "libcutils",
+    "libprocessgroup",
     "liblog",
     "libhardware",
     "libnativewindow",

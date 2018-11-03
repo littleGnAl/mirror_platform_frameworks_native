@@ -18,7 +18,7 @@
 #include <sched.h>
 #include <sys/resource.h>
 
-#include <cutils/sched_policy.h>
+#include <processgroup/sched_policy.h>
 #include <log/log.h>
 #include <system/thread_defs.h>
 

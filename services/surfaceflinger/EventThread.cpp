@@ -23,7 +23,7 @@
 #include <cstdint>
 
 #include <cutils/compiler.h>
-#include <cutils/sched_policy.h>
+#include <processgroup/sched_policy.h>
 
 #include <gui/DisplayEventReceiver.h>
 
