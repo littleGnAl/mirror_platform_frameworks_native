@@ -23,9 +23,8 @@
 #include <cstdint>
 
 #include <cutils/compiler.h>
-#include <cutils/sched_policy.h>
-
 #include <gui/DisplayEventReceiver.h>
+#include <processgroup/sched_policy.h>
 
 #include <utils/Errors.h>
 #include <utils/String8.h>
