@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5d08182_48ae9a17",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-11-03T01:11:24Z",
+      "side": 1,
+      "message": "why not just have length include the space for the null terminator?",
+      "range": {
+        "startLine": 54,
+        "startChar": 79,
+        "endLine": 55,
+        "endChar": 85
+      },
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "723bdefa_718b8268",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-11-03T01:11:24Z",
+      "side": 1,
+      "message": "suggest: array of size \u0027length\u0027\n\nto avoid the \"length length\"",
+      "range": {
+        "startLine": 65,
+        "startChar": 42,
+        "endLine": 65,
+        "endChar": 55
+      },
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f7c121_6fd8812c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-11-03T01:11:24Z",
+      "side": 1,
+      "message": "missing docs for return value",
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e78e979e_4da5919c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-11-03T01:11:24Z",
+      "side": 1,
+      "message": "similar to above - just have length be the right size?",
+      "range": {
+        "startLine": 76,
+        "startChar": 40,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c8fc88_6bb0a58e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-11-03T01:11:24Z",
+      "side": 1,
+      "message": "suggest: outLength",
+      "range": {
+        "startLine": 89,
+        "startChar": 64,
+        "endLine": 89,
+        "endChar": 70
+      },
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
