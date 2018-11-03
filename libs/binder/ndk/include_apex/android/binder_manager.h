@@ -17,11 +17,18 @@
 #pragma once
 
 #include <android/binder_ibinder.h>
+#include <android/binder_status.h>
 
 __BEGIN_DECLS
 
 /**
- * This registers the service with the default service manager under this instance name.
+ * This registers the service with the default service manager under this instance name. This does
+ * not take ownership of binder.
+ *
+ * \param binder object to register globally with the service manager.
+ * \param instance identifier of the service. This will be used to lookup the service.
+ *
+ * \return STATUS_OK on success.
  */
 binder_status_t AServiceManager_addService(AIBinder* binder, const char* instance);
 
