@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "985af2d0_d95fce4a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-05T23:28:23Z",
+      "side": 1,
+      "message": "Done.\n\n\u003e if it just wants length then it shouldn\u0027t be demanding that everything is null-terminated\n\nLet me add tests and any fixes for this in a follow-up CL. This CL originally changed this behavior, now I have changed it so that it doesn\u0027t change any existing null-terminator behavior.",
+      "parentUuid": "04cc8d80_e1537ee7",
+      "range": {
+        "startLine": 54,
+        "startChar": 79,
+        "endLine": 55,
+        "endChar": 85
+      },
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "723bdefa_718b8268",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 2
