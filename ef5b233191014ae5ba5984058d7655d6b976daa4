@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edd4a534_4b105c13",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-05T21:37:40Z",
+      "side": 1,
+      "message": "You went with the 4-indent policy for your last cleanup. Now you\u0027re back to 2-indent?",
+      "revId": "ef5b233191014ae5ba5984058d7655d6b976daa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d07159_827cb6b9",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-05T21:37:40Z",
+      "side": 1,
+      "message": "This is at the wrong point. It talks about line 444. Gotta refactor a bit...",
+      "range": {
+        "startLine": 468,
+        "startChar": 6,
+        "endLine": 468,
+        "endChar": 83
+      },
+      "revId": "ef5b233191014ae5ba5984058d7655d6b976daa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fecc625b_db265e7e",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-05T21:37:40Z",
+      "side": 1,
+      "message": "Could consider static Create-style functions and a copy constructor to ensure that one doesn\u0027t call multiple Setup functions on the same object.",
+      "revId": "ef5b233191014ae5ba5984058d7655d6b976daa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
