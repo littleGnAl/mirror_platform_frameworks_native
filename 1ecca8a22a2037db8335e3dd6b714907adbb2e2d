@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "04cc8d80_e1537ee7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-11-05T22:48:39Z",
+      "side": 1,
+      "message": "If this needs a buffer of length+1 then it should be asking for length+1. Alternatively if it just wants length then it shouldn\u0027t be demanding that everything is null-terminated, and it should only then access `length` elements.\n\nwrite() taking an explicit length is good because it means the source doesn\u0027t need to be null-terminated (which, eg, std::string isn\u0027t). It\u0027s safer that read() will null-terminate, but it does need to ask for the actual size it\u0027s going to write to. Otherwise you\u0027re just begging for buffer overflows here.",
+      "parentUuid": "6ea9d27a_1f981214",
+      "range": {
+        "startLine": 54,
+        "startChar": 79,
+        "endLine": 55,
+        "endChar": 85
+      },
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "723bdefa_718b8268",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 2
