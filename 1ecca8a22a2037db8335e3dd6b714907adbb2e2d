@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ea9d27a_1f981214",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-05T19:10:24Z",
+      "side": 1,
+      "message": "I changed all of these in order to make the length consistent between reads and writes (since it was more usual to pass the strlen with a char*, and the null-terminator is required to be null).",
+      "parentUuid": "e5d08182_48ae9a17",
+      "range": {
+        "startLine": 54,
+        "startChar": 79,
+        "endLine": 55,
+        "endChar": 85
+      },
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "723bdefa_718b8268",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "841a10e6_feee4d7b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-05T19:10:24Z",
+      "side": 1,
+      "message": "Done (everywhere and also in the docs CL on top of this)",
+      "parentUuid": "723bdefa_718b8268",
+      "range": {
+        "startLine": 65,
+        "startChar": 42,
+        "endLine": 65,
+        "endChar": 55
+      },
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4f7c121_6fd8812c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8d9894b_bd19c0f2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-05T19:10:24Z",
+      "side": 1,
+      "message": "It\u0027s success. Added universally here:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/812877\n\n(didn\u0027t want to add \\return \u0026 \\param here which would make things inconsistent)",
+      "parentUuid": "b4f7c121_6fd8812c",
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "23f99534_2e5eace2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-05T19:10:24Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "e78e979e_4da5919c",
+      "range": {
+        "startLine": 76,
+        "startChar": 40,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8c8fc88_6bb0a58e",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 2
@@ -108,6 +198,30 @@
       "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "828ab196_90c57e6a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-05T19:10:24Z",
+      "side": 1,
+      "message": "Done (and done elsewhere)",
+      "parentUuid": "e8c8fc88_6bb0a58e",
+      "range": {
+        "startLine": 89,
+        "startChar": 64,
+        "endLine": 89,
+        "endChar": 70
+      },
+      "revId": "1ecca8a22a2037db8335e3dd6b714907adbb2e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
