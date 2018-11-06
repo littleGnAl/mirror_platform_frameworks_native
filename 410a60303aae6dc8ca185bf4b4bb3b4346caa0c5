@@ -49,6 +49,75 @@
     },
     {
       "key": {
+        "uuid": "77393d9d_24594eeb",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-06T18:48:31Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 332,
+        "startChar": 100,
+        "endLine": 332,
+        "endChar": 101
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3958e59_db8b80fe",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-06T18:48:31Z",
+      "side": 1,
+      "message": "Wrong indent.",
+      "range": {
+        "startLine": 340,
+        "startChar": 47,
+        "endLine": 340,
+        "endChar": 48
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f42dd7cf_c536f3f8",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-06T18:48:31Z",
+      "side": 1,
+      "message": "Wrong indent.",
+      "range": {
+        "startLine": 382,
+        "startChar": 59,
+        "endLine": 382,
+        "endChar": 60
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7c0c407_c10f989c",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -140,6 +209,52 @@
       "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f92561cf_a5f6e617",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-06T18:48:31Z",
+      "side": 1,
+      "message": "Wrong indent.",
+      "range": {
+        "startLine": 707,
+        "startChar": 18,
+        "endLine": 707,
+        "endChar": 20
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac4022e2_5202e92d",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-06T18:48:31Z",
+      "side": 1,
+      "message": "Wrong indent.",
+      "range": {
+        "startLine": 718,
+        "startChar": 18,
+        "endLine": 718,
+        "endChar": 20
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
