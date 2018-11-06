@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e85852c4_1600fc47",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-11-06T18:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edd4a534_4b105c13",
+      "revId": "ef5b233191014ae5ba5984058d7655d6b976daa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42d07159_827cb6b9",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "9a34cee0_63fe6464",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-11-06T18:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42d07159_827cb6b9",
+      "range": {
+        "startLine": 468,
+        "startChar": 6,
+        "endLine": 468,
+        "endChar": 83
+      },
+      "revId": "ef5b233191014ae5ba5984058d7655d6b976daa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fecc625b_db265e7e",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2018-11-05T21:37:40Z",
       "side": 1,
       "message": "Could consider static Create-style functions and a copy constructor to ensure that one doesn\u0027t call multiple Setup functions on the same object.",
+      "revId": "ef5b233191014ae5ba5984058d7655d6b976daa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cab3f823_3f1938f5",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-11-06T18:08:21Z",
+      "side": 1,
+      "message": "True, will consider doing that in a follow up.",
+      "parentUuid": "fecc625b_db265e7e",
       "revId": "ef5b233191014ae5ba5984058d7655d6b976daa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
