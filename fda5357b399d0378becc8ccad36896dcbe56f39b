@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "90ecfaf2_26deeb4b",
+        "filename": "services/gpuservice/gpuservice.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-11-06T04:02:09Z",
+      "side": 1,
+      "message": "AIDs are defined here:\n\n  https://android.googlesource.com/platform/system/core/+/32b3f60a7a0dc83b3bc0ccf779600430ad567793/libcutils/include/private/android_filesystem_config.h#62\n\nlines 62-134. The first available AID is 1072.",
+      "parentUuid": "7e9c1118_9729f53c",
+      "revId": "fda5357b399d0378becc8ccad36896dcbe56f39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04e41f73_5c399afc",
         "filename": "services/gpuservice/gpuservice.rc",
         "patchSetId": 2
