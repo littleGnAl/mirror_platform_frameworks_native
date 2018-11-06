@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a237bcc_dbf8d224",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-11-06T00:26:10Z",
+      "side": 1,
+      "message": "looks like this got clobbered with the \\param\u0027s not starting on their own line",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 77
+      },
+      "revId": "9d557de1da0c490363ecf7a1635302bf85b92168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
