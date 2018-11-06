@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "041bb129_804bc7f9",
+        "filename": "services/gpuservice/gpuservice.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-11-06T01:59:14Z",
+      "side": 1,
+      "message": "the system UID is trusted inherently by lots of other components. Can we create a separate UID for this?",
+      "revId": "fda5357b399d0378becc8ccad36896dcbe56f39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04e41f73_5c399afc",
+        "filename": "services/gpuservice/gpuservice.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-11-06T01:59:14Z",
+      "side": 1,
+      "message": "According to the SELinux policy, this process doesn\u0027t read /proc/PID entries from other processes. Is readproc really necessary?",
+      "range": {
+        "startLine": 4,
+        "startChar": 26,
+        "endLine": 4,
+        "endChar": 34
+      },
+      "revId": "fda5357b399d0378becc8ccad36896dcbe56f39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20f067b3_9793762e",
+        "filename": "services/gpuservice/gpuservice.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-11-06T01:59:14Z",
+      "side": 1,
+      "message": "is drmpc needed?",
+      "range": {
+        "startLine": 4,
+        "startChar": 19,
+        "endLine": 4,
+        "endChar": 25
+      },
+      "revId": "fda5357b399d0378becc8ccad36896dcbe56f39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
