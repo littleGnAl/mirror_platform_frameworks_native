@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "315fb37e_a25a2e6f",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-11-06T18:42:05Z",
+      "side": 1,
+      "message": "add high level comment on why we need this helper",
+      "range": {
+        "startLine": 204,
+        "startChar": 6,
+        "endLine": 204,
+        "endChar": 17
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7c0c407_c10f989c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-11-06T18:42:05Z",
+      "side": 1,
+      "message": "empty spaces",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 8
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c72bf9_992205b8",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-11-06T18:42:05Z",
+      "side": 1,
+      "message": "line too long",
+      "range": {
+        "startLine": 656,
+        "startChar": 100,
+        "endLine": 656,
+        "endChar": 102
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
