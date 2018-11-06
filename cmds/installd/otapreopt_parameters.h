@@ -17,8 +17,8 @@
 #ifndef OTAPREOPT_PARAMETERS_H_
 #define OTAPREOPT_PARAMETERS_H_
 
-#include <string>
 #include <sys/types.h>
+#include <string>
 
 namespace android {
 namespace installd {

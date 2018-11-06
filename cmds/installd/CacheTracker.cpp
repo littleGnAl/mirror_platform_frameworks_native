@@ -34,20 +34,18 @@ namespace android {
 namespace installd {
 
 CacheTracker::CacheTracker(userid_t userId, appid_t appId, const std::string& uuid)
-      : cacheUsed(0),
-        cacheQuota(0),
-        mUserId(userId),
-        mAppId(appId),
-        mItemsLoaded(false),
-        mUuid(uuid) {
-}
+    : cacheUsed(0),
+      cacheQuota(0),
+      mUserId(userId),
+      mAppId(appId),
+      mItemsLoaded(false),
+      mUuid(uuid) {}
 
-CacheTracker::~CacheTracker() {
-}
+CacheTracker::~CacheTracker() {}
 
 std::string CacheTracker::toString() {
     return StringPrintf("UID=%d used=%" PRId64 " quota=%" PRId64 " ratio=%d",
-            multiuser_get_uid(mUserId, mAppId), cacheUsed, cacheQuota, getCacheRatio());
+                        multiuser_get_uid(mUserId, mAppId), cacheUsed, cacheQuota, getCacheRatio());
 }
 
 void CacheTracker::addDataPath(const std::string& dataPath) {
@@ -96,9 +94,9 @@ bool CacheTracker::loadQuotaStats() {
 }
 
 void CacheTracker::loadItemsFrom(const std::string& path) {
-    FTS *fts;
-    FTSENT *p;
-    char *argv[] = { (char*) path.c_str(), nullptr };
+    FTS* fts;
+    FTSENT* p;
+    char* argv[] = {(char*)path.c_str(), nullptr};
     if (!(fts = fts_open(argv, FTS_PHYSICAL | FTS_NOCHDIR | FTS_XDEV, nullptr))) {
         PLOG(WARNING) << "Failed to fts_open " << path;
         return;
@@ -108,55 +106,55 @@ void CacheTracker::loadItemsFrom(const std::string& path) {
 
         // Create tracking nodes for everything we encounter
         switch (p->fts_info) {
-        case FTS_D:
-        case FTS_DEFAULT:
-        case FTS_F:
-        case FTS_SL:
-        case FTS_SLNONE: {
-            auto item = std::shared_ptr<CacheItem>(new CacheItem(p));
-            p->fts_pointer = static_cast<void*>(item.get());
-            items.push_back(item);
-        }
+            case FTS_D:
+            case FTS_DEFAULT:
+            case FTS_F:
+            case FTS_SL:
+            case FTS_SLNONE: {
+                auto item = std::shared_ptr<CacheItem>(new CacheItem(p));
+                p->fts_pointer = static_cast<void*>(item.get());
+                items.push_back(item);
+            }
         }
 
         switch (p->fts_info) {
-        case FTS_D: {
-            auto item = static_cast<CacheItem*>(p->fts_pointer);
-            item->group |= (getxattr(p->fts_path, kXattrCacheGroup, nullptr, 0) >= 0);
-            item->tombstone |= (getxattr(p->fts_path, kXattrCacheTombstone, nullptr, 0) >= 0);
+            case FTS_D: {
+                auto item = static_cast<CacheItem*>(p->fts_pointer);
+                item->group |= (getxattr(p->fts_path, kXattrCacheGroup, nullptr, 0) >= 0);
+                item->tombstone |= (getxattr(p->fts_path, kXattrCacheTombstone, nullptr, 0) >= 0);
 
-            // When group, immediately collect all files under tree
-            if (item->group) {
-                while ((p = fts_read(fts)) != nullptr) {
-                    if (p->fts_info == FTS_DP && p->fts_level == item->level) break;
-                    switch (p->fts_info) {
-                    case FTS_D:
-                    case FTS_DEFAULT:
-                    case FTS_F:
-                    case FTS_SL:
-                    case FTS_SLNONE:
-                        item->size += p->fts_statp->st_blocks * 512;
-                        item->modified = std::max(item->modified, p->fts_statp->st_mtime);
+                // When group, immediately collect all files under tree
+                if (item->group) {
+                    while ((p = fts_read(fts)) != nullptr) {
+                        if (p->fts_info == FTS_DP && p->fts_level == item->level) break;
+                        switch (p->fts_info) {
+                            case FTS_D:
+                            case FTS_DEFAULT:
+                            case FTS_F:
+                            case FTS_SL:
+                            case FTS_SLNONE:
+                                item->size += p->fts_statp->st_blocks * 512;
+                                item->modified = std::max(item->modified, p->fts_statp->st_mtime);
+                        }
                     }
                 }
             }
-        }
         }
 
         // Bubble up modified time to parent
         CHECK(p != nullptr);
         switch (p->fts_info) {
-        case FTS_DP:
-        case FTS_DEFAULT:
-        case FTS_F:
-        case FTS_SL:
-        case FTS_SLNONE: {
-            auto item = static_cast<CacheItem*>(p->fts_pointer);
-            auto parent = static_cast<CacheItem*>(p->fts_parent->fts_pointer);
-            if (parent) {
-                parent->modified = std::max(parent->modified, item->modified);
+            case FTS_DP:
+            case FTS_DEFAULT:
+            case FTS_F:
+            case FTS_SL:
+            case FTS_SLNONE: {
+                auto item = static_cast<CacheItem*>(p->fts_pointer);
+                auto parent = static_cast<CacheItem*>(p->fts_parent->fts_pointer);
+                if (parent) {
+                    parent->modified = std::max(parent->modified, item->modified);
+                }
             }
-        }
         }
     }
     fts_close(fts);

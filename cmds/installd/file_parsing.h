@@ -24,7 +24,7 @@
 namespace android {
 namespace installd {
 
-bool ParseFile(const std::string& strFile, std::function<bool (const std::string&)> parse) {
+bool ParseFile(const std::string& strFile, std::function<bool(const std::string&)> parse) {
     std::ifstream input_stream(strFile);
 
     if (!input_stream.is_open()) {

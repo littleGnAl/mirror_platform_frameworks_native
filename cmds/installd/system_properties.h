@@ -28,7 +28,7 @@ namespace installd {
 
 // Helper class to read system properties into and manage as a string->string map.
 class SystemProperties {
- public:
+  public:
     bool Load(const std::string& strFile) {
         return ParseFile(strFile, [&](const std::string& line) {
             size_t equals_pos = line.find('=');
@@ -38,8 +38,7 @@ class SystemProperties {
             }
 
             std::string key = line.substr(0, equals_pos);
-            std::string value = line.substr(equals_pos + 1,
-                                            line.length() - equals_pos + 1);
+            std::string value = line.substr(equals_pos + 1, line.length() - equals_pos + 1);
 
             properties_.insert(std::make_pair(key, value));
 
@@ -60,7 +59,7 @@ class SystemProperties {
         properties_.insert(std::make_pair(key, value));
     }
 
- private:
+  private:
     // The actual map.
     std::unordered_map<std::string, std::string> properties_;
 };

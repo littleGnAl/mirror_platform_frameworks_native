@@ -58,10 +58,10 @@ static void CloseDescriptor(const char* descriptor_string) {
 //   [cmd] [status-fd] [target-slot] "dexopt" [dexopt-params]
 // The file descriptor denoted by status-fd will be closed. The rest of the parameters will
 // be passed on to otapreopt in the chroot.
-static int otapreopt_chroot(const int argc, char **arg) {
+static int otapreopt_chroot(const int argc, char** arg) {
     // Validate arguments
     // We need the command, status channel and target slot, at a minimum.
-    if(argc < 3) {
+    if (argc < 3) {
         PLOG(ERROR) << "Not enough arguments.";
         exit(208);
     }
@@ -90,9 +90,7 @@ static int otapreopt_chroot(const int argc, char **arg) {
     }
 
     // Bind mount necessary directories.
-    constexpr const char* kBindMounts[] = {
-            "/data", "/dev", "/proc", "/sys"
-    };
+    constexpr const char* kBindMounts[] = {"/data", "/dev", "/proc", "/sys"};
     for (size_t i = 0; i < arraysize(kBindMounts); ++i) {
         std::string trg = StringPrintf("/postinstall%s", kBindMounts[i]);
         if (mount(kBindMounts[i], trg.c_str(), nullptr, MS_BIND, nullptr) != 0) {
@@ -115,27 +113,21 @@ static int otapreopt_chroot(const int argc, char **arg) {
         exit(207);
     }
     {
-      std::string vendor_partition = StringPrintf("/dev/block/by-name/vendor%s",
-                                                  arg[2]);
-      int vendor_result = mount(vendor_partition.c_str(),
-                                "/postinstall/vendor",
-                                "ext4",
-                                MS_RDONLY,
-                                /* data */ nullptr);
-      UNUSED(vendor_result);
+        std::string vendor_partition = StringPrintf("/dev/block/by-name/vendor%s", arg[2]);
+        int vendor_result =
+                mount(vendor_partition.c_str(), "/postinstall/vendor", "ext4", MS_RDONLY,
+                      /* data */ nullptr);
+        UNUSED(vendor_result);
     }
 
     // Try to mount the product partition. update_engine doesn't do this for us, but we
     // want it for product APKs. Same notes as vendor above.
     {
-      std::string product_partition = StringPrintf("/dev/block/by-name/product%s",
-                                                   arg[2]);
-      int product_result = mount(product_partition.c_str(),
-                                 "/postinstall/product",
-                                 "ext4",
-                                 MS_RDONLY,
-                                 /* data */ nullptr);
-      UNUSED(product_result);
+        std::string product_partition = StringPrintf("/dev/block/by-name/product%s", arg[2]);
+        int product_result =
+                mount(product_partition.c_str(), "/postinstall/product", "ext4", MS_RDONLY,
+                      /* data */ nullptr);
+        UNUSED(product_result);
     }
 
     // Chdir into /postinstall.
@@ -145,7 +137,7 @@ static int otapreopt_chroot(const int argc, char **arg) {
     }
 
     // Make /postinstall the root in our mount namespace.
-    if (chroot(".")  != 0) {
+    if (chroot(".") != 0) {
         PLOG(ERROR) << "Failed to chroot";
         exit(204);
     }
@@ -168,7 +160,7 @@ static int otapreopt_chroot(const int argc, char **arg) {
         argv[i - 1] = arg[i];
     }
 
-    execv(argv[0], static_cast<char * const *>(const_cast<char**>(argv)));
+    execv(argv[0], static_cast<char* const*>(const_cast<char**>(argv)));
     PLOG(ERROR) << "execv(OTAPREOPT) failed.";
     exit(99);
 }
@@ -176,6 +168,6 @@ static int otapreopt_chroot(const int argc, char **arg) {
 }  // namespace installd
 }  // namespace android
 
-int main(const int argc, char *argv[]) {
+int main(const int argc, char* argv[]) {
     return android::installd::otapreopt_chroot(argc, argv);
 }

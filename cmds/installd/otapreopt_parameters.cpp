@@ -49,7 +49,7 @@ static bool ParseUInt(const char* in, uint32_t* out) {
         return false;
     }
     if (result < std::numeric_limits<uint32_t>::min() ||
-            std::numeric_limits<uint32_t>::max() < result) {
+        std::numeric_limits<uint32_t>::max() < result) {
         return false;
     }
     *out = static_cast<uint32_t>(result);
@@ -80,7 +80,7 @@ bool OTAPreoptParameters::ReadArguments(int argc, const char** argv) {
 
     if (std::string("dexopt").compare(argv[2]) == 0) {
         // This is version 1 (N) or pre-versioning version 2.
-        constexpr int kV2ArgCount =   1   // "otapreopt"
+        constexpr int kV2ArgCount = 1     // "otapreopt"
                                     + 1   // slot
                                     + 1   // "dexopt"
                                     + 1   // apk_path
@@ -193,13 +193,13 @@ bool OTAPreoptParameters::ReadArgumentsV1(const char** argv) {
 
             case 6: {
                 // Version 1 had:
-                constexpr int OLD_DEXOPT_PUBLIC         = 1 << 1;
+                constexpr int OLD_DEXOPT_PUBLIC = 1 << 1;
                 // Note: DEXOPT_SAFEMODE has been removed.
                 // constexpr int OLD_DEXOPT_SAFEMODE       = 1 << 2;
-                constexpr int OLD_DEXOPT_DEBUGGABLE     = 1 << 3;
-                constexpr int OLD_DEXOPT_BOOTCOMPLETE   = 1 << 4;
+                constexpr int OLD_DEXOPT_DEBUGGABLE = 1 << 3;
+                constexpr int OLD_DEXOPT_BOOTCOMPLETE = 1 << 4;
                 constexpr int OLD_DEXOPT_PROFILE_GUIDED = 1 << 5;
-                constexpr int OLD_DEXOPT_OTA            = 1 << 6;
+                constexpr int OLD_DEXOPT_OTA = 1 << 6;
                 static_assert(DEXOPT_GENERATE_COMPACT_DEX > OLD_DEXOPT_OTA, "must not overlap");
                 int input = atoi(param);
                 dexopt_flags |=
@@ -240,18 +240,34 @@ bool OTAPreoptParameters::ReadArgumentsV1(const char** argv) {
 bool OTAPreoptParameters::ReadArgumentsPostV1(uint32_t version, const char** argv, bool versioned) {
     size_t num_args_expected = 0;
     switch (version) {
-        case 2: num_args_expected = 11; break;
-        case 3: num_args_expected = 12; break;
-        case 4: num_args_expected = 13; break;
-        case 5: num_args_expected = 14; break;
-        case 6: num_args_expected = 15; break;
+        case 2:
+            num_args_expected = 11;
+            break;
+        case 3:
+            num_args_expected = 12;
+            break;
+        case 4:
+            num_args_expected = 13;
+            break;
+        case 5:
+            num_args_expected = 14;
+            break;
+        case 6:
+            num_args_expected = 15;
+            break;
         case 7:
         // Version 8 adds a new dexopt flag: DEXOPT_GENERATE_COMPACT_DEX
-        case 8: num_args_expected = 16; break;
+        case 8:
+            num_args_expected = 16;
+            break;
         // Version 9 adds a new dexopt flag: DEXOPT_GENERATE_APP_IMAGE
-        case 9: num_args_expected = 16; break;
+        case 9:
+            num_args_expected = 16;
+            break;
         // Version 10 is a compatibility bump.
-        case 10: num_args_expected = 16; break;
+        case 10:
+            num_args_expected = 16;
+            break;
         default:
             LOG(ERROR) << "Don't know how to read arguments for version " << version;
             return false;
@@ -275,8 +291,8 @@ bool OTAPreoptParameters::ReadArgumentsPostV1(uint32_t version, const char** arg
     }
 
     if (num_args_actual != num_args_expected) {
-        LOG(ERROR) << "Invalid number of arguments. expected="
-                << num_args_expected << " actual=" << num_args_actual;
+        LOG(ERROR) << "Invalid number of arguments. expected=" << num_args_expected
+                   << " actual=" << num_args_actual;
         return false;
     }
 
@@ -358,8 +374,8 @@ bool OTAPreoptParameters::ReadArgumentsPostV1(uint32_t version, const char** arg
 
             default:
                 LOG(FATAL) << "Should not get here. Did you call ReadArguments "
-                        << "with the right expectation? index=" << param_index
-                        << " num_args=" << num_args_actual;
+                           << "with the right expectation? index=" << param_index
+                           << " num_args=" << num_args_actual;
                 return false;
         }
     }

@@ -26,7 +26,7 @@
 #include <android-base/logging.h>
 #include <cutils/fs.h>
 #include <cutils/properties.h>
-#include <log/log.h>              // TODO: Move everything to base::logging.
+#include <log/log.h>  // TODO: Move everything to base::logging.
 #include <private/android_filesystem_config.h>
 
 #include "InstalldNativeService.h"
@@ -47,21 +47,21 @@ static_assert(kPropertyValueMax == PROPERTY_VALUE_MAX, "Size mismatch.");
 // Plug-in functions. //
 ////////////////////////
 
-int get_property(const char *key, char *value, const char *default_value) {
+int get_property(const char* key, char* value, const char* default_value) {
     return property_get(key, value, default_value);
 }
 
-bool calculate_oat_file_path(char path[PKG_PATH_MAX], const char *oat_dir, const char *apk_path,
-        const char *instruction_set) {
+bool calculate_oat_file_path(char path[PKG_PATH_MAX], const char* oat_dir, const char* apk_path,
+                             const char* instruction_set) {
     return calculate_oat_file_path_default(path, oat_dir, apk_path, instruction_set);
 }
 
-bool calculate_odex_file_path(char path[PKG_PATH_MAX], const char *apk_path,
-        const char *instruction_set) {
+bool calculate_odex_file_path(char path[PKG_PATH_MAX], const char* apk_path,
+                              const char* instruction_set) {
     return calculate_odex_file_path_default(path, apk_path, instruction_set);
 }
 
-bool create_cache_path(char path[PKG_PATH_MAX], const char *src, const char *instruction_set) {
+bool create_cache_path(char path[PKG_PATH_MAX], const char* src, const char* instruction_set) {
     return create_cache_path_default(path, src, instruction_set);
 }
 
@@ -104,12 +104,12 @@ static int initialize_directories() {
         char keychain_removed_dir[PATH_MAX];
         snprintf(keychain_removed_dir, PATH_MAX, "%s/keychain/cacerts-removed", misc_dir);
 
-        DIR *dir;
-        struct dirent *dirent;
+        DIR* dir;
+        struct dirent* dirent;
         dir = opendir("/data/user");
         if (dir != nullptr) {
             while ((dirent = readdir(dir))) {
-                const char *name = dirent->d_name;
+                const char* name = dirent->d_name;
 
                 // skip "." and ".."
                 if (name[0] == '.') {
@@ -171,20 +171,20 @@ fail:
     return res;
 }
 
-static int log_callback(int type, const char *fmt, ...) { // NOLINT
+static int log_callback(int type, const char* fmt, ...) {  // NOLINT
     va_list ap;
     int priority;
 
     switch (type) {
-    case SELINUX_WARNING:
-        priority = ANDROID_LOG_WARN;
-        break;
-    case SELINUX_INFO:
-        priority = ANDROID_LOG_INFO;
-        break;
-    default:
-        priority = ANDROID_LOG_ERROR;
-        break;
+        case SELINUX_WARNING:
+            priority = ANDROID_LOG_WARN;
+            break;
+        case SELINUX_INFO:
+            priority = ANDROID_LOG_INFO;
+            break;
+        default:
+            priority = ANDROID_LOG_ERROR;
+            break;
     }
     va_start(ap, fmt);
     LOG_PRI_VA(priority, "SELinux", fmt, ap);
@@ -192,7 +192,7 @@ static int log_callback(int type, const char *fmt, ...) { // NOLINT
     return 0;
 }
 
-static int installd_main(const int argc ATTRIBUTE_UNUSED, char *argv[]) {
+static int installd_main(const int argc ATTRIBUTE_UNUSED, char* argv[]) {
     int ret;
     int selinux_enabled = (is_selinux_enabled() > 0);
 
@@ -235,6 +235,6 @@ static int installd_main(const int argc ATTRIBUTE_UNUSED, char *argv[]) {
 }  // namespace installd
 }  // namespace android
 
-int main(const int argc, char *argv[]) {
+int main(const int argc, char* argv[]) {
     return android::installd::installd_main(argc, argv);
 }

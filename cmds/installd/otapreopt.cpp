@@ -14,11 +14,7 @@
  ** limitations under the License.
  */
 
-#include <algorithm>
 #include <inttypes.h>
-#include <limits>
-#include <random>
-#include <regex>
 #include <selinux/android.h>
 #include <selinux/avc.h>
 #include <stdlib.h>
@@ -27,6 +23,10 @@
 #include <sys/prctl.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <algorithm>
+#include <limits>
+#include <random>
+#include <regex>
 
 #include <android-base/logging.h>
 #include <android-base/macros.h>
@@ -53,9 +53,9 @@
 #define LOG_TAG "otapreopt"
 #endif
 
-#define BUFFER_MAX    1024  /* input buffer for commands */
-#define TOKEN_MAX     16    /* max number of arguments in buffer */
-#define REPLY_MAX     256   /* largest reply allowed */
+#define BUFFER_MAX 1024 /* input buffer for commands */
+#define TOKEN_MAX 16    /* max number of arguments in buffer */
+#define REPLY_MAX 256   /* largest reply allowed */
 
 using android::base::EndsWith;
 using android::base::Join;
@@ -72,42 +72,40 @@ namespace installd {
 //
 // You most likely need to increase the protocol version and all that entails!
 
-static_assert(DEXOPT_PUBLIC         == 1 << 1, "DEXOPT_PUBLIC unexpected.");
-static_assert(DEXOPT_DEBUGGABLE     == 1 << 2, "DEXOPT_DEBUGGABLE unexpected.");
-static_assert(DEXOPT_BOOTCOMPLETE   == 1 << 3, "DEXOPT_BOOTCOMPLETE unexpected.");
+static_assert(DEXOPT_PUBLIC == 1 << 1, "DEXOPT_PUBLIC unexpected.");
+static_assert(DEXOPT_DEBUGGABLE == 1 << 2, "DEXOPT_DEBUGGABLE unexpected.");
+static_assert(DEXOPT_BOOTCOMPLETE == 1 << 3, "DEXOPT_BOOTCOMPLETE unexpected.");
 static_assert(DEXOPT_PROFILE_GUIDED == 1 << 4, "DEXOPT_PROFILE_GUIDED unexpected.");
-static_assert(DEXOPT_SECONDARY_DEX  == 1 << 5, "DEXOPT_SECONDARY_DEX unexpected.");
-static_assert(DEXOPT_FORCE          == 1 << 6, "DEXOPT_FORCE unexpected.");
-static_assert(DEXOPT_STORAGE_CE     == 1 << 7, "DEXOPT_STORAGE_CE unexpected.");
-static_assert(DEXOPT_STORAGE_DE     == 1 << 8, "DEXOPT_STORAGE_DE unexpected.");
+static_assert(DEXOPT_SECONDARY_DEX == 1 << 5, "DEXOPT_SECONDARY_DEX unexpected.");
+static_assert(DEXOPT_FORCE == 1 << 6, "DEXOPT_FORCE unexpected.");
+static_assert(DEXOPT_STORAGE_CE == 1 << 7, "DEXOPT_STORAGE_CE unexpected.");
+static_assert(DEXOPT_STORAGE_DE == 1 << 8, "DEXOPT_STORAGE_DE unexpected.");
 static_assert(DEXOPT_ENABLE_HIDDEN_API_CHECKS == 1 << 10,
-        "DEXOPT_ENABLE_HIDDEN_API_CHECKS unexpected");
+              "DEXOPT_ENABLE_HIDDEN_API_CHECKS unexpected");
 static_assert(DEXOPT_GENERATE_COMPACT_DEX == 1 << 11, "DEXOPT_GENERATE_COMPACT_DEX unexpected");
 static_assert(DEXOPT_GENERATE_APP_IMAGE == 1 << 12, "DEXOPT_GENERATE_APP_IMAGE unexpected");
 
-static_assert(DEXOPT_MASK           == (0x1dfe | DEXOPT_IDLE_BACKGROUND_JOB),
-              "DEXOPT_MASK unexpected.");
+static_assert(DEXOPT_MASK == (0x1dfe | DEXOPT_IDLE_BACKGROUND_JOB), "DEXOPT_MASK unexpected.");
 
-
-template<typename T>
+template <typename T>
 static constexpr bool IsPowerOfTwo(T x) {
-  static_assert(std::is_integral<T>::value, "T must be integral");
-  // TODO: assert unsigned. There is currently many uses with signed values.
-  return (x & (x - 1)) == 0;
+    static_assert(std::is_integral<T>::value, "T must be integral");
+    // TODO: assert unsigned. There is currently many uses with signed values.
+    return (x & (x - 1)) == 0;
 }
 
-template<typename T>
+template <typename T>
 static constexpr T RoundDown(T x, typename std::decay<T>::type n) {
     return DCHECK_CONSTEXPR(IsPowerOfTwo(n), , T(0))(x & -n);
 }
 
-template<typename T>
+template <typename T>
 static constexpr T RoundUp(T x, typename std::remove_reference<T>::type n) {
     return RoundDown(x + n - 1, n);
 }
 
 class OTAPreoptService {
- public:
+  public:
     // Main driver. Performs the following steps.
     //
     // 1) Parse options (read system properties etc from B partition).
@@ -126,7 +124,7 @@ class OTAPreoptService {
         }
 
         if (!ReadSystemProperties()) {
-            LOG(ERROR)<< "Failed reading system properties.";
+            LOG(ERROR) << "Failed reading system properties.";
             return 2;
         }
 
@@ -161,7 +159,7 @@ class OTAPreoptService {
             // Copy in the default value.
             strlcpy(value, default_value, kPropertyValueMax - 1);
             value[kPropertyValueMax - 1] = 0;
-            return strlen(default_value);// TODO: Need to truncate?
+            return strlen(default_value);  // TODO: Need to truncate?
         }
         size_t size = std::min(kPropertyValueMax - 1, prop_value->length()) + 1;
         strlcpy(value, prop_value->data(), size);
@@ -172,16 +170,11 @@ class OTAPreoptService {
         return StringPrintf("%s/%s", GetOtaDirectoryPrefix().c_str(), GetTargetSlot().c_str());
     }
 
-    const std::string& GetTargetSlot() const {
-        return parameters_.target_slot;
-    }
+    const std::string& GetTargetSlot() const { return parameters_.target_slot; }
 
-private:
-
+  private:
     bool ReadSystemProperties() {
-        static constexpr const char* kPropertyFiles[] = {
-                "/default.prop", "/system/build.prop"
-        };
+        static constexpr const char* kPropertyFiles[] = {"/default.prop", "/system/build.prop"};
 
         for (size_t i = 0; i < arraysize(kPropertyFiles); ++i) {
             if (!system_properties_.Load(kPropertyFiles[i])) {
@@ -242,17 +235,11 @@ private:
         return true;
     }
 
-    const std::string& GetAndroidData() const {
-        return android_data_;
-    }
+    const std::string& GetAndroidData() const { return android_data_; }
 
-    const std::string& GetAndroidRoot() const {
-        return android_root_;
-    }
+    const std::string& GetAndroidRoot() const { return android_root_; }
 
-    const std::string GetOtaDirectoryPrefix() const {
-        return GetAndroidData() + "/ota";
-    }
+    const std::string GetOtaDirectoryPrefix() const { return GetAndroidData() + "/ota"; }
 
     bool CheckAndInitializeInstalldGlobals() {
         // init_globals_from_data_and_root requires "ASEC_MOUNTPOINT" in the environment. We
@@ -293,7 +280,7 @@ private:
             return false;
         }
         if (result < std::numeric_limits<uint32_t>::min() ||
-                std::numeric_limits<uint32_t>::max() < result) {
+            std::numeric_limits<uint32_t>::max() < result) {
             return false;
         }
         *out = static_cast<uint32_t>(result);
@@ -364,7 +351,6 @@ private:
             return true;
         }
 
-
         if (!cleared) {
             ClearDirectory(isa_path);
         }
@@ -418,11 +404,7 @@ private:
             // We only want to delete regular files and symbolic links.
             std::string file = StringPrintf("%s/%s", dir.c_str(), name);
             if (de->d_type != DT_REG && de->d_type != DT_LNK) {
-                LOG(WARNING) << "Unexpected file "
-                             << file
-                             << " of type "
-                             << std::hex
-                             << de->d_type
+                LOG(WARNING) << "Unexpected file " << file << " of type " << std::hex << de->d_type
                              << " encountered.";
             } else {
                 // Try to unlink the file.
@@ -434,10 +416,8 @@ private:
         CHECK_EQ(0, closedir(c_dir)) << "Unable to close directory.";
     }
 
-    bool Dex2oatBootImage(const std::string& boot_cp,
-                          const std::string& art_path,
-                          const std::string& oat_path,
-                          const char* isa) const {
+    bool Dex2oatBootImage(const std::string& boot_cp, const std::string& art_path,
+                          const std::string& oat_path, const char* isa) const {
         // This needs to be kept in sync with ART, see art/runtime/gc/space/image_space.cc.
         std::vector<std::string> cmd;
         cmd.push_back("/system/bin/dex2oat");
@@ -453,19 +433,12 @@ private:
 
         cmd.push_back(StringPrintf("--instruction-set=%s", isa));
 
-        // These things are pushed by AndroidRuntime, see frameworks/base/core/jni/AndroidRuntime.cpp.
-        AddCompilerOptionFromSystemProperty("dalvik.vm.image-dex2oat-Xms",
-                "-Xms",
-                true,
-                cmd);
-        AddCompilerOptionFromSystemProperty("dalvik.vm.image-dex2oat-Xmx",
-                "-Xmx",
-                true,
-                cmd);
+        // These things are pushed by AndroidRuntime, see
+        // frameworks/base/core/jni/AndroidRuntime.cpp.
+        AddCompilerOptionFromSystemProperty("dalvik.vm.image-dex2oat-Xms", "-Xms", true, cmd);
+        AddCompilerOptionFromSystemProperty("dalvik.vm.image-dex2oat-Xmx", "-Xmx", true, cmd);
         AddCompilerOptionFromSystemProperty("dalvik.vm.image-dex2oat-filter",
-                "--compiler-filter=",
-                false,
-                cmd);
+                                            "--compiler-filter=", false, cmd);
         cmd.push_back("--image-classes=/system/etc/preloaded-classes");
         // TODO: Compiled-classes.
         const std::string* extra_opts =
@@ -476,20 +449,11 @@ private:
         }
         // TODO: Should we lower this? It's usually set close to max, because
         //       normally there's not much else going on at boot.
-        AddCompilerOptionFromSystemProperty("dalvik.vm.image-dex2oat-threads",
-                "-j",
-                false,
-                cmd);
-        AddCompilerOptionFromSystemProperty(
-                StringPrintf("dalvik.vm.isa.%s.variant", isa).c_str(),
-                "--instruction-set-variant=",
-                false,
-                cmd);
-        AddCompilerOptionFromSystemProperty(
-                StringPrintf("dalvik.vm.isa.%s.features", isa).c_str(),
-                "--instruction-set-features=",
-                false,
-                cmd);
+        AddCompilerOptionFromSystemProperty("dalvik.vm.image-dex2oat-threads", "-j", false, cmd);
+        AddCompilerOptionFromSystemProperty(StringPrintf("dalvik.vm.isa.%s.variant", isa).c_str(),
+                                            "--instruction-set-variant=", false, cmd);
+        AddCompilerOptionFromSystemProperty(StringPrintf("dalvik.vm.isa.%s.features", isa).c_str(),
+                                            "--instruction-set-features=", false, cmd);
 
         std::string error_msg;
         bool result = Exec(cmd, &error_msg);
@@ -559,23 +523,13 @@ private:
     // TODO(calin): embed the profile name in the parameters.
     int Dexopt() {
         std::string dummy;
-        return dexopt(parameters_.apk_path,
-                      parameters_.uid,
-                      parameters_.pkgName,
-                      parameters_.instruction_set,
-                      parameters_.dexopt_needed,
-                      parameters_.oat_dir,
-                      parameters_.dexopt_flags,
-                      parameters_.compiler_filter,
-                      parameters_.volume_uuid,
-                      parameters_.shared_libraries,
-                      parameters_.se_info,
-                      parameters_.downgrade,
-                      parameters_.target_sdk_version,
-                      parameters_.profile_name,
-                      parameters_.dex_metadata_path,
-                      parameters_.compilation_reason,
-                      &dummy);
+        return dexopt(parameters_.apk_path, parameters_.uid, parameters_.pkgName,
+                      parameters_.instruction_set, parameters_.dexopt_needed, parameters_.oat_dir,
+                      parameters_.dexopt_flags, parameters_.compiler_filter,
+                      parameters_.volume_uuid, parameters_.shared_libraries, parameters_.se_info,
+                      parameters_.downgrade, parameters_.target_sdk_version,
+                      parameters_.profile_name, parameters_.dex_metadata_path,
+                      parameters_.compilation_reason, &dummy);
     }
 
     int RunPreopt() {
@@ -591,10 +545,10 @@ private:
         // If the dexopt failed, we may have a stale boot image from a previous OTA run.
         // Then regenerate and retry.
         if (WEXITSTATUS(dexopt_result) ==
-                static_cast<int>(::art::dex2oat::ReturnCode::kCreateRuntime)) {
+            static_cast<int>(::art::dex2oat::ReturnCode::kCreateRuntime)) {
             if (!PrepareBootImage(/* force */ true)) {
                 LOG(ERROR) << "Forced boot image creating failed. Original error return was "
-                        << dexopt_result;
+                           << dexopt_result;
                 return dexopt_result;
             }
 
@@ -652,7 +606,7 @@ private:
         } else {
             if (pid == -1) {
                 *error_msg = StringPrintf("Failed to execv(%s) because fork failed: %s",
-                        command_line.c_str(), strerror(errno));
+                                          command_line.c_str(), strerror(errno));
                 return false;
             }
 
@@ -660,14 +614,15 @@ private:
             int status;
             pid_t got_pid = TEMP_FAILURE_RETRY(waitpid(pid, &status, 0));
             if (got_pid != pid) {
-                *error_msg = StringPrintf("Failed after fork for execv(%s) because waitpid failed: "
+                *error_msg = StringPrintf(
+                        "Failed after fork for execv(%s) because waitpid failed: "
                         "wanted %d, got %d: %s",
                         command_line.c_str(), pid, got_pid, strerror(errno));
                 return false;
             }
             if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
                 *error_msg = StringPrintf("Failed execv(%s) because non-0 exit status",
-                        command_line.c_str());
+                                          command_line.c_str());
                 return false;
             }
         }
@@ -707,10 +662,8 @@ private:
 #endif
     }
 
-    void AddCompilerOptionFromSystemProperty(const char* system_property,
-            const char* prefix,
-            bool runtime,
-            std::vector<std::string>& out) const {
+    void AddCompilerOptionFromSystemProperty(const char* system_property, const char* prefix,
+                                             bool runtime, std::vector<std::string>& out) const {
         const std::string* value = system_properties_.GetProperty(system_property);
         if (value != nullptr) {
             if (runtime) {
@@ -753,16 +706,15 @@ OTAPreoptService gOps;
 // Plug-in functions. //
 ////////////////////////
 
-int get_property(const char *key, char *value, const char *default_value) {
+int get_property(const char* key, char* value, const char* default_value) {
     return gOps.GetProperty(key, value, default_value);
 }
 
 // Compute the output path of
-bool calculate_oat_file_path(char path[PKG_PATH_MAX], const char *oat_dir,
-                             const char *apk_path,
-                             const char *instruction_set) {
-    const char *file_name_start;
-    const char *file_name_end;
+bool calculate_oat_file_path(char path[PKG_PATH_MAX], const char* oat_dir, const char* apk_path,
+                             const char* instruction_set) {
+    const char* file_name_start;
+    const char* file_name_end;
 
     file_name_start = strrchr(apk_path, '/');
     if (file_name_start == nullptr) {
@@ -781,12 +733,7 @@ bool calculate_oat_file_path(char path[PKG_PATH_MAX], const char *oat_dir,
     std::string file_name(file_name_start, file_name_len);
 
     // <apk_parent_dir>/oat/<isa>/<file_name>.odex.b
-    snprintf(path,
-             PKG_PATH_MAX,
-             "%s/%s/%s.odex.%s",
-             oat_dir,
-             instruction_set,
-             file_name.c_str(),
+    snprintf(path, PKG_PATH_MAX, "%s/%s/%s.odex.%s", oat_dir, instruction_set, file_name.c_str(),
              gOps.GetTargetSlot().c_str());
     return true;
 }
@@ -797,28 +744,26 @@ bool calculate_oat_file_path(char path[PKG_PATH_MAX], const char *oat_dir,
  *
  * Returns false if it failed to determine the odex file path.
  */
-bool calculate_odex_file_path(char path[PKG_PATH_MAX], const char *apk_path,
-                              const char *instruction_set) {
-    const char *path_end = strrchr(apk_path, '/');
+bool calculate_odex_file_path(char path[PKG_PATH_MAX], const char* apk_path,
+                              const char* instruction_set) {
+    const char* path_end = strrchr(apk_path, '/');
     if (path_end == nullptr) {
         ALOGE("apk_path '%s' has no '/'s in it?!\n", apk_path);
         return false;
     }
     std::string path_component(apk_path, path_end - apk_path);
 
-    const char *name_begin = path_end + 1;
-    const char *extension_start = strrchr(name_begin, '.');
+    const char* name_begin = path_end + 1;
+    const char* extension_start = strrchr(name_begin, '.');
     if (extension_start == nullptr) {
         ALOGE("apk_path '%s' has no extension.\n", apk_path);
         return false;
     }
     std::string name_component(name_begin, extension_start - name_begin);
 
-    std::string new_path = StringPrintf("%s/oat/%s/%s.odex.%s",
-                                        path_component.c_str(),
-                                        instruction_set,
-                                        name_component.c_str(),
-                                        gOps.GetTargetSlot().c_str());
+    std::string new_path =
+            StringPrintf("%s/oat/%s/%s.odex.%s", path_component.c_str(), instruction_set,
+                         name_component.c_str(), gOps.GetTargetSlot().c_str());
     if (new_path.length() >= PKG_PATH_MAX) {
         LOG(ERROR) << "apk_path of " << apk_path << " is too long: " << new_path;
         return false;
@@ -827,29 +772,24 @@ bool calculate_odex_file_path(char path[PKG_PATH_MAX], const char *apk_path,
     return true;
 }
 
-bool create_cache_path(char path[PKG_PATH_MAX],
-                       const char *src,
-                       const char *instruction_set) {
+bool create_cache_path(char path[PKG_PATH_MAX], const char* src, const char* instruction_set) {
     size_t srclen = strlen(src);
 
-        /* demand that we are an absolute path */
-    if ((src == 0) || (src[0] != '/') || strstr(src,"..")) {
+    /* demand that we are an absolute path */
+    if ((src == 0) || (src[0] != '/') || strstr(src, "..")) {
         return false;
     }
 
-    if (srclen > PKG_PATH_MAX) {        // XXX: PKG_NAME_MAX?
+    if (srclen > PKG_PATH_MAX) {  // XXX: PKG_NAME_MAX?
         return false;
     }
 
     std::string from_src = std::string(src + 1);
     std::replace(from_src.begin(), from_src.end(), '/', '@');
 
-    std::string assembled_path = StringPrintf("%s/%s/%s/%s%s",
-                                              gOps.GetOTADataDirectory().c_str(),
-                                              DALVIK_CACHE,
-                                              instruction_set,
-                                              from_src.c_str(),
-                                              DALVIK_CACHE_POSTFIX);
+    std::string assembled_path =
+            StringPrintf("%s/%s/%s/%s%s", gOps.GetOTADataDirectory().c_str(), DALVIK_CACHE,
+                         instruction_set, from_src.c_str(), DALVIK_CACHE_POSTFIX);
 
     if (assembled_path.length() + 1 > PKG_PATH_MAX) {
         return false;
@@ -859,7 +799,7 @@ bool create_cache_path(char path[PKG_PATH_MAX],
     return true;
 }
 
-static int log_callback(int type, const char *fmt, ...) {
+static int log_callback(int type, const char* fmt, ...) {
     va_list ap;
     int priority;
 
@@ -880,7 +820,7 @@ static int log_callback(int type, const char *fmt, ...) {
     return 0;
 }
 
-static int otapreopt_main(const int argc, char *argv[]) {
+static int otapreopt_main(const int argc, char* argv[]) {
     int selinux_enabled = (is_selinux_enabled() > 0);
 
     setenv("ANDROID_LOG_TAGS", "*:v", 1);
@@ -908,6 +848,6 @@ static int otapreopt_main(const int argc, char *argv[]) {
 }  // namespace installd
 }  // namespace android
 
-int main(const int argc, char *argv[]) {
+int main(const int argc, char* argv[]) {
     return android::installd::otapreopt_main(argc, argv);
 }

@@ -18,11 +18,11 @@
 #define ANDROID_INSTALLD_CACHE_TRACKER_H
 
 #include <memory>
-#include <string>
 #include <queue>
+#include <string>
 
-#include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 
 #include <android-base/macros.h>
 #include <cutils/multiuser.h>
@@ -38,7 +38,7 @@ namespace installd {
  * which can then be purged to free up space.
  */
 class CacheTracker {
-public:
+  public:
     CacheTracker(userid_t userId, appid_t appId, const std::string& uuid);
     ~CacheTracker();
 
@@ -58,7 +58,7 @@ public:
 
     std::vector<std::shared_ptr<CacheItem>> items;
 
-private:
+  private:
     userid_t mUserId;
     appid_t mAppId;
     bool mItemsLoaded;

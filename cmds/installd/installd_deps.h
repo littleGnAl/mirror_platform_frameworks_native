@@ -29,18 +29,14 @@ namespace installd {
 // figure out parts of the configuration.
 
 // Retrieve a system property. Same API as cutils, just renamed.
-extern int get_property(const char *key,
-                        char *value,
-                        const char *default_value);
+extern int get_property(const char* key, char* value, const char* default_value);
 // Size constants. Should be checked to be equal to the cutils requirements.
 constexpr size_t kPropertyKeyMax = 32u;
 constexpr size_t kPropertyValueMax = 92u;
 
 // Compute the output path for dex2oat.
-extern bool calculate_oat_file_path(char path[PKG_PATH_MAX],
-                                    const char *oat_dir,
-                                    const char *apk_path,
-                                    const char *instruction_set);
+extern bool calculate_oat_file_path(char path[PKG_PATH_MAX], const char* oat_dir,
+                                    const char* apk_path, const char* instruction_set);
 // Compute the output path for patchoat.
 //
 // Computes the odex file for the given apk_path and instruction_set, e.g.,
@@ -48,14 +44,12 @@ extern bool calculate_oat_file_path(char path[PKG_PATH_MAX],
 //
 // Returns false if it failed to determine the odex file path.
 //
-extern bool calculate_odex_file_path(char path[PKG_PATH_MAX],
-                                     const char *apk_path,
-                                     const char *instruction_set);
+extern bool calculate_odex_file_path(char path[PKG_PATH_MAX], const char* apk_path,
+                                     const char* instruction_set);
 
 // Compute the output path into the dalvik cache.
-extern bool create_cache_path(char path[PKG_PATH_MAX],
-                              const char *src,
-                              const char *instruction_set);
+extern bool create_cache_path(char path[PKG_PATH_MAX], const char* src,
+                              const char* instruction_set);
 
 }  // namespace installd
 }  // namespace android

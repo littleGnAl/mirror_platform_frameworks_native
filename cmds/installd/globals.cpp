@@ -28,21 +28,21 @@
 namespace android {
 namespace installd {
 
-static constexpr const char* APP_SUBDIR = "app/"; // sub-directory under ANDROID_DATA
+static constexpr const char* APP_SUBDIR = "app/";  // sub-directory under ANDROID_DATA
 
-static constexpr const char* PRIV_APP_SUBDIR = "priv-app/"; // sub-directory under ANDROID_DATA
+static constexpr const char* PRIV_APP_SUBDIR = "priv-app/";  // sub-directory under ANDROID_DATA
 
-static constexpr const char* EPHEMERAL_APP_SUBDIR = "app-ephemeral/"; // sub-directory under
-                                                                      // ANDROID_DATA
+static constexpr const char* EPHEMERAL_APP_SUBDIR = "app-ephemeral/";  // sub-directory under
+                                                                       // ANDROID_DATA
 
-static constexpr const char* APP_LIB_SUBDIR = "app-lib/"; // sub-directory under ANDROID_DATA
+static constexpr const char* APP_LIB_SUBDIR = "app-lib/";  // sub-directory under ANDROID_DATA
 
-static constexpr const char* MEDIA_SUBDIR = "media/"; // sub-directory under ANDROID_DATA
+static constexpr const char* MEDIA_SUBDIR = "media/";  // sub-directory under ANDROID_DATA
 
-static constexpr const char* PROFILES_SUBDIR = "misc/profiles"; // sub-directory under ANDROID_DATA
+static constexpr const char* PROFILES_SUBDIR = "misc/profiles";  // sub-directory under ANDROID_DATA
 
-static constexpr const char* PRIVATE_APP_SUBDIR = "app-private/"; // sub-directory under
-                                                                  // ANDROID_DATA
+static constexpr const char* PRIVATE_APP_SUBDIR = "app-private/";  // sub-directory under
+                                                                   // ANDROID_DATA
 
 std::string android_app_dir;
 std::string android_app_ephemeral_dir;

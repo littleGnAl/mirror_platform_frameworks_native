@@ -41,7 +41,7 @@ std::string& FindQuotaDeviceForUuid(const std::string& uuid) {
     return mQuotaReverseMounts[path];
 }
 
-} // namespace
+}  // namespace
 
 bool InvalidateQuotaMounts() {
     std::lock_guard<std::recursive_mutex> lock(mMountsLock);
@@ -64,7 +64,7 @@ bool InvalidateQuotaMounts() {
         if (source.compare(0, 11, "/dev/block/") == 0) {
             struct dqblk dq;
             if (quotactl(QCMD(Q_GETQUOTA, USRQUOTA), source.c_str(), 0,
-                    reinterpret_cast<char*>(&dq)) == 0) {
+                         reinterpret_cast<char*>(&dq)) == 0) {
                 LOG(DEBUG) << "Found quota mount " << source << " at " << target;
                 mQuotaReverseMounts[target] = source;
             }
@@ -83,8 +83,8 @@ int64_t GetOccupiedSpaceForUid(const std::string& uuid, uid_t uid) {
         return -1;
     }
     struct dqblk dq;
-    if (quotactl(QCMD(Q_GETQUOTA, USRQUOTA), device.c_str(), uid,
-            reinterpret_cast<char*>(&dq)) != 0) {
+    if (quotactl(QCMD(Q_GETQUOTA, USRQUOTA), device.c_str(), uid, reinterpret_cast<char*>(&dq)) !=
+        0) {
         if (errno != ESRCH) {
             PLOG(ERROR) << "Failed to quotactl " << device << " for UID " << uid;
         }
@@ -103,8 +103,8 @@ int64_t GetOccupiedSpaceForGid(const std::string& uuid, gid_t gid) {
         return -1;
     }
     struct dqblk dq;
-    if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), gid,
-            reinterpret_cast<char*>(&dq)) != 0) {
+    if (quotactl(QCMD(Q_GETQUOTA, GRPQUOTA), device.c_str(), gid, reinterpret_cast<char*>(&dq)) !=
+        0) {
         if (errno != ESRCH) {
             PLOG(ERROR) << "Failed to quotactl " << device << " for GID " << gid;
         }
@@ -115,7 +115,6 @@ int64_t GetOccupiedSpaceForGid(const std::string& uuid, gid_t gid) {
 #endif
         return dq.dqb_curspace;
     }
-
 }
 
 }  // namespace installd

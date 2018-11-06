@@ -27,16 +27,16 @@ namespace android {
 namespace installd {
 
 /* dexopt needed flags matching those in dalvik.system.DexFile */
-static constexpr int NO_DEXOPT_NEEDED            = 0;
-static constexpr int DEX2OAT_FROM_SCRATCH        = 1;
-static constexpr int DEX2OAT_FOR_BOOT_IMAGE      = 2;
-static constexpr int DEX2OAT_FOR_FILTER          = 3;
+static constexpr int NO_DEXOPT_NEEDED = 0;
+static constexpr int DEX2OAT_FROM_SCRATCH = 1;
+static constexpr int DEX2OAT_FOR_BOOT_IMAGE = 2;
+static constexpr int DEX2OAT_FOR_FILTER = 3;
 
 // Clear the reference profile identified by the given profile name.
 bool clear_primary_reference_profile(const std::string& pkgname, const std::string& profile_name);
 // Clear the current profile identified by the given profile name (for single user).
 bool clear_primary_current_profile(const std::string& pkgname, const std::string& profile_name,
-         userid_t user);
+                                   userid_t user);
 // Clear all current profiles identified by the given profile name (all users).
 bool clear_primary_current_profiles(const std::string& pkgname, const std::string& profile_name);
 
@@ -46,8 +46,7 @@ bool clear_primary_current_profiles(const std::string& pkgname, const std::strin
 // worth to recompile the package.
 // If the return value is true all the current profiles would have been merged into
 // the reference profiles accessible with open_reference_profile().
-bool analyze_primary_profiles(uid_t uid,
-                              const std::string& pkgname,
+bool analyze_primary_profiles(uid_t uid, const std::string& pkgname,
                               const std::string& profile_name);
 
 // Create a snapshot of the profile information for the given package profile.
@@ -64,57 +63,48 @@ bool analyze_primary_profiles(uid_t uid,
 //
 // The classpath acts as filter: only profiling data belonging to elements of the classpath
 // will end up in the snapshot.
-bool create_profile_snapshot(int32_t app_id,
-                             const std::string& package,
-                             const std::string& profile_name,
-                             const std::string& classpath);
+bool create_profile_snapshot(int32_t app_id, const std::string& package,
+                             const std::string& profile_name, const std::string& classpath);
 
-bool dump_profiles(int32_t uid,
-                   const std::string& pkgname,
-                   const std::string& profile_name,
+bool dump_profiles(int32_t uid, const std::string& pkgname, const std::string& profile_name,
                    const std::string& code_path);
 
-bool copy_system_profile(const std::string& system_profile,
-                         uid_t packageUid,
-                         const std::string& pkgname,
-                         const std::string& profile_name);
+bool copy_system_profile(const std::string& system_profile, uid_t packageUid,
+                         const std::string& pkgname, const std::string& profile_name);
 
 // Prepare the app profile for the given code path:
 //  - create the current profile using profile_name
 //  - merge the profile from the dex metadata file (if present) into
 //    the reference profile.
-bool prepare_app_profile(const std::string& package_name,
-                         userid_t user_id,
-                         appid_t app_id,
-                         const std::string& profile_name,
-                         const std::string& code_path,
+bool prepare_app_profile(const std::string& package_name, userid_t user_id, appid_t app_id,
+                         const std::string& profile_name, const std::string& code_path,
                          const std::unique_ptr<std::string>& dex_metadata);
 
 bool delete_odex(const char* apk_path, const char* instruction_set, const char* output_path);
 
-bool reconcile_secondary_dex_file(const std::string& dex_path,
-        const std::string& pkgname, int uid, const std::vector<std::string>& isas,
-        const std::unique_ptr<std::string>& volumeUuid, int storage_flag,
-        /*out*/bool* out_secondary_dex_exists);
+bool reconcile_secondary_dex_file(const std::string& dex_path, const std::string& pkgname, int uid,
+                                  const std::vector<std::string>& isas,
+                                  const std::unique_ptr<std::string>& volumeUuid, int storage_flag,
+                                  /*out*/ bool* out_secondary_dex_exists);
 
-bool hash_secondary_dex_file(const std::string& dex_path,
-        const std::string& pkgname, int uid, const std::unique_ptr<std::string>& volume_uuid,
-        int storage_flag, std::vector<uint8_t>* out_secondary_dex_hash);
+bool hash_secondary_dex_file(const std::string& dex_path, const std::string& pkgname, int uid,
+                             const std::unique_ptr<std::string>& volume_uuid, int storage_flag,
+                             std::vector<uint8_t>* out_secondary_dex_hash);
 
-int dexopt(const char *apk_path, uid_t uid, const char *pkgName, const char *instruction_set,
-        int dexopt_needed, const char* oat_dir, int dexopt_flags, const char* compiler_filter,
-        const char* volume_uuid, const char* class_loader_context, const char* se_info,
-        bool downgrade, int target_sdk_version, const char* profile_name,
-        const char* dexMetadataPath, const char* compilation_reason, std::string* error_msg);
+int dexopt(const char* apk_path, uid_t uid, const char* pkgName, const char* instruction_set,
+           int dexopt_needed, const char* oat_dir, int dexopt_flags, const char* compiler_filter,
+           const char* volume_uuid, const char* class_loader_context, const char* se_info,
+           bool downgrade, int target_sdk_version, const char* profile_name,
+           const char* dexMetadataPath, const char* compilation_reason, std::string* error_msg);
 
-bool calculate_oat_file_path_default(char path[PKG_PATH_MAX], const char *oat_dir,
-        const char *apk_path, const char *instruction_set);
+bool calculate_oat_file_path_default(char path[PKG_PATH_MAX], const char* oat_dir,
+                                     const char* apk_path, const char* instruction_set);
 
-bool calculate_odex_file_path_default(char path[PKG_PATH_MAX], const char *apk_path,
-        const char *instruction_set);
+bool calculate_odex_file_path_default(char path[PKG_PATH_MAX], const char* apk_path,
+                                      const char* instruction_set);
 
-bool create_cache_path_default(char path[PKG_PATH_MAX], const char *src,
-        const char *instruction_set);
+bool create_cache_path_default(char path[PKG_PATH_MAX], const char* src,
+                               const char* instruction_set);
 
 bool move_ab(const char* apk_path, const char* instruction_set, const char* output_path);
 

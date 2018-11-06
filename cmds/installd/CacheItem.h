@@ -21,8 +21,8 @@
 #include <string>
 
 #include <fts.h>
-#include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 
 #include <android-base/macros.h>
 
@@ -35,7 +35,7 @@ namespace installd {
  * group.
  */
 class CacheItem {
-public:
+  public:
     CacheItem(FTSENT* p);
     ~CacheItem();
 
@@ -51,7 +51,7 @@ public:
     int64_t size;
     time_t modified;
 
-private:
+  private:
     CacheItem* mParent;
     std::string mName;
 
