@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7e9c1118_9729f53c",
+        "filename": "services/gpuservice/gpuservice.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2018-11-06T02:12:31Z",
+      "side": 1,
+      "message": "how do I create a separate UID?",
+      "parentUuid": "041bb129_804bc7f9",
+      "revId": "fda5357b399d0378becc8ccad36896dcbe56f39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04e41f73_5c399afc",
         "filename": "services/gpuservice/gpuservice.rc",
         "patchSetId": 2
@@ -62,6 +80,54 @@
       "revId": "fda5357b399d0378becc8ccad36896dcbe56f39b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b65ca74_fa6274d5",
+        "filename": "services/gpuservice/gpuservice.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2018-11-06T02:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20f067b3_9793762e",
+      "range": {
+        "startLine": 4,
+        "startChar": 19,
+        "endLine": 4,
+        "endChar": 25
+      },
+      "revId": "fda5357b399d0378becc8ccad36896dcbe56f39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16a2471_532b2754",
+        "filename": "services/gpuservice/gpuservice.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2018-11-06T02:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04e41f73_5c399afc",
+      "range": {
+        "startLine": 4,
+        "startChar": 26,
+        "endLine": 4,
+        "endChar": 34
+      },
+      "revId": "fda5357b399d0378becc8ccad36896dcbe56f39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
