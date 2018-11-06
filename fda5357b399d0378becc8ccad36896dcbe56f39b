@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "346fe1be_3f6081b1",
+        "filename": "services/gpuservice/gpuservice.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2018-11-06T18:35:21Z",
+      "side": 1,
+      "message": "I have uploaded the patch aosp/815534",
+      "parentUuid": "90ecfaf2_26deeb4b",
+      "revId": "fda5357b399d0378becc8ccad36896dcbe56f39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04e41f73_5c399afc",
         "filename": "services/gpuservice/gpuservice.rc",
         "patchSetId": 2
