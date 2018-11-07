@@ -316,6 +316,9 @@ class RunDex2Oat : public ExecVHelper {
         const std::string resolve_startup_string_arg  =
                 MapPropertyToArg("dalvik.vm.dex2oat-resolve-startup-strings",
                                  "--resolve-startup-const-strings=%s");
+        const std::string compile_class_initializers_arg  =
+                MapPropertyToArg("dalvik.vm.dex2oat-compile-class-initializers",
+                                 "--compile-class-initializers=%s");
         const bool generate_debug_info = GetBoolProperty("debug.generate-debug-info", false);
 
         std::string image_format_arg;
@@ -430,6 +433,7 @@ class RunDex2Oat : public ExecVHelper {
         AddRuntimeArg(dex2oat_Xmx_arg);
 
         AddArg(resolve_startup_string_arg);
+        AddArg(compile_class_initializers_arg);
         AddArg(dex2oat_compiler_filter_arg);
         AddArg(dex2oat_threads_arg);
         AddArg(dex2oat_swap_fd);
