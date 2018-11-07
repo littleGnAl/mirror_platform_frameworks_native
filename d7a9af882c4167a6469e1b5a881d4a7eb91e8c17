@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d81dce1d_188ecc2b",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-11-07T00:25:33Z",
+      "side": 1,
+      "message": "is this the right indentation? looks weird.",
+      "range": {
+        "startLine": 265,
+        "startChar": 15,
+        "endLine": 265,
+        "endChar": 16
+      },
+      "revId": "d7a9af882c4167a6469e1b5a881d4a7eb91e8c17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
