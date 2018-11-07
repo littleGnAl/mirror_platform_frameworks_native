@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d9343da4_3836be0a",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-11-07T00:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77393d9d_24594eeb",
+      "range": {
+        "startLine": 332,
+        "startChar": 100,
+        "endLine": 332,
+        "endChar": 101
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3958e59_db8b80fe",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "089113c0_fff6e1d5",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-11-07T00:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3958e59_db8b80fe",
+      "range": {
+        "startLine": 340,
+        "startChar": 47,
+        "endLine": 340,
+        "endChar": 48
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f42dd7cf_c536f3f8",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -115,6 +163,30 @@
       "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "014124a5_4819b6af",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-11-07T00:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f42dd7cf_c536f3f8",
+      "range": {
+        "startLine": 382,
+        "startChar": 59,
+        "endLine": 382,
+        "endChar": 60
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +304,30 @@
       "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "739161af_910269ff",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-11-07T00:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f92561cf_a5f6e617",
+      "range": {
+        "startLine": 707,
+        "startChar": 18,
+        "endLine": 707,
+        "endChar": 20
+      },
+      "revId": "410a60303aae6dc8ca185bf4b4bb3b4346caa0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
