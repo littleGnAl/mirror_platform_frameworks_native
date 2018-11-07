@@ -22,6 +22,30 @@
       "revId": "289e29ae85b17d312daff9277a81c30ece190f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "534bced4_1459cf6c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-11-07T14:21:07Z",
+      "side": 1,
+      "message": "Is this feature already supported? Here\u0027s what shows up on my device currently (with a build from last Friday):\n\n  $ adb shell ls -l /apex\n  total 8\n  lrwxrwxrwx 1 root   root     23 2018-01-25 18:23 com.android.art -\u003e /apex/com.android.art@1\n  drwxr-xr-x 6 system system 4096 1970-01-01 01:00 com.android.art@1",
+      "parentUuid": "a757713a_127d59a0",
+      "range": {
+        "startLine": 312,
+        "startChar": 37,
+        "endLine": 312,
+        "endChar": 52
+      },
+      "revId": "289e29ae85b17d312daff9277a81c30ece190f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
