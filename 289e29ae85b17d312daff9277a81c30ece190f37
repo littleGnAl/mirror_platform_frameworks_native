@@ -46,6 +46,30 @@
       "revId": "289e29ae85b17d312daff9277a81c30ece190f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edd6d50d_f5df9da5",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-11-07T14:27:38Z",
+      "side": 1,
+      "message": "I checked with dariofreni@ and the plan is as you see now. If @latest has value then time to flag with the apexd team.",
+      "parentUuid": "534bced4_1459cf6c",
+      "range": {
+        "startLine": 312,
+        "startChar": 37,
+        "endLine": 312,
+        "endChar": 52
+      },
+      "revId": "289e29ae85b17d312daff9277a81c30ece190f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
