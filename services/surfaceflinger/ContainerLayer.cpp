@@ -32,7 +32,7 @@ ContainerLayer::ContainerLayer(SurfaceFlinger* flinger, const sp<Client>& client
 void ContainerLayer::onDraw(const RenderArea&, const Region& /* clip */, bool) const {}
 
 bool ContainerLayer::isVisible() const {
-    return !isHiddenByPolicy();
+    return false;
 }
 
 void ContainerLayer::setPerFrameData(const sp<const DisplayDevice>&) {}
