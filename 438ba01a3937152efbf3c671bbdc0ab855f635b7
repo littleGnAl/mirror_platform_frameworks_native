@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "39a9421d_1fa7478c",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-11-08T17:47:59Z",
+      "side": 1,
+      "message": "Hmm, I think Steven is right. In a user debug, this command will try to run \"su xxx\" and fail, so we want to emulate that.",
+      "parentUuid": "fe531e5b_3ce52159",
+      "range": {
+        "startLine": 104,
+        "startChar": 27,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "438ba01a3937152efbf3c671bbdc0ab855f635b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbaeedd7_c6ec5716",
         "filename": "cmds/dumpstate/DumpstateUtil.cpp",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "fbaeedd7_c6ec5716",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "438ba01a3937152efbf3c671bbdc0ab855f635b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1de9a82c_777e8460",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-11-08T17:47:59Z",
+      "side": 1,
+      "message": "I think this change is fine, we have to check for IsUserBuild(). I mean, in theory we could do:\n\nif (!PropertiesHelper::IsUserBuild()) {\n     return AsRoot();\n} else {\n     return *this;\n}\n\nBut I think that option would be more confusing...",
+      "parentUuid": "158c3d67_d715e95e",
       "range": {
         "startLine": 110,
         "startChar": 8,
