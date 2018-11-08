@@ -201,6 +201,10 @@ status_t BnSensorServer::onTransact(
             native_handle_t *resource = data.readNativeHandle();
             sp<ISensorEventConnection> ch =
                     createSensorDirectConnection(opPackageName, size, type, format, resource);
+            if (resource == nullptr) {
+                ALOGE("client handle resource is null, return!!!");
+                return BAD_VALUE;
+            }
             native_handle_close(resource);
             native_handle_delete(resource);
             reply->writeStrongBinder(IInterface::asBinder(ch));
