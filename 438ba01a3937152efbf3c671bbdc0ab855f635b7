@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20b15779_68b8376c",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-08T17:31:50Z",
+      "side": 1,
+      "message": "I think we also want to disable root here if IsUnroot",
+      "range": {
+        "startLine": 104,
+        "startChar": 27,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "438ba01a3937152efbf3c671bbdc0ab855f635b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbaeedd7_c6ec5716",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-08T17:31:50Z",
+      "side": 1,
+      "message": "and then it might be easier to just call \u0027return AsRoot\u0027 here",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "438ba01a3937152efbf3c671bbdc0ab855f635b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
