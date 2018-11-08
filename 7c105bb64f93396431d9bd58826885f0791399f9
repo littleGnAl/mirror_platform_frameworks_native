@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2f711e18_8f95555e",
+        "filename": "services/inputflinger/EventHub.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1156119
+      },
+      "writtenOn": "2018-11-08T02:00:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d42a5feb_bea28447",
+      "revId": "7c105bb64f93396431d9bd58826885f0791399f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "419c9dfe_6f8deb3a",
         "filename": "services/inputflinger/InputReader.cpp",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3c939a46_4ce5d374",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1156119
+      },
+      "writtenOn": "2018-11-08T02:00:20Z",
+      "side": 1,
+      "message": "It was 2 because the linux kernel only supports two channels for rumble via evdev.  Updated it to take up to a \"MAX_CHANNELS\" number of channels and any channels beyond 2 are ignored when the rumble event is created.",
+      "parentUuid": "419c9dfe_6f8deb3a",
+      "revId": "7c105bb64f93396431d9bd58826885f0791399f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "552fe85e_c2785439",
         "filename": "services/inputflinger/InputReader.h",
         "patchSetId": 4
@@ -50,6 +86,24 @@
       "revId": "7c105bb64f93396431d9bd58826885f0791399f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a0264e_f813b0a5",
+        "filename": "services/inputflinger/InputReader.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1156119
+      },
+      "writtenOn": "2018-11-08T02:00:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "552fe85e_c2785439",
+      "revId": "7c105bb64f93396431d9bd58826885f0791399f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

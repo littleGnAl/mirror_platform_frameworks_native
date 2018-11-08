@@ -22,6 +22,30 @@
       "revId": "eaaf82b5f6cc5a636af3555ecd2476971776210c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52012aa6_842e88c3",
+        "filename": "services/inputflinger/EventHub.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1156119
+      },
+      "writtenOn": "2018-11-08T02:00:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "091e04d6_98eb06ed",
+      "range": {
+        "startLine": 157,
+        "startChar": 13,
+        "endLine": 157,
+        "endChar": 21
+      },
+      "revId": "eaaf82b5f6cc5a636af3555ecd2476971776210c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
