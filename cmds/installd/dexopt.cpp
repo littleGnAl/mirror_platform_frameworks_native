@@ -704,7 +704,7 @@ class RunProfman : public ExecVHelper {
         std::vector<unique_fd> profiles_fd;
         profiles_fd.push_back(std::move(profile_fd));
         std::vector<unique_fd> apk_fds;
-        profiles_fd.push_back(std::move(apk_fd));
+        apk_fds.push_back(std::move(apk_fd));
         std::vector<std::string> dex_locations = {dex_location};
         SetupArgs(profiles_fd, reference_profile_fd, apk_fds, dex_locations,
                   /*copy_and_update=*/true);
