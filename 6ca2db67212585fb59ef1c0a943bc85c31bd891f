@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3e906ea_f5f10e85",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2018-11-12T21:29:49Z",
+      "side": 1,
+      "message": "nit: update comments",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 80
+      },
+      "revId": "6ca2db67212585fb59ef1c0a943bc85c31bd891f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
