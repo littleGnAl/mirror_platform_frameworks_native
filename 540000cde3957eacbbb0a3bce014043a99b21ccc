@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b02e3c1c_12e53ec8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2018-11-12T21:30:08Z",
+      "side": 1,
+      "message": "nit: checks",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "540000cde3957eacbbb0a3bce014043a99b21ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccb6370a_c1b36b16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2018-11-12T21:30:08Z",
+      "side": 1,
+      "message": "nit: so we can safely return false.",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 50
+      },
+      "revId": "540000cde3957eacbbb0a3bce014043a99b21ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "389e4331_6f9aa110",
+        "filename": "services/surfaceflinger/ContainerLayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2018-11-12T21:30:08Z",
+      "side": 1,
+      "message": "nit: can be in header file.",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "540000cde3957eacbbb0a3bce014043a99b21ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
