@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca5b5a6b_5ae9d3f5",
+        "filename": "services/inputflinger/EventHub.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1283092
+      },
+      "writtenOn": "2018-11-12T13:39:55Z",
+      "side": 1,
+      "message": "I would slightly prefer Element over TimeSlice. TimeSlice associates with the time interval itself while element associates with time interval and vibration strengths.\nMichael, would you comment as a native speaker?",
+      "parentUuid": "484c761c_80669aee",
+      "range": {
+        "startLine": 153,
+        "startChar": 7,
+        "endLine": 153,
+        "endChar": 23
+      },
+      "revId": "dd11cba61f6104640cd002af5db270de0c9b6ee6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3b80eed_a127958c",
         "filename": "services/inputflinger/InputReader.cpp",
         "patchSetId": 8
@@ -42,6 +66,23 @@
         "endLine": 2168,
         "endChar": 5
       },
+      "revId": "dd11cba61f6104640cd002af5db270de0c9b6ee6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5572271a_c2e67de2",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2217,
+      "author": {
+        "id": 1283092
+      },
+      "writtenOn": "2018-11-12T13:39:55Z",
+      "side": 1,
+      "message": "Consider using std::any_of for better readability",
       "revId": "dd11cba61f6104640cd002af5db270de0c9b6ee6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
