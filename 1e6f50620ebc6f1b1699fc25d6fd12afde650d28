@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e425f61_c48fe157",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-11-13T17:43:44Z",
+      "side": 1,
+      "message": "nit: isn\u0027t this unsigned?",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 7
+      },
+      "revId": "1e6f50620ebc6f1b1699fc25d6fd12afde650d28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
