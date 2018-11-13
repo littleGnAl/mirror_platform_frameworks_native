@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d03bdc21_d66eed8c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-11-13T00:06:37Z",
+      "side": 1,
+      "message": "why is there a difference between reference_* and the others? Can we be consistent? (even if we add more private members.",
+      "range": {
+        "startLine": 700,
+        "startChar": 28,
+        "endLine": 702,
+        "endChar": 47
+      },
+      "revId": "009c0d02e3f1e9a919836616260c5226c061e3ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
