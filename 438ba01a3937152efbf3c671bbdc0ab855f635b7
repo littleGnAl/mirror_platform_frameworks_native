@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "090b2e8e_afa29fe4",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-11-13T10:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a9421d_1fa7478c",
+      "range": {
+        "startLine": 104,
+        "startChar": 27,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "438ba01a3937152efbf3c671bbdc0ab855f635b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbaeedd7_c6ec5716",
         "filename": "cmds/dumpstate/DumpstateUtil.cpp",
         "patchSetId": 3
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I think this change is fine, we have to check for IsUserBuild(). I mean, in theory we could do:\n\nif (!PropertiesHelper::IsUserBuild()) {\n     return AsRoot();\n} else {\n     return *this;\n}\n\nBut I think that option would be more confusing...",
       "parentUuid": "158c3d67_d715e95e",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "438ba01a3937152efbf3c671bbdc0ab855f635b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebed3f99_5ad942f4",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-11-13T10:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1de9a82c_777e8460",
       "range": {
         "startLine": 110,
         "startChar": 8,
