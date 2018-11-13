@@ -617,15 +617,15 @@ TEST_F(DumpstateTest, RunCommandAsRootUserBuild) {
     EXPECT_THAT(err, IsEmpty());
 }
 
-TEST_F(DumpstateTest, RunCommandAsRootNonUserBuild) {
+TEST_F(DumpstateTest, RunCommandAsRootUserDebugBuild) {
     if (!IsStandalone()) {
         // TODO: temporarily disabled because it might cause other tests to fail after dropping
         // to Shell - need to refactor tests to avoid this problem)
-        MYLOGE("Skipping DumpstateTest.RunCommandAsRootNonUserBuild() on test suite\n")
+        MYLOGE("Skipping DumpstateTest.RunCommandAsRootUserDebugBuild() on test suite\n")
         return;
     }
     if (PropertiesHelper::IsUserBuild()) {
-        ALOGI("Skipping RunCommandAsRootNonUserBuild on user builds\n");
+        ALOGI("Skipping RunCommandAsRootUserDebugBuild on user builds\n");
         return;
     }
 
@@ -638,17 +638,17 @@ TEST_F(DumpstateTest, RunCommandAsRootNonUserBuild) {
     EXPECT_THAT(err, StrEq("stderr\n"));
 }
 
-TEST_F(DumpstateTest, RunCommandAsRootNonUserBuild_withUnrootAfterDropRoot) {
+TEST_F(DumpstateTest, RunCommandAsRootUserDebugBuild_withUnrootAfterDropRoot) {
     if (!IsStandalone()) {
         // TODO: temporarily disabled because it might cause other tests to fail after dropping
         // to Shell - need to refactor tests to avoid this problem)
         MYLOGE(
-            "Skipping DumpstateTest.RunCommandAsRootNonUserBuild_withUnrootAfterDropRoot() "
+            "Skipping DumpstateTest.RunCommandAsRootUserDebugBuild_withUnrootAfterDropRoot() "
             "on test suite\n")
         return;
     }
     if (PropertiesHelper::IsUserBuild()) {
-        ALOGI("Skipping RunCommandAsRootNonUserBuild_withUnrootAfterDropRoot on user builds\n");
+        ALOGI("Skipping RunCommandAsRootUserDebugBuild_withUnrootAfterDropRoot on user builds\n");
         return;
     }
 
@@ -664,9 +664,9 @@ TEST_F(DumpstateTest, RunCommandAsRootNonUserBuild_withUnrootAfterDropRoot) {
     EXPECT_THAT(err, StrEq("drop_root_user(): already running as Shell\nstderr\n"));
 }
 
-TEST_F(DumpstateTest, RunCommandAsRootNonUserBuild_withUnroot) {
+TEST_F(DumpstateTest, RunCommandAsRootUserDebugBuild_withUnroot) {
     if (PropertiesHelper::IsUserBuild()) {
-        ALOGI("Skipping RunCommandAsRootNonUserBuild_withUnroot on user builds\n");
+        ALOGI("Skipping RunCommandAsRootUserDebugBuild_withUnroot on user builds\n");
         return;
     }
 
@@ -709,7 +709,7 @@ TEST_F(DumpstateTest, RunCommandAsRootIfAvailableOnDebugBuild) {
         return;
     }
     if (PropertiesHelper::IsUserBuild()) {
-        ALOGI("Skipping RunCommandAsRootNonUserBuild on user builds\n");
+        ALOGI("Skipping RunCommandAsRootIfAvailableOnDebugBuild on user builds\n");
         return;
     }
 
@@ -1329,16 +1329,16 @@ TEST_F(DumpstateUtilTest, RunCommandAsRootUserBuild) {
     EXPECT_THAT(err, IsEmpty());
 }
 
-TEST_F(DumpstateUtilTest, RunCommandAsRootNonUserBuild) {
+TEST_F(DumpstateUtilTest, RunCommandAsRootUserDebugBuild) {
     if (!IsStandalone()) {
         // TODO: temporarily disabled because it might cause other tests to fail after dropping
         // to Shell - need to refactor tests to avoid this problem)
-        MYLOGE("Skipping DumpstateUtilTest.RunCommandAsRootNonUserBuild() on test suite\n")
+        MYLOGE("Skipping DumpstateUtilTest.RunCommandAsRootUserDebugBuild() on test suite\n")
         return;
     }
-    CreateFd("RunCommandAsRootNonUserBuild.txt");
+    CreateFd("RunCommandAsRootUserDebugBuild.txt");
     if (PropertiesHelper::IsUserBuild()) {
-        ALOGI("Skipping RunCommandAsRootNonUserBuild on user builds\n");
+        ALOGI("Skipping RunCommandAsRootUserDebugBuild on user builds\n");
         return;
     }
 
@@ -1383,7 +1383,7 @@ TEST_F(DumpstateUtilTest, RunCommandAsRootIfAvailableOnDebugBuild) {
     }
     CreateFd("RunCommandAsRootIfAvailableOnDebugBuild.txt");
     if (PropertiesHelper::IsUserBuild()) {
-        ALOGI("Skipping RunCommandAsRootNonUserBuild on user builds\n");
+        ALOGI("Skipping RunCommandAsRootIfAvailableOnDebugBuild on user builds\n");
         return;
     }
 
