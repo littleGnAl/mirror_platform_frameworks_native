@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "aa62d56b_3c4499ec",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2258,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-13T21:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240211ad_3577d989",
+      "range": {
+        "startLine": 2258,
+        "startChar": 28,
+        "endLine": 2258,
+        "endChar": 33
+      },
+      "revId": "364a817cedfe718067d8a4ccf1311a9a69755ca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b98a9826_9a335a45",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2018-11-13T18:54:08Z",
       "side": 1,
       "message": "this seems scary - is it possible the comm fd already got closed and we know fail a transaction we wouldn\u0027t fail previously?",
+      "range": {
+        "startLine": 2262,
+        "startChar": 19,
+        "endLine": 2262,
+        "endChar": 27
+      },
+      "revId": "364a817cedfe718067d8a4ccf1311a9a69755ca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f81fbb_0de0adce",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2262,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-13T21:53:13Z",
+      "side": 1,
+      "message": "well, if the type declares that it has a comm fd, I think it should probably have a valid one. I think we should know about these types of issues. We\u0027ll also have plenty of time to let this soak.",
+      "parentUuid": "b98a9826_9a335a45",
       "range": {
         "startLine": 2262,
         "startChar": 19,
