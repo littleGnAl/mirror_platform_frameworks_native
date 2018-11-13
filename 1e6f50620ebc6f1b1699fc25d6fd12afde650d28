@@ -46,6 +46,30 @@
       "revId": "1e6f50620ebc6f1b1699fc25d6fd12afde650d28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0157a3ba_26a516ef",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-13T18:06:34Z",
+      "side": 1,
+      "message": "wait, wait, it does appear to be signed in Android \"\u0027pid_t\u0027 (aka \u0027int\u0027)\". Anyway, I can do one better. Switching it to be uid_t/pid_t",
+      "parentUuid": "14da3e21_4eceddb4",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 7
+      },
+      "revId": "1e6f50620ebc6f1b1699fc25d6fd12afde650d28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
