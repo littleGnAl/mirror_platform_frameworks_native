@@ -46,6 +46,52 @@
       "revId": "364a817cedfe718067d8a4ccf1311a9a69755ca7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "240211ad_3577d989",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2258,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-11-13T18:54:08Z",
+      "side": 1,
+      "message": "TEMP_FAILURE_RETRY() ?",
+      "range": {
+        "startLine": 2258,
+        "startChar": 28,
+        "endLine": 2258,
+        "endChar": 33
+      },
+      "revId": "364a817cedfe718067d8a4ccf1311a9a69755ca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b98a9826_9a335a45",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2262,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-11-13T18:54:08Z",
+      "side": 1,
+      "message": "this seems scary - is it possible the comm fd already got closed and we know fail a transaction we wouldn\u0027t fail previously?",
+      "range": {
+        "startLine": 2262,
+        "startChar": 19,
+        "endLine": 2262,
+        "endChar": 27
+      },
+      "revId": "364a817cedfe718067d8a4ccf1311a9a69755ca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
