@@ -120,6 +120,29 @@
     },
     {
       "key": {
+        "uuid": "21508669_0f18c8f0",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2260,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-11-14T12:41:18Z",
+      "side": 1,
+      "message": "technically this is not needed ;-)",
+      "range": {
+        "startLine": 2260,
+        "startChar": 12,
+        "endLine": 2260,
+        "endChar": 25
+      },
+      "revId": "364a817cedfe718067d8a4ccf1311a9a69755ca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b98a9826_9a335a45",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 1
@@ -155,6 +178,30 @@
       "side": 1,
       "message": "well, if the type declares that it has a comm fd, I think it should probably have a valid one. I think we should know about these types of issues. We\u0027ll also have plenty of time to let this soak.",
       "parentUuid": "b98a9826_9a335a45",
+      "range": {
+        "startLine": 2262,
+        "startChar": 19,
+        "endLine": 2262,
+        "endChar": 27
+      },
+      "revId": "364a817cedfe718067d8a4ccf1311a9a69755ca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "993f6f5d_89fdd2cd",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2262,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-11-14T12:41:18Z",
+      "side": 1,
+      "message": "I\u0027m also thinking of SELinux denials etc. I agree it\u0027s good to know, I\u0027m just worried about retroactively failing transactions that would previously have passed. Guess we\u0027ll find out, at least for Pixel.",
+      "parentUuid": "e4f81fbb_0de0adce",
       "range": {
         "startLine": 2262,
         "startChar": 19,
