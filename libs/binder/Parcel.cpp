@@ -599,7 +599,7 @@ status_t Parcel::writeInterfaceToken(const String16& interface)
 {
     writeInt32(IPCThreadState::self()->getStrictModePolicy() |
                STRICT_MODE_PENALTY_GATHER);
-    writeInt32(IPCThreadState::self()->getWorkSource());
+    writeInt32(IPCThreadState::self()->getCallingWorkSourceUid());
     // currently the interface identification token is just its name as a string
     return writeString16(interface);
 }
@@ -629,7 +629,7 @@ bool Parcel::enforceInterface(const String16& interface,
     }
     // WorkSource.
     int32_t workSource = readInt32();
-    threadState->setWorkSource(workSource);
+    threadState->setCallingWorkSourceUid(workSource);
     // Interface descriptor.
     const String16 str(readString16());
     if (str == interface) {
