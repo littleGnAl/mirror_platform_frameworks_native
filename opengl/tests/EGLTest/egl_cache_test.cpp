@@ -21,7 +21,7 @@
 
 #include <utils/Log.h>
 
-#include <android-base/test_utils.h>
+#include <android-base/file.h>
 
 #include "egl_cache.h"
 #include "egl_display.h"
