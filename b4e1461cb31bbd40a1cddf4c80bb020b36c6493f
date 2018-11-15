@@ -46,6 +46,30 @@
       "revId": "b4e1461cb31bbd40a1cddf4c80bb020b36c6493f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9846008b_a74ad772",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-11-15T17:32:28Z",
+      "side": 1,
+      "message": "could do ssize_t instead of int32_t, that may be less odd looking. but functionally the same.",
+      "parentUuid": "9426790d_8375fe39",
+      "range": {
+        "startLine": 73,
+        "startChar": 58,
+        "endLine": 73,
+        "endChar": 65
+      },
+      "revId": "b4e1461cb31bbd40a1cddf4c80bb020b36c6493f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
