@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b435a05a_ed6ff3a2",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-11-16T13:50:52Z",
+      "side": 1,
+      "message": "i\u0027m guessing you\u0027re renaming this to be consistent with the enum names ? if you\u0027re very concerned about breaking extra_options parsing (i\u0027m not, i couldn\u0027t find any code that attempted to parse that section of the bugreport) then we could just use the previous string values, right ?",
+      "range": {
+        "startLine": 1940,
+        "startChar": 19,
+        "endLine": 1940,
+        "endChar": 36
+      },
+      "revId": "19ee2909c3c2f82d26c53d969ac022d67bf7f1dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1ccdc56_ff04410a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-11-16T13:50:52Z",
+      "side": 1,
+      "message": "unrelated to this change: is do_broadcast ever false ?",
+      "range": {
+        "startLine": 1957,
+        "startChar": 21,
+        "endLine": 1957,
+        "endChar": 41
+      },
+      "revId": "19ee2909c3c2f82d26c53d969ac022d67bf7f1dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a8d10a8_14bd1801",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-11-16T13:50:52Z",
+      "side": 1,
+      "message": "Is the plan for this to go away eventually in favour of the binder service ?",
+      "range": {
+        "startLine": 1994,
+        "startChar": 7,
+        "endLine": 1994,
+        "endChar": 64
+      },
+      "revId": "19ee2909c3c2f82d26c53d969ac022d67bf7f1dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
