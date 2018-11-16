@@ -228,6 +228,52 @@ binder_status_t AParcel_readStrongBinder(const AParcel* parcel, AIBinder** binde
     return PruneStatusT(status);
 }
 
+binder_status_t AParcel_writeStrongBinderArray(AParcel* parcel, const void* arrayData,
+                                               int32_t length,
+                                               AParcel_strongBinderArrayGetter getter) {
+    // we have no clue if arrayData represents a null object or not, we can only infer from length
+    bool arrayIsNull = length < 0;
+    binder_status_t status = WriteAndValidateArraySize(parcel, arrayIsNull, length);
+    if (status != STATUS_OK) return status;
+    if (length <= 0) return STATUS_OK;
+
+    for (size_t i = 0; i < length; i++) {
+        AIBinder* binder = getter(arrayData, i);
+        status = AParcel_writeStrongBinder(parcel, binder);
+        AIBinder_decStrong(binder);
+
+        if (status != STATUS_OK) return PruneStatusT(status);
+    }
+
+    return STATUS_OK;
+}
+
+binder_status_t AParcel_readStrongBinderArray(const AParcel* parcel, void* arrayData,
+                                              AParcel_strongBinderArrayAllocator allocator,
+                                              AParcel_strongBinderArraySetter setter) {
+    const Parcel* rawParcel = parcel->get();
+
+    int32_t length;
+    status_t status = rawParcel->readInt32(&length);
+
+    if (status != STATUS_OK) return PruneStatusT(status);
+    if (length < -1) return STATUS_BAD_VALUE;
+
+    if (!allocator(arrayData, length)) return STATUS_NO_MEMORY;
+
+    if (length <= 0) return STATUS_OK;
+
+    for (size_t i = 0; i < length; i++) {
+        AIBinder* readTarget;
+        status = AParcel_readStrongBinder(parcel, &readTarget);
+        if (status != STATUS_OK) return PruneStatusT(status);
+
+        setter(arrayData, i, readTarget);  // ownership of readTarget transferred
+    }
+
+    return STATUS_OK;
+}
+
 binder_status_t AParcel_writeParcelFileDescriptor(AParcel* parcel, int fd) {
     ParcelFileDescriptor parcelFd((unique_fd(fd)));
 

@@ -202,6 +202,104 @@ static inline binder_status_t AParcel_readRequiredStrongBinder(const AParcel* pa
 }
 
 /**
+ * This retrieves the underlying binder in a vector from a corresponding vectorData.
+ */
+static inline AIBinder* AParcel_stdVectorBinderGetter(const void* vectorData, size_t index) {
+    const std::vector<SpAIBinder>* vec = static_cast<const std::vector<SpAIBinder>*>(vectorData);
+    AIBinder* binder = (*vec)[index].get();
+    AIBinder_incStrong(binder);
+    return binder;
+}
+
+/**
+ * This retrieves the underlying binder in an optional vector at an index from a corresponding
+ * vectorData.
+ */
+static inline AIBinder* AParcel_nullableStdVectorBinderGetter(const void* vectorData,
+                                                              size_t index) {
+    const std::optional<std::vector<SpAIBinder>>* vec =
+            static_cast<const std::optional<std::vector<SpAIBinder>>*>(vectorData);
+    AIBinder* binder = (vec->value())[index].get();
+    AIBinder_incStrong(binder);
+    return binder;
+}
+
+/**
+ * This sets the underlying value in a corresponding vectorData at index.
+ */
+static inline void AParcel_stdVectorBinderSetter(void* vectorData, size_t index, AIBinder* value) {
+    std::vector<SpAIBinder>* vec = static_cast<std::vector<SpAIBinder>*>(vectorData);
+    (*vec)[index] = SpAIBinder(value);  // take ownership
+}
+
+/**
+ * This sets the underlying value in a corresponding vectorData at index.
+ */
+static inline void AParcel_nullableStdVectorBinderSetter(void* vectorData, size_t index,
+                                                         AIBinder* value) {
+    std::optional<std::vector<SpAIBinder>>* vec =
+            static_cast<std::optional<std::vector<SpAIBinder>>*>(vectorData);
+    vec->value()[index] = SpAIBinder(value);  // take ownership
+}
+
+/**
+ * Writes a vector of binders to the next location in a non-null parcel. Each entry cannot be
+ * nullptr.
+ */
+inline binder_status_t AParcel_writeVector(AParcel* parcel, const std::vector<SpAIBinder>& vec) {
+    for (const auto& element : vec) {
+        if (element.get() == nullptr) {
+            return STATUS_UNEXPECTED_NULL;
+        }
+    }
+    return AParcel_writeStrongBinderArray(parcel, static_cast<const void*>(&vec), vec.size(),
+                                          AParcel_stdVectorBinderGetter);
+}
+
+/**
+ * Writes an optional vector of bool to the next location in a non-null parcel. Each binder may also
+ * be nullptr.
+ */
+inline binder_status_t AParcel_writeVector(AParcel* parcel,
+                                           const std::optional<std::vector<SpAIBinder>>& vec) {
+    if (!vec) {
+        return AParcel_writeStrongBinderArray(parcel, nullptr, -1,
+                                              AParcel_nullableStdVectorBinderGetter);
+    }
+    return AParcel_writeStrongBinderArray(parcel, static_cast<const void*>(&vec.value()),
+                                          vec->size(), AParcel_nullableStdVectorBinderGetter);
+}
+
+/**
+ * Reads a vector of bool from the next location in a non-null parcel.
+ */
+inline binder_status_t AParcel_readVector(const AParcel* parcel, std::vector<SpAIBinder>* vec) {
+    void* vectorData = static_cast<void*>(vec);
+    binder_status_t status = AParcel_readStrongBinderArray(
+            parcel, vectorData, AParcel_stdVectorExternalAllocator<SpAIBinder>,
+            AParcel_nullableStdVectorBinderSetter);
+    if (status == STATUS_OK) {
+        for (const auto& element : *vec) {
+            if (element.get() == nullptr) {
+                return STATUS_UNEXPECTED_NULL;
+            }
+        }
+    }
+    return STATUS_OK;
+}
+
+/**
+ * Reads an optional vector of bool from the next location in a non-null parcel.
+ */
+inline binder_status_t AParcel_readVector(const AParcel* parcel,
+                                          std::optional<std::vector<SpAIBinder>>* vec) {
+    void* vectorData = static_cast<void*>(vec);
+    return AParcel_readStrongBinderArray(parcel, vectorData,
+                                         AParcel_nullableStdVectorExternalAllocator<SpAIBinder>,
+                                         AParcel_nullableStdVectorBinderSetter);
+}
+
+/**
  * Allocates a std::string to length and returns the underlying buffer. For use with
  * AParcel_readString. See use below in AParcel_readString(const AParcel*, std::string*).
  */

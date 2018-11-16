@@ -54,6 +54,44 @@ typedef struct AParcel AParcel;
 void AParcel_delete(AParcel* parcel) __INTRODUCED_IN(29);
 
 /**
+ * This allocates an array of size 'length' inside of arrayData and returns whether or not there was
+ * a success. If length is -1, then this should allocate some representation of a null array.
+ *
+ * See also AParcel_readStrongBinderArray
+ *
+ * \param arrayData some external representation of an array of strong binders.
+ * \param length the length to allocate arrayData to (or -1 if this represents a null array).
+ *
+ * \return whether the allocation succeeded.
+ */
+typedef bool (*AParcel_strongBinderArrayAllocator)(void* arrayData, int32_t length);
+
+/**
+ * This is called to get the underlying data from an arrayData object at index.
+ *
+ * See also AParcel_writeStrongBinderArray
+ *
+ * \param arrayData some external representation of an array of strong binders.
+ * \param index the index of the value to be retrieved.
+ *
+ * \return the value of the array at index index. May be nullptr. The returned value should include
+ * one strong refcount of ownership.
+ */
+typedef AIBinder* (*AParcel_strongBinderArrayGetter)(const void* arrayData, size_t index);
+
+/**
+ * This is called to set an underlying value in an arrayData object at index. The value passed
+ * includes one strong refcount of ownership.
+ *
+ * See also AParcel_readStrongBinderArray
+ *
+ * \param arrayData some external representation of an array of strong binders.
+ * \param index the index of the value to be set.
+ * \param value the value to set at index index.
+ */
+typedef void (*AParcel_strongBinderArraySetter)(void* arrayData, size_t index, AIBinder* value);
+
+/**
  * This is called to allocate a buffer for a C-style string (null-terminated). The returned buffer
  * should be at least length bytes. This includes space for a null terminator. For a string, length
  * will always be strictly less than or equal to the maximum size that can be held in a size_t and
@@ -338,6 +376,43 @@ binder_status_t AParcel_writeStrongBinder(AParcel* parcel, AIBinder* binder) __I
  * \return STATUS_OK on successful write.
  */
 binder_status_t AParcel_readStrongBinder(const AParcel* parcel, AIBinder** binder)
+        __INTRODUCED_IN(29);
+
+/**
+ * Writes an array of strong binders to the next location in a non-null parcel.
+ *
+ * getter(arrayData, i) will be called for each i in [0, length) in order to get the underlying
+ * values to write to the parcel. Each location may be nullptr.
+ *
+ * \param parcel the parcel to write to.
+ * \param arrayData some external representation of an array.
+ * \param length the length of arrayData (or -1 if this represents a null array).
+ * \param getter the callback to retrieve data at specific locations in the array.
+ *
+ * \return STATUS_OK on successful write.
+ */
+binder_status_t AParcel_writeStrongBinderArray(AParcel* parcel, const void* arrayData,
+                                               int32_t length,
+                                               AParcel_strongBinderArrayGetter getter)
+        __INTRODUCED_IN(29);
+
+/**
+ * Reads an array of strongBinder from the next location in a non-null parcel.
+ *
+ * First, allocator will be called with the length of the array. Then, for every i in [0, length),
+ * setter(arrayData, i, x) will be called where x is the value at the associated index.
+ *
+ * \param parcel the parcel to read from.
+ * \param arrayData some external representation of an array.
+ * \param allocator the callback that will be called to allocate the array.
+ * \param setter the callback that will be called to set a value at a specific location in the
+ * array.
+ *
+ * \return STATUS_OK on successful read.
+ */
+binder_status_t AParcel_readStrongBinderArray(const AParcel* parcel, void* arrayData,
+                                              AParcel_strongBinderArrayAllocator allocator,
+                                              AParcel_strongBinderArraySetter setter)
         __INTRODUCED_IN(29);
 
 /**
