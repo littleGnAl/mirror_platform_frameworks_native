@@ -67,7 +67,7 @@ cc_defaults {
 }
 
 cc_binary {
-    name: "gpuservice",
+    name: "gpu",
     defaults: ["gpuservice_binary"],
     init_rc: ["gpuservice.rc"],
     srcs: [":gpuservice_binary_sources"],
