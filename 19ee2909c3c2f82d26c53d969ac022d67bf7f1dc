@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0130cf7_896bd9b5",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-11-16T14:04:49Z",
+      "side": 1,
+      "message": "I just picked a sensible option.\n\nIf there\u0027s a concern about parsing I\u0027ll follow your suggestion. But if there isn\u0027t it\u0027s harder to explain and maintain why we are picking these arbitrary strings",
+      "parentUuid": "b435a05a_ed6ff3a2",
+      "range": {
+        "startLine": 1940,
+        "startChar": 19,
+        "endLine": 1940,
+        "endChar": 36
+      },
+      "revId": "19ee2909c3c2f82d26c53d969ac022d67bf7f1dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1ccdc56_ff04410a",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f7739024_c244fc61",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-11-16T14:04:49Z",
+      "side": 1,
+      "message": "Not for these options, but when triggering from \"adb bugreport\" it\u0027s false. (I don\u0027t know yet if it\u0027s a new mode or will completely bypass all this)",
+      "parentUuid": "a1ccdc56_ff04410a",
+      "range": {
+        "startLine": 1957,
+        "startChar": 21,
+        "endLine": 1957,
+        "endChar": 41
+      },
+      "revId": "19ee2909c3c2f82d26c53d969ac022d67bf7f1dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a8d10a8_14bd1801",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "19ee2909c3c2f82d26c53d969ac022d67bf7f1dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6523fae1_a29a7e48",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-11-16T14:04:49Z",
+      "side": 1,
+      "message": "Yes. See TODO on Line 2021.",
+      "parentUuid": "2a8d10a8_14bd1801",
+      "range": {
+        "startLine": 1994,
+        "startChar": 7,
+        "endLine": 1994,
+        "endChar": 64
+      },
+      "revId": "19ee2909c3c2f82d26c53d969ac022d67bf7f1dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
