@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c821b565_6ab7bdc6",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-11-16T16:39:52Z",
+      "side": 1,
+      "message": "Add a comment to this file explaining what it does and what is used for and why needs to be it\u0027s own process",
+      "revId": "cd593565ca8e7e534dc45cd7f68875ef06643cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3665a16_0b7f99f1",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-11-16T16:39:52Z",
+      "side": 1,
+      "message": "Nit :wrap this into an anonymous name space so it gets static linkage and doesn\u0027t leak the symbol \n\nnamespace {\nBool... \n}",
+      "revId": "cd593565ca8e7e534dc45cd7f68875ef06643cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09c1f50a_98ba306c",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-11-16T16:39:52Z",
+      "side": 1,
+      "message": "Nit s/null/nullptr/, or just if(dirp)\nNo huge functional difference but ad per c++11 this is what the style guide suggests",
+      "revId": "cd593565ca8e7e534dc45cd7f68875ef06643cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c90f8e9_50e9f248",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-11-16T16:39:52Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "cd593565ca8e7e534dc45cd7f68875ef06643cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "139fb857_6b43488d",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-11-16T16:39:52Z",
+      "side": 1,
+      "message": "Maybe add a comment saying \"filter only numeric pid directories\"\nAlso check the flag of the entry to see if it\u0027s a directory and not any other type.",
+      "revId": "cd593565ca8e7e534dc45cd7f68875ef06643cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8677abe8_c9e2fdb1",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-11-16T16:39:52Z",
+      "side": 1,
+      "message": "Do you really need this log line in production? Seems a source of spam.",
+      "revId": "cd593565ca8e7e534dc45cd7f68875ef06643cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
