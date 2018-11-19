@@ -70,6 +70,30 @@
       "revId": "b4e1461cb31bbd40a1cddf4c80bb020b36c6493f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc01e821_46963a31",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-19T21:35:58Z",
+      "side": 1,
+      "message": "I chose int32_t to be consistent w/ Java and also to simplify the story (since these are IPC transactions, limiting the size to 32 bits is more consistent).",
+      "parentUuid": "9846008b_a74ad772",
+      "range": {
+        "startLine": 73,
+        "startChar": 58,
+        "endLine": 73,
+        "endChar": 65
+      },
+      "revId": "b4e1461cb31bbd40a1cddf4c80bb020b36c6493f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
