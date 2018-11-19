@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "52e00be3_c2ef401c",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-11-19T12:07:01Z",
+      "side": 1,
+      "message": "Yes the TODO holds. \n\nI removed it to keep the CL a bit focused. The listener needs to come with the name \u0026 getSectionDetails boolean args (similar to the other method). It will be added back later when the behavior gets implemented. I\u0027m going with the assumption that changing the aidl is okay since system server is the only client and I can change them both together while I iterate on the interface. wdyt?",
+      "parentUuid": "bc6a56d8_5bc77a0f",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 48
+      },
+      "revId": "66526ddbe0062998004c6528873d85913c78c925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e671081_11add44c",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "66526ddbe0062998004c6528873d85913c78c925",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fde7ea66_b7796f15",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-11-19T12:07:01Z",
+      "side": 1,
+      "message": "good point",
+      "parentUuid": "9e671081_11add44c",
+      "range": {
+        "startLine": 2145,
+        "startChar": 32,
+        "endLine": 2145,
+        "endChar": 46
+      },
+      "revId": "66526ddbe0062998004c6528873d85913c78c925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
