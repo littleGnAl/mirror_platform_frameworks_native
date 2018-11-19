@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "72f6e568_d5e54109",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-11-19T13:08:22Z",
+      "side": 1,
+      "message": "OK, as long as it\u0027s coming back at some point. Changing the AIDL like this is fine as long as its clients are also changed.",
+      "parentUuid": "52e00be3_c2ef401c",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 48
+      },
+      "revId": "66526ddbe0062998004c6528873d85913c78c925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e671081_11add44c",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
