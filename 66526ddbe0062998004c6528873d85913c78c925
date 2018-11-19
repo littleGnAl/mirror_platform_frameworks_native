@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc6a56d8_5bc77a0f",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-11-19T11:52:45Z",
+      "side": 1,
+      "message": "why did you choose to remove IDumpStateListener from this call ? It\u0027s a better design choice (IMO) to provide a listener with each call than to have a separate setListener / removeListener APIs. Does the TODO in line 30 still hold ?",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 48
+      },
+      "revId": "66526ddbe0062998004c6528873d85913c78c925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e671081_11add44c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-11-19T11:52:45Z",
+      "side": 1,
+      "message": "Run is a better name than RunWithOptions IMO. WithOptions is implied, especially since there\u0027s no RunWithoutOptions method.",
+      "range": {
+        "startLine": 2145,
+        "startChar": 32,
+        "endLine": 2145,
+        "endChar": 46
+      },
+      "revId": "66526ddbe0062998004c6528873d85913c78c925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
