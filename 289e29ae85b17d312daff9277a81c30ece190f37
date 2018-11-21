@@ -70,6 +70,30 @@
       "revId": "289e29ae85b17d312daff9277a81c30ece190f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ebf5636_c27e8d5c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-21T20:02:58Z",
+      "side": 1,
+      "message": "This was changed from symlink to bindmount. https://android-review.googlesource.com/c/platform/system/apex/+/818399",
+      "parentUuid": "edd6d50d_f5df9da5",
+      "range": {
+        "startLine": 312,
+        "startChar": 37,
+        "endLine": 312,
+        "endChar": 52
+      },
+      "revId": "289e29ae85b17d312daff9277a81c30ece190f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
