@@ -16,6 +16,24 @@
       "revId": "f25cf0661e943e5d80c57d7dbfb61a733a535108",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05dbe90_13959b99",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-11-21T16:54:21Z",
+      "side": 0,
+      "message": "That should still happen.\nFinishZipFile() returns false at line 1856\ndo_text_file \u003d true at 1858\ncontinue with flat file at 1864",
+      "parentUuid": "870e2565_846dfa71",
+      "revId": "f25cf0661e943e5d80c57d7dbfb61a733a535108",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
