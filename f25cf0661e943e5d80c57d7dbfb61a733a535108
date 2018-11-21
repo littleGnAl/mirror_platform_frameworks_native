@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "870e2565_846dfa71",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-11-21T16:46:57Z",
+      "side": 0,
+      "message": "Hmm, I don\u0027t remember why we were checking this, but the overall idea is that if that if the zip file could not be finalize, we would still generate a flat bugreport with the temporary file (that has the stdout output), as the .zip would be corrupted - would we still be doing this after this change?",
+      "revId": "f25cf0661e943e5d80c57d7dbfb61a733a535108",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
