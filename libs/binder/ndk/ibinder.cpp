@@ -122,17 +122,23 @@ const String16& ABBinder::getInterfaceDescriptor() const {
 status_t ABBinder::onTransact(transaction_code_t code, const Parcel& data, Parcel* reply,
                               binder_flags_t flags) {
     if (isUserCommand(code)) {
+        // Do the checkInterface only for user commands.
+        // Many of the non-user commands do not write interface token.
         if (!data.checkInterface(this)) {
             return STATUS_BAD_TYPE;
         }
+    }
 
-        const AParcel in = AParcel::readOnly(this, &data);
-        AParcel out = AParcel(this, reply, false /*owns*/);
+    const AParcel in = AParcel::readOnly(this, &data);
+    AParcel out = AParcel(this, reply, false /*owns*/);
 
-        binder_status_t status = getClass()->onTransact(this, code, &in, &out);
-        return PruneStatusT(status);
-    } else {
+    binder_status_t status = getClass()->onTransact(this, code, &in, &out);
+    if (status == STATUS_UNKNOWN_TRANSACTION) {
+        // If the transaction is not handled, fall back to
+        // BBinder::onTransact where common non-user commands are implemented.
         return BBinder::onTransact(code, data, reply, flags);
+    } else {
+        return PruneStatusT(status);
     }
 }
 
@@ -457,11 +463,6 @@ binder_status_t AIBinder_transact(AIBinder* binder, transaction_code_t code, APa
     // This object is the input to the transaction. This function takes ownership of it and deletes
     // it.
     AutoParcelDestroyer forIn(in, DestroyParcel);
-
-    if (!isUserCommand(code)) {
-        LOG(ERROR) << __func__ << ": Only user-defined transactions can be made from the NDK.";
-        return STATUS_UNKNOWN_TRANSACTION;
-    }
 
     if ((flags & ~FLAG_ONEWAY) != 0) {
         LOG(ERROR) << __func__ << ": Unrecognized flags sent: " << flags;
