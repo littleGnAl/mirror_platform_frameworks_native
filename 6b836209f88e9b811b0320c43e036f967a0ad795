@@ -16,6 +16,24 @@
       "revId": "6b836209f88e9b811b0320c43e036f967a0ad795",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b71900d_341d0fc8",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-11-22T04:06:04Z",
+      "side": 1,
+      "message": "Sorry for confusing, this is a constructor so don\u0027t need to erase. But you may want to do:\n\nScopedAResource(ScopedAResource\u0026\u0026 other) : mT(std::move(other.mT)) { ... }",
+      "parentUuid": "48ea50e6_ddd47205",
+      "revId": "6b836209f88e9b811b0320c43e036f967a0ad795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
