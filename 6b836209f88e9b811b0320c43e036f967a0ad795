@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48ea50e6_ddd47205",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-11-22T03:46:52Z",
+      "side": 1,
+      "message": "I forgot to release this-\u003emT here, so how about calling set(other.mT)?",
+      "revId": "6b836209f88e9b811b0320c43e036f967a0ad795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
