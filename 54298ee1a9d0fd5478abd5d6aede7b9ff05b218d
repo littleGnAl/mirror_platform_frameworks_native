@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e79a1061_05824aef",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-11-23T15:19:48Z",
+      "side": 1,
+      "message": "I might be tempted to declare the binary paths here, e.g. kDex2OatPath, kDex2OatDebugPath. Marginally easier for the TODO. Fine as-is.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "54298ee1a9d0fd5478abd5d6aede7b9ff05b218d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
