@@ -621,6 +621,17 @@ void DisplayDevice::setProjection(int orientation,
     // physical translation and finally rotate to the physical orientation.
     mGlobalTransform = R * TP * S * TL;
 
+    Transform TC; // translate to center
+    TC.set(dst_width / -2.0f, dst_height / -2.0f);
+
+    Transform R1; // rotate 3 degree ccw
+    R1.set(0.999f, 0.0523f, -0.0523f, 0.999f);
+
+    Transform S2; // scale down by 2%
+    S2.set(0.98f, 0, 0, 0.98f);
+
+    mGlobalTransform = S2 * TC.inverse() * R1 * TC * mGlobalTransform;
+
     const uint8_t type = mGlobalTransform.getType();
     mNeedsFiltering = (!mGlobalTransform.preserveRects() ||
             (type >= Transform::SCALE));

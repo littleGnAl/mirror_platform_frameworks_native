@@ -3000,6 +3000,15 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& displayDev
             colorMatrix *= mEnhancedSaturationMatrix;
         }
 
+        mat4 invertAllButRed = mat4(
+            vec4{1.0f, 0.0f, 0.0f, 0.0f},
+            vec4{0.0f, -1.0f, 0.0f, 0.0f},
+            vec4{0.0f, 0.0f, -1.0f, 0.0f},
+            vec4{0.0f, 1.0f, 1.0f, 1.0f}
+        );
+
+        colorMatrix *= invertAllButRed;
+
         getRenderEngine().setupColorTransform(colorMatrix);
 
         if (!displayDevice->makeCurrent()) {
