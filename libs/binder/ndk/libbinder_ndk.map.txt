@@ -71,6 +71,8 @@ LIBBINDER_NDK { # introduced=29
     AParcel_writeUint32Array;
     AParcel_writeUint64;
     AParcel_writeUint64Array;
+    AParcel_dataPosition;
+    AParcel_setDataPosition;
     AStatus_delete;
     AStatus_fromExceptionCode;
     AStatus_fromExceptionCodeWithMessage;

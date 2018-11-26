@@ -598,4 +598,12 @@ binder_status_t AParcel_readByteArray(const AParcel* parcel, void* arrayData,
     return ReadArray<int8_t>(parcel, arrayData, allocator);
 }
 
+size_t AParcel_dataPosition(const AParcel* parcel) __INTRODUCED_IN(29) {
+    return parcel->get()->dataPosition();
+}
+
+void AParcel_setDataPosition(const AParcel* parcel, size_t sizeData) __INTRODUCED_IN(29) {
+    parcel->get()->setDataPosition(sizeData);
+}
+
 // @END
