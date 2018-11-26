@@ -911,6 +911,11 @@ binder_status_t AParcel_readCharArray(const AParcel* parcel, void* arrayData,
 binder_status_t AParcel_readByteArray(const AParcel* parcel, void* arrayData,
                                       AParcel_byteArrayAllocator allocator) __INTRODUCED_IN(29);
 
+size_t AParcel_dataPosition(const AParcel* parcel) __INTRODUCED_IN(29);
+
+void AParcel_setDataPosition(AParcel* parcel, size_t sizeData) __INTRODUCED_IN(29);
+
+
 // @END-PRIMITIVE-READ-WRITE
 
 #endif  //__ANDROID_API__ >= __ANDROID_API_Q__
