@@ -46,6 +46,30 @@
       "revId": "2dcf78cebe1131d86793c74c01b4c3640ed33a5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb10d05f_7132e798",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2018-11-27T08:47:12Z",
+      "side": 1,
+      "message": "Parcel.setDataPosition(size_t) is const function. I make it const function because of consistency..",
+      "parentUuid": "aecd8928_205f73f1",
+      "range": {
+        "startLine": 605,
+        "startChar": 29,
+        "endLine": 605,
+        "endChar": 34
+      },
+      "revId": "2dcf78cebe1131d86793c74c01b4c3640ed33a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
