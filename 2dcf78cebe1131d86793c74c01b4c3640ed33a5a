@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aecd8928_205f73f1",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-27T08:40:02Z",
+      "side": 1,
+      "message": "why const? We are mutating parcel with this, aren\u0027t we?",
+      "range": {
+        "startLine": 605,
+        "startChar": 29,
+        "endLine": 605,
+        "endChar": 34
+      },
+      "revId": "2dcf78cebe1131d86793c74c01b4c3640ed33a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
