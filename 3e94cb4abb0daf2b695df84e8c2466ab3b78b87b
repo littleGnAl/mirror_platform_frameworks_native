@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "262d27ea_7f083f22",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-27T22:41:46Z",
+      "side": 1,
+      "message": "I mean, it can, but it will still be an error when negative. Done.",
+      "parentUuid": "827fc74f_c9c00b6d",
+      "range": {
+        "startLine": 63,
+        "startChar": 60,
+        "endLine": 63,
+        "endChar": 69
+      },
+      "revId": "3e94cb4abb0daf2b695df84e8c2466ab3b78b87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8456a41b_b7b4f3cd",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "3e94cb4abb0daf2b695df84e8c2466ab3b78b87b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f2e6e11_46541c92",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-27T22:41:46Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "8456a41b_b7b4f3cd",
+      "range": {
+        "startLine": 73,
+        "startChar": 65,
+        "endLine": 73,
+        "endChar": 74
+      },
+      "revId": "3e94cb4abb0daf2b695df84e8c2466ab3b78b87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
