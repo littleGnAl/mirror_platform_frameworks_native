@@ -22,6 +22,30 @@
       "revId": "4de90415c5595726c76027434c487b35be5cf9d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69719448_01aef9b2",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-27T02:17:24Z",
+      "side": 1,
+      "message": "Yeah I think so. This just reflects the reality.",
+      "parentUuid": "badd3d4c_ac982887",
+      "range": {
+        "startLine": 126,
+        "startChar": 11,
+        "endLine": 126,
+        "endChar": 70
+      },
+      "revId": "4de90415c5595726c76027434c487b35be5cf9d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
