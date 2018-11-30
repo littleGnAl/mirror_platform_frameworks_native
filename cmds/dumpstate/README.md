@@ -20,11 +20,21 @@ If you're working on device-specific code, you might need to build them as well.
 mmm -j frameworks/native/cmds/dumpstate device/acme/secret_device/dumpstate/ hardware/interfaces/dumpstate
 ```
 
-## To build, deploy, and take a bugreport
+### To build, deploy, and take a bugreport
 
 ```
 mmm -j frameworks/native/cmds/dumpstate && adb push ${OUT}/system/bin/dumpstate system/bin && adb shell am bug-report
 ```
+
+Make sure that the device is remounted before running the above command.
+* If you're working with `userdebug` variant, you might need to run the following to remount your device:
+  ```
+  adb root && adb remount -R && adb wait-for-device && adb root && adb remount
+  ```
+* If you're working with `eng` variant, you might need to run the following to remount your device:
+  ```
+  adb root && adb remount
+  ```
 
 ## To build, deploy, and run unit tests
 
@@ -37,13 +47,13 @@ adb shell mkdir /data/nativetest64
 Then run:
 
 ```
-mmm -j frameworks/native/cmds/dumpstate/ && adb push ${OUT}/data/nativetest64/dumpstate_test* /data/nativetest64 && adb shell /data/nativetest/dumpstate_test/dumpstate_test
+mmm -j frameworks/native/cmds/dumpstate/ && adb push ${OUT}/data/nativetest64/dumpstate_test* /data/nativetest64 && adb shell /data/nativetest64/dumpstate_test/dumpstate_test
 ```
 
 And to run just one test (for example, `DumpstateTest.RunCommandNoArgs`):
 
 ```
-mmm -j frameworks/native/cmds/dumpstate/ && adb push ${OUT}/data/nativetest64/dumpstate_test* /data/nativetest64 && adb shell /data/nativetest/dumpstate_test/dumpstate_test --gtest_filter=DumpstateTest.RunCommandNoArgs
+mmm -j frameworks/native/cmds/dumpstate/ && adb push ${OUT}/data/nativetest64/dumpstate_test* /data/nativetest64 && adb shell /data/nativetest64/dumpstate_test/dumpstate_test --gtest_filter=DumpstateTest.RunCommandNoArgs
 ```
 
 ## To take quick bugreports
