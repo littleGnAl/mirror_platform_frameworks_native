@@ -20,7 +20,7 @@ If you're working on device-specific code, you might need to build them as well.
 mmm -j frameworks/native/cmds/dumpstate device/acme/secret_device/dumpstate/ hardware/interfaces/dumpstate
 ```
 
-### To build, deploy, and take a bugreport
+## To build, deploy, and take a bugreport
 
 ```
 mmm -j frameworks/native/cmds/dumpstate && adb push ${OUT}/system/bin/dumpstate system/bin && adb shell am bug-report
