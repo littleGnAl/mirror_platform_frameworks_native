@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71a80d7a_5d82282e",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-12-03T07:20:49Z",
+      "side": 1,
+      "message": "Does it? I seem to remember that the implementation actually returns one of the getaddrinfo EAI_xxx codes.",
+      "range": {
+        "startLine": 121,
+        "startChar": 58,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "e87e7db5614c696cfc5f561c83177ab4c8829fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
