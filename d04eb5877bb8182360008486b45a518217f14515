@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "118e9dd8_60d78709",
+        "filename": "cmds/dumpstate/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2018-12-03T10:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "027d4509_af41c609",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "d04eb5877bb8182360008486b45a518217f14515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c1782bb_96575a42",
         "filename": "cmds/dumpstate/README.md",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "d04eb5877bb8182360008486b45a518217f14515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e07e4da_e432684e",
+        "filename": "cmds/dumpstate/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2018-12-03T10:06:42Z",
+      "side": 1,
+      "message": "Makes sense!",
+      "parentUuid": "6c1782bb_96575a42",
+      "range": {
+        "startLine": 30,
+        "startChar": 98,
+        "endLine": 30,
+        "endChar": 104
+      },
+      "revId": "d04eb5877bb8182360008486b45a518217f14515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
