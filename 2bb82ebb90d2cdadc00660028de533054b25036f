@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4faf4d3e_e6f0c80b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-12-03T12:47:33Z",
+      "side": 1,
+      "message": "do you know why we\u0027re using O_NONBLOCK here ?",
+      "range": {
+        "startLine": 144,
+        "startChar": 58,
+        "endLine": 144,
+        "endChar": 68
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1648bc4d_b4feea09",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-12-03T12:47:33Z",
+      "side": 1,
+      "message": "are in_fd / out_fd both regular files ? if one of the fds is a pipe, you can use splice instead.",
+      "range": {
+        "startLine": 147,
+        "startChar": 13,
+        "endLine": 147,
+        "endChar": 36
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37938e58_5f8df525",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-12-03T12:47:33Z",
+      "side": 1,
+      "message": "Does this really copy to an OutputDirectory ? Seems obsolete.",
+      "range": {
+        "startLine": 162,
+        "startChar": 22,
+        "endLine": 162,
+        "endChar": 38
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eacc20bc_5da628aa",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-12-03T12:47:33Z",
+      "side": 1,
+      "message": "nit: i think it would be more consistent to name this out_fd (to match in_fd) and rename the command line argument.",
+      "range": {
+        "startLine": 168,
+        "startChar": 29,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21abeaa1_4bd57134",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-12-03T12:47:33Z",
+      "side": 1,
+      "message": "comment is incorrect",
+      "range": {
+        "startLine": 170,
+        "startChar": 43,
+        "endLine": 170,
+        "endChar": 56
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "413d2843_cd19e622",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-12-03T12:47:33Z",
+      "side": 1,
+      "message": "i was confused by this assignment. it would be less confusing (and symmetric) to consistently use output_file_fd from this point on.",
+      "range": {
+        "startLine": 178,
+        "startChar": 3,
+        "endLine": 178,
+        "endChar": 38
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aec1971_b6b3737e",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-12-03T12:47:33Z",
+      "side": 1,
+      "message": "This should be static const. Same issue with the strings above, but those can be fixed in a separate change.\n\nAlso, I don\u0027t think you can assume this path (especially the user_de/0/ path) -- will this change in a future change ?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 18
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e0a5b8_ead59878",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-12-03T12:47:33Z",
+      "side": 1,
+      "message": "so, tying this in to the comment above, am I right in understanding that dumpstate uses a directory owned by com.android.shell as its working directory ? That seems pretty non-ideal since it\u0027s a really tight dependency (more than just the path..) which seems wrong.",
+      "range": {
+        "startLine": 406,
+        "startChar": 16,
+        "endLine": 406,
+        "endChar": 39
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65100854_7221fa16",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-12-03T12:47:33Z",
+      "side": 1,
+      "message": "just FYI : I was terribly confused by the fact that a member function on Dumpstate was in utils.cpp and not DumpState.cpp. This is pretty unusual C++ style -- is it the norm for this codebase ?",
+      "range": {
+        "startLine": 231,
+        "startChar": 12,
+        "endLine": 231,
+        "endChar": 30
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
