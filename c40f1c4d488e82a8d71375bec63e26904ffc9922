@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46384e4e_6d478104",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-12-04T13:25:53Z",
+      "side": 1,
+      "message": "how about having two functions:\nCopyFileToOutputFile(const std::string\u0026 input_file, const std::string\u0026 output_file);\nCopyFileToFd(const std::string\u0026 input_file, int fd);\n\nThe former can then call the latter to do the actual copy, and the caller of this function can call the correct one directly based on whether it has an fd or a string filename.",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 163,
+        "endChar": 70
+      },
+      "revId": "c40f1c4d488e82a8d71375bec63e26904ffc9922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc82236_aeac7ba1",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-12-04T13:25:53Z",
+      "side": 1,
+      "message": "+1 for /bugreports",
+      "range": {
+        "startLine": 169,
+        "startChar": 48,
+        "endLine": 169,
+        "endChar": 98
+      },
+      "revId": "c40f1c4d488e82a8d71375bec63e26904ffc9922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
