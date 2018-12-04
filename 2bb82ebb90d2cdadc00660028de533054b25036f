@@ -140,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "94b87f9b_3b4f966b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2244,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-12-04T04:34:36Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 2244,
+        "startChar": 18,
+        "endLine": 2244,
+        "endChar": 30
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5aec1971_b6b3737e",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 2
@@ -151,6 +174,30 @@
       "writtenOn": "2018-12-03T12:47:33Z",
       "side": 1,
       "message": "This should be static const. Same issue with the strings above, but those can be fixed in a separate change.\n\nAlso, I don\u0027t think you can assume this path (especially the user_de/0/ path) -- will this change in a future change ?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 18
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce426848_3a224fd5",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-12-04T04:34:36Z",
+      "side": 1,
+      "message": "We can use /bugreports directly, that symlinks is always there since O or so.",
+      "parentUuid": "5aec1971_b6b3737e",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -186,6 +233,30 @@
     },
     {
       "key": {
+        "uuid": "344f2a3f_743c1957",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-12-04T04:34:36Z",
+      "side": 1,
+      "message": "The main (if only) reason dumpstate uses the Shell\u0027s directory is because it can then share the file with the recipients of BugreportFinished, using Android\u0027s URI grant sharing...",
+      "parentUuid": "67e0a5b8_ead59878",
+      "range": {
+        "startLine": 406,
+        "startChar": 16,
+        "endLine": 406,
+        "endChar": 39
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65100854_7221fa16",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 2
@@ -197,6 +268,30 @@
       "writtenOn": "2018-12-03T12:47:33Z",
       "side": 1,
       "message": "just FYI : I was terribly confused by the fact that a member function on Dumpstate was in utils.cpp and not DumpState.cpp. This is pretty unusual C++ style -- is it the norm for this codebase ?",
+      "range": {
+        "startLine": 231,
+        "startChar": 12,
+        "endLine": 231,
+        "endChar": 30
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "156a4f2f_ecf2cd60",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-12-04T04:34:36Z",
+      "side": 1,
+      "message": "I believe utils.cpp is the \"legacy\" code, from the time we started the migration from C to C++; we should move new code to the \"camel case files\" (like DumpstateUtil.cpp and DumpstateInternal.cpp), until we eventually get rid of utils.cpp and dumstate.cpp.",
+      "parentUuid": "65100854_7221fa16",
       "range": {
         "startLine": 231,
         "startChar": 12,
