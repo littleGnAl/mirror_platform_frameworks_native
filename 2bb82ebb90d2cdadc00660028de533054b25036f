@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f88ebafc_9b94690d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T10:28:49Z",
+      "side": 1,
+      "message": "It\u0027s used nearly everywhere in this code and there are comments to the effect of \"to avoid issues where opening the file itself can get stuck.\"",
+      "parentUuid": "4faf4d3e_e6f0c80b",
+      "range": {
+        "startLine": 144,
+        "startChar": 58,
+        "endLine": 144,
+        "endChar": 68
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1648bc4d_b4feea09",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c18b1dd7_8b9388d4",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T10:28:49Z",
+      "side": 1,
+      "message": "out_fd can be a pipe in one of the cases, but not all usecases.\n\nAre you worried about on copying taking time?",
+      "parentUuid": "1648bc4d_b4feea09",
+      "range": {
+        "startLine": 147,
+        "startChar": 13,
+        "endLine": 147,
+        "endChar": 36
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "18474889_6c91cf28",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T10:28:49Z",
+      "side": 1,
+      "message": "it does, but the caller handles the path creation, so agree we should rename.",
+      "parentUuid": "37938e58_5f8df525",
+      "range": {
+        "startLine": 162,
+        "startChar": 22,
+        "endLine": 162,
+        "endChar": 38
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eacc20bc_5da628aa",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ff4008_73f5f078",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T10:28:49Z",
+      "side": 1,
+      "message": "there is already an out_fd",
+      "parentUuid": "eacc20bc_5da628aa",
+      "range": {
+        "startLine": 168,
+        "startChar": 29,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7abb1159_db6fba7e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T10:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21abeaa1_4bd57134",
+      "range": {
+        "startLine": 170,
+        "startChar": 43,
+        "endLine": 170,
+        "endChar": 56
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "413d2843_cd19e622",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2018-12-03T12:47:33Z",
       "side": 1,
       "message": "i was confused by this assignment. it would be less confusing (and symmetric) to consistently use output_file_fd from this point on.",
+      "range": {
+        "startLine": 178,
+        "startChar": 3,
+        "endLine": 178,
+        "endChar": 38
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "428c6e62_4e976b05",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T10:28:49Z",
+      "side": 1,
+      "message": "I can\u0027t because output_file_fd may not be assigned if out_fd is valid. And I don\u0027t want to assign output_file_fd.reset(out_fd) at the outset because I don\u0027t want to close the fd supplied by the caller of the API. \n\nI can duplicate out_fd and assign to output_file_fd, if that reads better for you",
+      "parentUuid": "413d2843_cd19e622",
       "range": {
         "startLine": 178,
         "startChar": 3,
@@ -160,6 +304,30 @@
       "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31dfcf09_0497d036",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2244,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T10:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94b87f9b_3b4f966b",
+      "range": {
+        "startLine": 2244,
+        "startChar": 18,
+        "endLine": 2244,
+        "endChar": 30
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -198,6 +366,30 @@
       "side": 1,
       "message": "We can use /bugreports directly, that symlinks is always there since O or so.",
       "parentUuid": "5aec1971_b6b3737e",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 18
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "689765cd_4cc01586",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T10:28:49Z",
+      "side": 1,
+      "message": "The path is hardcoded already (albeit as an commandline argument in .rc files). Is /bugreports better for you, Narayan?\n\n2 things to note: 1) there are a bunch of O_NOFOLLOWs in code and we just need to be careful none of that is broken. 2) the 2 paths input_file and output_file in CopyFileToOutputFileOrFd are different but point to same file, so need to handle it properly.",
+      "parentUuid": "ce426848_3a224fd5",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -257,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "27a5bf5c_42dcd05e",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T10:28:49Z",
+      "side": 1,
+      "message": "Like Felipe said it\u0027s not a new dependency. I was planning to keep the dependency, for the power user usecase, where we don\u0027t want dumpstate to wait for the caller to give all the arguments, so writing to a directory shared with shell made sense. \n\nBut we can also make shell bind and lazily pass in its directory.",
+      "parentUuid": "344f2a3f_743c1957",
+      "range": {
+        "startLine": 406,
+        "startChar": 16,
+        "endLine": 406,
+        "endChar": 39
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65100854_7221fa16",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 2
@@ -301,6 +517,30 @@
       "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4647abe_ba12ac92",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T10:28:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "156a4f2f_ecf2cd60",
+      "range": {
+        "startLine": 231,
+        "startChar": 12,
+        "endLine": 231,
+        "endChar": 30
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
