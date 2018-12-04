@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "06dba408_d5aa8367",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T17:12:29Z",
+      "side": 1,
+      "message": "Source is a regular file here, for which looks like O_NONBLOCK is ignored (which was probably Narayan\u0027s point). I can remove it \u0026 avoid handling EAGAIN.",
+      "parentUuid": "3968b810_4e0de7f5",
+      "range": {
+        "startLine": 144,
+        "startChar": 58,
+        "endLine": 144,
+        "endChar": 68
+      },
+      "revId": "c40f1c4d488e82a8d71375bec63e26904ffc9922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46384e4e_6d478104",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cc979e95_250c7096",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T17:12:29Z",
+      "side": 1,
+      "message": "nice!",
+      "parentUuid": "46384e4e_6d478104",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 163,
+        "endChar": 70
+      },
+      "revId": "c40f1c4d488e82a8d71375bec63e26904ffc9922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dc82236_aeac7ba1",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "c40f1c4d488e82a8d71375bec63e26904ffc9922",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff3e5a4_62c0f1ce",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T17:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc82236_aeac7ba1",
+      "range": {
+        "startLine": 169,
+        "startChar": 48,
+        "endLine": 169,
+        "endChar": 98
+      },
+      "revId": "c40f1c4d488e82a8d71375bec63e26904ffc9922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "fda26fc5_2d9d410c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T17:12:29Z",
+      "side": 1,
+      "message": "Refactored",
+      "parentUuid": "428c6e62_4e976b05",
+      "range": {
+        "startLine": 178,
+        "startChar": 3,
+        "endLine": 178,
+        "endChar": 38
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94b87f9b_3b4f966b",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
@@ -402,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "eff2810d_8678b55a",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T17:12:29Z",
+      "side": 1,
+      "message": "Moved to /bugreports",
+      "parentUuid": "689765cd_4cc01586",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 18
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67e0a5b8_ead59878",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 2
@@ -494,6 +542,30 @@
       "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca15f8c1_f1a52a9f",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-04T17:12:29Z",
+      "side": 1,
+      "message": "It\u0027s written temporarily in bugreport_internal_dir_ and copied over in FinalizeFile",
+      "parentUuid": "a94a2aab_03c22b73",
+      "range": {
+        "startLine": 406,
+        "startChar": 16,
+        "endLine": 406,
+        "endChar": 39
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
