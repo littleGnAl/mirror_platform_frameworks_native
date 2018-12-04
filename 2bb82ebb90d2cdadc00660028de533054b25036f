@@ -473,6 +473,30 @@
     },
     {
       "key": {
+        "uuid": "a94a2aab_03c22b73",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-12-04T17:03:33Z",
+      "side": 1,
+      "message": "Just to clarify, are you planning to write the bugreport directly to the fd passed by the caller of the new API, instead of writing it to a temporary file on Shell\u0027s directory?\nIf so, I\u0027m not sure if that will work, because we\u0027ll need to show the UI consent before writing to that FD, and ad the same time we don\u0027t want to block the start of the bugreport (or did we decide that the delay is accepted when using the API? I forgot :-(",
+      "parentUuid": "27a5bf5c_42dcd05e",
+      "range": {
+        "startLine": 406,
+        "startChar": 16,
+        "endLine": 406,
+        "endChar": 39
+      },
+      "revId": "2bb82ebb90d2cdadc00660028de533054b25036f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65100854_7221fa16",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 2
