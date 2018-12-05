@@ -1948,52 +1948,45 @@ static inline const char* ModeToString(Dumpstate::BugreportMode mode) {
             return "BUGREPORT_TELEPHONY";
         case Dumpstate::BugreportMode::BUGREPORT_WIFI:
             return "BUGREPORT_WIFI";
+        case Dumpstate::BugreportMode::BUGREPORT_DEFAULT:
+            return "BUGREPORT_DEFAULT";
     }
 }
 
 static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOptions* options) {
     switch (mode) {
         case Dumpstate::BugreportMode::BUGREPORT_FULL:
-            options->do_broadcast = true;
-            options->do_fb = true;
+            options->do_broadcast = false;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE:
             // Currently, the dumpstate binder is only used by Shell to update progress.
             options->do_start_service = true;
             options->do_progress_updates = true;
             options->do_fb = false;
-            options->do_broadcast = true;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_REMOTE:
             options->do_vibrate = false;
             options->is_remote_mode = true;
             options->do_fb = false;
-            options->do_broadcast = true;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_WEAR:
             options->do_start_service = true;
             options->do_progress_updates = true;
-            options->do_zip_file = true;
-            options->do_fb = true;
-            options->do_broadcast = true;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_TELEPHONY:
             options->telephony_only = true;
-            options->do_fb = true;
-            options->do_broadcast = true;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_WIFI:
             options->wifi_only = true;
-            options->do_zip_file = true;
-            options->do_fb = true;
-            options->do_broadcast = true;
+            break;
+        case Dumpstate::BugreportMode::BUGREPORT_DEFAULT:
             break;
     }
 }
 
 static Dumpstate::BugreportMode getBugreportModeFromProperty() {
     // If the system property is not set, it's assumed to be a full bugreport.
-    Dumpstate::BugreportMode mode = Dumpstate::BugreportMode::BUGREPORT_FULL;
+    Dumpstate::BugreportMode mode = Dumpstate::BugreportMode::BUGREPORT_DEFAULT;
 
     std::string extra_options = android::base::GetProperty(PROPERTY_EXTRA_OPTIONS, "");
     if (!extra_options.empty()) {
@@ -2001,6 +1994,8 @@ static Dumpstate::BugreportMode getBugreportModeFromProperty() {
         // Currently, it contains the type of the requested bugreport.
         if (extra_options == "bugreportplus") {
             mode = Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE;
+        } else if (extra_options == "bugreportfull") {
+            mode = Dumpstate::BugreportMode::BUGREPORT_FULL;
         } else if (extra_options == "bugreportremote") {
             mode = Dumpstate::BugreportMode::BUGREPORT_REMOTE;
         } else if (extra_options == "bugreportwear") {
