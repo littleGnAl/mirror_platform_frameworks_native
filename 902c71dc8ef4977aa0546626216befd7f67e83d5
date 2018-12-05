@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35958861_75dd7bb3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1988,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-12-05T15:19:29Z",
+      "side": 1,
+      "message": "Is this comment obsolete now?",
+      "range": {
+        "startLine": 1988,
+        "startChar": 62,
+        "endLine": 1988,
+        "endChar": 77
+      },
+      "revId": "902c71dc8ef4977aa0546626216befd7f67e83d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
