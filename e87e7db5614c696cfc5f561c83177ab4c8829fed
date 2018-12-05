@@ -49,6 +49,76 @@
     },
     {
       "key": {
+        "uuid": "6a374a2c_c0f52280",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-12-05T06:15:23Z",
+      "side": 1,
+      "message": "Ack. Sorry for the confusion.",
+      "parentUuid": "cb725621_1c397ded",
+      "range": {
+        "startLine": 121,
+        "startChar": 58,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "e87e7db5614c696cfc5f561c83177ab4c8829fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582eaac4_2ecc0e6c",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-12-05T06:15:23Z",
+      "side": 1,
+      "message": "Per VC discussion: do we actually need this? ISTM that either we have an answer from the resolver - in which case the caller is responsible from parsing the answer and getting the rcode - or a POSIX error passed back by the resolver (possibly including ETIMEDOUT).",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 36
+      },
+      "revId": "e87e7db5614c696cfc5f561c83177ab4c8829fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c41759_c98c2265",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-12-05T06:15:23Z",
+      "side": 1,
+      "message": "Ditto, do we need this?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "e87e7db5614c696cfc5f561c83177ab4c8829fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe11ebfb_9847a592",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 2
