@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "30257224_751a7f2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-12-05T17:33:34Z",
+      "side": 1,
+      "message": "please remove this phrase; usually the test either contain a description, or a command that can be copy-and-pasted to reproduce it...\n\nPersonally, when I execute more than one command in sequence, I like to add an echo at the end to make sure they all succeeded. Example:\n\nTest:\n      mmm -j frameworks/native/cmds/dumpstate \u0026\u0026\n      mmm -j hardware/interfaces/dumpstate/1.0/default \u0026\u0026 \\\n      adb sync data \u0026\u0026 adb shell /data/nativetest/dumpstate_test/dumpstate_test \u0026\u0026 \\\n      adb shell /data/nativetest64/dumpstate_test/dumpstate_test \u0026\u0026 \\\n      adb shell /data/nativetest64/dumpstate_smoke_test/dumpstate_smoke_test \u0026\u0026 \\\n      printf \"\\n\\n#### ALL TESTS PASSED ####\\n\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "902c71dc8ef4977aa0546626216befd7f67e83d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "384afe6c_a41b1baa",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2018-12-05T17:33:34Z",
+      "side": 1,
+      "message": "Sorry for missing it before, but mode \"full\" is not a zipped bugreport, but a bugreport that is not interactive (i.e., it does not show progress updates) and that takes a screenshot right away - all bugreports are zipped.",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "902c71dc8ef4977aa0546626216befd7f67e83d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35958861_75dd7bb3",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
