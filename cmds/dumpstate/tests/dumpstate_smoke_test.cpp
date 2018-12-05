@@ -139,6 +139,8 @@ class ZippedBugReportContentsTest : public Test {
         ASSERT_EQ(OpenArchive(ZippedBugreportGenerationTest::getZipFilePath(), &handle), 0);
     }
     void TearDown() {
+        // Reset the property
+        property_set("dumpstate.options", "");
         CloseArchive(handle);
     }
 
