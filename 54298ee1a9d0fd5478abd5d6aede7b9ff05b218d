@@ -22,6 +22,30 @@
       "revId": "54298ee1a9d0fd5478abd5d6aede7b9ff05b218d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c56ca621_71e49edc",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-05T17:52:26Z",
+      "side": 1,
+      "message": "This refactoring could be done in a follow-up CL. I think there\u0027s also some value in having explicit full-length paths, as they are easier to grep.",
+      "parentUuid": "e79a1061_05824aef",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "54298ee1a9d0fd5478abd5d6aede7b9ff05b218d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
