@@ -46,6 +46,29 @@
       "revId": "e87e7db5614c696cfc5f561c83177ab4c8829fed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe11ebfb_9847a592",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-12-05T05:46:51Z",
+      "side": 1,
+      "message": "After discussing this, we think we don\u0027t need to return rcode at all, because it\u0027s already inside the answer.",
+      "range": {
+        "startLine": 156,
+        "startChar": 13,
+        "endLine": 156,
+        "endChar": 18
+      },
+      "revId": "e87e7db5614c696cfc5f561c83177ab4c8829fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
