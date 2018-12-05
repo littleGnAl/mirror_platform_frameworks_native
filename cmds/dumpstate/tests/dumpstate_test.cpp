@@ -163,7 +163,6 @@ TEST_F(DumpOptionsTest, InitializeNone) {
 
     EXPECT_EQ(status, Dumpstate::RunStatus::OK);
 
-    // These correspond to bugreport_mode = full, because that's the default.
     EXPECT_FALSE(options_.do_add_date);
     EXPECT_FALSE(options_.do_zip_file);
     EXPECT_EQ("", options_.use_outfile);
@@ -171,10 +170,288 @@ TEST_F(DumpOptionsTest, InitializeNone) {
     EXPECT_FALSE(options_.use_control_socket);
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_TRUE(options_.do_vibrate);
-    EXPECT_TRUE(options_.do_fb);
+    EXPECT_FALSE(options_.do_fb);
     EXPECT_FALSE(options_.do_progress_updates);
     EXPECT_FALSE(options_.is_remote_mode);
+    EXPECT_FALSE(options_.do_broadcast);
+}
+
+TEST_F(DumpOptionsTest, InitializeAdbBugreport) {
+    // clang-format off
+    char* argv[] = {
+        const_cast<char*>("dumpstatez"),
+        const_cast<char*>("-S"),
+        const_cast<char*>("-d"),
+        const_cast<char*>("-z"),
+        const_cast<char*>("-o abc"),
+
+    };
+    // clang-format on
+
+    Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
+
+    EXPECT_EQ(status, Dumpstate::RunStatus::OK);
+    EXPECT_TRUE(options_.do_add_date);
+    EXPECT_TRUE(options_.do_zip_file);
+    EXPECT_TRUE(options_.use_control_socket);
+    EXPECT_EQ(" abc", std::string(options_.use_outfile));
+
+    EXPECT_FALSE(options_.use_socket);
+
+    // Other options retain default values
+    EXPECT_FALSE(options_.show_header_only);
+    EXPECT_FALSE(options_.do_fb);
+    EXPECT_FALSE(options_.do_progress_updates);
+    EXPECT_FALSE(options_.is_remote_mode);
+    EXPECT_FALSE(options_.do_broadcast);
+}
+
+TEST_F(DumpOptionsTest, InitializeAdbShellBugreport) {
+    // clang-format off
+    char* argv[] = {
+        const_cast<char*>("dumpstate"),
+        const_cast<char*>("-s"),
+    };
+    // clang-format on
+
+    Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
+
+    EXPECT_EQ(status, Dumpstate::RunStatus::OK);
+    EXPECT_TRUE(options_.use_socket);
+    EXPECT_TRUE(options_.do_vibrate);
+
+    EXPECT_FALSE(options_.do_add_date);
+    EXPECT_FALSE(options_.do_zip_file);
+    EXPECT_FALSE(options_.use_control_socket);
+    EXPECT_FALSE(options_.show_header_only);
+    EXPECT_FALSE(options_.do_fb);
+    EXPECT_FALSE(options_.do_progress_updates);
+    EXPECT_FALSE(options_.is_remote_mode);
+    EXPECT_FALSE(options_.do_broadcast);
+}
+
+TEST_F(DumpOptionsTest, InitializeSystemServerFullBugReport) {
+    // clang-format off
+    char* argv[] = {
+        const_cast<char*>("bugreport"),
+        const_cast<char*>("-d"),
+        const_cast<char*>("-p"),
+        const_cast<char*>("-B"),
+        const_cast<char*>("-z"),
+        const_cast<char*>("-o abc"),
+    };
+    // clang-format on
+    android::base::SetProperty("dumpstate.options", "bugreportfull");
+
+    Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
+
+    EXPECT_EQ(status, Dumpstate::RunStatus::OK);
+    EXPECT_TRUE(options_.do_add_date);
+    EXPECT_TRUE(options_.do_fb);
+    EXPECT_TRUE(options_.do_zip_file);
+    EXPECT_TRUE(options_.do_vibrate);
+    EXPECT_EQ(" abc", std::string(options_.use_outfile));
+
+    EXPECT_FALSE(options_.use_control_socket);
+    EXPECT_FALSE(options_.show_header_only);
+    EXPECT_FALSE(options_.do_progress_updates);
+    EXPECT_FALSE(options_.is_remote_mode);
+    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_broadcast);
+}
+
+TEST_F(DumpOptionsTest, InitializeSystemServerInteractiveBugReport) {
+    // clang-format off
+    char* argv[] = {
+        const_cast<char*>("bugreport"),
+        const_cast<char*>("-d"),
+        const_cast<char*>("-p"),
+        const_cast<char*>("-B"),
+        const_cast<char*>("-z"),
+        const_cast<char*>("-o abc"),
+    };
+    // clang-format on
+
+    android::base::SetProperty("dumpstate.options", "bugreportplus");
+
+    Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
+
+    EXPECT_EQ(status, Dumpstate::RunStatus::OK);
+    EXPECT_TRUE(options_.do_add_date);
     EXPECT_TRUE(options_.do_broadcast);
+    EXPECT_TRUE(options_.do_zip_file);
+    EXPECT_TRUE(options_.do_progress_updates);
+    EXPECT_TRUE(options_.do_start_service);
+    EXPECT_TRUE(options_.do_vibrate);
+    EXPECT_EQ(" abc", std::string(options_.use_outfile));
+
+    EXPECT_FALSE(options_.use_control_socket);
+    EXPECT_FALSE(options_.show_header_only);
+    EXPECT_FALSE(options_.is_remote_mode);
+    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_fb);
+
+}
+
+TEST_F(DumpOptionsTest, InitializeSystemServerRemoteBugReport) {
+    // clang-format off
+    char* argv[] = {
+        const_cast<char*>("bugreport"),
+        const_cast<char*>("-d"),
+        const_cast<char*>("-p"),
+        const_cast<char*>("-B"),
+        const_cast<char*>("-z"),
+        const_cast<char*>("-o abc"),
+    };
+    // clang-format on
+
+    android::base::SetProperty("dumpstate.options", "bugreportremote");
+
+    Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
+
+    EXPECT_EQ(status, Dumpstate::RunStatus::OK);
+    EXPECT_TRUE(options_.do_add_date);
+    EXPECT_TRUE(options_.do_broadcast);
+    EXPECT_TRUE(options_.do_zip_file);
+    EXPECT_TRUE(options_.is_remote_mode);
+    EXPECT_EQ(" abc", std::string(options_.use_outfile));
+
+    EXPECT_FALSE(options_.use_control_socket);
+    EXPECT_FALSE(options_.show_header_only);
+    EXPECT_FALSE(options_.do_vibrate);
+    EXPECT_FALSE(options_.do_progress_updates);
+    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_fb);
+
+}
+
+TEST_F(DumpOptionsTest, InitializeSystemServerWearBugReport) {
+    // clang-format off
+    char* argv[] = {
+        const_cast<char*>("bugreport"),
+        const_cast<char*>("-d"),
+        const_cast<char*>("-p"),
+        const_cast<char*>("-B"),
+        const_cast<char*>("-z"),
+        const_cast<char*>("-o abc"),
+    };
+    // clang-format on
+
+    android::base::SetProperty("dumpstate.options", "bugreportwear");
+
+    Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
+
+    EXPECT_EQ(status, Dumpstate::RunStatus::OK);
+    EXPECT_TRUE(options_.do_add_date);
+    EXPECT_TRUE(options_.do_fb);
+    EXPECT_TRUE(options_.do_broadcast);
+    EXPECT_TRUE(options_.do_zip_file);
+    EXPECT_TRUE(options_.do_progress_updates);
+    EXPECT_TRUE(options_.do_start_service);
+    EXPECT_TRUE(options_.do_vibrate);
+    EXPECT_EQ(" abc", std::string(options_.use_outfile));
+
+    EXPECT_FALSE(options_.use_control_socket);
+    EXPECT_FALSE(options_.show_header_only);
+    EXPECT_FALSE(options_.is_remote_mode);
+    EXPECT_FALSE(options_.use_socket);
+}
+
+TEST_F(DumpOptionsTest, InitializeSystemServerTelephonyBugReport) {
+    // clang-format off
+    char* argv[] = {
+        const_cast<char*>("bugreport"),
+        const_cast<char*>("-d"),
+        const_cast<char*>("-p"),
+        const_cast<char*>("-B"),
+        const_cast<char*>("-z"),
+        const_cast<char*>("-o abc"),
+    };
+    // clang-format on
+
+    android::base::SetProperty("dumpstate.options", "bugreporttelephony");
+
+    Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
+
+    EXPECT_EQ(status, Dumpstate::RunStatus::OK);
+    EXPECT_TRUE(options_.do_add_date);
+    EXPECT_TRUE(options_.do_fb);
+    EXPECT_TRUE(options_.do_broadcast);
+    EXPECT_TRUE(options_.do_zip_file);
+    EXPECT_TRUE(options_.telephony_only);
+    EXPECT_TRUE(options_.do_vibrate);
+    EXPECT_EQ(" abc", std::string(options_.use_outfile));
+
+    EXPECT_FALSE(options_.use_control_socket);
+    EXPECT_FALSE(options_.show_header_only);
+    EXPECT_FALSE(options_.do_progress_updates);
+    EXPECT_FALSE(options_.is_remote_mode);
+    EXPECT_FALSE(options_.use_socket);
+}
+
+TEST_F(DumpOptionsTest, InitializeSystemServerWifiBugReport) {
+    // clang-format off
+    char* argv[] = {
+        const_cast<char*>("bugreport"),
+        const_cast<char*>("-d"),
+        const_cast<char*>("-p"),
+        const_cast<char*>("-B"),
+        const_cast<char*>("-z"),
+        const_cast<char*>("-o abc"),
+    };
+    // clang-format on
+
+    android::base::SetProperty("dumpstate.options", "bugreportwifi");
+
+    Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
+
+    EXPECT_EQ(status, Dumpstate::RunStatus::OK);
+    EXPECT_TRUE(options_.do_add_date);
+    EXPECT_TRUE(options_.do_fb);
+    EXPECT_TRUE(options_.do_broadcast);
+    EXPECT_TRUE(options_.do_zip_file);
+    EXPECT_TRUE(options_.wifi_only);
+    EXPECT_TRUE(options_.do_vibrate);
+    EXPECT_EQ(" abc", std::string(options_.use_outfile));
+
+    EXPECT_FALSE(options_.use_control_socket);
+    EXPECT_FALSE(options_.show_header_only);
+    EXPECT_FALSE(options_.do_progress_updates);
+    EXPECT_FALSE(options_.is_remote_mode);
+    EXPECT_FALSE(options_.use_socket);
+}
+
+TEST_F(DumpOptionsTest, InitializeSystemServerDefaultBugReport) { // default is with no mode specified
+    // clang-format off
+    char* argv[] = {
+        const_cast<char*>("bugreport"),
+        const_cast<char*>("-d"),
+        const_cast<char*>("-p"),
+        const_cast<char*>("-B"),
+        const_cast<char*>("-z"),
+        const_cast<char*>("-o abc"),
+    };
+    // clang-format on
+
+    android::base::SetProperty("dumpstate.options", "bugreportwifi");
+
+    Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
+
+    EXPECT_EQ(status, Dumpstate::RunStatus::OK);
+    EXPECT_TRUE(options_.do_add_date);
+    EXPECT_TRUE(options_.do_fb);
+    EXPECT_TRUE(options_.do_zip_file);
+    EXPECT_TRUE(options_.wifi_only);
+    EXPECT_TRUE(options_.do_vibrate);
+    EXPECT_TRUE(options_.do_broadcast);
+
+    EXPECT_EQ(" abc", std::string(options_.use_outfile));
+
+    EXPECT_FALSE(options_.use_control_socket);
+    EXPECT_FALSE(options_.show_header_only);
+    EXPECT_FALSE(options_.do_progress_updates);
+    EXPECT_FALSE(options_.is_remote_mode);
+    EXPECT_FALSE(options_.use_socket);
 }
 
 TEST_F(DumpOptionsTest, InitializePartial1) {
@@ -203,10 +480,10 @@ TEST_F(DumpOptionsTest, InitializePartial1) {
     // Other options retain default values
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_TRUE(options_.do_vibrate);
-    EXPECT_TRUE(options_.do_fb);
+    EXPECT_FALSE(options_.do_fb);
     EXPECT_FALSE(options_.do_progress_updates);
     EXPECT_FALSE(options_.is_remote_mode);
-    EXPECT_TRUE(options_.do_broadcast);
+    EXPECT_FALSE(options_.do_broadcast);
 }
 
 TEST_F(DumpOptionsTest, InitializePartial2) {

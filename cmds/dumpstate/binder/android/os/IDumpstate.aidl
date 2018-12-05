@@ -40,7 +40,10 @@ interface IDumpstate {
                                 boolean getSectionDetails);
 
     // These modes encapsulate a set of run time options for generating bugreports.
-    // A zipped bugreport; default mode.
+    // Default mode.
+    const int BUGREPORT_MODE_DEFAULT = -1;
+
+    // Takes a bugreport without user interference.
     const int BUGREPORT_MODE_FULL = 0;
 
     // Interactive bugreport, i.e. triggered by the user.
