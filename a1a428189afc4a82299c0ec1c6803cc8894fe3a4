@@ -22,6 +22,30 @@
       "revId": "a1a428189afc4a82299c0ec1c6803cc8894fe3a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40c04d68_b9816c7a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1958,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2018-12-06T09:44:41Z",
+      "side": 0,
+      "message": "Sounds reasonable, will add the options setting in all the cases back!",
+      "parentUuid": "c84a1c41_5797d419",
+      "range": {
+        "startLine": 1958,
+        "startChar": 0,
+        "endLine": 1958,
+        "endChar": 12
+      },
+      "revId": "a1a428189afc4a82299c0ec1c6803cc8894fe3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
