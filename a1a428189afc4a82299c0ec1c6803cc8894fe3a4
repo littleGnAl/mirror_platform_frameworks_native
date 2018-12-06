@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c84a1c41_5797d419",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1958,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T08:18:50Z",
+      "side": 0,
+      "message": "I know you removed it because it seems redundant, but the idea is to be explicit about all the options associated with each bugreport, rather than rely on command-line options, which will likely be removed from the argument list in the .rc file",
+      "range": {
+        "startLine": 1958,
+        "startChar": 0,
+        "endLine": 1958,
+        "endChar": 12
+      },
+      "revId": "a1a428189afc4a82299c0ec1c6803cc8894fe3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
