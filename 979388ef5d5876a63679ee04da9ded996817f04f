@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fe8e27a2_5e4fe63b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-12-06T17:43:11Z",
+      "side": 1,
+      "message": "add an error that we couldn\u0027t open input_file (or out_fd \u003d\u003d -1)?",
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf063e89_00e92e0d",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 5
@@ -13,6 +30,30 @@
       "writtenOn": "2018-12-06T17:37:29Z",
       "side": 1,
       "message": "How come we\u0027re worried about symlinks?",
+      "range": {
+        "startLine": 1831,
+        "startChar": 12,
+        "endLine": 1831,
+        "endChar": 31
+      },
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b5128cd_ce12cbe7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-12-06T17:43:11Z",
+      "side": 1,
+      "message": "I was thinking about this too, but I guess it\u0027s because /bugreports is a symlink into /data/.... Do you think that also eases \"their\" concern about using /bugreports? It\u0027s something we already have today anyway.",
+      "parentUuid": "cf063e89_00e92e0d",
       "range": {
         "startLine": 1831,
         "startChar": 12,
