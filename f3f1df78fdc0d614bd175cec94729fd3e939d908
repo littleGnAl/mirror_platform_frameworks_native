@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "023ba0cd_8367f46e",
+        "filename": "cmds/dumpstate/binder/android/os/IDumpstate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "Perhaps add that it runs using the commandline options specified.\n\n-1 is a little unusual. What do you think of making it 6?",
+      "range": {
+        "startLine": 43,
+        "startChar": 15,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249813ca_0776e685",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "Do you need this? Looking at the code before http://aosp/829480, it seems like do_broadcast was true for a full bugreport, because -B is set in init.hardware.rc.",
+      "range": {
+        "startLine": 1959,
+        "startChar": 36,
+        "endLine": 1959,
+        "endChar": 41
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd86376_8713bbf6",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "extra newline on next line",
+      "range": {
+        "startLine": 186,
+        "startChar": 34,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5b46852_b59dcf34",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "move down?",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 16
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee629583_96a129e4",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "missing do_vibrate",
+      "range": {
+        "startLine": 202,
+        "startChar": 4,
+        "endLine": 202,
+        "endChar": 16
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6466d4c4_f2588587",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "missing use_outfile",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 16
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52dedeee_804f8bda",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "I think you don\u0027t have to say system server here.",
+      "range": {
+        "startLine": 233,
+        "startChar": 34,
+        "endLine": 233,
+        "endChar": 45
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebbc38e9_fdfa1ed2",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "we must reset the property in test teardown",
+      "range": {
+        "startLine": 244,
+        "startChar": 19,
+        "endLine": 244,
+        "endChar": 30
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe02c6a4_b4d8692a",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "nit: I would move it to the above group since it\u0027s explicitly overriden. the rest of the options here are just the default values",
+      "range": {
+        "startLine": 292,
+        "startChar": 4,
+        "endLine": 292,
+        "endChar": 16
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a1c2781_1cd7e14f",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "nit: can remove newline",
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5773e6b3_5c53fc2b",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "similar: move above",
+      "range": {
+        "startLine": 321,
+        "startChar": 26,
+        "endLine": 321,
+        "endChar": 36
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0e422a1_6b4d05a9",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "line too long. Also it\u0027s more useful to say in default the commandline options are not overridden",
+      "range": {
+        "startLine": 424,
+        "startChar": 80,
+        "endLine": 424,
+        "endChar": 84
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67103039_ee611445",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-06T15:06:53Z",
+      "side": 1,
+      "message": "we need this to be empty string right?",
+      "range": {
+        "startLine": 436,
+        "startChar": 53,
+        "endLine": 436,
+        "endChar": 66
+      },
+      "revId": "f3f1df78fdc0d614bd175cec94729fd3e939d908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
