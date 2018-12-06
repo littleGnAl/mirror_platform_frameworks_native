@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "215ccb26_ad7c573c",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2018-12-06T08:42:08Z",
+      "side": 1,
+      "message": "Clarified",
+      "parentUuid": "6a374a2c_c0f52280",
+      "range": {
+        "startLine": 121,
+        "startChar": 58,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "e87e7db5614c696cfc5f561c83177ab4c8829fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "582eaac4_2ecc0e6c",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 2
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "81e58b16_6d416102",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2018-12-06T08:42:08Z",
+      "side": 1,
+      "message": "If we don\u0027t get any response, we still need to produced a error code to AP, right?\nAfter all, we can only determine the error by our-self since we don\u0027t know what happened in server side. \n\nCurrently, this API still return answer rawdata even if rcode is not 0.\nI will fix it later.\n\nAnother approach is as you said which is we could remove rcode field and return rawdata whatever we got from server.\nAnd then AP needs to parse it by itself.\n\nI think having rcode field is better for API using.\nWhat do you think about it?",
+      "parentUuid": "fec35b0b_4d7e1697",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 36
+      },
+      "revId": "e87e7db5614c696cfc5f561c83177ab4c8829fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52c41759_c98c2265",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 2
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "fc4bc49e_f51906a1",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2018-12-06T08:42:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52c41759_c98c2265",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "e87e7db5614c696cfc5f561c83177ab4c8829fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe11ebfb_9847a592",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 2
@@ -154,6 +226,30 @@
       "writtenOn": "2018-12-05T05:46:51Z",
       "side": 1,
       "message": "After discussing this, we think we don\u0027t need to return rcode at all, because it\u0027s already inside the answer.",
+      "range": {
+        "startLine": 156,
+        "startChar": 13,
+        "endLine": 156,
+        "endChar": 18
+      },
+      "revId": "e87e7db5614c696cfc5f561c83177ab4c8829fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "769e81e0_8b3e937a",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2018-12-06T08:42:08Z",
+      "side": 1,
+      "message": "Rcode field depends on if we really need \"return value 0\".\nI\u0027ve posted some comments.\n\"remove rcode. return answer whatever we get\"  V.S. \"with rcode field. only return answer if rocde \u003d 0\"\nWhat do you think about it?",
+      "parentUuid": "fe11ebfb_9847a592",
       "range": {
         "startLine": 156,
         "startChar": 13,
