@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf063e89_00e92e0d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2018-12-06T17:37:29Z",
+      "side": 1,
+      "message": "How come we\u0027re worried about symlinks?",
+      "range": {
+        "startLine": 1831,
+        "startChar": 12,
+        "endLine": 1831,
+        "endChar": 31
+      },
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b263d68_c8f6ed61",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2018-12-06T17:37:29Z",
+      "side": 1,
+      "message": "Not sure, but might it be easier to only pick these names for the legacy case where we aren\u0027t going to stream it through the fd.  I\u0027m thinking that managing the cleanup of this directory might be easier.\n\nThis is what I did in incidentd:\nhttps://cs.corp.google.com/android/frameworks/base/cmds/incidentd/src/Reporter.cpp?l\u003d119\nhttps://cs.corp.google.com/android/frameworks/base/cmds/incidentd/src/Reporter.cpp?l\u003d155",
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8f0cde_d4073852",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2022,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2018-12-06T17:37:29Z",
+      "side": 1,
+      "message": "omg. I didn\u0027t realize this is how we\u0027re sending the broadcast.",
+      "range": {
+        "startLine": 2022,
+        "startChar": 12,
+        "endLine": 2022,
+        "endChar": 25
+      },
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f6a9c10_c4a7cb26",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2263,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2018-12-06T17:37:29Z",
+      "side": 1,
+      "message": "I still think we should look at streaming zip writes.  Maybe not in this CL, but it\u0027ll end up being more reliable, use less disk space, and simplify the code here as well.  The ZipWriter class we use here will work on a FILE* on a pipe, so we can skip all the file copying in all of the cases except for the one where we\u0027re going to go through the consent flow.",
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a030cfe_3e9edb48",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2018-12-06T17:37:29Z",
+      "side": 1,
+      "message": "\"They\" don\u0027t like putting more stuff at the top level.  For incidentd I was asked to put it in \"/data/misc/incidents/\", so maybe use \"/data/misc/bugreports\" as the temporary location.",
+      "range": {
+        "startLine": 169,
+        "startChar": 48,
+        "endLine": 169,
+        "endChar": 59
+      },
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
