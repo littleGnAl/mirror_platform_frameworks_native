@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e6db5ff1_6c3d2a9e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-07T09:03:05Z",
+      "side": 1,
+      "message": "Their respective opens handle the logging in line 133",
+      "parentUuid": "fe8e27a2_5e4fe63b",
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf063e89_00e92e0d",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 5
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "713ff3fc_f0ff013a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-07T09:03:05Z",
+      "side": 1,
+      "message": "what Martijn said",
+      "parentUuid": "7b5128cd_ce12cbe7",
+      "range": {
+        "startLine": 1831,
+        "startChar": 12,
+        "endLine": 1831,
+        "endChar": 31
+      },
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b263d68_c8f6ed61",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 5
@@ -80,6 +122,24 @@
       "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "477a05b7_911e2876",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-07T09:03:05Z",
+      "side": 1,
+      "message": "base_name_part1 is hardcoded to \"bugreport\" on line 1845 for the non-legacy case, just like \"incident\" in your example. Not sure if I fully understood your question though.\n\nThe fact that legacy use_outfile is path/to/directory/partial_name is very confusing and we should get rid of that at some point, If I do it now things may break.",
+      "parentUuid": "8b263d68_c8f6ed61",
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -123,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "0e1be743_c501fa0b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2263,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-07T09:03:05Z",
+      "side": 1,
+      "message": "Agree it\u0027s worth sorting out",
+      "parentUuid": "8f6a9c10_c4a7cb26",
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a030cfe_3e9edb48",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 5
@@ -143,6 +221,30 @@
       "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91bde9f2_9be34894",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2018-12-07T09:03:05Z",
+      "side": 1,
+      "message": "This already exists and is a symlink into shell\u0027s directory. Yeah it looks pretty strange but that\u0027s how it\u0027s done already. See https://android.googlesource.com/platform/frameworks/native/+/d1842c438698e12ebb214b64476a793cf5da8a04/cmds/dumpstate/dumpstate.cpp#141",
+      "parentUuid": "5a030cfe_3e9edb48",
+      "range": {
+        "startLine": 169,
+        "startChar": 48,
+        "endLine": 169,
+        "endChar": 59
+      },
+      "revId": "979388ef5d5876a63679ee04da9ded996817f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
