@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdd53042_7e6be161",
+        "filename": "opengl/include/EGL/eglext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2018-12-10T17:22:14Z",
+      "side": 1,
+      "message": "Is this supposed to be an EGL extension enum?\nWhere\u0027s the corresponding spec?\nI don\u0027t see this defined in the egl_registry: https://github.com/KhronosGroup/EGL-Registry",
+      "revId": "288c5bcdcefd06eecb891382470e28cfb9961d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
