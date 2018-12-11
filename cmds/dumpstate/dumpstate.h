@@ -458,9 +458,9 @@ class Dumpstate {
       public:
         android::binder::Status onReportApproved() override;
         android::binder::Status onReportDenied() override;
-//        android::IBinder* onAsBinder() override {
-//            return nullptr;
-//        }
+        android::IBinder* onAsBinder() override {
+            return nullptr;
+        }
 
         // Returns if user approved sharing the bugreport with calling app.
         bool isApproved();

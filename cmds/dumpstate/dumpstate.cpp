@@ -183,8 +183,8 @@ static bool CopyFileToFile(const std::string& input_file, const std::string& out
     return CopyFileToFd(input_file, out_fd.get());
 }
 
-static bool RemoveAndLogOnError(const std::string& file) {
-    if (remove(file.c_str()) != 0) {
+static bool UnlinkAndLogOnError(const std::string& file) {
+    if (unlink(file.c_str()) == -1) {
         MYLOGE("Failed to remove file (%s): %s\n", file.c_str(), strerror(errno));
         return false;
     }
@@ -2605,9 +2605,9 @@ void Dumpstate::CheckUserConsent(int32_t calling_uid, const android::String16& c
 }
 
 void Dumpstate::CleanupFiles() {
-    android::os::RemoveAndLogOnError(tmp_path_);
-    android::os::RemoveAndLogOnError(screenshot_path_);
-    android::os::RemoveAndLogOnError(path_);
+    android::os::UnlinkAndLogOnError(tmp_path_);
+    android::os::UnlinkAndLogOnError(screenshot_path_);
+    android::os::UnlinkAndLogOnError(path_);
 }
 
 /* Main entry point for dumpstate binary. */
