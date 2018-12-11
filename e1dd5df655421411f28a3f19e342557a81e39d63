@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "111a700e_4d184ba0",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-12-11T15:45:41Z",
+      "side": 1,
+      "message": "Is this function different in any way from android_res_nresult? If so, then we should delete one of them.\n\nI don\u0027t think having two functions instead of one gives us future flexibility, because once we declare this to be an API, its behaviour cannot really change.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 75
+      },
+      "revId": "e1dd5df655421411f28a3f19e342557a81e39d63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
