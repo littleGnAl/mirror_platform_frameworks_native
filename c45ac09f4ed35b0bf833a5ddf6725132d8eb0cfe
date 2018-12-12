@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "803ae0bd_06bf1d88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1026966
+      },
+      "writtenOn": "2018-12-12T15:49:02Z",
+      "side": 1,
+      "message": "Verified Jiyong\u0027s fix aosp/848090 with forrest:\n\nhttps://android-build.googleplex.com/builds/pending/P7245001/ndk/latest/view/logs/build.log",
+      "range": {
+        "startLine": 11,
+        "startChar": 75,
+        "endLine": 11,
+        "endChar": 109
+      },
+      "revId": "c45ac09f4ed35b0bf833a5ddf6725132d8eb0cfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
