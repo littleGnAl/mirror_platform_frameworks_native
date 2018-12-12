@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "340111b9_f370f09e",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-12T19:36:42Z",
+      "side": 1,
+      "message": "I think I might need MS_REC here too.",
+      "range": {
+        "startLine": 98,
+        "startChar": 56,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "e972a91d001c126e3884e6788a86f22dcee28478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
