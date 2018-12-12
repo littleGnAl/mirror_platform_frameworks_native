@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3fe13da_dd68dfb5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-12-12T03:01:35Z",
+      "side": 1,
+      "message": "I\u0027ll add more APIs to binder_parcel_utils.h here, but this file (the NDK API) is ready.",
+      "revId": "6afb81fa15ad42e83e1bfc7deedff8db73f4acf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
