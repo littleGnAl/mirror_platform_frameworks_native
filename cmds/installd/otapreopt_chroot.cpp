@@ -91,11 +91,13 @@ static int otapreopt_chroot(const int argc, char **arg) {
 
     // Bind mount necessary directories.
     constexpr const char* kBindMounts[] = {
-            "/data", "/dev", "/proc", "/sys"
+            "/apex", "/data", "/dev", "/proc", "/sys"
     };
     for (size_t i = 0; i < arraysize(kBindMounts); ++i) {
         std::string trg = StringPrintf("/postinstall%s", kBindMounts[i]);
-        if (mount(kBindMounts[i], trg.c_str(), nullptr, MS_BIND, nullptr) != 0) {
+        // The recursive (`MS_REC`) behavior of bind mount (`MS_BIND`) is only meaningful
+        // for `/apex`. Other directories are not expected to contain submounts.
+        if (mount(kBindMounts[i], trg.c_str(), nullptr, MS_BIND | MS_REC, nullptr) != 0) {
             PLOG(ERROR) << "Failed to bind-mount " << kBindMounts[i];
             exit(202);
         }
