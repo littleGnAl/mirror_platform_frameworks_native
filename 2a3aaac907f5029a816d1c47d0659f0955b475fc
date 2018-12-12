@@ -46,6 +46,30 @@
       "revId": "2a3aaac907f5029a816d1c47d0659f0955b475fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d84d70ec_c23e6239",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1026966
+      },
+      "writtenOn": "2018-12-12T02:33:31Z",
+      "side": 1,
+      "message": "aosp-master/ndk\n\nhttps://android-build.googleplex.com/builds/submitted/5176456/ndk/latest/view/logs/build_error.log\n\nJiyong has a fix for that and waiting for Dan\u0027s review. aosp/848090",
+      "parentUuid": "d9d68832_b3f06990",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 123
+      },
+      "revId": "2a3aaac907f5029a816d1c47d0659f0955b475fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
