@@ -87,6 +87,7 @@ public:
                                          const sp<IResultReceiver>& resultReceiver);
 
     // NOLINTNEXTLINE(google-default-arguments)
+    __attribute__((warn_unused_result))
     virtual status_t        transact(   uint32_t code,
                                         const Parcel& data,
                                         Parcel* reply,
