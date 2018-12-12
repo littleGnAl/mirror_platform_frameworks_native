@@ -91,7 +91,7 @@ static int otapreopt_chroot(const int argc, char **arg) {
 
     // Bind mount necessary directories.
     constexpr const char* kBindMounts[] = {
-            "/data", "/dev", "/proc", "/sys"
+            "/apex", "/data", "/dev", "/proc", "/sys"
     };
     for (size_t i = 0; i < arraysize(kBindMounts); ++i) {
         std::string trg = StringPrintf("/postinstall%s", kBindMounts[i]);
