@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1271509_30f71298",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-12-13T17:34:05Z",
+      "side": 1,
+      "message": "Consider \u003c\u003e",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "040d2d5dbcf50bdff5efc949510452f6613169e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
