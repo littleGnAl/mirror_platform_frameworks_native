@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ec39fe6_4240a104",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-12-13T17:21:48Z",
+      "side": 1,
+      "message": "Typically all such setup is done before the chroot.",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 5
+      },
+      "revId": "682cef6b85884bd1f60bdcb3d1064f74b82694c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a87f37bd_8f731dba",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-12-13T17:21:48Z",
+      "side": 1,
+      "message": "This leaves around the in-use loop devices. Comment that a reboot is expected soon.",
+      "range": {
+        "startLine": 194,
+        "startChar": 6,
+        "endLine": 194,
+        "endChar": 68
+      },
+      "revId": "682cef6b85884bd1f60bdcb3d1064f74b82694c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
