@@ -17,6 +17,7 @@
 #include <fcntl.h>
 #include <linux/unistd.h>
 #include <sys/mount.h>
+#include <sys/stat.h>
 #include <sys/wait.h>
 
 #include <sstream>
@@ -24,6 +25,9 @@
 #include <android-base/logging.h>
 #include <android-base/macros.h>
 #include <android-base/stringprintf.h>
+#include <selinux/android.h>
+
+#include "apexd.h"
 
 #include "installd_constants.h"
 #include "otapreopt_utils.h"
@@ -153,6 +157,41 @@ static int otapreopt_chroot(const int argc, char **arg) {
     if (chdir("/") != 0) {
         PLOG(ERROR) << "Unable to chdir into /.";
         exit(205);
+    }
+
+    // Setup APEX mount point and its security context.
+    // The logic here is similar to the one in system/core/rootdir/init.rc:
+    //
+    //   mount tmpfs tmpfs /apex nodev noexec nosuid
+    //   chmod 0755 /apex
+    //   chown root root /apex
+    //   restorecon /apex
+    //
+    if (mount("tmpfs", "/apex", "tmpfs", MS_NODEV | MS_NOEXEC | MS_NOSUID, nullptr) != 0) {
+      PLOG(ERROR) << "Failed to mount tmpfs in /apex";
+      exit(209);
+    }
+    if (chmod("/apex", 0755) != 0) {
+      PLOG(ERROR) << "Failed to chmod /apex to 0755";
+      exit(210);
+    }
+    if (chown("/apex", 0, 0) != 0) {
+      PLOG(ERROR) << "Failed to chown /apex to root:root";
+      exit(211);
+    }
+    if (selinux_android_restorecon("/apex", 0) < 0) {
+      PLOG(ERROR) << "Failed to restorecon /apex";
+      exit(212);
+    }
+
+    // Try to mount APEX packages in "/apex" in the chroot dir. We need at least
+    // the Android Runtime APEX, as it is required by otapreopt to run dex2oat.
+    {
+      // The logic here is (partially) copied and adapted from
+      // system/apex/apexd/apexd_main.cpp.
+
+      // Only scan the APEX directory under /system (within the chroot dir).
+      apex::scanPackagesDirAndActivate(apex::kApexPackageSystemDir);
     }
 
     // Now go on and run otapreopt.
