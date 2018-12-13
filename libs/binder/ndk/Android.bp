@@ -41,11 +41,13 @@ cc_library {
         "libutils",
     ],
 
-    version_script: "libbinder_ndk.map.txt",
-    stubs: {
-        symbol_file: "libbinder_ndk.map.txt",
-        versions: ["29"],
-    },
+// TODO(b/120637510) revive these and add AServiceManager_getService
+// to the map file with "# apex" tag.
+//    version_script: "libbinder_ndk.map.txt",
+//    stubs: {
+//        symbol_file: "libbinder_ndk.map.txt",
+//        versions: ["29"],
+//    },
 }
 
 ndk_headers {
