@@ -39,7 +39,7 @@ cc_library {
         "libutils",
     ],
 
-    version_script: "libbinder_ndk.map.txt",
+    // version_script: "libbinder_ndk.map.txt",
     stubs: {
         symbol_file: "libbinder_ndk.map.txt",
         versions: ["29"],
