@@ -41,6 +41,10 @@ using android::base::StringPrintf;
 namespace android {
 namespace installd {
 
+// Device mapper context, used to isolate device mapper devices used by
+// otapreopt_chroot from other users of libapexd.
+static constexpr const char* kOtapreoptChrootDmContext = "otapreopt_chroot";
+
 // Configuration for bind-mounted Bionic artifacts.
 
 static constexpr const char* kLinkerMountPoint = "/bionic/bin/linker";
@@ -79,8 +83,11 @@ static std::vector<apex::ApexFile> ActivateApexPackages() {
     // The logic here is (partially) copied and adapted from
     // system/apex/apexd/apexd_main.cpp.
     //
-    // Only scan the APEX directory under /system (within the chroot dir).
-    apex::scanPackagesDirAndActivate(apex::kApexPackageSystemDir);
+    // Scan directory /data/apex/active first, as it may contain updates of APEX
+    // packages living directory /system/apex, and we want the former ones to be
+    // used over the latter ones.
+    apex::scanPackagesDirAndActivate(apex::kActiveApexPackagesDataDir, kOtapreoptChrootDmContext);
+    apex::scanPackagesDirAndActivate(apex::kApexPackageSystemDir, kOtapreoptChrootDmContext);
     return apex::getActivePackages();
 }
 
