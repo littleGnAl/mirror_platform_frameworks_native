@@ -46,6 +46,30 @@
       "revId": "498b2c7ea390ca00d16a497f5da89aa8caca8036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "155baa01_f4cfe486",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-12-14T18:37:21Z",
+      "side": 1,
+      "message": "\u003e Also, should this be static?\n\nNo, it\u0027s wrapped in an anonymous namespace, which in C++ gives internal linkage (in essence, there is no need of global static functions in c++ given anon namespaces).",
+      "parentUuid": "d8e6d13c_d99e73c6",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "498b2c7ea390ca00d16a497f5da89aa8caca8036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
