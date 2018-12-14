@@ -79,7 +79,10 @@ static std::vector<apex::ApexFile> ActivateApexPackages() {
     // The logic here is (partially) copied and adapted from
     // system/apex/apexd/apexd_main.cpp.
     //
-    // Only scan the APEX directory under /system (within the chroot dir).
+    // Scan the directory under /data first, as it may contain updates of APEX
+    // packages living in the directory under /system, and we want the former
+    // ones to be used over the latter ones.
+    apex::scanPackagesDirAndActivate(apex::kApexPackageDataDir);
     apex::scanPackagesDirAndActivate(apex::kApexPackageSystemDir);
     return apex::getActivePackages();
 }
