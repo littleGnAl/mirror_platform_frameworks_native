@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b77a72aa_1ad414fd",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373412
+      },
+      "writtenOn": "2018-12-14T17:31:28Z",
+      "side": 1,
+      "message": "The schedule is not fixed. The binary will be invoked based on the metric collection schedule that is configured remotely: statsd will decide when it is time to read RSS high-water marks and system server will reset the counters after the read.",
+      "parentUuid": "4bd94c3c_4db46728",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "19b032854b579bb6be5e259f4e6adeafeeaa3c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf6f6823_a2b0dcf8",
         "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5b615feb_71047d27",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1373412
+      },
+      "writtenOn": "2018-12-14T17:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf6f6823_a2b0dcf8",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "19b032854b579bb6be5e259f4e6adeafeeaa3c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0089212b_047503a5",
         "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "19b032854b579bb6be5e259f4e6adeafeeaa3c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b61c731_6b9f905c",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1373412
+      },
+      "writtenOn": "2018-12-14T17:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0089212b_047503a5",
+      "revId": "19b032854b579bb6be5e259f4e6adeafeeaa3c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
