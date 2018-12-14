@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bd94c3c_4db46728",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-12-14T16:46:04Z",
+      "side": 1,
+      "message": "Alternatively, IIRC, the *.rc language supports timed events. Like cron entries, we may want to reset this value on a periodic (once every hour?) basis.\n\nNo action required. Just something to consider if you haven\u0027t already.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "19b032854b579bb6be5e259f4e6adeafeeaa3c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6f6823_a2b0dcf8",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-12-14T16:46:04Z",
+      "side": 1,
+      "message": "Scanning /proc/PID is racy. It\u0027s possible for the process to have finished execution between the time that the directory is read and the time that you attempt to write to /proc/PID/clear_refs. \n\nI would remove this logging line, since it will generate spurious, misleading error messages. Or, at a minimum, check the return value of WriteStringToFile and suppress the log message if errno\u003d\u003dENOENT.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "19b032854b579bb6be5e259f4e6adeafeeaa3c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
