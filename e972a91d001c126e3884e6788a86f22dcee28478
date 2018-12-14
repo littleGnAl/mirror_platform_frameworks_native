@@ -22,6 +22,30 @@
       "revId": "e972a91d001c126e3884e6788a86f22dcee28478",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5725c7b_fef9054b",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-12-14T09:40:47Z",
+      "side": 1,
+      "message": "Yes for /apex which has mount points. I noticed you\u0027ve made this change in PS4 anyway.",
+      "parentUuid": "340111b9_f370f09e",
+      "range": {
+        "startLine": 98,
+        "startChar": 56,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "e972a91d001c126e3884e6788a86f22dcee28478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
