@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f808e82e_b452ecc2",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-12-14T17:44:48Z",
+      "side": 1,
+      "message": "nit: return value is ignored.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "498b2c7ea390ca00d16a497f5da89aa8caca8036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
