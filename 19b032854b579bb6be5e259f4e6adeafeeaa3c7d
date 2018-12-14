@@ -45,6 +45,23 @@
       "revId": "19b032854b579bb6be5e259f4e6adeafeeaa3c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0089212b_047503a5",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-12-14T17:05:39Z",
+      "side": 1,
+      "message": "You may want to add a closedir() call before returning. While technically not necessary (because the process is exiting), adding a closedir() will help memory leak tools avoid false positives.",
+      "revId": "19b032854b579bb6be5e259f4e6adeafeeaa3c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
