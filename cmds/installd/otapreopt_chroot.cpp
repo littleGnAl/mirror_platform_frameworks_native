@@ -191,9 +191,13 @@ static int otapreopt_chroot(const int argc, char **arg) {
     // The logic here is (partially) copied and adapted from
     // system/apex/apexd/apexd_main.cpp.
     //
-    // Only scan the APEX directory under /system (within the chroot dir).
+    // Scan the directory under /data first, as it may contain updates of APEX
+    // packages living in the directory under /system, and we want the former ones
+    // to be used over the latter ones.
+    //
     // Note that this leaves around the loop devices created and used by
     // libapexd's code, but this is fine, as we expect to reboot soon after.
+    apex::scanPackagesDirAndActivate(apex::kApexPackageDataDir);
     apex::scanPackagesDirAndActivate(apex::kApexPackageSystemDir);
 
     // Now go on and run otapreopt.
