@@ -22,6 +22,30 @@
       "revId": "498b2c7ea390ca00d16a497f5da89aa8caca8036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e6d13c_d99e73c6",
+        "filename": "cmds/rss_hwm_reset/rss_hwm_reset.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-12-14T18:14:46Z",
+      "side": 1,
+      "message": "Sorry, I should have been clearer. I\u0027m not proposing checking the return value. Perhaps \"void\" instead of \"bool\" so that the return value isn\u0027t relevant?\n\nAlso, should this be static?",
+      "parentUuid": "f808e82e_b452ecc2",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "498b2c7ea390ca00d16a497f5da89aa8caca8036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
