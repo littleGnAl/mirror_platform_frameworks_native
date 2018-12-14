@@ -46,6 +46,30 @@
       "revId": "e972a91d001c126e3884e6788a86f22dcee28478",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf23a34b_41c08598",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-14T15:24:45Z",
+      "side": 1,
+      "message": "This is actually not needed (I reverted this change in PS5), as the plan is no longer to bind-mount `/apex` as `/postinstall/apex`, but to instead create a tmpfs in `/postinstall/apex` and mount APEX packages from `/postinstall/system/apex` (using `apexd`\u0027s logic) in that tmpfs (see https://android-review.googlesource.com/c/platform/frameworks/native/+/849592).",
+      "parentUuid": "e5725c7b_fef9054b",
+      "range": {
+        "startLine": 98,
+        "startChar": 56,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "e972a91d001c126e3884e6788a86f22dcee28478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
