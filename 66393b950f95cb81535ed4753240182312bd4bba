@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "06f49745_756954cb",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2018-12-17T08:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1dc5503_5d25b2b3",
+      "range": {
+        "startLine": 134,
+        "startChar": 34,
+        "endLine": 134,
+        "endChar": 37
+      },
+      "revId": "66393b950f95cb81535ed4753240182312bd4bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5943a101_7cd2c602",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "66393b950f95cb81535ed4753240182312bd4bba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0313060b_7fc2f742",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2018-12-17T08:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5943a101_7cd2c602",
+      "range": {
+        "startLine": 144,
+        "startChar": 43,
+        "endLine": 144,
+        "endChar": 46
+      },
+      "revId": "66393b950f95cb81535ed4753240182312bd4bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
