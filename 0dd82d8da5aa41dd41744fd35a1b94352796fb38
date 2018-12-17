@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3500cf4f_b3f5061d",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-12-17T23:07:14Z",
+      "side": 0,
+      "message": "Looks like this now becomes an unused define.",
+      "range": {
+        "startLine": 209,
+        "startChar": 28,
+        "endLine": 209,
+        "endChar": 43
+      },
+      "revId": "0dd82d8da5aa41dd41744fd35a1b94352796fb38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
