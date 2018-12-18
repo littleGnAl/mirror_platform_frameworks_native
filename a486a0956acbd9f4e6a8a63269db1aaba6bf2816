@@ -70,6 +70,30 @@
       "revId": "a486a0956acbd9f4e6a8a63269db1aaba6bf2816",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2d13ff_96346e25",
+        "filename": "cmds/installd/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-18T17:53:46Z",
+      "side": 1,
+      "message": "I just checked again, and the build fails if any of these modules (\"libjsoncpp|, \"libselinux\", and \"libziparchive\") are removed from `shared_libs`.",
+      "parentUuid": "2e3a3d31_f62369cc",
+      "range": {
+        "startLine": 142,
+        "startChar": 9,
+        "endLine": 142,
+        "endChar": 19
+      },
+      "revId": "a486a0956acbd9f4e6a8a63269db1aaba6bf2816",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
