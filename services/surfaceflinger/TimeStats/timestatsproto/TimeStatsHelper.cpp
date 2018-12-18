@@ -21,7 +21,6 @@
 #define HISTOGRAM_SIZE 85
 
 using android::base::StringAppendF;
-using android::base::StringPrintf;
 
 namespace android {
 namespace surfaceflinger {

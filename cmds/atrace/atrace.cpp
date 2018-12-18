@@ -53,7 +53,6 @@
 
 using namespace android;
 using pdx::default_transport::ServiceUtility;
-using hardware::hidl_vec;
 using hardware::hidl_string;
 using hardware::Return;
 using hardware::atrace::V1_0::IAtraceDevice;

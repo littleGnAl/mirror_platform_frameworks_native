@@ -28,8 +28,6 @@
 
 using namespace android;
 using ::android::hardware::thermal::V1_1::IThermal;
-using ::android::hardware::thermal::V1_0::Temperature;
-using ::android::hardware::thermal::V1_1::IThermalCallback;
 using ::android::hardware::thermal::V1_1::implementation::ThermalCallback;
 using ::android::hardware::configureRpcThreadpool;
 using ::android::hardware::hidl_death_recipient;

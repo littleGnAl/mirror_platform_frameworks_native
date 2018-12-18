@@ -28,17 +28,11 @@
 #include <utils/Errors.h>
 
 using android::BAD_TYPE;
-using android::BAD_VALUE;
 using android::NO_ERROR;
-using android::UNEXPECTED_NULL;
 using android::Parcel;
-using android::sp;
 using android::status_t;
-using std::map;
-using std::set;
 using std::vector;
 using android::binder::Value;
-using android::IBinder;
 using android::os::PersistableBundle;
 using namespace android::binder;
 

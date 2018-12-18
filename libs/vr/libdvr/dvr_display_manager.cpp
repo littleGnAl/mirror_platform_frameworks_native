@@ -13,7 +13,6 @@
 using android::dvr::BufferConsumer;
 using android::dvr::display::DisplayManagerClient;
 using android::dvr::display::SurfaceAttributes;
-using android::dvr::display::SurfaceAttribute;
 using android::dvr::display::SurfaceState;
 using android::pdx::rpc::EmptyVariant;
 

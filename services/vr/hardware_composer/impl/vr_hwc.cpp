@@ -28,7 +28,6 @@ using namespace android::hardware::graphics::common::V1_0;
 using namespace android::hardware::graphics::composer::V2_1;
 
 using android::base::StringPrintf;
-using android::hardware::hidl_handle;
 using android::hardware::hidl_string;
 using android::hardware::hidl_vec;
 using android::hardware::Return;

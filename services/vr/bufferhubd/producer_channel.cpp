@@ -20,9 +20,7 @@ using android::pdx::ErrorStatus;
 using android::pdx::Message;
 using android::pdx::RemoteChannelHandle;
 using android::pdx::Status;
-using android::pdx::rpc::BufferWrapper;
 using android::pdx::rpc::DispatchRemoteMethod;
-using android::pdx::rpc::WrapBuffer;
 
 namespace android {
 namespace dvr {

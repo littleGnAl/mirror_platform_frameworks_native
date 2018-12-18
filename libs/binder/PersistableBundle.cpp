@@ -30,8 +30,6 @@ using android::BAD_TYPE;
 using android::BAD_VALUE;
 using android::NO_ERROR;
 using android::Parcel;
-using android::sp;
-using android::status_t;
 using android::UNEXPECTED_NULL;
 using std::map;
 using std::set;

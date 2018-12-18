@@ -6,9 +6,7 @@
 #include <private/dvr/display_protocol.h>
 #include <utils/Log.h>
 
-using android::pdx::ErrorStatus;
 using android::pdx::LocalChannelHandle;
-using android::pdx::Transaction;
 
 namespace android {
 namespace dvr {

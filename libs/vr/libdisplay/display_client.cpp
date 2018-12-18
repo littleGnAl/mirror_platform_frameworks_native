@@ -14,7 +14,6 @@ using android::pdx::ErrorStatus;
 using android::pdx::LocalHandle;
 using android::pdx::LocalChannelHandle;
 using android::pdx::Status;
-using android::pdx::Transaction;
 using android::pdx::rpc::IfAnyOf;
 
 namespace android {

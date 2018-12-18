@@ -16,8 +16,6 @@ using android::pdx::Message;
 using android::pdx::default_transport::Endpoint;
 using android::pdx::ErrorStatus;
 using android::pdx::rpc::DispatchRemoteMethod;
-using android::pdx::rpc::IfAnyOf;
-using android::pdx::rpc::RemoteMethodError;
 
 namespace android {
 namespace dvr {
