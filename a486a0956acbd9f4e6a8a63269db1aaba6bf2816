@@ -46,6 +46,30 @@
       "revId": "a486a0956acbd9f4e6a8a63269db1aaba6bf2816",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3a3d31_f62369cc",
+        "filename": "cmds/installd/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-12-18T16:08:57Z",
+      "side": 1,
+      "message": "libapexd depends on all these transitively (this one comes from libapex), and it\u0027s not a whole-static-lib.",
+      "parentUuid": "eb12c120_bdd273f3",
+      "range": {
+        "startLine": 142,
+        "startChar": 9,
+        "endLine": 142,
+        "endChar": 19
+      },
+      "revId": "a486a0956acbd9f4e6a8a63269db1aaba6bf2816",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
