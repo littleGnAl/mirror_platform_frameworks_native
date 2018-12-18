@@ -139,7 +139,18 @@ cc_binary {
     srcs: ["otapreopt_chroot.cpp"],
     shared_libs: [
         "libbase",
+        "libjsoncpp",
         "liblog",
+        "libprotobuf-cpp-full",
+        "libselinux",
+        "libziparchive",
+    ],
+    static_libs: [
+        "libapex",
+        "libapexd",
+        "lib_apex_manifest_proto",
+        "libavb",
+        "libdm",
     ],
 }
 
