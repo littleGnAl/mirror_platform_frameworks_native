@@ -22,6 +22,30 @@
       "revId": "a486a0956acbd9f4e6a8a63269db1aaba6bf2816",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb12c120_bdd273f3",
+        "filename": "cmds/installd/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-18T13:14:12Z",
+      "side": 1,
+      "message": "I think added these because of link-time errors (missing symbols) when I was working on the initial CL. I\u0027ll double-check.",
+      "parentUuid": "4258f4af_93f2dd58",
+      "range": {
+        "startLine": 142,
+        "startChar": 9,
+        "endLine": 142,
+        "endChar": 19
+      },
+      "revId": "a486a0956acbd9f4e6a8a63269db1aaba6bf2816",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
