@@ -17,6 +17,26 @@ cc_library_headers {
     export_include_dirs: ["include"],
 }
 
+cc_library {
+    name: "lib-explodes-when-double-loaded",
+    vendor_available: true,
+}
+cc_library {
+    name: "lib-double-load-away",
+    vendor_available: true,
+    double_loadable: true,
+    static_libs: ["lib-explodes-when-double-loaded"],
+}
+
+cc_library {
+    name: "not-in-vndk",
+    vendor_available: true,
+    // vndk: {
+    //     enabled: true,
+    // },
+    // double_loadable: true,
+}
+
 cc_library_shared {
     name: "libgui",
     vendor_available: false,
@@ -24,6 +44,10 @@ cc_library_shared {
         enabled: true,
     },
     double_loadable: true,
+
+    static_libs: [
+        "not-in-vndk"
+    ],
 
     clang: true,
     cflags: [
