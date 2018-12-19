@@ -160,6 +160,7 @@ public:
     const egl_display_t* get() const { return mDpy; }
           egl_display_t* get()       { return mDpy; }
 
+    // NOLINTNEXTLINE(google-explicit-constructor)
     operator bool() const { return mDpy != NULL; }
 
 private:

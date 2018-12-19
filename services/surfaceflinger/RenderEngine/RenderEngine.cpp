@@ -499,6 +499,7 @@ class EGLAttributeVector {
                 v.mList.add(Attribute(attribute), value);
             }
         }
+        // NOLINTNEXTLINE(google-explicit-constructor)
         operator EGLint() const { return v.mList[attribute]; }
     };
 
@@ -512,6 +513,7 @@ public:
     Adder operator[](EGLint attribute) { return Adder(*this, attribute); }
     EGLint operator[](EGLint attribute) const { return mList[attribute]; }
     // cast-operator to (EGLint const*)
+    // NOLINTNEXTLINE(google-explicit-constructor)
     operator EGLint const*() const { return &mList.keyAt(0).v; }
 };
 

@@ -63,7 +63,7 @@ public:
 
     // Creates a velocity tracker using the specified strategy.
     // If strategy is NULL, uses the default strategy for the platform.
-    VelocityTracker(const char* strategy = NULL);
+    explicit VelocityTracker(const char* strategy = NULL);
 
     ~VelocityTracker();
 
@@ -154,7 +154,7 @@ public:
     };
 
     // Degree must be no greater than Estimator::MAX_DEGREE.
-    LeastSquaresVelocityTrackerStrategy(uint32_t degree, Weighting weighting = WEIGHTING_NONE);
+    explicit LeastSquaresVelocityTrackerStrategy(uint32_t degree, Weighting weighting = WEIGHTING_NONE);
     virtual ~LeastSquaresVelocityTrackerStrategy();
 
     virtual void clear();
@@ -197,7 +197,7 @@ private:
 class IntegratingVelocityTrackerStrategy : public VelocityTrackerStrategy {
 public:
     // Degree must be 1 or 2.
-    IntegratingVelocityTrackerStrategy(uint32_t degree);
+    explicit IntegratingVelocityTrackerStrategy(uint32_t degree);
     ~IntegratingVelocityTrackerStrategy();
 
     virtual void clear();

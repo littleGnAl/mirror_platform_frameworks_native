@@ -54,101 +54,102 @@ class SurfaceComposerClient : public RefBase
     friend class Composer;
 public:
                 SurfaceComposerClient();
-                SurfaceComposerClient(const sp<ISurfaceComposerClient>& client);
-                SurfaceComposerClient(const sp<IGraphicBufferProducer>& parent);
-    virtual     ~SurfaceComposerClient();
+                explicit SurfaceComposerClient(const sp<ISurfaceComposerClient>& client);
+                explicit SurfaceComposerClient(const sp<IGraphicBufferProducer>& parent);
+                virtual ~SurfaceComposerClient();
 
-    // Always make sure we could initialize
-    status_t    initCheck() const;
+                // Always make sure we could initialize
+                status_t initCheck() const;
 
-    // Return the connection of this client
-    sp<IBinder> connection() const;
+                // Return the connection of this client
+                sp<IBinder> connection() const;
 
-    // Forcibly remove connection before all references have gone away.
-    void        dispose();
+                // Forcibly remove connection before all references have gone away.
+                void dispose();
 
-    // callback when the composer is dies
-    status_t linkToComposerDeath(const sp<IBinder::DeathRecipient>& recipient,
-            void* cookie = NULL, uint32_t flags = 0);
+                // callback when the composer is dies
+                status_t linkToComposerDeath(const sp<IBinder::DeathRecipient>& recipient,
+                                             void* cookie = NULL, uint32_t flags = 0);
 
-    // Get a list of supported configurations for a given display
-    static status_t getDisplayConfigs(const sp<IBinder>& display,
-            Vector<DisplayInfo>* configs);
+                // Get a list of supported configurations for a given display
+                static status_t getDisplayConfigs(const sp<IBinder>& display,
+                                                  Vector<DisplayInfo>* configs);
 
-    // Get the DisplayInfo for the currently-active configuration
-    static status_t getDisplayInfo(const sp<IBinder>& display,
-            DisplayInfo* info);
+                // Get the DisplayInfo for the currently-active configuration
+                static status_t getDisplayInfo(const sp<IBinder>& display, DisplayInfo* info);
 
-    // Get the display viewport for the given display
-    static status_t getDisplayViewport(const sp<IBinder>& display, Rect* outViewport);
+                // Get the display viewport for the given display
+                static status_t getDisplayViewport(const sp<IBinder>& display, Rect* outViewport);
 
-    // Get the index of the current active configuration (relative to the list
-    // returned by getDisplayInfo)
-    static int getActiveConfig(const sp<IBinder>& display);
+                // Get the index of the current active configuration (relative to the list
+                // returned by getDisplayInfo)
+                static int getActiveConfig(const sp<IBinder>& display);
 
-    // Set a new active configuration using an index relative to the list
-    // returned by getDisplayInfo
-    static status_t setActiveConfig(const sp<IBinder>& display, int id);
+                // Set a new active configuration using an index relative to the list
+                // returned by getDisplayInfo
+                static status_t setActiveConfig(const sp<IBinder>& display, int id);
 
-    // Gets the list of supported color modes for the given display
-    static status_t getDisplayColorModes(const sp<IBinder>& display,
-            Vector<ui::ColorMode>* outColorModes);
+                // Gets the list of supported color modes for the given display
+                static status_t getDisplayColorModes(const sp<IBinder>& display,
+                                                     Vector<ui::ColorMode>* outColorModes);
 
-    // Gets the active color mode for the given display
-    static ui::ColorMode getActiveColorMode(const sp<IBinder>& display);
+                // Gets the active color mode for the given display
+                static ui::ColorMode getActiveColorMode(const sp<IBinder>& display);
 
-    // Sets the active color mode for the given display
-    static status_t setActiveColorMode(const sp<IBinder>& display,
-            ui::ColorMode colorMode);
+                // Sets the active color mode for the given display
+                static status_t setActiveColorMode(const sp<IBinder>& display,
+                                                   ui::ColorMode colorMode);
 
-    /* Triggers screen on/off or low power mode and waits for it to complete */
-    static void setDisplayPowerMode(const sp<IBinder>& display, int mode);
+                /* Triggers screen on/off or low power mode and waits for it to complete */
+                static void setDisplayPowerMode(const sp<IBinder>& display, int mode);
 
-    // ------------------------------------------------------------------------
-    // surface creation / destruction
+                // ------------------------------------------------------------------------
+                // surface creation / destruction
 
-    //! Create a surface
-    sp<SurfaceControl> createSurface(
-            const String8& name,// name of the surface
-            uint32_t w,         // width in pixel
-            uint32_t h,         // height in pixel
-            PixelFormat format, // pixel-format desired
-            uint32_t flags = 0, // usage flags
-            SurfaceControl* parent = nullptr, // parent
-            int32_t windowType = -1, // from WindowManager.java (STATUS_BAR, INPUT_METHOD, etc.)
-            int32_t ownerUid = -1 // UID of the task
-    );
+                //! Create a surface
+                sp<SurfaceControl> createSurface(
+                        const String8& name,              // name of the surface
+                        uint32_t w,                       // width in pixel
+                        uint32_t h,                       // height in pixel
+                        PixelFormat format,               // pixel-format desired
+                        uint32_t flags = 0,               // usage flags
+                        SurfaceControl* parent = nullptr, // parent
+                        int32_t windowType =
+                                -1, // from WindowManager.java (STATUS_BAR, INPUT_METHOD, etc.)
+                        int32_t ownerUid = -1 // UID of the task
+                );
 
-    status_t createSurfaceChecked(
-            const String8& name,// name of the surface
-            uint32_t w,         // width in pixel
-            uint32_t h,         // height in pixel
-            PixelFormat format, // pixel-format desired
-            sp<SurfaceControl>* outSurface,
-            uint32_t flags = 0, // usage flags
-            SurfaceControl* parent = nullptr, // parent
-            int32_t windowType = -1, // from WindowManager.java (STATUS_BAR, INPUT_METHOD, etc.)
-            int32_t ownerUid = -1 // UID of the task
-    );
+                status_t createSurfaceChecked(
+                        const String8& name, // name of the surface
+                        uint32_t w,          // width in pixel
+                        uint32_t h,          // height in pixel
+                        PixelFormat format,  // pixel-format desired
+                        sp<SurfaceControl>* outSurface,
+                        uint32_t flags = 0,               // usage flags
+                        SurfaceControl* parent = nullptr, // parent
+                        int32_t windowType =
+                                -1, // from WindowManager.java (STATUS_BAR, INPUT_METHOD, etc.)
+                        int32_t ownerUid = -1 // UID of the task
+                );
 
-    //! Create a virtual display
-    static sp<IBinder> createDisplay(const String8& displayName, bool secure);
+                //! Create a virtual display
+                static sp<IBinder> createDisplay(const String8& displayName, bool secure);
 
-    //! Destroy a virtual display
-    static void destroyDisplay(const sp<IBinder>& display);
+                //! Destroy a virtual display
+                static void destroyDisplay(const sp<IBinder>& display);
 
-    //! Get the token for the existing default displays.
-    //! Possible values for id are eDisplayIdMain and eDisplayIdHdmi.
-    static sp<IBinder> getBuiltInDisplay(int32_t id);
+                //! Get the token for the existing default displays.
+                //! Possible values for id are eDisplayIdMain and eDisplayIdHdmi.
+                static sp<IBinder> getBuiltInDisplay(int32_t id);
 
-    static status_t enableVSyncInjections(bool enable);
+                static status_t enableVSyncInjections(bool enable);
 
-    static status_t injectVSync(nsecs_t when);
+                static status_t injectVSync(nsecs_t when);
 
-    struct SCHash {
-        std::size_t operator()(const sp<SurfaceControl>& sc) const {
-            return std::hash<SurfaceControl *>{}(sc.get());
-        }
+                struct SCHash {
+                    std::size_t operator()(const sp<SurfaceControl>& sc) const {
+                        return std::hash<SurfaceControl*>{}(sc.get());
+                    }
     };
 
     class Transaction {
