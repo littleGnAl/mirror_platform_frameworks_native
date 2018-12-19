@@ -11,7 +11,8 @@ namespace pdx {
 // This is a helper class for constructing Status<T> with an error code.
 struct ErrorStatus {
  public:
-  ErrorStatus(int error) : error_{error} {}
+  ErrorStatus(int error)
+      : error_{error} {}  // NOLINT(google-explicit-constructor)
   int error() const { return error_; }
 
   static std::string ErrorToString(int error_code);
@@ -31,11 +32,14 @@ class Status {
   // Value copy/move constructors. These are intentionally not marked as
   // explicit to allow direct value returns from functions without having
   // to explicitly wrap them into Status<T>().
-  Status(const T& value) : value_{value} {}        // NOLINT(runtime/explicit)
-  Status(T&& value) : value_{std::move(value)} {}  // NOLINT(runtime/explicit)
+  Status(const T& value)
+      : value_{value} {}  // NOLINT(google-explicit-constructor)
+  Status(T&& value)
+      : value_{std::move(value)} {}  // NOLINT(google-explicit-constructor)
 
   // Constructor for storing an error code inside the Status object.
-  Status(const ErrorStatus& error_status)  // NOLINT(runtime/explicit)
+  Status(
+      const ErrorStatus& error_status)  // NOLINT(google-explicit-constructor)
       : error_{error_status.error()} {}
 
   // Copy/move constructors. Move constructor leaves |other| object in empty
@@ -135,7 +139,8 @@ template <>
 class Status<void> {
  public:
   Status() = default;
-  Status(const ErrorStatus& error_status)  // NOLINT(runtime/explicit)
+  Status(
+      const ErrorStatus& error_status)  // NOLINT(google-explicit-constructor)
       : error_{error_status.error()} {}
   void SetValue() { error_ = 0; }
   void SetError(int error) { error_ = error; }

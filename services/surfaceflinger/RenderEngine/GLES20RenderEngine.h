@@ -61,7 +61,7 @@ class GLES20RenderEngine : public RenderEngine {
     virtual void unbindFramebuffer(uint32_t texName, uint32_t fbName);
 
 public:
-    GLES20RenderEngine(uint32_t featureFlags); // See RenderEngine::FeatureFlag
+    explicit GLES20RenderEngine(uint32_t featureFlags); // See RenderEngine::FeatureFlag
     virtual ~GLES20RenderEngine();
 
 protected:

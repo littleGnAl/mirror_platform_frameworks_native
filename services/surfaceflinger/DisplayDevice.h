@@ -336,8 +336,8 @@ struct DisplayDeviceState {
 
 class DisplayRenderArea : public RenderArea {
 public:
-    DisplayRenderArea(const sp<const DisplayDevice> device,
-                      ISurfaceComposer::Rotation rotation = ISurfaceComposer::eRotateNone)
+    explicit DisplayRenderArea(const sp<const DisplayDevice> device,
+                               ISurfaceComposer::Rotation rotation = ISurfaceComposer::eRotateNone)
           : DisplayRenderArea(device, device->getBounds(), device->getHeight(), device->getWidth(),
                               rotation) {}
     DisplayRenderArea(const sp<const DisplayDevice> device, Rect sourceCrop, uint32_t reqHeight,

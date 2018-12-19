@@ -85,6 +85,7 @@ class CpuSetManager {
 
   std::string DumpState() const;
 
+  // NOLINTNEXTLINE(google-explicit-constructor)
   operator bool() const { return root_set_ != nullptr; }
 
  private:

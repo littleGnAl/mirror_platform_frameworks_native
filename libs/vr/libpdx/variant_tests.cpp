@@ -14,19 +14,22 @@ using namespace android::pdx::rpc;
 namespace {
 
 struct BaseType {
-  BaseType(int value) : value(value) {}
+  BaseType(int value) : value(value) {}  // NOLINT(google-explicit-constructor)
   int value;
 };
 
 struct DerivedType : BaseType {
-  DerivedType(int value) : BaseType{value} {};
+  DerivedType(int value)
+      : BaseType{value} {};  // NOLINT(google-explicit-constructor)
 };
 
 template <typename T>
 class TestType {
  public:
-  TestType(const T& value) : value_(value) {}
-  TestType(T&& value) : value_(std::move(value)) {}
+  TestType(const T& value)
+      : value_(value) {}  // NOLINT(google-explicit-constructor)
+  TestType(T&& value)
+      : value_(std::move(value)) {}  // NOLINT(google-explicit-constructor)
   TestType(const TestType&) = default;
   TestType(TestType&&) = default;
 
@@ -43,7 +46,9 @@ class TestType {
 template <typename T>
 class InstrumentType {
  public:
+  // NOLINTNEXTLINE(google-explicit-constructor)
   InstrumentType(const T& value) : value_(value) { constructor_count_++; }
+  // NOLINTNEXTLINE(google-explicit-constructor)
   InstrumentType(T&& value) : value_(std::move(value)) { constructor_count_++; }
   InstrumentType(const InstrumentType& other) : value_(other.value_) {
     constructor_count_++;
@@ -51,9 +56,11 @@ class InstrumentType {
   InstrumentType(InstrumentType&& other) : value_(std::move(other.value_)) {
     constructor_count_++;
   }
+  // NOLINTNEXTLINE(google-explicit-constructor)
   InstrumentType(const TestType<T>& other) : value_(other.get()) {
     constructor_count_++;
   }
+  // NOLINTNEXTLINE(google-explicit-constructor)
   InstrumentType(TestType<T>&& other) : value_(other.take()) {
     constructor_count_++;
   }
@@ -1101,7 +1108,9 @@ TEST(Variant, HasType) {
 TEST(Variant, IsConstructible) {
   using ArrayType = const float[3];
   struct ImplicitBool {
-    operator bool() const { return true; }
+    operator bool() const {
+      return true;
+    }  // NOLINT(google-explicit-constructor)
   };
   struct ExplicitBool {
     explicit operator bool() const { return true; }
