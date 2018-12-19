@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38653071_25e29a0b",
+        "filename": "libs/gui/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-12-19T23:28:33Z",
+      "side": 1,
+      "message": "this isn\u0027t actually specific to being static",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "bc8ac4b249085ef13af34fc099f364630080a2e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
