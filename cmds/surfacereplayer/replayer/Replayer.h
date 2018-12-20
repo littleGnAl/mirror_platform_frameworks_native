@@ -52,9 +52,9 @@ typedef google::protobuf::RepeatedPtrField<DisplayChange> DisplayChanges;
 
 class Replayer {
   public:
-    Replayer(const std::string& filename, bool replayManually = false,
+    explicit Replayer(const std::string& filename, bool replayManually = false,
             int numThreads = DEFAULT_THREADS, bool wait = true, nsecs_t stopHere = -1);
-    Replayer(const Trace& trace, bool replayManually = false, int numThreads = DEFAULT_THREADS,
+    explicit Replayer(const Trace& trace, bool replayManually = false, int numThreads = DEFAULT_THREADS,
             bool wait = true, nsecs_t stopHere = -1);
 
     status_t replay();
