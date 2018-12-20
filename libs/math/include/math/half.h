@@ -82,7 +82,9 @@ class half {
     };
 
 public:
+    // NOLINTNEXTLINE(google-explicit-constructor)
     CONSTEXPR half(float v) noexcept : mBits(ftoh(v)) { }
+    // NOLINTNEXTLINE(google-explicit-constructor)
     CONSTEXPR operator float() const noexcept { return htof(mBits); }
 
     uint16_t getBits() const noexcept { return mBits.bits; }

@@ -86,7 +86,7 @@ public:
 
     // handles implicit conversion to a tvec4. must not be explicit.
     template<typename A, typename = typename std::enable_if<std::is_arithmetic<A>::value >::type>
-    constexpr TVec2(A v) : x(v), y(v) { }
+    constexpr TVec2(A v) : x(v), y(v) { } // NOLINT(google-explicit-constructor)
 
     template<typename A, typename B>
     constexpr TVec2(A x, B y) : x(x), y(y) { }
