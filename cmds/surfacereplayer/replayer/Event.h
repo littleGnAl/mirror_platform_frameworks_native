@@ -26,7 +26,7 @@ namespace android {
 
 class Event {
   public:
-    Event(Increment::IncrementCase);
+    explicit Event(Increment::IncrementCase);
 
     enum class EventState {
         SettingUp,  // Completing as much time-independent work as possible
