@@ -50,7 +50,7 @@ class RenderEngine;
 
 class Surface final : public RE::Surface {
 public:
-    Surface(const RenderEngine& engine);
+    explicit Surface(const RenderEngine& engine);
     ~Surface();
 
     Surface(const Surface&) = delete;
