@@ -94,7 +94,7 @@ class Allocator {
 public:
     // An allocator relies on a mapper, and that mapper must be alive at all
     // time.
-    Allocator(const Mapper& mapper);
+    explicit Allocator(const Mapper& mapper);
 
     std::string dumpDebugInfo() const;
 
