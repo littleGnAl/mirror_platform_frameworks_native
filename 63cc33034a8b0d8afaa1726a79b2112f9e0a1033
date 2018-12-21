@@ -34,6 +34,24 @@
       "revId": "63cc33034a8b0d8afaa1726a79b2112f9e0a1033",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "812ff351_55f5eeed",
+        "filename": "opengl/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2018-12-21T23:49:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c5b8171_40b76e1a",
+      "revId": "63cc33034a8b0d8afaa1726a79b2112f9e0a1033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
