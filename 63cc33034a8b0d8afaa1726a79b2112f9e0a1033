@@ -16,6 +16,24 @@
       "revId": "63cc33034a8b0d8afaa1726a79b2112f9e0a1033",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c5b8171_40b76e1a",
+        "filename": "opengl/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-12-21T23:16:19Z",
+      "side": 1,
+      "message": "This email address is not found in AOSP Gerrit now.\nOnce the account is activated, you can enable it.",
+      "parentUuid": "223f6b7f_759eede4",
+      "revId": "63cc33034a8b0d8afaa1726a79b2112f9e0a1033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
