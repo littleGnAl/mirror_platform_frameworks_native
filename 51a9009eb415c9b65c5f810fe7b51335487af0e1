@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "606ccc85_98cda8db",
+        "filename": "vulkan/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-12-21T22:29:56Z",
+      "side": 1,
+      "message": "This Googler has left.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 19
+      },
+      "revId": "51a9009eb415c9b65c5f810fe7b51335487af0e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
