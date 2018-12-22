@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3c5a1ac_c4afa3f8",
+        "filename": "vulkan/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2018-12-22T00:05:07Z",
+      "side": 1,
+      "message": "Should this be the below?\ninclude platform/frameworks/native/opengl:/OWNERS",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 24
+      },
+      "revId": "220da1e3cbc10409b12b1be3fa1d8d2268f75c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
