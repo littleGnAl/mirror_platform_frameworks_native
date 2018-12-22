@@ -22,6 +22,30 @@
       "revId": "220da1e3cbc10409b12b1be3fa1d8d2268f75c8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce11cafa_c9390bf0",
+        "filename": "vulkan/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-12-22T00:13:54Z",
+      "side": 1,
+      "message": "https://gerrit.googlesource.com/plugins/find-owners/+/master/src/main/resources/Documentation/syntax.md\nIt\u0027s correct or could be \ninclude platform/frameworks/native:/opengl/OWNERS",
+      "parentUuid": "a3c5a1ac_c4afa3f8",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 24
+      },
+      "revId": "220da1e3cbc10409b12b1be3fa1d8d2268f75c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
