@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fb24d18_86b2b70d",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-01-02T22:32:19Z",
+      "side": 1,
+      "message": "Maybe const auto? I know this is a uint only, but I\u0027m guessing the usage of auto here is to simplify future changes if the type ever changes (and potentially to a non-primitive data type)?",
+      "range": {
+        "startLine": 149,
+        "startChar": 69,
+        "endLine": 149,
+        "endChar": 73
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8744fa7f_388fb5dc",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-01-02T22:32:19Z",
+      "side": 1,
+      "message": "So to confirm, are we only using at most 2 elements from the vector? If so, a comment with an explanation would be useful.",
+      "range": {
+        "startLine": 681,
+        "startChar": 45,
+        "endLine": 681,
+        "endChar": 64
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b394d537_0c205e9e",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-01-02T22:32:19Z",
+      "side": 1,
+      "message": "I know this came from previous code, but can you clarify what exactly this does?",
+      "range": {
+        "startLine": 683,
+        "startChar": 31,
+        "endLine": 683,
+        "endChar": 72
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a82ffe30_3dd4e3d5",
+        "filename": "services/inputflinger/EventHub.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-01-02T22:32:19Z",
+      "side": 1,
+      "message": "nit: this should go on the previous line",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 1
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79351e09_2b4b9918",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 2203,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-01-02T22:32:19Z",
+      "side": 1,
+      "message": "Haven\u0027t seen this usage much in our code. Would it be more explicit to write \"channel !\u003d 0\", which would also make it more in line with the comment above?",
+      "range": {
+        "startLine": 2203,
+        "startChar": 15,
+        "endLine": 2203,
+        "endChar": 24
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7ed9a56_08ac629c",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 2239,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-01-02T22:32:19Z",
+      "side": 1,
+      "message": "I wonder, would it be useful to have the pattern in the dump, even if not vibrating? Because the bugreport could be taken right after vibration happened? I\u0027m assuming that vibration events are pretty short and hard to capture.",
+      "range": {
+        "startLine": 2239,
+        "startChar": 3,
+        "endLine": 2239,
+        "endChar": 21
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
