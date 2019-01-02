@@ -16,6 +16,24 @@
       "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f419a28_55b51248",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-02T15:40:32Z",
+      "side": 1,
+      "message": "This is the time at which dumping commenced, not a location.\n\nGiven the possibility of a timeout or some other unspecified error, we can\u0027t know for sure at what time dumping commenced. We could approximate it by calling localtime_r before dump_backtrace_to_file_timeout but it doesn\u0027t seem worth the trouble.",
+      "parentUuid": "ae17f97c_6950f1d3",
+      "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
