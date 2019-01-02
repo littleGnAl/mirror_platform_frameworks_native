@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae17f97c_6950f1d3",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2019-01-02T15:34:38Z",
+      "side": 1,
+      "message": "Why is the location indicated as [unknown] ?",
+      "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
