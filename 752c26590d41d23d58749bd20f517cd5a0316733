@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e9f24ac0_63f186a0",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-03T10:18:29Z",
+      "side": 1,
+      "message": "I can see the header and footer in trace dump files. Still not sure where they get added, but I assume SignalCatcher or something? I think it would be useful to add a comment here saying you intend to match the success header and footer.",
+      "parentUuid": "86e883f4_55bf1f94",
+      "range": {
+        "startLine": 874,
+        "startChar": 32,
+        "endLine": 874,
+        "endChar": 35
+      },
+      "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f338d7d_bd9a6794",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 1
