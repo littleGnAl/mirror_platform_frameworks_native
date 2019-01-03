@@ -34,6 +34,52 @@
       "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e883f4_55bf1f94",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-03T09:01:00Z",
+      "side": 1,
+      "message": "Are the start and end messages necessary? The commit message says they are supposed to look like the success header and footer. I could not find those - mind pointing out?",
+      "range": {
+        "startLine": 874,
+        "startChar": 32,
+        "endLine": 874,
+        "endChar": 35
+      },
+      "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f338d7d_bd9a6794",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-03T09:01:00Z",
+      "side": 1,
+      "message": "Trailing comma looks unnecessary",
+      "range": {
+        "startLine": 875,
+        "startChar": 61,
+        "endLine": 875,
+        "endChar": 62
+      },
+      "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
