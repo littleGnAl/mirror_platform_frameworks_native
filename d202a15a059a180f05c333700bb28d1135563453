@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba7ecc16_4794a66d",
+        "filename": "include/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-01-03T01:47:37Z",
+      "side": 1,
+      "message": "Consider adding all of Michael\u0027s reports? Alexey Kuzmin works on native code also, I think.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 9
+      },
+      "revId": "d202a15a059a180f05c333700bb28d1135563453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
