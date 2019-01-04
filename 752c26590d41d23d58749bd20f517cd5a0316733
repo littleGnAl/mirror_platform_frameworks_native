@@ -84,6 +84,48 @@
     },
     {
       "key": {
+        "uuid": "eaf8ee22_28910d72",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-04T09:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9f24ac0_63f186a0",
+      "range": {
+        "startLine": 874,
+        "startChar": 32,
+        "endLine": 874,
+        "endChar": 35
+      },
+      "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be360f48_8469383b",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-04T09:54:51Z",
+      "side": 1,
+      "message": "(Marking as resolved)",
+      "parentUuid": "3f419a28_55b51248",
+      "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f338d7d_bd9a6794",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 1
@@ -104,6 +146,30 @@
       "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a70f61_5c5bc1ad",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-04T09:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f338d7d_bd9a6794",
+      "range": {
+        "startLine": 875,
+        "startChar": 61,
+        "endLine": 875,
+        "endChar": 62
+      },
+      "revId": "752c26590d41d23d58749bd20f517cd5a0316733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
