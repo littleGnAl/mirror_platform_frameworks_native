@@ -22,6 +22,30 @@
       "revId": "d202a15a059a180f05c333700bb28d1135563453",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba41357d_a8cbf62e",
+        "filename": "include/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-01-04T17:34:51Z",
+      "side": 1,
+      "message": "I don\u0027t know the proper list. Could you update this directory or let me know the exact list?\nThanks.",
+      "parentUuid": "ba7ecc16_4794a66d",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 9
+      },
+      "revId": "d202a15a059a180f05c333700bb28d1135563453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
