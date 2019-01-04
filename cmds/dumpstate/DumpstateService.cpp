@@ -98,8 +98,14 @@ binder::Status DumpstateService::setListener(const std::string& name,
     return binder::Status::ok();
 }
 
-binder::Status DumpstateService::startBugreport(int, int bugreport_mode, int32_t* returned_id) {
-    // TODO(111441001): return a request id here.
+binder::Status DumpstateService::startBugreport(const android::base::unique_fd& /* bugreportFd */,
+                                                const android::base::unique_fd& /* screenshotFd */,
+                                                int bugreport_mode,
+                                                const sp<IDumpstateListener>& /* listener */,
+                                                int32_t* returned_id) {
+    // TODO(b/111441001):
+    // 1. return a request id here.
+    // 2. Pass in fds & other arguments to DumpOptions.
     *returned_id = -1;
     MYLOGI("startBugreport() with mode: %d\n", bugreport_mode);
 
