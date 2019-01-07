@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69387392_94e4052d",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-07T15:05:21Z",
+      "side": 1,
+      "message": "Do we need this? Flags are usually (always?) bitfields, and 0 (almost?) always indicates no flags.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 31
+      },
+      "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b8e6d6_c0ee65c9",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-07T15:05:21Z",
+      "side": 1,
+      "message": "Indent 4 spaces to align with the enum value?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 5
+      },
+      "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d35acc49_6a381b14",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-07T15:05:21Z",
+      "side": 1,
+      "message": "This is hard to understand. Are you saying that if this flag is set, then the result of the lookup is not stored in the cache? If so, suggest:\n\n    // Do not cache the result of the lookup. The lookup may return a result that is already\n    // in the cache, unless the ANDROID_RESOLV_NO_CACHE_LOOKUP flag is also specified.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 61
+      },
+      "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f67c435_18f08980",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-07T15:05:21Z",
+      "side": 1,
+      "message": "Is there a reason for NO_CACHE_LOOKUP to also prevent storing in the cache? I was thinking that we\u0027d have one flag control *looking up* in the cache and one flag control *storing* into the cache.",
+      "range": {
+        "startLine": 124,
+        "startChar": 38,
+        "endLine": 124,
+        "endChar": 83
+      },
+      "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
