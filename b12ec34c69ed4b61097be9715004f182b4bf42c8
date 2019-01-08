@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb9db6a3_93150b3e",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-08T14:25:04Z",
+      "side": 1,
+      "message": "/**\n * Possible values of the flags argument to android_res_nsend and android_res_nquery.\n * Values are ORed together.\n */",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "b12ec34c69ed4b61097be9715004f182b4bf42c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2e8e30b_e9741832",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-08T14:25:04Z",
+      "side": 1,
+      "message": "Actually, I suspect these need to be JavaDoc-style comments so they can be converted into documentation. See, for example, the JavaDoc for android_getaddrinfofornetwork and https://developer.android.com/ndk/reference/group/networking#group___networking_1gadbe9af25952513a61f3ee72dd1395 .",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 6
+      },
+      "revId": "b12ec34c69ed4b61097be9715004f182b4bf42c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

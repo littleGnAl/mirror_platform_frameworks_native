@@ -187,6 +187,30 @@
       "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60daaf3_43c9a63e",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-08T14:25:04Z",
+      "side": 1,
+      "message": "SGTM for now, then.",
+      "parentUuid": "9acfcbd4_522ec661",
+      "range": {
+        "startLine": 124,
+        "startChar": 38,
+        "endLine": 124,
+        "endChar": 83
+      },
+      "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
