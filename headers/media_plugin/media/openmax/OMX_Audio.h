@@ -108,6 +108,7 @@ typedef enum OMX_AUDIO_CODINGTYPE {
     OMX_AUDIO_CodingFLAC,        /**< Any variant of FLAC encoded data */
     OMX_AUDIO_CodingKhronosExtensions = 0x6F000000, /**< Reserved region for introducing Khronos Standard Extensions */
     OMX_AUDIO_CodingVendorStartUnused = 0x7F000000, /**< Reserved region for introducing Vendor Extensions */
+    OMX_AUDIO_CodingIMAADPCM = 0x7F000001,
     OMX_AUDIO_CodingMax = 0x7FFFFFFF
 } OMX_AUDIO_CODINGTYPE;
 
