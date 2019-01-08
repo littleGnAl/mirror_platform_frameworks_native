@@ -873,6 +873,8 @@ static int validate_apk_path_internal(const std::string& path, int maxSubdirs) {
             modified.replace(0, end + 1, android_data_dir);
             return validate_apk_path_internal(modified, maxSubdirs);
         }
+    } else if (validate_path(android_data_preloads_apps_postinstall_dir, path, maxSubdirs) == 0) {
+        return 0;
     }
     return -1;
 }
