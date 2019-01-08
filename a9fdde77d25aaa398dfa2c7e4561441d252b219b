@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bc641d28_ae07b551",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2019-01-08T10:03:02Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "69387392_94e4052d",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 31
+      },
+      "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b8e6d6_c0ee65c9",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ef9aa7_3a8f5850",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2019-01-08T10:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59b8e6d6_c0ee65c9",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 5
+      },
+      "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e20621dc_2d9ff33e",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2019-01-08T10:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d35acc49_6a381b14",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 61
+      },
+      "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f67c435_18f08980",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2019-01-07T15:05:21Z",
       "side": 1,
       "message": "Is there a reason for NO_CACHE_LOOKUP to also prevent storing in the cache? I was thinking that we\u0027d have one flag control *looking up* in the cache and one flag control *storing* into the cache.",
+      "range": {
+        "startLine": 124,
+        "startChar": 38,
+        "endLine": 124,
+        "endChar": 83
+      },
+      "revId": "a9fdde77d25aaa398dfa2c7e4561441d252b219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9acfcbd4_522ec661",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2019-01-08T10:03:02Z",
+      "side": 1,
+      "message": "I think it is the lowest risk way not required for changing much logic inside res_nsend and res_cahce.\nAnyway, if we want to store response into cache with this flag, we might need to consider all the situations clearly since the querying with this flag won\u0027t trigger cache waiting mechanism.",
+      "parentUuid": "4f67c435_18f08980",
       "range": {
         "startLine": 124,
         "startChar": 38,
