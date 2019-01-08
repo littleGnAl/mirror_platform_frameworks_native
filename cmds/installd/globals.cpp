@@ -55,6 +55,8 @@ std::string android_mnt_expand_dir;
 std::string android_profiles_dir;
 std::string android_root_dir;
 
+std::string android_data_preloads_apps_postinstall_dir;
+
 std::vector<std::string> android_system_dirs;
 
 bool init_globals_from_data_and_root() {
@@ -103,6 +105,8 @@ bool init_globals_from_data_and_root(const char* data, const char* root) {
 
     // Get the android media directory.
     android_media_dir = android_data_dir + MEDIA_SUBDIR;
+
+    android_data_preloads_apps_postinstall_dir = android_data_dir + "preloads/apps-postinstall/";
 
     // Get the android external app directory.
     android_mnt_expand_dir = "/mnt/expand/";
