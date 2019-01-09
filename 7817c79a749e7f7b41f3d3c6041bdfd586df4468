@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98442608_6d8ebdfa",
+        "filename": "cmds/installd/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-01-09T23:18:31Z",
+      "side": 1,
+      "message": "|sort (in all of these --- \u0027l\u0027 \u003c \u0027p\u0027)",
+      "revId": "7817c79a749e7f7b41f3d3c6041bdfd586df4468",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
