@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94086bd3_c7b81fff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-09T13:44:25Z",
+      "side": 1,
+      "message": "\"Refine \u003cother commit\u003e\" isn\u0027t generally a very useful commit message. Maybe provide a bit more detail? Something like:\n\n\u003d\u003d\u003d\u003d\u003d\nMinor changes to the async DNS query API flag definitions.\n\n- Use JavaDoc style comments instead of // comments.\n- Change the flags from an enum class to a uint32_t.\n\nTest: ...",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "54864676069d83711a9a3a9ef83d08729b240385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a818f0a_3093d2a6",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-09T13:44:25Z",
+      "side": 1,
+      "message": "Closes |fd| after returning.",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 59
+      },
+      "revId": "54864676069d83711a9a3a9ef83d08729b240385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
