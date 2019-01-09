@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "238771e5_cd5db142",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-09T13:47:38Z",
+      "side": 1,
+      "message": "(or, if we\u0027re not actually changing the flags, \"- Pass in 0 instead of ResNSendFlags(0)\"",
+      "parentUuid": "94086bd3_c7b81fff",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "54864676069d83711a9a3a9ef83d08729b240385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a818f0a_3093d2a6",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 1
