@@ -16,6 +16,24 @@
       "revId": "8f3776a7ace3d5c7bd4832367c495f63825a51b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0338e7f2_87f8b9b3",
+        "filename": "libs/vr/libvrflinger/hwc_types.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-01-09T22:10:04Z",
+      "side": 0,
+      "message": "They seem to serve the same purpose as explicit NOLINT comment.\nAnyway, if you still want them, i can quickly add them back.",
+      "parentUuid": "06dc74cf_4d62ea09",
+      "revId": "8f3776a7ace3d5c7bd4832367c495f63825a51b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
