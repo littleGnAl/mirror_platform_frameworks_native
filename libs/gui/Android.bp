@@ -22,6 +22,7 @@ cc_library_shared {
     vendor_available: false,
     vndk: {
         enabled: true,
+        must_use_vendor_variant: true,
     },
     double_loadable: true,
 
@@ -58,7 +59,7 @@ cc_library_shared {
         "-Wno-weak-vtables",
 
         // Allow four-character integer literals
-	"-Wno-four-char-constants",
+        "-Wno-four-char-constants",
 
         // Allow documentation warnings
         "-Wno-documentation",
