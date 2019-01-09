@@ -34,6 +34,24 @@
       "revId": "8f3776a7ace3d5c7bd4832367c495f63825a51b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eee52b81_4e5c7235",
+        "filename": "libs/vr/libvrflinger/hwc_types.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-01-09T22:16:18Z",
+      "side": 0,
+      "message": "The comments tell you that it is an implicit conversion, while the NOLINT tells you that it isn\u0027t an explicit constructor. Not everyone who reads the code might know what/why that is. I think that having the comment say that these are intended \"implicit conversion\" operators is still valuable.",
+      "parentUuid": "0338e7f2_87f8b9b3",
+      "revId": "8f3776a7ace3d5c7bd4832367c495f63825a51b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
