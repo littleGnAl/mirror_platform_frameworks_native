@@ -52,6 +52,24 @@
       "revId": "8f3776a7ace3d5c7bd4832367c495f63825a51b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf47388_5e1e47bc",
+        "filename": "libs/vr/libvrflinger/hwc_types.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2019-01-09T22:18:14Z",
+      "side": 0,
+      "message": "The existing comments look intended for people to read while the NOLINTNEXTLINE is something definitely not intended for people to read. +1 to keeping the existing comments, even if they are technically redundant the target audiences are not (humans vs. compilers)",
+      "parentUuid": "eee52b81_4e5c7235",
+      "revId": "8f3776a7ace3d5c7bd4832367c495f63825a51b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
