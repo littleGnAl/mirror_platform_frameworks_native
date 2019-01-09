@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffde5889_0773bc5a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1711,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-09T13:07:25Z",
+      "side": 1,
+      "message": "Given this is only called once, I would just inline it.",
+      "range": {
+        "startLine": 1711,
+        "startChar": 1,
+        "endLine": 1711,
+        "endChar": 38
+      },
+      "revId": "91f29a1a3077cce2a6d16474cced116032a6ffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd59c0db_45102670",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2518,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-09T13:07:25Z",
+      "side": 1,
+      "message": "-1 is a funny number to pass to exit, given that it will be ANDed with 0377 anyway (according to the exit man page). Maybe this CL would be a good opportunity to change this to something like 2 instead?",
+      "range": {
+        "startLine": 2518,
+        "startChar": 17,
+        "endLine": 2518,
+        "endChar": 19
+      },
+      "revId": "91f29a1a3077cce2a6d16474cced116032a6ffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c56deb33_7b218370",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2519,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-09T13:07:25Z",
+      "side": 1,
+      "message": "Add a default clause or explicit exit at the end of the function? Just to avoid an ambiguous return code in case you get an unexpected status result. Though presumably the compiler will warn if you are missing one of the cases?",
+      "range": {
+        "startLine": 2519,
+        "startChar": 3,
+        "endLine": 2519,
+        "endChar": 5
+      },
+      "revId": "91f29a1a3077cce2a6d16474cced116032a6ffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
