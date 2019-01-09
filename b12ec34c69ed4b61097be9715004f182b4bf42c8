@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5954f03_77d35582",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2019-01-09T08:07:56Z",
+      "side": 1,
+      "message": "Do it in another CL",
+      "parentUuid": "cb9db6a3_93150b3e",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "b12ec34c69ed4b61097be9715004f182b4bf42c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2e8e30b_e9741832",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "b12ec34c69ed4b61097be9715004f182b4bf42c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "793d61af_43be35aa",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2019-01-09T08:07:56Z",
+      "side": 1,
+      "message": "Do it in another CL",
+      "parentUuid": "d2e8e30b_e9741832",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 6
+      },
+      "revId": "b12ec34c69ed4b61097be9715004f182b4bf42c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
