@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2379cdf_7b1d1fb7",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-09T21:10:07Z",
+      "side": 1,
+      "message": "Jiyong, can you help with the right format for this? How should I write this so that the \"# apex\" symbols aren\u0027t in the NDK.\n\nI seem to need to unfreeze the ABI of the NDK whether I have it like this or move the \"introduced\u003d29\" tag to only the NDK symbols. Is there an example for configuring the symbols only for the APEX variant?",
+      "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
