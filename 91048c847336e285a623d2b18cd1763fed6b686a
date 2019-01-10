@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5dc8d038_1367034b",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1156119
+      },
+      "writtenOn": "2019-01-10T23:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fb24d18_86b2b70d",
+      "range": {
+        "startLine": 149,
+        "startChar": 69,
+        "endLine": 149,
+        "endChar": 73
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8744fa7f_388fb5dc",
         "filename": "services/inputflinger/EventHub.cpp",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76ebcb3f_1815d1f9",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1156119
+      },
+      "writtenOn": "2019-01-10T23:36:27Z",
+      "side": 1,
+      "message": "evdev FF_RUMBLE only supports up to two channels of vibration",
+      "parentUuid": "8744fa7f_388fb5dc",
+      "range": {
+        "startLine": 681,
+        "startChar": 45,
+        "endLine": 681,
+        "endChar": 64
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8374caa1_cf383d84",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1156119
+      },
+      "writtenOn": "2019-01-10T23:36:27Z",
+      "side": 1,
+      "message": "element.duration is in nanoseconds, evdev expects durations in milliseconds. This just rounds up to the next millisecond (1000000 ns -\u003e 1 ms, 1000001 ns -\u003e 2 ms).",
+      "parentUuid": "b394d537_0c205e9e",
+      "range": {
+        "startLine": 683,
+        "startChar": 31,
+        "endLine": 683,
+        "endChar": 72
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a82ffe30_3dd4e3d5",
         "filename": "services/inputflinger/EventHub.h",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d2db83_408d3b21",
+        "filename": "services/inputflinger/EventHub.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1156119
+      },
+      "writtenOn": "2019-01-10T23:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a82ffe30_3dd4e3d5",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 1
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b40343d4_f83dd115",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 2203,
+      "author": {
+        "id": 1156119
+      },
+      "writtenOn": "2019-01-10T23:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79351e09_2b4b9918",
+      "range": {
+        "startLine": 2203,
+        "startChar": 15,
+        "endLine": 2203,
+        "endChar": 24
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7ed9a56_08ac629c",
         "filename": "services/inputflinger/InputReader.cpp",
         "patchSetId": 9
@@ -137,6 +257,30 @@
       "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac4c6694_042eb373",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 2239,
+      "author": {
+        "id": 1156119
+      },
+      "writtenOn": "2019-01-10T23:36:27Z",
+      "side": 1,
+      "message": "They could easily be short and hard to capture. Although, wouldn\u0027t it be better for debugging if a short history of patterns were available, considering how short some of them tend to be?",
+      "parentUuid": "b7ed9a56_08ac629c",
+      "range": {
+        "startLine": 2239,
+        "startChar": 3,
+        "endLine": 2239,
+        "endChar": 21
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
