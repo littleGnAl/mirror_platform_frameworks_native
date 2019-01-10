@@ -16,6 +16,24 @@
       "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706f1b87_1e8c9d7b",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-10T05:26:24Z",
+      "side": 1,
+      "message": "I think you are doing this right. Do you see the # apex symbols in the NDK stub library? How did you check that?",
+      "parentUuid": "a2379cdf_7b1d1fb7",
+      "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
