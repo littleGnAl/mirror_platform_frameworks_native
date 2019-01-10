@@ -70,6 +70,24 @@
       "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68953cab_d58d7fb5",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-10T20:55:36Z",
+      "side": 1,
+      "message": "Alright, that makes sense. It just felt a bit weird (it just wasn\u0027t obvious to me that the \u0027# apex\u0027 symbols don\u0027t make it to be part of the NDK). Could we make that better?\n\nIs there a reason there is not an APEX variant of the library (libbinder_ndk.apex)?",
+      "parentUuid": "dd5baa92_cb09365e",
+      "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
