@@ -34,6 +34,24 @@
       "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "968fb690_96f69a21",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-10T17:24:54Z",
+      "side": 1,
+      "message": "All I know is that this caused the libbinder_ndk ABI dump to fail (but I didn\u0027t think this should have changed the NDK ABI). Maybe the script is dumping the platform libs. I will look into this more today.",
+      "parentUuid": "706f1b87_1e8c9d7b",
+      "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
