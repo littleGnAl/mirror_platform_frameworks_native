@@ -281,6 +281,30 @@
       "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "127b450a_75a7126b",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 2239,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-01-10T23:42:52Z",
+      "side": 1,
+      "message": "Alexey, any input here?\nRegardless of the conclusion, I think that should be out of scope for this specific CL",
+      "parentUuid": "ac4c6694_042eb373",
+      "range": {
+        "startLine": 2239,
+        "startChar": 3,
+        "endLine": 2239,
+        "endChar": 21
+      },
+      "revId": "91048c847336e285a623d2b18cd1763fed6b686a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
