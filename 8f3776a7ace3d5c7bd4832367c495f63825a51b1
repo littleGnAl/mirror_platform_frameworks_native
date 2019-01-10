@@ -70,6 +70,24 @@
       "revId": "8f3776a7ace3d5c7bd4832367c495f63825a51b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9809e6fb_1e98fd39",
+        "filename": "libs/vr/libvrflinger/hwc_types.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-01-10T01:21:22Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "faf47388_5e1e47bc",
+      "revId": "8f3776a7ace3d5c7bd4832367c495f63825a51b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
