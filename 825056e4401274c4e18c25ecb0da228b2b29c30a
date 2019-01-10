@@ -52,6 +52,24 @@
       "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5baa92_cb09365e",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-10T17:40:48Z",
+      "side": 1,
+      "message": "\u003e libbinder_ndk ABI dump to fail\n\nThat\u0027s expected because this file is also used as the version script for libbinder_ndk. With this change, you are making the 5 symbols public  in the generated *.so file. (before this change, they are matched by \"*\" and were \u0027local\u0027, which means hidden.) When used as a version script, the tags (# apex, # vndk, etc.) are just comments.\n\n\u003e Maybe the script is dumping the platform libs\nYes sure. The dumping shouldn\u0027t be done with stubs.\n\nI think we just need to update the ABI dump.",
+      "parentUuid": "968fb690_96f69a21",
+      "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
