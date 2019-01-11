@@ -98,11 +98,10 @@ binder::Status DumpstateService::setListener(const std::string& name,
     return binder::Status::ok();
 }
 
-binder::Status DumpstateService::startBugreport(const android::base::unique_fd& /* bugreportFd */,
-                                                const android::base::unique_fd& /* screenshotFd */,
+binder::Status DumpstateService::startBugreport(const android::base::unique_fd& bugreport_fd,
+                                                const android::base::unique_fd& screenshot_fd,
                                                 int bugreport_mode,
-                                                const sp<IDumpstateListener>& /* listener */) {
-    // TODO(b/111441001): Pass in fds & other arguments to DumpOptions.
+                                                const sp<IDumpstateListener>& listener) {
     MYLOGI("startBugreport() with mode: %d\n", bugreport_mode);
 
     if (bugreport_mode != Dumpstate::BugreportMode::BUGREPORT_FULL &&
@@ -117,8 +116,12 @@ binder::Status DumpstateService::startBugreport(const android::base::unique_fd& 
     }
 
     std::unique_ptr<Dumpstate::DumpOptions> options = std::make_unique<Dumpstate::DumpOptions>();
-    options->Initialize(static_cast<Dumpstate::BugreportMode>(bugreport_mode));
+    options->Initialize(static_cast<Dumpstate::BugreportMode>(bugreport_mode), bugreport_fd,
+                        screenshot_fd);
+
+    std::lock_guard<std::mutex> lock(lock_);
     ds_.SetOptions(std::move(options));
+    ds_.listener_ = listener;
 
     pthread_t thread;
     status_t err = pthread_create(&thread, nullptr, callAndNotify, &ds_);
