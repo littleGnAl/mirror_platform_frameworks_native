@@ -88,6 +88,24 @@
       "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14365212_7bcef66b",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-11T02:31:42Z",
+      "side": 1,
+      "message": "I think you are mixing two concepts. We have two levels symbol visibility: the visibility at build time and the visibility at runtime. For a shared library, we have different sets of API surface for different types of clients. That is done by creating different stubs libraries from this \u0027map\u0027 file. So for example, when building a stubs for NDK clients, only the symbols that is without # vndk, # apex tags are included. When building a stub for vendors, # vndk symbols are added to the set. Similar for # apex.\n\nThe visibility at runtime is controlled by the version script. And since this is a runtime thing, it can\u0027t distinguish its   clients. Symbols that are matched to \"local: *\" are made hidden ( \u003d removed from the dynamic symbol table).\n\n\u003e Is there a reason there is not an APEX variant of the library (libbinder_ndk.apex)?\n\nWhat do you mean by apex variant? If it means \u0027a variant of libbinder_ndk that things in APEXes can link to\u0027, then we already have. By having stubs: {...} in Android.bp, we are creating apex-specific stubs lib from libbinder_ndk and the stubs lib is used for APEXes.",
+      "parentUuid": "68953cab_d58d7fb5",
+      "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
