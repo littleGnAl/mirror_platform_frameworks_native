@@ -124,6 +124,24 @@
       "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "961c8fc8_f88865aa",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-11T04:43:15Z",
+      "side": 1,
+      "message": "The stubs are created automatically by the build system. \n\nFor your reference..\n1) the stubs/non-stubs variation: https://android.googlesource.com/platform/build/soong/+/master/cc/library.go#1037\n2) apex/platform variation: https://android.googlesource.com/platform/build/soong/+/master/apex/apex.go#169",
+      "parentUuid": "d27c0b7e_f90d275e",
+      "revId": "825056e4401274c4e18c25ecb0da228b2b29c30a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
