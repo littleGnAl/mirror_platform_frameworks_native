@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c59eea9c_19712f64",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-11T13:52:24Z",
+      "side": 1,
+      "message": "If I\u0027m reading this right, the ownership of the file descriptor seems wonky. We\u0027d want the fd to be closed when the destructor for ds_ runs but depending on the lifetime of the caller of startBugreport, it may be closed as soon as startBugreport returns, which seems wrong ?",
+      "range": {
+        "startLine": 101,
+        "startChar": 48,
+        "endLine": 101,
+        "endChar": 92
+      },
+      "revId": "c7bc7447749411db3689d6f499d6467701598470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
