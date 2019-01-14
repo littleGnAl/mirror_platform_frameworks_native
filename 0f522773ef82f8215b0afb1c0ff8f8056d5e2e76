@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "229468c1_8d849099",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-14T09:51:35Z",
+      "side": 1,
+      "message": "not really related to this CL, but it\u0027s not clear to me what the lock protects against; currently the spawned thread doesn\u0027t hold the lock. So maybe the thread should run with a copy of the options, or if the service is really meant to do only one bugreport, perhaps prevent future calls to startBugreport from modifying ds_ at all?",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 126,
+        "endChar": 44
+      },
+      "revId": "0f522773ef82f8215b0afb1c0ff8f8056d5e2e76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
