@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eca9336_d18006c8",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1283092
+      },
+      "writtenOn": "2019-01-14T19:13:19Z",
+      "side": 1,
+      "message": "As far as I understand [alg.foreach], it\u0027s not guaranteed to apply lambda in order. This will probably work in any modern compiler, but let\u0027s use range-based for for better readability.",
+      "revId": "74eb58f6c30180ca82382d2f669ec29d8c566458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f9a41ab_6a1e6e90",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1283092
+      },
+      "writtenOn": "2019-01-14T19:13:19Z",
+      "side": 1,
+      "message": "Consider using named constants for readability. Or at least single-quote marks.",
+      "revId": "74eb58f6c30180ca82382d2f669ec29d8c566458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
