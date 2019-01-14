@@ -33,6 +33,24 @@
       "revId": "74eb58f6c30180ca82382d2f669ec29d8c566458",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e56586_b53caf83",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-01-14T20:43:46Z",
+      "side": 1,
+      "message": "Can you suggest a name for 999999LL? We can probably use NANOS_PER_MS for the second constant (already used in other places in input)",
+      "parentUuid": "7f9a41ab_6a1e6e90",
+      "revId": "74eb58f6c30180ca82382d2f669ec29d8c566458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
