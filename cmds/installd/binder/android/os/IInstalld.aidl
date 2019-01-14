@@ -102,4 +102,12 @@ interface IInstalld {
     boolean prepareAppProfile(@utf8InCpp String packageName,
         int userId, int appId, @utf8InCpp String profileName, @utf8InCpp String codePath,
         @nullable @utf8InCpp String dexMetadata);
+
+    void snapshotAppData(@nullable @utf8InCpp String uuid, in @utf8InCpp String packageName,
+            int userId, int storageFlags);
+    void restoreAppDataSnapshot(@nullable @utf8InCpp String uuid, in @utf8InCpp String packageName,
+            int appId, long ceDataInode, @utf8InCpp String seInfo, int user, int storageflags);
+
+    const int FLAG_STORAGE_DE = 0x1;
+    const int FLAG_STORAGE_CE = 0x2;
 }

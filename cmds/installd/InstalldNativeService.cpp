@@ -745,6 +745,168 @@ binder::Status InstalldNativeService::fixupAppData(const std::unique_ptr<std::st
     return ok();
 }
 
+static int32_t copy_directory_recursive(const char* from, const char* to) {
+    char *argv[] = {
+        (char*) kCpPath,
+        (char*) "-F", /* delete any existing destination file first (--remove-destination) */
+        (char*) "-p", /* preserve timestamps, ownership, and permissions */
+        (char*) "-R", /* recurse into subdirectories (DEST must be a directory) */
+        (char*) "-P", /* Do not follow symlinks [default] */
+        (char*) "-d", /* don't dereference symlinks */
+        (char*) from,
+        (char*) to
+    };
+
+    LOG(DEBUG) << "Copying " << from << " to " << to;
+    return android_fork_execvp(ARRAY_SIZE(argv), argv, nullptr, false, true);
+}
+
+// TODO(narayan): We should pass through the ceDataInode so that we can call
+// clearAppData(FLAG_CLEAR_CACHE_ONLY | FLAG_CLEAR_CODE_CACHE before we commence
+// the copy.
+//
+// TODO(narayan): For snapshotAppData as well as restoreAppDataSnapshot, we
+// should validate that volumeUuid is either nullptr or TEST, we won't support
+// anything else.
+//
+// TODO(narayan): What is the expected behaviour when a rollback already exists
+// for a given app ? This should never happen, but
+binder::Status InstalldNativeService::snapshotAppData(
+        const std::unique_ptr<std::string>& volumeUuid,
+        const std::string& packageName, int32_t user, int32_t storageFlags) {
+    ENFORCE_UID(AID_SYSTEM);
+    CHECK_ARGUMENT_UUID(volumeUuid);
+    CHECK_ARGUMENT_PACKAGE_NAME(packageName);
+    std::lock_guard<std::recursive_mutex> lock(mLock);
+
+    const char* volume_uuid = volumeUuid ? volumeUuid->c_str() : nullptr;
+    const char* package_name = packageName.c_str();
+
+    binder::Status res = ok();
+
+    // The app may not have any data at all, in which case it's OK to skip here.
+    auto from_ce = create_data_user_ce_package_path(volume_uuid, user, package_name);
+    if (access(from_ce.c_str(), F_OK) != 0) {
+        LOG(INFO) << "Missing source " << from_ce;
+        return ok();
+    }
+
+    if (storageFlags & FLAG_STORAGE_DE) {
+        auto from = create_data_user_de_package_path(volume_uuid, user, package_name);
+        auto to = create_data_misc_de_rollback_path(volume_uuid, user);
+
+        int rc = copy_directory_recursive(from.c_str(), to.c_str());
+        if (rc != 0) {
+            res = error(rc, "Failed copying " + from + " to " + to);
+            goto fail;
+        }
+    }
+
+    if (storageFlags & FLAG_STORAGE_CE) {
+        auto from = create_data_user_ce_package_path(volume_uuid, user, package_name);
+        auto to = create_data_misc_ce_rollback_path(volume_uuid, user);
+        int rc = copy_directory_recursive(from.c_str(), to.c_str());
+        if (rc != 0) {
+            res = error(rc, "Failed copying " + from + " to " + to);
+            goto fail;
+        }
+    }
+
+    return ok();
+fail:
+    if (storageFlags & FLAG_STORAGE_CE) {
+        auto to = create_data_misc_de_rollback_package_path(volume_uuid, user, package_name);
+        if (delete_dir_contents(to.c_str(), 1, nullptr) != 0) {
+            LOG(WARNING) << "Failed to rollback " << to;
+        }
+    }
+    if (storageFlags & FLAG_STORAGE_DE) {
+        auto to = create_data_misc_ce_rollback_package_path(volume_uuid, user, package_name);
+        if (delete_dir_contents(to.c_str(), 1, nullptr) != 0) {
+            LOG(WARNING) << "Failed to rollback " << to;
+        }
+    }
+
+    return res;
+}
+
+binder::Status InstalldNativeService::restoreAppDataSnapshot(
+        const std::unique_ptr<std::string>& volumeUuid, const std::string& packageName,
+        const int32_t appId, const int64_t ceDataInode, const std::string& seInfo,
+        const int32_t user, int32_t storageFlags) {
+    ENFORCE_UID(AID_SYSTEM);
+    CHECK_ARGUMENT_UUID(volumeUuid);
+    CHECK_ARGUMENT_PACKAGE_NAME(packageName);
+    std::lock_guard<std::recursive_mutex> lock(mLock);
+
+    const char* volume_uuid = volumeUuid ? volumeUuid->c_str() : nullptr;
+    const char* package_name = packageName.c_str();
+
+    auto from_ce = create_data_misc_ce_rollback_package_path(volume_uuid,
+            user, package_name);
+    auto from_de = create_data_misc_de_rollback_package_path(volume_uuid,
+            user, package_name);
+
+    const bool needs_ce_rollback = (storageFlags & FLAG_STORAGE_CE) &&
+        (access(from_ce.c_str(), F_OK) == 0);
+    const bool needs_de_rollback = (storageFlags & FLAG_STORAGE_DE) &&
+        (access(from_de.c_str(), F_OK) == 0);
+
+    if (!needs_ce_rollback && !needs_de_rollback) {
+        return ok();
+    }
+
+    // We know we're going to rollback one of the CE or DE data, so we clear
+    // application data first. Note that it's possible that we're asked to
+    // restore both CE & DE data but that
+    binder::Status res = clearAppData(volumeUuid, packageName, user, storageFlags, ceDataInode);
+
+    if (needs_ce_rollback) {
+        auto to_ce = create_data_user_ce_path(volume_uuid, user);
+        int rc = copy_directory_recursive(from_ce.c_str(), to_ce.c_str());
+        if (rc != 0) {
+            res = error(rc, "Failed copying " + from_ce + " to " + to_ce);
+            goto fail;
+        }
+    }
+
+    if (needs_de_rollback) {
+        auto to_de = create_data_user_de_path(volume_uuid, user);
+        int rc = copy_directory_recursive(from_de.c_str(), to_de.c_str());
+        if (rc != 0) {
+            res = error(rc, "Failed copying " + from_de + " to " + to_de);
+            goto fail;
+        }
+    }
+
+    // Then restore the SELinux label on the app data.
+    res = restoreconAppData(volumeUuid, packageName, user, storageFlags, appId, seInfo);
+    if (!res.isOk()) {
+        goto fail;
+    }
+
+    // Fall through here, to delete the rollback directory associated with this
+    // package.
+fail:
+    if (storageFlags & FLAG_STORAGE_CE) {
+        auto ce_rollback_dir = create_data_misc_ce_rollback_package_path(volume_uuid,
+                user, package_name);
+        if (delete_dir_contents(ce_rollback_dir.c_str(), 1, nullptr) != 0) {
+            LOG(WARNING) << "Failed to delete snapshot: " << ce_rollback_dir;
+        }
+    }
+
+    if (storageFlags & FLAG_STORAGE_DE) {
+        auto de_rollback_dir = create_data_misc_de_rollback_package_path(volume_uuid,
+                user, package_name);
+        if (delete_dir_contents(de_rollback_dir.c_str(), 1, nullptr) != 0) {
+            LOG(WARNING) << "Failed to delete snapshot: " << de_rollback_dir;
+        }
+    }
+
+    return res;
+}
+
 binder::Status InstalldNativeService::moveCompleteApp(const std::unique_ptr<std::string>& fromUuid,
         const std::unique_ptr<std::string>& toUuid, const std::string& packageName,
         const std::string& dataAppName, int32_t appId, const std::string& seInfo,
@@ -769,19 +931,7 @@ binder::Status InstalldNativeService::moveCompleteApp(const std::unique_ptr<std:
         auto to = create_data_app_package_path(to_uuid, data_app_name);
         auto to_parent = create_data_app_path(to_uuid);
 
-        char *argv[] = {
-            (char*) kCpPath,
-            (char*) "-F", /* delete any existing destination file first (--remove-destination) */
-            (char*) "-p", /* preserve timestamps, ownership, and permissions */
-            (char*) "-R", /* recurse into subdirectories (DEST must be a directory) */
-            (char*) "-P", /* Do not follow symlinks [default] */
-            (char*) "-d", /* don't dereference symlinks */
-            (char*) from.c_str(),
-            (char*) to_parent.c_str()
-        };
-
-        LOG(DEBUG) << "Copying " << from << " to " << to;
-        int rc = android_fork_execvp(ARRAY_SIZE(argv), argv, nullptr, false, true);
+        int rc = copy_directory_recursive(from.c_str(), to_parent.c_str());
         if (rc != 0) {
             res = error(rc, "Failed copying " + from + " to " + to);
             goto fail;
@@ -809,25 +959,11 @@ binder::Status InstalldNativeService::moveCompleteApp(const std::unique_ptr<std:
             goto fail;
         }
 
-        char *argv[] = {
-            (char*) kCpPath,
-            (char*) "-F", /* delete any existing destination file first (--remove-destination) */
-            (char*) "-p", /* preserve timestamps, ownership, and permissions */
-            (char*) "-R", /* recurse into subdirectories (DEST must be a directory) */
-            (char*) "-P", /* Do not follow symlinks [default] */
-            (char*) "-d", /* don't dereference symlinks */
-            nullptr,
-            nullptr
-        };
-
         {
             auto from = create_data_user_de_package_path(from_uuid, user, package_name);
             auto to = create_data_user_de_path(to_uuid, user);
-            argv[6] = (char*) from.c_str();
-            argv[7] = (char*) to.c_str();
 
-            LOG(DEBUG) << "Copying " << from << " to " << to;
-            int rc = android_fork_execvp(ARRAY_SIZE(argv), argv, nullptr, false, true);
+            int rc = copy_directory_recursive(from.c_str(), to.c_str());
             if (rc != 0) {
                 res = error(rc, "Failed copying " + from + " to " + to);
                 goto fail;
@@ -836,11 +972,8 @@ binder::Status InstalldNativeService::moveCompleteApp(const std::unique_ptr<std:
         {
             auto from = create_data_user_ce_package_path(from_uuid, user, package_name);
             auto to = create_data_user_ce_path(to_uuid, user);
-            argv[6] = (char*) from.c_str();
-            argv[7] = (char*) to.c_str();
 
-            LOG(DEBUG) << "Copying " << from << " to " << to;
-            int rc = android_fork_execvp(ARRAY_SIZE(argv), argv, nullptr, false, true);
+            int rc = copy_directory_recursive(from.c_str(), to.c_str());
             if (rc != 0) {
                 res = error(rc, "Failed copying " + from + " to " + to);
                 goto fail;
