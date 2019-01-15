@@ -46,6 +46,30 @@
       "revId": "0f522773ef82f8215b0afb1c0ff8f8056d5e2e76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd071e05_0fd5daa1",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-15T14:06:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4141a09_c32727e0",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 126,
+        "endChar": 44
+      },
+      "revId": "0f522773ef82f8215b0afb1c0ff8f8056d5e2e76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
