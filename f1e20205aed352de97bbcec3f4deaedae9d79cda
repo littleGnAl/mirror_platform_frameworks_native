@@ -22,6 +22,30 @@
       "revId": "f1e20205aed352de97bbcec3f4deaedae9d79cda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d3755ab_b730f846",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-15T23:46:30Z",
+      "side": 1,
+      "message": "I just tried this, but it seems the compiler is too smart for that.",
+      "parentUuid": "7955a965_d1a03ece",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 56,
+        "endChar": 55
+      },
+      "revId": "f1e20205aed352de97bbcec3f4deaedae9d79cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
