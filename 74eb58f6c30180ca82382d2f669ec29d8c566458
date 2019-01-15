@@ -87,6 +87,24 @@
       "revId": "74eb58f6c30180ca82382d2f669ec29d8c566458",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4a15833_4ce7c86d",
+        "filename": "services/inputflinger/EventHub.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1283092
+      },
+      "writtenOn": "2019-01-15T14:34:46Z",
+      "side": 1,
+      "message": "2Siarhei: NANOS_PER_MS - 1 is perfectly fine",
+      "parentUuid": "645db204_049e43ef",
+      "revId": "74eb58f6c30180ca82382d2f669ec29d8c566458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
