@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7955a965_d1a03ece",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-01-15T23:41:12Z",
+      "side": 1,
+      "message": "\u0026args[0] would avoid needing the const cast",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 56,
+        "endChar": 55
+      },
+      "revId": "f1e20205aed352de97bbcec3f4deaedae9d79cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
