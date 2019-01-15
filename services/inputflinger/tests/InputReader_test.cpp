@@ -1057,8 +1057,8 @@ public:
         InputDeviceIdentifier identifier;
         identifier.name = name;
         int32_t generation = deviceId + 1;
-        return new InputDevice(&mContext, deviceId, generation, controllerNumber, identifier,
-                classes);
+        InputDevice *device = new InputDevice(&mContext, deviceId, generation, identifier);
+        return device;
     }
 
 protected:
@@ -1373,11 +1373,10 @@ protected:
         mFakeListener = new FakeInputListener();
         mFakeContext = new FakeInputReaderContext(mFakeEventHub, mFakePolicy, mFakeListener);
 
-        mFakeEventHub->addDevice(DEVICE_ID, String8(DEVICE_NAME), 0);
+        mFakeEventHub->addDevice(DEVICE_ID, String8(DEVICE_NAME), DEVICE_CLASSES);
         InputDeviceIdentifier identifier;
         identifier.name = DEVICE_NAME;
-        mDevice = new InputDevice(mFakeContext, DEVICE_ID, DEVICE_GENERATION,
-                DEVICE_CONTROLLER_NUMBER, identifier, DEVICE_CLASSES);
+        mDevice = new InputDevice(mFakeContext, DEVICE_ID, DEVICE_GENERATION, identifier);
     }
 
     virtual void TearDown() {
@@ -1400,7 +1399,7 @@ const uint32_t InputDeviceTest::DEVICE_CLASSES = INPUT_DEVICE_CLASS_KEYBOARD
 TEST_F(InputDeviceTest, ImmutableProperties) {
     ASSERT_EQ(DEVICE_ID, mDevice->getId());
     ASSERT_STREQ(DEVICE_NAME, mDevice->getName());
-    ASSERT_EQ(DEVICE_CLASSES, mDevice->getClasses());
+    ASSERT_EQ(0, mDevice->getClasses());
 }
 
 TEST_F(InputDeviceTest, WhenDeviceCreated_EnabledIsTrue) {
@@ -1492,6 +1491,7 @@ TEST_F(InputDeviceTest, WhenMappersAreRegistered_DeviceIsNotIgnoredAndForwardsRe
 
     // Metadata.
     ASSERT_FALSE(mDevice->isIgnored());
+    ASSERT_EQ(DEVICE_CLASSES, mDevice->getClasses());
     ASSERT_EQ(uint32_t(AINPUT_SOURCE_KEYBOARD | AINPUT_SOURCE_TOUCHSCREEN), mDevice->getSources());
 
     InputDeviceInfo info;
@@ -1537,6 +1537,7 @@ TEST_F(InputDeviceTest, WhenMappersAreRegistered_DeviceIsNotIgnoredAndForwardsRe
 
     // Event handling.
     RawEvent event;
+    event.deviceId = mDevice->getId(); // feed in event device id
     mDevice->process(&event, 1);
 
     ASSERT_NO_FATAL_FAILURE(mapper1->assertProcessWasCalled());
@@ -1567,8 +1568,7 @@ protected:
         mFakeContext = new FakeInputReaderContext(mFakeEventHub, mFakePolicy, mFakeListener);
         InputDeviceIdentifier identifier;
         identifier.name = DEVICE_NAME;
-        mDevice = new InputDevice(mFakeContext, DEVICE_ID, DEVICE_GENERATION,
-                DEVICE_CONTROLLER_NUMBER, identifier, DEVICE_CLASSES);
+        mDevice = new InputDevice(mFakeContext, DEVICE_ID, DEVICE_GENERATION, identifier);
 
         mFakeEventHub->addDevice(DEVICE_ID, String8(DEVICE_NAME), 0);
     }

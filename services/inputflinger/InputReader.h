@@ -35,6 +35,8 @@
 #include <utils/BitSet.h>
 #include <utils/SortedVector.h>
 
+#include <unordered_set>
+
 #include <stddef.h>
 #include <unistd.h>
 
@@ -548,8 +550,8 @@ private:
 /* Represents the state of a single input device. */
 class InputDevice {
 public:
-    InputDevice(InputReaderContext* context, int32_t id, int32_t generation, int32_t
-            controllerNumber, const InputDeviceIdentifier& identifier, uint32_t classes);
+    InputDevice(InputReaderContext* context, int32_t id, int32_t generation,
+            const InputDeviceIdentifier& identifier);
     ~InputDevice();
 
     inline InputReaderContext* getContext() { return mContext; }
@@ -562,15 +564,15 @@ public:
     inline uint32_t getSources() const { return mSources; }
 
     inline bool isExternal() { return mIsExternal; }
-    inline void setExternal(bool external) { mIsExternal = external; }
 
-    inline void setMic(bool hasMic) { mHasMic = hasMic; }
     inline bool hasMic() const { return mHasMic; }
 
     inline bool isIgnored() { return mMappers.isEmpty(); }
 
     bool isEnabled();
     void setEnabled(bool enabled, nsecs_t when);
+
+    void removeEventDevice(int32_t eventId);
 
     void dump(std::string& dump);
     void addMapper(InputMapper* mapper);
@@ -602,6 +604,12 @@ public:
     inline const PropertyMap& getConfiguration() { return mConfiguration; }
     inline EventHubInterface* getEventHub() { return mContext->getEventHub(); }
 
+    inline bool hasEventDevices() const { return !mEventDevices.empty(); }
+
+    bool hasEventDevice(int32_t eventId) const {
+        return mEventDevices.find(eventId) != mEventDevices.end();
+    }
+
     bool hasKey(int32_t eventId, int32_t code) {
         return getEventHub()->hasScanCode(eventId, code);
     }
@@ -632,6 +640,7 @@ private:
     uint32_t mClasses;
 
     Vector<InputMapper*> mMappers;
+    std::unordered_set<int32_t> mEventDevices;
 
     uint32_t mSources;
     bool mIsExternal;

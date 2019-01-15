@@ -481,7 +481,12 @@ void InputReader::addDeviceLocked(nsecs_t when, int32_t eventId) {
                 identifier.descriptor.string(), device->getSources());
     }
 
-    mDevices.add(device->getId(), device);
+    // device was a new device, add it to devices
+    ssize_t deviceIndex = mDevices.indexOfKey(device->getId());
+    if (deviceIndex < 0) {
+        mDevices.add(device->getId(), device);
+    }
+
     mEvents.add(eventId, device);
     bumpGenerationLocked();
 
@@ -491,18 +496,14 @@ void InputReader::addDeviceLocked(nsecs_t when, int32_t eventId) {
 }
 
 void InputReader::removeDeviceLocked(nsecs_t when, int32_t eventId) {
-    InputDevice* device = NULL;
     ssize_t eventIndex = mEvents.indexOfKey(eventId);
     if (eventIndex < 0) {
         ALOGW("Ignoring spurious device removed event for eventId %d.", eventId);
         return;
     }
 
-    device = mEvents.valueAt(eventIndex);
-    mEvents.removeItemsAt(eventIndex, 1);
-    ssize_t deviceIndex = mDevices.indexOfKey(device->getId());
-    mDevices.removeItemsAt(deviceIndex, 1);
-    bumpGenerationLocked();
+    InputDevice* device = mEvents.valueAt(eventIndex);
+    uint32_t classes = device->getClasses();
 
     if (device->isIgnored()) {
         ALOGI("Device removed: id=%d, event=%d, name='%s' (ignored non-input device)",
@@ -512,29 +513,49 @@ void InputReader::removeDeviceLocked(nsecs_t when, int32_t eventId) {
                 device->getId(), eventId, device->getName().string(), device->getSources());
     }
 
-    if (device->getClasses() & INPUT_DEVICE_CLASS_EXTERNAL_STYLUS) {
-        notifyExternalStylusPresenceChanged();
+    // remove EventHub device from framework device
+    mEvents.removeItemsAt(eventIndex, 1);
+    device->removeEventDevice(eventId);
+    bumpGenerationLocked();
+
+    if (!device->hasEventDevices()) {
+        // destroy framework device if it has no more EventHub devices
+        ssize_t deviceIndex = mDevices.indexOfKey(device->getId());
+        mDevices.removeItemsAt(deviceIndex, 1);
+        device->reset(when);
+        delete device;
+    } else {
+        // reconfigure framework device if there are more EventHub devices
+        device->configure(when, &mConfig, 0);
+        device->reset(when);
     }
 
-    device->reset(when);
-    delete device;
+    if (classes & INPUT_DEVICE_CLASS_EXTERNAL_STYLUS) {
+        notifyExternalStylusPresenceChanged();
+    }
 }
 
 InputDevice* InputReader::createDeviceLocked(int32_t eventId, int32_t controllerNumber,
         const InputDeviceIdentifier& identifier, uint32_t classes) {
-    // select input device identifier
-    int32_t deviceId = (eventId < END_RESERVED_ID) ? eventId : nextInputDeviceIdLocked();
-    InputDevice* device = new InputDevice(&mContext, deviceId, bumpGenerationLocked(),
-            controllerNumber, identifier, classes);
-
-    // External devices.
-    if (classes & INPUT_DEVICE_CLASS_EXTERNAL) {
-        device->setExternal(true);
+    // devices whose descriptors match are considered part of a composite device which share an
+    // android framework input device
+    int32_t deviceId = std::numeric_limits<int32_t>::min();
+    InputDevice *device = nullptr;
+    for (size_t i = 0; i < mDevices.size(); i++) {
+        InputDevice *d = mDevices.valueAt(i);
+        if (d->getDescriptor() == identifier.descriptor) {
+            device = d;
+            deviceId = d->getId();
+            break;
+        }
     }
 
-    // Devices with mics.
-    if (classes & INPUT_DEVICE_CLASS_MIC) {
-        device->setMic(true);
+    // create new device if necessary
+    if (!device) {
+        // select next device id
+        deviceId = (eventId < END_RESERVED_ID) ? eventId : nextInputDeviceIdLocked();
+        device = new InputDevice(&mContext, deviceId, bumpGenerationLocked(),
+                identifier);
     }
 
     // Switch-like devices.
@@ -1049,9 +1070,9 @@ bool InputReaderThread::threadLoop() {
 // --- InputDevice ---
 
 InputDevice::InputDevice(InputReaderContext* context, int32_t id, int32_t generation,
-        int32_t controllerNumber, const InputDeviceIdentifier& identifier, uint32_t classes) :
-        mContext(context), mId(id), mGeneration(generation), mControllerNumber(controllerNumber),
-        mIdentifier(identifier), mClasses(classes),
+        const InputDeviceIdentifier& identifier) :
+        mContext(context), mId(id), mGeneration(generation), mControllerNumber(0),
+        mIdentifier(identifier), mClasses(0),
         mSources(0), mIsExternal(false), mHasMic(false), mDropUntilNextSync(false) {
 }
 
@@ -1064,12 +1085,12 @@ InputDevice::~InputDevice() {
 }
 
 bool InputDevice::isEnabled() {
-    if (mMappers.size() == 0) {
-        ALOGW("InputDevice::isEnabled() called for device with no mappers");
-        return true;
+    for (const auto& eventId : mEventDevices) {
+        if (!getEventHub()->isDeviceEnabled(eventId)) {
+            return false;
+        }
     }
-
-    return getEventHub()->isDeviceEnabled(mMappers[0]->getEventId());
+    return true;
 }
 
 void InputDevice::setEnabled(bool enabled, nsecs_t when) {
@@ -1077,19 +1098,39 @@ void InputDevice::setEnabled(bool enabled, nsecs_t when) {
         return;
     }
 
-    if (mMappers.size() == 0) {
-        ALOGW("InputDevice::setEnabled(bool,nsecs_t) called for device with no mappers");
-        return;
-    }
-
     if (enabled) {
-        getEventHub()->enableDevice(mMappers[0]->getEventId());
+        for (const auto& eventId : mEventDevices) {
+            getEventHub()->enableDevice(eventId);
+        }
         reset(when);
     } else {
         reset(when);
-        getEventHub()->disableDevice(mMappers[0]->getEventId());
+        for (const auto& eventId : mEventDevices) {
+            getEventHub()->disableDevice(eventId);
+        }
     }
     // Must change generation to flag this device as changed
+    bumpGeneration();
+}
+
+void InputDevice::removeEventDevice(int32_t eventId) {
+    if (!hasEventDevice(eventId)) {
+        return;
+    }
+
+    size_t numMappers = mMappers.size();
+    Vector<InputMapper*> preserveMappers;
+    for (size_t i = 0; i < numMappers; i++) {
+        InputMapper* mapper = mMappers[i];
+        if (mapper->getEventId() == eventId) {
+            delete mapper;
+        } else {
+            preserveMappers.add(mapper);
+        }
+    }
+
+    mMappers = preserveMappers;
+    mEventDevices.erase(eventId);
     bumpGeneration();
 }
 
@@ -1134,18 +1175,42 @@ void InputDevice::dump(std::string& dump) {
 
 void InputDevice::addMapper(InputMapper* mapper) {
     mMappers.add(mapper);
+
+    // track event id, if new device bump generation
+    auto result = mEventDevices.insert(mapper->getEventId());
+    if (result.second) {
+        bumpGeneration();
+    }
 }
 
 void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config, uint32_t changes) {
     mSources = 0;
+    mClasses = 0;
+    mControllerNumber = 0;
+
+    for (const auto& eventId : mEventDevices) {
+        mClasses |= mContext->getEventHub()->getDeviceClasses(eventId);
+
+        // update the controller number
+        int32_t controllerNumber = mContext->getEventHub()->getDeviceControllerNumber(eventId);
+        if (controllerNumber > 0) {
+            if (mControllerNumber > 0) {
+                ALOGW("InputDevice::configure() overriding controller number");
+            }
+            mControllerNumber = controllerNumber;
+        }
+    }
+
+    mIsExternal = ((mClasses & INPUT_DEVICE_CLASS_EXTERNAL) != 0);
+    mHasMic = ((mClasses & INPUT_DEVICE_CLASS_MIC) != 0);
 
     if (!isIgnored()) {
-        if (!changes) { // first time only
-            if (mMappers.size() == 0) {
-                ALOGW("InputDevice::configure called on device with no mappers A");
-            } else {
-                mContext->getEventHub()->getConfiguration(mMappers[0]->getEventId(),
-                        &mConfiguration);
+        if (!changes) { // on device add/remove (TODO: classes and game controller number)
+            mConfiguration.clear();
+            for (const auto& eventId : mEventDevices) {
+                PropertyMap properties;
+                mContext->getEventHub()->getConfiguration(eventId, &properties);
+                mConfiguration.addAll(&properties);
             }
         }
 
@@ -1153,12 +1218,9 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
             if (!(mClasses & INPUT_DEVICE_CLASS_VIRTUAL)) {
                 sp<KeyCharacterMap> keyboardLayout =
                         mContext->getPolicy()->getKeyboardLayoutOverlay(mIdentifier);
-
-                if (mMappers.size() == 0) {
-                    ALOGW("InputDevice::configure called on device with no mappers B");
-                } else {
+                for (const auto& eventId : mEventDevices) {
                     if (mContext->getEventHub()->setKeyboardLayoutOverlay(
-                            mMappers[0]->getEventId(), keyboardLayout)) {
+                            eventId, keyboardLayout)) {
                         bumpGeneration();
                     }
                 }
@@ -1234,7 +1296,9 @@ void InputDevice::process(const RawEvent* rawEvents, size_t count) {
         } else {
             for (size_t i = 0; i < numMappers; i++) {
                 InputMapper* mapper = mMappers[i];
-                mapper->process(rawEvent);
+                if (rawEvent->deviceId == mapper->getEventId()) {
+                    mapper->process(rawEvent);
+                }
             }
         }
         --count;
