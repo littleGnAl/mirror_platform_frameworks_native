@@ -1057,8 +1057,9 @@ public:
         InputDeviceIdentifier identifier;
         identifier.name = name;
         int32_t generation = deviceId + 1;
-        return new InputDevice(&mContext, deviceId, generation, controllerNumber, identifier,
-                classes);
+        InputDevice *device = new InputDevice(&mContext, deviceId, generation, identifier);
+        device->addEventDevice(deviceId, controllerNumber, classes);
+        return device;
     }
 
 protected:
@@ -1376,8 +1377,8 @@ protected:
         mFakeEventHub->addDevice(DEVICE_ID, String8(DEVICE_NAME), 0);
         InputDeviceIdentifier identifier;
         identifier.name = DEVICE_NAME;
-        mDevice = new InputDevice(mFakeContext, DEVICE_ID, DEVICE_GENERATION,
-                DEVICE_CONTROLLER_NUMBER, identifier, DEVICE_CLASSES);
+        mDevice = new InputDevice(mFakeContext, DEVICE_ID, DEVICE_GENERATION, identifier);
+        mDevice->addEventDevice(DEVICE_ID, DEVICE_CONTROLLER_NUMBER, DEVICE_CLASSES);
     }
 
     virtual void TearDown() {
@@ -1567,8 +1568,8 @@ protected:
         mFakeContext = new FakeInputReaderContext(mFakeEventHub, mFakePolicy, mFakeListener);
         InputDeviceIdentifier identifier;
         identifier.name = DEVICE_NAME;
-        mDevice = new InputDevice(mFakeContext, DEVICE_ID, DEVICE_GENERATION,
-                DEVICE_CONTROLLER_NUMBER, identifier, DEVICE_CLASSES);
+        mDevice = new InputDevice(mFakeContext, DEVICE_ID, DEVICE_GENERATION, identifier);
+        mDevice->addEventDevice(DEVICE_ID, DEVICE_CONTROLLER_NUMBER, DEVICE_CLASSES);
 
         mFakeEventHub->addDevice(DEVICE_ID, String8(DEVICE_NAME), 0);
     }
