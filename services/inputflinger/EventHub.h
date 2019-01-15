@@ -62,6 +62,8 @@ enum {
     VIRTUAL_KEYBOARD_ID = -1,
     // Device id of the "built-in" keyboard if there is one.
     BUILT_IN_KEYBOARD_ID = 0,
+    // First valid device id
+    END_RESERVED_ID = 1,
 };
 
 /*

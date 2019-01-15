@@ -377,7 +377,7 @@ public:
 
     virtual void disableVirtualKeysUntil(nsecs_t time) = 0;
     virtual bool shouldDropVirtualKey(nsecs_t now,
-            InputDevice* device, int32_t keyCode, int32_t scanCode) = 0;
+            InputDevice* device, int32_t eventId, int32_t keyCode, int32_t scanCode) = 0;
 
     virtual void fadePointer() = 0;
 
@@ -453,7 +453,7 @@ protected:
         virtual int32_t getGlobalMetaState();
         virtual void disableVirtualKeysUntil(nsecs_t time);
         virtual bool shouldDropVirtualKey(nsecs_t now,
-                InputDevice* device, int32_t keyCode, int32_t scanCode);
+                InputDevice* device, int32_t eventId, int32_t keyCode, int32_t scanCode);
         virtual void fadePointer();
         virtual void requestTimeoutAtTime(nsecs_t when);
         virtual int32_t bumpGeneration();
@@ -482,13 +482,14 @@ private:
     RawEvent mEventBuffer[EVENT_BUFFER_SIZE];
 
     KeyedVector<int32_t, InputDevice*> mDevices;
+    KeyedVector<int32_t, InputDevice*> mEvents;
 
     // low-level input event decoding and device management
     void processEventsLocked(const RawEvent* rawEvents, size_t count);
 
-    void addDeviceLocked(nsecs_t when, int32_t deviceId);
-    void removeDeviceLocked(nsecs_t when, int32_t deviceId);
-    void processEventsForDeviceLocked(int32_t deviceId, const RawEvent* rawEvents, size_t count);
+    void addDeviceLocked(nsecs_t when, int32_t eventId);
+    void removeDeviceLocked(nsecs_t when, int32_t eventId);
+    void processEventsForDeviceLocked(int32_t eventId, const RawEvent* rawEvents, size_t count);
     void timeoutExpiredLocked(nsecs_t when);
 
     void handleConfigurationChangedLocked(nsecs_t when);
@@ -506,12 +507,15 @@ private:
     int32_t mGeneration;
     int32_t bumpGenerationLocked();
 
+    int32_t mNextInputDeviceId;
+    int32_t nextInputDeviceIdLocked();
+
     void getInputDevicesLocked(Vector<InputDeviceInfo>& outInputDevices);
 
     nsecs_t mDisableVirtualKeysTimeout;
     void disableVirtualKeysUntilLocked(nsecs_t time);
     bool shouldDropVirtualKeyLocked(nsecs_t now,
-            InputDevice* device, int32_t keyCode, int32_t scanCode);
+            InputDevice* device, int32_t eventId, int32_t keyCode, int32_t scanCode);
 
     nsecs_t mNextTimeout;
     void requestTimeoutAtTimeLocked(nsecs_t when);
@@ -598,23 +602,23 @@ public:
     inline const PropertyMap& getConfiguration() { return mConfiguration; }
     inline EventHubInterface* getEventHub() { return mContext->getEventHub(); }
 
-    bool hasKey(int32_t code) {
-        return getEventHub()->hasScanCode(mId, code);
+    bool hasKey(int32_t eventId, int32_t code) {
+        return getEventHub()->hasScanCode(eventId, code);
     }
 
-    bool hasAbsoluteAxis(int32_t code) {
+    bool hasAbsoluteAxis(int32_t eventId, int32_t code) {
         RawAbsoluteAxisInfo info;
-        getEventHub()->getAbsoluteAxisInfo(mId, code, &info);
+        getEventHub()->getAbsoluteAxisInfo(eventId, code, &info);
         return info.valid;
     }
 
-    bool isKeyPressed(int32_t code) {
-        return getEventHub()->getScanCodeState(mId, code) == AKEY_STATE_DOWN;
+    bool isKeyPressed(int32_t eventId, int32_t code) {
+        return getEventHub()->getScanCodeState(eventId, code) == AKEY_STATE_DOWN;
     }
 
-    int32_t getAbsoluteAxisValue(int32_t code) {
+    int32_t getAbsoluteAxisValue(int32_t eventId, int32_t code) {
         int32_t value;
-        getEventHub()->getAbsoluteAxisValue(mId, code, &value);
+        getEventHub()->getAbsoluteAxisValue(eventId, code, &value);
         return value;
     }
 
@@ -645,7 +649,7 @@ private:
 class CursorButtonAccumulator {
 public:
     CursorButtonAccumulator();
-    void reset(InputDevice* device);
+    void reset(InputDevice* device, int32_t eventId);
 
     void process(const RawEvent* rawEvent);
 
@@ -670,7 +674,7 @@ private:
 class CursorMotionAccumulator {
 public:
     CursorMotionAccumulator();
-    void reset(InputDevice* device);
+    void reset(InputDevice* device, int32_t eventId);
 
     void process(const RawEvent* rawEvent);
     void finishSync();
@@ -691,8 +695,8 @@ private:
 class CursorScrollAccumulator {
 public:
     CursorScrollAccumulator();
-    void configure(InputDevice* device);
-    void reset(InputDevice* device);
+    void configure(InputDevice* device, int32_t eventId);
+    void reset(InputDevice* device, int32_t eventId);
 
     void process(const RawEvent* rawEvent);
     void finishSync();
@@ -722,8 +726,8 @@ private:
 class TouchButtonAccumulator {
 public:
     TouchButtonAccumulator();
-    void configure(InputDevice* device);
-    void reset(InputDevice* device);
+    void configure(InputDevice* device, int32_t eventId);
+    void reset(InputDevice* device, int32_t eventId);
 
     void process(const RawEvent* rawEvent);
 
@@ -869,7 +873,7 @@ public:
     SingleTouchMotionAccumulator();
 
     void process(const RawEvent* rawEvent);
-    void reset(InputDevice* device);
+    void reset(InputDevice* device, int32_t eventId);
 
     inline int32_t getAbsoluteX() const { return mAbsX; }
     inline int32_t getAbsoluteY() const { return mAbsY; }
@@ -939,8 +943,8 @@ public:
     MultiTouchMotionAccumulator();
     ~MultiTouchMotionAccumulator();
 
-    void configure(InputDevice* device, size_t slotCount, bool usingSlotsProtocol);
-    void reset(InputDevice* device);
+    void configure(InputDevice* device, int32_t eventId, size_t slotCount, bool usingSlotsProtocol);
+    void reset(InputDevice* device, int32_t eventId);
     void process(const RawEvent* rawEvent);
     void finishSync();
     bool hasStylus() const;
@@ -975,11 +979,12 @@ private:
  */
 class InputMapper {
 public:
-    explicit InputMapper(InputDevice* device);
+    explicit InputMapper(InputDevice* device, int32_t eventId);
     virtual ~InputMapper();
 
     inline InputDevice* getDevice() { return mDevice; }
     inline int32_t getDeviceId() { return mDevice->getId(); }
+    inline int32_t getEventId() { return mEventId; }
     inline const String8 getDeviceName() { return mDevice->getName(); }
     inline InputReaderContext* getContext() { return mContext; }
     inline InputReaderPolicyInterface* getPolicy() { return mContext->getPolicy(); }
@@ -1014,6 +1019,7 @@ public:
 protected:
     InputDevice* mDevice;
     InputReaderContext* mContext;
+    int32_t mEventId;
 
     status_t getAbsoluteAxisInfo(int32_t axis, RawAbsoluteAxisInfo* axisInfo);
     void bumpGeneration();
@@ -1026,7 +1032,7 @@ protected:
 
 class SwitchInputMapper : public InputMapper {
 public:
-    explicit SwitchInputMapper(InputDevice* device);
+    explicit SwitchInputMapper(InputDevice* device, int32_t eventId);
     virtual ~SwitchInputMapper();
 
     virtual uint32_t getSources();
@@ -1046,7 +1052,7 @@ private:
 
 class VibratorInputMapper : public InputMapper {
 public:
-    explicit VibratorInputMapper(InputDevice* device);
+    explicit VibratorInputMapper(InputDevice* device, int32_t eventId);
     virtual ~VibratorInputMapper();
 
     virtual uint32_t getSources();
@@ -1075,7 +1081,8 @@ private:
 
 class KeyboardInputMapper : public InputMapper {
 public:
-    KeyboardInputMapper(InputDevice* device, uint32_t source, int32_t keyboardType);
+    KeyboardInputMapper(InputDevice* device, int32_t eventId, uint32_t source,
+            int32_t keyboardType);
     virtual ~KeyboardInputMapper();
 
     virtual uint32_t getSources();
@@ -1147,7 +1154,7 @@ private:
 
 class CursorInputMapper : public InputMapper {
 public:
-    explicit CursorInputMapper(InputDevice* device);
+    explicit CursorInputMapper(InputDevice* device, int32_t eventId);
     virtual ~CursorInputMapper();
 
     virtual uint32_t getSources();
@@ -1213,7 +1220,7 @@ private:
 
 class RotaryEncoderInputMapper : public InputMapper {
 public:
-    explicit RotaryEncoderInputMapper(InputDevice* device);
+    explicit RotaryEncoderInputMapper(InputDevice* device, int32_t eventId);
     virtual ~RotaryEncoderInputMapper();
 
     virtual uint32_t getSources();
@@ -1235,7 +1242,7 @@ private:
 
 class TouchInputMapper : public InputMapper {
 public:
-    explicit TouchInputMapper(InputDevice* device);
+    explicit TouchInputMapper(InputDevice* device, int32_t eventId);
     virtual ~TouchInputMapper();
 
     virtual uint32_t getSources();
@@ -1876,7 +1883,7 @@ private:
 
 class SingleTouchInputMapper : public TouchInputMapper {
 public:
-    explicit SingleTouchInputMapper(InputDevice* device);
+    explicit SingleTouchInputMapper(InputDevice* device, int32_t eventId);
     virtual ~SingleTouchInputMapper();
 
     virtual void reset(nsecs_t when);
@@ -1894,7 +1901,7 @@ private:
 
 class MultiTouchInputMapper : public TouchInputMapper {
 public:
-    explicit MultiTouchInputMapper(InputDevice* device);
+    explicit MultiTouchInputMapper(InputDevice* device, int32_t eventId);
     virtual ~MultiTouchInputMapper();
 
     virtual void reset(nsecs_t when);
@@ -1915,7 +1922,7 @@ private:
 
 class ExternalStylusInputMapper : public InputMapper {
 public:
-    explicit ExternalStylusInputMapper(InputDevice* device);
+    explicit ExternalStylusInputMapper(InputDevice* device, int32_t eventId);
     virtual ~ExternalStylusInputMapper() = default;
 
     virtual uint32_t getSources();
@@ -1937,7 +1944,7 @@ private:
 
 class JoystickInputMapper : public InputMapper {
 public:
-    explicit JoystickInputMapper(InputDevice* device);
+    explicit JoystickInputMapper(InputDevice* device, int32_t eventId);
     virtual ~JoystickInputMapper();
 
     virtual uint32_t getSources();

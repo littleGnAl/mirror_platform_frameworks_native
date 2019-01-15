@@ -335,7 +335,7 @@ InputReader::InputReader(const sp<EventHubInterface>& eventHub,
         const sp<InputReaderPolicyInterface>& policy,
         const sp<InputListenerInterface>& listener) :
         mContext(this), mEventHub(eventHub), mPolicy(policy),
-        mGlobalMetaState(0), mGeneration(1),
+        mGlobalMetaState(0), mGeneration(1), mNextInputDeviceId(END_RESERVED_ID),
         mDisableVirtualKeysTimeout(LLONG_MIN), mNextTimeout(LLONG_MAX),
         mConfigurationChangesToRefresh(0) {
     mQueuedListener = new QueuedInputListener(listener);
@@ -456,30 +456,33 @@ void InputReader::processEventsLocked(const RawEvent* rawEvents, size_t count) {
     }
 }
 
-void InputReader::addDeviceLocked(nsecs_t when, int32_t deviceId) {
-    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
-    if (deviceIndex >= 0) {
-        ALOGW("Ignoring spurious device added event for deviceId %d.", deviceId);
+void InputReader::addDeviceLocked(nsecs_t when, int32_t eventId) {
+    ssize_t eventIndex = mEvents.indexOfKey(eventId);
+    if (eventIndex >= 0) {
+        ALOGW("Ignoring spurious device added event for eventId %d.", eventId);
         return;
     }
 
-    InputDeviceIdentifier identifier = mEventHub->getDeviceIdentifier(deviceId);
-    uint32_t classes = mEventHub->getDeviceClasses(deviceId);
-    int32_t controllerNumber = mEventHub->getDeviceControllerNumber(deviceId);
+    InputDeviceIdentifier identifier = mEventHub->getDeviceIdentifier(eventId);
+    uint32_t classes = mEventHub->getDeviceClasses(eventId);
+    int32_t controllerNumber = mEventHub->getDeviceControllerNumber(eventId);
 
-    InputDevice* device = createDeviceLocked(deviceId, controllerNumber, identifier, classes);
+    InputDevice* device = createDeviceLocked(eventId, controllerNumber, identifier, classes);
     device->configure(when, &mConfig, 0);
     device->reset(when);
 
     if (device->isIgnored()) {
-        ALOGI("Device added: id=%d, name='%s' (ignored non-input device)", deviceId,
-                identifier.name.string());
+        ALOGI("Device added: id=%d, event=%d, name='%s', descriptor='%s' "
+                "(ignored non-input device)", device->getId(), eventId,
+                identifier.name.string(), identifier.descriptor.string());
     } else {
-        ALOGI("Device added: id=%d, name='%s', sources=0x%08x", deviceId,
-                identifier.name.string(), device->getSources());
+        ALOGI("Device added: id=%d, event=%d, name='%s', descriptor='%s', sources=0x%08x",
+                device->getId(), eventId, identifier.name.string(),
+                identifier.descriptor.string(), device->getSources());
     }
 
-    mDevices.add(deviceId, device);
+    mDevices.add(device->getId(), device);
+    mEvents.add(eventId, device);
     bumpGenerationLocked();
 
     if (device->getClasses() & INPUT_DEVICE_CLASS_EXTERNAL_STYLUS) {
@@ -487,24 +490,26 @@ void InputReader::addDeviceLocked(nsecs_t when, int32_t deviceId) {
     }
 }
 
-void InputReader::removeDeviceLocked(nsecs_t when, int32_t deviceId) {
+void InputReader::removeDeviceLocked(nsecs_t when, int32_t eventId) {
     InputDevice* device = NULL;
-    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
-    if (deviceIndex < 0) {
-        ALOGW("Ignoring spurious device removed event for deviceId %d.", deviceId);
+    ssize_t eventIndex = mEvents.indexOfKey(eventId);
+    if (eventIndex < 0) {
+        ALOGW("Ignoring spurious device removed event for eventId %d.", eventId);
         return;
     }
 
-    device = mDevices.valueAt(deviceIndex);
+    device = mEvents.valueAt(eventIndex);
+    mEvents.removeItemsAt(eventIndex, 1);
+    ssize_t deviceIndex = mDevices.indexOfKey(device->getId());
     mDevices.removeItemsAt(deviceIndex, 1);
     bumpGenerationLocked();
 
     if (device->isIgnored()) {
-        ALOGI("Device removed: id=%d, name='%s' (ignored non-input device)",
-                device->getId(), device->getName().string());
+        ALOGI("Device removed: id=%d, event=%d, name='%s' (ignored non-input device)",
+                device->getId(), eventId, device->getName().string());
     } else {
-        ALOGI("Device removed: id=%d, name='%s', sources=0x%08x",
-                device->getId(), device->getName().string(), device->getSources());
+        ALOGI("Device removed: id=%d, event=%d, name='%s', sources=0x%08x",
+                device->getId(), eventId, device->getName().string(), device->getSources());
     }
 
     if (device->getClasses() & INPUT_DEVICE_CLASS_EXTERNAL_STYLUS) {
@@ -515,8 +520,10 @@ void InputReader::removeDeviceLocked(nsecs_t when, int32_t deviceId) {
     delete device;
 }
 
-InputDevice* InputReader::createDeviceLocked(int32_t deviceId, int32_t controllerNumber,
+InputDevice* InputReader::createDeviceLocked(int32_t eventId, int32_t controllerNumber,
         const InputDeviceIdentifier& identifier, uint32_t classes) {
+    // select input device identifier
+    int32_t deviceId = (eventId < END_RESERVED_ID) ? eventId : nextInputDeviceIdLocked();
     InputDevice* device = new InputDevice(&mContext, deviceId, bumpGenerationLocked(),
             controllerNumber, identifier, classes);
 
@@ -532,17 +539,17 @@ InputDevice* InputReader::createDeviceLocked(int32_t deviceId, int32_t controlle
 
     // Switch-like devices.
     if (classes & INPUT_DEVICE_CLASS_SWITCH) {
-        device->addMapper(new SwitchInputMapper(device));
+        device->addMapper(new SwitchInputMapper(device, eventId));
     }
 
     // Scroll wheel-like devices.
     if (classes & INPUT_DEVICE_CLASS_ROTARY_ENCODER) {
-        device->addMapper(new RotaryEncoderInputMapper(device));
+        device->addMapper(new RotaryEncoderInputMapper(device, eventId));
     }
 
     // Vibrator-like devices.
     if (classes & INPUT_DEVICE_CLASS_VIBRATOR) {
-        device->addMapper(new VibratorInputMapper(device));
+        device->addMapper(new VibratorInputMapper(device, eventId));
     }
 
     // Keyboard-like devices.
@@ -562,45 +569,45 @@ InputDevice* InputReader::createDeviceLocked(int32_t deviceId, int32_t controlle
     }
 
     if (keyboardSource != 0) {
-        device->addMapper(new KeyboardInputMapper(device, keyboardSource, keyboardType));
+        device->addMapper(new KeyboardInputMapper(device, eventId, keyboardSource, keyboardType));
     }
 
     // Cursor-like devices.
     if (classes & INPUT_DEVICE_CLASS_CURSOR) {
-        device->addMapper(new CursorInputMapper(device));
+        device->addMapper(new CursorInputMapper(device, eventId));
     }
 
     // Touchscreens and touchpad devices.
     if (classes & INPUT_DEVICE_CLASS_TOUCH_MT) {
-        device->addMapper(new MultiTouchInputMapper(device));
+        device->addMapper(new MultiTouchInputMapper(device, eventId));
     } else if (classes & INPUT_DEVICE_CLASS_TOUCH) {
-        device->addMapper(new SingleTouchInputMapper(device));
+        device->addMapper(new SingleTouchInputMapper(device, eventId));
     }
 
     // Joystick-like devices.
     if (classes & INPUT_DEVICE_CLASS_JOYSTICK) {
-        device->addMapper(new JoystickInputMapper(device));
+        device->addMapper(new JoystickInputMapper(device, eventId));
     }
 
     // External stylus-like devices.
     if (classes & INPUT_DEVICE_CLASS_EXTERNAL_STYLUS) {
-        device->addMapper(new ExternalStylusInputMapper(device));
+        device->addMapper(new ExternalStylusInputMapper(device, eventId));
     }
 
     return device;
 }
 
-void InputReader::processEventsForDeviceLocked(int32_t deviceId,
+void InputReader::processEventsForDeviceLocked(int32_t eventId,
         const RawEvent* rawEvents, size_t count) {
-    ssize_t deviceIndex = mDevices.indexOfKey(deviceId);
-    if (deviceIndex < 0) {
-        ALOGW("Discarding event for unknown deviceId %d.", deviceId);
+    ssize_t eventIndex = mEvents.indexOfKey(eventId);
+    if (eventIndex < 0) {
+        ALOGW("Discarding event for unknown eventId %d.", eventId);
         return;
     }
 
-    InputDevice* device = mDevices.valueAt(deviceIndex);
+    InputDevice* device = mEvents.valueAt(eventIndex);
     if (device->isIgnored()) {
-        //ALOGD("Discarding event for ignored deviceId %d.", deviceId);
+        //ALOGD("Discarding event for ignored eventId %d.", eventId);
         return;
     }
 
@@ -683,11 +690,11 @@ void InputReader::disableVirtualKeysUntilLocked(nsecs_t time) {
 }
 
 bool InputReader::shouldDropVirtualKeyLocked(nsecs_t now,
-        InputDevice* device, int32_t keyCode, int32_t scanCode) {
+        InputDevice* device, int32_t eventId, int32_t keyCode, int32_t scanCode) {
     if (now < mDisableVirtualKeysTimeout) {
-        ALOGI("Dropping virtual key from device %s because virtual keys are "
+        ALOGI("Dropping virtual key from device %s (eventHub=%d) because virtual keys are "
                 "temporarily disabled for the next %0.3fms.  keyCode=%d, scanCode=%d",
-                device->getName().string(),
+                device->getName().string(), eventId,
                 (mDisableVirtualKeysTimeout - now) * 0.000001,
                 keyCode, scanCode);
         return true;
@@ -712,6 +719,10 @@ void InputReader::requestTimeoutAtTimeLocked(nsecs_t when) {
 
 int32_t InputReader::bumpGenerationLocked() {
     return ++mGeneration;
+}
+
+int32_t InputReader::nextInputDeviceIdLocked() {
+    return ++mNextInputDeviceId;
 }
 
 void InputReader::getInputDevices(Vector<InputDeviceInfo>& outInputDevices) {
@@ -978,9 +989,9 @@ void InputReader::ContextImpl::disableVirtualKeysUntil(nsecs_t time) {
 }
 
 bool InputReader::ContextImpl::shouldDropVirtualKey(nsecs_t now,
-        InputDevice* device, int32_t keyCode, int32_t scanCode) {
+        InputDevice* device, int32_t eventId, int32_t keyCode, int32_t scanCode) {
     // lock is already held by the input loop
-    return mReader->shouldDropVirtualKeyLocked(now, device, keyCode, scanCode);
+    return mReader->shouldDropVirtualKeyLocked(now, device, eventId, keyCode, scanCode);
 }
 
 void InputReader::ContextImpl::fadePointer() {
@@ -1053,7 +1064,12 @@ InputDevice::~InputDevice() {
 }
 
 bool InputDevice::isEnabled() {
-    return getEventHub()->isDeviceEnabled(mId);
+    if (mMappers.size() == 0) {
+        ALOGW("InputDevice::isEnabled() called for device with no mappers");
+        return true;
+    }
+
+    return getEventHub()->isDeviceEnabled(mMappers[0]->getEventId());
 }
 
 void InputDevice::setEnabled(bool enabled, nsecs_t when) {
@@ -1061,12 +1077,17 @@ void InputDevice::setEnabled(bool enabled, nsecs_t when) {
         return;
     }
 
+    if (mMappers.size() == 0) {
+        ALOGW("InputDevice::setEnabled(bool,nsecs_t) called for device with no mappers");
+        return;
+    }
+
     if (enabled) {
-        getEventHub()->enableDevice(mId);
+        getEventHub()->enableDevice(mMappers[0]->getEventId());
         reset(when);
     } else {
         reset(when);
-        getEventHub()->disableDevice(mId);
+        getEventHub()->disableDevice(mMappers[0]->getEventId());
     }
     // Must change generation to flag this device as changed
     bumpGeneration();
@@ -1120,15 +1141,26 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
 
     if (!isIgnored()) {
         if (!changes) { // first time only
-            mContext->getEventHub()->getConfiguration(mId, &mConfiguration);
+            if (mMappers.size() == 0) {
+                ALOGW("InputDevice::configure called on device with no mappers A");
+            } else {
+                mContext->getEventHub()->getConfiguration(mMappers[0]->getEventId(),
+                        &mConfiguration);
+            }
         }
 
         if (!changes || (changes & InputReaderConfiguration::CHANGE_KEYBOARD_LAYOUTS)) {
             if (!(mClasses & INPUT_DEVICE_CLASS_VIRTUAL)) {
                 sp<KeyCharacterMap> keyboardLayout =
                         mContext->getPolicy()->getKeyboardLayoutOverlay(mIdentifier);
-                if (mContext->getEventHub()->setKeyboardLayoutOverlay(mId, keyboardLayout)) {
-                    bumpGeneration();
+
+                if (mMappers.size() == 0) {
+                    ALOGW("InputDevice::configure called on device with no mappers B");
+                } else {
+                    if (mContext->getEventHub()->setKeyboardLayoutOverlay(
+                            mMappers[0]->getEventId(), keyboardLayout)) {
+                        bumpGeneration();
+                    }
                 }
             }
         }
@@ -1345,15 +1377,15 @@ CursorButtonAccumulator::CursorButtonAccumulator() {
     clearButtons();
 }
 
-void CursorButtonAccumulator::reset(InputDevice* device) {
-    mBtnLeft = device->isKeyPressed(BTN_LEFT);
-    mBtnRight = device->isKeyPressed(BTN_RIGHT);
-    mBtnMiddle = device->isKeyPressed(BTN_MIDDLE);
-    mBtnBack = device->isKeyPressed(BTN_BACK);
-    mBtnSide = device->isKeyPressed(BTN_SIDE);
-    mBtnForward = device->isKeyPressed(BTN_FORWARD);
-    mBtnExtra = device->isKeyPressed(BTN_EXTRA);
-    mBtnTask = device->isKeyPressed(BTN_TASK);
+void CursorButtonAccumulator::reset(InputDevice* device, int32_t eventId) {
+    mBtnLeft = device->isKeyPressed(eventId, BTN_LEFT);
+    mBtnRight = device->isKeyPressed(eventId, BTN_RIGHT);
+    mBtnMiddle = device->isKeyPressed(eventId, BTN_MIDDLE);
+    mBtnBack = device->isKeyPressed(eventId, BTN_BACK);
+    mBtnSide = device->isKeyPressed(eventId, BTN_SIDE);
+    mBtnForward = device->isKeyPressed(eventId, BTN_FORWARD);
+    mBtnExtra = device->isKeyPressed(eventId, BTN_EXTRA);
+    mBtnTask = device->isKeyPressed(eventId, BTN_TASK);
 }
 
 void CursorButtonAccumulator::clearButtons() {
@@ -1425,7 +1457,7 @@ CursorMotionAccumulator::CursorMotionAccumulator() {
     clearRelativeAxes();
 }
 
-void CursorMotionAccumulator::reset(InputDevice* device) {
+void CursorMotionAccumulator::reset(InputDevice* device, int32_t eventId) {
     clearRelativeAxes();
 }
 
@@ -1459,12 +1491,12 @@ CursorScrollAccumulator::CursorScrollAccumulator() :
     clearRelativeAxes();
 }
 
-void CursorScrollAccumulator::configure(InputDevice* device) {
-    mHaveRelWheel = device->getEventHub()->hasRelativeAxis(device->getId(), REL_WHEEL);
-    mHaveRelHWheel = device->getEventHub()->hasRelativeAxis(device->getId(), REL_HWHEEL);
+void CursorScrollAccumulator::configure(InputDevice* device, int32_t eventId) {
+    mHaveRelWheel = device->getEventHub()->hasRelativeAxis(eventId, REL_WHEEL);
+    mHaveRelHWheel = device->getEventHub()->hasRelativeAxis(eventId, REL_HWHEEL);
 }
 
-void CursorScrollAccumulator::reset(InputDevice* device) {
+void CursorScrollAccumulator::reset(InputDevice* device, int32_t eventId) {
     clearRelativeAxes();
 }
 
@@ -1498,32 +1530,32 @@ TouchButtonAccumulator::TouchButtonAccumulator() :
     clearButtons();
 }
 
-void TouchButtonAccumulator::configure(InputDevice* device) {
-    mHaveBtnTouch = device->hasKey(BTN_TOUCH);
-    mHaveStylus = device->hasKey(BTN_TOOL_PEN)
-            || device->hasKey(BTN_TOOL_RUBBER)
-            || device->hasKey(BTN_TOOL_BRUSH)
-            || device->hasKey(BTN_TOOL_PENCIL)
-            || device->hasKey(BTN_TOOL_AIRBRUSH);
+void TouchButtonAccumulator::configure(InputDevice* device, int32_t eventId) {
+    mHaveBtnTouch = device->hasKey(eventId, BTN_TOUCH);
+    mHaveStylus = device->hasKey(eventId, BTN_TOOL_PEN)
+            || device->hasKey(eventId, BTN_TOOL_RUBBER)
+            || device->hasKey(eventId, BTN_TOOL_BRUSH)
+            || device->hasKey(eventId, BTN_TOOL_PENCIL)
+            || device->hasKey(eventId, BTN_TOOL_AIRBRUSH);
 }
 
-void TouchButtonAccumulator::reset(InputDevice* device) {
-    mBtnTouch = device->isKeyPressed(BTN_TOUCH);
-    mBtnStylus = device->isKeyPressed(BTN_STYLUS);
+void TouchButtonAccumulator::reset(InputDevice* device, int32_t eventId) {
+    mBtnTouch = device->isKeyPressed(eventId, BTN_TOUCH);
+    mBtnStylus = device->isKeyPressed(eventId, BTN_STYLUS);
     // BTN_0 is what gets mapped for the HID usage Digitizers.SecondaryBarrelSwitch
     mBtnStylus2 =
-            device->isKeyPressed(BTN_STYLUS2) || device->isKeyPressed(BTN_0);
-    mBtnToolFinger = device->isKeyPressed(BTN_TOOL_FINGER);
-    mBtnToolPen = device->isKeyPressed(BTN_TOOL_PEN);
-    mBtnToolRubber = device->isKeyPressed(BTN_TOOL_RUBBER);
-    mBtnToolBrush = device->isKeyPressed(BTN_TOOL_BRUSH);
-    mBtnToolPencil = device->isKeyPressed(BTN_TOOL_PENCIL);
-    mBtnToolAirbrush = device->isKeyPressed(BTN_TOOL_AIRBRUSH);
-    mBtnToolMouse = device->isKeyPressed(BTN_TOOL_MOUSE);
-    mBtnToolLens = device->isKeyPressed(BTN_TOOL_LENS);
-    mBtnToolDoubleTap = device->isKeyPressed(BTN_TOOL_DOUBLETAP);
-    mBtnToolTripleTap = device->isKeyPressed(BTN_TOOL_TRIPLETAP);
-    mBtnToolQuadTap = device->isKeyPressed(BTN_TOOL_QUADTAP);
+            device->isKeyPressed(eventId, BTN_STYLUS2) || device->isKeyPressed(eventId, BTN_0);
+    mBtnToolFinger = device->isKeyPressed(eventId, BTN_TOOL_FINGER);
+    mBtnToolPen = device->isKeyPressed(eventId, BTN_TOOL_PEN);
+    mBtnToolRubber = device->isKeyPressed(eventId, BTN_TOOL_RUBBER);
+    mBtnToolBrush = device->isKeyPressed(eventId, BTN_TOOL_BRUSH);
+    mBtnToolPencil = device->isKeyPressed(eventId, BTN_TOOL_PENCIL);
+    mBtnToolAirbrush = device->isKeyPressed(eventId, BTN_TOOL_AIRBRUSH);
+    mBtnToolMouse = device->isKeyPressed(eventId, BTN_TOOL_MOUSE);
+    mBtnToolLens = device->isKeyPressed(eventId, BTN_TOOL_LENS);
+    mBtnToolDoubleTap = device->isKeyPressed(eventId, BTN_TOOL_DOUBLETAP);
+    mBtnToolTripleTap = device->isKeyPressed(eventId, BTN_TOOL_TRIPLETAP);
+    mBtnToolQuadTap = device->isKeyPressed(eventId, BTN_TOOL_QUADTAP);
 }
 
 void TouchButtonAccumulator::clearButtons() {
@@ -1734,14 +1766,14 @@ SingleTouchMotionAccumulator::SingleTouchMotionAccumulator() {
     clearAbsoluteAxes();
 }
 
-void SingleTouchMotionAccumulator::reset(InputDevice* device) {
-    mAbsX = device->getAbsoluteAxisValue(ABS_X);
-    mAbsY = device->getAbsoluteAxisValue(ABS_Y);
-    mAbsPressure = device->getAbsoluteAxisValue(ABS_PRESSURE);
-    mAbsToolWidth = device->getAbsoluteAxisValue(ABS_TOOL_WIDTH);
-    mAbsDistance = device->getAbsoluteAxisValue(ABS_DISTANCE);
-    mAbsTiltX = device->getAbsoluteAxisValue(ABS_TILT_X);
-    mAbsTiltY = device->getAbsoluteAxisValue(ABS_TILT_Y);
+void SingleTouchMotionAccumulator::reset(InputDevice* device, int32_t eventId) {
+    mAbsX = device->getAbsoluteAxisValue(eventId, ABS_X);
+    mAbsY = device->getAbsoluteAxisValue(eventId, ABS_Y);
+    mAbsPressure = device->getAbsoluteAxisValue(eventId, ABS_PRESSURE);
+    mAbsToolWidth = device->getAbsoluteAxisValue(eventId, ABS_TOOL_WIDTH);
+    mAbsDistance = device->getAbsoluteAxisValue(eventId, ABS_DISTANCE);
+    mAbsTiltX = device->getAbsoluteAxisValue(eventId, ABS_TILT_X);
+    mAbsTiltY = device->getAbsoluteAxisValue(eventId, ABS_TILT_Y);
 }
 
 void SingleTouchMotionAccumulator::clearAbsoluteAxes() {
@@ -1795,16 +1827,16 @@ MultiTouchMotionAccumulator::~MultiTouchMotionAccumulator() {
 }
 
 void MultiTouchMotionAccumulator::configure(InputDevice* device,
-        size_t slotCount, bool usingSlotsProtocol) {
+        int32_t eventId, size_t slotCount, bool usingSlotsProtocol) {
     mSlotCount = slotCount;
     mUsingSlotsProtocol = usingSlotsProtocol;
-    mHaveStylus = device->hasAbsoluteAxis(ABS_MT_TOOL_TYPE);
+    mHaveStylus = device->hasAbsoluteAxis(eventId, ABS_MT_TOOL_TYPE);
 
     delete[] mSlots;
     mSlots = new Slot[slotCount];
 }
 
-void MultiTouchMotionAccumulator::reset(InputDevice* device) {
+void MultiTouchMotionAccumulator::reset(InputDevice* device, int32_t eventId) {
     // Unfortunately there is no way to read the initial contents of the slots.
     // So when we reset the accumulator, we must assume they are all zeroes.
     if (mUsingSlotsProtocol) {
@@ -1818,7 +1850,7 @@ void MultiTouchMotionAccumulator::reset(InputDevice* device) {
         // This can cause the touch point to "jump", but at least there will be
         // no stuck touches.
         int32_t initialSlot;
-        status_t status = device->getEventHub()->getAbsoluteAxisValue(device->getId(),
+        status_t status = device->getEventHub()->getAbsoluteAxisValue(eventId,
                 ABS_MT_SLOT, &initialSlot);
         if (status) {
             ALOGD("Could not retrieve current multitouch slot index.  status=%d", status);
@@ -1977,8 +2009,8 @@ int32_t MultiTouchMotionAccumulator::Slot::getToolType() const {
 
 // --- InputMapper ---
 
-InputMapper::InputMapper(InputDevice* device) :
-        mDevice(device), mContext(device->getContext()) {
+InputMapper::InputMapper(InputDevice* device, int32_t eventId) :
+        mDevice(device), mContext(device->getContext()), mEventId(eventId) {
 }
 
 InputMapper::~InputMapper() {
@@ -2043,7 +2075,7 @@ void InputMapper::fadePointer() {
 }
 
 status_t InputMapper::getAbsoluteAxisInfo(int32_t axis, RawAbsoluteAxisInfo* axisInfo) {
-    return getEventHub()->getAbsoluteAxisInfo(getDeviceId(), axis, axisInfo);
+    return getEventHub()->getAbsoluteAxisInfo(getEventId(), axis, axisInfo);
 }
 
 void InputMapper::bumpGeneration() {
@@ -2069,8 +2101,8 @@ void InputMapper::dumpStylusState(std::string& dump, const StylusState& state) {
 
 // --- SwitchInputMapper ---
 
-SwitchInputMapper::SwitchInputMapper(InputDevice* device) :
-        InputMapper(device), mSwitchValues(0), mUpdatedSwitchMask(0) {
+SwitchInputMapper::SwitchInputMapper(InputDevice* device, int32_t eventId) :
+        InputMapper(device, eventId), mSwitchValues(0), mUpdatedSwitchMask(0) {
 }
 
 SwitchInputMapper::~SwitchInputMapper() {
@@ -2115,7 +2147,7 @@ void SwitchInputMapper::sync(nsecs_t when) {
 }
 
 int32_t SwitchInputMapper::getSwitchState(uint32_t sourceMask, int32_t switchCode) {
-    return getEventHub()->getSwitchState(getDeviceId(), switchCode);
+    return getEventHub()->getSwitchState(getEventId(), switchCode);
 }
 
 void SwitchInputMapper::dump(std::string& dump) {
@@ -2125,8 +2157,8 @@ void SwitchInputMapper::dump(std::string& dump) {
 
 // --- VibratorInputMapper ---
 
-VibratorInputMapper::VibratorInputMapper(InputDevice* device) :
-        InputMapper(device), mVibrating(false) {
+VibratorInputMapper::VibratorInputMapper(InputDevice* device, int32_t eventId) :
+        InputMapper(device, eventId), mVibrating(false) {
 }
 
 VibratorInputMapper::~VibratorInputMapper() {
@@ -2156,8 +2188,8 @@ void VibratorInputMapper::vibrate(const nsecs_t* pattern, size_t patternSize, ss
         }
         patternStr += StringPrintf("%" PRId64, pattern[i]);
     }
-    ALOGD("vibrate: deviceId=%d, pattern=[%s], repeat=%zd, token=%d",
-            getDeviceId(), patternStr.c_str(), repeat, token);
+    ALOGD("vibrate: deviceId=%d, eventId=%d, pattern=[%s], repeat=%zd, token=%d",
+            getDeviceId(), getEventId(), patternStr.c_str(), repeat, token);
 #endif
 
     mVibrating = true;
@@ -2172,7 +2204,8 @@ void VibratorInputMapper::vibrate(const nsecs_t* pattern, size_t patternSize, ss
 
 void VibratorInputMapper::cancelVibrate(int32_t token) {
 #if DEBUG_VIBRATOR
-    ALOGD("cancelVibrate: deviceId=%d, token=%d", getDeviceId(), token);
+    ALOGD("cancelVibrate: deviceId=%d, eventId=%d, token=%d", getDeviceId(), getEventId(),
+            token);
 #endif
 
     if (mVibrating && mToken == token) {
@@ -2205,14 +2238,16 @@ void VibratorInputMapper::nextStep() {
     nsecs_t duration = mPattern[mIndex];
     if (vibratorOn) {
 #if DEBUG_VIBRATOR
-        ALOGD("nextStep: sending vibrate deviceId=%d, duration=%" PRId64, getDeviceId(), duration);
+        ALOGD("nextStep: sending vibrate deviceId=%d, eventId=%d, duration=%" PRId64,
+                getDeviceId(), getEventId(), duration);
 #endif
-        getEventHub()->vibrate(getDeviceId(), duration);
+        getEventHub()->vibrate(getEventId(), duration);
     } else {
 #if DEBUG_VIBRATOR
-        ALOGD("nextStep: sending cancel vibrate deviceId=%d", getDeviceId());
+        ALOGD("nextStep: sending cancel vibrate deviceId=%d, eventId=%d", getDeviceId(),
+                getEventId());
 #endif
-        getEventHub()->cancelVibrate(getDeviceId());
+        getEventHub()->cancelVibrate(getEventId());
     }
     nsecs_t now = systemTime(SYSTEM_TIME_MONOTONIC);
     mNextStepTime = now + duration;
@@ -2225,9 +2260,10 @@ void VibratorInputMapper::nextStep() {
 void VibratorInputMapper::stopVibrating() {
     mVibrating = false;
 #if DEBUG_VIBRATOR
-    ALOGD("stopVibrating: sending cancel vibrate deviceId=%d", getDeviceId());
+    ALOGD("stopVibrating: sending cancel vibrate deviceId=%d, eventId=%d", getDeviceId(),
+            getEventId());
 #endif
-    getEventHub()->cancelVibrate(getDeviceId());
+    getEventHub()->cancelVibrate(getEventId());
 }
 
 void VibratorInputMapper::dump(std::string& dump) {
@@ -2239,8 +2275,8 @@ void VibratorInputMapper::dump(std::string& dump) {
 // --- KeyboardInputMapper ---
 
 KeyboardInputMapper::KeyboardInputMapper(InputDevice* device,
-        uint32_t source, int32_t keyboardType) :
-        InputMapper(device), mSource(source),
+        int32_t eventId, uint32_t source, int32_t keyboardType) :
+        InputMapper(device, eventId), mSource(source),
         mKeyboardType(keyboardType) {
 }
 
@@ -2255,7 +2291,7 @@ void KeyboardInputMapper::populateDeviceInfo(InputDeviceInfo* info) {
     InputMapper::populateDeviceInfo(info);
 
     info->setKeyboardType(mKeyboardType);
-    info->setKeyCharacterMap(getEventHub()->getKeyCharacterMap(getDeviceId()));
+    info->setKeyCharacterMap(getEventHub()->getKeyCharacterMap(getEventId()));
 }
 
 void KeyboardInputMapper::dump(std::string& dump) {
@@ -2414,7 +2450,7 @@ void KeyboardInputMapper::processKey(nsecs_t when, bool down, int32_t scanCode,
     int32_t keyMetaState;
     uint32_t policyFlags;
 
-    if (getEventHub()->mapKey(getDeviceId(), scanCode, usageCode, mMetaState,
+    if (getEventHub()->mapKey(getEventId(), scanCode, usageCode, mMetaState,
                               &keyCode, &keyMetaState, &policyFlags)) {
         keyCode = AKEYCODE_UNKNOWN;
         keyMetaState = mMetaState;
@@ -2436,7 +2472,7 @@ void KeyboardInputMapper::processKey(nsecs_t when, bool down, int32_t scanCode,
             // key down
             if ((policyFlags & POLICY_FLAG_VIRTUAL)
                     && mContext->shouldDropVirtualKey(when,
-                            getDevice(), keyCode, scanCode)) {
+                            getDevice(), getEventId(), keyCode, scanCode)) {
                 return;
             }
             if (policyFlags & POLICY_FLAG_GESTURE) {
@@ -2506,16 +2542,16 @@ ssize_t KeyboardInputMapper::findKeyDown(int32_t scanCode) {
 }
 
 int32_t KeyboardInputMapper::getKeyCodeState(uint32_t sourceMask, int32_t keyCode) {
-    return getEventHub()->getKeyCodeState(getDeviceId(), keyCode);
+    return getEventHub()->getKeyCodeState(getEventId(), keyCode);
 }
 
 int32_t KeyboardInputMapper::getScanCodeState(uint32_t sourceMask, int32_t scanCode) {
-    return getEventHub()->getScanCodeState(getDeviceId(), scanCode);
+    return getEventHub()->getScanCodeState(getEventId(), scanCode);
 }
 
 bool KeyboardInputMapper::markSupportedKeyCodes(uint32_t sourceMask, size_t numCodes,
         const int32_t* keyCodes, uint8_t* outFlags) {
-    return getEventHub()->markSupportedKeyCodes(getDeviceId(), numCodes, keyCodes, outFlags);
+    return getEventHub()->markSupportedKeyCodes(getEventId(), numCodes, keyCodes, outFlags);
 }
 
 int32_t KeyboardInputMapper::getMetaState() {
@@ -2549,7 +2585,7 @@ void KeyboardInputMapper::resetLedState() {
 }
 
 void KeyboardInputMapper::initializeLedState(LedState& ledState, int32_t led) {
-    ledState.avail = getEventHub()->hasLed(getDeviceId(), led);
+    ledState.avail = getEventHub()->hasLed(getEventId(), led);
     ledState.on = false;
 }
 
@@ -2567,7 +2603,7 @@ void KeyboardInputMapper::updateLedStateForModifier(LedState& ledState,
     if (ledState.avail) {
         bool desiredState = (mMetaState & modifier) != 0;
         if (reset || ledState.on != desiredState) {
-            getEventHub()->setLedState(getDeviceId(), led, desiredState);
+            getEventHub()->setLedState(getEventId(), led, desiredState);
             ledState.on = desiredState;
         }
     }
@@ -2576,8 +2612,8 @@ void KeyboardInputMapper::updateLedStateForModifier(LedState& ledState,
 
 // --- CursorInputMapper ---
 
-CursorInputMapper::CursorInputMapper(InputDevice* device) :
-        InputMapper(device) {
+CursorInputMapper::CursorInputMapper(InputDevice* device, int32_t eventId) :
+        InputMapper(device, eventId) {
 }
 
 CursorInputMapper::~CursorInputMapper() {
@@ -2634,7 +2670,7 @@ void CursorInputMapper::configure(nsecs_t when,
     InputMapper::configure(when, config, changes);
 
     if (!changes) { // first time only
-        mCursorScrollAccumulator.configure(getDevice());
+        mCursorScrollAccumulator.configure(getDevice(), getEventId());
 
         // Configure basic parameters.
         configureParameters();
@@ -2765,9 +2801,9 @@ void CursorInputMapper::reset(nsecs_t when) {
     mWheelXVelocityControl.reset();
     mWheelYVelocityControl.reset();
 
-    mCursorButtonAccumulator.reset(getDevice());
-    mCursorMotionAccumulator.reset(getDevice());
-    mCursorScrollAccumulator.reset(getDevice());
+    mCursorButtonAccumulator.reset(getDevice(), getEventId());
+    mCursorMotionAccumulator.reset(getDevice(), getEventId());
+    mCursorScrollAccumulator.reset(getDevice(), getEventId());
 
     InputMapper::reset(when);
 }
@@ -2975,8 +3011,8 @@ void CursorInputMapper::fadePointer() {
 
 // --- RotaryEncoderInputMapper ---
 
-RotaryEncoderInputMapper::RotaryEncoderInputMapper(InputDevice* device) :
-        InputMapper(device), mOrientation(DISPLAY_ORIENTATION_0) {
+RotaryEncoderInputMapper::RotaryEncoderInputMapper(InputDevice* device, int32_t eventId) :
+        InputMapper(device, eventId), mOrientation(DISPLAY_ORIENTATION_0) {
     mSource = AINPUT_SOURCE_ROTARY_ENCODER;
 }
 
@@ -3016,7 +3052,7 @@ void RotaryEncoderInputMapper::configure(nsecs_t when,
         const InputReaderConfiguration* config, uint32_t changes) {
     InputMapper::configure(when, config, changes);
     if (!changes) {
-        mRotaryEncoderScrollAccumulator.configure(getDevice());
+        mRotaryEncoderScrollAccumulator.configure(getDevice(), getEventId());
     }
     if (!changes || (changes & InputReaderConfiguration::CHANGE_DISPLAY_INFO)) {
         DisplayViewport v;
@@ -3029,7 +3065,7 @@ void RotaryEncoderInputMapper::configure(nsecs_t when,
 }
 
 void RotaryEncoderInputMapper::reset(nsecs_t when) {
-    mRotaryEncoderScrollAccumulator.reset(getDevice());
+    mRotaryEncoderScrollAccumulator.reset(getDevice(), getEventId());
 
     InputMapper::reset(when);
 }
@@ -3085,8 +3121,8 @@ void RotaryEncoderInputMapper::sync(nsecs_t when) {
 
 // --- TouchInputMapper ---
 
-TouchInputMapper::TouchInputMapper(InputDevice* device) :
-        InputMapper(device),
+TouchInputMapper::TouchInputMapper(InputDevice* device, int32_t eventId) :
+        InputMapper(device, eventId),
         mSource(0), mDeviceMode(DEVICE_MODE_DISABLED),
         mSurfaceWidth(-1), mSurfaceHeight(-1), mSurfaceLeft(0), mSurfaceTop(0),
         mPhysicalWidth(-1), mPhysicalHeight(-1), mPhysicalLeft(0), mPhysicalTop(0),
@@ -3278,8 +3314,8 @@ void TouchInputMapper::configure(nsecs_t when,
         configureParameters();
 
         // Configure common accumulators.
-        mCursorScrollAccumulator.configure(getDevice());
-        mTouchButtonAccumulator.configure(getDevice());
+        mCursorScrollAccumulator.configure(getDevice(), getEventId());
+        mTouchButtonAccumulator.configure(getDevice(), getEventId());
 
         // Configure absolute axis information.
         configureRawPointerAxes();
@@ -3332,7 +3368,7 @@ void TouchInputMapper::configureParameters() {
     // Use the pointer presentation mode for devices that do not support distinct
     // multitouch.  The spot-based presentation relies on being able to accurately
     // locate two or more fingers on the touch pad.
-    mParameters.gestureMode = getEventHub()->hasInputProperty(getDeviceId(), INPUT_PROP_SEMI_MT)
+    mParameters.gestureMode = getEventHub()->hasInputProperty(getEventId(), INPUT_PROP_SEMI_MT)
             ? Parameters::GESTURE_MODE_SINGLE_TOUCH : Parameters::GESTURE_MODE_MULTI_TOUCH;
 
     String8 gestureModeString;
@@ -3347,14 +3383,14 @@ void TouchInputMapper::configureParameters() {
         }
     }
 
-    if (getEventHub()->hasInputProperty(getDeviceId(), INPUT_PROP_DIRECT)) {
+    if (getEventHub()->hasInputProperty(getEventId(), INPUT_PROP_DIRECT)) {
         // The device is a touch screen.
         mParameters.deviceType = Parameters::DEVICE_TYPE_TOUCH_SCREEN;
-    } else if (getEventHub()->hasInputProperty(getDeviceId(), INPUT_PROP_POINTER)) {
+    } else if (getEventHub()->hasInputProperty(getEventId(), INPUT_PROP_POINTER)) {
         // The device is a pointing device like a track pad.
         mParameters.deviceType = Parameters::DEVICE_TYPE_POINTER;
-    } else if (getEventHub()->hasRelativeAxis(getDeviceId(), REL_X)
-            || getEventHub()->hasRelativeAxis(getDeviceId(), REL_Y)) {
+    } else if (getEventHub()->hasRelativeAxis(getEventId(), REL_X)
+            || getEventHub()->hasRelativeAxis(getEventId(), REL_Y)) {
         // The device is a cursor device with a touch pad attached.
         // By default don't use the touch pad to move the pointer.
         mParameters.deviceType = Parameters::DEVICE_TYPE_TOUCH_PAD;
@@ -3364,7 +3400,7 @@ void TouchInputMapper::configureParameters() {
     }
 
     mParameters.hasButtonUnderPad=
-            getEventHub()->hasInputProperty(getDeviceId(), INPUT_PROP_BUTTONPAD);
+            getEventHub()->hasInputProperty(getEventId(), INPUT_PROP_BUTTONPAD);
 
     String8 deviceTypeString;
     if (getDevice()->getConfiguration().tryGetProperty(String8("touch.deviceType"),
@@ -3640,10 +3676,10 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
     }
 
     if (viewportChanged || deviceModeChanged) {
-        ALOGI("Device reconfigured: id=%d, name='%s', size %dx%d, orientation %d, mode %d, "
-                "display id %d",
-                getDeviceId(), getDeviceName().string(), mSurfaceWidth, mSurfaceHeight,
-                mSurfaceOrientation, mDeviceMode, mViewport.displayId);
+        ALOGI("Device reconfigured: id=%d, event=%d, name='%s', size %dx%d, orientation %d, "
+                "mode %d, display id %d",
+                getDeviceId(), getEventId(), getDeviceName().string(), mSurfaceWidth,
+                mSurfaceHeight, mSurfaceOrientation, mDeviceMode, mViewport.displayId);
 
         // Configure X and Y factors.
         mXScale = float(mSurfaceWidth) / rawWidth;
@@ -3934,7 +3970,7 @@ void TouchInputMapper::dumpSurface(std::string& dump) {
 
 void TouchInputMapper::configureVirtualKeys() {
     Vector<VirtualKeyDefinition> virtualKeyDefinitions;
-    getEventHub()->getVirtualKeyDefinitions(getDeviceId(), virtualKeyDefinitions);
+    getEventHub()->getVirtualKeyDefinitions(getEventId(), virtualKeyDefinitions);
 
     mVirtualKeys.clear();
 
@@ -3960,7 +3996,7 @@ void TouchInputMapper::configureVirtualKeys() {
         int32_t keyCode;
         int32_t dummyKeyMetaState;
         uint32_t flags;
-        if (getEventHub()->mapKey(getDeviceId(), virtualKey.scanCode, 0, 0,
+        if (getEventHub()->mapKey(getEventId(), virtualKey.scanCode, 0, 0,
                                   &keyCode, &dummyKeyMetaState, &flags)) {
             ALOGW(INDENT "VirtualKey %d: could not obtain key code, ignoring",
                     virtualKey.scanCode);
@@ -4261,9 +4297,9 @@ void TouchInputMapper::updateAffineTransformation() {
 }
 
 void TouchInputMapper::reset(nsecs_t when) {
-    mCursorButtonAccumulator.reset(getDevice());
-    mCursorScrollAccumulator.reset(getDevice());
-    mTouchButtonAccumulator.reset(getDevice());
+    mCursorButtonAccumulator.reset(getDevice(), getEventId());
+    mCursorScrollAccumulator.reset(getDevice(), getEventId());
+    mTouchButtonAccumulator.reset(getDevice(), getEventId());
 
     mPointerVelocityControl.reset();
     mWheelXVelocityControl.reset();
@@ -4688,7 +4724,8 @@ bool TouchInputMapper::consumeRawTouches(nsecs_t when, uint32_t policyFlags) {
                     mCurrentVirtualKey.keyCode = virtualKey->keyCode;
                     mCurrentVirtualKey.scanCode = virtualKey->scanCode;
                     mCurrentVirtualKey.ignored = mContext->shouldDropVirtualKey(
-                            when, getDevice(), virtualKey->keyCode, virtualKey->scanCode);
+                            when, getDevice(), getEventId(), virtualKey->keyCode,
+                            virtualKey->scanCode);
 
                     if (!mCurrentVirtualKey.ignored) {
 #if DEBUG_VIRTUAL_KEYS
@@ -6815,15 +6852,15 @@ bool TouchInputMapper::markSupportedKeyCodes(uint32_t sourceMask, size_t numCode
 
 // --- SingleTouchInputMapper ---
 
-SingleTouchInputMapper::SingleTouchInputMapper(InputDevice* device) :
-        TouchInputMapper(device) {
+SingleTouchInputMapper::SingleTouchInputMapper(InputDevice* device, int32_t eventId) :
+        TouchInputMapper(device, eventId) {
 }
 
 SingleTouchInputMapper::~SingleTouchInputMapper() {
 }
 
 void SingleTouchInputMapper::reset(nsecs_t when) {
-    mSingleTouchMotionAccumulator.reset(getDevice());
+    mSingleTouchMotionAccumulator.reset(getDevice(), getEventId());
 
     TouchInputMapper::reset(when);
 }
@@ -6885,15 +6922,15 @@ bool SingleTouchInputMapper::hasStylus() const {
 
 // --- MultiTouchInputMapper ---
 
-MultiTouchInputMapper::MultiTouchInputMapper(InputDevice* device) :
-        TouchInputMapper(device) {
+MultiTouchInputMapper::MultiTouchInputMapper(InputDevice* device, int32_t eventId) :
+        TouchInputMapper(device, eventId) {
 }
 
 MultiTouchInputMapper::~MultiTouchInputMapper() {
 }
 
 void MultiTouchInputMapper::reset(nsecs_t when) {
-    mMultiTouchMotionAccumulator.reset(getDevice());
+    mMultiTouchMotionAccumulator.reset(getDevice(), getEventId());
 
     mPointerIdBits.clear();
 
@@ -7018,10 +7055,10 @@ void MultiTouchInputMapper::configureRawPointerAxes() {
             slotCount = MAX_SLOTS;
         }
         mMultiTouchMotionAccumulator.configure(getDevice(),
-                slotCount, true /*usingSlotsProtocol*/);
+                getEventId(), slotCount, true /*usingSlotsProtocol*/);
     } else {
         mMultiTouchMotionAccumulator.configure(getDevice(),
-                MAX_POINTERS, false /*usingSlotsProtocol*/);
+                getEventId(), MAX_POINTERS, false /*usingSlotsProtocol*/);
     }
 }
 
@@ -7032,8 +7069,8 @@ bool MultiTouchInputMapper::hasStylus() const {
 
 // --- ExternalStylusInputMapper
 
-ExternalStylusInputMapper::ExternalStylusInputMapper(InputDevice* device) :
-    InputMapper(device) {
+ExternalStylusInputMapper::ExternalStylusInputMapper(InputDevice* device, int32_t eventId) :
+    InputMapper(device, eventId) {
 
 }
 
@@ -7058,13 +7095,12 @@ void ExternalStylusInputMapper::dump(std::string& dump) {
 void ExternalStylusInputMapper::configure(nsecs_t when,
         const InputReaderConfiguration* config, uint32_t changes) {
     getAbsoluteAxisInfo(ABS_PRESSURE, &mRawPressureAxis);
-    mTouchButtonAccumulator.configure(getDevice());
+    mTouchButtonAccumulator.configure(getDevice(), getEventId());
 }
 
 void ExternalStylusInputMapper::reset(nsecs_t when) {
-    InputDevice* device = getDevice();
-    mSingleTouchMotionAccumulator.reset(device);
-    mTouchButtonAccumulator.reset(device);
+    mSingleTouchMotionAccumulator.reset(getDevice(), getEventId());
+    mTouchButtonAccumulator.reset(getDevice(), getEventId());
     InputMapper::reset(when);
 }
 
@@ -7104,8 +7140,8 @@ void ExternalStylusInputMapper::sync(nsecs_t when) {
 
 // --- JoystickInputMapper ---
 
-JoystickInputMapper::JoystickInputMapper(InputDevice* device) :
-        InputMapper(device) {
+JoystickInputMapper::JoystickInputMapper(InputDevice* device, int32_t eventId) :
+        InputMapper(device, eventId) {
 }
 
 JoystickInputMapper::~JoystickInputMapper() {
@@ -7210,7 +7246,7 @@ void JoystickInputMapper::configure(nsecs_t when,
             if (rawAxisInfo.valid) {
                 // Map axis.
                 AxisInfo axisInfo;
-                bool explicitlyMapped = !getEventHub()->mapAxis(getDeviceId(), abs, &axisInfo);
+                bool explicitlyMapped = !getEventHub()->mapAxis(getEventId(), abs, &axisInfo);
                 if (!explicitlyMapped) {
                     // Axis is not explicitly mapped, will choose a generic axis later.
                     axisInfo.mode = AxisInfo::MODE_NORMAL;
