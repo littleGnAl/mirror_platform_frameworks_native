@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6778034_131abe7a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-16T14:10:57Z",
+      "side": 1,
+      "message": "could you call listener_-\u003eonFinished() from here instead? Or if there\u0027s a good reason not to, perhaps add a comment saying RunIntenral() already did.",
+      "range": {
+        "startLine": 2264,
+        "startChar": 16,
+        "endLine": 2264,
+        "endChar": 22
+      },
+      "revId": "8737bb19c0edef07c4c4077c80db21daaf2834a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbcbe9b7_2a79dc99",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2504,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-16T14:10:57Z",
+      "side": 1,
+      "message": "should this be conditional on do_broadcast?",
+      "range": {
+        "startLine": 2504,
+        "startChar": 8,
+        "endLine": 2504,
+        "endChar": 35
+      },
+      "revId": "8737bb19c0edef07c4c4077c80db21daaf2834a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
