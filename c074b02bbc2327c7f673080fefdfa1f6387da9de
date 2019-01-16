@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5254160_e6a8d0f8",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-16T19:00:43Z",
+      "side": 1,
+      "message": "who can call into this API ? i\u0027m guessing only the system_server can ? If so, you don\u0027t need to check permissions again. Same for #2, the \"primary user\" check can happen in the system_server where it will result in a better error message.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 92
+      },
+      "revId": "c074b02bbc2327c7f673080fefdfa1f6387da9de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
