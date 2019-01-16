@@ -43,7 +43,6 @@ static binder::Status error(uint32_t code, const std::string& msg) {
 
 static void* callAndNotify(void* data) {
     Dumpstate& ds = *static_cast<Dumpstate*>(data);
-    // TODO(111441001): Return status on listener.
     ds.Run();
     MYLOGE("Finished Run()\n");
     return nullptr;
@@ -98,7 +97,10 @@ binder::Status DumpstateService::setListener(const std::string& name,
     return binder::Status::ok();
 }
 
-binder::Status DumpstateService::startBugreport(const android::base::unique_fd& bugreport_fd,
+// TODO(b/111441001): Hook up to consent service & copy final br only if user approves.
+binder::Status DumpstateService::startBugreport(int32_t /* calling_uid */,
+                                                const std::string& /* calling_package */,
+                                                const android::base::unique_fd& bugreport_fd,
                                                 const android::base::unique_fd& screenshot_fd,
                                                 int bugreport_mode,
                                                 const sp<IDumpstateListener>& listener) {
