@@ -71,6 +71,98 @@
     },
     {
       "key": {
+        "uuid": "48a27dc7_3f9bd0a2",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-17T12:29:24Z",
+      "side": 1,
+      "message": "but...",
+      "range": {
+        "startLine": 773,
+        "startChar": 47,
+        "endLine": 773,
+        "endChar": 50
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f9a074_ee8386a0",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-17T12:29:24Z",
+      "side": 1,
+      "message": "nit: why not just a regular pointer? Passing a unique_ptr by const ref doesn\u0027t really add anything I think.",
+      "range": {
+        "startLine": 775,
+        "startChar": 8,
+        "endLine": 775,
+        "endChar": 43
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c265e1a_c1cf1062",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-17T12:29:24Z",
+      "side": 1,
+      "message": "nit: test for this case missing.",
+      "range": {
+        "startLine": 787,
+        "startChar": 4,
+        "endLine": 788,
+        "endChar": 85
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a68d82_7ce0dd1c",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-17T12:29:24Z",
+      "side": 1,
+      "message": "can both flags be set at the same time, or are they mutually exclusive? If both can be set, you need separate goto points, to avoid deleting a dir you didn\u0027t create (and printing a warning). If they are exclusive, would help to point that out in the docs and verify it here.",
+      "range": {
+        "startLine": 801,
+        "startChar": 12,
+        "endLine": 801,
+        "endChar": 22
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faa8a971_e417545e",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
@@ -133,6 +225,52 @@
         "startChar": 24,
         "endLine": 861,
         "endChar": 41
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2752a2fd_e6089c7e",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-17T12:29:24Z",
+      "side": 1,
+      "message": "but that...",
+      "range": {
+        "startLine": 861,
+        "startChar": 33,
+        "endLine": 861,
+        "endChar": 41
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582df1fa_2ddc7274",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-17T12:29:24Z",
+      "side": 1,
+      "message": "same Q as above.",
+      "range": {
+        "startLine": 869,
+        "startChar": 12,
+        "endLine": 869,
+        "endChar": 22
       },
       "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
