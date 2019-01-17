@@ -70,6 +70,30 @@
       "revId": "c074b02bbc2327c7f673080fefdfa1f6387da9de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d462e143_9eb1ec8f",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-17T14:00:25Z",
+      "side": 1,
+      "message": "yeah I agree selinux enforcement should be enough for this. And assuming traceur can use @SystemApi, having that go through your new API seems fine.",
+      "parentUuid": "72bf4d2a_bebdd7b8",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 92
+      },
+      "revId": "c074b02bbc2327c7f673080fefdfa1f6387da9de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
