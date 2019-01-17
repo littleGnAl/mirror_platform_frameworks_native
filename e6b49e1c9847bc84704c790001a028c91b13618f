@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b27cd29c_00b52de2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-17T21:34:56Z",
+      "side": 1,
+      "message": "I\u0027ve been inconsistently using the terms interchangeably. I made both of them \"view compilation\" here, since the sibling CL also uses view compilation.",
+      "parentUuid": "75888d6d_a4bea9b7",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c694b65_6473808e",
         "filename": "cmds/installd/view_compiler.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea4cc8e0_a2654d89",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-17T21:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c694b65_6473808e",
+      "range": {
+        "startLine": 40,
+        "startChar": 72,
+        "endLine": 40,
+        "endChar": 78
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a5886e64_49afa8be",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-17T21:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cc4ca2d_eb60a081",
+      "range": {
+        "startLine": 44,
+        "startChar": 72,
+        "endLine": 44,
+        "endChar": 78
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69e6c00b_d9a6a045",
         "filename": "cmds/installd/view_compiler.cpp",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8387bc7_f5e12dd4",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-17T21:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69e6c00b_d9a6a045",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7b3a3255_45bf68ff",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-17T21:34:56Z",
+      "side": 1,
+      "message": "You don\u0027t like living dangerously?\n\nI added some error checks.",
+      "parentUuid": "cee3e156_1ba966af",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b985d127_4d60023e",
         "filename": "cmds/installd/view_compiler.cpp",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383eb586_4595a81c",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-17T21:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b985d127_4d60023e",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "e90ece99_6cfd7b83",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-17T21:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "533e652c_4dab5f66",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51ddbedc_cbc3851f",
         "filename": "cmds/installd/view_compiler.cpp",
         "patchSetId": 3
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "45dccd1a_8f51a8d6",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-17T21:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51ddbedc_cbc3851f",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 12
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "104c04f8_26bf8500",
         "filename": "cmds/installd/view_compiler.cpp",
         "patchSetId": 3
@@ -206,6 +398,30 @@
       "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f53bbd3_f3d3b5f8",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-17T21:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "104c04f8_26bf8500",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 15
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
