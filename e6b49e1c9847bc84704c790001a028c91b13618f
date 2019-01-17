@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75888d6d_a4bea9b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-17T19:32:52Z",
+      "side": 1,
+      "message": "Why is one CL \"view compilation\" and another \"layout compilation?\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c694b65_6473808e",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-17T19:32:52Z",
+      "side": 1,
+      "message": "Stale",
+      "range": {
+        "startLine": 40,
+        "startChar": 72,
+        "endLine": 40,
+        "endChar": 78
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cc4ca2d_eb60a081",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-17T19:32:52Z",
+      "side": 1,
+      "message": "Stale",
+      "range": {
+        "startLine": 44,
+        "startChar": 72,
+        "endLine": 44,
+        "endChar": 78
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69e6c00b_d9a6a045",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-17T19:32:52Z",
+      "side": 1,
+      "message": "Open a bug for cleanup. This should move to utils and be shared. (or do it now)",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cee3e156_1ba966af",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-17T19:32:52Z",
+      "side": 1,
+      "message": "No error checks?",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b985d127_4d60023e",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-17T19:32:52Z",
+      "side": 1,
+      "message": "Allocations between fork and exec are undefined behavior. Consider the dexopt style of doing everything before fork.",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "533e652c_4dab5f66",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-17T19:32:52Z",
+      "side": 1,
+      "message": "Probably safer to do _exit.",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ddbedc_cbc3851f",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-17T19:32:52Z",
+      "side": 1,
+      "message": "No else required.",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 12
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "104c04f8_26bf8500",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-17T19:32:52Z",
+      "side": 1,
+      "message": "Consider using wait_child.",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 15
+      },
+      "revId": "e6b49e1c9847bc84704c790001a028c91b13618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
