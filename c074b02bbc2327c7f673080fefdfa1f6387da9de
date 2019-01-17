@@ -94,6 +94,30 @@
       "revId": "c074b02bbc2327c7f673080fefdfa1f6387da9de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ba1d42_6b79a749",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-17T14:49:35Z",
+      "side": 1,
+      "message": "removed todo",
+      "parentUuid": "d462e143_9eb1ec8f",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 92
+      },
+      "revId": "c074b02bbc2327c7f673080fefdfa1f6387da9de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
