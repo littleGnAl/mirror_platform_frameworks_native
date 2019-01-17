@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caeeb3c0_80ed731f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-17T12:11:53Z",
+      "side": 1,
+      "message": "Do you also plan to add a deleteAppDataSnapshot or some such, for when we want to expire the rollback?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 9
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c2423c4_c2cf4bee",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-17T12:11:53Z",
+      "side": 1,
+      "message": "Did you mean to add more here? If not, maybe add \"...\" to make that clear.",
+      "range": {
+        "startLine": 773,
+        "startChar": 45,
+        "endLine": 773,
+        "endChar": 50
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de0d9426_07e20db0",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-17T12:11:53Z",
+      "side": 1,
+      "message": "This is not an entirely unexpected case. We make the backup copy before the new version of the app is installed. The backup for the previous version of the app may not have expired yet. If the new version of the app fails to install, we would still like to be able to roll back the previous version of the app for as long as its rollback window continues to be open.\n\nUnless the plan is to not make the backup until after the new version of the app is installed.",
+      "range": {
+        "startLine": 773,
+        "startChar": 21,
+        "endLine": 773,
+        "endChar": 44
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa8a971_e417545e",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-17T12:11:53Z",
+      "side": 1,
+      "message": "DE? You use the misc_de_rollback function here.",
+      "range": {
+        "startLine": 817,
+        "startChar": 36,
+        "endLine": 817,
+        "endChar": 38
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18c5d791_1192a389",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-17T12:11:53Z",
+      "side": 1,
+      "message": "CE?",
+      "range": {
+        "startLine": 823,
+        "startChar": 36,
+        "endLine": 823,
+        "endChar": 38
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a748602_77d864bf",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-17T12:11:53Z",
+      "side": 1,
+      "message": "but that... ?",
+      "range": {
+        "startLine": 861,
+        "startChar": 24,
+        "endLine": 861,
+        "endChar": 41
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2ecaf16_7ae5aa1f",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-17T12:11:53Z",
+      "side": 1,
+      "message": "both",
+      "range": {
+        "startLine": 311,
+        "startChar": 20,
+        "endLine": 311,
+        "endChar": 23
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
