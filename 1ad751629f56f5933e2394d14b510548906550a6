@@ -22,6 +22,30 @@
       "revId": "1ad751629f56f5933e2394d14b510548906550a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d92a39cd_ac82bedd",
+        "filename": "cmds/installd/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-18T13:34:34Z",
+      "side": 1,
+      "message": "Thanks, done in PS12.",
+      "parentUuid": "27957d5f_449f7058",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 21
+      },
+      "revId": "1ad751629f56f5933e2394d14b510548906550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
