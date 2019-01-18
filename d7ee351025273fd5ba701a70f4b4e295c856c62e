@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c27d03e_a5ddc61b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-18T15:31:47Z",
+      "side": 1,
+      "message": "nit: add cherry-pick from after you submit your internal CL?",
+      "revId": "d7ee351025273fd5ba701a70f4b4e295c856c62e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3115bb81_969bde6b",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-18T15:31:47Z",
+      "side": 1,
+      "message": "Same comment as internal",
+      "range": {
+        "startLine": 197,
+        "startChar": 25,
+        "endLine": 197,
+        "endChar": 47
+      },
+      "revId": "d7ee351025273fd5ba701a70f4b4e295c856c62e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
