@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "19bf7d7e_01ce33db",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-18T07:45:49Z",
+      "side": 1,
+      "message": "Fascinating...",
+      "parentUuid": "b30786ab_78661c68",
+      "range": {
+        "startLine": 775,
+        "startChar": 8,
+        "endLine": 775,
+        "endChar": 43
+      },
+      "revId": "447a2134e0c68cc5d46f8af3b9c370e36cfcafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c265e1a_c1cf1062",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 1
