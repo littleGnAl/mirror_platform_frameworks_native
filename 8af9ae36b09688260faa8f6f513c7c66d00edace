@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd823a23_4d713a27",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-18T18:59:49Z",
+      "side": 1,
+      "message": "if you know this is a regular file and not a directory, unlink is the canonical way to remove it.",
+      "revId": "8af9ae36b09688260faa8f6f513c7c66d00edace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14cd545e_88eb665d",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-18T18:59:49Z",
+      "side": 1,
+      "message": "why is this necessary ?",
+      "range": {
+        "startLine": 461,
+        "startChar": 8,
+        "endLine": 463,
+        "endChar": 9
+      },
+      "revId": "8af9ae36b09688260faa8f6f513c7c66d00edace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
