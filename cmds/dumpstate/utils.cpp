@@ -87,7 +87,8 @@ Dumpstate::Dumpstate(const std::string& version)
     : pid_(getpid()),
       options_(new Dumpstate::DumpOptions()),
       version_(version),
-      now_(time(nullptr)) {
+      now_(time(nullptr)),
+      consent_callback_(new ConsentCallback()) {
 }
 
 Dumpstate& Dumpstate::GetInstance() {

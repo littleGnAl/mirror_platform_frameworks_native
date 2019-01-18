@@ -29,6 +29,7 @@
 #include <android-base/unique_fd.h>
 #include <android/os/IDumpstate.h>
 #include <android/os/IDumpstateListener.h>
+#include <android/os/IIncidentAuthListener.h>
 #include <utils/StrongPointer.h>
 #include <ziparchive/zip_writer.h>
 
@@ -192,7 +193,7 @@ class Dumpstate {
     friend class DumpstateTest;
 
   public:
-    enum RunStatus { OK, HELP, INVALID_INPUT, ERROR };
+    enum RunStatus { OK, HELP, INVALID_INPUT, ERROR, USER_CONSENT_DENIED, USER_CONSENT_TIMED_OUT };
 
     // The mode under which the bugreport should be run. Each mode encapsulates a few options.
     enum BugreportMode {
@@ -319,7 +320,7 @@ class Dumpstate {
     struct DumpOptions;
 
     /* Main entry point for running a complete bugreport. */
-    RunStatus Run();
+    RunStatus Run(int32_t calling_uid, const std::string& calling_package);
 
     /* Sets runtime options. */
     void SetOptions(std::unique_ptr<DumpOptions> options);
@@ -449,10 +450,41 @@ class Dumpstate {
     std::vector<DumpData> anr_data_;
 
   private:
-    RunStatus RunInternal();
+    // A callback to IncidentCompanion service, which checks user consent for sharing the
+    // bugreport with the calling app. If the user has not responded yet to the dialog it will
+    // be neither confirmed nor denied.
+    class ConsentCallback : public android::os::IIncidentAuthListener {
+      public:
+        android::binder::Status onReportApproved() override;
+        android::binder::Status onReportDenied() override;
+        android::IBinder* onAsBinder() override {
+            return nullptr;
+        }
+
+        // Returns if user approved sharing the bugreport with calling app.
+        bool isApproved();
+
+        // Returns if user denied sharing the bugreport with calling app.
+        bool isDenied();
+
+      private:
+        bool approved_ = false;
+        bool denied_ = false;
+        std::mutex lock_;
+    };
+
+    RunStatus RunInternal(int32_t calling_uid, const std::string& calling_package);
+
+    void CheckUserConsent(int32_t calling_uid, const android::String16& calling_package);
+
+    // Removes the in progress files output files (tmp file, zip/txt file, screenshot),
+    // but leaves the log file alone.
+    void CleanupFiles();
 
     // Used by GetInstance() only.
     explicit Dumpstate(const std::string& version = VERSION_CURRENT);
+
+    android::sp<ConsentCallback> consent_callback_;
 
     DISALLOW_COPY_AND_ASSIGN(Dumpstate);
 };
