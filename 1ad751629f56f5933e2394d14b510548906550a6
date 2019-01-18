@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27957d5f_449f7058",
+        "filename": "cmds/installd/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2019-01-18T12:05:10Z",
+      "side": 1,
+      "message": "nit: this might not be needed anymore?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 21
+      },
+      "revId": "1ad751629f56f5933e2394d14b510548906550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
