@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "967d679b_442863ea",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-18T12:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f69d27de_62822b94",
+      "range": {
+        "startLine": 796,
+        "startChar": 43,
+        "endLine": 796,
+        "endChar": 51
+      },
+      "revId": "89aefb4b79965fbc93fec8ae720e65fda3bf4130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97e6dd28_42ed11cc",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "89aefb4b79965fbc93fec8ae720e65fda3bf4130",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dab88cdb_5d9303dd",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-18T12:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97e6dd28_42ed11cc",
+      "range": {
+        "startLine": 874,
+        "startChar": 3,
+        "endLine": 874,
+        "endChar": 96
+      },
+      "revId": "89aefb4b79965fbc93fec8ae720e65fda3bf4130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1696d58e_b2477b0c",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-18T12:53:12Z",
+      "side": 1,
+      "message": "needs_ce_rollback is true only if from_ce exists, so any error here must be something else.",
+      "parentUuid": "ac427c12_985ac02e",
+      "range": {
+        "startLine": 883,
+        "startChar": 12,
+        "endLine": 883,
+        "endChar": 73
+      },
+      "revId": "89aefb4b79965fbc93fec8ae720e65fda3bf4130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "466a11a1_e11ac70f",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2019-01-18T11:23:29Z",
       "side": 1,
       "message": "If needs_ce_rollback, do you want to delete the above restored ce data here?",
+      "range": {
+        "startLine": 892,
+        "startChar": 12,
+        "endLine": 892,
+        "endChar": 74
+      },
+      "revId": "89aefb4b79965fbc93fec8ae720e65fda3bf4130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d81cb2_a908a2b2",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-18T12:53:12Z",
+      "side": 1,
+      "message": "I\u0027m going to add a TODO here because i\u0027m not really sure what the right thing should be -- we either leave the app with all its data cleared or with just its ce data restore. I\u0027m not sure which is worse.",
+      "parentUuid": "466a11a1_e11ac70f",
       "range": {
         "startLine": 892,
         "startChar": 12,
