@@ -29,6 +29,7 @@
 #include <android-base/unique_fd.h>
 #include <android/os/IDumpstate.h>
 #include <android/os/IDumpstateListener.h>
+#include <android/os/IIncidentAuthListener.h>
 #include <utils/StrongPointer.h>
 #include <ziparchive/zip_writer.h>
 
@@ -192,7 +193,7 @@ class Dumpstate {
     friend class DumpstateTest;
 
   public:
-    enum RunStatus { OK, HELP, INVALID_INPUT, ERROR };
+    enum RunStatus { OK, HELP, INVALID_INPUT, ERROR, USER_CONSENT_DENIED, USER_CONSENT_TIMED_OUT };
 
     // The mode under which the bugreport should be run. Each mode encapsulates a few options.
     enum BugreportMode {
@@ -319,7 +320,7 @@ class Dumpstate {
     struct DumpOptions;
 
     /* Main entry point for running a complete bugreport. */
-    RunStatus Run();
+    RunStatus Run(int32_t calling_uid, const std::string& calling_package);
 
     /* Sets runtime options. */
     void SetOptions(std::unique_ptr<DumpOptions> options);
@@ -449,10 +450,31 @@ class Dumpstate {
     std::vector<DumpData> anr_data_;
 
   private:
-    RunStatus RunInternal();
+    // todo: docs
+    class ConsentCallback : public android::os::IIncidentAuthListener {
+      public:
+        android::binder::Status onReportApproved() override;
+        android::binder::Status onReportDenied() override;
+        bool isApproved();
+        bool isDenied();
+        android::IBinder* onAsBinder() override {
+            return nullptr;
+        }
+
+      private:
+        bool approved_ = false;
+        bool denied_ = false;
+        std::mutex lock_;
+    };
+
+    RunStatus RunInternal(int32_t calling_uid, const std::string& calling_package);
+
+    void checkUserConsent(int32_t calling_uid, const android::String16& calling_package);
 
     // Used by GetInstance() only.
     explicit Dumpstate(const std::string& version = VERSION_CURRENT);
+
+    android::sp<ConsentCallback> consent_callback_;
 
     DISALLOW_COPY_AND_ASSIGN(Dumpstate);
 };
