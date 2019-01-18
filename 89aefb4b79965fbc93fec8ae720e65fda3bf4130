@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f69d27de_62822b94",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-18T11:23:29Z",
+      "side": 1,
+      "message": "What does \"rollback\" mean in this context? Maybe this would be more clear as \"delete\"? And same for ce below.",
+      "range": {
+        "startLine": 796,
+        "startChar": 43,
+        "endLine": 796,
+        "endChar": 51
+      },
+      "revId": "89aefb4b79965fbc93fec8ae720e65fda3bf4130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e6dd28_42ed11cc",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-18T11:23:29Z",
+      "side": 1,
+      "message": "Perhaps add a LOG message before this, given that clearing app data is a fairly significant thing and rollbacks should be rare? Or you could have the caller do the LOG message.",
+      "range": {
+        "startLine": 874,
+        "startChar": 3,
+        "endLine": 874,
+        "endChar": 96
+      },
+      "revId": "89aefb4b79965fbc93fec8ae720e65fda3bf4130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac427c12_985ac02e",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-18T11:23:29Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be an error if from_ce doesn\u0027t exist, right? In the case when there was no app data when the snapshot was taken, the restore should successfully clear whatever app data was created since the snapshot was taken?",
+      "range": {
+        "startLine": 883,
+        "startChar": 12,
+        "endLine": 883,
+        "endChar": 73
+      },
+      "revId": "89aefb4b79965fbc93fec8ae720e65fda3bf4130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "466a11a1_e11ac70f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-01-18T11:23:29Z",
+      "side": 1,
+      "message": "If needs_ce_rollback, do you want to delete the above restored ce data here?",
+      "range": {
+        "startLine": 892,
+        "startChar": 12,
+        "endLine": 892,
+        "endChar": 74
+      },
+      "revId": "89aefb4b79965fbc93fec8ae720e65fda3bf4130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
