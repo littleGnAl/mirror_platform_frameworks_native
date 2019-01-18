@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6daa9211_be510728",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-18T17:11:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3fce1a0_331fed10",
+      "revId": "9db29e74e6524c0fa6914e2938559e6827d9b25a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "242383bf_c7fa60dc",
         "filename": "cmds/installd/view_compiler.cpp",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "9db29e74e6524c0fa6914e2938559e6827d9b25a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca1304b3_61698e18",
+        "filename": "cmds/installd/view_compiler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-01-18T17:11:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "242383bf_c7fa60dc",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 39
+      },
+      "revId": "9db29e74e6524c0fa6914e2938559e6827d9b25a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
