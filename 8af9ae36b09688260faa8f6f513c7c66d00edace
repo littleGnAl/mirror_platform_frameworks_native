@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d2ac704_47ac2d27",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-21T10:21:29Z",
+      "side": 1,
+      "message": "It\u0027s done both ways here, so I followed the nearest sample, but makes sense, changed.",
+      "parentUuid": "dd823a23_4d713a27",
+      "revId": "8af9ae36b09688260faa8f6f513c7c66d00edace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14cd545e_88eb665d",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "8af9ae36b09688260faa8f6f513c7c66d00edace",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a22450f_c377c78b",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-21T10:21:29Z",
+      "side": 1,
+      "message": "frameworks/native/libs/binder/include/binder/IInterface.h:36:33: note: unimplemented pure virtual method \u0027onAsBinder\u0027 in \u0027ConsentCallback\u0027",
+      "parentUuid": "14cd545e_88eb665d",
+      "range": {
+        "startLine": 461,
+        "startChar": 8,
+        "endLine": 463,
+        "endChar": 9
+      },
+      "revId": "8af9ae36b09688260faa8f6f513c7c66d00edace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
