@@ -218,6 +218,12 @@ protected:
         delete service_;
     }
 
+    bool restorecon_pkgdir_file(const std::string& path) {
+        int ret = selinux_android_restorecon_pkgdir(
+                path.c_str(), se_info_.c_str(), kTestAppUid, 0u);
+        return ret == 0;
+    }
+
     ::testing::AssertionResult create_mock_app() {
         // Create the oat dir.
         app_oat_dir_ = app_apk_dir_ + "/oat";
@@ -267,6 +273,8 @@ protected:
                                &error_msg)) {
             return ::testing::AssertionFailure() << "Could not write base64 file to "
                                                  << secondary_dex_ce_ << " : " << error_msg;
+        } else if (!restorecon_pkgdir_file(secondary_dex_ce_)) {
+            return ::testing::AssertionFailure() << "Could not restorecon "<< secondary_dex_ce_;
         }
         std::string app_private_dir_ce_link = create_data_user_ce_package_path_as_user_link(
                 volume_uuid_cstr, kTestUserId, package_name_.c_str());
@@ -284,6 +292,8 @@ protected:
                                &error_msg)) {
             return ::testing::AssertionFailure() << "Could not write base64 file to "
                                                  << secondary_dex_de_ << " : " << error_msg;
+        } else if (!restorecon_pkgdir_file(secondary_dex_de_)) {
+            return ::testing::AssertionFailure() << "Could not restorecon "<< secondary_dex_de_;
         }
 
         // Fix app data uid.
@@ -296,12 +306,20 @@ protected:
         return ::testing::AssertionSuccess();
     }
 
+    std::string GetSecondaryOatDir(const std::string& path) {
+        std::string::size_type end = path.rfind('.');
+        std::string::size_type start = path.rfind('/', end);
+        return path.substr(0, start) + "/oat";
+    }
+
+    std::string GetSecondaryOatIsaDir(const std::string& path) {
+        return GetSecondaryOatDir(path) + "/" + kRuntimeIsa;
+    }
 
     std::string GetSecondaryDexArtifact(const std::string& path, const std::string& type) {
         std::string::size_type end = path.rfind('.');
         std::string::size_type start = path.rfind('/', end);
-        return path.substr(0, start) + "/oat/" + kRuntimeIsa + "/" +
-                path.substr(start + 1, end - start) + type;
+        return GetSecondaryOatIsaDir(path) + "/" + path.substr(start + 1, end - start) + type;
     }
 
     void CompileSecondaryDex(const std::string& path, int32_t dex_storage_flag,
@@ -347,6 +365,15 @@ protected:
         ASSERT_EQ(expected_access, access(odex.c_str(), R_OK));
         ASSERT_EQ(expected_access, access(vdex.c_str(), R_OK));
         ASSERT_EQ(-1, access(art.c_str(), R_OK));  // empty profiles do not generate an image.
+        if (should_dex_be_compiled) {
+          std::string con_path = GetSelinuxContext(path);
+          ASSERT_FALSE(con_path.empty());
+          ASSERT_EQ(con_path, GetSelinuxContext(GetSecondaryOatDir(path)));
+          ASSERT_EQ(con_path, GetSelinuxContext(GetSecondaryOatIsaDir(path)));
+          ASSERT_EQ(con_path, GetSelinuxContext(vdex));
+          // Not testing odex as its label depends on the target sdk version of
+          // the package.
+        }
         if (binder_result != nullptr) {
             *binder_result = result;
         }
@@ -388,6 +415,17 @@ protected:
         ASSERT_EQ(uid, st.st_uid);
         ASSERT_EQ(gid, st.st_gid);
         ASSERT_EQ(mode, st.st_mode);
+    }
+
+    std::string GetSelinuxContext(const std::string& path) {
+        char* con = nullptr;
+        if (getfilecon(path.c_str(), &con) < 0) {
+          LOG(ERROR) << "Cannot get SELinux context of " << path << ": " << strerror(errno);
+          return "";
+        }
+        std::string strcon(con);
+        freecon(con);
+        return strcon;
     }
 
     void CompilePrimaryDexOk(std::string compiler_filter,
