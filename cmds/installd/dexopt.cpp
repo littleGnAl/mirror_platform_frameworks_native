@@ -988,12 +988,38 @@ static int open_output_file(const char* file_name, bool recreate, int permission
     if (recreate) {
         if (unlink(file_name) < 0) {
             if (errno != ENOENT) {
-                PLOG(ERROR) << "open_output_file: Couldn't unlink " << file_name;
+                PLOG(ERROR) << __FUNCTION__ << ": Couldn't unlink " << file_name;
             }
         }
         flags |= O_EXCL;
     }
     return open(file_name, flags, permissions);
+}
+
+static int open_output_file_selabel_exectype(const char* file_name, bool recreate, int permissions,
+        bool is_secondary_dex, const char* se_info, uid_t uid) {
+    if (is_secondary_dex) {
+        char *con = nullptr;
+        constexpr int flags = SELINUX_ANDROID_RESTORECON_EXECUTABLE;
+        constexpr mode_t file_type = S_IFREG;
+
+        int ret = selinux_android_selabel_lookup_pkgdir(file_name, se_info, uid, flags, file_type,
+                &con);
+        if (ret < 0) {
+            PLOG(ERROR) << __FUNCTION__ << ": Couldn't get selabel for " << file_name;
+            return -1;
+        }
+
+        // Set the SELinux context of all newly created file objects.
+        // Note that this assumes installd is single-threaded.
+        setfscreatecon(con);
+        int fd = open_output_file(file_name, recreate, permissions);
+        setfscreatecon(nullptr);
+        freecon(con);
+        return fd;
+    } else {
+        return open_output_file(file_name, recreate, permissions);
+    }
 }
 
 static bool set_permissions_and_ownership(
@@ -1160,6 +1186,21 @@ class Dex2oatFileWrapper {
     bool auto_close_;
 };
 
+// Ensure that the oat/ dir of secondary dex files and its contents have the correct selinux
+// context. We need to restorecon() each created file/dir because they do not automatically
+// inherit MCS categories from their parents.
+static bool restorecon_pkgdir_file(const std::string& path,
+                                   const char* se_info,
+                                   uid_t uid,
+                                   bool is_secondary_dex,
+                                   bool is_executable) {
+  if (is_secondary_dex) {
+    return selinux_android_restorecon_pkgdir(path.c_str(), se_info, uid,
+        /* flags= */ is_executable ? SELINUX_ANDROID_RESTORECON_EXECUTABLE : 0u) == 0;
+  }
+  return true;
+}
+
 // (re)Creates the app image if needed.
 Dex2oatFileWrapper maybe_open_app_image(const char* out_oat_path,
         bool generate_app_image, bool is_public, int uid, bool is_secondary_dex) {
@@ -1279,7 +1320,7 @@ Dex2oatFileWrapper maybe_open_reference_profile(const std::string& pkgname,
 // out_vdex_wrapper_fd. Returns true for success or false in case of errors.
 bool open_vdex_files_for_dex2oat(const char* apk_path, const char* out_oat_path, int dexopt_needed,
         const char* instruction_set, bool is_public, int uid, bool is_secondary_dex,
-        bool profile_guided, Dex2oatFileWrapper* in_vdex_wrapper_fd,
+        const char* se_info, bool profile_guided, Dex2oatFileWrapper* in_vdex_wrapper_fd,
         Dex2oatFileWrapper* out_vdex_wrapper_fd) {
     CHECK(in_vdex_wrapper_fd != nullptr);
     CHECK(out_vdex_wrapper_fd != nullptr);
@@ -1354,13 +1395,17 @@ bool open_vdex_files_for_dex2oat(const char* apk_path, const char* out_oat_path,
               open_output_file(out_vdex_path_str.c_str(), /*recreate*/true, /*permissions*/0644),
               [out_vdex_path_str]() { unlink(out_vdex_path_str.c_str()); });
         if (out_vdex_wrapper_fd->get() < 0) {
-            ALOGE("installd cannot open vdex'%s' during dexopt\n", out_vdex_path_str.c_str());
+            ALOGE("installd cannot open vdex '%s' during dexopt\n", out_vdex_path_str.c_str());
             return false;
         }
     }
     if (!set_permissions_and_ownership(out_vdex_wrapper_fd->get(), is_public, uid,
             out_vdex_path_str.c_str(), is_secondary_dex)) {
         ALOGE("installd cannot set owner '%s' for vdex during dexopt\n", out_vdex_path_str.c_str());
+        return false;
+    } else if (!restorecon_pkgdir_file(out_vdex_path_str, se_info, uid, is_secondary_dex,
+            /* is_executable= */ false)) {
+        ALOGE("installd cannot restorecon '%s' for output during dexopt\n", out_oat_path);
         return false;
     }
 
@@ -1372,16 +1417,18 @@ bool open_vdex_files_for_dex2oat(const char* apk_path, const char* out_oat_path,
 // If successful it stores the output path into out_oat_path and returns true.
 Dex2oatFileWrapper open_oat_out_file(const char* apk_path, const char* oat_dir,
         bool is_public, int uid, const char* instruction_set, bool is_secondary_dex,
-        char* out_oat_path) {
+        const char* se_info, char* out_oat_path) {
     if (!create_oat_out_path(apk_path, instruction_set, oat_dir, is_secondary_dex, out_oat_path)) {
         return Dex2oatFileWrapper();
     }
     const std::string out_oat_path_str(out_oat_path);
     Dex2oatFileWrapper wrapper_fd(
-            open_output_file(out_oat_path, /*recreate*/true, /*permissions*/0644),
+            open_output_file_selabel_exectype(
+                    out_oat_path, /*recreate*/true, /*permissions*/0644, is_secondary_dex,
+                    se_info, uid),
             [out_oat_path_str]() { unlink(out_oat_path_str.c_str()); });
     if (wrapper_fd.get() < 0) {
-        PLOG(ERROR) << "installd cannot open output during dexopt" <<  out_oat_path;
+        PLOG(ERROR) << "installd cannot open output during dexopt " <<  out_oat_path;
     } else if (!set_permissions_and_ownership(
                 wrapper_fd.get(), is_public, uid, out_oat_path, is_secondary_dex)) {
         ALOGE("installd cannot set owner '%s' for output during dexopt\n", out_oat_path);
@@ -1411,13 +1458,13 @@ bool maybe_open_oat_and_vdex_file(const std::string& apk_path,
     }
     oat_file_fd->reset(open(oat_path, O_RDONLY));
     if (oat_file_fd->get() < 0) {
-        PLOG(INFO) << "installd cannot open oat file during dexopt" <<  oat_path;
+        PLOG(INFO) << "installd cannot open oat file during dexopt " <<  oat_path;
     }
 
     std::string vdex_filename = create_vdex_filename(oat_path);
     vdex_file_fd->reset(open(vdex_filename.c_str(), O_RDONLY));
     if (vdex_file_fd->get() < 0) {
-        PLOG(INFO) << "installd cannot open vdex file during dexopt" <<  vdex_filename;
+        PLOG(INFO) << "installd cannot open vdex file during dexopt " <<  vdex_filename;
     }
 
     return true;
@@ -1684,8 +1731,8 @@ static bool validate_dexopt_storage_flags(int dexopt_flags,
 static bool process_secondary_dex_dexopt(const std::string& dex_path, const char* pkgname,
         int dexopt_flags, const char* volume_uuid, int uid, const char* instruction_set,
         const char* compiler_filter, bool* is_public_out, int* dexopt_needed_out,
-        std::string* oat_dir_out, bool downgrade, const char* class_loader_context,
-        /* out */ std::string* error_msg) {
+        std::string* oat_dir_out, std::string* oat_isa_dir_out, bool downgrade,
+        const char* class_loader_context, /* out */ std::string* error_msg) {
     LOG(DEBUG) << "Processing secondary dex path " << dex_path;
     int storage_flag;
     if (!validate_dexopt_storage_flags(dexopt_flags, &storage_flag, error_msg)) {
@@ -1702,6 +1749,7 @@ static bool process_secondary_dex_dexopt(const std::string& dex_path, const char
         return false;
     }
     oat_dir_out->assign(oat_dir);
+    oat_isa_dir_out->assign(oat_isa_dir);
 
     pid_t pid = fork();
     if (pid == 0) {
@@ -1844,10 +1892,11 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
 
     // Check if we're dealing with a secondary dex file and if we need to compile it.
     std::string oat_dir_str;
+    std::string oat_isa_dir_str;
     if (is_secondary_dex) {
         if (process_secondary_dex_dexopt(dex_path, pkgname, dexopt_flags, volume_uuid, uid,
                 instruction_set, compiler_filter, &is_public, &dexopt_needed, &oat_dir_str,
-                downgrade, class_loader_context, error_msg)) {
+                &oat_isa_dir_str, downgrade, class_loader_context, error_msg)) {
             oat_dir = oat_dir_str.c_str();
             if (dexopt_needed == NO_DEXOPT_NEEDED) {
                 return 0;  // Nothing to do, report success.
@@ -1865,6 +1914,27 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
         CHECK((dexopt_flags & DEXOPT_STORAGE_DE) == 0);
     }
 
+    // Ensure that the oat/ dir of secondary dex files and its contents have the correct selinux
+    // context. We need to restorecon() each file/dir because they do not automatically inherit
+    // MCS categories from their parents. We do not recursively restorecon() the whole oat/
+    // directory because it would invalidate special exec-allowed labels of oat files, we only
+    // restorecon() the files touched during dexopt.
+    // Note that for primary apk the oat files are created before, in a separate installd
+    // call which also does the restorecon. TODO(calin): unify the paths.
+    if (!restorecon_pkgdir_file(oat_dir_str, se_info, uid, is_secondary_dex,
+            /* is_executable= */ false)) {
+        *error_msg = StringPrintf("installd cannot restorecon '%s' during dexopt",
+                oat_dir_str.c_str());
+        LOG(ERROR) << *error_msg;
+        return -1;
+    } else if (!restorecon_pkgdir_file(oat_isa_dir_str, se_info, uid, is_secondary_dex,
+            /* is_executable= */ false)) {
+        *error_msg = StringPrintf("installd cannot restorecon '%s' during dexopt",
+                oat_isa_dir_str.c_str());
+        LOG(ERROR) << *error_msg;
+        return -1;
+    }
+
     // Open the input file.
     unique_fd input_fd(open(dex_path, O_RDONLY, 0));
     if (input_fd.get() < 0) {
@@ -1876,7 +1946,7 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
     // Create the output OAT file.
     char out_oat_path[PKG_PATH_MAX];
     Dex2oatFileWrapper out_oat_fd = open_oat_out_file(dex_path, oat_dir, is_public, uid,
-            instruction_set, is_secondary_dex, out_oat_path);
+            instruction_set, is_secondary_dex, se_info, out_oat_path);
     if (out_oat_fd.get() < 0) {
         *error_msg = "Could not open out oat file.";
         return -1;
@@ -1886,23 +1956,9 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
     Dex2oatFileWrapper in_vdex_fd;
     Dex2oatFileWrapper out_vdex_fd;
     if (!open_vdex_files_for_dex2oat(dex_path, out_oat_path, dexopt_needed, instruction_set,
-            is_public, uid, is_secondary_dex, profile_guided, &in_vdex_fd, &out_vdex_fd)) {
+            is_public, uid, is_secondary_dex, se_info, profile_guided,&in_vdex_fd, &out_vdex_fd)) {
         *error_msg = "Could not open vdex files.";
         return -1;
-    }
-
-    // Ensure that the oat dir and the compiler artifacts of secondary dex files have the correct
-    // selinux context (we generate them on the fly during the dexopt invocation and they don't
-    // fully inherit their parent context).
-    // Note that for primary apk the oat files are created before, in a separate installd
-    // call which also does the restorecon. TODO(calin): unify the paths.
-    if (is_secondary_dex) {
-        if (selinux_android_restorecon_pkgdir(oat_dir, se_info, uid,
-                SELINUX_ANDROID_RESTORECON_RECURSE)) {
-            *error_msg = std::string("Failed to restorecon ").append(oat_dir);
-            LOG(ERROR) << *error_msg;
-            return -1;
-        }
     }
 
     // Create a swap file if necessary.
