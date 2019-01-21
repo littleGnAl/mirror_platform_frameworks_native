@@ -363,6 +363,11 @@ TEST_F(ServiceTest, CreateAppDataSnapshot_AppDataAbsent) {
   ASSERT_EQ(-1, stat((rollback_de_dir + "/com.foo").c_str(), &sb));
 }
 
+TEST_F(ServiceTest, SnapshotAppData_WrongVolumeUuid) {
+    ASSERT_FALSE(service->snapshotAppData(std::make_unique<std::string>("NOT-TEST"),
+            "com.foo", 0, FLAG_STORAGE_DE).isOk());
+}
+
 TEST_F(ServiceTest, RestoreAppDataSnapshot) {
   auto rollback_ce_dir = create_data_misc_ce_rollback_path("TEST", 0);
   auto rollback_de_dir = create_data_misc_de_rollback_path("TEST", 0);
@@ -416,6 +421,11 @@ TEST_F(ServiceTest, RestoreAppDataSnapshot) {
   ASSERT_EQ("DE_RESTORE_CONTENT", de_content);
 }
 
+
+TEST_F(ServiceTest, RestoreAppDataSnapshot_WrongVolumeUuid) {
+    ASSERT_TRUE(service->restoreAppDataSnapshot(std::make_unique<std::string>("WRONG"),
+            "com.foo", 10000, -1, "", 0, FLAG_STORAGE_DE).isOk());
+}
 
 }  // namespace installd
 }  // namespace android
