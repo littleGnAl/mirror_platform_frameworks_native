@@ -164,6 +164,15 @@ binder::Status checkArgumentUuid(const std::unique_ptr<std::string>& uuid) {
     }
 }
 
+binder::Status checkArgumentVolumeUuid(const std::unique_ptr<std::string>& volumeUuid) {
+    if (!volumeUuid || *volumeUuid == "TEST") {
+        return ok();
+    } else {
+        return exception(binder::Status::EX_ILLEGAL_ARGUMENT,
+                StringPrintf("volumeUuid must be null or \"TEST\", got: %s", volumeUuid->c_str()));
+    }
+}
+
 binder::Status checkArgumentPackageName(const std::string& packageName) {
     if (is_valid_package_name(packageName.c_str())) {
         return ok();
@@ -215,6 +224,13 @@ binder::Status checkArgumentPath(const std::unique_ptr<std::string>& path) {
         return status;                                      \
     }                                                       \
 }
+
+#define CHECK_ARGUMENT_VOLUME_UUID(volumeUuid) {            \
+    auto status = checkArgumentVolumeUuid((volumeUuid));    \
+    if (!status.isOk()) {                                   \
+        return status;                                      \
+    }                                                       \
+}                                                           \
 
 #define CHECK_ARGUMENT_PACKAGE_NAME(packageName) {          \
     binder::Status status =                                 \
@@ -767,10 +783,6 @@ static int32_t copy_directory_recursive(const char* from, const char* to) {
 // clearAppData(FLAG_CLEAR_CACHE_ONLY | FLAG_CLEAR_CODE_CACHE before we commence
 // the copy.
 //
-// TODO(narayan): For snapshotAppData as well as restoreAppDataSnapshot, we
-// should validate that volumeUuid is either nullptr or TEST, we won't support
-// anything else.
-//
 // TODO(narayan): We need to be clearer about the expected behaviour for the
 // case where a snapshot already exists. We either need to clear the contents
 // of the snapshot directory before we make a copy, or we need to ensure that
@@ -779,7 +791,7 @@ binder::Status InstalldNativeService::snapshotAppData(
         const std::unique_ptr<std::string>& volumeUuid,
         const std::string& packageName, int32_t user, int32_t storageFlags) {
     ENFORCE_UID(AID_SYSTEM);
-    CHECK_ARGUMENT_UUID(volumeUuid);
+    CHECK_ARGUMENT_VOLUME_UUID(volumeUuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     std::lock_guard<std::recursive_mutex> lock(mLock);
 
@@ -846,7 +858,7 @@ binder::Status InstalldNativeService::restoreAppDataSnapshot(
         const int32_t appId, const int64_t ceDataInode, const std::string& seInfo,
         const int32_t user, int32_t storageFlags) {
     ENFORCE_UID(AID_SYSTEM);
-    CHECK_ARGUMENT_UUID(volumeUuid);
+    CHECK_ARGUMENT_VOLUME_UUID(volumeUuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     std::lock_guard<std::recursive_mutex> lock(mLock);
 
