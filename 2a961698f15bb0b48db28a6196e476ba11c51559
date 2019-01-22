@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "4a16ce5b_41c4e8b3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2507,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-22T09:30:09Z",
+      "side": 1,
+      "message": "shouldn\u0027t we wait X seconds for consent before we get here ? (if that\u0027s already happening, where ?)",
+      "parentUuid": "1d2da469_f0432b75",
+      "range": {
+        "startLine": 2507,
+        "startChar": 8,
+        "endLine": 2507,
+        "endChar": 33
+      },
+      "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1d344f2_d2b879ff",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-22T09:30:09Z",
+      "side": 1,
+      "message": "The fact that !constent_timed_out \u003d\u003d approved is confusing. I think you can simplify all of it by changing the booleans in the callback to a single enum ConsentState { APPROVED, DENIED, UNAVAILABLE }. This would make a lot of the code easier to read, IMO.",
+      "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "adcfca41_776ef7bf",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 7
