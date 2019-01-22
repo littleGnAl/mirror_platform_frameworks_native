@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5b9407c3_9710a17e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-22T20:58:13Z",
+      "side": 1,
+      "message": "nit: should be bugreportd ?",
+      "range": {
+        "startLine": 20,
+        "startChar": 37,
+        "endLine": 20,
+        "endChar": 46
+      },
+      "revId": "1a6d33c4ee1823acd1fbeffadeb105f1d923659d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f86af698_ccf823f3",
         "filename": "cmds/dumpstate/main.cpp",
         "patchSetId": 3
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "That\u0027s what I tried at first but decided not to. The complex state machinery of dumpstate made it hard to follow what was going on. Do you prefer that? I know this code is unusual, but it\u0027s also unusual to have a oneshot service, which is where all this complexity is coming from.",
       "parentUuid": "f86af698_ccf823f3",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "1a6d33c4ee1823acd1fbeffadeb105f1d923659d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a681a98_c81df073",
+        "filename": "cmds/dumpstate/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-22T20:58:13Z",
+      "side": 1,
+      "message": "If it makes the code less readable to do that then this is fine with me; can always refactor later.",
+      "parentUuid": "b97e5904_a95f47ec",
       "range": {
         "startLine": 53,
         "startChar": 8,
