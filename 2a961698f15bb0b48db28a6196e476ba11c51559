@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7353bb90_bc10f98b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2507,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-22T10:15:15Z",
+      "side": 1,
+      "message": "Bugreport generation takes several seconds. This function is the last step in finalizing the zip file. The consent dialog is modal as far as I know. If the user has not responded yet I think it\u0027s reasonable to time out. The file is still available in the internal directory (need to document that in the API) and the user can go and pull it manually. wdyt?\n\nThe consent is for sharing, not for triggering bugreports.",
+      "parentUuid": "1d2da469_f0432b75",
+      "range": {
+        "startLine": 2507,
+        "startChar": 8,
+        "endLine": 2507,
+        "endChar": 33
+      },
+      "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1d344f2_d2b879ff",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 7
@@ -87,6 +111,24 @@
       "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d762068_58da949d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-22T10:15:15Z",
+      "side": 1,
+      "message": "I considered it too but didn\u0027t do it because it\u0027s looked weird to have if statements with enums. But you are right it\u0027s a good trade-off.",
+      "parentUuid": "f1d344f2_d2b879ff",
+      "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +152,30 @@
       "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5681d311_8e24709a",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-22T10:15:15Z",
+      "side": 1,
+      "message": "Thanks! I did try that at one point, but maybe I had a typo.",
+      "parentUuid": "adcfca41_776ef7bf",
+      "range": {
+        "startLine": 457,
+        "startChar": 48,
+        "endLine": 457,
+        "endChar": 69
+      },
+      "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
