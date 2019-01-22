@@ -769,7 +769,11 @@ enum {
     /** all apps */
     AKEYCODE_ALL_APPS = 284,
     /** refresh key */
-    AKEYCODE_REFRESH = 285
+    AKEYCODE_REFRESH = 285,
+    /** Critical communication control key. */
+    AKEYCODE_CRITICAL_COMMUNICATION_CONTROL = 286,
+    /** Critical communication SOS key. */
+    AKEYCODE_CRITICAL_COMMUNICATION_SOS = 287
 
     // NOTE: If you add a new keycode here you must also add it to several other files.
     //       Refer to frameworks/base/core/java/android/view/KeyEvent.java for the full list.
