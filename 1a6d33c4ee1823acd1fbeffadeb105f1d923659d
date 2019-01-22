@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26862573_25d4fb75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-22T21:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b9407c3_9710a17e",
+      "range": {
+        "startLine": 20,
+        "startChar": 37,
+        "endLine": 20,
+        "endChar": 46
+      },
+      "revId": "1a6d33c4ee1823acd1fbeffadeb105f1d923659d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f86af698_ccf823f3",
         "filename": "cmds/dumpstate/main.cpp",
         "patchSetId": 3
