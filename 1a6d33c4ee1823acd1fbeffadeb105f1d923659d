@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f86af698_ccf823f3",
+        "filename": "cmds/dumpstate/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-22T18:44:17Z",
+      "side": 1,
+      "message": "any reason in particular to not just do this from run_main when it finds the \u0027-w\u0027 option? You can always join the threadpool later.",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "1a6d33c4ee1823acd1fbeffadeb105f1d923659d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
