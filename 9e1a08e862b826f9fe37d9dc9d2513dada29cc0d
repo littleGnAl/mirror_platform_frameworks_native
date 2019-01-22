@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e421652b_fa7f7c33",
+        "filename": "cmds/dumpstate/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-01-22T13:41:56Z",
+      "side": 1,
+      "message": "nit: maybe add a comment saying that this should be kept in sync with Dumpstate::DumpOptions::Initialize?",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "9e1a08e862b826f9fe37d9dc9d2513dada29cc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
