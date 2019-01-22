@@ -22,6 +22,30 @@
       "revId": "9e1a08e862b826f9fe37d9dc9d2513dada29cc0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f8a614_91de3897",
+        "filename": "cmds/dumpstate/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-22T15:05:21Z",
+      "side": 1,
+      "message": "Didn\u0027t do it because it\u0027s only a minor annoyance: there will be warning from getopt about unknown option but everything will work as expected. But might as well, right?",
+      "parentUuid": "e421652b_fa7f7c33",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "9e1a08e862b826f9fe37d9dc9d2513dada29cc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
