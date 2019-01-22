@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "79081f36_1e3c36d1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2507,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-22T09:48:40Z",
+      "side": 1,
+      "message": "This runs only after the BR is done (and the dialog is shown before it starts), but I think it\u0027s still better to be explicit (and only continue when we\u0027ve reached one of the states?).",
+      "parentUuid": "4a16ce5b_41c4e8b3",
+      "range": {
+        "startLine": 2507,
+        "startChar": 8,
+        "endLine": 2507,
+        "endChar": 33
+      },
+      "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1d344f2_d2b879ff",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 7
