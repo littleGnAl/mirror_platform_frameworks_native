@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86e17b0f_df8fc576",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-22T17:16:45Z",
+      "side": 1,
+      "message": "Wrong indent. Same below.",
+      "range": {
+        "startLine": 211,
+        "startChar": 4,
+        "endLine": 211,
+        "endChar": 6
+      },
+      "revId": "cacc309e972d94b1336a00cddea2f48ba4af6934",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0343cc75_beaf1544",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-22T17:16:45Z",
+      "side": 1,
+      "message": "Incorrect return value. We should return the result of the Exec.",
+      "range": {
+        "startLine": 229,
+        "startChar": 11,
+        "endLine": 229,
+        "endChar": 12
+      },
+      "revId": "cacc309e972d94b1336a00cddea2f48ba4af6934",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
