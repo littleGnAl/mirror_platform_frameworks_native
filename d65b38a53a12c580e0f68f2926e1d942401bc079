@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ab110f5_ebac39d3",
+        "filename": "libs/ui/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1122473
+      },
+      "writtenOn": "2019-01-22T22:45:18Z",
+      "side": 1,
+      "message": "add marissaw@ as well?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "d65b38a53a12c580e0f68f2926e1d942401bc079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
