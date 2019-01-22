@@ -22,6 +22,30 @@
       "revId": "d65b38a53a12c580e0f68f2926e1d942401bc079",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a1bb2f5_bd02b753",
+        "filename": "libs/ui/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1377856
+      },
+      "writtenOn": "2019-01-22T23:55:06Z",
+      "side": 1,
+      "message": "aosp-master and master for frameworks/native/libs/ui/OWNERS is out of sync.\nI copied the owners from android master to here and added you and me.",
+      "parentUuid": "3ab110f5_ebac39d3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "d65b38a53a12c580e0f68f2926e1d942401bc079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
