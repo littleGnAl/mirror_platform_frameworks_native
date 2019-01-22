@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d2da469_f0432b75",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2507,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-22T09:14:30Z",
+      "side": 1,
+      "message": "why treat this differently than denied?",
+      "range": {
+        "startLine": 2507,
+        "startChar": 8,
+        "endLine": 2507,
+        "endChar": 33
+      },
+      "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adcfca41_776ef7bf",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-22T09:14:30Z",
+      "side": 1,
+      "message": "I think you need to extend BnIncidentAuthListener instead - then you can get rid of the onAsBinder().",
+      "range": {
+        "startLine": 457,
+        "startChar": 48,
+        "endLine": 457,
+        "endChar": 69
+      },
+      "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
