@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a556b17f_5ed28a42",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-23T18:16:08Z",
+      "side": 1,
+      "message": "This is to make sure there is not ambiguity (there could be other runtimes). We could replace `ANDROID_RUNTIME` with `ART`, but the naming patterns we\u0027ve used so far in the APEX work have favored the former over the latter.",
+      "parentUuid": "d25ae693_597d7973",
+      "range": {
+        "startLine": 36,
+        "startChar": 7,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "6d4f17c22dd0d6968a7adb7111b129c311926c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a21fabe_16a894d5",
         "filename": "cmds/installd/dexopt.h",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "6d4f17c22dd0d6968a7adb7111b129c311926c75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c05b0f0_96dce8bd",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-23T18:16:08Z",
+      "side": 1,
+      "message": "By default, the preprocessor would only emit a warning. But because we use `-Werror` in our builds, this is indeed superfluous. Removed in PS4.",
+      "parentUuid": "7a21fabe_16a894d5",
+      "revId": "6d4f17c22dd0d6968a7adb7111b129c311926c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
