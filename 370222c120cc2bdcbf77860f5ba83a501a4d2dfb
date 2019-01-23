@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b323dec5_1fb861e2",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-23T15:29:56Z",
+      "side": 1,
+      "message": "Nit: put this in a kRuntimeApexName variable?",
+      "range": {
+        "startLine": 335,
+        "startChar": 35,
+        "endLine": 335,
+        "endChar": 60
+      },
+      "revId": "370222c120cc2bdcbf77860f5ba83a501a4d2dfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
