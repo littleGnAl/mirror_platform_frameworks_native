@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d25ae693_597d7973",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-23T16:33:43Z",
+      "side": 1,
+      "message": "Consider shortening by removing this bit. It\u0027s a short lived macro anyway.",
+      "range": {
+        "startLine": 36,
+        "startChar": 7,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "6d4f17c22dd0d6968a7adb7111b129c311926c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a21fabe_16a894d5",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-23T16:33:43Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be necessary - the compiler fails on redefinition.",
+      "revId": "6d4f17c22dd0d6968a7adb7111b129c311926c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
