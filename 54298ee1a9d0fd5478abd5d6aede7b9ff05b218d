@@ -46,6 +46,30 @@
       "revId": "54298ee1a9d0fd5478abd5d6aede7b9ff05b218d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b5355db_6e981cad",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-23T16:16:34Z",
+      "side": 1,
+      "message": "Note: I eventually did refactor this here: https://android-review.googlesource.com/c/platform/frameworks/native/+/882313/",
+      "parentUuid": "c56ca621_71e49edc",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "54298ee1a9d0fd5478abd5d6aede7b9ff05b218d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
