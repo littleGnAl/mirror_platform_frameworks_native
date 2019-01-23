@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "557de44f_478b3736",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2507,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-23T14:41:56Z",
+      "side": 1,
+      "message": "My main objection to this is that the definition of \"timed_out\" depends on how long bug report generation takes (instead of being fixed). I think that\u0027s going to cause a lot of trouble since it\u0027s highly variable and non-deterministic.\n\nIf you don\u0027t want to fix it in this change, that\u0027s OK but i\u0027d put it high on the list of things that need to be fixed (and definitely for Q).",
+      "parentUuid": "7353bb90_bc10f98b",
+      "range": {
+        "startLine": 2507,
+        "startChar": 8,
+        "endLine": 2507,
+        "endChar": 33
+      },
+      "revId": "2a961698f15bb0b48db28a6196e476ba11c51559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1d344f2_d2b879ff",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 7
