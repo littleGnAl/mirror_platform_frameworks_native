@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0822c3d_06638faf",
+        "filename": "libs/incidentcompanion/binder/android/os/IIncidentAuthListener.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-23T13:53:09Z",
+      "side": 1,
+      "message": "nit: tabs",
+      "revId": "b3a159bf2a2b162dd4f0244c9fa0a19d301ce4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6abf0cc4_35d7cc5b",
+        "filename": "libs/incidentcompanion/binder/android/os/IIncidentCompanion.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-23T13:53:09Z",
+      "side": 1,
+      "message": "nit: tabs",
+      "revId": "b3a159bf2a2b162dd4f0244c9fa0a19d301ce4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa503c59_487bc3ec",
+        "filename": "libs/incidentcompanion/binder/android/os/IIncidentCompanion.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-23T13:53:09Z",
+      "side": 1,
+      "message": "so this will cancel all outstanding authorizations that were registered with this callback?",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 32
+      },
+      "revId": "b3a159bf2a2b162dd4f0244c9fa0a19d301ce4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d7e4df_29b6b216",
+        "filename": "libs/incidentcompanion/binder/android/os/IIncidentCompanion.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-23T13:53:09Z",
+      "side": 1,
+      "message": "who calls this? Also, what is uri?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "b3a159bf2a2b162dd4f0244c9fa0a19d301ce4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
