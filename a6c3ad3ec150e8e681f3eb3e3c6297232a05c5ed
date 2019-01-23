@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59d920be_a1880ff5",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2553,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-23T18:27:00Z",
+      "side": 1,
+      "message": "what thread is this call to sleep() issued on ? will it cause issues if this thread is \"blocked\" for multiple seconds ? Of course, if dumpstate is a single shot binary with one thread, it\u0027s not a huge deal.\n\n+maco@ ?",
+      "range": {
+        "startLine": 2553,
+        "startChar": 12,
+        "endLine": 2553,
+        "endChar": 33
+      },
+      "revId": "a6c3ad3ec150e8e681f3eb3e3c6297232a05c5ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
