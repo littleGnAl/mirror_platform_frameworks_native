@@ -22,6 +22,30 @@
       "revId": "b45dff9fb425b950589b01d22f909ec7a9389098",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f302143c_b781caa4",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2511,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-01-23T16:47:11Z",
+      "side": 1,
+      "message": "It\u0027s an error condition. So it\u0027s similar to line 2496.",
+      "parentUuid": "15151454_4d847610",
+      "range": {
+        "startLine": 2511,
+        "startChar": 15,
+        "endLine": 2511,
+        "endChar": 34
+      },
+      "revId": "b45dff9fb425b950589b01d22f909ec7a9389098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
