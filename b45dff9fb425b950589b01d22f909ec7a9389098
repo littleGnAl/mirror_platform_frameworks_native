@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15151454_4d847610",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2511,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-23T14:48:58Z",
+      "side": 1,
+      "message": "the early return path here misses some things below - like the vibration and broadcast. Do those need to happen?",
+      "range": {
+        "startLine": 2511,
+        "startChar": 15,
+        "endLine": 2511,
+        "endChar": 34
+      },
+      "revId": "b45dff9fb425b950589b01d22f909ec7a9389098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
