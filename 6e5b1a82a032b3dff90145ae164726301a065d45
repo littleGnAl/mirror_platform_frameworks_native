@@ -70,6 +70,30 @@
       "revId": "6e5b1a82a032b3dff90145ae164726301a065d45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02adc9da_4e33af43",
+        "filename": "libs/binder/ndk/ibinder_jni.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-24T02:24:18Z",
+      "side": 1,
+      "message": "I may have to talk to you more. My understanding is that libbinder_ndk has a stub library, so none of its dependencies should be copied to the APEX.",
+      "parentUuid": "77a52213_33d3a650",
+      "range": {
+        "startLine": 46,
+        "startChar": 35,
+        "endLine": 46,
+        "endChar": 88
+      },
+      "revId": "6e5b1a82a032b3dff90145ae164726301a065d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
