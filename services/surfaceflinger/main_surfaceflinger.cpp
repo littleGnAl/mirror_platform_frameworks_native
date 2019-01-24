@@ -25,9 +25,9 @@
 #include <binder/IPCThreadState.h>
 #include <binder/ProcessState.h>
 #include <binder/IServiceManager.h>
+#include <cutils/sched_policy.h>
 #include <displayservice/DisplayService.h>
 #include <hidl/LegacySupport.h>
-#include <processgroup/sched_policy.h>
 #include <configstore/Utils.h>
 #include "SurfaceFlinger.h"
 
