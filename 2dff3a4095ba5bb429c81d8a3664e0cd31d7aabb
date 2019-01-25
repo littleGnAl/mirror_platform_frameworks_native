@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "32cc67d3_52ae040a",
+        "filename": "cmds/installd/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-25T18:26:22Z",
+      "side": 1,
+      "message": "Line too long, reflow.",
+      "revId": "2dff3a4095ba5bb429c81d8a3664e0cd31d7aabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2558b8d3_c3cb3470",
         "filename": "opengl/tests/linetex/Android.bp",
         "patchSetId": 1

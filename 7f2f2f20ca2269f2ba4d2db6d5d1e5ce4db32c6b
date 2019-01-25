@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edf98e4_a99d2256",
+        "filename": "cmds/installd/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-25T18:26:22Z",
+      "side": 0,
+      "message": "I\u0027d say avoid extraneous formatting/style changes.",
+      "revId": "7f2f2f20ca2269f2ba4d2db6d5d1e5ce4db32c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
