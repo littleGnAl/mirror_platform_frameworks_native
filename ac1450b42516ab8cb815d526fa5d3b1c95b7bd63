@@ -70,6 +70,30 @@
       "revId": "ac1450b42516ab8cb815d526fa5d3b1c95b7bd63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "819f2818_41fadddb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-25T22:47:10Z",
+      "side": 1,
+      "message": "Well it means that an app can have at most 1 executable oat file. So instead I\u0027m avoiding doing a recursive restorecon on oat/ and only setting the label on files/dirs that are touched during dexopting of this one dex file, leaving the rest as it was.",
+      "parentUuid": "8c17723e_796f4d9e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "ac1450b42516ab8cb815d526fa5d3b1c95b7bd63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
