@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ae9dd3d_2cc4b1b6",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-25T14:31:17Z",
+      "side": 1,
+      "message": "I don\u0027t think we should add this, because it\u0027s quite easy to accidentally use it instead of CHECK_ARGUMENT_UUID (which also checks volume UUID, except that it allows all of them). I\u0027d prefer it if the check was specific to the two methods that involve snapshotting.\n\nIf you keep it, rename it to CHECK_UUID_IS_TEST_OR_NULL and change the method to checkUuidIsTestOrNull. Does that make sense ?",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 0
+      },
+      "revId": "530db9ca6c65f45c16b1993e8ac651dd731bf55e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
