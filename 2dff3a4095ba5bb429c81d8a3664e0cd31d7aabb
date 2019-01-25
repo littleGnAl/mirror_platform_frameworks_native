@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2558b8d3_c3cb3470",
+        "filename": "opengl/tests/linetex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-25T17:32:12Z",
+      "side": 1,
+      "message": "just remove this comment. it didn\u0027t resolve to anything in make anyways",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "2dff3a4095ba5bb429c81d8a3664e0cd31d7aabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d46ef2_95356538",
+        "filename": "opengl/tests/swapinterval/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-25T17:32:12Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 56
+      },
+      "revId": "2dff3a4095ba5bb429c81d8a3664e0cd31d7aabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a201c10_d5c11212",
+        "filename": "opengl/tests/textures/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-25T17:32:12Z",
+      "side": 1,
+      "message": "same",
+      "revId": "2dff3a4095ba5bb429c81d8a3664e0cd31d7aabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e11aad9_51239b00",
+        "filename": "opengl/tests/textures/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-25T17:32:12Z",
+      "side": 1,
+      "message": "combine these lists?",
+      "range": {
+        "startLine": 14,
+        "startChar": 36,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "2dff3a4095ba5bb429c81d8a3664e0cd31d7aabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "798e6d78_2dfcb0a1",
+        "filename": "opengl/tests/tritex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-25T17:32:12Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 56
+      },
+      "revId": "2dff3a4095ba5bb429c81d8a3664e0cd31d7aabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
