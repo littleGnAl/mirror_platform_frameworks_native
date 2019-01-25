@@ -22,6 +22,30 @@
       "revId": "530db9ca6c65f45c16b1993e8ac651dd731bf55e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1ad932_7fd55169",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-01-25T15:18:19Z",
+      "side": 1,
+      "message": "Makes sense. Inlined checks into snapshotAppData/restoreAppdDataSnapshot methods.",
+      "parentUuid": "2ae9dd3d_2cc4b1b6",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 0
+      },
+      "revId": "530db9ca6c65f45c16b1993e8ac651dd731bf55e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
