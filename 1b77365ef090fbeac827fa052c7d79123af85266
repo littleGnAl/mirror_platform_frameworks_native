@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1f0d1e2_4444aac9",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-25T14:32:20Z",
+      "side": 1,
+      "message": "I\u0027d remove this LOG(INFO) since it doesn\u0027t really aid debugging (same below). We try and log only critical user visible events to aid debugging, and even there when in doubt it\u0027s best not to log at all.\n\nOtherwise, LGTM !",
+      "range": {
+        "startLine": 817,
+        "startChar": 8,
+        "endLine": 817,
+        "endChar": 80
+      },
+      "revId": "1b77365ef090fbeac827fa052c7d79123af85266",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
