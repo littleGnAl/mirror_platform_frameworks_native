@@ -878,6 +878,7 @@ binder::Status InstalldNativeService::restoreAppDataSnapshot(
         return res;
     }
 
+    LOG(INFO) << "need_ce_rollback: " << needs_ce_rollback << " needs_de_rollback: " << needs_de_rollback;
     if (needs_ce_rollback) {
         auto to_ce = create_data_user_ce_path(volume_uuid, user);
         int rc = copy_directory_recursive(from_ce.c_str(), to_ce.c_str());
@@ -885,18 +886,24 @@ binder::Status InstalldNativeService::restoreAppDataSnapshot(
             res = error(rc, "Failed copying " + from_ce + " to " + to_ce);
             return res;
         }
+        LOG(INFO) << "ce_rollback: success";
     }
 
     if (needs_de_rollback) {
         auto to_de = create_data_user_de_path(volume_uuid, user);
         int rc = copy_directory_recursive(from_de.c_str(), to_de.c_str());
         if (rc != 0) {
-            // TODO(narayan): Should we clear clear the rolled back CE data if
-            // something goes wrong here ? We're choosing between leaving the
-            // app devoid of all its data or with just its ce data installed.
+            auto ce_data = create_data_user_ce_package_path(volume_uuid, user, package_name);
+            if (needs_ce_rollback) {
+                LOG(WARNING) << "de_data rollback failed. Erasing rolled back ce_data " << ce_data;
+                if (delete_dir_contents(ce_data.c_str(), 1, nullptr) != 0) {
+                    LOG(WARNING) << "Failed to delete rolled back ce_data " << ce_data;
+                }
+            }
             res = error(rc, "Failed copying " + from_de + " to " + to_de);
             return res;
         }
+        LOG(INFO) << "de_rollback: success";
     }
 
     // Finally, restore the SELinux label on the app data.
