@@ -22,6 +22,30 @@
       "revId": "ac1450b42516ab8cb815d526fa5d3b1c95b7bd63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c40ff6c_c8e47832",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-25T21:51:04Z",
+      "side": 1,
+      "message": "What I mean is that if you do restorecon on oat/, it will pick \"type\" label (app_data_file) and apply it to everything inside. To apply \"execType\", you have to invoke restorecon with a flag.\n\nScenario: App has two secondary dex files. We invoke dexopt on the first, create all files, recursively restorecon its oat/ to \"type\" and then set the oat file to \"execType\". Now invoke dexopt on second secondary dex, recursively restorecon its oat/ to \"type\" (invalidating the label of the first oat file) and set label of the second oat file to \"execType\".",
+      "parentUuid": "ec45fe2f_eabf976c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "ac1450b42516ab8cb815d526fa5d3b1c95b7bd63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
