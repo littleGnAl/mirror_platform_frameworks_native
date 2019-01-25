@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec45fe2f_eabf976c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-01-25T21:04:51Z",
+      "side": 1,
+      "message": "I think it\u0027s ok, but what do you mean by invalidate the labels? Because we don\u0027t dex2oat anymore in the app process we should be ok to relabel the entire dir.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "ac1450b42516ab8cb815d526fa5d3b1c95b7bd63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
