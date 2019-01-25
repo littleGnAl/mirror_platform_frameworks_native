@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "971e7702_36fb284d",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-01-25T14:39:58Z",
+      "side": 1,
+      "message": "this can be moved inside the (needs_ce_rollback) if statement.",
+      "range": {
+        "startLine": 894,
+        "startChar": 12,
+        "endLine": 894,
+        "endChar": 93
+      },
+      "revId": "3c6591e80290bebf1ee836c4860a174b76963eee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
