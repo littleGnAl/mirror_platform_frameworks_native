@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cc03df6_f2a49dd1",
+        "filename": "cmds/dumpsys/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-26T03:20:26Z",
+      "side": 0,
+      "message": "this is the default",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "7f2f2f20ca2269f2ba4d2db6d5d1e5ce4db32c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4b812fd_4dc9fda5",
+        "filename": "cmds/dumpsys/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-26T03:20:26Z",
+      "side": 0,
+      "message": "all files are read now",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 7
+      },
+      "revId": "7f2f2f20ca2269f2ba4d2db6d5d1e5ce4db32c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a574d8e0_6fc31c08",
+        "filename": "services/utils/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-26T03:20:26Z",
+      "side": 0,
+      "message": "same",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "7f2f2f20ca2269f2ba4d2db6d5d1e5ce4db32c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
