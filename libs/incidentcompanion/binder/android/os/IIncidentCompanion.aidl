@@ -27,13 +27,13 @@ import android.os.IIncidentAuthListener;
 interface IIncidentCompanion {
     /**
      * Request an authorization for an incident or bug report.
-     * // TODO(b/111441001): Add the permission
      * <p>
-     * This function requires the ___ permission.
+     * This function requires the android.Manifest.permission.REQUEST_INCIDENT_REPORT_APPROVAL
+     * permission.
      *
-     * @param callingUid The original application that requested the report.  This function
-     *      returns via the callback whether the application should be trusted.  It is up
-     *      to the caller to actually implement the restriction to take or not take
+     * @param callingUid The original application that is requesting to consume the report.
+     *      This function returns via the callback whether the approval should be granted.
+     *      It is up to the caller to actually implement the restriction to share or not share
      *      the incident or bug report.
      * @param flags FLAG_CONFIRMATION_DIALOG (0x1) - to show this as a dialog.  Otherwise
      *      a dialog will be shown as a notification.
@@ -41,7 +41,9 @@ interface IIncidentCompanion {
      *      a long (user's choice) time, or ever (if they never respond to the notification).
      *      Authorization requests are not persisted across reboot.  It is up to the calling
      *      service to request another authorization after reboot if they still would like
-     *      to send their report.
+     *      to send their report.  Each call to this method should pass a new callback.  Since
+     *      cancel takes the callback object, additional calls with the same callback object
+     *      are no-ops.
      */
     oneway void authorizeReport(int callingUid, String callingPackage,
             int flags, IIncidentAuthListener callback);
