@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2334dc9_7fcef449",
+        "filename": "services/utils/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-26T03:27:28Z",
+      "side": 1,
+      "message": "oh also, vendor things don\u0027t get all the headers from global.go, so this must be manually specified.",
+      "revId": "c942c4c0ea26214d1290d845b795fd66e25126a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
