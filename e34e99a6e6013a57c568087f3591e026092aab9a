@@ -16,6 +16,24 @@
       "revId": "e34e99a6e6013a57c568087f3591e026092aab9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3657f6ae_f20c6a5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-01-28T17:23:14Z",
+      "side": 1,
+      "message": "Since I don\u0027t need to change installd Binder, I don\u0027t need a change in internal.\nI\u0027ve abandoned CL in internal (https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/6154619), sorry for the confusion.",
+      "parentUuid": "0836f7f5_13ce3662",
+      "revId": "e34e99a6e6013a57c568087f3591e026092aab9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
