@@ -22,6 +22,30 @@
       "revId": "4cf9a91d117c81c4e921af17ab3e5d601fb444b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129221f6_c3d4625c",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2019-01-28T06:58:24Z",
+      "side": 1,
+      "message": "\"ReferenceQueueDaemon\" thread is holding gProxyLock and waiting on sTrackingLock\nwhile \"Binder:1501_10\" thread is holding sTrackingLock and waiting on gProxyLock",
+      "parentUuid": "9a3b9c1c_a112428b",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 42
+      },
+      "revId": "4cf9a91d117c81c4e921af17ab3e5d601fb444b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
