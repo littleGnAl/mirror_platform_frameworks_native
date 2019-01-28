@@ -46,6 +46,30 @@
       "revId": "4cf9a91d117c81c4e921af17ab3e5d601fb444b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "408afc21_9a124772",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2019-01-28T07:28:13Z",
+      "side": 1,
+      "message": "I would suggest just invoke sLimitCallback(uid) directly without accquring the lock, as the implementation is already  thread safe and triggerLimitCallback() is ensured to be called exactly once for each uid",
+      "parentUuid": "129221f6_c3d4625c",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 42
+      },
+      "revId": "4cf9a91d117c81c4e921af17ab3e5d601fb444b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
