@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3b9c1c_a112428b",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2019-01-28T06:44:14Z",
+      "side": 1,
+      "message": "Basically I Agree with this patch, however holding sTrackingLock here would cause dead lock, see the following backtrace:\n\"ReferenceQueueDaemon\" daemon prio\u003d5 tid\u003d5 Native\n  native: #01 pc 000000000002248c  /system/lib64/libc.so (__futex_wait_ex(...\n  native: #02 pc 0000000000082c58  /system/lib64/libc.so (NonPI::MutexLockWithTimeout(...\n  native: #03 pc 00000000000519b8  /system/lib64/libbinder.so (android::BpBinder::~BpBinder()+76)\n  native: #04 pc 0000000000051c6c  /system/lib64/libbinder.so (_ZTv0_n24_N7android8BpBinderD0Ev+36)\n  native: #05 pc 000000000012f658  /system/lib64/libandroid_runtime.so (BinderProxy_destroy(void*)+72)\n\"Binder:1501_10\" prio\u003d5 tid\u003d27 Native\n  native: #01 pc 000000000002248c  /system/lib64/libc.so (__futex_wait_ex(...\n  native: #02 pc 0000000000082c58  /system/lib64/libc.so (NonPI::MutexLockWithTimeout(...\n  native: #03 pc 0000000000130d04  /system/lib64/libandroid_runtime.so (android_os_BinderInternal_proxyLimitcallback(...\n  native: #04 pc 00000000000509c0  /system/lib64/libbinder.so (android::BpBinder::create(...\n  native: #05 pc 000000000007a33c  /system/lib64/libbinder.so (android::ProcessState::getStrongProxyForHandle(...\n  native: #06 pc 0000000000061fd0  /system/lib64/libbinder.so (android::unflatten_binder(...\n  native: #07 pc 0000000000068d48  /system/lib64/libbinder.so (android::Parcel::readStrongBinder(...\n  native: #08 pc 00000000001229b0  /system/lib64/libandroid_runtime.so (android::android_os_Parcel_readStrongBinder(...",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 42
+      },
+      "revId": "4cf9a91d117c81c4e921af17ab3e5d601fb444b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
