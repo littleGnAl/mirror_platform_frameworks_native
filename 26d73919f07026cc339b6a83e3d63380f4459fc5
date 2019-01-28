@@ -22,6 +22,30 @@
       "revId": "26d73919f07026cc339b6a83e3d63380f4459fc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d9af79_89c592c8",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-28T22:44:55Z",
+      "side": 1,
+      "message": "Thank Martin! Fixed in PS3.",
+      "parentUuid": "7c4c7c79_30ef2706",
+      "range": {
+        "startLine": 172,
+        "startChar": 13,
+        "endLine": 172,
+        "endChar": 16
+      },
+      "revId": "26d73919f07026cc339b6a83e3d63380f4459fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
