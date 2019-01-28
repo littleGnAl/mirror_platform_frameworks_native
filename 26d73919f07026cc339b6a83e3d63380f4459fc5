@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c4c7c79_30ef2706",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-28T20:39:33Z",
+      "side": 1,
+      "message": "This return code is already in use below.",
+      "range": {
+        "startLine": 172,
+        "startChar": 13,
+        "endLine": 172,
+        "endChar": 16
+      },
+      "revId": "26d73919f07026cc339b6a83e3d63380f4459fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
