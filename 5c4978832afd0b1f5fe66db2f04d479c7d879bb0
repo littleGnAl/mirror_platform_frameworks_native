@@ -22,6 +22,30 @@
       "revId": "5c4978832afd0b1f5fe66db2f04d479c7d879bb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa0e1725_2bf16d3d",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-01-28T12:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7622166_bf2761fe",
+      "range": {
+        "startLine": 784,
+        "startChar": 43,
+        "endLine": 784,
+        "endChar": 49
+      },
+      "revId": "5c4978832afd0b1f5fe66db2f04d479c7d879bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
