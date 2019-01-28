@@ -22,6 +22,30 @@
       "revId": "f739ef2711205ac2b3d83702e0a390167b8a9dff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a17f6f2_eceed2c0",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-28T11:44:58Z",
+      "side": 1,
+      "message": "Yes, as they don\u0027t have a well-defined meaning (we use different exit values to help debugging). But you\u0027re right, it is cleaner not to change existing values. Addressed in PS2, where I introduce a new exit value for the new `restorecon` step.",
+      "parentUuid": "d1556ce4_8c2fcfb4",
+      "range": {
+        "startLine": 176,
+        "startChar": 13,
+        "endLine": 176,
+        "endChar": 16
+      },
+      "revId": "f739ef2711205ac2b3d83702e0a390167b8a9dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
