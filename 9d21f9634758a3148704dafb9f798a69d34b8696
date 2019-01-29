@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2986f01_d11503c0",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-29T23:47:20Z",
+      "side": 1,
+      "message": "is it because this changes? if it changes, will outAshmemSize still be valid (or does it matter)? Should we log an error/file for a follow-up solution? Please document.",
+      "range": {
+        "startLine": 182,
+        "startChar": 31,
+        "endLine": 182,
+        "endChar": 53
+      },
+      "revId": "9d21f9634758a3148704dafb9f798a69d34b8696",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
