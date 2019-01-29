@@ -181,7 +181,7 @@ static void release_object(const sp<ProcessState>& proc,
                 if ((outAshmemSize != nullptr) && ashmem_valid(obj.handle)) {
                     int size = ashmem_get_size_region(obj.handle);
                     if (size > 0) {
-                        *outAshmemSize -= size;
+                        *outAshmemSize -= std::min(*outAshmemSize, static_cast<size_t>(size));
                     }
                 }
 
