@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2465b018_1b739748",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2019-01-29T01:02:28Z",
+      "side": 1,
+      "message": "nit: extra line below it",
+      "revId": "389a44f42333e8d124a9dbcc47d132d117f7ddee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
