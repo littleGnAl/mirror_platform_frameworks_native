@@ -48,9 +48,12 @@ static binder::Status error(uint32_t code, const std::string& msg) {
     return binder::Status::fromServiceSpecificError(code, String8(msg.c_str()));
 }
 
+// Takes ownership of data.
 static void* callAndNotify(void* data) {
-    DumpstateInfo& ds_info = *static_cast<DumpstateInfo*>(data);
-    ds_info.ds->Run(ds_info.calling_uid, ds_info.calling_package);
+    DumpstateInfo* ds_info = static_cast<DumpstateInfo*>(data);
+    ds_info->ds->Run(ds_info->calling_uid, ds_info->calling_package);
+    delete ds_info;
+    ds_info = nullptr;
     MYLOGD("Finished Run()\n");
     return nullptr;
 }
@@ -150,13 +153,13 @@ binder::Status DumpstateService::startBugreport(int32_t calling_uid,
         ds_->listener_ = listener;
     }
 
-    DumpstateInfo ds_info;
-    ds_info.ds = ds_;
-    ds_info.calling_uid = calling_uid;
-    ds_info.calling_package = calling_package;
+    DumpstateInfo* ds_info = new DumpstateInfo();
+    ds_info->ds = ds_;
+    ds_info->calling_uid = calling_uid;
+    ds_info->calling_package = calling_package;
 
     pthread_t thread;
-    status_t err = pthread_create(&thread, nullptr, callAndNotify, &ds_);
+    status_t err = pthread_create(&thread, nullptr, callAndNotify, ds_info);
     if (err != 0) {
         return error(err, "Could not create a background thread.");
     }
