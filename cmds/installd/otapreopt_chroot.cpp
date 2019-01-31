@@ -41,6 +41,23 @@ using android::base::StringPrintf;
 namespace android {
 namespace installd {
 
+// Configuration for bind-mounted Bionic artifacts.
+
+static constexpr const char* kLinkerMountPoint = "/bionic/bin/linker";
+static constexpr const char* kRuntimeLinkerPath = "/apex/com.android.runtime/bin/linker";
+
+static constexpr const char* kBionicLibsMountPointDir = "/bionic/lib/";
+static constexpr const char* kRuntimeBionicLibsDir = "/apex/com.android.runtime/lib/bionic/";
+
+static constexpr const char* kLinkerMountPoint64 = "/bionic/bin/linker64";
+static constexpr const char* kRuntimeLinkerPath64 = "/apex/com.android.runtime/bin/linker64";
+
+static constexpr const char* kBionicLibsMountPointDir64 = "/bionic/lib64/";
+static constexpr const char* kRuntimeBionicLibsDir64 = "/apex/com.android.runtime/lib64/bionic/";
+
+static const std::vector<std::string> kBionicLibFileNames = {"libc.so", "libm.so", "libdl.so"};
+
+
 static void CloseDescriptor(int fd) {
     if (fd >= 0) {
         int result = close(fd);
@@ -56,6 +73,45 @@ static void CloseDescriptor(const char* descriptor_string) {
     if (!stream.fail()) {
         CloseDescriptor(fd);
     }
+}
+
+// Copied from system/core/init/mount_namespace.cpp.
+static bool BindMount(const std::string& source, const std::string& mount_point,
+                      bool recursive = false) {
+    unsigned long mountflags = MS_BIND;
+    if (recursive) {
+        mountflags |= MS_REC;
+    }
+    if (mount(source.c_str(), mount_point.c_str(), nullptr, mountflags, nullptr) == -1) {
+        PLOG(ERROR) << "Could not bind-mount " << source << " to " << mount_point;
+        return false;
+    }
+    return true;
+}
+
+// Copied from system/core/init/mount_namespace.cpp and and adjusted (bind
+// mounts are not made private, as the /postinstall is already private (see
+// `android::installd::otapreopt_chroot`).
+static bool BindMountBionic(const std::string& linker_source, const std::string& lib_dir_source,
+                            const std::string& linker_mount_point,
+                            const std::string& lib_mount_dir) {
+    if (access(linker_source.c_str(), F_OK) != 0) {
+        PLOG(INFO) << linker_source << " does not exist. skipping mounting bionic there.";
+        // This can happen for 64-bit bionic in 32-bit only device.
+        // It is okay to skip mounting the 64-bit bionic.
+        return true;
+    }
+    if (!BindMount(linker_source, linker_mount_point)) {
+        return false;
+    }
+    for (const auto& libname : kBionicLibFileNames) {
+        std::string mount_point = lib_mount_dir + libname;
+        std::string source = lib_dir_source + libname;
+        if (!BindMount(source, mount_point)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 // Entry for otapreopt_chroot. Expected parameters are:
@@ -208,6 +264,22 @@ static int otapreopt_chroot(const int argc, char **arg) {
     apex::scanPackagesDirAndActivate(apex::kApexPackageSystemDir);
     // Collect activated packages.
     std::vector<apex::ApexFile> active_packages = apex::getActivePackages();
+
+    // Bind-mount Bionic artifacts from the Runtime APEX.
+    // This logic is copied and adapted from system/core/init/mount_namespace.cpp.
+    if (!BindMountBionic(kRuntimeLinkerPath, kRuntimeBionicLibsDir, kLinkerMountPoint,
+                         kBionicLibsMountPointDir)) {
+        LOG(ERROR) << "Failed to mount 32-bit Bionic artifacts from the Runtime APEX.";
+        // TODO: Don't exit early; clean up first.
+        exit(215);
+    }
+    if (!BindMountBionic(kRuntimeLinkerPath64, kRuntimeBionicLibsDir64, kLinkerMountPoint64,
+                         kBionicLibsMountPointDir64)) {
+        LOG(ERROR) << "Failed to mount 64-bit Bionic artifacts from the Runtime APEX.";
+        // TODO: Don't exit early; clean up first.
+        exit(216);
+    }
+
 
     // Now go on and run otapreopt.
 
