@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2032fe38_73aad6fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-31T11:58:20Z",
+      "side": 1,
+      "message": "The class is a header-only one. So it looks like we can change it without breaking existing apps built with the old definition, regardless of which namespace the class is in.\n\nWhat do you want to achieve with this change?",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "26c4df1f4eb6eed16379b66a3fb8161e9aa6f7a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
