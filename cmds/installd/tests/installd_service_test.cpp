@@ -37,6 +37,11 @@ using android::base::StringPrintf;
 namespace android {
 namespace installd {
 
+#define ASSERT_STATUS_OK(status) {                          \
+  ASSERT_TRUE(status.isOk()) << "Expected OK. Got: "        \
+      << status;                                            \
+}                                                           \
+
 constexpr const char* kTestUuid = "TEST";
 
 static constexpr int FLAG_FORCE = 1 << 16;
@@ -287,8 +292,8 @@ TEST_F(ServiceTest, CreateAppDataSnapshot) {
           0700, 10000, 20000, false /* follow_symlinks */));
 
   // Request a snapshot of the CE content but not the DE content.
-  ASSERT_TRUE(service->snapshotAppData(std::make_unique<std::string>("TEST"),
-          "com.foo", 0, FLAG_STORAGE_CE).isOk());
+  ASSERT_STATUS_OK(service->snapshotAppData(std::make_unique<std::string>("TEST"),
+          "com.foo", 0, FLAG_STORAGE_CE));
 
   std::string ce_content, de_content;
   // At this point, we should have the CE content but not the DE content.
@@ -305,8 +310,8 @@ TEST_F(ServiceTest, CreateAppDataSnapshot) {
           0700, 10000, 20000, false /* follow_symlinks */));
 
   // Request a snapshot of the DE content but not the CE content.
-  ASSERT_TRUE(service->snapshotAppData(std::make_unique<std::string>("TEST"),
-          "com.foo", 0, FLAG_STORAGE_DE).isOk());
+  ASSERT_STATUS_OK(service->snapshotAppData(std::make_unique<std::string>("TEST"),
+          "com.foo", 0, FLAG_STORAGE_DE));
 
   // At this point, both the CE as well as the DE content should be fully
   // populated.
@@ -324,8 +329,8 @@ TEST_F(ServiceTest, CreateAppDataSnapshot) {
           0700, 10000, 20000, false /* follow_symlinks */));
 
   // Request a snapshot of both the CE as well as the DE content.
-  ASSERT_TRUE(service->snapshotAppData(std::make_unique<std::string>("TEST"),
-          "com.foo", 0, FLAG_STORAGE_DE | FLAG_STORAGE_CE).isOk());
+  ASSERT_STATUS_OK(service->snapshotAppData(std::make_unique<std::string>("TEST"),
+          "com.foo", 0, FLAG_STORAGE_DE | FLAG_STORAGE_CE));
 
   ASSERT_TRUE(android::base::ReadFileToString(
       rollback_ce_dir + "/com.foo/file1", &ce_content, false /* follow_symlinks */));
@@ -403,8 +408,8 @@ TEST_F(ServiceTest, CreateAppDataSnapshot_ClearsExistingSnapshot) {
           "TEST_CONTENT_2_DE", fake_package_de_path + "/file2",
           0700, 10000, 20000, false /* follow_symlinks */));
 
-  ASSERT_TRUE(service->snapshotAppData(std::make_unique<std::string>("TEST"),
-          "com.foo", 0, FLAG_STORAGE_DE | FLAG_STORAGE_CE).isOk());
+  ASSERT_STATUS_OK(service->snapshotAppData(std::make_unique<std::string>("TEST"),
+          "com.foo", 0, FLAG_STORAGE_DE | FLAG_STORAGE_CE));
 
   // Previous snapshot (with data for file1) must be cleared.
   struct stat sb;
@@ -478,8 +483,8 @@ TEST_F(ServiceTest, CreateAppDataSnapshot_ClearsCache) {
   ASSERT_TRUE(android::base::WriteStringToFile(
           "TEST_CONTENT_DE", fake_package_de_code_cache_path + "/file1",
           0700, 10000, 20000, false /* follow_symlinks */));
-  ASSERT_TRUE(service->snapshotAppData(std::make_unique<std::string>("TEST"),
-          "com.foo", 0, FLAG_STORAGE_CE | FLAG_STORAGE_DE).isOk());
+  ASSERT_STATUS_OK(service->snapshotAppData(std::make_unique<std::string>("TEST"),
+          "com.foo", 0, FLAG_STORAGE_CE | FLAG_STORAGE_DE));
   // The snapshot call must clear cache.
   struct stat sb;
   ASSERT_EQ(-1, stat((fake_package_ce_cache_path + "/file1").c_str(), &sb));
@@ -529,8 +534,8 @@ TEST_F(ServiceTest, RestoreAppDataSnapshot) {
           "TEST_CONTENT_DE", fake_package_de_path + "/file1",
           0700, 10000, 20000, false /* follow_symlinks */));
 
-  ASSERT_TRUE(service->restoreAppDataSnapshot(std::make_unique<std::string>("TEST"),
-          "com.foo", 10000, -1, "", 0, FLAG_STORAGE_DE | FLAG_STORAGE_CE).isOk());
+  ASSERT_STATUS_OK(service->restoreAppDataSnapshot(std::make_unique<std::string>("TEST"),
+          "com.foo", 10000, -1, "", 0, FLAG_STORAGE_DE | FLAG_STORAGE_CE));
 
   std::string ce_content, de_content;
   ASSERT_TRUE(android::base::ReadFileToString(
