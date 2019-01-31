@@ -22,6 +22,30 @@
       "revId": "26c4df1f4eb6eed16379b66a3fb8161e9aa6f7a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23231080_e8110893",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-31T19:35:28Z",
+      "side": 1,
+      "message": "Putting it in an \u0027impl\u0027 header is just as a hint to developers that they shouldn\u0027t use this, because it may change in the future. They are still welcome to, but their code might not compile in the future.",
+      "parentUuid": "2032fe38_73aad6fb",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "26c4df1f4eb6eed16379b66a3fb8161e9aa6f7a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
