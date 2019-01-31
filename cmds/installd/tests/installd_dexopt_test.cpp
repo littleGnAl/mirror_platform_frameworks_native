@@ -23,6 +23,7 @@
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <android-base/stringprintf.h>
 #include <android-base/unique_fd.h>
 
@@ -82,6 +83,23 @@ bool create_cache_path(char path[PKG_PATH_MAX], const char *src, const char *ins
 
 static void run_cmd(const std::string& cmd) {
     system(cmd.c_str());
+}
+
+template <typename Visitor>
+static void run_cmd_and_process_output(const std::string& cmd, const Visitor& visitor) {
+    FILE* file = popen(cmd.c_str(), "r");
+    CHECK(file != nullptr) << "Failed to ptrace " << cmd;
+    while (true) {
+        char* line = nullptr;
+        size_t n = 0u;
+        ssize_t value = getline(&line, &n, file);
+        if (value == -1) {
+            break;
+        }
+        visitor(line);
+        free(line);
+    }
+    fclose(file);
 }
 
 static int mkdir(const std::string& path, uid_t owner, gid_t group, mode_t mode) {
@@ -221,7 +239,8 @@ protected:
     ::testing::AssertionResult create_mock_app() {
         // Create the oat dir.
         app_oat_dir_ = app_apk_dir_ + "/oat";
-        if (mkdir(app_apk_dir_, kSystemUid, kSystemGid, 0755) != 0) {
+        // For debug mode, the directory might already exist. Avoid erroring out.
+        if (mkdir(app_apk_dir_, kSystemUid, kSystemGid, 0755) != 0 && !kDebug) {
             return ::testing::AssertionFailure() << "Could not create app dir " << app_apk_dir_
                                                  << " : " << strerror(errno);
         }
@@ -628,6 +647,48 @@ TEST_F(DexoptTest, DexoptPrimaryBackgroundOk) {
                         kTestAppGid,
                         DEX2OAT_FROM_SCRATCH);
 }
+
+TEST_F(DexoptTest, ResolveStartupConstStrings) {
+    LOG(INFO) << "DexoptDex2oatResolveStartupStrings";
+    const std::string property = "persist.device_config.runtime.dex2oat_resolve_startup_strings";
+    std::string odex = GetPrimaryDexArtifact(app_oat_dir_.c_str(), apk_path_, "odex");
+    // Disable the property to start.
+    bool found_disable = false;
+    CHECK(android::base::SetProperty(property, "false")) << property;
+    CompilePrimaryDexOk("speed-profile",
+                        DEXOPT_IDLE_BACKGROUND_JOB | DEXOPT_PROFILE_GUIDED |
+                                DEXOPT_GENERATE_APP_IMAGE,
+                        app_oat_dir_.c_str(),
+                        kTestAppGid,
+                        DEX2OAT_FROM_SCRATCH);
+    run_cmd_and_process_output(
+            "oatdump --header-only --oat-file=" + odex,
+            [&](const std::string& line) {
+        if (line.find("--resolve-startup-const-strings=false") != std::string::npos) {
+            found_disable = true;
+        }
+    });
+    CHECK(found_disable);
+    // Enable the property and inspect that .art artifact is larger.
+    bool found_enable = false;
+    CHECK(android::base::SetProperty(property, "true")) << property;
+    CompilePrimaryDexOk("speed-profile",
+                        DEXOPT_IDLE_BACKGROUND_JOB | DEXOPT_PROFILE_GUIDED |
+                                DEXOPT_GENERATE_APP_IMAGE,
+                        app_oat_dir_.c_str(),
+                        kTestAppGid,
+                        DEX2OAT_FROM_SCRATCH);
+    run_cmd_and_process_output(
+            "oatdump --header-only --oat-file=" + odex,
+            [&](const std::string& line) {
+        if (line.find("--resolve-startup-const-strings=true") != std::string::npos) {
+            found_enable = true;
+        }
+    });
+    CHECK(found_enable);
+}
+
+
 
 class PrimaryDexReCompilationTest : public DexoptTest {
   public:
