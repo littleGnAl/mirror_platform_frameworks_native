@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33e0396e_2c5f759f",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6001,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-02-01T19:15:25Z",
+      "side": 1,
+      "message": "Use a constant here. I believe this should be something like (id \u003c\u003c ACTION_SHIFT)",
+      "range": {
+        "startLine": 6001,
+        "startChar": 48,
+        "endLine": 6001,
+        "endChar": 56
+      },
+      "revId": "cd07df00385a6fb1171c29dc41ba7b7521379f3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
