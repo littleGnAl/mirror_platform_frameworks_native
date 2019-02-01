@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e1c18b4_c9b18a69",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-02-01T20:42:52Z",
+      "side": 1,
+      "message": "can\u0027t you use an unique_ptr here?",
+      "revId": "3ada767712b6d7d9d670d5fd32b493b5663194da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00fa37f4_ff501585",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-02-01T20:42:52Z",
+      "side": 1,
+      "message": "extra new lines.",
+      "revId": "3ada767712b6d7d9d670d5fd32b493b5663194da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
