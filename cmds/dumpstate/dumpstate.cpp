@@ -1245,6 +1245,8 @@ static void dumpstate() {
 
     AddAnrTraceFiles();
 
+    RunCommand("ANR FILES", {"ls", "-lt", ANR_DIR});
+
     // NOTE: tombstones are always added as separate entries in the zip archive
     // and are not interspersed with the main report.
     const bool tombstones_dumped = AddDumps(ds.tombstone_data_.begin(), ds.tombstone_data_.end(),
