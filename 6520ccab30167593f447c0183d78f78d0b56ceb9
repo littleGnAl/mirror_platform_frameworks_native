@@ -22,6 +22,23 @@
       "revId": "6520ccab30167593f447c0183d78f78d0b56ceb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d279fff6_d14c4390",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-02-01T16:48:14Z",
+      "side": 1,
+      "message": "Since you\u0027re moving this, add a comment why it\u0027s enough to only mount /system.",
+      "revId": "6520ccab30167593f447c0183d78f78d0b56ceb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
