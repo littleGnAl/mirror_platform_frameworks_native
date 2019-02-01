@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e035d0a_72e334f1",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-02-01T18:21:28Z",
+      "side": 1,
+      "message": "ASSERT_TRUE",
+      "range": {
+        "startLine": 657,
+        "startChar": 4,
+        "endLine": 657,
+        "endChar": 9
+      },
+      "revId": "2dd72733bd0ccc693f52418da6dbf1746feb6daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaf081ad_a1a2533e",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-02-01T18:21:28Z",
+      "side": 1,
+      "message": "EXPECT_TRUE?",
+      "range": {
+        "startLine": 671,
+        "startChar": 4,
+        "endLine": 671,
+        "endChar": 9
+      },
+      "revId": "2dd72733bd0ccc693f52418da6dbf1746feb6daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04969925_4fa48719",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-02-01T18:21:28Z",
+      "side": 1,
+      "message": "ASSERT_TRUE",
+      "revId": "2dd72733bd0ccc693f52418da6dbf1746feb6daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b550716a_6f43db42",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-02-01T18:21:28Z",
+      "side": 1,
+      "message": "EXPECT_TRUE?",
+      "range": {
+        "startLine": 688,
+        "startChar": 4,
+        "endLine": 688,
+        "endChar": 9
+      },
+      "revId": "2dd72733bd0ccc693f52418da6dbf1746feb6daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3039d07b_d5dc0270",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-02-01T18:21:28Z",
+      "side": 1,
+      "message": "Actually make this a scope_guard (see android-base helper), so it gets reset even if ASSERTs fail.",
+      "range": {
+        "startLine": 689,
+        "startChar": 4,
+        "endLine": 689,
+        "endChar": 9
+      },
+      "revId": "2dd72733bd0ccc693f52418da6dbf1746feb6daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
