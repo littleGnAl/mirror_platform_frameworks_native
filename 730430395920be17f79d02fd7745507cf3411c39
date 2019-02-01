@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "319dd981_50a36443",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-02-01T11:09:07Z",
+      "side": 1,
+      "message": "As a reader, hoisting the access() check (or a simple wrapper) here would be clearer.",
+      "range": {
+        "startLine": 276,
+        "startChar": 9,
+        "endLine": 276,
+        "endChar": 24
+      },
+      "revId": "730430395920be17f79d02fd7745507cf3411c39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
