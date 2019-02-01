@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "868c155b_2f56b73e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2019-02-01T01:36:03Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be part of AddAnrTraceFiles()",
+      "range": {
+        "startLine": 1248,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 52
+      },
+      "revId": "99f80616d75b57aa835921e66e089bd97d3e0c04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
