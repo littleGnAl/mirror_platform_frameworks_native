@@ -22,6 +22,30 @@
       "revId": "730430395920be17f79d02fd7745507cf3411c39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d0b8f6d_e978365d",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-01T13:23:35Z",
+      "side": 1,
+      "message": "I see. I just realized that this check would not be future-proof, as it would not support 64-bit only devices/configurations (https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html). I\u0027ve removed the comment in BindMountBionic.",
+      "parentUuid": "319dd981_50a36443",
+      "range": {
+        "startLine": 276,
+        "startChar": 9,
+        "endLine": 276,
+        "endChar": 24
+      },
+      "revId": "730430395920be17f79d02fd7745507cf3411c39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
