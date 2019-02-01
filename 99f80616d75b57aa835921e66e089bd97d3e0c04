@@ -46,6 +46,30 @@
       "revId": "99f80616d75b57aa835921e66e089bd97d3e0c04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f3ec412_3acbedd2",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2019-02-01T01:49:29Z",
+      "side": 1,
+      "message": "I think it\u0027s better to move it there - Nandana?",
+      "parentUuid": "e326d706_a752e4cf",
+      "range": {
+        "startLine": 1248,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 52
+      },
+      "revId": "99f80616d75b57aa835921e66e089bd97d3e0c04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
