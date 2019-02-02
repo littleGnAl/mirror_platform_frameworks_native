@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "139a7346_9e2af5ff",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-02-02T00:27:20Z",
+      "side": 1,
+      "message": "Document that this only applies to secondary dex files (and why...)",
+      "range": {
+        "startLine": 999,
+        "startChar": 11,
+        "endLine": 999,
+        "endChar": 44
+      },
+      "revId": "74aedff9930d024c87b1db007af0b574104a7879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b028d4_040809c7",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-02-02T00:27:20Z",
+      "side": 1,
+      "message": "Hmmm. So you want to say this does not work concurrently? It\u0027s ok I think but note there\u0027s a push to have more parallelism here eventually. So maybe say that we do need the installer lock.",
+      "range": {
+        "startLine": 1014,
+        "startChar": 8,
+        "endLine": 1014,
+        "endChar": 62
+      },
+      "revId": "74aedff9930d024c87b1db007af0b574104a7879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
