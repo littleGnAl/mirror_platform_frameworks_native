@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a06a2d4c_3d522cc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-02-05T13:40:27Z",
+      "side": 1,
+      "message": "add a note in the commit message as to why running the test alone helps repro the problem.",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 118
+      },
+      "revId": "bc2c1ad0ee9659dfb88398074f23d4cc1b625735",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
