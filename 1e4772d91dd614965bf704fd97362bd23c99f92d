@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f21608e_bcff14ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2019-02-05T12:24:08Z",
+      "side": 1,
+      "message": "nit: qeuires -\u003e queries",
+      "range": {
+        "startLine": 21,
+        "startChar": 39,
+        "endLine": 21,
+        "endChar": 46
+      },
+      "revId": "1e4772d91dd614965bf704fd97362bd23c99f92d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5207d6cf_9025a956",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2019-02-05T12:24:08Z",
+      "side": 1,
+      "message": "Some words missing here I think",
+      "range": {
+        "startLine": 1007,
+        "startChar": 16,
+        "endLine": 1007,
+        "endChar": 30
+      },
+      "revId": "1e4772d91dd614965bf704fd97362bd23c99f92d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d14532dc_2a4afb4c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2019-02-05T12:24:08Z",
+      "side": 1,
+      "message": "Actually setfscreatecon does seem to be thread safe - the man page was updated at some point to say that (see http://man7.org/linux/man-pages/man3/setfscreatecon.3.html).\nAnd it looks like the Android version is: http://cs/android/external/selinux/libselinux/src/procattr.c. \nWhich makes sense.\n\nSorry for misleading you.",
+      "revId": "1e4772d91dd614965bf704fd97362bd23c99f92d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3348b61d_0a836d9d",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2019-02-05T12:24:08Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow why nothing is needed for !is_secondary_dex.\nDoesn\u0027t the problem with categories still apply?\nWould it be clearer to just not call this helper if !is_secondary_dex?",
+      "revId": "1e4772d91dd614965bf704fd97362bd23c99f92d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
