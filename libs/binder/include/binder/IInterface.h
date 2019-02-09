@@ -53,6 +53,7 @@ public:
     virtual sp<IInterface>      queryLocalInterface(const String16& _descriptor);
     virtual const String16&     getInterfaceDescriptor() const;
 
+    typedef INTERFACE           BaseInterface;
 protected:
     virtual IBinder*            onAsBinder();
 };
@@ -65,6 +66,7 @@ class BpInterface : public INTERFACE, public BpRefBase
 public:
     explicit                    BpInterface(const sp<IBinder>& remote);
 
+    typedef INTERFACE           BaseInterface;
 protected:
     virtual IBinder*            onAsBinder();
 };
