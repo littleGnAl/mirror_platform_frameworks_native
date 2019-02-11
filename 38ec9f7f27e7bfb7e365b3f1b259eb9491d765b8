@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c07d0a56_7f9b78f4",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-02-11T23:05:55Z",
+      "side": 1,
+      "message": "confirming in this case, Jiyong, vendor will still link against the ll-ndk version, right?",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "38ec9f7f27e7bfb7e365b3f1b259eb9491d765b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
