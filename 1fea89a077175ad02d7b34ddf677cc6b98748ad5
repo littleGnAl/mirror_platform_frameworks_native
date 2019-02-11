@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "658ada59_485c0f95",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1963,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-02-11T16:34:33Z",
+      "side": 1,
+      "message": "do you want to reference a bug where you mention a cleaner way to do this?",
+      "revId": "1fea89a077175ad02d7b34ddf677cc6b98748ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
