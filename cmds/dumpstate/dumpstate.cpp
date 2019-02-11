@@ -34,6 +34,7 @@
 #include <unistd.h>
 
 #include <chrono>
+#include <filesystem>
 #include <functional>
 #include <future>
 #include <memory>
@@ -1457,6 +1458,11 @@ static bool DumpstateDefault() {
 
     // Run iotop as root to show top 100 IO threads
     RunCommand("IOTOP", {"iotop", "-n", "1", "-m", "100"});
+
+    // Gather shared memory buffer info if the product implements it
+    if (std::filesystem::exists("/product/bin/dmabuf_dump")) {
+        RunCommand("Dmabuf dump", {"/product/bin/dmabuf_dump"});
+    }
 
     if (!DropRootUser()) {
         return false;
