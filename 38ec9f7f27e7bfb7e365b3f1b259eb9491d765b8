@@ -46,6 +46,30 @@
       "revId": "38ec9f7f27e7bfb7e365b3f1b259eb9491d765b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8bcd496_74a98536",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-02-12T17:28:34Z",
+      "side": 1,
+      "message": "Is it preferred by the build system or by us?",
+      "parentUuid": "497f2ba9_65877005",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "38ec9f7f27e7bfb7e365b3f1b259eb9491d765b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
