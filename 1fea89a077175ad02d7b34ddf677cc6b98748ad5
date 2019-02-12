@@ -16,6 +16,24 @@
       "revId": "1fea89a077175ad02d7b34ddf677cc6b98748ad5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5afd0e98_c8a1bc44",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1963,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-02-12T12:46:57Z",
+      "side": 1,
+      "message": "It\u0027s unclear what we shall do for R, so there is no bug saying how to make it \"cleaner\".",
+      "parentUuid": "658ada59_485c0f95",
+      "revId": "1fea89a077175ad02d7b34ddf677cc6b98748ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
