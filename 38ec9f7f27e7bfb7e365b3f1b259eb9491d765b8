@@ -22,6 +22,30 @@
       "revId": "38ec9f7f27e7bfb7e365b3f1b259eb9491d765b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "497f2ba9_65877005",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-12T12:38:42Z",
+      "side": 1,
+      "message": "Yes. libbinder_ndk.llndk is preferred to libbinder_ndk.",
+      "parentUuid": "c07d0a56_7f9b78f4",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "38ec9f7f27e7bfb7e365b3f1b259eb9491d765b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
