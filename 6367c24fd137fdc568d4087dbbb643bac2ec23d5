@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06fff628_2a899511",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-02-13T01:00:49Z",
+      "side": 1,
+      "message": "(note that this can throw.)",
+      "revId": "6367c24fd137fdc568d4087dbbb643bac2ec23d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
