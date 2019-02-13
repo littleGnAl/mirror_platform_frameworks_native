@@ -52,6 +52,24 @@
       "revId": "6367c24fd137fdc568d4087dbbb643bac2ec23d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6618e33_112888df",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-02-13T02:00:22Z",
+      "side": 1,
+      "message": "yeah, paullawrence wanted to add android::base::FileExists recently and we said \"let\u0027s see how std::filesystem goes first\" and \"\u0027exists\u0027 means a bunch of different things, and SELinux, and ...\", but, yeah, access or stat are at least well-understood (and don\u0027t throw!).",
+      "parentUuid": "5d95651f_38287dd0",
+      "revId": "6367c24fd137fdc568d4087dbbb643bac2ec23d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
