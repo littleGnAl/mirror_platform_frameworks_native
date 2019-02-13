@@ -16,6 +16,24 @@
       "revId": "6367c24fd137fdc568d4087dbbb643bac2ec23d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32493a22_e563506b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1283094
+      },
+      "writtenOn": "2019-02-13T01:03:55Z",
+      "side": 1,
+      "message": "Should I use stat(2) instead? That would eliminate the need for libc++fs, but I\u0027m not sure what the general direction is in regards of style (Using C++ libraries or C libraries).",
+      "parentUuid": "06fff628_2a899511",
+      "revId": "6367c24fd137fdc568d4087dbbb643bac2ec23d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
