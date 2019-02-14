@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7c20dad_5e1e6f22",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_jni.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-02-14T22:30:13Z",
+      "side": 1,
+      "message": "I could also technically add the other direction.",
+      "range": {
+        "startLine": 48,
+        "startChar": 45,
+        "endLine": 48,
+        "endChar": 67
+      },
+      "revId": "6e366eaa1efe3888b272cf07919d92bcc75cfbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
