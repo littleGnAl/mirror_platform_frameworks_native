@@ -25,6 +25,7 @@ LIBBINDER_NDK { # introduced=29
     AIBinder_Weak_new;
     AIBinder_Weak_promote;
     AParcel_delete;
+    AParcel_fromJavaParcel;
     AParcel_getDataPosition;
     AParcel_readBool;
     AParcel_readBoolArray;

@@ -32,7 +32,9 @@ cc_library {
     srcs: [
         "ibinder.cpp",
         "ibinder_jni.cpp",
+        "lazy_android_runtime.cpp",
         "parcel.cpp",
+        "parcel_jni.cpp",
         "process.cpp",
         "status.cpp",
         "service_manager.cpp",
