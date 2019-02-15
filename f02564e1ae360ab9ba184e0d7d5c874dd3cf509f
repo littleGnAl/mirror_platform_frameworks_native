@@ -22,6 +22,30 @@
       "revId": "f02564e1ae360ab9ba184e0d7d5c874dd3cf509f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a722614_99ae1586",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-15T16:09:00Z",
+      "side": 1,
+      "message": "I don\u0027t have anything to say that\u0027s not self-explanatory from the name.. I\u0027ll leave it as is, but when the code gets refactored, this would be private \u0026 hence a lot less awkward",
+      "parentUuid": "fc6a670d_4fa0a545",
+      "range": {
+        "startLine": 325,
+        "startChar": 14,
+        "endLine": 325,
+        "endChar": 36
+      },
+      "revId": "f02564e1ae360ab9ba184e0d7d5c874dd3cf509f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
