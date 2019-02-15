@@ -45,6 +45,30 @@
       "revId": "6e366eaa1efe3888b272cf07919d92bcc75cfbc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f502a422_934af729",
+        "filename": "libs/binder/ndk/parcel_jni.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-15T05:11:22Z",
+      "side": 1,
+      "message": "I think, in general, it would be nicer if that is checked by the platform.",
+      "parentUuid": "f57c6875_92580f92",
+      "range": {
+        "startLine": 34,
+        "startChar": 49,
+        "endLine": 34,
+        "endChar": 68
+      },
+      "revId": "6e366eaa1efe3888b272cf07919d92bcc75cfbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
