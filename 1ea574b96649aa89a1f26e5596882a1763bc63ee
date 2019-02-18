@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "951a7b24_4e8624a4",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-02-18T18:43:21Z",
+      "side": 1,
+      "message": "doesn\u0027t the compiler warn about this ? I\u0027d also add a comment here that explains why this method has a seemingly odd signature.",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc6145d_2d80919e",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-02-18T18:43:21Z",
+      "side": 1,
+      "message": "+maco: is this call synchronous ? i worry that it will go nowhere if it\u0027s handled on a different thread and races with exit(0). \n\nAlso, wouldn\u0027t we exit with a non-zero error code if this is an error condition ?\n\nAlso, I\u0027d suggest marking this as \"[[noreturn]]\".",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22b5a415_9464561a",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-02-18T18:43:21Z",
+      "side": 1,
+      "message": "what is this for ?",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
