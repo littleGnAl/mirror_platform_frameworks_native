@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65f312d4_afe93fe3",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-02-18T12:07:53Z",
+      "side": 1,
+      "message": "(also, check listener !\u003d nullptr)",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 16
+      },
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b208418d_b785fa65",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-02-18T12:07:53Z",
+      "side": 1,
+      "message": "Perhaps this will be common enough that dedicating a specific error for this is useful?",
+      "range": {
+        "startLine": 124,
+        "startChar": 46,
+        "endLine": 124,
+        "endChar": 75
+      },
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf0ba819_13fd93ab",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-02-18T12:07:53Z",
+      "side": 1,
+      "message": "call listener-\u003eonError() here too? Perhaps it\u0027s worth to have a function like \u0027signalErrorAndExit(listener, errorCode)\u0027 ?",
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "970dbf08_ef9b6617",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-02-18T12:07:53Z",
+      "side": 1,
+      "message": "since these are set on another thread (binder thread) and you read them here, in theory you need to protect access to these with a lock, so that you\u0027ll see the updates on this thread as well. It may be easiest to hide this inside the DumpstateListener class - eg add getter()\u0027s there or something. Or, something like std::condition_variable may work well in this case, too.",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 72
+      },
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac50eb2_e3782734",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-02-18T12:07:53Z",
+      "side": 1,
+      "message": "not related to this CL, but can we work around this somehow in a test env?",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 88
+      },
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9d800a_4c2803b4",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-02-18T12:07:53Z",
+      "side": 1,
+      "message": "check error code?",
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
