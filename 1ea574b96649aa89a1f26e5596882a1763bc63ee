@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b956a32_286b248b",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-18T20:23:49Z",
+      "side": 1,
+      "message": "I didn\u0027t get the part about the odd signature..",
+      "parentUuid": "951a7b24_4e8624a4",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbc6145d_2d80919e",
         "filename": "cmds/dumpstate/DumpstateService.cpp",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "69800fc2_689cbaee",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-18T20:23:49Z",
+      "side": 1,
+      "message": "It\u0027s an async/oneway callback but I figured the part where it hands it over the call to binder is synchronous (excuse my made up terms). If that\u0027s not the case what\u0027s different about this compared to say\n\nlistener-\u003eonError()\nreturn;\n\nlike in 132?",
+      "parentUuid": "dbc6145d_2d80919e",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22b5a415_9464561a",
         "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "210ea91a_6a60ed5b",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-18T20:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22b5a415_9464561a",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
