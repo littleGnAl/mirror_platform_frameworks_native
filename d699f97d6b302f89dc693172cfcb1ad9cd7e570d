@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "1801c177_ae1f2e5a",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-18T13:31:57Z",
+      "side": 1,
+      "message": "Agree. since it\u0027s an API change I wanted to do it in a separate CL. There\u0027s a TODO on the java side for this.",
+      "parentUuid": "b208418d_b785fa65",
+      "range": {
+        "startLine": 124,
+        "startChar": 46,
+        "endLine": 124,
+        "endChar": 75
+      },
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d3c101b_928007ca",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-18T13:31:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f312d4_afe93fe3",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 16
+      },
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf0ba819_13fd93ab",
         "filename": "cmds/dumpstate/DumpstateService.cpp",
         "patchSetId": 5
@@ -62,6 +110,24 @@
       "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dabf6d15_503b6868",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-18T13:31:57Z",
+      "side": 1,
+      "message": "good idea",
+      "parentUuid": "cf0ba819_13fd93ab",
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "fb439f78_4168879f",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-18T13:31:57Z",
+      "side": 1,
+      "message": "good point. Done.",
+      "parentUuid": "970dbf08_ef9b6617",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 72
+      },
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac50eb2_e3782734",
         "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
         "patchSetId": 5
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c30a944c_c91ad585",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-18T13:31:57Z",
+      "side": 1,
+      "message": "is aosp the service is not available. But I can add a fake service. Will do in the next CL.",
+      "parentUuid": "7ac50eb2_e3782734",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 88
+      },
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c9d800a_4c2803b4",
         "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
         "patchSetId": 5
@@ -125,6 +239,24 @@
       "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "017e5d06_f6c972b8",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-18T13:31:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c9d800a_4c2803b4",
+      "revId": "d699f97d6b302f89dc693172cfcb1ad9cd7e570d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
