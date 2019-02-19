@@ -34,6 +34,24 @@
       "revId": "389a44f42333e8d124a9dbcc47d132d117f7ddee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6116a45_d1c834de",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1436778
+      },
+      "writtenOn": "2019-02-19T22:24:49Z",
+      "side": 1,
+      "message": "Both parts of the code are related to Winscope traces (dumpsys and adding files from the dir) so I believe it is better to keep them together.",
+      "parentUuid": "79aa8664_5d00a2aa",
+      "revId": "389a44f42333e8d124a9dbcc47d132d117f7ddee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
