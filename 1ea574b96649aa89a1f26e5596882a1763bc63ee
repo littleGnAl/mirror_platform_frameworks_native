@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3459eadb_e3ba17e9",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-19T13:16:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is the place to document the signature. Isn\u0027t it explained by pthread_create? \n\nBut I can document the behavior \u0026 rename it. Does this help?",
+      "parentUuid": "cbb7d751_5e37931b",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbc6145d_2d80919e",
         "filename": "cmds/dumpstate/DumpstateService.cpp",
         "patchSetId": 7
