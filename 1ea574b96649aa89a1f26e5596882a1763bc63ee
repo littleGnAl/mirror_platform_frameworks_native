@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cbb7d751_5e37931b",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-02-19T12:45:06Z",
+      "side": 1,
+      "message": "If i was to read this method in isolation (with only the method level comment of \"Takes ownership of data\" i\u0027d question why it needs to return \"void *\" if it\u0027s going to unconditionally  exit(0) and return nothing.",
+      "parentUuid": "6b956a32_286b248b",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbc6145d_2d80919e",
         "filename": "cmds/dumpstate/DumpstateService.cpp",
         "patchSetId": 7
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "System server currently does not register a death recipient. The callbacks are sufficient to pick up \"finished bugreport\" event, so death recipient is necessary only to relay dumpstate crashes to the user, which I plan to do at some point.\n\nSince we know that the onError() callback is guaranteed here, system server can figure out the race between async call vs death notification like Martijn suggested. I would rather not have system server tell init to stop the service because it makes the lifecycle management super spread out and hard to understand.\n\nThe other option is to make the callback synchronous. I think this is the best option (simplest for system server). Will do when I add a death recipient to system server.\n\nAlso re \"why is exit code 0\": because it\u0027s a binary that starts, waits for a request and processes it, then exits. To me, it is more meaningful to ascribe exit code to the success of \"binary starts\" part, since it may receive multiple requests and only one of them may succeed, so which success criteria should we use? WDYT?",
       "parentUuid": "8c37b334_58e39044",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "314a5a40_7b9bbd29",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-02-19T12:45:06Z",
+      "side": 1,
+      "message": "If it\u0027s a documented guarantee that the call will be handled over to the kernel synchronously, then i\u0027m OK with this. It still seems liable to break if the implementation changes, though.\n\nRe: How is it different from 132: by returning an error your\u0027re continuing to execute whichever binder thread the method is called on so the binder code can continue with whatever book-keeping it needs to do.",
+      "parentUuid": "3ba44990_4413100b",
       "range": {
         "startLine": 57,
         "startChar": 4,
