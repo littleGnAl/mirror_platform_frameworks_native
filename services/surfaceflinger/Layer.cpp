@@ -1078,6 +1078,8 @@ uint32_t Layer::doTransaction(uint32_t flags) {
         flags |= eVisibleRegion;
         this->contentDirty = true;
 
+        mContentUpdated = true;
+
         // we may use linear filtering, if the matrix scales us
         const uint8_t type = c.active.transform.getType();
         mNeedsFiltering = (!c.active.transform.preserveRects() || (type >= Transform::SCALE));
@@ -1088,6 +1090,10 @@ uint32_t Layer::doTransaction(uint32_t flags) {
     // visible are not blocked
     if (c.flags & layer_state_t::eLayerHidden) {
         clearSyncPoints();
+    }
+
+    if (s.effectSequence != c.effectSequence) {
+        applyEffect(c.effectParams);
     }
 
     // Commit the transaction
@@ -1272,6 +1278,15 @@ bool Layer::setTransparentRegionHint(const Region& transparent) {
     setTransactionFlags(eTransactionNeeded);
     return true;
 }
+
+bool Layer::setEffectParams(const std::vector<float>& effectParams) {
+    mCurrentState.effectParams = effectParams;
+    mCurrentState.effectSequence++;
+    mCurrentState.modified = true;
+    setTransactionFlags(eTransactionNeeded);
+    return true;
+}
+
 bool Layer::setFlags(uint8_t flags, uint8_t mask) {
     const uint32_t newFlags = (mCurrentState.flags & ~mask) | (flags & mask);
     if (mCurrentState.flags == newFlags) return false;
@@ -1397,12 +1412,20 @@ void Layer::updateTransformHint(const sp<const DisplayDevice>& hw) const {
             orientation = 0;
         }
     }
+    if (mTransformHint != orientation) {
+        mContentUpdated = true;
+        mTransformHint = orientation;
+    }
     setTransformHint(orientation);
 }
 
 // ----------------------------------------------------------------------------
 // debugging
 // ----------------------------------------------------------------------------
+
+FloatRect Layer::computeCropDebug(const sp<const DisplayDevice>& hw) const {
+    return computeCrop(hw);
+}
 
 LayerDebugInfo Layer::getLayerDebugInfo() const {
     LayerDebugInfo info;
@@ -1469,14 +1492,20 @@ void Layer::miniDump(String8& result, int32_t hwcId) const {
     }
 
     String8 name;
-    if (mName.length() > 77) {
+    String8 tmpName(getName());
+
+    if (hasEffect()) {
+        tmpName += (getEffect()->getPixType() == PixEffectType::BLUR) ? " (Blur)" : "";
+    }
+
+    if (tmpName.length() > 77) {
         std::string shortened;
-        shortened.append(mName.string(), 36);
+        shortened.append(tmpName.string(), 36);
         shortened.append("[...]");
-        shortened.append(mName.string() + (mName.length() - 36), 36);
+        shortened.append(tmpName.string() + (tmpName.length() - 36), 36);
         name = shortened.c_str();
     } else {
-        name = mName;
+        name = tmpName;
     }
 
     result.appendFormat(" %s\n", name.string());
@@ -2024,6 +2053,149 @@ void Layer::writeToProto(LayerProto* layerInfo, int32_t hwcId) {
     }
 }
 
+bool Layer::setEffect(const EffectParams& params, bool keepOutput) {
+    if (mEffect == NULL) {
+        mEffect = Effect::createEffect(params);
+        return true;
+    }
+
+    EffectParams paramsCopy(params);
+    // If this layer is set to render to FBO keep that setup
+    if (keepOutput) {
+        paramsCopy.setOutput(mEffect->getOutput());
+    }
+    return mEffect->updateParams(paramsCopy);
+}
+
+sp<Effect> Layer::getEffect() const {
+    if (mEffect) {
+        return mEffect;
+    } else {
+        const auto& p = mDrawingParent.promote();
+        if (p != nullptr) {
+            return p->getEffect();
+        } else {
+            return NULL;
+        }
+    }
+}
+
+void Layer::removeEffect() {
+    if (mEffect) mEffect = NULL;
+}
+
+bool Layer::hasEffect() const {
+    return mEffect != NULL;
+}
+
+bool Layer::isContentUpdated() const {
+    if (mContentUpdated)
+        return mContentUpdated;
+    else {
+        const auto& p = mDrawingParent.promote();
+        if (p != nullptr)
+            return p->isContentUpdated();
+        else
+            return mContentUpdated;
+    }
+}
+
+void Layer::setContentUpdated(bool contentUpdated) {
+    mContentUpdated = contentUpdated;
+    if (!contentUpdated) {
+        const auto& p = mDrawingParent.promote();
+        if (p != nullptr) return p->setContentUpdated(contentUpdated);
+    }
+}
+
+static bool validateData(size_t index, size_t size, size_t required) {
+    if (index + required > size) {
+        ALOGE("EffectParams format is invalid");
+        return false;
+    }
+    return true;
+}
+
+void Layer::applyEffect(const std::vector<float>& effectParams) {
+    const size_t size = effectParams.size();
+    size_t index = 0;
+
+#define NEXT (effectParams[index++])
+#define VALIDATE(REQUIRED)                                \
+    {                                                     \
+        if (!validateData(index, size, REQUIRED)) return; \
+    }
+
+    VALIDATE(3);
+
+    AnimMode animMode = (AnimMode)((int)NEXT);
+    EffectTarget effectTarget = (EffectTarget)((int)(NEXT));
+    PixEffectType ptype = (PixEffectType)((int)(NEXT));
+
+    ALOGD_IF(DEBUG_SURFACE_EFFECT, "applyEffect ## animMode=%d, target=%d, pixType=%d",
+             (int)animMode, (int)effectTarget, (int)ptype);
+
+    // Region data (4 x ints)
+    Region reg;
+    VALIDATE(1);
+    int regionNumber = (int)NEXT;
+    VALIDATE(4 * regionNumber);
+    for (int i = 0; i < regionNumber; ++i) {
+        int l = (int)NEXT;
+        int t = (int)NEXT;
+        int r = (int)NEXT;
+        int b = (int)NEXT;
+        Rect rect(l, t, r, b);
+        reg.orSelf(rect);
+        ALOGD_IF(DEBUG_SURFACE_EFFECT, "applyEffect ## reg(%d, %d - %d, %d)", l, t, r, b);
+    }
+
+    sp<Animator> pixAnim = new Animator(animMode);
+    VALIDATE(1);
+    int pixAnimKeyframeNumber = (int)NEXT;
+    VALIDATE(4 * pixAnimKeyframeNumber);
+    for (int i = 0; i < pixAnimKeyframeNumber; ++i) {
+        AnimParam animParam = (AnimParam)((int)NEXT);
+        int timeMs = (int)NEXT;
+        int frame = timeMs * 1000000 / EFFECTS_FRAME_LENGTH_NANOS;
+        float value = NEXT;
+        InterpMode interp = (InterpMode)((int)NEXT);
+        pixAnim->addKeyframe(animParam, frame, {value, interp});
+        ALOGD_IF(DEBUG_SURFACE_EFFECT,
+                 "applyEffect ## pixAnim anim=%d, timeMs=%d, value=%.2f, interp=%d", (int)animParam,
+                 timeMs, value, (int)interp);
+    }
+
+    sp<Animator> geoAnim = new Animator(animMode);
+    VALIDATE(1);
+    int geoAnimKeyframeNumber = (int)NEXT;
+    VALIDATE(4 * geoAnimKeyframeNumber);
+    for (int i = 0; i < geoAnimKeyframeNumber; ++i) {
+        AnimParam animParam = (AnimParam)((int)NEXT);
+        int timeMs = (int)NEXT;
+        int frame = timeMs * 1000000 / EFFECTS_FRAME_LENGTH_NANOS;
+        float value = NEXT;
+        InterpMode interp = (InterpMode)((int)NEXT);
+        geoAnim->addKeyframe(animParam, frame, {value, interp});
+        ALOGD_IF(DEBUG_SURFACE_EFFECT,
+                 "applyEffect ## geoAnim anim=%d, timeMs=%d, value=%.2f, interp=%d", (int)animParam,
+                 timeMs, value, (int)interp);
+    }
+#undef NEXT
+#undef VALIDATE
+
+    EffectParams params{ptype, EffectOutput::SCREEN, effectTarget};
+    params.setRegion(reg);
+    setEffect(params, true);
+
+    if (pixAnimKeyframeNumber > 0) {
+        mEffect->getPixEffect()->setAnimator(pixAnim);
+    }
+}
+
+bool Layer::isPremultipliedAlpha() const {
+    return mPremultipliedAlpha;
+}
 // ---------------------------------------------------------------------------
 
 }; // namespace android

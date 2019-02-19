@@ -140,6 +140,9 @@ public:
     ~BindNativeBufferAsFramebuffer() { mEngine.unbindNativeBufferAsFrameBuffer(this); }
     status_t getStatus() const { return mStatus; }
 
+    uint32_t getFbName() const { return mFbName; }
+    uint32_t getTexFbName() const { return mTexName; }
+
 protected:
     friend impl::RenderEngine;
 
@@ -244,6 +247,13 @@ public:
     virtual void bindImageAsFramebuffer(EGLImageKHR image, uint32_t* texName, uint32_t* fbName,
                                         uint32_t* status) = 0;
     virtual void unbindFramebuffer(uint32_t texName, uint32_t fbName) = 0;
+
+    Rect saveScissorAndDisable();
+    void restoreScissor();
+
+private:
+    Rect mScissorRect;
+    Rect mSavedScissorRect;
 };
 
 } // namespace impl

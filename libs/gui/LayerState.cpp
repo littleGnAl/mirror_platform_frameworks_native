@@ -49,6 +49,7 @@ status_t layer_state_t::write(Parcel& output) const
     output.writeFloat(color.r);
     output.writeFloat(color.g);
     output.writeFloat(color.b);
+    output.writeFloatVector(effectParams);
     output.write(transparentRegion);
     return NO_ERROR;
 }
@@ -85,6 +86,7 @@ status_t layer_state_t::read(const Parcel& input)
     color.r = input.readFloat();
     color.g = input.readFloat();
     color.b = input.readFloat();
+    input.readFloatVector(&effectParams);
     input.read(transparentRegion);
     return NO_ERROR;
 }

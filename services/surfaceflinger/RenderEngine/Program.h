@@ -24,6 +24,8 @@
 #include "Description.h"
 #include "ProgramCache.h"
 
+#include "EffectsProgram.h"
+
 namespace android {
 
 class String8;
@@ -84,6 +86,8 @@ private:
     /* location of transform matrix */
     GLint mInputTransformMatrixLoc;
     GLint mOutputTransformMatrixLoc;
+
+    EffectsProgram mEffectsProg;
 };
 
 } /* namespace android */

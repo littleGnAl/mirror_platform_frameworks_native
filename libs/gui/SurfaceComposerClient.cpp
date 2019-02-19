@@ -344,6 +344,18 @@ SurfaceComposerClient::Transaction& SurfaceComposerClient::Transaction::setMatri
     return *this;
 }
 
+SurfaceComposerClient::Transaction& SurfaceComposerClient::Transaction::startSurfaceAnimation(
+        const sp<SurfaceControl>& sc, const std::vector<float>& data) {
+    layer_state_t* s = getLayerState(sc);
+    if (!s) {
+        mStatus = BAD_INDEX;
+        return *this;
+    }
+    s->what |= layer_state_t::eSurfaceEffectChanged;
+    s->effectParams = data;
+    return *this;
+}
+
 SurfaceComposerClient::Transaction& SurfaceComposerClient::Transaction::setCrop(
         const sp<SurfaceControl>& sc, const Rect& crop) {
     layer_state_t* s = getLayerState(sc);

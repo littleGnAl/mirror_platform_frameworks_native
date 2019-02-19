@@ -27,6 +27,8 @@
 #include <SurfaceFlinger.h>
 #include <vector>
 
+#include "EffectsRenderEngine.h"
+
 #include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
 #include <configstore/Utils.h>
 
@@ -121,7 +123,7 @@ std::unique_ptr<RenderEngine> RenderEngine::create(int hwcFormat, uint32_t featu
             break;
         case GLES_VERSION_2_0:
         case GLES_VERSION_3_0:
-            engine = std::make_unique<GLES20RenderEngine>(featureFlags);
+            engine = std::make_unique<EffectsRenderEngine>(featureFlags);
             break;
     }
     engine->setEGLHandles(display, config, ctxt);
@@ -356,10 +358,28 @@ void RenderEngine::clearWithColor(float red, float green, float blue, float alph
 void RenderEngine::setScissor(uint32_t left, uint32_t bottom, uint32_t right, uint32_t top) {
     glScissor(left, bottom, right, top);
     glEnable(GL_SCISSOR_TEST);
+    mScissorRect = Rect(left, bottom, left + right, bottom + top);
 }
 
 void RenderEngine::disableScissor() {
     glDisable(GL_SCISSOR_TEST);
+    mScissorRect = Rect();
+}
+
+Rect RenderEngine::saveScissorAndDisable() {
+    mSavedScissorRect = mScissorRect;
+    disableScissor();
+    return mSavedScissorRect;
+}
+
+void RenderEngine::restoreScissor() {
+    if (!mSavedScissorRect.isValid()) {
+        return;
+    }
+
+    setScissor(mSavedScissorRect.left, mSavedScissorRect.top, mSavedScissorRect.width(),
+               mSavedScissorRect.height());
+    mSavedScissorRect = Rect();
 }
 
 void RenderEngine::genTextures(size_t count, uint32_t* names) {

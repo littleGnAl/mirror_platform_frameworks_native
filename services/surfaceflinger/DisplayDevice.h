@@ -51,6 +51,7 @@ class IGraphicBufferProducer;
 class Layer;
 class SurfaceFlinger;
 class HWComposer;
+class EffectController;
 
 class DisplayDevice : public LightRefBase<DisplayDevice>
 {
@@ -111,6 +112,7 @@ public:
 
     int         getWidth() const;
     int         getHeight() const;
+    int getHwRotation() const { return mHwRotation; }
 
     void                    setVisibleLayersSortedByZ(const Vector< sp<Layer> >& layers);
     const Vector< sp<Layer> >& getVisibleLayersSortedByZ() const;
@@ -248,12 +250,14 @@ private:
     // list of layers needing fences
     Vector< sp<Layer> > mLayersNeedingFences;
 
+public:
     /*
      * Transaction state
      */
     static status_t orientationToTransfrom(int orientation,
             int w, int h, Transform* tr);
 
+private:
     // The identifier of the active layer stack for this display. Several displays
     // can use the same layer stack: A z-ordered group of layers (sometimes called
     // "surfaces"). Any given layer can only be on a single layer stack.
@@ -271,6 +275,7 @@ private:
     bool mNeedsFiltering;
     // Current power mode
     int mPowerMode;
+    int mHwRotation;
     // Current active config
     int mActiveConfig;
     // current active color mode
@@ -310,6 +315,16 @@ private:
             const ui::ColorMode mode, const ui::RenderIntent intent);
 
     std::unordered_map<ColorModeKey, ColorModeValue> mColorModes;
+
+    sp<EffectController> mEffectController;
+    // List of layers to be sent to the hwc
+    // May include duplicates
+    Vector<sp<Layer>> mVisibleLayersSortedByZForHwc;
+
+public:
+    sp<EffectController> getEffectController() const;
+    void setVisibleLayersSortedByZForHwc(const Vector<sp<Layer>>& layers);
+    const Vector<sp<Layer>>& getVisibleLayersSortedByZForHwc() const;
 };
 
 struct DisplayDeviceState {

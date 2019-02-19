@@ -32,6 +32,8 @@
 #include "RenderEngine/RenderEngine.h"
 #include "SurfaceFlinger.h"
 
+#include "Effects/EffectController.h"
+
 namespace android {
 // ---------------------------------------------------------------------------
 
@@ -51,7 +53,8 @@ void ColorLayer::onDraw(const RenderArea& renderArea, const Region& /* clip */,
         auto& engine(mFlinger->getRenderEngine());
         engine.setupLayerBlending(getPremultipledAlpha(), false /* opaque */,
                                   true /* disableTexture */, color);
-        engine.drawMesh(mesh);
+        EffectController* ec = renderArea.mEffectController;
+        ec->composeLayer(*this, mesh, mCurrentHWLayerIndex);
         engine.disableBlending();
     }
 }

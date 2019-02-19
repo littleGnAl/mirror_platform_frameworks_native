@@ -32,6 +32,8 @@ class Formatter;
 class Program;
 class String8;
 
+class Formatter;
+
 /*
  * This class generates GLSL programs suitable to handle a given
  * Description. It's responsible for figuring out what to
@@ -46,6 +48,7 @@ public:
      */
     class Key {
         friend class ProgramCache;
+        friend class EffectsProgramCache;
         typedef uint32_t key_t;
         key_t mKey;
 
@@ -100,6 +103,19 @@ public:
             Y410_BT2020_MASK = 1 << Y410_BT2020_SHIFT,
             Y410_BT2020_OFF = 0 << Y410_BT2020_SHIFT,
             Y410_BT2020_ON = 1 << Y410_BT2020_SHIFT,
+
+            EFFECT_BLUR_OFF         =       0x00000000,
+            EFFECT_BLUR_ON          =       0x00001000,
+            EFFECT_BLUR_NOISE_ON    =       0x00003000,
+            EFFECT_BLUR_MASK        =       0x00003000,
+
+            EFFECT_BLUR_MARGINS_OFF   =     0x00000000,
+            EFFECT_BLUR_MARGINS_ON    =     0x00004000,
+            EFFECT_BLUR_MARGINS_MASK  =     0x00004000,
+
+            EFFECT_REGION_OFF     =         0x00000000,
+            EFFECT_REGION_ON      =         0x00100000,
+            EFFECT_REGION_MASK    =         0x00100000,
         };
 
         inline Key() : mKey(0) {}
@@ -188,6 +204,30 @@ private:
     // Key/Value map used for caching Programs. Currently the cache
     // is never shrunk.
     DefaultKeyedVector<Key, Program*> mCache;
+
+    // Create and compile a Program with the given needs to 
+    // avoid latency when the effect is required.
+    void addShaderToCache(Key::key_t shaderKey);
+
+    static bool isBlurEnabled(const ProgramCache::Key& key) {
+        return (key.mKey & ProgramCache::Key::EFFECT_BLUR_ON);
+    }
+    static bool isBlurMarginsEnabled(const ProgramCache::Key& key) {
+        return (key.mKey & ProgramCache::Key::EFFECT_BLUR_MARGINS_ON);
+    }
+    static bool isRegionEnabled(const ProgramCache::Key& key) {
+        return (key.mKey & ProgramCache::Key::EFFECT_REGION_ON);
+    }
+    static bool isNoiseEnabled(const ProgramCache::Key& key) {
+        return (key.mKey & ProgramCache::Key::EFFECT_BLUR_NOISE_ON);
+    }
+
+    // compute a cache Key from a Description
+    static void computeEffectsKey(ProgramCache::Key& needs, const Description& description);
+
+    // Defined in EffectsProgramCache.cpp
+    static Formatter& initEffectsFragmentShader(const ProgramCache::Key& needs, Formatter& fs);
+    static Formatter& generateEffectsFragmentShader(const ProgramCache::Key& needs, Formatter& fs);
 };
 
 ANDROID_BASIC_TYPES_TRAITS(ProgramCache::Key)

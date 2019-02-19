@@ -69,6 +69,7 @@ Program::Program(const ProgramCache::Key& /*needs*/, const char* vertex, const c
         // set-up the default values for our uniforms
         glUseProgram(programId);
         glUniformMatrix4fv(mProjectionMatrixLoc, 1, GL_FALSE, mat4().asArray());
+        mEffectsProg.init(programId);
         glEnableVertexAttribArray(0);
     }
 }
@@ -150,6 +151,7 @@ void Program::setUniforms(const Description& desc) {
     }
     // these uniforms are always present
     glUniformMatrix4fv(mProjectionMatrixLoc, 1, GL_FALSE, desc.mProjectionMatrix.asArray());
+    mEffectsProg.setUniforms(desc.mEffectsDesc);
 }
 
 } /* namespace android */

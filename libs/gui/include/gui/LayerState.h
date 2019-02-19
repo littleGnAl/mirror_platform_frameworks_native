@@ -26,6 +26,7 @@
 #include <ui/Rect.h>
 #include <gui/IGraphicBufferProducer.h>
 #include <math/vec3.h>
+#include <vector>
 
 namespace android {
 
@@ -63,7 +64,8 @@ struct layer_state_t {
         eRelativeLayerChanged       = 0x00008000,
         eReparent                   = 0x00010000,
         eColorChanged               = 0x00020000,
-        eDestroySurface             = 0x00040000
+        eDestroySurface             = 0x00040000,
+        eSurfaceEffectChanged       = 0x00080000
     };
 
     layer_state_t()
@@ -115,6 +117,8 @@ struct layer_state_t {
             sp<IBinder>     parentHandleForChild;
 
             half3           color;
+
+            std::vector<float> effectParams;
 
             // non POD must be last. see write/read
             Region          transparentRegion;

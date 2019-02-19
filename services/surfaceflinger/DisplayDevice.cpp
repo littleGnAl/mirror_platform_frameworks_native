@@ -52,6 +52,8 @@
 #include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
 #include <configstore/Utils.h>
 
+#include "Effects/EffectController.h"
+
 namespace android {
 
 // retrieve triple buffer setting from configstore
@@ -246,6 +248,7 @@ DisplayDevice::DisplayDevice(
       mViewport(Rect::INVALID_RECT),
       mFrame(Rect::INVALID_RECT),
       mPowerMode(initialPowerMode),
+      mHwRotation(DisplayState::eOrientationDefault),
       mActiveConfig(0),
       mColorTransform(HAL_COLOR_TRANSFORM_IDENTITY),
       mHasWideColorGamut(hasWideColorGamut),
@@ -255,6 +258,21 @@ DisplayDevice::DisplayDevice(
       mSupportedPerFrameMetadata(supportedPerFrameMetadata)
 {
     // clang-format on
+    char property[PROPERTY_VALUE_MAX];
+    if (mType == DISPLAY_PRIMARY && property_get("ro.sf.hwrotation", property, NULL) > 0) {
+        // displayOrientation
+        switch (atoi(property)) {
+            case 90:
+                mHwRotation = DisplayState::eOrientation90;
+                break;
+            case 270:
+                mHwRotation = DisplayState::eOrientation270;
+                break;
+            case 180:
+                mHwRotation = DisplayState::eOrientation180;
+                break;
+        }
+    }
     populateColorModes(hwcColorModes);
 
     std::vector<Hdr> types = hdrCapabilities.getSupportedHdrTypes();
@@ -296,6 +314,8 @@ DisplayDevice::DisplayDevice(
 
     // initialize the display orientation transform.
     setProjection(DisplayState::eOrientationDefault, mViewport, mFrame);
+
+    mEffectController = new EffectController(*flinger, *this);
 }
 
 DisplayDevice::~DisplayDevice() = default;
@@ -305,6 +325,8 @@ void DisplayDevice::disconnect(HWComposer& hwc) {
         hwc.disconnectDisplay(mHwcDisplayId);
         mHwcDisplayId = -1;
     }
+
+    mEffectController = NULL;
 }
 
 bool DisplayDevice::isValid() const {
@@ -406,6 +428,14 @@ void DisplayDevice::setVisibleLayersSortedByZ(const Vector< sp<Layer> >& layers)
 
 const Vector< sp<Layer> >& DisplayDevice::getVisibleLayersSortedByZ() const {
     return mVisibleLayersSortedByZ;
+}
+
+void DisplayDevice::setVisibleLayersSortedByZForHwc(const Vector<sp<Layer>>& layers) {
+    mVisibleLayersSortedByZForHwc = layers;
+}
+
+const Vector<sp<Layer>>& DisplayDevice::getVisibleLayersSortedByZForHwc() const {
+    return mVisibleLayersSortedByZForHwc;
 }
 
 void DisplayDevice::setLayersNeedingFences(const Vector< sp<Layer> >& layers) {
@@ -571,7 +601,10 @@ void DisplayDevice::setProjection(int orientation,
     if (!frame.isValid()) {
         // the destination frame can be invalid if it has never been set,
         // in that case we assume the whole display frame.
-        frame = Rect(w, h);
+        if (mHwRotation & DisplayState::eOrientationSwapMask)
+            frame = Rect(h, w);
+        else
+            frame = Rect(w, h);
     }
 
     if (viewport.isEmpty()) {
@@ -711,6 +744,10 @@ void DisplayDevice::addColorMode(
           decodeColorMode(hwcColorMode).c_str(), decodeRenderIntent(hwcIntent).c_str());
 
     mColorModes[getColorModeKey(dataspace, intent)] = {hwcDataspace, hwcColorMode, hwcIntent};
+}
+
+sp<EffectController> DisplayDevice::getEffectController() const {
+    return mEffectController;
 }
 
 void DisplayDevice::populateColorModes(

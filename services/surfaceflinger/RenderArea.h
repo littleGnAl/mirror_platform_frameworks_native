@@ -8,6 +8,8 @@
 
 namespace android {
 
+class EffectController;
+
 class RenderArea {
 
 public:
@@ -17,7 +19,10 @@ public:
 
     RenderArea(uint32_t reqHeight, uint32_t reqWidth, CaptureFill captureFill,
                ISurfaceComposer::Rotation rotation = ISurfaceComposer::eRotateNone)
-          : mReqHeight(reqHeight), mReqWidth(reqWidth), mCaptureFill(captureFill) {
+          : mEffectController(NULL),
+            mReqHeight(reqHeight),
+            mReqWidth(reqWidth),
+            mCaptureFill(captureFill) {
         mRotationFlags = Transform::fromRotation(rotation);
     }
 
@@ -39,6 +44,8 @@ public:
     status_t updateDimensions(int displayRotation);
 
     CaptureFill getCaptureFill() const { return mCaptureFill; };
+
+    EffectController* mEffectController;
 
 private:
     uint32_t mReqHeight;

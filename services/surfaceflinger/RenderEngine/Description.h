@@ -20,6 +20,8 @@
 #ifndef SF_RENDER_ENGINE_DESCRIPTION_H_
 #define SF_RENDER_ENGINE_DESCRIPTION_H_
 
+#include "EffectsDescription.h"
+
 namespace android {
 
 class Program;
@@ -66,6 +68,9 @@ private:
     friend class Program;
     friend class ProgramCache;
 
+    friend class EffectsRenderEngine;
+    friend class EffectsDescription;
+
     // whether textures are premultiplied
     bool mPremultipliedAlpha = false;
     // whether this layer is marked as opaque
@@ -92,6 +97,11 @@ private:
     mat4 mColorMatrix;
     mat3 mInputTransformMatrix;
     mat4 mOutputTransformMatrix;
+    EffectsDescription mEffectsDesc;
+
+public:
+    const EffectsDescription& getEffectDesc() const { return mEffectsDesc; }
+    EffectsDescription& getEffectDesc() { return mEffectsDesc; }
 };
 
 } /* namespace android */

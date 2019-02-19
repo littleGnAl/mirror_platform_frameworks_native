@@ -84,8 +84,9 @@
 
 #include "Effects/Daltonizer.h"
 
-#include "RenderEngine/RenderEngine.h"
 #include <cutils/compiler.h>
+#include "Effects/EffectController.h"
+#include "RenderEngine/RenderEngine.h"
 
 #include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
 #include <android/hardware/configstore/1.1/ISurfaceFlingerConfigs.h>
@@ -1596,6 +1597,8 @@ void SurfaceFlinger::handleMessageRefresh() {
 
     preComposition(refreshStartTime);
     rebuildLayerStacks();
+    // Update the layer effects, after the stack for this frame is ready
+    refreshLayerEffects();
     setUpHWComposer();
     doDebugFlashRegions();
     doTracing("handleRefresh");
@@ -1913,6 +1916,7 @@ void SurfaceFlinger::rebuildLayerStacks() {
                                 layer->visibleNonTransparentRegion));
                         drawRegion.andSelf(bounds);
                         if (!drawRegion.isEmpty()) {
+                            layer->skipEffect = false;
                             layersSortedByZ.add(layer);
                         } else {
                             // Clear out the HWC layer if this layer was
@@ -1940,6 +1944,13 @@ void SurfaceFlinger::rebuildLayerStacks() {
                         }
                     }
                 });
+                // If there is no surface under a blursurface, remove the blursurface from the list.
+                if (layersSortedByZ.size() > 0) {
+                    const sp<Layer>& layer(layersSortedByZ.itemAt(0));
+                    if (layer->hasEffect() &&
+                        layer->getEffect()->getPixType() == PixEffectType::BLUR)
+                        layer->skipEffect = true;
+                }
             }
             displayDevice->setVisibleLayersSortedByZ(layersSortedByZ);
             displayDevice->setLayersNeedingFences(layersNeedingFences);
@@ -2070,7 +2081,7 @@ void SurfaceFlinger::setUpHWComposer() {
             const auto hwcId = displayDevice->getHwcDisplayId();
             if (hwcId >= 0) {
                 const Vector<sp<Layer>>& currentLayers(
-                        displayDevice->getVisibleLayersSortedByZ());
+                        displayDevice->getVisibleLayersSortedByZForHwc());
                 for (size_t i = 0; i < currentLayers.size(); i++) {
                     const auto& layer = currentLayers[i];
                     if (!layer->hasHwcLayer(hwcId)) {
@@ -2103,7 +2114,7 @@ void SurfaceFlinger::setUpHWComposer() {
             ALOGE_IF(result != NO_ERROR, "Failed to set color transform on "
                     "display %zd: %d", displayId, result);
         }
-        for (auto& layer : displayDevice->getVisibleLayersSortedByZ()) {
+        for (auto& layer : displayDevice->getVisibleLayersSortedByZForHwc()) {
             if (layer->isHdrY410()) {
                 layer->forceClientComposition(hwcId);
             } else if ((layer->getDataSpace() == Dataspace::BT2020_PQ ||
@@ -2188,7 +2199,7 @@ void SurfaceFlinger::postFramebuffer()
         }
         displayDevice->onSwapBuffersCompleted();
         displayDevice->makeCurrent();
-        for (auto& layer : displayDevice->getVisibleLayersSortedByZ()) {
+        for (auto& layer : displayDevice->getVisibleLayersSortedByZForHwc()) {
             sp<Fence> releaseFence = Fence::NO_FENCE;
 
             // The layer buffer from the previous frame (if any) is released
@@ -2705,7 +2716,7 @@ void SurfaceFlinger::updateCursorAsync()
             continue;
         }
 
-        for (auto& layer : displayDevice->getVisibleLayersSortedByZ()) {
+        for (auto& layer : displayDevice->getVisibleLayersSortedByZForHwc()) {
             layer->updateCursorPosition(displayDevice);
         }
     }
@@ -2788,14 +2799,24 @@ void SurfaceFlinger::computeVisibleRegions(const sp<const DisplayDevice>& displa
          */
         Region transparentRegion;
 
+        bool smg_ignore_bounds = false;
+        if (layer->hasEffect() && layer->isVisible()) {
+            smg_ignore_bounds = true;
+        }
 
         // handle hidden surfaces by setting the visible region to empty
         if (CC_LIKELY(layer->isVisible())) {
             const bool translucent = !layer->isOpaque(s);
-            Rect bounds(layer->computeScreenBounds());
+            Rect bounds;
+            if (smg_ignore_bounds) {
+                const Layer::State& s(layer->getDrawingState());
+                bounds = Rect(s.active.w, s.active.h);
+            } else {
+                bounds = Rect(layer->computeScreenBounds());
+            }
             visibleRegion.set(bounds);
             Transform tr = layer->getTransform();
-            if (!visibleRegion.isEmpty()) {
+            if (!visibleRegion.isEmpty() && !smg_ignore_bounds) {
                 // Remove the transparent area from the visible region
                 if (translucent) {
                     if (tr.preserveRects()) {
@@ -2912,6 +2933,8 @@ bool SurfaceFlinger::handlePageFlip()
             } else {
                 layer->useEmptyDamage();
             }
+            // Mark the layers with queued frames as "content updated" for the reuse mechanism
+            layer->setContentUpdated(true);
         } else {
             layer->useEmptyDamage();
         }
@@ -2939,6 +2962,10 @@ bool SurfaceFlinger::handlePageFlip()
     if (CC_UNLIKELY(mBootStage == BootStage::BOOTLOADER && newDataLatched)) {
         ALOGI("Enter boot animation");
         mBootStage = BootStage::BOOTANIMATION;
+    }
+    // If there are animations playing. Continue with the refresh.
+    if (processAnimations()) {
+        return true;
     }
 
     // Only continue with the refresh if there is actually new work to do
@@ -2977,7 +3004,9 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& displayDev
     ALOGV("doComposeSurfaces");
 
     const Region bounds(displayDevice->bounds());
-    const DisplayRenderArea renderArea(displayDevice);
+    DisplayRenderArea renderArea(displayDevice);
+    renderArea.mEffectController = displayDevice->getEffectController().get();
+    renderArea.mEffectController->setRenderArea(&renderArea);
     const auto hwcId = displayDevice->getHwcDisplayId();
     const bool hasClientComposition = getBE().mHwc->hasClientComposition(hwcId);
     ATRACE_INT("hasClientComposition", hasClientComposition);
@@ -3075,7 +3104,7 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& displayDev
     ALOGV("Rendering client layers");
     const Transform& displayTransform = displayDevice->getTransform();
     bool firstLayer = true;
-    for (auto& layer : displayDevice->getVisibleLayersSortedByZ()) {
+    for (auto& layer : displayDevice->getVisibleLayersSortedByZForHwc()) {
         const Region clip(bounds.intersect(
                 displayTransform.transform(layer->visibleRegion)));
         ALOGV("Layer: %s", layer->getName().string());
@@ -3585,6 +3614,11 @@ uint32_t SurfaceFlinger::setClientStateLocked(const ComposerState& composerState
         layer->setOverrideScalingMode(s.overrideScalingMode);
         // We don't trigger a traversal here because if no other state is
         // changed, we don't want this to cause any more work
+    }
+    if (what & layer_state_t::eSurfaceEffectChanged) {
+        if (layer->setEffectParams(s.effectParams)) {
+            flags |= eTraversalNeeded;
+        }
     }
     return flags;
 }
@@ -4486,7 +4520,7 @@ SurfaceFlinger::getLayerSortedByZForHwcDisplay(int id) {
         // Just use the primary display so we have something to return
         dpy = getBuiltInDisplay(DisplayDevice::DISPLAY_PRIMARY);
     }
-    return getDisplayDeviceLocked(dpy)->getVisibleLayersSortedByZ();
+    return getDisplayDeviceLocked(dpy)->getVisibleLayersSortedByZForHwc();
 }
 
 void SurfaceFlinger::updateColorMatrixLocked() {
@@ -4840,7 +4874,7 @@ status_t SurfaceFlinger::captureScreen(const sp<IBinder>& display, sp<GraphicBuf
     }
 
     DisplayRenderArea renderArea(device, sourceCrop, reqHeight, reqWidth, rotation);
-
+    renderArea.mEffectController = device->getEffectController().get();
     auto traverseLayers = std::bind(std::mem_fn(&SurfaceFlinger::traverseLayersInDisplay), this,
                                     device, minLayerZ, maxLayerZ, std::placeholders::_1);
     return captureScreenCommon(renderArea, traverseLayers, outBuffer, useIdentityTransform);
@@ -4946,6 +4980,13 @@ status_t SurfaceFlinger::captureLayers(const sp<IBinder>& layerHandleBinder,
     int32_t reqHeight = crop.height() * frameScale;
 
     LayerRenderArea renderArea(this, parent, crop, reqWidth, reqHeight, childrenOnly);
+
+    for (size_t dpy = 0; dpy < mDisplays.size(); dpy++) {
+        const sp<DisplayDevice>& hw(mDisplays[dpy]);
+        if (hw.get() != NULL) {
+            renderArea.mEffectController = hw->getEffectController().get();
+        }
+    }
 
     auto traverseLayers = [parent, childrenOnly](const LayerVector::Visitor& visitor) {
         parent->traverseChildrenInZOrder(LayerVector::StateSet::Drawing, [&](Layer* layer) {
@@ -5142,6 +5183,10 @@ void SurfaceFlinger::renderScreenImplLocked(const RenderArea& renderArea,
     // redraw the screen entirely...
     engine.clearWithColor(0, 0, 0, alpha);
 
+    EffectController* eC = renderArea.mEffectController;
+    prepareEffectsForCapture(eC, sourceCrop, reqWidth, reqHeight, raHeight, traverseLayers,
+                             rotation);
+
     traverseLayers([&](Layer* layer) {
         if (filtering) layer->setFiltering(true);
         layer->draw(renderArea, useIdentityTransform);
@@ -5179,11 +5224,16 @@ status_t SurfaceFlinger::captureScreenImplLocked(const RenderArea& renderArea,
         return INVALID_OPERATION;
     }
 
+    EffectController* eC = renderArea.mEffectController;
+    eC->enableCapture(bufferBond.getFbName(), bufferBond.getTexFbName());
+
     // this will in fact render into our dequeued buffer
     // via an FBO, which means we didn't have to create
     // an EGLSurface and therefore we're not
     // dependent on the context's EGLConfig.
     renderScreenImplLocked(renderArea, traverseLayers, true, useIdentityTransform);
+
+    eC->disableCapture();
 
     if (DEBUG_SCREENSHOTS) {
         getRenderEngine().finish();

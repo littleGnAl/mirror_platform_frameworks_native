@@ -193,6 +193,13 @@ private:
 
     bool mUpdateTexImageFailed; // This is only accessed on the main thread.
     bool mRefreshPending;
+
+public:
+    void setupEngineState(const DisplayDevice& hw) const;
+
+protected:
+    // Tracks changes in the layer properties or buffers
+    mutable uint32_t mTransformHint{0};
 };
 
 } // namespace android

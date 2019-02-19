@@ -203,6 +203,8 @@ public:
                 float alpha);
         Transaction& setMatrix(const sp<SurfaceControl>& sc,
                 float dsdx, float dtdx, float dtdy, float dsdy);
+        Transaction& startSurfaceAnimation(const sp<SurfaceControl>& sc,
+                                           const std::vector<float>& data);
         Transaction& setCrop(const sp<SurfaceControl>& sc, const Rect& crop);
         Transaction& setFinalCrop(const sp<SurfaceControl>& sc, const Rect& crop);
         Transaction& setLayerStack(const sp<SurfaceControl>& sc, uint32_t layerStack);

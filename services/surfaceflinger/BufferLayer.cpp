@@ -27,6 +27,8 @@
 
 #include "RenderEngine/RenderEngine.h"
 
+#include "Effects/EffectController.h"
+
 #include <gui/BufferItem.h>
 #include <gui/BufferQueue.h>
 #include <gui/LayerDebugInfo.h>
@@ -689,6 +691,10 @@ void BufferLayer::setPerFrameData(const sp<const DisplayDevice>& displayDevice) 
               getBE().compositionInfo.mBuffer->handle, to_string(error).c_str(),
               static_cast<int32_t>(error));
     }
+
+    if (hasEffect()) {
+        setCompositionType(hwcId, HWC2::Composition::Client);
+    }
 }
 
 bool BufferLayer::isOpaque(const Layer::State& s) const {
@@ -888,7 +894,8 @@ void BufferLayer::drawWithOpenGL(const RenderArea& renderArea, bool useIdentityT
         engine.setSourceY410BT2020(true);
     }
 
-    engine.drawMesh(getBE().mMesh);
+    EffectController* ec = renderArea.mEffectController;
+    ec->composeLayer(*this, getBE().mMesh, mCurrentHWLayerIndex);
     engine.disableBlending();
 
     engine.setSourceY410BT2020(false);
@@ -1002,6 +1009,19 @@ bool BufferLayer::allTransactionsSignaled() {
         allTransactionsApplied = allTransactionsApplied && point->transactionIsApplied();
     }
     return !matchingFramesFound || allTransactionsApplied;
+}
+
+void BufferLayer::setupEngineState(const DisplayDevice& hw) const {
+    bool blackOutLayer = isProtected() || (isSecure() && !hw.isSecure());
+    RE::RenderEngine& engine(mFlinger->getRenderEngine());
+    const State& s(getDrawingState());
+    engine.setupLayerBlending(mPremultipliedAlpha, isOpaque(s), false, getColor());
+
+    if (!blackOutLayer) {
+        engine.setupLayerTexturing(mTexture);
+    } else {
+        engine.setupLayerBlackedOut();
+    }
 }
 
 } // namespace android

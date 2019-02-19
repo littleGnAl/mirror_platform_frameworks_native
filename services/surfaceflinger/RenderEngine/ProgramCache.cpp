@@ -129,6 +129,16 @@ void ProgramCache::primeCache(bool hasWideColor) {
     ALOGD("shader cache generated - %u shaders in %f ms\n", shaderCount, compileTimeMs);
 }
 
+void ProgramCache::addShaderToCache(Key::key_t shaderKey) {
+    Key key;
+    key.mKey = shaderKey;
+    Program* program = mCache.valueFor(key);
+    if (program == NULL) {
+        program = generateProgram(key);
+        mCache.add(key, program);
+    }
+}
+
 ProgramCache::Key ProgramCache::computeKey(const Description& description) {
     Key needs;
     needs.set(Key::TEXTURE_MASK,
@@ -188,6 +198,8 @@ ProgramCache::Key ProgramCache::computeKey(const Description& description) {
                 break;
         }
     }
+
+    computeEffectsKey(needs, description);
 
     return needs;
 }
@@ -611,9 +623,10 @@ String8 ProgramCache::generateFragmentShader(const Key& needs) {
         generateOETF(fs, needs);
     }
 
+    initEffectsFragmentShader(needs, fs);
     fs << "void main(void) {" << indent;
     if (needs.isTexturing()) {
-        fs << "gl_FragColor = texture2D(sampler, outTexCoords);";
+        generateEffectsFragmentShader(needs, fs);
         if (needs.isY410BT2020()) {
             fs << "gl_FragColor.rgb = convertY410BT2020(gl_FragColor.rgb);";
         }

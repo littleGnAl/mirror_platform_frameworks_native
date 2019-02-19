@@ -83,6 +83,27 @@ cc_library_headers {
 }
 
 filegroup {
+    name: "surfaceflinger_effects_sources",
+    srcs: [
+        "Effects/Interpolator.cpp",
+        "Effects/Animator.cpp",
+        "Effects/EffectController.cpp",
+        "Effects/EffectFBOCache.cpp",
+        "Effects/BlurEffect.cpp",
+        "Effects/RegionEffect.cpp",
+        "Effects/NoiseEffect.cpp",
+        "Effects/BlurRegEffect.cpp",
+        "Effects/Effect.cpp",
+        "Effects/AnimatedEffectBase.cpp",
+        "Effects/TransformUtils.cpp",
+        "RenderEngine/EffectsProgram.cpp",
+        "RenderEngine/EffectsRenderEngine.cpp",
+        "RenderEngine/EffectsProgramCache.cpp",
+        "SurfaceFlinger_Effects.cpp",
+    ],
+}
+
+filegroup {
     name: "libsurfaceflinger_sources",
     srcs: [
         "BufferLayer.cpp",
@@ -128,6 +149,7 @@ filegroup {
         "SurfaceTracing.cpp",
         "TimeStats/TimeStats.cpp",
         "Transform.cpp",
+        ":surfaceflinger_effects_sources",
     ],
 }
 

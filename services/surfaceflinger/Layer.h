@@ -51,12 +51,16 @@
 #include "RenderEngine/Mesh.h"
 #include "RenderEngine/Texture.h"
 
+#include "Effects/Effect.h"
+
 #include <math/vec4.h>
 #include <vector>
 
 using namespace android::surfaceflinger;
 
 namespace android {
+
+constexpr nsecs_t EFFECTS_FRAME_LENGTH_NANOS = 16666666;
 
 // ---------------------------------------------------------------------------
 
@@ -219,6 +223,8 @@ public:
         SortedVector<wp<Layer>> zOrderRelatives;
 
         half4 color;
+        int32_t effectSequence{0};
+        std::vector<float> effectParams;
     };
 
     Layer(SurfaceFlinger* flinger, const sp<Client>& client, const String8& name, uint32_t w,
@@ -283,6 +289,7 @@ public:
     bool setAlpha(float alpha);
     bool setColor(const half3& color);
     bool setTransparentRegionHint(const Region& transparent);
+    bool setEffectParams(const std::vector<float>& effectParams);
     bool setFlags(uint8_t flags, uint8_t mask);
     bool setLayerStack(uint32_t layerStack);
     uint32_t getLayerStack() const;
@@ -533,6 +540,8 @@ public:
     void setFiltering(bool filtering);
     bool getFiltering() const;
 
+    inline const sp<GraphicBuffer>& getActiveBuffer() const { return mActiveBuffer; }
+    FloatRect computeCropDebug(const sp<const DisplayDevice>& hw) const;
 
     inline const State& getDrawingState() const { return mDrawingState; }
     inline const State& getCurrentState() const { return mCurrentState; }
@@ -806,6 +815,52 @@ private:
                                        const LayerVector::Visitor& visitor);
     LayerVector makeChildrenTraversalList(LayerVector::StateSet stateSet,
                                           const std::vector<Layer*>& layersInTree);
+
+public:
+public:
+    class HWCLayerProcessSection {
+    public:
+        HWCLayerProcessSection(const Layer* layerPtr, int index) : mLayerPtr(layerPtr) {
+            if (mLayerPtr != nullptr) {
+                mLayerPtr->mCurrentHWLayerIndex = index;
+            }
+        }
+        HWCLayerProcessSection(HWCLayerProcessSection&& other) {
+            std::swap(mLayerPtr, other.mLayerPtr);
+        }
+        ~HWCLayerProcessSection() {
+            if (mLayerPtr != nullptr) {
+                mLayerPtr->mCurrentHWLayerIndex = -1;
+            }
+        }
+
+    private:
+        const Layer* mLayerPtr{nullptr};
+    };
+    friend class HWCLayerProcessSection;
+    HWCLayerProcessSection enterHWCLayerProcessSection(int index) const {
+        return HWCLayerProcessSection(this, index);
+    }
+
+    mutable int mCurrentHWLayerIndex{-1};
+    static constexpr bool DEBUG_SURFACE_EFFECT = true;
+
+public:
+    virtual void setupEngineState(const DisplayDevice& hw) const { (void)hw; }
+    bool setEffect(const EffectParams& params, bool keepOutput = false);
+    sp<Effect> getEffect() const;
+    void removeEffect();
+    virtual bool hasEffect() const;
+    void applyEffect(const std::vector<float>& effectParams);
+    bool isPremultipliedAlpha() const;
+    void setContentUpdated(bool contentUpdated);
+    bool isContentUpdated() const;
+    bool skipEffect = false;
+
+protected:
+    mutable bool mContentUpdated{false};
+    mutable uint32_t mTransformHint{0};
+    sp<Effect> mEffect;
 };
 
 // ---------------------------------------------------------------------------

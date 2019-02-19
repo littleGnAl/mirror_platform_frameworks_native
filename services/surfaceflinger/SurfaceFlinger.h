@@ -110,6 +110,8 @@ class RenderEngine;
 
 typedef std::function<void(const LayerVector::Visitor&)> TraverseLayersFunction;
 
+class EffectController;
+
 namespace dvr {
 class VrFlinger;
 } // namespace dvr
@@ -354,6 +356,8 @@ private:
     friend class Layer;
     friend class BufferLayer;
     friend class MonitoredProducer;
+
+    friend class EffectController;
 
     // For unit tests
     friend class TestableSurfaceFlinger;
@@ -913,6 +917,19 @@ private:
     CreateNativeWindowSurfaceFunction mCreateNativeWindowSurface;
 
     SurfaceFlingerBE mBE;
+
+private:
+    void refreshLayerEffects();
+    bool processAnimations();
+    void prepareEffectsForCapture(EffectController* eC, Rect sourceCrop, uint32_t reqWidth,
+                                  uint32_t reqHeight, uint32_t reqRaHeight,
+                                  TraverseLayersFunction traverseLayers,
+                                  Transform::orientation_flags rotation);
+
+    void dumpEffects(String8& result) const;
+
+private:
+    nsecs_t mLastAnimationTimestamp = -1;
 };
 }; // namespace android
 

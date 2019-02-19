@@ -39,6 +39,11 @@ namespace RE {
 namespace impl {
 
 class GLES20RenderEngine : public RenderEngine {
+    friend class android::EffectsRenderEngine;
+    friend class android::EffectController;
+    friend class android::Effect;
+    friend class android::BlurEffect;
+
     GLuint mProtectedTexName;
     GLint mMaxViewportDims[2];
     GLint mMaxTextureSize;
@@ -61,6 +66,15 @@ class GLES20RenderEngine : public RenderEngine {
     virtual void unbindFramebuffer(uint32_t texName, uint32_t fbName);
 
 public:
+    EffectsDescription& getEffectDesc() { return mState.getEffectDesc(); }
+
+    GLuint getGroupStackFbo() {
+        if (!mGroupStack.empty()) {
+            return mGroupStack.top().fbo;
+        }
+        return 0;
+    }
+
     GLES20RenderEngine(uint32_t featureFlags); // See RenderEngine::FeatureFlag
     virtual ~GLES20RenderEngine();
 
