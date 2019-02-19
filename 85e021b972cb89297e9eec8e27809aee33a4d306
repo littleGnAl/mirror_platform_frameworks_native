@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e64c2b1_5e7df8e2",
+        "filename": "cmds/installd/globals.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1448822
+      },
+      "writtenOn": "2019-02-19T19:50:42Z",
+      "side": 1,
+      "message": "Change to pkg_staging",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "85e021b972cb89297e9eec8e27809aee33a4d306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
