@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b13a38f9_d79898e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-19T13:54:14Z",
+      "side": 1,
+      "message": "Should this new property be documented on source.android.com?",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "257cf832a16d3147711818f21dca3940d3a16638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc0c30a3_76fbe9a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-19T13:54:14Z",
+      "side": 1,
+      "message": "Could you an explanation/motivation for this change in the commit message?",
+      "revId": "257cf832a16d3147711818f21dca3940d3a16638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
