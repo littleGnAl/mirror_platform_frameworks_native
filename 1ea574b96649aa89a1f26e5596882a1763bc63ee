@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8c37b334_58e39044",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-02-19T08:12:59Z",
+      "side": 1,
+      "message": "This is a good point. The call would indeed be handed off synchronously to the kernel (even if the call itself is async); what happens from there is still dependent on the scheduler, though - both the async call and the process death notification will be queued to a process workqueue, and while there is a guarantee that the async call will be queued on a binder thread first (and that it will be delivered), there\u0027s not really a guarantee that that binder thread gets to run first (though in most cases, it likely will). So I think you\u0027re guaranteed to receive the async call, but you may see the death notification first.\n\nIf this makes the handling code in system_server complex, an alternative would be to not exit here, and instead have system_server wait for a listener return value, and use init to stop the service from system_server instead.",
+      "parentUuid": "69800fc2_689cbaee",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "1ea574b96649aa89a1f26e5596882a1763bc63ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22b5a415_9464561a",
         "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
         "patchSetId": 7
