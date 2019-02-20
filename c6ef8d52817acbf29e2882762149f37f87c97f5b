@@ -16,6 +16,24 @@
       "revId": "c6ef8d52817acbf29e2882762149f37f87c97f5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a178013_600ad77b",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-20T10:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "720ceffb_d8611ca0",
+      "revId": "c6ef8d52817acbf29e2882762149f37f87c97f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
