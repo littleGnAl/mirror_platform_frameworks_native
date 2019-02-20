@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef4d0d5e_47150bb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-02-20T15:55:32Z",
+      "side": 1,
+      "message": "You should do \"repo cherry-pick ...\" which wil lthen add in the commit message \"(cherry-picked from....)\".",
+      "revId": "89bbc6f9fe7efe483d26637409d202752964c522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
