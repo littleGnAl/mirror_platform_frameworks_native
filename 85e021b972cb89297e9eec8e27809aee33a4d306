@@ -22,6 +22,30 @@
       "revId": "85e021b972cb89297e9eec8e27809aee33a4d306",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "233ce18d_d8e7a909",
+        "filename": "cmds/installd/globals.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1444042
+      },
+      "writtenOn": "2019-02-20T11:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e64c2b1_5e7df8e2",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "85e021b972cb89297e9eec8e27809aee33a4d306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
