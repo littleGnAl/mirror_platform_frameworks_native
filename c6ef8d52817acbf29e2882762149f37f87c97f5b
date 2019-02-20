@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "720ceffb_d8611ca0",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-02-20T10:19:55Z",
+      "side": 1,
+      "message": "This can be marked \"[[noreturn]]\" too. I\u0027d also suggest renaming this to dumpstate_thread_main because it will be self explanatory that way.",
+      "revId": "c6ef8d52817acbf29e2882762149f37f87c97f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
