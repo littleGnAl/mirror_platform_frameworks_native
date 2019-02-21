@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75007b36_56d9603d",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-21T13:49:29Z",
+      "side": 1,
+      "message": "I think it means only to logcat",
+      "parentUuid": "d6ce3bf4_a36021f6",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 22
+      },
+      "revId": "0dc848b8adf4451b393e80008795d9387953c271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8861acc_ac52fe42",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "0dc848b8adf4451b393e80008795d9387953c271",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa1cae6_d97e2f1f",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-21T13:49:29Z",
+      "side": 1,
+      "message": "Agree, hence \"rewrite\" in the TODO. Are you suggesting just do it now?\n\nstdout is redirected to the bugreport file. frameworks/native/cmds/dumpstate/dumpstate.cpp?l\u003d2441. \n\nI added comments to RunInternal in dumpstate.cpp to explain how it works, to my understanding, at some point. Check it out.\n\nIn practice this means these 2 lines will be grouped in different places of the bugreport. MYLOGD lines will be available where all the logcat logs are. printfs are available in the actual section where DurationReporter is called. So having one in some actions and the other in the rest of the action makes it hard to know what\u0027s going on wrt latency",
+      "parentUuid": "c8861acc_ac52fe42",
+      "range": {
+        "startLine": 114,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "0dc848b8adf4451b393e80008795d9387953c271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
