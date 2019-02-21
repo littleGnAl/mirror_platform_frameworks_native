@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6ce3bf4_a36021f6",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-02-21T13:40:49Z",
+      "side": 1,
+      "message": "[no action required] i\u0027m sooooo confused by what this flag is supposed to mean.",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 22
+      },
+      "revId": "0dc848b8adf4451b393e80008795d9387953c271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8861acc_ac52fe42",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-02-21T13:40:49Z",
+      "side": 1,
+      "message": "Where does this go currently ? is stdout redirected anywhere at all, or does it just disappear ?\n\nI don\u0027t think there\u0027s much downside to always MYLOGDing things, unless you think it\u0027s too verbose. We log all sorts of other pointless stuff anyway :)",
+      "range": {
+        "startLine": 114,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "0dc848b8adf4451b393e80008795d9387953c271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
