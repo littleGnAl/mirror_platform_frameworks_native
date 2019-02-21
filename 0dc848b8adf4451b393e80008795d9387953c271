@@ -141,6 +141,30 @@
       "revId": "0dc848b8adf4451b393e80008795d9387953c271",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "becf6a06_f9ff33a4",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-21T16:00:04Z",
+      "side": 1,
+      "message": "Probably logcat since dumpstate logfile is not timestamped as you noted. Both the bugs referred had debug log level on, so should be helpful.",
+      "parentUuid": "0683153b_71d81b5f",
+      "range": {
+        "startLine": 114,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "0dc848b8adf4451b393e80008795d9387953c271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
