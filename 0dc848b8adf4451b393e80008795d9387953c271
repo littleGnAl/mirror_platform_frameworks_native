@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0d2f753d_8886207f",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2019-02-22T04:03:01Z",
+      "side": 1,
+      "message": "Sorry, I had noooooo idea by just looking at this CL neither (WTF was the author thinking? :-)\n\nLooking at the code, I figured out - log_only means it should just write it to logcat (A.K.A MYLOGD), otherwise it should write it to both logcat and sysout (which is redirected to the main bugreport.txt file).\n\nSo, the proper fix here is:\n\nMYLOGD(.....)\nif (log_only) return;\nprintf(....)",
+      "parentUuid": "a6cae16e_df71d95e",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 22
+      },
+      "revId": "0dc848b8adf4451b393e80008795d9387953c271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8861acc_ac52fe42",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 1
