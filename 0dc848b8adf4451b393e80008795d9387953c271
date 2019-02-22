@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "57abce15_81c4dd35",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-22T08:43:13Z",
+      "side": 1,
+      "message": "I understand how it works, and intentionally left it like this, since line 112 was temporary. \n\nBut I\u0027m hearing resounding \"let\u0027s make the LOGD permanent\", so I shall do that.",
+      "parentUuid": "0d2f753d_8886207f",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 22
+      },
+      "revId": "0dc848b8adf4451b393e80008795d9387953c271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8861acc_ac52fe42",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 1
