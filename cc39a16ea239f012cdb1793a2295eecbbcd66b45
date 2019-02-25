@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78bd4212_75c68862",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-02-25T08:21:31Z",
+      "side": 1,
+      "message": "the impl uses O_APPEND?",
+      "range": {
+        "startLine": 537,
+        "startChar": 65,
+        "endLine": 537,
+        "endChar": 79
+      },
+      "revId": "cc39a16ea239f012cdb1793a2295eecbbcd66b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9416c44_4186fb2a",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-02-25T08:21:31Z",
+      "side": 1,
+      "message": "not really related to your CL, but dup2() can fail as well.",
+      "range": {
+        "startLine": 739,
+        "startChar": 4,
+        "endLine": 739,
+        "endChar": 31
+      },
+      "revId": "cc39a16ea239f012cdb1793a2295eecbbcd66b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
