@@ -16,6 +16,24 @@
       "revId": "637cc33ee2289b478ab5da6f18cd94e156a2d4d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a7f406_d74af8ce",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-02-26T13:45:03Z",
+      "side": 1,
+      "message": "AddRutimeArg first checks if the argument is empty.\n\nDo you want to call getenv(BOOTCLASSPATH) and pass that for else? Alternatively, I can add a comment about the behavior expected / inferred from current dex2oat invocation.",
+      "parentUuid": "167771f4_0b183d6f",
+      "revId": "637cc33ee2289b478ab5da6f18cd94e156a2d4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
