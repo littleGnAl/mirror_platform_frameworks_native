@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2f1f43fb_a829ec91",
+        "filename": "cmds/installd/globals.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1444042
+      },
+      "writtenOn": "2019-02-26T10:59:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d2e610c6_e98a534b",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 58
+      },
+      "revId": "b43faa9d8f1428a3fb2ee190dbd19074320ed1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8bfc95d_b5b4a320",
         "filename": "cmds/installd/globals.cpp",
         "patchSetId": 3
@@ -69,6 +93,30 @@
       "revId": "b43faa9d8f1428a3fb2ee190dbd19074320ed1fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f46ee547_362ee9dd",
+        "filename": "cmds/installd/globals.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1444042
+      },
+      "writtenOn": "2019-02-26T10:59:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c8bfc95d_b5b4a320",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "b43faa9d8f1428a3fb2ee190dbd19074320ed1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
