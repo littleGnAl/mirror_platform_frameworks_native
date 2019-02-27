@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0cfd6fdc_f2e1ad31",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-27T16:25:25Z",
+      "side": 1,
+      "message": "Busted!\n\nThe caller of this method expects it to be a truncate, for some reason. That needs to be fixed, but out of scope for now.",
+      "parentUuid": "78bd4212_75c68862",
+      "range": {
+        "startLine": 537,
+        "startChar": 65,
+        "endLine": 537,
+        "endChar": 79
+      },
+      "revId": "cc39a16ea239f012cdb1793a2295eecbbcd66b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9416c44_4186fb2a",
         "filename": "cmds/dumpstate/utils.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "cc39a16ea239f012cdb1793a2295eecbbcd66b45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0dc0ac1_83990a50",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-02-27T16:25:25Z",
+      "side": 1,
+      "message": "I added retry but did not check for return condition, since I want to keep my change focused. Incidentally dumpstate never checks if dup succeeded.",
+      "parentUuid": "d9416c44_4186fb2a",
+      "range": {
+        "startLine": 739,
+        "startChar": 4,
+        "endLine": 739,
+        "endChar": 31
+      },
+      "revId": "cc39a16ea239f012cdb1793a2295eecbbcd66b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
