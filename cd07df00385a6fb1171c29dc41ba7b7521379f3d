@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "02c5f687_b39a672c",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3141,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-02-27T22:18:53Z",
+      "side": 1,
+      "message": "Can you add a MultiTouchInputMapperTest similar to this test that would *only* check the sources in the case pointerCapture is enabled and not enabled? This would help isolate the change in TouchInputMapper::configureSurface.",
+      "range": {
+        "startLine": 3141,
+        "startChar": 35,
+        "endLine": 3141,
+        "endChar": 87
+      },
+      "revId": "cd07df00385a6fb1171c29dc41ba7b7521379f3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33e0396e_2c5f759f",
         "filename": "services/inputflinger/tests/InputReader_test.cpp",
         "patchSetId": 2
