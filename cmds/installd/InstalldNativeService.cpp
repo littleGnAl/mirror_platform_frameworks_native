@@ -1485,6 +1485,11 @@ binder::Status InstalldNativeService::getAppSize(const std::unique_ptr<std::stri
     if (flags & FLAG_USE_QUOTA && appId >= AID_APP_START) {
         ATRACE_BEGIN("code");
         for (const auto& codePath : codePaths) {
+            /* codePath should filter storage uuid, otherwise it will
+            include unrelated contents into codesize for specific uuid*/
+            auto volumePath = create_data_path(uuid_);
+            if(std::string::npos == codePath.find(volumePath))
+                continue;
             calculate_tree_size(codePath, &stats.codeSize, -1,
                     multiuser_get_shared_gid(0, appId));
         }
