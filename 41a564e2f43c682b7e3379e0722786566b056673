@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0c091086_7b338b0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-01T16:00:34Z",
+      "side": 1,
+      "message": "Follow-up/fixes to commit 67a14f6584d6108c29b923ce6a77c0ed5cf347dc",
+      "revId": "41a564e2f43c682b7e3379e0722786566b056673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16d2a0cc_f9519864",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -41,6 +58,29 @@
         "startChar": 0,
         "endLine": 390,
         "endChar": 113
+      },
+      "revId": "41a564e2f43c682b7e3379e0722786566b056673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "928aed7e_1e1e2c1f",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-01T16:00:34Z",
+      "side": 1,
+      "message": "Violates installd naming style...",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 131,
+        "endChar": 33
       },
       "revId": "41a564e2f43c682b7e3379e0722786566b056673",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
