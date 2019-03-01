@@ -128,6 +128,14 @@ bool create_cache_path_default(char path[PKG_PATH_MAX], const char *src,
 
 bool move_ab(const char* apk_path, const char* instruction_set, const char* output_path);
 
+const char* SelectExecutionBinary(
+        const char* binary,
+        const char* debug_binary,
+        bool background_job_compile,
+        bool is_debug_runtime,
+        bool is_release,
+        bool is_debuggable_build);
+
 }  // namespace installd
 }  // namespace android
 
