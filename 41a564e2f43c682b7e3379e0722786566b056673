@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16d2a0cc_f9519864",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-01T10:41:20Z",
+      "side": 1,
+      "message": "Drop this method and inline it in the caller?",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 35
+      },
+      "revId": "41a564e2f43c682b7e3379e0722786566b056673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47b68ec1_a1b7c098",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-01T10:41:20Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 113
+      },
+      "revId": "41a564e2f43c682b7e3379e0722786566b056673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
