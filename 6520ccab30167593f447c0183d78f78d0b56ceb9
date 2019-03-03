@@ -57,6 +57,24 @@
       "revId": "6520ccab30167593f447c0183d78f78d0b56ceb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "094d2bb8_83640910",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-03T23:53:05Z",
+      "side": 1,
+      "message": "I updated https://android-review.googlesource.com/c/platform/frameworks/native/+/850712 and added two extra support CLs (https://android-review.googlesource.com/c/platform/system/apex/+/902133 and https://android-review.googlesource.com/c/platform/system/sepolicy/+/902153).",
+      "parentUuid": "a18669bc_4e68659b",
+      "revId": "6520ccab30167593f447c0183d78f78d0b56ceb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
