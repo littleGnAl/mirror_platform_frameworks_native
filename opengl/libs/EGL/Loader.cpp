@@ -110,17 +110,23 @@ checkGlesEmulationStatus(void)
 
 static void* do_dlopen(const char* path, int mode) {
     ATRACE_CALL();
-    return dlopen(path, mode);
+    void* rval = dlopen(path, mode);
+    ALOGI("GSH: dlopen %s:%d %s %d", __FILE__, __LINE__, path, !!rval);
+    return rval;
 }
 
 static void* do_android_dlopen_ext(const char* path, int mode, const android_dlextinfo* info) {
     ATRACE_CALL();
-    return android_dlopen_ext(path, mode, info);
+    void* rval = android_dlopen_ext(path, mode, info);
+    ALOGI("GSH: dlopen %s:%d %s %d", __FILE__, __LINE__, path, !!rval);
+    return rval;
 }
 
 static void* do_android_load_sphal_library(const char* path, int mode) {
     ATRACE_CALL();
-    return android_load_sphal_library(path, mode);
+    void* rval = android_load_sphal_library(path, mode);
+    ALOGI("GSH: dlopen %s:%d %s %d", __FILE__, __LINE__, path, !!rval);
+    return rval;
 }
 
 // ----------------------------------------------------------------------------
@@ -173,6 +179,7 @@ Loader::~Loader() {
 static void* load_wrapper(const char* path) {
     void* so = do_dlopen(path, RTLD_NOW | RTLD_LOCAL);
     ALOGE_IF(!so, "dlopen(\"%s\") failed: %s", path, dlerror());
+    ALOGI("GSH: dlopen %s:%d %s %d", __FILE__, __LINE__, path, !!so);
     return so;
 }
 
@@ -444,6 +451,7 @@ static void* load_system_driver(const char* kind) {
     // sphal namespace.
     void* dso = do_android_load_sphal_library(driver_absolute_path,
                                               RTLD_NOW | RTLD_LOCAL);
+    ALOGI("GSH: dlopen %s:%d %s %d", __FILE__, __LINE__, driver_absolute_path, !!dso);
     if (dso == 0) {
         const char* err = dlerror();
         ALOGE("load_driver(%s): %s", driver_absolute_path, err ? err : "unknown");
@@ -462,6 +470,7 @@ static const char* HAL_SUBNAME_KEY_PROPERTIES[2] = {
 
 static void* load_updated_driver(const char* kind, android_namespace_t* ns) {
     ATRACE_CALL();
+    ALOGI("GSH: load_updated_driver");
     const android_dlextinfo dlextinfo = {
         .flags = ANDROID_DLEXT_USE_NAMESPACE,
         .library_namespace = ns,
@@ -472,7 +481,9 @@ static void* load_updated_driver(const char* kind, android_namespace_t* ns) {
         if (property_get(key, prop, nullptr) > 0) {
             std::string name = std::string("lib") + kind + "_" + prop + ".so";
             so = do_android_dlopen_ext(name.c_str(), RTLD_LOCAL | RTLD_NOW, &dlextinfo);
+            ALOGI("GSH: dlopen %s:%d %s %d", __FILE__, __LINE__, name.c_str(), !!so);
             if (so) {
+		ALOGI("GSH: Loaded %s via %s", name.c_str(), key);
                 return so;
             }
         }
