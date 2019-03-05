@@ -16,6 +16,24 @@
       "revId": "a194c456520b13779d00b313e0e969ba9a030525",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8e9d0a_03f13304",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-05T23:15:04Z",
+      "side": 1,
+      "message": "I actually went back and forth on this in my API but ended up choosing this direction because IBinder::dump returns an error.\n\nIf this happens, dumpsys writes \"Error dumping service info: (...)\". Presumably this could help indicate a problem.",
+      "parentUuid": "b7b27ad0_3e5287be",
+      "revId": "a194c456520b13779d00b313e0e969ba9a030525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
