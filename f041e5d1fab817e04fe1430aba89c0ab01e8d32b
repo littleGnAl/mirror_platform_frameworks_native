@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9dcc5da_1d76bb15",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-05T00:54:57Z",
+      "side": 1,
+      "message": "btw, there is no mutex on this. Would it be worth it to enforce that setOnDump is called before any class is instantiated? This could always be added later, but it seems to require a lock (or similar) to be taken whenever an NDK binder object is instantiated.",
+      "range": {
+        "startLine": 122,
+        "startChar": 41,
+        "endLine": 122,
+        "endChar": 47
+      },
+      "revId": "f041e5d1fab817e04fe1430aba89c0ab01e8d32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ad51b3_be22790e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-05T00:54:57Z",
+      "side": 1,
+      "message": "What is your opinion on this style vs. having std::vector\u003cstd::string\u003e here? I can switch it to std::vector, but it means extra copies. Worth it?",
+      "range": {
+        "startLine": 111,
+        "startChar": 33,
+        "endLine": 111,
+        "endChar": 88
+      },
+      "revId": "f041e5d1fab817e04fe1430aba89c0ab01e8d32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
