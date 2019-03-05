@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "409af024_3e576906",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2019-03-05T17:58:55Z",
+      "side": 1,
+      "message": "should this be array of null terminated strings received? Same for numArgs? This isn\u0027t initiating a dump, the wording seems reversed.",
+      "revId": "079b9c476d22cb0f9ae72a36cfd8a657ecee215c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
