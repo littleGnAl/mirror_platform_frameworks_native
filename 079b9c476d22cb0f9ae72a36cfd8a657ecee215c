@@ -16,6 +16,24 @@
       "revId": "079b9c476d22cb0f9ae72a36cfd8a657ecee215c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8caba131_a4aa3a53",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-05T18:30:23Z",
+      "side": 1,
+      "message": "Good catch. Done. Thanks.",
+      "parentUuid": "409af024_3e576906",
+      "revId": "079b9c476d22cb0f9ae72a36cfd8a657ecee215c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
