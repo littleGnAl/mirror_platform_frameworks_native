@@ -38,16 +38,15 @@ cc_library {
         "service_manager.cpp",
     ],
 
+    static_libs: [
+        "libjni_lazy",
+    ],
+
     shared_libs: [
         "libbase",
         "libbinder",
+        "liblog",
         "libutils",
-    ],
-
-    required: [
-        // libbinder_ndk may be used by Java and non-Java things. When lower-level things use it,
-        // they shouldn't have to take on the cost of loading libandroid_runtime.
-        "libandroid_runtime",
     ],
 
     header_libs: [
