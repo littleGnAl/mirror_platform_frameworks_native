@@ -968,6 +968,10 @@ void InputDispatcher::dispatchEventLocked(nsecs_t currentTime,
     for (size_t i = 0; i < inputTargets.size(); i++) {
         const InputTarget& inputTarget = inputTargets.itemAt(i);
 
+        if (inputTarget.flags & InputTarget::FLAG_SECURE) {
+            eventEntry->policyFlags |= POLICY_FLAG_SECURE_EVENT;
+        }
+
         ssize_t connectionIndex = getConnectionIndexLocked(inputTarget.inputChannel);
         if (connectionIndex >= 0) {
             sp<Connection> connection = mConnectionsByFd.valueAt(connectionIndex);
@@ -1610,6 +1614,10 @@ void InputDispatcher::addWindowTargetLocked(const sp<InputWindowHandle>& windowH
     inputTargets.push();
 
     const InputWindowInfo* windowInfo = windowHandle->getInfo();
+    if (windowInfo->layoutParamsFlags & InputWindowInfo::FLAG_SECURE) {
+        targetFlags |= InputTarget::FLAG_SECURE;
+    }
+
     InputTarget& target = inputTargets.editTop();
     target.inputChannel = windowInfo->inputChannel;
     target.flags = targetFlags;
@@ -3243,6 +3251,7 @@ void InputDispatcher::dumpDispatchStateLocked(std::string& dump) {
         dump += INDENT "TouchStates: <no displays touched>\n";
     }
 
+    bool hideSensitiveDetails = false;
     if (!mWindowHandles.isEmpty()) {
         dump += INDENT "Windows:\n";
         for (size_t i = 0; i < mWindowHandles.size(); i++) {
@@ -3270,6 +3279,10 @@ void InputDispatcher::dumpDispatchStateLocked(std::string& dump) {
             dump += StringPrintf(", ownerPid=%d, ownerUid=%d, dispatchingTimeout=%0.3fms\n",
                     windowInfo->ownerPid, windowInfo->ownerUid,
                     windowInfo->dispatchingTimeout / 1000000.0);
+
+            if (windowInfo->layoutParamsFlags & InputWindowInfo::FLAG_SECURE) {
+                hideSensitiveDetails = true;
+            }
         }
     } else {
         dump += INDENT "Windows: <none>\n";
@@ -3292,7 +3305,7 @@ void InputDispatcher::dumpDispatchStateLocked(std::string& dump) {
         dump += StringPrintf(INDENT "RecentQueue: length=%u\n", mRecentQueue.count());
         for (EventEntry* entry = mRecentQueue.head; entry; entry = entry->next) {
             dump += INDENT2;
-            entry->appendDescription(dump);
+            entry->appendDescription(dump, hideSensitiveDetails);
             dump += StringPrintf(", age=%0.1fms\n",
                     (currentTime - entry->eventTime) * 0.000001f);
         }
@@ -3304,7 +3317,7 @@ void InputDispatcher::dumpDispatchStateLocked(std::string& dump) {
     if (mPendingEvent) {
         dump += INDENT "PendingEvent:\n";
         dump += INDENT2;
-        mPendingEvent->appendDescription(dump);
+        mPendingEvent->appendDescription(dump, hideSensitiveDetails);
         dump += StringPrintf(", age=%0.1fms\n",
                 (currentTime - mPendingEvent->eventTime) * 0.000001f);
     } else {
@@ -3316,7 +3329,7 @@ void InputDispatcher::dumpDispatchStateLocked(std::string& dump) {
         dump += StringPrintf(INDENT "InboundQueue: length=%u\n", mInboundQueue.count());
         for (EventEntry* entry = mInboundQueue.head; entry; entry = entry->next) {
             dump += INDENT2;
-            entry->appendDescription(dump);
+            entry->appendDescription(dump, hideSensitiveDetails);
             dump += StringPrintf(", age=%0.1fms\n",
                     (currentTime - entry->eventTime) * 0.000001f);
         }
@@ -3353,7 +3366,7 @@ void InputDispatcher::dumpDispatchStateLocked(std::string& dump) {
                 for (DispatchEntry* entry = connection->outboundQueue.head; entry;
                         entry = entry->next) {
                     dump.append(INDENT4);
-                    entry->eventEntry->appendDescription(dump);
+                    entry->eventEntry->appendDescription(dump, hideSensitiveDetails);
                     dump += StringPrintf(", targetFlags=0x%08x, resolvedAction=%d, age=%0.1fms\n",
                             entry->targetFlags, entry->resolvedAction,
                             (currentTime - entry->eventEntry->eventTime) * 0.000001f);
@@ -3368,7 +3381,7 @@ void InputDispatcher::dumpDispatchStateLocked(std::string& dump) {
                 for (DispatchEntry* entry = connection->waitQueue.head; entry;
                         entry = entry->next) {
                     dump += INDENT4;
-                    entry->eventEntry->appendDescription(dump);
+                    entry->eventEntry->appendDescription(dump, hideSensitiveDetails);
                     dump += StringPrintf(", targetFlags=0x%08x, resolvedAction=%d, "
                             "age=%0.1fms, wait=%0.1fms\n",
                             entry->targetFlags, entry->resolvedAction,
@@ -3632,7 +3645,7 @@ void InputDispatcher::doDispatchCycleFinishedLockedInterruptible(
             std::string msg =
                     StringPrintf("Window '%s' spent %0.1fms processing the last input event: ",
                     connection->getWindowName().c_str(), eventDuration * 0.000001f);
-            dispatchEntry->eventEntry->appendDescription(msg);
+            dispatchEntry->eventEntry->appendDescription(msg, true);
             ALOGI("%s", msg.c_str());
         }
 
@@ -3967,7 +3980,7 @@ InputDispatcher::ConfigurationChangedEntry::ConfigurationChangedEntry(nsecs_t ev
 InputDispatcher::ConfigurationChangedEntry::~ConfigurationChangedEntry() {
 }
 
-void InputDispatcher::ConfigurationChangedEntry::appendDescription(std::string& msg) const {
+void InputDispatcher::ConfigurationChangedEntry::appendDescription(std::string& msg, const bool hideSensitiveDetails) const {
     msg += StringPrintf("ConfigurationChangedEvent(), policyFlags=0x%08x", policyFlags);
 }
 
@@ -3982,7 +3995,7 @@ InputDispatcher::DeviceResetEntry::DeviceResetEntry(nsecs_t eventTime, int32_t d
 InputDispatcher::DeviceResetEntry::~DeviceResetEntry() {
 }
 
-void InputDispatcher::DeviceResetEntry::appendDescription(std::string& msg) const {
+void InputDispatcher::DeviceResetEntry::appendDescription(std::string& msg, const bool hideSensitiveDetails) const {
     msg += StringPrintf("DeviceResetEvent(deviceId=%d), policyFlags=0x%08x",
             deviceId, policyFlags);
 }
@@ -4005,12 +4018,16 @@ InputDispatcher::KeyEntry::KeyEntry(nsecs_t eventTime,
 InputDispatcher::KeyEntry::~KeyEntry() {
 }
 
-void InputDispatcher::KeyEntry::appendDescription(std::string& msg) const {
+void InputDispatcher::KeyEntry::appendDescription(std::string& msg, const bool hideSensitiveDetails) const {
     msg += StringPrintf("KeyEvent(deviceId=%d, source=0x%08x, action=%s, "
-            "flags=0x%08x, keyCode=%d, scanCode=%d, metaState=0x%08x, "
-            "repeatCount=%d), policyFlags=0x%08x",
-            deviceId, source, keyActionToString(action).c_str(), flags, keyCode,
-            scanCode, metaState, repeatCount, policyFlags);
+            "flags=0x%08x, ", deviceId, source, keyActionToString(action).c_str(), flags);
+    if (hideSensitiveDetails || (policyFlags & POLICY_FLAG_SECURE_EVENT)) {
+        msg += StringPrintf("keyCode=??, scanCode=??, ");
+    } else {
+        msg += StringPrintf("keyCode=%d, scanCode=%d, ", keyCode, scanCode);
+    }
+    msg += StringPrintf("metaState=0x%08x, repeatCount=%d), policyFlags=0x%08x",
+            metaState, repeatCount, policyFlags);
 }
 
 void InputDispatcher::KeyEntry::recycle() {
@@ -4050,7 +4067,7 @@ InputDispatcher::MotionEntry::MotionEntry(nsecs_t eventTime, int32_t deviceId,
 InputDispatcher::MotionEntry::~MotionEntry() {
 }
 
-void InputDispatcher::MotionEntry::appendDescription(std::string& msg) const {
+void InputDispatcher::MotionEntry::appendDescription(std::string& msg, const bool hideSensitiveDetails) const {
     msg += StringPrintf("MotionEvent(deviceId=%d, source=0x%08x, action=%s, actionButton=0x%08x, "
             "flags=0x%08x, metaState=0x%08x, buttonState=0x%08x, "
             "edgeFlags=0x%08x, xPrecision=%.1f, yPrecision=%.1f, displayId=%d, pointers=[",
@@ -4060,8 +4077,12 @@ void InputDispatcher::MotionEntry::appendDescription(std::string& msg) const {
         if (i) {
             msg += ", ";
         }
-        msg += StringPrintf("%d: (%.1f, %.1f)", pointerProperties[i].id,
-                pointerCoords[i].getX(), pointerCoords[i].getY());
+        if (hideSensitiveDetails || (policyFlags & POLICY_FLAG_SECURE_EVENT)) {
+            msg += StringPrintf("%d: (??, \?\?)", pointerProperties[i].id);
+        } else {
+            msg += StringPrintf("%d: (%.1f, %.1f)", pointerProperties[i].id,
+                    pointerCoords[i].getX(), pointerCoords[i].getY());
+        }
     }
     msg += StringPrintf("]), policyFlags=0x%08x", policyFlags);
 }

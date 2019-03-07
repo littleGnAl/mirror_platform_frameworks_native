@@ -201,6 +201,9 @@ enum {
     // Disables automatic key repeating behavior.
     POLICY_FLAG_DISABLE_KEY_REPEAT = 0x08000000,
 
+    // Disables printing sensitive info of events such as coordinates or keycodes
+    POLICY_FLAG_SECURE_EVENT = 0x10000000,
+
     /* These flags are set by the input reader policy as it intercepts each event. */
 
     // Indicates that the device was in an interactive state when the

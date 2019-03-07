@@ -102,6 +102,11 @@ struct InputTarget {
          * the same UID from watching all touches. */
         FLAG_ZERO_COORDS = 1 << 3,
 
+        /* This flag indicates that the pointer coordinates or key codes should not be printed.
+         * This is used to prevent sensitive data from being printed when dispatched to a window
+         * with FLAG_SECURE set. */
+        FLAG_SECURE = 1 << 4,
+
         /* This flag indicates that the event should be sent as is.
          * Should always be set unless the event is to be transmuted. */
         FLAG_DISPATCH_AS_IS = 1 << 8,
@@ -445,7 +450,7 @@ private:
 
         void release();
 
-        virtual void appendDescription(std::string& msg) const = 0;
+        virtual void appendDescription(std::string& msg, const bool hideSensitiveDetails) const = 0;
 
     protected:
         EventEntry(int32_t type, nsecs_t eventTime, uint32_t policyFlags);
@@ -455,7 +460,7 @@ private:
 
     struct ConfigurationChangedEntry : EventEntry {
         explicit ConfigurationChangedEntry(nsecs_t eventTime);
-        virtual void appendDescription(std::string& msg) const;
+        virtual void appendDescription(std::string& msg, const bool hideSensitiveDetails) const;
 
     protected:
         virtual ~ConfigurationChangedEntry();
@@ -465,7 +470,7 @@ private:
         int32_t deviceId;
 
         DeviceResetEntry(nsecs_t eventTime, int32_t deviceId);
-        virtual void appendDescription(std::string& msg) const;
+        virtual void appendDescription(std::string& msg, const bool hideSensitiveDetails) const;
 
     protected:
         virtual ~DeviceResetEntry();
@@ -497,7 +502,7 @@ private:
                 int32_t deviceId, uint32_t source, uint32_t policyFlags, int32_t action,
                 int32_t flags, int32_t keyCode, int32_t scanCode, int32_t metaState,
                 int32_t repeatCount, nsecs_t downTime);
-        virtual void appendDescription(std::string& msg) const;
+        virtual void appendDescription(std::string& msg, const bool hideSensitiveDetails) const;
         void recycle();
 
     protected:
@@ -530,7 +535,7 @@ private:
                 int32_t displayId, uint32_t pointerCount,
                 const PointerProperties* pointerProperties, const PointerCoords* pointerCoords,
                 float xOffset, float yOffset);
-        virtual void appendDescription(std::string& msg) const;
+        virtual void appendDescription(std::string& msg, const bool hideSensitiveDetails) const;
 
     protected:
         virtual ~MotionEntry();
