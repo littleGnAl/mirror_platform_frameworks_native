@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "816a7e98_b64788f2",
+        "filename": "libs/jni_lazy/jni_lazy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-03-07T10:59:06Z",
+      "side": 1,
+      "message": "nit; remove trailing underscore, because it\u0027s for member variables of classes?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "d8020da81e021329999e70bb94ea641368f4ec35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "690d63da_078d2efe",
+        "filename": "libs/jni_lazy/jni_lazy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-03-07T10:59:06Z",
+      "side": 1,
+      "message": "nit; getJNIEnv_() or (*getJNIEnv_)() ?",
+      "revId": "d8020da81e021329999e70bb94ea641368f4ec35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
