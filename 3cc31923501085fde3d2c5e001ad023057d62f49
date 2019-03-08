@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "159235fb_5dad81e4",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2019-03-08T20:06:22Z",
+      "side": 1,
+      "message": "I think this function fails for init. Probably since the vndk namespace isn\u0027t exported by then ? libbinder thinks init is a vendor process.",
+      "revId": "3cc31923501085fde3d2c5e001ad023057d62f49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
