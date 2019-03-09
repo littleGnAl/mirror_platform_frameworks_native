@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2810709_154510ae",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-09T16:36:08Z",
+      "side": 1,
+      "message": "I thought that static linkage has some benefits due to its small size. libbinder_ndk.so gets bigger only  140~170 bytes. But being in a shared_libs would be good. I\u0027ll change it.",
+      "parentUuid": "b08bd789_79bca99b",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49049229_be2da4bb",
         "filename": "libs/jni_lazy/Android.bp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-09T09:22:04Z",
       "side": 1,
       "message": "The name seems to be broader than what it actually is. How about naming this as \u0027libandroid_runtime_lazy\u0027?\n\nThis name is in sync with other libraries such as libnativeloader_lazy and libnativehelper_lazy.",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "666a4f9b_7ab50a04",
+        "filename": "libs/jni_lazy/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-09T16:36:08Z",
+      "side": 1,
+      "message": "Okay. I\u0027ll change it.\n\nI also thought of libandroid_runtime_lazy first. But, it seemed that it is also misleading. Because libandroid_runtime is much bigger than this library. (libnativeloader_lazy delegates all functions exposed by libnativeloader).",
+      "parentUuid": "49049229_be2da4bb",
       "range": {
         "startLine": 18,
         "startChar": 11,
@@ -82,6 +130,30 @@
       "writtenOn": "2019-03-09T09:22:04Z",
       "side": 1,
       "message": "It would be better if the namespace of these wrappers are the same as the ones in libandroid_runtime.so",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf2ad839_dbbe0928",
+        "filename": "libs/jni_lazy/include/jni_lazy.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-09T16:36:08Z",
+      "side": 1,
+      "message": "Makes sense. How about making the client code exactly the same as it was? I mean, splitting the header file into two, \"android_runtime/AndroidRuntime.h\" and \"android_util_Binder.h\". With this, client can easily switch between libandroid_runtime and libandroid_runtime_lazy without modifying the code, it needs to modify Android.bp only.",
+      "parentUuid": "04a42912_36397e40",
       "range": {
         "startLine": 22,
         "startChar": 0,
