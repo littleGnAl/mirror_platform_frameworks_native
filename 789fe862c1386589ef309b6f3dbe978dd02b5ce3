@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b08bd789_79bca99b",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-09T09:22:04Z",
+      "side": 1,
+      "message": "why do you statically link?",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49049229_be2da4bb",
+        "filename": "libs/jni_lazy/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-09T09:22:04Z",
+      "side": 1,
+      "message": "The name seems to be broader than what it actually is. How about naming this as \u0027libandroid_runtime_lazy\u0027?\n\nThis name is in sync with other libraries such as libnativeloader_lazy and libnativehelper_lazy.",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2645cd09_b238d1d7",
+        "filename": "libs/jni_lazy/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-09T09:22:04Z",
+      "side": 1,
+      "message": "I am not sure \u0027required\u0027 field is respected for static libraries... Dan?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04a42912_36397e40",
+        "filename": "libs/jni_lazy/include/jni_lazy.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-09T09:22:04Z",
+      "side": 1,
+      "message": "It would be better if the namespace of these wrappers are the same as the ones in libandroid_runtime.so",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
