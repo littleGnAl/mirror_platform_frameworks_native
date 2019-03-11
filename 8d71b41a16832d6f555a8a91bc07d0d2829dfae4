@@ -22,6 +22,30 @@
       "revId": "8d71b41a16832d6f555a8a91bc07d0d2829dfae4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11892564_ea6b34f8",
+        "filename": "cmds/installd/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2019-03-11T16:27:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c36976f9_cb9af4dc",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "8d71b41a16832d6f555a8a91bc07d0d2829dfae4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
