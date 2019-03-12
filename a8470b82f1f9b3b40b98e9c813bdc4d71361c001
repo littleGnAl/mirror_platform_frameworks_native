@@ -22,6 +22,30 @@
       "revId": "a8470b82f1f9b3b40b98e9c813bdc4d71361c001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea93260b_fd42d677",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-12T08:31:34Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll do something like that shortly. \n\n(sorry about the spam - trying to diagnose some latency issues we saw recently in taking a bugreport)",
+      "parentUuid": "68be673b_1541b033",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 92
+      },
+      "revId": "a8470b82f1f9b3b40b98e9c813bdc4d71361c001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
