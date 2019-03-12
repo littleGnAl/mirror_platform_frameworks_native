@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "0f93694c_a20aada5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-12T18:04:07Z",
+      "side": 1,
+      "message": "can you also test that devices with the older version of the VNDK (e.g. Pixel 1) work?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "3cc31923501085fde3d2c5e001ad023057d62f49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5594840b_ff60ba14",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-12T18:04:07Z",
+      "side": 1,
+      "message": "nit: Vendor",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "3cc31923501085fde3d2c5e001ad023057d62f49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "159235fb_5dad81e4",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 1
@@ -52,6 +98,29 @@
       "revId": "3cc31923501085fde3d2c5e001ad023057d62f49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4bb55c6_bc3addf5",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-12T18:04:07Z",
+      "side": 1,
+      "message": "I\u0027m thinking maybe this should be the default one as well, but maybe best for a separate change later.",
+      "range": {
+        "startLine": 104,
+        "startChar": 77,
+        "endLine": 104,
+        "endChar": 83
+      },
+      "revId": "3cc31923501085fde3d2c5e001ad023057d62f49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
