@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dfcd79a6_95174ade",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-12T13:39:55Z",
+      "side": 1,
+      "message": "hmm I don\u0027t have new locals that I want to scope, so I don\u0027t know if it\u0027s useful.\n\nWhy do you suggest it?",
+      "parentUuid": "2321ff4b_ea8e701e",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "592e29beeb03c0c36d00887f4f6b555df8cde2bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6bd2e6cf_231188aa",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "592e29beeb03c0c36d00887f4f6b555df8cde2bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffbb7338_6931e33e",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-12T13:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd2e6cf_231188aa",
+      "range": {
+        "startLine": 338,
+        "startChar": 4,
+        "endLine": 338,
+        "endChar": 31
+      },
+      "revId": "592e29beeb03c0c36d00887f4f6b555df8cde2bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
