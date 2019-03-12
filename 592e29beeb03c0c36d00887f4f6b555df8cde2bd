@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2321ff4b_ea8e701e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-03-12T13:11:45Z",
+      "side": 1,
+      "message": "should it be surrounded by {}? i.e.:\n#define RETURN_IF_USER_DENIED_CONSENT() { \\\n  ...                                     \\\n}\n\nditto for the case below.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "592e29beeb03c0c36d00887f4f6b555df8cde2bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd2e6cf_231188aa",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-03-12T13:11:45Z",
+      "side": 1,
+      "message": "nit: make it const?",
+      "range": {
+        "startLine": 338,
+        "startChar": 4,
+        "endLine": 338,
+        "endChar": 31
+      },
+      "revId": "592e29beeb03c0c36d00887f4f6b555df8cde2bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
