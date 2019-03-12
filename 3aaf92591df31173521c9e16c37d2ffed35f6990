@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3146f8db_500682e9",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-03-12T12:36:50Z",
+      "side": 1,
+      "message": "nit: since this is not a header, probably don\u0027t need this; perhaps you\u0027d event want an error if somebody else had defined this already.",
+      "range": {
+        "startLine": 134,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 37
+      },
+      "revId": "3aaf92591df31173521c9e16c37d2ffed35f6990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
