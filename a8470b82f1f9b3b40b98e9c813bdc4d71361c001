@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68be673b_1541b033",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-03-12T01:25:02Z",
+      "side": 1,
+      "message": "Do we really need this logging?\nI\u0027m seeing on my device:\n\n03-12 01:23:13.407 15438 15438 D dumpstate: Duration of \u0027SHOW MAP 1350 ([kworker/u16:18])\u0027: 0.022s\n03-12 01:23:13.434 15438 15438 D dumpstate: Duration of \u0027SHOW MAP 1453 ([qmi_wq])\u0027: 0.026s\n03-12 01:23:13.463 15438 15438 D dumpstate: Duration of \u0027SHOW MAP 1461 ([qmi_hndl0000001])\u0027: 0.029s\n03-12 01:23:13.487 15438 15438 D dumpstate: Duration of \u0027SHOW MAP 1552 ([ipawq34])\u0027: 0.024s\n03-12 01:23:13.514 15438 15438 D dumpstate: Duration of \u0027SHOW MAP 1553 ([iparepwq34])\u0027: 0.027s\n03-12 01:23:13.545 15438 15438 D dumpstate: Duration of \u0027SHOW MAP 1555 ([ipawq35])\u0027: 0.030s\n03-12 01:23:13.579 15438 15438 D dumpstate: Duration of \u0027SHOW MAP 1556 ([iparepwq35])\u0027: 0.034s\n\n\nIs it possible to only log cases where the duration is unusually long? Say longer than 1 second?",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 92
+      },
+      "revId": "a8470b82f1f9b3b40b98e9c813bdc4d71361c001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
