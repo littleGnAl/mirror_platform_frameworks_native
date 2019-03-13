@@ -269,6 +269,22 @@ void AIBinder_DeathRecipient::TransferDeathRecipient::binderDied(const wp<IBinde
     CHECK(who == mWho);
 
     mOnDied(mCookie);
+
+    sp<AIBinder_DeathRecipient> recipient = mParentRecipient.promote();
+
+    // proxies are OBJECT_LIFETIME_WEAK and this can never be called on a local object
+    sp<AIBinder> internalWho = ABpBinder::lookupOrCreateFromBinder(who.promote());
+    CHECK(internalWho != nullptr);
+
+    // if the AIBinder_DeathRecipient hangs around, it still has a strong pointer to 'this'
+    if (recipient != nullptr && internalWho != nullptr) {
+        status_t result = recipient->unlinkToDeath(internalWho.get(), mCookie);
+        if (result != ::android::DEAD_OBJECT) {
+            LOG(WARNING) << "Unlinking to dead binder resulted in: " << result;
+        }
+    }
+
+    // binder proxies are OBJECT_LIFETIME_WEAK
     mWho = nullptr;
 }
 
@@ -283,7 +299,7 @@ binder_status_t AIBinder_DeathRecipient::linkToDeath(AIBinder* binder, void* coo
     std::lock_guard<std::mutex> l(mDeathRecipientsMutex);
 
     sp<TransferDeathRecipient> recipient =
-            new TransferDeathRecipient(binder->getBinder(), cookie, mOnDied);
+            new TransferDeathRecipient(binder->getBinder(), cookie, this, mOnDied);
 
     status_t status = binder->getBinder()->linkToDeath(recipient, cookie, 0 /*flags*/);
     if (status != STATUS_OK) {
@@ -555,9 +571,11 @@ AIBinder_DeathRecipient* AIBinder_DeathRecipient_new(
         LOG(ERROR) << __func__ << ": requires non-null onBinderDied parameter.";
         return nullptr;
     }
-    return new AIBinder_DeathRecipient(onBinderDied);
+    auto ret = new AIBinder_DeathRecipient(onBinderDied);
+    ret->incStrong(nullptr);
+    return ret;
 }
 
 void AIBinder_DeathRecipient_delete(AIBinder_DeathRecipient* recipient) {
-    delete recipient;
+    recipient->decStrong(nullptr);
 }
