@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1767ba17_095da59b",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-13T19:29:44Z",
+      "side": 1,
+      "message": "this is the \u0027AIBinder_DeathRecipient sp and AIBinder sp\u0027 case, and it means we can get rid of any extra data immediately",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 5
+      },
+      "revId": "9a81f5b101dc66e0b74891b4df3f2bf38ebc7fa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6148d54b_e3e62e67",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-13T19:29:44Z",
+      "side": 1,
+      "message": "This is to handle the AIBinder_DeathRecipient case, but where the AIBinder is dropped by the client.\n\nThe removal of extra transfer death recipients happens in a way that ensures this doesn\u0027t grow without bounds.\n\n\nNote the reason why this can\u0027t happen in binderDied is because there is no way to go from wp\u003cIBinder\u003e to a weak pointer to AIBinder. The AIBinder object will always be a ABpBinder object in this case (and these objects compose rather than inherit IBinder). This composition is required since binder objects may be are created externally to libbinder_ndk.",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 51
+      },
+      "revId": "9a81f5b101dc66e0b74891b4df3f2bf38ebc7fa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3321b23c_295fac21",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-13T19:29:44Z",
+      "side": 1,
+      "message": "making this AIBinder_DeathRecipient and TransferDeathRecipient not inherit anything is also possible, but it wouldn\u0027t remove the need for having the prune function, and also, mDeathRecipients would have to be iterated over in binderDied.",
+      "range": {
+        "startLine": 131,
+        "startChar": 33,
+        "endLine": 131,
+        "endChar": 51
+      },
+      "revId": "9a81f5b101dc66e0b74891b4df3f2bf38ebc7fa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
