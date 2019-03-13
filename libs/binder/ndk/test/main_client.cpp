@@ -90,6 +90,10 @@ TEST(NdkBinder, DeathRecipient) {
     EXPECT_TRUE(deathCv.wait_for(lock, 1s, [&] { return deathRecieved; }));
     EXPECT_TRUE(deathRecieved);
 
+    // This checks that the entry has been deleted.
+    EXPECT_EQ(STATUS_NAME_NOT_FOUND,
+              AIBinder_unlinkToDeath(binder, recipient, static_cast<void*>(&onDeath)));
+
     AIBinder_DeathRecipient_delete(recipient);
     AIBinder_decStrong(binder);
 }
