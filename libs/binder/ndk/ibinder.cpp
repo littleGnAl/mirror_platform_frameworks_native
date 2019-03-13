@@ -269,7 +269,6 @@ void AIBinder_DeathRecipient::TransferDeathRecipient::binderDied(const wp<IBinde
     CHECK(who == mWho);
 
     mOnDied(mCookie);
-    mWho = nullptr;
 }
 
 AIBinder_DeathRecipient::AIBinder_DeathRecipient(AIBinder_DeathRecipient_onBinderDied onDied)

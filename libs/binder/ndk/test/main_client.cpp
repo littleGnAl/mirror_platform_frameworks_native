@@ -90,6 +90,11 @@ TEST(NdkBinder, DeathRecipient) {
     EXPECT_TRUE(deathCv.wait_for(lock, 1s, [&] { return deathRecieved; }));
     EXPECT_TRUE(deathRecieved);
 
+    // This isn't necessary since we're deleting the death recipient later, but it's
+    // expected that this will return dead object.
+    EXPECT_EQ(STATUS_DEAD_OBJECT,
+              AIBinder_unlinkToDeath(binder, recipient, static_cast<void*>(&onDeath)));
+
     AIBinder_DeathRecipient_delete(recipient);
     AIBinder_decStrong(binder);
 }
