@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f99d9404_3cfe79f8",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-03-13T10:29:31Z",
+      "side": 1,
+      "message": "So that it looks more like a function, but I don\u0027t have a strong feeling about it. Current approach works for me as well.",
+      "parentUuid": "dfcd79a6_95174ade",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "592e29beeb03c0c36d00887f4f6b555df8cde2bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd2e6cf_231188aa",
         "filename": "cmds/dumpstate/dumpstate.h",
         "patchSetId": 4
