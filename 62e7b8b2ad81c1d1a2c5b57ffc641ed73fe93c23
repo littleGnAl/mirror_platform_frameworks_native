@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afe60ad0_bde738ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-13T18:05:08Z",
+      "side": 1,
+      "message": "this is the thing I am unsure about\n\n\nIf you get a death notification AND you want to keep the death recipient around, then you need to call unlinkToDeath. It\u0027s probably better to just automatically unlink.\n\nI\u0027ll do that here.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "62e7b8b2ad81c1d1a2c5b57ffc641ed73fe93c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
