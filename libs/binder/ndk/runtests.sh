@@ -42,4 +42,4 @@ adb sync data
 run_libbinder_ndk_test
 
 # CTS tests (much more comprehensive, new tests should ideally go here)
-atest android.binder.cts
+#atest android.binder.cts

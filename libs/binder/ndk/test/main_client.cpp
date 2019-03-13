@@ -48,13 +48,30 @@ TEST(NdkBinder, CheckServiceThatDoesExist) {
     AIBinder_decStrong(binder);
 }
 
+static auto millis() {
+    return std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::system_clock::now().time_since_epoch());
+}
+
 TEST(NdkBinder, DoubleNumber) {
     sp<IFoo> foo = IFoo::getService(IFoo::kSomeInstanceName);
     ASSERT_NE(foo, nullptr);
 
-    int32_t out;
-    EXPECT_EQ(STATUS_OK, foo->doubleNumber(1, &out));
-    EXPECT_EQ(2, out);
+    size_t numCalls = 100000;
+    auto start = millis();
+
+    for (size_t i = 0; i < numCalls; i++) {
+        int32_t out;
+        EXPECT_EQ(STATUS_OK, foo->doubleNumber(1, &out));
+        EXPECT_EQ(2, out);
+    }
+
+    auto end = millis();
+    auto delta = end - start;
+
+    std::cout << "Number of calls: " << numCalls << std::endl;
+    std::cout << "Total time in milliseconds: " << delta.count() << std::endl;
+    std::cout << "Time per call in milliseconds: " << delta.count() / (double)numCalls << std::endl;
 }
 
 void LambdaOnDeath(void* cookie) {
