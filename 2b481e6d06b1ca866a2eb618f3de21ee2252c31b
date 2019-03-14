@@ -16,6 +16,24 @@
       "revId": "2b481e6d06b1ca866a2eb618f3de21ee2252c31b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6734daaf_0324a737",
+        "filename": "libs/binder/ndk/ibinder_jni.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-14T06:49:59Z",
+      "side": 1,
+      "message": "As a refactoring, the behavior change is not good. But in this case, to keep the behavior unchanged, the return type should convey the dlsym-failure information (e.g. std::optional), which is somewhat undesirable due to the interface change. I think this minor behavior change doesn\u0027t matter. Thanks.",
+      "parentUuid": "3c2b926d_d04abd1e",
+      "revId": "2b481e6d06b1ca866a2eb618f3de21ee2252c31b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
