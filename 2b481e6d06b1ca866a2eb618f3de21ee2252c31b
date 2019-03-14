@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c2b926d_d04abd1e",
+        "filename": "libs/binder/ndk/ibinder_jni.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-03-14T05:27:05Z",
+      "side": 1,
+      "message": "If dlsym to ibinderForJavaObject fails, compared to the previous version which will return before this statement, this function will continue running with ibinder \u003d\u003d nullptr, resulting in emitting error message that hasn\u0027t existed.\n\nhttps://android.googlesource.com/platform/frameworks/native/+/1f69a63dda1306f046c3b6c3ddb29770979944c7/libs/binder/ndk/ibinder.cpp#415\n\nDoesn\u0027t it matter?",
+      "revId": "2b481e6d06b1ca866a2eb618f3de21ee2252c31b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
