@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83e6e17c_b00ae4ca",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-03-15T15:52:08Z",
+      "side": 1,
+      "message": "just to make sure I understand correctly, the race you\u0027re fixing is:\n\n1) User calls AIBinder_DeathRecipient_new(func_ptr)\n2) We create AIBinder_DeathRecipient, store func_ptr in mOnDied\n3) User calls AIBinder_linkToDeath(..., rt, cookie)\n4) We create a TDR, and store a const ref to the mOnDied in the AIBinder_DeathRecipient\n5) Later, user calls AIBinder_DeathRecipient_delete()\n6) This will cause the sp\u003c\u003es to the TDR to be freed, as well as the mOnDied object\n7) if mOnDied is freed before any of the TDRs, and a death recipient fires, the TDR will still run, and its internal reference points to a now invalid object.\n\nIf that is the race, LGTM :) I guess you could also explicitly unregister the TDRs in the AIBinder_DeathRecipient destructor, but meh...",
+      "range": {
+        "startLine": 147,
+        "startChar": 51,
+        "endLine": 147,
+        "endChar": 58
+      },
+      "revId": "e88055bb15b9157234fc33aa46516da0b4591da7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
