@@ -22,6 +22,30 @@
       "revId": "e88055bb15b9157234fc33aa46516da0b4591da7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff2befb9_bde5b3f2",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-15T16:32:31Z",
+      "side": 1,
+      "message": "\u003e mOnDied is freed before any of the TDRs\n\nSpecifically, when a death notification is sent, an sp to this TDR will be held for the duration of the onDied call.",
+      "parentUuid": "83e6e17c_b00ae4ca",
+      "range": {
+        "startLine": 147,
+        "startChar": 51,
+        "endLine": 147,
+        "endChar": 58
+      },
+      "revId": "e88055bb15b9157234fc33aa46516da0b4591da7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
