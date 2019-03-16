@@ -268,13 +268,13 @@ void AIBinder_Class_setOnDump(AIBinder_Class* clazz, AIBinder_onDump onDump) {
 void AIBinder_DeathRecipient::TransferDeathRecipient::binderDied(const wp<IBinder>& who) {
     CHECK(who == mWho);
 
-    mOnDied(mCookie);
-
     sp<AIBinder_DeathRecipient> recipient = mParentRecipient.promote();
 
     // proxies are OBJECT_LIFETIME_WEAK and this can never be called on a local object
     sp<AIBinder> internalWho = ABpBinder::lookupOrCreateFromBinder(who.promote());
     CHECK(internalWho != nullptr);
+
+    mOnDied(internalWho.get(), mCookie);
 
     // if the AIBinder_DeathRecipient hangs around, it still has a strong pointer to 'this'
     if (recipient != nullptr && internalWho != nullptr) {

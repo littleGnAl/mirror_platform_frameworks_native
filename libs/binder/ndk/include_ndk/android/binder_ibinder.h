@@ -486,9 +486,13 @@ __attribute__((warn_unused_result)) AIBinder* AIBinder_Weak_promote(AIBinder_Wea
 /**
  * This function is executed on death receipt. See AIBinder_linkToDeath/AIBinder_unlinkToDeath.
  *
+ * No refcounts of binder are given to the callee.
+ *
+ * \param the binder that dies (dead object).
  * \param cookie the cookie passed to AIBinder_linkToDeath.
  */
-typedef void (*AIBinder_DeathRecipient_onBinderDied)(void* cookie) __INTRODUCED_IN(29);
+typedef void (*AIBinder_DeathRecipient_onBinderDied)(AIBinder* binder, void* cookie)
+        __INTRODUCED_IN(29);
 
 /**
  * Creates a new binder death recipient. This can be attached to multiple different binder objects.

@@ -57,9 +57,10 @@ TEST(NdkBinder, DoubleNumber) {
     EXPECT_EQ(2, out);
 }
 
-void LambdaOnDeath(void* cookie) {
-    auto onDeath = static_cast<std::function<void(void)>*>(cookie);
-    (*onDeath)();
+// just for this test, the lambda must be kept alive for the duration of the death recipient
+void LambdaOnDeath(AIBinder* binder, void* cookie) {
+    auto onDeath = static_cast<std::function<void(AIBinder*)>*>(cookie);
+    (*onDeath)(binder);
 };
 TEST(NdkBinder, DeathRecipient) {
     using namespace std::chrono_literals;
@@ -73,8 +74,11 @@ TEST(NdkBinder, DeathRecipient) {
     std::condition_variable deathCv;
     bool deathRecieved = false;
 
-    std::function<void(void)> onDeath = [&] {
+    std::function<void(AIBinder*)> onDeath = [&](AIBinder* deathBinder) {
         std::cerr << "Binder died (as requested)." << std::endl;
+
+        EXPECT_EQ(binder, deathBinder);
+
         deathRecieved = true;
         deathCv.notify_one();
     };
@@ -108,8 +112,8 @@ TEST(NdkBinder, RetrieveNonNdkService) {
     AIBinder_decStrong(binder);
 }
 
-void OnBinderDeath(void* cookie) {
-    LOG(ERROR) << "BINDER DIED. COOKIE: " << cookie;
+void OnBinderDeath(AIBinder* binder, void* cookie) {
+    LOG(ERROR) << "BINDER DIED. COOKIE: " << binder << " " << cookie;
 }
 
 TEST(NdkBinder, LinkToDeath) {
