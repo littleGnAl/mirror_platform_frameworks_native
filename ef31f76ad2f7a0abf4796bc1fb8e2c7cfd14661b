@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1d6c071_1cc12de3",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-18T21:33:11Z",
+      "side": 1,
+      "message": "put here to try to retain order of declarations as well",
+      "revId": "ef31f76ad2f7a0abf4796bc1fb8e2c7cfd14661b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215124e2_97448a4c",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-18T21:33:11Z",
+      "side": 1,
+      "message": "since we have this now, consider calling it here as well?\n\n(it could be both mException and exceptionToString)",
+      "range": {
+        "startLine": 187,
+        "startChar": 42,
+        "endLine": 187,
+        "endChar": 52
+      },
+      "revId": "ef31f76ad2f7a0abf4796bc1fb8e2c7cfd14661b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ae7cc8_f507d4af",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-18T21:33:11Z",
+      "side": 1,
+      "message": "nit: undefine",
+      "revId": "ef31f76ad2f7a0abf4796bc1fb8e2c7cfd14661b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
