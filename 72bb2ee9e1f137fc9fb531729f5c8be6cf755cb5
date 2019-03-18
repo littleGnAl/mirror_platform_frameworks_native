@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef0dc897_ae9d0b4f",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-18T19:48:16Z",
+      "side": 1,
+      "message": "After talking to maco, realized this is true about BpBinder, not ABpBinder. Will look at fixing this and add an additional test.",
+      "range": {
+        "startLine": 275,
+        "startChar": 19,
+        "endLine": 275,
+        "endChar": 39
+      },
+      "revId": "72bb2ee9e1f137fc9fb531729f5c8be6cf755cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
