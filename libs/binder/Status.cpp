@@ -200,5 +200,24 @@ std::stringstream& operator<< (std::stringstream& stream, const Status& s) {
     return stream;
 }
 
+std::string Status::exceptionToString(int32_t ex_code) {
+    switch (ex_code) {
+        #define EXCEPTION_TO_CASE(EXCEPTION) case EXCEPTION: return #EXCEPTION;
+        EXCEPTION_TO_CASE(EX_NONE)
+        EXCEPTION_TO_CASE(EX_SECURITY)
+        EXCEPTION_TO_CASE(EX_BAD_PARCELABLE)
+        EXCEPTION_TO_CASE(EX_ILLEGAL_ARGUMENT)
+        EXCEPTION_TO_CASE(EX_NULL_POINTER)
+        EXCEPTION_TO_CASE(EX_ILLEGAL_STATE)
+        EXCEPTION_TO_CASE(EX_NETWORK_MAIN_THREAD)
+        EXCEPTION_TO_CASE(EX_UNSUPPORTED_OPERATION)
+        EXCEPTION_TO_CASE(EX_SERVICE_SPECIFIC)
+        EXCEPTION_TO_CASE(EX_PARCELABLE)
+        EXCEPTION_TO_CASE(EX_HAS_REPLY_HEADER)
+        EXCEPTION_TO_CASE(EX_TRANSACTION_FAILED)
+        default: return std::to_string(ex_code);
+        }
+}
+
 }  // namespace binder
 }  // namespace android
