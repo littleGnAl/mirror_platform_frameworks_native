@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae5f52f9_270fe46c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-03-18T19:18:08Z",
+      "side": 1,
+      "message": "perhaps clarify: when it remains for use with other AIBinder objects.",
+      "range": {
+        "startLine": 304,
+        "startChar": 70,
+        "endLine": 304,
+        "endChar": 77
+      },
+      "revId": "b2bbefd192ac1c41ca293d3755755d21e1f8cd8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
