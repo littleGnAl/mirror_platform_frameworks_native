@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0a5a5af_a1f8c921",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-03-19T12:10:29Z",
+      "side": 1,
+      "message": "I think this code is correct, but I don\u0027t understand how who.promote() could fail; to be able to send a death notification, at the very least there still needs to be a weak ref, which means the object is currently alive, right?",
+      "revId": "64127ca21d37ebf5d812cd026a1a8084a2fa39df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
