@@ -16,6 +16,24 @@
       "revId": "64127ca21d37ebf5d812cd026a1a8084a2fa39df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d7346f_878dda77",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-19T17:28:10Z",
+      "side": 1,
+      "message": "The object technically still exists, but BpBinder onIncStrongAttempted consults with the kernel, and so it will refuse to be promoted.\n\nWe could change this in the future, but this CL fixes the issue. Think I should file a bug for the cleanup? I don\u0027t see a strong motivation for it (besides the pruning being gross ish).",
+      "parentUuid": "f0a5a5af_a1f8c921",
+      "revId": "64127ca21d37ebf5d812cd026a1a8084a2fa39df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
