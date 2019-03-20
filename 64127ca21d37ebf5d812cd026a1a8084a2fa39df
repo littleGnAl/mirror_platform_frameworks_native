@@ -34,6 +34,24 @@
       "revId": "64127ca21d37ebf5d812cd026a1a8084a2fa39df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "200c04c0_46ba75fd",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-03-20T07:52:31Z",
+      "side": 1,
+      "message": "Oh right, the object still exists but the promote will fail, makes sense. I think this is fine as is.",
+      "parentUuid": "47d7346f_878dda77",
+      "revId": "64127ca21d37ebf5d812cd026a1a8084a2fa39df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
