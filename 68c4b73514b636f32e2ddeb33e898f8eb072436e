@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fcd938d_57d2bfb5",
+        "filename": "libs/android_runtime_lazy/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T18:29:29Z",
+      "side": 1,
+      "message": "nit: comment about perf/motivation/PDK",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "68c4b73514b636f32e2ddeb33e898f8eb072436e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2072d7c_47d7ad02",
+        "filename": "libs/android_runtime_lazy/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T18:29:29Z",
+      "side": 1,
+      "message": "this should be false since libandroid_runtime is false?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "68c4b73514b636f32e2ddeb33e898f8eb072436e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f9646a_328ae7ed",
+        "filename": "libs/binder/ndk/ibinder_jni.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T18:29:29Z",
+      "side": 1,
+      "message": "any reason not to put this in the namespace? Also I\u0027m a bit worried since it will conflict with the other header.\n\nHow about android_runtime_lazy/android_util_Binder? or similar to ensure no conflicts",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "68c4b73514b636f32e2ddeb33e898f8eb072436e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
