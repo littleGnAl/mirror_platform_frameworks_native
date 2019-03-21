@@ -22,6 +22,30 @@
       "revId": "6d05d7a0e57c75e303968437ffec87be727c5092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32b95702_15cf3a7c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2033,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-21T07:07:42Z",
+      "side": 1,
+      "message": "Yeah, could do. Just not necessary as primary apks should always be accessible to dexoptanalyzer/dex2oat.",
+      "parentUuid": "36ea2312_3bec633b",
+      "range": {
+        "startLine": 2033,
+        "startChar": 4,
+        "endLine": 2033,
+        "endChar": 27
+      },
+      "revId": "6d05d7a0e57c75e303968437ffec87be727c5092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
