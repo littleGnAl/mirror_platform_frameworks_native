@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8af11b4b_47e01fa1",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-21T16:19:44Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 596,
+        "startChar": 100,
+        "endLine": 596,
+        "endChar": 118
+      },
+      "revId": "8685df2a339bd8349a38c3759c00074216db6bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
