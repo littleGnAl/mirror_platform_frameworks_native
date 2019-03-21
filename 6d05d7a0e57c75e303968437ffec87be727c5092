@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36ea2312_3bec633b",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2033,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-21T02:18:02Z",
+      "side": 1,
+      "message": "We could generalize this approach to base/split apks as well. (in another CL :)",
+      "range": {
+        "startLine": 2033,
+        "startChar": 4,
+        "endLine": 2033,
+        "endChar": 27
+      },
+      "revId": "6d05d7a0e57c75e303968437ffec87be727c5092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
