@@ -70,6 +70,30 @@
       "revId": "6d05d7a0e57c75e303968437ffec87be727c5092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0b2122b_364747e4",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2033,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-21T10:40:33Z",
+      "side": 1,
+      "message": "Ah, sorry! Good point, the tools are allowed to read but not open. Ok, then this needs a follow up.",
+      "parentUuid": "ebf3ef2f_398e82ce",
+      "range": {
+        "startLine": 2033,
+        "startChar": 4,
+        "endLine": 2033,
+        "endChar": 27
+      },
+      "revId": "6d05d7a0e57c75e303968437ffec87be727c5092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
