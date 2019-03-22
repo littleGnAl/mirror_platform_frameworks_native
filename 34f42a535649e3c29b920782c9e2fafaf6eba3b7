@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee7b411c_10cff98f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1581,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-22T13:48:54Z",
+      "side": 1,
+      "message": "nit: maybe keep the indentation consistent",
+      "range": {
+        "startLine": 1581,
+        "startChar": 19,
+        "endLine": 1581,
+        "endChar": 30
+      },
+      "revId": "34f42a535649e3c29b920782c9e2fafaf6eba3b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
