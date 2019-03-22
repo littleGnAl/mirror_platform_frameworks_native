@@ -22,6 +22,30 @@
       "revId": "54b62c93ce0aecf635337d0b33ec753120addfbc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4a60e0b_e916c1c6",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-22T19:48:56Z",
+      "side": 1,
+      "message": "Doesn\u0027t really help. If we turn on tidy enforcement, it will break. Bionic calls this __data.",
+      "parentUuid": "e792b61f_463e4e96",
+      "range": {
+        "startLine": 86,
+        "startChar": 29,
+        "endLine": 86,
+        "endChar": 39
+      },
+      "revId": "54b62c93ce0aecf635337d0b33ec753120addfbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
