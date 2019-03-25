@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aeb9d8b5_e017c495",
+        "filename": "libs/android_runtime_lazy/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-25T03:03:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fcd938d_57d2bfb5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "68c4b73514b636f32e2ddeb33e898f8eb072436e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2072d7c_47d7ad02",
         "filename": "libs/android_runtime_lazy/Android.bp",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dc6d98b3_1fd1e517",
+        "filename": "libs/android_runtime_lazy/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-25T03:03:26Z",
+      "side": 1,
+      "message": "libbinder_ndk is vendor_available: true and it depends on this.\n\nYou\u0027re right. This is weird. I think this is a good indication of libbinder_ndk\u0027s vendor_available:true is also a weird thing. How about making libbinder_ndk a LL-NDK? libbinder_ndk is a NDK and vendor_available: true as well. Then why not a LL-NDK?\n\nFor a quick check, I added llndk_library module definision for libbinder_ndk. Then the build and boot succeeded. (I didn\u0027t test the device fully.)",
+      "parentUuid": "f2072d7c_47d7ad02",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "68c4b73514b636f32e2ddeb33e898f8eb072436e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0f9646a_328ae7ed",
         "filename": "libs/binder/ndk/ibinder_jni.cpp",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2019-03-21T18:29:29Z",
       "side": 1,
       "message": "any reason not to put this in the namespace? Also I\u0027m a bit worried since it will conflict with the other header.\n\nHow about android_runtime_lazy/android_util_Binder? or similar to ensure no conflicts",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "68c4b73514b636f32e2ddeb33e898f8eb072436e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9911fc95_6e633e9a",
+        "filename": "libs/binder/ndk/ibinder_jni.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-25T03:03:26Z",
+      "side": 1,
+      "message": "Jiyong suggested me using the same namespace and I agreed with it. This scheme is also used by other *-lazy libraries. (e.g ibnativeloader_lazy and libnativehelper_lazy)\n\nThis could conflict with other headers. But this lib has some weak points such as relying on mangled symbol names. Providing somewhat redundant header with the risk of conflict can be another safety net.",
+      "parentUuid": "f0f9646a_328ae7ed",
       "range": {
         "startLine": 20,
         "startChar": 10,
