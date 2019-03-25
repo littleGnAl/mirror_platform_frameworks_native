@@ -34,6 +34,7 @@
 #include <unistd.h>
 
 #include <chrono>
+#include <fstream>
 #include <functional>
 #include <future>
 #include <memory>
@@ -184,6 +185,19 @@ static bool UnlinkAndLogOnError(const std::string& file) {
 }  // namespace
 }  // namespace os
 }  // namespace android
+
+namespace {
+
+static bool IsFileEmpty(const std::string& file_path) {
+    std::ifstream file(file_path, std::ios::binary | std::ios::ate);
+    if(file.bad()) {
+        MYLOGD("Cannot open file: %s\n", file_path.c_str());
+        return true;
+    }
+    return file.tellg() <= 0;
+}
+} // namespace
+
 
 static int RunCommand(const std::string& title, const std::vector<std::string>& fullCommand,
                       const CommandOptions& options = CommandOptions::DEFAULT) {
@@ -2085,7 +2099,7 @@ static void SendBugreportFinishedBroadcast() {
              "--es", "android.intent.extra.DUMPSTATE_LOG", ds.log_path_
         };
         // clang-format on
-        if (ds.options_->do_fb) {
+        if (ds.options_->do_fb && !IsFileEmpty(ds.screenshot_path_)) {
             am_args.push_back("--es");
             am_args.push_back("android.intent.extra.SCREENSHOT");
             am_args.push_back(ds.screenshot_path_);
@@ -2161,13 +2175,13 @@ static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOpt
             break;
         case Dumpstate::BugreportMode::BUGREPORT_TELEPHONY:
             options->telephony_only = true;
-            options->do_fb = true;
+            options->do_fb = false;
             options->do_broadcast = true;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_WIFI:
             options->wifi_only = true;
             options->do_zip_file = true;
-            options->do_fb = true;
+            options->do_fb = false;
             options->do_broadcast = true;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_DEFAULT:
