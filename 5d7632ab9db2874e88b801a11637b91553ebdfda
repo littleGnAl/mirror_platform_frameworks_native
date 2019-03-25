@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66d504ad_834e97f1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-25T15:27:28Z",
+      "side": 1,
+      "message": "nit: maybe move to the anonymous namespace on top?",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 55
+      },
+      "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d594febe_87f99286",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2074,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-25T15:27:28Z",
+      "side": 1,
+      "message": "this_file or simply file",
+      "range": {
+        "startLine": 2074,
+        "startChar": 18,
+        "endLine": 2074,
+        "endChar": 26
+      },
+      "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ee3f3e9_3ae3c395",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2079,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-25T15:27:28Z",
+      "side": 1,
+      "message": "don\u0027t you have to seek to the end first? I could be wrong - I\u0027m not familiar with ifstream",
+      "range": {
+        "startLine": 2079,
+        "startChar": 21,
+        "endLine": 2079,
+        "endChar": 26
+      },
+      "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cba155d4_535a09a7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2079,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-25T15:27:28Z",
+      "side": 1,
+      "message": "more idiomatic to say \n\nreturn file.tellg() \u003d\u003d 0;",
+      "range": {
+        "startLine": 2079,
+        "startChar": 4,
+        "endLine": 2079,
+        "endChar": 10
+      },
+      "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
