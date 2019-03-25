@@ -34,6 +34,7 @@
 #include <unistd.h>
 
 #include <chrono>
+#include <fstream>
 #include <functional>
 #include <future>
 #include <memory>
@@ -2069,6 +2070,15 @@ static void FinalizeFile() {
     }
 }
 
+static bool IsFileEmpty(const std::string& file_path) {
+    std::ifstream thisFile(file_path, std::ios::binary | std::ios::ate);
+    if(thisFile.bad()) {
+        MYLOGD("Cannot open file: %s\n", file_path.c_str());
+        return true;
+    }
+    return (thisFile.tellg() > 0) ? false : true;
+}
+
 /* Broadcasts that we are done with the bugreport */
 static void SendBugreportFinishedBroadcast() {
     // TODO(b/111441001): use callback instead of broadcast.
@@ -2085,7 +2095,7 @@ static void SendBugreportFinishedBroadcast() {
              "--es", "android.intent.extra.DUMPSTATE_LOG", ds.log_path_
         };
         // clang-format on
-        if (ds.options_->do_fb) {
+        if (ds.options_->do_fb && !IsFileEmpty(ds.screenshot_path_)) {
             am_args.push_back("--es");
             am_args.push_back("android.intent.extra.SCREENSHOT");
             am_args.push_back(ds.screenshot_path_);
@@ -2161,13 +2171,13 @@ static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOpt
             break;
         case Dumpstate::BugreportMode::BUGREPORT_TELEPHONY:
             options->telephony_only = true;
-            options->do_fb = true;
+            options->do_fb = false;
             options->do_broadcast = true;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_WIFI:
             options->wifi_only = true;
             options->do_zip_file = true;
-            options->do_fb = true;
+            options->do_fb = false;
             options->do_broadcast = true;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_DEFAULT:
