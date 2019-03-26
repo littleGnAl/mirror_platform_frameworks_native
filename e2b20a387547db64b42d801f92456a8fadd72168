@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b2130e39_37e5010d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2019-03-26T16:16:11Z",
+      "side": 1,
+      "message": "that isn\u0027t completely anonymous namespace, will have to call this function as android::os::IsFileEmpty().\nDo we want that?",
+      "parentUuid": "3be39686_74ea7566",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 9
+      },
+      "revId": "e2b20a387547db64b42d801f92456a8fadd72168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d662e19e_386f814c",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e2b20a387547db64b42d801f92456a8fadd72168",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e953cdb_216bd053",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2019-03-26T16:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d662e19e_386f814c",
+      "range": {
+        "startLine": 194,
+        "startChar": 13,
+        "endLine": 194,
+        "endChar": 14
+      },
+      "revId": "e2b20a387547db64b42d801f92456a8fadd72168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
