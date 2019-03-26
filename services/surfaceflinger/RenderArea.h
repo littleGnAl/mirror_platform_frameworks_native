@@ -60,7 +60,8 @@ public:
     virtual Rect getSourceCrop() const = 0;
 
     // Returns the rotation of the source crop and the layers.
-    Transform::orientation_flags getRotationFlags() const { return mRotationFlags; };
+    Transform::orientation_flags getRotationFlags() const {
+        return mCaptureFill == CaptureFill::CLEAR ? Transform::ROT_0 : mRotationFlags; };
 
     // Returns the size of the physical render area.
     int getReqWidth() const { return mReqWidth; };
