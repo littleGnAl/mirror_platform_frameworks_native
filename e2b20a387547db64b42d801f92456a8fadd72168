@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "85c16dfe_8cea2999",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-26T17:06:21Z",
+      "side": 1,
+      "message": "The problem is the rest of the code is not in android::os yet. That\u0027s a pretty big refactoring but once that\u0027s done we would be able to get rid of the extra qualifiers and refer to the function name directly.\n\nIn the meantime having 2 unnamed namespaces does not seem like a good idea..",
+      "parentUuid": "b2130e39_37e5010d",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 9
+      },
+      "revId": "e2b20a387547db64b42d801f92456a8fadd72168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d662e19e_386f814c",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
