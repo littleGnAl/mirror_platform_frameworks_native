@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "7fac8c93_78b24c73",
+        "filename": "libs/android_runtime_lazy/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-26T04:44:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "45ffa762_555fd347",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "68c4b73514b636f32e2ddeb33e898f8eb072436e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f9646a_328ae7ed",
         "filename": "libs/binder/ndk/ibinder_jni.cpp",
         "patchSetId": 8
@@ -164,6 +188,30 @@
       "revId": "68c4b73514b636f32e2ddeb33e898f8eb072436e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "434c88fb_cd19814d",
+        "filename": "libs/binder/ndk/ibinder_jni.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-26T04:44:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9911fc95_6e633e9a",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "68c4b73514b636f32e2ddeb33e898f8eb072436e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
