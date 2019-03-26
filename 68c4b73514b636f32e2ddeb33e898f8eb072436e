@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "45ffa762_555fd347",
+        "filename": "libs/android_runtime_lazy/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-26T02:29:56Z",
+      "side": 1,
+      "message": "Hmmm, I think we don\u0027t need to make libbinder_ndk ll-ndk either (at least it probably shouldn\u0027t be in Q). We could fork the library. I guess this current CL means that if it\u0027s used in vendor, you can never actually get those functions. I\u0027m fine with this for simplicity.",
+      "parentUuid": "dc6d98b3_1fd1e517",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "68c4b73514b636f32e2ddeb33e898f8eb072436e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f9646a_328ae7ed",
         "filename": "libs/binder/ndk/ibinder_jni.cpp",
         "patchSetId": 8

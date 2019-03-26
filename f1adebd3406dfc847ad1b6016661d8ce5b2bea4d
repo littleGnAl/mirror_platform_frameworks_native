@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3a49d5f_42adca23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-26T02:29:56Z",
+      "side": 1,
+      "message": "Also:\natest android.binder.cts",
+      "revId": "f1adebd3406dfc847ad1b6016661d8ce5b2bea4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
