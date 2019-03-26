@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5736ef89_cf0dfbe9",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2019-03-26T10:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66d504ad_834e97f1",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 55
+      },
+      "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d594febe_87f99286",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ad79cd8_8e4c2eab",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2074,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2019-03-26T10:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d594febe_87f99286",
+      "range": {
+        "startLine": 2074,
+        "startChar": 18,
+        "endLine": 2074,
+        "endChar": 26
+      },
+      "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "079c1ba9_68c84e01",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2079,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2019-03-26T10:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cba155d4_535a09a7",
+      "range": {
+        "startLine": 2079,
+        "startChar": 4,
+        "endLine": 2079,
+        "endChar": 10
+      },
+      "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0591b0ec_0477d977",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2079,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2019-03-26T10:41:33Z",
+      "side": 1,
+      "message": "std::ios::ate on the above line positions the cursor \"at the end\" (ate) of file.",
+      "parentUuid": "7ee3f3e9_3ae3c395",
+      "range": {
+        "startLine": 2079,
+        "startChar": 21,
+        "endLine": 2079,
+        "endChar": 26
+      },
+      "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3338fef_9f65c947",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6193c9fd_951895fb",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2174,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2019-03-26T10:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3338fef_9f65c947",
+      "range": {
+        "startLine": 2174,
+        "startChar": 12,
+        "endLine": 2174,
+        "endChar": 35
+      },
+      "revId": "5d7632ab9db2874e88b801a11637b91553ebdfda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
