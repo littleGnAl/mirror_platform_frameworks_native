@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fc024ae0_fbe4f42f",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-26T04:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2810709_154510ae",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49049229_be2da4bb",
         "filename": "libs/jni_lazy/Android.bp",
         "patchSetId": 5
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "41b1a679_69041acb",
+        "filename": "libs/jni_lazy/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-26T04:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "666a4f9b_7ab50a04",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2645cd09_b238d1d7",
         "filename": "libs/jni_lazy/Android.bp",
         "patchSetId": 5
@@ -116,6 +164,30 @@
       "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6239e86_1cdb33ef",
+        "filename": "libs/jni_lazy/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-26T04:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2645cd09_b238d1d7",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +235,30 @@
       "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8016f5bc_73028eba",
+        "filename": "libs/jni_lazy/include/jni_lazy.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-03-26T04:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf2ad839_dbbe0928",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "789fe862c1386589ef309b6f3dbe978dd02b5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
