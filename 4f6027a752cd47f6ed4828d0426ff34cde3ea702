@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee24716b_7daf2b53",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-03-26T13:29:28Z",
+      "side": 1,
+      "message": "Since AddArg() takes a const std::string\u0026, I think this is slightly inefficient, creating a temporary std::string from our c_str() result.  It makes complete sense why this code was written this way, since it\u0027s just copying the style from the line above.\n\nI\u0027ve put up a small follow-up CL to get rid of the unnecessary c_str() calls in this file: https://android-review.googlesource.com/c/platform/frameworks/native/+/932128",
+      "revId": "4f6027a752cd47f6ed4828d0426ff34cde3ea702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
