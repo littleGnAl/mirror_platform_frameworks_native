@@ -22,6 +22,7 @@
 #include <utils/BitSet.h>
 
 namespace android {
+#define NON_ZERO_DELTA (0.000000000001f)
 
 class VelocityTrackerStrategy;
 
@@ -66,7 +67,10 @@ public:
     VelocityTracker(const char* strategy = NULL);
 
     ~VelocityTracker();
-
+    //Check for floats that are close enough to zero.
+    inline static bool isZero(float value) {
+        return (value >= -NON_ZERO_DELTA) && (value <= NON_ZERO_DELTA);
+    }
     // Resets the velocity tracker state.
     void clear();
 
