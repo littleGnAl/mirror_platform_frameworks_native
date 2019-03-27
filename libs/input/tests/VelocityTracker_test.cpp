@@ -107,6 +107,35 @@ MotionEvent* createSimpleMotionEvent(const Position* positions, size_t numSample
     return event;
 }
 
+MotionEvent* createSimpleMotionDownEvent(const Position* positions, size_t numSamples) {
+    MotionEvent* event = new MotionEvent();
+    PointerCoords coords;
+    PointerProperties properties[1];
+      
+    properties[0].id = DEFAULT_POINTER_ID;
+    properties[0].toolType = AMOTION_EVENT_TOOL_TYPE_FINGER;
+    event->initialize(0, AINPUT_SOURCE_TOUCHSCREEN, AMOTION_EVENT_ACTION_POINTER_DOWN,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, positions[0].time, 1, properties, &coords);
+        
+    for (size_t i = 1; i < numSamples; i++) {
+            coords.setAxisValue(AMOTION_EVENT_AXIS_X, positions[i].x);
+            coords.setAxisValue(AMOTION_EVENT_AXIS_Y, positions[i].y);
+            event->addSample(positions[i].time, &coords);
+        
+    }
+    return event;
+}
+
+static void computeAndCheckVelocityLsq2(const Position* positions, size_t numSamples) {
+    VelocityTracker vt(nullptr);
+    float Vx0,Vy0;
+     
+    MotionEvent* event = createSimpleMotionDownEvent(positions, numSamples);
+    vt.addMovement(event);
+    vt.getVelocity(0,&Vx0,&Vy0);
+ 
+}
+
 static void computeAndCheckVelocity(const Position* positions, size_t numSamples,
             int32_t axis, float targetVelocity) {
     VelocityTracker vt(nullptr);
@@ -158,6 +187,19 @@ TEST_F(VelocityTrackerTest, DISABLED_ThreePointsPositiveVelocityTest) {
     };
     size_t count = sizeof(values) / sizeof(Position);
     computeAndCheckVelocity(values, count, AMOTION_EVENT_AXIS_X, 1600);
+}
+
+TEST_F(VelocityTrackerTest, solveUnweightedLeastSquaresDeg2Test) {
+    Position values[] = {
+           { 869082459000, 188.738, 612.521  },
+           { 869082459000, 188.738, 612.521  },
+          // { 869082459000, 188.738, 612.521   },//denominator is 0 return
+           { 869092680000, 188.738, 612.521  },//denominator isNearZero,a is too large numerator=-0.00000000000008526513,denominator=-0.00000000000000000011,a=786432.000000
+       
+    };
+    size_t count = sizeof(values) / sizeof(Position);
+    computeAndCheckVelocityLsq2(values,count);
+ 
 }
 
 TEST_F(VelocityTrackerTest, ThreePointsZeroVelocityTest) {
