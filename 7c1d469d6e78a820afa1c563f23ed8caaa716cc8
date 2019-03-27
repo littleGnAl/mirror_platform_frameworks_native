@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4749eff1_9a38e9d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-03-27T21:38:17Z",
+      "side": 1,
+      "message": "Please format this properly (short title, then longer message after a new line). Please refer to other CLs in aosp for example.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "7c1d469d6e78a820afa1c563f23ed8caaa716cc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f707f68_24ccf342",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-03-27T21:38:17Z",
+      "side": 1,
+      "message": "I tried this, and could not reproduce. Can you please share the steps on how to reproduce this on a pixel device?",
+      "range": {
+        "startLine": 7,
+        "startChar": 61,
+        "endLine": 7,
+        "endChar": 99
+      },
+      "revId": "7c1d469d6e78a820afa1c563f23ed8caaa716cc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "432acab2_52f5934c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-03-27T21:38:17Z",
+      "side": 1,
+      "message": "Please file a bug in the issue tracker and provide a bug number here.\nExample:\n\nBug: 12345678\nTest: atest VelocityTracker_test",
+      "revId": "7c1d469d6e78a820afa1c563f23ed8caaa716cc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f73b1d4f_96d78377",
+        "filename": "include/input/VelocityTracker.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-03-27T21:38:17Z",
+      "side": 1,
+      "message": "Looks like all changes in this file can be moved into the .cpp file",
+      "revId": "7c1d469d6e78a820afa1c563f23ed8caaa716cc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7f7bf1_46db39d7",
+        "filename": "include/input/VelocityTracker.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-03-27T21:38:17Z",
+      "side": 1,
+      "message": "How did you come up with this value? Can you use something like std::numeric_limits\u003cfloat\u003e:min() ?",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "7c1d469d6e78a820afa1c563f23ed8caaa716cc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d799b9_56682768",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-03-27T21:38:17Z",
+      "side": 1,
+      "message": "Please add a test for this in VelocityTracker_test.cpp",
+      "range": {
+        "startLine": 569,
+        "startChar": 43,
+        "endLine": 569,
+        "endChar": 74
+      },
+      "revId": "7c1d469d6e78a820afa1c563f23ed8caaa716cc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d93d2f18_b06148ad",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-03-27T21:38:17Z",
+      "side": 1,
+      "message": "isNearZero?",
+      "range": {
+        "startLine": 599,
+        "startChar": 29,
+        "endLine": 599,
+        "endChar": 35
+      },
+      "revId": "7c1d469d6e78a820afa1c563f23ed8caaa716cc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
