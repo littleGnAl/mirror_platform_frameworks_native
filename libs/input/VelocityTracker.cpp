@@ -596,7 +596,7 @@ static std::optional<std::array<float, 3>> solveUnweightedLeastSquaresDeg2(
     float Sx2x2 = sxi4 - sxi2*sxi2 / count;
 
     float denominator = Sxx*Sx2x2 - Sxx2*Sxx2;
-    if (denominator == 0) {
+        if (VelocityTracker::isZero(denominator)) {
         ALOGW("division by 0 when computing velocity, Sxx=%f, Sx2x2=%f, Sxx2=%f", Sxx, Sx2x2, Sxx2);
         return std::nullopt;
     }
