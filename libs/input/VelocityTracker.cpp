@@ -37,6 +37,9 @@
 
 namespace android {
 
+//empirical value
+#define NON_ZERO_DELTA (0.000000000001f)
+
 // Nanoseconds per milliseconds.
 static const nsecs_t NANOS_PER_MS = 1000000;
 
@@ -46,6 +49,10 @@ static const nsecs_t NANOS_PER_MS = 1000000;
 // velocity after the pointer starts moving again.
 static const nsecs_t ASSUME_POINTER_STOPPED_TIME = 40 * NANOS_PER_MS;
 
+//Check for floats that are close enough to zero.
+static bool isNearZero(float value) {
+    return (value >= -NON_ZERO_DELTA) && (value <= NON_ZERO_DELTA);
+}
 
 static float vectorDot(const float* a, const float* b, uint32_t m) {
     float r = 0;
@@ -596,7 +603,7 @@ static std::optional<std::array<float, 3>> solveUnweightedLeastSquaresDeg2(
     float Sx2x2 = sxi4 - sxi2*sxi2 / count;
 
     float denominator = Sxx*Sx2x2 - Sxx2*Sxx2;
-    if (denominator == 0) {
+    if (VelocityTracker::isNearZero(denominator)) {
         ALOGW("division by 0 when computing velocity, Sxx=%f, Sx2x2=%f, Sxx2=%f", Sxx, Sx2x2, Sxx2);
         return std::nullopt;
     }
