@@ -273,6 +273,7 @@ void VelocityTracker::addMovement(nsecs_t eventTime, BitSet32 idBits, const Posi
 
 void VelocityTracker::addMovement(const MotionEvent* event) {
     int32_t actionMasked = event->getActionMasked();
+    bool isPointerDown = false;
 
     switch (actionMasked) {
     case AMOTION_EVENT_ACTION_DOWN:
@@ -287,6 +288,7 @@ void VelocityTracker::addMovement(const MotionEvent* event) {
         BitSet32 downIdBits;
         downIdBits.markBit(event->getPointerId(event->getActionIndex()));
         clearPointers(downIdBits);
+        isPointerDown = true;
         break;
     }
     case AMOTION_EVENT_ACTION_MOVE:
@@ -333,7 +335,11 @@ void VelocityTracker::addMovement(const MotionEvent* event) {
         addMovement(eventTime, idBits, positions);
     }
 
-    eventTime = event->getEventTime();
+    if(isPointerDown){
+        eventTime = event->getDownTime();
+    }else{
+        eventTime = event->getEventTime();
+    }
     for (size_t i = 0; i < pointerCount; i++) {
         uint32_t index = pointerIndex[i];
         positions[index].x = event->getX(i);
