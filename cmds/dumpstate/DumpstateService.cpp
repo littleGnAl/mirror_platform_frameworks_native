@@ -151,8 +151,8 @@ binder::Status DumpstateService::startBugreport(int32_t calling_uid,
         signalErrorAndExit(listener, IDumpstateListener::BUGREPORT_ERROR_INVALID_INPUT);
     }
 
+    // Additional validation on fds as the Binder already checks that invalid fd are not passed
     if (bugreport_fd.get() == -1 || screenshot_fd.get() == -1) {
-        // TODO(b/111441001): screenshot fd should be optional
         MYLOGE("Invalid filedescriptor");
         signalErrorAndExit(listener, IDumpstateListener::BUGREPORT_ERROR_INVALID_INPUT);
     }
