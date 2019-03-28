@@ -115,6 +115,24 @@ int ASharedMemory_setProt(int fd, int prot) __INTRODUCED_IN(26);
 
 #endif // __ANDROID_API__ >= 26
 
+#if __ANDROID_API__ >= 29
+
+/**
+ * Retrieve access flags for shared memory region.
+ *
+ * This function retrieves the protection flags that currently apply for this
+ * shared memory region.
+ *
+ * Available since API level 29.
+ *
+ * \param fd  file descriptor of the shared memory region.
+ * \return a bitmask value combining PROT_READ, PROT_WRITE, PROT_EXEC flags. 0
+ * if fd is not a valid shared memory file descriptor.
+ */
+int ASharedMemory_getProt(int fd) __INTRODUCED_IN(29);
+
+#endif  // __ANDROID_API__  >= 29
+
 #ifdef __cplusplus
 };
 #endif
