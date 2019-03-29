@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f5b8579_5f6de7d6",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-29T17:52:04Z",
+      "side": 1,
+      "message": "on second thoughts it seems like we don\u0027t need this any more, since it\u0027s impossible to get invalid fd here. Right?",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 84
+      },
+      "revId": "60c706367cf43b47f58f58887ceb444c0b85daf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
