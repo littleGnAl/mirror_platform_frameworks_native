@@ -29,6 +29,7 @@
 #include <selinux/android.h>
 
 #include <apexd.h>
+#include <apexd_paths.h>
 
 #include "installd_constants.h"
 #include "otapreopt_utils.h"
