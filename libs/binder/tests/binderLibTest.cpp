@@ -28,6 +28,7 @@
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 
+#include <linux/android/binder.h>
 #include <sys/epoll.h>
 
 #define ARRAY_SIZE(array) (sizeof array / sizeof array[0])
