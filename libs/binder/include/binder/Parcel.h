@@ -21,7 +21,7 @@
 #include <string>
 #include <vector>
 
-#include <linux/android/binder.h>
+#include <private/binder/binder_module.h>
 
 #include <android-base/unique_fd.h>
 #include <cutils/native_handle.h>
