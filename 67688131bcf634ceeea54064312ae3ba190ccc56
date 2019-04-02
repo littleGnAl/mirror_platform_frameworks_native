@@ -22,6 +22,30 @@
       "revId": "67688131bcf634ceeea54064312ae3ba190ccc56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf35989d_f506287f",
+        "filename": "libs/gui/ISurfaceComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-04-02T17:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "950abff3_378d3e33",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 105
+      },
+      "revId": "67688131bcf634ceeea54064312ae3ba190ccc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
