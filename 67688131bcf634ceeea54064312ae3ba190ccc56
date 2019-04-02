@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "950abff3_378d3e33",
+        "filename": "libs/gui/ISurfaceComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2019-04-02T03:20:26Z",
+      "side": 1,
+      "message": "please indent it properly",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 105
+      },
+      "revId": "67688131bcf634ceeea54064312ae3ba190ccc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
