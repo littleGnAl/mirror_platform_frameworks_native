@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfbf5b07_ccd05b1f",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-04-02T22:31:44Z",
+      "side": 1,
+      "message": "any thought on this? I don\u0027t expect anyone to really use both, so I figure it should be fine to just have it like this. No need to introduce \u0027initWithMmapSizeAndDriver\u0027 which starts to get messy.\n\nIf these are needed in the future, we can create a \u0027ProcessStateBuilder\u0027 object with the necessary methods.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 67
+      },
+      "revId": "d03c598d7bc3989b4bccf78cdfdb067ae898c56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
