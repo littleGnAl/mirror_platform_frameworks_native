@@ -27,6 +27,11 @@
 #include <utils/String16.h>
 #include <utils/Vector.h>
 #include <utils/Flattenable.h>
+
+// FIXME: remove define, also remove use of binder.h in header....
+#ifdef __ANDROID_HOST__
+#define __packed __attribute__((__packed__))
+#endif
 #include <linux/android/binder.h>
 
 #include <binder/IInterface.h>

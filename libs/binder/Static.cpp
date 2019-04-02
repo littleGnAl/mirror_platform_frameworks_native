@@ -54,7 +54,8 @@ public:
 protected:
     virtual status_t writeLines(const struct iovec& vec, size_t N)
     {
-        writev(mFD, &vec, N);
+        // FIXME: detect error
+        (void) writev(mFD, &vec, N);
         return NO_ERROR;
     }
 
