@@ -67,7 +67,7 @@
 #define PAD_SIZE_UNSAFE(s) (((s)+3)&~3)
 
 static size_t pad_size(size_t s) {
-    if (s > (SIZE_T_MAX - 3)) {
+    if (s > (std::numeric_limits<size_t>::max() - 3)) {
         abort();
     }
     return PAD_SIZE_UNSAFE(s);
@@ -92,6 +92,13 @@ enum {
     BLOB_ASHMEM_IMMUTABLE = 1,
     BLOB_ASHMEM_MUTABLE = 2,
 };
+
+// FIXME: other solution
+#ifdef __ANDROID_HOST__
+int ashmem_valid(int /*fd*/) {
+    return false;
+}
+#endif
 
 static void acquire_object(const sp<ProcessState>& proc,
     const flat_binder_object& obj, const void* who, size_t* outAshmemSize)

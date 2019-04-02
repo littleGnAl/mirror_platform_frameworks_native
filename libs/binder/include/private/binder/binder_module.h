@@ -23,6 +23,11 @@ namespace android {
 
 /* obtain structures and constants from the kernel header */
 
+// FIXME: remove define
+#ifdef __ANDROID_HOST__
+#define __packed __attribute__((__packed__))
+#endif
+
 #include <sys/ioctl.h>
 #include <linux/android/binder.h>
 

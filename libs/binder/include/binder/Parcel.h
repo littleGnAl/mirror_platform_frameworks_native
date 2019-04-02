@@ -21,6 +21,10 @@
 #include <string>
 #include <vector>
 
+// FIXME: remove define, also remove use of binder.h in header....
+#ifdef __ANDROID_HOST__
+#define __packed __attribute__((__packed__))
+#endif
 #include <linux/android/binder.h>
 
 #include <android-base/unique_fd.h>
