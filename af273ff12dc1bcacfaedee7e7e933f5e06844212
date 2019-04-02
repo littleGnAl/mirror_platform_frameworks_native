@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5758f825_5d35d962",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-04-02T02:34:00Z",
+      "side": 1,
+      "message": "I should clean this up w/ PIMPL/internal parcel headers or similar. Just wanting to see if this would be feasible first (downstream deps) and also waiting to see about 32-bit binder API (sent email).",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "af273ff12dc1bcacfaedee7e7e933f5e06844212",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
