@@ -46,6 +46,30 @@
       "revId": "d03c598d7bc3989b4bccf78cdfdb067ae898c56a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8a0dfea_59c66422",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-04-03T18:43:43Z",
+      "side": 1,
+      "message": "I don\u0027t think so either. However:\n\nI am happy to remove the function \u0027initWithMmapSize\u0027 if you think it would be problematic (while keeping the rest of the internals the same). What do you think?\n\nSimilarly, struggling with whether I should add initWithDriver to libhwbinder. Seems also like a recipe for disaster.",
+      "parentUuid": "680bb14e_ee710e7f",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 67
+      },
+      "revId": "d03c598d7bc3989b4bccf78cdfdb067ae898c56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
