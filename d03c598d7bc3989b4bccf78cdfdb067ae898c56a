@@ -22,6 +22,30 @@
       "revId": "d03c598d7bc3989b4bccf78cdfdb067ae898c56a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "680bb14e_ee710e7f",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-04-03T08:09:14Z",
+      "side": 1,
+      "message": "Agree, this seems fine with me. I don\u0027t think this should really be used by framework code anyway.",
+      "parentUuid": "bfbf5b07_ccd05b1f",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 67
+      },
+      "revId": "d03c598d7bc3989b4bccf78cdfdb067ae898c56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
