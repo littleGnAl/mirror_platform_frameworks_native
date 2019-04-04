@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a72c6c0_c4fa4ca3",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-04T15:09:40Z",
+      "side": 1,
+      "message": "static constexpr float TOLERANCE \u003d",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "4a4f42d7284b86e62880e967da837b54e68e0837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34aacc73_bcf3696d",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-04T15:09:40Z",
+      "side": 1,
+      "message": "Too many zeros to keep track of. Let\u0027s use 1E-12 or whatever the appropriate exponent should be.",
+      "range": {
+        "startLine": 41,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "4a4f42d7284b86e62880e967da837b54e68e0837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d4f885_153b7f47",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-04T15:09:40Z",
+      "side": 1,
+      "message": "isNearZero is now a static function. Does this compile?",
+      "range": {
+        "startLine": 606,
+        "startChar": 9,
+        "endLine": 606,
+        "endChar": 23
+      },
+      "revId": "4a4f42d7284b86e62880e967da837b54e68e0837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "036d3d7e_e0753886",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-04T15:09:40Z",
+      "side": 1,
+      "message": "I think that division by zero here implies that the points are all on one line (or almost on one line, based on the tolerance), and therefore we can\u0027t find a unique solution for this quadratic fit. Let\u0027s remove this log and instead replace it with a comment:\n\nif (isNearZero(denominator)) {\n    // If denominator is equal or close to zero, the points all lie on one line (or close to it).\n    // As a result, a unique solution cannot be found.\n    return std::nullopt;\n}",
+      "range": {
+        "startLine": 607,
+        "startChar": 8,
+        "endLine": 607,
+        "endChar": 98
+      },
+      "revId": "4a4f42d7284b86e62880e967da837b54e68e0837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc89ffe8_63f856d5",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-04T15:09:40Z",
+      "side": 1,
+      "message": "Let\u0027s fix createSimpleMotionEvent to work with multiple pointers instead.",
+      "range": {
+        "startLine": 110,
+        "startChar": 14,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "4a4f42d7284b86e62880e967da837b54e68e0837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cbce55e_da3cb302",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-04T15:09:40Z",
+      "side": 1,
+      "message": "This timestamp matches the previous timestamp. This isn\u0027t really a valid single-pointer event stream. While the provided patch is valid, I believe that root cause, at least on pixels, is that POINTER_DOWN and POINTER_UP events are not handled properly in addMovement for VelocityTracker. This is because events with POINTER_DOWN or POINTER_UP don\u0027t really add any new position values for the existing pointers.",
+      "range": {
+        "startLine": 194,
+        "startChar": 13,
+        "endLine": 194,
+        "endChar": 25
+      },
+      "revId": "4a4f42d7284b86e62880e967da837b54e68e0837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
