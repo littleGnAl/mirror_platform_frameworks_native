@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc51834c_c4d455c3",
+        "filename": "libs/dumputils/dump_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-04-05T09:20:00Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "9e43a45a6bb5e1b3f4a102ff044ee63fc9cd5457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
