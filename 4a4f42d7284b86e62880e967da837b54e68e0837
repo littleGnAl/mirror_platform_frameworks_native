@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "9440010d_d1a8f442",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-05T21:38:35Z",
+      "side": 1,
+      "message": "I think the root-cause is actually here. These 3 lines do nothing. Instead, they should only add the data of the pointer that just went down, and *not* add any data from the other pointers that were already there.",
+      "range": {
+        "startLine": 294,
+        "startChar": 8,
+        "endLine": 296,
+        "endChar": 34
+      },
+      "revId": "4a4f42d7284b86e62880e967da837b54e68e0837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08d4f885_153b7f47",
         "filename": "libs/input/VelocityTracker.cpp",
         "patchSetId": 6
