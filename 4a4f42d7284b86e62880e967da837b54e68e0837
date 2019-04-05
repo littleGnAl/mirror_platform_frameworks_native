@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "04594c80_3b295734",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-05T21:52:04Z",
+      "side": 1,
+      "message": "Sorry, I just re-reviewed the equations in https://www.azdhs.gov/documents/preparedness/state-laboratory/lab-licensure-certification/technical-resources/calibration-training/12-quadratic-least-squares-regression-calib.pdf  and what I said above is wrong.\n\nIf the denominator is zero, it simply means that non-unique values of x were provided. This shouldn\u0027t ever happen in a well-formed data set.\nSo we should really fix the root cause here in addMovement and add a test for touch streams with multiple pointers, instead of adding this workaround here.",
+      "parentUuid": "036d3d7e_e0753886",
+      "range": {
+        "startLine": 607,
+        "startChar": 8,
+        "endLine": 607,
+        "endChar": 98
+      },
+      "revId": "4a4f42d7284b86e62880e967da837b54e68e0837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc89ffe8_63f856d5",
         "filename": "libs/input/tests/VelocityTracker_test.cpp",
         "patchSetId": 6
