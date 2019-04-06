@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c706d9ef_70454801",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-04-06T03:00:56Z",
+      "side": 1,
+      "message": "any thoughts here maco? size of Parcel is frozen, so I can essentially only change the type of the mObjects member.\n\noptions:\n- duplicate the kernel ifdef here for 32/64-bit binder kernel differences in binder_size_t\n- change it to void* (and update all of the functions to cast it to binder_size_t)\n\nEither of these appeal to you?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 26
+      },
+      "revId": "3994db14ac777a42b620f1d3b853687943fedb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
