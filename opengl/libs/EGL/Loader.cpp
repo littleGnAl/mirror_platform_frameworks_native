@@ -317,6 +317,11 @@ void Loader::init_api(void* dso,
     }
 }
 
+static const char* HAL_SUBNAME_KEY_PROPERTIES[2] = {
+    "ro.hardware.egl",
+    "ro.board.platform",
+};
+
 static void* load_system_driver(const char* kind) {
     ATRACE_CALL();
     class MatchFile {
@@ -353,7 +358,6 @@ static void* load_system_driver(const char* kind) {
                     break;
             }
 
-            std::string pattern = std::string("lib") + kind;
             const char* const searchPaths[] = {
 #if defined(__LP64__)
                     "/vendor/lib64/egl",
@@ -367,8 +371,34 @@ static void* load_system_driver(const char* kind) {
             // first, we search for the exact name of the GLES userspace
             // driver in both locations.
             // i.e.:
+            //      libGLES_${prop}.so, or:
+            //      libEGL_${prop}.so, libGLESv1_CM_${prop}.so, libGLESv2_${prop}.so
+            bool hal_subname_key_property_set = false;
+            char prop[PROPERTY_VALUE_MAX + 1];
+            for (auto key : HAL_SUBNAME_KEY_PROPERTIES) {
+              if (property_get(key, prop, nullptr) > 0) {
+                hal_subname_key_property_set = true;
+                std::string pattern =
+                    std::string("lib") + kind + "_" + prop;
+                for (size_t i=0 ; i<NELEM(searchPaths) ; i++) {
+                  if (find(result, pattern, searchPaths[i], true)) {
+                    return result;
+                  }
+                }
+              }
+            }
+            if (hal_subname_key_property_set) {
+              result.clear();
+              return result;
+            }
+
+            // second, we search for the exact name of the GLES userspace
+            // driver in both locations.
+            // i.e.:
             //      libGLES.so, or:
             //      libEGL.so, libGLESv1_CM.so, libGLESv2.so
+
+            std::string pattern = std::string("lib") + kind;
 
             for (size_t i=0 ; i<NELEM(searchPaths) ; i++) {
                 if (find(result, pattern, searchPaths[i], true)) {
@@ -454,11 +484,6 @@ static void* load_system_driver(const char* kind) {
 
     return dso;
 }
-
-static const char* HAL_SUBNAME_KEY_PROPERTIES[2] = {
-    "ro.hardware.egl",
-    "ro.board.platform",
-};
 
 static void* load_updated_driver(const char* kind, android_namespace_t* ns) {
     ATRACE_CALL();
