@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "bd618819_838a6d3f",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-08T23:05:15Z",
+      "side": 1,
+      "message": "Correcting the above: the lines above clear pointer data for the new pointer id that just went down, so we still need these. Maybe we can just change implementation of the addMovement instead.",
+      "parentUuid": "9440010d_d1a8f442",
+      "range": {
+        "startLine": 294,
+        "startChar": 8,
+        "endLine": 296,
+        "endChar": 34
+      },
+      "revId": "4a4f42d7284b86e62880e967da837b54e68e0837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08d4f885_153b7f47",
         "filename": "libs/input/VelocityTracker.cpp",
         "patchSetId": 6

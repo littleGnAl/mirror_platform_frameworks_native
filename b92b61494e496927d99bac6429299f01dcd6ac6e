@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82cb26bd_2d19fa56",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-08T23:05:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right. If you have an event with ACTION_MOVE, then an event with ACTION_POINTER_DOWN, and then some more events with ACTION_MOVE, wouldn\u0027t this cause the coordinates to jump back to downtime when action_pointer_down is received?",
+      "range": {
+        "startLine": 338,
+        "startChar": 4,
+        "endLine": 342,
+        "endChar": 5
+      },
+      "revId": "b92b61494e496927d99bac6429299f01dcd6ac6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76af4319_6df50139",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-08T23:05:15Z",
+      "side": 1,
+      "message": "Maybe inside addMovement, we can add or update the current coordinates. In the example stream in https://buganizer.corp.google.com/issues/129797752#comment2 we are seeing:\n\nAction       Pointer 0            Pointer 1         Pointer 2\nDOWN         1063, 1128               -                 -\nPOINTER_DOWN 1063, 1128            682,1318             -\nPOINTER_DOWN 1063, 1128            682,1318          397,1747\nPOINTER_UP   1063, 1128            682,1318          397,1747\nPOINTER_UP   1063, 1128               -              397,1747\nUP           1063, 1128               -                -\n\n\nAt the end of processing the second POINTER_DOWN, we should have the following data stored:\nEventtime       Pointer 0            Pointer 1         Pointer 2\n-40 ms          1063, 1128            682,1318          397,1747\n\nInstead of:\nEventtime       Pointer 0            Pointer 1         Pointer 2\n-40 ms          1063, 1128            0                    0\n-40 ms          1063, 1128            682,1318             0\n-40 ms          1063, 1128            682,1318          397,1747",
+      "range": {
+        "startLine": 348,
+        "startChar": 4,
+        "endLine": 348,
+        "endChar": 46
+      },
+      "revId": "b92b61494e496927d99bac6429299f01dcd6ac6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac1b46b7_fce7caf2",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-08T23:05:15Z",
+      "side": 1,
+      "message": "just fyi, this has been refactored internally to return std::unique_ptr\u003cMotionEvent\u003e instead to prevent the leakage of new from happening. Maybe we should return std::vector\u003cMotionEvent\u003e with a complete and valid touch stream (simulating the example in https://buganizer.corp.google.com/issues/129797752#comment2) with the properly set ACTION_DOWN, ACTION_POINTER_DOWN, POINTER_UP, and UP.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 11
+      },
+      "revId": "b92b61494e496927d99bac6429299f01dcd6ac6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3185387b_20bbd30f",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-08T23:05:15Z",
+      "side": 1,
+      "message": "Following the above, we could call this createMotionEventStream",
+      "range": {
+        "startLine": 110,
+        "startChar": 13,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "b92b61494e496927d99bac6429299f01dcd6ac6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5424a46e_f809846d",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-08T23:05:15Z",
+      "side": 1,
+      "message": "in internal refactor, we changed this to receive std::vector\u003cPosition\u003e, which we could do here as well.",
+      "range": {
+        "startLine": 110,
+        "startChar": 41,
+        "endLine": 110,
+        "endChar": 85
+      },
+      "revId": "b92b61494e496927d99bac6429299f01dcd6ac6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8235de8a_2200c70f",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-08T23:05:15Z",
+      "side": 1,
+      "message": "There is no check being done here. Why do you need this function instead of using computeAndCheckVelocity?",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 39
+      },
+      "revId": "b92b61494e496927d99bac6429299f01dcd6ac6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c1b62b_c4baca5d",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-08T23:05:15Z",
+      "side": 1,
+      "message": "This test currently never fails.\nPlease create a test that fails before the current patch and passes after the current patch.",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 31
+      },
+      "revId": "b92b61494e496927d99bac6429299f01dcd6ac6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
