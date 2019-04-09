@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8e8ad1b_d4278292",
+        "filename": "libs/input/VelocityTracker.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-04-09T21:11:20Z",
+      "side": 1,
+      "message": "What about a fix like this:\n\nvoid LeastSquaresVelocityTrackerStrategy::addMovement(nsecs_t eventTime, BitSet32 idBits,\n        const VelocityTracker::Position* positions) {\n    if (mMovements[mIndex].eventTime !\u003d eventTime) {\n        // When ACTION_POINTER_DOWN happens, we will first receive ACTION_MOVE with the coordinates\n        // of the existing pointers, and then ACTION_POINTER_DOWN with the coordinates that include\n        // the new pointer. If the eventtimes for both events are identical, just update the data\n        // for this time.\n        mIndex++;\n    }\n    if (mIndex \u003d\u003d HISTORY_SIZE) {\n        mIndex \u003d 0;\n    }\n\n    Movement\u0026 movement \u003d mMovements[mIndex];\n    movement.eventTime \u003d eventTime;\n    movement.idBits \u003d idBits;\n    uint32_t count \u003d idBits.count();\n    for (uint32_t i \u003d 0; i \u003c count; i++) {\n        movement.positions[i] \u003d positions[i];\n    }\n}",
+      "range": {
+        "startLine": 338,
+        "startChar": 4,
+        "endLine": 342,
+        "endChar": 5
+      },
+      "revId": "52c1a3df6c8696f178c260db7078ba59a4402c06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
