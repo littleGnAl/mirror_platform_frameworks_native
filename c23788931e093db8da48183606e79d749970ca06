@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5fb4970_7d4acc09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-04-10T16:23:37Z",
+      "side": 1,
+      "message": "unit tests please?",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "c23788931e093db8da48183606e79d749970ca06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
