@@ -22,6 +22,30 @@
       "revId": "60c706367cf43b47f58f58887ceb444c0b85daf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a455a97_f3f6cdf6",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1404253
+      },
+      "writtenOn": "2019-04-10T15:27:43Z",
+      "side": 1,
+      "message": "true, it\u0027s not possible to get invalid fd here. Added a comment for the same.",
+      "parentUuid": "3f5b8579_5f6de7d6",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 84
+      },
+      "revId": "60c706367cf43b47f58f58887ceb444c0b85daf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
