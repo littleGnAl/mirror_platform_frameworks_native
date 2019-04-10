@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7affd47_6428d88b",
+        "filename": "cmds/dumpstate/DumpstateService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-04-10T15:48:28Z",
+      "side": 1,
+      "message": "nit: the way this is phrased, it implies the highlighted part is the reason we are doing the additional validation. However we are doing additional validation despite the highlighted part, right? \n\nMaybe rephrase to\n\"Binder should validate the fds, but checking just to be sure\" or something like that?\n\nOr we could remove the comment altogether, because now that I think about it, technically it\u0027s possible to call from the same process as well.",
+      "range": {
+        "startLine": 154,
+        "startChar": 36,
+        "endLine": 154,
+        "endChar": 95
+      },
+      "revId": "6ee366d03f2195efd05d30a9db731469b706d795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
