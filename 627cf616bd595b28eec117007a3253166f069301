@@ -34,6 +34,24 @@
       "revId": "627cf616bd595b28eec117007a3253166f069301",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e591868_5168b0b0",
+        "filename": "vulkan/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-13T00:56:01Z",
+      "side": 1,
+      "message": "Chris, good luck on SwiftShader!",
+      "parentUuid": "325991e6_0ae01ead",
+      "revId": "627cf616bd595b28eec117007a3253166f069301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
