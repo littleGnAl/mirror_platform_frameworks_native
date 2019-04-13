@@ -16,6 +16,24 @@
       "revId": "627cf616bd595b28eec117007a3253166f069301",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325991e6_0ae01ead",
+        "filename": "vulkan/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2019-04-13T00:37:53Z",
+      "side": 1,
+      "message": "I think that\u0027s unavoidable if we split the HAL-facing interface from the API module, which is necessary if they\u0027re no longer in the same place in the directory hierarchy.\n\nI guess I could create a module that just re-exports both this and vulkan_headers for backwards compatibility. I\u0027m not sure it\u0027s worth it? The break is pretty easy to fix, as vulkan/nulldrv/Android.bp change shows, and I AFAIK we don\u0027t try too hard to preserve compatibility at this level.",
+      "parentUuid": "a30aab2b_04cc5e1a",
+      "revId": "627cf616bd595b28eec117007a3253166f069301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
