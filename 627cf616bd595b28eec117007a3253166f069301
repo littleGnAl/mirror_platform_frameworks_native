@@ -52,6 +52,24 @@
       "revId": "627cf616bd595b28eec117007a3253166f069301",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f75c1764_49c8af33",
+        "filename": "vulkan/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2019-04-13T00:58:40Z",
+      "side": 1,
+      "message": "Yes, I will adjust my swiftshader build slightly to cope with that :).",
+      "parentUuid": "7e591868_5168b0b0",
+      "revId": "627cf616bd595b28eec117007a3253166f069301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
