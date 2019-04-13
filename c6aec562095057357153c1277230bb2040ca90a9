@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25655c47_02ec614b",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2019-04-13T00:17:13Z",
+      "side": 1,
+      "message": "Could you please indent the code properly, discussed with Chris offline, I think we will want to cherry-pick this to qt-dev",
+      "range": {
+        "startLine": 377,
+        "startChar": 12,
+        "endLine": 401,
+        "endChar": 13
+      },
+      "revId": "c6aec562095057357153c1277230bb2040ca90a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
