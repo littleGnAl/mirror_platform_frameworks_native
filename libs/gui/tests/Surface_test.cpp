@@ -1666,4 +1666,69 @@ TEST_F(GetFrameTimestampsTest, PresentUnsupportedNoSync) {
     EXPECT_EQ(-1, outDisplayPresentTime);
 }
 
+bool acquireAndGetAutoRefresh(sp<IGraphicBufferConsumer>& consumer) {
+    BufferItem item;
+    EXPECT_EQ(OK, consumer->acquireBuffer(&item, 0));
+    bool autoRefresh = item.mAutoRefresh;
+    EXPECT_EQ(OK,
+              consumer->releaseBuffer(item.mSlot, item.mFrameNumber, EGL_NO_DISPLAY,
+                                      EGL_NO_SYNC_KHR, Fence::NO_FENCE));
+    return autoRefresh;
+}
+
+TEST_F(SurfaceTest, SharedBufferSlotReset) {
+    sp<IGraphicBufferProducer> producer;
+    sp<IGraphicBufferConsumer> consumer;
+    BufferQueue::createBufferQueue(&producer, &consumer);
+
+    sp<DummyConsumer> dummyConsumer(new DummyConsumer);
+    consumer->consumerConnect(dummyConsumer, false);
+
+    sp<Surface> surface = new Surface(producer);
+    sp<ANativeWindow> window(surface);
+
+    int fence;
+    ANativeWindowBuffer* buffer;
+
+    ASSERT_EQ(NO_ERROR, native_window_api_connect(window.get(), NATIVE_WINDOW_API_CPU));
+    ASSERT_EQ(NO_ERROR, native_window_set_buffers_format(window.get(), PIXEL_FORMAT_RGBA_8888));
+
+    // Cycle two buffers to make slot > 0
+    ASSERT_EQ(NO_ERROR, window->dequeueBuffer(window.get(), &buffer, &fence));
+    ASSERT_EQ(NO_ERROR, window->queueBuffer(window.get(), buffer, fence));
+    ASSERT_EQ(NO_ERROR, window->dequeueBuffer(window.get(), &buffer, &fence));
+    ASSERT_EQ(NO_ERROR, window->queueBuffer(window.get(), buffer, fence));
+    ASSERT_EQ(false, acquireAndGetAutoRefresh(consumer));
+    ASSERT_EQ(false, acquireAndGetAutoRefresh(consumer));
+
+    // Cycle two buffers and switch to autorefresh (shared slot > 0)
+    ASSERT_EQ(NO_ERROR, window->dequeueBuffer(window.get(), &buffer, &fence));
+    ASSERT_EQ(NO_ERROR, window->queueBuffer(window.get(), buffer, fence));
+    ASSERT_EQ(NO_ERROR, surface->setSharedBufferMode(true));
+    ASSERT_EQ(NO_ERROR, surface->setAutoRefresh(true));
+    ASSERT_EQ(NO_ERROR, window->dequeueBuffer(window.get(), &buffer, &fence));
+    ASSERT_EQ(NO_ERROR, window->queueBuffer(window.get(), buffer, fence));
+    ASSERT_EQ(false, acquireAndGetAutoRefresh(consumer));
+    ASSERT_EQ(true, acquireAndGetAutoRefresh(consumer));
+
+    // Switch off autorefresh, BufferQueue's slot is reset, Surface's isn't
+    ASSERT_EQ(NO_ERROR, surface->setSharedBufferMode(false));
+    ASSERT_EQ(NO_ERROR, surface->setAutoRefresh(false));
+    ASSERT_EQ(NO_ERROR, window->dequeueBuffer(window.get(), &buffer, &fence));
+    ASSERT_EQ(NO_ERROR, window->queueBuffer(window.get(), buffer, fence));
+    ASSERT_EQ(false, acquireAndGetAutoRefresh(consumer));
+
+    // Switch on autorefresh, BufferQueue assigns a new slot but Surface remembers the old one
+    ASSERT_EQ(NO_ERROR, surface->setSharedBufferMode(true));
+    ASSERT_EQ(NO_ERROR, surface->setAutoRefresh(true));
+
+    // Swap and check that the autorefresh flag is returned in the acquired buffer
+    ASSERT_EQ(NO_ERROR, window->dequeueBuffer(window.get(), &buffer, &fence));
+    ASSERT_EQ(NO_ERROR, window->queueBuffer(window.get(), buffer, fence));
+    ASSERT_EQ(true, acquireAndGetAutoRefresh(consumer));
+    ASSERT_EQ(NO_ERROR, window->dequeueBuffer(window.get(), &buffer, &fence));
+    ASSERT_EQ(NO_ERROR, window->queueBuffer(window.get(), buffer, fence));
+    ASSERT_EQ(true, acquireAndGetAutoRefresh(consumer));
+}
+
 } // namespace android

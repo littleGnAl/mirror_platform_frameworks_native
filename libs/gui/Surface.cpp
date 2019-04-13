@@ -1421,6 +1421,9 @@ int Surface::setSharedBufferMode(bool sharedBufferMode) {
     status_t err = mGraphicBufferProducer->setSharedBufferMode(
             sharedBufferMode);
     if (err == NO_ERROR) {
+        if (mSharedBufferMode != sharedBufferMode) {
+            mSharedBufferSlot = BufferItem::INVALID_BUFFER_SLOT;
+        }
         mSharedBufferMode = sharedBufferMode;
     }
     ALOGE_IF(err, "IGraphicBufferProducer::setSharedBufferMode(%d) returned"
