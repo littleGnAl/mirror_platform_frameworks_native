@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f557b81f_a7b56579",
+        "filename": "libs/gui/Surface.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1425,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2019-04-14T06:39:52Z",
+      "side": 1,
+      "message": "sharedBufferMode?",
+      "revId": "43ee383ae809ad9a274d7fd6ba2673fe8104e2f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
