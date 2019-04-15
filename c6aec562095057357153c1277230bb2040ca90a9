@@ -70,6 +70,30 @@
       "revId": "c6aec562095057357153c1277230bb2040ca90a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d848763_d79fcdd6",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1062926
+      },
+      "writtenOn": "2019-04-15T17:37:00Z",
+      "side": 1,
+      "message": "Something closer to this then?",
+      "parentUuid": "ee9a0260_c4b423c7",
+      "range": {
+        "startLine": 377,
+        "startChar": 12,
+        "endLine": 401,
+        "endChar": 13
+      },
+      "revId": "c6aec562095057357153c1277230bb2040ca90a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
