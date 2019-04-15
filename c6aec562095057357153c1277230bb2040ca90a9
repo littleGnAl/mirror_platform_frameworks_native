@@ -46,6 +46,30 @@
       "revId": "c6aec562095057357153c1277230bb2040ca90a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee9a0260_c4b423c7",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2019-04-15T16:45:02Z",
+      "side": 1,
+      "message": "hmmmm, we enable clang format in Q :/ never mind, we can indent when we do the cherry-pick.",
+      "parentUuid": "56977d10_bf306c38",
+      "range": {
+        "startLine": 377,
+        "startChar": 12,
+        "endLine": 401,
+        "endChar": 13
+      },
+      "revId": "c6aec562095057357153c1277230bb2040ca90a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
