@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a63bb5e6_d459edf1",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-04-15T08:13:02Z",
+      "side": 1,
+      "message": "it\u0027s not used by framework servicemanager (which has its own tiny library). It\u0027s unsafe in hwbinder though.",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 45
+      },
+      "revId": "a997b239db8c2fbfd609a40857e7d75ef1e604bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
