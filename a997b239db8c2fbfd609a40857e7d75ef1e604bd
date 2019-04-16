@@ -22,6 +22,30 @@
       "revId": "a997b239db8c2fbfd609a40857e7d75ef1e604bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eac562f_ec2dcfda",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-04-16T18:26:55Z",
+      "side": 1,
+      "message": "You\u0027re suggesting we need a follow-on CL for libhwbinder to make this thread-safe there?\n\nIs it easy to state which of becomeContexManager, isContextManager, and getContextObject() can be called concurrently where?",
+      "parentUuid": "a63bb5e6_d459edf1",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 45
+      },
+      "revId": "a997b239db8c2fbfd609a40857e7d75ef1e604bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
