@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59fa3543_6d5f6aca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-04-17T15:13:11Z",
+      "side": 1,
+      "message": "this sentence sounds incomplete.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "757f103385464c9a4fbacf89c18cd38f0f255753",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d5b54df_ed4de76b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-04-17T15:13:11Z",
+      "side": 1,
+      "message": "how did you get the consent to show up? was this tested before the permission bug manifested?",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "757f103385464c9a4fbacf89c18cd38f0f255753",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "083fc6b6_a6214e96",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2699,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-04-17T15:13:11Z",
+      "side": 1,
+      "message": "nit:indent 4 more",
+      "range": {
+        "startLine": 2699,
+        "startChar": 20,
+        "endLine": 2699,
+        "endChar": 21
+      },
+      "revId": "757f103385464c9a4fbacf89c18cd38f0f255753",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
