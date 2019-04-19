@@ -317,7 +317,8 @@ public:
         return getLayerStack() == layerStack && (!mPrimaryDisplayOnly || isPrimaryDisplay);
     }
 
-    void computeGeometry(const RenderArea& renderArea, Mesh& mesh, bool useIdentityTransform) const;
+    void computeGeometry(const RenderArea& renderArea, Mesh& mesh, bool useIdentityTransform,
+                         bool needRound = false) const;
     FloatRect computeBounds(const Region& activeTransparentRegion) const;
     FloatRect computeBounds() const;
 
@@ -529,7 +530,7 @@ public:
 
     // -----------------------------------------------------------------------
 
-    void clearWithOpenGL(const RenderArea& renderArea) const;
+    void clearWithOpenGL(const RenderArea& renderArea, bool needRound = false) const;
 
     inline const State& getDrawingState() const { return mDrawingState; }
     inline const State& getCurrentState() const { return mCurrentState; }
@@ -630,7 +631,7 @@ protected:
 
     // drawing
     void clearWithOpenGL(const RenderArea& renderArea, float r, float g, float b,
-                         float alpha) const;
+                         float alpha, bool needRound = false) const;
 
     void setParent(const sp<Layer>& layer);
 
