@@ -40,10 +40,7 @@ extern "C" {
   android_namespace_t* android_get_exported_namespace(const char*);
 }
 
-// ----------------------------------------------------------------------------
 namespace android {
-// ----------------------------------------------------------------------------
-
 
 /*
  * EGL userspace drivers must be provided either:
@@ -123,8 +120,6 @@ static void* do_android_load_sphal_library(const char* path, int mode) {
     return android_load_sphal_library(path, mode);
 }
 
-// ----------------------------------------------------------------------------
-
 Loader::driver_t::driver_t(void* gles)
 {
     dso[0] = gles;
@@ -159,8 +154,6 @@ int Loader::driver_t::set(void* hnd, int32_t api)
     }
     return 0;
 }
-
-// ----------------------------------------------------------------------------
 
 Loader::Loader()
     : getProcAddress(NULL)
@@ -220,22 +213,17 @@ void* Loader::open(egl_connection_t* cnx)
 {
     ATRACE_CALL();
 
-    void* dso;
-    driver_t* hnd = 0;
-
     setEmulatorGlesValue();
 
-    dso = load_driver("GLES", cnx, EGL | GLESv1_CM | GLESv2);
-    if (dso) {
-        hnd = new driver_t(dso);
-    } else {
-        // Always load EGL first
-        dso = load_driver("EGL", cnx, EGL);
-        if (dso) {
-            hnd = new driver_t(dso);
-            hnd->set( load_driver("GLESv1_CM", cnx, GLESv1_CM), GLESv1_CM );
-            hnd->set( load_driver("GLESv2",    cnx, GLESv2),    GLESv2 );
-        }
+    // Firstly, try to load from driver apk.
+    driver_t* hnd = attempt_to_load_updated_driver(cnx);
+    if (!hnd) {
+        // Secondly, try to load emulation driver.
+        hnd = attempt_to_load_emulation_driver(cnx);
+    }
+    if (!hnd) {
+        // Finally, load system driver.
+        hnd = attempt_to_load_system_driver(cnx);
     }
 
     LOG_ALWAYS_FATAL_IF(!hnd, "couldn't find an OpenGL ES implementation");
@@ -328,7 +316,7 @@ void Loader::init_api(void* dso,
     }
 }
 
-static void* attempt_to_load_emulation_driver(const char* kind) {
+static void* load_emulation_driver(const char* kind) {
     const int emulationStatus = checkGlesEmulationStatus();
 
     // Invalid emulation status, abort.
@@ -519,36 +507,89 @@ static void* load_updated_driver(const char* kind, android_namespace_t* ns) {
     return nullptr;
 }
 
-void *Loader::load_driver(const char* kind,
-        egl_connection_t* cnx, uint32_t mask)
-{
+Loader::driver_t* Loader::attempt_to_load_updated_driver(egl_connection_t* cnx) {
     ATRACE_CALL();
-
-    void* dso = nullptr;
-
 #ifndef __ANDROID_VNDK__
     android_namespace_t* ns = android_getDriverNamespace();
-    if (ns) {
-        dso = load_updated_driver(kind, ns);
-        if (dso) {
-            initialize_api(dso, cnx, mask);
-            return dso;
-        }
-    }
-#endif
-    dso = attempt_to_load_emulation_driver(kind);
-    if (dso) {
-        initialize_api(dso, cnx, mask);
-        return dso;
+    if (!ns) {
+        return nullptr;
     }
 
-    dso = load_system_driver(kind);
+    driver_t* hnd = nullptr;
+    void* dso = load_updated_driver("GLES", ns);
     if (dso) {
-        initialize_api(dso, cnx, mask);
-        return dso;
+        initialize_api(dso, cnx, EGL | GLESv1_CM | GLESv2);
+        hnd = new driver_t(dso);
+        return hnd;
     }
 
+    dso = load_updated_driver("EGL", ns);
+    if (dso) {
+        initialize_api(dso, cnx, EGL);
+        hnd = new driver_t(dso);
+
+        dso = load_updated_driver("GLESv1_CM", ns);
+        initialize_api(dso, cnx, GLESv1_CM);
+        hnd->set(dso, GLESv1_CM);
+
+        dso = load_updated_driver("GLESv2", ns);
+        initialize_api(dso, cnx, GLESv2);
+        hnd->set(dso, GLESv2);
+    }
+    return hnd;
+#else
     return nullptr;
+#endif
+}
+
+Loader::driver_t* Loader::attempt_to_load_emulation_driver(egl_connection_t* cnx) {
+    ATRACE_CALL();
+    driver_t* hnd = nullptr;
+    void* dso = load_emulation_driver("GLES");
+    if (dso) {
+        initialize_api(dso, cnx, EGL | GLESv1_CM | GLESv2);
+        hnd = new driver_t(dso);
+        return hnd;
+    }
+    dso = load_emulation_driver("EGL");
+    if (dso) {
+        initialize_api(dso, cnx, EGL);
+        hnd = new driver_t(dso);
+
+        dso = load_emulation_driver("GLESv1_CM");
+        initialize_api(dso, cnx, GLESv1_CM);
+        hnd->set(dso, GLESv1_CM);
+
+        dso = load_emulation_driver("GLESv2");
+        initialize_api(dso, cnx, GLESv2);
+        hnd->set(dso, GLESv2);
+    }
+    return hnd;
+}
+
+Loader::driver_t* Loader::attempt_to_load_system_driver(egl_connection_t* cnx) {
+    ATRACE_CALL();
+    driver_t* hnd = nullptr;
+    void* dso = load_system_driver("GLES");
+    if (dso) {
+        initialize_api(dso, cnx, EGL | GLESv1_CM | GLESv2);
+        hnd = new driver_t(dso);
+        return hnd;
+    }
+    dso = load_system_driver("EGL");
+    if (dso) {
+        initialize_api(dso, cnx, EGL);
+        hnd = new driver_t(dso);
+
+        dso = load_system_driver("GLESv1_CM");
+        initialize_api(dso, cnx, GLESv1_CM);
+        hnd->set(dso, GLESv1_CM);
+
+        dso = load_system_driver("GLESv2");
+        initialize_api(dso, cnx, GLESv2);
+        hnd->set(dso, GLESv2);
+    }
+    return hnd;
 }
 
 void Loader::initialize_api(void* dso, egl_connection_t* cnx, uint32_t mask) {
@@ -593,6 +634,4 @@ void Loader::initialize_api(void* dso, egl_connection_t* cnx, uint32_t mask) {
     }
 }
 
-// ----------------------------------------------------------------------------
-}; // namespace android
-// ----------------------------------------------------------------------------
+} // namespace android
