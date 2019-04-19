@@ -718,15 +718,15 @@ void Layer::draw(const RenderArea& renderArea) const {
 }
 
 void Layer::clearWithOpenGL(const RenderArea& renderArea, float red, float green, float blue,
-                            float alpha) const {
+                            float alpha, bool needRound) const {
     auto& engine(mFlinger->getRenderEngine());
-    computeGeometry(renderArea, getBE().mMesh, false);
+    computeGeometry(renderArea, getBE().mMesh, false, needRound);
     engine.setupFillWithColor(red, green, blue, alpha);
     engine.drawMesh(getBE().mMesh);
 }
 
-void Layer::clearWithOpenGL(const RenderArea& renderArea) const {
-    clearWithOpenGL(renderArea, 0, 0, 0, 0);
+void Layer::clearWithOpenGL(const RenderArea& renderArea, bool needRound) const {
+    clearWithOpenGL(renderArea, 0, 0, 0, 0, needRound);
 }
 
 void Layer::setCompositionType(int32_t hwcId, HWC2::Composition type, bool callIntoHwc) {
@@ -821,7 +821,7 @@ static void boundPoint(vec2* point, const Rect& crop) {
 }
 
 void Layer::computeGeometry(const RenderArea& renderArea, Mesh& mesh,
-                            bool useIdentityTransform) const {
+                            bool useIdentityTransform, bool needRound) const {
     const Layer::State& s(getDrawingState());
     const Transform renderAreaTransform(renderArea.getTransform());
     const uint32_t height = renderArea.getHeight();
@@ -852,9 +852,15 @@ void Layer::computeGeometry(const RenderArea& renderArea, Mesh& mesh,
     position[1] = renderAreaTransform.transform(lb);
     position[2] = renderAreaTransform.transform(rb);
     position[3] = renderAreaTransform.transform(rt);
-    for (size_t i = 0; i < 4; i++) {
-        position[i].y = height - position[i].y;
-    }
+    if (needRound) {
+        for(size_t i = 0; i < 4; i++) {
+            position[i].x = floorf(position[i].x + 0.5f);
+            position[i].y = height - floorf(position[i].y + 0.5f);
+        }
+    } else {
+        for(size_t i = 0; i < 4; i++) {
+            position[i].y = height - position[i].y;
+        }
 }
 
 bool Layer::isSecure() const {
