@@ -1279,10 +1279,12 @@ int main(int argc, char **argv)
                 } else if (!strcmp(long_options[option_index].name, "async_stop")) {
                     async = true;
                     traceStart = false;
+                    g_traceOverwrite = true;
                 } else if (!strcmp(long_options[option_index].name, "async_dump")) {
                     async = true;
                     traceStart = false;
                     traceStop = false;
+                    g_traceOverwrite = true;
                 } else if (!strcmp(long_options[option_index].name, "only_userspace")) {
                     onlyUserspace = true;
                 } else if (!strcmp(long_options[option_index].name, "stream")) {
@@ -1342,8 +1344,14 @@ int main(int argc, char **argv)
         // another.
         if (!onlyUserspace) {
             ok = clearTrace();
-            writeClockSyncMarker();
+
+            // Write clock sync markers at the begining of the trace when not
+            // using a circular buffer, since the begining of the trace will
+            // always be present in this part of the trace.
+            if (!g_traceOverwrite)
+                writeClockSyncMarker();
         }
+
         if (ok && !async && !traceStream) {
             // Sleep to allow the trace to be captured.
             struct timespec timeLeft;
@@ -1362,8 +1370,14 @@ int main(int argc, char **argv)
     }
 
     // Stop the trace and restore the default settings.
-    if (traceStop && !onlyUserspace)
+    if (traceStop && !onlyUserspace) {
+        // Write clock sync markers at the end of the trace when using a
+        // circular buffer since the begining of the trace may be overwritten
+        // if the buffer fills up.
+        if (g_traceOverwrite)
+            writeClockSyncMarker();
         stopTrace();
+    }
 
     if (ok && traceDump && !onlyUserspace) {
         if (!g_traceAborted) {
