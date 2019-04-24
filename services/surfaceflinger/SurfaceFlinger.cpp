@@ -2731,7 +2731,9 @@ void SurfaceFlinger::updateCursorAsync()
         }
 
         for (auto& layer : displayDevice->getVisibleLayersSortedByZ()) {
-            layer->updateCursorPosition(displayDevice);
+            if (layer) {
+                layer->updateCursorPosition(displayDevice);
+            }
         }
     }
 }
