@@ -22,6 +22,30 @@
       "revId": "0d3495fe40c9b4daa4955f3a66d2c8b3edbbd22c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db8b6761_22b8814d",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1170070
+      },
+      "writtenOn": "2019-05-08T20:08:03Z",
+      "side": 1,
+      "message": "this is a cherry-pick but i\u0027m open to doing that in a separate change. sorry i missed the opportunity to get this feedback originally, but let\u0027s continue the conversation in the bug (and make sure we get everything in round 2)",
+      "parentUuid": "59ff20b0_c9ab89c4",
+      "range": {
+        "startLine": 135,
+        "startChar": 35,
+        "endLine": 135,
+        "endChar": 52
+      },
+      "revId": "0d3495fe40c9b4daa4955f3a66d2c8b3edbbd22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
