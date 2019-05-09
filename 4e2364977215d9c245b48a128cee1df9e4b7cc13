@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4ea5e3e_40e6ebde",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-05-09T20:10:03Z",
+      "side": 1,
+      "message": "-1 since this is an fd?",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "4e2364977215d9c245b48a128cee1df9e4b7cc13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "680b6f6d_941ea4f2",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-05-09T20:10:03Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "4e2364977215d9c245b48a128cee1df9e4b7cc13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
