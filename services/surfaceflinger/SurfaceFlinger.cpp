@@ -3007,7 +3007,7 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& displayDev
     const bool hasClientComposition = getBE().mHwc->hasClientComposition(hwcId);
     ATRACE_INT("hasClientComposition", hasClientComposition);
 
-    bool applyColorMatrix = false;
+    bool applyColorMatrix = true;
     bool needsEnhancedColorMatrix = false;
 
     if (hasClientComposition) {
