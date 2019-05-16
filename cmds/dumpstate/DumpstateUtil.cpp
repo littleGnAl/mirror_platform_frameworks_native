@@ -378,7 +378,7 @@ int RunCommandToFd(int fd, const std::string& title, const std::vector<std::stri
     return status;
 }
 
-int GetPidByName(const std::string& ps_name) {
+int GetPidByName(const std::string& ps_name, android_LogPriority failure_priority) {
     DIR* proc_dir;
     struct dirent* ps;
     unsigned int pid;
@@ -401,7 +401,7 @@ int GetPidByName(const std::string& ps_name) {
             return pid;
         }
     }
-    MYLOGE("can't find the pid\n");
+    android_printLog(failure_priority, LOG_TAG, "can't find the pid\n");
     closedir(proc_dir);
     return -1;
 }

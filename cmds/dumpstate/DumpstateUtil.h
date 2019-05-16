@@ -19,6 +19,8 @@
 #include <cstdint>
 #include <string>
 
+#include <android/log.h>
+
 /*
  * Converts seconds to milliseconds.
  */
@@ -209,7 +211,8 @@ int DumpFileToFd(int fd, const std::string& title, const std::string& path);
  * Finds the process id by process name.
  * |ps_name| the process name we want to search for
  */
-int GetPidByName(const std::string& ps_name);
+int GetPidByName(const std::string& ps_name,
+                 android_LogPriority failure_priority = ANDROID_LOG_ERROR);
 
 }  // namespace dumpstate
 }  // namespace os
