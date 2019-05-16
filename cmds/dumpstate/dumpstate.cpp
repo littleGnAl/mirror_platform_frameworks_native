@@ -416,8 +416,8 @@ static bool dump_anrd_trace() {
         return false;
     }
 
-    // find anrd's pid if it is running.
-    pid = GetPidByName("/system/bin/anrd");
+    // find anrd's pid if it is running; it's not a major issue if it's not.
+    pid = GetPidByName("/system/bin/anrd", ANDROID_LOG_INFO);
 
     if (pid > 0) {
         if (stat(trace_path, &st) == 0) {
