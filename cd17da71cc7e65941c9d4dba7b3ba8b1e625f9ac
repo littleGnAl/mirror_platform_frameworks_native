@@ -22,6 +22,30 @@
       "revId": "cd17da71cc7e65941c9d4dba7b3ba8b1e625f9ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99aab5f3_61c32b43",
+        "filename": "services/vr/virtual_touchpad/include/VirtualTouchpadClient.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1345967
+      },
+      "writtenOn": "2019-05-22T20:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "734801f4_9c58f6ca",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "cd17da71cc7e65941c9d4dba7b3ba8b1e625f9ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
