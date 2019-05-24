@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "385d2146_8c46c2a6",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1299481
+      },
+      "writtenOn": "2019-05-24T15:59:07Z",
+      "side": 1,
+      "message": "dumpstate checks if screenshot_path_.empty() on line :2629. Should we check here too?\nIf it\u0027s unnecessary, we should remove the check from there.",
+      "range": {
+        "startLine": 1251,
+        "startChar": 8,
+        "endLine": 1251,
+        "endChar": 27
+      },
+      "revId": "35e2882b8562514d761cbd0e0624038265aad58a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
