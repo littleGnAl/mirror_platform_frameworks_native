@@ -22,6 +22,30 @@
       "revId": "35e2882b8562514d761cbd0e0624038265aad58a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbcc90cb_5ae92894",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-05-24T16:27:32Z",
+      "side": 1,
+      "message": "Good question.  Looking at (Google internal) go/ag/830342 I see part of how that original check came into place.\n\nIt looks like some of the original logic was to avoid crashing dumpstate (definitely a good goal).  If that other check went away and we hit that state, as we\u0027ve already seen, dumpstate won\u0027t crash, it will give a couple Errors in logcat (much like the Internal Error does now).\n\nIn my opinion, we don\u0027t need the other check anymore, because we\u0027ll still get Errors in the logcat if we end up with this inconsistent state, and dumpstate won\u0027t crash.\n\nI\u0027ll put up a modification which does that, although I\u0027ll defer to those who know this code better if they\u0027d prefer I just introduced an additional check here.\n\nI agree with you that we should be consistent between the two calling sites.\n\n\n(For what it\u0027s worth, I see the check that I think you\u0027re referring to as line 2485 in this current patch set.)",
+      "parentUuid": "385d2146_8c46c2a6",
+      "range": {
+        "startLine": 1251,
+        "startChar": 8,
+        "endLine": 1251,
+        "endChar": 27
+      },
+      "revId": "35e2882b8562514d761cbd0e0624038265aad58a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
