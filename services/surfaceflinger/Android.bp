@@ -163,9 +163,6 @@ cc_binary {
     defaults: ["surfaceflinger_defaults"],
     init_rc: ["surfaceflinger.rc"],
     srcs: ["main_surfaceflinger.cpp"],
-    whole_static_libs: [
-        "libsigchain",
-    ],
     shared_libs: [
         "android.frameworks.displayservice@1.0",
         "android.hardware.configstore-utils",
@@ -188,19 +185,6 @@ cc_binary {
         "libtrace_proto",
     ],
     ldflags: ["-Wl,--export-dynamic"],
-
-    // TODO(b/71715793): These version-scripts are required due to the use of
-    // whole_static_libs to pull in libsigchain. To work, the files had to be
-    // locally duplicated from their original location
-    // $ANDROID_ROOT/art/sigchainlib/
-    multilib: {
-        lib32: {
-            version_script: "version-script32.txt",
-        },
-        lib64: {
-            version_script: "version-script64.txt",
-        },
-    },
 }
 
 subdirs = [
