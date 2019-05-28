@@ -1632,8 +1632,14 @@ static void DumpstateWifiOnly() {
 
     RunDumpsys("DUMPSYS", {"connectivity"}, CommandOptions::WithTimeout(90).Build(),
                SEC_TO_MSEC(10));
+    RunDumpsys("DUMPSYS", {"network_stack"}, CommandOptions::WithTimeout(90).Build(),
+                   SEC_TO_MSEC(10));
     RunDumpsys("DUMPSYS", {"wifi"}, CommandOptions::WithTimeout(90).Build(),
                SEC_TO_MSEC(10));
+    RunDumpsys("DUMPSYS", {"wifiscanner"}, CommandOptions::WithTimeout(90).Build(),
+                   SEC_TO_MSEC(10));
+    RunDumpsys("DUMPSYS", {"wificond"}, CommandOptions::WithTimeout(90).Build(),
+                   SEC_TO_MSEC(10));
 
     DumpHals();
 
