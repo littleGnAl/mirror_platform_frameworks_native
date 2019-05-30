@@ -16,6 +16,24 @@
       "revId": "3ca041da26b6122f8e0bcf2efb924fd5b454adbc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dc64d2d_8e807c1e",
+        "filename": "services/surfaceflinger/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-05-30T22:22:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4a6fd157_b0503408",
+      "revId": "3ca041da26b6122f8e0bcf2efb924fd5b454adbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
