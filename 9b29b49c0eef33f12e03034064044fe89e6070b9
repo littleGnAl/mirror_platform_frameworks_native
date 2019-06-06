@@ -22,6 +22,30 @@
       "revId": "9b29b49c0eef33f12e03034064044fe89e6070b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3209492b_d32e39ee",
+        "filename": "services/thermalservice/aidl/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-06T23:30:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fda331_0b7a6835",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "9b29b49c0eef33f12e03034064044fe89e6070b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
