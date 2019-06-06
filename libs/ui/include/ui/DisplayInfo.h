@@ -30,6 +30,7 @@ struct DisplayInfo {
     float xdpi{0};
     float ydpi{0};
     float fps{0};
+    bool interlaced{false};
     float density{0};
     uint8_t orientation{0};
     bool secure{false};

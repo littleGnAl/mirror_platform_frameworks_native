@@ -159,6 +159,10 @@ public:
                 mConfig->mVsyncPeriod = vsyncPeriod;
                 return *this;
             }
+            Builder& setInterlaced(int32_t interlaced) {
+                mConfig->mInterlaced = interlaced > 0;
+                return *this;
+            }
             Builder& setDpiX(int32_t dpiX) {
                 if (dpiX == -1) {
                     mConfig->mDpiX = getDefaultDensity();
@@ -187,6 +191,7 @@ public:
         int32_t getWidth() const { return mWidth; }
         int32_t getHeight() const { return mHeight; }
         nsecs_t getVsyncPeriod() const { return mVsyncPeriod; }
+        bool getInterlaced() const { return mInterlaced; }
         float getDpiX() const { return mDpiX; }
         float getDpiY() const { return mDpiY; }
 
@@ -199,6 +204,7 @@ public:
         int32_t mWidth;
         int32_t mHeight;
         nsecs_t mVsyncPeriod;
+        bool mInterlaced;
         float mDpiX;
         float mDpiY;
     };

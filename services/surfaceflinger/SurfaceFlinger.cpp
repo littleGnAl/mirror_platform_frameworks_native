@@ -950,6 +950,7 @@ status_t SurfaceFlinger::getDisplayConfigs(const sp<IBinder>& display,
 
         info.w = hwConfig->getWidth();
         info.h = hwConfig->getHeight();
+        info.interlaced = hwConfig->getInterlaced();
         info.xdpi = xdpi;
         info.ydpi = ydpi;
         info.fps = 1e9 / hwConfig->getVsyncPeriod();

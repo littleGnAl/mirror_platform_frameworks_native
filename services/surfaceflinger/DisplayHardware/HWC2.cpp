@@ -723,6 +723,7 @@ void Display::loadConfig(hwc2_config_t configId)
             .setWidth(getAttribute(configId, Attribute::Width))
             .setHeight(getAttribute(configId, Attribute::Height))
             .setVsyncPeriod(getAttribute(configId, Attribute::VsyncPeriod))
+            .setInterlaced(getAttribute(configId, Attribute::Interlaced))
             .setDpiX(getAttribute(configId, Attribute::DpiX))
             .setDpiY(getAttribute(configId, Attribute::DpiY))
             .build();
