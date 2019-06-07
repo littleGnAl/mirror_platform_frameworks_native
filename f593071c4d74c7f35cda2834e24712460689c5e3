@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb12d0b5_4fb4719b",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-07T19:59:56Z",
+      "side": 0,
+      "message": "see commit message, but also notice that mObituaries must be empty here. Since each obituary represents incWeak (L246, cleared in IPCThreadState) and this object is OBJECT_LIFETIME_WEAK, it couldn\u0027t have ever been non-empty",
+      "range": {
+        "startLine": 391,
+        "startChar": 30,
+        "endLine": 391,
+        "endChar": 41
+      },
+      "revId": "f593071c4d74c7f35cda2834e24712460689c5e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
