@@ -46,6 +46,30 @@
       "revId": "f593071c4d74c7f35cda2834e24712460689c5e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c37467e4_001aa960",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-11T16:13:52Z",
+      "side": 0,
+      "message": "Yes, but that change in behavior is intentional :). I\u0027ll see if I can hunt down any important cases.",
+      "parentUuid": "84e4811b_25b2c8c7",
+      "range": {
+        "startLine": 391,
+        "startChar": 30,
+        "endLine": 391,
+        "endChar": 41
+      },
+      "revId": "f593071c4d74c7f35cda2834e24712460689c5e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
