@@ -22,6 +22,30 @@
       "revId": "f593071c4d74c7f35cda2834e24712460689c5e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84e4811b_25b2c8c7",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-06-11T10:33:10Z",
+      "side": 0,
+      "message": "I agree this code can\u0027t do anything, but what worries me is that this CL might introduce a change in behavior, at least in native. See comments on the bug,",
+      "parentUuid": "bb12d0b5_4fb4719b",
+      "range": {
+        "startLine": 391,
+        "startChar": 30,
+        "endLine": 391,
+        "endChar": 41
+      },
+      "revId": "f593071c4d74c7f35cda2834e24712460689c5e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
