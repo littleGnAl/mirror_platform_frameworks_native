@@ -70,6 +70,30 @@
       "revId": "f593071c4d74c7f35cda2834e24712460689c5e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7de3e37f_078885af",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-06-11T17:17:36Z",
+      "side": 0,
+      "message": "Sure, I don\u0027t necessarily disagree with the change itself (to be honest I think it being this way in Java is a strong case for doing the same in native), we just need to make sure we don\u0027t break anything. Re: making it similar to Java, should we print a similar warning message here, too? I think we still prefer clients being explicit with their unlink.",
+      "parentUuid": "c37467e4_001aa960",
+      "range": {
+        "startLine": 391,
+        "startChar": 30,
+        "endLine": 391,
+        "endChar": 41
+      },
+      "revId": "f593071c4d74c7f35cda2834e24712460689c5e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
