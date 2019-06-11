@@ -94,6 +94,30 @@
       "revId": "f593071c4d74c7f35cda2834e24712460689c5e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fa06ef7_3242340d",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-11T17:24:13Z",
+      "side": 0,
+      "message": "Explicit unlink can be quite cumbersome and error prone in code to maintain especially when multiple references to a binder are kept. I\u0027ll add a log, although I think INFO is more appropriate than WARNING.",
+      "parentUuid": "7de3e37f_078885af",
+      "range": {
+        "startLine": 391,
+        "startChar": 30,
+        "endLine": 391,
+        "endChar": 41
+      },
+      "revId": "f593071c4d74c7f35cda2834e24712460689c5e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
