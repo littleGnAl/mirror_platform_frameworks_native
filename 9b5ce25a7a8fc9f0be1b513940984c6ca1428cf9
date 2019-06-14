@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed596549_2306c9c6",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1889,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-06-14T13:14:20Z",
+      "side": 1,
+      "message": "should -f be the last argument? It\u0027s broken for me",
+      "range": {
+        "startLine": 1889,
+        "startChar": 49,
+        "endLine": 1889,
+        "endChar": 54
+      },
+      "revId": "9b5ce25a7a8fc9f0be1b513940984c6ca1428cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
