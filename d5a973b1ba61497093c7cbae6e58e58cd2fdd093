@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2c8f8cd_0defa96d",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "should we worry about overflow?",
+      "range": {
+        "startLine": 725,
+        "startChar": 11,
+        "endLine": 725,
+        "endChar": 31
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9ed7a2a_415912b9",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "This would make device with no mappers permanently enabled, which does not seem right. Can we change this to false?",
+      "range": {
+        "startLine": 1069,
+        "startChar": 15,
+        "endLine": 1069,
+        "endChar": 19
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a323fd2_02dda320",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "I think this is saying that if at least 1 eventhub device is enabled, then the corresponding inputreaderdevice should be enabled. That sounds reasonable, but maybe a comment or a doc would be useful here.",
+      "range": {
+        "startLine": 1072,
+        "startChar": 42,
+        "endLine": 1072,
+        "endChar": 53
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e757de_139a0c3e",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "part of this check is covered by isEnabled() call above - any way to simplify?",
+      "range": {
+        "startLine": 1080,
+        "startChar": 7,
+        "endLine": 1080,
+        "endChar": 21
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ffa9c0_16b94c4c",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "should we loop through all of these?",
+      "range": {
+        "startLine": 1086,
+        "startChar": 36,
+        "endLine": 1086,
+        "endChar": 46
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9cd556c_a6442abd",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "I forget the original motivation for this, but it seems that this can be pulled out of the if statement and should be done after enabled has changed values.",
+      "range": {
+        "startLine": 1089,
+        "startChar": 8,
+        "endLine": 1089,
+        "endChar": 20
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ecc5bfc_f215ec4d",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "can this check be done outside of the big if statement? also, do we need this check? can an InputDevice with no mappers exist?",
+      "range": {
+        "startLine": 1157,
+        "startChar": 16,
+        "endLine": 1157,
+        "endChar": 40
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6808444_875f966f",
+        "filename": "services/inputflinger/InputReader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "can we use something from std:: instead? I\u0027m not sure if this has already been refactored internally",
+      "range": {
+        "startLine": 485,
+        "startChar": 4,
+        "endLine": 485,
+        "endChar": 15
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b6e3767_2a64e37f",
+        "filename": "services/inputflinger/InputReader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "Is it possible to find a better name for this? Something like mEventHubDevice? Or evdevice? Or maybe rawDevice?",
+      "range": {
+        "startLine": 1022,
+        "startChar": 12,
+        "endLine": 1022,
+        "endChar": 20
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "758c6343_b4a66af0",
+        "filename": "services/inputflinger/InputReader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "I think int32_t is okay, but it\u0027s also worth considering something like adding an enum class definition into EventHub. Like EventHub::DeviceId : int32_t. This way, we won\u0027t have implicit conversion of random ints into EventHub device ids, maybe that would help with compilation?",
+      "range": {
+        "startLine": 1022,
+        "startChar": 4,
+        "endLine": 1022,
+        "endChar": 11
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b99384c_9c82551f",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:00:32Z",
+      "side": 1,
+      "message": "nit: spaces before and after +",
+      "range": {
+        "startLine": 1153,
+        "startChar": 29,
+        "endLine": 1153,
+        "endChar": 30
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
