@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "6026794a_24592f38",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2019-06-18T16:15:52Z",
+      "side": 1,
+      "message": "A nit here:\n\nCan we use mMappers.isEmpty() instead? Same below.",
+      "range": {
+        "startLine": 1067,
+        "startChar": 8,
+        "endLine": 1067,
+        "endChar": 28
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9ed7a2a_415912b9",
         "filename": "services/inputflinger/InputReader.cpp",
         "patchSetId": 1
@@ -210,6 +233,30 @@
     },
     {
       "key": {
+        "uuid": "8a291fb2_0909eec0",
+        "filename": "services/inputflinger/InputReader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2019-06-18T16:15:52Z",
+      "side": 1,
+      "message": "It\u0027s still KeyedVector internally. We should be able to leave it as is for now.",
+      "parentUuid": "a6808444_875f966f",
+      "range": {
+        "startLine": 485,
+        "startChar": 4,
+        "endLine": 485,
+        "endChar": 15
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b6e3767_2a64e37f",
         "filename": "services/inputflinger/InputReader.h",
         "patchSetId": 1
@@ -249,6 +296,30 @@
         "startChar": 4,
         "endLine": 1022,
         "endChar": 11
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82ddad1_0d604630",
+        "filename": "services/inputflinger/InputReader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2019-06-18T16:15:52Z",
+      "side": 1,
+      "message": "+1 on this. eventId is pretty general and I was confused when I saw it first, as event means a different thing (input event) in input context.",
+      "parentUuid": "1b6e3767_2a64e37f",
+      "range": {
+        "startLine": 1022,
+        "startChar": 12,
+        "endLine": 1022,
+        "endChar": 20
       },
       "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
