@@ -281,6 +281,30 @@
     },
     {
       "key": {
+        "uuid": "77f9551a_4a588e87",
+        "filename": "services/inputflinger/InputReader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2019-06-18T16:37:50Z",
+      "side": 1,
+      "message": "There is no encapsulated solution in STL containers that\u0027s 100% the same to KeyedVector. Alternatives can be std::map or std::unordered_map, which all have bigger memory footprint and less time complexity than KeyedVector.\n\nMy personal preference would be std::unordered_map, as the number of devices won\u0027t be too big (should be less than 100), so hash map won\u0027t consume too much more memory.\n\nWDYT?",
+      "parentUuid": "4d160c5c_c1bdca9a",
+      "range": {
+        "startLine": 485,
+        "startChar": 4,
+        "endLine": 485,
+        "endChar": 15
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b6e3767_2a64e37f",
         "filename": "services/inputflinger/InputReader.h",
         "patchSetId": 1
