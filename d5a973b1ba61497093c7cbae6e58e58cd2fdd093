@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "b8b17650_01615969",
+        "filename": "services/inputflinger/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T02:08:14Z",
+      "side": 1,
+      "message": "I just checked history, Michael made some comments about this earlier:\n\nI think we actually want to move this reset above the call to enableDevice / disableDevice. That way it can use the initialslot information to better clear state (see the comment in MultiTouchMotionAccumulator::reset for an explanation).\n\nThis way, I ended up with a reset after enable but before disable. I suggest adding a comment like that to avoid future confusion.",
+      "parentUuid": "c9cd556c_a6442abd",
+      "range": {
+        "startLine": 1089,
+        "startChar": 8,
+        "endLine": 1089,
+        "endChar": 20
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ecc5bfc_f215ec4d",
         "filename": "services/inputflinger/InputReader.cpp",
         "patchSetId": 1
