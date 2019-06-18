@@ -257,6 +257,30 @@
     },
     {
       "key": {
+        "uuid": "4d160c5c_c1bdca9a",
+        "filename": "services/inputflinger/InputReader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-06-18T16:19:37Z",
+      "side": 1,
+      "message": "i can refactor this internally before this patch is rebased. i prefer we don\u0027t check in new code with the legacy data structures.",
+      "parentUuid": "8a291fb2_0909eec0",
+      "range": {
+        "startLine": 485,
+        "startChar": 4,
+        "endLine": 485,
+        "endChar": 15
+      },
+      "revId": "d5a973b1ba61497093c7cbae6e58e58cd2fdd093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b6e3767_2a64e37f",
         "filename": "services/inputflinger/InputReader.h",
         "patchSetId": 1
