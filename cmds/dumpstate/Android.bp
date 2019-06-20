@@ -146,6 +146,17 @@ cc_test {
         "tests/dumpstate_test.cpp",
     ],
     static_libs: ["libgmock"],
+    target: {
+        android_arm64 : {
+            test_config: "dumpstate_test_arm64.xml",
+        },
+        android_arm : {
+            test_config: "dumpstate_test_arm.xml",
+        },
+        android_x86 : {
+            test_config: "dumpstate_test_x86.xml",
+        },
+    }
 }
 
 cc_test {
