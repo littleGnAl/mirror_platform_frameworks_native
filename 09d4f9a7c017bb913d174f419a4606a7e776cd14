@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f4c47e1_8b8efb4f",
+        "filename": "cmds/dumpstate/dumpstate_test_arm.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-06-21T18:32:41Z",
+      "side": 1,
+      "message": "The PushFilePreparer is smart enough to filter out unsupported abi and only push sub folder for desired abi. However, the GTest runner is not smart enough to locate the binary under abi being tested. Not sure if that\u0027s something the runner can improve.",
+      "range": {
+        "startLine": 24,
+        "startChar": 85,
+        "endLine": 24,
+        "endChar": 88
+      },
+      "revId": "09d4f9a7c017bb913d174f419a4606a7e776cd14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

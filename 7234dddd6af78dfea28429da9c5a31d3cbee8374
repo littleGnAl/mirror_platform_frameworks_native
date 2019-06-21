@@ -22,6 +22,30 @@
       "revId": "7234dddd6af78dfea28429da9c5a31d3cbee8374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e25c50_00e6911a",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-06-21T18:32:41Z",
+      "side": 1,
+      "message": "you are right, we need to specify the target directory here. Otherwise, only the last one got pushed. Not sure if that\u0027s a bug.",
+      "parentUuid": "0f7e4298_653ba686",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 79
+      },
+      "revId": "7234dddd6af78dfea28429da9c5a31d3cbee8374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
