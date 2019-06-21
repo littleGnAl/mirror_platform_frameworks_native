@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f7e4298_653ba686",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2019-06-21T14:43:02Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s my device\u0027s problem, I need to modified it to\n\n\u003coption name\u003d\"push\" value\u003d\"dumpstate_test-\u003e/data/local/tmp/dumpstate_test\" /\u003e\n\u003coption name\u003d\"push\" value\u003d\"dumpstate_test_fixture-\u003e/data/local/tmp/dumpstate_test_fixture\" /\u003e\n\nIt could run but seems still some tests will terminate.\nSeems still some testcases hardcode the execution path which need to fix.\n\nActual: \"execvp on command \u0027/data/local/tmp/dumpstate_test/x86/../dumpstate_test_fixture/dumpstate_test_fixture --pid --sleep 20\u0027 failed (error: No such file or directory)\\n*** command \u0027/data/local/tmp/dumpstate_test/x86/../dumpstate_test_fixture/dumpstate_test_fixture --pid --sleep 20\u0027 failed: exit code 1\\n\"\n\nterminating",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 79
+      },
+      "revId": "7234dddd6af78dfea28429da9c5a31d3cbee8374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
