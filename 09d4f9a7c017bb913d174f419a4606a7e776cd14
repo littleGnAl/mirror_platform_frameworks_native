@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "05e68648_0ae8a26a",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-06-22T06:11:31Z",
+      "side": 1,
+      "message": "Is there a way for this module to include dumpstate_test_fixture in its output (e.g., out/target/product/vsoc_x86/testcases/dumpstate_test/x86)?\nThe test is hard coded to run dumpstate_test_fixture as a command.",
+      "revId": "09d4f9a7c017bb913d174f419a4606a7e776cd14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f4c47e1_8b8efb4f",
         "filename": "cmds/dumpstate/dumpstate_test_arm.xml",
         "patchSetId": 2
