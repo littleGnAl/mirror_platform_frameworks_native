@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bc51769_cd9a5aa7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-22T02:17:02Z",
+      "side": 1,
+      "message": "this doesn\u0027t reflect the change being made",
+      "revId": "2382d319f24c4836f8d696820773e732f6a6654d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
