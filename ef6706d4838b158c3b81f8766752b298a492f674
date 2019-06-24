@@ -46,6 +46,30 @@
       "revId": "ef6706d4838b158c3b81f8766752b298a492f674",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "025408df_6be11872",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-06-24T16:48:30Z",
+      "side": 1,
+      "message": "Static cast worked.",
+      "parentUuid": "c41a6b2d_ef1c59e2",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "ef6706d4838b158c3b81f8766752b298a492f674",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
