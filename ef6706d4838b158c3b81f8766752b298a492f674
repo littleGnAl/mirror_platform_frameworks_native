@@ -22,6 +22,30 @@
       "revId": "ef6706d4838b158c3b81f8766752b298a492f674",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c41a6b2d_ef1c59e2",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-06-24T16:36:32Z",
+      "side": 1,
+      "message": "I think \"(void)\" is standard for this purpose. I don\u0027t even know whether static_cast works.\n\nIf necessary, do\n\n auto status ATTRIBUTE_UNUSED \u003d ...",
+      "parentUuid": "2dd2c1d6_3e44b30e",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "ef6706d4838b158c3b81f8766752b298a492f674",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
