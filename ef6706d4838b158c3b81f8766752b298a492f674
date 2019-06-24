@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dd2c1d6_3e44b30e",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-24T09:54:18Z",
+      "side": 1,
+      "message": "Use\n\n  static_cast\u003cvoid\u003e\n\ninstead?",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "ef6706d4838b158c3b81f8766752b298a492f674",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
