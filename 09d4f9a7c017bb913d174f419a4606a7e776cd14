@@ -128,6 +128,30 @@
       "revId": "09d4f9a7c017bb913d174f419a4606a7e776cd14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c73ee97_ad4c3090",
+        "filename": "cmds/dumpstate/dumpstate_test_arm.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-06-25T21:30:28Z",
+      "side": 1,
+      "message": "I got following error when abi is not specified here:\n\n06-25 14:27:10 V/NativeDevice: ls \"/data/local/tmp/dumpstate_test/dumpstate_test\" on 127.0.0.1:33027 returned ls: /data/local/tmp/dumpstate_test/dumpstate_test: No such file or directory\n\nSomehow GTest is not able to locate the binary under x86 directory.",
+      "parentUuid": "e647ef70_bf172c0e",
+      "range": {
+        "startLine": 24,
+        "startChar": 85,
+        "endLine": 24,
+        "endChar": 88
+      },
+      "revId": "09d4f9a7c017bb913d174f419a4606a7e776cd14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
