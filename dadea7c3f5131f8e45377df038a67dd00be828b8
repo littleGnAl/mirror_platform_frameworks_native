@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f99bcdcc_7be23874",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-06-25T23:24:10Z",
+      "side": 1,
+      "message": "just delete it",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 2
+      },
+      "revId": "dadea7c3f5131f8e45377df038a67dd00be828b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d88a291_a0eda568",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-06-25T23:24:10Z",
+      "side": 1,
+      "message": "out",
+      "range": {
+        "startLine": 287,
+        "startChar": 22,
+        "endLine": 287,
+        "endChar": 24
+      },
+      "revId": "dadea7c3f5131f8e45377df038a67dd00be828b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
