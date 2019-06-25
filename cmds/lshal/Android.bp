@@ -72,6 +72,7 @@ cc_binary {
 
 cc_test {
     name: "lshal_test",
+    test_suites: ["device-tests"],
     defaults: ["lshal_defaults"],
     gtest: true,
     static_libs: [
