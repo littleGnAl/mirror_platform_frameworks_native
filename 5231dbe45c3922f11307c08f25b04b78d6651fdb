@@ -22,6 +22,30 @@
       "revId": "5231dbe45c3922f11307c08f25b04b78d6651fdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acd5b42a_b680b730",
+        "filename": "cmds/lshal/WaitCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-06-25T17:44:26Z",
+      "side": 1,
+      "message": "talked offline; just mock the function (e.g. mLshal.getRawServiceInternal)",
+      "parentUuid": "92f4893b_201f46fe",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "5231dbe45c3922f11307c08f25b04b78d6651fdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
