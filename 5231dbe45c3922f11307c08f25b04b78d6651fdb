@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92f4893b_201f46fe",
+        "filename": "cmds/lshal/WaitCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-25T16:38:31Z",
+      "side": 1,
+      "message": "Yifan, any thoughts on re-implementing something like this here VS re-writing libhidl to have dependency injection VS splitting this out in a separate tool (not lshal) that is simpler and only has integration tests?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "5231dbe45c3922f11307c08f25b04b78d6651fdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
