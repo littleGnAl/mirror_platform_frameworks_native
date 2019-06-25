@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8050d8f1_555f9f65",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-25T19:58:58Z",
+      "side": 1,
+      "message": "I don\u0027t think it is necessary with this few registered commands, but maybe",
+      "parentUuid": "d5a45390_0bdb097e",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "5231dbe45c3922f11307c08f25b04b78d6651fdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77c1f671_566876e1",
         "filename": "cmds/lshal/WaitCommand.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-25T17:48:44Z",
       "side": 1,
       "message": "nice!\n\nAlthough, we should probably add conversions between FqInstance and FQName...",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "5231dbe45c3922f11307c08f25b04b78d6651fdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fb9800d_0287cb46",
+        "filename": "cmds/lshal/WaitCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-25T19:58:58Z",
+      "side": 1,
+      "message": "Actually, the fqname only needs to be parsed here. We could convert many usages of fqname in lshal/libvintf etc to fqinstnace.",
+      "parentUuid": "77c1f671_566876e1",
       "range": {
         "startLine": 51,
         "startChar": 9,
@@ -92,6 +140,30 @@
       "revId": "5231dbe45c3922f11307c08f25b04b78d6651fdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83dc2cba_5046b577",
+        "filename": "cmds/lshal/WaitCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-25T19:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd5b42a_b680b730",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "5231dbe45c3922f11307c08f25b04b78d6651fdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
