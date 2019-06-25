@@ -24,7 +24,6 @@
 #include <utils/StrongPointer.h>
 
 #include "Command.h"
-#include "HelpCommand.h"
 #include "NullableOStream.h"
 #include "utils.h"
 
@@ -36,8 +35,8 @@ public:
     Lshal();
     virtual ~Lshal() {}
     Lshal(std::ostream &out, std::ostream &err,
-            sp<hidl::manager::V1_0::IServiceManager> serviceManager,
-            sp<hidl::manager::V1_0::IServiceManager> passthroughManager);
+            const sp<hidl::manager::V1_0::IServiceManager>& serviceManager,
+            const sp<hidl::manager::V1_0::IServiceManager>& passthroughManager);
     Status main(const Arg &arg);
     // global usage
     void usage();
