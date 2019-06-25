@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "d9d2dd04_2d84cd59",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2019-06-25T19:02:10Z",
+      "side": 1,
+      "message": "Use data",
+      "parentUuid": "05e68648_0ae8a26a",
+      "revId": "09d4f9a7c017bb913d174f419a4606a7e776cd14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e408a19_8a065e62",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2019-06-25T19:02:10Z",
+      "side": 1,
+      "message": "This feels wrong to me.",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 157,
+        "endChar": 20
+      },
+      "revId": "09d4f9a7c017bb913d174f419a4606a7e776cd14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f4c47e1_8b8efb4f",
         "filename": "cmds/dumpstate/dumpstate_test_arm.xml",
         "patchSetId": 2
@@ -54,6 +95,30 @@
       "side": 1,
       "message": "I think TF already has some way to cover the abi part, but it need the value to be /data/local/tmp to go into this logic.\nhttps://android.googlesource.com/platform/tools/tradefederation/+/refs/heads/master/src/com/android/tradefed/testtype/GTest.java#127",
       "parentUuid": "8f4c47e1_8b8efb4f",
+      "range": {
+        "startLine": 24,
+        "startChar": 85,
+        "endLine": 24,
+        "endChar": 88
+      },
+      "revId": "09d4f9a7c017bb913d174f419a4606a7e776cd14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e647ef70_bf172c0e",
+        "filename": "cmds/dumpstate/dumpstate_test_arm.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2019-06-25T19:02:10Z",
+      "side": 1,
+      "message": "+Julien, I believe we\u0027ve handled this before. We don\u0027t need an arm/x86 hard-coded configs. Just one.",
+      "parentUuid": "96792abb_b9a20ffb",
       "range": {
         "startLine": 24,
         "startChar": 85,
