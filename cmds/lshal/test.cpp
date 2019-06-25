@@ -183,10 +183,64 @@ TEST_F(DebugTest, Debug3) {
 class MockLshal : public Lshal {
 public:
     MockLshal() {}
+    MockLshal(std::ostream& out,
+              std::ostream& err,
+              const sp<IServiceManager>& sm,
+              const sp<IServiceManager>& psm)
+      : Lshal(out, err, sm, psm) {}
     ~MockLshal() = default;
-    MOCK_CONST_METHOD0(out, NullableOStream<std::ostream>());
-    MOCK_CONST_METHOD0(err, NullableOStream<std::ostream>());
 };
+
+class WaitTest : public ::testing::Test {
+public:
+    void SetUp() override {
+        using ::android::hardware::tests::baz::V1_0::IQuux;
+        using ::android::hardware::tests::baz::V1_0::implementation::Quux;
+
+        err.str("");
+        out.str("");
+        serviceManager = new testing::NiceMock<MockServiceManager>();
+        ON_CALL(*serviceManager, getTransport(_, _)).WillByDefault(Invoke(
+            [](const auto &iface, const auto &inst) -> ::android::hardware::Return<IServiceManager::Transport> {
+                if (iface == IQuux::descriptor && inst == "default")
+                    return IServiceManager::Transport::HWBINDER;
+                return IServiceManager::Transport::EMPTY;
+            }));
+
+        lshal = std::make_unique<NiceMock<MockLshal>>(err, out, serviceManager, serviceManager);
+    }
+    void TearDown() override {}
+
+    sp<MockServiceManager> serviceManager;
+    std::stringstream err;
+    std::stringstream out;
+
+    std::unique_ptr<Lshal> lshal;
+};
+
+TEST_F(WaitTest, DoesNotExist) {
+    EXPECT_NE(0u, callMain(lshal, {
+        "lshal", "wait", "android.hardware.tests.doesnotexist@1.0::IDoesNotExist",
+    }));
+    EXPECT_THAT(err.str(), HasSubstr("Service not found in VINTF manifest"));
+    EXPECT_THAT(out.str(), IsEmpty());
+}
+
+TEST_F(WaitTest, ExistsImplicitInstanceName) {
+    EXPECT_EQ(0u, callMain(lshal, {
+        "lshal", "wait", "android.hardware.tests.baz@1.0::IQuux",
+    }));
+    EXPECT_THAT(err.str(), IsEmpty());
+    EXPECT_THAT(out.str(), IsEmpty());
+}
+
+TEST_F(WaitTest, ExistsSpecificInstanceName) {
+    EXPECT_EQ(0u, callMain(lshal, {
+        "lshal", "wait", "android.hardware.tests.baz@1.0::IQuux/default",
+    }));
+    EXPECT_THAT(err.str(), IsEmpty());
+    EXPECT_THAT(out.str(), IsEmpty());
+}
 
 // expose protected fields and methods for ListCommand
 class MockListCommand : public ListCommand {
@@ -224,14 +278,14 @@ public:
 class ListParseArgsTest : public ::testing::Test {
 public:
     void SetUp() override {
-        mockLshal = std::make_unique<NiceMock<MockLshal>>();
+        mockLshal = std::make_unique<NiceMock<MockLshal>>(in, err, nullptr, nullptr);
         mockList = std::make_unique<MockListCommand>(mockLshal.get());
-        ON_CALL(*mockLshal, err()).WillByDefault(Return(NullableOStream<std::ostream>(err)));
         // ListCommand::parseArgs should parse arguments from the second element
         optind = 1;
     }
     std::unique_ptr<MockLshal> mockLshal;
     std::unique_ptr<MockListCommand> mockList;
+    std::stringstream in;
     std::stringstream err;
 };
 
