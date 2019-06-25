@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d5a45390_0bdb097e",
+        "filename": "cmds/lshal/Lshal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-06-25T17:48:44Z",
+      "side": 1,
+      "message": "I should probably do what Neel does and add a macro for this...\n\n    REGISTER_COMMAND(WaitCommand);",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "5231dbe45c3922f11307c08f25b04b78d6651fdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77c1f671_566876e1",
+        "filename": "cmds/lshal/WaitCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-06-25T17:48:44Z",
+      "side": 1,
+      "message": "nice!\n\nAlthough, we should probably add conversions between FqInstance and FQName...",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "5231dbe45c3922f11307c08f25b04b78d6651fdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92f4893b_201f46fe",
         "filename": "cmds/lshal/WaitCommand.cpp",
         "patchSetId": 2
