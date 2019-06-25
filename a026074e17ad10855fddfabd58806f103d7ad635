@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6066953b_16fed7fe",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-06-25T21:42:49Z",
+      "side": 1,
+      "message": "https://android.googlesource.com/platform/tools/tradefederation/+/refs/heads/master/src/com/android/tradefed/testtype/GTest.java#133\n\nThat call doesn\u0027t look into abi specific subfolder. With x86 here, I was able to run atest dumpstate_test against cuttlefish.\nFor arm devices, this needs to be changed to arm. We can use the target specific test xml as in patchset 2.",
+      "range": {
+        "startLine": 23,
+        "startChar": 85,
+        "endLine": 23,
+        "endChar": 88
+      },
+      "revId": "a026074e17ad10855fddfabd58806f103d7ad635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
