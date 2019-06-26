@@ -28,7 +28,7 @@ cc_library_headers {
     ],
 }
 
-cc_library_shared {
+cc_library {
     name: "libbinder",
 
     // for vndbinder
