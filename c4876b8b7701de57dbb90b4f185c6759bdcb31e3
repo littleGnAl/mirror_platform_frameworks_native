@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdc241cd_d92e5976",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2060,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-06-26T19:08:53Z",
+      "side": 1,
+      "message": "use nullptr comparison.",
+      "range": {
+        "startLine": 2060,
+        "startChar": 8,
+        "endLine": 2060,
+        "endChar": 15
+      },
+      "revId": "c4876b8b7701de57dbb90b4f185c6759bdcb31e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
