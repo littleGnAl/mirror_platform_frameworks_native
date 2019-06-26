@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "157509ea_648b0d1f",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-06-26T13:06:52Z",
+      "side": 1,
+      "message": "deactivePackage is only allowed on debug builds. I wonder how this code works...",
+      "range": {
+        "startLine": 75,
+        "startChar": 42,
+        "endLine": 75,
+        "endChar": 59
+      },
+      "revId": "767760a373c4545f079190c9fdb9f43ae24ed1e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9364912_b187e279",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-06-26T13:06:52Z",
+      "side": 1,
+      "message": "No need to call message(), status.error() should be enough since ResultError implements ostream\u0026 operator\u003c\u003c",
+      "range": {
+        "startLine": 78,
+        "startChar": 26,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "767760a373c4545f079190c9fdb9f43ae24ed1e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
