@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e301a972_dad6cf71",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-26T13:11:09Z",
+      "side": 1,
+      "message": "I was not aware of such as restriction; can you give more details about this?",
+      "parentUuid": "157509ea_648b0d1f",
+      "range": {
+        "startLine": 75,
+        "startChar": 42,
+        "endLine": 75,
+        "endChar": 59
+      },
+      "revId": "767760a373c4545f079190c9fdb9f43ae24ed1e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9364912_b187e279",
         "filename": "cmds/installd/otapreopt_chroot.cpp",
         "patchSetId": 1
