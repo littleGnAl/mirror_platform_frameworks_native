@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f332a07_fb1fa3e6",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2019-06-26T22:58:21Z",
+      "side": 1,
+      "message": "Is this file necessary, can\u0027t we just delete https://cs.corp.google.com/android/frameworks/native/cmds/dumpstate/AndroidTest.xml?dr\u0026g\u003d0",
+      "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
