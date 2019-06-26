@@ -45,6 +45,30 @@
       "revId": "dadea7c3f5131f8e45377df038a67dd00be828b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acdbd873_d8667220",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-26T15:45:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d88a291_a0eda568",
+      "range": {
+        "startLine": 287,
+        "startChar": 22,
+        "endLine": 287,
+        "endChar": 24
+      },
+      "revId": "dadea7c3f5131f8e45377df038a67dd00be828b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
