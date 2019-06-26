@@ -63,6 +63,30 @@
       "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6df5956_f0260916",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2019-06-26T23:36:47Z",
+      "side": 1,
+      "message": "So maybe we need this file and need to add that option.",
+      "parentUuid": "b6731cd1_ebb07240",
+      "range": {
+        "startLine": 23,
+        "startChar": 69,
+        "endLine": 23,
+        "endChar": 70
+      },
+      "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
