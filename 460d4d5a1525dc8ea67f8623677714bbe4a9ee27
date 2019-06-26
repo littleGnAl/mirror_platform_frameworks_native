@@ -39,6 +39,30 @@
       "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6731cd1_ebb07240",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-06-26T23:20:06Z",
+      "side": 1,
+      "message": "So GTest will run all executable binaries under located directory unless excluded by file-exclusion-filter-regex.",
+      "parentUuid": "f0140afa_11968de7",
+      "range": {
+        "startLine": 23,
+        "startChar": 69,
+        "endLine": 23,
+        "endChar": 70
+      },
+      "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
