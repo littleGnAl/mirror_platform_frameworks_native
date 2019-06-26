@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7bed8eec_011aa5e8",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-06-26T13:32:07Z",
+      "side": 1,
+      "message": "Sorry, my bad. I assumed that you were calling deactivePackage apexservice binder api, but you\u0027re calling apexd implementation directly. This should work.",
+      "parentUuid": "e301a972_dad6cf71",
+      "range": {
+        "startLine": 75,
+        "startChar": 42,
+        "endLine": 75,
+        "endChar": 59
+      },
+      "revId": "767760a373c4545f079190c9fdb9f43ae24ed1e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9364912_b187e279",
         "filename": "cmds/installd/otapreopt_chroot.cpp",
         "patchSetId": 1
