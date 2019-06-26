@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97174108_e0198d25",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-06-26T22:58:11Z",
+      "side": 1,
+      "message": "without the actual module name here, TF is able to search for the right path to locate dumpstate_test/[abi]/dumpstate_test",
+      "range": {
+        "startLine": 24,
+        "startChar": 70,
+        "endLine": 24,
+        "endChar": 84
+      },
+      "revId": "5d1ebd2438802b0a17115fe7fe0810264dc5aaba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
