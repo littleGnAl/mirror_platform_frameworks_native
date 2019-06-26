@@ -16,6 +16,29 @@
       "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0140afa_11968de7",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-06-26T23:03:58Z",
+      "side": 1,
+      "message": "For this config (removing the module in native-test-device-path), TF/GTest is able to run dumpstate_test and pass all 102 methods.\nHowever, somehow it also tries to run dumpstate_test_fixture as a test, which leads to a failure.\n\nJulien, is that because both binaries are under directory dumpstate_test/arm64/?",
+      "range": {
+        "startLine": 23,
+        "startChar": 69,
+        "endLine": 23,
+        "endChar": 70
+      },
+      "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
