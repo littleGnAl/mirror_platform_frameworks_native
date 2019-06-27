@@ -831,6 +831,8 @@ status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
                 ALOG_ASSERT(err == NO_ERROR, "Not enough command data for brREPLY");
                 if (err != NO_ERROR) goto finish;
 
+                ALOGE("asdfasdf REPLY %llu", tr.data_size);
+
                 if (reply) {
                     if ((tr.flags & TF_STATUS_CODE) == 0) {
                         reply->ipcSetDataReference(
@@ -1116,6 +1118,8 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             ALOG_ASSERT(result == NO_ERROR,
                 "Not enough command data for brTRANSACTION");
             if (result != NO_ERROR) break;
+
+            ALOGE("asdfasdf TRANSACTION %llu", tr.data_size);
 
             //Record the fact that we're in a binder call.
             mIPCThreadStateBase->pushCurrentState(
