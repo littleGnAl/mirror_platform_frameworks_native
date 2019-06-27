@@ -159,6 +159,7 @@ cc_binary {
         "lib_apex_manifest_proto",
         "libavb",
         "libdm",
+        "libext2_uuid",
         "libverity_tree",
         "libvold_binder",
     ],
