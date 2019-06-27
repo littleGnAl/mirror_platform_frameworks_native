@@ -135,6 +135,30 @@
       "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f99a340_6567577f",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2019-06-27T03:22:28Z",
+      "side": 1,
+      "message": "Yes, the dumpstate_test will try to execute below command.\n\nActual: \"execvp on command \u0027/data/local/tmp/dumpstate_test/x86/../dumpstate_test_fixture/dumpstate_test_fixture --pid --sleep 20\u0027 failed",
+      "parentUuid": "a060d5b1_89b0ba3f",
+      "range": {
+        "startLine": 23,
+        "startChar": 69,
+        "endLine": 23,
+        "endChar": 70
+      },
+      "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
