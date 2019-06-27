@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "db119d4f_e4f2cd0c",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-06-27T05:28:34Z",
+      "side": 1,
+      "message": "not sure if that test config is only meant for dumpstate_test_fixture. Also, there is a dumpstate_smoke_test, it will need its own test config too.",
+      "parentUuid": "2f332a07_fb1fa3e6",
+      "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0140afa_11968de7",
         "filename": "cmds/dumpstate/dumpstate_test.xml",
         "patchSetId": 6
