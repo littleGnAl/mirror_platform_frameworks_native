@@ -82,6 +82,8 @@ public:
     bool                hasFileDescriptors() const;
 
     // Writes the RPC header.
+    status_t            writeInterfaceTokenOriginal(const String16& interface);
+
     status_t            writeInterfaceToken(const String16& interface);
 
     // Parses the RPC header, returning true if the interface name

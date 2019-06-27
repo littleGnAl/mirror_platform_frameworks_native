@@ -583,12 +583,19 @@ bool Parcel::hasFileDescriptors() const
 }
 
 // Write RPC headers.  (previously just the interface token)
-status_t Parcel::writeInterfaceToken(const String16& interface)
+status_t Parcel::writeInterfaceTokenOriginal(const String16& interface)
 {
     writeInt32(IPCThreadState::self()->getStrictModePolicy() |
                STRICT_MODE_PENALTY_GATHER);
     // currently the interface identification token is just its name as a string
     return writeString16(interface);
+}
+
+status_t Parcel::writeInterfaceToken(const String16& interface)
+{
+    (void) interface;
+    // simulate having no header (in reality, we'd need at least something)
+    return OK;
 }
 
 bool Parcel::checkInterface(IBinder* binder) const
@@ -599,28 +606,9 @@ bool Parcel::checkInterface(IBinder* binder) const
 bool Parcel::enforceInterface(const String16& interface,
                               IPCThreadState* threadState) const
 {
-    int32_t strictPolicy = readInt32();
-    if (threadState == nullptr) {
-        threadState = IPCThreadState::self();
-    }
-    if ((threadState->getLastTransactionBinderFlags() &
-         IBinder::FLAG_ONEWAY) != 0) {
-      // For one-way calls, the callee is running entirely
-      // disconnected from the caller, so disable StrictMode entirely.
-      // Not only does disk/network usage not impact the caller, but
-      // there's no way to commuicate back any violations anyway.
-      threadState->setStrictModePolicy(0);
-    } else {
-      threadState->setStrictModePolicy(strictPolicy);
-    }
-    const String16 str(readString16());
-    if (str == interface) {
-        return true;
-    } else {
-        ALOGW("**** enforceInterface() expected '%s' but read '%s'",
-                String8(interface).string(), String8(str).string());
-        return false;
-    }
+    (void) interface;
+    (void) threadState;
+    return true;
 }
 
 const binder_size_t* Parcel::objects() const

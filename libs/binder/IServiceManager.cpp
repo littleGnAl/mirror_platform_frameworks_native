@@ -182,7 +182,7 @@ public:
     virtual sp<IBinder> checkService( const String16& name) const
     {
         Parcel data, reply;
-        data.writeInterfaceToken(IServiceManager::getInterfaceDescriptor());
+        data.writeInterfaceTokenOriginal(IServiceManager::getInterfaceDescriptor());
         data.writeString16(name);
         remote()->transact(CHECK_SERVICE_TRANSACTION, data, &reply);
         return reply.readStrongBinder();
@@ -191,7 +191,7 @@ public:
     virtual status_t addService(const String16& name, const sp<IBinder>& service,
                                 bool allowIsolated, int dumpsysPriority) {
         Parcel data, reply;
-        data.writeInterfaceToken(IServiceManager::getInterfaceDescriptor());
+        data.writeInterfaceTokenOriginal(IServiceManager::getInterfaceDescriptor());
         data.writeString16(name);
         data.writeStrongBinder(service);
         data.writeInt32(allowIsolated ? 1 : 0);
@@ -206,7 +206,7 @@ public:
 
         for (;;) {
             Parcel data, reply;
-            data.writeInterfaceToken(IServiceManager::getInterfaceDescriptor());
+            data.writeInterfaceTokenOriginal(IServiceManager::getInterfaceDescriptor());
             data.writeInt32(n++);
             data.writeInt32(dumpsysPriority);
             status_t err = remote()->transact(LIST_SERVICES_TRANSACTION, data, &reply);
