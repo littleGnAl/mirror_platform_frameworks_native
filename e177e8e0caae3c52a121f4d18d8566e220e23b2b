@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25638068_843b65a7",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-27T23:24:24Z",
+      "side": 1,
+      "message": "The standard template should always only execute the given cc_test executable.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 87
+      },
+      "revId": "e177e8e0caae3c52a121f4d18d8566e220e23b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
