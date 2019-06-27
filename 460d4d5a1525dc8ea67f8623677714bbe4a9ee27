@@ -111,6 +111,30 @@
       "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a060d5b1_89b0ba3f",
+        "filename": "cmds/dumpstate/dumpstate_test.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2019-06-27T00:21:15Z",
+      "side": 1,
+      "message": "I guess the test depends on it and executes it?",
+      "parentUuid": "f4db23b6_84a65132",
+      "range": {
+        "startLine": 23,
+        "startChar": 69,
+        "endLine": 23,
+        "endChar": 70
+      },
+      "revId": "460d4d5a1525dc8ea67f8623677714bbe4a9ee27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
