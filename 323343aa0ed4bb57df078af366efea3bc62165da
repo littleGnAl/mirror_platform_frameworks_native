@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc77bee0_634440e4",
+        "filename": "cmds/dumpstate/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-06-28T08:46:17Z",
+      "side": 1,
+      "message": "For some future follow-up, the name of this function is very confusing - it\u0027s more like \u0027create_control_socket_and_wait_for_client\u0027 :-)",
+      "range": {
+        "startLine": 721,
+        "startChar": 4,
+        "endLine": 721,
+        "endChar": 15
+      },
+      "revId": "323343aa0ed4bb57df078af366efea3bc62165da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
