@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff0f330d_148ac115",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-01T16:28:14Z",
+      "side": 1,
+      "message": "Why was this moved onto the next line? (Installd does not follow Google3 80 column width)",
+      "range": {
+        "startLine": 78,
+        "startChar": 23,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "7dcfd3429b315525a8961ec20ba268d95c9c9ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
