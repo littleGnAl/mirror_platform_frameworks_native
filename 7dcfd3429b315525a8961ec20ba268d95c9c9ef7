@@ -22,6 +22,30 @@
       "revId": "7dcfd3429b315525a8961ec20ba268d95c9c9ef7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "068dc38e_15e9d1bc",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2019-07-02T09:50:16Z",
+      "side": 1,
+      "message": "You are right. Just checked and found that \"Hook Scripts\" does not push it to new line if it\u0027s on same line. That means I did it by mistake since there is no reason for it to be in a new line.",
+      "parentUuid": "ff0f330d_148ac115",
+      "range": {
+        "startLine": 78,
+        "startChar": 23,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "7dcfd3429b315525a8961ec20ba268d95c9c9ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
