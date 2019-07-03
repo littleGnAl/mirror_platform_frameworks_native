@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ba81c27_baffefb6",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-03T00:45:28Z",
+      "side": 1,
+      "message": "Is this guaranteed to get called whenever binderDied is called?",
+      "range": {
+        "startLine": 486,
+        "startChar": 21,
+        "endLine": 486,
+        "endChar": 33
+      },
+      "revId": "1c4ea60c87b3f3dbbf4a7cf28cf1bdbc16df2316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
