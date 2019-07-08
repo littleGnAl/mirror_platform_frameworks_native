@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b695ec5d_ca3235d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-07-08T18:56:44Z",
+      "side": 1,
+      "message": "update",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "1c4ea60c87b3f3dbbf4a7cf28cf1bdbc16df2316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ba81c27_baffefb6",
         "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
         "patchSetId": 1
