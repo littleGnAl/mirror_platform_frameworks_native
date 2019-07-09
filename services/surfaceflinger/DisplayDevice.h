@@ -343,17 +343,27 @@ public:
                       Transform::orientation_flags rotation = Transform::ROT_0)
           : DisplayRenderArea(device, device->getBounds(), device->getWidth(), device->getHeight(),
                               rotation) {}
+<<<<<<< HEAD   (8add7a Merge "Add owners for package manger")
     DisplayRenderArea(const sp<const DisplayDevice> device, Rect sourceCrop, uint32_t reqWidth,
                       uint32_t reqHeight, Transform::orientation_flags rotation)
           : RenderArea(reqWidth, reqHeight, CaptureFill::OPAQUE,
                        getDisplayRotation(rotation, device->getInstallOrientation())),
             mDevice(device),
             mSourceCrop(sourceCrop) {}
+=======
+    DisplayRenderArea(const sp<const DisplayDevice> device, Rect sourceCrop, uint32_t reqHeight,
+                      uint32_t reqWidth, ISurfaceComposer::Rotation rotation,
+                      bool allowSecureLayers = true)
+          : RenderArea(reqHeight, reqWidth, CaptureFill::OPAQUE, rotation), mDevice(device),
+                              mSourceCrop(sourceCrop),
+                              mAllowSecureLayers(allowSecureLayers) {}
+>>>>>>> BRANCH (6431a9 Snap for 5622519 from 2062c5a408eb44ead19b7e2e797e93b5781ae9)
 
     const Transform& getTransform() const override { return mDevice->getTransform(); }
     Rect getBounds() const override { return mDevice->getBounds(); }
     int getHeight() const override { return mDevice->getHeight(); }
     int getWidth() const override { return mDevice->getWidth(); }
+<<<<<<< HEAD   (8add7a Merge "Add owners for package manger")
     bool isSecure() const override { return mDevice->isSecure(); }
 
     bool needsFiltering() const override {
@@ -414,6 +424,11 @@ public:
                 rotation * translatePhysical * scale * translateLogical;
         return finalTransform.transform(mSourceCrop);
     }
+=======
+    bool isSecure() const override { return mAllowSecureLayers && mDevice->isSecure(); }
+    bool needsFiltering() const override { return mDevice->needsFiltering(); }
+    Rect getSourceCrop() const override { return mSourceCrop; }
+>>>>>>> BRANCH (6431a9 Snap for 5622519 from 2062c5a408eb44ead19b7e2e797e93b5781ae9)
 
 private:
     // Install orientation is transparent to the callers.  We need to cancel
@@ -456,6 +471,7 @@ private:
 
     const sp<const DisplayDevice> mDevice;
     const Rect mSourceCrop;
+    const bool mAllowSecureLayers;
 };
 
 }; // namespace android
