@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69850974_e4eb8279",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1061217
+      },
+      "writtenOn": "2019-07-11T16:35:40Z",
+      "side": 1,
+      "message": "Did you mean getCallingUid?\nAnd AID_ROOT should be allowed too",
+      "range": {
+        "startLine": 253,
+        "startChar": 40,
+        "endLine": 253,
+        "endChar": 53
+      },
+      "revId": "246eb18e17a4c6d6bd6072a60e11647f5049d323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
