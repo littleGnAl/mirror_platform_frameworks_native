@@ -49,6 +49,8 @@ typedef enum OMX_AUDIO_CODINGEXTTYPE {
     OMX_AUDIO_CodingAndroidOPUS,        /**< OPUS encoded data */
     OMX_AUDIO_CodingAndroidEAC3,        /**< EAC3 encoded data */
     OMX_AUDIO_CodingAndroidAC4,         /**< AC4 encoded data */
+    OMX_AUDIO_CodingAndroidDTS,         /**< DTS encoded data */
+    OMX_AUDIO_CodingAndroidAPE,         /**< APE encoded data */
 } OMX_AUDIO_CODINGEXTTYPE;
 
 typedef struct OMX_AUDIO_PARAM_ANDROID_AC3TYPE {
@@ -77,6 +79,15 @@ typedef struct OMX_AUDIO_PARAM_ANDROID_AC4TYPE {
     OMX_U32 nSampleRate;           /**< Sampling rate of the source data.  Use 0 for
                                         variable or unknown sampling rate. */
 } OMX_AUDIO_PARAM_ANDROID_AC4TYPE;
+
+typedef struct OMX_AUDIO_PARAM_ANDROID_DTSTYPE {
+    OMX_U32 nSize;                 /**< size of the structure in bytes */
+    OMX_VERSIONTYPE nVersion;      /**< OMX specification version information */
+    OMX_U32 nPortIndex;            /**< port that this structure applies to */
+    OMX_U32 nChannels;             /**< Number of channels */
+    OMX_U32 nSampleRate;           /**< Sampling rate of the source data.  Use 0 for
+                                        variable or unknown sampling rate. */
+} OMX_AUDIO_PARAM_ANDROID_DTSTYPE;
 
 typedef struct OMX_AUDIO_PARAM_ANDROID_OPUSTYPE {
     OMX_U32 nSize;            /**< size of the structure in bytes */
@@ -133,6 +144,47 @@ typedef struct OMX_AUDIO_CONFIG_ANDROID_AUDIOPRESENTATION {
     OMX_S32 nPresentationId;       /**< presentation id */
     OMX_S32 nProgramId;            /**< program id */
 } OMX_AUDIO_CONFIG_ANDROID_AUDIOPRESENTATION;
+
+typedef struct OMX_AUDIO_PARAM_ANDROID_APETYPE {
+    OMX_U32 nSize;                 /**< size of the structure in bytes */
+    OMX_VERSIONTYPE nVersion;      /**< OMX specification version information */
+    OMX_U32 nPortIndex;            /**< port that this structure applies to */
+    OMX_U32 nChannels;             /**< Number of channels */
+    OMX_U32 nSampleRate;           /**< Sampling rate of the source data.  Use 0 for
+                                        variable or unknown sampling rate. */
+    OMX_U32 nBitRate;              /**< Bit rate of the input data.  Use 0 for variable
+                                        rate or unknown bit rates */
+    OMX_U16 nCompressionType;      /**< Compression level, e.g. 1000(fast), 2000(normal), etc*/
+    OMX_U16 nBitsPerCodedSample;   /**< Bit per sample */
+    OMX_U32 nBlocksPerFrame;       /**< Block per frame */
+    OMX_U32 nFinalFrameBlocks;     /**< Block in final frame */
+    OMX_U32 nTotalFrames;          /**< Number of total frames */
+    OMX_S32 nSourceBufferSize;     /**< Buffer size of the input data */
+    OMX_S16 nFileVersion;          /**< Version of the APE file */
+} OMX_AUDIO_PARAM_ANDROID_APETYPE;
+
+/** ADPCM type */
+typedef enum OMX_AUDIO_ANDROID_ADPCMTYPE{
+    OMX_AUDIO_Android_ADPCMModeMS = 0,    /**ADPCM-MS*/
+    OMX_AUDIO_Android_ADPCMModeIMA,       /**ADPCM-IMA*/
+    OMX_AUDIO_Android_ADPCMModeMax = 0x7FFFFFFF
+} OMX_AUDIO_ANDROID_ADPCMTYPE;
+
+/** ADPCM stream format parameters */
+typedef struct OMX_AUDIO_PARAM_ANDROID_ADPCMTYPE {
+    OMX_U32 nSize;                          /**< size of the structure in bytes */
+    OMX_VERSIONTYPE nVersion;               /**< OMX specification version information */
+    OMX_U32 nPortIndex;                     /**< port that this structure applies to */
+    OMX_U32 nChannels;                      /**< Number of channels in the data stream (not
+                                                 necessarily the same as the number of channels
+                                                 to be rendered. */
+    OMX_U32 nBitsPerSample;                 /**< Number of bits in each sample */
+    OMX_U32 nSampleRate;                    /**< Sampling rate of the source data.  Use 0 for
+                                                 variable or unknown sampling rate. */
+    OMX_U32 nBlockAlign;                    /**< is the block alignment, or block size, in bytes
+                                                 of the audio codec */
+    OMX_AUDIO_ANDROID_ADPCMTYPE eADPCMType; /**< ADPCM type enumeration */
+} OMX_AUDIO_PARAM_ANDROID_ADPCMTYPE;
 
 #ifdef __cplusplus
 }
