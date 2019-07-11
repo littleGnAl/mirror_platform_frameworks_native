@@ -46,6 +46,30 @@
       "revId": "458f0b3cb59ce4aeed7388d6817b4fcb304f4829",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86a34fd0_39c50dee",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-11T17:59:04Z",
+      "side": 1,
+      "message": "Ah thanks, I was looking for something like this but I forgot about FATAL_WITHOUT_ABORT. Done in PS2.",
+      "parentUuid": "e76559f7_f75d020b",
+      "range": {
+        "startLine": 245,
+        "startChar": 12,
+        "endLine": 245,
+        "endChar": 17
+      },
+      "revId": "458f0b3cb59ce4aeed7388d6817b4fcb304f4829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
