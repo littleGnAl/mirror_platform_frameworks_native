@@ -64,6 +64,8 @@ typedef enum OMX_INDEXEXTTYPE {
     OMX_IndexParamAudioAndroidEac3,                 /**< reference: OMX_AUDIO_PARAM_ANDROID_EAC3TYPE */
     OMX_IndexParamAudioProfileQuerySupported,       /**< reference: OMX_AUDIO_PARAM_ANDROID_PROFILETYPE */
     OMX_IndexParamAudioAndroidAacDrcPresentation,   /**< reference: OMX_AUDIO_PARAM_ANDROID_AACDRCPRESENTATIONTYPE */
+    OMX_IndexParamAudioApe,                         /**< reference: OMX_AUDIO_PARAM_APETYPE */
+    OMX_IndexParamAudioAndroidDts,                  /**< reference: OMX_AUDIO_PARAM_ANDROID_DTSTYPE */
     OMX_IndexExtAudioEndUnused,
 
     /* Image parameters and configurations */
