@@ -22,6 +22,30 @@
       "revId": "246eb18e17a4c6d6bd6072a60e11647f5049d323",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e02a595b_ff415910",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-11T16:41:09Z",
+      "side": 1,
+      "message": "Yes to both. Good catch on getCallingUid (and see discussion above). I hadn\u0027t tested this CL yet, only want to see if it would break anything. It seems nothing depends on shell, so I\u0027m good to move forward with this change. Thanks!",
+      "parentUuid": "69850974_e4eb8279",
+      "range": {
+        "startLine": 253,
+        "startChar": 40,
+        "endLine": 253,
+        "endChar": 53
+      },
+      "revId": "246eb18e17a4c6d6bd6072a60e11647f5049d323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
