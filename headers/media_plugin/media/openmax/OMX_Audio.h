@@ -457,6 +457,12 @@ typedef struct OMX_AUDIO_PARAM_SBCTYPE {
     OMX_AUDIO_SBCALLOCMETHODTYPE eSBCAllocType;   /**< SBC Allocation method type */
 } OMX_AUDIO_PARAM_SBCTYPE;
 
+/** ADPCM type */
+typedef enum OMX_AUDIO_ADPCMTYPE{
+    OMX_AUDIO_ADPCMModeMS = 0,    /**ADPCM-MS*/
+    OMX_AUDIO_ADPCMModeIMA,       /**ADPCM-IMA*/
+    OMX_AUDIO_ADPCMModeMax = 0x7FFFFFFF
+} OMX_AUDIO_ADPCMTYPE;
 
 /** ADPCM stream format parameters */
 typedef struct OMX_AUDIO_PARAM_ADPCMTYPE {
@@ -469,6 +475,9 @@ typedef struct OMX_AUDIO_PARAM_ADPCMTYPE {
     OMX_U32 nBitsPerSample;     /**< Number of bits in each sample */
     OMX_U32 nSampleRate;        /**< Sampling rate of the source data.  Use 0 for
                                     variable or unknown sampling rate. */
+    OMX_U32 nBlockAlign;
+    OMX_U32 nFrameSize;
+    OMX_AUDIO_ADPCMTYPE eADPCMType;
 } OMX_AUDIO_PARAM_ADPCMTYPE;
 
 

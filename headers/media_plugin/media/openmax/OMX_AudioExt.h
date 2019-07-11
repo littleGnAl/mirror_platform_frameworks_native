@@ -48,6 +48,8 @@ typedef enum OMX_AUDIO_CODINGEXTTYPE {
     OMX_AUDIO_CodingAndroidAC3,         /**< AC3 encoded data */
     OMX_AUDIO_CodingAndroidOPUS,        /**< OPUS encoded data */
     OMX_AUDIO_CodingAndroidEAC3,        /**< EAC3 encoded data */
+    OMX_AUDIO_CodingDTS,                /**< DTS encoded data */
+    OMX_AUDIO_CodingAPE,                /**< APE encoded data */
 } OMX_AUDIO_CODINGEXTTYPE;
 
 typedef struct OMX_AUDIO_PARAM_ANDROID_AC3TYPE {
@@ -67,6 +69,15 @@ typedef struct OMX_AUDIO_PARAM_ANDROID_EAC3TYPE {
     OMX_U32 nSampleRate;           /**< Sampling rate of the source data.  Use 0 for
                                         variable or unknown sampling rate. */
 } OMX_AUDIO_PARAM_ANDROID_EAC3TYPE;
+
+typedef struct OMX_AUDIO_PARAM_ANDROID_DTSTYPE {
+    OMX_U32 nSize;                 /**< size of the structure in bytes */
+    OMX_VERSIONTYPE nVersion;      /**< OMX specification version information */
+    OMX_U32 nPortIndex;            /**< port that this structure applies to */
+    OMX_U32 nChannels;             /**< Number of channels */
+    OMX_U32 nSampleRate;           /**< Sampling rate of the source data.  Use 0 for
+                                        variable or unknown sampling rate. */
+} OMX_AUDIO_PARAM_ANDROID_DTSTYPE;
 
 typedef struct OMX_AUDIO_PARAM_ANDROID_OPUSTYPE {
     OMX_U32 nSize;            /**< size of the structure in bytes */
@@ -116,6 +127,23 @@ typedef struct OMX_AUDIO_PARAM_ANDROID_PROFILETYPE {
                                  depending on context */
    OMX_U32 nProfileIndex; /**< Used to query for individual profile support information */
 } OMX_AUDIO_PARAM_ANDROID_PROFILETYPE;
+
+typedef struct OMX_AUDIO_PARAM_APETYPE {
+    OMX_U32 nSize;                 /**< size of the structure in bytes */
+    OMX_VERSIONTYPE nVersion;      /**< OMX specification version information */
+    OMX_U32 nPortIndex;            /**< port that this structure applies to */
+    OMX_U32 nChannels;             /**< Number of channels */
+    OMX_U32 nSampleRate;           /**< Sampling rate of the source data.  Use 0 for
+                                        variable or unknown sampling rate. */
+    OMX_U32 nBitRate;
+    OMX_U16 nCompressionType;
+    OMX_U16 nBitsPerCodedSample;
+    OMX_U32 nBlocksPerFrame;
+    OMX_U32 nFinalFrameBlocks;
+    OMX_U32 nTotalFrames;
+    OMX_S32 nSourceBufferSize;
+    OMX_S16 nFileVersion;
+} OMX_AUDIO_PARAM_APETYPE;
 
 #ifdef __cplusplus
 }

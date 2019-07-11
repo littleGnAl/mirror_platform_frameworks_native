@@ -39,6 +39,23 @@ extern "C" {
  * for this header file to compile successfully
  */
 #include <OMX_Core.h>
+#include <OMX_Video.h>
+
+typedef enum OMX_VIDEO_CODINGEXTTYPE {
+    OMX_VIDEO_CodingExtUnused = OMX_VIDEO_CodingVendorStartUnused + 0x00100000,
+    OMX_VIDEO_CodingAVS,        /**< AVS encoded data */
+    OMX_VIDEO_CodingVP6,        /**< VP6 encoded data */
+    OMX_VIDEO_CodingAVS2,       /**< AVS encoded data */
+    OMX_VIDEO_CodingVC1,        /**< VC1 encoded data */
+    OMX_VIDEO_CodingFLV,        /**< FLV encoded data */
+    OMX_VIDEO_CodingDIVX311,    /**< DIVX311 encoded data */
+    OMX_VIDEO_CodingDIVX412,    /**< DIVX412 encoded data */
+    OMX_VIDEO_CodingDIVX5,      /**< DIVX5 encoded data */
+    OMX_VIDEO_CodingDIVXAVC,    /**< DIVX AVC encoded data */
+    OMX_VIDEO_CodingDIVXHEVC,   /**< DIVX HEVC encoded data */
+    OMX_VIDEO_CodingAV1,        /**< AV1 encoded data */
+    OMX_VIDEO_CodingSHVC,       /**< SHVC encoded data */
+} OMX_VIDEO_CODINGEXTTYPE;
 
 /** NALU Formats */
 typedef enum OMX_NALUFORMATSTYPE {
