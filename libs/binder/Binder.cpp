@@ -17,12 +17,14 @@
 #include <binder/Binder.h>
 
 #include <atomic>
-#include <utils/misc.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
+#include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
+#include <cutils/android_filesystem_config.h>
+#include <utils/misc.h>
 
 #include <stdio.h>
 
@@ -248,6 +250,10 @@ status_t BBinder::onTransact(
         }
 
         case SHELL_COMMAND_TRANSACTION: {
+            if (IPCThreadState::self()->getCallingPid() != AID_SHELL) {
+                return PERMISSION_DENIED;
+            }
+
             int in = data.readFileDescriptor();
             int out = data.readFileDescriptor();
             int err = data.readFileDescriptor();
