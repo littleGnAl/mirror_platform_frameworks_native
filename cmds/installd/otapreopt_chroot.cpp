@@ -236,6 +236,16 @@ static int otapreopt_chroot(const int argc, char **arg) {
     // the Android Runtime APEX, as it is required by otapreopt to run dex2oat.
     std::vector<apex::ApexFile> active_packages = ActivateApexPackages();
 
+    // Check that an Android Runtime APEX has been activated; exit early otherwise.
+    if (std::none_of(active_packages.begin(),
+                     active_packages.end(),
+                     [](const apex::ApexFile& package){
+                         return package.GetManifest().name() == "com.android.runtime";
+                     })) {
+        LOG(ERROR) << "No activated com.android.runtime APEX package.";
+        exit(215);
+    }
+
     // Now go on and run otapreopt.
 
     // Incoming:  cmd + status-fd + target-slot + cmd...      | Incoming | = argc
