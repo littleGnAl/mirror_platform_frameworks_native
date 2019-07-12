@@ -58,6 +58,7 @@
 #include <debuggerd/client.h>
 #include <dumpsys.h>
 #include <dumputils/dump_utils.h>
+#include <hardware_legacy/power.h>
 #include <hidl/ServiceManagement.h>
 #include <openssl/sha.h>
 #include <private/android_filesystem_config.h>
@@ -143,6 +144,8 @@ static Dumpstate& ds = Dumpstate::GetInstance();
     RETURN_IF_USER_DENIED_CONSENT();                        \
     func_ptr(__VA_ARGS__);                                  \
     RETURN_IF_USER_DENIED_CONSENT();
+
+static const char* WAKE_LOCK_NAME = "dumpstate_wakelock";
 
 namespace android {
 namespace os {
@@ -1777,6 +1780,14 @@ static void ShowUsage() {
             "  -v: prints the dumpstate header and exit\n");
 }
 
+static void wake_lock_releaser() {
+    if (release_wake_lock(WAKE_LOCK_NAME) < 0) {
+        MYLOGE("Failed to release wake lock: %s\n", strerror(errno));
+    } else {
+        MYLOGD("Wake lock released.\n");
+    }
+}
+
 static void register_sig_handler() {
     signal(SIGPIPE, SIG_IGN);
 }
@@ -2404,6 +2415,15 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     android::base::SetProperty(PROPERTY_LAST_ID, std::to_string(last_id));
 
     MYLOGI("begin\n");
+
+    if (acquire_wake_lock(PARTIAL_WAKE_LOCK, WAKE_LOCK_NAME) < 0) {
+        MYLOGE("Failed to acquire wake lock: %s\n", strerror(errno));
+    } else {
+        MYLOGD("Wake lock acquired.\n");
+        if(atexit(wake_lock_releaser) != 0) {
+            MYLOGE("Failed to set exit function for dumpstate\n");
+        }
+    }
 
     register_sig_handler();
 
