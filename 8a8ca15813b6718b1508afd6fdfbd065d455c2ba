@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00f261c6_c87ed04d",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-12T10:56:48Z",
+      "side": 1,
+      "message": "I realized exit codes 215 and 216 had been used in previous revisions of this file; hence this change.",
+      "range": {
+        "startLine": 248,
+        "startChar": 13,
+        "endLine": 248,
+        "endChar": 16
+      },
+      "revId": "8a8ca15813b6718b1508afd6fdfbd065d455c2ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
