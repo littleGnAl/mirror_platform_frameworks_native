@@ -45,7 +45,7 @@ sp<IServiceManager> defaultServiceManager()
         AutoMutex _l(gDefaultServiceManagerLock);
         while (gDefaultServiceManager == nullptr) {
             gDefaultServiceManager = interface_cast<IServiceManager>(
-                ProcessState::self()->getContextObject(nullptr));
+                ProcessState::self()->getStrongProxyForHandle(0));
             if (gDefaultServiceManager == nullptr)
                 sleep(1);
         }
