@@ -46,6 +46,30 @@
       "revId": "f0f97d362a7ca644ac41542a12cc674e090135d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ce089a1_46e00a1b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-12T20:52:42Z",
+      "side": 1,
+      "message": "These sound pretty terrible to me, but w/e.\n\nWhat\u0027s misc for, then?",
+      "parentUuid": "9d19302a_a70782cd",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "f0f97d362a7ca644ac41542a12cc674e090135d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
