@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4951d7c9_111734bc",
+        "filename": "libs/vr/libbufferhubqueue/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-12T16:37:06Z",
+      "side": 1,
+      "message": "btw, it\u0027s probably easier to use cc_defaults if you need to use these in multiple places.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "e1403dceb4640ff570a485ac8736ae6109afb1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
