@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bae460b_c51dd125",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1468456
+      },
+      "writtenOn": "2019-07-15T17:36:19Z",
+      "side": 1,
+      "message": "can you add somewhere - this list of HALs is running on the device? \n\nIt wasn\u0027t clear that the service with that version is running but doesn\u0027t exist in the manifest.",
+      "revId": "d64ba89b2ae8fcc8aedf8907bdadc4a39a8457b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
