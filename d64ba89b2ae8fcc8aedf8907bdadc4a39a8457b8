@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8eaff25c_3d5809a6",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-15T20:03:29Z",
+      "side": 1,
+      "message": "note, these are the different descriptions of the different sections",
+      "revId": "d64ba89b2ae8fcc8aedf8907bdadc4a39a8457b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bae460b_c51dd125",
         "filename": "cmds/lshal/ListCommand.cpp",
         "patchSetId": 1
@@ -16,6 +33,47 @@
       "revId": "d64ba89b2ae8fcc8aedf8907bdadc4a39a8457b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cf98a79_5dd88df1",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-15T20:03:29Z",
+      "side": 1,
+      "message": "(can do it in another CL if necessary, will go ahead and submit this one).\n\nThis depends on the section of lshal (which type) that is presented. You can control this with the \u0027--types\u0027 options. Each of these sections has a description, so the HAL is only running on the device if it is in the binderized section with this header:\n| All binderized services (registered with hwservicemanager)\n\nIf the HAL is in the third section, this isn\u0027t necessarily true:\n| All available passthrough implementations (all -impl.so files).\n| These may return subclasses through their respective HIDL_FETCH_I* functions.\n\nSo, I\u0027d rather keep these orthogonal.",
+      "parentUuid": "1bae460b_c51dd125",
+      "revId": "d64ba89b2ae8fcc8aedf8907bdadc4a39a8457b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3225ab06_75b5ced5",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-15T20:03:29Z",
+      "side": 1,
+      "message": "note, these are the different types of output.",
+      "range": {
+        "startLine": 1022,
+        "startChar": 0,
+        "endLine": 1033,
+        "endChar": 10
+      },
+      "revId": "d64ba89b2ae8fcc8aedf8907bdadc4a39a8457b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
