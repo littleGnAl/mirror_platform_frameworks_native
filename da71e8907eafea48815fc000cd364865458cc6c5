@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c6351b0_505b769c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-07-15T13:44:34Z",
+      "side": 1,
+      "message": "have you tested the negative case? ie make ini kill dumpstate when it\u0027s running and ensure the wakelock is released. Killing is not sufficient. Can you also check the wakelock count( adb shell \"cat /sys/kernel/debug/wakeup_sources\"|grep dumpstate_wakelock) goes back down? Please add those tests here under Test:",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "da71e8907eafea48815fc000cd364865458cc6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
