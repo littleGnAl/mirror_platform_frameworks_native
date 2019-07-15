@@ -951,12 +951,8 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
 
     if (err >= NO_ERROR) {
         if (bwr.write_consumed > 0) {
-            if (bwr.write_consumed < mOut.dataSize())
-                mOut.remove(0, bwr.write_consumed);
-            else {
-                mOut.setDataSize(0);
-                processPostWriteDerefs();
-            }
+            mOut.setDataSize(0);
+            processPostWriteDerefs();
         }
         if (bwr.read_consumed > 0) {
             mIn.setDataSize(bwr.read_consumed);
