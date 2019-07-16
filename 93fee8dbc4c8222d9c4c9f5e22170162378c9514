@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6e2d029_c0c37250",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-07-16T09:13:07Z",
+      "side": 0,
+      "message": "I would leave the abort in this scenario (but remove the remove method); it\u0027s a failure of the driver to not consume everything in the write buffer, and we actually had this issue a while back.",
+      "range": {
+        "startLine": 954,
+        "startChar": 12,
+        "endLine": 959,
+        "endChar": 13
+      },
+      "revId": "93fee8dbc4c8222d9c4c9f5e22170162378c9514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
