@@ -22,6 +22,30 @@
       "revId": "93fee8dbc4c8222d9c4c9f5e22170162378c9514",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3f74d7e_84334dc6",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-16T16:10:03Z",
+      "side": 0,
+      "message": "Ack, thanks for the catch.",
+      "parentUuid": "e6e2d029_c0c37250",
+      "range": {
+        "startLine": 954,
+        "startChar": 12,
+        "endLine": 959,
+        "endChar": 13
+      },
+      "revId": "93fee8dbc4c8222d9c4c9f5e22170162378c9514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
