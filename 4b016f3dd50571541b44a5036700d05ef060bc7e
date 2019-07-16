@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c79a4b9_59281705",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-07-16T21:58:08Z",
+      "side": 1,
+      "message": "you need test_suites setting here.\ntest_suites: [\"device-tests\"],",
+      "revId": "4b016f3dd50571541b44a5036700d05ef060bc7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
