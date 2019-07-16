@@ -22,6 +22,29 @@
       "revId": "da71e8907eafea48815fc000cd364865458cc6c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1920df5b_53497c47",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2423,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-07-16T09:28:50Z",
+      "side": 1,
+      "message": "Can you check the return value of this, and only acquire it if this succeeded? (It wouldn\u0027t expect it to ever fail, but it\u0027s good hygiene).\n\nRelated Q: on the bug, trong@m mentions cleanup is done automatically. Is that not triggered for dumpstate?",
+      "range": {
+        "startLine": 2423,
+        "startChar": 8,
+        "endLine": 2423,
+        "endChar": 35
+      },
+      "revId": "da71e8907eafea48815fc000cd364865458cc6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
