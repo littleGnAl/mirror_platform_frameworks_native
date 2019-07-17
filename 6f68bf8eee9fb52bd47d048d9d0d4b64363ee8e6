@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f397855_d66f7ccc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-07-17T15:27:11Z",
+      "side": 1,
+      "message": "how long does it take without your changes?",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
