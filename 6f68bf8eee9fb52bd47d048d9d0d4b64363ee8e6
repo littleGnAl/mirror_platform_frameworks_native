@@ -22,6 +22,29 @@
       "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db9fba19_f20a9d29",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2423,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-07-18T07:51:27Z",
+      "side": 1,
+      "message": "I would do this first, and return an error if it fails. Otherwise, the wakelock we acquired on L2419 would never be released, keeping the CPU awake.",
+      "range": {
+        "startLine": 2423,
+        "startChar": 8,
+        "endLine": 2423,
+        "endChar": 45
+      },
+      "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
