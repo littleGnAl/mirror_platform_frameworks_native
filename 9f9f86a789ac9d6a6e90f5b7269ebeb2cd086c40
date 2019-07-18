@@ -22,6 +22,30 @@
       "revId": "9f9f86a789ac9d6a6e90f5b7269ebeb2cd086c40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eef0544_d0cf2d2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-18T17:33:41Z",
+      "side": 1,
+      "message": "Test: atest --test-mapping frameworks/native/cmds/installd\nTest: forrest (asit/dexoptota/self_full)",
+      "parentUuid": "33b1814f_935506cc",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "9f9f86a789ac9d6a6e90f5b7269ebeb2cd086c40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
