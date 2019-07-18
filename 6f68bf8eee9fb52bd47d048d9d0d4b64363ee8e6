@@ -45,6 +45,30 @@
       "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8851eb23_c6259794",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2423,
+      "author": {
+        "id": 1530043
+      },
+      "writtenOn": "2019-07-18T09:43:30Z",
+      "side": 1,
+      "message": "I could add it the beginning, but \n1. if wake_lock_releaser gets called before acquiring a wake lock then we may end up reporting a false fail.\n2. If atexit fails registering wake_lock_releaser, we error out, dumpstate process dies at this point and SystemSuspend will cleanup the wake lock.",
+      "parentUuid": "db9fba19_f20a9d29",
+      "range": {
+        "startLine": 2423,
+        "startChar": 8,
+        "endLine": 2423,
+        "endChar": 45
+      },
+      "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
