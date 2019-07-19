@@ -141,6 +141,30 @@
       "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5ed1d8_d19b6c12",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2423,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-07-19T09:56:55Z",
+      "side": 1,
+      "message": "Yeah, I agree with you it is nicer to clean it up here, and I like the use of atexit() - but then I think we should clean it up in all cases, including if the atexit() registration fails. So how about:\n\n1) acquire wake lock\n2) register atexit handler\n3) if registering atexit handler fails, release wake lock, print error\n\nThe reason I prefer this is that when somebody who doesn\u0027t know that SystemSuspend cleans up wake locks reads this code, that person might think we leak the wake-lock in this case.\n\nI guess the other question is: do we want to continue with the BR if acquiring the wakelock fails? The current CL does, which seems fine, just wanted to make sure it\u0027s a conscious choice.",
+      "parentUuid": "b66bfea3_6a5f2d86",
+      "range": {
+        "startLine": 2423,
+        "startChar": 8,
+        "endLine": 2423,
+        "endChar": 45
+      },
+      "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
