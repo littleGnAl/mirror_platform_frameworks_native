@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2015965a_ac554c5f",
+        "filename": "cmds/service/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-07-19T07:49:51Z",
+      "side": 1,
+      "message": "nit: close fd after?",
+      "range": {
+        "startLine": 211,
+        "startChar": 28,
+        "endLine": 211,
+        "endChar": 84
+      },
+      "revId": "b9ec70ebb9bf4238db6f8731320a7961fffc6606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b1cff4_886f87dd",
+        "filename": "cmds/service/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-07-19T07:49:51Z",
+      "side": 1,
+      "message": "and afd here..",
+      "range": {
+        "startLine": 234,
+        "startChar": 28,
+        "endLine": 234,
+        "endChar": 38
+      },
+      "revId": "b9ec70ebb9bf4238db6f8731320a7961fffc6606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
