@@ -93,6 +93,30 @@
       "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b66bfea3_6a5f2d86",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2423,
+      "author": {
+        "id": 1530043
+      },
+      "writtenOn": "2019-07-19T09:49:24Z",
+      "side": 1,
+      "message": "I am unsure where wake_lock_releaser should be called in dumpstate, I assume, calling it at exit of dumpstate makes it more reliable as dumpstate has multiple return points. If we don\u0027t have atexit handler, code will still work, but I thought this is cleaner way to release wake lock from dumpstate side, correct me if I am wrong here.",
+      "parentUuid": "83a04864_c425549b",
+      "range": {
+        "startLine": 2423,
+        "startChar": 8,
+        "endLine": 2423,
+        "endChar": 45
+      },
+      "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
