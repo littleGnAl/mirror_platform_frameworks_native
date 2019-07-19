@@ -117,6 +117,30 @@
       "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d2e71ba_dca64e08",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2423,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-07-19T09:54:42Z",
+      "side": 1,
+      "message": "+1 to Martijn\u0027s point. Even with multiple return points, atexit only handles process termination. If SystemSuspend handles the same, then it seems duplicated.",
+      "parentUuid": "b66bfea3_6a5f2d86",
+      "range": {
+        "startLine": 2423,
+        "startChar": 8,
+        "endLine": 2423,
+        "endChar": 45
+      },
+      "revId": "6f68bf8eee9fb52bd47d048d9d0d4b64363ee8e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
