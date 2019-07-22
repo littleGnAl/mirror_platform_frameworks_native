@@ -67,3 +67,33 @@ cc_test {
     srcs: ["main_server.cpp"],
     gtest: false,
 }
+
+// adb root && m binderVendorDoubleLoadTest && adb sync data && adb shell /data/nativetest64/vendor/binderVendorDoubleLoadTest/binderVendorDoubleLoadTest
+cc_test {
+    name: "binderVendorDoubleLoadTest",
+    vendor: true,
+    srcs: [
+        "binderVendorDoubleLoadTest.cpp",
+    ],
+    static_libs: [
+        "IBinderVendorDoubleLoadTest-cpp",
+        "IBinderVendorDoubleLoadTest-ndk_platform",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "libbinder_ndk",
+        "libutils",
+    ],
+    test_suites: ["device-tests"],
+    require_root: true,
+}
+
+aidl_interface {
+    name: "IBinderVendorDoubleLoadTest",
+    // TODO(b/119771576): only vendor is needed
+    vendor_available: true,
+    srcs: [
+        "IBinderVendorDoubleLoadTest.aidl",
+    ],
+}
