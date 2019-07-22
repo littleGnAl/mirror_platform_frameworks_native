@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5be21f0d_901cc28c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2414,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2019-07-22T17:41:20Z",
+      "side": 1,
+      "message": "Sorry for the post-commit reply (and also sorry if I\u0027m missing something), but AFAIK we cannot acquire a lock in the \"standalone dumpstate\" because the lock would never be released if dumpstate crashes. The idea was to move the wake locking to the dumpstate service, which is always running - that way, the service would take care of releasing it in case of crashes... \n\nAre you sure it\u0027s released when the process dies? Did you try to manually kill it to verify?",
+      "range": {
+        "startLine": 2414,
+        "startChar": 0,
+        "endLine": 2414,
+        "endChar": 68
+      },
+      "revId": "f35ed4393db016b19d3d254840200722afa4a0cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
