@@ -67,3 +67,19 @@ cc_test {
     srcs: ["main_server.cpp"],
     gtest: false,
 }
+
+// adb root && m binderVendorDoubleLoadTest && adb sync data && adb shell /vendor/bin/sh -c /data/nativetest64/vendor/binderVendorDoubleLoadTest/binderVendorDoubleLoadTest
+cc_test {
+    name: "binderVendorDoubleLoadTest",
+    vendor: true,
+    srcs: [
+        "binderVendorDoubleLoadTest.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "libbinder_ndk",
+        "libutils",
+    ],
+    test_suites: ["device-tests"],
+}
