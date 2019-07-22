@@ -100,6 +100,7 @@ glTexImage2D nullAllowed pixels
 glTexImage3D nullAllowed pixels
 glTexParameter check params 1
 glTexSubImage2D nullAllowed pixels
+glTexSubImage3D nullAllowed pixels
 glUniform1 check v count
 glUniform2 check v count*2
 glUniform3 check v count*3
