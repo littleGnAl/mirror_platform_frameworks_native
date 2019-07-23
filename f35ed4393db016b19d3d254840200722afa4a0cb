@@ -22,6 +22,30 @@
       "revId": "f35ed4393db016b19d3d254840200722afa4a0cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d52e723_738e35f9",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2414,
+      "author": {
+        "id": 1530043
+      },
+      "writtenOn": "2019-07-23T11:12:52Z",
+      "side": 1,
+      "message": "wake locks are handled at user space now, and when process crashes/exists wake lock is released automatically. I added some debug logs in SystemSuspend to check this behavior, so when I killed dumpstate process, I could see wake lock being released.",
+      "parentUuid": "5be21f0d_901cc28c",
+      "range": {
+        "startLine": 2414,
+        "startChar": 0,
+        "endLine": 2414,
+        "endChar": 68
+      },
+      "revId": "f35ed4393db016b19d3d254840200722afa4a0cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
