@@ -93,6 +93,30 @@
       "revId": "b9ec70ebb9bf4238db6f8731320a7961fffc6606",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c77575f9_68c5d69a",
+        "filename": "cmds/service/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-07-23T07:56:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66459d79_aad93b03",
+      "range": {
+        "startLine": 234,
+        "startChar": 28,
+        "endLine": 234,
+        "endChar": 38
+      },
+      "revId": "b9ec70ebb9bf4238db6f8731320a7961fffc6606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
