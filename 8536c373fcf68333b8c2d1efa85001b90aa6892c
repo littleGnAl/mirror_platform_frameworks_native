@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60fe0469_94843aa7",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-23T01:28:23Z",
+      "side": 0,
+      "message": "before, this meant vendor wasn\u0027t using the same copy of libbinder that platform was, now it can.\n\nCurrently, there are some problems (/dev/binder is restricted from vendor). Filed b/138152918 to track what we should do about libbinder_ndk in the ll-ndk depending on the rest of the release.",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "8536c373fcf68333b8c2d1efa85001b90aa6892c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
