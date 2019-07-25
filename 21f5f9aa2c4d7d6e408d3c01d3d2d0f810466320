@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cb92dc2_58dd09de",
+        "filename": "libs/binder/ndk/include_apex/android/binder_process.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-25T23:47:46Z",
+      "side": 1,
+      "message": "not much to do but document and move on? oof...",
+      "range": {
+        "startLine": 30,
+        "startChar": 38,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "21f5f9aa2c4d7d6e408d3c01d3d2d0f810466320",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
