@@ -69,6 +69,30 @@
       "revId": "04a4e83552d9a63356940c1c3868f0148b7f6bd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744e517e_5348b898",
+        "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-26T17:24:32Z",
+      "side": 1,
+      "message": "Thanks for the ideas. Maybe we should check that this doesn\u0027t happen for the sysfs version",
+      "parentUuid": "ac6fd834_39fe3860",
+      "range": {
+        "startLine": 62,
+        "startChar": 19,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "04a4e83552d9a63356940c1c3868f0148b7f6bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
