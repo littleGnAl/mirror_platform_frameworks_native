@@ -45,6 +45,30 @@
       "revId": "04a4e83552d9a63356940c1c3868f0148b7f6bd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac6fd834_39fe3860",
+        "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-07-26T07:33:06Z",
+      "side": 1,
+      "message": "I guess one interesting test is: have a service hosted by libbinder in this process, then try to retrieve the same service using libbinder_ndk? I think that would actually get you a remote object. Transactions should still work? More advanced test: have libbinder call into another process, have that process call back into a libbinder_ndk service - that should work (and end up in a libbinder_ndk thread).\n\nOne other interesting aspect: since binder debugfs is keyed by pid, I\u0027m not sure what happens - /binder/proc/pid will only represent one of the two, I think.",
+      "parentUuid": "1da63070_5da0e35b",
+      "range": {
+        "startLine": 62,
+        "startChar": 19,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "04a4e83552d9a63356940c1c3868f0148b7f6bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
