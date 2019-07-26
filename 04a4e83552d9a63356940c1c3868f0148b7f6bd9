@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1a1d478_ab58a7ea",
+        "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-26T21:24:44Z",
+      "side": 1,
+      "message": "actually, just fetched the property..",
+      "parentUuid": "38a230d5_bd538d24",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "04a4e83552d9a63356940c1c3868f0148b7f6bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1da63070_5da0e35b",
         "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "04a4e83552d9a63356940c1c3868f0148b7f6bd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d968acf0_dafd4f78",
+        "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-26T21:24:44Z",
+      "side": 1,
+      "message": "I\u0027m pretty smug this works, but it makes sense because under the hood, it looks a lot like C++\u003c-\u003eJava in-process which is thoroughly tested.",
+      "parentUuid": "744e517e_5348b898",
+      "range": {
+        "startLine": 62,
+        "startChar": 19,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "04a4e83552d9a63356940c1c3868f0148b7f6bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
