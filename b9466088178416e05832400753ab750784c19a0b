@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34396455_25aa786f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-27T14:22:12Z",
+      "side": 1,
+      "message": "why don\u0027t you use AndroidTest.xml and use \u003ctarget_preparer class\u003d\"com.android.tradefed.targetprep.RootTargetPreparer\"/\u003e ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "b9466088178416e05832400753ab750784c19a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569aab1b_25cd8895",
+        "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-27T14:22:12Z",
+      "side": 1,
+      "message": "This sounds scary to me. Can vendors use this to workaround the binder restriction today?",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "b9466088178416e05832400753ab750784c19a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
