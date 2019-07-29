@@ -93,6 +93,29 @@
       "revId": "b9466088178416e05832400753ab750784c19a0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e19e9db_79ed5585",
+        "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-29T20:54:30Z",
+      "side": 1,
+      "message": "although, I just realized. This *should* fail because we can\u0027t allow libbinder.vendor \u003c-\u003e libbinder. I\u0027ll have to re-write the test so that we\u0027re not relying on this.",
+      "range": {
+        "startLine": 169,
+        "startChar": 18,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "b9466088178416e05832400753ab750784c19a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
