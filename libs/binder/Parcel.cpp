@@ -1061,6 +1061,7 @@ status_t Parcel::writeString16(const char16_t* str, size_t len)
 
 status_t Parcel::writeStrongBinder(const sp<IBinder>& val)
 {
+    ALOGE("asdfasdf libbinder writeBinder");
     return flatten_binder(ProcessState::self(), val, this);
 }
 
