@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f65b715_3ea0c92d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-29T16:40:59Z",
+      "side": 1,
+      "message": "Because I really really really really really really am not a big fan of AndroidTest.xml files and would prefer to continue to use the auto-generated one. From what I\u0027ve seen, they duplicate too much information from the build system. I\u0027d much rather see a \u0027requires root\u0027 attribute in Android.bp for this (and for other test\u003c-\u003einfra coupling, esp. in certain specific test suites, replace them with code in the test itself).",
+      "parentUuid": "34396455_25aa786f",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "b9466088178416e05832400753ab750784c19a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "569aab1b_25cd8895",
         "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "b9466088178416e05832400753ab750784c19a0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf67797b_b9e383a8",
+        "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-29T16:40:59Z",
+      "side": 1,
+      "message": "This is only possible with root. There is a neverallow for this usage now. Although, I am hoping to remove that neverallow (and replace it with different checks for stability).",
+      "parentUuid": "569aab1b_25cd8895",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "b9466088178416e05832400753ab750784c19a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
