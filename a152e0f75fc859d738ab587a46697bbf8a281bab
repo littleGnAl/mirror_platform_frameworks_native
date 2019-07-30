@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd827e6f_9836d523",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-07-30T13:00:09Z",
+      "side": 0,
+      "message": "interesting we had a test for this that never worked :)",
+      "range": {
+        "startLine": 1173,
+        "startChar": 13,
+        "endLine": 1175,
+        "endChar": 17
+      },
+      "revId": "a152e0f75fc859d738ab587a46697bbf8a281bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c084e4f3_2ad46c9c",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-07-30T13:00:09Z",
+      "side": 0,
+      "message": "I think there is a caller for this - what does it test, and can we remove that?",
+      "range": {
+        "startLine": 1186,
+        "startChar": 16,
+        "endLine": 1186,
+        "endChar": 49
+      },
+      "revId": "a152e0f75fc859d738ab587a46697bbf8a281bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
