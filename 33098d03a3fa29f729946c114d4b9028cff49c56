@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd618cd_d8d17e54",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-07-30T09:40:11Z",
+      "side": 1,
+      "message": "nit: i\u0027d suggest changing this to output_fd. \"out_\" arguments usually mean \"out arguments\" meaning that i\u0027d expect \"int* out_fd) {... *out_fd \u003d ..}",
+      "range": {
+        "startLine": 71,
+        "startChar": 52,
+        "endLine": 71,
+        "endChar": 58
+      },
+      "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1ce0c6_e12d1224",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-07-30T09:40:11Z",
+      "side": 1,
+      "message": "\"const ZipArchiveHandle handle\" or just \"ZipArchiveHandle handle\" if you\u0027re calling a non const method ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 46
+      },
+      "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "540d0cbc_5bfee10c",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-07-30T09:40:11Z",
+      "side": 1,
+      "message": "std::string seems less natural than a std::unique_ptr\u003cuint8_t[]\u003e .. any reason you chose it ?",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 62
+      },
+      "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a2ce856_4582646e",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-07-30T09:40:11Z",
+      "side": 1,
+      "message": "nit: inconsistent naming - should be IsSectionStart / IsSectionEnd",
+      "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc838eb4_2e070768",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-07-30T09:40:11Z",
+      "side": 1,
+      "message": "nit: bad indent.",
+      "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1091e390_019a5d2a",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-07-30T09:40:11Z",
+      "side": 1,
+      "message": "nit: missing space.",
+      "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
