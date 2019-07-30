@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b62dbb24_a1dd8c44",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-30T16:12:24Z",
+      "side": 0,
+      "message": "yippeeeeepepepeppepppppeeeeeeeee!\n\nI actually didn\u0027t see it was broken and was a bit confused. Now everything makes sense. :)",
+      "parentUuid": "cd827e6f_9836d523",
+      "range": {
+        "startLine": 1173,
+        "startChar": 13,
+        "endLine": 1175,
+        "endChar": 17
+      },
+      "revId": "a152e0f75fc859d738ab587a46697bbf8a281bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c084e4f3_2ad46c9c",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "a152e0f75fc859d738ab587a46697bbf8a281bab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce73612a_35206323",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-30T16:12:24Z",
+      "side": 0,
+      "message": "We probably shouldn\u0027t (you can look at the history) ! :D\n\nThough, it was failing. Fixed now! Not sure why I missed this. Cosmic radiation, PEBCAK, something.... hmmm.",
+      "parentUuid": "c084e4f3_2ad46c9c",
+      "range": {
+        "startLine": 1186,
+        "startChar": 16,
+        "endLine": 1186,
+        "endChar": 49
+      },
+      "revId": "a152e0f75fc859d738ab587a46697bbf8a281bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
