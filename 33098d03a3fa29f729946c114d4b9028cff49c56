@@ -184,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "a167f828_2349679a",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-07-30T14:48:11Z",
+      "side": 1,
+      "message": "It worked because c_str() returns null terminated array. I guess string_view gives a nice opportunity to say here\u0027s a start char* and here is the length to read from start, so I can switch to that. Do you prefer that?",
+      "parentUuid": "91d0671e_bc8fa978",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 62
+      },
+      "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a2ce856_4582646e",
         "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
         "patchSetId": 2
