@@ -208,6 +208,30 @@
     },
     {
       "key": {
+        "uuid": "a79e8acf_6f72cda5",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2019-07-30T14:54:13Z",
+      "side": 1,
+      "message": "There\u0027s no c_str() in this function or its callees (at least not one that i can see). There is an implicit conversion from std::string to std::string_view, though and as you say, that doesn\u0027t involve any null termination.\n\nTo your question, I believe it\u0027s clearer with string_view, but this is OK too as long as we\u0027re clearer in the commit message about why.",
+      "parentUuid": "a167f828_2349679a",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 62
+      },
+      "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a2ce856_4582646e",
         "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
         "patchSetId": 2
