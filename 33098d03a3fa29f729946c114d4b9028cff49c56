@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "77bc9f6b_38e9c758",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-07-31T11:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b41a354_be5f8346",
+      "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd618cd_d8d17e54",
         "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
         "patchSetId": 2
@@ -229,6 +247,30 @@
       "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec818e93_8324af43",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-07-31T11:43:51Z",
+      "side": 1,
+      "message": "Sorry I should have said data(), which is null terminated since C++11, just like c_str().\n\nLooking at string_view again, it won\u0027t solve the problem in the other tests, so going to stick to std::string.",
+      "parentUuid": "a79e8acf_6f72cda5",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 62
+      },
+      "revId": "33098d03a3fa29f729946c114d4b9028cff49c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
