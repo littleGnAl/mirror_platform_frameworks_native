@@ -95,6 +95,10 @@ LIBBINDER_NDK { # introduced=29
     AServiceManager_addService; # apex vndk
     AServiceManager_checkService; # apex vndk
     AServiceManager_getService; # apex vndk
+
+    AIBinder_markSystemStability; # introduced=30 apex
+    AIBinder_markVendorStability; # introduced=30 vndk
+    AIBinder_markVintfStability; # introduced=30 apex vndk
   local:
     *;
 };
