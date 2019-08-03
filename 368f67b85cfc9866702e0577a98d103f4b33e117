@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b49d534_c971bf11",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-03T02:58:34Z",
+      "side": 1,
+      "message": "note, wire protocol not changed in AOSP but changed in internal branches",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 1
+      },
+      "revId": "368f67b85cfc9866702e0577a98d103f4b33e117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
