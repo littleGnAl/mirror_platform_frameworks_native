@@ -52,6 +52,24 @@
       "revId": "64ae917b3380a9121f9057eb6847802331ffa057",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d024878_258d3fbb",
+        "filename": "libs/binder/Stability.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-05T22:26:57Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t want to expose the stability since people might write code that depends on a certain stability level\n\nOk, this answers to my question. I am fine with this.",
+      "parentUuid": "4e34f3c3_4501c6d2",
+      "revId": "64ae917b3380a9121f9057eb6847802331ffa057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
