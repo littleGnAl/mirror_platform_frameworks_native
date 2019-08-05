@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "de83aeef_0308c916",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-05T12:42:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4f913de7_22f545b2",
+      "revId": "2a9f32f1a21e012dfaddc571a741658eaef0d9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb053490_ab0ccfd2",
         "filename": "libs/binder/Stability.cpp",
         "patchSetId": 1
@@ -95,6 +113,30 @@
       "side": 1,
       "message": "It\u0027s because Level is private.",
       "parentUuid": "a1f2092e_b6a2e263",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "2a9f32f1a21e012dfaddc571a741658eaef0d9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72ce1a31_0b76347c",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-05T12:42:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fd2795eb_46308d67",
       "range": {
         "startLine": 58,
         "startChar": 0,
