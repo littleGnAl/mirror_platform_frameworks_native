@@ -34,6 +34,24 @@
       "revId": "64ae917b3380a9121f9057eb6847802331ffa057",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e34f3c3_4501c6d2",
+        "filename": "libs/binder/Stability.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-05T18:57:01Z",
+      "side": 1,
+      "message": "Actually, I would prefer to merge this if you are okay to help with development (I can remove it later if you want).\n\nThe motivation of the API is that it allows a developer to understand the stability of an interface, but it doesn\u0027t expose the stability. I don\u0027t want to expose the stability since people might write code that depends on a certain stability level. Right now, we have the option to merge stability classes without breaking code.\n\nDo you have a better idea for an API or are you okay with this?",
+      "parentUuid": "892a6dd4_1ef9893e",
+      "revId": "64ae917b3380a9121f9057eb6847802331ffa057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
