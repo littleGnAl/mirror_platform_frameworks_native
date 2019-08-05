@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e70253e_285ac8dd",
+        "filename": "libs/binder/Stability.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-05T01:04:14Z",
+      "side": 1,
+      "message": "hmm, I am not sure about the usefulness of this utility function.",
+      "revId": "64ae917b3380a9121f9057eb6847802331ffa057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
