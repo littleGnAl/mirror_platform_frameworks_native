@@ -16,6 +16,24 @@
       "revId": "64ae917b3380a9121f9057eb6847802331ffa057",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "892a6dd4_1ef9893e",
+        "filename": "libs/binder/Stability.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-05T01:54:18Z",
+      "side": 1,
+      "message": "Sure. I am using it now, but I can avoid merging this.",
+      "parentUuid": "3e70253e_285ac8dd",
+      "revId": "64ae917b3380a9121f9057eb6847802331ffa057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
