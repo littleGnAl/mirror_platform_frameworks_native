@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3463fe07_59e54c5c",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-05T01:14:59Z",
+      "side": 1,
+      "message": "uncomment?",
+      "revId": "2a9f32f1a21e012dfaddc571a741658eaef0d9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb053490_ab0ccfd2",
+        "filename": "libs/binder/Stability.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-05T01:14:59Z",
+      "side": 1,
+      "message": "nit: /*log\u003d*/true\n\nhttp://go/cstyle#Function_Argument_Comments",
+      "range": {
+        "startLine": 22,
+        "startChar": 51,
+        "endLine": 22,
+        "endChar": 63
+      },
+      "revId": "2a9f32f1a21e012dfaddc571a741658eaef0d9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1f2092e_b6a2e263",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-05T01:14:59Z",
+      "side": 1,
+      "message": "why is this moved into header? can\u0027t we just put these in the source file?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "2a9f32f1a21e012dfaddc571a741658eaef0d9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
