@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77399e65_882dd405",
+        "filename": "headers/media_plugin/media/openmax/OMX_Audio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-08-06T23:04:36Z",
+      "side": 1,
+      "message": "I don\u0027t think these are a standard part of OMX; these may need to be part of an OMX_AUDIO_PARAM_ANDROID_ADPCMTYPE in the OMX_AudioExt.h",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 24
+      },
+      "revId": "9665d1adb69cf2772d54427eb5e062e217e1ba9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ca90eb_664dd4b7",
+        "filename": "headers/media_plugin/media/openmax/OMX_AudioExt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-08-06T23:04:36Z",
+      "side": 1,
+      "message": "why isn\u0027t this OMX_AUDIO_PARAM_ANDROID_APETYPE ?",
+      "range": {
+        "startLine": 131,
+        "startChar": 15,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "9665d1adb69cf2772d54427eb5e062e217e1ba9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
