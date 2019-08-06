@@ -21,6 +21,20 @@
       ]
     },
     {
+      "name": "CtsOsTestCases",
+      "options": [
+        {
+          "include-filter": "android.os.cts.BinderTest"
+        },
+        {
+          "include-filter": "android.os.cts.ParcelFormatExceptionTest"
+        },
+        {
+          "include-filter": "android.os.cts.ParcelTest"
+        }
+      ]
+    },
+    {
       "name": "binderSafeInterfaceTest"
     },
     {
