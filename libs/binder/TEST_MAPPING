@@ -1,6 +1,26 @@
 {
   "presubmit": [
     {
+      "name": "FrameworksCoreTests",
+      "options": [
+        {
+          "include-filter": "android.os.BinderProxyTest"
+        },
+        {
+          "include-filter": "android.os.BinderTest"
+        },
+        {
+          "include-filter": "android.os.BinderThreadPriorityTest"
+        },
+        {
+          "include-filter": "android.os.BinderWorkSourceTest"
+        },
+        {
+          "include-filter": "android.os.ParcelTest"
+        }
+      ]
+    },
+    {
       "name": "binderSafeInterfaceTest"
     },
     {
