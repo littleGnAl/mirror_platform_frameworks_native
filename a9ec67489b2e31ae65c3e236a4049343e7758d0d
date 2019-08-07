@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "46ab139d_3a967925",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-07T16:23:40Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t see that part. If this was without # introduced\u003d29, this is supported. But I am not sure how gen_stub_libs.py works with such a conflicting setting.\n\nIn general, you are encouraged to do the symbol versioning. So,\n\nLIBBINDER_NDK30 { # introduced\u003d29\n    AIBinder_markSystemStability; # introduced\u003d30 apex\n    ....\n};\n\nshould be better.",
+      "parentUuid": "55f65ff0_7243970f",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "a9ec67489b2e31ae65c3e236a4049343e7758d0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c9d9fe5_5400b145",
         "filename": "libs/binder/tests/binderStabilityTest.cpp",
         "patchSetId": 1
