@@ -1624,6 +1624,8 @@ void SurfaceFlinger::handleMessageRefresh() {
     logLayerStats();
     doComposition();
     postComposition(refreshStartTime);
+    mClientColorMatrix = mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                              vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     mPreviousPresentFence = getBE().mHwc->getPresentFence(HWC_DISPLAY_PRIMARY);
 
