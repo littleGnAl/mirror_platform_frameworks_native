@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "55f65ff0_7243970f",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-07T15:59:35Z",
+      "side": 1,
+      "message": "I guess I meant since I have \"LIBBINDER_NDK { # introduced\u003d29\" above.",
+      "parentUuid": "3d3608b5_021edf5c",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "a9ec67489b2e31ae65c3e236a4049343e7758d0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c9d9fe5_5400b145",
         "filename": "libs/binder/tests/binderStabilityTest.cpp",
         "patchSetId": 1
