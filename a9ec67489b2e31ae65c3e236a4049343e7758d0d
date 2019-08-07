@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "399ed86e_4413366b",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-07T16:31:56Z",
+      "side": 1,
+      "message": "Yes. Sorry that I\u0027ve made a mistake above. But you\u0027ve anyway understood :)",
+      "parentUuid": "92d25607_c3a7692a",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "a9ec67489b2e31ae65c3e236a4049343e7758d0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c9d9fe5_5400b145",
         "filename": "libs/binder/tests/binderStabilityTest.cpp",
         "patchSetId": 1
