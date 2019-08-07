@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "92d25607_c3a7692a",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-07T16:29:55Z",
+      "side": 1,
+      "message": "Wait, do you mean having a separate section just for the introduced\u003d30 symbols?\n\nSo:\n\nLIBBINDER_NDK { # introduced\u003d29\n  global:\n    AIBinder_associateClass\n    ...\n  local:\n    *\n}\n\nLIBBINDER_NDK30 { # introduced\u003d30\n  global:\n    AIBinder_markSystemStability; # apex\n    ...\n  local:\n    *\n}",
+      "parentUuid": "46ab139d_3a967925",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "a9ec67489b2e31ae65c3e236a4049343e7758d0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c9d9fe5_5400b145",
         "filename": "libs/binder/tests/binderStabilityTest.cpp",
         "patchSetId": 1
