@@ -2531,7 +2531,7 @@ status_t Parcel::continueWrite(size_t desired)
             if (objects) {
                 mObjects = objects;
             }
-            mObjectsSize = objectsSize;
+            mObjectsSize = mObjectsCapacity = objectsSize;
             mNextObjectHint = 0;
             mObjectsSorted = false;
         }
