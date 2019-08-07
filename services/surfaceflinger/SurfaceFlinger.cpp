@@ -17,6 +17,7 @@
 // #define LOG_NDEBUG 0
 #define ATRACE_TAG ATRACE_TAG_GRAPHICS
 
+
 #include <stdint.h>
 #include <sys/types.h>
 #include <algorithm>
@@ -1624,6 +1625,8 @@ void SurfaceFlinger::handleMessageRefresh() {
     logLayerStats();
     doComposition();
     postComposition(refreshStartTime);
+    mClientColorMatrix = mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                              vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     mPreviousPresentFence = getBE().mHwc->getPresentFence(HWC_DISPLAY_PRIMARY);
 
@@ -5251,3 +5254,4 @@ void SurfaceFlinger::traverseLayersInDisplay(const sp<const DisplayDevice>& hw, 
 #if defined(__gl2_h_)
 #error "don't include gl2/gl2.h in this file"
 #endif
+
