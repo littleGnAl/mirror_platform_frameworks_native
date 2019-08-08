@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79fbe541_34fe70c5",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2019-08-08T23:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "395bf563_da38e84d",
+      "range": {
+        "startLine": 1314,
+        "startChar": 16,
+        "endLine": 1314,
+        "endChar": 28
+      },
+      "revId": "b93104ba794b4a25b2d30eb65f9a4be26493f498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfb40acb_397ddd7a",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b93104ba794b4a25b2d30eb65f9a4be26493f498",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9be02d_c5a6d3a2",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2019-08-08T23:41:18Z",
+      "side": 1,
+      "message": "Ah yes, fixed it in next PS :)",
+      "parentUuid": "bfb40acb_397ddd7a",
+      "range": {
+        "startLine": 1354,
+        "startChar": 4,
+        "endLine": 1354,
+        "endChar": 32
+      },
+      "revId": "b93104ba794b4a25b2d30eb65f9a4be26493f498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
