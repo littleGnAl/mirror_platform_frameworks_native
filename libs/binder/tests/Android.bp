@@ -162,6 +162,7 @@ cc_test {
     static_libs: [
         "binderStabilityTestIface-cpp",
         "binderStabilityTestIface-ndk_platform",
+        "libgmock",
     ],
 
     test_suites: ["device-tests"],
