@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "395bf563_da38e84d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-08-08T23:20:11Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 1314,
+        "startChar": 16,
+        "endLine": 1314,
+        "endChar": 28
+      },
+      "revId": "b93104ba794b4a25b2d30eb65f9a4be26493f498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb40acb_397ddd7a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-08-08T23:20:11Z",
+      "side": 1,
+      "message": "the name\u0027s a lie now, no? :-) just DumpExternalFragmentationInfo() instead?",
+      "range": {
+        "startLine": 1354,
+        "startChar": 4,
+        "endLine": 1354,
+        "endChar": 32
+      },
+      "revId": "b93104ba794b4a25b2d30eb65f9a4be26493f498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
