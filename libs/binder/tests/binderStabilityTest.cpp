@@ -22,6 +22,7 @@
 #include <binder/IServiceManager.h>
 #include <binder/Parcel.h>
 #include <binder/Stability.h>
+#include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
 #include <sys/prctl.h>
@@ -225,6 +226,14 @@ TEST(BinderStability, MarkingObjectNoDestructTest) {
 
     binderSp = nullptr;
     ASSERT_TRUE(MarksStabilityInConstructor::gDestructed);
+}
+
+TEST(BinderStability, RemarkDies) {
+    ASSERT_DEATH({
+        sp<IBinder> binder = new BBinder();
+        Stability::markCompilationUnit(binder.get()); // <-- only called for tests
+        Stability::markVndk(binder.get()); // <-- only called for tests
+    }, "Should only mark known object.");
 }
 
 int main(int argc, char** argv) {
