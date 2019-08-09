@@ -22,6 +22,29 @@
       "revId": "1416e1b7933789ae931b3370eaf912fef241626e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b43589e_b3c05b34",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-08-09T16:44:31Z",
+      "side": 1,
+      "message": "nit: missing space",
+      "range": {
+        "startLine": 1314,
+        "startChar": 14,
+        "endLine": 1314,
+        "endChar": 16
+      },
+      "revId": "1416e1b7933789ae931b3370eaf912fef241626e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
