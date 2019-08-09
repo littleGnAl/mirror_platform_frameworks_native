@@ -39,6 +39,8 @@
 #include <utils/Vector.h>
 #include <utils/BitSet.h>
 
+#include <android-base/unique_fd.h>
+
 namespace android {
 class Parcel;
 
@@ -172,7 +174,7 @@ public:
             sp<InputChannel>& outServerChannel, sp<InputChannel>& outClientChannel);
 
     inline std::string getName() const { return mName; }
-    inline int getFd() const { return mFd; }
+    inline int getFd() const { return mFd.get(); }
 
     /* Sends a message to the other endpoint.
      *
@@ -212,7 +214,7 @@ private:
     void setFd(int fd);
 
     std::string mName;
-    int mFd = -1;
+    android::base::unique_fd mFd;
 
     sp<IBinder> mToken = nullptr;
 };
