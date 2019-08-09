@@ -22,6 +22,30 @@
       "revId": "628d030ff2a282da820ba0d1e3fc869fac51ca7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e127ac5_321f9cb2",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-08-09T21:50:11Z",
+      "side": 1,
+      "message": "If you mean \"are you allowed to dup an owned fd?\", the answer is yes.\nIf you mean \"does the result of dup start out with an owner?\", the answer is no.",
+      "parentUuid": "78f4da56_fd8f9431",
+      "range": {
+        "startLine": 328,
+        "startChar": 13,
+        "endLine": 328,
+        "endChar": 27
+      },
+      "revId": "628d030ff2a282da820ba0d1e3fc869fac51ca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
