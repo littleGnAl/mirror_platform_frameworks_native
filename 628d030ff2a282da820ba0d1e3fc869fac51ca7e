@@ -46,6 +46,30 @@
       "revId": "628d030ff2a282da820ba0d1e3fc869fac51ca7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0044ed98_ea8ebe59",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2019-08-09T23:12:27Z",
+      "side": 1,
+      "message": "Thanks. Another thing I wanted to confirm is, what happens if you dup and then the original unique_fd is closed (destroyed)? Would the dup fd still be valid?\n\nExample:\n\n  unique_fd copyFd() {\n    int sockets[2];\n    socketpair(AF_UNIX, SOCK_SEQPACKET, 0, sockets);\n    unique_fd fd_original \u003d sockets[0];\n    return unique_fd(::dup(fd_original.get()));\n  }\n\ncan you still read from unique_fd returned by copyFd()?",
+      "parentUuid": "0e127ac5_321f9cb2",
+      "range": {
+        "startLine": 328,
+        "startChar": 13,
+        "endLine": 328,
+        "endChar": 27
+      },
+      "revId": "628d030ff2a282da820ba0d1e3fc869fac51ca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
