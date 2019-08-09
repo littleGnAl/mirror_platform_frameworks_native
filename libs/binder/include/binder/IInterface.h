@@ -89,7 +89,10 @@ public:                                                                 \
 
 
 #define IMPLEMENT_META_INTERFACE(INTERFACE, NAME)                       \
-    const ::android::String16 I##INTERFACE::descriptor(NAME);           \
+    const ::android::StaticString16                                     \
+        I##INTERFACE##_descriptor_static_str16(u##NAME);                \
+    const ::android::String16 I##INTERFACE::descriptor(                 \
+        I##INTERFACE##_descriptor_static_str16);                        \
     const ::android::String16&                                          \
             I##INTERFACE::getInterfaceDescriptor() const {              \
         return I##INTERFACE::descriptor;                                \
