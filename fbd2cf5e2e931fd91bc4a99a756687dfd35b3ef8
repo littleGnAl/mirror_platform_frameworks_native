@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ba0111f_ae765b09",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-09T08:40:03Z",
+      "side": 1,
+      "message": "ASSERT_DEATH is available from gtest, not gmock. Are you actually depending on this?",
+      "revId": "fbd2cf5e2e931fd91bc4a99a756687dfd35b3ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
