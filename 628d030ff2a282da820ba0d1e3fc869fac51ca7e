@@ -70,6 +70,30 @@
       "revId": "628d030ff2a282da820ba0d1e3fc869fac51ca7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82dc734_f93ab2df",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-08-09T23:27:33Z",
+      "side": 1,
+      "message": "Yeah, file descriptors are basically an index into a table of pointers in the kernel to a ref-counter file struct. When you dup an fd, it just copies the pointer to the next available fd number, and increments the refcount. Duped fds are essentially indistinguishable from each other (except for some stupid buggy behavior in epoll).",
+      "parentUuid": "0044ed98_ea8ebe59",
+      "range": {
+        "startLine": 328,
+        "startChar": 13,
+        "endLine": 328,
+        "endChar": 27
+      },
+      "revId": "628d030ff2a282da820ba0d1e3fc869fac51ca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
