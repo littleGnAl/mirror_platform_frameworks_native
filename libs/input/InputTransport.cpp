@@ -206,7 +206,7 @@ InputChannel::InputChannel(const std::string& name, int fd) :
             mName.c_str(), fd);
 #endif
 
-    int result = fcntl(mFd, F_SETFL, O_NONBLOCK);
+    int result = fcntl(mFd.get(), F_SETFL, O_NONBLOCK);
     LOG_ALWAYS_FATAL_IF(result != 0, "channel '%s' ~ Could not make socket "
             "non-blocking.  errno=%d", mName.c_str(), errno);
 }
@@ -214,10 +214,8 @@ InputChannel::InputChannel(const std::string& name, int fd) :
 InputChannel::~InputChannel() {
 #if DEBUG_CHANNEL_LIFECYCLE
     ALOGD("Input channel destroyed: name='%s', fd=%d",
-            mName.c_str(), mFd);
+            mName.c_str(), mFd.get());
 #endif
-
-    ::close(mFd);
 }
 
 status_t InputChannel::openInputChannelPair(const std::string& name,
@@ -254,7 +252,7 @@ status_t InputChannel::sendMessage(const InputMessage* msg) {
     msg->getSanitizedCopy(&cleanMsg);
     ssize_t nWrite;
     do {
-        nWrite = ::send(mFd, &cleanMsg, msgLength, MSG_DONTWAIT | MSG_NOSIGNAL);
+        nWrite = ::send(mFd.get(), &cleanMsg, msgLength, MSG_DONTWAIT | MSG_NOSIGNAL);
     } while (nWrite == -1 && errno == EINTR);
 
     if (nWrite < 0) {
@@ -289,7 +287,7 @@ status_t InputChannel::sendMessage(const InputMessage* msg) {
 status_t InputChannel::receiveMessage(InputMessage* msg) {
     ssize_t nRead;
     do {
-        nRead = ::recv(mFd, msg, sizeof(InputMessage), MSG_DONTWAIT);
+        nRead = ::recv(mFd.get(), msg, sizeof(InputMessage), MSG_DONTWAIT);
     } while (nRead == -1 && errno == EINTR);
 
     if (nRead < 0) {
