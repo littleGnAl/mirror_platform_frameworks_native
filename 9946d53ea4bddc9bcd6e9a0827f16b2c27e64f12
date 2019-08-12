@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3b3a333b_a69f8d46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-12T17:41:23Z",
+      "side": 1,
+      "message": "Yep. Although, I was going to let this get in first. See thread w/ hackbod though. There might be some changes to this.",
+      "parentUuid": "27b61101_bda562c9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2eb96e0_1ca3569d",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-12T09:56:34Z",
       "side": 1,
       "message": "Do you think we need to support multiple extensions for a binder? e.g. via a tag? For example, getExtension(int tag, sp\u003cIBinder\u003e* out)\n\nThis might be needed when both an SoC vendor and an OEM that is a downstream of the SoC vendor have a need to extend the same interface.",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df7ca0cd_0b5e3d26",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-12T17:41:23Z",
+      "side": 1,
+      "message": "Yeah, this is similar to what hackbod is talking about (although passing descriptor instead of tag). And you had said \"I think one is enough.\" in the design doc :)\n\nI think in this case the OEM could add an extension to the SoC extension (extension of an extension). I also kind of like not having a query because I don\u0027t really want to encourage many extensions, and it\u0027s nice to always be able to get ahold of it for testing/to see what type of extension is supported.\n\nIDK. Maybe",
+      "parentUuid": "e2eb96e0_1ca3569d",
       "range": {
         "startLine": 84,
         "startChar": 18,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "1ce24634_c1e621d1",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-12T17:41:23Z",
+      "side": 1,
+      "message": "If it is DEAD_OBJECT, transact should do that internally.\n\nIf you mean caching the extension, I wouldn\u0027t think people would call this much. Maybe we can if it comes to that?",
+      "parentUuid": "56b81829_046a6d75",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 68
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb874d1e_ac1d5d09",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
@@ -137,6 +209,30 @@
       "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d547bf_010df44a",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-12T17:41:23Z",
+      "side": 1,
+      "message": "No, the comment on this method says to only install it when the BBinder is originally created (otherwise it isn\u0027t threadsafe).\n\n\u003e What about returning the extension via a function in BBinder that can be overridden by clients?\n\nThis would be ideal, but the virtual table of IBinder is frozen. It can\u0027t be changed.",
+      "parentUuid": "4ac37ff9_06d497f8",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
