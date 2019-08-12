@@ -26,6 +26,8 @@
 #include <input/Keyboard.h>
 #include <input/PropertyMap.h>
 #include <input/VirtualKeyMap.h>
+#include <linux/input.h>
+#include <sys/epoll.h>
 #include <utils/BitSet.h>
 #include <utils/Errors.h>
 #include <utils/KeyedVector.h>
@@ -33,10 +35,8 @@
 #include <utils/Log.h>
 #include <utils/Mutex.h>
 
-#include <linux/input.h>
-#include <sys/epoll.h>
-
 #include "TouchVideoDevice.h"
+#include "VibrationElement.h"
 
 /* Convenience constants. */
 
@@ -231,7 +231,7 @@ public:
     virtual bool setKeyboardLayoutOverlay(int32_t deviceId, const sp<KeyCharacterMap>& map) = 0;
 
     /* Control the vibrator. */
-    virtual void vibrate(int32_t deviceId, nsecs_t duration) = 0;
+    virtual void vibrate(int32_t deviceId, const VibrationElement& effect) = 0;
     virtual void cancelVibrate(int32_t deviceId) = 0;
 
     /* Requests the EventHub to reopen all input devices on the next call to getEvents(). */
@@ -307,7 +307,7 @@ public:
     virtual bool setKeyboardLayoutOverlay(int32_t deviceId,
                                           const sp<KeyCharacterMap>& map) override;
 
-    virtual void vibrate(int32_t deviceId, nsecs_t duration) override;
+    virtual void vibrate(int32_t deviceId, const VibrationElement& effect) override;
     virtual void cancelVibrate(int32_t deviceId) override;
 
     virtual void requestReopenDevices() override;

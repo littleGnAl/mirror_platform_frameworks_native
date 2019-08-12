@@ -99,6 +99,7 @@ filegroup {
         "InputListener.cpp",
         "InputReaderBase.cpp",
         "InputThread.cpp",
+        "VibrationElement.cpp"
     ],
 }
 
