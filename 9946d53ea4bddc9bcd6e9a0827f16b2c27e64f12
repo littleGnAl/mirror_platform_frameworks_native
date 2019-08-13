@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "9f775f2e_cd6e6f20",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-13T16:36:32Z",
+      "side": 1,
+      "message": "I am still mixed about this, partially because getExt(string, binder*) will require a bunch of extra string conversions.\n\n\u003e want to extend the same AOSP interface?\n\nThey won\u0027t extend the interface, but they will extend the implementation.\n\nFor instance, imagine we have an interface that is implemented by three different SoCs.\n\n// registering interface from vendor A\nsp\u003cMyAFoo\u003e fooA \u003d new MyAFoo;\nsp\u003cMyAFooExt\u003e fooAExt \u003d new MyAFooExt;\nfooA-\u003esetExt(fooAExt);\n\n// registering interface from vendor B\nsp\u003cMyBFoo\u003e fooB \u003d new MyBFoo;\nsp\u003cMyBFooExt\u003e fooBExt \u003d new MyBFooExt;\nfooB-\u003esetExt(fooBExt);\n\nThe client will go like this:\nsp\u003cIBinder\u003e fooBinder \u003d ...;\nsp\u003cIFoo\u003e foo \u003d interface_cast\u003cIFoo\u003e(IBinder);\n\nsp\u003cIBinder\u003e ext;\n.... foo-\u003egetExt(\u0026ext);\n\nsp\u003cIAFoo\u003e afoo \u003d interface_cast\u003cIAFoo\u003e(ext); // if non-null use this\nsp\u003cIBFoo\u003e bfoo \u003d interface_cast\u003cIBFoo\u003e(ext); // or if this is non-null us this\n\nOr, do you imagine that two different SOCs will extend the same implementation? If this is the case, I think it would be obvious which extension is which (the implementer would simply choose).\n\nIf we instead keep map\u003cstring, IBinder\u003e as a list of extensions or even vec\u003cIBinder\u003e and have to pass the String in, I think it will be expensive/a lot of infrastructure for little gain (particularly, I\u0027m worried about all of the extra utf-8/utf-16 string conversions when this API is moved to libbinder_ndk, this is what got me thinking about all of this).\n\n\nMaybe we can provide a method like getExtensions instead?\n\nstd::set\u003cIBinder\u003e getExtensions(const sp\u003cIBinder\u003e\u0026 binder) {\n    std::set\u003cIBinder\u003e binders;\n    sp\u003cIBinder\u003e curr \u003d binder;\n    while (binders.find(curr) !\u003d binders.end()) {\n        binders.insert(curr);\n        curr-\u003egetExt(\u0026curr);\n    }\n    return binders;\n}\n\nSo, the current \"linked-list\" approach seems like it is more than enough AND it has the added benefits over tag/string:\n- that it is lightweight\n- that all extension interfaces can be retrieved for testing",
+      "parentUuid": "9aadba6d_5693e93c",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc9607e3_3286e763",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "\u003e the virtual table of IBinder is frozen\n\nWhy? That\u0027s a news to me.",
       "parentUuid": "97d547bf_010df44a",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3443e3c5_e3c6e029",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-13T16:36:32Z",
+      "side": 1,
+      "message": "Because of many many many many many many prebuilts :)",
+      "parentUuid": "e156ad8b_8a40d060",
       "range": {
         "startLine": 255,
         "startChar": 0,
