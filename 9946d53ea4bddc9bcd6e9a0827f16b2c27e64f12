@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9aadba6d_5693e93c",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T00:56:47Z",
+      "side": 1,
+      "message": "Yeah, sorry. My opinion changes every other day, largely due to my incomplete understanding of the problem. :)\n\nExtension of extension is possible but, if I were an OEM dev, I will be very disappointed. Many OEMs use chipsets from different SoC vendors and their source code are sometimes mixed in a single tree. What if the three companies (the OEM, SoC vendor A, and SoC vendor B) want to extend the same AOSP interface? Where should the OEM extension be extended from? Among the vendor A and B, who will win?",
+      "parentUuid": "df7ca0cd_0b5e3d26",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc9607e3_3286e763",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
@@ -166,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "785371f0_83c220f1",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T00:56:47Z",
+      "side": 1,
+      "message": "Yeah, this is not a big optimization. We can revisit when it really becomes a bottleneck.",
+      "parentUuid": "1ce24634_c1e621d1",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 68
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb874d1e_ac1d5d09",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
@@ -224,6 +272,30 @@
       "side": 1,
       "message": "No, the comment on this method says to only install it when the BBinder is originally created (otherwise it isn\u0027t threadsafe).\n\n\u003e What about returning the extension via a function in BBinder that can be overridden by clients?\n\nThis would be ideal, but the virtual table of IBinder is frozen. It can\u0027t be changed.",
       "parentUuid": "4ac37ff9_06d497f8",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e156ad8b_8a40d060",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T00:56:47Z",
+      "side": 1,
+      "message": "\u003e the virtual table of IBinder is frozen\n\nWhy? That\u0027s a news to me.",
+      "parentUuid": "97d547bf_010df44a",
       "range": {
         "startLine": 255,
         "startChar": 0,
