@@ -46,7 +46,6 @@ public:
     virtual uint32_t    getOffset() const = 0;
 
     // these are there just for backward source compatibility
-    int32_t heapID() const { return getHeapID(); }
     void*   base() const  { return getBase(); }
     size_t  virtualSize() const { return getSize(); }
 };
