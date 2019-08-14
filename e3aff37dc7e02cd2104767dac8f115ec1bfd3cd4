@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "143f7bf7_d2d75118",
+        "filename": "libs/binder/include/binder/IMemory.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-14T22:41:16Z",
+      "side": 0,
+      "message": "I was able to see this is unused, but not sure about the others. Using TH to check.",
+      "range": {
+        "startLine": 49,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "e3aff37dc7e02cd2104767dac8f115ec1bfd3cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
