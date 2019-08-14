@@ -44,11 +44,6 @@ public:
     virtual size_t      getSize() const = 0;
     virtual uint32_t    getFlags() const = 0;
     virtual uint32_t    getOffset() const = 0;
-
-    // these are there just for backward source compatibility
-    int32_t heapID() const { return getHeapID(); }
-    void*   base() const  { return getBase(); }
-    size_t  virtualSize() const { return getSize(); }
 };
 
 class BnMemoryHeap : public BnInterface<IMemoryHeap>
