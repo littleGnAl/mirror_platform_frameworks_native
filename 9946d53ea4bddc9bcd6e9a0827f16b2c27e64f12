@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "676b2511_b17e8b0b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-15T16:20:19Z",
+      "side": 1,
+      "message": "Hmm, that still doesn\u0027t look good to me. That seems to be burdening clients; they need to search for the extension that they are looking for.\n\nI also wonder why the tag has to be a string. Both string and integer are not free from collision, right? Furthermore, since the number of tags expected is very small (i.e. 2 or 3 at most), I don\u0027t think we will actually hit a collision. A SoC vendor can reserve a number for its downstream partners (OEMs).\n\nGiven that integer is enough, I wonder if this is considered expensive and heavy.",
+      "parentUuid": "9f775f2e_cd6e6f20",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc9607e3_3286e763",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
@@ -377,6 +401,30 @@
       "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2ca2c6f_95acbd5c",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-15T16:20:19Z",
+      "side": 1,
+      "message": "Hmm, the same can be said for other foundation libraries: libc++, libbase, libutils, etc. We can change their ABIs and the prebuilts have to pay for the price...",
+      "parentUuid": "3443e3c5_e3c6e029",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
