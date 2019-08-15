@@ -473,6 +473,30 @@
       "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe260cf5_861fedbb",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-15T18:10:34Z",
+      "side": 1,
+      "message": "Ah, I am still so mixed on this. I don\u0027t want people using this mechanism as a standard way to add many different interfaces. Where possible, they should always add sub-interfaces as part of the AIDL definition.",
+      "parentUuid": "b345143d_f2fad07d",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
