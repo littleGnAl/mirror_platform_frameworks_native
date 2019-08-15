@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "03598f2e_1da9fabe",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-15T16:55:03Z",
+      "side": 1,
+      "message": "In practice, w/ HIDL, we haven\u0027t seen many extensions involving multiple extensions like this.\n\nI think the tag is not so good because it forms part of the ABI and if it is changed, the correct extension will be lost. We already have a type description, and if we invent another thing to keep track of that corresponds to this description. I think it\u0027s quite fragile to ever have \u0027if (tag \u003d\u003d 1) return mFoo; if (tag \u003d\u003d 2) return mBar\u0027 etc.. Since this is not defined anywhere in the interface. Even the \u0027Inspect\u0027 functionality from OpenBinder uses strings (but implementors still have to write code that corresponds to this).\n\nFurther, a single SOC vendor should only ever really have one extension encompassing all of the functionality they are adding to an interface. If they need multiple sub interfaces, it makes sense to attach them to a manager interface, e.g.:\ninterface IExtendBase { void doFoo(); ISubInterface getSemanticSubInterface(/* params? */); }\n\nOkay, actually, maybe I will try strings. I have just realized the virtual table is not closed, so there is no need for an extra datastructure.",
+      "parentUuid": "676b2511_b17e8b0b",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc9607e3_3286e763",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
@@ -416,6 +440,30 @@
       "side": 1,
       "message": "Hmm, the same can be said for other foundation libraries: libc++, libbase, libutils, etc. We can change their ABIs and the prebuilts have to pay for the price...",
       "parentUuid": "3443e3c5_e3c6e029",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b345143d_f2fad07d",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-15T16:55:03Z",
+      "side": 1,
+      "message": "Oops, I had only checked that sizeof(..) these structs are frozen. I should be able to switch this to virtual inheritance.\n\nThis really makes me wonder why shellCommand was implemented in this way :(\n\n\u003e prebuilts have to pay for the price...\n\nFor a change that does change the size of IBinder/BBinder for instance, it would be impractical to coordintate 100s of prebuilt updates across many devices.",
+      "parentUuid": "a2ca2c6f_95acbd5c",
       "range": {
         "startLine": 255,
         "startChar": 0,
