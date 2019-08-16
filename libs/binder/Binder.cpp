@@ -125,6 +125,8 @@ status_t BBinder::transact(
 {
     data.setDataPosition(0);
 
+    ALOGE("asdfasdfa %d", this->testasdfasdfasdf());
+
     status_t err = NO_ERROR;
     switch (code) {
         case PING_TRANSACTION:

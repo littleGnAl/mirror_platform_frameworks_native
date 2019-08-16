@@ -187,6 +187,7 @@ public:
     virtual BBinder*        localBinder();
     virtual BpBinder*       remoteBinder();
 
+    virtual int testasdfasdfasdf() { return 3; }
 protected:
     virtual          ~IBinder();
 
