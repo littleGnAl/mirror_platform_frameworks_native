@@ -497,6 +497,30 @@
       "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d2a9ca_642fd66a",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-16T00:29:53Z",
+      "side": 1,
+      "message": "Okay, looking deeper, the virtual table is frozen when we call this method on things implemented by prebuilts because a new function will be missing from subclass vtables, so it will fail. It\u0027s fine to add one if we only call it on recompiled code, but that isn\u0027t guaranteed to be the case.\n\nI have setup an example so you can see:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1103997\n\n\u003e We can change their ABIs and the prebuilts have to pay for the price...\n\nSo, the price is UB. It may be crashes, potentially a security problem. It\u0027s impossible/not worth it to coordinate these updates for nearly 100 prebuilts on almost every (incl unsupported) SOC in tree. I will send email offline with a list of prebuilts containing _ZN7android7BBinderC2Ev (base class constructor) and my scripts to find this.",
+      "parentUuid": "fe260cf5_861fedbb",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
