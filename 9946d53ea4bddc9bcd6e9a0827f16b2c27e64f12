@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "81e85484_8a987092",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-16T16:52:34Z",
+      "side": 1,
+      "message": "I was thinking about having a map\u003cint, const sp\u003cIBinder\u003e\u003e.\n\nvoid setExtension(int tag, const sp\u003cIBinder\u003e\u0026 extension) {\n    this-\u003eextMap[tag] \u003d extension;\n}\n\nstatus_t IBinder::getExtension(int tag, sp\u003cIBinder\u003e* out) {\n    *out \u003d this-\u003eextMap[tag];\n    return OK;\n}\n\nBut thinking this again, it might be okay to have only one extension per an interface. If an OEM needs to re-extend the interface what SoC vendor already has extended, they could just modify the SoC vendor\u0027s interface directly then.",
+      "parentUuid": "501c833b_5f8fafba",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc9607e3_3286e763",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
