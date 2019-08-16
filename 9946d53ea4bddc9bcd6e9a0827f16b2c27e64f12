@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "501c833b_5f8fafba",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-16T16:40:11Z",
+      "side": 1,
+      "message": "friendly ping",
+      "parentUuid": "03598f2e_1da9fabe",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc9607e3_3286e763",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
@@ -521,6 +545,30 @@
       "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15054b32_dbfe85a5",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-16T16:40:11Z",
+      "side": 1,
+      "message": "-\u003e b/139525855 (but you filed)",
+      "parentUuid": "18d2a9ca_642fd66a",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
