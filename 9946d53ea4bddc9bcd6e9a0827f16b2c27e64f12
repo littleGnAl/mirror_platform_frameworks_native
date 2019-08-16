@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "d37c2f85_bed5ae90",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-16T18:15:42Z",
+      "side": 1,
+      "message": "Or they can extend the SoC vendor interface.\n\nI will avoid having this map for now, but if time proves me wrong, we can add it (where the current interface would return a default tag, e.g. 0) OR I can add:\n\ntemplate \u003ctypename IType\u003e\nsp\u003cIType\u003e getExtension(const sp\u003cIBinder\u003e\u0026);\n\nwhich looks up the extensions in the linked list.",
+      "parentUuid": "81e85484_8a987092",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "9946d53ea4bddc9bcd6e9a0827f16b2c27e64f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc9607e3_3286e763",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
