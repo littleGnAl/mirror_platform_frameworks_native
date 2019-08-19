@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d2517a7_f9a54e21",
+        "filename": "services/sensorservice/SensorService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1074960
+      },
+      "writtenOn": "2019-08-19T14:09:16Z",
+      "side": 1,
+      "message": "Probably good to \u0027break\u0027 after this.\nOr even return getHandle() here and return -1 below.",
+      "range": {
+        "startLine": 1210,
+        "startChar": 12,
+        "endLine": 1210,
+        "endChar": 44
+      },
+      "revId": "ded7691881e0e05bc6f5c1cc2ae6b93c381de987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
