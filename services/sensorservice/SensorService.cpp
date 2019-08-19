@@ -1200,6 +1200,19 @@ sp<SensorInterface> SensorService::getSensorInterfaceFromHandle(int handle) cons
     return mSensors.getInterface(handle);
 }
 
+int32_t SensorService::findOtherSensor(int32_t handle) {
+    Vector<Sensor> sensors = getSensorList(String16("android"));
+    sp<SensorInterface> sensor = getSensorInterfaceFromHandle(handle);
+    int32_t type = sensor->getSensor().getType();
+    int32_t rHandle = -1;
+    for (auto itSensor = sensors.begin(); itSensor != sensors.end(); itSensor++) {
+        if (type == itSensor->getType() && itSensor->getHandle() != handle) {
+            rHandle = itSensor->getHandle();
+        }
+    }
+    return rHandle;
+}
+
 status_t SensorService::enable(const sp<SensorEventConnection>& connection,
         int handle, nsecs_t samplingPeriodNs, nsecs_t maxBatchReportLatencyNs, int reservedFlags,
         const String16& opPackageName) {
@@ -1224,6 +1237,42 @@ status_t SensorService::enable(const sp<SensorEventConnection>& connection,
         mActiveSensors.add(handle, rec);
         if (sensor->isVirtual()) {
             mActiveVirtualSensors.emplace(handle);
+        }
+
+        // Find another sensor of the same type sensor
+        // E.g:
+        // type is :33171027 sensor has wakeup(handle 55) , Non-wakeup(handle 56)
+        // we registered 55, then we went to find 56
+        // Let's go find another sensor
+        int32_t otherHandle = findOtherSensor(handle);
+        if (otherHandle != -1) {
+            SensorRecord* otherRec = mActiveSensors.valueFor(otherHandle);
+            if (otherRec != nullptr && sensor->getSensor().getReportingMode() == AREPORTING_MODE_ON_CHANGE) {
+                auto otherLogger = mRecentEvent.find(otherHandle);
+                if (otherLogger != mRecentEvent.end()) {
+                    sensors_event_t event;
+                    // Find the recent data from another sensor
+                    if(otherLogger->second->populateLastEventIfCurrent(&event)) {
+                        event.sensor = handle;
+                        if (event.version == sizeof(sensors_event_t)) {
+                            if (isWakeUpSensorEvent(event) && !mWakeLockAcquired) {
+                                setWakeLockAcquiredLocked(true);
+                            }
+                            // Save the latest data to the current handle sensor list
+                            auto logger = mRecentEvent.find(handle);
+                            if (logger != mRecentEvent.end()) {
+                                logger->second->addEvent(event);
+                            }
+
+                            // send data to current handle sensor
+                            connection->sendEvents(&event, 1, nullptr);
+                            if (!connection->needsWakeLock() && mWakeLockAcquired) {
+                                checkWakeLockStateLocked();
+                            }
+                        }
+                    }
+                }
+            }
         }
     } else {
         if (rec->addConnection(connection)) {

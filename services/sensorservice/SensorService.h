@@ -198,6 +198,9 @@ private:
     // seconds and wake the looper.
     void setWakeLockAcquiredLocked(bool acquire);
 
+    // Found another sensor handle of the same type
+    int32_t findOtherSensor(int handle);
+
     // Send events from the event cache for this particular connection.
     void sendEventsFromCache(const sp<SensorEventConnection>& connection);
 
