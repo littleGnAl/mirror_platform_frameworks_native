@@ -188,6 +188,30 @@
       "revId": "c4e6da905f2a7ef70a0111fca79ff24af8a3bcca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f116f72_0181c9c5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2019-08-20T21:34:07Z",
+      "side": 1,
+      "message": "Does this make sense as an NDK API at all then or should this be tagged VNDK? In what scenario would I want to use this as a mainline module or 3rd party application?",
+      "parentUuid": "8e01c3b6_47e4d80f",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 37
+      },
+      "revId": "c4e6da905f2a7ef70a0111fca79ff24af8a3bcca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
