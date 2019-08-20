@@ -164,6 +164,30 @@
       "revId": "c4e6da905f2a7ef70a0111fca79ff24af8a3bcca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e01c3b6_47e4d80f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-20T19:36:18Z",
+      "side": 1,
+      "message": "I think it still does:\n- there is typically one owner of an interface in these various situations, so they shouldn\u0027t ever need to use this API. They should instead add functionality to their interface (e.g. strongly typed getSemanticSubInterface() OR specific actions doFoo()).\n- AIDL interfaces are not shared between the platform/apps\n\n\u003e if GMScore wants to add some extensions to the camera interface, which itself had extensions added by a mainline module that got its interface from the HAL which etc...\n\nOnly the server can add extensions with this API. GMScore can\u0027t tag on additional information to someone else\u0027s binder. That could get a bit messy even w/ lists. The only option for GMScore is to offer additional functionalities on its own interface.",
+      "parentUuid": "b13223ac_cfb9da82",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 37
+      },
+      "revId": "c4e6da905f2a7ef70a0111fca79ff24af8a3bcca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
