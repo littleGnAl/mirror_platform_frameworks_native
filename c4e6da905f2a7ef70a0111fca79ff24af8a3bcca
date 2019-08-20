@@ -140,6 +140,30 @@
       "revId": "c4e6da905f2a7ef70a0111fca79ff24af8a3bcca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b13223ac_cfb9da82",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2019-08-20T19:12:13Z",
+      "side": 1,
+      "message": "\u003e One should always be enough because a company should only extend an interface once \n\nWell but this is in the NDK now not just the VNDK, so there\u0027s N companies involved. I can imagine these chaining easily as they pass between layers/apps, such as if GMScore wants to add some extensions to the camera interface, which itself had extensions added by a mainline module that got its interface from the HAL which etc...\n\nThe extension seems to be designed for these chaining situations, but then only lets the chain depth be 1. Does that make sense in the NDK where suddenly this could span apps and pseudo-framework (gmscore) and framework (+modules) and HAL vendors?",
+      "parentUuid": "171efe18_a5e28328",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 37
+      },
+      "revId": "c4e6da905f2a7ef70a0111fca79ff24af8a3bcca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
