@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a4deb8c_202f32ff",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2019-08-20T18:11:54Z",
+      "side": 1,
+      "message": "Is there a limit of a single extension per AIBinder? Is it feasible to make this a list instead so it composes better?",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 37
+      },
+      "revId": "c4e6da905f2a7ef70a0111fca79ff24af8a3bcca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
