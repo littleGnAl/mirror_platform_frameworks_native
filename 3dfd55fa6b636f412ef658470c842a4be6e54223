@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b54edf9d_1bd0931f",
+        "filename": "cmds/installd/installd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-08-20T19:35:24Z",
+      "side": 1,
+      "message": "there\u0027s an amazing amount of complexity associated with populating this variable. It would be so much cleaner if we just used the string \"/data/misc/installd/layout_version\" instead of using this variable.\n\nHowever, the use here is consistent with other parts of the code, so keeping it consistent is probably more valuable.\n\nno action required.",
+      "range": {
+        "startLine": 77,
+        "startChar": 71,
+        "endLine": 77,
+        "endChar": 95
+      },
+      "revId": "3dfd55fa6b636f412ef658470c842a4be6e54223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
