@@ -22,6 +22,30 @@
       "revId": "ded7691881e0e05bc6f5c1cc2ae6b93c381de987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "457d65ba_41202d2b",
+        "filename": "services/sensorservice/SensorService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1122970
+      },
+      "writtenOn": "2019-08-20T01:51:35Z",
+      "side": 1,
+      "message": "Yes, you are right, let me modify it.",
+      "parentUuid": "5d2517a7_f9a54e21",
+      "range": {
+        "startLine": 1210,
+        "startChar": 12,
+        "endLine": 1210,
+        "endChar": 44
+      },
+      "revId": "ded7691881e0e05bc6f5c1cc2ae6b93c381de987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
