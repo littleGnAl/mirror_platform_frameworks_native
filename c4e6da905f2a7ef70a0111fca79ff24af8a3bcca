@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2008e44_94243a66",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-20T18:41:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b303eb8_317902ea",
+      "range": {
+        "startLine": 522,
+        "startChar": 48,
+        "endLine": 522,
+        "endChar": 60
+      },
+      "revId": "c4e6da905f2a7ef70a0111fca79ff24af8a3bcca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51005437_65282e42",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1a50f1cc_e1977be3",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-20T18:41:46Z",
+      "side": 1,
+      "message": "Updated, you do it with AIBinder_associateClass. The types are named, but the actual names being used by libbinder are not exposed in libbinder_ndk.",
+      "parentUuid": "51005437_65282e42",
+      "range": {
+        "startLine": 569,
+        "startChar": 57,
+        "endLine": 570,
+        "endChar": 31
+      },
+      "revId": "c4e6da905f2a7ef70a0111fca79ff24af8a3bcca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a4deb8c_202f32ff",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-08-20T18:11:54Z",
       "side": 1,
       "message": "Is there a limit of a single extension per AIBinder? Is it feasible to make this a list instead so it composes better?",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 37
+      },
+      "revId": "c4e6da905f2a7ef70a0111fca79ff24af8a3bcca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171efe18_a5e28328",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-20T18:41:46Z",
+      "side": 1,
+      "message": "So, this had been discussed on the original change and in threads (w/o a solution everyone was happy with tbh).\n\nOne should always be enough because a company should only extend an interface once (and if it is a big interface, the interface should contain semantic APIs for various subcomponents). Note also it is technically a linked list now. For instance, what we have seen most of in HIDL is only a single extension, but you could have a vendor extension attached to an OEM extension of an AOSP interface implementation.\n\nWe also discussed map instead of list (w/ both arbitrary int keys or type keys). These seem rather heavy weight since they have to be stored inside of the BBinder (can\u0027t really update IBinder virtual table).\n\nSo anyway in summary:\n- this is technically a list\n- the length of the list will usually be 1, 2 for extensions, and 3+ in rare cases\n- handles the generic case even though it is simple",
+      "parentUuid": "6a4deb8c_202f32ff",
       "range": {
         "startLine": 578,
         "startChar": 16,
