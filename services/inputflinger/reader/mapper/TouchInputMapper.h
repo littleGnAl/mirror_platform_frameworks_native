@@ -102,7 +102,7 @@ struct CookedPointerData {
     uint32_t pointerCount;
     PointerProperties pointerProperties[MAX_POINTERS];
     PointerCoords pointerCoords[MAX_POINTERS];
-    BitSet32 hoveringIdBits, touchingIdBits;
+    BitSet32 hoveringIdBits, touchingIdBits, canceledIdBits, validIdBits;
     uint32_t idToIndex[MAX_POINTER_ID + 1];
 
     CookedPointerData();
@@ -128,6 +128,8 @@ struct CookedPointerData {
     inline bool isTouching(uint32_t pointerIndex) const {
         return touchingIdBits.hasBit(pointerProperties[pointerIndex].id);
     }
+
+    inline bool hasPointerCoordsForId(uint32_t id) const { return validIdBits.hasBit(id); }
 };
 
 class TouchInputMapper : public InputMapper {
