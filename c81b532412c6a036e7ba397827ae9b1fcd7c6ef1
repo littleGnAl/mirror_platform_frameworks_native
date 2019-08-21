@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d54e495_53bb9d76",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2019-08-21T20:48:17Z",
+      "side": 1,
+      "message": "This is good.\n\nWe could also copy this code to OrphanSwapchain.  That way, timestamps are disabled there.  I don\u0027t remember if that helps in the case of an ANativeWindow going away (so may not be good to do).",
+      "revId": "c81b532412c6a036e7ba397827ae9b1fcd7c6ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
