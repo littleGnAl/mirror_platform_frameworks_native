@@ -16,6 +16,24 @@
       "revId": "c81b532412c6a036e7ba397827ae9b1fcd7c6ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "341cbb69_c31fb8cf",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-08-21T21:27:43Z",
+      "side": 1,
+      "message": "Per our offline chat, I\u0027m doing that at Surface side when Surface disconnects.",
+      "parentUuid": "0d54e495_53bb9d76",
+      "revId": "c81b532412c6a036e7ba397827ae9b1fcd7c6ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
