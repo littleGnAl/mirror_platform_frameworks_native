@@ -22,6 +22,30 @@
       "revId": "7998498517f104e2c6637752076e69d348a592a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5461663e_d4858d76",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-23T01:44:49Z",
+      "side": 1,
+      "message": "I like it. But this would be difficult to whitelist, right?\nWe could migrate when the whitelist is no longer needed.",
+      "parentUuid": "529ba7ea_0aea8593",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "7998498517f104e2c6637752076e69d348a592a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
