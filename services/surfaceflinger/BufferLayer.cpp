@@ -255,6 +255,12 @@ void BufferLayer::onDraw(const RenderArea& renderArea, const Region& clip,
 
 void BufferLayer::onLayerDisplayed(const sp<Fence>& releaseFence) {
     mConsumer->setReleaseFence(releaseFence);
+
+    if (getCompositionType(DisplayDevice::DISPLAY_PRIMARY) == HWC2::Composition::Device) {
+        // this layer is composed by HWC, avoid adding GL sync fence when it
+        // is released.
+        mConsumer->setSkipGLReleaseFence();
+    }
 }
 
 void BufferLayer::abandon() {

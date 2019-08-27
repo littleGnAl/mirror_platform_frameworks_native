@@ -106,6 +106,12 @@ public:
     // union fence.
     void setReleaseFence(const sp<Fence>& fence);
 
+    // skip creating/adding another sync fence from OpenGL ES renderer when
+    // current buffer is released.
+    // In case fence(s) already added by setReleaseFence function or current
+    // buffer is not read since acquired, sync fence is not needed.
+    void setSkipGLReleaseFence(void);
+
     bool releasePendingBuffer();
 
     sp<Fence> getPrevFinalReleaseFence() const;
@@ -387,6 +393,8 @@ private:
     // A release that is pending on the receipt of a new release fence from
     // presentDisplay
     PendingRelease mPendingRelease;
+    // see setSkipGLReleaseFence()
+    bool mSkipGLReleaseFence;
 };
 
 // ----------------------------------------------------------------------------

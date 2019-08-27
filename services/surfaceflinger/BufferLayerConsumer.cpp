@@ -76,7 +76,8 @@ BufferLayerConsumer::BufferLayerConsumer(const sp<IGraphicBufferConsumer>& bq,
         mRE(engine),
         mTexName(tex),
         mLayer(layer),
-        mCurrentTexture(BufferQueue::INVALID_BUFFER_SLOT) {
+        mCurrentTexture(BufferQueue::INVALID_BUFFER_SLOT),
+        mSkipGLReleaseFence(false) {
     BLC_LOGV("BufferLayerConsumer");
 
     memcpy(mCurrentTransformMatrix, mtxIdentity.asArray(), sizeof(mCurrentTransformMatrix));
@@ -379,11 +380,20 @@ status_t BufferLayerConsumer::bindTextureImageLocked() {
     return doFenceWaitLocked();
 }
 
+void BufferLayerConsumer::setSkipGLReleaseFence(void) {
+    mSkipGLReleaseFence = true;
+}
+
 status_t BufferLayerConsumer::syncForReleaseLocked() {
     BLC_LOGV("syncForReleaseLocked");
 
     if (mCurrentTexture != BufferQueue::INVALID_BUFFER_SLOT) {
         if (SyncFeatures::getInstance().useNativeFenceSync()) {
+            if (mSkipGLReleaseFence) {
+                mSkipGLReleaseFence = false;
+                return NO_ERROR;
+            }
+
             base::unique_fd fenceFd = mRE.flush();
             if (fenceFd == -1) {
                 BLC_LOGE("syncForReleaseLocked: failed to flush RenderEngine");
