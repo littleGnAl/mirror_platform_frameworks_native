@@ -601,6 +601,9 @@ static void SetDex2OatScheduling(bool set_to_bg) {
             PLOG(ERROR) << "setpriority failed";
             exit(DexoptReturnCodes::kSetPriority);
         }
+        if (set_blkio_policy(0, SP_BACKGROUND) < 0) {
+            PLOG(ERROR) << "set_blkio_policy failed";
+        }
     }
 }
 
