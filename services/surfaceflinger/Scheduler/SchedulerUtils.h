@@ -30,12 +30,6 @@ using namespace std::chrono_literals;
 // about layers.
 static constexpr size_t ARRAY_SIZE = 30;
 
-// This number is used to have a place holder for when the screen is not NORMAL/ON. Currently
-// the config is not visible to SF, and is completely maintained by HWC. However, we would
-// still like to keep track of time when the device is in this config.
-static constexpr int SCREEN_OFF_CONFIG_ID = -1;
-static constexpr uint32_t HWC2_SCREEN_OFF_CONFIG_ID = 0xffffffff;
-
 // This number is used when we try to determine how long does a given layer stay relevant.
 // Currently it is set to 100ms, because that would indicate 10Hz rendering.
 static constexpr std::chrono::nanoseconds TIME_EPSILON_NS = 100ms;
