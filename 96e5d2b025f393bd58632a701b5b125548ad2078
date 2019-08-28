@@ -22,6 +22,30 @@
       "revId": "96e5d2b025f393bd58632a701b5b125548ad2078",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c872d1e0_d81934e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-28T15:54:32Z",
+      "side": 1,
+      "message": "I considered it, but since the test is on git_master and this is a cherry-pick from there, I figured it\u0027d be effectively a NOP and thus test on clean git_master ToT.",
+      "parentUuid": "4cc9dc82_f52aba80",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 76
+      },
+      "revId": "96e5d2b025f393bd58632a701b5b125548ad2078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
