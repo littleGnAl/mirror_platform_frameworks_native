@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef _INPUTFLINGER_TOUCH_VIDEO_DEVICE_H
-#define _INPUTFLINGER_TOUCH_VIDEO_DEVICE_H
+#ifndef _UI_INPUTFLINGER_TOUCH_VIDEO_DEVICE_H
+#define _UI_INPUTFLINGER_TOUCH_VIDEO_DEVICE_H
 
 #include <array>
 #include <android-base/unique_fd.h>
@@ -121,5 +121,7 @@ private:
      */
     std::optional<TouchVideoFrame> readFrame();
 };
+
 } // namespace android
-#endif //_INPUTFLINGER_TOUCH_VIDEO_DEVICE_H
+
+#endif // _UI_INPUTFLINGER_TOUCH_VIDEO_DEVICE_H
