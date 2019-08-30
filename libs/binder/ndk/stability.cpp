@@ -16,10 +16,11 @@
 
 #include <android/binder_stability.h>
 
+#include <android-base/logging.h>
 #include <binder/Stability.h>
 #include "ibinder_internal.h"
 
-#include <log/log.h>
+#include <dlfcn.h>
 
 using ::android::internal::Stability;
 
@@ -31,13 +32,15 @@ using ::android::internal::Stability;
 #error libbinder_ndk should only be built in a system context
 #endif
 
-// explicit extern because symbol is only declared in header when __ANDROID_VNDK__
-extern "C" void AIBinder_markVendorStability(AIBinder* binder) {
-    Stability::markVndk(binder->getBinder().get());
-}
+void AIBinder_markCompilationUnitStability(AIBinder* binder) {
+    Dl_info info;
+    if (0 == dladdr(__builtin_return_address(0), &info)) {
+        LOG(FATAL) << "asdfasdf :( ???";
+    }
 
-void AIBinder_markSystemStability(AIBinder* binder) {
-    Stability::markCompilationUnit(binder->getBinder().get());
+    LOG(ERROR) << "asdfasdf path is " << info.dli_fname ? info.dli_fname : "NULL";
+
+    // FIXME: mark correct group based on dli_fname
 }
 
 void AIBinder_markVintfStability(AIBinder* binder) {
