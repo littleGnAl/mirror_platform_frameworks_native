@@ -14,28 +14,28 @@
  * limitations under the License.
  */
 
-#include "InputReporterInterface.h"
+#include "InjectionState.h"
 
-namespace android {
+#include <log/log.h>
 
-// --- InputReporter ---
+namespace android::inputdispatcher {
 
-class InputReporter : public InputReporterInterface {
-public:
-    void reportUnhandledKey(uint32_t sequenceNum) override;
-    void reportDroppedKey(uint32_t sequenceNum) override;
-};
-
-void InputReporter::reportUnhandledKey(uint32_t sequenceNum) {
-  // do nothing
+InjectionState::InjectionState(int32_t injectorPid, int32_t injectorUid) :
+        refCount(1),
+        injectorPid(injectorPid), injectorUid(injectorUid),
+        injectionResult(INPUT_EVENT_INJECTION_PENDING), injectionIsAsync(false),
+        pendingForegroundDispatches(0) {
 }
 
-void InputReporter::reportDroppedKey(uint32_t sequenceNum) {
-  // do nothing
+InjectionState::~InjectionState() {}
+
+void InjectionState::release() {
+    refCount -= 1;
+    if (refCount == 0) {
+        delete this;
+    } else {
+        ALOG_ASSERT(refCount > 0);
+    }
 }
 
-sp<InputReporterInterface> createInputReporter() {
-  return new InputReporter();
-}
-
-} // namespace android
+} // namespace android::inputdispatcher
