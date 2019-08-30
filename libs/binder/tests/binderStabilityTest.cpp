@@ -249,9 +249,6 @@ static AIBinder_Class* kNdkBadStableBinder =
                           NdkBadStableBinder_Class_onDestroy,
                           NdkBadStableBinder_Class_onTransact);
 
-// for testing only to get around __ANDROID_VNDK__ guard.
-extern "C" void AIBinder_markVendorStability(AIBinder* binder); // <- BAD DO NOT COPY
-
 TEST(BinderStability, NdkCantCallVendorBinderInSystemContext) {
     SpAIBinder binder = SpAIBinder(AServiceManager_getService(
         String8(kSystemStabilityServer).c_str()));
@@ -265,12 +262,6 @@ TEST(BinderStability, NdkCantCallVendorBinderInSystemContext) {
     EXPECT_TRUE(remoteServer->sendBinder(comp).isOk());
     EXPECT_TRUE(remoteServer->sendAndCallBinder(comp).isOk());
     EXPECT_TRUE(NdkBadStableBinder_getUserData(comp.get())->gotUserTransaction);
-
-    SpAIBinder vendor = SpAIBinder(AIBinder_new(kNdkBadStableBinder, nullptr /*args*/));
-    AIBinder_markVendorStability(vendor.get());
-    EXPECT_TRUE(remoteServer->sendBinder(vendor).isOk());
-    EXPECT_FALSE(remoteServer->sendAndCallBinder(vendor).isOk());
-    EXPECT_FALSE(NdkBadStableBinder_getUserData(vendor.get())->gotUserTransaction);
 }
 
 class MarksStabilityInConstructor : public BBinder {

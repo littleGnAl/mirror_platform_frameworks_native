@@ -22,7 +22,9 @@
 #include "status_internal.h"
 
 #include <android-base/logging.h>
+#include <android-base/strings.h>
 #include <binder/IPCThreadState.h>
+#include <dlfcn.h>
 
 using DeathRecipient = ::android::IBinder::DeathRecipient;
 
@@ -33,6 +35,41 @@ using ::android::status_t;
 using ::android::String16;
 using ::android::String8;
 using ::android::wp;
+
+#ifdef __ANDROID_VNDK__
+#error libbinder_ndk should only be built in a system context
+#endif
+
+bool isVendor(const void* caller) {
+    Dl_info info;
+    if (0 == dladdr(caller, &info)) {
+        LOG(FATAL) << dlerror();
+    }
+
+    if (info.dli_fname == nullptr) {
+        LOG(FATAL) << "Could not identify caller";
+    }
+
+    for (const auto vendorPath : {
+                 "/odm/bin/",
+                 "/system/lib/vndk-",
+                 "/system/lib64/vndk-",
+                 "/vendor/bin/",
+                 "/data/nativetest/odm/",
+                 "/data/nativetest64/odm/",
+                 "/data/benchmarktest/odm/",
+                 "/data/benchmarktest64/odm/",
+                 "/data/nativetest/vendor/",
+                 "/data/nativetest64/vendor/",
+                 "/data/benchmarktest/vendor/",
+                 "/data/benchmarktest64/vendor/",
+         }) {
+        if (android::base::StartsWith(info.dli_fname, vendorPath)) {
+            return true;
+        }
+    }
+    return false;
+}
 
 namespace ABBinderTag {
 
@@ -556,6 +593,10 @@ binder_status_t AIBinder_transact(AIBinder* binder, transaction_code_t code, APa
         LOG(ERROR) << __func__ << ": parcel is associated with binder object " << binder
                    << " but called with " << (*in)->getBinder();
         return STATUS_BAD_VALUE;
+    }
+
+    if (isVendor(__builtin_return_address(0))) {
+        flags |= IBinder::FLAG_PRIVATE_VENDOR;
     }
 
     *out = new AParcel(binder);
