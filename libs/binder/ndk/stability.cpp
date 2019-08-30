@@ -19,25 +19,14 @@
 #include <binder/Stability.h>
 #include "ibinder_internal.h"
 
-#include <log/log.h>
-
 using ::android::internal::Stability;
 
-#ifdef __ANDROID_VNDK__
-#error libbinder_ndk should only be built in a system context
-#endif
-
-#ifdef __ANDROID_NDK__
-#error libbinder_ndk should only be built in a system context
-#endif
-
-// explicit extern because symbol is only declared in header when __ANDROID_VNDK__
-extern "C" void AIBinder_markVendorStability(AIBinder* binder) {
-    Stability::markVndk(binder->getBinder().get());
-}
-
-void AIBinder_markSystemStability(AIBinder* binder) {
-    Stability::markCompilationUnit(binder->getBinder().get());
+void AIBinder_markCompilationUnitStability(AIBinder* binder) {
+    if (isVendor(__builtin_return_address(0))) {
+        Stability::markVndk(binder->getBinder().get());
+    } else {
+        Stability::markCompilationUnit(binder->getBinder().get());
+    }
 }
 
 void AIBinder_markVintfStability(AIBinder* binder) {

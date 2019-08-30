@@ -27,6 +27,11 @@
 #include <binder/IBinder.h>
 #include <utils/Vector.h>
 
+// Expected to be called with __builtin_return_address(0) as the argument. Since
+// libbinder_ndk is always built in a system context, we need the context of the
+// callee in order to check stability.
+bool isVendor(const void* caller);
+
 inline bool isUserCommand(transaction_code_t code) {
     return code >= FIRST_CALL_TRANSACTION && code <= LAST_CALL_TRANSACTION;
 }
