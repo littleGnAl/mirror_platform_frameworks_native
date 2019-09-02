@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f29fc6b_8e425cc3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-09-02T08:11:43Z",
+      "side": 1,
+      "message": "using a different name sounds fine, but does dumpsys still dump incident.proto? Just want to make sure we are not doing both",
+      "range": {
+        "startLine": 908,
+        "startChar": 11,
+        "endLine": 908,
+        "endChar": 71
+      },
+      "revId": "08a71fa887d32c396533a279ca4a9803e93a24f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
