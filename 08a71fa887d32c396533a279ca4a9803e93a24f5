@@ -22,6 +22,30 @@
       "revId": "08a71fa887d32c396533a279ca4a9803e93a24f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c206c21_0f24b1d7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1291102
+      },
+      "writtenOn": "2019-09-03T17:08:32Z",
+      "side": 1,
+      "message": "No, it\u0027s either or. ag/9255064 (in internal master) switched to dump incident_report.proto. In AOSP, dumpsys still dumps incident.proto, while \"incident -u\" is currently a no-op.",
+      "parentUuid": "0f29fc6b_8e425cc3",
+      "range": {
+        "startLine": 908,
+        "startChar": 11,
+        "endLine": 908,
+        "endChar": 71
+      },
+      "revId": "08a71fa887d32c396533a279ca4a9803e93a24f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
