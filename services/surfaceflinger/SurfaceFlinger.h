@@ -882,6 +882,7 @@ private:
             std::vector<OccupancyTracker::Segment>&& history);
     void dumpBufferingStats(std::string& result) const;
     void dumpDisplayIdentificationData(std::string& result) const;
+    void dumpRawDisplayIdentificationData(const DumpArgs&, std::string& result) const;
     void dumpWideColorInfo(std::string& result) const;
     LayersProto dumpProtoInfo(LayerVector::StateSet stateSet,
                               uint32_t traceFlags = SurfaceTracing::TRACE_ALL) const;
