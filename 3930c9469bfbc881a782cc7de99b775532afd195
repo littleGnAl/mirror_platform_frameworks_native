@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffe7512e_153b7fdf",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-05T01:05:47Z",
+      "side": 1,
+      "message": "I\u0027m pretty happy with this, except I\u0027d like to stop exporting this header entirely and also, this is blocked on http://aosp/1114619.",
+      "revId": "3930c9469bfbc881a782cc7de99b775532afd195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
