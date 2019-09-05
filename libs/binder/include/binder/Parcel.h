@@ -21,8 +21,6 @@
 #include <string>
 #include <vector>
 
-#include <linux/android/binder.h>
-
 #include <android-base/unique_fd.h>
 #include <cutils/native_handle.h>
 #include <utils/Errors.h>
@@ -34,11 +32,19 @@
 #include <binder/IInterface.h>
 #include <binder/Parcelable.h>
 
+#ifdef BINDER_IPC_32BIT
+typedef __u32 binder_size_t;
+#else
+typedef __u64 binder_size_t;
+#endif
+
+
 // ---------------------------------------------------------------------------
 namespace android {
 
 template <typename T> class Flattenable;
 template <typename T> class LightFlattenable;
+struct flat_binder_object;
 class IBinder;
 class IPCThreadState;
 class ProcessState;
@@ -226,7 +232,9 @@ public:
     // as long as it keeps a dup of the blob file descriptor handy for later.
     status_t            writeDupImmutableBlobFileDescriptor(int fd);
 
+private:
     status_t            writeObject(const flat_binder_object& val, bool nullMetaData);
+public:
 
     // Like Parcel.java's writeNoException().  Just writes a zero int32.
     // Currently the native implementation doesn't do any of the StrictMode
@@ -365,7 +373,9 @@ public:
     // The caller should call release() on the blob after reading its contents.
     status_t            readBlob(size_t len, ReadableBlob* outBlob) const;
 
+private:
     const flat_binder_object* readObject(bool nullMetaData) const;
+public:
 
     // Explicitly close all file descriptors in the parcel.
     void                closeFileDescriptors();
