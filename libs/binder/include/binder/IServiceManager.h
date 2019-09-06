@@ -18,6 +18,7 @@
 #ifndef ANDROID_ISERVICE_MANAGER_H
 #define ANDROID_ISERVICE_MANAGER_H
 
+#include <android/os/IServiceManager.h>
 #include <binder/IInterface.h>
 #include <utils/Vector.h>
 #include <utils/String16.h>
@@ -30,22 +31,20 @@ class IServiceManager : public IInterface
 {
 public:
     DECLARE_META_INTERFACE(ServiceManager)
-    /**
-     * Must match values in IServiceManager.java
-     */
+
     /* Allows services to dump sections according to priorities. */
-    static const int DUMP_FLAG_PRIORITY_CRITICAL = 1 << 0;
-    static const int DUMP_FLAG_PRIORITY_HIGH = 1 << 1;
-    static const int DUMP_FLAG_PRIORITY_NORMAL = 1 << 2;
+    static const int DUMP_FLAG_PRIORITY_CRITICAL = os::IServiceManager::DUMP_FLAG_PRIORITY_CRITICAL;
+    static const int DUMP_FLAG_PRIORITY_HIGH = os::IServiceManager::DUMP_FLAG_PRIORITY_HIGH;
+    static const int DUMP_FLAG_PRIORITY_NORMAL = os::IServiceManager::DUMP_FLAG_PRIORITY_NORMAL;
     /**
      * Services are by default registered with a DEFAULT dump priority. DEFAULT priority has the
      * same priority as NORMAL priority but the services are not called with dump priority
      * arguments.
      */
-    static const int DUMP_FLAG_PRIORITY_DEFAULT = 1 << 3;
-    static const int DUMP_FLAG_PRIORITY_ALL = DUMP_FLAG_PRIORITY_CRITICAL |
-            DUMP_FLAG_PRIORITY_HIGH | DUMP_FLAG_PRIORITY_NORMAL | DUMP_FLAG_PRIORITY_DEFAULT;
-    static const int DUMP_FLAG_PROTO = 1 << 4;
+    static const int DUMP_FLAG_PRIORITY_DEFAULT = os::IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT;
+    static const int DUMP_FLAG_PRIORITY_ALL = os::IServiceManager::DUMP_FLAG_PRIORITY_ALL;
+
+    static const int DUMP_FLAG_PROTO = os::IServiceManager::DUMP_FLAG_PROTO;
 
     /**
      * Retrieve an existing service, blocking for a few seconds
