@@ -22,6 +22,30 @@
       "revId": "d82070fb570fe5040d58753769938a7614a4913a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ab2ddc_20a64d29",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-09-07T04:06:29Z",
+      "side": 1,
+      "message": "glibc has\n\n```\n/* The following is not at all used here but needed for standard\n   compliance.  */\nextern void __assert (const char *__assertion, const char *__file, int __line)\n     __THROW __attribute__ ((__noreturn__));\n```\n\nwhat\u0027s the problem here?",
+      "parentUuid": "6f729cda_ab051336",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "d82070fb570fe5040d58753769938a7614a4913a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
