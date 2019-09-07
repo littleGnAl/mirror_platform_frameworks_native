@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54ccff2f_dc049576",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-09-07T04:10:51Z",
+      "side": 1,
+      "message": "(personally i agree that std::numeric_limits\u003c\u003e is to be preferred, but if you\u0027re curious, the more portable name for SIZE_T_MAX is SIZE_MAX.)",
+      "revId": "1a8c97a27d02a78411ebb73a23b5f3a275b97fa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
