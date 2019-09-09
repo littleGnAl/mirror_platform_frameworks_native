@@ -3007,7 +3007,7 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& displayDev
     const bool hasClientComposition = getBE().mHwc->hasClientComposition(hwcId);
     ATRACE_INT("hasClientComposition", hasClientComposition);
 
-    bool applyColorMatrix = false;
+    bool applyColorMatrix = true;
     bool needsEnhancedColorMatrix = false;
 
     if (hasClientComposition) {
@@ -3022,6 +3022,14 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& displayDev
                 displayDevice->getHdrCapabilities().getDesiredMaxLuminance());
 
         const bool hasDeviceComposition = getBE().mHwc->hasDeviceComposition(hwcId);
+        mat4 colorMatrix;
+        colorMatrix = mDrawingState.colorMatrix;
+
+        mat4 invertAllButRed = mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                                    vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
+
+        colorMatrix *= invertAllButRed;
+       /*
         const bool skipClientColorTransform = getBE().mHwc->hasCapability(
             HWC2::Capability::SkipClientColorTransform);
 
@@ -3030,6 +3038,7 @@ bool SurfaceFlinger::doComposeSurfaces(const sp<const DisplayDevice>& displayDev
         if (applyColorMatrix) {
             colorMatrix = mDrawingState.colorMatrix;
         }
+        */
 
         // The current enhanced saturation matrix is designed to enhance Display P3,
         // thus we only apply this matrix when the render intent is not colorimetric
