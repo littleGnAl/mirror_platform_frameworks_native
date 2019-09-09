@@ -46,6 +46,30 @@
       "revId": "d82070fb570fe5040d58753769938a7614a4913a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c45e0299_8d166db3",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-09T23:33:25Z",
+      "side": 1,
+      "message": "I am including \"assert.h\", and libbinder_ndk still works, but for some clients I\u0027m having this problem:\n\nIn file included from out/soong/.intermediates/system/tools/aidl/build/test-root-package-ndk_platform-source/gen/test_package/IBaz.cpp:1:\nIn file included from out/soong/.intermediates/system/tools/aidl/build/test-piece-2-ndk_platform-source/gen/include/aidl/some_package/BpBar.h:3:\nIn file included from out/soong/.intermediates/system/tools/aidl/build/test-piece-2-ndk_platform-source/gen/include/aidl/some_package/IBar.h:3:\nframeworks/native/libs/binder/ndk/include_ndk/android/binder_interface_utils.h:51:13: error: use of undeclared identifier \u0027__assert\u0027\n            __assert(__FILE__, __LINE__, \"SharedRefBase: no ref created during lifetime\");\n\nIt\u0027s building with --sysroot prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot and /usr/include/assert.h is correct there. So, I\u0027m not quite sure. Needs further investigation.",
+      "parentUuid": "b0ab2ddc_20a64d29",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "d82070fb570fe5040d58753769938a7614a4913a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
