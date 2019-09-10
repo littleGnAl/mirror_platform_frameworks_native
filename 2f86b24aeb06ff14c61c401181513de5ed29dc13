@@ -22,6 +22,30 @@
       "revId": "2f86b24aeb06ff14c61c401181513de5ed29dc13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25adf7f4_86c2ea71",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-10T17:44:21Z",
+      "side": 1,
+      "message": "This is how AIDL does it (to match with Java). It would be weird to make up something new just for this usecase.\n\n\u003e I assume dots are not allowed in instance names, correct?\n\nCorrect.",
+      "parentUuid": "cc038ba2_640c524e",
+      "range": {
+        "startLine": 44,
+        "startChar": 23,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "2f86b24aeb06ff14c61c401181513de5ed29dc13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
