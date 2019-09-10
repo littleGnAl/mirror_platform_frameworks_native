@@ -77,6 +77,7 @@ cc_defaults {
     defaults: ["dumpstate_cflag_defaults"],
     shared_libs: [
         "android.hardware.dumpstate@1.0",
+        "gsi_aidl_interface-cpp",
         "libziparchive",
         "libbase",
         "libbinder",
@@ -98,6 +99,7 @@ cc_defaults {
     static_libs: [
         "libincidentcompanion",
         "libdumpsys",
+        "libgsid",
         "libserviceutils",
     ],
 }

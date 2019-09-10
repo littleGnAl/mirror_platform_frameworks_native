@@ -75,6 +75,7 @@
 #include <dumputils/dump_utils.h>
 #include <hardware_legacy/power.h>
 #include <hidl/ServiceManagement.h>
+#include <libgsi/libgsid.h>
 #include <log/log.h>
 #include <openssl/sha.h>
 #include <private/android_filesystem_config.h>
@@ -935,6 +936,19 @@ static void DumpDynamicPartitionInfo() {
     }
 
     RunCommand("LPDUMP", {"lpdump", "--all"});
+
+    auto service = android::gsi::GetGsiService();
+    if (service) {
+        std::string output;
+        auto status = service->dumpDeviceMapperDevices(&output);
+
+        printf("------ device-mapper ------\n");
+        if (status.isOk()) {
+            printf("%s\n", output.c_str());
+        } else {
+            printf("Error: %s\n", status.exceptionMessage().c_str());
+        }
+    }
 }
 
 static void AddAnrTraceDir(const bool add_to_zip, const std::string& anr_traces_dir) {
