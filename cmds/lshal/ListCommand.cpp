@@ -163,8 +163,8 @@ template <typename ObjectType>
 VintfInfo getVintfInfo(const std::shared_ptr<const ObjectType>& object,
                        const FqInstance& fqInstance, vintf::TransportArch ta, VintfInfo value) {
     bool found = false;
-    (void)object->forEachInstanceOfVersion(fqInstance.getPackage(), fqInstance.getVersion(),
-                                           [&](const auto& instance) {
+    (void)object->forEachInstanceOfVersion(android::vintf::HalFormat::HIDL, fqInstance.getPackage(),
+                                           fqInstance.getVersion(), [&](const auto& instance) {
                                                found = match(instance, fqInstance, ta);
                                                return !found; // continue if not found
                                            });
@@ -453,10 +453,11 @@ bool ListCommand::addEntryWithoutInstance(const TableEntry& entry,
     }
 
     bool found = false;
-    (void)manifest->forEachInstanceOfVersion(package, version, [&found](const auto&) {
-        found = true;
-        return false; // break
-    });
+    (void)manifest->forEachInstanceOfVersion(HalFormat::HIDL, package, version,
+                                             [&found](const auto&) {
+                                                 found = true;
+                                                 return false; // break
+                                             });
     return found;
 }
 
