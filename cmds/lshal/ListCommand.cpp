@@ -800,7 +800,7 @@ Status ListCommand::fetchManifestHals() {
 
         manifest->forEachInstance([&] (const vintf::ManifestInstance& manifestInstance) {
             TableEntry entry{
-                .interfaceName = manifestInstance.getFqInstance().string(),
+                .interfaceName = manifestInstance.description(),
                 .transport = manifestInstance.transport(),
                 .arch = manifestInstance.arch(),
                 // TODO(b/71555570): Device manifest does not distinguish HALs from vendor or ODM.
