@@ -610,7 +610,7 @@ private:
     // called when all clients have released all their references to
     // this layer meaning it is entirely safe to destroy all
     // resources associated to this layer.
-    void onHandleDestroyed(sp<Layer>& layer);
+    void onHandleDestroyed(const wp<Layer>& l);
     void markLayerPendingRemovalLocked(const sp<Layer>& layer);
 
     // add a layer to SurfaceFlinger
