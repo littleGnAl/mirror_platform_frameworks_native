@@ -710,7 +710,7 @@ protected:
      */
     class LayerCleaner {
         sp<SurfaceFlinger> mFlinger;
-        sp<Layer> mLayer;
+        wp<Layer> mLayer;
 
     protected:
         ~LayerCleaner() {

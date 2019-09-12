@@ -4345,9 +4345,13 @@ void SurfaceFlinger::markLayerPendingRemovalLocked(const sp<Layer>& layer) {
     setTransactionFlags(eTransactionNeeded);
 }
 
-void SurfaceFlinger::onHandleDestroyed(sp<Layer>& layer)
+void SurfaceFlinger::onHandleDestroyed(const wp<Layer>& l)
 {
     Mutex::Autolock lock(mStateLock);
+    sp<Layer> layer = l.promote();
+    if (layer == nullptr) {
+        return;
+    }
     // If a layer has a parent, we allow it to out-live it's handle
     // with the idea that the parent holds a reference and will eventually
     // be cleaned up. However no one cleans up the top-level so we do so
