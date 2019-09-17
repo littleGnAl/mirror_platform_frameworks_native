@@ -22,6 +22,30 @@
       "revId": "63627157d8593fb760c717e0dc098d132eb6e148",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7990ec40_4b3a9d90",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-09-17T22:12:32Z",
+      "side": 1,
+      "message": "This is expanded at where IMPLEMENT_META_INTERFACE is used, so unfortunately we cannot undef it here, which is why I made the macro name so ugly :(",
+      "parentUuid": "2ccfdf4c_fccded78",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 22
+      },
+      "revId": "63627157d8593fb760c717e0dc098d132eb6e148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
