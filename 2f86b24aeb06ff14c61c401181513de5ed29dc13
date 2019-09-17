@@ -70,6 +70,30 @@
       "revId": "2f86b24aeb06ff14c61c401181513de5ed29dc13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb7ac381_76ba2d4a",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-17T19:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b2dc544_f1c13e48",
+      "range": {
+        "startLine": 44,
+        "startChar": 23,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "2f86b24aeb06ff14c61c401181513de5ed29dc13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
