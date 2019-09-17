@@ -70,6 +70,30 @@
       "revId": "d82070fb570fe5040d58753769938a7614a4913a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0678fd6_f76c58bc",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-17T22:03:52Z",
+      "side": 1,
+      "message": "Ah, the reason is that on host, __assert is only defined if NDEBUG is not defined.",
+      "parentUuid": "c45e0299_8d166db3",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "d82070fb570fe5040d58753769938a7614a4913a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
