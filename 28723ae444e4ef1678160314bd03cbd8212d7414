@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25a5d674_f9c6fecb",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1245797
+      },
+      "writtenOn": "2019-09-17T00:43:18Z",
+      "side": 1,
+      "message": "From what I can tell this will be the first usage of __ANDROID_HOST__ in /framework\nhttps://cs.corp.google.com/search/?q\u003d__ANDROID_HOST__\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs\n\nI honestly have no idea if there are any implications or consequences for using it.\nJust wanted to sanity check that this was intentional and you were cognizant that you will probably be setting precedent.\nAlso wondering if there were alternatives considered, like providing \"sys.boot_completed\" from the testing environment.",
+      "range": {
+        "startLine": 170,
+        "startChar": 7,
+        "endLine": 170,
+        "endChar": 23
+      },
+      "revId": "28723ae444e4ef1678160314bd03cbd8212d7414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
