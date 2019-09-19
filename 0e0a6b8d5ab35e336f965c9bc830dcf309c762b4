@@ -22,6 +22,30 @@
       "revId": "0e0a6b8d5ab35e336f965c9bc830dcf309c762b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fb0b2de_ed8282fa",
+        "filename": "libs/graphicsenv/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2019-09-19T22:32:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7435dcfd_018a07ad",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 18
+      },
+      "revId": "0e0a6b8d5ab35e336f965c9bc830dcf309c762b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
