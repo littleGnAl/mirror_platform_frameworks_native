@@ -22,6 +22,30 @@
       "revId": "4dbfd71fba45fef78084182f7c09d1d5f8d7a48f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac8fc81_7ef36338",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2019-09-19T19:17:33Z",
+      "side": 1,
+      "message": "I uploaded PS2 with that just seconds before you submitted your review, haha",
+      "parentUuid": "11b9aefb_65bb463e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "4dbfd71fba45fef78084182f7c09d1d5f8d7a48f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
