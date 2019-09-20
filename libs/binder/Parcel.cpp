@@ -750,61 +750,22 @@ status_t Parcel::writeUtf8AsUtf16(const std::unique_ptr<std::string>& str) {
   return writeUtf8AsUtf16(*str);
 }
 
-namespace {
-
-template<typename T>
-status_t writeByteVectorInternal(Parcel* parcel, const std::vector<T>& val)
-{
-    status_t status;
-    if (val.size() > std::numeric_limits<int32_t>::max()) {
-        status = BAD_VALUE;
-        return status;
-    }
-
-    status = parcel->writeInt32(val.size());
-    if (status != OK) {
-        return status;
-    }
-
-    void* data = parcel->writeInplace(val.size());
-    if (!data) {
-        status = BAD_VALUE;
-        return status;
-    }
-
-    memcpy(data, val.data(), val.size());
-    return status;
-}
-
-template<typename T>
-status_t writeByteVectorInternalPtr(Parcel* parcel,
-                                    const std::unique_ptr<std::vector<T>>& val)
-{
-    if (!val) {
-        return parcel->writeInt32(-1);
-    }
-
-    return writeByteVectorInternal(parcel, *val);
-}
-
-}  // namespace
-
 status_t Parcel::writeByteVector(const std::vector<int8_t>& val) {
-    return writeByteVectorInternal(this, val);
+    return writeByteVectorInternal(val);
 }
 
 status_t Parcel::writeByteVector(const std::unique_ptr<std::vector<int8_t>>& val)
 {
-    return writeByteVectorInternalPtr(this, val);
+    return writeByteVectorInternalPtr(val);
 }
 
 status_t Parcel::writeByteVector(const std::vector<uint8_t>& val) {
-    return writeByteVectorInternal(this, val);
+    return writeByteVectorInternal(val);
 }
 
 status_t Parcel::writeByteVector(const std::unique_ptr<std::vector<uint8_t>>& val)
 {
-    return writeByteVectorInternalPtr(this, val);
+    return writeByteVectorInternalPtr(val);
 }
 
 status_t Parcel::writeInt32Vector(const std::vector<int32_t>& val)
@@ -1477,81 +1438,20 @@ restart_write:
     return err;
 }
 
-namespace {
-
-template<typename T>
-status_t readByteVectorInternal(const Parcel* parcel,
-                                std::vector<T>* val) {
-    val->clear();
-
-    int32_t size;
-    status_t status = parcel->readInt32(&size);
-
-    if (status != OK) {
-        return status;
-    }
-
-    if (size < 0) {
-        status = UNEXPECTED_NULL;
-        return status;
-    }
-    if (size_t(size) > parcel->dataAvail()) {
-        status = BAD_VALUE;
-        return status;
-    }
-
-    T* data = const_cast<T*>(reinterpret_cast<const T*>(parcel->readInplace(size)));
-    if (!data) {
-        status = BAD_VALUE;
-        return status;
-    }
-    val->reserve(size);
-    val->insert(val->end(), data, data + size);
-
-    return status;
-}
-
-template<typename T>
-status_t readByteVectorInternalPtr(
-        const Parcel* parcel,
-        std::unique_ptr<std::vector<T>>* val) {
-    const int32_t start = parcel->dataPosition();
-    int32_t size;
-    status_t status = parcel->readInt32(&size);
-    val->reset();
-
-    if (status != OK || size < 0) {
-        return status;
-    }
-
-    parcel->setDataPosition(start);
-    val->reset(new (std::nothrow) std::vector<T>());
-
-    status = readByteVectorInternal(parcel, val->get());
-
-    if (status != OK) {
-        val->reset();
-    }
-
-    return status;
-}
-
-}  // namespace
-
 status_t Parcel::readByteVector(std::vector<int8_t>* val) const {
-    return readByteVectorInternal(this, val);
+    return readByteVectorInternal(val);
 }
 
 status_t Parcel::readByteVector(std::vector<uint8_t>* val) const {
-    return readByteVectorInternal(this, val);
+    return readByteVectorInternal(val);
 }
 
 status_t Parcel::readByteVector(std::unique_ptr<std::vector<int8_t>>* val) const {
-    return readByteVectorInternalPtr(this, val);
+    return readByteVectorInternalPtr(val);
 }
 
 status_t Parcel::readByteVector(std::unique_ptr<std::vector<uint8_t>>* val) const {
-    return readByteVectorInternalPtr(this, val);
+    return readByteVectorInternalPtr(val);
 }
 
 status_t Parcel::readInt32Vector(std::unique_ptr<std::vector<int32_t>>* val) const {
