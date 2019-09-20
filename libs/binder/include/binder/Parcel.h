@@ -19,6 +19,7 @@
 
 #include <map> // for legacy reasons
 #include <string>
+#include <type_traits>
 #include <vector>
 
 #include <android-base/unique_fd.h>
@@ -157,6 +158,9 @@ public:
     status_t            writeStrongBinderVector(const std::unique_ptr<std::vector<sp<IBinder>>>& val);
     status_t            writeStrongBinderVector(const std::vector<sp<IBinder>>& val);
 
+    template<typename T, typename = std::enable_if_t<std::is_enum<T>::value>>
+    status_t            writeEnumVector(const std::vector<T>& val);
+
     template<typename T>
     status_t            writeParcelableVector(const std::unique_ptr<std::vector<std::unique_ptr<T>>>& val);
     template<typename T>
@@ -274,6 +278,9 @@ public:
     sp<IBinder>         readStrongBinder() const;
     status_t            readStrongBinder(sp<IBinder>* val) const;
     status_t            readNullableStrongBinder(sp<IBinder>* val) const;
+
+    template<typename T, typename = std::enable_if_t<std::is_enum<T>::value>>
+    status_t            readEnumVector(std::vector<T>* val) const;
 
     template<typename T>
     status_t            readParcelableVector(
@@ -437,6 +444,20 @@ private:
 
     status_t            writeRawNullableParcelable(const Parcelable*
                                                    parcelable);
+
+    template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int8_t>::value, bool> = 0>
+    status_t            writeEnum(const T& val);
+    template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int32_t>::value, bool> = 0>
+    status_t            writeEnum(const T& val);
+    template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int64_t>::value, bool> = 0>
+    status_t            writeEnum(const T& val);
+
+    template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int8_t>::value, bool> = 0>
+    status_t            readEnum(T* pArg) const;
+    template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int32_t>::value, bool> = 0>
+    status_t            readEnum(T* pArg) const;
+    template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int64_t>::value, bool> = 0>
+    status_t            readEnum(T* pArg) const;
 
     template<typename T, typename U>
     status_t            unsafeReadTypedVector(std::vector<T>* val,
@@ -911,6 +932,42 @@ status_t Parcel::writeParcelableVector(const std::shared_ptr<std::vector<std::un
     }
 
     return unsafeWriteTypedVector(*val, &Parcel::writeNullableParcelable<T>);
+}
+
+template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int8_t>::value, bool>>
+status_t Parcel::writeEnum(const T& val) {
+    return writeByte(static_cast<int8_t>(val));
+}
+template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int32_t>::value, bool>>
+status_t Parcel::writeEnum(const T& val) {
+    return writeInt32(static_cast<int32_t>(val));
+}
+template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int64_t>::value, bool>>
+status_t Parcel::writeEnum(const T& val) {
+    return writeInt64(static_cast<int64_t>(val));
+}
+
+template<typename T, typename>
+status_t Parcel::writeEnumVector(const std::vector<T>& val) {
+    return writeTypedVector(val, &Parcel::writeEnum);
+}
+
+template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int8_t>::value, bool>>
+status_t Parcel::readEnum(T* pArg) const {
+    return readByte((int8_t *) pArg);
+}
+template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int32_t>::value, bool>>
+status_t Parcel::readEnum(T* pArg) const {
+    return readInt32((int32_t *) pArg);
+}
+template<typename T, std::enable_if_t<std::is_same<typename std::underlying_type<T>::type,int64_t>::value, bool>>
+status_t Parcel::readEnum(T* pArg) const {
+    return readInt64((int64_t *) pArg);
+}
+
+template<typename T, typename>
+status_t Parcel::readEnumVector(std::vector<T>* val) const {
+    return readTypedVector(val, &Parcel::readEnum);
 }
 
 // ---------------------------------------------------------------------------
