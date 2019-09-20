@@ -22,6 +22,30 @@
       "revId": "54d35f5f40e7324db3909160ffb9d0c879daf6ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee43312_9d0d9a3d",
+        "filename": "libs/binder/include/private/binder/binder_module.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-20T20:36:40Z",
+      "side": 1,
+      "message": "hmmm. I think this was working because it always defines __packed and ifndef __packed elsewhere, although I also thinking keeping this in should work for more clients. Thanks",
+      "parentUuid": "a68d144a_70621c11",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "54d35f5f40e7324db3909160ffb9d0c879daf6ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
