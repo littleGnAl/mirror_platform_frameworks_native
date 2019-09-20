@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99486f9f_5391c6bf",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-20T23:30:56Z",
+      "side": 1,
+      "message": "you\u0027ll also need unique_ptr (@nullable) variants of this. Do those work for you?",
+      "range": {
+        "startLine": 924,
+        "startChar": 33,
+        "endLine": 924,
+        "endChar": 53
+      },
+      "revId": "54e9f198907668eb1b8f87442161c756fb9d773e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b661cd4d_b6b41990",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-20T23:30:56Z",
+      "side": 1,
+      "message": "four spaces",
+      "range": {
+        "startLine": 927,
+        "startChar": 4,
+        "endLine": 927,
+        "endChar": 6
+      },
+      "revId": "54e9f198907668eb1b8f87442161c756fb9d773e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec83e4f9_ab9f1406",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-20T23:30:56Z",
+      "side": 1,
+      "message": "It feels weird to have this multiplication here. I think all similar things are in cpp? (might also end up being inconsistent w/ Java, etc). Would it be better to be consistent w/ methods like writeInt32Vector/writeInt64Vector and call into writeTypedVector (which has more checks in it as well).",
+      "range": {
+        "startLine": 930,
+        "startChar": 35,
+        "endLine": 930,
+        "endChar": 57
+      },
+      "revId": "54e9f198907668eb1b8f87442161c756fb9d773e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
