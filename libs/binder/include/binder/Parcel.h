@@ -19,6 +19,7 @@
 
 #include <map> // for legacy reasons
 #include <string>
+#include <type_traits>
 #include <vector>
 
 #include <android-base/unique_fd.h>
@@ -157,6 +158,9 @@ public:
     status_t            writeStrongBinderVector(const std::unique_ptr<std::vector<sp<IBinder>>>& val);
     status_t            writeStrongBinderVector(const std::vector<sp<IBinder>>& val);
 
+    template<typename T, typename = std::enable_if_t<std::is_enum<T>::value>>
+    status_t            writeEnumVector(const std::vector<T>& val);
+
     template<typename T>
     status_t            writeParcelableVector(const std::unique_ptr<std::vector<std::unique_ptr<T>>>& val);
     template<typename T>
@@ -274,6 +278,9 @@ public:
     sp<IBinder>         readStrongBinder() const;
     status_t            readStrongBinder(sp<IBinder>* val) const;
     status_t            readNullableStrongBinder(sp<IBinder>* val) const;
+
+    template<typename T, typename = std::enable_if_t<std::is_enum<T>::value>>
+    status_t            readEnumVector(std::vector<T>* val) const;
 
     template<typename T>
     status_t            readParcelableVector(
@@ -911,6 +918,26 @@ status_t Parcel::writeParcelableVector(const std::shared_ptr<std::vector<std::un
     }
 
     return unsafeWriteTypedVector(*val, &Parcel::writeNullableParcelable<T>);
+}
+
+template<typename T, typename>
+status_t Parcel::writeEnumVector(const std::vector<T>& val) {
+    status_t status = this->writeVectorSize(val);
+    if (status != OK) {
+      return status;
+    }
+
+    return this->write(val.data(), sizeof(T) * val.size());
+}
+
+template<typename T, typename>
+status_t Parcel::readEnumVector(std::vector<T>* val) const {
+    status_t status = this->resizeOutVector(val);
+    if (status != OK) {
+        return status;
+    }
+
+    return this->read(val->data(), sizeof(T) * val->size());
 }
 
 // ---------------------------------------------------------------------------
