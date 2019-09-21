@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db49e8c7_8e3cebeb",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2019-09-21T02:11:40Z",
+      "side": 1,
+      "message": "I think this won\u0027t work with Java Parcel because Java\u0027s writeByteArray() doesn\u0027t pad each byte, while writeByte() does.\n\nwriteEnumVector() w/ backing type byte needs to use something like readByteVectorInternal()...",
+      "range": {
+        "startLine": 937,
+        "startChar": 0,
+        "endLine": 937,
+        "endChar": 112
+      },
+      "revId": "4167a25f68fa1bed91a5c48b52d01a50ef2f54f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
