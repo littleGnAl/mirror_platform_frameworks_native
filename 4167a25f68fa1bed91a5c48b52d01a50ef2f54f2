@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b26b87ad_63d32204",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T17:06:56Z",
+      "side": 1,
+      "message": "nit: is_same_v, underlying_type_t",
+      "range": {
+        "startLine": 448,
+        "startChar": 47,
+        "endLine": 448,
+        "endChar": 54
+      },
+      "revId": "4167a25f68fa1bed91a5c48b52d01a50ef2f54f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db49e8c7_8e3cebeb",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 2
@@ -18,6 +41,53 @@
         "startChar": 0,
         "endLine": 937,
         "endChar": 112
+      },
+      "revId": "4167a25f68fa1bed91a5c48b52d01a50ef2f54f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "467bcee7_1e88af88",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T17:06:56Z",
+      "side": 1,
+      "message": "ack. We should test, but otherwise, this lgtm",
+      "parentUuid": "db49e8c7_8e3cebeb",
+      "range": {
+        "startLine": 937,
+        "startChar": 0,
+        "endLine": 937,
+        "endChar": 112
+      },
+      "revId": "4167a25f68fa1bed91a5c48b52d01a50ef2f54f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302ec006_07799d84",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T17:06:56Z",
+      "side": 1,
+      "message": "nit: static_cast",
+      "range": {
+        "startLine": 957,
+        "startChar": 20,
+        "endLine": 957,
+        "endChar": 30
       },
       "revId": "4167a25f68fa1bed91a5c48b52d01a50ef2f54f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
