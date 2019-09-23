@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a251cff7_397eeceb",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2019-09-23T16:53:22Z",
+      "side": 1,
+      "message": "Still TODO in this change before ready for review:\nAdding @nullable variants for read+write that use unique_ptr.",
+      "range": {
+        "startLine": 162,
+        "startChar": 24,
+        "endLine": 162,
+        "endChar": 39
+      },
+      "revId": "619ee8352a2739fec92b77da9e1f8e148eecf4e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
