@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daaa75b0_9a26f32a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T22:49:08Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be invoking dumpsys as a command instead of custom C++ code in this process?",
+      "range": {
+        "startLine": 1060,
+        "startChar": 34,
+        "endLine": 1060,
+        "endChar": 49
+      },
+      "revId": "60dc20c54ffca1fd94dd2e062e9624ee3c4609a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12aeb41f_8515326c",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T22:49:08Z",
+      "side": 1,
+      "message": "is there another format that would be preferred?",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 34
+      },
+      "revId": "60dc20c54ffca1fd94dd2e062e9624ee3c4609a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10307ec_4c545132",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T22:49:08Z",
+      "side": 1,
+      "message": "was adding as a header here since it\u0027s already in the other thread, and this is dumped in existing places. Open to other suggestions though. I\u0027m not very familiar with this tool.",
+      "range": {
+        "startLine": 334,
+        "startChar": 39,
+        "endLine": 334,
+        "endChar": 50
+      },
+      "revId": "60dc20c54ffca1fd94dd2e062e9624ee3c4609a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

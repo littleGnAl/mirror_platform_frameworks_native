@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff6a8a0c_242ec765",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T22:49:08Z",
+      "side": 0,
+      "message": "can break out if you insist, strerror(-err) could work, but just \u0027err\u0027 I think is pretty common for status_t?",
+      "range": {
+        "startLine": 339,
+        "startChar": 55,
+        "endLine": 339,
+        "endChar": 63
+      },
+      "revId": "835d83d579f24231990da6f6637483535391e101",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
