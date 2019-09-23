@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b5e2459_73c17be2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "also, you might ignore some of my comments for moved code, but it would be nice to clean it up if possible",
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b39b038_666fb398",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "needs Java support first, right?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e875c211_2f55d161",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "could we switch writeByte* to get/take \u0027const T*\u0027 and \u0027size_t\u0027 so that the implementations don\u0027t get baked into prebuilts?",
+      "range": {
+        "startLine": 760,
+        "startChar": 17,
+        "endLine": 760,
+        "endChar": 40
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92445576_4bdb13c7",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "declare where needed",
+      "range": {
+        "startLine": 761,
+        "startChar": 0,
+        "endLine": 761,
+        "endChar": 20
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b07094_91e57cee",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "why not just \u0027return BAD_VALUE;\u0027?",
+      "range": {
+        "startLine": 763,
+        "startChar": 8,
+        "endLine": 764,
+        "endChar": 22
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d99f2b_182046d5",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "why not use write?",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 778,
+        "endChar": 41
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf772a5_3c321239",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "most of the other functions seem to omit this (do overloading)",
+      "range": {
+        "startLine": 783,
+        "startChar": 40,
+        "endLine": 783,
+        "endChar": 43
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13cfcbc4_485eae4e",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "unnecessary",
+      "range": {
+        "startLine": 793,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 17
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25f94504_11873cc9",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "nit: why not just return UNEXPECTED_NULL?",
+      "range": {
+        "startLine": 803,
+        "startChar": 0,
+        "endLine": 804,
+        "endChar": 22
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa7c58e_d3b5cf8f",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "this and below is assuming sizeof(T) \u003d\u003d 1, right?",
+      "range": {
+        "startLine": 806,
+        "startChar": 8,
+        "endLine": 806,
+        "endChar": 20
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "716f997d_d7288f4d",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "should use \"const T* data\" instead? This should crash if you try to read from it",
+      "range": {
+        "startLine": 811,
+        "startChar": 14,
+        "endLine": 811,
+        "endChar": 24
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556ab330_5136ff52",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "begin (to make L793 unnecessary and be explicit)",
+      "range": {
+        "startLine": 817,
+        "startChar": 21,
+        "endLine": 817,
+        "endChar": 24
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52fe31e1_e7bc008e",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "unnecessary",
+      "range": {
+        "startLine": 827,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 17
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d640768_90e672be",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "unnecessary",
+      "range": {
+        "startLine": 838,
+        "startChar": 1,
+        "endLine": 840,
+        "endChar": 5
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0722e339_7a573907",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-23T19:58:56Z",
+      "side": 1,
+      "message": "if these are the only use of writeEnum, can we only implement it for int8_t?",
+      "range": {
+        "startLine": 1065,
+        "startChar": 42,
+        "endLine": 1065,
+        "endChar": 51
+      },
+      "revId": "4c9c868ddc4209fa5f55825a3518af31a4915b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
