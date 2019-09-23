@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f121964b_9218e2cd",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2019-09-23T18:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b26b87ad_63d32204",
+      "range": {
+        "startLine": 448,
+        "startChar": 47,
+        "endLine": 448,
+        "endChar": 54
+      },
+      "revId": "4167a25f68fa1bed91a5c48b52d01a50ef2f54f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db49e8c7_8e3cebeb",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "98a7ab25_927c564d",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2019-09-23T18:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "467bcee7_1e88af88",
+      "range": {
+        "startLine": 937,
+        "startChar": 0,
+        "endLine": 937,
+        "endChar": 112
+      },
+      "revId": "4167a25f68fa1bed91a5c48b52d01a50ef2f54f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "302ec006_07799d84",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 2
@@ -92,6 +140,30 @@
       "revId": "4167a25f68fa1bed91a5c48b52d01a50ef2f54f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceb72983_37c5555a",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2019-09-23T18:52:03Z",
+      "side": 1,
+      "message": "Done (went with reinterpret_cast as discussed).",
+      "parentUuid": "302ec006_07799d84",
+      "range": {
+        "startLine": 957,
+        "startChar": 20,
+        "endLine": 957,
+        "endChar": 30
+      },
+      "revId": "4167a25f68fa1bed91a5c48b52d01a50ef2f54f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8cb18b9c_98d1f432",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2019-09-23T18:52:03Z",
+      "side": 1,
+      "message": "Done \u0026 tested in aosp/1109045.",
+      "parentUuid": "99486f9f_5391c6bf",
+      "range": {
+        "startLine": 924,
+        "startChar": 33,
+        "endLine": 924,
+        "endChar": 53
+      },
+      "revId": "54e9f198907668eb1b8f87442161c756fb9d773e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b661cd4d_b6b41990",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 1
