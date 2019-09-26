@@ -891,8 +891,9 @@ status_t GLESRenderEngine::drawLayers(const DisplaySettings& display,
 
     {
         std::lock_guard<std::mutex> lock(mRenderingMutex);
+        GlesVersion version = parseGlesVersion(GLExtensions::getInstance().getVersion());
 
-        BindNativeBufferAsFramebuffer fbo(*this, buffer, useFramebufferCache);
+        BindNativeBufferAsFramebuffer fbo(*this, buffer, (version >= GLES_VERSION_3_0)? useFramebufferCache : false);
 
         if (fbo.getStatus() != NO_ERROR) {
             ALOGE("Failed to bind framebuffer! Aborting GPU composition for buffer (%p).",
