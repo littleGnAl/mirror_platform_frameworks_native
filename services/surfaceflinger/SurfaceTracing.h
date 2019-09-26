@@ -48,6 +48,7 @@ public:
     bool isEnabled() const;
     void notify(const char* where);
 
+    void setCompositionTime(long compositionTime);
     void setBufferSize(size_t bufferSizeInByte);
     void writeToFileAsync();
     void dump(std::string& result) const;
@@ -80,6 +81,8 @@ private:
         size_t mSizeInBytes = 0U;
         std::queue<LayersTraceProto> mStorage;
     };
+
+    long mCompositionTime;
 
     void mainLoop();
     void addFirstEntry();

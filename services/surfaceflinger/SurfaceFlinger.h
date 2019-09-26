@@ -766,7 +766,8 @@ private:
      * to prepare the hardware composer
      */
     void prepareFrame(const sp<DisplayDevice>& display);
-    void doComposition(const sp<DisplayDevice>& display, bool repainEverything);
+    void doComposition(const sp<DisplayDevice>& display, bool repainEverything,
+                       std::function<void()> onSurfacesComposed);
     void doDebugFlashRegions(const sp<DisplayDevice>& display, bool repaintEverything);
     void logLayerStats();
     void doDisplayComposition(const sp<DisplayDevice>& display, const Region& dirtyRegion);

@@ -1741,11 +1741,16 @@ void SurfaceFlinger::handleMessageRefresh() {
     preComposition();
     rebuildLayerStacks();
     calculateWorkingSet();
+    long compositionTime = elapsedRealtimeNano();
     for (const auto& [token, display] : mDisplays) {
         beginFrame(display);
         prepareFrame(display);
         doDebugFlashRegions(display, repaintEverything);
-        doComposition(display, repaintEverything);
+        doComposition(display, repaintEverything, [&]() {
+            if (mTracingEnabled) {
+                mTracing.setCompositionTime(compositionTime);
+            }
+        });
     }
 
     logLayerStats();
@@ -2408,7 +2413,8 @@ void SurfaceFlinger::prepareFrame(const sp<DisplayDevice>& displayDevice) {
              displayDevice->getDebugName().c_str(), result, strerror(-result));
 }
 
-void SurfaceFlinger::doComposition(const sp<DisplayDevice>& displayDevice, bool repaintEverything) {
+void SurfaceFlinger::doComposition(const sp<DisplayDevice>& displayDevice, bool repaintEverything,
+                                   std::function<void()> onSurfacesComposed) {
     ATRACE_CALL();
     ALOGV("doComposition");
 
@@ -2421,6 +2427,9 @@ void SurfaceFlinger::doComposition(const sp<DisplayDevice>& displayDevice, bool 
 
         // repaint the framebuffer (if needed)
         doDisplayComposition(displayDevice, dirtyRegion);
+        if (onSurfacesComposed) {
+            onSurfacesComposed();
+        }
 
         display->editState().dirtyRegion.clear();
         display->getRenderSurface()->flip();
