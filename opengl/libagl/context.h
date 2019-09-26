@@ -21,8 +21,8 @@
 #include <stddef.h>
 #include <sys/types.h>
 #include <pthread.h>
-#ifdef __ANDROID__
-#include <bionic_tls.h>
+#ifdef __BIONIC__
+#include <bionic/tls.h>
 #endif
 
 #include <private/pixelflinger/ggl_context.h>
