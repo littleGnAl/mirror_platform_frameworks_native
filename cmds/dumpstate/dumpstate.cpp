@@ -354,8 +354,9 @@ static std::vector<DumpData> GetDumpFds(const std::string& dir_path,
     std::sort(dump_data.begin(), dump_data.end(),
               [](const DumpData& d1, const DumpData& d2) { return d1.mtime > d2.mtime; });
 
-    if (limit_by_count && dump_data.size() > 10) {
-        dump_data.erase(dump_data.begin() + 10, dump_data.end());
+    size_t max_tombstone_count(android::base::GetIntProperty("tombstoned.max_tombstone_count", 32));
+    if (limit_by_count && dump_data.size() > max_tombstone_count) {
+        dump_data.erase(dump_data.begin() + max_tombstone_count, dump_data.end());
     }
 
     return dump_data;
