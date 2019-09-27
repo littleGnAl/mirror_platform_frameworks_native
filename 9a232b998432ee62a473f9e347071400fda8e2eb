@@ -46,6 +46,30 @@
       "revId": "9a232b998432ee62a473f9e347071400fda8e2eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b802f5c_a8c07534",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-09-27T14:52:58Z",
+      "side": 1,
+      "message": "Actually http://b/140580637#comment7 mentions this property can be 1000 on hwasan devices and that sounds too much, if there can be so many tombstones. So maybe we should do min(tombstones, 100) or something like that?\n\nI would think we want to keep 352-359 in either case - seems like a sensible defense to me.",
+      "parentUuid": "5d1cd2bf_28528474",
+      "range": {
+        "startLine": 303,
+        "startChar": 3,
+        "endLine": 303,
+        "endChar": 77
+      },
+      "revId": "9a232b998432ee62a473f9e347071400fda8e2eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
