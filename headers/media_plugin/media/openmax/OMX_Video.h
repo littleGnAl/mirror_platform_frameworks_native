@@ -88,6 +88,7 @@ typedef enum OMX_VIDEO_CODINGTYPE {
     OMX_VIDEO_CodingVP8,        /**< Google VP8, formerly known as On2 VP8 */
     OMX_VIDEO_CodingVP9,        /**< Google VP9 */
     OMX_VIDEO_CodingHEVC,       /**< ITU H.265/HEVC */
+    OMX_VIDEO_CodingAV1,        /**< AV1 */
     OMX_VIDEO_CodingDolbyVision,/**< Dolby Vision */
     OMX_VIDEO_CodingImageHEIC,  /**< HEIF image encoded with HEVC */
     OMX_VIDEO_CodingKhronosExtensions = 0x6F000000, /**< Reserved region for introducing Khronos Standard Extensions */
