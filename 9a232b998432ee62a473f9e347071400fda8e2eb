@@ -94,6 +94,30 @@
       "revId": "9a232b998432ee62a473f9e347071400fda8e2eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b58ef6_56a1b511",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-09-30T08:54:46Z",
+      "side": 1,
+      "message": "I don\u0027t know that BetterBug has a size limit as such, but generally speaking I have been trying to keep bugreport size not get much bigger than they are now. If you think dogfood devices would have reasonable max_tombstone_count properties, dumping them all for now, and revisiting if there are complaints sounds fine to me.",
+      "parentUuid": "343f30d2_7d2b6a6d",
+      "range": {
+        "startLine": 303,
+        "startChar": 3,
+        "endLine": 303,
+        "endChar": 77
+      },
+      "revId": "9a232b998432ee62a473f9e347071400fda8e2eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
