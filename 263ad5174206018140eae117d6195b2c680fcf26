@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7d4593a_e33c7029",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-10-01T19:18:23Z",
+      "side": 1,
+      "message": "gsid is a lazy service though; the GetGsiService function starts it and return the binder object. Should this be changed to:\n\n    auto _ \u003d GetGsiService();\n    RunCommand(\"device mapper\", \"dumpsys gsid\");\n\n?",
+      "parentUuid": "169be9d2_805f5e73",
+      "range": {
+        "startLine": 940,
+        "startChar": 33,
+        "endLine": 940,
+        "endChar": 46
+      },
+      "revId": "263ad5174206018140eae117d6195b2c680fcf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af106afb_eb7127ec",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
