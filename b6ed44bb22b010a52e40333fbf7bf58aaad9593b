@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2929aaef_9cb79865",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-01T19:55:35Z",
+      "side": 1,
+      "message": "also, I do find this a bit strange because if a library belongs in no APEXes, you would specify apex_available: []?",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24c81042_44094a9a",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 1
