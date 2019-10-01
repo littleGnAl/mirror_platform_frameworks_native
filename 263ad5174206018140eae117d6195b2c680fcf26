@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "0cc58a7c_f37979be",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-01T19:24:28Z",
+      "side": 1,
+      "message": "re David, yeah, I like that approach",
+      "parentUuid": "27f26d7d_0f040f7a",
+      "range": {
+        "startLine": 940,
+        "startChar": 33,
+        "endLine": 940,
+        "endChar": 46
+      },
+      "revId": "263ad5174206018140eae117d6195b2c680fcf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af106afb_eb7127ec",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
