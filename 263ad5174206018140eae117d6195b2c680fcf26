@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "169be9d2_805f5e73",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-01T16:40:30Z",
+      "side": 1,
+      "message": "we shouldn\u0027t write C++ code here directly (only execute commands in separate processes). `dumpsys` and C++ function dump should do this without needing anymore work",
+      "range": {
+        "startLine": 940,
+        "startChar": 33,
+        "endLine": 940,
+        "endChar": 46
+      },
+      "revId": "263ad5174206018140eae117d6195b2c680fcf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af106afb_eb7127ec",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
