@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af106afb_eb7127ec",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-10-01T01:54:17Z",
+      "side": 1,
+      "message": "else: print an error message in the bugreport (instead of putting it in logcat)",
+      "revId": "263ad5174206018140eae117d6195b2c680fcf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
