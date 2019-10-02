@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e3868822_dc700e56",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-02T07:57:47Z",
+      "side": 1,
+      "message": "Then we can\u0027t express that a lib should only belongs to an APEX, and not in platform.",
+      "parentUuid": "2929aaef_9cb79865",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c81042_44094a9a",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6d09865b_a235cbcf",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-02T07:57:47Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you mean by \u0027making themselves available to libbinder\u0027. \n\nTo add libbinder to an APEX, someone has to add the name of APEX here, and the change should be approved by the OWNERS.",
+      "parentUuid": "24c81042_44094a9a",
+      "range": {
+        "startLine": 75,
+        "startChar": 10,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2a4a45d_7e85fd53",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-01T16:30:08Z",
       "side": 1,
       "message": "were you planning on removing it from this?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d2ccf9a_2727dec8",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-02T07:57:47Z",
+      "side": 1,
+      "message": "yes.",
+      "parentUuid": "e2a4a45d_7e85fd53",
       "range": {
         "startLine": 77,
         "startChar": 0,
