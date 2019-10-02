@@ -35,6 +35,12 @@
 
 using namespace android;
 
+#ifdef PRODUCT_SHIPPING_API_LEVEL
+constexpr size_t kProductShippingApiLevel = PRODUCT_SHIPPING_API_LEVEL;
+#else
+constexpr size_t kProductShippingApiLevel = 1;
+#endif
+
 static status_t startGraphicsAllocatorService() {
     using android::hardware::configstore::getBool;
     using android::hardware::configstore::V1_0::ISurfaceFlingerConfigs;
@@ -59,6 +65,10 @@ static status_t startGraphicsAllocatorService() {
 }
 
 static status_t startDisplayService() {
+    // This service is deprecating for devices launching after Android Q.
+    // Devices launched at Android Q or earlier can still use it.
+    if (kProductShippingApiLevel > 29) return OK;
+
     using android::frameworks::displayservice::V1_0::implementation::DisplayService;
     using android::frameworks::displayservice::V1_0::IDisplayService;
 

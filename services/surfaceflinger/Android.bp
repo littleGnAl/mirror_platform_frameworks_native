@@ -205,6 +205,11 @@ cc_defaults {
         "libtrace_proto",
     ],
     ldflags: ["-Wl,--export-dynamic"],
+    product_variables: {
+        product_shipping_api_level: {
+            cflags: ["-DPRODUCT_SHIPPING_API_LEVEL=%s"],
+        },
+    },
 }
 
 filegroup {
