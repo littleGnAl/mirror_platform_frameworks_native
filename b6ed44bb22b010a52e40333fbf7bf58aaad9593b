@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b8f82f72_23ae063e",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-02T16:10:05Z",
+      "side": 1,
+      "message": "But then, shouldn\u0027t it be simply \u0027available\u0027 instead of \u0027apex_available\u0027? The platform is not an APEX, right?",
+      "parentUuid": "e3868822_dc700e56",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c81042_44094a9a",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I don\u0027t understand what you mean by \u0027making themselves available to libbinder\u0027. \n\nTo add libbinder to an APEX, someone has to add the name of APEX here, and the change should be approved by the OWNERS.",
       "parentUuid": "24c81042_44094a9a",
+      "range": {
+        "startLine": 75,
+        "startChar": 10,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50b0d08a_60e531f0",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-02T16:10:05Z",
+      "side": 1,
+      "message": "Sorry, at this time, I thought that \":platform\" was a module group, but now I don\u0027t know what it is.",
+      "parentUuid": "6d09865b_a235cbcf",
       "range": {
         "startLine": 75,
         "startChar": 10,
