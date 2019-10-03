@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "75bc97e3_9ece9314",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-03T19:53:49Z",
+      "side": 1,
+      "message": "Why not treat being available to the platform orthogonally then? Or we could make APEX use the image mutator in the same way other partitions work?",
+      "parentUuid": "142ceff1_d36d169a",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c81042_44094a9a",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 1
