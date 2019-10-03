@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36670886_8d661e07",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-03T03:25:17Z",
+      "side": 1,
+      "message": "nit: can this be static?",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 9
+      },
+      "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a4ca7db_a6c07662",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-03T03:25:17Z",
+      "side": 1,
+      "message": "nit: android::base::GetBoolProperty?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 78
+      },
+      "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f13afa91_20c07f04",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-03T03:25:17Z",
+      "side": 1,
+      "message": "nit:  possible race condition around the access to gSystemBootCompleted?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 6
+      },
+      "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
