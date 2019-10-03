@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "03d00902_3d20e63f",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-03T21:12:17Z",
+      "side": 1,
+      "message": "I\u0027d rather remove all of these differences (or call waitForService below).\n\nHowever, I\u0027m only changing the indentation level here, so yes, will follow up",
+      "parentUuid": "36670886_8d661e07",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 9
+      },
+      "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a4ca7db_a6c07662",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a5e7f70b_51f38acf",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-03T21:12:17Z",
+      "side": 1,
+      "message": "libbinder doesn\u0027t use libbase to avoid costs of additional dependency",
+      "parentUuid": "7a4ca7db_a6c07662",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 78
+      },
+      "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f13afa91_20c07f04",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d550cdb_fd763385",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-03T21:12:17Z",
+      "side": 1,
+      "message": "Yes, two threads might end up independently checking the property, but this won\u0027t cause any race problem.",
+      "parentUuid": "f13afa91_20c07f04",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 6
+      },
+      "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
