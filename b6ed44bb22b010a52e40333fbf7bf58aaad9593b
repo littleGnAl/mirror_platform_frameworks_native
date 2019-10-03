@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "142ceff1_d36d169a",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-03T11:36:03Z",
+      "side": 1,
+      "message": "Right, but just \u0027available\u0027 seems to abstract. As this is controlling the availability around APEX, I think apex should be somewhere in the name.",
+      "parentUuid": "b8f82f72_23ae063e",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c81042_44094a9a",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 1
@@ -141,6 +165,30 @@
       "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0888f85_d6230d62",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-03T11:36:03Z",
+      "side": 1,
+      "message": "Yeah, Colin pointed that out too. Now it\u0027s changed to //apex_available:platform.",
+      "parentUuid": "50b0d08a_60e531f0",
+      "range": {
+        "startLine": 75,
+        "startChar": 10,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
