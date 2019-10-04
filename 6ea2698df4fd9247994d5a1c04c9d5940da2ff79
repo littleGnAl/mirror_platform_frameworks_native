@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed217354_ab651e0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-04T20:03:38Z",
+      "side": 1,
+      "message": "Hmmm. How is it possible that this worked before?",
+      "revId": "6ea2698df4fd9247994d5a1c04c9d5940da2ff79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
