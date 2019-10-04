@@ -16,6 +16,24 @@
       "revId": "6ea2698df4fd9247994d5a1c04c9d5940da2ff79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d5144ad_4c5184bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-10-04T20:07:59Z",
+      "side": 1,
+      "message": "Syntax of service_contexts is close to (pretty much a subset of?) that of file_contexts.",
+      "parentUuid": "ed217354_ab651e0b",
+      "revId": "6ea2698df4fd9247994d5a1c04c9d5940da2ff79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
