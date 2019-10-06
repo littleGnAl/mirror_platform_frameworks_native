@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fc9bc1ca_1df70574",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-06T00:24:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03d00902_3d20e63f",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 9
+      },
+      "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a4ca7db_a6c07662",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "015425bc_41d6bc32",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-06T00:24:31Z",
+      "side": 1,
+      "message": "libbase is quite universal though. Anyway, this is out of scope of this change.",
+      "parentUuid": "a5e7f70b_51f38acf",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 78
+      },
+      "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f13afa91_20c07f04",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 1
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "Yes, two threads might end up independently checking the property, but this won\u0027t cause any race problem.",
       "parentUuid": "f13afa91_20c07f04",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 6
+      },
+      "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a125d3c_328edd76",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-06T00:24:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d550cdb_fd763385",
       "range": {
         "startLine": 204,
         "startChar": 0,
