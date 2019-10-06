@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "809cc192_efa262c3",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-06T00:34:44Z",
+      "side": 1,
+      "message": "That would require another property, which I thought would cause confusion.\n\nThe image mutator is currently only available for cc_* modules. We could make it common to all modules, but that hasn\u0027t been discussed deeply.",
+      "parentUuid": "75bc97e3_9ece9314",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c81042_44094a9a",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 1
