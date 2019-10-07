@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "4fd41f90_b6e97f59",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-07T16:24:25Z",
+      "side": 1,
+      "message": "I mean, the memory costs of an additional dependency.",
+      "parentUuid": "015425bc_41d6bc32",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 78
+      },
+      "revId": "a6100c82a5b39729d45a31733021f17e5aef762c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f13afa91_20c07f04",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 1
