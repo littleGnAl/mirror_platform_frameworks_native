@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "7e8b0289_d439ee2f",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-07T17:49:09Z",
+      "side": 1,
+      "message": "Actually, I had already started trying to make it common to all modules in http://aosp/1102071 but realized there was a much simpler solution to the problem I was working on, so I abandoned it. If you think it would be easy to finish, you might go ahead and try to do it! :)",
+      "parentUuid": "809cc192_efa262c3",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "b6ed44bb22b010a52e40333fbf7bf58aaad9593b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c81042_44094a9a",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 1
