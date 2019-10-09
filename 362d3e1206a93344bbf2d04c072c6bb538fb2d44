@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78802836_878476a5",
+        "filename": "libs/binder/ndk/include_platform/android/binder_memory.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-09T22:33:30Z",
+      "side": 1,
+      "message": "FIXME",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 68
+      },
+      "revId": "362d3e1206a93344bbf2d04c072c6bb538fb2d44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
