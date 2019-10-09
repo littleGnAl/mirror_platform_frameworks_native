@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e40c0328_e2134b87",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-10-09T09:56:37Z",
+      "side": 1,
+      "message": "return some error?",
+      "range": {
+        "startLine": 363,
+        "startChar": 12,
+        "endLine": 363,
+        "endChar": 19
+      },
+      "revId": "4765843994bb633b23cc41acfb6acd10a4e929f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
