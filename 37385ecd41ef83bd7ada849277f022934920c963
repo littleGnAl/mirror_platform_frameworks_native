@@ -22,6 +22,30 @@
       "revId": "37385ecd41ef83bd7ada849277f022934920c963",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e09f41c9_01304cdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-09T16:33:32Z",
+      "side": 1,
+      "message": "I was thinking about https://android-review.googlesource.com/c/platform/frameworks/native/+/1121044/. Although, I suppose I\u0027m not familiar enough with this path to know if this was the same root problem here. Can investigate if you want, but we should remove the no-op here anyway.",
+      "parentUuid": "ad6c92e0_822028fc",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "37385ecd41ef83bd7ada849277f022934920c963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
