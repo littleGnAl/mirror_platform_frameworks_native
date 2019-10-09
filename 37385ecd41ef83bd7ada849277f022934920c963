@@ -46,6 +46,30 @@
       "revId": "37385ecd41ef83bd7ada849277f022934920c963",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99116e4f_94ca9a49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-10-09T20:08:09Z",
+      "side": 1,
+      "message": "That indeed is different.The linked CL is about the socket connection between dumpstate and a client (bugreportz to be specific) not dumpstate to dumpsys.\n\nThis change looks good to me but I\u0027m not super familiar with dumpsys. Maybe best to get a +1 from the original[1] author jmgao or enh.\n\n[1] ag/876729",
+      "parentUuid": "e09f41c9_01304cdf",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "37385ecd41ef83bd7ada849277f022934920c963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
