@@ -22,6 +22,30 @@
       "revId": "4765843994bb633b23cc41acfb6acd10a4e929f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d6362f6_5568d41b",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-09T16:25:29Z",
+      "side": 1,
+      "message": "Hmmmm, even when there is an error set to \u0027err\u0027, it only dumps this into the output on L367/L368. Since this indicates inconsistent internal state, I could abort, but I thought maybe it was best not to do this if it could risk dropping information from a bugreport. WDYT?",
+      "parentUuid": "e40c0328_e2134b87",
+      "range": {
+        "startLine": 363,
+        "startChar": 12,
+        "endLine": 363,
+        "endChar": 19
+      },
+      "revId": "4765843994bb633b23cc41acfb6acd10a4e929f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
