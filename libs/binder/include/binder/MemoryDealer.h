@@ -37,7 +37,11 @@ public:
     explicit MemoryDealer(size_t size, const char* name = nullptr,
             uint32_t flags = 0 /* or bits such as MemoryHeapBase::READ_ONLY */ );
 
+    // allocat region with a specific size. If all references to this are
+    // dropped, then the region will automatically be deallocated
     virtual sp<IMemory> allocate(size_t size);
+
+    // explicitly deallocate region
     virtual void        deallocate(size_t offset);
     virtual void        dump(const char* what) const;
 

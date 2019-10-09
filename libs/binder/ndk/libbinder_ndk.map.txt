@@ -107,6 +107,15 @@ LIBBINDER_NDK30 { # introduced=30
     AIBinder_markSystemStability; # apex
     AIBinder_markVendorStability; # vndk
     AIBinder_markVintfStability; # apex vndk
+    AMemory_delete; # apex
+    AMemory_getPointer; # apex
+    AMemory_getSize; # apex
+    AMemory_getOffset; # apex
+    AMemory_asBinder; # apex
+    AMemory_fromBinder; # apex
+    AMemoryHeap_newDealer; # apex
+    AMemoryHeap_delete; # apex
+    AMemoryHeap_allocate; # apex
   local:
     *;
 };

@@ -47,6 +47,7 @@ cc_library_shared {
     srcs: [
         "ibinder.cpp",
         "ibinder_jni.cpp",
+        "memory.cpp",
         "parcel.cpp",
         "process.cpp",
         "stability.cpp",
