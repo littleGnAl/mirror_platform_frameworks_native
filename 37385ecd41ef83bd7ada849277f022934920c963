@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad6c92e0_822028fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-10-09T10:01:09Z",
+      "side": 1,
+      "message": "where is this specified? I see no flags to pipe..",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "37385ecd41ef83bd7ada849277f022934920c963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
