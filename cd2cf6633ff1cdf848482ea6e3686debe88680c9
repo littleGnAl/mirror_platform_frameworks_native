@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26f998f4_95979882",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-10-10T17:40:21Z",
+      "side": 1,
+      "message": "Why can this not just use std::string or std::stringstream? This is C++, and the function eventually calls dlopen(), which is highly unlikely to be the critical path.",
+      "revId": "cd2cf6633ff1cdf848482ea6e3686debe88680c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
