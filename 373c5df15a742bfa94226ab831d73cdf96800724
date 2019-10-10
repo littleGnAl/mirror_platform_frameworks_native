@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4a4ecf6_5fe426bc",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-10T19:56:01Z",
+      "side": 0,
+      "message": "why remove this?",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 5
+      },
+      "revId": "373c5df15a742bfa94226ab831d73cdf96800724",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
