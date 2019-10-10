@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b2f6304_28b3b737",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2019-10-10T16:36:35Z",
+      "side": 1,
+      "message": "We might miss events that happened after DoLogcat() finished and logcat_ts was calculated. I\u0027d calculate it before calling DoLogcat(), just in case - better have a few duplicate log entries than miss crucial ones (in the worst, Murphy\u0027s Law canonical case :-)",
+      "range": {
+        "startLine": 1537,
+        "startChar": 4,
+        "endLine": 1539,
+        "endChar": 37
+      },
+      "revId": "db379fa022431896d07da6da65b4e8ef42ae3ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
