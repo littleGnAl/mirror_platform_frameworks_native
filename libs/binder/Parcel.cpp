@@ -329,13 +329,14 @@ status_t Parcel::setDataSize(size_t size)
 
 void Parcel::setDataPosition(size_t pos) const
 {
-    if (pos > INT32_MAX) {
-        // don't accept size_t values which may have come from an
-        // inadvertent conversion from a negative int.
-        LOG_ALWAYS_FATAL("pos too big: %zu", pos);
-    }
+    // We should always be reading at 32-bit offsets; any violation of this
+    // could result result in unaligned accesses, which could result in SIGBUS
+    // on architectures like ARM32. The Parcel code itself already maintains
+    // this variant, but additionally this API shouldn't let callers violate
+    // it.
+    const size_t padded = pad_size(pos);
 
-    mDataPos = pos;
+    mDataPos = padded;
     mNextObjectHint = 0;
     mObjectsSorted = false;
 }
