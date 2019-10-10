@@ -22,6 +22,30 @@
       "revId": "db379fa022431896d07da6da65b4e8ef42ae3ffa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b7d3c1_707e6b56",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-10-10T19:34:59Z",
+      "side": 1,
+      "message": "do we care about those events? I can definitely add it if we do. I was thinking people take bugreports *after* the event they want to capture has occurred, but perhaps that\u0027s not fully right?",
+      "parentUuid": "3b2f6304_28b3b737",
+      "range": {
+        "startLine": 1537,
+        "startChar": 4,
+        "endLine": 1539,
+        "endChar": 37
+      },
+      "revId": "db379fa022431896d07da6da65b4e8ef42ae3ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
