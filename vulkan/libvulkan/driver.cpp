@@ -20,6 +20,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/prctl.h>
+#include <limits.h>
 
 #include <dlfcn.h>
 #include <algorithm>
@@ -156,9 +157,12 @@ void* LoadLibrary(const android_dlextinfo& dlextinfo,
                   int subname_len) {
     ATRACE_CALL();
 
+    if (subname_len > NAME_MAX) {
+      return nullptr;
+    }
+
     const char kLibFormat[] = "vulkan.%*s.so";
-    char* name = static_cast<char*>(
-        alloca(sizeof(kLibFormat) + static_cast<size_t>(subname_len)));
+    char name [NAME_MAX];
     sprintf(name, kLibFormat, subname_len, subname);
     return android_dlopen_ext(name, RTLD_LOCAL | RTLD_NOW, &dlextinfo);
 }
