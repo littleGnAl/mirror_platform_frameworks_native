@@ -226,8 +226,14 @@ bool LayerLibrary::EnumerateLayers(size_t library_idx,
     }
 
     // get layer properties
-    VkLayerProperties* properties = static_cast<VkLayerProperties*>(alloca(
-        (num_instance_layers + num_device_layers) * sizeof(VkLayerProperties)));
+    if (num_instance_layers + num_device_layers > 10) {
+        ALOGE(
+            "vkEnumerateInstanceLayerProperties failed for library '%s': "
+            "%d",
+            path_.c_str(), result);
+        return false;
+    }
+    VkLayerProperties properties [10];
     result = enumerate_instance_layers(&num_instance_layers, properties);
     if (result != VK_SUCCESS) {
         ALOGE("vkEnumerateInstanceLayerProperties failed for library '%s': %d",
@@ -327,13 +333,17 @@ void* LayerLibrary::GetGPA(const Layer& layer,
     void* gpa;
     size_t layer_name_len =
         std::max(size_t{2}, strlen(layer.properties.layerName));
-    char* name = static_cast<char*>(alloca(layer_name_len + gpa_name_len + 1));
-    strcpy(name, layer.properties.layerName);
-    strcpy(name + layer_name_len, gpa_name);
+    char name [256];
+
+    if (layer_name_len + gpa_name_len > sizeof(name) / sizeof(name[0])) {
+      return nullptr;
+    }
+
+    // The size check performed above allows us to not use snprintf.
+    sprintf(name, "%s%s", layer.properties.layerName, gpa_name);
     if (!(gpa = GetTrampoline(name))) {
-        strcpy(name, "vk");
-        strcpy(name + 2, gpa_name);
-        gpa = GetTrampoline(name);
+      sprintf(name, "vk%s", gpa_name);
+      gpa = GetTrampoline(name);
     }
     return gpa;
 }
