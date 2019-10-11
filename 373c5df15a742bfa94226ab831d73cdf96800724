@@ -22,6 +22,30 @@
       "revId": "373c5df15a742bfa94226ab831d73cdf96800724",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "934ffa63_1bcb8a64",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-10-11T06:39:09Z",
+      "side": 0,
+      "message": "pad_size() has a similar check - it\u0027s fatal when it reaches INT32_MAX (-3)",
+      "parentUuid": "d4a4ecf6_5fe426bc",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 5
+      },
+      "revId": "373c5df15a742bfa94226ab831d73cdf96800724",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
