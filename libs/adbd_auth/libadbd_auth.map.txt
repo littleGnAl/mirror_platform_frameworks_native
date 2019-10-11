@@ -7,6 +7,8 @@ LIBADBD_AUTH {
     adbd_auth_notify_auth; # apex
     adbd_auth_notify_disconnect; # apex
     adbd_auth_prompt_user; # apex
+    adbd_tls_device_connected; # apex
+    adbd_tls_device_disconnected; # apex
     adbd_auth_supports_feature; # apex
   local:
     *;
