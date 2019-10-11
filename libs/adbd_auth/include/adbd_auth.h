@@ -25,6 +25,12 @@ extern "C" {
 struct AdbdAuthCallbacksV1 {
     // Callback for a successful user authorization.
     void (*key_authorized)(void* arg, uint64_t id);
+    // Request to disconnect a wifi device
+    void (*disconnect_wifi_device)(const char* public_key, size_t length);
+    // Disable wireless debugging
+    void (*disable_wifi_debugging)(void);
+    // Enable wireless debugging
+    void (*enable_wifi_debugging)(void);
 };
 
 struct AdbdAuthCallbacks {
@@ -56,6 +62,18 @@ void adbd_auth_notify_disconnect(AdbdAuthContext* ctx, uint64_t id);
 // Prompt the user to authorize a public key.
 // When this happens, a callback will be run on the auth thread with the result.
 void adbd_auth_prompt_user(AdbdAuthContext* ctx, const char* public_key, size_t len, void* arg);
+
+// Let system_server know that wireless debugging is connected.
+void adbd_auth_wifi_debugging_connected(AdbdAuthContext* ctx, int port);
+
+// Let system_server know that wireless debugging is disabled.
+void adbd_auth_wifi_debugging_disconnected(AdbdAuthContext* ctx, int port);
+
+// Let system_server know that a secured wifi device has connected.
+uint64_t adbd_auth_wifi_device_connected(AdbdAuthContext* ctx, const char* public_key, size_t len);
+
+// Let system_server know that a secured wifi device has disconnected.
+void adbd_auth_wifi_device_disconnected(AdbdAuthContext* ctx, uint64_t id);
 
 enum AdbdAuthFeature {
 };
