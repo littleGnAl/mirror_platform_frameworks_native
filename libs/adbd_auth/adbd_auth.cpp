@@ -55,8 +55,29 @@ struct AdbdAuthPacketRequestAuthorization {
     std::string public_key;
 };
 
-using AdbdAuthPacket = std::variant<AdbdAuthPacketAuthenticated, AdbdAuthPacketDisconnected,
-                                    AdbdAuthPacketRequestAuthorization>;
+struct AdbdAuthPacketWifiConnected {
+    std::string port;
+};
+
+struct AdbdAuthPacketWifiDisconnected {
+    std::string port;
+};
+
+struct AdbdAuthPacketWifiDeviceConnected {
+    std::string public_key;
+};
+
+struct AdbdAuthPacketWifiDeviceDisconnected {
+    std::string public_key;
+};
+
+using AdbdAuthPacket = std::variant<AdbdAuthPacketAuthenticated,
+                                    AdbdAuthPacketDisconnected,
+                                    AdbdAuthPacketRequestAuthorization,
+                                    AdbdAuthPacketWifiConnected,
+                                    AdbdAuthPacketWifiDisconnected,
+                                    AdbdAuthPacketWifiDeviceConnected,
+                                    AdbdAuthPacketWifiDeviceDisconnected>;
 
 struct AdbdAuthContext {
     static constexpr uint64_t kEpollConstSocket = 0;
@@ -65,6 +86,7 @@ struct AdbdAuthContext {
 
 public:
     explicit AdbdAuthContext(AdbdAuthCallbacksV1* callbacks) : next_id_(0), callbacks_(*callbacks) {
+        InitFrameworkHandlers();
         epoll_fd_.reset(epoll_create1(EPOLL_CLOEXEC));
         if (epoll_fd_ == -1) {
             PLOG(FATAL) << "failed to create epoll fd";
@@ -171,26 +193,55 @@ public:
           ReplaceFrameworkFd(unique_fd());
         }
 
-        if (packet[0] == 'O' && packet[1] == 'K') {
-          CHECK(this->dispatched_prompt_.has_value());
-          auto& [id, key, arg] = *this->dispatched_prompt_;
-          keys_.emplace(id, std::move(key));
-
-          this->callbacks_.key_authorized(arg, id);
-          this->dispatched_prompt_ = std::nullopt;
-
-          // We need to dispatch pending prompts here upon success as well,
-          // since we might have multiple queued prompts.
-          DispatchPendingPrompt();
-        } else if (packet[0] == 'N' && packet[1] == 'O') {
-          CHECK_EQ(2UL, packet.length());
-          // TODO: Do we want a callback if the key is denied?
-          this->dispatched_prompt_ = std::nullopt;
-          DispatchPendingPrompt();
-        } else {
-          LOG(ERROR) << "unhandled packet: " << packet;
-          ReplaceFrameworkFd(unique_fd());
+        bool handledPacket = false;
+        for (size_t i = 0; i < framework_handlers.size(); ++i) {
+            if (framework_handlers[i].code[0] == packet[0] &&
+                framework_handlers[i].code[1] == packet[1]) {
+                framework_handlers[i].cb(packet);
+                handledPacket = true;
+                break;
+            }
         }
+        if (!handledPacket) {
+            LOG(ERROR) << "unhandled packet: " << packet;
+            ReplaceFrameworkFd(unique_fd());
+        }
+    }
+
+    void AllowUsbDevice(std::string_view buf) REQUIRES(mutex_) {
+        UNUSED(buf);
+        CHECK(dispatched_prompt_.has_value());
+        auto& [id, key, arg] = *dispatched_prompt_;
+        keys_.emplace(id, std::move(key));
+
+        callbacks_.key_authorized(arg, id);
+        dispatched_prompt_ = std::nullopt;
+
+        // We need to dispatch pending prompts here upon success as well,
+        // since we might have multiple queued prompts.
+        DispatchPendingPrompt();
+    }
+
+    void DenyUsbDevice(std::string_view buf) REQUIRES(mutex_) {
+        CHECK_EQ(2UL, buf.length());
+        // TODO: Do we want a callback if the key is denied?
+        dispatched_prompt_ = std::nullopt;
+        DispatchPendingPrompt();
+    }
+
+    void DisconnectWifiDevice(std::string_view buf) {
+        CHECK_GT(2UL, buf.length());
+        callbacks_.disconnect_wifi_device(buf.data() + 2, buf.length() - 2);
+    }
+
+    void DisableWifiDebugging(std::string_view buf) {
+        UNUSED(buf);
+        callbacks_.disable_wifi_debugging();
+    }
+
+    void EnableWifiDebugging(std::string_view buf) {
+        UNUSED(buf);
+        callbacks_.enable_wifi_debugging();
     }
 
     bool SendPacket() REQUIRES(mutex_) {
@@ -214,6 +265,26 @@ public:
             iovs[1].iov_len = p->public_key.size();
         } else if (auto* p = std::get_if<AdbdAuthPacketRequestAuthorization>(&packet)) {
             iovs[0].iov_base = const_cast<char*>("PK");
+            iovs[0].iov_len = 2;
+            iovs[1].iov_base = p->public_key.data();
+            iovs[1].iov_len = p->public_key.size();
+        } else if (auto* p = std::get_if<AdbdAuthPacketWifiConnected>(&packet)) {
+            iovs[0].iov_base = const_cast<char*>("WC");
+            iovs[0].iov_len = 2;
+            iovs[1].iov_base = p->port.data();
+            iovs[1].iov_len = p->port.size();
+        } else if (auto* p = std::get_if<AdbdAuthPacketWifiDisconnected>(&packet)) {
+            iovs[0].iov_base = const_cast<char*>("WD");
+            iovs[0].iov_len = 2;
+            iovs[1].iov_base = p->port.data();
+            iovs[1].iov_len = p->port.size();
+        } else if (auto* p = std::get_if<AdbdAuthPacketWifiDeviceConnected>(&packet)) {
+            iovs[0].iov_base = const_cast<char*>("WE");
+            iovs[0].iov_len = 2;
+            iovs[1].iov_base = p->public_key.data();
+            iovs[1].iov_len = p->public_key.size();
+        } else if (auto* p = std::get_if<AdbdAuthPacketWifiDeviceDisconnected>(&packet)) {
+            iovs[0].iov_base = const_cast<char*>("WF");
             iovs[0].iov_len = 2;
             iovs[1].iov_base = p->public_key.data();
             iovs[1].iov_len = p->public_key.size();
@@ -361,7 +432,7 @@ public:
         std::lock_guard<std::mutex> lock(mutex_);
         keys_.emplace(id, public_key);
         output_queue_.emplace_back(
-                AdbdAuthPacketDisconnected{.public_key = std::string(public_key)});
+                AdbdAuthPacketAuthenticated{.public_key = std::string(public_key)});
         return id;
     }
 
@@ -376,6 +447,30 @@ public:
         keys_.erase(it);
     }
 
+    void NotifyWifiDebuggingConnected(int port) EXCLUDES(mutex_) {
+        std::lock_guard<std::mutex> lock(mutex_);
+        output_queue_.emplace_back(AdbdAuthPacketWifiConnected{.port = std::to_string(port)});
+        Interrupt();
+    }
+
+    void NotifyWifiDebuggingDisconnected(int port) EXCLUDES(mutex_) {
+        std::lock_guard<std::mutex> lock(mutex_);
+        output_queue_.emplace_back(AdbdAuthPacketWifiDisconnected{.port = std::to_string(port)});
+        Interrupt();
+    }
+
+    void NotifyWifiDeviceConnected(std::string_view public_key) EXCLUDES(mutex_) {
+        std::lock_guard<std::mutex> lock(mutex_);
+        output_queue_.emplace_back(AdbdAuthPacketWifiDeviceConnected{.public_key = std::string(public_key)});
+        Interrupt();
+    }
+
+    void NotifyWifiDeviceDisconnected(std::string_view public_key) EXCLUDES(mutex_) {
+        std::lock_guard<std::mutex> lock(mutex_);
+        output_queue_.emplace_back(AdbdAuthPacketWifiDeviceDisconnected{.public_key = std::string(public_key)});
+        Interrupt();
+    }
+
     // Interrupt the worker thread to do some work.
     void Interrupt() {
         uint64_t value = 1;
@@ -385,6 +480,34 @@ public:
         } else if (rc != sizeof(value)) {
             LOG(FATAL) << "write to eventfd returned short (" << rc << ")";
         }
+    }
+
+    void InitFrameworkHandlers() {
+        // Framework wants to disconnect from a secured wifi device
+        framework_handlers.emplace_back(
+                FrameworkPktHandler{
+                    .code = "DD",
+                    .cb = std::bind(&AdbdAuthContext::DisconnectWifiDevice, this, std::placeholders::_1)});
+        // Framework disables wireless debugging
+        framework_handlers.emplace_back(
+                FrameworkPktHandler{
+                    .code = "DA",
+                    .cb = std::bind(&AdbdAuthContext::DisableWifiDebugging, this, std::placeholders::_1)});
+        // Framework enables wireless debugging
+        framework_handlers.emplace_back(
+                FrameworkPktHandler{
+                    .code = "WA",
+                    .cb = std::bind(&AdbdAuthContext::EnableWifiDebugging, this, std::placeholders::_1)});
+        // Framework allows USB debugging for the device
+        framework_handlers.emplace_back(
+                FrameworkPktHandler{
+                    .code = "OK",
+                    .cb = std::bind(&AdbdAuthContext::AllowUsbDevice, this, std::placeholders::_1)});
+        // Framework denies USB debuggin for the device
+        framework_handlers.emplace_back(
+                FrameworkPktHandler{
+                    .code = "NO",
+                    .cb = std::bind(&AdbdAuthContext::DenyUsbDevice, this, std::placeholders::_1)});
     }
 
     unique_fd epoll_fd_;
@@ -400,10 +523,18 @@ public:
 
     // We keep two separate queues: one to handle backpressure from the socket (output_queue_)
     // and one to make sure we only dispatch one authrequest at a time (pending_prompts_).
-    std::deque<AdbdAuthPacket> output_queue_;
+    std::deque<AdbdAuthPacket> output_queue_ GUARDED_BY(mutex_);
 
     std::optional<std::tuple<uint64_t, std::string, void*>> dispatched_prompt_ GUARDED_BY(mutex_);
     std::deque<std::tuple<uint64_t, std::string, void*>> pending_prompts_ GUARDED_BY(mutex_);
+
+    // This is a list of commands that the framework could send to us.
+    using FrameworkHandlerCb = std::function<void(std::string_view)>;
+    struct FrameworkPktHandler {
+        const char* code;
+        FrameworkHandlerCb cb;
+    };
+    std::vector<FrameworkPktHandler> framework_handlers;
 };
 
 AdbdAuthContext* adbd_auth_new(AdbdAuthCallbacks* callbacks) {
@@ -440,6 +571,22 @@ void adbd_auth_notify_disconnect(AdbdAuthContext* ctx, uint64_t id) {
 void adbd_auth_prompt_user(AdbdAuthContext* ctx, const char* public_key, size_t len,
                                void* arg) {
     ctx->PromptUser(std::string_view(public_key, len), arg);
+}
+
+void adbd_auth_wifi_debugging_connected(AdbdAuthContext* ctx, int port) {
+    ctx->NotifyWifiDebuggingConnected(port);
+}
+
+void adbd_auth_wifi_debugging_disconnected(AdbdAuthContext* ctx, int port) {
+    ctx->NotifyWifiDebuggingDisconnected(port);
+}
+
+void adbd_auth_wifi_device_connected(AdbdAuthContext* ctx, const char* public_key, size_t len) {
+    ctx->NotifyWifiDeviceConnected(std::string_view(public_key, len));
+}
+
+void adbd_auth_wifi_device_disconnected(AdbdAuthContext* ctx, const char* public_key, size_t len) {
+    ctx->NotifyWifiDeviceDisconnected(std::string_view(public_key, len));
 }
 
 bool adbd_auth_supports_feature(AdbdAuthFeature) {
