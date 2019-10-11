@@ -35,6 +35,28 @@ cc_library {
             enabled: false,
         }
     },
+}
+
+cc_library {
+    name: "libadbd_wifi",
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wthread-safety",
+        "-Werror",
+    ],
+    srcs: [
+        "adbd_wifi.cpp",
+    ],
+    export_include_dirs: ["include"],
+
+    version_script: "libadbd_wifi.map.txt",
+    stubs: {
+        symbol_file: "libadbd_wifi.map.txt",
+    },
+
+    host_supported: true,
+    recovery_available: true,
 
     shared_libs: [
         "libbase",
