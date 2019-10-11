@@ -20,7 +20,10 @@ cc_library {
         "-Wthread-safety",
         "-Werror",
     ],
-    srcs: ["adbd_auth.cpp"],
+    srcs: [
+        "adbd_auth.cpp",
+	"adbd_wifi.cpp",
+    ],
     export_include_dirs: ["include"],
 
     version_script: "libadbd_auth.map.txt",
