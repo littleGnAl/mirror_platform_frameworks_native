@@ -22,9 +22,18 @@
 
 extern "C" {
 
+enum AdbTransportType {
+    kAdbTransportTypeUsb = 0,
+    kAdbTransportTypeWifi,
+};
+
 struct AdbdAuthCallbacksV1 {
     // Callback for a successful user authorization.
     void (*key_authorized)(void* arg, uint64_t id);
+    // The framework removed the key from the keystore. This callback notifies
+    // adbd so it can take the appropriate actions (e.g. disconnect all devices
+    // using that key).
+    void (*key_removed)(const char* public_key, size_t length);
 };
 
 struct AdbdAuthCallbacks {
@@ -56,6 +65,17 @@ void adbd_auth_notify_disconnect(AdbdAuthContext* ctx, uint64_t id);
 // Prompt the user to authorize a public key.
 // When this happens, a callback will be run on the auth thread with the result.
 void adbd_auth_prompt_user(AdbdAuthContext* ctx, const char* public_key, size_t len, void* arg);
+
+// Let system_server know that a device using tls has connected.
+uint64_t adbd_tls_device_connected(AdbdAuthContext* ctx,
+                                   AdbTransportType type,
+                                   const char* public_key,
+                                   size_t len);
+
+// Let system_server know that a device using tls has disconnected.
+void adbd_tls_device_disconnected(AdbdAuthContext* ctx,
+                                  AdbTransportType type,
+                                  uint64_t id);
 
 enum AdbdAuthFeature {
 };
