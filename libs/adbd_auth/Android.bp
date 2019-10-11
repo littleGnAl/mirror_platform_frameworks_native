@@ -20,7 +20,10 @@ cc_library {
         "-Wthread-safety",
         "-Werror",
     ],
-    srcs: ["adbd_auth.cpp"],
+    srcs: [
+        "adbd_auth.cpp",
+        "adbd_framework.cpp",
+    ],
     export_include_dirs: ["include"],
 
     version_script: "libadbd_auth.map.txt",
@@ -35,6 +38,35 @@ cc_library {
             enabled: false,
         }
     },
+
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "liblog",
+    ],
+}
+
+cc_library {
+    name: "libadbd_wifi",
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wthread-safety",
+        "-Werror",
+    ],
+    srcs: [
+        "adbd_framework.cpp",
+        "adbd_wifi.cpp",
+    ],
+    export_include_dirs: ["include"],
+
+    version_script: "libadbd_wifi.map.txt",
+    stubs: {
+        symbol_file: "libadbd_wifi.map.txt",
+    },
+
+    host_supported: true,
+    recovery_available: true,
 
     shared_libs: [
         "libbase",
