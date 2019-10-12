@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bccc353_dbe0af8f",
+        "filename": "libs/binder/ndk/test/AndroidTest.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-10-12T20:57:28Z",
+      "side": 1,
+      "message": "you only have 1 file to push, this can be removed.",
+      "range": {
+        "startLine": 22,
+        "startChar": 87,
+        "endLine": 22,
+        "endChar": 113
+      },
+      "revId": "63ceef296a0e3b3636e96983957a2df5a7e45286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
