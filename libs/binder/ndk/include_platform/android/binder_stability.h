@@ -20,7 +20,16 @@
 
 __BEGIN_DECLS
 
-#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+#if !defined(LOCAL_STABILITY_IS_VENDOR)
+// VNDK APEX is for vendor, so it is treated as vendor stability.
+// Other APEXes are treated as system stability even if it is use_vendor:true
+#if defined(__ANDROID_APEX_COM_ANDROID_VNDK_CURRENT__) || \
+        (defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__))
+#define LOCAL_STABILITY_IS_VENDOR
+#endif
+#endif
+
+#if defined(LOCAL_STABILITY_IS_VENDOR)
 
 /**
  * This interface has the stability of the vendor image.
@@ -31,7 +40,7 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
     AIBinder_markVendorStability(binder);
 }
 
-#else  // defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+#else  // defined(LOCAL_STABILITY_IS_VENDOR)
 
 /**
  * This interface has the stability of the system image.
@@ -42,7 +51,7 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
     AIBinder_markSystemStability(binder);
 }
 
-#endif  // defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+#endif  // defined(LOCAL_STABILITY_IS_VENDOR)
 
 /**
  * This interface has system<->vendor stability

@@ -19,6 +19,15 @@
 #include <binder/IBinder.h>
 #include <string>
 
+#if !defined(LOCAL_STABILITY_IS_VENDOR)
+// VNDK APEX is for vendor, so it is treated as vendor stability.
+// Other APEXes are treated as system stability even if it is use_vendor:true
+#if defined(__ANDROID_APEX_COM_ANDROID_VNDK_CURRENT__) || \
+        (defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__))
+#define LOCAL_STABILITY_IS_VENDOR
+#endif
+#endif
+
 namespace android {
 
 class BpBinder;
@@ -81,7 +90,8 @@ private:
         VINTF = 0b111111,
     };
 
-#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+
+#if defined(LOCAL_STABILITY_IS_VENDOR)
     static constexpr Level kLocalStability = Level::VENDOR;
 #else
     static constexpr Level kLocalStability = Level::SYSTEM;

@@ -509,7 +509,7 @@ void Parcel::updateWorkSourceRequestHeaderPosition() const {
     }
 }
 
-#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+#if defined(LOCAL_STABILITY_IS_VENDOR)
 constexpr int32_t kHeader = B_PACK_CHARS('V', 'N', 'D', 'R');
 #else
 constexpr int32_t kHeader = B_PACK_CHARS('S', 'Y', 'S', 'T');
