@@ -17,10 +17,11 @@
 #pragma once
 
 #include <android/binder_ibinder.h>
+#include <binder/Stability.h>
 
 __BEGIN_DECLS
 
-#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+#if LOCAL_STABILITY_IS_VENDOR == 1
 
 /**
  * This interface has the stability of the vendor image.
@@ -31,7 +32,7 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
     AIBinder_markVendorStability(binder);
 }
 
-#else  // defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+#else  // LOCAL_STABILITY_IS_VENDOR == 1
 
 /**
  * This interface has the stability of the system image.
@@ -42,7 +43,7 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
     AIBinder_markSystemStability(binder);
 }
 
-#endif  // defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+#endif  // LOCAL_STABILITY_IS_VENDOR == 1
 
 /**
  * This interface has system<->vendor stability
