@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "658b2d8e_2d815a1b",
+        "filename": "libs/binder/ndk/test/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-10-13T05:08:19Z",
+      "side": 1,
+      "message": "setting require_root here doesn\u0027t really do anything, the test config is not auto-generated.\nmaybe we should fail build to avoid confusion. There might be quite some existing Android.bp needs to be cleaned up first.",
+      "revId": "63ceef296a0e3b3636e96983957a2df5a7e45286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4a0ceb_c3d115ed",
+        "filename": "libs/binder/ndk/test/AndroidTest.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-10-13T05:08:19Z",
+      "side": 1,
+      "message": "the failure is actually caused by permission issue. You need RootTargetPreparer here:\n\u003ctarget_preparer class\u003d\"com.android.tradefed.targetprep.RootTargetPreparer\"/\u003e",
+      "revId": "63ceef296a0e3b3636e96983957a2df5a7e45286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5bccc353_dbe0af8f",
         "filename": "libs/binder/ndk/test/AndroidTest.xml",
         "patchSetId": 9
