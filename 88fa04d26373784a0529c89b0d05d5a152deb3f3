@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "d3076635_299da68c",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-14T23:40:46Z",
+      "side": 1,
+      "message": "I might rather disallow any future uses of libbinder and then only calculate the exception for swcodec until it is fixed to not use use_vendor. However, I think what we do in the short term isn\u0027t so important. I think we could submit this, and I can follow up in the other patch.",
+      "parentUuid": "bda3587a_3c3dec3b",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "88fa04d26373784a0529c89b0d05d5a152deb3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "607357df_a2968850",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 4
