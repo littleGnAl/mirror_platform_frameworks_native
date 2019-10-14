@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "00038b40_7b7ccd44",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-14T20:29:09Z",
+      "side": 1,
+      "message": "Also, I think with http://aosp/1111322, you would no longer need change. However, we would want the linker to auto-generate some stuff for us. WDYT?",
+      "parentUuid": "ce0918e0_ce35a3d3",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "88fa04d26373784a0529c89b0d05d5a152deb3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "607357df_a2968850",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 4
