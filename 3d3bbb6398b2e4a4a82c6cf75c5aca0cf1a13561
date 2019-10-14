@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2101c21_800584fc",
+        "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-14T20:30:24Z",
+      "side": 1,
+      "message": "@jooyung, this\u0027ll be affected by the VNDK APEX. Is there an API I can use to get this, or should I just assume that this is running as vendor? Maybe just #error if __ANDROID_VNDK__ is set?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "3d3bbb6398b2e4a4a82c6cf75c5aca0cf1a13561",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
