@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a1cc884_fdde3137",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-14T01:42:43Z",
+      "side": 1,
+      "message": "add some comment to explain what these conditions are.",
+      "revId": "35df8638fa5fa621ce6c404f246dfa0b0b7493c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "995abe6e_775a2bb7",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-14T01:42:43Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "35df8638fa5fa621ce6c404f246dfa0b0b7493c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e596c6a4_46fd8918",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-14T01:42:43Z",
+      "side": 1,
+      "message": "do we really need to repeat the long condition even though everything is visible in one place?\n\nif needed, I suggest to define a temporary macro variable and use that in the condition.",
+      "revId": "35df8638fa5fa621ce6c404f246dfa0b0b7493c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
