@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "584cfd98_23d26e1d",
+        "filename": "libs/binder/ndk/test/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-14T17:59:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "658b2d8e_2d815a1b",
+      "revId": "63ceef296a0e3b3636e96983957a2df5a7e45286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c4a0ceb_c3d115ed",
         "filename": "libs/binder/ndk/test/AndroidTest.xml",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "63ceef296a0e3b3636e96983957a2df5a7e45286",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877a7d77_9e427213",
+        "filename": "libs/binder/ndk/test/AndroidTest.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-14T17:59:53Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "3c4a0ceb_c3d115ed",
+      "revId": "63ceef296a0e3b3636e96983957a2df5a7e45286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "63ceef296a0e3b3636e96983957a2df5a7e45286",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4be02484_9e683e8d",
+        "filename": "libs/binder/ndk/test/AndroidTest.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-14T17:59:53Z",
+      "side": 1,
+      "message": "Needed for test to be run in vendor linker namespace.",
+      "parentUuid": "5bccc353_dbe0af8f",
+      "range": {
+        "startLine": 22,
+        "startChar": 87,
+        "endLine": 22,
+        "endChar": 113
+      },
+      "revId": "63ceef296a0e3b3636e96983957a2df5a7e45286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
