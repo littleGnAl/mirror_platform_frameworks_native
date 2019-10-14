@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bbe64e69_4206f597",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T06:37:34Z",
+      "side": 1,
+      "message": "I introduced a new macro LOCAL_STABILITY_IS_VENDOR and added comment on it.\n\nBy the way, I couldn\u0027t help duplicating in two places because of include-graph. I hope Steven have a better idea.",
+      "parentUuid": "6a1cc884_fdde3137",
+      "revId": "35df8638fa5fa621ce6c404f246dfa0b0b7493c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "995abe6e_775a2bb7",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 2
