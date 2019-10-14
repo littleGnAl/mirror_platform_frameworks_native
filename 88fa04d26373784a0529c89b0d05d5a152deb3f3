@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fd5ba59_0910e306",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-14T16:53:31Z",
+      "side": 1,
+      "message": "are we going to have to do this for every VNDK version of this APEX? It seems quite error prone. Could we instead fix the use_vendor exception in the other APEX or make a new variable such as \"__ANDROID_VENDOR__\" so that we don\u0027t have such complicated logic repeated.",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "88fa04d26373784a0529c89b0d05d5a152deb3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "607357df_a2968850",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-14T16:53:31Z",
+      "side": 1,
+      "message": "we can\u0027t include this from an NDK header",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "88fa04d26373784a0529c89b0d05d5a152deb3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
