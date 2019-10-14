@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "29bcef00_059f16a8",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T10:36:58Z",
+      "side": 1,
+      "message": "This definition is duplicated in binder/Stability.h. And \u0027ndk/stability.cpp\u0027 includes both this file(android/binder_stability.h) and binder/Stability.h.\n\nI just wanted to avoid redefining it.",
+      "parentUuid": "243952a7_ba5ccb4e",
+      "revId": "daf1949ea4e3743d3d89650e31a201f4b2e1d560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8f1edd6_cbcc0467",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-14T10:24:52Z",
       "side": 1,
       "message": "undef it?",
+      "revId": "daf1949ea4e3743d3d89650e31a201f4b2e1d560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e5b9f0e_1bbb48e8",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T10:36:58Z",
+      "side": 1,
+      "message": "I intended that LOCAL_STABILITY_IS_VENDOR can be used in .cpp files as well. Note that Parcel.cpp includes \u003cbinder/Stability.h\u003e and use LOCAL_STABILITY_IS_VENDOR.\n\nBut, for now, LOCAL_STABILITY_IS_VENDOR defined in binder_stability.h is not used yet. But I doubt \u0027ndk/stability.cpp\u0027 may use this to emit compilation error instead of using __ANDOIRD_VNDK. (Steven, can you confirm this?)\n\nShould we undef it?",
+      "parentUuid": "d8f1edd6_cbcc0467",
       "revId": "daf1949ea4e3743d3d89650e31a201f4b2e1d560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
