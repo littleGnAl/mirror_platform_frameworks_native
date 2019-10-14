@@ -22,6 +22,30 @@
       "revId": "3d3bbb6398b2e4a4a82c6cf75c5aca0cf1a13561",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4dca610_095d907b",
+        "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T23:02:35Z",
+      "side": 1,
+      "message": "With VNDK APEX, the paths will be changed from /system/lib(64)/vndk-{VER} to /apex/com.android.vndk.v{VER}/lib(64).\n\n\u003e Is there an API I can use to get this,\n\nNo. btw, this is a good point regarding there are so many hard-coded references to vndk lib path.",
+      "parentUuid": "d2101c21_800584fc",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "3d3bbb6398b2e4a4a82c6cf75c5aca0cf1a13561",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
