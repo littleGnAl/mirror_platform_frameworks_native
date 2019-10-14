@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "bf4bdc3e_1ee3f030",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T11:59:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "891fda9b_3a94c296",
+      "revId": "daf1949ea4e3743d3d89650e31a201f4b2e1d560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8f1edd6_cbcc0467",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 3
@@ -87,6 +105,24 @@
       "revId": "daf1949ea4e3743d3d89650e31a201f4b2e1d560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1079f9b0_0ad8ee2b",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T11:59:23Z",
+      "side": 1,
+      "message": "Chatted offline. Since it is used in .cpp files, we don\u0027t undef it here.",
+      "parentUuid": "4e5b9f0e_1bbb48e8",
+      "revId": "daf1949ea4e3743d3d89650e31a201f4b2e1d560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
