@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "891fda9b_3a94c296",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-14T10:56:41Z",
+      "side": 1,
+      "message": "That sounds fragile. Normally, a header shouldn\u0027t have an assumption about how it is included in cpp files. You might change this to a value. For example, \n\n\n#ifndef LOCAL_STABILITY_IS_VENDOR\n#error include android/binder_stability.h for LOCAL_STABILITY_IS_VENDOR\n#endif\n\n#if LOCAL_STABILITY_IS_VENDOR \u003d\u003d 1\n...\n#endif",
+      "parentUuid": "29bcef00_059f16a8",
+      "revId": "daf1949ea4e3743d3d89650e31a201f4b2e1d560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8f1edd6_cbcc0467",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 3
