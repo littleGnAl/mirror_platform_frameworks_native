@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "bda3587a_3c3dec3b",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T23:21:18Z",
+      "side": 1,
+      "message": "\u003e are we going to have to do this for every VNDK version of this APEX?\n\nNo, we only have to deal with \"current\" VNDK APEX. (The other versions will use \"prebuilt\")\n\n\u003e Also, we should run http://aosp/1089150 with this.\n\ncommented there.\n\n\u003e Also, I think with http://aosp/1111322, you would no longer need change. However, we would want the linker to auto-generate some stuff for us. WDYT?\n\nETA? I also hope we have a better/neat solution to this problem.\n\nFor libbinder only, should we conclude that __ANDROID_APEX_COM_ANDROID_VNDK_CURRENT__ is the only one which makes \u0027vendor stability\u0027?",
+      "parentUuid": "00038b40_7b7ccd44",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "88fa04d26373784a0529c89b0d05d5a152deb3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "607357df_a2968850",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 4
