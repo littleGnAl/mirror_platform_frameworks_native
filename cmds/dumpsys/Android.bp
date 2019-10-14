@@ -32,6 +32,9 @@ cc_library_static {
     defaults: ["dumpsys_defaults"],
 
     export_include_dirs: ["."],
+    shared_libs: [
+        "lib-platform-compat-native-api",
+    ],
 }
 
 //
@@ -45,6 +48,9 @@ cc_binary {
 
     srcs: [
         "main.cpp",
+    ],
+    shared_libs: [
+        "lib-platform-compat-native-api",
     ],
 }
 

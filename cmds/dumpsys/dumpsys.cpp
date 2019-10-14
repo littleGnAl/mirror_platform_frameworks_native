@@ -25,6 +25,7 @@
 #include <binder/Parcel.h>
 #include <binder/ProcessState.h>
 #include <binder/TextOutput.h>
+#include <com/android/internal/compat/IPlatformCompatNative.h>
 #include <serviceutils/PriorityDumper.h>
 #include <utils/Log.h>
 #include <utils/Vector.h>
@@ -111,6 +112,26 @@ String16 ConvertBitmaskToPriorityType(int bitmask) {
     return String16("");
 }
 
+void ContactCompatService() {
+    auto binder = defaultServiceManager()->getService(android::String16("platform_compat_native"));
+    if (binder == nullptr) {
+        printf("atrost Failed to retrieve platform_compat_native service");
+        return;
+    }
+    auto service = android::interface_cast<com::android::internal::compat::IPlatformCompatNative>(binder);
+    bool enabled;
+    auto status = service->isChangeEnabledByPackageName(135010838, "com.android.compat.testapp", &enabled);
+    if (!status.isOk()) {
+        printf("atrost isChangeEnabledByPackageName failed: %s", status.toString8().c_str());
+        return;
+    }
+    if (enabled) {
+        printf("atrost change enabled");
+    } else {
+        printf("atrost change disabled");
+    }
+}
+
 int Dumpsys::main(int argc, char* const argv[]) {
     Vector<String16> services;
     Vector<String16> args;
@@ -127,6 +148,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
                                           {"skip", no_argument, 0, 0},
                                           {"help", no_argument, 0, 0},
                                           {0, 0, 0, 0}};
+
+    ContactCompatService();
 
     // Must reset optind, otherwise subsequent calls will fail (wouldn't happen on main.cpp, but
     // happens on test cases).
