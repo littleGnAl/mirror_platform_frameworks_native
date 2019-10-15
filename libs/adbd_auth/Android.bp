@@ -22,7 +22,6 @@ cc_library {
     ],
     srcs: [
         "adbd_auth.cpp",
-	"adbd_wifi.cpp",
     ],
     export_include_dirs: ["include"],
 
@@ -43,5 +42,136 @@ cc_library {
         "libbase",
         "libcutils",
         "liblog",
+        "libcrypto",
     ],
+}
+
+cc_library {
+    name: "libadbd_wifi",
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wthread-safety",
+        "-Werror",
+    ],
+    srcs: [
+        "adbd_wifi.cpp",
+    ],
+    export_include_dirs: ["include"],
+
+    version_script: "libadbd_wifi.map.txt",
+    stubs: {
+        symbol_file: "libadbd_wifi.map.txt",
+    },
+
+    host_supported: true,
+    recovery_available: true,
+
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "liblog",
+    ],
+}
+
+cc_library {
+    name: "libadbd_wifi_pairing",
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wthread-safety",
+        "-Werror",
+    ],
+    proto: {
+        export_proto_headers: true,
+        type: "lite",
+    },
+    srcs: [
+        "pairing/pairing_auth.cpp",
+        "crypto/aes_128_gcm.cpp",
+        "crypto/ec_key.cpp",
+        "crypto/device_identifier.cpp",
+        "crypto/key.cpp",
+        "crypto/key_store.cpp",
+        "crypto/key_type.cpp",
+        "crypto/proto/key_store.proto",
+    ],
+    target: {
+        android: {
+            version_script: "libadbd_wifi_pairing.map.txt",
+	},
+        windows: {
+	    enabled: true,
+	    srcs: [
+                "compat/win32-deps.cpp",
+            ],
+	},
+	host: {
+            cflags: [ "-DHOST_BUILD", ],
+        },
+    },
+    export_include_dirs: ["include"],
+
+    stubs: {
+        symbol_file: "libadbd_wifi_pairing.map.txt",
+    },
+
+    host_supported: true,
+    recovery_available: true,
+
+    shared_libs: [
+        "libbase",
+        "libcrypto",
+        "libcutils",
+        "liblog",
+    ],
+}
+
+cc_library {
+    name: "libadbd_wifi_tls",
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wthread-safety",
+        "-Werror",
+    ],
+    srcs: [
+        "crypto/tls_connection.cpp",
+    ],
+    target: {
+        android: {
+            version_script: "libadbd_wifi_tls.map.txt",
+	},
+        windows: {
+	    enabled: true,
+	},
+    },
+    export_include_dirs: ["include"],
+
+    stubs: {
+        symbol_file: "libadbd_wifi_tls.map.txt",
+    },
+
+    host_supported: true,
+    recovery_available: true,
+
+    shared_libs: [
+        "libbase",
+        "libcrypto",
+        "libcutils",
+        "liblog",
+        "libssl",
+    ],
+}
+
+java_library_static {
+    name: "adbwifi-protos",
+    host_supported: true,
+    proto: {
+        type: "lite",
+    },
+    srcs: [
+        "crypto/proto/key_store.proto",
+    ],
+    sdk_version: "system_current",
 }
