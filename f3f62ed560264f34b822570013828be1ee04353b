@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05e9551f_1ec50b27",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-10-15T20:53:17Z",
+      "side": 1,
+      "message": "int rc",
+      "range": {
+        "startLine": 299,
+        "startChar": 28,
+        "endLine": 299,
+        "endChar": 30
+      },
+      "revId": "f3f62ed560264f34b822570013828be1ee04353b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e041a481_9217ced5",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-10-15T20:53:17Z",
+      "side": 1,
+      "message": "kEpollConstEventFd?",
+      "range": {
+        "startLine": 377,
+        "startChar": 25,
+        "endLine": 377,
+        "endChar": 26
+      },
+      "revId": "f3f62ed560264f34b822570013828be1ee04353b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
