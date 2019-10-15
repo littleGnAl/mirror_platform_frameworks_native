@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "270c8301_086fd46e",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-15T03:46:37Z",
+      "side": 1,
+      "message": "why is this unset? I understand that this doesn\u0027t need to be transferred to the other side, but at the same time, the cost is zero. \n\nCould you at least put some comment here about why this is unset?",
+      "revId": "9195664343a090cd5f0b55a50d75dfaed0ca2aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326a77b5_1c51073f",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-15T03:46:37Z",
+      "side": 1,
+      "message": "move this behind /vendor* and /system/lib/vndk* to reduce the loop count as much as possible",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "9195664343a090cd5f0b55a50d75dfaed0ca2aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1471660_cfa8be87",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-15T03:46:37Z",
+      "side": 1,
+      "message": "adding \n/vendor/lib/\n/vendor/lib64/\n/odm/lib/\n/odm/lib64/ ?",
+      "revId": "9195664343a090cd5f0b55a50d75dfaed0ca2aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d9641d4_e3becb62",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-15T03:46:37Z",
+      "side": 1,
+      "message": "I don\u0027t know how C++ compiler optimizes this. But it looks like we need to have a static variable for these?\n\nstatic std::vector\u003cstd::string\u003e kVendorPaths \u003d {...};",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 10
+      },
+      "revId": "9195664343a090cd5f0b55a50d75dfaed0ca2aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
