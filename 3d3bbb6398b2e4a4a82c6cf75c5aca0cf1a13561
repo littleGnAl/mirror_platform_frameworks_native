@@ -46,6 +46,30 @@
       "revId": "3d3bbb6398b2e4a4a82c6cf75c5aca0cf1a13561",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684426b8_772f0734",
+        "filename": "libs/binder/ndk/test/binderVendorDoubleLoadTest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-15T20:52:28Z",
+      "side": 1,
+      "message": "Done (removed)",
+      "parentUuid": "f4dca610_095d907b",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "3d3bbb6398b2e4a4a82c6cf75c5aca0cf1a13561",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
