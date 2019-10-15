@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "774f5aba_511ad7e9",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-15T01:24:50Z",
+      "side": 1,
+      "message": "As discussed, we agreed that this is a short-term solution.",
+      "parentUuid": "d3076635_299da68c",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "88fa04d26373784a0529c89b0d05d5a152deb3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "607357df_a2968850",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 4
@@ -141,6 +165,30 @@
       "revId": "88fa04d26373784a0529c89b0d05d5a152deb3f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "217ddedf_fa6a2102",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-15T01:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607357df_a2968850",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "88fa04d26373784a0529c89b0d05d5a152deb3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

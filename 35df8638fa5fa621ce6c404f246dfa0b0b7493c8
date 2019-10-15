@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f8bd0c65_d4c489d0",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-15T01:24:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bbe64e69_4206f597",
+      "revId": "35df8638fa5fa621ce6c404f246dfa0b0b7493c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "995abe6e_775a2bb7",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "3cd8791a_9f1370c7",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-15T01:24:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "995abe6e_775a2bb7",
+      "revId": "35df8638fa5fa621ce6c404f246dfa0b0b7493c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e596c6a4_46fd8918",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 2
@@ -68,6 +104,24 @@
       "revId": "35df8638fa5fa621ce6c404f246dfa0b0b7493c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ec0eb52_8d30223e",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-15T01:24:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e596c6a4_46fd8918",
+      "revId": "35df8638fa5fa621ce6c404f246dfa0b0b7493c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
