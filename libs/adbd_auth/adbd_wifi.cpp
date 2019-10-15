@@ -25,8 +25,11 @@
 
 #include <chrono>
 #include <deque>
+#include <iomanip>
+#include <sstream>
 #include <string>
 #include <string_view>
+#include <thread>
 #include <tuple>
 #include <unordered_map>
 #include <utility>
@@ -58,11 +61,22 @@ struct AdbdWifiPacketRequestAuthorization {
 };
 
 struct AdbdWifiPacketPairingCode {
-    std::string pairing_code;
-    int device_id;
-    std::string&& toString() const {
-        std::string res = pairing_code + '\n' + std::to_string(device_id);
-        return std::move(res);
+    std::vector<uint8_t> msg;
+    explicit AdbdWifiPacketPairingCode(std::string_view public_key,
+                                       const uint8_t* encrypted,
+                                       uint64_t encrypted_size,
+                                       uint64_t device_id) {
+        PLOG(WARNING) << __func__ << " encrypted_size=" << encrypted_size
+                      << " public_key=" << public_key
+                      << " device_id=" << device_id;
+        // The format of the msg is: <encrypted>\n<device_id>\n<public_key>
+        msg.insert(msg.end(), encrypted, encrypted + encrypted_size);
+        msg.push_back('\n');
+        uint8_t* p8 = reinterpret_cast<uint8_t*>(&device_id);
+        msg.insert(msg.end(), p8, p8 + sizeof(device_id));
+        msg.push_back('\n');
+        msg.insert(msg.end(), public_key.data(), public_key.data() + public_key.size());
+        PLOG(WARNING) << "Constructed AdbdWifiPacketPairingCode(sz=" << msg.size() << ")";
     }
 };  // AdbdWifiPacketPairingCode
 
@@ -104,7 +118,7 @@ public:
     AdbdWifiContext& operator=(const AdbdWifiContext& copy) = delete;
     AdbdWifiContext& operator=(AdbdWifiContext&& move) = delete;
 
-    void Run() {
+    void Run() EXCLUDES(mutex_) {
         if (sock_fd_ == -1) {
             LOG(ERROR) << "adbdwifi socket unavailable, disabling user prompts";
         } else {
@@ -123,16 +137,19 @@ public:
 
         while (true) {
             struct epoll_event events[3];
+            PLOG(WARNING) << "Waiting for events (epoll_wait)";
             int rc = TEMP_FAILURE_RETRY(epoll_wait(epoll_fd_.get(), events, 3, -1));
             if (rc == -1) {
                 PLOG(FATAL) << "epoll_wait failed";
             } else if (rc == 0) {
                 LOG(FATAL) << "epoll_wait returned 0";
             }
+            PLOG(WARNING) << "returned from epoll_wait(rc=" << rc << ")";
 
             bool restart = false;
             for (int i = 0; i < rc; ++i) {
                 if (restart) {
+                    PLOG(WARNING) << "Got new framework_fd. Need to restart";
                     break;
                 }
 
@@ -140,32 +157,56 @@ public:
                 PLOG(WARNING) << "Got packet [" << event.data.u64 << "]";
                 switch (event.data.u64) {
                     case kEpollConstSocket: {
+                        PLOG(WARNING) << "Got new socket request. Trying to accept the new framework_fd";
                         unique_fd new_framework_fd(accept4(sock_fd_.get(), nullptr, nullptr,
                                                            SOCK_CLOEXEC | SOCK_NONBLOCK));
+                        PLOG(WARNING) << "accepted the socket connection";
                         if (new_framework_fd == -1) {
                             PLOG(FATAL) << "failed to accept framework fd";
                         }
 
+                        PLOG(WARNING) << __func__ << ": Waiting for mutex to update the framework_fd";
                         std::lock_guard<std::mutex> lock(mutex_);
                         ReplaceFrameworkFd(std::move(new_framework_fd));
 
                         // Stop iterating over events: one of the later ones might be the old
                         // framework fd.
-                        restart = false;
+                        restart = true;
                         break;
                     }
 
                     case kEpollConstEventFd: {
                         // We were woken up to write something.
-                        std::lock_guard<std::mutex> lock(mutex_);
-                        UpdateFrameworkWritable();
+                        LOG(INFO) << "Got woken up. Let's write something!";
+                        // Need to read() or epoll_wait will keep waking up on
+                        // this event.
+                        uint64_t buf;
+                        int rc = TEMP_FAILURE_RETRY(read(event_fd_.get(), &buf, sizeof(buf)));
+                        if (rc == -1) {
+                            LOG(FATAL) << "failed to read from framework fd";
+                        } else if (rc == 0) {
+                            LOG(INFO) << "hit unexpected EOF on framework fd";
+                        } else {
+                            LOG(INFO) << "Lock to update framework";
+                            std::lock_guard<std::mutex> lock(mutex_);
+                            LOG(INFO) << "Unlock to update framework";
+                            UpdateFrameworkWritable();
+                        }
                         break;
                     }
 
                     case kEpollConstFramework: {
                         char buf[4096];
+                        if (event.events & EPOLLOUT) {
+                            PLOG(WARNING) << "stuff in the output_queue. Writing it.";
+                            std::lock_guard<std::mutex> lock(mutex_);
+                            while (SendPacket()) {
+                                continue;
+                            }
+                            UpdateFrameworkWritable();
+                        }
                         if (event.events & EPOLLIN) {
-                            rc = TEMP_FAILURE_RETRY(read(framework_fd_.get(), buf, sizeof(buf)));
+                            int rc = TEMP_FAILURE_RETRY(read(framework_fd_.get(), buf, sizeof(buf)));
                             if (rc == -1) {
                                 LOG(FATAL) << "failed to read from framework fd";
                             } else if (rc == 0) {
@@ -177,15 +218,6 @@ public:
                                 HandlePacket(std::string_view(buf, rc));
                             }
                         }
-
-                        if (event.events & EPOLLOUT) {
-                            std::lock_guard<std::mutex> lock(mutex_);
-                            while (SendPacket()) {
-                                continue;
-                            }
-                            UpdateFrameworkWritable();
-                        }
-
                         break;
                     }
                 }
@@ -238,6 +270,30 @@ private:
     static constexpr uint64_t kEpollConstFramework = 2;
 
     uint64_t NextId() { return next_id_++; }
+    uint64_t NextPairingId() { return next_pairing_id_++; }
+
+    void DispatchPairingRequest() REQUIRES(mutex_) {
+        if (dispatched_pairing_request_) {
+            // Already a pairing auth if flight. Have to wait until system
+            // server gives us the ACK.
+            PLOG(WARNING) << __func__ << ": another pairing request already in flight. Placing in pending queue";
+            return;
+        }
+
+        if (pending_pairing_requests_.empty()) {
+            // No pairing authorizations to process.
+            PLOG(WARNING) << __func__ << ": No pending pairing requests to process.";
+            return;
+        }
+
+        auto [id, encryptedCode, public_key] = std::move(pending_pairing_requests_.front());
+        pending_pairing_requests_.pop_front();
+
+        this->output_queue_.emplace_back(
+                AdbdWifiPacketPairingCode(public_key, encryptedCode.data(), encryptedCode.size(), id));
+        Interrupt();
+        dispatched_pairing_request_ = std::make_tuple(id, std::move(encryptedCode), public_key);
+    }
 
     void DispatchPendingPrompt() REQUIRES(mutex_) {
         if (dispatched_prompt_) {
@@ -275,13 +331,17 @@ private:
 
     void ReplaceFrameworkFd(unique_fd new_fd) REQUIRES(mutex_) {
         // If we already had a framework fd, clean up after ourselves.
+        PLOG(WARNING) << __func__ << ": framework_fd=" << framework_fd_.get() << ", new_fd=" << new_fd.get();
         if (framework_fd_ != -1) {
+            PLOG(WARNING) << __func__ << ": Cleaning up old fd events";
             dispatched_prompt_.reset();
+            dispatched_pairing_request_.reset();
             CHECK_EQ(0, epoll_ctl(epoll_fd_.get(), EPOLL_CTL_DEL, framework_fd_.get(), nullptr));
             framework_fd_.reset();
         }
 
         if (new_fd != -1) {
+            PLOG(WARNING) << __func__ << ": Migrating to new framework_fd";
             struct epoll_event event;
             event.events = EPOLLIN;
             if (!output_queue_.empty()) {
@@ -401,17 +461,58 @@ private:
     static constexpr const char kStatusCancel[] = "CA";
 
 public:
+    static void dumpBytes(const char* name, const uint8_t* bytes, uint64_t szBytes) {
+        LOG(INFO) << __func__ << "(name=" << name << " sz=" << szBytes << ")";
+        LOG(INFO) << "======================================";
+        std::stringstream output;
+        const uint64_t numBytesPerLine = 8;
+        for (uint64_t i = 0; i < szBytes;) {
+            for (uint64_t j = 0; j < numBytesPerLine; ++j) {
+                if (i == szBytes) {
+                    break;
+                }
+                output << std::setfill('0') << std::setw(2) << std::hex << static_cast<int>(bytes[i]);
+                output << ' ';
+                ++i;
+            }
+            if (i < szBytes) {
+                output << '\n';
+            }
+        }
+        LOG(INFO) << output.str();
+        LOG(INFO) << "======================================";
+    }
     // Response handlers
-    void responsePairingCode(const std::string& pairing_code,
-                             int device_id,
-                             void (*callback)(uint64_t device_id, bool isCorrect)) {
-        UNUSED(callback);
-        this->output_queue_.emplace_back(
-                AdbdWifiPacketPairingCode{
-                        .pairing_code = pairing_code,
-                        .device_id = device_id});
-        Interrupt();
+    void responsePairingCode(std::string_view public_key,
+                             const uint8_t* encryptedCode,
+                             uint64_t sizeBytes,
+                             std::function<void(std::string_view public_key, bool isCorrect)> callback) EXCLUDES(mutex_) {
+//        UNUSED(encryptedCode);
+//        UNUSED(sizeBytes);
+
+        CHECK_GE(sizeBytes, 0LU);
+        CHECK(encryptedCode);
+
+        PLOG(WARNING) << __func__;
+        LOG(INFO) << __func__ << "public_key=" << public_key;
+        dumpBytes("encryptedCode", encryptedCode, sizeBytes);
+        std::lock_guard<std::mutex> lock(mutex_);
+        // TODO: Need to pass the public key here so we know which device sent
+        // the correct pairing code.
+        // TODO: remove this once we have the keystore in place.
+        uint64_t id = NextPairingId();
+        std::vector<uint8_t> code;
+        code.insert(code.end(), encryptedCode, encryptedCode + sizeBytes);
+        dumpBytes("code", code.data(), code.size());
+        pending_pairing_requests_.emplace_back(id, std::move(code), public_key);
+        DispatchPairingRequest();
+
         // TODO: call |callback| once we are notified from system_server.
+        PLOG(ERROR) << "Need to call the callback for pairing code";
+        std::thread([&public_key, &callback]() {
+            callback(public_key, false);
+        }).detach();
+        LOG(INFO) << "Unlock responsePairingCode";
     }
 
     void responsePairingResult(const std::string& status, int deviceId) {
@@ -428,6 +529,7 @@ public:
 
 private:
     bool SendPacket() REQUIRES(mutex_) {
+        PLOG(WARNING) << __func__ << " output_queue_.size=" << output_queue_.size();
         if (output_queue_.empty()) {
             return false;
         }
@@ -452,11 +554,11 @@ private:
             iovs[1].iov_base = p->public_key.data();
             iovs[1].iov_len = p->public_key.size();
         } else if (auto* p = std::get_if<AdbdWifiPacketPairingCode>(&packet)) {
+            PLOG(WARNING) << "Received AdbdWifiPacketPairingCode";
             iovs[0].iov_base = const_cast<char*>("CD");
             iovs[0].iov_len = 2;
-            auto strData = std::move(p->toString());
-            iovs[1].iov_base = strData.data();
-            iovs[1].iov_len = strData.size();
+            iovs[1].iov_base = p->msg.data();
+            iovs[1].iov_len = p->msg.size();
         } else {
             LOG(FATAL) << "unhandled packet type?";
         }
@@ -470,6 +572,7 @@ private:
             return false;
         }
 
+        PLOG(WARNING) << "Successfully sent AdbdWifiPacket";
         return true;
     }
 
@@ -484,6 +587,7 @@ private:
 
     // Interrupt the worker thread to do some work.
     void Interrupt() {
+        PLOG(WARNING) << __func__;
         uint64_t value = 1;
         ssize_t rc = write(event_fd_.get(), &value, sizeof(value));
         if (rc == -1) {
@@ -499,6 +603,7 @@ private:
     unique_fd framework_fd_;
 
     std::atomic<uint64_t> next_id_;
+    std::atomic<uint64_t> next_pairing_id_;
     AdbdWifiCallbacksV1 callbacks_;
 
     std::mutex mutex_;
@@ -506,8 +611,13 @@ private:
 
     // We keep two separate queues: one to handle backpressure from the socket (output_queue_)
     // and one to make sure we only dispatch one authrequest at a time (pending_prompts_).
+    // and one to make sure we only dispatch one pairing code authorization at a
+    // time (dispatched_pairing_request_).
     std::deque<AdbdWifiPacket> output_queue_;
 
+    // (device_id, encrypted_code, encrypted_code_size)
+    std::optional<std::tuple<uint64_t, std::vector<uint8_t>, std::string>> dispatched_pairing_request_ GUARDED_BY(mutex_);
+    std::deque<std::tuple<uint64_t, std::vector<uint8_t>, std::string>> pending_pairing_requests_ GUARDED_BY(mutex_);
     std::optional<std::tuple<uint64_t, std::string, void*>> dispatched_prompt_ GUARDED_BY(mutex_);
     std::deque<std::tuple<uint64_t, std::string, void*>> pending_prompts_ GUARDED_BY(mutex_);
 };  // struct AdbdWifiContext
@@ -561,11 +671,33 @@ void adbd_wifi_notify_disconnect(AdbdWifiContext* ctx, uint64_t id) {
     return ctx->NotifyDisconnected(id);
 }
 
-void adbd_wifi_pairing_code(AdbdWifiContext* ctx,
-                            const char* pairing_code,
-                            uint64_t device_id,
-                            void (*callback)(uint64_t device_id, bool isCorrect)) {
-    ctx->responsePairingCode(pairing_code, device_id, callback);
+bool adbd_wifi_pairing_code(AdbdWifiContext* ctx,
+                            const char* public_key,
+                            const uint8_t* encrypted_code,
+                            uint64_t size_bytes) {
+    PLOG(WARNING) << __func__;
+//    UNUSED(ctx);
+//    UNUSED(public_key);
+//    UNUSED(encrypted_code);
+//    UNUSED(size_bytes);
+    std::condition_variable cv;
+    std::mutex mutex;
+    bool success = false;
+    auto callback = [&](std::string_view public_key, bool result) {
+        UNUSED(public_key);
+        LOG(WARNING) << "Got pairing code auth callback";
+        std::unique_lock<std::mutex> lock(mutex);
+        success = result;
+        cv.notify_all();
+    };
+    ctx->responsePairingCode(public_key, encrypted_code, size_bytes, callback);
+    LOG(ERROR) << __func__ << " waiting for cv";
+    std::unique_lock<std::mutex> lock(mutex);
+    cv.wait(lock);
+    LOG(ERROR) << __func__ << " triggered on cv";
+
+    return success;
+//    return true;
 }
 
 bool adbd_wifi_supports_feature(AdbdWifiFeature) {

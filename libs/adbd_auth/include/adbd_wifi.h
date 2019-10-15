@@ -56,12 +56,12 @@ uint64_t adbd_wifi_notify_auth(AdbdWifiContext* ctx, const char* public_key, siz
 void adbd_wifi_notify_disconnect(AdbdWifiContext* ctx, uint64_t id);
 
 // Let system_server know a pairing device provided a pairing code.
-// Once system server processes the pairing code, |callback| will be called
-// indicating whether the pairing code was correct.
-void adbd_wifi_pairing_code(AdbdWifiContext* ctx,
-                            const char* pairing_code,
-                            uint64_t device_id,
-                            void (*callback)(uint64_t device_id, bool isCorrect));
+// Returns true if the pairing code was correct, false otherwise.
+// TODO: pass device_id to this function?
+bool adbd_wifi_pairing_code(AdbdWifiContext* ctx,
+                            const char* public_key,
+                            const uint8_t* encrypted_code,
+                            uint64_t size_bytes);
 
 enum AdbdWifiFeature {
 };
