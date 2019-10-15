@@ -1,0 +1,27 @@
+LIBADBD_WIFI_PAIRING {
+  global:
+    ## adbdwifi_pairing ##
+    pairing_auth_new_ctx; # apex
+    pairing_auth_delete_ctx; # apex
+    pairing_auth_request_max_size; # apex
+    pairing_auth_create_request; # apex
+    pairing_auth_parse_request; # apex
+    pairing_auth_our_public_key; # apex
+    pairing_auth_register_their_key; # apex
+#    pairing_auth_decrypted_size; # apex
+#    pairing_auth_decrypt; # apex
+#    pairing_auth_encrypted_size; # apex
+#    pairing_auth_encrypt; # apex
+    pairing_auth_max_key_size; # apex
+
+    ## crypto ##
+    keystore_init; # apex
+    keystore_public_key_header; # apex
+    keystore_store_public_key; # apex
+    keystore_max_certificate_size; # apex
+    keystore_get; # apex
+    keystore_system_public_key; # apex
+
+  local:
+    *;
+};
