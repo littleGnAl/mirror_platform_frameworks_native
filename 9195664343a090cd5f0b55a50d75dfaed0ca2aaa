@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "41ab622b_cd57d891",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-15T17:47:34Z",
+      "side": 1,
+      "message": "since the kernel may define it in the future",
+      "parentUuid": "270c8301_086fd46e",
+      "revId": "9195664343a090cd5f0b55a50d75dfaed0ca2aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "326a77b5_1c51073f",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2019-10-15T03:46:37Z",
       "side": 1,
       "message": "move this behind /vendor* and /system/lib/vndk* to reduce the loop count as much as possible",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "9195664343a090cd5f0b55a50d75dfaed0ca2aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c138ce44_3abc7299",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-15T17:47:34Z",
+      "side": 1,
+      "message": "waiting on b/142684469",
+      "parentUuid": "326a77b5_1c51073f",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "6ece5a01_014309f9",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-15T17:47:34Z",
+      "side": 1,
+      "message": "waiting on b/142684469",
+      "parentUuid": "e1471660_cfa8be87",
+      "revId": "9195664343a090cd5f0b55a50d75dfaed0ca2aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d9641d4_e3becb62",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 3
@@ -70,6 +130,30 @@
       "writtenOn": "2019-10-15T03:46:37Z",
       "side": 1,
       "message": "I don\u0027t know how C++ compiler optimizes this. But it looks like we need to have a static variable for these?\n\nstatic std::vector\u003cstd::string\u003e kVendorPaths \u003d {...};",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 10
+      },
+      "revId": "9195664343a090cd5f0b55a50d75dfaed0ca2aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c40f8f4_bfce8196",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-15T17:47:34Z",
+      "side": 1,
+      "message": "waiting on b/142684469",
+      "parentUuid": "7d9641d4_e3becb62",
       "range": {
         "startLine": 52,
         "startChar": 0,
