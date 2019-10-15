@@ -16,6 +16,7 @@
 
 #define LOG_TAG "atrace"
 
+#include <sys/mman.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <getopt.h>
@@ -575,75 +576,28 @@ static bool setPrintTgidEnableIfPresent(bool enable)
 // their system properties.
 static bool pokeBinderServices()
 {
-    sp<IServiceManager> sm = defaultServiceManager();
-    Vector<String16> services = sm->listServices();
-    for (size_t i = 0; i < services.size(); i++) {
-        sp<IBinder> obj = sm->checkService(services[i]);
-        if (obj != nullptr) {
-            Parcel data;
-            if (obj->transact(IBinder::SYSPROPS_TRANSACTION, data,
-                    nullptr, 0) != OK) {
-                if (false) {
-                    // XXX: For some reason this fails on tablets trying to
-                    // poke the "phone" service.  It's not clear whether some
-                    // are expected to fail.
-                    String8 svc(services[i]);
-                    fprintf(stderr, "error poking binder service %s\n",
-                        svc.string());
-                    return false;
-                }
-            }
-        }
+  bool success = false;
+  int fd = open("/dev/__atrace_shmem__", O_WRONLY);
+  if (fd != -1) {
+    void* ptr = mmap(nullptr, 32768, PROT_WRITE, MAP_SHARED, fd, 0);
+    if (ptr != MAP_FAILED) {
+      memset(ptr, 0, 32768);
+      munmap(ptr, 32768);
+      success = true;
+    } else {
+      ALOGE("Failed to mmap /dev/__atrace_shmem__");
     }
-    return true;
+    close(fd);
+  } else {
+    ALOGE("Failed to open /dev/__atrace_shmem__");
+  }
+  return success;
 }
 
 // Poke all the HAL processes in the system to get them to re-read
 // their system properties.
 static void pokeHalServices()
 {
-    using ::android::hidl::base::V1_0::IBase;
-    using ::android::hidl::manager::V1_0::IServiceManager;
-    using ::android::hardware::hidl_string;
-    using ::android::hardware::Return;
-
-    sp<IServiceManager> sm = ::android::hardware::defaultServiceManager();
-
-    if (sm == nullptr) {
-        fprintf(stderr, "failed to get IServiceManager to poke hal services\n");
-        return;
-    }
-
-    auto listRet = sm->list([&](const auto &interfaces) {
-        for (size_t i = 0; i < interfaces.size(); i++) {
-            string fqInstanceName = interfaces[i];
-            string::size_type n = fqInstanceName.find('/');
-            if (n == std::string::npos || interfaces[i].size() == n+1)
-                continue;
-            hidl_string fqInterfaceName = fqInstanceName.substr(0, n);
-            hidl_string instanceName = fqInstanceName.substr(n+1, std::string::npos);
-            Return<sp<IBase>> interfaceRet = sm->get(fqInterfaceName, instanceName);
-            if (!interfaceRet.isOk()) {
-                // ignore
-                continue;
-            }
-
-            sp<IBase> interface = interfaceRet;
-            if (interface == nullptr) {
-                // ignore
-                continue;
-            }
-
-            auto notifyRet = interface->notifySyspropsChanged();
-            if (!notifyRet.isOk()) {
-                // ignore
-            }
-        }
-    });
-    if (!listRet.isOk()) {
-        // TODO(b/34242478) fix this when we determine the correct ACL
-        //fprintf(stderr, "failed to list services: %s\n", listRet.description().c_str());
-    }
 }
 
 // Set the trace tags that userland tracing uses, and poke the running
