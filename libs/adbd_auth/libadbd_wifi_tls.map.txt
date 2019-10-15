@@ -1,0 +1,13 @@
+LIBADBD_WIFI_TLS {
+  global:
+    ## adbdwifi_tls ##
+    tls_connection_new_ctx; # apex
+    tls_connection_delete_ctx; # apex
+    tls_connection_handshake; # apex
+    tls_connection_write_fully; # apex
+    tls_connection_read_fully; # apex
+    tls_connection_add_known_certificate; # apex
+
+  local:
+    *;
+};
