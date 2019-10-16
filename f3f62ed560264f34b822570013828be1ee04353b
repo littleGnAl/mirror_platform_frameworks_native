@@ -45,6 +45,30 @@
       "revId": "f3f62ed560264f34b822570013828be1ee04353b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14a19226_481fa0fc",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-10-16T15:32:00Z",
+      "side": 1,
+      "message": "Ahh, nvm it\u0027s written to event_fd_.",
+      "parentUuid": "e041a481_9217ced5",
+      "range": {
+        "startLine": 377,
+        "startChar": 25,
+        "endLine": 377,
+        "endChar": 26
+      },
+      "revId": "f3f62ed560264f34b822570013828be1ee04353b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
