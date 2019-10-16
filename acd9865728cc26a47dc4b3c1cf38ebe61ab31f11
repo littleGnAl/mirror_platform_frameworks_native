@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "08316e92_5d4899aa",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2019-10-16T19:40:38Z",
+      "side": 1,
+      "message": "possibly \u0027std::string_view subname\u0027?",
+      "range": {
+        "startLine": 158,
+        "startChar": 18,
+        "endLine": 158,
+        "endChar": 36
+      },
+      "revId": "acd9865728cc26a47dc4b3c1cf38ebe61ab31f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53032998_58f3d0ef",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2019-10-16T19:40:38Z",
+      "side": 1,
+      "message": "using string_view above would let this be std::string_view also, and avoids copying the string.",
+      "revId": "acd9865728cc26a47dc4b3c1cf38ebe61ab31f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46271d7f_038709ca",
         "filename": "vulkan/libvulkan/layers_extensions.cpp",
         "patchSetId": 4
@@ -13,6 +53,52 @@
       "writtenOn": "2019-10-16T17:15:44Z",
       "side": 1,
       "message": "this isn\u0027t necessary. Either an exception is thrown, or an abort would occur within make_unique.",
+      "revId": "acd9865728cc26a47dc4b3c1cf38ebe61ab31f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12c625c3_95d721f7",
+        "filename": "vulkan/libvulkan/layers_extensions.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2019-10-16T19:40:38Z",
+      "side": 1,
+      "message": "std::string_view",
+      "range": {
+        "startLine": 329,
+        "startChar": 27,
+        "endLine": 329,
+        "endChar": 45
+      },
+      "revId": "acd9865728cc26a47dc4b3c1cf38ebe61ab31f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f54510_db842dcf",
+        "filename": "vulkan/libvulkan/layers_extensions.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2019-10-16T19:40:38Z",
+      "side": 1,
+      "message": "std::string_view avoids copying the string literals passed in below.",
+      "range": {
+        "startLine": 468,
+        "startChar": 26,
+        "endLine": 468,
+        "endChar": 44
+      },
       "revId": "acd9865728cc26a47dc4b3c1cf38ebe61ab31f11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
