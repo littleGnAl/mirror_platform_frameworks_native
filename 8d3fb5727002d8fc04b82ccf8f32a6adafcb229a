@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e048954c_e879114d",
+        "filename": "vulkan/tools/vkinfo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-10-16T02:21:37Z",
+      "side": 1,
+      "message": "This file has been removed internally.",
+      "revId": "8d3fb5727002d8fc04b82ccf8f32a6adafcb229a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
