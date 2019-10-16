@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46271d7f_038709ca",
+        "filename": "vulkan/libvulkan/layers_extensions.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-10-16T17:15:44Z",
+      "side": 1,
+      "message": "this isn\u0027t necessary. Either an exception is thrown, or an abort would occur within make_unique.",
+      "revId": "acd9865728cc26a47dc4b3c1cf38ebe61ab31f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
