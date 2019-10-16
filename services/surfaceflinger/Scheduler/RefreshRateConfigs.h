@@ -116,12 +116,11 @@ public:
             return;
         }
 
-        // When the configs are ordered by the resync rate. We assume that the second one is
-        // PERFORMANCE, eg. the higher rate.
-        vsyncPeriod = configIdToVsyncPeriod[1].second;
+        // When the configs are ordered by the resync rate.
+        vsyncPeriod = configIdToVsyncPeriod[configIdToVsyncPeriod.size()-1].second;
         if (vsyncPeriod != 0) {
             const float fps = 1e9 / vsyncPeriod;
-            const int configId = configIdToVsyncPeriod[1].first;
+            const int configId = configIdToVsyncPeriod[configIdToVsyncPeriod.size()-1].first;
             mRefreshRates.emplace(RefreshRateType::PERFORMANCE,
                                   std::make_shared<RefreshRate>(
                                           RefreshRate{configId, base::StringPrintf("%2.ffps", fps),
