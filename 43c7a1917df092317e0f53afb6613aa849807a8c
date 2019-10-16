@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e8ac7af_19057a21",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-16T23:06:44Z",
+      "side": 1,
+      "message": "should take this",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "43c7a1917df092317e0f53afb6613aa849807a8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "776866e6_33964dd7",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-16T23:06:44Z",
+      "side": 1,
+      "message": "don\u0027t take this",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 65
+      },
+      "revId": "43c7a1917df092317e0f53afb6613aa849807a8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3721ff39_3cb2755b",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-16T23:06:44Z",
+      "side": 1,
+      "message": "should take this",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 59
+      },
+      "revId": "43c7a1917df092317e0f53afb6613aa849807a8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
