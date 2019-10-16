@@ -771,7 +771,8 @@ private:
      * to prepare the hardware composer
      */
     void prepareFrame(const sp<DisplayDevice>& display);
-    void doComposition(const sp<DisplayDevice>& display, bool repainEverything);
+    void doComposition(const sp<DisplayDevice>& display, bool repainEverything/*, 
+                       long compositionTime*/);
     void doDebugFlashRegions(const sp<DisplayDevice>& display, bool repaintEverything);
     void logLayerStats();
     void doDisplayComposition(const sp<DisplayDevice>& display, const Region& dirtyRegion);
@@ -892,7 +893,6 @@ private:
     LayersProto dumpDrawingStateProto(uint32_t traceFlags = SurfaceTracing::TRACE_ALL) const;
     LayersProto dumpProtoFromMainThread(uint32_t traceFlags = SurfaceTracing::TRACE_ALL)
             EXCLUDES(mStateLock);
-    void withTracingLock(std::function<void()> operation) REQUIRES(mStateLock);
     LayersProto dumpVisibleLayersProtoInfo(const sp<DisplayDevice>& display) const;
 
     bool isLayerTripleBufferingDisabled() const {
@@ -934,7 +934,10 @@ private:
     bool mTraversalNeededMainThread = false;
 
     // guards access to the mDrawing state if tracing is enabled.
-    mutable std::mutex mDrawingStateLock;
+    mutable std::recursive_mutex mDrawingStateLock;
+    int mTracingLockAcquiredCount = 0;
+    void lockTracing();
+    void unlockTracing();
 
     // global color transform states
     Daltonizer mDaltonizer;
