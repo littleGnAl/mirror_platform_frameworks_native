@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "091d70ec_315ba493",
+        "filename": "libs/binder/ndk/test/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-16T12:25:02Z",
+      "side": 1,
+      "message": "so, this is actually /system/lib/vndk/libbinder.so",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 20
+      },
+      "revId": "d201734393d9954f50af51e058a085bf92fea83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249a6a47_feb5cf58",
+        "filename": "libs/binder/ndk/test/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-16T12:25:02Z",
+      "side": 1,
+      "message": "and this will being /system/lib/libbinder.so, right?\n\nIf so, could you add a comment here as it might be difficult to guess why why libbinder is double loaded in this test?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "d201734393d9954f50af51e058a085bf92fea83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
