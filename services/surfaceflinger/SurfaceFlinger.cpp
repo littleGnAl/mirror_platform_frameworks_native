@@ -1671,6 +1671,8 @@ void SurfaceFlinger::onMessageReceived(int32_t what) NO_THREAD_SAFETY_ANALYSIS {
     ATRACE_CALL();
     switch (what) {
         case MessageQueue::INVALIDATE: {
+            lockTracing();
+
             bool frameMissed = previousFrameMissed();
             bool hwcFrameMissed = mHadDeviceComposition && frameMissed;
             bool gpuFrameMissed = mHadClientComposition && frameMissed;
@@ -1725,6 +1727,8 @@ void SurfaceFlinger::onMessageReceived(int32_t what) NO_THREAD_SAFETY_ANALYSIS {
                 // a new buffer was latched, or if HWC has requested a full
                 // repaint
                 signalRefresh();
+            } else {
+                unlockTracing();
             }
             break;
         }
@@ -1766,12 +1770,12 @@ void SurfaceFlinger::handleMessageRefresh() {
     preComposition();
     rebuildLayerStacks();
     calculateWorkingSet();
-    long compositionTime = elapsedRealtimeNano();
+    // long compositionTime = elapsedRealtimeNano();
     for (const auto& [token, display] : mDisplays) {
         beginFrame(display);
         prepareFrame(display);
         doDebugFlashRegions(display, repaintEverything);
-        doComposition(display, repaintEverything);
+        doComposition(display, repaintEverything); // , compositionTime);
     }
 
     logLayerStats();
@@ -1795,9 +1799,6 @@ void SurfaceFlinger::handleMessageRefresh() {
     mLayersWithQueuedFrames.clear();
     if (mVisibleRegionsDirty) {
         mVisibleRegionsDirty = false;
-        if (mTracingEnabled) {
-            mTracing.notify(compositionTime, "visibleRegionsDirty");
-        }
     }
 }
 
@@ -2284,6 +2285,12 @@ void SurfaceFlinger::rebuildLayerStacks() {
             display->editState().undefinedRegion = undefinedRegion;
             display->editState().dirtyRegion.orSelf(dirtyRegion);
         }
+
+        // Notify tracing
+        if (mVisibleRegionsDirty) {
+            mTracing.notify(elapsedRealtimeNano(), "doComposition");
+        }
+        unlockTracing();
     }
 }
 
@@ -2434,7 +2441,8 @@ void SurfaceFlinger::prepareFrame(const sp<DisplayDevice>& displayDevice) {
              displayDevice->getDebugName().c_str(), result, strerror(-result));
 }
 
-void SurfaceFlinger::doComposition(const sp<DisplayDevice>& displayDevice, bool repaintEverything) {
+void SurfaceFlinger::doComposition(const sp<DisplayDevice>& displayDevice, bool repaintEverything/*, 
+                                   long compositionTime*/) {
     ATRACE_CALL();
     ALOGV("doComposition");
 
@@ -2444,6 +2452,11 @@ void SurfaceFlinger::doComposition(const sp<DisplayDevice>& displayDevice, bool 
     if (displayState.isEnabled) {
         // transform the dirty region into this screen's coordinate space
         const Region dirtyRegion = display->getDirtyRegion(repaintEverything);
+
+        // Notify tracing
+        /* if (mVisibleRegionsDirty && mTracingEnabled) {
+            mTracing.notify(compositionTime, "doComposition");
+        } */
 
         // repaint the framebuffer (if needed)
         doDisplayComposition(displayDevice, dirtyRegion);
@@ -3050,46 +3063,55 @@ void SurfaceFlinger::commitTransaction()
     // we composite should be considered an animation as well.
     mAnimCompositionPending = mAnimTransactionPending;
 
-    withTracingLock([&]() {
-        mDrawingState = mCurrentState;
-        // clear the "changed" flags in current state
-        mCurrentState.colorMatrixChanged = false;
+    // withTracingLock([&]() {
+    mDrawingState = mCurrentState;
+    // clear the "changed" flags in current state
+    mCurrentState.colorMatrixChanged = false;
 
-        mDrawingState.traverseInZOrder([&](Layer* layer) {
-            layer->commitChildList();
+    mDrawingState.traverseInZOrder([&](Layer* layer) {
+        layer->commitChildList();
 
-            // If the layer can be reached when traversing mDrawingState, then the layer is no
-            // longer offscreen. Remove the layer from the offscreenLayer set.
-            if (mOffscreenLayers.count(layer)) {
-                mOffscreenLayers.erase(layer);
-            }
-        });
-
-        commitOffscreenLayers();
+        // If the layer can be reached when traversing mDrawingState, then the layer is no
+        // longer offscreen. Remove the layer from the offscreenLayer set.
+        if (mOffscreenLayers.count(layer)) {
+            mOffscreenLayers.erase(layer);
+        }
     });
+
+    commitOffscreenLayers();
+    // });
 
     mTransactionPending = false;
     mAnimTransactionPending = false;
     mTransactionCV.broadcast();
 }
 
-void SurfaceFlinger::withTracingLock(std::function<void()> lockedOperation) {
-    if (mTracingEnabledChanged) {
-        mTracingEnabled = mTracing.isEnabled();
-        mTracingEnabledChanged = false;
+void SurfaceFlinger::lockTracing() {
+    ATRACE_CALL();
+
+    {
+        Mutex::Autolock _l(mStateLock);
+
+        if (mTracingEnabledChanged) {
+            mTracingEnabled = mTracing.isEnabled();
+            mTracingEnabledChanged = false;
+        }
     }
 
     // Synchronize with Tracing thread
-    std::unique_lock<std::mutex> lock;
     if (mTracingEnabled) {
-        lock = std::unique_lock<std::mutex>(mDrawingStateLock);
+        mDrawingStateLock.lock();
+        mTracingLockAcquiredCount++;
     }
+}
 
-    lockedOperation();
+void SurfaceFlinger::unlockTracing() {
+    ATRACE_CALL();
 
-    // Synchronize with Tracing thread
-    if (mTracingEnabled) {
-        lock.unlock();
+    Mutex::Autolock _l(mStateLock);
+    while (mTracingLockAcquiredCount > 0) {
+        mDrawingStateLock.unlock();
+        mTracingLockAcquiredCount--;
     }
 }
 
@@ -5402,10 +5424,20 @@ status_t SurfaceFlinger::onTransact(uint32_t code, const Parcel& data, Parcel* r
                         Mutex::Autolock lock(mStateLock);
                         mTracingEnabledChanged = true;
                         writeFile = mTracing.disable();
+                        ALOGD("LayerTracing disabled!");
+
+                        if (writeFile) {
+                            ALOGD("Writing file");
+                            mTracing.writeToFileAsync();
+                        }
                     }
 
+                    mVisibleRegionsDirty = true;
+                    handleMessageRefresh();
+
                     if (writeFile) {
-                        reply->writeInt32(mTracing.writeToFile());
+                        reply->writeInt32(mTracing.waitTraceCompletion());
+                        ALOGD("Reply written");
                     } else {
                         reply->writeInt32(NO_ERROR);
                     }

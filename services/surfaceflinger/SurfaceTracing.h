@@ -44,7 +44,7 @@ public:
     explicit SurfaceTracing(SurfaceFlinger& flinger);
     void enable();
     bool disable();
-    status_t writeToFile();
+    status_t waitTraceCompletion();
     bool isEnabled() const;
     void notify(long compositionTime, const char* where);
 
@@ -86,7 +86,7 @@ private:
     void mainLoop();
     void addFirstEntry();
     LayersTraceProto traceWhenNotified();
-    LayersTraceProto traceLayersLocked(const char* where) REQUIRES(mSfLock);
+    LayersTraceProto traceLayersLocked(const char* where);
 
     // Returns true if trace is enabled.
     bool addTraceToBuffer(LayersTraceProto& entry);
@@ -95,11 +95,11 @@ private:
     const SurfaceFlinger& mFlinger;
     status_t mLastErr = NO_ERROR;
     std::thread mThread;
-    std::condition_variable mCanStartTrace;
+    std::condition_variable_any mCanStartTrace;
 
-    std::mutex& mSfLock;
-    uint32_t mTraceFlags GUARDED_BY(mSfLock) = TRACE_ALL;
-    const char* mWhere GUARDED_BY(mSfLock) = "";
+    std::recursive_mutex& mSfLock;
+    uint32_t mTraceFlags = TRACE_ALL;
+    const char* mWhere = "";
 
     mutable std::mutex mTraceLock;
     LayersTraceBuffer mBuffer GUARDED_BY(mTraceLock);

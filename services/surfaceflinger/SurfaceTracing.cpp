@@ -50,9 +50,8 @@ void SurfaceTracing::addFirstEntry() {
 }
 
 LayersTraceProto SurfaceTracing::traceWhenNotified() {
-    std::unique_lock<std::mutex> lock(mSfLock);
+    std::unique_lock<std::recursive_mutex> lock(mSfLock);
     mCanStartTrace.wait(lock);
-    android::base::ScopedLockAssertion assumeLock(mSfLock);
     LayersTraceProto entry = traceLayersLocked(mWhere);
     lock.unlock();
     return entry;
@@ -123,7 +122,7 @@ void SurfaceTracing::enable() {
     mThread = std::thread(&SurfaceTracing::mainLoop, this);
 }
 
-status_t SurfaceTracing::writeToFile() {
+status_t SurfaceTracing::waitTraceCompletion() {
     mThread.join();
     return mLastErr;
 }
@@ -137,7 +136,6 @@ bool SurfaceTracing::disable() {
 
     mEnabled = false;
     mWriteToFile = true;
-    mCanStartTrace.notify_all();
     return true;
 }
 
