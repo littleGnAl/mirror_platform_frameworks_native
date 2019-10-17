@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1167ff75_a40216d1",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-17T03:32:21Z",
+      "side": 1,
+      "message": "ack, but using the same bit position differently in userspace and kernel doesn\u0027t look good.",
+      "parentUuid": "41ab622b_cd57d891",
+      "revId": "9195664343a090cd5f0b55a50d75dfaed0ca2aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "326a77b5_1c51073f",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 3
