@@ -23,10 +23,14 @@
 #include <binder/IResultReceiver.h>
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
+#include <private/binder/binder_module.h>
 
 #include <stdio.h>
 
 namespace android {
+
+static_assert(TF_ONE_WAY == IBinder::FLAG_ONEWAY);
+static_assert(TF_ASYNC_BARRIER == IBinder::FLAG_ASYNC_BARRIER);
 
 // ---------------------------------------------------------------------------
 
@@ -132,6 +136,7 @@ class BBinder::Extras
 public:
     // unlocked objects
     bool mRequestingSid = false;
+    bool mRequestingRelaxedOnewayOrdering = false;
     sp<IBinder> mExtension;
 
     // for below objects
@@ -271,6 +276,30 @@ void BBinder::setRequestingSid(bool requestingSid)
     }
 
     e->mRequestingSid = requestingSid;
+}
+
+bool BBinder::isRequestingRelaxedOnewayOrdering()
+{
+    Extras* e = mExtras.load(std::memory_order_acquire);
+
+    return e && e->mRequestingRelaxedOnewayOrdering;
+}
+
+void BBinder::setRequestingRelaxedOnewayOrdering(bool requestRelaxedOneway)
+{
+    Extras* e = mExtras.load(std::memory_order_acquire);
+
+    if (!e) {
+        // default is false. Most things don't need sids, so avoiding allocations when possible.
+        if (!requestRelaxedOneway) {
+            return;
+        }
+
+        e = getOrCreateExtras();
+        if (!e) return; // out of memory
+    }
+
+    e->mRequestingRelaxedOnewayOrdering = requestRelaxedOneway;
 }
 
 sp<IBinder> BBinder::getExtension() {

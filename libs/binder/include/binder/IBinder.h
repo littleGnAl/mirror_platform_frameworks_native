@@ -63,6 +63,7 @@ public:
 
         // Corresponds to TF_ONE_WAY -- an asynchronous call.
         FLAG_ONEWAY             = 0x00000001,
+        FLAG_ASYNC_BARRIER      = 0x00000020,
 
         // Private userspace flag for transaction which is being requested from
         // a vendor context.

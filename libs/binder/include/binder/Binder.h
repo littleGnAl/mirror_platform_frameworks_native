@@ -64,6 +64,15 @@ public:
     // This must be called before the object is sent to another process. Not thread safe.
     void                setRequestingSid(bool requestSid);
 
+    /**
+     * Oneway calls on this node from the same client will still be ordered, but
+     * oneway calls from multiple independent clients may be executed
+     * simultaneously.
+     */
+    bool                isRequestingRelaxedOnewayOrdering();
+    // This must be called before the object is sent to another process. Not thread safe.
+    void                setRequestingRelaxedOnewayOrdering(bool requestRelaxedOneway);
+
     sp<IBinder>         getExtension();
     // This must be called before the object is sent to another process. Not thread safe.
     void                setExtension(const sp<IBinder>& extension);

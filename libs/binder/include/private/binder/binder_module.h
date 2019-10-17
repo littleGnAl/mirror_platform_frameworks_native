@@ -33,6 +33,12 @@ namespace android {
 #undef B_PACK_CHARS
 #endif
 
+// non-upstreamed additions
+enum {
+    FLAT_BINDER_FLAG_RELAXED_ONEWAY_ORDERING = 0x2000,
+    TF_ASYNC_BARRIER = 0x20,
+};
+
 #include <sys/ioctl.h>
 #include <linux/android/binder.h>
 
