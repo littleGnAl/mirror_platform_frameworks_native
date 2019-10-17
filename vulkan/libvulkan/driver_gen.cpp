@@ -31,6 +31,23 @@ namespace {
 
 // clang-format off
 
+VKAPI_ATTR VkResult checkedBindImageMemory2(VkDevice device, uint32_t bindInfoCount, const VkBindImageMemoryInfo* pBindInfos) {
+    if (GetData(device).hook_extensions[ProcHook::EXTENSION_CORE_1_1]) {
+        return BindImageMemory2(device, bindInfoCount, pBindInfos);
+    } else {
+        Logger(device).Err(device, "VK_VERSION_1_0 not enabled. vkBindImageMemory2 not executed.");
+        return VK_SUCCESS;
+    }
+}
+
+VKAPI_ATTR void checkedGetDeviceQueue2(VkDevice device, const VkDeviceQueueInfo2* pQueueInfo, VkQueue* pQueue) {
+    if (GetData(device).hook_extensions[ProcHook::EXTENSION_CORE_1_1]) {
+        GetDeviceQueue2(device, pQueueInfo, pQueue);
+    } else {
+        Logger(device).Err(device, "VK_VERSION_1_0 not enabled. vkGetDeviceQueue2 not executed.");
+    }
+}
+
 VKAPI_ATTR VkResult checkedCreateSwapchainKHR(VkDevice device, const VkSwapchainCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain) {
     if (GetData(device).hook_extensions[ProcHook::KHR_swapchain]) {
         return CreateSwapchainKHR(device, pCreateInfo, pAllocator, pSwapchain);
@@ -174,16 +191,16 @@ const ProcHook g_proc_hooks[] = {
     {
         "vkAllocateCommandBuffers",
         ProcHook::DEVICE,
-        ProcHook::EXTENSION_CORE,
+        ProcHook::EXTENSION_CORE_1_0,
         reinterpret_cast<PFN_vkVoidFunction>(AllocateCommandBuffers),
         nullptr,
     },
     {
         "vkBindImageMemory2",
         ProcHook::DEVICE,
-        ProcHook::EXTENSION_CORE,
+        ProcHook::EXTENSION_CORE_1_1,
         reinterpret_cast<PFN_vkVoidFunction>(BindImageMemory2),
-        nullptr,
+        reinterpret_cast<PFN_vkVoidFunction>(checkedBindImageMemory2),
     },
     {
         "vkBindImageMemory2KHR",
@@ -244,7 +261,7 @@ const ProcHook g_proc_hooks[] = {
     {
         "vkDestroyDevice",
         ProcHook::DEVICE,
-        ProcHook::EXTENSION_CORE,
+        ProcHook::EXTENSION_CORE_1_0,
         reinterpret_cast<PFN_vkVoidFunction>(DestroyDevice),
         nullptr,
     },
@@ -314,23 +331,23 @@ const ProcHook g_proc_hooks[] = {
     {
         "vkGetDeviceProcAddr",
         ProcHook::DEVICE,
-        ProcHook::EXTENSION_CORE,
+        ProcHook::EXTENSION_CORE_1_0,
         reinterpret_cast<PFN_vkVoidFunction>(GetDeviceProcAddr),
         nullptr,
     },
     {
         "vkGetDeviceQueue",
         ProcHook::DEVICE,
-        ProcHook::EXTENSION_CORE,
+        ProcHook::EXTENSION_CORE_1_0,
         reinterpret_cast<PFN_vkVoidFunction>(GetDeviceQueue),
         nullptr,
     },
     {
         "vkGetDeviceQueue2",
         ProcHook::DEVICE,
-        ProcHook::EXTENSION_CORE,
+        ProcHook::EXTENSION_CORE_1_1,
         reinterpret_cast<PFN_vkVoidFunction>(GetDeviceQueue2),
-        nullptr,
+        reinterpret_cast<PFN_vkVoidFunction>(checkedGetDeviceQueue2),
     },
     {
         "vkGetInstanceProcAddr",
