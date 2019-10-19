@@ -60,30 +60,20 @@ struct AdbdWifiPacketRequestAuthorization {
     std::string public_key;
 };
 
-struct AdbdWifiPacketPairingCode {
+struct AdbdWifiPacketPairingRequest {
     std::vector<uint8_t> msg;
-    explicit AdbdWifiPacketPairingCode(std::string_view public_key,
-                                       const uint8_t* encrypted,
-                                       uint64_t encrypted_size,
-                                       uint64_t device_id) {
-        PLOG(WARNING) << __func__ << " encrypted_size=" << encrypted_size
-                      << " public_key=" << public_key
-                      << " device_id=" << device_id;
-        // The format of the msg is: <encrypted>\n<device_id>\n<public_key>
-        msg.insert(msg.end(), encrypted, encrypted + encrypted_size);
-        msg.push_back('\n');
-        uint8_t* p8 = reinterpret_cast<uint8_t*>(&device_id);
-        msg.insert(msg.end(), p8, p8 + sizeof(device_id));
-        msg.push_back('\n');
-        msg.insert(msg.end(), public_key.data(), public_key.data() + public_key.size());
-        PLOG(WARNING) << "Constructed AdbdWifiPacketPairingCode(sz=" << msg.size() << ")";
+    explicit AdbdWifiPacketPairingRequest(std::string_view public_key) {
+        LOG(WARNING) << __func__
+                     << " public_key=" << public_key;
+        msg.assign(public_key.data(), public_key.data() + public_key.size());
+        LOG(WARNING) << "Constructed AdbdWifiPacketPairingRequest(sz=" << msg.size() << ")";
     }
-};  // AdbdWifiPacketPairingCode
+};  // AdbdWifiPacketPairingRequest
 
 using AdbdWifiPacket = std::variant<AdbdWifiPacketAuthenticated,
                                     AdbdWifiPacketDisconnected,
                                     AdbdWifiPacketRequestAuthorization,
-                                    AdbdWifiPacketPairingCode>;
+                                    AdbdWifiPacketPairingRequest>;
 
 struct AdbdWifiContext {
 public:
@@ -286,13 +276,14 @@ private:
             return;
         }
 
-        auto [id, encryptedCode, public_key] = std::move(pending_pairing_requests_.front());
+        auto [public_key] = std::move(pending_pairing_requests_.front());
         pending_pairing_requests_.pop_front();
 
         this->output_queue_.emplace_back(
-                AdbdWifiPacketPairingCode(public_key, encryptedCode.data(), encryptedCode.size(), id));
+                AdbdWifiPacketPairingRequest(std::string_view(
+                    reinterpret_cast<const char*>(public_key.data()), public_key.size())));
         Interrupt();
-        dispatched_pairing_request_ = std::make_tuple(id, std::move(encryptedCode), public_key);
+        dispatched_pairing_request_ = std::make_tuple(public_key);
     }
 
     void DispatchPendingPrompt() REQUIRES(mutex_) {
@@ -400,15 +391,23 @@ private:
 
         auto* p = reinterpret_cast<AdbdWifiContext*>(opaque);
         PLOG(DEBUG) << "Cancel pairing";
-        p->callbacks_.set_discovery_enabled(false);
+        p->mDiscoveryMode = DiscoveryMode::Unknown;
+        p->mOurKey.clear();
+        p->callbacks_.disable_discovery();
     }
 
     static void queryEnableDiscovery(std::string_view buf, void* opaque) {
-        UNUSED(buf);
-
+        // ED<disc_mode_1byte><our_key>
+        // The <disc_mode_1byte> corresponds to the discovery mode. See
+        // DiscoveryMode enum class for a list of support discovery modes.
         auto* p = reinterpret_cast<AdbdWifiContext*>(opaque);
-        PLOG(DEBUG) << "Discovery enabled";
-        p->callbacks_.set_discovery_enabled(true);
+        CHECK_GE(buf.size(), 4UL);
+        LOG(INFO) << "Discovery enabled (buf.size=" << buf.size() << ")";
+        // buf[3], if valid, stores the discovery mode as a single-digit
+        // represented in char format.
+        p->mDiscoveryMode = getMode(*reinterpret_cast<const uint8_t*>(&buf[2]));
+        p->mOurKey.assign(&buf[3], &buf[0] + buf.size());
+        p->callbacks_.enable_discovery(p->mOurKey.data(), p->mOurKey.size());
     }
 
     static void queryDisableDiscovery(std::string_view buf, void* opaque) {
@@ -416,7 +415,9 @@ private:
 
         auto* p = reinterpret_cast<AdbdWifiContext*>(opaque);
         PLOG(DEBUG) << "Discovery disabled";
-        p->callbacks_.set_discovery_enabled(false);
+        p->mDiscoveryMode = DiscoveryMode::Unknown;
+        p->mOurKey.clear();
+        p->callbacks_.disable_discovery();
     }
 
     using QueryCallback = std::function<void(std::string_view, void*)>;
@@ -483,28 +484,17 @@ public:
         LOG(INFO) << "======================================";
     }
     // Response handlers
-    void responsePairingCode(std::string_view public_key,
-                             const uint8_t* encryptedCode,
-                             uint64_t sizeBytes,
-                             std::function<void(std::string_view public_key, bool isCorrect)> callback) EXCLUDES(mutex_) {
-//        UNUSED(encryptedCode);
-//        UNUSED(sizeBytes);
-
-        CHECK_GE(sizeBytes, 0LU);
-        CHECK(encryptedCode);
-
+    void responsePairingRequest(std::string_view public_key,
+                                std::function<void(std::string_view public_key, bool isCorrect)> callback) EXCLUDES(mutex_) {
         PLOG(WARNING) << __func__;
-        LOG(INFO) << __func__ << "public_key=" << public_key;
-        dumpBytes("encryptedCode", encryptedCode, sizeBytes);
+        dumpBytes("public_key",
+                  reinterpret_cast<const uint8_t*>(public_key.data()),
+                  public_key.size());
         std::lock_guard<std::mutex> lock(mutex_);
-        // TODO: Need to pass the public key here so we know which device sent
-        // the correct pairing code.
-        // TODO: remove this once we have the keystore in place.
-        uint64_t id = NextPairingId();
-        std::vector<uint8_t> code;
-        code.insert(code.end(), encryptedCode, encryptedCode + sizeBytes);
-        dumpBytes("code", code.data(), code.size());
-        pending_pairing_requests_.emplace_back(id, std::move(code), public_key);
+//        uint64_t id = NextPairingId();
+        std::vector<uint8_t> key;
+        key.assign(public_key.data(), public_key.data() + public_key.size());
+        pending_pairing_requests_.emplace_back(std::move(key));
         DispatchPairingRequest();
 
         // TODO: call |callback| once we are notified from system_server.
@@ -512,7 +502,7 @@ public:
         std::thread([&public_key, &callback]() {
             callback(public_key, false);
         }).detach();
-        LOG(INFO) << "Unlock responsePairingCode";
+        LOG(INFO) << "Unlock responsePairingRequest";
     }
 
     void responsePairingResult(const std::string& status, int deviceId) {
@@ -553,8 +543,8 @@ private:
             iovs[0].iov_len = 2;
             iovs[1].iov_base = p->public_key.data();
             iovs[1].iov_len = p->public_key.size();
-        } else if (auto* p = std::get_if<AdbdWifiPacketPairingCode>(&packet)) {
-            PLOG(WARNING) << "Received AdbdWifiPacketPairingCode";
+        } else if (auto* p = std::get_if<AdbdWifiPacketPairingRequest>(&packet)) {
+            PLOG(WARNING) << "Received AdbdWifiPacketPairingRequest";
             iovs[0].iov_base = const_cast<char*>("CD");
             iovs[0].iov_len = 2;
             iovs[1].iov_base = p->msg.data();
@@ -615,11 +605,26 @@ private:
     // time (dispatched_pairing_request_).
     std::deque<AdbdWifiPacket> output_queue_;
 
-    // (device_id, encrypted_code, encrypted_code_size)
-    std::optional<std::tuple<uint64_t, std::vector<uint8_t>, std::string>> dispatched_pairing_request_ GUARDED_BY(mutex_);
-    std::deque<std::tuple<uint64_t, std::vector<uint8_t>, std::string>> pending_pairing_requests_ GUARDED_BY(mutex_);
+    // (device_id, public_key_header)
+    std::optional<std::tuple<std::vector<uint8_t>>> dispatched_pairing_request_ GUARDED_BY(mutex_);
+    std::deque<std::tuple<std::vector<uint8_t>>> pending_pairing_requests_ GUARDED_BY(mutex_);
     std::optional<std::tuple<uint64_t, std::string, void*>> dispatched_prompt_ GUARDED_BY(mutex_);
     std::deque<std::tuple<uint64_t, std::string, void*>> pending_prompts_ GUARDED_BY(mutex_);
+
+    enum class DiscoveryMode : uint8_t {
+        QrCode = 0,
+        PairingRequest = 1,
+        Unknown = 2,
+    };
+    static DiscoveryMode getMode(uint8_t val) {
+        if (val >= static_cast<uint8_t>(DiscoveryMode::Unknown)) {
+            return DiscoveryMode::Unknown;
+        }
+        return static_cast<DiscoveryMode>(val);
+    }
+
+    DiscoveryMode mDiscoveryMode = DiscoveryMode::Unknown;
+    std::vector<uint8_t> mOurKey;
 };  // struct AdbdWifiContext
 
 // static
@@ -671,15 +676,10 @@ void adbd_wifi_notify_disconnect(AdbdWifiContext* ctx, uint64_t id) {
     return ctx->NotifyDisconnected(id);
 }
 
-bool adbd_wifi_pairing_code(AdbdWifiContext* ctx,
-                            const char* public_key,
-                            const uint8_t* encrypted_code,
-                            uint64_t size_bytes) {
+bool adbd_wifi_pairing_request(AdbdWifiContext* ctx,
+                               const uint8_t* public_key,
+                               uint64_t size_bytes) {
     PLOG(WARNING) << __func__;
-//    UNUSED(ctx);
-//    UNUSED(public_key);
-//    UNUSED(encrypted_code);
-//    UNUSED(size_bytes);
     std::condition_variable cv;
     std::mutex mutex;
     bool success = false;
@@ -690,14 +690,14 @@ bool adbd_wifi_pairing_code(AdbdWifiContext* ctx,
         success = result;
         cv.notify_all();
     };
-    ctx->responsePairingCode(public_key, encrypted_code, size_bytes, callback);
+    ctx->responsePairingRequest(std::string_view(
+            reinterpret_cast<const char*>(public_key), size_bytes), callback);
     LOG(ERROR) << __func__ << " waiting for cv";
     std::unique_lock<std::mutex> lock(mutex);
     cv.wait(lock);
     LOG(ERROR) << __func__ << " triggered on cv";
 
     return success;
-//    return true;
 }
 
 bool adbd_wifi_supports_feature(AdbdWifiFeature) {

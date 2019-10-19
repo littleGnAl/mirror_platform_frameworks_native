@@ -22,7 +22,15 @@ cc_library {
     ],
     srcs: [
         "adbd_auth.cpp",
-	"adbd_wifi.cpp",
+        "adbd_wifi.cpp",
+        "pairing/pairing_auth.cpp",
+        "crypto/aes_128_gcm.cpp",
+//        "crypto/ec_key.cpp",
+//        "crypto/identifiers.cpp",
+//        "crypto/key.cpp",
+//        "crypto/key_store.cpp",
+//        "crypto/key_store_utils.cpp",
+//        "crypto/key_type.cpp",
     ],
     export_include_dirs: ["include"],
 
@@ -38,5 +46,40 @@ cc_library {
         "libbase",
         "libcutils",
         "liblog",
+        "libcrypto",
+    ],
+}
+
+cc_library_host_static {
+    name: "libadbd_wifi_host",
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wthread-safety",
+        "-Werror",
+    ],
+    srcs: [
+        "adbd_wifi.cpp",
+        "pairing/pairing_auth.cpp",
+        "crypto/aes_128_gcm.cpp",
+//        "crypto/ec_key.cpp",
+//        "crypto/identifiers.cpp",
+//        "crypto/key.cpp",
+//        "crypto/key_store.cpp",
+//        "crypto/key_store_utils.cpp",
+//        "crypto/key_type.cpp",
+    ],
+    target: {
+        windows: {
+	    enabled: true,
+	},
+    },
+    export_include_dirs: ["include"],
+
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "liblog",
+        "libcrypto",
     ],
 }

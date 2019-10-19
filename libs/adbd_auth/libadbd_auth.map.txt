@@ -18,7 +18,22 @@ LIBADBD_AUTH {
     adbd_wifi_notify_auth; # apex
     adbd_wifi_notify_disconnect; # apex
     adbd_wifi_supports_feature; # apex
-    adbd_wifi_pairing_code; # apex
+    adbd_wifi_pairing_request; # apex
+
+    ## adbdwifi_pairing ##
+    pairing_auth_new_ctx; # apex
+    pairing_auth_delete_ctx; # apex
+    pairing_auth_request_max_size; # apex
+    pairing_auth_create_request; # apex
+    pairing_auth_parse_request; # apex
+    pairing_auth_our_public_key; # apex
+    pairing_auth_register_their_key; # apex
+#    pairing_auth_decrypted_size; # apex
+#    pairing_auth_decrypt; # apex
+#    pairing_auth_encrypted_size; # apex
+#    pairing_auth_encrypt; # apex
+    pairing_auth_max_key_size; # apex
+
   local:
     *;
 };
