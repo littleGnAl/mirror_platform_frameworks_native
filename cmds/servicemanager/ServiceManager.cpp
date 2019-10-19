@@ -18,6 +18,8 @@
 
 #include <android-base/logging.h>
 #include <android-base/properties.h>
+#include <binder/BpBinder.h>
+#include <binder/ProcessState.h>
 #include <binder/Stability.h>
 #include <cutils/android_filesystem_config.h>
 #include <cutils/multiuser.h>
@@ -312,6 +314,13 @@ void ServiceManager::tryStartService(const std::string& name) {
     std::thread([=] {
         (void)base::SetProperty("ctl.interface_start", "aidl/" + name);
     }).detach();
+}
+
+ssize_t ServiceManager::Service::getNodeStrongRefCount() {
+    sp<BpBinder> bpBinder = binder->remoteBinder();
+    if (bpBinder == nullptr) return -1;
+
+    return ProcessState::self()->getStrongRefCountForNodeByHandle(bpBinder->handle());
 }
 
 }  // namespace android

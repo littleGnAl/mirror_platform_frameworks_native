@@ -51,6 +51,9 @@ private:
         sp<IBinder> binder; // not null
         bool allowIsolated;
         int32_t dumpPriority;
+
+        // the number of clients of the service, including servicemanager itself
+        ssize_t getNodeStrongRefCount();
     };
 
     using CallbackMap = std::map<std::string, std::vector<sp<IServiceCallback>>>;
