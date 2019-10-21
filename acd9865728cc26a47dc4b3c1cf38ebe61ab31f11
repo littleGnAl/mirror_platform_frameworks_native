@@ -82,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "6f2048e5_f968b0ea",
+        "filename": "vulkan/libvulkan/layers_extensions.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-10-21T20:45:07Z",
+      "side": 1,
+      "message": "Interestingly, looks like there\u0027s a defect report out for (missing) the concatenation (operator+) for std::string_view: https://groups.google.com/a/isocpp.org/forum/#!topic/std-proposals/1RcShRhrmRc, https://stackoverflow.com/questions/44636549/why-is-there-no-support-for-concatenating-stdstring-and-stdstring-view.",
+      "parentUuid": "12c625c3_95d721f7",
+      "range": {
+        "startLine": 329,
+        "startChar": 27,
+        "endLine": 329,
+        "endChar": 45
+      },
+      "revId": "acd9865728cc26a47dc4b3c1cf38ebe61ab31f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05f54510_db842dcf",
         "filename": "vulkan/libvulkan/layers_extensions.cpp",
         "patchSetId": 4
