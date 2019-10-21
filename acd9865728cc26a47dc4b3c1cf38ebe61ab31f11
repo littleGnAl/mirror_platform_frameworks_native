@@ -106,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "c2589ccb_4080c781",
+        "filename": "vulkan/libvulkan/layers_extensions.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-10-21T20:52:30Z",
+      "side": 1,
+      "message": "looks like std::string#append(std::string_view) is the way to go.",
+      "parentUuid": "6f2048e5_f968b0ea",
+      "range": {
+        "startLine": 329,
+        "startChar": 27,
+        "endLine": 329,
+        "endChar": 45
+      },
+      "revId": "acd9865728cc26a47dc4b3c1cf38ebe61ab31f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05f54510_db842dcf",
         "filename": "vulkan/libvulkan/layers_extensions.cpp",
         "patchSetId": 4
