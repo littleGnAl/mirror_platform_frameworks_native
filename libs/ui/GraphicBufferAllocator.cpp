@@ -72,7 +72,7 @@ size_t GraphicBufferAllocator::getTotalSize() const {
 void GraphicBufferAllocator::dump(std::string& result) const {
     Mutex::Autolock _l(sLock);
     KeyedVector<buffer_handle_t, alloc_rec_t>& list(sAllocList);
-    size_t total = 0;
+    uint64_t total = 0;
     result.append("Allocated buffers:\n");
     const size_t c = list.size();
     for (size_t i=0 ; i<c ; i++) {
