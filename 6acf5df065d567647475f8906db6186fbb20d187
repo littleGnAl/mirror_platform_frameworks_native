@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23f9381a_1fc5fdb7",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-22T18:20:22Z",
+      "side": 1,
+      "message": "this should never be true for sm",
+      "range": {
+        "startLine": 320,
+        "startChar": 8,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "6acf5df065d567647475f8906db6186fbb20d187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f257e15_4cb9038d",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-22T18:20:22Z",
+      "side": 1,
+      "message": "prefer function remoteBinder, in case the binder is actually local, as one will be after https://r.android.com/q/topic:orthogonal-sm-retrieval",
+      "range": {
+        "startLine": 322,
+        "startChar": 28,
+        "endLine": 322,
+        "endChar": 51
+      },
+      "revId": "6acf5df065d567647475f8906db6186fbb20d187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2dfe86_c4070fa1",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-22T18:20:22Z",
+      "side": 1,
+      "message": "I\u0027m surprised there is no \u0027LOG_ONCE\u0027 macro. I wonder what the other logging people would think. Maybe it would encourage too much usage, and it costs a byte of memory?",
+      "range": {
+        "startLine": 206,
+        "startChar": 10,
+        "endLine": 206,
+        "endChar": 15
+      },
+      "revId": "6acf5df065d567647475f8906db6186fbb20d187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7b62a4e_ff43abea",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-22T18:20:22Z",
+      "side": 1,
+      "message": "nit: specify only usable by context manager",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 58
+      },
+      "revId": "6acf5df065d567647475f8906db6186fbb20d187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
