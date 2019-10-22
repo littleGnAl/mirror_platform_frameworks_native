@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4b14b48a_4d8ae4d7",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-22T19:55:42Z",
+      "side": 1,
+      "message": "Also, I might prefer to wait to add the function to servicemanager until you need it/use it. You might find you don\u0027t need it at all (or that it would be better on IBinder)",
+      "parentUuid": "2f4e7231_5e044933",
+      "range": {
+        "startLine": 320,
+        "startChar": 8,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "6acf5df065d567647475f8906db6186fbb20d187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f257e15_4cb9038d",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 1
