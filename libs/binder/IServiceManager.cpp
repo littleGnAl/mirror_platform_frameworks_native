@@ -19,6 +19,7 @@
 #include <binder/IServiceManager.h>
 
 #include <android/os/BnServiceCallback.h>
+#include <android/os/BnClientCallback.h>
 #include <android/os/IServiceManager.h>
 #include <binder/IPCThreadState.h>
 #include <binder/Parcel.h>
@@ -337,7 +338,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
 bool ServiceManagerShim::isDeclared(const String16& name) {
     bool declared;
     if (!mTheRealServiceManager->isDeclared(String8(name).c_str(), &declared).isOk()) {
-        return false;
+      return false;
     }
     return declared;
 }
