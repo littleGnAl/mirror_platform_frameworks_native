@@ -19,6 +19,7 @@
 #include <binder/IServiceManager.h>
 
 #include <android/os/BnServiceCallback.h>
+#include <android/os/BnClientCallback.h>
 #include <android/os/IServiceManager.h>
 #include <binder/IPCThreadState.h>
 #include <binder/Parcel.h>
@@ -73,6 +74,10 @@ public:
     Vector<String16> listServices(int dumpsysPriority) override;
     sp<IBinder> waitForService(const String16& name16) override;
     bool isDeclared(const String16& name) override;
+
+    status_t registerClientCallback(const std::string& name,
+                                    const sp<os::IClientCallback>& cb);
+    status_t tryUnregisterService(const String16& name, const sp<IBinder>& service);
 
     // for legacy ABI
     const String16& getInterfaceDescriptor() const override {
@@ -305,6 +310,9 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
     Defer unregister ([&] {
         mTheRealServiceManager->unregisterForNotifications(name, waiter);
     });
+    Defer handleCallback ([&] {
+        mTheRealServiceManager->handleClientCallbacks();
+    });
 
     while(true) {
         {
@@ -337,9 +345,24 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
 bool ServiceManagerShim::isDeclared(const String16& name) {
     bool declared;
     if (!mTheRealServiceManager->isDeclared(String8(name).c_str(), &declared).isOk()) {
-        return false;
+      return false;
     }
     return declared;
+}
+
+status_t ServiceManagerShim::registerClientCallback(const std::string& name,
+                                                    const android::sp<android::os::IClientCallback>& cb)
+{
+    Status status = mTheRealServiceManager->registerClientCallback(name, cb);
+    return status.exceptionCode();
+}
+
+status_t ServiceManagerShim::tryUnregisterService(const android::String16& name,
+                                                  const android::sp<android::IBinder>& service)
+{
+    Status status = mTheRealServiceManager->tryUnregisterService(
+        String8(name).c_str(), service);
+    return status.exceptionCode();
 }
 
 } // namespace android

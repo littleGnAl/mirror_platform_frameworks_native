@@ -18,6 +18,8 @@
 
 #include <android-base/logging.h>
 #include <android-base/properties.h>
+#include <binder/BpBinder.h>
+#include <binder/ProcessState.h>
 #include <binder/Stability.h>
 #include <cutils/android_filesystem_config.h>
 #include <cutils/multiuser.h>
@@ -339,6 +341,141 @@ void ServiceManager::tryStartService(const std::string& name) {
     std::thread([=] {
         (void)base::SetProperty("ctl.interface_start", "aidl/" + name);
     }).detach();
+}
+
+Status ServiceManager::registerClientCallback(const std::string& name,
+                                              const sp<IClientCallback>& cb) {
+    if (cb == nullptr) {
+        return Status::fromExceptionCode(Status::EX_NULL_POINTER);
+    }
+
+    auto ctx = mAccess->getCallingContext();
+    if (!mAccess->canAdd(ctx, name)) {
+        return Status::fromExceptionCode(Status::EX_SECURITY);
+    }
+
+    if (OK != IInterface::asBinder(cb)->linkToDeath(this)) {
+        LOG(ERROR) << "Could not linkToDeath when adding client callback for " << name;
+        return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
+    }
+
+    mNameToClientCallback[name].push_back(cb);
+
+    return Status::ok();
+}
+
+ssize_t ServiceManager::Service::getNodeStrongRefCount() {
+    sp<BpBinder> bpBinder = binder->remoteBinder();
+    if (bpBinder == nullptr) return -1;
+
+    return ProcessState::self()->getStrongRefCountForNodeByHandle(bpBinder->handle());
+}
+
+Status ServiceManager::handleClientCallbacks() {
+    for (auto it = mNameToService.begin(); it != mNameToService.end(); ++it) {
+        handleServiceClientCallback(it->first);
+    }
+
+    return Status::ok();
+}
+
+ssize_t ServiceManager::handleServiceClientCallback(const std::string& serviceName) {
+    if (mNameToService.count(serviceName) < 1 || mNameToClientCallback.count(serviceName) < 1) {
+        return -1;
+    }
+
+    Service service = mNameToService[serviceName];
+    ssize_t count = service.getNodeStrongRefCount();
+
+    // binder driver doesn't support this feature
+    if (count == -1) return count;
+
+    bool hasClients = count > 1; // this process holds a strong count
+
+    if (hasClients && !service.mHasClients) {
+        // client was retrieved in some other way
+        sendClientCallbackNotifications(serviceName, true);
+    }
+
+    // there are no more clients, but the callback has not been called yet
+    if (!hasClients && service.mHasClients) {
+            sendClientCallbackNotifications(serviceName, false);
+    }
+
+    return count;
+}
+
+void ServiceManager::sendClientCallbackNotifications(const std::string& serviceName, bool hasClients) {
+    if (mNameToService.count(serviceName) < 1) {
+        LOG(WARNING) << "sendClientCallbackNotifications could not find service " << serviceName;
+        return;
+    }
+    Service& service = mNameToService[serviceName];
+
+    CHECK(hasClients != service.mHasClients) << "Record shows: " << service.mHasClients
+        << " so we can't tell clients again that we have client: " << hasClients;
+
+    LOG(INFO) << "Notifying " << serviceName << " they have clients: " << hasClients;
+
+    if (mNameToClientCallback.count(serviceName) < 1) {
+        LOG(WARNING) << "sendClientCallbackNotifications could not find callbacks for service "
+                << serviceName;
+        return;
+    }
+
+    for (auto it = mNameToClientCallback[serviceName].begin(); it != mNameToClientCallback[serviceName].end(); ++ it) {
+        Status ret = (*it)->onClients(service.binder, hasClients);
+    }
+
+    service.mHasClients = hasClients;
+}
+
+Status ServiceManager::tryUnregisterService(const std::string& name, const sp<IBinder>& binder) {
+    if (binder == nullptr) {
+        return Status::fromExceptionCode(Status::EX_NULL_POINTER);
+    }
+
+    auto ctx = mAccess->getCallingContext();
+    if (!mAccess->canAdd(ctx, name)) {
+        return Status::fromExceptionCode(Status::EX_SECURITY);
+    }
+
+    if (mNameToService.count(name) < 1) {
+        LOG(WARNING) << "Tried to unregister " << name
+            << ", but that service wasn't registered to begin with.";
+        return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
+    }
+
+    sp<IBinder> storedBinder = mNameToService[name].binder;
+
+    if (binder != storedBinder) {
+        LOG(WARNING) << "Tried to unregister " << name
+            << ", but a different service is registered under this name.";
+        return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
+    }
+
+    int clients = handleServiceClientCallback(name);
+
+    // clients < 0: feature not implemented or other error. Assume clients.
+    // Otherwise:
+    // - kernel driver will hold onto one refcount (during this transaction)
+    // - servicemanager has a refcount (guaranteed by this transaction)
+    // So, if clients > 2, then at least one other service on the system must hold a refcount.
+    if (clients < 0 || clients > 2) {
+        // client callbacks are either disabled or there are other clients
+        LOG(INFO) << "Tried to unregister " << name << " but there are clients: " << clients;
+        return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
+    }
+
+    removeService(name);
+
+    return Status::ok();
+}
+
+void ServiceManager::removeService(const std::string& name) {
+    mNameToCallback.erase(name);
+    mNameToClientCallback.erase(name);
+    mNameToService.erase(name);
 }
 
 }  // namespace android
