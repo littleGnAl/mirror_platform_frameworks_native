@@ -271,6 +271,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             std::unique_lock<std::mutex> lock(mMutex);
             mBinder = binder;
             lock.unlock();
+            IPCThreadState::self()->flushCommands();
             mCv.notify_one();
             return Status::ok();
         }
