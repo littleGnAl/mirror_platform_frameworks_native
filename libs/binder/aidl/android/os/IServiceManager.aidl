@@ -16,6 +16,7 @@
 
 package android.os;
 
+import android.os.IClientCallback;
 import android.os.IServiceCallback;
 
 /**
@@ -96,4 +97,11 @@ interface IServiceManager {
      * manifest.
      */
     boolean isDeclared(@utf8InCpp String name);
+
+    //TODO: Add comments
+    void registerClientCallback(@utf8InCpp String name, IClientCallback callback);
+
+    void tryUnregisterService(@utf8InCpp String name, IBinder service);
+
+    void handleClientCallbacks();
 }

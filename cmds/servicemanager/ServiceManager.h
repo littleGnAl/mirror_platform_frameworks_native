@@ -17,12 +17,14 @@
 #pragma once
 
 #include <android/os/BnServiceManager.h>
+#include <android/os/IClientCallback.h>
 #include <android/os/IServiceCallback.h>
 
 #include "Access.h"
 
 namespace android {
 
+using os::IClientCallback;
 using os::IServiceCallback;
 
 class ServiceManager : public os::BnServiceManager, public IBinder::DeathRecipient {
@@ -40,9 +42,13 @@ public:
                                             const sp<IServiceCallback>& callback) override;
     binder::Status unregisterForNotifications(const std::string& name,
                                               const sp<IServiceCallback>& callback) override;
-    binder::Status isDeclared(const std::string& name, bool* outReturn) override;
 
+    binder::Status isDeclared(const std::string& name, bool* outReturn) override;
+    binder::Status registerClientCallback(const std::string& name,
+                                          const sp<IClientCallback>& cb);
+    binder::Status tryUnregisterService(const std::string& name, const sp<IBinder>& binder) override;
     void binderDied(const wp<IBinder>& who) override;
+    binder::Status handleClientCallbacks();
 
 protected:
     virtual void tryStartService(const std::string& name);
@@ -52,9 +58,14 @@ private:
         sp<IBinder> binder; // not null
         bool allowIsolated;
         int32_t dumpPriority;
+        bool mHasClients = false; // notifications sent on true -> false.
+
+        // the number of clients of the service, including servicemanager itself
+        ssize_t getNodeStrongRefCount();
     };
 
     using CallbackMap = std::map<std::string, std::vector<sp<IServiceCallback>>>;
+    using ClientCallbackMap = std::map<std::string, std::vector<sp<IClientCallback>>>;
     using ServiceMap = std::map<std::string, Service>;
 
     // removes a callback from mNameToCallback, removing it if the vector is empty
@@ -62,10 +73,18 @@ private:
     void removeCallback(const wp<IBinder>& who,
                         CallbackMap::iterator* it,
                         bool* found);
+    ssize_t handleServiceClientCallback(const std::string& serviceName);
+     // Also updates mHasClients (of what the last callback was)
+    void sendClientCallbackNotifications(const std::string& serviceName, bool hasClients);
+
     sp<IBinder> tryGetService(const std::string& name, bool startIfNotFound);
 
+    void removeService(const std::string& name);
+
+    //TODO: Rename this and related functions
     CallbackMap mNameToCallback;
     ServiceMap mNameToService;
+    ClientCallbackMap mNameToClientCallback;
 
     std::unique_ptr<Access> mAccess;
 };
