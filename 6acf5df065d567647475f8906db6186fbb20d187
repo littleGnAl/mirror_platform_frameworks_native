@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2f4e7231_5e044933",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-22T19:54:58Z",
+      "side": 1,
+      "message": "yeah",
+      "parentUuid": "eb38f0bb_9ff692f4",
+      "range": {
+        "startLine": 320,
+        "startChar": 8,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "6acf5df065d567647475f8906db6186fbb20d187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f257e15_4cb9038d",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 1
