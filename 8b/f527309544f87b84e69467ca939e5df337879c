@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Autosubmit+1: Yiwei Zhang <zzyiwei@google.com>
+Code-Review+2: Chris Forbes <chrisforbes@google.com>
+DrNo-Review+1: Hung-ying Tyan <tyanh@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 22 Oct 2019 07:38:08 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1147538
+Project: platform/frameworks/native
+Branch: refs/heads/android10-gsi
