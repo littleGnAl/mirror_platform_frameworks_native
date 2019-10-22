@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb38f0bb_9ff692f4",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-10-22T19:29:11Z",
+      "side": 1,
+      "message": "Understood. Probably a good idea to check the pointer returned from remoteBinder() in my new patch set, though, right?",
+      "parentUuid": "23f9381a_1fc5fdb7",
+      "range": {
+        "startLine": 320,
+        "startChar": 8,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "6acf5df065d567647475f8906db6186fbb20d187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f257e15_4cb9038d",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "6acf5df065d567647475f8906db6186fbb20d187",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf397e73_fe6eb388",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-10-22T19:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f257e15_4cb9038d",
+      "range": {
+        "startLine": 322,
+        "startChar": 28,
+        "endLine": 322,
+        "endChar": 51
+      },
+      "revId": "6acf5df065d567647475f8906db6186fbb20d187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,30 @@
       "revId": "6acf5df065d567647475f8906db6186fbb20d187",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b38e9a8c_00d55b7f",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-10-22T19:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7b62a4e_ff43abea",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 58
+      },
+      "revId": "6acf5df065d567647475f8906db6186fbb20d187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
