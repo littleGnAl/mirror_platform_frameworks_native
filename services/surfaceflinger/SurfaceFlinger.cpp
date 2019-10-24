@@ -5372,7 +5372,6 @@ status_t SurfaceFlinger::onTransact(uint32_t code, const Parcel& data, Parcel* r
                     bool writeFile = false;
                     {
                         Mutex::Autolock lock(mStateLock);
-                        mTracingEnabledChanged = true;
                         writeFile = mTracing.disable();
                     }
 
@@ -5380,6 +5379,11 @@ status_t SurfaceFlinger::onTransact(uint32_t code, const Parcel& data, Parcel* r
                         reply->writeInt32(mTracing.writeToFile());
                     } else {
                         reply->writeInt32(NO_ERROR);
+                    }
+
+                    {
+                        Mutex::Autolock lock(mStateLock);
+                        mTracingEnabledChanged = true;
                     }
                 }
                 return NO_ERROR;
