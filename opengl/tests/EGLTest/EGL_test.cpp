@@ -952,6 +952,12 @@ TEST_F(EGLTest, EGLCreateWindowFailAndSucceed) {
 TEST_F(EGLTest, EGLCreateWindowTwoColorspaces) {
     EGLConfig config;
 
+    if (!hasWideColorDisplay) {
+        // skip this test if device does not have wide-color display
+        RecordProperty("hasWideColorDisplay", false);
+        return;
+    }
+
     ASSERT_NO_FATAL_FAILURE(get8BitConfig(config));
 
     struct DummyConsumer : public BnConsumerListener {
