@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7162a71f_eb797d9a",
+        "filename": "opengl/tests/EGLTest/EGL_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2019-10-25T13:17:08Z",
+      "side": 1,
+      "message": "Test should look like this:\nfrom EGLConfig1010102:\n    if (!hasWideColorDisplay) {\n        // skip this test if device does not have wide-color display\n        RecordProperty(\"hasWideColorDisplay\", false);\n        return;\n    }",
+      "revId": "1ca9cfd861d714dd357ebe399067959042fd90ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
