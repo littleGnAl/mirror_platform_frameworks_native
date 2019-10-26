@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,9 +15,20 @@
 
 #pragma once
 
-#include <string>
+#include <stddef.h>
+#include <stdint.h>
 
-std::string get_device_name();
+const uint8_t kCurrentKeyHeaderVersion = 1;
+const uint8_t kMinSupportedKeyHeaderVersion = 1;
+const uint8_t kMaxSupportedKeyHeaderVersion = 1;
+const size_t kPublicKeyNameLength = 128;
+const size_t kPublicKeyIdLength = 128;
 
-std::string get_unique_device_id();
-
+struct PublicKeyHeader {
+    uint8_t version;
+    uint8_t type;
+    uint32_t bits;
+    uint32_t payload;
+    char name[kPublicKeyNameLength];
+    char id[kPublicKeyIdLength];
+} __attribute__((packed));

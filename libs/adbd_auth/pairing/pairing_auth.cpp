@@ -80,11 +80,14 @@ public:
     static uint32_t maxPairingRequestSize();
     // Creates and returns a pairing request packet. On failure, the packet
     // returned will be empty.
-    Data createPairingRequest();
+    Data createPairingRequest(const PublicKeyHeader* header,
+                              const char* public_key);
     // Reads and attempts to parse the pairing request packet |pkt|. On success,
-    // |header| will be filled, and return will be true. False otherwise.
+    // |out_header| and |out_public_key| will be filled, and return will be true.
+    // False otherwise.
     bool readPairingRequest(DataHolder pkt,
-                            PublicKeyHeader* header);
+                            PublicKeyHeader* out_header,
+                            std::string& out_public_key);
 
     // Creates a new PairingAuth instance. May return null if unable
     // to create an instance.
@@ -296,8 +299,8 @@ uint32_t PairingAuth::maxPairingRequestSize() {
     // Format of a request is as follows:
     // 2) Size of our SPAKE2 public key (4 bytes)
     // 3) our SPAKE2 public key (<= kMaxKeySize)
-    // 4) Size of the encrypted PublicKeyHeader (8 bytes)
-    // 5) The encrypted PublicKeyHeader data (? bytes)
+    // 4) Size of the encrypted data (4 bytes)
+    // 5) The encrypted data (? bytes)
     //
     // Let's just give a reasonably large enough size, because in order to
     // determine the size of the encrypted data, we need to initialize the
@@ -305,57 +308,61 @@ uint32_t PairingAuth::maxPairingRequestSize() {
     return 8192;
 }
 
-PairingAuth::Data PairingAuth::createPairingRequest() {
+PairingAuth::Data PairingAuth::createPairingRequest(const PublicKeyHeader* header,
+                                                    const char* public_key) {
     Data pkt;
 
     if (!isValid() || mTheirPublicKey.empty()) {
         return Data();
     }
 
-    uint32_t keySize = mOurPublicKey.size();
+    // Write out our SPAKE2 public key
+    uint32_t keySize = htonl(mOurPublicKey.size());
     auto* ptr8 = reinterpret_cast<uint8_t*>(&keySize);
     // Size of our public key
     pkt.insert(pkt.end(), ptr8, ptr8 + sizeof(keySize));
     // our public key
-    pkt.insert(pkt.end(), mOurPublicKey.data(), mOurPublicKey.data() + keySize);
+    pkt.insert(pkt.end(), mOurPublicKey.data(), mOurPublicKey.data() + mOurPublicKey.size());
 
-    PublicKeyHeader header;
-    header.version = kCurrentKeyHeaderVersion;
-    // TODO: fill this in.
-    header.type = 0;
-    header.bits = htonl(1);
-    header.payload = htonl(1);
-    strncpy(header.name, "My Macbook\0", sizeof("My Macbook\0"));
-    header.name[sizeof(header.name) - 1]  = '\0';
-    strncpy(header.id, "Macbook1234\0", sizeof("Macbook1234\0"));
-    header.id[sizeof(header.id) - 1]  = '\0';
-    dumpBytes("PublicKeyHeader", reinterpret_cast<uint8_t*>(&header), sizeof(PublicKeyHeader));
+    // Encrypt the PublicKeyHeader and |public_key|
+    //
+    // Make another header, but in network format.
+    Data public_key_info;
+    PublicKeyHeader headernl;
+    memcpy(reinterpret_cast<uint8_t*>(&headernl),
+           reinterpret_cast<const uint8_t*>(header),
+           sizeof(PublicKeyHeader));
+    headernl.bits = htonl(headernl.bits);
+    headernl.payload = htonl(headernl.payload);
+    // Prep the public key header and the public key for encryption
+    auto* hp = reinterpret_cast<uint8_t*>(&headernl);
+    public_key_info.assign(hp, hp + sizeof(headernl));
+    public_key_info.insert(public_key_info.end(), public_key, public_key + header->payload);
+    dumpBytes("public_key_info", public_key_info.data(), public_key_info.size());
 
-    // Encrypt the PublicKeyHeader
-    Data encrypted = encrypt(makeDataHolder(reinterpret_cast<uint8_t*>(&header),
-                                            sizeof(PublicKeyHeader)));
+    // Encrypt public_key_info
+    Data encrypted = encrypt(makeDataHolder(public_key_info.data(),
+                                            public_key_info.size()));
     if (encrypted.empty()) {
         LOG(ERROR) << "Failed to encrypt the PublicKeyHeader";
         return Data();
     }
 
-    uint64_t encryptedSz = encrypted.size();
-    uint64_t expectedEncryptedSz = encryptedSize(sizeof(PublicKeyHeader));
-    if (expectedEncryptedSz != encryptedSz) {
-        LOG(WARNING) << "Move this into a test, because this is not right.";
-    }
+    // Write the encrypted data
+    uint32_t encryptedSz = htonl(encrypted.size());
     ptr8 = reinterpret_cast<uint8_t*>(&encryptedSz);
     // Size of the encrypted data
     pkt.insert(pkt.end(), ptr8, ptr8 + sizeof(encryptedSz));
     // the encrypted data
-    pkt.insert(pkt.end(), encrypted.data(), encrypted.data() + encryptedSz);
+    pkt.insert(pkt.end(), encrypted.data(), encrypted.data() + encrypted.size());
 
     dumpBytes("PairingRequest", reinterpret_cast<const uint8_t*>(pkt.data()), pkt.size());
     return pkt;
 }
 
 bool PairingAuth::readPairingRequest(PairingAuth::DataHolder pkt,
-                                     PublicKeyHeader* header) {
+                                     PublicKeyHeader* out_header,
+                                     std::string& out_public_key) {
     if (!isValid() || pkt.empty()) {
         return false;
     }
@@ -372,7 +379,8 @@ bool PairingAuth::readPairingRequest(PairingAuth::DataHolder pkt,
         LOG(ERROR) << "Not enough data in packet for public key (sz=" << pkt.size() << ")";
         return false;
     }
-    uint32_t keySize = *reinterpret_cast<const uint32_t*>(data);
+    // Get SPAKE2 key size
+    uint32_t keySize = ntohl(*reinterpret_cast<const uint32_t*>(data));
     LOG(INFO) << "Public key size=" << keySize;
     if (keySize > kMaxKeySize) {
         LOG(ERROR) << "Bad key length [" << keySize << "]";
@@ -381,59 +389,70 @@ bool PairingAuth::readPairingRequest(PairingAuth::DataHolder pkt,
     data += 4;
     remainingBytes -= 4;
 
-    // Ensure enough bytes to read public key and the encrypted data size
-    if (remainingBytes < static_cast<int64_t>(keySize + sizeof(uint64_t))) {
+    // Ensure enough bytes to read SPAKE2 key and the encrypted data size
+    if (remainingBytes < static_cast<int64_t>(keySize + sizeof(uint32_t))) {
         LOG(ERROR) << "Not enough bytes to read public key and encrypted data size";
     }
 
-    if (!registerPublicKey(makeDataHolder(data, keySize))) {
-        return false;
+    // In the case as where the key material was already generated, let's just
+    // use that to try and decrypt the encrypted part of the pairing message.
+    // This can happen on the client side, when we generated the pairing
+    // request, then server sends down their pairing request.
+    if (mKeyMaterial.empty()) {
+        // Register the SPAKE2 key to decrypt the message.
+        if (!registerPublicKey(makeDataHolder(data, keySize))) {
+            return false;
+        }
     }
 
     data += keySize;
     remainingBytes -= keySize;
-    // Read the encrypted PublicKeyHeader
-    uint64_t encryptedSz = *reinterpret_cast<const uint64_t*>(data);
-    auto maxEncryptedSz = encryptedSize(sizeof(PublicKeyHeader));
-    if (encryptedSz > maxEncryptedSz) {
-        LOG(ERROR) << "Encrypted size=[" << encryptedSz << "] larger than max_size=["
-                   << maxEncryptedSz << "]";
-        return false;
-    }
-    data += 8;
-    remainingBytes -= 8;
+    // Read the encrypted data size
+    uint32_t encryptedSz = ntohl(*reinterpret_cast<const uint32_t*>(data));
+    data += 4;
+    remainingBytes -= 4;
 
-    if (remainingBytes < (int64_t)encryptedSz) {
+    if (remainingBytes < static_cast<int64_t>(encryptedSz)) {
         LOG(ERROR) << "Not enough bytes for encrypted size [size=" << encryptedSz
                    << ", remaining=" << remainingBytes << "]";
         return false;
     }
     auto encrypted = makeDataHolder(data, encryptedSz);
     auto decrypted = decrypt(encrypted);
-    if (decrypted.empty() || decrypted.size() != sizeof(PublicKeyHeader)) {
+    if (decrypted.empty() || decrypted.size() < sizeof(PublicKeyHeader)) {
         LOG(ERROR) << "decryption size [" << decrypted.size()
-                   << " bytes] not equal to PublicKeyHeader size ["
+                   << " bytes] less then the PublicKeyHeader size ["
                    << sizeof(PublicKeyHeader) << " bytes]";
         return false;
     }
 
-    memcpy(reinterpret_cast<uint8_t*>(header), decrypted.data(), decrypted.size());
-    if (header->version < kMinSupportedKeyHeaderVersion ||
-        header->version > kMaxSupportedKeyHeaderVersion) {
+    // Write the public key header out
+    memcpy(reinterpret_cast<uint8_t*>(out_header), decrypted.data(), sizeof(PublicKeyHeader));
+    if (out_header->version < kMinSupportedKeyHeaderVersion ||
+        out_header->version > kMaxSupportedKeyHeaderVersion) {
         LOG(ERROR) << "Unsupported PublicKeyHeader version. Unable to parse."
                    << " current version (" << (uint32_t)kCurrentKeyHeaderVersion << ")"
-                   << " packet version (" << (uint32_t)header->version << ")"
+                   << " packet version (" << (uint32_t)out_header->version << ")"
                    << " min supported version (" << (uint32_t)kMinSupportedKeyHeaderVersion << ")"
                    << " max supported version (" << (uint32_t)kMaxSupportedKeyHeaderVersion << ")";
         return false;
     }
-    header->bits = ntohl(header->bits);
-    header->payload = ntohl(header->payload);
+    out_header->bits = ntohl(out_header->bits);
+    out_header->payload = ntohl(out_header->payload);
     // Ensure the name and id are null-terminated
-    header->name[sizeof(header->name) - 1] = '\0';
-    header->id[sizeof(header->id) - 1] = '\0';
+    out_header->name[sizeof(out_header->name) - 1] = '\0';
+    out_header->id[sizeof(out_header->id) - 1] = '\0';
 
-    dumpBytes("PublicKeyHeader", decrypted.data(), decrypted.size());
+    if (decrypted.size() < sizeof(PublicKeyHeader) + out_header->payload) {
+        LOG(ERROR) << "Payload size (" << out_header->payload << " bytes) "
+                   << "differs from actual size (" << decrypted.size() - sizeof(PublicKeyHeader)
+                   << " bytes)";
+        return false;
+    }
+
+    // Write the public key out
+    out_public_key.assign(reinterpret_cast<const char*>(decrypted.data() + sizeof(PublicKeyHeader)),
+                          out_header->payload);
 
     return true;
 }
@@ -565,6 +584,8 @@ uint32_t pairing_auth_request_max_size() {
 }
 
 bool pairing_auth_create_request(PairingAuthCtx ctx,
+                                 const PublicKeyHeader* header,
+                                 const char* public_key,
                                  uint8_t* pkt,
                                  uint32_t* pktSize) {
     auto* p = static_cast<PairingAuth*>(ctx);
@@ -573,7 +594,7 @@ bool pairing_auth_create_request(PairingAuthCtx ctx,
         return false;
     }
 
-    auto result = p->createPairingRequest();
+    auto result = p->createPairingRequest(header, public_key);
     if (result.empty()) {
         LOG(ERROR) << "Unable to create pairing request message";
         return false;
@@ -598,30 +619,24 @@ static void dumpPublicKeyHeader(const PublicKeyHeader* h) {
 bool pairing_auth_parse_request(PairingAuthCtx ctx,
                                 const uint8_t* pkt,
                                 uint32_t pktSize,
-                                PublicKeyHeader* out) {
+                                PublicKeyHeader* out_header,
+                                char* out_public_key) {
     auto* p = static_cast<PairingAuth*>(ctx);
 
     if (!p->isValid()) {
         return false;
     }
 
+    std::string key;
     if (!p->readPairingRequest(PairingAuth::makeDataHolder(pkt, pktSize),
-                               out)) {
+                               out_header,
+                               key)) {
         LOG(ERROR) << "Unable to read the pairing request message.";
         return false;
     }
 
-    if (out->version < kMinSupportedKeyHeaderVersion ||
-        out->version > kMaxSupportedKeyHeaderVersion) {
-        LOG(ERROR) << "Unsupported PublicKeyHeader version. Unable to parse."
-                   << " current version (" << (uint32_t)kCurrentKeyHeaderVersion << ")"
-                   << " packet version (" << (uint32_t)out->version << ")"
-                   << " min supported version (" << (uint32_t)kMinSupportedKeyHeaderVersion << ")"
-                   << " max supported version (" << (uint32_t)kMaxSupportedKeyHeaderVersion << ")";
-        return false;
-    }
-
-    dumpPublicKeyHeader(out);
+    key.copy(out_public_key, key.size());
+    dumpPublicKeyHeader(out_header);
 
     return true;
 }

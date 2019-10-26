@@ -18,6 +18,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "crypto/public_key_header.h"
+
 extern "C" {
 
 typedef void* PairingAuthCtx;
@@ -74,34 +76,25 @@ bool pairing_auth_register_their_key(PairingAuthCtx p,
 //                          uint8_t* out,
 //                          uint64_t* outSize);
 
-const uint8_t kCurrentKeyHeaderVersion = 1;
-const uint8_t kMinSupportedKeyHeaderVersion = 1;
-const uint8_t kMaxSupportedKeyHeaderVersion = 1;
-const size_t kPublicKeyNameLength = 128;
-const size_t kPublicKeyIdLength = 128;
-
-struct PublicKeyHeader {
-    uint8_t version;
-    uint8_t type;
-    uint32_t bits;
-    uint32_t payload;
-    char name[kPublicKeyNameLength];
-    char id[kPublicKeyIdLength];
-} __attribute__((packed));
-
 // Returns the max size needed to construct a pairing request data packet.
 uint32_t pairing_auth_request_max_size();
-// Creates a pairing request packet and stores it in |pkt|. The size will be in
-// |pktSize|. On failure, this will return false.
+// Creates a pairing request packet from |header| and |public_key| and stores it in
+// |pkt|. The size will be in |pktSize|. On failure, this will return false.
 bool pairing_auth_create_request(PairingAuthCtx ctx,
+                                 const PublicKeyHeader* header,
+                                 const char* public_key,
                                  uint8_t* pkt,
                                  uint32_t* pktSize);
 // Reads the pairing request packet in |pkt|. Returns true if successfully able
-// to parse the packet, with |out| filled in. Returns false otherwise.
+// to parse the packet, with |out_header| and |out_public_key| filled in, with the
+// |out_public_key| size equaling the |out_header->payload|. Returns false otherwise.
+// To be safe, make sure has enough space (use keystore_max_certificate_size()) to
+// write into.
 bool pairing_auth_parse_request(PairingAuthCtx ctx,
                                 const uint8_t* pkt,
                                 uint32_t pktSize,
-                                PublicKeyHeader* out);
+                                PublicKeyHeader* out_header,
+                                char* out_public_key);
 
 
-} // extern "C"
+}  // extern "C"

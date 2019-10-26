@@ -28,7 +28,11 @@ struct AdbdWifiCallbacksV1 {
     bool (*enable_discovery)(const uint8_t* ourSPAKE2Key, uint64_t sz);
     // Disables discovery.
     void (*disable_discovery)(void);
-    void (*device_pairing_complete)(uint64_t id, bool is_paired);
+    // During the pairing process, once the client's public key is stored,
+    // it will send it's own pairing request to send to the client to exchange
+    // its public key. If |sz| is zero, this means the pairing failed and adbd
+    // should abort the connection.
+    void (*send_pairing_request)(const uint8_t* pairing_request, uint64_t sz);
 };
 
 struct AdbdWifiCallbacks {
@@ -56,9 +60,9 @@ uint64_t adbd_wifi_notify_auth(AdbdWifiContext* ctx, const char* public_key, siz
 // Let system_server know that a connection has been closed.
 void adbd_wifi_notify_disconnect(AdbdWifiContext* ctx, uint64_t id);
 
-// Let system_server know there is a pairing request.
-// Returns true if the pairing was successful, false otherwise.
-bool adbd_wifi_pairing_request(AdbdWifiContext* ctx,
+// Let system_server know there is a pairing request. The request is queued and
+// will be handled once it reaches the top of the queue.
+void adbd_wifi_pairing_request(AdbdWifiContext* ctx,
                                const uint8_t* public_key,
                                uint64_t size_bytes);
 

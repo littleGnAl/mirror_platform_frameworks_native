@@ -22,15 +22,6 @@ cc_library {
     ],
     srcs: [
         "adbd_auth.cpp",
-//        "adbd_wifi.cpp",
-//        "pairing/pairing_auth.cpp",
-//        "crypto/aes_128_gcm.cpp",
-//        "crypto/ec_key.cpp",
-//        "crypto/identifiers.cpp",
-//        "crypto/key.cpp",
-//        "crypto/key_store.cpp",
-//        "crypto/key_store_utils.cpp",
-//        "crypto/key_type.cpp",
     ],
     export_include_dirs: ["include"],
 
@@ -89,16 +80,18 @@ cc_library {
     srcs: [
         "pairing/pairing_auth.cpp",
         "crypto/aes_128_gcm.cpp",
-//        "crypto/ec_key.cpp",
-//        "crypto/identifiers.cpp",
-//        "crypto/key.cpp",
-//        "crypto/key_store.cpp",
-//        "crypto/key_store_utils.cpp",
-//        "crypto/key_type.cpp",
+        "crypto/ec_key.cpp",
+        "crypto/device_identifier.cpp",
+        "crypto/key.cpp",
+        "crypto/key_store.cpp",
+        "crypto/key_type.cpp",
     ],
     target: {
         windows: {
 	    enabled: true,
+	    srcs: [
+                "compat/win32-deps.cpp",
+            ],
 	},
     },
     export_include_dirs: ["include"],
@@ -132,10 +125,9 @@ cc_library {
 //        "pairing/pairing_auth.cpp",
 //        "crypto/aes_128_gcm.cpp",
 ////        "crypto/ec_key.cpp",
-////        "crypto/identifiers.cpp",
+////        "crypto/device_identifier.cpp",
 ////        "crypto/key.cpp",
 ////        "crypto/key_store.cpp",
-////        "crypto/key_store_utils.cpp",
 ////        "crypto/key_type.cpp",
 //    ],
 //    target: {

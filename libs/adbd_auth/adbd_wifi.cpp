@@ -420,6 +420,15 @@ private:
         p->callbacks_.disable_discovery();
     }
 
+    static void querySendPairingRequest(std::string_view buf, void* opaque) {
+        CHECK_GE(buf.size(), 2UL);
+
+        auto* p = reinterpret_cast<AdbdWifiContext*>(opaque);
+        PLOG(DEBUG) << "Discovery disabled";
+        p->callbacks_.send_pairing_request(reinterpret_cast<const uint8_t*>(&buf[2]),
+                                           buf.size() - 2);
+    }
+
     using QueryCallback = std::function<void(std::string_view, void*)>;
     struct QueryHandler {
         const char* code;
@@ -484,8 +493,7 @@ public:
         LOG(INFO) << "======================================";
     }
     // Response handlers
-    void responsePairingRequest(std::string_view public_key,
-                                std::function<void(std::string_view public_key, bool isCorrect)> callback) EXCLUDES(mutex_) {
+    void responsePairingRequest(std::string_view public_key) EXCLUDES(mutex_) {
         PLOG(WARNING) << __func__;
         dumpBytes("public_key",
                   reinterpret_cast<const uint8_t*>(public_key.data()),
@@ -496,13 +504,6 @@ public:
         key.assign(public_key.data(), public_key.data() + public_key.size());
         pending_pairing_requests_.emplace_back(std::move(key));
         DispatchPairingRequest();
-
-        // TODO: call |callback| once we are notified from system_server.
-        PLOG(ERROR) << "Need to call the callback for pairing code";
-        std::thread([&public_key, &callback]() {
-            callback(public_key, false);
-        }).detach();
-        LOG(INFO) << "Unlock responsePairingRequest";
     }
 
     void responsePairingResult(const std::string& status, int deviceId) {
@@ -638,6 +639,7 @@ const AdbdWifiContext::QueryHandler AdbdWifiContext::kQueries[] = {
         {"CP", &AdbdWifiContext::queryCancelPairing},
         {"ED", &AdbdWifiContext::queryEnableDiscovery},
         {"DD", &AdbdWifiContext::queryDisableDiscovery},
+        {"PR", &AdbdWifiContext::querySendPairingRequest},
 };
 
 // static
@@ -676,28 +678,11 @@ void adbd_wifi_notify_disconnect(AdbdWifiContext* ctx, uint64_t id) {
     return ctx->NotifyDisconnected(id);
 }
 
-bool adbd_wifi_pairing_request(AdbdWifiContext* ctx,
+void adbd_wifi_pairing_request(AdbdWifiContext* ctx,
                                const uint8_t* public_key,
                                uint64_t size_bytes) {
-    PLOG(WARNING) << __func__;
-    std::condition_variable cv;
-    std::mutex mutex;
-    bool success = false;
-    auto callback = [&](std::string_view public_key, bool result) {
-        UNUSED(public_key);
-        LOG(WARNING) << "Got pairing code auth callback";
-        std::unique_lock<std::mutex> lock(mutex);
-        success = result;
-        cv.notify_all();
-    };
     ctx->responsePairingRequest(std::string_view(
-            reinterpret_cast<const char*>(public_key), size_bytes), callback);
-    LOG(ERROR) << __func__ << " waiting for cv";
-    std::unique_lock<std::mutex> lock(mutex);
-    cv.wait(lock);
-    LOG(ERROR) << __func__ << " triggered on cv";
-
-    return success;
+            reinterpret_cast<const char*>(public_key), size_bytes));
 }
 
 bool adbd_wifi_supports_feature(AdbdWifiFeature) {

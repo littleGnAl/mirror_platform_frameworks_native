@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,97 +15,46 @@
 
 #include "crypto/key_store.h"
 
+#include <android-base/endian.h>
+#include <android-base/file.h>
 #include <android-base/logging.h>
 
 #include <errno.h>
 #include <stdint.h>
 #include <stdio.h>
 
+#include <thread>
+#include <unordered_map>
+#include <vector>
+
 #include <openssl/ec_key.h>
 #include <openssl/evp.h>
 #include <openssl/pem.h>
 #include <openssl/x509v3.h>
 
-#include "adb_utils.h"
+#include "compat/msvc-posix.h"
+#include "crypto/device_identifier.h"
 #include "crypto/ec_key.h"
-#include "crypto/identifiers.h"
-#include "sysdeps.h"
+#include "crypto/public_key_header.h"
 
-static constexpr uint32_t kKeyStoreVersion = 1;
+namespace {
+constexpr uint32_t kKeyStoreVersion = 1;
 
-static const char kKeyStoreName[] = "adb_keystore";
-static const char kPrivateKeyName[] = "adb_system_key.pem";
-static const char kPublicKeyName[] = "adb_system_cert.pem";
+const char kKeyStoreName[] = "adb_wifi_keys";
+const char kPrivateKeyName[] = "adb_system_key.pem";
+const char kPublicKeyName[] = "adb_system_cert.pem";
 
-static const char kBasicConstraints[] = "critical,CA:TRUE";
-static const char kKeyUsage[] = "critical,keyCertSign,cRLSign";
-static const char kSubjectKeyIdentifier[] = "hash";
+const char kBasicConstraints[] = "critical,CA:TRUE";
+const char kKeyUsage[] = "critical,keyCertSign,cRLSign";
+const char kSubjectKeyIdentifier[] = "hash";
 
-static constexpr int kCurveName = NID_X9_62_prime256v1;
-static constexpr int kCertLifetimeSeconds = 10 * 365 * 24 * 60 * 60;
+constexpr int kCurveName = NID_X9_62_prime256v1;
+constexpr int kCertLifetimeSeconds = 10 * 365 * 24 * 60 * 60;
 
-#if ADB_HOST
-static std::string getKeyStorePath() {
-    return adb_get_android_dir_path() + OS_PATH_SEPARATOR + kKeyStoreName;
-}
-static std::string getSysPrivKeyPath() {
-    return adb_get_android_dir_path() + OS_PATH_SEPARATOR + kPrivateKeyName;
-}
-static std::string getSysPubKeyPath() {
-    return adb_get_android_dir_path() + OS_PATH_SEPARATOR + kPublicKeyName;
-}
-#else
-static const char kKeyLocation[] = "/data/misc/adb/";
+// A safe estimate on the upper bound of an X.509 certificate.
+constexpr uint32_t kMaxX509CertSize = 8192;
 
-static std::string getKeyStorePath() {
-    return std::string(kKeyLocation) + std::string(kKeyStoreName);
-}
-static std::string getSysPrivKeyPath() {
-    return std::string(kKeyLocation) + std::string(kPrivateKeyName);
-}
-static std::string getSysPubKeyPath() {
-    return std::string(kKeyLocation) + std::string(kPublicKeyName);
-}
-
-#include <grp.h>
-static void listDir() {
-    std::vector<gid_t> gids(4096);
-    gids[0] = getgid();
-    int numGroups = getgroups(gids.size() - 1, &gids[1]);
-    if (numGroups >= 0) {
-        gids.resize(numGroups + 1);
-        std::string groups;
-        for (size_t i = 0; i < gids.size(); ++i) {
-            struct group* grp = getgrgid(gids[i]);
-            if (grp == nullptr) {
-                continue;
-            }
-            if (!groups.empty()) {
-                groups += ", ";
-            }
-            groups += grp->gr_name;
-        }
-        LOG(ERROR) << "adb is a member of the following groups ["
-                   << groups << "]";
-    }
-
-    DIR* d = opendir(kKeyLocation);
-    if (!d) {
-        LOG(ERROR) << "Failed to open dir " << kKeyLocation << ": " << strerror(errno);
-        return;
-    }
-
-    struct dirent* dir = nullptr;
-    LOG(ERROR) << "Dir '" << kKeyLocation << "' contains the following files:";
-    while ((dir = readdir(d))) {
-        LOG(ERROR) << dir->d_name;
-    }
-    closedir(d);
-}
-#endif
-
-
-static std::string sslErrorStr() {
+std::string sslErrorStr() {
     bssl::UniquePtr<BIO> bio(BIO_new(BIO_s_mem()));
     ERR_print_errors(bio.get());
     char *buf = nullptr;
@@ -126,7 +75,7 @@ public:
     ~SelfDestructingFile() {
         if (file_) {
             fclose(file_);
-            adb_unlink(path_.c_str());
+            my_unlink(path_.c_str());
         }
     }
 
@@ -142,12 +91,62 @@ private:
     std::string path_;
 };
 
+class KeyStore {
+public:
+    explicit KeyStore(std::string_view keystore_path);
+    // Tries to read or create the keystore if one doesn't exist.
+    // Returns true if successful, false otherwise.
+    bool init();
+
+    // Get the system's public key if one exists, if it does not exist nullptr
+    // is returned.
+    Key* getSystemPublicKey(KeyType type = KeyType::EllipticCurve);
+
+    // Store the |public_key| of another system.
+    bool storePublicKey(const PublicKeyHeader* header,
+                        const char* public_key);
+
+    // Get the public |key|, |name| and |type| associated with the device/system
+    // identified by |identifier|.
+    bool getPublicKey(const std::string& identifier,
+                      std::string* name,
+                      KeyType* type,
+                      std::string* key);
+    void getPublicKeyHeader(PublicKeyHeader* header);
+
+    size_t size() const { return keys_.size(); }
+    std::pair<std::string, const Key*> operator[](const size_t idx) const;
+    static uint32_t maxCertificateSize() { return kMaxX509CertSize; }
+
+private:
+    std::string getKeyStorePath();
+    std::string getSysPrivKeyPath();
+    std::string getSysPubKeyPath();
+
+    bool generateSystemCertificate(KeyType type = KeyType::EllipticCurve);
+
+    bool readSystemCertificate();
+    bool writeSystemCertificate();
+    bool readPublicKeys();
+    bool writePublicKeys();
+
+    std::unordered_map<std::string, std::unique_ptr<Key>> keys_;
+    bssl::UniquePtr<EVP_PKEY> evp_pkey_;
+    bssl::UniquePtr<X509> x509_;
+    std::unique_ptr<Key> private_key_;
+    std::unique_ptr<Key> public_cert_;
+    std::string keystore_path_;
+    std::unique_ptr<DeviceIdentifier> device_id_;
+};
+
+KeyStore::KeyStore(std::string_view keystore_path) :
+    keystore_path_(keystore_path) {
+    device_id_.reset(new DeviceIdentifier(keystore_path_));
+}
+
 bool KeyStore::init() {
     LOG(ERROR) << "Checking unique device id";
-#if !ADB_HOST
-    listDir();
-#endif
-    if (get_unique_device_id().empty()) {
+    if (!device_id_->init() || device_id_->getUniqueDeviceId().empty()) {
         return false;
     }
     if (!readSystemCertificate()) {
@@ -170,15 +169,19 @@ Key* KeyStore::getSystemPublicKey(KeyType type) {
     return nullptr;
 }
 
-bool KeyStore::storePublicKey(const std::string& identifier,
-                              const std::string& name,
-                              KeyType type,
-                              const std::string& key) {
-    std::unique_ptr<Key> keyPtr = createKey(type, name, key.c_str());
+bool KeyStore::storePublicKey(const PublicKeyHeader* header,
+                              const char* public_key) {
+    KeyType key_type;
+    if (!getKeyTypeFromValue(header->type, &key_type)) {
+        LOG(ERROR) << "Unknown public key type. Unable to store the key.";
+        return false;
+    }
+    std::unique_ptr<Key> keyPtr = createKey(key_type, header->name, public_key);
     if (!keyPtr) {
         LOG(ERROR) << "Unable to store public key";
         return false;
     }
+    std::string identifier(header->id);
     keys_[identifier] = std::move(keyPtr);
     if (!writePublicKeys()) {
         LOG(ERROR) << "Unable to write public key store";
@@ -228,7 +231,7 @@ static bool add_ext(X509* cert, int nid, const char* value) {
     return true;
 }
 
-bool KeyStore::generateSystemCertificate(KeyType type) {
+bool KeyStore::generateSystemCertificate(KeyType /* type */) {
     LOG(ERROR) << "Generating system public key pair";
     bssl::UniquePtr<EVP_PKEY> evpKey(EVP_PKEY_new());
     if (!evpKey) {
@@ -368,9 +371,6 @@ static std::string writePemToMem(F writeFunc, Args&&... args) {
 }
 
 bool KeyStore::readSystemCertificate() {
-#if !ADB_HOST
-    listDir();
-#endif
     LOG(ERROR) << "Reading system certificate";
     std::unique_ptr<FILE, decltype(&fclose)> file(nullptr, &fclose);
     file.reset(fopen(getSysPrivKeyPath().c_str(), "rb"));
@@ -493,9 +493,6 @@ bool KeyStore::readPublicKeys() {
 
 bool KeyStore::writePublicKeys() {
     LOG(ERROR) << "Writing public keys";
-#if !ADB_HOST
-    listDir();
-#endif
     std::string storeName = getKeyStorePath();
     std::string tempName = storeName + ".tmp";
 
@@ -554,25 +551,142 @@ bool KeyStore::writePublicKeys() {
     // Replace the existing key store with the new one.
     std::string toBeDeleted = storeName;
     toBeDeleted += ".tbd";
-    if (adb_rename(storeName.c_str(), toBeDeleted.c_str()) != 0) {
+    if (my_rename(storeName.c_str(), toBeDeleted.c_str()) != 0) {
         // Don't exit here, this is not necessarily an error, the first time
         // around there is no key store.
         LOG(WARNING) << "Failed to rename old key store";
     }
 
-    if (adb_rename(tempName.c_str(), storeName.c_str()) != 0) {
+    if (my_rename(tempName.c_str(), storeName.c_str()) != 0) {
         LOG(ERROR) << "Failed to replace old key store";
-        adb_rename(toBeDeleted.c_str(), storeName.c_str());
+        my_rename(toBeDeleted.c_str(), storeName.c_str());
         return false;
     }
 
-    adb_unlink(toBeDeleted.c_str());
+    my_unlink(toBeDeleted.c_str());
 
     LOG(ERROR) << "Successfully wrote key store";
-#if !ADB_HOST
-    listDir();
-#endif
 
     return true;
 }
 
+void KeyStore::getPublicKeyHeader(PublicKeyHeader* header) {
+    header->version = kCurrentKeyHeaderVersion;
+    header->type = static_cast<uint8_t>(public_cert_->type());
+    header->bits = public_cert_->bits();
+    header->payload = public_cert_->size();
+
+    auto device_name = device_id_->getDeviceName();
+    auto max_name_size = sizeof(header->name);
+    memset(header->name, 0, max_name_size);
+    strncpy(header->name, device_name.data(),
+            device_name.size() < max_name_size ?
+                device_name.size() : max_name_size - 1);
+
+    auto device_id = device_id_->getUniqueDeviceId();
+    auto max_id_size = sizeof(header->id);
+    memset(header->id, 0, max_id_size);
+    strncpy(header->id, device_id.data(),
+            device_id.size() < max_id_size ?
+                device_id.size() : max_id_size - 1);
+}
+
+std::string KeyStore::getKeyStorePath() {
+    return keystore_path_ + OS_PATH_SEPARATOR + kKeyStoreName;
+}
+
+std::string KeyStore::getSysPrivKeyPath() {
+    return keystore_path_ + OS_PATH_SEPARATOR + kPrivateKeyName;
+}
+
+std::string KeyStore::getSysPubKeyPath() {
+    return keystore_path_ + OS_PATH_SEPARATOR + kPublicKeyName;
+}
+
+std::unique_ptr<KeyStore> sKeyStore;
+
+#if !ADB_HOST
+using namespace std::chrono_literals;
+
+constexpr int kInitRetries = 60;
+void retryKeyStoreInitLoop(std::function<void(bool)> callback) {
+    // Let's give up after some time.
+    for (int i = 0; i < kInitRetries; ++i) {
+        LOG(INFO) << "keystore init retry loop sleeping";
+        std::this_thread::sleep_for(1s);
+        if (sKeyStore->init()) {
+            LOG(INFO) << "keystore init retry loop succeeded";
+            callback(true);
+            return;
+        }
+    }
+    LOG(WARNING) << "keystore init failed.";
+    callback(false);
+}
+#endif // !ADB_HOST
+}  // namespace
+
+KeyStoreCtx keystore_init(const char* keystore_path,
+                          void* opaque,
+                          void (*cb)(KeyStoreCtx, void*)) {
+    if (sKeyStore == nullptr) {
+        sKeyStore.reset(new KeyStore(keystore_path));
+    }
+    if (!sKeyStore->init()) {
+#if !ADB_HOST
+        // We failed to initialize. This can happen on the device if
+        // the data partition is not mounted yet. Try again later.
+        LOG(ERROR) << "key store init failed, launching retry thread";
+        std::thread(std::bind(&retryKeyStoreInitLoop,
+                [cb, opaque](bool result) {
+                    if (cb == nullptr) return;
+                    if (result) {
+                        cb(static_cast<KeyStoreCtx>(sKeyStore.get()), opaque);
+                        return;
+                    }
+                    cb(nullptr, opaque);
+                })).detach();
+#endif // !ADB_HOST
+        return nullptr;
+    }
+
+    return static_cast<KeyStoreCtx>(sKeyStore.get());
+}
+
+void keystore_public_key_header(KeyStoreCtx ctx,
+                                PublicKeyHeader* header) {
+    CHECK(ctx);
+
+    auto* p = reinterpret_cast<KeyStore*>(ctx);
+    p->getPublicKeyHeader(header);
+}
+
+uint32_t keystore_system_public_key(KeyStoreCtx ctx,
+                                    char* out_public_key) {
+    CHECK(ctx);
+
+    auto* p = reinterpret_cast<KeyStore*>(ctx);
+    auto* key = p->getSystemPublicKey();
+    if (key == nullptr) {
+        return 0;
+    }
+    strncpy(out_public_key, key->c_str(), key->size());
+    return key->size();
+}
+
+bool keystore_store_public_key(KeyStoreCtx ctx,
+                               const PublicKeyHeader* header,
+                               const char* public_key) {
+    CHECK(ctx);
+
+    auto* p = reinterpret_cast<KeyStore*>(ctx);
+    return p->storePublicKey(header, public_key);
+}
+
+uint32_t keystore_max_certificate_size(KeyStoreCtx /* ctx */) {
+    return KeyStore::maxCertificateSize();
+}
+
+KeyStoreCtx keystore_get(void) {
+    return static_cast<KeyStoreCtx>(sKeyStore.get());
+}

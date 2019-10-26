@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,60 +15,40 @@
 
 #pragma once
 
-#include "key.h"
-#include "key_type.h"
+#include "crypto/public_key_header.h"
 
-#include <memory>
-#include <string>
-#include <unordered_map>
+extern "C" {
 
-#include <openssl/evp.h>
-#include <openssl/x509v3.h>
+typedef void* KeyStoreCtx;
 
-//static constexpr size_t kPublicKeyNameLength = 128;
-//static constexpr size_t kPublicKeyIdLength = 128;
+// Initializes the KeyStoreCtx. If KeyStoreCtx is null, a separate thread
+// will spawn and retry a certain amount of times, and will call |cb| with
+// the KeyStoreCtx as null if the retries didn't succeed. Only need to call this
+// once to initialize the KeyStoreCtx.
+KeyStoreCtx keystore_init(const char* keystore_path,
+                          void* opaque,
+                          void (*cb)(KeyStoreCtx, void*));
 
-class KeyStore {
-public:
-    bool init();
+// Writes the public key header for this device into |header|.
+void keystore_public_key_header(KeyStoreCtx ctx,
+                                PublicKeyHeader* header);
 
-    // Get the system's public key if one exists, if it does not exist nullptr
-    // is returned.
-    Key* getSystemPublicKey(KeyType type = KeyType::EllipticCurve);
+// Returns the key size iff the system's public key exists and writes it in
+// |public_key|. Use |keystore_max_certificate_size| to allocate enough space
+// for |public_key|. Returns zero otherwise.
+uint32_t keystore_system_public_key(KeyStoreCtx ctx,
+                                    char* public_key);
+// Store the public key into the keystore. Returns false if it failed to save.
+bool keystore_store_public_key(KeyStoreCtx ctx,
+                               const PublicKeyHeader* header,
+                               const char* public_key);
 
-    // Store the public |key| of another system, the key is of |type| and
-    // associated with the device/system identified by |identifier| and with the
-    // user friendly display name |name|.
-    bool storePublicKey(const std::string& identifier,
-                        const std::string& name,
-                        KeyType type,
-                        const std::string& key);
+// Returns a "reasonable" size a certificate can be.
+uint32_t keystore_max_certificate_size(KeyStoreCtx ctx);
 
-    // Get the public |key|, |name| and |type| associated with the device/system
-    // identified by |identifier|.
-    bool getPublicKey(const std::string& identifier,
-                      std::string* name,
-                      KeyType* type,
-                      std::string* key);
+// Returns the KeyStoreCtx instance. Be sure to initialize the context first
+// with keystore_init(). Will return null if the context has not been created
+// yet.
+KeyStoreCtx keystore_get(void);
 
-    size_t size() const { return keys_.size(); }
-    std::pair<std::string, const Key*> operator[](const size_t idx) const;
-
-
-private:
-    bool generateSystemCertificate(KeyType type = KeyType::EllipticCurve);
-
-    bool readSystemCertificate();
-    bool writeSystemCertificate();
-    bool readPublicKeys();
-    bool writePublicKeys();
-
-    std::unordered_map<std::string, std::unique_ptr<Key>> keys_;
-    bssl::UniquePtr<EVP_PKEY> evp_pkey_;
-    bssl::UniquePtr<X509> x509_;
-    std::unique_ptr<Key> private_key_;
-    std::unique_ptr<Key> public_cert_;
-};
-
-bool initKeyStore();
-KeyStore* getKeyStore();
+} // extern "C"

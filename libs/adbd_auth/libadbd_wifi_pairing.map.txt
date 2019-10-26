@@ -14,6 +14,14 @@ LIBADBD_WIFI_PAIRING {
 #    pairing_auth_encrypt; # apex
     pairing_auth_max_key_size; # apex
 
+    ## crypto ##
+    keystore_init; # apex
+    keystore_public_key_header; # apex
+    keystore_store_public_key; # apex
+    keystore_max_certificate_size; # apex
+    keystore_get; # apex
+    keystore_system_public_key; # apex
+
   local:
     *;
 };
