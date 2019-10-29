@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc520df6_aa3f171d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-10-29T17:28:44Z",
+      "side": 1,
+      "message": "\"feel free\", but i don\u0027t plan on doing that _for_ anyone because i have no idea how constants interact with APIs. in this case i think the corresponding function was added in the same API level, so it\u0027s pretty uninteresting anyway. but there are plenty of weird cases with new constants for old functions. (and even the kernel struggles to behave well. some get ignored, others get EINVAL.)",
+      "parentUuid": "f6eaf8e0_36261101",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "daa92fdea303589a4b441a4763cba79657a2552e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3670cffd_10ff30c2",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-29T17:23:05Z",
       "side": 1,
       "message": "If we annotate this, should we annotate AIBinder_Class_onTransact above?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 32
+      },
+      "revId": "daa92fdea303589a4b441a4763cba79657a2552e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f61adf7_e5ca6f95",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-10-29T17:28:44Z",
+      "side": 1,
+      "message": "oops, didn\u0027t mean to do this one. (via a similar argument for enums.)",
+      "parentUuid": "3670cffd_10ff30c2",
       "range": {
         "startLine": 188,
         "startChar": 0,

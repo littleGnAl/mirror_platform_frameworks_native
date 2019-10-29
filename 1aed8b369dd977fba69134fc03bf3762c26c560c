@@ -22,6 +22,30 @@
       "revId": "1aed8b369dd977fba69134fc03bf3762c26c560c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "025bb1a0_136a58e0",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-10-29T17:28:44Z",
+      "side": 0,
+      "message": "well, since Q wasn\u0027t actually called Q when it shipped...\n\n(plus we\u0027ve found that app developers are usually confused by the names. API level is the lowest common denominator that everyone has to deal with at some point, so we\u0027re moving to prefer those.)",
+      "parentUuid": "209f4db5_3c06fcfe",
+      "range": {
+        "startLine": 512,
+        "startChar": 29,
+        "endLine": 512,
+        "endChar": 46
+      },
+      "revId": "1aed8b369dd977fba69134fc03bf3762c26c560c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
