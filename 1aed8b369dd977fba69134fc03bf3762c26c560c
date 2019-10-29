@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "209f4db5_3c06fcfe",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-29T17:23:05Z",
+      "side": 0,
+      "message": "why removing these? Isn\u0027t it more explicit? Or just to make a visual scan easier?",
+      "range": {
+        "startLine": 512,
+        "startChar": 29,
+        "endLine": 512,
+        "endChar": 46
+      },
+      "revId": "1aed8b369dd977fba69134fc03bf3762c26c560c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
