@@ -22,6 +22,30 @@
       "revId": "df24df29b0b87440b05cff1e77eb822c007228c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a71b6e0d_504cdac6",
+        "filename": "libs/gui/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2019-10-29T01:22:28Z",
+      "side": 1,
+      "message": ".",
+      "parentUuid": "a44578dc_574f8eae",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "df24df29b0b87440b05cff1e77eb822c007228c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
