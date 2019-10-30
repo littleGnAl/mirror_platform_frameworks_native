@@ -20,6 +20,11 @@ ndk_headers {
     license: "NOTICE",
 }
 
+cc_library_headers {
+    name: "libarect_includes",
+    export_include_dirs: ["include"],
+}
+
 cc_library_static {
     name: "libarect",
     host_supported: true,
