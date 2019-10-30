@@ -143,7 +143,7 @@ status_t ABBinder::dump(int fd, const ::android::Vector<String16>& args) {
         utf8Pointers.push_back(utf8Args[i].c_str());
     }
 
-    return onDump(this, fd, utf8Pointers.data(), utf8Pointers.size());
+    return onDump(this, fd, utf8Pointers.data(), static_cast<int32_t>(utf8Pointers.size()));
 }
 
 status_t ABBinder::onTransact(transaction_code_t code, const Parcel& data, Parcel* reply,

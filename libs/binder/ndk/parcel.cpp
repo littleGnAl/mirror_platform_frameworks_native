@@ -222,7 +222,7 @@ binder_status_t AParcel_setDataPosition(const AParcel* parcel, int32_t position)
 }
 
 int32_t AParcel_getDataPosition(const AParcel* parcel) {
-    return parcel->get()->dataPosition();
+    return static_cast<int32_t>(parcel->get()->dataPosition());
 }
 
 binder_status_t AParcel_writeStrongBinder(AParcel* parcel, AIBinder* binder) {
@@ -314,7 +314,7 @@ binder_status_t AParcel_writeString(AParcel* parcel, const char* string, int32_t
         return STATUS_BAD_VALUE;
     }
 
-    status_t err = parcel->get()->writeInt32(len16);
+    status_t err = parcel->get()->writeInt32(static_cast<int32_t>(len16));
     if (err) {
         return PruneStatusT(err);
     }
@@ -356,7 +356,7 @@ binder_status_t AParcel_readString(const AParcel* parcel, void* stringData,
     }
 
     char* str8;
-    bool success = allocator(stringData, len8, &str8);
+    bool success = allocator(stringData, static_cast<int32_t>(len8), &str8);
 
     if (!success || str8 == nullptr) {
         LOG(WARNING) << __func__ << ": AParcel_stringAllocator failed to allocate.";

@@ -42,11 +42,13 @@ cc_library_shared {
         "-Wall",
         "-Wextra",
         "-Werror",
+        "-Wshorten-64-to-32",
     ],
 
     srcs: [
         "ibinder.cpp",
         "ibinder_jni.cpp",
+        "includes.cpp",
         "parcel.cpp",
         "process.cpp",
         "stability.cpp",
