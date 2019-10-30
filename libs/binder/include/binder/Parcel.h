@@ -475,7 +475,6 @@ private:
     status_t            readEnum(T* pArg) const;
 
     status_t writeByteVectorInternal(const int8_t* data, size_t size);
-    status_t readByteVectorInternal(int8_t* data, size_t size) const;
 
     template<typename T, typename U>
     status_t            unsafeReadTypedVector(std::vector<T>* val,
@@ -991,7 +990,12 @@ status_t Parcel::readEnum(T* pArg) const {
 template<typename T, std::enable_if_t<std::is_enum_v<T> && std::is_same_v<typename std::underlying_type_t<T>,int8_t>, bool>>
 status_t Parcel::readEnumVector(std::vector<T>* val) const {
     if (status_t status = resizeOutVector(val); status != OK) return status;
-    return readByteVectorInternal(reinterpret_cast<int8_t*>(val->data()), val->size());
+    const size_t size = val->size();
+    const int8_t* data = reinterpret_cast<const int8_t*>(readInplace(size));
+    if (!data) return BAD_VALUE;
+    val->clear();
+    val->insert(val->begin(), reinterpret_cast<const T*>(data), reinterpret_cast<const T*>(data+size));
+    return NO_ERROR;
 }
 template<typename T, std::enable_if_t<std::is_enum_v<T> && std::is_same_v<typename std::underlying_type_t<T>,int8_t>, bool>>
 status_t Parcel::readEnumVector(std::unique_ptr<std::vector<T>>* val) const {
@@ -1001,7 +1005,12 @@ status_t Parcel::readEnumVector(std::unique_ptr<std::vector<T>>* val) const {
         // This occurs when writing a null Enum vector.
         return OK;
     }
-    return readByteVectorInternal(reinterpret_cast<int8_t*>((*val)->data()), (*val)->size());
+    const size_t size = (*val)->size();
+    const int8_t* data = reinterpret_cast<const int8_t*>(readInplace(size));
+    if (!data) return BAD_VALUE;
+    (*val)->clear();
+    (*val)->insert((*val)->begin(), reinterpret_cast<const T*>(data), reinterpret_cast<const T*>(data+size));
+    return NO_ERROR;
 }
 template<typename T, std::enable_if_t<std::is_enum_v<T> && !std::is_same_v<typename std::underlying_type_t<T>,int8_t>, bool>>
 status_t Parcel::readEnumVector(std::vector<T>* val) const {
