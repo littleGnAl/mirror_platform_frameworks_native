@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee6e5459_b9013503",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-30T19:47:51Z",
+      "side": 1,
+      "message": "is this not covered by readInplace?",
+      "range": {
+        "startLine": 1453,
+        "startChar": 0,
+        "endLine": 1455,
+        "endChar": 5
+      },
+      "revId": "610b440297a03f402b60d405768991b41a5588da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "306c5349_3c8b2346",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-30T19:47:51Z",
+      "side": 1,
+      "message": "nit: uint8_t, although, do we need this function at all? Will readInplace suffice?",
+      "range": {
+        "startLine": 478,
+        "startChar": 10,
+        "endLine": 478,
+        "endChar": 16
+      },
+      "revId": "610b440297a03f402b60d405768991b41a5588da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
