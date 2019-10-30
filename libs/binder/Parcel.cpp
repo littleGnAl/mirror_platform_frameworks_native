@@ -1449,21 +1449,27 @@ restart_write:
     return err;
 }
 
-status_t Parcel::readByteVectorInternal(int8_t* data, size_t size) const {
-    if (size_t(size) > dataAvail()) {
-      return BAD_VALUE;
+const int8_t* Parcel::readByteVectorInternal(size_t size) const {
+    if (size > dataAvail()) {
+      return nullptr;
     }
-    return read(data, size);
+    return reinterpret_cast<const int8_t*>(readInplace(size));
 }
 
 status_t Parcel::readByteVector(std::vector<int8_t>* val) const {
     if (status_t status = resizeOutVector(val); status != OK) return status;
-    return readByteVectorInternal(val->data(), val->size());
+    const int8_t* data = readByteVectorInternal(val->size());
+    if (!data) return BAD_VALUE;
+    val->insert(val->end(), data, data + val->size());
+    return NO_ERROR;
 }
 
 status_t Parcel::readByteVector(std::vector<uint8_t>* val) const {
     if (status_t status = resizeOutVector(val); status != OK) return status;
-    return readByteVectorInternal(reinterpret_cast<int8_t*>(val->data()), val->size());
+    const int8_t* data = readByteVectorInternal(val->size());
+    if (!data) return BAD_VALUE;
+    val->insert(val->end(), data, data + val->size());
+    return NO_ERROR;
 }
 
 status_t Parcel::readByteVector(std::unique_ptr<std::vector<int8_t>>* val) const {
@@ -1473,7 +1479,10 @@ status_t Parcel::readByteVector(std::unique_ptr<std::vector<int8_t>>* val) const
         // This occurs when writing a null byte vector.
         return OK;
     }
-    return readByteVectorInternal((*val)->data(), (*val)->size());
+    const int8_t* data = readByteVectorInternal((*val)->size());
+    if (!data) return BAD_VALUE;
+    (*val)->insert((*val)->end(), data, data + (*val)->size());
+    return NO_ERROR;
 }
 
 status_t Parcel::readByteVector(std::unique_ptr<std::vector<uint8_t>>* val) const {
@@ -1483,7 +1492,10 @@ status_t Parcel::readByteVector(std::unique_ptr<std::vector<uint8_t>>* val) cons
         // This occurs when writing a null byte vector.
         return OK;
     }
-    return readByteVectorInternal(reinterpret_cast<int8_t*>((*val)->data()), (*val)->size());
+    const int8_t* data = readByteVectorInternal((*val)->size());
+    if (!data) return BAD_VALUE;
+    (*val)->insert((*val)->end(), data, data + (*val)->size());
+    return NO_ERROR;
 }
 
 status_t Parcel::readInt32Vector(std::unique_ptr<std::vector<int32_t>>* val) const {
