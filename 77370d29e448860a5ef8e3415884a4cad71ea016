@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "7b363be5_9cf59747",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2019-10-31T20:47:23Z",
+      "side": 1,
+      "message": "Needed size as an out parameter since val-\u003esize() does not return the logical size that the vector should fit after a call to val-\u003ereserve(). (val-\u003eresize() does, but we\u0027re not using that now)\n\nChanged it to ptr.",
+      "parentUuid": "facffd11_c8d3bb3b",
+      "range": {
+        "startLine": 360,
+        "startChar": 62,
+        "endLine": 360,
+        "endChar": 74
+      },
+      "revId": "77370d29e448860a5ef8e3415884a4cad71ea016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d7c36e4_320d4deb",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 7
@@ -68,6 +92,30 @@
       "revId": "77370d29e448860a5ef8e3415884a4cad71ea016",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a235a55_a8ef7fb4",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2019-10-31T20:47:23Z",
+      "side": 1,
+      "message": "Done. Earlier versions were giving compilation errors, forgot to check again to see if it\u0027d work now. Thanks for the reminder!",
+      "parentUuid": "3d7c36e4_320d4deb",
+      "range": {
+        "startLine": 739,
+        "startChar": 11,
+        "endLine": 739,
+        "endChar": 17
+      },
+      "revId": "77370d29e448860a5ef8e3415884a4cad71ea016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
