@@ -23,6 +23,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include <fstream>
 #include <thread>
 #include <unordered_map>
 #include <vector>
@@ -35,11 +36,10 @@
 #include "compat/msvc-posix.h"
 #include "crypto/device_identifier.h"
 #include "crypto/ec_key.h"
+#include "crypto/proto/key_store.pb.h"
 #include "crypto/public_key_header.h"
 
 namespace {
-constexpr uint32_t kKeyStoreVersion = 1;
-
 const char kKeyStoreName[] = "adb_wifi_keys";
 const char kPrivateKeyName[] = "adb_system_key.pem";
 const char kPublicKeyName[] = "adb_system_cert.pem";
@@ -69,25 +69,34 @@ std::string sslErrorStr() {
 // will be deleted in the destructor of this class.
 class SelfDestructingFile {
 public:
-    SelfDestructingFile(const char* path, const char* mode)
-        : file_(fopen(path, mode)), path_(path) {
+    SelfDestructingFile(const char* path, std::ios_base::openmode mode)
+        : file_(path, mode), path_(path) {
     }
     ~SelfDestructingFile() {
         if (file_) {
-            fclose(file_);
+            file_.close();
             my_unlink(path_.c_str());
         }
     }
 
-    FILE* get() { return file_; }
+    std::ofstream* get() { return &file_; }
 
     void closeAndDisarm() {
-        fclose(file_);
-        file_ = nullptr;
+        if (file_) {
+            file_.close();
+        }
+    }
+
+    explicit operator bool() const {
+        return !!file_;
+    }
+
+    bool operator !() const {
+        return !file_;
     }
 
 private:
-    FILE* file_;
+    std::ofstream file_;
     std::string path_;
 };
 
@@ -127,7 +136,7 @@ private:
 
     bool readSystemCertificate();
     bool writeSystemCertificate();
-    bool readPublicKeys();
+    bool readPublicKeys(adbwifi::proto::KeyStore& key_store);
     bool writePublicKeys();
 
     std::unordered_map<std::string, std::unique_ptr<Key>> keys_;
@@ -137,6 +146,7 @@ private:
     std::unique_ptr<Key> public_cert_;
     std::string keystore_path_;
     std::unique_ptr<DeviceIdentifier> device_id_;
+    adbwifi::proto::KeyStore key_store_;
 };
 
 KeyStore::KeyStore(std::string_view keystore_path) :
@@ -159,7 +169,7 @@ bool KeyStore::init() {
             return false;
         }
     }
-    return readPublicKeys();
+    return readPublicKeys(key_store_);
 }
 
 Key* KeyStore::getSystemPublicKey(KeyType type) {
@@ -327,32 +337,6 @@ bool KeyStore::generateSystemCertificate(KeyType /* type */) {
     return true;
 }
 
-static bool writeRecord(FILE* file, const void* data, uint32_t length) {
-    uint32_t netOrderLength = htonl(length);
-    if (fwrite(&netOrderLength, sizeof(netOrderLength), 1, file) != 1) {
-        return false;
-    }
-    if (fwrite(data, length, 1, file) != 1) {
-        return false;
-    }
-    return true;
-}
-
-static ssize_t readRecord(FILE* file, void* data, uint32_t capacity) {
-    uint32_t length = 0;
-    if (fread(&length, sizeof(length), 1, file) != 1) {
-        return -1;
-    }
-    length = ntohl(length);
-    if (length > capacity) {
-        return -1;
-    }
-    if (fread(data, length, 1, file) != 1) {
-        return -1;
-    }
-    return length;
-}
-
 template<typename F, typename... Args>
 static std::string writePemToMem(F writeFunc, Args&&... args) {
     bssl::UniquePtr<BIO> bio(BIO_new(BIO_s_mem()));
@@ -420,74 +404,23 @@ bool KeyStore::writeSystemCertificate() {
     return true;
 }
 
-bool KeyStore::readPublicKeys() {
-    std::string storeName = getKeyStorePath();
-
-    std::unique_ptr<FILE, decltype(&fclose)> file(fopen(storeName.c_str(),
-                                                        "rb"), &fclose);
-    if (file.get() == nullptr) {
-        if (errno == ENOENT) {
-            // File does not exist, this is not an error, it just means there
-            // are no keys.
-            return true;
-        }
+bool KeyStore::readPublicKeys(adbwifi::proto::KeyStore& key_store) {
+    std::string store_name = getKeyStorePath();
+    std::ifstream file(store_name, std::ios::binary);
+    if (!file) {
+        // Not an error. It just means there's no keystore.
+        LOG(INFO) << "No adbwifi keystore found.";
+        return true;
+    }
+    // Read the keystore into the protobuf.
+    if (!key_store.ParseFromIstream(&file)) {
+        // keystore may have been corrupted. Let's just delete it, otherwise
+        // we'll never be able to store or read anything again.
+        LOG(ERROR) << "adbwifi keystore seems corrupted. Deleting the keystore.";
+        my_unlink(store_name.c_str());
         return false;
     }
 
-    uint32_t keyStoreVersion = 0;
-    if (!readRecord(file.get(), &keyStoreVersion, sizeof(keyStoreVersion))) {
-        LOG(ERROR) << "Unable to read keystore version: " << strerror(errno);
-        return false;
-    }
-
-    keyStoreVersion = ntohl(keyStoreVersion);
-    if (keyStoreVersion != kKeyStoreVersion) {
-        LOG(ERROR) << "Invalid keystore version " << keyStoreVersion;
-        return false;
-    }
-
-    char buffer[16384];
-    while (true) {
-        ssize_t bytes = readRecord(file.get(), buffer, sizeof(buffer));
-        if (bytes <= 0 && feof(file.get())) {
-            // This is OK, we just ran out of records
-            break;
-        }
-        if (static_cast<size_t>(bytes) > kPublicKeyIdLength) {
-            LOG(ERROR) << "Invalid key id in keystore file";
-            return false;
-        }
-        std::string id(buffer, bytes);
-
-        uint8_t typeValue = 0;
-        KeyType type;
-        bytes = readRecord(file.get(), &typeValue, sizeof(typeValue));
-        if (bytes < 0 || !getKeyTypeFromValue(typeValue, &type)) {
-            LOG(ERROR) << "Invalid key type in keystore file";
-            return false;
-        }
-
-        bytes = readRecord(file.get(), buffer, sizeof(buffer));
-        if (bytes < 0 || static_cast<size_t>(bytes) > kPublicKeyNameLength) {
-            LOG(ERROR) << "Invalid key name in keystore file";
-            return false;
-        }
-        std::string name(buffer, bytes);
-
-        bytes = readRecord(file.get(), buffer, sizeof(buffer));
-        if (bytes < 0) {
-            LOG(ERROR) << "Invalid key in keystore file";
-            return false;
-        }
-
-        std::string data(buffer, bytes);
-        std::unique_ptr<Key> key = createKey(type, name, data.c_str());
-        if (!key) {
-            LOG(ERROR) << "Unable to create key from keystore data";
-            return false;
-        }
-        keys_[id] = std::move(key);
-    }
     return true;
 }
 
@@ -495,6 +428,7 @@ bool KeyStore::writePublicKeys() {
     LOG(ERROR) << "Writing public keys";
     std::string storeName = getKeyStorePath();
     std::string tempName = storeName + ".tmp";
+    adbwifi::proto::KeyStore key_store;
 
     // This temp file should be deleted if this method fails so we don't leave
     // this stuff around. Using a temp file allows the previous data to remain
@@ -506,47 +440,29 @@ bool KeyStore::writePublicKeys() {
     // failing to write keys should probably not erase all known keys. We might
     // want to have the writes in these two scenarios behave differently.
     errno = 0;
-    SelfDestructingFile file(tempName.c_str(), "wb");
-    if (!file.get()) {
+    SelfDestructingFile file(tempName.c_str(), std::ofstream::binary);
+    if (!file) {
         LOG(ERROR) << "Failed to open keystore file '" << tempName
                    << "' for writing: " << strerror(errno);
         return false;
     }
 
-    uint32_t keyStoreVersion = htonl(kKeyStoreVersion);
-    if (!writeRecord(file.get(), &keyStoreVersion, sizeof(keyStoreVersion))) {
-        LOG(ERROR) << "Failed to write keystore version to file '" << tempName
-                   << "': " << strerror(errno);
+    // Write out all the saved keys
+    for (const auto& idKey : keys_) {
+        const std::string& guid = idKey.first;
+        const Key* key = idKey.second.get();
+        auto* pkey = key_store.add_keys();
+        pkey->set_guid(guid);
+        pkey->set_name(key->name());
+        pkey->set_type(static_cast<uint8_t>(key->type()));
+        pkey->set_public_key(key->c_str());
+    }
+
+    if (!key_store.SerializeToOstream(file.get())) {
+        LOG(ERROR) << "Unable to write key store out.";
         return false;
     }
-
-    for (const auto& idKey : keys_) {
-        const std::string& id = idKey.first;
-        const Key* key = idKey.second.get();
-        // Write the entire string plus the terminating zero as a separator
-        if (!writeRecord(file.get(), id.c_str(), id.size())) {
-            LOG(ERROR) << "Failed to write key id to file '" << tempName
-                       << "': " << strerror(errno);
-            return false;
-        }
-        uint8_t type = static_cast<uint8_t>(key->type());
-        if (!writeRecord(file.get(), &type, sizeof(type))) {
-            LOG(ERROR) << "Failed to write key type to file '" << tempName
-                       << "': " << strerror(errno);
-            return false;
-        }
-
-        if (!writeRecord(file.get(), key->name().c_str(), key->name().size())) {
-            LOG(ERROR) << "Failed to write key name to file '" << tempName
-                       << "': " << strerror(errno);
-            return false;
-        }
-        if (!writeRecord(file.get(), key->c_str(), key->size())) {
-            LOG(ERROR) << "Failed to write key to file '" << tempName << "': "
-                       << strerror(errno);
-            return false;
-        }
-    }
+    file.closeAndDisarm();
 
     // Replace the existing key store with the new one.
     std::string toBeDeleted = storeName;
@@ -560,12 +476,14 @@ bool KeyStore::writePublicKeys() {
     if (my_rename(tempName.c_str(), storeName.c_str()) != 0) {
         LOG(ERROR) << "Failed to replace old key store";
         my_rename(toBeDeleted.c_str(), storeName.c_str());
+        my_unlink(tempName.c_str());
         return false;
     }
 
     my_unlink(toBeDeleted.c_str());
 
     LOG(ERROR) << "Successfully wrote key store";
+    key_store_.CopyFrom(key_store);
 
     return true;
 }
