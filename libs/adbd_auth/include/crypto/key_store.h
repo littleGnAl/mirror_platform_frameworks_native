@@ -51,4 +51,13 @@ uint32_t keystore_max_certificate_size(KeyStoreCtx ctx);
 // yet.
 KeyStoreCtx keystore_get(void);
 
+// Returns the file path to the keystore.
+const char* keystore_file_path(KeyStoreCtx ctx);
+
+// Returns the private key file path.
+const char* keystore_priv_key_path(KeyStoreCtx ctx);
+
+// Returns the public key file path.
+const char* keystore_pub_key_path(KeyStoreCtx ctx);
+
 } // extern "C"

@@ -45,7 +45,11 @@ const char kPrivateKeyName[] = "adb_system_key.pem";
 const char kPublicKeyName[] = "adb_system_cert.pem";
 
 const char kBasicConstraints[] = "critical,CA:TRUE";
-const char kKeyUsage[] = "critical,keyCertSign,cRLSign";
+// RSA certificates require the "keyEncipherment" usage,
+// non-RSA certificates require the "digitalSignature" usage.
+// We currently only use EC_KEYs, so just hardcode in the "digitalsignature" for
+// now.
+const char kKeyUsage[] = "critical,keyCertSign,cRLSign,digitalSignature";
 const char kSubjectKeyIdentifier[] = "hash";
 
 constexpr int kCurveName = NID_X9_62_prime256v1;
@@ -127,15 +131,13 @@ public:
     std::pair<std::string, const Key*> operator[](const size_t idx) const;
     static uint32_t maxCertificateSize() { return kMaxX509CertSize; }
 
+    const std::string& getKeyStorePath() const;
+    const std::string& getSysPrivKeyPath() const;
+    const std::string& getSysPubKeyPath() const;
+
 private:
-    std::string getKeyStorePath();
-    std::string getSysPrivKeyPath();
-    std::string getSysPubKeyPath();
-
     bool generateSystemCertificate(KeyType type = KeyType::EllipticCurve);
-
     bool readSystemCertificate();
-    bool writeSystemCertificate();
     bool readPublicKeys(adbwifi::proto::KeyStore& key_store);
     bool writePublicKeys();
 
@@ -145,6 +147,9 @@ private:
     std::unique_ptr<Key> private_key_;
     std::unique_ptr<Key> public_cert_;
     std::string keystore_path_;
+    std::string keystore_file_;
+    std::string priv_key_file_;
+    std::string pub_key_file_;
     std::unique_ptr<DeviceIdentifier> device_id_;
     adbwifi::proto::KeyStore key_store_;
 };
@@ -152,6 +157,9 @@ private:
 KeyStore::KeyStore(std::string_view keystore_path) :
     keystore_path_(keystore_path) {
     device_id_.reset(new DeviceIdentifier(keystore_path_));
+    keystore_file_ = keystore_path_ + OS_PATH_SEPARATOR + kKeyStoreName;
+    priv_key_file_ = keystore_path_ + OS_PATH_SEPARATOR + kPrivateKeyName;
+    pub_key_file_ = keystore_path_ + OS_PATH_SEPARATOR + kPublicKeyName;
 }
 
 bool KeyStore::init() {
@@ -334,6 +342,9 @@ bool KeyStore::generateSystemCertificate(KeyType /* type */) {
                    << strerror(errno);
         return false;
     }
+    // Set permissions so adbd can read it later.
+    chmod(getSysPrivKeyPath().c_str(), S_IRUSR | S_IWUSR | S_IRGRP);
+    chmod(getSysPubKeyPath().c_str(), S_IRUSR | S_IWUSR | S_IRGRP);
     return true;
 }
 
@@ -397,10 +408,6 @@ bool KeyStore::readSystemCertificate() {
     }
     private_key_.reset(new EllipticCurveKey("systemPK", privateKeyStr.c_str()));
 
-    return true;
-}
-
-bool KeyStore::writeSystemCertificate() {
     return true;
 }
 
@@ -509,21 +516,21 @@ void KeyStore::getPublicKeyHeader(PublicKeyHeader* header) {
                 device_id.size() : max_id_size - 1);
 }
 
-std::string KeyStore::getKeyStorePath() {
-    return keystore_path_ + OS_PATH_SEPARATOR + kKeyStoreName;
+const std::string& KeyStore::getKeyStorePath() const {
+    return keystore_file_;
 }
 
-std::string KeyStore::getSysPrivKeyPath() {
-    return keystore_path_ + OS_PATH_SEPARATOR + kPrivateKeyName;
+const std::string& KeyStore::getSysPrivKeyPath() const {
+    return priv_key_file_;
 }
 
-std::string KeyStore::getSysPubKeyPath() {
-    return keystore_path_ + OS_PATH_SEPARATOR + kPublicKeyName;
+const std::string& KeyStore::getSysPubKeyPath() const {
+    return pub_key_file_;
 }
 
 std::unique_ptr<KeyStore> sKeyStore;
 
-#if defined(__ANDROID__)
+#if !defined(HOST_BUILD)
 using namespace std::chrono_literals;
 
 constexpr int kInitRetries = 60;
@@ -551,7 +558,7 @@ KeyStoreCtx keystore_init(const char* keystore_path,
         sKeyStore.reset(new KeyStore(keystore_path));
     }
     if (!sKeyStore->init()) {
-#if defined(__ANDROID__)
+#if !defined(HOST_BUILD)
         // We failed to initialize. This can happen on the device if
         // the data partition is not mounted yet. Try again later.
         LOG(ERROR) << "key store init failed, launching retry thread";
@@ -564,7 +571,10 @@ KeyStoreCtx keystore_init(const char* keystore_path,
                     }
                     cb(nullptr, opaque);
                 })).detach();
-#endif // __ANDROID__
+#else  //  !HOST_BUILD
+        UNUSED(opaque);
+        UNUSED(cb);
+#endif //  HOST_BUILD
         return nullptr;
     }
 
@@ -608,3 +618,25 @@ uint32_t keystore_max_certificate_size(KeyStoreCtx /* ctx */) {
 KeyStoreCtx keystore_get(void) {
     return static_cast<KeyStoreCtx>(sKeyStore.get());
 }
+
+const char* keystore_file_path(KeyStoreCtx ctx) {
+    CHECK(ctx);
+
+    auto* p = reinterpret_cast<KeyStore*>(ctx);
+    return p->getKeyStorePath().c_str();
+}
+
+const char* keystore_priv_key_path(KeyStoreCtx ctx) {
+    CHECK(ctx);
+
+    auto* p = reinterpret_cast<KeyStore*>(ctx);
+    return p->getSysPrivKeyPath().c_str();
+}
+
+const char* keystore_pub_key_path(KeyStoreCtx ctx) {
+    CHECK(ctx);
+
+    auto* p = reinterpret_cast<KeyStore*>(ctx);
+    return p->getSysPubKeyPath().c_str();
+}
+
