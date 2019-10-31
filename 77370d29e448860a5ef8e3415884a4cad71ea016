@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9e3d7d8a_f2371724",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2019-10-31T23:25:23Z",
+      "side": 1,
+      "message": "Investigated, and as discussed, val-\u003ecapacity() won\u0027t work either since capacity isn\u0027t always the same as the value provided to reserve() (it can be larger).\n\nAlso moved readByteVectorInternal to accept ptr instead of ref.",
+      "parentUuid": "7b363be5_9cf59747",
+      "range": {
+        "startLine": 360,
+        "startChar": 62,
+        "endLine": 360,
+        "endChar": 74
+      },
+      "revId": "77370d29e448860a5ef8e3415884a4cad71ea016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d7c36e4_320d4deb",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 7
