@@ -33,6 +33,10 @@ struct AdbdWifiCallbacksV1 {
     // its public key. If |sz| is zero, this means the pairing failed and adbd
     // should abort the connection.
     void (*send_pairing_request)(const uint8_t* pairing_request, uint64_t sz);
+    // Notify that the framework was disconnected.
+    void (*on_framework_disconnected)(void);
+    // Notify that the framework was connected.
+    void (*on_framework_connected)(void);
 };
 
 struct AdbdWifiCallbacks {

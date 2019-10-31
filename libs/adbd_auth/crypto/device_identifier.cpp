@@ -20,7 +20,9 @@
 #include <memory>
 #include <random>
 
+#include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include "compat/msvc-posix.h"
 
 namespace {
@@ -37,36 +39,44 @@ bool DeviceIdentifier::init() {
         return false;
     }
 
-    auto device_id = createUniqueDeviceId();
+    auto device_id = readUniqueDeviceIdFromFile(getDeviceIdPath());
     if (device_id.empty()) {
-        return false;
-    }
-
-    strncpy(device_id_, device_id.data(), kDeviceIdNameSize);
-    if (!writeDeviceIdToFile(device_id_, getDeviceIdPath())) {
-        device_id_[0] = '\0';
-        return false;
-    }
-    return true;
-}
-
-std::string DeviceIdentifier::createUniqueDeviceId() {
-    // See if we already saved the device id to adb_deviceid file
-    char id[kDeviceIdSize];
-    std::string path = getDeviceIdPath();
-    std::unique_ptr<FILE, decltype(&fclose)> file(fopen(path.c_str(), "r"),
-                                                  &fclose);
-    if (file) {
-        size_t bytes = fread(id, 1, sizeof(id), file.get());
-        if (!ferror(file.get())) {
-            id[std::min(bytes, sizeof(id) - 1)] = '\0';
-            LOG(INFO) << "Found device id on disk '" << id << "'";
-            return id;
+        // Create a new GUID.
+        LOG(INFO) << "No device id on disk, generating";
+        device_id = createUniqueDeviceId();
+        // Write the new GUID to file.
+        if (!writeDeviceIdToFile(device_id, getDeviceIdPath())) {
+            return false;
         }
     }
 
-    LOG(INFO) << "No device id on disk, generating";
-    // If we haven't stored it we need to generate an ID
+    strncpy(device_id_, device_id.data(), kDeviceIdNameSize);
+    return true;
+}
+
+std::string DeviceIdentifier::readUniqueDeviceIdFromFile(std::string_view filename) const {
+    // See if we already saved the device id to adb_deviceid file
+    LOG(INFO) << "Reading " << filename;
+    std::string device_id;
+    if (!android::base::ReadFileToString(std::string(filename.data()), &device_id)) {
+        PLOG(ERROR) << "Couldn't read " << filename;
+        return "";
+    }
+    LOG(INFO) << "Got deviceid=[" << device_id << "]";
+    return device_id;
+}
+
+std::string DeviceIdentifier::createUniqueDeviceId() const {
+#if defined(__ANDROID__)
+    // Use the serial number (adb-<serialno>)
+    std::string guid = "adb-";
+    // CTS tests check for the serialno to be between 6-20 characters
+    // (https://android.googlesource.com/platform/cts/+/master/tests/tests/os/src/android/os/cts/BuildTest.java#224).
+    // We should be okay regarding the size.
+    guid += android::base::GetProperty("ro.serialno", "unidentified");
+    return guid;
+#else
+    char id[kDeviceIdSize];
     std::string hostname = getHostName();
     strncpy(id, hostname.c_str(), kDeviceIdNameSize);
     id[kDeviceIdNameSize] = '\0';
@@ -91,24 +101,18 @@ std::string DeviceIdentifier::createUniqueDeviceId() {
     }
     randomPart[sizeof(randomPart) - 1] = '\0';
     strcat(id, randomPart);
-
     return id;
+#endif
 }
 
 bool DeviceIdentifier::writeDeviceIdToFile(std::string_view id, std::string_view filename) {
-    std::unique_ptr<FILE, decltype(&fclose)> file(fopen(filename.data(), "w"),
-                                                  &fclose);
-    if (file) {
-        if (fwrite(id.data(), id.size(), 1, file.get()) != 1) {
-            // Unable to write, return the ID for now but it will not persist
-            // across boots.
-            LOG(ERROR) << "Unable to store device ID: " << strerror(errno);
-            return false;
-        }
-    } else {
-        LOG(ERROR) << "Unable to open device ID file for writing: " << strerror(errno);
+    if (!android::base::WriteStringToFile(std::string(id.data()), std::string(filename.data()))) {
+        PLOG(ERROR) << "Unable to write device id to " << filename;
         return false;
     }
+    LOG(INFO) << "Wrote device id to " << filename;
+    // Set permissions so adbd can read it later.
+    chmod(filename.data(), S_IRUSR | S_IWUSR | S_IRGRP);
     return true;
 }
 
