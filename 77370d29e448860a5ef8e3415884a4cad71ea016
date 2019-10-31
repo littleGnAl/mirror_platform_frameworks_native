@@ -22,6 +22,52 @@
       "revId": "77370d29e448860a5ef8e3415884a4cad71ea016",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "facffd11_c8d3bb3b",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-31T20:21:47Z",
+      "side": 1,
+      "message": "out parameter should be pointer, by why return this when val-\u003esize() should already contain the information? same below",
+      "range": {
+        "startLine": 360,
+        "startChar": 62,
+        "endLine": 360,
+        "endChar": 74
+      },
+      "revId": "77370d29e448860a5ef8e3415884a4cad71ea016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d7c36e4_320d4deb",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-31T20:21:47Z",
+      "side": 1,
+      "message": "nit: C++ style casts, same below",
+      "range": {
+        "startLine": 739,
+        "startChar": 11,
+        "endLine": 739,
+        "endChar": 17
+      },
+      "revId": "77370d29e448860a5ef8e3415884a4cad71ea016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
