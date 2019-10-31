@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09c240fa_e9440473",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2019-10-31T23:28:07Z",
+      "side": 1,
+      "message": "I want to avoid a change to an otherwise-untouched function to not complicate this particular CL (which is a perf fix, not just a general cleanup).",
+      "parentUuid": "56b56a3d_d41a82c9",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 8
+      },
+      "revId": "77370d29e448860a5ef8e3415884a4cad71ea016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "facffd11_c8d3bb3b",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 7
