@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7723361_71f26de9",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2019-10-31T00:02:48Z",
+      "side": 1,
+      "message": "is it possible to make some inline func?",
+      "range": {
+        "startLine": 1464,
+        "startChar": 4,
+        "endLine": 1469,
+        "endChar": 20
+      },
+      "revId": "4b848918681784f8e4fcc9c222f9e90ae48d04e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
