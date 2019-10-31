@@ -329,6 +329,7 @@ private:
             dispatched_pairing_request_.reset();
             CHECK_EQ(0, epoll_ctl(epoll_fd_.get(), EPOLL_CTL_DEL, framework_fd_.get(), nullptr));
             framework_fd_.reset();
+            callbacks_.on_framework_disconnected();
         }
 
         if (new_fd != -1) {
@@ -341,6 +342,7 @@ private:
             event.data.u64 = kEpollConstFramework;
             CHECK_EQ(0, epoll_ctl(epoll_fd_.get(), EPOLL_CTL_ADD, new_fd.get(), &event));
             framework_fd_ = std::move(new_fd);
+            callbacks_.on_framework_connected();
         }
     }
 

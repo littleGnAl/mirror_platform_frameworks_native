@@ -34,7 +34,8 @@ public:
 private:
     static bool directoryExists(std::string_view path);
 
-    std::string createUniqueDeviceId();
+    std::string readUniqueDeviceIdFromFile(std::string_view filename) const;
+    std::string createUniqueDeviceId() const;
     bool writeDeviceIdToFile(std::string_view id, std::string_view filename);
     std::string getDeviceIdPath() const;
     std::string getHostName() const;
