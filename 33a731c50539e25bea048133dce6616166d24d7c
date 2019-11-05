@@ -46,6 +46,30 @@
       "revId": "33a731c50539e25bea048133dce6616166d24d7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3de6c851_0a516b40",
+        "filename": "libs/arect/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2019-11-05T19:05:29Z",
+      "side": 1,
+      "message": "Yeah I wasn\u0027t sure what libarect_headers is actually used for. There\u0027s a reference to it here: https://cs.corp.google.com/android/hardware/interfaces/graphics/common/1.2/types.hal?q\u003dlibarect_headers\u0026sq\u003dpackage:android\u0026g\u003d0\u0026l\u003d141\nIt doesn\u0027t seem to be used for a normal device build target (I renamed libarect_headers to something else and it still built), but I don\u0027t know if there\u0027s another build target where it would be used and then fail.",
+      "parentUuid": "5dfc8401_1912c629",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "33a731c50539e25bea048133dce6616166d24d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
