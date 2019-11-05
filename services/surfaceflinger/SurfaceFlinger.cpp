@@ -1765,8 +1765,10 @@ void SurfaceFlinger::handleMessageRefresh() {
     const bool repaintEverything = mRepaintEverything.exchange(false);
     preComposition();
     rebuildLayerStacks();
+    if (mVisibleRegionsDirty && mTracingEnabled) {
+        mTracing.notify(elapsedRealtimeNano(), "visibleRegionsDirty");
+    }
     calculateWorkingSet();
-    long compositionTime = elapsedRealtimeNano();
     for (const auto& [token, display] : mDisplays) {
         beginFrame(display);
         prepareFrame(display);
@@ -1795,9 +1797,6 @@ void SurfaceFlinger::handleMessageRefresh() {
     mLayersWithQueuedFrames.clear();
     if (mVisibleRegionsDirty) {
         mVisibleRegionsDirty = false;
-        if (mTracingEnabled) {
-            mTracing.notify(compositionTime, "visibleRegionsDirty");
-        }
     }
 }
 
