@@ -22,6 +22,30 @@
       "revId": "33a731c50539e25bea048133dce6616166d24d7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dfc8401_1912c629",
+        "filename": "libs/arect/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2019-11-05T18:58:34Z",
+      "side": 1,
+      "message": "Could we call this libarect_headers and use libarect_ndk_headers for the above? I\u0027m not sure but suspect nothing else is directly referencing (the current) libarect_headers.",
+      "parentUuid": "61ac5ce0_39245930",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "33a731c50539e25bea048133dce6616166d24d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
