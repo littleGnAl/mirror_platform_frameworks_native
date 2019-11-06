@@ -24,6 +24,8 @@ LIBADBD_WIFI_PAIRING {
     keystore_file_path; # apex
     keystore_priv_key_path; # apex
     keystore_pub_key_path; # apex
+    keystore_stored_certificates_size; # apex
+    keystore_stored_certificate_at; # apex
 
   local:
     *;

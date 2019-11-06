@@ -640,3 +640,20 @@ const char* keystore_pub_key_path(KeyStoreCtx ctx) {
     return p->getSysPubKeyPath().c_str();
 }
 
+size_t keystore_stored_certificates_size(KeyStoreCtx ctx) {
+    CHECK(ctx);
+
+    auto* p = reinterpret_cast<KeyStore*>(ctx);
+    return p->size();
+}
+
+const char* keystore_stored_certificate_at(KeyStoreCtx ctx,
+                                           size_t idx,
+                                           size_t* key_size) {
+    CHECK(ctx);
+
+    auto* p = reinterpret_cast<KeyStore*>(ctx);
+    auto* key = (*p)[idx].second;
+    *key_size = key->size();
+    return key->c_str();
+}

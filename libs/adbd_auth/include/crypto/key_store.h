@@ -60,4 +60,14 @@ const char* keystore_priv_key_path(KeyStoreCtx ctx);
 // Returns the public key file path.
 const char* keystore_pub_key_path(KeyStoreCtx ctx);
 
+// Returns the number of keys store in the key store
+size_t keystore_stored_certificates_size(KeyStoreCtx ctx);
+
+// Returns the certificate at index |idx| of the saved array of keys,
+// with key size in |key_size|.
+// Returns null if no certificate at that index.
+const char* keystore_stored_certificate_at(KeyStoreCtx ctx,
+                                           size_t idx,
+                                           size_t* key_size);
+
 } // extern "C"
