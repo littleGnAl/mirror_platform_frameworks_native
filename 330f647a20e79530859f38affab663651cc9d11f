@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e9a9dab_36c7b0f1",
+        "filename": "services/surfaceflinger/CompositionEngine/src/OutputLayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2019-11-06T01:01:28Z",
+      "side": 1,
+      "message": "If the above computation is wrong for SF_PRIMARY_DISPLAY_ORIENTATION being set to nonzero, I would almost expect this line to need to be fixed up too.\n\nThe real world test case would be to use a camera app -- those typically mark their buffers as using the inverse of the display transform, which would execute this code path.",
+      "revId": "330f647a20e79530859f38affab663651cc9d11f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b270b59_7e4ca3c4",
+        "filename": "services/surfaceflinger/CompositionEngine/tests/OutputLayerTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2019-11-06T01:01:28Z",
+      "side": 1,
+      "message": "Thank you for adding a test!\n\nThe only issue I have with it that I don\u0027t know what \"T55730068\" means, and I\u0027d prefer the test names to be readable.\n\nCould you rename it to \"displayInstallOrientationBufferTransformSetTo90\" or something similar.",
+      "range": {
+        "startLine": 314,
+        "startChar": 64,
+        "endLine": 314,
+        "endChar": 73
+      },
+      "revId": "330f647a20e79530859f38affab663651cc9d11f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
