@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2655ed53_e72104db",
+        "filename": "services/surfaceflinger/CompositionEngine/src/OutputLayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1058489
+      },
+      "writtenOn": "2019-11-06T01:31:34Z",
+      "side": 1,
+      "message": "Yup, now that you mention it, looks like it needs to be fixed. I’ll have it tested and upload another patchset if needed.",
+      "parentUuid": "3e9a9dab_36c7b0f1",
+      "revId": "330f647a20e79530859f38affab663651cc9d11f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b270b59_7e4ca3c4",
         "filename": "services/surfaceflinger/CompositionEngine/tests/OutputLayerTest.cpp",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "330f647a20e79530859f38affab663651cc9d11f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "073956ec_7f10f0db",
+        "filename": "services/surfaceflinger/CompositionEngine/tests/OutputLayerTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1058489
+      },
+      "writtenOn": "2019-11-06T01:31:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b270b59_7e4ca3c4",
+      "range": {
+        "startLine": 314,
+        "startChar": 64,
+        "endLine": 314,
+        "endChar": 73
+      },
+      "revId": "330f647a20e79530859f38affab663651cc9d11f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
