@@ -46,6 +46,9 @@ cc_library_shared {
         // Don't warn about struct padding
         "-Wno-padded",
 
+        // Lock usages are not annotated for negative thread safety warnings.
+        "-Wno-thread-safety-negative",
+
         "-Wno-switch-enum",
         "-Wno-format-pedantic",
     ],
