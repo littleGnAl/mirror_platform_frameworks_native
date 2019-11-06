@@ -70,6 +70,30 @@
       "revId": "33a731c50539e25bea048133dce6616166d24d7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49726654_1d730a85",
+        "filename": "libs/arect/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2019-11-06T21:05:52Z",
+      "side": 1,
+      "message": "It can be safely renamed. I would hope that if you delete it entirely a CTS test breaks :)",
+      "parentUuid": "3de6c851_0a516b40",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "33a731c50539e25bea048133dce6616166d24d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
