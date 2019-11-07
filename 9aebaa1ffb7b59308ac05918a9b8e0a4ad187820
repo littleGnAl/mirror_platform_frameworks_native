@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05217838_88880a9a",
+        "filename": "vulkan/libvulkan/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T19:22:53Z",
+      "side": 0,
+      "message": "I assume you\u0027d still like warnings to be treated as errors, explicitly failing the build rather than allowing for the introduction of new instances of warnings?",
+      "revId": "9aebaa1ffb7b59308ac05918a9b8e0a4ad187820",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
