@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4ef317_5ca63765",
+        "filename": "libs/binder/include/binder/ParcelFileDescriptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-07T20:37:35Z",
+      "side": 1,
+      "message": "would it make sense for unique_fd to have operator*(const unique_fd\u0026)? Also, do you know why unique_fd only has some operations? Seems strange to me:\n\n  bool operator\u003e\u003d(int rhs) const { return get() \u003e\u003d rhs; }\n  bool operator\u003c(int rhs) const { return get() \u003c rhs; }\n  bool operator\u003d\u003d(int rhs) const { return get() \u003d\u003d rhs; }\n  bool operator!\u003d(int rhs) const { return get() !\u003d rhs; }",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "53955b2b0b30d7b1c703d0ee250e965833c9b3b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
