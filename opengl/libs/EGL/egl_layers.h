@@ -21,9 +21,14 @@
 #include <unordered_map>
 #include <vector>
 
-#include <EGL/egldefs.h>
+#include <android/dlext.h>
+#include <dlfcn.h>
 
+#include <EGL/egldefs.h>
 #include "egl_platform_entries.h"
+
+#include <nativebridge/native_bridge.h>
+#include <nativeloader/native_loader.h>
 
 typedef __eglMustCastToProperFunctionPointerType EGLFuncPointer;
 
@@ -32,6 +37,7 @@ namespace android {
 class LayerLoader {
 public:
     static LayerLoader& getInstance();
+
     ~LayerLoader(){};
 
     typedef void* (*PFNEGLGETNEXTLAYERPROCADDRESSPROC)(void*, const char*);
@@ -58,6 +64,18 @@ private:
     bool layers_loaded_;
     bool initialized_;
     unsigned current_layer_;
+
+    void* handle = nullptr;
+    bool native_bridge = false;
+    template<typename Func = void*>
+    Func GetTrampoline(const char* name) const {
+        if (native_bridge) {
+            return reinterpret_cast<Func>(android::NativeBridgeGetTrampoline(
+                handle, name, nullptr, 0));
+        }
+        return reinterpret_cast<Func>(dlsym(handle, name));
+    }
+
 };
 
 }; // namespace android
