@@ -46,6 +46,30 @@
       "revId": "53955b2b0b30d7b1c703d0ee250e965833c9b3b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f687a85a_925d21f2",
+        "filename": "libs/binder/include/binder/ParcelFileDescriptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-08T01:06:01Z",
+      "side": 1,
+      "message": "\u003e  do you know why unique_fd only has some operations?\n\nhttps://android-review.googlesource.com/c/platform/system/core/+/948257/2/base/include/android-base/unique_fd.h#107\n\nbut I don\u0027t see the whole picture there. 😞\n\n\n\u003e i actually thought you got the others for free given \u003d\u003d and \u003c, but that seems not to be the case\n\nNo, it didn\u0027t work.\n\n\u003e they were written as member functions rather than in what i thought was the \"usual\" style\n\nI just wanted to type less. Making the non-member requires many \u0027friend\u0027 declarations to allow access to mFd.\n\n\u003e oh well, just one more year until operator\u003c\u003d\u003e\n\nHaha, yes. But we don\u0027t need to touch this again unless we modify the aidl compiler again to emit operator\u003c\u003d\u003e for the parcelables.",
+      "parentUuid": "d0c60534_5a731bfe",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "53955b2b0b30d7b1c703d0ee250e965833c9b3b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
