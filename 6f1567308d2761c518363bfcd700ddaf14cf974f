@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70c576ca_a0161c91",
+        "filename": "opengl/libs/EGL/egl_layers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2019-11-08T18:45:58Z",
+      "side": 1,
+      "message": "I think that should be \u0026native_bridge_ instead\n\nDoes it even compile?",
+      "range": {
+        "startLine": 386,
+        "startChar": 55,
+        "endLine": 386,
+        "endChar": 68
+      },
+      "revId": "6f1567308d2761c518363bfcd700ddaf14cf974f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
