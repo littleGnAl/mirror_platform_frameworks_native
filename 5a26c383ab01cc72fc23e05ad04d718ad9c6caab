@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b1985d2_084a1e6c",
+        "filename": "opengl/libs/EGL/egl_layers.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2019-11-08T20:54:21Z",
+      "side": 1,
+      "message": "I think this is only supported for debugging and we don\u0027t support debugging of native-bridge supported apps.\n\nMaybe we should.",
+      "parentUuid": "be32f979_c81d1084",
+      "range": {
+        "startLine": 395,
+        "startChar": 32,
+        "endLine": 395,
+        "endChar": 38
+      },
+      "revId": "5a26c383ab01cc72fc23e05ad04d718ad9c6caab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64b2d496_865b51b5",
         "filename": "opengl/libs/EGL/egl_layers.h",
         "patchSetId": 4
