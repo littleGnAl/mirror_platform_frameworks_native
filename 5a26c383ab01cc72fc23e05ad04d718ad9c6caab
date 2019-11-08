@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be32f979_c81d1084",
+        "filename": "opengl/libs/EGL/egl_layers.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1097542
+      },
+      "writtenOn": "2019-11-08T20:24:57Z",
+      "side": 1,
+      "message": "Does this need to change as well?  The CTS test doesn\u0027t verify it, but loading library from /data/local/debug/gles is supported.  More info here:  https://developer.android.com/ndk/guides/rootless-debug-gles#place-layers",
+      "range": {
+        "startLine": 395,
+        "startChar": 32,
+        "endLine": 395,
+        "endChar": 38
+      },
+      "revId": "5a26c383ab01cc72fc23e05ad04d718ad9c6caab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b2d496_865b51b5",
+        "filename": "opengl/libs/EGL/egl_layers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1097542
+      },
+      "writtenOn": "2019-11-08T20:24:57Z",
+      "side": 1,
+      "message": "Can you put these in the initializer list like the other member variables?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "5a26c383ab01cc72fc23e05ad04d718ad9c6caab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
