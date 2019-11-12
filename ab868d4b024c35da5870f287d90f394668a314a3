@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1929071_e3fcd91f",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2890,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-11-12T10:56:16Z",
+      "side": 1,
+      "message": "nit: add a comment. It reads odd that PROFMAN_BIN_RETURN_CODE_FORCE_MERGE is a successful value.",
+      "range": {
+        "startLine": 2890,
+        "startChar": 28,
+        "endLine": 2890,
+        "endChar": 63
+      },
+      "revId": "ab868d4b024c35da5870f287d90f394668a314a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a085d857_6fea3947",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-11-12T10:56:16Z",
+      "side": 1,
+      "message": "nit: add a comment why this test adds force-merge ?",
+      "range": {
+        "startLine": 900,
+        "startChar": 32,
+        "endLine": 900,
+        "endChar": 33
+      },
+      "revId": "ab868d4b024c35da5870f287d90f394668a314a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
