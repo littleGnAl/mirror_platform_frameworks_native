@@ -567,6 +567,7 @@ Scheduler::RefreshRateType Scheduler::calculateRefreshRateType() {
     }
 
     // Content detection is on, find the appropriate refresh rate with minimal error
+    Mutex::Autolock refreshRatesLock(mRefreshRateConfigs.mRefreshRatesLock);
     auto iter = min_element(mRefreshRateConfigs.getRefreshRates().cbegin(),
                             mRefreshRateConfigs.getRefreshRates().cend(),
                             [rate = mContentRefreshRate](const auto& l, const auto& r) -> bool {

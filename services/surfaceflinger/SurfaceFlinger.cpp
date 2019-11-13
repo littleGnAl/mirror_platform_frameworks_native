@@ -730,6 +730,7 @@ void SurfaceFlinger::init() {
         }
 
         const int configId = display->getActiveConfig();
+        Mutex::Autolock refreshRatesLock(mRefreshRateConfigs.mRefreshRatesLock);
         for (const auto& [type, refresh] : mRefreshRateConfigs.getRefreshRates()) {
             if (refresh && refresh->configId == configId) {
                 return type;
@@ -4754,6 +4755,7 @@ void SurfaceFlinger::dumpVSync(std::string& result) const {
                   mUseSmart90ForVideo ? "on" : "off");
     StringAppendF(&result, "Allowed Display Configs: ");
     for (int32_t configId : mAllowedDisplayConfigs) {
+        Mutex::Autolock refreshRatesLock(mRefreshRateConfigs.mRefreshRatesLock);
         for (auto refresh : mRefreshRateConfigs.getRefreshRates()) {
             if (refresh.second && refresh.second->configId == configId) {
                 StringAppendF(&result, "%dHz, ", refresh.second->fps);
@@ -6183,6 +6185,7 @@ void SurfaceFlinger::setAllowedDisplayConfigsInternal(const sp<DisplayDevice>& d
     mAllowedDisplayConfigs = DisplayConfigs(allowedConfigs.begin(), allowedConfigs.end());
 
     // Set the highest allowed config by iterating backwards on available refresh rates
+    Mutex::Autolock refreshRatesLock(mRefreshRateConfigs.mRefreshRatesLock);
     const auto& refreshRates = mRefreshRateConfigs.getRefreshRates();
     for (auto iter = refreshRates.crbegin(); iter != refreshRates.crend(); ++iter) {
         if (iter->second && isDisplayConfigAllowed(iter->second->configId)) {

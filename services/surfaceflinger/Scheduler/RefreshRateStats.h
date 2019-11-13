@@ -79,6 +79,7 @@ public:
         flushTime();
 
         std::unordered_map<std::string, int64_t> totalTime;
+        Mutex::Autolock refreshRatesLock(mRefreshRateConfigs.mRefreshRatesLock);
         for (const auto& [type, config] : mRefreshRateConfigs.getRefreshRates()) {
             int64_t totalTimeForConfig = 0;
             if (!config) {
@@ -122,6 +123,7 @@ private:
         mPreviousRecordedTime = currentTime;
 
         mConfigModesTotalTime[mode] += timeElapsedMs;
+        Mutex::Autolock refreshRatesLock(mRefreshRateConfigs.mRefreshRatesLock);
         for (const auto& [type, config] : mRefreshRateConfigs.getRefreshRates()) {
             if (!config) {
                 continue;

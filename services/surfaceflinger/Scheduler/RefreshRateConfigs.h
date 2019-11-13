@@ -19,6 +19,8 @@
 #include <algorithm>
 #include <numeric>
 
+#include <utils/Mutex.h>
+
 #include "android-base/stringprintf.h"
 
 #include "DisplayHardware/HWComposer.h"
@@ -57,6 +59,7 @@ public:
         return mRefreshRates;
     }
     std::shared_ptr<RefreshRate> getRefreshRate(RefreshRateType type) const {
+        Mutex::Autolock refreshRatesLock(mRefreshRatesLock);
         const auto& refreshRate = mRefreshRates.find(type);
         if (refreshRate != mRefreshRates.end()) {
             return refreshRate->second;
@@ -65,6 +68,7 @@ public:
     }
 
     RefreshRateType getRefreshRateType(hwc2_config_t id) const {
+        Mutex::Autolock refreshRatesLock(mRefreshRatesLock);
         for (const auto& [type, refreshRate] : mRefreshRates) {
             if (refreshRate->id == id) {
                 return type;
@@ -75,6 +79,7 @@ public:
     }
 
     void populate(const std::vector<std::shared_ptr<const HWC2::Display::Config>>& configs) {
+        Mutex::Autolock refreshRatesLock(mRefreshRatesLock);
         mRefreshRates.clear();
 
         // This is the rate that HWC encapsulates right now when the device is in DOZE mode.
@@ -129,9 +134,11 @@ public:
                                                       configs.at(configId)->getId()}));
         }
     }
-
 private:
     std::map<RefreshRateType, std::shared_ptr<RefreshRate>> mRefreshRates;
+
+public:
+    mutable Mutex mRefreshRatesLock;
 };
 
 } // namespace scheduler
