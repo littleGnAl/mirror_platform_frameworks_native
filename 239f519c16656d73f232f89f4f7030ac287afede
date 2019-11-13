@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55a3ab64_75015694",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1234352
+      },
+      "writtenOn": "2019-11-13T17:59:40Z",
+      "side": 1,
+      "message": "Isn\u0027t there a bug number for this?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "239f519c16656d73f232f89f4f7030ac287afede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "788cdf5d_c12e6d16",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1234352
+      },
+      "writtenOn": "2019-11-13T17:59:40Z",
+      "side": 1,
+      "message": "How does moving the notify here fix the race issue?",
+      "range": {
+        "startLine": 1810,
+        "startChar": 0,
+        "endLine": 1812,
+        "endChar": 5
+      },
+      "revId": "239f519c16656d73f232f89f4f7030ac287afede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
