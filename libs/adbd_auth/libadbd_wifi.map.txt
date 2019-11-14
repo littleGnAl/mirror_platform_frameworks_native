@@ -1,0 +1,14 @@
+LIBADBD_WIFI {
+  global:
+    ## adbd_wifi ##
+    adbd_wifi_new; # apex
+    adbd_wifi_delete; # apex
+    adbd_wifi_run; # apex
+    adbd_wifi_get_public_keys; # apex
+    adbd_wifi_notify_auth; # apex
+    adbd_wifi_notify_disconnect; # apex
+    adbd_wifi_supports_feature; # apex
+
+  local:
+    *;
+};
