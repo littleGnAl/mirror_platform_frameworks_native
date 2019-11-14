@@ -1,0 +1,8 @@
+Verified+1: Dmytro Chystiakov <dmytro.chystiakov@intel.com>
+Code-Review+2: Cody Northrop <cnorthrop@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Lev Rumyantsev <levarum@google.com>
+Submitted-at: Thu, 14 Nov 2019 01:07:33 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1161962
+Project: platform/frameworks/native
+Branch: refs/heads/master
