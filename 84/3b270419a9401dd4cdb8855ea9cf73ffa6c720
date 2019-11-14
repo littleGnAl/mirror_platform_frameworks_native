@@ -1,0 +1,10 @@
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Code-Review+1: Lorenzo Colitti <lorenzo@google.com>
+Verified+1: Remi NGUYEN VAN <reminv@google.com>
+Autosubmit+1: Remi NGUYEN VAN <reminv@google.com>
+Presubmit-Ready+1: Lorenzo Colitti <lorenzo@google.com>
+Submitted-by: Lorenzo Colitti <lorenzo@google.com>
+Submitted-at: Thu, 14 Nov 2019 15:46:22 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1166365
+Project: platform/frameworks/native
+Branch: refs/heads/master
