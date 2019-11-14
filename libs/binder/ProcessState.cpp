@@ -370,6 +370,48 @@ static int open_driver(const char *driver)
     return fd;
 }
 
+bool ProcessState::checkForkSupport() {
+    bool support = false;
+    int fd = open(kDefaultDriver, O_RDWR | O_CLOEXEC);
+    if (fd) {
+        if (ioctl(fd, BINDER_CHECK_FORK_SUPPORT) == 0) {
+            support = true;
+        }
+        close(fd);
+    }
+    return support;
+}
+
+status_t ProcessState::prepareForFork(int* forkedBinderFdOut) {
+    status_t ret;
+    int newDriverFd = ioctl(mDriverFD, BINDER_BEFORE_FORK, 0);
+    if (newDriverFd < 0) {
+        ret = -errno;
+        ALOGE("BINDER_BEFORE_FORK failed: %s", strerror(errno));
+    } else {
+        ALOGI("BINDER_BEFORE_FORK succeeded: %d", newDriverFd);
+        *forkedBinderFdOut = newDriverFd;
+        ret = OK;
+    }
+    return ret;
+}
+
+void ProcessState::afterForkInChild(int forkedBinderFd) {
+    LOG_ALWAYS_FATAL_IF(
+            ioctl(forkedBinderFd, BINDER_AFTER_FORK_IN_CHILD, 0),
+            "binder fork fixup failed: %s", strerror(errno));
+    LOG_ALWAYS_FATAL_IF(dup3(forkedBinderFd, mDriverFD, O_CLOEXEC) < 0,
+            "dup3 of the new driver fd failed: %s", strerror(errno));
+    LOG_ALWAYS_FATAL_IF(close(forkedBinderFd));
+    // The new binder connection has all our old handle values, but it has a new buffer.
+    // Map this new buffer in the place of the old one.
+    void* map = mmap(mVMStart, BINDER_VM_SIZE, PROT_READ,
+            MAP_FIXED | MAP_PRIVATE | MAP_NORESERVE, mDriverFD, 0);
+    LOG_ALWAYS_FATAL_IF(map == MAP_FAILED,
+            "re-mmap of forked binder failed: %s",
+            strerror(errno));
+}
+
 ProcessState::ProcessState(const char *driver)
     : mDriverName(String8(driver))
     , mDriverFD(open_driver(driver))

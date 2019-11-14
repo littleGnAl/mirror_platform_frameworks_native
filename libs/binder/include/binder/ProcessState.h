@@ -77,6 +77,12 @@ public:
                                 // It does NOT include local strong references to the node
             ssize_t             getStrongRefCountForNodeByHandle(int32_t handle);
 
+
+    static  bool                checkForkSupport();
+            status_t            prepareForFork(int* forkedBinderFdOut);
+            void                afterForkInChild(int forkedBinderFd);
+            int                 getDriverFD() { return mDriverFD; }
+
             enum class CallRestriction {
                 // all calls okay
                 NONE,
@@ -91,7 +97,7 @@ public:
 
 private:
     friend class IPCThreadState;
-    
+
             explicit            ProcessState(const char* driver);
                                 ~ProcessState();
 
