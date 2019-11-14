@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e35003a6_1c689e13",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-11-14T17:11:34Z",
+      "side": 1,
+      "message": "For consistency, put all error codes before success (this does mean moving success to 6....).",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 74
+      },
+      "revId": "0e3e28dabcab1fda24ac8e9b1f64bdde74f999c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
