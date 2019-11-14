@@ -1,0 +1,97 @@
+// Copyright (C) 2019 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+cc_defaults {
+    name: "libadbwifi_sysdeps_defaults",
+
+    target: {
+        windows: {
+            cflags: [
+                // Define windows.h and tchar.h Unicode preprocessor symbols so that
+                // CreateFile(), _tfopen(), etc. map to versions that take wchar_t*, breaking the
+                // build if you accidentally pass char*. Fix by calling like:
+                //   std::wstring path_wide;
+                //   if (!android::base::UTF8ToWide(path_utf8, &path_wide)) { /* error handling */ }
+                //   CreateFileW(path_wide.c_str());
+                "-DUNICODE=1",
+                "-D_UNICODE=1",
+
+                // Unlike on Linux, -std=gnu++ doesn't set _GNU_SOURCE on Windows.
+                "-D_GNU_SOURCE",
+
+                // MinGW hides some things behind _POSIX_SOURCE.
+                "-D_POSIX_SOURCE",
+
+                // libusb uses __stdcall on a variadic function, which gets ignored.
+                "-Wno-ignored-attributes",
+
+                // Not supported yet.
+                "-Wno-thread-safety",
+            ],
+            host_ldlibs: [
+                "-lws2_32",
+                "-lgdi32",
+                "-luserenv",
+            ],
+        },
+    },
+}
+cc_library {
+    name: "libadbwifi_sysdeps",
+    defaults: ["libadbwifi_sysdeps_defaults"],
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wthread-safety",
+        "-Werror",
+    ],
+
+    compile_multilib: "first",
+
+    target: {
+        android: {
+            srcs: [
+                "posix/network.cpp",
+                "sysdeps_unix.cpp",
+            ],
+            version_script: "libadbwifi_sysdeps.map.txt",
+        },
+        not_windows: {
+            srcs: [
+                "posix/network.cpp",
+                "sysdeps_unix.cpp",
+            ],
+        },
+        windows: {
+            srcs: [
+                "sysdeps_win32.cpp",
+            ],
+            enabled: true,
+        },
+    },
+    export_include_dirs: ["include"],
+
+    stubs: {
+        symbol_file: "libadbwifi_sysdeps.map.txt",
+    },
+
+    host_supported: true,
+    recovery_available: true,
+
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "liblog",
+    ],
+}
