@@ -1,0 +1,9 @@
+LIBADBWIFI_TLS_CONNECTION {
+  global:
+    extern "C++" {
+        adbwifi::ssl::TlsConnection::*; # apex
+    };
+
+  local:
+    *;
+};
