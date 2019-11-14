@@ -1,0 +1,9 @@
+LIBADBWIFI_SYSDEPS {
+  global:
+    extern "C++" {
+        adbwifi::sysdeps::*; # apex
+    };
+
+  local:
+    *;
+};
