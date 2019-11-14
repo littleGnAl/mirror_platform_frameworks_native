@@ -1,0 +1,9 @@
+LIBADBWIFI_PAIRING_AUTH {
+  global:
+    extern "C++" {
+        adbwifi::pairing::PairingAuth::*; # apex
+    };
+
+  local:
+    *;
+};
