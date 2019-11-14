@@ -1,0 +1,9 @@
+LIBADBWIFI_FDEVENT {
+  global:
+    extern "C++" {
+        adbwifi::fdevent::*; # apex
+    };
+
+  local:
+    *;
+};
