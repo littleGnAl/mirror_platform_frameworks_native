@@ -1,0 +1,11 @@
+LIBADBWIFI_CRYPTO {
+  global:
+    ## libadbwifi_crypto ##
+    extern "C++" {
+    	Key::*;
+	crypto::Aes128Gcm::*;
+    };
+
+  local:
+    *;
+};
