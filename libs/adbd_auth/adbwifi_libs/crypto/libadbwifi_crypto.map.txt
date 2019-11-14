@@ -1,0 +1,10 @@
+LIBADBWIFI_CRYPTO {
+  global:
+    ## libadbwifi_crypto ##
+    extern "C++" {
+    	adbwifi::crypto::*;
+    };
+
+  local:
+    *;
+};
