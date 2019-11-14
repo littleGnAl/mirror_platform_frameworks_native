@@ -1,0 +1,8 @@
+{
+  "presubmit": [
+    {
+      "name": "adbwifi_pairing_auth_test"
+    }
+  ]
+}
+
