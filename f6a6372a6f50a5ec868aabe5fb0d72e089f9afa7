@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66a95bf3_89ec56dc",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T03:33:13Z",
+      "side": 1,
+      "message": "why not mDriverFD? why re-open?",
+      "range": {
+        "startLine": 375,
+        "startChar": 18,
+        "endLine": 375,
+        "endChar": 32
+      },
+      "revId": "f6a6372a6f50a5ec868aabe5fb0d72e089f9afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e962629d_45d3e4d7",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T03:33:13Z",
+      "side": 1,
+      "message": "if fd \u003e\u003d 0?",
+      "range": {
+        "startLine": 376,
+        "startChar": 8,
+        "endLine": 376,
+        "endChar": 10
+      },
+      "revId": "f6a6372a6f50a5ec868aabe5fb0d72e089f9afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3a84b8_f9d3b0fe",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T03:33:13Z",
+      "side": 1,
+      "message": "can you check that there are no other threads when this happens at all in the process? it\u0027s not safe to do this if there are",
+      "range": {
+        "startLine": 385,
+        "startChar": 23,
+        "endLine": 385,
+        "endChar": 37
+      },
+      "revId": "f6a6372a6f50a5ec868aabe5fb0d72e089f9afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fd52d70_636a8665",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T03:33:13Z",
+      "side": 1,
+      "message": "!\u003d -1?",
+      "range": {
+        "startLine": 401,
+        "startChar": 12,
+        "endLine": 401,
+        "endChar": 17
+      },
+      "revId": "f6a6372a6f50a5ec868aabe5fb0d72e089f9afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72f3d85b_66470279",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T03:33:13Z",
+      "side": 1,
+      "message": "avoid duplicating this above",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 5
+      },
+      "revId": "f6a6372a6f50a5ec868aabe5fb0d72e089f9afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4428fff_8df13489",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T03:33:13Z",
+      "side": 1,
+      "message": "document ownership",
+      "range": {
+        "startLine": 82,
+        "startChar": 47,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "f6a6372a6f50a5ec868aabe5fb0d72e089f9afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11828fdd_92526427",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T03:33:13Z",
+      "side": 1,
+      "message": "document ownership",
+      "range": {
+        "startLine": 83,
+        "startChar": 49,
+        "endLine": 83,
+        "endChar": 52
+      },
+      "revId": "f6a6372a6f50a5ec868aabe5fb0d72e089f9afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6360eb90_29210f4d",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T03:33:13Z",
+      "side": 1,
+      "message": "Don\u0027t expose the fd, it needs to be extracted away from. These methods should all be private, and we should add a \u0027fork\u0027 method?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 67
+      },
+      "revId": "f6a6372a6f50a5ec868aabe5fb0d72e089f9afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
