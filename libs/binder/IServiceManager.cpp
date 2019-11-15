@@ -234,7 +234,9 @@ sp<IBinder> ServiceManagerShim::getService(const String16& name) const
 sp<IBinder> ServiceManagerShim::checkService(const String16& name) const
 {
     sp<IBinder> ret;
-    if (!mTheRealServiceManager->checkService(String8(name).c_str(), &ret).isOk()) {
+    Status status = mTheRealServiceManager->checkService(String8(name).c_str(), &ret);
+    ALOGE("asdfasdf %s %s", String8(name).c_str(), status.toString8().c_str());
+    if (!status.isOk()) {
         return nullptr;
     }
     return ret;
