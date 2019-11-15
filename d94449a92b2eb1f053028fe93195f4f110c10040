@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f211621f_ba44e4ef",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T04:26:59Z",
+      "side": 1,
+      "message": "should have comment (since NDK), same below",
+      "revId": "d94449a92b2eb1f053028fe93195f4f110c10040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e383a1c_d26486d2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T04:26:59Z",
+      "side": 1,
+      "message": "nit: this is just for user-defined parcelables. I think it would be more consistent to add explicit methods for this. Although, maybe this is simpler? We probably won\u0027t ever change the way we parcel a list.",
+      "range": {
+        "startLine": 444,
+        "startChar": 45,
+        "endLine": 444,
+        "endChar": 55
+      },
+      "revId": "d94449a92b2eb1f053028fe93195f4f110c10040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
