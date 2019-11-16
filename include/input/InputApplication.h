@@ -25,6 +25,7 @@
 #include <input/Input.h>
 #include <utils/RefBase.h>
 #include <utils/Timers.h>
+#include <utils/Mutex.h>
 
 namespace android {
 
@@ -54,6 +55,7 @@ public:
     }
 
     inline std::string getName() const {
+        Mutex:Autolock _l(const_cast<Mutex&>(mInfoLock));
         return !mInfo.name.empty() ? mInfo.name : "<invalid>";
     }
 
@@ -80,6 +82,7 @@ protected:
     virtual ~InputApplicationHandle();
 
     InputApplicationInfo mInfo;
+    Mutex mInfoLock;
 };
 
 } // namespace android
