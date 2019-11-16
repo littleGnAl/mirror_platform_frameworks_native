@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8788b717_daada6d0",
+        "filename": "headers/media_plugin/media/openmax/OMX_AudioExt.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2019-11-16T19:20:58Z",
+      "side": 1,
+      "message": "OMX_AUDIO_CodingAndroidDTS?",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "0023d1e9b61586fa9b3095a41b6d9ac4d37e2d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e439ebb_02a66e81",
+        "filename": "headers/media_plugin/media/openmax/OMX_AudioExt.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2019-11-16T19:20:58Z",
+      "side": 1,
+      "message": "OMX_Audio_CodingAndroidAPE?",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "0023d1e9b61586fa9b3095a41b6d9ac4d37e2d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cecdf64b_26050c9c",
+        "filename": "headers/media_plugin/media/openmax/OMX_AudioExt.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2019-11-16T19:20:58Z",
+      "side": 1,
+      "message": "This seems out of place?",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 0
+      },
+      "revId": "0023d1e9b61586fa9b3095a41b6d9ac4d37e2d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c6f96c_3d4313df",
+        "filename": "headers/media_plugin/media/openmax/OMX_VideoExt.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2019-11-16T19:20:58Z",
+      "side": 1,
+      "message": "Are we not adding any profiles, params, etc. here?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "0023d1e9b61586fa9b3095a41b6d9ac4d37e2d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
