@@ -77,6 +77,8 @@ cc_library {
         // TODO(b/139016109) remove these three
         "com.android.media.swcodec",
         "test_com.android.media.swcodec",
+        "com.android.media",
+        "test_com.android.media",
     ],
 
     srcs: [
