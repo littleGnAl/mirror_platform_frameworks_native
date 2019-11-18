@@ -81,6 +81,30 @@
       "revId": "d94449a92b2eb1f053028fe93195f4f110c10040",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a9638c0_02461266",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-18T19:31:14Z",
+      "side": 1,
+      "message": "idk, they are custom for strings to avoid copies and for primitives because the format is different on occasion. Ugh. It\u0027s a really ugly API I\u0027ve created around arrays. I should have tried to cleanup the formats of the primitive types and adlfajsd;flkajsd;flkajsd;flajsdfl.\n\nOkay. I\u0027m okay with this :)",
+      "parentUuid": "d754155f_6e3f302f",
+      "range": {
+        "startLine": 444,
+        "startChar": 45,
+        "endLine": 444,
+        "endChar": 55
+      },
+      "revId": "d94449a92b2eb1f053028fe93195f4f110c10040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
