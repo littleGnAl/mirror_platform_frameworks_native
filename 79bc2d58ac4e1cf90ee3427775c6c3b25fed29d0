@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3456317_6268ae5f",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-19T02:12:13Z",
+      "side": 1,
+      "message": "nit: create small RAII object here to unregister to make it easier to modify below code?",
+      "range": {
+        "startLine": 292,
+        "startChar": 33,
+        "endLine": 292,
+        "endChar": 57
+      },
+      "revId": "79bc2d58ac4e1cf90ee3427775c6c3b25fed29d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
