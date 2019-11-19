@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "07b93483_0de1cb19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1436778
+      },
+      "writtenOn": "2019-11-19T10:39:42Z",
+      "side": 1,
+      "message": "Do you mean b/143250857 ?",
+      "parentUuid": "55a3ab64_75015694",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "239f519c16656d73f232f89f4f7030ac287afede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "788cdf5d_c12e6d16",
         "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "239f519c16656d73f232f89f4f7030ac287afede",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "500f64bc_3f39f66f",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1436778
+      },
+      "writtenOn": "2019-11-19T10:39:42Z",
+      "side": 1,
+      "message": "This change doesn\u0027t ensure that the race condition will not happen, but it makes it much less likely.\n\nThe problem happens when the SF receives a new message, before the tracing is complete.\n\nBefore the tracing started after the call to \"doComposition\", now it happens in parallel to the composition (which in all runs I did for testing was always slower than the tracing).\n\nSince the composition happens in the main thread the next message is only processed after the composition is over.\n\nAny other change could not be done on AOSP because of merge conflicts.",
+      "parentUuid": "788cdf5d_c12e6d16",
+      "range": {
+        "startLine": 1810,
+        "startChar": 0,
+        "endLine": 1812,
+        "endChar": 5
+      },
+      "revId": "239f519c16656d73f232f89f4f7030ac287afede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
