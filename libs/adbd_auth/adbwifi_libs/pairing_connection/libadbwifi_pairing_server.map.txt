@@ -1,0 +1,9 @@
+LIBADBWIFI_PAIRING_SERVER {
+  global:
+    pairing_server_start; # apex
+    pairing_server_new; # apex
+    pairing_server_destroy; # apex
+
+  local:
+    *;
+};
