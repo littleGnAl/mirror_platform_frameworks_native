@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb285d0f_91bb989d",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-11-19T22:01:19Z",
+      "side": 1,
+      "message": "Is this the right spacing here? It seems we don\u0027t quite follow Google3\u0027s rules for such things.",
+      "revId": "7576b1105bb2fb3fe66837280e247bab4b68182d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
