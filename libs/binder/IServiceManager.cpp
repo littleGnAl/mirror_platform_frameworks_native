@@ -301,7 +301,10 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             waiter->mCv.wait_for(lock, 1s, [&] {
                 return waiter->mBinder != nullptr;
             });
-            if (waiter->mBinder != nullptr) return waiter->mBinder;
+            if (waiter->mBinder != nullptr) {
+                mTheRealServiceManager->unregisterForNotifications(name, waiter);
+                return waiter->mBinder;
+            }
         }
 
         // Handle race condition for lazy services. Here is what can happen:
@@ -314,9 +317,13 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
         //   the service
         // - we need to request service again to get it to start
         if (!mTheRealServiceManager->getService(name, &out).isOk()) {
+            mTheRealServiceManager->unregisterForNotifications(name, waiter);
             return nullptr;
         }
-        if(out != nullptr) return out;
+        if (out != nullptr) {
+            mTheRealServiceManager->unregisterForNotifications(name, waiter);
+            return out;
+        }
 
         ALOGW("Waited one second for %s", name.c_str());
     }
