@@ -1,0 +1,9 @@
+LIBADBWIFI_PAIRING_SERVER {
+  global:
+    extern "C++" {
+        adbwifi::pairing::PairingServer::*; # apex
+    };
+
+  local:
+    *;
+};
