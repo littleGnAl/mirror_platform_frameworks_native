@@ -280,19 +280,38 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
         std::condition_variable mCv;
     };
 
+    // Simple RAII object to ensure the Waiter is always unregistered before this function exits
+    class WaiterRegistrar {
+    public:
+        WaiterRegistrar(const sp<Waiter>& waiter, const std::string& serviceName,
+                        const sp<AidlServiceManager>& sm)
+         : mWaiter(waiter), mServiceName(serviceName), mServiceManager(sm) {
+            mStatus = mServiceManager->registerForNotifications(mServiceName, waiter);
+        }
+
+        ~WaiterRegistrar() {
+            if(mServiceManager) {
+                mServiceManager->unregisterForNotifications(mServiceName, mWaiter);
+            }
+        }
+
+        sp<Waiter> mWaiter;
+        std::string mServiceName;
+        sp<AidlServiceManager> mServiceManager;
+        Status mStatus;
+    };
+
     const std::string name = String8(name16).c_str();
 
     sp<IBinder> out;
     if (!mTheRealServiceManager->getService(name, &out).isOk()) {
         return nullptr;
     }
-    if(out != nullptr) return out;
+    if (out != nullptr) return out;
 
     sp<Waiter> waiter = new Waiter;
-    if (!mTheRealServiceManager->registerForNotifications(
-            name, waiter).isOk()) {
-        return nullptr;
-    }
+    WaiterRegistrar wR(waiter, name, mTheRealServiceManager);
+    if (!wR.mStatus.isOk()) return nullptr;
 
     while(true) {
         {
@@ -316,7 +335,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
         if (!mTheRealServiceManager->getService(name, &out).isOk()) {
             return nullptr;
         }
-        if(out != nullptr) return out;
+        if (out != nullptr) return out;
 
         ALOGW("Waited one second for %s", name.c_str());
     }
