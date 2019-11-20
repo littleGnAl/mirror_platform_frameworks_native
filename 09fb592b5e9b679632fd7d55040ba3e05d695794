@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d2a6583_067d70d6",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-20T00:43:52Z",
+      "side": 1,
+      "message": "this should be mStatus.isOk()\n\nnit: However, I also wonder what you think of something like this, where we only construct the RAII object in a successful state.\n\nclass Defer {\npublic:\n    Defer(std::function\u003cvoid()\u003e\u0026\u0026 f) : mF(std::move(f)) {}\n    ~Defer() { mF(); }\nprivate:\n    std::function\u003cvoid()\u003e mF;\n};\n\nsp\u003cWaiter\u003e waiter \u003d new Waiter;\nif (!mTheRealServiceManager-\u003eregisterForNotifications(\n            name, waiter).isOk()) {\n    return nullptr;\n}\nDefer unregister ([\u0026] {\n    mTheRealServiceManager-\u003eunregisterForNotifications(...); \n});",
+      "range": {
+        "startLine": 293,
+        "startChar": 15,
+        "endLine": 293,
+        "endChar": 30
+      },
+      "revId": "09fb592b5e9b679632fd7d55040ba3e05d695794",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da2e0173_8e012f6f",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-20T00:43:52Z",
+      "side": 1,
+      "message": "unrelated change",
+      "range": {
+        "startLine": 338,
+        "startChar": 10,
+        "endLine": 338,
+        "endChar": 11
+      },
+      "revId": "09fb592b5e9b679632fd7d55040ba3e05d695794",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
