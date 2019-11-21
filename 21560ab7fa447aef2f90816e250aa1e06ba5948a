@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b64b2b05_46ad504f",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-21T23:59:41Z",
+      "side": 1,
+      "message": "Daniel, I haven\u0027t had time to investigate always doing the check early. What do you think of this? It could always be unified w/ interface_cast.",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "revId": "21560ab7fa447aef2f90816e250aa1e06ba5948a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
