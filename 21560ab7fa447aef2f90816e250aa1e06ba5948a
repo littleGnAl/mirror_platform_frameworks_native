@@ -46,6 +46,29 @@
       "revId": "21560ab7fa447aef2f90816e250aa1e06ba5948a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b876656_310a314d",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-11-22T23:21:10Z",
+      "side": 1,
+      "message": "We don\u0027t have objects that respond to more than one interface descriptor, do we?",
+      "range": {
+        "startLine": 60,
+        "startChar": 13,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "21560ab7fa447aef2f90816e250aa1e06ba5948a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
