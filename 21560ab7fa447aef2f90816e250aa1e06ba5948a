@@ -22,6 +22,30 @@
       "revId": "21560ab7fa447aef2f90816e250aa1e06ba5948a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21760045_0a5594ea",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-11-22T23:18:02Z",
+      "side": 1,
+      "message": "Yeah, sounds reasonable. I was also imagining that we could put an interface descriptor list in the struct node in the binder driver so we wouldn\u0027t have to IPC to check it, but we don\u0027t have to do that now.",
+      "parentUuid": "b64b2b05_46ad504f",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "revId": "21560ab7fa447aef2f90816e250aa1e06ba5948a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
