@@ -233,6 +233,19 @@ status_t BufferLayerConsumer::updateAndReleaseLocked(const BufferItem& item,
 
     int slot = item.mSlot;
 
+    // Do whatever sync ops we need to do before releasing the old slot.
+    if (slot != mCurrentTexture) {
+        err = syncForReleaseLocked();
+        if (err != NO_ERROR) {
+            // Release the buffer we just acquired.  It's not safe to
+            // release the old buffer, so instead we just drop the new frame.
+            // As we are still under lock since acquireBuffer, it is safe to
+            // release by slot.
+            releaseBufferLocked(slot, mSlots[slot].mGraphicBuffer);
+            return err;
+        }
+    }
+
     BLC_LOGV("updateAndRelease: (slot=%d buf=%p) -> (slot=%d buf=%p)", mCurrentTexture,
              (mCurrentTextureBuffer != nullptr && mCurrentTextureBuffer->graphicBuffer() != nullptr)
                      ? mCurrentTextureBuffer->graphicBuffer()->handle
@@ -297,6 +310,31 @@ status_t BufferLayerConsumer::bindTextureImageLocked() {
     }
 
     return NO_INIT;
+}
+
+status_t BufferLayerConsumer::syncForReleaseLocked() {
+    BLC_LOGV("syncForReleaseLocked");
+
+    if (mCurrentTexture != BufferQueue::INVALID_BUFFER_SLOT) {
+        if (mRE.useNativeFenceSync()) {
+            base::unique_fd fenceFd = mRE.flush();
+            if (fenceFd == -1) {
+                BLC_LOGE("syncForReleaseLocked: failed to flush RenderEngine");
+                return UNKNOWN_ERROR;
+            }
+            sp<Fence> fence(new Fence(std::move(fenceFd)));
+            status_t err = addReleaseFenceLocked(mCurrentTexture,
+                                                 mCurrentTextureBuffer->graphicBuffer(), fence);
+            if (err != OK) {
+                BLC_LOGE("syncForReleaseLocked: error adding release fence: "
+                         "%s (%d)",
+                         strerror(-err), err);
+                return err;
+            }
+        }
+    }
+
+    return OK;
 }
 
 void BufferLayerConsumer::getTransformMatrix(float mtx[16]) {

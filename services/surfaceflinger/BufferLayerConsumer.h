@@ -259,6 +259,12 @@ private:
     // access the current texture buffer.
     status_t doFenceWaitLocked() const;
 
+    // syncForReleaseLocked performs the synchronization needed to release the
+    // current slot from RenderEngine.  If needed it will set the current
+    // slot's fence to guard against a producer accessing the buffer before
+    // the outstanding accesses have completed.
+    status_t syncForReleaseLocked();
+
     // getCurrentCropLocked returns the cropping rectangle of the current buffer.
     Rect getCurrentCropLocked() const;
 
