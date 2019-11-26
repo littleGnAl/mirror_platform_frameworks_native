@@ -22,5 +22,22 @@
     <test class="com.android.tradefed.testtype.GTest" >
         <option name="native-test-device-path" value="/data/local/tmp" />
         <option name="module-name" value="SurfaceFlinger_test" />
+        <!--option name="include-filter" value="*CredentialsTest.*" />
+        <option name="include-filter" value="*SurfaceFlingerStress.*" />
+        <option name="include-filter" value="*SurfaceInterceptorTest.*" />
+        <option name="include-filter" value="*LayerTransactionTest.*" />
+        <option name="include-filter" value="*LayerTypeTransactionTest.*" />
+        <option name="include-filter" value="*LayerUpdateTest.*" />
+        <option name="include-filter" value="*GeometryLatchingTest.*" />
+        <option name="include-filter" value="*CropLatchingTest.*" />
+        <option name="include-filter" value="*ChildLayerTest.*" />
+        <option name="include-filter" value="*ScreenCaptureTest.*" />
+        <option name="include-filter" value="*ScreenCaptureChildOnlyTest.*" />
+        <option name="include-filter" value="*DereferenceSurfaceControlTest.*" />
+        <option name="include-filter" value="*BoundlessLayerTest.*" />
+        <option name="include-filter" value="*MultiDisplayLayerBoundsTest.*" />
+        <option name="include-filter" value="*InvalidHandleTest.*" />
+        <option name="include-filter" value="*VirtualDisplayTest.*" />
+        <option name="include-filter" value="*RelativeZTest.*" /-->
     </test>
 </configuration>
