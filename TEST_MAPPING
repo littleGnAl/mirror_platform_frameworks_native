@@ -1,0 +1,10 @@
+{
+  "presubmit": [
+    {
+      "name": "SurfaceFlinger_test"
+    },
+    {
+      "name": "libsurfaceflinger_unittest"
+    }
+  ]
+}
