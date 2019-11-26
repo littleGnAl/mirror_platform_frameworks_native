@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edba91f1_8b1103ee",
+        "filename": "cmds/idlcli/vibrator/CommandCompose.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2019-11-26T17:59:59Z",
+      "side": 1,
+      "message": "Do you also need to check \u003e\u003d 0 here?",
+      "range": {
+        "startLine": 61,
+        "startChar": 73,
+        "endLine": 61,
+        "endChar": 87
+      },
+      "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b093e2_044067b7",
+        "filename": "cmds/idlcli/vibrator/CommandGetCompositionDelayMax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2019-11-26T17:59:59Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d65aeb0_2032c0b9",
+        "filename": "cmds/idlcli/vibrator/CommandGetCompositionDelayMax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2019-11-26T17:59:59Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8da2500f_79cce551",
+        "filename": "cmds/idlcli/vibrator/CommandGetCompositionSizeMax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2019-11-26T17:59:59Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "243c3249_3c2fdbfb",
+        "filename": "cmds/idlcli/vibrator/CommandGetCompositionSizeMax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2019-11-26T17:59:59Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
