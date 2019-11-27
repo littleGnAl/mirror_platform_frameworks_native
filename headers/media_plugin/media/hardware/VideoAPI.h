@@ -193,12 +193,19 @@ struct __attribute__ ((__packed__)) HDRStaticInfo {
     // Static_Metadata_Descriptor_ID
     enum ID : uint8_t {
         kType1 = 0, // Static Metadata Type 1
+        kType2 = 1, // Static Metadata Type 2
     } mID;
 
     struct __attribute__ ((__packed__)) Primaries1 {
         // values are in units of 0.00002
         uint16_t x;
         uint16_t y;
+    };
+
+    struct __attribute__ ((__packed__)) Primaries2 {
+        // values are in units of 0.00002
+        int32_t x;
+        int32_t y;
     };
 
     // Static Metadata Descriptor Type 1
@@ -213,14 +220,73 @@ struct __attribute__ ((__packed__)) HDRStaticInfo {
         uint16_t mMaxFrameAverageLightLevel; // in cd/m^2
     };
 
+    // Static Metadata Descriptor Type 2
+    struct __attribute__ ((__packed__)) Type2 {
+        enum validFields : uint8_t {
+            kDisplayColorVolume = 0x01,
+            kContentLightLevel = 0x02,
+            kAmbientViewingEnv = 0x04,
+            kContentColorVolume = 0x08,
+        };
+
+        // Enable / disable specific fields in this structure
+        uint8_t mValidFields;
+
+        // mastering display color volume
+        // Valid only if bit 0 of mValidFields is 1
+        Primaries1 mR; // display primary 2
+        Primaries1 mG; // display primary 0
+        Primaries1 mB; // display primary 1
+        Primaries1 mW; // white point
+        uint16_t mMaxDisplayLuminance; // in cd/m^2
+        uint16_t mMinDisplayLuminance; // in 0.0001 cd/m^2
+
+        // content light level
+        // Valid only if bit 1 of mValidFields is 1
+        uint16_t mMaxContentLightLevel; // in cd/m^2
+        uint16_t mMaxFrameAverageLightLevel; // in cd/m^2
+
+        // ambient viewing environment
+        // Valid only if bit 2 of mValidFields is 1
+        uint32_t mAmbientIlluminance; //in 0.0001 cd/m^2
+        Primaries1 mAmbientLight; //chromaticity
+
+
+        // content color volume
+        // Valid only if bit 3 of mValidFields is 1
+        uint8_t mCCVCancelFlag; // controls persistence of CCV SEI
+        uint8_t mCCVPersistenceFlag; // persistence of current layer
+        uint8_t mCCVPrimariesPresentFlag; // presence of primaries
+        uint8_t mCCVMaxContentLuminancePresentFlag; // presence of mMaxContentLuminance
+        uint8_t mCCVMinContentLuminancePresentFlag; // presence of mMinContentLuminance
+        uint8_t mCCVAvgContentLuminancePresentFlag; // presence of mAvgContentLuminance
+
+        // Below fields are valid only if mCCVPrimariesPresentFlag is 1
+        Primaries2 mCCVR; // CCV primary 2
+        Primaries2 mCCVG; // CCV primary 0
+        Primaries2 mCCVB; // CCV primary 1
+
+        // Below field is valid only if mCCVMaxContentLuminancePresentFlag is 1
+        uint32_t mMaxContentLuminance; //in 0.0000001 cd/m^2
+
+        // Below field is valid only if mCCVMinContentLuminancePresentFlag is 1
+        uint32_t mMinContentLuminance; //in 0.0000001 cd/m^2
+
+        // Below field is valid only if mCCVAvgContentLuminancePresentFlag is 1
+        uint32_t mAvgContentLuminance; //in 0.0000001 cd/m^2
+    };
+
     union {
          Type1 sType1;
+         Type2 sType2;
     };
 };
 
 static_assert(sizeof(HDRStaticInfo::Primaries1) == 4, "wrong struct size");
+static_assert(sizeof(HDRStaticInfo::Primaries2) == 8, "wrong struct size");
 static_assert(sizeof(HDRStaticInfo::Type1) == 24, "wrong struct size");
-static_assert(sizeof(HDRStaticInfo) == 25, "wrong struct size");
+static_assert(sizeof(HDRStaticInfo::Type2) == 75, "wrong struct size");
+static_assert(sizeof(HDRStaticInfo) == 76, "wrong struct size");
 
 #ifdef STRINGIFY_ENUMS
 
