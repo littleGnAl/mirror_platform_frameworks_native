@@ -725,10 +725,13 @@ int Surface::queueBuffer(android_native_buffer_t* buffer, int fenceFd) {
         return OK;
     }
 
-
     // Make sure the crop rectangle is entirely inside the buffer.
     Rect crop(Rect::EMPTY_RECT);
-    mCrop.intersect(Rect(buffer->width, buffer->height), &crop);
+    if (mCrop.isEmpty()) {
+        crop = Rect(buffer->width, buffer->height);
+    } else {
+        mCrop.intersect(Rect(buffer->width, buffer->height), &crop);
+    }
 
     sp<Fence> fence(fenceFd >= 0 ? new Fence(fenceFd) : Fence::NO_FENCE);
     IGraphicBufferProducer::QueueBufferOutput output;
