@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5b3fb69a_fd6a60c1",
+        "filename": "cmds/idlcli/vibrator/CommandCompose.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1418133
+      },
+      "writtenOn": "2019-11-27T02:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edba91f1_8b1103ee",
+      "range": {
+        "startLine": 61,
+        "startChar": 73,
+        "endLine": 61,
+        "endChar": 87
+      },
+      "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95b093e2_044067b7",
         "filename": "cmds/idlcli/vibrator/CommandGetCompositionDelayMax.cpp",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa80a05_bca31374",
+        "filename": "cmds/idlcli/vibrator/CommandGetCompositionDelayMax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1418133
+      },
+      "writtenOn": "2019-11-27T02:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b093e2_044067b7",
+      "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "e612d18c_47856fcf",
+        "filename": "cmds/idlcli/vibrator/CommandGetCompositionDelayMax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1418133
+      },
+      "writtenOn": "2019-11-27T02:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d65aeb0_2032c0b9",
+      "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8da2500f_79cce551",
         "filename": "cmds/idlcli/vibrator/CommandGetCompositionSizeMax.cpp",
         "patchSetId": 1
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "513758df_4e7376d6",
+        "filename": "cmds/idlcli/vibrator/CommandGetCompositionSizeMax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1418133
+      },
+      "writtenOn": "2019-11-27T02:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8da2500f_79cce551",
+      "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "243c3249_3c2fdbfb",
         "filename": "cmds/idlcli/vibrator/CommandGetCompositionSizeMax.cpp",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aca4e07_7286d47c",
+        "filename": "cmds/idlcli/vibrator/CommandGetCompositionSizeMax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1418133
+      },
+      "writtenOn": "2019-11-27T02:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "243c3249_3c2fdbfb",
+      "revId": "f7e3849ab1d099f1fe046c36eb836a021cf15719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
