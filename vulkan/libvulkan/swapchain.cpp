@@ -1301,8 +1301,16 @@ VkResult CreateSwapchainKHR(VkDevice device,
         if (err != 0) {
             // TODO(jessehall): Improve error reporting. Can we enumerate
             // possible errors and translate them to valid Vulkan result codes?
+            switch (-err)
+            {
+                case ENOMEM:
+                    result = VK_ERROR_OUT_OF_DEVICE_MEMORY;
+                    break;
+                default:
+                    result = VK_ERROR_SURFACE_LOST_KHR;
+                    break;
+            }
             ALOGE("dequeueBuffer[%u] failed: %s (%d)", i, strerror(-err), err);
-            result = VK_ERROR_SURFACE_LOST_KHR;
             break;
         }
         img.buffer = buffer;
