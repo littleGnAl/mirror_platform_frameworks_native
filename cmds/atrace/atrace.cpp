@@ -26,6 +26,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/mman.h>
 #include <time.h>
 #include <unistd.h>
 #include <zlib.h>
@@ -33,9 +34,7 @@
 #include <fstream>
 #include <memory>
 
-#include <binder/IBinder.h>
-#include <binder/IServiceManager.h>
-#include <binder/Parcel.h>
+#include <cutils/atrace_shmem.h>
 
 #include <android/hardware/atrace/1.0/IAtraceDevice.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
@@ -328,6 +327,9 @@ static const char* k_traceStreamPath =
 static const char* k_traceMarkerPath =
     "trace_marker";
 
+
+alignas(4096) AtraceShmemPage g_atrace_shmem;
+
 // Check whether a file exists.
 static bool fileExists(const char* filename) {
     return access((g_traceFolder + filename).c_str(), F_OK) != -1;
@@ -571,132 +573,6 @@ static bool setPrintTgidEnableIfPresent(bool enable)
     return true;
 }
 
-// Poke all the binder-enabled processes in the system to get them to re-read
-// their system properties.
-static bool pokeBinderServices()
-{
-    sp<IServiceManager> sm = defaultServiceManager();
-    Vector<String16> services = sm->listServices();
-    for (size_t i = 0; i < services.size(); i++) {
-        sp<IBinder> obj = sm->checkService(services[i]);
-        if (obj != nullptr) {
-            Parcel data;
-            if (obj->transact(IBinder::SYSPROPS_TRANSACTION, data,
-                    nullptr, 0) != OK) {
-                if (false) {
-                    // XXX: For some reason this fails on tablets trying to
-                    // poke the "phone" service.  It's not clear whether some
-                    // are expected to fail.
-                    String8 svc(services[i]);
-                    fprintf(stderr, "error poking binder service %s\n",
-                        svc.string());
-                    return false;
-                }
-            }
-        }
-    }
-    return true;
-}
-
-// Poke all the HAL processes in the system to get them to re-read
-// their system properties.
-static void pokeHalServices()
-{
-    using ::android::hidl::base::V1_0::IBase;
-    using ::android::hidl::manager::V1_0::IServiceManager;
-    using ::android::hardware::hidl_string;
-    using ::android::hardware::Return;
-
-    sp<IServiceManager> sm = ::android::hardware::defaultServiceManager();
-
-    if (sm == nullptr) {
-        fprintf(stderr, "failed to get IServiceManager to poke hal services\n");
-        return;
-    }
-
-    auto listRet = sm->list([&](const auto &interfaces) {
-        for (size_t i = 0; i < interfaces.size(); i++) {
-            string fqInstanceName = interfaces[i];
-            string::size_type n = fqInstanceName.find('/');
-            if (n == std::string::npos || interfaces[i].size() == n+1)
-                continue;
-            hidl_string fqInterfaceName = fqInstanceName.substr(0, n);
-            hidl_string instanceName = fqInstanceName.substr(n+1, std::string::npos);
-            Return<sp<IBase>> interfaceRet = sm->get(fqInterfaceName, instanceName);
-            if (!interfaceRet.isOk()) {
-                // ignore
-                continue;
-            }
-
-            sp<IBase> interface = interfaceRet;
-            if (interface == nullptr) {
-                // ignore
-                continue;
-            }
-
-            auto notifyRet = interface->notifySyspropsChanged();
-            if (!notifyRet.isOk()) {
-                // ignore
-            }
-        }
-    });
-    if (!listRet.isOk()) {
-        // TODO(b/34242478) fix this when we determine the correct ACL
-        //fprintf(stderr, "failed to list services: %s\n", listRet.description().c_str());
-    }
-}
-
-// Set the trace tags that userland tracing uses, and poke the running
-// processes to pick up the new value.
-static bool setTagsProperty(uint64_t tags)
-{
-    std::string value = android::base::StringPrintf("%#" PRIx64, tags);
-    if (!android::base::SetProperty(k_traceTagsProperty, value)) {
-        fprintf(stderr, "error setting trace tags system property\n");
-        return false;
-    }
-    return true;
-}
-
-static void clearAppProperties()
-{
-    if (!android::base::SetProperty(k_traceAppsNumberProperty, "")) {
-        fprintf(stderr, "failed to clear system property: %s",
-              k_traceAppsNumberProperty);
-    }
-}
-
-// Set the system property that indicates which apps should perform
-// application-level tracing.
-static bool setAppCmdlineProperty(char* cmdline)
-{
-    int i = 0;
-    char* start = cmdline;
-    while (start != nullptr) {
-        char* end = strchr(start, ',');
-        if (end != nullptr) {
-            *end = '\0';
-            end++;
-        }
-        std::string key = android::base::StringPrintf(k_traceAppsPropertyTemplate, i);
-        if (!android::base::SetProperty(key, start)) {
-            fprintf(stderr, "error setting trace app %d property to %s\n", i, key.c_str());
-            clearAppProperties();
-            return false;
-        }
-        start = end;
-        i++;
-    }
-
-    std::string value = android::base::StringPrintf("%d", i);
-    if (!android::base::SetProperty(k_traceAppsNumberProperty, value)) {
-        fprintf(stderr, "error setting trace app number property to %s\n", value.c_str());
-        clearAppProperties();
-        return false;
-    }
-    return true;
-}
-
 // Disable all /sys/ enable files.
 static bool disableKernelTraceEvents() {
     bool ok = true;
@@ -842,9 +718,26 @@ static bool setCategoriesEnableFromFile(const char* categories_file)
     return ok;
 }
 
+static bool CreateAtraceShmem() {
+    int fd = open("/dev/__atrace_shmem__", O_RDWR);
+    if (fd != -1) {
+        if (mmap(&g_atrace_shmem, sizeof(AtraceShmemPage),
+              PROT_READ | PROT_WRITE, MAP_SHARED | MAP_FIXED, fd, 0) == MAP_FAILED) {
+            ALOGE("Error remapping g_atrace_shmem: %d.", errno);
+            close(fd);
+            return false;
+        }
+        close(fd);
+        return true;
+    } else {
+        ALOGE("Error opening /dev/__atrace_shmem__.");
+        return false;
+    }
+}
+
 static bool setUpUserspaceTracing()
 {
-    bool ok = true;
+    bool ok = CreateAtraceShmem();
 
     // Set up the tags property.
     uint64_t tags = 0;
@@ -854,7 +747,7 @@ static bool setUpUserspaceTracing()
             tags |= c.tags;
         }
     }
-    ok &= setTagsProperty(tags);
+    g_atrace_shmem.atrace_requested_tags = tags;
 
     bool coreServicesTagEnabled = false;
     for (size_t i = 0; i < arraysize(k_categories); i++) {
@@ -875,27 +768,20 @@ static bool setUpUserspaceTracing()
         }
         packageList += android::base::GetProperty(k_coreServicesProp, "");
     }
-    ok &= setAppCmdlineProperty(&packageList[0]);
-    ok &= pokeBinderServices();
-    pokeHalServices();
-
-    if (g_tracePdx) {
-        ok &= ServiceUtility::PokeServices();
+    std::replace(packageList.begin(), packageList.end(), ',', '\0');
+    if (packageList.size() >= sizeof(g_atrace_shmem.enabled_cmdlines)) {
+        ok = false;
+    } else {
+        memcpy(g_atrace_shmem.enabled_cmdlines, packageList.c_str(), packageList.size() + 1);
     }
-
+    atomic_fetch_add_explicit(&g_atrace_shmem.atrace_sequence_number, 1u, memory_order_release);
     return ok;
 }
 
 static void cleanUpUserspaceTracing()
 {
-    setTagsProperty(0);
-    clearAppProperties();
-    pokeBinderServices();
-    pokeHalServices();
-
-    if (g_tracePdx) {
-        ServiceUtility::PokeServices();
-    }
+    g_atrace_shmem.atrace_requested_tags =  static_cast<uint64_t>(0u);
+    atomic_fetch_add_explicit(&g_atrace_shmem.atrace_sequence_number, 1u, memory_order_release);
 }
 
 
