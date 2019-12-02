@@ -16,6 +16,24 @@
       "revId": "9bb4db752dec48b5f608b0f3d6078258f38777d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "538427ea_873523d7",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-12-02T18:16:22Z",
+      "side": 1,
+      "message": "The error is reasonable to occur there from my understanding.\n\nI don\u0027t think this applies to other places, given the allocation currently can happen only at swapchain creation or earlier.",
+      "parentUuid": "5f417854_52750b4a",
+      "revId": "9bb4db752dec48b5f608b0f3d6078258f38777d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
