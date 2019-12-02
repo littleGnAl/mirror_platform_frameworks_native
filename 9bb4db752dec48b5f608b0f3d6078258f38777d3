@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f417854_52750b4a",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2019-12-02T16:52:33Z",
+      "side": 1,
+      "message": "Have you seen this error occur here?\n\nJesse/Anders: should we do the same thing in other places in the swapchain code (especially where other dequeueBuffer calls are made)?",
+      "revId": "9bb4db752dec48b5f608b0f3d6078258f38777d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
