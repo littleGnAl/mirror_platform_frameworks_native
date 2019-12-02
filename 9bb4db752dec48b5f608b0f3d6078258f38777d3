@@ -34,6 +34,24 @@
       "revId": "9bb4db752dec48b5f608b0f3d6078258f38777d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93faeeb_8dab1c3b",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2019-12-02T18:38:27Z",
+      "side": 1,
+      "message": "Agreed: off-hand I don\u0027t know of other places where this is allowed/appropriate. If we find them, we can update them independently.\n\nIf/when we implement deferred-dequeue, then we\u0027d want to handle out-of-memory there.",
+      "parentUuid": "538427ea_873523d7",
+      "revId": "9bb4db752dec48b5f608b0f3d6078258f38777d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
