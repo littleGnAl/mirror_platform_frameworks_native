@@ -1996,6 +1996,17 @@ binder::Status InstalldNativeService::getExternalSize(const std::unique_ptr<std:
         auto obbPath = StringPrintf("%s/Android/obb",
                 create_data_media_path(uuid_, userId).c_str());
         calculate_tree_size(obbPath, &obbSize);
+	if( ~flags & FLAG_USE_QUOTA ) {
+		/* For device mounted userdata without quota option
+		 * will remove obbSize from totalSize, to
+		 * Make android.appsecurity.cts.StorageHostTest#testVerifyStatsExternalConsistent
+		 * testcase PASS.
+		 * Where as device mounted userdata with quota option,
+		 * uses only AID_MEDIA_RW to get totalSize that avoid obb path consideration,
+		 * so this testcase got passed. 
+		 */
+		totalSize -= obbSize;
+	}
         ATRACE_END();
     }
 
