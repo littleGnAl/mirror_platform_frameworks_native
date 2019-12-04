@@ -925,6 +925,7 @@ status_t SurfaceFlinger::getDisplayConfigs(const sp<IBinder>& displayToken,
             std::swap(info.w, info.h);
         }
 
+        info.isNative = hwConfig->getIsNative();
         configs->push_back(info);
     }
 

@@ -170,6 +170,10 @@ public:
                 }
                 return *this;
             }
+            Builder& setIsNative(bool isNative) {
+                mConfig->mIsNative = isNative;
+                return *this;
+            }
 
         private:
             float getDefaultDensity();
@@ -184,6 +188,7 @@ public:
         nsecs_t getVsyncPeriod() const { return mVsyncPeriod; }
         float getDpiX() const { return mDpiX; }
         float getDpiY() const { return mDpiY; }
+        bool getIsNative() const { return mIsNative; }
 
     private:
         Config(Display& display, hwc2_config_t id);
@@ -196,6 +201,7 @@ public:
         nsecs_t mVsyncPeriod;
         float mDpiX;
         float mDpiY;
+        bool mIsNative;
     };
 
     virtual hwc2_display_t getId() const = 0;
