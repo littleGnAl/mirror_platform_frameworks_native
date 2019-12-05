@@ -45,8 +45,8 @@ namespace installd {
 static void CloseDescriptor(int fd) {
     if (fd >= 0) {
         int result = close(fd);
-        UNUSED(result);  // Ignore result. Printing to logcat will open a new descriptor
-                         // that we do *not* want.
+        UNUSED(result); // Ignore result. Printing to logcat will open a new descriptor
+                        // that we do *not* want.
     }
 }
 
@@ -61,11 +61,15 @@ static void CloseDescriptor(const char* descriptor_string) {
 
 static std::vector<apex::ApexFile> ActivateApexPackages() {
     // The logic here is (partially) copied and adapted from
-    // system/apex/apexd/apexd_main.cpp.
+    // system/apex/apexd/apexd.cpp.
     //
-    // Only scan the APEX directory under /system (within the chroot dir).
-    // Cast call to void to suppress warn_unused_result.
-    static_cast<void>(apex::scanPackagesDirAndActivate(apex::kApexPackageSystemDir));
+    // Only scan the APEX directory under /system, /system_ext and /vendor (within the chroot dir).
+    std::vector<const char*> apex_dirs{apex::kApexPackageSystemDir, apex::kApexPackageSystemExtDir,
+                                       apex::kApexPackageVendorDir};
+    for (const auto& dir : apex_dirs) {
+        // Cast call to void to suppress warn_unused_result.
+        static_cast<void>(apex::scanPackagesDirAndActivate(dir));
+    }
     return apex::getActivePackages();
 }
 
@@ -74,8 +78,7 @@ static void DeactivateApexPackages(const std::vector<apex::ApexFile>& active_pac
         const std::string& package_path = apex_file.GetPath();
         base::Result<void> status = apex::deactivatePackage(package_path);
         if (!status.ok()) {
-            LOG(ERROR) << "Failed to deactivate " << package_path << ": "
-                       << status.error();
+            LOG(ERROR) << "Failed to deactivate " << package_path << ": " << status.error();
         }
     }
 }
@@ -89,10 +92,7 @@ static void TryExtraMount(const char* name, const char* slot, const char* target
         if (dm.GetState(partition_name) != dm::DmDeviceState::INVALID) {
             std::string path;
             if (dm.GetDmDevicePathByName(partition_name, &path)) {
-                int mount_result = mount(path.c_str(),
-                                         target,
-                                         "ext4",
-                                         MS_RDONLY,
+                int mount_result = mount(path.c_str(), target, "ext4", MS_RDONLY,
                                          /* data */ nullptr);
                 if (mount_result == 0) {
                     return;
@@ -103,10 +103,7 @@ static void TryExtraMount(const char* name, const char* slot, const char* target
 
     // Fall back and attempt a direct mount.
     std::string block_device = StringPrintf("/dev/block/by-name/%s", partition_name.c_str());
-    int mount_result = mount(block_device.c_str(),
-                             target,
-                             "ext4",
-                             MS_RDONLY,
+    int mount_result = mount(block_device.c_str(), target, "ext4", MS_RDONLY,
                              /* data */ nullptr);
     UNUSED(mount_result);
 }
@@ -115,10 +112,10 @@ static void TryExtraMount(const char* name, const char* slot, const char* target
 //   [cmd] [status-fd] [target-slot] "dexopt" [dexopt-params]
 // The file descriptor denoted by status-fd will be closed. The rest of the parameters will
 // be passed on to otapreopt in the chroot.
-static int otapreopt_chroot(const int argc, char **arg) {
+static int otapreopt_chroot(const int argc, char** arg) {
     // Validate arguments
     // We need the command, status channel and target slot, at a minimum.
-    if(argc < 3) {
+    if (argc < 3) {
         PLOG(ERROR) << "Not enough arguments.";
         exit(208);
     }
@@ -147,9 +144,7 @@ static int otapreopt_chroot(const int argc, char **arg) {
     }
 
     // Bind mount necessary directories.
-    constexpr const char* kBindMounts[] = {
-            "/data", "/dev", "/proc", "/sys"
-    };
+    constexpr const char* kBindMounts[] = {"/data", "/dev", "/proc", "/sys"};
     for (size_t i = 0; i < arraysize(kBindMounts); ++i) {
         std::string trg = StringPrintf("/postinstall%s", kBindMounts[i]);
         if (mount(kBindMounts[i], trg.c_str(), nullptr, MS_BIND, nullptr) != 0) {
@@ -197,8 +192,8 @@ static int otapreopt_chroot(const int argc, char **arg) {
     //   chmod 0755 /postinstall/apex
     //   chown root root /postinstall/apex
     //
-    if (mount("tmpfs", kPostinstallApexDir, "tmpfs", MS_NODEV | MS_NOEXEC | MS_NOSUID, nullptr)
-        != 0) {
+    if (mount("tmpfs", kPostinstallApexDir, "tmpfs", MS_NODEV | MS_NOEXEC | MS_NOSUID, nullptr) !=
+        0) {
         PLOG(ERROR) << "Failed to mount tmpfs in " << kPostinstallApexDir;
         exit(209);
     }
@@ -222,7 +217,7 @@ static int otapreopt_chroot(const int argc, char **arg) {
     }
 
     // Make /postinstall the root in our mount namespace.
-    if (chroot(".")  != 0) {
+    if (chroot(".") != 0) {
         PLOG(ERROR) << "Failed to chroot";
         exit(204);
     }
@@ -238,9 +233,8 @@ static int otapreopt_chroot(const int argc, char **arg) {
 
     // Check that an ART APEX has been activated; clean up and exit
     // early otherwise.
-    if (std::none_of(active_packages.begin(),
-                     active_packages.end(),
-                     [](const apex::ApexFile& package){
+    if (std::none_of(active_packages.begin(), active_packages.end(),
+                     [](const apex::ApexFile& package) {
                          return package.GetManifest().name() == "com.android.art";
                      })) {
         LOG(FATAL_WITHOUT_ABORT) << "No activated com.android.art APEX package.";
@@ -278,9 +272,9 @@ static int otapreopt_chroot(const int argc, char **arg) {
     return 0;
 }
 
-}  // namespace installd
-}  // namespace android
+} // namespace installd
+} // namespace android
 
-int main(const int argc, char *argv[]) {
+int main(const int argc, char* argv[]) {
     return android::installd::otapreopt_chroot(argc, argv);
 }
