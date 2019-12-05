@@ -1,0 +1,544 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c9408c1_6e5a622f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "wow, this looks really good already! :)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e6788f_d606197d",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "want to rename this in a patch below this? We can get it in no questions asked, and it\u0027ll make this CL smaller/easier to review.",
+      "range": {
+        "startLine": 86,
+        "startChar": 41,
+        "endLine": 86,
+        "endChar": 68
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa9ea44_e0965a29",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "we don\u0027t have addPostCommandTask here, but I expect you\u0027ll also hit a race, need to guarantee client somehow.",
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a8d6d5_711f2025",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "since we\u0027re giving out a binder here, we need to guaranteeClient. This is a case we need to handle in addition to hwservicemanager, and we\u0027ll want another test for it as well.",
+      "range": {
+        "startLine": 199,
+        "startChar": 37,
+        "endLine": 199,
+        "endChar": 43
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb4baa49_ce58297a",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "pull the service out with an iterator to do this check so that name doesn\u0027t have to be hashed repeatedly below (probably a small cost, but still)",
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa60b77_c7167709",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "one way to make this stronger would be to have this method take a name and binder object",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 5
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044309b7_e9954ac5",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this. The server will be registering client callbacks, but at least in hwservicemanager, guaranteeClient is referring to whether a client process exists with this. Is this meant as an alternative to setting this at the end of getService? I need to think about the implications, but how will it work when there is a lazy service with 2-3 lazy services registered?",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 49
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44c20acf_2e1b0e7b",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "prefer the C++17 style (or at least the other style of iterator?): for (const auto\u0026 [name, service] : mNameToService)",
+      "range": {
+        "startLine": 413,
+        "startChar": 9,
+        "endLine": 413,
+        "endChar": 75
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9718c39e_1e837024",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 419,
+        "startChar": 9,
+        "endLine": 419,
+        "endChar": 39
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e059f1b7_383daf30",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 48
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "957a7067_9cc49900",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "L419 guarantees this should never happen, so this could be a CHECK (or delete L466..L470, if we want less code)",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 15
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf48fc89_dc23272a",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "why not: const sp\u003c...\u003e\u0026 cb : mNameToClientCallback[serviceName]",
+      "range": {
+        "startLine": 472,
+        "startChar": 9,
+        "endLine": 472,
+        "endChar": 116
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76444371_48e3bbc1",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 489,
+        "startChar": 12,
+        "endLine": 489,
+        "endChar": 32
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0c26455_1e457176",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "these should stick around (notice hwservicemanager is doing something tricky here by allowing the Service binders to be null, here we have separate maps to simplify things, but we still want this to be preserved)",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 44
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3d8d6eb_f70be0b4",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "we might want to keep this (and when processes decide to quit, the death notification will clean it up)",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 38
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a013b314_0499c3fb",
+        "filename": "cmds/servicemanager/ServiceManager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "for a data struct, don\u0027t distinguish member w/ \u0027m\u0027 prefix. Although, maybe we should turn this to a proper class?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 65
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb6cf3e5_7dff39e1",
+        "filename": "cmds/servicemanager/ServiceManager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "debugPid",
+      "range": {
+        "startLine": 63,
+        "startChar": 14,
+        "endLine": 63,
+        "endChar": 18
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e43eec_6b68e667",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "use %zu, I think should work",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50a9723e_d502b56d",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "getInterfaceDescriptor (I think I was using this only for debugging)?",
+      "range": {
+        "startLine": 100,
+        "startChar": 62,
+        "endLine": 100,
+        "endChar": 75
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5795cd8f_42154a98",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "btw, we should probably create a test service that registers multiple, for the test. I should have done this in HIDL.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 92
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10aacdeb_ca8cacd1",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "nit: maybe comment \"// makes same assumption as IServiceManager.cpp, could dedupe if used in more places\"",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 113,
+        "endChar": 61
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac1e573_436c5ada",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "did clang format do this? :/",
+      "range": {
+        "startLine": 156,
+        "startChar": 23,
+        "endLine": 157,
+        "endChar": 25
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73240d9_86bf2241",
+        "filename": "libs/binder/aidl/android/os/IServiceManager.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "should we have unregisterClientCallback? Can\u0027t exactly remember why I added that to HIDL",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 31
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "561887d3_dce64516",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-05T02:48:18Z",
+      "side": 1,
+      "message": "nit: libbinder uses internal (I think I might have switched from details b/c people use details anyway)",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
