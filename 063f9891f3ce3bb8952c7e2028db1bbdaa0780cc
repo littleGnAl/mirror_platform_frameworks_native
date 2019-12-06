@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcc59ac6_f45cafe3",
+        "filename": "libs/adbd_auth/adbwifi_libs/crypto/aes_128_gcm.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1082465
+      },
+      "writtenOn": "2019-12-06T18:36:22Z",
+      "side": 1,
+      "message": "just checking, does this account for alignment to cipher block size? (and same for the similar flows below)\n\n\" The amount of data written depends on the block alignment of the encrypted data: as a result the amount of data written may be anything from zero bytes to (inl + cipher_block_size - 1) so out should contain sufficient room. The actual number of bytes written is placed in outl.\"\n\nhttps://www.openssl.org/docs/man1.0.2/man3/EVP_EncryptUpdate.html",
+      "revId": "063f9891f3ce3bb8952c7e2028db1bbdaa0780cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d95d45a5_11d18a1d",
+        "filename": "libs/adbd_auth/adbwifi_libs/crypto/key_store.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1082465
+      },
+      "writtenOn": "2019-12-06T18:36:22Z",
+      "side": 1,
+      "message": "maybe promote this pattern to a common function like makePeerInfo so it\u0027s obvious what it represents",
+      "range": {
+        "startLine": 190,
+        "startChar": 44,
+        "endLine": 190,
+        "endChar": 59
+      },
+      "revId": "063f9891f3ce3bb8952c7e2028db1bbdaa0780cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80a39f42_051402a0",
+        "filename": "libs/adbd_auth/adbwifi_libs/crypto/key_store.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1082465
+      },
+      "writtenOn": "2019-12-06T18:36:22Z",
+      "side": 1,
+      "message": "\"https://www.openssl.org/docs/man1.1.0/man3/X509_CRL_set1_lastUpdate.html\"\n\nX509_get_notBefore() and X509_get_notAfter() were deprecated in OpenSSL 1.1.0",
+      "range": {
+        "startLine": 243,
+        "startChar": 20,
+        "endLine": 243,
+        "endChar": 38
+      },
+      "revId": "063f9891f3ce3bb8952c7e2028db1bbdaa0780cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
