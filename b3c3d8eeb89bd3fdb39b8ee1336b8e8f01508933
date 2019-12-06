@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "659db655_bc79fdef",
+        "filename": "libs/gralloc/types/include/gralloctypes/Gralloc4.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1553614
+      },
+      "writtenOn": "2019-12-06T15:15:26Z",
+      "side": 1,
+      "message": "If the compression strategy is encoded in the DRM modifier then is it necessary to set this as well? drm_fourcc.h defines AFBC_FORMAT* modifiers so there shouldn\u0027t be any need to define vendor specific compression strategies for these. Can there be a Compression value that indicates it is defined by the PIXEL_FORMAT_MODIFIER?",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 24
+      },
+      "revId": "b3c3d8eeb89bd3fdb39b8ee1336b8e8f01508933",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
