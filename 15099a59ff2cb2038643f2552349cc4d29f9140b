@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "949a7877_65acb8ff",
+        "filename": "libs/adbd_auth/adbwifi_libs/tls_connection/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1082465
+      },
+      "writtenOn": "2019-12-06T19:00:42Z",
+      "side": 1,
+      "message": "spaces",
+      "revId": "15099a59ff2cb2038643f2552349cc4d29f9140b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a12063e_1c2444f1",
+        "filename": "libs/adbd_auth/adbwifi_libs/tls_connection/tls_connection.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1082465
+      },
+      "writtenOn": "2019-12-06T19:00:42Z",
+      "side": 1,
+      "message": "remove? (and others)",
+      "revId": "15099a59ff2cb2038643f2552349cc4d29f9140b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
