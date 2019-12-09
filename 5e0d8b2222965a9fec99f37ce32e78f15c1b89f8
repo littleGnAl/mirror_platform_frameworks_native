@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3dcf7ef9_7bb5c47b",
+        "filename": "build/phone-xhdpi-4096-dalvik-heap.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2019-12-09T22:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "553b4293_3beb08e7",
+      "revId": "5e0d8b2222965a9fec99f37ce32e78f15c1b89f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e234568_7b7fd0d9",
         "filename": "build/phone-xhdpi-6144-dalvik-heap.mk",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "5e0d8b2222965a9fec99f37ce32e78f15c1b89f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab536c2_c0f1758a",
+        "filename": "build/phone-xhdpi-6144-dalvik-heap.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2019-12-09T22:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e234568_7b7fd0d9",
+      "revId": "5e0d8b2222965a9fec99f37ce32e78f15c1b89f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
