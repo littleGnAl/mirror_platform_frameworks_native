@@ -1,4 +1,5 @@
 cc_binary {
+  //for test
     name: "bugreport",
     srcs: ["bugreport.cpp"],
     cflags: ["-Wall", "-Werror"],
