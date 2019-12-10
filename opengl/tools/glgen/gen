@@ -90,10 +90,6 @@ fi
 
 rm src/*.class
 
-# Add UnsupportedAppUsage.java to known sources.
-mkdir -p out/android/annotation
-cp ../../../../base/core/java/android/annotation/UnsupportedAppUsage.java out/android/annotation
-
 pushd out > /dev/null
 mkdir classes
 javac -d classes    android/opengl/EGL14.java \
@@ -113,8 +109,7 @@ javac -d classes    android/opengl/EGL14.java \
                     android/opengl/GLES30.java \
                     android/opengl/GLES31.java \
                     android/opengl/GLES31Ext.java \
-                    android/opengl/GLES32.java \
-                    android/annotation/UnsupportedAppUsage.java
+                    android/opengl/GLES32.java
 popd > /dev/null
 JAVA_RESULT=$?
 if [ $JAVA_RESULT -ne 0 ]; then
