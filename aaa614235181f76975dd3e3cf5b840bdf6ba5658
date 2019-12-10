@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ee189b5_02548260",
+        "filename": "libs/adbd_auth/adbwifi_libs/fdevent/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-12-10T18:24:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d701aa6_54f59338",
+      "revId": "aaa614235181f76975dd3e3cf5b840bdf6ba5658",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a56ee69_dcca0e60",
         "filename": "libs/adbd_auth/adbwifi_libs/fdevent/include/adbwifi/fdevent/fdevent_epoll.h",
         "patchSetId": 9
@@ -39,6 +57,30 @@
       "revId": "aaa614235181f76975dd3e3cf5b840bdf6ba5658",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e5ac93_a7e9a963",
+        "filename": "libs/adbd_auth/adbwifi_libs/fdevent/include/adbwifi/fdevent/fdevent_epoll.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-12-10T18:24:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a56ee69_dcca0e60",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "aaa614235181f76975dd3e3cf5b840bdf6ba5658",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
