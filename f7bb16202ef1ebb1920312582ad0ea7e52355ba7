@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46f479f2_9a1337da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "9c9408c1_6e5a622f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9e6788f_d606197d",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3229d07c_3805e3d3",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9e6788f_d606197d",
+      "range": {
+        "startLine": 86,
+        "startChar": 41,
+        "endLine": 86,
+        "endChar": 68
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fa9ea44_e0965a29",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "c3e6f584_98f35169",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fa9ea44_e0965a29",
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2a8d6d5_711f2025",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -76,6 +142,30 @@
       "writtenOn": "2019-12-05T02:48:18Z",
       "side": 1,
       "message": "since we\u0027re giving out a binder here, we need to guaranteeClient. This is a case we need to handle in addition to hwservicemanager, and we\u0027ll want another test for it as well.",
+      "range": {
+        "startLine": 199,
+        "startChar": 37,
+        "endLine": 199,
+        "endChar": 43
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77566ab7_91afc4d1",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Set the flag. Will leave this unresolved until I add a test.",
+      "parentUuid": "e2a8d6d5_711f2025",
       "range": {
         "startLine": 199,
         "startChar": 37,
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "b3c3287a_871db10c",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb4baa49_ce58297a",
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fa60b77_c7167709",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -125,6 +233,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d89e5cac_e759b9a9",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa60b77_c7167709",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 5
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "97aba150_00cbe29e",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "I initially had this here because a flag at the end of getService wouldn\u0027t get hit in the case where a service was dynamically started (since the service wouldn\u0027t exist yet). Having it set both in tryGetService and addService should cover all cases, though.",
+      "parentUuid": "044309b7_e9954ac5",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 49
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44c20acf_2e1b0e7b",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -171,6 +327,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a0cbb09_26f13687",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44c20acf_2e1b0e7b",
+      "range": {
+        "startLine": 413,
+        "startChar": 9,
+        "endLine": 413,
+        "endChar": 75
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "50dad2a4_414cc54c",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9718c39e_1e837024",
+      "range": {
+        "startLine": 419,
+        "startChar": 9,
+        "endLine": 419,
+        "endChar": 39
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e059f1b7_383daf30",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -217,6 +421,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e7cdb71_d9e72b23",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e059f1b7_383daf30",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 48
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -243,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "b297cc40_fb51da71",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "957a7067_9cc49900",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 15
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf48fc89_dc23272a",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -263,6 +515,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ffe0a0_3d847aae",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf48fc89_dc23272a",
+      "range": {
+        "startLine": 472,
+        "startChar": 9,
+        "endLine": 472,
+        "endChar": 116
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -289,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "9ecb4f17_e42e34f8",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76444371_48e3bbc1",
+      "range": {
+        "startLine": 489,
+        "startChar": 12,
+        "endLine": 489,
+        "endChar": 32
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0c26455_1e457176",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -312,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "8259a8e2_a29c904c",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0c26455_1e457176",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 44
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3d8d6eb_f70be0b4",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -332,6 +656,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ff9f60_82f2550f",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3d8d6eb_f70be0b4",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 38
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -381,6 +729,54 @@
     },
     {
       "key": {
+        "uuid": "bbfd71d5_385b0985",
+        "filename": "cmds/servicemanager/ServiceManager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb6cf3e5_7dff39e1",
+      "range": {
+        "startLine": 63,
+        "startChar": 14,
+        "endLine": 63,
+        "endChar": 18
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39285db1_0663231e",
+        "filename": "cmds/servicemanager/ServiceManager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a013b314_0499c3fb",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 65
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7e43eec_6b68e667",
         "filename": "libs/binder/LazyServiceRegistrar.cpp",
         "patchSetId": 6
@@ -404,6 +800,30 @@
     },
     {
       "key": {
+        "uuid": "3cfc70f1_adc21dd0",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7e43eec_6b68e667",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50a9723e_d502b56d",
         "filename": "libs/binder/LazyServiceRegistrar.cpp",
         "patchSetId": 6
@@ -424,6 +844,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c09bb9e1_536d5e8a",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "No idea what I was thinking there...",
+      "parentUuid": "50a9723e_d502b56d",
+      "range": {
+        "startLine": 100,
+        "startChar": 62,
+        "endLine": 100,
+        "endChar": 75
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -473,6 +917,30 @@
     },
     {
       "key": {
+        "uuid": "d5a81290_d5bacf1f",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10aacdeb_ca8cacd1",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 113,
+        "endChar": 61
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ac1e573_436c5ada",
         "filename": "libs/binder/LazyServiceRegistrar.cpp",
         "patchSetId": 6
@@ -496,6 +964,30 @@
     },
     {
       "key": {
+        "uuid": "0bc28936_329d935c",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ac1e573_436c5ada",
+      "range": {
+        "startLine": 156,
+        "startChar": 23,
+        "endLine": 157,
+        "endChar": 25
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c73240d9_86bf2241",
         "filename": "libs/binder/aidl/android/os/IServiceManager.aidl",
         "patchSetId": 6
@@ -507,6 +999,30 @@
       "writtenOn": "2019-12-05T02:48:18Z",
       "side": 1,
       "message": "should we have unregisterClientCallback? Can\u0027t exactly remember why I added that to HIDL",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 31
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b785a035_699d9dcd",
+        "filename": "libs/binder/aidl/android/os/IServiceManager.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "I think HIDL uses that when a service dies. I believe my call to removeClientCallback within ServiceManager::binderDied accomplishes the same thing.",
+      "parentUuid": "c73240d9_86bf2241",
       "range": {
         "startLine": 105,
         "startChar": 9,
@@ -539,6 +1055,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11956b03_99f28a95",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-10T00:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "561887d3_dce64516",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
