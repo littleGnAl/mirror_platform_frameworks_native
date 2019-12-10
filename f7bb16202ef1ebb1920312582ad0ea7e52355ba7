@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "69da2e8b_8f258ca1",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-10T23:45:00Z",
+      "side": 1,
+      "message": "fyi, I meant before this, since you could go ahead and merge, but after works as well. It\u0027s a good rename!",
+      "parentUuid": "c3e6f584_98f35169",
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2a8d6d5_711f2025",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -304,6 +322,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "817b379f_ef27932e",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-10T23:45:00Z",
+      "side": 1,
+      "message": "I think that would be covered by the callback case, when the interface is passed back with the callback, right?",
+      "parentUuid": "97aba150_00cbe29e",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 49
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -1032,6 +1074,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07061bc9_f2479f18",
+        "filename": "libs/binder/aidl/android/os/IServiceManager.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-10T23:45:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b785a035_699d9dcd",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 31
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
