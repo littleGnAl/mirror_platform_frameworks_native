@@ -48,7 +48,7 @@ class DumpstateService : public BinderService<DumpstateService>, public BnDumpst
                                   const sp<IDumpstateListener>& listener) override;
 
     // No-op
-    binder::Status cancelBugreport();
+    binder::Status cancelBugreport(const std::string& calling_package);
 
   private:
     // Dumpstate object which contains all the bugreporting logic.

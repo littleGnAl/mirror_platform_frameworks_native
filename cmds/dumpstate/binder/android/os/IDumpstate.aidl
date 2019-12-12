@@ -83,6 +83,8 @@ interface IDumpstate {
 
     /*
      * Cancels the bugreport currently in progress.
+     *
+     * @param callingPackage package of the original application that requested the cancellation.
      */
-    void cancelBugreport();
+    void cancelBugreport(@utf8InCpp String callingPackage);
 }

@@ -181,7 +181,7 @@ binder::Status DumpstateService::startBugreport(int32_t calling_uid,
     return binder::Status::ok();
 }
 
-binder::Status DumpstateService::cancelBugreport() {
+binder::Status DumpstateService::cancelBugreport(const std::string& /* calling_package */) {
     // This is a no-op since the cancellation is done from java side via setting sys properties.
     // See BugreportManagerServiceImpl.
     // TODO(b/111441001): maybe make native and java sides use different binder interface
