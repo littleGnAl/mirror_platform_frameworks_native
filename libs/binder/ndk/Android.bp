@@ -64,9 +64,11 @@ cc_library_shared {
     ],
 
     header_libs: [
+        "aidlsupport_headers",
         "jni_headers",
     ],
     export_header_lib_headers: [
+        "aidlsupport_headers",
         "jni_headers",
     ],
 
