@@ -16,6 +16,24 @@
       "revId": "84da045438bc1c892774970b26f96091d8fd3872",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7985e4b_e660666f",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_connection/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-12-12T23:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e0b5e3a_1baa6c20",
+      "revId": "84da045438bc1c892774970b26f96091d8fd3872",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
