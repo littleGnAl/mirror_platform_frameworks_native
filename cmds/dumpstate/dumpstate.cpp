@@ -2913,7 +2913,7 @@ DurationReporter::DurationReporter(const std::string& title, bool logcat_only, b
 DurationReporter::~DurationReporter() {
     if (!title_.empty()) {
         float elapsed = (float)(Nanotime() - started_) / NANOS_PER_SEC;
-        if (elapsed < .5f && !verbose_) {
+        if (!verbose_) {
             return;
         }
         MYLOGD("Duration of '%s': %.2fs\n", title_.c_str(), elapsed);
