@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2174eb68_734f827c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-12T00:46:26Z",
+      "side": 1,
+      "message": "jreck, any thoughts on this API? It is technically derivable from the data here now, but it may not always be.",
+      "revId": "7cdc42db1aac092f47c5f431b9bad09362b60e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
