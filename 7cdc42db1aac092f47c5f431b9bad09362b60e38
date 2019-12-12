@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "16a8ec6d_ec3555bf",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-12T19:24:34Z",
+      "side": 1,
+      "message": "(there is an argument for this if we ever want to parse platform details like EX_HAS_REPLY_HEADER or other internal platform details)",
+      "parentUuid": "2174eb68_734f827c",
+      "revId": "7cdc42db1aac092f47c5f431b9bad09362b60e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48afcc44_4728a3ac",
         "filename": "libs/binder/ndk/status.cpp",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "7cdc42db1aac092f47c5f431b9bad09362b60e38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f9313ed_dcf7bd7c",
+        "filename": "libs/binder/ndk/status.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-12T19:24:34Z",
+      "side": 1,
+      "message": "It needs to be a C-compatible type to pass over the C boundary. We can\u0027t expose a shared pointer.",
+      "parentUuid": "48afcc44_4728a3ac",
+      "revId": "7cdc42db1aac092f47c5f431b9bad09362b60e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
