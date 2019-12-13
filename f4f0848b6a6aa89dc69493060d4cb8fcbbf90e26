@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ac3e4fa1_c0f0c03e",
+        "filename": "libs/binder/aidlsupport/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-13T07:06:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3a86ce9_3d4c14e0",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "f4f0848b6a6aa89dc69493060d4cb8fcbbf90e26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14988fae_aded778f",
         "filename": "libs/binder/aidlsupport/include/aidl/AIDLSupport.h",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "408d3b09_7e57f052",
+        "filename": "libs/binder/aidlsupport/include/aidl/AIDLSupport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-13T07:06:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14988fae_aded778f",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f4f0848b6a6aa89dc69493060d4cb8fcbbf90e26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8d973d1_54915ec5",
         "filename": "libs/binder/aidlsupport/include/aidl/AIDLSupport.h",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "f4f0848b6a6aa89dc69493060d4cb8fcbbf90e26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89fb05ac_ddc70f7b",
+        "filename": "libs/binder/aidlsupport/include/aidl/AIDLSupport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-13T07:06:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8d973d1_54915ec5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "f4f0848b6a6aa89dc69493060d4cb8fcbbf90e26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
