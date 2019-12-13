@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc6c4e77_f3cd0340",
+        "filename": "libs/binder/aidlsupport/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-13T01:19:53Z",
+      "side": 1,
+      "message": "yeah, consider moving this into something like binder/Enums.h for simplicity",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "f4f0848b6a6aa89dc69493060d4cb8fcbbf90e26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14988fae_aded778f",
+        "filename": "libs/binder/aidlsupport/include/aidl/AIDLSupport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-13T01:19:53Z",
+      "side": 1,
+      "message": "2019",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f4f0848b6a6aa89dc69493060d4cb8fcbbf90e26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d973d1_54915ec5",
+        "filename": "libs/binder/aidlsupport/include/aidl/AIDLSupport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-13T01:19:53Z",
+      "side": 1,
+      "message": "nit: #pragma once",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "f4f0848b6a6aa89dc69493060d4cb8fcbbf90e26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
