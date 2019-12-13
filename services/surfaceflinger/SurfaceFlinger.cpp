@@ -1837,6 +1837,8 @@ void SurfaceFlinger::handleMessageRefresh() {
 
     postFrame();
     postComposition();
+    mClientColorMatrix = mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                              vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     mHadClientComposition = false;
     mHadDeviceComposition = false;
@@ -6302,3 +6304,4 @@ void SurfaceFlinger::bufferErased(const client_cache_t& clientCacheId) {
 #if defined(__gl2_h_)
 #error "don't include gl2/gl2.h in this file"
 #endif
+
