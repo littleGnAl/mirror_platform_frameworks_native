@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a17f07b_37fc7ae9",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_connection/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-12-14T01:18:47Z",
+      "side": 1,
+      "message": "Remove sysdeps",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "ad095081523834a0e3e445d2dadf1e4844f3ff8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d95f2063_6bcc4eee",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_connection/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-12-14T01:18:47Z",
+      "side": 1,
+      "message": "remove fdevent",
+      "range": {
+        "startLine": 64,
+        "startChar": 10,
+        "endLine": 64,
+        "endChar": 27
+      },
+      "revId": "ad095081523834a0e3e445d2dadf1e4844f3ff8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e886afb_5e94f309",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_connection/pairing_server.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-12-14T01:18:47Z",
+      "side": 1,
+      "message": "Remove fdevent, sysdeps from the server.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 1
+      },
+      "revId": "ad095081523834a0e3e445d2dadf1e4844f3ff8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
