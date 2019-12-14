@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e7e49b6_91d24c05",
+        "filename": "libs/adbd_auth/adbwifi_libs/tls_connection/tests/tls_connection_test.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-12-14T00:28:31Z",
+      "side": 1,
+      "message": "Change to RSA + x509 certificate",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "0006322d8a039824ac9736a2bcbc8640478e3de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
