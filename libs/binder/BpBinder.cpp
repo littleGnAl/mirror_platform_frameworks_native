@@ -435,7 +435,7 @@ void BpBinder::onLastStrongRef(const void* /*id*/)
     Vector<Obituary>* obits = mObituaries;
     if(obits != nullptr) {
         if (!obits->isEmpty()) {
-            ALOGI("onLastStrongRef automatically unlinking death recipients");
+            ALOGI("onLastStrongRef automatically unlinking death recipients: %s", String8(getInterfaceDescriptor()).c_str());
         }
 
         if (ipc) ipc->clearDeathNotification(mHandle, this);
