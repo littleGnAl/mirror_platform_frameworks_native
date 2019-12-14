@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a960f57f_3de35ad1",
+        "filename": "libs/binder/include/binder/Enums.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-14T00:38:19Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "04775bb4d5b914c4245b08c03350c4e8c0f82e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4da06f3_6d8f0a3a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_enums.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-14T00:38:19Z",
+      "side": 1,
+      "message": "does this do anything in native code?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "04775bb4d5b914c4245b08c03350c4e8c0f82e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a086a80d_97b59f7d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_enums.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-14T00:38:19Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "04775bb4d5b914c4245b08c03350c4e8c0f82e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
