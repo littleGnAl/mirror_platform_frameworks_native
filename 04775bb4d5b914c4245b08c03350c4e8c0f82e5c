@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31a12d7b_16f5bed2",
+        "filename": "libs/binder/include/binder/Enums.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-16T02:24:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a960f57f_3de35ad1",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "04775bb4d5b914c4245b08c03350c4e8c0f82e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4da06f3_6d8f0a3a",
         "filename": "libs/binder/ndk/include_ndk/android/binder_enums.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8a9d08c0_1d90172c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_enums.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-16T02:24:16Z",
+      "side": 1,
+      "message": "I thought this is only for doc. removed.",
+      "parentUuid": "e4da06f3_6d8f0a3a",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "04775bb4d5b914c4245b08c03350c4e8c0f82e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a086a80d_97b59f7d",
         "filename": "libs/binder/ndk/include_ndk/android/binder_enums.h",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "04775bb4d5b914c4245b08c03350c4e8c0f82e5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "012c3a6e_cd7c21da",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_enums.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-16T02:24:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a086a80d_97b59f7d",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "04775bb4d5b914c4245b08c03350c4e8c0f82e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
