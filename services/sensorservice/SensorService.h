@@ -23,7 +23,6 @@
 #include <android-base/macros.h>
 #include <binder/AppOpsManager.h>
 #include <binder/BinderService.h>
-#include <binder/IUidObserver.h>
 #include <cutils/compiler.h>
 #include <cutils/multiuser.h>
 #include <sensor/ISensorServer.h>
