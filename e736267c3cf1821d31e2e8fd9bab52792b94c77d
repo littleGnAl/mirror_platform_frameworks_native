@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3f6335e_883c85d0",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2918,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-12-16T11:43:55Z",
+      "side": 1,
+      "message": "This will make us log only verbose entries (of which only a few exist, since the default is verbose\u003dfalse). This does not match the change description you have given.",
+      "range": {
+        "startLine": 2916,
+        "startChar": 0,
+        "endLine": 2918,
+        "endChar": 8
+      },
+      "revId": "e736267c3cf1821d31e2e8fd9bab52792b94c77d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06a4fe3d_9a60d93b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2922,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-12-16T11:43:55Z",
+      "side": 1,
+      "message": "I think the right thing to do is \n(1) always do the printf to bugreport\n(2) Keep the logcat logging the same\n     if (elapsed \u003e\u003d .5f || verbose_) {\n         MYLOGD(\"Duration of \u0027%s\u0027: %.2fs\\n\", title_.c_str(), elapsed);\n      }\n(3) remove logcat_only_ because I can\u0027t think of any reason where we want to only log to logcat\n\n\nDoes this work for you?",
+      "range": {
+        "startLine": 2920,
+        "startChar": 0,
+        "endLine": 2922,
+        "endChar": 9
+      },
+      "revId": "e736267c3cf1821d31e2e8fd9bab52792b94c77d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
