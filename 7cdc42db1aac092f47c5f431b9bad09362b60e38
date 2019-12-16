@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "b20fe8b0_b19188b2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2019-12-16T18:31:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "744fc571_b6297cba",
+      "revId": "7cdc42db1aac092f47c5f431b9bad09362b60e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48afcc44_4728a3ac",
         "filename": "libs/binder/ndk/status.cpp",
         "patchSetId": 1
