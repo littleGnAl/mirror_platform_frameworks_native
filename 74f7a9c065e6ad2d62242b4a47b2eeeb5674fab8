@@ -22,6 +22,30 @@
       "revId": "74f7a9c065e6ad2d62242b4a47b2eeeb5674fab8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b60da3_726c4738",
+        "filename": "libs/binder/include/binder/Enums.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-16T23:14:46Z",
+      "side": 1,
+      "message": "No worries. But what about libbinder_ndk? For now it is namespace ndk::details. Is it okay? or it also needs to be changed to ndk::internal?",
+      "parentUuid": "aa6f83bb_04c0e041",
+      "range": {
+        "startLine": 23,
+        "startChar": 10,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "74f7a9c065e6ad2d62242b4a47b2eeeb5674fab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
