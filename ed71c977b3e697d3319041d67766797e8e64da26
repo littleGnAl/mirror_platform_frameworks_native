@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e54ff166_75ab4368",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_status.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2019-12-16T18:47:23Z",
+      "side": 1,
+      "message": "Make this `const char*` so in the future there\u0027s the path to share the underlying data instead of always being a copy? Since this is primarily for debugging purposes I\u0027m guessing there\u0027s no need for this to be immutable.",
+      "range": {
+        "startLine": 258,
+        "startChar": 36,
+        "endLine": 258,
+        "endChar": 40
+      },
+      "revId": "ed71c977b3e697d3319041d67766797e8e64da26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
