@@ -176,6 +176,30 @@
       "revId": "7cdc42db1aac092f47c5f431b9bad09362b60e38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b1abbb_79ffceb3",
+        "filename": "libs/binder/ndk/status.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2019-12-16T18:30:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8b2ab087_ea53d4ff",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 50
+      },
+      "revId": "7cdc42db1aac092f47c5f431b9bad09362b60e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
