@@ -116,6 +116,30 @@
       "revId": "bbd0fd5444f7ed6b218dabc2ca4026d8d7c435f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "598fadde_a21fe185",
+        "filename": "headers/media_plugin/media/openmax/OMX_IndexExt.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1179935
+      },
+      "writtenOn": "2019-12-17T08:23:59Z",
+      "side": 1,
+      "message": "ADPCM is defined in OMX_Index.h already",
+      "parentUuid": "d64aa96a_c379365e",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "bbd0fd5444f7ed6b218dabc2ca4026d8d7c435f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
