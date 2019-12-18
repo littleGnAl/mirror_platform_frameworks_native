@@ -45,6 +45,30 @@
       "revId": "e736267c3cf1821d31e2e8fd9bab52792b94c77d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd0b74bf_d2bf9cf8",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2922,
+      "author": {
+        "id": 1554342
+      },
+      "writtenOn": "2019-12-18T02:47:49Z",
+      "side": 1,
+      "message": "Yes, I agree with your suggestions, this works for me, thanks!",
+      "parentUuid": "06a4fe3d_9a60d93b",
+      "range": {
+        "startLine": 2920,
+        "startChar": 0,
+        "endLine": 2922,
+        "endChar": 9
+      },
+      "revId": "e736267c3cf1821d31e2e8fd9bab52792b94c77d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
