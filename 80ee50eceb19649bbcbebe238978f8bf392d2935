@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8392ad58_ccb8d63f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2907,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-12-18T13:57:47Z",
+      "side": 1,
+      "message": "unused",
+      "range": {
+        "startLine": 2907,
+        "startChar": 21,
+        "endLine": 2907,
+        "endChar": 33
+      },
+      "revId": "80ee50eceb19649bbcbebe238978f8bf392d2935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1bdf58d_63c29c03",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2917,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-12-18T13:57:47Z",
+      "side": 1,
+      "message": "could you remove tabs? We exclusively use spaces in this file",
+      "range": {
+        "startLine": 2917,
+        "startChar": 0,
+        "endLine": 2917,
+        "endChar": 2
+      },
+      "revId": "80ee50eceb19649bbcbebe238978f8bf392d2935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
