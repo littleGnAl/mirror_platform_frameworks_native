@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "455d2467_a09a6553",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2907,
+      "author": {
+        "id": 1554342
+      },
+      "writtenOn": "2019-12-19T03:40:06Z",
+      "side": 1,
+      "message": "Hi Dutt,\nI find there are two places using logcat_only:\n(1) https://cs.android.com/android/platform/superproject/+/master:frameworks/native/cmds/dumpstate/dumpstate.cpp;l\u003d416?q\u003dduration_reporter\n(2)\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/cmds/dumpstate/dumpstate.cpp;l\u003d825?q\u003dduration_reporter\n\nMaybe we should keep logcat_only and do the following change:\n+        if (!logcat_only_) {\n+            // Use \"Yoda grammar\" to make it easier to grep|sort sections.\n+           printf(\"------ %.3fs was the duration of \u0027%s\u0027 ------\\n\", elapsed, title_.c_str());\n         }",
+      "parentUuid": "8392ad58_ccb8d63f",
+      "range": {
+        "startLine": 2907,
+        "startChar": 21,
+        "endLine": 2907,
+        "endChar": 33
+      },
+      "revId": "80ee50eceb19649bbcbebe238978f8bf392d2935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1bdf58d_63c29c03",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "80ee50eceb19649bbcbebe238978f8bf392d2935",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe1dcf24_ebe409af",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2917,
+      "author": {
+        "id": 1554342
+      },
+      "writtenOn": "2019-12-19T03:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bdf58d_63c29c03",
+      "range": {
+        "startLine": 2917,
+        "startChar": 0,
+        "endLine": 2917,
+        "endChar": 2
+      },
+      "revId": "80ee50eceb19649bbcbebe238978f8bf392d2935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
