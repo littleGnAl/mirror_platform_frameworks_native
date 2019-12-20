@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a61b49e_8eadcebc",
+        "filename": "services/surfaceflinger/CompositionEngine/tests/DisplayColorProfileTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2019-12-20T19:37:33Z",
+      "side": 1,
+      "message": "Jumping in since I was included on the bug that mentioned this fix.\n\nWould you also add a new test case here that uses ProfileFactory::createProfileWithDisplayP3ColorModeSupport()?\n\nMy undersranding of all these color mode combinations comes from being the one to add the unit test coverage here and elsewhere nearby. But I believe it should have the same render intent expectations as this hasRenderIntentReturnsExpectedValueWhenOutputHasSRGBSupport()",
+      "revId": "b1072848b06c0e956cd18666a10f5f52190c166c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
