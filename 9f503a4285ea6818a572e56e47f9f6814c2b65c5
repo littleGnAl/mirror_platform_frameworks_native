@@ -46,6 +46,30 @@
       "revId": "9f503a4285ea6818a572e56e47f9f6814c2b65c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf48053_f8657aaf",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-20T23:00:33Z",
+      "side": 1,
+      "message": "mBinder is always null before. Jon, I suppose you could manually check to make sure the decStrongHandle we care about is happening before L275.",
+      "parentUuid": "d7278127_bb326436",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 52
+      },
+      "revId": "9f503a4285ea6818a572e56e47f9f6814c2b65c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
