@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "460f7ce7_0cc783be",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-20T01:47:43Z",
+      "side": 1,
+      "message": "I guess we don\u0027t need the isCalledOnInterval logic anymore? Since we\u0027re no longer calling it not on the interval. Is this safe? I guess it should be actually? Maybe we don\u0027t need it and it\u0027s from organic growth in that implementation. Hmmm. I think so, yeah.",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 461,
+        "endChar": 60
+      },
+      "revId": "99a83ea9b6ae254f85e899e3144a2d47b0f33a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b17a844e_a640f885",
+        "filename": "cmds/servicemanager/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-20T01:47:43Z",
+      "side": 1,
+      "message": "nit: false /*allowNonCallbacks*/",
+      "range": {
+        "startLine": 135,
+        "startChar": 40,
+        "endLine": 135,
+        "endChar": 41
+      },
+      "revId": "99a83ea9b6ae254f85e899e3144a2d47b0f33a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ae711ff_385df87c",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-20T01:47:43Z",
+      "side": 1,
+      "message": "I\u0027m still very suspicious of this. Martijn, any thoughts? Whatever the case, we\u0027re removing this afterwards, and it\u0027s fine if there is a delay in flushing, but I want to make sure we\u0027re always flushing it soon enough. Jon, maybe comment here?",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 52
+      },
+      "revId": "99a83ea9b6ae254f85e899e3144a2d47b0f33a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "072c0a39_05d0cc18",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-20T01:47:43Z",
+      "side": 1,
+      "message": "can we change this to be different from the HIDL one?",
+      "range": {
+        "startLine": 17,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "99a83ea9b6ae254f85e899e3144a2d47b0f33a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "938bf116_3a344772",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-20T01:47:43Z",
+      "side": 1,
+      "message": "can we test this logic? when you write your own test service, we should have it register two interfaces. Can you make sure we file a bug for this specifically if you don\u0027t do it before submitting?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 5
+      },
+      "revId": "99a83ea9b6ae254f85e899e3144a2d47b0f33a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
