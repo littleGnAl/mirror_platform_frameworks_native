@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5dfbc134_23d25666",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-12-20T16:07:18Z",
+      "side": 1,
+      "message": "what exactly happens if you don\u0027t do this? The previous thing mBinder pointed at doesn\u0027t get freed immediately - or is the kernel reported refcount incorrect?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 52
+      },
+      "revId": "9f503a4285ea6818a572e56e47f9f6814c2b65c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
