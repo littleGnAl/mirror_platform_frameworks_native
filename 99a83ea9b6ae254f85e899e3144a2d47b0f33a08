@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "defbcee6_56f03d38",
+        "filename": "cmds/servicemanager/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-20T04:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b17a844e_a640f885",
+      "range": {
+        "startLine": 135,
+        "startChar": 40,
+        "endLine": 135,
+        "endChar": 41
+      },
+      "revId": "99a83ea9b6ae254f85e899e3144a2d47b0f33a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ae711ff_385df87c",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 9
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "a9c11f18_3b31ff06",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-20T04:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "072c0a39_05d0cc18",
+      "range": {
+        "startLine": 17,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "99a83ea9b6ae254f85e899e3144a2d47b0f33a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "938bf116_3a344772",
         "filename": "libs/binder/LazyServiceRegistrar.cpp",
         "patchSetId": 9
@@ -114,6 +162,30 @@
       "revId": "99a83ea9b6ae254f85e899e3144a2d47b0f33a08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b25f1a_873d71b2",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-20T04:28:05Z",
+      "side": 1,
+      "message": "Ack. Will add in separate test service CL.",
+      "parentUuid": "938bf116_3a344772",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 5
+      },
+      "revId": "99a83ea9b6ae254f85e899e3144a2d47b0f33a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

@@ -196,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "72883767_9d8b009e",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-20T04:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77566ab7_91afc4d1",
+      "range": {
+        "startLine": 199,
+        "startChar": 37,
+        "endLine": 199,
+        "endChar": 43
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb4baa49_ce58297a",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 6
@@ -346,6 +370,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd8d9aa_46d901e1",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-20T04:28:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "817b379f_ef27932e",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 49
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -933,6 +981,30 @@
       "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6507dc7f_2f433e2a",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-20T04:28:05Z",
+      "side": 1,
+      "message": "Ack. Will add a test service in a separate CL.",
+      "parentUuid": "5795cd8f_42154a98",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 92
+      },
+      "revId": "f7bb16202ef1ebb1920312582ad0ea7e52355ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
