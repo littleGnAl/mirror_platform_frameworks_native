@@ -16,6 +16,24 @@
       "revId": "b1072848b06c0e956cd18666a10f5f52190c166c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2023616_529c0524",
+        "filename": "services/surfaceflinger/CompositionEngine/tests/DisplayColorProfileTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1468456
+      },
+      "writtenOn": "2019-12-20T22:32:11Z",
+      "side": 1,
+      "message": "Will do - thanks for the feedback",
+      "parentUuid": "9a61b49e_8eadcebc",
+      "revId": "b1072848b06c0e956cd18666a10f5f52190c166c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
