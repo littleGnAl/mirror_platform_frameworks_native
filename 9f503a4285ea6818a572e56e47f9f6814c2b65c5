@@ -70,6 +70,30 @@
       "revId": "9f503a4285ea6818a572e56e47f9f6814c2b65c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d41ae732_4ac50ad5",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2019-12-21T03:00:20Z",
+      "side": 1,
+      "message": "There are many inc/decStrongHandles in the logs, but it looks like the flush here occurs between an inc and a dec. This makes sense in that the binder passed to this function should still be in use when this line is hit and released after the function returns. What doesn\u0027t make sense, then, is why this line fixes the problem... Any thoughts? Could it just be something silly like the dec never happens if the inc is never flushed and gets stuck somewhere?",
+      "parentUuid": "acf48053_f8657aaf",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 52
+      },
+      "revId": "9f503a4285ea6818a572e56e47f9f6814c2b65c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
