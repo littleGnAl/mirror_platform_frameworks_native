@@ -38,6 +38,11 @@ Return<bool> B2HProducerListener::needsReleaseNotify() {
     return mBase->needsReleaseNotify();
 }
 
+Return<void> B2HProducerListener::onBufferDetached(int slot) {
+    mBase->onBufferDetached(slot);
+    return Void();
+}
+
 }  // namespace utils
 }  // namespace V1_0
 }  // namespace bufferqueue

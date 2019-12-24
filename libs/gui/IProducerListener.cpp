@@ -24,6 +24,7 @@ namespace android {
 enum {
     ON_BUFFER_RELEASED = IBinder::FIRST_CALL_TRANSACTION,
     NEEDS_RELEASE_NOTIFY,
+    ON_BUFFER_DETACHED,
 };
 
 class BpProducerListener : public BpInterface<IProducerListener>
@@ -56,6 +57,12 @@ public:
         }
         return result;
     }
+    virtual void onBufferDetached(int slot) {
+        Parcel data, reply;
+        data.writeInterfaceToken(IProducerListener::getInterfaceDescriptor());
+        data.writeInt32(slot);
+        remote()->transact(ON_BUFFER_DETACHED, data, &reply, IBinder::FLAG_ONEWAY);
+    }
 };
 
 // Out-of-line virtual method definition to trigger vtable emission in this
@@ -76,6 +83,7 @@ public:
     virtual bool needsReleaseNotify() override {
         return mBase->needsReleaseNotify();
     }
+    virtual void onBufferDetached(int slot) { mBase->onBufferDetached(slot); }
 };
 
 IMPLEMENT_HYBRID_META_INTERFACE(ProducerListener,
@@ -83,6 +91,7 @@ IMPLEMENT_HYBRID_META_INTERFACE(ProducerListener,
 
 status_t BnProducerListener::onTransact(uint32_t code, const Parcel& data,
         Parcel* reply, uint32_t flags) {
+    int slot = 0;
     switch (code) {
         case ON_BUFFER_RELEASED:
             CHECK_INTERFACE(IProducerListener, data, reply);
@@ -91,6 +100,11 @@ status_t BnProducerListener::onTransact(uint32_t code, const Parcel& data,
         case NEEDS_RELEASE_NOTIFY:
             CHECK_INTERFACE(IProducerListener, data, reply);
             reply->writeBool(needsReleaseNotify());
+            return NO_ERROR;
+        case ON_BUFFER_DETACHED:
+            CHECK_INTERFACE(IProducerListener, data, reply);
+            data.readInt32(&slot);
+            onBufferDetached(slot);
             return NO_ERROR;
     }
     return BBinder::onTransact(code, data, reply, flags);
@@ -102,6 +116,9 @@ DummyProducerListener::~DummyProducerListener() = default;
 
 bool BnProducerListener::needsReleaseNotify() {
     return true;
+}
+void BnProducerListener::onBufferDetached(int slot) {
+    if (slot < 0) return;
 }
 
 } // namespace android
