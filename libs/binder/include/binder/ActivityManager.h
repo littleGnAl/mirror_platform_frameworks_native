@@ -77,9 +77,10 @@ public:
     void unregisterUidObserver(const sp<IUidObserver>& observer);
     bool isUidActive(const uid_t uid, const String16& callingPackage);
     int getUidProcessState(const uid_t uid, const String16& callingPackage);
+    bool setSchedPolicyCgroup(const int32_t tid, const int32_t group);
 
 
-  status_t linkToDeath(const sp<IBinder::DeathRecipient>& recipient);
+    status_t linkToDeath(const sp<IBinder::DeathRecipient>& recipient);
     status_t unlinkToDeath(const sp<IBinder::DeathRecipient>& recipient);
 
 private:
