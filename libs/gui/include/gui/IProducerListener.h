@@ -44,6 +44,7 @@ public:
     // multiple threads.
     virtual void onBufferReleased() = 0; // Asynchronous
     virtual bool needsReleaseNotify() = 0;
+    virtual void onBufferDetached(int slot) = 0;
 };
 
 class IProducerListener : public ProducerListener, public IInterface
@@ -53,6 +54,7 @@ public:
             ::android::hardware::graphics::bufferqueue::V1_0::IProducerListener;
     using HProducerListener2 =
             ::android::hardware::graphics::bufferqueue::V2_0::IProducerListener;
+
     DECLARE_HYBRID_META_INTERFACE(
             ProducerListener,
             HProducerListener1,
@@ -65,6 +67,7 @@ public:
     virtual status_t onTransact(uint32_t code, const Parcel& data,
             Parcel* reply, uint32_t flags = 0);
     virtual bool needsReleaseNotify();
+    virtual void onBufferDetached(int slot);
 };
 
 class DummyProducerListener : public BnProducerListener

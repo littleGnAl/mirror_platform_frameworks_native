@@ -281,6 +281,7 @@ public:
             bool reportBufferRemoval);
     virtual int detachNextBuffer(sp<GraphicBuffer>* outBuffer,
             sp<Fence>* outFence);
+    virtual void releaseSlot(int slot);
     virtual int attachBuffer(ANativeWindowBuffer*);
 
     // When client connects to Surface with reportBufferRemoval set to true, any buffers removed

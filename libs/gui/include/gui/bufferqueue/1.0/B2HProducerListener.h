@@ -53,6 +53,7 @@ struct B2HProducerListener : public HProducerListener {
     explicit B2HProducerListener(sp<BProducerListener> const& base);
     Return<void> onBufferReleased() override;
     Return<bool> needsReleaseNotify() override;
+    Return<void> onBufferDetached(int slot) override;
 };
 
 }  // namespace utils
