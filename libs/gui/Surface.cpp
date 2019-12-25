@@ -1347,6 +1347,14 @@ int Surface::disconnect(int api, IGraphicBufferProducer::DisconnectMode mode) {
     return err;
 }
 
+void Surface::releaseSlot(int slot) {
+    if (mReportRemovedBuffers) {
+        mRemovedBuffers.push_back(mSlots[slot].buffer);
+    }
+
+    mSlots[slot].buffer = nullptr;
+}
+
 int Surface::detachNextBuffer(sp<GraphicBuffer>* outBuffer,
         sp<Fence>* outFence) {
     ATRACE_CALL();
