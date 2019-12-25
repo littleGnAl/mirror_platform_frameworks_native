@@ -50,6 +50,12 @@ bool H2BProducerListener::needsReleaseNotify() {
     return static_cast<bool>(transResult);
 }
 
+void H2BProducerListener::onBufferDetached(int slot) {
+    if (!mBase->onBufferDetached(slot).isOk()) {
+        LOG(ERROR) << "onBufferDetached: transaction failed.";
+    }
+}
+
 }  // namespace utils
 }  // namespace V1_0
 }  // namespace bufferqueue

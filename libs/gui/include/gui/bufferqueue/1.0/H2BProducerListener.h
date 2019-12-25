@@ -39,6 +39,7 @@ public:
     H2BProducerListener(sp<HProducerListener> const& base);
     virtual void onBufferReleased() override;
     virtual bool needsReleaseNotify() override;
+    virtual void onBufferDetached(int slot) override;
 };
 
 }  // namespace utils
