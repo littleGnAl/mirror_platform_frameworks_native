@@ -286,6 +286,7 @@ status_t BufferQueueConsumer::detachBuffer(int slot) {
     ATRACE_BUFFER_INDEX(slot);
     BQ_LOGV("detachBuffer: slot %d", slot);
     std::lock_guard<std::mutex> lock(mCore->mMutex);
+    sp<IProducerListener> listener;
 
     if (mCore->mIsAbandoned) {
         BQ_LOGE("detachBuffer: BufferQueue has been abandoned");
@@ -307,12 +308,17 @@ status_t BufferQueueConsumer::detachBuffer(int slot) {
         return BAD_VALUE;
     }
 
+    listener = mCore->mConnectedProducerListener;
     mSlots[slot].mBufferState.detachConsumer();
     mCore->mActiveBuffers.erase(slot);
     mCore->mFreeSlots.insert(slot);
     mCore->clearBufferSlotLocked(slot);
     mCore->mDequeueCondition.notify_all();
     VALIDATE_CONSISTENCY();
+
+    if (listener != nullptr) {
+        listener->onBufferDetached(slot);
+    }
 
     return NO_ERROR;
 }

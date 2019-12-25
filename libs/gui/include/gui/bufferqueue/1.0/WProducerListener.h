@@ -55,6 +55,7 @@ public:
     LWProducerListener(sp<HProducerListener> const& base);
     void onBufferReleased() override;
     bool needsReleaseNotify() override;
+    void onBufferDetached(int slot) override;
 };
 
 }  // namespace android

@@ -47,4 +47,8 @@ bool LWProducerListener::needsReleaseNotify() {
     return static_cast<bool>(mBase->needsReleaseNotify());
 }
 
+void LWProducerListener::onBufferDetached(int slot) {
+    mBase->onBufferDetached(slot);
+}
+
 }  // namespace android
