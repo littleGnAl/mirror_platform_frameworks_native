@@ -33,7 +33,8 @@ class LazyServiceRegistrar {
      status_t registerService(const sp<IBinder>& service,
                               const std::string& name = "default",
                               bool allowIsolated = false,
-                              int dumpFlags = IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT);
+                              int dumpFlags = IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT,
+                              bool reRegister = false);
 
    private:
      std::shared_ptr<internal::ClientCounterCallback> mClientCC;

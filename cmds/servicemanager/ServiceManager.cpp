@@ -518,7 +518,7 @@ Status ServiceManager::tryUnregisterService(const std::string& name, const sp<IB
         return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
     }
 
-    int clients = handleServiceClientCallback(name);
+    int clients = serviceIt->second.getNodeStrongRefCount();
 
     // clients < 0: feature not implemented or other error. Assume clients.
     // Otherwise:

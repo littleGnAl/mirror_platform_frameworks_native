@@ -34,7 +34,7 @@ public:
     ClientCounterCallback() : mNumConnectedServices(0) {}
 
     bool registerService(const sp<IBinder>& service, const std::string& name,
-                         bool allowIsolated, int dumpFlags);
+                         bool allowIsolated, int dumpFlags, bool reRegister = false);
 
 protected:
     Status onClients(const sp<IBinder>& service, bool clients) override;
@@ -64,24 +64,27 @@ private:
 };
 
 bool ClientCounterCallback::registerService(const sp<IBinder>& service, const std::string& name,
-                                            bool allowIsolated, int dumpFlags) {
+                                            bool allowIsolated, int dumpFlags, bool reRegister) {
     auto manager = interface_cast<AidlServiceManager>(
                     ProcessState::self()->getContextObject(nullptr));
 
-    ALOGI("Registering service %s", name.c_str());
+    std::string regStr = (reRegister) ? "Re-registering" : "Registering";
+    ALOGI("%s service %s", regStr.c_str(), name.c_str());
 
     if (!manager->addService(name.c_str(), service, allowIsolated, dumpFlags).isOk()) {
         ALOGE("Failed to register service %s", name.c_str());
         return false;
     }
 
-    if (!manager->registerClientCallback(name, service, this).isOk())
-    {
-      ALOGE("Failed to add client callback for service %s", name.c_str());
-      return false;
+    if (!manager->registerClientCallback(name, service, this).isOk()) {
+        ALOGE("Failed to add client callback for service %s", name.c_str());
+        return false;
     }
 
-    mRegisteredServices.push_back({service, name, allowIsolated, dumpFlags});
+    if (!reRegister) {
+        // Only add this when a service is added for the first time, as it is not removed
+        mRegisteredServices.push_back({service, name, allowIsolated, dumpFlags});
+    }
 
     return true;
 }
@@ -137,7 +140,8 @@ void ClientCounterCallback::tryShutdown() {
         auto& entry = (*reRegisterIt);
 
         // re-register entry
-        if (!registerService(entry.service, entry.name, entry.allowIsolated, entry.dumpFlags)) {
+        if (!registerService(entry.service, entry.name, entry.allowIsolated,
+                             entry.dumpFlags, true)) {
             // Must restart. Otherwise, clients will never be able to get a hold of this service.
             ALOGE("Bad state: could not re-register services");
         }
@@ -156,8 +160,9 @@ LazyServiceRegistrar& LazyServiceRegistrar::getInstance() {
 }
 
 status_t LazyServiceRegistrar::registerService(const sp<IBinder>& service, const std::string& name,
-                                               bool allowIsolated, int dumpFlags) {
-    if (!mClientCC->registerService(service, name, allowIsolated, dumpFlags)) {
+                                               bool allowIsolated, int dumpFlags,
+                                               bool reRegister) {
+    if (!mClientCC->registerService(service, name, allowIsolated, dumpFlags, reRegister)) {
         return UNKNOWN_ERROR;
     }
     return OK;
