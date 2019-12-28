@@ -518,7 +518,13 @@ Status ServiceManager::tryUnregisterService(const std::string& name, const sp<IB
         return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
     }
 
-    int clients = handleServiceClientCallback(name);
+    if (serviceIt->second.guaranteeClient)
+    {
+        LOG(INFO) << "Tried to unregister " << name << ", but there is about to be a client.";
+        return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
+    }
+
+    int clients = serviceIt->second.getNodeStrongRefCount();
 
     // clients < 0: feature not implemented or other error. Assume clients.
     // Otherwise:
@@ -527,7 +533,7 @@ Status ServiceManager::tryUnregisterService(const std::string& name, const sp<IB
     // So, if clients > 2, then at least one other service on the system must hold a refcount.
     if (clients < 0 || clients > 2) {
         // client callbacks are either disabled or there are other clients
-        LOG(INFO) << "Tried to unregister " << name << " but there are clients: " << clients;
+        LOG(INFO) << "Tried to unregister " << name << ", but there are clients: " << clients;
         return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
     }
 
