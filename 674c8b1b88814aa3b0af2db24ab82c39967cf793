@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5d6947d_c3c98d56",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-06T18:56:01Z",
+      "side": 0,
+      "message": "I think the reason this is called instead of getNodeStrongRefCount is in case \u0027guaranteeClient\u0027 is true. In that case, we want to disallow unregistration since we know there is about to be a client. Does that matter here?",
+      "range": {
+        "startLine": 521,
+        "startChar": 18,
+        "endLine": 521,
+        "endChar": 45
+      },
+      "revId": "674c8b1b88814aa3b0af2db24ab82c39967cf793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
