@@ -24,7 +24,7 @@ cc_defaults {
         "libhidlbase",
         "liblog",
         "libutils",
-        "vintf-vibrator-ndk_platform",
+        "android.hardware.vibrator-ndk_platform",
     ],
     cflags: [
         "-DLOG_TAG=\"idlcli\"",
