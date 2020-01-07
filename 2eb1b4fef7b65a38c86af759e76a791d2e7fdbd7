@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf6cecc4_b884edb6",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-07T20:47:18Z",
+      "side": 1,
+      "message": "Do we actually want to send these over as a string?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "2eb1b4fef7b65a38c86af759e76a791d2e7fdbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbdfed8_c6afa175",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-07T20:47:18Z",
+      "side": 1,
+      "message": "Switch to passing packet.substr(2) so the handler doesn\u0027t have to ignore its own prefix (which it probably shouldn\u0027t even be aware of?)\n\nActually, it\u0027d be even nicer to rewrite this with android::base::ConsumePrefix:\n\n    if (android::base::ConsumePrefix(\u0026packet, framework_handlers[i].code)) {\n      framework_handlers[i].cb(packet);\n    }",
+      "range": {
+        "startLine": 197,
+        "startChar": 64,
+        "endLine": 203,
+        "endChar": 13
+      },
+      "revId": "2eb1b4fef7b65a38c86af759e76a791d2e7fdbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61b19ac3_8e6ac47f",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-07T20:47:18Z",
+      "side": 1,
+      "message": "CHECK the length here as below? (or .empty(), if you strip the prefix from the packets)",
+      "range": {
+        "startLine": 211,
+        "startChar": 64,
+        "endLine": 212,
+        "endChar": 20
+      },
+      "revId": "2eb1b4fef7b65a38c86af759e76a791d2e7fdbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d3cbfca_06c09933",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-07T20:47:18Z",
+      "side": 1,
+      "message": "nit: framework_handlers_",
+      "range": {
+        "startLine": 537,
+        "startChar": 37,
+        "endLine": 537,
+        "endChar": 55
+      },
+      "revId": "2eb1b4fef7b65a38c86af759e76a791d2e7fdbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
