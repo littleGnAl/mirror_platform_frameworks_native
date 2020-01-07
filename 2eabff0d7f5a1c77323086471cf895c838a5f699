@@ -46,6 +46,30 @@
       "revId": "2eabff0d7f5a1c77323086471cf895c838a5f699",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e366881_4e7062f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-01-07T09:21:18Z",
+      "side": 1,
+      "message": "sorry it does not state the size still? I\u0027m interesting in knowing much bigger the bugreport gets.",
+      "parentUuid": "05fbdc11_8a12963c",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "2eabff0d7f5a1c77323086471cf895c838a5f699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
