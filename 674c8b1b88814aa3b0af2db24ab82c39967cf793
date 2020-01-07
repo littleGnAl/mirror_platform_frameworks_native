@@ -22,6 +22,30 @@
       "revId": "674c8b1b88814aa3b0af2db24ab82c39967cf793",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e29fce_517168e2",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-01-07T02:18:14Z",
+      "side": 0,
+      "message": "Good catch. I was only able to reproduce that race by shortening the loop in servicemanager/main from 5s to 1ms, but it\u0027s good to handle it regardless.\n\nCalling handleServiceClientCallback here yields a false positive (since LazyServiceRegistrar\u0027s attempt to shut down the service counts as a client in that context), so I just handled the case directly instead.",
+      "parentUuid": "d5d6947d_c3c98d56",
+      "range": {
+        "startLine": 521,
+        "startChar": 18,
+        "endLine": 521,
+        "endChar": 45
+      },
+      "revId": "674c8b1b88814aa3b0af2db24ab82c39967cf793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
