@@ -46,6 +46,30 @@
       "revId": "674c8b1b88814aa3b0af2db24ab82c39967cf793",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f931e0c4_31a880e3",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-07T18:31:59Z",
+      "side": 0,
+      "message": "Ah, yeah. Good point, since guarantee client is set, but there isn\u0027t actually a \"client\" guaranteed. This is really making me think we should switch to avoid the binder in the callback. There are a lot of problems that\u0027s causing.",
+      "parentUuid": "d9e29fce_517168e2",
+      "range": {
+        "startLine": 521,
+        "startChar": 18,
+        "endLine": 521,
+        "endChar": 45
+      },
+      "revId": "674c8b1b88814aa3b0af2db24ab82c39967cf793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
