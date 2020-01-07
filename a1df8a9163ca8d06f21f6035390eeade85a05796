@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b4e8815_09940222",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-01-07T10:02:36Z",
+      "side": 1,
+      "message": "Please keep an eye on the size as you add more things to this directory (if you do). 100K is on the higher side, but seems reasonable, especially since it\u0027s protected by an adb flag.",
+      "range": {
+        "startLine": 12,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "a1df8a9163ca8d06f21f6035390eeade85a05796",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
