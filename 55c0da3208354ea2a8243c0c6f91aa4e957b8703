@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e527c4b9_6459e1a6",
+        "filename": "cmds/installd/QuotaUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2020-01-08T12:56:31Z",
+      "side": 1,
+      "message": "sigh...",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 40
+      },
+      "revId": "55c0da3208354ea2a8243c0c6f91aa4e957b8703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
