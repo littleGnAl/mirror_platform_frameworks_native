@@ -70,6 +70,30 @@
       "revId": "eca6a4dbeae00747d8fa9b0b13b8113bf2ad924c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71668b3d_5cb63f1c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_jni.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-01-08T21:23:56Z",
+      "side": 1,
+      "message": "It\u0027d be fine to be borrow-only but sometimes borrow sometimes refcounted is not fine. I think this needs to be reconciled with the docs above that state:\n\n\"If this parcel object was originally an\n * AParcel object, the original object is returned. The returned object has one refcount\n * associated with it, and so this should be accompanied with an AParcel_decStrong call.\"\n\nIt needs to only have 1 memory model. I\u0027m not tied to which one it ends up with (it\u0027d be _better_ if all parcels were all a single refcounted thing though), but if needs to at least be consistent with itself. Particularly since I don\u0027t see how you could even handle this method sometimes being just a borrow and sometimes needing a delete, nothing tells you that?",
+      "parentUuid": "9c47487f_52d27456",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "eca6a4dbeae00747d8fa9b0b13b8113bf2ad924c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
