@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b97817d_256f1e90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-01-08T23:41:37Z",
+      "side": 1,
+      "message": "Nit: Actual changes made by this commit should come before background in commit messages. Generally, optimize for people reading as little as necessary to find out what changed.",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "5c2b95a0f569d2581805fa4e3d9a4a5cf14225eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
