@@ -22,6 +22,30 @@
       "revId": "eca6a4dbeae00747d8fa9b0b13b8113bf2ad924c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "621d337b_47807beb",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_jni.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-08T08:23:11Z",
+      "side": 1,
+      "message": "i personally think its fine because the callers of this function can pin the jobject if needed.",
+      "parentUuid": "b80212ba_484d0837",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "eca6a4dbeae00747d8fa9b0b13b8113bf2ad924c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
