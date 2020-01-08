@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b80212ba_484d0837",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_jni.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-08T00:02:16Z",
+      "side": 1,
+      "message": "jreck, what do you think of this? is it more usually to have the underlying object take ownership of this?\n\nFor the other direction (if we add AParcel_toJavaParcel, do you think I should now?), Parcel.obtain(long) will only allow us to create a view, and since there is no refcount in C++ or anything like that for a \u0027Parcel\u0027, it can only be a view.",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "eca6a4dbeae00747d8fa9b0b13b8113bf2ad924c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
