@@ -54,7 +54,14 @@ bool SurfaceTracing::addFirstEntry() {
 
 LayersTraceProto SurfaceTracing::traceWhenNotified() {
     std::unique_lock<std::mutex> lock(mSfLock);
-    mCanStartTrace.wait(lock);
+    auto waitTime = std::chrono::milliseconds(100);
+    while (mCanStartTrace.wait_for(lock, waitTime) == std::cv_status::timeout) {
+        std::scoped_lock lock(mTraceLock);
+        if (!mEnabled) {
+            // SurfaceTracing is disabled, do last traceLayer
+            break;
+        }
+    }
     android::base::ScopedLockAssertion assumeLock(mSfLock);
     LayersTraceProto entry = traceLayersLocked(mWhere);
     mTracingInProgress = false;
