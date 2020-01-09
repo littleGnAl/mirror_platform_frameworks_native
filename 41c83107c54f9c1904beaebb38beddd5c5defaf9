@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a30b693a_22515461",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2802,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2020-01-09T09:41:24Z",
+      "side": 1,
+      "message": "please can we avoid this and use a static constexpr std::string and use its length instead ?",
+      "range": {
+        "startLine": 2802,
+        "startChar": 34,
+        "endLine": 2802,
+        "endChar": 36
+      },
+      "revId": "41c83107c54f9c1904beaebb38beddd5c5defaf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
