@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c7e9726_030e0ca0",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T06:00:44Z",
+      "side": 1,
+      "message": "nit: looks like an accidental tab here?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7cfdca7_55912efb",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/aes_128_gcm.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T06:00:44Z",
+      "side": 1,
+      "message": "Is this header authenticated? I haven\u0027t gotten to the patch where this actually gets used, but it doesn\u0027t seem like this is being sent as part of the AES-GCM associated data, which seems like the appropriate place to be authenticating this header.",
+      "range": {
+        "startLine": 33,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83a3783f_70610569",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/aes_128_gcm.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T06:00:44Z",
+      "side": 1,
+      "message": "Do we need to put this in the header? Can\u0027t this always be derived from length?",
+      "range": {
+        "startLine": 35,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ca6a2c_60a18d3e",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/aes_128_gcm.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T06:00:44Z",
+      "side": 1,
+      "message": "Seems like this should be a constructor instead: if it fails, we should be blowing up anyway.",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b8d5c3_405ed218",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/aes_128_gcm.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T06:00:44Z",
+      "side": 1,
+      "message": "Encrypt(..., in_len, ...)",
+      "range": {
+        "startLine": 43,
+        "startChar": 41,
+        "endLine": 44,
+        "endChar": 78
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631e021f_e4ed42b6",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/aes_128_gcm.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T06:00:44Z",
+      "side": 1,
+      "message": "Google C++ style prescribes foo_ instead of mFoo",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 37
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f098291a_94ad8305",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/counter.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T06:00:44Z",
+      "side": 1,
+      "message": "nit: counter_",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c2d96eb_dce19e94",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/pairing_auth.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T06:00:44Z",
+      "side": 1,
+      "message": "exchange",
+      "range": {
+        "startLine": 29,
+        "startChar": 34,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56489e61_a18592f9",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/libadbwifi_pairing_auth.map.txt",
+        "patchSetId": 17
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T06:00:44Z",
+      "side": 1,
+      "message": "Unfortunately, if this is in the adbd apex and loaded from the system (or in the system and loaded from the adbd apex), the API is going to need to be an ugly C wrapper around the C++ implementation because of ABI stability reasons (e.g. there are libc++ ABI breakages in std::string that we actively want to take right now).\n\n(and if not, presumably this shouldn\u0027t be labeled apex)",
+      "range": {
+        "startLine": 3,
+        "startChar": 18,
+        "endLine": 4,
+        "endChar": 48
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
