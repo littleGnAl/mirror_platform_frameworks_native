@@ -94,6 +94,30 @@
       "revId": "eca6a4dbeae00747d8fa9b0b13b8113bf2ad924c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46bad732_7714c35e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel_jni.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-09T00:04:14Z",
+      "side": 1,
+      "message": "sorry, this was just sed abuse. Removed incorrectly located documentation and incorrect documentation and documented return parameter.",
+      "parentUuid": "71668b3d_5cb63f1c",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "eca6a4dbeae00747d8fa9b0b13b8113bf2ad924c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
