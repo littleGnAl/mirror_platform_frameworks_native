@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d20d22b_b73f9769",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T04:41:16Z",
+      "side": 1,
+      "message": "nit: handled_packet",
+      "range": {
+        "startLine": 197,
+        "startChar": 13,
+        "endLine": 197,
+        "endChar": 27
+      },
+      "revId": "1482fbfcc0fde9af3019a2c739c6185cc33b13d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed98b318_eb4a5e4c",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T04:41:16Z",
+      "side": 1,
+      "message": "This should just be buf.data() and buf.length() with ConsumePrefix, right?\n\n(also nit: I prefer size over length, since that works for all of the C++ container types, and length only applies to string/string_view.",
+      "range": {
+        "startLine": 236,
+        "startChar": 28,
+        "endLine": 237,
+        "endChar": 76
+      },
+      "revId": "1482fbfcc0fde9af3019a2c739c6185cc33b13d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b002222_e2b70208",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T04:41:16Z",
+      "side": 1,
+      "message": "This cast (and the one for AdbdAuthPacketWifiDisconnected below) should be unneccessary, iov_base is a void*.",
+      "range": {
+        "startLine": 278,
+        "startChar": 31,
+        "endLine": 278,
+        "endChar": 70
+      },
+      "revId": "1482fbfcc0fde9af3019a2c739c6185cc33b13d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67383551_634faff9",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-09T04:41:16Z",
+      "side": 1,
+      "message": "oops, good catch.",
+      "range": {
+        "startLine": 439,
+        "startChar": 16,
+        "endLine": 439,
+        "endChar": 43
+      },
+      "revId": "1482fbfcc0fde9af3019a2c739c6185cc33b13d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
