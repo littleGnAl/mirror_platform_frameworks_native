@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "82d3d8d2_6dca5ff7",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/aes_128_gcm.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-09T16:39:54Z",
+      "side": 1,
+      "message": "This header struct is only being used in this file (checked in the Decrypt() method).\n\nThe cipher is fed the header.iv and header.tag, so the ssl library should be authenticating it, AFAIK. It doesn\u0027t look like I need to check anything else.",
+      "parentUuid": "d7cfdca7_55912efb",
+      "range": {
+        "startLine": 33,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83a3783f_70610569",
         "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/aes_128_gcm.cpp",
         "patchSetId": 17
@@ -59,6 +83,30 @@
       "writtenOn": "2020-01-09T06:00:44Z",
       "side": 1,
       "message": "Do we need to put this in the header? Can\u0027t this always be derived from length?",
+      "range": {
+        "startLine": 35,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f8ba6b9_89c70339",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/aes_128_gcm.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-09T16:39:54Z",
+      "side": 1,
+      "message": "Yeah, I think you\u0027re right. According to the OpenSSL docs for EVP_CIPHER_CTX_set_padding(), \"encryption operations are padded using standard block padding and the padding is checked and removed when decrypting.\" I\u0027ll verify this is actually the case in the test.",
+      "parentUuid": "83a3783f_70610569",
       "range": {
         "startLine": 35,
         "startChar": 20,
@@ -197,6 +245,30 @@
       "writtenOn": "2020-01-09T06:00:44Z",
       "side": 1,
       "message": "Unfortunately, if this is in the adbd apex and loaded from the system (or in the system and loaded from the adbd apex), the API is going to need to be an ugly C wrapper around the C++ implementation because of ABI stability reasons (e.g. there are libc++ ABI breakages in std::string that we actively want to take right now).\n\n(and if not, presumably this shouldn\u0027t be labeled apex)",
+      "range": {
+        "startLine": 3,
+        "startChar": 18,
+        "endLine": 4,
+        "endChar": 48
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5400dccb_2b15e082",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/libadbwifi_pairing_auth.map.txt",
+        "patchSetId": 17
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-09T16:39:54Z",
+      "side": 1,
+      "message": "Ahh, that sucks 😞. I\u0027ll go ahead and add C wrappers for this CL and the other one.",
+      "parentUuid": "56489e61_a18592f9",
       "range": {
         "startLine": 3,
         "startChar": 18,
