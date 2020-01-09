@@ -24,7 +24,6 @@ oneway interface IServiceCallback {
      * Called when a service is registered.
      *
      * @param name the service name that has been registered with
-     * @param binder the binder that is registered
      */
-    void onRegistration(@utf8InCpp String name, IBinder binder);
+    void onRegistration(@utf8InCpp String name);
 }

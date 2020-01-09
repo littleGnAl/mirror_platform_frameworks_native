@@ -266,18 +266,15 @@ Vector<String16> ServiceManagerShim::listServices(int dumpsysPriority)
 sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
 {
     class Waiter : public android::os::BnServiceCallback {
-        Status onRegistration(const std::string& /*name*/,
-                              const sp<IBinder>& binder) override {
+        Status onRegistration(const std::string& /*name*/) override {
             std::unique_lock<std::mutex> lock(mMutex);
-            mBinder = binder;
+            mRegistered = true;
             lock.unlock();
-            // Flushing here helps ensure the service's ref count remains accurate
-            IPCThreadState::self()->flushCommands();
             mCv.notify_one();
             return Status::ok();
         }
     public:
-        sp<IBinder> mBinder;
+        bool mRegistered = false;
         std::mutex mMutex;
         std::condition_variable mCv;
     };
@@ -313,9 +310,8 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             std::unique_lock<std::mutex> lock(waiter->mMutex);
             using std::literals::chrono_literals::operator""s;
             waiter->mCv.wait_for(lock, 1s, [&] {
-                return waiter->mBinder != nullptr;
+                return waiter->mRegistered;
             });
-            if (waiter->mBinder != nullptr) return waiter->mBinder;
         }
 
         // Handle race condition for lazy services. Here is what can happen:

@@ -204,7 +204,7 @@ Status ServiceManager::addService(const std::string& name, const sp<IBinder>& bi
         for (const sp<IServiceCallback>& cb : it->second) {
             entry.first->second.guaranteeClient = true;
             // permission checked in registerForNotifications
-            cb->onRegistration(name, binder);
+            cb->onRegistration(name);
         }
     }
 
@@ -262,11 +262,7 @@ Status ServiceManager::registerForNotifications(
     mNameToRegistrationCallback[name].push_back(callback);
 
     if (auto it = mNameToService.find(name); it != mNameToService.end()) {
-        const sp<IBinder>& binder = it->second.binder;
-
-        // never null if an entry exists
-        CHECK(binder != nullptr) << name;
-        callback->onRegistration(name, binder);
+        callback->onRegistration(name);
     }
 
     return Status::ok();
