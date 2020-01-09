@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63da040a_e0244bc9",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2020-01-09T10:16:06Z",
+      "side": 1,
+      "message": "constexpr std::string_view is preferred, but this is OK too.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "92e1fc9818772be1d37cdec6a142adeba0d36569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
