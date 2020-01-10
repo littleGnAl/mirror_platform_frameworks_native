@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "07726011_75ce17e2",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/aes_128_gcm.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-10T05:17:34Z",
+      "side": 1,
+      "message": "So it looks like EVP_DecryptFinal_ex() will check the tag. If we don\u0027t read the exact amount of data that was encrypted, this will fail. I\u0027ve added a test to verify this behavior.",
+      "parentUuid": "d90b80eb_511da6d5",
+      "range": {
+        "startLine": 33,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83a3783f_70610569",
         "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/aes_128_gcm.cpp",
         "patchSetId": 17
@@ -164,6 +188,30 @@
       "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e7bc23_022a9182",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/aes_128_gcm.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-10T05:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f8ba6b9_89c70339",
+      "range": {
+        "startLine": 35,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -446,6 +494,30 @@
       "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd34f1e8_70e2131f",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/libadbwifi_pairing_auth.map.txt",
+        "patchSetId": 17
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-10T05:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5400dccb_2b15e082",
+      "range": {
+        "startLine": 3,
+        "startChar": 18,
+        "endLine": 4,
+        "endChar": 48
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
