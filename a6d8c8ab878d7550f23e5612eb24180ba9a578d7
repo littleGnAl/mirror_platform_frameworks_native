@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58ec1c69_14a0f472",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-10T05:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c7e9726_030e0ca0",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7cfdca7_55912efb",
         "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/aes_128_gcm.cpp",
         "patchSetId": 17
@@ -166,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "ab6197e6_53904487",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/aes_128_gcm.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-10T05:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0ca6a2c_60a18d3e",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3b8d5c3_405ed218",
         "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/aes_128_gcm.h",
         "patchSetId": 17
@@ -186,6 +234,30 @@
       "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ccf7902_be3dfe6a",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/aes_128_gcm.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-10T05:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3b8d5c3_405ed218",
+      "range": {
+        "startLine": 43,
+        "startChar": 41,
+        "endLine": 44,
+        "endChar": 78
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -212,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "ec2aec15_a1d1bfce",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/aes_128_gcm.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-10T05:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "631e021f_e4ed42b6",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 37
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f098291a_94ad8305",
         "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/counter.h",
         "patchSetId": 17
@@ -235,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "a82872c1_69d1b5ca",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/counter.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-10T05:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f098291a_94ad8305",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2d96eb_dce19e94",
         "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/pairing_auth.h",
         "patchSetId": 17
@@ -255,6 +375,30 @@
       "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3f4d37_242f1257",
+        "filename": "libs/adbd_auth/adbwifi_libs/pairing_auth/include/adbwifi/pairing/pairing_auth.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-10T05:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2d96eb_dce19e94",
+      "range": {
+        "startLine": 29,
+        "startChar": 34,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "a6d8c8ab878d7550f23e5612eb24180ba9a578d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
