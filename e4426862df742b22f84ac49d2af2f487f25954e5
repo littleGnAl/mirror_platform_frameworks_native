@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "806ecfe9_0a992a5e",
+        "filename": "libs/dumputils/dump_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-01-10T16:00:45Z",
+      "side": 1,
+      "message": "nit: i tend to use `size()` or `empty()` on principle because they\u0027re everywhere and `empty()` can be cheaper for containers that don\u0027t store their size.",
+      "range": {
+        "startLine": 83,
+        "startChar": 26,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "e4426862df742b22f84ac49d2af2f487f25954e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
