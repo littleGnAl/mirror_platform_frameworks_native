@@ -17,6 +17,7 @@
 
 #include <android-base/file.h>
 #include <android-base/stringprintf.h>
+#include <android-base/properties.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
 #include <dumputils/dump_utils.h>
 #include <log/log.h>
@@ -32,13 +33,19 @@ static const char* native_processes_to_dump[] = {
         "/system/bin/mediametrics", // media.metrics
         "/system/bin/mediaserver",
         "/system/bin/netd",
-        "/system/bin/vold",
         "/system/bin/sdcard",
         "/system/bin/statsd",
         "/system/bin/surfaceflinger",
         "/system/bin/vehicle_network_service",
         "/vendor/bin/hw/android.hardware.media.omx@1.0-service", // media.codec
         "/apex/com.android.media.swcodec/bin/mediaswcodec", // media.swcodec
+        NULL,
+};
+
+
+// Native processes to dump on debuggable builds.
+static const char* debuggable_native_processes_to_dump[] = {
+        "/system/bin/vold",
         NULL,
 };
 
@@ -80,6 +87,15 @@ bool should_dump_native_traces(const char* path) {
             return true;
         }
     }
+
+    if (android::base::GetBoolProperty("ro.debuggable", false)) {
+        for (const char** p = debuggable_native_processes_to_dump; *p; p++) {
+            if (!strcmp(*p, path)) {
+                return true;
+            }
+        }
+    }
+
     return false;
 }
 
