@@ -39,6 +39,7 @@
 
 #define BPF_FS_PATH "/sys/fs/bpf/"
 
+using android::base::Result;
 using android::base::StringPrintf;
 using android::base::unique_fd;
 
@@ -222,9 +223,9 @@ bool getUidsCpuFreqTimes(
                 (*freqTimeMap)[key.uid][policy][freqIdx] += val.ar[cpu];
             }
         }
-        return android::netdutils::status::ok;
+        return Result<void>();
     };
-    return isOk(m.iterateWithValue(fn));
+    return !!m.iterateWithValue(fn);
 }
 
 // Clear all time in state data for a given uid. Returns false on error, true otherwise.
