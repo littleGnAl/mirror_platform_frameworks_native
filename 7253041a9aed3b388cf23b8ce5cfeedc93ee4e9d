@@ -22,6 +22,30 @@
       "revId": "7253041a9aed3b388cf23b8ce5cfeedc93ee4e9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23487ef3_402b1b28",
+        "filename": "libs/cputimeinstate/testtimeinstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-14T00:37:32Z",
+      "side": 1,
+      "message": "The original commit date is 2018, although merged in 2019",
+      "parentUuid": "fb63f196_520e2d24",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "7253041a9aed3b388cf23b8ce5cfeedc93ee4e9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
