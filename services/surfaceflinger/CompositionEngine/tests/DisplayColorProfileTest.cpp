@@ -378,6 +378,16 @@ TEST_F(DisplayColorProfileTest, hasRenderIntentReturnsExpectedValueWhenOutputHas
     EXPECT_TRUE(profile.hasRenderIntent(VendorRenderIntent));
 }
 
+TEST_F(DisplayColorProfileTest, hasRenderIntentReturnsExpectedValueWhenOutputHasDisplayP3Support) {
+    auto profile = ProfileFactory::createProfileWithDisplayP3ColorModeSupport();
+
+    EXPECT_TRUE(profile.hasRenderIntent(RenderIntent::COLORIMETRIC));
+    EXPECT_TRUE(profile.hasRenderIntent(RenderIntent::ENHANCE));
+    EXPECT_FALSE(profile.hasRenderIntent(RenderIntent::TONE_MAP_COLORIMETRIC));
+    EXPECT_FALSE(profile.hasRenderIntent(RenderIntent::TONE_MAP_ENHANCE));
+    EXPECT_TRUE(profile.hasRenderIntent(VendorRenderIntent));
+}
+
 TEST_F(DisplayColorProfileTest, hasRenderIntentReturnsExpectedValueWhenOutputHasBTG2100PQSupport) {
     auto profile = ProfileFactory::createProfileWithBT2100PQSupport();
 
