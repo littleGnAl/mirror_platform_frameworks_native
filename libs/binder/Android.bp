@@ -74,9 +74,14 @@ cc_library {
     apex_available: [
         "//apex_available:platform",
         "com.android.vndk.current",
-        // TODO(b/139016109) remove these three
+        // TODO(b/139016109) remove these
         "com.android.media.swcodec",
         "test_com.android.media.swcodec",
+        "com.android.media", // via libaudiomanager, etc.
+        "test_com.android.media",
+        "com.android.cronet", // via libpdx, libvibrator, libgraphicsenv, etc.
+        "test_com.android.cronet",
+        "com.android.bluetooth.updatable", // via libaudiofoundation, etc.
     ],
 
     srcs: [
