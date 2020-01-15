@@ -878,7 +878,7 @@ static void DoKernelLogcat() {
 }
 
 static void DoSystemLogcat(time_t since) {
-    char since_str[80];
+    char since_str[128];
     strftime(since_str, sizeof(since_str), "%Y-%m-%d %H:%M:%S.000", localtime(&since));
 
     unsigned long timeout_ms = logcat_timeout({"main", "system", "crash"});
