@@ -34,6 +34,24 @@
       "revId": "b1072848b06c0e956cd18666a10f5f52190c166c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4190dd00_90043c38",
+        "filename": "services/surfaceflinger/CompositionEngine/tests/DisplayColorProfileTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1468456
+      },
+      "writtenOn": "2020-01-15T23:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2023616_529c0524",
+      "revId": "b1072848b06c0e956cd18666a10f5f52190c166c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
