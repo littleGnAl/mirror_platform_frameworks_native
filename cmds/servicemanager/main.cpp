@@ -15,6 +15,7 @@
  */
 
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <binder/IPCThreadState.h>
 #include <binder/ProcessState.h>
 #include <binder/Status.h>
@@ -132,13 +133,17 @@ int main(int argc, char** argv) {
     IPCThreadState::self()->setTheContextObject(manager);
     ps->becomeContextManager(nullptr, nullptr);
 
-    sp<Looper> looper = Looper::prepare(false /*allowNonCallbacks*/);
+    if (android::base::GetBoolProperty("ro.config.dynamic_aidl", false)) {
+        sp<Looper> looper = Looper::prepare(false /*allowNonCallbacks*/);
 
-    BinderCallback::setupTo(looper);
-    ClientCallbackCallback::setupTo(looper, manager);
+        BinderCallback::setupTo(looper);
+        ClientCallbackCallback::setupTo(looper, manager);
 
-    while(true) {
-        looper->pollAll(-1);
+        while(true) {
+            looper->pollAll(-1);
+        }
+    } else {
+       IPCThreadState::self()->joinThreadPool();
     }
 
     // should not be reached
