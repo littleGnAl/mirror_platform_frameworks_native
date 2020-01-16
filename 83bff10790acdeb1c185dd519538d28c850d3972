@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60db1517_52d1a814",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-16T17:23:55Z",
+      "side": 1,
+      "message": "This isn\u0027t a use of libbinder though. Since it is a static dependency, all the shared dependencies are dropped. This seems like it is just a convenient way to only include the symbols from libstagefright_foundation which are needed for the APEX (and dropping all of the ones that actually depend on libbinder).\n\nDo we want to consider this case for apex_available? The important thing is that the libbinder symbols or library itself aren\u0027t in the APEX. I agree we should check this for correctness (we should even be checking headers, although they are such a mess in general), but in the meantime, this means com.android.media could start actually including libbinder in the APEX.\n\nWDYT?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
