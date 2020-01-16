@@ -118,6 +118,30 @@
       "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acbe06aa_122c3db0",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-16T18:37:45Z",
+      "side": 1,
+      "message": "prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja -t path pathA pathB\n\nshows the dependency chai from pathA to pathB. Strangely, the following doesn\u0027t show anything.\n\nprebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja -t path out/soong/.intermediates/frameworks/av/apex/com.android.media/android_common_cfi_com.android.media_image/com.android.media.apex.unsigned frameworks/native/libs/binder/Binder.cpp\n\nI will investigate more.",
+      "parentUuid": "fe849684_59a650ea",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
