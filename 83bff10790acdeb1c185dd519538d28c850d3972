@@ -94,6 +94,30 @@
       "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe849684_59a650ea",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-16T18:25:15Z",
+      "side": 1,
+      "message": "I thought maybe this could be a master/AOSP difference, since I understand the dependencies here are only cleaned up on master, but I can\u0027t find any evidence of libbinder being used in the AOSP APEX here either.\n\nIs there a way to print a tree of all the dependencies visited? Perhaps that would be a helpful tool for Soong development.",
+      "parentUuid": "8e1ae050_68c5040e",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
