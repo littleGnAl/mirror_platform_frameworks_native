@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d01b4a0_035c24f6",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-16T01:00:46Z",
+      "side": 1,
+      "message": "I don\u0027t understand. libbinder has no static variant on device. Also, libaudiomanager doesn\u0027t appear to be in this APEX (and I can\u0027t find IAudioManager there).\n\nlibmpeg2extractor includes libbinderthreadstate, but not libbinder.\n\nWhat am I not seeing?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 57
+      },
+      "revId": "6bf2276c807985a1cca818d285cddca85cbced58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4357d89_0299cff9",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-16T01:00:46Z",
+      "side": 1,
+      "message": "so, this includes libandroid which is NDK. Why are APEXes allowed to include NDK libraries?",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "6bf2276c807985a1cca818d285cddca85cbced58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90c6c7a4_d3ba4d12",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-16T01:00:46Z",
+      "side": 1,
+      "message": "also, can you print the whole dependency path of this?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 74
+      },
+      "revId": "6bf2276c807985a1cca818d285cddca85cbced58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
