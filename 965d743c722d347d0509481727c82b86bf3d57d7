@@ -46,6 +46,30 @@
       "revId": "965d743c722d347d0509481727c82b86bf3d57d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d00b172_4b7a5096",
+        "filename": "libs/adbd_auth/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-17T07:22:16Z",
+      "side": 1,
+      "message": "Ah, okay. Thanks!",
+      "parentUuid": "aa467b52_8e573f93",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "965d743c722d347d0509481727c82b86bf3d57d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
