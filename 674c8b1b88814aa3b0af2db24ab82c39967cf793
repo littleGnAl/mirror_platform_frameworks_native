@@ -118,6 +118,30 @@
       "revId": "674c8b1b88814aa3b0af2db24ab82c39967cf793",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37bdc8b1_cf0c0092",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-01-17T02:49:15Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "0a119a71_a2eead76",
+      "range": {
+        "startLine": 521,
+        "startChar": 18,
+        "endLine": 521,
+        "endChar": 45
+      },
+      "revId": "674c8b1b88814aa3b0af2db24ab82c39967cf793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
