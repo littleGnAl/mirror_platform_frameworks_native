@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc8b026d_7a4f422b",
+        "filename": "libs/adbd_auth/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-17T04:32:45Z",
+      "side": 1,
+      "message": "I couldn\u0027t find a way other than this to force the build system to install /system/lib64/libadbd_auth.so to the system partition (and even with this, we still have a spurious unnecessary /apex/com.android.adbd/lib64/libadbd_auth.so). Is this the right way to go for a library that intends to be an ABI stable interface on /system?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "965d743c722d347d0509481727c82b86bf3d57d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
