@@ -20,6 +20,8 @@ cc_library {
         "-Wthread-safety",
         "-Werror",
     ],
+    stl: "libc++_static",
+
     srcs: ["adbd_auth.cpp"],
     export_include_dirs: ["include"],
 
@@ -36,9 +38,15 @@ cc_library {
         }
     },
 
-    shared_libs: [
+    static_libs: [
         "libbase",
         "libcutils",
         "liblog",
     ],
+}
+
+llndk_library {
+    name: "libadbd_auth",
+    symbol_file: "libadbd_auth.map.txt",
+    native_bridge_supported: false,
 }
