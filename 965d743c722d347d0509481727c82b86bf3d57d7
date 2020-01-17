@@ -22,6 +22,30 @@
       "revId": "965d743c722d347d0509481727c82b86bf3d57d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa467b52_8e573f93",
+        "filename": "libs/adbd_auth/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-17T04:40:18Z",
+      "side": 1,
+      "message": "add following to libadbd_auth cc_library module.\n\nstubs: {\n    versions: [\"1\"],\n    symbol_file: \"libadbd_auth.map.txt\",\n},\n\nthen libadbd_auth will be installed to the system partition and won\u0027t be included in the apex unless you explicitly add it by listing it in native_shared_libs.",
+      "parentUuid": "dc8b026d_7a4f422b",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "965d743c722d347d0509481727c82b86bf3d57d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
