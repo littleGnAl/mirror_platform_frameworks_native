@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: Orion Hodson <oth@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Build-Cop-Override+1: Orion Hodson <oth@google.com>
+Submitted-by: Orion Hodson <oth@google.com>
+Submitted-at: Fri, 17 Jan 2020 17:04:35 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1181349
+Project: platform/frameworks/native
+Branch: refs/heads/master
