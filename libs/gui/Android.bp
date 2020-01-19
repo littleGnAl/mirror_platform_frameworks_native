@@ -201,4 +201,76 @@ cc_defaults {
     ],
 }
 
+cc_library_shared {
+    name: "libgui_vendor",
+    vendor_available: true,
+    vndk: {
+        enabled: false,
+    },
+    double_loadable: true,
+
+    defaults: ["libgui_bufferqueue-defaults"],
+
+    srcs: [
+        "BitTube.cpp",
+        "BufferHubConsumer.cpp",
+        "BufferHubProducer.cpp",
+        "BufferItemConsumer.cpp",
+        "ConsumerBase.cpp",
+        "CpuConsumer.cpp",
+        "DebugEGLImageTracker.cpp",
+        "DisplayEventReceiver.cpp",
+        "GLConsumer.cpp",
+        "GuiConfig.cpp",
+        "IDisplayEventConnection.cpp",
+        "IRegionSamplingListener.cpp",
+        "ISurfaceComposer.cpp",
+        "ISurfaceComposerClient.cpp",
+        "ITransactionCompletedListener.cpp",
+        "LayerDebugInfo.cpp",
+        "LayerMetadata.cpp",
+        "LayerState.cpp",
+        "StreamSplitter.cpp",
+        "Surface.cpp",
+        "SurfaceControl.cpp",
+        "SurfaceComposerClient.cpp",
+        "SyncFeatures.cpp",
+        "view/Surface.cpp",
+    ],
+
+    shared_libs: [
+        "android.frameworks.bufferhub@1.0",
+        "libbufferhub",
+        "libbufferhubqueue", // TODO(b/70046255): Remove this once BufferHub is integrated into libgui.
+        "libinput",
+        "libpdx_default_transport",
+    ],
+
+    // bufferhub is not used when building libgui for vendors
+    target: {
+        vendor: {
+            cflags: [
+                "-DNO_BUFFERHUB",
+                "-DNO_INPUT",
+            ],
+            exclude_srcs: [
+                "BufferHubConsumer.cpp",
+                "BufferHubProducer.cpp",
+            ],
+            exclude_shared_libs: [
+                "android.frameworks.bufferhub@1.0",
+                "libbufferhub",
+                "libbufferhubqueue",
+                "libinput",
+                "libpdx_default_transport",
+            ],
+        },
+    },
+
+    header_libs: [
+        "libdvr_headers",
+        "libpdx_headers",
+    ],
+}
+
 subdirs = ["tests"]
