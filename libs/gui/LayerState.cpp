@@ -54,6 +54,9 @@ status_t layer_state_t::write(Parcel& output) const
     output.writeFloat(color.b);
 #ifndef NO_INPUT
     inputInfo.write(output);
+#else
+    // Write a dummy 32-bit word.
+    output.writeInt32(0);
 #endif
     output.write(transparentRegion);
     output.writeUint32(transform);
