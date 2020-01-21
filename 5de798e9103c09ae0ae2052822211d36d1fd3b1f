@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9371fae_17b90c78",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-21T20:42:13Z",
+      "side": 1,
+      "message": "I think we still want this one to be called on interval (to be consistent w/ HIDL). It\u0027s not a correctness thing, but we want to report that there are clients as soon as possible (rather than leaving the HAL in a state where it thinks there will be no clients)",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 9
+      },
+      "revId": "5de798e9103c09ae0ae2052822211d36d1fd3b1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
