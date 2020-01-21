@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5929d57_b7744936",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-21T21:56:07Z",
+      "side": 1,
+      "message": "nit: add mIsLooper before this, so that it won\u0027t increase the size of IPCThreadState?",
+      "range": {
+        "startLine": 192,
+        "startChar": 12,
+        "endLine": 192,
+        "endChar": 16
+      },
+      "revId": "d584fd89f898364e5c3ac7e2a1f02f727aae4a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
