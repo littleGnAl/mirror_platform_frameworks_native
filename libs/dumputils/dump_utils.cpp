@@ -70,6 +70,9 @@ static const char* hal_interfaces_to_dump[] {
         "android.hardware.sensors@1.0::ISensors",
         "android.hardware.thermal@2.0::IThermal",
         "android.hardware.vr@1.0::IVr",
+        "android.hardware.neuralnetworks@1.0::IDevice",
+        "android.hardware.neuralnetworks@1.1::IDevice",
+        "android.hardware.neuralnetworks@1.2::IDevice",
         NULL,
 };
 
