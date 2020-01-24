@@ -100,6 +100,13 @@ public:
 
 sp<IServiceManager> defaultServiceManager();
 
+#ifndef __ANDROID__
+/**
+ * Directly set the default service manager. Only used for local host testing.
+ */
+void setDefaultServiceManager(const sp<IServiceManager>& sm);
+#endif
+
 template<typename INTERFACE>
 sp<INTERFACE> waitForService(const String16& name) {
     const sp<IServiceManager> sm = defaultServiceManager();

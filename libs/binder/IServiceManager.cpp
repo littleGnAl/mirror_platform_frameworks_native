@@ -85,10 +85,11 @@ private:
     sp<AidlServiceManager> mTheRealServiceManager;
 };
 
+static Mutex gDefaultServiceManagerLock;
+static sp<IServiceManager> gDefaultServiceManager;
+
 sp<IServiceManager> defaultServiceManager()
 {
-    static Mutex gDefaultServiceManagerLock;
-    static sp<IServiceManager> gDefaultServiceManager;
 
     if (gDefaultServiceManager != nullptr) return gDefaultServiceManager;
 
@@ -105,6 +106,13 @@ sp<IServiceManager> defaultServiceManager()
 
     return gDefaultServiceManager;
 }
+
+#ifndef __ANDROID__
+void setDefaultServiceManager(const sp<IServiceManager>& sm) {
+  AutoMutex _l(gDefaultServiceManagerLock);
+  gDefaultServiceManager = sm;
+}
+#endif
 
 #if !defined(__ANDROID_VNDK__) && defined(__ANDROID__)
 // IPermissionController is not accessible to vendors
