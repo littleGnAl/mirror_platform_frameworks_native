@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Jon Spivack <spivack@google.com>
+Build-Cop-Override+1: Kevin Lau Fang <fangk@google.com>
+Submitted-by: Jon Spivack <spivack@google.com>
+Submitted-at: Sat, 25 Jan 2020 21:29:42 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1218162
+Project: platform/frameworks/native
+Branch: refs/heads/master
