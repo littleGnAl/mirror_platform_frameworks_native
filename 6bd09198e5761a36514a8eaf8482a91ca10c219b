@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba360fe2_af8b3cd9",
+        "filename": "libs/binder/ndk/runtests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-01-27T08:42:24Z",
+      "side": 0,
+      "message": "Haha, I also didn\u0027t now about PR_SET_PDEATHSIG 😮",
+      "parentUuid": "c65338af_aa74bc14",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "6bd09198e5761a36514a8eaf8482a91ca10c219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec4a3005_369cf726",
         "filename": "libs/binder/ndk/runtests.sh",
         "patchSetId": 1
