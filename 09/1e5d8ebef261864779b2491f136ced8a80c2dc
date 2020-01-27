@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Autosubmit+1: Mikhail Naganov <mnaganov@google.com>
+Code-Review+2: Eric Laurent <elaurent@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 27 Jan 2020 21:41:35 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1218917
+Project: platform/frameworks/native
+Branch: refs/heads/master
