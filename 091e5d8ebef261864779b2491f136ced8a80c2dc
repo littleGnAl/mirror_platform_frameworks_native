@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4582800_ba0c73fa",
+        "filename": "libs/dumputils/dump_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2020-01-28T10:32:55Z",
+      "side": 1,
+      "message": "You might want to add to https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/common/all-versions/copyHAL.sh;l\u003d176\n\n DUMP_UTILS\u003dframeworks/native/libs/dumputils/dump_utils.cpp\n\n echo \"Now update dumputils\"\n runIfNeeded $(dirname $DUMP_UTILS) updateAudioVersion -v original_before\u003d1 $(basename $DUMP_UTILS)",
+      "revId": "091e5d8ebef261864779b2491f136ced8a80c2dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
