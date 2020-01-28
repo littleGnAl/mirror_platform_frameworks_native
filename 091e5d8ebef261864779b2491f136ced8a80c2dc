@@ -16,6 +16,24 @@
       "revId": "091e5d8ebef261864779b2491f136ced8a80c2dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0233321c_cec78bc6",
+        "filename": "libs/dumputils/dump_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-01-28T16:39:33Z",
+      "side": 1,
+      "message": "Thanks for the tip, Kevin!",
+      "parentUuid": "a4582800_ba0c73fa",
+      "revId": "091e5d8ebef261864779b2491f136ced8a80c2dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
