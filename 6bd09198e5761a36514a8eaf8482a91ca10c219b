@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "986bfa7b_aa0f217e",
+        "filename": "libs/binder/ndk/runtests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-28T21:53:39Z",
+      "side": 0,
+      "message": "Granted, this approach is racey, needs some more work to make bulletproof (if parent dies too early). Wonder if anyone has written the code to handle this, but for these tests, parent crashing should already be considered a failure, so I\u0027m not as concerned.",
+      "parentUuid": "ba360fe2_af8b3cd9",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "6bd09198e5761a36514a8eaf8482a91ca10c219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec4a3005_369cf726",
         "filename": "libs/binder/ndk/runtests.sh",
         "patchSetId": 1
