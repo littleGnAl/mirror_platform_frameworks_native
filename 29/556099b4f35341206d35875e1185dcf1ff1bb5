@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Todd Kennedy <toddke@google.com>
+Submitted-by: Songchun Fan <schfan@google.com>
+Submitted-at: Wed, 29 Jan 2020 17:24:55 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1218838
+Project: platform/frameworks/native
+Branch: refs/heads/master
