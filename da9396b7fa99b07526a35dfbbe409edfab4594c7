@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d35a322_325df665",
+        "filename": "libs/binder/ndk/test/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-29T18:26:05Z",
+      "side": 1,
+      "message": "Martijn, needing to call this should be fixed by your CL, right?http://aosp/541059",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 34
+      },
+      "revId": "da9396b7fa99b07526a35dfbbe409edfab4594c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5af16b6e_5330a594",
+        "filename": "libs/binder/ndk/test/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-29T18:26:05Z",
+      "side": 1,
+      "message": "this is the tricky thing. The dropped refcount might be pending to be processed by the other thread in this process.\n\nI\u0027m tempted to abandon this and continue to say that we can\u0027t rely on synchronous processing of refcounts. At least, libbinder_ndk is the same as libbinder here.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 13
+      },
+      "revId": "da9396b7fa99b07526a35dfbbe409edfab4594c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
