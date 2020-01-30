@@ -49,6 +49,54 @@
     },
     {
       "key": {
+        "uuid": "90e826bd_8b5cfe15",
+        "filename": "libs/binder/ndk/test/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-30T17:37:15Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "c8f90154_6d29ba0e",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 34
+      },
+      "revId": "da9396b7fa99b07526a35dfbbe409edfab4594c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a196ec6_c2422a8f",
+        "filename": "libs/binder/ndk/test/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-30T17:37:15Z",
+      "side": 1,
+      "message": "Yes, it usually fails without this. I haven\u0027t investigated exactly why, but I\u0027m sufficiently satisfied w/ \u0027ref counts are asynchronous wrt transactions\u0027 in order to put this here for this test. Do you think we should start a separate investigation?",
+      "parentUuid": "c8f90154_6d29ba0e",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 34
+      },
+      "revId": "da9396b7fa99b07526a35dfbbe409edfab4594c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5af16b6e_5330a594",
         "filename": "libs/binder/ndk/test/libbinder_ndk_unit_test.cpp",
         "patchSetId": 1
@@ -93,6 +141,30 @@
       "revId": "da9396b7fa99b07526a35dfbbe409edfab4594c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95eacdb2_cb674f9c",
+        "filename": "libs/binder/ndk/test/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-30T17:37:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f0a8d9dd_1da16278",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 13
+      },
+      "revId": "da9396b7fa99b07526a35dfbbe409edfab4594c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
