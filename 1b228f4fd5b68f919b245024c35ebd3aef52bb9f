@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "550c4777_041748a9",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-30T21:18:39Z",
+      "side": 1,
+      "message": "Here\u0027s the daily reminder never to put a count in a comment :)",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 47
+      },
+      "revId": "1b228f4fd5b68f919b245024c35ebd3aef52bb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d083a1ab_07d032cc",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-30T21:18:39Z",
+      "side": 1,
+      "message": "this applies everywhere\n\nwe want the header to be this for the VNDK variant of the library. Is __ANDROID_APEX__ defined there? did we check binderVendorDoubleLoadTest on a device where the VNDK APEX is used?",
+      "revId": "1b228f4fd5b68f919b245024c35ebd3aef52bb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
