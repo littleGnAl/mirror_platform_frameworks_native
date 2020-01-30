@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8f90154_6d29ba0e",
+        "filename": "libs/binder/ndk/test/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-01-30T15:38:38Z",
+      "side": 1,
+      "message": "technically, if the refcount drop is on the same thread that\u0027s handling the call, I don\u0027t think this is needed. Though the refcount dec may be done in 2 steps. Do you actually see this fail without this line and without my CL?",
+      "parentUuid": "5d35a322_325df665",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 34
+      },
+      "revId": "da9396b7fa99b07526a35dfbbe409edfab4594c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5af16b6e_5330a594",
         "filename": "libs/binder/ndk/test/libbinder_ndk_unit_test.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-29T18:26:05Z",
       "side": 1,
       "message": "this is the tricky thing. The dropped refcount might be pending to be processed by the other thread in this process.\n\nI\u0027m tempted to abandon this and continue to say that we can\u0027t rely on synchronous processing of refcounts. At least, libbinder_ndk is the same as libbinder here.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 13
+      },
+      "revId": "da9396b7fa99b07526a35dfbbe409edfab4594c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0a8d9dd_1da16278",
+        "filename": "libs/binder/ndk/test/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-01-30T15:38:38Z",
+      "side": 1,
+      "message": "Yes, I think that\u0027s the only safe thing to do for now - you can\u0027t rely on when refcounts are done. My CL helps somewhat, but I\u0027m not convinced it fixes everything.",
+      "parentUuid": "5af16b6e_5330a594",
       "range": {
         "startLine": 284,
         "startChar": 0,
