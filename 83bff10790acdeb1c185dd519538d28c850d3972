@@ -142,6 +142,30 @@
       "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b44b7ced_eb87ba40",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-30T09:46:53Z",
+      "side": 1,
+      "message": "Update. The dependency to libbinder exists because libstagefright_foundation re-exports headers from libbinder. And also because libbinder exports not only its own  headers in the source tree, but also the generated headers from AIDL compiler (e.g. IServiceManager.h).",
+      "parentUuid": "acbe06aa_122c3db0",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
