@@ -166,6 +166,30 @@
       "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6345c4e0_58674ae0",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-30T22:51:18Z",
+      "side": 1,
+      "message": "I think we don\u0027t care about headers in this case though, because they aren\u0027t problematic if they are used (only binder is problematic). And, merging this patch as is would allow potentially more real usages (of symbols) to creep in.\n\nIs it possible we can keep this to be concerned only about the symbols (until/unless we can cleanup all the headers)?",
+      "parentUuid": "b44b7ced_eb87ba40",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
