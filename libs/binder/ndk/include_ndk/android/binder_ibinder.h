@@ -65,6 +65,10 @@ enum {
      * The last transaction code available for user commands (inclusive).
      */
     LAST_CALL_TRANSACTION = 0x00ffffff,
+    /**
+     * Transaction code for executing a shell commmand.
+     */
+    SHELL_COMMAND_TRANSACTION = ('_' << 24) | ('C' << 16) | ('M' << 8) | 'D',
 };
 
 /**

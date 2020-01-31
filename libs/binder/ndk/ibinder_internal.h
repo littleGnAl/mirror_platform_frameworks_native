@@ -31,6 +31,10 @@ inline bool isUserCommand(transaction_code_t code) {
     return code >= FIRST_CALL_TRANSACTION && code <= LAST_CALL_TRANSACTION;
 }
 
+inline bool isShellCommand(transaction_code_t code) {
+    return code == SHELL_COMMAND_TRANSACTION;
+}
+
 struct ABBinder;
 struct ABpBinder;
 

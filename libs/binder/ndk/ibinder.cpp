@@ -24,10 +24,13 @@
 
 #include <android-base/logging.h>
 #include <binder/IPCThreadState.h>
+#include <binder/IResultReceiver.h>
 
 using DeathRecipient = ::android::IBinder::DeathRecipient;
 
+using ::android::BAD_TYPE;
 using ::android::IBinder;
+using ::android::IResultReceiver;
 using ::android::Parcel;
 using ::android::sp;
 using ::android::status_t;
@@ -158,6 +161,44 @@ status_t ABBinder::onTransact(transaction_code_t code, const Parcel& data, Parce
 
         binder_status_t status = getClass()->onTransact(this, code, &in, &out);
         return PruneStatusT(status);
+    } else if (isShellCommand(code)) {
+        // TODO: should we be reading unique_fds? I left it as an int because
+        // dump does the same.
+        int in = data.readFileDescriptor();
+        int out = data.readFileDescriptor();
+        int err = data.readFileDescriptor();
+
+        int argc = data.readInt32();
+        std::vector<String8> utf8Args;          // owns memory of utf8s
+        std::vector<const char*> utf8Pointers;  // what can be passed over NDK API
+        for (int i = 0; i < argc && data.dataAvail() > 0; i++) {
+            utf8Args.push_back(String8(data.readString16()));
+            utf8Pointers.push_back(utf8Args[i].c_str());
+        }
+
+        data.readStrongBinder();  // skip over the IShellCallback
+        sp<IResultReceiver> resultReceiver = IResultReceiver::asInterface(data.readStrongBinder());
+
+        // TODO: is it ok for this check to be so late? I add it here because
+        // the client blocks on the resultReceiver to be sent data, so we must
+        // read the resultReceiver first
+        if (!data.checkInterface(this)) {
+            resultReceiver->send(-1);
+            return STATUS_BAD_TYPE;
+        }
+
+        // Ensure that the file descriptors are valid.
+        if (in == BAD_TYPE || out == BAD_TYPE || err == BAD_TYPE) {
+            resultReceiver->send(-1);
+            return STATUS_BAD_VALUE;
+        }
+
+        /* binder_status_t status = getClass()->handleShellCommand(this, in, out, err,
+                                                                utf8Pointers.data(),
+                                                                utf8Pointers.size());
+        resultReceiver->send(status);
+        return status; */
+        return STATUS_INVALID_OPERATION;
     } else {
         return BBinder::onTransact(code, data, reply, flags);
     }
