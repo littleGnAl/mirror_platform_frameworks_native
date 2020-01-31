@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ab82019_da0d9b46",
+        "filename": "libs/binderthreadstate/include/binderthreadstate/CallerUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-31T23:12:12Z",
+      "side": 1,
+      "message": "need to test/etc..",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "b4e16e8673f9b70b8ca692281b7993bf9059e505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
