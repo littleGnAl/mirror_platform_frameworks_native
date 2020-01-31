@@ -211,5 +211,3 @@ cc_defaults {
         "include",
     ],
 }
-
-subdirs = ["tests"]
