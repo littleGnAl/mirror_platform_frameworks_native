@@ -65,6 +65,10 @@ enum {
      * The last transaction code available for user commands (inclusive).
      */
     LAST_CALL_TRANSACTION = 0x00ffffff,
+    /**
+     * Transaction code for executing a shell commmand.
+     */
+    SHELL_COMMAND_TRANSACTION = ('_' << 24) | ('C' << 16) | ('M' << 8) | 'D',
 };
 
 /**
@@ -212,6 +216,34 @@ typedef binder_status_t (*AIBinder_onDump)(AIBinder* binder, int fd, const char*
  * \param dump function to call when an instance of this binder class is being dumped.
  */
 void AIBinder_Class_setOnDump(AIBinder_Class* clazz, AIBinder_onDump onDump) __INTRODUCED_IN(29);
+
+/**
+ * Execute a shell command.
+ *
+ * \param binder the binder executing the command
+ * \param in input file descriptor, should be flushed, ownership is not passed
+ * \param out output file descriptor, should be fushed, ownership is not passed
+ * \param err error file descriptor, should be flished, ownership is not passed
+ * \param argv array of null-terminated strings for command (may be null if argc
+ * is 0)
+ * \param argc length of argv array
+ *
+ * \return binder_status_t result of transaction
+ */
+typedef binder_status_t (*AIBinder_handleShellCommand)(AIBinder* binder, int in, int out, int err,
+                                                       const char** argv, uint32_t argc);
+
+/**
+ * This sets the implementation of handleShellCommand for a class.
+ *
+ * If this isn't set, nothing will be dumped when handleShellCommand is called.
+ *
+ * \param handleShellCommand function to call when a shell transaction is
+ * received
+ */
+void AIBinder_Class_setHandleShellCommand(AIBinder_Class* clazz,
+                                          AIBinder_handleShellCommand handleShellCommand)
+        __INTRODUCED_IN(30);
 
 /**
  * Creates a new binder object of the appropriate class.
