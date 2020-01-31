@@ -108,7 +108,13 @@ class ICInterface : public SharedRefBase {
     /**
      * Dumps information about the interface. By default, dumps nothing.
      */
-    virtual inline binder_status_t dump(int /*fd*/, const char** /*args*/, uint32_t /*numArgs*/);
+    virtual inline binder_status_t dump(int fd, const char** args, uint32_t numArgs);
+
+    /**
+     * Process shell commands. By default, does nothing.
+     */
+    virtual inline binder_status_t handleShellCommand(int in, int out, int err, const char** argv,
+                                                      uint32_t argc);
 
     /**
      * Interprets this binder as this underlying interface if this has stored an ICInterface in the
@@ -136,6 +142,8 @@ class ICInterface : public SharedRefBase {
         static inline void onDestroy(void* userData);
         static inline binder_status_t onDump(AIBinder* binder, int fd, const char** args,
                                              uint32_t numArgs);
+        static inline binder_status_t handleShellCommand(AIBinder* binder, int in, int out, int err,
+                                                         const char** argv, uint32_t argc);
     };
 };
 
@@ -181,6 +189,10 @@ class BpCInterface : public INTERFACE {
         return AIBinder_dump(asBinder().get(), fd, args, numArgs);
     }
 
+    binder_status_t shellCommand(int in, int out, int err, const char** argv, uint32_t argc) {
+        return AIBinder_shellCommand(asBinder().get(), in, out, err, argv, argc);
+    }
+
    private:
     SpAIBinder mBinder;
 };
@@ -188,6 +200,11 @@ class BpCInterface : public INTERFACE {
 // END OF CLASS DECLARATIONS
 
 binder_status_t ICInterface::dump(int /*fd*/, const char** /*args*/, uint32_t /*numArgs*/) {
+    return STATUS_OK;
+}
+
+binder_status_t ICInterface::handleShellCommand(int /*in*/, int /*out*/, int /*err*/,
+                                                const char** /*argv*/, uint32_t /*argc*/) {
     return STATUS_OK;
 }
 
@@ -203,9 +220,10 @@ AIBinder_Class* ICInterface::defineClass(const char* interfaceDescriptor,
         return nullptr;
     }
 
-    // We can't know if this method is overriden by a subclass interface, so we must register
-    // ourselves. The default (nothing to dump) is harmless.
+    // We can't know if these methods are overridden by a subclass interface, so we must register
+    // ourselves. The defaults are harmless.
     AIBinder_Class_setOnDump(clazz, ICInterfaceData::onDump);
+    AIBinder_Class_setHandleShellCommand(clazz, ICInterfaceData::handleShellCommand);
     return clazz;
 }
 
@@ -232,6 +250,13 @@ binder_status_t ICInterface::ICInterfaceData::onDump(AIBinder* binder, int fd, c
                                                      uint32_t numArgs) {
     std::shared_ptr<ICInterface> interface = getInterface(binder);
     return interface->dump(fd, args, numArgs);
+}
+
+binder_status_t ICInterface::ICInterfaceData::handleShellCommand(AIBinder* binder, int in, int out,
+                                                                 int err, const char** argv,
+                                                                 uint32_t argc) {
+    std::shared_ptr<ICInterface> interface = getInterface(binder);
+    return interface->handleShellCommand(in, out, err, argv, argc);
 }
 
 template <typename INTERFACE>
