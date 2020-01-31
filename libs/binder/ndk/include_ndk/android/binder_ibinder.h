@@ -214,6 +214,34 @@ typedef binder_status_t (*AIBinder_onDump)(AIBinder* binder, int fd, const char*
 void AIBinder_Class_setOnDump(AIBinder_Class* clazz, AIBinder_onDump onDump) __INTRODUCED_IN(29);
 
 /**
+ * Execute a shell command.
+ *
+ * \param binder the binder executing the command
+ * \param in input file descriptor, should be flushed, ownership is not passed
+ * \param out output file descriptor, should be fushed, ownership is not passed
+ * \param err error file descriptor, should be flished, ownership is not passed
+ * \param argv array of null-terminated strings for command (may be null if argc
+ * is 0)
+ * \param argc length of argv array
+ *
+ * \return binder_status_t result of transaction
+ */
+typedef binder_status_t (*AIBinder_handleShellCommand)(AIBinder* binder, int in, int out, int err,
+                                                       const char** argv, uint32_t argc);
+
+/**
+ * This sets the implementation of handleShellCommand for a class.
+ *
+ * If this isn't set, nothing will be executed when handleShellCommand is called.
+ *
+ * \param handleShellCommand function to call when a shell transaction is
+ * received
+ */
+void AIBinder_Class_setHandleShellCommand(AIBinder_Class* clazz,
+                                          AIBinder_handleShellCommand handleShellCommand)
+        __INTRODUCED_IN(30);
+
+/**
  * Creates a new binder object of the appropriate class.
  *
  * Ownership of args is passed to this object. The lifecycle is implemented with AIBinder_incStrong
@@ -295,6 +323,28 @@ binder_status_t AIBinder_ping(AIBinder* binder) __INTRODUCED_IN(29);
  */
 binder_status_t AIBinder_dump(AIBinder* binder, int fd, const char** args, uint32_t numArgs)
         __INTRODUCED_IN(29);
+
+/**
+ * Built-in transaction for all binder objects. This requests a binder object to
+ * execute a shell command. Currently, only intra-process requests are
+ * supported.
+ *
+ * See also AIBinder_Class_setHandleShellCommand, AIBinder_handleShellCommand.
+ *
+ * Available since API level 30.
+ *
+ * \param binder the binder to execute the shell command
+ * \param in input file descriptor
+ * \param out output file descriptor
+ * \param err error file descriptor
+ * \param argv null-terminated arguments to pass (may be null if argc is 0)
+ * \param argc number of arguments to send
+ *
+ * \return STATUS_OK if shellCommand succeeds; STATUS_INVALID_OPERATION if
+ * attempting to make inter-process request
+ */
+binder_status_t AIBinder_shellCommand(AIBinder* binder, int in, int out, int err, const char** argv,
+                                      uint32_t argc) __INTRODUCED_IN(30);
 
 /**
  * Registers for notifications that the associated binder is dead. The same death recipient may be

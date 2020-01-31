@@ -31,6 +31,10 @@ inline bool isUserCommand(transaction_code_t code) {
     return code >= FIRST_CALL_TRANSACTION && code <= LAST_CALL_TRANSACTION;
 }
 
+inline bool isShellCommand(transaction_code_t code) {
+    return code == android::IBinder::SHELL_COMMAND_TRANSACTION;
+}
+
 struct ABBinder;
 struct ABpBinder;
 
@@ -115,6 +119,7 @@ struct AIBinder_Class {
 
     // optional methods for a class
     AIBinder_onDump onDump;
+    AIBinder_handleShellCommand handleShellCommand;
 
    private:
     // This must be a String16 since BBinder virtual getInterfaceDescriptor returns a reference to
