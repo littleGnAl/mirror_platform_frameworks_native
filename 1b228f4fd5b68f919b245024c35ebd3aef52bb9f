@@ -39,6 +39,24 @@
       "revId": "1b228f4fd5b68f919b245024c35ebd3aef52bb9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb73be49_065ad6bd",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-01-31T01:58:05Z",
+      "side": 1,
+      "message": "From the point of the build system, libbinder has several variants: core, vendor, vendor_swcodec(which is for com.android.media.swcodec apex). Among these, VNDK APEX takes a \u0027vendor\u0027 variant.\n\nFor the vendor(or, you\u0027d say it as vndk variant?) variant of the library, __ANDROID_APEX__ is not defined. (Of course, __ANDROID_VNDK__ is defined there)\n\nFor the vendor_swcodec variant, __ANDROID_VNDK__, __ANDROID_APEX__ and __ANDROID_APEX_COM_ANDROID_MEDIA_SWCODEC__ are defined.\n\n\u003e did we check binderVendorDoubleLoadTest on a device where the VNDK APEX is used?\n\nDo you mean `atest binderVendorDoubleLoadTest`? It passed.",
+      "parentUuid": "d083a1ab_07d032cc",
+      "revId": "1b228f4fd5b68f919b245024c35ebd3aef52bb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
