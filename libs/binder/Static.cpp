@@ -65,11 +65,9 @@ private:
 };
 
 static LogTextOutput gLogTextOutput;
-static FdTextOutput gStdoutTextOutput(STDOUT_FILENO);
 static FdTextOutput gStderrTextOutput(STDERR_FILENO);
 
 TextOutput& alog(gLogTextOutput);
-TextOutput& aout(gStdoutTextOutput);
 TextOutput& aerr(gStderrTextOutput);
 
 // ------------ ProcessState.cpp

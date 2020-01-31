@@ -53,9 +53,6 @@ public:
 // Text output stream for printing to the log (via utils/Log.h).
 extern TextOutput& alog;
 
-// Text output stream for printing to stdout.
-extern TextOutput& aout;
-
 // Text output stream for printing to stderr.
 extern TextOutput& aerr;
 
