@@ -190,6 +190,30 @@
       "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc9686d_db918bc2",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-31T00:18:40Z",
+      "side": 1,
+      "message": "Yeah, I agree. My ongoing change in the build system eliminates the need to have this. Abandoning.",
+      "parentUuid": "6345c4e0_58674ae0",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "83bff10790acdeb1c185dd519538d28c850d3972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
