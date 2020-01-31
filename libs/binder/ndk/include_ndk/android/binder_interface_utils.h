@@ -30,6 +30,10 @@
 #include <android/binder_auto_utils.h>
 #include <android/binder_ibinder.h>
 
+#if __has_include(<android/binder_shell.h>)
+#include <android/binder_shell.h>
+#endif  //_has_include
+
 #include <assert.h>
 
 #include <memory>
@@ -108,7 +112,15 @@ class ICInterface : public SharedRefBase {
     /**
      * Dumps information about the interface. By default, dumps nothing.
      */
-    virtual inline binder_status_t dump(int /*fd*/, const char** /*args*/, uint32_t /*numArgs*/);
+    virtual inline binder_status_t dump(int fd, const char** args, uint32_t numArgs);
+
+#if __has_include(<android/binder_shell.h>)
+    /**
+     * Process shell commands. By default, does nothing.
+     */
+    virtual inline binder_status_t handleShellCommand(int in, int out, int err, const char** argv,
+                                                      uint32_t argc);
+#endif  //__has_include
 
     /**
      * Interprets this binder as this underlying interface if this has stored an ICInterface in the
@@ -136,6 +148,11 @@ class ICInterface : public SharedRefBase {
         static inline void onDestroy(void* userData);
         static inline binder_status_t onDump(AIBinder* binder, int fd, const char** args,
                                              uint32_t numArgs);
+
+#if __has_include(<android/binder_shell.h>)
+        static inline binder_status_t handleShellCommand(AIBinder* binder, int in, int out, int err,
+                                                         const char** argv, uint32_t argc);
+#endif  //__has_include
     };
 };
 
@@ -181,6 +198,12 @@ class BpCInterface : public INTERFACE {
         return AIBinder_dump(asBinder().get(), fd, args, numArgs);
     }
 
+#if __has_include(<android/binder_shell.h>)
+    binder_status_t shellCommand(int in, int out, int err, const char** argv, uint32_t argc) {
+        return AIBinder_shellCommand(asBinder().get(), in, out, err, argv, argc);
+    }
+#endif  //__has_include
+
    private:
     SpAIBinder mBinder;
 };
@@ -190,6 +213,13 @@ class BpCInterface : public INTERFACE {
 binder_status_t ICInterface::dump(int /*fd*/, const char** /*args*/, uint32_t /*numArgs*/) {
     return STATUS_OK;
 }
+
+#if __has_include(<android/binder_shell.h>)
+binder_status_t ICInterface::handleShellCommand(int /*in*/, int /*out*/, int /*err*/,
+                                                const char** /*argv*/, uint32_t /*argc*/) {
+    return STATUS_OK;
+}
+#endif  //__has_include
 
 std::shared_ptr<ICInterface> ICInterface::asInterface(AIBinder* binder) {
     return ICInterfaceData::getInterface(binder);
@@ -203,9 +233,12 @@ AIBinder_Class* ICInterface::defineClass(const char* interfaceDescriptor,
         return nullptr;
     }
 
-    // We can't know if this method is overriden by a subclass interface, so we must register
-    // ourselves. The default (nothing to dump) is harmless.
+    // We can't know if these methods are overridden by a subclass interface, so we must register
+    // ourselves. The defaults are harmless.
     AIBinder_Class_setOnDump(clazz, ICInterfaceData::onDump);
+#if __has_include(<android/binder_shell.h>)
+    AIBinder_Class_setHandleShellCommand(clazz, ICInterfaceData::handleShellCommand);
+#endif  //__has_include
     return clazz;
 }
 
@@ -233,6 +266,15 @@ binder_status_t ICInterface::ICInterfaceData::onDump(AIBinder* binder, int fd, c
     std::shared_ptr<ICInterface> interface = getInterface(binder);
     return interface->dump(fd, args, numArgs);
 }
+
+#if __has_include(<android/binder_shell.h>)
+binder_status_t ICInterface::ICInterfaceData::handleShellCommand(AIBinder* binder, int in, int out,
+                                                                 int err, const char** argv,
+                                                                 uint32_t argc) {
+    std::shared_ptr<ICInterface> interface = getInterface(binder);
+    return interface->handleShellCommand(in, out, err, argv, argc);
+}
+#endif  //__has_include
 
 template <typename INTERFACE>
 SpAIBinder BnCInterface<INTERFACE>::asBinder() {
