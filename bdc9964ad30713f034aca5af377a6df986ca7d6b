@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87067ba0_9a4e9558",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-02-03T17:41:27Z",
+      "side": 1,
+      "message": "do we want to use something like\nWaitForProperty(kServicemanagerReadyProperty, \"true\", 1s)? for services started before service manager during boottime?",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "bdc9964ad30713f034aca5af377a6df986ca7d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
