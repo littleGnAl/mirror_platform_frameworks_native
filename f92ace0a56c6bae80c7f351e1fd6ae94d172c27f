@@ -34,6 +34,24 @@
       "revId": "f92ace0a56c6bae80c7f351e1fd6ae94d172c27f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c667ad3f_6fc19fe8",
+        "filename": "libs/cputimeinstate/cputimeinstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2020-02-03T23:51:25Z",
+      "side": 1,
+      "message": "The way it would take 1s is if an interrupt takes a long time or this process is preempted by an RT task that ends up taking a long time. Shouldn\u0027t happen often or on all devices, but it can happen.",
+      "parentUuid": "3e9b6113_d2330c58",
+      "revId": "f92ace0a56c6bae80c7f351e1fd6ae94d172c27f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
