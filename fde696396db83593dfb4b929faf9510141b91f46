@@ -46,6 +46,30 @@
       "revId": "fde696396db83593dfb4b929faf9510141b91f46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3141eabd_e991145e",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-02-03T12:38:06Z",
+      "side": 0,
+      "message": "Brett, how are you planning on using this code? If you always get the service-manager from the same thread as from where you set it, the code in PS5 is good enough. If not, another alternative: re-use the same once_flag for this function. It does mean that you should always call setDefaultServiceManager() before you call getDefaultServiceManager().",
+      "parentUuid": "d23c4262_7208bae4",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 1
+      },
+      "revId": "fde696396db83593dfb4b929faf9510141b91f46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
