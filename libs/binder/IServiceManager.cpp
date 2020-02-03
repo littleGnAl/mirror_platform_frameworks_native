@@ -85,31 +85,21 @@ private:
     sp<AidlServiceManager> mTheRealServiceManager;
 };
 
-static Mutex gDefaultServiceManagerLock;
-static sp<IServiceManager> gDefaultServiceManager;
-
 sp<IServiceManager> defaultServiceManager()
 {
-
-    if (gDefaultServiceManager != nullptr) return gDefaultServiceManager;
-
-    {
-        AutoMutex _l(gDefaultServiceManagerLock);
-        while (gDefaultServiceManager == nullptr) {
-            gDefaultServiceManager = new ServiceManagerShim(
-                interface_cast<AidlServiceManager>(
-                    ProcessState::self()->getContextObject(nullptr)));
-            if (gDefaultServiceManager == nullptr)
+    static sp<IServiceManager> defaultServiceManager = []() {
+        sp<AidlServiceManager> sm = nullptr;
+        while (sm == nullptr) {
+            sm = interface_cast<AidlServiceManager>(ProcessState::self()->getContextObject(nullptr));
+            if (sm == nullptr) {
                 sleep(1);
+            }
         }
-    }
 
-    return gDefaultServiceManager;
-}
+        return new ServiceManagerShim(sm);
+    }();
 
-void setDefaultServiceManager(const sp<IServiceManager>& sm) {
-  AutoMutex _l(gDefaultServiceManagerLock);
-  gDefaultServiceManager = sm;
+    return defaultServiceManager;
 }
 
 #if !defined(__ANDROID_VNDK__) && defined(__ANDROID__)
