@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7335500f_be78990f",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-02-03T10:11:04Z",
+      "side": 0,
+      "message": "I\u0027m not sure if I can remove this - it says in the header (where I still need to remove it) that it\u0027s used for testing, but I can\u0027t find any callers on cs/.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 1
+      },
+      "revId": "fde696396db83593dfb4b929faf9510141b91f46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
