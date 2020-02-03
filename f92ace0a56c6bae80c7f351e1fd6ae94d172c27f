@@ -16,6 +16,24 @@
       "revId": "f92ace0a56c6bae80c7f351e1fd6ae94d172c27f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e9b6113_d2330c58",
+        "filename": "libs/cputimeinstate/cputimeinstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2020-02-03T23:39:30Z",
+      "side": 1,
+      "message": "The penalty is that the update wouldn\u0027t be read until 1) the UID ran again resulting in a more recent update time and then 2) getUidsUpdated*Times was called after that. The possible error in the meantime would be bounded by how long the getUidsUpdated*Times functions take to iterate through the uid_last_update_map (since we aren\u0027t at risk of missing updates that occur before we start iterating)\n\n1 second is only insufficient if one of our getUidsUpdated*Times functions takes over a second to iterate through its BPF map, where in practice the times I see are on the order of 10s of milliseconds. If the functions took 1 second I\u0027d be more worried about the huge regression in read performance compared to proc files than I would be about some times being off by some fraction of a second.",
+      "parentUuid": "0c046456_4eef6a42",
+      "revId": "f92ace0a56c6bae80c7f351e1fd6ae94d172c27f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
