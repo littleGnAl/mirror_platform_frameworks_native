@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39202445_d6ee9f07",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-03T09:59:29Z",
+      "side": 1,
+      "message": "nit: this could be inlined in the call site(#102) using lambda for readability, but well, that\u0027s not critical.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "66925584e6526062b9d8f13ca0a22483ea05a22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f23577a9_f202de46",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-03T09:59:29Z",
+      "side": 1,
+      "message": "nit: this doesn\u0027t need to have the g prefix, right?",
+      "range": {
+        "startLine": 102,
+        "startChar": 31,
+        "endLine": 102,
+        "endChar": 53
+      },
+      "revId": "66925584e6526062b9d8f13ca0a22483ea05a22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
