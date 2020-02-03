@@ -85,24 +85,21 @@ private:
     sp<AidlServiceManager> mTheRealServiceManager;
 };
 
-sp<IServiceManager> defaultServiceManager()
-{
-    static Mutex gDefaultServiceManagerLock;
-    static sp<IServiceManager> gDefaultServiceManager;
-
-    if (gDefaultServiceManager != nullptr) return gDefaultServiceManager;
-
-    {
-        AutoMutex _l(gDefaultServiceManagerLock);
-        while (gDefaultServiceManager == nullptr) {
-            gDefaultServiceManager = new ServiceManagerShim(
-                interface_cast<AidlServiceManager>(
-                    ProcessState::self()->getContextObject(nullptr)));
-            if (gDefaultServiceManager == nullptr)
-                sleep(1);
+static sp<AidlServiceManager> getServiceManager() {
+    sp<AidlServiceManager> sm = nullptr;
+    while (sm == nullptr) {
+        sm = interface_cast<AidlServiceManager>(ProcessState::self()->getContextObject(nullptr));
+        if (sm == nullptr) {
+            sleep(1);
         }
     }
 
+    return sm;
+}
+
+sp<IServiceManager> defaultServiceManager()
+{
+    static sp<IServiceManager> gDefaultServiceManager = new ServiceManagerShim(getServiceManager());
     return gDefaultServiceManager;
 }
 
