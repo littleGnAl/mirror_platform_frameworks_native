@@ -87,21 +87,11 @@ private:
 
 sp<IServiceManager> defaultServiceManager()
 {
-    static Mutex gDefaultServiceManagerLock;
-    static sp<IServiceManager> gDefaultServiceManager;
-
-    if (gDefaultServiceManager != nullptr) return gDefaultServiceManager;
-
-    {
-        AutoMutex _l(gDefaultServiceManagerLock);
-        while (gDefaultServiceManager == nullptr) {
-            gDefaultServiceManager = new ServiceManagerShim(
+    static sp<IServiceManager> gDefaultServiceManager = 
+            new ServiceManagerShim(
                 interface_cast<AidlServiceManager>(
                     ProcessState::self()->getContextObject(nullptr)));
-            if (gDefaultServiceManager == nullptr)
-                sleep(1);
-        }
-    }
+
 
     return gDefaultServiceManager;
 }
