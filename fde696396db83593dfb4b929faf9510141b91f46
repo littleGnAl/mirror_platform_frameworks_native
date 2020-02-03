@@ -70,6 +70,30 @@
       "revId": "fde696396db83593dfb4b929faf9510141b91f46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ecd5a4a_84309a97",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1014814
+      },
+      "writtenOn": "2020-02-03T17:17:34Z",
+      "side": 0,
+      "message": "Thanks for reaching out. This code will be used in a multi-threaded test environment, so getDefaultServiceManager() will be called from different threads. However,  setDefaultServiceManager() should always be called first.",
+      "parentUuid": "3141eabd_e991145e",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 1
+      },
+      "revId": "fde696396db83593dfb4b929faf9510141b91f46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
