@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c046456_4eef6a42",
+        "filename": "libs/cputimeinstate/cputimeinstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2020-02-03T23:11:43Z",
+      "side": 1,
+      "message": "are we sure 1s is enough? What is the penalty for getting this wrong and missing an update?",
+      "revId": "f92ace0a56c6bae80c7f351e1fd6ae94d172c27f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
