@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+
+// even better!!!
+
 //#define LOG_NDEBUG 0
 #define ATRACE_TAG ATRACE_TAG_GRAPHICS
 
@@ -1837,6 +1840,8 @@ void SurfaceFlinger::handleMessageRefresh() {
 
     postFrame();
     postComposition();
+    mClientColorMatrix = mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                              vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     mHadClientComposition = false;
     mHadDeviceComposition = false;
