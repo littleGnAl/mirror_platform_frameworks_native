@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5b356fdf_45d4afb2",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-03T18:39:30Z",
+      "side": 1,
+      "message": "gSmOnce?",
+      "range": {
+        "startLine": 88,
+        "startChar": 22,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "bdc9964ad30713f034aca5af377a6df986ca7d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87067ba0_9a4e9558",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 5
@@ -22,6 +45,53 @@
       "revId": "bdc9964ad30713f034aca5af377a6df986ca7d6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85eacd61_0b5d72c4",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-03T18:39:30Z",
+      "side": 1,
+      "message": "That could end up being a really tight loop if the property is set, but this is still returning nullptr. Maybe add a log here maco? Does it ever get hit?",
+      "parentUuid": "87067ba0_9a4e9558",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "bdc9964ad30713f034aca5af377a6df986ca7d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86a6812a_63fdb662",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-03T18:39:30Z",
+      "side": 1,
+      "message": "should be in header",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 59
+      },
+      "revId": "bdc9964ad30713f034aca5af377a6df986ca7d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
