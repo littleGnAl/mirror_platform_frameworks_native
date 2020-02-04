@@ -1,0 +1,262 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b84f5cb2_15c323d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "add description, e.g. corresponds to SDK function ... for development of interfaces etc...",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b92f2f50_dbede4db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "atest CtsNdkBinderTestCases (you should add a test there for this as well)",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "601eb7c0_bea48f3d",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "nit: would it make sense to abstract this away in libbinder instead? If not, can you file a bug on me to cleanup all the duplicated SHELL_COMMAND code?",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed42805_e555a620",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "use STATUS_BAD_TYPE here instead",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb73cc15_c901a930",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "what is this for?",
+      "range": {
+        "startLine": 177,
+        "startChar": 51,
+        "endLine": 177,
+        "endChar": 65
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db03715_c4e15fb3",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "is argc usually before argv here?",
+      "range": {
+        "startLine": 450,
+        "startChar": 47,
+        "endLine": 450,
+        "endChar": 51
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec7edc19_d40326bc",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "This should call IBinder::shellCommand. We should have support for calls between processes.",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 52
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c21439b_2e04709e",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "nit: avoid this function. It\u0027s just a bit too simple. isUserCommand composes a few operations, but this doesn\u0027t abstract anything.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7edaa82e_1852e5c5",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "nit: make \u0027on\u0027 for consistency?",
+      "range": {
+        "startLine": 122,
+        "startChar": 32,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b752d151_c7dfcaa3",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "needs to be wrapped in:\n\n#if __ANDROID_API__ \u003e\u003d 29\n...\n#endif",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac3e0d02_93ae4251",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "also wrapped in\n\n#if __ANDROID_API__ \u003e\u003d 29",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1e7c5b3_27ae7ff7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T23:37:51Z",
+      "side": 1,
+      "message": "nit: actually, these didn\u0027t all need to be commented out. You could fix this if you want",
+      "range": {
+        "startLine": 111,
+        "startChar": 44,
+        "endLine": 111,
+        "endChar": 50
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
