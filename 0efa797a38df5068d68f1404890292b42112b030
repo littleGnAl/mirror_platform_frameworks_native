@@ -46,6 +46,30 @@
       "revId": "0efa797a38df5068d68f1404890292b42112b030",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3375873_d35d98e6",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2020-02-04T18:34:36Z",
+      "side": 1,
+      "message": "dumpstate starts as root, but for security reasons, we should minimize what it does before dropping to Shell user.\n\nAnd yes, that directory would have to be readable by Shell (both by standard file permissions and SELinux)",
+      "parentUuid": "5423bc50_10eb6263",
+      "range": {
+        "startLine": 1555,
+        "startChar": 0,
+        "endLine": 1555,
+        "endChar": 42
+      },
+      "revId": "0efa797a38df5068d68f1404890292b42112b030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
