@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "ab77ec53_962f8aff",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T16:58:55Z",
+      "side": 1,
+      "message": "It would only ever indicate a race (or otherwise unknown bug/misconfiguration) since perms are granted to domain. Also, since we might not be able to get a backtrace on a user build, I think any infinite loop of this sort should log.\n\nIf we saw the log in the wild, then we might want to do Wei\u0027s suggestion. I\u0027ll follow-up here, since it\u0027s probably best not to do too much in this CL.",
+      "parentUuid": "80f5bfad_6705c1f7",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "bdc9964ad30713f034aca5af377a6df986ca7d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86a6812a_63fdb662",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 5

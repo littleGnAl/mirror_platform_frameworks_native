@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "931d2370_437beb54",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-04T16:58:55Z",
+      "side": 1,
+      "message": "should abort: fail fast, fail hard. This could be a gotcha and it\u0027s not always easy to see the log.",
+      "range": {
+        "startLine": 107,
+        "startChar": 44,
+        "endLine": 107,
+        "endChar": 63
+      },
+      "revId": "51c5378149954622042e2c2540ff6efd1f1c9b7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
