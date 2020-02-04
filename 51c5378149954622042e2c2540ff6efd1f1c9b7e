@@ -22,6 +22,30 @@
       "revId": "51c5378149954622042e2c2540ff6efd1f1c9b7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "643bf429_9f5f4fb1",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-02-04T17:01:44Z",
+      "side": 1,
+      "message": "Good point: I agree here, definitely should be a fatal log.",
+      "parentUuid": "931d2370_437beb54",
+      "range": {
+        "startLine": 107,
+        "startChar": 44,
+        "endLine": 107,
+        "endChar": 63
+      },
+      "revId": "51c5378149954622042e2c2540ff6efd1f1c9b7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
