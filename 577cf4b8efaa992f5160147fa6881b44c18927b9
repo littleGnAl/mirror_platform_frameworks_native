@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eccf7ff8_bfd665ef",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-04T10:55:21Z",
+      "side": 1,
+      "message": "so, will this add FS/linkerconfig/linkerconfig.txt in the bugreport?",
+      "revId": "577cf4b8efaa992f5160147fa6881b44c18927b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
