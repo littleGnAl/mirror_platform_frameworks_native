@@ -70,6 +70,30 @@
       "revId": "0efa797a38df5068d68f1404890292b42112b030",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3268a0_e8500694",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-02-04T18:51:35Z",
+      "side": 1,
+      "message": "This is blocking an urgent issue, can I submit it as is right now?",
+      "parentUuid": "b3375873_d35d98e6",
+      "range": {
+        "startLine": 1555,
+        "startChar": 0,
+        "endLine": 1555,
+        "endChar": 42
+      },
+      "revId": "0efa797a38df5068d68f1404890292b42112b030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
