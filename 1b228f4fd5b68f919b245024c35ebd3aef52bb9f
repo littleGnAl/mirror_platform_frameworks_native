@@ -57,6 +57,24 @@
       "revId": "1b228f4fd5b68f919b245024c35ebd3aef52bb9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0323d0c0_42f1c6eb",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-04T04:32:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb73be49_065ad6bd",
+      "revId": "1b228f4fd5b68f919b245024c35ebd3aef52bb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
