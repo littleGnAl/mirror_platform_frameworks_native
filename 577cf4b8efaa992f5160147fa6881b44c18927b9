@@ -16,6 +16,24 @@
       "revId": "577cf4b8efaa992f5160147fa6881b44c18927b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c261e4c_cd146cc0",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-02-04T11:05:14Z",
+      "side": 1,
+      "message": "Yes. That one and all FS/linkerconfig/*/ld.config.txt which is for APEX binaries.",
+      "parentUuid": "eccf7ff8_bfd665ef",
+      "revId": "577cf4b8efaa992f5160147fa6881b44c18927b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
