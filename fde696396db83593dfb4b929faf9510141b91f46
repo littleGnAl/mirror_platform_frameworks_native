@@ -94,6 +94,30 @@
       "revId": "fde696396db83593dfb4b929faf9510141b91f46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ed7f4ca_0fc987db",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-02-04T08:17:27Z",
+      "side": 0,
+      "message": "Ok, added that to the header and made this use the same once flag.",
+      "parentUuid": "0ecd5a4a_84309a97",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 1
+      },
+      "revId": "fde696396db83593dfb4b929faf9510141b91f46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

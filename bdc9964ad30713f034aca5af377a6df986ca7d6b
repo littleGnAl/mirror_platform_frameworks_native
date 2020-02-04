@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fdc503be_a27f918b",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-02-04T08:17:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b356fdf_45d4afb2",
+      "range": {
+        "startLine": 88,
+        "startChar": 22,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "bdc9964ad30713f034aca5af377a6df986ca7d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87067ba0_9a4e9558",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 5
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "80f5bfad_6705c1f7",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-02-04T08:17:27Z",
+      "side": 1,
+      "message": "I never see it getting hit on my device, but maybe I don\u0027t have services that trigger this yet? I can do this as follow-up if needed, since in effect this code isn\u0027t any slower than what we had.",
+      "parentUuid": "85eacd61_0b5d72c4",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "bdc9964ad30713f034aca5af377a6df986ca7d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86a6812a_63fdb662",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 5
@@ -92,6 +140,30 @@
       "revId": "bdc9964ad30713f034aca5af377a6df986ca7d6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5f3ccde_a1751c60",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-02-04T08:17:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86a6812a_63fdb662",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 59
+      },
+      "revId": "bdc9964ad30713f034aca5af377a6df986ca7d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
