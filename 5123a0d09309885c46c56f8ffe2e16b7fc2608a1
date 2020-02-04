@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ba96569_d6d8ecb4",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-04T05:41:58Z",
+      "side": 1,
+      "message": "why not using timeout? that would be more predictable for the users",
+      "range": {
+        "startLine": 70,
+        "startChar": 64,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "5123a0d09309885c46c56f8ffe2e16b7fc2608a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b38513_04878870",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-04T05:41:58Z",
+      "side": 1,
+      "message": "maxTries?",
+      "range": {
+        "startLine": 231,
+        "startChar": 71,
+        "endLine": 231,
+        "endChar": 90
+      },
+      "revId": "5123a0d09309885c46c56f8ffe2e16b7fc2608a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
