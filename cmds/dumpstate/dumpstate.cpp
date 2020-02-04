@@ -155,6 +155,7 @@ void add_mountinfo();
 #define WLUTIL "/vendor/xbin/wlutil"
 #define WMTRACE_DATA_DIR "/data/misc/wmtrace"
 #define OTA_METADATA_DIR "/metadata/ota"
+#define LINKERCONFIG_DIR "/linkerconfig"
 
 // TODO(narayan): Since this information has to be kept in sync
 // with tombstoned, we should just put it in a common header.
@@ -1559,6 +1560,9 @@ static Dumpstate::RunStatus DumpstateDefault() {
     DumpIpTablesAsRoot();
     DumpDynamicPartitionInfo();
     ds.AddDir(OTA_METADATA_DIR, true);
+
+    // Add linker configuration directory
+    ds.AddDir(LINKERCONFIG_DIR, true);
 
     // Capture any IPSec policies in play. No keys are exposed here.
     RunCommand("IP XFRM POLICY", {"ip", "xfrm", "policy"}, CommandOptions::WithTimeout(10).Build());
