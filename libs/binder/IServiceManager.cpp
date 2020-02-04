@@ -30,10 +30,6 @@
 #include <binder/IPermissionController.h>
 #endif
 
-#ifdef __ANDROID__
-#include <cutils/properties.h>
-#endif
-
 #include "Static.h"
 
 #include <unistd.h>
@@ -71,6 +67,8 @@ public:
     status_t addService(const String16& name, const sp<IBinder>& service,
                         bool allowIsolated, int dumpsysPriority) override;
     Vector<String16> listServices(int dumpsysPriority) override;
+    // each try corresponds to ~1 second
+    sp<IBinder> waitForService(const String16& name16, uint32_t maxTries) const;
     sp<IBinder> waitForService(const String16& name16) override;
     bool isDeclared(const String16& name) override;
 
@@ -196,39 +194,7 @@ ServiceManagerShim::ServiceManagerShim(const sp<AidlServiceManager>& impl)
 
 sp<IBinder> ServiceManagerShim::getService(const String16& name) const
 {
-    static bool gSystemBootCompleted = false;
-
-    sp<IBinder> svc = checkService(name);
-    if (svc != nullptr) return svc;
-
-    const bool isVendorService =
-        strcmp(ProcessState::self()->getDriverName().c_str(), "/dev/vndbinder") == 0;
-    const long timeout = uptimeMillis() + 5000;
-    // Vendor code can't access system properties
-    if (!gSystemBootCompleted && !isVendorService) {
-#ifdef __ANDROID__
-        char bootCompleted[PROPERTY_VALUE_MAX];
-        property_get("sys.boot_completed", bootCompleted, "0");
-        gSystemBootCompleted = strcmp(bootCompleted, "1") == 0 ? true : false;
-#else
-        gSystemBootCompleted = true;
-#endif
-    }
-    // retry interval in millisecond; note that vendor services stay at 100ms
-    const long sleepTime = gSystemBootCompleted ? 1000 : 100;
-
-    int n = 0;
-    while (uptimeMillis() < timeout) {
-        n++;
-        ALOGI("Waiting for service '%s' on '%s'...", String8(name).string(),
-            ProcessState::self()->getDriverName().c_str());
-        usleep(1000*sleepTime);
-
-        sp<IBinder> svc = checkService(name);
-        if (svc != nullptr) return svc;
-    }
-    ALOGW("Service %s didn't start. Returning NULL", String8(name).string());
-    return nullptr;
+    return waitForService(name, 5);
 }
 
 sp<IBinder> ServiceManagerShim::checkService(const String16& name) const
@@ -263,7 +229,7 @@ Vector<String16> ServiceManagerShim::listServices(int dumpsysPriority)
     return res;
 }
 
-sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
+sp<IBinder> ServiceManagerShim::waitForService(const String16& name16, uint32_t maxTries) const
 {
     class Waiter : public android::os::BnServiceCallback {
         Status onRegistration(const std::string& /*name*/,
@@ -308,7 +274,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
         mTheRealServiceManager->unregisterForNotifications(name, waiter);
     });
 
-    while(true) {
+    for(size_t i = 0; i < maxTries; i++) {
         {
             std::unique_lock<std::mutex> lock(waiter->mMutex);
             using std::literals::chrono_literals::operator""s;
@@ -334,6 +300,12 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
 
         ALOGW("Waited one second for %s", name.c_str());
     }
+    return out;
+}
+
+sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
+{
+    return waitForService(name16, UINT32_MAX);
 }
 
 bool ServiceManagerShim::isDeclared(const String16& name) {
