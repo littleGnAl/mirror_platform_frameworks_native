@@ -156,6 +156,7 @@ void add_mountinfo();
 #define WMTRACE_DATA_DIR "/data/misc/wmtrace"
 #define OTA_METADATA_DIR "/metadata/ota"
 #define SNAPSHOTCTL_LOG_DIR "/data/misc/snapshotctl_log"
+#define LINKERCONFIG_DIR "/linkerconfig"
 
 // TODO(narayan): Since this information has to be kept in sync
 // with tombstoned, we should just put it in a common header.
@@ -1587,6 +1588,9 @@ static Dumpstate::RunStatus DumpstateDefault() {
     if (!DropRootUser()) {
         return Dumpstate::RunStatus::ERROR;
     }
+
+    // Add linker configuration directory
+    ds.AddDir(LINKERCONFIG_DIR, true);
 
     RETURN_IF_USER_DENIED_CONSENT();
     Dumpstate::RunStatus status = dumpstate();
