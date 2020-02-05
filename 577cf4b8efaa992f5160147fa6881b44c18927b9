@@ -52,6 +52,24 @@
       "revId": "577cf4b8efaa992f5160147fa6881b44c18927b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7851e35_062f8b74",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-02-05T02:09:59Z",
+      "side": 1,
+      "message": "I moved this part after dropping root user. Thanks.",
+      "parentUuid": "57ffb0f3_04e9dcae",
+      "revId": "577cf4b8efaa992f5160147fa6881b44c18927b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
