@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4ce80936_f56a9d5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b84f5cb2_15c323d2",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b92f2f50_dbede4db",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c69b2a6_c178d245",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "Working on writing tests.",
+      "parentUuid": "b92f2f50_dbede4db",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "42b16d5e_bdfc4944",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "This seems outside of the scope of this CL. Regardless, I\u0027m not sure how you would do that on the receiving side without breaking apart ABBinder::onTransact into ABBinder::onUserCommand and ABBinder::onShellCommand. I can file a bug on you to do that though.",
+      "parentUuid": "601eb7c0_bea48f3d",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ed42805_e555a620",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 5
@@ -85,6 +151,30 @@
       "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b2b4ad1_19ed2891",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "I used BAD_TYPE because parcel.readFileDescriptor() returns BAD_TYPE instead of STATUS_BAD_TYPE. But I think your suggestion should be fine because it looks like the constants in binder_status.h and Errors.h are kept in sync.",
+      "parentUuid": "5ed42805_e555a620",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "11972840_398924cc",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure, but the only function in the interface is openFile. That function seems to allow the transaction receiver to open files if it has the appropriate selinux context. Since it was abstracted away by handleShellCommand in Binder.java (https://cs.corp.google.com/android/frameworks/base/core/java/android/os/Binder.java?q\u003dBinder.java\u0026sq\u003dpackage:android\u0026dr\u0026l\u003d989-996), I similarly don\u0027t pass the IShellCallback to clients here.",
+      "parentUuid": "bb73cc15_c901a930",
+      "range": {
+        "startLine": 177,
+        "startChar": 51,
+        "endLine": 177,
+        "endChar": 65
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6db03715_c4e15fb3",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 5
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "bf6c6c28_50e80036",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "In C++ main functions, argc comes before argv. However, in dump, you have args before numArgs, so I\u0027ll stick with the current order for consistency.",
+      "parentUuid": "6db03715_c4e15fb3",
+      "range": {
+        "startLine": 450,
+        "startChar": 47,
+        "endLine": 450,
+        "endChar": 51
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec7edc19_d40326bc",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 5
@@ -145,6 +283,30 @@
       "writtenOn": "2020-02-04T23:37:51Z",
       "side": 1,
       "message": "This should call IBinder::shellCommand. We should have support for calls between processes.",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 52
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c7437a_91d01375",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "The statsd APEX does not require sending shell commands (we simply want to be able to receive shell commands) using libbinder_ndk. Would it be ok if we left this as is for now, since I don\u0027t really have the bandwidth at the moment? I can file a bug to support this later if you\u0027re fine with that.",
+      "parentUuid": "ec7edc19_d40326bc",
       "range": {
         "startLine": 465,
         "startChar": 0,
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "96952602_b9ec5cc4",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c21439b_2e04709e",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7edaa82e_1852e5c5",
         "filename": "libs/binder/ndk/ibinder_internal.h",
         "patchSetId": 5
@@ -200,6 +386,30 @@
       "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4338acf8_4c30bb0b",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "I call it handleShellCommand to mimic the naming in Binder.java: https://cs.corp.google.com/android/frameworks/base/core/java/android/os/Binder.java?q\u003dBinder.java\u0026sq\u003dpackage:android\u0026dr\u0026l\u003d989-996. \n\nIn Binder.java, there is also an onShellCommand function, which handles unparceling of the IResultReceiver and IShellCallback before passing on only the user-relevant arguments to handleShellCommand. We similarly do not expose the IResultReceiver and IShellCallback to the client, so I thought handleShellCommand would be better for consistency.",
+      "parentUuid": "7edaa82e_1852e5c5",
+      "range": {
+        "startLine": 122,
+        "startChar": 32,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +448,24 @@
     },
     {
       "key": {
+        "uuid": "f772f93b_7ccd519b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0ce3468_a7f7b3f4",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de10b0b5_1a7e8e1d",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 5
@@ -258,6 +486,30 @@
       "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "250b4722_42f0794e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "The Java handleShellCommand function returns a status code, which is primarily why I included it here as well. \n\nAdditionally, the status returned is sent over the IResultReceiver and printed in debug mode within cmd.cpp. So presumably, this status could also be useful for debugging.",
+      "parentUuid": "de10b0b5_1a7e8e1d",
+      "range": {
+        "startLine": 227,
+        "startChar": 11,
+        "endLine": 227,
+        "endChar": 48
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -284,6 +536,30 @@
     },
     {
       "key": {
+        "uuid": "1b1e3da1_57d304ef",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "Copy-pasted from previous comment: \n\nI call it handleShellCommand to mimic the naming in Binder.java: https://cs.corp.google.com/android/frameworks/base/core/java/android/os/Binder.java?q\u003dBinder.java\u0026sq\u003dpackage:android\u0026dr\u0026l\u003d989-996. \n\nIn Binder.java, there is also an onShellCommand function, which handles unparceling of the IResultReceiver and IShellCallback before passing on only the user-relevant arguments to handleShellCommand. We similarly do not expose the IResultReceiver and IShellCallback to the client, so I thought handleShellCommand would be better for consistency.",
+      "parentUuid": "d1f7d811_4356608e",
+      "range": {
+        "startLine": 229,
+        "startChar": 26,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b840e1c8_d7d85c9d",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 5
@@ -295,6 +571,24 @@
       "writtenOn": "2020-02-05T00:49:42Z",
       "side": 1,
       "message": "How is the user\u0027s context passed along?",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade9766e_a753772f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "What context are you referring to?",
+      "parentUuid": "b840e1c8_d7d85c9d",
       "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -336,6 +630,24 @@
     },
     {
       "key": {
+        "uuid": "7f424c4b_a8a1306c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af35490e_734c036d",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1e7c5b3_27ae7ff7",
         "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
         "patchSetId": 5
@@ -356,6 +668,30 @@
       "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63067ddd_b6667f6b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e7c5b3_27ae7ff7",
+      "range": {
+        "startLine": 111,
+        "startChar": 44,
+        "endLine": 111,
+        "endChar": 50
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
