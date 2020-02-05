@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ba19636_7718fed6",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-05T23:00:12Z",
+      "side": 1,
+      "message": "Are these actually going to be handled differently on the framework side of things?",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 5
+      },
+      "revId": "a075bfcde3a5380f2822124016189612af9dbb22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca7397e_a28a143b",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-05T23:00:12Z",
+      "side": 1,
+      "message": "debugging",
+      "range": {
+        "startLine": 519,
+        "startChar": 32,
+        "endLine": 519,
+        "endChar": 40
+      },
+      "revId": "a075bfcde3a5380f2822124016189612af9dbb22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
