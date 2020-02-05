@@ -608,6 +608,30 @@
     },
     {
       "key": {
+        "uuid": "d999c3c5_426c604e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-05T23:14:28Z",
+      "side": 1,
+      "message": "\u003e do I need to change the .map.txt file in any way to reflect that these are APEX-only?\n\nMark the symbols as #apex in the .map.txt file, see for example: https://cs.corp.google.com/android/bionic/libc/libc.map.txt?rcl\u003d8ae217bd66482297122c963f4b7d2d41a38f3829\u0026l\u003d1471\n\n\u003e If we limit the scope of these changes to just the platform/APEX, are you ok with the abstraction handleShellCommand provides?\n\nYes. Binder\u0027s @SystemApi seems to be OK with that choice, so sure. Are you doing all the same checks that Binder.java does with regards to UID checking?",
+      "parentUuid": "caa063e0_7f3d64c5",
+      "range": {
+        "startLine": 229,
+        "startChar": 26,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b840e1c8_d7d85c9d",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 5
