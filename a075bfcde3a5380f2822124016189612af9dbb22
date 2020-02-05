@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a75e607f_4c09e225",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-05T23:42:53Z",
+      "side": 1,
+      "message": "Yes, the framework now cares about the transport type. Although, once USB migrates to use TLS, We would also need to create new functions. So I\u0027ll change this NotifyTlsDevice*, and pass in the transport type as an additional parameter.",
+      "parentUuid": "0ba19636_7718fed6",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 5
+      },
+      "revId": "a075bfcde3a5380f2822124016189612af9dbb22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cca7397e_a28a143b",
         "filename": "libs/adbd_auth/adbd_auth.cpp",
         "patchSetId": 23
@@ -45,6 +69,30 @@
       "revId": "a075bfcde3a5380f2822124016189612af9dbb22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba601876_2244d801",
+        "filename": "libs/adbd_auth/adbd_auth.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-05T23:42:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cca7397e_a28a143b",
+      "range": {
+        "startLine": 519,
+        "startChar": 32,
+        "endLine": 519,
+        "endChar": 40
+      },
+      "revId": "a075bfcde3a5380f2822124016189612af9dbb22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
