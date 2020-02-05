@@ -632,6 +632,30 @@
     },
     {
       "key": {
+        "uuid": "223ccf17_d3160a7c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-05T23:25:53Z",
+      "side": 1,
+      "message": "If we are doing this as #apex/#vndk, they need to be in another header (include_platform).",
+      "parentUuid": "d999c3c5_426c604e",
+      "range": {
+        "startLine": 229,
+        "startChar": 26,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b840e1c8_d7d85c9d",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 5
