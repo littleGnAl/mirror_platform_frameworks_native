@@ -220,6 +220,87 @@
     },
     {
       "key": {
+        "uuid": "c0ce3468_a7f7b3f4",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-05T00:49:42Z",
+      "side": 1,
+      "message": "30 not 29",
+      "parentUuid": "b752d151_c7dfcaa3",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de10b0b5_1a7e8e1d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-05T00:49:42Z",
+      "side": 1,
+      "message": "I don\u0027t think shell command returns anything does it? Is the callback supposed to return SUCCESS always? this doesn\u0027t seem useful.",
+      "range": {
+        "startLine": 227,
+        "startChar": 11,
+        "endLine": 227,
+        "endChar": 48
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1f7d811_4356608e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-05T00:49:42Z",
+      "side": 1,
+      "message": "nit, AIBinder_OnShellCommand",
+      "range": {
+        "startLine": 229,
+        "startChar": 26,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b840e1c8_d7d85c9d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-05T00:49:42Z",
+      "side": 1,
+      "message": "How is the user\u0027s context passed along?",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac3e0d02_93ae4251",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 5
@@ -231,6 +312,24 @@
       "writtenOn": "2020-02-04T23:37:51Z",
       "side": 1,
       "message": "also wrapped in\n\n#if __ANDROID_API__ \u003e\u003d 29",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af35490e_734c036d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-05T00:49:42Z",
+      "side": 1,
+      "message": "also 30 not 29",
+      "parentUuid": "ac3e0d02_93ae4251",
       "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
