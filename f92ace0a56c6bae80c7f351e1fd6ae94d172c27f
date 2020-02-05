@@ -52,6 +52,24 @@
       "revId": "f92ace0a56c6bae80c7f351e1fd6ae94d172c27f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b58bb7d5_daa3703e",
+        "filename": "libs/cputimeinstate/cputimeinstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2020-02-05T01:41:32Z",
+      "side": 1,
+      "message": "OK, I\u0027ve updated the commit message to note that 1) this mitigation doesn\u0027t completely eliminate the race and 2) the consequences aren\u0027t that bad even if the race does occur.",
+      "parentUuid": "c667ad3f_6fc19fe8",
+      "revId": "f92ace0a56c6bae80c7f351e1fd6ae94d172c27f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
