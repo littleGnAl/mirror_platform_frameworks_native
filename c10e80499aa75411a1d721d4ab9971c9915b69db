@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1cada5f_9f67350a",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-02-05T13:04:26Z",
+      "side": 1,
+      "message": "LOG_ALWAYS_FATAL()\n\nLOG_FATAL doesn\u0027t actually do anything - b/111411111",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "c10e80499aa75411a1d721d4ab9971c9915b69db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
