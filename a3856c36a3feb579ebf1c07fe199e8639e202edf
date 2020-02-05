@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe3a5fed_20dcd173",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2020-02-05T03:57:08Z",
+      "side": 1,
+      "message": "please move inside dumpstate() instead - notice that pretty much nothing is dump in this part of the code...",
+      "range": {
+        "startLine": 1592,
+        "startChar": 4,
+        "endLine": 1594,
+        "endChar": 0
+      },
+      "revId": "a3856c36a3feb579ebf1c07fe199e8639e202edf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
