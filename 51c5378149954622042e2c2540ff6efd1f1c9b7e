@@ -46,6 +46,30 @@
       "revId": "51c5378149954622042e2c2540ff6efd1f1c9b7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a71dae7_e72b7905",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-02-05T09:14:08Z",
+      "side": 1,
+      "message": "Makes sense, done.",
+      "parentUuid": "643bf429_9f5f4fb1",
+      "range": {
+        "startLine": 107,
+        "startChar": 44,
+        "endLine": 107,
+        "endChar": 63
+      },
+      "revId": "51c5378149954622042e2c2540ff6efd1f1c9b7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
