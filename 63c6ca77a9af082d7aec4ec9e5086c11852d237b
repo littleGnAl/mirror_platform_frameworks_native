@@ -560,6 +560,30 @@
     },
     {
       "key": {
+        "uuid": "ccf49464_68095199",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-05T22:41:14Z",
+      "side": 1,
+      "message": "Looking at Binder.java\u0027s onShellCommand and handleShellCommand I like onShellCommand far better. The ResultReceiver is more useful \u0026 generic, and it\u0027s not tied to a return value allowing for asynchronous usages.\n\nBinder\u0027s API is currently marked @SystemApi though whereas this is being asked to go into the NDK. Is there an NDK user signed up to use this? Who needs this? I don\u0027t think NDK users can actually work with shell command as they cannot define global services? Is this supposed to be marked APEX instead and put in an APEX-only header?",
+      "parentUuid": "1b1e3da1_57d304ef",
+      "range": {
+        "startLine": 229,
+        "startChar": 26,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b840e1c8_d7d85c9d",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 5
@@ -592,6 +616,24 @@
       "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cee0ed92_e3b82c89",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-05T22:41:14Z",
+      "side": 1,
+      "message": "Closures don\u0027t exist in C, so the app needs a way to link back to its state. AIBinder_getUserData() seems to be the API for this.",
+      "parentUuid": "ade9766e_a753772f",
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
