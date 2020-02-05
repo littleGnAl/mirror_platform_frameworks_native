@@ -22,6 +22,30 @@
       "revId": "a3856c36a3feb579ebf1c07fe199e8639e202edf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24661fbf_db59d750",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-02-05T04:23:57Z",
+      "side": 1,
+      "message": "Updated. Please let me know if it looks OK.",
+      "parentUuid": "fe3a5fed_20dcd173",
+      "range": {
+        "startLine": 1592,
+        "startChar": 4,
+        "endLine": 1594,
+        "endChar": 0
+      },
+      "revId": "a3856c36a3feb579ebf1c07fe199e8639e202edf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
