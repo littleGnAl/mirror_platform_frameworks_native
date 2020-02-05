@@ -584,6 +584,30 @@
     },
     {
       "key": {
+        "uuid": "caa063e0_7f3d64c5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-05T23:10:25Z",
+      "side": 1,
+      "message": "There is no NDK user signed up to use this, just statsd so far. I can move these declarations to the include_platform directory so that they are not part of the NDK. (+smoreland, do I need to change the .map.txt file in any way to reflect that these are APEX-only?) \n\nIf we limit the scope of these changes to just the platform/APEX, are you ok with the abstraction handleShellCommand provides?",
+      "parentUuid": "ccf49464_68095199",
+      "range": {
+        "startLine": 229,
+        "startChar": 26,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b840e1c8_d7d85c9d",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 5
