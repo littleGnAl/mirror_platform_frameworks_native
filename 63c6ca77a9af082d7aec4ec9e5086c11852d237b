@@ -656,6 +656,30 @@
     },
     {
       "key": {
+        "uuid": "3a06c93e_17289c7d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1557575
+      },
+      "writtenOn": "2020-02-06T01:12:28Z",
+      "side": 1,
+      "message": "I\u0027ve added the UID checking that Binder.java does, moved these declarations to the include_platform directory, and marked these functions as #apex llndk in the stubs file.",
+      "parentUuid": "223ccf17_d3160a7c",
+      "range": {
+        "startLine": 229,
+        "startChar": 26,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b840e1c8_d7d85c9d",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 5
