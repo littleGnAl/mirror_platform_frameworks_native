@@ -37,7 +37,9 @@
 #include <binder/IServiceManager.h>
 #include <binder/Parcel.h>
 
+#include <android/binder_manager.h>
 #include <android/hardware/atrace/1.0/IAtraceDevice.h>
+#include <aidl/android/hardware/atrace/IAtraceDevice.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
 #include <hidl/ServiceManagement.h>
 
@@ -256,6 +258,134 @@ struct TracingVendorCategory {
     {}
 };
 
+class VendorAtrace {
+ public:
+  virtual ~VendorAtrace() = default;
+  virtual ndk::ScopedAStatus listCategories(std::vector<TracingVendorCategory>* out) = 0;
+  virtual ndk::ScopedAStatus enableCategories(const std::vector<std::string>& names) = 0;
+  virtual ndk::ScopedAStatus disableAllCategories() = 0;
+};
+
+class NullVendorAtrace : public VendorAtrace {
+ public:
+  ~NullVendorAtrace() = default;
+  ndk::ScopedAStatus listCategories(std::vector<TracingVendorCategory>*) override {
+      return ndk::ScopedAStatus::ok();
+  };
+  ndk::ScopedAStatus enableCategories(const std::vector<std::string>&) override {
+      return ndk::ScopedAStatus::ok();
+  }
+  ndk::ScopedAStatus disableAllCategories() override {
+      return ndk::ScopedAStatus::ok();
+  }
+};
+
+class VendorAtraceV0 : public VendorAtrace {
+ public:
+  VendorAtraceV0(sp<IAtraceDevice> hal) : hal_(hal) {
+  }
+  ~VendorAtraceV0() = default;
+
+  ndk::ScopedAStatus listCategories(std::vector<TracingVendorCategory>* categories) override {
+    Return<void> ret = hal_->listCategories([categories](const auto& list) {
+            categories->reserve(list.size());
+            for (const auto& category : list) {
+                categories->emplace_back(category.name, category.description, false);
+            }
+        });
+    if (ret.isOk()) {
+      return ndk::ScopedAStatus::ok();
+    } else {
+      return ndk::ScopedAStatus::fromExceptionCodeWithMessage(EX_SERVICE_SPECIFIC, "fix me");
+    }
+  }
+
+  ndk::ScopedAStatus enableCategories(const std::vector<std::string>& categories) override {
+    std::vector<hidl_string> hidl_categories;
+    for (const auto& s : categories) {
+      hidl_categories.push_back(s);
+    }
+    auto ret = hal_->enableCategories(hidl_categories);
+    if (!ret.isOk()) {
+      return ndk::ScopedAStatus::fromExceptionCodeWithMessage(EX_SERVICE_SPECIFIC, ret.description().c_str());
+    } else if (ret != Status::SUCCESS) {
+      return ndk::ScopedAStatus::fromExceptionCodeWithMessage(EX_SERVICE_SPECIFIC, toString(ret).c_str());
+    } else {
+      return ndk::ScopedAStatus::ok();
+    }
+    return ndk::ScopedAStatus::ok();
+  }
+
+  ndk::ScopedAStatus disableAllCategories() override {
+    auto ret = hal_->disableAllCategories();
+    if (!ret.isOk()) {
+      return ndk::ScopedAStatus::fromExceptionCodeWithMessage(EX_SERVICE_SPECIFIC, ret.description().c_str());
+    } else if (ret != Status::SUCCESS) {
+      return ndk::ScopedAStatus::fromExceptionCodeWithMessage(EX_SERVICE_SPECIFIC, toString(ret).c_str());
+    } else {
+      return ndk::ScopedAStatus::ok();
+    }
+  }
+
+ private:
+  sp<IAtraceDevice> hal_;
+};
+
+class AidlVendorAtrace : public VendorAtrace {
+ public:
+  AidlVendorAtrace(std::shared_ptr<aidl::android::hardware::atrace::IAtraceDevice> hal) : hal_(hal) {
+  }
+  ~AidlVendorAtrace() = default;
+
+  ndk::ScopedAStatus listCategories(std::vector<TracingVendorCategory>* categories) override {
+    std::vector<aidl::android::hardware::atrace::TracingCategory> out;
+    ndk::ScopedAStatus ret = hal_->listCategories(&out);
+    for (const auto& category : out) {
+      categories->emplace_back(std::string(category.name), std::string(category.description), false);
+    }
+    return ret;
+  }
+
+  ndk::ScopedAStatus enableCategories(const std::vector<std::string>& categories) override {
+    return hal_->enableCategories(categories);
+  }
+
+  ndk::ScopedAStatus disableAllCategories() override {
+    return hal_->disableAllCategories();
+  }
+
+ private:
+  std::shared_ptr<aidl::android::hardware::atrace::IAtraceDevice> hal_;
+};
+
+
+VendorAtrace* GetVendorAtrace() {
+  static std::unique_ptr<VendorAtrace> impl = nullptr;
+
+  if (!impl) {
+    const auto instance = std::string() + aidl::android::hardware::atrace::IAtraceDevice::descriptor + "/default";
+    auto atraceBinder = ndk::SpAIBinder(AServiceManager_getService(instance.c_str()));
+    std::shared_ptr<aidl::android::hardware::atrace::IAtraceDevice> device(
+      aidl::android::hardware::atrace::IAtraceDevice::fromBinder(atraceBinder));
+    if (device) {
+      impl = std::unique_ptr<VendorAtrace>(new AidlVendorAtrace(std::move(device)));
+    }
+  }
+
+  if (!impl) {
+    sp<IAtraceDevice> svc = IAtraceDevice::getService();
+    if (svc) {
+      impl = std::unique_ptr<VendorAtrace>(new VendorAtraceV0(std::move(svc)));
+    }
+  }
+
+  if (!impl) {
+    impl = std::unique_ptr<VendorAtrace>(new NullVendorAtrace());
+  }
+
+  return impl.get();
+}
+
 /* Command line options */
 static int g_traceDurationSeconds = 5;
 static bool g_traceOverwrite = false;
@@ -273,7 +403,6 @@ static bool g_tracePdx = false;
 static bool g_traceAborted = false;
 static bool g_categoryEnables[arraysize(k_categories)] = {};
 static std::string g_traceFolder;
-static sp<IAtraceDevice> g_atraceHal;
 static std::vector<TracingVendorCategory> g_vendorCategories;
 
 /* Sys file paths */
@@ -1187,33 +1316,15 @@ bool findTraceFiles()
 
 void initVendorCategories()
 {
-    g_atraceHal = IAtraceDevice::getService();
-
-    if (g_atraceHal == nullptr) {
-        // No atrace HAL
-        return;
-    }
-
-    Return<void> ret = g_atraceHal->listCategories(
-        [](const auto& list) {
-            g_vendorCategories.reserve(list.size());
-            for (const auto& category : list) {
-                g_vendorCategories.emplace_back(category.name, category.description, false);
-            }
-        });
+    auto ret = GetVendorAtrace()->listCategories(&g_vendorCategories);
     if (!ret.isOk()) {
-        fprintf(stderr, "calling atrace HAL failed: %s\n", ret.description().c_str());
+      fprintf(stderr, "calling atrace HAL failed: %s\n", ret.getMessage());
     }
 }
 
 static bool setUpVendorTracing()
 {
-    if (g_atraceHal == nullptr) {
-        // No atrace HAL
-        return true;
-    }
-
-    std::vector<hidl_string> categories;
+    std::vector<std::string> categories;
     for (const auto &c : g_vendorCategories) {
         if (c.enabled) {
             categories.emplace_back(c.name);
@@ -1224,37 +1335,27 @@ static bool setUpVendorTracing()
         return true;
     }
 
-    auto ret = g_atraceHal->enableCategories(categories);
+    auto ret = GetVendorAtrace()->enableCategories(categories);
     if (!ret.isOk()) {
-        fprintf(stderr, "calling atrace HAL failed: %s\n", ret.description().c_str());
-        return false;
-    } else if (ret != Status::SUCCESS) {
-        fprintf(stderr, "calling atrace HAL failed: %s\n", toString(ret).c_str());
-        return false;
+      fprintf(stderr, "calling atrace HAL failed: %s\n", ret.getMessage());
+      return false;
     }
     return true;
 }
 
 static bool cleanUpVendorTracing()
 {
-    if (g_atraceHal == nullptr) {
-        // No atrace HAL
-        return true;
-    }
-
     if (!g_vendorCategories.size()) {
         // No vendor categories
         return true;
     }
 
-    auto ret = g_atraceHal->disableAllCategories();
+    auto ret = GetVendorAtrace()->disableAllCategories();
     if (!ret.isOk()) {
-        fprintf(stderr, "calling atrace HAL failed: %s\n", ret.description().c_str());
-        return false;
-    } else if (ret != Status::SUCCESS) {
-        fprintf(stderr, "calling atrace HAL failed: %s\n", toString(ret).c_str());
-        return false;
+      fprintf(stderr, "calling atrace HAL failed: %s\n", ret.getMessage());
+      return false;
     }
+
     return true;
 }
 
