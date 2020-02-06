@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eab2ee4_5882d4bf",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-06T06:44:00Z",
+      "side": 1,
+      "message": "Contains raw IP routes, confirm with Ben tomorrow that this should be omitted.",
+      "range": {
+        "startLine": 1677,
+        "startChar": 0,
+        "endLine": 1677,
+        "endChar": 64
+      },
+      "revId": "9437fd08041c2dd560fbc233de4ce40cd79d90ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
