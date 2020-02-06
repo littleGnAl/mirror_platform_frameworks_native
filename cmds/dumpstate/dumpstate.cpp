@@ -888,6 +888,14 @@ static void DoSystemLogcat(time_t since) {
                CommandOptions::WithTimeoutInMs(timeout_ms).Build());
 }
 
+static void DoRadioLogcat() {
+    unsigned long timeout_ms = logcat_timeout({"radio"});
+    RunCommand(
+        "RADIO LOG",
+        {"logcat", "-b", "radio", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
+}
+
 static void DoLogcat() {
     unsigned long timeout_ms;
     // DumpFile("EVENT LOG TAGS", "/etc/event-log-tags");
@@ -906,11 +914,7 @@ static void DoLogcat() {
         "STATS LOG",
         {"logcat", "-b", "stats", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
-    timeout_ms = logcat_timeout({"radio"});
-    RunCommand(
-        "RADIO LOG",
-        {"logcat", "-b", "radio", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
-        CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
+    DoRadioLogcat();
 
     RunCommand("LOG STATISTICS", {"logcat", "-b", "all", "-S"});
 
@@ -1593,8 +1597,11 @@ static Dumpstate::RunStatus DumpstateDefault() {
     return status;
 }
 
-// This method collects common dumpsys for telephony and wifi
-static void DumpstateRadioCommon() {
+// This method collects common dumpsys for telephony and wifi. Default
+// include_extended_info to true because currently all modes require apps to hold
+// the DUMP permission to use BugreportManager. Other methods of triggering bug
+// reports also require DUMP or are system-triggered.
+static void DumpstateRadioCommon(bool include_extended_info = true) {
     DumpIpTablesAsRoot();
 
     ds.AddDir(LOGPERSIST_DATA_DIR, false);
@@ -1603,26 +1610,54 @@ static void DumpstateRadioCommon() {
         return;
     }
 
-    do_dmesg();
-    DoLogcat();
     DumpPacketStats();
-    DoKmsg();
     DumpIpAddrAndRules();
     dump_route_tables();
-    DumpHals();
-
     RunDumpsys("NETWORK DIAGNOSTICS", {"connectivity", "--diag"},
                CommandOptions::WithTimeout(10).Build());
+
+    // We need to be picky about some stuff for user builds without DUMP.
+    if (!include_extended_info) {
+        // Only dump the radio log buffer (other buffers and dumps contain too much unrelated info).
+        DoRadioLogcat();
+    } else {
+        // Contains various system properties and process startup info.
+        do_dmesg();
+        // Logs other than the radio buffer may contain package/component names and potential PII.
+        DoLogcat();
+        // Too broad for connectivity problems.
+        DoKmsg();
+        // Contains unrelated hardware info (camera, NFC, biometrics, ...).
+        DumpHals();
+    }
 }
 
-// This method collects dumpsys for telephony debugging only
-static void DumpstateTelephonyOnly() {
+// We use "telephony" here for legacy reasons, though this now really means "connectivity" (cellular
+// + wifi + networking). This method collects dumpsys for connectivity debugging only. General rules
+// for what can be included on user builds: all reported information MUST directly relate to
+// connectivity debugging or customer support and MUST NOT contain unrelated personally identifiable
+// information. This information MUST NOT identify user-installed packages (UIDs are OK, package
+// names are not), and MUST NOT contain logs of user application traffic.
+// TODO(b/148168577) rename this and other related fields/methods to "connectivity" instead.
+static void DumpstateTelephonyOnly(int32_t calling_uid, const std::string& /* calling_package */) {
     DurationReporter duration_reporter("DUMPSTATE");
     const CommandOptions DUMPSYS_COMPONENTS_OPTIONS = CommandOptions::WithTimeout(60).Build();
+    // If this is a userdebug/eng build or a command line run, it's the wild west. Otherwise, make
+    // sure the calling app holds DUMP before we give full info.
+    const bool include_extended_info =
+        !PropertiesHelper::IsUserBuild() || calling_uid == -1 ||
+        ::android::checkPermission(String16("android.permission.DUMP"), /* pid */ -1, calling_uid);
+    MYLOGI("include_extended_info = %d", include_extended_info);
 
-    DumpstateRadioCommon();
+    DumpstateRadioCommon(include_extended_info);
 
-    RunCommand("SYSTEM PROPERTIES", {"getprop"});
+    if (include_extended_info) {
+        // Contains too much unrelated PII, and given the unstructured nature of sysprops, we can't
+        // really cherrypick all of the connectivity-related ones. Apps generally have no business
+        // reading these anyway, and there should be APIs to supply the info in a more app-friendly
+        // way.
+        RunCommand("SYSTEM PROPERTIES", {"getprop"});
+    }
 
     printf("========================================================\n");
     printf("== Android Framework Services\n");
@@ -1630,15 +1665,28 @@ static void DumpstateTelephonyOnly() {
 
     RunDumpsys("DUMPSYS", {"connectivity"}, CommandOptions::WithTimeout(90).Build(),
                SEC_TO_MSEC(10));
-    RunDumpsys("DUMPSYS", {"connmetrics"}, CommandOptions::WithTimeout(90).Build(),
-               SEC_TO_MSEC(10));
-    RunDumpsys("DUMPSYS", {"netd"}, CommandOptions::WithTimeout(90).Build(), SEC_TO_MSEC(10));
+    // TODO(b/146521742) build out an argument to include bound services here for user builds
     RunDumpsys("DUMPSYS", {"carrier_config"}, CommandOptions::WithTimeout(90).Build(),
                SEC_TO_MSEC(10));
     RunDumpsys("DUMPSYS", {"wifi"}, CommandOptions::WithTimeout(90).Build(),
                SEC_TO_MSEC(10));
-    RunDumpsys("BATTERYSTATS", {"batterystats"}, CommandOptions::WithTimeout(90).Build(),
+    RunDumpsys("DUMPSYS", {"netpolicy"}, CommandOptions::WithTimeout(90).Build(), SEC_TO_MSEC(10));
+    RunDumpsys("DUMPSYS", {"network_management"}, CommandOptions::WithTimeout(90).Build(),
                SEC_TO_MSEC(10));
+    if (include_extended_info) {
+        // TODO(b/146521742) evaluate this one, omitting for now
+        RunDumpsys("DUMPSYS", {"netd"}, CommandOptions::WithTimeout(90).Build(), SEC_TO_MSEC(10));
+        // Contains raw destination IP/MAC addresses, omit from reports on user builds.
+        RunDumpsys("DUMPSYS", {"connmetrics"}, CommandOptions::WithTimeout(90).Build(),
+                   SEC_TO_MSEC(10));
+        // Contains package/component names, omit from reports on user builds.
+        RunDumpsys("BATTERYSTATS", {"batterystats"}, CommandOptions::WithTimeout(90).Build(),
+                   SEC_TO_MSEC(10));
+        // Contains package names, but should be relatively simple to remove them (also contains
+        // UIDs already), omit from reports on user builds.
+        RunDumpsys("BATTERYSTATS", {"deviceidle"}, CommandOptions::WithTimeout(90).Build(),
+                   SEC_TO_MSEC(10));
+    }
 
     printf("========================================================\n");
     printf("== Running Application Services\n");
@@ -1646,18 +1694,24 @@ static void DumpstateTelephonyOnly() {
 
     RunDumpsys("TELEPHONY SERVICES", {"activity", "service", "TelephonyDebugService"});
 
-    printf("========================================================\n");
-    printf("== Running Application Services (non-platform)\n");
-    printf("========================================================\n");
+    if (include_extended_info) {
+        printf("========================================================\n");
+        printf("== Running Application Services (non-platform)\n");
+        printf("========================================================\n");
 
-    RunDumpsys("APP SERVICES NON-PLATFORM", {"activity", "service", "all-non-platform"},
-            DUMPSYS_COMPONENTS_OPTIONS);
+        // Contains package/component names and potential PII, omit from reports on user builds.
+        // To get dumps of the active CarrierService(s) on user builds, we supply an argument to the
+        // carrier_config dumpsys instead.
+        RunDumpsys("APP SERVICES NON-PLATFORM", {"activity", "service", "all-non-platform"},
+                   DUMPSYS_COMPONENTS_OPTIONS);
 
-    printf("========================================================\n");
-    printf("== Checkins\n");
-    printf("========================================================\n");
+        printf("========================================================\n");
+        printf("== Checkins\n");
+        printf("========================================================\n");
 
-    RunDumpsys("CHECKIN BATTERYSTATS", {"batterystats", "-c"});
+        // Contains package/component names, omit from reports on user builds.
+        RunDumpsys("CHECKIN BATTERYSTATS", {"batterystats", "-c"});
+    }
 
     printf("========================================================\n");
     printf("== dumpstate: done (id %d)\n", ds.id_);
@@ -2269,6 +2323,7 @@ static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOpt
             break;
         case Dumpstate::BugreportMode::BUGREPORT_TELEPHONY:
             options->telephony_only = true;
+            options->do_progress_updates = true;
             options->do_fb = false;
             options->do_broadcast = true;
             break;
@@ -2684,7 +2739,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     PrintHeader();
 
     if (options_->telephony_only) {
-        DumpstateTelephonyOnly();
+        DumpstateTelephonyOnly(calling_uid, calling_package);
         DumpstateBoard();
     } else if (options_->wifi_only) {
         DumpstateWifiOnly();
