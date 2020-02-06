@@ -22,6 +22,29 @@
       "revId": "a1df8a9163ca8d06f21f6035390eeade85a05796",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe47ecf2_d85d2683",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 1319697
+      },
+      "writtenOn": "2020-02-06T13:22:31Z",
+      "side": 1,
+      "message": "May I know what does the Boolean mean?",
+      "range": {
+        "startLine": 1559,
+        "startChar": 34,
+        "endLine": 1559,
+        "endChar": 39
+      },
+      "revId": "a1df8a9163ca8d06f21f6035390eeade85a05796",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
