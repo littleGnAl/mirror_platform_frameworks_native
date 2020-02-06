@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85e851c2_7f156860",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-06T20:35:07Z",
+      "side": 1,
+      "message": "do you need llndk or just apex?",
+      "range": {
+        "startLine": 109,
+        "startChar": 49,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "608d13c20d750196538c34791f9d14fbaddcbb83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
