@@ -22,6 +22,30 @@
       "revId": "608d13c20d750196538c34791f9d14fbaddcbb83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f2ac794_ce2ffe5a",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2020-02-06T20:39:42Z",
+      "side": 1,
+      "message": "I think just apex is needed. I can remove llndk. Mostly so we have the correct context, what is the llndk?",
+      "parentUuid": "85e851c2_7f156860",
+      "range": {
+        "startLine": 109,
+        "startChar": 49,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "608d13c20d750196538c34791f9d14fbaddcbb83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
