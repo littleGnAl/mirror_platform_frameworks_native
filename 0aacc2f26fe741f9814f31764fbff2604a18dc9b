@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c72f0b6a_e235498b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_interface_utils.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-07T22:41:44Z",
+      "side": 1,
+      "message": "rather than repeating this __has_include everywhere instead define something to reference above.\n\nEg: \n\n#if __has_include(\u003candroid/binder_shell.h\u003e)\n#include \u003candroid/binder_shell.h\u003e\n#define HAS_SHELL_COMMAND\n#endif  //_has_include\n\nand then everywhere else do a \"#if HAS_SHELL_COMMAND\" instead of re-checking the __has_include",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 43
+      },
+      "revId": "0aacc2f26fe741f9814f31764fbff2604a18dc9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
