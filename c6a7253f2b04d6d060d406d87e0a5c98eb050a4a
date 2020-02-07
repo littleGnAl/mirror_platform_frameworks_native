@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7de7a6c5_b568c832",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-02-07T14:36:09Z",
+      "side": 1,
+      "message": "this change affects wifi also, since wifi bugreports use DumpstateRadioCommon. Can you avoid by adding your special case to DumpstateTelephonyOnly()?",
+      "range": {
+        "startLine": 1620,
+        "startChar": 6,
+        "endLine": 1629,
+        "endChar": 5
+      },
+      "revId": "c6a7253f2b04d6d060d406d87e0a5c98eb050a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
