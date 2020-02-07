@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4e8e5604_5abde356",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-07T20:04:30Z",
+      "side": 1,
+      "message": "I was to understand that jreck would give you NDK-API-Review without it, but I did not anticipate giving +2. None of the tests listed here exercise this code, but I am assuming you tried it locally. Can you share how here? I still would strongly prefer a test, and I think everyone would benefit from having everything done at once.",
+      "parentUuid": "14d66abc_4afa8c6d",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "ced292614ea8974b10651f87eebb35a2de65015a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eeee1aca_d26d08e3",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 9

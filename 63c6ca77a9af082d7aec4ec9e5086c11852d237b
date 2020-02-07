@@ -272,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "b50526a4_1fa42ab2",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-07T20:04:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bf6c6c28_50e80036",
+      "range": {
+        "startLine": 450,
+        "startChar": 47,
+        "endLine": 450,
+        "endChar": 51
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec7edc19_d40326bc",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 5
@@ -307,6 +331,30 @@
       "side": 1,
       "message": "The statsd APEX does not require sending shell commands (we simply want to be able to receive shell commands) using libbinder_ndk. Would it be ok if we left this as is for now, since I don\u0027t really have the bandwidth at the moment? I can file a bug to support this later if you\u0027re fine with that.",
       "parentUuid": "ec7edc19_d40326bc",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 52
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7097c386_d5140494",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-07T20:04:30Z",
+      "side": 1,
+      "message": "Requiring libbinder in order to test libbinder_ndk seems a bit messy. I would prefer we implement both sending and receiving this message in the NDK. It should only be a few lines of code.",
+      "parentUuid": "e6c7437a_91d01375",
       "range": {
         "startLine": 465,
         "startChar": 0,
