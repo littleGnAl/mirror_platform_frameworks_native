@@ -46,6 +46,30 @@
       "revId": "608d13c20d750196538c34791f9d14fbaddcbb83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf9f34de_8b3ef7d6",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2020-02-07T00:10:49Z",
+      "side": 1,
+      "message": "I left llndk here, since the code doesnt compile as is without it.  This is because the llndk library includes the include_platform headers, but then doesn\u0027t know about the APIs since they\u0027re not in the .map.txt file. \n\nTo resolve it, we can make a separate include_apex set of headers, but that will introduce additional (maybe unnecessary) complexity, and Steven was against that.",
+      "parentUuid": "1f2ac794_ce2ffe5a",
+      "range": {
+        "startLine": 109,
+        "startChar": 49,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "608d13c20d750196538c34791f9d14fbaddcbb83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
