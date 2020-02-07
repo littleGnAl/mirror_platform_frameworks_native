@@ -22,6 +22,30 @@
       "revId": "c66e54dcaad266cd788dab827dabd16c6d650c9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "488878fc_4c5efa05",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-02-07T15:26:34Z",
+      "side": 1,
+      "message": "Uh, thanks for spotting. Done.",
+      "parentUuid": "cf6a3b8f_34924606",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 21
+      },
+      "revId": "c66e54dcaad266cd788dab827dabd16c6d650c9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
