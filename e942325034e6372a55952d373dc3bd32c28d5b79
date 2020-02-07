@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f2ca9b8_961bcd24",
+        "filename": "services/stats/StatsHal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2020-02-07T00:14:16Z",
+      "side": 1,
+      "message": "maybe log some error/warning? maybe warning is appropriate",
+      "range": {
+        "startLine": 115,
+        "startChar": 7,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "e942325034e6372a55952d373dc3bd32c28d5b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3621dc30_93e498a7",
+        "filename": "services/stats/include/stats/StatsHal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2020-02-07T00:14:16Z",
+      "side": 1,
+      "message": "this file shouldnt be here",
+      "revId": "e942325034e6372a55952d373dc3bd32c28d5b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
