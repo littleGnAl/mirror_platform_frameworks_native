@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf6a3b8f_34924606",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-02-07T15:22:58Z",
+      "side": 1,
+      "message": "Either \"/apex/com.android.art/javalib/\" or nothing. Keep in sync with https://android-review.googlesource.com/1229602 which currently does not specify the path.",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 21
+      },
+      "revId": "c66e54dcaad266cd788dab827dabd16c6d650c9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
