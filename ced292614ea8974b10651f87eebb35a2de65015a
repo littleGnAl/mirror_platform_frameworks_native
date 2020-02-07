@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22921a85_b7ef9a41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-07T18:55:36Z",
+      "side": 1,
+      "message": "we should also extend this test, yeah",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "ced292614ea8974b10651f87eebb35a2de65015a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeee1aca_d26d08e3",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-07T18:55:36Z",
+      "side": 1,
+      "message": "filed b/149100166 to clean up duplicated code here and elsewhere",
+      "revId": "ced292614ea8974b10651f87eebb35a2de65015a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ffc698_89e1b886",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-07T18:55:36Z",
+      "side": 1,
+      "message": "can you move those into this section (as above, all platform APIs are last)",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "ced292614ea8974b10651f87eebb35a2de65015a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
