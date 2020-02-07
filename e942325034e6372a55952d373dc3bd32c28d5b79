@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bfb7c1c0_ed1ed02b",
+        "filename": "services/stats/StatsHal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1242539
+      },
+      "writtenOn": "2020-02-07T00:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f2ca9b8_961bcd24",
+      "range": {
+        "startLine": 115,
+        "startChar": 7,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "e942325034e6372a55952d373dc3bd32c28d5b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3621dc30_93e498a7",
         "filename": "services/stats/include/stats/StatsHal.cpp",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "e942325034e6372a55952d373dc3bd32c28d5b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc86974_42ec6b60",
+        "filename": "services/stats/include/stats/StatsHal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1242539
+      },
+      "writtenOn": "2020-02-07T00:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3621dc30_93e498a7",
+      "revId": "e942325034e6372a55952d373dc3bd32c28d5b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
