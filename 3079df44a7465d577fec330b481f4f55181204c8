@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b452128c_572e4fda",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2020-02-08T04:21:39Z",
+      "side": 1,
+      "message": "I just want to point out that I removed this check. I don\u0027t think it is needed.\nWith it there, the test fails because the checkInterface check fails with this error message:\n\"Expecting header 0x53595354 but found 0x0. Mixing copies of libbinder?\"\n\nPlease let me know if we do need it.",
+      "revId": "3079df44a7465d577fec330b481f4f55181204c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
