@@ -34,6 +34,24 @@
       "revId": "3079df44a7465d577fec330b481f4f55181204c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e02836df_381b9f43",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2020-02-08T11:44:12Z",
+      "side": 1,
+      "message": "Cmd does not work with it (I put a sleep in the test to call the test service):\n02-08 06:25:39.480  3380  3380 E Parcel  : Expecting header 0x53595354 but found 0x0. Mixing copies of libbinder?\n02-08 06:25:39.480  3398  3398 W cmd     : Failure calling service BinderNdkUnitTest: Bad type (2147483647)\n\nCmd also does work without it. I don\u0027t believe it is needed. Ruchir wasn\u0027t sure if it was needed either.\n\nGonna resolve for now, since I think its fine as is. Feel free to reopen if you disagree.",
+      "parentUuid": "eed5b335_591121d5",
+      "revId": "3079df44a7465d577fec330b481f4f55181204c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
