@@ -367,6 +367,30 @@
     },
     {
       "key": {
+        "uuid": "8e7cc18e_5800abe9",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2020-02-08T00:02:09Z",
+      "side": 1,
+      "message": "Discussed offline and agreed to remove this api",
+      "parentUuid": "7097c386_d5140494",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 52
+      },
+      "revId": "63c6ca77a9af082d7aec4ec9e5086c11852d237b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c21439b_2e04709e",
         "filename": "libs/binder/ndk/ibinder_internal.h",
         "patchSetId": 5
