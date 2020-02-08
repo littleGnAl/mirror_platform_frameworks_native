@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0883ea53_4f6b1e0c",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-08T06:13:31Z",
+      "side": 1,
+      "message": "check non-null, same below",
+      "range": {
+        "startLine": 183,
+        "startChar": 12,
+        "endLine": 183,
+        "endChar": 26
+      },
+      "revId": "66d838d8246741f8e84ed339c5c64d17e1d15bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

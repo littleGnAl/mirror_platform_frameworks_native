@@ -16,6 +16,24 @@
       "revId": "3079df44a7465d577fec330b481f4f55181204c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eed5b335_591121d5",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-08T06:13:31Z",
+      "side": 1,
+      "message": "Hmmm. Actually, this is quite strange. I\u0027m not quite sure where this comes from. I suspect that readInt32 is returning zero in an error case (no data left on the parcel). Not quite sure why this was copied here. Maybe Ruchir knows. I don\u0027t see it elsewhere.\n\nProbably we could improve the story when b/149100166 is fixed.\n\n\nDoes \u0027cmd\u0027 work with/without this? I\u0027m assuming/hoping that it doesn\u0027t. If it does work with this though, maybe let me know, since I think there might be a bug in Parcel.",
+      "parentUuid": "b452128c_572e4fda",
+      "revId": "3079df44a7465d577fec330b481f4f55181204c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
