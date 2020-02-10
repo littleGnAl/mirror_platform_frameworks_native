@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7100df7_2a04a3de",
+        "filename": "libs/binder/ndk/include_platform/android/binder_shell.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-10T18:24:02Z",
+      "side": 1,
+      "message": "oops, also around this file:\n#if __ANDROID_API__ \u003e\u003d 30",
+      "revId": "cc7a7465a1cca9c67ea41cc3bdcc7729596cbcd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
