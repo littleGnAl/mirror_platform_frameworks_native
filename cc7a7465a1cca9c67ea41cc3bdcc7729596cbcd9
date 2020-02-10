@@ -16,6 +16,24 @@
       "revId": "cc7a7465a1cca9c67ea41cc3bdcc7729596cbcd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "897eb21f_7f817b32",
+        "filename": "libs/binder/ndk/include_platform/android/binder_shell.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2020-02-10T20:08:02Z",
+      "side": 1,
+      "message": "I dont think the ndk api review is sticky, and this is already presubmit verified, so I sent aosp/1231794 to do this.",
+      "parentUuid": "d7100df7_2a04a3de",
+      "revId": "cc7a7465a1cca9c67ea41cc3bdcc7729596cbcd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
