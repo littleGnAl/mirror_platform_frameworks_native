@@ -22,6 +22,30 @@
       "revId": "820f9bc656896fe7c5dbe5a7bb8b5967063468d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "267e6f25_b5dd40c9",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-02-10T14:51:22Z",
+      "side": 1,
+      "message": "never mind, I didn\u0027t see that DoLogcat will DoRadioLogcat also.",
+      "parentUuid": "abc5aa70_3bacc5d1",
+      "range": {
+        "startLine": 1621,
+        "startChar": 8,
+        "endLine": 1621,
+        "endChar": 21
+      },
+      "revId": "820f9bc656896fe7c5dbe5a7bb8b5967063468d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
