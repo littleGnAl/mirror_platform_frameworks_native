@@ -22,6 +22,30 @@
       "revId": "c6a7253f2b04d6d060d406d87e0a5c98eb050a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f200df5c_fee304b0",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-10T03:58:03Z",
+      "side": 1,
+      "message": "Done, good catch. Changed to accepting a (default-true) bool param that DumpstateTelephonyOnly will set to false for user builds.",
+      "parentUuid": "7de7a6c5_b568c832",
+      "range": {
+        "startLine": 1620,
+        "startChar": 6,
+        "endLine": 1629,
+        "endChar": 5
+      },
+      "revId": "c6a7253f2b04d6d060d406d87e0a5c98eb050a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
