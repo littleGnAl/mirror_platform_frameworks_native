@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dd6d6d1_facb5081",
+        "filename": "libs/binder/ndk/include_platform/android/binder_shell.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-10T22:18:04Z",
+      "side": 1,
+      "message": "Recommendation is actually to only put the methods in the #if not the types. As in, AIBinder_handleShellCommand shouldn\u0027t be inside the #if only AIBinder_Class_setHandleShellCommand should be.\n\nFor the target usage of this it doesn\u0027t matter, but this would make opportunistic usage via dlsym trickier.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "70e89d3f61dc515f6406190404e91d0c0e6418c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
