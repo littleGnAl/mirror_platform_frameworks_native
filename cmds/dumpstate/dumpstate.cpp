@@ -1412,11 +1412,22 @@ static Dumpstate::RunStatus dumpstate() {
     RunCommand("FILESYSTEMS & FREE SPACE", {"df"});
 
     /* Binder state is expensive to look at as it uses a lot of memory. */
-    DumpFile("BINDER FAILED TRANSACTION LOG", "/sys/kernel/debug/binder/failed_transaction_log");
-    DumpFile("BINDER TRANSACTION LOG", "/sys/kernel/debug/binder/transaction_log");
-    DumpFile("BINDER TRANSACTIONS", "/sys/kernel/debug/binder/transactions");
-    DumpFile("BINDER STATS", "/sys/kernel/debug/binder/stats");
-    DumpFile("BINDER STATE", "/sys/kernel/debug/binder/state");
+    struct stat st;
+    if (stat("/dev/binderfs/binder_logs", &st) == 0) {
+        DumpFile("BINDER FAILED TRANSACTION LOG",
+                 "/dev/binderfs/binder_logs/failed_transaction_log");
+        DumpFile("BINDER TRANSACTION LOG", "/dev/binderfs/binder_logs/transaction_log");
+        DumpFile("BINDER TRANSACTIONS", "/dev/binderfs/binder_logs/transactions");
+        DumpFile("BINDER STATS", "/dev/binderfs/binder_logs/stats");
+        DumpFile("BINDER STATE", "/dev/binderfs/binder_logs/state");
+    } else {
+        DumpFile("BINDER FAILED TRANSACTION LOG",
+                 "/sys/kernel/debug/binder/failed_transaction_log");
+        DumpFile("BINDER TRANSACTION LOG", "/sys/kernel/debug/binder/transaction_log");
+        DumpFile("BINDER TRANSACTIONS", "/sys/kernel/debug/binder/transactions");
+        DumpFile("BINDER STATS", "/sys/kernel/debug/binder/stats");
+        DumpFile("BINDER STATE", "/sys/kernel/debug/binder/state");
+    }
 
     /* Add window and surface trace files. */
     if (!PropertiesHelper::IsUserBuild()) {
