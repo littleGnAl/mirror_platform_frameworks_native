@@ -22,6 +22,30 @@
       "revId": "5a4c4e96fd4abd9ac6e9ccb28beaaae70b627eca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412b8dad_a681d366",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-02-10T23:24:07Z",
+      "side": 1,
+      "message": "Ad-hoc - The \u0027!\u0027 means the location has a profile, and the filename is how to name the in-memory created extension.",
+      "parentUuid": "448850b9_44255358",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 68
+      },
+      "revId": "5a4c4e96fd4abd9ac6e9ccb28beaaae70b627eca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
