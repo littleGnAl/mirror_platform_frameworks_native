@@ -1413,11 +1413,14 @@ static Dumpstate::RunStatus dumpstate() {
     RunCommand("FILESYSTEMS & FREE SPACE", {"df"});
 
     /* Binder state is expensive to look at as it uses a lot of memory. */
-    DumpFile("BINDER FAILED TRANSACTION LOG", "/sys/kernel/debug/binder/failed_transaction_log");
-    DumpFile("BINDER TRANSACTION LOG", "/sys/kernel/debug/binder/transaction_log");
-    DumpFile("BINDER TRANSACTIONS", "/sys/kernel/debug/binder/transactions");
-    DumpFile("BINDER STATS", "/sys/kernel/debug/binder/stats");
-    DumpFile("BINDER STATE", "/sys/kernel/debug/binder/state");
+    std::string binderLogsDir = access("/dev/binderfs/binder_logs", R_OK) ?
+            "/sys/kernel/debug/binder" : "/dev/binderfs/binder_logs";
+
+    DumpFile("BINDER FAILED TRANSACTION LOG", binderLogsDir + "/failed_transaction_log");
+    DumpFile("BINDER TRANSACTION LOG", binderLogsDir + "/transaction_log");
+    DumpFile("BINDER TRANSACTIONS", binderLogsDir + "/transactions");
+    DumpFile("BINDER STATS", binderLogsDir + "/stats");
+    DumpFile("BINDER STATE", binderLogsDir + "/state");
 
     /* Add window and surface trace files. */
     if (!PropertiesHelper::IsUserBuild()) {
