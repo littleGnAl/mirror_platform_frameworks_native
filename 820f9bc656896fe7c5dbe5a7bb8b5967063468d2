@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abc5aa70_3bacc5d1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-02-10T09:47:26Z",
+      "side": 1,
+      "message": "don\u0027t you want the radiologcat in both cases? This code does not dump it for wifi.\n\nMore readable (and accurate?) to do\n\nDoRadioLogcat();\nif (include_sensitive_info) {\n  do_dmesg()..\n}",
+      "range": {
+        "startLine": 1621,
+        "startChar": 8,
+        "endLine": 1621,
+        "endChar": 21
+      },
+      "revId": "820f9bc656896fe7c5dbe5a7bb8b5967063468d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
