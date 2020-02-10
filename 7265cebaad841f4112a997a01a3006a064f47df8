@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e37610d7_5cbfed88",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-02-10T21:11:29Z",
+      "side": 1,
+      "message": "Yes, changed to access() in PS4.",
+      "parentUuid": "4a7084ed_fbd3e8d6",
+      "range": {
+        "startLine": 1416,
+        "startChar": 8,
+        "endLine": 1416,
+        "endChar": 12
+      },
+      "revId": "7265cebaad841f4112a997a01a3006a064f47df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8519713c_1859b602",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "7265cebaad841f4112a997a01a3006a064f47df8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9dc3048_24fcaca3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-02-10T21:11:29Z",
+      "side": 1,
+      "message": "Yes, looks much better now, thanks Elliott!",
+      "parentUuid": "8519713c_1859b602",
+      "revId": "7265cebaad841f4112a997a01a3006a064f47df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
