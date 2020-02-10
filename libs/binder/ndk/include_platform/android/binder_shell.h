@@ -20,6 +20,8 @@
 
 __BEGIN_DECLS
 
+#if __ANDROID_API__ >= 30
+
 /**
  * Function to execute a shell command.
  *
@@ -51,5 +53,7 @@ typedef binder_status_t (*AIBinder_handleShellCommand)(AIBinder* binder, int in,
 void AIBinder_Class_setHandleShellCommand(AIBinder_Class* clazz,
                                           AIBinder_handleShellCommand handleShellCommand)
         __INTRODUCED_IN(30);
+
+#endif
 
 __END_DECLS
