@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "448850b9_44255358",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-02-10T18:56:58Z",
+      "side": 1,
+      "message": "I\u0027m a bit out of context. I can kinda guess how to parse this. But what is the actual format behind this?",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 68
+      },
+      "revId": "5a4c4e96fd4abd9ac6e9ccb28beaaae70b627eca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
