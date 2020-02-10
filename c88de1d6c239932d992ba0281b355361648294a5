@@ -46,6 +46,30 @@
       "revId": "c88de1d6c239932d992ba0281b355361648294a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ce9ad2a_3f5a1492",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-02-10T23:21:41Z",
+      "side": 1,
+      "message": "I\u0027m a bit anxious about dumping the Parcel data in the log if it isn\u0027t zeroes, and if it is all zeroes it presumably doesn\u0027t help much to find the culprit? Can we do the data dumping behind a flag?",
+      "parentUuid": "31683039_778279bb",
+      "range": {
+        "startLine": 1237,
+        "startChar": 29,
+        "endLine": 1237,
+        "endChar": 67
+      },
+      "revId": "c88de1d6c239932d992ba0281b355361648294a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
