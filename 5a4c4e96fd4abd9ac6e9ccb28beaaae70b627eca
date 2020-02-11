@@ -70,6 +70,30 @@
       "revId": "5a4c4e96fd4abd9ac6e9ccb28beaaae70b627eca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f96dfefd_b63f87d9",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-11T09:27:33Z",
+      "side": 1,
+      "message": "Link to the docs: https://source.corp.google.com/android/art/runtime/gc/space/image_space.h;cl\u003dmaster;l\u003d71",
+      "parentUuid": "826c36a1_09ae77a5",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 68
+      },
+      "revId": "5a4c4e96fd4abd9ac6e9ccb28beaaae70b627eca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
