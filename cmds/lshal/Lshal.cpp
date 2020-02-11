@@ -23,8 +23,11 @@
 #include <string>
 
 #include <hidl/ServiceManagement.h>
+#include <hidl/HidlBinderSupport.h>
 #include <hidl/HidlTransportUtils.h>
+#include <hwbinder/IBinder.h>
 
+#include "CallCommand.h"
 #include "DebugCommand.h"
 #include "HelpCommand.h"
 #include "ListCommand.h"
@@ -50,6 +53,7 @@ Lshal::Lshal(std::ostream &out, std::ostream &err,
 
     mRegisteredCommands.push_back({std::make_unique<ListCommand>(*this)});
     mRegisteredCommands.push_back({std::make_unique<DebugCommand>(*this)});
+    mRegisteredCommands.push_back({std::make_unique<CallCommand>(*this)});
     mRegisteredCommands.push_back({std::make_unique<HelpCommand>(*this)});
     mRegisteredCommands.push_back({std::make_unique<WaitCommand>(*this)});
 }
@@ -103,7 +107,7 @@ Status Lshal::emitDebugInfo(
         const std::vector<std::string> &options,
         bool excludesParentInstances,
         std::ostream &out,
-        NullableOStream<std::ostream> err) const {
+        NullableOStream<std::ostream>& err) const {
     using android::hidl::base::V1_0::IBase;
     using android::hardware::details::getDescriptor;
 
@@ -162,6 +166,40 @@ Status Lshal::emitDebugInfo(
         LOG(ERROR) << msg;
         return TRANSACTION_ERROR;
     }
+    return OK;
+}
+
+Status Lshal::call(const std::string& interfaceName, const std::string& instanceName, uint32_t code,
+                   const hardware::Parcel& data, NullableOStream<std::ostream>& out,
+                   NullableOStream<std::ostream>& err) const {
+    using android::hardware::IBinder;
+    using android::hardware::Parcel;
+    using android::hardware::toBinder;
+    using android::hidl::base::V1_0::IBase;
+
+    hardware::Return<sp<IBase>> retBase = serviceManager()->get(interfaceName, instanceName);
+    if (!retBase.isOk()) {
+        std::string msg =
+                "Cannot get " + interfaceName + "/" + instanceName + ": " + retBase.description();
+        err << msg << std::endl;
+        LOG(ERROR) << msg;
+        return TRANSACTION_ERROR;
+    }
+
+    sp<IBase> base = retBase;
+    if (base == nullptr) {
+        std::string msg = interfaceName + "/" + instanceName + " does not exist, or " +
+                "no permission to connect.";
+        err << msg << std::endl;
+        LOG(ERROR) << msg;
+        return NO_INTERFACE;
+    }
+
+    sp<IBinder> binder = toBinder(base);
+    Parcel reply;
+    binder->transact(code, data, &reply);
+
+    out << "Result: " << reply << "\n";
     return OK;
 }
 
@@ -233,10 +271,10 @@ Status Lshal::main(const Arg &arg) {
     return status;
 }
 
-NullableOStream<std::ostream> Lshal::err() const {
+NullableOStream<std::ostream>& Lshal::err() {
     return mErr;
 }
-NullableOStream<std::ostream> Lshal::out() const {
+NullableOStream<std::ostream>& Lshal::out() {
     return mOut;
 }
 

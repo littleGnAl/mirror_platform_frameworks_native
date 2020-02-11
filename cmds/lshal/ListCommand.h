@@ -110,8 +110,8 @@ protected:
     // Retrieve from mCachedPidInfos and call getPidInfo if necessary.
     const PidInfo* getPidInfoCached(pid_t serverPid);
 
-    void dumpTable(const NullableOStream<std::ostream>& out) const;
-    void dumpVintf(const NullableOStream<std::ostream>& out) const;
+    void dumpTable(NullableOStream<std::ostream>& out) const;
+    void dumpVintf(NullableOStream<std::ostream>& out) const;
     void addLine(TextTable *table, const std::string &interfaceName, const std::string &transport,
                  const std::string &arch, const std::string &threadUsage, const std::string &server,
                  const std::string &serverCmdline, const std::string &address,
@@ -140,8 +140,8 @@ protected:
     Table* tableForType(HalType type);
     const Table* tableForType(HalType type) const;
 
-    NullableOStream<std::ostream> err() const;
-    NullableOStream<std::ostream> out() const;
+    NullableOStream<std::ostream>& err() const;
+    NullableOStream<std::ostream>& out() const;
 
     void registerAllOptions();
 
