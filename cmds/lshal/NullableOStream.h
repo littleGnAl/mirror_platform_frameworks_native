@@ -18,11 +18,13 @@
 
 #include <iostream>
 
+#include <hwbinder/TextOutput.h>
+
 namespace android {
 namespace lshal {
 
 template<typename S>
-class NullableOStream {
+class NullableOStream : public ::android::hardware::TextOutput {
 public:
     explicit NullableOStream(S &os) : mOs(&os) {}
     explicit NullableOStream(S *os) : mOs(os) {}
@@ -58,6 +60,25 @@ public:
     }
     operator bool() const { // NOLINT(google-explicit-constructor)
         return mOs != nullptr;
+    }
+
+    status_t print(const char* txt, size_t len) override {
+        const char* end = txt + len;
+        while (txt < end) {
+            *this << *txt;
+            txt++;
+        }
+        return OK;
+    }
+
+    void moveIndent(int /* delta */) override {
+        // Unimplemented.
+    }
+    void pushBundle() override {
+        // Unimplemented.
+    }
+    void popBundle() override {
+        // Unimplemented.
     }
 private:
     template<typename>

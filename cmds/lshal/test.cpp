@@ -184,8 +184,8 @@ class MockLshal : public Lshal {
 public:
     MockLshal() {}
     ~MockLshal() = default;
-    MOCK_CONST_METHOD0(out, NullableOStream<std::ostream>());
-    MOCK_CONST_METHOD0(err, NullableOStream<std::ostream>());
+    MOCK_METHOD0(out, NullableOStream<std::ostream>&());
+    MOCK_METHOD0(err, NullableOStream<std::ostream>&());
 };
 
 // expose protected fields and methods for ListCommand
@@ -226,13 +226,15 @@ public:
     void SetUp() override {
         mockLshal = std::make_unique<NiceMock<MockLshal>>();
         mockList = std::make_unique<MockListCommand>(mockLshal.get());
-        ON_CALL(*mockLshal, err()).WillByDefault(Return(NullableOStream<std::ostream>(err)));
+        errNOStream = std::make_unique<NullableOStream<std::ostream>>(err);
+        ON_CALL(*mockLshal, err()).WillByDefault(ReturnRef(*errNOStream));
         // ListCommand::parseArgs should parse arguments from the second element
         optind = 1;
     }
     std::unique_ptr<MockLshal> mockLshal;
     std::unique_ptr<MockListCommand> mockList;
     std::stringstream err;
+    std::unique_ptr<NullableOStream<std::ostream>> errNOStream;
 };
 
 TEST_F(ListParseArgsTest, Args) {
