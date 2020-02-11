@@ -21,6 +21,7 @@
 
 #include <android-base/macros.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
+#include <hwbinder/Parcel.h>
 #include <utils/StrongPointer.h>
 
 #include "Command.h"
@@ -40,8 +41,8 @@ public:
     Status main(const Arg &arg);
     // global usage
     void usage();
-    virtual NullableOStream<std::ostream> err() const;
-    virtual NullableOStream<std::ostream> out() const;
+    virtual NullableOStream<std::ostream>& err();
+    virtual NullableOStream<std::ostream>& out();
     const sp<hidl::manager::V1_0::IServiceManager> &serviceManager() const;
     const sp<hidl::manager::V1_0::IServiceManager> &passthroughManager() const;
 
@@ -51,7 +52,11 @@ public:
             const std::vector<std::string> &options,
             bool excludesParentInstances,
             std::ostream &out,
-            NullableOStream<std::ostream> err) const;
+            NullableOStream<std::ostream>& err) const;
+
+    Status call(const std::string &interfaceName, const std::string &instanceName, uint32_t code,
+                const hardware::Parcel &data, NullableOStream<std::ostream> &out,
+                NullableOStream<std::ostream> &err) const;
 
     Command* selectCommand(const std::string& command) const;
 

@@ -70,11 +70,11 @@ std::string getPackageAndVersion(const std::string& fqInstance) {
     return splitFirst(fqInstance, ':').first;
 }
 
-NullableOStream<std::ostream> ListCommand::out() const {
+NullableOStream<std::ostream>& ListCommand::out() const {
     return mLshal.out();
 }
 
-NullableOStream<std::ostream> ListCommand::err() const {
+NullableOStream<std::ostream>& ListCommand::err() const {
     return mLshal.err();
 }
 
@@ -460,7 +460,7 @@ bool ListCommand::addEntryWithoutInstance(const TableEntry& entry,
     return found;
 }
 
-void ListCommand::dumpVintf(const NullableOStream<std::ostream>& out) const {
+void ListCommand::dumpVintf(NullableOStream<std::ostream>& out) const {
     using vintf::operator|=;
     using vintf::operator<<;
     using namespace std::placeholders;
@@ -530,7 +530,7 @@ static vintf::Arch fromBaseArchitecture(::android::hidl::base::V1_0::DebugInfo::
     }
 }
 
-void ListCommand::dumpTable(const NullableOStream<std::ostream>& out) const {
+void ListCommand::dumpTable(NullableOStream<std::ostream>& out) const {
     if (mNeat) {
         std::vector<const Table*> tables;
         forEachTable([&tables](const Table &table) {
@@ -551,9 +551,10 @@ void ListCommand::dumpTable(const NullableOStream<std::ostream>& out) const {
             emitDebugInfo = [this](const auto& iName) {
                 std::stringstream ss;
                 auto pair = splitFirst(iName, '/');
+                NullableOStream<std::ostream> err(nullptr);
                 mLshal.emitDebugInfo(pair.first, pair.second, {},
                                      false /* excludesParentInstances */, ss,
-                                     NullableOStream<std::ostream>(nullptr));
+                                     err);
                 return ss.str();
             };
         }
@@ -577,7 +578,8 @@ Status ListCommand::dump() {
     }
     chown(mFileOutputPath.c_str(), AID_SHELL, AID_SHELL);
 
-    (*this.*dump)(NullableOStream<std::ostream>(fileOutput));
+    NullableOStream<std::ostream> fOut(fileOutput);
+    (*this.*dump)(fOut);
 
     fileOutput.flush();
     fileOutput.close();
