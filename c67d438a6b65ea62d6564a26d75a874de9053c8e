@@ -46,6 +46,30 @@
       "revId": "c67d438a6b65ea62d6564a26d75a874de9053c8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ed1b848_fbae4d2d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-02-11T00:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c77a6e2_5af06c3d",
+      "range": {
+        "startLine": 1416,
+        "startChar": 16,
+        "endLine": 1416,
+        "endChar": 29
+      },
+      "revId": "c67d438a6b65ea62d6564a26d75a874de9053c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
