@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6334eec_420acb5c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2020-02-11T01:57:34Z",
+      "side": 1,
+      "message": "What is the style guide guidance on thi?",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "d0273b7b2a9c470a27769cb84a4aec1a0d463ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d06b1e0_5131410e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2020-02-11T01:57:34Z",
+      "side": 1,
+      "message": "style question: not caps?",
+      "range": {
+        "startLine": 1919,
+        "startChar": 21,
+        "endLine": 1919,
+        "endChar": 32
+      },
+      "revId": "d0273b7b2a9c470a27769cb84a4aec1a0d463ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ddef58_06c84ff8",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2020-02-11T01:57:34Z",
+      "side": 1,
+      "message": "before we pull for 1.1 devices, should we check to see if vendor logging is enabled?",
+      "range": {
+        "startLine": 1928,
+        "startChar": 8,
+        "endLine": 1928,
+        "endChar": 14
+      },
+      "revId": "d0273b7b2a9c470a27769cb84a4aec1a0d463ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
