@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e98eaad7_c8686215",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-11T21:59:35Z",
+      "side": 1,
+      "message": "There doesn\u0027t even seem to be a C++ style guide for AOSP. Other option would be something like `namespace dumpstate_hal \u003d ::android::hardware::dumpstate` here and then qualifying stuff below as dumpstate_hal::V1_{0,1}::Foo\n\nLet\u0027s see what Nandana thinks.",
+      "parentUuid": "c6334eec_420acb5c",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "d0273b7b2a9c470a27769cb84a4aec1a0d463ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d06b1e0_5131410e",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e3d4afcb_7b414c00",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-11T21:59:35Z",
+      "side": 1,
+      "message": "Pre-existing line (I just moved it), wasn\u0027t caps before and neither is killing_timeout_sec.",
+      "parentUuid": "8d06b1e0_5131410e",
+      "range": {
+        "startLine": 1919,
+        "startChar": 21,
+        "endLine": 1919,
+        "endChar": 32
+      },
+      "revId": "d0273b7b2a9c470a27769cb84a4aec1a0d463ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11ddef58_06c84ff8",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "d0273b7b2a9c470a27769cb84a4aec1a0d463ad3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ee12b98_841aaa0c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-11T21:59:35Z",
+      "side": 1,
+      "message": "No, the VTS test validates that nothing is written when dumpstateBoard is called and vendor logging is disabled. It will return DEVICE_LOGGING_NOT_ENABLED as the DumpstateStatus.\n\nTrying to do so here may require us to re-get the service a second time if it lazily exits like Pixel\u0027s does.\n\nAdded a comment.",
+      "parentUuid": "11ddef58_06c84ff8",
+      "range": {
+        "startLine": 1928,
+        "startChar": 8,
+        "endLine": 1928,
+        "endChar": 14
+      },
+      "revId": "d0273b7b2a9c470a27769cb84a4aec1a0d463ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
