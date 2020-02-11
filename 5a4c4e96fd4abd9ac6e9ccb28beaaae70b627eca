@@ -46,6 +46,30 @@
       "revId": "5a4c4e96fd4abd9ac6e9ccb28beaaae70b627eca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826c36a1_09ae77a5",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-02-11T09:24:11Z",
+      "side": 1,
+      "message": "See documentation of ImageSpace::LoadBootImage() in art/runtime/gc/space/image_space.h .",
+      "parentUuid": "412b8dad_a681d366",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 68
+      },
+      "revId": "5a4c4e96fd4abd9ac6e9ccb28beaaae70b627eca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
