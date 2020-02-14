@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b56e92eb_40367662",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-02-14T15:00:14Z",
+      "side": 1,
+      "message": "Is there a reason the median is a second slower? I would expect this to be quicker both in mean and median.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "e880e9d7e60081f54272be6dab0443876599969e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
