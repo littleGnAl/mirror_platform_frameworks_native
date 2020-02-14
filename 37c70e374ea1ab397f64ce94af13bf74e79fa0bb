@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e71f27b_58da4f14",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-02-14T02:56:20Z",
+      "side": 1,
+      "message": "Is this all new API surface for R? Otherwise, adding this would probably break existing users, since old clients wouldn\u0027t implement key_removed and would crash when you try to invoke it.",
+      "revId": "37c70e374ea1ab397f64ce94af13bf74e79fa0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e792cfc5_d02b8664",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-02-14T02:56:20Z",
+      "side": 1,
+      "message": "these need to document the meaning of the return value, and the arguments.",
+      "revId": "37c70e374ea1ab397f64ce94af13bf74e79fa0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
