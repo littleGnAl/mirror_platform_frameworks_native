@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2872bc68_987d19bf",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-14T03:09:21Z",
+      "side": 1,
+      "message": "Yes, everything in this file is new surface for R.",
+      "parentUuid": "3e71f27b_58da4f14",
+      "revId": "37c70e374ea1ab397f64ce94af13bf74e79fa0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e792cfc5_d02b8664",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 24
