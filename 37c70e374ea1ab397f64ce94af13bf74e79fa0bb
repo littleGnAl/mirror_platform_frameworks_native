@@ -51,6 +51,24 @@
       "revId": "37c70e374ea1ab397f64ce94af13bf74e79fa0bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ffef255_53fda430",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-14T03:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e792cfc5_d02b8664",
+      "revId": "37c70e374ea1ab397f64ce94af13bf74e79fa0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
