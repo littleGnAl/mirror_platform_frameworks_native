@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c87ca9b6_a59433a2",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-02-14T23:13:01Z",
+      "side": 1,
+      "message": "Checked https://cs.android.com/android/_/android/platform/build/soong/+/1d62b1c5362b70b958bbc035cf0e9e4fa97bd4b3:cc/gen_stub_libs.py;l\u003d106;drc\u003d92d6bc189c5c66cc75bd08916fc140316d83d35f and yes, this should be platform only.\n\nIf you want something more intention revealing, add `# platform-only`.\n\nIf you want to be extra sure that this doesn\u0027t touch the NDK, can readelf the output stub in out/soong/ndk/platforms/... after `m ndk`, but this looks right to me.",
+      "revId": "79fb24b182522bce4decf4618a2f97b5d92b58ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
