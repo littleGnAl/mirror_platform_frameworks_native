@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c57239d2_307bae2a",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-02-15T01:23:42Z",
+      "side": 1,
+      "message": "Depends on how it\u0027s used. If this version script is actually used when linking the implementation library (i.e. `-Wl,--version-script,this`), this is needed. This is effectively the `-fvisibility\u003dhidden`, and everything else is the `__attribute__((visibility(\"default\")))`. If you were to omit this, you\u0027d be building everything with public visibility and the symbols named in this file would just be the ones that had symbol versioning.\n\nIf you\u0027re not using this when linking the implementation and it\u0027s only for generating the stubs, no it\u0027s not necessary.\n\nDoesn\u0027t hurt to have it, might hurt to not have it. Might as well keep it.\n\n\u003e is this stuff documented anywhere?\n\nVersion script behavior for the linker is documented here: https://www.gnu.org/software/gnulib/manual/html_node/LD-Version-Scripts.html\n\nOur stub generator, not really. https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/gen_stub_libs.py and https://android.googlesource.com/platform/ndk/+/master/docs/PlatformApis.md. It could definitely be improved.",
+      "parentUuid": "3aead0d7_e365aa84",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 6
+      },
+      "revId": "79fb24b182522bce4decf4618a2f97b5d92b58ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c87ca9b6_a59433a2",
         "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
         "patchSetId": 2
