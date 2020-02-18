@@ -22,6 +22,30 @@
       "revId": "edfb955516ae9864383ef7ddfe7d127825116eaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "408ff52e_67b85265",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-18T13:57:06Z",
+      "side": 1,
+      "message": "Oops, sorry for this. I didn\u0027t mean to re-format the whole file. I discarded the format changes from PS2.\n\nbtw, my editor(vscode) seems to refer frameworks/native/.clang-format for this file, which says \"SpacesBeforeTrailingComments: 1\".",
+      "parentUuid": "50efa4b0_a46920b5",
+      "range": {
+        "startLine": 48,
+        "startChar": 23,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "edfb955516ae9864383ef7ddfe7d127825116eaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
