@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "842de379_1c90de79",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T18:54:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c57239d2_307bae2a",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 6
+      },
+      "revId": "79fb24b182522bce4decf4618a2f97b5d92b58ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c87ca9b6_a59433a2",
         "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
         "patchSetId": 2
@@ -99,6 +123,24 @@
       "revId": "79fb24b182522bce4decf4618a2f97b5d92b58ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f57a03b_94549545",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T18:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d14f8969_bd3415d7",
+      "revId": "79fb24b182522bce4decf4618a2f97b5d92b58ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
