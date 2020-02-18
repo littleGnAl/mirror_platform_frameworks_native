@@ -22,6 +22,30 @@
       "revId": "80e8a8d703b3d8bd26763decee5b60322b2b5435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5c71622_f5ebb27e",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2020-02-18T18:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae18061c_43d887f2",
+      "range": {
+        "startLine": 597,
+        "startChar": 12,
+        "endLine": 597,
+        "endChar": 15
+      },
+      "revId": "80e8a8d703b3d8bd26763decee5b60322b2b5435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
