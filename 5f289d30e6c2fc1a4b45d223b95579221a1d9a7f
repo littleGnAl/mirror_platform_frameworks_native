@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "581f982a_09093a74",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T19:45:12Z",
+      "side": 1,
+      "message": "this isn\u0027t valid in C, it needs to be wrapped in `#ifdef __cplusplus`\n\nOr better yet just use sys/cdefs.h __BEGIN_DECLS / __END_DECLS macros that do that for you",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e262fe0_2a49ad22",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
@@ -19,6 +42,46 @@
         "endLine": 45,
         "endChar": 2
       },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7996564e_fa3fa55f",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T19:45:12Z",
+      "side": 1,
+      "message": "needs to be typedef\u0027d so this header is valid C",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc52385e_47cb9490",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T19:45:12Z",
+      "side": 1,
+      "message": "All these method definitions need to be wrapped in an \n\n#if __ANDROID_API__ \u003e\u003d 30\n#endif\n\npair. Each method also needs a trailing annotation of __INTRODUCED_IN(30)",
       "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -134,6 +197,23 @@
         "endLine": 129,
         "endChar": 51
       },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1cb1709_4dee61e7",
+        "filename": "libs/adbd_auth/libadbd_auth.map.txt",
+        "patchSetId": 25
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T19:45:12Z",
+      "side": 1,
+      "message": "Have all these been added in the same release? If so they need an #introduced\u003d30 on here. If some of these were pre-existing, mark them with when they were added.",
       "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
