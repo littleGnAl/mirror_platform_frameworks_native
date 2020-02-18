@@ -206,6 +206,29 @@
     },
     {
       "key": {
+        "uuid": "7ca452b1_f1127276",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-18T22:19:37Z",
+      "side": 1,
+      "message": "This (and the one below) should be prefixed with adbd_auth.",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff3a1aa7_0b19ff52",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
