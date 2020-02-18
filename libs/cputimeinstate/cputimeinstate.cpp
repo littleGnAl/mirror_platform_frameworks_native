@@ -98,6 +98,16 @@ static int bpf_obj_get_wronly(const char *pathname) {
     return syscall(__NR_bpf, BPF_OBJ_GET, &attr, sizeof(attr));
 }
 
+static int bpf_obj_get_rdonly(const char *pathname) {
+    union bpf_attr attr;
+
+    memset(&attr, 0, sizeof(attr));
+    attr.pathname = ptr_to_u64((void *)pathname);
+    attr.file_flags = BPF_F_RDONLY;
+
+    return syscall(__NR_bpf, BPF_OBJ_GET, &attr, sizeof(attr));
+}
+
 static bool initGlobals() {
     std::lock_guard<std::mutex> guard(gInitializedMutex);
     if (gInitialized) return true;
@@ -156,7 +166,7 @@ static bool initGlobals() {
 static bool attachTracepointProgram(const std::string &eventType, const std::string &eventName) {
     std::string path = StringPrintf(BPF_FS_PATH "prog_time_in_state_tracepoint_%s_%s",
                                     eventType.c_str(), eventName.c_str());
-    int prog_fd = bpf_obj_get(path.c_str());
+    int prog_fd = bpf_obj_get_rdonly(path.c_str());
     if (prog_fd < 0) return false;
     return bpf_attach_tracepoint(prog_fd, eventType.c_str(), eventName.c_str()) >= 0;
 }
