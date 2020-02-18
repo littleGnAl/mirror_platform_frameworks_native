@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e262fe0_2a49ad22",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T19:39:33Z",
+      "side": 1,
+      "message": "you really can\u0027t do this, it\u0027s not ABI stable. These must be opaque structs with setters. And no \"version\" field, that doesn\u0027t work.\n\nThe callbacks then need a void* for userContext on register, unregister, and callback invoke to springboard back to their own struct/data (similar to the below get_public_keys)",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d700c506_43740e6c",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T19:39:33Z",
+      "side": 1,
+      "message": "Unless this is sharing the Looper that may be registered on the current thread remove this bit. It sounds like it\u0027ll co-operate with the current thread, but I\u0027m guessing it doesn\u0027t?\n\nOr if it does, document that as using the current ALooper (and does one need to already exist? Does it create one if it doesn\u0027t? etc...)",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb22d8e8_12cb5b81",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T19:39:33Z",
+      "side": 1,
+      "message": "call this `userContext` or something. `arg` sounds like it\u0027s something given, not just a pass-through.\n\nAlso small nit but put this first please.",
+      "range": {
+        "startLine": 78,
+        "startChar": 90,
+        "endLine": 78,
+        "endChar": 93
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff3a1aa7_0b19ff52",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T19:39:33Z",
+      "side": 1,
+      "message": "need to be int32_t, sizeof(enum) is variable",
+      "range": {
+        "startLine": 113,
+        "startChar": 35,
+        "endLine": 113,
+        "endChar": 51
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41667e49_e8b0ee0c",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T19:39:33Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 123,
+        "startChar": 34,
+        "endLine": 123,
+        "endChar": 50
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d5bf9e9_d304907b",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T19:39:33Z",
+      "side": 1,
+      "message": "This appears to be unusable - remove?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 51
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
