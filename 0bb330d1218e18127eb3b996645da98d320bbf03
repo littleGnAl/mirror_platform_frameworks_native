@@ -22,6 +22,30 @@
       "revId": "0bb330d1218e18127eb3b996645da98d320bbf03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae80fbb5_2da056eb",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2020-02-18T18:32:32Z",
+      "side": 1,
+      "message": "For reading from the parcel? That won\u0027t work. For the interface name input to Parcel::enforceInterface? Having an explicit buffer interface could discourage misuse. It\u0027s not as if changing the signature here is expensive.",
+      "parentUuid": "f4b96f06_89087654",
+      "range": {
+        "startLine": 595,
+        "startChar": 10,
+        "endLine": 595,
+        "endChar": 18
+      },
+      "revId": "0bb330d1218e18127eb3b996645da98d320bbf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
