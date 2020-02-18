@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e04fa6d_fa97f4c8",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1080238
+      },
+      "writtenOn": "2020-02-18T12:38:13Z",
+      "side": 1,
+      "message": "I would add a class comment above this and below indicating when each case would be used.",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 20
+      },
+      "revId": "4c031dafebf20fbfed15414bbd61a8fb6d45a10e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
