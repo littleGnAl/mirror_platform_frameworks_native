@@ -46,6 +46,30 @@
       "revId": "0bb330d1218e18127eb3b996645da98d320bbf03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5af34a6d_fef9e3cb",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-18T21:18:27Z",
+      "side": 1,
+      "message": "Yeah, but correct use is using DECLARE_META_INTERFACE for this which handles this problem. It\u0027s much harder to delete an API. Since it seems we don\u0027t need it, can we please remove it (but keep the optimization here)?",
+      "parentUuid": "ae80fbb5_2da056eb",
+      "range": {
+        "startLine": 595,
+        "startChar": 10,
+        "endLine": 595,
+        "endChar": 18
+      },
+      "revId": "0bb330d1218e18127eb3b996645da98d320bbf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
