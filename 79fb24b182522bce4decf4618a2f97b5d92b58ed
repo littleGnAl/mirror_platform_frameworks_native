@@ -81,6 +81,24 @@
       "revId": "79fb24b182522bce4decf4618a2f97b5d92b58ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d14f8969_bd3415d7",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-18T18:52:44Z",
+      "side": 1,
+      "message": "I double checked, it\u0027s not in the stubs",
+      "parentUuid": "f0db5bfe_9d23ce2a",
+      "revId": "79fb24b182522bce4decf4618a2f97b5d92b58ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
