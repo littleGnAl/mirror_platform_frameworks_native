@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8cb806c_a8a38fb0",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-18T10:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8cfb7ba_2f595790",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "a71eea1238e8ec34addfc09daeb1aad6439c590d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed0a9d65_ca805710",
         "filename": "cmds/installd/otapreopt_chroot.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "a71eea1238e8ec34addfc09daeb1aad6439c590d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83d47e0_1370d632",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-18T10:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0a9d65_ca805710",
+      "range": {
+        "startLine": 70,
+        "startChar": 9,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "a71eea1238e8ec34addfc09daeb1aad6439c590d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
