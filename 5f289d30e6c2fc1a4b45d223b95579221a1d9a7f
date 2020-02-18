@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ae77fbc1_4369b095",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-18T21:14:06Z",
+      "side": 1,
+      "message": "Who cares? This library will never be used from C, it\u0027s only consumed by adbd.",
+      "parentUuid": "581f982a_09093a74",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e262fe0_2a49ad22",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-18T19:39:33Z",
       "side": 1,
       "message": "you really can\u0027t do this, it\u0027s not ABI stable. These must be opaque structs with setters. And no \"version\" field, that doesn\u0027t work.\n\nThe callbacks then need a void* for userContext on register, unregister, and callback invoke to springboard back to their own struct/data (similar to the below get_public_keys)",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cff9b40_48f93494",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-18T21:14:06Z",
+      "side": 1,
+      "message": "\u003e you really can\u0027t do this, it\u0027s not ABI stable. These must be opaque structs with setters.\n\nThis struct is only passed by pointer, and breaking the ABI of a struct of function pointers is rather difficult. We can add some static asserts to prevent that, if we really think that\u0027s something that\u0027s possible.\n\n\u003e And no \"version\" field, that doesn\u0027t work.\n\nWhy not? This will only get called with a matching version and struct. (We\u0027re missing an adbd_auth_get_version function that returns the version supported by the implementation, though...)",
+      "parentUuid": "4e262fe0_2a49ad22",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -111,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "824a9049_b3c71e04",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-18T21:14:06Z",
+      "side": 1,
+      "message": "It is not a looper, it spawns its own thread that does its own logic.",
+      "parentUuid": "d700c506_43740e6c",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb22d8e8_12cb5b81",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
@@ -145,6 +217,30 @@
       "writtenOn": "2020-02-18T19:39:33Z",
       "side": 1,
       "message": "need to be int32_t, sizeof(enum) is variable",
+      "range": {
+        "startLine": 113,
+        "startChar": 35,
+        "endLine": 113,
+        "endChar": 51
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94bdf642_9e3abcc2",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-18T21:14:06Z",
+      "side": 1,
+      "message": "sizeof(enum) is only variable if values in the enum do not fit in the enum (i.e. we should static_assert that it\u0027s the right size, not remove type information from the signature)",
+      "parentUuid": "ff3a1aa7_0b19ff52",
       "range": {
         "startLine": 113,
         "startChar": 35,
