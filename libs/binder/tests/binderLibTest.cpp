@@ -20,6 +20,8 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <cstdlib>
+#include <thread>
 
 #include <gtest/gtest.h>
 
@@ -27,6 +29,7 @@
 #include <binder/IBinder.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
+#include <binder/TextOutput.h>
 
 #include <private/binder/binder_module.h>
 #include <sys/epoll.h>
@@ -626,6 +629,27 @@ TEST_F(BinderLibTest, DeathNotificationMultiple)
     }
 }
 
+TEST_F(BinderLibTest, TransactionWhileExiting) {
+    for(size_t i = 0; i < 100; i++) {
+        int32_t pid;
+        sp<IBinder> binder = addServer(&pid);
+        ASSERT_NE(binder, nullptr);
+
+        for (size_t j = 0; j < 5; j++) {
+            Parcel data, reply;
+            EXPECT_EQ(0, binder->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply, TF_ONE_WAY));
+        }
+        {
+            Parcel data, reply;
+            EXPECT_EQ(0, binder->transact(BINDER_LIB_TEST_DELAYED_EXIT_TRANSACTION, data, &reply, TF_ONE_WAY));
+        }
+        for (size_t j = 0; j < 5; j++) {
+            Parcel data, reply;
+            EXPECT_EQ(0, binder->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply, TF_ONE_WAY));
+        }
+    }
+}
+
 TEST_F(BinderLibTest, DeathNotificationThread)
 {
     status_t ret;
@@ -1126,6 +1150,7 @@ class BinderLibTestService : public BBinder
                 return ret;
             }
             case BINDER_LIB_TEST_NOP_TRANSACTION:
+                alog << "EXITING" << endl;
                 return NO_ERROR;
             case BINDER_LIB_TEST_DELAYED_CALL_BACK: {
                 // Note: this transaction is only designed for use with a
@@ -1283,11 +1308,13 @@ class BinderLibTestService : public BBinder
                 return NO_ERROR;
             }
             case BINDER_LIB_TEST_DELAYED_EXIT_TRANSACTION:
-                alarm(10);
+                std::thread([]{
+                    exit(EXIT_SUCCESS);
+                }).detach();
                 return NO_ERROR;
             case BINDER_LIB_TEST_EXIT_TRANSACTION:
                 while (wait(nullptr) != -1 || errno != ECHILD)
-                    ;
+                   ;
                 exit(EXIT_SUCCESS);
             case BINDER_LIB_TEST_CREATE_BINDER_TRANSACTION: {
                 sp<IBinder> binder = new BBinder();
