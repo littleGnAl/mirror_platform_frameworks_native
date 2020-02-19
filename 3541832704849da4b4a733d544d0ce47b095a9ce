@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fc0a8e2_15960918",
+        "filename": "libs/adbd_auth/libadbd_auth.map.txt",
+        "patchSetId": 27
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-19T04:09:58Z",
+      "side": 1,
+      "message": "This cause clang to segfault in the link step for some reason.",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 30
+      },
+      "revId": "3541832704849da4b4a733d544d0ce47b095a9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
