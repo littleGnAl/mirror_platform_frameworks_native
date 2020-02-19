@@ -70,6 +70,30 @@
       "revId": "0bb330d1218e18127eb3b996645da98d320bbf03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f78064_babd5175",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2020-02-19T15:55:37Z",
+      "side": 1,
+      "message": "\u003e Yeah, but correct use is using DECLARE_META_INTERFACE for this which handles this problem\n\nNo, it isn\u0027t. This is Parcel, not a binder interface. We don\u0027t need that macro or any other. All we\u0027re doing is adding a C++ function overload.\n\n\u003e Since it seems we don\u0027t need it, can we please remove it (but keep the optimization here)?\n\nNo. There is no reason for this function to demand a string16 on input when all it needs is an array of char16.",
+      "parentUuid": "5af34a6d_fef9e3cb",
+      "range": {
+        "startLine": 595,
+        "startChar": 10,
+        "endLine": 595,
+        "endChar": 18
+      },
+      "revId": "0bb330d1218e18127eb3b996645da98d320bbf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
