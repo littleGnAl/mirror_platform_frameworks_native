@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "557e69a8_531566a1",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-19T04:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7996564e_fa3fa55f",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc52385e_47cb9490",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
@@ -133,6 +157,24 @@
       "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d408989_566da19e",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-19T04:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc52385e_47cb9490",
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -183,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "edf0bb72_3ccfecde",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-19T04:07:59Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "d700c506_43740e6c",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb22d8e8_12cb5b81",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
@@ -206,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "61a9bdd4_08a3ab22",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-19T04:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb22d8e8_12cb5b81",
+      "range": {
+        "startLine": 78,
+        "startChar": 90,
+        "endLine": 78,
+        "endChar": 93
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ca452b1_f1127276",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
@@ -226,6 +316,30 @@
       "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c0ba15_45544f49",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-19T04:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ca452b1_f1127276",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -276,6 +390,30 @@
     },
     {
       "key": {
+        "uuid": "e3b0c28b_9fa25850",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-19T04:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff3a1aa7_0b19ff52",
+      "range": {
+        "startLine": 113,
+        "startChar": 35,
+        "endLine": 113,
+        "endChar": 51
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41667e49_e8b0ee0c",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
@@ -296,6 +434,30 @@
       "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e02f824e_3ffc5f20",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-19T04:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41667e49_e8b0ee0c",
+      "range": {
+        "startLine": 123,
+        "startChar": 34,
+        "endLine": 123,
+        "endChar": 50
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -322,6 +484,30 @@
     },
     {
       "key": {
+        "uuid": "2b1ee814_c702a551",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-19T04:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d5bf9e9_d304907b",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 51
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1cb1709_4dee61e7",
         "filename": "libs/adbd_auth/libadbd_auth.map.txt",
         "patchSetId": 25
@@ -336,6 +522,24 @@
       "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90784167_e809ac0e",
+        "filename": "libs/adbd_auth/libadbd_auth.map.txt",
+        "patchSetId": 25
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-19T04:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1cb1709_4dee61e7",
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
