@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44e68cf1_6d9bd6a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-19T00:43:51Z",
+      "side": 1,
+      "message": "testing locally concurrently w/ TH",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "f419e7659086ea89d915a21a46d48f81d5c6efc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d61abc6_2e710e76",
+        "filename": "libs/binder/Static.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-19T00:43:51Z",
+      "side": 1,
+      "message": "similar to what was done here.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "f419e7659086ea89d915a21a46d48f81d5c6efc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
