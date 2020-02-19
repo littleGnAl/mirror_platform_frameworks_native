@@ -20,6 +20,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <thread>
 
 #include <gtest/gtest.h>
 
@@ -625,6 +626,22 @@ TEST_F(BinderLibTest, DeathNotificationMultiple)
         EXPECT_EQ(NO_ERROR, ret);
         ret = callBack[i]->getResult();
         EXPECT_EQ(NO_ERROR, ret);
+    }
+}
+
+TEST_F(BinderLibTest, TransactionWhileExiting) {
+    sp<IBinder> binder = addServer();
+    {
+        Parcel data, reply;
+        EXPECT_EQ(0, binder->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply, TF_ONE_WAY));
+    }
+    {
+        Parcel data, reply;
+        EXPECT_EQ(0, binder->transact(BINDER_LIB_TEST_DELAYED_EXIT_TRANSACTION, data, &reply, TF_ONE_WAY));
+    }
+    {
+        Parcel data, reply;
+        EXPECT_EQ(0, binder->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply, TF_ONE_WAY));
     }
 }
 
@@ -1285,7 +1302,7 @@ class BinderLibTestService : public BBinder
                 return NO_ERROR;
             }
             case BINDER_LIB_TEST_DELAYED_EXIT_TRANSACTION:
-                alarm(10);
+                std::thread([]{ _exit(EXIT_SUCCESS); }).detach();
                 return NO_ERROR;
             case BINDER_LIB_TEST_EXIT_TRANSACTION:
                 while (wait(nullptr) != -1 || errno != ECHILD)
