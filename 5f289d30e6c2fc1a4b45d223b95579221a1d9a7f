@@ -747,6 +747,30 @@
     },
     {
       "key": {
+        "uuid": "d49a0ddd_5b9fe1d5",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-20T00:56:07Z",
+      "side": 1,
+      "message": "You already have that probe, that\u0027s the module\u0027s version and/or platform version (with however that ends up shaking out in the mainline world, since backporting APIs isn\u0027t supported yet). If these are optional/device-specific then you may need a query for a particular feature. But that doesn\u0027t exist currently, so why add in on the basis that you might eventually want it?",
+      "parentUuid": "5c659bfe_ca5c13f0",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 51
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1cb1709_4dee61e7",
         "filename": "libs/adbd_auth/libadbd_auth.map.txt",
         "patchSetId": 25
