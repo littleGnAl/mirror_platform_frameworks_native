@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e65da0ad_35f9543d",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-20T01:04:07Z",
+      "side": 1,
+      "message": "this over writeParcelFileDescriptor b/c it is what ParcelFileDescriptor.cpp does (and changing this breaks tests)",
+      "range": {
+        "startLine": 255,
+        "startChar": 28,
+        "endLine": 255,
+        "endChar": 56
+      },
+      "revId": "073c9c1911f071e9091695286a60c491cd54bd35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
