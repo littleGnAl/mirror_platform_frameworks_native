@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38442299_77162f55",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-20T00:15:48Z",
+      "side": 1,
+      "message": "Just make the enum a specific size:\n\nenum AdbTransportType : int32_t {\n...\n};\n\nYou can then still assert if you want, but it\u0027s going to be well-defined instead of compiler-dependent then.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 95
+      },
+      "revId": "1bca01d508333de25a20de59125d6fc3f02a7355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a82202d_20630e12",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-20T00:15:48Z",
+      "side": 1,
+      "message": "I don\u0027t think this union is correct. When v2 is added it\u0027ll overlap with v1, which is going to make compatibility problematic (or make usage cumbersome). I think this is just meant to be a regular V1 field in the AdbdAuthCallbacks struct, as in just:\n\nstruct AdbdAuthCallbacks {\n    uint32_t version;\n    AdbdAuthCallbacksV1 v1;\n};\n\nAlso I _strongly_ recommend using an opaque struct for this instead. It\u0027s much harder to break than this approach will be.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "1bca01d508333de25a20de59125d6fc3f02a7355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2576a6c_15ea5b0f",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-20T00:15:48Z",
+      "side": 1,
+      "message": "I think this is really adbdb_auth_get_max_version() ?\n\nThis library still needs to support all the versions before that, this is just the highest it will understand itself.",
+      "range": {
+        "startLine": 141,
+        "startChar": 9,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "1bca01d508333de25a20de59125d6fc3f02a7355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

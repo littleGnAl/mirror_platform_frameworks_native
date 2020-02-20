@@ -249,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "b8573847_d47f3039",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-20T00:15:48Z",
+      "side": 1,
+      "message": "If it spawns its own thread then the docs here are incorrect.",
+      "parentUuid": "824a9049_b3c71e04",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb22d8e8_12cb5b81",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
