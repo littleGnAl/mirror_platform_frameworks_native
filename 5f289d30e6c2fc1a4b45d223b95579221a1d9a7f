@@ -321,6 +321,30 @@
     },
     {
       "key": {
+        "uuid": "79068222_846879b6",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-20T00:33:18Z",
+      "side": 1,
+      "message": "\"looper\" is removed in later patch sets.",
+      "parentUuid": "63b15390_22b6abba",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "474ed72b_4d97477f",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
@@ -332,6 +356,30 @@
       "writtenOn": "2020-02-20T00:24:47Z",
       "side": 1,
       "message": "Truly indefinitely like it must be a daemon thread? or is there a way to do a clean shutdown of this?",
+      "range": {
+        "startLine": 64,
+        "startChar": 58,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f202d372_7f2f47c4",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-20T00:33:18Z",
+      "side": 1,
+      "message": "Looking at that code, there doesn\u0027t seem to be a way to break cleanly.",
+      "parentUuid": "474ed72b_4d97477f",
       "range": {
         "startLine": 64,
         "startChar": 58,
