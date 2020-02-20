@@ -771,6 +771,30 @@
     },
     {
       "key": {
+        "uuid": "2faad167_951e7559",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-20T01:07:45Z",
+      "side": 1,
+      "message": "I\u0027m almost certain we\u0027re going to add one Soon for making tls mandatory, which is probably going to have to be build/device specific.",
+      "parentUuid": "d49a0ddd_5b9fe1d5",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 51
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1cb1709_4dee61e7",
         "filename": "libs/adbd_auth/libadbd_auth.map.txt",
         "patchSetId": 25
