@@ -297,6 +297,30 @@
     },
     {
       "key": {
+        "uuid": "63b15390_22b6abba",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-20T00:23:35Z",
+      "side": 1,
+      "message": "To be clear I\u0027m fine with this not spawning a thread. Letting the caller make that decision seems great.\n\nJust \"looper\" is an actual named thing in Android, and is (typically) expected to be a shared thread-local. Eg, ALooper_forThread(). If you\u0027re using an actual thread-local shared ALooper, say that. If you\u0027re not, avoid the \u0027looper\u0027 name.",
+      "parentUuid": "eed83f4a_8ca34b1c",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb22d8e8_12cb5b81",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
