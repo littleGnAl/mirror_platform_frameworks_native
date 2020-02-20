@@ -273,6 +273,30 @@
     },
     {
       "key": {
+        "uuid": "eed83f4a_8ca34b1c",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-20T00:20:12Z",
+      "side": 1,
+      "message": "It doesn\u0027t spawn a thread. The caller does ATM. jmgao@, would you like to keep it as is or I can change it to spawn a thread?",
+      "parentUuid": "b8573847_d47f3039",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb22d8e8_12cb5b81",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
