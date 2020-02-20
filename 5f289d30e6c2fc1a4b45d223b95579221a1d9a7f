@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "19a493d7_ce8b3db6",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-20T00:50:35Z",
+      "side": 1,
+      "message": "I think we\u0027ve reached a consensus to switch this to using struct inheritance and downcasting instead of a union and relying to common initial sequence. i.e.:\n\n    struct AdbdAuthCallbacks {\n        uint32_t version;\n    }\n\n    struct AdbdAuthCallbacksV1 : AdbdAuthCallbacks {\n        void* foo;\n        void* bar;\n    };\n\n    struct AdbdAuthCallbacksV2 : AdbdAuthCallbacksV1 {\n        void* baz;\n    };\n\n    AdbdAuthContext* adbd_auth_new(AdbdAuthCallbacks*);",
+      "parentUuid": "6cff9b40_48f93494",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7996564e_fa3fa55f",
         "filename": "libs/adbd_auth/include/adbd_auth.h",
         "patchSetId": 25
@@ -639,6 +663,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "6d5bf9e9_d304907b",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 51
+      },
+      "revId": "5f289d30e6c2fc1a4b45d223b95579221a1d9a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c659bfe_ca5c13f0",
+        "filename": "libs/adbd_auth/include/adbd_auth.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-20T00:50:35Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be removed: it returns false for all values in the initial release, but it\u0027ll let us probe for feature availability in future releases without also having to check to see if we even have this function.",
+      "parentUuid": "2b1ee814_c702a551",
       "range": {
         "startLine": 126,
         "startChar": 0,
