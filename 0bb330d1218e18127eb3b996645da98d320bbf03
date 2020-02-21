@@ -118,6 +118,30 @@
       "revId": "0bb330d1218e18127eb3b996645da98d320bbf03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e60787_91f133a0",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2020-02-21T00:04:55Z",
+      "side": 1,
+      "message": "You shouldn\u0027t be accepting std::string most of the time. string_view is great. If we had some kind of a String16View, I\u0027d have this function accept that. But we don\u0027t, and I think StaticString16 is a poor, non-general, and somewhat type-unsafe substitute. Accepting a pointer and a length here allows this function to impose minimal constraints on its caller.",
+      "parentUuid": "998108a2_c3d08acc",
+      "range": {
+        "startLine": 595,
+        "startChar": 10,
+        "endLine": 595,
+        "endChar": 18
+      },
+      "revId": "0bb330d1218e18127eb3b996645da98d320bbf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
