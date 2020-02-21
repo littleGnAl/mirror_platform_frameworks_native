@@ -142,6 +142,30 @@
       "revId": "0bb330d1218e18127eb3b996645da98d320bbf03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "943b7fda_4ee5c061",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-21T00:11:31Z",
+      "side": 1,
+      "message": "FWIW, StaticString16 was taken over String16View because of ABI constraints.\n\nI see android_os_Parcel_enforceInterface is at least one user we won\u0027t ever change to use DECLARE_META_INTERFACE. Maybe you can change this to avoid an allocation after this change as well?",
+      "parentUuid": "c1e60787_91f133a0",
+      "range": {
+        "startLine": 595,
+        "startChar": 10,
+        "endLine": 595,
+        "endChar": 18
+      },
+      "revId": "0bb330d1218e18127eb3b996645da98d320bbf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
