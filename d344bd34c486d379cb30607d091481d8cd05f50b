@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "164adc33_7473ccb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1245797
+      },
+      "writtenOn": "2020-02-26T00:54:28Z",
+      "side": 1,
+      "message": "nit: s/changing/shrinking/\nto be more consistent with the code behavior",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "d344bd34c486d379cb30607d091481d8cd05f50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "850262aa_a6e665bd",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1245797
+      },
+      "writtenOn": "2020-02-26T00:54:28Z",
+      "side": 1,
+      "message": "This logic feels a little weird to me.\nWe leave callers the option to increase the max thread count, but I don\u0027t think there currently is a way to query mMaxThreads. So to safely increase the the thread count a caller would need to maintain a separate int of what they think the max thread count is otherwise they risk crashing. Wouldn\u0027t it be better to just ignore threadpool shrinks?",
+      "range": {
+        "startLine": 327,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 64
+      },
+      "revId": "d344bd34c486d379cb30607d091481d8cd05f50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
