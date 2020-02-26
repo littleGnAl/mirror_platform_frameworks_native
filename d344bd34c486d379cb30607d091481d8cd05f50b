@@ -45,6 +45,30 @@
       "revId": "d344bd34c486d379cb30607d091481d8cd05f50b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff49c2e_87a950e9",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-26T01:25:56Z",
+      "side": 1,
+      "message": "The thread pool sizes are usually set statically at startup, so there should be no need to read an integer (if someone is checking this, they\u0027re probably doing something else wrong).\n\nThe problem is that thread pool shrinks don\u0027t actually work (if you request a smaller size, there might already be more threads than that started). So, this is a stopgap to fix a race. We could support dynamically resizing threadpools later, but until there is a need for that usecase, I want to prevent this race where extra threads are started. I\u0027ve seen it in HIDL a couple of times, never in the wild with libbinder, but seems like an obvious restriction to add.",
+      "parentUuid": "850262aa_a6e665bd",
+      "range": {
+        "startLine": 327,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 64
+      },
+      "revId": "d344bd34c486d379cb30607d091481d8cd05f50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
