@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63494d66_54157997",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-02-28T19:49:47Z",
+      "side": 1,
+      "message": "nit: Better to get this from IBase::getDescriptor",
+      "range": {
+        "startLine": 409,
+        "startChar": 34,
+        "endLine": 409,
+        "endChar": 54
+      },
+      "revId": "7a99e04990d28fa20f63d820cb709888dafa1576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
