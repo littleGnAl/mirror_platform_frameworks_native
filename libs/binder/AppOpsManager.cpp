@@ -36,11 +36,10 @@ const int APP_OPS_MANAGER_UNAVAILABLE_MODE = AppOpsManager::MODE_IGNORED;
 
 }  // namespace
 
-static String16 _appops("appops");
-static pthread_mutex_t gTokenMutex = PTHREAD_MUTEX_INITIALIZER;
-static sp<IBinder> gToken;
-
 static const sp<IBinder>& getToken(const sp<IAppOpsService>& service) {
+    static pthread_mutex_t gTokenMutex = PTHREAD_MUTEX_INITIALIZER;
+    static sp<IBinder> gToken;
+
     pthread_mutex_lock(&gTokenMutex);
     if (gToken == nullptr || gToken->pingBinder() != NO_ERROR) {
         gToken = service->getToken(new BBinder());
@@ -59,6 +58,7 @@ sp<IAppOpsService> AppOpsManager::getService() { return NULL; }
 #else
 sp<IAppOpsService> AppOpsManager::getService()
 {
+    static StaticString16 _appops(u"appops");
 
     std::lock_guard<Mutex> scoped_lock(mLock);
     int64_t startTime = 0;
