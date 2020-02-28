@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51602399_43c86f2a",
+        "filename": "libs/cputimeinstate/testtimeinstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2020-02-28T20:21:46Z",
+      "side": 1,
+      "message": "This line doesn\u0027t seem to relate to the commit message",
+      "revId": "c159bc309787d94cf7bcc8220bd642c905c1127a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
