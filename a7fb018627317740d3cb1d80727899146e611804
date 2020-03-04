@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13824df4_b19e345b",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-03-04T19:29:12Z",
+      "side": 1,
+      "message": "(nit I think if you friend class below you don\u0027t have to forward declare it)",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "a7fb018627317740d3cb1d80727899146e611804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
