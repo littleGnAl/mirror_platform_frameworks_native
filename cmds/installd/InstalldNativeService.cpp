@@ -2024,8 +2024,7 @@ binder::Status InstalldNativeService::getExternalSize(const std::optional<std::s
         std::vector<int64_t>* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
     CHECK_ARGUMENT_UUID(uuid);
-    // NOTE: Locking is relaxed on this method, since it's limited to
-    // read-only measurements without mutation.
+    std::lock_guard<std::recursive_mutex> lock(mLock);
 
     // When modifying this logic, always verify using tests:
     // runtest -x frameworks/base/services/tests/servicestests/src/com/android/server/pm/InstallerTest.java -m testGetExternalSize
