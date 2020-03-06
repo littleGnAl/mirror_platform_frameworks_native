@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "608eac91_1a5799ec",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-06T04:20:22Z",
+      "side": 1,
+      "message": "should probably also have some offsetof() assertions in here to make sure that fields are in the right places. (e.g. we don\u0027t accidentally rearrange the fields).",
+      "revId": "8b5dc76250aa48d027c8654d30152776a2c3a49a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
