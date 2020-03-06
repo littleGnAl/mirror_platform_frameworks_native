@@ -31,10 +31,15 @@ using AidlServiceManager = android::os::IServiceManager;
 
 class ClientCounterCallback : public ::android::os::BnClientCallback {
 public:
-    ClientCounterCallback() : mNumConnectedServices(0) {}
+    ClientCounterCallback() : mNumConnectedServices(0), mPreventShutdown(false) {}
 
     bool registerService(const sp<IBinder>& service, const std::string& name,
                          bool allowIsolated, int dumpFlags);
+
+    /**
+     * Set a flag to prevent services from automatically shutting down
+     */
+    void setShutdownPrevention(bool preventShutdown);
 
 protected:
     Status onClients(const sp<IBinder>& service, bool clients) override;
@@ -60,6 +65,8 @@ private:
      * Map of registered names and services
      */
     std::map<std::string, Service> mRegisteredServices;
+
+    bool mPreventShutdown;
 };
 
 bool ClientCounterCallback::registerService(const sp<IBinder>& service, const std::string& name,
@@ -88,6 +95,14 @@ bool ClientCounterCallback::registerService(const sp<IBinder>& service, const st
     return true;
 }
 
+void ClientCounterCallback::setShutdownPrevention(bool preventShutdown) {
+    mPreventShutdown = preventShutdown;
+    if(!mPreventShutdown && mNumConnectedServices == 0) {
+        // Attempt a shutdown if the number of clients previously hit 0 while the flag was on
+        tryShutdown();
+    }
+}
+
 /**
  * onClients is oneway, so no need to worry about multi-threading. Note that this means multiple
  * invocations could occur on different threads however.
@@ -111,6 +126,11 @@ Status ClientCounterCallback::onClients(const sp<IBinder>& service, bool clients
 }
 
 void ClientCounterCallback::tryShutdown() {
+    if(mPreventShutdown) {
+        ALOGI("Shutdown prevented by override flag.");
+        return;
+    }
+
     ALOGI("Trying to shut down the service. No clients in use for any service in process.");
 
     auto manager = interface_cast<AidlServiceManager>(asBinder(defaultServiceManager()));
@@ -163,6 +183,10 @@ status_t LazyServiceRegistrar::registerService(const sp<IBinder>& service, const
         return UNKNOWN_ERROR;
     }
     return OK;
+}
+
+void LazyServiceRegistrar::setShutdownPrevention(bool preventShutdown) {
+    mClientCC->setShutdownPrevention(preventShutdown);
 }
 
 }  // namespace hardware

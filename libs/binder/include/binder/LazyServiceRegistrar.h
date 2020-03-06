@@ -34,6 +34,7 @@ class LazyServiceRegistrar {
                               const std::string& name = "default",
                               bool allowIsolated = false,
                               int dumpFlags = IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT);
+     void setShutdownPrevention(bool preventShutdown);
 
    private:
      std::shared_ptr<internal::ClientCounterCallback> mClientCC;
