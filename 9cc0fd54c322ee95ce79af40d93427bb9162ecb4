@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99404110_21e771c9",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-03-07T05:29:52Z",
+      "side": 1,
+      "message": "Ah, sorry, should have clarified. The new call to tryShutdown() in LazyServiceRegistrar in this CL introduces a race, which this fixes.",
+      "parentUuid": "4bcc03fc_a8325789",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 536,
+        "endChar": 49
+      },
+      "revId": "9cc0fd54c322ee95ce79af40d93427bb9162ecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a62c6f3_57834e08",
         "filename": "libs/binder/LazyServiceRegistrar.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4ed8f3dc_81b7637d",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-03-07T05:29:52Z",
+      "side": 1,
+      "message": "Ack. I was thinking of it as \"If we don\u0027t have any clients, then let\u0027s call the shutdown function,\" but since that function already has \"try\" in its name, moving the check inside would make sense, too.",
+      "parentUuid": "8a62c6f3_57834e08",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 54
+      },
+      "revId": "9cc0fd54c322ee95ce79af40d93427bb9162ecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e79c58ff_dea21063",
         "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-07T02:53:10Z",
       "side": 1,
       "message": "consider \u0027Persist\u0027 w/ comment to avoid double negative (or use the negative and make setLazy/setDynamic)\n\nAlso - note that this is racey. Once you register a service, it can race.",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "9cc0fd54c322ee95ce79af40d93427bb9162ecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af5b6111_2692f87f",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-03-07T05:29:52Z",
+      "side": 1,
+      "message": "Darn, that\u0027s a good point. I could change it so that the flag gets set by an argument to registerService and can only be removed later. This would be less flexible than having this function to set it at any time, but it would cover the intended use case. Alternately, I suppose I could add a locking mechanism? Any thoughts on what would be best?",
+      "parentUuid": "e79c58ff_dea21063",
       "range": {
         "startLine": 37,
         "startChar": 13,
