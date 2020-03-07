@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bcc03fc_a8325789",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-07T02:53:10Z",
+      "side": 1,
+      "message": "is this a separate bug fix?",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 536,
+        "endChar": 49
+      },
+      "revId": "9cc0fd54c322ee95ce79af40d93427bb9162ecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a62c6f3_57834e08",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-07T02:53:10Z",
+      "side": 1,
+      "message": "this logic is duplicated now, consider moving into tryShutdown",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 54
+      },
+      "revId": "9cc0fd54c322ee95ce79af40d93427bb9162ecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79c58ff_dea21063",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-07T02:53:10Z",
+      "side": 1,
+      "message": "consider \u0027Persist\u0027 w/ comment to avoid double negative (or use the negative and make setLazy/setDynamic)\n\nAlso - note that this is racey. Once you register a service, it can race.",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "9cc0fd54c322ee95ce79af40d93427bb9162ecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
