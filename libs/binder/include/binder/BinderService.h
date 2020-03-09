@@ -48,10 +48,6 @@ public:
         joinThreadPool();
     }
 
-    static void instantiate() { publish(); }
-
-    static status_t shutdown() { return NO_ERROR; }
-
 private:
     static void joinThreadPool() {
         sp<ProcessState> ps(ProcessState::self());
