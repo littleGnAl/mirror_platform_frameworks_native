@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7fffd428_b9737c03",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-09T18:41:56Z",
+      "side": 1,
+      "message": "Would it be better to avoid wrapping sendClientCallbackNotifications(serviceName, true); with isCalledOnInterval like the HIDL implementation, so that we get an earlier callback and \"service.hasClients \u003d hasClients;\" will get hit?",
+      "parentUuid": "99404110_21e771c9",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 536,
+        "endChar": 49
+      },
+      "revId": "9cc0fd54c322ee95ce79af40d93427bb9162ecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a62c6f3_57834e08",
         "filename": "libs/binder/LazyServiceRegistrar.cpp",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Darn, that\u0027s a good point. I could change it so that the flag gets set by an argument to registerService and can only be removed later. This would be less flexible than having this function to set it at any time, but it would cover the intended use case. Alternately, I suppose I could add a locking mechanism? Any thoughts on what would be best?",
       "parentUuid": "e79c58ff_dea21063",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "9cc0fd54c322ee95ce79af40d93427bb9162ecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "824d2783_3df831aa",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-09T18:41:56Z",
+      "side": 1,
+      "message": "I would document (you can also add an internal check, abort if it\u0027s set after registerService).\n\nSince it should only be passed in once, but you might register more services, I would keep it separate from registerServices",
+      "parentUuid": "af5b6111_2692f87f",
       "range": {
         "startLine": 37,
         "startChar": 13,
