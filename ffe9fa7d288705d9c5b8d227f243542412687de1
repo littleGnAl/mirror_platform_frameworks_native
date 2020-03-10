@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "309714bb_41d3e3f2",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-03-10T23:58:20Z",
+      "side": 1,
+      "message": "Assuming you mean !mRegisteredServices.empty, this would break the valid use case where a service is registered and then a client calls this through the service (as in the test case). The client\u0027s existence prevents the race.\n(If you did mean mRegisteredService.empty, then this would break the use case where the server calls this before registerService)\nSince the use cases are so different, I don\u0027t think an error check would work here, which is why I was hoping the comment in the .h would suffice.",
+      "parentUuid": "64574f33_9883afe2",
+      "revId": "ffe9fa7d288705d9c5b8d227f243542412687de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c25e7e1b_dac846e8",
         "filename": "libs/binder/LazyServiceRegistrar.cpp",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3ac7cfad_5d9db366",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-03-10T23:58:20Z",
+      "side": 1,
+      "message": "Counter-intuitively, this is necessary. Since the clients hitting 0 is the triggering event for shutdown, if that occurs while the flag is on and the flag is later turned off, shutdown won\u0027t happen (since onClients isn\u0027t called again). \n\n...Or did you just mean the if check is unnecessary because tryShutdown would fail if mForcePersist were on?",
+      "parentUuid": "c25e7e1b_dac846e8",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 87
+      },
+      "revId": "ffe9fa7d288705d9c5b8d227f243542412687de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0703ade_0748820f",
         "filename": "libs/binder/LazyServiceRegistrar.cpp",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2020-03-10T20:36:21Z",
       "side": 1,
       "message": "nit: \"force persist\" or \"forcePersist\"?",
+      "range": {
+        "startLine": 132,
+        "startChar": 37,
+        "endLine": 132,
+        "endChar": 50
+      },
+      "revId": "ffe9fa7d288705d9c5b8d227f243542412687de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51910d19_e43b053a",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-03-10T23:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0703ade_0748820f",
       "range": {
         "startLine": 132,
         "startChar": 37,
