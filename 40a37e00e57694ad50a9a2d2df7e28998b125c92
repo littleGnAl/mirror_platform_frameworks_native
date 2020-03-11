@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da56c7f8_d3c6e925",
+        "filename": "libs/dumputils/dump_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-11T16:35:53Z",
+      "side": 1,
+      "message": "so.. this one is also not as good as it could be (camera.provider starts at 2.4, composer starts @2.1)",
+      "range": {
+        "startLine": 69,
+        "startChar": 34,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "40a37e00e57694ad50a9a2d2df7e28998b125c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3b606c1_471fdd4f",
+        "filename": "libs/dumputils/dump_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-11T16:35:53Z",
+      "side": 1,
+      "message": "you should be able to omit these. when 1.0 is called, 1.1/1.2 which inherit from this should also get called",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 55
+      },
+      "revId": "40a37e00e57694ad50a9a2d2df7e28998b125c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
