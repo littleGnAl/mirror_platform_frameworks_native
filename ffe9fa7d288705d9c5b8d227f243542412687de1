@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0205744f_58c70d00",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-11T20:15:26Z",
+      "side": 1,
+      "message": "yeah, !empty. I did not consider that case, and it\u0027s feasible it might occur in the wild as well. Okay, thanks.",
+      "parentUuid": "309714bb_41d3e3f2",
+      "revId": "ffe9fa7d288705d9c5b8d227f243542412687de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c25e7e1b_dac846e8",
         "filename": "libs/binder/LazyServiceRegistrar.cpp",
         "patchSetId": 3
