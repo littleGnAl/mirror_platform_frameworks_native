@@ -69,6 +69,30 @@
       "revId": "40a37e00e57694ad50a9a2d2df7e28998b125c92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a0f32a_d11a3315",
+        "filename": "libs/dumputils/dump_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1497460
+      },
+      "writtenOn": "2020-03-12T13:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3b606c1_471fdd4f",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 55
+      },
+      "revId": "40a37e00e57694ad50a9a2d2df7e28998b125c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
