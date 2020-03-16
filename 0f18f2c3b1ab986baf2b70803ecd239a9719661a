@@ -46,6 +46,30 @@
       "revId": "0f18f2c3b1ab986baf2b70803ecd239a9719661a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6065ca_3f49d0a6",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-16T23:43:31Z",
+      "side": 1,
+      "message": "I mean, there are many ways to do it. Maybe this is fine, unless there is a reason to change it.",
+      "parentUuid": "35102791_04bcf07b",
+      "range": {
+        "startLine": 530,
+        "startChar": 18,
+        "endLine": 530,
+        "endChar": 45
+      },
+      "revId": "0f18f2c3b1ab986baf2b70803ecd239a9719661a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
