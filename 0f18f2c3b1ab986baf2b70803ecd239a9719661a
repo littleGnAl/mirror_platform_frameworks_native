@@ -22,6 +22,30 @@
       "revId": "0f18f2c3b1ab986baf2b70803ecd239a9719661a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35102791_04bcf07b",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-03-16T23:24:34Z",
+      "side": 1,
+      "message": "Do you mean to have handleServiceClientCallback return -1 in that case? Or redesign this interaction to not require an int from handleServiceClientCallback at all?",
+      "parentUuid": "544ef5de_a2987534",
+      "range": {
+        "startLine": 530,
+        "startChar": 18,
+        "endLine": 530,
+        "endChar": 45
+      },
+      "revId": "0f18f2c3b1ab986baf2b70803ecd239a9719661a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
