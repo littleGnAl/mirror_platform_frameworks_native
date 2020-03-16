@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "544ef5de_a2987534",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-16T21:52:36Z",
+      "side": 1,
+      "message": "it might be nicer to check the logic inside here though, so it is self-contained",
+      "range": {
+        "startLine": 530,
+        "startChar": 18,
+        "endLine": 530,
+        "endChar": 45
+      },
+      "revId": "0f18f2c3b1ab986baf2b70803ecd239a9719661a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
