@@ -1,0 +1,52 @@
+cc_library_static {
+    name: "libbinder_rs_bindings",
+    shared_libs: [
+        "libbinder",
+    ],
+    srcs: [
+        "src/sys/BinderBindings.cpp",
+    ],
+}
+
+rust_library_rlib {
+    name: "libbinder_rs",
+    crate_name: "binder",
+    srcs: ["src/lib.rs"],
+    shared_libs: [
+        "libbinder",
+        "libutils",
+    ],
+    static_libs: [
+        "libbinder_rs_bindings",
+    ],
+    rlibs: [
+        "liblibc",
+    ],
+}
+
+rust_test {
+    name: "libbinder_rs-internal_test",
+    crate_name: "binder",
+    srcs: ["src/lib.rs"],
+    test_suites: ["general-tests"],
+    auto_gen_config: true,
+    shared_libs: [
+        "libbinder",
+        "libutils",
+        "libc++",
+    ],
+
+    static_libs: [
+        "libbinder_rs_bindings",
+        "libbinder_rs_test_init_hack",
+    ],
+    rlibs: [
+        "liblibc",
+    ],
+    dylibs: [
+        "libtest",
+    ],
+    flags: [
+        "-C debuginfo=2",
+    ],
+}
