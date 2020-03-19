@@ -796,7 +796,7 @@ ssize_t ASensorEventQueue_getEvents(ASensorEventQueue* queue, ASensorEvent* even
  * Request that {@link ASENSOR_TYPE_ADDITIONAL_INFO} events to be delivered on
  * the given {@link ASensorEventQueue}.
  *
- * Sensor data events are always delivered to the {@ASensorEventQueue}.
+ * Sensor data events are always delivered to the {@link ASensorEventQueue}.
  *
  * The {@link ASENSOR_TYPE_ADDITIONAL_INFO} events will be returned through
  * {@link ASensorEventQueue_getEvents}. The client is responsible for checking
