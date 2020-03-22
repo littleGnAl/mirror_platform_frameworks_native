@@ -127,7 +127,6 @@ private:
     virtual Region getDrawingSurfaceDamage() const = 0;
     virtual const HdrMetadata& getDrawingHdrMetadata() const = 0;
     virtual int getDrawingApi() const = 0;
-    virtual PixelFormat getPixelFormat() const = 0;
 
     virtual uint64_t getFrameNumber() const = 0;
 
@@ -146,6 +145,7 @@ private:
 
     virtual status_t updateActiveBuffer() = 0;
     virtual status_t updateFrameNumber(nsecs_t latchTime) = 0;
+    virtual PixelFormat updatePixelFormat() = 0;
 
     virtual void setHwcLayerBuffer(const sp<const DisplayDevice>& displayDevice) = 0;
 
@@ -191,6 +191,10 @@ private:
     std::shared_ptr<compositionengine::Layer> mCompositionLayer;
 
     FloatRect computeSourceBounds(const FloatRect& parentBounds) const override;
+
+    PixelFormat mFormat{PIXEL_FORMAT_NONE};
+
+    PixelFormat getPixelFormat() const;
 };
 
 } // namespace android

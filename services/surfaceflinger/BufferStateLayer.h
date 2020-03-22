@@ -116,7 +116,6 @@ private:
     Region getDrawingSurfaceDamage() const override;
     const HdrMetadata& getDrawingHdrMetadata() const override;
     int getDrawingApi() const override;
-    PixelFormat getPixelFormat() const override;
 
     uint64_t getFrameNumber() const override;
 
@@ -134,6 +133,7 @@ private:
 
     status_t updateActiveBuffer() override;
     status_t updateFrameNumber(nsecs_t latchTime) override;
+    PixelFormat updatePixelFormat() override;
 
     void setHwcLayerBuffer(const sp<const DisplayDevice>& display) override;
 
