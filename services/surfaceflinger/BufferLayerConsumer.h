@@ -146,6 +146,9 @@ public:
     // getCurrentApi retrieves the API which queues the current buffer.
     int getCurrentApi() const;
 
+    // getCurrentPixelFormat returns the pixel format of the current buffer.
+    PixelFormat getCurrentPixelFormat() const;
+
     // See GLConsumer::setDefaultBufferSize.
     status_t setDefaultBufferSize(uint32_t width, uint32_t height);
 
@@ -321,6 +324,10 @@ private:
     Region mCurrentSurfaceDamage;
 
     int mCurrentApi;
+
+    // mCurrentPixelFormat is the pixel format for the current texture. It
+    // gets set each time updateTexImage is called.
+    PixelFormat mCurrentPixelFormat{PIXEL_FORMAT_NONE};
 
     uint32_t mDefaultWidth, mDefaultHeight;
 

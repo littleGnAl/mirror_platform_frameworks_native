@@ -270,6 +270,8 @@ status_t BufferLayerConsumer::updateAndReleaseLocked(const BufferItem& item,
     // Update the BufferLayerConsumer state.
     mCurrentTexture = slot;
     mCurrentTextureBuffer = nextTextureBuffer;
+    mCurrentPixelFormat =
+        nextTextureBuffer == nullptr ? PIXEL_FORMAT_NONE : nextTextureBuffer->graphicBuffer()->getPixelFormat();
     mCurrentCrop = item.mCrop;
     mCurrentTransform = item.mTransform;
     mCurrentScalingMode = item.mScalingMode;
@@ -381,6 +383,11 @@ void BufferLayerConsumer::mergeSurfaceDamage(const Region& damage) {
 int BufferLayerConsumer::getCurrentApi() const {
     Mutex::Autolock lock(mMutex);
     return mCurrentApi;
+}
+
+PixelFormat BufferLayerConsumer::getCurrentPixelFormat() const {
+    Mutex::Autolock lock(mMutex);
+    return mCurrentPixelFormat;
 }
 
 sp<GraphicBuffer> BufferLayerConsumer::getCurrentBuffer(int* outSlot, sp<Fence>* outFence) const {
