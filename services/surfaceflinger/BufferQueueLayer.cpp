@@ -193,7 +193,10 @@ int BufferQueueLayer::getDrawingApi() const {
 }
 
 PixelFormat BufferQueueLayer::getPixelFormat() const {
-    return mFormat;
+    if (!mActiveBuffer) {
+        return PIXEL_FORMAT_NONE;
+    }
+    return mActiveBuffer->format;
 }
 
 uint64_t BufferQueueLayer::getFrameNumber() const {
