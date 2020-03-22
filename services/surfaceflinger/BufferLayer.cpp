@@ -445,6 +445,8 @@ bool BufferLayer::latchBuffer(bool& recomputeVisibleRegions, nsecs_t latchTime) 
         return false;
     }
 
+    mFormat = updatePixelFormat();
+
     mBufferLatched = true;
 
     err = updateFrameNumber(latchTime);
@@ -730,6 +732,10 @@ FloatRect BufferLayer::computeSourceBounds(const FloatRect& parentBounds) const 
     }
 
     return FloatRect(0, 0, bufWidth, bufHeight);
+}
+
+PixelFormat BufferLayer::getPixelFormat() const {
+    return mFormat;
 }
 
 } // namespace android

@@ -449,13 +449,6 @@ int BufferStateLayer::getDrawingApi() const {
     return getDrawingState().api;
 }
 
-PixelFormat BufferStateLayer::getPixelFormat() const {
-    if (!mActiveBuffer) {
-        return PIXEL_FORMAT_NONE;
-    }
-    return mActiveBuffer->format;
-}
-
 uint64_t BufferStateLayer::getFrameNumber() const {
     return mFrameNumber;
 }
@@ -588,6 +581,10 @@ status_t BufferStateLayer::updateFrameNumber(nsecs_t /*latchTime*/) {
     // TODO(marissaw): support frame history events
     mCurrentFrameNumber = mFrameNumber;
     return NO_ERROR;
+}
+
+PixelFormat BufferStateLayer::updatePixelFormat() {
+    return !mActiveBuffer ? PIXEL_FORMAT_NONE : mActiveBuffer->format;
 }
 
 void BufferStateLayer::setHwcLayerBuffer(const sp<const DisplayDevice>& display) {
