@@ -193,7 +193,10 @@ int BufferQueueLayer::getDrawingApi() const {
 }
 
 PixelFormat BufferQueueLayer::getPixelFormat() const {
-    return mFormat;
+    if (!mActiveBuffer) {
+        return PIXEL_FORMAT_NONE;
+    }
+    return mActiveBuffer->format;
 }
 
 uint64_t BufferQueueLayer::getFrameNumber() const {
@@ -560,8 +563,6 @@ status_t BufferQueueLayer::setDefaultBufferProperties(uint32_t w, uint32_t h, Pi
         ALOGE("dimensions too large %u x %u", uint32_t(w), uint32_t(h));
         return BAD_VALUE;
     }
-
-    mFormat = format;
 
     setDefaultBufferSize(w, h);
     mConsumer->setDefaultBufferFormat(format);
