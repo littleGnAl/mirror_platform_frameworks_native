@@ -475,6 +475,9 @@ void BufferQueueLayer::onFrameAvailable(const BufferItem& item) {
 
     mFlinger->mInterceptor->saveBufferUpdate(this, item.mGraphicBuffer->getWidth(),
                                              item.mGraphicBuffer->getHeight(), item.mFrameNumber);
+    if (item.mGraphicBuffer->getPixelFormat() != mFormat) {
+        mFormat = item.mGraphicBuffer->getPixelFormat();
+    }
 
     // If this layer is orphaned, then we run a fake vsync pulse so that
     // dequeueBuffer doesn't block indefinitely.
