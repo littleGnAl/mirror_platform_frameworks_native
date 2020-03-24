@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f62420b_0fb86f68",
+        "filename": "services/surfaceflinger/BufferQueueLayer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-03-24T18:55:47Z",
+      "side": 1,
+      "message": "mFormat looks unused now, should we remove?",
+      "range": {
+        "startLine": 567,
+        "startChar": 4,
+        "endLine": 567,
+        "endChar": 11
+      },
+      "revId": "be665c2c50774791f05e62ef601eef887a2acf4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
