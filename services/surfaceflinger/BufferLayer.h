@@ -127,7 +127,7 @@ private:
     virtual Region getDrawingSurfaceDamage() const = 0;
     virtual const HdrMetadata& getDrawingHdrMetadata() const = 0;
     virtual int getDrawingApi() const = 0;
-    virtual PixelFormat getPixelFormat() const = 0;
+    PixelFormat getPixelFormat() const;
 
     virtual uint64_t getFrameNumber() const = 0;
 
