@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86df5377_f4b2d6d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2020-03-26T23:57:09Z",
+      "side": 1,
+      "message": "The automerger tends to misbehave if the Change-Id isn\u0027t the last line *except* the cherry picked. I don\u0027t know if this will work or not, but I tend to prefer \"better safe than sorry\" given how fragile the infra is.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "36ff47419a36f990c7a016d9e2369eb65c77dfaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
