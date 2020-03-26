@@ -1,16 +1,16 @@
-LIBADBD_AUTH {
+LIBADBD_AUTH { # apex introduced=R
   global:
-    adbd_auth_new; # apex introduced=30
-    adbd_auth_delete; # apex introduced=30
-    adbd_auth_run; # apex introduced=30
-    adbd_auth_get_public_keys; #apex introduced=30
-    adbd_auth_notify_auth; # apex introduced=30
-    adbd_auth_notify_disconnect; # apex introduced=30
-    adbd_auth_prompt_user; # apex introduced=30
-    adbd_auth_tls_device_connected; # apex introduced=30
-    adbd_auth_tls_device_disconnected; # apex introduced=30
-    adbd_auth_get_max_version; # apex introduced=30
-    adbd_auth_supports_feature; # apex introduced=30
+    adbd_auth_new;
+    adbd_auth_delete;
+    adbd_auth_run;
+    adbd_auth_get_public_keys;
+    adbd_auth_notify_auth;
+    adbd_auth_notify_disconnect;
+    adbd_auth_prompt_user;
+    adbd_auth_tls_device_connected;
+    adbd_auth_tls_device_disconnected;
+    adbd_auth_get_max_version;
+    adbd_auth_supports_feature;
   local:
     *;
 };
