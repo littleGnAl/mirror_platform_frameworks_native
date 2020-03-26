@@ -31,14 +31,14 @@
 #include <jni.h>
 
 __BEGIN_DECLS
-#if __ANDROID_API__ >= 30
+#if __ANDROID_API__ >= __ANDROID_API_R__
 
 /**
  * Converts an android.os.Parcel object into an AParcel* object.
  *
  * If the parcel is null, null is returned.
  *
- * Available since API level 30.
+ * Available since __ANDROID_API_R__.
  *
  * \param env Java environment. Must not be null.
  * \param parcel android.os.Parcel java object.
@@ -48,9 +48,9 @@ __BEGIN_DECLS
  * jobject and is only good for as long as the jobject is alive.
  */
 __attribute__((warn_unused_result)) AParcel* AParcel_fromJavaParcel(JNIEnv* env, jobject parcel)
-        __INTRODUCED_IN(30);
+        __INTRODUCED_IN(__ANDROID_API_R__);
 
-#endif  //__ANDROID_API__ >= 30
+#endif  //__ANDROID_API__ >= __ANDROID_API_R__
 __END_DECLS
 
 /** @} */

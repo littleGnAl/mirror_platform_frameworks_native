@@ -567,14 +567,14 @@ void AIBinder_DeathRecipient_delete(AIBinder_DeathRecipient* recipient) __INTROD
 
 #endif  //__ANDROID_API__ >= 29
 
-#if __ANDROID_API__ >= 30
+#if __ANDROID_API__ >= __ANDROID_API_R__
 
 /**
  * Gets the extension registered with AIBinder_setExtension.
  *
  * See AIBinder_setExtension.
  *
- * Available since API level 30.
+ * Available since __ANDROID_API_R__.
  *
  * \param binder the object to get the extension of.
  * \param outExt the returned extension object. Will be null if there is no extension set or
@@ -583,7 +583,8 @@ void AIBinder_DeathRecipient_delete(AIBinder_DeathRecipient* recipient) __INTROD
  * \return error of getting the interface (may be a transaction error if this is
  * remote binder). STATUS_UNEXPECTED_NULL if binder is null.
  */
-binder_status_t AIBinder_getExtension(AIBinder* binder, AIBinder** outExt) __INTRODUCED_IN(30);
+binder_status_t AIBinder_getExtension(AIBinder* binder, AIBinder** outExt)
+        __INTRODUCED_IN(__ANDROID_API_R__);
 
 /**
  * Gets the extension of a binder interface. This allows a downstream developer to add
@@ -628,7 +629,7 @@ binder_status_t AIBinder_getExtension(AIBinder* binder, AIBinder** outExt) __INT
  *         // if bar is null, then there is no extension or a different
  *         // type of extension
  *
- * Available since API level 30.
+ * Available since __ANDROID_API_R__.
  *
  * \param binder the object to get the extension on. Must be local.
  * \param ext the extension to set (binder will hold a strong reference to this)
@@ -636,9 +637,10 @@ binder_status_t AIBinder_getExtension(AIBinder* binder, AIBinder** outExt) __INT
  * \return OK on success, STATUS_INVALID_OPERATION if binder is not local, STATUS_UNEXPECTED_NULL
  * if either binder is null.
  */
-binder_status_t AIBinder_setExtension(AIBinder* binder, AIBinder* ext) __INTRODUCED_IN(30);
+binder_status_t AIBinder_setExtension(AIBinder* binder, AIBinder* ext)
+        __INTRODUCED_IN(__ANDROID_API_R__);
 
-#endif  //__ANDROID_API__ >= 30
+#endif  //__ANDROID_API__ >= __ANDROID_API_R__
 
 __END_DECLS
 

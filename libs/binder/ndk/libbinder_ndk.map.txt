@@ -99,7 +99,7 @@ LIBBINDER_NDK { # introduced=29
     *;
 };
 
-LIBBINDER_NDK30 { # introduced=30
+LIBBINDER_NDK30 { # introduced=R
   global:
     AIBinder_getExtension;
     AIBinder_setExtension;

@@ -26,7 +26,7 @@
 #endif
 
 __BEGIN_DECLS
-#if !defined(__ANDROID__) || __ANDROID_API__ >= 30
+#if !defined(__ANDROID__) || __ANDROID_API__ >= __ANDROID_API_R__
 
 // The transport type of the device connection.
 enum AdbTransportType : int32_t {
@@ -59,14 +59,14 @@ typedef struct AdbdAuthContext AdbdAuthContext;
  * @return a new AdbdAuthContext instance. Caller is responsible for destroying
  * the context with #adbd_auth_delete.
  */
-AdbdAuthContext* adbd_auth_new(AdbdAuthCallbacks* callbacks) __INTRODUCED_IN(30);
+AdbdAuthContext* adbd_auth_new(AdbdAuthCallbacks* callbacks) __INTRODUCED_IN(__ANDROID_API_R__);
 
 /**
  * Destroys the AdbdAuthContext.
  *
  * @param ctx the AdbdAuthContext to destroy.
  */
-void adbd_auth_delete(AdbdAuthContext* ctx) __INTRODUCED_IN(30);
+void adbd_auth_delete(AdbdAuthContext* ctx) __INTRODUCED_IN(__ANDROID_API_R__);
 
 /**
  * Starts the AdbdAuthContext.
@@ -76,7 +76,7 @@ void adbd_auth_delete(AdbdAuthContext* ctx) __INTRODUCED_IN(30);
  *
  * @param ctx the AdbdAuthContext
  */
-void adbd_auth_run(AdbdAuthContext* ctx) __INTRODUCED_IN(30);
+void adbd_auth_run(AdbdAuthContext* ctx) __INTRODUCED_IN(__ANDROID_API_R__);
 
 /**
  * Iterate through the list of authorized public keys.
@@ -89,7 +89,7 @@ void adbd_auth_run(AdbdAuthContext* ctx) __INTRODUCED_IN(30);
  */
 void adbd_auth_get_public_keys(AdbdAuthContext* ctx,
                                bool (*callback)(void* opaque, const char* public_key, size_t len),
-                               void* opaque) __INTRODUCED_IN(30);
+                               void* opaque) __INTRODUCED_IN(__ANDROID_API_R__);
 
 /**
  * Let system_server know that a key has been successfully used for authentication.
@@ -99,9 +99,8 @@ void adbd_auth_get_public_keys(AdbdAuthContext* ctx,
  * @param len the length of the public_key argument
  * @return an id corresponding to the new connection
  */
-uint64_t adbd_auth_notify_auth(AdbdAuthContext* ctx,
-                               const char* public_key,
-                               size_t len) __INTRODUCED_IN(30);
+uint64_t adbd_auth_notify_auth(AdbdAuthContext* ctx, const char* public_key, size_t len)
+        __INTRODUCED_IN(__ANDROID_API_R__);
 
 /**
  * Let system_server know that an AUTH connection has been closed.
@@ -109,8 +108,8 @@ uint64_t adbd_auth_notify_auth(AdbdAuthContext* ctx,
  * @param ctx the AdbdAuthContext
  * @param id the id of the disconnected device
  */
-void adbd_auth_notify_disconnect(AdbdAuthContext* ctx,
-                                 uint64_t id) __INTRODUCED_IN(30);
+void adbd_auth_notify_disconnect(AdbdAuthContext* ctx, uint64_t id)
+        __INTRODUCED_IN(__ANDROID_API_R__);
 
 /**
  * Prompt the user to authorize a public key.
@@ -122,9 +121,8 @@ void adbd_auth_notify_disconnect(AdbdAuthContext* ctx,
  * @param len the length of the public_key argument
  * @param arg an opaque userdata argument
  */
-void adbd_auth_prompt_user(AdbdAuthContext* ctx,
-                           const char* public_key,
-                           size_t len, void* opaque) __INTRODUCED_IN(30);
+void adbd_auth_prompt_user(AdbdAuthContext* ctx, const char* public_key, size_t len, void* opaque)
+        __INTRODUCED_IN(__ANDROID_API_R__);
 
 /**
  * Let system_server know that a TLS device has connected.
@@ -135,10 +133,9 @@ void adbd_auth_prompt_user(AdbdAuthContext* ctx,
  * @param len the length of the public_key argument
  * @return an id corresponding to the new connection
  */
-uint64_t adbd_auth_tls_device_connected(AdbdAuthContext* ctx,
-                                        AdbTransportType type,
-                                        const char* public_key,
-                                        size_t len) __INTRODUCED_IN(30);
+uint64_t adbd_auth_tls_device_connected(AdbdAuthContext* ctx, AdbTransportType type,
+                                        const char* public_key, size_t len)
+        __INTRODUCED_IN(__ANDROID_API_R__);
 
 /**
  * Let system_server know that a TLS device has disconnected.
@@ -147,9 +144,8 @@ uint64_t adbd_auth_tls_device_connected(AdbdAuthContext* ctx,
  * @param type the transport type of the connection (see #AdbTransportType)
  * @param the id of the disconnected device (see #adbd_tls_device_connected)
  */
-void adbd_auth_tls_device_disconnected(AdbdAuthContext* ctx,
-                                       AdbTransportType type,
-                                       uint64_t id) __INTRODUCED_IN(30);
+void adbd_auth_tls_device_disconnected(AdbdAuthContext* ctx, AdbTransportType type, uint64_t id)
+        __INTRODUCED_IN(__ANDROID_API_R__);
 
 /**
  * Returns the max #AdbdAuthCallbacks version.
@@ -159,7 +155,7 @@ void adbd_auth_tls_device_disconnected(AdbdAuthContext* ctx,
  *
  * @return the max #AdbdAuthCallbacks version.
  */
-uint32_t adbd_auth_get_max_version(void) __INTRODUCED_IN(30);
+uint32_t adbd_auth_get_max_version(void) __INTRODUCED_IN(__ANDROID_API_R__);
 
 enum AdbdAuthFeature : int32_t {
 };
@@ -172,5 +168,5 @@ enum AdbdAuthFeature : int32_t {
  */
 bool adbd_auth_supports_feature(AdbdAuthFeature feature);
 
-#endif  //!__ANDROID__ || __ANDROID_API__ >= 30
+#endif //!__ANDROID__ || __ANDROID_API__ >= __ANDROID_API_R__
 __END_DECLS

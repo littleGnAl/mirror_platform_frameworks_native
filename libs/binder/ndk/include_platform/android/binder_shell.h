@@ -23,8 +23,6 @@ __BEGIN_DECLS
 /**
  * Function to execute a shell command.
  *
- * Available since API level 30.
- *
  * \param binder the binder executing the command
  * \param in input file descriptor, should be flushed, ownership is not passed
  * \param out output file descriptor, should be flushed, ownership is not passed
@@ -38,17 +36,22 @@ __BEGIN_DECLS
 typedef binder_status_t (*AIBinder_handleShellCommand)(AIBinder* binder, int in, int out, int err,
                                                        const char** argv, uint32_t argc);
 
+#if __ANDROID_API__ >= __ANDROID_API_R__
+
 /**
  * This sets the implementation of handleShellCommand for a class.
  *
  * If this isn't set, nothing will be executed when handleShellCommand is called.
  *
- * Available since API level 30.
+ * Available since __ANDROID_API_R__.
  *
  * \param handleShellCommand function to call when a shell transaction is
  * received
  */
 __attribute__((weak)) void AIBinder_Class_setHandleShellCommand(
-        AIBinder_Class* clazz, AIBinder_handleShellCommand handleShellCommand) __INTRODUCED_IN(30);
+        AIBinder_Class* clazz, AIBinder_handleShellCommand handleShellCommand)
+        __INTRODUCED_IN(__ANDROID_API_R__);
+
+#endif /* __ANDROID_API__ >= __ANDROID_API_R__ */
 
 __END_DECLS

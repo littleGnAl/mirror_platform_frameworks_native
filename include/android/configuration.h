@@ -645,13 +645,13 @@ int32_t AConfiguration_getScreenLong(AConfiguration* config);
  */
 void AConfiguration_setScreenLong(AConfiguration* config, int32_t screenLong);
 
-#if __ANDROID_API__ >= 30
+#if __ANDROID_API__ >= __ANDROID_API_R__
 /**
  * Return the current ACONFIGURATION_SCREENROUND_* set in the configuration.
  *
- * Available since API level 30.
+ * Available since __ANDROID_API_R__.
  */
-int32_t AConfiguration_getScreenRound(AConfiguration* config) __INTRODUCED_IN(30);
+int32_t AConfiguration_getScreenRound(AConfiguration* config) __INTRODUCED_IN(__ANDROID_API_R__);
 #endif
 
 /**
