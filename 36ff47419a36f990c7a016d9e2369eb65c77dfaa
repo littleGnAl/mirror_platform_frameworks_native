@@ -22,6 +22,30 @@
       "revId": "36ff47419a36f990c7a016d9e2369eb65c77dfaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2da03192_08d0d4fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-03-27T00:31:41Z",
+      "side": 1,
+      "message": "I\u0027ve always put Merged-In after Change-Id, but I\u0027ll keep an eye on this.",
+      "parentUuid": "86df5377_f4b2d6d1",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "36ff47419a36f990c7a016d9e2369eb65c77dfaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
