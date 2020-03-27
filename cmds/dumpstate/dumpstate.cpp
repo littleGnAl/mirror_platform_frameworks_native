@@ -273,6 +273,24 @@ int64_t GetModuleMetadataVersion() {
     return version_code;
 }
 
+int64_t GetTelemetryVersion() {
+    auto binder = defaultServiceManager()->getService(android::String16("package_native"));
+    if (binder == nullptr) {
+        MYLOGE("Failed to retrieve package_native service");
+        return 0L;
+    }
+    auto package_service = android::interface_cast<content::pm::IPackageManagerNative>(binder);
+    int64_t version_code;
+    auto status = package_service->getVersionCodeForPackage(android::String16(
+                                                                "com.google.mainline.telemetry"),
+                                                                &version_code);
+    if (!status.isOk()) {
+        MYLOGE("Failed to retrieve telemetry package version: %s", status.toString8().c_str());
+        return 0L;
+    }
+    return version_code;
+}
+
 }  // namespace
 }  // namespace os
 }  // namespace android
@@ -696,6 +714,10 @@ void Dumpstate::PrintHeader() const {
     int64_t module_metadata_version = android::os::GetModuleMetadataVersion();
     if (module_metadata_version != 0) {
         printf("Module Metadata version: %" PRId64 "\n", module_metadata_version);
+    }
+    int64_t telemetry_version = android::os::GetTelemetryVersion();
+    if (telemetry_version != 0) {
+        printf("Telemetry Version: %" PRId64 "\n", telemetry_version);
     }
 
     printf("Kernel: ");
