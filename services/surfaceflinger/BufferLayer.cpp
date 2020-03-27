@@ -138,6 +138,9 @@ bool BufferLayer::prepareClientLayer(const RenderArea& renderArea, const Region&
     ATRACE_CALL();
     Layer::prepareClientLayer(renderArea, clip, useIdentityTransform, clearRegion,
                               supportProtectedContent, layer);
+    if (mSidebandStream != nullptr) {
+        return true;
+    }
     if (CC_UNLIKELY(mActiveBuffer == 0)) {
         // the texture has not been created yet, this Layer has
         // in fact never been drawn into. This happens frequently with
