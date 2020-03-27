@@ -46,6 +46,30 @@
       "revId": "8cc5a7f2349ae5f281620d22fdd7c4bb5c886e23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c21efd2_ca220e6d",
+        "filename": "services/surfaceflinger/BufferQueueLayer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1234352
+      },
+      "writtenOn": "2020-03-27T17:50:22Z",
+      "side": 1,
+      "message": "Sorry for the misunderstanding. I think it\u0027s fine to remove mFormat since the format from the client is set to the consumer mConsumer-\u003esetDefaultBufferFormat(format);\n\nThe original change was fine, but just move getPixelFormat into BufferLayer and remove from BufferQueueLayer and BufferStateLayer",
+      "parentUuid": "f62ab253_74e6b849",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 1
+      },
+      "revId": "8cc5a7f2349ae5f281620d22fdd7c4bb5c886e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
