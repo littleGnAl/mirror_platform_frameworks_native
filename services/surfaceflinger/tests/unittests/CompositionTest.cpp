@@ -1069,11 +1069,11 @@ struct CompositionCase {
 
     static void cleanup(CompositionTest* test) {
         Layer::cleanupInjectedLayers(test);
-
-        for (auto& hwcDisplay : test->mFlinger.mFakeHwcDisplays) {
-            hwcDisplay->mutableLayers().clear();
+        for (auto& displayData : test->mFlinger.mutableHwcDisplayData()) {
+            static_cast<TestableSurfaceFlinger::HWC2Display*>(displayData.second.hwcDisplay.get())
+                    ->mutableLayers()
+                    .clear();
         }
-
         test->mDisplay->setVisibleLayersSortedByZ(Vector<sp<android::Layer>>());
     }
 };
