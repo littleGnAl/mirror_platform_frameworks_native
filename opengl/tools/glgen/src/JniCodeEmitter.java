@@ -746,7 +746,7 @@ public class JniCodeEmitter {
                         "int err;");
 
         cStream.println(indent +
-                        "err = android::AndroidRuntime::registerNativeMethods(_env, classPathName, methods, NELEM(methods));");
+                        "err = jniRegisterNativeMethods(_env, classPathName, methods);");
 
         cStream.println(indent + "return err;");
         cStream.println("}");
