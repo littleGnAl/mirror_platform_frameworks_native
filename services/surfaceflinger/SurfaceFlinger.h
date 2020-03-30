@@ -793,9 +793,15 @@ private:
             const wp<IBinder>& displayToken, const std::optional<DisplayId>& displayId,
             const DisplayDeviceState& state,
             const sp<compositionengine::DisplaySurface>& dispSurface,
-            const sp<IGraphicBufferProducer>& producer);
-    void processDisplayChangesLocked();
-    void processDisplayHotplugEventsLocked();
+            const sp<IGraphicBufferProducer>& producer) REQUIRES(mStateLock);
+    void processDisplayChangesLocked() REQUIRES(mStateLock);
+    void processDisplayAdded(const wp<IBinder>& displayToken, const DisplayDeviceState& state)
+            REQUIRES(mStateLock);
+    void processDisplayRemoved(const wp<IBinder>& displayToken) REQUIRES(mStateLock);
+    void processDisplayChanged(const wp<IBinder>& displayToken,
+                               const DisplayDeviceState& currentState,
+                               const DisplayDeviceState& drawingState) REQUIRES(mStateLock);
+    void processDisplayHotplugEventsLocked() REQUIRES(mStateLock);
 
     void dispatchDisplayHotplugEvent(PhysicalDisplayId displayId, bool connected);
 
