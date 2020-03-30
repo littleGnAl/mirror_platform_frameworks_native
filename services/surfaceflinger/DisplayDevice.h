@@ -40,6 +40,7 @@
 #include <utils/Timers.h>
 
 #include "DisplayHardware/DisplayIdentification.h"
+#include "DisplayHardware/HWC2.h"
 #include "RenderArea.h"
 
 namespace android {
@@ -209,6 +210,7 @@ struct DisplayDeviceState {
 
     int32_t sequenceId = sNextSequenceId++;
     std::optional<DisplayId> displayId;
+    std::optional<hwc2_display_t> hwcDisplayId;
     sp<IGraphicBufferProducer> surface;
     uint32_t layerStack = DisplayDevice::NO_LAYER_STACK;
     Rect viewport;

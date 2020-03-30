@@ -1494,7 +1494,7 @@ void SurfaceFlinger::setRefreshRateTo(RefreshRateType refreshRate, Scheduler::Co
 }
 
 void SurfaceFlinger::onHotplugReceived(int32_t sequenceId, hwc2_display_t hwcDisplayId,
-                                       HWC2::Connection connection) {
+                                       HWC2::Connection connection) NO_THREAD_SAFETY_ANALYSIS {
     ALOGV("%s(%d, %" PRIu64 ", %s)", __FUNCTION__, sequenceId, hwcDisplayId,
           connection == HWC2::Connection::Connected ? "connected" : "disconnected");
 
@@ -2534,27 +2534,38 @@ void SurfaceFlinger::processDisplayHotplugEventsLocked() {
             continue;
         }
 
+        const DisplayId displayId = info->id;
+        const auto it = mPhysicalDisplayTokens.find(displayId);
+
         if (event.connection == HWC2::Connection::Connected) {
-            if (!mPhysicalDisplayTokens.count(info->id)) {
-                ALOGV("Creating display %s", to_string(info->id).c_str());
-                mPhysicalDisplayTokens[info->id] = new BBinder();
+            if (it == mPhysicalDisplayTokens.end()) {
+                ALOGV("Creating display %s", to_string(displayId).c_str());
+
                 DisplayDeviceState state;
-                state.displayId = info->id;
+                state.displayId = displayId;
+                state.hwcDisplayId = event.hwcDisplayId;
                 state.isSecure = true; // All physical displays are currently considered secure.
                 state.displayName = info->name;
-                mCurrentState.displays.add(mPhysicalDisplayTokens[info->id], state);
+                mPhysicalDisplayTokens[displayId] = new BBinder();
+                mCurrentState.displays.add(mPhysicalDisplayTokens[displayId], state);
                 mInterceptor->saveDisplayCreation(state);
+            } else {
+                ALOGV("Recreating display %s", to_string(displayId).c_str());
+
+                const auto token = it->second;
+                auto& state = mCurrentState.displays.editValueFor(token);
+                state.sequenceId = DisplayDeviceState{}.sequenceId;
             }
         } else {
-            ALOGV("Removing display %s", to_string(info->id).c_str());
+            ALOGV("Removing display %s", to_string(displayId).c_str());
 
-            ssize_t index = mCurrentState.displays.indexOfKey(mPhysicalDisplayTokens[info->id]);
+            ssize_t index = mCurrentState.displays.indexOfKey(it->second);
             if (index >= 0) {
                 const DisplayDeviceState& state = mCurrentState.displays.valueAt(index);
                 mInterceptor->saveDisplayDeletion(state.sequenceId);
                 mCurrentState.displays.removeItemsAt(index);
             }
-            mPhysicalDisplayTokens.erase(info->id);
+            mPhysicalDisplayTokens.erase(displayId);
         }
 
         processDisplayChangesLocked();
@@ -2645,6 +2656,124 @@ sp<DisplayDevice> SurfaceFlinger::setupNewDisplayDeviceInternal(
     return display;
 }
 
+void SurfaceFlinger::processDisplayAdded(const wp<IBinder>& displayToken,
+                                         const DisplayDeviceState& state) {
+    sp<compositionengine::DisplaySurface> dispSurface;
+    sp<IGraphicBufferProducer> producer;
+    sp<IGraphicBufferProducer> bqProducer;
+    sp<IGraphicBufferConsumer> bqConsumer;
+    getFactory().createBufferQueue(&bqProducer, &bqConsumer, false);
+
+    std::optional<DisplayId> displayId;
+    if (state.isVirtual()) {
+        // Virtual displays without a surface are dormant:
+        // they have external state (layer stack, projection,
+        // etc.) but no internal state (i.e. a DisplayDevice).
+        if (state.surface != nullptr) {
+            // Allow VR composer to use virtual displays.
+            if (mUseHwcVirtualDisplays || getHwComposer().isUsingVrComposer()) {
+                int width = 0;
+                int status = state.surface->query(NATIVE_WINDOW_WIDTH, &width);
+                ALOGE_IF(status != NO_ERROR, "Unable to query width (%d)", status);
+                int height = 0;
+                status = state.surface->query(NATIVE_WINDOW_HEIGHT, &height);
+                ALOGE_IF(status != NO_ERROR, "Unable to query height (%d)", status);
+                int intFormat = 0;
+                status = state.surface->query(NATIVE_WINDOW_FORMAT, &intFormat);
+                ALOGE_IF(status != NO_ERROR, "Unable to query format (%d)", status);
+                auto format = static_cast<ui::PixelFormat>(intFormat);
+
+                displayId = getHwComposer().allocateVirtualDisplay(width, height, &format);
+            }
+
+            // TODO: Plumb requested format back up to consumer
+
+            sp<VirtualDisplaySurface> vds =
+                    new VirtualDisplaySurface(getHwComposer(), displayId, state.surface, bqProducer,
+                                              bqConsumer, state.displayName);
+
+            dispSurface = vds;
+            producer = vds;
+        }
+    } else {
+        ALOGE_IF(state.surface != nullptr,
+                 "adding a supported display, but rendering "
+                 "surface is provided (%p), ignoring it",
+                 state.surface.get());
+
+        displayId = state.displayId;
+        LOG_ALWAYS_FATAL_IF(!displayId);
+        dispSurface = new FramebufferSurface(getHwComposer(), *displayId, bqConsumer,
+                                             maxGraphicsWidth, maxGraphicsHeight);
+        producer = bqProducer;
+    }
+
+    if (dispSurface != nullptr) {
+        const auto display =
+                setupNewDisplayDeviceInternal(displayToken, displayId, state, dispSurface, producer);
+        mDisplays.emplace(displayToken, display);
+        if (!state.isVirtual()) {
+            LOG_FATAL_IF(!displayId);
+            dispatchDisplayHotplugEvent(displayId->value, true);
+        }
+    }
+}
+
+void SurfaceFlinger::processDisplayRemoved(const wp<IBinder>& displayToken) {
+    if (const auto display = getDisplayDeviceLocked(displayToken)) {
+        // Save display ID before disconnecting.
+        const auto displayId = display->getId();
+        display->disconnect();
+
+        if (!display->isVirtual()) {
+            LOG_FATAL_IF(!displayId);
+            dispatchDisplayHotplugEvent(displayId->value, false);
+        }
+    }
+
+    mDisplays.erase(displayToken);
+}
+
+void SurfaceFlinger::processDisplayChanged(const wp<IBinder>& displayToken,
+                                           const DisplayDeviceState& currentState,
+                                           const DisplayDeviceState& drawingState) {
+    const sp<IBinder> currentBinder = IInterface::asBinder(currentState.surface);
+    const sp<IBinder> drawingBinder = IInterface::asBinder(drawingState.surface);
+    if (currentBinder != drawingBinder || currentState.sequenceId != drawingState.sequenceId) {
+        // changing the surface is like destroying and recreating the DisplayDevice
+        if (const auto display = getDisplayDeviceLocked(displayToken)) {
+            display->disconnect();
+        }
+        mDisplays.erase(displayToken);
+        if (!currentState.isVirtual()) {
+            getHwComposer().allocatePhysicalDisplay(*currentState.hwcDisplayId,
+                                                    *currentState.displayId);
+        }
+        processDisplayAdded(displayToken, currentState);
+        if (!currentState.isVirtual()) {
+            const auto display = getDisplayDeviceLocked(displayToken);
+            setPowerModeInternal(display, HWC_POWER_MODE_NORMAL);
+        }
+        return;
+    }
+
+    if (const auto display = getDisplayDeviceLocked(displayToken)) {
+        if (currentState.layerStack != drawingState.layerStack) {
+            display->setLayerStack(currentState.layerStack);
+        }
+        if ((currentState.orientation != drawingState.orientation) ||
+            (currentState.viewport != drawingState.viewport) ||
+            (currentState.frame != drawingState.frame)) {
+            display->setProjection(currentState.orientation, currentState.viewport,
+                                   currentState.frame);
+        }
+        if (currentState.width != drawingState.width ||
+            currentState.height != drawingState.height) {
+            display->setDisplaySize(currentState.width, currentState.height);
+        }
+    }
+}
+
 void SurfaceFlinger::processDisplayChangesLocked() {
     // here we take advantage of Vector's copy-on-write semantics to
     // improve performance by skipping the transaction entirely when
@@ -2653,134 +2782,31 @@ void SurfaceFlinger::processDisplayChangesLocked() {
     const KeyedVector<wp<IBinder>, DisplayDeviceState>& draw(mDrawingState.displays);
     if (!curr.isIdenticalTo(draw)) {
         mVisibleRegionsDirty = true;
-        const size_t cc = curr.size();
-        size_t dc = draw.size();
 
         // find the displays that were removed
         // (ie: in drawing state but not in current state)
         // also handle displays that changed
         // (ie: displays that are in both lists)
-        for (size_t i = 0; i < dc;) {
-            const ssize_t j = curr.indexOfKey(draw.keyAt(i));
+        for (size_t i = 0; i < draw.size(); i++) {
+            const wp<IBinder>& displayToken = draw.keyAt(i);
+            const ssize_t j = curr.indexOfKey(displayToken);
             if (j < 0) {
                 // in drawing state but not in current state
-                if (const auto display = getDisplayDeviceLocked(draw.keyAt(i))) {
-                    // Save display ID before disconnecting.
-                    const auto displayId = display->getId();
-                    display->disconnect();
-
-                    if (!display->isVirtual()) {
-                        LOG_ALWAYS_FATAL_IF(!displayId);
-                        dispatchDisplayHotplugEvent(displayId->value, false);
-                    }
-                }
-
-                mDisplays.erase(draw.keyAt(i));
+                processDisplayRemoved(displayToken);
             } else {
                 // this display is in both lists. see if something changed.
-                const DisplayDeviceState& state(curr[j]);
-                const wp<IBinder>& displayToken = curr.keyAt(j);
-                const sp<IBinder> state_binder = IInterface::asBinder(state.surface);
-                const sp<IBinder> draw_binder = IInterface::asBinder(draw[i].surface);
-                if (state_binder != draw_binder) {
-                    // changing the surface is like destroying and
-                    // recreating the DisplayDevice, so we just remove it
-                    // from the drawing state, so that it get re-added
-                    // below.
-                    if (const auto display = getDisplayDeviceLocked(displayToken)) {
-                        display->disconnect();
-                    }
-                    mDisplays.erase(displayToken);
-                    mDrawingState.displays.removeItemsAt(i);
-                    dc--;
-                    // at this point we must loop to the next item
-                    continue;
-                }
-
-                if (const auto display = getDisplayDeviceLocked(displayToken)) {
-                    if (state.layerStack != draw[i].layerStack) {
-                        display->setLayerStack(state.layerStack);
-                    }
-                    if ((state.orientation != draw[i].orientation) ||
-                        (state.viewport != draw[i].viewport) || (state.frame != draw[i].frame)) {
-                        display->setProjection(state.orientation, state.viewport, state.frame);
-                    }
-                    if (state.width != draw[i].width || state.height != draw[i].height) {
-                        display->setDisplaySize(state.width, state.height);
-                    }
-                }
+                const DisplayDeviceState& currentState = curr[j];
+                const DisplayDeviceState& drawingState = draw[i];
+                processDisplayChanged(displayToken, currentState, drawingState);
             }
-            ++i;
         }
 
         // find displays that were added
         // (ie: in current state but not in drawing state)
-        for (size_t i = 0; i < cc; i++) {
-            if (draw.indexOfKey(curr.keyAt(i)) < 0) {
-                const DisplayDeviceState& state(curr[i]);
-
-                sp<compositionengine::DisplaySurface> dispSurface;
-                sp<IGraphicBufferProducer> producer;
-                sp<IGraphicBufferProducer> bqProducer;
-                sp<IGraphicBufferConsumer> bqConsumer;
-                getFactory().createBufferQueue(&bqProducer, &bqConsumer, false);
-
-                std::optional<DisplayId> displayId;
-                if (state.isVirtual()) {
-                    // Virtual displays without a surface are dormant:
-                    // they have external state (layer stack, projection,
-                    // etc.) but no internal state (i.e. a DisplayDevice).
-                    if (state.surface != nullptr) {
-                        // Allow VR composer to use virtual displays.
-                        if (mUseHwcVirtualDisplays || getHwComposer().isUsingVrComposer()) {
-                            int width = 0;
-                            int status = state.surface->query(NATIVE_WINDOW_WIDTH, &width);
-                            ALOGE_IF(status != NO_ERROR, "Unable to query width (%d)", status);
-                            int height = 0;
-                            status = state.surface->query(NATIVE_WINDOW_HEIGHT, &height);
-                            ALOGE_IF(status != NO_ERROR, "Unable to query height (%d)", status);
-                            int intFormat = 0;
-                            status = state.surface->query(NATIVE_WINDOW_FORMAT, &intFormat);
-                            ALOGE_IF(status != NO_ERROR, "Unable to query format (%d)", status);
-                            auto format = static_cast<ui::PixelFormat>(intFormat);
-
-                            displayId =
-                                    getHwComposer().allocateVirtualDisplay(width, height, &format);
-                        }
-
-                        // TODO: Plumb requested format back up to consumer
-
-                        sp<VirtualDisplaySurface> vds =
-                                new VirtualDisplaySurface(getHwComposer(), displayId, state.surface,
-                                                          bqProducer, bqConsumer,
-                                                          state.displayName);
-
-                        dispSurface = vds;
-                        producer = vds;
-                    }
-                } else {
-                    ALOGE_IF(state.surface != nullptr,
-                             "adding a supported display, but rendering "
-                             "surface is provided (%p), ignoring it",
-                             state.surface.get());
-
-                    displayId = state.displayId;
-                    LOG_ALWAYS_FATAL_IF(!displayId);
-                    dispSurface = new FramebufferSurface(getHwComposer(), *displayId, bqConsumer,
-                                                         maxGraphicsWidth, maxGraphicsHeight);
-                    producer = bqProducer;
-                }
-
-                const wp<IBinder>& displayToken = curr.keyAt(i);
-                if (dispSurface != nullptr) {
-                    mDisplays.emplace(displayToken,
-                                      setupNewDisplayDeviceInternal(displayToken, displayId, state,
-                                                                    dispSurface, producer));
-                    if (!state.isVirtual()) {
-                        LOG_ALWAYS_FATAL_IF(!displayId);
-                        dispatchDisplayHotplugEvent(displayId->value, true);
-                    }
-                }
+        for (size_t i = 0; i < curr.size(); i++) {
+            const wp<IBinder>& displayToken = curr.keyAt(i);
+            if (draw.indexOfKey(displayToken) < 0) {
+                processDisplayAdded(displayToken, curr[i]);
             }
         }
     }
