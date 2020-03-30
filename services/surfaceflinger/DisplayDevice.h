@@ -40,6 +40,7 @@
 #include <utils/Timers.h>
 
 #include "DisplayHardware/DisplayIdentification.h"
+#include "DisplayHardware/HWC2.h"
 #include "RenderArea.h"
 
 namespace android {
@@ -59,7 +60,7 @@ class Display;
 class DisplaySurface;
 } // namespace compositionengine
 
-class DisplayDevice : public LightRefBase<DisplayDevice> {
+class DisplayDevice : public RefBase {
 public:
     constexpr static float sDefaultMinLumiance = 0.0;
     constexpr static float sDefaultMaxLumiance = 500.0;
@@ -209,6 +210,7 @@ struct DisplayDeviceState {
 
     int32_t sequenceId = sNextSequenceId++;
     std::optional<DisplayId> displayId;
+    std::optional<hwc2_display_t> hwcDisplayId;
     sp<IGraphicBufferProducer> surface;
     uint32_t layerStack = DisplayDevice::NO_LAYER_STACK;
     Rect viewport;
@@ -251,28 +253,35 @@ class DisplayRenderArea : public RenderArea {
 public:
     DisplayRenderArea(const sp<const DisplayDevice> device,
                       ui::Transform::orientation_flags rotation = ui::Transform::ROT_0)
-          : DisplayRenderArea(device, device->getBounds(), device->getWidth(), device->getHeight(),
-                              device->getCompositionDataSpace(), rotation) {}
-    DisplayRenderArea(const sp<const DisplayDevice> device, Rect sourceCrop, uint32_t reqWidth,
-                      uint32_t reqHeight, ui::Dataspace reqDataSpace,
-                      ui::Transform::orientation_flags rotation, bool allowSecureLayers = true)
-          : RenderArea(reqWidth, reqHeight, CaptureFill::OPAQUE, reqDataSpace,
-                       getDisplayRotation(rotation, device->getInstallOrientation())),
-            mDevice(device),
-            mSourceCrop(sourceCrop),
-            mAllowSecureLayers(allowSecureLayers) {}
+          : DisplayRenderArea(device, device->getBounds(),
+                              ui::Size(device->getWidth(), device->getHeight()),
+                              device->getCompositionDataSpace(), rotation, true) {}
 
-    const ui::Transform& getTransform() const override { return mDevice->getTransform(); }
-    Rect getBounds() const override { return mDevice->getBounds(); }
-    int getHeight() const override { return mDevice->getHeight(); }
-    int getWidth() const override { return mDevice->getWidth(); }
-    bool isSecure() const override { return mAllowSecureLayers && mDevice->isSecure(); }
-    const sp<const DisplayDevice> getDisplayDevice() const override { return mDevice; }
+    static std::unique_ptr<RenderArea> create(wp<const DisplayDevice> displayWeak,
+                                              const Rect& sourceCrop, ui::Size reqSize,
+                                              ui::Dataspace reqDataSpace,
+                                              ui::Transform::orientation_flags rotation,
+                                              bool allowSecureLayers = true) {
+        if (auto display = displayWeak.promote()) {
+            // Using new to access a private constructor.
+            return std::unique_ptr<DisplayRenderArea>(
+                    new DisplayRenderArea(std::move(display), sourceCrop, reqSize, reqDataSpace,
+                                          rotation, allowSecureLayers));
+        }
+        return nullptr;
+    }
+
+    const ui::Transform& getTransform() const override { return mDisplay->getTransform(); }
+    Rect getBounds() const override { return mDisplay->getBounds(); }
+    int getHeight() const override { return mDisplay->getHeight(); }
+    int getWidth() const override { return mDisplay->getWidth(); }
+    bool isSecure() const override { return mAllowSecureLayers && mDisplay->isSecure(); }
+    const sp<const DisplayDevice> getDisplayDevice() const override { return mDisplay; }
 
     bool needsFiltering() const override {
         // check if the projection from the logical display to the physical
         // display needs filtering
-        if (mDevice->needsFiltering()) {
+        if (mDisplay->needsFiltering()) {
             return true;
         }
 
@@ -290,7 +299,7 @@ public:
     Rect getSourceCrop() const override {
         // use the projected display viewport by default.
         if (mSourceCrop.isEmpty()) {
-            return mDevice->getSourceClip();
+            return mDisplay->getSourceClip();
         }
 
         // Recompute the device transformation for the source crop.
@@ -298,11 +307,11 @@ public:
         ui::Transform translatePhysical;
         ui::Transform translateLogical;
         ui::Transform scale;
-        const Rect& viewport = mDevice->getViewport();
-        const Rect& sourceClip = mDevice->getSourceClip();
-        const Rect& frame = mDevice->getFrame();
+        const Rect& viewport = mDisplay->getViewport();
+        const Rect& sourceClip = mDisplay->getSourceClip();
+        const Rect& frame = mDisplay->getFrame();
 
-        const int orientation = mDevice->getInstallOrientation();
+        const int orientation = mDisplay->getInstallOrientation();
         // Install orientation is transparent to the callers.  Apply it now.
         uint32_t flags = 0x00;
         switch (orientation) {
@@ -329,6 +338,15 @@ public:
     }
 
 private:
+    DisplayRenderArea(sp<const DisplayDevice> display, const Rect& sourceCrop, ui::Size reqSize,
+                      ui::Dataspace reqDataSpace, ui::Transform::orientation_flags rotation,
+                      bool allowSecureLayers)
+          : RenderArea(reqSize, CaptureFill::OPAQUE, reqDataSpace,
+                       getDisplayRotation(rotation, display->getInstallOrientation())),
+            mDisplay(std::move(display)),
+            mSourceCrop(sourceCrop),
+            mAllowSecureLayers(allowSecureLayers) {}
+
     // Install orientation is transparent to the callers.  We need to cancel
     // it out by modifying rotation flags.
     static ui::Transform::orientation_flags getDisplayRotation(
@@ -367,7 +385,7 @@ private:
                 (rotation_rot_90 ^ hw_rot_90) | (rotation_flip_hv ^ hw_flip_hv));
     }
 
-    const sp<const DisplayDevice> mDevice;
+    const sp<const DisplayDevice> mDisplay;
     const Rect mSourceCrop;
     const bool mAllowSecureLayers;
 };

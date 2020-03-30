@@ -125,7 +125,7 @@ public:
     }
 
     void setupScheduler() {
-        mScheduler = new TestableScheduler(mFlinger.mutableRefreshRateConfigs());
+        mScheduler = new TestableScheduler(*mFlinger.mutableRefreshRateConfigs());
         mScheduler->mutableEventControlThread().reset(mEventControlThread);
         mScheduler->mutablePrimaryDispSync().reset(mPrimaryDispSync);
         EXPECT_CALL(*mEventThread.get(), registerDisplayEventConnection(_));
@@ -216,24 +216,23 @@ void CompositionTest::captureScreenComposition() {
     constexpr bool useIdentityTransform = true;
     constexpr bool forSystem = true;
 
-    DisplayRenderArea renderArea(mDisplay, sourceCrop, DEFAULT_DISPLAY_WIDTH,
-                                 DEFAULT_DISPLAY_HEIGHT, ui::Dataspace::V0_SRGB,
-                                 ui::Transform::ROT_0);
+    auto renderArea = DisplayRenderArea::create(mDisplay, sourceCrop, sourceCrop.getSize(),
+                                                ui::Dataspace::V0_SRGB, ui::Transform::ROT_0);
 
     auto traverseLayers = [this](const LayerVector::Visitor& visitor) {
-        return mFlinger.traverseLayersInDisplay(mDisplay, visitor);
+        return mFlinger.traverseLayersInLayerStack(mDisplay->getLayerStack(), visitor);
     };
 
     // TODO: Eliminate expensive/real allocation if possible.
     const uint32_t usage = GRALLOC_USAGE_SW_READ_OFTEN | GRALLOC_USAGE_SW_WRITE_OFTEN |
             GRALLOC_USAGE_HW_RENDER | GRALLOC_USAGE_HW_TEXTURE;
-    mCaptureScreenBuffer = new GraphicBuffer(renderArea.getReqWidth(), renderArea.getReqHeight(),
+    mCaptureScreenBuffer = new GraphicBuffer(renderArea->getReqWidth(), renderArea->getReqHeight(),
                                              HAL_PIXEL_FORMAT_RGBA_8888, 1, usage, "screenshot");
 
     int fd = -1;
-    status_t result =
-            mFlinger.captureScreenImplLocked(renderArea, traverseLayers, mCaptureScreenBuffer.get(),
-                                             useIdentityTransform, forSystem, &fd);
+    status_t result = mFlinger.captureScreenImplLocked(*renderArea, traverseLayers,
+                                                       mCaptureScreenBuffer.get(),
+                                                       useIdentityTransform, forSystem, &fd);
     if (fd >= 0) {
         close(fd);
     }
@@ -1069,11 +1068,11 @@ struct CompositionCase {
 
     static void cleanup(CompositionTest* test) {
         Layer::cleanupInjectedLayers(test);
-
-        for (auto& hwcDisplay : test->mFlinger.mFakeHwcDisplays) {
-            hwcDisplay->mutableLayers().clear();
+        for (auto& displayData : test->mFlinger.mutableHwcDisplayData()) {
+            static_cast<TestableSurfaceFlinger::HWC2Display*>(displayData.second.hwcDisplay.get())
+                    ->mutableLayers()
+                    .clear();
         }
-
         test->mDisplay->setVisibleLayersSortedByZ(Vector<sp<android::Layer>>());
     }
 };

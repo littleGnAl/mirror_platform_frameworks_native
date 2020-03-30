@@ -21,11 +21,9 @@ public:
 
     static float getCaptureFillValue(CaptureFill captureFill);
 
-    RenderArea(uint32_t reqWidth, uint32_t reqHeight, CaptureFill captureFill,
-               ui::Dataspace reqDataSpace,
+    RenderArea(ui::Size reqSize, CaptureFill captureFill, ui::Dataspace reqDataSpace,
                ui::Transform::orientation_flags rotation = ui::Transform::ROT_0)
-          : mReqWidth(reqWidth),
-            mReqHeight(reqHeight),
+          : mReqSize(reqSize),
             mReqDataSpace(reqDataSpace),
             mCaptureFill(captureFill),
             mRotationFlags(rotation) {}
@@ -68,8 +66,8 @@ public:
     ui::Transform::orientation_flags getRotationFlags() const { return mRotationFlags; };
 
     // Returns the size of the physical render area.
-    int getReqWidth() const { return mReqWidth; };
-    int getReqHeight() const { return mReqHeight; };
+    int getReqWidth() const { return mReqSize.width; }
+    int getReqHeight() const { return mReqSize.height; }
 
     // Returns the composition data space of the render area.
     ui::Dataspace getReqDataSpace() const { return mReqDataSpace; }
@@ -81,8 +79,7 @@ public:
     virtual const sp<const DisplayDevice> getDisplayDevice() const = 0;
 
 private:
-    const uint32_t mReqWidth;
-    const uint32_t mReqHeight;
+    const ui::Size mReqSize;
     const ui::Dataspace mReqDataSpace;
     const CaptureFill mCaptureFill;
     const ui::Transform::orientation_flags mRotationFlags;

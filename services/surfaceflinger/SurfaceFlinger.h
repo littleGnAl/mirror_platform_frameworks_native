@@ -66,6 +66,7 @@
 #include <atomic>
 #include <cstdint>
 #include <functional>
+#include <future>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -298,6 +299,9 @@ public:
     // enable/disable h/w composer event
     // TODO: this should be made accessible only to EventThread
     void setPrimaryVsyncEnabled(bool enabled);
+
+    // main thread function to enable/disable h/w composer event
+    void setPrimaryVsyncEnabledInternal(bool enabled);
 
     // called on the main thread by MessageQueue when an internal message
     // is received
@@ -546,6 +550,7 @@ private:
     void executeInputWindowCommands();
     void setInputWindowsFinished();
     void updateCursorAsync();
+    void initScheduler(DisplayId primaryDisplayId);
 
     /* handlePageFlip - latch a new buffer if available and compute the dirty
      * region. Returns whether a new buffer has been latched, i.e., whether it
@@ -635,23 +640,20 @@ private:
     void startBootAnim();
 
     using TraverseLayersFunction = std::function<void(const LayerVector::Visitor&)>;
+    using RenderAreaFuture = std::future<std::unique_ptr<RenderArea>>;
 
-    void renderScreenImplLocked(const RenderArea& renderArea, TraverseLayersFunction traverseLayers,
-                                ANativeWindowBuffer* buffer, bool useIdentityTransform,
-                                int* outSyncFd);
-    status_t captureScreenCommon(RenderArea& renderArea, TraverseLayersFunction traverseLayers,
-                                 sp<GraphicBuffer>* outBuffer, const ui::PixelFormat reqPixelFormat,
+    void renderScreenImplLocked(const RenderArea&, TraverseLayersFunction, ANativeWindowBuffer*,
+                                bool useIdentityTransform, int* outSyncFd);
+    status_t captureScreenCommon(RenderAreaFuture, TraverseLayersFunction, ui::Size bufferSize,
+                                 sp<GraphicBuffer>* outBuffer, const ui::PixelFormat,
                                  bool useIdentityTransform, bool& outCapturedSecureLayers);
-    status_t captureScreenCommon(RenderArea& renderArea, TraverseLayersFunction traverseLayers,
-                                 const sp<GraphicBuffer>& buffer, bool useIdentityTransform,
-                                 bool& outCapturedSecureLayers);
+    status_t captureScreenCommon(RenderAreaFuture, TraverseLayersFunction, const sp<GraphicBuffer>&,
+                                 bool useIdentityTransform, bool& outCapturedSecureLayers);
     const sp<DisplayDevice> getDisplayByIdOrLayerStack(uint64_t displayOrLayerStack);
-    status_t captureScreenImplLocked(const RenderArea& renderArea,
-                                     TraverseLayersFunction traverseLayers,
-                                     ANativeWindowBuffer* buffer, bool useIdentityTransform,
+    status_t captureScreenImplLocked(const RenderArea&, TraverseLayersFunction,
+                                     ANativeWindowBuffer*, bool useIdentityTransform,
                                      bool forSystem, int* outSyncFd, bool& outCapturedSecureLayers);
-    void traverseLayersInDisplay(const sp<const DisplayDevice>& display,
-                                 const LayerVector::Visitor& visitor);
+    void traverseLayersInLayerStack(uint32_t layerStack, const LayerVector::Visitor&);
 
     sp<StartPropertySetThread> mStartPropertySetThread;
 
@@ -793,9 +795,15 @@ private:
             const wp<IBinder>& displayToken, const std::optional<DisplayId>& displayId,
             const DisplayDeviceState& state,
             const sp<compositionengine::DisplaySurface>& dispSurface,
-            const sp<IGraphicBufferProducer>& producer);
-    void processDisplayChangesLocked();
-    void processDisplayHotplugEventsLocked();
+            const sp<IGraphicBufferProducer>& producer) REQUIRES(mStateLock);
+    void processDisplayChangesLocked() REQUIRES(mStateLock);
+    void processDisplayAdded(const wp<IBinder>& displayToken, const DisplayDeviceState& state)
+            REQUIRES(mStateLock);
+    void processDisplayRemoved(const wp<IBinder>& displayToken) REQUIRES(mStateLock);
+    void processDisplayChanged(const wp<IBinder>& displayToken,
+                               const DisplayDeviceState& currentState,
+                               const DisplayDeviceState& drawingState) REQUIRES(mStateLock);
+    void processDisplayHotplugEventsLocked() REQUIRES(mStateLock);
 
     void dispatchDisplayHotplugEvent(PhysicalDisplayId displayId, bool connected);
 
@@ -1120,8 +1128,10 @@ private:
     sp<Scheduler::ConnectionHandle> mAppConnectionHandle;
     sp<Scheduler::ConnectionHandle> mSfConnectionHandle;
 
-    scheduler::RefreshRateConfigs mRefreshRateConfigs;
-    scheduler::RefreshRateStats mRefreshRateStats{mRefreshRateConfigs, *mTimeStats};
+    std::unique_ptr<scheduler::RefreshRateConfigs> mRefreshRateConfigs;
+    std::unique_ptr<scheduler::RefreshRateStats> mRefreshRateStats;
+
+    HWC2::Vsync mHWCVsyncPendingState = HWC2::Vsync::Disable;
 
     // All configs are allowed if the set is empty.
     using DisplayConfigs = std::set<int32_t>;

@@ -32,11 +32,11 @@
 #include "Layer.h"
 #include "NativeWindowSurface.h"
 #include "Scheduler/MessageQueue.h"
+#include "Scheduler/RefreshRateConfigs.h"
 #include "StartPropertySetThread.h"
 #include "SurfaceFlinger.h"
 #include "SurfaceFlingerFactory.h"
 #include "SurfaceInterceptor.h"
-
 #include "TimeStats/TimeStats.h"
 
 namespace android {
@@ -286,9 +286,8 @@ public:
                                                  ignored);
     }
 
-    auto traverseLayersInDisplay(const sp<const DisplayDevice>& display,
-                                 const LayerVector::Visitor& visitor) {
-        return mFlinger->SurfaceFlinger::traverseLayersInDisplay(display, visitor);
+    auto traverseLayersInLayerStack(uint32_t layerStack, const LayerVector::Visitor& visitor) {
+        return mFlinger->SurfaceFlinger::traverseLayersInLayerStack(layerStack, visitor);
     }
 
     auto getDisplayNativePrimaries(const sp<IBinder>& displayToken,
@@ -342,6 +341,8 @@ public:
     auto& mutableAppConnectionHandle() { return mFlinger->mAppConnectionHandle; }
     auto& mutableSfConnectionHandle() { return mFlinger->mSfConnectionHandle; }
     auto& mutableRefreshRateConfigs() { return mFlinger->mRefreshRateConfigs; }
+    auto& mutableRefreshRateStats() { return mFlinger->mRefreshRateStats; }
+    auto& mutableTimeStats() { return mFlinger->mTimeStats; }
 
     ~TestableSurfaceFlinger() {
         // All these pointer and container clears help ensure that GMock does
@@ -458,15 +459,13 @@ public:
             display->mutableIsConnected() = true;
             display->setPowerMode(static_cast<HWC2::PowerMode>(mPowerMode));
 
-            flinger->mutableHwcDisplayData()[mDisplayId].hwcDisplay = display.get();
+            flinger->mutableHwcDisplayData()[mDisplayId].hwcDisplay = std::move(display);
 
             if (mHwcDisplayType == HWC2::DisplayType::Physical) {
                 flinger->mutableHwcPhysicalDisplayIdMap().emplace(mHwcDisplayId, mDisplayId);
                 (mIsPrimary ? flinger->mutableInternalHwcDisplayId()
                             : flinger->mutableExternalHwcDisplayId()) = mHwcDisplayId;
             }
-
-            flinger->mFakeHwcDisplays.push_back(std::move(display));
         }
 
     private:
@@ -573,9 +572,6 @@ public:
 
     surfaceflinger::test::Factory mFactory;
     sp<SurfaceFlinger> mFlinger = new SurfaceFlinger(mFactory, SurfaceFlinger::SkipInitialization);
-
-    // We need to keep a reference to these so they are properly destroyed.
-    std::vector<std::unique_ptr<HWC2Display>> mFakeHwcDisplays;
 };
 
 } // namespace android

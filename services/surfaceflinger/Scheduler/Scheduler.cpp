@@ -18,12 +18,6 @@
 
 #include "Scheduler.h"
 
-#include <algorithm>
-#include <cinttypes>
-#include <cstdint>
-#include <memory>
-#include <numeric>
-
 #include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
 #include <android/hardware/configstore/1.1/ISurfaceFlingerConfigs.h>
 #include <configstore/Utils.h>
@@ -33,6 +27,12 @@
 #include <ui/DisplayStatInfo.h>
 #include <utils/Timers.h>
 #include <utils/Trace.h>
+
+#include <algorithm>
+#include <cinttypes>
+#include <cstdint>
+#include <memory>
+#include <numeric>
 
 #include "DispSync.h"
 #include "DispSyncSource.h"
@@ -119,7 +119,7 @@ Scheduler::~Scheduler() {
 }
 
 sp<Scheduler::ConnectionHandle> Scheduler::createConnection(
-        const char* connectionName, int64_t phaseOffsetNs, ResyncCallback resyncCallback,
+        const char* connectionName, int64_t phaseOffsetNs,
         impl::EventThread::InterceptVSyncsCallback interceptCallback) {
     const int64_t id = sNextId++;
     ALOGV("Creating a connection handle with ID: %" PRId64 "\n", id);
@@ -128,8 +128,7 @@ sp<Scheduler::ConnectionHandle> Scheduler::createConnection(
             makeEventThread(connectionName, mPrimaryDispSync.get(), phaseOffsetNs,
                             std::move(interceptCallback));
 
-    auto eventThreadConnection =
-            createConnectionInternal(eventThread.get(), std::move(resyncCallback));
+    auto eventThreadConnection = createConnectionInternal(eventThread.get());
     mConnections.emplace(id,
                          std::make_unique<Connection>(new ConnectionHandle(id),
                                                       eventThreadConnection,
@@ -146,16 +145,14 @@ std::unique_ptr<EventThread> Scheduler::makeEventThread(
                                                std::move(interceptCallback), connectionName);
 }
 
-sp<EventThreadConnection> Scheduler::createConnectionInternal(EventThread* eventThread,
-                                                              ResyncCallback&& resyncCallback) {
-    return eventThread->createEventConnection(std::move(resyncCallback));
+sp<EventThreadConnection> Scheduler::createConnectionInternal(EventThread* eventThread) {
+    return eventThread->createEventConnection([&] { resync(); });
 }
 
 sp<IDisplayEventConnection> Scheduler::createDisplayEventConnection(
-        const sp<Scheduler::ConnectionHandle>& handle, ResyncCallback resyncCallback) {
+        const sp<Scheduler::ConnectionHandle>& handle) {
     RETURN_VALUE_IF_INVALID(nullptr);
-    return createConnectionInternal(mConnections[handle->id]->thread.get(),
-                                    std::move(resyncCallback));
+    return createConnectionInternal(mConnections[handle->id]->thread.get());
 }
 
 EventThread* Scheduler::getEventThread(const sp<Scheduler::ConnectionHandle>& handle) {
@@ -245,23 +242,15 @@ void Scheduler::resyncToHardwareVsync(bool makeAvailable, nsecs_t period) {
     setVsyncPeriod(period);
 }
 
-ResyncCallback Scheduler::makeResyncCallback(GetVsyncPeriod&& getVsyncPeriod) {
-    std::weak_ptr<VsyncState> ptr = mPrimaryVsyncState;
-    return [ptr, getVsyncPeriod = std::move(getVsyncPeriod)]() {
-        if (const auto vsync = ptr.lock()) {
-            vsync->resync(getVsyncPeriod);
-        }
-    };
-}
-
-void Scheduler::VsyncState::resync(const GetVsyncPeriod& getVsyncPeriod) {
+void Scheduler::resync() {
     static constexpr nsecs_t kIgnoreDelay = ms2ns(500);
 
     const nsecs_t now = systemTime();
-    const nsecs_t last = lastResyncTime.exchange(now);
+    const nsecs_t last = mLastResyncTime.exchange(now);
 
     if (now - last > kIgnoreDelay) {
-        scheduler.resyncToHardwareVsync(false, getVsyncPeriod());
+        resyncToHardwareVsync(false,
+                              mRefreshRateConfigs.getCurrentRefreshRate().second.vsyncPeriod);
     }
 }
 
@@ -319,12 +308,16 @@ void Scheduler::dumpPrimaryDispSync(std::string& result) const {
 
 std::unique_ptr<scheduler::LayerHistory::LayerHandle> Scheduler::registerLayer(
         std::string const& name, int windowType) {
-    RefreshRateType refreshRateType = (windowType == InputWindowInfo::TYPE_WALLPAPER)
-            ? RefreshRateType::DEFAULT
-            : RefreshRateType::PERFORMANCE;
-
-    const auto refreshRate = mRefreshRateConfigs.getRefreshRate(refreshRateType);
-    const uint32_t fps = (refreshRate) ? refreshRate->fps : 0;
+    uint32_t fps;
+    if (mRefreshRateConfigs.refreshRateSwitchingSupported()) {
+        fps = mRefreshRateConfigs
+                      .getRefreshRateFromType((windowType == InputWindowInfo::TYPE_WALLPAPER)
+                                                      ? RefreshRateType::DEFAULT
+                                                      : RefreshRateType::PERFORMANCE)
+                      .fps;
+    } else {
+        fps = mRefreshRateConfigs.getCurrentRefreshRate().second.fps;
+    }
     return mLayerHistory.createLayer(name, fps);
 }
 
@@ -376,11 +369,6 @@ void Scheduler::setChangeRefreshRateCallback(
     mChangeRefreshRateCallback = changeRefreshRateCallback;
 }
 
-void Scheduler::setGetVsyncPeriodCallback(const GetVsyncPeriod&& getVsyncPeriod) {
-    std::lock_guard<std::mutex> lock(mCallbackLock);
-    mGetVsyncPeriod = getVsyncPeriod;
-}
-
 void Scheduler::updateFrameSkipping(const int64_t skipCount) {
     ATRACE_INT("FrameSkipCount", skipCount);
     if (mSkipCount != skipCount) {
@@ -413,10 +401,7 @@ void Scheduler::resetTimerCallback() {
 
 void Scheduler::resetKernelTimerCallback() {
     ATRACE_INT("ExpiredKernelIdleTimer", 0);
-    std::lock_guard<std::mutex> lock(mCallbackLock);
-    if (mGetVsyncPeriod) {
-        resyncToHardwareVsync(false, mGetVsyncPeriod());
-    }
+    resyncToHardwareVsync(false, mRefreshRateConfigs.getCurrentRefreshRate().second.vsyncPeriod);
 }
 
 void Scheduler::expiredTimerCallback() {
@@ -490,6 +475,10 @@ void Scheduler::touchChangeRefreshRate(TouchState touchState) {
 }
 
 Scheduler::RefreshRateType Scheduler::calculateRefreshRateType() {
+    if (!mRefreshRateConfigs.refreshRateSwitchingSupported()) {
+        return RefreshRateType::DEFAULT;
+    }
+
     // HDR content is not supported on PERFORMANCE mode
     if (mForceHDRContentToDefaultRefreshRate && mIsHDRContent) {
         return RefreshRateType::DEFAULT;
@@ -514,9 +503,9 @@ Scheduler::RefreshRateType Scheduler::calculateRefreshRateType() {
     // Start with the smallest refresh rate which is within a margin of the content
     RefreshRateType currRefreshRateType = RefreshRateType::PERFORMANCE;
     constexpr float MARGIN = 0.05f;
-    auto iter = mRefreshRateConfigs.getRefreshRates().cbegin();
-    while (iter != mRefreshRateConfigs.getRefreshRates().cend()) {
-        if (iter->second->fps >= mContentRefreshRate * (1 - MARGIN)) {
+    auto iter = mRefreshRateConfigs.getRefreshRateMap().cbegin();
+    while (iter != mRefreshRateConfigs.getRefreshRateMap().cend()) {
+        if (iter->second.fps >= mContentRefreshRate * (1 - MARGIN)) {
             currRefreshRateType = iter->first;
             break;
         }
@@ -526,11 +515,11 @@ Scheduler::RefreshRateType Scheduler::calculateRefreshRateType() {
     // Some content aligns better on higher refresh rate. For example for 45fps we should choose
     // 90Hz config. However we should still prefer a lower refresh rate if the content doesn't
     // align well with both
-    float ratio = mRefreshRateConfigs.getRefreshRate(currRefreshRateType)->fps /
+    float ratio = mRefreshRateConfigs.getRefreshRateFromType(currRefreshRateType).fps /
             float(mContentRefreshRate);
     if (std::abs(std::round(ratio) - ratio) > MARGIN) {
-        while (iter != mRefreshRateConfigs.getRefreshRates().cend()) {
-            ratio = iter->second->fps / float(mContentRefreshRate);
+        while (iter != mRefreshRateConfigs.getRefreshRateMap().cend()) {
+            ratio = iter->second.fps / float(mContentRefreshRate);
 
             if (std::abs(std::round(ratio) - ratio) <= MARGIN) {
                 currRefreshRateType = iter->first;
