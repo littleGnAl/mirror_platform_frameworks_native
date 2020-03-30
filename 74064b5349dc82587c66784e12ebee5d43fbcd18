@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08b5d756_b264e1a8",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2020-03-30T15:44:08Z",
+      "side": 1,
+      "message": "I\u0027m not sure we can have a dependency on com.google. package names here. Let\u0027s discuss possible solutions offline.",
+      "range": {
+        "startLine": 285,
+        "startChar": 65,
+        "endLine": 285,
+        "endChar": 94
+      },
+      "revId": "74064b5349dc82587c66784e12ebee5d43fbcd18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
