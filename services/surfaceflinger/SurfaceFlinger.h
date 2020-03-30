@@ -795,6 +795,11 @@ private:
             const sp<compositionengine::DisplaySurface>& dispSurface,
             const sp<IGraphicBufferProducer>& producer);
     void processDisplayChangesLocked();
+    void processDisplayAdded(const wp<IBinder>& displayToken, const DisplayDeviceState& state);
+    void processDisplayRemoved(const wp<IBinder>& displayToken);
+    void processDisplayChanged(const wp<IBinder>& displayToken,
+                               const DisplayDeviceState& currentState,
+                               const DisplayDeviceState& drawingState);
     void processDisplayHotplugEventsLocked();
 
     void dispatchDisplayHotplugEvent(PhysicalDisplayId displayId, bool connected);
