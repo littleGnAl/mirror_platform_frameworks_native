@@ -46,6 +46,30 @@
       "revId": "08768df3075638d108991e379a2887e182dbcd10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08de38c2_d6ccb726",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-31T22:37:32Z",
+      "side": 0,
+      "message": "Can we avoid unnecessary things here?",
+      "parentUuid": "ab84c05d_b61d21c0",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "08768df3075638d108991e379a2887e182dbcd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
