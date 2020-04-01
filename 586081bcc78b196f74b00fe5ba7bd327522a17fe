@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d76b7c9_e0328b82",
+        "filename": "opengl/tools/glgen/gen",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-01T07:19:32Z",
+      "side": 1,
+      "message": "its",
+      "range": {
+        "startLine": 12,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "586081bcc78b196f74b00fe5ba7bd327522a17fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
