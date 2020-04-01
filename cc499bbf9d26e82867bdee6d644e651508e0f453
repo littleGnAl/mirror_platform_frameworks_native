@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8bcaa77_dda0fe85",
+        "filename": "services/surfaceflinger/BufferLayer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2020-04-01T22:44:44Z",
+      "side": 1,
+      "message": "Move this line to the last line of `private` fields",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 39
+      },
+      "revId": "cc499bbf9d26e82867bdee6d644e651508e0f453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
