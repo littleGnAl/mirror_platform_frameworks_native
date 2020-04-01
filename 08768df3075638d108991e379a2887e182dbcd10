@@ -70,6 +70,30 @@
       "revId": "08768df3075638d108991e379a2887e182dbcd10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a085f67_74303cb3",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-01T08:23:02Z",
+      "side": 0,
+      "message": "It might be possible to add something to the build so that it checks to make sure that all of the apex_available settings are actually required but it would have to be something that is done on an adhoc basis as it could produce a lot of false negatives. Might be worth you raising a bug for it.",
+      "parentUuid": "08de38c2_d6ccb726",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "08768df3075638d108991e379a2887e182dbcd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
