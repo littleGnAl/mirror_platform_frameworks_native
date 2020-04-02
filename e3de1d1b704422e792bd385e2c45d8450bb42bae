@@ -22,6 +22,30 @@
       "revId": "e3de1d1b704422e792bd385e2c45d8450bb42bae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ca2c11_3cff9832",
+        "filename": "libs/binderthreadstate/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2020-04-02T19:42:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29c3cf66_4386640e",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "e3de1d1b704422e792bd385e2c45d8450bb42bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
