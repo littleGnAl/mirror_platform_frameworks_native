@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29c3cf66_4386640e",
+        "filename": "libs/binderthreadstate/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-02T18:16:00Z",
+      "side": 1,
+      "message": "I don\u0027t have the context on this library so I can\u0027t approve. However judging from this comment the lib has issues, so module owners should be aware that this allows it to be bundled in platform without any errors. They might want to take action on that, and I also suggest adding a visibility list to block new users.\n\nThat said, this CL probably needs to go in anyway to solve the immediate problem.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "e3de1d1b704422e792bd385e2c45d8450bb42bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
