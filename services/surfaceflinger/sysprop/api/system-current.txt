@@ -13,6 +13,8 @@ package android.sysprop {
     method public static java.util.Optional<java.lang.Boolean> has_HDR_display();
     method public static java.util.Optional<java.lang.Boolean> has_wide_color_display();
     method public static java.util.Optional<java.lang.Long> max_frame_buffer_acquired_buffers();
+    method public static java.util.Optional<java.lang.Integer> max_graphics_height();
+    method public static java.util.Optional<java.lang.Integer> max_graphics_width();
     method public static java.util.Optional<java.lang.Long> max_virtual_display_dimension();
     method public static java.util.Optional<java.lang.Long> present_time_offset_from_vsync_ns();
     method public static java.util.Optional<android.sysprop.SurfaceFlingerProperties.primary_display_orientation_values> primary_display_orientation();

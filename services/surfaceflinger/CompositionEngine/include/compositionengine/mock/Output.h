@@ -35,8 +35,9 @@ public:
     MOCK_CONST_METHOD0(isValid, bool());
 
     MOCK_METHOD1(setCompositionEnabled, void(bool));
-    MOCK_METHOD6(setProjection,
-                 void(const ui::Transform&, int32_t, const Rect&, const Rect&, const Rect&, bool));
+    MOCK_METHOD7(setProjection,
+                 void(const ui::Transform&, int32_t, const Rect&, const Rect&, const Rect&,
+                      const Rect&, bool));
     MOCK_METHOD1(setBounds, void(const ui::Size&));
     MOCK_METHOD2(setLayerStackFilter, void(uint32_t, bool));
 

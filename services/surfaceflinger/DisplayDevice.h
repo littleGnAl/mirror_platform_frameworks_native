@@ -100,7 +100,7 @@ public:
     const ui::Transform& getTransform() const;
     const Rect& getViewport() const;
     const Rect& getFrame() const;
-    const Rect& getScissor() const;
+    const Rect& getSourceClip() const;
     bool needsFiltering() const;
     uint32_t getLayerStack() const;
 
@@ -290,7 +290,7 @@ public:
     Rect getSourceCrop() const override {
         // use the projected display viewport by default.
         if (mSourceCrop.isEmpty()) {
-            return mDevice->getScissor();
+            return mDevice->getSourceClip();
         }
 
         // Recompute the device transformation for the source crop.
@@ -299,7 +299,7 @@ public:
         ui::Transform translateLogical;
         ui::Transform scale;
         const Rect& viewport = mDevice->getViewport();
-        const Rect& scissor = mDevice->getScissor();
+        const Rect& sourceClip = mDevice->getSourceClip();
         const Rect& frame = mDevice->getFrame();
 
         const int orientation = mDevice->getInstallOrientation();
@@ -320,7 +320,7 @@ public:
         }
         rotation.set(flags, getWidth(), getHeight());
         translateLogical.set(-viewport.left, -viewport.top);
-        translatePhysical.set(scissor.left, scissor.top);
+        translatePhysical.set(sourceClip.left, sourceClip.top);
         scale.set(frame.getWidth() / float(viewport.getWidth()), 0, 0,
                   frame.getHeight() / float(viewport.getHeight()));
         const ui::Transform finalTransform =

@@ -40,7 +40,8 @@ public:
 
     void setCompositionEnabled(bool) override;
     void setProjection(const ui::Transform&, int32_t orientation, const Rect& frame,
-                       const Rect& viewport, const Rect& scissor, bool needsFiltering) override;
+                       const Rect& viewport, const Rect& sourceClip, const Rect& destinationClip,
+                       bool needsFiltering) override;
     void setBounds(const ui::Size&) override;
     void setLayerStackFilter(uint32_t layerStackId, bool isInternal) override;
 

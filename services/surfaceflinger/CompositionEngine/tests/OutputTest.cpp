@@ -117,16 +117,19 @@ TEST_F(OutputTest, setProjectionTriviallyWorks) {
     const int32_t orientation = 123;
     const Rect frame{1, 2, 3, 4};
     const Rect viewport{5, 6, 7, 8};
-    const Rect scissor{9, 10, 11, 12};
+    const Rect sourceClip{9, 10, 11, 12};
+    const Rect destinationClip{13, 14, 15, 16};
     const bool needsFiltering = true;
 
-    mOutput.setProjection(transform, orientation, frame, viewport, scissor, needsFiltering);
+    mOutput.setProjection(transform, orientation, frame, viewport, sourceClip, destinationClip,
+                          needsFiltering);
 
     EXPECT_THAT(mOutput.getState().transform, TransformEq(transform));
     EXPECT_EQ(orientation, mOutput.getState().orientation);
     EXPECT_EQ(frame, mOutput.getState().frame);
     EXPECT_EQ(viewport, mOutput.getState().viewport);
-    EXPECT_EQ(scissor, mOutput.getState().scissor);
+    EXPECT_EQ(sourceClip, mOutput.getState().sourceClip);
+    EXPECT_EQ(destinationClip, mourceClip.getState().destinationClip)
     EXPECT_EQ(needsFiltering, mOutput.getState().needsFiltering);
 }
 

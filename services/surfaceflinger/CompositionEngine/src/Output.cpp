@@ -61,10 +61,12 @@ void Output::setCompositionEnabled(bool enabled) {
 }
 
 void Output::setProjection(const ui::Transform& transform, int32_t orientation, const Rect& frame,
-                           const Rect& viewport, const Rect& scissor, bool needsFiltering) {
+                           const Rect& viewport, const Rect& sourceClip,
+                           const Rect& destinationClip, bool needsFiltering) {
     mState.transform = transform;
     mState.orientation = orientation;
-    mState.scissor = scissor;
+    mState.sourceClip = sourceClip;
+    mState.destinationClip = destinationClip;
     mState.frame = frame;
     mState.viewport = viewport;
     mState.needsFiltering = needsFiltering;
