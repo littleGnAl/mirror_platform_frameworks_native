@@ -22,6 +22,30 @@
       "revId": "17a78f338e25b7ef43800f09287b4436bbcd05c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e478e3_de8340c0",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-06T13:26:17Z",
+      "side": 1,
+      "message": "Unfortunately, this is a constructor, so it\u0027s not a convenient place to report errors.\n\nWhere do you expect us to make typos? Once we merge this topic and have a default value, typo anywhere else would just result in getting the default value, so the check you\u0027re proposing would not trigger even if the behavior would not be as intended by the person trying to override it. Or do you expect rewrites of runtime_libart.mk that would touch the default and not just cut and paste?",
+      "parentUuid": "e4a894fa_3225acce",
+      "range": {
+        "startLine": 378,
+        "startChar": 40,
+        "endLine": 378,
+        "endChar": 75
+      },
+      "revId": "17a78f338e25b7ef43800f09287b4436bbcd05c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
