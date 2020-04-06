@@ -70,6 +70,30 @@
       "revId": "17a78f338e25b7ef43800f09287b4436bbcd05c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d3aaf0_160fbfbd",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-06T13:58:39Z",
+      "side": 1,
+      "message": "Done (used /nonx/ in line with kJitZygoteImage in line 304).",
+      "parentUuid": "a09007ed_49bb4823",
+      "range": {
+        "startLine": 378,
+        "startChar": 40,
+        "endLine": 378,
+        "endChar": 75
+      },
+      "revId": "17a78f338e25b7ef43800f09287b4436bbcd05c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
