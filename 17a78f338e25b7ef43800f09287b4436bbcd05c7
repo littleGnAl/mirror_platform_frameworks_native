@@ -46,6 +46,30 @@
       "revId": "17a78f338e25b7ef43800f09287b4436bbcd05c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a09007ed_49bb4823",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-06T13:34:00Z",
+      "side": 1,
+      "message": "Yeah, any kind of rewrites / refactorings would make it possible that we would end up not passing the option.\n\nIn this method, I think you could do something like\nif (property_exists) {\n  add(\"--updatable-bcp-packages-file\u003dproperty\";\n} else {\n  add(\"--updatable-bcp-packages-file\u003d/non/existent\");\n}\n\nAnd dex2oat would handle the error?",
+      "parentUuid": "43e478e3_de8340c0",
+      "range": {
+        "startLine": 378,
+        "startChar": 40,
+        "endLine": 378,
+        "endChar": 75
+      },
+      "revId": "17a78f338e25b7ef43800f09287b4436bbcd05c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
