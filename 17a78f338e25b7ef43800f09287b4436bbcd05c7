@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4a894fa_3225acce",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-06T13:06:21Z",
+      "side": 1,
+      "message": "Can we enforce that we have a value for this? Right now, if we do a typo somewhere, we\u0027ll just not pass the argument right? I think for installd, we can always pass the argument and dex2oat will report an error if the file is not present / corrupted.",
+      "range": {
+        "startLine": 378,
+        "startChar": 40,
+        "endLine": 378,
+        "endChar": 75
+      },
+      "revId": "17a78f338e25b7ef43800f09287b4436bbcd05c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
