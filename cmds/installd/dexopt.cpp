@@ -374,6 +374,10 @@ class RunDex2Oat : public ExecVHelper {
         bool skip_compilation = vold_decrypt == "trigger_restart_min_framework" ||
                                 vold_decrypt == "1";
 
+        const std::string updatable_bcp_packages =
+            MapPropertyToArg("dalvik.vm.dex2oat-updatable-bcp-packages-file",
+                             "--updatable-bcp-packages-file=%s");
+
         std::string resolve_startup_string_arg =
                 MapPropertyToArg("persist.device_config.runtime.dex2oat_resolve_startup_strings",
                                  "--resolve-startup-const-strings=%s");
@@ -520,6 +524,7 @@ class RunDex2Oat : public ExecVHelper {
         AddRuntimeArg(dex2oat_Xms_arg);
         AddRuntimeArg(dex2oat_Xmx_arg);
 
+        AddArg(updatable_bcp_packages);
         AddArg(resolve_startup_string_arg);
         AddArg(image_block_size_arg);
         AddArg(dex2oat_compiler_filter_arg);
