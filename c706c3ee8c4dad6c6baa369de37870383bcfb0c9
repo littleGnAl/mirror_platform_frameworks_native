@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b872f11f_0ba31cf2",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-07T00:50:33Z",
+      "side": 1,
+      "message": "like in HIDL\u0027s implementation:\nhttps://android-review.googlesource.com/c/platform/system/libhidl/+/1279335",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 75
+      },
+      "revId": "c706c3ee8c4dad6c6baa369de37870383bcfb0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
