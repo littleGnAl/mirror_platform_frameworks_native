@@ -328,21 +328,6 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             });
             if (waiter->mBinder != nullptr) return waiter->mBinder;
         }
-
-        // Handle race condition for lazy services. Here is what can happen:
-        // - the service dies (not processed by init yet).
-        // - sm processes death notification.
-        // - sm gets getService and calls init to start service.
-        // - init gets the start signal, but the service already appears
-        //   started, so it does nothing.
-        // - init gets death signal, but doesn't know it needs to restart
-        //   the service
-        // - we need to request service again to get it to start
-        if (!mTheRealServiceManager->getService(name, &out).isOk()) {
-            return nullptr;
-        }
-        if (out != nullptr) return out;
-
         ALOGW("Waited one second for %s", name.c_str());
     }
 }
