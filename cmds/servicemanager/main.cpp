@@ -76,12 +76,12 @@ public:
 
         itimerspec timespec {
             .it_interval = {
-                .tv_sec = 5,
-                .tv_nsec = 0,
+                .tv_sec = 0,
+                .tv_nsec = 100000000,
             },
             .it_value = {
-                .tv_sec = 5,
-                .tv_nsec = 0,
+                .tv_sec = 0,
+                .tv_nsec = 100000000,
             },
         };
 
