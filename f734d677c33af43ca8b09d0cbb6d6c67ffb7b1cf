@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e592b7c_d6ecf785",
+        "filename": "include/powermanager/IPowerManager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-04-09T02:32:58Z",
+      "side": 1,
+      "message": "there is discrepancy here with the internal code. Santos, would it make sense to get aosp-master consistent with itself, and take this change as a do not merge or maybe as a merged-in?\n\nfor instance, REBOOT is + 25 internally if I look at:\ncat ./out/soong/.intermediates/frameworks/native/services/powermanager/libpowermanager/android_arm_armv8-a_shared/gen/aidl/frameworks/base/core/java/android/os/IPowerManager.cpp",
+      "range": {
+        "startLine": 49,
+        "startChar": 73,
+        "endLine": 49,
+        "endChar": 75
+      },
+      "revId": "f734d677c33af43ca8b09d0cbb6d6c67ffb7b1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
