@@ -46,6 +46,30 @@
       "revId": "f734d677c33af43ca8b09d0cbb6d6c67ffb7b1cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dea1059_8611b30c",
+        "filename": "include/powermanager/IPowerManager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015328
+      },
+      "writtenOn": "2020-04-09T17:20:27Z",
+      "side": 1,
+      "message": "Yes, I think we should get this checked in and fixed ahead or our internal changes",
+      "parentUuid": "fd26e237_5b3767c5",
+      "range": {
+        "startLine": 49,
+        "startChar": 73,
+        "endLine": 49,
+        "endChar": 75
+      },
+      "revId": "f734d677c33af43ca8b09d0cbb6d6c67ffb7b1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
