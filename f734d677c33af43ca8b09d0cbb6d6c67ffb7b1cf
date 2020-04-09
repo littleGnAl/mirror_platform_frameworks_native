@@ -22,6 +22,30 @@
       "revId": "f734d677c33af43ca8b09d0cbb6d6c67ffb7b1cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd26e237_5b3767c5",
+        "filename": "include/powermanager/IPowerManager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1385055
+      },
+      "writtenOn": "2020-04-09T12:21:41Z",
+      "side": 1,
+      "message": "These transaction IDs must be kept in sync with the method order from IPowerManager.aidl.\nREBOOT is +21 internally if I look at:\ncat ./out/soong/.intermediates/frameworks/base/framework/android_common/gen/aidl/frameworks/base/core/java/android/os/IPowerManager.java",
+      "parentUuid": "0e592b7c_d6ecf785",
+      "range": {
+        "startLine": 49,
+        "startChar": 73,
+        "endLine": 49,
+        "endChar": 75
+      },
+      "revId": "f734d677c33af43ca8b09d0cbb6d6c67ffb7b1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
