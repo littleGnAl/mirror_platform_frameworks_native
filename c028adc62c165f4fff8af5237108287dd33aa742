@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5caf5680_385b0855",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-10T22:52:37Z",
+      "side": 1,
+      "message": "Another remaining difference: HIDL uses addPostCommandTask in order to fix a race where guaranteeClient is cleared and no client is represented. With this CL, you might see the race:\n- guarnteeClient \u003d true set here\n- client starts to call ping\n- meanwhile service gets onClients(false) notification from another service it holds during tryUnregister\n- client gets dead object from ping\n\nThis is related to the hack on L471 (!isCalledOnInterval). In order to fix this in the same way HIDL does, we need to move the \u0027hasClients\u0027 state over from mNameToService to mNameToRegistrationCallback. Since, without the hack, what is happening is that a \u0027true\u0027 hasClients is removed when the service is unregistered and a \u0027false\u0027 is set there when a new service is registered, thus causing a double-send of onClients(true) from the server\u0027s perspective (just happens to be associated with two different registration objects).\n\nHowever, this is a large refactor, and I won\u0027t do it unless there is a need. The main downside with the current approach is that onClients(true) will be called after some delay. This isn\u0027t a problem for our current usecase, and guranteeClient here will prevent the service from actually being unregistered.",
+      "revId": "c028adc62c165f4fff8af5237108287dd33aa742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
