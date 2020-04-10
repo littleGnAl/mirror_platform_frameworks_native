@@ -22,6 +22,30 @@
       "revId": "685dea38501afbf834f85cf0ffc4a690974b2d44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "077d02d2_58b63d10",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-10T16:50:38Z",
+      "side": 1,
+      "message": "Yeah, I didn\u0027t add bug to commit message just to avoid spam there. So we need to fix this lint as well :(\n\n-\u003e b/153658272#comment12",
+      "parentUuid": "fe5169f2_12112f46",
+      "range": {
+        "startLine": 203,
+        "startChar": 21,
+        "endLine": 203,
+        "endChar": 31
+      },
+      "revId": "685dea38501afbf834f85cf0ffc4a690974b2d44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
