@@ -22,6 +22,30 @@
       "revId": "229ec46d5415acfe9a2bfd516504c6741db6d23a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f0750f_d4f0801b",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-10T19:23:49Z",
+      "side": 1,
+      "message": "Yeah, but in the two-client case, it\u0027ll appear to work by switching the counts. I\u0027ve checked this is a mistake with the port.\n\nI can add a single client variation of the test to presubmit as well, and I\u0027ll wait to merge this until the test is actually fixed.",
+      "parentUuid": "45459eb0_010aa888",
+      "range": {
+        "startLine": 113,
+        "startChar": 43,
+        "endLine": 113,
+        "endChar": 51
+      },
+      "revId": "229ec46d5415acfe9a2bfd516504c6741db6d23a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
