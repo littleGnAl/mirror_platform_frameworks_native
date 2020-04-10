@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002404066",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1284515?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "6c4c63cc_9d283a7e",
+          "description": "Change to \"libs/binder/LazyServiceRegistrar.cpp\"",
+          "replacements": [
+            {
+              "path": "libs/binder/LazyServiceRegistrar.cpp",
+              "range": {
+                "startLine": 69,
+                "startChar": 16,
+                "endLine": 69,
+                "endChar": 24
+              },
+              "replacement": "services"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c49b83d8_dda84917",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-04-10T18:52:58Z",
+      "side": 1,
+      "message": "Common typo found: \"serivces\" -- should it be \"services\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "907a11df99055ac1902a0b234d77f8eddf2bd495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
