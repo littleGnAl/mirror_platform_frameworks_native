@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ab322ed_95c100ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-10T22:36:30Z",
+      "side": 1,
+      "message": "a lot...\n\nwith:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1284515\nhttps://android-review.googlesource.com/q/topic:%22lazy-aidl-test%22+(status:open%20OR%20status:merged)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "1e2ba9299e298eee175fc58a9afc64bad6c5b1de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
