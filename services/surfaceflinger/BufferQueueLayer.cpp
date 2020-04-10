@@ -204,10 +204,12 @@ uint64_t BufferQueueLayer::getFrameNumber() const {
     }
 
     for (int i = 1; i < mQueueItems.size(); i++) {
-        const bool fenceSignaled =
+        if (!latchUnsignaledBuffers()) {
+            const bool fenceSignaled =
                 mQueueItems[i].mFenceTime->getSignalTime() != Fence::SIGNAL_TIME_PENDING;
-        if (!fenceSignaled) {
-            break;
+            if (!fenceSignaled) {
+                break;
+            }
         }
 
         // We don't drop frames without explicit timestamps
@@ -290,12 +292,24 @@ status_t BufferQueueLayer::updateTexImage(bool& recomputeVisibleRegions, nsecs_t
     {
         Mutex::Autolock lock(mQueueItemLock);
         for (int i = 0; i < mQueueItems.size(); i++) {
-            bool fenceSignaled =
+            if (!latchUnsignaledBuffers()) {
+                bool fenceSignaled =
                     mQueueItems[i].mFenceTime->getSignalTime() != Fence::SIGNAL_TIME_PENDING;
-            if (!fenceSignaled) {
-                break;
+                if (!fenceSignaled) {
+                    break;
+                }
             }
             lastSignaledFrameNumber = mQueueItems[i].mFrameNumber;
+        }
+    }
+
+    {
+        Mutex::Autolock lock(mLocalSyncPointMutex);
+        for (auto& point : mLocalSyncPoints) {
+            if (point->transactionIsApplied()) {
+                ALOGE("updateTexImage avariable frame(%" PRIu64 ")", point->getFrameNumber());
+                lastSignaledFrameNumber = point->getFrameNumber();
+            }
         }
     }
     const uint64_t maxFrameNumberToAcquire =

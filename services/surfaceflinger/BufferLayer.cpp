@@ -550,11 +550,13 @@ bool BufferLayer::latchBuffer(bool& recomputeVisibleRegions, nsecs_t latchTime) 
 void BufferLayer::notifyAvailableFrames() {
     const auto headFrameNumber = getHeadFrameNumber();
     const bool headFenceSignaled = fenceHasSignaled();
+    mCurrentPresentHeadFrameNumber = headFrameNumber;
     const bool presentTimeIsCurrent = framePresentTimeIsCurrent();
     Mutex::Autolock lock(mLocalSyncPointMutex);
     for (auto& point : mLocalSyncPoints) {
         if (headFrameNumber >= point->getFrameNumber() && headFenceSignaled &&
             presentTimeIsCurrent) {
+            mCurrentPresentHeadFrameNumber = point->getFrameNumber();
             point->setFrameAvailable();
             sp<Layer> requestedSyncLayer = point->getRequestedSyncLayer();
             if (requestedSyncLayer) {
@@ -599,12 +601,14 @@ bool BufferLayer::latchUnsignaledBuffers() {
 
 // h/w composer set-up
 bool BufferLayer::allTransactionsSignaled() {
-    auto headFrameNumber = getHeadFrameNumber();
+    uint64_t headFrameNumber = mCurrentPresentHeadFrameNumber;
     bool matchingFramesFound = false;
     bool allTransactionsApplied = true;
+    bool hasLocalSyncPoint = false;
     Mutex::Autolock lock(mLocalSyncPointMutex);
 
     for (auto& point : mLocalSyncPoints) {
+        hasLocalSyncPoint = true;
         if (point->getFrameNumber() > headFrameNumber) {
             break;
         }
@@ -621,7 +625,15 @@ bool BufferLayer::allTransactionsSignaled() {
 
         allTransactionsApplied = allTransactionsApplied && point->transactionIsApplied();
     }
-    return !matchingFramesFound || allTransactionsApplied;
+
+    if (hasLocalSyncPoint)
+    {
+        return matchingFramesFound && allTransactionsApplied;
+    }
+    else
+    {
+        return !matchingFramesFound || allTransactionsApplied;
+    }
 }
 
 // As documented in libhardware header, formats in the range
