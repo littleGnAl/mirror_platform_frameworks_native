@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e1f587c_e137a25a",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-10T18:53:48Z",
+      "side": 1,
+      "message": "I\u0027m really thinking of removing the map here.",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "907a11df99055ac1902a0b234d77f8eddf2bd495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3437a87a_b2bbd69d",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-10T18:53:48Z",
+      "side": 1,
+      "message": "since it is needed in tryShutdown and on L151.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 36
+      },
+      "revId": "907a11df99055ac1902a0b234d77f8eddf2bd495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
