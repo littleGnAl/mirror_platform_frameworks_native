@@ -46,6 +46,30 @@
       "revId": "685dea38501afbf834f85cf0ffc4a690974b2d44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2de03e42_69d67098",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-04-10T17:29:45Z",
+      "side": 1,
+      "message": "What about this is unused? The following if/else-if could not trigger at all, and you would return this particular status value. Unless you are saying that there are paths where you don\u0027t check this particular \"status\" value, but I would argue that there are a lot of cases where something gets set multiple times, so such a warning could be quite noisy in general.",
+      "parentUuid": "077d02d2_58b63d10",
+      "range": {
+        "startLine": 203,
+        "startChar": 21,
+        "endLine": 203,
+        "endChar": 31
+      },
+      "revId": "685dea38501afbf834f85cf0ffc4a690974b2d44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
