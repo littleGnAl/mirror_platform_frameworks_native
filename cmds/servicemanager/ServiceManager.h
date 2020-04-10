@@ -60,6 +60,9 @@ private:
         int32_t dumpPriority;
         bool hasClients = false; // notifications sent on true -> false.
         bool guaranteeClient = false; // forces the client check to true
+        // cycles without client before notify
+        // heuristic to avoid shutting down service that was used recently
+        size_t noClientsCounter = 0;
         pid_t debugPid = 0; // the process in which this service runs
 
         // the number of clients of the service, including servicemanager itself
@@ -75,8 +78,14 @@ private:
     void removeRegistrationCallback(const wp<IBinder>& who,
                         ServiceCallbackMap::iterator* it,
                         bool* found);
-    ssize_t handleServiceClientCallback(const std::string& serviceName, bool isCalledOnInterval);
-     // Also updates mHasClients (of what the last callback was)
+    // update client counts
+    // serviceName - for service
+    // isCalledOnInterval - whether part of timer fd
+    // knownClients - number of known references currently held to service
+    //
+    // return bool - true IFF a client is currently known about.
+    bool handleServiceClientCallback(const std::string& serviceName, bool isCalledOnInterval, size_t knownClients);
+     // Also updates Service::hasClients (of what the last callback was)
     void sendClientCallbackNotifications(const std::string& serviceName, bool hasClients);
     // removes a callback from mNameToClientCallback, deleting the entry if the vector is empty
     // this updates the iterator to the next location

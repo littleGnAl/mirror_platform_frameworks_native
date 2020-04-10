@@ -34,6 +34,8 @@
 using ::android::binder::Status;
 using ::android::internal::Stability;
 
+static constexpr int kNoClientRepeatLimit = 2;
+
 namespace android {
 
 #ifndef VENDORSERVICEMANAGER
@@ -423,12 +425,14 @@ ssize_t ServiceManager::Service::getNodeStrongRefCount() {
 
 void ServiceManager::handleClientCallbacks() {
     for (const auto& [name, service] : mNameToService) {
-        handleServiceClientCallback(name, true);
+        // only known client is one held by service manager (this)
+        handleServiceClientCallback(name, true, 1 /*knownClients*/);
     }
 }
 
-ssize_t ServiceManager::handleServiceClientCallback(const std::string& serviceName,
-                                                    bool isCalledOnInterval) {
+bool ServiceManager::handleServiceClientCallback(const std::string& serviceName,
+                                                 bool isCalledOnInterval,
+                                                 size_t knownClients) {
     auto serviceIt = mNameToService.find(serviceName);
     if (serviceIt == mNameToService.end() || mNameToClientCallback.count(serviceName) < 1) {
         return -1;
@@ -438,9 +442,9 @@ ssize_t ServiceManager::handleServiceClientCallback(const std::string& serviceNa
     ssize_t count = service.getNodeStrongRefCount();
 
     // binder driver doesn't support this feature
-    if (count == -1) return count;
+    if (count < 0) return false;
 
-    bool hasClients = count > 1; // this process holds a strong count
+    bool hasClients = (size_t)count > knownClients;
 
     if (service.guaranteeClient) {
         // we have no record of this client
@@ -453,19 +457,23 @@ ssize_t ServiceManager::handleServiceClientCallback(const std::string& serviceNa
     }
 
     // only send notifications if this was called via the interval checking workflow
-    if (isCalledOnInterval) {
-        if (hasClients && !service.hasClients) {
-            // client was retrieved in some other way
-            sendClientCallbackNotifications(serviceName, true);
+    if (hasClients && !service.hasClients) {
+        // client was retrieved in some other way
+        sendClientCallbackNotifications(serviceName, true);
+    }
+
+    // there are no more clients, but the callback has not been called yet
+    if (!hasClients && service.hasClients) {
+        if (isCalledOnInterval) {
+            service.noClientsCounter++;
         }
 
-        // there are no more clients, but the callback has not been called yet
-        if (!hasClients && service.hasClients) {
+        if (service.noClientsCounter >= kNoClientRepeatLimit || !isCalledOnInterval) {
             sendClientCallbackNotifications(serviceName, false);
         }
     }
 
-    return count;
+    return service.hasClients;
 }
 
 void ServiceManager::sendClientCallbackNotifications(const std::string& serviceName, bool hasClients) {
@@ -489,6 +497,7 @@ void ServiceManager::sendClientCallbackNotifications(const std::string& serviceN
         callback->onClients(service.binder, hasClients);
     }
 
+    service.noClientsCounter = 0;
     service.hasClients = hasClients;
 }
 
@@ -522,23 +531,14 @@ Status ServiceManager::tryUnregisterService(const std::string& name, const sp<IB
         return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
     }
 
-    if (serviceIt->second.guaranteeClient) {
-        LOG(INFO) << "Tried to unregister " << name << ", but there is about to be a client.";
-        return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
-    }
-
-    int clients = handleServiceClientCallback(name, false);
-
-    // clients < 0: feature not implemented or other error. Assume clients.
-    // Otherwise:
+    // known clients
     // - kernel driver will hold onto one refcount (during this transaction)
     // - servicemanager has a refcount (guaranteed by this transaction)
-    // So, if clients > 2, then at least one other service on the system must hold a refcount.
-    if (clients < 0 || clients > 2) {
+    bool hasClients = handleServiceClientCallback(name, false, 2 /*knownClients*/);
+
+    if (hasClients) {
         // client callbacks are either disabled or there are other clients
-        LOG(INFO) << "Tried to unregister " << name << ", but there are clients: " << clients;
-        // Set this flag to ensure the clients are acknowledged in the next callback
-        serviceIt->second.guaranteeClient = true;
+        LOG(INFO) << "Tried to unregister " << name << ", but there are clients.";
         return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
     }
 
