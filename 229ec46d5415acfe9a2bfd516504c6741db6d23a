@@ -46,6 +46,30 @@
       "revId": "229ec46d5415acfe9a2bfd516504c6741db6d23a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beefba9c_a36d4fc7",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-04-10T19:49:48Z",
+      "side": 1,
+      "message": "Ah, that\u0027s funny. Adding a single-client version sounds good, then; thanks!",
+      "parentUuid": "93f0750f_d4f0801b",
+      "range": {
+        "startLine": 113,
+        "startChar": 43,
+        "endLine": 113,
+        "endChar": 51
+      },
+      "revId": "229ec46d5415acfe9a2bfd516504c6741db6d23a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
