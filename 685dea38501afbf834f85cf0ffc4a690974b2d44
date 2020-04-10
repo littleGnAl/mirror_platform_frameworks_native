@@ -70,6 +70,30 @@
       "revId": "685dea38501afbf834f85cf0ffc4a690974b2d44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69fcc76d_68f761f2",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-10T17:35:54Z",
+      "side": 1,
+      "message": "ah, \u0027else if\u0027. Yeah, we couldn\u0027t consider this unused in general, only for values which are \u0027important\u0027. Sigh.",
+      "parentUuid": "2de03e42_69d67098",
+      "range": {
+        "startLine": 203,
+        "startChar": 21,
+        "endLine": 203,
+        "endChar": 31
+      },
+      "revId": "685dea38501afbf834f85cf0ffc4a690974b2d44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
