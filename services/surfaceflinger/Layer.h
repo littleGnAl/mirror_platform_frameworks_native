@@ -877,6 +877,7 @@ protected:
     // We encode unset as -1.
     int32_t mOverrideScalingMode{-1};
     std::atomic<uint64_t> mCurrentFrameNumber{0};
+    std::atomic<uint64_t> mCurrentPresentHeadFrameNumber{0};
     bool mFrameLatencyNeeded{false};
     // Whether filtering is needed b/c of the drawingstate
     bool mNeedsFiltering{false};
