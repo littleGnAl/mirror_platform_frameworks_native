@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "13bffabe_09905ce9",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-13T17:27:44Z",
+      "side": 1,
+      "message": "not sure, adding this one for consistency.",
+      "parentUuid": "9afec321_a827b52a",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 7
+      },
+      "revId": "dd20e7c7600041e9d881c235b26f01b75da7ba51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2b41dc9_471296f2",
         "filename": "libs/binder/LazyServiceRegistrar.cpp",
         "patchSetId": 4
