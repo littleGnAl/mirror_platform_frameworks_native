@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e16be1b8_82da4758",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-15T17:45:19Z",
+      "side": 1,
+      "message": "we don\u0027t use these, so i\u0027m curious why we defined them.\ndoesn\u0027t mean this is wrong, just means that I don\u0027t know why we defined them.\n\nalthough as a name in an API header that we\u0027re going to expose to apps -- SIZE_TYPE1 is\nnot a great name; too easy to collide with something a user would use.\nSIZE_HDRSTATICINFO_TYPE1 would be better, since it\u0027s far less likely to collide with a\nname that an app might be using.",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 53
+      },
+      "revId": "7cf8faba62139fbf79fab2ccde100c8f692b2230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
