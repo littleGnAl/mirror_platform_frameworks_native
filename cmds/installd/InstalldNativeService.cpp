@@ -412,9 +412,37 @@ static bool prepare_app_profile_dir(const std::string& packageName, int32_t appI
     return true;
 }
 
+binder::Status InstalldNativeService::createAppDataBatched(
+        const std::optional<std::vector<std::optional<std::string>>>& uuids,
+        const std::vector<std::string>& packageNames, int32_t userId, int32_t flags,
+        const std::vector<int32_t>& appIds, const std::vector<std::string>& seInfos,
+        const std::vector<int32_t>& targetSdkVersions, int64_t* _aidl_return) {
+    ENFORCE_UID(AID_SYSTEM);
+    std::lock_guard<std::recursive_mutex> lock(mLock);
+
+    if (!uuids) {
+      return ok();
+    }
+
+    ATRACE_BEGIN("createAppDataBatched");
+    binder::Status ret;
+    for (size_t i = 0; i < uuids->size(); i++) {
+        ret = createAppData(uuids->at(i), packageNames[i], userId, flags, appIds[i],
+                seInfos[i], targetSdkVersions[i], _aidl_return);
+        if (!ret.isOk()) {
+            ATRACE_END();
+            return ret;
+        }
+    }
+    ATRACE_END();
+    return ok();
+}
+
 binder::Status InstalldNativeService::createAppData(const std::optional<std::string>& uuid,
         const std::string& packageName, int32_t userId, int32_t flags, int32_t appId,
         const std::string& seInfo, int32_t targetSdkVersion, int64_t* _aidl_return) {
+    std::string tag = "createAppData: " + std::to_string(flags);
+    ATRACE_BEGIN(tag.c_str());
     ENFORCE_UID(AID_SYSTEM);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
@@ -442,6 +470,7 @@ binder::Status InstalldNativeService::createAppData(const std::optional<std::str
         if (prepare_app_dir(path, targetMode, uid) ||
                 prepare_app_cache_dir(path, "cache", 02771, uid, cacheGid) ||
                 prepare_app_cache_dir(path, "code_cache", 02771, uid, cacheGid)) {
+            ATRACE_END();
             return error("Failed to prepare " + path);
         }
 
@@ -449,6 +478,7 @@ binder::Status InstalldNativeService::createAppData(const std::optional<std::str
         if (restorecon_app_data_lazy(path, seInfo, uid, existing) ||
                 restorecon_app_data_lazy(path, "cache", seInfo, uid, existing) ||
                 restorecon_app_data_lazy(path, "code_cache", seInfo, uid, existing)) {
+            ATRACE_END();
             return error("Failed to restorecon " + path);
         }
 
@@ -456,6 +486,7 @@ binder::Status InstalldNativeService::createAppData(const std::optional<std::str
         // contents while CE storage is locked
         if (write_path_inode(path, "cache", kXattrInodeCache) ||
                 write_path_inode(path, "code_cache", kXattrInodeCodeCache)) {
+            ATRACE_END();
             return error("Failed to write_path_inode for " + path);
         }
 
@@ -463,6 +494,7 @@ binder::Status InstalldNativeService::createAppData(const std::optional<std::str
         // clear contents while CE storage is locked
         if ((_aidl_return != nullptr)
                 && get_path_inode(path, reinterpret_cast<ino_t*>(_aidl_return)) != 0) {
+            ATRACE_END();
             return error("Failed to get_path_inode for " + path);
         }
     }
@@ -473,6 +505,7 @@ binder::Status InstalldNativeService::createAppData(const std::optional<std::str
         if (prepare_app_dir(path, targetMode, uid) ||
                 prepare_app_cache_dir(path, "cache", 02771, uid, cacheGid) ||
                 prepare_app_cache_dir(path, "code_cache", 02771, uid, cacheGid)) {
+            ATRACE_END();
             return error("Failed to prepare " + path);
         }
 
@@ -480,13 +513,16 @@ binder::Status InstalldNativeService::createAppData(const std::optional<std::str
         if (restorecon_app_data_lazy(path, seInfo, uid, existing) ||
                 restorecon_app_data_lazy(path, "cache", seInfo, uid, existing) ||
                 restorecon_app_data_lazy(path, "code_cache", seInfo, uid, existing)) {
+            ATRACE_END();
             return error("Failed to restorecon " + path);
         }
 
         if (!prepare_app_profile_dir(packageName, appId, userId)) {
+            ATRACE_END();
             return error("Failed to prepare profiles for " + packageName);
         }
     }
+    ATRACE_END();
     return ok();
 }
 
