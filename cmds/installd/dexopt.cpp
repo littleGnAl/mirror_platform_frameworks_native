@@ -407,8 +407,12 @@ class RunDex2Oat : public ExecVHelper {
             MapPropertyToArg("dalvik.vm.dex2oat-very-large", "--very-large-app-threshold=%s");
 
 
+
+        bool use_dex2oat64 = GetBoolProperty("dalvik.vm.dex2oat64.enabled", false);
         const char* dex2oat_bin = select_execution_binary(
-            kDex2oatPath, kDex2oatDebugPath, background_job_compile);
+            (use_dex2oat64 ? kDex2oat64Path : kDex2oat32Path),
+            (use_dex2oat64 ? kDex2oatDebug64Path : kDex2oatDebug32Path),
+            background_job_compile);
 
         bool generate_minidebug_info = kEnableMinidebugInfo &&
                 GetBoolProperty(kMinidebugInfoSystemProperty, kMinidebugInfoSystemPropertyDefault);
