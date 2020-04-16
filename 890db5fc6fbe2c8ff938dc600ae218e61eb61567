@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d341d6db_796873dc",
+        "filename": "services/surfaceflinger/BufferLayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-04-16T16:52:20Z",
+      "side": 1,
+      "message": "Please fix coding style, a space is required before after \"if\" and before \"{\". It should be \"if (mSidebandStream !\u003d nullptr) {\"",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 35
+      },
+      "revId": "890db5fc6fbe2c8ff938dc600ae218e61eb61567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
