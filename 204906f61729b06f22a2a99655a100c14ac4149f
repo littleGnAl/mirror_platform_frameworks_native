@@ -70,6 +70,30 @@
       "revId": "204906f61729b06f22a2a99655a100c14ac4149f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b09d91b_63997930",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-04-16T09:10:44Z",
+      "side": 1,
+      "message": "Sounds good; guess you can also remove the @nullable annotation in the .aidl?",
+      "parentUuid": "ab1196ef_25b092b9",
+      "range": {
+        "startLine": 423,
+        "startChar": 9,
+        "endLine": 423,
+        "endChar": 14
+      },
+      "revId": "204906f61729b06f22a2a99655a100c14ac4149f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
