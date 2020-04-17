@@ -22,6 +22,30 @@
       "revId": "7cf8faba62139fbf79fab2ccde100c8f692b2230",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea75324a_a7ae2966",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-17T11:28:32Z",
+      "side": 1,
+      "message": "These macros added to address the review comment \"https://android-review.googlesource.com/c/platform/frameworks/av/+/1177023/2/media/codec2/sfplugin/CCodecConfig.cpp#1479\" . Will change the name to SIZE_HDRSTATICINFO_TYPE1, SIZE_HDRSTATICINFO_TYPE2.",
+      "parentUuid": "e16be1b8_82da4758",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 53
+      },
+      "revId": "7cf8faba62139fbf79fab2ccde100c8f692b2230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
