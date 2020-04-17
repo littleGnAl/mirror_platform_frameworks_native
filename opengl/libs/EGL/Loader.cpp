@@ -276,7 +276,6 @@ void* Loader::open(egl_connection_t* cnx)
         hnd = attempt_to_load_updated_driver(cnx);
     }
 
-    bool failToLoadFromDriverSuffixProperty = false;
     if (!hnd) {
         // Finally, try to load system driver, start by searching for the library name appended by
         // the system properties of the GLES userspace driver in both locations.
@@ -291,8 +290,6 @@ void* Loader::open(egl_connection_t* cnx)
             hnd = attempt_to_load_system_driver(cnx, prop, true);
             if (hnd) {
                 break;
-            } else if (strcmp(key, DRIVER_SUFFIX_PROPERTY) == 0) {
-                failToLoadFromDriverSuffixProperty = true;
             }
         }
     }
@@ -306,7 +303,7 @@ void* Loader::open(egl_connection_t* cnx)
         hnd = attempt_to_load_system_driver(cnx, nullptr, true);
     }
 
-    if (!hnd && !failToLoadFromDriverSuffixProperty) {
+    if (!hnd) {
         hnd = attempt_to_load_system_driver(cnx, nullptr, false);
     }
 
