@@ -46,6 +46,30 @@
       "revId": "c26a50922e0e43d8f47bee0e5802e7b89807b45a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e53da39_5d495714",
+        "filename": "libs/binder/tests/binderThroughputTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-20T20:09:36Z",
+      "side": 1,
+      "message": "Sure I can do that instead. That means we\u0027re going to have to tweak max_time_bucket to the nearest multiple of num_buckets when the user sets it to a value that isn\u0027t divisible, though. I figured dropping the excess in the last bucket (making that bucket a bit bigger) was better than changing the value on the user, but I\u0027m fine either way.",
+      "parentUuid": "01f83800_3505ba38",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 64
+      },
+      "revId": "c26a50922e0e43d8f47bee0e5802e7b89807b45a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
