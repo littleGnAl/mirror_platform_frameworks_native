@@ -295,6 +295,9 @@ static_assert(offsetof(HDRStaticInfo::Type2, mCCVCancelFlag) == 33, "bad offset"
 static_assert(offsetof(HDRStaticInfo::Type2, mCCVB) == 55, "bad offset");
 static_assert(offsetof(HDRStaticInfo::Type2, mAvgContentLuminance) == 71, "bad offset");
 
+#define SIZE_HDRSTATICINFO_TYPE1 (1 + sizeof(HDRStaticInfo::Type1))
+#define SIZE_HDRSTATICINFO_TYPE2 (1 + sizeof(HDRStaticInfo::Type2))
+
 #ifdef STRINGIFY_ENUMS
 
 inline static const char *asString(MediaImage::Type i, const char *def = "??") {
