@@ -118,6 +118,30 @@
       "revId": "7cf8faba62139fbf79fab2ccde100c8f692b2230",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c1d365_07c42fa0",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-20T21:53:42Z",
+      "side": 1,
+      "message": "yea -- i was thinking of renaming the definitions as an update to this CL, not a separate CL.",
+      "parentUuid": "ee088392_5c590015",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 53
+      },
+      "revId": "7cf8faba62139fbf79fab2ccde100c8f692b2230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
