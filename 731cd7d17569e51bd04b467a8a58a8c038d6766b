@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41db2e48_2d4acb8c",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-20T21:52:10Z",
+      "side": 1,
+      "message": "we had these (by the wrong name, but we had them) in aosp/1176903\nso why did we do this here in a separate CL rather than as a modification\nto that existing CL?",
+      "range": {
+        "startLine": 299,
+        "startChar": 7,
+        "endLine": 299,
+        "endChar": 67
+      },
+      "revId": "731cd7d17569e51bd04b467a8a58a8c038d6766b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
