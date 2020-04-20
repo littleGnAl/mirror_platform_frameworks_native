@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d48905b_94b28440",
+        "filename": "libs/binder/tests/binderThroughputTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-20T19:58:19Z",
+      "side": 1,
+      "message": "It seems to me that it would be much simpler to maintain the invariant \"num_buckets * time_per_bucket \u003d max_time_bucket\" in the construction of these values, instead. Otherwise, we will attribute too many samples to the largest bucket.\n\nWould you be so kind as to do this? Otherwise, I can open an internal issue.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 64
+      },
+      "revId": "c26a50922e0e43d8f47bee0e5802e7b89807b45a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
