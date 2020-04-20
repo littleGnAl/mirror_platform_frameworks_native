@@ -94,6 +94,30 @@
       "revId": "7cf8faba62139fbf79fab2ccde100c8f692b2230",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee088392_5c590015",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-20T18:52:43Z",
+      "side": 1,
+      "message": "Kishore,\nI don\u0027t think Ray wanted a new CL to define these two macros. It was just a note with an explanation on why these aren\u0027t used in this CL.\nPlease make the required renaming in this CL itself.",
+      "parentUuid": "86274388_6374c3e9",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 53
+      },
+      "revId": "7cf8faba62139fbf79fab2ccde100c8f692b2230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
