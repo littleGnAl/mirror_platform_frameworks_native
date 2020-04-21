@@ -142,6 +142,30 @@
       "revId": "7cf8faba62139fbf79fab2ccde100c8f692b2230",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858e873b_75c48975",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T13:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64c1d365_07c42fa0",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 53
+      },
+      "revId": "7cf8faba62139fbf79fab2ccde100c8f692b2230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
