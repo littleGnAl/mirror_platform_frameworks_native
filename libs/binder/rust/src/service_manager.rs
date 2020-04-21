@@ -20,6 +20,21 @@ wrap_sp! {
     }
 }
 
+#[repr(i32)]
+pub enum DumpFlags {
+    // Must match values in IServiceManager.aidl
+    /// Allows services to dump sections according to priorities.
+    PriorityCritical = android_IServiceManager_DUMP_FLAG_PRIORITY_CRITICAL,
+    PriorityHigh = android_IServiceManager_DUMP_FLAG_PRIORITY_HIGH,
+    PriorityNormal = android_IServiceManager_DUMP_FLAG_PRIORITY_NORMAL,
+    /// Services are by default registered with a Default dump priority. Default
+    /// priority has the same priority as Normal priority but the services are
+    /// not called with dump priority arguments.
+    PriorityDefault = android_IServiceManager_DUMP_FLAG_PRIORITY_DEFAULT,
+    PriorityAll = android_IServiceManager_DUMP_FLAG_PRIORITY_ALL,
+    Proto = android_IServiceManager_DUMP_FLAG_PROTO,
+}
+
 impl IServiceManager {
     // Must match values in IServiceManager.aidl
     /// Allows services to dump sections according to priorities.

@@ -89,3 +89,26 @@ rust_test {
         "-C debuginfo=2",
     ],
 }
+
+rust_binary {
+    name: "libbinder_rs-throughput_test",
+    crate_name: "binder",
+    srcs: ["tests/throughput_test.rs"],
+    edition: "2018",
+    shared_libs: [
+        "libbinder",
+        "libutils",
+        "libc++",
+    ],
+    // On device test must be statically linked because we don't ship dynamic
+    // rust libs
+    rlibs: [
+        "libbinder_rs",
+        "liblibc",
+        "libstd.static",
+        "libtest.static",
+    ],
+    flags: [
+        "-C opt-level=3",
+    ],
+}

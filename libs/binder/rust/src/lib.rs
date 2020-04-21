@@ -7,12 +7,12 @@ mod proxy;
 
 mod error;
 mod native;
-mod service_manager; // Needs to be merged with crate::interfaces::service_manager?
 mod state;
 mod sys;
 
 pub mod interfaces;
 pub mod parcel;
+pub mod service_manager; // Needs to be merged with crate::interfaces::service_manager?
 
 pub use error::binder_status;
 pub use error::{status_t, Error, Result};
