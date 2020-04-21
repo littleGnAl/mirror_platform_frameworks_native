@@ -1,0 +1,8 @@
+rust_binary {
+    name: "rustBinderThroughputBenchmark",
+    srcs: ["throughput.rs"],
+    rustlibs: [
+        "libbinder_rs",
+        "liblibc",
+    ],
+}
