@@ -1518,7 +1518,7 @@ Dex2oatFileWrapper open_oat_out_file(const char* apk_path, const char* oat_dir,
         bool is_public, int uid, const char* instruction_set, bool is_secondary_dex,
         char* out_oat_path) {
     if (!create_oat_out_path(apk_path, instruction_set, oat_dir, is_secondary_dex, out_oat_path)) {
-        return Dex2oatFileWrapper();
+        return {};
     }
     const std::string out_oat_path_str(out_oat_path);
     Dex2oatFileWrapper wrapper_fd(
@@ -1529,7 +1529,7 @@ Dex2oatFileWrapper open_oat_out_file(const char* apk_path, const char* oat_dir,
     } else if (!set_permissions_and_ownership(
                 wrapper_fd.get(), is_public, uid, out_oat_path, is_secondary_dex)) {
         ALOGE("installd cannot set owner '%s' for output during dexopt\n", out_oat_path);
-        wrapper_fd.reset(-1);
+        wrapper_fd = {};
     }
     return wrapper_fd;
 }
@@ -2156,6 +2156,12 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
     char out_oat_path[PKG_PATH_MAX];
     Dex2oatFileWrapper out_oat_fd = open_oat_out_file(dex_path, oat_dir, is_public, uid,
             instruction_set, is_secondary_dex, out_oat_path);
+    if (out_oat_fd.get() < 0 && !IsOutputDalvikCache(oat_dir)) {
+        // Retry using cache directory instead.
+        oat_dir = nullptr;
+        out_oat_fd = open_oat_out_file(dex_path, oat_dir, is_public, uid, instruction_set,
+                                       is_secondary_dex, out_oat_path);
+    }
     if (out_oat_fd.get() < 0) {
         *error_msg = "Could not open out oat file.";
         return -1;
