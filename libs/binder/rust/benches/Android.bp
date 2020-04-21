@@ -1,0 +1,17 @@
+rust_binary {
+    name: "rustBinderThroughputTest",
+    srcs: ["throughput.rs"],
+    edition: "2018",
+    shared_libs: [
+        "libbinder",
+        "libutils",
+        "libc++",
+    ],
+    rlibs: [
+        "libbinder_rs",
+        "liblibc",
+    ],
+    flags: [
+        "-C opt-level=3",
+    ],
+}
