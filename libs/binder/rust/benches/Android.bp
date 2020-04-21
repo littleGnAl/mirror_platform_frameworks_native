@@ -1,0 +1,43 @@
+rust_binary {
+    name: "rustBinderThroughputTest",
+    srcs: ["throughput.rs"],
+    edition: "2018",
+    shared_libs: [
+        "libbinder",
+        "libutils",
+        "libc++",
+    ],
+    static_libs: [
+        "libbinderthroughput_rs_bindings",
+    ],
+    rlibs: [
+        "libbinder_rs",
+        "liblibc",
+        "libbinderthroughput_rs_sys",
+    ],
+    flags: [
+        "-C opt-level=3",
+    ],
+}
+
+cc_library_static {
+    name: "libbinderthroughput_rs_bindings",
+    shared_libs: [
+        "libc++",
+    ],
+    srcs: [
+        "throughput_bindings.cpp",
+    ],
+}
+
+rust_bindgen {
+    name: "libbinderthroughput_rs_sys",
+    crate_name: "binderthroughput_rs_sys",
+    builder: "throughput_bindgen.rs",
+    shared_libs: [
+        "libc++",
+    ],
+    srcs: [
+        "throughput_bindings.h",
+    ],
+}
