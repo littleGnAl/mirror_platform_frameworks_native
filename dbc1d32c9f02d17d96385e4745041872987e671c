@@ -16,6 +16,23 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1120d1a6_958a7df6",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-22T20:05:16Z",
+      "side": 1,
+      "message": "Allocating every parcel on the heap is somewhat expensive. I\u0027m seeing about a 15% decrease in throughput if we allocate both the data and reply packets from Rust in the throughput test. The parcels in this test are trivial, so this is a worst case number, but it\u0027s still significant. The best way I can think to solve this, however, is to go back to declaring the Parcel struct directly in Rust so we can keep it on the stack. There are no vtables or anything involved here, so bindgen does generate a correct struct layout for Parcel. I think this has very low risk of breakage as long as we are generating bindings during the build process.",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
