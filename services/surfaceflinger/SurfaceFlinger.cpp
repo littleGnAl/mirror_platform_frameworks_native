@@ -112,20 +112,14 @@
 
 #include "android-base/stringprintf.h"
 
-#include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
-#include <android/hardware/configstore/1.1/ISurfaceFlingerConfigs.h>
-#include <android/hardware/configstore/1.1/types.h>
 #include <android/hardware/power/1.0/IPower.h>
-#include <configstore/Utils.h>
 
 #include <layerproto/LayerProtoParser.h>
 #include "SurfaceFlingerProperties.h"
 
 namespace android {
 
-using namespace android::hardware::configstore;
-using namespace android::hardware::configstore::V1_0;
-using namespace android::sysprop;
+using surfaceflingerprop = android::surfaceflinger::sysprophelper;
 
 using android::hardware::power::V1_0::PowerHint;
 using base::StringAppendF;
@@ -336,7 +330,7 @@ SurfaceFlinger::SurfaceFlinger(Factory& factory) : SurfaceFlinger(factory, SkipI
     }
     ALOGV("Primary Display Orientation is set to %2d.", SurfaceFlinger::primaryDisplayOrientation);
 
-    mInternalDisplayPrimaries = sysprop::getDisplayNativePrimaries();
+    mInternalDisplayPrimaries = surfaceflingerprop::getDisplayNativePrimaries();
 
     // debugging stuff...
     char value[PROPERTY_VALUE_MAX];

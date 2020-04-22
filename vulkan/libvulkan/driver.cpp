@@ -32,9 +32,8 @@
 #include <log/log.h>
 
 #include <android/dlext.h>
-#include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
-#include <configstore/Utils.h>
 #include <cutils/properties.h>
+#include "SurfaceFlingerProperties.h"
 #include <graphicsenv/GraphicsEnv.h>
 #include <utils/Timers.h>
 #include <utils/Trace.h>
@@ -44,9 +43,6 @@
 
 #include "driver.h"
 #include "stubhal.h"
-
-using namespace android::hardware::configstore;
-using namespace android::hardware::configstore::V1_0;
 
 // TODO(b/37049319) Get this from a header once one exists
 extern "C" {
@@ -71,6 +67,8 @@ android_namespace_t* android_get_exported_namespace(const char*);
 
 namespace vulkan {
 namespace driver {
+
+using surfaceflingerprop = android::surfaceflinger::sysprophelper;
 
 namespace {
 
@@ -956,9 +954,7 @@ VkResult EnumerateDeviceExtensionProperties(
         VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME,
         VK_KHR_INCREMENTAL_PRESENT_SPEC_VERSION});
 
-    bool hdrBoardConfig =
-        getBool<ISurfaceFlingerConfigs, &ISurfaceFlingerConfigs::hasHDRDisplay>(
-            false);
+    bool hdrBoardConfig = surfaceflingerprop::has_wide_color_display(false);
     if (hdrBoardConfig) {
         loader_extensions.push_back({VK_EXT_HDR_METADATA_EXTENSION_NAME,
                                      VK_EXT_HDR_METADATA_SPEC_VERSION});

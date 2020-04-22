@@ -27,7 +27,8 @@
 #include <vector>
 
 namespace android {
-namespace sysprop {
+namespace surfaceflinger {
+namespace sysprophelper {
 
 int64_t vsync_event_phase_offset_ns(int64_t defaultValue);
 
@@ -86,6 +87,7 @@ bool enable_protected_contents(bool defaultValue);
 bool support_kernel_idle_timer(bool defaultValue);
 
 android::ui::DisplayPrimaries getDisplayNativePrimaries();
-} // namespace sysprop
+} // namespace sysprophelper
+} // namespace surfaceflinger
 } // namespace android
 #endif // SURFACEFLINGERPROPERTIES_H_

@@ -16,9 +16,6 @@
 
 #include <gtest/gtest.h>
 
-#include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
-
-#include <configstore/Utils.h>
 #include <utils/String8.h>
 
 #include <EGL/egl.h>
@@ -27,6 +24,8 @@
 #include <gui/IProducerListener.h>
 #include <gui/IGraphicBufferConsumer.h>
 #include <gui/BufferQueue.h>
+
+#include "SurfaceFlingerProperties.h"
 
 bool hasEglExtension(EGLDisplay dpy, const char* extensionName) {
     const char* exts = eglQueryString(dpy, EGL_EXTENSIONS);
@@ -46,17 +45,13 @@ namespace android {
 
 #define EGL_UNSIGNED_TRUE static_cast<EGLBoolean>(EGL_TRUE)
 
-// retrieve wide-color setting from configstore
-using namespace android::hardware::configstore;
-using namespace android::hardware::configstore::V1_0;
-
 #define METADATA_SCALE(x) (static_cast<EGLint>(x * EGL_METADATA_SCALING_EXT))
 
-static bool hasWideColorDisplay =
-        getBool<ISurfaceFlingerConfigs, &ISurfaceFlingerConfigs::hasWideColorDisplay>(false);
+using surfaceflingerprops = namespace android::surfaceflinger::sysprophelper;
 
-static bool hasHdrDisplay =
-        getBool<ISurfaceFlingerConfigs, &ISurfaceFlingerConfigs::hasHDRDisplay>(false);
+static bool hasWideColorDisplay = surfaceflingerprops::has_wide_color_display(false);
+
+static bool hasHdrDisplay = surfaceflingerprops::has_HDR_display(false);
 
 class EGLTest : public ::testing::Test {
 public:

@@ -147,8 +147,7 @@ cc_library_shared {
     ],
     shared_libs: [
         "libvndksupport",
-        "android.hardware.configstore@1.0",
-        "android.hardware.configstore-utils",
+        "libSurfaceFlingerProp",
         "libbase",
         "libhidlbase",
         "libnativebridge_lazy",

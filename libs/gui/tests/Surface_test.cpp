@@ -18,10 +18,9 @@
 
 #include <gtest/gtest.h>
 
-#include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
 #include <binder/ProcessState.h>
-#include <configstore/Utils.h>
 #include <cutils/properties.h>
+#include "SurfaceFlingerProperties.h"
 #include <inttypes.h>
 #include <gui/BufferItemConsumer.h>
 #include <gui/IDisplayEventConnection.h>
@@ -39,18 +38,14 @@
 namespace android {
 
 using namespace std::chrono_literals;
-// retrieve wide-color and hdr settings from configstore
-using namespace android::hardware::configstore;
-using namespace android::hardware::configstore::V1_0;
 using ui::ColorMode;
 
+using surfaceflingerprops = namespace android::surfaceflinger::sysprophelper;
 using Transaction = SurfaceComposerClient::Transaction;
 
-static bool hasWideColorDisplay =
-        getBool<ISurfaceFlingerConfigs, &ISurfaceFlingerConfigs::hasWideColorDisplay>(false);
+static bool hasWideColorDisplay = surfaceflingerprops:has_wide_color_display(false);
 
-static bool hasHdrDisplay =
-        getBool<ISurfaceFlingerConfigs, &ISurfaceFlingerConfigs::hasHDRDisplay>(false);
+static bool hasHdrDisplay = surfaceflingerprops:has_HDR_display(false);
 
 class FakeSurfaceComposer;
 class FakeProducerFrameEventHistory;

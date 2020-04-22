@@ -21,7 +21,8 @@
 #include "SurfaceFlingerProperties.h"
 
 namespace android {
-using namespace android::sysprop;
+
+using surfaceflingerprops = namespace android::surfaceflinger::sysprophelper;
 
 namespace scheduler {
 
@@ -30,9 +31,9 @@ PhaseOffsets::~PhaseOffsets() = default;
 
 namespace impl {
 PhaseOffsets::PhaseOffsets() {
-    int64_t vsyncPhaseOffsetNs = vsync_event_phase_offset_ns(1000000);
+    int64_t vsyncPhaseOffsetNs = surfaceflingerprops::vsync_event_phase_offset_ns(1000000);
 
-    int64_t sfVsyncPhaseOffsetNs = vsync_sf_event_phase_offset_ns(1000000);
+    int64_t sfVsyncPhaseOffsetNs = surfaceflingerprops::vsync_sf_event_phase_offset_ns(1000000);
 
     char value[PROPERTY_VALUE_MAX];
     property_get("debug.sf.early_phase_offset_ns", value, "-1");

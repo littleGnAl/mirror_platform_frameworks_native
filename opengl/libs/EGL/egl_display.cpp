@@ -25,6 +25,7 @@
 #include <private/EGL/display.h>
 
 #include <cutils/properties.h>
+#include "SurfaceFlingerProperties.h"
 #include "Loader.h"
 #include "egl_angle_platform.h"
 #include "egl_cache.h"
@@ -35,15 +36,11 @@
 #include <dlfcn.h>
 #include <graphicsenv/GraphicsEnv.h>
 
-#include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
-#include <configstore/Utils.h>
-
-using namespace android::hardware::configstore;
-using namespace android::hardware::configstore::V1_0;
-
 // ----------------------------------------------------------------------------
 namespace android {
 // ----------------------------------------------------------------------------
+
+using surfaceflingerprop = android::surfaceflinger::sysprophelper;
 
 static char const * const sVendorString     = "Android";
 static char const* const sVersionString14 = "1.4 Android META-EGL";
@@ -361,9 +358,7 @@ EGLBoolean egl_display_t::initialize(EGLint *major, EGLint *minor) {
 
         // Note: CDD requires that devices supporting wide color and/or HDR color also support
         // the EGL_KHR_gl_colorspace extension.
-        bool wideColorBoardConfig =
-                getBool<ISurfaceFlingerConfigs, &ISurfaceFlingerConfigs::hasWideColorDisplay>(
-                        false);
+        bool wideColorBoardConfig = surfaceflingerprop::has_wide_color_display(false);
 
         // Add wide-color extensions if device can support wide-color
         if (wideColorBoardConfig && hasColorSpaceSupport) {
@@ -373,8 +368,7 @@ EGLBoolean egl_display_t::initialize(EGLint *major, EGLint *minor) {
                     "EGL_EXT_gl_colorspace_display_p3_passthrough ");
         }
 
-        bool hasHdrBoardConfig =
-                getBool<ISurfaceFlingerConfigs, &ISurfaceFlingerConfigs::hasHDRDisplay>(false);
+        bool hasHdrBoardConfig = surfaceflingerprop::has_HDR_display(false);
 
         if (hasHdrBoardConfig && hasColorSpaceSupport) {
             // hasHDRBoardConfig indicates the system is capable of supporting HDR content.

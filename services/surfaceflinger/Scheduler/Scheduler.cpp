@@ -24,9 +24,6 @@
 #include <memory>
 #include <numeric>
 
-#include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
-#include <android/hardware/configstore/1.1/ISurfaceFlingerConfigs.h>
-#include <configstore/Utils.h>
 #include <cutils/properties.h>
 #include <input/InputWindow.h>
 #include <system/window.h>
@@ -46,9 +43,7 @@
 
 namespace android {
 
-using namespace android::hardware::configstore;
-using namespace android::hardware::configstore::V1_0;
-using namespace android::sysprop;
+using surfaceflingerprops = namespace android::surfaceflinger::sysprophelper;
 
 #define RETURN_VALUE_IF_INVALID(value) \
     if (handle == nullptr || mConnections.count(handle->id) == 0) return value
@@ -59,8 +54,8 @@ std::atomic<int64_t> Scheduler::sNextId = 0;
 
 Scheduler::Scheduler(impl::EventControlThread::SetVSyncEnabledFunction function,
                      const scheduler::RefreshRateConfigs& refreshRateConfig)
-      : mHasSyncFramework(running_without_sync_framework(true)),
-        mDispSyncPresentTimeOffset(present_time_offset_from_vsync_ns(0)),
+      : mHasSyncFramework(surfaceflingerprops::running_without_sync_framework(true)),
+        mDispSyncPresentTimeOffset(surfaceflingerprops::present_time_offset_from_vsync_ns(0)),
         mPrimaryHWVsyncEnabled(false),
         mHWVsyncAvailable(false),
         mRefreshRateConfigs(refreshRateConfig) {
@@ -72,11 +67,11 @@ Scheduler::Scheduler(impl::EventControlThread::SetVSyncEnabledFunction function,
     mPrimaryDispSync = std::move(primaryDispSync);
     mEventControlThread = std::make_unique<impl::EventControlThread>(function);
 
-    mSetIdleTimerMs = set_idle_timer_ms(0);
-    mSupportKernelTimer = support_kernel_idle_timer(false);
+    mSetIdleTimerMs = surfaceflingerprops::set_idle_timer_ms(0);
+    mSupportKernelTimer = surfaceflingerprops::support_kernel_idle_timer(false);
 
-    mSetTouchTimerMs = set_touch_timer_ms(0);
-    mSetDisplayPowerTimerMs = set_display_power_timer_ms(0);
+    mSetTouchTimerMs = surfaceflingerprops::set_touch_timer_ms(0);
+    mSetDisplayPowerTimerMs = surfaceflingerprops::set_display_power_timer_ms(0);
 
     char value[PROPERTY_VALUE_MAX];
     property_get("debug.sf.set_idle_timer_ms", value, "0");

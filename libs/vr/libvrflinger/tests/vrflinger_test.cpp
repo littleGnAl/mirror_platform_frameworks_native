@@ -1,11 +1,9 @@
-#include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
-#include <android/hardware/configstore/1.1/types.h>
 #include <android/hardware_buffer.h>
 #include <binder/IServiceManager.h>
 #include <binder/Parcel.h>
 #include <binder/ProcessState.h>
-#include <configstore/Utils.h>
 #include <cutils/properties.h>
+#include "SurfaceFlingerProperties.h"
 #include <gtest/gtest.h>
 #include <gui/ISurfaceComposer.h>
 #include <log/log.h>
@@ -19,12 +17,12 @@
 
 #include <private/dvr/display_client.h>
 
-using namespace android::hardware::configstore;
-using namespace android::hardware::configstore::V1_0;
 using android::dvr::display::DisplayClient;
 using android::dvr::display::Surface;
 using android::dvr::display::SurfaceAttribute;
 using android::dvr::display::SurfaceAttributeValue;
+
+using surfaceflingerprop = android::surfaceflinger::sysprophelper;
 
 namespace android {
 namespace dvr {
@@ -134,8 +132,8 @@ class SurfaceFlingerConnection {
 // is activated and deactivated as expected, and that surface flinger doesn't
 // crash.
 //
-// If the device doesn't support vr flinger (as repoted by ConfigStore), the
-// test does nothing.
+// If the device doesn't support vr flinger (as determined by sysprops or
+// ConfigStore), the test does nothing.
 //
 // If the device is a standalone vr device, the test also does nothing, since
 // this test verifies the behavior of display handoff from surface flinger to vr
@@ -147,9 +145,7 @@ TEST(VrFlingerTest, ActivateDeactivate) {
   // Exit immediately if the device doesn't support vr flinger. This ConfigStore
   // check is the same mechanism used by surface flinger to decide if it should
   // initialize vr flinger.
-  bool vr_flinger_enabled =
-      getBool<ISurfaceFlingerConfigs, &ISurfaceFlingerConfigs::useVrFlinger>(
-          false);
+  bool vr_flinger_enabled = surfaceflingerprop::use_vr_flinger(false);
   if (!vr_flinger_enabled) {
     return;
   }

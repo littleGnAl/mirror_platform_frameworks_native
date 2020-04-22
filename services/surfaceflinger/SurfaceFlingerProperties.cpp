@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+/*
+ * Helper library to facilitate transition from ConfigStore to sysprop API.
+ * Try reading from ro.surface_flinger.* prop first, then fall back to
+ * ConfigStore.
+ */
+
 #include <android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h>
 #include <android/hardware/configstore/1.1/ISurfaceFlingerConfigs.h>
 #include <android/hardware/configstore/1.1/types.h>
@@ -25,7 +31,8 @@
 #include "SurfaceFlingerProperties.h"
 
 namespace android {
-namespace sysprop {
+namespace surfaceflinger {
+namespace sysprophelper {
 using namespace android::hardware::configstore;
 using namespace android::hardware::configstore::V1_0;
 using android::hardware::graphics::common::V1_2::Dataspace;
@@ -316,5 +323,6 @@ DisplayPrimaries getDisplayNativePrimaries() {
     return primaries;
 }
 
-} // namespace sysprop
+} // namespace sysprophelper
+} // namespace surfaceflinger
 } // namespace android

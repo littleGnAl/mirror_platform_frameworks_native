@@ -1,6 +1,5 @@
 shared_libs = [
-    "android.hardware.configstore-utils",
-    "android.hardware.configstore@1.0",
+    "libSurfaceFlingerProp",
     "libbinder",
     "libbufferhubqueue",
     "libcutils",
