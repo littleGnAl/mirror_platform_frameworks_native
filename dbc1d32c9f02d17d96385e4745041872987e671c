@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3f3de38_4c71b1b4",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-22T17:32:40Z",
+      "side": 1,
+      "message": "The alternative to taking ownership of the T here is to require that the rust object be an Rc\u003cT\u003e, and hold a strong reference to it. Preferences?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
