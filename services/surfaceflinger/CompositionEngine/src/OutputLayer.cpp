@@ -249,7 +249,8 @@ Rect OutputLayer::calculateOutputDisplayFrame() const {
     return displayTransform.transform(frame);
 }
 
-uint32_t OutputLayer::calculateOutputRelativeBufferTransform() const {
+uint32_t OutputLayer::calculateOutputRelativeBufferTransform(
+        uint32_t primaryDisplayOrientation) const {
     const auto& layerState = mLayer->getState().frontEnd;
     const auto& outputState = mOutput.getState();
 
@@ -270,7 +271,7 @@ uint32_t OutputLayer::calculateOutputRelativeBufferTransform() const {
          * the code below applies the primary display's inverse transform to the
          * buffer
          */
-        uint32_t invTransform = outputState.orientation;
+        uint32_t invTransform = primaryDisplayOrientation;
         // calculate the inverse transform
         if (invTransform & HAL_TRANSFORM_ROT_90) {
             invTransform ^= HAL_TRANSFORM_FLIP_V | HAL_TRANSFORM_FLIP_H;
@@ -289,12 +290,12 @@ uint32_t OutputLayer::calculateOutputRelativeBufferTransform() const {
     return transform.getOrientation();
 } // namespace impl
 
-void OutputLayer::updateCompositionState(bool includeGeometry) {
+void OutputLayer::updateCompositionState(bool includeGeometry, uint32_t primaryDispOrientation) {
     if (includeGeometry) {
         mState.displayFrame = calculateOutputDisplayFrame();
         mState.sourceCrop = calculateOutputSourceCrop();
-        mState.bufferTransform =
-                static_cast<Hwc2::Transform>(calculateOutputRelativeBufferTransform());
+        mState.bufferTransform = static_cast<Hwc2::Transform>(
+                calculateOutputRelativeBufferTransform(primaryDispOrientation));
 
         if ((mLayer->getState().frontEnd.isSecure && !mOutput.getState().isSecure) ||
             (mState.bufferTransform & ui::Transform::ROT_INVALID)) {

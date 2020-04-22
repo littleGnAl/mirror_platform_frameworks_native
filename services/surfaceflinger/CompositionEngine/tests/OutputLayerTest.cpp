@@ -237,7 +237,114 @@ TEST_F(OutputLayerTest, calculateOutputRelativeBufferTransformTestsNeeded) {
         mLayerState.frontEnd.geomBufferTransform = entry.buffer;
         mOutputState.orientation = entry.display;
 
-        auto actual = mOutputLayer.calculateOutputRelativeBufferTransform();
+        auto actual = mOutputLayer.calculateOutputRelativeBufferTransform(entry.display);
+        EXPECT_EQ(entry.expected, actual) << "entry " << i;
+    }
+}
+
+TEST_F(OutputLayerTest, calculateOutputRelativeBufferTransformCameraBuffer) {
+    mLayerState.frontEnd.geomBufferUsesDisplayInverseTransform = true;
+
+    struct Entry {
+        uint32_t layer; /* shouldn't affect the result, so we just use arbitrary values */
+        uint32_t buffer;
+        uint32_t display;
+        uint32_t primary;
+        uint32_t expected;
+    };
+    const std::array<Entry, 64> testData = {
+            // clang-format off
+            //    layer       buffer      display     primary     expected
+            Entry{TR_IDENT,   TR_IDENT,   TR_IDENT,   TR_IDENT,   TR_IDENT},
+            Entry{TR_IDENT,   TR_IDENT,   TR_IDENT,   TR_ROT_90,  TR_ROT_270},
+            Entry{TR_IDENT,   TR_IDENT,   TR_IDENT,   TR_ROT_180, TR_ROT_180},
+            Entry{TR_IDENT,   TR_IDENT,   TR_IDENT,   TR_ROT_270, TR_ROT_90},
+
+            Entry{TR_IDENT,   TR_IDENT,   TR_ROT_90,  TR_IDENT,   TR_ROT_90},
+            Entry{TR_ROT_90,  TR_IDENT,   TR_ROT_90,  TR_ROT_90,  TR_IDENT},
+            Entry{TR_ROT_180, TR_IDENT,   TR_ROT_90,  TR_ROT_180, TR_ROT_270},
+            Entry{TR_ROT_90,  TR_IDENT,   TR_ROT_90,  TR_ROT_270, TR_ROT_180},
+
+            Entry{TR_ROT_180, TR_IDENT,   TR_ROT_180, TR_IDENT,   TR_ROT_180},
+            Entry{TR_ROT_90,  TR_IDENT,   TR_ROT_180, TR_ROT_90,  TR_ROT_90},
+            Entry{TR_ROT_180, TR_IDENT,   TR_ROT_180, TR_ROT_180, TR_IDENT},
+            Entry{TR_ROT_270, TR_IDENT,   TR_ROT_180, TR_ROT_270, TR_ROT_270},
+
+            Entry{TR_ROT_270, TR_IDENT,   TR_ROT_270, TR_IDENT,   TR_ROT_270},
+            Entry{TR_ROT_270, TR_IDENT,   TR_ROT_270, TR_ROT_90,  TR_ROT_180},
+            Entry{TR_ROT_180, TR_IDENT,   TR_ROT_270, TR_ROT_180, TR_ROT_90},
+            Entry{TR_IDENT,   TR_IDENT,   TR_ROT_270, TR_ROT_270, TR_IDENT},
+
+            Entry{TR_IDENT,   TR_ROT_90,  TR_IDENT,   TR_IDENT,   TR_ROT_90},
+            Entry{TR_ROT_90,  TR_ROT_90,  TR_IDENT,   TR_ROT_90,  TR_IDENT},
+            Entry{TR_ROT_180, TR_ROT_90,  TR_IDENT,   TR_ROT_180, TR_ROT_270},
+            Entry{TR_ROT_270, TR_ROT_90,  TR_IDENT,   TR_ROT_270, TR_ROT_180},
+
+            Entry{TR_ROT_90,  TR_ROT_90,  TR_ROT_90,  TR_IDENT,   TR_ROT_180},
+            Entry{TR_ROT_90,  TR_ROT_90,  TR_ROT_90,  TR_ROT_90,  TR_ROT_90},
+            Entry{TR_ROT_90,  TR_ROT_90,  TR_ROT_90,  TR_ROT_180, TR_IDENT},
+            Entry{TR_ROT_270, TR_ROT_90,  TR_ROT_90,  TR_ROT_270, TR_ROT_270},
+
+            Entry{TR_IDENT,   TR_ROT_90,  TR_ROT_180, TR_IDENT,   TR_ROT_270},
+            Entry{TR_ROT_90,  TR_ROT_90,  TR_ROT_180, TR_ROT_90,  TR_ROT_180},
+            Entry{TR_ROT_180, TR_ROT_90,  TR_ROT_180, TR_ROT_180, TR_ROT_90},
+            Entry{TR_ROT_90,  TR_ROT_90,  TR_ROT_180, TR_ROT_270, TR_IDENT},
+
+            Entry{TR_IDENT,   TR_ROT_90,  TR_ROT_270, TR_IDENT,   TR_IDENT},
+            Entry{TR_ROT_270, TR_ROT_90,  TR_ROT_270, TR_ROT_90,  TR_ROT_270},
+            Entry{TR_ROT_180, TR_ROT_90,  TR_ROT_270, TR_ROT_180, TR_ROT_180},
+            Entry{TR_ROT_270, TR_ROT_90,  TR_ROT_270, TR_ROT_270, TR_ROT_90},
+
+            Entry{TR_IDENT,   TR_ROT_180, TR_IDENT,   TR_IDENT,   TR_ROT_180},
+            Entry{TR_IDENT,   TR_ROT_180, TR_IDENT,   TR_ROT_90,  TR_ROT_90},
+            Entry{TR_ROT_180, TR_ROT_180, TR_IDENT,   TR_ROT_180, TR_IDENT},
+            Entry{TR_ROT_270, TR_ROT_180, TR_IDENT,   TR_ROT_270, TR_ROT_270},
+
+            Entry{TR_IDENT,   TR_ROT_180, TR_ROT_90,  TR_IDENT,   TR_ROT_270},
+            Entry{TR_ROT_90,  TR_ROT_180, TR_ROT_90,  TR_ROT_90,  TR_ROT_180},
+            Entry{TR_ROT_180, TR_ROT_180, TR_ROT_90,  TR_ROT_180, TR_ROT_90},
+            Entry{TR_ROT_180, TR_ROT_180, TR_ROT_90,  TR_ROT_270, TR_IDENT},
+
+            Entry{TR_IDENT,   TR_ROT_180, TR_ROT_180, TR_IDENT,   TR_IDENT},
+            Entry{TR_ROT_180, TR_ROT_180, TR_ROT_180, TR_ROT_90,  TR_ROT_270},
+            Entry{TR_ROT_180, TR_ROT_180, TR_ROT_180, TR_ROT_180, TR_ROT_180},
+            Entry{TR_ROT_270, TR_ROT_180, TR_ROT_180, TR_ROT_270, TR_ROT_90},
+
+            Entry{TR_ROT_270, TR_ROT_180, TR_ROT_270, TR_IDENT,   TR_ROT_90},
+            Entry{TR_ROT_180, TR_ROT_180, TR_ROT_270, TR_ROT_90,  TR_IDENT},
+            Entry{TR_ROT_180, TR_ROT_180, TR_ROT_270, TR_ROT_180, TR_ROT_270},
+            Entry{TR_ROT_270, TR_ROT_180, TR_ROT_270, TR_ROT_270, TR_ROT_180},
+
+            Entry{TR_IDENT,   TR_ROT_270, TR_IDENT,   TR_IDENT,   TR_ROT_270},
+            Entry{TR_ROT_90,  TR_ROT_270, TR_IDENT,   TR_ROT_90,  TR_ROT_180},
+            Entry{TR_ROT_270, TR_ROT_270, TR_IDENT,   TR_ROT_180, TR_ROT_90},
+            Entry{TR_IDENT,   TR_ROT_270, TR_IDENT,   TR_ROT_270, TR_IDENT},
+
+            Entry{TR_ROT_270, TR_ROT_270, TR_ROT_90,  TR_IDENT,   TR_IDENT},
+            Entry{TR_ROT_90,  TR_ROT_270, TR_ROT_90,  TR_ROT_90,  TR_ROT_270},
+            Entry{TR_ROT_180, TR_ROT_270, TR_ROT_90,  TR_ROT_180, TR_ROT_180},
+            Entry{TR_ROT_90,  TR_ROT_270, TR_ROT_90,  TR_ROT_270, TR_ROT_90},
+
+            Entry{TR_IDENT,   TR_ROT_270, TR_ROT_180, TR_IDENT,   TR_ROT_90},
+            Entry{TR_ROT_270, TR_ROT_270, TR_ROT_180, TR_ROT_90,  TR_IDENT},
+            Entry{TR_ROT_180, TR_ROT_270, TR_ROT_180, TR_ROT_180, TR_ROT_270},
+            Entry{TR_ROT_270, TR_ROT_270, TR_ROT_180, TR_ROT_270, TR_ROT_180},
+
+            Entry{TR_IDENT,   TR_ROT_270, TR_ROT_270, TR_IDENT,   TR_ROT_180},
+            Entry{TR_ROT_90,  TR_ROT_270, TR_ROT_270, TR_ROT_90,  TR_ROT_90},
+            Entry{TR_ROT_270, TR_ROT_270, TR_ROT_270, TR_ROT_180, TR_IDENT},
+            Entry{TR_ROT_270, TR_ROT_270, TR_ROT_270, TR_ROT_270, TR_ROT_270},
+            // clang-format on
+    };
+
+    for (size_t i = 0; i < testData.size(); i++) {
+        const auto& entry = testData[i];
+
+        mLayerState.frontEnd.geomLayerTransform.set(entry.layer, 1920, 1080);
+        mLayerState.frontEnd.geomBufferTransform = entry.buffer;
+        mOutputState.orientation = entry.display;
+
+        auto actual = mOutputLayer.calculateOutputRelativeBufferTransform(entry.primary);
         EXPECT_EQ(entry.expected, actual) << "entry " << i;
     }
 }

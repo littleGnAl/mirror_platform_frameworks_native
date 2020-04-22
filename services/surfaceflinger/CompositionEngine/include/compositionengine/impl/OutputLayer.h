@@ -43,14 +43,14 @@ public:
     const OutputLayerCompositionState& getState() const override;
     OutputLayerCompositionState& editState() override;
 
-    void updateCompositionState(bool) override;
+    void updateCompositionState(bool, uint32_t) override;
     void writeStateToHWC(bool) const override;
 
     void dump(std::string& result) const override;
 
     virtual FloatRect calculateOutputSourceCrop() const;
     virtual Rect calculateOutputDisplayFrame() const;
-    virtual uint32_t calculateOutputRelativeBufferTransform() const;
+    virtual uint32_t calculateOutputRelativeBufferTransform(uint32_t) const;
 
 private:
     Rect calculateInitialCrop() const;

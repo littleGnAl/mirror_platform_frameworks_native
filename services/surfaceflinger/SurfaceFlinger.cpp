@@ -1907,7 +1907,8 @@ void SurfaceFlinger::calculateWorkingSet() {
                                                           true);
 
                 // Recalculate the geometry state of the output layer.
-                layer->updateCompositionState(true);
+                uint32_t primOrientation = DisplayDevice::getPrimaryDisplayOrientationTransform();
+                layer->updateCompositionState(true, primOrientation);
 
                 // Write the updated geometry state to the HWC
                 layer->writeStateToHWC(true);
