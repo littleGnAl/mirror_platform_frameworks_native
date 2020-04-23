@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4210e9c6_457adb83",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-23T01:39:04Z",
+      "side": 0,
+      "message": "I do wonder if we should set these next to the apex_available property",
+      "revId": "898879b988f3bc3aaf3821293e1cf31fdc053fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
