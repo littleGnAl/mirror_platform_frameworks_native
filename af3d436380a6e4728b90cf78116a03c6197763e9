@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad2091cd_f665d86f",
+        "filename": "docs/Doxyfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-24T20:22:35Z",
+      "side": 1,
+      "message": "here\u0027s everything i have in my local one:\n\nPREDEFINED             \u003d \"__ANDROID_API__\u003d10000\" \\\n                         \"__BEGIN_DECLS\u003d\" \\\n                         \"__END_DECLS\u003d\" \\\n                         \"__INTRODUCED_IN(x)\u003d\" \\\n                         \"__INTRODUCED_IN_32(x)\u003d\" \\\n                         \"__INTRODUCED_IN_64(x)\u003d\" \\\n                         \"__RENAME(x)\u003d\" \\\n                         \"__RENAME_LDBL(x,y,z)\u003d\" \\\n                         \"__printflike(x,y)\u003d\" \\\n                         \"__attribute__(x)\u003d\" \\\n                         \"__wur\u003d\" \\\n                         \"__mallocfunc\u003d\" \\\n                         \"__attribute_pure__\u003d\" \\\n\nmost of the differences probably only affect bionic, but maybe worth just getting it over and done with?",
+      "revId": "af3d436380a6e4728b90cf78116a03c6197763e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
