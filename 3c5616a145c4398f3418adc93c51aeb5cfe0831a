@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "383967db_e2b9da63",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-25T01:30:08Z",
+      "side": 1,
+      "message": "also should exit if exec returns",
+      "revId": "3c5616a145c4398f3418adc93c51aeb5cfe0831a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
