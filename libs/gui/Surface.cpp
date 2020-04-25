@@ -576,6 +576,7 @@ int Surface::dequeueBuffer(android_native_buffer_t** buffer, int* fenceFd) {
                                                             reqFormat, reqUsage, &mBufferAge,
                                                             enableFrameTimestamps ? &frameTimestamps
                                                                                   : nullptr);
+
     mLastDequeueDuration = systemTime() - startTime;
 
     if (result < 0) {
@@ -592,6 +593,8 @@ int Surface::dequeueBuffer(android_native_buffer_t** buffer, int* fenceFd) {
     }
 
     Mutex::Autolock lock(mMutex);
+
+    mIsDequeued[buf] = true;
 
     // Write this while holding the mutex
     mLastDequeueStartTime = startTime;
@@ -675,6 +678,8 @@ int Surface::cancelBuffer(android_native_buffer_t* buffer,
     if (mSharedBufferMode && mAutoRefresh && mSharedBufferSlot == i) {
         mSharedBufferHasBeenQueued = true;
     }
+
+    mIsDequeued[i] = false;
 
     return OK;
 }
@@ -809,6 +814,8 @@ int Surface::queueBuffer(android_native_buffer_t* buffer, int fenceFd) {
     mLastQueueDuration = systemTime() - now;
     if (err != OK)  {
         ALOGE("queueBuffer: error queuing buffer to SurfaceTexture, %d", err);
+    } else {
+        mIsDequeued[i] = false;
     }
 
     if (mEnableFrameTimestamps) {
@@ -1356,6 +1363,17 @@ int Surface::disconnect(int api, IGraphicBufferProducer::DisconnectMode mode) {
     return err;
 }
 
+void Surface::releaseSlot(int slot) {
+    Mutex::Autolock lock(mMutex);
+
+    if (!mIsDequeued[slot]) {
+        if (mReportRemovedBuffers && (mSlots[slot].buffer != nullptr)) {
+            mRemovedBuffers.push_back(mSlots[slot].buffer);
+        }
+        mSlots[slot].buffer = nullptr;
+    }
+}
+
 int Surface::detachNextBuffer(sp<GraphicBuffer>* outBuffer,
         sp<Fence>* outFence) {
     ATRACE_CALL();
@@ -1388,6 +1406,8 @@ int Surface::detachNextBuffer(sp<GraphicBuffer>* outBuffer,
     for (int i = 0; i < NUM_BUFFER_SLOTS; i++) {
         if (mSlots[i].buffer != nullptr &&
                 mSlots[i].buffer->getId() == buffer->getId()) {
+            mIsDequeued[i] = false;
+
             if (mReportRemovedBuffers) {
                 mRemovedBuffers.push_back(mSlots[i].buffer);
             }
@@ -1418,6 +1438,9 @@ int Surface::attachBuffer(ANativeWindowBuffer* buffer)
         graphicBuffer->mGenerationNumber = priorGeneration;
         return result;
     }
+
+    mIsDequeued[attachedSlot] = true;
+
     if (mReportRemovedBuffers && (mSlots[attachedSlot].buffer != nullptr)) {
         mRemovedBuffers.push_back(mSlots[attachedSlot].buffer);
     }
