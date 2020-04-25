@@ -38,6 +38,7 @@ class ISurfaceComposer;
 
 /* This is the same as ProducerListener except that onBuffersDiscarded is
  * called with a vector of graphic buffers instead of buffer slots.
+ * and onBufferDetached called by detachBuffer
  */
 class SurfaceListener : public virtual RefBase
 {
@@ -49,6 +50,7 @@ public:
     virtual bool needsReleaseNotify() = 0;
 
     virtual void onBuffersDiscarded(const std::vector<sp<GraphicBuffer>>& buffers) = 0;
+    virtual void onBufferDetached(int slot) = 0;
 };
 
 /*
@@ -334,6 +336,8 @@ protected:
         }
 
         virtual void onBuffersDiscarded(const std::vector<int32_t>& slots);
+        virtual void onBufferDetached(int slot);
+
     private:
         wp<Surface> mParent;
         sp<SurfaceListener> mSurfaceListener;
@@ -362,6 +366,9 @@ protected:
     // be replaced if the requested buffer usage or geometry differs from that
     // of the buffer allocated to a slot.
     BufferSlot mSlots[NUM_BUFFER_SLOTS];
+
+    // record the Buffer State
+    bool volatile mIsDequeued[NUM_BUFFER_SLOTS];
 
     // mReqWidth is the buffer width that will be requested at the next dequeue
     // operation. It is initialized to 1.
