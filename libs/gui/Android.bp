@@ -163,6 +163,8 @@ cc_defaults {
         "bufferqueue/2.0/B2HProducerListener.cpp",
         "bufferqueue/2.0/H2BGraphicBufferProducer.cpp",
         "bufferqueue/2.0/H2BProducerListener.cpp",
+        "bufferqueue/3.0/B2HProducerListener.cpp",
+        "bufferqueue/3.0/H2BProducerListener.cpp",
         "bufferqueue/2.0/types.cpp",
     ],
 
@@ -173,6 +175,7 @@ cc_defaults {
     shared_libs: [
         "android.hardware.graphics.bufferqueue@1.0",
         "android.hardware.graphics.bufferqueue@2.0",
+        "android.hardware.graphics.bufferqueue@3.0",
         "android.hardware.graphics.common@1.1",
         "android.hardware.graphics.common@1.2",
         "android.hidl.token@1.0-utils",
@@ -206,6 +209,7 @@ cc_defaults {
         "libui",
         "android.hardware.graphics.bufferqueue@1.0",
         "android.hardware.graphics.bufferqueue@2.0",
+        "android.hardware.graphics.bufferqueue@3.0",
         "android.hardware.graphics.common@1.1",
         "android.hardware.graphics.common@1.2",
         "android.hidl.token@1.0-utils",
