@@ -297,6 +297,7 @@ public:
             bool reportBufferRemoval);
     virtual int detachNextBuffer(sp<GraphicBuffer>* outBuffer,
             sp<Fence>* outFence);
+    virtual void releaseSlot(int slot);
     virtual int attachBuffer(ANativeWindowBuffer*);
 
     virtual int connect(
@@ -362,6 +363,9 @@ protected:
     // be replaced if the requested buffer usage or geometry differs from that
     // of the buffer allocated to a slot.
     BufferSlot mSlots[NUM_BUFFER_SLOTS];
+
+    // record the Buffer State
+    bool volatile mIsDequeued[NUM_BUFFER_SLOTS];
 
     // mReqWidth is the buffer width that will be requested at the next dequeue
     // operation. It is initialized to 1.

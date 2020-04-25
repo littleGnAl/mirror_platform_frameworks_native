@@ -21,6 +21,7 @@
 
 #include <android/hardware/graphics/bufferqueue/1.0/IProducerListener.h>
 #include <android/hardware/graphics/bufferqueue/2.0/IProducerListener.h>
+#include <android/hardware/graphics/bufferqueue/3.0/IProducerListener.h>
 #include <binder/IInterface.h>
 #include <hidl/HybridInterface.h>
 #include <utils/RefBase.h>
@@ -49,6 +50,7 @@ public:
     // onBuffersFreed is called from IGraphicBufferConsumer::discardFreeBuffers
     // to notify the producer that certain free buffers are discarded by the consumer.
     virtual void onBuffersDiscarded(const std::vector<int32_t>& slots) = 0; // Asynchronous
+    virtual void onBufferDetached(int slot) = 0;
 };
 
 class IProducerListener : public ProducerListener, public IInterface
@@ -58,10 +60,9 @@ public:
             ::android::hardware::graphics::bufferqueue::V1_0::IProducerListener;
     using HProducerListener2 =
             ::android::hardware::graphics::bufferqueue::V2_0::IProducerListener;
-    DECLARE_HYBRID_META_INTERFACE(
-            ProducerListener,
-            HProducerListener1,
-            HProducerListener2)
+    using HProducerListener3 = ::android::hardware::graphics::bufferqueue::V3_0::IProducerListener;
+    DECLARE_HYBRID_META_INTERFACE(ProducerListener, HProducerListener1, HProducerListener2,
+                                  HProducerListener3)
 };
 
 class BnProducerListener : public BnInterface<IProducerListener>
@@ -71,6 +72,7 @@ public:
             Parcel* reply, uint32_t flags = 0);
     virtual bool needsReleaseNotify();
     virtual void onBuffersDiscarded(const std::vector<int32_t>& slots);
+    virtual void onBufferDetached(int slot);
 };
 
 class DummyProducerListener : public BnProducerListener
