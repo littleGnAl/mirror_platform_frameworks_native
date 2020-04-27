@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20033c16_9bedc085",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-27T22:30:09Z",
+      "side": 1,
+      "message": "Elliott, I want to write this same kind of test elsewhere (e.g. libutils, for HIDL stuff). Any alternative to this kind of thing already? Anywhere you would prefer a lib like this to go (system/core|bionic)?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "0d61a8f5adc3291e742fe96a83b99e6b1986dcb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a259711_27104b61",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-27T22:30:09Z",
+      "side": 1,
+      "message": "will fix",
+      "range": {
+        "startLine": 123,
+        "startChar": 31,
+        "endLine": 123,
+        "endChar": 32
+      },
+      "revId": "0d61a8f5adc3291e742fe96a83b99e6b1986dcb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "660993d9_b9c4c929",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-27T22:30:09Z",
+      "side": 1,
+      "message": "@Tim: so currently, this triggers:\n\nframeworks/native/libs/binder/tests/binderAllocationLimits.cpp:120: Failure  \nFailed\nUnexpected allocation: 6\nUNEXPECTED ALLOCATION#00 pc 000432a4  /apex/com.android.runtime/lib/bionic/libc.so (malloc+68)\nUNEXPECTED ALLOCATION#01 pc 0005e87d  /system/lib/libbinder.so (android::Parcel::continueWrite(unsigned int)+493)\nUNEXPECTED ALLOCATION#02 pc 0005f65d  /system/lib/libbinder.so (android::Parcel::writeInterfaceToken(android::String16 const\u0026)+109)\nUNEXPECTED ALLOCATION#03 pc 00088945  /system/lib/libbinder.so (android::os::BpServiceManager::checkService(std::__1::basic_string\u003cchar, std::__1::char_traits\u003cchar\u003e, std::__1::allocator\u003cchar\u003e \u003e const\u0026, android::sp\u003candroid::IBinder\u003e*)+229)\nUNEXPECTED ALLOCATION#04 pc 00056a06  /system/lib/libbinder.so (android::ServiceManagerShim::checkService(android::String16 const\u0026) const+102)\nUNEXPECTED ALLOCATION#05 pc 0000d95f  /data/nativetest/binderAllocationLimits/binderAllocationLimits (BinderAllocation_SmallTransaction_Test::TestBody()+207)\nUNEXPECTED ALLOCATION#06 pc 000176d9  /data/nativetest/binderAllocationLimits/binderAllocationLimits\nUNEXPECTED ALLOCATION#07 pc 00017581  /data/nativetest/binderAllocationLimits/binderAllocationLimits (testing::Test::Run()+273)\nUNEXPECTED ALLOCATION#08 pc 0001870e  /data/nativetest/binderAllocationLimits/binderAllocationLimits (testing::TestInfo::Run()+302)\nUNEXPECTED ALLOCATION#09 pc 000192c2  /data/nativetest/binderAllocationLimits/binderAllocationLimits (testing::TestSuite::Run()+402)\nUNEXPECTED ALLOCATION#10 pc 0002723d  /data/nativetest/binderAllocationLimits/binderAllocationLimits (testing::internal::UnitTestImpl::RunAllTests()+1149)\nUNEXPECTED ALLOCATION#11 pc 00026cdf  /data/nativetest/binderAllocationLimits/binderAllocationLimits (testing::UnitTest::Run()+367)\nUNEXPECTED ALLOCATION#12 pc 0000da93  /data/nativetest/binderAllocationLimits/binderAllocationLimits (main+147)\nUNEXPECTED ALLOCATION#13 pc 0004f508  /apex/com.android.runtime/lib/bionic/libc.so (__libc_init+120)\n\n....\n\nand several more. I\u0027ll look into optimizing some of these things when I get a chance. Any particular path you were interested in? You mentioned something about onVsync",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 44
+      },
+      "revId": "0d61a8f5adc3291e742fe96a83b99e6b1986dcb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
