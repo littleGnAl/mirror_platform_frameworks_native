@@ -116,6 +116,30 @@
       "revId": "0d61a8f5adc3291e742fe96a83b99e6b1986dcb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85676b56_c557cca4",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1017430
+      },
+      "writtenOn": "2020-04-27T23:28:09Z",
+      "side": 1,
+      "message": "writeInterfaceToken was the main one that I see allocating every time. writeInt32 and friends might realloc after writeInterfaceToken, too, but the main problem was a malloc + realloc pair in a number of writeInterfaceToken calls.",
+      "parentUuid": "660993d9_b9c4c929",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 44
+      },
+      "revId": "0d61a8f5adc3291e742fe96a83b99e6b1986dcb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
