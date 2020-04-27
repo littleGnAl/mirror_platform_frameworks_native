@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "83379a71_36248bf5",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-27T23:03:15Z",
+      "side": 1,
+      "message": "I didn\u0027t want to use malloc_disable/malloc_enable, since there aren\u0027t headers. Or were you referring to something else?\n\nHonestly, my implementation here is a little messier than I want it to be, but I felt, moving an RAII \u0027WithMallocHooks\u0027 into the OnMalloc lambda would be a bit much. So, I need to duplicate this scoping logic on L69, L78, L93... I think the result is that L103..L114 is pretty natural.",
+      "parentUuid": "6e71c11f_f304e287",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "0d61a8f5adc3291e742fe96a83b99e6b1986dcb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a259711_27104b61",
         "filename": "libs/binder/tests/binderAllocationLimits.cpp",
         "patchSetId": 2
