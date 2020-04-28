@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa23e86b_205a2748",
+        "filename": "libs/gui/include/gui/IProducerListener.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-04-28T23:39:30Z",
+      "side": 1,
+      "message": "I\u0027m curious if this is really needed. If this IGBP does not go across the Treble boundary, there\u0027s no need to create a new HIDL interface.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 72
+      },
+      "revId": "6f75b6197d813ccecfef1a2d1ad0def063087ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
