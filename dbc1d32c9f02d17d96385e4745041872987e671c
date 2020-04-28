@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "23ac45fa_82dacee2",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Definitely.",
+      "parentUuid": "df74579f_4db95b94",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0cee7b7_acad87c9",
         "filename": "libs/binder/rust/src/client.rs",
         "patchSetId": 11
@@ -100,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "ecc3840b_13ee34b5",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Not really, we can bindgen the enum constants and put them here. We would miss out on the windows values, which doesn\u0027t matter for this project but could if we refactored this into a separate utils crate.",
+      "parentUuid": "76fbbeb4_fdb8a4b0",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "470b9764_1be4f08c",
         "filename": "libs/binder/rust/src/error.rs",
         "patchSetId": 11
@@ -117,6 +153,24 @@
     },
     {
       "key": {
+        "uuid": "7df86794_2517673f",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "I started with that but then decided I shouldn\u0027t add a new dependency for a single enum. I\u0027m certainly happy if you do want to add num_derive or similar.",
+      "parentUuid": "470b9764_1be4f08c",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa7d36b9_1b9597d2",
         "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
         "patchSetId": 11
@@ -128,6 +182,24 @@
       "writtenOn": "2020-04-28T00:22:39Z",
       "side": 1,
       "message": "I don\u0027t see BpServiceManager::DUMP anywhere in this file, and these aren\u0027t pub consts, so what are these here for?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87937eb0_b4072f53",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "These have since moved to service_manager and been made into a pub enum when I needed them in the integration tests. This was just here to make sure they weren\u0027t forgotten.",
+      "parentUuid": "fa7d36b9_1b9597d2",
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -162,6 +234,24 @@
       "writtenOn": "2020-04-28T00:22:39Z",
       "side": 1,
       "message": "Nit/Style question:\nDo we want to encourage use of pub(crate) for things that we don\u0027t want to leak out of the crate, even if they\u0027re already stopped by other barriers? In this case, you\u0027ve got \"mod native;\", so this should be safe, but I could see wanting to be redundant in case the module became public later.\n\nThis isn\u0027t necessarily a problem, just trying to decide how to set style.",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1bc79c7_72e965f7",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "I\u0027m fine either way. The rust compiler really only uses `pub(crate)` on private methods of public structs, so I would default to that, but I can see the advantages to making that more explicit.\n\nIn this particular instance, Service is actually re-exported by the crate.",
+      "parentUuid": "f2b38c64_2299ae9a",
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -238,6 +328,24 @@
     },
     {
       "key": {
+        "uuid": "ba3df6c8_f2398d47",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "I\u0027ll do this in a separate CL.",
+      "parentUuid": "9af16c2a_748db171",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d9c060e_b9a6dbfa",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -255,6 +363,24 @@
     },
     {
       "key": {
+        "uuid": "526a6887_c3c72340",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "At the time it was written we didn\u0027t have a good way to get an `IBinder*` out of the `sp` wrapper. Since this CL I\u0027ve added this API onto `Binder` using the `enforce_interface` method above. I\u0027ll remove this.",
+      "parentUuid": "8d9c060e_b9a6dbfa",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5fc7656_1919fc42",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -266,6 +392,24 @@
       "writtenOn": "2020-04-28T20:01:30Z",
       "side": 1,
       "message": "?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff1503a3_24231ae4",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "C++ API that we haven\u0027t implemented yet. There\u0027s quite a few of these placeholders that we need to decide if we want to expose to Rust or not.",
+      "parentUuid": "b5fc7656_1919fc42",
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -306,6 +450,24 @@
     },
     {
       "key": {
+        "uuid": "0136c315_475b3387",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Should be uncommented, the methods this depended on were not yet implemented, will fix.",
+      "parentUuid": "01be9f98_e1468fa7",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbdf1270_4c2171eb",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -320,6 +482,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa3fd825_b78ecf97",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fbdf1270_4c2171eb",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -340,6 +520,24 @@
     },
     {
       "key": {
+        "uuid": "1b4468cf_dfb69d1a",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aadd810c_8a96ba80",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c9339bc_49c9db94",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -351,6 +549,24 @@
       "writtenOn": "2020-04-28T20:01:30Z",
       "side": 1,
       "message": "?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d464cf43_f9bd5a98",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "I don\u0027t think we should expose the native handle from the driver. We certainly can, but I don\u0027t think there\u0027s much to gain.",
+      "parentUuid": "0c9339bc_49c9db94",
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -371,6 +587,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2bba884_290da73a",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d383de11_9f0caa8c",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -425,6 +659,24 @@
     },
     {
       "key": {
+        "uuid": "1709dbcf_e6e463a2",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "55a73723_71650fc2",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c19cc2f_12e49d51",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -439,6 +691,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f84e0b_32a01d62",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c19cc2f_12e49d51",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -470,6 +740,30 @@
       "writtenOn": "2020-04-28T20:01:30Z",
       "side": 1,
       "message": "Should this maybe be \u0026\u0027p self ?",
+      "range": {
+        "startLine": 896,
+        "startChar": 33,
+        "endLine": 896,
+        "endChar": 38
+      },
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fed198bd_9d8e6f7e",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Very much should have been.",
+      "parentUuid": "925425c6_e8ef4524",
       "range": {
         "startLine": 896,
         "startChar": 33,
@@ -550,6 +844,24 @@
     },
     {
       "key": {
+        "uuid": "921b6a51_12626f11",
+        "filename": "libs/binder/rust/src/parcel/blob.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa6352d6_5f376f8e",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d51448ad_5ea3afb0",
         "filename": "libs/binder/rust/src/proxy.rs",
         "patchSetId": 11
@@ -567,6 +879,24 @@
     },
     {
       "key": {
+        "uuid": "f5ba9ded_18c29580",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "This has to be exposed for AIDL generated code, but shouldn\u0027t be used directly by users if they are using AIDL. I am also leaning towards keeping the out param for the same reason, although a second method could do that if we don\u0027t care about keeping this similar to the C++ API. Just wanted to flag this as it\u0027s not exactly idiomatic.",
+      "parentUuid": "d51448ad_5ea3afb0",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af08de32_61e61118",
         "filename": "libs/binder/rust/src/proxy.rs",
         "patchSetId": 11
@@ -578,6 +908,24 @@
       "writtenOn": "2020-04-28T20:01:30Z",
       "side": 1,
       "message": "What are we missing?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cbd0822_ed8e347e",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "shellCommand - implemented in another commit.\n\ngetDebugPid, checkSubclass - implemented in another commit but kept internal, as I don\u0027t see a reason to expose them.\n\nlinkToDeath, unlinkToDeath - WIP\n\nattachObject, findObject, detachObject - not yet implemented. I\u0027m not sure if we want to support attaching arbitrary objects to a binder, but if so it shouldn\u0027t be hard to expose these\n\nlocalBinder, remoteBinder - not yet implemented:\n\nWe don\u0027t expose direct wrappers for BBinder and BpBinder, so I haven\u0027t figured out what we want to do with these. We could reconstruct a Service object from a RustBBinder if we attach the RustBBinder reference to the Binder object, but until I see a good use case for this I don\u0027t think it\u0027s worthwhile.\n\nremoteBinder seems to only be useful with an IInterface, which I think we should not expose because interface specific handles currently fill the same role for us.",
+      "parentUuid": "af08de32_61e61118",
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -601,6 +949,24 @@
     },
     {
       "key": {
+        "uuid": "ee45ae0c_b7ead212",
+        "filename": "libs/binder/rust/src/service_manager.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Apologies, will add the implementation which happened after this CL.",
+      "parentUuid": "c78a2ace_d435bb45",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "850ffd50_7f3cd7c0",
         "filename": "libs/binder/rust/src/service_manager.rs",
         "patchSetId": 11
@@ -618,6 +984,24 @@
     },
     {
       "key": {
+        "uuid": "90919898_00e87e9f",
+        "filename": "libs/binder/rust/src/service_manager.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "850ffd50_7f3cd7c0",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28dae262_5e60385b",
         "filename": "libs/binder/rust/src/state.rs",
         "patchSetId": 11
@@ -629,6 +1013,24 @@
       "writtenOn": "2020-04-28T20:01:30Z",
       "side": 1,
       "message": "I\u0027m skeptical of doing this. How does C/C++ deal with this? Do they actually do an init-attributed function that calls androidIPCThreadState_self()?\n\nIs this being done as a hack to make the Rust test harness compatible with binder?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e4ea282_9bf0eb86",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "C++ doesn\u0027t generally have to deal with this since the IPCThreadState can be started from the main thread. I believe you would have the same trouble in C++ if you only do IPCThreadState operations on child threads, join them all, then exit, although I haven\u0027t tested that out.\n\nYeah, basically this is a hack to deal with not being able to run any code in the main thread of the Rust test harness. This solution predates having a static C++ shim library, so we could just do the same thing with a C++ static initializer there and get this crazy hack out of the library.",
+      "parentUuid": "28dae262_5e60385b",
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -652,6 +1054,24 @@
     },
     {
       "key": {
+        "uuid": "e88bdeeb_bd8be9c7",
+        "filename": "libs/binder/rust/src/sys.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "This is how the nomicon says to represent opaque structs properly in Rust: https://doc.rust-lang.org/nomicon/ffi.html#representing-opaque-structs. Afaik this is fine as long as we only have pointers and references (which the reference says is fine https://doc.rust-lang.org/nomicon/exotic-sizes.html#zero-sized-types-zsts) to this type. We can never instantiate this type since the fields are private here.\n\nThis may deserve a longer comment here explaining this.",
+      "parentUuid": "63bc561a_07fc8d34",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e551079e_1cb285d1",
         "filename": "libs/binder/rust/src/utils.rs",
         "patchSetId": 11
@@ -663,6 +1083,24 @@
       "writtenOn": "2020-04-28T20:01:30Z",
       "side": 1,
       "message": "This is good here for now; we\u0027ll probably migrate this (and String16) out of the binder crate later though and into the cxx bridge.",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bfcb742_4e3bad87",
+        "filename": "libs/binder/rust/src/utils.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T21:17:37Z",
+      "side": 1,
+      "message": "Yep, that was my idea for everything in this module.",
+      "parentUuid": "e551079e_1cb285d1",
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
