@@ -49,6 +49,108 @@
     },
     {
       "key": {
+        "uuid": "df74579f_4db95b94",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T00:22:39Z",
+      "side": 1,
+      "message": "Once we have bindgen support, these paths will have to be passed in some other way, we don\u0027t want to assert the relative location of repositories.",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76fbbeb4_fdb8a4b0",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T00:22:39Z",
+      "side": 1,
+      "message": "Is there a reason we didn\u0027t pull this in via bindgen?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470b9764_1be4f08c",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T00:22:39Z",
+      "side": 1,
+      "message": "num_derive\u0027s from_i32 instead of having a giant table that needs to be kept in sync with an enum?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa7d36b9_1b9597d2",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T00:22:39Z",
+      "side": 1,
+      "message": "I don\u0027t see BpServiceManager::DUMP anywhere in this file, and these aren\u0027t pub consts, so what are these here for?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eed7d476_cd73d544",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T00:22:39Z",
+      "side": 1,
+      "message": "Yeah, this requires it to either be in the device manifest or a vintf",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b38c64_2299ae9a",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T00:22:39Z",
+      "side": 1,
+      "message": "Nit/Style question:\nDo we want to encourage use of pub(crate) for things that we don\u0027t want to leak out of the crate, even if they\u0027re already stopped by other barriers? In this case, you\u0027ve got \"mod native;\", so this should be safe, but I could see wanting to be redundant in case the module became public later.\n\nThis isn\u0027t necessarily a problem, just trying to decide how to set style.",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3f3de38_4c71b1b4",
         "filename": "libs/binder/rust/src/native.rs",
         "patchSetId": 11
@@ -66,6 +168,24 @@
     },
     {
       "key": {
+        "uuid": "e440fb9b_4777c54f",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T00:22:39Z",
+      "side": 1,
+      "message": "I think it makes more sense to use a Box as the thinnest possible layer for now. If someone truly needs an Rc, they can do an Rc\u003cBox\u003cT\u003e\u003e though it might be slightly less efficient.",
+      "parentUuid": "e3f3de38_4c71b1b4",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1120d1a6_958a7df6",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -77,6 +197,24 @@
       "writtenOn": "2020-04-22T20:05:16Z",
       "side": 1,
       "message": "Allocating every parcel on the heap is somewhat expensive. I\u0027m seeing about a 15% decrease in throughput if we allocate both the data and reply packets from Rust in the throughput test. The parcels in this test are trivial, so this is a worst case number, but it\u0027s still significant. The best way I can think to solve this, however, is to go back to declaring the Parcel struct directly in Rust so we can keep it on the stack. There are no vtables or anything involved here, so bindgen does generate a correct struct layout for Parcel. I think this has very low risk of breakage as long as we are generating bindings during the build process.",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af16c2a_748db171",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T00:22:39Z",
+      "side": 1,
+      "message": "I\u0027m OK with this as long as it\u0027s being generated by bindgen.",
+      "parentUuid": "1120d1a6_958a7df6",
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
