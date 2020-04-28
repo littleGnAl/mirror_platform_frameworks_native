@@ -66,6 +66,23 @@
     },
     {
       "key": {
+        "uuid": "b0cee7b7_acad87c9",
+        "filename": "libs/binder/rust/src/client.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-28T18:59:47Z",
+      "side": 1,
+      "message": "This file is an outdated version that snuck into the rebase. Please ignore and I\u0027ll delete it in the next revision after reviews.",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76fbbeb4_fdb8a4b0",
         "filename": "libs/binder/rust/src/error.rs",
         "patchSetId": 11
