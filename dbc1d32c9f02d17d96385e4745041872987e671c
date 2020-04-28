@@ -235,6 +235,437 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d9c060e_b9a6dbfa",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "Why is this commented out? Does it not work?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5fc7656_1919fc42",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f07da67c_fa1ca748",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01be9f98_e1468fa7",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "Why is this commented out?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbdf1270_4c2171eb",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "If we\u0027re not binding these, justify not binding them and delete their signatures, don\u0027t leave their signatures around in comments",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aadd810c_8a96ba80",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "As above",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c9339bc_49c9db94",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d383de11_9f0caa8c",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "As above",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fcb563f_0a7c7c6d",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "As above, what\u0027s wrong with it?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4d1b8cf_870e22d5",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "You\u0027ve done this fixup multiple times, maybe factor out into a helper?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55a73723_71650fc2",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "As above",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c19cc2f_12e49d51",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "As above",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b9b11b2_d446e75d",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "Can you explain what\u0027s unsafe?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "925425c6_e8ef4524",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "Should this maybe be \u0026\u0027p self ?",
+      "range": {
+        "startLine": 896,
+        "startChar": 33,
+        "endLine": 896,
+        "endChar": 38
+      },
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07ba85ec_6211be93",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "...",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09c5c88_71e052c3",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "We don\u0027t seem to have NativeHandle here anymore, should this be deleted?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c1ec39_71874c20",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "Why are this and other portions of the test commented out?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa6352d6_5f376f8e",
+        "filename": "libs/binder/rust/src/parcel/blob.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "More places you could use a helper function to autodangle nulls",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51448ad_5ea3afb0",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "Plus of an outparam is that if the caller doesn\u0027t care about the response, you don\u0027t need to allocate a parcel (since you pass in None).\nDownside is that it\u0027s much less ergonomic.\n\nAs long as the intended caller of transact() is mostly your AIDL generator and internal code, this seems fine as is. If users are expected to call transact(), it should be a return value.",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af08de32_61e61118",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "What are we missing?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c78a2ace_d435bb45",
+        "filename": "libs/binder/rust/src/service_manager.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "More commented out code",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "850ffd50_7f3cd7c0",
+        "filename": "libs/binder/rust/src/service_manager.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "More commented out code...",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28dae262_5e60385b",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "I\u0027m skeptical of doing this. How does C/C++ deal with this? Do they actually do an init-attributed function that calls androidIPCThreadState_self()?\n\nIs this being done as a hack to make the Rust test harness compatible with binder?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63bc561a_07fc8d34",
+        "filename": "libs/binder/rust/src/sys.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "Could this run afoul of ZST optimizations, since both its fields have size zero?",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e551079e_1cb285d1",
+        "filename": "libs/binder/rust/src/utils.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T20:01:30Z",
+      "side": 1,
+      "message": "This is good here for now; we\u0027ll probably migrate this (and String16) out of the binder crate later though and into the cxx bridge.",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
