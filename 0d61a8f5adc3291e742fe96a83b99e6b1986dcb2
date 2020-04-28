@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a63954b4_e118a3c9",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-04-28T05:19:58Z",
+      "side": 1,
+      "message": "You can see what I did for the same kind of thing here:\n\n  bionic/libc/malloc_hooks/tests/malloc_hooks_tests.cpp.\n\nIt was designed a bit differently because I didn\u0027t want to override the main function since it was using the testing infrastructure to run each test at the same time.\n\nRegardless of what method you use, tt might be better to hook and abort on an allocation so that you have a backtrace to easily find the location of the allocation. Otherwise, you need to re-run in gdb or do something else. If you are going to run this in our automation, you are asking for some path that fails that you can\u0027t replicate locally. For most tests, I believe they take a bugreport on failure, so you can grab the tombstone, and figure out what happened.",
+      "parentUuid": "83379a71_36248bf5",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "0d61a8f5adc3291e742fe96a83b99e6b1986dcb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a259711_27104b61",
         "filename": "libs/binder/tests/binderAllocationLimits.cpp",
         "patchSetId": 2
