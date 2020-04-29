@@ -1,0 +1,92 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002718393",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1261104?revision\u003d12",
+      "fixSuggestions": [
+        {
+          "fixId": "110fdce9_16ea4121",
+          "description": "Change to \"libs/binder/rust/src/parcel.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/src/parcel.rs",
+              "range": {
+                "startLine": 306,
+                "startChar": 54,
+                "endLine": 306,
+                "endChar": 60
+              },
+              "replacement": " can\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "e30a1842_efb66e56",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-04-29T00:39:12Z",
+      "side": 1,
+      "message": "Common typo found: \" cant \" -- should it be \" can\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 306,
+        "startChar": 54,
+        "endLine": 306,
+        "endChar": 60
+      },
+      "revId": "1d0300a95c85c67ecf43d6d30ff0c31660f4efac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002718393",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1261104?revision\u003d12",
+      "fixSuggestions": [
+        {
+          "fixId": "83609549_601b7bb1",
+          "description": "Change to \"libs/binder/rust/src/parcel.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/src/parcel.rs",
+              "range": {
+                "startLine": 493,
+                "startChar": 54,
+                "endLine": 493,
+                "endChar": 60
+              },
+              "replacement": " can\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "9695dcd8_caed6519",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-04-29T00:39:12Z",
+      "side": 1,
+      "message": "Common typo found: \" cant \" -- should it be \" can\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 493,
+        "startChar": 54,
+        "endLine": 493,
+        "endChar": 60
+      },
+      "revId": "1d0300a95c85c67ecf43d6d30ff0c31660f4efac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
