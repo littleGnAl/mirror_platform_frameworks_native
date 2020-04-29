@@ -34,3 +34,22 @@ rust_test {
         "-C debuginfo=2",
     ],
 }
+
+rust_test {
+    name: "rustBinderLibTest",
+    srcs: ["binder_lib_test.rs"],
+    edition: "2018",
+    test_harness: false,
+    shared_libs: [
+        "libbinder",
+        "libutils",
+        "libc++",
+    ],
+    rlibs: [
+        "libbinder_rs",
+        "liblibc",
+    ],
+    flags: [
+        "-C debuginfo=2",
+    ],
+}

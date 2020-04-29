@@ -16,6 +16,7 @@
 
 //! Trait definitions for binder objects
 
+use crate::native::{DeathRecipient, DeathRecipientCallback, WeakDeathRecipient};
 use crate::parcel::Parcel;
 use crate::proxy::IInterface;
 use crate::service_manager::{DumpFlags, ServiceManager};
@@ -176,12 +177,44 @@ pub trait IBinder {
         flags: TransactionFlags,
     ) -> Result<()>;
 
+    /// Register the recipient for a notification if this binder
+    /// goes away. If this binder object unexpectedly goes away
+    /// (typically because its hosting process has been killed),
+    /// then DeathRecipient::binder_died() will be called with a reference
+    /// to this.
+    ///
+    /// You will only receive death notifications for remote binders,
+    /// as local binders by definition can't die without you dying as well.
+    /// Trying to use this function on a local binder will result in an
+    /// INVALID_OPERATION code being returned and nothing happening.
+    ///
+    /// This link always holds a weak reference to its recipient.
+    ///
+    /// You will only receive a weak reference to the dead
+    /// binder. You should not try to promote this to a strong reference.
+    /// (Nor should you need to, as there is nothing useful you can
+    /// directly do with it now that it has passed on.)
+    fn link_to_death<C: DeathRecipientCallback>(
+        &mut self,
+        recipient: &DeathRecipient<C>,
+        cookie: Option<usize>,
+        flags: TransactionFlags,
+    ) -> Result<()>;
+
+    /// Remove a previously registered death notification.
+    /// The recipient will no longer be called if this object
+    /// dies.
+    fn unlink_to_death<C: DeathRecipientCallback>(
+        &mut self,
+        recipient: &WeakDeathRecipient<C>,
+        cookie: Option<usize>,
+        flags: TransactionFlags,
+    ) -> Result<()>;
+
     // C++ IBinder interfaces left to be implemented:
     //
-    // Work in Progres:
+    // Work in Progress:
     // - shellCommand
-    // - linkToDeath
-    // - unlinkToDeath
     //
     // Unimplemented:
     // - attachObject
