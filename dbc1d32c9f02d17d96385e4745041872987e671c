@@ -933,6 +933,24 @@
     },
     {
       "key": {
+        "uuid": "287b94cc_d8466bd9",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1687565
+      },
+      "writtenOn": "2020-04-29T17:15:17Z",
+      "side": 1,
+      "message": "I believe this is resolved now and we can remove this comment.\n\nOriginally, I was concerned about read/write blob because they seem to perform small string optimizations by reading/writing them in place in the parcel rather than externally allocating. This has been accounted for by ensuring the blobs retain a lifetime tied to the parcel (see the following line). It\u0027s a little more conservative than necessary for the externally allocating scenario, but sound because it takes into account the in place scenario.",
+      "parentUuid": "2b9b11b2_d446e75d",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "925425c6_e8ef4524",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
