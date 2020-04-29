@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b389f919_9b42ddaf",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d527cc72_6cb481eb",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 46
+      },
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df74579f_4db95b94",
         "filename": "libs/binder/rust/build.rs",
         "patchSetId": 11
@@ -98,6 +122,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b79f15dc_2e9b8846",
+        "filename": "libs/binder/rust/src/client.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0cee7b7_acad87c9",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -206,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "cc040946_e985d468",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87937eb0_b4072f53",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eed7d476_cd73d544",
         "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
         "patchSetId": 11
@@ -290,6 +350,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "068f5375_7ea592a6",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e440fb9b_4777c54f",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -381,6 +459,24 @@
     },
     {
       "key": {
+        "uuid": "2957c9d0_a164baa6",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "526a6887_c3c72340",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5fc7656_1919fc42",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -416,6 +512,24 @@
     },
     {
       "key": {
+        "uuid": "cde3545b_8be3d6c5",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff1503a3_24231ae4",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f07da67c_fa1ca748",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -430,6 +544,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f5209d_8b1aa020",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f07da67c_fa1ca748",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -465,6 +597,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a601848_38984e14",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0136c315_475b3387",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -573,6 +723,24 @@
     },
     {
       "key": {
+        "uuid": "9e886162_e7d497c8",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d464cf43_f9bd5a98",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d383de11_9f0caa8c",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -625,6 +793,24 @@
     },
     {
       "key": {
+        "uuid": "b3717f3a_eb41a2de",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fcb563f_0a7c7c6d",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4d1b8cf_870e22d5",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -639,6 +825,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebabbf43_4e257883",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4d1b8cf_870e22d5",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -776,6 +980,30 @@
     },
     {
       "key": {
+        "uuid": "050d5bde_861a055c",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fed198bd_9d8e6f7e",
+      "range": {
+        "startLine": 896,
+        "startChar": 33,
+        "endLine": 896,
+        "endChar": 38
+      },
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07ba85ec_6211be93",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -790,6 +1018,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "638da640_1ecc4021",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ba85ec_6211be93",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -810,6 +1056,24 @@
     },
     {
       "key": {
+        "uuid": "93d327b6_cfa17686",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d09c5c88_71e052c3",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85c1ec39_71874c20",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -824,6 +1088,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b0e7de_f125d6eb",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "The methods weren\u0027t entirely implemented, done now.",
+      "parentUuid": "85c1ec39_71874c20",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -967,6 +1249,24 @@
     },
     {
       "key": {
+        "uuid": "7136147e_d6ffd356",
+        "filename": "libs/binder/rust/src/service_manager.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee45ae0c_b7ead212",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "850ffd50_7f3cd7c0",
         "filename": "libs/binder/rust/src/service_manager.rs",
         "patchSetId": 11
@@ -1034,6 +1334,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1371748_ccd766dc",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-04-29T00:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e4ea282_9bf0eb86",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
