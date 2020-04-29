@@ -30,13 +30,19 @@
     improper_ctypes
 )]
 pub(crate) mod libbinder_bindings {
-    // We are using a custom opaque declaration for `android_sp` because we want
-    // it to be generic over T, but opaque, which bindgen can't do. According to
-    // the Rust [nomicon][1], this is how opaque structs should be declared.
+    // We are using a custom opaque declaration for `android_sp` and
+    // `android_wp` because we want them to be generic over T, but opaque, which
+    // bindgen can't do. According to the Rust [nomicon][1], this is how opaque
+    // structs should be declared.
     //
     // [1]: https://doc.rust-lang.org/nomicon/ffi.html#representing-opaque-structs
     #[repr(C)]
     pub struct android_sp<T> {
+        _opaque: [u8; 0],
+        _phantom: std::marker::PhantomData<T>,
+    }
+    #[repr(C)]
+    pub struct android_wp<T> {
         _opaque: [u8; 0],
         _phantom: std::marker::PhantomData<T>,
     }

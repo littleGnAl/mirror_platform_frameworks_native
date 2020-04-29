@@ -209,6 +209,103 @@ macro_rules! wrap_sp {
     };
 }
 
+/// Wrapper around the android weak reference-counted pointer.
+///
+/// Note: because this wrapper is generic, we cannot implement Drop that
+/// decrements the ref count, because we would need to specialize on T in order
+/// to call the right C++ function depending on the generic type. It is up to
+/// users of `Sp` to properly decrement the pointer on drop if necessary.
+#[repr(transparent)]
+pub(crate) struct Wp<T>(pub(super) *mut android_wp<T>);
+
+unsafe impl<T> AsNative<android_wp<T>> for Wp<T> {
+    fn as_native(&self) -> *const android_wp<T> {
+        self.0
+    }
+
+    fn as_native_mut(&mut self) -> *mut android_wp<T> {
+        self.0
+    }
+}
+
+impl<T> PartialEq for Wp<T>
+where
+    Wp<T>: AsNative<T>,
+{
+    fn eq(&self, other: &Self) -> bool {
+        ptr::eq::<T>(self.as_native(), other.as_native())
+    }
+}
+
+macro_rules! wrap_wp {
+    {
+        $(#[$attr:meta])*
+        $vis:vis struct $wrapper:ident $(<$generic:ident: $obj_ty:ident>)? (Wp<$cxx_ty:ty>) {
+            clone: $cxx_clone:path,
+            destructor: $cxx_destructor:path,
+            promote: ($sp:ty, $cxx_promote:path),
+        }
+    } => {
+        // NOTE: The rust_object field should never be dereferenced. It only exists for promotion to an Sp.
+        $(#[$attr])*
+        $vis struct $wrapper<$($generic: $obj_ty)?> {
+            wp: crate::utils::Wp<$cxx_ty>,
+            $(rust_object: *mut $generic,)?
+        }
+
+        impl<$($generic: $obj_ty)?> $wrapper<$($generic)?> {
+            pub(crate) unsafe fn from_raw(ptr: *mut android_wp<$cxx_ty> $(, rust_object: *mut $generic)?) -> Option<Self> {
+                if ptr.is_null() {
+                    return None;
+                }
+
+                let wp = Wp(ptr);
+
+                // We always need to construct the wrapper before we return so that its
+                // destructor is called.
+                Some(Self { wp $(, rust_object: rust_object as *mut $generic)? })
+                // wrapper is dropped here, triggering its destructor if any
+            }
+
+            pub fn promote(&self) -> $crate::error::Result<$sp> {
+                let sp = unsafe { $cxx_promote(self.wp.as_native()) };
+
+                if sp.is_null() {
+                    return Err($crate::error::Error::DEAD_OBJECT);
+                }
+
+                unsafe {
+                    <$sp>::from_raw(sp $(, self.rust_object as *mut $generic)?).ok_or(Error::DEAD_OBJECT)
+                }
+            }
+        }
+
+        unsafe impl<$($generic: $obj_ty)?> AsNative<android_wp<$cxx_ty>> for $wrapper<$($generic)?> {
+            fn as_native(&self) -> *const android_wp<$cxx_ty> {
+                self.wp.0
+            }
+
+            fn as_native_mut(&mut self) -> *mut android_wp<$cxx_ty> {
+                self.wp.0
+            }
+        }
+
+        impl<$($generic: $obj_ty)?> Clone for $wrapper<$($generic)?> {
+            fn clone(&self) -> $wrapper<$($generic)?> {
+                unsafe {
+                    $wrapper::from_raw($cxx_clone(self.wp.as_native()) $(, self.rust_object as *mut $generic)?).unwrap()
+                }
+            }
+        }
+
+        impl<$($generic: $obj_ty)?> Drop for $wrapper<$($generic)?> {
+            fn drop(&mut self) {
+                unsafe { $cxx_destructor(self.wp.as_native_mut()) }
+            }
+        }
+    };
+}
+
 /// Owned version of C++ `String8`, a UTF-8 string.
 #[repr(transparent)]
 pub struct String8(*mut android_String8);

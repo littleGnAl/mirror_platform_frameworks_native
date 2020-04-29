@@ -18,10 +18,11 @@
 
 use crate::binder::{IBinder, IBinderInternal, TransactionCode, TransactionFlags};
 use crate::error::{binder_status, Error, Result};
+use crate::native::{DeathRecipient, DeathRecipientCallback, WeakDeathRecipient};
 use crate::parcel::{Parcel, Parcelable};
 use crate::service_manager::ServiceManager;
 use crate::sys::libbinder_bindings::*;
-use crate::utils::{AsNative, Sp, Str16, String16};
+use crate::utils::{AsNative, Sp, Str16, String16, Wp};
 
 use std::convert::TryInto;
 use std::os::unix::io::AsRawFd;
@@ -37,6 +38,7 @@ wrap_sp! {
         getter: android_c_interface_Sp_getIBinder,
         destructor: android_c_interface_Sp_DropIBinder,
         clone: android_c_interface_Sp_CloneIBinder,
+        strong_count: android_c_interface_Sp_StrongCountIBinder,
     }
 }
 
@@ -110,6 +112,43 @@ impl<T: AsNative<android_IBinder>> IBinder for T {
         let ibinder = unsafe { Interface::from_raw(out) };
 
         binder_status(status).map(|_| ibinder)
+    }
+
+    fn link_to_death<C: DeathRecipientCallback>(
+        &mut self,
+        recipient: &DeathRecipient<C>,
+        cookie: Option<usize>,
+        flags: TransactionFlags,
+    ) -> Result<()> {
+        binder_status(unsafe {
+            android_c_interface_IBinder_linkToDeath(
+                self.as_native_mut(),
+                recipient.as_native(),
+                cookie
+                    .map(|i| i as *mut libc::c_void)
+                    .unwrap_or(ptr::null_mut()),
+                flags,
+            )
+        })
+    }
+
+    fn unlink_to_death<C: DeathRecipientCallback>(
+        &mut self,
+        recipient: &WeakDeathRecipient<C>,
+        cookie: Option<usize>,
+        flags: TransactionFlags,
+    ) -> Result<()> {
+        binder_status(unsafe {
+            android_c_interface_IBinder_unlinkToDeath(
+                self.as_native_mut(),
+                recipient.as_native(),
+                cookie
+                    .map(|i| i as *mut libc::c_void)
+                    .unwrap_or(ptr::null_mut()),
+                flags,
+                ptr::null_mut(),
+            )
+        })
     }
 }
 
@@ -233,6 +272,15 @@ macro_rules! declare_binder_interface {
             }
         }
     };
+}
+
+wrap_wp! {
+    /// Rust wrapper around a weak reference to a Binder remote objects.
+    pub struct WeakInterface(Wp<android_IBinder>) {
+        clone: android_c_interface_Wp_CloneIBinder,
+        destructor: android_c_interface_Wp_DropIBinder,
+        promote: (Interface, android_c_interface_Wp_PromoteIBinder),
+    }
 }
 
 // ---------------------------------------------------------------------------

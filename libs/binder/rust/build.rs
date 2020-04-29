@@ -64,11 +64,11 @@ fn main() {
         .opaque_type("android::String8")
         .opaque_type("android::String16")
         .opaque_type("android::thread_id_t")
-        .opaque_type("android::wp")
         .opaque_type("android::Vector")
         .opaque_type("std::.*")
-        // We provide our own sp definition
+        // We provide our own definitions
         .blacklist_type("android::sp")
+        .blacklist_type("android::wp")
         // We don't want to ever see these types, as they should not be exposed
         .blacklist_type("android::Parcel_Blob")
         .blacklist_function("android::Parcel_Blob.*")

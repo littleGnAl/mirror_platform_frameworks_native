@@ -33,8 +33,41 @@ sp<IBinder>* Sp_CloneIBinder(const sp<IBinder> *ibinder) {
   assert(ibinder);
   return new sp(*ibinder);
 }
+sp<RustDeathRecipient>* Sp_CloneRustDeathRecipient(const sp<RustDeathRecipient> *rdr) {
+  return new sp(*rdr);
+}
+wp<RustDeathRecipient>* Sp_DowngradeRustDeathRecipient(const sp<RustDeathRecipient> *sp) {
+  return new wp(*sp);
+}
+wp<RustDeathRecipient>* Wp_CloneRustDeathRecipient(const wp<RustDeathRecipient>* wp_rdr) {
+  return new wp(*wp_rdr);
+}
+sp<RustDeathRecipient>* Wp_PromoteRustDeathRecipient(const wp<RustDeathRecipient>* wp_rdr) {
+  return new sp(wp_rdr->promote());
+}
+wp<RustBBinder>* Sp_DowngradeRustBBinder(const sp<RustBBinder> *sp) {
+  return new wp(*sp);
+}
+wp<RustBBinder>* Wp_CloneRustBBinder(const wp<RustBBinder>* wp_rdr) {
+  return new wp(*wp_rdr);
+}
+sp<RustBBinder>* Wp_PromoteRustBBinder(const wp<RustBBinder>* wp_rdr) {
+  return new sp(wp_rdr->promote());
+}
+int32_t Sp_StrongCountIBinder(const sp<IBinder>* sp_ib) {
+  return (*sp_ib)->getStrongCount();
+}
+sp<IBinder>* Wp_PromoteIBinder(const wp<IBinder>* wp_ib) {
+  return new sp(wp_ib->promote());
+}
+wp<IBinder>* Wp_CloneIBinder(const wp<IBinder> *ibinder) {
+  return new wp(*ibinder);
+}
 void Sp_DropIBinder(sp<IBinder> *sp) {
   delete sp;
+}
+void Wp_DropIBinder(wp<IBinder> *wp) {
+  delete wp;
 }
 sp<IServiceManager>* Sp_CloneIServceManager(const sp<IServiceManager> *ism) {
   assert(ism);
@@ -191,6 +224,17 @@ status_t IBinder_transact(IBinder* binder, uint32_t code, const Parcel* data,
                           Parcel* reply, uint32_t flags) {
   assert(binder && data);
   return binder->transact(code, *data, reply, flags);
+}
+status_t IBinder_linkToDeath(IBinder* binder, const sp<RustDeathRecipient>* recipient,
+                             void* cookie, uint32_t flags) {
+  assert(binder && recipient);
+  return binder->linkToDeath(*recipient, cookie, flags);
+}
+status_t IBinder_unlinkToDeath(IBinder* binder, const wp<RustDeathRecipient>* recipient,
+                               void* cookie, uint32_t flags, wp<IBinder::DeathRecipient>* outPtr) {
+  (void) outPtr;
+  assert(binder && recipient);
+  return binder->unlinkToDeath(*recipient, cookie, flags, 0);
 }
 sp<IInterface>* IBinder_queryLocalInterface(IBinder* binder, const String16* descriptor) {
   assert(binder && descriptor);
@@ -387,6 +431,43 @@ void UniqueFd_reset(base::unique_fd* self, int newValue) {
 
 void UniqueFd_destructor(base::unique_fd* self) {
   delete self;
+}
+
+class RustDeathRecipient: public IBinder::DeathRecipient {
+ public:
+  RustDeathRecipient(RustObject* object, BinderDiedCallback* binderDied, DestructCallback* destruct)
+    : mObject(object), mBinderDiedCallback(binderDied), mDestructCallback(destruct) {}
+
+ protected:
+  void binderDied(const wp<IBinder>& who) {
+    mBinderDiedCallback(mObject, new wp(who));
+  }
+
+  virtual ~RustDeathRecipient() {
+    mDestructCallback(mObject);
+  }
+
+ private:
+  // Rust remotable object
+  RustObject* mObject;
+  BinderDiedCallback* mBinderDiedCallback;
+  DestructCallback* mDestructCallback;
+};
+
+sp<RustDeathRecipient>* NewRustDeathRecipient(RustObject* object, BinderDiedCallback* binderDied, DestructCallback* destruct) {
+  return new sp(new RustDeathRecipient(object, binderDied, destruct));
+}
+
+void Sp_DropRustDeathRecipient(sp<RustDeathRecipient>* sp) {
+  delete sp;
+}
+
+void Wp_DropRustDeathRecipient(wp<RustDeathRecipient>* wp) {
+  delete wp;
+}
+
+void Wp_DropRustBBinder(wp<RustBBinder>* wp) {
+  delete wp;
 }
 
 } // namespace c_interface

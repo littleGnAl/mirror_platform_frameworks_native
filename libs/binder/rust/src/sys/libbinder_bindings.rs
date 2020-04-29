@@ -187,11 +187,6 @@ pub struct android_base_unique_fd_impl {
     pub fd_: ::std::os::raw::c_int,
 }
 pub type android_base_unique_fd = android_base_unique_fd_impl;
-#[repr(C)]
-#[derive(Copy, Clone)]
-pub struct android_wp {
-    pub _address: u8,
-}
 #[doc = "! This is a string holding UTF-8 characters. Does not allow the value more"]
 #[repr(C)]
 #[repr(align(8))]
@@ -1365,10 +1360,10 @@ extern "C" {
     #[link_name = "\u{1}_ZN7android7BBinder13unlinkToDeathERKNS_2wpINS_7IBinder14DeathRecipientEEEPvjPS4_"]
     pub fn android_BBinder_unlinkToDeath(
         this: *mut ::std::os::raw::c_void,
-        recipient: *const u8,
+        recipient: *const android_wp<android_IBinder_DeathRecipient>,
         cookie: *mut ::std::os::raw::c_void,
         flags: u32,
-        outRecipient: *mut u8,
+        outRecipient: *mut android_wp<android_IBinder_DeathRecipient>,
     ) -> android_status_t;
 }
 extern "C" {
@@ -4565,6 +4560,11 @@ pub enum android_c_interface_Error {
 pub struct android_c_interface_RustBBinder {
     _unused: [u8; 0],
 }
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub struct android_c_interface_RustDeathRecipient {
+    _unused: [u8; 0],
+}
 extern "C" {
     #[link_name = "\u{1}_ZN7android11c_interface15Sp_CloneIBinderEPKNS_2spINS_7IBinderEEE"]
     pub fn android_c_interface_Sp_CloneIBinder(
@@ -4572,8 +4572,72 @@ extern "C" {
     ) -> *mut android_sp<android_IBinder>;
 }
 extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface26Sp_CloneRustDeathRecipientEPKNS_2spINS0_18RustDeathRecipientEEE"]
+    pub fn android_c_interface_Sp_CloneRustDeathRecipient(
+        sp: *const android_sp<android_c_interface_RustDeathRecipient>,
+    ) -> *mut android_sp<android_c_interface_RustDeathRecipient>;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface30Sp_DowngradeRustDeathRecipientEPKNS_2spINS0_18RustDeathRecipientEEE"]
+    pub fn android_c_interface_Sp_DowngradeRustDeathRecipient(
+        sp: *const android_sp<android_c_interface_RustDeathRecipient>,
+    ) -> *mut android_wp<android_c_interface_RustDeathRecipient>;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface26Wp_CloneRustDeathRecipientEPKNS_2wpINS0_18RustDeathRecipientEEE"]
+    pub fn android_c_interface_Wp_CloneRustDeathRecipient(
+        wp: *const android_wp<android_c_interface_RustDeathRecipient>,
+    ) -> *mut android_wp<android_c_interface_RustDeathRecipient>;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface28Wp_PromoteRustDeathRecipientEPKNS_2wpINS0_18RustDeathRecipientEEE"]
+    pub fn android_c_interface_Wp_PromoteRustDeathRecipient(
+        wp: *const android_wp<android_c_interface_RustDeathRecipient>,
+    ) -> *mut android_sp<android_c_interface_RustDeathRecipient>;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface23Sp_DowngradeRustBBinderEPKNS_2spINS0_11RustBBinderEEE"]
+    pub fn android_c_interface_Sp_DowngradeRustBBinder(
+        sp: *const android_sp<android_c_interface_RustBBinder>,
+    ) -> *mut android_wp<android_c_interface_RustBBinder>;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface19Wp_CloneRustBBinderEPKNS_2wpINS0_11RustBBinderEEE"]
+    pub fn android_c_interface_Wp_CloneRustBBinder(
+        wp: *const android_wp<android_c_interface_RustBBinder>,
+    ) -> *mut android_wp<android_c_interface_RustBBinder>;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface21Wp_PromoteRustBBinderEPKNS_2wpINS0_11RustBBinderEEE"]
+    pub fn android_c_interface_Wp_PromoteRustBBinder(
+        wp: *const android_wp<android_c_interface_RustBBinder>,
+    ) -> *mut android_sp<android_c_interface_RustBBinder>;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface21Sp_StrongCountIBinderEPKNS_2spINS_7IBinderEEE"]
+    pub fn android_c_interface_Sp_StrongCountIBinder(
+        sp_ib: *const android_sp<android_IBinder>,
+    ) -> i32;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface17Wp_PromoteIBinderEPKNS_2wpINS_7IBinderEEE"]
+    pub fn android_c_interface_Wp_PromoteIBinder(
+        wp_ib: *const android_wp<android_IBinder>,
+    ) -> *mut android_sp<android_IBinder>;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface15Wp_CloneIBinderEPKNS_2wpINS_7IBinderEEE"]
+    pub fn android_c_interface_Wp_CloneIBinder(
+        wp: *const android_wp<android_IBinder>,
+    ) -> *mut android_wp<android_IBinder>;
+}
+extern "C" {
     #[link_name = "\u{1}_ZN7android11c_interface14Sp_DropIBinderEPNS_2spINS_7IBinderEEE"]
     pub fn android_c_interface_Sp_DropIBinder(sp: *mut android_sp<android_IBinder>);
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface14Wp_DropIBinderEPNS_2wpINS_7IBinderEEE"]
+    pub fn android_c_interface_Wp_DropIBinder(wp: *mut android_wp<android_IBinder>);
 }
 extern "C" {
     #[link_name = "\u{1}_ZN7android11c_interface23Sp_CloneIServiceManagerEPKNS_2spINS_15IServiceManagerEEE"]
@@ -4637,6 +4701,9 @@ pub type android_c_interface_TransactCallback = ::std::option::Option<
 >;
 pub type android_c_interface_DestructCallback =
     ::std::option::Option<unsafe extern "C" fn(object: *mut RustObject)>;
+pub type android_c_interface_BinderDiedCallback = ::std::option::Option<
+    unsafe extern "C" fn(object: *const RustObject, who: *mut android_wp<android_IBinder>),
+>;
 extern "C" {
     #[link_name = "\u{1}_ZN7android11c_interface14NewRustBBinderEP10RustObjectPKNS_8String16EPFiPNS0_11RustBBinderES2_jPKNS_6ParcelEPS8_jEPFvS2_E"]
     pub fn android_c_interface_NewRustBBinder(
@@ -4645,6 +4712,14 @@ extern "C" {
         transactCallback: android_c_interface_TransactCallback,
         destructCallback: android_c_interface_DestructCallback,
     ) -> *mut android_sp<android_c_interface_RustBBinder>;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface21NewRustDeathRecipientEP10RustObjectPFvPKS1_PNS_2wpINS_7IBinderEEEEPFvS2_E"]
+    pub fn android_c_interface_NewRustDeathRecipient(
+        object: *mut RustObject,
+        binderDied: android_c_interface_BinderDiedCallback,
+        destructCallback: android_c_interface_DestructCallback,
+    ) -> *mut android_sp<android_c_interface_RustDeathRecipient>;
 }
 extern "C" {
     #[link_name = "\u{1}_ZN7android11c_interface25RustBBinder_writeToParcelEPKNS_2spINS0_11RustBBinderEEEPNS_6ParcelE"]
@@ -4736,6 +4811,24 @@ extern "C" {
     ) -> android_status_t;
 }
 extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface25Sp_DropRustDeathRecipientEPNS_2spINS0_18RustDeathRecipientEEE"]
+    pub fn android_c_interface_Sp_DropRustDeathRecipient(
+        sp: *mut android_sp<android_c_interface_RustDeathRecipient>,
+    );
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface25Wp_DropRustDeathRecipientEPNS_2wpINS0_18RustDeathRecipientEEE"]
+    pub fn android_c_interface_Wp_DropRustDeathRecipient(
+        wp: *mut android_wp<android_c_interface_RustDeathRecipient>,
+    );
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface18Wp_DropRustBBinderEPNS_2wpINS0_11RustBBinderEEE"]
+    pub fn android_c_interface_Wp_DropRustBBinder(
+        wp: *mut android_wp<android_c_interface_RustBBinder>,
+    );
+}
+extern "C" {
     #[link_name = "\u{1}_ZN7android11c_interface21DefaultServiceManagerEv"]
     pub fn android_c_interface_DefaultServiceManager() -> *mut android_sp<android_IServiceManager>;
 }
@@ -4759,6 +4852,25 @@ extern "C" {
         data: *const android_Parcel,
         reply: *mut android_Parcel,
         flags: u32,
+    ) -> android_status_t;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface19IBinder_linkToDeathEPNS_7IBinderEPKNS_2spINS0_18RustDeathRecipientEEEPvj"]
+    pub fn android_c_interface_IBinder_linkToDeath(
+        binder: *mut android_IBinder,
+        recipient: *const android_sp<android_c_interface_RustDeathRecipient>,
+        cookie: *mut ::std::os::raw::c_void,
+        flags: u32,
+    ) -> android_status_t;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface21IBinder_unlinkToDeathEPNS_7IBinderEPKNS_2wpINS0_18RustDeathRecipientEEEPvjPNS3_INS1_14DeathRecipientEEE"]
+    pub fn android_c_interface_IBinder_unlinkToDeath(
+        binder: *mut android_IBinder,
+        recipient: *const android_wp<android_c_interface_RustDeathRecipient>,
+        cookie: *mut ::std::os::raw::c_void,
+        flags: u32,
+        outPtr: *mut android_wp<android_IBinder_DeathRecipient>,
     ) -> android_status_t;
 }
 extern "C" {
