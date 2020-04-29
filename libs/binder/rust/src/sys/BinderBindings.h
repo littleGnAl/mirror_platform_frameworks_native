@@ -69,9 +69,21 @@ enum Error {
 };
 
 class RustBBinder;
+class RustDeathRecipient;
 
 sp<IBinder>* Sp_CloneIBinder(const sp<IBinder> *sp);
+sp<RustDeathRecipient>* Sp_CloneRustDeathRecipient(const sp<RustDeathRecipient>* sp);
+wp<RustDeathRecipient>* Sp_DowngradeRustDeathRecipient(const sp<RustDeathRecipient>* sp);
+wp<RustDeathRecipient>* Wp_CloneRustDeathRecipient(const wp<RustDeathRecipient>* wp);
+sp<RustDeathRecipient>* Wp_PromoteRustDeathRecipient(const wp<RustDeathRecipient>* wp);
+wp<RustBBinder>* Sp_DowngradeRustBBinder(const sp<RustBBinder> *sp);
+wp<RustBBinder>* Wp_CloneRustBBinder(const wp<RustBBinder>* wp);
+sp<RustBBinder>* Wp_PromoteRustBBinder(const wp<RustBBinder>* wp);
+int32_t Sp_StrongCountIBinder(const sp<IBinder>* sp_ib);
+sp<IBinder>* Wp_PromoteIBinder(const wp<IBinder>* wp_ib);
+wp<IBinder>* Wp_CloneIBinder(const wp<IBinder> *wp);
 void Sp_DropIBinder(sp<IBinder> *sp);
+void Wp_DropIBinder(wp<IBinder> *wp);
 sp<IServiceManager>* Sp_CloneIServiceManager(const sp<IServiceManager> *sp);
 void Sp_DropIServiceManager(sp<IServiceManager> *sp);
 void Sp_DropRustBBinder(sp<RustBBinder> *sp);
@@ -91,6 +103,8 @@ typedef void(BinderDiedCallback)(const RustObject* object, wp<IBinder>* who);
 sp<RustBBinder>* NewRustBBinder(RustObject* object, const String16* descriptor,
                                   TransactCallback* transactCallback,
                                   DestructCallback* destructCallback);
+sp<RustDeathRecipient>* NewRustDeathRecipient(RustObject* object, BinderDiedCallback* binderDied,
+                                              DestructCallback* destructCallback);
 status_t RustBBinder_writeToParcel(const sp<RustBBinder>* binder, Parcel* parcel);
 void RustBBinder_setExtension(RustBBinder* binder, const sp<IBinder>* ext);
 sp<IBinder>* RustBBinder_getExtension(RustBBinder* binder);
@@ -105,6 +119,9 @@ status_t RustBBinder_getDebugPid(RustBBinder* binder, pid_t* outPid);
 bool RustBBinder_checkSubclass(const RustBBinder* binder, const void* subclassID);
 status_t RustBBinder_transact(RustBBinder* binder, uint32_t code, const Parcel* data, Parcel* reply,
                               uint32_t flags);
+void Sp_DropRustDeathRecipient(sp<RustDeathRecipient>* sp);
+void Wp_DropRustDeathRecipient(wp<RustDeathRecipient>* wp);
+void Wp_DropRustBBinder(wp<RustBBinder>* wp);
 sp<IServiceManager>* DefaultServiceManager();
 
 // ProcessState methods
@@ -114,6 +131,10 @@ void FlushCommands();
 
 status_t IBinder_transact(IBinder* binder, uint32_t code, const Parcel* data,
                           Parcel* reply, uint32_t flags);
+status_t IBinder_linkToDeath(IBinder* binder, const sp<RustDeathRecipient>* recipient,
+                             void* cookie, uint32_t flags);
+status_t IBinder_unlinkToDeath(IBinder* binder, const wp<RustDeathRecipient>* recipient,
+                               void* cookie, uint32_t flags, wp<IBinder::DeathRecipient>* outPtr);
 sp<IInterface>* IBinder_queryLocalInterface(IBinder* binder, const String16* descriptor);
 const String16* IBinder_getInterfaceDescriptor(const IBinder* binder);
 bool IBinder_isBinderAlive(const IBinder* binder);
