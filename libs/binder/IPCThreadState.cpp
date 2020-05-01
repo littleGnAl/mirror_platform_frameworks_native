@@ -42,6 +42,9 @@
 #include <sys/resource.h>
 #include <unistd.h>
 
+// FIXME remove changes to this file
+#include <iostream>
+
 #include "Static.h"
 
 #if LOG_NDEBUG
@@ -715,6 +718,9 @@ status_t IPCThreadState::transact(int32_t handle,
         err = waitForResponse(nullptr, nullptr);
     }
 
+    if (err != OK) {
+        std::cout << "ERROR RESULT: " <<  __func__ << " " << err << std::endl;
+    }
     return err;
 }
 
@@ -915,6 +921,10 @@ finish:
         if (acquireResult) *acquireResult = err;
         if (reply) reply->setError(err);
         mLastError = err;
+    }
+
+    if (err != OK) {
+        std::cout << "ERROR RESULT: " <<  __func__ << " " << err << std::endl;
     }
 
     return err;

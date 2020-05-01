@@ -108,10 +108,11 @@ cc_library {
         android: {
             srcs: libbinder_device_interface_sources,
 
+            // FIXME * 1000 - DO NOT SUBMIT THIS CHANGE IN THIS FORM
             // NOT static to keep the wire protocol unfrozen
-            static: {
-                enabled: false,
-            },
+            // static: {
+            //    enabled: false,
+            // },
         },
         vendor: {
             exclude_srcs: libbinder_device_interface_sources,

@@ -164,3 +164,13 @@ cc_test {
     test_suites: ["device-tests"],
     require_root: true,
 }
+
+cc_test {
+    name: "binderBufferFilledTest",
+    defaults: ["binder_test_defaults"],
+    srcs: ["binderBufferFilledTest.cpp", "IBinderBufferFilledTest.aidl"],
+    shared_libs: ["libcutils", "libutils", "liblog"],
+    static_libs: ["libbinder"],
+    test_suites: ["device-tests"],
+    require_root: true,
+}
