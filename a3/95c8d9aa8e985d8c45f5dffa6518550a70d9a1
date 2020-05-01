@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Steven Moreland <smoreland@google.com>
+Code-Review+1: Peiyong Lin <lpy@google.com>
+Code-Review+1: Patrick Plunkett <patplunkett@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Jooyung Han <jooyung@google.com>
+Submitted-at: Fri, 01 May 2020 17:35:33 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1287219
+Project: platform/frameworks/native
+Branch: refs/heads/master
