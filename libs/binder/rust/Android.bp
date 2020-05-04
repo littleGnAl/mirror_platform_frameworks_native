@@ -8,19 +8,32 @@ cc_library_static {
     ],
 }
 
-rust_library_rlib {
-    name: "libbinder_rs",
-    crate_name: "binder",
-    srcs: ["src/lib.rs"],
+rust_bindgen_rlib {
+    name: "libbinder_rs_sys",
+    crate_name: "binder_rs_sys",
+    srcs: ["bindgen.rs"],
     shared_libs: [
         "libbinder",
         "libutils",
     ],
+    rlibs: [
+        "liblibc",
+    ],
+    headers: [
+        "src/sys/BinderBindings.h",
+    ],
+}
+
+rust_library_rlib {
+    name: "libbinder_rs",
+    crate_name: "binder",
+    srcs: ["src/lib.rs"],
     static_libs: [
         "libbinder_rs_bindings",
     ],
     rlibs: [
         "liblibc",
+        "libbinder_rs_sys",
     ],
 }
 
@@ -42,6 +55,7 @@ rust_test {
     ],
     rlibs: [
         "liblibc",
+        "libbinder_rs_sys",
     ],
     dylibs: [
         "libtest",

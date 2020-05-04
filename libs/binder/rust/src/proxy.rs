@@ -16,14 +16,13 @@
 
 //! Rust API for interacting with a remote binder service.
 
+use binder_rs_sys::*;
 use crate::binder::{IBinder, IBinderInternal, TransactionCode, TransactionFlags};
 use crate::error::{binder_status, Error, Result};
 use crate::parcel::{Parcel, Parcelable};
 use crate::service_manager::ServiceManager;
-use crate::sys::libbinder_bindings::*;
 use crate::utils::{AsNative, Sp, Str16, String16};
 
-use std::convert::TryInto;
 use std::os::unix::io::AsRawFd;
 use std::ptr;
 
@@ -97,7 +96,7 @@ impl<T: AsNative<android_IBinder>> IBinder for T {
                 self.as_native_mut(),
                 fp.as_raw_fd(),
                 args.as_ptr(),
-                args.len().try_into().unwrap(),
+                args.len(),
             )
         };
         binder_status(status)

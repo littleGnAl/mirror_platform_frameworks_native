@@ -25,7 +25,6 @@ mod binder;
 mod error;
 mod native;
 mod state;
-mod sys;
 
 pub mod interfaces;
 pub mod parcel;
@@ -38,8 +37,9 @@ pub use native::Service;
 pub use proxy::get_service;
 pub use proxy::{Handle, Interface};
 pub use state::{ProcessState, ThreadState};
-pub use sys::binder_size_t as size_t;
 pub use utils::{Str16, Str8, String16, String8, UniqueFd};
+
+pub use binder_rs_sys::binder_size_t as size_t;
 
 /// Re-exports of core structures, prefixed with `Binder`.
 ///

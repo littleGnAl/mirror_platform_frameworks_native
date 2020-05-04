@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
+use binder_rs_sys::*;
 use crate::error::{binder_status, Result};
-use crate::sys::libbinder_bindings::*;
 
-use std::any::type_name;
-use std::convert::{AsRef, TryInto};
+use std::convert::AsRef;
 use std::fmt;
 use std::ops;
 use std::os::unix::io::{AsRawFd, RawFd};
@@ -231,7 +230,7 @@ impl String8 {
             android_String8_append2(
                 self.0,
                 bytes.as_ptr() as *const libc::c_char,
-                bytes.len().try_into().unwrap(),
+                bytes.len(),
             )
         };
         binder_status(status)
@@ -261,7 +260,7 @@ impl From<&str> for String8 {
         unsafe {
             String8(android_c_interface_NewString8FromUtf8(
                 s.as_bytes().as_ptr().cast(),
-                s.len().try_into().unwrap(),
+                s.len(),
             ))
         }
     }
@@ -272,7 +271,7 @@ impl From<&[u8]> for String8 {
         unsafe {
             String8(android_c_interface_NewString8FromUtf8(
                 slice.as_ptr() as *const _,
-                slice.len().try_into().unwrap(),
+                slice.len(),
             ))
         }
     }
@@ -328,10 +327,10 @@ impl Str8 {
             data = ptr::NonNull::dangling().as_ptr();
         }
 
-        unsafe { std::slice::from_raw_parts(data.cast(), self.len().try_into().unwrap()) }
+        unsafe { std::slice::from_raw_parts(data.cast(), self.len()) }
     }
 
-    pub fn len(&self) -> size_t {
+    pub fn len(&self) -> usize {
         unsafe { android_String8_length(&self.0) }
     }
 
@@ -418,7 +417,7 @@ impl From<&str> for String16 {
         unsafe {
             String16(android_c_interface_NewString16FromUtf16(
                 s.as_ptr(),
-                s.len().try_into().unwrap(),
+                s.len(),
             ))
         }
     }
@@ -429,7 +428,7 @@ impl From<&[u8]> for String16 {
         unsafe {
             String16(android_c_interface_NewString16FromUtf8(
                 slice.as_ptr() as *const _,
-                slice.len().try_into().unwrap(),
+                slice.len(),
             ))
         }
     }
@@ -475,7 +474,7 @@ impl Str16 {
         unsafe { String16::from_raw(android_c_interface_CopyString16(self.as_native())) }
     }
 
-    pub fn size(&self) -> size_t {
+    pub fn size(&self) -> usize {
         unsafe { android_String16_size(self.as_native()) }
     }
 
@@ -488,7 +487,7 @@ impl Str16 {
             data = ptr::NonNull::dangling().as_ptr();
         }
 
-        unsafe { std::slice::from_raw_parts(data, self.size().try_into().unwrap()) }
+        unsafe { std::slice::from_raw_parts(data, self.size()) }
     }
 
     pub fn to_string(&self) -> String {
@@ -518,12 +517,6 @@ impl PartialEq for Str16 {
 impl fmt::Debug for Str16 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         self.to_string().fmt(f)
-    }
-}
-
-impl<T> fmt::Debug for android_sp<T> {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        format!("sp<{:?}>", type_name::<T>()).fmt(f)
     }
 }
 

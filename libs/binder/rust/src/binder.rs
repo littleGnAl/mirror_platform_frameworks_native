@@ -16,11 +16,11 @@
 
 //! Trait definitions for binder objects
 
+use binder_rs_sys::*;
 use crate::parcel::Parcel;
 use crate::proxy::IInterface;
 use crate::service_manager::{DumpFlags, ServiceManager};
 use crate::state::{ProcessState, ThreadState};
-use crate::sys::libbinder_bindings::*;
 use crate::utils::{Str16, String16};
 use crate::{Error, Interface, Result, Service};
 

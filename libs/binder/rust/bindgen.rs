@@ -16,25 +16,16 @@
 
 extern crate bindgen;
 
-use std::path::Path;
+use std::env;
+use std::io;
 
 fn main() {
-    println!("cargo:rustc-link-lib=binder");
-    println!("cargo:rerun-if-changed=src/sys/BinderBindings.h");
-
-    let bindings = bindgen::Builder::default()
-        // These include paths will be provided by soong once it supports
-        // bindgen.
-        .clang_arg("-I../include")
-        .clang_arg("-I../../../../../system/core/libutils/include")
-        .clang_arg("-I../../../../../system/core/liblog/include")
-        .clang_arg("-I../../../../../system/core/libsystem/include")
-        .clang_arg("-I../../../../../system/core/base/include")
-        .clang_arg("-I../../../../../system/core/libcutils/include")
+    let mut bindings = bindgen::Builder::default()
         .clang_args(&["-x", "c++"])
         .clang_arg("-std=gnu++17")
-        // Our interface shims
-        .header("src/sys/BinderBindings.h")
+        // Avoid some checked casts because we know uintptr_t == size_t. This
+        // property is enforced by a static assert in the bindings header.
+        .size_t_is_usize(true)
         .whitelist_function("android::c_interface::.*")
         .whitelist_type("android::c_interface::Error")
         .rustified_non_exhaustive_enum("android::c_interface::Error")
@@ -77,17 +68,40 @@ fn main() {
         .blacklist_type("android::RefBase.*")
         .blacklist_function("android::RefBase.*")
         .blacklist_type("android::wp_weakref_type")
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
-        .derive_debug(false)
-        .generate()
-        .expect("Bindgen failed to generate bindings for libbinder");
+        .blacklist_function("android::binder::Status_exceptionToString")
+        .derive_debug(false);
 
-    // write bindings
-    let out_path = Path::new("src/sys/libbinder_bindings.rs");
-    bindings.write_to_file(&out_path).unwrap_or_else(|_| {
-        panic!(
-            "Bindgen failed to writing bindings to {}",
-            out_path.display()
-        )
-    });
+    // Skip over executable
+    let mut args = env::args().skip(1);
+    loop {
+        if let Some(arg) = args.next() {
+            if arg == "--" {
+                break;
+            }
+            bindings = bindings.header(arg);
+        } else {
+            break;
+        }
+    }
+
+    for arg in args {
+        bindings = bindings.clang_arg(arg);
+    }
+
+    println!("#![allow(non_camel_case_types, non_snake_case, non_upper_case_globals)]");
+    println!("#[repr(C)]");
+    println!("pub struct android_sp<T> {{");
+    println!("    _opaque: [u8; 0],");
+    println!("    _phantom: std::marker::PhantomData<T>,");
+    println!("}}\n");
+
+    // TODO: Remove when rust-bindgen >= 0.53.2 is available in external/
+    println!("fn android_binder_Status_exceptionToString(_: android_status_t) -> std_string {{");
+    println!("    unreachable!(\"Temporary workaround until a version of rust-bindgen with commit ee2f289a2d57e4d67fe38d060f0c93e9ab866183 is released\");");
+    println!("}}\n");
+
+    bindings.generate()
+        .expect("Bindgen failed to generate bindings for libbinder")
+        .write(Box::new(io::stdout()))
+        .expect("Failed to write bindings to standard out");
 }

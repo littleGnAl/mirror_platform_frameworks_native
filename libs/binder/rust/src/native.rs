@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
+use binder_rs_sys::*;
 use crate::binder::Binder;
 use crate::error::{binder_status, Error, Result};
 use crate::parcel::Parcel;
 use crate::proxy::Interface;
-use crate::sys::libbinder_bindings::*;
 use crate::utils::{AsNative, Sp, String16};
 
 use std::ops::Deref;

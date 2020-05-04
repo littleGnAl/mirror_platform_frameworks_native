@@ -16,9 +16,9 @@
 
 //! Container for messages that are sent via binder.
 
-use crate::error::{binder_status, Error, Result};
+use binder_rs_sys::*;
+use crate::error::{binder_status, status_t, Error, Result};
 use crate::proxy::Interface;
-use crate::sys::{libbinder_bindings::*, status_t};
 use crate::utils::{AsNative, Str16, Str8, String16, String8};
 use crate::{Binder, Service};
 
@@ -110,30 +110,30 @@ impl Parcel {
     pub fn data(&self) -> &[u8] {
         unsafe {
             let data = android_Parcel_data(self.as_native());
-            slice::from_raw_parts(as_nonnull_ptr(data), self.data_size().try_into().unwrap())
+            slice::from_raw_parts(as_nonnull_ptr(data), self.data_size())
         }
     }
 
     /// Returns the total amount of data contained in the parcel.
-    pub fn data_size(&self) -> size_t {
+    pub fn data_size(&self) -> usize {
         unsafe { android_Parcel_dataSize(self.as_native()) }
     }
 
     /// Returns the amount of data remaining to be read from the parcel. That is,
     /// data_size() - data_position().
-    pub fn data_avail(&self) -> size_t {
+    pub fn data_avail(&self) -> usize {
         unsafe { android_Parcel_dataAvail(self.as_native()) }
     }
 
     /// Returns the current position in the parcel data. Never more than dataSize().
-    pub fn data_position(&self) -> size_t {
+    pub fn data_position(&self) -> usize {
         unsafe { android_Parcel_dataPosition(self.as_native()) }
     }
 
     /// Returns the total amount of space in the parcel. This is always >= dataSize().
     /// The difference between it and dataSize() is the amount of room left until the parcel
     /// needs to re-allocate its data buffer.
-    pub fn data_capacity(&self) -> size_t {
+    pub fn data_capacity(&self) -> usize {
         unsafe { android_Parcel_dataCapacity(self.as_native()) }
     }
 
@@ -150,14 +150,14 @@ impl Parcel {
     /// behavior.
     ///
     /// Shrinking the `dataSize` into the original memory size is always a safe operation.
-    pub unsafe fn set_data_size(&mut self, size: size_t) -> Result<()> {
+    pub unsafe fn set_data_size(&mut self, size: usize) -> Result<()> {
         let status = android_Parcel_setDataSize(self.as_native_mut(), size);
 
         binder_status(status)
     }
 
     /// Move the current read/write position in the parcel.
-    pub fn set_data_position(&self, pos: size_t) -> Result<()> {
+    pub fn set_data_position(&self, pos: usize) -> Result<()> {
         // pos: New offset in the parcel; must be between 0 and data_size().
         if pos > self.data_size() {
             return Err(Error::BAD_VALUE);
@@ -171,7 +171,7 @@ impl Parcel {
     }
 
     /// Change the capacity (current available space) of the parcel.
-    pub fn set_data_capacity(&mut self, size: size_t) -> Result<()> {
+    pub fn set_data_capacity(&mut self, size: usize) -> Result<()> {
         // size: The new capacity of the parcel, in bytes. Can not be less than dataSize()
         // -- that is, you can not drop existing data with this method.
         if size < self.data_size() {
@@ -186,14 +186,14 @@ impl Parcel {
     /// Unconditionally set the data payload of this `Parcel`.
     pub unsafe fn set_data(&mut self, data: &[u8]) -> Result<()> {
         let status =
-            android_Parcel_setData(self.as_native_mut(), data.as_ptr(), data.len().try_into().unwrap());
+            android_Parcel_setData(self.as_native_mut(), data.as_ptr(), data.len());
 
         binder_status(status)
     }
 
     /// The start offset and len are bounds checked by the original C++ code and
     /// return BAD_VALUE in such a case.
-    pub fn append_from(&mut self, parcel: &Parcel, start: size_t, len: size_t) -> Result<()> {
+    pub fn append_from(&mut self, parcel: &Parcel, start: usize, len: usize) -> Result<()> {
         let status = unsafe { android_Parcel_appendFrom(self.as_native_mut(), parcel.as_native(), start, len) };
 
         binder_status(status)
@@ -238,7 +238,7 @@ impl Parcel {
         unsafe { android_Parcel_freeData(self.as_native_mut()) }
     }
 
-    pub fn objects_count(&self) -> size_t {
+    pub fn objects_count(&self) -> usize {
         unsafe { android_Parcel_objectsCount(self.as_native()) }
     }
 
@@ -254,7 +254,7 @@ impl Parcel {
         binder_status(android_Parcel_write(
             self.as_native_mut(),
             data.as_ptr() as *const c_void,
-            data.len().try_into().unwrap(),
+            data.len(),
         ))
     }
 
@@ -262,7 +262,7 @@ impl Parcel {
         binder_status(android_Parcel_writeUnpadded(
             self.as_native_mut(),
             data.as_ptr() as *const c_void,
-            data.len().try_into().unwrap(),
+            data.len(),
         ))
     }
 
@@ -304,7 +304,7 @@ impl Parcel {
 
     pub fn write_string16_bytes(&mut self, str: &[u16]) -> Result<()> {
         let status = unsafe {
-            android_Parcel_writeString163(self.as_native_mut(), str.as_ptr(), str.len().try_into().unwrap())
+            android_Parcel_writeString163(self.as_native_mut(), str.as_ptr(), str.len())
         };
 
         binder_status(status)
@@ -324,7 +324,7 @@ impl Parcel {
     }
 
     pub fn write_i32_slice(&mut self, array: &[i32]) -> Result<()> {
-        let len = array.len().try_into().unwrap();
+        let len = array.len();
 
         unsafe {
             binder_status(android_Parcel_writeInt32Array(
@@ -339,10 +339,8 @@ impl Parcel {
     // weird like P: [P2] here and the `Copy` bound ensures only simple types
     // like ints and floats are byte copied.
     pub fn write_slice<P: Copy + Parcelable>(&mut self, slice: &[P]) -> Result<()> {
-        let p_len: size_t = slice.len().try_into().unwrap();
-        let byte_size = size_of::<P>()
-            .try_into()
-            .expect("Conversion to always succeed");
+        let p_len: usize = slice.len();
+        let byte_size = size_of::<P>();
         let byte_len = p_len.checked_mul(byte_size).ok_or(Error::BAD_VALUE)?;
 
         // This is only safe to do for Copy types:
@@ -356,13 +354,13 @@ impl Parcel {
     }
 
     pub fn write_u8_slice(&mut self, slice: &[u8]) -> Result<()> {
-        let len = slice.len().try_into().unwrap();
+        let len = slice.len();
 
         unsafe { binder_status(android_Parcel_writeByteArray(self.as_native_mut(), len, slice.as_ptr())) }
     }
 
     pub fn write_i8_slice(&mut self, slice: &[i8]) -> Result<()> {
-        let len = slice.len().try_into().unwrap();
+        let len = slice.len();
 
         unsafe {
             binder_status(android_Parcel_writeByteArray(
@@ -374,7 +372,7 @@ impl Parcel {
     }
 
     pub fn write_u16_slice(&mut self, slice: &[u16]) -> Result<()> {
-        let len: size_t = slice.len().try_into().map_err(|_| Error::BAD_VALUE)?;
+        let len: usize = slice.len();
         let byte_len = len.checked_mul(2).ok_or(Error::BAD_VALUE)?;
 
         unsafe {
@@ -424,7 +422,7 @@ impl Parcel {
     /// Writes the size of a slice to this `Parcel`. Similar to `Parcel::writeVectorSize` but
     /// usable on more types than just `Vec`s.
     pub fn write_slice_size<T>(&mut self, slice: &[T]) -> Result<()> {
-        self.write_i32(slice.len().try_into().map_err(|_| Error::BAD_VALUE)?)
+        self.write_i32(slice.len().try_into().unwrap())
     }
 
     /// Place a file descriptor into the parcel. The given fd must remain
@@ -481,7 +479,7 @@ impl Parcel {
     /// processes without further copying whereas mutable blobs always need to be copied.
     pub fn write_blob<'b, 'p: 'b>(
         &'p mut self,
-        len: size_t,
+        len: usize,
         mutable_copy: bool,
     ) -> Result<WritableBlob<'b>> {
         let mut blob = ptr::null_mut();
@@ -521,10 +519,8 @@ impl Parcel {
     // weird like P: [P2] here and `Copy` ensures only simple types are byte
     // copied
     pub fn read_to_slice<P: Copy + Parcelable>(&self, slice: &mut [P]) -> Result<()> {
-        let byte_size = size_of::<P>()
-            .try_into()
-            .expect("Conversion to always succeed");
-        let len: size_t = slice.len().try_into().map_err(|_| Error::BAD_VALUE)?;
+        let byte_size = size_of::<P>();
+        let len: usize = slice.len();
         let byte_len = len.checked_mul(byte_size).ok_or(Error::BAD_VALUE)?;
         let status = unsafe {
             android_Parcel_read(self.as_native(), slice.as_mut_ptr() as *mut libc::c_void, byte_len)
@@ -535,9 +531,7 @@ impl Parcel {
 
     pub fn resize_vec<P: Default + Parcelable>(&self, vec: &mut Vec<P>) -> Result<()> {
         let byte_len: usize = self.read_i32()?.try_into().or(Err(Error::BAD_VALUE))?;
-        let byte_size = size_of::<P>()
-            .try_into()
-            .expect("Conversion to always succeed");
+        let byte_size = size_of::<P>();
         let new_len = byte_len.checked_div(byte_size).ok_or(Error::BAD_VALUE)?;
 
         vec.resize_with(new_len, Default::default);
@@ -554,11 +548,11 @@ impl Parcel {
 
     /// Attempts to read `len` number of bytes directly in the parser starting at the
     /// current position. Returns an empty slice on errors (ie attempted out of bounds).
-    pub fn read_inplace(&self, len: size_t) -> &[u8] {
+    pub fn read_inplace(&self, len: usize) -> &[u8] {
         unsafe {
             let data = android_Parcel_readInplace(self.as_native(), len);
 
-            slice::from_raw_parts(as_nonnull_ptr(data as *const u8), len.try_into().unwrap())
+            slice::from_raw_parts(as_nonnull_ptr(data as *const u8), len)
         }
     }
 
@@ -682,7 +676,7 @@ impl Parcel {
         unsafe {
             let mut out_len = 0;
             let data = android_Parcel_readString16Inplace(self.as_native(), &mut out_len);
-            slice::from_raw_parts(as_nonnull_ptr(data), out_len.try_into().unwrap())
+            slice::from_raw_parts(as_nonnull_ptr(data), out_len)
         }
     }
 
@@ -696,7 +690,7 @@ impl Parcel {
     /// Reads utf16 string into a vec of utf8 strings.
     pub fn read_utf8_slice_from_utf16(&self) -> Result<Vec<String>> {
         let size = self.read_i32()?;
-        let mut vec = Vec::with_capacity(size.try_into().unwrap());
+        let mut vec = Vec::with_capacity(size as usize);
 
         for _ in 0..size {
             vec.push(self.read_utf8_from_utf16()?);
@@ -755,7 +749,7 @@ impl Parcel {
     }
 
     /// Reads a blob from the parcel.
-    pub fn read_blob<'b, 'p: 'b>(&'p self, len: size_t) -> Result<ReadableBlob<'b>> {
+    pub fn read_blob<'b, 'p: 'b>(&'p self, len: usize) -> Result<ReadableBlob<'b>> {
         let mut blob = ptr::null_mut();
         let status = unsafe { android_c_interface_Parcel_readBlob(self.as_native(), len, &mut blob) };
 
@@ -768,12 +762,12 @@ impl Parcel {
     }
 
     /// Debugging: get metric on current allocations.
-    pub unsafe fn get_global_alloc_size() -> size_t {
+    pub unsafe fn get_global_alloc_size() -> usize {
         android_Parcel_getGlobalAllocSize()
     }
 
     /// Debugging: get metric on current allocations.
-    pub unsafe fn get_global_alloc_count() -> size_t {
+    pub unsafe fn get_global_alloc_count() -> usize {
         android_Parcel_getGlobalAllocCount()
     }
 
@@ -789,13 +783,13 @@ impl Parcel {
 
     /// There's also a `getBlobAshmemSize`, but it seems to return the same field
     /// as this method.
-    pub fn get_open_ashmem_size(&self) -> size_t {
+    pub fn get_open_ashmem_size(&self) -> usize {
         unsafe { android_Parcel_getOpenAshmemSize(self.as_native()) }
     }
 
     // The following Parcel C++ methods are not yet exposed to Rust:
     //
-    // void*               writeInplace(size_t len);
+    // void*               writeInplace(usize len);
     // intptr_t            readIntPtr() const;
     // status_t            readIntPtr(intptr_t *pArg) const;
 }

@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-#pragma once
+#ifndef BINDER_BINDINGS_H
+#define BINDER_BINDINGS_H
 
 #include <cstdint>
 #include <memory>
@@ -173,3 +174,9 @@ void UniqueFd_destructor(base::unique_fd* self);
 } // namespace c_interface
 
 } // namespace android
+
+// We rely on this property to allow bindgen to translate size_t as usize with
+// .size_t_is_usize(true), so let's enforce it.
+static_assert(sizeof(size_t) == sizeof(uintptr_t), "size_t and uintptr_t are not the same size");
+
+#endif // BINDER_BINDINGS_H
