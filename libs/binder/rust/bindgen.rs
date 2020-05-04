@@ -1,24 +1,12 @@
 extern crate bindgen;
 
-use std::path::Path;
+use std::env;
+use std::io;
 
 fn main() {
-    println!("cargo:rustc-link-lib=binder");
-    println!("cargo:rerun-if-changed=src/sys/BinderBindings.h");
-
-    let bindings = bindgen::Builder::default()
-        // These include paths will be provided by soong once it supports
-        // bindgen.
-        .clang_arg("-I../include")
-        .clang_arg("-I../../../../../system/core/libutils/include")
-        .clang_arg("-I../../../../../system/core/liblog/include")
-        .clang_arg("-I../../../../../system/core/libsystem/include")
-        .clang_arg("-I../../../../../system/core/base/include")
-        .clang_arg("-I../../../../../system/core/libcutils/include")
+    let mut bindings = bindgen::Builder::default()
         .clang_args(&["-x", "c++"])
         .clang_arg("-std=gnu++17")
-        // Our interface shims
-        .header("src/sys/BinderBindings.h")
         .whitelist_function("android::c_interface::.*")
         .opaque_type("android::c_interface::BinderNative")
         // Simple types we can export from C++. Make sure these types are ALL
@@ -59,17 +47,34 @@ fn main() {
         .blacklist_type("android::RefBase.*")
         .blacklist_function("android::RefBase.*")
         .blacklist_type("android::wp_weakref_type")
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
-        .derive_debug(false)
-        .generate()
-        .expect("Bindgen failed to generate bindings for libbinder");
+        .blacklist_function("android::binder::Status_exceptionToString")
+        .derive_debug(false);
 
-    // write bindings
-    let out_path = Path::new("src/sys/libbinder_bindings.rs");
-    bindings.write_to_file(&out_path).unwrap_or_else(|_| {
-        panic!(
-            "Bindgen failed to writing bindings to {}",
-            out_path.display()
-        )
-    });
+    // Skip over executable
+    let mut args = env::args().skip(1);
+    loop {
+        if let Some(arg) = args.next() {
+            if arg == "--" {
+                break;
+            }
+            bindings = bindings.header(arg);
+        } else {
+            break;
+        }
+    }
+
+    for arg in args {
+        bindings = bindings.clang_arg(arg);
+    }
+
+    println!("#[repr(C)]");
+    println!("pub struct android_sp<T> {{");
+    println!("    _opaque: [u8; 0],");
+    println!("    _phantom: std::marker::PhantomData<T>,");
+    println!("}}\n");
+
+    bindings.generate()
+        .expect("Bindgen failed to generate bindings for libbinder")
+        .write(Box::new(io::stdout()))
+        .expect("Failed to write bindings to standard out");
 }

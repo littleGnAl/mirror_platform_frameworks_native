@@ -1,9 +1,9 @@
 //! Manually implemented IServiceManager AIDL interface.
 
 use crate::binder::IBinder;
+use crate::error::Status;
 use crate::parcel::Parcel;
 use crate::service_manager::DumpFlags;
-use crate::sys::Status;
 use crate::utils::String16;
 use crate::{Binder, Interface, Result, Service};
 

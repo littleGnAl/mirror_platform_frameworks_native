@@ -1,8 +1,13 @@
-pub use crate::sys::status_t;
 use libc;
 use std::error;
 use std::fmt::{Display, Formatter, Result as FmtResult};
 use std::result;
+
+use binder_rs_sys::*;
+use crate::parcel::Parcel;
+use crate::utils::AsNative;
+
+pub use binder_rs_sys::android_status_t as status_t;
 
 /// Error codes from Android `libutils`.
 // All error codes are negative integer values. Derived from the anonymous enum
@@ -55,6 +60,14 @@ pub enum Error {
     UNEXPECTED_NULL = (Self::UNKNOWN_ERROR as i32 + 8),
 }
 
+impl Display for Error {
+    fn fmt(&self, f: &mut Formatter) -> FmtResult {
+        write!(f, "Error::{:?}", self)
+    }
+}
+
+impl error::Error for Error {}
+
 /// A specialized [`Result`](result::Result) for binder operations.
 pub type Result<T> = result::Result<T, Error>;
 
@@ -101,10 +114,31 @@ pub fn binder_status(status: status_t) -> Result<()> {
     }
 }
 
-impl Display for Error {
-    fn fmt(&self, f: &mut Formatter) -> FmtResult {
-        write!(f, "Error::{:?}", self)
+/// Wrapper for `android_binder::Status`.
+// TODO: Do we want to rely on this being a POD type or should we treat it as an
+// opaque pointer too?
+#[repr(transparent)]
+pub struct Status(android_binder_Status);
+
+impl Status {
+    pub fn from_parcel(parcel: &Parcel) -> Result<Self> {
+        unsafe {
+            let mut status = android_binder_Status {
+                mException: 0,
+                mErrorCode: 0,
+                mMessage: android_String8::new(),
+            };
+            let err =
+                android_binder_Status_readFromParcel(&mut status as *mut _, parcel.as_native());
+            binder_status(err)?;
+            Ok(Status(status))
+        }
     }
 }
 
-impl error::Error for Error {}
+impl From<Status> for Result<()> {
+    fn from(status: Status) -> Self {
+        // TODO: return both Exceptions and low level transaction codes
+        binder_status(status.0.mErrorCode)
+    }
+}

@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-#pragma once
+#ifndef BINDER_BINDINGS_H
+#define BINDER_BINDINGS_H
 
 #include <cstdint>
 #include <memory>
@@ -147,3 +148,5 @@ void UniqueFd_destructor(base::unique_fd* self);
 } // namespace c_interface
 
 } // namespace android
+
+#endif // BINDER_BINDINGS_H
