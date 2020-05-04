@@ -1,7 +1,6 @@
+use binder_rs_sys::*;
 use crate::error::{binder_status, Result};
-use crate::sys::libbinder_bindings::*;
 
-use std::any::type_name;
 use std::convert::{AsRef, TryInto};
 use std::fmt;
 use std::ops;
@@ -502,12 +501,6 @@ impl PartialEq for Str16 {
 impl fmt::Debug for Str16 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         self.to_string().fmt(f)
-    }
-}
-
-impl<T> fmt::Debug for android_sp<T> {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        format!("sp<{:?}>", type_name::<T>()).fmt(f)
     }
 }
 

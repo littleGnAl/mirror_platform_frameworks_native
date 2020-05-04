@@ -1,8 +1,8 @@
 //! Container for messages that are sent via binder.
 
-use crate::error::{binder_status, Error, Result};
+use binder_rs_sys::*;
+use crate::error::{binder_status, status_t, Error, Result};
 use crate::proxy::Interface;
-use crate::sys::{libbinder_bindings::*, status_t};
 use crate::utils::{AsNative, Str16, Str8, String16, String8};
 use crate::{Binder, Service};
 

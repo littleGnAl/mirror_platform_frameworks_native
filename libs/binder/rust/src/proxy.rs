@@ -1,10 +1,10 @@
 //! Rust API for interacting with a remote binder service.
 
+use binder_rs_sys::*;
 use crate::binder::{IBinder, IBinderInternal, TransactionCode, TransactionFlags};
 use crate::error::{binder_status, Error, Result};
 use crate::parcel::{Parcel, Parcelable};
 use crate::service_manager::ServiceManager;
-use crate::sys::libbinder_bindings::*;
 use crate::utils::{AsNative, Sp, Str16, String16};
 
 use std::convert::TryInto;
