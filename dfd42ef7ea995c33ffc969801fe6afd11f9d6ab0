@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9467279e_24649e5f",
+        "filename": "libs/gui/BufferQueueConsumer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-05-06T09:44:32Z",
+      "side": 1,
+      "message": "This triggers an additional IPC. I think we need to run quite a lot of performance tests that mimic extreme but real use cases on devices that don\u0027t need these CLs to see if there is a significant performance regression or not.",
+      "range": {
+        "startLine": 329,
+        "startChar": 8,
+        "endLine": 329,
+        "endChar": 40
+      },
+      "revId": "dfd42ef7ea995c33ffc969801fe6afd11f9d6ab0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6c0a21_68984716",
+        "filename": "libs/gui/Surface.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-05-06T09:44:32Z",
+      "side": 1,
+      "message": "I\u0027m not sure about the performance implications of this but could we implement the new callback function here instead so that releaseSlot() as well as the other two CLs won\u0027t be needed?",
+      "range": {
+        "startLine": 1300,
+        "startChar": 8,
+        "endLine": 1300,
+        "endChar": 22
+      },
+      "revId": "dfd42ef7ea995c33ffc969801fe6afd11f9d6ab0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
