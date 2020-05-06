@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "891fd98f_9cc2d00d",
+        "filename": "libs/gui/Surface.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-05-06T05:02:11Z",
+      "side": 1,
+      "message": "Why isn\u0027t this done below, where the return value of IGraphicBufferProducer::dequeueBuffer() has been checked (and the lock is held)?",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 32
+      },
+      "revId": "063611bc7c8fec79692285a25f9bd9823763fe0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae54a34e_f6dbf944",
+        "filename": "libs/gui/Surface.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-05-06T05:02:11Z",
+      "side": 1,
+      "message": "Should this be done even when err !\u003d OK?",
+      "range": {
+        "startLine": 864,
+        "startChar": 4,
+        "endLine": 864,
+        "endChar": 27
+      },
+      "revId": "063611bc7c8fec79692285a25f9bd9823763fe0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
