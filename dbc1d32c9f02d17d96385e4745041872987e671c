@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "09bb25c2_36d9bf87",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-06T19:51:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "23ac45fa_82dacee2",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0cee7b7_acad87c9",
         "filename": "libs/binder/rust/src/client.rs",
         "patchSetId": 11
@@ -178,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "3e2d378e_450f065c",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-06T19:51:21Z",
+      "side": 1,
+      "message": "Since we\u0027d already be setting up a separate build in the case of windows, couldn\u0027t  we just to a separate bindgen invocation with windows #defines set? I\u0027m assuming we finish landing your other patches for running bindgen at build time.",
+      "parentUuid": "ecc3840b_13ee34b5",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "470b9764_1be4f08c",
         "filename": "libs/binder/rust/src/error.rs",
         "patchSetId": 11
@@ -210,6 +246,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cd89bfe_f6c6373e",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-06T19:51:21Z",
+      "side": 1,
+      "message": "Let\u0027s keep it as is for now, we can swap if we end up pulling in num_derive for something else (which I expect will happen sooner or later).",
+      "parentUuid": "7df86794_2517673f",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -283,6 +337,24 @@
     },
     {
       "key": {
+        "uuid": "5c1d53fb_1f13d166",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-06T19:51:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eed7d476_cd73d544",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2b38c64_2299ae9a",
         "filename": "libs/binder/rust/src/native.rs",
         "patchSetId": 11
@@ -315,6 +387,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5078ba_c2376b93",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-06T19:51:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f1bc79c7_72e965f7",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -951,6 +1041,24 @@
     },
     {
       "key": {
+        "uuid": "7a6377e1_b62a4c63",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-06T19:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "287b94cc_d8466bd9",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "925425c6_e8ef4524",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 11
@@ -1232,6 +1340,24 @@
     },
     {
       "key": {
+        "uuid": "a7f66c2b_cba0ed30",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-06T19:51:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9cbd0822_ed8e347e",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c78a2ace_d435bb45",
         "filename": "libs/binder/rust/src/service_manager.rs",
         "patchSetId": 11
@@ -1408,6 +1534,24 @@
     },
     {
       "key": {
+        "uuid": "49248ea9_138dd1f9",
+        "filename": "libs/binder/rust/src/sys.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-06T19:51:21Z",
+      "side": 1,
+      "message": "If this is the standard way to do an opaque struct as per the nomicon, we shouldn\u0027t need a comment. We should maybe highlight it in any developer notes for doing FFI we write up though.",
+      "parentUuid": "e88bdeeb_bd8be9c7",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e551079e_1cb285d1",
         "filename": "libs/binder/rust/src/utils.rs",
         "patchSetId": 11
@@ -1440,6 +1584,24 @@
       "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6feabda7_6bcfb74b",
+        "filename": "libs/binder/rust/src/utils.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-06T19:51:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9bfcb742_4e3bad87",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

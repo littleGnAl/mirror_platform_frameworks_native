@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e51e5c90_bcac3372",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-06T19:51:21Z",
+      "side": 1,
+      "message": "Introduced a spelling error?",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "147fdefe643b9b555e112ff69b5a9dbcdc142c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
