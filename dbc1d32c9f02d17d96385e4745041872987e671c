@@ -214,6 +214,24 @@
     },
     {
       "key": {
+        "uuid": "96200a6f_7dcf7031",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-06T21:13:00Z",
+      "side": 1,
+      "message": "Done. I remembered why I didn\u0027t do this initially... the enum is anonymous and has to be re-exposed to bindgen. Now that we have a C++ bindings file that\u0027s easy.",
+      "parentUuid": "3e2d378e_450f065c",
+      "revId": "dbc1d32c9f02d17d96385e4745041872987e671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "470b9764_1be4f08c",
         "filename": "libs/binder/rust/src/error.rs",
         "patchSetId": 11
