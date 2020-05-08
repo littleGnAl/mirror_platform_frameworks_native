@@ -233,11 +233,17 @@ binder_status_t AParcel_writeStrongBinder(AParcel* parcel, AIBinder* binder) {
 binder_status_t AParcel_readStrongBinder(const AParcel* parcel, AIBinder** binder) {
     sp<IBinder> readBinder = nullptr;
     status_t status = parcel->get()->readNullableStrongBinder(&readBinder);
+    std::cout << __PRETTY_FUNCTION__ << " " << __LINE__ << " tid: " << gettid() << " " << status
+              << " " << readBinder.get() << std::endl;
     if (status != STATUS_OK) {
         return PruneStatusT(status);
     }
     sp<AIBinder> ret = ABpBinder::lookupOrCreateFromBinder(readBinder);
+    std::cout << __PRETTY_FUNCTION__ << " " << __LINE__ << " tid: " << gettid() << " " << status
+              << " " << ret.get() << std::endl;
     AIBinder_incStrong(ret.get());
+    std::cout << __PRETTY_FUNCTION__ << " " << __LINE__ << " tid: " << gettid() << " " << status
+              << " " << ret.get() << std::endl;
     *binder = ret.get();
     return PruneStatusT(status);
 }

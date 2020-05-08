@@ -29,7 +29,8 @@ cc_defaults {
     },
 }
 
-cc_library_shared {
+// FIXME - should be shared only
+cc_library {
     name: "libbinder_ndk",
 
     defaults: ["libbinder_ndk_host_user"],
