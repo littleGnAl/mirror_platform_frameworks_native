@@ -17,7 +17,12 @@
     },
     // AdoptableHostTest moves packages, part of which is handled by installd
     {
-      "name": "AdoptableHostTest"
+      "name": "CtsAppSecurityHostTestCases",
+      "options": [
+        {
+          "include-filter": "android.appsecurity.cts.AdoptableHostTest"
+        }
+      ]
     },
     {
       "name": "CtsUsesLibraryHostTestCases"
