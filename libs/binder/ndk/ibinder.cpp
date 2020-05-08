@@ -91,6 +91,8 @@ bool AIBinder::associateClass(const AIBinder_Class* clazz) {
                        << currentDescriptor.c_str() << "'.";
         }
 
+        std::cout << __PRETTY_FUNCTION__ << " " << __LINE__ << " tid: " << gettid() << " false"
+                  << std::endl;
         // always a failure because we know mClazz != clazz
         return false;
     }
@@ -101,6 +103,8 @@ bool AIBinder::associateClass(const AIBinder_Class* clazz) {
     if (descriptor != newDescriptor) {
         LOG(ERROR) << __func__ << ": Expecting binder to have class '" << newDescriptor.c_str()
                    << "' but descriptor is actually '" << descriptor.c_str() << "'.";
+        std::cout << __PRETTY_FUNCTION__ << " " << __LINE__ << " tid: " << gettid() << " false"
+                  << std::endl;
         return false;
     }
 
