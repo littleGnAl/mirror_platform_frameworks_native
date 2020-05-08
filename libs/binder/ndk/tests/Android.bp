@@ -107,3 +107,30 @@ aidl_interface {
         "IEmpty.aidl",
     ],
 }
+
+cc_test {
+    name: "binderNdkDroppedTest",
+    srcs: [
+        "binderNdkDroppedTest.cpp",
+    ],
+    static_libs: [
+        "IBinderNdkDroppedTest-ndk_platform",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "libbinder_ndk",
+        "libutils",
+    ],
+    test_suites: ["general-tests"],
+    require_root: true,
+    auto_gen_config: true,
+}
+
+aidl_interface {
+    name: "IBinderNdkDroppedTest",
+    unstable: true,
+    srcs: [
+        "IBinderNdkDroppedTest.aidl",
+    ],
+}
