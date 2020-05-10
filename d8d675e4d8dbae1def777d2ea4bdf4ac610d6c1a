@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3620a159_90aa1e8c",
+        "filename": "libs/binder/rust/benches/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-10T19:19:46Z",
+      "side": 1,
+      "message": "Why are you using this over std::time? Using bindgen + C++ just to do timing measurement seems like overkill.",
+      "revId": "d8d675e4d8dbae1def777d2ea4bdf4ac610d6c1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
