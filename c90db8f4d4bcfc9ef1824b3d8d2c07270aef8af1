@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3798a305_daf862ac",
+        "filename": "libs/binder/rust/bindgen.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-10T19:17:18Z",
+      "side": 1,
+      "message": "Should we consider moving this argument parsing code into a mini-library of sorts, since it will likely be used in nearly all bindgen.rs files?\n\nThis doesn\u0027t need to block this CL, but could be a good addition to our bindgen support to at least make default usage easier.",
+      "revId": "c90db8f4d4bcfc9ef1824b3d8d2c07270aef8af1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
