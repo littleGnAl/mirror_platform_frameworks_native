@@ -16,6 +16,24 @@
       "revId": "c90db8f4d4bcfc9ef1824b3d8d2c07270aef8af1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "870fdb39_c7cbf631",
+        "filename": "libs/binder/rust/bindgen.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-11T21:20:02Z",
+      "side": 1,
+      "message": "Definitely think this is worthwhile. Do we have a place to put such a crate, or would an external crate be preferred? I\u0027d think that keeping a utility like this in-tree would be the way to go.",
+      "parentUuid": "3798a305_daf862ac",
+      "revId": "c90db8f4d4bcfc9ef1824b3d8d2c07270aef8af1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
