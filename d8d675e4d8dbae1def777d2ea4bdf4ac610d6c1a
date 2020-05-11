@@ -16,6 +16,24 @@
       "revId": "d8d675e4d8dbae1def777d2ea4bdf4ac610d6c1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a81aab5e_8de21fa5",
+        "filename": "libs/binder/rust/benches/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-11T17:29:27Z",
+      "side": 1,
+      "message": "I discovered using std::time itself added about a 5-7% slowdown to average transaction time compared to the C++ version. From profiling it looked like there was extra computation happening inside the timing loop, so I wanted to try measuring time exactly the same way as the C++ benchmark so that I had comparable results. I didn\u0027t investigate further after trying the C++ shims and seeing that the overhead was gone, so I can\u0027t say exactly what the issue was.\n\nThis is a temporary measure; I don\u0027t think this should be merged in, but I did want to post the patch in case you or someone else wanted to benchmark on other hardware. I\u0027m hoping that criterion measurements will be comparable to C++ chrono. If criterion is still a ways off, I will investigate this further and find a simpler solution.",
+      "parentUuid": "3620a159_90aa1e8c",
+      "revId": "d8d675e4d8dbae1def777d2ea4bdf4ac610d6c1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
