@@ -16,6 +16,24 @@
       "revId": "cd967eb401a1b8a047a4bde7c0e63d8286060a3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b46eb6_ffc88e54",
+        "filename": "libs/gui/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1234352
+      },
+      "writtenOn": "2020-05-12T17:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f01e910d_e7b31717",
+      "revId": "cd967eb401a1b8a047a4bde7c0e63d8286060a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
