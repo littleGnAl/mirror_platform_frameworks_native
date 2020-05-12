@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d1718dd3_ff58e091",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-12T22:49:39Z",
+      "side": 1,
+      "message": "Agreed, I glossed over this because all our previous packages have set edition explicitly, but that\u0027s because they\u0027re from crates.io. 2018 is the default edition for the platform right now, and since this is a platform package we should omit this line to use the default.",
+      "parentUuid": "35b20223_e5078baf",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8decf9d7_2f5f56b4",
         "filename": "libs/binder/rust/Android.bp",
         "patchSetId": 17
@@ -88,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "40250fb4_439c8830",
+        "filename": "libs/binder/rust/binder.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-12T22:49:39Z",
+      "side": 1,
+      "message": "This file wasn\u0027t for use by users, it was for bindgen. However, they\u0027re now using BinderBindings.h for this, so this file should be deleted (I don\u0027t see any references to it anymore.)",
+      "parentUuid": "f12a670e_974ba584",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6cd92d95_08d9afb8",
         "filename": "libs/binder/rust/build.rs",
         "patchSetId": 17
@@ -99,6 +141,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "please explain the idea behind this term, and how it fits in with aidl:, aidl_interface, aidl-gen",
+      "range": {
+        "startLine": 11,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc6013c4_0885543c",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-12T22:49:39Z",
+      "side": 1,
+      "message": "bindgen is unrelated to aidl. Bindgen is a tool for generating Rust bindings to C/C++ functions.",
+      "parentUuid": "6cd92d95_08d9afb8",
       "range": {
         "startLine": 11,
         "startChar": 11,
@@ -381,6 +447,30 @@
     },
     {
       "key": {
+        "uuid": "549a9c09_15bee809",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-12T22:49:39Z",
+      "side": 1,
+      "message": "pub(crate) is a visibility qualifier that means that it is allowed outside this rust module (e.g. this file) but not outside of the crate (e.g. not outside the libbinder_rust library).",
+      "parentUuid": "871ad4f6_bc25a93e",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 32
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a2471b7_d1522f83",
         "filename": "libs/binder/rust/src/error.rs",
         "patchSetId": 17
@@ -415,6 +505,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "FYI: rust has the option here to use IServiceManager generated from AIDL rather than re-creating a custom interface",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075ed26a_d5aaf76c",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-12T22:49:39Z",
+      "side": 1,
+      "message": "I think we should do this eventually, but having an IServiceManager to test things until we have AIDL seems useful.",
+      "parentUuid": "5475985c_b35046e8",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -473,6 +587,30 @@
     },
     {
       "key": {
+        "uuid": "35455ed0_27bbec38",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-12T22:49:39Z",
+      "side": 1,
+      "message": "+1 to str8/string16\n\nHe\u0027s trying to mirror the String/str setup in Rust. A String is an owned string, with a growable heap backing. A str is closer to a slice, and usually only shows up as \u0026str.",
+      "parentUuid": "2c237ff2_bbe93f3c",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcf20491_dd6d2e4c",
         "filename": "libs/binder/rust/src/native.rs",
         "patchSetId": 17
@@ -519,6 +657,30 @@
     },
     {
       "key": {
+        "uuid": "08cbf788_1fc27f58",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-12T22:49:39Z",
+      "side": 1,
+      "message": "This is a 1-ary tuple (e.g. it is a thin wrapper around a pointer) with no potential to add extra fields. This pattern is common in Rust when attaching a different set of methods/traits to an existing value.\n\nWe haven\u0027t set down a style guide yet, but I\u0027m open to arguments that even these should be done with named fields.",
+      "parentUuid": "ce3a4936_21fa9d0b",
+      "range": {
+        "startLine": 252,
+        "startChar": 15,
+        "endLine": 252,
+        "endChar": 17
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed766238_a7b3d600",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 17
@@ -553,6 +715,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "should we take the opportunity to simplify APIs or only add APIs which AIDL uses? In many cases, APIs exist in binder only because we can\u0027t remove them",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 5
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2303dc94_df20f744",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-05-12T22:49:39Z",
+      "side": 1,
+      "message": "Yes, I think this would be beneficial. Since we don\u0027t have any users yet we can pare at least public methods down to what AIDL will use before we stabilize this.",
+      "parentUuid": "82779eae_1ed4bcfd",
       "range": {
         "startLine": 414,
         "startChar": 0,
