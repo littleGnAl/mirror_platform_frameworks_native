@@ -1,0 +1,733 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35b20223_e5078baf",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "document why not use platform default?",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8decf9d7_2f5f56b4",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "size/perf impact?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a34d8ac_b3a1a766",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f12a670e_974ba584",
+        "filename": "libs/binder/rust/binder.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "license if we keep this file, but why not have users explicilty import?",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd92d95_08d9afb8",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "please explain the idea behind this term, and how it fits in with aidl:, aidl_interface, aidl-gen",
+      "range": {
+        "startLine": 11,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea20bc0c_ebe3c734",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "license everywhere",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e075abf_ca629183",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "need to distinguish transact and on_transact, to match existing semantics everywhere, right? Nothing distinguishes between BpBinder/BBinder in APIs.",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0fe29bb_0af2ba76",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "I think it is optional for transact, but should be non-optional in on_transact (where oneway functions use a fake parcel object). I believe this layout is used to simplify code, but not sure",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ca681c8_255666ed",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "document unsafe usage (everywhere)",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae3154b_820fa74e",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "is it possible to delegate to BBinder getInterfaceDescriptor?\n\nAnother thing to consider is that all binder strings are utf16 on the wire, so we might want to store these as utf16 here?",
+      "range": {
+        "startLine": 61,
+        "startChar": 47,
+        "endLine": 61,
+        "endChar": 49
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce24d509_66b40a68",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "any particular need for this class? I have never found it particularly good https://2014.jsconf.eu/speakers/sebastian-markbage-minimal-api-surface-area-learning-patterns-instead-of-frameworks.html is one talk talking about why we might not want these types of things.",
+      "range": {
+        "startLine": 80,
+        "startChar": 10,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aabf924_fce32a19",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "do these need to be external APIs?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 89
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693dcf6d_1d8c66f4",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "binder?",
+      "range": {
+        "startLine": 145,
+        "startChar": 49,
+        "endLine": 145,
+        "endChar": 58
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f7eaac9_90cfffee",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "relatively critical",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 22
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0287197f_2fb2afa8",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "recommended to avoid",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23aeab0d_254ac8c9",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "definitely need equivalent functionality",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 21
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871ad4f6_bc25a93e",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "pub + internal seems oxymoronic to me. Should we document where/how this should be used? Is it intended to be used by clients, or is \"Internal\" supposed to mean \"do not use this\"?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 32
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2471b7_d1522f83",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "how to encode Status.h (comes back to AIDL operation/standard used features there, like interop w/ Java)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5475985c_b35046e8",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "FYI: rust has the option here to use IServiceManager generated from AIDL rather than re-creating a custom interface",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9d55d5c_ea59594f",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "and I think you mentioned plan is to avoid these in accordance w/ go/aidl-it?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c237ff2_bbe93f3c",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "is this supposed to be slice/class? I\u0027m curious then why not str16/String16 then? or otherwise why do we have both?",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf20491_dd6d2e4c",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "so I guess here is where we skip transact? btw, if you don\u0027t see it yet, you should be able to see it by making Java/C++/NDK calls to a rust bbinder ping object, which unless I\u0027m missing something, should show up as UNSUPPORTED_TRANSACTION",
+      "range": {
+        "startLine": 188,
+        "startChar": 16,
+        "endLine": 188,
+        "endChar": 42
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce3a4936_21fa9d0b",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "avoid tuple-like objects for clarity\n\n(I also suggest struct { t a; t b; } in C++ over tuple).",
+      "range": {
+        "startLine": 252,
+        "startChar": 15,
+        "endLine": 252,
+        "endChar": 17
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed766238_a7b3d600",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "is this needed? closing off access seems better from an API perspective, to me",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82779eae_1ed4bcfd",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "should we take the opportunity to simplify APIs or only add APIs which AIDL uses? In many cases, APIs exist in binder only because we can\u0027t remove them",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 5
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a9999a_4a6dc7d1",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "seems like this is two versions of the same API surface?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59bd0e63_df9452b3",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need to implement this twice, right? getInterfaceDescriptor can call getInterfaceDescriptor on a BpBinder or BBinder via IBinder. This file has a lot of duplication from native.rs.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 58
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24f25ebf_082485f7",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "if two proxy objects point to the same remote object, how do you know if the remote object is the same (haven\u0027t looked too deeply here, but this is an easy mistake)",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bfa9ae4_951ba0ea",
+        "filename": "libs/binder/rust/src/sys/BinderBindings.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "do we need to allocate sp object on heap? libbinder_ndk is able to avoid this.\n\nRather than \u0027sp\u003cIBinder\u003e*\u0027 we would have \u0027RefBase*\u0027, and use incStrong, decStrong. Then you also should be able to avoid having to implement \"sp functions\" for each type",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b8526e9_562b4f7f",
+        "filename": "libs/binder/rust/src/sys/BinderBindings.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "for instance, this could be:\n\n... \u003d new ...\n...-\u003eincStrong...\nreturn ...",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94365225_b308c27f",
+        "filename": "libs/binder/rust/src/sys/BinderBindings.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "why assert in some places and not in others?",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b45ae7_a0a3a80b",
+        "filename": "libs/binder/rust/src/sys/status.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "functionality should be available",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956cca2c_85fdd356",
+        "filename": "libs/binder/rust/src/utils.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T21:46:03Z",
+      "side": 1,
+      "message": "total order based on pointer should be appropriate?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
