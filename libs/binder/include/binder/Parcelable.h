@@ -52,6 +52,12 @@ public:
     //
     // Returns android::OK on success and an appropriate error otherwise.
     virtual status_t readFromParcel(const Parcel* parcel) = 0;
+
+    enum class Stability : int32_t {
+        UNSTABLE = 0,
+        STABLE = 1,
+        VINTF = 2,
+    };
 };  // class Parcelable
 
 #if defined(__clang__)
