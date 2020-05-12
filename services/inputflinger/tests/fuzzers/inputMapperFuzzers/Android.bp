@@ -1,0 +1,9 @@
+cc_defaults {
+    name: "inputFlinger_inputMapper_fuzz_defaults",
+    defaults: [
+        "inputFlinger_fuzz_defaults"
+    ],
+    include_dirs: [
+        "frameworks/native/services/inputflinger/tests/fuzzers",
+    ],
+}

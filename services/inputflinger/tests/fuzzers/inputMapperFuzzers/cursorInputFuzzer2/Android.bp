@@ -1,0 +1,9 @@
+cc_fuzz {
+    name: "inputFlinger_CursorInputFuzzer2",
+    defaults: [
+        "inputFlinger_inputMapper_fuzz_defaults"
+    ],
+    srcs: [
+        "cursorInputFuzzer2.cpp",
+    ],
+}

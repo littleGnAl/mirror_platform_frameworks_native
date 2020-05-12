@@ -1,0 +1,9 @@
+cc_fuzz {
+    name: "inputFlinger_KeyboardInputFuzzer",
+    defaults: [
+        "inputFlinger_inputMapper_fuzz_defaults"
+    ],
+    srcs: [
+      "keyboardInputFuzzer.cpp",
+    ],
+}
