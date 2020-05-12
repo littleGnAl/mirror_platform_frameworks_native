@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b69311_12430598",
+        "filename": "libs/binder/include/binder/Parcelable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-12T09:54:45Z",
+      "side": 1,
+      "message": "How are STABLE and VINTF differ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "fe807e65c7db97495c4faa2a8abf6a9f1d64783a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "543e0a4d_4c21b3f1",
+        "filename": "libs/binder/include/binder/Parcelable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-12T09:54:45Z",
+      "side": 1,
+      "message": "can\u0027t we make use of the ones defined in include/binder/Stability.h?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "fe807e65c7db97495c4faa2a8abf6a9f1d64783a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
