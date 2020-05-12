@@ -1,0 +1,49 @@
+cc_defaults {
+    name: "inputflinger_inputMapper_fuzz_defaults",
+    defaults: [
+        "inputflinger_fuzz_defaults",
+    ],
+    include_dirs: [
+        "frameworks/native/services/inputflinger/tests/fuzzers",
+    ],
+}
+
+cc_fuzz {
+    name: "inputflinger_CursorInputFuzzer",
+    defaults: [
+        "inputflinger_inputMapper_fuzz_defaults",
+    ],
+    srcs: [
+        "CursorInputFuzzer.cpp",
+    ],
+}
+
+cc_fuzz {
+    name: "inputflinger_CursorInputFuzzer2",
+    defaults: [
+        "inputflinger_inputMapper_fuzz_defaults",
+    ],
+    srcs: [
+        "CursorInputFuzzer2.cpp",
+    ],
+}
+
+cc_fuzz {
+    name: "inputflinger_KeyboardInputFuzzer",
+    defaults: [
+        "inputflinger_inputMapper_fuzz_defaults",
+    ],
+    srcs: [
+        "KeyboardInputFuzzer.cpp",
+    ],
+}
+
+cc_fuzz {
+    name: "inputflinger_MultiTouchInputFuzzer",
+    defaults: [
+        "inputflinger_inputMapper_fuzz_defaults",
+    ],
+    srcs: [
+        "MultiTouchInputFuzzer.cpp",
+    ],
+}
