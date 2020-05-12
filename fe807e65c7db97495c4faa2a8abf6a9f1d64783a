@@ -93,6 +93,30 @@
       "revId": "fe807e65c7db97495c4faa2a8abf6a9f1d64783a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73dd1eac_8c2c7356",
+        "filename": "libs/binder/include/binder/Parcelable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-12T20:14:06Z",
+      "side": 1,
+      "message": "Parcelable needs to reflect system/vendor as well. Just like after b/139325195, we\u0027ll need to reflect apex, presumably. We shouldn\u0027t let these two notions diverge in the runtime.",
+      "parentUuid": "99723379_c9ac0dd9",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "fe807e65c7db97495c4faa2a8abf6a9f1d64783a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
