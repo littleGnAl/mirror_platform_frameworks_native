@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "345114ed_1482884b",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-13T21:42:41Z",
+      "side": 0,
+      "message": "This was definitely a typo before in the test, since the intention is that the object is deleted. Guess not before since it\u0027s a proxy? I think my comment here was saying that \"if this was not nullptr, we would need to decStrong the return value of AIBinder_Weak_promote\"\n\nHowever, I wonder if this could be a dangerous behavior change?",
+      "range": {
+        "startLine": 263,
+        "startChar": 11,
+        "endLine": 263,
+        "endChar": 13
+      },
+      "revId": "dd44f7465d53fe155c03c0b1129c467a1f1c5830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
