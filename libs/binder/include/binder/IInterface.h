@@ -20,6 +20,8 @@
 
 #include <binder/Binder.h>
 
+#include <assert.h>
+
 namespace android {
 
 // ----------------------------------------------------------------------
@@ -155,7 +157,8 @@ public:                                                                 \
     std::unique_ptr<I##INTERFACE> I##INTERFACE::default_impl;           \
     bool I##INTERFACE::setDefaultImpl(std::unique_ptr<I##INTERFACE> impl)\
     {                                                                   \
-        if (!I##INTERFACE::default_impl && impl) {                      \
+        assert(!I##INTERFACE::default_impl);  /* called twice */        \
+        if (impl) {                                                     \
             I##INTERFACE::default_impl = std::move(impl);               \
             return true;                                                \
         }                                                               \
