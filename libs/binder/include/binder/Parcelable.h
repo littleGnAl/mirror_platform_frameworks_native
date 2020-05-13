@@ -52,6 +52,9 @@ public:
     //
     // Returns android::OK on success and an appropriate error otherwise.
     virtual status_t readFromParcel(const Parcel* parcel) = 0;
+
+    // WARNING: isVintf() is only expected to be overridden by auto-generated code.
+    virtual bool isVintf() { return false; }
 };  // class Parcelable
 
 #if defined(__clang__)
