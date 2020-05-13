@@ -22,6 +22,23 @@
       "revId": "771086ad0a2ca1fe12d54db1f33a87a23effc88b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a86c8527_0f5714e4",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-13T23:18:55Z",
+      "side": 1,
+      "message": "nit: explain reasoning in comment, e.g.: \"Only one user of this function can use this function at a time. This is a heuristic to detect if two different processes in the same process use this function.\"\n\nAlso, is there a different place this needs to be done in NDK/Java backends?",
+      "revId": "771086ad0a2ca1fe12d54db1f33a87a23effc88b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
