@@ -52,6 +52,11 @@ public:
     //
     // Returns android::OK on success and an appropriate error otherwise.
     virtual status_t readFromParcel(const Parcel* parcel) = 0;
+
+    // 'Stable' means this parcelable is guaranteed to be stable for multiple years.
+    // WARNING: isStable() is only expected to be overridden by auto-generated code.
+    // Returns true if this parcelable is stable.
+    virtual bool isStable() { return false; }
 };  // class Parcelable
 
 #if defined(__clang__)
