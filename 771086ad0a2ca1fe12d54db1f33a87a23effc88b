@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d0229ed_5d86e13f",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-13T08:36:24Z",
+      "side": 1,
+      "message": "assert will show the interface name on abort.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 73
+      },
+      "revId": "771086ad0a2ca1fe12d54db1f33a87a23effc88b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
