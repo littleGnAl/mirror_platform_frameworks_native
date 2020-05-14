@@ -34,6 +34,24 @@
       "revId": "d8d675e4d8dbae1def777d2ea4bdf4ac610d6c1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4695097c_e389f123",
+        "filename": "libs/binder/rust/benches/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:32:18Z",
+      "side": 1,
+      "message": "Dug into this, and I can now explain why Instant::now is so slow in this case. Instant does extra work to provide a monotonically increasing clock, which includes taking a lock on a mutex (https://doc.rust-lang.org/src/std/time.rs.html#202-242). The chrono::high_resolution_clock does not provide this guarantee. I think we should call clock_gettime directly from Rust and do the interval computation manually.\n\nIncidentally, the default measurement in Criterion uses Instant::now as well. They don\u0027t measure individual loop iterations though, instead measuring N iterations of the tight loop and dividing. We could do that which would lower the impact of Instant::now, but I\u0027m still hesitant to compare this directly against the C++ version.",
+      "parentUuid": "a81aab5e_8de21fa5",
+      "revId": "d8d675e4d8dbae1def777d2ea4bdf4ac610d6c1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
