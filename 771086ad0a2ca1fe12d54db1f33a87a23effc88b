@@ -39,6 +39,48 @@
       "revId": "771086ad0a2ca1fe12d54db1f33a87a23effc88b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccf2fc7d_9beb64ee",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-14T01:36:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4d0229ed_5d86e13f",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 73
+      },
+      "revId": "771086ad0a2ca1fe12d54db1f33a87a23effc88b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d86dd881_85cb1c4a",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-14T01:36:20Z",
+      "side": 1,
+      "message": "Done.\n\nThe other change in this topic is for NDK/Java backends. aosp/1310573",
+      "parentUuid": "a86c8527_0f5714e4",
+      "revId": "771086ad0a2ca1fe12d54db1f33a87a23effc88b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
