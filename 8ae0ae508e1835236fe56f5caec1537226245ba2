@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9bd9f4c8_7f375b83",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1718dd3_ff58e091",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8decf9d7_2f5f56b4",
         "filename": "libs/binder/rust/Android.bp",
         "patchSetId": 17
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "18fcb6a4_5451ede0",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Perf impact should be nil, but size impact is +50%. This was mostly for debugging and testing, will just remove it on the main rlib (although I\u0027d like to keep it on the tests for backtraces and debugging). Maybe we should make debug info default on tests for rust.",
+      "parentUuid": "8decf9d7_2f5f56b4",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a34d8ac_b3a1a766",
         "filename": "libs/binder/rust/Android.bp",
         "patchSetId": 17
@@ -92,6 +140,30 @@
       "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c715692_8bf5e205",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a34d8ac_b3a1a766",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +199,24 @@
       "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70ec10c8_64449847",
+        "filename": "libs/binder/rust/binder.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Deleted, my bad.",
+      "parentUuid": "40250fb4_439c8830",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -201,6 +291,30 @@
     },
     {
       "key": {
+        "uuid": "5567d50d_4205b6ba",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Yep, external tool. This will go away in https://android-review.googlesource.com/c/platform/frameworks/native/+/1302015.",
+      "parentUuid": "cc6013c4_0885543c",
+      "range": {
+        "startLine": 11,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea20bc0c_ebe3c734",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
@@ -218,6 +332,24 @@
     },
     {
       "key": {
+        "uuid": "e4f2559d_3a6c11f4",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea20bc0c_ebe3c734",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e075abf_ca629183",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
@@ -229,6 +361,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "need to distinguish transact and on_transact, to match existing semantics everywhere, right? Nothing distinguishes between BpBinder/BBinder in APIs.",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd5f2552_76b2128b",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "I don\u0027t understand, can you clarify? This trait is for users to implement on_transact for their service (i.e. it\u0027s for the AIDL compiler to implement).",
+      "parentUuid": "2e075abf_ca629183",
       "range": {
         "startLine": 41,
         "startChar": 7,
@@ -264,6 +420,30 @@
     },
     {
       "key": {
+        "uuid": "00ddd193_f676ad88",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Alright, that simplifies a few things nicely.",
+      "parentUuid": "f0fe29bb_0af2ba76",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ca681c8_255666ed",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
@@ -275,6 +455,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "document unsafe usage (everywhere)",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a3c1b11_a3d724fb",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Definitely. Was my plan, although I was going to put that on its own CL for bikeshedding and improvement by itself. I\u0027m happy to add these to this change if that is preferable.",
+      "parentUuid": "3ca681c8_255666ed",
       "range": {
         "startLine": 50,
         "startChar": 11,
@@ -310,6 +514,30 @@
     },
     {
       "key": {
+        "uuid": "57b80175_ad40154b",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "We can\u0027t delegate to BBinder here, this is the interface for a user to provide their service\u0027s interface descriptor when declaring a new interface. The IBinder and BBinder wrappers do delegate to getInterfaceDescriptor.\n\nWe could make this a method in the trait instead of a const. It seemed more idiomatic to require a const interface descriptor, but I don\u0027t have a strong preference.\n\nUnfortunately, there isn\u0027t a good way to write a UTF-16 literal string in Rust. There\u0027s a few crates that provide macros to do this and we could provide our own, but it would not be very idiomatic. If we went with a method instead of a const this would be simpler, as the method wouldn\u0027t have to be const and could just construct a new String16 each time it was called.",
+      "parentUuid": "dae3154b_820fa74e",
+      "range": {
+        "startLine": 61,
+        "startChar": 47,
+        "endLine": 61,
+        "endChar": 49
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce24d509_66b40a68",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
@@ -321,6 +549,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "any particular need for this class? I have never found it particularly good https://2014.jsconf.eu/speakers/sebastian-markbage-minimal-api-surface-area-learning-patterns-instead-of-frameworks.html is one talk talking about why we might not want these types of things.",
+      "range": {
+        "startLine": 80,
+        "startChar": 10,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270ea929_7353f6b1",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "This is just a straight port of BinderService from libbinder. We can remove it, but I\u0027ve tried to provide as much of the original functionality of libbinder as makes sense in Rust.",
+      "parentUuid": "ce24d509_66b40a68",
       "range": {
         "startLine": 80,
         "startChar": 10,
@@ -356,6 +608,30 @@
     },
     {
       "key": {
+        "uuid": "efb7638b_3e69d945",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "FIRST_CALL is definitely required, as AIDL-generated code needs to use it. Grepping through the rest of AOSP, I see a few instances where other transaction codes are used in custom implementations of onTransact. I would think we want to expose these for the same reason? It would certainly be better than a consumer of this crate hard-coding the constant if they needed it.",
+      "parentUuid": "4aabf924_fce32a19",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 89
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "693dcf6d_1d8c66f4",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
@@ -367,6 +643,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "binder?",
+      "range": {
+        "startLine": 145,
+        "startChar": 49,
+        "endLine": 145,
+        "endChar": 58
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dab2515_a0da1a03",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "This brings up a discussion we\u0027ve been having offline: naming. I\u0027m not entirely happy with the naming of various components of the Rust API, and have a new CL planned to rename things to hopefully clarify what each of the structs does. We need to decide if we want to stick with C++ names for things or more idiomatic names (c.f. the Java interface) because we don\u0027t have the same structure as C++. I can put these renamings into this CL, but it might be easier to bikeshed names on a separate one.\n\nThe Rust Interface wraps an arbitrary C++ IBinder, which is what C++ IBinder::getExtension returns. The Rust Binder trait doesn\u0027t directly correspond to anything in C++, as it is just the onTransact method of the BBinder interface. Users implement the Binder trait to make their object/service remotable, and this crate handles interfacing that with the rest of libbinder.",
+      "parentUuid": "693dcf6d_1d8c66f4",
       "range": {
         "startLine": 145,
         "startChar": 49,
@@ -402,6 +702,30 @@
     },
     {
       "key": {
+        "uuid": "cd0cc085_6f01aec8",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "We\u0027ve got these implemented, and plan to make them a separate change on top of this.",
+      "parentUuid": "0f7eaac9_90cfffee",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 22
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0287197f_2fb2afa8",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
@@ -425,6 +749,30 @@
     },
     {
       "key": {
+        "uuid": "e2723f4a_c26fdc52",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0287197f_2fb2afa8",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23aeab0d_254ac8c9",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
@@ -436,6 +784,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "definitely need equivalent functionality",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 21
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92c9e0db_cdbd21b2",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Will implement in a separate change.",
+      "parentUuid": "23aeab0d_254ac8c9",
       "range": {
         "startLine": 174,
         "startChar": 0,
@@ -519,6 +891,30 @@
     },
     {
       "key": {
+        "uuid": "c51f9820_3ed5fef8",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "pub(crate) must be used for private methods of an exported struct or private items in an exported module. Beyond that it is generally not needed, and interfaces can be marked pub while still not being exported out of the crate in lib.rs or a public module.\n\nIn this particular case I wanted to make it extra clear that this is an internal interface. It might make sense making pub(crate) required style for items (structs, traits) that are crate-internal even if that is redundant, but requiring it when redundant on every field and method seems like overkill.",
+      "parentUuid": "549a9c09_15bee809",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 32
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a2471b7_d1522f83",
         "filename": "libs/binder/rust/src/error.rs",
         "patchSetId": 17
@@ -539,6 +935,30 @@
       "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95e842c3_06dbf27d",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Status is largely TODO, see comments in sys/status.rs",
+      "parentUuid": "7a2471b7_d1522f83",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -589,6 +1009,30 @@
     },
     {
       "key": {
+        "uuid": "3f2d66a2_a0a7a858",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "We will as soon as the Rust backend for AIDL is ready (work in progress currently).",
+      "parentUuid": "075ed26a_d5aaf76c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9d55d5c_ea59594f",
         "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
         "patchSetId": 17
@@ -600,6 +1044,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "and I think you mentioned plan is to avoid these in accordance w/ go/aidl-it?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83a7c648_144046ef",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Avoid what specifically? I\u0027m not unfortuantely familiar with any plans here.",
+      "parentUuid": "c9d55d5c_ea59594f",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -659,6 +1127,30 @@
     },
     {
       "key": {
+        "uuid": "feb22720_89ccdeec",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Yes, Str8 is the reference, String8 is the owned string.\n\nstr is builtin to Rust. I believe the closer idiomatic equivalent in the Rust stdlib is CString and CStr. Rust strongly frowns on non-capitalized structs.",
+      "parentUuid": "35455ed0_27bbec38",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcf20491_dd6d2e4c",
         "filename": "libs/binder/rust/src/native.rs",
         "patchSetId": 17
@@ -670,6 +1162,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "so I guess here is where we skip transact? btw, if you don\u0027t see it yet, you should be able to see it by making Java/C++/NDK calls to a rust bbinder ping object, which unless I\u0027m missing something, should show up as UNSUPPORTED_TRANSACTION",
+      "range": {
+        "startLine": 188,
+        "startChar": 16,
+        "endLine": 188,
+        "endChar": 42
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb8b6742_704c9121",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Skip transact? Not sure what you mean. As far as I can tell, PING is only handled by BBinder::transact, right? This is still the case for a RustBBinder, as we only override onTransact. I just tested spinning up a simple Rust service and initiating a PING transaction from the service CLI which works fine, returning an empty parcel.\n\nI put this bit in as a default fallback because most onTransact implementations I saw fall back to BBinder::onTransact if they can\u0027t handle the transaction. If we don\u0027t want this to always be the default, I can add an extra method that calls BBinder::onTransact which users can opt in to.",
+      "parentUuid": "dcf20491_dd6d2e4c",
       "range": {
         "startLine": 188,
         "startChar": 16,
@@ -753,6 +1269,30 @@
     },
     {
       "key": {
+        "uuid": "d699f49c_d86c003c",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "FWIW, the Rust WIP style guide covers this pattern: https://doc.rust-lang.org/1.0.0/style/features/types/newtype.html\n\nFor anything other than the newtype pattern, I completely agree.",
+      "parentUuid": "08cbf788_1fc27f58",
+      "range": {
+        "startLine": 252,
+        "startChar": 15,
+        "endLine": 252,
+        "endChar": 17
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed766238_a7b3d600",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 17
@@ -764,6 +1304,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "is this needed? closing off access seems better from an API perspective, to me",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e1655ea_ddc8b126",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "This is used externally in our port of the BinderLibTest. A quick grep showed at least a few external users of this API in C++. I\u0027m fine with removing this, although we\u0027ll have to drop the usage in the test as well.",
+      "parentUuid": "ed766238_a7b3d600",
       "range": {
         "startLine": 93,
         "startChar": 0,
@@ -847,6 +1411,30 @@
     },
     {
       "key": {
+        "uuid": "6a8fd14e_0303511d",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Sounds good. I\u0027ll go through and audit the method list again. Would it be best to do this on a separate CL for discussing the API or should I just roll that into here?",
+      "parentUuid": "2303dc94_df20f744",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 5
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57a9999a_4a6dc7d1",
         "filename": "libs/binder/rust/src/parcel/parcelable.rs",
         "patchSetId": 17
@@ -858,6 +1446,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "seems like this is two versions of the same API surface?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858288e9_bbdd2c88",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Yes. This was an intentional choice, but we can revisit it. The difference is largely in providing more convenient usage. For example:\n\n    let b \u003d parcel.read::\u003cbool\u003e().unwrap();\n    let b \u003d parcel.read_bool().unwrap();\n\nIf we really want to keep only one of these interfaces, I would recommend the Parcelable generic interface, since we need it anyway for user-defined types.",
+      "parentUuid": "57a9999a_4a6dc7d1",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -893,6 +1505,30 @@
     },
     {
       "key": {
+        "uuid": "96d33e81_5ef1654a",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "I\u0027ve unified these impls into a generic implementation for anything that can be converted into an IBinder*.",
+      "parentUuid": "59bd0e63_df9452b3",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 58
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24f25ebf_082485f7",
         "filename": "libs/binder/rust/src/proxy.rs",
         "patchSetId": 17
@@ -904,6 +1540,24 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "if two proxy objects point to the same remote object, how do you know if the remote object is the same (haven\u0027t looked too deeply here, but this is an easy mistake)",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae3b5ac_ff32edb0",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Eq is implemented for sp and sp wrappers. This is done by using the getter to compare objects by the pointer contained in the sp, not by the pointer to the sp itself.\n\nIs comparing IBinders by pointer correct? I don\u0027t see any other comparison operators defined in C++ so I assumed it was.",
+      "parentUuid": "24f25ebf_082485f7",
       "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -933,6 +1587,30 @@
     },
     {
       "key": {
+        "uuid": "d5a8925f_659d9dc4",
+        "filename": "libs/binder/rust/src/sys/BinderBindings.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "We could. I initially did something similar to this, but we then decided to err on the side of safety.\n\nThe issue with passing the raw pointer without the sp is that we then have to be careful to distinguish on the Rust side that certain pointers are actually strong pointers which Rust owns and it should dec them on destruction, etc. I\u0027m concerned in the general case that programmers will slip up on this. We would sacrificing the safety of sp\u003cT\u003e and effectively replacing it with a manual ref-counting scheme across an FFI barrier.\n\nI think I would be ok with this if we had a new type for each sp\u003cT\u003e, i.e. SpT, so that we can distinguish T* from a strong pointer. This would let us do the ref-counting manually in C++ and avoid the heap allocation. However, this doesn\u0027t avoid the boilerplate of sp functions for each type.\n\nIf I understand the NDK code correctly, it gets away with this by having a wrapper type for each sp\u003cT\u003e that it hands to users, and implements the ref-counting by hand in the NDK implementation?\n\nLong term, I believe there are plans in the works to automatically generate bindings for C++ and Rust that understand the semantics of sp/wp and do exactly this under the hood, while still distinguishing sp\u003cT\u003e from T* in a type-safe way. The cxx crate handles unique_ptr\u003cT\u003e like this, and I think we can add support for sp\u003cT\u003e in a similar way.",
+      "parentUuid": "8bfa9ae4_951ba0ea",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b8526e9_562b4f7f",
         "filename": "libs/binder/rust/src/sys/BinderBindings.cpp",
         "patchSetId": 17
@@ -947,6 +1625,24 @@
       "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ffc69b_c54c4334",
+        "filename": "libs/binder/rust/src/sys/BinderBindings.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b8526e9_562b4f7f",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -967,6 +1663,24 @@
     },
     {
       "key": {
+        "uuid": "bda58461_16692b26",
+        "filename": "libs/binder/rust/src/sys/BinderBindings.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Missed this assert. Should assert anytime we dereference here. IIRC these asserts are removed for release builds anyway?",
+      "parentUuid": "94365225_b308c27f",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12b45ae7_a0a3a80b",
         "filename": "libs/binder/rust/src/sys/status.rs",
         "patchSetId": 17
@@ -978,6 +1692,30 @@
       "writtenOn": "2020-05-12T21:46:03Z",
       "side": 1,
       "message": "functionality should be available",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f363aceb_6914dd19",
+        "filename": "libs/binder/rust/src/sys/status.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Still TODO, but definitely will be exposed as a Rust struct with basically the same interface as in C++. Planning to put that in a separate CL if that\u0027s alright.",
+      "parentUuid": "12b45ae7_a0a3a80b",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -1010,6 +1748,30 @@
       "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a539854_0ab8740a",
+        "filename": "libs/binder/rust/src/utils.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:06:01Z",
+      "side": 1,
+      "message": "Rust implements Eq in terms of PartialEq, so to get Eq you must always implement PartialEq.",
+      "parentUuid": "956cca2c_85fdd356",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
