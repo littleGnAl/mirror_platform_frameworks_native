@@ -350,6 +350,24 @@
     },
     {
       "key": {
+        "uuid": "0bd06da2_d5adbe00",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-14T19:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4f2559d_3a6c11f4",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e075abf_ca629183",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
