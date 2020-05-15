@@ -85,8 +85,8 @@ private:
     sp<AidlServiceManager> mTheRealServiceManager;
 };
 
-static std::once_flag gSmOnce;
-static sp<IServiceManager> gDefaultServiceManager;
+static std::once_flag& gSmOnce = *new std::once_flag;
+static sp<IServiceManager>& gDefaultServiceManager = *new sp<IServiceManager>;
 
 sp<IServiceManager> defaultServiceManager()
 {
