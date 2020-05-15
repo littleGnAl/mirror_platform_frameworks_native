@@ -462,6 +462,30 @@
     },
     {
       "key": {
+        "uuid": "4559291a_b09d8746",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-15T19:10:04Z",
+      "side": 1,
+      "message": "Turns out this is not the case. Since it is optional for transact, that null pointer will get passed on to onTransact in BBinder::transact if the service is local.\n\nI observed this in practice with BpResultReceiver, which send a transaction with a null reply. BBinder then forwards that null on to Rust, which panics now. I think I\u0027ll have to revert this.",
+      "parentUuid": "00ddd193_f676ad88",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ca681c8_255666ed",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
