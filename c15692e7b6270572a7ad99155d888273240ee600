@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8458e95c_a3dcb39a",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-05-16T00:21:17Z",
+      "side": 1,
+      "message": "I suggest using [[clang::no_destroy]] instead, it\u0027s more obvious what it does, and it\u0027s also marginally faster.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 78
+      },
+      "revId": "c15692e7b6270572a7ad99155d888273240ee600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
