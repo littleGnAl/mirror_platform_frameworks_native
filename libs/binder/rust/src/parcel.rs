@@ -34,11 +34,13 @@ use std::slice;
 use libc::{c_void, uid_t};
 
 mod blob;
+mod file_descriptor;
 mod parcelable;
 
 use self::blob::Blob;
 pub use self::blob::{ReadableBlob, WritableBlob};
 pub use self::parcelable::Parcelable;
+pub use self::file_descriptor::ParcelFileDescriptor;
 
 /// Container for a message (data and object references) that can be sent
 /// through Binder.
