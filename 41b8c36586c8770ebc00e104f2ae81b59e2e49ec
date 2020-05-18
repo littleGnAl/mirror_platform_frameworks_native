@@ -70,6 +70,30 @@
       "revId": "41b8c36586c8770ebc00e104f2ae81b59e2e49ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148f16aa_b3d594c2",
+        "filename": "libs/binder/include/binder/Parcelable.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-05-18T22:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb585fed_e4404043",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 45
+      },
+      "revId": "41b8c36586c8770ebc00e104f2ae81b59e2e49ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
