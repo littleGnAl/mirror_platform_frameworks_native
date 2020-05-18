@@ -34,3 +34,24 @@ rust_test {
         "-C debuginfo=2",
     ],
 }
+
+// Used in the integration test
+rust_test {
+    name: "rustBinderTestService",
+    srcs: ["shellcmd.rs"],
+    edition: "2018",
+    shared_libs: [
+        "libbinder",
+        "libutils",
+        "libc++",
+    ],
+    rlibs: [
+        "libbinder_rs",
+        "liblibc",
+    ],
+    flags: [
+        "-C debuginfo=2",
+    ],
+
+    test_harness: false,
+}

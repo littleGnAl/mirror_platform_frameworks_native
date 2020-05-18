@@ -17,6 +17,10 @@
 //! Rust interfaces corresponding to the binder interfaces that `libbinder`
 //! provides.
 
+mod result_receiver;
 mod service_manager;
+mod shell_callback;
 
+pub use result_receiver::{BpResultReceiver, IResultReceiver, ResultReceiver};
 pub use service_manager::{BpServiceManager, IServiceManager};
+pub use shell_callback::{BpShellCallback, IShellCallback, ShellCallback};

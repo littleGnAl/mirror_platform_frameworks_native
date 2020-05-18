@@ -220,6 +220,23 @@ status_t IBinder_dump(IBinder* binder, int fd, const String16* const* args, size
   return binder->dump(fd, argsVector);
 }
 
+status_t IBinder_shellCommand(IBinder* target, int in, int out, int err,
+                              const String16* const* args, size_t args_len,
+                              const sp<IBinder>* callback,
+                              const sp<IBinder>* result_receiver) {
+  assert(binder && target && args && callback && result_receiver);
+  Vector<String16> argsVector;
+  if (args) {
+    for (size_t i = 0; i < args_len; ++i) {
+      assert(*args);
+      argsVector.push_back(*args[i]);
+    }
+  }
+  return IBinder::shellCommand(target, in, out, err, argsVector,
+                               IShellCallback::asInterface(*callback),
+                               IResultReceiver::asInterface(*result_receiver));
+}
+
 status_t IBinder_getExtension(IBinder* binder, sp<IBinder>** out) {
   assert(binder);
   *out = new sp<IBinder>;

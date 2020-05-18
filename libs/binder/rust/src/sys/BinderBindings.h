@@ -119,6 +119,7 @@ const String16* IBinder_getInterfaceDescriptor(const IBinder* binder);
 bool IBinder_isBinderAlive(const IBinder* binder);
 status_t IBinder_pingBinder(IBinder* binder);
 status_t IBinder_dump(IBinder* binder, int fd, const String16* const* args, size_t args_len);
+status_t IBinder_shellCommand(IBinder* target, int in, int out, int err, const String16* const* args, size_t args_len, const sp<IBinder>* callback, const sp<IBinder>* result_receiver);
 status_t IBinder_getExtension(IBinder* binder, sp<IBinder>** out);
 status_t IBinder_getDebugPid(IBinder* binder, pid_t* outPid);
 bool IBinder_checkSubclass(const IBinder* binder, const void* subclassID);

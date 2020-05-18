@@ -196,10 +196,12 @@ fn test_add_service() {
             &self,
             _code: TransactionCode,
             _data: &Parcel,
-            reply: &mut Parcel,
+            reply: Option<&mut Parcel>,
             _flags: TransactionFlags,
         ) -> Result<()> {
-            reply.write_utf8_as_utf16("testing service")?;
+            if let Some(reply) = reply {
+                reply.write_utf8_as_utf16("testing service")?;
+            }
             Ok(())
         }
     }

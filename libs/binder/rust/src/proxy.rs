@@ -18,6 +18,8 @@
 
 use crate::binder::{IBinder, IBinderInternal, TransactionCode, TransactionFlags};
 use crate::error::{binder_status, Error, Result};
+use crate::interfaces::{ResultReceiver, ShellCallback};
+use crate::native::Service;
 use crate::parcel::{Parcel, Parcelable};
 use crate::service_manager::ServiceManager;
 use crate::sys::libbinder_bindings::*;
@@ -25,6 +27,7 @@ use crate::utils::{AsNative, Sp, Str16, String16};
 
 use std::convert::TryInto;
 use std::os::unix::io::AsRawFd;
+use std::path::Path;
 use std::ptr;
 
 wrap_sp! {
@@ -101,6 +104,38 @@ impl<T: AsNative<android_IBinder>> IBinder for T {
             )
         };
         binder_status(status)
+    }
+
+    fn shell_command<F, C, R>(
+        &mut self,
+        input: &mut F,
+        out: &mut F,
+        err: &mut F,
+        args: &[String16],
+        callback: C,
+        result_receiver: R,
+    ) -> Result<()>
+    where
+        F: AsRawFd,
+        C: Fn(&Path, &str, &str) -> Option<std::fs::File> + Send + 'static,
+        R: Fn(i32) + Send + 'static,
+    {
+        let args: Vec<_> = args.iter().map(|a| a.as_native()).collect();
+        let callback = Interface::from(Service::new(ShellCallback::new(callback)));
+        let receiver = Interface::from(Service::new(ResultReceiver::new(result_receiver)));
+        unsafe {
+            android_c_interface_IBinder_shellCommand(
+                self.as_native_mut(),
+                input.as_raw_fd(),
+                out.as_raw_fd(),
+                err.as_raw_fd(),
+                args.as_ptr(),
+                args.len().try_into().unwrap(),
+                callback.as_native(),
+                receiver.as_native(),
+            );
+        }
+        Ok(())
     }
 
     fn get_extension(&mut self) -> Result<Option<Interface>> {

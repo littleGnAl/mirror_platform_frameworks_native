@@ -25,6 +25,7 @@ use crate::utils::{Str16, String16};
 use crate::{Error, Interface, Result, Service};
 
 use std::os::unix::io::AsRawFd;
+use std::path::Path;
 
 /// Binder action to perform.
 ///
@@ -58,7 +59,7 @@ pub trait Binder: Sync {
         &self,
         code: TransactionCode,
         data: &Parcel,
-        reply: &mut Parcel,
+        reply: Option<&mut Parcel>,
         flags: TransactionFlags,
     ) -> Result<()>;
 
@@ -80,7 +81,7 @@ impl Binder for () {
         &self,
         _code: TransactionCode,
         _data: &Parcel,
-        _reply: &mut Parcel,
+        _reply: Option<&mut Parcel>,
         _flags: TransactionFlags,
     ) -> Result<()> {
         Ok(())
@@ -155,6 +156,29 @@ pub trait IBinder {
 
     /// Dump this object to the given file handle
     fn dump<F: AsRawFd>(&mut self, fp: &F, args: &[String16]) -> Result<()>;
+
+    /// Send a shell command transaction to this object.
+    ///
+    /// # Arguments
+    ///
+    /// * `input`, `out`, `err` - File handles for input, output, and error
+    /// streams of the command, respectively.
+    /// * `args` - Arguments to the command.
+    /// * `callback` - Callback that opens a file given a path, SELinux context, and mode.
+    /// * `result_receiver` - Callback called with the result status code of the command.
+    fn shell_command<F, C, R>(
+        &mut self,
+        input: &mut F,
+        out: &mut F,
+        err: &mut F,
+        args: &[String16],
+        callback: C,
+        result_receiver: R,
+    ) -> Result<()>
+    where
+        F: AsRawFd,
+        C: Fn(&Path, &str, &str) -> Option<std::fs::File> + Send + 'static,
+        R: Fn(i32) + Send + 'static;
 
     /// Get a new interface that exposes additional extension functionality, if
     /// available.

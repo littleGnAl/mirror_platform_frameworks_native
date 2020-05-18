@@ -124,7 +124,7 @@ impl<T: Binder> Service<T> {
         flags: u32,
     ) -> android_status_t {
         let res = {
-            let reply = reply.as_mut().unwrap().as_mut();
+            let reply = reply.as_mut().map(|r| r.as_mut());
             let data = data.as_ref().unwrap().as_ref();
             let binder: &T = &*(object as *const T);
             binder.on_transact(code, data, reply, flags)

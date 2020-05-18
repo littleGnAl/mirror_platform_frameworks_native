@@ -4793,6 +4793,19 @@ extern "C" {
     ) -> android_status_t;
 }
 extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface20IBinder_shellCommandEPNS_7IBinderEiiiPKPKNS_8String16EmPKNS_2spIS1_EESB_"]
+    pub fn android_c_interface_IBinder_shellCommand(
+        target: *mut android_IBinder,
+        in_: ::std::os::raw::c_int,
+        out: ::std::os::raw::c_int,
+        err: ::std::os::raw::c_int,
+        args: *const *const android_String16,
+        args_len: size_t,
+        callback: *const android_sp<android_IBinder>,
+        result_receiver: *const android_sp<android_IBinder>,
+    ) -> android_status_t;
+}
+extern "C" {
     #[link_name = "\u{1}_ZN7android11c_interface20IBinder_getExtensionEPNS_7IBinderEPPNS_2spIS1_EE"]
     pub fn android_c_interface_IBinder_getExtension(
         binder: *mut android_IBinder,
