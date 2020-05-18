@@ -376,19 +376,6 @@ void String16_Destroy(String16* S) {
   delete S;
 }
 
-base::unique_fd* NewUniqueFd() {
-  return new base::unique_fd();
-}
-
-void UniqueFd_reset(base::unique_fd* self, int newValue) {
-  assert(self);
-  self->reset(newValue);
-}
-
-void UniqueFd_destructor(base::unique_fd* self) {
-  delete self;
-}
-
 } // namespace c_interface
 
 } // namespace android

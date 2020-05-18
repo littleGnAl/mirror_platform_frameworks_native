@@ -16,7 +16,7 @@
 
 use crate::binder::Binder;
 use crate::error::{binder_status, Error, Result};
-use crate::parcel::Parcel;
+use crate::parcel::{Serialize, Parcel};
 use crate::proxy::Interface;
 use crate::sys::libbinder_bindings::*;
 use crate::utils::{AsNative, Sp, String16};
@@ -193,6 +193,12 @@ impl<B: Binder> From<&mut Service<B>> for Interface {
             );
             Interface::from_raw(ibinder).unwrap()
         }
+    }
+}
+
+impl<B: Binder> Serialize for Service<B> {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        self.write_to_parcel(parcel)
     }
 }
 

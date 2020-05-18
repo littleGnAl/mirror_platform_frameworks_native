@@ -50,7 +50,7 @@ impl Binder for TestService {
         _flags: TransactionFlags,
     ) -> binder::Result<()> {
         if let Some(reply) = reply {
-            reply.write_utf8_as_utf16(TestService::test())?;
+            reply.write(TestService::test())?;
         }
         Ok(())
     }
@@ -79,7 +79,7 @@ impl ITest for BpTest {
             Some(&mut reply),
             0,
         )?;
-        Ok(reply.read_string16().unwrap().to_string())
+        Ok(reply.read::<binder::String16>().unwrap().to_string())
     }
 }
 

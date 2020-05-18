@@ -21,7 +21,6 @@ use std::any::type_name;
 use std::convert::{AsRef, TryInto};
 use std::fmt;
 use std::ops;
-use std::os::unix::io::{AsRawFd, RawFd};
 use std::ptr;
 
 /// Trait for transparent Rust wrappers around android C++ native types.
@@ -424,6 +423,17 @@ impl From<&str> for String16 {
     }
 }
 
+impl From<&[u16]> for String16 {
+    fn from(s: &[u16]) -> String16 {
+        unsafe {
+            String16(android_c_interface_NewString16FromUtf16(
+                s.as_ptr(),
+                s.len().try_into().unwrap(),
+            ))
+        }
+    }
+}
+
 impl From<&[u8]> for String16 {
     fn from(slice: &[u8]) -> Self {
         unsafe {
@@ -524,41 +534,5 @@ impl fmt::Debug for Str16 {
 impl<T> fmt::Debug for android_sp<T> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         format!("sp<{:?}>", type_name::<T>()).fmt(f)
-    }
-}
-
-/// An Android unique file descriptor.
-#[repr(transparent)]
-pub struct UniqueFd(pub(crate) *mut android_base_unique_fd);
-
-impl UniqueFd {
-    pub fn new() -> Self {
-        unsafe { UniqueFd(android_c_interface_NewUniqueFd()) }
-    }
-
-    pub unsafe fn reset(&mut self, fd: Option<RawFd>) {
-        android_c_interface_UniqueFd_reset(self.0, fd.unwrap_or(-1))
-    }
-}
-
-impl AsRawFd for UniqueFd {
-    fn as_raw_fd(&self) -> RawFd {
-        if self.0.is_null() {
-            -1
-        } else {
-            unsafe { (*self.0).fd_ }
-        }
-    }
-}
-
-impl fmt::Debug for UniqueFd {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.debug_tuple("UniqueFd").field(&self.as_raw_fd()).finish()
-    }
-}
-
-impl Drop for UniqueFd {
-    fn drop(&mut self) {
-        unsafe { android_c_interface_UniqueFd_destructor(self.0) }
     }
 }

@@ -39,7 +39,7 @@ pub use proxy::get_service;
 pub use proxy::{Handle, Interface};
 pub use state::{ProcessState, ThreadState};
 pub use sys::binder_size_t as size_t;
-pub use utils::{Str16, Str8, String16, String8, UniqueFd};
+pub use utils::{Str16, Str8, String16, String8};
 
 /// Re-exports of core structures, prefixed with `Binder`.
 ///

@@ -166,10 +166,6 @@ String16* NewString16FromUtf8(const char* data, size_t len);
 const char16_t* String16_data(const String16* S);
 void String16_Destroy(String16* S);
 
-base::unique_fd* NewUniqueFd();
-void UniqueFd_reset(base::unique_fd* self, int newValue);
-void UniqueFd_destructor(base::unique_fd* self);
-
 } // namespace c_interface
 
 } // namespace android

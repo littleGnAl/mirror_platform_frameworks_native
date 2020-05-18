@@ -76,13 +76,13 @@ pub union std_basic_string__bindgen_ty_2 {
 pub struct std_allocator {
     pub _address: u8,
 }
+pub type std_allocator_value_type = u8;
 pub type std_allocator_size_type = u64;
 pub type std_allocator_difference_type = u64;
 pub type std_allocator_pointer = u8;
 pub type std_allocator_const_pointer = u8;
 pub type std_allocator_reference = u8;
 pub type std_allocator_const_reference = u8;
-pub type std_allocator_value_type = u8;
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct std_allocator_rebind {
@@ -92,11 +92,6 @@ pub type std_allocator_rebind_other = u8;
 pub type std_allocator_propagate_on_container_move_assignment = u8;
 pub type std_allocator_is_always_equal = u8;
 pub type std_string = [u64; 4usize];
-#[repr(C)]
-#[derive(Copy, Clone)]
-pub struct std_char_traits {
-    pub _address: u8,
-}
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct std_default_delete {
@@ -112,6 +107,11 @@ pub type std_unique_ptr_pointer = u8;
 pub type std_unique_ptr_element_type = u8;
 pub type std_unique_ptr_deleter_type = u8;
 pub type std_unique_ptr___safe_conversion_up = u8;
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub struct std_char_traits {
+    pub _address: u8,
+}
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct std_optional {
@@ -5020,21 +5020,6 @@ extern "C" {
 extern "C" {
     #[link_name = "\u{1}_ZN7android11c_interface16String16_DestroyEPNS_8String16E"]
     pub fn android_c_interface_String16_Destroy(S: *mut android_String16);
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN7android11c_interface11NewUniqueFdEv"]
-    pub fn android_c_interface_NewUniqueFd() -> *mut android_base_unique_fd;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN7android11c_interface14UniqueFd_resetEPNS_4base14unique_fd_implINS1_13DefaultCloserEEEi"]
-    pub fn android_c_interface_UniqueFd_reset(
-        self_: *mut android_base_unique_fd,
-        newValue: ::std::os::raw::c_int,
-    );
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN7android11c_interface19UniqueFd_destructorEPNS_4base14unique_fd_implINS1_13DefaultCloserEEE"]
-    pub fn android_c_interface_UniqueFd_destructor(self_: *mut android_base_unique_fd);
 }
 #[repr(C)]
 pub struct native_handle {

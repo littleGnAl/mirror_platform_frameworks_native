@@ -14,11 +14,17 @@
  * limitations under the License.
  */
 
-use crate::error::{Error, Result};
+use crate::error::{binder_status, Error, Result};
 use crate::parcel::Parcel;
-use crate::utils::{Str16, Str8, String16, String8};
+use crate::sys::{libbinder_bindings::*};
+use crate::utils::{AsNative, Str16, Str8, String16, String8};
 
 use std::convert::TryInto;
+use std::ffi::CStr;
+use std::fs::File;
+use std::mem::{self, MaybeUninit};
+use std::os::unix::io::{AsRawFd, FromRawFd};
+use std::ptr;
 
 /// A struct whose instances can be written to a [`Parcel`].
 // Might be able to hook this up as a serde backend in the future?
@@ -34,193 +40,300 @@ pub trait Deserialize: Sized {
     fn deserialize(parcel: &Parcel) -> Result<Self>;
 }
 
-impl Serialize for bool {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_bool(*self)
-    }
+macro_rules! parcelable_primitives {
+    {
+        $(
+            impl $trait:ident for $ty:ty = $fn:path;
+        )*
+    } => {
+        $(impl_parcelable!{$trait, $ty, $fn})*
+    };
 }
 
-impl Deserialize for bool {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_bool()
-    }
+macro_rules! impl_parcelable {
+    {Serialize, $ty:ty, $write_fn:path} => {
+        impl Serialize for $ty {
+            fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+                unsafe { binder_status($write_fn(parcel.as_native_mut(), *self)) }
+            }
+        }
+    };
+
+    {Deserialize, $ty:ty, $read_fn:path} => {
+        impl Deserialize for $ty {
+            fn deserialize(parcel: &Parcel) -> Result<Self> {
+                let mut val = Self::default();
+                let status = unsafe { $read_fn(parcel.as_native(), &mut val) };
+
+                match binder_status(status) {
+                    Ok(()) => Ok(val),
+                    Err(e) => Err(e),
+                }
+            }
+        }
+    };
+}
+
+parcelable_primitives! {
+    impl Serialize for bool = android_Parcel_writeBool;
+    impl Deserialize for bool = android_Parcel_readBool1;
+
+    // We can't implement Serialize/Deserialize for byte-size types yet, because
+    // (de-)serializing arrays of bytes requires special handling. Byte arrays
+    // and vectors are packed, while single bytes are written as 32-bit
+    // words. Since we implement Serialize for [S] and Deserialize for Vec<S>
+    // using (De)Serialize for S, we would have a conflict between the
+    // implementation of serializing a single byte vs serializing an array of
+    // bytes. This can be fixed when the specialization feature is stabilized in
+    // Rust (https://github.com/rust-lang/rust/issues/31844)
+
+    // impl Serialize for i8 = android_Parcel_writeByte;
+    // impl Deserialize for i8 = android_Parcel_readByte1;
+
+    impl Serialize for u16 = android_Parcel_writeChar;
+    impl Deserialize for u16 = android_Parcel_readChar1;
+
+    impl Serialize for u32 = android_Parcel_writeUint32;
+    impl Deserialize for u32 = android_Parcel_readUint321;
+
+    impl Serialize for i32 = android_Parcel_writeInt32;
+    impl Deserialize for i32 = android_Parcel_readInt321;
+
+    impl Serialize for u64 = android_Parcel_writeUint64;
+    impl Deserialize for u64 = android_Parcel_readUint641;
+
+    impl Serialize for i64 = android_Parcel_writeInt64;
+    impl Deserialize for i64 = android_Parcel_readInt641;
+
+    impl Serialize for f32 = android_Parcel_writeFloat;
+    impl Deserialize for f32 = android_Parcel_readFloat1;
+
+    impl Serialize for f64 = android_Parcel_writeDouble;
+    impl Deserialize for f64 = android_Parcel_readDouble1;
 }
 
 // TODO: implement serialize for u8 and i8 once specialization is available in
 // stable Rust. We need to specialize the vector serialization and
 // deserialization for these types because byte vectors are packed in parcels.
 
-impl Serialize for u16 {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_u16(*self)
-    }
-}
-
-impl Deserialize for u16 {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_u16()
-    }
-}
-
 impl Serialize for i16 {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_i16(*self)
+        (*self as u16).serialize(parcel)
     }
 }
 
 impl Deserialize for i16 {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_i16()
+        u16::deserialize(parcel).map(|v| v as i16)
     }
 }
 
-impl Serialize for u32 {
+impl Serialize for CStr {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_u32(*self)
+        // writeCString assumes that we pass a null-terminated C string pointer
+        // with no nulls in the middle of the string. Rust guarantees exactly
+        // that for a valid CStr instance.
+        unsafe {
+            binder_status(android_Parcel_writeCString(
+                parcel.as_native_mut(),
+                self.as_ptr(),
+            ))
+        }
     }
 }
 
-impl Deserialize for u32 {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_u32()
-    }
-}
-
-impl Serialize for i32 {
+impl Serialize for String {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_i32(*self)
-    }
+        parcel.write(&*String16::from(self.as_str()))
+   }
 }
 
-impl Deserialize for i32 {
+impl Deserialize for String {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_i32()
+        parcel.read_utf8_from_utf16()
     }
 }
 
-impl Serialize for i64 {
+impl Serialize for str {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_i64(*self)
-    }
+        parcel.write(&*String16::from(self))
+   }
 }
 
-impl Deserialize for i64 {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_i64()
-    }
-}
-
-impl Serialize for u64 {
+impl Serialize for &str {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_u64(*self)
-    }
-}
-
-impl Deserialize for u64 {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_u64()
-    }
-}
-
-impl Serialize for f32 {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_f32(*self)
-    }
-}
-
-impl Deserialize for f32 {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_f32()
-    }
-}
-
-impl Serialize for f64 {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_f64(*self)
-    }
-}
-
-impl Deserialize for f64 {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_f64()
-    }
+        parcel.write(&*String16::from(*self))
+   }
 }
 
 impl Serialize for String8 {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_string8(self)
+        self.as_ref().serialize(parcel)
     }
 }
 
 impl Deserialize for String8 {
     fn deserialize(parcel: &Parcel) -> Result<String8> {
-        parcel.read_string8()
+        let mut string = ptr::null_mut();
+        let result =
+            unsafe { android_c_interface_Parcel_readString8(parcel.as_native(), &mut string) };
+
+        binder_status(result)?;
+
+        if string.is_null() {
+            // This should never happen, it means our interface code did not
+            // allocate a new String8
+            return Err(Error::NO_MEMORY);
+        }
+
+        let owned_str = unsafe { String8::from_raw(string) };
+        Ok(owned_str)
     }
 }
 
-impl Serialize for &Str8 {
+impl Serialize for Str8 {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_string8(self)
+        unsafe {
+            binder_status(android_Parcel_writeString8(
+                parcel.as_native_mut(),
+                self.as_native(),
+            ))
+        }
     }
 }
 
 impl Serialize for String16 {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_string16(self)
+        self.as_ref().serialize(parcel)
     }
 }
 
 impl Deserialize for String16 {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_string16()
+        let mut s = MaybeUninit::uninit();
+        let status =
+            unsafe { android_c_interface_Parcel_readString16(parcel.as_native(), s.as_mut_ptr()) };
+
+        binder_status(status).map(|_| unsafe { String16::from_raw(s.assume_init()) })
     }
 }
 
-impl Serialize for &Str16 {
+impl Serialize for Str16 {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_string16(self)
+        unsafe {
+            binder_status(android_Parcel_writeString16(
+                parcel.as_native_mut(),
+                self.as_native(),
+            ))
+        }
     }
 }
 
-impl<P: Serialize> Serialize for [P] {
+impl<T: Serialize> Serialize for [T] {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_slice(self)
-    }
-}
+        parcel.write_slice_size(self)?;
 
-impl<P: Default + Deserialize> Deserialize for Vec<P> {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        let mut vec = Vec::new();
-
-        parcel.read_to_vec(&mut vec)?;
-
-        Ok(vec)
-    }
-}
-
-impl Deserialize for Vec<String8> {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        let size = parcel.read_i32()?;
-        let mut vec = Vec::with_capacity(size.try_into().or(Err(Error::BAD_VALUE))?);
-
-        for _ in 0..size {
-            vec.push(parcel.read_string8()?);
+        for item in self {
+            parcel.write(item)?;
         }
 
-        Ok(vec)
+        Ok(())
     }
 }
 
-impl Deserialize for Vec<String16> {
-    fn deserialize(parcel: &Parcel) -> Result<Vec<String16>> {
-        let size = parcel.read_i32()?;
-        let mut vec = Vec::with_capacity(size.try_into().or(Err(Error::BAD_VALUE))?);
+impl Serialize for [u8] {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        let len = self.len().try_into().unwrap();
 
-        for _ in 0..size {
-            vec.push(parcel.read_string16()?);
+        unsafe {
+            binder_status(android_Parcel_writeByteArray(
+                parcel.as_native_mut(),
+                len,
+                self.as_ptr(),
+            ))
+        }
+    }
+}
+
+impl Serialize for [i8] {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        let len = self.len().try_into().unwrap();
+
+        unsafe {
+            binder_status(android_Parcel_writeByteArray(
+                parcel.as_native_mut(),
+                len,
+                self.as_ptr() as *const u8,
+            ))
+        }
+    }
+}
+
+impl<P: Deserialize> Deserialize for Option<Vec<P>> {
+    fn deserialize(parcel: &Parcel) -> Result<Self> {
+        let len: i32 = parcel.read()?;
+        if len < 0 {
+            return Ok(None);
         }
 
-        Ok(vec)
+        // TODO: Assumes that usize is at least 32 bits
+        let mut vec = Vec::with_capacity(len as usize);
+
+        for _ in 0..len {
+            vec.push(parcel.read()?);
+        }
+
+        Ok(Some(vec))
+    }
+}
+
+impl<P> Deserialize for Vec<P>
+    where Option<Vec<P>>: Deserialize
+{
+    fn deserialize(parcel: &Parcel) -> Result<Self> {
+        <Option<Self>>::deserialize(parcel).map(|opt| opt.unwrap())
+    }
+}
+
+impl Deserialize for Option<Vec<u8>> {
+    fn deserialize(parcel: &Parcel) -> Result<Self> {
+        let len: i32 = parcel.read()?;
+        if len < 0 {
+            return Ok(None);
+        }
+
+        let mut vec = Vec::with_capacity(len as usize);
+        vec.resize(len as usize, 0);
+
+        let status = unsafe {
+            android_Parcel_read(
+                parcel.as_native(),
+                vec.as_mut_ptr() as *mut libc::c_void,
+                len.try_into().unwrap(),
+            )
+        };
+        binder_status(status)?;
+
+        Ok(Some(vec))
+    }
+}
+
+impl Serialize for File {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        unsafe { parcel.write_dup_file_descriptor(self.as_raw_fd()) }
+    }
+}
+
+impl Deserialize for File {
+    fn deserialize(parcel: &Parcel) -> Result<Self> {
+        unsafe {
+            let fd = parcel.read_file_descriptor()?;
+            // We don't actually own this, so we CANNOT drop it
+            let file = File::from_raw_fd(fd);
+            let file_dup = file.try_clone().map_err(|_| Error::BAD_VALUE);
+            mem::forget(file);
+            file_dup
+        }
     }
 }
 
@@ -243,7 +356,7 @@ fn test_custom_parcelable() {
                 parcel.read()?,
                 parcel.read()?,
                 parcel.read()?,
-                parcel.read()?,
+                parcel.read::<Option<Vec<String8>>>()?.unwrap(),
             ))
         }
     }
@@ -295,7 +408,7 @@ fn test_slice_parcelables() {
 
     let mut parcel = Parcel::new();
 
-    assert!(parcel.write_u8_slice(&u8s).is_ok());
+    assert!(parcel.write(&u8s[..]).is_ok());
 
     assert_eq!(parcel.data_position(), 8);
 
@@ -303,16 +416,15 @@ fn test_slice_parcelables() {
 
     assert_eq!(parcel.data(), [4, 0, 0, 0, 101, 255, 42, 117]);
 
-    let mut vec = Vec::new();
-
-    parcel.read_byte_vec(&mut vec).unwrap();
-
+    let vec = Vec::<u8>::deserialize(&parcel).unwrap();
     assert_eq!(vec, [101, 255, 42, 117]);
 
     let i8s = [-128i8, 127, 42, -117];
 
     assert!(parcel.set_data_position(0).is_ok());
-    assert!(parcel.write_i8_slice(&i8s).is_ok());
+
+    assert!(parcel.write(&i8s[..]).is_ok());
+
     assert!(parcel.set_data_position(0).is_ok());
 
     assert_eq!(parcel.data(), [
@@ -320,10 +432,7 @@ fn test_slice_parcelables() {
         128, 127, 42, 139, // bytes
     ]);
 
-    let mut vec: Vec<u8> = Vec::new();
-
-    parcel.read_byte_vec(&mut vec).unwrap();
-
+    let vec = Vec::<u8>::deserialize(&parcel).unwrap();
     assert_eq!(vec, [-128i8 as u8, 127, 42, -117i8 as u8]);
 
     let u16s = [u16::max_value(), 12_345, 42, 117];
