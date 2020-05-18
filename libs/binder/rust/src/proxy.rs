@@ -121,7 +121,7 @@ impl Serialize for Interface {
 
 impl Deserialize for Interface {
     fn deserialize(parcel: &Parcel) -> Result<Interface> {
-        let ibinder = unsafe { parcel.read_strong_binder()? };
+        let ibinder = unsafe { parcel.read_binder()? };
         ibinder.ok_or(Error::UNEXPECTED_NULL)
     }
 }

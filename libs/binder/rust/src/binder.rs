@@ -63,7 +63,7 @@ pub trait Binder: Sync {
     ) -> Result<()>;
 
     fn check_interface(&self, data: &Parcel) -> Result<()> {
-        if unsafe { data.enforce_interface(&Self::INTERFACE_DESCRIPTOR.into()) } {
+        if data.enforce_interface(&String16::from(Self::INTERFACE_DESCRIPTOR)) {
             Ok(())
         } else {
             Err(Error::PERMISSION_DENIED)

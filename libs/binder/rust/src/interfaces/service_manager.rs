@@ -61,11 +61,8 @@ pub trait IServiceManager {
 
 impl IServiceManager for BpServiceManager {
     fn get_service(&mut self, name: &str) -> Result<Interface> {
-        let mut data = Parcel::new();
-        unsafe {
-            data.write_interface_token(&Self::INTERFACE_DESCRIPTOR.into())?;
-        }
-        data.write_utf8_as_utf16(name)?;
+        let mut data = Parcel::with_interface(&String16::from(Self::INTERFACE_DESCRIPTOR))?;
+        data.write(name)?;
         let mut reply = Parcel::new();
         self.0.transact(
             Interface::FIRST_CALL_TRANSACTION + 0, // getService
@@ -74,15 +71,12 @@ impl IServiceManager for BpServiceManager {
             0,
         )?;
         Status::from_parcel(&reply)?;
-        reply.read::<Interface>()
+        reply.read()
     }
 
     fn check_service(&mut self, name: &str) -> Result<Interface> {
-        let mut data = Parcel::new();
-        unsafe {
-            data.write_interface_token(&Self::INTERFACE_DESCRIPTOR.into())?;
-        }
-        data.write_utf8_as_utf16(name)?;
+        let mut data = Parcel::with_interface(&String16::from(Self::INTERFACE_DESCRIPTOR))?;
+        data.write(name)?;
         let mut reply = Parcel::new();
         self.0.transact(
             Interface::FIRST_CALL_TRANSACTION + 1, // checkService
@@ -91,7 +85,7 @@ impl IServiceManager for BpServiceManager {
             0,
         )?;
         Status::from_parcel(&reply)?;
-        reply.read::<Interface>()
+        reply.read()
     }
 
     fn add_service<T: Binder>(
@@ -101,14 +95,11 @@ impl IServiceManager for BpServiceManager {
         allow_isolated: bool,
         dump_priority: DumpFlags,
     ) -> Result<()> {
-        let mut data = Parcel::new();
-        unsafe {
-            data.write_interface_token(&Self::INTERFACE_DESCRIPTOR.into())?;
-        }
-        data.write_utf8_as_utf16(name)?;
-        data.write_service(service)?;
-        data.write_bool(allow_isolated)?;
-        data.write_i32(dump_priority as i32)?;
+        let mut data = Parcel::with_interface(&String16::from(Self::INTERFACE_DESCRIPTOR))?;
+        data.write(name)?;
+        data.write(service)?;
+        data.write(&allow_isolated)?;
+        data.write(&(dump_priority as i32))?;
         let mut reply = Parcel::new();
         self.0.transact(
             Interface::FIRST_CALL_TRANSACTION + 2, // addService
@@ -121,11 +112,8 @@ impl IServiceManager for BpServiceManager {
     }
 
     fn list_services(&mut self, dump_priority: DumpFlags) -> Result<Vec<String16>> {
-        let mut data = Parcel::new();
-        unsafe {
-            data.write_interface_token(&Self::INTERFACE_DESCRIPTOR.into())?;
-        }
-        data.write_i32(dump_priority as i32)?;
+        let mut data = Parcel::with_interface(&String16::from(Self::INTERFACE_DESCRIPTOR))?;
+        data.write(&(dump_priority as i32))?;
         let mut reply = Parcel::new();
         self.0.transact(
             Interface::FIRST_CALL_TRANSACTION + 3, // listServices
@@ -140,11 +128,8 @@ impl IServiceManager for BpServiceManager {
     }
 
     fn is_declared(&mut self, name: &str) -> Result<bool> {
-        let mut data = Parcel::new();
-        unsafe {
-            data.write_interface_token(&Self::INTERFACE_DESCRIPTOR.into())?;
-        }
-        data.write_utf8_as_utf16(name)?;
+        let mut data = Parcel::with_interface(&String16::from(Self::INTERFACE_DESCRIPTOR))?;
+        data.write(name)?;
         let mut reply = Parcel::new();
         self.0.transact(
             Interface::FIRST_CALL_TRANSACTION + 6, // isDeclared
@@ -153,7 +138,7 @@ impl IServiceManager for BpServiceManager {
             0,
         )?;
         Status::from_parcel(&reply)?;
-        reply.read_bool()
+        reply.read()
     }
 }
 
@@ -200,7 +185,7 @@ fn test_add_service() {
             _flags: TransactionFlags,
         ) -> Result<()> {
             if let Some(reply) = reply {
-                reply.write_utf8_as_utf16("testing service")?;
+                reply.write("testing service")?;
             }
             Ok(())
         }

@@ -16,7 +16,7 @@
 
 use crate::parcel::Parcel;
 use crate::service_manager::{DumpFlags, ServiceManager};
-use crate::{IBinder, Interface};
+use crate::{IBinder, Interface, String16};
 
 #[test]
 fn connect_to_servicemanager() {
@@ -40,6 +40,6 @@ fn raw_transact_interface() {
         0,
     );
     assert!(status.is_ok());
-    let interface = output.read_string16().unwrap();
+    let interface: String16 = output.read().unwrap();
     assert_eq!(interface.to_string(), "android.os.IServiceManager");
 }
