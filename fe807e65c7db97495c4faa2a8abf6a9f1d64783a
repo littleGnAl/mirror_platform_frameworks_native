@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "55bcd5f9_553649cd",
+        "filename": "libs/binder/include/binder/Parcelable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-05-18T04:16:32Z",
+      "side": 1,
+      "message": "we need to consider whether it is VINTF or not for now.",
+      "parentUuid": "4b32282c_b40ac434",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "fe807e65c7db97495c4faa2a8abf6a9f1d64783a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "543e0a4d_4c21b3f1",
         "filename": "libs/binder/include/binder/Parcelable.h",
         "patchSetId": 1
@@ -117,6 +141,30 @@
       "revId": "fe807e65c7db97495c4faa2a8abf6a9f1d64783a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571659ba_8933851c",
+        "filename": "libs/binder/include/binder/Parcelable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-05-18T04:16:32Z",
+      "side": 1,
+      "message": "we need to consider whether it is VINTF or not for now.",
+      "parentUuid": "73dd1eac_8c2c7356",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "fe807e65c7db97495c4faa2a8abf6a9f1d64783a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
