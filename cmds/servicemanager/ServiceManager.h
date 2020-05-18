@@ -20,6 +20,8 @@
 #include <android/os/IClientCallback.h>
 #include <android/os/IServiceCallback.h>
 
+#include <android-base/logging.h> //FIXME
+
 #include "Access.h"
 
 namespace android {
@@ -31,6 +33,13 @@ class ServiceManager : public os::BnServiceManager, public IBinder::DeathRecipie
 public:
     ServiceManager(std::unique_ptr<Access>&& access);
     ~ServiceManager();
+
+    status_t dump(int fd, const Vector<String16>& args) override {
+        // FIXME: DO NOT SUBMIT
+        LOG_ALWAYS_FATAL_IF(args.size() == 1 && args[0] == String16("die"), "bad potato");
+        (void) fd;
+        return 0;
+    }
 
     // getService will try to start any services it cannot find
     binder::Status getService(const std::string& name, sp<IBinder>* outBinder) override;
