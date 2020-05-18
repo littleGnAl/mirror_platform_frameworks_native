@@ -52,6 +52,24 @@
       "revId": "d8d675e4d8dbae1def777d2ea4bdf4ac610d6c1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de9837e9_baa1abed",
+        "filename": "libs/binder/rust/benches/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-18T20:28:01Z",
+      "side": 1,
+      "message": "Replaced this with libc::clock_gettime.",
+      "parentUuid": "4695097c_e389f123",
+      "revId": "d8d675e4d8dbae1def777d2ea4bdf4ac610d6c1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
