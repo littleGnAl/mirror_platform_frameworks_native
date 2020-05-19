@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "9003eaaa_16213fd6",
+        "filename": "services/inputflinger/tests/fuzzers/include/fuzzTestInputListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "nit: Filename should be FuzzTestInputListener or ideally TestInputListener (since we\u0027re already in the fuzzer directory)",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d540ef3_a0195101",
         "filename": "services/inputflinger/tests/fuzzers/include/fuzzTestInputListener.h",
         "patchSetId": 1
@@ -42,6 +59,80 @@
         "endLine": 2,
         "endChar": 22
       },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5655f08_dbfc662c",
+        "filename": "services/inputflinger/tests/fuzzers/include/fuzzTestInputListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "Can we figure out how to share the existing TestInputListener rather than creating a copy for each kind of test?",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2193766e_524402c3",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "nit: directory should be services/inputflinger/tests/fuzzers/mappers\n\nNo need to repeat things that are already in the directory path.",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8947e84_e5751ca1",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "nit: inputflinger_mapper_fuzz_defaults\n\nF is not capitalized in inputflinger and there\u0027s no need to repeat input",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 49
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ab7bf1_8283b6dc",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "Do we really need to put each in a different directory? Ideally we\u0027d have one directory for input mappers and then one file for each type of mapper. So cursors tests should all be in\n\n  services/inputflinger/tests/fuzzers/mappers/CursorInputMapper_fuzzer.cpp\n\nAlso, nit: file names should always be UpperCamelCase (i.e. CursorInputFuzzer, not cursorInputFuzzer)",
       "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -94,6 +185,47 @@
     },
     {
       "key": {
+        "uuid": "f01c22c1_df2c106c",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer/cursorInputFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "Using FakePointerController is fine, it already exists for testing purposes.",
+      "parentUuid": "72e8fd81_094d6adc",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "191edb65_3aeb23ce",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "Is there any reason to put this in a second file? Can all tests for a given item live in the same file?",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a31c340_66fe32c5",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
         "patchSetId": 1
@@ -111,6 +243,114 @@
         "endLine": 24,
         "endChar": 65
       },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e61b4b44_284423b8",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "nit: prefer sized types over unsized types\n\n  const int32_t DEVICE_ID \u003d tester.ConsumeIntegralInRange\u003cint32_t\u003e(0, 5);\n\nHere and everywhere else.",
+      "range": {
+        "startLine": 31,
+        "startChar": 60,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b53b8d0_093ca239",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "nit: don\u0027t mix unsigned and signed types\n\n  const uint32_t DEVICE_CLASSES \u003d tester.ConsumeIntegralInRange\u003cuint32_t\u003e(0, 5);",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50072cc8_0080f9cf",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "Don\u0027t use raw pointers unless necessary. Prefer std::unique_ptr, then std::shared_ptr, then sp\u003c\u003e. \n\nSo here should be:\n\n    auto device \u003d std::make_unique\u003cInputDevice\u003e(mFakeContext, DEVICE_ID, DEVICE_GENERATION,\n                                                DEVICE_CONTROLLER_NUMBER, identifier,\n                                                DEVICE_CLASSES);\n\nDitto for all other places where a raw pointer is used.",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f77ba7_7bfd9c46",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "Seems like all of the above should be moved into SetUp once you\u0027ve moved to parameterized tests. Right now there\u0027s a lot of duplication between InputMapperTest and the setup code here.",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa02477a_4e0973fc",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "Can we split these out to actually be separate tests?\n\nBasically any time you\u0027re creating a new mapper seems like a good signal that it should be in another test since we\u0027re probably fuzzing different functionality.",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5347456_9c20ad9f",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/include/inputReaderHelperClasses.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-05-19T13:01:29Z",
+      "side": 1,
+      "message": "Let\u0027s move all of the fakes to their own library so they can be shared among the tests (i.e. the unit tests should use the same implementation of FakePointerController as cursor fuzzer tests and the keyboard fuzzer tests). That way we don\u0027t have multiple copies of the same class, which are liable to get out of sync.\n\nI recommend you do this in separate CL before adding the fuzzer tests; that way it\u0027s easier to review.",
       "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
