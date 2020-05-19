@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "397c5aa9_4665d336",
+        "filename": "services/inputflinger/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-05-19T01:38:36Z",
+      "side": 1,
+      "message": "Whitespace..",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d540ef3_a0195101",
+        "filename": "services/inputflinger/tests/fuzzers/include/fuzzTestInputListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-05-19T01:38:36Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 22
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2630c2d4_9db64c9e",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer/cursorInputFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-05-19T01:38:36Z",
+      "side": 1,
+      "message": "Please use google test libs instead. like test class and TEST_F?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72e8fd81_094d6adc",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer/cursorInputFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-05-19T01:38:36Z",
+      "side": 1,
+      "message": "Use Mock PointerController.",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a31c340_66fe32c5",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-05-19T01:38:36Z",
+      "side": 1,
+      "message": "Use parameterized TEST_P.",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 65
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
