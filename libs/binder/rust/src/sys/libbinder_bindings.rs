@@ -4667,9 +4667,9 @@ extern "C" {
     ) -> *mut android_sp<android_IBinder>;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN7android11c_interface25RustBBinder_castToIBinderEPNS_2spINS0_11RustBBinderEEE"]
+    #[link_name = "\u{1}_ZN7android11c_interface25RustBBinder_castToIBinderEPKNS_2spINS0_11RustBBinderEEE"]
     pub fn android_c_interface_RustBBinder_castToIBinder(
-        binder: *mut android_sp<android_c_interface_RustBBinder>,
+        binder: *const android_sp<android_c_interface_RustBBinder>,
     ) -> *mut android_sp<android_IBinder>;
 }
 extern "C" {

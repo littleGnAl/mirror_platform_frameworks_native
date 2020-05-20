@@ -16,18 +16,18 @@
 
 //! Manually implemented IServiceManager AIDL interface.
 
-use crate::binder::IBinder;
 use crate::parcel::Parcel;
+use crate::proxy::SpIBinder;
 use crate::service_manager::DumpFlags;
 use crate::sys::Status;
 use crate::utils::String16;
-use crate::{Binder, Interface, Result, Service};
+use crate::{IBinder, Result};
 
-declare_binder_interface!(BpServiceManager: IServiceManager);
+declare_binder_proxy!(BpServiceManager: IServiceManager);
 
 /// Binder interface for finding and publishing system services.
 pub trait IServiceManager {
-    const INTERFACE_DESCRIPTOR: &'static str = "android.os.IServiceManager";
+    const DESCRIPTOR: &'static str = "android.os.IServiceManager";
 
     /// Retrieve an existing service called `name` from the service manager.
     ///
@@ -35,17 +35,17 @@ pub trait IServiceManager {
     /// legacy purposes.
     ///
     /// Returns null if the service does not exist.
-    fn get_service(&mut self, name: &str) -> Result<Interface>;
+    fn get_service(&mut self, name: &str) -> Result<SpIBinder>;
 
     /// Retrieve an existing service called `name` from the service
     /// manager. Non-blocking. Returns null if the service does not exist.
-    fn check_service(&mut self, name: &str) -> Result<Interface>;
+    fn check_service(&mut self, name: &str) -> Result<SpIBinder>;
 
     /// Place a new service called `name` into the service manager.
-    fn add_service<T: Binder>(
+    fn add_service(
         &mut self,
         name: &str,
-        service: &Service<T>,
+        service: &SpIBinder,
         allow_isolated: bool,
         dumpsys_flags: DumpFlags,
     ) -> Result<()>;
@@ -60,58 +60,58 @@ pub trait IServiceManager {
 }
 
 impl IServiceManager for BpServiceManager {
-    fn get_service(&mut self, name: &str) -> Result<Interface> {
+    fn get_service(&mut self, name: &str) -> Result<SpIBinder> {
         let mut data = Parcel::new();
         unsafe {
-            data.write_interface_token(&Self::INTERFACE_DESCRIPTOR.into())?;
+            data.write_interface_token(&Self::DESCRIPTOR.into())?;
         }
         data.write_utf8_as_utf16(name)?;
         let mut reply = Parcel::new();
         self.0.transact(
-            Interface::FIRST_CALL_TRANSACTION + 0, // getService
+            SpIBinder::FIRST_CALL_TRANSACTION + 0, // getService
             &data,
             Some(&mut reply),
             0,
         )?;
         Status::from_parcel(&reply)?;
-        reply.read::<Interface>()
+        reply.read::<SpIBinder>()
     }
 
-    fn check_service(&mut self, name: &str) -> Result<Interface> {
+    fn check_service(&mut self, name: &str) -> Result<SpIBinder> {
         let mut data = Parcel::new();
         unsafe {
-            data.write_interface_token(&Self::INTERFACE_DESCRIPTOR.into())?;
+            data.write_interface_token(&Self::DESCRIPTOR.into())?;
         }
         data.write_utf8_as_utf16(name)?;
         let mut reply = Parcel::new();
         self.0.transact(
-            Interface::FIRST_CALL_TRANSACTION + 1, // checkService
+            SpIBinder::FIRST_CALL_TRANSACTION + 1, // checkService
             &data,
             Some(&mut reply),
             0,
         )?;
         Status::from_parcel(&reply)?;
-        reply.read::<Interface>()
+        reply.read::<SpIBinder>()
     }
 
-    fn add_service<T: Binder>(
+    fn add_service(
         &mut self,
         name: &str,
-        service: &Service<T>,
+        service: &SpIBinder,
         allow_isolated: bool,
         dump_priority: DumpFlags,
     ) -> Result<()> {
         let mut data = Parcel::new();
         unsafe {
-            data.write_interface_token(&Self::INTERFACE_DESCRIPTOR.into())?;
+            data.write_interface_token(&Self::DESCRIPTOR.into())?;
         }
         data.write_utf8_as_utf16(name)?;
-        data.write_service(service)?;
+        data.write(service)?;
         data.write_bool(allow_isolated)?;
         data.write_i32(dump_priority as i32)?;
         let mut reply = Parcel::new();
         self.0.transact(
-            Interface::FIRST_CALL_TRANSACTION + 2, // addService
+            SpIBinder::FIRST_CALL_TRANSACTION + 2, // addService
             &data,
             Some(&mut reply),
             0,
@@ -123,12 +123,12 @@ impl IServiceManager for BpServiceManager {
     fn list_services(&mut self, dump_priority: DumpFlags) -> Result<Vec<String16>> {
         let mut data = Parcel::new();
         unsafe {
-            data.write_interface_token(&Self::INTERFACE_DESCRIPTOR.into())?;
+            data.write_interface_token(&Self::DESCRIPTOR.into())?;
         }
         data.write_i32(dump_priority as i32)?;
         let mut reply = Parcel::new();
         self.0.transact(
-            Interface::FIRST_CALL_TRANSACTION + 3, // listServices
+            SpIBinder::FIRST_CALL_TRANSACTION + 3, // listServices
             &data,
             Some(&mut reply),
             0,
@@ -142,12 +142,12 @@ impl IServiceManager for BpServiceManager {
     fn is_declared(&mut self, name: &str) -> Result<bool> {
         let mut data = Parcel::new();
         unsafe {
-            data.write_interface_token(&Self::INTERFACE_DESCRIPTOR.into())?;
+            data.write_interface_token(&Self::DESCRIPTOR.into())?;
         }
         data.write_utf8_as_utf16(name)?;
         let mut reply = Parcel::new();
         self.0.transact(
-            Interface::FIRST_CALL_TRANSACTION + 6, // isDeclared
+            SpIBinder::FIRST_CALL_TRANSACTION + 6, // isDeclared
             &data,
             Some(&mut reply),
             0,
@@ -185,12 +185,12 @@ fn test_check_service() {
 
 #[test]
 fn test_add_service() {
-    use crate::{Binder, Service, TransactionCode, TransactionFlags};
+    use crate::{Remotable, Binder, TransactionCode, TransactionFlags};
 
     struct TestService;
 
-    impl Binder for TestService {
-        const INTERFACE_DESCRIPTOR: &'static str = "TestService";
+    impl Remotable for TestService {
+        const DESCRIPTOR: &'static str = "TestService";
 
         fn on_transact(
             &self,
@@ -207,9 +207,9 @@ fn test_add_service() {
     let mut sm: BpServiceManager =
         crate::get_service("manager").expect("Did not get manager binder service");
 
-    let binder_native = Service::new(TestService);
+    let binder_native = Binder::new(TestService);
     assert!(sm
-        .add_service("testing", &binder_native, false, DumpFlags::PriorityDefault)
+        .add_service("testing", &binder_native.into(), false, DumpFlags::PriorityDefault)
         .is_ok());
 }
 

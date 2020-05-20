@@ -17,10 +17,10 @@
 //! Container for messages that are sent via binder.
 
 use crate::error::{binder_status, Error, Result};
-use crate::proxy::Interface;
+use crate::proxy::SpIBinder;
 use crate::sys::{libbinder_bindings::*, status_t};
 use crate::utils::{AsNative, Str16, Str8, String16, String8};
-use crate::{Binder, Service};
+use crate::{Remotable, Binder};
 
 use std::cmp::Ordering;
 use std::convert::TryInto;
@@ -310,11 +310,11 @@ impl Parcel {
         binder_status(status)
     }
 
-    pub fn write_service<T: Binder>(&mut self, binder: &Service<T>) -> Result<()> {
+    pub fn write_service<T: Remotable>(&mut self, binder: &Binder<T>) -> Result<()> {
         binder.write_to_parcel(self)
     }
 
-    pub(crate) fn write_binder(&mut self, binder: &Interface) -> Result<()> {
+    pub(crate) fn write_binder(&mut self, binder: &SpIBinder) -> Result<()> {
         unsafe {
             binder_status(android_Parcel_writeStrongBinder(
                 self.as_native_mut(),
@@ -686,11 +686,11 @@ impl Parcel {
         }
     }
 
-    pub(crate) unsafe fn read_strong_binder(&self) -> Result<Option<Interface>> {
+    pub(crate) unsafe fn read_strong_binder(&self) -> Result<Option<SpIBinder>> {
         let mut binder = ptr::null_mut();
         let status = android_c_interface_Parcel_readStrongBinder(self.as_native(), &mut binder);
 
-        binder_status(status).map(|_| Interface::from_raw(binder))
+        binder_status(status).map(|_| SpIBinder::from_raw(binder))
     }
 
     /// Reads utf16 string into a vec of utf8 strings.

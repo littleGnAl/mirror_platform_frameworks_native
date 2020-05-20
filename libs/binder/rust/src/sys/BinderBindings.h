@@ -94,7 +94,7 @@ sp<RustBBinder>* NewRustBBinder(RustObject* object, const String16* descriptor,
 status_t RustBBinder_writeToParcel(const sp<RustBBinder>* binder, Parcel* parcel);
 void RustBBinder_setExtension(RustBBinder* binder, const sp<IBinder>* ext);
 sp<IBinder>* RustBBinder_getExtension(RustBBinder* binder);
-sp<IBinder>* RustBBinder_castToIBinder(sp<RustBBinder>* binder);
+sp<IBinder>* RustBBinder_castToIBinder(const sp<RustBBinder>* binder);
 const IBinder* RustBBinder_asIBinder(const RustBBinder* binder);
 IBinder* RustBBinder_asIBinderMut(RustBBinder* binder);
 const String16* RustBBinder_getInterfaceDescriptor(const RustBBinder* binder);

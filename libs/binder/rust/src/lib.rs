@@ -15,6 +15,66 @@
  */
 
 //! Rust interface to Android `libbinder`
+//!
+//! # Example
+//!
+//! ```
+//! use binder::{Remotable, Parcel, SpIBinder};
+//!
+//! pub trait ITest {
+//!     // DESCRIPTOR is required for Binder Interfaces
+//!     const DESCRIPTOR: &'static str = "android.os.ITest";
+//!
+//!     fn test(&mut self) -> binder::Result<String>;
+//! }
+//!
+//! // Local implementation of the ITest remotable interface.
+//! struct TestService;
+//!
+//! impl TestService {
+//!     fn test() -> &'static str {
+//!         "testing service"
+//!     }
+//! }
+//!
+//! impl Remotable for TestService {
+//!     const DESCRIPTOR: &'static str = <Self as ITest>::INTERFACE_DESCRIPTOR;
+//!
+//!     fn on_transact(
+//!         &self,
+//!         _code: TransactionCode,
+//!         _data: &Parcel,
+//!         reply: Option<&mut Parcel>,
+//!         _flags: TransactionFlags,
+//!     ) -> binder::Result<()> {
+//!         reply.unwrap().write_utf8_as_utf16(TestService::test())?;
+//!         Ok(())
+//!     }
+//! }
+//!
+//! impl ITest for TestService {
+//!     fn test(&mut self) -> binder::Result<String> {
+//!         Ok(TestService::test().to_string())
+//!     }
+//! }
+//!
+//! // Creates a new proxy, BpTest, that will wrap a remote object
+//! // implementing ITest over binder.
+//! declare_binder_proxy!(BpTest: ITest);
+//!
+//! impl ITest for BpTest {
+//!     fn test(&mut self) -> binder::Result<String> {
+//!         let mut reply = Parcel::new();
+//!         self.0.transact(
+//!             SpIBinder::FIRST_CALL_TRANSACTION,
+//!             &Parcel::new(),
+//!             Some(&mut reply),
+//!             0,
+//!         )?;
+//!         Ok(reply.read_string16().unwrap().to_string())
+//!     }
+//! }
+//! ```
 
 #[macro_use]
 mod utils;
@@ -31,12 +91,13 @@ pub mod interfaces;
 pub mod parcel;
 pub mod service_manager;
 
-pub use binder::{Binder, BinderService, IBinder, TransactionCode, TransactionFlags};
+pub use binder::{BinderService, IBinder, Interface, Remotable, TransactionCode, TransactionFlags};
 pub use error::binder_status;
 pub use error::{status_t, Error, Result};
-pub use native::Service;
+pub use native::Binder;
+pub use parcel::Parcel;
 pub use proxy::get_service;
-pub use proxy::{Handle, Interface};
+pub use proxy::SpIBinder;
 pub use state::{ProcessState, ThreadState};
 pub use sys::binder_size_t as size_t;
 pub use utils::{Str16, Str8, String16, String8, UniqueFd};
@@ -49,10 +110,10 @@ pub use utils::{Str16, Str8, String16, String8, UniqueFd};
 /// use binder::prelude::*;
 /// ```
 pub mod prelude {
+    pub use super::Binder;
     pub use super::Error as BinderError;
-    pub use super::Handle as BinderHandle;
+    pub use super::IBinder;
     pub use super::Interface as BinderInterface;
+    pub use super::Remotable as BinderRemotable;
     pub use super::Result as BinderResult;
-    pub use super::Service as BinderService;
-    pub use super::{Binder, IBinder};
 }

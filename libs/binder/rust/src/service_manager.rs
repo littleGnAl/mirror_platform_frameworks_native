@@ -15,7 +15,7 @@
  */
 
 use crate::error::{binder_status, Result};
-use crate::proxy::Interface;
+use crate::proxy::SpIBinder;
 use crate::sys::libbinder_bindings::*;
 use crate::utils::{AsNative, Sp, Str16, String16};
 
@@ -89,9 +89,9 @@ impl ServiceManager {
 
     /// Retrieve an existing service, blocking for a few seconds if it doesn't
     /// yet exist.
-    pub fn get_service(&self, name: &str) -> Option<Interface> {
+    pub fn get_service(&self, name: &str) -> Option<SpIBinder> {
         unsafe {
-            Interface::from_raw(android_c_interface_IServiceManager_getService(
+            SpIBinder::from_raw(android_c_interface_IServiceManager_getService(
                 self.0.as_native(),
                 String16::from(name).as_native(),
             ))
@@ -99,9 +99,9 @@ impl ServiceManager {
     }
 
     /// Retrieve an existing service, non-blocking.
-    pub fn check_service(&self, name: &str) -> Option<Interface> {
+    pub fn check_service(&self, name: &str) -> Option<SpIBinder> {
         unsafe {
-            Interface::from_raw(android_c_interface_IServiceManager_checkService(
+            SpIBinder::from_raw(android_c_interface_IServiceManager_checkService(
                 self.0.as_native(),
                 String16::from(name).as_native(),
             ))
@@ -112,7 +112,7 @@ impl ServiceManager {
     pub fn add_service(
         &mut self,
         name: &str,
-        service: Interface,
+        service: SpIBinder,
         allow_isolated: bool,
         dump_flags: DumpFlags,
     ) -> Result<()> {
@@ -131,9 +131,9 @@ impl ServiceManager {
     /// Efficiently wait for a service.
     ///
     /// Returns nullptr only for permission problem or fatal error.
-    pub fn wait_for_service(&mut self, name: &str) -> Option<Interface> {
+    pub fn wait_for_service(&mut self, name: &str) -> Option<SpIBinder> {
         unsafe {
-            Interface::from_raw(android_c_interface_IServiceManager_waitForService(
+            SpIBinder::from_raw(android_c_interface_IServiceManager_waitForService(
                 self.0.as_native_mut(),
                 String16::from(name).as_native(),
             ))

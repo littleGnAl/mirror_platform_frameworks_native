@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-use binder::declare_binder_interface;
+use binder::declare_binder_proxy;
 use binder::interfaces::{BpServiceManager, IServiceManager};
 use binder::parcel::Parcel;
 use binder::service_manager::DumpFlags;
-use binder::{Binder, IBinder, ProcessState, Service};
+use binder::{Binder, IBinder, SpIBinder, Remotable, ProcessState};
 use binder::{TransactionCode, TransactionFlags};
 
 #[test]
@@ -39,8 +39,8 @@ impl TestService {
     }
 }
 
-impl Binder for TestService {
-    const INTERFACE_DESCRIPTOR: &'static str = <Self as ITest>::INTERFACE_DESCRIPTOR;
+impl Remotable for TestService {
+    const DESCRIPTOR: &'static str = <Self as ITest>::DESCRIPTOR;
 
     fn on_transact(
         &self,
@@ -61,18 +61,18 @@ impl ITest for TestService {
 }
 
 pub trait ITest {
-    const INTERFACE_DESCRIPTOR: &'static str = "android.os.ITest";
+    const DESCRIPTOR: &'static str = "android.os.ITest";
 
     fn test(&mut self) -> binder::Result<String>;
 }
 
-declare_binder_interface!(BpTest: ITest);
+declare_binder_proxy!(BpTest: ITest);
 
 impl ITest for BpTest {
     fn test(&mut self) -> binder::Result<String> {
         let mut reply = Parcel::new();
         self.0.transact(
-            binder::Interface::FIRST_CALL_TRANSACTION,
+            SpIBinder::FIRST_CALL_TRANSACTION,
             &Parcel::new(),
             Some(&mut reply),
             0,
@@ -86,8 +86,8 @@ fn run_server() {
     ProcessState::start_thread_pool();
     let mut sm: BpServiceManager =
         binder::get_service("manager").expect("Did not get manager binder service");
-    let binder_native = Service::new(TestService);
-    let res = sm.add_service("testing", &binder_native, false, DumpFlags::PriorityDefault);
+    let binder_native = Binder::new(TestService);
+    let res = sm.add_service("testing", &binder_native.into(), false, DumpFlags::PriorityDefault);
     assert!(res.is_ok());
 
     let mut test_client: BpTest =

@@ -18,7 +18,8 @@ use crate::error::{binder_status, Result};
 use crate::sys::libbinder_bindings::*;
 
 use std::any::type_name;
-use std::convert::{AsRef, TryInto};
+use std::borrow::Borrow;
+use std::convert::TryInto;
 use std::fmt;
 use std::ops;
 use std::os::unix::io::{AsRawFd, RawFd};
@@ -299,8 +300,8 @@ impl ops::Deref for String8 {
     }
 }
 
-impl AsRef<Str8> for String8 {
-    fn as_ref(&self) -> &Str8 {
+impl Borrow<Str8> for String8 {
+    fn borrow(&self) -> &Str8 {
         &*self
     }
 }
@@ -447,6 +448,8 @@ impl PartialEq for String16 {
     }
 }
 
+impl Eq for String16 {}
+
 impl ops::Deref for String16 {
     type Target = Str16;
 
@@ -456,8 +459,8 @@ impl ops::Deref for String16 {
     }
 }
 
-impl AsRef<Str16> for String16 {
-    fn as_ref(&self) -> &Str16 {
+impl Borrow<Str16> for String16 {
+    fn borrow(&self) -> &Str16 {
         &*self
     }
 }
@@ -469,10 +472,6 @@ pub struct Str16(android_String16);
 impl Str16 {
     pub(crate) unsafe fn from_ptr<'a>(ptr: *const android_String16) -> &'a Str16 {
         &*ptr.cast()
-    }
-
-    pub(crate) fn to_owned(&self) -> String16 {
-        unsafe { String16::from_raw(android_c_interface_CopyString16(self.as_native())) }
     }
 
     pub fn size(&self) -> size_t {
@@ -496,6 +495,14 @@ impl Str16 {
         std::char::decode_utf16(slice.into_iter().copied())
             .map(|r| r.unwrap_or(std::char::REPLACEMENT_CHARACTER))
             .collect()
+    }
+}
+
+impl ToOwned for Str16 {
+    type Owned = String16;
+
+    fn to_owned(&self) -> String16 {
+        unsafe { String16::from_raw(android_c_interface_CopyString16(self.as_native())) }
     }
 }
 

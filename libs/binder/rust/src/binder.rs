@@ -17,12 +17,12 @@
 //! Trait definitions for binder objects
 
 use crate::parcel::Parcel;
-use crate::proxy::IInterface;
+use crate::proxy::{SpIBinder, SpIInterface};
 use crate::service_manager::{DumpFlags, ServiceManager};
 use crate::state::{ProcessState, ThreadState};
 use crate::sys::libbinder_bindings::*;
-use crate::utils::{Str16, String16};
-use crate::{Error, Interface, Result, Service};
+use crate::utils::{AsNative, Str16, String16};
+use crate::{Error, Result, Binder};
 
 use std::os::unix::io::AsRawFd;
 
@@ -44,8 +44,8 @@ pub type TransactionFlags = u32;
 ///
 /// This is a low-level interface that should normally be automatically
 /// generated from AIDL.
-pub trait Binder: Sync {
-    const INTERFACE_DESCRIPTOR: &'static str;
+pub trait Remotable: Sync {
+    const DESCRIPTOR: &'static str;
 
     /// Handle and reply to a request to invoke a transaction on this object.
     ///
@@ -63,7 +63,7 @@ pub trait Binder: Sync {
     ) -> Result<()>;
 
     fn check_interface(&self, data: &Parcel) -> Result<()> {
-        if unsafe { data.enforce_interface(&Self::INTERFACE_DESCRIPTOR.into()) } {
+        if unsafe { data.enforce_interface(&Self::DESCRIPTOR.into()) } {
             Ok(())
         } else {
             Err(Error::PERMISSION_DENIED)
@@ -72,9 +72,9 @@ pub trait Binder: Sync {
 }
 
 /// Tests often create a base BBinder instance; so allowing the unit
-/// type to be remotable translates nicely to Service::new(()).
-impl Binder for () {
-    const INTERFACE_DESCRIPTOR: &'static str = "";
+/// type to be remotable translates nicely to Binder::new(()).
+impl Remotable for () {
+    const DESCRIPTOR: &'static str = "";
 
     fn on_transact(
         &self,
@@ -93,7 +93,7 @@ impl Binder for () {
 /// The struct will be default initialized and published directly to the service
 /// manager using [`SERVICE_NAME`](BinderService::SERVICE_NAME) as the service's
 /// name.
-pub trait BinderService: Binder + Default {
+pub trait BinderService: Remotable + Default {
     const SERVICE_NAME: &'static str;
 
     /// Publish the service to the service manager.
@@ -101,7 +101,7 @@ pub trait BinderService: Binder + Default {
         let mut sm = ServiceManager::default();
         sm.add_service(
             Self::SERVICE_NAME,
-            Service::new(Self::default()).into(),
+            (&Binder::new(Self::default())).into(),
             allow_isolated,
             dump_flags,
         )
@@ -158,7 +158,7 @@ pub trait IBinder {
 
     /// Get a new interface that exposes additional extension functionality, if
     /// available.
-    fn get_extension(&mut self) -> Result<Option<Interface>>;
+    fn get_extension(&mut self) -> Result<Option<SpIBinder>>;
 
     /// Perform a generic operation with the object.
     ///
@@ -191,12 +191,53 @@ pub trait IBinder {
     // - remoteBinder
 }
 
+/// Interface for objects that can be converted to and from [`SpIBinder`] objects.
+///
+/// Corresponds to the C++ `IInterface` class. We would like to require this
+/// trait for all Binder remote interfaces (i.e. `IFoo` traits), but doing so
+/// would make these traits not valid to make into trait objects, which is
+/// essential. Instead, users should implement this trait on `BnFoo` and
+/// `BpFoo`, the local and proxy objects implementing `IFoo`, instead.
+pub trait Interface: Sized {
+    /// Create a new interface from the given proxy, if it matches the expected
+    /// type of this interface.
+    fn new(client: SpIBinder) -> Result<Self>;
+
+    /// Retrieve an [`SpIBinder`] from this interface.
+    fn as_binder(&self) -> SpIBinder;
+}
+
+/// Interface for transforming a generic SpIBinder into a specific remote
+/// interface trait.
+///
+/// # Example
+///
+/// For Binder interface `IFoo`, the following implementation should be made:
+/// ```rust
+/// impl IntoInterface<dyn IFoo> for SpIBinder {
+///     // ...
+/// }
+/// ```
+pub trait IntoInterface<I: ?Sized> {
+    fn into_interface(self) -> Result<Box<I>>;
+}
+
+unsafe impl<T: Interface> AsNative<android_IBinder> for T {
+    fn as_native(&self) -> *const android_IBinder {
+        self.as_binder().as_native()
+    }
+
+    fn as_native_mut(&mut self) -> *mut android_IBinder {
+        self.as_binder().as_native_mut()
+    }
+}
+
 pub(crate) trait IBinderInternal {
     /// Check if this object implements the interface named by `descriptor`. If
-    /// it does, a corresponding [`IInterface`] is returned. Currently
-    /// [`IInterface`] does not expose any useful operations, so this interface
-    /// is internal-only.
-    unsafe fn query_local_interface(&mut self, descriptor: &String16) -> IInterface;
+    /// it does, a corresponding [`SpIInterface`] is returned. Currently
+    /// [`SpIInterface`] does not expose any useful operations, so this
+    /// interface is internal-only.
+    unsafe fn query_local_interface(&mut self, descriptor: &String16) -> SpIInterface;
 
     fn get_debug_pid(&mut self) -> Result<libc::pid_t>;
 

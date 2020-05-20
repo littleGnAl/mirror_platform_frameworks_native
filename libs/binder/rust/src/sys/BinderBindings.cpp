@@ -123,7 +123,7 @@ sp<IBinder>* RustBBinder_getExtension(RustBBinder* binder) {
   return new sp(binder->getExtension());
 }
 
-sp<IBinder>* RustBBinder_castToIBinder(sp<RustBBinder>* binder) {
+sp<IBinder>* RustBBinder_castToIBinder(const sp<RustBBinder>* binder) {
   assert(binder);
   return new sp<IBinder>(*binder);
 }

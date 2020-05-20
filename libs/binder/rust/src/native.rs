@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-use crate::binder::Binder;
+use crate::binder::{Interface, Remotable};
 use crate::error::{binder_status, Error, Result};
 use crate::parcel::Parcel;
-use crate::proxy::Interface;
+use crate::proxy::SpIBinder;
 use crate::sys::libbinder_bindings::*;
 use crate::utils::{AsNative, Sp, String16};
 
@@ -29,27 +29,27 @@ use std::ptr;
 /// Implements the C++ `BBinder` class, and therefore implements the C++
 /// `IBinder` interface.
 #[repr(C)]
-pub struct Service<T: Binder> {
+pub struct Binder<T: Remotable> {
     wrapper: Sp<android_c_interface_RustBBinder>,
     rust_object: *mut T,
 }
 
-impl<T: Binder> Service<T> {
+impl<T: Remotable> Binder<T> {
     /// Create a new Binder remotable object.
     ///
     /// This moves the `rust_object` into an owned [`Box`] and Binder will
     /// manage its lifetime.
-    pub fn new(rust_object: T) -> Service<T> {
+    pub fn new(rust_object: T) -> Binder<T> {
         unsafe {
             let rust_object = Box::into_raw(Box::new(rust_object));
-            let descriptor: String16 = T::INTERFACE_DESCRIPTOR.into();
+            let descriptor: String16 = T::DESCRIPTOR.into();
             let wrapper = android_c_interface_NewRustBBinder(
                 rust_object.cast(),
                 descriptor.as_native(),
                 Some(Self::on_transact),
                 Some(Self::on_destroy),
             );
-            Service {
+            Binder {
                 wrapper: Sp(wrapper.cast()),
                 rust_object,
             }
@@ -90,9 +90,9 @@ impl<T: Binder> Service<T> {
     ///
     ///    When registering the interface, add:
     ///
-    ///        let foo: Service<MyFoo> = Service::new(my_foo); // class in AOSP codebase
-    ///        let bar: Service<MyBar> = Service::new(my_bar); // custom extension class
-    ///        foo.set_extension(bar.into());                  // use method in Service
+    ///        let foo: Binder<MyFoo> = Binder::new(my_foo); // class in AOSP codebase
+    ///        let bar: Binder<MyBar> = Binder::new(my_bar); // custom extension class
+    ///        foo.set_extension(bar.into());                // use method in Binder
     ///
     ///    Then, clients of `IFoo` can get this extension:
     ///
@@ -103,7 +103,7 @@ impl<T: Binder> Service<T> {
     ///        } else {
     ///            // There was no extension
     ///        }
-    pub fn set_extension(&mut self, extension: &Interface) {
+    pub fn set_extension(&mut self, extension: &SpIBinder) {
         unsafe {
             android_c_interface_RustBBinder_setExtension(
                 self.wrapper.as_native_mut(),
@@ -113,7 +113,7 @@ impl<T: Binder> Service<T> {
     }
 }
 
-impl<T: Binder> Service<T> {
+impl<T: Remotable> Binder<T> {
     /// Called by `RustBBinder` when it receives a transaction.
     unsafe extern "C" fn on_transact(
         binder: *mut android_c_interface_RustBBinder,
@@ -159,7 +159,7 @@ impl<T: Binder> Service<T> {
     }
 }
 
-impl<T: Binder> Drop for Service<T> {
+impl<T: Remotable> Drop for Binder<T> {
     // This causes C++ to decrease the strong ref count of the RustBBinder
     // object. We specifically do not drop the `rust_object` here. When C++
     // actually destroys RustBBinder, it calls `on_destroy` and we can drop
@@ -171,7 +171,7 @@ impl<T: Binder> Drop for Service<T> {
     }
 }
 
-impl<T: Binder> Deref for Service<T> {
+impl<T: Remotable> Deref for Binder<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -179,20 +179,30 @@ impl<T: Binder> Deref for Service<T> {
     }
 }
 
-impl<B: Binder> From<Service<B>> for Interface {
-    fn from(mut binder_native: Service<B>) -> Self {
-        (&mut binder_native).into()
+impl<B: Remotable> From<&Binder<B>> for SpIBinder {
+    fn from(binder_native: &Binder<B>) -> Self {
+        unsafe {
+            let ibinder = android_c_interface_RustBBinder_castToIBinder(
+                binder_native.wrapper.as_native(),
+            );
+            SpIBinder::from_raw(ibinder).unwrap()
+        }
     }
 }
 
-impl<B: Binder> From<&mut Service<B>> for Interface {
-    fn from(binder_native: &mut Service<B>) -> Self {
-        unsafe {
-            let ibinder = android_c_interface_RustBBinder_castToIBinder(
-                binder_native.wrapper.as_native_mut(),
-            );
-            Interface::from_raw(ibinder).unwrap()
-        }
+impl<B: Remotable> From<Binder<B>> for SpIBinder {
+    fn from(binder_native: Binder<B>) -> Self {
+        SpIBinder::from(&binder_native)
+    }
+}
+
+impl<B: Remotable> Interface for Binder<B> {
+    fn new(_client: SpIBinder) -> Result<Self> {
+        Err(Error::BAD_TYPE)
+    }
+
+    fn as_binder(&self) -> SpIBinder {
+        SpIBinder::from(self)
     }
 }
 
@@ -211,15 +221,5 @@ unsafe impl AsNative<android_c_interface_RustBBinder> for Sp<android_c_interface
         } else {
             unsafe { android_c_interface_Sp_getRustBBinder(self.0) }
         }
-    }
-}
-
-unsafe impl<B: Binder> AsNative<android_IBinder> for Service<B> {
-    fn as_native(&self) -> *const android_IBinder {
-        unsafe { android_c_interface_RustBBinder_asIBinder(self.wrapper.as_native()) }
-    }
-
-    fn as_native_mut(&mut self) -> *mut android_IBinder {
-        unsafe { android_c_interface_RustBBinder_asIBinderMut(self.wrapper.as_native_mut()) }
     }
 }

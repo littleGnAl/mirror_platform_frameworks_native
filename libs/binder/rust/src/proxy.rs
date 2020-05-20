@@ -16,7 +16,7 @@
 
 //! Rust API for interacting with a remote binder service.
 
-use crate::binder::{IBinder, IBinderInternal, TransactionCode, TransactionFlags};
+use crate::binder::{IBinder, IBinderInternal, Interface, TransactionCode, TransactionFlags};
 use crate::error::{binder_status, Error, Result};
 use crate::parcel::{Parcel, Parcelable};
 use crate::service_manager::ServiceManager;
@@ -28,12 +28,13 @@ use std::os::unix::io::AsRawFd;
 use std::ptr;
 
 wrap_sp! {
-    /// Rust wrapper around Binder remote objects.
+    /// Rust wrapper around Binder objects.
     ///
-    /// This struct encapsulates the C++ `IBinder` class. However, this wrapper
-    /// is untyped, so properly typed versions implementing a particular binder
-    /// interface should be crated with [`declare_binder_interface!`].
-    pub struct Interface(Sp<android_IBinder>) {
+    /// This struct encapsulates the C++ `IBinder` class, which is the base
+    /// class for both remote and local Binder objects. This wrapper is untyped,
+    /// so a properly typed version for remote object implementing a particular
+    /// binder interface should be created with [`declare_binder_proxy!`].
+    pub struct SpIBinder(Sp<android_IBinder>) {
         getter: android_c_interface_Sp_getIBinder,
         destructor: android_c_interface_Sp_DropIBinder,
         clone: android_c_interface_Sp_CloneIBinder,
@@ -42,10 +43,10 @@ wrap_sp! {
 
 /// # Safety
 ///
-/// An `Interface` is a handle to a C++ IBinder, which is thread-safe
-unsafe impl Send for Interface {}
+/// An `SpIBinder` is a handle to a C++ IBinder, which is thread-safe
+unsafe impl Send for SpIBinder {}
 
-impl Interface {
+impl SpIBinder {
     pub fn is_null(&self) -> bool {
         let ptr: *const android_IBinder = self.0.as_native();
         ptr.is_null()
@@ -103,24 +104,24 @@ impl<T: AsNative<android_IBinder>> IBinder for T {
         binder_status(status)
     }
 
-    fn get_extension(&mut self) -> Result<Option<Interface>> {
+    fn get_extension(&mut self) -> Result<Option<SpIBinder>> {
         let mut out = ptr::null_mut();
         let status =
             unsafe { android_c_interface_IBinder_getExtension(self.as_native_mut(), &mut out) };
-        let ibinder = unsafe { Interface::from_raw(out) };
+        let ibinder = unsafe { SpIBinder::from_raw(out) };
 
         binder_status(status).map(|_| ibinder)
     }
 }
 
-impl Parcelable for Interface {
-    type Deserialized = Interface;
+impl Parcelable for SpIBinder {
+    type Deserialized = SpIBinder;
 
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
         parcel.write_binder(self)
     }
 
-    fn deserialize(parcel: &Parcel) -> Result<Interface> {
+    fn deserialize(parcel: &Parcel) -> Result<SpIBinder> {
         let ibinder = unsafe { parcel.read_strong_binder()? };
         ibinder.ok_or(Error::UNEXPECTED_NULL)
     }
@@ -129,43 +130,16 @@ impl Parcelable for Interface {
 wrap_sp! {
     /// Rust wrapper around Binder interfaces. Encapsulates the C++ IInterface
     /// class.
-    pub(crate) struct IInterface(Sp<android_IInterface>) {
+    pub(crate) struct SpIInterface(Sp<android_IInterface>) {
         getter: android_c_interface_Sp_getIInterface,
         destructor: android_c_interface_Sp_DropIInterface,
         clone: android_c_interface_Sp_CloneIInterface,
     }
 }
 
-/// A struct that holds a binder client of a particular interface.
-///
-/// In most cases this trait should be implemented using
-/// [`declare_binder_interface!`]. Do not implement manually unless you are sure
-/// you need to.
-pub trait Handle: Sized {
-    /// Create a new handle from the given interface, if it matches the expected
-    /// type of this handle.
-    fn new(client: Interface) -> Result<Self>;
-
-    /// Retrieve the [`Interface`] from this handle.
-    fn remote(&self) -> &Interface;
-
-    /// Retrieve a mutable [`Interface`] from this handle.
-    fn remote_mut(&mut self) -> &mut Interface;
-}
-
-unsafe impl<H: Handle> AsNative<android_IBinder> for H {
-    fn as_native(&self) -> *const android_IBinder {
-        self.remote().as_native()
-    }
-
-    fn as_native_mut(&mut self) -> *mut android_IBinder {
-        self.remote_mut().as_native_mut()
-    }
-}
-
 /// Retrieve an existing service, blocking for a few seconds if it doesn't yet
 /// exist.
-pub fn get_service<T: Handle>(name: &str) -> Result<T> {
+pub fn get_service<T: Interface>(name: &str) -> Result<T> {
     let sm = ServiceManager::default();
     match sm.get_service(name) {
         Some(service) => T::new(service),
@@ -174,12 +148,11 @@ pub fn get_service<T: Handle>(name: &str) -> Result<T> {
 }
 
 /// Declare a handle type for a binder interface.
+/// Declare a proxy type for a binder interface.
 ///
-/// Creates a declaration of a [`Handle`] type called `$name` which holds a
-/// handle to a (potentially) remote binder object implementing a particular
-/// interface (`$interface`). The interface must contain an associated constant
-/// static string `INTERFACE_DESCRIPTOR` which is the interface descriptor for
-/// this binder interface.
+/// Creates a declaration of a [`IInterface`] type called `$name` which holds a
+/// handle to a remote binder object implementing a particular binder RPC
+/// interface (`$interface`).
 ///
 /// # Examples
 ///
@@ -189,18 +162,16 @@ pub fn get_service<T: Handle>(name: &str) -> Result<T> {
 ///
 /// ```rust
 /// pub trait IServiceManager {
-///    const INTERFACE_DESCRIPTOR: &'static str = "android.os.IServiceManager";
-///
 ///    // remote methods...
 /// }
 ///
-/// declare_binder_interface!(BpServiceManager: IServiceManager);
+/// declare_binder_proxy!(BpServiceManager: IServiceManager, "android.os.IServiceManager");
 /// ```
 // TODO: make this a derive proc-macro
 #[macro_export]
-macro_rules! declare_binder_interface {
+macro_rules! declare_binder_proxy {
     ($name:ident: $interface:path) => {
-        declare_binder_interface!(@doc
+        declare_binder_proxy!(@doc
             $name,
             $interface,
             concat!("A binder [`Handle`]($crate::Handle) that holds an [`", stringify!($interface), "`] remote interface.")
@@ -210,26 +181,22 @@ macro_rules! declare_binder_interface {
     (@doc $name:ident, $interface:path, $doc:expr) => {
         #[doc = $doc]
         #[repr(transparent)]
-        pub struct $name($crate::Interface);
+        pub struct $name($crate::SpIBinder);
 
-        impl $crate::Handle for $name
+        impl $crate::Interface for $name
         where
             $name: $interface,
         {
-            fn new(client: $crate::Interface) -> $crate::Result<Self> {
-                if client.get_interface_descriptor().to_string() == <Self as $interface>::INTERFACE_DESCRIPTOR {
+            fn new(client: $crate::SpIBinder) -> $crate::Result<Self> {
+                if client.get_interface_descriptor().to_string() == Self::DESCRIPTOR {
                     Ok(Self(client))
                 } else {
                     Err($crate::Error::BAD_TYPE)
                 }
             }
 
-            fn remote(&self) -> & $crate::Interface {
-                &self.0
-            }
-
-            fn remote_mut(&mut self) -> &mut $crate::Interface {
-                &mut self.0
+            fn as_binder(&self) -> $crate::SpIBinder {
+                self.0.clone()
             }
         }
     };
@@ -238,9 +205,9 @@ macro_rules! declare_binder_interface {
 // ---------------------------------------------------------------------------
 // Internal APIs
 
-impl IBinderInternal for Interface {
-    unsafe fn query_local_interface(&mut self, descriptor: &String16) -> IInterface {
-        IInterface::from_raw(android_c_interface_IBinder_queryLocalInterface(
+impl IBinderInternal for SpIBinder {
+    unsafe fn query_local_interface(&mut self, descriptor: &String16) -> SpIInterface {
+        SpIInterface::from_raw(android_c_interface_IBinder_queryLocalInterface(
             self.0.as_native_mut(),
             descriptor.as_native(),
         ))
@@ -259,7 +226,7 @@ impl IBinderInternal for Interface {
     }
 }
 
-unsafe impl AsNative<android_sp<android_IBinder>> for Interface {
+unsafe impl AsNative<android_sp<android_IBinder>> for SpIBinder {
     fn as_native(&self) -> *const android_sp<android_IBinder> {
         self.0.as_native()
     }

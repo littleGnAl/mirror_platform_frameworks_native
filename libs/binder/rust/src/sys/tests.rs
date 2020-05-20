@@ -16,7 +16,7 @@
 
 use crate::parcel::Parcel;
 use crate::service_manager::{DumpFlags, ServiceManager};
-use crate::{IBinder, Interface};
+use crate::{IBinder, SpIBinder};
 
 #[test]
 fn connect_to_servicemanager() {
@@ -34,7 +34,7 @@ fn raw_transact_interface() {
     let input = Parcel::new();
     let mut output = Parcel::new();
     let status = sm.transact(
-        Interface::INTERFACE_TRANSACTION,
+        SpIBinder::INTERFACE_TRANSACTION,
         &input,
         Some(&mut output),
         0,
