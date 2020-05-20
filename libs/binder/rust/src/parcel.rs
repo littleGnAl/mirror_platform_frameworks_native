@@ -39,7 +39,7 @@ mod parcelable;
 
 use self::blob::Blob;
 pub use self::blob::{ReadableBlob, WritableBlob};
-pub use self::parcelable::Parcelable;
+pub use self::parcelable::{Deserialize, Serialize};
 pub use self::file_descriptor::ParcelFileDescriptor;
 
 /// Container for a message (data and object references) that can be sent
@@ -340,7 +340,7 @@ impl Parcel {
     // There is an implicit `Sized` bound on P, so you can't do something really
     // weird like P: [P2] here and the `Copy` bound ensures only simple types
     // like ints and floats are byte copied.
-    pub fn write_slice<P: Copy + Parcelable>(&mut self, slice: &[P]) -> Result<()> {
+    pub fn write_slice<P: Copy + Serialize>(&mut self, slice: &[P]) -> Result<()> {
         let p_len: size_t = slice.len().try_into().unwrap();
         let byte_size = size_of::<P>()
             .try_into()
@@ -509,21 +509,21 @@ impl Parcel {
         binder_status(android_Parcel_writeNoException(self.as_native_mut()))
     }
 
-    /// Attempts to read any `Parcelable` type from this `Parcel`.
-    pub fn read<P: Parcelable + ?Sized>(&self) -> Result<P::Deserialized> {
-        P::deserialize(self)
+    /// Attempts to read any `Deserialize`-able type from this `Parcel`.
+    pub fn read<D: Deserialize>(&self) -> Result<D> {
+        D::deserialize(self)
     }
 
-    /// Writes any `Parcelable` type to this `Parcel`.
-    pub fn write<P: Parcelable>(&mut self, parcelable: &P) -> Result<()> {
+    /// Writes any `Serialize`-able type to this `Parcel`.
+    pub fn write<S: Serialize>(&mut self, parcelable: &S) -> Result<()> {
         parcelable.serialize(self)
     }
 
     // There is an implicit `Sized` bound on P, so you can't do something really
     // weird like P: [P2] here and `Copy` ensures only simple types are byte
     // copied
-    pub fn read_to_slice<P: Copy + Parcelable>(&self, slice: &mut [P]) -> Result<()> {
-        let byte_size = size_of::<P>()
+    pub fn read_to_slice<D: Copy + Deserialize>(&self, slice: &mut [D]) -> Result<()> {
+        let byte_size = size_of::<D>()
             .try_into()
             .expect("Conversion to always succeed");
         let len: size_t = slice.len().try_into().map_err(|_| Error::BAD_VALUE)?;
@@ -535,9 +535,9 @@ impl Parcel {
         binder_status(status)
     }
 
-    pub fn resize_vec<P: Default + Parcelable>(&self, vec: &mut Vec<P>) -> Result<()> {
+    pub fn resize_vec<D: Default + Deserialize>(&self, vec: &mut Vec<D>) -> Result<()> {
         let byte_len: usize = self.read_i32()?.try_into().or(Err(Error::BAD_VALUE))?;
-        let byte_size = size_of::<P>()
+        let byte_size = size_of::<D>()
             .try_into()
             .expect("Conversion to always succeed");
         let new_len = byte_len.checked_div(byte_size).ok_or(Error::BAD_VALUE)?;
@@ -549,9 +549,9 @@ impl Parcel {
 
     /// This method will read an i32 size, resize the vec to that size, and attempt to fill that buffer.
     /// This is the same approach that the C++ code uses to de/serialize arrays.
-    pub fn read_to_vec<P: Copy + Default + Parcelable>(&self, vec: &mut Vec<P>) -> Result<()> {
+    pub fn read_to_vec<D: Copy + Default + Deserialize>(&self, vec: &mut Vec<D>) -> Result<()> {
         self.resize_vec(vec)?;
-        self.read_to_slice::<P>(vec)
+        self.read_to_slice::<D>(vec)
     }
 
     /// Attempts to read `len` number of bytes directly in the parser starting at the

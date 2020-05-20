@@ -18,7 +18,7 @@
 
 use crate::binder::{IBinder, IBinderInternal, TransactionCode, TransactionFlags};
 use crate::error::{binder_status, Error, Result};
-use crate::parcel::{Parcel, Parcelable};
+use crate::parcel::{Deserialize, Parcel, Serialize};
 use crate::service_manager::ServiceManager;
 use crate::sys::libbinder_bindings::*;
 use crate::utils::{AsNative, Sp, Str16, String16};
@@ -113,13 +113,13 @@ impl<T: AsNative<android_IBinder>> IBinder for T {
     }
 }
 
-impl Parcelable for Interface {
-    type Deserialized = Interface;
-
+impl Serialize for Interface {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
         parcel.write_binder(self)
     }
+}
 
+impl Deserialize for Interface {
     fn deserialize(parcel: &Parcel) -> Result<Interface> {
         let ibinder = unsafe { parcel.read_strong_binder()? };
         ibinder.ok_or(Error::UNEXPECTED_NULL)
