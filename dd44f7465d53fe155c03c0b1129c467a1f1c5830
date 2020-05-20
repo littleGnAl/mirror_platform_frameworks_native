@@ -22,6 +22,30 @@
       "revId": "dd44f7465d53fe155c03c0b1129c467a1f1c5830",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554629d7_c4cc5fa8",
+        "filename": "cmds/servicemanager/Access.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-20T22:13:54Z",
+      "side": 0,
+      "message": "see b/152636392 + b/156299792",
+      "parentUuid": "b2d3b742_84a494ad",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "dd44f7465d53fe155c03c0b1129c467a1f1c5830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
