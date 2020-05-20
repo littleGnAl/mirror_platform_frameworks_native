@@ -15,7 +15,7 @@
  */
 
 use crate::error::{Error, Result};
-use super::{Parcel, Parcelable};
+use super::{Deserialize, Parcel, Serialize};
 
 use std::fs::File;
 use std::mem;
@@ -42,14 +42,14 @@ impl From<ParcelFileDescriptor> for File {
     }
 }
 
-impl Parcelable for ParcelFileDescriptor {
-    type Deserialized = ParcelFileDescriptor;
-
+impl Serialize for ParcelFileDescriptor {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
         unsafe { parcel.write_dup_parcel_file_descriptor(self.0.as_raw_fd()) }
     }
+}
 
-    fn deserialize(parcel: &Parcel) -> Result<Self::Deserialized> {
+impl Deserialize for ParcelFileDescriptor {
+    fn deserialize(parcel: &Parcel) -> Result<Self> {
         let fd = unsafe { parcel.read_parcel_file_descriptor()? };
         // We don't own this file and should not close it here, so we forget it
         // instead of dropping it.

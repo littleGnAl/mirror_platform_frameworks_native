@@ -52,6 +52,7 @@ pub mod prelude {
     pub use super::Error as BinderError;
     pub use super::Handle as BinderHandle;
     pub use super::Interface as BinderInterface;
+    pub use super::parcel::{Deserialize as BinderDeserialize, Serialize as BinderSerialize};
     pub use super::Result as BinderResult;
     pub use super::Service as BinderService;
     pub use super::{Binder, IBinder};
