@@ -46,29 +46,9 @@ impl Deserialize for bool {
     }
 }
 
-impl Serialize for u8 {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_i8(*self as i8)
-    }
-}
-
-impl Deserialize for u8 {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        Ok(parcel.read_i8()? as u8)
-    }
-}
-
-impl Serialize for i8 {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_i8(*self)
-    }
-}
-
-impl Deserialize for i8 {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_i8()
-    }
-}
+// TODO: implement serialize for u8 and i8 once specialization is available in
+// stable Rust. We need to specialize the vector serialization and
+// deserialization for these types because byte vectors are packed in parcels.
 
 impl Serialize for u16 {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
@@ -202,31 +182,19 @@ impl Serialize for &Str16 {
     }
 }
 
-impl<P: Copy + Default + Serialize> Serialize for [P] {
+impl<P: Serialize> Serialize for [P] {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
         parcel.write_slice(self)
     }
 }
 
-impl<P: Copy + Default + Deserialize> Deserialize for Vec<P> {
+impl<P: Default + Deserialize> Deserialize for Vec<P> {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
         let mut vec = Vec::new();
 
         parcel.read_to_vec(&mut vec)?;
 
         Ok(vec)
-    }
-}
-
-impl Serialize for [String8] {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_slice_size(self)?;
-
-        for str8 in self {
-            parcel.write_string8(str8)?;
-        }
-
-        Ok(())
     }
 }
 
@@ -243,30 +211,6 @@ impl Deserialize for Vec<String8> {
     }
 }
 
-impl Serialize for [&Str8] {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_slice_size(self)?;
-
-        for str8 in self {
-            parcel.write_string8(str8)?;
-        }
-
-        Ok(())
-    }
-}
-
-impl Serialize for [String16] {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_slice_size(self)?;
-
-        for str16 in self {
-            parcel.write_string16(str16)?;
-        }
-
-        Ok(())
-    }
-}
-
 impl Deserialize for Vec<String16> {
     fn deserialize(parcel: &Parcel) -> Result<Vec<String16>> {
         let size = parcel.read_i32()?;
@@ -277,18 +221,6 @@ impl Deserialize for Vec<String16> {
         }
 
         Ok(vec)
-    }
-}
-
-impl Serialize for [&Str16] {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_slice_size(self)?;
-
-        for str16 in self {
-            parcel.write_string16(str16)?;
-        }
-
-        Ok(())
     }
 }
 
@@ -349,11 +281,11 @@ fn test_slice_parcelables() {
 
     assert!(bools.serialize(&mut parcel).is_ok());
 
-    assert_eq!(parcel.data_position(), 8);
+    assert_eq!(parcel.data_position(), 20);
 
     assert!(parcel.set_data_position(0).is_ok());
 
-    assert_eq!(parcel.data(), [4, 0, 0, 0, 1, 0, 0, 1]);
+    assert_eq!(parcel.data(), [4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]);
 
     let vec = Vec::<bool>::deserialize(&parcel).unwrap();
 
@@ -363,7 +295,7 @@ fn test_slice_parcelables() {
 
     let mut parcel = Parcel::new();
 
-    assert!(u8s.serialize(&mut parcel).is_ok());
+    assert!(parcel.write_u8_slice(&u8s).is_ok());
 
     assert_eq!(parcel.data_position(), 8);
 
@@ -371,21 +303,28 @@ fn test_slice_parcelables() {
 
     assert_eq!(parcel.data(), [4, 0, 0, 0, 101, 255, 42, 117]);
 
-    let vec = Vec::<u8>::deserialize(&parcel).unwrap();
+    let mut vec = Vec::new();
+
+    parcel.read_byte_vec(&mut vec).unwrap();
 
     assert_eq!(vec, [101, 255, 42, 117]);
 
     let i8s = [-128i8, 127, 42, -117];
 
     assert!(parcel.set_data_position(0).is_ok());
-    assert!(i8s.serialize(&mut parcel).is_ok());
+    assert!(parcel.write_i8_slice(&i8s).is_ok());
     assert!(parcel.set_data_position(0).is_ok());
 
-    assert_eq!(parcel.data(), [4, 0, 0, 0, 128, 127, 42, 139]);
+    assert_eq!(parcel.data(), [
+        4, 0, 0, 0, // 4 items:
+        128, 127, 42, 139, // bytes
+    ]);
 
-    let vec = Vec::<i8>::deserialize(&parcel).unwrap();
+    let mut vec: Vec<u8> = Vec::new();
 
-    assert_eq!(vec, [-128i8, 127, 42, -117]);
+    parcel.read_byte_vec(&mut vec).unwrap();
+
+    assert_eq!(vec, [-128i8 as u8, 127, 42, -117i8 as u8]);
 
     let u16s = [u16::max_value(), 12_345, 42, 117];
 
@@ -393,7 +332,13 @@ fn test_slice_parcelables() {
     assert!(u16s.serialize(&mut parcel).is_ok());
     assert!(parcel.set_data_position(0).is_ok());
 
-    assert_eq!(parcel.data(), [8, 0, 0, 0, 255, 255, 57, 48, 42, 0, 117, 0]);
+    assert_eq!(parcel.data(), [
+        4, 0, 0, 0, // 4 items:
+        255, 255, 0, 0, // u16::max_value()
+        57, 48, 0, 0, // 12,345
+        42, 0, 0, 0, // 42
+        117, 0, 0, 0, // 117
+    ]);
 
     let vec = Vec::<u16>::deserialize(&parcel).unwrap();
 
@@ -405,10 +350,13 @@ fn test_slice_parcelables() {
     assert!(i16s.serialize(&mut parcel).is_ok());
     assert!(parcel.set_data_position(0).is_ok());
 
-    assert_eq!(
-        parcel.data(),
-        [8, 0, 0, 0, 255, 127, 0, 128, 42, 0, 139, 255]
-    );
+    assert_eq!(parcel.data(), [
+       4, 0, 0, 0, // 4 items:
+       255, 127, 0, 0, // i16::max_value()
+       0, 128, 0, 0, // i16::min_value()
+       42, 0, 0, 0, // 42
+       139, 255, 0, 0, // -117
+    ]);
 
     let vec = Vec::<i16>::deserialize(&parcel).unwrap();
 
@@ -420,10 +368,13 @@ fn test_slice_parcelables() {
     assert!(u32s.serialize(&mut parcel).is_ok());
     assert!(parcel.set_data_position(0).is_ok());
 
-    assert_eq!(
-        parcel.data(),
-        [16, 0, 0, 0, 255, 255, 255, 255, 57, 48, 0, 0, 42, 0, 0, 0, 117, 0, 0, 0]
-    );
+    assert_eq!(parcel.data(), [
+        4, 0, 0, 0, // 4 items:
+        255, 255, 255, 255, // u32::max_value()
+        57, 48, 0, 0, // 12,345
+        42, 0, 0, 0, // 42
+        117, 0, 0, 0, // -117
+    ]);
 
     let vec = Vec::<u32>::deserialize(&parcel).unwrap();
 
@@ -435,10 +386,13 @@ fn test_slice_parcelables() {
     assert!(i32s.serialize(&mut parcel).is_ok());
     assert!(parcel.set_data_position(0).is_ok());
 
-    assert_eq!(
-        parcel.data(),
-        [16, 0, 0, 0, 255, 255, 255, 127, 0, 0, 0, 128, 42, 0, 0, 0, 139, 255, 255, 255]
-    );
+    assert_eq!(parcel.data(), [
+        4, 0, 0, 0, // 4 items:
+        255, 255, 255, 127, // i32::max_value()
+        0, 0, 0, 128, // i32::min_value()
+        42, 0, 0, 0, // 42
+        139, 255, 255, 255, // -117
+    ]);
 
     let vec = Vec::<i32>::deserialize(&parcel).unwrap();
 
