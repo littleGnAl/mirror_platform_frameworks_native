@@ -26,12 +26,12 @@ use std::cmp::Ordering;
 use std::convert::TryInto;
 use std::ffi::CStr;
 use std::fs::File;
-use std::mem::{self, size_of, MaybeUninit};
+use std::mem::{self, MaybeUninit};
 use std::os::unix::io::{FromRawFd, IntoRawFd, RawFd};
 use std::ptr;
 use std::slice;
 
-use libc::{c_void, uid_t};
+use libc::c_void;
 
 mod blob;
 mod file_descriptor;
@@ -337,24 +337,16 @@ impl Parcel {
         }
     }
 
-    // There is an implicit `Sized` bound on P, so you can't do something really
-    // weird like P: [P2] here and the `Copy` bound ensures only simple types
-    // like ints and floats are byte copied.
-    pub fn write_slice<P: Copy + Serialize>(&mut self, slice: &[P]) -> Result<()> {
-        let p_len: size_t = slice.len().try_into().unwrap();
-        let byte_size = size_of::<P>()
-            .try_into()
-            .expect("Conversion to always succeed");
-        let byte_len = p_len.checked_mul(byte_size).ok_or(Error::BAD_VALUE)?;
+    // There is an implicit `Sized` bound on S, so you can't do something really
+    // weird like S: [S2] here.
+    pub fn write_slice<S: Serialize>(&mut self, slice: &[S]) -> Result<()> {
+        self.write_slice_size(slice)?;
 
-        // This is only safe to do for Copy types:
-        unsafe {
-            binder_status(android_Parcel_writeByteArray(
-                self.as_native_mut(),
-                byte_len,
-                slice.as_ptr() as *const u8,
-            ))
+        for item in slice {
+            self.write(item)?;
         }
+
+        Ok(())
     }
 
     pub fn write_u8_slice(&mut self, slice: &[u8]) -> Result<()> {
@@ -519,43 +511,52 @@ impl Parcel {
         parcelable.serialize(self)
     }
 
-    // There is an implicit `Sized` bound on P, so you can't do something really
-    // weird like P: [P2] here and `Copy` ensures only simple types are byte
-    // copied
-    pub fn read_to_slice<D: Copy + Deserialize>(&self, slice: &mut [D]) -> Result<()> {
-        let byte_size = size_of::<D>()
-            .try_into()
-            .expect("Conversion to always succeed");
-        let len: size_t = slice.len().try_into().map_err(|_| Error::BAD_VALUE)?;
-        let byte_len = len.checked_mul(byte_size).ok_or(Error::BAD_VALUE)?;
+    /// Read exactly enough elements of type `D` required to fill `slice`.
+    // There is an implicit `Sized` bound on D, so you can't do something really
+    // weird like D: [D2] here.
+    pub(crate) fn read_to_slice<D: Deserialize>(&self, slice: &mut [D]) -> Result<()> {
+        for item in slice.iter_mut() {
+            *item = D::deserialize(self)?;
+        }
+
+        Ok(())
+    }
+
+    pub fn resize_vec<D: Default + Deserialize>(&self, vec: &mut Vec<D>) -> Result<()> {
+        let len = self.read_i32()?.try_into().or(Err(Error::BAD_VALUE))?;
+
+        vec.resize_with(len, Default::default);
+
+        Ok(())
+    }
+
+    /// Read an i32 count, resize `vec` to that size, and attempt to fill it
+    /// with count elements.
+    // This is the same approach that the C++ code uses to de/serialize arrays.
+    pub fn read_to_vec<D: Default + Deserialize>(&self, vec: &mut Vec<D>) -> Result<()> {
+        self.resize_vec(vec)?;
+        self.read_to_slice::<D>(vec)
+    }
+
+    /// Like `read_to_vec`, but specialized for byte streams which are space optimized.
+    pub fn read_byte_vec(&self, vec: &mut Vec<u8>) -> Result<()> {
+        let byte_len: usize = self.read_i32()?.try_into().or(Err(Error::BAD_VALUE))?;
+
+        vec.resize(byte_len, 0);
+
         let status = unsafe {
-            android_Parcel_read(self.as_native(), slice.as_mut_ptr() as *mut libc::c_void, byte_len)
+            android_Parcel_read(
+                self.as_native(),
+                vec.as_mut_ptr() as *mut libc::c_void,
+                byte_len.try_into().unwrap(),
+            )
         };
 
         binder_status(status)
     }
 
-    pub fn resize_vec<D: Default + Deserialize>(&self, vec: &mut Vec<D>) -> Result<()> {
-        let byte_len: usize = self.read_i32()?.try_into().or(Err(Error::BAD_VALUE))?;
-        let byte_size = size_of::<D>()
-            .try_into()
-            .expect("Conversion to always succeed");
-        let new_len = byte_len.checked_div(byte_size).ok_or(Error::BAD_VALUE)?;
-
-        vec.resize_with(new_len, Default::default);
-
-        Ok(())
-    }
-
-    /// This method will read an i32 size, resize the vec to that size, and attempt to fill that buffer.
-    /// This is the same approach that the C++ code uses to de/serialize arrays.
-    pub fn read_to_vec<D: Copy + Default + Deserialize>(&self, vec: &mut Vec<D>) -> Result<()> {
-        self.resize_vec(vec)?;
-        self.read_to_slice::<D>(vec)
-    }
-
-    /// Attempts to read `len` number of bytes directly in the parser starting at the
-    /// current position. Returns an empty slice on errors (ie attempted out of bounds).
+    /// Extract a slice of `len` bytes, starting at the current position in the
+    /// Parcel. Returns an empty slice on errors (ie out of bounds).
     pub fn read_inplace(&self, len: size_t) -> &[u8] {
         unsafe {
             let data = android_Parcel_readInplace(self.as_native(), len);
