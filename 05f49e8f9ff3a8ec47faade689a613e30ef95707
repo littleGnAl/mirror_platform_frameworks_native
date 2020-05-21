@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003075193",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1315033?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "72b4595c_f177838d",
+          "description": "Change to \"libs/binder/rust/tests/binder_lib_test.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/tests/binder_lib_test.rs",
+              "range": {
+                "startLine": 1211,
+                "startChar": 26,
+                "endLine": 1211,
+                "endChar": 32
+              },
+              "replacement": " won\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "7d926207_c5a85dc5",
+        "filename": "libs/binder/rust/tests/binder_lib_test.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-05-21T02:15:01Z",
+      "side": 1,
+      "message": "Common typo found: \" wont \" -- should it be \" won\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1211,
+        "startChar": 26,
+        "endLine": 1211,
+        "endChar": 32
+      },
+      "revId": "05f49e8f9ff3a8ec47faade689a613e30ef95707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
