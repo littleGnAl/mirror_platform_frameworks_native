@@ -4818,6 +4818,12 @@ extern "C" {
     pub fn android_c_interface_NewParcel() -> *mut android_Parcel;
 }
 extern "C" {
+    #[link_name = "\u{1}_ZN7android11c_interface22Parcel_writeNullBinderEPKNS_6ParcelE"]
+    pub fn android_c_interface_Parcel_writeNullBinder(
+        parcel: *const android_Parcel,
+    ) -> android_status_t;
+}
+extern "C" {
     #[link_name = "\u{1}_ZN7android11c_interface23Parcel_readStrongBinderEPKNS_6ParcelEPPNS_2spINS_7IBinderEEE"]
     pub fn android_c_interface_Parcel_readStrongBinder(
         parcel: *const android_Parcel,

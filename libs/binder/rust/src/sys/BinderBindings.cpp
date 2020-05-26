@@ -237,6 +237,10 @@ bool IBinder_checkSubclass(const IBinder* binder, const void* subclassID) {
 Parcel* NewParcel() {
   return new Parcel;
 }
+status_t Parcel_writeNullBinder(Parcel* parcel) {
+  assert(parcel);
+  return parcel->writeStrongBinder(nullptr);
+}
 status_t Parcel_readStrongBinder(const Parcel* parcel, sp<IBinder>** binder) {
   assert(parcel && binder);
   *binder = new sp<IBinder>;
@@ -249,8 +253,14 @@ status_t Parcel_readString8(const Parcel* parcel, String8** string) {
 }
 status_t Parcel_readString16(const Parcel* parcel, String16** string) {
   assert(parcel && string);
-  *string = new String16;
-  return parcel->readString16(*string);
+  std::optional<String16> maybe_str;
+  auto status = parcel->readString16(&maybe_str);
+  if (maybe_str) {
+    *string = new String16(*maybe_str);
+  } else {
+    *string = nullptr;
+  }
+  return status;
 }
 status_t Parcel_readBlob(const Parcel* parcel, size_t len, Parcel::ReadableBlob** blob) {
   assert(parcel && blob);

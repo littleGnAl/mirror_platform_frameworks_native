@@ -115,14 +115,19 @@ impl<T: AsNative<android_IBinder>> IBinder for T {
 
 impl Serialize for Interface {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_binder(self)
+        parcel.write_binder(Some(self))
     }
 }
 
-impl Deserialize for Interface {
-    fn deserialize(parcel: &Parcel) -> Result<Interface> {
-        let ibinder = unsafe { parcel.read_binder()? };
-        ibinder.ok_or(Error::UNEXPECTED_NULL)
+impl Serialize for Option<&Interface> {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        parcel.write_binder(*self)
+    }
+}
+
+impl Deserialize for Option<Interface> {
+    fn deserialize(parcel: &Parcel) -> Result<Option<Interface>> {
+        unsafe { parcel.read_binder() }
     }
 }
 
