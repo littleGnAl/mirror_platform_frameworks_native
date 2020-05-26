@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "191cc8fa_8194c210",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-26T02:59:17Z",
+      "side": 1,
+      "message": "these need to be wrapped in a more specific namespace.\n\nthey can\u0027t live in the \u0027android\u0027 namespace.\n\nwhere are these being used? is there a corresponding CL for frameworks/av that uses these?",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 73
+      },
+      "revId": "1505119182c46bce551e63fed3e585ec80a13ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
