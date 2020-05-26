@@ -286,10 +286,10 @@ impl Parcel {
     }
 
     /// Read a UTF-16 encoded string and convert it to UTF-8
-    pub fn read_utf8_from_utf16(&self) -> Result<String> {
-        let u16_bytes = self.read_string16_inplace();
-
-        String::from_utf16(u16_bytes).or(Err(Error::BAD_VALUE))
+    pub fn read_utf8_from_utf16(&self) -> Result<Option<String>> {
+        self.read_string16_inplace()
+            .and_then(|bytes| Some(String::from_utf16(bytes).or(Err(Error::BAD_VALUE))))
+            .transpose()
     }
 
     /// Read a C string from the `Parcel`.
@@ -308,11 +308,15 @@ impl Parcel {
     }
 
     /// Returns an in-place view of a UTF-16 string in this `Parcel`'s buffer.
-    pub fn read_string16_inplace(&self) -> &[u16] {
+    pub fn read_string16_inplace(&self) -> Option<&[u16]> {
         unsafe {
             let mut out_len = 0;
             let data = android_Parcel_readString16Inplace(self.as_native(), &mut out_len);
-            slice::from_raw_parts(as_nonnull_ptr(data), out_len.try_into().unwrap())
+            if data.is_null() {
+                None
+            } else {
+                Some(slice::from_raw_parts(data, out_len.try_into().unwrap()))
+            }
         }
     }
 
@@ -343,12 +347,17 @@ impl Parcel {
         unsafe { android_Parcel_dataSize(self.as_native()) }
     }
 
-    pub(crate) fn write_binder(&mut self, binder: &Interface) -> Result<()> {
-        unsafe {
-            binder_status(android_Parcel_writeStrongBinder(
-                self.as_native_mut(),
-                binder.as_native(),
-            ))
+    pub(crate) fn write_binder(&mut self, binder: Option<&Interface>) -> Result<()> {
+        match binder {
+            None => unsafe {
+                binder_status(android_c_interface_Parcel_writeNullBinder(self.as_native_mut()))
+            },
+            Some(binder) => unsafe {
+                binder_status(android_Parcel_writeStrongBinder(
+                    self.as_native_mut(),
+                    binder.as_native(),
+                ))
+            },
         }
     }
 
@@ -858,7 +867,7 @@ fn test_utf8_utf16_conversions() {
 
     assert!(parcel.write("Hello, Binder!").is_ok());
     assert!(parcel.set_data_position(0).is_ok());
-    assert_eq!(parcel.read_utf8_from_utf16().unwrap(), "Hello, Binder!");
+    assert_eq!(parcel.read_utf8_from_utf16().unwrap().unwrap(), "Hello, Binder!");
     assert!(parcel.set_data_position(0).is_ok());
     assert!(parcel
         .write(&["str1", "str2", "str3"][..])

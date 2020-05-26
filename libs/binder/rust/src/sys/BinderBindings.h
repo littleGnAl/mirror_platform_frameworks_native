@@ -124,6 +124,7 @@ status_t IBinder_getDebugPid(IBinder* binder, pid_t* outPid);
 bool IBinder_checkSubclass(const IBinder* binder, const void* subclassID);
 
 Parcel* NewParcel();
+status_t Parcel_writeNullBinder(const Parcel* parcel);
 status_t Parcel_readStrongBinder(const Parcel* parcel, sp<IBinder>** binder);
 status_t Parcel_readString8(const Parcel* parcel, String8** string);
 status_t Parcel_readString16(const Parcel* parcel, String16** string);

@@ -63,12 +63,8 @@ macro_rules! impl_parcelable {
         impl Deserialize for $ty {
             fn deserialize(parcel: &Parcel) -> Result<Self> {
                 let mut val = Self::default();
-                let status = unsafe { $read_fn(parcel.as_native(), &mut val) };
-
-                match binder_status(status) {
-                    Ok(()) => Ok(val),
-                    Err(e) => Err(e),
-                }
+                unsafe { binder_status($read_fn(parcel.as_native(), &mut val))? };
+                Ok(val)
             }
         }
     };
@@ -142,33 +138,22 @@ impl Serialize for CStr {
     }
 }
 
-impl Serialize for String {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write(&*String16::from(self.as_str()))
-   }
-}
-
-impl Deserialize for String {
-    fn deserialize(parcel: &Parcel) -> Result<Self> {
-        parcel.read_utf8_from_utf16()
-    }
-}
-
-impl Serialize for str {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write(&*String16::from(self))
-   }
-}
-
-impl Serialize for &str {
-    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write(&*String16::from(*self))
-   }
-}
+// String8 impls. String8 data cannot be nullable in Parcel
 
 impl Serialize for String8 {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
         self.as_ref().serialize(parcel)
+    }
+}
+
+impl Serialize for Str8 {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        unsafe {
+            binder_status(android_Parcel_writeString8(
+                parcel.as_native_mut(),
+                self.as_native(),
+            ))
+        }
     }
 }
 
@@ -191,41 +176,110 @@ impl Deserialize for String8 {
     }
 }
 
-impl Serialize for Str8 {
+// String16 impls. String16 is always nullable in Parcel
+
+impl Serialize for Option<String> {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        unsafe {
-            binder_status(android_Parcel_writeString8(
-                parcel.as_native_mut(),
-                self.as_native(),
-            ))
+        self.as_deref().serialize(parcel)
+    }
+}
+
+impl Serialize for String {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        Some(self.as_str()).serialize(parcel)
+    }
+}
+
+impl Deserialize for Option<String> {
+    fn deserialize(parcel: &Parcel) -> Result<Self> {
+        parcel.read_utf8_from_utf16()
+    }
+}
+
+impl Deserialize for String {
+    fn deserialize(parcel: &Parcel) -> Result<Self> {
+        Deserialize::deserialize(parcel)
+            .transpose()
+            .unwrap_or(Err(Error::UNEXPECTED_NULL))
+    }
+}
+
+impl Serialize for Option<&str> {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        match self {
+            None => parcel.write(&-1i32),
+            Some(s) => parcel.write(&*String16::from(*s)),
+        }
+    }
+}
+
+impl Serialize for &str {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        Some(*self).serialize(parcel)
+    }
+}
+
+impl Serialize for str {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        Some(self).serialize(parcel)
+    }
+}
+
+impl Serialize for Option<String16> {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        match self {
+            None => parcel.write(&-1i32),
+            Some(s) => s.as_ref().serialize(parcel),
         }
     }
 }
 
 impl Serialize for String16 {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        self.as_ref().serialize(parcel)
+        Some(self.as_ref()).serialize(parcel)
+    }
+}
+
+impl Deserialize for Option<String16> {
+    fn deserialize(parcel: &Parcel) -> Result<Self> {
+        let mut s = MaybeUninit::uninit();
+        let status =
+            unsafe { android_c_interface_Parcel_readString16(parcel.as_native(), s.as_mut_ptr()) };
+        let s_ptr = unsafe { s.assume_init() };
+        let status = binder_status(status);
+        if s_ptr.is_null() {
+            Ok(None)
+        } else {
+            status.map(|_| unsafe { Some(String16::from_raw(s_ptr)) })
+        }
     }
 }
 
 impl Deserialize for String16 {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
-        let mut s = MaybeUninit::uninit();
-        let status =
-            unsafe { android_c_interface_Parcel_readString16(parcel.as_native(), s.as_mut_ptr()) };
+        Deserialize::deserialize(parcel)
+            .transpose()
+            .unwrap_or(Err(Error::UNEXPECTED_NULL))
+    }
+}
 
-        binder_status(status).map(|_| unsafe { String16::from_raw(s.assume_init()) })
+impl Serialize for Option<&Str16> {
+    fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
+        match self {
+            None => parcel.write(&-1i32),
+            Some(s) => unsafe {
+                binder_status(android_Parcel_writeString16(
+                    parcel.as_native_mut(),
+                    s.as_native(),
+                ))
+            },
+        }
     }
 }
 
 impl Serialize for Str16 {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        unsafe {
-            binder_status(android_Parcel_writeString16(
-                parcel.as_native_mut(),
-                self.as_native(),
-            ))
-        }
+        Some(self).serialize(parcel)
     }
 }
 
@@ -291,7 +345,9 @@ impl<P> Deserialize for Vec<P>
     where Option<Vec<P>>: Deserialize
 {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
-        <Option<Self>>::deserialize(parcel).map(|opt| opt.unwrap())
+        Deserialize::deserialize(parcel)
+            .transpose()
+            .unwrap_or(Err(Error::UNEXPECTED_NULL))
     }
 }
 

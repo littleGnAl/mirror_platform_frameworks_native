@@ -21,7 +21,7 @@ use crate::parcel::Parcel;
 use crate::service_manager::DumpFlags;
 use crate::sys::Status;
 use crate::utils::String16;
-use crate::{Binder, Interface, Result, Service};
+use crate::{Binder, Error, Interface, Result, Service};
 
 declare_binder_interface!(BpServiceManager: IServiceManager);
 
@@ -71,7 +71,8 @@ impl IServiceManager for BpServiceManager {
             0,
         )?;
         Status::from_parcel(&reply)?;
-        reply.read()
+        let service: Option<Interface> = reply.read()?;
+        service.ok_or(Error::UNEXPECTED_NULL)
     }
 
     fn check_service(&mut self, name: &str) -> Result<Interface> {
@@ -85,7 +86,8 @@ impl IServiceManager for BpServiceManager {
             0,
         )?;
         Status::from_parcel(&reply)?;
-        reply.read()
+        let service: Option<Interface> = reply.read()?;
+        service.ok_or(Error::UNEXPECTED_NULL)
     }
 
     fn add_service<T: Binder>(
