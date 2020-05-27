@@ -1122,6 +1122,30 @@
     },
     {
       "key": {
+        "uuid": "229df903_86674d23",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:01:07Z",
+      "side": 1,
+      "message": "manually written parceling code",
+      "parentUuid": "83a7c648_144046ef",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c237ff2_bbe93f3c",
         "filename": "libs/binder/rust/src/lib.rs",
         "patchSetId": 17
@@ -1181,6 +1205,30 @@
       "side": 1,
       "message": "Yes, Str8 is the reference, String8 is the owned string.\n\nstr is builtin to Rust. I believe the closer idiomatic equivalent in the Rust stdlib is CString and CStr. Rust strongly frowns on non-capitalized structs.",
       "parentUuid": "35455ed0_27bbec38",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97c8eaf6_4aa80d68",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:01:07Z",
+      "side": 1,
+      "message": "except in the standard library?\n\nIs it possible we can avoid creating new string types in Rust? It\u0027s bad enough that we have them in C++",
+      "parentUuid": "feb22720_89ccdeec",
       "range": {
         "startLine": 26,
         "startChar": 16,
@@ -1335,6 +1383,30 @@
     },
     {
       "key": {
+        "uuid": "f4fe5a1f_abb10630",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:01:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d699f49c_d86c003c",
+      "range": {
+        "startLine": 252,
+        "startChar": 15,
+        "endLine": 252,
+        "endChar": 17
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed766238_a7b3d600",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 17
@@ -1370,6 +1442,30 @@
       "side": 1,
       "message": "This is used externally in our port of the BinderLibTest. A quick grep showed at least a few external users of this API in C++. I\u0027m fine with removing this, although we\u0027ll have to drop the usage in the test as well.",
       "parentUuid": "ed766238_a7b3d600",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7909d104_848d07db",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:01:07Z",
+      "side": 1,
+      "message": "There should be no users in Java/NDK runtimes though, since it should be considered an implementation detail if at all possible",
+      "parentUuid": "2e1655ea_ddc8b126",
       "range": {
         "startLine": 93,
         "startChar": 0,
@@ -1524,6 +1620,30 @@
     },
     {
       "key": {
+        "uuid": "6bda22ff_af2bcc72",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:01:07Z",
+      "side": 1,
+      "message": "I think it\u0027s definitely a bad thing to have the second when we have the first.",
+      "parentUuid": "858288e9_bbdd2c88",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59bd0e63_df9452b3",
         "filename": "libs/binder/rust/src/proxy.rs",
         "patchSetId": 17
@@ -1600,6 +1720,24 @@
       "side": 1,
       "message": "Eq is implemented for sp and sp wrappers. This is done by using the getter to compare objects by the pointer contained in the sp, not by the pointer to the sp itself.\n\nIs comparing IBinders by pointer correct? I don\u0027t see any other comparison operators defined in C++ so I assumed it was.",
       "parentUuid": "24f25ebf_082485f7",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b0eb382_5256777f",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:01:07Z",
+      "side": 1,
+      "message": "StrongPointer.h defines all relations",
+      "parentUuid": "8ae3b5ac_ff32edb0",
       "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
