@@ -231,6 +231,9 @@ void TimeStats::flushAvailableRecordsToStatsLocked(int32_t layerID) {
                      timeRecords[0].frameTime.desiredTime);
         ATRACE_INT64(("TimeStats-Present - " + layerName).c_str(),
                      timeRecords[0].frameTime.presentTime);
+        ATRACE_INT64(("TimeStats-Latency - " + layerName).c_str(),
+                     timeRecords[0].frameTime.presentTime - timeRecords[0].frameTime.acquireTime);
+
 
         prevTimeRecord = timeRecords[0];
         timeRecords.pop_front();
