@@ -415,6 +415,30 @@
     },
     {
       "key": {
+        "uuid": "198cb20a_93623488",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:34:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd5f2552_76b2128b",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0fe29bb_0af2ba76",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
@@ -483,6 +507,30 @@
       "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f54c70ca_89b89d82",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:34:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4559291a_b09d8746",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -627,6 +675,30 @@
     },
     {
       "key": {
+        "uuid": "de44a8fe_fea22d26",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:34:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this adds any additional functionality, although it\u0027s possible some might disagree with me.",
+      "parentUuid": "270ea929_7353f6b1",
+      "range": {
+        "startLine": 80,
+        "startChar": 10,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4aabf924_fce32a19",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
@@ -662,6 +734,30 @@
       "side": 1,
       "message": "FIRST_CALL is definitely required, as AIDL-generated code needs to use it. Grepping through the rest of AOSP, I see a few instances where other transaction codes are used in custom implementations of onTransact. I would think we want to expose these for the same reason? It would certainly be better than a consumer of this crate hard-coding the constant if they needed it.",
       "parentUuid": "4aabf924_fce32a19",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 89
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "126da101_b83d6dc6",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:34:22Z",
+      "side": 1,
+      "message": "maybe for that. for other transactions though, they should be implemented by the library itself. For instance, no one should override the INTERFACE_TRANSACTION method, and should prefer to override get_interface_descriptor",
+      "parentUuid": "efb7638b_3e69d945",
       "range": {
         "startLine": 113,
         "startChar": 0,
@@ -1285,6 +1381,30 @@
       "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c683c342_b7c6fa43",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-05-27T00:34:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eb8b6742_704c9121",
+      "range": {
+        "startLine": 188,
+        "startChar": 16,
+        "endLine": 188,
+        "endChar": 42
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
