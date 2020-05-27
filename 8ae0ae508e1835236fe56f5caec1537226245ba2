@@ -817,6 +817,30 @@
     },
     {
       "key": {
+        "uuid": "52d024a2_2869ea7a",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-27T23:34:42Z",
+      "side": 1,
+      "message": "I\u0027ve added a CL with suggested naming changes to the Rust API for bikeshedding here: https://android-review.googlesource.com/c/platform/frameworks/native/+/1315902",
+      "parentUuid": "6dab2515_a0da1a03",
+      "range": {
+        "startLine": 145,
+        "startChar": 49,
+        "endLine": 145,
+        "endChar": 58
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f7eaac9_90cfffee",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 17
@@ -852,6 +876,30 @@
       "side": 1,
       "message": "We\u0027ve got these implemented, and plan to make them a separate change on top of this.",
       "parentUuid": "0f7eaac9_90cfffee",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 22
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f66ffb_ff8616ae",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-27T23:34:42Z",
+      "side": 1,
+      "message": "Added in https://android-review.googlesource.com/c/platform/frameworks/native/+/1315033",
+      "parentUuid": "cd0cc085_6f01aec8",
       "range": {
         "startLine": 167,
         "startChar": 0,
@@ -1242,6 +1290,30 @@
     },
     {
       "key": {
+        "uuid": "e0e4ba78_84fcd80d",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-27T23:34:42Z",
+      "side": 1,
+      "message": "Got it, definitely. We\u0027re currently writing an AIDL compiler backend for Rust which will make this interface unnecessary. We implemented IServiceManager temporarily because we needed it for testing. This will be removed when the AIDL backend is finished.",
+      "parentUuid": "229df903_86674d23",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c237ff2_bbe93f3c",
         "filename": "libs/binder/rust/src/lib.rs",
         "patchSetId": 17
@@ -1325,6 +1397,30 @@
       "side": 1,
       "message": "except in the standard library?\n\nIs it possible we can avoid creating new string types in Rust? It\u0027s bad enough that we have them in C++",
       "parentUuid": "feb22720_89ccdeec",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4912d489_4fd93c25",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-27T23:34:42Z",
+      "side": 1,
+      "message": "I believe `str` is lowercase because it\u0027s a primitive, not a struct.\n\nI would love to avoid these types entirely, but I don\u0027t think we can avoid String16 at least. For users that need zero copy strings, we can expose the characters as \u0026[u16], which avoids validating and copying them into a Rust String (which can only hold valid UTF-8). However, Java Strings are deserialized to String16 in C++ by the AIDL compiler, unless the AIDL type has the @utf8InCpp annotation. If we want to replicate this for Rust, we need some sort of a UTF-16 string type, which the Rust standard library does not have.",
+      "parentUuid": "97c8eaf6_4aa80d68",
       "range": {
         "startLine": 26,
         "startChar": 16,
@@ -1598,6 +1694,30 @@
     },
     {
       "key": {
+        "uuid": "93bb23ad_bc7f29cd",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-27T23:34:42Z",
+      "side": 1,
+      "message": "Sounds good, I\u0027ve made this private in https://android-review.googlesource.com/c/platform/frameworks/native/+/1319611",
+      "parentUuid": "7909d104_848d07db",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82779eae_1ed4bcfd",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 17
@@ -1764,6 +1884,30 @@
     },
     {
       "key": {
+        "uuid": "4705a8d0_83531e6d",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-27T23:34:42Z",
+      "side": 1,
+      "message": "I\u0027ve removed the `read_*` methods in favor of the trait in a separate CL: https://android-review.googlesource.com/c/platform/frameworks/native/+/1319611.",
+      "parentUuid": "6bda22ff_af2bcc72",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59bd0e63_df9452b3",
         "filename": "libs/binder/rust/src/proxy.rs",
         "patchSetId": 17
@@ -1861,6 +2005,24 @@
       "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dea9bb5_b55acae2",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-27T23:34:42Z",
+      "side": 1,
+      "message": "Yep, I was looking at IBinder, but sp doesn\u0027t forward equality to the pointee and just compares by pointer.\n\nIn Rust we compare proxy objects containing an sp by getting the pointee out of each sp using sp::get(), then compare these pointers, which is equivalent to what the sp operator\u003d\u003d does.",
+      "parentUuid": "9b0eb382_5256777f",
+      "revId": "8ae0ae508e1835236fe56f5caec1537226245ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
