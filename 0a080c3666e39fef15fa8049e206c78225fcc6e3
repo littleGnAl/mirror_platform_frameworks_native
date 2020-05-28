@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd96fe48_9e52a287",
+        "filename": "services/inputflinger/reader/mapper/TouchInputMapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2020-05-28T19:55:42Z",
+      "side": 1,
+      "message": "This line caused a small merge conflict because this line should\u0027ve been cherry picked before this CL, but it was dropped for some reason.",
+      "revId": "0a080c3666e39fef15fa8049e206c78225fcc6e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
