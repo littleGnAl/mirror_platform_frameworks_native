@@ -118,4 +118,6 @@ LIBBINDER_NDK30 { # introduced=30
 LIBBINDER_NDK_PLATFORM {
   global:
     AParcel_getAllowFds;
+    _Z25AIBinder_toPlatformBinderP8AIBinder;
+    _Z25PlatformBinder_toAIBinderRKN7android2spINS_7IBinderEEE;
 };

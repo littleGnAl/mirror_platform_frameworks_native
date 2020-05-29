@@ -15,6 +15,7 @@
  */
 
 #include <android/binder_ibinder.h>
+#include <android/binder_ibinder_platform.h>
 #include "ibinder_internal.h"
 
 #include <android/binder_stability.h>
@@ -675,4 +676,14 @@ binder_status_t AIBinder_setExtension(AIBinder* binder, AIBinder* ext) {
 
     rawBinder->setExtension(ext->getBinder());
     return STATUS_OK;
+}
+
+android::sp<android::IBinder> AIBinder_toPlatformBinder(AIBinder* binder) {
+    if (binder == nullptr) return nullptr;
+    return binder->getBinder();
+}
+AIBinder* PlatformBinder_toAIBinder(const android::sp<android::IBinder>& binder) {
+    sp<AIBinder> ndkBinder = ABpBinder::lookupOrCreateFromBinder(binder);
+    AIBinder_incStrong(ndkBinder.get());
+    return ndkBinder.get();
 }
