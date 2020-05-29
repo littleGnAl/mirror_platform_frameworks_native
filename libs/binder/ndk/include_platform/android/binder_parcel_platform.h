@@ -20,6 +20,10 @@
 
 __BEGIN_DECLS
 
+#ifdef __ANDROID_APEX__
+#error this is only for platform code
+#endif
+
 /**
  * Gets whether or not FDs are allowed by this AParcel
  *
