@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6a3f60a_aaba5148",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-30T04:44:30Z",
+      "side": 1,
+      "message": "Perhaps unrelated, but I wonder why don\u0027t you move \"local: *\" here. Writing a mangled C++ symbol is never fun.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "f35f674fcb64bf6811bb75e408e858e9878f2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
