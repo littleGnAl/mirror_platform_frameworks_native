@@ -378,10 +378,6 @@ class RunDex2Oat : public ExecVHelper {
                 : MapPropertyToArg("dalvik.vm.boot-dex2oat-cpu-set", cpu_set_format);
 
         std::string bootclasspath;
-        char* dex2oat_bootclasspath = getenv("DEX2OATBOOTCLASSPATH");
-        if (dex2oat_bootclasspath != nullptr) {
-            bootclasspath = StringPrintf("-Xbootclasspath:%s", dex2oat_bootclasspath);
-        }
         // If DEX2OATBOOTCLASSPATH is not in the environment, dex2oat is going to query
         // BOOTCLASSPATH.
 
