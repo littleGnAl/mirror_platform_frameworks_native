@@ -41,16 +41,16 @@ namespace {
 
 static constexpr Error kTransactionError = Error::NO_RESOURCES;
 
-uint64_t getValid10UsageBits() {
-    static const uint64_t valid10UsageBits = []() -> uint64_t {
-        using hardware::graphics::common::V1_0::BufferUsage;
+uint64_t getValidUsageBits() {
+    static const uint64_t validUsageBits = []() -> uint64_t {
         uint64_t bits = 0;
-        for (const auto bit : hardware::hidl_enum_range<BufferUsage>()) {
+        for (const auto bit :
+             hardware::hidl_enum_range<hardware::graphics::common::V1_2::BufferUsage>()) {
             bits = bits | bit;
         }
         return bits;
     }();
-    return valid10UsageBits;
+    return validUsageBits;
 }
 
 uint64_t getValid11UsageBits() {
@@ -100,7 +100,7 @@ bool Gralloc2Mapper::isLoaded() const {
 
 status_t Gralloc2Mapper::validateBufferDescriptorInfo(
         IMapper::BufferDescriptorInfo* descriptorInfo) const {
-    uint64_t validUsageBits = getValid10UsageBits();
+    uint64_t validUsageBits = getValidUsageBits();
     if (mMapperV2_1 != nullptr) {
         validUsageBits = validUsageBits | getValid11UsageBits();
     }
