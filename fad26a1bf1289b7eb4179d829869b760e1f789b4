@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "76d65a48_8c469bc5",
+        "filename": "services/inputflinger/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397c5aa9_4665d336",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9003eaaa_16213fd6",
         "filename": "services/inputflinger/tests/fuzzers/include/fuzzTestInputListener.h",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04429c59_cbdf295e",
+        "filename": "services/inputflinger/tests/fuzzers/include/fuzzTestInputListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9003eaaa_16213fd6",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40386f8f_ce601567",
+        "filename": "services/inputflinger/tests/fuzzers/include/fuzzTestInputListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d540ef3_a0195101",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 22
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +165,24 @@
     },
     {
       "key": {
+        "uuid": "517c3e85_b9a24793",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2193766e_524402c3",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8947e84_e5751ca1",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/Android.bp",
         "patchSetId": 1
@@ -122,6 +206,30 @@
     },
     {
       "key": {
+        "uuid": "8e57f497_64905f45",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8947e84_e5751ca1",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 49
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72ab7bf1_8283b6dc",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer/Android.bp",
         "patchSetId": 1
@@ -139,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "809aab80_a8698e1f",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "Moved fuzzers to all be placed in their buckets (mappers, inputClassifier, etc), and renamed to UpperCamelCase",
+      "parentUuid": "72ab7bf1_8283b6dc",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2630c2d4_9db64c9e",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer/cursorInputFuzzer.cpp",
         "patchSetId": 1
@@ -150,6 +276,30 @@
       "writtenOn": "2020-05-19T01:38:36Z",
       "side": 1,
       "message": "Please use google test libs instead. like test class and TEST_F?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db673b60_ea9c563a",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer/cursorInputFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "Not quite sure I understand. This function is required by libfuzzer, and run by ClusterFuzz, it is not a specific test case.",
+      "parentUuid": "2630c2d4_9db64c9e",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -226,6 +376,24 @@
     },
     {
       "key": {
+        "uuid": "fb712edf_abdc4f7b",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "As the fuzzers are independent (not test cases), they are compiled into separate binaries to run with CF.",
+      "parentUuid": "191edb65_3aeb23ce",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a31c340_66fe32c5",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
         "patchSetId": 1
@@ -237,6 +405,30 @@
       "writtenOn": "2020-05-19T01:38:36Z",
       "side": 1,
       "message": "Use parameterized TEST_P.",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 65
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a5d6ec_4682e974",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "Similarly to the other comment, I\u0027m not quite sure I understand. This function is required by libfuzzer, and run by ClusterFuzz, it is not a specific test case.",
+      "parentUuid": "6a31c340_66fe32c5",
       "range": {
         "startLine": 24,
         "startChar": 37,
@@ -272,6 +464,30 @@
     },
     {
       "key": {
+        "uuid": "bdc4cdda_a13e6d63",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e61b4b44_284423b8",
+      "range": {
+        "startLine": 31,
+        "startChar": 60,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b53b8d0_093ca239",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
         "patchSetId": 1
@@ -286,6 +502,24 @@
       "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b86f93d_85a7669c",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-06-08T22:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b53b8d0_093ca239",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
