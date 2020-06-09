@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b99e483_02d484ee",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2020-06-09T19:46:04Z",
+      "side": 1,
+      "message": "the problem is this message is intended for the person running \"adb bugreport\" on the host, it can\u0027t tell when its being run locally on the device where the guidance is different.\n\nwe could say\n\nWARNING: flat bugreports are deprecated.\nWARNING: On the host, please use adb bugreport \u003czip_file\u003e\nWARNING: On the device, please use bugreportz",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 87
+      },
+      "revId": "fbcd279794e7b3cbfa54bec7323ee4879d73f3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
