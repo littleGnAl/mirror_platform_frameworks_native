@@ -22,6 +22,30 @@
       "revId": "fbcd279794e7b3cbfa54bec7323ee4879d73f3c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83ee2f70_aa3b6220",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-06-09T20:02:09Z",
+      "side": 1,
+      "message": "/me checks\n\noh, wow... i didn\u0027t realize it was that big a mess!\n\ndone.",
+      "parentUuid": "3b99e483_02d484ee",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 87
+      },
+      "revId": "fbcd279794e7b3cbfa54bec7323ee4879d73f3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
