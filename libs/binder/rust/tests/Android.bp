@@ -8,6 +8,7 @@ rust_test {
     // this cannot be the same as the module name.
     stem: "rustBinderTestClientBinary",
     test_suites: ["general-tests"],
+    test_config: "IntegrationTest.xml",
 }
 
 rust_test {
@@ -21,4 +22,18 @@ rust_test {
     // this cannot be the same as the module name.
     stem: "rustBinderTestServiceBinary",
     test_harness: false,
+}
+
+rust_test {
+    name: "rustBinderLibTest",
+    srcs: ["binder_lib_test.rs"],
+    test_harness: false,
+    rustlibs: [
+        "libbinder_rs",
+        "liblibc",
+    ],
+
+    test_suites: ["general-tests"],
+    // TODO: Replace config with require_root when available for rust tests.
+    test_config: "BinderLibTest.xml",
 }
