@@ -7,6 +7,9 @@
   "postsubmit": [
     {
       "name": "rustBinderTest"
+    },
+    {
+      "name": "rustBinderLibTest"
     }
   ]
 }
