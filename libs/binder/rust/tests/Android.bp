@@ -22,3 +22,16 @@ rust_test {
     stem: "rustBinderTestServiceBinary",
     test_harness: false,
 }
+
+rust_test {
+    name: "rustBinderLibTest",
+    srcs: ["binder_lib_test.rs"],
+    edition: "2018",
+    test_harness: false,
+    test_suites: ["general-tests"],
+    test_config: "BinderLibTest.xml",
+    rustlibs: [
+        "libbinder_rs",
+        "liblibc",
+    ],
+}
