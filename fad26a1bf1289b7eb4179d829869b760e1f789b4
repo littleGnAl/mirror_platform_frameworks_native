@@ -148,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "d40e3866_222b5323",
+        "filename": "services/inputflinger/tests/fuzzers/include/fuzzTestInputListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-06-10T19:08:09Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "e5655f08_dbfc662c",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2193766e_524402c3",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/Android.bp",
         "patchSetId": 1
@@ -312,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "ea454b1c_ffbedad6",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer/cursorInputFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-06-10T19:08:09Z",
+      "side": 1,
+      "message": "@Linxhao, this method implements a fuzz target based on libfuzzer fuzzing engine (refer to example https://llvm.org/docs/LibFuzzer.html#toy-example).",
+      "parentUuid": "db673b60_ea9c563a",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72e8fd81_094d6adc",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer/cursorInputFuzzer.cpp",
         "patchSetId": 1
@@ -394,6 +436,24 @@
     },
     {
       "key": {
+        "uuid": "1de51708_d8616082",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-06-10T19:08:09Z",
+      "side": 1,
+      "message": "As Mike mentioned, these tests have to be in their own files (for reference on libfuzzer, see https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md)",
+      "parentUuid": "fb712edf_abdc4f7b",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a31c340_66fe32c5",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
         "patchSetId": 1
@@ -438,6 +498,30 @@
       "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d933649a_59ef67a5",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-06-10T19:08:09Z",
+      "side": 1,
+      "message": "See other comment.",
+      "parentUuid": "f5a5d6ec_4682e974",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 65
+      },
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -540,6 +624,24 @@
     },
     {
       "key": {
+        "uuid": "b8c63ad3_c672a24b",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-06-10T19:08:09Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "50072cc8_0080f9cf",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4f77ba7_7bfd9c46",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
         "patchSetId": 1
@@ -551,6 +653,24 @@
       "writtenOn": "2020-05-19T13:01:29Z",
       "side": 1,
       "message": "Seems like all of the above should be moved into SetUp once you\u0027ve moved to parameterized tests. Right now there\u0027s a lot of duplication between InputMapperTest and the setup code here.",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0247afd_05b8542e",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-06-10T19:08:09Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "e4f77ba7_7bfd9c46",
       "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -574,6 +694,24 @@
     },
     {
       "key": {
+        "uuid": "7bce7172_2f6e8d88",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-06-10T19:08:09Z",
+      "side": 1,
+      "message": "This is a good point. There are pros and cons for breaking the test into multiple tests. The pros is that the test is faster. But one important con is that the interaction between the different calls can lead to a more interesting fuzzing and deeper code penetration/coverage.",
+      "parentUuid": "aa02477a_4e0973fc",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5347456_9c20ad9f",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/include/inputReaderHelperClasses.h",
         "patchSetId": 1
@@ -585,6 +723,24 @@
       "writtenOn": "2020-05-19T13:01:29Z",
       "side": 1,
       "message": "Let\u0027s move all of the fakes to their own library so they can be shared among the tests (i.e. the unit tests should use the same implementation of FakePointerController as cursor fuzzer tests and the keyboard fuzzer tests). That way we don\u0027t have multiple copies of the same class, which are liable to get out of sync.\n\nI recommend you do this in separate CL before adding the fuzzer tests; that way it\u0027s easier to review.",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "284167cf_ccd17ff3",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/include/inputReaderHelperClasses.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-06-10T19:08:09Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "b5347456_9c20ad9f",
       "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
