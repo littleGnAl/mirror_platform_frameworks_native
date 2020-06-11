@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f32fc5c_9809647d",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 20
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-11T17:22:24Z",
+      "side": 1,
+      "message": "I think the example would be better if this was \"\u0026 self\" and on_transact called self.test() instead. Interface traits should never take mutable references to self because, due to the thread pool nature of binder, they get inherently called concurrently.",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "1ec9180f5a992b4cb664f7f987546e179d414765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
