@@ -2375,8 +2375,14 @@ FloatRect SurfaceFlinger::getLayerClipBoundsForDisplay(const DisplayDevice& disp
 }
 
 void SurfaceFlinger::computeLayerBounds() {
+    sp<DisplayDevice> primaryDisplayDevice;
+
     for (const auto& pair : ON_MAIN_THREAD(mDisplays)) {
         const auto& displayDevice = pair.second;
+        if (displayDevice->isPrimary()) {
+            primaryDisplayDevice = pair.second;
+            continue;
+        }
         const auto display = displayDevice->getCompositionDisplay();
         for (const auto& layer : mDrawingState.layersSortedByZ) {
             // only consider the layers on the given layer stack
@@ -2387,6 +2393,18 @@ void SurfaceFlinger::computeLayerBounds() {
             layer->computeBounds(getLayerClipBoundsForDisplay(*displayDevice), ui::Transform(),
                                  0.f /* shadowRadius */);
         }
+    }
+
+    // compute for primary
+    const auto display = primaryDisplayDevice->getCompositionDisplay();
+    for (const auto& layer : mDrawingState.layersSortedByZ) {
+        // only consider the layers on the given layer stack
+        if (!display->belongsInOutput(layer->getLayerStack(), layer->getPrimaryDisplayOnly())) {
+            continue;
+        }
+
+        layer->computeBounds(getLayerClipBoundsForDisplay(*primaryDisplayDevice), ui::Transform(),
+                             0.f /* shadowRadius */);
     }
 }
 
