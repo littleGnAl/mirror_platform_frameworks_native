@@ -29,6 +29,7 @@ cc_library_static {
     name: "libarect",
     host_supported: true,
     vendor_available: true,
+    native_bridge_supported: true,
     export_include_dirs: ["include"],
     target: {
         windows: {

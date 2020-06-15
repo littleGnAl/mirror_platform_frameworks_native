@@ -25,6 +25,7 @@ cc_library_headers {
     name: "libnativewindow_headers",
     export_include_dirs: ["include"],
     vendor_available: true,
+    native_bridge_supported: true,
     min_sdk_version: "29",
 }
 
