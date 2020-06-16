@@ -22,6 +22,30 @@
       "revId": "b7322fc981a349c3f31841723a9804ae25b0eb54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e39c1242_d3ebbefb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2020-06-16T11:26:29Z",
+      "side": 1,
+      "message": "Yes. Renderscripts pulls about 40 libraries from 20 subtrees.\n\nAnd that\u0027s just minimum - if we allow it to pull libandroid then we get over 120 libraries (but we plan to use \"stub library\" instead).",
+      "parentUuid": "3f1bf34a_eab10e90",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "b7322fc981a349c3f31841723a9804ae25b0eb54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
