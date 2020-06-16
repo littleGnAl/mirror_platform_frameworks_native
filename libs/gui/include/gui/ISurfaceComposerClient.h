@@ -33,7 +33,7 @@ public:
     DECLARE_META_INTERFACE(SurfaceComposerClient)
 
     // flags for createSurface()
-    enum { // (keep in sync with Surface.java)
+    enum { // (keep in sync with SurfaceControl.java)
         eHidden = 0x00000004,
         eDestroyBackbuffer = 0x00000020,
         eSecure = 0x00000080,
