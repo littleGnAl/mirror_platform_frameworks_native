@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003465915",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "1ec106ce_eb849ef5",
+          "description": "Change to \"libs/binder/rust/src/sys/libbinder_bindings.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+              "range": {
+                "startLine": 389,
+                "startChar": 48,
+                "endLine": 389,
+                "endChar": 62
+              },
+              "replacement": "correspondence"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "a978559d_d7cd1bf6",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-17T00:57:30Z",
+      "side": 1,
+      "message": "Common typo found: \"correspondance\" -- should it be \"correspondence\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 389,
+        "startChar": 48,
+        "endLine": 389,
+        "endChar": 62
+      },
+      "revId": "b704c638695cd17816245307b446db8aa7377f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003465908",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e0a0c6c0_4bc5368c",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-17T00:57:30Z",
+      "side": 1,
+      "message": "Unrecognized license :\nmust agree\n",
+      "range": {
+        "startLine": 398,
+        "startChar": 39,
+        "endLine": 398,
+        "endChar": 49
+      },
+      "revId": "b704c638695cd17816245307b446db8aa7377f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003465915",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "8ddfa3a1_fbbe74be",
+          "description": "Change to \"libs/binder/rust/src/sys/libbinder_bindings.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+              "range": {
+                "startLine": 1730,
+                "startChar": 89,
+                "endLine": 1730,
+                "endChar": 96
+              },
+              "replacement": "receive"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "37521a55_4ff86250",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-17T00:57:30Z",
+      "side": 1,
+      "message": "Common typo found: \"recieve\" -- should it be \"receive\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1730,
+        "startChar": 89,
+        "endLine": 1730,
+        "endChar": 96
+      },
+      "revId": "b704c638695cd17816245307b446db8aa7377f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
