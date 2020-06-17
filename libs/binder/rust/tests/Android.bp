@@ -1,0 +1,7 @@
+rust_test {
+    name: "rustBinderTest",
+    srcs: ["integration.rs"],
+    rustlibs: [
+        "libbinder_rs",
+    ],
+}
