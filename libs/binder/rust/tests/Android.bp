@@ -1,0 +1,25 @@
+rust_test {
+    name: "rustBinderTest",
+    srcs: ["integration.rs"],
+    rustlibs: [
+        "libbinder_rs",
+    ],
+    // For the binaries to be pushed properly as specified in AndroidTest.xml,
+    // this cannot be the same as the module name.
+    stem: "rustBinderTestClientBinary",
+}
+
+rust_test {
+    name: "rustBinderTestService",
+    srcs: ["integration.rs"],
+    rustlibs: [
+        "libbinder_rs",
+        "liblibc",
+    ],
+    // For the binaries to be pushed properly as specified in AndroidTest.xml,
+    // this cannot be the same as the module name.
+    stem: "rustBinderTestServiceBinary",
+    no_named_install_directory: true,
+    relative_install_path: "rustBinderTest",
+    test_harness: false,
+}
