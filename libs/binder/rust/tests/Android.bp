@@ -1,0 +1,19 @@
+rust_test {
+    name: "rustBinderTest",
+    srcs: ["integration.rs"],
+    rustlibs: [
+        "libbinder_rs",
+    ],
+}
+
+rust_test {
+    name: "rustBinderTestService",
+    srcs: ["integration.rs"],
+    rustlibs: [
+        "libbinder_rs",
+        "liblibc",
+    ],
+    no_named_install_directory: true,
+    relative_install_path: "rustBinderTest",
+    test_harness: false,
+}
