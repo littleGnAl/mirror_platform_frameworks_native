@@ -1,0 +1,30 @@
+rust_library {
+    name: "libbinder_rs",
+    crate_name: "binder",
+    srcs: ["src/lib.rs"],
+    shared_libs: [
+        "libbinder_ndk",
+        "libutils",
+    ],
+    rustlibs: [
+        "liblibc",
+    ],
+    host_supported: true,
+}
+
+rust_test {
+    name: "libbinder_rs-internal_test",
+    crate_name: "binder",
+    srcs: ["src/lib.rs"],
+    test_suites: ["general-tests"],
+    auto_gen_config: true,
+    static_libs: [
+        "libbinder_rs_test_init_hack",
+    ],
+    shared_libs: [
+        "libbinder_ndk",
+    ],
+    rustlibs: [
+        "liblibc",
+    ],
+}

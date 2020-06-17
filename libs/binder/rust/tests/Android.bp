@@ -1,0 +1,22 @@
+// The Rust test harness doesn't let us run anything on the main thread, and we
+// need to initialize IPCThreadState there. This is a tiny hack to do this.
+cc_library_static {
+    name: "libbinder_rs_test_init_hack",
+    shared_libs: [
+        "libbinder_ndk",
+    ],
+    srcs: [
+        "MainThreadInit.cpp",
+    ],
+}
+
+rust_test {
+    name: "rustBinderTest",
+    srcs: ["integration.rs"],
+    static_libs: [
+        "libbinder_rs_test_init_hack",
+    ],
+    rustlibs: [
+        "libbinder_rs",
+    ],
+}
