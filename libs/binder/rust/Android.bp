@@ -1,0 +1,41 @@
+rust_library_rlib {
+    name: "libbinder_rs",
+    crate_name: "binder",
+    srcs: ["src/lib.rs"],
+    shared_libs: [
+        "libbinder_ndk",
+        "libutils",
+    ],
+    rlibs: [
+        "liblibc",
+    ],
+    flags: [
+        "-C debuginfo=2",
+    ],
+    host_supported: true,
+}
+
+rust_test {
+    name: "libbinder_rs-internal_test",
+    crate_name: "binder",
+    srcs: ["src/lib.rs"],
+    test_suites: ["general-tests"],
+    auto_gen_config: true,
+    shared_libs: [
+        "libbinder_ndk",
+        "libutils",
+        "libc++",
+    ],
+    static_libs: [
+        "libbinder_rs_test_init_hack",
+    ],
+    rlibs: [
+        "liblibc",
+    ],
+    dylibs: [
+        "libtest",
+    ],
+    flags: [
+        "-C debuginfo=2",
+    ],
+}
