@@ -16,6 +16,24 @@
       "revId": "b704c638695cd17816245307b446db8aa7377f18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54b6ea8e_32a1c06b",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-06-18T22:24:55Z",
+      "side": 1,
+      "message": "Ack\n\nNo, we cannot.",
+      "parentUuid": "726ad982_169e741d",
+      "revId": "b704c638695cd17816245307b446db8aa7377f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
