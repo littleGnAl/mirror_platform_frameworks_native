@@ -17,7 +17,11 @@ cc_library_headers {
     export_include_dirs: ["include"],
     vendor_available: true,
     host_supported: true,
-
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.neuralnetworks",
+        "test_com.android.neuralnetworks",
+    ],
     header_libs: [
         "libbase_headers",
         "libcutils_headers",
@@ -111,7 +115,8 @@ cc_library {
 
             // NOT static to keep the wire protocol unfrozen
             static: {
-                enabled: false,
+                // TODO Do not submit this! Only here for quick testing.
+                enabled: true,
             },
         },
         vendor: {
