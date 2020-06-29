@@ -46,6 +46,30 @@
       "revId": "f35f674fcb64bf6811bb75e408e858e9878f2ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "108e03c6_46cf5fb9",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-29T23:41:48Z",
+      "side": 1,
+      "message": "Hey, welcome back!\n\nUnmangled C++ symbols can be placed here using the following syntax.\n\nextern \"C++\" {\n   foo::bar::onething*;\n   foo::bar::anotherthing*;\n}\n\n\"local: *;\" can be placed anywhere. No matter it is placed, the result is the same. The common practice in Android is to have it in the version name section for the platform clients (the version name that ends with _PLATFORM or _PRIVATE).",
+      "parentUuid": "77ad3960_3f313dd9",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "f35f674fcb64bf6811bb75e408e858e9878f2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
