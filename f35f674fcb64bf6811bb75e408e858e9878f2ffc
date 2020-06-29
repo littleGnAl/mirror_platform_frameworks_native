@@ -22,6 +22,30 @@
       "revId": "f35f674fcb64bf6811bb75e408e858e9878f2ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77ad3960_3f313dd9",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-06-29T19:28:36Z",
+      "side": 1,
+      "message": "Hmmm, well I suppose we should have \u0027local: *\u0027 here, but I thought these need to be global for other system code to use it. No?",
+      "parentUuid": "a6a3f60a_aaba5148",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "f35f674fcb64bf6811bb75e408e858e9878f2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
