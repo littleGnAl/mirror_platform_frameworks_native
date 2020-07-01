@@ -35,7 +35,7 @@
 #define HAS_BINDER_SHELL_COMMAND
 #endif  //_has_include
 
-#include <assert.h>
+#include "binder_assert.h"
 
 #include <memory>
 #include <mutex>
@@ -53,7 +53,7 @@ class SharedRefBase {
     SharedRefBase() {}
     virtual ~SharedRefBase() {
         std::call_once(mFlagThis, [&]() {
-            __assert(__FILE__, __LINE__, "SharedRefBase: no ref created during lifetime");
+            BINDER_ASSERT(__FILE__, __LINE__, "SharedRefBase: no ref created during lifetime");
         });
     }
 
