@@ -1,0 +1,279 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40915b1a_8f166a77",
+        "filename": "libs/binder/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "delete, the proper include path is added by including libbinder already",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7ad1e55_1067edac",
+        "filename": "libs/binder/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "is there any talk about libhwbinder as well, since this code could be shared",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a31d1b0_8c264d1c",
+        "filename": "libs/binder/tests/fuzzers/Binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "can we avoid separate folders for all of these and use a single Android.bp?",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ae96638_e7b94c10",
+        "filename": "libs/binder/tests/fuzzers/Binder/BinderFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "almost all of these are functions on IBinder. We should have one place to define those, rather than duplicating w/ BpBinder",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44c82980_c1e389ea",
+        "filename": "libs/binder/tests/fuzzers/BpBinder/BpBinderFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "e.g. of duplication mentioned earlier",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "404c80ef_783f3e13",
+        "filename": "libs/binder/tests/fuzzers/MemoryHeapBase/MemoryHeapBaseFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "the important thing to fuzz is MemoryDealer which creates these objects and allocations (the allocations are the complex part)",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4fc2c0f_5cb73025",
+        "filename": "libs/binder/tests/fuzzers/ParcelBlob/ParcelBlobFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "standard is pointer for mutable arguments",
+      "range": {
+        "startLine": 40,
+        "startChar": 69,
+        "endLine": 40,
+        "endChar": 70
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ba4289_733d6133",
+        "filename": "libs/binder/tests/fuzzers/PersistableBundle/PersistableBundleFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "const*?",
+      "range": {
+        "startLine": 40,
+        "startChar": 48,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "568f0605_c335a312",
+        "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "const\u0026",
+      "range": {
+        "startLine": 31,
+        "startChar": 65,
+        "endLine": 31,
+        "endChar": 72
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9417999_ed248938",
+        "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "Did you run this locally? It should crash, and that is WAI",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d46e864_856b6461",
+        "filename": "libs/binder/tests/fuzzers/TextOutput/TextOutputFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "can we also test indent/dedent, pushing and popping bundles?",
+      "range": {
+        "startLine": 41,
+        "startChar": 51,
+        "endLine": 41,
+        "endChar": 55
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0fe4836_eb8cc05d",
+        "filename": "libs/binder/tests/fuzzers/include/commonFuzzHelpers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "const\u0026",
+      "range": {
+        "startLine": 25,
+        "startChar": 27,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0792deb5_b8f8242b",
+        "filename": "libs/binder/tests/fuzzers/include/commonFuzzHelpers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-01T18:00:37Z",
+      "side": 1,
+      "message": "const\u0026",
+      "range": {
+        "startLine": 34,
+        "startChar": 53,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
