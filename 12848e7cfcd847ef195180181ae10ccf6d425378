@@ -16,6 +16,24 @@
       "revId": "12848e7cfcd847ef195180181ae10ccf6d425378",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d0a6d7_6075a06e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_assert.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-07-01T21:03:02Z",
+      "side": 1,
+      "message": "Steven - I see you\u0027re on the git blame (but mostly just as a revert) - any insight here?",
+      "parentUuid": "bfaa6da5_426a4dd4",
+      "revId": "12848e7cfcd847ef195180181ae10ccf6d425378",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
