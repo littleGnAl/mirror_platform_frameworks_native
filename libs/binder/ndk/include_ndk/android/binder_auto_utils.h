@@ -30,7 +30,7 @@
 #include <android/binder_parcel.h>
 #include <android/binder_status.h>
 
-#include <assert.h>
+#include "binder_assert.h"
 
 #include <unistd.h>
 #include <cstddef>
@@ -81,7 +81,7 @@ class SpAIBinder {
         AIBinder* old = *const_cast<AIBinder* volatile*>(&mBinder);
         if (old != nullptr) AIBinder_decStrong(old);
         if (old != *const_cast<AIBinder* volatile*>(&mBinder)) {
-            __assert(__FILE__, __LINE__, "Race detected.");
+            BINDER_ASSERT(__FILE__, __LINE__, "Race detected.");
         }
         mBinder = binder;
     }
