@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfaa6da5_426a4dd4",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_assert.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-07-01T20:45:35Z",
+      "side": 1,
+      "message": "The only 2 places where this is used look like they should just be using assert() instead - why was __assert even used at all?",
+      "revId": "12848e7cfcd847ef195180181ae10ccf6d425378",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
