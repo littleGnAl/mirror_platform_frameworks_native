@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c03855d_ef18c576",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2020-07-07T18:06:16Z",
+      "side": 1,
+      "message": "This change is different from the internal cherry pick because AOSP doesn\u0027t have ag/10244000.\n\nLet me cherry pick that as well.",
+      "revId": "a512bfda6d22f0ad8d523a9ea50880a9a89ab463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
