@@ -25,3 +25,36 @@ rust_test {
         "-C opt-level=0",
     ],
 }
+
+// Create a C++ test server to communicate with for serialization
+cc_library_static {
+    name: "libbinder_rs_serialization_test",
+    shared_libs: [
+        "libbinder",
+    ],
+    srcs: [
+        "serialization.cpp",
+    ],
+}
+
+rust_test {
+    name: "rustSerializationTest",
+    srcs: ["serialization.rs"],
+    edition: "2018",
+    shared_libs: [
+        "libbinder",
+        "libc++",
+    ],
+    static_libs: [
+        "libbinder_rs_test_init_hack",
+        "libbinder_rs_serialization_test",
+    ],
+    rlibs: [
+        "libbinder_rs",
+        "liblibc",
+    ],
+    flags: [
+        "-C debuginfo=2",
+        "-C opt-level=0",
+    ],
+}
