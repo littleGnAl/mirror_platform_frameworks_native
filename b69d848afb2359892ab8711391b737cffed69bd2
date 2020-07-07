@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12870395_cb43582c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-07T21:32:47Z",
+      "side": 1,
+      "message": "I may need to add more on some devices, but this should be a good starting point and matches hwservicemanager. Could I get approval for this and move on from there?",
+      "revId": "b69d848afb2359892ab8711391b737cffed69bd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
