@@ -66,9 +66,20 @@ rust_test {
     auto_gen_config: true,
     shared_libs: [
         "libbinder_ndk",
+
+        // For the C++ side of the cross-language serialization test
+        // TODO: Shouldn't these get added from the static library?
+        "libbinder",
+        "libc++",
+        "libutils",
+    ],
+    static_libs: [
+        "libbinder_rs_serialization_test",
+        "libgtest",
     ],
     rustlibs: [
         "liblibc",
         "libbinder_ndk_bindgen",
+        "liblazy_static",
     ],
 }

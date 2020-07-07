@@ -22,3 +22,19 @@ rust_test {
     stem: "rustBinderTestServiceBinary",
     test_harness: false,
 }
+
+// Create a C++ test server to communicate with for serialization. This library
+// is used by serialization.rs, which is included in libbinder_rs-internal_test.
+cc_library_static {
+    name: "libbinder_rs_serialization_test",
+    shared_libs: [
+        "libbinder",
+        "libbinder_ndk",
+    ],
+    static_libs: [
+        "libgtest",
+    ],
+    srcs: [
+        "serialization.cpp",
+    ],
+}

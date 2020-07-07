@@ -128,3 +128,11 @@ pub mod public_api {
     /// Binder result containing a [`Status`] on error.
     pub type Result<T> = std::result::Result<T, Status>;
 }
+
+
+// This test module needs to get a raw AIBinder pointer for a service. We don't
+// want to expose this access outside the crate, so we need to integrate the
+// test inside the crate.
+#[cfg(test)]
+#[path = "../tests/serialization.rs"]
+mod serialization;
