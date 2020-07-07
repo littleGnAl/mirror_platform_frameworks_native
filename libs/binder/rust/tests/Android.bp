@@ -22,3 +22,33 @@ rust_test {
     stem: "rustBinderTestServiceBinary",
     test_harness: false,
 }
+
+// Create a C++ test server to communicate with for serialization
+cc_library_static {
+    name: "libbinder_rs_serialization_test",
+    shared_libs: [
+        "libbinder",
+    ],
+    srcs: [
+        "serialization.cpp",
+    ],
+}
+
+rust_test {
+    name: "rustBinderSerializationTest",
+    srcs: ["serialization.rs"],
+    rustlibs: [
+        "libbinder_rs",
+    ],
+    shared_libs: [
+        "libbinder",
+        "libc++",
+    ],
+    static_libs: [
+        "libbinder_rs_serialization_test",
+    ],
+
+    test_suites: ["general-tests"],
+    // TODO: Replace config with require_root when available for rust tests.
+    test_config: "SerializationTest.xml",
+}
