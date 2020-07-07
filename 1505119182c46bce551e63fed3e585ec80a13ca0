@@ -22,6 +22,30 @@
       "revId": "1505119182c46bce551e63fed3e585ec80a13ca0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19d66519_80c61985",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-07-07T18:41:09Z",
+      "side": 1,
+      "message": "These are used in CL:  https://android-review.googlesource.com/c/platform/frameworks/av/+/1177023 and  https://android-review.googlesource.com/c/platform/frameworks/av/+/1177024",
+      "parentUuid": "191cc8fa_8194c210",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 73
+      },
+      "revId": "1505119182c46bce551e63fed3e585ec80a13ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
