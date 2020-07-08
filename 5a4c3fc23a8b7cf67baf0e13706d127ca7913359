@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa031ad1_e75e58ec",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-08T00:13:26Z",
+      "side": 1,
+      "message": "Then shouldn\u0027t we emit a warning log when this happens? I think it would be difficult for developers to find this line when they hit the problem.",
+      "revId": "5a4c3fc23a8b7cf67baf0e13706d127ca7913359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
