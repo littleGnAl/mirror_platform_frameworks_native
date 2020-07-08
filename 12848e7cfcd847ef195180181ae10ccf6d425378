@@ -88,6 +88,24 @@
       "revId": "12848e7cfcd847ef195180181ae10ccf6d425378",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84038f73_f4dd110b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_assert.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-08T17:21:18Z",
+      "side": 1,
+      "message": "Ope, good catch. Android logging APIs if you like extra deps - and requiring clients to define LOG_TAG. :/ __assert seems fine to me.",
+      "parentUuid": "00d177b4_4436c98a",
+      "revId": "12848e7cfcd847ef195180181ae10ccf6d425378",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
