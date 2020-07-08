@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1a55ad7_919d1d79",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-07-08T22:58:49Z",
+      "side": 1,
+      "message": "these are in the platform header \u0026 blocked from importing in #apex - should these symbols be in the below PLATFORM group instead? Or are they in the wrong header?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 37
+      },
+      "revId": "04db8f5fa2569db476071c5057dd4327df006705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
