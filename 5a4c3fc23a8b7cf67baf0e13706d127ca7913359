@@ -34,6 +34,24 @@
       "revId": "5a4c3fc23a8b7cf67baf0e13706d127ca7913359",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7ca2598_6cf6692a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-08T01:10:59Z",
+      "side": 1,
+      "message": "Cool",
+      "parentUuid": "412606d1_ec579504",
+      "revId": "5a4c3fc23a8b7cf67baf0e13706d127ca7913359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
