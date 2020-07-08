@@ -22,6 +22,30 @@
       "revId": "04329430ac23d42d1d541808d7b6e1f466a1325a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06847b25_96b1e221",
+        "filename": "libs/binderthreadstate/test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-08T21:02:38Z",
+      "side": 0,
+      "message": "It shouldn\u0027t have even be necessary before, since it should have been inherited from the fork.",
+      "parentUuid": "d3ef7e60_a0516c9d",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 52
+      },
+      "revId": "04329430ac23d42d1d541808d7b6e1f466a1325a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
