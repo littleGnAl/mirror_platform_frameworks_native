@@ -70,6 +70,24 @@
       "revId": "12848e7cfcd847ef195180181ae10ccf6d425378",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00d177b4_4436c98a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_assert.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-07-08T17:07:52Z",
+      "side": 1,
+      "message": "if that\u0027s the case, then PS2 is doing the wrong thing - and these should be using LOG_FATAL or similar.",
+      "parentUuid": "bf317265_4a546661",
+      "revId": "12848e7cfcd847ef195180181ae10ccf6d425378",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
