@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f611714b_976d5b41",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-08T00:08:08Z",
+      "side": 1,
+      "message": "Then we remove these from NDK, right?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 52
+      },
+      "revId": "34aac10ebbce649ffd1a20ad914ef6b350d277e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
