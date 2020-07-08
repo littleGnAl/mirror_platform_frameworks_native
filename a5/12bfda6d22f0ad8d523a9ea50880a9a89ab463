@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Siarhei Vishniakou <svv@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified-Together+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 08 Jul 2020 01:19:13 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1356587
+Project: platform/frameworks/native
+Branch: refs/heads/master
