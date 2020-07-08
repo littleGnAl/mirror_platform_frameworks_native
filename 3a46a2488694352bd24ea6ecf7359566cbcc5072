@@ -16,6 +16,23 @@
       "revId": "3a46a2488694352bd24ea6ecf7359566cbcc5072",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6511f587_18f45079",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-08T16:57:33Z",
+      "side": 1,
+      "message": "btw, this new header should be moved to the include_cpp file to resolve the conflict",
+      "revId": "3a46a2488694352bd24ea6ecf7359566cbcc5072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
