@@ -52,6 +52,24 @@
       "revId": "12848e7cfcd847ef195180181ae10ccf6d425378",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf317265_4a546661",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_assert.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-08T16:56:52Z",
+      "side": 1,
+      "message": "I\u0027m sure it was me who added them. Anyway, the reason is probably that assert is no-op on NDEBUG define, but __assert always happens.",
+      "parentUuid": "02f61da3_4160d335",
+      "revId": "12848e7cfcd847ef195180181ae10ccf6d425378",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
