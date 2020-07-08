@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9672e21d_67180a7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-07-08T16:42:49Z",
+      "side": 1,
+      "message": "kicking the presubmit on a new PS, smoreland@ - would you mind taking a look at John\u0027s comment?",
+      "revId": "3a46a2488694352bd24ea6ecf7359566cbcc5072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
