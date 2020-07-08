@@ -22,6 +22,30 @@
       "revId": "34aac10ebbce649ffd1a20ad914ef6b350d277e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82d214ae_f9cf3a75",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-08T16:44:58Z",
+      "side": 1,
+      "message": "Well, that would be a backwards incompatible change. The exact path forward to be discussed.",
+      "parentUuid": "f611714b_976d5b41",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 52
+      },
+      "revId": "34aac10ebbce649ffd1a20ad914ef6b350d277e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
