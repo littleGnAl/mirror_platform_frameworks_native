@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3ef7e60_a0516c9d",
+        "filename": "libs/binderthreadstate/test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-08T21:01:00Z",
+      "side": 0,
+      "message": "is this not necessary?",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 52
+      },
+      "revId": "04329430ac23d42d1d541808d7b6e1f466a1325a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
