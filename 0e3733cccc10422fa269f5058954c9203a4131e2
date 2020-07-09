@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a75f4b5a_b458f416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T00:08:16Z",
+      "side": 1,
+      "message": "John? I guess anyway I\u0027ll need to move ABI prebuilts to AOSP. Hit this every year :/",
+      "revId": "0e3733cccc10422fa269f5058954c9203a4131e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
