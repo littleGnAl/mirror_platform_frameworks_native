@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "fe33b30a_49dd83f9",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T00:10:42Z",
+      "side": 1,
+      "message": "Yeah, you should be sure in this context, since it\u0027s a configuration that is passed to the binder driver when you first send a service out.",
+      "parentUuid": "641deb5f_b3333b4e",
+      "range": {
+        "startLine": 686,
+        "startChar": 8,
+        "endLine": 686,
+        "endChar": 83
+      },
+      "revId": "0e3733cccc10422fa269f5058954c9203a4131e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b175c6d0_daec48e4",
         "filename": "libs/binder/ndk/include_platform/android/binder_ibinder_platform.h",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "0e3733cccc10422fa269f5058954c9203a4131e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c00d641_479d04db",
+        "filename": "libs/binder/ndk/include_platform/android/binder_ibinder_platform.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T00:10:42Z",
+      "side": 1,
+      "message": "Done - the kernel doesn\u0027t expose if it is implemented",
+      "parentUuid": "b175c6d0_daec48e4",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "0e3733cccc10422fa269f5058954c9203a4131e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
