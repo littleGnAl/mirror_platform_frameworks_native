@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a53017b0_6e6c7327",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-09T20:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39524f44_90eca895",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 21
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ce60c72_73b82a92",
         "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
         "patchSetId": 9
@@ -257,6 +281,30 @@
       "revId": "948039e857ce4767e5900de42754805fa26203ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81daeb12_7d1f4dd1",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-09T20:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2a2ab75_5b639a84",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -339,6 +387,30 @@
       "revId": "948039e857ce4767e5900de42754805fa26203ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af64ced6_6275e268",
+        "filename": "libs/binder/rust/tests/MainThreadInit.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-09T20:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b978f144_1b62d1f1",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 60
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
