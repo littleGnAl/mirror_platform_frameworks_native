@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e9b3de_03198ad9",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T18:16:47Z",
+      "side": 1,
+      "message": "Out of curiosity, why split up \u0027IBinder\u0027?",
+      "range": {
+        "startLine": 58,
+        "startChar": 10,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef0aa96_3e740c51",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T18:16:47Z",
+      "side": 1,
+      "message": "this is an IPC, and it can fail, so it technically should be Result\u003c\u003e. This actually is problematic now. For instance, it lead to late discovery of https://android-review.googlesource.com/c/platform/frameworks/native/+/1357665. We probably want this to be Result and also to expose the error status from C++ libbinder",
+      "range": {
+        "startLine": 63,
+        "startChar": 26,
+        "endLine": 63,
+        "endChar": 39
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e710fe8_fc423ffd",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T18:16:47Z",
+      "side": 1,
+      "message": "for instance, this isn\u0027t in OpenBinder IBinder, but it\u0027s in Android IBinder",
+      "range": {
+        "startLine": 63,
+        "startChar": 7,
+        "endLine": 63,
+        "endChar": 21
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d51219bd_bc565c26",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T18:16:47Z",
+      "side": 1,
+      "message": "can you document/test the lifetime of this? Make sure when you let go of the binder, it gets deallocated (this has been a common problem before)",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5036f41_963eb823",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T18:16:47Z",
+      "side": 1,
+      "message": "I think it\u0027s probably fine to avoid these for now. They aren\u0027t in NDK/Java backends, and they are pretty problematic. The main problem is that detachObject doesn\u0027t delete or return the object being detached for a key, so you have to be very careful in multithreaded environments. If this is ever needed, we\u0027d probably want to fix that functionality in this interface.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 21
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ce60c72_73b82a92",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T18:16:47Z",
+      "side": 1,
+      "message": "IServiceManager should be generated from the actual IServiceManager.aidl interface. If desired, we could add some utility functions, like those available in the header/libbinder_ndk.\n\nIn libbinder, keep in mind IServiceManager.h ABI is frozen, and so we can\u0027t delete it.\n\nWe should be able to delete this file",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042a8f3b_ed2739a9",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T18:16:47Z",
+      "side": 1,
+      "message": "should there also be a method to construct a new SpIBinder from an SpIBinder that calls an additional AIBinder_incStrong?",
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2248d8cd_8d3e7881",
+        "filename": "libs/binder/rust/tests/MainThreadInit.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-09T18:16:47Z",
+      "side": 1,
+      "message": "this was fixed https://android-review.googlesource.com/c/platform/frameworks/native/+/1312946\n\nIf you still see it, we\u0027d prefer to fix libbinder",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 60
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
