@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c2cd764_a6efa4bb",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-09T18:53:13Z",
+      "side": 1,
+      "message": "This is the local server side interface that is used to initialize a new binder service. It probably needs more documentation, or maybe even a different name, to make that clearer.\n\nE.g., for an interface IFoo, the AIDL compiler uses the declare_binder_interface! macro to create a BnFoo struct that impls Remotable with a generated on_transact function and the correct interface descriptor string. A Binder service can then be constructed via `BnFoo::new_binder(service)` where the `service` object implements IFoo, resulting in a `Binder\u003cBnFoo\u003e` binder service object that is basically a local AIBinder.\n\nFrom a user\u0027s perspective, they just need to create some service struct that impls IFoo, and everything else, including the `Remotable` trait, is taken care of by the AIDL generated code.",
+      "parentUuid": "60e9b3de_03198ad9",
+      "range": {
+        "startLine": 58,
+        "startChar": 10,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ef0aa96_3e740c51",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 9
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "3d2ce54a_1f40b6c1",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-09T18:53:13Z",
+      "side": 1,
+      "message": "This is analogous to BnInterface::getInterfaceDescriptor(), not IBinder::getInterfaceDescriptor(). This whole trait is only for declaring a local interface to create an InterfaceClass from.\n\nWe don\u0027t currently expose IBinder::getInterfaceDescriptor(), partially because the NDK library doesn\u0027t expose it afaict.",
+      "parentUuid": "6ef0aa96_3e740c51",
+      "range": {
+        "startLine": 63,
+        "startChar": 26,
+        "endLine": 63,
+        "endChar": 39
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d51219bd_bc565c26",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 9
@@ -82,6 +130,30 @@
       "writtenOn": "2020-07-09T18:16:47Z",
       "side": 1,
       "message": "can you document/test the lifetime of this? Make sure when you let go of the binder, it gets deallocated (this has been a common problem before)",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83587d2_992f28a9",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-09T18:53:13Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "d51219bd_bc565c26",
       "range": {
         "startLine": 137,
         "startChar": 0,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "39524f44_90eca895",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-09T18:53:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5036f41_963eb823",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 21
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ce60c72_73b82a92",
         "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
         "patchSetId": 9
@@ -128,6 +224,30 @@
       "writtenOn": "2020-07-09T18:16:47Z",
       "side": 1,
       "message": "IServiceManager should be generated from the actual IServiceManager.aidl interface. If desired, we could add some utility functions, like those available in the header/libbinder_ndk.\n\nIn libbinder, keep in mind IServiceManager.h ABI is frozen, and so we can\u0027t delete it.\n\nWe should be able to delete this file",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a2ab75_5b639a84",
+        "filename": "libs/binder/rust/src/interfaces/service_manager.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-09T18:53:13Z",
+      "side": 1,
+      "message": "I\u0027ll remove it. This was mostly a testing interface before the AIDL compiler was ready, but we aren\u0027t using this outside of testing now.",
+      "parentUuid": "4ce60c72_73b82a92",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -157,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "6fcd9eed_129b383a",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-09T18:53:13Z",
+      "side": 1,
+      "message": "Yes, that is `Clone` below.",
+      "parentUuid": "042a8f3b_ed2739a9",
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2248d8cd_8d3e7881",
         "filename": "libs/binder/rust/tests/MainThreadInit.cpp",
         "patchSetId": 9
@@ -168,6 +306,30 @@
       "writtenOn": "2020-07-09T18:16:47Z",
       "side": 1,
       "message": "this was fixed https://android-review.googlesource.com/c/platform/frameworks/native/+/1312946\n\nIf you still see it, we\u0027d prefer to fix libbinder",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 60
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b978f144_1b62d1f1",
+        "filename": "libs/binder/rust/tests/MainThreadInit.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-09T18:53:13Z",
+      "side": 1,
+      "message": "Thanks, I didn\u0027t see that change. That was exactly the issue, so it should be fine now. I\u0027ll retest now to be sure.",
+      "parentUuid": "2248d8cd_8d3e7881",
       "range": {
         "startLine": 21,
         "startChar": 0,
