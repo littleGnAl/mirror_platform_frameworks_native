@@ -16,6 +16,52 @@
       "revId": "0e3733cccc10422fa269f5058954c9203a4131e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "641deb5f_b3333b4e",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-07-09T00:08:21Z",
+      "side": 1,
+      "message": "I don\u0027t mind a fatal abort but I\u0027m not seeing how I could have queried this up-front in case I have code where I\u0027m unsure. Or is being unsure in this context itself an error?",
+      "range": {
+        "startLine": 686,
+        "startChar": 8,
+        "endLine": 686,
+        "endChar": 83
+      },
+      "revId": "0e3733cccc10422fa269f5058954c9203a4131e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b175c6d0_daec48e4",
+        "filename": "libs/binder/ndk/include_platform/android/binder_ibinder_platform.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-07-09T00:08:21Z",
+      "side": 1,
+      "message": "can we define it? There seems to only be 2 error cases here - the kernel doesn\u0027t support it (and how do I know this? Or not know this?), and it\u0027s not a local binder. The non-local binder seems to be definable since it\u0027s being specifically checked - what about the kernel case?",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "0e3733cccc10422fa269f5058954c9203a4131e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
