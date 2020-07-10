@@ -1770,6 +1770,8 @@ void SurfaceFlinger::handleMessageRefresh() {
 
     postFrame();
     postComposition();
+    mClientColorMatrix = mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                              vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     mHadClientComposition = false;
     mHadDeviceComposition = false;
