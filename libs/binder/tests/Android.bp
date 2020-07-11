@@ -179,3 +179,17 @@ cc_test {
     test_suites: ["device-tests"],
     require_root: true,
 }
+
+cc_test {
+    name: "shmemTest",
+    defaults: ["binder_test_defaults"],
+    srcs: ["ShmemTest.cpp"],
+    shared_libs: [
+        "libbinder",
+        "libshmemcompat",
+        "libshmemutil",
+        "libutils",
+        "shared-file-region-aidl-cpp",
+    ],
+    test_suites: ["device-tests"],
+}
