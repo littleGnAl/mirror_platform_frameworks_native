@@ -184,3 +184,28 @@ aidl_interface {
         },
     },
 }
+
+aidl_interface {
+    name: "shmem-aidl",
+    unstable: true,
+    local_include_dir: "aidl",
+    srcs: [
+        "aidl/android/os/SharedMemory.aidl",
+    ],
+}
+
+cc_library {
+    name: "libshmemcompat",
+    export_include_dirs: ["include"],
+    srcs: ["ShmemCompat.cpp"],
+    shared_libs: [
+        "libutils",
+        "libbinder",
+        "shmem-aidl-cpp",
+    ],
+    export_shared_lib_headers: [
+        "libutils",
+        "libbinder",
+        "shmem-aidl-cpp",
+    ],
+}
