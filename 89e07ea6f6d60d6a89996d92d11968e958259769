@@ -1,0 +1,207 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003845622",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d11",
+      "fixSuggestions": [
+        {
+          "fixId": "59cea88e_e995f7a1",
+          "description": "Change to \"libs/binder/rust/src/proxy.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/src/proxy.rs",
+              "range": {
+                "startLine": 138,
+                "startChar": 24,
+                "endLine": 138,
+                "endChar": 32
+              },
+              "replacement": "reference"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "50f358bf_734a1887",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-13T17:44:41Z",
+      "side": 1,
+      "message": "Common typo found: \"refernce\" -- should it be \"reference\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 138,
+        "startChar": 24,
+        "endLine": 138,
+        "endChar": 32
+      },
+      "revId": "89e07ea6f6d60d6a89996d92d11968e958259769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003845622",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d11",
+      "fixSuggestions": [
+        {
+          "fixId": "7c3d65f7_afdf59e0",
+          "description": "Change to \"libs/binder/rust/src/sys/libbinder_bindings.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+              "range": {
+                "startLine": 389,
+                "startChar": 48,
+                "endLine": 389,
+                "endChar": 62
+              },
+              "replacement": "correspondence"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "5b674398_fb5db07c",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-13T17:44:41Z",
+      "side": 1,
+      "message": "Common typo found: \"correspondance\" -- should it be \"correspondence\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 389,
+        "startChar": 48,
+        "endLine": 389,
+        "endChar": 62
+      },
+      "revId": "89e07ea6f6d60d6a89996d92d11968e958259769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003845615",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d11",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "2c2df6d9_24cc4b1b",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-13T17:44:41Z",
+      "side": 1,
+      "message": "Unrecognized license :\nmust agree\n",
+      "range": {
+        "startLine": 398,
+        "startChar": 39,
+        "endLine": 398,
+        "endChar": 49
+      },
+      "revId": "89e07ea6f6d60d6a89996d92d11968e958259769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003845622",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d11",
+      "fixSuggestions": [
+        {
+          "fixId": "d775a76b_41ebe396",
+          "description": "Change to \"libs/binder/rust/src/sys/libbinder_bindings.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+              "range": {
+                "startLine": 1730,
+                "startChar": 89,
+                "endLine": 1730,
+                "endChar": 96
+              },
+              "replacement": "receive"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "903a1186_c98ef4a3",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-13T17:44:41Z",
+      "side": 1,
+      "message": "Common typo found: \"recieve\" -- should it be \"receive\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1730,
+        "startChar": 89,
+        "endLine": 1730,
+        "endChar": 96
+      },
+      "revId": "89e07ea6f6d60d6a89996d92d11968e958259769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003845622",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d11",
+      "fixSuggestions": [
+        {
+          "fixId": "daf6f9ef_04db8839",
+          "description": "Change to \"libs/binder/rust/tests/integration.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/tests/integration.rs",
+              "range": {
+                "startLine": 211,
+                "startChar": 13,
+                "endLine": 211,
+                "endChar": 21
+              },
+              "replacement": "Received"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "d45174a0_a1f85488",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-13T17:44:41Z",
+      "side": 1,
+      "message": "Common typo found: \"Recieved\" -- should it be \"Received\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 211,
+        "startChar": 13,
+        "endLine": 211,
+        "endChar": 21
+      },
+      "revId": "89e07ea6f6d60d6a89996d92d11968e958259769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
