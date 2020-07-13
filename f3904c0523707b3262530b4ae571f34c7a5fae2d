@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82ba2cbe_8a45fe7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-13T16:49:49Z",
+      "side": 1,
+      "message": "nit: in a structured AIDL interface\n\nsince stable usually refers to the commitment to keep the interface stable over time",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "f3904c0523707b3262530b4ae571f34c7a5fae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d775a05_488f1275",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-13T16:49:49Z",
+      "side": 1,
+      "message": "Is a small unit test possible?",
+      "revId": "f3904c0523707b3262530b4ae571f34c7a5fae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693ebaa0_42234106",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-13T16:49:49Z",
+      "side": 1,
+      "message": "can you kindly add \"// TODO(b/139324991): solution for stability\"? :)",
+      "revId": "f3904c0523707b3262530b4ae571f34c7a5fae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abf684c1_b9731a02",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-13T16:49:49Z",
+      "side": 1,
+      "message": "license",
+      "revId": "f3904c0523707b3262530b4ae571f34c7a5fae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b9f1b52_5342ffc7",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-13T16:49:49Z",
+      "side": 1,
+      "message": "same comments from internal",
+      "revId": "f3904c0523707b3262530b4ae571f34c7a5fae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2019d5_068249f1",
+        "filename": "libs/binder/include/binder/ShmemCompat.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-13T16:49:49Z",
+      "side": 1,
+      "message": "nit: pref #pragma once",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "f3904c0523707b3262530b4ae571f34c7a5fae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
