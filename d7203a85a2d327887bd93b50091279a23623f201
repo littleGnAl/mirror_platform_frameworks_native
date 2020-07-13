@@ -16,6 +16,24 @@
       "revId": "d7203a85a2d327887bd93b50091279a23623f201",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88c9843f_2bee14c2",
+        "filename": "libs/binder/rust/tests/AndroidTest.xml",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-13T21:51:18Z",
+      "side": 1,
+      "message": "Thanks to Dan Shi\u0027s help, this is resolved now. The logic for pushing binaries onto device won\u0027t respect the destination location unless the binary is not named the same as its module.",
+      "parentUuid": "d735e754_bfdaab30",
+      "revId": "d7203a85a2d327887bd93b50091279a23623f201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
