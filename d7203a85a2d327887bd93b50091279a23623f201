@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d735e754_bfdaab30",
+        "filename": "libs/binder/rust/tests/AndroidTest.xml",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-13T17:50:25Z",
+      "side": 1,
+      "message": "This test requires two binaries pushed onto device, ideally in the same folder, which I can\u0027t get to work. atest picks up both modules but pushes each to its own directory structure, while tradefed complains that \"Local source file \u0027rustBinderTest\u0027 does not exist.\"\n\nAny tradefed experts know how I can get this to work?",
+      "revId": "d7203a85a2d327887bd93b50091279a23623f201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
