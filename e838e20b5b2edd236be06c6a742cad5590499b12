@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7f42910_5bf148a4",
+        "filename": "libs/binder/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40915b1a_8f166a77",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7ad1e55_1067edac",
         "filename": "libs/binder/tests/fuzzers/Android.bp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-01T18:00:37Z",
       "side": 1,
       "message": "is there any talk about libhwbinder as well, since this code could be shared",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152c4231_cda017f4",
+        "filename": "libs/binder/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "There hasn\u0027t been any talk about that :( Not sure if we will have time to support that before we finish up the rest of the work. Is it worth noting somewhere as potential good future project for someone?",
+      "parentUuid": "b7ad1e55_1067edac",
       "range": {
         "startLine": 28,
         "startChar": 9,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "56e56437_d3ef7768",
+        "filename": "libs/binder/tests/fuzzers/Binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a31d1b0_8c264d1c",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ae96638_e7b94c10",
         "filename": "libs/binder/tests/fuzzers/Binder/BinderFuzzFunctions.h",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4cf4829_f8ca42a2",
+        "filename": "libs/binder/tests/fuzzers/Binder/BinderFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ae96638_e7b94c10",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "2c3d0817_d64f5385",
+        "filename": "libs/binder/tests/fuzzers/MemoryHeapBase/MemoryHeapBaseFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Yup! We have another fuzzer for this that will be submitted in a second batch of binder fuzzers after this CL is accepted. This fuzzer is only touching the additional functionality that MemoryDealer didn\u0027t seem to be calling into.",
+      "parentUuid": "404c80ef_783f3e13",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4fc2c0f_5cb73025",
         "filename": "libs/binder/tests/fuzzers/ParcelBlob/ParcelBlobFuzzFunctions.h",
         "patchSetId": 1
@@ -145,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "8630b0b1_6f723a63",
+        "filename": "libs/binder/tests/fuzzers/ParcelBlob/ParcelBlobFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4fc2c0f_5cb73025",
+      "range": {
+        "startLine": 40,
+        "startChar": 69,
+        "endLine": 40,
+        "endChar": 70
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68ba4289_733d6133",
         "filename": "libs/binder/tests/fuzzers/PersistableBundle/PersistableBundleFuzzFunctions.h",
         "patchSetId": 1
@@ -165,6 +291,30 @@
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0860b83_35d460c3",
+        "filename": "libs/binder/tests/fuzzers/PersistableBundle/PersistableBundleFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ba4289_733d6133",
+      "range": {
+        "startLine": 40,
+        "startChar": 48,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -208,6 +358,48 @@
     },
     {
       "key": {
+        "uuid": "556450e2_7f549c3b",
+        "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "568f0605_c335a312",
+      "range": {
+        "startLine": 31,
+        "startChar": 65,
+        "endLine": 31,
+        "endChar": 72
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05b4f9b8_a2ee6966",
+        "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Oddly it wasn\u0027t crashing when running, but I did fix this now to be a const\u0026",
+      "parentUuid": "e9417999_ed248938",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d46e864_856b6461",
         "filename": "libs/binder/tests/fuzzers/TextOutput/TextOutputFuzz.cpp",
         "patchSetId": 1
@@ -228,6 +420,30 @@
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4cb97a5_4a8369d8",
+        "filename": "libs/binder/tests/fuzzers/TextOutput/TextOutputFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Being tested in the BufferedTextOutput fuzzer that will be submitted in the next CL.",
+      "parentUuid": "7d46e864_856b6461",
+      "range": {
+        "startLine": 41,
+        "startChar": 51,
+        "endLine": 41,
+        "endChar": 55
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -254,6 +470,30 @@
     },
     {
       "key": {
+        "uuid": "b8c86f46_e4313b6b",
+        "filename": "libs/binder/tests/fuzzers/include/commonFuzzHelpers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0fe4836_eb8cc05d",
+      "range": {
+        "startLine": 25,
+        "startChar": 27,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0792deb5_b8f8242b",
         "filename": "libs/binder/tests/fuzzers/include/commonFuzzHelpers.h",
         "patchSetId": 1
@@ -274,6 +514,30 @@
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fbae014_c24241ab",
+        "filename": "libs/binder/tests/fuzzers/include/commonFuzzHelpers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-07-13T21:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0792deb5_b8f8242b",
+      "range": {
+        "startLine": 34,
+        "startChar": 53,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
