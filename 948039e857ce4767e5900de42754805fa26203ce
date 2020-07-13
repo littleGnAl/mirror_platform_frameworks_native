@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a648bb1c_082d8905",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-13T17:54:12Z",
+      "side": 1,
+      "message": "I added tests for this now in integration.rs, although I\u0027m having trouble getting them to run in the Android test framework.",
+      "parentUuid": "c83587d2_992f28a9",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5036f41_963eb823",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 9
