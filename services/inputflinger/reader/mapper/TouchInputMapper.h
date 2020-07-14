@@ -444,7 +444,7 @@ protected:
     nsecs_t mDownTime;
 
     // The pointer controller, or null if the device is not a pointer.
-    std::shared_ptr<PointerControllerInterface> mPointerController;
+    std::shared_ptr<CursorControllerInterface> mCursorController;
 
     std::vector<VirtualKey> mVirtualKeys;
 

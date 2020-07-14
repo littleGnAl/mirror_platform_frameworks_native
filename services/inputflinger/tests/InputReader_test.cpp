@@ -59,10 +59,9 @@ static inline float avg(float x, float y) {
     return (x + y) / 2;
 }
 
+// --- FakeCursorController ---
 
-// --- FakePointerController ---
-
-class FakePointerController : public PointerControllerInterface {
+class FakeCursorController : public CursorControllerInterface {
     bool mHaveBounds;
     float mMinX, mMinY, mMaxX, mMaxY;
     float mX, mY;
@@ -70,12 +69,18 @@ class FakePointerController : public PointerControllerInterface {
     int32_t mDisplayId;
 
 public:
-    FakePointerController() :
-        mHaveBounds(false), mMinX(0), mMinY(0), mMaxX(0), mMaxY(0), mX(0), mY(0),
-        mButtonState(0), mDisplayId(ADISPLAY_ID_DEFAULT) {
-    }
+    FakeCursorController()
+          : mHaveBounds(false),
+            mMinX(0),
+            mMinY(0),
+            mMaxX(0),
+            mMaxY(0),
+            mX(0),
+            mY(0),
+            mButtonState(0),
+            mDisplayId(ADISPLAY_ID_DEFAULT) {}
 
-    virtual ~FakePointerController() {}
+    virtual ~FakeCursorController() {}
 
     void setBounds(float minX, float minY, float maxX, float maxY) {
         mHaveBounds = true;
@@ -160,12 +165,11 @@ private:
     std::map<int32_t, std::vector<int32_t>> mSpotsByDisplay;
 };
 
-
 // --- FakeInputReaderPolicy ---
 
 class FakeInputReaderPolicy : public InputReaderPolicyInterface {
     InputReaderConfiguration mConfig;
-    std::unordered_map<int32_t, std::shared_ptr<FakePointerController>> mPointerControllers;
+    std::unordered_map<int32_t, std::shared_ptr<FakeCursorController>> mCursorControllers;
     std::vector<InputDeviceInfo> mInputDevices;
     std::vector<DisplayViewport> mViewports;
     TouchAffineTransformation transform;
@@ -226,8 +230,8 @@ public:
         }
     }
 
-    void setPointerController(int32_t deviceId, std::shared_ptr<FakePointerController> controller) {
-        mPointerControllers.insert_or_assign(deviceId, std::move(controller));
+    void setCursorController(int32_t deviceId, std::shared_ptr<FakeCursorController> controller) {
+        mCursorControllers.insert_or_assign(deviceId, std::move(controller));
     }
 
     const InputReaderConfiguration* getReaderConfiguration() const {
@@ -288,8 +292,8 @@ private:
         *outConfig = mConfig;
     }
 
-    virtual std::shared_ptr<PointerControllerInterface> obtainPointerController(int32_t deviceId) {
-        return mPointerControllers[deviceId];
+    virtual std::shared_ptr<CursorControllerInterface> obtainCursorController(int32_t deviceId) {
+        return mCursorControllers[deviceId];
     }
 
     virtual void notifyInputDevicesChanged(const std::vector<InputDeviceInfo>& inputDevices) {
@@ -1887,7 +1891,7 @@ protected:
         ASSERT_NEAR(distance, coords.getAxisValue(AMOTION_EVENT_AXIS_DISTANCE), EPSILON);
     }
 
-    static void assertPosition(const FakePointerController& controller, float x, float y) {
+    static void assertPosition(const FakeCursorController& controller, float x, float y) {
         float actualX, actualY;
         controller.getPosition(&actualX, &actualY);
         ASSERT_NEAR(x, actualX, 1);
@@ -2395,13 +2399,13 @@ class CursorInputMapperTest : public InputMapperTest {
 protected:
     static const int32_t TRACKBALL_MOVEMENT_THRESHOLD;
 
-    std::shared_ptr<FakePointerController> mFakePointerController;
+    std::shared_ptr<FakeCursorController> mFakeCursorController;
 
     virtual void SetUp() {
         InputMapperTest::SetUp();
 
-        mFakePointerController = std::make_shared<FakePointerController>();
-        mFakePolicy->setPointerController(mDevice->getId(), mFakePointerController);
+        mFakeCursorController = std::make_shared<FakeCursorController>();
+        mFakePolicy->setCursorController(mDevice->getId(), mFakeCursorController);
     }
 
     void testMotionRotation(CursorInputMapper* mapper,
@@ -2448,7 +2452,8 @@ TEST_F(CursorInputMapperTest, WhenModeIsNavigation_GetSources_ReturnsTrackball) 
     ASSERT_EQ(AINPUT_SOURCE_TRACKBALL, mapper->getSources());
 }
 
-TEST_F(CursorInputMapperTest, WhenModeIsPointer_PopulateDeviceInfo_ReturnsRangeFromPointerController) {
+TEST_F(CursorInputMapperTest,
+       WhenModeIsPointer_PopulateDeviceInfo_ReturnsRangeFromCursorController) {
     CursorInputMapper* mapper = new CursorInputMapper(mDevice);
     addConfigurationProperty("cursor.mode", "pointer");
     addMapperAndConfigure(mapper);
@@ -2463,7 +2468,7 @@ TEST_F(CursorInputMapperTest, WhenModeIsPointer_PopulateDeviceInfo_ReturnsRangeF
             AINPUT_MOTION_RANGE_PRESSURE, AINPUT_SOURCE_MOUSE, 0.0f, 1.0f, 0.0f, 0.0f));
 
     // When the bounds are set, then there should be a valid motion range.
-    mFakePointerController->setBounds(1, 2, 800 - 1, 480 - 1);
+    mFakeCursorController->setBounds(1, 2, 800 - 1, 480 - 1);
 
     InputDeviceInfo info2;
     mapper->populateDeviceInfo(&info2);
@@ -2765,9 +2770,9 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     addConfigurationProperty("cursor.mode", "pointer");
     addMapperAndConfigure(mapper);
 
-    mFakePointerController->setBounds(0, 0, 800 - 1, 480 - 1);
-    mFakePointerController->setPosition(100, 200);
-    mFakePointerController->setButtonState(0);
+    mFakeCursorController->setBounds(0, 0, 800 - 1, 480 - 1);
+    mFakeCursorController->setPosition(100, 200);
+    mFakeCursorController->setButtonState(0);
 
     NotifyMotionArgs motionArgs;
     NotifyKeyArgs keyArgs;
@@ -2778,14 +2783,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_DOWN, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_PRIMARY, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_PRIMARY, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_PRIMARY, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_PRESS, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_PRIMARY, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_PRIMARY, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_PRIMARY, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -2794,21 +2799,21 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_RELEASE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_UP, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -2821,7 +2826,7 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_EQ(AMOTION_EVENT_BUTTON_SECONDARY | AMOTION_EVENT_BUTTON_TERTIARY,
             motionArgs.buttonState);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_SECONDARY | AMOTION_EVENT_BUTTON_TERTIARY,
-            mFakePointerController->getButtonState());
+              mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -2829,7 +2834,7 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_PRESS, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_TERTIARY, motionArgs.buttonState);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_SECONDARY | AMOTION_EVENT_BUTTON_TERTIARY,
-            mFakePointerController->getButtonState());
+              mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -2838,7 +2843,7 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_EQ(AMOTION_EVENT_BUTTON_SECONDARY | AMOTION_EVENT_BUTTON_TERTIARY,
             motionArgs.buttonState);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_SECONDARY | AMOTION_EVENT_BUTTON_TERTIARY,
-            mFakePointerController->getButtonState());
+              mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -2847,14 +2852,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_RELEASE, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_TERTIARY, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_TERTIARY, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_TERTIARY, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_MOVE, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_TERTIARY, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_TERTIARY, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_TERTIARY, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -2863,7 +2868,7 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_RELEASE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
     process(mapper, ARBITRARY_TIME, EV_KEY, BTN_MIDDLE, 0);
@@ -2871,14 +2876,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_EQ(AMOTION_EVENT_ACTION_UP, motionArgs.action);
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, motionArgs.action);
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
@@ -2893,14 +2898,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_PRESS, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -2909,14 +2914,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_RELEASE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
 
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
@@ -2934,14 +2939,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_PRESS, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_BACK, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -2950,14 +2955,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_RELEASE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -2975,14 +2980,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_PRESS, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -2991,14 +2996,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_RELEASE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -3016,14 +3021,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_PRESS, motionArgs.action);
     ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, motionArgs.buttonState);
-    ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, mFakePointerController->getButtonState());
+    ASSERT_EQ(AMOTION_EVENT_BUTTON_FORWARD, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -3032,14 +3037,14 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_BUTTON_RELEASE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, motionArgs.action);
     ASSERT_EQ(0, motionArgs.buttonState);
-    ASSERT_EQ(0, mFakePointerController->getButtonState());
+    ASSERT_EQ(0, mFakeCursorController->getButtonState());
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(motionArgs.pointerCoords[0],
             100.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -3053,9 +3058,9 @@ TEST_F(CursorInputMapperTest, Process_WhenModeIsPointer_ShouldMoveThePointerArou
     addConfigurationProperty("cursor.mode", "pointer");
     addMapperAndConfigure(mapper);
 
-    mFakePointerController->setBounds(0, 0, 800 - 1, 480 - 1);
-    mFakePointerController->setPosition(100, 200);
-    mFakePointerController->setButtonState(0);
+    mFakeCursorController->setBounds(0, 0, 800 - 1, 480 - 1);
+    mFakeCursorController->setPosition(100, 200);
+    mFakeCursorController->setButtonState(0);
 
     NotifyMotionArgs args;
 
@@ -3067,7 +3072,7 @@ TEST_F(CursorInputMapperTest, Process_WhenModeIsPointer_ShouldMoveThePointerArou
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, args.action);
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(args.pointerCoords[0],
             110.0f, 220.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
-    ASSERT_NO_FATAL_FAILURE(assertPosition(*mFakePointerController, 110.0f, 220.0f));
+    ASSERT_NO_FATAL_FAILURE(assertPosition(*mFakeCursorController, 110.0f, 220.0f));
 }
 
 TEST_F(CursorInputMapperTest, Process_PointerCapture) {
@@ -3081,9 +3086,9 @@ TEST_F(CursorInputMapperTest, Process_PointerCapture) {
     ASSERT_EQ(ARBITRARY_TIME, resetArgs.eventTime);
     ASSERT_EQ(DEVICE_ID, resetArgs.deviceId);
 
-    mFakePointerController->setBounds(0, 0, 800 - 1, 480 - 1);
-    mFakePointerController->setPosition(100, 200);
-    mFakePointerController->setButtonState(0);
+    mFakeCursorController->setBounds(0, 0, 800 - 1, 480 - 1);
+    mFakeCursorController->setPosition(100, 200);
+    mFakeCursorController->setButtonState(0);
 
     NotifyMotionArgs args;
 
@@ -3096,7 +3101,7 @@ TEST_F(CursorInputMapperTest, Process_PointerCapture) {
     ASSERT_EQ(AMOTION_EVENT_ACTION_MOVE, args.action);
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(args.pointerCoords[0],
             10.0f, 20.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
-    ASSERT_NO_FATAL_FAILURE(assertPosition(*mFakePointerController, 100.0f, 200.0f));
+    ASSERT_NO_FATAL_FAILURE(assertPosition(*mFakeCursorController, 100.0f, 200.0f));
 
     // Button press.
     process(mapper, ARBITRARY_TIME, EV_KEY, BTN_MOUSE, 1);
@@ -3135,7 +3140,7 @@ TEST_F(CursorInputMapperTest, Process_PointerCapture) {
     ASSERT_EQ(AMOTION_EVENT_ACTION_MOVE, args.action);
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(args.pointerCoords[0],
             30.0f, 40.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
-    ASSERT_NO_FATAL_FAILURE(assertPosition(*mFakePointerController, 100.0f, 200.0f));
+    ASSERT_NO_FATAL_FAILURE(assertPosition(*mFakeCursorController, 100.0f, 200.0f));
 
     // Disable pointer capture and check that the device generation got bumped
     // and events are generated the usual way.
@@ -3156,7 +3161,7 @@ TEST_F(CursorInputMapperTest, Process_PointerCapture) {
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, args.action);
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(args.pointerCoords[0],
             110.0f, 220.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
-    ASSERT_NO_FATAL_FAILURE(assertPosition(*mFakePointerController, 110.0f, 220.0f));
+    ASSERT_NO_FATAL_FAILURE(assertPosition(*mFakeCursorController, 110.0f, 220.0f));
 }
 
 TEST_F(CursorInputMapperTest, Process_ShouldHandleDisplayId) {
@@ -3172,9 +3177,9 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleDisplayId) {
     mFakePolicy->setDefaultPointerDisplayId(SECOND_DISPLAY_ID);
     configureDevice(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
 
-    mFakePointerController->setBounds(0, 0, 800 - 1, 480 - 1);
-    mFakePointerController->setPosition(100, 200);
-    mFakePointerController->setButtonState(0);
+    mFakeCursorController->setBounds(0, 0, 800 - 1, 480 - 1);
+    mFakeCursorController->setPosition(100, 200);
+    mFakeCursorController->setButtonState(0);
 
     NotifyMotionArgs args;
     process(mapper, ARBITRARY_TIME, EV_REL, REL_X, 10);
@@ -3185,7 +3190,7 @@ TEST_F(CursorInputMapperTest, Process_ShouldHandleDisplayId) {
     ASSERT_EQ(AMOTION_EVENT_ACTION_HOVER_MOVE, args.action);
     ASSERT_NO_FATAL_FAILURE(assertPointerCoords(args.pointerCoords[0],
             110.0f, 220.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
-    ASSERT_NO_FATAL_FAILURE(assertPosition(*mFakePointerController, 110.0f, 220.0f));
+    ASSERT_NO_FATAL_FAILURE(assertPosition(*mFakeCursorController, 110.0f, 220.0f));
     ASSERT_EQ(SECOND_DISPLAY_ID, args.displayId);
 }
 
@@ -6340,12 +6345,12 @@ TEST_F(MultiTouchInputMapperTest, Viewports_Fallback) {
 
 TEST_F(MultiTouchInputMapperTest, Process_Pointer_ShouldHandleDisplayId) {
     // Setup for second display.
-    std::shared_ptr<FakePointerController> fakePointerController =
-            std::make_shared<FakePointerController>();
-    fakePointerController->setBounds(0, 0, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 1);
-    fakePointerController->setPosition(100, 200);
-    fakePointerController->setButtonState(0);
-    mFakePolicy->setPointerController(mDevice->getId(), fakePointerController);
+    std::shared_ptr<FakeCursorController> fakeCursorController =
+            std::make_shared<FakeCursorController>();
+    fakeCursorController->setBounds(0, 0, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 1);
+    fakeCursorController->setPosition(100, 200);
+    fakeCursorController->setButtonState(0);
+    mFakePolicy->setCursorController(mDevice->getId(), fakeCursorController);
 
     mFakePolicy->setDefaultPointerDisplayId(SECONDARY_DISPLAY_ID);
     prepareSecondaryDisplay(ViewportType::VIEWPORT_EXTERNAL);
@@ -6355,7 +6360,7 @@ TEST_F(MultiTouchInputMapperTest, Process_Pointer_ShouldHandleDisplayId) {
     prepareAxes(POSITION);
     addMapperAndConfigure(mapper);
 
-    // Check source is mouse that would obtain the PointerController.
+    // Check source is mouse that would obtain the CursorController.
     ASSERT_EQ(AINPUT_SOURCE_MOUSE, mapper->getSources());
 
     NotifyMotionArgs motionArgs;
@@ -6401,11 +6406,11 @@ TEST_F(MultiTouchInputMapperTest, Process_Pointer_ShowTouches) {
     device2->configure(ARBITRARY_TIME, mFakePolicy->getReaderConfiguration(), 0 /*changes*/);
     device2->reset(ARBITRARY_TIME);
 
-    // Setup PointerController.
-    std::shared_ptr<FakePointerController> fakePointerController =
-            std::make_shared<FakePointerController>();
-    mFakePolicy->setPointerController(mDevice->getId(), fakePointerController);
-    mFakePolicy->setPointerController(SECOND_DEVICE_ID, fakePointerController);
+    // Setup CursorController.
+    std::shared_ptr<FakeCursorController> fakeCursorController =
+            std::make_shared<FakeCursorController>();
+    mFakePolicy->setCursorController(mDevice->getId(), fakeCursorController);
+    mFakePolicy->setCursorController(SECOND_DEVICE_ID, fakeCursorController);
 
     // Setup policy for associated displays and show touches.
     const uint8_t hdmi1 = 0;
@@ -6432,8 +6437,8 @@ TEST_F(MultiTouchInputMapperTest, Process_Pointer_ShowTouches) {
     processSync(mapper);
 
     std::map<int32_t, std::vector<int32_t>>::const_iterator iter =
-            fakePointerController->getSpots().find(DISPLAY_ID);
-    ASSERT_TRUE(iter != fakePointerController->getSpots().end());
+            fakeCursorController->getSpots().find(DISPLAY_ID);
+    ASSERT_TRUE(iter != fakeCursorController->getSpots().end());
     ASSERT_EQ(size_t(2), iter->second.size());
 
     // Two fingers down at second display.
@@ -6444,8 +6449,8 @@ TEST_F(MultiTouchInputMapperTest, Process_Pointer_ShowTouches) {
     processId(mapper2, 2);
     processSync(mapper2);
 
-    iter = fakePointerController->getSpots().find(SECONDARY_DISPLAY_ID);
-    ASSERT_TRUE(iter != fakePointerController->getSpots().end());
+    iter = fakeCursorController->getSpots().find(SECONDARY_DISPLAY_ID);
+    ASSERT_TRUE(iter != fakeCursorController->getSpots().end());
     ASSERT_EQ(size_t(2), iter->second.size());
 }
 

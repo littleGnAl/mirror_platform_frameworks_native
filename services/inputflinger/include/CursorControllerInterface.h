@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef _INPUTFLINGER_POINTER_CONTROLLER_INTERFACE_H
-#define _INPUTFLINGER_POINTER_CONTROLLER_INTERFACE_H
+#ifndef _INPUTFLINGER_CURSOR_CONTROLLER_INTERFACE_H
+#define _INPUTFLINGER_CURSOR_CONTROLLER_INTERFACE_H
 
 #include <input/DisplayViewport.h>
 #include <input/Input.h>
@@ -30,19 +30,19 @@ namespace android {
  * The spots are sprites on screen that visually represent the positions of
  * fingers
  *
- * The pointer controller is responsible for providing synchronization and for tracking
+ * The cursor controller is responsible for providing synchronization and for tracking
  * display orientation changes if needed.
  */
-class PointerControllerInterface {
+class CursorControllerInterface {
 protected:
-    PointerControllerInterface() { }
-    virtual ~PointerControllerInterface() { }
+    CursorControllerInterface() {}
+    virtual ~CursorControllerInterface() {}
 
 public:
     /* Gets the bounds of the region that the pointer can traverse.
      * Returns true if the bounds are available. */
-    virtual bool getBounds(float* outMinX, float* outMinY,
-            float* outMaxX, float* outMaxY) const = 0;
+    virtual bool getBounds(float* outMinX, float* outMinY, float* outMaxX,
+                           float* outMaxY) const = 0;
 
     /* Move the pointer. */
     virtual void move(float deltaX, float deltaY) = 0;
@@ -95,7 +95,7 @@ public:
      * pressed (not hovering).
      */
     virtual void setSpots(const PointerCoords* spotCoords, const uint32_t* spotIdToIndex,
-            BitSet32 spotIdBits, int32_t displayId) = 0;
+                          BitSet32 spotIdBits, int32_t displayId) = 0;
 
     /* Removes all spots. */
     virtual void clearSpots() = 0;
@@ -109,4 +109,4 @@ public:
 
 } // namespace android
 
-#endif // _INPUTFLINGER_POINTER_CONTROLLER_INTERFACE_H
+#endif // _INPUTFLINGER_CURSOR_CONTROLLER_INTERFACE_H

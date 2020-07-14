@@ -769,16 +769,16 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
     // Create or update pointer controller if needed.
     if (mDeviceMode == DEVICE_MODE_POINTER ||
         (mDeviceMode == DEVICE_MODE_DIRECT && mConfig.showTouches)) {
-        if (mPointerController == nullptr || viewportChanged) {
-            mPointerController = getPolicy()->obtainPointerController(getDeviceId());
-            // Set the DisplayViewport for the PointerController to the default pointer display
+        if (mCursorController == nullptr || viewportChanged) {
+            mCursorController = getPolicy()->obtainCursorController(getDeviceId());
+            // Set the DisplayViewport for the CursorController to the default pointer display
             // that is recommended by the configuration before using it.
             std::optional<DisplayViewport> defaultViewport =
                     mConfig.getDisplayViewportById(mConfig.defaultPointerDisplayId);
-            mPointerController->setDisplayViewport(defaultViewport.value_or(mViewport));
+            mCursorController->setDisplayViewport(defaultViewport.value_or(mViewport));
         }
     } else {
-        mPointerController.reset();
+        mCursorController.reset();
     }
 
     if (viewportChanged || deviceModeChanged) {
@@ -1393,9 +1393,9 @@ void TouchInputMapper::reset(nsecs_t when) {
     mPointerSimple.reset();
     resetExternalStylus();
 
-    if (mPointerController != nullptr) {
-        mPointerController->fade(PointerControllerInterface::Transition::GRADUAL);
-        mPointerController->clearSpots();
+    if (mCursorController != nullptr) {
+        mCursorController->fade(CursorControllerInterface::Transition::GRADUAL);
+        mCursorController->clearSpots();
     }
 
     InputMapper::reset(when);
@@ -1613,15 +1613,15 @@ void TouchInputMapper::cookAndDispatch(nsecs_t when) {
         dispatchPointerUsage(when, policyFlags, pointerUsage);
     } else {
         if (mDeviceMode == DEVICE_MODE_DIRECT && mConfig.showTouches &&
-            mPointerController != nullptr) {
-            mPointerController->setPresentation(PointerControllerInterface::Presentation::SPOT);
-            mPointerController->fade(PointerControllerInterface::Transition::GRADUAL);
+            mCursorController != nullptr) {
+            mCursorController->setPresentation(CursorControllerInterface::Presentation::SPOT);
+            mCursorController->fade(CursorControllerInterface::Transition::GRADUAL);
 
-            mPointerController->setButtonState(mCurrentRawState.buttonState);
-            mPointerController->setSpots(mCurrentCookedState.cookedPointerData.pointerCoords,
-                                         mCurrentCookedState.cookedPointerData.idToIndex,
-                                         mCurrentCookedState.cookedPointerData.touchingIdBits,
-                                         mViewport.displayId);
+            mCursorController->setButtonState(mCurrentRawState.buttonState);
+            mCursorController->setSpots(mCurrentCookedState.cookedPointerData.pointerCoords,
+                                        mCurrentCookedState.cookedPointerData.idToIndex,
+                                        mCurrentCookedState.cookedPointerData.touchingIdBits,
+                                        mViewport.displayId);
         }
 
         if (!mCurrentMotionAborted) {
@@ -2366,19 +2366,19 @@ void TouchInputMapper::dispatchPointerGestures(nsecs_t when, uint32_t policyFlag
 
     // Update the pointer presentation and spots.
     if (mParameters.gestureMode == Parameters::GESTURE_MODE_MULTI_TOUCH) {
-        mPointerController->setPresentation(PointerControllerInterface::Presentation::POINTER);
+        mCursorController->setPresentation(CursorControllerInterface::Presentation::POINTER);
         if (finishPreviousGesture || cancelPreviousGesture) {
-            mPointerController->clearSpots();
+            mCursorController->clearSpots();
         }
 
         if (mPointerGesture.currentGestureMode == PointerGesture::FREEFORM) {
-            mPointerController->setSpots(mPointerGesture.currentGestureCoords,
-                                         mPointerGesture.currentGestureIdToIndex,
-                                         mPointerGesture.currentGestureIdBits,
-                                         mPointerController->getDisplayId());
+            mCursorController->setSpots(mPointerGesture.currentGestureCoords,
+                                        mPointerGesture.currentGestureIdToIndex,
+                                        mPointerGesture.currentGestureIdBits,
+                                        mCursorController->getDisplayId());
         }
     } else {
-        mPointerController->setPresentation(PointerControllerInterface::Presentation::POINTER);
+        mCursorController->setPresentation(CursorControllerInterface::Presentation::POINTER);
     }
 
     // Show or hide the pointer if needed.
@@ -2388,7 +2388,7 @@ void TouchInputMapper::dispatchPointerGestures(nsecs_t when, uint32_t policyFlag
             if (mParameters.gestureMode == Parameters::GESTURE_MODE_MULTI_TOUCH &&
                 mPointerGesture.lastGestureMode == PointerGesture::FREEFORM) {
                 // Remind the user of where the pointer is after finishing a gesture with spots.
-                mPointerController->unfade(PointerControllerInterface::Transition::GRADUAL);
+                mCursorController->unfade(CursorControllerInterface::Transition::GRADUAL);
             }
             break;
         case PointerGesture::TAP:
@@ -2399,15 +2399,15 @@ void TouchInputMapper::dispatchPointerGestures(nsecs_t when, uint32_t policyFlag
         case PointerGesture::SWIPE:
             // Unfade the pointer when the current gesture manipulates the
             // area directly under the pointer.
-            mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE);
+            mCursorController->unfade(CursorControllerInterface::Transition::IMMEDIATE);
             break;
         case PointerGesture::FREEFORM:
             // Fade the pointer when the current gesture manipulates a different
             // area and there are spots to guide the user experience.
             if (mParameters.gestureMode == Parameters::GESTURE_MODE_MULTI_TOUCH) {
-                mPointerController->fade(PointerControllerInterface::Transition::GRADUAL);
+                mCursorController->fade(CursorControllerInterface::Transition::GRADUAL);
             } else {
-                mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE);
+                mCursorController->unfade(CursorControllerInterface::Transition::IMMEDIATE);
             }
             break;
     }
@@ -2520,7 +2520,7 @@ void TouchInputMapper::dispatchPointerGestures(nsecs_t when, uint32_t policyFlag
         // the touch pad.  This ensures that a view will receive a fresh hover enter
         // event after a tap.
         float x, y;
-        mPointerController->getPosition(&x, &y);
+        mCursorController->getPosition(&x, &y);
 
         PointerProperties pointerProperties;
         pointerProperties.clear();
@@ -2532,7 +2532,7 @@ void TouchInputMapper::dispatchPointerGestures(nsecs_t when, uint32_t policyFlag
         pointerCoords.setAxisValue(AMOTION_EVENT_AXIS_X, x);
         pointerCoords.setAxisValue(AMOTION_EVENT_AXIS_Y, y);
 
-        const int32_t displayId = mPointerController->getDisplayId();
+        const int32_t displayId = mCursorController->getDisplayId();
         NotifyMotionArgs args(mContext->getNextSequenceNum(), when, getDeviceId(), mSource,
                               displayId, policyFlags, AMOTION_EVENT_ACTION_HOVER_MOVE, 0, 0,
                               metaState, buttonState, MotionClassification::NONE,
@@ -2577,9 +2577,9 @@ void TouchInputMapper::abortPointerGestures(nsecs_t when, uint32_t policyFlags) 
     mPointerVelocityControl.reset();
 
     // Remove any current spots.
-    if (mPointerController != nullptr) {
-        mPointerController->fade(PointerControllerInterface::Transition::GRADUAL);
-        mPointerController->clearSpots();
+    if (mCursorController != nullptr) {
+        mCursorController->fade(CursorControllerInterface::Transition::GRADUAL);
+        mCursorController->clearSpots();
     }
 }
 
@@ -2777,13 +2777,13 @@ bool TouchInputMapper::preparePointerGestures(nsecs_t when, bool* outCancelPrevi
             // Move the pointer using a relative motion.
             // When using spots, the click will occur at the position of the anchor
             // spot and all other spots will move there.
-            mPointerController->move(deltaX, deltaY);
+            mCursorController->move(deltaX, deltaY);
         } else {
             mPointerVelocityControl.reset();
         }
 
         float x, y;
-        mPointerController->getPosition(&x, &y);
+        mCursorController->getPosition(&x, &y);
 
         mPointerGesture.currentGestureMode = PointerGesture::BUTTON_CLICK_OR_DRAG;
         mPointerGesture.currentGestureIdBits.clear();
@@ -2810,7 +2810,7 @@ bool TouchInputMapper::preparePointerGestures(nsecs_t when, bool* outCancelPrevi
             lastFingerCount == 1) {
             if (when <= mPointerGesture.tapDownTime + mConfig.pointerGestureTapInterval) {
                 float x, y;
-                mPointerController->getPosition(&x, &y);
+                mCursorController->getPosition(&x, &y);
                 if (fabs(x - mPointerGesture.tapX) <= mConfig.pointerGestureTapSlop &&
                     fabs(y - mPointerGesture.tapY) <= mConfig.pointerGestureTapSlop) {
 #if DEBUG_GESTURES
@@ -2879,7 +2879,7 @@ bool TouchInputMapper::preparePointerGestures(nsecs_t when, bool* outCancelPrevi
         if (mPointerGesture.lastGestureMode == PointerGesture::TAP) {
             if (when <= mPointerGesture.tapUpTime + mConfig.pointerGestureTapDragInterval) {
                 float x, y;
-                mPointerController->getPosition(&x, &y);
+                mCursorController->getPosition(&x, &y);
                 if (fabs(x - mPointerGesture.tapX) <= mConfig.pointerGestureTapSlop &&
                     fabs(y - mPointerGesture.tapY) <= mConfig.pointerGestureTapSlop) {
                     mPointerGesture.currentGestureMode = PointerGesture::TAP_DRAG;
@@ -2913,7 +2913,7 @@ bool TouchInputMapper::preparePointerGestures(nsecs_t when, bool* outCancelPrevi
 
             // Move the pointer using a relative motion.
             // When using spots, the hover or drag will occur at the position of the anchor spot.
-            mPointerController->move(deltaX, deltaY);
+            mCursorController->move(deltaX, deltaY);
         } else {
             mPointerVelocityControl.reset();
         }
@@ -2936,7 +2936,7 @@ bool TouchInputMapper::preparePointerGestures(nsecs_t when, bool* outCancelPrevi
         }
 
         float x, y;
-        mPointerController->getPosition(&x, &y);
+        mCursorController->getPosition(&x, &y);
 
         mPointerGesture.currentGestureIdBits.clear();
         mPointerGesture.currentGestureIdBits.markBit(mPointerGesture.activeGestureId);
@@ -3009,8 +3009,8 @@ bool TouchInputMapper::preparePointerGestures(nsecs_t when, bool* outCancelPrevi
             mCurrentRawState.rawPointerData
                     .getCentroidOfTouchingPointers(&mPointerGesture.referenceTouchX,
                                                    &mPointerGesture.referenceTouchY);
-            mPointerController->getPosition(&mPointerGesture.referenceGestureX,
-                                            &mPointerGesture.referenceGestureY);
+            mCursorController->getPosition(&mPointerGesture.referenceGestureX,
+                                           &mPointerGesture.referenceGestureY);
         }
 
         // Clear the reference deltas for fingers not yet included in the reference calculation.
@@ -3305,7 +3305,7 @@ bool TouchInputMapper::preparePointerGestures(nsecs_t when, bool* outCancelPrevi
         }
     }
 
-    mPointerController->setButtonState(mCurrentRawState.buttonState);
+    mCursorController->setButtonState(mCurrentRawState.buttonState);
 
 #if DEBUG_GESTURES
     ALOGD("Gestures: finishPreviousGesture=%s, cancelPreviousGesture=%s, "
@@ -3350,12 +3350,12 @@ void TouchInputMapper::dispatchPointerStylus(nsecs_t when, uint32_t policyFlags)
         uint32_t index = mCurrentCookedState.cookedPointerData.idToIndex[id];
         float x = mCurrentCookedState.cookedPointerData.pointerCoords[index].getX();
         float y = mCurrentCookedState.cookedPointerData.pointerCoords[index].getY();
-        mPointerController->setPosition(x, y);
+        mCursorController->setPosition(x, y);
 
         hovering = mCurrentCookedState.cookedPointerData.hoveringIdBits.hasBit(id);
         down = !hovering;
 
-        mPointerController->getPosition(&x, &y);
+        mCursorController->getPosition(&x, &y);
         mPointerSimple.currentCoords.copyFrom(
                 mCurrentCookedState.cookedPointerData.pointerCoords[index]);
         mPointerSimple.currentCoords.setAxisValue(AMOTION_EVENT_AXIS_X, x);
@@ -3396,7 +3396,7 @@ void TouchInputMapper::dispatchPointerMouse(nsecs_t when, uint32_t policyFlags) 
             rotateDelta(mSurfaceOrientation, &deltaX, &deltaY);
             mPointerVelocityControl.move(when, &deltaX, &deltaY);
 
-            mPointerController->move(deltaX, deltaY);
+            mCursorController->move(deltaX, deltaY);
         } else {
             mPointerVelocityControl.reset();
         }
@@ -3405,7 +3405,7 @@ void TouchInputMapper::dispatchPointerMouse(nsecs_t when, uint32_t policyFlags) 
         hovering = !down;
 
         float x, y;
-        mPointerController->getPosition(&x, &y);
+        mCursorController->getPosition(&x, &y);
         mPointerSimple.currentCoords.copyFrom(
                 mCurrentCookedState.cookedPointerData.pointerCoords[currentIndex]);
         mPointerSimple.currentCoords.setAxisValue(AMOTION_EVENT_AXIS_X, x);
@@ -3436,16 +3436,16 @@ void TouchInputMapper::dispatchPointerSimple(nsecs_t when, uint32_t policyFlags,
     int32_t metaState = getContext()->getGlobalMetaState();
     int32_t displayId = mViewport.displayId;
 
-    if (mPointerController != nullptr) {
+    if (mCursorController != nullptr) {
         if (down || hovering) {
-            mPointerController->setPresentation(PointerControllerInterface::Presentation::POINTER);
-            mPointerController->clearSpots();
-            mPointerController->setButtonState(mCurrentRawState.buttonState);
-            mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE);
+            mCursorController->setPresentation(CursorControllerInterface::Presentation::POINTER);
+            mCursorController->clearSpots();
+            mCursorController->setButtonState(mCurrentRawState.buttonState);
+            mCursorController->unfade(CursorControllerInterface::Transition::IMMEDIATE);
         } else if (!down && !hovering && (mPointerSimple.down || mPointerSimple.hovering)) {
-            mPointerController->fade(PointerControllerInterface::Transition::GRADUAL);
+            mCursorController->fade(CursorControllerInterface::Transition::GRADUAL);
         }
-        displayId = mPointerController->getDisplayId();
+        displayId = mCursorController->getDisplayId();
     }
 
     if (mPointerSimple.down && !down) {
@@ -3651,8 +3651,8 @@ bool TouchInputMapper::updateMovedPointers(const PointerProperties* inProperties
 }
 
 void TouchInputMapper::fadePointer() {
-    if (mPointerController != nullptr) {
-        mPointerController->fade(PointerControllerInterface::Transition::GRADUAL);
+    if (mCursorController != nullptr) {
+        mCursorController->fade(CursorControllerInterface::Transition::GRADUAL);
     }
 }
 
@@ -3916,7 +3916,7 @@ bool TouchInputMapper::markSupportedKeyCodes(uint32_t sourceMask, size_t numCode
 std::optional<int32_t> TouchInputMapper::getAssociatedDisplay() {
     if (mParameters.hasAssociatedDisplay) {
         if (mDeviceMode == DEVICE_MODE_POINTER) {
-            return std::make_optional(mPointerController->getDisplayId());
+            return std::make_optional(mCursorController->getDisplayId());
         } else {
             return std::make_optional(mViewport.displayId);
         }

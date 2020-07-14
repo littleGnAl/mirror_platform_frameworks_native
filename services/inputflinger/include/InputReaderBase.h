@@ -17,7 +17,7 @@
 #ifndef _UI_INPUT_READER_BASE_H
 #define _UI_INPUT_READER_BASE_H
 
-#include "PointerControllerInterface.h"
+#include "CursorControllerInterface.h"
 
 #include <input/Input.h>
 #include <input/InputDevice.h>
@@ -332,8 +332,7 @@ public:
     virtual void getReaderConfiguration(InputReaderConfiguration* outConfig) = 0;
 
     /* Gets a pointer controller associated with the specified cursor device (ie. a mouse). */
-    virtual std::shared_ptr<PointerControllerInterface> obtainPointerController(
-            int32_t deviceId) = 0;
+    virtual std::shared_ptr<CursorControllerInterface> obtainCursorController(int32_t deviceId) = 0;
 
     /* Notifies the input reader policy that some input devices have changed
      * and provides information about all current input devices.

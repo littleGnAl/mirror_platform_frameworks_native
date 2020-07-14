@@ -19,8 +19,8 @@
 #include "CursorInputMapper.h"
 
 #include "CursorButtonAccumulator.h"
+#include "CursorControllerInterface.h"
 #include "CursorScrollAccumulator.h"
-#include "PointerControllerInterface.h"
 #include "TouchCursorInputMapperCommon.h"
 
 namespace android {
@@ -72,7 +72,7 @@ void CursorInputMapper::populateDeviceInfo(InputDeviceInfo* info) {
 
     if (mParameters.mode == Parameters::MODE_POINTER) {
         float minX, minY, maxX, maxY;
-        if (mPointerController->getBounds(&minX, &minY, &maxX, &maxY)) {
+        if (mCursorController->getBounds(&minX, &minY, &maxX, &maxY)) {
             info->addMotionRange(AMOTION_EVENT_AXIS_X, mSource, minX, maxX, 0.0f, 0.0f, 0.0f);
             info->addMotionRange(AMOTION_EVENT_AXIS_Y, mSource, minY, maxY, 0.0f, 0.0f, 0.0f);
         }
@@ -132,7 +132,7 @@ void CursorInputMapper::configure(nsecs_t when, const InputReaderConfiguration* 
                 mYPrecision = 1.0f;
                 mXScale = 1.0f;
                 mYScale = 1.0f;
-                mPointerController = getPolicy()->obtainPointerController(getDeviceId());
+                mCursorController = getPolicy()->obtainCursorController(getDeviceId());
                 break;
             case Parameters::MODE_NAVIGATION:
                 mSource = AINPUT_SOURCE_TRACKBALL;
@@ -153,8 +153,8 @@ void CursorInputMapper::configure(nsecs_t when, const InputReaderConfiguration* 
             if (mParameters.mode == Parameters::MODE_POINTER) {
                 mParameters.mode = Parameters::MODE_POINTER_RELATIVE;
                 mSource = AINPUT_SOURCE_MOUSE_RELATIVE;
-                // Keep PointerController around in order to preserve the pointer position.
-                mPointerController->fade(PointerControllerInterface::Transition::IMMEDIATE);
+                // Keep CursorController around in order to preserve the pointer position.
+                mCursorController->fade(CursorControllerInterface::Transition::IMMEDIATE);
             } else {
                 ALOGE("Cannot request pointer capture, device is not in MODE_POINTER");
             }
@@ -188,15 +188,15 @@ void CursorInputMapper::configure(nsecs_t when, const InputReaderConfiguration* 
             }
         }
 
-        // Update the PointerController if viewports changed.
+        // Update the CursorController if viewports changed.
         if (mParameters.mode == Parameters::MODE_POINTER) {
-            updatePointerControllerDisplayViewport(*config);
+            updateCursorControllerDisplayViewport(*config);
         }
         bumpGeneration();
     }
 }
 
-void CursorInputMapper::updatePointerControllerDisplayViewport(
+void CursorInputMapper::updateCursorControllerDisplayViewport(
         const InputReaderConfiguration& config) {
     std::optional<DisplayViewport> viewport =
             config.getDisplayViewportById(config.defaultPointerDisplayId);
@@ -209,11 +209,11 @@ void CursorInputMapper::updatePointerControllerDisplayViewport(
 
     if (!viewport) {
         ALOGE("Still can't find a viable viewport to update cursor input mapper. Skip setting it to"
-              " PointerController.");
+              " CursorController.");
         return;
     }
 
-    mPointerController->setDisplayViewport(*viewport);
+    mCursorController->setDisplayViewport(*viewport);
 }
 
 void CursorInputMapper::configureParameters() {
@@ -336,26 +336,26 @@ void CursorInputMapper::sync(nsecs_t when) {
     int32_t displayId;
     if (mSource == AINPUT_SOURCE_MOUSE) {
         if (moved || scrolled || buttonsChanged) {
-            mPointerController->setPresentation(PointerControllerInterface::Presentation::POINTER);
+            mCursorController->setPresentation(CursorControllerInterface::Presentation::POINTER);
 
             if (moved) {
-                mPointerController->move(deltaX, deltaY);
+                mCursorController->move(deltaX, deltaY);
             }
 
             if (buttonsChanged) {
-                mPointerController->setButtonState(currentButtonState);
+                mCursorController->setButtonState(currentButtonState);
             }
 
-            mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE);
+            mCursorController->unfade(CursorControllerInterface::Transition::IMMEDIATE);
         }
 
         float x, y;
-        mPointerController->getPosition(&x, &y);
+        mCursorController->getPosition(&x, &y);
         pointerCoords.setAxisValue(AMOTION_EVENT_AXIS_X, x);
         pointerCoords.setAxisValue(AMOTION_EVENT_AXIS_Y, y);
         pointerCoords.setAxisValue(AMOTION_EVENT_AXIS_RELATIVE_X, deltaX);
         pointerCoords.setAxisValue(AMOTION_EVENT_AXIS_RELATIVE_Y, deltaY);
-        displayId = mPointerController->getDisplayId();
+        displayId = mCursorController->getDisplayId();
     } else {
         pointerCoords.setAxisValue(AMOTION_EVENT_AXIS_X, deltaX);
         pointerCoords.setAxisValue(AMOTION_EVENT_AXIS_Y, deltaY);
@@ -480,15 +480,15 @@ int32_t CursorInputMapper::getScanCodeState(uint32_t sourceMask, int32_t scanCod
 }
 
 void CursorInputMapper::fadePointer() {
-    if (mPointerController != nullptr) {
-        mPointerController->fade(PointerControllerInterface::Transition::GRADUAL);
+    if (mCursorController != nullptr) {
+        mCursorController->fade(CursorControllerInterface::Transition::GRADUAL);
     }
 }
 
 std::optional<int32_t> CursorInputMapper::getAssociatedDisplay() {
     if (mParameters.hasAssociatedDisplay) {
         if (mParameters.mode == Parameters::MODE_POINTER) {
-            return std::make_optional(mPointerController->getDisplayId());
+            return std::make_optional(mCursorController->getDisplayId());
         } else {
             // If the device is orientationAware and not a mouse,
             // it expects to dispatch events to any display

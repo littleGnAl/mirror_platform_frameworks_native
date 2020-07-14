@@ -21,13 +21,13 @@
 #include "CursorScrollAccumulator.h"
 #include "InputMapper.h"
 
-#include <PointerControllerInterface.h>
+#include <CursorControllerInterface.h>
 #include <input/VelocityControl.h>
 
 namespace android {
 
 class VelocityControl;
-class PointerControllerInterface;
+class CursorControllerInterface;
 
 class CursorButtonAccumulator;
 class CursorScrollAccumulator;
@@ -107,7 +107,7 @@ private:
 
     int32_t mOrientation;
 
-    std::shared_ptr<PointerControllerInterface> mPointerController;
+    std::shared_ptr<CursorControllerInterface> mCursorController;
 
     int32_t mButtonState;
     nsecs_t mDownTime;
@@ -116,7 +116,7 @@ private:
     void dumpParameters(std::string& dump);
 
     void sync(nsecs_t when);
-    void updatePointerControllerDisplayViewport(const InputReaderConfiguration& config);
+    void updateCursorControllerDisplayViewport(const InputReaderConfiguration& config);
 };
 
 } // namespace android
