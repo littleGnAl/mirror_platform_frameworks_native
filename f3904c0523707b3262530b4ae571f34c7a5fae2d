@@ -207,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "cb69b52d_c6b360ad",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1574221
+      },
+      "writtenOn": "2020-07-14T20:43:59Z",
+      "side": 1,
+      "message": "I think I\u0027ve addressed them all. Anything I missed?",
+      "parentUuid": "0a72fbab_d43cf5d2",
+      "revId": "f3904c0523707b3262530b4ae571f34c7a5fae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d2019d5_068249f1",
         "filename": "libs/binder/include/binder/ShmemCompat.h",
         "patchSetId": 1
