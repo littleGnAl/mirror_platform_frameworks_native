@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "0a72fbab_d43cf5d2",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-14T19:33:25Z",
+      "side": 1,
+      "message": "Please see the comments on media/libshmem/ShmemCompat.cpp from your internal CL",
+      "parentUuid": "3de62e83_5cc08da4",
+      "revId": "f3904c0523707b3262530b4ae571f34c7a5fae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d2019d5_068249f1",
         "filename": "libs/binder/include/binder/ShmemCompat.h",
         "patchSetId": 1
