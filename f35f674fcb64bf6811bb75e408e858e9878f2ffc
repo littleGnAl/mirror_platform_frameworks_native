@@ -70,6 +70,30 @@
       "revId": "f35f674fcb64bf6811bb75e408e858e9878f2ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d717de08_3b77ede5",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-14T23:56:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "108e03c6_46cf5fb9",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "f35f674fcb64bf6811bb75e408e858e9878f2ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
