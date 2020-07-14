@@ -16,6 +16,24 @@
       "revId": "e7ac28a64ec46cc0354e76de412aa3ec3daed3b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3460f30_cbb12202",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-14T23:51:02Z",
+      "side": 1,
+      "message": "There isn\u0027t a good way to suppress warnings for existing users",
+      "parentUuid": "a342955f_2db1f60a",
+      "revId": "e7ac28a64ec46cc0354e76de412aa3ec3daed3b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
