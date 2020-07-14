@@ -326,6 +326,11 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
 
     while(true) {
         {
+            // It would be really nice if we could read binder commands on this
+            // thread instead of needing a threadpool to be started, but for
+            // instance, if we call getAndExecuteCommand, it might be the case
+            // that another thread serves the callback, and we never get a
+            // command, so we hang indefinitely.
             std::unique_lock<std::mutex> lock(waiter->mMutex);
             using std::literals::chrono_literals::operator""s;
             waiter->mCv.wait_for(lock, 1s, [&] {
@@ -348,7 +353,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
         }
         if (out != nullptr) return out;
 
-        ALOGW("Waited one second for %s", name.c_str());
+        ALOGW("Waited one second for %s (is service started? are binder threads started and available?)", name.c_str());
     }
 }
 
