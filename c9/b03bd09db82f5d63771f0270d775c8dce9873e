@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+1: Patrick Plunkett <patplunkett@google.com>
+Code-Review+1: Hendrik Wagenaar <hendrikw@google.com>
+Code-Review+2: Hamzeh Zawawy <hamzeh@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Hamzeh Zawawy <hamzeh@google.com>
+Submitted-at: Tue, 14 Jul 2020 16:59:13 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1356582
+Project: platform/frameworks/native
+Branch: refs/heads/master
