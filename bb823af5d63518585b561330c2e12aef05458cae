@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5c2d526e_c0630805",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-14T20:11:03Z",
+      "side": 1,
+      "message": "Actually, it seems there might be problems with libhwbinder implementation of \u0027isOnlyBinderThread\u0027. I\u0027ll improve the error here for now, and potentially moved on based on https://android-review.googlesource.com/c/platform/system/libhwbinder/+/581102",
+      "revId": "bb823af5d63518585b561330c2e12aef05458cae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc2df9b0_38df0125",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 1
