@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "877bcd92_3aec2931",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-15T20:21:50Z",
+      "side": 1,
+      "message": "should this be guaranteed by whoever creates the SharedFileRegion? If they are out of range, then how are we sure the memory from heapStartOffset to shmem.offset is actually intended for usage?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a210f29_6fd81b64",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-15T20:21:50Z",
+      "side": 1,
+      "message": "shouldn\u0027t it be considered invalid?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a315cd1f_90c4f75e",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-15T20:21:50Z",
+      "side": 1,
+      "message": "nit: this is defined and fine, but since libbinder is built with integer sanitization, it considers unsigned overflow as an error, and so instead of checking A + B \u003c C, we have to check B \u003c C \u0026\u0026 C - B \u003e A. Maybe we should add a macro for this...",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 61
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58a8b077_27e044ce",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-15T20:21:50Z",
+      "side": 1,
+      "message": "heap !\u003d nullptr?",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
