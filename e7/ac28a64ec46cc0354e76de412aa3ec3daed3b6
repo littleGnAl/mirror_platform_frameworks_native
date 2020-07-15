@@ -1,0 +1,11 @@
+Verified+1: Steven Moreland <smoreland@google.com>
+Autosubmit+1: Steven Moreland <smoreland@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Yifan Hong <elsk@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 15 Jul 2020 18:22:49 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1362677
+Project: platform/frameworks/native
+Branch: refs/heads/master
