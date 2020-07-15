@@ -39,6 +39,30 @@
       "revId": "bb823af5d63518585b561330c2e12aef05458cae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33af4fe4_cdd364f6",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-15T22:26:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc2df9b0_38df0125",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 39
+      },
+      "revId": "bb823af5d63518585b561330c2e12aef05458cae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
