@@ -1,0 +1,12 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Code-Review+1: John Reck <jreck@google.com>
+Code-Review+2: Chong Zhang <chz@google.com>
+NDK-API-Review+1: John Reck <jreck@google.com>
+Submitted-by: Steven Moreland <smoreland@google.com>
+Submitted-at: Wed, 15 Jul 2020 20:22:28 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1320698
+Project: platform/frameworks/native
+Branch: refs/heads/master
