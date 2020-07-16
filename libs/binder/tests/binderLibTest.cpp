@@ -48,6 +48,9 @@ static char *binderservername;
 static char *binderserversuffix;
 static char binderserverarg[] = "--binderserver";
 
+static constexpr int kSchedPolicy = SCHED_RR;
+static constexpr int kSchedPriority = 7;
+
 static String16 binderLibTestServiceName = String16("test.binderLib");
 
 enum BinderLibTestTranscationCode {
@@ -74,6 +77,7 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_CREATE_BINDER_TRANSACTION,
     BINDER_LIB_TEST_GET_WORK_SOURCE_TRANSACTION,
     BINDER_LIB_TEST_ECHO_VECTOR,
+    BINDER_LIB_GET_SCHEDULING_POLICY,
 };
 
 pid_t start_server_process(int arg2, bool usePoll = false)
@@ -1027,6 +1031,21 @@ TEST_F(BinderLibTest, VectorSent) {
     EXPECT_EQ(readValue, testValue);
 }
 
+TEST_F(BinderLibTest, SchedPolicySet) {
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+
+    Parcel data, reply;
+    status_t ret = server->transact(BINDER_LIB_GET_SCHEDULING_POLICY, data, &reply);
+    EXPECT_EQ(NO_ERROR, ret);
+
+    int policy = reply.readInt32();
+    int priority = reply.readInt32();
+
+    EXPECT_EQ(kSchedPolicy, policy);
+    EXPECT_EQ(kSchedPriority, priority);
+}
+
 class BinderLibTestService : public BBinder
 {
     public:
@@ -1309,6 +1328,16 @@ class BinderLibTestService : public BBinder
                 reply->writeUint64Vector(vector);
                 return NO_ERROR;
             }
+            case BINDER_LIB_GET_SCHEDULING_POLICY: {
+                int policy = 0;
+                sched_param param;
+                if (0 != pthread_getschedparam(pthread_self(), &policy, &param)) {
+                    return UNKNOWN_ERROR;
+                }
+                reply->writeInt32(policy & 0x3);
+                reply->writeInt32(param.sched_priority);
+                return NO_ERROR;
+            }
             default:
                 return UNKNOWN_TRANSACTION;
             };
@@ -1339,6 +1368,8 @@ int run_server(int index, int readypipefd, bool usePoll)
          * testing the extension mechanism.
          */
         testService->setExtension(new BBinder());
+
+        testService->setMinSchedulerPolicy(kSchedPolicy, kSchedPriority);
 
         /*
          * We need this below, but can't hold a sp<> because it prevents the

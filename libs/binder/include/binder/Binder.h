@@ -72,6 +72,20 @@ public:
     // This must be called before the object is sent to another process. Not thread safe.
     void                setExtension(const sp<IBinder>& extension);
 
+    // This must be called before the object is sent to another process. Not thread safe.
+    //
+    // This function will abort if improper parameters are set. This is like
+    // sched_setscheduler. However, it sets the minimum scheduling policy
+    // only for the duration that this specific binder object is handling the
+    // call in a threadpool.
+    //
+    // Appropriate values are:
+    // SCHED_NORMAL: -20 <= priority <= 19
+    // SCHED_RR/SCHED_FIFO: 1 <= priority <= 99
+    void                setMinSchedulerPolicy(int policy, int priority);
+    int                 getMinSchedulerPolicy();
+    int                 getMinSchedulerPriority();
+
     pid_t               getDebugPid();
 
 protected:
