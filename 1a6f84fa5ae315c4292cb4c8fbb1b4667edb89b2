@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "1f2aa518_40641c0b",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-16T17:53:22Z",
+      "side": 1,
+      "message": "for instance, it would prevent us from using a glob here",
+      "range": {
+        "startLine": 170,
+        "startChar": 25,
+        "endLine": 170,
+        "endChar": 40
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03392f89_24575a92",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-16T17:53:22Z",
+      "side": 1,
+      "message": "can we also move this into a subfolder (libs/binder/shmem)? or next to binder (libs/shmem)? sorry I missed this before, but it would be nice to avoid mixing these.",
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "877bcd92_3aec2931",
         "filename": "libs/binder/ShmemCompat.cpp",
         "patchSetId": 8
@@ -84,6 +124,30 @@
       "side": 1,
       "message": "No, I think it\u0027s fine even if it wraps, since we\u0027d end up subtracting the heap start, and so heapSize will turn out correct either way.\nAm I missing an edge case? If so, can you think of an example (actual numbers) that would yield a wrong result here?",
       "parentUuid": "7a210f29_6fd81b64",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61f9e9a_0ee9fad9",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-16T17:53:22Z",
+      "side": 1,
+      "message": "What I mean is that the math will work out, but it describes a memory region that doesn\u0027t actually make sense to be used. So, we should detect the error here, since we can, right?",
+      "parentUuid": "cb8fa389_d3e67b05",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -187,6 +251,30 @@
       "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31a46a7e_2f95225a",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-16T17:53:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8577920_a3c571c6",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
