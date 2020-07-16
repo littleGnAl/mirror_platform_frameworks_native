@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ef87a98_2c29f4a2",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-16T22:56:09Z",
+      "side": 1,
+      "message": "I don\u0027t know how to justify this cast. 1\u003c\u003c30 is set here. Tim/Philip/Todd, do you know if we\u0027re doing something special here for android scheduling policies? or if this is using some other definition of values or something?\n\nThe lowest bits are always right, regardless of the scheduler being set.",
+      "range": {
+        "startLine": 1337,
+        "startChar": 40,
+        "endLine": 1337,
+        "endChar": 46
+      },
+      "revId": "04cdcb176d07c369fb35261e85fe6de47da524f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
