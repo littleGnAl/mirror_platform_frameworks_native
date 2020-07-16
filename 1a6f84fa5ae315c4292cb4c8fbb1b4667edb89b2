@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4833260a_b8364c43",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1574221
+      },
+      "writtenOn": "2020-07-16T00:23:04Z",
+      "side": 1,
+      "message": "The memory from heapStartOffset to shmem.offset is not intended to be used, but heaps must be page aligned for mmap to work.\nHowever, if you\u0027re asking from a security standpoint, I believe we only have security guarantees at the whole file level, so the intention here is that the start offset / size are informative to the receiver, but not a guard against a malicious receiver.",
+      "parentUuid": "877bcd92_3aec2931",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a210f29_6fd81b64",
         "filename": "libs/binder/ShmemCompat.cpp",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-15T20:21:50Z",
       "side": 1,
       "message": "shouldn\u0027t it be considered invalid?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8fa389_d3e67b05",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1574221
+      },
+      "writtenOn": "2020-07-16T00:23:04Z",
+      "side": 1,
+      "message": "No, I think it\u0027s fine even if it wraps, since we\u0027d end up subtracting the heap start, and so heapSize will turn out correct either way.\nAm I missing an edge case? If so, can you think of an example (actual numbers) that would yield a wrong result here?",
+      "parentUuid": "7a210f29_6fd81b64",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "33b511ef_129a480b",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1574221
+      },
+      "writtenOn": "2020-07-16T00:23:04Z",
+      "side": 1,
+      "message": "See //util/intops. Maybe we should implement something similar.",
+      "parentUuid": "a315cd1f_90c4f75e",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 61
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58a8b077_27e044ce",
         "filename": "libs/binder/ShmemCompat.cpp",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2020-07-15T20:21:50Z",
       "side": 1,
       "message": "heap !\u003d nullptr?",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8577920_a3c571c6",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1574221
+      },
+      "writtenOn": "2020-07-16T00:23:04Z",
+      "side": 1,
+      "message": "I don\u0027t know that IMemory has a clear contract about what this means. I\u0027m treating it the same as a null IMemory (i.e. a valid case).",
+      "parentUuid": "58a8b077_27e044ce",
       "range": {
         "startLine": 92,
         "startChar": 11,
