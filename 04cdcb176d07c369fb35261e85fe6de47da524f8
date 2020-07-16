@@ -22,6 +22,30 @@
       "revId": "04cdcb176d07c369fb35261e85fe6de47da524f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adc82357_bc88d1b7",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1113714
+      },
+      "writtenOn": "2020-07-16T23:07:02Z",
+      "side": 1,
+      "message": "I believe that\u0027s getting rid of SCHED_RESET_ON_FORK, which is irrelevant here for determining which policy exists.  From include/uapi/linux/sched.h in the kernel:\n\n/*\n * Scheduling policies\n */\n#define SCHED_NORMAL            0\n#define SCHED_FIFO              1\n#define SCHED_RR                2\n#define SCHED_BATCH             3\n/* SCHED_ISO: reserved but not implemented yet */\n#define SCHED_IDLE              5\n#define SCHED_DEADLINE          6\n\n/* Can be ORed in to make sure the process is reverted back to SCHED_NORMAL on fork */\n#define SCHED_RESET_ON_FORK     0x40000000",
+      "parentUuid": "7ef87a98_2c29f4a2",
+      "range": {
+        "startLine": 1337,
+        "startChar": 40,
+        "endLine": 1337,
+        "endChar": 46
+      },
+      "revId": "04cdcb176d07c369fb35261e85fe6de47da524f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
