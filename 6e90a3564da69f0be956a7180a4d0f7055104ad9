@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bdb64c9_7ec8325e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-07-16T22:21:47Z",
+      "side": 1,
+      "message": "PTAL.  I made the change pretty mechanically.  So hopefully this is just a pure code refactoring.  Please let me know if there is other tests I should run.\n\nFor reference, ag/12174642 is my WIP change based on this.",
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
