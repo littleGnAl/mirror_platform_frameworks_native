@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003906858",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1365301?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "03437edd_9ad73832",
+          "description": "Change to \"libs/binder/include/binder/Binder.h\"",
+          "replacements": [
+            {
+              "path": "libs/binder/include/binder/Binder.h",
+              "range": {
+                "startLine": 77,
+                "startChar": 44,
+                "endLine": 77,
+                "endChar": 53
+              },
+              "replacement": "parameters"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "53e89a1c_f18fac7b",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-16T22:50:45Z",
+      "side": 1,
+      "message": "Common typo found: \"paramters\" -- should it be \"parameters\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 77,
+        "startChar": 44,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "04cdcb176d07c369fb35261e85fe6de47da524f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
