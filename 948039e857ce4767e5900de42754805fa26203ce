@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "c2dd6a4a_9cba6141",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-16T21:27:52Z",
+      "side": 1,
+      "message": "Is this resolved by your AndroidTest.xml change?",
+      "parentUuid": "a648bb1c_082d8905",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5036f41_963eb823",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 9
