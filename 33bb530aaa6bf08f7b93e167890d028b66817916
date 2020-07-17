@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11fb9ada_5cabeb3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-17T17:49:45Z",
+      "side": 1,
+      "message": "Someone else will have to add a bug, I don\u0027t have access.",
+      "parentUuid": "3a529b64_73ff0aa7",
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5eb6226_fd9ca76a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 13
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "85d149f3_ce5f2e43",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-17T17:49:45Z",
+      "side": 1,
+      "message": "I believe stability support hasn\u0027t been added to the AIDL compiler yet. We can add that and expose the NDK APIs. Probably should make a new change for this?\n\nI don\u0027t think there are currently any plans to expose this to vendor code, yet. Even when we do, however, all usage of this crate should be through AIDL-generated code, and IBinder is specifically not re-exported from AIDL interface crates (the public_api module is the only thing that should be exposed to non-AIDL code at this point).",
+      "parentUuid": "f48db682_096c47d0",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c9fcbf1_4e7ba0a1",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 13
@@ -70,6 +112,30 @@
       "writtenOn": "2020-07-17T17:31:25Z",
       "side": 1,
       "message": "the default threadpool size is 15 (+1 on L45). Do we want that many threads for this test?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf3dcbe6_dde7ac9a",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-17T17:49:45Z",
+      "side": 1,
+      "message": "Not necessarily, although I don\u0027t think it\u0027s a problem either. However, setThreadPoolMaxCount does need to be exposed through Rust. I\u0027ll add that.",
+      "parentUuid": "9c9fcbf1_4e7ba0a1",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -128,6 +194,54 @@
     },
     {
       "key": {
+        "uuid": "cf620dfc_c21ad024",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-17T17:49:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00070664_69cfa454",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec372444_250b65c5",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-17T17:49:45Z",
+      "side": 1,
+      "message": "This test service binary shouldn\u0027t get run by itself, as it doesn\u0027t terminate. The test is driven by the Rust test harness version of the same file. I\u0027ll add a comment detailing this in the code.",
+      "parentUuid": "b6fa6aa2_58569c96",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e1d30a1_524d578e",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 13
@@ -139,6 +253,24 @@
       "writtenOn": "2020-07-17T17:31:25Z",
       "side": 1,
       "message": "I see some functions aren\u0027t tested, e.g. dump, get_extension/set_extension, get_descriptor, call to a dead binder\n\nAlso, we\u0027ll want to test that the ownership semantics are retained (make sure underlying C++ objects don\u0027t have extra incStrong, for instance).\n\nYou might also try to get some ideas from, since they show issues that we\u0027ve seen over time:\n- cts/tests/tests/binder_ndk/libbinder_ndk_test/test_ibinder.cpp\n- cts/tests/tests/binder_ndk/libbinder_ndk_test/test_native_aidl_client.cpp (many of these could go in the AIDL CL)\n- cts/tests/tests/binder_ndk/libbinder_ndk_test/test_parcel.cpp (I don\u0027t see any parcel tests here)\n- binderLibTest",
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6d89190_79e8d900",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-17T17:49:45Z",
+      "side": 1,
+      "message": "I have a full port of binderLibTest (https://android-review.googlesource.com/c/platform/frameworks/native/+/1315033) which I\u0027m currently updating to the new NDK based API.\n\nThe parceling APIs are tested independently in https://android-review.googlesource.com/c/platform/frameworks/native/+/1357925.\n\nI\u0027ll add more Rust-specific tests to this integration test, now that it can handle client + server process.",
+      "parentUuid": "7e1d30a1_524d578e",
       "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -165,6 +297,30 @@
       "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e71efa0f_e793dafc",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-17T17:49:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "affe066b_2ef4061d",
+      "range": {
+        "startLine": 141,
+        "startChar": 29,
+        "endLine": 141,
+        "endChar": 40
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
