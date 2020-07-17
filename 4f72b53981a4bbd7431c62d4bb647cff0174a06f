@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "4b5a9325_086b922d",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:44:46Z",
+      "side": 1,
+      "message": "I appreciate your considerations, but I\u0027d rather not. Moving these into constants in libbinder doesn\u0027t make this any better. They are only used once, and their role is well defined in this context. The gross thing is the coupling between the kernel sched implementation and here, and I\u0027d rather not add cruft in libbinder for something which should ultimately be resolved differently.",
+      "parentUuid": "65c71158_c8bfd239",
+      "range": {
+        "startLine": 288,
+        "startChar": 37,
+        "endLine": 288,
+        "endChar": 40
+      },
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70370055_28c4c0ea",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 4
@@ -137,6 +161,30 @@
     },
     {
       "key": {
+        "uuid": "e4d70f2c_28ab6ab8",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b68b1347_406bd31b",
+      "range": {
+        "startLine": 300,
+        "startChar": 8,
+        "endLine": 300,
+        "endChar": 10
+      },
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87fbc652_b4cd344f",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 4
@@ -151,6 +199,24 @@
       "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c44450a0_489b1e20",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:44:46Z",
+      "side": 1,
+      "message": "Unless you have a particular reason, I like grouping the static sets of obj together and the initialization of schedBits together. The vertical separation logically breaks up two distinct things that happen.",
+      "parentUuid": "87fbc652_b4cd344f",
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -224,6 +290,24 @@
       "side": 1,
       "message": "My point is, can you define the behavior of get() if set() is not called previously? Or at least say it is undefined?",
       "parentUuid": "4a173f1f_220b2c26",
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f30db979_5c51169b",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10ae72a2_c27a09ce",
       "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
