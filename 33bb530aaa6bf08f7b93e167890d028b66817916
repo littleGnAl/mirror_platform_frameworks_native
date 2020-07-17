@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d5c54334_18a55bcc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:54:01Z",
+      "side": 1,
+      "message": "Thanks, you can add \u0027Bug: 161559780\u0027 which I got from the AIDL CL. It\u0027s just needed for internal reference/bookkeeping. Thanks!",
+      "parentUuid": "11fb9ada_5cabeb3e",
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5eb6226_fd9ca76a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 13
@@ -101,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "17fb42d5_f74d8c35",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:54:01Z",
+      "side": 1,
+      "message": "I\u0027m fine with putting it off indefinitely.\n\nMaybe we can declare this specifically in the aidl compiler? Have an assertion that the aidl_interface does not have vendor_available/apex_available etc.. set. That way, if it is needed, what needs to happen is self-documenting.",
+      "parentUuid": "85d149f3_ce5f2e43",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c9fcbf1_4e7ba0a1",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 13
@@ -136,6 +178,30 @@
       "side": 1,
       "message": "Not necessarily, although I don\u0027t think it\u0027s a problem either. However, setThreadPoolMaxCount does need to be exposed through Rust. I\u0027ll add that.",
       "parentUuid": "9c9fcbf1_4e7ba0a1",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32affc00_43ef3fe0",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:54:01Z",
+      "side": 1,
+      "message": "It might be worth it to use setThreadPoolMaxCount(0). Since the join will add one thread, this will tell you that there are no transactions which are needed to be received during initialization here, and that the test only uses 1 as expected. Concurrency can be just as important as compatibility with minimum resources, and ideally we would test with both, but resource issues (e.g. if we accidentally add an IPC in the wrong place), can be hard to notice.",
+      "parentUuid": "cf3dcbe6_dde7ac9a",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -242,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "b607fbde_af177192",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:54:01Z",
+      "side": 1,
+      "message": "Thanks! Does Matthew know about atest/TEST_MAPPING integration?",
+      "parentUuid": "ec372444_250b65c5",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e1d30a1_524d578e",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 13
@@ -271,6 +361,24 @@
       "side": 1,
       "message": "I have a full port of binderLibTest (https://android-review.googlesource.com/c/platform/frameworks/native/+/1315033) which I\u0027m currently updating to the new NDK based API.\n\nThe parceling APIs are tested independently in https://android-review.googlesource.com/c/platform/frameworks/native/+/1357925.\n\nI\u0027ll add more Rust-specific tests to this integration test, now that it can handle client + server process.",
       "parentUuid": "7e1d30a1_524d578e",
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "142bf554_4483d4e8",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:54:01Z",
+      "side": 1,
+      "message": "Fantastic, thanks. If you have permissions to add relevant CL hashtags, that might be helpful. If you don\u0027t have perms, using the bug id at least allows us to see which changes are relevant.",
+      "parentUuid": "e6d89190_79e8d900",
       "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
