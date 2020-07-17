@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "3a9c2b9c_afc082b7",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:27:11Z",
+      "side": 1,
+      "message": "sched.h doesn\u0027t (functions just return failures for values outside of the range). Not sure how setting them here would be better, but I\u0027ll start an email thread to see if these would make sense in libc.",
+      "parentUuid": "07271ed5_cd405821",
+      "range": {
+        "startLine": 288,
+        "startChar": 37,
+        "endLine": 288,
+        "endChar": 40
+      },
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70370055_28c4c0ea",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 4
@@ -53,6 +77,30 @@
       "writtenOn": "2020-07-17T21:07:31Z",
       "side": 1,
       "message": "e \u003d\u003d nullptr (because L316)",
+      "range": {
+        "startLine": 300,
+        "startChar": 8,
+        "endLine": 300,
+        "endChar": 10
+      },
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b68b1347_406bd31b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:27:11Z",
+      "side": 1,
+      "message": "it\u0027s like L266 above and elsewhere. will change if I end up changing something else here.",
+      "parentUuid": "70370055_28c4c0ea",
       "range": {
         "startLine": 300,
         "startChar": 8,
@@ -116,6 +164,24 @@
       "writtenOn": "2020-07-17T21:07:31Z",
       "side": 1,
       "message": "If none set, SCED_NORMAL / 0 by default",
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a173f1f_220b2c26",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-17T21:27:11Z",
+      "side": 1,
+      "message": "Well, it depends what disableBackgroundScheduling is set to. I was under the impression that the kernel will leave the priority unchanged if it is 0/0.",
+      "parentUuid": "390a0187_5287e98c",
       "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
