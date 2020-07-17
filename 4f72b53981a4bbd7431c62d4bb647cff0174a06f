@@ -65,6 +65,23 @@
     },
     {
       "key": {
+        "uuid": "87fbc652_b4cd344f",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2020-07-17T21:18:54Z",
+      "side": 1,
+      "message": "remove empty line or put it after schedBits decl?",
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8291956_54cfa38c",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 4
