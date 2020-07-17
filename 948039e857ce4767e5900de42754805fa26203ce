@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "90cb9d54_06effacb",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-17T16:08:03Z",
+      "side": 1,
+      "message": "Yes, the test issue is resolved. I was waiting to see if Steven had feedback on the tests themselves.",
+      "parentUuid": "c2dd6a4a_9cba6141",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "948039e857ce4767e5900de42754805fa26203ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5036f41_963eb823",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 9
