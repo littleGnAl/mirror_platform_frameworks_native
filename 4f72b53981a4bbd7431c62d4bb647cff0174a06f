@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d04c9ea_bb733a76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-17T21:07:31Z",
+      "side": 1,
+      "message": "just nits",
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07271ed5_cd405821",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-17T21:07:31Z",
+      "side": 1,
+      "message": "Define constants for these. MAX_NICE etc.?\n\nsame below",
+      "range": {
+        "startLine": 288,
+        "startChar": 37,
+        "endLine": 288,
+        "endChar": 40
+      },
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70370055_28c4c0ea",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-17T21:07:31Z",
+      "side": 1,
+      "message": "e \u003d\u003d nullptr (because L316)",
+      "range": {
+        "startLine": 300,
+        "startChar": 8,
+        "endLine": 300,
+        "endChar": 10
+      },
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8291956_54cfa38c",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-17T21:07:31Z",
+      "side": 1,
+      "message": "SCHED_NORMAL?",
+      "range": {
+        "startLine": 222,
+        "startChar": 26,
+        "endLine": 222,
+        "endChar": 27
+      },
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "390a0187_5287e98c",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-17T21:07:31Z",
+      "side": 1,
+      "message": "If none set, SCED_NORMAL / 0 by default",
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
