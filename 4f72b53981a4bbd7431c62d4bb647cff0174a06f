@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "65c71158_c8bfd239",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-17T21:30:20Z",
+      "side": 1,
+      "message": "If we can\u0027t have libc export them, at least define them in some private headers in libbinder instead of putting magic numbers",
+      "parentUuid": "3a9c2b9c_afc082b7",
+      "range": {
+        "startLine": 288,
+        "startChar": 37,
+        "endLine": 288,
+        "endChar": 40
+      },
+      "revId": "4f72b53981a4bbd7431c62d4bb647cff0174a06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70370055_28c4c0ea",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 4
