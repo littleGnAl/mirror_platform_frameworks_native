@@ -660,6 +660,24 @@
     },
     {
       "key": {
+        "uuid": "fb1f392f_739f8138",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-07-18T00:18:54Z",
+      "side": 1,
+      "message": "Fixed where applicable. Note that mappers are registered and then managed/deleted by the InputDevice, so must remain raw ptrs.",
+      "parentUuid": "b8c63ad3_c672a24b",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4f77ba7_7bfd9c46",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
         "patchSetId": 1
