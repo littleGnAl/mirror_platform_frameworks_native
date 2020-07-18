@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "d137c3ab_5041df25",
+        "filename": "services/inputflinger/tests/fuzzers/include/fuzzTestInputListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1728946
+      },
+      "writtenOn": "2020-07-18T00:14:32Z",
+      "side": 1,
+      "message": "So the reason we had to split out our own TestInputListener was due to gtest not compiling for arm64 on macOS: if the tests themselves were split out then we could use those headers and ours could be deleted; however that is outside the scope of our current project. Happy to help resolve it though.",
+      "parentUuid": "d40e3866_222b5323",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2193766e_524402c3",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/Android.bp",
         "patchSetId": 1
@@ -677,6 +695,24 @@
     },
     {
       "key": {
+        "uuid": "2e34fedc_e4f8d9e1",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1728946
+      },
+      "writtenOn": "2020-07-18T00:14:32Z",
+      "side": 1,
+      "message": "I believe we\u0027ve gotten these",
+      "parentUuid": "a0247afd_05b8542e",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa02477a_4e0973fc",
         "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
         "patchSetId": 1
@@ -706,6 +742,24 @@
       "side": 1,
       "message": "This is a good point. There are pros and cons for breaking the test into multiple tests. The pros is that the test is faster. But one important con is that the interaction between the different calls can lead to a more interesting fuzzing and deeper code penetration/coverage.",
       "parentUuid": "aa02477a_4e0973fc",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "829d80a2_7762a6b9",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/cursorInputFuzzer2/cursorInputFuzzer2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1728946
+      },
+      "writtenOn": "2020-07-18T00:14:32Z",
+      "side": 1,
+      "message": "I prefer to have a high level of \"chaos\" in fuzzers, as it helps reach edge cases (Whether vulnerabilities or plain bugs) much quicker and in completely unintended ways; however there is some validity to having smaller fuzzers too. We could make it a todo?",
+      "parentUuid": "7bce7172_2f6e8d88",
       "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -744,6 +798,24 @@
       "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef670e97_bd642942",
+        "filename": "services/inputflinger/tests/fuzzers/inputMapperFuzzers/include/inputReaderHelperClasses.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1728946
+      },
+      "writtenOn": "2020-07-18T00:14:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "284167cf_ccd17ff3",
+      "revId": "fad26a1bf1289b7eb4179d829869b760e1f789b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
