@@ -16,8 +16,6 @@
 
 #include "TestInputListener.h"
 
-#define GREPFORME "TestInputListenerGrepStringSinceNoAsserts"
-
 namespace android {
 
 // --- TestInputListener ---
@@ -28,10 +26,6 @@ TestInputListener::~TestInputListener() {}
 
 void TestInputListener::assertNotifyConfigurationChangedWasCalled(
         NotifyConfigurationChangedArgs* outEventArgs) {
-    if (mNotifyConfigurationChangedArgsQueue.empty()) {
-        printf("assertNotifyConfigurationChangedWasCalled should NOT have been empty %s\n",
-               GREPFORME);
-    }
     if (outEventArgs) {
         *outEventArgs = *mNotifyConfigurationChangedArgsQueue.begin();
     }
@@ -39,15 +33,9 @@ void TestInputListener::assertNotifyConfigurationChangedWasCalled(
 }
 
 void TestInputListener::assertNotifyConfigurationChangedWasNotCalled() {
-    if (!mNotifyConfigurationChangedArgsQueue.empty()) {
-        printf("assertNotifyConfigurationChangedWasNotCalled should be empthy %s\n", GREPFORME);
-    }
 }
 
 void TestInputListener::assertNotifyDeviceResetWasCalled(NotifyDeviceResetArgs* outEventArgs) {
-    if (mNotifyDeviceResetArgsQueue.empty()) {
-        printf("assertNotifyDeviceResetWasCalled should NOT be empty %s\n", GREPFORME);
-    }
     if (outEventArgs) {
         *outEventArgs = *mNotifyDeviceResetArgsQueue.begin();
     }
@@ -55,15 +43,9 @@ void TestInputListener::assertNotifyDeviceResetWasCalled(NotifyDeviceResetArgs* 
 }
 
 void TestInputListener::assertNotifyDeviceResetWasNotCalled() {
-    if (!mNotifyDeviceResetArgsQueue.empty()) {
-        printf("assertNotifyDeviceResetWasNotCalled should NOT have been empty %s\n", GREPFORME);
-    }
 }
 
 void TestInputListener::assertNotifyKeyWasCalled(NotifyKeyArgs* outEventArgs) {
-    if (mNotifyKeyArgsQueue.empty()) {
-        printf("assertNotifyKeyWasCalled should NOT have been empty %s\n", GREPFORME);
-    }
     if (outEventArgs) {
         *outEventArgs = *mNotifyKeyArgsQueue.begin();
     }
@@ -71,15 +53,9 @@ void TestInputListener::assertNotifyKeyWasCalled(NotifyKeyArgs* outEventArgs) {
 }
 
 void TestInputListener::assertNotifyKeyWasNotCalled() {
-    if (!mNotifyKeyArgsQueue.empty()) {
-        printf("assertNotifyKeyWasNotCalled should have been empty %s\n", GREPFORME);
-    }
 }
 
 void TestInputListener::assertNotifyMotionWasCalled(NotifyMotionArgs* outEventArgs) {
-    if (mNotifyMotionArgsQueue.empty()) {
-        printf("assertNotifyMotionWasCalled should NOT have been empty %s\n", GREPFORME);
-    }
     if (outEventArgs) {
         *outEventArgs = *mNotifyMotionArgsQueue.begin();
     }
@@ -87,15 +63,9 @@ void TestInputListener::assertNotifyMotionWasCalled(NotifyMotionArgs* outEventAr
 }
 
 void TestInputListener::assertNotifyMotionWasNotCalled() {
-    if (!mNotifyMotionArgsQueue.empty()) {
-        printf("assertNotifyMotionWasNotCalled queue was NOT EMPTY %s\n", GREPFORME);
-    }
 }
 
 void TestInputListener::assertNotifySwitchWasCalled(NotifySwitchArgs* outEventArgs) {
-    if (mNotifySwitchArgsQueue.empty()) {
-        printf("assertNotifySwitchWasCalled should NOT have been empty %s\n", GREPFORME);
-    }
     if (outEventArgs) {
         *outEventArgs = *mNotifySwitchArgsQueue.begin();
     }
