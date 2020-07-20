@@ -31,11 +31,9 @@ private:
     std::vector<NotifyMotionArgs> mNotifyMotionArgsQueue;
     std::vector<NotifySwitchArgs> mNotifySwitchArgsQueue;
 
-protected:
-    virtual ~TestInputListener();
-
 public:
     TestInputListener();
+    virtual ~TestInputListener();
 
     void assertNotifyConfigurationChangedWasCalled(
             NotifyConfigurationChangedArgs* outEventArgs = nullptr);
