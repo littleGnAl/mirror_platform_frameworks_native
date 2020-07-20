@@ -135,11 +135,9 @@ class FakeInputReaderPolicy : public InputReaderPolicyInterface {
     std::vector<DisplayViewport> mViewports;
     TouchAffineTransformation transform;
 
-protected:
-    virtual ~FakeInputReaderPolicy() {}
-
 public:
     FakeInputReaderPolicy() {}
+    virtual ~FakeInputReaderPolicy() {}
 
     virtual void clearViewports() {
         mViewports.clear();
@@ -293,37 +291,43 @@ class FakeEventHub : public EventHubInterface {
         explicit Device(uint32_t classes) : classes(classes), enabled(true) {}
     };
 
-    KeyedVector<int32_t, Device*> mDevices;
+    std::map<int32_t, Device*> mDevices;
     std::vector<std::string> mExcludedDevices;
     List<RawEvent> mEvents;
     std::unordered_map<int32_t /*deviceId*/, std::vector<TouchVideoFrame>> mVideoFrames;
 
-protected:
+public:
+    FakeEventHub() {}
     virtual ~FakeEventHub() {
-        for (size_t i = 0; i < mDevices.size(); i++) {
-            delete mDevices.valueAt(i);
+        for (auto const& device : mDevices) {
+            delete device.second;
         }
     }
 
-public:
-    FakeEventHub() {}
 
     void addDevice(int32_t deviceId, const std::string& name, uint32_t classes) {
         Device* device = new Device(classes);
 
         if (device) {
             device->identifier.name = name;
-            mDevices.add(deviceId, device);
+            if (mDevices.find(deviceId) != mDevices.end()) {
+                Device* device = mDevices.at(deviceId);
+                delete device;
+                mDevices.erase(deviceId);
+            }
+            mDevices.insert_or_assign(deviceId, device);
 
             enqueueEvent(ARBITRARY_TIME, deviceId, EventHubInterface::DEVICE_ADDED, 0, 0);
         }
     }
 
     void removeDevice(int32_t deviceId) {
-        delete mDevices.valueFor(deviceId);
-        mDevices.removeItem(deviceId);
+        if (mDevices.find(deviceId) != mDevices.end()) {
+            delete mDevices.at(deviceId);
+            mDevices.erase(deviceId);
 
-        enqueueEvent(ARBITRARY_TIME, deviceId, EventHubInterface::DEVICE_REMOVED, 0, 0);
+            enqueueEvent(ARBITRARY_TIME, deviceId, EventHubInterface::DEVICE_REMOVED, 0, 0);
+        }
     }
 
     bool isDeviceEnabled(int32_t deviceId) {
@@ -498,8 +502,7 @@ public:
 
 private:
     Device* getDevice(int32_t deviceId) const {
-        ssize_t index = mDevices.indexOfKey(deviceId);
-        return index >= 0 ? mDevices.valueAt(index) : nullptr;
+        return (mDevices.find(deviceId) != mDevices.end()) ? mDevices.at(deviceId) : nullptr;
     }
 
     virtual uint32_t getDeviceClasses(int32_t deviceId) const {
@@ -922,11 +925,7 @@ public:
                             const sp<InputListenerInterface>& listener)
           : InputReader(eventHub, policy, listener), mNextDevice(nullptr) {}
 
-    virtual ~InstrumentedInputReader() {
-        if (mNextDevice) {
-            delete mNextDevice;
-        }
-    }
+    virtual ~InstrumentedInputReader() {}
 
     void setNextDevice(InputDevice* device) { mNextDevice = device; }
 
