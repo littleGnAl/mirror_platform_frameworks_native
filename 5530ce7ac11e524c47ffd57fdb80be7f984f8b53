@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48c18b67_9eba009d",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T02:25:48Z",
+      "side": 1,
+      "message": "tradeoff is extra string comparison",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 32
+      },
+      "revId": "5530ce7ac11e524c47ffd57fdb80be7f984f8b53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
