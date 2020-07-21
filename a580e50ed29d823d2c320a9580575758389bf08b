@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4851da80_c78370b6",
+        "filename": "libs/binder/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:51Z",
+      "side": 1,
+      "message": "is there anyway some of these could be at parity with libhwbinder?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 1
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80704b51_be35f145",
         "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
         "patchSetId": 1
