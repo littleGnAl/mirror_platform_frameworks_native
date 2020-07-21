@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49d1cae4_063f6051",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-21T21:27:23Z",
+      "side": 1,
+      "message": "Added more tests of the IBinder interface.",
+      "revId": "d85a196cfb40c2e7d3e92c6f2862c7dd26302afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

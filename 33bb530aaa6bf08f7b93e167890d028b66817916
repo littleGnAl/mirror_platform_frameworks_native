@@ -161,6 +161,30 @@
     },
     {
       "key": {
+        "uuid": "51f2b1db_15056736",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-21T21:27:23Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll talk to Andrei about adding that to the compiler.",
+      "parentUuid": "17fb42d5_f74d8c35",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c9fcbf1_4e7ba0a1",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 13
@@ -229,6 +253,30 @@
       "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "807c873f_5168ecd1",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-21T21:27:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32affc00_43ef3fe0",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
