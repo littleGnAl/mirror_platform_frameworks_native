@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80704b51_be35f145",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "nit: avoid unnecessary cruft. \u0027(void)vec\u0027 is already pretty explicit.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "154180db_c89000ef",
+        "filename": "libs/binder/tests/fuzzers/FlattenableClasses.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "prefer #pragma once",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a058e93_0e20d7f9",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "prefer to just cut it off at some point, e.g. \"if (size \u003e 10000) return\" up top, for simplicity",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "837cfe56_7047a728",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "dSize, randString below",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0475e3b1_b2c372f1",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "is 0 disallowed?",
+      "range": {
+        "startLine": 25,
+        "startChar": 55,
+        "endLine": 25,
+        "endChar": 56
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9e98178_f317df69",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "this should be able to be at least longer than a page (\u003e4096), maybe 8*4096 or even larger, like 500k wouldn\u0027t be bad",
+      "range": {
+        "startLine": 25,
+        "startChar": 58,
+        "endLine": 25,
+        "endChar": 62
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d8882f0_9f80a42e",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "extra variable unnecessary",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fba0ccc_d3410d8b",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "don\u0027t reuse",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29b8d8b_33061af4",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "if this passes, try writing into the allocated memory to make sure it\u0027s valid",
+      "range": {
+        "startLine": 54,
+        "startChar": 24,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54945997_ec55dde1",
+        "filename": "libs/binder/tests/fuzzers/ParcelFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "this can be deleted, since we already have binder_parcel_fuzzer, which works with libhwbinder/libbinder_ndk as well",
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72fdb912_7c4a155c",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "naming consistency, w/ function on L34",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1aad28b_615bc8b4",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "#pragma once",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cab22c7_1633f99b",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "avoid redefinition",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 76
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0005ccb9_382ba527",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "global variables should look like \u0027gThreadPoolStarted\u0027",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b443a6e_cee086bf",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "prefer to use a structure w/ defaults to avoid duplicating defaults on L47..L51",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c21364_e9dd79ad",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:07:14Z",
+      "side": 1,
+      "message": "It would be better to fix ~ProcessState(), if it is broken, also I\u0027m curious if IPCThreadState::self() is ever called, we may have thread-specific state which leaks between runs (downside, as you know would be non-deterministic failures)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
