@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "be57dfd9_c44bdf5d",
+        "filename": "libs/binder/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:14:03Z",
+      "side": 1,
+      "message": "It\u0027s a fork of this library, and we need to maintain parity for sanity reasons. Maybe we can discuss w/ hamzeh?",
+      "parentUuid": "152c4231_cda017f4",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a31d1b0_8c264d1c",
         "filename": "libs/binder/tests/fuzzers/Binder/Android.bp",
         "patchSetId": 1
@@ -397,6 +421,24 @@
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08616150_df34bfb3",
+        "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-21T00:14:03Z",
+      "side": 1,
+      "message": "This doesn\u0027t really make sense. Calling \u0027markCompilationUnit\u0027 then \u0027markVndk\u0027 should crash as an API contract",
+      "parentUuid": "05b4f9b8_a2ee6966",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
