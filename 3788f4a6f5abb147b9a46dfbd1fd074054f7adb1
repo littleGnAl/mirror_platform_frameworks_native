@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13231877_7b2eda68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-21T15:51:12Z",
+      "side": 1,
+      "message": "I\u0027ve been looking at that part, and it seems fine to me to start, and the public portion of the API seems unlikely to need much modification. I have a generated set of API docs, and those are linked in the design doc in case you want to take a look at the API in summary.\n\nI\u0027m considering having them add a few more functions to the Parcel API in order to avoid having `unsafe {}` blocks in generated AIDL code to keep things easier to audit/review.\n\nDo you have specific concerns you\u0027d like me to look for in addition to general Rust style + safety?",
+      "parentUuid": "e5a73970_d5eedf77",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "3788f4a6f5abb147b9a46dfbd1fd074054f7adb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99008b0b_e60f592a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 14
@@ -39,6 +63,24 @@
       "revId": "3788f4a6f5abb147b9a46dfbd1fd074054f7adb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ffdbea4_ab51b467",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-21T15:51:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99008b0b_e60f592a",
+      "revId": "3788f4a6f5abb147b9a46dfbd1fd074054f7adb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

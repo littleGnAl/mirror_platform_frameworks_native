@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6715fa2a_d9403dd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-21T15:51:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5c54334_18a55bcc",
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5eb6226_fd9ca76a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 13
@@ -332,6 +350,30 @@
     },
     {
       "key": {
+        "uuid": "c129903e_2a28dfd8",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-21T15:51:12Z",
+      "side": 1,
+      "message": "Rust supports TEST_MAPPING. See https://android.googlesource.com/platform/external/rust/crates/unicode-xid/+/refs/heads/master/TEST_MAPPING for an example.",
+      "parentUuid": "b607fbde_af177192",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e1d30a1_524d578e",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 13
@@ -382,6 +424,24 @@
       "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d3c3864_6e322c39",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-21T15:51:12Z",
+      "side": 1,
+      "message": "I\u0027ve gone ahead and put all this under the binder-rust hashtag and added the appropriate bugs.",
+      "parentUuid": "142bf554_4483d4e8",
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
