@@ -43,6 +43,12 @@ public:
     // E.g. stability is according to libbinder_ndk or Java SDK AND the interface
     //     expressed here is guaranteed to be stable for multiple years (Stable AIDL)
     static void markVintf(IBinder* binder);
+    // WARNING: This is only ever expected to be called by auto-generated code. You likely want to
+    // change or modify the stability class of the interface you are using.
+    // This must be called as soon as the binder in question is constructed. No thread safety
+    // is provided.
+    // E.g. stability is for APEX<->system
+    static void markSystemApi(IBinder* binder);
 
     // WARNING: for debugging only
     static void debugLogStability(const std::string& tag, const sp<IBinder>& binder);
@@ -56,6 +62,17 @@ public:
     // If this is called when __ANDROID_VNDK__ is not defined, then it is UB and will likely
     // break the device during GSI or other tests.
     static void markVndk(IBinder* binder);
+
+    // WARNING: This is only ever expected to be called by auto-generated code or tests.
+    // You likely want to change or modify the stability of the interface you are using.
+    // This must be called as soon as the binder in question is constructed. No thread safety
+    // is provided.
+    // E.g. stability is according to libbinder_ndk or Java SDK AND the
+    // interface expressed here is guaranteed to be stable for multiple years
+    // (Stable AIDL).
+    // If this is called when outside of an APEX, then it is UB and will likely
+    // break the device during GSI and other tests.
+    static void markApex(IBinder* binder);
 
     // Returns true if the binder needs to be declared in the VINTF manifest or
     // else false if the binder is local to the current partition.
@@ -76,15 +93,37 @@ private:
     enum Level : int32_t {
         UNDECLARED = 0,
 
+        // vendor.img, odm.img, anything 'hardware specific'
         VENDOR = 0b000011,
+        // system.img, system_ext.img, product.img, anything 'framework-like'
         SYSTEM = 0b001100,
-        VINTF = 0b111111,
+        // currently treated as compiled together, anything which is updated in
+        // an APEX module
+        APEX = 0b110000,
+        // APEX <-> system communication, but can't be used by vendor.
+        SYSTEM_API = APEX | SYSTEM,
+        // an AIDL used as an API
+        VINTF = APEX | SYSTEM | VENDOR,
     };
 
-#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
-    static constexpr Level kLocalStability = Level::VENDOR;
-#else
+#if defined(__ANDROID_VNDK__)
+#  if defined(__ANDROID_APEX__)
+    // FIXME(b/161926892) assert that this is the swcodec APEX only (not support
+    // for VNDK APEXes).
+    // TODO(b/142684679) avoid use_vendor in system APEXes
+    // This should be VENDOR stability level, since it should mean an APEX
+    // coupled with vendor (may need to be its own stability level, e.g.
+    // VENDOR_APEX).
     static constexpr Level kLocalStability = Level::SYSTEM;
+#  else // !__ANDROID_APEX
+    static constexpr Level kLocalStability = Level::VENDOR;
+#  endif
+#else // !__ANDROID_VNDK__
+#  if defined(__ANDROID_APEX__)
+    static constexpr Level kLocalStability = Level::APEX;
+#  else // !__ANDROID_APEX
+    static constexpr Level kLocalStability = Level::SYSTEM;
+#  endif
 #endif
 
     // applies stability to binder if stability level is known

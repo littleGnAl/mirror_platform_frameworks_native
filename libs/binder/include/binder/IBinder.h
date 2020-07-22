@@ -67,6 +67,8 @@ public:
         // Private userspace flag for transaction which is being requested from
         // a vendor context.
         FLAG_PRIVATE_VENDOR     = 0x10000000,
+        // Like VENDOR, but for an APEX context
+        FLAG_PRIVATE_APEX       = 0x20000000,
     };
 
                           IBinder();
