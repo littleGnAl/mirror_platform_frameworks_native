@@ -40,6 +40,11 @@ void Stability::markVndk(IBinder* binder) {
     LOG_ALWAYS_FATAL_IF(result != OK, "Should only mark known object.");
 }
 
+void Stability::markApex(IBinder* binder) {
+    status_t result = set(binder, Level::APEX, true /*log*/);
+    LOG_ALWAYS_FATAL_IF(result != OK, "Should only mark known object.");
+}
+
 bool Stability::requiresVintfDeclaration(const sp<IBinder>& binder) {
     return check(get(binder.get()), Level::VINTF);
 }
