@@ -28,9 +28,17 @@ enum {
      * Indicates that this transaction is coupled w/ vendor.img
      */
     FLAG_PRIVATE_VENDOR = 0x10000000,
+    /**
+     * Indicates that this transaction is coupled w/ APEXes
+     */
+    FLAG_PRIVATE_APEX = 0x20000000,
 };
 
-#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+#if defined(__ANDROID_VNDK__)
+
+#if defined(__ANDROID_APEX__)
+static_assert(false, "VNDK APEX is not supported");
+#endif
 
 enum {
     FLAG_PRIVATE_LOCAL = FLAG_PRIVATE_VENDOR,
@@ -45,7 +53,26 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
     AIBinder_markVendorStability(binder);
 }
 
-#else  // defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+#else  // !defined(__ANDROID_VNDK__)
+
+#if defined(__ANDROID_APEX__)
+
+enum {
+    FLAG_PRIVATE_LOCAL = FLAG_PRIVATE_APEX,
+};
+
+/**
+ * This interface has the stability of the system image.
+ */
+__attribute__((weak)) void AIBinder_markApexStability(AIBinder* binder);
+
+static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
+    if (AIBinder_markApexStability == nullptr) return;
+
+    AIBinder_markApexStability(binder);
+}
+
+#else  // !defined(__ANDROID_APEX__)
 
 enum {
     FLAG_PRIVATE_LOCAL = 0,
@@ -62,7 +89,9 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
     AIBinder_markSystemStability(binder);
 }
 
-#endif  // defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+#endif
+
+#endif
 
 /**
  * This interface has system<->vendor stability

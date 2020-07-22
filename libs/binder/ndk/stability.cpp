@@ -40,6 +40,11 @@ void AIBinder_markSystemStability(AIBinder* binder) {
     Stability::markCompilationUnit(binder->getBinder().get());
 }
 
+// explicit extern because symbol is only declared in header when __ANDROID_APEX__
+extern "C" void AIBinder_markApexStability(AIBinder* binder) {
+    Stability::markApex(binder->getBinder().get());
+}
+
 void AIBinder_markVintfStability(AIBinder* binder) {
     Stability::markVintf(binder->getBinder().get());
 }

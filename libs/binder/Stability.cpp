@@ -40,6 +40,11 @@ void Stability::markVndk(IBinder* binder) {
     LOG_ALWAYS_FATAL_IF(result != OK, "Should only mark known object.");
 }
 
+void Stability::markApex(IBinder* binder) {
+    status_t result = set(binder, Level::APEX, true /*log*/);
+    LOG_ALWAYS_FATAL_IF(result != OK, "Should only mark known object.");
+}
+
 bool Stability::requiresVintfDeclaration(const sp<IBinder>& binder) {
     return check(get(binder.get()), Level::VINTF);
 }
@@ -115,7 +120,7 @@ bool Stability::check(int32_t provided, Level required) {
 }
 
 bool Stability::isDeclaredStability(int32_t stability) {
-    return stability == VENDOR || stability == SYSTEM || stability == VINTF;
+    return stability == VENDOR || stability == SYSTEM || stability == APEX || stability == VINTF;
 }
 
 std::string Stability::stabilityString(int32_t stability) {
@@ -123,6 +128,7 @@ std::string Stability::stabilityString(int32_t stability) {
         case Level::UNDECLARED: return "undeclared stability";
         case Level::VENDOR: return "vendor stability";
         case Level::SYSTEM: return "system stability";
+        case Level::APEX: return "apex stability";
         case Level::VINTF: return "vintf stability";
     }
     return "unknown stability " + std::to_string(stability);

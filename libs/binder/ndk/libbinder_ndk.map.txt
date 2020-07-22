@@ -114,6 +114,7 @@ LIBBINDER_NDK30 { # introduced=30
 LIBBINDER_NDK31 { # introduced=31
   global:
     AIBinder_getCallingSid; # apex
+    AIBinder_markApexStability; # apex
     AIBinder_setRequestingSid; # apex
 };
 
