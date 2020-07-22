@@ -76,15 +76,36 @@ private:
     enum Level : int32_t {
         UNDECLARED = 0,
 
+        // vendor.img, odm.img, anything 'hardware specific'
         VENDOR = 0b000011,
+        // system.img, system_ext.img, product.img, anything 'framework-like'
         SYSTEM = 0b001100,
+        // currently treated as compiled together, anything which is updated in
+        // an APEX module
+        APEX = 0b110000,
+        // an AIDL used as an API
         VINTF = 0b111111,
     };
 
-#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
-    static constexpr Level kLocalStability = Level::VENDOR;
-#else
+#if defined(__ANDROID_VNDK__)
+#  if defined(__ANDROID_APEX__)
+    // FIXME(b/161926892) assert that this is the swcodec APEX only (not support
+    // for VNDK APEXes).
+    // TODO(b/142684679) avoid use_vendor in system APEXes
+    // This should be VENDOR stability level, since it should mean an APEX
+    // coupled with vendor (may need to be its own stability level, e.g.
+    // VENDOR_APEX).
     static constexpr Level kLocalStability = Level::SYSTEM;
+#  else // !__ANDROID_APEX
+    static constexpr Level kLocalStability = Level::VENDOR;
+#  endif
+#else // !__ANDROID_VNDK__
+#  if defined(__ANDROID_APEX__)
+    // FIXME: APEX stability level
+    static constexpr Level kLocalStability = Level::SYSTEM;
+#  else // !__ANDROID_APEX
+    static constexpr Level kLocalStability = Level::SYSTEM;
+#  endif
 #endif
 
     // applies stability to binder if stability level is known
