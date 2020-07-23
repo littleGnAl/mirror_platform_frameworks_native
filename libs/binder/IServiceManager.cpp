@@ -18,6 +18,9 @@
 
 #include <binder/IServiceManager.h>
 
+#include <inttypes.h>
+#include <unistd.h>
+
 #include <android/os/BnServiceCallback.h>
 #include <android/os/IServiceManager.h>
 #include <binder/IPCThreadState.h>
@@ -35,8 +38,6 @@
 #endif
 
 #include "Static.h"
-
-#include <unistd.h>
 
 namespace android {
 
@@ -236,8 +237,8 @@ sp<IBinder> ServiceManagerShim::getService(const String16& name) const
     int n = 0;
     while (uptimeMillis() < timeout) {
         n++;
-        ALOGI("Waiting for service '%s' on '%s'...", String8(name).string(),
-            ProcessState::self()->getDriverName().c_str());
+        ALOGI("Waiting for service '%s' on '%s' %" PRIi64 "ms remaining", String8(name).string(),
+              ProcessState::self()->getDriverName().c_str(), timeout - uptimeMillis());
         usleep(1000*sleepTime);
 
         sp<IBinder> svc = checkService(name);
