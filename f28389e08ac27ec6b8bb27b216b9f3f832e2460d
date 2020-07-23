@@ -34,6 +34,24 @@
       "revId": "f28389e08ac27ec6b8bb27b216b9f3f832e2460d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b091113_eb19155d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-23T00:30:45Z",
+      "side": 1,
+      "message": "might be good to add to the commit message",
+      "parentUuid": "b0990f3a_b1148c5f",
+      "revId": "f28389e08ac27ec6b8bb27b216b9f3f832e2460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
