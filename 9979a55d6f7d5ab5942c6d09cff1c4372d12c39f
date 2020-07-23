@@ -34,6 +34,24 @@
       "revId": "9979a55d6f7d5ab5942c6d09cff1c4372d12c39f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "517f7c77_92e6adba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-23T17:47:24Z",
+      "side": 1,
+      "message": "Services are expected to be up if this is called at all - otherwise, checkService should be used (and calling this function would be wasteful)",
+      "parentUuid": "192ca04d_c4907df1",
+      "revId": "9979a55d6f7d5ab5942c6d09cff1c4372d12c39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
