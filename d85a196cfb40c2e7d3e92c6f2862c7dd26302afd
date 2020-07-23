@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "dc4defe2_da0eb97d",
+        "filename": "libs/binder/rust/tests/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-23T22:40:49Z",
+      "side": 1,
+      "message": "This is necessary to work around a limitation of the PushFilePreparer. To quote Dan Shi from an email thread:\n\nhttps://source.corp.google.com/android/tools/tradefederation/core/test_framework/com/android/tradefed/targetprep/PushFilePreparer.java;rcl\u003d7a46e127067e27df68d831c56d63cd15c02df912;l\u003d237\nThat logic is enforced in the above code. If the file to push matches the module name, it will push the whole module folder with higher priority. \nOne workaround is to change the executable name to be different from the module name (use `stem` attribute)",
+      "parentUuid": "d716880b_e58d91c5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "d85a196cfb40c2e7d3e92c6f2862c7dd26302afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c259e2a_47083555",
         "filename": "libs/binder/rust/tests/Android.bp",
         "patchSetId": 16
@@ -53,6 +77,30 @@
       "writtenOn": "2020-07-23T21:25:21Z",
       "side": 1,
       "message": "Instead of inventing another rust_test variant, that depends on \"stem\", \"test_harness\", \"relative_install_path\" etc., could it be a rust_binary and then added as a data file for rustBinderTest? Isn\u0027t test_harness:false just builds a rust_binary?\n\ncc_test has many examples that a test binary depends on other .so, binary, or data files that will eventually pushed to the device to run a test, e.g. the update_engine_unittests in system/update_engine. I think it would be more valuable to extend rust_test to support dependent data files than adding a test_harness:false extension.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "d85a196cfb40c2e7d3e92c6f2862c7dd26302afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7509b828_d06bc85e",
+        "filename": "libs/binder/rust/tests/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-23T22:40:49Z",
+      "side": 1,
+      "message": "If we make this a rust_binary, the PushFilePreparer in tradefed can\u0027t find the binary, since it only looks in testcases/ (RUNNER ERROR: com.android.tradefed.targetprep.TargetSetupError: Local source file \u0027rustBinderTestServiceBinary\u0027 does not exist).\n\nThe update_engine_unittests are a cc_test, which is fine because PushFilePreparer can find that module. That\u0027s why I want a rust_test variant that installs in testcases/ but doesn\u0027t use the Rust test harness. That makes more sense to me than having a rust_binary variant that installs into testcases/.\n\nWe can get rid of the no_named_install_directory and relative_install_path properties. I thought they would do what I wanted but it seems they do nothing for tradefed in this case. I\u0027ll remove them.\n\nI don\u0027t really care how the module properties look here, this just seemed like a simple parallel to cc_test with `gtest: false` from cc. If you\u0027d prefer a different way of doing this that\u0027s fine, but as far as I can tell we\u0027re going to need to install the binary in testcases/, i.e. generated with make class NATIVE_TESTS.",
+      "parentUuid": "9c259e2a_47083555",
       "range": {
         "startLine": 13,
         "startChar": 0,
