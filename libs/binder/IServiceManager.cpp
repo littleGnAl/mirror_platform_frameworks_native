@@ -233,10 +233,10 @@ sp<IBinder> ServiceManagerShim::getService(const String16& name) const
     // retry interval in millisecond; note that vendor services stay at 100ms
     const long sleepTime = gSystemBootCompleted ? 1000 : 100;
 
+    ALOGI("Waiting for service '%s' on '%s'...", String8(name).string(),
     int n = 0;
     while (uptimeMillis() < timeout) {
         n++;
-        ALOGI("Waiting for service '%s' on '%s'...", String8(name).string(),
             ProcessState::self()->getDriverName().c_str());
         usleep(1000*sleepTime);
 
