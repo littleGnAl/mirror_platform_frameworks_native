@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3c1c10f_af4545c6",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-23T00:42:51Z",
+      "side": 1,
+      "message": "hmm, although if it waits 5 sec, it won\u0027t be visible in the log now either. I wonder if we should also print the time we waited?",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 31
+      },
+      "revId": "353de6b4d07ccfd540aacf4baa29b4b9551f73f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
