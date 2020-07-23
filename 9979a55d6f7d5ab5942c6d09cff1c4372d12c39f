@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b78f5017_2d2740f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-23T17:33:41Z",
+      "side": 1,
+      "message": "this lgtm, but it seems it doesn\u0027t achieve your goal of reducing logspam?",
+      "revId": "9979a55d6f7d5ab5942c6d09cff1c4372d12c39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
