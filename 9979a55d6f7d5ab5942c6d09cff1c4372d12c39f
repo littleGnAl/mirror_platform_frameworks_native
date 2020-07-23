@@ -52,6 +52,24 @@
       "revId": "9979a55d6f7d5ab5942c6d09cff1c4372d12c39f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6946d65_9ee87e36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-07-23T17:48:55Z",
+      "side": 1,
+      "message": "is _that_ the real bug then? aiui tomcherry\u0027s saying he *always* sees this?",
+      "parentUuid": "517f7c77_92e6adba",
+      "revId": "9979a55d6f7d5ab5942c6d09cff1c4372d12c39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
