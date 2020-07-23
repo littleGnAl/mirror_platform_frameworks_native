@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75936fa8_0858b88c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-23T00:24:20Z",
+      "side": 1,
+      "message": "assuming motivation is performance, cutting down on log spam?",
+      "revId": "f28389e08ac27ec6b8bb27b216b9f3f832e2460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
