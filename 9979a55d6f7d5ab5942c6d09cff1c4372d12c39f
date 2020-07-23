@@ -88,6 +88,24 @@
       "revId": "9979a55d6f7d5ab5942c6d09cff1c4372d12c39f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22dcf4cb_7d3fe853",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-23T22:43:31Z",
+      "side": 1,
+      "message": "If you\u0027re just trying to get rid of exact duplicates, I say submit!",
+      "parentUuid": "c958e387_996f3c6d",
+      "revId": "9979a55d6f7d5ab5942c6d09cff1c4372d12c39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
