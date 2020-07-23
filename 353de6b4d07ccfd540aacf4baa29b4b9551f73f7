@@ -22,6 +22,30 @@
       "revId": "353de6b4d07ccfd540aacf4baa29b4b9551f73f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb75d11_d4f5b610",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-23T00:44:49Z",
+      "side": 1,
+      "message": "I was debating printing the time, which solves my immediate issue of reducing duplicate logs.  Let me know if you\u0027d rather that than that.",
+      "parentUuid": "e3c1c10f_af4545c6",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 31
+      },
+      "revId": "353de6b4d07ccfd540aacf4baa29b4b9551f73f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
