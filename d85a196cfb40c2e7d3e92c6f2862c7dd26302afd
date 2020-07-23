@@ -16,6 +16,52 @@
       "revId": "d85a196cfb40c2e7d3e92c6f2862c7dd26302afd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d716880b_e58d91c5",
+        "filename": "libs/binder/rust/tests/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-23T21:25:21Z",
+      "side": 1,
+      "message": "Why the push command in .xml cannot use the module name and also the test binary?\nIs the dependency on rustBinderTestService specified in this .bp file?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "d85a196cfb40c2e7d3e92c6f2862c7dd26302afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c259e2a_47083555",
+        "filename": "libs/binder/rust/tests/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-23T21:25:21Z",
+      "side": 1,
+      "message": "Instead of inventing another rust_test variant, that depends on \"stem\", \"test_harness\", \"relative_install_path\" etc., could it be a rust_binary and then added as a data file for rustBinderTest? Isn\u0027t test_harness:false just builds a rust_binary?\n\ncc_test has many examples that a test binary depends on other .so, binary, or data files that will eventually pushed to the device to run a test, e.g. the update_engine_unittests in system/update_engine. I think it would be more valuable to extend rust_test to support dependent data files than adding a test_harness:false extension.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "d85a196cfb40c2e7d3e92c6f2862c7dd26302afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
