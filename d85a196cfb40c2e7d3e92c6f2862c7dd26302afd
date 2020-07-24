@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "42a1b36b_1ec5a8db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-24T00:37:56Z",
+      "side": 1,
+      "message": "Ivan, could you take a look of the comments in tests/Android.bp?\nI am not sure if there is a simpler way to fix the test pusher/runner, add the data attribute, or any other way to set up the module dependencies in the .bp file. If there is no simpler solution, maybe we just need to document this code pattern for any future rust device test modules that need extra binary or data file.\n\n",
+      "revId": "d85a196cfb40c2e7d3e92c6f2862c7dd26302afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d716880b_e58d91c5",
         "filename": "libs/binder/rust/tests/Android.bp",
         "patchSetId": 16
