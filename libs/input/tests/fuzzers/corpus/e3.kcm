@@ -1,0 +1,21 @@
+# This is an example of part of a key character map file for a game pad.
+# It defines fallback actions that enable the user to navigate the user interface
+# by pressing buttons.
+
+type SPECIAL_FUNCTION
+
+key BUTTON_A {
+    base:                               fallback BACK
+}
+
+key BUTTON_X {
+    base:                               fallback DPAD_CENTER
+}
+
+key BUTTON_START {
+    base:                               fallback HOME
+}
+
+key BUTTON_SELECT {
+    base:                               fallback MENU
+}
