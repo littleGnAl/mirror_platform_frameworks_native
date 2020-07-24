@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdab9fb3_7f128316",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-24T04:47:48Z",
+      "side": 1,
+      "message": "Hello Kris/Max/Siarhei, \n\nThis is my first CL. So I Hope to learn more from you guys. ",
+      "revId": "358a0384bd126093c7ec0c99804de7b50f71a59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
