@@ -1,0 +1,27 @@
+# This is an example of part of a key character map file for an alphanumeric
+# thumb keyboard.  Some keys are combined, such as `A` and `2`.  Here we
+# specify `number` labels to tell the system what to do when the user is
+# typing a number into a dial pad.
+#
+# Also note the special character '\uef01' mapped to ALT+SPACE.
+# Pressing this combination of keys invokes an on-screen character picker.
+
+type ALPHA
+
+key A {
+    label:                              'A'
+    number:                             '2'
+    base:                               'a'
+    shift, capslock:                    'A'
+    alt:                                '#'
+    shift+alt, capslock+alt:            none
+}
+
+key SPACE {
+    label:                              ' '
+    number:                             ' '
+    base:                               ' '
+    shift:                              ' '
+    alt:                                '\uef01'
+    shift+alt:                          '\uef01'
+}
