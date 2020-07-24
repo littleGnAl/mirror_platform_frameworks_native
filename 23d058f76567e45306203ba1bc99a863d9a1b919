@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c673de7c_3637f08d",
+        "filename": "libs/binder/ndk/include_platform/android/binder_process.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-07-24T23:12:48Z",
+      "side": 1,
+      "message": "remove these? We so far haven\u0027t gone down this road and I don\u0027t think we want to just randomly here",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "23d058f76567e45306203ba1bc99a863d9a1b919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
