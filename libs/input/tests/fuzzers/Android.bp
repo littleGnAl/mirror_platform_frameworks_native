@@ -1,0 +1,84 @@
+cc_fuzz {
+    name: "InputTransportKeyEvent_fuzzer",
+    host_supported: false,
+    srcs: [
+        "InputTransportKeyEvent_fuzzer.cpp",
+    ],
+
+    shared_libs: [
+        "libinput",
+        "libcutils",
+        "libutils",
+        "libbinder",
+        "libui",
+        "libbase",
+    ],
+
+}
+
+cc_fuzz {
+    name: "InputTransportMotionEvent_fuzzer",
+    host_supported: false,
+    srcs: [
+        "InputTransportMotionEvent_fuzzer.cpp",
+    ],
+
+    shared_libs: [
+        "libinput",
+        "libcutils",
+        "libutils",
+        "libbinder",
+        "libui",
+        "libbase",
+    ],
+
+}
+
+cc_fuzz {
+    name: "VelocityTracker_fuzzer",
+    host_supported: false,
+    srcs: [
+        "VelocityTracker_fuzzer.cpp",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wno-unused-variable",
+    ],
+
+    shared_libs: [
+        "libinput",
+        "libcutils",
+        "libutils",
+        "libbinder",
+        "libui",
+        "libbase",
+    ],
+}
+
+cc_fuzz {
+    name: "KeyCharacterMap_fuzzer",
+    host_supported: false,
+    srcs: [
+        "KeyCharacterMap_fuzzer.cpp",
+    ],
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wno-unused-variable",
+    ],
+
+    shared_libs: [
+        "libinput",
+        "libcutils",
+        "libutils",
+        "libbinder",
+        "libui",
+        "libbase",
+    ],
+
+    corpus: ["corpus/*"],
+}
