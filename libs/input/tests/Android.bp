@@ -23,7 +23,8 @@ cc_test {
         "libbinder",
         "libui",
         "libbase",
-    ]
+        "liblog",
+    ],
 }
 
 // NOTE: This is a compile time test, and does not need to be
@@ -45,5 +46,6 @@ cc_library_static {
         "libbinder",
         "libui",
         "libbase",
-    ]
+        "liblog",
+    ],
 }
