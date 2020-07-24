@@ -16,6 +16,75 @@
       "revId": "358a0384bd126093c7ec0c99804de7b50f71a59e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5964bb41_78689464",
+        "filename": "libs/input/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2020-07-24T16:18:45Z",
+      "side": 1,
+      "message": "You can reduce some of the duplication here using cc_defaults, since they all depend on the same libraries.\n\nhttps://source.android.com/setup/build?hl\u003den#defaults_modules",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "358a0384bd126093c7ec0c99804de7b50f71a59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a76086_dea10f5f",
+        "filename": "libs/input/tests/fuzzers/InputTransportKeyEvent_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2020-07-24T16:18:45Z",
+      "side": 1,
+      "message": "nit: Rename this to \u0027fdp\u0027 or \u0027dataprovider\u0027 or something more descriptive. \u0027tester\u0027 isn\u0027t very clear.",
+      "range": {
+        "startLine": 23,
+        "startChar": 23,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "358a0384bd126093c7ec0c99804de7b50f71a59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eade666_3f472063",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2020-07-24T16:18:45Z",
+      "side": 1,
+      "message": "Is this available as a constant in the library? I\u0027d rather not pass around \u0027magic\u0027 strings if possible.",
+      "range": {
+        "startLine": 209,
+        "startChar": 21,
+        "endLine": 209,
+        "endChar": 28
+      },
+      "revId": "358a0384bd126093c7ec0c99804de7b50f71a59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
