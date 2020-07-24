@@ -1,0 +1,28 @@
+# This is an example of part of a key character map file for a full keyboard
+# include a few fallback behaviors for special keys that few applications
+# handle themselves.
+
+type FULL
+
+key C {
+    label:                              'C'
+    base:                               'c'
+    shift, capslock:                    'C'
+    alt:                                '\u00e7'
+    shift+alt:                          '\u00c7'
+    ctrl, meta:                         none
+}
+
+key SPACE {
+    label:                              ' '
+    base:                               ' '
+    ctrl:                               none
+    alt, meta:                          fallback SEARCH
+}
+
+key NUMPAD_9 {
+    label, number:                      '9'
+    base:                               fallback PAGE_UP
+    numlock:                            '9'
+    ctrl, alt, meta:                    none
+}
