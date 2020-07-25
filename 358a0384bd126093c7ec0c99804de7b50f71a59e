@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d2338a2e_ef537e71",
+        "filename": "libs/input/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-25T05:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5964bb41_78689464",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "358a0384bd126093c7ec0c99804de7b50f71a59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67a76086_dea10f5f",
         "filename": "libs/input/tests/fuzzers/InputTransportKeyEvent_fuzzer.cpp",
         "patchSetId": 1
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "a91be979_60481ff5",
+        "filename": "libs/input/tests/fuzzers/InputTransportKeyEvent_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-25T05:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67a76086_dea10f5f",
+      "range": {
+        "startLine": 23,
+        "startChar": 23,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "358a0384bd126093c7ec0c99804de7b50f71a59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4eade666_3f472063",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 1
@@ -76,6 +124,30 @@
       "writtenOn": "2020-07-24T16:18:45Z",
       "side": 1,
       "message": "Is this available as a constant in the library? I\u0027d rather not pass around \u0027magic\u0027 strings if possible.",
+      "range": {
+        "startLine": 209,
+        "startChar": 21,
+        "endLine": 209,
+        "endChar": 28
+      },
+      "revId": "358a0384bd126093c7ec0c99804de7b50f71a59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b770301c_f0899b02",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-25T05:01:11Z",
+      "side": 1,
+      "message": "They are not defined as constants in the library. But in the patchset 1, I was just doing 2 strategies. Now I am covering all strategies, 1 at a time.",
+      "parentUuid": "4eade666_3f472063",
       "range": {
         "startLine": 209,
         "startChar": 21,

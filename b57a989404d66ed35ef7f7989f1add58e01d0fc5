@@ -180,6 +180,30 @@
     },
     {
       "key": {
+        "uuid": "97dbf670_a2bb1573",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-25T05:01:11Z",
+      "side": 1,
+      "message": "You mean : first I consume what eventType should be. Then according to eventType, I do publishKeyEvent/ publishMotionEvent / publishFocusEvent?",
+      "parentUuid": "48d3eac6_624c94a9",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 83
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcc4aa0f_5d49a074",
         "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
         "patchSetId": 2
@@ -364,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "93a336f3_f78a5a46",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-25T05:01:11Z",
+      "side": 1,
+      "message": "Yes! I will figure out to use that code.",
+      "parentUuid": "e91befe8_b2d2b303",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 1
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "847a040a_d817d30d",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 2
@@ -398,6 +446,30 @@
       "writtenOn": "2020-07-25T00:08:03Z",
       "side": 1,
       "message": "Let\u0027s update the comment to match what you are actually trying to do:\n\nTo prevent potential integer overflow, make this value smaller by dividing by 1000.\n\n\nAlternatively, you could consume less than 64 bytes from fdp",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 95
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4c3f03f_0298f4f2",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-25T05:01:11Z",
+      "side": 1,
+      "message": "Yeah, I can consume less than 64 bits. But the nearest Datatype that can come in is uint32_t. And the biggest number that can be represented by uint32_t is 4,294,967,295 (4 days). So I chose to divide it by 1000.",
+      "parentUuid": "160c4f00_38828221",
       "range": {
         "startLine": 183,
         "startChar": 4,
