@@ -1,0 +1,527 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbc8e376_628b1ed6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "Can you please provide some results of running these?\n\nDid you find any bugs and what is the code coverage %?",
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be156b7a_e521e378",
+        "filename": "libs/input/tests/fuzzers/InputTransportKeyEvent_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "std::unique_tr\u003cInputPublisher\u003e\n\nsame for consumer",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "674d0ade_9b8c8cc6",
+        "filename": "libs/input/tests/fuzzers/InputTransportKeyEvent_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "not needed, already smart pointers",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbf30851_3adf4a88",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "update",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81f0600a_9de63683",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20ab3807_7541aeba",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "why not consume these from fdp too?",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 21
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3797e8ea_76b86872",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "you could also consume this from fdp, its backing type is uint8_t, and then static_cast to MotionClassification",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 68
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d3eac6_624c94a9",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "you can probably combine this with the previous class, by consuming the event type from the fuzzer first, and then calling publishMotionEvent or publishFocusEvent accordingly (after getting additional fuzzing inputs) for them.\n\nWe also have FocusEvent internally and this would make it easier to extend if we wanted to in the future",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 83
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc4aa0f_5d49a074",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "update",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee1f0477_3af65dfb",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "why not just:\n\n  static const char* TEMP_FILE_NAME \u003d \"/data/local/tmp/keycharactermapXXXXXXXXX\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e3df7b3_97c3e445",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "use switch (or at least add \"{\" and \"}\"). We still use braces even for 1-line if statements\n\nyou can also use static_cast to get the enum type (especially since you are restricting the range in L40)",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 52
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d7d5f9b_20a9bd40",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "why do we need this check here (and not in other files)?",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1cb7b1c_81f7217a",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "what are you trying to do here?",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c3e6fb_0b9f259f",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "year",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0cfb07e_3aa6b829",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "this is just used once here. you can just use ADISPLAY_ID_DEFAULT directly there",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 73
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91befe8_b2d2b303",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "Looks like this was copied from VelocityTracker_test.\n\nLet\u0027s figure out how to share this code with that file instead of duplicating",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 1
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "847a040a_d817d30d",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "push_back? otherwise, we are invoking the copy constructor for MotionEvent, i think\n\nthis can be fixed in the original code",
+      "range": {
+        "startLine": 147,
+        "startChar": 15,
+        "endLine": 147,
+        "endChar": 27
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160c4f00_38828221",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "Let\u0027s update the comment to match what you are actually trying to do:\n\nTo prevent potential integer overflow, make this value smaller by dividing by 1000.\n\n\nAlternatively, you could consume less than 64 bytes from fdp",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 95
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdfe5f46_aaceb274",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "can you just write \"bTime\" here?",
+      "range": {
+        "startLine": 186,
+        "startChar": 37,
+        "endLine": 186,
+        "endChar": 86
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be674705_668f874b",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "strategy",
+      "range": {
+        "startLine": 220,
+        "startChar": 34,
+        "endLine": 220,
+        "endChar": 44
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "545c6a1b_5c7c28f4",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "std::vector\u003cconst char*\u003e strategies \u003d {\n\nLSQ2_STRATEGY,\n\nIMPULSE_STRATEGY,\n...\n\n    \n    LEGACY_STRATEGY};",
+      "range": {
+        "startLine": 221,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 42
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4161015_6036e0b4",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "randomStrategyIndex",
+      "range": {
+        "startLine": 233,
+        "startChar": 13,
+        "endLine": 233,
+        "endChar": 27
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a0ade8_a4dd24e9",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-25T00:08:03Z",
+      "side": 1,
+      "message": "strategies[randomStrategyIndex]",
+      "range": {
+        "startLine": 235,
+        "startChar": 20,
+        "endLine": 235,
+        "endChar": 49
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
