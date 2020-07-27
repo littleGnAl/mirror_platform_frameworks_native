@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24f6afe1_8357d34e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-07-27T08:16:54Z",
+      "side": 1,
+      "message": "I guess this needs SELinux policy?",
+      "revId": "2dba837b4000718c1bd66aa025136d0d45a0c798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
