@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79c14c63_8e6fee18",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-27T17:13:12Z",
+      "side": 1,
+      "message": "\"if !A { C } else { B }\" -\u003e \"if A { B } else { C}\"",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "4b8750f1ece44b32dab323eb600ef1679e31a02c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89273e39_f1ab7eff",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-27T17:13:12Z",
+      "side": 1,
+      "message": "we can\u0027t use this in a header, right, when we only set \u0027use_apex_name_macro\u0027 in libbinder, right?",
+      "range": {
+        "startLine": 100,
+        "startChar": 46,
+        "endLine": 100,
+        "endChar": 88
+      },
+      "revId": "4b8750f1ece44b32dab323eb600ef1679e31a02c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0c5393_27a44efc",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-27T17:13:12Z",
+      "side": 1,
+      "message": "Should be:\n\n    #ifdef __ANDROID_VNDK__\n        // TODO(142684679): avoid __ANDROID_VNDK__ in system code\n        #ifndef __ANDROID_VNDK_COM_ANDROID_MEDIA_SWCODEC__\n            #error VNDK + APEX only defined for com.android.media.swcodec\n        #endif\n        static constexpr Level kLocalStability \u003d Level::SYSTEM;\n    #else\n        static constexpr Level kLocalStability \u003d Level::SYSTEM;\n    #endif\n\nBecause:\n- we shouldn\u0027t commit to the behavior of configurations that are completely unsupported. We don\u0027t know how vendor APEX would work yet, so we shouldn\u0027t specify it\n- your example is dangerous since the pound define is only added conditionally, so if __ANDROID_APEX_COM_ANDROID_MEDIA_SWCODEC__ is ever removed, then the code will be wrong.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 10
+      },
+      "revId": "4b8750f1ece44b32dab323eb600ef1679e31a02c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
