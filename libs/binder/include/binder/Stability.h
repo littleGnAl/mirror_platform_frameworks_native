@@ -81,10 +81,27 @@ private:
         VINTF = 0b111111,
     };
 
-#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
-    static constexpr Level kLocalStability = Level::VENDOR;
+#if !defined(__ANDROID_APEX__)
+    // The local stability for the code that is not part of an APEX is entirely
+    // determined by __ANDROID_VNDK__.
+    #if defined(__ANDROID_VNDK__)
+        static constexpr Level kLocalStability = Level::VENDOR;
+    #else
+        static constexpr Level kLocalStability = Level::SYSTEM;
+    #endif
 #else
-    static constexpr Level kLocalStability = Level::SYSTEM;
+    // Each APEX has its own local stability, otherwise, a non-stable binder in
+    // an APEX would be able to talk to a non-stable binder in another APEX.
+    // TODO(b/142684679) implement the above. Until this is imeplemented, we
+    // give the SYSTEM stability to all system-defined APEXes and VENDOR
+    // stability to all vendor-defined APEXes. Here, the media swcodec needs
+    // a special treatment because it is the only system-defined APEX which is
+    // built with __ANDROID_VNDK__. It's given with the SYSTEM stability.
+    #if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX_COM_ANDROID_MEDIA_SWCODEC__)
+        static constexpr Level kLocalStability = Level::VENDOR;
+    #else
+        static constexpr Level kLocalStability = Level::SYSTEM;
+    #endif
 #endif
 
     // applies stability to binder if stability level is known

@@ -83,6 +83,12 @@ cc_library {
         "test_com.android.media.swcodec",
     ],
 
+    // This will enable __ANDROID_APEX_<APEXNAME>__ macro when this is compiled for
+    // the APEX <APEXNAME>. This is required to allow the SYSTEM local stability
+    // only to the media swcodec APEX and not to other APEXes that are built with
+    // VNDK. (b/142684679)
+    use_apex_name_macro: true,
+
     srcs: [
         "Binder.cpp",
         "BpBinder.cpp",
