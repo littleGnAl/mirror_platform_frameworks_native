@@ -348,6 +348,30 @@
     },
     {
       "key": {
+        "uuid": "fd5b4cdd_93dcd02c",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-27T15:37:04Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "97dbf670_a2bb1573",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 83
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcc4aa0f_5d49a074",
         "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
         "patchSetId": 2
@@ -829,6 +853,30 @@
       "writtenOn": "2020-07-27T15:36:42Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "f4c3f03f_0298f4f2",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 95
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2134c66a_3e6d5488",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-27T15:37:04Z",
+      "side": 1,
+      "message": "Ack",
       "parentUuid": "f4c3f03f_0298f4f2",
       "range": {
         "startLine": 183,
