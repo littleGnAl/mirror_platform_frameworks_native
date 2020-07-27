@@ -372,6 +372,30 @@
     },
     {
       "key": {
+        "uuid": "c21adeb2_8ea9570d",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-27T23:24:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd5b4cdd_93dcd02c",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 83
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcc4aa0f_5d49a074",
         "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
         "patchSetId": 2
