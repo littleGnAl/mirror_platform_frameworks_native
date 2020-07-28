@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b610353c_c7aedcab",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T19:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "174451d1_15f31d73",
+      "range": {
+        "startLine": 49,
+        "startChar": 60,
+        "endLine": 49,
+        "endChar": 63
+      },
+      "revId": "83fb9d90a3978d9d686a131065948fb66fc74cd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e390530_319e937f",
         "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
         "patchSetId": 4
@@ -93,6 +117,30 @@
       "revId": "83fb9d90a3978d9d686a131065948fb66fc74cd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0032143d_b5886e23",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T19:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f879aa2_99fe18ba",
+      "range": {
+        "startLine": 50,
+        "startChar": 38,
+        "endLine": 50,
+        "endChar": 51
+      },
+      "revId": "83fb9d90a3978d9d686a131065948fb66fc74cd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
