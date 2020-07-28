@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "09aa2012_6f72bf18",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-28T01:55:16Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s why I abandoned this and this part should be moved to a header that is local to libbinder.",
+      "parentUuid": "89273e39_f1ab7eff",
+      "range": {
+        "startLine": 100,
+        "startChar": 46,
+        "endLine": 100,
+        "endChar": 88
+      },
+      "revId": "4b8750f1ece44b32dab323eb600ef1679e31a02c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f0c5393_27a44efc",
         "filename": "libs/binder/include/binder/Stability.h",
         "patchSetId": 1
