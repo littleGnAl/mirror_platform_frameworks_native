@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56211645_bc0499d2",
+        "filename": "libs/input/tests/fuzzers/InputTransportKeyEvent_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "(i merged this code and MotionEvent_Fuzzer in InputTransport_fuzzer in patchset 5)\nNo, reduced to 75.There was no max-length defined so i took 500 or i can simply do ConsumeRandomLenghtString()",
+      "parentUuid": "4e929d9e_d72ecd64",
+      "range": {
+        "startLine": 29,
+        "startChar": 60,
+        "endLine": 29,
+        "endChar": 63
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f169a125_7c888fda",
         "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-28T00:36:34Z",
       "side": 1,
       "message": "same comment",
+      "range": {
+        "startLine": 28,
+        "startChar": 60,
+        "endLine": 28,
+        "endChar": 63
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee5caf81_e58a3674",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "\u003e same comment",
+      "parentUuid": "f169a125_7c888fda",
       "range": {
         "startLine": 28,
         "startChar": 60,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c3fcf4e0_f7d7b9e9",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "My Mistake, i forgot it can produce negatives. i thought it starts from 0. But still I removed InRange. As this fuzzer creates an InputMessage from parameters provided and then publishes and consumes it.",
+      "parentUuid": "d00f1087_af0d8163",
+      "range": {
+        "startLine": 42,
+        "startChar": 23,
+        "endLine": 42,
+        "endChar": 70
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b116abd_cab70298",
         "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2020-07-28T00:36:34Z",
       "side": 1,
       "message": "where does 10 come from?",
+      "range": {
+        "startLine": 46,
+        "startChar": 63,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d4981fa_d8620558",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "same reason as above. So removed",
+      "parentUuid": "2b116abd_cab70298",
       "range": {
         "startLine": 46,
         "startChar": 63,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "804d14a0_379b12a3",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "We can limit this time. But in practical scenarios this times are nanoseconds from boot. But we don\u0027t know for how long the phone hasn\u0027t been booted. However, that are no calculation for this. So its good to have them uncontrolled.",
+      "parentUuid": "2f54a532_344750a5",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f3bcb5e_1a4720a7",
         "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "c47dcb41_90ebdb02",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "removed InRange. reason : same as above. Won\u0027t matter whether i provide it or not.",
+      "parentUuid": "2f3bcb5e_1a4720a7",
+      "range": {
+        "startLine": 65,
+        "startChar": 73,
+        "endLine": 65,
+        "endChar": 82
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08f8875c_a46da0a7",
         "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
         "patchSetId": 3
@@ -151,6 +295,30 @@
       "writtenOn": "2020-07-28T00:36:34Z",
       "side": 1,
       "message": "Where does 48 come from?",
+      "range": {
+        "startLine": 68,
+        "startChar": 71,
+        "endLine": 68,
+        "endChar": 73
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78962613_0dac3bac",
+        "filename": "libs/input/tests/fuzzers/InputTransportMotionEvent_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "There are 48 different axisType possible in setAxisValue(axisType, axisValue). It\u0027s an enum. Change : #define AXIS_TYPE_MAX_LENGTH 48 at top and used this",
+      "parentUuid": "08f8875c_a46da0a7",
       "range": {
         "startLine": 68,
         "startChar": 71,
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "731bd108_e8d4d575",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "yeah i remember,you taught me that. But i was getting around ~7000 to 8000 exec/s \nSo i did this (forgot to mention it to you, sorry!)",
+      "parentUuid": "f05d19f1_b86377eb",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92f92a3f_19c08832",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 3
@@ -220,6 +412,30 @@
       "writtenOn": "2020-07-28T00:36:34Z",
       "side": 1,
       "message": "How hard is it to get these via includes so if they change we can get them or are these strings in the includes and we #defined them here because you can\u0027t include them?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343373c0_f63d0e50",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "Yeah these are hard-coded strings, that why I defined them here.",
+      "parentUuid": "92f92a3f_19c08832",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "b3c79677_7c43e227",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "no, remains the same",
+      "parentUuid": "a373d276_ad9edfa5",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 87
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb04570f_1d3fcc53",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 3
@@ -278,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "2dd068ba_a324ba09",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "it is used to resolve what should be the action for MotionEvent. MotionEvent has one parameter called action. And based on the postion of Events, it identifies whether that action was upwards,downwards,etc movements",
+      "parentUuid": "eb04570f_1d3fcc53",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a5d2e34_efac6225",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 3
@@ -289,6 +553,30 @@
       "writtenOn": "2020-07-28T00:36:34Z",
       "side": 1,
       "message": "Do events have to happen in coronological order?",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 42
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3d803b_cd7b0141",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "yes they have to be in order, because it will not make any sense for velocity if later event\u0027s eventTime is less than current event\u0027s eventTime.",
+      "parentUuid": "5a5d2e34_efac6225",
       "range": {
         "startLine": 205,
         "startChar": 0,

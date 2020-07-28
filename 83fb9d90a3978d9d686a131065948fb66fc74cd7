@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "174451d1_15f31d73",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "Thanks for bringing this to my attention. initially i wrote two diff fuzzer for keyevent and motionevent but later merged them. so i forgot to remove this, as there are no checks for this.",
+      "parentUuid": "f471a561_f7b74290",
+      "range": {
+        "startLine": 49,
+        "startChar": 60,
+        "endLine": 49,
+        "endChar": 63
+      },
+      "revId": "83fb9d90a3978d9d686a131065948fb66fc74cd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e390530_319e937f",
         "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-28T00:36:34Z",
       "side": 1,
       "message": "here flags have no limit?",
+      "range": {
+        "startLine": 50,
+        "startChar": 38,
+        "endLine": 50,
+        "endChar": 51
+      },
+      "revId": "83fb9d90a3978d9d686a131065948fb66fc74cd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f879aa2_99fe18ba",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-07-28T18:55:42Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "1e390530_319e937f",
       "range": {
         "startLine": 50,
         "startChar": 38,
