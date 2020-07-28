@@ -71,6 +71,42 @@
     },
     {
       "key": {
+        "uuid": "4c5d060c_4f363063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-07-28T21:00:12Z",
+      "side": 1,
+      "message": "The blocks are not necessary, but a trade-off I made.  It only meant to minimize the visibility of variables since the function is quote long.  It was hard to track previously as some variables were declared 100-200 lines apart.\n\nThe file descriptor/path are intentionally grouped together, so that we can replace fd with path at once (see ag/12174642 for the WIP change).\n\nLet me know if you want me to remove the group, etc.",
+      "parentUuid": "91053a9c_f1849060",
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929571f7_a9c25d3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-07-28T21:00:12Z",
+      "side": 1,
+      "message": "No worries.  Just want to make sure you\u0027d be ok with the direction in general (or to get some feedback for alternatives).",
+      "parentUuid": "80961539_60479d3a",
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abccac1e_14804be4",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "42536f64_853ff720",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-07-28T21:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abccac1e_14804be4",
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba8ed819_49133fda",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
@@ -102,6 +156,24 @@
       "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19b59c94_119b4a69",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-07-28T21:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba8ed819_49133fda",
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +200,54 @@
     },
     {
       "key": {
+        "uuid": "1e211710_6150d8b0",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-07-28T21:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35ca440e_db591aca",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 104
+      },
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c849783f_0a60e800",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-07-28T21:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35ca440e_db591aca",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 104
+      },
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b04b2e66_5b2faf8d",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
@@ -151,6 +271,54 @@
     },
     {
       "key": {
+        "uuid": "39530591_5bde8f3f",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-07-28T21:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04b2e66_5b2faf8d",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 101
+      },
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee8fd478_442872cc",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-07-28T21:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04b2e66_5b2faf8d",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 101
+      },
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36b9e6fb_a6007c9d",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
@@ -171,6 +339,30 @@
       "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8d570b_f85b9fe6",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-07-28T21:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36b9e6fb_a6007c9d",
+      "range": {
+        "startLine": 559,
+        "startChar": 100,
+        "endLine": 559,
+        "endChar": 107
+      },
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
