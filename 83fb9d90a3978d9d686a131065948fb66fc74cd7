@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f471a561_f7b74290",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1100093
+      },
+      "writtenOn": "2020-07-28T00:36:34Z",
+      "side": 1,
+      "message": "Why 3 is this an enum?",
+      "range": {
+        "startLine": 49,
+        "startChar": 60,
+        "endLine": 49,
+        "endChar": 63
+      },
+      "revId": "83fb9d90a3978d9d686a131065948fb66fc74cd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e390530_319e937f",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1100093
+      },
+      "writtenOn": "2020-07-28T00:36:34Z",
+      "side": 1,
+      "message": "here flags have no limit?",
+      "range": {
+        "startLine": 50,
+        "startChar": 38,
+        "endLine": 50,
+        "endChar": 51
+      },
+      "revId": "83fb9d90a3978d9d686a131065948fb66fc74cd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
