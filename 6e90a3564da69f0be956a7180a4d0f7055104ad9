@@ -54,6 +54,57 @@
     },
     {
       "key": {
+        "uuid": "91053a9c_f1849060",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-07-28T18:00:15Z",
+      "side": 1,
+      "message": "Overall this looks good.\n\nAre the blocks necessary or just for grouping common statements?  If they are just for grouping then you could use comments to name the different sections and avoid some amount of indentation.",
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abccac1e_14804be4",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-07-28T18:00:15Z",
+      "side": 1,
+      "message": "Could this and the next ALOGV be moved inside the block?",
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba8ed819_49133fda",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-07-28T18:00:15Z",
+      "side": 1,
+      "message": "Suggestion: This temporary is unnecessary and the test can be moved into the if-statement.  If the name caries important information a comment could be left describing the test.",
+      "revId": "6e90a3564da69f0be956a7180a4d0f7055104ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35ca440e_db591aca",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 1
