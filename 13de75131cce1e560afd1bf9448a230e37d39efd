@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8331efa9_9e377f3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2020-07-29T19:02:04Z",
+      "side": 1,
+      "message": "In the skip case, is there another test that checks whether the old sysfs mechanism works?",
+      "revId": "13de75131cce1e560afd1bf9448a230e37d39efd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
