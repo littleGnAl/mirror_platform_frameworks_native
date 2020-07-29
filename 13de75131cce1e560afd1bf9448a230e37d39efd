@@ -16,6 +16,24 @@
       "revId": "13de75131cce1e560afd1bf9448a230e37d39efd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f1c5b2e_73fed684",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2020-07-29T23:34:24Z",
+      "side": 1,
+      "message": "\u003e In the skip case, is there another test that checks whether the old sysfs mechanism works?\n\nCurrently there are just the VTS tests, which treat those files as optional (basically just checking they behave reasonably if available, similar to these tests for the BPF mechanism). I think being stricter on this could catch devices that maybe shouldn\u0027t fail (e.g. old devices that have CONFIG_CPU_FREQ_TIMES\u003dn because it\u0027s optional), while newer devices that ought to be using BPF but fall back to proc files due to bugs would still not be caught.\n\nOne alternative improvement might be to make the test skipping logic stricter by having SetUp() check for a more limited list of \"legitimate\" reasons for failure...the main ones I\u0027m aware of being\n1) lack of support for perf event selinux hooks (for upgrading devices that don\u0027t update the kernel to add this support)\n2) devices with no cpu frequency table",
+      "parentUuid": "8331efa9_9e377f3b",
+      "revId": "13de75131cce1e560afd1bf9448a230e37d39efd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
