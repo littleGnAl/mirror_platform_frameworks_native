@@ -593,6 +593,30 @@
     },
     {
       "key": {
+        "uuid": "9c88f6b1_1ac5c322",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-29T00:44:46Z",
+      "side": 1,
+      "message": "I was wondering if it\u0027s possible to use \"std::tmpfile\" here instead? would rather avoid memcpy and mkstemp if possible\n\nanother question, why do we need a random file rather than hardcoding some predefined temp file name? Is it mainly to check the cases where filename itself can cause bugs?\n\nalternatively, per Max\u0027s suggestion, we can add new api to KeyCharacterMap to load from string instead of from file to facilitate testing",
+      "parentUuid": "731bd108_e8d4d575",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "0acb8de5a7ae61f2b8a38f75df9c23d317619e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92f92a3f_19c08832",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 3

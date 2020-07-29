@@ -655,6 +655,30 @@
     },
     {
       "key": {
+        "uuid": "d8a18cff_ca7aa833",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-29T00:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76f53803_0c8194f6",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05c3e6fb_0b9f259f",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 2
@@ -808,6 +832,30 @@
       "side": 1,
       "message": "what do you recommend? what I think is : we need to have a .h file and put this code in it and then we can use it in both file (here and test). But Would it be good to create header for small piece of code?",
       "parentUuid": "93a336f3_f78a5a46",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 1
+      },
+      "revId": "b57a989404d66ed35ef7f7989f1add58e01d0fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4c65bf0_9fc85c6c",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-07-29T00:44:46Z",
+      "side": 1,
+      "message": "I think it\u0027s fine to create some .h and/or .cpp file with the needed functions to share across the 2 files (VelocityTracker_test and fuzzer), even if it\u0027s small",
+      "parentUuid": "1006bba0_56da5c73",
       "range": {
         "startLine": 77,
         "startChar": 0,
