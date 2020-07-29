@@ -21,6 +21,12 @@
 namespace android {
 namespace internal {
 
+#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+const Stability::Level Stability::kLocalStability = Stability::Level::VENDOR;
+#else
+const Stability::Level Stability::kLocalStability = Stability::Level::SYSTEM;
+#endif
+
 void Stability::markCompilationUnit(IBinder* binder) {
     status_t result = set(binder, kLocalStability, true /*log*/);
     LOG_ALWAYS_FATAL_IF(result != OK, "Should only mark known object.");

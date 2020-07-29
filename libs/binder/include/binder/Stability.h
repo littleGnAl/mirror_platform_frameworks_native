@@ -81,11 +81,7 @@ private:
         VINTF = 0b111111,
     };
 
-#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
-    static constexpr Level kLocalStability = Level::VENDOR;
-#else
-    static constexpr Level kLocalStability = Level::SYSTEM;
-#endif
+    static const Level kLocalStability;
 
     // applies stability to binder if stability level is known
     __attribute__((warn_unused_result))
