@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b00e4f2_87b93510",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-30T15:58:43Z",
+      "side": 1,
+      "message": "Moved to CC since this depends on a CL that\u0027s not landing (the previous attempt at bindgen support).\n\nIf this becomes actionable again (either by using our existing command line interface, or by using a library interface should one become available) feel free to put me back on reviewer.",
+      "revId": "ce3114e22c70a147c919a1af5bfcb003571180be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
