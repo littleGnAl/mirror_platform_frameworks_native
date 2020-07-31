@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Primiano Tucci <primiano@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Wei Wang <wvw@google.com>
+Submitted-at: Fri, 31 Jul 2020 16:57:07 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1382299
+Project: platform/frameworks/native
+Branch: refs/heads/master
