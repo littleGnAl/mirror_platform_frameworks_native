@@ -16,6 +16,24 @@
       "revId": "2ded52d4eac593e105f2d968360e8e87786930e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13705ca9_e738f93f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-07-31T08:36:36Z",
+      "side": 1,
+      "message": "is sched/sched_cpu_hotplug an upstream trace point? I didn\u0027t see it.",
+      "parentUuid": "6084e88d_1902c89f",
+      "revId": "2ded52d4eac593e105f2d968360e8e87786930e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
