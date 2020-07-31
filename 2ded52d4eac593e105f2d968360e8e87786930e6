@@ -34,6 +34,24 @@
       "revId": "2ded52d4eac593e105f2d968360e8e87786930e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b922dd46_7a473c1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-07-31T08:40:08Z",
+      "side": 1,
+      "message": "it is not in 5.4 android common kernel.\n\nalso the cpuhp will give you state information, and the duration would help oem understand the hotplug procedure. (though I am more interested in the hotplug state.)",
+      "parentUuid": "13705ca9_e738f93f",
+      "revId": "2ded52d4eac593e105f2d968360e8e87786930e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
