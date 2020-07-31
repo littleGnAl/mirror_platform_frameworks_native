@@ -1,0 +1,3 @@
+service adpfservice /system/bin/adpfservice
+    class main
+    user system

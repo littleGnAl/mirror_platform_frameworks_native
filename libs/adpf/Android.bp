@@ -1,0 +1,17 @@
+cc_library_shared {
+    name: "libAdpf",
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+    ],
+    srcs: [
+        "Adpf.cpp",
+    ],
+    shared_libs: [
+        "adpf_aidl_interface-cpp",
+        "libbinder",
+        "liblog",
+        "libutils",
+    ],
+}
