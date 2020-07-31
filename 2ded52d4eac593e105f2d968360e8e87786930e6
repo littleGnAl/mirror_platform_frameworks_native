@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6084e88d_1902c89f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2020-07-31T08:31:54Z",
+      "side": 1,
+      "message": "LGTM. Out of curiosity what\u0027s the difference between these and sched/sched_cpu_hotplug?",
+      "revId": "2ded52d4eac593e105f2d968360e8e87786930e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
