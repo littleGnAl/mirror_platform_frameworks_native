@@ -27,12 +27,18 @@ class IFoo : public virtual ::android::RefBase {
    public:
     static const char* kSomeInstanceName;
     static const char* kInstanceNameToDieFor;
+    static const char* kLazyInstanceName;
 
     static AIBinder_Class* kClass;
 
     // Takes ownership of IFoo
     binder_status_t addService(const char* instance);
     static ::android::sp<IFoo> getService(const char* instance, AIBinder** outBinder = nullptr);
+
+    // Takes ownership of IFoo
+    binder_status_t registerLazyService(const char* instance);
+    static ::android::sp<IFoo> waitForService(const char* instance, AIBinder** outBinder = nullptr);
+    static bool isDeclared(const char* instance);
 
     enum Call {
         DOFOO = FIRST_CALL_TRANSACTION + 0,

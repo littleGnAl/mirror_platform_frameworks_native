@@ -25,6 +25,7 @@ using ::android::wp;
 
 const char* IFoo::kSomeInstanceName = "libbinder_ndk-test-IFoo";
 const char* IFoo::kInstanceNameToDieFor = "libbinder_ndk-test-IFoo-to-die";
+const char* IFoo::kLazyInstanceName = "libbinder_ndk-test-IFoo-lazy";
 const char* kIFooDescriptor = "my-special-IFoo-class";
 
 struct IFoo_Class_Data {
@@ -173,4 +174,73 @@ sp<IFoo> IFoo::getService(const char* instance, AIBinder** outBinder) {
 
     AIBinder_decStrong(binder);
     return ret;
+}
+
+binder_status_t IFoo::registerLazyService(const char* instance) {
+    if (instance == nullptr) {
+    }
+    AIBinder* binder = nullptr;
+
+    if (mWeakBinder != nullptr) {
+        // one strong ref count of binder
+        binder = AIBinder_Weak_promote(mWeakBinder);
+    }
+    if (binder == nullptr) {
+        // or one strong refcount here
+        binder = AIBinder_new(IFoo::kClass, static_cast<void*>(new IFoo_Class_Data{this}));
+        if (mWeakBinder != nullptr) {
+            AIBinder_Weak_delete(mWeakBinder);
+        }
+        mWeakBinder = AIBinder_Weak_new(binder);
+    }
+
+    binder_status_t status = AServiceManager_registerLazyService(binder, instance);
+    // Strong references we care about kept by remote process
+    AIBinder_decStrong(binder);
+    return status;
+}
+
+::android::sp<IFoo> IFoo::waitForService(const char* instance, AIBinder** outBinder) {
+    if (instance == nullptr) {
+        return nullptr;
+    }
+
+    AIBinder* binder = AServiceManager_waitForService(instance);  // maybe nullptr
+    if (binder == nullptr) {
+        return nullptr;
+    }
+
+    if (!AIBinder_associateClass(binder, IFoo::kClass)) {
+        AIBinder_decStrong(binder);
+        CHECK(false);
+        return nullptr;
+    }
+
+    if (outBinder != nullptr) {
+        AIBinder_incStrong(binder);
+        *outBinder = binder;
+    }
+
+    if (AIBinder_isRemote(binder)) {
+        sp<IFoo> ret = new BpFoo(binder);  // takes ownership of binder
+        return ret;
+    }
+
+    IFoo_Class_Data* data = static_cast<IFoo_Class_Data*>(AIBinder_getUserData(binder));
+    CHECK(data != nullptr);  // always created with non-null data
+    sp<IFoo> ret = data->foo;
+
+    AIBinder* held = AIBinder_Weak_promote(ret->mWeakBinder);
+    CHECK(held == binder);
+    AIBinder_decStrong(held);
+
+    AIBinder_decStrong(binder);
+    return ret;
+}
+
+bool IFoo::isDeclared(const char* instance) {
+    if (instance == nullptr) {
+        return false;
+    }
+    return AServiceManager_isDeclared(instance);
 }
