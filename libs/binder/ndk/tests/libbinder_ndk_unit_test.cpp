@@ -143,6 +143,21 @@ int manualThreadPoolService(const char* instance) {
     return 1;
 }
 
+int lazyService(const char* instance) {
+    ABinderProcess_setThreadPoolMaxThreadCount(0);
+
+    // Strong reference to MyFoo kept by service manager.
+    binder_status_t status = (new MyFoo)->registerLazyService(instance);
+
+    if (status != STATUS_OK) {
+        LOG(FATAL) << "Could not register: " << status << " " << instance;
+    }
+
+    ABinderProcess_joinThreadPool();
+
+    return 1;  // should not return
+}
+
 // This is too slow
 // TEST(NdkBinder, GetServiceThatDoesntExist) {
 //     sp<IFoo> foo = IFoo::getService("asdfghkl;");
@@ -164,6 +179,17 @@ TEST(NdkBinder, CheckServiceThatDoesExist) {
 
 TEST(NdkBinder, DoubleNumber) {
     sp<IFoo> foo = IFoo::getService(IFoo::kSomeInstanceName);
+    ASSERT_NE(foo, nullptr);
+
+    int32_t out;
+    EXPECT_EQ(STATUS_OK, foo->doubleNumber(1, &out));
+    EXPECT_EQ(2, out);
+}
+
+TEST(NdkBinder, GetLazyService) {
+    // Not declared in the vintf manifest
+    ASSERT_FALSE(IFoo::isDeclared(IFoo::kLazyInstanceName));
+    sp<IFoo> foo = IFoo::waitForService(IFoo::kLazyInstanceName);
     ASSERT_NE(foo, nullptr);
 
     int32_t out;
@@ -474,6 +500,10 @@ int main(int argc, char* argv[]) {
     if (fork() == 0) {
         prctl(PR_SET_PDEATHSIG, SIGHUP);
         return manualPollingService(IFoo::kSomeInstanceName);
+    }
+    if (fork() == 0) {
+        prctl(PR_SET_PDEATHSIG, SIGHUP);
+        return lazyService(IFoo::kLazyInstanceName);
     }
     if (fork() == 0) {
         prctl(PR_SET_PDEATHSIG, SIGHUP);

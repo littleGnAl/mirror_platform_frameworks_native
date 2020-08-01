@@ -50,4 +50,34 @@ __attribute__((warn_unused_result)) AIBinder* AServiceManager_checkService(const
  */
 __attribute__((warn_unused_result)) AIBinder* AServiceManager_getService(const char* instance);
 
+/**
+ * This registers a lazy service with the default service manager under this instance name. This
+ * does not take ownership of binder.
+ *
+ * \param binder object to register globally with the service manager.
+ * \param instance identifier of the service. This will be used to lookup the service.
+ *
+ * \return STATUS_OK on success.
+ */
+binder_status_t AServiceManager_registerLazyService(AIBinder* binder, const char* instance);
+
+/**
+ * Gets a binder object with this specific instance name. Efficiently waits for the service.
+ * This also implicitly calls AIBinder_incStrong (so the caller of this function is responsible
+ * for calling AIBinder_decStrong).
+ *
+ * \param instance identifier of the service used to lookup the service.
+ */
+__attribute__((warn_unused_result)) AIBinder* AServiceManager_waitForService(const char* instance);
+
+/**
+ * Check if a service is declared (e.g. VINTF manifest).
+ *
+ * \param instance identifier of the service.
+ *
+ * \return true on success, meaning AServiceManager_waitForService should always
+ *    be able to return the service.
+ */
+bool AServiceManager_isDeclared(const char* instance);
+
 __END_DECLS

@@ -117,6 +117,9 @@ LIBBINDER_NDK31 { # introduced=31
     ABinderProcess_setupPolling; # apex
     AIBinder_getCallingSid; # apex
     AIBinder_setRequestingSid; # apex
+    AServiceManager_isDeclared; # apex
+    AServiceManager_registerLazyService; # apex
+    AServiceManager_waitForService; # apex
 };
 
 LIBBINDER_NDK_PLATFORM {
