@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1c5667c_01bf316a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-08-01T01:39:49Z",
+      "side": 1,
+      "message": "Do I need the ABI-dumps in prebuilts/?",
+      "revId": "f382a69ecf9e97a78b5b56b114936b23aafeec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
