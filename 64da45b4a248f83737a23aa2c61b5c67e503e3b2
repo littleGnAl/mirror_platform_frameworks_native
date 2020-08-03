@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf3d000d_b43ed56f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-03T20:25:00Z",
+      "side": 1,
+      "message": "Happy to roll this fix into the initial crate CL, if preferred.\n\nAIDL tests have embedded NULLs in strings, so we need to support that. +smoreland, is the docstring on AParcel_writeString accurate? AFAICT it doesn\u0027t care if the input string is null-terminated, and always adds another null-terminator in the call to utf8_to_utf16.",
+      "revId": "64da45b4a248f83737a23aa2c61b5c67e503e3b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
