@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29a29fc8_c6caab17",
+        "filename": "libs/input/tests/commons/VelocityTrackerHelper.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T17:27:30Z",
+      "side": 1,
+      "message": "rename folder name to \"common\"",
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524cbb91_db77585b",
+        "filename": "libs/input/tests/fuzzers/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T17:27:30Z",
+      "side": 1,
+      "message": "why do we need this one?",
+      "range": {
+        "startLine": 8,
+        "startChar": 10,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "941aadeb_2336037a",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T17:27:30Z",
+      "side": 1,
+      "message": "static constexpr\n\nalso another question, where does \"48\" come from?\nwe have MAX_AXES defined in [0], is that related?\n\n[0] https://source.corp.google.com/android/frameworks/native/include/input/Input.h;l\u003d325?q\u003dmax_axes\u0026ct\u003dos\u0026sq\u003dpackage:android$",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe786de4_f136481f",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T17:27:30Z",
+      "side": 1,
+      "message": "EventType",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20377e7a_37bdd45f",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T17:27:30Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4613a56_51d62120",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T17:27:30Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "507889ee_8304d5e5",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T17:27:30Z",
+      "side": 1,
+      "message": "can you explain what this computation is doing?\njust switching the order a bit?\n\nlet\u0027s add a comment here to clarify",
+      "range": {
+        "startLine": 91,
+        "startChar": 42,
+        "endLine": 91,
+        "endChar": 64
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4714f25c_089a61be",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T17:27:30Z",
+      "side": 1,
+      "message": "please change all #define to static constexpr or const char*",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
