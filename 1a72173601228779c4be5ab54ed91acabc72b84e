@@ -1,0 +1,302 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2a00904_fc1b503b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "looks good - also, generate ABI dumps for this and add that to the topic. The API itself should stay the same",
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95f75b0_a93225ee",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "document also (I\u0027ve filed b/162749088 for other versions of this API)\n\n- service must be configured statically with init to be available via ctl.interface_* commands in order to be restarted (also `oneshot` is needed and `disabled` is typical)\n- service lifetime is controlled by servicemanager\n- this function cannot be safely used in conjunction with AServiceManager_addService, since the whole process is dynamic for this configuration. Instead, all services in the process should be registered using this.",
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe56340e_30fc24a4",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "we\u0027ll want __INTRODUCED_IN(31) on these, since they are new in S. Maybe jreck knows if we want ifdef as well?",
+      "range": {
+        "startLine": 62,
+        "startChar": 91,
+        "endLine": 62,
+        "endChar": 92
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38458114_01066905",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "note here that if the service is not declared, it will wait indefinitely",
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6927b3_780e3b3f",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "\\return service if registered or null",
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9119c4fe_da92d80b",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "we can remove \u0027# apex\u0027 for this function (it should have \u0027#llndk\u0027 instead). Actually, we can probably add #llndk to a lot of these, but I suppose we can wait until they are needed.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 47
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b43a4e3_aa6584c5",
+        "filename": "libs/binder/ndk/tests/iface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": ":) (would actually assert/CHECK here since it is a test)",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 5
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0705fba5_79c27c1f",
+        "filename": "libs/binder/ndk/tests/iface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "I would recommend either:\n- abstracting this out of here and addService into a function like \u0027getBinder\u0027\n- or, avoid using IFoo for this and use IBinderNdkUnitTest, which has all the nicer functions generated (and matches more closely expected usage -- IFoo is an independent test of a way to implement interfaces, but in practice, AIDL always generates these)",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3246f21a_b0d5fae5",
+        "filename": "libs/binder/ndk/tests/iface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "or outBinder is null. Also, should assert in this situation",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f91542e_727a4fa5",
+        "filename": "libs/binder/ndk/tests/iface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "same as above, if we use IFoo, maybe abstract this into something like \u0027fromBinder\u0027. Otherwise, use AIDL-generated functionality",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 15
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38885395_676eebd1",
+        "filename": "libs/binder/ndk/tests/iface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "nit: this function isn\u0027t needed - it is exactly AServiceManager_isDeclared",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 1
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "340aaec7_b23a0f8f",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "nit: also comment that this is only for a test, and doesn\u0027t come with corresponding init behavior, so the service can only shutdown, not restart",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 57
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2891fe3c_49dcb080",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "these should work on any of the services, fwiw",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 65
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cc517dd_36ed4151",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-03T17:54:51Z",
+      "side": 1,
+      "message": "one thing you could do is wait 10-20 seconds and make sure this service shuts down (after pinging it at least once)",
+      "range": {
+        "startLine": 506,
+        "startChar": 15,
+        "endLine": 506,
+        "endChar": 26
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
