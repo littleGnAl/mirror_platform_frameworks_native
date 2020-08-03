@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cc78d9d3_8d48085e",
+        "filename": "libs/input/tests/commons/VelocityTrackerHelper.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-03T18:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29a29fc8_c6caab17",
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "524cbb91_db77585b",
         "filename": "libs/input/tests/fuzzers/Android.bp",
         "patchSetId": 7
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "79cf4560_84c8ca91",
+        "filename": "libs/input/tests/fuzzers/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-03T18:23:26Z",
+      "side": 1,
+      "message": "Removed. Done",
+      "parentUuid": "524cbb91_db77585b",
+      "range": {
+        "startLine": 8,
+        "startChar": 10,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "941aadeb_2336037a",
         "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
         "patchSetId": 7
@@ -53,6 +95,30 @@
       "writtenOn": "2020-08-03T17:27:30Z",
       "side": 1,
       "message": "static constexpr\n\nalso another question, where does \"48\" come from?\nwe have MAX_AXES defined in [0], is that related?\n\n[0] https://source.corp.google.com/android/frameworks/native/include/input/Input.h;l\u003d325?q\u003dmax_axes\u0026ct\u003dos\u0026sq\u003dpackage:android$",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c25b98c5_b98df251",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-03T18:23:26Z",
+      "side": 1,
+      "message": "48 represents different axis according to this enum: https://cs.android.com/android/platform/superproject/+/master:frameworks/native/include/android/input.h;drc\u003dmaster;bpv\u003d1;bpt\u003d1;l\u003d394.\nBut I think I misunderstood MAX_AXES. So my question is how many axes can pointercoord have? what I think is MAX_AXES\u003d30, is that right?",
+      "parentUuid": "941aadeb_2336037a",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "d39f2bec_57be31ca",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-03T18:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe786de4_f136481f",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20377e7a_37bdd45f",
         "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
         "patchSetId": 7
@@ -108,6 +198,30 @@
       "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bbccd2e_e94e6fe2",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-03T18:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20377e7a_37bdd45f",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "c812e859_3d1d62b9",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-03T18:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4613a56_51d62120",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "507889ee_8304d5e5",
         "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
         "patchSetId": 7
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "8fe0b9f3_dc6f2524",
+        "filename": "libs/input/tests/fuzzers/InputTransport_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-03T18:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507889ee_8304d5e5",
+      "range": {
+        "startLine": 91,
+        "startChar": 42,
+        "endLine": 91,
+        "endChar": 64
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4714f25c_089a61be",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 7
@@ -177,6 +339,30 @@
       "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c52547_1a4ea3a7",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-03T18:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4714f25c_089a61be",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "122f687e4d6449a8ca268785f9b04a01ff2a246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
