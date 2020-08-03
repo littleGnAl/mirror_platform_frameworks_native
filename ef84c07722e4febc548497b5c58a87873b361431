@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7eb96d32_129e0903",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-03T23:04:08Z",
+      "side": 1,
+      "message": "Latest change just fixes doctests. Whenever doctests get enabled for Rust, we\u0027re going to have to exclude bindgen-generated bindings because of https://github.com/rust-lang/rust-bindgen/issues/1313.",
+      "revId": "ef84c07722e4febc548497b5c58a87873b361431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
