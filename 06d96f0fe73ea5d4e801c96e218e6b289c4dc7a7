@@ -63,6 +63,30 @@
       "revId": "06d96f0fe73ea5d4e801c96e218e6b289c4dc7a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5820873_a369565b",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-03T23:01:48Z",
+      "side": 1,
+      "message": "Good point, I forgot to even consider doctests. I\u0027ve fixed doctests for both this CL and the initial crate now.",
+      "parentUuid": "d7d83dad_16754848",
+      "range": {
+        "startLine": 133,
+        "startChar": 11,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "06d96f0fe73ea5d4e801c96e218e6b289c4dc7a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
