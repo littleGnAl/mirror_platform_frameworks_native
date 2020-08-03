@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e3bd92c8_e127685b",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-08-03T23:17:03Z",
+      "side": 1,
+      "message": "Answer is yes. Added the #ifdef as well.",
+      "parentUuid": "c8780957_15bfeb16",
+      "range": {
+        "startLine": 62,
+        "startChar": 91,
+        "endLine": 62,
+        "endChar": 92
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38458114_01066905",
         "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
         "patchSetId": 2
