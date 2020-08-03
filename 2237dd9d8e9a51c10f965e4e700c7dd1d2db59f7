@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f32589e_f5673d68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T21:26:15Z",
+      "side": 1,
+      "message": "plz write the actual command that you used to run this instead",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "2237dd9d8e9a51c10f965e4e700c7dd1d2db59f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e1cfc10_c8ce4d0f",
+        "filename": "libs/input/tests/common/VelocityTrackerHelper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T21:26:15Z",
+      "side": 1,
+      "message": "This was pulled out of VelocityTracker_test, but not removed from there?",
+      "revId": "2237dd9d8e9a51c10f965e4e700c7dd1d2db59f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f30d305_f1cd755a",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-03T21:26:15Z",
+      "side": 1,
+      "message": "bringing back the earlier question, can this be replaced with std::tmpfile? or is it required to have the temp file located in /data/local/tmp?\n\nif so, suggest leaving a comment explaining that",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "2237dd9d8e9a51c10f965e4e700c7dd1d2db59f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
