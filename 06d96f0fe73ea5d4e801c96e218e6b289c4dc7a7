@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9a70864_b9e3ddeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-03T21:44:23Z",
+      "side": 1,
+      "message": "Code looks fine. Doesn\u0027t this fail doctests though? (I know we don\u0027t have them on in Soong yet, but we should have them someday).",
+      "revId": "06d96f0fe73ea5d4e801c96e218e6b289c4dc7a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7d83dad_16754848",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-03T21:44:23Z",
+      "side": 1,
+      "message": "I think this will fail as soon as we have doctests online unless I\u0027m missing something.",
+      "range": {
+        "startLine": 133,
+        "startChar": 11,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "06d96f0fe73ea5d4e801c96e218e6b289c4dc7a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
