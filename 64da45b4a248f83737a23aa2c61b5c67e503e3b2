@@ -16,6 +16,23 @@
       "revId": "64da45b4a248f83737a23aa2c61b5c67e503e3b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9eb993eb_369169f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-03T22:29:56Z",
+      "side": 1,
+      "message": "This is reasonable from a Rust point of view, but only if we know the NDK will always allow strings with NULL in the middle. If the documented interface doesn\u0027t guarantee that, I\u0027m hesitant to make that assumption in the Rust bindings, even if it would make things cleaner.\n\nsmoreland@ can probably speak better to whether this is a reasonable assumption about the NDK.",
+      "revId": "64da45b4a248f83737a23aa2c61b5c67e503e3b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
