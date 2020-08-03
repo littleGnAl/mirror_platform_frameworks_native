@@ -1,0 +1,443 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f283ac36_ba8d00d1",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "97e4be34_e8727a79",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "235d5451_8efe0a36",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e0de67a8_f0188a10",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4aca6255_fec60aff",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ece89858_ab34ebc5",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "756f1fd7_3593a743",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "598ec065_2f290e67",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "0db0daea_a3f7ec3b",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b12f4954_da6472b7",
+        "filename": "libs/binder/rust/build.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 52,
+        "startChar": 9,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174500",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [
+        {
+          "fixId": "440be972_026e1238",
+          "description": "Change to \"libs/binder/rust/src/sys/libbinder_bindings.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+              "range": {
+                "startLine": 389,
+                "startChar": 48,
+                "endLine": 389,
+                "endChar": 62
+              },
+              "replacement": "correspondence"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "402a3b35_1b9b03b8",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Common typo found: \"correspondance\" -- should it be \"correspondence\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 389,
+        "startChar": 48,
+        "endLine": 389,
+        "endChar": 62
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174486",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "fbdef521_3c1d7991",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nmust agree\n",
+      "range": {
+        "startLine": 398,
+        "startChar": 39,
+        "endLine": 398,
+        "endChar": 49
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "92fcfa49_f006df9a",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 1601,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027valid\u0027, \u0027validity check\u0027 or \u0027initial check\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 1601,
+        "startChar": 14,
+        "endLine": 1601,
+        "endChar": 20
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "38e736e5_568c0fc1",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027valid\u0027, \u0027validity check\u0027 or \u0027initial check\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 1698,
+        "startChar": 14,
+        "endLine": 1698,
+        "endChar": 20
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174500",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d17",
+      "fixSuggestions": [
+        {
+          "fixId": "dd3718c1_3ad5d576",
+          "description": "Change to \"libs/binder/rust/src/sys/libbinder_bindings.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+              "range": {
+                "startLine": 1730,
+                "startChar": 89,
+                "endLine": 1730,
+                "endChar": 96
+              },
+              "replacement": "receive"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "4ea49407_f0d72363",
+        "filename": "libs/binder/rust/src/sys/libbinder_bindings.rs",
+        "patchSetId": 17
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:19:57Z",
+      "side": 1,
+      "message": "Common typo found: \"recieve\" -- should it be \"receive\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1730,
+        "startChar": 89,
+        "endLine": 1730,
+        "endChar": 96
+      },
+      "revId": "867db57c7be34dd2dc61cb902c694c217fcd1c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
