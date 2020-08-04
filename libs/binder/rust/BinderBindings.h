@@ -14,37 +14,11 @@
  * limitations under the License.
  */
 
-#pragma once
-
-// #include <cstdint>
-// #include <memory>
-
-// #include <utils/Errors.h>
-// #include <android-base/unique_fd.h>
-// #include <binder/IPCThreadState.h>
-// #include <binder/IServiceManager.h>
-// #include <binder/Parcel.h>
-// #include <binder/Status.h>
-
 #include <android/binder_ibinder.h>
 #include <android/binder_manager.h>
 #include <android/binder_parcel.h>
 #include <android/binder_process.h>
 #include <android/binder_status.h>
-
-// ---------------------------------------------------------------------------
-// Implemented in Rust
-
-extern "C" {
-
-// An opaque pointer to any Rust struct. This is initialized when creating a
-// BinderNative wrapper and passed back to the TransactCallback for onTransact.
-struct RustObject;
-
-}
-
-// ---------------------------------------------------------------------------
-// Implemented in C++
 
 namespace android {
 
@@ -93,17 +67,18 @@ enum ExceptionCode {
     TRANSACTION_FAILED = EX_TRANSACTION_FAILED,
 };
 
+namespace consts {
+
 enum {
     FIRST_CALL_TRANSACTION = FIRST_CALL_TRANSACTION,
     LAST_CALL_TRANSACTION = LAST_CALL_TRANSACTION,
 };
 
-
 enum {
     FLAG_ONEWAY = FLAG_ONEWAY,
 };
 
-class RustBBinder;
+} // namespace consts
 
 } // namespace c_interface
 

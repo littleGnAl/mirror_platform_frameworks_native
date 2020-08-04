@@ -101,7 +101,8 @@ mod binder;
 mod error;
 mod native;
 mod state;
-mod sys;
+
+use binder_ndk_bindgen as sys;
 
 pub mod parcel;
 

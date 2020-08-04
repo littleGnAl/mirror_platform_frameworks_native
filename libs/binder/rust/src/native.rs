@@ -15,7 +15,7 @@
  */
 
 use crate::binder::{AsNative, Interface, InterfaceClassMethods, Remotable, TransactionCode};
-use crate::error::{status_result, Result, StatusCode};
+use crate::error::{status_result, status_t, Result, StatusCode};
 use crate::parcel::{Parcel, Serialize};
 use crate::proxy::SpIBinder;
 use crate::sys;
@@ -193,7 +193,7 @@ impl<T: Remotable> InterfaceClassMethods for Binder<T> {
         code: u32,
         data: *const sys::AParcel,
         reply: *mut sys::AParcel,
-    ) -> sys::status_t {
+    ) -> status_t {
         let res = {
             let mut reply = Parcel::borrowed(reply).unwrap();
             let data = Parcel::borrowed(data as *mut sys::AParcel).unwrap();

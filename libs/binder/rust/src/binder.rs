@@ -16,7 +16,7 @@
 
 //! Trait definitions for binder objects
 
-use crate::error::Result;
+use crate::error::{status_t, Result};
 use crate::parcel::Parcel;
 use crate::proxy::{DeathRecipient, SpIBinder};
 use crate::sys;
@@ -294,7 +294,7 @@ pub trait InterfaceClassMethods {
         code: u32,
         data: *const sys::AParcel,
         reply: *mut sys::AParcel,
-    ) -> sys::status_t;
+    ) -> status_t;
 
     /// Called whenever an `AIBinder` object is no longer referenced and needs
     /// to be destroyed.

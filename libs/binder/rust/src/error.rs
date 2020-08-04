@@ -22,12 +22,12 @@ use std::ffi::CStr;
 use std::fmt::{Debug, Display, Formatter, Result as FmtResult};
 use std::result;
 
-pub use crate::sys::status_t;
+pub use sys::binder_status_t as status_t;
 
 /// Low-level status codes from Android `libutils`.
 // All error codes are negative integer values. Derived from the anonymous enum
 // in utils/Errors.h
-pub use crate::sys::StatusCode;
+pub use sys::android_c_interface_StatusCode as StatusCode;
 
 /// A specialized [`Result`](result::Result) for binder operations.
 pub type Result<T> = result::Result<T, StatusCode>;
@@ -37,66 +37,62 @@ pub type Result<T> = result::Result<T, StatusCode>;
 /// An OK status is converted into an `Ok` result, any other status is converted
 /// into an `Err` result holding the status code.
 pub fn status_result(status: status_t) -> Result<()> {
-    match StatusCode::from(status) {
+    match parse_status_code(status) {
         StatusCode::OK => Ok(()),
         e => Err(e),
     }
 }
 
-impl Display for StatusCode {
-    fn fmt(&self, f: &mut Formatter) -> FmtResult {
-        write!(f, "StatusCode::{:?}", self)
+// impl Display for StatusCode {
+//     fn fmt(&self, f: &mut Formatter) -> FmtResult {
+//         write!(f, "StatusCode::{:?}", self)
+//     }
+// }
+
+// impl error::Error for StatusCode {}
+
+fn parse_status_code(code: i32) -> StatusCode {
+    match code {
+        e if e == StatusCode::OK as i32 => StatusCode::OK,
+        e if e == StatusCode::NO_MEMORY as i32 => StatusCode::NO_MEMORY,
+        e if e == StatusCode::INVALID_OPERATION as i32 => StatusCode::INVALID_OPERATION,
+        e if e == StatusCode::BAD_VALUE as i32 => StatusCode::BAD_VALUE,
+        e if e == StatusCode::BAD_TYPE as i32 => StatusCode::BAD_TYPE,
+        e if e == StatusCode::NAME_NOT_FOUND as i32 => StatusCode::NAME_NOT_FOUND,
+        e if e == StatusCode::PERMISSION_DENIED as i32 => StatusCode::PERMISSION_DENIED,
+        e if e == StatusCode::NO_INIT as i32 => StatusCode::NO_INIT,
+        e if e == StatusCode::ALREADY_EXISTS as i32 => StatusCode::ALREADY_EXISTS,
+        e if e == StatusCode::DEAD_OBJECT as i32 => StatusCode::DEAD_OBJECT,
+        e if e == StatusCode::FAILED_TRANSACTION as i32 => StatusCode::FAILED_TRANSACTION,
+        e if e == StatusCode::BAD_INDEX as i32 => StatusCode::BAD_INDEX,
+        e if e == StatusCode::NOT_ENOUGH_DATA as i32 => StatusCode::NOT_ENOUGH_DATA,
+        e if e == StatusCode::WOULD_BLOCK as i32 => StatusCode::WOULD_BLOCK,
+        e if e == StatusCode::TIMED_OUT as i32 => StatusCode::TIMED_OUT,
+        e if e == StatusCode::UNKNOWN_TRANSACTION as i32 => StatusCode::UNKNOWN_TRANSACTION,
+        e if e == StatusCode::FDS_NOT_ALLOWED as i32 => StatusCode::FDS_NOT_ALLOWED,
+        e if e == StatusCode::UNEXPECTED_NULL as i32 => StatusCode::UNEXPECTED_NULL,
+        _ => StatusCode::UNKNOWN_ERROR,
     }
 }
 
-impl error::Error for StatusCode {}
+pub use sys::android_c_interface_ExceptionCode as ExceptionCode;
 
-impl From<i32> for StatusCode {
-    fn from(code: i32) -> StatusCode {
-        match code {
-            e if e == StatusCode::OK as i32 => StatusCode::OK,
-            e if e == StatusCode::NO_MEMORY as i32 => StatusCode::NO_MEMORY,
-            e if e == StatusCode::INVALID_OPERATION as i32 => StatusCode::INVALID_OPERATION,
-            e if e == StatusCode::BAD_VALUE as i32 => StatusCode::BAD_VALUE,
-            e if e == StatusCode::BAD_TYPE as i32 => StatusCode::BAD_TYPE,
-            e if e == StatusCode::NAME_NOT_FOUND as i32 => StatusCode::NAME_NOT_FOUND,
-            e if e == StatusCode::PERMISSION_DENIED as i32 => StatusCode::PERMISSION_DENIED,
-            e if e == StatusCode::NO_INIT as i32 => StatusCode::NO_INIT,
-            e if e == StatusCode::ALREADY_EXISTS as i32 => StatusCode::ALREADY_EXISTS,
-            e if e == StatusCode::DEAD_OBJECT as i32 => StatusCode::DEAD_OBJECT,
-            e if e == StatusCode::FAILED_TRANSACTION as i32 => StatusCode::FAILED_TRANSACTION,
-            e if e == StatusCode::BAD_INDEX as i32 => StatusCode::BAD_INDEX,
-            e if e == StatusCode::NOT_ENOUGH_DATA as i32 => StatusCode::NOT_ENOUGH_DATA,
-            e if e == StatusCode::WOULD_BLOCK as i32 => StatusCode::WOULD_BLOCK,
-            e if e == StatusCode::TIMED_OUT as i32 => StatusCode::TIMED_OUT,
-            e if e == StatusCode::UNKNOWN_TRANSACTION as i32 => StatusCode::UNKNOWN_TRANSACTION,
-            e if e == StatusCode::FDS_NOT_ALLOWED as i32 => StatusCode::FDS_NOT_ALLOWED,
-            e if e == StatusCode::UNEXPECTED_NULL as i32 => StatusCode::UNEXPECTED_NULL,
-            _ => StatusCode::UNKNOWN_ERROR,
+fn parse_exception_code(code: i32) -> ExceptionCode {
+    match code {
+        e if e == ExceptionCode::NONE as i32 => ExceptionCode::NONE,
+        e if e == ExceptionCode::SECURITY as i32 => ExceptionCode::SECURITY,
+        e if e == ExceptionCode::BAD_PARCELABLE as i32 => ExceptionCode::BAD_PARCELABLE,
+        e if e == ExceptionCode::ILLEGAL_ARGUMENT as i32 => ExceptionCode::ILLEGAL_ARGUMENT,
+        e if e == ExceptionCode::NULL_POINTER as i32 => ExceptionCode::NULL_POINTER,
+        e if e == ExceptionCode::ILLEGAL_STATE as i32 => ExceptionCode::ILLEGAL_STATE,
+        e if e == ExceptionCode::NETWORK_MAIN_THREAD as i32 => {
+            ExceptionCode::NETWORK_MAIN_THREAD
         }
-    }
-}
-
-pub use crate::sys::ExceptionCode;
-
-impl From<i32> for ExceptionCode {
-    fn from(code: i32) -> ExceptionCode {
-        match code {
-            e if e == ExceptionCode::NONE as i32 => ExceptionCode::NONE,
-            e if e == ExceptionCode::SECURITY as i32 => ExceptionCode::SECURITY,
-            e if e == ExceptionCode::BAD_PARCELABLE as i32 => ExceptionCode::BAD_PARCELABLE,
-            e if e == ExceptionCode::ILLEGAL_ARGUMENT as i32 => ExceptionCode::ILLEGAL_ARGUMENT,
-            e if e == ExceptionCode::NULL_POINTER as i32 => ExceptionCode::NULL_POINTER,
-            e if e == ExceptionCode::ILLEGAL_STATE as i32 => ExceptionCode::ILLEGAL_STATE,
-            e if e == ExceptionCode::NETWORK_MAIN_THREAD as i32 => {
-                ExceptionCode::NETWORK_MAIN_THREAD
-            }
-            e if e == ExceptionCode::UNSUPPORTED_OPERATION as i32 => {
-                ExceptionCode::UNSUPPORTED_OPERATION
-            }
-            e if e == ExceptionCode::SERVICE_SPECIFIC as i32 => ExceptionCode::SERVICE_SPECIFIC,
-            _ => ExceptionCode::TRANSACTION_FAILED,
+        e if e == ExceptionCode::UNSUPPORTED_OPERATION as i32 => {
+            ExceptionCode::UNSUPPORTED_OPERATION
         }
+        e if e == ExceptionCode::SERVICE_SPECIFIC as i32 => ExceptionCode::SERVICE_SPECIFIC,
+        _ => ExceptionCode::TRANSACTION_FAILED,
     }
 }
 
@@ -217,7 +213,7 @@ impl Status {
             // here.
             sys::AStatus_getExceptionCode(self.as_native())
         };
-        code.into()
+        parse_exception_code(code)
     }
 
     /// Return a status code representing a transaction failure, or
@@ -232,7 +228,7 @@ impl Status {
             // are always passing a valid pointer to `AStatus_getStatus` here.
             sys::AStatus_getStatus(self.as_native())
         };
-        code.into()
+        parse_status_code(code)
     }
 
     /// Return a service specific error if this status represents one.
