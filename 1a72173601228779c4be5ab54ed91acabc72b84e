@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b40be0e2_ffed153a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-08-04T16:06:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "09b05a42_fa28b9a6",
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e95f75b0_a93225ee",
         "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
         "patchSetId": 2
@@ -631,6 +649,30 @@
     },
     {
       "key": {
+        "uuid": "ae28c4d9_ba23517f",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-08-04T16:06:49Z",
+      "side": 1,
+      "message": "Added the sleep before registering. Tested at 60s, moved to 1s for sake of time and added comment.",
+      "parentUuid": "1497fe54_c796f8b4",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 65
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cc517dd_36ed4151",
         "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
         "patchSetId": 2
@@ -690,6 +732,30 @@
       "side": 1,
       "message": "make sure to drop the reference count on the binder, and call IPCThreadState::self()-\u003eflushCommands();. Then checkService should return null.\n\nIf you hit more errors, make sure to check for \u0027avc: denied\u0027 lines or other logs that could be relevant.",
       "parentUuid": "b0b51c58_731a82c3",
+      "range": {
+        "startLine": 506,
+        "startChar": 15,
+        "endLine": 506,
+        "endChar": 26
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea50cc91_087a34ea",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-08-04T16:06:49Z",
+      "side": 1,
+      "message": "Got it. Should we comment out the test case like the one getting on a non-existent service? I settled on 5 seconds. 1 second was too small.",
+      "parentUuid": "111713d7_25a7d416",
       "range": {
         "startLine": 506,
         "startChar": 15,
