@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c966b4b6_9cf5f36d",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-08-04T16:18:33Z",
+      "side": 1,
+      "message": "\u0027this\u0027 vs. \u0027this\u0027 which seem to be different \u0027this\u0027s? Suggest replacing both instances of \u0027this\u0027 with the explicit method it\u0027s referring to.",
+      "range": {
+        "startLine": 59,
+        "startChar": 83,
+        "endLine": 61,
+        "endChar": 72
+      },
+      "revId": "8bcc58fea4a631813289b57a9139f7df575602e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1afb39be_ab6f668f",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-08-04T16:18:33Z",
+      "side": 1,
+      "message": "is there any naming convention for these or further docs to reference on the matter? I assume these have to be device-wide unique?",
+      "range": {
+        "startLine": 64,
+        "startChar": 10,
+        "endLine": 64,
+        "endChar": 86
+      },
+      "revId": "8bcc58fea4a631813289b57a9139f7df575602e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
