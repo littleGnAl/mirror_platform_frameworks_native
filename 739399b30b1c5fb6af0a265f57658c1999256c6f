@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "32142ede_c5732ce0",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-04T00:20:05Z",
+      "side": 1,
+      "message": "Wow, this is used all over the place. Anti-pattern, John?",
+      "parentUuid": "9842a234_f92958de",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "739399b30b1c5fb6af0a265f57658c1999256c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db3952ae_691366a3",
         "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
         "patchSetId": 4
