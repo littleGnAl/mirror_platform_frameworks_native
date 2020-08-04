@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "09b05a42_fa28b9a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-04T00:19:05Z",
+      "side": 1,
+      "message": "I don\u0027t expect any changes in the header/api itself. So, you might as well spend the time to update it now. Looks good!",
+      "parentUuid": "01a085b8_ef739e28",
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e95f75b0_a93225ee",
         "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
         "patchSetId": 2
@@ -589,6 +607,30 @@
     },
     {
       "key": {
+        "uuid": "1497fe54_c796f8b4",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-04T00:19:05Z",
+      "side": 1,
+      "message": "I mean, I might use these on existing services and keep the lazy service test focused on that service specifically. Alternatively, maybe add a sleep before the lazy service is registered, to make sure we\u0027re testing that it\u0027s waited here.",
+      "parentUuid": "f72a418e_df15157e",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 65
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cc517dd_36ed4151",
         "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
         "patchSetId": 2
@@ -624,6 +666,30 @@
       "side": 1,
       "message": "I tried and the service still seems reachable after 30s. What would kill the service if it\u0027s not configured with init? I thought it needed to be registered for init to do anything with the ctl.interface.* messages from servicemanager.",
       "parentUuid": "2cc517dd_36ed4151",
+      "range": {
+        "startLine": 506,
+        "startChar": 15,
+        "endLine": 506,
+        "endChar": 26
+      },
+      "revId": "1a72173601228779c4be5ab54ed91acabc72b84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "111713d7_25a7d416",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-04T00:19:05Z",
+      "side": 1,
+      "message": "make sure to drop the reference count on the binder, and call IPCThreadState::self()-\u003eflushCommands();. Then checkService should return null.\n\nIf you hit more errors, make sure to check for \u0027avc: denied\u0027 lines or other logs that could be relevant.",
+      "parentUuid": "b0b51c58_731a82c3",
       "range": {
         "startLine": 506,
         "startChar": 15,
