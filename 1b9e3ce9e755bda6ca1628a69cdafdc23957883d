@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5840d934_ea5f14c4",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-04T21:00:26Z",
+      "side": 1,
+      "message": "nullptr over 0, everywhere",
+      "range": {
+        "startLine": 215,
+        "startChar": 13,
+        "endLine": 215,
+        "endChar": 14
+      },
+      "revId": "1b9e3ce9e755bda6ca1628a69cdafdc23957883d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0446acf_97619dd6",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-04T21:00:26Z",
+      "side": 1,
+      "message": "this should be flaky, I would try 10s (the exact time is not part of the API and may be made arbitrarily large in the future)",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 13
+      },
+      "revId": "1b9e3ce9e755bda6ca1628a69cdafdc23957883d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
