@@ -422,6 +422,30 @@
     },
     {
       "key": {
+        "uuid": "317a5e1d_3004e83a",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-04T17:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c129903e_2a28dfd8",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "33bb530aaa6bf08f7b93e167890d028b66817916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e1d30a1_524d578e",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 13
