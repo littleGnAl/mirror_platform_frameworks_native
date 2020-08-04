@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feea650c_0288e73b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-04T20:37:35Z",
+      "side": 1,
+      "message": "This will require https://android-review.googlesource.com/c/platform/build/soong/+/1388348 and https://android-review.googlesource.com/c/platform/build/soong/+/1388347 to land first.",
+      "revId": "0ebee72bd2e461bf0dbd9137082b50de48159933",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
