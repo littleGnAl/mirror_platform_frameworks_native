@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "40b7d95b_69e34a53",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-08-04T21:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5840d934_ea5f14c4",
+      "range": {
+        "startLine": 215,
+        "startChar": 13,
+        "endLine": 215,
+        "endChar": 14
+      },
+      "revId": "1b9e3ce9e755bda6ca1628a69cdafdc23957883d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0446acf_97619dd6",
         "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-04T21:00:26Z",
       "side": 1,
       "message": "this should be flaky, I would try 10s (the exact time is not part of the API and may be made arbitrarily large in the future)",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 13
+      },
+      "revId": "1b9e3ce9e755bda6ca1628a69cdafdc23957883d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "973e7af8_1d207301",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-08-04T21:13:28Z",
+      "side": 1,
+      "message": "Ok. Should I comment this test case out like the one on line 168 since it takes a lot of time?",
+      "parentUuid": "b0446acf_97619dd6",
       "range": {
         "startLine": 219,
         "startChar": 0,
