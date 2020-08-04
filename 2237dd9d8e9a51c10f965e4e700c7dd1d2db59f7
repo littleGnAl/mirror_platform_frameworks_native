@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a4d455c_61ae63d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-04T22:51:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f32589e_f5673d68",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "2237dd9d8e9a51c10f965e4e700c7dd1d2db59f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e1cfc10_c8ce4d0f",
         "filename": "libs/input/tests/common/VelocityTrackerHelper.h",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "2237dd9d8e9a51c10f965e4e700c7dd1d2db59f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30f7d4a6_0f269096",
+        "filename": "libs/input/tests/common/VelocityTrackerHelper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-04T22:51:59Z",
+      "side": 1,
+      "message": "Yes, I was going to create different CL for that. Should I do it in this one?",
+      "parentUuid": "1e1cfc10_c8ce4d0f",
+      "revId": "2237dd9d8e9a51c10f965e4e700c7dd1d2db59f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "2237dd9d8e9a51c10f965e4e700c7dd1d2db59f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b23733c_9fac6192",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-04T22:51:59Z",
+      "side": 1,
+      "message": "Talked with Siarhei on chat and resolved it.The thing with std::tmpfile() is that we don\u0027t get filePath of that temporary file created and we require filePath to make api call. Second change that I made is instead of hardcoding the location for creation of unique temporary files, I am using std::filesystem::temp_directory_path() to get location for storing temp files. Thanks Siarhei!",
+      "parentUuid": "9f30d305_f1cd755a",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "2237dd9d8e9a51c10f965e4e700c7dd1d2db59f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
