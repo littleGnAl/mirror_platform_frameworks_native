@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40c7cf35_dd3a382f",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "why do we need multiple targets for fuzzers? is it possible to just have something like inputflinger_fuzzers, similar to how we have inputflinger_tests?",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb8e5bc_f524ac24",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "use static constexpr instead of #define (everywhere else too)",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca05f82_9e475156",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "all of these tests seem quite disjoint. why not split them into individual tests?",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "752a473d_fb5cda96",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "these are inconsistent with the previous names. you currently have \"queue, newQueue, anotherQueue, aqueue, ...\". this will be fixed if these are all split into individual pieces.",
+      "range": {
+        "startLine": 56,
+        "startChar": 27,
+        "endLine": 56,
+        "endChar": 33
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e2ab40a_22d56cab",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "plz clarify\n\n\"only pop the number of elements currently in the queue\"\n\nor just remove?",
+      "range": {
+        "startLine": 75,
+        "startChar": 49,
+        "endLine": 75,
+        "endChar": 80
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72f917c3_d0ebbe97",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "plz fix format:\n\n// comment\ncapacity \u003d ...\n\n2 lines instead of 4",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 98
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ec4584_faff9dc0",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "move to previous line",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3feed6c9_7d06d656",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 95,
+        "startChar": 22,
+        "endLine": 95,
+        "endChar": 84
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c312e001_e409fa8f",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "generateFuzzedMotionArgs",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 63
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f01ddfa_999dd3ce",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "what are these doingg? just checkingg for crash / undefined behaviour?",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1143e61a_62746783",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "what does this do?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc77712_7fbfcf5e",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-04T20:27:39Z",
+      "side": 1,
+      "message": "does this compile? im having a hard time following this",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
