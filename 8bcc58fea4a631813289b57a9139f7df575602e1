@@ -69,6 +69,30 @@
       "revId": "8bcc58fea4a631813289b57a9139f7df575602e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b508f91_7ff20310",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-08-04T17:19:36Z",
+      "side": 1,
+      "message": "The only conventions exist for VINTF services. Some info here: https://source.android.com/devices/architecture/vintf/objects. Enforced here: https://source.corp.google.com/android/frameworks/native/cmds/servicemanager/ServiceManager.cpp;l\u003d44.\nThey do have to be device-wide unique. It can cause issues when they conflict https://b.corp.google.com/issues/141332696",
+      "parentUuid": "1afb39be_ab6f668f",
+      "range": {
+        "startLine": 64,
+        "startChar": 10,
+        "endLine": 64,
+        "endChar": 86
+      },
+      "revId": "8bcc58fea4a631813289b57a9139f7df575602e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
