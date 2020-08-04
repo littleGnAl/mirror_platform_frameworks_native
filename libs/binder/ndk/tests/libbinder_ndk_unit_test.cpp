@@ -143,11 +143,10 @@ int manualThreadPoolService(const char* instance) {
     return 1;
 }
 
-// This is too slow
-// TEST(NdkBinder, GetServiceThatDoesntExist) {
-//     sp<IFoo> foo = IFoo::getService("asdfghkl;");
-//     EXPECT_EQ(nullptr, foo.get());
-// }
+TEST(NdkBinder, GetServiceThatDoesntExist) {
+    sp<IFoo> foo = IFoo::getService("asdfghkl;");
+    EXPECT_EQ(nullptr, foo.get());
+}
 
 TEST(NdkBinder, CheckServiceThatDoesntExist) {
     AIBinder* binder = AServiceManager_checkService("asdfghkl;");
