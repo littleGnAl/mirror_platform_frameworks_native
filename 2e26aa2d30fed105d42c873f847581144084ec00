@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a09836d_87d6b956",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-08-05T18:39:07Z",
+      "side": 1,
+      "message": "This is the motivation for aosp/1389398 and aosp/1390940",
+      "revId": "2e26aa2d30fed105d42c873f847581144084ec00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
