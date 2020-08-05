@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "11269806_4f455a5c",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-05T22:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25a5f917_5bab3744",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5cdce2e_c4b68a17",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 9
@@ -210,6 +234,30 @@
       "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57ee0528_6ef49397",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-05T22:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5cdce2e_c4b68a17",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 1
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -328,6 +376,30 @@
       "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19b0a8fd_7f675bdb",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-05T22:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d16fd455_9dc9070c",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 5
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
