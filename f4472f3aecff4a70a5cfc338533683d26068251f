@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bf1746c_7489e3d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-08-05T19:23:36Z",
+      "side": 1,
+      "message": "It\u0027s amazing the things that bad \u0027code smells\u0027 lead you towards.  \n\nThis certainly wasn\u0027t on the top of my mind when I looked into removing function, but now that I\u0027m deep in the code path, it\u0027s clear to see that this is a bug as well.\n\nI wonder now how much of that 10x engineering margin was due to users expanding their log buffer size with `logcat -G` then having their bugreports timeout since the value was chosen incorrectly...  Probably not worth tuning further, though, especially since the new logd should be more resilient.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 64
+      },
+      "revId": "f4472f3aecff4a70a5cfc338533683d26068251f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
