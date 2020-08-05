@@ -19,6 +19,7 @@ cc_defaults {
         "libcutils",
         "liblog",
         "libutils",
+        "libutilscallstack",
         "libselinux",
     ],
 

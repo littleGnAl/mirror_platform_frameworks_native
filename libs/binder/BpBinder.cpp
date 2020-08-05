@@ -24,6 +24,7 @@
 #include <binder/Stability.h>
 #include <cutils/compiler.h>
 #include <utils/Log.h>
+#include <utils/CallStack.h>
 
 #include <stdio.h>
 
@@ -436,8 +437,9 @@ void BpBinder::onLastStrongRef(const void* /*id*/)
     Vector<Obituary>* obits = mObituaries;
     if(obits != nullptr) {
         if (!obits->isEmpty()) {
-            ALOGI("onLastStrongRef automatically unlinking death recipients: %s",
+            ALOGI("onLastStrongRef asdf automatically unlinking death recipients %p: %s", this,
                   mDescriptorCache.size() ? String8(mDescriptorCache).c_str() : "<uncached descriptor>");
+            // CallStack::logStack("asdf automatically unlinking death recipient", CallStack::getCurrent().get(), ANDROID_LOG_ERROR);
         }
 
         if (ipc) ipc->clearDeathNotification(mHandle, this);

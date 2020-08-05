@@ -195,6 +195,15 @@ Status ServiceManager::addService(const std::string& name, const sp<IBinder>& bi
         return Status::fromExceptionCode(Status::EX_ILLEGAL_ARGUMENT);
     }
 
+    sp<BpBinder> proxy = binder->remoteBinder();
+
+    LOG(INFO) << "asdf addService"
+              << " name: " << name
+              << " binder: " << binder.get()
+              << " binder handle: " << (proxy ? proxy->handle() : 0) // dc - 0 is servicemanager
+              << " calling PID: " << IPCThreadState::self()->getCallingPid()
+              << " being handled on TID: " << gettid();
+
     if (!isValidServiceName(name)) {
         LOG(ERROR) << "Invalid service name: " << name;
         return Status::fromExceptionCode(Status::EX_ILLEGAL_ARGUMENT);
@@ -228,6 +237,7 @@ Status ServiceManager::addService(const std::string& name, const sp<IBinder>& bi
             cb->onRegistration(name, binder);
         }
     }
+    LOG(INFO) << "asdf addService done w/ OKAY binder: " << binder.get();
 
     return Status::ok();
 }
@@ -352,6 +362,8 @@ void ServiceManager::removeRegistrationCallback(const wp<IBinder>& who,
 }
 
 void ServiceManager::binderDied(const wp<IBinder>& who) {
+    LOG(INFO) << "asdf binderDied binder: " << who.unsafe_get();
+
     for (auto it = mNameToService.begin(); it != mNameToService.end();) {
         if (who == it->second.binder) {
             it = mNameToService.erase(it);
