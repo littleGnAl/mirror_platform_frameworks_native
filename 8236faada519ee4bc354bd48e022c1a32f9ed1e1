@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c476f573_1588f617",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-08-05T20:07:39Z",
+      "side": 1,
+      "message": "Thanks for adding this!",
+      "revId": "8236faada519ee4bc354bd48e022c1a32f9ed1e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d5b875d_0aa76c4a",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1525136
+      },
+      "writtenOn": "2020-08-05T20:07:39Z",
+      "side": 1,
+      "message": "system",
+      "range": {
+        "startLine": 40,
+        "startChar": 55,
+        "endLine": 40,
+        "endChar": 60
+      },
+      "revId": "8236faada519ee4bc354bd48e022c1a32f9ed1e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
