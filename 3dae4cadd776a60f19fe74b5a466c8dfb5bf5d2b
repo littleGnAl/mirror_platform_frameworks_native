@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "37884e0c_27dd4f66",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-08-05T11:53:17Z",
+      "side": 1,
+      "message": "It\u0027s a pre-C99 BSD type that most compilers accept nowadays for compatibility reasons.",
+      "parentUuid": "ff7ed1e6_dcbf7623",
+      "range": {
+        "startLine": 119,
+        "startChar": 54,
+        "endLine": 119,
+        "endChar": 63
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d16fd455_9dc9070c",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 9
