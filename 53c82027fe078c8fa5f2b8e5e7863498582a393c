@@ -1,0 +1,247 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004232843",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d22",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "80ed98bb_e3d8f7dc",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-05T21:11:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "53c82027fe078c8fa5f2b8e5e7863498582a393c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004232843",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d22",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4c95dc3d_f0115489",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-05T21:11:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "53c82027fe078c8fa5f2b8e5e7863498582a393c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004232843",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d22",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f4698c61_689eedd2",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-05T21:11:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 40,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "53c82027fe078c8fa5f2b8e5e7863498582a393c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004232843",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d22",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8f7c545d_72c354ee",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-05T21:11:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "53c82027fe078c8fa5f2b8e5e7863498582a393c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004232843",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d22",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c713a2fa_24cd936d",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-05T21:11:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 20
+      },
+      "revId": "53c82027fe078c8fa5f2b8e5e7863498582a393c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004232843",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d22",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "0ac7390c_a8da75ed",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-05T21:11:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "53c82027fe078c8fa5f2b8e5e7863498582a393c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004232843",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d22",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "59cb28bd_e52fa77c",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-05T21:11:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "53c82027fe078c8fa5f2b8e5e7863498582a393c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004232843",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d22",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e8458009_3ebea84a",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-05T21:11:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "53c82027fe078c8fa5f2b8e5e7863498582a393c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004232843",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1340500?revision\u003d22",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "61ee1fdd_ec17bb6e",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-05T21:11:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "53c82027fe078c8fa5f2b8e5e7863498582a393c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
