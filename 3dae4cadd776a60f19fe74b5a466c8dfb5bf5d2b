@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6b1d099_9572c00d",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-05T00:13:34Z",
+      "side": 1,
+      "message": "now I see what the concern was. Let\u0027s move this function to the helper class. Replace the test assertions in this function with ALOGE, and return std::optional\u003cstd::vector\u003cMotionEvent\u003e\u003e from this function.\n\nWhen this test fails, we should still be able to look at the logs to figure out where the issue is.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 1
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "141ccdc4_ec4b9613",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-05T00:13:34Z",
+      "side": 1,
+      "message": "std::optional\u003cstd::vector\u003cMotionEvent\u003e\u003e events \u003d createMotionEventStream(motions);\nif (events \u003d\u003d std::nullopt) {\n    FAIL() \u003c\u003c \"Could not create MotionEvent stream with the provided set of coordinates\";\n}\nfor (MotionEvent\u0026 event : events.value()) {\n    ...",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 71
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38515ed9_0e18a57c",
+        "filename": "libs/input/tests/common/VelocityTrackerHelper.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-05T00:13:34Z",
+      "side": 1,
+      "message": "these should go back to the test file",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 48
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21c21ad6_0ad1c67f",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-05T00:13:34Z",
+      "side": 1,
+      "message": "i believe non-trivial global statics are not allowed.\n\nmake FILENAME_PREFIX const char* and keep it here, and make the rest local variables (maybe just define a separate function \n\nstd::string filePath \u003d generateRandomKeyCharacterMap(fdp);",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5cdce2e_c4b68a17",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-05T00:13:34Z",
+      "side": 1,
+      "message": "these 2 functions arent really needed. you can create 1 VelocityTracker instance, add all movements, and use the same instance to compute velocity and quadratic estimates.\n\nat the very least, they should receive a velocitytracker instance that was created and initialized outside",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 1
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd72a689_9637ae03",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-05T00:13:34Z",
+      "side": 1,
+      "message": "what is \"u_int32_t\"? should it just be uint32_t?",
+      "range": {
+        "startLine": 119,
+        "startChar": 54,
+        "endLine": 119,
+        "endChar": 63
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d16fd455_9dc9070c",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-05T00:13:34Z",
+      "side": 1,
+      "message": "this can be moved into a separate function",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 5
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98849518_93b22670",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-05T00:13:34Z",
+      "side": 1,
+      "message": "why do we need to return here?",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
