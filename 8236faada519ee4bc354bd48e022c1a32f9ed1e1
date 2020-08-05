@@ -39,6 +39,30 @@
       "revId": "8236faada519ee4bc354bd48e022c1a32f9ed1e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87824542_3882deaa",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-05T20:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d5b875d_0aa76c4a",
+      "range": {
+        "startLine": 40,
+        "startChar": 55,
+        "endLine": 40,
+        "endChar": 60
+      },
+      "revId": "8236faada519ee4bc354bd48e022c1a32f9ed1e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
