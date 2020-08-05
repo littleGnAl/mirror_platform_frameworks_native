@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4609187a_cc827763",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-05T04:34:01Z",
+      "side": 1,
+      "message": "Yes I was talking about this. I made the change you said.",
+      "parentUuid": "b6b1d099_9572c00d",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 1
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "141ccdc4_ec4b9613",
         "filename": "libs/input/tests/VelocityTracker_test.cpp",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0449f475_d529915d",
+        "filename": "libs/input/tests/VelocityTracker_test.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-05T04:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "141ccdc4_ec4b9613",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 71
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6022dd7c_77825c54",
+        "filename": "libs/input/tests/common/VelocityTrackerHelper.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-05T04:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38515ed9_0e18a57c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 48
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21c21ad6_0ad1c67f",
         "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2020-08-05T00:13:34Z",
       "side": 1,
       "message": "i believe non-trivial global statics are not allowed.\n\nmake FILENAME_PREFIX const char* and keep it here, and make the rest local variables (maybe just define a separate function \n\nstd::string filePath \u003d generateRandomKeyCharacterMap(fdp);",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25a5f917_5bab3744",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-05T04:34:01Z",
+      "side": 1,
+      "message": "Yes I will make rest of them local.\nI think it would be better not to have a different function generateRandomKeyCharacterMap(fdp). Because it is small piece of code for that and Would it not increase readability if we have it in LLVMFuzzerTestOneInput?",
+      "parentUuid": "21c21ad6_0ad1c67f",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "ff7ed1e6_dcbf7623",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-05T04:34:01Z",
+      "side": 1,
+      "message": "I don\u0027t understand why it builds with such typos? But yeah corrected it.",
+      "parentUuid": "bd72a689_9637ae03",
+      "range": {
+        "startLine": 119,
+        "startChar": 54,
+        "endLine": 119,
+        "endChar": 63
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d16fd455_9dc9070c",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 9
@@ -183,6 +303,30 @@
       "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0c238d3_6d324dbc",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-05T04:34:01Z",
+      "side": 1,
+      "message": "If the motions is empty, it will eventually won\u0027t do anything, that\u0027s why I have a return here.",
+      "parentUuid": "98849518_93b22670",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "3dae4cadd776a60f19fe74b5a466c8dfb5bf5d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
