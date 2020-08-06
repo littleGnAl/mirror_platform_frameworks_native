@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "17f50014_4e4c36ab",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-08-06T23:29:05Z",
+      "side": 1,
+      "message": "I\u0027ll just ignore it for now. I\u0027m not familiar with what the callbacks do or if anything down that path might need mNameToService to be filled out for some reason.",
+      "parentUuid": "4946e011_d2a8566a",
+      "range": {
+        "startLine": 227,
+        "startChar": 12,
+        "endLine": 227,
+        "endChar": 32
+      },
+      "revId": "b5b1942452a83c225e4f01bc211664b8ec6d5a57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9cb94b7_ff901932",
         "filename": "cmds/servicemanager/test_sm.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b5b1942452a83c225e4f01bc211664b8ec6d5a57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bc0931e_ff17f3f3",
+        "filename": "cmds/servicemanager/test_sm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-08-06T23:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9cb94b7_ff901932",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 39
+      },
+      "revId": "b5b1942452a83c225e4f01bc211664b8ec6d5a57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
