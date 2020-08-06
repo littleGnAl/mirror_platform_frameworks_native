@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4946e011_d2a8566a",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-06T21:17:11Z",
+      "side": 1,
+      "message": "nit: also - this should only be called once, and be set on L221, for instance. I guess it is set here because they are only setting it if there is a callback? maybe we can ignore for now.",
+      "range": {
+        "startLine": 227,
+        "startChar": 12,
+        "endLine": 227,
+        "endChar": 32
+      },
+      "revId": "b5b1942452a83c225e4f01bc211664b8ec6d5a57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9cb94b7_ff901932",
         "filename": "cmds/servicemanager/test_sm.cpp",
         "patchSetId": 1
