@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9cb94b7_ff901932",
+        "filename": "cmds/servicemanager/test_sm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-06T21:14:00Z",
+      "side": 1,
+      "message": "nit: move to L150",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 39
+      },
+      "revId": "b5b1942452a83c225e4f01bc211664b8ec6d5a57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
