@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f58aa798_830dfaf8",
+        "filename": "libs/input/tests/common/VelocityTrackerHelper.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-07T01:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d3018d6_1c6fa925",
+      "range": {
+        "startLine": 125,
+        "startChar": 36,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f742ff26_1d6c231f",
         "filename": "libs/input/tests/fuzzers/Android.bp",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-07T00:46:07Z",
       "side": 1,
       "message": "Is there any way to combine these?\nAnd only have 1 target instead of 3?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "926a4e0c_c81b50e7",
+        "filename": "libs/input/tests/fuzzers/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-07T01:38:32Z",
+      "side": 1,
+      "message": "No, its not possible, The thing is libFuzzer is coverage guided fuzzing engine. So it notes what lines are covered by what input and then stores that data into corpus and then mutate that data.",
+      "parentUuid": "f742ff26_1d6c231f",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a525fa40_973ac1f9",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-07T01:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7abd5_d9d7a76f",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 43,
+        "endChar": 32
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "800c03e4_a14b0bfe",
         "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82bfa55c_cc75d303",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-07T01:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "800c03e4_a14b0bfe",
+      "range": {
+        "startLine": 50,
+        "startChar": 36,
+        "endLine": 50,
+        "endChar": 96
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "57a695dd_721886c3",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-07T01:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0176a718_221ec712",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 77
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7628e01c_77c202f4",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 10
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "27a26a90_29e0c417",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-07T01:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7628e01c_77c202f4",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 5
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cbde30f_5c4ac48e",
         "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
         "patchSetId": 10
@@ -160,6 +304,30 @@
       "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc88519a_36bd3116",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1727075
+      },
+      "writtenOn": "2020-08-07T01:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cbde30f_5c4ac48e",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
