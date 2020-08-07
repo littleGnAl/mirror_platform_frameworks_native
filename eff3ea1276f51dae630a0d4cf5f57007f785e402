@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d3018d6_1c6fa925",
+        "filename": "libs/input/tests/common/VelocityTrackerHelper.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T00:46:07Z",
+      "side": 1,
+      "message": "resolvedAction",
+      "range": {
+        "startLine": 125,
+        "startChar": 36,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f742ff26_1d6c231f",
+        "filename": "libs/input/tests/fuzzers/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T00:46:07Z",
+      "side": 1,
+      "message": "Is there any way to combine these?\nAnd only have 1 target instead of 3?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac7abd5_d9d7a76f",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T00:46:07Z",
+      "side": 1,
+      "message": "let\u0027s do:\n\n    std::filesystem\n\nhere directly (remove L23)",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 43,
+        "endChar": 32
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "800c03e4_a14b0bfe",
+        "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T00:46:07Z",
+      "side": 1,
+      "message": "mkstemp requires non-const char array",
+      "range": {
+        "startLine": 50,
+        "startChar": 36,
+        "endLine": 50,
+        "endChar": 96
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0176a718_221ec712",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T00:46:07Z",
+      "side": 1,
+      "message": "std::optional\u003cstd::vector\u003cMotionEvent\u003e\u003e getFuzzedMotionEvents(FuzzedDataProvider\u0026 fdp)",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 77
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7628e01c_77c202f4",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T00:46:07Z",
+      "side": 1,
+      "message": "return createMotionEventStream(motions)",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 5
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cbde30f_5c4ac48e",
+        "filename": "libs/input/tests/fuzzers/VelocityTracker_fuzzer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T00:46:07Z",
+      "side": 1,
+      "message": "move to L105",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
