@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+1: John Reck <jreck@google.com>
+Code-Review+2: Dan Stoza <stoza@google.com>
+Autosubmit+1: Alec Mouri <alecmouri@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 07 Aug 2020 20:53:26 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1394100
+Project: platform/frameworks/native
+Branch: refs/heads/master
