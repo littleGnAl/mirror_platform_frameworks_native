@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a40d700_839f9e5c",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "While you could create a single fuzzer to perform all actions, fuzzers are most effective when fuzzing the smallest target possible (ideally a single function). However, due to the number of functions as well as object state, we have grouped fuzzers by the objects they are targeting.",
+      "parentUuid": "40c7cf35_dd3a382f",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdb8e5bc_f524ac24",
         "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034b60b0_2cda3559",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdb8e5bc_f524ac24",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "65b61152_f65a744f",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "Added scope blocks so names can be reused.",
+      "parentUuid": "752a473d_fb5cda96",
+      "range": {
+        "startLine": 56,
+        "startChar": 27,
+        "endLine": 56,
+        "endChar": 33
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e2ab40a_22d56cab",
         "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
         "patchSetId": 1
@@ -114,6 +186,30 @@
       "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "558acb4a_41e32dc7",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "8e2ab40a_22d56cab",
+      "range": {
+        "startLine": 75,
+        "startChar": 49,
+        "endLine": 75,
+        "endChar": 80
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "46f338a3_e8b5c9b5",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72f917c3_d0ebbe97",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 98
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82ec4584_faff9dc0",
         "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
         "patchSetId": 1
@@ -160,6 +280,30 @@
       "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36aac35d_dce266d1",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ec4584_faff9dc0",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "b183e016_583c5d0b",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3feed6c9_7d06d656",
+      "range": {
+        "startLine": 95,
+        "startChar": 22,
+        "endLine": 95,
+        "endChar": 84
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c312e001_e409fa8f",
         "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
         "patchSetId": 1
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "82460d42_704d85e4",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c312e001_e409fa8f",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 63
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f01ddfa_999dd3ce",
         "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
         "patchSetId": 1
@@ -220,6 +412,30 @@
       "writtenOn": "2020-08-04T20:27:39Z",
       "side": 1,
       "message": "what are these doingg? just checkingg for crash / undefined behaviour?",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd327ed_2b6b0ed1",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "Yes, the fuzzer aims to find crashes and memory access issues primarily.",
+      "parentUuid": "1f01ddfa_999dd3ce",
       "range": {
         "startLine": 27,
         "startChar": 4,
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "5ee18e7f_6c615e75",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "I believe this was a remnant of an older version of the fuzzer, which exited early in some cases to avoid an assertion which would stop the fuzzer. Removed, as it is no longer needed.",
+      "parentUuid": "1143e61a_62746783",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afc77712_7fbfcf5e",
         "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
         "patchSetId": 1
@@ -275,6 +515,30 @@
       "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d587a2_f031a3c3",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-07T17:26:39Z",
+      "side": 1,
+      "message": "This seems to be a typo when this fuzzer was pulled in from existing tests (the getMotionEventAxis() calls were wrapped in an ASSERT_EQ with getX() as the 2nd arg). It slipped through testing due to the code compiling and running without negative impact. The compiler seems to consider it using the comma operator, which in this case will simply act as a separator for the two function calls. Still a typo though, so removed.\n\nFor reference, the existing test case line:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/services/inputflinger/tests/InputClassifierConverter_test.cpp;l\u003d70",
+      "parentUuid": "afc77712_7fbfcf5e",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
