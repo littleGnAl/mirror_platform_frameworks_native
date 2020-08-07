@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "130f1928_9aa76b3d",
+        "filename": "libs/input/tests/fuzzers/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T01:58:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "926a4e0c_c81b50e7",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "eff3ea1276f51dae630a0d4cf5f57007f785e402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7abd5_d9d7a76f",
         "filename": "libs/input/tests/fuzzers/KeyCharacterMap_fuzzer.cpp",
         "patchSetId": 10
