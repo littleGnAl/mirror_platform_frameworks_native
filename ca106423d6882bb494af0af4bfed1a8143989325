@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5312ea4d_e27e6fc4",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-08-07T22:37:11Z",
+      "side": 1,
+      "message": "This is way overly safe. I think what you want here isn\u0027t minSdkVersion, nor __ANDROID_API__, but compile SDK version. Which I don\u0027t know if that\u0027s present or not - can you have the AIDL compiler set its version as a define somewhere so you can ifdef against that? Otherwise you\u0027ll be holding on to legacy things you don\u0027t need for a heck of a lot longer than you otherwise need to\n\nOr just slap a [[deprecated]] on it and call it good enough for any non-aidl users?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 75
+      },
+      "revId": "ca106423d6882bb494af0af4bfed1a8143989325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
