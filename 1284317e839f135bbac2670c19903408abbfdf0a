@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "47f2b0dc_8e680e80",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T19:33:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a40d700_839f9e5c",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdb8e5bc_f524ac24",
         "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
         "patchSetId": 1
@@ -116,6 +140,30 @@
       "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e27143da_48a4f8ee",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T19:33:54Z",
+      "side": 1,
+      "message": "The updated approach with block sections seems OK.",
+      "parentUuid": "dca05f82_9e475156",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -448,6 +496,30 @@
     },
     {
       "key": {
+        "uuid": "b3d4c00d_d8805fed",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T19:33:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2cd327ed_2b6b0ed1",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1143e61a_62746783",
         "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
         "patchSetId": 1
@@ -530,6 +602,30 @@
       "side": 1,
       "message": "This seems to be a typo when this fuzzer was pulled in from existing tests (the getMotionEventAxis() calls were wrapped in an ASSERT_EQ with getX() as the 2nd arg). It slipped through testing due to the code compiling and running without negative impact. The compiler seems to consider it using the comma operator, which in this case will simply act as a separator for the two function calls. Still a typo though, so removed.\n\nFor reference, the existing test case line:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/services/inputflinger/tests/InputClassifierConverter_test.cpp;l\u003d70",
       "parentUuid": "afc77712_7fbfcf5e",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "1284317e839f135bbac2670c19903408abbfdf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c162ca95_fa211966",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-08-07T19:33:54Z",
+      "side": 1,
+      "message": "i didnt know about the comma operator, interesting",
+      "parentUuid": "64d587a2_f031a3c3",
       "range": {
         "startLine": 39,
         "startChar": 4,
