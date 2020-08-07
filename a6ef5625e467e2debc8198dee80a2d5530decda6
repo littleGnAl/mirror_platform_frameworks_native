@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "686fb8c0_c91a3c40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-07T02:11:28Z",
+      "side": 1,
+      "message": "I\u0027m ok with the change if that will make your life easier down the line but I think it\u0027s a risky one even if it\u0027s just a refactoring... 😊\n\nIt\u0027s hard to ensure that all the arguments were ported because git diff is not smart enough.\n\nI think we should add a test for the Dex2oatRunner before submit. It should not be hard to unit test just the runner and the output command.",
+      "revId": "a6ef5625e467e2debc8198dee80a2d5530decda6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c47f279_3b892716",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-07T02:11:28Z",
+      "side": 1,
+      "message": "line too long.",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 104
+      },
+      "revId": "a6ef5625e467e2debc8198dee80a2d5530decda6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc69ad5_f9798f54",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-07T02:11:28Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 404,
+        "startChar": 12,
+        "endLine": 404,
+        "endChar": 25
+      },
+      "revId": "a6ef5625e467e2debc8198dee80a2d5530decda6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
