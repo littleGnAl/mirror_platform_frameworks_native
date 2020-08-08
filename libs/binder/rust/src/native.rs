@@ -36,6 +36,13 @@ pub struct Binder<T: Remotable> {
     rust_object: *mut T,
 }
 
+/// # Safety
+///
+/// A `Binder<T>` is a handle to a heap-allocated C++ IBinder, which is
+/// thread-safe, and a raw pointer to an object that's guaranteed
+/// to be `Send + Sync` because `Remotable` requires `Send + Sync`
+unsafe impl<T: Remotable> Send for Binder<T> {}
+
 impl<T: Remotable> Binder<T> {
     /// Create a new Binder remotable object.
     ///
