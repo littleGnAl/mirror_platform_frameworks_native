@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3780e126_632fe496",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-08-08T02:54:03Z",
+      "side": 1,
+      "message": "Note: by doing this I reordered the columns; the new order is:\n\n    Interface                                                                     Transport Server PTR              Clients                           Arch Thread Use R Hash                                                             VINTF Status\n    android.frameworks.cameraservice.service@2.0::ICameraService/default          hwbinder  402    00000000effc2770 191                               32   0/4        Y b45dc498eb713ca2fdd8eb1ea57fabcb6dcbb32e25a64eed382e700cf49e6e33 FM    alive\n\n\nIf you want me to use the original order (\"-lVSietrpc\"), let me know.",
+      "range": {
+        "startLine": 1240,
+        "startChar": 49,
+        "endLine": 1240,
+        "endChar": 52
+      },
+      "revId": "9528b57a8bd19234d598d5b563fdff0f4f22f564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
