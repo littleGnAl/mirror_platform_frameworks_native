@@ -51,6 +51,15 @@ pub trait Interface {
     }
 }
 
+/// Special Clone trait for Binder interfaces.
+///
+/// This trait is our own version of `Clone` that returns a `Box<Self>` instead
+/// so it can be implemented for `dyn Interface` types.
+pub trait CloneInterface {
+    /// Clone a &dyn Interface into a Box<dyn Interface>
+    fn clone_interface(&self) -> Result<Box<Self>>;
+}
+
 /// A local service that can be remotable via Binder.
 ///
 /// An object that implement this interface made be made into a Binder service
@@ -579,6 +588,28 @@ macro_rules! declare_binder_interface {
         impl $crate::parcel::SerializeOption for dyn $interface + '_ {
             fn serialize_option(this: Option<&Self>, parcel: &mut $crate::parcel::Parcel) -> $crate::Result<()> {
                 parcel.write(&this.map($crate::Interface::as_binder))
+            }
+        }
+
+        impl $crate::CloneInterface for dyn $interface
+        where
+            $interface: $crate::Interface + $crate::FromIBinder
+        {
+            fn clone_interface(&self) -> $crate::Result<Box<Self>> {
+                self.as_binder().into_interface()
+            }
+        }
+
+        // Provides Clone for Box<dyn $interface>, so
+        // Clone can be #derive'd on AIDL parcelables
+        // that contain boxed interfaces
+        //
+        // WARNING: this can panic, so clone_interface()
+        // is generally preferable
+        impl Clone for Box<dyn $interface> {
+            fn clone(&self) -> Self {
+                $crate::CloneInterface::clone_interface(&**self)
+                    .expect(concat!("Error cloning interface ", stringify!($interface)))
             }
         }
     };
