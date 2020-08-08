@@ -581,5 +581,14 @@ macro_rules! declare_binder_interface {
                 parcel.write(&this.map($crate::Interface::as_binder))
             }
         }
+
+        // Convert a &dyn $interface to Box<dyn $interface>
+        impl std::borrow::ToOwned for dyn $interface {
+            type Owned = Box<dyn $interface>;
+            fn to_owned(&self) -> Self::Owned {
+                self.as_binder().into_interface()
+                    .expect(concat!("Error cloning interface ", stringify!($interface)))
+            }
+        }
     };
 }
