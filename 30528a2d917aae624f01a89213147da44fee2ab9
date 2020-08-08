@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6acd35b1_72672935",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2020-08-08T03:45:16Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027d rather have Nandana or Steven +2\u0027ing it...",
+      "revId": "30528a2d917aae624f01a89213147da44fee2ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
