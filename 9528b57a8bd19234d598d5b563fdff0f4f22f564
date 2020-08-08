@@ -22,6 +22,30 @@
       "revId": "9528b57a8bd19234d598d5b563fdff0f4f22f564",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab3b5b67_390a3330",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-08-08T02:57:31Z",
+      "side": 1,
+      "message": "Actually the output I pasted has incorrect order. The real order for --all is in TableEntry.h.",
+      "parentUuid": "3780e126_632fe496",
+      "range": {
+        "startLine": 1240,
+        "startChar": 49,
+        "endLine": 1240,
+        "endChar": 52
+      },
+      "revId": "9528b57a8bd19234d598d5b563fdff0f4f22f564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
