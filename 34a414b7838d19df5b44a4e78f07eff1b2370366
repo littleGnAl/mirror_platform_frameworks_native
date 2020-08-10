@@ -16,6 +16,57 @@
       "revId": "34a414b7838d19df5b44a4e78f07eff1b2370366",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b83c2dda_d4e73486",
+        "filename": "cmds/installd/execv_helper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-08-10T23:51:37Z",
+      "side": 1,
+      "message": "Indentation error",
+      "revId": "34a414b7838d19df5b44a4e78f07eff1b2370366",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b220af3_969d4f8f",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-08-10T23:51:37Z",
+      "side": 1,
+      "message": "I\u0027d put the comparison on it\u0027s own line to avoid the visual confusion of \u003d and \u003d\u003d being this close to each other, but that\u0027s just me.",
+      "revId": "34a414b7838d19df5b44a4e78f07eff1b2370366",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21dbab91_c4b0199e",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-08-10T23:51:37Z",
+      "side": 1,
+      "message": "Indentation error",
+      "revId": "34a414b7838d19df5b44a4e78f07eff1b2370366",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
