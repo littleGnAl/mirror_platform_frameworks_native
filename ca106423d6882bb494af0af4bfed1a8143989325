@@ -22,6 +22,30 @@
       "revId": "ca106423d6882bb494af0af4bfed1a8143989325",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "544483b4_cd5ce88d",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-10T20:24:12Z",
+      "side": 1,
+      "message": "Yeah, I was being overly safe precisely because we couldn\u0027t find a way to get compile SDK version.\n\n[[deprecated]] works, but it might just be a warning or ignored, so I\u0027m keeping both solutions (hard solution when we know, and soft when we don\u0027t).\n\nThanks!",
+      "parentUuid": "5312ea4d_e27e6fc4",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 75
+      },
+      "revId": "ca106423d6882bb494af0af4bfed1a8143989325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
