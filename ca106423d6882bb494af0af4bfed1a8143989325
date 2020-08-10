@@ -46,6 +46,30 @@
       "revId": "ca106423d6882bb494af0af4bfed1a8143989325",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d994c02_b368d845",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-10T20:26:13Z",
+      "side": 1,
+      "message": "Of course, the new warning might break downstream, but I\u0027m happy with that. Relevant article I saw today:\nhttps://thephd.github.io/your-c-compiler-and-standard-library-will-not-help-you",
+      "parentUuid": "544483b4_cd5ce88d",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 75
+      },
+      "revId": "ca106423d6882bb494af0af4bfed1a8143989325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
