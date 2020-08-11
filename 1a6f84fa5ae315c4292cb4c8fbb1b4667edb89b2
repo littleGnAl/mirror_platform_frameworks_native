@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "6b838bd5_5c519285",
+        "filename": "libs/binder/ShmemCompat.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-11T17:55:27Z",
+      "side": 1,
+      "message": "Can you update comments to be explicit about this usage? It seems potentially dangerous/tricky.",
+      "parentUuid": "4833260a_b8364c43",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "1a6f84fa5ae315c4292cb4c8fbb1b4667edb89b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a210f29_6fd81b64",
         "filename": "libs/binder/ShmemCompat.cpp",
         "patchSetId": 8
