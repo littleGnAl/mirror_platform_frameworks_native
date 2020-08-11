@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5247fb24_3648c366",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-11T00:45:25Z",
+      "side": 1,
+      "message": "I thought the decision was to move this header to build-tools.",
+      "revId": "ce726a553c84eb8644351e2856443ddec424c9a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c73e2113_315a7df1",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-11T00:45:25Z",
+      "side": 1,
+      "message": "Use the argument form and tell the user what to do to resolve the problem: https://en.cppreference.com/w/cpp/language/attributes/deprecated",
+      "revId": "ce726a553c84eb8644351e2856443ddec424c9a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
