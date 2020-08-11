@@ -231,10 +231,18 @@ class ScopedAStatus : public impl::ScopedAResource<AStatus*, void, AStatus_delet
     const char* getMessage() const { return AStatus_getMessage(get()); }
 
     std::string getDescription() const {
-        const char* cStr = AStatus_getDescription(get());
-        std::string ret = cStr;
-        AStatus_deleteDescription(cStr);
-        return ret;
+        __attribute__((availability(android, introduced = 30))) const char* AStatus_getDescription(
+                const AStatus*);
+
+        __attribute__((availability(android, introduced = 30))) void AStatus_deleteDescription(
+                const char*);
+        if (__builtin_available(android 30, *)) {
+            const char* cStr = AStatus_getDescription(get());
+            std::string ret = cStr;
+            AStatus_deleteDescription(cStr);
+            return ret;
+        }
+        return "(not available)";
     }
 
     /**

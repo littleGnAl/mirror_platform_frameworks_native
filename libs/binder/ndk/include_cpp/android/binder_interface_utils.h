@@ -246,7 +246,9 @@ AIBinder_Class* ICInterface::defineClass(const char* interfaceDescriptor,
     // ourselves. The defaults are harmless.
     AIBinder_Class_setOnDump(clazz, ICInterfaceData::onDump);
 #ifdef HAS_BINDER_SHELL_COMMAND
-    if (AIBinder_Class_setHandleShellCommand != nullptr) {
+    __attribute__((availability(android, introduced = 30))) void
+    AIBinder_Class_setHandleShellCommand(AIBinder_Class*, AIBinder_handleShellCommand);
+    if (__builtin_available(android 30, *)) {
         AIBinder_Class_setHandleShellCommand(clazz, ICInterfaceData::handleShellCommand);
     }
 #endif
