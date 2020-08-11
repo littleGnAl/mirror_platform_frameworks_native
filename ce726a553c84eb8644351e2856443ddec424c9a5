@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a6e034b1_4afef110",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-11T22:44:49Z",
+      "side": 1,
+      "message": "Only doing this means that people using the current version of the NDK with old AIDL versions will always fail, because we don\u0027t have a clear path to update the old SDK",
+      "parentUuid": "5247fb24_3648c366",
+      "revId": "ce726a553c84eb8644351e2856443ddec424c9a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c73e2113_315a7df1",
         "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "ce726a553c84eb8644351e2856443ddec424c9a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "515391c6_bca0bb1d",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-11T22:44:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c73e2113_315a7df1",
+      "revId": "ce726a553c84eb8644351e2856443ddec424c9a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
