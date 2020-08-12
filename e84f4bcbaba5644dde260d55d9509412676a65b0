@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "17bbaff9_f997af4c",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 24
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-12T23:37:26Z",
+      "side": 1,
+      "message": "Everything that directly interfaces with C or C++ is marked as unsafe. What you\u0027re looking at *is* the safe wrapper around `AStatus_newOk` so that all the clients don\u0027t have to wrap it in `unsafe`.",
+      "parentUuid": "eec119ac_fe2abe51",
+      "range": {
+        "startLine": 111,
+        "startChar": 24,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "e84f4bcbaba5644dde260d55d9509412676a65b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a8b360a_9fc71932",
         "filename": "libs/binder/rust/src/proxy.rs",
         "patchSetId": 24
@@ -59,6 +83,30 @@
       "writtenOn": "2020-08-12T23:26:05Z",
       "side": 1,
       "message": "this seems to be talking about \u0027self.as_native()\u0027 but unsafe is required because it\u0027s calling into a C++ API?",
+      "range": {
+        "startLine": 70,
+        "startChar": 23,
+        "endLine": 71,
+        "endChar": 34
+      },
+      "revId": "e84f4bcbaba5644dde260d55d9509412676a65b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ac39e1_4f64ec5b",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 24
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-12T23:37:26Z",
+      "side": 1,
+      "message": "The statement here is basically \"AIBinder_isRemote() is safe as long as we pass in a valid AIBinder pointer. This invariant is maintained by SpIBinder, so this use of `unsafe` is safe\"",
+      "parentUuid": "0a8b360a_9fc71932",
       "range": {
         "startLine": 70,
         "startChar": 23,
