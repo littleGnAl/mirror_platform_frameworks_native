@@ -16,6 +16,24 @@
       "revId": "6cb05ac61b7e20aac5c2b4826e76e839ff7e9c26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22952e8b_81a5d769",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-12T22:13:19Z",
+      "side": 1,
+      "message": "libstd and libcore use .pad() for a bunch of types in similar circumstances, e.g., Any:\n```\nimpl fmt::Debug for dyn Any {\n    fn fmt(\u0026self, f: \u0026mut fmt::Formatter\u003c\u0027_\u003e) -\u003e fmt::Result {\n        f.pad(\"Any\")\n    }\n}\n```\nand c_void:\n```\nimpl fmt::Debug for c_void {\n    fn fmt(\u0026self, f: \u0026mut fmt::Formatter\u003c\u0027_\u003e) -\u003e fmt::Result {\n        f.pad(\"c_void\")\n    }\n}\n```\nand PhantomData:\n```\nimpl\u003cT: ?Sized\u003e Debug for PhantomData\u003cT\u003e {\n    fn fmt(\u0026self, f: \u0026mut Formatter\u003c\u0027_\u003e) -\u003e Result {\n        f.pad(\"PhantomData\")\n    }\n}\n```\n\nThis seems like the idiomatic way to do it.",
+      "parentUuid": "e82fa490_3325d836",
+      "revId": "6cb05ac61b7e20aac5c2b4826e76e839ff7e9c26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
