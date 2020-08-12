@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b85cdf40_58a6f905",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-12T21:53:53Z",
+      "side": 1,
+      "message": "Why is the test declared in 2 different xml files? Why does it need manual pushing to a temp directory when it\u0027s not using a helper binary?",
+      "revId": "7565096a3a0fec673afa2184917137954e0c1b18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
