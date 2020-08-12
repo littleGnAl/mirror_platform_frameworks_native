@@ -52,6 +52,24 @@
       "revId": "7565096a3a0fec673afa2184917137954e0c1b18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "220d1246_c78a0673",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-12T22:01:37Z",
+      "side": 1,
+      "message": "Not that I know of. The XML file replaces the default template from https://android.googlesource.com/platform/build/+/refs/heads/master/core/rust_device_test_config_template.xml which does this for us if we can use it.",
+      "parentUuid": "1eef1f83_2c4c85f0",
+      "revId": "7565096a3a0fec673afa2184917137954e0c1b18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
