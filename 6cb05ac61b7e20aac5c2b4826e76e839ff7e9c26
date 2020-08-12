@@ -34,6 +34,24 @@
       "revId": "6cb05ac61b7e20aac5c2b4826e76e839ff7e9c26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27a8a755_acee3fb6",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-12T22:22:38Z",
+      "side": 1,
+      "message": "I believe that pad does not interpret the string as a formatting specifier, it applies any formatting string specifiers that were specified when the formatter itself was created. See: https://doc.rust-lang.org/std/fmt/struct.Formatter.html#method.pad",
+      "parentUuid": "22952e8b_81a5d769",
+      "revId": "6cb05ac61b7e20aac5c2b4826e76e839ff7e9c26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
