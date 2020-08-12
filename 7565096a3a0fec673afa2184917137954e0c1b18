@@ -16,6 +16,24 @@
       "revId": "7565096a3a0fec673afa2184917137954e0c1b18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d669fc8_bb5e95e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-12T21:56:27Z",
+      "side": 1,
+      "message": "It shouldn\u0027t have been added to AndroidTest.xml, that was accidental, will fix now. AFAICT we need an XML file to add root permissions for the test, since it starts binder services which requires special permissions.",
+      "parentUuid": "b85cdf40_58a6f905",
+      "revId": "7565096a3a0fec673afa2184917137954e0c1b18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
