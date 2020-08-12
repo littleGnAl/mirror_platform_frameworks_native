@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e82fa490_3325d836",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-12T21:38:31Z",
+      "side": 1,
+      "message": "Do you mean f.write_str() ? Using .pad() will interpret the name of $interface as formatting specifiers.",
+      "revId": "6cb05ac61b7e20aac5c2b4826e76e839ff7e9c26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
