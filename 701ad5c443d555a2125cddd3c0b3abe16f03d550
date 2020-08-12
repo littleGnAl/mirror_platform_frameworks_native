@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "084e255a_e8aea59b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-12T19:15:50Z",
+      "side": 1,
+      "message": "If the intention is to make it easier to switch the inputs you only need some logical re-ordering? Does scoping actually helps? In some places it feels artificial and a bit detrimental to readability.",
+      "revId": "701ad5c443d555a2125cddd3c0b3abe16f03d550",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
