@@ -34,6 +34,24 @@
       "revId": "7565096a3a0fec673afa2184917137954e0c1b18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eef1f83_2c4c85f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-12T21:59:03Z",
+      "side": 1,
+      "message": "Having the xml file is fine, it was the dual inclusion an the temp directory bit - can we get rid of the temp directory and manual push for this test? I thought that was just an oddity we needed for the other one so they could find their helper binary.",
+      "parentUuid": "2d669fc8_bb5e95e1",
+      "revId": "7565096a3a0fec673afa2184917137954e0c1b18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
