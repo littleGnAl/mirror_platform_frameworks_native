@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "75525f35_25c759e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-12T19:22:56Z",
+      "side": 1,
+      "message": "Yes, I confirmed again with diff (barring on dex2oat_bin and the way to add dalvik.vm.dex2oat-flags to execv_helper_ via AddArg).",
+      "parentUuid": "027a2a3f_e5d9240b",
+      "revId": "4c1c256dcc49d5f229ec9f43ea9ff48cd82c5b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebe4480c_c8daa8c5",
         "filename": "cmds/installd/run_dex2oat.h",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "4c1c256dcc49d5f229ec9f43ea9ff48cd82c5b77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03829a1a_6dddbbd5",
+        "filename": "cmds/installd/run_dex2oat.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-12T19:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe4480c_c8daa8c5",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 15
+      },
+      "revId": "4c1c256dcc49d5f229ec9f43ea9ff48cd82c5b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
