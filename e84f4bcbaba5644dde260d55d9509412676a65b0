@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8676f37a_f5742374",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 24
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-13T04:46:32Z",
+      "side": 1,
+      "message": "I missed that it was only the glibc variants that weren\u0027t building when I originally added those defines. Scoping them to host builds works fine.\n\nFixed.",
+      "parentUuid": "9939ca38_c99ac38d",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 34
+      },
+      "revId": "e84f4bcbaba5644dde260d55d9509412676a65b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eec119ac_fe2abe51",
         "filename": "libs/binder/rust/src/error.rs",
         "patchSetId": 24
