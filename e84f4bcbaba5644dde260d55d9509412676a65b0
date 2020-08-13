@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1ab63537_8613c85e",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 24
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-13T00:04:05Z",
+      "side": 1,
+      "message": "I\u0027ve removed the __assert definition. I don\u0027t think we can get rid of the others without implementing versioning for Rust in Soong.",
+      "parentUuid": "71b88c29_40a082a9",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 34
+      },
+      "revId": "e84f4bcbaba5644dde260d55d9509412676a65b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec119ac_fe2abe51",
         "filename": "libs/binder/rust/src/error.rs",
         "patchSetId": 24
