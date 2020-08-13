@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c507571_64e2bfff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-13T21:11:25Z",
+      "side": 1,
+      "message": "Since the decision to use Rust in Android has already been made preceding this CL, I can only reasonably comment on the contents of this, and to the best of my knowledge, it is a good path forward if you take for a fact supporting a 3rd language in Android platform is wise (regardless of it being a good 3rd language). On this matter of support, I can only say that a good migration is good, and 1000 simultaneous migrations is a death sentence. The day you delete a backend, I will rejoice.",
+      "revId": "2a3c250d07f3965ce6bf0fef1a9953eb9db5d98d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5acddf6e_ff5ca100",
+        "filename": "libs/binder/rust/TEST_MAPPING",
+        "patchSetId": 26
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-13T21:11:25Z",
+      "side": 1,
+      "message": "this should also be moved to the normal TEST_MAPPING, probably, so that a libbinder test will catch issues it creates in Rust, but that can be done separately",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 5
+      },
+      "revId": "2a3c250d07f3965ce6bf0fef1a9953eb9db5d98d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
