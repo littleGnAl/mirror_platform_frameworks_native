@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9939ca38_c99ac38d",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 24
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-13T00:11:18Z",
+      "side": 1,
+      "message": "That should fail the host build, and I see host_supported here, not sure if that will compile the C code on host.\n\nYou should be able to get them from importing \"sys/cdefs.h\" on device code. If it\u0027s for host code, then we should use libbinder_ndk_host_user or something like that to only apply these to host. If rust_bindgen doesn\u0027t support different cflags for host/device, then maybe you can let the rust team know, but one option would be to add:\n\n    #ifndef __BIONIC__\n    #define __INTRODUCED_IN...\n    ...\n    #endif\n\nbefore you include the NDK headers.",
+      "parentUuid": "1ab63537_8613c85e",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 34
+      },
+      "revId": "e84f4bcbaba5644dde260d55d9509412676a65b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec119ac_fe2abe51",
         "filename": "libs/binder/rust/src/error.rs",
         "patchSetId": 24
