@@ -1,0 +1,102 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004406150",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1343837?revision\u003d6",
+      "fixSuggestions": [
+        {
+          "fixId": "32004311_5486b834",
+          "description": "Change to \"libs/binder/rust/benches/throughput.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/benches/throughput.rs",
+              "range": {
+                "startLine": 186,
+                "startChar": 8,
+                "endLine": 186,
+                "endChar": 14
+              },
+              "replacement": "Perform"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "5a2bb7ed_b9cb1f4f",
+        "filename": "libs/binder/rust/benches/throughput.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-13T22:38:33Z",
+      "side": 1,
+      "message": "Common typo found: \"Peform\" -- should it be \"Perform\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 186,
+        "startChar": 8,
+        "endLine": 186,
+        "endChar": 14
+      },
+      "revId": "608e5013487d60001f198fe1a2eb17e035673f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004406137",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1343837?revision\u003d6",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7e271fef_a174d77b",
+        "filename": "libs/binder/rust/benches/throughput.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-13T22:38:33Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 351,
+        "startChar": 28,
+        "endLine": 351,
+        "endChar": 34
+      },
+      "revId": "608e5013487d60001f198fe1a2eb17e035673f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004406137",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1343837?revision\u003d6",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cb19c959_4d82f348",
+        "filename": "libs/binder/rust/benches/throughput.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-13T22:38:33Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 355,
+        "startChar": 23,
+        "endLine": 355,
+        "endChar": 29
+      },
+      "revId": "608e5013487d60001f198fe1a2eb17e035673f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
