@@ -16,6 +16,23 @@
       "revId": "c9821f1160e06fec9bd0a2fbfcb5ef4ca8cf457a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5588f7c_1adb90ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-13T19:19:46Z",
+      "side": 1,
+      "message": "Calin, can you +2 again now that the vote is lost?",
+      "revId": "c9821f1160e06fec9bd0a2fbfcb5ef4ca8cf457a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
