@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5dfa2183_a2b4ba95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-13T22:16:00Z",
+      "side": 1,
+      "message": "For reference, the AIDL test that exercises embedded NULLs is https://android.googlesource.com/platform/system/tools/aidl/+/refs/heads/master/tests/aidl_test_client_utf8_strings.cpp#41",
+      "revId": "9e589e1c50a4b84033fea5448bcc2189229ecbf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
