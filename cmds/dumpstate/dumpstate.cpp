@@ -1394,7 +1394,9 @@ static Dumpstate::RunStatus dumpstate() {
     for_each_pid(show_showtime, "PROCESS TIMES (pid cmd user system iowait+percentage)");
 
     /* Dump Bluetooth HCI logs */
-    ds.AddDir("/data/misc/bluetooth/logs", true);
+    ds.AddDir("/data/misc/bluetooth/logs", true)
+    /* Dump Nfc NCI logs */
+    ds.AddDir("/data/misc/nfc/logs", true);
 
     if (ds.options_->do_fb && !ds.do_early_screenshot_) {
         MYLOGI("taking late screenshot\n");
