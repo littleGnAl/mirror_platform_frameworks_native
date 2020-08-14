@@ -442,6 +442,24 @@
     },
     {
       "key": {
+        "uuid": "9c4a60d4_829cfb33",
+        "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-08-14T23:12:58Z",
+      "side": 1,
+      "message": "You were correct and it was actually a small flaw in the original fuzzer design. The object was being recreated every iteration of the loop, so it was only ever calling one of these functions per object. When I pulled it out of the loop it crashed as you said it would.\n\nTo fix that I only allow an object to be marked once per fuzz job, however I\u0027m not sure if this fuzzer is useful after doing that. Does it make sense to just pull it altogether?",
+      "parentUuid": "08616150_df34bfb3",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d46e864_856b6461",
         "filename": "libs/binder/tests/fuzzers/TextOutput/TextOutputFuzz.cpp",
         "patchSetId": 1

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7729079d_97cc649e",
+        "filename": "libs/binder/tests/fuzzers/BinderFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-08-14T23:12:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c83ed36_edeb9ded",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 4
+      },
+      "revId": "30e107de304426a785a67e73f238443eefc587f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36e05992_ad9d5160",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "30e107de304426a785a67e73f238443eefc587f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d83fe448_84f82884",
+        "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-08-14T23:12:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36e05992_ad9d5160",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "30e107de304426a785a67e73f238443eefc587f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ff984f97_9976b31e",
+        "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-08-14T23:12:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58a6e43e_e1a8687a",
+      "range": {
+        "startLine": 31,
+        "startChar": 14,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "30e107de304426a785a67e73f238443eefc587f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "302201f4_aea2bf34",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-07-21T00:14:03Z",
       "side": 1,
       "message": "does this line ever succeed? It means that the binder won\u0027t be representing a real kernel object. I\u0027m wondering, shouldn\u0027t we be getting a valid object to fuzz, e.g. from service manager?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 53
+      },
+      "revId": "30e107de304426a785a67e73f238443eefc587f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b64a8aaa_fed227bd",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-08-14T23:12:58Z",
+      "side": 1,
+      "message": "I think I am doing that correctly now by using service manager to list all services and then pulling one at random to use if any exist. Otherwise falling back to the original code I had here.",
+      "parentUuid": "302201f4_aea2bf34",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "709bcc6d_c1d18769",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-08-14T23:12:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "134602e7_286cf17b",
+      "range": {
+        "startLine": 46,
+        "startChar": 32,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "30e107de304426a785a67e73f238443eefc587f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5692cc14_faade7b8",
         "filename": "libs/binder/tests/fuzzers/commonFuzzHelpers.h",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "30e107de304426a785a67e73f238443eefc587f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cdd1f00_76ae22af",
+        "filename": "libs/binder/tests/fuzzers/commonFuzzHelpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-08-14T23:12:58Z",
+      "side": 1,
+      "message": "It wasn\u0027t generic enough to be used consistently before, so I fixed it up and now its used everywhere 😊",
+      "parentUuid": "5692cc14_faade7b8",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "30e107de304426a785a67e73f238443eefc587f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
