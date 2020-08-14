@@ -28,8 +28,9 @@
 #include <android/dlext.h>
 #include <dlfcn.h>
 #include <graphicsenv/GraphicsEnv.h>
-#include <time.h>
 #include <log/log.h>
+#include <time.h>
+#include <vndksupport/linker.h>
 
 namespace angle {
 
@@ -102,11 +103,22 @@ static void assignAnglePlatformMethods(PlatformMethods* platformMethods) {
 bool initializeAnglePlatform(EGLDisplay dpy) {
     // Since we're inside libEGL, use dlsym to lookup fptr for ANGLEGetDisplayPlatform
     android_namespace_t* ns = android::GraphicsEnv::getInstance().getAngleNamespace();
-    const android_dlextinfo dlextinfo = {
-            .flags = ANDROID_DLEXT_USE_NAMESPACE,
-            .library_namespace = ns,
-    };
-    void* so = android_dlopen_ext("libGLESv2_angle.so", RTLD_LOCAL | RTLD_NOW, &dlextinfo);
+    void* so = nullptr;
+    if (!ns) {
+        // Add support for loading ANGLE as builtin gl driver
+        so = android_load_sphal_library("libGLESv2_angle.so", RTLD_NOW | RTLD_LOCAL);
+    } else {
+        const android_dlextinfo dlextinfo = {
+                .flags = ANDROID_DLEXT_USE_NAMESPACE,
+                .library_namespace = ns,
+        };
+        so = android_dlopen_ext("libGLESv2_angle.so", RTLD_LOCAL | RTLD_NOW, &dlextinfo);
+    }
+    if (!so) {
+        ALOGE("Failed to open libGLESv2_angle!");
+        return false;
+    }
+
     angleGetDisplayPlatform =
             reinterpret_cast<GetDisplayPlatformFunc>(dlsym(so, "ANGLEGetDisplayPlatform"));
 
