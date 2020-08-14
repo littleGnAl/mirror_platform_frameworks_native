@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004431929",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1350779?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "b628d740_ed194e7e",
+          "description": "Change to \"libs/binder/tests/fuzzers/BpBinderFuzz.cpp\"",
+          "replacements": [
+            {
+              "path": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+              "range": {
+                "startLine": 39,
+                "startChar": 56,
+                "endLine": 39,
+                "endChar": 62
+              },
+              "replacement": " Can\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "5499d5cf_329cc0b1",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-14T22:25:39Z",
+      "side": 1,
+      "message": "Common typo found: \" Cant \" -- should it be \" Can\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 39,
+        "startChar": 56,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "e686fcd7cf570e8da4955b36fd61f5c1067c1be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
