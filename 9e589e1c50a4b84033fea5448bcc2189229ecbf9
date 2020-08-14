@@ -16,6 +16,23 @@
       "revId": "9e589e1c50a4b84033fea5448bcc2189229ecbf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c64eceb_c59efc72",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-14T18:28:56Z",
+      "side": 1,
+      "message": "You need to use libc::c_char here, as signedness of char differs depending on platform.",
+      "revId": "9e589e1c50a4b84033fea5448bcc2189229ecbf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
