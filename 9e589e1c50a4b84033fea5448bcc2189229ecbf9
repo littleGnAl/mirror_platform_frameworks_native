@@ -33,6 +33,24 @@
       "revId": "9e589e1c50a4b84033fea5448bcc2189229ecbf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36e4d18f_d25282d2",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-14T19:11:59Z",
+      "side": 1,
+      "message": "Yep, thanks. I\u0027ve been bit by this quite a few times. I have to remember to build for arm as well as the x86 emulator. I used std::os:raw::c_char to avoid adding a new dependency on libc (although we already need it for pid_t).",
+      "parentUuid": "1c64eceb_c59efc72",
+      "revId": "9e589e1c50a4b84033fea5448bcc2189229ecbf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
