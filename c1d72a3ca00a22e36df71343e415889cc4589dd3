@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd056c58_d63fa75d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2020-08-15T20:44:46Z",
+      "side": 1,
+      "message": "It just should not wait at all. I\u0027ve filed http://b/164717293 here with more context. Will send a cl to fix it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 72
+      },
+      "revId": "c1d72a3ca00a22e36df71343e415889cc4589dd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
