@@ -99,6 +99,7 @@ cc_defaults {
     // TODO(b/131771163): Fix broken fuzzer support with LTO.
     sanitize: {
         fuzzer: false,
+        address: true,
     },
 }
 
@@ -175,6 +176,9 @@ cc_library_shared {
         "SurfaceFlingerFactory.cpp",
     ],
     logtags: ["EventLog/EventLogTags.logtags"],
+    sanitize: {
+        address: true,
+    },
 }
 
 cc_defaults {
@@ -183,6 +187,9 @@ cc_defaults {
     cflags: [
         "-DLOG_TAG=\"SurfaceFlinger\"",
     ],
+    sanitize: {
+        address: true,
+    },
     shared_libs: [
         "android.frameworks.displayservice@1.0",
         "android.hardware.configstore-utils",
@@ -222,6 +229,9 @@ cc_binary {
         "libsurfaceflinger",
         "libSurfaceFlingerProp",
     ],
+    sanitize: {
+        address: true,
+    },
 }
 
 subdirs = [
