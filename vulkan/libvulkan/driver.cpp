@@ -937,6 +937,7 @@ bool QueryPresentationProperties(
         data.driver.GetPhysicalDeviceProperties2(physicalDevice, &properties);
     }
 
+    ALOGD("%s: exit\n", __func__);
     return true;
 }
 
@@ -968,15 +969,19 @@ VkResult EnumerateDeviceExtensionProperties(
             VK_KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION});
     }
 
+    ALOGD("%s:%d arrive\n", __func__, __LINE__);
     // conditionally add VK_GOOGLE_display_timing if present timestamps are
     // supported by the driver:
     const std::string timestamp_property("service.sf.present_timestamp");
-    android::base::WaitForPropertyCreation(timestamp_property);
-    if (android::base::GetBoolProperty(timestamp_property, true)) {
+    ALOGD("%s:%d arrive (wait for prop creation)\n", __func__, __LINE__);
+    // android::base::WaitForPropertyCreation(timestamp_property); // <-----------------stuck here
+    ALOGD("%s:%d arrive (wait for prop creation done)\n", __func__, __LINE__);
+    // if (android::base::GetBoolProperty(timestamp_property, true)) {
         loader_extensions.push_back({
                 VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME,
                 VK_GOOGLE_DISPLAY_TIMING_SPEC_VERSION});
-    }
+    // }
+    ALOGD("%s:%d arrive\n", __func__, __LINE__);
 
     // enumerate our extensions first
     if (!pLayerName && pProperties) {
@@ -1000,8 +1005,10 @@ VkResult EnumerateDeviceExtensionProperties(
     ATRACE_END();
 
     if (pProperties) {
+    ALOGD("%s:%d arrive count: %u\n", __func__, __LINE__, *pPropertyCount);
         // map VK_ANDROID_native_buffer to VK_KHR_swapchain
         for (uint32_t i = 0; i < *pPropertyCount; i++) {
+    ALOGD("%s:%d arrive\n", __func__, __LINE__);
             auto& prop = pProperties[i];
 
             if (strcmp(prop.extensionName,
@@ -1021,9 +1028,11 @@ VkResult EnumerateDeviceExtensionProperties(
 
     // restore loader extension count
     if (!pLayerName && (result == VK_SUCCESS || result == VK_INCOMPLETE)) {
+    ALOGD("%s:%d arrive\n", __func__, __LINE__);
         *pPropertyCount += loader_extensions.size();
     }
 
+    ALOGD("%s:%d arrive\n", __func__, __LINE__);
     return result;
 }
 
