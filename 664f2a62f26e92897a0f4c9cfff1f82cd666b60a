@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53e2b545_ce18c48a",
+        "filename": "libs/binder/include/binder/MemoryHeapBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-08-17T22:08:35Z",
+      "side": 0,
+      "message": "groan",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 75,
+        "endChar": 25
+      },
+      "revId": "664f2a62f26e92897a0f4c9cfff1f82cd666b60a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
