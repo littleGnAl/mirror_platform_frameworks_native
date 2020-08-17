@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d793017_1707a6b6",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done.  How about making each section a method like this?",
+      "parentUuid": "422e170e_cd079940",
+      "range": {
+        "startLine": 67,
+        "startChar": 17,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4c700e4_59d617eb",
         "filename": "cmds/installd/run_dex2oat.cpp",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac236f7e_bae32de4",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c700e4_59d617eb",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7050e3bf_5890d95e",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "615bf42b_4757f888",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "340b089c_66b3aba3",
         "filename": "cmds/installd/run_dex2oat.cpp",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e52b2bf_8dc44df5",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "340b089c_66b3aba3",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4608a5ce_85f33126",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "109d2d76_2c603158",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0409e48b_3e0ba188",
         "filename": "cmds/installd/run_dex2oat.cpp",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "903f1dde_9eb341e9",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0409e48b_3e0ba188",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "6eb89ba0_eee0977e",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fbcbfa1_4b526acb",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 44
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cc51d05_2e6454ec",
         "filename": "cmds/installd/run_dex2oat.cpp",
         "patchSetId": 6
@@ -183,6 +351,30 @@
       "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b72ff96_b20cf24e",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cc51d05_2e6454ec",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 36
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "402e48e7_1f0c24fd",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7d7ac74_85d0592b",
+      "range": {
+        "startLine": 203,
+        "startChar": 3,
+        "endLine": 203,
+        "endChar": 31
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d41ddbe7_ccdefca7",
         "filename": "cmds/installd/run_dex2oat.cpp",
         "patchSetId": 6
@@ -229,6 +445,30 @@
       "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a457b0d2_d4418ec1",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done, assuming you mean to move into the same block.  They weren\u0027t together in the original code.",
+      "parentUuid": "d41ddbe7_ccdefca7",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "bbfb8f03_68024aca",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2787933_76bbb689",
+      "range": {
+        "startLine": 236,
+        "startChar": 3,
+        "endLine": 254,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4541e21d_84d1bd4e",
         "filename": "cmds/installd/run_dex2oat.cpp",
         "patchSetId": 6
@@ -275,6 +539,30 @@
       "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11515c4f_f4fe11dd",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4541e21d_84d1bd4e",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "49f6897e_df071619",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5647c054_47ecdf5f",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "808f14e4_0686f405",
         "filename": "cmds/installd/run_dex2oat.cpp",
         "patchSetId": 6
@@ -321,6 +633,30 @@
       "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f27cf4aa_17c6e1ae",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "808f14e4_0686f405",
+      "range": {
+        "startLine": 296,
+        "startChar": 6,
+        "endLine": 297,
+        "endChar": 75
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "4aa2ee26_625b4bac",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8313c4bf_d671ec50",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 9
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "443e0385_bf963b69",
         "filename": "cmds/installd/run_dex2oat.cpp",
         "patchSetId": 6
@@ -367,6 +727,30 @@
       "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e01177f0_3479b7a2",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T20:50:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "443e0385_bf963b69",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 65
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
