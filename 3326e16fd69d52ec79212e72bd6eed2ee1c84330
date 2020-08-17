@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1024ec6f_57923ce6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-17T13:49:17Z",
+      "side": 1,
+      "message": "Thanks, looks much cleaner here. I didn\u0027t see any issues in reviewing this, but probably good for a second pair of eyes to go over.",
+      "revId": "3326e16fd69d52ec79212e72bd6eed2ee1c84330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
