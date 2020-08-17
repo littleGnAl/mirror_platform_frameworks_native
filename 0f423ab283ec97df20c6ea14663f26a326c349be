@@ -22,6 +22,30 @@
       "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b1db6d_52a995a6",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-17T21:16:23Z",
+      "side": 1,
+      "message": "Right, I realized that after I wrote the comment (well, copied the similar one from SpIBinder, which I think will also need to be changed). I was going to update the comment, but I have several conflicting goals I\u0027m not sure how to address:\n1) The trait here should be Send not Sync because once you have Send you can easily add Sync to a type by wrapping it in a Mutex, but not vice versa, but\n2) I\u0027m pretty confident that AIBinder is Sync (it internally derives from RefBase which uses std::atomic values for refcounting), which is useful but not as much as Send, and\n3) It\u0027s harder to prove that a type is Send in Rust. I could prove that Binder\u003cT\u003e is !Send if either of the following were true:\na) it holds some thread-local key/pointer/data that is not relevant in another thread, e.g., a pointer to a thread-local interner\nb) it\u0027s a pointer that points to !Sync data, but even that gets complicated when considering that Binder\u003cT\u003e/SpIBinder aren\u0027t aliased reference-like pointers to the internal AIBinder, but more like owning Box\u003cAIBinder\u003e pointers. For example, Box\u003cT\u003e: Send if T: Send, not Sync.\n\nbut lack of evidence of !Send isn\u0027t really evidence of Send.\n\nI think it takes a small leap of faith to assume that SpIBinder/Binder\u003cT: Send\u003e are Send, but it would be really useful to have it.",
+      "parentUuid": "f4cf7d3c_5b496f4b",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
