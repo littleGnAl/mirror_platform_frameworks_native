@@ -34,6 +34,24 @@
       "revId": "701ad5c443d555a2125cddd3c0b3abe16f03d550",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8beb4903_93d5bb7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T19:21:19Z",
+      "side": 1,
+      "message": "Yes, the intention is to switch the inputs in a group (i.e. L100-125).  When I first tried to do that, I had to constantly scroll up and down literally 100, 200 lines part to understand how the variables were used.  I could simply add one extra condition in places, but I think that\u0027ll hurt readability more.  Yes, I really only need L100-125, but I thought the same change could improve readability in general.  Admittedly I don\u0027t know some of the semantics well enough.\n\n\u003e In some places it feels artificial and a bit detrimental to readability.\n\nI\u0027m more than happy to fix if you can point out the locations.  The intention is to improve readability, not make it worse :)",
+      "parentUuid": "cc9b804f_0f4a58ca",
+      "revId": "701ad5c443d555a2125cddd3c0b3abe16f03d550",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

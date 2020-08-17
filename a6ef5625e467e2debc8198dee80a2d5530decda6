@@ -78,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "fee0c35b_0ed4de39",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T19:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c47f279_3b892716",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 104
+      },
+      "revId": "a6ef5625e467e2debc8198dee80a2d5530decda6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cc69ad5_f9798f54",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
@@ -98,6 +122,30 @@
       "revId": "a6ef5625e467e2debc8198dee80a2d5530decda6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437463b0_917a6015",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-17T19:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cc69ad5_f9798f54",
+      "range": {
+        "startLine": 404,
+        "startChar": 12,
+        "endLine": 404,
+        "endChar": 25
+      },
+      "revId": "a6ef5625e467e2debc8198dee80a2d5530decda6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
