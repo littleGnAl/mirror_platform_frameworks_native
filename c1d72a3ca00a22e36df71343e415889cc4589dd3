@@ -46,6 +46,23 @@
       "revId": "c1d72a3ca00a22e36df71343e415889cc4589dd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89dfab79_cde1a651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1082465
+      },
+      "writtenOn": "2020-08-17T16:48:16Z",
+      "side": 1,
+      "message": "Ok, we should be able to rebase on Yiwei\u0027s patch now. Will abandon once that happens",
+      "revId": "c1d72a3ca00a22e36df71343e415889cc4589dd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
