@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "422e170e_cd079940",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "There are too many independent blocks now, seemingly unrelated or overalpping.\n\nHere\u0027s what I can see as major sections:\n\n1) Boot image \u0026 boot classpath\n\n2) Input files (apks, dms, swaps, class loader context)\n\n3) Compiler config (things that affect the generated code)\n\n4) Compiler runtime / perf config (things that affect how the compiler is actually run, e.g. cpusets)\n\nEach of this sections can have sub-section for better grouping, but right now they are interleaved.",
+      "range": {
+        "startLine": 67,
+        "startChar": 17,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4c700e4_59d617eb",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "add a comment // Input files.",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "615bf42b_4757f888",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "Move this into the \"Input files\" block",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "340b089c_66b3aba3",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "Move this into the boot image block",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "109d2d76_2c603158",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "the context is naturally part of the input files (the actual semantic would support files, if you consider the APK to be the primary input)",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0409e48b_3e0ba188",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "This should be in the \u0027Compiler Configuration\u0027 section",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fbcbfa1_4b526acb",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "Can be part of the \u0027Compiler config\u0027 section with an ISA related subsection.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 44
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc51d05_2e6454ec",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "This should be part of a Compiler runtime / perf config (it affects the way the compiler runs, not the generated code)",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 36
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d7ac74_85d0592b",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "part of \u0027Compiler config\u0027 under it\u0027s own subsection , similar to the isa.",
+      "range": {
+        "startLine": 203,
+        "startChar": 3,
+        "endLine": 203,
+        "endChar": 31
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d41ddbe7_ccdefca7",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "Keep with compiler-filter (this is used for debugging)",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2787933_76bbb689",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "part of compiler config section.",
+      "range": {
+        "startLine": 236,
+        "startChar": 3,
+        "endLine": 254,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4541e21d_84d1bd4e",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "part of the compiler runtime/perf section, can have it\u0027s own subsection.",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5647c054_47ecdf5f",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "part of compiler config section.",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 5
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "808f14e4_0686f405",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "part of compiler runtime /perf section.",
+      "range": {
+        "startLine": 296,
+        "startChar": 6,
+        "endLine": 297,
+        "endChar": 75
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8313c4bf_d671ec50",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "part of compiler config.",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 9
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "443e0385_bf963b69",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-17T19:42:45Z",
+      "side": 1,
+      "message": "Can be left as an extra.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 65
+      },
+      "revId": "8d11f6d2b573a7c74421d3f0a0c28324efdaa915",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
