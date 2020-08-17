@@ -70,6 +70,30 @@
       "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "558d24a2_0a5a8162",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-17T23:39:23Z",
+      "side": 1,
+      "message": "There\u0027s a small wrinkle here. I wrote that original comment on the proxy when the struct indeed held an IBinder and missed that I didn\u0027t update it for the NDK API. It now holds an AIBinder, which is Send (iff BpBinder and BBinder are Send, which from my reading of their internals I believe is true). ABpBinder (a subclass of AIBinder) is not thread-safe. It contains a class pointer that starts out null but then is initialized via associateClass, which is racy.\n\nABBinder, which is what Binder\u003cT\u003e actually contains, is thread-safe as its class pointer is already initialized in its constructor and is logically immutable after that point. Do we gain enough by implementing Sync here to make relying on that property worthwhile?\n\nRegardless, SpIBinder cannot be Sync. We should revise the safety comment for SpIBinder to indicate this. This CL seems like a fine time to fix that comment?",
+      "parentUuid": "973593bb_5717d066",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
