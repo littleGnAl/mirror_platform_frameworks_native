@@ -46,6 +46,30 @@
       "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "973593bb_5717d066",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-17T21:18:57Z",
+      "side": 1,
+      "message": "Oh one other thing: Sync in Rust maps pretty well to \"thread-safe\" in C++, but there isn\u0027t a good Send equivalent in C++.",
+      "parentUuid": "08b1db6d_52a995a6",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
