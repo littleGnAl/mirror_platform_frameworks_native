@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4cf7d3c_5b496f4b",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-17T18:31:46Z",
+      "side": 1,
+      "message": "The `ibinder` field is only Send, not Sync. You didn\u0027t impl Sync, but your justification makes it sound like `Binder\u003cT\u003e` could be Sync.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
