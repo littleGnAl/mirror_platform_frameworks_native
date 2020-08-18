@@ -52,6 +52,24 @@
       "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce850ad6_1d28c993",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-18T22:07:08Z",
+      "side": 1,
+      "message": "Maybe someday, if there is other need?  I\u0027m not too confident with the current form for a more general use.",
+      "parentUuid": "40529b4d_0e5a7945",
+      "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
