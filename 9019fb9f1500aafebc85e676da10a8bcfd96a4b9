@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "85ff1414_fbc976ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-18T21:58:50Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll take care of these asap.",
+      "revId": "9019fb9f1500aafebc85e676da10a8bcfd96a4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "602e116a_8b47a4f2",
         "filename": "libs/binder/rust/TEST_MAPPING",
         "patchSetId": 5
@@ -197,6 +214,30 @@
       "writtenOn": "2020-08-18T21:46:53Z",
       "side": 1,
       "message": "nit: this type of test shouldn\u0027t need to add_service or use root. is there a way you can force it to wrap things in process? That should also make it possible, theoretically to run on host",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 43
+      },
+      "revId": "9019fb9f1500aafebc85e676da10a8bcfd96a4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e90a37_15502df2",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-18T21:58:50Z",
+      "side": 1,
+      "message": "I just noticed AIBinder_{to,from}PlatformBinder, which I think I can use instead to transfer the service object to C++ (or vice versa). I didn\u0027t see another way to perform a transaction across the language boundary so that we could read/write to a Parcel from Rust.",
+      "parentUuid": "c6f78f66_402faac8",
       "range": {
         "startLine": 220,
         "startChar": 0,
