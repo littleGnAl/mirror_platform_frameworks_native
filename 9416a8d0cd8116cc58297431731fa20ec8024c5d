@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1317599_73f8f9fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-18T23:14:37Z",
+      "side": 1,
+      "message": "nit: always say why",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "9416a8d0cd8116cc58297431731fa20ec8024c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a27ddb35_a5d071da",
+        "filename": "libs/binder/rust/BinderBindings.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-18T23:14:37Z",
+      "side": 1,
+      "message": "include the header instead",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "9416a8d0cd8116cc58297431731fa20ec8024c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2455c45b_e1fb7bb0",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-18T23:14:37Z",
+      "side": 1,
+      "message": "@ rust people, see frameworks/native/libs/binder/ndk/libbinder_ndk.map.txt. This API should be hidden from apps and vendor code to be consistent with libbinder_ndk behavior. If we don\u0027t have a solution for that in Rust yet, you might consider focusing on apex/platform support, and kicking the can down the road for apps (unless rust binaries support app/platform variant distinctions?)",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "9416a8d0cd8116cc58297431731fa20ec8024c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
