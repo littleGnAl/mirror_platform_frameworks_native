@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "909e58b9_f70375ca",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-18T19:36:38Z",
+      "side": 1,
+      "message": "I folded this function into with_calling_sid below because it should not be called otherwise anyway.",
+      "parentUuid": "05365c0e_2ab8efa7",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f84412d_f4a085f4",
         "filename": "libs/binder/rust/src/state.rs",
         "patchSetId": 1
@@ -93,6 +111,30 @@
     },
     {
       "key": {
+        "uuid": "9ea5a023_6efb6182",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-18T19:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f84412d_f4a085f4",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 119,
+        "endChar": 34
+      },
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fe9add5_51f57d04",
         "filename": "libs/binder/rust/src/state.rs",
         "patchSetId": 1
@@ -107,6 +149,24 @@
       "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b720070_f4c03af5",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-18T19:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe9add5_51f57d04",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +216,54 @@
     },
     {
       "key": {
+        "uuid": "b09bbac1_52a1d7f2",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-18T19:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63dcac1d_3222a493",
+      "range": {
+        "startLine": 127,
+        "startChar": 64,
+        "endLine": 127,
+        "endChar": 70
+      },
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e73e7ba_0a032088",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-18T19:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67c474d_3d2ac993",
+      "range": {
+        "startLine": 127,
+        "startChar": 24,
+        "endLine": 127,
+        "endChar": 26
+      },
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7761243c_0fe5b1bf",
         "filename": "libs/binder/rust/src/state.rs",
         "patchSetId": 1
@@ -176,6 +284,30 @@
       "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ded227_8b56f045",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-18T19:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7761243c_0fe5b1bf",
+      "range": {
+        "startLine": 128,
+        "startChar": 16,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
