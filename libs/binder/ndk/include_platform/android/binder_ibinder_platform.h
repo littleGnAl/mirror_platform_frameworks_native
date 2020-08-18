@@ -16,40 +16,13 @@
 
 #pragma once
 
-#include <android/binder_ibinder.h>
-
-#if !defined(__ANDROID_APEX__) && !defined(__ANDROID_VNDK__)
-#include <binder/IBinder.h>
+#if defined(__ANDROID_APEX__) || defined(__ANDROID_VNDK__)
+#error this is only for platform code
 #endif
 
-__BEGIN_DECLS
-
-/**
- * Makes calls to AIBinder_getCallingSid work if the kernel supports it. This
- * must be called on a local binder server before it is sent out to any othe
- * process. If this is a remote binder, it will abort. If the kernel doesn't
- * support this feature, you'll always get null from AIBinder_getCallingSid.
- *
- * \param binder local server binder to request security contexts on
- */
-void AIBinder_setRequestingSid(AIBinder* binder, bool requestingSid) __INTRODUCED_IN(31);
-
-/**
- * Returns the selinux context of the callee.
- *
- * In order for this to work, the following conditions must be met:
- * - The kernel must be new enough to support this feature.
- * - The server must have called AIBinder_setRequestingSid.
- * - The callee must be a remote process.
- *
- * \return security context or null if unavailable. The lifetime of this context
- * is the lifetime of the transaction.
- */
-__attribute__((warn_unused_result)) const char* AIBinder_getCallingSid() __INTRODUCED_IN(31);
-
-__END_DECLS
-
-#if !defined(__ANDROID_APEX__) && !defined(__ANDROID_VNDK__)
+#include <android/binder_context.h>
+#include <android/binder_ibinder.h>
+#include <binder/IBinder.h>
 
 /**
  * Get libbinder version of binder from AIBinder.
@@ -76,5 +49,3 @@ android::sp<android::IBinder> AIBinder_toPlatformBinder(AIBinder* binder);
  * AIBinder_decStrong
  */
 AIBinder* AIBinder_fromPlatformBinder(const android::sp<android::IBinder>& binder);
-
-#endif
