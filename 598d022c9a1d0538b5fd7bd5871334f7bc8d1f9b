@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ea9dd56_d55a3b68",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-18T21:53:22Z",
+      "side": 1,
+      "message": "can we avoid code in build files or is there a way to implement this in source?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "598d022c9a1d0538b5fd7bd5871334f7bc8d1f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
