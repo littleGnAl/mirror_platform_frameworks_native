@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1638e20_81e251c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-08-18T14:58:37Z",
+      "side": 1,
+      "message": "(i forgot that there are two copies of this code!)",
+      "revId": "42a9b945d8c0dd058ff3e89a75a0569a9bf1ea96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
