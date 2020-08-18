@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "727a2e2a_e332ec5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-18T19:25:51Z",
+      "side": 1,
+      "message": "Actual code LGTM, some spelling nits in the comments + some docs expansion.",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bfcf1dc_81bdf035",
         "filename": "libs/binder/rust/BinderBindings.h",
         "patchSetId": 1
@@ -30,6 +47,132 @@
       "writtenOn": "2020-08-18T15:46:17Z",
       "side": 1,
       "message": "I copied these here because including binder_ibinder_platfrom.h, which declares them, would not compile. What would you suggest to address this?",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05365c0e_2ab8efa7",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-18T19:25:51Z",
+      "side": 1,
+      "message": "Add comment indicating that it\u0027s the caller\u0027s responsibility to select an appropriate lifetime for \u003c\u0027a\u003e or it will be unsafe.",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f84412d_f4a085f4",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-18T19:25:51Z",
+      "side": 1,
+      "message": "Nit: implementation",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 119,
+        "endChar": 34
+      },
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe9add5_51f57d04",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-18T19:25:51Z",
+      "side": 1,
+      "message": "Add a note about when None can happen (system too old, forgot to call set_requesting_sid() first)",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63dcac1d_3222a493",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-18T19:25:51Z",
+      "side": 1,
+      "message": "Nit: being",
+      "range": {
+        "startLine": 127,
+        "startChar": 64,
+        "endLine": 127,
+        "endChar": 70
+      },
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e67c474d_3d2ac993",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-18T19:25:51Z",
+      "side": 1,
+      "message": "Nit: the",
+      "range": {
+        "startLine": 127,
+        "startChar": 24,
+        "endLine": 127,
+        "endChar": 26
+      },
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7761243c_0fe5b1bf",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-18T19:25:51Z",
+      "side": 1,
+      "message": "Nit: beyond",
+      "range": {
+        "startLine": 128,
+        "startChar": 16,
+        "endLine": 128,
+        "endChar": 21
+      },
       "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
