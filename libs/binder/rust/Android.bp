@@ -20,6 +20,10 @@ rust_bindgen {
     source_stem: "ndk_bindings",
     cflags: [
         "-x c++",
+        // This prevents android_ibinder_platform.h from pulling in
+        // binder/IBinder.h. It is still a hack though because it may
+        // have other side effects.
+        "-D__ANDROID_VNDK__=1",
     ],
     bindgen_flags: [
         // Unfortunately the only way to specify the rust_non_exhaustive enum
