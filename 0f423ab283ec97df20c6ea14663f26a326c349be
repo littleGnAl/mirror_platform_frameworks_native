@@ -118,6 +118,30 @@
       "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "359ee3b6_f5f1be7c",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-18T17:34:51Z",
+      "side": 1,
+      "message": "AIBinder is Send, don\u0027t worry about that. Just don\u0027t make it Sync and we\u0027ll be fine.",
+      "parentUuid": "0f729006_8105221c",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
