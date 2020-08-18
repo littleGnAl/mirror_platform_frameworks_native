@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54047de7_c96d8535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-18T15:46:17Z",
+      "side": 1,
+      "message": "I am going to test this in the context of Keystore 2.0. Other than that a test would have to account for the fact that the Linux kernel may not support it and on the SEPolicy that is setup for the test.",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bfcf1dc_81bdf035",
+        "filename": "libs/binder/rust/BinderBindings.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-18T15:46:17Z",
+      "side": 1,
+      "message": "I copied these here because including binder_ibinder_platfrom.h, which declares them, would not compile. What would you suggest to address this?",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
