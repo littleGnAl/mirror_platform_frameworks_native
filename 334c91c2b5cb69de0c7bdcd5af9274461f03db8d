@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c215950b_ccc16f73",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-18T17:58:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be infallible since you are selecting the same type as what you started from? The only error `into_interface()` can return is `BAD_TYPE`, for the case where the selected interface is not implemented by the underlying binder.\n\nI think this means you can just do Clone for Box\u003cdyn $interface\u003e, get rid of CloneInterface entirely, and drop the WARNING on the Clone interface, since it cannot actually panic. (With a refinement of the expect message to indicate it\u0027s a binder internal error if this goes wrong).",
+      "revId": "334c91c2b5cb69de0c7bdcd5af9274461f03db8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
