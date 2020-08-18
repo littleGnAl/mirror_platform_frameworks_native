@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6ad23c80_9b123264",
+        "filename": "libs/binder/rust/BinderBindings.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-18T23:19:29Z",
+      "side": 1,
+      "message": "Including the header opens another can of worms, because this header includes binder/IBinder.h for some reason. Why is that?",
+      "parentUuid": "a27ddb35_a5d071da",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "9416a8d0cd8116cc58297431731fa20ec8024c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2455c45b_e1fb7bb0",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 2
