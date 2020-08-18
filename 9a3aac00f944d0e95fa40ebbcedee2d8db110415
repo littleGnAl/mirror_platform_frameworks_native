@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75498dc1_ec9bd200",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-18T17:38:56Z",
+      "side": 1,
+      "message": "need to cut out APEX branches entirely, because libbinder itself shouldn\u0027t be in APEX (only clients of libbinder_ndk)",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 31
+      },
+      "revId": "9a3aac00f944d0e95fa40ebbcedee2d8db110415",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
