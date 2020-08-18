@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "02c3dbbb_ea53a078",
+        "filename": "libs/binder/rust/BinderBindings.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-18T23:19:38Z",
+      "side": 1,
+      "message": "I\u0027m going to have the same problem trying to include that in https://android-review.googlesource.com/c/platform/frameworks/native/+/1357925 now. binder_ibinder_platform.h includes IBinder.h and this causes a ton of C++ to get included that I\u0027m trying to get working with the soong bindgen module. I\u0027ll update when I\u0027ve looked into this further.",
+      "parentUuid": "3bfcf1dc_81bdf035",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05365c0e_2ab8efa7",
         "filename": "libs/binder/rust/src/state.rs",
         "patchSetId": 1
