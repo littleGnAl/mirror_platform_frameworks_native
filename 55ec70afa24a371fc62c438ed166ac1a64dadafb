@@ -34,6 +34,24 @@
       "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40529b4d_0e5a7945",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-08-18T21:06:40Z",
+      "side": 1,
+      "message": "Should unique_file be moved to libbase so it can be re-used in other locations then?",
+      "parentUuid": "b4d7a901_c6636c62",
+      "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
