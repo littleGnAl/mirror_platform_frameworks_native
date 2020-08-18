@@ -94,6 +94,30 @@
       "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f729006_8105221c",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-18T08:34:53Z",
+      "side": 1,
+      "message": "I\u0027m starting to think we can prove Send for AIBinder by manually replicating the Rust compiler\u0027s auto trait logic for the relevant C++ types: prove that AIBinder implements Send by induction by starting from AIBinder/ABBinder proving that every single C++ type included therein is Send, recursively by going up the class hierarchy and also following pointers (requiring Send for exclusive pointers and Sync for aliasing ones).\n\nI gave it a quick try and got a pretty long chain, it looks like it will take some work: ABBinder -\u003e BBinder -\u003e Extras -\u003e ObjectManager -\u003e some void* pointers and KeyedVector etc.",
+      "parentUuid": "558d24a2_0a5a8162",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "0f423ab283ec97df20c6ea14663f26a326c349be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
