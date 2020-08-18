@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39f69d27_ab0e3f01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-08-18T15:41:23Z",
+      "side": 1,
+      "message": "unique_fd is a thing that exists in libbase.  Would you be able to use that instead of adding unique_file?\n\nhttps://osscs.corp.google.com/android/platform/superproject/+/master:system/libbase/include/android-base/unique_fd.h?q\u003dunique_fd.h\u0026ss\u003dandroid",
+      "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
