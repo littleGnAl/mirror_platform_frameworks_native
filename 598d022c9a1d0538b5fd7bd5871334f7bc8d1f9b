@@ -46,6 +46,30 @@
       "revId": "598d022c9a1d0538b5fd7bd5871334f7bc8d1f9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8adb1b_cb3b5571",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-18T22:00:35Z",
+      "side": 1,
+      "message": "It\u0027s not exactly clear to me why source inclusion isn\u0027t the default here. Does it have to do with public/private crates and not having a \u0027testing\u0027 visibility layer? Maybe you can explain the motivation?\n\n2 would be my preference",
+      "parentUuid": "20083fd0_4a24f32d",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "598d022c9a1d0538b5fd7bd5871334f7bc8d1f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
