@@ -16,6 +16,24 @@
       "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4d7a901_c6636c62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-18T15:53:51Z",
+      "side": 1,
+      "message": "Unfortunately no.  unique_fd manages fd nicely, but it doesn\u0027t care about the backing file/socket/etc.  unique_file targets to make dexopt.cpp cleaner since it handles file path and fd together a lot.  This will also make it easier when I need to pass file paths instead of fd to dex2oat later.",
+      "parentUuid": "39f69d27_ab0e3f01",
+      "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
