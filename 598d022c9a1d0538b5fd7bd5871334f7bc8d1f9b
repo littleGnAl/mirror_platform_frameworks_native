@@ -22,6 +22,30 @@
       "revId": "598d022c9a1d0538b5fd7bd5871334f7bc8d1f9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20083fd0_4a24f32d",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-18T21:57:02Z",
+      "side": 1,
+      "message": "There are three options for this:\n\n* Pass it in like this\n* Switch to source inclusion rather than building a library, and put this code next to the generated source\n* Use the library based bindgen version, and emit this as a string.\n\nIf it was a ton of code, I would direct them to #2. I felt OK with this small amount, but if we want to draw the line at any code, we can do #2. I believe sjc knows how to do this, but if you don\u0027t, reach out to me and I\u0027ll explain.",
+      "parentUuid": "1ea9dd56_d55a3b68",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "598d022c9a1d0538b5fd7bd5871334f7bc8d1f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
