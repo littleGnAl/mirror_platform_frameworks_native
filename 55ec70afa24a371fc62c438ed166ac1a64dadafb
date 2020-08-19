@@ -73,6 +73,23 @@
     },
     {
       "key": {
+        "uuid": "0847eecf_9bf5b583",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-19T19:36:21Z",
+      "side": 1,
+      "message": "lgtm, after you resolve Orion\u0027s comments.",
+      "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6bd86f9_1142a0b2",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 6
