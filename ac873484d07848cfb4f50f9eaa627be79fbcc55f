@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4de09e8_bedbce49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-19T20:28:51Z",
+      "side": 1,
+      "message": "Apparently I can\u0027t add patch sets as assignee due to gerrit permissions. Here\u0027s a copy with the header split: https://android-review.googlesource.com/c/platform/frameworks/native/+/1404876",
+      "revId": "ac873484d07848cfb4f50f9eaa627be79fbcc55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de5eff81_1d6f809f",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-19T20:28:51Z",
+      "side": 1,
+      "message": "This could be simplified to `sid.as_ref().map(CStr::from_ptr)` if you want.",
+      "revId": "ac873484d07848cfb4f50f9eaa627be79fbcc55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
