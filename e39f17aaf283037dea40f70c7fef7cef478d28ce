@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "6a5c82b3_c19cd052",
+        "filename": "libs/binder/rust/BinderBindings.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-19T17:13:16Z",
+      "side": 1,
+      "message": "Sure, I can split them if that\u0027s ok with smoreland@? Will it be a problem to move them now? I\u0027m assuming this header hasn\u0027t shipped in a VNDK yet.\n\nWhat about binder_ibinder_platform.h for the to/from platform objects, and binder_ibinder_context.h or binder_context.h for the SELinux context functions? There\u0027s various other context from IPCThreadState that might need to be exposed at some time.",
+      "parentUuid": "4b18918b_3705c59b",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05365c0e_2ab8efa7",
         "filename": "libs/binder/rust/src/state.rs",
         "patchSetId": 1

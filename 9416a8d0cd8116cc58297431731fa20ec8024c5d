@@ -164,6 +164,30 @@
       "revId": "9416a8d0cd8116cc58297431731fa20ec8024c5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7838e755_83441b5f",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-19T17:13:16Z",
+      "side": 1,
+      "message": "AFAIK the rust crate is staying platform-only for now.",
+      "parentUuid": "56002344_0375c951",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "9416a8d0cd8116cc58297431731fa20ec8024c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
