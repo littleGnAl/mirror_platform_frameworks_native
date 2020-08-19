@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "4b18918b_3705c59b",
+        "filename": "libs/binder/rust/BinderBindings.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-19T15:26:34Z",
+      "side": 1,
+      "message": "I assigned this CL to you. Can you resolve this header issue?",
+      "parentUuid": "f13006f2_32928340",
+      "revId": "e39f17aaf283037dea40f70c7fef7cef478d28ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05365c0e_2ab8efa7",
         "filename": "libs/binder/rust/src/state.rs",
         "patchSetId": 1
