@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a594d55a_97a415bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-19T20:36:19Z",
+      "side": 1,
+      "message": "just want to ack that this means someone couldn\u0027t use the rust API in apps. I\u0027m not sure if someone from rust side wants to file a bug tracking that type of support.",
+      "revId": "c15b6939aa6922a36faf197918ad1407492b2b5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "454977a3_61df199a",
+        "filename": "libs/binder/ndk/include_platform/android/binder_ibinder_platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-19T20:36:19Z",
+      "side": 1,
+      "message": "I think we should keep the existing behavior and include binder_context.h here, so that we don\u0027t break existing users of this API",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "c15b6939aa6922a36faf197918ad1407492b2b5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a35d0b6_a68f046a",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-19T20:36:19Z",
+      "side": 1,
+      "message": "we should avoid it, or create a new define with specific semantics (e.g. __ANDROID_RUST__ or something custom)\n\nWhat is the downside if that header is accidentally included? Is it a cryptic error? Would it be okay to let that error happen?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "c15b6939aa6922a36faf197918ad1407492b2b5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b76aa0_9e70c3c2",
+        "filename": "libs/binder/rust/BinderBindings.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-19T20:36:19Z",
+      "side": 1,
+      "message": "nit: prefer to include both, rather than relying on transitive includes",
+      "revId": "c15b6939aa6922a36faf197918ad1407492b2b5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
