@@ -70,6 +70,52 @@
       "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6bd86f9_1142a0b2",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-19T13:19:47Z",
+      "side": 1,
+      "message": "nit: indent here is 2, but file appears to be 4.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 3
+      },
+      "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dab6d4c_3e3b6842",
+        "filename": "cmds/installd/run_dex2oat_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-19T13:19:47Z",
+      "side": 1,
+      "message": "Why this and other std::unique\u003cUniqueFile\u003e here? Isn\u0027t it already unique?",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "55ec70afa24a371fc62c438ed166ac1a64dadafb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
