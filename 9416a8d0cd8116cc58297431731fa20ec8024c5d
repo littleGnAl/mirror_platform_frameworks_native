@@ -188,6 +188,30 @@
       "revId": "9416a8d0cd8116cc58297431731fa20ec8024c5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "561c07d1_a07ed78d",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-19T17:15:31Z",
+      "side": 1,
+      "message": "Currently Rust support is platform-only. If we want to lay the groundwork for app-use here anyways, we could put this behind a feature, and enable that feature for our existing soong module since it\u0027s a platform library.\n\nOpinions Steven?",
+      "parentUuid": "7838e755_83441b5f",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "9416a8d0cd8116cc58297431731fa20ec8024c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
