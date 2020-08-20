@@ -16,6 +16,24 @@
       "revId": "b890aa6236564e533778aa53d38e07ad5fa11449",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca76257_452a763d",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-20T23:07:27Z",
+      "side": 1,
+      "message": "I think either way is fine because libbinder_rs and the auto-generated code are bundled together; we can\u0027t update either of one without affecting the other.",
+      "parentUuid": "49a2c157_03f9793a",
+      "revId": "b890aa6236564e533778aa53d38e07ad5fa11449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
