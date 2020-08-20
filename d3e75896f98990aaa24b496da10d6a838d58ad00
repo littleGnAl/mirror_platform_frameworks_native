@@ -51,6 +51,24 @@
       "revId": "d3e75896f98990aaa24b496da10d6a838d58ad00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a601639_1ae4a222",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-08-20T01:23:22Z",
+      "side": 1,
+      "message": "Maybe flaky isn\u0027t the right way to describe it, but it looked like a lot of G-\u003eR-\u003eG transitions in https://android-build.googleplex.com/builds/tests/view?invocationId\u003dI28900005664173628\u0026redirect\u003dhttp://sponge2/a28a7366-5bb3-420e-a567-7fd3dcc6d6ae if I scrolled to the right.\n\nAs for the initialization, Android does do zero-init for uninitialized stack variables by default now. I don\u0027t think that ASan is causing this, because those other test runs are also using `sanitize: false`.",
+      "parentUuid": "31f637e0_12b11cd1",
+      "revId": "d3e75896f98990aaa24b496da10d6a838d58ad00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
