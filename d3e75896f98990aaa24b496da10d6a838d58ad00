@@ -33,6 +33,24 @@
       "revId": "d3e75896f98990aaa24b496da10d6a838d58ad00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31f637e0_12b11cd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2020-08-20T01:16:50Z",
+      "side": 1,
+      "message": "Huh, I was unaware of the failure, and especially not that it was flaky.\n\nIt turns out that the clientCompositionTimestamp member that is being checked is not initialized to zero as the test expects. \n\nOffhand I don\u0027t know if using ASAN garbage-initializes memory -- but that could certainly explain the test failure if so, when it might not fail otherwise.\n\nI\u0027ll upload a fix.",
+      "parentUuid": "53708e13_d50bf5b1",
+      "revId": "d3e75896f98990aaa24b496da10d6a838d58ad00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
