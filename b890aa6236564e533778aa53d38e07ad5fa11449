@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49a2c157_03f9793a",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-20T22:56:06Z",
+      "side": 1,
+      "message": "The AIDL compiler emits the equivalent C++ code directly into the auto-generated code, but I added it here instead because it doesn\u0027t fit cleanly into Rust\u0027s on_transact (Rust uses the ? operator which exits from on_transact early in case of error).\n\nI could rename the auto-generated on_transact to on_transact_inner and add a new auto-generated on_transact with the code below, but I\u0027m not sure that makes sense.",
+      "revId": "b890aa6236564e533778aa53d38e07ad5fa11449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
