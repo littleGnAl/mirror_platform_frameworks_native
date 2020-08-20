@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3973c362_e27cc258",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-20T16:22:37Z",
+      "side": 1,
+      "message": "One nit, but looks good here.",
+      "revId": "272922e08781291d05b28dd73faa991a2e00a17d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4200082_7bd28988",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-20T16:22:37Z",
+      "side": 1,
+      "message": "stray whitespace, sorry to nit :-(",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 4
+      },
+      "revId": "272922e08781291d05b28dd73faa991a2e00a17d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
