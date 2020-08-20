@@ -69,6 +69,23 @@
       "revId": "d3e75896f98990aaa24b496da10d6a838d58ad00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a011fadf_6268d8ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2020-08-20T01:57:28Z",
+      "side": 1,
+      "message": "Since it won\u0027t make it worse, I\u0027d say go ahead and submit it then.\n\nI\u0027m building to run the test myself with the fix. I\u0027ll cc you on the CL.",
+      "revId": "d3e75896f98990aaa24b496da10d6a838d58ad00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
