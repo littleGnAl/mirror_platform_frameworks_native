@@ -33,6 +33,24 @@
       "revId": "ac873484d07848cfb4f50f9eaa627be79fbcc55f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fc31cf2_89648520",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-08-20T01:02:49Z",
+      "side": 1,
+      "message": "Absolutely. I will abandon this CL in favor of the one you uploaded. Will you take it from here? I just want to know so I don\u0027t stomp over your updates if you do.",
+      "parentUuid": "de5eff81_1d6f809f",
+      "revId": "ac873484d07848cfb4f50f9eaa627be79fbcc55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
