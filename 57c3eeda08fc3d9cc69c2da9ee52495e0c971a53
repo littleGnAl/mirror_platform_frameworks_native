@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60864d84_f3c2df99",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-21T20:56:08Z",
+      "side": 1,
+      "message": "image_file",
+      "range": {
+        "startLine": 870,
+        "startChar": 15,
+        "endLine": 870,
+        "endChar": 20
+      },
+      "revId": "57c3eeda08fc3d9cc69c2da9ee52495e0c971a53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51dc546_3459783f",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-21T20:56:08Z",
+      "side": 1,
+      "message": "can we improve this pattern?\n\nthe problem of this snippet is that there\u0027s no enforcement of easy way to see that profile_path is the one being opened by open_reference_profile (it kinda pass it as an implicit assumptions).\n\n\nmaybe we need an overload open_reference_profile_as_unique_file?",
+      "range": {
+        "startLine": 950,
+        "startChar": 4,
+        "endLine": 955,
+        "endChar": 7
+      },
+      "revId": "57c3eeda08fc3d9cc69c2da9ee52495e0c971a53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1092f582_329112e3",
+        "filename": "cmds/installd/run_dex2oat_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-21T20:56:08Z",
+      "side": 1,
+      "message": "why the change?",
+      "range": {
+        "startLine": 145,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 22
+      },
+      "revId": "57c3eeda08fc3d9cc69c2da9ee52495e0c971a53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96671469_bd02a51b",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-21T20:56:08Z",
+      "side": 1,
+      "message": "PLOG if there\u0027s an issue closing",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "57c3eeda08fc3d9cc69c2da9ee52495e0c971a53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
