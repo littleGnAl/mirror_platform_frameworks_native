@@ -22,6 +22,52 @@
       "revId": "e8cb0961583458ba944a9055c736d13d002b6fad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09776996_0c1fa1cf",
+        "filename": "libs/binder/tests/binderBufferFilledTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-21T18:08:40Z",
+      "side": 1,
+      "message": "hmmm, this should have been locked twice to block, so it must be failing due to scheduling",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "e8cb0961583458ba944a9055c736d13d002b6fad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adefac7d_826eceac",
+        "filename": "libs/binder/tests/binderBufferFilledTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-21T18:08:40Z",
+      "side": 1,
+      "message": "and this is accidentally two threads in the threadpool",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 42
+      },
+      "revId": "e8cb0961583458ba944a9055c736d13d002b6fad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
