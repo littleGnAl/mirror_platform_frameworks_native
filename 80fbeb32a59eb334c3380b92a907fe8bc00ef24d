@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bb437cf2_aae774ad",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78a78223_b4bdceb6",
+      "range": {
+        "startLine": 29,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d261b72_b6ce64f4",
         "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19d6eb32_fe4b7adb",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d261b72_b6ce64f4",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a85c9dfa_c584ee12",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "Yeah, probably. I changed it to also fuzz the number of elements pushed, from 0 to capacity+1, in case behavior differs based on that.",
+      "parentUuid": "cb1152e2_edf1f842",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4d55dea_fd8aa27a",
         "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c99627_d0760450",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4d55dea_fd8aa27a",
+      "range": {
+        "startLine": 80,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 33
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "fb83f063_3bac2f7a",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67e68535_389da3f2",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 52
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3ed0c42_72ee6961",
         "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69111ccf_79fb7d6b",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "Seems this was a comment that was fixed and mistakenly left in. Removed.",
+      "parentUuid": "a3ed0c42_72ee6961",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 72
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "d9045ee2_75a1b8da",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02710110_464b4e85",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 63
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bcb7a39_a5afc06f",
         "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
         "patchSetId": 2
@@ -174,6 +342,30 @@
       "writtenOn": "2020-08-07T19:33:54Z",
       "side": 1,
       "message": "pass by ref instead",
+      "range": {
+        "startLine": 26,
+        "startChar": 65,
+        "endLine": 26,
+        "endChar": 72
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab5bd29_42f53003",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "This wasn\u0027t done initially because non-const reference arguments were against Google C++ style guidelines due to making it unclear to the caller that the variable would be modified. The \"Reference Arguments\" section seems to have been removed from the public guidelines page recently though (WaybackMachine says sometime between May 20-26 of this year).\n\nThe passed FDP cannot be const, as it needs to advance the buffer pointers when being used in order to prevent repeat values.\n\nIf this guideline is no longer the case, happy to make the change, just wanted to make sure beforehand.",
+      "parentUuid": "8bcb7a39_a5afc06f",
       "range": {
         "startLine": 26,
         "startChar": 65,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "0ebb7b78_ce92600d",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "This was originally an assert in the source tests, and only calls a BitSet64 function (part of libutils, not this library), which in turn just returns an index in the coords hidl vector (also not part of this library). As these functions aren\u0027t actually fuzzing this library at all, removed.",
+      "parentUuid": "0cd2a946_eca467b8",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 96
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "906c8bbc_7f2e94d4",
         "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
         "patchSetId": 2
@@ -229,6 +445,30 @@
       "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871d8d0f_4def6a82",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "True, removing these calls.",
+      "parentUuid": "906c8bbc_7f2e94d4",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 54
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "ed357fae_70b02fd5",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierFuzzHelpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "I believe so, yes (same with getMotionEventAxis). Done.",
+      "parentUuid": "03dcc86d_b8d29b09",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 69
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e4e4a2e_5201d1a0",
         "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierFuzzHelpers.h",
         "patchSetId": 2
@@ -275,6 +539,30 @@
       "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1cecb93_f3fec0ba",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierFuzzHelpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-08-21T20:51:41Z",
+      "side": 1,
+      "message": "Changed to be a for loop that sets a random number of axes, up to and including the current max enum value + 1 (for bounds checking).",
+      "parentUuid": "3e4e4a2e_5201d1a0",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
