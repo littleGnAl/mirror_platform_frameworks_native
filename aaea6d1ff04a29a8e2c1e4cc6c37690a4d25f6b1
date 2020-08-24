@@ -39,6 +39,30 @@
       "revId": "aaea6d1ff04a29a8e2c1e4cc6c37690a4d25f6b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f20e70fa_772c2cd8",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-24T18:50:13Z",
+      "side": 1,
+      "message": "There\u0027s currently no way to rewind the parcel position except the call to set_data_position directly above this line. Therefore, end is greater than or equal to start. Happy to add a check if anyone thinks it would be better to be conservative here.",
+      "parentUuid": "1a6b9b9a_f479da0d",
+      "range": {
+        "startLine": 162,
+        "startChar": 21,
+        "endLine": 162,
+        "endChar": 32
+      },
+      "revId": "aaea6d1ff04a29a8e2c1e4cc6c37690a4d25f6b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
