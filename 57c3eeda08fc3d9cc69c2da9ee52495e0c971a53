@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "676db4a9_1f8d32f4",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-24T17:36:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60864d84_f3c2df99",
+      "range": {
+        "startLine": 870,
+        "startChar": 15,
+        "endLine": 870,
+        "endChar": 20
+      },
+      "revId": "57c3eeda08fc3d9cc69c2da9ee52495e0c971a53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f51dc546_3459783f",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "57c3eeda08fc3d9cc69c2da9ee52495e0c971a53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d064a94_5c9d0537",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-24T17:36:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f51dc546_3459783f",
+      "range": {
+        "startLine": 950,
+        "startChar": 4,
+        "endLine": 955,
+        "endChar": 7
+      },
+      "revId": "57c3eeda08fc3d9cc69c2da9ee52495e0c971a53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "80df6986_963016a5",
+        "filename": "cmds/installd/run_dex2oat_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-24T17:36:50Z",
+      "side": 1,
+      "message": "Oops, reverted.",
+      "parentUuid": "1092f582_329112e3",
+      "range": {
+        "startLine": 145,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 22
+      },
+      "revId": "57c3eeda08fc3d9cc69c2da9ee52495e0c971a53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96671469_bd02a51b",
         "filename": "cmds/installd/unique_file.cpp",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "57c3eeda08fc3d9cc69c2da9ee52495e0c971a53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9009b8b9_f13927be",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2020-08-24T17:36:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96671469_bd02a51b",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "57c3eeda08fc3d9cc69c2da9ee52495e0c971a53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
