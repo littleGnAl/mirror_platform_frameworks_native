@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4432faea_4a42e56a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-24T12:39:02Z",
+      "side": 1,
+      "message": "Just for reference, the uses got removed in https://r.android.com/1271089.",
+      "revId": "1b7094d018371f7978460ff65fde97baba1b0eac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
