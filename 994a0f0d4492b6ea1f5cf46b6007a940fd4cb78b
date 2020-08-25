@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fcbf0a7_138323c8",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-25T23:22:22Z",
+      "side": 1,
+      "message": "nit: should the visibility on these be limited, since they appear to be for internal use?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "994a0f0d4492b6ea1f5cf46b6007a940fd4cb78b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
