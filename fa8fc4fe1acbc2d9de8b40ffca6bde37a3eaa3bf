@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96e8eb04_bd7bec04",
+        "filename": "cmds/installd/dexopt_return_codes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-25T12:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07781caf_7324b70d",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 15
+      },
+      "revId": "fa8fc4fe1acbc2d9de8b40ffca6bde37a3eaa3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5c9f6a8_57bd0848",
         "filename": "cmds/installd/dexopt_return_codes.h",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "fa8fc4fe1acbc2d9de8b40ffca6bde37a3eaa3bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c646736a_520bfdd4",
+        "filename": "cmds/installd/dexopt_return_codes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-25T12:16:53Z",
+      "side": 1,
+      "message": "Yeah, dex2oat itself should log why it failed.",
+      "parentUuid": "b5c9f6a8_57bd0848",
+      "revId": "fa8fc4fe1acbc2d9de8b40ffca6bde37a3eaa3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "fa8fc4fe1acbc2d9de8b40ffca6bde37a3eaa3bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a0cf01_c8dc4205",
+        "filename": "cmds/installd/dexopt_return_codes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-25T12:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86ac0ac7_4ccc24a3",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "fa8fc4fe1acbc2d9de8b40ffca6bde37a3eaa3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
