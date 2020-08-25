@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "fbc694f5_cb236f2f",
+        "filename": "libs/binder/rust/tests/serialization.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-25T22:55:44Z",
+      "side": 1,
+      "message": "I guess, it would be nice to have some testing environment, or at least, have the behaviors we are testing be separated. If something goes wrong here, we have to figure out where in over 100 lines of parceling code. Ideally, one test \"case\" or function etc only tests one or a few behaviors.",
+      "parentUuid": "57d30916_09713116",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "9019fb9f1500aafebc85e676da10a8bcfd96a4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "401d7348_16e1c1af",
         "filename": "libs/binder/rust/tests/serialization.cpp",
         "patchSetId": 5
