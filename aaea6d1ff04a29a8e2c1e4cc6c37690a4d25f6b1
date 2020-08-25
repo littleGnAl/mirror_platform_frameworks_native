@@ -63,6 +63,30 @@
       "revId": "aaea6d1ff04a29a8e2c1e4cc6c37690a4d25f6b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94bc740f_199537a2",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-25T23:16:17Z",
+      "side": 1,
+      "message": "Added an assert for this since we\u0027re leaving the set_data_position method public for the time being.",
+      "parentUuid": "f20e70fa_772c2cd8",
+      "range": {
+        "startLine": 162,
+        "startChar": 21,
+        "endLine": 162,
+        "endChar": 32
+      },
+      "revId": "aaea6d1ff04a29a8e2c1e4cc6c37690a4d25f6b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
