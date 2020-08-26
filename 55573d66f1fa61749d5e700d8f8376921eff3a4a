@@ -22,6 +22,30 @@
       "revId": "55573d66f1fa61749d5e700d8f8376921eff3a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42fc4752_20d7fd07",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-26T17:37:50Z",
+      "side": 1,
+      "message": "Thanks, it now calls out through selinux_bindgen, should be stable.",
+      "parentUuid": "080a243a_b4eeb8d7",
+      "range": {
+        "startLine": 262,
+        "startChar": 12,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "55573d66f1fa61749d5e700d8f8376921eff3a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
