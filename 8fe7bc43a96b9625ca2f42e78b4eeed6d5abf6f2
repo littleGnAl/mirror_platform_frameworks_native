@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b8ce949_6038ce7e",
+        "filename": "cmds/installd/run_dex2oat_test.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-26T08:17:05Z",
+      "side": 1,
+      "message": "sort order",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "8fe7bc43a96b9625ca2f42e78b4eeed6d5abf6f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
