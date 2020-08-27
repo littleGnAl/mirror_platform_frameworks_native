@@ -1,0 +1,58 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004635537",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1357925?revision\u003d8",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cfdb167a_c18bb88d",
+        "filename": "libs/binder/rust/tests/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-27T00:57:42Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 20
+      },
+      "revId": "d3954b9e0dfaf8c4c61ba6454e234a6ebd79fc26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004635537",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1357925?revision\u003d8",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d4bb68c2_9fd2c226",
+        "filename": "libs/binder/rust/tests/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-27T00:57:42Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 57,
+        "startChar": 11,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "d3954b9e0dfaf8c4c61ba6454e234a6ebd79fc26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
