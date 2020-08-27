@@ -208,6 +208,30 @@
     },
     {
       "key": {
+        "uuid": "04da73cc_c6e10408",
+        "filename": "libs/binder/rust/tests/serialization.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-27T00:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25959e00_dec7ee5f",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "9019fb9f1500aafebc85e676da10a8bcfd96a4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "401d7348_16e1c1af",
         "filename": "libs/binder/rust/tests/serialization.cpp",
         "patchSetId": 5
@@ -275,6 +299,30 @@
       "revId": "9019fb9f1500aafebc85e676da10a8bcfd96a4b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29b5fa96_b5ebdb99",
+        "filename": "libs/binder/rust/tests/serialization.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-27T00:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e77b2ec_5ca35494",
+      "range": {
+        "startLine": 38,
+        "startChar": 15,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "9019fb9f1500aafebc85e676da10a8bcfd96a4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -348,6 +396,30 @@
     },
     {
       "key": {
+        "uuid": "58fea075_ea359d99",
+        "filename": "libs/binder/rust/tests/serialization.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-27T00:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "750f396b_c8d4a039",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 35
+      },
+      "revId": "9019fb9f1500aafebc85e676da10a8bcfd96a4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "433c21a8_468734af",
         "filename": "libs/binder/rust/tests/serialization.rs",
         "patchSetId": 5
@@ -368,6 +440,30 @@
       "revId": "9019fb9f1500aafebc85e676da10a8bcfd96a4b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce0c4be_c807a141",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-27T00:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "433c21a8_468734af",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "9019fb9f1500aafebc85e676da10a8bcfd96a4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
