@@ -34,6 +34,24 @@
       "revId": "9a7007145959c61b449fbd7eb2060ad0d8801eaf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab44fd36_81e69c3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-27T19:46:29Z",
+      "side": 1,
+      "message": "Thanks, thought lints were already running when I last uploaded this.",
+      "parentUuid": "0fabe7e2_a61a7f30",
+      "revId": "9a7007145959c61b449fbd7eb2060ad0d8801eaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
