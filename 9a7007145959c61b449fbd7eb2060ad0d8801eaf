@@ -16,6 +16,24 @@
       "revId": "9a7007145959c61b449fbd7eb2060ad0d8801eaf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fabe7e2_a61a7f30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-27T19:35:52Z",
+      "side": 1,
+      "message": "error: useless conversion to the same type\n   --\u003e frameworks/native/libs/binder/rust/tests/binder_lib_test.rs:421:51\n    |\n421 |             Ok(bytes_written) if bytes_written \u003d\u003d buf.len().try_into().unwrap() \u003d\u003e Ok(()),\n    |                                                   ^^^^^^^^^^^^^^^^^^^^\n    |\n    \u003d note: `-D clippy::useless-conversion` implied by `-D warnings`\n    \u003d help: consider removing `.try_into()`\n    \u003d help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#useless_conversion\n\nerror: aborting due to previous error",
+      "parentUuid": "e558fde1_1e3fd040",
+      "revId": "9a7007145959c61b449fbd7eb2060ad0d8801eaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
