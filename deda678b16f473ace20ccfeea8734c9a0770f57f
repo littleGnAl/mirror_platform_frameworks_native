@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c851c53_c0d29970",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-08-28T18:32:24Z",
+      "side": 1,
+      "message": "I doubt this class is copy-able given that it has unique_ptr member.\nbtw, if you intended so, please consider adding assignment as well.\n\nbeing move-able probably make more sense.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "deda678b16f473ace20ccfeea8734c9a0770f57f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
