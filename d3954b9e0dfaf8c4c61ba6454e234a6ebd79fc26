@@ -16,6 +16,23 @@
       "revId": "d3954b9e0dfaf8c4c61ba6454e234a6ebd79fc26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a1f2a91_26b27be0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-28T21:11:35Z",
+      "side": 1,
+      "message": "Build failures were a combination of factors not related to this CL. Retriggering build.",
+      "revId": "d3954b9e0dfaf8c4c61ba6454e234a6ebd79fc26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
