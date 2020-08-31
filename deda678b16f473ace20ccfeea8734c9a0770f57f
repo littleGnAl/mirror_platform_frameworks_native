@@ -22,6 +22,29 @@
       "revId": "deda678b16f473ace20ccfeea8734c9a0770f57f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5941967_c404128b",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-31T01:24:00Z",
+      "side": 1,
+      "message": "why don\u0027t you make this as a return value?",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "deda678b16f473ace20ccfeea8734c9a0770f57f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
