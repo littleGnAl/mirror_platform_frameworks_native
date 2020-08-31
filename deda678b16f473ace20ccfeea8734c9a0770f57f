@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27f56c78_b14e7e5c",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-08-31T12:32:24Z",
+      "side": 1,
+      "message": "Thanks for catching it! Parcelable is copyable, accordingly its derived class ParcelableHolder should be copyable class as well, so implemented custom copy constructor instead.",
+      "parentUuid": "0c851c53_c0d29970",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "deda678b16f473ace20ccfeea8734c9a0770f57f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5941967_c404128b",
         "filename": "libs/binder/include/binder/ParcelableHolder.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "deda678b16f473ace20ccfeea8734c9a0770f57f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb7db4e_7676ad8f",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-08-31T12:32:24Z",
+      "side": 1,
+      "message": "yeah, that sounds better, done.",
+      "parentUuid": "c5941967_c404128b",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "deda678b16f473ace20ccfeea8734c9a0770f57f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
