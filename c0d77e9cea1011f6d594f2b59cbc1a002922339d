@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8690cb_75c7e408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-08-31T13:26:24Z",
+      "side": 1,
+      "message": "LGTM, but setParcelable(T) seems a bit restrictive or leads unnecessary copy operation. ",
+      "revId": "c0d77e9cea1011f6d594f2b59cbc1a002922339d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
