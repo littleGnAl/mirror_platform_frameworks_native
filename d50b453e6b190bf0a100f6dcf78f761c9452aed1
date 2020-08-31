@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90aee62a_e9e529e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-31T21:58:23Z",
+      "side": 1,
+      "message": "the alternatives would be:\n- convert these exceptions to appropriate status values\n- document that this essentially always returns unknown error (unless the EX_* values and STATUS_* values overlap)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "d50b453e6b190bf0a100f6dcf78f761c9452aed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f1c9a7_33ad19de",
+        "filename": "libs/binder/ndk/service_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-31T21:58:23Z",
+      "side": 1,
+      "message": "note for the test cases added, only 1 hits this case. We could actually do an IPC avoiding the binder null check and still get the same error.",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 14
+      },
+      "revId": "d50b453e6b190bf0a100f6dcf78f761c9452aed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
