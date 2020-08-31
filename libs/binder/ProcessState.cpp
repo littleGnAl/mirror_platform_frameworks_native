@@ -144,9 +144,12 @@ void ProcessState::startThreadPool()
     }
 }
 
+static bool g_is_cm = false;
+
 bool ProcessState::becomeContextManager()
 {
     AutoMutex _l(mLock);
+    g_is_cm = true; // only sm calls this
 
     flat_binder_object obj {
         .flags = FLAT_BINDER_FLAG_TXN_SECURITY_CTX,
@@ -249,6 +252,9 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
     sp<IBinder> result;
 
     AutoMutex _l(mLock);
+    if (g_is_cm) {
+        LOG_ALWAYS_FATAL_IF(handle == 0, "zero handle");
+    }
 
     handle_entry* e = lookupHandleLocked(handle);
 
