@@ -94,4 +94,50 @@ __attribute__((warn_unused_result)) AIBinder* AServiceManager_waitForService(con
  */
 bool AServiceManager_isDeclared(const char* instance) __INTRODUCED_IN(31);
 
+/**
+ * Prevent lazy services without client from shutting down their process
+ *
+ * \param persist 'true' if the process should not exit.
+ */
+void AServiceManager_forceLazyServicesPersist(bool persist) __INTRODUCED_IN(31);
+
+/**
+ * Set a callback which is called when the number of lazy services with clients
+ * changes.
+ *
+ * \param callback function to call when the number of services
+ *    with clients changes.
+ * \param context opaque pointer passed back as second parameter to the
+ * callback.
+ *
+ * The callback takes two arguments. The first is the number of registered
+ * lazy services for this process which have clients.
+ * The second is the 'context' pointer passed during the registration.
+ *
+ * Callback return value:
+ * - false: Default behavior for lazy services (shut down the process if there
+ *          are no clients).
+ * - true:  Don't shut down the process even if there are no clients.
+ *
+ * This callback gives a chance to:
+ * 1 - Perform some additional operations before exiting;
+ * 2 - Prevent the process from exiting by returning "true" from the callback.
+ */
+void AServiceManager_setActiveServicesCountCallback(bool (*callback)(int, void*), void* context)
+        __INTRODUCED_IN(31);
+
+/**
+ * Try to unregister all services previously registered with 'registerService'.
+ *
+ * \return true on success.
+ */
+bool AServiceManager_tryUnregister() __INTRODUCED_IN(31);
+
+/**
+ * Re-register services that were unregistered by 'tryUnregister'.
+ * This method should be called in the case 'tryUnregister' fails
+ * (and should be called on the same thread).
+ */
+void AServiceManager_reRegister() __INTRODUCED_IN(31);
+
 __END_DECLS

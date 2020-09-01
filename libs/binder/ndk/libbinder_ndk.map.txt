@@ -126,6 +126,10 @@ LIBBINDER_NDK31 { # introduced=31
     AParcel_create;
     AParcel_getDataSize;
     AParcel_reset;
+    AServiceManager_forceLazyServicesPersist; # llndk
+    AServiceManager_setActiveServicesCountCallback; # llndk
+    AServiceManager_tryUnregister; # llndk
+    AServiceManager_reRegister; # llndk
 };
 
 LIBBINDER_NDK_PLATFORM {

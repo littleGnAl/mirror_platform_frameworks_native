@@ -92,3 +92,20 @@ bool AServiceManager_isDeclared(const char* instance) {
     sp<IServiceManager> sm = defaultServiceManager();
     return sm->isDeclared(String16(instance));
 }
+void AServiceManager_forceLazyServicesPersist(bool persist) {
+    auto serviceRegistrar = android::binder::LazyServiceRegistrar::getInstance();
+    serviceRegistrar.forcePersist(persist);
+}
+void AServiceManager_setActiveServicesCountCallback(bool (*callback)(int, void*), void* context) {
+    auto serviceRegistrar = android::binder::LazyServiceRegistrar::getInstance();
+    std::function<bool(int)> fn = [=](int count) -> bool { return callback(count, context); };
+    serviceRegistrar.setActiveServicesCountCallback(fn);
+}
+bool AServiceManager_tryUnregister() {
+    auto serviceRegistrar = android::binder::LazyServiceRegistrar::getInstance();
+    return serviceRegistrar.tryUnregister();
+}
+void AServiceManager_reRegister() {
+    auto serviceRegistrar = android::binder::LazyServiceRegistrar::getInstance();
+    serviceRegistrar.reRegister();
+}
