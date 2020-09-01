@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59fc2463_5c9c0b99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-01T18:11:28Z",
+      "side": 1,
+      "message": "presubmit bug noted fixed in b/167352141",
+      "revId": "6109662d0f0ae9c2d7f40ea36a04f695d59544ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
