@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "05dbc8d6_8b4c097d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-01T18:11:52Z",
+      "side": 1,
+      "message": "presubmit bug noted fixed in b/167352141",
+      "revId": "d50b453e6b190bf0a100f6dcf78f761c9452aed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4f1c9a7_33ad19de",
         "filename": "libs/binder/ndk/service_manager.cpp",
         "patchSetId": 1
