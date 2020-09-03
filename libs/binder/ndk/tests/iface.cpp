@@ -72,6 +72,9 @@ binder_status_t IFoo_Class_onTransact(AIBinder* binder, transaction_code_t code,
 AIBinder_Class* IFoo::kClass = AIBinder_Class_define(kIFooDescriptor, IFoo_Class_onCreate,
                                                      IFoo_Class_onDestroy, IFoo_Class_onTransact);
 
+AIBinder_Class* IFoo::kOtherClass = AIBinder_Class_define(
+        kIFooDescriptor, IFoo_Class_onCreate, IFoo_Class_onDestroy, IFoo_Class_onTransact);
+
 class BpFoo : public IFoo {
    public:
     explicit BpFoo(AIBinder* binder) : mBinder(binder) {}

@@ -29,6 +29,9 @@ class IFoo : public virtual ::android::RefBase {
     static const char* kInstanceNameToDieFor;
 
     static AIBinder_Class* kClass;
+    // Another class with a matching descriptor. Used to test that we can
+    // re-associate with a matching but different class pointer.
+    static AIBinder_Class* kOtherClass;
 
     // Takes ownership of IFoo
     binder_status_t addService(const char* instance);
