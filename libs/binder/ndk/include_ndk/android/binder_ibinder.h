@@ -400,8 +400,8 @@ void AIBinder_decStrong(AIBinder* binder) __INTRODUCED_IN(29);
 int32_t AIBinder_debugGetRefCount(AIBinder* binder) __INTRODUCED_IN(29);
 
 /**
- * This sets the class of an AIBinder object. This checks to make sure the remote object is of
- * the expected class. A class must be set in order to use transactions on an AIBinder object.
+ * This sets the class of an AIBinder object. This checks to make sure the remote or local object is
+ * of the expected class. A class must be set in order to use transactions on an AIBinder object.
  * However, if an object is just intended to be passed through to another process or used as a
  * handle this need not be called.
  *
@@ -411,6 +411,9 @@ int32_t AIBinder_debugGetRefCount(AIBinder* binder) __INTRODUCED_IN(29);
  * Warning: this may fail if the binder is dead.
  *
  * Available since API level 29.
+ *
+ * Since API level 31, association with a new class is allowed for local objects
+ * if both the existing and new class have the same interface descriptor string.
  *
  * \param binder the object to attach the class to.
  * \param clazz the clazz to attach to binder.
