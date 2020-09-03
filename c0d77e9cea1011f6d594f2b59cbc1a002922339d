@@ -324,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "06cf5658_6d96be8c",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-09-03T04:22:18Z",
+      "side": 1,
+      "message": "b/167566728",
+      "parentUuid": "99ff2200_497a0025",
+      "range": {
+        "startLine": 40,
+        "startChar": 6,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "c0d77e9cea1011f6d594f2b59cbc1a002922339d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a83500b_e4e59cef",
         "filename": "libs/binder/include/binder/ParcelableHolder.h",
         "patchSetId": 4
@@ -430,6 +454,30 @@
       "side": 1,
       "message": "Yeah, and that way we can avoid regex too (it\u0027s quite memory intensive)",
       "parentUuid": "41fc1a80_84d08c73",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 89
+      },
+      "revId": "c0d77e9cea1011f6d594f2b59cbc1a002922339d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90f3a287_d62583d7",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-09-03T04:22:18Z",
+      "side": 1,
+      "message": "it sounds good to me, but the manual written parcelables requires to fill their descriptor field by hand. i think i\u0027d better do it in the separate following CLs, and how about limiting it in the generated parcelable, and then recommending the manual written parcelable to fill the field if they want to be included in ParcelableHolder?",
+      "parentUuid": "9cb5b44e_369cd2c4",
       "range": {
         "startLine": 67,
         "startChar": 12,
