@@ -33,6 +33,52 @@
       "revId": "06c55c3c8b6819f6ae802694072259625e6985cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1458b62_e8aeeb3a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-03T22:44:36Z",
+      "side": 1,
+      "message": "you might change the documentation to say \u0027remote or local\u0027 here.",
+      "range": {
+        "startLine": 403,
+        "startChar": 75,
+        "endLine": 403,
+        "endChar": 81
+      },
+      "revId": "06c55c3c8b6819f6ae802694072259625e6985cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "982565e0_1d7ddd0c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-03T22:44:36Z",
+      "side": 1,
+      "message": "I think we should also specify here that in API level 31, the method will allow association for local objects with a different AIBinder_Class object as long as the descriptor there matches?",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 32
+      },
+      "revId": "06c55c3c8b6819f6ae802694072259625e6985cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
