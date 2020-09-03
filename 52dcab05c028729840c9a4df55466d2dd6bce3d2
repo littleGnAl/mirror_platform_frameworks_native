@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd8b0552_efe7e9d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-09-03T03:56:18Z",
+      "side": 1,
+      "message": "Manually verified that this change allows the rest of the topic to merge cleanly into master",
+      "revId": "52dcab05c028729840c9a4df55466d2dd6bce3d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
