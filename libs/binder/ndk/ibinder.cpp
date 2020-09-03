@@ -81,19 +81,19 @@ bool AIBinder::associateClass(const AIBinder_Class* clazz) {
     if (mClazz != nullptr) {
         String8 currentDescriptor(mClazz->getInterfaceDescriptor());
         if (newDescriptor == currentDescriptor) {
-            LOG(ERROR) << __func__ << ": Class descriptors '" << currentDescriptor
-                       << "' match during associateClass, but they are different class objects. "
-                          "Class descriptor collision?";
+            // Allow associating with a matching descriptor but a different
+            // class pointer. This may occurr if a binder object is created by
+            // the NDK and another module in the same process tries to
+            // re-associate it with a different class instantiation.
+            return true;
         } else {
             LOG(ERROR) << __func__
                        << ": Class cannot be associated on object which already has a class. "
                           "Trying to associate to '"
                        << newDescriptor.c_str() << "' but already set to '"
                        << currentDescriptor.c_str() << "'.";
+            return false;
         }
-
-        // always a failure because we know mClazz != clazz
-        return false;
     }
 
     CHECK(asABpBinder() != nullptr);  // ABBinder always has a descriptor

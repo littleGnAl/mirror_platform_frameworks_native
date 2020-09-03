@@ -326,6 +326,24 @@ TEST(NdkBinder, GetServiceInProcess) {
     EXPECT_EQ(2, out);
 }
 
+TEST(NdkBinder, ReAssociateClass) {
+    static const char* kInstanceName = "test-re-associate-class";
+
+    sp<IFoo> foo = new MyTestFoo;
+    EXPECT_EQ(STATUS_OK, foo->addService(kInstanceName));
+
+    AIBinder* binder = nullptr;
+    sp<IFoo> getFoo = IFoo::getService(kInstanceName, &binder);
+    EXPECT_EQ(foo.get(), getFoo.get());
+
+    EXPECT_TRUE(AIBinder_associateClass(binder, IFoo::kOtherClass));
+    EXPECT_TRUE(AIBinder_associateClass(binder, IFoo::kOtherClass));
+
+    AIBinder_Class* nonmatchingClass =
+            AIBinder_Class_define("some-descriptor-that-doesnt-match", nullptr, nullptr, nullptr);
+    EXPECT_FALSE(AIBinder_associateClass(binder, nonmatchingClass));
+}
+
 TEST(NdkBinder, EqualityOfRemoteBinderPointer) {
     AIBinder* binderA = AServiceManager_getService(kExistingNonNdkService);
     ASSERT_NE(nullptr, binderA);
