@@ -28,6 +28,7 @@ cc_library {
         "Keyboard.cpp",
         "KeyCharacterMap.cpp",
         "KeyLayoutMap.cpp",
+        "PropertyMap.cpp",
         "TouchVideoFrame.cpp",
         "VirtualKeyMap.cpp",
     ],
@@ -71,6 +72,22 @@ cc_library {
             },
         },
     },
+}
+
+cc_defaults {
+    name: "libinput_fuzz_defaults",
+    host_supported: true,
+    shared_libs: [
+        "libutils",
+        "libbase",
+        "liblog",
+    ],
+}
+
+cc_fuzz {
+    name: "linput_fuzz_propertymap",
+    defaults: ["libinput_fuzz_defaults"],
+    srcs: ["PropertyMap_fuzz.cpp"],
 }
 
 subdirs = ["tests"]
