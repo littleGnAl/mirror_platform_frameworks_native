@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "460ac7c6_476d47cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-09-03T18:47:41Z",
+      "side": 1,
+      "message": "One more +2 plz. Forgot to update the #include in PropertyMap_fuzz",
+      "revId": "4d69bbc2285eacfaf78dd6242cffb5667a91f9e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
