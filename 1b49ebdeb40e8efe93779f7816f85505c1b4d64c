@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6508e5fb_281947a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-09-04T01:00:48Z",
+      "side": 1,
+      "message": "Looking at the commit message for 57e43365d941fddc06fa1e00e2256e66d84eff06 in cts/ I can see why you were wanting the other behavior. We have the same issue of not being able to distinguish between local Rust and local NDK binder objects in this case.\n\nI think the other way I suggested via email, being able to retrieve the class descriptor and check it client-side or being able to provide a descriptor to the object and query if it matches, might be better here. In this case the client could check the descriptor, and treat the local object as if it were remote if the descriptor matches. The bottom line is that the client needs some way of knowing whether it\u0027s dealing with an object its module created or not, while at the same time accessing a local binder from another module as if were remote.",
+      "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
