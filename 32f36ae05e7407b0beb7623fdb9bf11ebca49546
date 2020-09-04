@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b252a52_8c3e98c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-09-04T01:42:49Z",
+      "side": 1,
+      "message": "This time, I actually verified that the fuzzer builds.",
+      "revId": "32f36ae05e7407b0beb7623fdb9bf11ebca49546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdf4001b_424f961b",
+        "filename": "libs/input/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-09-04T01:42:49Z",
+      "side": 1,
+      "message": "I added this here instead of linking against \"libinput\".\n\nThe reason is that cc_defaults for this specify \"host_supported\", which is missing on libinput. I don\u0027t want to specify \"host_supported\" for libinput.\n\nTherefore, I chose to just compile this together into the fuzzer.\nLet me know if there are any concerns around this.",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 26
+      },
+      "revId": "32f36ae05e7407b0beb7623fdb9bf11ebca49546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
