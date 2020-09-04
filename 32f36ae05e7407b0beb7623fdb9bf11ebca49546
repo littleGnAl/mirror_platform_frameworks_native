@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "60843990_062e1f37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-09-04T05:19:26Z",
+      "side": 1,
+      "message": "One last ping for +2. The change is now presubmit verified and should be good to go, unless there are concerns about building PropertyMap.cpp twice for the fuzzer.",
+      "revId": "32f36ae05e7407b0beb7623fdb9bf11ebca49546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdf4001b_424f961b",
         "filename": "libs/input/Android.bp",
         "patchSetId": 6
