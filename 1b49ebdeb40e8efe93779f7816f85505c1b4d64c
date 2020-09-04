@@ -16,6 +16,24 @@
       "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9736c333_a258c052",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-04T01:10:53Z",
+      "side": 1,
+      "message": "Oops, yeah. I should have given that test a more explicit name or documented its importance there. Glad you checked the commit.\n\nFor distinguishing between local Rust and local NDK objects, forcing the Rust and NDK backend to use the same user data class (and exposing this information there) could work.\n\nNote you don\u0027t actually need the descriptor, since you can compare AIBinder_getClass with the one you have locally. Using the descriptor or this are both weird because they have similar logic on top of and below this API surface, but I can\u0027t think of another way. The key thing is it\u0027s always okay to allow a binder to be a remote proxy.",
+      "parentUuid": "6508e5fb_281947a6",
+      "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
