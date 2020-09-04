@@ -490,6 +490,30 @@
     },
     {
       "key": {
+        "uuid": "f52e9ec1_cdb0a24a",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-04T00:43:13Z",
+      "side": 1,
+      "message": "Yep, sgtm. Although, I think it should be done under these CLs, otherwise there is always a risk of callers being added to this API, which would only be more work for you, and there will be more churn (with the method being added and deleted).\n\nI really have spent far too much time removing regex\u0027s from Android for memory/performance. Do you mind the other order?",
+      "parentUuid": "90f3a287_d62583d7",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 89
+      },
+      "revId": "c0d77e9cea1011f6d594f2b59cbc1a002922339d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f74d5c3c_aa732dff",
         "filename": "libs/binder/include/binder/ParcelableHolder.h",
         "patchSetId": 4
