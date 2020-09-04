@@ -34,6 +34,24 @@
       "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b637e357_20c9128f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-09-04T18:13:53Z",
+      "side": 1,
+      "message": "If we use the same AIBinder_Class pointer, wouldn\u0027t we would need the userdata used by Rust and C to match? We can\u0027t do that because the service can define arbitrary userdata and Rust uses its own custom userdata (the Rust service object). This is the same problem as APEX vs non-APEX in the same process, they can be different service userdata classes.\n\nI\u0027m a bit concerned about just comparing the AIBinder_Class pointer and treating the object as \"remote\" if the existing class doesn\u0027t match the expected one, without also comparing the descriptor strings. The asInterface cast in the C++ libbinder check the descriptor string, which is why I\u0027m thinking we should do that here. However, I guess the descriptor is always checked on transaction for ABBinders, so maybe it\u0027s not as big a deal.",
+      "parentUuid": "9736c333_a258c052",
+      "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
