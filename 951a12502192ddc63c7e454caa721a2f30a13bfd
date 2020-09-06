@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efc1e482_5f07c1ec",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-06T12:21:42Z",
+      "side": 1,
+      "message": "can this be setParcelable(std::make_shared\u003cT\u003e(p), fullClassName)?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "951a12502192ddc63c7e454caa721a2f30a13bfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
