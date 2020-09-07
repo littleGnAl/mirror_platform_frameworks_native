@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25b9ed6a_12259a90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-09-07T12:53:17Z",
+      "side": 1,
+      "message": "as you recommended, permitted it to use move semantic as well. thanks 😊",
+      "parentUuid": "2b8690cb_75c7e408",
+      "revId": "c0d77e9cea1011f6d594f2b59cbc1a002922339d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "771c87d7_4934bfa0",
         "filename": "libs/binder/ParcelableHolder.cpp",
         "patchSetId": 4
@@ -511,6 +529,30 @@
       "revId": "c0d77e9cea1011f6d594f2b59cbc1a002922339d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4042cb4c_41d22522",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-09-07T12:53:17Z",
+      "side": 1,
+      "message": "you are right. it could be risk or debt.\nuploaded aosp/1420630, thanks for suggesting it 😊",
+      "parentUuid": "f52e9ec1_cdb0a24a",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 89
+      },
+      "revId": "c0d77e9cea1011f6d594f2b59cbc1a002922339d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
