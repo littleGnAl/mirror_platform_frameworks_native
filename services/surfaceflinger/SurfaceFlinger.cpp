@@ -3360,10 +3360,6 @@ void SurfaceFlinger::setTransactionState(
     }
 
     const bool pendingTransactions = itr != mTransactionQueues.end();
-    // Expected present time is computed and cached on invalidate, so it may be stale.
-    if (!pendingTransactions) {
-        mExpectedPresentTime = calculateExpectedPresentTime(systemTime());
-    }
 
     if (pendingTransactions || !transactionIsReadyToBeApplied(desiredPresentTime, states)) {
         mTransactionQueues[applyToken].emplace(states, displays, flags, desiredPresentTime,
