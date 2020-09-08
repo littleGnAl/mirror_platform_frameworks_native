@@ -52,6 +52,24 @@
       "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a905a0c5_c9f747e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-08T20:53:07Z",
+      "side": 1,
+      "message": "I am saying we could make them match (at least the data structure). Without extra work, it wouldn\u0027t allow someone external to the C++/Rust implementation to define their own implementation of an AIDL backend, but it works for the Rust/C++ backends.\n\n\u003e without also comparing the descriptor strings\n\nOnly the NDK backend does this, and I probably need to remove that behavior soon, because it\u0027s inefficient. As you pointed out, type safety really comes from the transaction header, where BAD_TYPE will be returned when the descriptor doesn\u0027t match.\n\n\u003e asInterface cast in the C++ libbinder check the descriptor string\n\nlibbinder_ndk has this method. In libbinder, interface_cast never had this check, and I added checked_interface_cast recently for cases where you want to be extra careful or fail early, but performance is not an issue. A lot of the time, relying on the AIDL type system (and getting failures later) is okay.\n\nFWIW, I think adding AIBinder_getDescriptor would be fine, but I don\u0027t think we should use it here (especially because it would mean Rust couldn\u0027t be used in an APEX which is compiled/run on older devices w/o that API).",
+      "parentUuid": "b637e357_20c9128f",
+      "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
