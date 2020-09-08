@@ -16,6 +16,24 @@
       "revId": "1baf553524bbead198336810ae0342c00a2bfb1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ce3bb1b_59e13d38",
+        "filename": "libs/binder/ndk/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-09-08T21:43:49Z",
+      "side": 0,
+      "message": "since AndroidTest.xml is removed, any test here will use auto-gen config.\nThe test failure shouldn\u0027t have anything to do with this change.",
+      "parentUuid": "308d7626_8970632c",
+      "revId": "1baf553524bbead198336810ae0342c00a2bfb1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
