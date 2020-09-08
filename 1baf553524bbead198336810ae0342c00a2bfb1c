@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "308d7626_8970632c",
+        "filename": "libs/binder/ndk/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-08T21:41:51Z",
+      "side": 0,
+      "message": "I removed this in PS2.  I ran libbinder_ndk_unit_test, it had the same failures before and after this change:\n\n[10/20] NdkBinder#AddNullService: FAILED (119ms)\n\nSTACKTRACE:\nframeworks/native/libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp:307: Failure\nExpected equality of these values:\nEX_ILLEGAL_ARGUMENT\nWhich is: -3\nAServiceManager_addService(nullptr, \"any-service-name\")\nWhich is: -2147483640\n[11/20] NdkBinder#AddInvalidServiceName: FAILED (115ms)\n\nSTACKTRACE:\nframeworks/native/libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp:312: Failure\nExpected equality of these values:\nEX_ILLEGAL_ARGUMENT\nWhich is: -3\nfoo-\u003eaddService(\"!@#$%^\u0026\")\nWhich is: -2147483648",
+      "revId": "1baf553524bbead198336810ae0342c00a2bfb1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
