@@ -70,6 +70,24 @@
       "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "654364db_bb8ef679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-09-08T21:21:07Z",
+      "side": 1,
+      "message": "Currently a Rust service stores a pointer to the Rust struct that implements the service in the NDK userdata field, while if I understand correctly a C++ NDK service usually stores an ICInterfaceData pointer (and an arbitrary NDK service may put anything into the userdata, right?). Perhaps I\u0027m missing something here, but those are fundamentally not interchangeable, no matter the data structure layout? We can trust that the local object interface methods can be directly invoked iff the class pointer matches the expected pointer.\n\nSorry I was referring to the call to queryLocalInterface to check the descriptor before returning a local object.\n\nIf we don\u0027t care about the descriptor string matching for local objects, I think we should just check the class pointer in Rust. If it\u0027s non-null but doesn\u0027t match the expected Rust version, we treat the object as if it were remote without checking the descriptor string. The NDK can then do the same to distinguish local services that match vs local services that have to be treated as remote (i.e. APEX or Rust).",
+      "parentUuid": "a905a0c5_c9f747e7",
+      "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
