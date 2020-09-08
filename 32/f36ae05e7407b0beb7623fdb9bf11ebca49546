@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: <android-build-ayeaye@system.gserviceaccount.com>
+Verified+1: Siarhei Vishniakou <svv@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: <android-build-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Elliott Hughes <enh@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 08 Sep 2020 16:03:35 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1419036
+Project: platform/frameworks/native
+Branch: refs/heads/master
