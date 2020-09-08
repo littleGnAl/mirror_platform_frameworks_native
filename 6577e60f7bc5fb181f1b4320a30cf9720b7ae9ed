@@ -601,6 +601,30 @@
     },
     {
       "key": {
+        "uuid": "7cdafd6e_6cda5a10",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-09-08T23:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7efe46db_008a1a11",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 86
+      },
+      "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f964b82a_d37d63bf",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
         "patchSetId": 4
