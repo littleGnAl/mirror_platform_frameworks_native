@@ -78,6 +78,8 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_GET_WORK_SOURCE_TRANSACTION,
     BINDER_LIB_TEST_GET_SCHEDULING_POLICY,
     BINDER_LIB_TEST_ECHO_VECTOR,
+    BINDER_LIB_TEST_NOP_TRANSACTION_WAIT,
+    BINDER_LIB_TEST_GETPID,
 };
 
 pid_t start_server_process(int arg2, bool usePoll = false)
@@ -394,6 +396,23 @@ TEST_F(BinderLibTest, NopTransaction) {
     Parcel data, reply;
     ret = m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply);
     EXPECT_EQ(NO_ERROR, ret);
+}
+
+TEST_F(BinderLibTest, Freeze) {
+    status_t ret;
+    Parcel data, reply, replypid;
+    ret = m_server->transact(BINDER_LIB_TEST_GETPID, data, &replypid);
+    int32_t pid = replypid.readInt32();
+    EXPECT_EQ(NO_ERROR, ret);
+    for (int i = 0; i < 10; i++) {
+        EXPECT_EQ(NO_ERROR, m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION_WAIT, data, &reply, TF_ONE_WAY));
+    }
+    EXPECT_EQ(-EAGAIN, IPCThreadState::self()->freeze(pid, 1, 0));
+    EXPECT_EQ(-EAGAIN, IPCThreadState::self()->freeze(pid, 1, 0));
+    EXPECT_EQ(NO_ERROR, IPCThreadState::self()->freeze(pid, 1, 1000));
+    EXPECT_EQ(FAILED_TRANSACTION, m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply));
+    EXPECT_EQ(NO_ERROR, IPCThreadState::self()->freeze(pid, 0, 0));
+    EXPECT_EQ(NO_ERROR, m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply));
 }
 
 TEST_F(BinderLibTest, SetError) {
@@ -1147,6 +1166,12 @@ class BinderLibTestService : public BBinder
                 pthread_mutex_unlock(&m_serverWaitMutex);
                 return ret;
             }
+            case BINDER_LIB_TEST_GETPID:
+                reply->writeInt32(getpid());
+                return NO_ERROR;
+            case BINDER_LIB_TEST_NOP_TRANSACTION_WAIT:
+                usleep(5000);
+                return NO_ERROR;
             case BINDER_LIB_TEST_NOP_TRANSACTION:
                 return NO_ERROR;
             case BINDER_LIB_TEST_DELAYED_CALL_BACK: {
