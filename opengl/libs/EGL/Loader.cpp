@@ -534,23 +534,28 @@ static void* load_angle_from_namespace(const char* kind, android_namespace_t* ns
 
     std::string name = std::string("lib") + kind + "_angle.so";
 
-    void* so = do_android_dlopen_ext(name.c_str(), RTLD_LOCAL | RTLD_NOW, &dlextinfo);
-
-    if (so) {
-        ALOGD("dlopen_ext from APK (%s) success at %p", name.c_str(), so);
-        return so;
+    void* so;
+    if (ns != nullptr) {
+        so = do_android_dlopen_ext(name.c_str(), RTLD_LOCAL | RTLD_NOW, &dlextinfo);
+        if (so) {
+            ALOGD("dlopen_ext from APK (%s) success at %p", name.c_str(), so);
+        } else {
+            ALOGE("dlopen_ext(\"%s\") failed: %s", name.c_str(), dlerror());
+        }
     } else {
-        ALOGE("dlopen_ext(\"%s\") failed: %s", name.c_str(), dlerror());
+        so = do_android_load_sphal_library(name.c_str(), RTLD_LOCAL | RTLD_NOW);
+        if (so) {
+            ALOGD("load_sphal_library (%s) success at %p", name.c_str(), so);
+        } else {
+            ALOGE("load_sphal_library (%s) failed %s", name.c_str(), dlerror());
+        }
     }
-
-    return nullptr;
+    return so;
 }
 
 static void* load_angle(const char* kind, android_namespace_t* ns, egl_connection_t* cnx) {
-    void* so = nullptr;
-
-    if ((cnx->shouldUseAngle) || android::GraphicsEnv::getInstance().shouldUseAngle()) {
-        so = load_angle_from_namespace(kind, ns);
+    void* so = load_angle_from_namespace(kind, ns);
+    if (so) {
         cnx->shouldUseAngle = true;
     } else {
         cnx->shouldUseAngle = false;
@@ -633,9 +638,6 @@ static void* load_updated_driver(const char* kind, android_namespace_t* ns) {
 Loader::driver_t* Loader::attempt_to_load_angle(egl_connection_t* cnx) {
     ATRACE_CALL();
     android_namespace_t* ns = android::GraphicsEnv::getInstance().getAngleNamespace();
-    if (!ns) {
-        return nullptr;
-    }
 
     android::GraphicsEnv::getInstance().setDriverToLoad(android::GraphicsEnv::Driver::ANGLE);
     driver_t* hnd = nullptr;
