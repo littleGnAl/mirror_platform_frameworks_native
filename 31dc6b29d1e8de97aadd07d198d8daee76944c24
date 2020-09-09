@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68008f9a_e78a0e5b",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T00:34:52Z",
+      "side": 1,
+      "message": "alwasys prefer GTEST_SKIP which documents this on stdout",
+      "range": {
+        "startLine": 409,
+        "startChar": 8,
+        "endLine": 409,
+        "endChar": 14
+      },
+      "revId": "31dc6b29d1e8de97aadd07d198d8daee76944c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
