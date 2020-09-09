@@ -22,6 +22,30 @@
       "revId": "4cdfbc4535ca2ea0e77dda7e6173428f8e26f402",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c5b866_2756023e",
+        "filename": "libs/binder/ndk/include_platform/android/binder_ibinder_platform.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-09-09T23:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3977780d_2fd9d5f3",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "4cdfbc4535ca2ea0e77dda7e6173428f8e26f402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
