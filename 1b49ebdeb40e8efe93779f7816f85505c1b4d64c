@@ -88,6 +88,24 @@
       "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df883732_a5f0bb78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T21:27:56Z",
+      "side": 1,
+      "message": "The suggestion there was that both could use (a slightly modified version of) ICInterfaceData.\n\nAnyway, the only really important thing is that we keep the behavior correct when multiple versions of the NDK backend are used in the same process which are not interchangeable (e.g. if one of them is in an APEX).",
+      "parentUuid": "654364db_bb8ef679",
+      "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
