@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bc70b42_220f02b2",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T21:25:52Z",
+      "side": 1,
+      "message": "format",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5093c91_0544a6a5",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T21:25:52Z",
+      "side": 1,
+      "message": "were you hitting this btw? It should be automatically unlinked if the binder is deallocated",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 53
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a46efc2_c7bd9bc7",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T21:25:52Z",
+      "side": 1,
+      "message": "format",
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac41a22_90b3d052",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T21:25:52Z",
+      "side": 1,
+      "message": "prefer STDOUT_FILENO",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143b68da_6364098e",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T21:25:52Z",
+      "side": 1,
+      "message": "the fuzzer might choose to pick the same ID again or not. Do we need both of these paths?",
+      "range": {
+        "startLine": 72,
+        "startChar": 19,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1579f79_ff7a6a41",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T21:25:52Z",
+      "side": 1,
+      "message": "objectID maybe be randomly selected to be 0, right, so we shouldn\u0027t need this branch?",
+      "range": {
+        "startLine": 76,
+        "startChar": 38,
+        "endLine": 76,
+        "endChar": 49
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e438401e_111be5fc",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T21:25:52Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

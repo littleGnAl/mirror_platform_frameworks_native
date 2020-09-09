@@ -507,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "282f794b_18783f3a",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T21:25:52Z",
+      "side": 1,
+      "message": "I was thinking you should still handle both cases though, maybe? But instead of branching from this size, branch from input data.",
+      "parentUuid": "91306a77_97c446cc",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4800253f_7650dc73",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
         "patchSetId": 4
@@ -857,6 +881,30 @@
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0cecaab2_bee8f998",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-09T21:25:52Z",
+      "side": 1,
+      "message": "This is still not addressed. We\u0027re still calling into random services on the device (via list services), and other calls like to dump could have the same problem.",
+      "parentUuid": "f851d934_3e67381d",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
