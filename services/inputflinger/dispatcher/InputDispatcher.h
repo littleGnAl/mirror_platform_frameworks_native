@@ -366,6 +366,19 @@ private:
      * Used to raise an ANR when we have no focused window.
      */
     sp<InputApplicationHandle> mAwaitedFocusedApplication GUARDED_BY(mLock);
+    /**
+     * The displayId that the focused application is associated with.
+     */
+    int32_t mAwaitedApplicationDisplayId GUARDED_BY(mLock);
+    void processNoFocusedWindowAnrLocked() REQUIRES(mLock);
+
+    /**
+     * This map will store the pending focus requests that cannot be currently processed. This can
+     * happen if the window requested to be focused is not currently visible. Such a window might
+     * become visible later, and these requests would be processed at that time.
+     */
+    std::unordered_map<int32_t /* displayId */, FocusRequest> mPendingFocusRequests
+            GUARDED_BY(mLock);
 
     // Optimization: AnrTracker is used to quickly find which connection is due for a timeout next.
     // AnrTracker must be kept in-sync with all responsive connection.waitQueues.
