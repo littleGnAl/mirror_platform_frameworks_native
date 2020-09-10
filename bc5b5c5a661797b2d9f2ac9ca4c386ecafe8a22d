@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "bdab4195_ebc6f795",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-10T11:21:12Z",
+      "side": 1,
+      "message": "In general, looks good to me.\nThose comments are about the invariant.\n- I want an object to remain unchanged when methods fail.\n- I want to keep (mParcelable, mParcelableName) in sync.\n\nYou can ignore these if the statements above are not required.",
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0af72ad9_0117aacd",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-10T11:21:12Z",
+      "side": 1,
+      "message": "Oh, I missed this before.\n\nI think we need to reset mParcelableName together.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e2ebbc6_32d299fb",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-10T11:21:12Z",
+      "side": 1,
+      "message": "\"this-\u003emStability\" and \"this-\u003emParcelable\" have been modified. Is it okay?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b516165_476b7568",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-10T11:21:12Z",
+      "side": 1,
+      "message": "\"this-\u003emParcelPtr\" is modified.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 61
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1abfc86b_07ab330a",
         "filename": "libs/binder/include/binder/ParcelableHolder.h",
         "patchSetId": 9
@@ -22,6 +108,121 @@
       "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34773f1_b223fffd",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-10T11:21:12Z",
+      "side": 1,
+      "message": "const string\u0026?",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 20
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6219fc_514ead56",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-10T11:21:12Z",
+      "side": 1,
+      "message": "missing checks for return values(status)?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 68
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5148d16c_11fda5e9",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-10T11:21:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it\u0027s okay to compare \"string\" and \"optional\u003cstring\u003e\".",
+      "range": {
+        "startLine": 91,
+        "startChar": 29,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8217bb0_61fc9571",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-10T11:21:12Z",
+      "side": 1,
+      "message": "\"this-\u003emParcelableName\" is set.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5705d5b8_45ec2a3c",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-10T11:21:12Z",
+      "side": 1,
+      "message": "missing check for return value(status)?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 66
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
