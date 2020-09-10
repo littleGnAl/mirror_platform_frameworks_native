@@ -387,6 +387,12 @@ class Dumpstate {
             const std::string& entry_path);
 
     /*
+     * Sends BUGREPORT_ERROR_USED_DENIED_CONSENT error callback to the listener.
+     * If the error callback has already been sent, this call will be a no-op.
+     */
+    void NotifyUserConsentDenied();
+
+    /*
      * Structure to hold options that determine the behavior of dumpstate.
      */
     struct DumpOptions {
@@ -519,6 +525,9 @@ class Dumpstate {
     // A task queue to collect adding zip entry tasks inside dump tasks if the
     // parallel run is enabled.
     std::unique_ptr<android::os::dumpstate::TaskQueue> zip_entry_tasks_;
+
+    // When true, indicates that the user consent denied callback has already been sent.
+    std::atomic<bool> consent_denied_callback_sent_{false};
 
     // A callback to IncidentCompanion service, which checks user consent for sharing the
     // bugreport with the calling app. If the user has not responded yet to the dialog it will
