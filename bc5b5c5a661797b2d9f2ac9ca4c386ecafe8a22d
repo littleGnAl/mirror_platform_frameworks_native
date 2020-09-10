@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1abfc86b_07ab330a",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-09-10T10:48:36Z",
+      "side": 1,
+      "message": "add lock to prevent issues during set/getParcealble in the multithread environment.",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
