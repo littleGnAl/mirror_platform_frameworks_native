@@ -932,6 +932,30 @@
     },
     {
       "key": {
+        "uuid": "c325a472_228ff3e2",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-10T21:17:54Z",
+      "side": 1,
+      "message": "I guess you are referencing this comment thread:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1350779/2/libs/binder/tests/fuzzers/BpBinderFuzz.cpp#29\n\nMy ask there was to see if the fuzzing was meaningful (I expect transact/linkToDeath/etc..) to all fail because the kernel should reject these objects. The real question is though, how will it fail. It represents bad state that should never happen normally, and aborts could be okay there. We could fuzz that to get some coverage, but since it\u0027s not representative of real usage, we need to make sure it\u0027s not crashing the fuzzer. Now though if you are running the fuzzer for 500k iterations, we can be confident it is okay.\n\nFor a real service object, maybe you can fork and register one so that we\u0027re fuzzing only local code for now.",
+      "parentUuid": "fd15f1f7_91b4e207",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "427b9c90_a48c5e27",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
         "patchSetId": 4
