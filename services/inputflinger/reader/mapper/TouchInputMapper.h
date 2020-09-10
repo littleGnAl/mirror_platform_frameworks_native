@@ -762,6 +762,7 @@ private:
 
     const char* modeToString(DeviceMode deviceMode);
     void rotateAndScale(float& x, float& y);
+    int getDisplayOrientation();
 };
 
 } // namespace android

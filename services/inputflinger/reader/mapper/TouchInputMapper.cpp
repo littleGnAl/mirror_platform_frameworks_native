@@ -22,6 +22,7 @@
 #include "CursorScrollAccumulator.h"
 #include "TouchButtonAccumulator.h"
 #include "TouchCursorInputMapperCommon.h"
+#include <SurfaceFlingerProperties.h>
 
 namespace android {
 
@@ -674,6 +675,7 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
             int32_t naturalPhysicalWidth, naturalPhysicalHeight;
             int32_t naturalPhysicalLeft, naturalPhysicalTop;
             int32_t naturalDeviceWidth, naturalDeviceHeight;
+            mViewport.orientation = (mViewport.orientation + getDisplayOrientation()) % 4;
             switch (mViewport.orientation) {
                 case DISPLAY_ORIENTATION_90:
                     naturalLogicalWidth = mViewport.logicalBottom - mViewport.logicalTop;
@@ -3914,6 +3916,26 @@ std::optional<int32_t> TouchInputMapper::getAssociatedDisplayId() {
         }
     }
     return std::nullopt;
+}
+
+int TouchInputMapper::getDisplayOrientation() {
+    int internalDisplayOrientation = DISPLAY_ORIENTATION_0;
+
+    using Values = sysprop::SurfaceFlingerProperties::primary_display_orientation_values;
+    switch (sysprop::primary_display_orientation(Values::ORIENTATION_0)) {
+        case Values::ORIENTATION_0:
+            break;
+        case Values::ORIENTATION_90:
+            internalDisplayOrientation = DISPLAY_ORIENTATION_90;
+            break;
+        case Values::ORIENTATION_180:
+            internalDisplayOrientation = DISPLAY_ORIENTATION_180;
+            break;
+        case Values::ORIENTATION_270:
+            internalDisplayOrientation = DISPLAY_ORIENTATION_270;
+            break;
+    }
+    return internalDisplayOrientation;
 }
 
 } // namespace android
