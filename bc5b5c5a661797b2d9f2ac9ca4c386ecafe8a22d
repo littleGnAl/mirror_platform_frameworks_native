@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "635ca84b_28ac9a7b",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-10T21:35:53Z",
+      "side": 1,
+      "message": "As long as it is in a valid state, I\u0027m okay with it",
+      "parentUuid": "f53bd5d3_ea115377",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b516165_476b7568",
         "filename": "libs/binder/ParcelableHolder.cpp",
         "patchSetId": 9
@@ -148,6 +172,30 @@
       "side": 1,
       "message": "same as above..",
       "parentUuid": "7b516165_476b7568",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 61
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4097908e_fde16904",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-10T21:35:53Z",
+      "side": 1,
+      "message": "here, maybe mParcelPtr could be cleared, just to save on that extra memory?",
+      "parentUuid": "620dd0de_f0ff0332",
       "range": {
         "startLine": 79,
         "startChar": 0,
