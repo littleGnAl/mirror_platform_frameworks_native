@@ -908,6 +908,30 @@
     },
     {
       "key": {
+        "uuid": "fd15f1f7_91b4e207",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-09-10T01:54:21Z",
+      "side": 1,
+      "message": "Hmmm... so initially I was using BpBinder::create() to get a binder reference, which would cause it to send transactions to new objects and not ones that other processes own. (However this means that the fuzzer won\u0027t get as much coverage from having a real binder object as you had pointed out)\n\nJust trying to get clarity on what makes the most senes here, should I be calling a portion of these with BpBinder::create() objects like I was before? Drop most of these altogether? Kind of unsure what a good approach would be.",
+      "parentUuid": "0cecaab2_bee8f998",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "427b9c90_a48c5e27",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
         "patchSetId": 4
