@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49ca02c1_e9e6d4d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-09-10T21:40:02Z",
+      "side": 1,
+      "message": "Hi Max,\nThis CL will not merge cleanly into master. Please get it cherry-picked into master first, and then use a \"merged-in\" to land this change in aosp",
+      "revId": "10820bab45f277f86007c9cc3bffdd43b2b09c72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
