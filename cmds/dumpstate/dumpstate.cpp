@@ -671,6 +671,10 @@ android::binder::Status Dumpstate::ConsentCallback::onReportDenied() {
     std::lock_guard<std::mutex> lock(lock_);
     result_ = DENIED;
     MYLOGW("User denied consent to share bugreport\n");
+    if (ds.listener_ != nullptr && !ds.consent_denied_callback_sent_) {
+        ds.listener_->onError(IDumpstateListener::BUGREPORT_ERROR_USER_DENIED_CONSENT);
+        ds.consent_denied_callback_sent_ = true;
+    }
     return android::binder::Status::ok();
 }
 
@@ -2542,7 +2546,10 @@ Dumpstate::RunStatus Dumpstate::Run(int32_t calling_uid, const std::string& call
                 listener_->onError(IDumpstateListener::BUGREPORT_ERROR_RUNTIME_ERROR);
                 break;
             case Dumpstate::RunStatus::USER_CONSENT_DENIED:
-                listener_->onError(IDumpstateListener::BUGREPORT_ERROR_USER_DENIED_CONSENT);
+                if (!consent_denied_callback_sent_) {
+                    listener_->onError(IDumpstateListener::BUGREPORT_ERROR_USER_DENIED_CONSENT);
+                    consent_denied_callback_sent_ = true;
+                }
                 break;
             case Dumpstate::RunStatus::USER_CONSENT_TIMED_OUT:
                 listener_->onError(IDumpstateListener::BUGREPORT_ERROR_USER_CONSENT_TIMED_OUT);

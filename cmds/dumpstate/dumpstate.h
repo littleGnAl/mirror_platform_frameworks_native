@@ -460,6 +460,9 @@ class Dumpstate {
     // List of open ANR dump files.
     std::vector<DumpData> anr_data_;
 
+    // When true, indicates that the user consent denied callback has already been sent.
+    std::atomic<bool> consent_denied_callback_sent_;
+
     // A callback to IncidentCompanion service, which checks user consent for sharing the
     // bugreport with the calling app. If the user has not responded yet to the dialog it will
     // be neither confirmed nor denied.
