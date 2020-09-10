@@ -16,6 +16,23 @@
       "revId": "00eca71fd084553306ccb46f67c9ff37f113c614",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4a73848_3a35b77a",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-10T19:13:01Z",
+      "side": 1,
+      "message": "If we add a second AIDL support macro, move these into an aidl module in the binder crate.",
+      "revId": "00eca71fd084553306ccb46f67c9ff37f113c614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
