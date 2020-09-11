@@ -506,12 +506,7 @@ macro_rules! declare_binder_interface {
             }
 
             fn from_binder(mut binder: $crate::SpIBinder) -> $crate::Result<Self> {
-                use $crate::AssociateClass;
-                if binder.associate_class(<$native as $crate::Remotable>::get_class()) {
-                    Ok(Self { binder, $($fname: $finit),* })
-                } else {
-                    Err($crate::StatusCode::BAD_TYPE)
-                }
+                Ok(Self { binder, $($fname: $finit),* })
             }
         }
 
@@ -556,15 +551,28 @@ macro_rules! declare_binder_interface {
         impl $crate::FromIBinder for dyn $interface {
             fn try_from(mut ibinder: $crate::SpIBinder) -> $crate::Result<Box<dyn $interface>> {
                 use $crate::AssociateClass;
-                if !ibinder.associate_class(<$native as $crate::Remotable>::get_class()) {
-                    return Err($crate::StatusCode::BAD_TYPE.into());
-                }
 
-                let service: $crate::Result<$crate::Binder<$native>> = std::convert::TryFrom::try_from(ibinder.clone());
-                if let Ok(service) = service {
-                    Ok(Box::new(service))
-                } else {
+                let existing_class = ibinder.get_class();
+                if existing_class.is_some()
+                    && existing_class != Some(<$native as $crate::Remotable>::get_class())
+                {
+                    // We need to treat this local or already associated object
+                    // as remote, because we can't cast it into a Rust service
+                    // object.
                     Ok(Box::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?))
+                } else if ibinder.associate_class(<$native as $crate::Remotable>::get_class()) {
+                    let service: $crate::Result<$crate::Binder<$native>> =
+                        std::convert::TryFrom::try_from(ibinder.clone());
+                    if let Ok(service) = service {
+                        // We were able to associate with our expected class and
+                        // the service is local.
+                        Ok(Box::new(service))
+                    } else {
+                        // Service is remote
+                        Ok(Box::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?))
+                    }
+                } else {
+                    Err($crate::StatusCode::BAD_TYPE.into())
                 }
             }
         }
