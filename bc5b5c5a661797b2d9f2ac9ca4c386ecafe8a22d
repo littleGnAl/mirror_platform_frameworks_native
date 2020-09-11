@@ -161,6 +161,30 @@
     },
     {
       "key": {
+        "uuid": "88d91717_eed08244",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-09-11T06:57:06Z",
+      "side": 1,
+      "message": "it clears mParcelPtr as well in the case of an exception.",
+      "parentUuid": "1c707f27_26aa87db",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b516165_476b7568",
         "filename": "libs/binder/ParcelableHolder.cpp",
         "patchSetId": 9
@@ -229,6 +253,30 @@
       "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26ab1dc2_296956ee",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-09-11T06:57:06Z",
+      "side": 1,
+      "message": "it clears mParcelPtr as well in the case of an exception.",
+      "parentUuid": "4097908e_fde16904",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 61
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
