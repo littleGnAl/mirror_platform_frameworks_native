@@ -16,6 +16,23 @@
       "revId": "7abf1609e71b4de5a985563b5815a2719bc334a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "640aaca7_a04d908a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-09-11T21:10:54Z",
+      "side": 1,
+      "message": "What\u0027s the context for this change? Is it due to a gtest upgrade?",
+      "revId": "7abf1609e71b4de5a985563b5815a2719bc334a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
