@@ -106,6 +106,24 @@
       "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "661f2830_debe3216",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-09-11T00:42:58Z",
+      "side": 1,
+      "message": "The Rust service implementation doesn\u0027t use ICInterface, IInterface, or any other C++ classes because interfacing with C++ from Rust isn\u0027t straightforward. I\u0027m not even sure how to approach merging the Rust service structure with ICInterfaceData, as the two are fundamentally quite different.\n\nI\u0027ve uploaded a new, replacement CL that implements what we need on just the Rust side: https://android-review.googlesource.com/c/platform/frameworks/native/+/1424936 If that looks good, I\u0027m going to close this and the associated test change, as I don\u0027t think the approach in the current CL will work at all in the case of the same APEX \u0026 non-APEX interface in one process.",
+      "parentUuid": "df883732_a5f0bb78",
+      "revId": "1b49ebdeb40e8efe93779f7816f85505c1b4d64c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
