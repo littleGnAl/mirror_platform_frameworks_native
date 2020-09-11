@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "1c707f27_26aa87db",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-11T02:20:56Z",
+      "side": 1,
+      "message": "Hmm, readFromParcel behaves inconsistently in this exit.\na) when a holder is filled with parcel, it isn\u0027t reset.\na) when a holder is filled with parcelable, it is reset.",
+      "parentUuid": "635ca84b_28ac9a7b",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "bc5b5c5a661797b2d9f2ac9ca4c386ecafe8a22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b516165_476b7568",
         "filename": "libs/binder/ParcelableHolder.cpp",
         "patchSetId": 9
