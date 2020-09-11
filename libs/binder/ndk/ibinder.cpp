@@ -335,6 +335,12 @@ void AIBinder_Class_setHandleShellCommand(AIBinder_Class* clazz,
     clazz->handleShellCommand = handleShellCommand;
 }
 
+const char16_t* AIBinder_Class_getDescriptor(const AIBinder_Class* clazz) {
+    CHECK(clazz != nullptr) << "getDescriptor requires non-null clazz";
+
+    return clazz->getInterfaceDescriptor().string();
+}
+
 void AIBinder_DeathRecipient::TransferDeathRecipient::binderDied(const wp<IBinder>& who) {
     CHECK(who == mWho);
 
