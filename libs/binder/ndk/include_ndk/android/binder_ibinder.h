@@ -30,6 +30,7 @@
 #include <stdint.h>
 #include <sys/cdefs.h>
 #include <sys/types.h>
+#include <uchar.h>
 
 #include <android/binder_parcel.h>
 #include <android/binder_status.h>
@@ -213,6 +214,19 @@ typedef binder_status_t (*AIBinder_onDump)(AIBinder* binder, int fd, const char*
  * \param dump function to call when an instance of this binder class is being dumped.
  */
 void AIBinder_Class_setOnDump(AIBinder_Class* clazz, AIBinder_onDump onDump) __INTRODUCED_IN(29);
+
+/**
+ * Retrieve the class descriptor for the class.
+ *
+ * Available since API level 29.
+ *
+ * \param clazz the class to fetch the descriptor from
+ *
+ * \return the class descriptor string. This pointer will never be null; a
+ * descriptor is required to define a class. The pointer is owned by the class
+ * and will remain valid as long as the class does.
+ */
+const char16_t* AIBinder_Class_getDescriptor(const AIBinder_Class* clazz) __INTRODUCED_IN(31);
 
 /**
  * Creates a new binder object of the appropriate class.
