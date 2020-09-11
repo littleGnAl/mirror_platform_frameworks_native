@@ -185,7 +185,7 @@ mod tests {
     use std::thread;
     use std::time::Duration;
 
-    use binder::{DeathRecipient, FromIBinder, IBinder, SpIBinder, StatusCode};
+    use binder::{Binder, DeathRecipient, FromIBinder, IBinder, Interface, SpIBinder, StatusCode};
 
     use super::{ITest, RUST_SERVICE_BINARY};
 
@@ -434,5 +434,21 @@ mod tests {
 
             assert_eq!(extension.test().unwrap(), extension_name);
         }
+    }
+
+    /// Test re-associating a local binder object with a different class.
+    ///
+    /// This is needed because different binder service (e.g. NDK vs Rust)
+    /// implementations are incompatible and must not be interchanged. An
+    /// incompatible local service must be treated as remote and all API calls
+    /// sent through transactions.
+    #[test]
+    fn associate_existing_class() {
+        let service = Binder::new(());
+
+        // This should succeed although we will have to treat the service as
+        // remote.
+        let _interface: Box<dyn ITest> = FromIBinder::try_from(service.as_binder())
+            .expect("Could not re-interpret service as the ITest interface");
     }
 }
