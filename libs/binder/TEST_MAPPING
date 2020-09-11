@@ -50,6 +50,9 @@
           "exclude-filter": "android.os.cts.StrictModeTest#testNonSdkApiUsage"
         }
       ]
+    },
+    {
+      "name": "binderRustNdkInteropTest"
     }
   ]
 }
