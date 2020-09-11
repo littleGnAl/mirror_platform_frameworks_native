@@ -16,6 +16,24 @@
       "revId": "33522c452b24d79ae07e9fbc6fa2b668ad6eb194",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7b977e5_b7e0e583",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-09-11T19:27:06Z",
+      "side": 1,
+      "message": "FYI a similar change by me was already merged in master https://android-review.googlesource.com/c/platform/frameworks/native/+/1351060",
+      "parentUuid": "a7f2af52_783814c8",
+      "revId": "33522c452b24d79ae07e9fbc6fa2b668ad6eb194",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
