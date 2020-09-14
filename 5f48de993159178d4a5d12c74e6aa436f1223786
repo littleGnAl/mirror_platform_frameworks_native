@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caa0f82e_6fd9364b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1099348
+      },
+      "writtenOn": "2020-09-14T19:01:17Z",
+      "side": 1,
+      "message": "lgtm for codelab but do not submit",
+      "revId": "5f48de993159178d4a5d12c74e6aa436f1223786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
