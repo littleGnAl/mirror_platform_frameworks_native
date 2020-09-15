@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39489d3e_b6b6cde2",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-15T21:32:44Z",
+      "side": 1,
+      "message": "doesn\u0027t need to be weak on AOSP -\u003e master (only needs to be weak on R branches where the device isn\u0027t guaranteed to have the symbol)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "f7b6e9e3a83d5d13bc33b3d99c3668c140756d66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
