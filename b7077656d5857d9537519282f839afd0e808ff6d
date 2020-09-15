@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be078d9e_ff692e22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1763788
+      },
+      "writtenOn": "2020-09-15T08:36:28Z",
+      "side": 1,
+      "message": "Hello.\nPlaneLayout members such as OffsetInBytes was being downcasted to int32 from int64 before being encoded. This is causing memory address calculations in the ycbcr lock function libui/Gralloc4.cpp for some Exynos devices.\n\nIs the downcasting intended? If not can this patch be merged?\nThank you.",
+      "revId": "b7077656d5857d9537519282f839afd0e808ff6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
