@@ -70,6 +70,30 @@
       "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8906aaa3_a1a9e621",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-16T04:38:38Z",
+      "side": 1,
+      "message": "Expanding on the previous comment: in C++ sp\u003c\u003e is implicitly nullable, but the parcel code provides both readStrongBinder (which checks for null and returns UNEXPECTED_NULL like here) and readNullableStrongBinder, and the AIDL compiler uses both depending on whether the AIDL IBinder is nullable or not.",
+      "parentUuid": "f1487bf8_4aa21055",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 58
+      },
+      "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
