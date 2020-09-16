@@ -46,6 +46,30 @@
       "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1487bf8_4aa21055",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-09-16T04:23:01Z",
+      "side": 1,
+      "message": "Correction after running this by Andrei, I was hasty. We do use the non-nullable version for IBinder, which is non-nullable by default in AIDL. The C++ AIDL backend does the check for null after calling readStrongBinder(), and this change just lets us put that check in the library, where it belongs.",
+      "parentUuid": "7a31a095_2a96076c",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 58
+      },
+      "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
