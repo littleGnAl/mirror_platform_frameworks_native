@@ -118,6 +118,30 @@
       "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38313b00_e5a18c50",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-16T23:52:54Z",
+      "side": 1,
+      "message": "Ah but do notice nullInterface case as well. So, the behavior is that IBinder respects @nullable, but interface doesn\u0027t. I have confirmed that C++ behavior is the same in the NDK backend: https://android-review.googlesource.com/c/platform/cts/+/1428810\n\n\u003e I don\u0027t think we should carry that historical idiosyncrasy over into Rust\n\nI think we\u0027re good in this case, but in general, it would mean that you have to modify the interface in order to start using it in Rust. Ideally, we can avoid having that requirement.",
+      "parentUuid": "a618c9db_989e66f9",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 58
+      },
+      "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
