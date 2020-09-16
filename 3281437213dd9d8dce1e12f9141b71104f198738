@@ -94,6 +94,30 @@
       "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a618c9db_989e66f9",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-16T04:54:32Z",
+      "side": 1,
+      "message": "Expanding a bit more: there\u0027s a test for this exact case in the C++ tests:\n```\nTEST_F(AidlTest, nullBinder) {\n  auto status \u003d service-\u003eTakesAnIBinder(nullptr);\n  ASSERT_THAT(status.exceptionCode(), Eq(android::binder::Status::EX_NULL_POINTER));\n}\n```",
+      "parentUuid": "8906aaa3_a1a9e621",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 58
+      },
+      "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
