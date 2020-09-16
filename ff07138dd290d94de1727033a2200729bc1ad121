@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afd4c42e_2c1cd231",
+        "filename": "libs/renderengine/gl/ProgramCache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-09-16T16:27:09Z",
+      "side": 1,
+      "message": "Do you need to clamp here or can you just return color?",
+      "range": {
+        "startLine": 719,
+        "startChar": 20,
+        "endLine": 719,
+        "endChar": 50
+      },
+      "revId": "ff07138dd290d94de1727033a2200729bc1ad121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
