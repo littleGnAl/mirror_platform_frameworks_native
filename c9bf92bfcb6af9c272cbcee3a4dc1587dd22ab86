@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73fde67c_220d3b5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414712
+      },
+      "writtenOn": "2020-09-16T06:30:40Z",
+      "side": 1,
+      "message": "Hi,\nFound touch not work when config SF_PRIMARY_DISPLAY_ORIENTATION.\nDetail info and log please see https://issuetracker.google.com/issues/168642892\nWould you please have a check? \nThanks for your time.",
+      "revId": "c9bf92bfcb6af9c272cbcee3a4dc1587dd22ab86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
