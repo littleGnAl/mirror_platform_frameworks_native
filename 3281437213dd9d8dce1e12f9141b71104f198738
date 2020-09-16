@@ -22,6 +22,30 @@
       "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a31a095_2a96076c",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-09-16T04:18:42Z",
+      "side": 1,
+      "message": "I believe in AIDL they are always nullable, so I don\u0027t think we use this impl from the AIDL backend.\n\nThe C++ libbinder allows null binders in both the nullable and \"non-nullable\" read methods. I don\u0027t think we should carry that historical idiosyncrasy over into Rust, where SpIBinder is always non-null and the nullable binder type is Option\u003cSpIBinder\u003e (plus it doesn\u0027t match the other nullable/required interface splits). We can remove this impl entirely if you\u0027d prefer, but I\u0027m not sure there\u0027s much to gain by that.",
+      "parentUuid": "f9a14e19_709a5004",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 58
+      },
+      "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
