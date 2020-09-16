@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Max Spector <mspector@google.com>
+Code-Review+1: Ady Abraham <adyabr@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Submitted-by: Max Spector <mspector@google.com>
+Submitted-at: Wed, 16 Sep 2020 01:19:58 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1427437
+Project: platform/frameworks/native
+Branch: refs/heads/master
