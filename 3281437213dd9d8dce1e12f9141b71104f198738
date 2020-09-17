@@ -142,6 +142,30 @@
       "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d37366_1aa0b2ca",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-17T00:59:33Z",
+      "side": 1,
+      "message": "In that case, I think we have 2 options:\n1) make the AIDL compiler emit Option\u003cSpIBinder\u003e even for non-nullable IBinder, or\n2) change the internals of SpIBinder in libbinder_rs so that it\u0027s always nullable.\n\nThe first option is simpler to implement, but might make it difficult to preserve the behavior of the test above: return UNEXPECTED_NULL for uninitialized non-nullable IBinders.",
+      "parentUuid": "38313b00_e5a18c50",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 58
+      },
+      "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
