@@ -190,6 +190,30 @@
       "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c4054b_6fe26396",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-17T02:54:46Z",
+      "side": 1,
+      "message": "\u003e  Is the problem that rust interface parceling use this same method to write binders?\n\nIf I understand your question correctly, the answer is no, but something similar. We use Parcel::read() and Parcel::write() for all parceling operations in the AIDL compiler, which are generic functions over the type of the parcelable value, and we rely on Rust\u0027s type system to pick the right implementation depending on the type parameter.\n\nWe currently distinguish between SpIBinder and Option\u003cSpIBinder\u003e and provide different parceling functions for the two types. By changing the AIDL compiler to emit Option\u003cSpIBinder\u003e for non-nullable IBinder, both non-nullable and nullable IBinder reads would call the same function and we wouldn\u0027t be able to distinguish between the two kinds.",
+      "parentUuid": "2afe34f6_3e0e27df",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 58
+      },
+      "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
