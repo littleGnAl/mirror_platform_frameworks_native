@@ -166,6 +166,30 @@
       "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2afe34f6_3e0e27df",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-17T01:14:50Z",
+      "side": 1,
+      "message": "Wait - IBinder respects @nullable, yeah. Is the problem that rust interface parceling use this same method to write binders?",
+      "parentUuid": "72d37366_1aa0b2ca",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 58
+      },
+      "revId": "3281437213dd9d8dce1e12f9141b71104f198738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
