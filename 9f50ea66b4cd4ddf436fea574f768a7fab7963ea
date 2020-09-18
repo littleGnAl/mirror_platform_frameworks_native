@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c580dac_9a805da4",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-18T01:15:23Z",
+      "side": 1,
+      "message": "Do we really need a transaction here, or do you think we should open an issue for this?",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 45
+      },
+      "revId": "9f50ea66b4cd4ddf436fea574f768a7fab7963ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
