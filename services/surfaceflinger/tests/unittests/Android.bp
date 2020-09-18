@@ -98,3 +98,30 @@ cc_test {
         "libsurfaceflinger_headers",
     ],
 }
+
+//static library used for accessing mocks for fuzzing
+cc_library_static {
+    name: "libsurfaceflinger_mocks",
+    defaults: ["libsurfaceflinger_defaults"],
+    srcs: [
+        "mock/DisplayHardware/MockComposer.cpp",
+        "mock/DisplayHardware/MockDisplay.cpp",
+        "mock/DisplayHardware/MockPowerAdvisor.cpp",
+        "mock/MockDispSync.cpp",
+        "mock/MockEventControlThread.cpp",
+        "mock/MockEventThread.cpp",
+        "mock/MockMessageQueue.cpp",
+        "mock/MockNativeWindowSurface.cpp",
+        "mock/MockSurfaceInterceptor.cpp",
+        "mock/MockTimeStats.cpp",
+        "mock/MockFrameTracer.cpp",
+        "mock/system/window/MockNativeWindow.cpp",
+    ],
+    static_libs: [
+        "libgmock",
+        "libgtest_ndk_c++",
+    ],
+    header_libs: [
+        "libsurfaceflinger_headers",
+    ],
+}
