@@ -22,6 +22,30 @@
       "revId": "9f50ea66b4cd4ddf436fea574f768a7fab7963ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "480b52b0_65db2cbc",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-09-18T06:44:11Z",
+      "side": 1,
+      "message": "I think it would be useful to fix the driver, because the special casing of \"handle 0\" has caused some issues over the years. The issue of course is that it will take a while to roll out, and userspace will need to support both, etc...So depending on the urgency here, this would be fine with me for now.",
+      "parentUuid": "4c580dac_9a805da4",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 45
+      },
+      "revId": "9f50ea66b4cd4ddf436fea574f768a7fab7963ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
