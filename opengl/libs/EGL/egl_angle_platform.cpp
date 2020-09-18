@@ -27,8 +27,9 @@
 #include <android/dlext.h>
 #include <dlfcn.h>
 #include <graphicsenv/GraphicsEnv.h>
-#include <time.h>
 #include <log/log.h>
+#include <time.h>
+#include <vndksupport/linker.h>
 
 namespace angle {
 
@@ -105,7 +106,12 @@ bool initializeAnglePlatform(EGLDisplay dpy) {
             .flags = ANDROID_DLEXT_USE_NAMESPACE,
             .library_namespace = ns,
     };
-    void* so = android_dlopen_ext("libGLESv2_angle.so", RTLD_LOCAL | RTLD_NOW, &dlextinfo);
+    void* so;
+    if (ns) {
+        so = android_dlopen_ext("libGLESv2_angle.so", RTLD_LOCAL | RTLD_NOW, &dlextinfo);
+    } else {
+        so = android_load_sphal_library("libGLESv2_angle.so", RTLD_LOCAL | RTLD_NOW);
+    }
     angleGetDisplayPlatform =
             reinterpret_cast<GetDisplayPlatformFunc>(dlsym(so, "ANGLEGetDisplayPlatform"));
 
