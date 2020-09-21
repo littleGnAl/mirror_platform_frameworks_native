@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "581b0167_0e93e5be",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-21T18:01:35Z",
+      "side": 1,
+      "message": "should this be in the header instead? Having an extra function declaration here seems messy",
+      "range": {
+        "startLine": 234,
+        "startChar": 8,
+        "endLine": 234,
+        "endChar": 63
+      },
+      "revId": "a0b0b516f75a4bea169d26e955ea58be86abb823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f59ba42_e551159a",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-21T18:01:35Z",
+      "side": 1,
+      "message": "super cool!",
+      "range": {
+        "startLine": 239,
+        "startChar": 12,
+        "endLine": 239,
+        "endChar": 31
+      },
+      "revId": "a0b0b516f75a4bea169d26e955ea58be86abb823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
