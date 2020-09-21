@@ -56,6 +56,7 @@ struct AIBinder : public virtual ::android::RefBase {
     // remote object, this also must be set for simplicity (although right now, only the
     // interfaceDescriptor from it is used).
     const AIBinder_Class* mClazz;
+    std::mutex mClazzMutex;
 };
 
 // This is a local AIBinder object with a known class.

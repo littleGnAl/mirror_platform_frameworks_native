@@ -74,6 +74,8 @@ AIBinder::AIBinder(const AIBinder_Class* clazz) : mClazz(clazz) {}
 AIBinder::~AIBinder() {}
 
 bool AIBinder::associateClass(const AIBinder_Class* clazz) {
+    std::lock_guard<std::mutex> lock(mClazzMutex);
+
     if (clazz == nullptr) return false;
     if (mClazz == clazz) return true;
 
