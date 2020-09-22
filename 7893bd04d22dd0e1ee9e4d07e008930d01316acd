@@ -109,6 +109,24 @@
       "revId": "7893bd04d22dd0e1ee9e4d07e008930d01316acd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4efe005c_d1ca3d02",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-22T16:53:59Z",
+      "side": 1,
+      "message": "btw - the alternative here would be to use BpBinder\u0027s existing mMutex, but that starts getting pretty messy, so I\u0027m happy with this.",
+      "parentUuid": "3bc08311_c09b47e9",
+      "revId": "7893bd04d22dd0e1ee9e4d07e008930d01316acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
