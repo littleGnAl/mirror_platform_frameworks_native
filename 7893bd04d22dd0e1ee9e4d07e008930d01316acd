@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "ff1d38cc_2cef6ae6",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-22T19:00:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d8343f96_aefca82f",
+      "revId": "7893bd04d22dd0e1ee9e4d07e008930d01316acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0709939e_b51d709f",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 1
@@ -47,6 +65,30 @@
       "writtenOn": "2020-09-22T16:53:15Z",
       "side": 1,
       "message": "getInterfaceDescriptor is a binder transaction (note, L85 is not, since it is a call to the AIBinder_Class method), and when a binder transaction is made, we might serve other binder transactions (during libbinder\u0027s waitForResponse). So, it is possible that we re-enter associateClass on the same binder proxy when this is called. In order to avoid a deadlock, we need to make sure not to take this lock when we make this binder transaction. For instance, drop the lock on L103, take it back on L104. If mClazz is non-null, drop the lock again and recurse to hit either L87 or L91 (maybe instead of recursion and the extra lock that would entail, L85..L99 could be split into a different function).\n\nL87 makes me realize another problem. ABpBinder, like BpBinder, is unique per-process (see references to ABpBinderTag in this file). That means that we couldn\u0027t have a Rust-backend client and a NDK-backend client of the same BpBinder in the same process (there is only one mClazz variable). Do we already have a bug for this specific problem?",
+      "range": {
+        "startLine": 104,
+        "startChar": 36,
+        "endLine": 104,
+        "endChar": 58
+      },
+      "revId": "7893bd04d22dd0e1ee9e4d07e008930d01316acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa71cc9_383e02f8",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-22T19:00:36Z",
+      "side": 1,
+      "message": "\u003e L87 makes me realize another problem. ABpBinder, like BpBinder, is unique per-process (see references to ABpBinderTag in this file). That means that we couldn\u0027t have a Rust-backend client and a NDK-backend client of the same BpBinder in the same process (there is only one mClazz variable). Do we already have a bug for this specific problem?\n\nNone that I\u0027m aware of.",
+      "parentUuid": "0709939e_b51d709f",
       "range": {
         "startLine": 104,
         "startChar": 36,
