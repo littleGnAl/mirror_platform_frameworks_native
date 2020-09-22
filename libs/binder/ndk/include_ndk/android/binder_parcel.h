@@ -1120,6 +1120,14 @@ binder_status_t AParcel_readByteArray(const AParcel* parcel, void* arrayData,
 // @END-PRIMITIVE-READ-WRITE
 
 #endif  //__ANDROID_API__ >= 29
+#if __ANDROID_API__ >= 31
+// Also see Parcelable.h in libbinder.
+typedef int32_t parcelable_stability_t;
+enum {
+    STABILITY_LOCAL,
+    STABILITY_VINTF,  // corresponds to @VintfStability
+};
+#endif  //__ANDROID_API__ >= 31
 __END_DECLS
 
 /** @} */
