@@ -461,6 +461,8 @@ binder_status_t AParcel_readParcelFileDescriptor(const AParcel* parcel, int* fd)
  * this happens or if writing the status object itself fails, the return value from this function
  * should be propagated to the client, and AParcel_readStatusHeader shouldn't be called.
  *
+ * Starting in API level 31, a null status is considered okay.
+ *
  * Available since API level 29.
  *
  * \param parcel the parcel to write to.

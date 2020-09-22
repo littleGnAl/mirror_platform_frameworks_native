@@ -272,6 +272,10 @@ binder_status_t AParcel_readParcelFileDescriptor(const AParcel* parcel, int* fd)
 }
 
 binder_status_t AParcel_writeStatusHeader(AParcel* parcel, const AStatus* status) {
+    if (status == nullptr) {
+        AStatus okay;
+        return AParcel_writeStatusHeader(parcel, &okay);
+    }
     return PruneStatusT(status->get().writeToParcel(parcel->get()));
 }
 binder_status_t AParcel_readStatusHeader(const AParcel* parcel, AStatus** status) {

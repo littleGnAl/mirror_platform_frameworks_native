@@ -199,6 +199,10 @@ class ScopedAStatus : public impl::ScopedAResource<AStatus*, void, AStatus_delet
    public:
     /**
      * Takes ownership of a.
+     *
+     * WARNING: nullptr is considered okay only starting at API level 31, and
+     * this constructor is only expected to be used when reading a status value.
+     * Use `ScopedAStatus::ok()` instead.
      */
     explicit ScopedAStatus(AStatus* a = nullptr) : ScopedAResource(a) {}
     ~ScopedAStatus() {}
@@ -240,7 +244,14 @@ class ScopedAStatus : public impl::ScopedAResource<AStatus*, void, AStatus_delet
     /**
      * Convenience methods for creating scoped statuses.
      */
-    static ScopedAStatus ok() { return ScopedAStatus(AStatus_newOk()); }
+    static ScopedAStatus ok() {
+#if __ANDROID_API_LEVEL__ >= 31
+        // nullptr is considered okay starting in API level 31
+        return ScopedAStatus(nullptr);
+#else
+        return ScopedAStatus(AStatus_newOk());
+#endif
+    }
     static ScopedAStatus fromExceptionCode(binder_exception_t exception) {
         return ScopedAStatus(AStatus_fromExceptionCode(exception));
     }

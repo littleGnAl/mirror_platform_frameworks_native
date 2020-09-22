@@ -186,6 +186,8 @@ __attribute__((warn_unused_result)) AStatus* AStatus_fromStatus(binder_status_t 
  * Whether this object represents a successful transaction. If this function returns true, then
  * AStatus_getExceptionCode will return EX_NONE.
  *
+ * Starting at API level 31, a null status is considered okay.
+ *
  * Available since API level 29.
  *
  * \param status the status being queried.
@@ -196,6 +198,8 @@ bool AStatus_isOk(const AStatus* status) __INTRODUCED_IN(29);
 
 /**
  * The exception that this status object represents.
+ *
+ * Starting at API level 31, a null status is considered okay.
  *
  * Available since API level 29.
  *
@@ -211,6 +215,8 @@ binder_exception_t AStatus_getExceptionCode(const AStatus* status) __INTRODUCED_
  * 0, the status object may still represent a different exception or status. To find out if this
  * transaction as a whole is okay, use AStatus_isOk instead.
  *
+ * Starting at API level 31, a null status is considered okay.
+ *
  * Available since API level 29.
  *
  * \param status the status being queried.
@@ -224,6 +230,8 @@ int32_t AStatus_getServiceSpecificError(const AStatus* status) __INTRODUCED_IN(2
  * if AStatus_getExceptionCode returns EX_TRANSACTION_FAILED. If this function return 0, the status
  * object may represent a different exception or a service specific error. To find out if this
  * transaction as a whole is okay, use AStatus_isOk instead.
+ *
+ * Starting at API level 31, a null status is considered okay.
  *
  * Available since API level 29.
  *
@@ -239,6 +247,8 @@ binder_status_t AStatus_getStatus(const AStatus* status) __INTRODUCED_IN(29);
  *
  * The returned string has the lifetime of the status object passed into this function.
  *
+ * Starting at API level 31, a null status is considered okay.
+ *
  * Available since API level 29.
  *
  * \param status the status being queried.
@@ -249,6 +259,8 @@ const char* AStatus_getMessage(const AStatus* status) __INTRODUCED_IN(29);
 
 /**
  * Get human-readable description for debugging.
+ *
+ * Starting at API level 31, a null status is considered okay.
  *
  * Available since API level 30.
  *
