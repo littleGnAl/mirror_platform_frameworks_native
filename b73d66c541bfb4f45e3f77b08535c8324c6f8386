@@ -16,6 +16,41 @@
       "revId": "b73d66c541bfb4f45e3f77b08535c8324c6f8386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fca23edd_7d5cbbaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-22T21:00:09Z",
+      "side": 1,
+      "message": "Can we add the te",
+      "revId": "b73d66c541bfb4f45e3f77b08535c8324c6f8386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95d82a39_917b57fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-22T21:00:09Z",
+      "side": 1,
+      "message": "I agree that we want this configuration tested. I could see other parts of the stack making assumptions about remote objects not being in the same process accidentally.\n\nI\u0027m OK with putting this in once we have confirmation from someone (sjc@ or the Keystore team, who wanted this feature) that this patch allows successful intraprocess binder between C++ and Rust, but we should add a test.",
+      "parentUuid": "f633470d_5f1b1455",
+      "revId": "b73d66c541bfb4f45e3f77b08535c8324c6f8386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
