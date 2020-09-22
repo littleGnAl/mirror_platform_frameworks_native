@@ -105,6 +105,24 @@
       "revId": "b73d66c541bfb4f45e3f77b08535c8324c6f8386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "655f326f_97b20a27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-22T22:39:29Z",
+      "side": 1,
+      "message": "It should work now. I tested your ser/de test on my machine and it passed, so I\u0027ve retapped Presubmit-Ready for you.",
+      "parentUuid": "dbbc3d48_d80bd488",
+      "revId": "b73d66c541bfb4f45e3f77b08535c8324c6f8386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
