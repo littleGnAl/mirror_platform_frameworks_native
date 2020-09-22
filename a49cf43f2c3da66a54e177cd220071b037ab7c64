@@ -1,0 +1,377 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd19fad3_5f675abf",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "do we really need libperfetto? others seem redundant as well",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dee44f7_d32da732",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf337665_30daed0b",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4c2f98_17d79ee5",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "Missing copyrights header",
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d6ff32a_cc9f2218",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "we usually just use the entire name for it i.e. std::vector",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a6fffa_cafdb26a",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "namespace android {}",
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a424c9_05128180",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "what is 43? better to use the actual enum value",
+      "range": {
+        "startLine": 27,
+        "startChar": 15,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ef042e_f56f7920",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "for loop seems more appropriate here as we always do i++",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc561cf0_655418f1",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "we should define this number somewhere in SF and use it both in SF and here to avoid updating multiple places",
+      "range": {
+        "startLine": 62,
+        "startChar": 15,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "432050da_6bff78f4",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "for loop",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 9
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "653e005b_d151eb92",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "what does 10 represents?",
+      "range": {
+        "startLine": 116,
+        "startChar": 25,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dd05c83_1ed96bc4",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "what does 5 represents ?",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 17
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e52e5b_7ef1430c",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "use make_unique instead",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 83
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdb1f4f5_1a3591df",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "and then use std::move",
+      "range": {
+        "startLine": 162,
+        "startChar": 37,
+        "endLine": 162,
+        "endChar": 50
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294f4367_2dd532f7",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 168,
+        "startChar": 47,
+        "endLine": 168,
+        "endChar": 60
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dbc9e2a_4592cd40",
+        "filename": "services/surfaceflinger/tests/fuzzers/onTransact_fuzzer/onTransact_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "auto to avoid casting",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 12
+      },
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846f67c5_c0bd04d0",
+        "filename": "services/surfaceflinger/tests/unittests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-09-22T00:33:25Z",
+      "side": 1,
+      "message": "we should have the libsurfaceflinger_unittest link to libsurfaceflinger_mocks instead of compiling it again",
+      "revId": "a49cf43f2c3da66a54e177cd220071b037ab7c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
