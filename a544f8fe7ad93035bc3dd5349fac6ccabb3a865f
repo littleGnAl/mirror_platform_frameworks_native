@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3cd99a5_fd6d9795",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-22T22:30:12Z",
+      "side": 1,
+      "message": "when we were talking in the bug, I thought that I could insert the \u0027if status \u003d\u003d nullptr and api level \u003c 31, status \u003d AStatus_newOk\u0027 on top of libbinder_ndk. However, there is no existing ::ndk::writeStatusHeader which old versions of the AIDL compiler can reference, and there are many other AStatus APIs that would need similar wrappers. So, I\u0027m not sure of a better solution.\n\nOne thing that we could do to prevent crashes on old devices for incorrect usage (and also prevent the crash ilya originally filed the bug for) is to have L207 initialize AStatus with AStatus_newOk. However, this will add additional heap allocations in other cases, namely:\n\n    ScopedAStatus _aidl_status;  // extra allocation\n    ... \u003d AParcel_readStatusHeader(..., _aidl_status.getR());\n\nSo, I can only think of supporting nullptr now, but I cannot think of a way to allow methods to successfully have \"return ScopedAStatus();\" or error in that case which still compiles against old versions of the AIDL compiler.",
+      "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
