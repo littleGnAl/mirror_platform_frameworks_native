@@ -16,6 +16,23 @@
       "revId": "7893bd04d22dd0e1ee9e4d07e008930d01316acd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1639a447_9b37574d",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-22T02:01:53Z",
+      "side": 1,
+      "message": "This makes AIBinder bigger. Alternatively, I could use a single global mutex?",
+      "revId": "7893bd04d22dd0e1ee9e4d07e008930d01316acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
