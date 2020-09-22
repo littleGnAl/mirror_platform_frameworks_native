@@ -33,6 +33,23 @@
       "revId": "d3954b9e0dfaf8c4c61ba6454e234a6ebd79fc26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b0f5b67_c7967d74",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-22T22:50:57Z",
+      "side": 1,
+      "message": "You need to set the suite, e.g. presubmit postsubmit like it was before. Try tossing them all into presubmit, the instability with the other test should be fixed now.",
+      "revId": "d3954b9e0dfaf8c4c61ba6454e234a6ebd79fc26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
