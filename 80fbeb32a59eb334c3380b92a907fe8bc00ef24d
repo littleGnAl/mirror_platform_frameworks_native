@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "a7bf29c9_64874700",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-09-22T18:13:41Z",
+      "side": 1,
+      "message": "Right, the suggestion was to use non-const reference.\n\nI haven\u0027t seen the previous guidance. I looked at the one in [0], and it seems like references are preferred. The rules I had in my mind are: \"if nullable, then make it pointer. If not being modified, then make it const.\"\n\n[0] https://google.github.io/styleguide/cppguide.html#Inputs_and_Outputs",
+      "parentUuid": "eab5bd29_42f53003",
+      "range": {
+        "startLine": 26,
+        "startChar": 65,
+        "endLine": 26,
+        "endChar": 72
+      },
+      "revId": "80fbeb32a59eb334c3380b92a907fe8bc00ef24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cd2a946_eca467b8",
         "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierConverterFuzzer.cpp",
         "patchSetId": 2

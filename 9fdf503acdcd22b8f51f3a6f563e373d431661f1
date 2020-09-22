@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36176b52_13829fc5",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-09-22T18:13:41Z",
+      "side": 1,
+      "message": "maybe just rename to something like \"common\"?",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "9fdf503acdcd22b8f51f3a6f563e373d431661f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
