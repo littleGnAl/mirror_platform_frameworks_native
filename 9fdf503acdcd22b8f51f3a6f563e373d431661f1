@@ -2,6 +2,108 @@
   "comments": [
     {
       "key": {
+        "uuid": "b3985b63_90b294c2",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-09-22T22:12:06Z",
+      "side": 1,
+      "message": "nit: We use ALL_CAPS as the style for static constants, not k-prefix.",
+      "revId": "9fdf503acdcd22b8f51f3a6f563e373d431661f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7ee6c7_2d96ad3c",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-09-22T22:12:06Z",
+      "side": 1,
+      "message": "Is this name special in some way? If not, Android style is to treat acronyms as words so it would be:\n\n  LlvmFuzzerTestOneInput(uint8_t *data, size_t size)\n\nIdeally it would be more descriptive about what it\u0027s actually doing though, something like:\n\n  FuzzBlockingQueueWithOneInput(uint8_t *data, size_t size)",
+      "revId": "9fdf503acdcd22b8f51f3a6f563e373d431661f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9643f81f_741baa84",
+        "filename": "services/inputflinger/tests/fuzzers/blockingQueue/BlockingQueueFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-09-22T22:12:06Z",
+      "side": 1,
+      "message": "What\u0027s the value to having these all in one function? Is there documentation or a paper you can point me to that covers it? I think I\u0027ve asked this in the past but I don\u0027t remember the response, so apologies if you\u0027re having to reiterate yourself.\n\nAt the very least, break these into their own functions. You can call them from LLVMFuzzerTestOneInput so the execution should be roughly identical, but then it\u0027s easier to understand what each operation is trying to do.",
+      "revId": "9fdf503acdcd22b8f51f3a6f563e373d431661f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dec12b9_8894f600",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-09-22T22:12:06Z",
+      "side": 1,
+      "message": "nit: blueprint names are underscore separated\n\n  inputflinger_classifier_fuzzer\n\nSame for other cc_fuzz targets",
+      "revId": "9fdf503acdcd22b8f51f3a6f563e373d431661f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57c1f4aa_d38307fe",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierFuzzHelpers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-09-22T22:12:06Z",
+      "side": 1,
+      "message": "nit: MAX_AXES",
+      "revId": "9fdf503acdcd22b8f51f3a6f563e373d431661f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e94a486_71aae042",
+        "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierFuzzHelpers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-09-22T22:12:06Z",
+      "side": 1,
+      "message": "nit: pass by ref rather than pointer since this can\u0027t be null.",
+      "revId": "9fdf503acdcd22b8f51f3a6f563e373d431661f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36176b52_13829fc5",
         "filename": "services/inputflinger/tests/fuzzers/classifiers/InputClassifierFuzzer.cpp",
         "patchSetId": 3
