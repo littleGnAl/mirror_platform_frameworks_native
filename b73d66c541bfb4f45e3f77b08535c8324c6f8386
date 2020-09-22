@@ -87,6 +87,24 @@
       "revId": "b73d66c541bfb4f45e3f77b08535c8324c6f8386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbbc3d48_d80bd488",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-09-22T21:33:56Z",
+      "side": 1,
+      "message": "I\u0027ll add a simple cross-language test for this. @mmaurer, can we mix Rust into C++ gtests now (i.e. is the build system static lib issue fixed)?\n\nRe: the NDK, would that need to be in the AIDL backend? Users implementing custom code can just ignore the associate failure like we did in Rust, although it might be nice to fix the API so that is clearer.",
+      "parentUuid": "c807e67a_945c7ae7",
+      "revId": "b73d66c541bfb4f45e3f77b08535c8324c6f8386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
