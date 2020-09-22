@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c809f22c_0d0e9541",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-22T16:22:39Z",
+      "side": 1,
+      "message": "I wonder if this should be in libs/binder/cpp/include_cpp, since we shouldn\u0027t expose this to apps.\n\nAlso, since these are header-only values, we can avoid L1123 and L1130, I think. Otherwise, we might not be able to compile code at old API levels.",
+      "revId": "fa40f031c19e6f667be1d8c3ddd5fc7ffe04816c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
