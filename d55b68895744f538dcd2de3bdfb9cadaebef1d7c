@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f2d40c5_a8712610",
+        "filename": "libs/binder/rust/benches/throughput.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-22T20:00:55Z",
+      "side": 1,
+      "message": "We have the rand crate, so you shouldn\u0027t need to ad-hoc bind rand() and srand().",
+      "revId": "d55b68895744f538dcd2de3bdfb9cadaebef1d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86793807_93286574",
+        "filename": "libs/binder/rust/benches/throughput.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-22T20:00:55Z",
+      "side": 1,
+      "message": "Use AtomicU64s rather than repeatedly doing unsafe{} around access to these?",
+      "revId": "d55b68895744f538dcd2de3bdfb9cadaebef1d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
