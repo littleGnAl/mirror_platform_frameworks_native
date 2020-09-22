@@ -69,6 +69,24 @@
       "revId": "b73d66c541bfb4f45e3f77b08535c8324c6f8386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e211eb6e_daebb203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-22T21:31:28Z",
+      "side": 1,
+      "message": "I think also the ndk backend will need something similar so that if a rust proxy is created first, it can still associate as a remote proxy.",
+      "parentUuid": "c807e67a_945c7ae7",
+      "revId": "b73d66c541bfb4f45e3f77b08535c8324c6f8386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
