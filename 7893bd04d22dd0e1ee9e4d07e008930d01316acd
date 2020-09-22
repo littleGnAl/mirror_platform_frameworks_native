@@ -33,6 +33,24 @@
       "revId": "7893bd04d22dd0e1ee9e4d07e008930d01316acd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63eccecb_91ba8a9e",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-22T02:57:47Z",
+      "side": 1,
+      "message": "Another option: move the mutex to the Rust side, most likely to InterfaceClass.",
+      "parentUuid": "1639a447_9b37574d",
+      "revId": "7893bd04d22dd0e1ee9e4d07e008930d01316acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
