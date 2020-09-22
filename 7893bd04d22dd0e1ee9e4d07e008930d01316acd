@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3061d16_7f0fe393",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-22T01:59:56Z",
+      "side": 1,
+      "message": "The AIDL Rust tests were flaky because AIBinder::associateClass is not thread-safe. Concretely, the problem occurs when the following sequence happens:\n\u003e Thread 1 calls associateClass\n\u003e Thread 2 calls associateClass with the same clazz as Thread 1\n\u003e Thread 1 checks for mClazz \u003d\u003d clazz (false)\n\u003e Thread 2 checks for mClazz \u003d\u003d clazz (false)\n\u003e Thread 1 checks for mClazz \u003d\u003d null (true)\n\u003e Thread 1 sets mClazz to clazz\n\u003e Thread 2 check for mClazz \u003d\u003d null (false!)\n\u003e Thread 2 errors",
+      "revId": "7893bd04d22dd0e1ee9e4d07e008930d01316acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
