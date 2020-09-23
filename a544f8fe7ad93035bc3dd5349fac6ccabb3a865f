@@ -16,6 +16,24 @@
       "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ef19b5f_7e75e8ca",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-23T07:01:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we have a way to allow \u0027return ScopeAStatus()\u0027 to apps running on older platforms, without causing the extra heap alloc at all.\n\nThe incorrect use doesn\u0027t happen always - only when someone makes a mistake, but the extra heap alloc will happen always - if we modify the default constructor. So, to me, not making the extra heap alloc seems to be much more important than allowing the mistake.\n\nFurthermore, if we allocate AStatus inside the constructor, then we will have a memory leak because the pointer *getR() will be overwritten by AParcel_readStatusHeader. One more reason for not taking this.\n\n-------\nTo be better, how about this? \n\nIf we can amend the AIDL compiler...\n\nScopedAStatus _aidl_status(nullptr); // explicit use of nullptr\n... \u003d AParcel_readStatusHeader(..., _aidl_status.getR());\n\nclass ScopedAStatus : ... {\npublic:\n  explicit ScopedAStatus(AStatus* a) : ScopedAResource(a) {} // drop \"\u003d nullptr\"\n#if __ANDROID_API__ \u003c 31\n  ScopedAStatus() : ScopedAResource(AStatus_newOk()) {}\n#else\n  ScopedAStatus() : ScopedAResource(nullptr) {}\n#endif\n};\n\nThen, we will have the extra heap alloc only when someone mistakenly (?) use \u0027return ScopedAStatus();\u0027 when targeting pre-31. I think \u0027return ScopedAStatus(nullptr);\u0027 should however be punished :)",
+      "parentUuid": "d3cd99a5_fd6d9795",
+      "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
