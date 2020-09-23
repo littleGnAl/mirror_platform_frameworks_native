@@ -76,6 +76,23 @@ static bool isVintfDeclared(const std::string& name) {
     return false;
 }
 
+static std::vector<std::string> getVintfInstances(const std::string& interface) {
+    // FIXME
+    std::vector<std::string> ret;
+
+//    auto deviceManifest = vintf::VintfObject::GetDeviceHalManifest();
+//    for (const std::string& instance : deviceManifest->getAidlInstances(package, iface)) {
+//        ret.push_back(descriptor + "/" + instance);
+//    }
+//
+//    auto frameworkManifest = vintf::VintfObject::GetFrameworkHalManifest();
+//    for (const std::string& instance : frameworkManifest->getAidlInstances(package, iface)) {
+//        ret.push_back(descriptor + "/" + instance);
+//    }
+
+    return ret;
+}
+
 static bool meetsDeclarationRequirements(const sp<IBinder>& binder, const std::string& name) {
     if (!Stability::requiresVintfDeclaration(binder)) {
         return true;
@@ -328,6 +345,22 @@ Status ServiceManager::isDeclared(const std::string& name, bool* outReturn) {
 #ifndef VENDORSERVICEMANAGER
     *outReturn = isVintfDeclared(name);
 #endif
+    return Status::ok();
+}
+
+binder::Status ServiceManager::getDeclaredInstances(const std::string& interface, std::vector<std::string>* outReturn) {
+    auto ctx = mAccess->getCallingContext();
+
+    outReturn->clear();
+
+#ifndef VENDORSERVICEMANAGER
+    for (const std::string& instance : getVintfInstances(interface)) {
+        if (mAccess->canFind(ctx, interface + "/" + instance)) {
+            outReturn->push_back(instance);
+        }
+    }
+#endif
+
     return Status::ok();
 }
 
