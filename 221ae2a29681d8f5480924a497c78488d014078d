@@ -45,6 +45,30 @@
       "revId": "221ae2a29681d8f5480924a497c78488d014078d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07bf243c_7d7610ba",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-09-23T20:01:49Z",
+      "side": 1,
+      "message": "I think dumpstate has refused to do unzipped dumps for a while now? I feel like I recall encountering this in R development. Nandana would know more, but I assume this is the intended direction to be moving towards zip as the only option.",
+      "parentUuid": "f323c79a_4e66e1fe",
+      "range": {
+        "startLine": 1309,
+        "startChar": 12,
+        "endLine": 1309,
+        "endChar": 21
+      },
+      "revId": "221ae2a29681d8f5480924a497c78488d014078d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
