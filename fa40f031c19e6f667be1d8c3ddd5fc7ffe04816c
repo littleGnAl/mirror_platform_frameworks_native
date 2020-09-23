@@ -16,6 +16,24 @@
       "revId": "fa40f031c19e6f667be1d8c3ddd5fc7ffe04816c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ef9b65_f9aa0bf3",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-09-23T09:33:20Z",
+      "side": 1,
+      "message": "moved them to include_cpp/android/binder_parcelable_utils.h which is newly created without the version guard",
+      "parentUuid": "c809f22c_0d0e9541",
+      "revId": "fa40f031c19e6f667be1d8c3ddd5fc7ffe04816c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
