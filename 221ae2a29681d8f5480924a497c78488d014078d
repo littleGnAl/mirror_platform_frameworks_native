@@ -69,6 +69,30 @@
       "revId": "221ae2a29681d8f5480924a497c78488d014078d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47cf4921_dd05d1b1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-23T22:02:28Z",
+      "side": 1,
+      "message": "I mean, it worked at least in 7/20 builds of R, which I tested for this bug.\n\nIf zip is the only option, is there a cleanup bug? or I can just abandon this CL",
+      "parentUuid": "07bf243c_7d7610ba",
+      "range": {
+        "startLine": 1309,
+        "startChar": 12,
+        "endLine": 1309,
+        "endChar": 21
+      },
+      "revId": "221ae2a29681d8f5480924a497c78488d014078d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
