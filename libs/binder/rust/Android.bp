@@ -55,6 +55,7 @@ rust_bindgen {
         "libbinder_ndk",
     ],
     host_supported: true,
+    cpp_std: "default",
 
     // Currently necessary for host builds
     // TODO(b/31559095): bionic on host should define this
