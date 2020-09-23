@@ -34,6 +34,24 @@
       "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea364bc3_9cbc6dc5",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-23T17:17:20Z",
+      "side": 1,
+      "message": "This will also leak/have an extra allocation when compiled with old versions of the AIDL compiler.\n\n\u003e The incorrect use doesn\u0027t happen always - only when someone makes a mistake\n\nAnd after this change, the mistake will be easier to make. I\u0027m curious jreck\u0027s decision here. We could just take the documentation change instead and only make a performance change when/if it is needed.",
+      "parentUuid": "1ef19b5f_7e75e8ca",
+      "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
