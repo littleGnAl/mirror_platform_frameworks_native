@@ -52,6 +52,24 @@
       "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4925fee3_ca5d66d7",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-09-23T18:24:48Z",
+      "side": 1,
+      "message": "I\u0027m not really a fan of the use of null as a proxy here. It\u0027s a fragile change that becomes easy to make mistakes (and it becomes more challenging to recognize \"null\" meant OK vs. \"null\" meant my error path failed), and I think it can be avoided anyway.\n\nSince AStatus is immutable, you can have AStatus_newOk() just return the same static instance, and AStatus_delete can compare against that static instance to decide if it should actually delete or not. Then all existing binaries get the speedup without even needing a recompile.\n\nFor backporting that change, I think ScopedAStatus could functionally do the same thing as well? Or just don\u0027t backport it, that\u0027s fine, too.",
+      "parentUuid": "ea364bc3_9cbc6dc5",
+      "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
