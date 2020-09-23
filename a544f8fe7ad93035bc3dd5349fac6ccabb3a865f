@@ -70,6 +70,24 @@
       "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87a23c84_ae05c1ac",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-23T19:27:09Z",
+      "side": 1,
+      "message": "I like that suggestion. I\u0027ll switch to that (and keep the warning message).",
+      "parentUuid": "4925fee3_ca5d66d7",
+      "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
