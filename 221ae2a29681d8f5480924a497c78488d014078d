@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3c7a465_cccaaeb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-23T17:43:17Z",
+      "side": 1,
+      "message": "it seems this is no longer supported?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 65
+      },
+      "revId": "221ae2a29681d8f5480924a497c78488d014078d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f323c79a_4e66e1fe",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-23T17:43:17Z",
+      "side": 1,
+      "message": "so should we move all references to these functions?\n\nor is the loss of support uninentional?",
+      "range": {
+        "startLine": 1309,
+        "startChar": 12,
+        "endLine": 1309,
+        "endChar": 21
+      },
+      "revId": "221ae2a29681d8f5480924a497c78488d014078d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
