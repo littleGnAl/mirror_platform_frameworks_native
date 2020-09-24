@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "761d620e_ebb3df12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319385
+      },
+      "writtenOn": "2020-09-24T14:37:50Z",
+      "side": 1,
+      "message": "One example is https://cs.android.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/display/DisplayPowerController.java;l\u003d531?q\u003dmProximitySensor.getMaximumRange\u0026sq\u003d\n\nThis makes it have NAN as max range, and thus breaks proximity wakes up.",
+      "revId": "86bd128fa03e4f7820ae8e36a3f896a58203e422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
