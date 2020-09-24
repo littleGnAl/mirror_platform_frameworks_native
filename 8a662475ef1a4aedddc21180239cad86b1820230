@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b21a56_68df42a6",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-24T21:36:54Z",
+      "side": 1,
+      "message": "lshal already uses FQName (actually, everything should be able to, now that I rewrote the parser there to avoid regex). Any thought about using it here? You would also simplify the PipeRelay constructor w/ one less argument, and get a strong type on the PipeRelay::RelayThread constructor",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 80
+      },
+      "revId": "8a662475ef1a4aedddc21180239cad86b1820230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
