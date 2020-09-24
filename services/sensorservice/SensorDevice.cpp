@@ -158,7 +158,10 @@ void SensorDevice::initializeSensorList() {
                         if (fmod(promotedMaxRange, promotedResolution) != 0) {
                             ALOGW("%s's max range %f is not a multiple of the resolution %f",
                                     sensor.name, sensor.maxRange, sensor.resolution);
-                            SensorDeviceUtils::quantizeValue(&sensor.maxRange, promotedResolution);
+                            if (promotedResolution != 0) {
+                                SensorDeviceUtils::quantizeValue(&sensor.maxRange,
+                                        promotedResolution);
+                            }
                         }
                     }
 
