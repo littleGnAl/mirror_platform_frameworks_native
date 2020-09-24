@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e4da74ba_e0efe432",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-24T17:14:56Z",
+      "side": 1,
+      "message": "always put reasoning on commit messages - for external (and bugs will be deleted after 10 years....)\n\nAll for hpp argument, but Android has so many \u0027C or C++\u0027 headers and .h is so common, the cflag option makes sense. Curious why spending time on this CL when the bug is for a build fix?",
+      "revId": "7277fabb100a0f74602ee731106d5cb83a752730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be457902_425beb4f",
         "filename": "libs/binder/rust/Android.bp",
         "patchSetId": 2
