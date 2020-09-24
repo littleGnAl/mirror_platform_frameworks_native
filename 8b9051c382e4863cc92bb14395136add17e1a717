@@ -16,6 +16,466 @@
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f06eb095_fa264a49",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit: consider using constexpr,  otherwise it should be kTrackballMovementThreshold.",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "507213bc_4551e288",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit : if only calls parent class function can we just remove the overriding?",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 60
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af82f10_f18e57e1",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit : getDevice,  without \"m\" and camel case.",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b25e3b6f_1366b1ed",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit: getFakeContext, without \"m\" and camel case.",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11178766_f775f194",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit: getFakePointerController without \"m\" and camel case.",
+      "range": {
+        "startLine": 29,
+        "startChar": 43,
+        "endLine": 29,
+        "endChar": 68
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc0bc40c_677e0c7c",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit: getFakePolicy without \"m\" and camel case.",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 44
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb0ca4aa_7ce680bf",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "it seems this is not used?",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf34fa43_0a107ab2",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "These assertions are commented out, if not needed can we just remove?",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 83
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c99a13c1_9744cb4f",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "These assertions are commented out, if not needed can we just remove?",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 91
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2fda3fc_8bb459d2",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "These assertions are commented out, if not needed can we just remove?",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 38
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36e7acc9_eccfe9d3",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit : getDevice, remove m and camel case.",
+      "range": {
+        "startLine": 117,
+        "startChar": 17,
+        "endLine": 117,
+        "endChar": 27
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f742c8a_f3083524",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "constexpr is preferred and can be used with all capital letters style.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816f8b8f_3348cfaf",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit: consider: (const T\u0026 a,  const T\u0026 b)\ncan we use std::min?",
+      "range": {
+        "startLine": 32,
+        "startChar": 20,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5744ac2b_57e7af40",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "preferred coding style is remove \"virtual\" and add \"override\", like:\nvoid setButtonState(int32_t buttonState) override { mButtonState \u003d buttonState; }\nsimilarly for others.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daebd3cd_2dcf180e",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "returning a whole map seems not very common, can we take a map index and return the map value?",
+      "range": {
+        "startLine": 88,
+        "startChar": 71,
+        "endLine": 88,
+        "endChar": 86
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "203c2a26_c2c59118",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit: mX \u003d std::clamp(mX + deltaX, mMinX, mMinY)",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d902f9ba_bef638ea",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit: add /* */ for unused param name.",
+      "range": {
+        "startLine": 114,
+        "startChar": 26,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5d70ad_5d4c3e3f",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "Can this return a reference const TouchAffineTransformation\u0026 ?",
+      "range": {
+        "startLine": 202,
+        "startChar": 4,
+        "endLine": 202,
+        "endChar": 29
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6d5beb6_75ded0bb",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "nit: consider reuturn const InputReaderConfiguration \u0026 to save the possible copy if not optimzied and more clear to read?",
+      "range": {
+        "startLine": 242,
+        "startChar": 40,
+        "endLine": 242,
+        "endChar": 64
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e35a76b_d4b96a98",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2020-09-24T03:07:33Z",
+      "side": 1,
+      "message": "We have refactored this in EventHub,  can we update it to most recent EventHub code?",
+      "range": {
+        "startLine": 296,
+        "startChar": 4,
+        "endLine": 296,
+        "endChar": 43
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
