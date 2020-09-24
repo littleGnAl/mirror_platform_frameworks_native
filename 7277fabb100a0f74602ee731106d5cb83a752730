@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "63735d81_f321da0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-24T19:57:37Z",
+      "side": 1,
+      "message": "Updated the commit message, apologies about that.\n\nI think Matthew covered why we need this CL to go in alongside the build system CL (thanks!). We\u0027re also adding the \u0027-x c++\u0027 to cflags within Soong now as well when dealing with a C++ header, so it\u0027s no longer needed in cflags here.",
+      "parentUuid": "264ced02_60d51e08",
+      "revId": "7277fabb100a0f74602ee731106d5cb83a752730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be457902_425beb4f",
         "filename": "libs/binder/rust/Android.bp",
         "patchSetId": 2
