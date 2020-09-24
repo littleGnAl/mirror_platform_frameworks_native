@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d5a5a839_0722645a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-24T17:18:18Z",
+      "side": 1,
+      "message": "The bug talks about not having the C standard version passed into the compiler. Since the arguments for C/C++ are different, the bindgen module needs to know which language is in use to pass it in.\n\nThe exact interface is being debated on the other CL, but the gist of it is to have .h default to C, .hh, .hpp default to C++, with properties that override which language is in use.\n\nThat means this project either needs to use a .hpp file or set whatever properties are added so that we pass in a C++ std version rather than a C std version.",
+      "parentUuid": "e4da74ba_e0efe432",
+      "revId": "7277fabb100a0f74602ee731106d5cb83a752730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be457902_425beb4f",
         "filename": "libs/binder/rust/Android.bp",
         "patchSetId": 2
