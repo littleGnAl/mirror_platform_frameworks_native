@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be457902_425beb4f",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-24T15:40:46Z",
+      "side": 1,
+      "message": "If your autodetector is working right, this cflag should be removable.",
+      "revId": "7277fabb100a0f74602ee731106d5cb83a752730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
