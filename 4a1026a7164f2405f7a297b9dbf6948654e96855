@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7d17ff1_d1ad33d9",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-24T22:03:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be AStatus_newOk when a \u003d\u003d nullptr?",
+      "range": {
+        "startLine": 206,
+        "startChar": 67,
+        "endLine": 206,
+        "endChar": 68
+      },
+      "revId": "4a1026a7164f2405f7a297b9dbf6948654e96855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
