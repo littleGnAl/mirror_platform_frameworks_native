@@ -88,6 +88,24 @@
       "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf869908_7e123638",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-24T21:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a23c84_ae05c1ac",
+      "revId": "a544f8fe7ad93035bc3dd5349fac6ccabb3a865f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
