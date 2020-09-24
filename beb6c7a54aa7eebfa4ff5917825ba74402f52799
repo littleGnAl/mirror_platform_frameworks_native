@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bec4d69_b5efa0d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-24T03:34:47Z",
+      "side": 1,
+      "message": "One minor comment. Other than that, LGTM.",
+      "revId": "beb6c7a54aa7eebfa4ff5917825ba74402f52799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6029703b_5a8aa92c",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-24T03:34:47Z",
+      "side": 1,
+      "message": "I wonder why this is EX_SECURITY while the case (outReturn-\u003esize() !\u003d allInstances.size()) isn\u0027t.",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 5
+      },
+      "revId": "beb6c7a54aa7eebfa4ff5917825ba74402f52799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
