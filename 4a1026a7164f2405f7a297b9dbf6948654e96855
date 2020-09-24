@@ -46,6 +46,30 @@
       "revId": "4a1026a7164f2405f7a297b9dbf6948654e96855",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a04c4b5e_49df781e",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-24T23:03:24Z",
+      "side": 1,
+      "message": "(extra heap allocation, and also, b/c of getR I think you or jreck pointed out, also a leak)",
+      "parentUuid": "4566907f_c09e0e20",
+      "range": {
+        "startLine": 206,
+        "startChar": 67,
+        "endLine": 206,
+        "endChar": 68
+      },
+      "revId": "4a1026a7164f2405f7a297b9dbf6948654e96855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
