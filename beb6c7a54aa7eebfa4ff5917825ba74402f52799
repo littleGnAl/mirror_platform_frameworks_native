@@ -39,6 +39,30 @@
       "revId": "beb6c7a54aa7eebfa4ff5917825ba74402f52799",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37aa5e3d_3b622c5d",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-24T16:31:10Z",
+      "side": 1,
+      "message": "It\u0027s because if you are allowed to get, say \"default\" and \"foo\" only, but \"bar\" is also declard, we want to return [\"default\", \"foo\"] instead of an error.",
+      "parentUuid": "6029703b_5a8aa92c",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 5
+      },
+      "revId": "beb6c7a54aa7eebfa4ff5917825ba74402f52799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
