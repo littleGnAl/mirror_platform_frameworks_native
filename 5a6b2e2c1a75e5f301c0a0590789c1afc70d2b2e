@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e55e8931_47ea38cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-09-24T15:05:23Z",
+      "side": 1,
+      "message": "how many bytes does this typically add to the bugreport?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
