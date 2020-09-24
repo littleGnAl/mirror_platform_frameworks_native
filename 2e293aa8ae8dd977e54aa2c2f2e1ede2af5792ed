@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3716ad2_015bc79f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-24T22:05:22Z",
+      "side": 1,
+      "message": "Looks like flake, test also passed earlier.\n\nRebooting into fastboot                            OKAY [  0.060s]\n\u003c waiting for 8BTY12WWH \u003e\nfastboot: error: Failed to boot into userspace fastboot; one or more components might be unbootable.\n [8BTY12WWH crosshatch:crosshatch MASTER]",
+      "revId": "2e293aa8ae8dd977e54aa2c2f2e1ede2af5792ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
