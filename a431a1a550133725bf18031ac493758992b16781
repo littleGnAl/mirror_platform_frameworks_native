@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf923b2_4c197ab9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-24T00:50:55Z",
+      "side": 1,
+      "message": "for now: https://android-review.googlesource.com/c/platform/frameworks/native/+/1436517\n\nYifan, are libvintf mocking APIs exported/any example? I could test isDeclared and getDeclaredInstances in the unit test here.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "a431a1a550133725bf18031ac493758992b16781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
