@@ -22,6 +22,30 @@
       "revId": "4a1026a7164f2405f7a297b9dbf6948654e96855",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4566907f_c09e0e20",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-24T22:19:38Z",
+      "side": 1,
+      "message": "no, two reasons\n\n1). old devices will do an extra heap allocation here\n\n2). what jreck said (although in this case, it may be extreme, I agree in general):\n\u003e I\u0027m not really a fan of the use of null as a proxy here. It\u0027s a fragile change that becomes easy to make mistakes (and it becomes more challenging to recognize \"null\" meant OK vs. \"null\" meant my error path failed), and I think it can be avoided anyway.",
+      "parentUuid": "c7d17ff1_d1ad33d9",
+      "range": {
+        "startLine": 206,
+        "startChar": 67,
+        "endLine": 206,
+        "endChar": 68
+      },
+      "revId": "4a1026a7164f2405f7a297b9dbf6948654e96855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
