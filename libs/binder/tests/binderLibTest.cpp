@@ -481,6 +481,13 @@ TEST_F(BinderLibTest, PtrSize) {
     RecordProperty("ServerPtrSize", sizeof(void *));
 }
 
+TEST_F(BinderLibTest, GetDeclaredInstancesTest) {
+    sp<IServiceManager> sm = defaultServiceManager();
+    auto ret = sm->getDeclaredInstances(String16("android.hardware.vibrator.IVibrator"));
+    ASSERT_EQ(ret.size(), 1);
+    EXPECT_EQ(String16("default"), ret[0]);
+}
+
 TEST_F(BinderLibTest, IndirectGetId2)
 {
     status_t ret;
