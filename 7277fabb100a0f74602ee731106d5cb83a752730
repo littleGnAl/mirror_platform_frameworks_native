@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "264ced02_60d51e08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-24T17:26:36Z",
+      "side": 1,
+      "message": "Yeah. The idea was to default to C (since bindgen\u0027s C++ utility is limited), then swap to C++ if we see .hpp, .hh, or an explicit request from the user to treat the header as C++.",
+      "parentUuid": "edd175ec_a81cf011",
+      "revId": "7277fabb100a0f74602ee731106d5cb83a752730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be457902_425beb4f",
         "filename": "libs/binder/rust/Android.bp",
         "patchSetId": 2
