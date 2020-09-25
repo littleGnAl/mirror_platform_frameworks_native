@@ -22,6 +22,30 @@
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17317af5_77647171",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2020-09-25T04:52:41Z",
+      "side": 1,
+      "message": "We limit the size of the nfc log file under 32 MBytes.\nTried to add a fake file size with 32MBytes and check the bugreport increased about 4 MBytes.",
+      "parentUuid": "e55e8931_47ea38cb",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
