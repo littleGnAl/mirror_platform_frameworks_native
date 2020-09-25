@@ -93,6 +93,30 @@
       "revId": "221ae2a29681d8f5480924a497c78488d014078d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4bc1208_58e9bcc9",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-09-25T14:19:32Z",
+      "side": 1,
+      "message": "\"adb shell bugreport\" results in a txt bugreport streamed to console. So txt bugreports are still a thing. b/162910469 may the best bug to track\n\nFor this particular bug you may ask the reporter to do \"adb bugreport\" instead (oh wait you already did)",
+      "parentUuid": "47cf4921_dd05d1b1",
+      "range": {
+        "startLine": 1309,
+        "startChar": 12,
+        "endLine": 1309,
+        "endChar": 21
+      },
+      "revId": "221ae2a29681d8f5480924a497c78488d014078d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
