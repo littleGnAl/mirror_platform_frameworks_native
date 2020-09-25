@@ -70,6 +70,30 @@
       "revId": "4a1026a7164f2405f7a297b9dbf6948654e96855",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4a24fb8_3a83a127",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-25T00:53:57Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t notice that AStatus_newOk is not inlined.",
+      "parentUuid": "a04c4b5e_49df781e",
+      "range": {
+        "startLine": 206,
+        "startChar": 67,
+        "endLine": 206,
+        "endChar": 68
+      },
+      "revId": "4a1026a7164f2405f7a297b9dbf6948654e96855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
