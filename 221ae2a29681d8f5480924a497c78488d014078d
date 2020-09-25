@@ -117,6 +117,30 @@
       "revId": "221ae2a29681d8f5480924a497c78488d014078d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79f8e75_8a036adf",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-25T17:41:00Z",
+      "side": 1,
+      "message": "Yeah, that functionality seems to be broken on AOSP.\n\nBtw - it seems a lot of sources have diverged between master and AOSP for dumpstate. Should they be moved to AOSP, or I can apply this fix in master?",
+      "parentUuid": "a4bc1208_58e9bcc9",
+      "range": {
+        "startLine": 1309,
+        "startChar": 12,
+        "endLine": 1309,
+        "endChar": 21
+      },
+      "revId": "221ae2a29681d8f5480924a497c78488d014078d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
