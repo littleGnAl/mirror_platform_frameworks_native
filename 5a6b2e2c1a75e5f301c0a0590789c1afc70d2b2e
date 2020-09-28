@@ -70,6 +70,30 @@
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "112e8c05_b16cf34e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2020-09-28T04:35:34Z",
+      "side": 1,
+      "message": "The data size I provided would be the maximum condition that we plan to enable nfc detail log level in userdebug build. In user build, we would lower the nfc debug level. \nWe could also limit the max file size lower in user build if there is concern to the increased size of the bugreport.\nWe want to backup the nfc snoop log in another nfc log file and be included in the bugreport.zip instead of dumping directly in the bugreport.txt. This would not be a temporary mechanism.",
+      "parentUuid": "9cae0375_54086614",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
