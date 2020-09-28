@@ -94,6 +94,30 @@
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2720b941_28ef613a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-09-28T11:17:00Z",
+      "side": 1,
+      "message": "\"We want to backup the nfc snoop log in another nfc log file and be included in the bugreport.zip instead of dumping directly in the bugreport.txt\" -\u003e is it currently being dumped directly to bugreport.txt? If so is there duplication?",
+      "parentUuid": "112e8c05_b16cf34e",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
