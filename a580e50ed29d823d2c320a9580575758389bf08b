@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e8d26d77_51c8f412",
+        "filename": "libs/binder/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-29T22:09:25Z",
+      "side": 1,
+      "message": "That\u0027s fine. There are still 16 open review comments here:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1366419/1#message-0198761cb38565a134dfb0366c45f36bd6b0e4c8",
+      "parentUuid": "1bed9b7f_a3d5ffb4",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 1
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80704b51_be35f145",
         "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
         "patchSetId": 1
