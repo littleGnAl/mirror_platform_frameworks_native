@@ -3,8 +3,7 @@ on boot
     chown root mount /sys/kernel/debug/mmc0/mmc0:0001/ext_csd
     chmod 0440 /sys/kernel/debug/mmc0/mmc0:0001/ext_csd
 
-# TODO(b/162910469) migrate to compressed output
-service dumpstate /system/bin/dumpstate -s
+service dumpstate /system/bin/dumpstate -s -d
     class main
     socket dumpstate stream 0660 shell log
     disabled
@@ -12,7 +11,7 @@ service dumpstate /system/bin/dumpstate -s
 
 # dumpstatez generates a zipped bugreport but also uses a socket to print the file location once
 # it is finished.
-service dumpstatez /system/bin/dumpstate -S -d -z
+service dumpstatez /system/bin/dumpstate -S -d
     socket dumpstate stream 0660 shell log
     class main
     disabled
