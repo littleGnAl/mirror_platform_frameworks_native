@@ -17,25 +17,24 @@
 #ifndef FRAMEWORK_NATIVE_CMD_DUMPSTATE_H_
 #define FRAMEWORK_NATIVE_CMD_DUMPSTATE_H_
 
-#include <time.h>
-#include <unistd.h>
-#include <stdbool.h>
-#include <stdio.h>
-
-#include <string>
-#include <vector>
-
 #include <android-base/macros.h>
 #include <android-base/unique_fd.h>
 #include <android/hardware/dumpstate/1.1/types.h>
 #include <android/os/BnIncidentAuthListener.h>
 #include <android/os/IDumpstate.h>
 #include <android/os/IDumpstateListener.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <time.h>
+#include <unistd.h>
 #include <utils/StrongPointer.h>
 #include <ziparchive/zip_writer.h>
 
-#include "DumpstateUtil.h"
+#include <string>
+#include <vector>
+
 #include "DumpPool.h"
+#include "DumpstateUtil.h"
 #include "TaskQueue.h"
 
 // Workaround for const char *args[MAX_ARGS_ARRAY_SIZE] variables until they're converted to
@@ -382,17 +381,15 @@ class Dumpstate {
      * ShutdownDumpPool method if they have never been called.
      */
     void EnqueueAddZipEntryAndCleanupIfNeeded(const std::string& entry_name,
-            const std::string& entry_path);
+                                              const std::string& entry_path);
 
     /*
      * Structure to hold options that determine the behavior of dumpstate.
      */
     struct DumpOptions {
-        bool do_add_date = false;
-        bool do_zip_file = false;
         bool do_vibrate = true;
-        // Writes bugreport content to a socket; only flatfile format is supported.
-        bool use_socket = false;
+        // Writes bugreport content to a socket.
+        bool do_stream_zip_file = false;
         bool use_control_socket = false;
         bool do_screenshot = false;
         bool is_screenshot_copied = false;
@@ -428,18 +425,10 @@ class Dumpstate {
 
         /* Initializes options from the requested mode. */
         void Initialize(BugreportMode bugreport_mode, const android::base::unique_fd& bugreport_fd,
-                        const android::base::unique_fd& screenshot_fd,
-                        bool is_screenshot_requested);
+                        const android::base::unique_fd& screenshot_fd, bool is_screenshot_requested);
 
         /* Returns true if the options set so far are consistent. */
         bool ValidateOptions() const;
-
-        /* Returns if options specified require writing bugreport to a file */
-        bool OutputToFile() const {
-            // If we are not writing to socket, we will write to a file. If bugreport_fd is
-            // specified, it is preferred. If not bugreport is written to /bugreports.
-            return !use_socket;
-        }
 
         /* Returns if options specified require writing to custom file location */
         bool OutputToCustomFile() {
@@ -478,8 +467,8 @@ class Dumpstate {
     // `bugreport-BUILD_ID`.
     std::string base_name_;
 
-    // Name is the suffix part of the bugreport files - it's typically the date (when invoked with
-    // `-d`), but it could be changed by the user..
+    // Name is the suffix part of the bugreport files - it's typically the date,
+    // but it could be changed by the user..
     std::string name_;
 
     std::string bugreport_internal_dir_ = DUMPSTATE_DIRECTORY;
