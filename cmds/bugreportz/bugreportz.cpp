@@ -42,7 +42,8 @@ static void write_line(const std::string& line, bool show_progress) {
     android::base::WriteStringToFd(line, STDOUT_FILENO);
 }
 
-int bugreportz(int s, bool show_progress) {
+int bugreportz(int s, bool show_progress, bool stream_data) {
+    int read_count = 0;
     std::string line;
     while (1) {
         char buffer[65536];
@@ -57,19 +58,45 @@ int bugreportz(int s, bool show_progress) {
             printf("FAIL:Bugreport read terminated abnormally (%s)\n", strerror(errno));
             return EXIT_FAILURE;
         }
+        read_count++;
 
-        // Writes line by line.
-        for (int i = 0; i < bytes_read; i++) {
-            char c = buffer[i];
-            line.append(1, c);
-            if (c == '\n') {
-                write_line(line, show_progress);
-                line.clear();
+        if (stream_data) {
+            ssize_t bytes_to_send = bytes_read;
+            ssize_t bytes_written;
+            do {
+                bytes_written = TEMP_FAILURE_RETRY(write(STDOUT_FILENO,
+                                                        buffer + bytes_read - bytes_to_send,
+                                                        bytes_to_send));
+                if (bytes_written == -1) {
+                    printf("Failed to write data to stdout: read %zd, trying to send %zd (%s)\n",
+                        bytes_read, bytes_to_send, strerror(errno));
+                    return 1;
+                }
+                bytes_to_send -= bytes_written;
+            } while (bytes_written != 0 && bytes_to_send > 0);
+            if (show_progress && (read_count % 16 == 0)) {
+                android::base::WriteStringToFd(".", STDERR_FILENO);
+            }
+        } else {
+            // Writes line by line.
+            for (int i = 0; i < bytes_read; i++) {
+                char c = buffer[i];
+                line.append(1, c);
+                if (c == '\n') {
+                    write_line(line, show_progress);
+                    line.clear();
+                }
             }
         }
     }
-    // Process final line, in case it didn't finish with newline
-    write_line(line, show_progress);
 
+    // Process final line, in case it didn't finish with newline
+    if (stream_data) {
+        if (show_progress) {
+            android::base::WriteStringToFd("done\n", STDERR_FILENO);
+        }
+    } else {
+        write_line(line, show_progress);
+    }
     return EXIT_SUCCESS;
 }
