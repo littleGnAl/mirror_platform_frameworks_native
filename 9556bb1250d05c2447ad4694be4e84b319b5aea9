@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437dcffe_a7b54673",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-29T23:20:54Z",
+      "side": 1,
+      "message": "oof, I should not have been making copies of these before (and I should have made them String16). I\u0027ll follow-up.",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 11
+      },
+      "revId": "9556bb1250d05c2447ad4694be4e84b319b5aea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dbb9053_e227013c",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-29T23:20:54Z",
+      "side": 1,
+      "message": "for future compatibility/as a general principle for optional, it seems like if there is an error, we should return false, and prefer to return true from L101 (or assert there is a value when true is set)?",
+      "range": {
+        "startLine": 130,
+        "startChar": 71,
+        "endLine": 130,
+        "endChar": 75
+      },
+      "revId": "9556bb1250d05c2447ad4694be4e84b319b5aea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
