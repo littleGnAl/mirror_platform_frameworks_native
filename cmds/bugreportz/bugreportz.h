@@ -19,4 +19,6 @@
 // Ownership of the socket is not transferred.
 int bugreportz(int s, bool show_progress);
 
+int bugreportz_stream(int s, bool show_progress);
+
 #endif  // BUGREPORTZ_H

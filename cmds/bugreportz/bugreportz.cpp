@@ -70,6 +70,39 @@ int bugreportz(int s, bool show_progress) {
     }
     // Process final line, in case it didn't finish with newline
     write_line(line, show_progress);
+    return EXIT_SUCCESS;
+}
 
+int bugreportz_stream(int s, bool show_progress) {
+    // Print dot per indicator_mod read/write, 64k * 16 = 1MB per dot at most.
+    const int indicator_mod = 16;
+    int count = 0;
+    while (1) {
+        char buffer[65536];
+        ssize_t bytes_read = TEMP_FAILURE_RETRY(read(s, buffer, sizeof(buffer)));
+        if (bytes_read == 0) {
+            break;
+        } else if (bytes_read == -1) {
+            // EAGAIN really means time out, so change the errno.
+            if (errno == EAGAIN) {
+                errno = ETIMEDOUT;
+            }
+            printf("FAIL:Bugreport read terminated abnormally (%s)\n", strerror(errno));
+            return EXIT_FAILURE;
+        }
+        count++;
+
+        if (!android::base::WriteFully(android::base::borrowed_fd(STDOUT_FILENO), buffer, bytes_read)) {
+            printf("Failed to write data to stdout: trying to send %zd (%s)\n",
+                bytes_read, strerror(errno));
+            return 1;
+        }
+        if (show_progress && (count % indicator_mod == 0)) {
+            android::base::WriteStringToFd(".", STDERR_FILENO);
+        }
+    }
+    if (show_progress) {
+        android::base::WriteStringToFd("done\n", STDERR_FILENO);
+    }
     return EXIT_SUCCESS;
 }
