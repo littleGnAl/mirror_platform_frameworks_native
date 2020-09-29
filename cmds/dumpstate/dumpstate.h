@@ -388,12 +388,11 @@ class Dumpstate {
      * Structure to hold options that determine the behavior of dumpstate.
      */
     struct DumpOptions {
-        bool do_add_date = false;
-        bool do_zip_file = false;
         bool do_vibrate = true;
-        // Writes bugreport content to a socket; only flatfile format is supported.
-        bool use_socket = false;
-        bool use_control_socket = false;
+        // Writes bugreport zipped file to a socket.
+        bool stream_to_socket = false;
+        // Writes generation progress updates to a socket.
+        bool progress_updates_to_socket = false;
         bool do_screenshot = false;
         bool is_screenshot_copied = false;
         bool is_remote_mode = false;
@@ -434,13 +433,6 @@ class Dumpstate {
         /* Returns true if the options set so far are consistent. */
         bool ValidateOptions() const;
 
-        /* Returns if options specified require writing bugreport to a file */
-        bool OutputToFile() const {
-            // If we are not writing to socket, we will write to a file. If bugreport_fd is
-            // specified, it is preferred. If not bugreport is written to /bugreports.
-            return !use_socket;
-        }
-
         /* Returns if options specified require writing to custom file location */
         bool OutputToCustomFile() {
             // Custom location is only honored in limited mode.
@@ -466,7 +458,8 @@ class Dumpstate {
 
     std::unique_ptr<Progress> progress_;
 
-    // When set, defines a socket file-descriptor use to report progress to bugreportz.
+    // When set, defines a socket file-descriptor use to report progress to bugreportz
+    // or to stream the zipped file to.
     int control_socket_fd_ = -1;
 
     // Bugreport format version;
@@ -478,8 +471,8 @@ class Dumpstate {
     // `bugreport-BUILD_ID`.
     std::string base_name_;
 
-    // Name is the suffix part of the bugreport files - it's typically the date (when invoked with
-    // `-d`), but it could be changed by the user..
+    // Name is the suffix part of the bugreport files - it's typically the date,
+    // but it could be changed by the user..
     std::string name_;
 
     std::string bugreport_internal_dir_ = DUMPSTATE_DIRECTORY;
