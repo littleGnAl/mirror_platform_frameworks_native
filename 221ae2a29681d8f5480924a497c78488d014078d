@@ -213,6 +213,30 @@
       "revId": "221ae2a29681d8f5480924a497c78488d014078d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39d50e3_7baefc96",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-29T17:01:24Z",
+      "side": 1,
+      "message": "Oh, if that\u0027s the case, let me wait until you have moved the changes here. Otherwise, merging this in master will cause more work for you.",
+      "parentUuid": "369bf74c_15c7bbe4",
+      "range": {
+        "startLine": 1309,
+        "startChar": 12,
+        "endLine": 1309,
+        "endChar": 21
+      },
+      "revId": "221ae2a29681d8f5480924a497c78488d014078d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
