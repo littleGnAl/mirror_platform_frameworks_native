@@ -118,6 +118,30 @@
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2a71fa_40f7a090",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2020-09-29T01:05:24Z",
+      "side": 1,
+      "message": "Yes, there is a ringbuffer to store nfc snoop log and it will dump to bugreport. Now we would like to backup the buffer to another file when buffer is full. There will be no duplication. We will clear the buffer when we backup the log successfully.",
+      "parentUuid": "2720b941_28ef613a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
