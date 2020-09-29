@@ -392,7 +392,7 @@ class Dumpstate {
         bool do_zip_file = false;
         bool do_vibrate = true;
         // Writes bugreport content to a socket; only flatfile format is supported.
-        bool use_socket = false;
+        bool do_stream_zip_file = false;
         bool use_control_socket = false;
         bool do_screenshot = false;
         bool is_screenshot_copied = false;
@@ -438,7 +438,7 @@ class Dumpstate {
         bool OutputToFile() const {
             // If we are not writing to socket, we will write to a file. If bugreport_fd is
             // specified, it is preferred. If not bugreport is written to /bugreports.
-            return !use_socket;
+            return !do_stream_zip_file;
         }
 
         /* Returns if options specified require writing to custom file location */
