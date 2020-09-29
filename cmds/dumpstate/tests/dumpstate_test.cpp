@@ -176,10 +176,8 @@ TEST_F(DumpOptionsTest, InitializeNone) {
 
     EXPECT_EQ(status, Dumpstate::RunStatus::OK);
 
-    EXPECT_FALSE(options_.do_add_date);
-    EXPECT_FALSE(options_.do_zip_file);
     EXPECT_EQ("", options_.out_dir);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_FALSE(options_.use_control_socket);
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_TRUE(options_.do_vibrate);
@@ -195,16 +193,12 @@ TEST_F(DumpOptionsTest, InitializeAdbBugreport) {
     char* argv[] = {
         const_cast<char*>("dumpstatez"),
         const_cast<char*>("-S"),
-        const_cast<char*>("-d"),
-        const_cast<char*>("-z"),
     };
     // clang-format on
 
     Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
 
     EXPECT_EQ(status, Dumpstate::RunStatus::OK);
-    EXPECT_TRUE(options_.do_add_date);
-    EXPECT_TRUE(options_.do_zip_file);
     EXPECT_TRUE(options_.use_control_socket);
 
     // Other options retain default values
@@ -213,7 +207,7 @@ TEST_F(DumpOptionsTest, InitializeAdbBugreport) {
     EXPECT_FALSE(options_.do_screenshot);
     EXPECT_FALSE(options_.do_progress_updates);
     EXPECT_FALSE(options_.is_remote_mode);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_FALSE(options_.limited_only);
     EXPECT_EQ(options_.dumpstate_hal_mode, DumpstateMode::DEFAULT);
 }
@@ -229,12 +223,10 @@ TEST_F(DumpOptionsTest, InitializeAdbShellBugreport) {
     Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
 
     EXPECT_EQ(status, Dumpstate::RunStatus::OK);
-    EXPECT_TRUE(options_.use_socket);
+    EXPECT_TRUE(options_.do_stream_zip_file);
 
     // Other options retain default values
     EXPECT_TRUE(options_.do_vibrate);
-    EXPECT_FALSE(options_.do_add_date);
-    EXPECT_FALSE(options_.do_zip_file);
     EXPECT_FALSE(options_.use_control_socket);
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_FALSE(options_.do_screenshot);
@@ -246,9 +238,7 @@ TEST_F(DumpOptionsTest, InitializeAdbShellBugreport) {
 
 TEST_F(DumpOptionsTest, InitializeFullBugReport) {
     options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_FULL, fd, fd, true);
-    EXPECT_TRUE(options_.do_add_date);
     EXPECT_TRUE(options_.do_screenshot);
-    EXPECT_TRUE(options_.do_zip_file);
     EXPECT_EQ(options_.dumpstate_hal_mode, DumpstateMode::FULL);
 
     // Other options retain default values
@@ -257,14 +247,12 @@ TEST_F(DumpOptionsTest, InitializeFullBugReport) {
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_FALSE(options_.do_progress_updates);
     EXPECT_FALSE(options_.is_remote_mode);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_FALSE(options_.limited_only);
 }
 
 TEST_F(DumpOptionsTest, InitializeInteractiveBugReport) {
     options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE, fd, fd, true);
-    EXPECT_TRUE(options_.do_add_date);
-    EXPECT_TRUE(options_.do_zip_file);
     EXPECT_TRUE(options_.do_progress_updates);
     EXPECT_TRUE(options_.do_screenshot);
     EXPECT_EQ(options_.dumpstate_hal_mode, DumpstateMode::INTERACTIVE);
@@ -274,14 +262,12 @@ TEST_F(DumpOptionsTest, InitializeInteractiveBugReport) {
     EXPECT_FALSE(options_.use_control_socket);
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_FALSE(options_.is_remote_mode);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_FALSE(options_.limited_only);
 }
 
 TEST_F(DumpOptionsTest, InitializeRemoteBugReport) {
     options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_REMOTE, fd, fd, false);
-    EXPECT_TRUE(options_.do_add_date);
-    EXPECT_TRUE(options_.do_zip_file);
     EXPECT_TRUE(options_.is_remote_mode);
     EXPECT_FALSE(options_.do_vibrate);
     EXPECT_FALSE(options_.do_screenshot);
@@ -291,15 +277,13 @@ TEST_F(DumpOptionsTest, InitializeRemoteBugReport) {
     EXPECT_FALSE(options_.use_control_socket);
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_FALSE(options_.do_progress_updates);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_FALSE(options_.limited_only);
 }
 
 TEST_F(DumpOptionsTest, InitializeWearBugReport) {
     options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_WEAR, fd, fd, true);
-    EXPECT_TRUE(options_.do_add_date);
     EXPECT_TRUE(options_.do_screenshot);
-    EXPECT_TRUE(options_.do_zip_file);
     EXPECT_TRUE(options_.do_progress_updates);
     EXPECT_EQ(options_.dumpstate_hal_mode, DumpstateMode::WEAR);
 
@@ -308,15 +292,13 @@ TEST_F(DumpOptionsTest, InitializeWearBugReport) {
     EXPECT_FALSE(options_.use_control_socket);
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_FALSE(options_.is_remote_mode);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_FALSE(options_.limited_only);
 }
 
 TEST_F(DumpOptionsTest, InitializeTelephonyBugReport) {
     options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_TELEPHONY, fd, fd, false);
-    EXPECT_TRUE(options_.do_add_date);
     EXPECT_FALSE(options_.do_screenshot);
-    EXPECT_TRUE(options_.do_zip_file);
     EXPECT_TRUE(options_.telephony_only);
     EXPECT_TRUE(options_.do_progress_updates);
     EXPECT_EQ(options_.dumpstate_hal_mode, DumpstateMode::CONNECTIVITY);
@@ -326,15 +308,13 @@ TEST_F(DumpOptionsTest, InitializeTelephonyBugReport) {
     EXPECT_FALSE(options_.use_control_socket);
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_FALSE(options_.is_remote_mode);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_FALSE(options_.limited_only);
 }
 
 TEST_F(DumpOptionsTest, InitializeWifiBugReport) {
     options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_WIFI, fd, fd, false);
-    EXPECT_TRUE(options_.do_add_date);
     EXPECT_FALSE(options_.do_screenshot);
-    EXPECT_TRUE(options_.do_zip_file);
     EXPECT_TRUE(options_.wifi_only);
     EXPECT_EQ(options_.dumpstate_hal_mode, DumpstateMode::WIFI);
 
@@ -344,7 +324,7 @@ TEST_F(DumpOptionsTest, InitializeWifiBugReport) {
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_FALSE(options_.do_progress_updates);
     EXPECT_FALSE(options_.is_remote_mode);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_FALSE(options_.limited_only);
 }
 
@@ -353,8 +333,6 @@ TEST_F(DumpOptionsTest, InitializeLimitedOnlyBugreport) {
     char* argv[] = {
         const_cast<char*>("dumpstatez"),
         const_cast<char*>("-S"),
-        const_cast<char*>("-d"),
-        const_cast<char*>("-z"),
         const_cast<char*>("-q"),
         const_cast<char*>("-L"),
         const_cast<char*>("-o abc")
@@ -364,8 +342,6 @@ TEST_F(DumpOptionsTest, InitializeLimitedOnlyBugreport) {
     Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
 
     EXPECT_EQ(status, Dumpstate::RunStatus::OK);
-    EXPECT_TRUE(options_.do_add_date);
-    EXPECT_TRUE(options_.do_zip_file);
     EXPECT_TRUE(options_.use_control_socket);
     EXPECT_FALSE(options_.do_vibrate);
     EXPECT_TRUE(options_.limited_only);
@@ -376,7 +352,7 @@ TEST_F(DumpOptionsTest, InitializeLimitedOnlyBugreport) {
     EXPECT_FALSE(options_.do_screenshot);
     EXPECT_FALSE(options_.do_progress_updates);
     EXPECT_FALSE(options_.is_remote_mode);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_EQ(options_.dumpstate_hal_mode, DumpstateMode::DEFAULT);
 }
 
@@ -385,17 +361,13 @@ TEST_F(DumpOptionsTest, InitializeDefaultBugReport) {
     // clang-format off
     char* argv[] = {
         const_cast<char*>("bugreport"),
-        const_cast<char*>("-d"),
         const_cast<char*>("-p"),
-        const_cast<char*>("-z"),
     };
     // clang-format on
     Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
 
     EXPECT_EQ(status, Dumpstate::RunStatus::OK);
-    EXPECT_TRUE(options_.do_add_date);
     EXPECT_TRUE(options_.do_screenshot);
-    EXPECT_TRUE(options_.do_zip_file);
     EXPECT_EQ(options_.dumpstate_hal_mode, DumpstateMode::DEFAULT);
 
     // Other options retain default values
@@ -404,7 +376,7 @@ TEST_F(DumpOptionsTest, InitializeDefaultBugReport) {
     EXPECT_FALSE(options_.show_header_only);
     EXPECT_FALSE(options_.do_progress_updates);
     EXPECT_FALSE(options_.is_remote_mode);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_FALSE(options_.wifi_only);
     EXPECT_FALSE(options_.limited_only);
 }
@@ -413,8 +385,6 @@ TEST_F(DumpOptionsTest, InitializePartial1) {
     // clang-format off
     char* argv[] = {
         const_cast<char*>("dumpstate"),
-        const_cast<char*>("-d"),
-        const_cast<char*>("-z"),
         const_cast<char*>("-s"),
         const_cast<char*>("-S"),
 
@@ -424,10 +394,8 @@ TEST_F(DumpOptionsTest, InitializePartial1) {
     Dumpstate::RunStatus status = options_.Initialize(ARRAY_SIZE(argv), argv);
 
     EXPECT_EQ(status, Dumpstate::RunStatus::OK);
-    EXPECT_TRUE(options_.do_add_date);
-    EXPECT_TRUE(options_.do_zip_file);
     // TODO: Maybe we should trim the filename
-    EXPECT_TRUE(options_.use_socket);
+    EXPECT_TRUE(options_.do_stream_zip_file);
     EXPECT_TRUE(options_.use_control_socket);
 
     // Other options retain default values
@@ -462,9 +430,7 @@ TEST_F(DumpOptionsTest, InitializePartial2) {
     EXPECT_TRUE(options_.is_remote_mode);
 
     // Other options retain default values
-    EXPECT_FALSE(options_.do_add_date);
-    EXPECT_FALSE(options_.do_zip_file);
-    EXPECT_FALSE(options_.use_socket);
+    EXPECT_FALSE(options_.do_stream_zip_file);
     EXPECT_FALSE(options_.use_control_socket);
     EXPECT_FALSE(options_.limited_only);
     EXPECT_EQ(options_.dumpstate_hal_mode, DumpstateMode::DEFAULT);
@@ -498,40 +464,31 @@ TEST_F(DumpOptionsTest, InitializeUnknown) {
     EXPECT_EQ(status, Dumpstate::RunStatus::INVALID_INPUT);
 }
 
-TEST_F(DumpOptionsTest, ValidateOptionsNeedOutfile1) {
-    options_.do_zip_file = true;
-    // Writing to socket = !writing to file.
-    options_.use_socket = true;
+TEST_F(DumpOptionsTest, ValidateOptionsSocketUsage1) {
+    options_.use_control_socket = true;
+    options_.do_stream_zip_file = true;
     EXPECT_FALSE(options_.ValidateOptions());
 
-    options_.use_socket = false;
+    options_.do_stream_zip_file = false;
     EXPECT_TRUE(options_.ValidateOptions());
 }
 
-TEST_F(DumpOptionsTest, ValidateOptionsNeedOutfile2) {
+TEST_F(DumpOptionsTest, ValidateOptionsSocketUsage2) {
     options_.do_progress_updates = true;
     // Writing to socket = !writing to file.
-    options_.use_socket = true;
+    options_.do_stream_zip_file = true;
     EXPECT_FALSE(options_.ValidateOptions());
 
-    options_.use_socket = false;
-    EXPECT_TRUE(options_.ValidateOptions());
-}
-
-TEST_F(DumpOptionsTest, ValidateOptionsNeedZipfile) {
-    options_.use_control_socket = true;
-    EXPECT_FALSE(options_.ValidateOptions());
-
-    options_.do_zip_file = true;
+    options_.do_stream_zip_file = false;
     EXPECT_TRUE(options_.ValidateOptions());
 }
 
 TEST_F(DumpOptionsTest, ValidateOptionsRemoteMode) {
+    options_.do_progress_updates = true;
     options_.is_remote_mode = true;
     EXPECT_FALSE(options_.ValidateOptions());
 
-    options_.do_zip_file = true;
-    options_.do_add_date = true;
+    options_.do_progress_updates = false;
     EXPECT_TRUE(options_.ValidateOptions());
 }
 
@@ -1018,21 +975,11 @@ TEST_F(DumpstateTest, DumpFileUpdateProgress) {
     ds.listener_.clear();
 }
 
-TEST_F(DumpstateTest, DumpPool_withOutputToFileAndParallelRunEnabled_notNull) {
-    ds.options_->use_socket = false;
+TEST_F(DumpstateTest, DumpPool_withParallelRunEnabled_notNull) {
     SetParallelRun(true);
     EnableParallelRunIfNeeded();
-    EXPECT_TRUE(ds.options_->OutputToFile());
     EXPECT_TRUE(ds.zip_entry_tasks_);
     EXPECT_TRUE(ds.dump_pool_);
-}
-
-TEST_F(DumpstateTest, DumpPool_withNotOutputToFile_isNull) {
-    ds.options_->use_socket = true;
-    EnableParallelRunIfNeeded();
-    EXPECT_FALSE(ds.options_->OutputToFile());
-    EXPECT_FALSE(ds.zip_entry_tasks_);
-    EXPECT_FALSE(ds.dump_pool_);
 }
 
 TEST_F(DumpstateTest, DumpPool_withParallelRunDisabled_isNull) {
