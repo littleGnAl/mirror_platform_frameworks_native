@@ -388,11 +388,9 @@ class Dumpstate {
      * Structure to hold options that determine the behavior of dumpstate.
      */
     struct DumpOptions {
-        bool do_add_date = false;
-        bool do_zip_file = false;
         bool do_vibrate = true;
         // Writes bugreport content to a socket; only flatfile format is supported.
-        bool use_socket = false;
+        bool do_stream_zip_file = false;
         bool use_control_socket = false;
         bool do_screenshot = false;
         bool is_screenshot_copied = false;
@@ -438,7 +436,7 @@ class Dumpstate {
         bool OutputToFile() const {
             // If we are not writing to socket, we will write to a file. If bugreport_fd is
             // specified, it is preferred. If not bugreport is written to /bugreports.
-            return !use_socket;
+            return !do_stream_zip_file;
         }
 
         /* Returns if options specified require writing to custom file location */
@@ -478,8 +476,8 @@ class Dumpstate {
     // `bugreport-BUILD_ID`.
     std::string base_name_;
 
-    // Name is the suffix part of the bugreport files - it's typically the date (when invoked with
-    // `-d`), but it could be changed by the user..
+    // Name is the suffix part of the bugreport files - it's typically the date,
+    // but it could be changed by the user..
     std::string name_;
 
     std::string bugreport_internal_dir_ = DUMPSTATE_DIRECTORY;
