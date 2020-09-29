@@ -2276,12 +2276,22 @@ static void PrepareToWriteToFile() {
         ds.tmp_path_.c_str(), ds.screenshot_path_.c_str());
 
     if (ds.options_->do_zip_file) {
-        ds.path_ = ds.GetPath(ds.CalledByApi() ? "-zip.tmp" : ".zip");
-        MYLOGD("Creating initial .zip file (%s)\n", ds.path_.c_str());
-        create_parent_dirs(ds.path_.c_str());
-        ds.zip_file.reset(fopen(ds.path_.c_str(), "wb"));
+        FILE *fp;
+        if (ds.options_->use_socket) {
+            fp = fdopen(dup(open_socket("dumpstate")), "wb");
+        } else {
+            ds.path_ = ds.GetPath(ds.CalledByApi() ? "-zip.tmp" : ".zip");
+            MYLOGD("Creating initial .zip file (%s)\n", ds.path_.c_str());
+            create_parent_dirs(ds.path_.c_str());
+            fp = fopen(ds.path_.c_str(), "wb");
+        }
+        ds.zip_file.reset(fp);
         if (ds.zip_file == nullptr) {
-            MYLOGE("fopen(%s, 'wb'): %s\n", ds.path_.c_str(), strerror(errno));
+            if (ds.options_->use_socket) {
+                MYLOGE("fdopen(dup(open_socket(\"dumpstate\")), 'wb'): %s\n", strerror(errno));
+            } else {
+                MYLOGE("fopen(%s, 'wb'): %s\n", ds.path_.c_str(), strerror(errno));
+            }
         } else {
             ds.zip_writer_.reset(new ZipWriter(ds.zip_file.get()));
         }
@@ -2469,10 +2479,6 @@ bool Dumpstate::DumpOptions::ValidateOptions() const {
         return false;
     }
 
-    if ((do_zip_file || do_add_date || do_progress_updates) && !OutputToFile()) {
-        return false;
-    }
-
     if (use_control_socket && !do_zip_file) {
         return false;
     }
@@ -2594,14 +2600,9 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     MYLOGD("dumpstate calling_uid = %d ; calling package = %s \n",
             calling_uid, calling_package.c_str());
 
-    // Redirect output if needed
-    bool is_redirecting = options_->OutputToFile();
-
     // TODO: temporarily set progress until it's part of the Dumpstate constructor
     std::string stats_path =
-        is_redirecting
-            ? android::base::StringPrintf("%s/dumpstate-stats.txt", bugreport_internal_dir_.c_str())
-            : "";
+        android::base::StringPrintf("%s/dumpstate-stats.txt", bugreport_internal_dir_.c_str());
     progress_.reset(new Progress(stats_path));
 
     if (acquire_wake_lock(PARTIAL_WAKE_LOCK, WAKE_LOCK_NAME) < 0) {
@@ -2633,11 +2634,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
 
     // If we are going to use a socket, do it as early as possible
     // to avoid timeouts from bugreport.
-    if (options_->use_socket) {
-        if (!redirect_to_socket(stdout, "dumpstate")) {
-            return ERROR;
-        }
-    }
+    PrepareToWriteToFile();
 
     if (options_->use_control_socket) {
         MYLOGD("Opening control socket\n");
@@ -2648,20 +2645,18 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         options_->do_progress_updates = 1;
     }
 
-    if (is_redirecting) {
-        PrepareToWriteToFile();
-
-        if (options_->do_progress_updates) {
-            // clang-format off
-            std::vector<std::string> am_args = {
-                 "--receiver-permission", "android.permission.DUMP",
-            };
-            // clang-format on
-            // Send STARTED broadcast for apps that listen to bugreport generation events
-            SendBroadcast("com.android.internal.intent.action.BUGREPORT_STARTED", am_args);
-            if (options_->use_control_socket) {
-                dprintf(control_socket_fd_, "BEGIN:%s\n", path_.c_str());
-            }
+    // Interactive, wear & telephony modes are default to true.
+    // and may enable from cli option or when using control socket
+    if (options_->do_progress_updates) {
+        // clang-format off
+        std::vector<std::string> am_args = {
+                "--receiver-permission", "android.permission.DUMP",
+        };
+        // clang-format on
+        // Send STARTED broadcast for apps that listen to bugreport generation events
+        SendBroadcast("com.android.internal.intent.action.BUGREPORT_STARTED", am_args);
+        if (options_->use_control_socket) {
+            dprintf(control_socket_fd_, "BEGIN:%s\n", path_.c_str());
         }
     }
 
@@ -2685,31 +2680,29 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
 
     int dup_stdout_fd;
     int dup_stderr_fd;
-    if (is_redirecting) {
-        // Redirect stderr to log_path_ for debugging.
-        TEMP_FAILURE_RETRY(dup_stderr_fd = dup(fileno(stderr)));
-        if (!redirect_to_file(stderr, const_cast<char*>(log_path_.c_str()))) {
-            return ERROR;
-        }
-        if (chown(log_path_.c_str(), AID_SHELL, AID_SHELL)) {
-            MYLOGE("Unable to change ownership of dumpstate log file %s: %s\n", log_path_.c_str(),
-                   strerror(errno));
-        }
+    // Redirect stderr to log_path_ for debugging.
+    TEMP_FAILURE_RETRY(dup_stderr_fd = dup(fileno(stderr)));
+    if (!redirect_to_file(stderr, const_cast<char*>(log_path_.c_str()))) {
+        return ERROR;
+    }
+    if (chown(log_path_.c_str(), AID_SHELL, AID_SHELL)) {
+        MYLOGE("Unable to change ownership of dumpstate log file %s: %s\n", log_path_.c_str(),
+                strerror(errno));
+    }
 
-        // Redirect stdout to tmp_path_. This is the main bugreport entry and will be
-        // moved into zip file later, if zipping.
-        TEMP_FAILURE_RETRY(dup_stdout_fd = dup(fileno(stdout)));
-        // TODO: why not write to a file instead of stdout to overcome this problem?
-        /* TODO: rather than generating a text file now and zipping it later,
-           it would be more efficient to redirect stdout to the zip entry
-           directly, but the libziparchive doesn't support that option yet. */
-        if (!redirect_to_file(stdout, const_cast<char*>(tmp_path_.c_str()))) {
-            return ERROR;
-        }
-        if (chown(tmp_path_.c_str(), AID_SHELL, AID_SHELL)) {
-            MYLOGE("Unable to change ownership of temporary bugreport file %s: %s\n",
-                   tmp_path_.c_str(), strerror(errno));
-        }
+    // Redirect stdout to tmp_path_. This is the main bugreport entry and will be
+    // moved into zip file later, if zipping.
+    TEMP_FAILURE_RETRY(dup_stdout_fd = dup(fileno(stdout)));
+    // TODO: why not write to a file instead of stdout to overcome this problem?
+    /* TODO: rather than generating a text file now and zipping it later,
+        it would be more efficient to redirect stdout to the zip entry
+        directly, but the libziparchive doesn't support that option yet. */
+    if (!redirect_to_file(stdout, const_cast<char*>(tmp_path_.c_str()))) {
+        return ERROR;
+    }
+    if (chown(tmp_path_.c_str(), AID_SHELL, AID_SHELL)) {
+        MYLOGE("Unable to change ownership of temporary bugreport file %s: %s\n",
+                tmp_path_.c_str(), strerror(errno));
     }
 
     // Don't buffer stdout
@@ -2757,14 +2750,10 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     }
 
     /* close output if needed */
-    if (is_redirecting) {
-        TEMP_FAILURE_RETRY(dup2(dup_stdout_fd, fileno(stdout)));
-    }
+    TEMP_FAILURE_RETRY(dup2(dup_stdout_fd, fileno(stdout)));
 
     // Zip the (now complete) .tmp file within the internal directory.
-    if (options_->OutputToFile()) {
-        FinalizeFile();
-    }
+    FinalizeFile();
 
     // Share the final file with the caller if the user has consented or Shell is the caller.
     Dumpstate::RunStatus status = Dumpstate::RunStatus::OK;
@@ -2807,9 +2796,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     progress_->Save();
     MYLOGI("done (id %d)\n", id_);
 
-    if (is_redirecting) {
-        TEMP_FAILURE_RETRY(dup2(dup_stderr_fd, fileno(stderr)));
-    }
+    TEMP_FAILURE_RETRY(dup2(dup_stderr_fd, fileno(stderr)));
 
     if (options_->use_control_socket && control_socket_fd_ != -1) {
         MYLOGD("Closing control socket\n");
