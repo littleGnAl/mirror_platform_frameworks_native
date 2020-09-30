@@ -16,6 +16,23 @@
       "revId": "5b45c3b9ae5229ddc8075f891ee4d4e896118789",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7371141d_0e247eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2020-09-30T18:08:33Z",
+      "side": 1,
+      "message": "I don\u0027t quite buy this. There should be no large malloc-sourced allocations involved here.",
+      "revId": "5b45c3b9ae5229ddc8075f891ee4d4e896118789",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
