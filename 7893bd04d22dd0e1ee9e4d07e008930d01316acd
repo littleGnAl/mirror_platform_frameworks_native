@@ -197,6 +197,30 @@
     },
     {
       "key": {
+        "uuid": "7aa2be10_f0543dd7",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-30T16:58:55Z",
+      "side": 1,
+      "message": "I did a bit more research on this last night and discovered the pseudo-code above was basically correct. I found a few very similar loops in Android code and also some good online references:\n* https://android.googlesource.com/platform/external/jemalloc_new/+/refs/heads/master/include/jemalloc/internal/prng.h#75\n* https://preshing.com/20150402/you-can-do-any-kind-of-atomic-read-modify-write-operation/\n* https://www.threadingbuildingblocks.org/docs/help/tbb_userguide/Design_Patterns/Compare_and_Swap_Loop.html.\n\nI could still rewrite this CL to use a CAS loop, or submit another one later.",
+      "parentUuid": "8dcbe3be_b4d1bff3",
+      "range": {
+        "startLine": 104,
+        "startChar": 36,
+        "endLine": 104,
+        "endChar": 58
+      },
+      "revId": "7893bd04d22dd0e1ee9e4d07e008930d01316acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1639a447_9b37574d",
         "filename": "libs/binder/ndk/ibinder_internal.h",
         "patchSetId": 1
