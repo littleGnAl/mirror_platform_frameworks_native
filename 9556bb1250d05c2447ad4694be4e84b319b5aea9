@@ -69,6 +69,30 @@
       "revId": "9556bb1250d05c2447ad4694be4e84b319b5aea9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17e4649_fc482563",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-30T00:34:34Z",
+      "side": 1,
+      "message": "also true (true means successful association). L104 means something really complicated now: \"no result, but if arg \u0027set\u0027 is true, it means success\". In other words, L130 encodes the fact that associteClassInternal always succeeds when \u0027set\u0027 is true, but it this assumption isn\u0027t necessary.\n\nAnyway, it doesn\u0027t matter that much. I can also change it when I switch String8 -\u003e String16, if you don\u0027t want to mess with it.",
+      "parentUuid": "1bef7f76_6e9c78e2",
+      "range": {
+        "startLine": 130,
+        "startChar": 71,
+        "endLine": 130,
+        "endChar": 75
+      },
+      "revId": "9556bb1250d05c2447ad4694be4e84b319b5aea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
