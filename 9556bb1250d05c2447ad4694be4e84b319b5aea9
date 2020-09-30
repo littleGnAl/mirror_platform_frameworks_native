@@ -45,6 +45,30 @@
       "revId": "9556bb1250d05c2447ad4694be4e84b319b5aea9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bef7f76_6e9c78e2",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-09-30T00:26:26Z",
+      "side": 1,
+      "message": "If I understand correctly, you\u0027re saying that associateClassInternal should return true when it sets mClazz to clazz? What\u0027s the return value for L79?",
+      "parentUuid": "0dbb9053_e227013c",
+      "range": {
+        "startLine": 130,
+        "startChar": 71,
+        "endLine": 130,
+        "endChar": 75
+      },
+      "revId": "9556bb1250d05c2447ad4694be4e84b319b5aea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
