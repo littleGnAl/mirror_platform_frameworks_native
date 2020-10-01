@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a624c12_6e103602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-01T00:35:32Z",
+      "side": 1,
+      "message": "Test added for NDK \u003c-\u003e Rust in the process.",
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
