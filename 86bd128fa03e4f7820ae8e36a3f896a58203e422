@@ -33,6 +33,24 @@
       "revId": "86bd128fa03e4f7820ae8e36a3f896a58203e422",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f50af5ae_90f7eecf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2020-10-01T13:13:52Z",
+      "side": 1,
+      "message": "Yes, we unfortunately noticed this issue too late, but there will be a fix coming out for this later this year. I\u0027ll see if I can get the change moved to this branch and CC you.",
+      "parentUuid": "3e0eed43_bdf1ea9e",
+      "revId": "86bd128fa03e4f7820ae8e36a3f896a58203e422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
