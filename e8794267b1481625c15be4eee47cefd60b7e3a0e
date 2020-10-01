@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "c4b1f55d_c7c0c49c",
+        "filename": "libs/binder/rust/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-01T22:55:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9abce66a_109c7ad5",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fb5c74e_e201cbfa",
         "filename": "libs/binder/rust/tests/binderRustNDKInteropTest.cpp",
         "patchSetId": 2
@@ -53,6 +77,30 @@
       "writtenOn": "2020-10-01T21:24:39Z",
       "side": 1,
       "message": "this doesn\u0027t try to associate the NdkServer type with this type.\n\nAm I correct to understand:\n- this is already associated with the rust type\n- associating the NdkServer type would fail\n\nIf so, we\u0027ll need a similar fix in the NDK backend.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50b3be26_fbed89d0",
+        "filename": "libs/binder/rust/tests/binderRustNDKInteropTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-01T22:55:12Z",
+      "side": 1,
+      "message": "That\u0027s correct. We can\u0027t call the AIDL-generated fromBinder() on this binder object, as the association will fail. This will need to get fixed in the NDK AIDL backend. However, we may need to take a different approach, see my comment on integration.rs.",
+      "parentUuid": "9fb5c74e_e201cbfa",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "95f8b544_7bf8f71a",
+        "filename": "libs/binder/rust/tests/binderRustNDKInteropTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-01T22:55:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa26394b_7e56e26e",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 30
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13050d53_5aa2e773",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 2
@@ -99,6 +171,30 @@
       "writtenOn": "2020-10-01T21:24:39Z",
       "side": 1,
       "message": "do we have a test that this fails if it is in fact a different type?",
+      "range": {
+        "startLine": 451,
+        "startChar": 54,
+        "endLine": 451,
+        "endChar": 62
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c812268d_d97fa926",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-01T22:55:12Z",
+      "side": 1,
+      "message": "This will never fail if the service is the wrong type. Instead, any method call _should_ fail when the interface class is checked on the service side.\n\nHowever, I just realized an issue. I was forgetting who controls the interface token for the parcel. AIBinder_prepareTransaction writes the interface token to the parcel based on the currently associated class (which is NOT the class we were trying to use it as). What we really want is for the NDK to create us a new ABpBinder with the new, desired class if it differs from the currently associated class for an ABBinder.",
+      "parentUuid": "13050d53_5aa2e773",
       "range": {
         "startLine": 451,
         "startChar": 54,
