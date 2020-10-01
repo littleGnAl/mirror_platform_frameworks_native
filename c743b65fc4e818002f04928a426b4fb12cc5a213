@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "351c925c_ede7ae67",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-01T16:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bc70b42_220f02b2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5093c91_0544a6a5",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-09T21:25:52Z",
       "side": 1,
       "message": "were you hitting this btw? It should be automatically unlinked if the binder is deallocated",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 53
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e48a01_bc772923",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-01T16:49:40Z",
+      "side": 1,
+      "message": "Yes. If I remove this, I see a memory leak of about 1MB every 50-100k iterations. Which is fast enough of a leak that we would OOM libfuzzer on default settings.",
+      "parentUuid": "b5093c91_0544a6a5",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "39d4d7f6_1a9e60ec",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-01T16:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a46efc2_c7bd9bc7",
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eac41a22_90b3d052",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
         "patchSetId": 6
@@ -85,6 +151,30 @@
       "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df0915a_2110fecd",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-01T16:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eac41a22_90b3d052",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "44f48f6c_23e3454a",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-01T16:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "143b68da_6364098e",
+      "range": {
+        "startLine": 72,
+        "startChar": 19,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1579f79_ff7a6a41",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
         "patchSetId": 6
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "641b13c2_5ecb30b9",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-01T16:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1579f79_ff7a6a41",
+      "range": {
+        "startLine": 76,
+        "startChar": 38,
+        "endLine": 76,
+        "endChar": 49
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e438401e_111be5fc",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
         "patchSetId": 6
@@ -154,6 +292,30 @@
       "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e849d088_4d93deb1",
+        "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-01T16:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e438401e_111be5fc",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
