@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0568a1a6_89a60f48",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-10-02T19:40:55Z",
+      "side": 1,
+      "message": "With the change on L102, the optional should always have a value here. You mentioned adding an assert (on has_value()) in the other CL, could do it that way.",
+      "revId": "da637a9992c808ec39153e34d2a02e75f25eaec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
