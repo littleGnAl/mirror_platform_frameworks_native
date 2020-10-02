@@ -1,0 +1,15 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Open-Source-Licensing+1: Yinchu Chen <chenyc5@motorola.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Hung-ying Tyan <tyanh@google.com>
+Code-Review+1: Jeff Sharkey <jsharkey@google.com>
+Code-Review+1: Jeff Sharkey <jsharkey@android.com>
+Code-Review+1: Yinchu Chen <chenyc5@motorola.com>
+Autosubmit+1: Alex Medina <medina@google.com>
+Verified+1: Yinchu Chen <chenyc5@motorola.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 02 Oct 2020 21:09:01 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1196065
+Project: platform/frameworks/native
+Branch: refs/heads/master
