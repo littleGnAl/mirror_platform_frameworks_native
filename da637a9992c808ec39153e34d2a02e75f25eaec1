@@ -16,6 +16,24 @@
       "revId": "da637a9992c808ec39153e34d2a02e75f25eaec1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bae496a_7c94dcf9",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-02T19:57:18Z",
+      "side": 1,
+      "message": "yeah, I should. Thanks, done. (exception in android will be an abort, we don\u0027t need anything more elaborate)",
+      "parentUuid": "0568a1a6_89a60f48",
+      "revId": "da637a9992c808ec39153e34d2a02e75f25eaec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
