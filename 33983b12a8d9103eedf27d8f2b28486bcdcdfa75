@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ddcec22_b5dc12b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-10-05T23:11:23Z",
+      "side": 1,
+      "message": "StructuredParcelable from the AIDL compiler tests is not default constructible without this change. I\u0027m open to solving that problem another way, if there is one.",
+      "revId": "33983b12a8d9103eedf27d8f2b28486bcdcdfa75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
