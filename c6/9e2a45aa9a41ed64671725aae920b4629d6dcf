@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Autosubmit+1: Anthony Stange <stange@google.com>
+Autosubmit+1: Brian Duddie <bduddie@google.com>
+Lint+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Brian Duddie <bduddie@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 05 Oct 2020 21:51:11 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1444139
+Project: platform/frameworks/native
+Branch: refs/heads/master
