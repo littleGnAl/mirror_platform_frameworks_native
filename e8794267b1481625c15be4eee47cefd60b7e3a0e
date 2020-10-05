@@ -204,6 +204,30 @@
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e23fc66_45bc3eab",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-05T20:52:15Z",
+      "side": 1,
+      "message": "Yeah, but the thing is that the class will be guaranteed to have the exact same interface descriptor (otherwise, it won\u0027t associate).\n\nIt would be a problem if libbinder_ndk used other functionality from the AIBinder_Class object when dealing with BpBinders, but it only uses the interface descriptor.\n\nI\u0027m thinking about making these assumptions more explicit (either by documenting things or only holding onto the class object). Maybe the real solution to this could be allowing multiple classes to be associated under the hood (all of which need to have the same interface descriptor).",
+      "parentUuid": "c812268d_d97fa926",
+      "range": {
+        "startLine": 451,
+        "startChar": 54,
+        "endLine": 451,
+        "endChar": 62
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
