@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79d5ab6c_3035bd0c",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-10-05T09:40:38Z",
+      "side": 1,
+      "message": "Or std::u16string_view\u003cuint16_t\u003e? (I guess we should then update the writeString16 as well.)",
+      "range": {
+        "startLine": 89,
+        "startChar": 44,
+        "endLine": 89,
+        "endChar": 75
+      },
+      "revId": "dbc76c7a3b3350570e97f7e31d2ae6906f110b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
