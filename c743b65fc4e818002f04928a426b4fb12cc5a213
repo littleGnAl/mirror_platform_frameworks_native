@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "04a30fab_077b677d",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-05T20:44:28Z",
+      "side": 1,
+      "message": "hmmm, oh sorry, that\u0027s right. It would only be when the bpbinder is deallocated",
+      "parentUuid": "e6e48a01_bc772923",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 53
+      },
+      "revId": "c743b65fc4e818002f04928a426b4fb12cc5a213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a46efc2_c7bd9bc7",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
         "patchSetId": 6

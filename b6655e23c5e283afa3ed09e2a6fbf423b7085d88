@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1e68c3d_e01ecdea",
+        "filename": "PREUPLOAD.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-05T20:44:28Z",
+      "side": 1,
+      "message": "tab -\u003e spaces",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
+      "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55b775fa_ed32f2ef",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-05T20:44:28Z",
+      "side": 1,
+      "message": "this is exactly the same as \"bpbinder \u003d local_binder\", since the servicemanager should give you the same object back, right?\n\nIf we can\u0027t fork a new process to get a valid bpbinder we can call, perhaps just drop this altogether w/ TODO",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 79
+      },
+      "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51dee492_8d250368",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-05T20:44:28Z",
+      "side": 1,
+      "message": "ah, this s_recipient, on L64, it\u0027ll be converted to a sp\u003c\u003e and then deleted (so the pointer should be to invalid memory).",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 60
+      },
+      "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
