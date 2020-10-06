@@ -276,6 +276,30 @@
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f949a491_ec1a50fd",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-06T20:46:23Z",
+      "side": 1,
+      "message": "\u003e Why is the Rust interface descriptor different than the descriptor in the NDK backend? They should be the same, because these interfaces are designed to interoperate.\n\nIf used properly they are the same, however, a user can request the binder object be treated as any interface. In the case that the interface descriptor is wrong we need to either fail to create the remote interface (fail to associate), or fail when transacting. The NDK currently fails to associate if the pointer mismatches, regardless of the interface descriptor string. This is correct and necessary because the callee may be in a different language or APEX and therefore the service implementor can\u0027t be used directly. There\u0027s currently no way to just check if the interface descriptor string matches, so we don\u0027t know ahead of time of it matched or not, just that the class pointer didn\u0027t match.\n\nThe options I can see are adding an API to check the interface descriptor string and put the responsibility for checking that on the user (i.e AIDL-generated code) or adding/modifying the class association to create a new BpBinder without userdata when the class pointer doesn\u0027t match. It sounds like the former would be less invasive?\n\n\u003e It\u0027s to make AIBinder objects pointer-comparable, mirroring the behavior of BpBinder.\n\nAh, I re-read this code and it makes more sense now. We could create a new BpBinder and it would get its own distinct AIBinder, right?",
+      "parentUuid": "c764e47c_4e4a3e88",
+      "range": {
+        "startLine": 451,
+        "startChar": 54,
+        "endLine": 451,
+        "endChar": 62
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
