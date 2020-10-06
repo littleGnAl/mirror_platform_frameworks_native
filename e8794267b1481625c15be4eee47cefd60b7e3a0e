@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "7a624c12_6e103602",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Test added for NDK \u003c-\u003e Rust in the process.",
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9abce66a_109c7ad5",
         "filename": "libs/binder/rust/tests/Android.bp",
@@ -37,10 +38,10 @@
         "endChar": 24
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "c4b1f55d_c7c0c49c",
         "filename": "libs/binder/rust/tests/Android.bp",
@@ -61,10 +62,10 @@
         "endChar": 24
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9fb5c74e_e201cbfa",
         "filename": "libs/binder/rust/tests/binderRustNDKInteropTest.cpp",
@@ -84,10 +85,10 @@
         "endChar": 54
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "50b3be26_fbed89d0",
         "filename": "libs/binder/rust/tests/binderRustNDKInteropTest.cpp",
@@ -108,10 +109,10 @@
         "endChar": 54
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fa26394b_7e56e26e",
         "filename": "libs/binder/rust/tests/binderRustNDKInteropTest.cpp",
@@ -131,10 +132,10 @@
         "endChar": 30
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "95f8b544_7bf8f71a",
         "filename": "libs/binder/rust/tests/binderRustNDKInteropTest.cpp",
@@ -155,10 +156,10 @@
         "endChar": 30
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "13050d53_5aa2e773",
         "filename": "libs/binder/rust/tests/integration.rs",
@@ -178,10 +179,10 @@
         "endChar": 62
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c812268d_d97fa926",
         "filename": "libs/binder/rust/tests/integration.rs",
@@ -202,10 +203,10 @@
         "endChar": 62
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7e23fc66_45bc3eab",
         "filename": "libs/binder/rust/tests/integration.rs",
@@ -226,10 +227,10 @@
         "endChar": 62
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "95738149_793d4072",
         "filename": "libs/binder/rust/tests/integration.rs",
@@ -250,8 +251,31 @@
         "endChar": 62
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c764e47c_4e4a3e88",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-06T20:27:28Z",
+      "side": 1,
+      "message": "\u003e I can\u0027t do that since the the object will continue to transact with the original interface descriptor, not the one we tried to associate it with.\n\nWhy is the Rust interface descriptor different than the descriptor in the NDK backend? They should be the same, because these interfaces are designed to interoperate.\n\n\u003e What is the purpose of this? We would need to get rid of this de-duplication for the object splitting to work.\n\nIt\u0027s to make AIBinder objects pointer-comparable, mirroring the behavior of BpBinder.",
+      "parentUuid": "95738149_793d4072",
+      "range": {
+        "startLine": 451,
+        "startChar": 54,
+        "endLine": 451,
+        "endChar": 62
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
