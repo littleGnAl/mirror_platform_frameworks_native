@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "a1e68c3d_e01ecdea",
         "filename": "PREUPLOAD.cfg",
@@ -20,10 +21,10 @@
         "endChar": 1
       },
       "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "55b775fa_ed32f2ef",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
@@ -43,10 +44,34 @@
         "endChar": 79
       },
       "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e33dfbd_745400d9",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-06T19:02:23Z",
+      "side": 1,
+      "message": "Ah! So you are asking me to fork a new process and inside that process create a binder that this process\u0027s servicemanager will then retrieve? Do we think that\u0027s worth doing? It seems like a lot of overhead.\n\nWill using local_binder cause different behaviors than a remote binder?",
+      "parentUuid": "55b775fa_ed32f2ef",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 79
+      },
+      "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "51dee492_8d250368",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
@@ -66,8 +91,31 @@
         "endChar": 60
       },
       "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9924959_ac6f0155",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-06T19:02:23Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong here, but the pointer is added to the ob struct in LinkToDeath() which is appended to the mObituaries vector. This means that it shouldn\u0027t be deleted until it\u0027s removed from the vector (which occurs when the object is deleted, or we call unlinkToDeath like we do above)\n\nSo this will be fine, and shouldn\u0027t ever be invalid memory. I never manually delete this, and it\u0027s tracked by the sp\u003c\u003e",
+      "parentUuid": "51dee492_8d250368",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 60
+      },
+      "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
