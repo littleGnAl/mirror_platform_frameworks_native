@@ -213,8 +213,6 @@ class ZippedBugreportGenerationTest : public Test {
         // clang-format off
         char* argv[] = {
             (char*)"dumpstate",
-            (char*)"-d",
-            (char*)"-z",
             (char*)"-B"
         };
         // clang-format on
