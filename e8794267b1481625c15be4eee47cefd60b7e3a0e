@@ -228,6 +228,30 @@
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95738149_793d4072",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-06T01:11:04Z",
+      "side": 1,
+      "message": "Sure, but we can\u0027t associate with anything but the original class pointer, so association is always going to fail regardless of whether the interface descriptor string matches. What I wanted to do (and what this CL currently does) was ignore the association failure and treat the object as a remote proxy in that case. However, I can\u0027t do that since the the object will continue to transact with the original interface descriptor, not the one we tried to associate it with.\n\nI think splitting an AIBinder into a new ABpBinder object when trying to associate with a different class pointer than expected would do what we need here, and fix both the Rust and C NDK versions. We can check the interface descriptor string at that point (if desired). This would still prevent incompatible implementations of a service from getting conflated, while still allowing transactions across these implementations via parceling, as if they were remote.\n\nI saw you have some logic to de-duplicate ABpBinder objects so that there is only one object per IBinder. What is the purpose of this? We would need to get rid of this de-duplication for the object splitting to work.",
+      "parentUuid": "7e23fc66_45bc3eab",
+      "range": {
+        "startLine": 451,
+        "startChar": 54,
+        "endLine": 451,
+        "endChar": 62
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
