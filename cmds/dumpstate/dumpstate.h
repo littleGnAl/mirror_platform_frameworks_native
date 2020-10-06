@@ -365,7 +365,6 @@ class Dumpstate {
      */
     struct DumpOptions {
         bool do_add_date = false;
-        bool do_zip_file = false;
         bool do_vibrate = true;
         // Writes bugreport content to a socket; only flatfile format is supported.
         bool use_socket = false;
