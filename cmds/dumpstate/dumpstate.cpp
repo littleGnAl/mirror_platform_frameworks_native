@@ -2127,20 +2127,18 @@ void Dumpstate::DumpstateBoard() {
 
 static void ShowUsage() {
     fprintf(stderr,
-            "usage: dumpstate [-h] [-b soundfile] [-e soundfile] [-o directory] [-d] [-p] "
-            "[-z] [-s] [-S] [-q] [-P] [-R] [-L] [-V version]\n"
+            "usage: dumpstate [-h] [-b soundfile] [-e soundfile] [-o directory] [-p] "
+            "[-s] [-S] [-q] [-P] [-R] [-L] [-V version]\n"
             "  -h: display this help message\n"
             "  -b: play sound file instead of vibrate, at beginning of job\n"
             "  -e: play sound file instead of vibrate, at end of job\n"
             "  -o: write to custom directory (only in limited mode)\n"
-            "  -d: append date to filename\n"
             "  -p: capture screenshot to filename.png\n"
-            "  -z: generate zipped file\n"
             "  -s: write output to control socket (for init)\n"
-            "  -S: write file location to control socket (for init; requires -z)\n"
+            "  -S: write file location to control socket (for init)\n"
             "  -q: disable vibrate\n"
             "  -P: send broadcast when started and do progress updates\n"
-            "  -R: take bugreport in remote mode (requires -z and -d, shouldn't be used with -P)\n"
+            "  -R: take bugreport in remote mode (shouldn't be used with -P)\n"
             "  -w: start binder service and make it wait for a call to startBugreport\n"
             "  -L: output limited information that is safe for submission in feedback reports\n"
             "  -v: prints the dumpstate header and exit\n");
@@ -2242,13 +2240,9 @@ static void PrepareToWriteToFile() {
     std::string build_id = android::base::GetProperty("ro.build.id", "UNKNOWN_BUILD");
     std::string device_name = android::base::GetProperty("ro.product.name", "UNKNOWN_DEVICE");
     ds.base_name_ = StringPrintf("bugreport-%s-%s", device_name.c_str(), build_id.c_str());
-    if (ds.options_->do_add_date) {
-        char date[80];
-        strftime(date, sizeof(date), "%Y-%m-%d-%H-%M-%S", localtime(&ds.now_));
-        ds.name_ = date;
-    } else {
-        ds.name_ = "undated";
-    }
+    char date[80];
+    strftime(date, sizeof(date), "%Y-%m-%d-%H-%M-%S", localtime(&ds.now_));
+    ds.name_ = date;
 
     if (ds.options_->telephony_only) {
         ds.base_name_ += "-telephony";
@@ -2275,28 +2269,26 @@ static void PrepareToWriteToFile() {
         destination.c_str(), ds.base_name_.c_str(), ds.name_.c_str(), ds.log_path_.c_str(),
         ds.tmp_path_.c_str(), ds.screenshot_path_.c_str());
 
-    if (ds.options_->do_zip_file) {
-        FILE *fp;
-        if (ds.options_->use_socket) {
-            fp = fdopen(dup(open_socket("dumpstate")), "wb");
-        } else {
-            ds.path_ = ds.GetPath(ds.CalledByApi() ? "-zip.tmp" : ".zip");
-            MYLOGD("Creating initial .zip file (%s)\n", ds.path_.c_str());
-            create_parent_dirs(ds.path_.c_str());
-            fp = fopen(ds.path_.c_str(), "wb");
-        }
-        ds.zip_file.reset(fp);
-        if (ds.zip_file == nullptr) {
-            if (ds.options_->use_socket) {
-                MYLOGE("fdopen(dup(open_socket(\"dumpstate\")), 'wb'): %s\n", strerror(errno));
-            } else {
-                MYLOGE("fopen(%s, 'wb'): %s\n", ds.path_.c_str(), strerror(errno));
-            }
-        } else {
-            ds.zip_writer_.reset(new ZipWriter(ds.zip_file.get()));
-        }
-        ds.AddTextZipEntry("version.txt", ds.version_);
+    FILE *fp;
+    if (ds.options_->use_socket) {
+        fp = fdopen(dup(open_socket("dumpstate")), "wb");
+    } else {
+        ds.path_ = ds.GetPath(ds.CalledByApi() ? "-zip.tmp" : ".zip");
+        MYLOGD("Creating initial .zip file (%s)\n", ds.path_.c_str());
+        create_parent_dirs(ds.path_.c_str());
+        fp = fopen(ds.path_.c_str(), "wb");
     }
+    ds.zip_file.reset(fp);
+    if (ds.zip_file == nullptr) {
+        if (ds.options_->use_socket) {
+            MYLOGE("fdopen(dup(open_socket(\"dumpstate\")), 'wb'): %s\n", strerror(errno));
+        } else {
+            MYLOGE("fopen(%s, 'wb'): %s\n", ds.path_.c_str(), strerror(errno));
+        }
+    } else {
+        ds.zip_writer_.reset(new ZipWriter(ds.zip_file.get()));
+    }
+    ds.AddTextZipEntry("version.txt", ds.version_);
 }
 
 /*
@@ -2305,13 +2297,11 @@ static void PrepareToWriteToFile() {
  */
 static void FinalizeFile() {
     bool do_text_file = true;
-    if (ds.options_->do_zip_file) {
-        if (!ds.FinishZipFile()) {
-            MYLOGE("Failed to finish zip file; sending text bugreport instead\n");
-            do_text_file = true;
-        } else {
-            do_text_file = false;
-        }
+    if (!ds.FinishZipFile()) {
+        MYLOGE("Failed to finish zip file; sending text bugreport instead\n");
+        do_text_file = true;
+    } else {
+        do_text_file = false;
     }
 
     std::string final_path = ds.path_;
@@ -2378,7 +2368,6 @@ static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOpt
         case Dumpstate::BugreportMode::BUGREPORT_WEAR:
             options->do_start_service = true;
             options->do_progress_updates = true;
-            options->do_zip_file = true;
             options->do_screenshot = is_screenshot_requested;
             options->dumpstate_hal_mode = DumpstateMode::WEAR;
             break;
@@ -2391,7 +2380,6 @@ static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOpt
             break;
         case Dumpstate::BugreportMode::BUGREPORT_WIFI:
             options->wifi_only = true;
-            options->do_zip_file = true;
             options->do_screenshot = false;
             options->dumpstate_hal_mode = DumpstateMode::WIFI;
             break;
@@ -2402,11 +2390,11 @@ static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOpt
 
 static void LogDumpOptions(const Dumpstate::DumpOptions& options) {
     MYLOGI(
-        "do_zip_file: %d do_vibrate: %d use_socket: %d use_control_socket: %d do_screenshot: %d "
+        "do_vibrate: %d use_socket: %d use_control_socket: %d do_screenshot: %d "
         "is_remote_mode: %d show_header_only: %d do_start_service: %d telephony_only: %d "
         "wifi_only: %d do_progress_updates: %d fd: %d bugreport_mode: %s dumpstate_hal_mode: %s "
         "limited_only: %d args: %s\n",
-        options.do_zip_file, options.do_vibrate, options.use_socket, options.use_control_socket,
+        options.do_vibrate, options.use_socket, options.use_control_socket,
         options.do_screenshot, options.is_remote_mode, options.show_header_only,
         options.do_start_service, options.telephony_only, options.wifi_only,
         options.do_progress_updates, options.bugreport_fd.get(), options.bugreport_mode.c_str(),
@@ -2417,11 +2405,6 @@ void Dumpstate::DumpOptions::Initialize(BugreportMode bugreport_mode,
                                         const android::base::unique_fd& bugreport_fd_in,
                                         const android::base::unique_fd& screenshot_fd_in,
                                         bool is_screenshot_requested) {
-    // In the new API world, date is always added; output is always a zip file.
-    // TODO(111441001): remove these options once they are obsolete.
-    do_add_date = true;
-    do_zip_file = true;
-
     // Duplicate the fds because the passed in fds don't outlive the binder transaction.
     bugreport_fd.reset(dup(bugreport_fd_in.get()));
     screenshot_fd.reset(dup(screenshot_fd_in.get()));
@@ -2435,8 +2418,6 @@ Dumpstate::RunStatus Dumpstate::DumpOptions::Initialize(int argc, char* argv[]) 
     while ((c = getopt(argc, argv, "dho:svqzpLPBRSV:w")) != -1) {
         switch (c) {
             // clang-format off
-            case 'd': do_add_date = true;            break;
-            case 'z': do_zip_file = true;            break;
             case 'o': out_dir = optarg;              break;
             case 's': use_socket = true;             break;
             case 'S': use_control_socket = true;     break;
@@ -2446,7 +2427,11 @@ Dumpstate::RunStatus Dumpstate::DumpOptions::Initialize(int argc, char* argv[]) 
             case 'P': do_progress_updates = true;    break;
             case 'R': is_remote_mode = true;         break;
             case 'L': limited_only = true;           break;
-            case 'V':                                break;  // compatibility no-op
+            case 'V':
+            case 'd':
+            case 'z':
+                // compatibility no-op
+                break;
             case 'w':
                 // This was already processed
                 break;
@@ -2475,15 +2460,15 @@ Dumpstate::RunStatus Dumpstate::DumpOptions::Initialize(int argc, char* argv[]) 
 }
 
 bool Dumpstate::DumpOptions::ValidateOptions() const {
-    if (bugreport_fd.get() != -1 && !do_zip_file) {
+    if (bugreport_fd.get() != -1 && use_socket) {
         return false;
     }
 
-    if (use_control_socket && !do_zip_file) {
+    if ((use_control_socket || do_progress_updates) && use_socket) {
         return false;
     }
 
-    if (is_remote_mode && (do_progress_updates || !do_zip_file || !do_add_date)) {
+    if (is_remote_mode && (do_progress_updates || use_socket)) {
         return false;
     }
     return true;
@@ -2671,7 +2656,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         Vibrate(150);
     }
 
-    if (options_->do_zip_file && zip_file != nullptr) {
+    if (!options_->use_socket && zip_file != nullptr) {
         if (chown(path_.c_str(), AID_SHELL, AID_SHELL)) {
             MYLOGE("Unable to change ownership of zip file %s: %s\n", path_.c_str(),
                    strerror(errno));

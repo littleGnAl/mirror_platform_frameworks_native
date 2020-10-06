@@ -212,10 +212,7 @@ class ZippedBugreportGenerationTest : public Test {
     static void SetUpTestCase() {
         // clang-format off
         char* argv[] = {
-            (char*)"dumpstate",
-            (char*)"-d",
-            (char*)"-z",
-            (char*)"-B"
+            (char*)"dumpstate"
         };
         // clang-format on
         sp<DumpstateListener> listener(new DumpstateListener(dup(fileno(stdout)), sections));
