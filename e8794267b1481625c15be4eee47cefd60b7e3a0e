@@ -300,6 +300,30 @@
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95ed614f_1548c6ec",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-06T23:29:35Z",
+      "side": 1,
+      "message": "\u003e however, a user can request the binder object be treated as any interface\n\nIs this additional functionality opened up in the rust backend? Since AIDL doesn\u0027t/shouldn\u0027t use it, we could curb that back.\n\n\u003e There\u0027s currently no way to just check if the interface descriptor string matches, so we don\u0027t know ahead of time of it matched or not,\n\nLet\u0027s add AIBinder_Class_getDescriptor\n\n\u003e We could create a new BpBinder and it would get its own distinct AIBinder, right?\n\nThere\u0027s no way to create a new BpBinder though (and this would break pointer-equality of these objects).",
+      "parentUuid": "f949a491_ec1a50fd",
+      "range": {
+        "startLine": 451,
+        "startChar": 54,
+        "endLine": 451,
+        "endChar": 62
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
