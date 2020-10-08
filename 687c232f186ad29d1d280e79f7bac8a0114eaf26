@@ -22,6 +22,30 @@
       },
       "revId": "687c232f186ad29d1d280e79f7bac8a0114eaf26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "accf20a0_e4ac53a2",
+        "filename": "libs/binder/fuzzer/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-08T16:58:51Z",
+      "side": 1,
+      "message": "I tried to comment it here:\n\n\u003e The fixed value added here represents that we want to test doing a lot of \u0027instructions\u0027 even on really short parcels.\n\nThe idea is that we want to execute a number of instructions even on an empty parcelable.",
+      "parentUuid": "da0c3d9d_76c9bfa0",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "687c232f186ad29d1d280e79f7bac8a0114eaf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
