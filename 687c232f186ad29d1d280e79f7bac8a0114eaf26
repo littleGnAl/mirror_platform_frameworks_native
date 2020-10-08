@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da0c3d9d_76c9bfa0",
+        "filename": "libs/binder/fuzzer/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-10-08T15:37:21Z",
+      "side": 1,
+      "message": "if 20 is larger than 1/3 of remaining bytes, would it be possible to consume all of the bytes for \u0027instructions\u0027 with none left over for \u0027input\u0027? Is that an issue?",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "687c232f186ad29d1d280e79f7bac8a0114eaf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
