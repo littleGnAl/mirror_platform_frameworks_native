@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "f27abbc4_e4a988b2",
         "filename": "cmds/bugreportz/main.cpp",
@@ -14,10 +15,28 @@
       "side": 1,
       "message": "worth updating this since you\u0027ve added a new option? (i\u0027m not sure why there\u0027s a version number for this tool at all!)",
       "revId": "87df912b29a004770c89d3a87889a6d9b4a6a073",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c95620d5_2b50f58b",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-08T08:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f27abbc4_e4a988b2",
+      "revId": "87df912b29a004770c89d3a87889a6d9b4a6a073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "9af4b512_cc50d67d",
         "filename": "cmds/bugreportz/main.cpp",
@@ -31,10 +50,28 @@
       "side": 1,
       "message": "just define the function here rather than forward-declare?\n\nalso, the function should be static.",
       "revId": "87df912b29a004770c89d3a87889a6d9b4a6a073",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1261db3_4614ad7f",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-08T08:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9af4b512_cc50d67d",
+      "revId": "87df912b29a004770c89d3a87889a6d9b4a6a073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "074a46f2_516113b7",
         "filename": "cmds/bugreportz/main.cpp",
@@ -48,8 +85,25 @@
       "side": 1,
       "message": "you should look at functions like ReadFully and WriteFully in libbase rather than reinvent the wheel...",
       "revId": "87df912b29a004770c89d3a87889a6d9b4a6a073",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed32988d_a2c6de57",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-08T08:56:46Z",
+      "side": 1,
+      "message": "I don\u0027t know how to handle data from socket to read/write fully with exact data length and so here is just copied from bugreport.cpp. Would you mind to explain more detail?",
+      "parentUuid": "074a46f2_516113b7",
+      "revId": "87df912b29a004770c89d3a87889a6d9b4a6a073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
