@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c424bd86_9b297f2b",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-08T10:04:00Z",
+      "side": 1,
+      "message": "Can we re-use \"bugreportz(int s, bool show_progress)\" for this purpose? Or refactor bugreportz() function to fit both purpose?",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "cbcb76d04c1b035db3a72d913e142e0326c2753e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954c201b_46d07e50",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-08T10:04:00Z",
+      "side": 1,
+      "message": "!stream_data?",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 19
+      },
+      "revId": "cbcb76d04c1b035db3a72d913e142e0326c2753e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
