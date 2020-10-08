@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8aac6e9_e3a930d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-08T11:36:12Z",
+      "side": 1,
+      "message": "Also, I found your \u0027dumpstate.cpp\u0027 is quite different. For example, the PrepareToWriteToFile() is in different place.\n\nhttps://android.googlesource.com/platform/frameworks/native/+/refs/heads/master/cmds/dumpstate/dumpstate.cpp#2652",
+      "revId": "9a4732abeb0d28cabf89988c9d631af2933f6fa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4059425d_57f3a71c",
