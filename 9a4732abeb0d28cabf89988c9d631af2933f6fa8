@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4059425d_57f3a71c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2661,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-08T11:13:05Z",
+      "side": 1,
+      "message": "It seems that we always prepareToWriteToFile in #2624. It\u0027s strange that we do not chown for the zip file if options_-\u003euse_socket \u003d\u003d true.",
+      "range": {
+        "startLine": 2661,
+        "startChar": 8,
+        "endLine": 2661,
+        "endChar": 29
+      },
+      "revId": "9a4732abeb0d28cabf89988c9d631af2933f6fa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

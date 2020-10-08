@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "113050ea_7979e397",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2431,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-08T11:13:05Z",
+      "side": 0,
+      "message": "I\u0027m not sure whether this is a good idea to remove \u0027z\u0027. This break a lot of functions here.\nhttps://source.corp.google.com/search?q\u003dpackage:%5Eandroid$%20%22%2Fsystem%2Fbin%2Fdumpstate%20-%22\u0026start\u003d1",
+      "range": {
+        "startLine": 2431,
+        "startChar": 43,
+        "endLine": 2431,
+        "endChar": 44
+      },
+      "revId": "cbcb76d04c1b035db3a72d913e142e0326c2753e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
