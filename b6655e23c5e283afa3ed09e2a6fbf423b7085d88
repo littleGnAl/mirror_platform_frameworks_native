@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d29563_82b7e646",
+        "filename": "PREUPLOAD.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-09T01:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1e68c3d_e01ecdea",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
+      "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55b775fa_ed32f2ef",
@@ -95,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ac4df0_e0b8106e",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-09T01:16:39Z",
+      "side": 1,
+      "message": "I marked this as TODO with some comments to explain why.",
+      "parentUuid": "2c4ece5e_524710d4",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 79
+      },
+      "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51dee492_8d250368",
@@ -156,6 +204,30 @@
       "side": 1,
       "message": "Obituary contains a wp\u003c\u003e, not an sp\u003c\u003e, so you should see it being deleted.\n\nI think either:\n- switch the global object to sp\u003c\u003e (btw - should avoid global objects in fuzzers, or, slightly less good, reset their state everytime the fuzzer function is called. Otherwise, it could lead to previous runs affecting later runs)\n- remove the global object",
       "parentUuid": "f9924959_ac6f0155",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 60
+      },
+      "revId": "b6655e23c5e283afa3ed09e2a6fbf423b7085d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37aca2c9_77eb04a5",
+        "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-09T01:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4062d8c6_46de6a74",
       "range": {
         "startLine": 62,
         "startChar": 0,

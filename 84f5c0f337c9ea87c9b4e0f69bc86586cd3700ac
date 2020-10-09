@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef9c2a5d_e252f2b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-09T01:16:39Z",
+      "side": 1,
+      "message": "Made the changes requested to bpbinder and let the fuzzer run for \u003e48 hours without any crashes occurring.",
+      "revId": "84f5c0f337c9ea87c9b4e0f69bc86586cd3700ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
