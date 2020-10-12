@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "40915b1a_8f166a77",
         "filename": "libs/binder/tests/fuzzers/Android.bp",
@@ -20,10 +21,10 @@
         "endChar": 6
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "a7f42910_5bf148a4",
         "filename": "libs/binder/tests/fuzzers/Android.bp",
@@ -44,10 +45,10 @@
         "endChar": 6
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b7ad1e55_1067edac",
         "filename": "libs/binder/tests/fuzzers/Android.bp",
@@ -67,10 +68,10 @@
         "endChar": 18
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "152c4231_cda017f4",
         "filename": "libs/binder/tests/fuzzers/Android.bp",
@@ -91,10 +92,10 @@
         "endChar": 18
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "be57dfd9_c44bdf5d",
         "filename": "libs/binder/tests/fuzzers/Android.bp",
@@ -115,10 +116,34 @@
         "endChar": 18
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b214301e_f8604c51",
+        "filename": "libs/binder/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-12T20:13:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be57dfd9_c44bdf5d",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "0a31d1b0_8c264d1c",
         "filename": "libs/binder/tests/fuzzers/Binder/Android.bp",
@@ -132,10 +157,10 @@
       "side": 1,
       "message": "can we avoid separate folders for all of these and use a single Android.bp?",
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "56e56437_d3ef7768",
         "filename": "libs/binder/tests/fuzzers/Binder/Android.bp",
@@ -150,10 +175,10 @@
       "message": "Done",
       "parentUuid": "0a31d1b0_8c264d1c",
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3ae96638_e7b94c10",
         "filename": "libs/binder/tests/fuzzers/Binder/BinderFuzzFunctions.h",
@@ -167,10 +192,10 @@
       "side": 1,
       "message": "almost all of these are functions on IBinder. We should have one place to define those, rather than duplicating w/ BpBinder",
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f4cf4829_f8ca42a2",
         "filename": "libs/binder/tests/fuzzers/Binder/BinderFuzzFunctions.h",
@@ -185,10 +210,10 @@
       "message": "Done",
       "parentUuid": "3ae96638_e7b94c10",
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "44c82980_c1e389ea",
         "filename": "libs/binder/tests/fuzzers/BpBinder/BpBinderFuzzFunctions.h",
@@ -208,10 +233,10 @@
         "endChar": 11
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "404c80ef_783f3e13",
         "filename": "libs/binder/tests/fuzzers/MemoryHeapBase/MemoryHeapBaseFuzz.cpp",
@@ -225,10 +250,10 @@
       "side": 1,
       "message": "the important thing to fuzz is MemoryDealer which creates these objects and allocations (the allocations are the complex part)",
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "2c3d0817_d64f5385",
         "filename": "libs/binder/tests/fuzzers/MemoryHeapBase/MemoryHeapBaseFuzz.cpp",
@@ -243,10 +268,10 @@
       "message": "Yup! We have another fuzzer for this that will be submitted in a second batch of binder fuzzers after this CL is accepted. This fuzzer is only touching the additional functionality that MemoryDealer didn\u0027t seem to be calling into.",
       "parentUuid": "404c80ef_783f3e13",
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a4fc2c0f_5cb73025",
         "filename": "libs/binder/tests/fuzzers/ParcelBlob/ParcelBlobFuzzFunctions.h",
@@ -266,10 +291,10 @@
         "endChar": 70
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "8630b0b1_6f723a63",
         "filename": "libs/binder/tests/fuzzers/ParcelBlob/ParcelBlobFuzzFunctions.h",
@@ -290,10 +315,10 @@
         "endChar": 70
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "68ba4289_733d6133",
         "filename": "libs/binder/tests/fuzzers/PersistableBundle/PersistableBundleFuzzFunctions.h",
@@ -313,10 +338,10 @@
         "endChar": 51
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f0860b83_35d460c3",
         "filename": "libs/binder/tests/fuzzers/PersistableBundle/PersistableBundleFuzzFunctions.h",
@@ -337,10 +362,10 @@
         "endChar": 51
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "568f0605_c335a312",
         "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
@@ -360,10 +385,10 @@
         "endChar": 72
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e9417999_ed248938",
         "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
@@ -377,10 +402,10 @@
       "side": 1,
       "message": "Did you run this locally? It should crash, and that is WAI",
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "556450e2_7f549c3b",
         "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
@@ -401,10 +426,10 @@
         "endChar": 72
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "05b4f9b8_a2ee6966",
         "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
@@ -419,10 +444,10 @@
       "message": "Oddly it wasn\u0027t crashing when running, but I did fix this now to be a const\u0026",
       "parentUuid": "e9417999_ed248938",
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "08616150_df34bfb3",
         "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
@@ -437,10 +462,10 @@
       "message": "This doesn\u0027t really make sense. Calling \u0027markCompilationUnit\u0027 then \u0027markVndk\u0027 should crash as an API contract",
       "parentUuid": "05b4f9b8_a2ee6966",
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9c4a60d4_829cfb33",
         "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
@@ -455,10 +480,28 @@
       "message": "You were correct and it was actually a small flaw in the original fuzzer design. The object was being recreated every iteration of the loop, so it was only ever calling one of these functions per object. When I pulled it out of the loop it crashed as you said it would.\n\nTo fix that I only allow an object to be marked once per fuzz job, however I\u0027m not sure if this fuzzer is useful after doing that. Does it make sense to just pull it altogether?",
       "parentUuid": "08616150_df34bfb3",
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09f7bcb7_059344ea",
+        "filename": "libs/binder/tests/fuzzers/Stability/StabilityFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-12T20:13:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c4a60d4_829cfb33",
+      "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "7d46e864_856b6461",
         "filename": "libs/binder/tests/fuzzers/TextOutput/TextOutputFuzz.cpp",
@@ -478,10 +521,10 @@
         "endChar": 55
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "a4cb97a5_4a8369d8",
         "filename": "libs/binder/tests/fuzzers/TextOutput/TextOutputFuzz.cpp",
@@ -502,10 +545,10 @@
         "endChar": 55
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d0fe4836_eb8cc05d",
         "filename": "libs/binder/tests/fuzzers/include/commonFuzzHelpers.h",
@@ -525,10 +568,10 @@
         "endChar": 30
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "b8c86f46_e4313b6b",
         "filename": "libs/binder/tests/fuzzers/include/commonFuzzHelpers.h",
@@ -549,10 +592,10 @@
         "endChar": 30
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0792deb5_b8f8242b",
         "filename": "libs/binder/tests/fuzzers/include/commonFuzzHelpers.h",
@@ -572,10 +615,10 @@
         "endChar": 56
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "3fbae014_c24241ab",
         "filename": "libs/binder/tests/fuzzers/include/commonFuzzHelpers.h",
@@ -596,8 +639,7 @@
         "endChar": 56
       },
       "revId": "e838e20b5b2edd236be06c6a742cad5590499b12",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

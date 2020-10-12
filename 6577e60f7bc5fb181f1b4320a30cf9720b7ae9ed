@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "4c0e8a38_1087b7ba",
         "filename": "libs/binder/tests/fuzzers/BinderFuzz.cpp",
@@ -20,10 +21,10 @@
         "endChar": 14
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "ab365170_dc765455",
         "filename": "libs/binder/tests/fuzzers/BinderFuzz.cpp",
@@ -44,10 +45,10 @@
         "endChar": 14
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5db87ed9_f134979b",
         "filename": "libs/binder/tests/fuzzers/BinderFuzz.cpp",
@@ -67,10 +68,10 @@
         "endChar": 76
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "221d0043_5e1eb2a4",
         "filename": "libs/binder/tests/fuzzers/BinderFuzz.cpp",
@@ -91,10 +92,10 @@
         "endChar": 76
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "6b2a63ab_14bf62ab",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -114,10 +115,10 @@
         "endChar": 95
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9ec6228c_a1d25c57",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -137,10 +138,10 @@
         "endChar": 73
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "fa91863f_2fdd3823",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -161,10 +162,10 @@
         "endChar": 95
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "9558f6da_7d8387e5",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -185,10 +186,10 @@
         "endChar": 73
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e3e22f80_7bacd598",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -208,10 +209,10 @@
         "endChar": 41
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fd19fff4_cbcd63a7",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -231,10 +232,10 @@
         "endChar": 81
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "05a440a4_9ea99fdc",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -255,10 +256,10 @@
         "endChar": 81
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f75ca89c_7ce08df1",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -279,10 +280,10 @@
         "endChar": 41
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ff71279d_9f0bfdfe",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -302,10 +303,10 @@
         "endChar": 62
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "fc6feda0_e6f4d40d",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -326,10 +327,10 @@
         "endChar": 62
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9b75bf8a_13645983",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -349,10 +350,10 @@
         "endChar": 84
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "2ffd5f7c_060ff05c",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -373,10 +374,10 @@
         "endChar": 84
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "dd8ccda6_90687a82",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -396,10 +397,10 @@
         "endChar": 84
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "9168ecfc_fe4d1d9d",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -420,10 +421,10 @@
         "endChar": 84
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fd862abf_d055bef1",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -437,10 +438,10 @@
       "side": 1,
       "message": "we also have these APIs now:\n    void                setMinSchedulerPolicy(int policy, int priority);\n    int                 getMinSchedulerPolicy();\n    int                 getMinSchedulerPriority",
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f1c7b202_fe61b113",
         "filename": "libs/binder/tests/fuzzers/BinderFuzzFunctions.h",
@@ -455,10 +456,10 @@
       "message": "Added these in now.",
       "parentUuid": "fd862abf_d055bef1",
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "75f77a9d_5a067f3a",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
@@ -478,10 +479,10 @@
         "endChar": 32
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "91306a77_97c446cc",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
@@ -502,10 +503,10 @@
         "endChar": 32
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "282f794b_18783f3a",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
@@ -526,10 +527,10 @@
         "endChar": 32
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "ab1d772f_6bfcc3c7",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
@@ -550,10 +551,10 @@
         "endChar": 32
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4800253f_7650dc73",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
@@ -573,10 +574,10 @@
         "endChar": 42
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "76e8be66_6768e2e8",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
@@ -597,10 +598,10 @@
         "endChar": 42
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e077be03_d521ed59",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
@@ -620,10 +621,10 @@
         "endChar": 86
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7efe46db_008a1a11",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
@@ -644,10 +645,10 @@
         "endChar": 86
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "7cdafd6e_6cda5a10",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzz.cpp",
@@ -668,10 +669,10 @@
         "endChar": 86
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f964b82a_d37d63bf",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
@@ -691,10 +692,10 @@
         "endChar": 54
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "366f0ccb_2cce7970",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
@@ -715,10 +716,10 @@
         "endChar": 54
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1878d9f6_968b35fb",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
@@ -738,10 +739,10 @@
         "endChar": 74
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "5852b798_bcad7ef9",
         "filename": "libs/binder/tests/fuzzers/BpBinderFuzzFunctions.h",
@@ -762,10 +763,10 @@
         "endChar": 74
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1f496a00_48b10044",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -785,10 +786,10 @@
         "endChar": 20
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "8951ee40_2bad4e5a",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -809,10 +810,10 @@
         "endChar": 20
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9ffe0396_3631b749",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -832,10 +833,10 @@
         "endChar": 35
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "93304726_78dd850a",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -856,10 +857,10 @@
         "endChar": 35
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f01698c4_bd3e578e",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -879,10 +880,10 @@
         "endChar": 11
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f851d934_3e67381d",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -903,10 +904,10 @@
         "endChar": 11
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0cecaab2_bee8f998",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -927,10 +928,10 @@
         "endChar": 11
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fd15f1f7_91b4e207",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -951,10 +952,10 @@
         "endChar": 11
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c325a472_228ff3e2",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -975,10 +976,10 @@
         "endChar": 11
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b682181b_ff31a3bd",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -999,10 +1000,10 @@
         "endChar": 11
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4aeaa54e_8e84241c",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -1023,10 +1024,10 @@
         "endChar": 11
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "427b9c90_a48c5e27",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -1046,10 +1047,10 @@
         "endChar": 44
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "8775a55f_75e71e7b",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -1070,10 +1071,10 @@
         "endChar": 44
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "95b67712_a3145ab8",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -1093,10 +1094,10 @@
         "endChar": 38
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "33eec31d_55f10397",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -1117,10 +1118,10 @@
         "endChar": 38
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "738a42bd_2ae103a4",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -1140,10 +1141,10 @@
         "endChar": 38
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "104bfa83_7641f0f2",
         "filename": "libs/binder/tests/fuzzers/IBinderFuzzFunctions.h",
@@ -1164,10 +1165,10 @@
         "endChar": 38
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "02fde236_0c0eadf4",
         "filename": "libs/binder/tests/fuzzers/MemoryHeapBaseFuzz.cpp",
@@ -1187,10 +1188,10 @@
         "endChar": 73
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "bf535991_bc7ef28a",
         "filename": "libs/binder/tests/fuzzers/MemoryHeapBaseFuzz.cpp",
@@ -1211,10 +1212,10 @@
         "endChar": 73
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "eecc1d43_f943e86e",
         "filename": "libs/binder/tests/fuzzers/MemoryHeapBaseFuzz.cpp",
@@ -1234,10 +1235,10 @@
         "endChar": 5
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "190c3886_6725bb33",
         "filename": "libs/binder/tests/fuzzers/MemoryHeapBaseFuzz.cpp",
@@ -1258,10 +1259,10 @@
         "endChar": 5
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d40510fb_c79a869d",
         "filename": "libs/binder/tests/fuzzers/ParcelBlobFuzz.cpp",
@@ -1281,10 +1282,10 @@
         "endChar": 9
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "ed37e761_e4326339",
         "filename": "libs/binder/tests/fuzzers/ParcelBlobFuzz.cpp",
@@ -1305,10 +1306,10 @@
         "endChar": 9
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2b41e35d_ede1fca3",
         "filename": "libs/binder/tests/fuzzers/ParcelBlobFuzzFunctions.h",
@@ -1328,10 +1329,10 @@
         "endChar": 18
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "3c227011_6219df32",
         "filename": "libs/binder/tests/fuzzers/ParcelBlobFuzzFunctions.h",
@@ -1352,10 +1353,10 @@
         "endChar": 18
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d1ad6279_f9a4279f",
         "filename": "libs/binder/tests/fuzzers/ParcelBlobFuzzFunctions.h",
@@ -1375,10 +1376,10 @@
         "endChar": 40
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "c93434b2_7a48d221",
         "filename": "libs/binder/tests/fuzzers/ParcelBlobFuzzFunctions.h",
@@ -1399,10 +1400,10 @@
         "endChar": 40
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "546ba618_54868f13",
         "filename": "libs/binder/tests/fuzzers/ParcelBlobFuzzFunctions.h",
@@ -1416,10 +1417,10 @@
       "side": 1,
       "message": "I think our existing Parcel fuzzer tests should cover this, since they use the protected/private members of these classes that do something",
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "25f2186d_ba0e10b4",
         "filename": "libs/binder/tests/fuzzers/ParcelBlobFuzzFunctions.h",
@@ -1434,10 +1435,10 @@
       "message": "Since you already have a fuzzer covering this, then I will remove this fuzzer so we aren\u0027t wasting cycles on duplicated effort.",
       "parentUuid": "546ba618_54868f13",
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fa4602fa_8c6d1032",
         "filename": "libs/binder/tests/fuzzers/PersistableBundleFuzzFunctions.h",
@@ -1457,10 +1458,10 @@
         "endChar": 35
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "9a3e7a84_6544c513",
         "filename": "libs/binder/tests/fuzzers/PersistableBundleFuzzFunctions.h",
@@ -1481,10 +1482,10 @@
         "endChar": 35
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f5508ea8_9d4e88b8",
         "filename": "libs/binder/tests/fuzzers/StatusFuzz.cpp",
@@ -1504,10 +1505,10 @@
         "endChar": 61
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "0dc2aaad_57cabb0d",
         "filename": "libs/binder/tests/fuzzers/StatusFuzz.cpp",
@@ -1528,10 +1529,10 @@
         "endChar": 61
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0c9079a8_9e3718d7",
         "filename": "libs/binder/tests/fuzzers/StatusFuzz.cpp",
@@ -1551,10 +1552,10 @@
         "endChar": 44
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "54918487_fdc10cb5",
         "filename": "libs/binder/tests/fuzzers/StatusFuzz.cpp",
@@ -1575,10 +1576,10 @@
         "endChar": 44
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "38972580_f33d58b4",
         "filename": "libs/binder/tests/fuzzers/StatusFuzzFunctions.h",
@@ -1598,10 +1599,10 @@
         "endChar": 18
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "372aee57_b840364a",
         "filename": "libs/binder/tests/fuzzers/StatusFuzzFunctions.h",
@@ -1622,10 +1623,10 @@
         "endChar": 18
       },
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5e29edec_583fa65d",
         "filename": "libs/binder/tests/fuzzers/TextOutputFuzz.cpp",
@@ -1639,10 +1640,10 @@
       "side": 1,
       "message": "what about indent/etc apis?",
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "84570796_739080e1",
         "filename": "libs/binder/tests/fuzzers/TextOutputFuzz.cpp",
@@ -1657,8 +1658,25 @@
       "message": "Other APIs are tested in the BufferedTextOutput fuzzer, this one only contains the functionality not covered in there.",
       "parentUuid": "5e29edec_583fa65d",
       "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "386ad589_d35ff98f",
+        "filename": "libs/binder/tests/fuzzers/TextOutputFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-12T20:13:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84570796_739080e1",
+      "revId": "6577e60f7bc5fb181f1b4320a30cf9720b7ae9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
