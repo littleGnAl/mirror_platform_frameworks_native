@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a0d927f_d3cc9c19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-10-12T07:11:43Z",
+      "side": 1,
+      "message": "note: auto-merge failure. need to cp this one to internal manually after review.",
+      "revId": "37c82182ba1640f385d8fcd6f1a65def9296dbea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
