@@ -45,6 +45,47 @@
       },
       "revId": "cbcb76d04c1b035db3a72d913e142e0326c2753e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5d468c_30705a0b",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-13T08:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "954c201b_46d07e50",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 19
+      },
+      "revId": "cbcb76d04c1b035db3a72d913e142e0326c2753e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e17807ab_c5fb7745",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2633,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-13T08:37:35Z",
+      "side": 1,
+      "message": "open socket inside preparation.",
+      "revId": "cbcb76d04c1b035db3a72d913e142e0326c2753e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
