@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a456da_b10f891f",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-13T08:37:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ec9b421_dfa43bde",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "f5e1ca2e5c2ebd7b75efb6a41a117e48fdc81c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec4bac80_8310c2d3",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61cdb2ab_41166f5e",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-13T08:37:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec4bac80_8310c2d3",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 71
+      },
+      "revId": "f5e1ca2e5c2ebd7b75efb6a41a117e48fdc81c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f4028df_39dc04ff",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-08T09:36:25Z",
       "side": 1,
       "message": "Why don\u0027t we return 0?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "f5e1ca2e5c2ebd7b75efb6a41a117e48fdc81c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a991eac_cf8b268a",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-13T08:37:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f4028df_39dc04ff",
       "range": {
         "startLine": 37,
         "startChar": 1,
