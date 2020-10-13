@@ -16,6 +16,47 @@
       "message": "Hi Jason, please do a clean CP of http://ag/12379791",
       "revId": "eac3411b01fd2236a7b4b2924586fe99238bbf98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75b6d5a1_cb312f90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2020-10-13T17:00:40Z",
+      "side": 1,
+      "message": "I\u0027ve helped CP it here: http://aosp/1458682",
+      "parentUuid": "0aa4e458_38d00b62",
+      "revId": "eac3411b01fd2236a7b4b2924586fe99238bbf98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e510e20_79fb3045",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2020-10-13T17:00:40Z",
+      "side": 1,
+      "message": "You don\u0027t need this. The system driver loading path will be used in this case, and that loads angle into sphal.",
+      "range": {
+        "startLine": 502,
+        "startChar": 5,
+        "endLine": 510,
+        "endChar": 13
+      },
+      "revId": "eac3411b01fd2236a7b4b2924586fe99238bbf98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
