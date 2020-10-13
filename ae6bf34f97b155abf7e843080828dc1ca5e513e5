@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49576709_8aee4557",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-13T19:30:10Z",
+      "side": 1,
+      "message": "undef in file",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b25379e_734aec6b",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-13T19:30:10Z",
+      "side": 1,
+      "message": "why rename?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 39
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b56c213_ef4d4d86",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-13T19:30:10Z",
+      "side": 1,
+      "message": "these APIs need documentation",
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d552f4f2_e7136d33",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-13T19:30:10Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1125,
+        "endChar": 7
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22da7e64_020987c3",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-13T19:30:10Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 1126,
+        "startChar": 69,
+        "endLine": 1126,
+        "endChar": 76
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8afe2d8a_1db81adf",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-13T19:30:10Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 1126,
+        "startChar": 84,
+        "endLine": 1126,
+        "endChar": 91
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c464171f_ff9cee76",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-13T19:30:10Z",
+      "side": 1,
+      "message": "is this needed? (we\u0027ve avoided it so far because you get one when you start a transaction that already has the transaction header written to it)",
+      "range": {
+        "startLine": 1128,
+        "startChar": 0,
+        "endLine": 1128,
+        "endChar": 46
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
