@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa4e458_38d00b62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2020-10-13T16:51:57Z",
+      "side": 1,
+      "message": "Hi Jason, please do a clean CP of http://ag/12379791",
+      "revId": "eac3411b01fd2236a7b4b2924586fe99238bbf98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
