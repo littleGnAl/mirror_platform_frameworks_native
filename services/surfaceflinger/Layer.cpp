@@ -793,7 +793,7 @@ void Layer::pushPendingState() {
             // to be applied as per normal (no synchronization).
             mCurrentState.barrierLayer_legacy = nullptr;
         } else {
-            auto syncPoint = std::make_shared<SyncPoint>(mCurrentState.frameNumber_legacy, this);
+            auto syncPoint = std::make_shared<SyncPoint>(mCurrentState.frameNumber_legacy, this, barrierLayer);
             if (barrierLayer->addSyncPoint(syncPoint)) {
                 std::stringstream ss;
                 ss << "Adding sync point " << mCurrentState.frameNumber_legacy;
@@ -816,16 +816,16 @@ void Layer::pushPendingState() {
 
 void Layer::popPendingState(State* stateToCommit) {
     ATRACE_CALL();
-    *stateToCommit = mPendingStates[0];
+    *stateToCommit = mPendingStates.front();
 
-    mPendingStates.removeAt(0);
+    mPendingStates.pop_front();
     ATRACE_INT(mTransactionName.c_str(), mPendingStates.size());
 }
 
 bool Layer::applyPendingStates(State* stateToCommit) {
     bool stateUpdateAvailable = false;
     while (!mPendingStates.empty()) {
-        if (mPendingStates[0].barrierLayer_legacy != nullptr) {
+        if (mPendingStates.front().barrierLayer_legacy != nullptr) {
             if (mRemoteSyncPoints.empty()) {
                 // If we don't have a sync point for this, apply it anyway. It
                 // will be visually wrong, but it should keep us from getting
@@ -837,7 +837,7 @@ bool Layer::applyPendingStates(State* stateToCommit) {
             }
 
             if (mRemoteSyncPoints.front()->getFrameNumber() !=
-                mPendingStates[0].frameNumber_legacy) {
+                mPendingStates.front().frameNumber_legacy) {
                 ALOGE("[%s] Unexpected sync point frame number found", getDebugName());
 
                 // Signal our end of the sync point and then dispose of it
@@ -857,6 +857,7 @@ bool Layer::applyPendingStates(State* stateToCommit) {
                 mRemoteSyncPoints.pop_front();
             } else {
                 ATRACE_NAME("!frameIsAvailable");
+                mRemoteSyncPoints.front()->checkTimeoutAndLog();
                 break;
             }
         } else {
