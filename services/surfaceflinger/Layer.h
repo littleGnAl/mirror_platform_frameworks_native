@@ -881,12 +881,16 @@ protected:
 
     class SyncPoint {
     public:
-        explicit SyncPoint(uint64_t frameNumber, wp<Layer> requestedSyncLayer)
+        explicit SyncPoint(uint64_t frameNumber,
+                           wp<Layer> requestedSyncLayer,
+                           wp<Layer> barrierLayer_legacy)
               : mFrameNumber(frameNumber),
                 mFrameIsAvailable(false),
                 mTransactionIsApplied(false),
-                mRequestedSyncLayer(requestedSyncLayer) {}
-
+                mRequestedSyncLayer(requestedSyncLayer),
+                mBarrierLayer_legacy(barrierLayer_legacy),
+                mCreateTimeStamp(systemTime(SYSTEM_TIME_MONOTONIC)),
+                mLastLogTime(0) {}
         uint64_t getFrameNumber() const { return mFrameNumber; }
 
         bool frameIsAvailable() const { return mFrameIsAvailable; }
@@ -899,11 +903,34 @@ protected:
 
         sp<Layer> getRequestedSyncLayer() { return mRequestedSyncLayer.promote(); }
 
+        sp<Layer> getBarrierLayer() { return mBarrierLayer_legacy.promote(); }
+
+        bool isTimeout(const nsecs_t timeoutThreshold = s2ns(1)) {
+            return systemTime(SYSTEM_TIME_MONOTONIC) - mCreateTimeStamp > timeoutThreshold;
+        }
+
+        void checkTimeoutAndLog(const nsecs_t logPeriod = s2ns(1)) {
+            if (!frameIsAvailable() && isTimeout()) {
+                nsecs_t now = systemTime(SYSTEM_TIME_MONOTONIC);
+                if (now - mLastLogTime > logPeriod) {
+                    mLastLogTime = now;
+                    sp<Layer> requestedSyncLayer = getRequestedSyncLayer();
+                    sp<Layer> barrierLayer = getBarrierLayer();
+                    ALOGW("[%s] sync point %" PRIu64 " wait timeout %" PRId64 " for %s",
+                          requestedSyncLayer ? requestedSyncLayer->getDebugName() : "Removed",
+                          mFrameNumber, now - mCreateTimeStamp,
+                          barrierLayer ? barrierLayer->getDebugName() : "Removed");
+                }
+            }
+        }
     private:
         const uint64_t mFrameNumber;
         std::atomic<bool> mFrameIsAvailable;
         std::atomic<bool> mTransactionIsApplied;
         wp<Layer> mRequestedSyncLayer;
+        wp<Layer> mBarrierLayer_legacy;
+        nsecs_t mCreateTimeStamp;
+        nsecs_t mLastLogTime;
     };
 
     // SyncPoints which will be signaled when the correct frame is at the head
@@ -984,12 +1011,12 @@ protected:
     State mDrawingState;
     // Store a copy of the pending state so that the drawing thread can access the
     // states without a lock.
-    Vector<State> mPendingStatesSnapshot;
+    std::deque<State> mPendingStatesSnapshot;
 
     // these are protected by an external lock (mStateLock)
     State mCurrentState;
     std::atomic<uint32_t> mTransactionFlags{0};
-    Vector<State> mPendingStates;
+    std::deque<State> mPendingStates;
 
     // Timestamp history for UIAutomation. Thread safe.
     FrameTracker mFrameTracker;
