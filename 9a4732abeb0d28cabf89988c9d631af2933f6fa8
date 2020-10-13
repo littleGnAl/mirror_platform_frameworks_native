@@ -39,6 +39,30 @@
       },
       "revId": "9a4732abeb0d28cabf89988c9d631af2933f6fa8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1447222b_56576b18",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2661,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-13T08:38:00Z",
+      "side": 1,
+      "message": "If it goes to socket, it already exist and perm is specified in rc file as shell/log and is controlled se policy I think.",
+      "parentUuid": "4059425d_57f3a71c",
+      "range": {
+        "startLine": 2661,
+        "startChar": 8,
+        "endLine": 2661,
+        "endChar": 29
+      },
+      "revId": "9a4732abeb0d28cabf89988c9d631af2933f6fa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

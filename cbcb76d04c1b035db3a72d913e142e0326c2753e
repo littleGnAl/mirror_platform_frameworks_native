@@ -22,6 +22,30 @@
       },
       "revId": "cbcb76d04c1b035db3a72d913e142e0326c2753e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae9a3522_ee73fb66",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2431,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-13T08:38:00Z",
+      "side": 0,
+      "message": "Most results are using `-z` except trusy \u0026 goldfish devices. How about making it a compatibility no-op option? Then this only affect trusty and goldfish to generate zip file.",
+      "parentUuid": "113050ea_7979e397",
+      "range": {
+        "startLine": 2431,
+        "startChar": 43,
+        "endLine": 2431,
+        "endChar": 44
+      },
+      "revId": "cbcb76d04c1b035db3a72d913e142e0326c2753e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
