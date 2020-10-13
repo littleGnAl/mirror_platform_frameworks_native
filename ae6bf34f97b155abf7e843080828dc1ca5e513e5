@@ -66,6 +66,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9665b13e_743ff641",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-10-13T20:31:35Z",
+      "side": 1,
+      "message": "Adjusting capacity I\u0027d get to avoid re-allocation churn, but why do we want to let things set the actual size? This looks super error prone to me?",
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d552f4f2_e7136d33",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 1
@@ -146,6 +163,30 @@
       "writtenOn": "2020-10-13T19:30:10Z",
       "side": 1,
       "message": "is this needed? (we\u0027ve avoided it so far because you get one when you start a transaction that already has the transaction header written to it)",
+      "range": {
+        "startLine": 1128,
+        "startChar": 0,
+        "endLine": 1128,
+        "endChar": 46
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe36890_061a9438",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-10-13T20:31:35Z",
+      "side": 1,
+      "message": "fwiw I\u0027m in favor of having AParcel_create() if for no other reason than to make it easier to unit-test parceling code. It\u0027s way clunky to setup an IPC transaction just to assert the parceling code.",
+      "parentUuid": "c464171f_ff9cee76",
       "range": {
         "startLine": 1128,
         "startChar": 0,
