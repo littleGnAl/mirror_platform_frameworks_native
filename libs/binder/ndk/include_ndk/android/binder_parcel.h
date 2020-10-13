@@ -1120,6 +1120,13 @@ binder_status_t AParcel_readByteArray(const AParcel* parcel, void* arrayData,
 // @END-PRIMITIVE-READ-WRITE
 
 #endif  //__ANDROID_API__ >= 29
+#if __ANDROID_API__ >= 31
+binder_status_t AParcel_setDataSize(AParcel* parcel, int32_t size) __INTRODUCED_IN(31);
+int32_t AParcel_getDataSize(const AParcel* parcel) __INTRODUCED_IN(31);
+binder_status_t AParcel_appendFrom(const AParcel* from, AParcel* to, int32_t start, int32_t size)
+        __INTRODUCED_IN(31);
+AParcel* AParcel_create() __INTRODUCED_IN(31);
+#endif  //__ANDROID_API__ >= 31
 __END_DECLS
 
 /** @} */
