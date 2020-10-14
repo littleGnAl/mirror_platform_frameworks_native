@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "e55e8931_47ea38cb",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,10 @@
         "endChar": 4
       },
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "17317af5_77647171",
         "filename": "/COMMIT_MSG",
@@ -44,10 +45,10 @@
         "endChar": 4
       },
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9cae0375_54086614",
         "filename": "/COMMIT_MSG",
@@ -68,10 +69,10 @@
         "endChar": 4
       },
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "112e8c05_b16cf34e",
         "filename": "/COMMIT_MSG",
@@ -92,10 +93,10 @@
         "endChar": 4
       },
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2720b941_28ef613a",
         "filename": "/COMMIT_MSG",
@@ -116,10 +117,10 @@
         "endChar": 4
       },
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "dd2a71fa_40f7a090",
         "filename": "/COMMIT_MSG",
@@ -140,8 +141,31 @@
         "endChar": 4
       },
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2834a2_8a34deb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-10-14T08:29:32Z",
+      "side": 1,
+      "message": "4MB is quite a lot :(. We have been seeing big increases in bugreport sizes lately like b/169495250. What\u0027s the business case for this extra logging? How is this useful and which bugs would this help you debug better?",
+      "parentUuid": "dd2a71fa_40f7a090",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
