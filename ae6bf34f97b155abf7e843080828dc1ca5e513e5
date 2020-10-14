@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1e15e9_730124f5",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-14T12:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49576709_8aee4557",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b25379e_734aec6b",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-13T19:30:10Z",
       "side": 1,
       "message": "why rename?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 39
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "159aad06_197a1eb0",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-14T12:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b25379e_734aec6b",
       "range": {
         "startLine": 76,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81814fa7_8bb26d91",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-14T12:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b56c213_ef4d4d86",
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9665b13e_743ff641",
@@ -83,6 +149,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "802e5922_124bd107",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-14T12:39:13Z",
+      "side": 1,
+      "message": "for now, the only use case is setDataSize(0), in this case, I\u0027d better expose freeData() instead?",
+      "parentUuid": "9665b13e_743ff641",
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d552f4f2_e7136d33",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 1
@@ -94,6 +178,30 @@
       "writtenOn": "2020-10-13T19:30:10Z",
       "side": 1,
       "message": "size_t?",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1125,
+        "endChar": 7
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e9be50b_c9138ff0",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-14T12:39:13Z",
+      "side": 1,
+      "message": "It looks like the other method(such as setDataPosition, and so on) uses int32_t, should we keep the consistency? or let new one\u0027s field be size_t?",
+      "parentUuid": "d552f4f2_e7136d33",
       "range": {
         "startLine": 1125,
         "startChar": 0,
@@ -187,6 +295,30 @@
       "side": 1,
       "message": "fwiw I\u0027m in favor of having AParcel_create() if for no other reason than to make it easier to unit-test parceling code. It\u0027s way clunky to setup an IPC transaction just to assert the parceling code.",
       "parentUuid": "c464171f_ff9cee76",
+      "range": {
+        "startLine": 1128,
+        "startChar": 0,
+        "endLine": 1128,
+        "endChar": 46
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0c6c7c_d4314fce",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-14T12:39:13Z",
+      "side": 1,
+      "message": "ParcelableHolder needs to have an internal Parcel object before transaction to hold the extension in it.",
+      "parentUuid": "cbe36890_061a9438",
       "range": {
         "startLine": 1128,
         "startChar": 0,
