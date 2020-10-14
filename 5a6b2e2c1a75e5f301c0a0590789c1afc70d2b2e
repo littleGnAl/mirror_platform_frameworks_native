@@ -214,6 +214,30 @@
       },
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7a5e08_a5d36898",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2020-10-14T09:04:35Z",
+      "side": 1,
+      "message": "If we see average bugreport size increasing by 4MB we will have to either limit the size, or remove this altogether when the NFC crash issues are resolved.",
+      "parentUuid": "de60e189_b61d0906",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
