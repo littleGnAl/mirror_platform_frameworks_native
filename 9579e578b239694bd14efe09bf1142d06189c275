@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "e1080a4c_ee537a23",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "thank you I\u0027m new",
       "revId": "9579e578b239694bd14efe09bf1142d06189c275",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "403b07af_82cfeb30",
         "filename": "/PATCHSET_LEVEL",
@@ -31,8 +32,76 @@
       "side": 1,
       "message": "thanks",
       "revId": "9579e578b239694bd14efe09bf1142d06189c275",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838f00be_f0795334",
+        "filename": "libs/renderengine/tests/RenderEngineTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-10-14T04:11:41Z",
+      "side": 1,
+      "message": "nit: enabled",
+      "range": {
+        "startLine": 385,
+        "startChar": 49,
+        "endLine": 385,
+        "endChar": 55
+      },
+      "revId": "9579e578b239694bd14efe09bf1142d06189c275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b561d5_26055314",
+        "filename": "libs/renderengine/tests/RenderEngineTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-10-14T04:11:41Z",
+      "side": 1,
+      "message": "comment not needed, it\u0027s implied by the tolerance.",
+      "range": {
+        "startLine": 703,
+        "startChar": 5,
+        "endLine": 703,
+        "endChar": 62
+      },
+      "revId": "9579e578b239694bd14efe09bf1142d06189c275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0573bae3_9f915b4b",
+        "filename": "libs/renderengine/tests/RenderEngineTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-10-14T04:11:41Z",
+      "side": 1,
+      "message": "comment not needed, it\u0027s implied by the tolerance.",
+      "range": {
+        "startLine": 710,
+        "startChar": 4,
+        "endLine": 710,
+        "endChar": 62
+      },
+      "revId": "9579e578b239694bd14efe09bf1142d06189c275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
