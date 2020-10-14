@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5af5f33b_1536d1da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-14T05:08:56Z",
+      "side": 1,
+      "message": "I\u0027d separate dumpstate modification to another patch, since they are different binary. It could help reviewer to focus on single module in one patch.",
+      "revId": "f30e073a6800b3f838f925a4134afa947e21e6df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db52d976_e6267a43",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-14T05:08:56Z",
+      "side": 1,
+      "message": "What\u0027s the behavior if they are both true? It\u0027s fine we can separate two functions for our needs. And it\u0027s better if we can extract read part for the common.",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "f30e073a6800b3f838f925a4134afa947e21e6df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
