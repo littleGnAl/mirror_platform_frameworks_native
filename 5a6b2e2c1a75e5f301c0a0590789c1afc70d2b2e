@@ -166,6 +166,30 @@
       },
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e9d6be_fa94a5dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2020-10-14T08:41:04Z",
+      "side": 1,
+      "message": "There is high crash rate in nfc side comparing to other functionalities.\nThis is the reason that we would like to enable extra logging to improve the stability of the Nfc function.\nWithout the extra logging, we are not able to debug the stability issues of the Nfc.\nhttps://b.corp.google.com/hotlists/2199544",
+      "parentUuid": "3f2834a2_8a34deb2",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
