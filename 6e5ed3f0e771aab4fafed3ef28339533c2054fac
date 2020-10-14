@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e92290b_f8f9a4b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2020-10-14T06:45:55Z",
+      "side": 1,
+      "message": "The change conflicts with the internal main trunk. Will need to add \"DO NOT MERGE\" if it makes sense.",
+      "revId": "6e5ed3f0e771aab4fafed3ef28339533c2054fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
