@@ -190,6 +190,30 @@
       },
       "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de60e189_b61d0906",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2020-10-14T08:59:41Z",
+      "side": 1,
+      "message": "Not every bugreport will be increased by 4MB byte, only when NFC is used a lot.\nAnd we will only enable more Nfc logging in internal build, not in ship build.",
+      "parentUuid": "94e9d6be_fa94a5dd",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "5a6b2e2c1a75e5f301c0a0590789c1afc70d2b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
