@@ -232,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7944e46e_84dca644",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-14T23:46:12Z",
+      "side": 1,
+      "message": "I was thinking this b/c libbinder uses these types - you might check what happens when passed a big value (either abort or silent failure, depending on the API).\n\nWonder what jreck thinks here? Maybe it is better to be consistent. I think I was doing it to match Java Parcel API",
+      "parentUuid": "4e9be50b_c9138ff0",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1125,
+        "endChar": 7
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22da7e64_020987c3",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 1
