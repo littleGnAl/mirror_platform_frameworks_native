@@ -167,6 +167,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "962e780e_c2deb458",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-10-14T16:44:01Z",
+      "side": 1,
+      "message": "Looking at the usage I\u0027d suggest instead a reset() method instead that both sets the data size to 0 and sets the position back to 0. And can then also reset any other state that might be forgotten about or added latter (eg, flags)",
+      "parentUuid": "802e5922_124bd107",
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d552f4f2_e7136d33",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 1
