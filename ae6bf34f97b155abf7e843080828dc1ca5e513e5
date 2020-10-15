@@ -183,6 +183,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1760701_98d4b7e2",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-15T09:10:22Z",
+      "side": 1,
+      "message": "introduced AParcel_reset(AParcel*) instead of setDataSize().",
+      "parentUuid": "962e780e_c2deb458",
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d552f4f2_e7136d33",
