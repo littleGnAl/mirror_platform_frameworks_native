@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7119605c_434d2fb8",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-10-15T23:30:20Z",
+      "side": 1,
+      "message": "Please add some direct CTS tests for these. They look to be only tested indirectly via just seeing if ParcelableHolder AIDL generation works. Which is a great set of tests to have, but it means test coverage here is exclusively dependent on the current implementation of that and the current particular path it takes.\n\nCould just be something simple like calling create, writing something to it, calling reset, writing something else, and then verifying that after a setDataPosition only the second write remains.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 19
+      },
+      "revId": "62240b96e98af438d4deb54a52b28255548b4945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
