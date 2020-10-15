@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8c9eb8_2f9a4c71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-10-15T06:23:32Z",
+      "side": 1,
+      "message": "presubmit failed because it\u0027s failing to auto-merge into internal trunks.\n\nperhaps CP this on to internal master manually and set this one with MERGED-IN:",
+      "revId": "9d6df1065b799076456367e0439fc60a053085d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
