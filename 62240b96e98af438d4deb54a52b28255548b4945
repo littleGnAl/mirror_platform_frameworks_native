@@ -22,6 +22,30 @@
       },
       "revId": "62240b96e98af438d4deb54a52b28255548b4945",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e97523ef_85ba4363",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-16T15:28:48Z",
+      "side": 1,
+      "message": "Supplemented the test cases in aosp/1457992",
+      "parentUuid": "7119605c_434d2fb8",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 19
+      },
+      "revId": "62240b96e98af438d4deb54a52b28255548b4945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
