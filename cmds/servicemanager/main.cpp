@@ -22,19 +22,15 @@
 #include <utils/Looper.h>
 #include <utils/StrongPointer.h>
 
-#include "Access.h"
 #include "ServiceManager.h"
+#include "setup.h"
 
-using ::android::Access;
 using ::android::sp;
 using ::android::Looper;
 using ::android::LooperCallback;
 using ::android::ProcessState;
 using ::android::IPCThreadState;
-using ::android::ProcessState;
 using ::android::ServiceManager;
-using ::android::os::IServiceManager;
-using ::android::sp;
 
 class BinderCallback : public LooperCallback {
 public:
@@ -120,17 +116,10 @@ int main(int argc, char** argv) {
 
     const char* driver = argc == 2 ? argv[1] : "/dev/binder";
 
-    sp<ProcessState> ps = ProcessState::initWithDriver(driver);
-    ps->setThreadPoolMaxThreadCount(0);
-    ps->setCallRestriction(ProcessState::CallRestriction::FATAL_IF_NOT_ONEWAY);
-
-    sp<ServiceManager> manager = new ServiceManager(std::make_unique<Access>());
-    if (!manager->addService("manager", manager, false /*allowIsolated*/, IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT).isOk()) {
-        LOG(ERROR) << "Could not self register servicemanager";
-    }
+    sp<ServiceManager> manager = android::setupServiceManager(driver);
 
     IPCThreadState::self()->setTheContextObject(manager);
-    ps->becomeContextManager();
+    ProcessState::self()->becomeContextManager();
 
     sp<Looper> looper = Looper::prepare(false /*allowNonCallbacks*/);
 
