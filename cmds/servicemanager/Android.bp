@@ -59,3 +59,49 @@ cc_test {
     ],
     static_libs: ["libgmock"],
 }
+
+cc_fuzz {
+    name: "servicemanager_fuzzer",
+    defaults: ["libbinder_ndk_host_user"],
+    host_supported: true,
+
+    fuzz_config: {
+        cc: ["smoreland@google.com"],
+    },
+
+    srcs: [
+        "Access.cpp",
+        "ServiceManager.cpp",
+        "fuzzer.cpp",
+    ],
+    static_libs: [
+        "libbase",
+        "libbinder_random_parcel",
+        "libcutils",
+        "libhidl-gen-utils",
+        "liblog",
+        "liblog",
+        "libselinux",
+        "libselinux",
+        "libtinyxml2",
+        "libutils",
+        "libvintf",
+        "libz",
+    ],
+
+    target: {
+        android: {
+            shared_libs: [
+                "libbinder",
+            ],
+            cflags: [
+                "-DDEVICE_TARGET",
+            ],
+        },
+        host: {
+            static_libs: [
+                "libbinder",
+            ],
+        },
+    },
+}
