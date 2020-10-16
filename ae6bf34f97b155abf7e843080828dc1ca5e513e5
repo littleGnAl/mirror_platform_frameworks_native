@@ -298,6 +298,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25039b2e_7cde0cfe",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-16T16:24:43Z",
+      "side": 1,
+      "message": "Steven, WDYT? Keeping int32_t sounds good to me..",
+      "parentUuid": "01864c7c_09251005",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1125,
+        "endChar": 7
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22da7e64_020987c3",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 1
@@ -403,6 +427,30 @@
       "side": 1,
       "message": "ParcelableHolder needs to have an internal Parcel object before transaction to hold the extension in it.",
       "parentUuid": "cbe36890_061a9438",
+      "range": {
+        "startLine": 1128,
+        "startChar": 0,
+        "endLine": 1128,
+        "endChar": 46
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e3fd689_89197385",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-16T16:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a0c6c7c_d4314fce",
       "range": {
         "startLine": 1128,
         "startChar": 0,
