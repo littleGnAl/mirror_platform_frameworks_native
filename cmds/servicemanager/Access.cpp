@@ -18,6 +18,8 @@
 
 #include <android-base/logging.h>
 #include <binder/IPCThreadState.h>
+#include <binder/IServiceManager.h>
+#include <binder/IInterface.h>
 #include <log/log_safetynet.h>
 #include <selinux/android.h>
 #include <selinux/avc.h>
@@ -90,7 +92,14 @@ Access::Access() {
 
     CHECK(selinux_status_open(true /*fallback*/) >= 0);
 
+#ifdef TARGET_FUZZ
+    // for the fuzzer, just lookup the PID of the actual running servicemanager
+    pid_t smPid;
+    CHECK(OK == IInterface::asBinder(defaultServiceManager())->getDebugPid(&smPid));
+    CHECK(getpidcon(smPid, &mThisProcessContext) == 0) << " for pid: " << smPid;
+#else
     CHECK(getcon(&mThisProcessContext) == 0);
+#endif
 }
 
 Access::~Access() {

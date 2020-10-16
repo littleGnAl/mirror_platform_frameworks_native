@@ -25,10 +25,17 @@ namespace android {
 
 int getRandomFd(FuzzedDataProvider* provider) {
     int fd = provider->PickValueInArray<std::function<int()>>({
-            []() { return ashmem_create_region("binder test region", 1024); },
-            []() { return open("/dev/null", O_RDWR); },
+            []() {
+                int fd = ashmem_create_region("binder test region", 1024);
+                CHECK(fd >= 0) << "invalid ashmem fd: " << strerror(errno);
+                return fd;
+            },
+            []() {
+                int fd = open("/dev/null", O_WRONLY);
+                CHECK(fd >= 0) << "/dev/null fd err: " << strerror(errno);
+                return fd;
+            },
     })();
-    CHECK(fd >= 0);
     return fd;
 }
 
