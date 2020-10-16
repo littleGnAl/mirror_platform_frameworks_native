@@ -16,6 +16,24 @@
       "message": "also add new AParcel methods and ParcelableHolder read here",
       "revId": "ae8cd5544082e91d9eb1e05e9e2013a37a748d0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f74bf73_54b82d84",
+        "filename": "libs/binder/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-16T16:22:58Z",
+      "side": 0,
+      "message": "uploaded aosp/1464442",
+      "parentUuid": "2d732970_3f628131",
+      "revId": "ae8cd5544082e91d9eb1e05e9e2013a37a748d0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
