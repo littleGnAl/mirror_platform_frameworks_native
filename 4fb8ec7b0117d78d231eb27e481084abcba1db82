@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dedccb10_d66d8fbd",
+        "filename": "libs/binder/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-19T22:26:27Z",
+      "side": 1,
+      "message": "This should call AParcel_reset on p, the parcel we are fuzzing",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "4fb8ec7b0117d78d231eb27e481084abcba1db82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5602ea05_e68337dd",
+        "filename": "libs/binder/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-19T22:26:27Z",
+      "side": 1,
+      "message": "this is just a test for AParcel_create/delete. We can avoid this in the fuzzer",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 10
+      },
+      "revId": "4fb8ec7b0117d78d231eb27e481084abcba1db82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83a8a100_7c83185c",
+        "filename": "libs/binder/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-19T22:26:27Z",
+      "side": 1,
+      "message": "2",
+      "range": {
+        "startLine": 78,
+        "startChar": 47,
+        "endLine": 78,
+        "endChar": 48
+      },
+      "revId": "4fb8ec7b0117d78d231eb27e481084abcba1db82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
