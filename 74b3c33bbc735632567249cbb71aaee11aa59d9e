@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b7d283_8da3db6f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2280,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-20T12:39:58Z",
+      "side": 1,
+      "message": "How about we rename this option to a more specific name such as do_stream_zip_file? That would be more clear here.",
+      "range": {
+        "startLine": 2280,
+        "startChar": 25,
+        "endLine": 2280,
+        "endChar": 35
+      },
+      "revId": "74b3c33bbc735632567249cbb71aaee11aa59d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65ac3360_885cf0fa",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2281,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-20T12:39:58Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we close the socket fd after the dup function? Or is it necessary to dup the fd?",
+      "range": {
+        "startLine": 2281,
+        "startChar": 28,
+        "endLine": 2281,
+        "endChar": 52
+      },
+      "revId": "74b3c33bbc735632567249cbb71aaee11aa59d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e075d3_0d1bbb76",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2285,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-20T12:39:58Z",
+      "side": 1,
+      "message": "Could you double check whether we don\u0027t need to create parent dir for streaming case? Some temporary files may depend on this folder.",
+      "range": {
+        "startLine": 2285,
+        "startChar": 12,
+        "endLine": 2285,
+        "endChar": 30
+      },
+      "revId": "74b3c33bbc735632567249cbb71aaee11aa59d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
