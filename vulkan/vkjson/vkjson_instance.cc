@@ -165,7 +165,7 @@ VkJsonDevice VkJsonGetDevice(VkInstance instance,
 
   VkFormatProperties format_properties = {};
   for (VkFormat format = VK_FORMAT_R4G4_UNORM_PACK8;
-       format <= VK_FORMAT_END_RANGE;
+       format <= VK_FORMAT_ASTC_12x12_SRGB_BLOCK;
        format = static_cast<VkFormat>(format + 1)) {
     vkGetPhysicalDeviceFormatProperties(physical_device, format,
                                         &format_properties);
