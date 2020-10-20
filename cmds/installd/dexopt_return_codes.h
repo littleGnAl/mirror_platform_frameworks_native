@@ -34,6 +34,7 @@ enum DexoptReturnCodes : int {
     kHashOpenPath = 75,
     kHashReadDex = 76,
     kHashWrite = 77,
+    kSetIoPriority = 78,
 };
 
 inline const char* get_installd_return_code_name(DexoptReturnCodes code) {
@@ -64,6 +65,8 @@ inline const char* get_installd_return_code_name(DexoptReturnCodes code) {
             return "hash(read-dex)";
         case kHashWrite:
             return "hash(write)";
+        case kSetIoPriority:
+            return "ioprio_set";
     }
     return nullptr;
 }

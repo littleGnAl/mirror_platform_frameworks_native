@@ -22,6 +22,7 @@
 #include <sys/capability.h>
 #include <sys/file.h>
 #include <sys/stat.h>
+#include <sys/syscall.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/resource.h>
@@ -56,6 +57,30 @@
 #include "run_dex2oat.h"
 #include "unique_file.h"
 #include "utils.h"
+
+// Values taken from linux/ioprio.h
+
+#define IOPRIO_CLASS_SHIFT (13)
+#define IOPRIO_PRIO_MASK   ((1UL << IOPRIO_CLASS_SHIFT) - 1)
+
+#define IOPRIO_PRIO_CLASS(mask)        ((mask) >> IOPRIO_CLASS_SHIFT)
+#define IOPRIO_PRIO_DATA(mask)         ((mask) & IOPRIO_PRIO_MASK)
+#define IOPRIO_PRIO_VALUE(class, data) (((class) << IOPRIO_CLASS_SHIFT) | data)
+
+#define ioprio_valid(mask) (IOPRIO_PRIO_CLASS((mask)) != IOPRIO_CLASS_NONE)
+
+enum {
+    IOPRIO_CLASS_NONE,
+    IOPRIO_CLASS_RT,
+    IOPRIO_CLASS_BE,
+    IOPRIO_CLASS_IDLE,
+};
+
+enum {
+    IOPRIO_WHO_PROCESS = 1,
+    IOPRIO_WHO_PGRP,
+    IOPRIO_WHO_USER,
+};
 
 using android::base::Basename;
 using android::base::EndsWith;
@@ -278,16 +303,60 @@ static bool ShouldUseSwapFileForDexopt() {
     return kDefaultProvideSwapFile;
 }
 
-static void SetDex2OatScheduling(bool set_to_bg) {
-    if (set_to_bg) {
-        if (set_sched_policy(0, SP_BACKGROUND) < 0) {
-            PLOG(ERROR) << "set_sched_policy failed";
-            exit(DexoptReturnCodes::kSetSchedPolicy);
+static void SetDex2OatScheduling(int priority, bool boot_complete) {
+    if (boot_complete) {
+        // Handle cpu/io priority levels
+        if (priority == PRIORITY_HIGHEST) {
+            if (set_sched_policy(0, SP_FOREGROUND) < 0) {
+                PLOG(ERROR) << "set_sched_policy failed: " << strerror(errno);
+                exit(DexoptReturnCodes::kSetSchedPolicy);
+            }
+
+            if (setpriority(PRIO_PROCESS, 0, ANDROID_PRIORITY_FOREGROUND) == -1) {
+                PLOG(ERROR) << "setpriority failed: " << strerror(errno);
+                exit(DexoptReturnCodes::kSetPriority);
+            }
+
+            // Set the IO scheduler to Best Effort and give this process the
+            // highest priority
+            long ret_val = syscall(SYS_ioprio_set,
+                IOPRIO_WHO_PROCESS, getpid(), IOPRIO_PRIO_VALUE(IOPRIO_CLASS_BE, NICE_IO_HIGHEST));
+
+            if (ret_val == -1) {
+                PLOG(ERROR) << "ioprio_set failed: " << strerror(errno);
+                exit(DexoptReturnCodes::kSetIoPriority);
+            }
+
+        } else if (priority == PRIORITY_NORMAL) {
+            if (set_sched_policy(0, SP_BACKGROUND) < 0) {
+                PLOG(ERROR) << "set_sched_policy failed: " << strerror(errno);
+                exit(DexoptReturnCodes::kSetSchedPolicy);
+            }
+
+            if (setpriority(PRIO_PROCESS, 0, ANDROID_PRIORITY_BACKGROUND) < 0) {
+                PLOG(ERROR) << "setpriority failed: " << strerror(errno);
+                exit(DexoptReturnCodes::kSetPriority);
+            }
+
+        } else /* priority == PRIORITY_LOWEST) */ {
+            // Leave the scheduling policy to the default value.
+
+            if (setpriority(PRIO_PROCESS, 0, ANDROID_PRIORITY_BACKGROUND) == -1) {
+                PLOG(ERROR) << "setpriority failed: " << strerror(errno);
+                exit(DexoptReturnCodes::kSetPriority);
+            }
+
+            // Set the IO scheduler to IDLE, only allowing the process to use
+            // the disk when it is idle.
+            long ret_val = syscall(SYS_ioprio_set,
+                IOPRIO_WHO_PROCESS, getpid(), IOPRIO_PRIO_CLASS(IOPRIO_CLASS_IDLE));
+
+            if (ret_val == -1) {
+                PLOG(ERROR) << "iopro_set failed: " << strerror(errno);
+                exit(DexoptReturnCodes::kSetIoPriority);
+            }
         }
-        if (setpriority(PRIO_PROCESS, 0, ANDROID_PRIORITY_BACKGROUND) < 0) {
-            PLOG(ERROR) << "setpriority failed";
-            exit(DexoptReturnCodes::kSetPriority);
-        }
+
     }
 }
 
@@ -1621,7 +1690,8 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
         int dexopt_needed, const char* oat_dir, int dexopt_flags, const char* compiler_filter,
         const char* volume_uuid, const char* class_loader_context, const char* se_info,
         bool downgrade, int target_sdk_version, const char* profile_name,
-        const char* dex_metadata_path, const char* compilation_reason, std::string* error_msg) {
+        const char* dex_metadata_path, const char* compilation_reason, const int priority,
+        std::string* error_msg) {
     CHECK(pkgname != nullptr);
     CHECK(pkgname[0] != 0);
     CHECK(error_msg != nullptr);
@@ -1798,10 +1868,12 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
 
     pid_t pid = fork();
     if (pid == 0) {
-        /* child -- drop privileges before continuing */
+        /* Child */
+
+        // drop privileges before continuing
         drop_capabilities(uid);
 
-        SetDex2OatScheduling(boot_complete);
+        SetDex2OatScheduling(boot_complete, priority);
         if (flock(out_oat.fd(), LOCK_EX | LOCK_NB) != 0) {
             PLOG(ERROR) << "flock(" << out_oat.path() << ") failed";
             _exit(DexoptReturnCodes::kFlock);

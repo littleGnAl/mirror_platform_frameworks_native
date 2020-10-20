@@ -490,6 +490,7 @@ private:
                       parameters_.profile_name,
                       parameters_.dex_metadata_path,
                       parameters_.compilation_reason,
+                      PRIORITY_NORMAL,
                       &dummy);
     }
 

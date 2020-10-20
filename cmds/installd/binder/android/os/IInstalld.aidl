@@ -65,7 +65,8 @@ interface IInstalld {
             @nullable @utf8InCpp String seInfo, boolean downgrade, int targetSdkVersion,
             @nullable @utf8InCpp String profileName,
             @nullable @utf8InCpp String dexMetadataPath,
-            @nullable @utf8InCpp String compilationReason);
+            @nullable @utf8InCpp String compilationReason,
+            int priority);
     boolean compileLayouts(@utf8InCpp String apkPath, @utf8InCpp String packageName,
             @utf8InCpp String outDexFile, int uid);
 
@@ -141,4 +142,8 @@ interface IInstalld {
     const int FLAG_FORCE = 0x2000;
 
     const int FLAG_CLEAR_APP_DATA_KEEP_ART_PROFILES = 0x20000;
+
+    const int PRIORITY_LOWEST = 0;
+    const int PRIORITY_NORMAL = 1;
+    const int PRIORITY_HIGHEST = 2;
 }
