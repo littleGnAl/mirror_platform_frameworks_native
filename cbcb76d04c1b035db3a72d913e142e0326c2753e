@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fcb85f3_3422ab94",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-20T04:03:46Z",
+      "side": 1,
+      "message": "We can show progress when streaming to stdout that help debugging.",
+      "parentUuid": "c424bd86_9b297f2b",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "cbcb76d04c1b035db3a72d913e142e0326c2753e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "954c201b_46d07e50",
         "filename": "cmds/bugreportz/main.cpp",
         "patchSetId": 4

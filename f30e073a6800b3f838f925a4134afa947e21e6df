@@ -39,6 +39,30 @@
       },
       "revId": "f30e073a6800b3f838f925a4134afa947e21e6df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604deb91_25575672",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-20T04:03:46Z",
+      "side": 1,
+      "message": "Do print dots to stderr when both are true at user invoking bugreportz with -p and -s explicitly. \n\nIs separating two functions for this here contrary to comment in cmds/bugreportz/main.cpp#45?",
+      "parentUuid": "db52d976_e6267a43",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "f30e073a6800b3f838f925a4134afa947e21e6df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
