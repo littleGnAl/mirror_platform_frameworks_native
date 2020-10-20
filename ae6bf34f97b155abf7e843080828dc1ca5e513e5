@@ -320,6 +320,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61cee047_346d9e6b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-20T03:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25039b2e_7cde0cfe",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1125,
+        "endChar": 7
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22da7e64_020987c3",
@@ -356,6 +380,54 @@
       "writtenOn": "2020-10-13T19:30:10Z",
       "side": 1,
       "message": "size_t?",
+      "range": {
+        "startLine": 1126,
+        "startChar": 84,
+        "endLine": 1126,
+        "endChar": 91
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f4c3736_284a087e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-20T03:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22da7e64_020987c3",
+      "range": {
+        "startLine": 1126,
+        "startChar": 69,
+        "endLine": 1126,
+        "endChar": 76
+      },
+      "revId": "ae6bf34f97b155abf7e843080828dc1ca5e513e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffdf4d09_adb7352b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-20T03:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8afe2d8a_1db81adf",
       "range": {
         "startLine": 1126,
         "startChar": 84,

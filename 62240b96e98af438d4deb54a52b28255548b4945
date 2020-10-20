@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f4fba2c_bc660d4e",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-20T03:10:52Z",
+      "side": 1,
+      "message": "I fixed it in the follow-up CL(aosp/1467062)",
+      "parentUuid": "e62799c3_901c7d8b",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 46
+      },
+      "revId": "62240b96e98af438d4deb54a52b28255548b4945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7119605c_434d2fb8",
