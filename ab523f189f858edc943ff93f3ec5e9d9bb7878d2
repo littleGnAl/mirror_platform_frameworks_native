@@ -22,6 +22,30 @@
       },
       "revId": "ab523f189f858edc943ff93f3ec5e9d9bb7878d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "228f42e5_233d1c43",
+        "filename": "cmds/dumpstate/dumpstate.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-20T06:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe80505a_15d30952",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 48
+      },
+      "revId": "ab523f189f858edc943ff93f3ec5e9d9bb7878d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
