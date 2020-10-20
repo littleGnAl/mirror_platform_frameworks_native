@@ -63,6 +63,30 @@
       },
       "revId": "f30e073a6800b3f838f925a4134afa947e21e6df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae247bf_15ecdff1",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-20T07:58:21Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we need to print dots to stderr to show the progress. Could you elaborate it?",
+      "parentUuid": "604deb91_25575672",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "f30e073a6800b3f838f925a4134afa947e21e6df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
