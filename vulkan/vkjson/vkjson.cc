@@ -57,9 +57,17 @@ static const double SAFE_DOUBLE_MIN = -SAFE_DOUBLE_MAX;
 
 template <typename T> struct EnumTraits;
 template <> struct EnumTraits<VkPhysicalDeviceType> {
-  static uint32_t min() { return VK_PHYSICAL_DEVICE_TYPE_BEGIN_RANGE; }
-  static uint32_t max() { return VK_PHYSICAL_DEVICE_TYPE_END_RANGE; }
-  static bool exist(uint32_t e) { return e >= min() && e <= max(); }
+  static bool exist(uint32_t e) {
+    switch (e) {
+      case VK_PHYSICAL_DEVICE_TYPE_OTHER:
+      case VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU:
+      case VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU:
+      case VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU:
+      case VK_PHYSICAL_DEVICE_TYPE_CPU:
+        return true;
+    }
+    return false;
+  }
 };
 
 template <> struct EnumTraits<VkFormat> {
@@ -300,9 +308,14 @@ template <> struct EnumTraits<VkFormat> {
 
 template <>
 struct EnumTraits<VkPointClippingBehavior> {
-  static uint32_t min() { return VK_POINT_CLIPPING_BEHAVIOR_BEGIN_RANGE; }
-  static uint32_t max() { return VK_POINT_CLIPPING_BEHAVIOR_END_RANGE; }
-  static bool exist(uint32_t e) { return e >= min() && e <= max(); }
+  static bool exist(uint32_t e) {
+    switch (e) {
+      case VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES:
+      case VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY:
+        return true;
+    }
+    return false;
+  }
 };
 
 template <>
@@ -336,9 +349,26 @@ struct EnumTraits<VkExternalSemaphoreHandleTypeFlagBits> {
 
 template <>
 struct EnumTraits<VkDriverIdKHR> {
-  static uint32_t min() { return VK_DRIVER_ID_BEGIN_RANGE_KHR; }
-  static uint32_t max() { return VK_DRIVER_ID_END_RANGE_KHR; }
-  static bool exist(uint32_t e) { return e >= min() && e <= max(); }
+  static bool exist(uint32_t e) {
+    switch (e) {
+      case VK_DRIVER_ID_AMD_PROPRIETARY:
+      case VK_DRIVER_ID_AMD_OPEN_SOURCE:
+      case VK_DRIVER_ID_MESA_RADV:
+      case VK_DRIVER_ID_NVIDIA_PROPRIETARY:
+      case VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS:
+      case VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA:
+      case VK_DRIVER_ID_IMAGINATION_PROPRIETARY:
+      case VK_DRIVER_ID_QUALCOMM_PROPRIETARY:
+      case VK_DRIVER_ID_ARM_PROPRIETARY:
+      case VK_DRIVER_ID_GOOGLE_SWIFTSHADER:
+      case VK_DRIVER_ID_GGP_PROPRIETARY:
+      case VK_DRIVER_ID_BROADCOM_PROPRIETARY:
+      case VK_DRIVER_ID_MESA_LLVMPIPE:
+      case VK_DRIVER_ID_MOLTENVK:
+        return true;
+    }
+    return false;
+  }
 };
 
 // VkSparseImageFormatProperties
