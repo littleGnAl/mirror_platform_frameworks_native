@@ -378,7 +378,8 @@ protected:
                                                  target_sdk_version,
                                                  profile_name,
                                                  dm_path,
-                                                 compilation_reason);
+                                                 compilation_reason,
+                                                 PRIORITY_DEFAULT);
         ASSERT_EQ(should_binder_call_succeed, result.isOk()) << result.toString8().c_str();
         int expected_access = should_dex_be_compiled ? 0 : -1;
         std::string odex = GetSecondaryDexArtifact(path, "odex");
@@ -505,7 +506,8 @@ protected:
                                                  target_sdk_version,
                                                  profile_name,
                                                  dm_path_opt,
-                                                 compilation_reason);
+                                                 compilation_reason,
+                                                 PRIORITY_DEFAULT);
         ASSERT_EQ(should_binder_call_succeed, result.isOk()) << result.toString8().c_str();
 
         if (!should_binder_call_succeed) {
