@@ -34,6 +34,21 @@ static constexpr int DEX2OAT_FROM_SCRATCH        = 1;
 static constexpr int DEX2OAT_FOR_BOOT_IMAGE      = 2;
 static constexpr int DEX2OAT_FOR_FILTER          = 3;
 
+// Priority values passed into the dexopt method
+static constexpr const int PRIORITY_MIN = 0;
+static constexpr const int PRIORITY_DEFAULT = 1;
+static constexpr const int PRIORITY_MAX = 2;
+
+// Priority values to pass to the nice() function
+static constexpr const int NICE_CPU_MIN = 19;
+static constexpr const int NICE_CPU_DEFAULT = 0;
+static constexpr const int NICE_CPU_MAX = -20;
+
+// Priority values to be used with the ionice_set syscall
+static constexpr const int NICE_IO_MIN = 8;
+static constexpr const int NICE_IO_DEFAULT = 4;
+static constexpr const int NICE_IO_MAX = 0;
+
 #define ANDROID_ART_APEX_BIN "/apex/com.android.art/bin"
 // Location of binaries in the Android Runtime APEX.
 static constexpr const char* kDex2oat32Path = ANDROID_ART_APEX_BIN "/dex2oat32";
@@ -119,7 +134,8 @@ int dexopt(const char *apk_path, uid_t uid, const char *pkgName, const char *ins
         int dexopt_needed, const char* oat_dir, int dexopt_flags, const char* compiler_filter,
         const char* volume_uuid, const char* class_loader_context, const char* se_info,
         bool downgrade, int target_sdk_version, const char* profile_name,
-        const char* dexMetadataPath, const char* compilation_reason, std::string* error_msg);
+        const char* dexMetadataPath, const char* compilation_reason, const int priority,
+        std::string* error_msg);
 
 bool calculate_oat_file_path_default(char path[PKG_PATH_MAX], const char *oat_dir,
         const char *apk_path, const char *instruction_set);

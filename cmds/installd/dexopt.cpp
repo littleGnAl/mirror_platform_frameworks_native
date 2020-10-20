@@ -22,6 +22,7 @@
 #include <sys/capability.h>
 #include <sys/file.h>
 #include <sys/stat.h>
+#include <sys/syscall.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/resource.h>
@@ -56,6 +57,30 @@
 #include "run_dex2oat.h"
 #include "unique_file.h"
 #include "utils.h"
+
+// Values taken from linux/ioprio.h
+
+#define IOPRIO_CLASS_SHIFT	(13)
+#define IOPRIO_PRIO_MASK	((1UL << IOPRIO_CLASS_SHIFT) - 1)
+
+#define IOPRIO_PRIO_CLASS(mask)	((mask) >> IOPRIO_CLASS_SHIFT)
+#define IOPRIO_PRIO_DATA(mask)	((mask) & IOPRIO_PRIO_MASK)
+#define IOPRIO_PRIO_VALUE(class, data)	(((class) << IOPRIO_CLASS_SHIFT) | data)
+
+#define ioprio_valid(mask)	(IOPRIO_PRIO_CLASS((mask)) != IOPRIO_CLASS_NONE)
+
+enum {
+	IOPRIO_CLASS_NONE,
+	IOPRIO_CLASS_RT,
+	IOPRIO_CLASS_BE,
+	IOPRIO_CLASS_IDLE,
+};
+
+enum {
+	IOPRIO_WHO_PROCESS = 1,
+	IOPRIO_WHO_PGRP,
+	IOPRIO_WHO_USER,
+};
 
 using android::base::Basename;
 using android::base::EndsWith;
@@ -1621,7 +1646,8 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
         int dexopt_needed, const char* oat_dir, int dexopt_flags, const char* compiler_filter,
         const char* volume_uuid, const char* class_loader_context, const char* se_info,
         bool downgrade, int target_sdk_version, const char* profile_name,
-        const char* dex_metadata_path, const char* compilation_reason, std::string* error_msg) {
+        const char* dex_metadata_path, const char* compilation_reason, const int priority,
+        std::string* error_msg) {
     CHECK(pkgname != nullptr);
     CHECK(pkgname[0] != 0);
     CHECK(error_msg != nullptr);
@@ -1798,7 +1824,38 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
 
     pid_t pid = fork();
     if (pid == 0) {
-        /* child -- drop privileges before continuing */
+        /* Child */
+
+        // Handle cpu/io priority levels
+        if (priority == PRIORITY_MAX) {
+            if (nice(NICE_CPU_MAX) == -1) {
+                PLOG(ERROR) << "Insufficient permissions to set nice level";
+            }
+
+            // Set the IO scheduler to Best Effort and give this process the
+            // highest priority
+            long ret_val = syscall(SYS_ioprio_set,
+                IOPRIO_WHO_PROCESS, getpid(), IOPRIO_PRIO_VALUE(IOPRIO_CLASS_BE, NICE_IO_MAX));
+
+            if (ret_val == -1) {
+                PLOG(ERROR) << "Unable to set IO nice level: " << strerror(errno);
+            }
+        } else if (priority == PRIORITY_MIN) {
+            if (nice(NICE_CPU_MIN) == -1) {
+                PLOG(ERROR) << "Insufficient permissions to set nice level";
+            }
+
+            // Set the IO scheduler to IDLE, only allowing the process to use
+            // the disk when it is idle.
+            long ret_val = syscall(SYS_ioprio_set,
+                IOPRIO_WHO_PROCESS, getpid(), IOPRIO_PRIO_CLASS(IOPRIO_CLASS_IDLE));
+
+            if (ret_val == -1) {
+                PLOG(ERROR) << "Unable to set IO nice level: " << strerror(errno);
+            }
+        }
+
+        // drop privileges before continuing
         drop_capabilities(uid);
 
         SetDex2OatScheduling(boot_complete);
