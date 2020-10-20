@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08cef39f_b51e58c2",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-20T08:21:34Z",
+      "side": 1,
+      "message": "Could we use writefully here?",
+      "range": {
+        "startLine": 66,
+        "startChar": 12,
+        "endLine": 76,
+        "endChar": 62
+      },
+      "revId": "04154f48fa5b89b7ab67e27cc69b1752bcc9a7bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
