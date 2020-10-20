@@ -40,6 +40,8 @@ extern std::string android_profiles_dir;
 extern std::string android_root_dir;
 extern std::string android_staging_dir;
 
+extern std::vector<int> android_little_core_ids;
+
 extern std::vector<std::string> android_system_dirs;
 
 bool init_globals_from_data_and_root();

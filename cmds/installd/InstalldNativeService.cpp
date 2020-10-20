@@ -83,6 +83,9 @@ using std::endl;
 namespace android {
 namespace installd {
 
+// Global definition
+std::vector<int> android_little_core_ids;
+
 // An uuid used in unit tests.
 static constexpr const char* kTestUuid = "TEST";
 
@@ -277,6 +280,7 @@ status_t InstalldNativeService::start() {
     ps->giveThreadPoolName();
     sAppDataIsolationEnabled = android::base::GetBoolProperty(
             kAppDataIsolationEnabledProperty, true);
+
     return android::OK;
 }
 
@@ -2395,7 +2399,8 @@ binder::Status InstalldNativeService::dexopt(const std::string& apkPath, int32_t
         const std::optional<std::string>& seInfo, bool downgrade, int32_t targetSdkVersion,
         const std::optional<std::string>& profileName,
         const std::optional<std::string>& dexMetadataPath,
-        const std::optional<std::string>& compilationReason) {
+        const std::optional<std::string>& compilationReason,
+        const int32_t priority) {
     ENFORCE_UID(AID_SYSTEM);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PATH(apkPath);
@@ -2425,7 +2430,8 @@ binder::Status InstalldNativeService::dexopt(const std::string& apkPath, int32_t
     std::string error_msg;
     int res = android::installd::dexopt(apk_path, uid, pkgname, instruction_set, dexoptNeeded,
             oat_dir, dexFlags, compiler_filter, volume_uuid, class_loader_context, se_info,
-            downgrade, targetSdkVersion, profile_name, dm_path, compilation_reason, &error_msg);
+            downgrade, targetSdkVersion, profile_name, dm_path, compilation_reason, priority,
+            &error_msg);
     return res ? error(res, error_msg) : ok();
 }
 
