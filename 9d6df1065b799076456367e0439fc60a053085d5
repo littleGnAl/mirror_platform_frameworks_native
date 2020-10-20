@@ -16,6 +16,24 @@
       "message": "presubmit failed because it\u0027s failing to auto-merge into internal trunks.\n\nperhaps CP this on to internal master manually and set this one with MERGED-IN:",
       "revId": "9d6df1065b799076456367e0439fc60a053085d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e55068f_63d4a23c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-10-20T19:05:03Z",
+      "side": 1,
+      "message": "Yep, I\u0027ll help merge internally.",
+      "parentUuid": "6b8c9eb8_2f9a4c71",
+      "revId": "9d6df1065b799076456367e0439fc60a053085d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
