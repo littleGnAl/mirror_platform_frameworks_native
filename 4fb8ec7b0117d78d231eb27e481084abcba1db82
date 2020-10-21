@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceb98480_63a4ef18",
+        "filename": "libs/binder/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-10-21T15:36:54Z",
+      "side": 1,
+      "message": "got it, but it looks like fuzzer injects input data once, and test several read functions on it. but \u0027reset\u0027 is not \u0027const\u0027 behavior, and it looks like it\u0027s not suitable..\n\nis it okay to \u0027reset\u0027 the parcel during instructions running?",
+      "parentUuid": "dedccb10_d66d8fbd",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "4fb8ec7b0117d78d231eb27e481084abcba1db82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5602ea05_e68337dd",
         "filename": "libs/binder/parcel_fuzzer/binder_ndk.cpp",
         "patchSetId": 2
