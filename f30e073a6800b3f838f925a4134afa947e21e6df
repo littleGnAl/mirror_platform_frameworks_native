@@ -87,6 +87,30 @@
       },
       "revId": "f30e073a6800b3f838f925a4134afa947e21e6df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819ad6cd_57ec9a76",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-21T06:05:44Z",
+      "side": 1,
+      "message": "Per discussed, bugreportz() is invoked to show progress by default from adb side. Though the deprecated flat bugreport streaming isn\u0027t show progress but readable data from console (stdout). For convenience it\u0027s good to show something to console to indicate it is working since it may take 2 minutes at least before bugreport completion. So I don\u0027t show the progress not by default from adb side to have similar to old one and let the streaming way show dots to stderr only when the option provided.",
+      "parentUuid": "5ae247bf_15ecdff1",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "f30e073a6800b3f838f925a4134afa947e21e6df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
