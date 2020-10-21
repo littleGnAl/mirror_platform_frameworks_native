@@ -1914,6 +1914,7 @@ TEST_F(TouchIntegrationTest, InputEvent_ProcessSingleTouch) {
     const Point centerPoint = mDevice->getCenterPoint();
 
     // ACTION_DOWN
+    mDevice->sendTrackingId(FIRST_TRACKING_ID);
     mDevice->sendDown(centerPoint);
     ASSERT_NO_FATAL_FAILURE(mTestListener->assertNotifyMotionWasCalled(&args));
     ASSERT_EQ(AMOTION_EVENT_ACTION_DOWN, args.action);
@@ -1934,6 +1935,7 @@ TEST_F(TouchIntegrationTest, InputEvent_ProcessMultiTouch) {
     const Point centerPoint = mDevice->getCenterPoint();
 
     // ACTION_DOWN
+    mDevice->sendTrackingId(FIRST_TRACKING_ID);
     mDevice->sendDown(centerPoint);
     ASSERT_NO_FATAL_FAILURE(mTestListener->assertNotifyMotionWasCalled(&args));
     ASSERT_EQ(AMOTION_EVENT_ACTION_DOWN, args.action);
@@ -5704,11 +5706,11 @@ TEST_F(MultiTouchInputMapperTest, Process_NormalMultiTouchGesture_WithTrackingId
 
     // Two fingers down at once.
     int32_t x1 = 100, y1 = 125, x2 = 300, y2 = 500;
-    processPosition(mapper, x1, y1);
     processId(mapper, 1);
+    processPosition(mapper, x1, y1);
     processMTSync(mapper);
-    processPosition(mapper, x2, y2);
     processId(mapper, 2);
+    processPosition(mapper, x2, y2);
     processMTSync(mapper);
     processSync(mapper);
 
@@ -6484,6 +6486,76 @@ TEST_F(MultiTouchInputMapperTest, Process_ShouldHandleAllButtons) {
     ASSERT_EQ(0, motionArgs.buttonState);
 }
 
+TEST_F(MultiTouchInputMapperTest, Process_DropRawEventIfmInUseIsFalse_whenUseSlotsProtocol) {
+    addConfigurationProperty("touch.deviceType", "touchScreen");
+    prepareDisplay(DISPLAY_ORIENTATION_0);
+    prepareAxes(POSITION | ID | SLOT);
+    mFakeEventHub->addKey(EVENTHUB_ID, BTN_TOUCH, 0, AKEYCODE_UNKNOWN, 0);
+    MultiTouchInputMapper& mapper = addMapperAndConfigure<MultiTouchInputMapper>();
+
+    NotifyMotionArgs motionArgs;
+
+    //Simulated Finger down and move
+    processId(mapper, 1);
+    processPosition(mapper, 100, 200);
+    processKey(mapper, BTN_TOUCH, 1);
+    processSync(mapper);
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
+    ASSERT_EQ(AMOTION_EVENT_ACTION_DOWN, motionArgs.action);
+
+    processPosition(mapper, 110, 200);
+    processSync(mapper);
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
+    ASSERT_EQ(AMOTION_EVENT_ACTION_MOVE, motionArgs.action);
+
+    processPosition(mapper, 120, 200);
+    processSync(mapper);
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
+    ASSERT_EQ(AMOTION_EVENT_ACTION_MOVE, motionArgs.action);
+
+
+    //Two finger press touch down
+    processSlot(mapper, 0);
+    processId(mapper, 2);
+    processPosition(mapper, 200, 300);
+    processSlot(mapper, 1);
+    processId(mapper, 3);
+    processPosition(mapper, 300, 400);
+    processKey(mapper, BTN_TOUCH, 1);
+    processSync(mapper);
+
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
+    ASSERT_EQ(AMOTION_EVENT_ACTION_UP, motionArgs.action);
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
+    ASSERT_EQ(AMOTION_EVENT_ACTION_DOWN, motionArgs.action);
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
+    ASSERT_EQ(AMOTION_EVENT_ACTION_POINTER_DOWN | (1 << AMOTION_EVENT_ACTION_POINTER_INDEX_SHIFT), motionArgs.action);
+
+    //Two finger  up
+    processSlot(mapper, 0);
+    processId(mapper, -1);
+    processSync(mapper);
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
+    ASSERT_EQ(AMOTION_EVENT_ACTION_POINTER_UP | (0 << AMOTION_EVENT_ACTION_POINTER_INDEX_SHIFT), motionArgs.action);
+
+    processSlot(mapper, 1);
+    processId(mapper, -1);
+    processKey(mapper, BTN_TOUCH, 0);
+    processSync(mapper);
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
+    ASSERT_EQ(AMOTION_EVENT_ACTION_UP, motionArgs.action);
+
+    //Simulated Finger continue move and up
+    processPosition(mapper, 130, 200);
+    processSync(mapper);
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasNotCalled());
+
+    processId(mapper, -1);
+    processKey(mapper, BTN_TOUCH, 0);
+    processSync(mapper);
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasNotCalled());
+}
+
 TEST_F(MultiTouchInputMapperTest, Process_ShouldHandleAllToolTypes) {
     addConfigurationProperty("touch.deviceType", "touchScreen");
     prepareDisplay(DISPLAY_ORIENTATION_0);
@@ -6902,11 +6974,11 @@ TEST_F(MultiTouchInputMapperTest, Process_Pointer_ShowTouches) {
 
     // Two fingers down at default display.
     int32_t x1 = 100, y1 = 125, x2 = 300, y2 = 500;
-    processPosition(mapper, x1, y1);
     processId(mapper, 1);
+    processPosition(mapper, x1, y1);
     processSlot(mapper, 1);
-    processPosition(mapper, x2, y2);
     processId(mapper, 2);
+    processPosition(mapper, x2, y2);
     processSync(mapper);
 
     std::map<int32_t, std::vector<int32_t>>::const_iterator iter =
@@ -6915,11 +6987,11 @@ TEST_F(MultiTouchInputMapperTest, Process_Pointer_ShowTouches) {
     ASSERT_EQ(size_t(2), iter->second.size());
 
     // Two fingers down at second display.
-    processPosition(mapper2, x1, y1);
     processId(mapper2, 1);
+    processPosition(mapper2, x1, y1);
     processSlot(mapper2, 1);
-    processPosition(mapper2, x2, y2);
     processId(mapper2, 2);
+    processPosition(mapper2, x2, y2);
     processSync(mapper2);
 
     iter = fakePointerController->getSpots().find(SECONDARY_DISPLAY_ID);

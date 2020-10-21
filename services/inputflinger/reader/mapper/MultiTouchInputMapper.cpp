@@ -104,6 +104,12 @@ void MultiTouchMotionAccumulator::process(const RawEvent* rawEvent) {
 #endif
         } else {
             Slot* slot = &mSlots[mCurrentSlot];
+            if(mUsingSlotsProtocol && !slot->mInUse && rawEvent->code != ABS_MT_TRACKING_ID
+                    && rawEvent->code != ABS_MT_SLOT){
+                ALOGW("MultiTouch Slots Protocol. Must reports ABS_MT_TRACKING_ID to"
+                       "notify pointer down or up first.");
+                return;
+            }
 
             switch (rawEvent->code) {
                 case ABS_MT_POSITION_X:
