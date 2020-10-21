@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56bf763c_0b4d5d3e",
+        "filename": "libs/binder/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-21T19:55:18Z",
+      "side": 1,
+      "message": "oh yeah, you\u0027re right, so we should just remove this, yeah. It doesn\u0027t add any more coverage than just testing AParcel_reset, which you are doing in CtsNdkBinderTestCases.\n\nWe only need to fuzz read behavior here.",
+      "parentUuid": "ceb98480_63a4ef18",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "4fb8ec7b0117d78d231eb27e481084abcba1db82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5602ea05_e68337dd",
         "filename": "libs/binder/parcel_fuzzer/binder_ndk.cpp",
         "patchSetId": 2
