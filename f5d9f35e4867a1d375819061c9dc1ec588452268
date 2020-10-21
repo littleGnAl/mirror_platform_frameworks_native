@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1076335_5604097b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-21T08:09:12Z",
+      "side": 1,
+      "message": "It seems I\u0027m doing something wrong before and now WriteFully works in streaming.",
+      "revId": "f5d9f35e4867a1d375819061c9dc1ec588452268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

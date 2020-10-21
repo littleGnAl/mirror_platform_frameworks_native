@@ -111,6 +111,30 @@
       },
       "revId": "f30e073a6800b3f838f925a4134afa947e21e6df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc85945d_38937c6a",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-21T08:09:12Z",
+      "side": 1,
+      "message": "Re-separate the bugreportz* as discussed.",
+      "parentUuid": "819ad6cd_57ec9a76",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "f30e073a6800b3f838f925a4134afa947e21e6df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
