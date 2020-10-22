@@ -16,6 +16,24 @@
       "message": "There is a question. In a multi-display  scenario, FocusedApplication and FocusedWindow correspond to the display, but there is only one mNoFocusedWindowTimeoutTime. If both displays have no focusWindow, mNoFocusedWindowTimeoutTime only represents the last one, and the previous one is lost.",
       "revId": "265ab01bc7be5889521541a2f6ad08e2d204f10a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9064da45_83cd4e1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-10-22T02:52:31Z",
+      "side": 1,
+      "message": "Yeah, we don\u0027t have per-display \u0027no focused window\u0027 ANR support today.\nDo you think this is a common use case?\n\nWe could add support for this, but we haven\u0027t encountered such case yet. The \u0027no focused window\u0027 ANR is only caused by focused events (\u003d\u003d\u003d key events).\nIn most cases, the key does not target a specific display, but rather, just goes to the currently focused display. Since only 1 display can be focused at a time, this should be OK.\n\nHowever, if we have keys targeted to a specific display, and maybe also untargeted keys, and they are sent at the same time to different displays, and both displays dont have focused windows at that same time, we would encounter an issue.\nI think this would be more of a feature request to support this. My original plan when adding this functionality to R is to move the entire logic for this into WindowManager.\n\nLet me know your thoughts on the likelihood of this to occur, and whether you have encountered this previously.",
+      "parentUuid": "cf3e183f_100025c3",
+      "revId": "265ab01bc7be5889521541a2f6ad08e2d204f10a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
