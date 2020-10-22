@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4775480_04762413",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2020-10-22T22:21:34Z",
+      "side": 1,
+      "message": "Pierre-Hugues:\n\nThanks for your contribution.\n\nThis change may not be that useful. IIRC input device \u0026 display binding are for the time being only written in a config file OEM makes, so OEM can make sure the input device in interest always has location. What is the situation you need to fix?\n\nI might well be wrong so I\u0027ll still defer this to either svv@, lzye@ or michaelwr@.",
+      "revId": "8192ab824ddcaf339df972b9f0113d53e0986ae4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
