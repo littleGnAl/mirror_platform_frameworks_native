@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3e183f_100025c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1781070
+      },
+      "writtenOn": "2020-10-22T02:43:37Z",
+      "side": 1,
+      "message": "There is a question. In a multi-display  scenario, FocusedApplication and FocusedWindow correspond to the display, but there is only one mNoFocusedWindowTimeoutTime. If both displays have no focusWindow, mNoFocusedWindowTimeoutTime only represents the last one, and the previous one is lost.",
+      "revId": "265ab01bc7be5889521541a2f6ad08e2d204f10a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
