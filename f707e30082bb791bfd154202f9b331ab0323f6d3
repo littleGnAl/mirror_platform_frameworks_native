@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e74c12e_4f3aa049",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1211949
+      },
+      "writtenOn": "2020-10-22T21:17:26Z",
+      "side": 1,
+      "message": "This CL fixes device association on gamepads.\nThis is useful when gaming in desktop mode while possibly focusing smartphone\u0027s screen.",
+      "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
