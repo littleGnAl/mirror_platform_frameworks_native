@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079a87b6_9afd4b94",
+        "filename": "vulkan/scripts/generator_common.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1562821
+      },
+      "writtenOn": "2020-10-22T23:58:50Z",
+      "side": 1,
+      "message": "`name in version_dict` not needed here?",
+      "range": {
+        "startLine": 308,
+        "startChar": 7,
+        "endLine": 308,
+        "endChar": 46
+      },
+      "revId": "6be097b1576ce5f8b7399e0c632596497e9e3b0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
