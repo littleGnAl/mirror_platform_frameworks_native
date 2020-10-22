@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7416e7_644462ef",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-22T00:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "716b3a1c_03fd18c2",
+      "range": {
+        "startLine": 76,
+        "startChar": 29,
+        "endLine": 76,
+        "endChar": 47
+      },
+      "revId": "f5d9f35e4867a1d375819061c9dc1ec588452268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2346a327_abcd5922",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b3082b_45bd9a12",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-22T00:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2346a327_abcd5922",
+      "range": {
+        "startLine": 96,
+        "startChar": 70,
+        "endLine": 96,
+        "endChar": 71
+      },
+      "revId": "f5d9f35e4867a1d375819061c9dc1ec588452268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4e86d6b_f38aa5bc",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-10-21T10:50:16Z",
       "side": 1,
       "message": "nit: why not using EXIT_FAILURE?",
+      "range": {
+        "startLine": 98,
+        "startChar": 19,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "f5d9f35e4867a1d375819061c9dc1ec588452268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be65273_98bb9463",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-22T00:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e86d6b_f38aa5bc",
       "range": {
         "startLine": 98,
         "startChar": 19,
