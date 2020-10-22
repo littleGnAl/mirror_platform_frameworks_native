@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b1d08d6_7de3b427",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2440,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-22T04:52:18Z",
+      "side": 1,
+      "message": "Will do_zip_fill be true when do_stream_zip_file is true? I\u0027d suggest you merge \u0027remove do_zip_file\u0027 into this patch. It would make more sense, when people review this patch.",
+      "range": {
+        "startLine": 2440,
+        "startChar": 21,
+        "endLine": 2440,
+        "endChar": 32
+      },
+      "revId": "c48265421fa770be5271abd7aa3b4e771a75495d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ae0723_7e477eaf",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2444,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-22T04:52:18Z",
+      "side": 1,
+      "message": "Why do we need to reset here?\nnit: I\u0027d suggest we could have the log here.",
+      "range": {
+        "startLine": 2444,
+        "startChar": 16,
+        "endLine": 2444,
+        "endChar": 36
+      },
+      "revId": "c48265421fa770be5271abd7aa3b4e771a75495d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c5b414f_6299c8e5",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-22T04:52:18Z",
+      "side": 1,
+      "message": "Looks like we can remove this function.",
+      "range": {
+        "startLine": 438,
+        "startChar": 13,
+        "endLine": 438,
+        "endChar": 25
+      },
+      "revId": "c48265421fa770be5271abd7aa3b4e771a75495d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
