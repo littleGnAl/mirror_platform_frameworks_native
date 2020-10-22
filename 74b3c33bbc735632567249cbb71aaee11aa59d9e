@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2936307_195c1cfa",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2280,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-22T00:58:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40b7d283_8da3db6f",
+      "range": {
+        "startLine": 2280,
+        "startChar": 25,
+        "endLine": 2280,
+        "endChar": 35
+      },
+      "revId": "74b3c33bbc735632567249cbb71aaee11aa59d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65ac3360_885cf0fa",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "068a414c_e0b13d48",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2281,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-22T00:58:46Z",
+      "side": 1,
+      "message": "Done. Without dup, close fd causes error.",
+      "parentUuid": "65ac3360_885cf0fa",
+      "range": {
+        "startLine": 2281,
+        "startChar": 28,
+        "endLine": 2281,
+        "endChar": 52
+      },
+      "revId": "74b3c33bbc735632567249cbb71aaee11aa59d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21e075d3_0d1bbb76",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-20T12:39:58Z",
       "side": 1,
       "message": "Could you double check whether we don\u0027t need to create parent dir for streaming case? Some temporary files may depend on this folder.",
+      "range": {
+        "startLine": 2285,
+        "startChar": 12,
+        "endLine": 2285,
+        "endChar": 30
+      },
+      "revId": "74b3c33bbc735632567249cbb71aaee11aa59d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bad15dc_eaacaa99",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2285,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-22T00:58:46Z",
+      "side": 1,
+      "message": "Yes, it doesn\u0027t required for the streaming case since redirecting log_path_ \u0026 tmp_path_ are both call to create_parent_dirs.",
+      "parentUuid": "21e075d3_0d1bbb76",
       "range": {
         "startLine": 2285,
         "startChar": 12,
