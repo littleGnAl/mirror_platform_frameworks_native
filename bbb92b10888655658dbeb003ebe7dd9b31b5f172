@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a3c771d_566e8ff9",
+        "filename": "vulkan/libvulkan/api_gen.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2020-10-22T23:40:59Z",
+      "side": 1,
+      "message": "This extension should probably be blacklisted on Android?",
+      "range": {
+        "startLine": 567,
+        "startChar": 9,
+        "endLine": 567,
+        "endChar": 35
+      },
+      "revId": "bbb92b10888655658dbeb003ebe7dd9b31b5f172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247982ef_8adff4ca",
+        "filename": "vulkan/libvulkan/libvulkan.map.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2020-10-22T23:40:59Z",
+      "side": 1,
+      "message": "Please verify that mentioning API 31 in AOSP is acceptable. \u003d\u003e jreck@",
+      "range": {
+        "startLine": 84,
+        "startChar": 38,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "bbb92b10888655658dbeb003ebe7dd9b31b5f172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
