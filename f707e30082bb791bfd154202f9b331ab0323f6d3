@@ -16,6 +16,46 @@
       "message": "This CL fixes device association on gamepads.\nThis is useful when gaming in desktop mode while possibly focusing smartphone\u0027s screen.",
       "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9f0745c_33318034",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2020-10-22T22:13:58Z",
+      "side": 1,
+      "message": "Folks:\n\nThis could be useful for OEM who are making gaming devices on top of Android that have built-in gamepads, in a way that the built-in gamepads is associated to the built-in display.\n\nThis needs to be approved by either svv@, lzye@ or michaelwr@ at last though.",
+      "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c000df5_15547ad6",
+        "filename": "services/inputflinger/reader/mapper/JoystickInputMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2020-10-22T22:13:58Z",
+      "side": 1,
+      "message": "mDisplayId \u003d viewport ? viewport-\u003edisplayId : ADISPLAY_ID_NONE;",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 5
+      },
+      "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
