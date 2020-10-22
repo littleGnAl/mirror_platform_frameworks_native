@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7076beb7_ba7f17dd",
+        "filename": "vulkan/vkjson/vkjson_instance.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2020-10-22T20:56:59Z",
+      "side": 1,
+      "message": "Add a comment here that this is the last value in the contiguous range?\n\nIdeally we would generate a bunch of this code too 😊",
+      "revId": "46f108d0d99099b54cb931b08f8ca58f3ac98bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
