@@ -56,6 +56,29 @@
       },
       "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3942b16_735649e5",
+        "filename": "services/inputflinger/reader/mapper/JoystickInputMapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2020-10-22T22:15:41Z",
+      "side": 1,
+      "message": "Actually, move the initialization here:\n\n```\nint32_t mDisplayId{ADISPLAY_ID_NONE};\n```\n\nand remove the change in L24 in the CPP file.",
+      "range": {
+        "startLine": 109,
+        "startChar": 12,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
