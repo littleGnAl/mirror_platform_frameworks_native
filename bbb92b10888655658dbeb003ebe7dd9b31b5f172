@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f218ba39_793f3530",
+        "filename": "vulkan/libvulkan/api_gen.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2020-10-22T23:48:22Z",
+      "side": 1,
+      "message": "Nice catch. Blocked.",
+      "parentUuid": "6a3c771d_566e8ff9",
+      "range": {
+        "startLine": 567,
+        "startChar": 9,
+        "endLine": 567,
+        "endChar": 35
+      },
+      "revId": "bbb92b10888655658dbeb003ebe7dd9b31b5f172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "247982ef_8adff4ca",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-22T23:40:59Z",
       "side": 1,
       "message": "Please verify that mentioning API 31 in AOSP is acceptable. \u003d\u003e jreck@",
+      "range": {
+        "startLine": 84,
+        "startChar": 38,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "bbb92b10888655658dbeb003ebe7dd9b31b5f172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8576742a_c43e8db6",
+        "filename": "vulkan/libvulkan/libvulkan.map.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2020-10-22T23:48:22Z",
+      "side": 1,
+      "message": "There\u0027s already precedence for this on aosp. Still need John\u0027s review.",
+      "parentUuid": "247982ef_8adff4ca",
       "range": {
         "startLine": 84,
         "startChar": 38,
