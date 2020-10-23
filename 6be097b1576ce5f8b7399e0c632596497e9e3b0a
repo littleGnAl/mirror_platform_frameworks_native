@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e498be_bd599006",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2020-10-23T00:01:13Z",
+      "side": 1,
+      "message": "Hi John, could you help do a NDK api review on the new entry points? Thanks!",
+      "revId": "6be097b1576ce5f8b7399e0c632596497e9e3b0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "079a87b6_9afd4b94",
