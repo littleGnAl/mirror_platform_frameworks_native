@@ -122,6 +122,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ada4a87_fcea1fa2",
+        "filename": "services/inputflinger/reader/mapper/JoystickInputMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2020-10-23T18:41:30Z",
+      "side": 1,
+      "message": "If you decide to take the if-else, which is more verbose, you should at least leave a space between if keyword and the parenthesis.\n\nI still strongly prefer ternary because it\u0027s more concise and it\u0027s not complicated enough in this case to make it hard to parse. I would ask for if-else blocks if it\u0027d be an embedded ternary.",
+      "parentUuid": "eb21f9b4_fa9f2656",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 5
+      },
+      "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ebaafd63_2d88c01c",
