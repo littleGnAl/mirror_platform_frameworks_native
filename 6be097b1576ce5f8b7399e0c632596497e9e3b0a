@@ -39,6 +39,30 @@
       },
       "revId": "6be097b1576ce5f8b7399e0c632596497e9e3b0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7092bebb_96de4a29",
+        "filename": "vulkan/scripts/generator_common.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2020-10-23T00:05:17Z",
+      "side": 1,
+      "message": "Hi Adi, that was left out deliberately since version_dict is not a complete set. Then we can use this to catch bugs or missing stuff when we run the gen scripts.",
+      "parentUuid": "079a87b6_9afd4b94",
+      "range": {
+        "startLine": 308,
+        "startChar": 7,
+        "endLine": 308,
+        "endChar": 46
+      },
+      "revId": "6be097b1576ce5f8b7399e0c632596497e9e3b0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
