@@ -324,6 +324,30 @@
       },
       "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1727b3_ead88b26",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-23T00:02:40Z",
+      "side": 1,
+      "message": "\u003e Is this additional functionality opened up in the rust backend? Since AIDL doesn\u0027t/shouldn\u0027t use it, we could curb that back.\nGone now, a local binder can now only be used from the correct interface due to the new descriptor string check.\n\nI\u0027ve added the AIBinder_Class_getDescriptor API, and use it from Rust now.\n\nStill need to add another CL to the NDK AIDL backend to make fromBinder check the descriptor string if the pointer doesn\u0027t match.",
+      "parentUuid": "95ed614f_1548c6ec",
+      "range": {
+        "startLine": 451,
+        "startChar": 54,
+        "endLine": 451,
+        "endChar": 62
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
