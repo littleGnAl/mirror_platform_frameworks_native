@@ -93,6 +93,30 @@
       },
       "revId": "bbb92b10888655658dbeb003ebe7dd9b31b5f172",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c16db3_b841a1eb",
+        "filename": "vulkan/libvulkan/libvulkan.map.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2020-10-23T04:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8576742a_c43e8db6",
+      "range": {
+        "startLine": 84,
+        "startChar": 38,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "bbb92b10888655658dbeb003ebe7dd9b31b5f172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
