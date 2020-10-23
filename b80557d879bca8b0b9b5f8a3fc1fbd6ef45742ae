@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b40daa_01ac0524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-10-23T05:57:26Z",
+      "side": 1,
+      "message": "Hi Xiaobo,\n\nI wonder if you could provide some more details on how to reproduce this issue?\n\nMaybe you could create a test to illustrate the problem in InputReader_tests?\nOr at least provide a raw event dump from \"adb shell getevent -lt\" that causes it?",
+      "revId": "b80557d879bca8b0b9b5f8a3fc1fbd6ef45742ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
