@@ -34,6 +34,23 @@
       "parentUuid": "b4775480_04762413",
       "revId": "8192ab824ddcaf339df972b9f0113d53e0986ae4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc51b663_edac1113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-10-23T16:11:06Z",
+      "side": 1,
+      "message": "Right, \u0027inputPort\u0027 actually means the port that the device is plugged in.\n\nFor bluetooth devices, my suggestion was that the bluetooth stack somehow comes up with \u0027port\u0027 concept. Maybe something like a \u0027bluetooth controller number\u0027?\n\nWhat is the actual desired UX here? Why do you want to associate a bluetooth device with a specific screen rather than just let the focused events go to the currently focused display?",
+      "revId": "8192ab824ddcaf339df972b9f0113d53e0986ae4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
