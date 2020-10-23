@@ -16,6 +16,52 @@
       "message": "Hi Xiaobo,\n\nI wonder if you could provide some more details on how to reproduce this issue?\n\nMaybe you could create a test to illustrate the problem in InputReader_tests?\nOr at least provide a raw event dump from \"adb shell getevent -lt\" that causes it?",
       "revId": "b80557d879bca8b0b9b5f8a3fc1fbd6ef45742ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bede0fdd_c65712e9",
+        "filename": "services/inputflinger/reader/mapper/MultiTouchInputMapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-10-23T17:27:52Z",
+      "side": 1,
+      "message": "I think the problem comes from setting \"mInUse\u003dtrue\" always.\n\nWhat about only setting \"mInUse\" when we receive a tracking ID?\n\nThis way, we continue to accumulate the slot data, but don\u0027t actually produce an event until the pointer id is available.\n\nTechnically, the driver can still choose to update slot values without sending tracking id (although that\u0027s unusual).\n\nI think it\u0027s still valid to show a warning here, though (because this behaviour is strange)",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "b80557d879bca8b0b9b5f8a3fc1fbd6ef45742ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3741d674_126944a7",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6487,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-10-23T17:27:52Z",
+      "side": 1,
+      "message": "please add a test to illustrate the problem (can use this one as reference)",
+      "range": {
+        "startLine": 6487,
+        "startChar": 7,
+        "endLine": 6487,
+        "endChar": 66
+      },
+      "revId": "b80557d879bca8b0b9b5f8a3fc1fbd6ef45742ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
