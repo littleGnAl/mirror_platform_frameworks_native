@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a59fa6_a3d2334a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-23T06:03:12Z",
+      "side": 1,
+      "message": "check frameworks/native/cmds/installd/tests/installd_dexopt_test.cpp and add some.",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 65
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "855a7232_bdb88494",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-23T06:03:12Z",
+      "side": 1,
+      "message": "new line by mistake?",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 0
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c61e68_69bb5570",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-23T06:03:12Z",
+      "side": 1,
+      "message": "I would love to have this whole API refactored :) Not for this CL, but as a generic thing. Hopefully we can do it when we move this to art.\n\nhere\u0027s an idea I tried before but it was to late to merge at the time : https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/base/+/10935529",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c24b9f66_bf6ec1c7",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-23T06:03:12Z",
+      "side": 1,
+      "message": "nit: there are tabs in this file, could you replace with spaces?",
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec0b1ac9_f4b25087",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1830,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-23T06:03:12Z",
+      "side": 1,
+      "message": "could you move this logic in SetDex2oatScheduling?",
+      "range": {
+        "startLine": 1830,
+        "startChar": 8,
+        "endLine": 1830,
+        "endChar": 39
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc8f5e0_8fe16c46",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-23T06:03:12Z",
+      "side": 1,
+      "message": "nice is deprecated in favour of setpriority",
+      "range": {
+        "startLine": 1831,
+        "startChar": 16,
+        "endLine": 1831,
+        "endChar": 20
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3617df_241a148c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-23T06:03:12Z",
+      "side": 1,
+      "message": "isn\u0027t this the default?",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1838,
+        "endChar": 95
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7d577a_bad4fe58",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1851,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-23T06:03:12Z",
+      "side": 1,
+      "message": "I\u0027m concerned about this. There are so many tasks happening even in the idle situation that we risk starvation here even in bg dexopt.\n\nWe should be careful with this. I would experiment with it in a different CLs, so that you don\u0027t tie it to the main functionality.",
+      "range": {
+        "startLine": 1848,
+        "startChar": 12,
+        "endLine": 1851,
+        "endChar": 84
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad28cd1_32dc6d2e",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-23T06:03:12Z",
+      "side": 1,
+      "message": "Android defines the common priorities here: system/core/libsystem/include/system/thread_defs.h\nLet\u0027s re-use those.\n\nI think we should focus on NORMAL and BACKGROUND priorities.\n\nIf you think there is a case were a higher priority would make a difference, at most we should go to FOREGROUND (but I would be cautious about it, and maybe bounce it with system health. I can think of cases where we could end up with the opposite effect, e.g. when users start an op and then go in the background and open another app).",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
