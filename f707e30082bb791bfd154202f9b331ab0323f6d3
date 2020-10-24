@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41df8193_a116d20b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1211949
+      },
+      "writtenOn": "2020-10-24T15:37:56Z",
+      "side": 1,
+      "message": "I did a mapper test rather than a reader test, but I think that\u0027s more appropriate.",
+      "parentUuid": "896daab9_9c450672",
+      "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92a542ff_2867817b",
         "filename": "services/inputflinger/reader/mapper/JoystickInputMapper.cpp",
         "patchSetId": 1
@@ -65,6 +83,30 @@
       "writtenOn": "2020-10-23T16:50:28Z",
       "side": 1,
       "message": "use full type here, i think it\u0027s std::optional\u003cViewPort\u003e?",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 8
+      },
+      "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e2d9d9_a540d890",
+        "filename": "services/inputflinger/reader/mapper/JoystickInputMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1211949
+      },
+      "writtenOn": "2020-10-24T15:37:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92a542ff_2867817b",
       "range": {
         "startLine": 199,
         "startChar": 4,
@@ -148,6 +190,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "42748554_17a36be5",
+        "filename": "services/inputflinger/reader/mapper/JoystickInputMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1211949
+      },
+      "writtenOn": "2020-10-24T15:37:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ada4a87_fcea1fa2",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 5
+      },
+      "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ebaafd63_2d88c01c",
         "filename": "services/inputflinger/reader/mapper/JoystickInputMapper.cpp",
         "patchSetId": 1
@@ -159,6 +225,30 @@
       "writtenOn": "2020-10-23T16:50:28Z",
       "side": 1,
       "message": "I wonder if more generally, this call should go through the context. The context would then append the event id, device id, and display id.\n\nThis way, we dont need to cache all these values in the mappers, and add support for display association to all mappers at once.\n\nThis would look something like:\n\n    mContext-\u003enotifyMotion(when, AINPUT_SOURCE_JOYSTICK, policyFlags, AMOTION_EVENT_ACTION_MOVE, 0, 0, ...);\n\nJust a thought, maybe we can address this in the future.",
+      "range": {
+        "startLine": 342,
+        "startChar": 4,
+        "endLine": 348,
+        "endChar": 39
+      },
+      "revId": "f707e30082bb791bfd154202f9b331ab0323f6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a909d28_c4b0c4c0",
+        "filename": "services/inputflinger/reader/mapper/JoystickInputMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1211949
+      },
+      "writtenOn": "2020-10-24T15:37:56Z",
+      "side": 1,
+      "message": "This is probably right, since it doesn\u0027t make much attaching just some specific input types to a display. I\u0027m sure someone can find a usecase for mapping rotary encoders. However it feels a too big a refactor for me :-)",
+      "parentUuid": "ebaafd63_2d88c01c",
       "range": {
         "startLine": 342,
         "startChar": 4,
