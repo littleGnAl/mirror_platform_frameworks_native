@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58a452bb_654b2255",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-10-26T17:34:22Z",
+      "side": 1,
+      "message": "Presubmit build failure:\n\ncopy -Wno-range-loop-construct -Wno-misleading-indentation -Wno-zero-as-null-pointer-constant -Wno-deprecated-anon-enum-enum-conversion -Wno-deprecated-enum-enum-conversion -Wno-string-compare -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-pessimizing-move -Wno-non-c-typedef-for-linkage -MD -MF out/soong/.intermediates/frameworks/native/services/inputflinger/tests/inputflinger_tests/android_x86/obj/frameworks/native/services/inputflinger/reader/mapper/JoystickInputMapper.o.d -o out/soong/.intermediates/frameworks/native/services/inputflinger/tests/inputflinger_tests/android_x86/obj/frameworks/native/services/inputflinger/reader/mapper/JoystickInputMapper.o frameworks/native/services/inputflinger/reader/mapper/JoystickInputMapper.cpp\nframeworks/native/services/inputflinger/reader/mapper/JoystickInputMapper.cpp:168:19: error: use of undeclared identifier \u0027ViewPort\u0027\n    std::optional\u003cViewPort\u003e viewport \u003d getDeviceContext().getAssociatedViewport();\n                  ^\n1 error generated.",
+      "revId": "e66c7c1c174b650aa8d1724423ccbda74c0300c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7004fa1_c5a3cc0d",
         "filename": "services/inputflinger/tests/InputReader_test.cpp",
         "patchSetId": 2
