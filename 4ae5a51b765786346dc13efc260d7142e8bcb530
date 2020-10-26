@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca9c1d2_b1753015",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398097
+      },
+      "writtenOn": "2020-10-26T15:58:42Z",
+      "side": 1,
+      "message": "Thanks for taking a look, Hendrik. Do you know whom else I should add to the review in order to get a +2?",
+      "revId": "4ae5a51b765786346dc13efc260d7142e8bcb530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
