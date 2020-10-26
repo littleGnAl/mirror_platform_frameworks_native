@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89bf8bbf_2d651eba",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2440,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-26T13:49:06Z",
+      "side": 1,
+      "message": "I would expect this patch is work-able without a later cl.",
+      "parentUuid": "f728b4d2_17c5f776",
+      "range": {
+        "startLine": 2440,
+        "startChar": 21,
+        "endLine": 2440,
+        "endChar": 32
+      },
+      "revId": "c48265421fa770be5271abd7aa3b4e771a75495d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76ae0723_7e477eaf",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 4
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Original one return ERROR at L2799 from outer function. Here reset if any for the following nullptr check and log. Is logging here prefered?",
       "parentUuid": "76ae0723_7e477eaf",
+      "range": {
+        "startLine": 2444,
+        "startChar": 16,
+        "endLine": 2444,
+        "endChar": 36
+      },
+      "revId": "c48265421fa770be5271abd7aa3b4e771a75495d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f24a3cde_37ed1390",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2444,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-26T13:49:06Z",
+      "side": 1,
+      "message": "We already initialized the zip_file to \u0027null\u0027. I still don\u0027t understand why we need reset here?\nhttp://cs/android/frameworks/native/cmds/dumpstate/dumpstate.h?l\u003d502\u0026rcl\u003dd9720ae99ba1b56560a8652a67f140723a18958b",
+      "parentUuid": "fb3bb623_4c23e671",
       "range": {
         "startLine": 2444,
         "startChar": 16,
