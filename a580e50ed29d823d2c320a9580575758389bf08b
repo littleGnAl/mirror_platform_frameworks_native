@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "4851da80_c78370b6",
         "filename": "libs/binder/tests/fuzzers/Android.bp",
@@ -20,10 +21,10 @@
         "endChar": 1
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1bed9b7f_a3d5ffb4",
         "filename": "libs/binder/tests/fuzzers/Android.bp",
@@ -44,10 +45,10 @@
         "endChar": 1
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e8d26d77_51c8f412",
         "filename": "libs/binder/tests/fuzzers/Android.bp",
@@ -68,10 +69,10 @@
         "endChar": 1
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "80704b51_be35f145",
         "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
@@ -91,10 +92,34 @@
         "endChar": 15
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33511136_4da28418",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80704b51_be35f145",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "154180db_c89000ef",
         "filename": "libs/binder/tests/fuzzers/FlattenableClasses.h",
@@ -114,10 +139,34 @@
         "endChar": 34
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "046615d3_32735092",
+        "filename": "libs/binder/tests/fuzzers/FlattenableClasses.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "154180db_c89000ef",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "2a058e93_0e20d7f9",
         "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
@@ -137,10 +186,34 @@
         "endChar": 67
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c475b3a_61a378a6",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a058e93_0e20d7f9",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "837cfe56_7047a728",
         "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
@@ -160,10 +233,10 @@
         "endChar": 17
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0475e3b1_b2c372f1",
         "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
@@ -183,10 +256,10 @@
         "endChar": 56
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b9e98178_f317df69",
         "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
@@ -206,10 +279,82 @@
         "endChar": 62
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33817779_a67f6abe",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Tested without issue, changed.",
+      "parentUuid": "0475e3b1_b2c372f1",
+      "range": {
+        "startLine": 25,
+        "startChar": 55,
+        "endLine": 25,
+        "endChar": 56
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509a57cb_66bd51fa",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9e98178_f317df69",
+      "range": {
+        "startLine": 25,
+        "startChar": 58,
+        "endLine": 25,
+        "endChar": 62
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b95e7fc1_25213c3d",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "837cfe56_7047a728",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3d8882f0_9f80a42e",
         "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
@@ -229,10 +374,34 @@
         "endChar": 52
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b30954d8_1995d4a6",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d8882f0_9f80a42e",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "4fba0ccc_d3410d8b",
         "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
@@ -252,10 +421,34 @@
         "endChar": 22
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7220a0e1_5a776d28",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fba0ccc_d3410d8b",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "a29b8d8b_33061af4",
         "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
@@ -275,10 +468,34 @@
         "endChar": 32
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7940e379_3904e51e",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29b8d8b_33061af4",
+      "range": {
+        "startLine": 54,
+        "startChar": 24,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "54945997_ec55dde1",
         "filename": "libs/binder/tests/fuzzers/ParcelFuzz.cpp",
@@ -292,10 +509,28 @@
       "side": 1,
       "message": "this can be deleted, since we already have binder_parcel_fuzzer, which works with libhwbinder/libbinder_ndk as well",
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29dc0183_7ba15ac6",
+        "filename": "libs/binder/tests/fuzzers/ParcelFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54945997_ec55dde1",
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "72fdb912_7c4a155c",
         "filename": "libs/binder/tests/fuzzers/ProcessStateFuzz.cpp",
@@ -315,10 +550,34 @@
         "endChar": 9
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c78320c_840e38eb",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done, however this fuzzer has been removed due to library-side changes since original CL. The fuzzer will now hang waiting on an IPC call, and due to the reliance on IPC \u0026 components that cannot be fully reset between fuzz iterations (ProcessState/IPCThreadState) we\u0027ve decided it\u0027s best to hold off on this fuzzer.",
+      "parentUuid": "72fdb912_7c4a155c",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "e1aad28b_615bc8b4",
         "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
@@ -338,10 +597,34 @@
         "endChar": 40
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c13d1d2a_8dcfcb27",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1aad28b_615bc8b4",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "9cab22c7_1633f99b",
         "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
@@ -361,10 +644,34 @@
         "endChar": 76
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9cef68_61cd2dab",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Unfortuantely, I don\u0027t believe we can reuse the #define in ProcessState.cpp, as it\u0027s in the compiled src of the library, and not a header.\n\nAdditionally, there doesn\u0027t seem to be a publicly exposed way to pull the value of mMaxThreads (what that #define sets) on a newly created ProcessState object, so we\u0027d be unable to get the value that way.\n\nDiscarded fuzzer due to other issues.",
+      "parentUuid": "9cab22c7_1633f99b",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 76
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "0005ccb9_382ba527",
         "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
@@ -384,10 +691,34 @@
         "endChar": 22
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd31faa_214f0a31",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done.\n\nAlso discarded fuzzer due to other issues.",
+      "parentUuid": "0005ccb9_382ba527",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "6b443a6e_cee086bf",
         "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
@@ -407,10 +738,34 @@
         "endChar": 52
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6c9ba3_0b8d783a",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Done\n\nAlso discarded fuzzer due to other issues.",
+      "parentUuid": "6b443a6e_cee086bf",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "d8c21364_e9dd79ad",
         "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
@@ -430,8 +785,31 @@
         "endChar": 1
       },
       "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b32b1b7_d3ef41c0",
+        "filename": "libs/binder/tests/fuzzers/ProcessStateFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Yes, IPCThreadState::self() is called within ProcessState, and the IPCThreadState object is retained between iterations. Unfortunately we\u0027re unable to remake the IPCThreadState without library modifications (though that would be preferable).\n\nProcessState only accesses IPCThreadState::self() in spawnPooledThread if started (this is never done in the fuzzer due to the inability to spin-down threads), and getContextObject(), which performs a transaction and then flushes. I didn\u0027t see any signs of retained state during testing, but it may be possible.\n\nDiscarded fuzzer due to issues related to this problem and IPC hangups.",
+      "parentUuid": "d8c21364_e9dd79ad",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "a580e50ed29d823d2c320a9580575758389bf08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

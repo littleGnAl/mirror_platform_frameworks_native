@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b9fd4d_580b14cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-10-26T17:13:28Z",
+      "side": 1,
+      "message": "Updated CL to address comments. Removed Parcel Fuzzer (due to request), as well as ProcessState fuzzer, due to issues with IPC and inability to reset state between iterations affecting the usefulness of the fuzzer.",
+      "revId": "1d4cf021f15d425bc59ea510740bbf0286766085",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
