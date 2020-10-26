@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35eddd5_54eeb2e1",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:17:50Z",
+      "side": 1,
+      "message": "read memory at iovec locations, to simulate printing (maybe copy into vector?), so that if it is invalid/corrupted, we\u0027ll get a segfault here",
+      "range": {
+        "startLine": 26,
+        "startChar": 63,
+        "endLine": 26,
+        "endChar": 81
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e7f934_5faf66ed",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:17:50Z",
+      "side": 1,
+      "message": "why ignore last byte?",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0a0e089_9683f8c1",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:17:50Z",
+      "side": 1,
+      "message": "can I suggest this way as the easiest way to avoid case/modulo coupling?\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/parcel_fuzzer/random_parcel.cpp;l\u003d37;drc\u003d362e4da21fe93e231ae60960ad6dbcdb21930d5a",
+      "range": {
+        "startLine": 37,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f6be07_dac95017",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:17:50Z",
+      "side": 1,
+      "message": "support negative values",
+      "range": {
+        "startLine": 49,
+        "startChar": 60,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9508f8db_565d6ffc",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:17:50Z",
+      "side": 1,
+      "message": "the api is that pop can only be called for every push:\n\n        LOG_FATAL_IF(b-\u003ebundle \u003c 0,\n        \"TextOutput::popBundle() called more times than pushBundle()\");\n\nthe fuzzer must reflect this",
+      "range": {
+        "startLine": 54,
+        "startChar": 31,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a4d13ee_676aec79",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:17:50Z",
+      "side": 1,
+      "message": "random string?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447d97b2_5c79d6fb",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:17:50Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b26c1c90_47350f42",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:17:50Z",
+      "side": 1,
+      "message": "exactly - this means L57 can never be hit. Please avoid",
+      "range": {
+        "startLine": 38,
+        "startChar": 49,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d450ea_28545690",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:17:50Z",
+      "side": 1,
+      "message": "Are we sure this won\u0027t hit the intentional fatal logs in this function?\n\n            LOG_FATAL_IF(cur-\u003efree,\n                \"block at offset 0x%08lX of size 0x%08X already freed\",\n                cur-\u003estart*kMemoryAlign, cur-\u003esize*kMemoryAlign);",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
