@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f728b4d2_17c5f776",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2440,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-26T13:06:27Z",
+      "side": 1,
+      "message": "It should be true here regarding what do_stream_zip_file would be.\nI forgot to change the default values of DumpOption. Since do_zip_file/do_add_date is always true at this point when text bug report is no longer exist, I think leaving it to the next patch to remove it all at once is more cleanly. Do you still encourage to put it all together here?",
+      "parentUuid": "6b1d08d6_7de3b427",
+      "range": {
+        "startLine": 2440,
+        "startChar": 21,
+        "endLine": 2440,
+        "endChar": 32
+      },
+      "revId": "c48265421fa770be5271abd7aa3b4e771a75495d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76ae0723_7e477eaf",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-22T04:52:18Z",
       "side": 1,
       "message": "Why do we need to reset here?\nnit: I\u0027d suggest we could have the log here.",
+      "range": {
+        "startLine": 2444,
+        "startChar": 16,
+        "endLine": 2444,
+        "endChar": 36
+      },
+      "revId": "c48265421fa770be5271abd7aa3b4e771a75495d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3bb623_4c23e671",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2444,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-26T13:06:27Z",
+      "side": 1,
+      "message": "Original one return ERROR at L2799 from outer function. Here reset if any for the following nullptr check and log. Is logging here prefered?",
+      "parentUuid": "76ae0723_7e477eaf",
       "range": {
         "startLine": 2444,
         "startChar": 16,
