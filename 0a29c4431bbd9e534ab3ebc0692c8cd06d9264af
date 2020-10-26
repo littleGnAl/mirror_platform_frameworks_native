@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91a434a_9df411e7",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-10-26T18:28:48Z",
+      "side": 1,
+      "message": "can you clarify what you\u0027re trying to say here?\n\n(in particular, this isn\u0027t very helpful unless we give the user some way to choose between this option and the one on the previous line.)",
+      "revId": "0a29c4431bbd9e534ab3ebc0692c8cd06d9264af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
