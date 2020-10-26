@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bce04c2_8390cb61",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 6518,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-10-26T23:53:42Z",
+      "side": 1,
+      "message": "technically, this isn\u0027t needed because the above already assumes that the slot being modified is 0",
+      "range": {
+        "startLine": 6518,
+        "startChar": 4,
+        "endLine": 6518,
+        "endChar": 27
+      },
+      "revId": "5a477216984fc0763b5ea939b21f28174fbc4057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aede72c_638729fc",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 6519,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-10-26T23:53:42Z",
+      "side": 1,
+      "message": "this one is not clear to me. should we first release the data for this slot via \n   \n    processId(mapper, -1);\n\n?\n\nHow can the pointer id just switch?",
+      "range": {
+        "startLine": 6519,
+        "startChar": 4,
+        "endLine": 6519,
+        "endChar": 25
+      },
+      "revId": "5a477216984fc0763b5ea939b21f28174fbc4057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2246dbf0_e1bdd90f",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 6550,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-10-26T23:53:42Z",
+      "side": 1,
+      "message": "why does this happen? are you emulating a bug in the touch driver here?",
+      "range": {
+        "startLine": 6548,
+        "startChar": 4,
+        "endLine": 6550,
+        "endChar": 24
+      },
+      "revId": "5a477216984fc0763b5ea939b21f28174fbc4057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
