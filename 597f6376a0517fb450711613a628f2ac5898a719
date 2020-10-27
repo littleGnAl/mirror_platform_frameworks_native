@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e15e99f9_2c3515f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241863
+      },
+      "writtenOn": "2020-10-27T16:43:53Z",
+      "side": 1,
+      "message": "Connor - is there anything blocking this from being submitted? ",
+      "revId": "597f6376a0517fb450711613a628f2ac5898a719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
