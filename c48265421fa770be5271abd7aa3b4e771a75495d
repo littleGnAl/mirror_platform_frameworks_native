@@ -212,6 +212,30 @@
       },
       "revId": "c48265421fa770be5271abd7aa3b4e771a75495d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ab5efc_f09a6ecb",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-27T22:25:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8c5b414f_6299c8e5",
+      "range": {
+        "startLine": 438,
+        "startChar": 13,
+        "endLine": 438,
+        "endChar": 25
+      },
+      "revId": "c48265421fa770be5271abd7aa3b4e771a75495d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
