@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3938199d_aa680de7",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-10-27T21:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "855a7232_bdb88494",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 0
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81c61e68_69bb5570",
@@ -60,6 +84,30 @@
       "writtenOn": "2020-10-23T06:03:12Z",
       "side": 1,
       "message": "I would love to have this whole API refactored :) Not for this CL, but as a generic thing. Hopefully we can do it when we move this to art.\n\nhere\u0027s an idea I tried before but it was to late to merge at the time : https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/base/+/10935529",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d7f0a4_c6da8c48",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-10-27T21:08:04Z",
+      "side": 1,
+      "message": "Yeah, that looks like it would be better.",
+      "parentUuid": "81c61e68_69bb5570",
       "range": {
         "startLine": 69,
         "startChar": 16,
@@ -87,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82443abc_14fc0108",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-10-27T21:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c24b9f66_bf6ec1c7",
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec0b1ac9_f4b25087",
@@ -100,6 +166,30 @@
       "writtenOn": "2020-10-23T06:03:12Z",
       "side": 1,
       "message": "could you move this logic in SetDex2oatScheduling?",
+      "range": {
+        "startLine": 1830,
+        "startChar": 8,
+        "endLine": 1830,
+        "endChar": 39
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "126797ed_f0aa5926",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1830,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-10-27T21:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec0b1ac9_f4b25087",
       "range": {
         "startLine": 1830,
         "startChar": 8,
@@ -133,6 +223,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b45fb1b8_fbeaebd7",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-10-27T21:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dc8f5e0_8fe16c46",
+      "range": {
+        "startLine": 1831,
+        "startChar": 16,
+        "endLine": 1831,
+        "endChar": 20
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c3617df_241a148c",
@@ -146,6 +260,30 @@
       "writtenOn": "2020-10-23T06:03:12Z",
       "side": 1,
       "message": "isn\u0027t this the default?",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1838,
+        "endChar": 95
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97d13c24_3e8364bf",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-10-27T21:08:04Z",
+      "side": 1,
+      "message": "The best effort part is default but the priority isn\u0027t.  I used the version of the macro that sets both so that it was explicit.",
+      "parentUuid": "2c3617df_241a148c",
       "range": {
         "startLine": 1835,
         "startChar": 0,
@@ -192,6 +330,30 @@
       "writtenOn": "2020-10-23T06:03:12Z",
       "side": 1,
       "message": "Android defines the common priorities here: system/core/libsystem/include/system/thread_defs.h\nLet\u0027s re-use those.\n\nI think we should focus on NORMAL and BACKGROUND priorities.\n\nIf you think there is a case were a higher priority would make a difference, at most we should go to FOREGROUND (but I would be cautious about it, and maybe bounce it with system health. I can think of cases where we could end up with the opposite effect, e.g. when users start an op and then go in the background and open another app).",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920ed21b_2035252b",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2020-10-27T21:08:04Z",
+      "side": 1,
+      "message": "Done.  The only current case for PRIORITY_HIGHEST is instant apps, which I think justifies the use of FOREGROUND.  Does that sound good to you?",
+      "parentUuid": "0ad28cd1_32dc6d2e",
       "range": {
         "startLine": 42,
         "startChar": 0,
