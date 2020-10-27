@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0484f57d_54cb9be1",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5871,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-10-27T00:24:12Z",
+      "side": 1,
+      "message": "This one fails presubmit:\n\nframeworks/native/services/inputflinger/tests/TestInputListener.cpp:96: Failure\nFailed\nTimed out waiting for event: Expected notifyMotion() to have been called.\nframeworks/native/services/inputflinger/tests/TestInputListener.cpp:71: Failure\nExpected: assertCalled\u003cNotifyMotionArgs\u003e(outEventArgs, \"Expected notifyMotion() to have been called.\") doesn\u0027t generate new fatal failures in the current thread.\nActual: it does.\nframeworks/native/services/inputflinger/tests/InputReader_test.cpp:5891: Failure\nExpected: mFakeListener-\u003eassertNotifyMotionWasCalled(\u0026motionArgs) doesn\u0027t generate new fatal failures in the current thread.\nActual: it does.\n\nProbably also due to \"processId\" preceding \u0027processPosition\u0027. My proposal is to keep accumulating the slot data as I mentioned previously",
+      "range": {
+        "startLine": 5871,
+        "startChar": 34,
+        "endLine": 5871,
+        "endChar": 75
+      },
+      "revId": "5a477216984fc0763b5ea939b21f28174fbc4057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bce04c2_8390cb61",
         "filename": "services/inputflinger/tests/InputReader_test.cpp",
         "patchSetId": 3
