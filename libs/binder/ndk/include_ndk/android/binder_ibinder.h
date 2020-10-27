@@ -53,6 +53,14 @@ enum {
      * calls are guaranteed to be ordered if they are sent on the same AIBinder object.
      */
     FLAG_ONEWAY = 0x01,
+
+    /**
+     * The transaction and reply will be cleared by the kernel in read-only
+     * binder buffers storing transactions.
+     *
+     * Introduced in API level 31.
+     */
+    FLAG_CLEAR_BUF = 0x20,
 };
 
 // Also see IBinder.h in libbinder

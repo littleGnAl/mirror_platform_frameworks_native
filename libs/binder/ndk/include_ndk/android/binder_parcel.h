@@ -86,6 +86,17 @@ binder_status_t AParcel_setDataPosition(const AParcel* parcel, int32_t position)
  */
 int32_t AParcel_getDataPosition(const AParcel* parcel) __INTRODUCED_IN(29);
 
+#if __ANDROID_API__ >= 31
+/**
+ * Data written to the parcel will be zero'd before being deleted or realloced.
+ *
+ * Available since API level 31.
+ *
+ * \param parcel The parcel to clear associated data from.
+ */
+void AParcel_markSensitive(const AParcel* parcel) __INTRODUCED_IN(31);
+#endif
+
 /**
  * This is called to allocate a buffer for a C-style string (null-terminated). The returned buffer
  * should be at least length bytes. This includes space for a null terminator. For a string, length
