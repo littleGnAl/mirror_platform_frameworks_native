@@ -52,6 +52,24 @@
       "parentUuid": "0e64503a_a5157e21",
       "revId": "0a29c4431bbd9e534ab3ebc0692c8cd06d9264af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "375bb425_b72a280e",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-27T22:20:45Z",
+      "side": 1,
+      "message": "I Got it, thanks. would remove it.",
+      "parentUuid": "44902b9f_49ca2c99",
+      "revId": "0a29c4431bbd9e534ab3ebc0692c8cd06d9264af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
