@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a3faa62_29b28b78",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2460,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-27T11:07:11Z",
+      "side": 1,
+      "message": "We should move this to `if (ds.zip_file !\u003d nullptr)` block.",
+      "range": {
+        "startLine": 2460,
+        "startChar": 7,
+        "endLine": 2460,
+        "endChar": 22
+      },
+      "revId": "19fd89196072bf45062b22afc1070984978460b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83bf4678_c1bf8d41",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2471,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-27T11:07:11Z",
+      "side": 1,
+      "message": "The fail message is wrong in do_stream_zip_file case.",
+      "range": {
+        "startLine": 2470,
+        "startChar": 8,
+        "endLine": 2471,
+        "endChar": 28
+      },
+      "revId": "19fd89196072bf45062b22afc1070984978460b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4035a41b_50ebd70d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2789,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-27T11:07:11Z",
+      "side": 1,
+      "message": "nit: I think we can remove this comment.",
+      "range": {
+        "startLine": 2788,
+        "startChar": 4,
+        "endLine": 2789,
+        "endChar": 40
+      },
+      "revId": "19fd89196072bf45062b22afc1070984978460b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f77168d_681f473b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2799,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-27T11:07:11Z",
+      "side": 1,
+      "message": "I think we should return immediately in the do_stream_zip_file case if \u0027PrepareToWriteToFile\u0027 failed.",
+      "range": {
+        "startLine": 2799,
+        "startChar": 4,
+        "endLine": 2799,
+        "endChar": 24
+      },
+      "revId": "19fd89196072bf45062b22afc1070984978460b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee82be80_11e209f4",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-27T11:07:11Z",
+      "side": 1,
+      "message": "Per sync offline, no need to keep this function.",
+      "range": {
+        "startLine": 436,
+        "startChar": 13,
+        "endLine": 436,
+        "endChar": 25
+      },
+      "revId": "19fd89196072bf45062b22afc1070984978460b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
