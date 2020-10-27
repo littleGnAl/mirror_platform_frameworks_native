@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8379ab4d_08abf6c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-27T19:50:51Z",
+      "side": 1,
+      "message": "these logs aren\u0027t very clear. This is the kernel\u0027s copy of reply data",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "d8a8377d4361fedf765f3688fe90f7a5924702ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d42be589_2ecc481c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-27T19:50:51Z",
+      "side": 1,
+      "message": "this is the kernel\u0027s copy of the transaction data in the client process, which we save and pull in a separate transaction (this is why it shows up after \u0027reply data\u0027)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "d8a8377d4361fedf765f3688fe90f7a5924702ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661fe97d_a0969b24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-27T19:50:51Z",
+      "side": 1,
+      "message": "this shows the read-only memory controlled by the kernel is zero",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "d8a8377d4361fedf765f3688fe90f7a5924702ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824facfa_22876fc0",
+        "filename": "libs/binder/tests/binderClearBufTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-27T19:50:51Z",
+      "side": 1,
+      "message": "potential gotcha",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 48
+      },
+      "revId": "d8a8377d4361fedf765f3688fe90f7a5924702ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
