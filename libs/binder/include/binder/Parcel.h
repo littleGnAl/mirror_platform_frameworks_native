@@ -583,6 +583,7 @@ private:
                                          status_t(Parcel::*write_func)(T));
 
     status_t            mError;
+public:
     uint8_t*            mData;
     size_t              mDataSize;
     size_t              mDataCapacity;

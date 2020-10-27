@@ -1241,6 +1241,11 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             //ALOGI("<<<< TRANSACT from pid %d restore pid %d sid %s uid %d\n",
             //     mCallingPid, origPid, (origSid ? origSid : "<N/A>"), origUid);
 
+            // FIXME: remove
+            if (tr.flags & TF_CLEAR_BUF) {
+                ALOGI("asdfasdf transaction has clear buf flag set");
+            }
+
             if ((tr.flags & TF_ONE_WAY) == 0) {
                 LOG_ONEWAY("Sending reply to %d!", mCallingPid);
                 if (error < NO_ERROR) reply.setError(error);
