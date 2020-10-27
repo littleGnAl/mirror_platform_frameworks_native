@@ -34,6 +34,24 @@
       "parentUuid": "d91a434a_9df411e7",
       "revId": "0a29c4431bbd9e534ab3ebc0692c8cd06d9264af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44902b9f_49ca2c99",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-10-27T15:45:54Z",
+      "side": 1,
+      "message": "ah, i see. in that case i\u0027d *not* use a redirection example (since there\u0027s no point --- the simpler example on the previous line does that) but use a pipe example instead.\n\nbut is that useful? the streamed output is still a zip file, right?\n\ni think unless you can give a realistic common use case for --stream here, it\u0027s better not to say anything at all. it just further confuses the already confused user who just wants to get a bug report...",
+      "parentUuid": "0e64503a_a5157e21",
+      "revId": "0a29c4431bbd9e534ab3ebc0692c8cd06d9264af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
