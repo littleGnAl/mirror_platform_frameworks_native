@@ -78,6 +78,7 @@ enum {
 
 enum {
     FLAG_ONEWAY = FLAG_ONEWAY,
+    FLAG_CLEAR_BUF = FLAG_CLEAR_BUF,
 };
 
 } // namespace consts
