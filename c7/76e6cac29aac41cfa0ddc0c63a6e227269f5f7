@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Build-Cop-Override+1: Kevin Han <kevhan@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Dieter Hsu <dieterhsu@google.com>
+Submitted-at: Tue, 27 Oct 2020 21:59:22 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1477556
+Project: platform/frameworks/native
+Branch: refs/heads/master
