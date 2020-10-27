@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "998e6718_5f7ad7be",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-27T20:45:15Z",
+      "side": 1,
+      "message": "should ifdef out like this, but for 31",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f9c5505_13e2e584",
+        "filename": "libs/binder/rust/tests/binderRustNdkInteropTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-27T20:45:15Z",
+      "side": 1,
+      "message": "I\u0027ll leave the bug open on me for this, can you TODO(b/167723746)?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5233760_14767c4b",
+        "filename": "libs/binder/rust/tests/binderRustNdkInteropTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-27T20:45:15Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
