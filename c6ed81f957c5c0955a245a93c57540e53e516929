@@ -296,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "262a8046_e6551b7e",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-28T05:18:44Z",
+      "side": 1,
+      "message": "what\u0027s the default priority value here?",
+      "parentUuid": "97d13c24_3e8364bf",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1838,
+        "endChar": 95
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa7d577a_bad4fe58",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 4
@@ -354,6 +378,30 @@
       "side": 1,
       "message": "Done.  The only current case for PRIORITY_HIGHEST is instant apps, which I think justifies the use of FOREGROUND.  Does that sound good to you?",
       "parentUuid": "0ad28cd1_32dc6d2e",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "c6ed81f957c5c0955a245a93c57540e53e516929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6433893e_17e469fb",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-10-28T05:18:44Z",
+      "side": 1,
+      "message": "let\u0027s chat offline about this.",
+      "parentUuid": "920ed21b_2035252b",
       "range": {
         "startLine": 42,
         "startChar": 0,
