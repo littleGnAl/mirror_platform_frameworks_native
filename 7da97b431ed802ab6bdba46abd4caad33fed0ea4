@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2695cb14_8634b7fc",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2829,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-28T11:51:19Z",
+      "side": 1,
+      "message": "It should be always true since we return ERROR in Line#2800.",
+      "range": {
+        "startLine": 2829,
+        "startChar": 41,
+        "endLine": 2829,
+        "endChar": 60
+      },
+      "revId": "7da97b431ed802ab6bdba46abd4caad33fed0ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ed751fd_32fa82a3",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-28T11:51:19Z",
+      "side": 1,
+      "message": "nit: Looks like we could remove this.",
+      "range": {
+        "startLine": 392,
+        "startChar": 48,
+        "endLine": 392,
+        "endChar": 83
+      },
+      "revId": "7da97b431ed802ab6bdba46abd4caad33fed0ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
