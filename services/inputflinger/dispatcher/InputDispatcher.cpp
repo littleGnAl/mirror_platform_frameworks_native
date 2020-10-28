@@ -3825,6 +3825,25 @@ void InputDispatcher::setInputWindowsLocked(
     }
 }
 
+class MyInputApplicationHandle: public InputApplicationHandle {
+public:
+    MyInputApplicationHandle(sp<InputApplicationHandle> other) {
+         mInfo = *other->getInfo();
+    }
+
+    bool updateInfo() override {
+        return true;
+    }
+};
+
+static inline bool isSameApp(const sp<InputApplicationHandle>& newAppHandle, const sp<InputApplicationHandle>& oldAppHandle) {
+    if (newAppHandle == nullptr && oldAppHandle == nullptr) {
+        return true;
+    }
+    return newAppHandle != nullptr && oldAppHandle != nullptr
+            && newAppHandle->getApplicationToken() != oldAppHandle->getApplicationToken();
+}
+
 void InputDispatcher::setFocusedApplication(
         int32_t displayId, const sp<InputApplicationHandle>& inputApplicationHandle) {
     if (DEBUG_FOCUS) {
@@ -3837,14 +3856,16 @@ void InputDispatcher::setFocusedApplication(
         sp<InputApplicationHandle> oldFocusedApplicationHandle =
                 getValueByKey(mFocusedApplicationHandlesByDisplay, displayId);
 
-        if (oldFocusedApplicationHandle == mAwaitedFocusedApplication &&
-            inputApplicationHandle != oldFocusedApplicationHandle) {
-            resetNoFocusedWindowTimeoutLocked();
+        if (oldFocusedApplicationHandle == mAwaitedFocusedApplication) {
+            if (!isSameApp(inputApplicationHandle, oldFocusedApplicationHandle)) {
+                resetNoFocusedWindowTimeoutLocked();
+            }
         }
 
         if (inputApplicationHandle != nullptr && inputApplicationHandle->updateInfo()) {
-            if (oldFocusedApplicationHandle != inputApplicationHandle) {
-                mFocusedApplicationHandlesByDisplay[displayId] = inputApplicationHandle;
+            if (!isSameApp(inputApplicationHandle, oldFocusedApplicationHandle)) {
+                sp<InputApplicationHandle> tmpHandle(new MyInputApplicationHandle(inputApplicationHandle));
+                mFocusedApplicationHandlesByDisplay[displayId] = tmpHandle;
             }
         } else if (oldFocusedApplicationHandle != nullptr) {
             oldFocusedApplicationHandle.clear();
