@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4ddf5a_f95e34bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-29T18:17:14Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/native/+/1477049 is the verification this works, but it\u0027s pretty flaky/hacky.\n\nFor actual validation, we will use ramdumps etc.., but I wanted to get started with review.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "a3ab870f32f1a58273c4595c64178aeed15b8e1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
