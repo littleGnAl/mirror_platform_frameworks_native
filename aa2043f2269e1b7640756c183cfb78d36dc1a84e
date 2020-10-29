@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4129fe96_2251b378",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-29T22:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "998e6718_5f7ad7be",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e7eeba1_a3c2107a",
@@ -90,6 +114,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b79f22fb_894a2331",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-29T22:12:10Z",
+      "side": 1,
+      "message": "I considered allocating, but I wasn\u0027t sure we wanted to put de-allocation on the consumer without the consumer providing its own allocator, i.e. the way that AParcel_readString() works.\n\nStoring an extra copy of the descriptor sounds good to me, as there shouldn\u0027t be too many classes. Any reason that increasing the size of AIBinder_Class is problematic?",
+      "parentUuid": "ae62ce47_7c6125dc",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 14
+      },
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8218d5d5_febe82b0",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-29T22:12:10Z",
+      "side": 1,
+      "message": "Ack, I\u0027ll add that once we decide on what the API should be re: UTF-16 or UTF-8.",
+      "parentUuid": "f4d3dd76_217b0f79",
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f9c5505_13e2e584",
         "filename": "libs/binder/rust/tests/binderRustNdkInteropTest.cpp",
         "patchSetId": 5
@@ -101,6 +167,30 @@
       "writtenOn": "2020-10-27T20:45:15Z",
       "side": 1,
       "message": "I\u0027ll leave the bug open on me for this, can you TODO(b/167723746)?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b483b0_bb1c81ff",
+        "filename": "libs/binder/rust/tests/binderRustNdkInteropTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-29T22:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f9c5505_13e2e584",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -124,6 +214,30 @@
       "writtenOn": "2020-10-27T20:45:15Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe543eeb_958d3266",
+        "filename": "libs/binder/rust/tests/binderRustNdkInteropTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-29T22:12:10Z",
+      "side": 1,
+      "message": "This should work when support is added to the AIDL NDK backend. Would you like me to take out this code instead?",
+      "parentUuid": "b5233760_14767c4b",
       "range": {
         "startLine": 60,
         "startChar": 0,
