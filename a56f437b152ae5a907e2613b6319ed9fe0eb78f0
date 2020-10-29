@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a295bd8c_a2c684d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-10-29T11:32:40Z",
+      "side": 1,
+      "message": "Due to ftruncate in libziparchive, we couldn\u0027t finish zip with socket. The streaming data is copied after zip finalized.",
+      "revId": "a56f437b152ae5a907e2613b6319ed9fe0eb78f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
