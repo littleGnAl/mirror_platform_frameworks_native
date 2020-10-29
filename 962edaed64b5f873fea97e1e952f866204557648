@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc026a3_44029492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-10-29T20:14:36Z",
+      "side": 1,
+      "message": "CTS tests?",
+      "revId": "962edaed64b5f873fea97e1e952f866204557648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6cbdb9e_3b5c44ae",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-10-29T20:14:36Z",
+      "side": 1,
+      "message": "Remove the guard. Anyone using the API conditionally based on the device\u0027s API level would have to copy/paste this to use it when it\u0027s available.",
+      "revId": "962edaed64b5f873fea97e1e952f866204557648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
