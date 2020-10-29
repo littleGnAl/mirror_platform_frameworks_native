@@ -33,6 +33,24 @@
       "message": "Remove the guard. Anyone using the API conditionally based on the device\u0027s API level would have to copy/paste this to use it when it\u0027s available.",
       "revId": "962edaed64b5f873fea97e1e952f866204557648",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a04bcf59_c26d3443",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-29T21:51:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6cbdb9e_3b5c44ae",
+      "revId": "962edaed64b5f873fea97e1e952f866204557648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
