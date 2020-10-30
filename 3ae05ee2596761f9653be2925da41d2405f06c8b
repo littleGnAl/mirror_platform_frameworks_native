@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc15ea67_e332aaa1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 2719,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-30T09:12:53Z",
+      "side": 0,
+      "message": "Let\u0027s not change this behavior.",
+      "range": {
+        "startLine": 2715,
+        "startChar": 2,
+        "endLine": 2719,
+        "endChar": 29
+      },
+      "revId": "3ae05ee2596761f9653be2925da41d2405f06c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d4df6d_c6ba3353",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 2796,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-30T09:12:53Z",
+      "side": 0,
+      "message": "Sorry, do not remove these comments. Let\u0027s leave them for control socket.",
+      "range": {
+        "startLine": 2795,
+        "startChar": 4,
+        "endLine": 2796,
+        "endChar": 40
+      },
+      "revId": "3ae05ee2596761f9653be2925da41d2405f06c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23776246_35e089c3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 2840,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-10-30T09:12:53Z",
+      "side": 0,
+      "message": "We need to keep this one.",
+      "range": {
+        "startLine": 2840,
+        "startChar": 30,
+        "endLine": 2840,
+        "endChar": 52
+      },
+      "revId": "3ae05ee2596761f9653be2925da41d2405f06c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
