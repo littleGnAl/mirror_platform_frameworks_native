@@ -16,6 +16,23 @@
       "message": "Thanks for taking a look, Hendrik. Do you know whom else I should add to the review in order to get a +2?",
       "revId": "4ae5a51b765786346dc13efc260d7142e8bcb530",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de17e6fb_9f59e7fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-10-30T17:47:34Z",
+      "side": 1,
+      "message": "looks good. Consider adding seed corpus./dict",
+      "revId": "4ae5a51b765786346dc13efc260d7142e8bcb530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
