@@ -42,6 +42,9 @@ cc_fuzz {
                 "libbinder",
             ],
         },
+        darwin: {
+            enabled: false,
+        },
     },
     // This flag enables verbose output in the fuzz target, and is very useful
     // for debugging a failure. If you are trying to diagnose how a crash was
