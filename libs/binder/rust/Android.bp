@@ -10,6 +10,11 @@ rust_library {
         "libbinder_ndk_sys",
     ],
     host_supported: true,
+    target: {
+        darwin: {
+            enabled: false,
+        }
+    }
 }
 
 rust_library {
@@ -23,6 +28,11 @@ rust_library {
         "libbinder_ndk",
     ],
     host_supported: true,
+    target: {
+        darwin: {
+            enabled: false,
+        }
+    }
 }
 
 rust_bindgen {
