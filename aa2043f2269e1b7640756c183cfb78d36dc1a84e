@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ad52c2a_f6bce9d7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-30T22:15:09Z",
+      "side": 1,
+      "message": "It will be a problem eventually, taking up too much memory. There was a lot of work done saving space for descriptors in regular binder.\n\nAnd we already need the char16_t* allocated, for the C++ getInterfaceDescriptor const\u0026 return. Since we need a solution for that forever, I think char16_t is the best API here, since it doesn\u0027t add any new requirements to our implementation in terms of memory allocation.\n\nit is gross, but it\u0027s the most efficient :/\n\nI think likely because of this btw, we\u0027ll need to a new version of AIBinder_Class_define which takes a char16_t* which is guaranteed to live in read-only memory and will not go away, to avoid memory usage.\n\nJohn?",
+      "parentUuid": "b79f22fb_894a2331",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 14
+      },
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f9c5505_13e2e584",
         "filename": "libs/binder/rust/tests/binderRustNdkInteropTest.cpp",
         "patchSetId": 5
@@ -238,6 +262,30 @@
       "side": 1,
       "message": "This should work when support is added to the AIDL NDK backend. Would you like me to take out this code instead?",
       "parentUuid": "b5233760_14767c4b",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f08b2bb_b3f5bc42",
+        "filename": "libs/binder/rust/tests/binderRustNdkInteropTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-30T22:15:09Z",
+      "side": 1,
+      "message": "makes sense, thanks",
+      "parentUuid": "fe543eeb_958d3266",
       "range": {
         "startLine": 60,
         "startChar": 0,
