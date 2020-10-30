@@ -84,6 +84,9 @@ cc_library {
         linux: {
             version_script: "libbinder_ndk.map.txt",
         },
+        darwin: {
+            enabled: false,
+        },
     },
     stubs: {
         symbol_file: "libbinder_ndk.map.txt",
