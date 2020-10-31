@@ -1,12 +1,5 @@
-// bugreportz
-// ==========
-cc_binary {
-    name: "bugreportz",
-
-    srcs: [
-        "bugreportz.cpp",
-        "main.cpp",
-    ],
+cc_defaults {
+    name: "bugreportz_defaults",
 
     cflags: [
         "-Werror",
@@ -15,6 +8,23 @@ cc_binary {
 
     shared_libs: [
         "libbase",
+        "libbinder",
+        "libdumpstateaidl",
+        "liblog",
+        "libutils",
+    ],
+}
+// bugreportz
+// ==========
+cc_binary {
+    name: "bugreportz",
+    defaults: ["bugreportz_defaults"],
+
+    srcs: [
+        "bugreportz.cpp",
+        "main.cpp",
+    ],
+    shared_libs: [
         "libcutils",
     ],
 }
@@ -23,12 +33,8 @@ cc_binary {
 // ===============
 cc_test {
     name: "bugreportz_test",
+    defaults: ["bugreportz_defaults"],
     test_suites: ["device-tests"],
-
-    cflags: [
-        "-Werror",
-        "-Wall",
-    ],
 
     srcs: [
         "bugreportz.cpp",
@@ -36,9 +42,4 @@ cc_test {
     ],
 
     static_libs: ["libgmock"],
-
-    shared_libs: [
-        "libbase",
-        "libutils",
-    ],
 }
