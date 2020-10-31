@@ -2539,6 +2539,7 @@ static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOpt
             options->dumpstate_hal_mode = DumpstateMode::WIFI;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_DEFAULT:
+            options->do_progress_updates = true;
             break;
     }
 }
@@ -2769,7 +2770,8 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     MYLOGI("dumpstate info: id=%d, args='%s', bugreport_mode= %s bugreport format version: %s\n",
            id_, options_->args.c_str(), options_->bugreport_mode.c_str(), version_.c_str());
 
-    do_early_screenshot_ = options_->do_progress_updates;
+    do_early_screenshot_ = options_->do_progress_updates
+            && (options_->bugreport_mode != ModeToString(BugreportMode::BUGREPORT_DEFAULT));
 
     // If we are going to use a socket, do it as early as possible
     // to avoid timeouts from bugreport.
@@ -2780,7 +2782,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
             return ERROR;
         }
         if (options_->progress_updates_to_socket) {
-            options_->do_progress_updates = 1;
+            options_->do_progress_updates = true;
         }
     }
 
@@ -2791,15 +2793,21 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     // Interactive, wear & telephony modes are default to true.
     // and may enable from cli option or when using control socket
     if (options_->do_progress_updates) {
-        // clang-format off
-        std::vector<std::string> am_args = {
-                "--receiver-permission", "android.permission.DUMP",
-        };
-        // clang-format on
-        // Send STARTED broadcast for apps that listen to bugreport generation events
-        SendBroadcast("com.android.internal.intent.action.BUGREPORT_STARTED", am_args);
+        if (options_->bugreport_mode != ModeToString(BugreportMode::BUGREPORT_DEFAULT)) {
+            // clang-format off
+            std::vector<std::string> am_args = {
+                    "--receiver-permission", "android.permission.DUMP",
+            };
+            // clang-format on
+            // Send STARTED broadcast for apps that listen to bugreport generation events
+            SendBroadcast("com.android.internal.intent.action.BUGREPORT_STARTED", am_args);
+        }
         if (options_->progress_updates_to_socket) {
             dprintf(control_socket_fd_, "BEGIN:%s\n", path_.c_str());
+        }
+        // Callback first progress here as a BEGIN message workaround.
+        if (listener_ != nullptr) {
+            listener_->onProgress(0);
         }
     }
 
@@ -3931,7 +3939,7 @@ void Dumpstate::UpdateProgress(int32_t delta_sec) {
     }
     last_reported_percent_progress_ = percent;
 
-    if (control_socket_fd_ >= 0) {
+    if (options_->do_progress_updates && control_socket_fd_ >= 0) {
         dprintf(control_socket_fd_, "PROGRESS:%d/%d\n", progress, max);
         fsync(control_socket_fd_);
     }
