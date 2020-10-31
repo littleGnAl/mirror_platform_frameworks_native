@@ -2474,6 +2474,12 @@ static void FinalizeFile() {
         } else {
             dprintf(ds.control_socket_fd_, "OK:%s\n", final_path.c_str());
         }
+    } else if (ds.listener_ != nullptr) {
+        if (do_text_file) {
+            ds.listener_->onError(IDumpstateListener::BUGREPORT_ERROR_RUNTIME_ERROR);
+        } else {
+            ds.listener_->onFinished();
+        }
     }
 }
 
@@ -2777,9 +2783,10 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         if (control_socket_fd_ == -1) {
             return ERROR;
         }
-        if (options_->use_control_socket) {
-            options_->do_progress_updates = 1;
-        }
+    }
+    if (options_->use_control_socket
+            || (calling_uid == AID_SHELL && CalledByApi())) {
+        options_->do_progress_updates = true;
     }
 
     if (!PrepareToWriteToFile() && options_->do_stream_zip_file){
