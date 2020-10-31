@@ -3,7 +3,17 @@
 `bugreportz` is used to generate a zippped bugreport whose path is passed back to `adb`, using
 the simple protocol defined below.
 
-# Version 1.1
+## Version 1.3
+On Version 1.3, progress message format has been changed to:
+
+- `PROGRESS:<progress_percent>/100` as `dumpstate` progresses (where `<progress_percent>` is the current
+progress percentage).
+ 
+## Version 1.2
+On Version 1.2, Streaming zipped bugreport on `stdout` when the bugreport finished is supported
+with `-s` option.
+
+## Version 1.1
 On version 1.1, in addition to the `OK` and `FAILURE` lines, when `bugreportz` is invoked with
 `-p`, it outputs the following lines:
 
