@@ -15,10 +15,11 @@
 #ifndef BUGREPORTZ_H
 #define BUGREPORTZ_H
 
+// Calls dumpstate via binder
+int bugreportz(bool show_progress);
+
 // Calls dumpstate using the given socket and output its result to stdout.
 // Ownership of the socket is not transferred.
-int bugreportz(int s, bool show_progress);
-
 int bugreportz_stream(int s);
 
 #endif  // BUGREPORTZ_H
