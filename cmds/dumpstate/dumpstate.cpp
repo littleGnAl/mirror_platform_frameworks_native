@@ -2780,7 +2780,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
             return ERROR;
         }
         if (options_->progress_updates_to_socket) {
-            options_->do_progress_updates = 1;
+            options_->do_progress_updates = true;
         }
     }
 
@@ -2801,6 +2801,11 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         if (options_->progress_updates_to_socket) {
             dprintf(control_socket_fd_, "BEGIN:%s\n", path_.c_str());
         }
+    }
+    // Callback first progress here as a BEGIN message workaround.
+    // For a larger bugreport, progress 0 can be reported multiple times.
+    if (listener_ != nullptr) {
+        listener_->onProgress(0);
     }
 
     /* read /proc/cmdline before dropping root */
@@ -3920,7 +3925,7 @@ void Dumpstate::UpdateProgress(int32_t delta_sec) {
     progress_->Inc(delta_sec);
 
     // ...but only notifiy listeners when necessary.
-    if (!options_->do_progress_updates) return;
+    if (!options_->do_progress_updates || !CalledByApi()) return;
 
     int progress = progress_->Get();
     int max = progress_->GetMax();
@@ -3931,7 +3936,7 @@ void Dumpstate::UpdateProgress(int32_t delta_sec) {
     }
     last_reported_percent_progress_ = percent;
 
-    if (control_socket_fd_ >= 0) {
+    if (options_->do_progress_updates && control_socket_fd_ >= 0) {
         dprintf(control_socket_fd_, "PROGRESS:%d/%d\n", progress, max);
         fsync(control_socket_fd_);
     }
