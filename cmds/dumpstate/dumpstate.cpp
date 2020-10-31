@@ -2800,6 +2800,9 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         if (options_->use_control_socket) {
             dprintf(control_socket_fd_, "BEGIN:%s\n", path_.c_str());
         }
+        if (listener_) {
+            listener_->onProgress(0);
+        }
     }
 
     /* read /proc/cmdline before dropping root */

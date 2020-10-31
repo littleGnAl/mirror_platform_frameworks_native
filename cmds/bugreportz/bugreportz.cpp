@@ -14,7 +14,18 @@
  * limitations under the License.
  */
 
+#include "bugreportz.h"
+
+#include <android-base/file.h>
+#include <android-base/logging.h>
+#include <android-base/strings.h>
+#include <android/os/BnDumpstate.h>
+#include <android/os/BnDumpstateListener.h>
+#include <android/os/IDumpstate.h>
+#include <binder/IServiceManager.h>
+#include <binder/ProcessState.h>
 #include <errno.h>
+#include <private/android_filesystem_config.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,10 +33,102 @@
 
 #include <string>
 
-#include <android-base/file.h>
-#include <android-base/strings.h>
+using namespace android;
 
-#include "bugreportz.h"
+class DumpstateListener : public android::os::BnDumpstateListener {
+  public:
+    DumpstateListener(bool show_progress, int fd) : out_fd_(fd), show_progress_(show_progress) {
+    }
+
+    binder::Status onProgress(int32_t progress) override {
+        dprintf(out_fd_, "PROGRESS:In progress %d, show=%d", progress, show_progress_);
+        return binder::Status::ok();
+    }
+
+    binder::Status onError(int32_t error_code) override {
+        std::lock_guard<std::mutex> lock(lock_);
+        error_code_ = error_code;
+        dprintf(out_fd_, "FAIL:Error code %d, check log for more details", error_code);
+        return binder::Status::ok();
+    }
+
+    binder::Status onFinished() override {
+        std::lock_guard<std::mutex> lock(lock_);
+        is_finished_ = true;
+        dprintf(out_fd_, "OK:Finished");
+        return binder::Status::ok();
+    }
+
+    binder::Status onScreenshotTaken(bool success) override {
+        std::lock_guard<std::mutex> lock(lock_);
+        dprintf(out_fd_, "PROGRESS:Result of taking screenshot: %s",
+                success ? "success" : "failure");
+        return binder::Status::ok();
+    }
+
+    binder::Status onUiIntensiveBugreportDumpsFinished(
+        const android::String16& callingpackage) override {
+        std::lock_guard<std::mutex> lock(lock_);
+        std::string callingpackageUtf8 = std::string(String8(callingpackage).string());
+        dprintf(out_fd_, "PROGRESS:Calling package of ui intensive bugreport dumps finished: %s",
+                callingpackageUtf8.c_str());
+        return binder::Status::ok();
+    }
+
+    bool getIsFinished() {
+        std::lock_guard<std::mutex> lock(lock_);
+        return is_finished_;
+    }
+
+    int getErrorCode() {
+        std::lock_guard<std::mutex> lock(lock_);
+        return error_code_;
+    }
+
+  private:
+    int out_fd_;
+    int error_code_ = -1;
+    bool is_finished_ = false;
+    bool show_progress_ = false;
+    std::mutex lock_;
+};
+
+int OpenForWrite(const std::string& filename) {
+    return TEMP_FAILURE_RETRY(open(filename.c_str(),
+                                   O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC | O_NOFOLLOW,
+                                   S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
+}
+
+void WaitTillExecutionComplete(DumpstateListener* listener) {
+    static constexpr int kBugreportTimeoutSeconds = 120;
+    int i = 0;
+    while (!listener->getIsFinished() && listener->getErrorCode() == -1 &&
+           i < kBugreportTimeoutSeconds) {
+        sleep(1);
+        i++;
+    }
+}
+
+int bugreportd(bool show_progress) {
+    auto ds = waitForService<android::os::IDumpstate>(String16("dumpstate"));
+
+    // TODO parameterize file name
+    // TODO create parent dirs
+    android::base::unique_fd bugreport_fd(OpenForWrite("/bugreports/tmp.zip"));
+    android::base::unique_fd screenshot_fd(OpenForWrite("/bugreports/tmp.png"));
+    sp<DumpstateListener> listener(new DumpstateListener(show_progress, dup(STDOUT_FILENO)));
+    printf("PROGRESS:startBugreport from brz.\n");
+    android::binder::Status status = ds->startBugreport(
+        /* callingUid= */ AID_SHELL, /* callingPackage= */ "", std::move(bugreport_fd),
+        std::move(screenshot_fd), android::os::IDumpstate::BUGREPORT_MODE_FULL, listener,
+        /* isScreenshotRequested= */ false);
+    if (!status.isOk()) {
+        printf("FAIL:Could not take the bugreport.\n");
+        return EXIT_FAILURE;
+    }
+    WaitTillExecutionComplete(listener.get());
+    return EXIT_SUCCESS;
+}
 
 static constexpr char BEGIN_PREFIX[] = "BEGIN:";
 static constexpr char PROGRESS_PREFIX[] = "PROGRESS:";
