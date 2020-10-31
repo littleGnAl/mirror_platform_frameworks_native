@@ -2779,9 +2779,10 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         if (control_socket_fd_ == -1) {
             return ERROR;
         }
-        if (options_->progress_updates_to_socket) {
-            options_->do_progress_updates = 1;
-        }
+    }
+    // Updates when enabled from cli option or binder call from shell.
+    if (options_->progress_updates_to_socket) {
+        options_->do_progress_updates = true;
     }
 
     if (!PrepareToWriteToFile()) {
@@ -2801,6 +2802,11 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         if (options_->progress_updates_to_socket) {
             dprintf(control_socket_fd_, "BEGIN:%s\n", path_.c_str());
         }
+    }
+    // Callback first progress here as a BEGIN message workaround.
+    // For a larger bugreport, progress 0 can be reported multiple times.
+    if (listener_ != nullptr) {
+        listener_->onProgress(0);
     }
 
     /* read /proc/cmdline before dropping root */
