@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
+#include "bugreportz.h"
+
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
-
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
 
 #include <string>
-
-#include "bugreportz.h"
 
 using ::testing::StrEq;
 using ::testing::internal::CaptureStdout;
@@ -75,13 +74,27 @@ class BugreportzTest : public ::testing::Test {
         write_fd_ = -1;
 
         CaptureStdout();
-        int status = bugreportz(read_fd_, show_progress);
+        int status = bugreportz(show_progress, DumpstateHelper(read_fd_));
 
         close(read_fd_);
         read_fd_ = -1;
         stdout_ = GetCapturedStdout();
 
         ASSERT_EQ(0, status) << "bugrepotz() call failed (stdout: " << stdout_ << ")";
+    }
+
+    void BugreportzStream() {
+        close(write_fd_);
+        write_fd_ = -1;
+
+        CaptureStdout();
+        int status = bugreportz_stream(read_fd_);
+
+        close(read_fd_);
+        read_fd_ = -1;
+        stdout_ = GetCapturedStdout();
+
+        ASSERT_EQ(0, status) << "bugrepotz_stream() call failed (stdout: " << stdout_ << ")";
     }
 
   private:
@@ -125,4 +138,16 @@ TEST_F(BugreportzTest, WithProgress) {
         "PROGRESS:IS INEVITABLE\n"
         "PROGRESS:IS NOT AUTOMATIC\n"
         "Newline is optional");
+}
+
+// Tests 'bugreportz -s' - it will ignore progress lines.
+TEST_F(BugreportzTest, WithStream) {
+    char emptyZip[] = {0x50, 0x4B, 0x05, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+    std::string data(emptyZip);
+    WriteToSocket(data);
+
+    BugreportzStream();
+
+    AssertStdoutEquals(data);
 }
