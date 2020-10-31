@@ -2539,6 +2539,7 @@ static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOpt
             options->dumpstate_hal_mode = DumpstateMode::WIFI;
             break;
         case Dumpstate::BugreportMode::BUGREPORT_DEFAULT:
+            options->do_progress_updates = true;
             break;
     }
 }
@@ -2780,7 +2781,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
             return ERROR;
         }
         if (options_->progress_updates_to_socket) {
-            options_->do_progress_updates = 1;
+            options_->do_progress_updates = true;
         }
     }
 
@@ -2800,6 +2801,10 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         SendBroadcast("com.android.internal.intent.action.BUGREPORT_STARTED", am_args);
         if (options_->progress_updates_to_socket) {
             dprintf(control_socket_fd_, "BEGIN:%s\n", path_.c_str());
+        }
+        // Callback first progress here as a BEGIN message workaround.
+        if (listener_ != nullptr) {
+            listener_->onProgress(0);
         }
     }
 
