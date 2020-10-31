@@ -1,0 +1,10 @@
+@startuml
+title DumpstateClientTest
+Test -> ds ++ : create mock
+Test -> ds: EXPECT_CALL\nstartBugreport\nand actions
+Test -> client ++ : create with Dumpstate\nand output fd
+Test -> bugreportz: execute along the client
+bugreportz --> client: StartBugreport
+client --> ds: startBugreport
+Test -> bugreportz: ASSERT_*
+@enduml
