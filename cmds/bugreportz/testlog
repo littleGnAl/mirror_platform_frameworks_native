@@ -1,0 +1,14 @@
+12-01 19:42:51.379 15874 15874 W bugreportz_test: MockDumpstate ctor
+12-01 19:42:51.380 15874 15874 W bugreportz_test: DumpstateClient ctor
+12-01 19:42:51.380 15874 15874 W bugreportz_test: DumpstateClient ds_ &0x6ea9a08380
+12-01 19:42:51.380 15874 15874 W bugreportz_test: DumpstateClient ds_ 0x6eb9a0f490
+12-01 19:42:51.380 15874 15874 W bugreportz_test: MockDumpstate startBugreport 0x6eb9a0f490
+12-01 19:42:51.380 15874 15874 W bugreportz_test: DumpstateClient ds_ &0x6ea9a08380
+12-01 19:42:51.380 15874 15874 W bugreportz_test: DumpstateClient ds_ 0x657479622d382030
+12-01 19:42:51.380 15874 15874 W bugreportz_test: DumpstateClient ds_->startBugreport OK
+12-01 19:42:51.380 15874 15874 W bugreportz_test: TestableDumpstateClient ctor
+12-01 19:42:51.380 15874 15874 W bugreportz_test: Testable mClient->ds_ 0x657479622d382030
+12-01 19:42:51.380 15874 15874 W bugreportz_test: Testable mFactory.mds_ 0x6eb9a0f490
+12-01 19:42:51.380 15874 15874 W bugreportz_test: Testable mFactory.mds_->cancelBugreport OK
+12-01 19:42:51.380 15874 15874 W bugreportz_test: TestableDumpstateClient StartBugreport
+12-01 19:42:51.380 15874 15874 W bugreportz_test: IDumpstate startBugreport 0xa
