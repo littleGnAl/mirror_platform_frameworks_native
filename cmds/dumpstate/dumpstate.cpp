@@ -2473,6 +2473,12 @@ static void FinalizeFile() {
         } else {
             dprintf(ds.control_socket_fd_, "OK:%s\n", final_path.c_str());
         }
+    } else if (ds.listener_ != nullptr) {
+        if (do_text_file) {
+            ds.listener_->onError(IDumpstateListener::BUGREPORT_ERROR_RUNTIME_ERROR);
+        } else {
+            ds.listener_->onFinished();
+        }
     }
 }
 
@@ -2776,9 +2782,11 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         if (control_socket_fd_ == -1) {
             return ERROR;
         }
-        if (options_->progress_updates_to_socket) {
-            options_->do_progress_updates = 1;
-        }
+    }
+    // Updates when enabled from cli option or binder call from shell.
+    if (options_->progress_updates_to_socket
+            || (calling_uid == AID_SHELL && CalledByApi())) {
+        options_->do_progress_updates = true;
     }
 
     if (!PrepareToWriteToFile() && options_->stream_to_socket){
@@ -2798,6 +2806,11 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         SendBroadcast("com.android.internal.intent.action.BUGREPORT_STARTED", am_args);
         if (options_->progress_updates_to_socket) {
             dprintf(control_socket_fd_, "BEGIN:%s\n", path_.c_str());
+        }
+        // Callback progress 0 once here as a workaround. For a larger bugreport,
+        // the progress 0 may be reported multiple times.
+        if (listener_ != nullptr) {
+            listener_->onProgress(0);
         }
     }
 
