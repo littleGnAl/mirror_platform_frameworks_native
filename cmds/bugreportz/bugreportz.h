@@ -15,9 +15,10 @@
 #ifndef BUGREPORTZ_H
 #define BUGREPORTZ_H
 
-// Calls dumpstate using the given socket and output its result to stdout.
-// Ownership of the socket is not transferred.
-int bugreportz(int s, bool show_progress);
+#include "DumpstateClient.h"
+
+// Calls dumpstate via binder and output its result to stdout.
+int bugreportz(bool show_progress, std::unique_ptr<DumpstateClient> client);
 
 // Calls dumpstate using the given socket and write the file content to stdout
 // instead of file location. Ownership of the socket is not transferred.
