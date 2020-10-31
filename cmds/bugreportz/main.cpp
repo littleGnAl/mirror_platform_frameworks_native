@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include <cutils/properties.h>
+#include <cutils/sockets.h>
 #include <errno.h>
 #include <getopt.h>
 #include <stdio.h>
@@ -21,12 +23,12 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include <cutils/properties.h>
-#include <cutils/sockets.h>
+#include <memory>
+#include <system_error>
 
 #include "bugreportz.h"
 
-static constexpr char VERSION[] = "1.2";
+static constexpr char VERSION[] = "1.3";
 
 static void show_usage() {
     fprintf(stderr,
@@ -75,16 +77,21 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
+    if (!stream_data) {
+        // Start the bugreportd service.
+        property_set("ctl.start", "bugreportd");
+        int callbackOutputFd = dup(STDOUT_FILENO);
+        auto f = std::make_unique<DumpstateClient::DumpstateFactory>();
+        auto c = std::make_unique<DumpstateClient>(callbackOutputFd, std::move(f));
+        return bugreportz(show_progress, std::move(c));
+    }
+
     // TODO: code below was copy-and-pasted from bugreport.cpp (except by the
     // timeout value);
     // should be reused instead.
 
-    // Start the dumpstatez service.
-    if (stream_data) {
-        property_set("ctl.start", "dumpstate");
-    } else {
-        property_set("ctl.start", "dumpstatez");
-    }
+    // Start the dumpstate service.
+    property_set("ctl.start", "dumpstate");
 
     // Socket will not be available until service starts.
     int s = -1;
@@ -96,7 +103,7 @@ int main(int argc, char* argv[]) {
     }
 
     if (s == -1) {
-        printf("FAIL:Failed to connect to dumpstatez service: %s\n", strerror(errno));
+        printf("FAIL:Failed to connect to dumpstate service: %s\n", strerror(errno));
         return EXIT_FAILURE;
     }
 
@@ -112,12 +119,7 @@ int main(int argc, char* argv[]) {
                 strerror(errno));
     }
 
-    int ret;
-    if (stream_data) {
-        ret = bugreportz_stream(s);
-    } else {
-        ret = bugreportz(s, show_progress);
-    }
+    int ret = bugreportz_stream(s);
 
     if (close(s) == -1) {
         fprintf(stderr, "WARNING: error closing socket: %s\n", strerror(errno));
