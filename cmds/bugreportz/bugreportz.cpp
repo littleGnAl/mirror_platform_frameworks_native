@@ -17,58 +17,16 @@
 #include "bugreportz.h"
 
 #include <android-base/file.h>
-#include <android-base/strings.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
 
-#include <string>
 
-static constexpr char BEGIN_PREFIX[] = "BEGIN:";
-static constexpr char PROGRESS_PREFIX[] = "PROGRESS:";
-
-static void write_line(const std::string& line, bool show_progress) {
-    if (line.empty()) return;
-
-    // When not invoked with the -p option, it must skip BEGIN and PROGRESS lines otherwise it
-    // will break adb (which is expecting either OK or FAIL).
-    if (!show_progress && (android::base::StartsWith(line, PROGRESS_PREFIX) ||
-                           android::base::StartsWith(line, BEGIN_PREFIX)))
-        return;
-
-    android::base::WriteStringToFd(line, STDOUT_FILENO);
-}
-
-int bugreportz(int s, bool show_progress) {
-    std::string line;
-    while (1) {
-        char buffer[65536];
-        ssize_t bytes_read = TEMP_FAILURE_RETRY(read(s, buffer, sizeof(buffer)));
-        if (bytes_read == 0) {
-            break;
-        } else if (bytes_read == -1) {
-            // EAGAIN really means time out, so change the errno.
-            if (errno == EAGAIN) {
-                errno = ETIMEDOUT;
-            }
-            printf("FAIL:Bugreport read terminated abnormally (%s)\n", strerror(errno));
-            return EXIT_FAILURE;
-        }
-
-        // Writes line by line.
-        for (int i = 0; i < bytes_read; i++) {
-            char c = buffer[i];
-            line.append(1, c);
-            if (c == '\n') {
-                write_line(line, show_progress);
-                line.clear();
-            }
-        }
+int bugreportz(bool show_progress,
+               std::unique_ptr<android::os::bugreportz::DumpstateClient> client) {
+    Status status = client->StartBugreport(show_progress);
+    if (!status.isOk()) {
+        std::cout << "FAIL:Could not take the bugreport.\n";
+        return EXIT_FAILURE;
     }
-    // Process final line, in case it didn't finish with newline
-    write_line(line, show_progress);
+    client->WaitForBugreportDone();
     return EXIT_SUCCESS;
 }
 
