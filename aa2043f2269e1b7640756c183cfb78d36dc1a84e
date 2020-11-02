@@ -204,6 +204,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "118ea984_f078c56a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-02T15:55:47Z",
+      "side": 1,
+      "message": "\u003e why does getInterfaceDescriptor need to stay string16? \n\nIn-tree prebuilts, basically.\n\n\u003e I\u0027d push that it just holds onto the original char*\n\nI like this too, but it isn\u0027t guaranteed that the char* won\u0027t be immediately deallocated. It shouldn\u0027t be for standard usage, but it could be. Right?",
+      "parentUuid": "384de46d_83077131",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 14
+      },
+      "revId": "aa2043f2269e1b7640756c183cfb78d36dc1a84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f9c5505_13e2e584",
         "filename": "libs/binder/rust/tests/binderRustNdkInteropTest.cpp",
         "patchSetId": 5
