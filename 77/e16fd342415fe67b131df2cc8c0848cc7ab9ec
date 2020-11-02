@@ -1,0 +1,12 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+1: Hendrik Wagenaar <hendrikw@google.com>
+Code-Review+2: Branden Archer <brarcher@google.com>
+Autosubmit+1: Yifan Hong <elsk@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Ready+1: Branden Archer <brarcher@google.com>
+Bypass-Presubmit+1: Yifan Hong <elsk@google.com>
+Submitted-by: Yifan Hong <elsk@google.com>
+Submitted-at: Mon, 02 Nov 2020 18:36:36 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1482700
+Project: platform/frameworks/native
+Branch: refs/heads/master
