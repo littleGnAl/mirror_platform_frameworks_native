@@ -16,6 +16,23 @@
       "message": "I don\u0027t think we can submit this yet; forrest caught a few other dependencies that probably need to be marked as darwin enabled: false:\n\nhttps://android-build.googleplex.com/builds/pending/P17564143/sdk_mac/latest/view/logs/build_error.log\n\nIncluding the following:\n\naudio_common-aidl-cpp\naudio_common-aidl-unstable-cpp\nfakeservicemanager_test\nlibbinder_random_parcel\nlibfakeservicemanager\nlibpdx\ntest-piece-1-cpp\ntest-piece-1-unstable-cpp\ntest-piece-1-V1-cpp\ntest-piece-1-V2-cpp\n\nSteven, I\u0027ll leave this to you to decide whether to mark them as darwin enabled: false or not.",
       "revId": "db488ff224dd3c4191e5c4d64d9f00fbb42aa900",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "635bdaad_ed2b2171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-02T17:39:13Z",
+      "side": 1,
+      "message": "queue timeouts",
+      "revId": "db488ff224dd3c4191e5c4d64d9f00fbb42aa900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
