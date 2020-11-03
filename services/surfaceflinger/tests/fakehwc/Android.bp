@@ -8,12 +8,12 @@ cc_test {
          "FakeComposerUtils.cpp",
          "SFFakeHwc_test.cpp"
     ],
+    require_root: true,
     shared_libs: [
         "android.hardware.graphics.composer@2.1",
         "android.hardware.graphics.composer@2.2",
         "android.hardware.graphics.composer@2.3",
         "android.hardware.graphics.composer@2.4",
-        "android.hardware.graphics.composer@2.1-resources",
         "android.hardware.graphics.mapper@2.0",
         "android.hardware.graphics.mapper@3.0",
         "android.hardware.graphics.mapper@4.0",
@@ -38,6 +38,7 @@ cc_test {
         "libperfetto_client_experimental",
         "librenderengine",
         "libtrace_proto",
+        "android.hardware.graphics.composer@2.1-resources",
     ],
     header_libs: [
         "android.hardware.graphics.composer@2.4-command-buffer",
