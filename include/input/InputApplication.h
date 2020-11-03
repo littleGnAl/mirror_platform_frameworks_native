@@ -49,24 +49,24 @@ struct InputApplicationInfo {
  */
 class InputApplicationHandle : public RefBase {
 public:
-    inline const InputApplicationInfo* getInfo() const {
+    virtual const InputApplicationInfo* getInfo() const {
         return &mInfo;
     }
 
-    inline std::string getName() const {
+    virtual std::string getName() const {
         return !mInfo.name.empty() ? mInfo.name : "<invalid>";
     }
 
-    inline nsecs_t getDispatchingTimeout(nsecs_t defaultValue) const {
+    virtual nsecs_t getDispatchingTimeout(nsecs_t defaultValue) const {
         return mInfo.token ? mInfo.dispatchingTimeout : defaultValue;
     }
 
-    inline std::chrono::nanoseconds getDispatchingTimeout(
+    virtual std::chrono::nanoseconds getDispatchingTimeout(
             std::chrono::nanoseconds defaultValue) const {
         return mInfo.token ? std::chrono::nanoseconds(mInfo.dispatchingTimeout) : defaultValue;
     }
 
-    inline sp<IBinder> getApplicationToken() const {
+    virtual sp<IBinder> getApplicationToken() const {
         return mInfo.token;
     }
 
