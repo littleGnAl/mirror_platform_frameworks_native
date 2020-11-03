@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12fa23f1_7ee379aa",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-03T16:57:51Z",
+      "side": 1,
+      "message": "Just that it\u0027s the simplest solution, avoids changing headers/other files, avoids changing elf symbol table (\u0027zeroMemory\u0027 function does).\n\nThis is also a generic utility, could potentially move out and test independently from Parcel.\n\nRe params, we may also want to use this on mObjects in the future.\n\nSo, I would say, no particular motivation to do either way.",
+      "parentUuid": "d337072f_9f80ab93",
+      "range": {
+        "startLine": 2659,
+        "startChar": 16,
+        "endLine": 2659,
+        "endChar": 31
+      },
+      "revId": "ba5c4676b01cf134f5b091b69d863f379d73253c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e9f8cdb_23285e46",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-03T11:09:28Z",
       "side": 1,
       "message": "don\u0027t we also only want to do this if newData !\u003d null? That seems consistent with the realloc() failure case, where returning nullptr leaves mData assigned to a valid region of memory.",
+      "range": {
+        "startLine": 2668,
+        "startChar": 4,
+        "endLine": 2668,
+        "endChar": 8
+      },
+      "revId": "ba5c4676b01cf134f5b091b69d863f379d73253c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b332ff45_b1250a54",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2668,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-03T16:57:51Z",
+      "side": 1,
+      "message": "done, thanks. Do we want to remove all this code allowing malloc/realloc to return 0 here though? They\u0027ll be aborts in Android anyway, right? Also - they aren\u0027t tested.\n\nGranted - I was assuming malloc can return nullptr here already, so super inconsistent.",
+      "parentUuid": "9e9f8cdb_23285e46",
       "range": {
         "startLine": 2668,
         "startChar": 4,
