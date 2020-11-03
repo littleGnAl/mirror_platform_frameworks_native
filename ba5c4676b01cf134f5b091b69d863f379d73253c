@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d337072f_9f80ab93",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-11-03T11:09:28Z",
+      "side": 1,
+      "message": "any particular reason to make this static, instead of a member (and avoiding the need to pass in params?)",
+      "range": {
+        "startLine": 2659,
+        "startChar": 16,
+        "endLine": 2659,
+        "endChar": 31
+      },
+      "revId": "ba5c4676b01cf134f5b091b69d863f379d73253c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e9f8cdb_23285e46",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2668,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-11-03T11:09:28Z",
+      "side": 1,
+      "message": "don\u0027t we also only want to do this if newData !\u003d null? That seems consistent with the realloc() failure case, where returning nullptr leaves mData assigned to a valid region of memory.",
+      "range": {
+        "startLine": 2668,
+        "startChar": 4,
+        "endLine": 2668,
+        "endChar": 8
+      },
+      "revId": "ba5c4676b01cf134f5b091b69d863f379d73253c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
