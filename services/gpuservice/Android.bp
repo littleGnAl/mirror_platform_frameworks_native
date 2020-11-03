@@ -20,6 +20,7 @@ cc_defaults {
         "libbase",
         "libbinder",
         "libcutils",
+        "libdmabufstat",
         "libgfxstats",
         "libgpumem",
         "libgpumemtracer",
@@ -37,6 +38,7 @@ cc_defaults {
     export_shared_lib_headers: [
         "libgraphicsenv",
     ],
+    header_libs: ["bpf_prog_headers"],
 }
 
 cc_defaults {

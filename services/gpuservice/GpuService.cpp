@@ -24,6 +24,7 @@
 #include <binder/Parcel.h>
 #include <binder/PermissionCache.h>
 #include <cutils/properties.h>
+#include <dmabufstat/dmabufstat.h>
 #include <gpumem/GpuMem.h>
 #include <gpustats/GpuStats.h>
 #include <private/android_filesystem_config.h>
@@ -55,6 +56,8 @@ GpuService::GpuService()
     std::thread asyncInitThread([this]() {
         mGpuMem->initialize();
         mGpuMemTracer->initialize(mGpuMem);
+        if (!bpf::attachDmabufStatBbpProgs())
+            ALOGE("Unable to attach BPF DMA-BUF programs to tracepoints");
     });
     asyncInitThread.detach();
 };
