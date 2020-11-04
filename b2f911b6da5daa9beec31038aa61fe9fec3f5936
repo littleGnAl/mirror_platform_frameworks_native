@@ -22,6 +22,30 @@
       },
       "revId": "b2f911b6da5daa9beec31038aa61fe9fec3f5936",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f42f8b_c19f68b9",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-04T03:17:36Z",
+      "side": 1,
+      "message": "Elliot mentions reusing ReadFully, but not fit with socket. Rhed also has the same question. I think it would not benefit too much here or in furture, especially if we think about that bugreportz will migrate to use startBugreport api, refactoring a helper function seems not necessary.",
+      "parentUuid": "3fbc3f4b_d033477e",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "b2f911b6da5daa9beec31038aa61fe9fec3f5936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
