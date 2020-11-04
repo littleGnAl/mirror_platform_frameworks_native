@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fbc3f4b_d033477e",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1448822
+      },
+      "writtenOn": "2020-11-04T02:44:18Z",
+      "side": 1,
+      "message": "Could we move this logic to a helper function since the same logic is used in the bugreportz function?",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "b2f911b6da5daa9beec31038aa61fe9fec3f5936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
