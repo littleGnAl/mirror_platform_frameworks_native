@@ -16,6 +16,23 @@
       "message": "\u003e rror from Acloud: \u003cHttpError 503",
       "revId": "d99b3f872f80e5fb2aaafd73f93e1ee77ffd4ea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08587c7e_c1b6e962",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-04T16:21:21Z",
+      "side": 1,
+      "message": "(friendly ping for review)",
+      "revId": "d99b3f872f80e5fb2aaafd73f93e1ee77ffd4ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
