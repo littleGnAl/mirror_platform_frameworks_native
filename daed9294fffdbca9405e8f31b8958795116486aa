@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5397192_e9d74ae7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414712
+      },
+      "writtenOn": "2020-11-05T10:00:44Z",
+      "side": 1,
+      "message": "Hi,\nFound when config SF_PRIMARY_DISPLAY_ORIENTATION\u003d90 or 270, the screencap is not correct. \nWould you please have a check? Thanks for your time.",
+      "revId": "daed9294fffdbca9405e8f31b8958795116486aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
