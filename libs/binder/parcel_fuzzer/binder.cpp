@@ -147,13 +147,6 @@ std::vector<ParcelRead<::android::Parcel>> BINDER_PARCEL_READ_FUNCTIONS {
     PARCEL_READ_OPT_STATUS(android::String16, readString16),
     PARCEL_READ_WITH_STATUS(std::unique_ptr<android::String16>, readString16),
     PARCEL_READ_WITH_STATUS(std::optional<android::String16>, readString16),
-    [] (const ::android::Parcel& p, uint8_t /*data*/) {
-        FUZZ_LOG() << "about to readString16Inplace";
-        size_t outLen = 0;
-        const char16_t* str = p.readString16Inplace(&outLen);
-        FUZZ_LOG() << "readString16Inplace: " << hexString(str, sizeof(char16_t) * outLen)
-                   << " size: " << outLen;
-    },
     PARCEL_READ_WITH_STATUS(android::sp<android::IBinder>, readStrongBinder),
     PARCEL_READ_WITH_STATUS(android::sp<android::IBinder>, readNullableStrongBinder),
 

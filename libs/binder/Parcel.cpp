@@ -602,8 +602,10 @@ bool Parcel::enforceInterface(const char16_t* interface,
         return false;
     }
     // Interface descriptor.
-    size_t parcel_interface_len;
-    const char16_t* parcel_interface = readString16Inplace(&parcel_interface_len);
+    // FIXME: avoid heap allocation
+    String16 heapUser = readString16();
+    size_t parcel_interface_len = heapUser.size();
+    const char16_t* parcel_interface = heapUser.string();
     if (len == parcel_interface_len &&
             (!len || !memcmp(parcel_interface, interface, len * sizeof (char16_t)))) {
         return true;
@@ -737,27 +739,7 @@ restart_write:
 }
 
 status_t Parcel::writeUtf8AsUtf16(const std::string& str) {
-    const uint8_t* strData = (uint8_t*)str.data();
-    const size_t strLen= str.length();
-    const ssize_t utf16Len = utf8_to_utf16_length(strData, strLen);
-    if (utf16Len < 0 || utf16Len > std::numeric_limits<int32_t>::max()) {
-        return BAD_VALUE;
-    }
-
-    status_t err = writeInt32(utf16Len);
-    if (err) {
-        return err;
-    }
-
-    // Allocate enough bytes to hold our converted string and its terminating NULL.
-    void* dst = writeInplace((utf16Len + 1) * sizeof(char16_t));
-    if (!dst) {
-        return NO_MEMORY;
-    }
-
-    utf8_to_utf16(strData, strLen, (char16_t*)dst, (size_t) utf16Len + 1);
-
-    return NO_ERROR;
+    return writeString8(str.c_str(), str.size());
 }
 
 status_t Parcel::writeUtf8AsUtf16(const std::optional<std::string>& str) {
@@ -1108,18 +1090,8 @@ status_t Parcel::writeString16(const char16_t* str, size_t len)
 {
     if (str == nullptr) return writeInt32(-1);
 
-    status_t err = writeInt32(len);
-    if (err == NO_ERROR) {
-        len *= sizeof(char16_t);
-        uint8_t* data = (uint8_t*)writeInplace(len+sizeof(char16_t));
-        if (data) {
-            memcpy(data, str, len);
-            *reinterpret_cast<char16_t*>(data+len) = 0;
-            return NO_ERROR;
-        }
-        err = mError;
-    }
-    return err;
+    // FIXME: heap copy
+    return writeString8(String8(str, len));
 }
 
 status_t Parcel::writeStrongBinder(const sp<IBinder>& val)
@@ -1957,28 +1929,15 @@ int8_t Parcel::readByte() const
 }
 
 status_t Parcel::readUtf8FromUtf16(std::string* str) const {
-    size_t utf16Size = 0;
-    const char16_t* src = readString16Inplace(&utf16Size);
+    size_t utf8Size = 0;
+    const char* src = readString8Inplace(&utf8Size);
     if (!src) {
         return UNEXPECTED_NULL;
     }
 
-    // Save ourselves the trouble, we're done.
-    if (utf16Size == 0u) {
-        str->clear();
-       return NO_ERROR;
-    }
-
-    // Allow for closing '\0'
-    ssize_t utf8Size = utf16_to_utf8_length(src, utf16Size) + 1;
-    if (utf8Size < 1) {
-        return BAD_VALUE;
-    }
-    // Note that while it is probably safe to assume string::resize keeps a
-    // spare byte around for the trailing null, we still pass the size including the trailing null
     str->resize(utf8Size);
-    utf16_to_utf8(src, utf16Size, &((*str)[0]), utf8Size);
-    str->resize(utf8Size - 1);
+    memcpy(&((*str)[0]), src, utf8Size);
+
     return NO_ERROR;
 }
 
@@ -2069,7 +2028,7 @@ const char* Parcel::readString8Inplace(size_t* outLen) const
 String16 Parcel::readString16() const
 {
     size_t len;
-    const char16_t* str = readString16Inplace(&len);
+    const char* str = readString8Inplace(&len);
     if (str) return String16(str, len);
     ALOGE("Reading a NULL string not supported here.");
     return String16();
@@ -2124,29 +2083,15 @@ status_t Parcel::readString16(std::unique_ptr<String16>* pArg) const
 status_t Parcel::readString16(String16* pArg) const
 {
     size_t len;
-    const char16_t* str = readString16Inplace(&len);
+    const char* str = readString8Inplace(&len);
     if (str) {
-        pArg->setTo(str, len);
+        // FIXME: more efficient?
+        *pArg = String16(str, len);
         return 0;
     } else {
         *pArg = String16();
         return UNEXPECTED_NULL;
     }
-}
-
-const char16_t* Parcel::readString16Inplace(size_t* outLen) const
-{
-    int32_t size = readInt32();
-    // watch for potential int overflow from size+1
-    if (size >= 0 && size < INT32_MAX) {
-        *outLen = size;
-        const char16_t* str = (const char16_t*)readInplace((size+1)*sizeof(char16_t));
-        if (str != nullptr) {
-            return str;
-        }
-    }
-    *outLen = 0;
-    return nullptr;
 }
 
 status_t Parcel::readStrongBinder(sp<IBinder>* val) const
