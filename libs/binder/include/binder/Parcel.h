@@ -319,7 +319,6 @@ public:
     status_t            readString16(String16* pArg) const;
     status_t            readString16(std::optional<String16>* pArg) const;
     status_t            readString16(std::unique_ptr<String16>* pArg) const;
-    const char16_t*     readString16Inplace(size_t* outLen) const;
     sp<IBinder>         readStrongBinder() const;
     status_t            readStrongBinder(sp<IBinder>* val) const;
     status_t            readNullableStrongBinder(sp<IBinder>* val) const;
