@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c40e1c2e_d731db28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-11-05T17:12:03Z",
+      "side": 1,
+      "message": "failed test suite/user/window_manager_flicker_presubmit has nothing to do with this change.",
+      "revId": "71975440069165aea8be9b1665a647525701d539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
