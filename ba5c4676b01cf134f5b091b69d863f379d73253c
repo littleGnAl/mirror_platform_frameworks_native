@@ -117,6 +117,30 @@
       },
       "revId": "ba5c4676b01cf134f5b091b69d863f379d73253c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37374fda_dd6791da",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2668,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-05T20:37:05Z",
+      "side": 1,
+      "message": "it is now, yeah, for fuzzers.",
+      "parentUuid": "e0fefd59_fd5cd3db",
+      "range": {
+        "startLine": 2668,
+        "startChar": 4,
+        "endLine": 2668,
+        "endChar": 8
+      },
+      "revId": "ba5c4676b01cf134f5b091b69d863f379d73253c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
