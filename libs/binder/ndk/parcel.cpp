@@ -299,35 +299,15 @@ binder_status_t AParcel_writeString(AParcel* parcel, const char* string, int32_t
         return STATUS_BAD_VALUE;
     }
 
-    const uint8_t* str8 = (uint8_t*)string;
-    const ssize_t len16 = utf8_to_utf16_length(str8, length);
-
-    if (len16 < 0 || len16 >= std::numeric_limits<int32_t>::max()) {
-        LOG(WARNING) << __func__ << ": Invalid string length: " << len16;
-        return STATUS_BAD_VALUE;
-    }
-
-    status_t err = parcel->get()->writeInt32(len16);
-    if (err) {
-        return PruneStatusT(err);
-    }
-
-    void* str16 = parcel->get()->writeInplace((len16 + 1) * sizeof(char16_t));
-    if (str16 == nullptr) {
-        return STATUS_NO_MEMORY;
-    }
-
-    utf8_to_utf16(str8, length, (char16_t*)str16, (size_t)len16 + 1);
-
-    return STATUS_OK;
+    return PruneStatusT(parcel->get()->writeString8(string, length));
 }
 
 binder_status_t AParcel_readString(const AParcel* parcel, void* stringData,
                                    AParcel_stringAllocator allocator) {
-    size_t len16;
-    const char16_t* str16 = parcel->get()->readString16Inplace(&len16);
+    size_t len8;
+    const char* str8 = parcel->get()->readString8Inplace(&len8);
 
-    if (str16 == nullptr) {
+    if (str8 == nullptr) {
         if (allocator(stringData, -1, nullptr)) {
             return STATUS_OK;
         }
@@ -335,28 +315,22 @@ binder_status_t AParcel_readString(const AParcel* parcel, void* stringData,
         return STATUS_UNEXPECTED_NULL;
     }
 
-    ssize_t len8;
-
-    if (len16 == 0) {
-        len8 = 1;
-    } else {
-        len8 = utf16_to_utf8_length(str16, len16) + 1;
-    }
-
-    if (len8 <= 0 || len8 > std::numeric_limits<int32_t>::max()) {
+    if (len8 >= std::numeric_limits<int32_t>::max()) {
         LOG(WARNING) << __func__ << ": Invalid string length: " << len8;
         return STATUS_BAD_VALUE;
     }
 
-    char* str8;
-    bool success = allocator(stringData, len8, &str8);
+    char* toStr8;
+    bool success = allocator(stringData, len8 + 1, &toStr8);
 
-    if (!success || str8 == nullptr) {
-        LOG(WARNING) << __func__ << ": AParcel_stringAllocator failed to allocate.";
+    if (!success || toStr8 == nullptr) {
+        LOG(WARNING) << __func__
+                     << ": AParcel_stringAllocator failed to allocate success: " << success
+                     << " allocated: " << (toStr8 != nullptr) << " length: " << len8;
         return STATUS_NO_MEMORY;
     }
 
-    utf16_to_utf8(str16, len16, str8, len8);
+    memcpy(toStr8, str8, len8);
 
     return STATUS_OK;
 }
