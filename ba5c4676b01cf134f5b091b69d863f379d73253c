@@ -93,6 +93,30 @@
       },
       "revId": "ba5c4676b01cf134f5b091b69d863f379d73253c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0fefd59_fd5cd3db",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2668,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-11-05T09:14:15Z",
+      "side": 1,
+      "message": "is libbinder running anywhere on the host these days? That might be a reason to keep dealing with malloc()/realloc() returning nullptr (not that that ever happens...but you know :)); libbinder was written to deal with it, but I don\u0027t feel particularly strong about it...ok with me to do in a follow-up if you prefer.",
+      "parentUuid": "b332ff45_b1250a54",
+      "range": {
+        "startLine": 2668,
+        "startChar": 4,
+        "endLine": 2668,
+        "endChar": 8
+      },
+      "revId": "ba5c4676b01cf134f5b091b69d863f379d73253c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
