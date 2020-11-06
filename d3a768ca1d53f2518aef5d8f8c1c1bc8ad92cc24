@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "699e7cd8_09adb726",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-06T17:00:04Z",
+      "side": 1,
+      "message": "I was unable to reproduce this merge conflict locally, so trying again",
+      "revId": "d3a768ca1d53f2518aef5d8f8c1c1bc8ad92cc24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
