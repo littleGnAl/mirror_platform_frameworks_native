@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "debef6e0_2d1b06b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1140781
+      },
+      "writtenOn": "2020-11-06T02:54:07Z",
+      "side": 1,
+      "message": "Could you help review and verify again, if this patch can be merged into android11, thanks.",
+      "revId": "c81bcf0f21f58b0abd0c6f1a9eaa0e9e634f56fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
