@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ec40c6e_99eea1cf",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-06T17:19:32Z",
+      "side": 1,
+      "message": "I think I\u0027m going to move these out of app APIs into platform APIs for the time being.\n\nThe reason they are separate is because prepareTransaction doesn\u0027t take in the flag. If it did, it could apply this setting to the parcelable automatically. :(",
+      "parentUuid": "6fb5e2e3_f860cd26",
+      "revId": "d99b3f872f80e5fb2aaafd73f93e1ee77ffd4ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "639acd7f_cf2b87f0",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 6
