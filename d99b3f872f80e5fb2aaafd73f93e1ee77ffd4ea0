@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fb5e2e3_f860cd26",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-11-06T17:05:49Z",
+      "side": 1,
+      "message": "Add some docs here explaining how FLAG_CLEAR_BUF interacts with whether or not `in` is marked sensitive. Are they complementary? Competing?\n\nAlso why would I want to FLAG_CLEAR_BUF a transaction whose parcel isn\u0027t sensitive? Elaborate on why there\u0027s 2 layers of settings for this and how I might know when to use which or both.",
+      "revId": "d99b3f872f80e5fb2aaafd73f93e1ee77ffd4ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "639acd7f_cf2b87f0",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 6
