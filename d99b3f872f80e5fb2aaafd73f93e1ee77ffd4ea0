@@ -33,6 +33,23 @@
       "message": "(friendly ping for review)",
       "revId": "d99b3f872f80e5fb2aaafd73f93e1ee77ffd4ea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639acd7f_cf2b87f0",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-11-06T17:01:20Z",
+      "side": 1,
+      "message": "move this to the rest of the AParcel API 31 additions please (towards the bottom of the file)",
+      "revId": "d99b3f872f80e5fb2aaafd73f93e1ee77ffd4ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
