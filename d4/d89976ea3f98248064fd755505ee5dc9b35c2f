@@ -1,0 +1,12 @@
+Code-Review+2: Alec Mouri <alecmouri@google.com>
+Code-Review+1: 勇 李 <liyong@allwinnertech.com>
+Autosubmit+1: Robert Chou <robertchou@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: 勇 李 <liyong@allwinnertech.com>
+Open-Source-Licensing+1: 勇 李 <liyong@allwinnertech.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 10 Nov 2020 01:16:24 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1456317
+Project: platform/frameworks/native
+Branch: refs/heads/master
