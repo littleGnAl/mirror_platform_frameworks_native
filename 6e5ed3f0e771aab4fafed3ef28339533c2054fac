@@ -33,6 +33,24 @@
       "message": "While this is fixing most of my issues, there\u0027s still one remaining thing to solve. Basically if I rotate my device directly from 90 to 270 or 270 to 90 the recents preview will be flipped, but if I go through 90 -\u003e 180 -\u003e 270, and open recents between each rotation change the preview image will be correct.\n\nscreenshot: https://drive.google.com/file/d/17kgTYZt631XPLQ0MOLlmTaeEvhrfucGz/view\n\nBTW: I can reproduce the same exact issue with https://android-review.googlesource.com/c/platform/frameworks/native/+/1426630 which this patch appears to be an alternative for.",
       "revId": "6e5ed3f0e771aab4fafed3ef28339533c2054fac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6930e218_b08a5c89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-11-10T01:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e92290b_f8f9a4b3",
+      "revId": "6e5ed3f0e771aab4fafed3ef28339533c2054fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
