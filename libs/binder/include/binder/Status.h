@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 
-#ifndef ANDROID_BINDER_STATUS_H
-#define ANDROID_BINDER_STATUS_H
+#pragma once
 
 #include <cstdint>
 #include <sstream>
@@ -158,5 +157,3 @@ std::stringstream& operator<< (std::stringstream& stream, const Status& s);
 
 }  // namespace binder
 }  // namespace android
-
-#endif // ANDROID_BINDER_STATUS_H
