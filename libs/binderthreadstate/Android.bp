@@ -18,6 +18,7 @@ cc_library_static {
     name: "libbinderthreadstateutils",
     double_loadable: true,
     vendor_available: true,
+    product_available: true,
     host_supported: true,
     target: {
         darwin: {

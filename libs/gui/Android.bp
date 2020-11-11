@@ -14,6 +14,7 @@
 cc_library_headers {
     name: "libgui_headers",
     vendor_available: true,
+    product_available: true,
     export_include_dirs: ["include"],
 
     // we must build this module to get the required header as that is generated
@@ -33,6 +34,7 @@ cc_library_headers {
 cc_library_shared {
     name: "libgui",
     vendor_available: false,
+    product_available: false,
     vndk: {
         enabled: true,
     },
@@ -113,6 +115,23 @@ cc_library_shared {
                 "libpdx_default_transport",
             ],
         },
+        product: {
+            cflags: [
+                "-DNO_BUFFERHUB",
+                "-DNO_INPUT",
+            ],
+            exclude_srcs: [
+                "BufferHubConsumer.cpp",
+                "BufferHubProducer.cpp",
+            ],
+            exclude_shared_libs: [
+                "android.frameworks.bufferhub@1.0",
+                "libbufferhub",
+                "libbufferhubqueue",
+                "libinput",
+                "libpdx_default_transport",
+            ],
+        },
     },
 
     header_libs: [
@@ -130,6 +149,7 @@ cc_library_shared {
 cc_library_static {
     name: "libgui_bufferqueue_static",
     vendor_available: true,
+    product_available: true,
     apex_available: [
         "//apex_available:platform",
         "com.android.media.swcodec",

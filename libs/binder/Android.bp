@@ -16,6 +16,7 @@ cc_library_headers {
     name: "libbinder_headers",
     export_include_dirs: ["include"],
     vendor_available: true,
+    product_available: true,
     host_supported: true,
     // TODO(b/153609531): remove when no longer needed.
     native_bridge_supported: true,
@@ -64,6 +65,7 @@ cc_library {
 
     // for vndbinder
     vendor_available: true,
+    product_available: true,
     vndk: {
         enabled: true,
     },
@@ -125,6 +127,9 @@ cc_library {
             },
         },
         vendor: {
+            exclude_srcs: libbinder_device_interface_sources,
+        },
+        product: {
             exclude_srcs: libbinder_device_interface_sources,
         },
         darwin: {

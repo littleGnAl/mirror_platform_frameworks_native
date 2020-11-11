@@ -15,6 +15,7 @@
 cc_library_shared {
     name: "libui",
     vendor_available: true,
+    product_available: true,
     vndk: {
         enabled: true,
     },
@@ -111,6 +112,15 @@ cc_library_shared {
             exclude_shared_libs: [
             ],
         },
+        product: {
+            cflags: ["-DLIBUI_IN_VNDK"],
+            exclude_srcs: [
+            ],
+            exclude_header_libs: [
+            ],
+            exclude_shared_libs: [
+            ],
+        },
     },
 
     header_libs: [
@@ -140,8 +150,13 @@ cc_library_headers {
     name: "libui_headers",
     export_include_dirs: ["include"],
     vendor_available: true,
+    product_available: true,
     target: {
         vendor: {
+            cflags: ["-DLIBUI_IN_VNDK"],
+            override_export_include_dirs: ["include_vndk"],
+        },
+        product: {
             cflags: ["-DLIBUI_IN_VNDK"],
             override_export_include_dirs: ["include_vndk"],
         },
