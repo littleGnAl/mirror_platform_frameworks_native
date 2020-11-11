@@ -21,6 +21,7 @@
 
 #include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
+#include <binder/RpcConnection.h>
 #include <binder/Stability.h>
 #include <cutils/compiler.h>
 #include <utils/Log.h>
@@ -136,18 +137,56 @@ BpBinder* BpBinder::create(int32_t handle) {
     return new BpBinder(handle, trackedUid);
 }
 
-BpBinder::BpBinder(int32_t handle, int32_t trackedUid)
+BpBinder* BpBinder::create(const sp<RpcConnection>& connection, const RpcAddress* address) {
+    // FIXME: should track as well?
+
+    return new BpBinder(connection, address);
+}
+
+BpBinder::BpBinder(int32_t handle)
     : mHandle(handle)
+    , mIsSocket(false)
+    , mAddress(nullptr)
     , mStability(0)
-    , mAlive(1)
-    , mObitsSent(0)
+    , mAlive(true)
+    , mObitsSent(false)
     , mObituaries(nullptr)
-    , mTrackedUid(trackedUid)
+    , mTrackedUid(0)
 {
+    extendObjectLifetime(OBJECT_LIFETIME_WEAK);
+}
+
+BpBinder::BpBinder(int32_t handle, int32_t trackedUid)
+    : BpBinder(handle)
+{
+    mTrackedUid = trackedUid;
+
     ALOGV("Creating BpBinder %p handle %d\n", this, mHandle);
 
-    extendObjectLifetime(OBJECT_LIFETIME_WEAK);
     IPCThreadState::self()->incWeakHandle(handle, this);
+}
+
+BpBinder::BpBinder(const sp<RpcConnection>& connection, const RpcAddress* address)
+    : BpBinder(0x7FFFFFFF)
+{
+    // FIXME: can this ever be triggered by a remote server?
+    LOG_ALWAYS_FATAL_IF(connection == nullptr, "BpBinder created w/o connection object");
+
+    mIsSocket = true;
+    mConnection = connection;
+    mAddress = address;
+}
+
+bool BpBinder::isRpcBinder() const {
+    return mIsSocket;
+}
+
+const RpcAddress* BpBinder::address() const {
+    return mAddress;
+}
+
+sp<RpcConnection> BpBinder::connection() const {
+    return mConnection;
 }
 
 int32_t BpBinder::handle() const {
@@ -235,8 +274,13 @@ status_t BpBinder::transact(
             }
         }
 
-        status_t status = IPCThreadState::self()->transact(
-            mHandle, code, data, reply, flags);
+        status_t status;
+        if (CC_UNLIKELY(mIsSocket)) {
+            status = mConnection->transact(mAddress, code, data, reply, flags);
+        } else {
+            status = IPCThreadState::self()->transact(mHandle, code, data, reply, flags);
+        }
+
         if (status == DEAD_OBJECT) mAlive = 0;
 
         return status;
@@ -249,6 +293,8 @@ status_t BpBinder::transact(
 status_t BpBinder::linkToDeath(
     const sp<DeathRecipient>& recipient, void* cookie, uint32_t flags)
 {
+    if (mIsSocket) return UNKNOWN_TRANSACTION; // FIXME: sure
+
     Obituary ob;
     ob.recipient = recipient;
     ob.cookie = cookie;
@@ -285,6 +331,8 @@ status_t BpBinder::unlinkToDeath(
     const wp<DeathRecipient>& recipient, void* cookie, uint32_t flags,
     wp<DeathRecipient>* outRecipient)
 {
+    if (mIsSocket) return UNKNOWN_TRANSACTION; // FIXME: sure
+
     AutoMutex _l(mLock);
 
     if (mObitsSent) {
@@ -318,6 +366,8 @@ status_t BpBinder::unlinkToDeath(
 
 void BpBinder::sendObituary()
 {
+    LOG_ALWAYS_FATAL_IF(mIsSocket, "UNSUPPORTED"); // FIXME: sure
+
     ALOGV("Sending obituary for proxy %p handle %d, mObitsSent=%s\n",
         this, mHandle, mObitsSent ? "true" : "false");
 
@@ -389,6 +439,9 @@ BpBinder::~BpBinder()
 {
     ALOGV("Destroying BpBinder %p handle %d\n", this, mHandle);
 
+    if (CC_UNLIKELY(mIsSocket)) return; // FIXME
+    // FIXME: remove address from binder state?
+
     IPCThreadState* ipc = IPCThreadState::self();
 
     if (mTrackedUid >= 0) {
@@ -420,6 +473,7 @@ BpBinder::~BpBinder()
 void BpBinder::onFirstRef()
 {
     ALOGV("onFirstRef BpBinder %p handle %d\n", this, mHandle);
+    if (CC_UNLIKELY(mIsSocket)) return; // FIXME
     IPCThreadState* ipc = IPCThreadState::self();
     if (ipc) ipc->incStrongHandle(mHandle, this);
 }
@@ -427,6 +481,7 @@ void BpBinder::onFirstRef()
 void BpBinder::onLastStrongRef(const void* /*id*/)
 {
     ALOGV("onLastStrongRef BpBinder %p handle %d\n", this, mHandle);
+    if (CC_UNLIKELY(mIsSocket)) return; // FIXME
     IF_ALOGV() {
         printRefs();
     }
@@ -456,6 +511,7 @@ void BpBinder::onLastStrongRef(const void* /*id*/)
 
 bool BpBinder::onIncStrongAttempted(uint32_t /*flags*/, const void* /*id*/)
 {
+    if (CC_UNLIKELY(mIsSocket)) return true; // FIXME
     ALOGV("onIncStrongAttempted BpBinder %p handle %d\n", this, mHandle);
     IPCThreadState* ipc = IPCThreadState::self();
     return ipc ? ipc->attemptIncStrongHandle(mHandle) == NO_ERROR : false;

@@ -31,6 +31,7 @@
 
 #include <binder/IInterface.h>
 #include <binder/Parcelable.h>
+#include <binder/RpcConnection.h>
 
 #ifdef BINDER_IPC_32BIT
 //NOLINTNEXTLINE(google-runtime-int) b/173188702
@@ -59,6 +60,8 @@ public:
     class ReadableBlob;
     class WritableBlob;
 
+    // FIXME: know when we create the parcel, what the version is, and what type
+    // of binder we are targetting
                         Parcel();
                         ~Parcel();
     
@@ -91,6 +94,22 @@ public:
     // WARNING: some read methods may make additional copies of data.
     // In order to verify this, heap dumps should be used.
     void                markSensitive() const;
+
+    // FIXME: docs
+    // FIXME: simplify information/APIs here, really want a symmetrical way to
+    // handle this for transactions and replies
+    // FIXME: rename markAttachedBinder -> markForBinder
+    void                setAttachedBinder(const sp<IBinder>& binder);
+    // FIXME: simplify
+    // for creating data transactions, should set and calculate based on
+    // setAttachedbinder instead.
+    // for received data transactions, should set this so we can properly
+    // unparcel binder objects
+    // for creating reply transactions, should set this, but the connection
+    // doesn't need to exist (can be nullptr)
+    // for receiving reply transactions, the connection does need to be set so
+    // that it can be attached to binders which are read
+    void                markForRpc(const sp<RpcConnection>& connection);
 
     // Writes the RPC header.
     status_t            writeInterfaceToken(const String16& interface);
@@ -599,6 +618,9 @@ private:
     mutable bool        mObjectsSorted;
 
     mutable bool        mRequestHeaderPresent;
+
+    bool                mIsForRpc;  // FIXME: can combine this with mConnection != nullptr?
+
     mutable size_t      mWorkSourceRequestHeaderPosition;
 
     mutable bool        mFdsKnown;
@@ -611,8 +633,7 @@ private:
 
     release_func        mOwner;
 
-    // TODO(167966510): reserved for binder/version/stability
-    void*               mReserved = reinterpret_cast<void*>(0xAAAAAAAA);
+    sp<RpcConnection>   mConnection;
 
     class Blob {
     public:
