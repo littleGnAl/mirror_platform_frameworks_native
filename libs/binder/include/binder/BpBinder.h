@@ -17,6 +17,7 @@
 #pragma once
 
 #include <binder/IBinder.h>
+#include <binder/RpcAddress.h>
 #include <utils/KeyedVector.h>
 #include <utils/Mutex.h>
 #include <utils/threads.h>
@@ -26,6 +27,7 @@
 // ---------------------------------------------------------------------------
 namespace android {
 
+class RpcConnection;
 namespace internal {
 class Stability;
 }
@@ -37,6 +39,12 @@ class BpBinder : public IBinder
 {
 public:
     static BpBinder*    create(int32_t handle);
+    static BpBinder*    create(const sp<RpcConnection>& connection, const RpcAddress& address);
+
+    // FIXME: hide this stuff/combine with handle below()
+    bool                isRpcBinder() const;
+    const RpcAddress&   address() const;
+    sp<RpcConnection>   connection() const;
 
     virtual const String16&    getInterfaceDescriptor() const;
     virtual bool        isBinderAlive() const;
@@ -125,16 +133,22 @@ private:
     friend PrivateAccessorForHandle;
 
     int32_t             handle() const;
-                        BpBinder(int32_t handle,int32_t trackedUid);
+    explicit            BpBinder(int32_t handle);
+                        BpBinder(int32_t handle, int32_t trackedUid);
+                        BpBinder(const sp<RpcConnection>& connection, const RpcAddress& address);
+
     virtual             ~BpBinder();
     virtual void        onFirstRef();
     virtual void        onLastStrongRef(const void* id);
     virtual bool        onIncStrongAttempted(uint32_t flags, const void* id);
 
     friend ::android::internal::Stability;
-            int32_t             mStability;
 
+            int32_t             mStability;
     const   int32_t             mHandle;
+            bool                mIsSocket; // FIXME: garbage
+            sp<RpcConnection>   mConnection; // if mIsSocket
+            RpcAddress          mAddress; // if mIsSocket
 
     struct Obituary {
         wp<DeathRecipient> recipient;
