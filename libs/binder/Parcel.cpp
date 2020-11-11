@@ -194,6 +194,7 @@ static constexpr inline int schedPolicyMask(int policy, int priority) {
 
 status_t Parcel::flattenBinder(const sp<IBinder>& binder)
 {
+    // FIXME: flatten socket BpBinder
     flat_binder_object obj;
     obj.flags = FLAT_BINDER_FLAG_ACCEPTS_FDS;
 
@@ -242,6 +243,7 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder)
 
 status_t Parcel::unflattenBinder(sp<IBinder>* out) const
 {
+    // FIXME: unflatten socket BpBinder
     const flat_binder_object* flat = readObject(false);
 
     if (flat) {
