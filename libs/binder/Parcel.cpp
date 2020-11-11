@@ -36,6 +36,7 @@
 #include <binder/IPCThreadState.h>
 #include <binder/Parcel.h>
 #include <binder/ProcessState.h>
+#include <binder/RpcState.h>
 #include <binder/Stability.h>
 #include <binder/Status.h>
 #include <binder/TextOutput.h>
@@ -195,6 +196,12 @@ static constexpr inline int schedPolicyMask(int policy, int priority) {
 
 status_t Parcel::flattenBinder(const sp<IBinder>& binder)
 {
+    if (mIsForRpc) {
+        const RpcAddress* address = RpcState::instance().attachBinder(binder);
+        // FIXME: delegate write to RpcAddress
+        return writeInt32(address->address);
+    }
+
     flat_binder_object obj;
     obj.flags = FLAT_BINDER_FLAG_ACCEPTS_FDS;
 
@@ -243,6 +250,16 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder)
 
 status_t Parcel::unflattenBinder(sp<IBinder>* out) const
 {
+    if (mIsForRpc) {
+        int32_t address = readInt32();
+        // FIXME: how to get/create remote RpcConnection. Need to think about
+        // this.
+        ALOGE("Read binder at address %d, but replacing with null because we don't have an RpcConnection object", address);
+        // *out = BpBinder::create(/* ??? */, RpcAddress{address});
+        *out = nullptr;
+        return OK;
+    }
+
     const flat_binder_object* flat = readObject(false);
 
     if (flat) {
@@ -507,6 +524,16 @@ bool Parcel::hasFileDescriptors() const
 void Parcel::markSensitive() const
 {
     mDeallocZero = true;
+}
+
+void Parcel::setAttachedBinder(const sp<IBinder>& binder) {
+    mIsForRpc = binder &&
+                binder->remoteBinder() &&
+                binder->remoteBinder()->isRpcBinder();
+}
+
+void Parcel::markForRpc() {
+    mIsForRpc = true;
 }
 
 void Parcel::updateWorkSourceRequestHeaderPosition() const {
@@ -1204,6 +1231,11 @@ status_t Parcel::writeNativeHandle(const native_handle* handle)
 
 status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership)
 {
+    if (mIsForRpc) {
+        ALOGE("Cannot write file descriptor to remote binder.");
+        return BAD_TYPE;
+    }
+
     flat_binder_object obj;
     obj.hdr.type = BINDER_TYPE_FD;
     obj.flags = 0x7f | FLAT_BINDER_FLAG_ACCEPTS_FDS;
@@ -2509,6 +2541,7 @@ void Parcel::ipcSetDataReference(const uint8_t* data, size_t dataSize,
     //ALOGI("setDataReference Setting data size of %p to %lu (pid=%d)", this, mDataSize, getpid());
     mDataPos = 0;
     ALOGV("setDataReference Setting data pos of %p to %zu", this, mDataPos);
+    mIsForRpc = false;
     mObjects = const_cast<binder_size_t*>(objects);
     mObjectsSize = mObjectsCapacity = objectsCount;
     mNextObjectHint = 0;
