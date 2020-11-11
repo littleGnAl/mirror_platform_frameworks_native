@@ -18,6 +18,7 @@
 #define ANDROID_BPBINDER_H
 
 #include <binder/IBinder.h>
+#include <binder/RpcAddress.h>
 #include <utils/KeyedVector.h>
 #include <utils/Mutex.h>
 #include <utils/threads.h>
@@ -27,9 +28,14 @@
 // ---------------------------------------------------------------------------
 namespace android {
 
+class RpcConnection;
 namespace internal {
 class Stability;
 };
+
+// FIXME: avoid explicit branching in this implementation
+// - split into subclasses to differentiate socket proxy?
+// - make IPCThreadState/socket stuff implement same interfaces?
 
 using binder_proxy_limit_callback = void(*)(int);
 
@@ -37,6 +43,7 @@ class BpBinder : public IBinder
 {
 public:
     static BpBinder*    create(int32_t handle);
+    static BpBinder*    create(const sp<RpcConnection>& connection, const RpcAddress* address);
 
     int32_t             handle() const;
 
@@ -111,14 +118,25 @@ public:
     };
 
 protected:
+                        BpBinder(int32_t handle);
                         BpBinder(int32_t handle,int32_t trackedUid);
+                        BpBinder(const sp<RpcConnection>& connection, const RpcAddress* address);
+
     virtual             ~BpBinder();
     virtual void        onFirstRef();
     virtual void        onLastStrongRef(const void* id);
     virtual bool        onIncStrongAttempted(uint32_t flags, const void* id);
 
 private:
+    // note commit 85180c00b24af8ef6cf1a801d69b4906b74271ab
+    // offset(BpBinder, mHandle) was exposed as API until mid 2019
+    //
+    // FIXME: test if we can change this - only Parcel.cpp should have used it?
     const   int32_t             mHandle;
+
+            bool                mIsSocket; // FIXME: garbage
+            sp<RpcConnection>   mConnection; // if mIsSocket
+    const   RpcAddress*         mAddress; // if mIsSocket
 
     friend ::android::internal::Stability;
             int32_t             mStability;
