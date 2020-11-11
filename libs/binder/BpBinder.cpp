@@ -21,6 +21,7 @@
 
 #include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
+#include <binder/RpcConnection.h>
 #include <binder/Stability.h>
 #include <cutils/compiler.h>
 #include <utils/Log.h>
@@ -133,25 +134,61 @@ BpBinder* BpBinder::create(int32_t handle) {
         }
         sTrackingMap[trackedUid]++;
     }
-    return new BpBinder(handle, trackedUid);
+    return new BpBinder(BinderHandle{handle}, trackedUid);
 }
 
-BpBinder::BpBinder(int32_t handle, int32_t trackedUid)
+BpBinder* BpBinder::create(const sp<RpcConnection>& connection, const RpcAddress& address) {
+    LOG_ALWAYS_FATAL_IF(connection == nullptr, "BpBinder::create null connection");
+
+    // These are not currently tracked, since there is no UID or other
+    // identifier to track them with. However, if similar functionality is
+    // needed, connection objects keep track of all BpBinder objects on a
+    // per-connection basis.
+
+    return new BpBinder(SocketHandle{connection, address});
+}
+
+BpBinder::BpBinder(Handle&& handle)
     : mStability(0)
     , mHandle(handle)
-    , mAlive(1)
-    , mObitsSent(0)
+    , mAlive(true)
+    , mObitsSent(false)
     , mObituaries(nullptr)
-    , mTrackedUid(trackedUid)
+    , mTrackedUid(-1)
 {
-    ALOGV("Creating BpBinder %p handle %d\n", this, mHandle);
-
     extendObjectLifetime(OBJECT_LIFETIME_WEAK);
-    IPCThreadState::self()->incWeakHandle(handle, this);
+}
+
+BpBinder::BpBinder(BinderHandle&& handle, int32_t trackedUid)
+    : BpBinder(Handle(handle))
+{
+    mTrackedUid = trackedUid;
+
+    ALOGV("Creating BpBinder %p handle %d\n", this, this->handle());
+
+    IPCThreadState::self()->incWeakHandle(this->handle(), this);
+}
+
+BpBinder::BpBinder(SocketHandle&& handle)
+    : BpBinder(Handle(handle))
+{
+    LOG_ALWAYS_FATAL_IF(connection() == nullptr, "BpBinder created w/o connection object");
+}
+
+bool BpBinder::isRpcBinder() const {
+    return std::holds_alternative<SocketHandle>(mHandle);
+}
+
+const RpcAddress& BpBinder::address() const {
+    return std::get<SocketHandle>(mHandle).address;
+}
+
+const sp<RpcConnection>& BpBinder::connection() const {
+    return std::get<SocketHandle>(mHandle).connection;
 }
 
 int32_t BpBinder::handle() const {
-    return mHandle;
+    return std::get<BinderHandle>(mHandle).handle;
 }
 
 bool BpBinder::isDescriptorCached() const {
@@ -190,9 +227,10 @@ bool BpBinder::isBinderAlive() const
 
 status_t BpBinder::pingBinder()
 {
-    Parcel send;
+    Parcel data;
+    data.markForBinder(this);
     Parcel reply;
-    return transact(PING_TRANSACTION, send, &reply);
+    return transact(PING_TRANSACTION, data, &reply);
 }
 
 status_t BpBinder::dump(int fd, const Vector<String16>& args)
@@ -236,8 +274,13 @@ status_t BpBinder::transact(
             }
         }
 
-        status_t status = IPCThreadState::self()->transact(
-            mHandle, code, data, reply, flags);
+        status_t status;
+        if (CC_UNLIKELY(isRpcBinder())) {
+            status = connection()->transact(address(), code, data, reply, flags);
+        } else {
+            status = IPCThreadState::self()->transact(handle(), code, data, reply, flags);
+        }
+
         if (status == DEAD_OBJECT) mAlive = 0;
 
         return status;
@@ -250,6 +293,8 @@ status_t BpBinder::transact(
 status_t BpBinder::linkToDeath(
     const sp<DeathRecipient>& recipient, void* cookie, uint32_t flags)
 {
+    if (isRpcBinder()) return UNKNOWN_TRANSACTION;
+
     Obituary ob;
     ob.recipient = recipient;
     ob.cookie = cookie;
@@ -267,10 +312,10 @@ status_t BpBinder::linkToDeath(
                 if (!mObituaries) {
                     return NO_MEMORY;
                 }
-                ALOGV("Requesting death notification: %p handle %d\n", this, mHandle);
+                ALOGV("Requesting death notification: %p handle %d\n", this, handle());
                 getWeakRefs()->incWeak(this);
                 IPCThreadState* self = IPCThreadState::self();
-                self->requestDeathNotification(mHandle, this);
+                self->requestDeathNotification(handle(), this);
                 self->flushCommands();
             }
             ssize_t res = mObituaries->add(ob);
@@ -286,6 +331,8 @@ status_t BpBinder::unlinkToDeath(
     const wp<DeathRecipient>& recipient, void* cookie, uint32_t flags,
     wp<DeathRecipient>* outRecipient)
 {
+    if (isRpcBinder()) return UNKNOWN_TRANSACTION;
+
     AutoMutex _l(mLock);
 
     if (mObitsSent) {
@@ -303,9 +350,9 @@ status_t BpBinder::unlinkToDeath(
             }
             mObituaries->removeAt(i);
             if (mObituaries->size() == 0) {
-                ALOGV("Clearing death notification: %p handle %d\n", this, mHandle);
+                ALOGV("Clearing death notification: %p handle %d\n", this, handle());
                 IPCThreadState* self = IPCThreadState::self();
-                self->clearDeathNotification(mHandle, this);
+                self->clearDeathNotification(handle(), this);
                 self->flushCommands();
                 delete mObituaries;
                 mObituaries = nullptr;
@@ -319,8 +366,10 @@ status_t BpBinder::unlinkToDeath(
 
 void BpBinder::sendObituary()
 {
+    LOG_ALWAYS_FATAL_IF(isRpcBinder(), "Cannot send obituary for remote binder.");
+
     ALOGV("Sending obituary for proxy %p handle %d, mObitsSent=%s\n",
-        this, mHandle, mObitsSent ? "true" : "false");
+        this, handle(), mObitsSent ? "true" : "false");
 
     mAlive = 0;
     if (mObitsSent) return;
@@ -328,9 +377,9 @@ void BpBinder::sendObituary()
     mLock.lock();
     Vector<Obituary>* obits = mObituaries;
     if(obits != nullptr) {
-        ALOGV("Clearing sent death notification: %p handle %d\n", this, mHandle);
+        ALOGV("Clearing sent death notification: %p handle %d\n", this, handle());
         IPCThreadState* self = IPCThreadState::self();
-        self->clearDeathNotification(mHandle, this);
+        self->clearDeathNotification(handle(), this);
         self->flushCommands();
         mObituaries = nullptr;
     }
@@ -388,7 +437,9 @@ BpBinder* BpBinder::remoteBinder()
 
 BpBinder::~BpBinder()
 {
-    ALOGV("Destroying BpBinder %p handle %d\n", this, mHandle);
+    ALOGV("Destroying BpBinder %p handle %d\n", this, handle());
+
+    if (CC_UNLIKELY(isRpcBinder())) return;
 
     IPCThreadState* ipc = IPCThreadState::self();
 
@@ -396,7 +447,7 @@ BpBinder::~BpBinder()
         AutoMutex _l(sTrackingLock);
         uint32_t trackedValue = sTrackingMap[mTrackedUid];
         if (CC_UNLIKELY((trackedValue & COUNTING_VALUE_MASK) == 0)) {
-            ALOGE("Unexpected Binder Proxy tracking decrement in %p handle %d\n", this, mHandle);
+            ALOGE("Unexpected Binder Proxy tracking decrement in %p handle %d\n", this, handle());
         } else {
             if (CC_UNLIKELY(
                 (trackedValue & LIMIT_REACHED_MASK) &&
@@ -413,26 +464,31 @@ BpBinder::~BpBinder()
     }
 
     if (ipc) {
-        ipc->expungeHandle(mHandle, this);
-        ipc->decWeakHandle(mHandle);
+        ipc->expungeHandle(handle(), this);
+        ipc->decWeakHandle(handle());
     }
 }
 
 void BpBinder::onFirstRef()
 {
-    ALOGV("onFirstRef BpBinder %p handle %d\n", this, mHandle);
+    ALOGV("onFirstRef BpBinder %p handle %d\n", this, handle());
+    if (CC_UNLIKELY(isRpcBinder())) return;
     IPCThreadState* ipc = IPCThreadState::self();
-    if (ipc) ipc->incStrongHandle(mHandle, this);
+    if (ipc) ipc->incStrongHandle(handle(), this);
 }
 
 void BpBinder::onLastStrongRef(const void* /*id*/)
 {
-    ALOGV("onLastStrongRef BpBinder %p handle %d\n", this, mHandle);
+    ALOGV("onLastStrongRef BpBinder %p handle %d\n", this, handle());
+    if (CC_UNLIKELY(isRpcBinder())) {
+        (void)connection()->sendDecStrong(address());
+        return;
+    }
     IF_ALOGV() {
         printRefs();
     }
     IPCThreadState* ipc = IPCThreadState::self();
-    if (ipc) ipc->decStrongHandle(mHandle);
+    if (ipc) ipc->decStrongHandle(handle());
 
     mLock.lock();
     Vector<Obituary>* obits = mObituaries;
@@ -442,7 +498,7 @@ void BpBinder::onLastStrongRef(const void* /*id*/)
                   mDescriptorCache.size() ? String8(mDescriptorCache).c_str() : "<uncached descriptor>");
         }
 
-        if (ipc) ipc->clearDeathNotification(mHandle, this);
+        if (ipc) ipc->clearDeathNotification(handle(), this);
         mObituaries = nullptr;
     }
     mLock.unlock();
@@ -457,9 +513,12 @@ void BpBinder::onLastStrongRef(const void* /*id*/)
 
 bool BpBinder::onIncStrongAttempted(uint32_t /*flags*/, const void* /*id*/)
 {
-    ALOGV("onIncStrongAttempted BpBinder %p handle %d\n", this, mHandle);
+    // RPC binder doesn't currently support inc from weak binders
+    if (CC_UNLIKELY(isRpcBinder())) return false;
+
+    ALOGV("onIncStrongAttempted BpBinder %p handle %d\n", this, handle());
     IPCThreadState* ipc = IPCThreadState::self();
-    return ipc ? ipc->attemptIncStrongHandle(mHandle) == NO_ERROR : false;
+    return ipc ? ipc->attemptIncStrongHandle(handle()) == NO_ERROR : false;
 }
 
 uint32_t BpBinder::getBinderProxyCount(uint32_t uid)
