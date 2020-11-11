@@ -59,6 +59,8 @@ public:
     class ReadableBlob;
     class WritableBlob;
 
+    // FIXME: know when we create the parcel, what the version is, and what type
+    // of binder we are targetting
                         Parcel();
                         ~Parcel();
     
@@ -91,6 +93,13 @@ public:
     // WARNING: some read methods may make additional copies of data.
     // In order to verify this, heap dumps should be used.
     void                markSensitive() const;
+
+    // FIXME: docs
+    // FIXME: simplify information/APIs here, really want a symmetrical way to
+    // handle this for transactions and replies
+    // FIXME: rename markAttachedBinder -> markForBinder
+    void                setAttachedBinder(const sp<IBinder>& binder);
+    void                markForRpc();
 
     // Writes the RPC header.
     status_t            writeInterfaceToken(const String16& interface);
@@ -599,6 +608,9 @@ private:
     mutable bool        mObjectsSorted;
 
     mutable bool        mRequestHeaderPresent;
+
+    bool                mIsForRpc;
+
     mutable size_t      mWorkSourceRequestHeaderPosition;
 
     mutable bool        mFdsKnown;
@@ -611,8 +623,7 @@ private:
 
     release_func        mOwner;
 
-    // TODO(167966510): reserved for binder/version/stability
-    void*               mReserved = reinterpret_cast<void*>(0xAAAAAAAA);
+    void*               mReserved;
 
     class Blob {
     public:
