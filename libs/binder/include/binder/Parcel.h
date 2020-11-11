@@ -58,6 +58,8 @@ public:
     class ReadableBlob;
     class WritableBlob;
 
+    // FIXME: know when we create the parcel, what the version is, and what type
+    // of binder we are targetting
                         Parcel();
                         ~Parcel();
     
