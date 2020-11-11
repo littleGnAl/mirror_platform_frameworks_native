@@ -104,6 +104,7 @@ status_t Stability::set(IBinder* binder, int32_t stability, bool log) {
     if (local != nullptr) {
         local->mStability = static_cast<int32_t>(stability);
     } else {
+        // FIXME: handle for BrBinder
         binder->remoteBinder()->mStability = static_cast<int32_t>(stability);
     }
 
