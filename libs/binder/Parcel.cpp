@@ -36,6 +36,7 @@
 #include <binder/IPCThreadState.h>
 #include <binder/Parcel.h>
 #include <binder/ProcessState.h>
+#include <binder/RpcState.h>
 #include <binder/Stability.h>
 #include <binder/Status.h>
 #include <binder/TextOutput.h>
@@ -195,6 +196,21 @@ static constexpr inline int schedPolicyMask(int policy, int priority) {
 
 status_t Parcel::flattenBinder(const sp<IBinder>& binder)
 {
+    if (mIsForRpc) {
+        const RpcAddress* address = RpcState::self().attachBinder(binder);
+        // FIXME: check for error
+        // FIXME: delegate write to RpcAddress
+        status_t status = writeInt32(address->address);
+        if (status != OK) return status;
+        // FIXME: this code has split ends!
+        // - this is copied from finishFlattenBinder.
+        // - should move binder part of finishFlattenBinder here, so we can call
+        //   stability part here
+        internal::Stability::tryMarkCompilationUnit(binder.get());
+        auto category = internal::Stability::getCategory(binder.get());
+        return writeInt32(category.repr());
+    }
+
     flat_binder_object obj;
     obj.flags = FLAT_BINDER_FLAG_ACCEPTS_FDS;
 
@@ -243,6 +259,18 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder)
 
 status_t Parcel::unflattenBinder(sp<IBinder>* out) const
 {
+    if (mIsForRpc) {
+        LOG_ALWAYS_FATAL_IF(mConnection == nullptr,
+                            "RpcConnection required to read from remote parcel");
+
+        RpcAddress addr = RpcAddress{readInt32()};
+        ALOGE("Read binder at address %d", addr.address);  // FIXME: spam
+        // FIXME: remove lint disable when address is bigger
+        // NOLINTNEXTLINE(performance-move-const-arg)
+        sp<IBinder> binder = RpcState::self().getOrLookupProxy(mConnection, std::move(addr));
+        return finishUnflattenBinder(binder, out);
+    }
+
     const flat_binder_object* flat = readObject(false);
 
     if (flat) {
@@ -507,6 +535,21 @@ bool Parcel::hasFileDescriptors() const
 void Parcel::markSensitive() const
 {
     mDeallocZero = true;
+}
+
+void Parcel::setAttachedBinder(const sp<IBinder>& binder) {
+    mIsForRpc = binder &&
+                binder->remoteBinder() &&
+                binder->remoteBinder()->isRpcBinder();
+
+    if (mIsForRpc) {
+        mConnection = binder->remoteBinder()->connection();
+    }
+}
+
+void Parcel::markForRpc(const sp<RpcConnection>& connection) {
+    mIsForRpc = true;
+    mConnection = connection;
 }
 
 void Parcel::updateWorkSourceRequestHeaderPosition() const {
@@ -1204,6 +1247,11 @@ status_t Parcel::writeNativeHandle(const native_handle* handle)
 
 status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership)
 {
+    if (mIsForRpc) {
+        ALOGE("Cannot write file descriptor to remote binder.");
+        return BAD_TYPE;
+    }
+
     flat_binder_object obj;
     obj.hdr.type = BINDER_TYPE_FD;
     obj.flags = 0x7f | FLAT_BINDER_FLAG_ACCEPTS_FDS;
@@ -2509,6 +2557,7 @@ void Parcel::ipcSetDataReference(const uint8_t* data, size_t dataSize,
     //ALOGI("setDataReference Setting data size of %p to %lu (pid=%d)", this, mDataSize, getpid());
     mDataPos = 0;
     ALOGV("setDataReference Setting data pos of %p to %zu", this, mDataPos);
+    mIsForRpc = false;
     mObjects = const_cast<binder_size_t*>(objects);
     mObjectsSize = mObjectsCapacity = objectsCount;
     mNextObjectHint = 0;
