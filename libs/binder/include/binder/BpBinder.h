@@ -17,6 +17,7 @@
 #pragma once
 
 #include <binder/IBinder.h>
+#include <binder/RpcAddress.h>
 #include <utils/KeyedVector.h>
 #include <utils/Mutex.h>
 #include <utils/threads.h>
@@ -26,6 +27,8 @@
 // ---------------------------------------------------------------------------
 namespace android {
 
+class RpcConnection;
+class RpcState;
 namespace internal {
 class Stability;
 }
@@ -37,6 +40,14 @@ class BpBinder : public IBinder
 {
 public:
     static BpBinder*    create(int32_t handle);
+    static BpBinder*    create(const sp<RpcConnection>& connection, const RpcAddress& address);
+
+    /**
+     * Return value:
+     * true - this is associated with a socket RpcConnection
+     * false - (usual) binder over e.g. /dev/binder
+     */
+    bool                isRpcBinder() const;
 
     virtual const String16&    getInterfaceDescriptor() const;
     virtual bool        isBinderAlive() const;
@@ -108,33 +119,45 @@ public:
         KeyedVector<const void*, entry_t> mObjects;
     };
 
-    class PrivateAccessorForHandle {
+    class PrivateAccessorForId {
     private:
-        friend BpBinder;
-        friend ::android::Parcel;
-        friend ::android::ProcessState;
-        explicit PrivateAccessorForHandle(const BpBinder* binder) : mBinder(binder) {}
+        friend class BpBinder;
+        friend class ::android::Parcel;
+        friend class ::android::ProcessState;
+        friend class ::android::RpcState;
+        explicit PrivateAccessorForId(const BpBinder* binder) : mBinder(binder) {}
         int32_t handle() const { return mBinder->handle(); }
+        const RpcAddress& address() const { return mBinder->address(); }
+        const sp<RpcConnection>& connection() const { return mBinder->connection(); }
         const BpBinder* mBinder;
     };
-    const PrivateAccessorForHandle getPrivateAccessorForHandle() const {
-        return PrivateAccessorForHandle(this);
+    const PrivateAccessorForId getPrivateAccessorForId() const {
+        return PrivateAccessorForId(this);
     }
 
 private:
-    friend PrivateAccessorForHandle;
+    friend PrivateAccessorForId;
 
-    int32_t             handle() const;
-                        BpBinder(int32_t handle,int32_t trackedUid);
+    int32_t                  handle() const;
+    const RpcAddress&        address() const;
+    const sp<RpcConnection>& connection() const;
+
+    explicit            BpBinder(int32_t handle);
+                        BpBinder(int32_t handle, int32_t trackedUid);
+                        BpBinder(const sp<RpcConnection>& connection, const RpcAddress& address);
+
     virtual             ~BpBinder();
     virtual void        onFirstRef();
     virtual void        onLastStrongRef(const void* id);
     virtual bool        onIncStrongAttempted(uint32_t flags, const void* id);
 
     friend ::android::internal::Stability;
-            int32_t             mStability;
 
+            int32_t             mStability;
     const   int32_t             mHandle;
+            bool                mIsSocket; // FIXME: garbage
+            sp<RpcConnection>   mConnection; // if mIsSocket
+            RpcAddress          mAddress; // if mIsSocket
 
     struct Obituary {
         wp<DeathRecipient> recipient;
