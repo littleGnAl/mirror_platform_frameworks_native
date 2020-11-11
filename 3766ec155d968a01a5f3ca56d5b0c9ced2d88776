@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d8695b_7a957f63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1659539
+      },
+      "writtenOn": "2020-11-11T11:14:44Z",
+      "side": 1,
+      "message": "Thanks!\n\nCould you please add the libs/vibrator folder to frameworks/native/PREUPLOAD.cfg and run clang on this folder?",
+      "revId": "3766ec155d968a01a5f3ca56d5b0c9ced2d88776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c721ec9_cfe81419",
+        "filename": "libs/vibrator/fuzzer/vibrator_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1659539
+      },
+      "writtenOn": "2020-11-11T11:14:44Z",
+      "side": 1,
+      "message": "I think you might need to do parcel.setDataPosition(0) before reading from this parcel?",
+      "range": {
+        "startLine": 113,
+        "startChar": 18,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "3766ec155d968a01a5f3ca56d5b0c9ced2d88776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
