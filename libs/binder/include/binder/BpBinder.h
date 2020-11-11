@@ -26,17 +26,33 @@
 // ---------------------------------------------------------------------------
 namespace android {
 
+struct RpcWireAddress;
+class RpcConnection;
 namespace internal {
 class Stability;
 }
+
+using RpcAddress = std::shared_ptr<RpcWireAddress>;
+
+// FIXME: avoid explicit branching in this implementation
+// - split into subclasses to differentiate socket proxy?
+// - make IPCThreadState/socket stuff implement same interfaces?
 
 using binder_proxy_limit_callback = void(*)(int);
 
 class BpBinder : public IBinder
 {
 public:
-    static BpBinder*    create(int32_t handle);
 
+    static BpBinder*    create(int32_t handle);
+    static BpBinder*    create(const sp<RpcConnection>& connection, const RpcAddress& address);
+
+    // FIXME: is bool the best type here for the future?
+    bool                isRpcBinder() const;
+    const RpcAddress&   address() const;
+    sp<RpcConnection>   connection() const;
+    // FIXME: hide or potentially change return type, since it won't always be
+    // valid (and we fill in garbage value for RPC binders)
     int32_t             handle() const;
 
     virtual const String16&    getInterfaceDescriptor() const;
@@ -110,16 +126,22 @@ public:
     };
 
 private:
+    explicit            BpBinder(int32_t handle);
                         BpBinder(int32_t handle,int32_t trackedUid);
+                        BpBinder(const sp<RpcConnection>& connection, const RpcAddress& address);
+
     virtual             ~BpBinder();
     virtual void        onFirstRef();
     virtual void        onLastStrongRef(const void* id);
     virtual bool        onIncStrongAttempted(uint32_t flags, const void* id);
 
     friend ::android::internal::Stability;
-            int32_t             mStability;
 
+            int32_t             mStability;
     const   int32_t             mHandle;
+            bool                mIsSocket; // FIXME: garbage
+            sp<RpcConnection>   mConnection; // if mIsSocket
+            RpcAddress          mAddress; // if mIsSocket
 
     struct Obituary {
         wp<DeathRecipient> recipient;
