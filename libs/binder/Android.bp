@@ -124,6 +124,10 @@ cc_library {
         "ParcelFileDescriptor.cpp",
         "PersistableBundle.cpp",
         "ProcessState.cpp",
+        "RpcAddress.cpp",
+        "RpcConnection.cpp",
+        "RpcServer.cpp",
+        "RpcState.cpp",
         "Static.cpp",
         "Stability.cpp",
         "Status.cpp",
@@ -136,10 +140,11 @@ cc_library {
         android: {
             srcs: libbinder_device_interface_sources,
 
+            // FIXME: restore, only static for temporary testing
             // NOT static to keep the wire protocol unfrozen
-            static: {
-                enabled: false,
-            },
+            // static: {
+            //     enabled: false,
+            //},
         },
         vendor: {
             exclude_srcs: libbinder_device_interface_sources,

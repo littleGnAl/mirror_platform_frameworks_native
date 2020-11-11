@@ -208,7 +208,8 @@ ssize_t ProcessState::getStrongRefCountForNode(const sp<BpBinder>& binder) {
     binder_node_info_for_ref info;
     memset(&info, 0, sizeof(binder_node_info_for_ref));
 
-    info.handle = binder->getPrivateAccessorForHandle().handle();
+    if (binder->isRpcBinder()) return -1;
+    info.handle = binder->getPrivateAccessorForId().handle();
 
     status_t result = ioctl(mDriverFD, BINDER_GET_NODE_INFO_FOR_REF, &info);
 
