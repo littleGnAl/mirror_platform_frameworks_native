@@ -78,6 +78,26 @@ cc_test {
     require_root: true,
 }
 
+// FIXME: we should integrate this into existing tests, so that we can take
+// advantage of all the code/nested transactions/etc.. that are already
+// being tested. This should only test rpc-specific things.
+cc_test {
+    name: "binderRpcTest",
+    defaults: ["binder_test_defaults"],
+
+    srcs: ["binderRpcTest.cpp"],
+    static_libs: [
+        "libbinder",
+    ],
+    shared_libs: [
+        "libbase",
+        "libutils",
+        "libcutils",
+        "liblog",
+    ],
+    require_root: true,
+}
+
 cc_test {
     name: "binderThroughputTest",
     defaults: ["binder_test_defaults"],

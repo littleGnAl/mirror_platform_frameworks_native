@@ -22,6 +22,7 @@
 namespace android {
 
 class BpBinder;
+class BrBinder;
 class ProcessState;
 
 namespace internal {
@@ -66,6 +67,7 @@ private:
 
     // only expose internal APIs inside of libbinder, for checking stability
     friend ::android::BpBinder;
+    friend ::android::BrBinder;
 
     // so that it can mark the context object (only the root object doesn't go
     // through Parcel)
