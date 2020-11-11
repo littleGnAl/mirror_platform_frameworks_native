@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ba3fa6_60aee0d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-11T16:55:29Z",
+      "side": 1,
+      "message": "\u003e #ifdef ANDROID_BINDER_STATUS_H\n\n:|",
+      "revId": "e690bc6118340113eb48a59ddffb2cddf05a75fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
