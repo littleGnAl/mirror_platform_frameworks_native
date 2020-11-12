@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ebb1be5_dac8239c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-12T01:08:46Z",
+      "side": 1,
+      "message": "Status.h is not changed since some netd code uses it. Luke, any interest in splitting up that code? (e.g. maybe separate BinderUtil.h files, or supporting both. libbinder_ndk/libbinder usage isn\u0027t mutually exclusive anyway).",
+      "revId": "c7a871e8c7615f1076a704c01bc23bbbec498f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
