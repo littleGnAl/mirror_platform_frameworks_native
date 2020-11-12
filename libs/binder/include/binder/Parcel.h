@@ -52,6 +52,11 @@ class ProcessState;
 class String8;
 class TextOutput;
 
+#pragma clang diagnostic push
+// Make space we are using in Parcel extra visible, since sizeof(Parcel) is
+// frozen
+#pragma clang diagnostic error "-Wpadded"
+
 class Parcel {
     friend class IPCThreadState;
 public:
@@ -488,6 +493,8 @@ public:
     // uid.
     uid_t               readCallingWorkSourceUid() const;
 
+    void                print(TextOutput& to, uint32_t flags = 0) const;
+
 private:
     typedef void        (*release_func)(Parcel* parcel,
                                         const uint8_t* data, size_t dataSize,
@@ -501,11 +508,7 @@ private:
     void                ipcSetDataReference(const uint8_t* data, size_t dataSize,
                                             const binder_size_t* objects, size_t objectsCount,
                                             release_func relFunc, void* relCookie);
-    
-public:
-    void                print(TextOutput& to, uint32_t flags = 0) const;
 
-private:
                         Parcel(const Parcel& o);
     Parcel&             operator=(const Parcel& o);
     
@@ -589,7 +592,6 @@ private:
     status_t            writeTypedVector(const std::vector<T>& val,
                                          status_t(Parcel::*write_func)(T));
 
-    status_t            mError;
     uint8_t*            mData;
     size_t              mDataSize;
     size_t              mDataCapacity;
@@ -600,9 +602,6 @@ private:
     mutable size_t      mNextObjectHint;
     mutable bool        mObjectsSorted;
 
-    mutable bool        mRequestHeaderPresent;
-    mutable size_t      mWorkSourceRequestHeaderPosition;
-
     mutable bool        mFdsKnown;
     mutable bool        mHasFds;
     bool                mAllowFds;
@@ -611,8 +610,33 @@ private:
     // data to be overridden with zero when deallocated
     mutable bool        mDeallocZero;
 
+    mutable bool        mRequestHeaderPresent;
+
+    uint8_t             mReserved0[2];
+
+    mutable size_t      mWorkSourceRequestHeaderPosition;
+
     release_func        mOwner;
     void*               mOwnerCookie;
+
+    size_t mOpenAshmemSize;
+
+    // Struct to reserve size based on if pointer size is 4 or 8
+    template <size_t PTR_SIZE, size_t SIZE_32, size_t SIZE_64>
+    struct ReserveAtBitness;
+    template <size_t SIZE_32, size_t SIZE_64>
+    struct ReserveAtBitness<4, SIZE_32, SIZE_64> { uint8_t mReserved[SIZE_32]; };
+    template <size_t SIZE_32, size_t SIZE_64>
+    struct ReserveAtBitness<8, SIZE_32, SIZE_64> { uint8_t mReserved[SIZE_64]; };
+
+    union {
+        status_t        mError;
+
+        // on 32-bit builds, don't reserve any extra memory
+        // on 64-bit builds, reserve an extra 12 bytes, on top of
+        //     sizeof(status_t) = 4
+        ReserveAtBitness<sizeof(void*), sizeof(status_t), 16> mReserved1;
+    };
 
     class Blob {
     public:
@@ -628,16 +652,23 @@ private:
     protected:
         void init(int fd, void* data, size_t size, bool isMutable);
 
-        int mFd; // owned by parcel so not closed when released
+        union {
+            int mFd; // owned by parcel so not closed when released
+            void* mReserved0;
+        };
         void* mData;
         size_t mSize;
-        bool mMutable;
+        union {
+            bool mMutable;
+            void* mReserved1;
+        };
     };
+    // May be frozen in prebuilts, uncomment next line to print size.
+    // template <size_t s> struct TheSizeIs; TheSizeIs<sizeof(Blob)> ignoreFollowingText;
+    static_assert(sizeof(Blob) == 16 || sizeof(Blob) == 32);
 
-    #if defined(__clang__)
     #pragma clang diagnostic push
     #pragma clang diagnostic ignored "-Wweak-vtables"
-    #endif
 
     // FlattenableHelperInterface and FlattenableHelper avoid generating a vtable entry in objects
     // following Flattenable template/protocol.
@@ -651,9 +682,7 @@ private:
         virtual status_t unflatten(void const* buffer, size_t size, int const* fds, size_t count) = 0;
     };
 
-    #if defined(__clang__)
     #pragma clang diagnostic pop
-    #endif
 
     // Concrete implementation of FlattenableHelperInterface that delegates virtual calls to the
     // specified class T implementing the Flattenable protocol. It "virtualizes" a compile-time
@@ -690,21 +719,27 @@ public:
         inline const void* data() const { return mData; }
         inline void* mutableData() { return isMutable() ? mData : nullptr; }
     };
+    // May be frozen in prebuilts
+    static_assert(sizeof(ReadableBlob) == sizeof(Blob));
 
     class WritableBlob : public Blob {
         friend class Parcel;
     public:
         inline void* data() { return mData; }
     };
+    // May be frozen in prebuilts
+    static_assert(sizeof(WritableBlob) == sizeof(Blob));
 
-private:
-    size_t mOpenAshmemSize;
-
-public:
     // TODO: Remove once ABI can be changed.
     size_t getBlobAshmemSize() const;
     size_t getOpenAshmemSize() const;
 };
+
+// Frozen in prebuilts, uncomment next line to print size:
+// template <size_t s> struct TheSizeIs; TheSizeIs<sizeof(Parcel)> ignoreFollowingText;
+static_assert(sizeof(Parcel) == 60 || sizeof(Parcel) == 120);
+
+#pragma clang diagnostic pop
 
 // ---------------------------------------------------------------------------
 
