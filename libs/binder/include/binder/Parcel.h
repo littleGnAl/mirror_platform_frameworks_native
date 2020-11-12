@@ -590,6 +590,10 @@ private:
                                          status_t(Parcel::*write_func)(T));
 
     status_t            mError;
+
+    // what I'd really like to do, start writing data into the stack to avoid
+    // heap allocations for most transactions
+    uint8_t             mReserved[32];
     uint8_t*            mData;
     size_t              mDataSize;
     size_t              mDataCapacity;
@@ -613,6 +617,7 @@ private:
 
     release_func        mOwner;
     void*               mOwnerCookie;
+
 
     class Blob {
     public:
