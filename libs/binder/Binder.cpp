@@ -183,10 +183,18 @@ status_t BBinder::transact(
             err = pingBinder();
             break;
         case EXTENSION_TRANSACTION:
-            err = reply->writeStrongBinder(getExtension());
+            if (reply != nullptr) {
+                err = reply->writeStrongBinder(getExtension());
+            } else {
+                err = BAD_VALUE;
+            }
             break;
         case DEBUG_PID_TRANSACTION:
-            err = reply->writeInt32(getDebugPid());
+            if (reply != nullptr) {
+                err = reply->writeInt32(getDebugPid());
+            } else {
+                err = BAD_VALUE;
+            }
             break;
         default:
             err = onTransact(code, data, reply, flags);
@@ -349,6 +357,9 @@ status_t BBinder::onTransact(
 {
     switch (code) {
         case INTERFACE_TRANSACTION:
+            if (reply == nullptr) {
+                return BAD_VALUE;
+            }
             reply->writeString16(getInterfaceDescriptor());
             return NO_ERROR;
 
