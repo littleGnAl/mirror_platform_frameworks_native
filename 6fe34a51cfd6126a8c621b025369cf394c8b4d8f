@@ -16,6 +16,24 @@
       "message": "Drive-by side note: This logic is doing what we want, but perhaps not entirely for the reasons we might have expected.\n\n\"min_new_classes_percent_change \u003e\u003d 0\" is always true, because min_new_classes_percent_change is unsigned.  This first check is _not_ catching the case of us getting the default value of -1.  However, the \"min_new_classes_percent_change \u003c\u003d 100\" does end up catching this correctly, as uint32_t(-1) wraps around to a value much larger than 100.\n\nWe don\u0027t need to change this here (especially because it will create merge problems for this cherry-pick).  But just something to keep in mind in the future when using unsigned values and trying to catch a negative default value.",
       "revId": "6fe34a51cfd6126a8c621b025369cf394c8b4d8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e90469c2_84148d56",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-11-12T19:38:07Z",
+      "side": 1,
+      "message": "Great catch :) Yan, can you just upload a follow up? even if it\u0027s working correctly, it\u0027s something we should not spend time thinking \"why it does\".",
+      "parentUuid": "8d8ad54d_6ebe3299",
+      "revId": "6fe34a51cfd6126a8c621b025369cf394c8b4d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
