@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b372aa1e_2ede74a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-12T23:59:13Z",
+      "side": 1,
+      "message": "LGTM, but I wondered why we can\u0027t just remove unused field first, and then add a new one when we have a need.",
+      "revId": "161fe12e31919e774b4c2c84a9d350bc926f4efd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
