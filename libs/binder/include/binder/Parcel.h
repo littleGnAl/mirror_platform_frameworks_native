@@ -600,26 +600,27 @@ private:
     size_t              mObjectsSize;
     size_t              mObjectsCapacity;
     mutable size_t      mNextObjectHint;
-    mutable bool        mObjectsSorted;
 
-    mutable bool        mFdsKnown;
-    mutable bool        mHasFds;
-    bool                mAllowFds;
+    mutable bool        mObjectsSorted : 1;
+    mutable bool        mFdsKnown : 1;
+    mutable bool        mHasFds : 1;
+    bool                mAllowFds : 1;
+    mutable bool        mDeallocZero : 1;
+    mutable bool        mRequestHeaderPresent : 1;
 
-    // if this parcelable is involved in a secure transaction, force the
-    // data to be overridden with zero when deallocated
-    mutable bool        mDeallocZero;
+    uint8_t             mReserved0 : 2;
+    uint8_t             mReserved1[3];
 
-    mutable bool        mRequestHeaderPresent;
-
-    uint8_t             mReserved0[2];
+    status_t            mError;
 
     mutable size_t      mWorkSourceRequestHeaderPosition;
 
     release_func        mOwner;
     void*               mOwnerCookie;
 
-    size_t mOpenAshmemSize;
+    // TODO(b/167966510): use to track binder associated with call
+    // (and also version/stability options associated with that binder).
+    sp<IBinder>         mReserved2;
 
     // Struct to reserve size based on if pointer size is 4 or 8
     template <size_t PTR_SIZE, size_t SIZE_32, size_t SIZE_64>
@@ -630,12 +631,12 @@ private:
     struct ReserveAtBitness<8, SIZE_32, SIZE_64> { uint8_t mReserved[SIZE_64]; };
 
     union {
-        status_t        mError;
+        size_t          mOpenAshmemSize;
 
         // on 32-bit builds, don't reserve any extra memory
-        // on 64-bit builds, reserve an extra 12 bytes, on top of
-        //     sizeof(status_t) = 4
-        ReserveAtBitness<sizeof(void*), sizeof(status_t), 16> mReserved1;
+        // on 64-bit builds, reserve an extra 8 bytes, on top of
+        //     sizeof(size_t) = 8
+        ReserveAtBitness<sizeof(void*), 4, 16> mReserved3;
     };
 
     class Blob {
