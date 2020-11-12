@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009da686_abcff9e6",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-12T23:08:06Z",
+      "side": 1,
+      "message": "survey on remaining space:\n- most of the size_t\u0027s here could be switched to uint32_t, but it would only save us size on 32-bit builds\n- mNextObjectHint could be removed, it\u0027s not important\n- mObjectsSorted could be removed, it\u0027s not important\n- mFdKnown could probably be removed, but we would have to potentially make some subtle API contracts\n- mWorkSourceRequestHeaderPosition - we could remove this if we forced interface tokens to always be first\n\nRealizing now - mOwnerCookie can actually be removed. Let me do that instead, since it\u0027s a much simpler/more efficient change than this.",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 38
+      },
+      "revId": "f1bdac913861e4bf6ea40151d2d2b8872701d000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1b8205_12df0cca",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-12T23:08:06Z",
+      "side": 1,
+      "message": "moved this here instead of sp\u003cIBinder\u003e since it is primitive (no destructor) for simplicity.",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 634,
+        "endChar": 40
+      },
+      "revId": "f1bdac913861e4bf6ea40151d2d2b8872701d000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
