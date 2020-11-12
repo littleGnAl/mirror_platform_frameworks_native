@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5245d652_118c8f9b",
+        "filename": "libs/vibrator/fuzzer/vibrator_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1100093
+      },
+      "writtenOn": "2020-11-12T23:44:22Z",
+      "side": 1,
+      "message": "Isn\u0027t this cross process?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 72
+      },
+      "revId": "3766ec155d968a01a5f3ca56d5b0c9ced2d88776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c721ec9_cfe81419",
         "filename": "libs/vibrator/fuzzer/vibrator_fuzzer.cpp",
         "patchSetId": 1
