@@ -34,6 +34,24 @@
       "parentUuid": "8a0cce3f_84d3f654",
       "revId": "8f60d292a2b75a3e2267bcd10f6622d003f2c0e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd49c852_6ae9c0e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-12T23:50:02Z",
+      "side": 1,
+      "message": "Yep, I know where this CL came from. At first glance, this CL looked good for me. I wondered why you abandoned this.",
+      "parentUuid": "76b541f4_49eaecb2",
+      "revId": "8f60d292a2b75a3e2267bcd10f6622d003f2c0e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
