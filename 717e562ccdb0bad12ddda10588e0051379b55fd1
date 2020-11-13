@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e33bc8_5c70208e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-11-13T17:33:38Z",
+      "side": 1,
+      "message": "nit: Maybe avoid checking this for onTrasact, since nothing is actually being fixed?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ebbefa1_fed62d08",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-11-13T17:30:51Z",
       "side": 1,
       "message": "extra newline?",
+      "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9347e2ed_51085f59",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-11-13T17:33:38Z",
+      "side": 1,
+      "message": "did clang-format add this?",
       "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -37,6 +77,23 @@
         "endLine": 377,
         "endChar": 61
       },
+      "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0787ca39_5d684c16",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-11-13T17:33:38Z",
+      "side": 1,
+      "message": "is this part of this defaults change?",
       "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
