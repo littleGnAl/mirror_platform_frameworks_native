@@ -39,6 +39,30 @@
       },
       "revId": "1a8c97a27d02a78411ebb73a23b5f3a275b97fa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3918af72_3cdcf4e2",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T20:56:02Z",
+      "side": 1,
+      "message": "These need to match the kernel APIs.",
+      "parentUuid": "df6d6b65_fc64c319",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 41
+      },
+      "revId": "1a8c97a27d02a78411ebb73a23b5f3a275b97fa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
