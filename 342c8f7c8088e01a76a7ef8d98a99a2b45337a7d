@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f54be197_b5ce7da1",
+        "filename": "libs/binder/include/binder/Status.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T23:16:33Z",
+      "side": 1,
+      "message": "sorry - really uninterested right now in cleaning up headers, and potentially breaking downstream.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "342c8f7c8088e01a76a7ef8d98a99a2b45337a7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
