@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "409becfe_38d32bd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T09:51:52Z",
+      "side": 1,
+      "message": "don\u0027t we have to let engprod infra migrate from `adb shell bugreport` to the new streaming bugreport because we can sunset it?\n\nhttps://b.corp.google.com/issues/29448020#comment35",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "ec5fdfb9abe8ebbee3b0bc873b4aeef6504582e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73668073_a1dd8a13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T09:51:52Z",
+      "side": 1,
+      "message": "be more specific? Remove \u0027adb shell bugreport\u0027 command?",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "ec5fdfb9abe8ebbee3b0bc873b4aeef6504582e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
