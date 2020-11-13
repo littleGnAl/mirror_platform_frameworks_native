@@ -16,6 +16,46 @@
       "message": "PTAL this and the other CLs in the same topic. I didn\u0027t add you to the other CLs to avoid spamming.",
       "revId": "252650825d6e651722e719f6c46e5d6510743a80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4bb4fe1_f1cc4c6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T17:25:32Z",
+      "side": 1,
+      "message": "This CL is on the bottom of the stack, but it should be on top, to avoid breaking bisect (or these should all be in the same topic).",
+      "revId": "252650825d6e651722e719f6c46e5d6510743a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54dac321_80064d32",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T17:25:32Z",
+      "side": 1,
+      "message": "nit: This is a bit messy though - I wonder if we should turn it on for liblog/libcutils/libutils/libbase as well. These libraries already have a lot of fixes supporting downstream tidy users, and the benefit would be just as big, since they are also used by almost all android code. or just follow-up.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 6
+      },
+      "revId": "252650825d6e651722e719f6c46e5d6510743a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
