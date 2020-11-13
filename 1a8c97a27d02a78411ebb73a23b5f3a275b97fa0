@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "54ccff2f_dc049576",
         "filename": "libs/binder/Parcel.cpp",
@@ -14,8 +15,30 @@
       "side": 1,
       "message": "(personally i agree that std::numeric_limits\u003c\u003e is to be preferred, but if you\u0027re curious, the more portable name for SIZE_T_MAX is SIZE_MAX.)",
       "revId": "1a8c97a27d02a78411ebb73a23b5f3a275b97fa0",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df6d6b65_fc64c319",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-13T11:57:38Z",
+      "side": 1,
+      "message": "Could you explain the reason behind this change? This apparently is against https://google.github.io/styleguide/cppguide.html#Integer_Types",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 41
+      },
+      "revId": "1a8c97a27d02a78411ebb73a23b5f3a275b97fa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
