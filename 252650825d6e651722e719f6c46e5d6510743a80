@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff43cea_9cc77c03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-13T13:50:41Z",
+      "side": 1,
+      "message": "PTAL this and the other CLs in the same topic. I didn\u0027t add you to the other CLs to avoid spamming.",
+      "revId": "252650825d6e651722e719f6c46e5d6510743a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
