@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d40f7082_02a33dc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T23:52:17Z",
+      "side": 1,
+      "message": "The existing API was unnecessarily limiting usage to a base class, but we want to print to any kind of ostream, yeah, no difference.",
+      "parentUuid": "b1f279da_ae7590bf",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 13
+      },
+      "revId": "342c8f7c8088e01a76a7ef8d98a99a2b45337a7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f54be197_b5ce7da1",
         "filename": "libs/binder/include/binder/Status.h",
         "patchSetId": 3
