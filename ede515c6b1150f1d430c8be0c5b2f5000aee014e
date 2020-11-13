@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfcf4e5c_c2da294c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "maybe say write zipped file to control socket?",
+      "range": {
+        "startLine": 2294,
+        "startChar": 19,
+        "endLine": 2294,
+        "endChar": 49
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7da59299_3ae03c57",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2452,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "nit: slightly more concise and readable to write\n\nbool do_text_file \u003d !ds.FinishZipFile();\nif (do_text_file) {\n  MYLOGE(\"Failed to finish zip file; sending text bugreport instead\\n\");\n}",
+      "range": {
+        "startLine": 2452,
+        "startChar": 4,
+        "endLine": 2452,
+        "endChar": 29
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a40d436_1f710419",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2467,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "this is neat and easy. I had not thought about it; I always assumed we will have to continuously stream. Good idea to just create file as usual and dump to fd in the end!",
+      "range": {
+        "startLine": 2467,
+        "startChar": 8,
+        "endLine": 2467,
+        "endChar": 67
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18036189_6c0ce41b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2586,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "we need this I think. What happens when you press power+ vol up + vol down? It\u0027s supposed to trigger a full bugreport. But this seems to break it.\n\nSee usages in https://source.corp.google.com/search?q\u003d%22system%2Fbin%2Fdumpstate%22%20package:android$%20f:.rc\u0026sq\u003dpackage:android\n\nCan you also send a note (when you have finalized the list of things that are being deprecated) to bugreporting discuss mailing list - it would be nice for folks like arc++, TV, etc to know about this.\n\n\nAlso if my guess here that \"power + vol up  + vold down\" is correct, could you please write an automatic test case to uncover the regression?",
+      "range": {
+        "startLine": 2583,
+        "startChar": 12,
+        "endLine": 2586,
+        "endChar": 38
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b796fd_cad6fc62",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2774,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "I think stream_to_socket maybe a better name? do_stream_zip_file does not readily indicate the output goes to a socket.\n\nIt\u0027s ok to omit zip from the name since from now on text files are used only in the super corner case where the zip file goes corrupt",
+      "range": {
+        "startLine": 2774,
+        "startChar": 18,
+        "endLine": 2774,
+        "endChar": 36
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410f4918_05538e4c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2774,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "both -s and -S use control socket now. so use_control_socket should be renamed to avoid confusion. How about\n\ndo_stream_zip_file \u003d stream_to_socket\nuse_control_socket \u003d progress_udpates_to_socket? udpates_to_socket? something else?\n\nPerhaps also add some comments in the header to explain these options more?",
+      "range": {
+        "startLine": 2774,
+        "startChar": 50,
+        "endLine": 2774,
+        "endChar": 68
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324dc788_b887f7ab",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2786,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "why not otherwise?",
+      "range": {
+        "startLine": 2786,
+        "startChar": 11,
+        "endLine": 2786,
+        "endChar": 63
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2969dbbf_2f80fefb",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2950,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "we can actually remove this.. the fd won\u0027t be open with other options.",
+      "range": {
+        "startLine": 2949,
+        "startChar": 8,
+        "endLine": 2950,
+        "endChar": 14
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c606941_1573db83",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 3023,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "valid still?",
+      "range": {
+        "startLine": 3021,
+        "startChar": 0,
+        "endLine": 3023,
+        "endChar": 17
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a210bf8b_db147d0f",
+        "filename": "cmds/dumpstate/dumpstate.rc",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "I think the only user for dumpstate was \u0027adb shell bugreport\u0027, which you are planning to remove in https://r.android.com/1448616. Please make a note to remove this too.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4cff89f_ada48dc6",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T14:27:30Z",
+      "side": 1,
+      "message": "can you add a new test with control socket? maybe use a bugreport type that would be quick, like wifi",
+      "range": {
+        "startLine": 495,
+        "startChar": 29,
+        "endLine": 495,
+        "endChar": 46
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
