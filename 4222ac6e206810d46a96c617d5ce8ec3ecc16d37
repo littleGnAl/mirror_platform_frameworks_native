@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5f44d5_8a0512dc",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T02:16:03Z",
+      "side": 1,
+      "message": "There are many things which implement onTransact from aidl-generated code which also don\u0027t check if the reply parcel is non-null.\n\nThe only way that a reply parcel can be non-null is if the following conditions are met:\n- the binder is local (if it is a remote binder, reply is always added by IPCThreadState)\n- a reply Parcel is not created for a non-oneway transaction (but a client should always do this for a non-oneway transaction)\n\nI think the idea is, in this case, it would be correct to abort in that process, since it is doing something silly.\n\nCan you get more information from the analyzer that says how null can show up here? I would rather find a way to prevent clients from sending in null replies than to allow them to do it, and potentially ignore errors or hit error paths for no good reason.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 55
+      },
+      "revId": "4222ac6e206810d46a96c617d5ce8ec3ecc16d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
