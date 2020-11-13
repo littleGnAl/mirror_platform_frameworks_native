@@ -181,7 +181,6 @@ cc_library {
         "*",
         "-google-build-using-namespace",
         "-google-default-arguments",
-        "-google-explicit-constructor",
         "-google-runtime-int",
     ],
 }
