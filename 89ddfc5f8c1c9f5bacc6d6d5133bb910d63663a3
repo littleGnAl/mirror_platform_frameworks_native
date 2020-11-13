@@ -16,6 +16,23 @@
       "message": "(presubmit breakage is b/173200764, unrelated. Waiting for fix to re-run TH)",
       "revId": "89ddfc5f8c1c9f5bacc6d6d5133bb910d63663a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22acca8d_34f0612d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-11-13T21:58:59Z",
+      "side": 1,
+      "message": "Category sounds better to me.",
+      "revId": "89ddfc5f8c1c9f5bacc6d6d5133bb910d63663a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
