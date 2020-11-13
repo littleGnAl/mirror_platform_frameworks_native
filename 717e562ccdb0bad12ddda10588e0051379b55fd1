@@ -120,6 +120,30 @@
       "message": "is this part of this defaults change?",
       "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed55605_b62b543b",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T19:41:05Z",
+      "side": 1,
+      "message": "prefer https://android-review.googlesource.com/c/platform/frameworks/native/+/1498224",
+      "parentUuid": "5def03dc_8930d493",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 61
+      },
+      "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
