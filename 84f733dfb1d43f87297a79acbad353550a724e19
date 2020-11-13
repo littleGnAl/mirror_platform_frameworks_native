@@ -46,6 +46,30 @@
       },
       "revId": "84f733dfb1d43f87297a79acbad353550a724e19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62e28f5_977a5ea5",
+        "filename": "libs/gui/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T19:47:22Z",
+      "side": 1,
+      "message": "oops - missed \u0027false\u0027 here. Comment should apply to some other libraries here, but I think our libbinder discussion clarifies things.",
+      "parentUuid": "0c28c0cc_bfa7876f",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "84f733dfb1d43f87297a79acbad353550a724e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
