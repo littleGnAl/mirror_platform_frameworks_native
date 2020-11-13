@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a88eda_28e8c480",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T17:28:34Z",
+      "side": 1,
+      "message": "nit: it would be more consistent if we changed this to const sp\u003cBBinder\u003e\u0026 (no prebuilts use this API - only servicemanager - and it won\u0027t break vndservicemanager since AOSP devices install vndk libs to the vendor partition, assuming that\u0027s still the case).",
+      "range": {
+        "startLine": 1080,
+        "startChar": 0,
+        "endLine": 1084,
+        "endChar": 0
+      },
+      "revId": "17cdcfef081722d0ac95c562402d54f2bca9adc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
