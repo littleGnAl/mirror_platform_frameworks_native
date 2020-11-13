@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7bbf9a7_47bd5619",
+        "filename": "libs/vibrator/fuzzer/vibrator_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1100093
+      },
+      "writtenOn": "2020-11-13T01:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5245d652_118c8f9b",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 72
+      },
+      "revId": "3766ec155d968a01a5f3ca56d5b0c9ced2d88776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c721ec9_cfe81419",
