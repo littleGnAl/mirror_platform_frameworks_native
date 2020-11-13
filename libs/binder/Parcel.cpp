@@ -31,6 +31,7 @@
 #include <sys/resource.h>
 #include <unistd.h>
 
+
 #include <binder/Binder.h>
 #include <binder/BpBinder.h>
 #include <binder/IPCThreadState.h>
@@ -373,7 +374,7 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
 {
     status_t err;
     const uint8_t *data = parcel->mData;
-    const binder_size_t *objects = parcel->mObjects;
+    const android::binder_size_t *objects = parcel->mObjects;
     size_t size = parcel->mObjectsSize;
     int startPos = mDataPos;
     int firstIndex = -1, lastIndex = -2;
