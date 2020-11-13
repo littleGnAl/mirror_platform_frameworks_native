@@ -16,6 +16,24 @@
       "message": "LGTM, but I wondered why we can\u0027t just remove unused field first, and then add a new one when we have a need.",
       "revId": "161fe12e31919e774b4c2c84a9d350bc926f4efd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "162c5164_7d87726d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T02:30:31Z",
+      "side": 1,
+      "message": "1 - reserving it because I\u0027m very paranoid\n2 - marking as \u00270xAAAAAAAA\u0027 to try to catch any issues if a prebuilt reads this",
+      "parentUuid": "b372aa1e_2ede74a5",
+      "revId": "161fe12e31919e774b4c2c84a9d350bc926f4efd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
