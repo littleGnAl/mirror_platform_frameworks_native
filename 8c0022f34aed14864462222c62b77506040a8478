@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2111988_2b5e12fd",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T03:06:56Z",
+      "side": 1,
+      "message": "I could make this parcelable instead, and completely hide repr, but it feels like a bit of an inversion of things.",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "8c0022f34aed14864462222c62b77506040a8478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
