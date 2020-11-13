@@ -45,6 +45,29 @@
       },
       "revId": "ec5fdfb9abe8ebbee3b0bc873b4aeef6504582e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d44fdb8_df3af9fd",
+        "filename": "cmds/bugreport/bugreport.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-13T09:55:59Z",
+      "side": 1,
+      "message": "it\u0027s better to just say \"only prints a warning redirecting to bugreportz\" or something like that?",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 51
+      },
+      "revId": "ec5fdfb9abe8ebbee3b0bc873b4aeef6504582e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
