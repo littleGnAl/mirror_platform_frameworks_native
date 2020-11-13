@@ -1079,7 +1079,7 @@ sp<BBinder> the_context_object;
 
 void IPCThreadState::setTheContextObject(sp<BBinder> obj)
 {
-    the_context_object = obj;
+    the_context_object = std::move(obj);
 }
 
 status_t IPCThreadState::executeCommand(int32_t cmd)

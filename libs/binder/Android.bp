@@ -183,7 +183,6 @@ cc_library {
         "-google-default-arguments",
         "-google-explicit-constructor",
         "-google-runtime-int",
-        "-performance-unnecessary-value-param",
     ],
 }
 
