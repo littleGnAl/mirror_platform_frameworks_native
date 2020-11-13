@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ebbefa1_fed62d08",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T17:30:51Z",
+      "side": 1,
+      "message": "extra newline?",
+      "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5def03dc_8930d493",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T17:30:51Z",
+      "side": 1,
+      "message": "is this an unrelated change, and if so can you split it out? also if we change it, can we move the Parcel.h type to be in the same namespace as well?",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 61
+      },
+      "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
