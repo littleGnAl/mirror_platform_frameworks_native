@@ -46,6 +46,30 @@
       },
       "revId": "4222ac6e206810d46a96c617d5ce8ec3ecc16d37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f75b35_18406d83",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-16T18:50:53Z",
+      "side": 1,
+      "message": "I really wish we had a C++ annotation/non-ABI breaking way (e.g. gsl::not_null changes mangled name) to mark a pointer as required to be non-null for out params like this. That might make it tractable to clean up \"bad\" clients, which we\u0027d probably want to do anyway for b/28321379, even though it costs an extra (entirely stack) allocation of Parcel in the happy path for any binder transaction. I have a thing against mutable out params like \"Parcel\u0026 reply\", but it\u0027s also not an option because of prebuilts using these APIs.\n\nWe could add this, which would be closer to the actual expected semantics of this, but from a C++ quality standpoint, it doesn\u0027t actually add any guarantees, because people in-process can still mixup FLAG_ONEWAY and nullness of reply.\n\n    if (CC_UNLIKELY(reply \u003d\u003d nullptr \u0026\u0026 !(flag \u0026 FLAGS_ONEWAY)) {\n        LOG_ALWAYS_FATAL(...);\n    }\n\n\u003e local hints as to when null is/isn\u0027t expected, based on the value of `code`.\n\nThis we can\u0027t do unfortunately because the values of code are defined externally in interfaces.\n\nSo as far as a path forward here goes, I think it\u0027s best to simply disable the lint here. Fixing this null reply Parcel problem has been on my mind for a while, but it\u0027s just too tricky until we finally migrate away from manually-written binder interfaces, and even then, it may not be worth it, given alternatives at that time scale (using rust?).",
+      "parentUuid": "d8409d76_6c9d08aa",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 55
+      },
+      "revId": "4222ac6e206810d46a96c617d5ce8ec3ecc16d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
