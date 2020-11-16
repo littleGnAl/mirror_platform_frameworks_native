@@ -70,6 +70,30 @@
       },
       "revId": "4222ac6e206810d46a96c617d5ce8ec3ecc16d37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c662d1_e46898ee",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-11-16T20:17:19Z",
+      "side": 1,
+      "message": "`__attribute__((__nonnull__))` doesn\u0027t change the ABI, but it might change code for surrounding blocks, since you can use this to reason about other NULL checks that the calling code has.",
+      "parentUuid": "31f75b35_18406d83",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 55
+      },
+      "revId": "4222ac6e206810d46a96c617d5ce8ec3ecc16d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
