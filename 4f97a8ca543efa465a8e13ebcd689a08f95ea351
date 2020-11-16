@@ -22,6 +22,30 @@
       },
       "revId": "4f97a8ca543efa465a8e13ebcd689a08f95ea351",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e61a7f_e2a95346",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-16T23:00:37Z",
+      "side": 1,
+      "message": "The same reason as libbinder. I got a few number of errors from libbase, libutils, etc. They shall be fixed in a follow-up change.",
+      "parentUuid": "5a091c60_97f46fcc",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "4f97a8ca543efa465a8e13ebcd689a08f95ea351",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
