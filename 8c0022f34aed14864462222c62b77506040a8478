@@ -152,6 +152,30 @@
       },
       "revId": "8c0022f34aed14864462222c62b77506040a8478",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b78ee613_c703dffa",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-16T00:50:33Z",
+      "side": 1,
+      "message": "I in fact imagined something like ProtocolInfo. But Category anyway reads better than Summary.",
+      "parentUuid": "b3c31600_e3bb57ea",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "8c0022f34aed14864462222c62b77506040a8478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
