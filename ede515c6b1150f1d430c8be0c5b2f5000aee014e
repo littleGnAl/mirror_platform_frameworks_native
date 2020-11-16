@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de5b009_0426e387",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-16T06:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfcf4e5c_c2da294c",
+      "range": {
+        "startLine": 2294,
+        "startChar": 19,
+        "endLine": 2294,
+        "endChar": 49
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7da59299_3ae03c57",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-13T14:27:30Z",
       "side": 1,
       "message": "nit: slightly more concise and readable to write\n\nbool do_text_file \u003d !ds.FinishZipFile();\nif (do_text_file) {\n  MYLOGE(\"Failed to finish zip file; sending text bugreport instead\\n\");\n}",
+      "range": {
+        "startLine": 2452,
+        "startChar": 4,
+        "endLine": 2452,
+        "endChar": 29
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c2a7a1_e1c8ee19",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2452,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-16T06:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da59299_3ae03c57",
       "range": {
         "startLine": 2452,
         "startChar": 4,
@@ -95,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "647f96a9_a618c45f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2586,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-16T06:50:33Z",
+      "side": 1,
+      "message": "Ack.\nSorry, I\u0027m not get the point why 3 key codes usage would break it since do_add_date \u0026 do_zip_file are default behavoir. Is it because these 2 cases do not specify `-p` option?\nhttps://source.corp.google.com/search?q\u003d%22system%2Fbin%2Fdumpstate%22%20package:android$%20f:.rc%20-%22-z%22\u0026sq\u003dpackage:android",
+      "parentUuid": "18036189_6c0ce41b",
+      "range": {
+        "startLine": 2583,
+        "startChar": 12,
+        "endLine": 2586,
+        "endChar": 38
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9b796fd_cad6fc62",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 12
@@ -139,6 +211,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66fe2660_d47c6bb9",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2774,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-16T06:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "410f4918_05538e4c",
+      "range": {
+        "startLine": 2774,
+        "startChar": 50,
+        "endLine": 2774,
+        "endChar": 68
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ba7b19_3a4d2d2b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2774,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-16T06:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9b796fd_cad6fc62",
+      "range": {
+        "startLine": 2774,
+        "startChar": 18,
+        "endLine": 2774,
+        "endChar": 36
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "324dc788_b887f7ab",
@@ -152,6 +272,30 @@
       "writtenOn": "2020-11-13T14:27:30Z",
       "side": 1,
       "message": "why not otherwise?",
+      "range": {
+        "startLine": 2786,
+        "startChar": 11,
+        "endLine": 2786,
+        "endChar": 63
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3de79c5_f14842ce",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2786,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-16T06:50:33Z",
+      "side": 1,
+      "message": "The ZipWriter will not work as expected and add entries I think since the zip file not able to open.",
+      "parentUuid": "324dc788_b887f7ab",
       "range": {
         "startLine": 2786,
         "startChar": 11,
@@ -185,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0eadeee_c15943c6",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2950,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-16T06:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2969dbbf_2f80fefb",
+      "range": {
+        "startLine": 2949,
+        "startChar": 8,
+        "endLine": 2950,
+        "endChar": 14
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c606941_1573db83",
@@ -208,6 +376,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da0beb7_ac2cbdb3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 3023,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-16T06:50:33Z",
+      "side": 1,
+      "message": "Removed. No thread pool change, but always output to a zipped file.",
+      "parentUuid": "3c606941_1573db83",
+      "range": {
+        "startLine": 3021,
+        "startChar": 0,
+        "endLine": 3023,
+        "endChar": 17
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a210bf8b_db147d0f",
@@ -221,6 +413,30 @@
       "writtenOn": "2020-11-13T14:27:30Z",
       "side": 1,
       "message": "I think the only user for dumpstate was \u0027adb shell bugreport\u0027, which you are planning to remove in https://r.android.com/1448616. Please make a note to remove this too.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbce728_72a88575",
+        "filename": "cmds/dumpstate/dumpstate.rc",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-16T06:50:33Z",
+      "side": 1,
+      "message": "In previous change https://android-review.googlesource.com/c/platform/frameworks/native/+/1448617/16/cmds/bugreportz/main.cpp, this service was reused to stream the zipped bugreport. The one planed to be removed is dumpstatez when binder call take place. Maybe it\u0027s worth a comment?",
+      "parentUuid": "a210bf8b_db147d0f",
       "range": {
         "startLine": 6,
         "startChar": 0,
