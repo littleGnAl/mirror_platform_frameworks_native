@@ -22,6 +22,30 @@
       },
       "revId": "4222ac6e206810d46a96c617d5ce8ec3ecc16d37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8409d76_6c9d08aa",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2020-11-16T18:06:49Z",
+      "side": 1,
+      "message": "\u003e Can you get more information from the analyzer that says how null can show up here\n\ni think the `reply !\u003d nullptr` check above is what\u0027s upsetting the analyzer. if this really shouldn\u0027t happen, we can always ignore the complaint, but it might be good to have some local hints as to when null is/isn\u0027t expected, based on the value of `code`.",
+      "parentUuid": "cc5f44d5_8a0512dc",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 55
+      },
+      "revId": "4222ac6e206810d46a96c617d5ce8ec3ecc16d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
