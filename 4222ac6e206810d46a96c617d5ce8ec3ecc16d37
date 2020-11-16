@@ -118,6 +118,30 @@
       },
       "revId": "4222ac6e206810d46a96c617d5ce8ec3ecc16d37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3a83539_ff701892",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2020-11-16T21:17:35Z",
+      "side": 1,
+      "message": "yeah, you can try nonnull; it\u0027ll give simple warnings: https://godbolt.org/z/dd7o1o. that said, if a certain value of `code` allows the param to be null, that\u0027s not going to DTRT. (if LLVM sees code like:\n\n```\nvoid baz(void *) __attribute__((nonnull));\nvoid foo(void *bar) {\n  if (bar \u003d\u003d nullptr) printf(\"hi!\\n\");\n  baz(bar);\n}\n```\n\nit\u0027s allowed to optimize the printf out, since it\u0027s undefined behavior if `bar` is ever null).\n\nif we want to add some form of static detection here, we can have something like:\n\n__attribute__((diagnose_if(reply \u003d\u003d nullptr \u0026\u0026 !(flags \u0026 FLAGS_ONEWAY), \"error\", \"FLAGS_ONEWAY must be set given a null reply\")))\n\non the function declaration, but that\u0027s just going to warn people in trivial cases of brokenness; the run-time behavior will remain unchanged.\n\ni\u0027m happy to just abandon this CL if we\u0027re okay with crashing on a NULL pointer here. the goal isn\u0027t to reach 0 analyzer complaints; it\u0027s more to make sure that they\u0027re all at least glanced at",
+      "parentUuid": "7b5cd3a8_30636276",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 55
+      },
+      "revId": "4222ac6e206810d46a96c617d5ce8ec3ecc16d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
