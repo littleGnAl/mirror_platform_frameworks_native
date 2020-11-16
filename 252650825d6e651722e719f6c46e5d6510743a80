@@ -74,6 +74,30 @@
       },
       "revId": "252650825d6e651722e719f6c46e5d6510743a80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee95b84d_fae1a85d",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-16T06:43:38Z",
+      "side": 1,
+      "message": "This should be a follow-up in a different context. When I was without this filter, I got a lot of warnings.",
+      "parentUuid": "54dac321_80064d32",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 6
+      },
+      "revId": "252650825d6e651722e719f6c46e5d6510743a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
