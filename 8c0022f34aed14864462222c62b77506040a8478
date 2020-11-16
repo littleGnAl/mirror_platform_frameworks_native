@@ -176,6 +176,30 @@
       },
       "revId": "8c0022f34aed14864462222c62b77506040a8478",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21bd3ba2_af59d45f",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-16T16:13:06Z",
+      "side": 1,
+      "message": "The version is more like ProtocolInfo, but I don\u0027t think that the stability level should affect the protocol. Anyway - the name is entirely internal to libbinder, we can change it at anytime.",
+      "parentUuid": "b78ee613_c703dffa",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "8c0022f34aed14864462222c62b77506040a8478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
