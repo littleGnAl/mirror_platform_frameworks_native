@@ -16,6 +16,24 @@
       "message": "Status.h is not changed since some netd code uses it. Luke, any interest in splitting up that code? (e.g. maybe separate BinderUtil.h files, or supporting both. libbinder_ndk/libbinder usage isn\u0027t mutually exclusive anyway).",
       "revId": "c7a871e8c7615f1076a704c01bc23bbbec498f2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b681f7_15d54cdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2020-11-16T13:26:37Z",
+      "side": 1,
+      "message": "Noted, I\u0027ll try to clean that up.",
+      "parentUuid": "8ebb1be5_dac8239c",
+      "revId": "c7a871e8c7615f1076a704c01bc23bbbec498f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
