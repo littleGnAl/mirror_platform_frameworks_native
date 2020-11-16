@@ -33,5 +33,5 @@ AParcel* AParcel_fromJavaParcel(JNIEnv* env, jobject jbinder) {
         return nullptr;
     }
 
-    return new AParcel(nullptr /*binder*/, parcel, false /*shouldOwn*/);
+    return new AParcel(parcel, false /*shouldOwn*/);
 }

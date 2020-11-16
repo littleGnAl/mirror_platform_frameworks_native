@@ -27,10 +27,12 @@ struct AParcel {
     const ::android::Parcel* get() const { return mParcel; }
     ::android::Parcel* get() { return mParcel; }
 
-    explicit AParcel(const AIBinder* binder)
-        : AParcel(binder, new ::android::Parcel, true /*owns*/) {}
-    AParcel(const AIBinder* binder, ::android::Parcel* parcel, bool owns)
-        : mBinder(binder), mParcel(parcel), mOwns(owns) {}
+    explicit AParcel(AIBinder* binder) : AParcel(new ::android::Parcel, true /*owns*/) {
+        if (binder != nullptr) {
+            mParcel->setAssociatedBinder(binder->getBinder());
+        }
+    }
+    AParcel(::android::Parcel* parcel, bool owns) : mParcel(parcel), mOwns(owns) {}
 
     ~AParcel() {
         if (mOwns) {
@@ -38,17 +40,11 @@ struct AParcel {
         }
     }
 
-    static const AParcel readOnly(const AIBinder* binder, const ::android::Parcel* parcel) {
-        return AParcel(binder, const_cast<::android::Parcel*>(parcel), false);
+    static const AParcel readOnly(const ::android::Parcel* parcel) {
+        return AParcel(const_cast<::android::Parcel*>(parcel), false);
     }
 
-    const AIBinder* getBinder() { return mBinder; }
-
    private:
-    // This object is associated with a calls to a specific AIBinder object. This is used for sanity
-    // checking to make sure that a parcel is one that is expected.
-    const AIBinder* mBinder;
-
     ::android::Parcel* mParcel;
     bool mOwns;
 };

@@ -509,6 +509,19 @@ void Parcel::markSensitive() const
     mDeallocZero = true;
 }
 
+void Parcel::setAssociatedBinder(const sp<IBinder>& binder) {
+    LOG_ALWAYS_FATAL_IF(binder == nullptr, "Cannot clear associated binder.");
+    LOG_ALWAYS_FATAL_IF(mAssociatedBinder != nullptr,
+                        "Can only set one associated binder.");
+    LOG_ALWAYS_FATAL_IF(mData != nullptr,
+                        "Can only associate binder with empty parcelable.");
+    mAssociatedBinder = binder;
+}
+
+sp<IBinder> Parcel::getAssociatedBinder() const {
+    return mAssociatedBinder;
+}
+
 void Parcel::updateWorkSourceRequestHeaderPosition() const {
     // Only update the request headers once. We only want to point
     // to the first headers read/written.
@@ -2514,6 +2527,7 @@ void Parcel::ipcSetDataReference(const uint8_t* data, size_t dataSize,
     mNextObjectHint = 0;
     mObjectsSorted = false;
     mOwner = relFunc;
+    mAssociatedBinder = nullptr;
     for (size_t i = 0; i < mObjectsSize; i++) {
         binder_size_t offset = mObjects[i];
         if (offset < minOffset) {

@@ -90,6 +90,15 @@ public:
     // In order to verify this, heap dumps should be used.
     void                markSensitive() const;
 
+    // This is the binder object associated with a Parcel which is used for
+    // transactions (either the binder for a 'data' Parcel to a service or
+    // the binder which a 'reply' Parcel is returned from. This must be called
+    // before any data is written to a Parcel object. When this is unset,
+    // the format of Parcel data is implementation-defined. This must only
+    // be called once.
+    void                setAssociatedBinder(const sp<IBinder>& binder);
+    sp<IBinder>         getAssociatedBinder() const;
+
     // Writes the RPC header.
     status_t            writeInterfaceToken(const String16& interface);
     status_t            writeInterfaceToken(const char16_t* str, size_t len);
@@ -607,8 +616,7 @@ private:
 
     release_func        mOwner;
 
-    // TODO(167966510): reserved for binder/version/stability
-    void*               mReserved = reinterpret_cast<void*>(0xAAAAAAAA);
+    sp<IBinder>         mAssociatedBinder;
 
     class Blob {
     public:

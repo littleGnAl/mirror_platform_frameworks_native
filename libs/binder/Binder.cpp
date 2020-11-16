@@ -173,8 +173,18 @@ status_t BBinder::transact(
 {
     data.setDataPosition(0);
 
-    if (reply != nullptr && (flags & FLAG_CLEAR_BUF)) {
-        reply->markSensitive();
+    if (reply != nullptr) {
+        if (flags & FLAG_CLEAR_BUF) {
+            reply->markSensitive();
+        }
+
+        // FIXME: need version of 'data' format, which should be:
+        //
+        //   min('this' version, newest supported version of client)
+        //
+        // If the client is older, we wouldn't be returning a readable version
+        // version of the parcelable here.
+        reply->setAssociatedBinder(this);
     }
 
     status_t err = NO_ERROR;

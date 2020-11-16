@@ -176,8 +176,8 @@ status_t ABBinder::onTransact(transaction_code_t code, const Parcel& data, Parce
             return STATUS_BAD_TYPE;
         }
 
-        const AParcel in = AParcel::readOnly(this, &data);
-        AParcel out = AParcel(this, reply, false /*owns*/);
+        const AParcel in = AParcel::readOnly(&data);
+        AParcel out = AParcel(reply, false /*owns*/);
 
         binder_status_t status = getClass()->onTransact(this, code, &in, &out);
         return PruneStatusT(status);
@@ -622,9 +622,13 @@ binder_status_t AIBinder_transact(AIBinder* binder, transaction_code_t code, APa
         return STATUS_UNEXPECTED_NULL;
     }
 
-    if ((*in)->getBinder() != binder) {
+    // not calling lookupOrCreateFromBinder here, b/c it requires lock
+    const sp<IBinder>& associatedBinder = (*in)->get()->getAssociatedBinder();
+    if (associatedBinder != binder->getBinder()) {
         LOG(ERROR) << __func__ << ": parcel is associated with binder object " << binder
-                   << " but called with " << (*in)->getBinder();
+                   << " (internal: " << binder->getBinder().get() << ") but called with "
+                   << ABpBinder::lookupOrCreateFromBinder(associatedBinder).get()
+                   << " (internal: " << associatedBinder.get() << ")";
         return STATUS_BAD_VALUE;
     }
 
