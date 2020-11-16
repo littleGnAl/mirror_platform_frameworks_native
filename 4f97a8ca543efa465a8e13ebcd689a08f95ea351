@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a091c60_97f46fcc",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-16T16:34:41Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "4f97a8ca543efa465a8e13ebcd689a08f95ea351",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
