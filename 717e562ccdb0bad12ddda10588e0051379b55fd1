@@ -82,6 +82,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60fbafa4_c6fac9b4",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-16T01:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ebbefa1_fed62d08",
+      "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05f5bf7_dcc50b91",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-16T01:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9347e2ed_51085f59",
+      "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5def03dc_8930d493",
@@ -136,6 +172,48 @@
       "side": 1,
       "message": "prefer https://android-review.googlesource.com/c/platform/frameworks/native/+/1498224",
       "parentUuid": "5def03dc_8930d493",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 61
+      },
+      "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2fdf1b2_aef5b664",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-16T01:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0787ca39_5d684c16",
+      "revId": "717e562ccdb0bad12ddda10588e0051379b55fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bfafcc_9f27ab40",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-16T01:27:14Z",
+      "side": 1,
+      "message": "Sorry, this is a leftover from my experiments. Removed.",
+      "parentUuid": "4ed55605_b62b543b",
       "range": {
         "startLine": 377,
         "startChar": 0,
