@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "332c450e_0e76df66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-11-17T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d8695b_7a957f63",
+      "revId": "3766ec155d968a01a5f3ca56d5b0c9ced2d88776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39fa7c69_2f4ac6a8",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-13T01:00:10Z",
       "side": 1,
       "message": "Explain not fuzzing the other side of binder because it is java",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 79
+      },
+      "revId": "3766ec155d968a01a5f3ca56d5b0c9ced2d88776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ba01a1_20952cca",
+        "filename": "libs/vibrator/fuzzer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-11-17T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39fa7c69_2f4ac6a8",
       "range": {
         "startLine": 4,
         "startChar": 0,
@@ -101,6 +143,30 @@
       "writtenOn": "2020-11-11T11:14:44Z",
       "side": 1,
       "message": "I think you might need to do parcel.setDataPosition(0) before reading from this parcel?",
+      "range": {
+        "startLine": 113,
+        "startChar": 18,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "3766ec155d968a01a5f3ca56d5b0c9ced2d88776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5579885_350eeccd",
+        "filename": "libs/vibrator/fuzzer/vibrator_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-11-17T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c721ec9_cfe81419",
       "range": {
         "startLine": 113,
         "startChar": 18,
