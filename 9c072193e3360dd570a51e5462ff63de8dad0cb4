@@ -52,6 +52,24 @@
       "parentUuid": "67616fb9_8a610f23",
       "revId": "9c072193e3360dd570a51e5462ff63de8dad0cb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2091a0_25fee08b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-17T23:16:34Z",
+      "side": 1,
+      "message": "You wanted AIBinder_Class_getDescriptor to return a char* string, so we need to store a copy of the original interface descriptor string, right? I figured that should be split out into its own CL.",
+      "parentUuid": "8098898f_af302270",
+      "revId": "9c072193e3360dd570a51e5462ff63de8dad0cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
