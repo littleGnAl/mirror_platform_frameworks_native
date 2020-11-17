@@ -70,6 +70,24 @@
       "parentUuid": "8098898f_af302270",
       "revId": "9c072193e3360dd570a51e5462ff63de8dad0cb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55642915_03c8e6ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-17T23:29:28Z",
+      "side": 1,
+      "message": "It probably does make sense to add the API as part of a separate change, but I assumed you were going to do this.",
+      "parentUuid": "2d2091a0_25fee08b",
+      "revId": "9c072193e3360dd570a51e5462ff63de8dad0cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
