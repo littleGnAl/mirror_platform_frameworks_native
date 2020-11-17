@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32973a40_d587655e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2586,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-17T23:55:33Z",
+      "side": 1,
+      "message": "In original DumpOptionsTest:InitializeDefaultBugReport, its argv is the same to the 3 keycode\u0027s options, \"-d -p -z\". I\u0027ll restore that. Is this what you want?",
+      "parentUuid": "3cec7b83_a29be069",
+      "range": {
+        "startLine": 2583,
+        "startChar": 12,
+        "endLine": 2586,
+        "endChar": 38
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9b796fd_cad6fc62",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 12
@@ -344,6 +368,30 @@
       "side": 1,
       "message": "zip writer is used whether we are streaming or not. so should we not return early always if PrepareToWriteToFile fails?",
       "parentUuid": "f3de79c5_f14842ce",
+      "range": {
+        "startLine": 2786,
+        "startChar": 11,
+        "endLine": 2786,
+        "endChar": 63
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9c312c_a72a5ca9",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2786,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-17T23:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecf4db61_5e34d5f2",
       "range": {
         "startLine": 2786,
         "startChar": 11,
@@ -532,6 +580,30 @@
       "writtenOn": "2020-11-13T14:27:30Z",
       "side": 1,
       "message": "can you add a new test with control socket? maybe use a bugreport type that would be quick, like wifi",
+      "range": {
+        "startLine": 495,
+        "startChar": 29,
+        "endLine": 495,
+        "endChar": 46
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da5d77b_86c218c4",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-17T23:55:33Z",
+      "side": 1,
+      "message": "Done. see ZippedBugReportStreamTest",
+      "parentUuid": "c4cff89f_ada48dc6",
       "range": {
         "startLine": 495,
         "startChar": 29,
