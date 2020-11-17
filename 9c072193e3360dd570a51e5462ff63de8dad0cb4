@@ -16,6 +16,24 @@
       "message": "Is there anything blocking this from landing?  It would be very nice if it could do so soon.",
       "revId": "9c072193e3360dd570a51e5462ff63de8dad0cb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67616fb9_8a610f23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-17T22:50:55Z",
+      "side": 1,
+      "message": "As I understand the status, changes need to be made to libbinder_ndk internals. I can take a stab at those so we can get this landed.",
+      "parentUuid": "456f15b7_02937917",
+      "revId": "9c072193e3360dd570a51e5462ff63de8dad0cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
