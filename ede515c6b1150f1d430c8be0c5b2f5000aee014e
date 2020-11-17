@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cec7b83_a29be069",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2586,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-17T12:19:56Z",
+      "side": 1,
+      "message": "sorry, I misread the code as returning an error for -d and -z. This looks fine, but can you add a test in commit message for the keycode behavior?",
+      "parentUuid": "647f96a9_a618c45f",
+      "range": {
+        "startLine": 2583,
+        "startChar": 12,
+        "endLine": 2586,
+        "endChar": 38
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9b796fd_cad6fc62",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 12
@@ -308,6 +332,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecf4db61_5e34d5f2",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2786,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-17T12:19:56Z",
+      "side": 1,
+      "message": "zip writer is used whether we are streaming or not. so should we not return early always if PrepareToWriteToFile fails?",
+      "parentUuid": "f3de79c5_f14842ce",
+      "range": {
+        "startLine": 2786,
+        "startChar": 11,
+        "endLine": 2786,
+        "endChar": 63
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2969dbbf_2f80fefb",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 12
@@ -437,6 +485,30 @@
       "side": 1,
       "message": "In previous change https://android-review.googlesource.com/c/platform/frameworks/native/+/1448617/16/cmds/bugreportz/main.cpp, this service was reused to stream the zipped bugreport. The one planed to be removed is dumpstatez when binder call take place. Maybe it\u0027s worth a comment?",
       "parentUuid": "a210bf8b_db147d0f",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ddf819_95ec618c",
+        "filename": "cmds/dumpstate/dumpstate.rc",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-17T12:19:56Z",
+      "side": 1,
+      "message": "ah I skipped that CL. LGTM",
+      "parentUuid": "acbce728_72a88575",
       "range": {
         "startLine": 6,
         "startChar": 0,
