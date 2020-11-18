@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec4eca7f_585f78be",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-18T02:08:01Z",
+      "side": 1,
+      "message": "-\u003e https://android-review.googlesource.com/c/platform/frameworks/native/+/1501005",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 79
+      },
+      "revId": "b30f3894405ad166040af38c316467604f236d3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
