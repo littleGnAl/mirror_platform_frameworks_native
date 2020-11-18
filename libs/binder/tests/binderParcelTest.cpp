@@ -112,3 +112,35 @@ TEST_READ_WRITE_INVERSE(char16_t, Char, {u'a', u'\0'});
 TEST_READ_WRITE_INVERSE(int8_t, Byte, {-1, 0, 1});
 TEST_READ_WRITE_INVERSE(String8, String8, {String8(), String8("a"), String8("asdf")});
 TEST_READ_WRITE_INVERSE(String16, String16, {String16(), String16("a"), String16("asdf")});
+
+// Template stress test: readData and writeData.
+// Advanced parceling of a 3D vector.
+TEST(Parcel, ComplexVector3D) {
+    std::vector<std::vector<std::vector<int32_t>>> v1 {
+        { {1}, {2, 3}, {4} },
+        {},
+        { {10}, {20}, {30, 40} },
+    };
+    Parcel p1;
+    p1.writeData(v1);
+    decltype(v1) v2;
+    p1.setDataPosition(0);
+    p1.readData(&v2);
+    ASSERT_EQ(v1, v2);
+}
+
+// Template stress test: readData and writeData.
+// Advanced parceling of mixed shared pointers.
+TEST(Parcel, ComplexPointerType) {
+    Parcel p1;
+    auto sp1 = std::make_shared<std::vector<std::shared_ptr<std::vector<int>>>>(3);
+    (*sp1)[2] = std::make_shared<std::vector<int>>(3);
+    (*(*sp1)[2])[2] = 2;
+    p1.writeData(sp1);
+    decltype(sp1) sp2;
+    p1.setDataPosition(0);
+    p1.readData(&sp2);
+    ASSERT_EQ((*sp1)[0], (*sp2)[0]); // nullptr
+    ASSERT_EQ((*sp1)[1], (*sp2)[1]); // nullptr
+    ASSERT_EQ(*(*sp1)[2], *(*sp2)[2]); // { 0, 0, 2}
+}
