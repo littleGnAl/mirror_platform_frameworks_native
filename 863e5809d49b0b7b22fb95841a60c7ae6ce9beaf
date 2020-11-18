@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021e24a1_6877c1f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-18T18:32:05Z",
+      "side": 1,
+      "message": "this should say remove, instead of deprecate, for what this CL does\n\nbut this is breaking prebuilts downstream, maybe mark them all as deprecated for now, so we just get build errors. We can remove them in a few years - or remove only the ones that aren\u0027t relied on by prebuilts.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "863e5809d49b0b7b22fb95841a60c7ae6ce9beaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
