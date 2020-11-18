@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19560fd_1e144526",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-18T12:36:32Z",
+      "side": 1,
+      "message": "nit: char*",
+      "range": {
+        "startLine": 194,
+        "startChar": 22,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "revId": "82a4aaa63e23a43c54c00549b5ebfa210f6d01c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74de898_df34ad63",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-18T12:36:32Z",
+      "side": 1,
+      "message": "can we move to cpp, forward declare and do field initialization in constructor?",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 37
+      },
+      "revId": "82a4aaa63e23a43c54c00549b5ebfa210f6d01c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24adc20_a041209c",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-18T12:36:32Z",
+      "side": 1,
+      "message": "open_socket_fn_?",
+      "range": {
+        "startLine": 569,
+        "startChar": 37,
+        "endLine": 569,
+        "endChar": 47
+      },
+      "revId": "82a4aaa63e23a43c54c00549b5ebfa210f6d01c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d494de3c_a2210db7",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-18T12:36:32Z",
+      "side": 1,
+      "message": "nit: VerifyEntry?",
+      "range": {
+        "startLine": 1021,
+        "startChar": 9,
+        "endLine": 1021,
+        "endChar": 17
+      },
+      "revId": "82a4aaa63e23a43c54c00549b5ebfa210f6d01c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
