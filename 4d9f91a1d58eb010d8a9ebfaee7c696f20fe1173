@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f6718f_dec428bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-18T18:30:28Z",
+      "side": 1,
+      "message": "(remove this CL from the topic and merge independently?)",
+      "revId": "4d9f91a1d58eb010d8a9ebfaee7c696f20fe1173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
