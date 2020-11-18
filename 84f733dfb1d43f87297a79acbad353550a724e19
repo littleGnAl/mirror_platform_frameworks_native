@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3dbc3480_507408e9",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-18T10:13:25Z",
+      "side": 1,
+      "message": "Steven, I think this must not be available to product, right?",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "84f733dfb1d43f87297a79acbad353550a724e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "820a63d3_4564feb2",
         "filename": "libs/gui/Android.bp",
         "patchSetId": 1
