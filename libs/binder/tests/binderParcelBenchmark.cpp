@@ -32,7 +32,7 @@ void writeVector(android::Parcel &p, const V<T, Args...> &v) {
     } else if constexpr (std::is_same_v<T, int64_t>) {
         p.writeInt64Vector(v);
     } else {
-        // TODO: assert
+        static_assert(android::Parcel::dependent_false_v<V<T>>);
     }
 }
 
@@ -49,7 +49,7 @@ void readVector(android::Parcel &p, V<T, Args...> *v) {
     } else if constexpr (std::is_same_v<T, int64_t>) {
         p.readInt64Vector(v);
     } else {
-        // TODO: assert
+        static_assert(android::Parcel::dependent_false_v<V<T>>);
     }
 }
 
@@ -63,6 +63,7 @@ static void VectorArgs(benchmark::internal::Benchmark* b) {
 enum MODE_FLAG {
     MODE_FLAG_NONE = 0,
     MODE_FLAG_VECTOR_WRITE_ALLOC = (1 << 0),
+    MODE_FLAG_TEMPLATE = (1 << 1),
 };
 
 template <typename T, enum MODE_FLAG Mode = MODE_FLAG_NONE>
@@ -76,13 +77,25 @@ static void BM_ParcelVector(benchmark::State& state) {
         p.setDataPosition(0);
 
         if constexpr ((Mode & MODE_FLAG_VECTOR_WRITE_ALLOC) != 0) {
-            writeVector(p, std::vector<T>(v1.begin(), v1.end()));
+            if constexpr ((Mode & MODE_FLAG_TEMPLATE) != 0) {
+                p.writeData(std::vector<T>(v1.begin(), v1.end()));
+            } else  /* constexpr */ {
+                writeVector(p, std::vector<T>(v1.begin(), v1.end()));
+            }
         } else  /* constexpr */ {
-            writeVector(p, v1);
+            if constexpr ((Mode & MODE_FLAG_TEMPLATE) != 0) {
+                p.writeData(v1);
+            } else  /* constexpr */ {
+                writeVector(p, v1);
+            }
         }
 
         p.setDataPosition(0);
-        readVector(p, &v2);
+        if constexpr ((Mode & MODE_FLAG_TEMPLATE) != 0) {
+            p.readData(&v2);
+        } else /* constexpr */ {
+            readVector(p, &v2);
+        }
 
         benchmark::DoNotOptimize(v2[0]);
         benchmark::ClobberMemory();
@@ -96,56 +109,56 @@ static void BM_ParcelVector(benchmark::State& state) {
 
   Results on Crosshatch Pixel 3XL
 
-  #BM_BoolVector/1              40 ns      40 ns     17182394
-  #BM_BoolVector/2              46 ns      46 ns     14989422
-  #BM_BoolVector/4              67 ns      66 ns     10919166
-  #BM_BoolVector/8             113 ns     113 ns      5936338
-  #BM_BoolVector/16            179 ns     178 ns      3912380
-  #BM_BoolVector/32            329 ns     328 ns      2123368
-  #BM_BoolVector/64            614 ns     613 ns      1141812
-  #BM_BoolVector/128          1205 ns    1201 ns       581863
-  #BM_BoolVector/256          2384 ns    2376 ns       294609
-  #BM_BoolVector/512          4712 ns    4697 ns       148909
-  #BM_ByteVector/1              53 ns      52 ns     13190565
-  #BM_ByteVector/2              53 ns      52 ns     13238600
-  #BM_ByteVector/4              50 ns      50 ns     13910610
-  #BM_ByteVector/8              50 ns      50 ns     13880842
-  #BM_ByteVector/16             50 ns      50 ns     13955011
-  #BM_ByteVector/32             51 ns      51 ns     13667509
-  #BM_ByteVector/64             53 ns      53 ns     13011191
-  #BM_ByteVector/128            64 ns      64 ns     10821745
-  #BM_ByteVector/256            82 ns      81 ns      8532390
-  #BM_ByteVector/512           119 ns     119 ns      5863150
-  #BM_CharVector/1              32 ns      32 ns     21801728
-  #BM_CharVector/2              38 ns      38 ns     18042947
-  #BM_CharVector/4              53 ns      53 ns     13088993
-  #BM_CharVector/8              82 ns      82 ns      8494995
-  #BM_CharVector/16            166 ns     166 ns      4214415
-  #BM_CharVector/32            279 ns     278 ns      2514035
-  #BM_CharVector/64            516 ns     515 ns      1355715
-  #BM_CharVector/128           990 ns     987 ns       708800
-  #BM_CharVector/256          1940 ns    1934 ns       361514
-  #BM_CharVector/512          3835 ns    3824 ns       182963
-  #BM_Int32Vector/1             31 ns      31 ns     22001800
-  #BM_Int32Vector/2             39 ns      39 ns     17862253
-  #BM_Int32Vector/4             52 ns      52 ns     13261291
-  #BM_Int32Vector/8             79 ns      79 ns      8784882
-  #BM_Int32Vector/16           159 ns     159 ns      4392584
-  #BM_Int32Vector/32           261 ns     260 ns      2689754
-  #BM_Int32Vector/64           483 ns     482 ns      1449260
-  #BM_Int32Vector/128          919 ns     916 ns       763385
-  #BM_Int32Vector/256         1811 ns    1805 ns       387517
-  #BM_Int32Vector/512         3586 ns    3575 ns       195929
-  #BM_Int64Vector/1             31 ns      31 ns     22528540
-  #BM_Int64Vector/2             39 ns      39 ns     17696383
-  #BM_Int64Vector/4             53 ns      53 ns     13108217
-  #BM_Int64Vector/8             81 ns      81 ns      8572063
-  #BM_Int64Vector/16           167 ns     167 ns      4185350
-  #BM_Int64Vector/32           280 ns     279 ns      2506180
-  #BM_Int64Vector/64           523 ns     522 ns      1342483
-  #BM_Int64Vector/128          998 ns     995 ns       703750
-  #BM_Int64Vector/256         1935 ns    1929 ns       362350
-  #BM_Int64Vector/512         3831 ns    3819 ns       183145
+  #BM_BoolVector/1                   40 ns      40 ns     17137781
+  #BM_BoolVector/2                   51 ns      51 ns     13636972
+  #BM_BoolVector/4                   69 ns      69 ns      9918944
+  #BM_BoolVector/8                  104 ns     104 ns      6710353
+  #BM_BoolVector/16                 183 ns     182 ns      3835665
+  #BM_BoolVector/32                 335 ns     334 ns      2094514
+  #BM_BoolVector/64                 607 ns     605 ns      1154455
+  #BM_BoolVector/128               1160 ns    1157 ns       604437
+  #BM_BoolVector/256               2274 ns    2267 ns       308954
+  #BM_BoolVector/512               4491 ns    4478 ns       156368
+  #BM_ByteVector/1                   39 ns      39 ns     17933684
+  #BM_ByteVector/2                   39 ns      39 ns     17921291
+  #BM_ByteVector/4                   37 ns      37 ns     18618946
+  #BM_ByteVector/8                   37 ns      37 ns     18541785
+  #BM_ByteVector/16                  36 ns      36 ns     19169622
+  #BM_ByteVector/32                  37 ns      37 ns     18591571
+  #BM_ByteVector/64                  39 ns      39 ns     17824057
+  #BM_ByteVector/128                 51 ns      51 ns     13587053
+  #BM_ByteVector/256                 67 ns      67 ns     10344541
+  #BM_ByteVector/512                105 ns     105 ns      6625873
+  #BM_CharVector/1                   39 ns      39 ns     17671485
+  #BM_CharVector/2                   40 ns      40 ns     17314832
+  #BM_CharVector/4                   50 ns      50 ns     10000000
+  #BM_CharVector/8                   66 ns      66 ns     10534681
+  #BM_CharVector/16                  96 ns      95 ns      7303046
+  #BM_CharVector/32                 156 ns     155 ns      4487311
+  #BM_CharVector/64                 277 ns     276 ns      2519769
+  #BM_CharVector/128                521 ns     520 ns      1346295
+  #BM_CharVector/256               1007 ns    1004 ns       697298
+  #BM_CharVector/512               1977 ns    1971 ns       355323
+  #BM_Int32Vector/1                  39 ns      38 ns     17946993
+  #BM_Int32Vector/2                  39 ns      39 ns     17922573
+  #BM_Int32Vector/4                  38 ns      38 ns     18099786
+  #BM_Int32Vector/8                  39 ns      39 ns     17772561
+  #BM_Int32Vector/16                 40 ns      40 ns     17510684
+  #BM_Int32Vector/32                 53 ns      52 ns     13236229
+  #BM_Int32Vector/64                 68 ns      68 ns     10236209
+  #BM_Int32Vector/128               106 ns     105 ns      6610647
+  #BM_Int32Vector/256               178 ns     178 ns      3919426
+  #BM_Int32Vector/512               321 ns     320 ns      2183026
+  #BM_Int64Vector/1                  39 ns      39 ns     17882427
+  #BM_Int64Vector/2                  38 ns      38 ns     18129104
+  #BM_Int64Vector/4                  39 ns      39 ns     17739630
+  #BM_Int64Vector/8                  41 ns      41 ns     16911019
+  #BM_Int64Vector/16                 52 ns      52 ns     13261684
+  #BM_Int64Vector/32                 68 ns      68 ns     10218148
+  #BM_Int64Vector/64                106 ns     105 ns      6610019
+  #BM_Int64Vector/128               179 ns     178 ns      3924231
+  #BM_Int64Vector/256               322 ns     321 ns      2178794
+  #BM_Int64Vector/512               600 ns     598 ns      1161070
 */
 
 static void BM_BoolVector(benchmark::State& state) {
@@ -175,62 +188,148 @@ BENCHMARK(BM_Int32Vector)->Apply(VectorArgs);
 BENCHMARK(BM_Int64Vector)->Apply(VectorArgs);
 
 /*
+  Parcel vector write than read.
+  The read and write vectors are fixed, no resizing required.
+
+  Call through templated methods writeData and readData.
+
+  Results on crosshatch Pixel 3XL
+
+  #BM_BoolVectorTemplate/1           47 ns      47 ns     14751622
+  #BM_BoolVectorTemplate/2           54 ns      54 ns     12850448
+  #BM_BoolVectorTemplate/4           71 ns      70 ns      9857723
+  #BM_BoolVectorTemplate/8          102 ns     102 ns      6824632
+  #BM_BoolVectorTemplate/16         175 ns     174 ns      4002468
+  #BM_BoolVectorTemplate/32         308 ns     307 ns      2270301
+  #BM_BoolVectorTemplate/64         553 ns     551 ns      1268675
+  #BM_BoolVectorTemplate/128       1055 ns    1052 ns       664597
+  #BM_BoolVectorTemplate/256       2068 ns    2061 ns       339903
+  #BM_BoolVectorTemplate/512       4076 ns    4063 ns       172063
+  #BM_ByteVectorTemplate/1           47 ns      47 ns     14813683
+  #BM_ByteVectorTemplate/2           47 ns      47 ns     14789782
+  #BM_ByteVectorTemplate/4           45 ns      44 ns     15565225
+  #BM_ByteVectorTemplate/8           45 ns      45 ns     15504269
+  #BM_ByteVectorTemplate/16          45 ns      45 ns     15494388
+  #BM_ByteVectorTemplate/32          45 ns      45 ns     15289214
+  #BM_ByteVectorTemplate/64          48 ns      48 ns     14575036
+  #BM_ByteVectorTemplate/128         59 ns      59 ns     11744084
+  #BM_ByteVectorTemplate/256         75 ns      75 ns      9273781
+  #BM_ByteVectorTemplate/512        113 ns     112 ns      6206720
+  #BM_CharVectorTemplate/1           42 ns      42 ns     16498231
+  #BM_CharVectorTemplate/2           46 ns      45 ns     15211036
+  #BM_CharVectorTemplate/4           53 ns      53 ns     13154238
+  #BM_CharVectorTemplate/8           68 ns      68 ns     10316797
+  #BM_CharVectorTemplate/16          95 ns      95 ns      7337485
+  #BM_CharVectorTemplate/32         151 ns     151 ns      4625388
+  #BM_CharVectorTemplate/64         265 ns     264 ns      2661223
+  #BM_CharVectorTemplate/128        487 ns     486 ns      1427737
+  #BM_CharVectorTemplate/256        922 ns     920 ns       761938
+  #BM_CharVectorTemplate/512       1850 ns    1844 ns       380446
+  #BM_Int32VectorTemplate/1          47 ns      47 ns     14832443
+  #BM_Int32VectorTemplate/2          50 ns      50 ns     10000000
+  #BM_Int32VectorTemplate/4          47 ns      47 ns     14917370
+  #BM_Int32VectorTemplate/8          49 ns      49 ns     14288600
+  #BM_Int32VectorTemplate/16         51 ns      51 ns     13745031
+  #BM_Int32VectorTemplate/32         60 ns      60 ns     11524966
+  #BM_Int32VectorTemplate/64         77 ns      76 ns      9102535
+  #BM_Int32VectorTemplate/128       113 ns     113 ns      6172403
+  #BM_Int32VectorTemplate/256       186 ns     185 ns      3759303
+  #BM_Int32VectorTemplate/512       330 ns     329 ns      2113139
+  #BM_Int64VectorTemplate/1          50 ns      50 ns     13721651
+  #BM_Int64VectorTemplate/2          47 ns      46 ns     14911751
+  #BM_Int64VectorTemplate/4          49 ns      48 ns     14260570
+  #BM_Int64VectorTemplate/8          51 ns      51 ns     13712034
+  #BM_Int64VectorTemplate/16         60 ns      60 ns     11511186
+  #BM_Int64VectorTemplate/32         76 ns      76 ns      9118925
+  #BM_Int64VectorTemplate/64        113 ns     113 ns      6164433
+  #BM_Int64VectorTemplate/128       186 ns     186 ns      3759336
+  #BM_Int64VectorTemplate/256       330 ns     329 ns      2124944
+  #BM_Int64VectorTemplate/512       612 ns     610 ns      1141556
+*/
+
+static void BM_BoolVectorTemplate(benchmark::State& state) {
+    BM_ParcelVector<bool, MODE_FLAG_TEMPLATE>(state);
+}
+
+static void BM_ByteVectorTemplate(benchmark::State& state) {
+    BM_ParcelVector<uint8_t, MODE_FLAG_TEMPLATE>(state);
+}
+
+static void BM_CharVectorTemplate(benchmark::State& state) {
+    BM_ParcelVector<char16_t, MODE_FLAG_TEMPLATE>(state);
+}
+
+static void BM_Int32VectorTemplate(benchmark::State& state) {
+    BM_ParcelVector<int32_t, MODE_FLAG_TEMPLATE>(state);
+}
+
+static void BM_Int64VectorTemplate(benchmark::State& state) {
+    BM_ParcelVector<int64_t, MODE_FLAG_TEMPLATE>(state);
+}
+
+BENCHMARK(BM_BoolVectorTemplate)->Apply(VectorArgs);
+BENCHMARK(BM_ByteVectorTemplate)->Apply(VectorArgs);
+BENCHMARK(BM_CharVectorTemplate)->Apply(VectorArgs);
+BENCHMARK(BM_Int32VectorTemplate)->Apply(VectorArgs);
+BENCHMARK(BM_Int64VectorTemplate)->Apply(VectorArgs);
+
+/*
   Parcel vector write then read.
   Vector allocation on the write side for Parceling data.
   The vector on the read side is preallocated.
 
   Results on Crosshatch Pixel 3XL
 
-  #BM_BoolVectorWriteAlloc/1        155 ns     155 ns      4491048
-  #BM_BoolVectorWriteAlloc/2        161 ns     160 ns      4336662
-  #BM_BoolVectorWriteAlloc/4        175 ns     175 ns      4001651
-  #BM_BoolVectorWriteAlloc/8        223 ns     222 ns      3142640
-  #BM_BoolVectorWriteAlloc/16       290 ns     289 ns      2421784
-  #BM_BoolVectorWriteAlloc/32       437 ns     435 ns      1602792
-  #BM_BoolVectorWriteAlloc/64       712 ns     709 ns       987056
-  #BM_BoolVectorWriteAlloc/128     1276 ns    1272 ns       552484
-  #BM_BoolVectorWriteAlloc/256     2389 ns    2381 ns       293173
-  #BM_BoolVectorWriteAlloc/512     4652 ns    4637 ns       151683
-  #BM_ByteVectorWriteAlloc/1        140 ns     139 ns      5013661
-  #BM_ByteVectorWriteAlloc/2        143 ns     143 ns      4897665
-  #BM_ByteVectorWriteAlloc/4        144 ns     143 ns      4827786
-  #BM_ByteVectorWriteAlloc/8        150 ns     150 ns      4618971
-  #BM_ByteVectorWriteAlloc/16       172 ns     172 ns      4077113
-  #BM_ByteVectorWriteAlloc/32       221 ns     221 ns      3188958
-  #BM_ByteVectorWriteAlloc/64       304 ns     303 ns      2298310
-  #BM_ByteVectorWriteAlloc/128      485 ns     484 ns      1445993
-  #BM_ByteVectorWriteAlloc/256      854 ns     852 ns       820247
-  #BM_ByteVectorWriteAlloc/512     1570 ns    1565 ns       447304
-  #BM_CharVectorWriteAlloc/1        117 ns     116 ns      5991369
-  #BM_CharVectorWriteAlloc/2        123 ns     122 ns      5700863
-  #BM_CharVectorWriteAlloc/4        141 ns     141 ns      4962217
-  #BM_CharVectorWriteAlloc/8        180 ns     179 ns      3895545
-  #BM_CharVectorWriteAlloc/16       282 ns     282 ns      2491407
-  #BM_CharVectorWriteAlloc/32       433 ns     432 ns      1613708
-  #BM_CharVectorWriteAlloc/64       745 ns     742 ns       939700
-  #BM_CharVectorWriteAlloc/128     1381 ns    1376 ns       510361
-  #BM_CharVectorWriteAlloc/256     2627 ns    2619 ns       266567
-  #BM_CharVectorWriteAlloc/512     5129 ns    5112 ns       136857
-  #BM_Int32VectorWriteAlloc/1       116 ns     116 ns      6000447
-  #BM_Int32VectorWriteAlloc/2       123 ns     122 ns      5696006
-  #BM_Int32VectorWriteAlloc/4       141 ns     140 ns      4961973
-  #BM_Int32VectorWriteAlloc/8       179 ns     179 ns      3899442
-  #BM_Int32VectorWriteAlloc/16      285 ns     284 ns      2491435
-  #BM_Int32VectorWriteAlloc/32      429 ns     428 ns      1626268
-  #BM_Int32VectorWriteAlloc/64      755 ns     752 ns       930380
-  #BM_Int32VectorWriteAlloc/128    1377 ns    1373 ns       509152
-  #BM_Int32VectorWriteAlloc/256    2635 ns    2627 ns       266871
-  #BM_Int32VectorWriteAlloc/512    5137 ns    5120 ns       136552
-  #BM_Int64VectorWriteAlloc/1       116 ns     115 ns      6041419
-  #BM_Int64VectorWriteAlloc/2       123 ns     122 ns      5657709
-  #BM_Int64VectorWriteAlloc/4       143 ns     142 ns      4893129
-  #BM_Int64VectorWriteAlloc/8       182 ns     182 ns      3843935
-  #BM_Int64VectorWriteAlloc/16      284 ns     283 ns      2480437
-  #BM_Int64VectorWriteAlloc/32      463 ns     461 ns      1533033
-  #BM_Int64VectorWriteAlloc/64      786 ns     783 ns       890423
-  #BM_Int64VectorWriteAlloc/128    1438 ns    1433 ns       487337
-  #BM_Int64VectorWriteAlloc/256    2746 ns    2736 ns       256562
-  #BM_Int64VectorWriteAlloc/512    5334 ns    5316 ns       131506
+  #BM_BoolVectorWriteAlloc/1        155 ns     155 ns      4497430
+  #BM_BoolVectorWriteAlloc/2        164 ns     163 ns      4266109
+  #BM_BoolVectorWriteAlloc/4        184 ns     184 ns      3809358
+  #BM_BoolVectorWriteAlloc/8        216 ns     215 ns      3236443
+  #BM_BoolVectorWriteAlloc/16       295 ns     294 ns      2378647
+  #BM_BoolVectorWriteAlloc/32       444 ns     443 ns      1576946
+  #BM_BoolVectorWriteAlloc/64       710 ns     708 ns       986074
+  #BM_BoolVectorWriteAlloc/128     1258 ns    1255 ns       557765
+  #BM_BoolVectorWriteAlloc/256     2363 ns    2356 ns       297408
+  #BM_BoolVectorWriteAlloc/512     4559 ns    4545 ns       154023
+  #BM_ByteVectorWriteAlloc/1        127 ns     126 ns      5524403
+  #BM_ByteVectorWriteAlloc/2        128 ns     128 ns      5415252
+  #BM_ByteVectorWriteAlloc/4        129 ns     129 ns      5416636
+  #BM_ByteVectorWriteAlloc/8        138 ns     137 ns      5092002
+  #BM_ByteVectorWriteAlloc/16       156 ns     155 ns      4450817
+  #BM_ByteVectorWriteAlloc/32       200 ns     199 ns      3506327
+  #BM_ByteVectorWriteAlloc/64       289 ns     288 ns      2424131
+  #BM_ByteVectorWriteAlloc/128      470 ns     468 ns      1493260
+  #BM_ByteVectorWriteAlloc/256      838 ns     835 ns       834365
+  #BM_ByteVectorWriteAlloc/512     1555 ns    1550 ns       451043
+  #BM_CharVectorWriteAlloc/1        120 ns     119 ns      5792549
+  #BM_CharVectorWriteAlloc/2        125 ns     125 ns      5570580
+  #BM_CharVectorWriteAlloc/4        138 ns     137 ns      5094014
+  #BM_CharVectorWriteAlloc/8        165 ns     164 ns      4225193
+  #BM_CharVectorWriteAlloc/16       215 ns     215 ns      3251952
+  #BM_CharVectorWriteAlloc/32       325 ns     324 ns      2160176
+  #BM_CharVectorWriteAlloc/64       530 ns     528 ns      1321668
+  #BM_CharVectorWriteAlloc/128      954 ns     951 ns       736046
+  #BM_CharVectorWriteAlloc/256     1794 ns    1788 ns       391486
+  #BM_CharVectorWriteAlloc/512     3446 ns    3435 ns       203962
+  #BM_Int32VectorWriteAlloc/1       127 ns     126 ns      5501622
+  #BM_Int32VectorWriteAlloc/2       128 ns     128 ns      5467181
+  #BM_Int32VectorWriteAlloc/4       132 ns     131 ns      5301601
+  #BM_Int32VectorWriteAlloc/8       140 ns     139 ns      4980986
+  #BM_Int32VectorWriteAlloc/16      164 ns     163 ns      4291910
+  #BM_Int32VectorWriteAlloc/32      216 ns     216 ns      3236380
+  #BM_Int32VectorWriteAlloc/64      329 ns     328 ns      2134211
+  #BM_Int32VectorWriteAlloc/128     540 ns     538 ns      1298171
+  #BM_Int32VectorWriteAlloc/256     957 ns     954 ns       730591
+  #BM_Int32VectorWriteAlloc/512    1793 ns    1788 ns       391919
+  #BM_Int64VectorWriteAlloc/1       124 ns     124 ns      5637522
+  #BM_Int64VectorWriteAlloc/2       126 ns     126 ns      5526518
+  #BM_Int64VectorWriteAlloc/4       131 ns     131 ns      5330767
+  #BM_Int64VectorWriteAlloc/8       143 ns     142 ns      4909890
+  #BM_Int64VectorWriteAlloc/16      176 ns     176 ns      3979436
+  #BM_Int64VectorWriteAlloc/32      245 ns     244 ns      2865879
+  #BM_Int64VectorWriteAlloc/64      369 ns     368 ns      1904361
+  #BM_Int64VectorWriteAlloc/128     618 ns     616 ns      1134299
+  #BM_Int64VectorWriteAlloc/256    1112 ns    1109 ns       630450
+  #BM_Int64VectorWriteAlloc/512    2109 ns    2102 ns       333385
 */
 
 static void BM_BoolVectorWriteAlloc(benchmark::State& state) {
