@@ -1,0 +1,12 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+1: Roman Kiryanov <rkir@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Autosubmit+1: Roman Kiryanov <rkir@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Presubmit-Verified-Together+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 18 Nov 2020 20:13:04 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1502495
+Project: platform/frameworks/native
+Branch: refs/heads/master
