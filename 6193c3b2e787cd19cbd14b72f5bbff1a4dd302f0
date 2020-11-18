@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78af3765_c52f4362",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1790290
+      },
+      "writtenOn": "2020-11-18T07:05:31Z",
+      "side": 1,
+      "message": "same as https://issuetracker.google.com/u/0/issues/153114059 ",
+      "revId": "6193c3b2e787cd19cbd14b72f5bbff1a4dd302f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
