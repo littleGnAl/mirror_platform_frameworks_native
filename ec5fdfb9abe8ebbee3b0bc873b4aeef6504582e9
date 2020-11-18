@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1020e502_ba81f704",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2020-11-18T12:25:46Z",
+      "side": 1,
+      "message": "yes, or at least give a heads up with a deadline to migrate by",
+      "parentUuid": "f460b3c1_03ad3af4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "ec5fdfb9abe8ebbee3b0bc873b4aeef6504582e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d44fdb8_df3af9fd",
         "filename": "cmds/bugreport/bugreport.cpp",
         "patchSetId": 14
