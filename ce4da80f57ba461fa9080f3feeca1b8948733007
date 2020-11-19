@@ -16,6 +16,92 @@
       "message": "I\u0027ve split out the changes to expose the NDK Class interface descriptor into this separate CL.",
       "revId": "ce4da80f57ba461fa9080f3feeca1b8948733007",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90179a5c_ac868340",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T19:08:27Z",
+      "side": 1,
+      "message": "nit: we could delay copying until we need it the first time",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 48
+      },
+      "revId": "ce4da80f57ba461fa9080f3feeca1b8948733007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdea4a69_5543e2fa",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T19:08:27Z",
+      "side": 1,
+      "message": "pref \u0027tf\u0027",
+      "range": {
+        "startLine": 116,
+        "startChar": 39,
+        "endLine": 116,
+        "endChar": 41
+      },
+      "revId": "ce4da80f57ba461fa9080f3feeca1b8948733007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f7bcea_575962bd",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T19:08:27Z",
+      "side": 1,
+      "message": "leftover from earlier code?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "ce4da80f57ba461fa9080f3feeca1b8948733007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "242b079a_16e643d7",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T19:08:27Z",
+      "side": 1,
+      "message": "great to test it here, but needed in CtsNdkBinderTestCases",
+      "revId": "ce4da80f57ba461fa9080f3feeca1b8948733007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
