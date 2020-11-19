@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9df8bd2_af148c43",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-19T09:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed3aa6b4_ae84b985",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 104
+      },
+      "revId": "4a67f617257f3449715285c7f776f448ec5fe85a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3773085e_475efb1d",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-18T12:15:44Z",
       "side": 1,
       "message": "could you add a comment? would be useful to explain the difference between this and bugreportz",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "4a67f617257f3449715285c7f776f448ec5fe85a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d758f4e3_a7a3e7b4",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-19T09:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3773085e_475efb1d",
       "range": {
         "startLine": 22,
         "startChar": 4,

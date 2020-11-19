@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ade47b7_41fcfe9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-19T09:15:09Z",
+      "side": 1,
+      "message": "\u003e\u003e While this CL will work it seems a little odd to have the commit message say write zipped bugreport, because until the dumpstate change goes in it is still a text file right?\n\nThanks for your thoughtful comment. I didn\u0027t aware this after I split the cls. Update the commit message to reflect this.",
+      "revId": "031c957e55eb68e885718f3f512be194d23c0148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
