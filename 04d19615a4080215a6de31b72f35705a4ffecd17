@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31dca211_f546570a",
+        "filename": "libs/binder/parcel_fuzzer/binder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T02:05:10Z",
+      "side": 0,
+      "message": "curious if we can disable the warning for this file instead, since we still want to test them?",
+      "revId": "04d19615a4080215a6de31b72f35705a4ffecd17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
