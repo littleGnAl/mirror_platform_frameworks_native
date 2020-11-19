@@ -63,6 +63,30 @@
       },
       "revId": "46c64a0edf8ad4680b7320c91e2774219b6bc695",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f970cfe_4b800c43",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-19T21:33:48Z",
+      "side": 1,
+      "message": "It doesn\u0027t appear to be fixed. I sent you some details on chat, but don\u0027t have time to push on this right now unless you think it\u0027s extremely important.",
+      "parentUuid": "8959c40d_7eccad1d",
+      "range": {
+        "startLine": 60,
+        "startChar": 15,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "46c64a0edf8ad4680b7320c91e2774219b6bc695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
