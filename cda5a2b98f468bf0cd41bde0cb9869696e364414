@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "cda5a2b98f468bf0cd41bde0cb9869696e364414",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c25136_82cd9d47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T04:06:20Z",
+      "side": 1,
+      "message": "The test failure is unrelated; was red before this change.",
+      "revId": "cda5a2b98f468bf0cd41bde0cb9869696e364414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
