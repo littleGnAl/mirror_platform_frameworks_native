@@ -16,6 +16,24 @@
       "message": "Does this also need NDK prebuilt updates?",
       "revId": "8fde87fec6cb5915285e58abbf8dd6867fdbde6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3633a89_e623692f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-19T19:46:23Z",
+      "side": 1,
+      "message": "It required an update to the ABI dumps, is that what you\u0027re talking about? Should I upload that as well? Wasn\u0027t sure how that worked exactly.",
+      "parentUuid": "91fcc4b2_8e50d135",
+      "revId": "8fde87fec6cb5915285e58abbf8dd6867fdbde6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
