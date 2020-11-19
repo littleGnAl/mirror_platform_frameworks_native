@@ -88,6 +88,24 @@
       "parentUuid": "41aca01e_61c90cc4",
       "revId": "8fde87fec6cb5915285e58abbf8dd6867fdbde6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30f4d022_55679e36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-19T20:04:00Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ve got it locally, will upload.",
+      "parentUuid": "5b58506d_4ff35ccc",
+      "revId": "8fde87fec6cb5915285e58abbf8dd6867fdbde6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
