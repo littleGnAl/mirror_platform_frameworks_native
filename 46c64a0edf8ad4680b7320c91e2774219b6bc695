@@ -16,6 +16,29 @@
       "message": "This was supposed to have happened already and slipped through the cracks. @mmaurer, do you happen to know if rustBinderTest can be moved to presubmit yet? I was never clear on what the issue was there.",
       "revId": "46c64a0edf8ad4680b7320c91e2774219b6bc695",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d63b520_95670de3",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T20:30:08Z",
+      "side": 1,
+      "message": "why is this postsubmit btw? is it flaky?",
+      "range": {
+        "startLine": 60,
+        "startChar": 15,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "46c64a0edf8ad4680b7320c91e2774219b6bc695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
