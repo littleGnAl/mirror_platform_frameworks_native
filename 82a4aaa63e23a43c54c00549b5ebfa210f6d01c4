@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a3b763_ecdac205",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-19T09:18:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b74de898_df34ad63",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 37
+      },
+      "revId": "82a4aaa63e23a43c54c00549b5ebfa210f6d01c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41da7c0e_2d456beb",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-19T09:18:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d19560fd_1e144526",
+      "range": {
+        "startLine": 194,
+        "startChar": 22,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "revId": "82a4aaa63e23a43c54c00549b5ebfa210f6d01c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a24adc20_a041209c",
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e486bc77_e5c3f0f6",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-19T09:18:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a24adc20_a041209c",
+      "range": {
+        "startLine": 569,
+        "startChar": 37,
+        "endLine": 569,
+        "endChar": 47
+      },
+      "revId": "82a4aaa63e23a43c54c00549b5ebfa210f6d01c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d494de3c_a2210db7",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-18T12:36:32Z",
       "side": 1,
       "message": "nit: VerifyEntry?",
+      "range": {
+        "startLine": 1021,
+        "startChar": 9,
+        "endLine": 1021,
+        "endChar": 17
+      },
+      "revId": "82a4aaa63e23a43c54c00549b5ebfa210f6d01c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2105844_615342d7",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-19T09:18:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d494de3c_a2210db7",
       "range": {
         "startLine": 1021,
         "startChar": 9,

@@ -239,6 +239,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31023fe8_89c13592",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2586,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-19T09:18:08Z",
+      "side": 1,
+      "message": "Ack. It make sense to ensure combo keys works as before.",
+      "parentUuid": "4df82340_bf6c83b9",
+      "range": {
+        "startLine": 2583,
+        "startChar": 12,
+        "endLine": 2586,
+        "endChar": 38
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9b796fd_cad6fc62",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 12
@@ -440,6 +464,30 @@
       "side": 1,
       "message": "I know the code didn\u0027t handle the failure of PrepareToWriteToFile before, but makes sense to handle it like you did in previous PS, but do it in all cases. WDYT?",
       "parentUuid": "6d9c312c_a72a5ca9",
+      "range": {
+        "startLine": 2786,
+        "startChar": 11,
+        "endLine": 2786,
+        "endChar": 63
+      },
+      "revId": "ede515c6b1150f1d430c8be0c5b2f5000aee014e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c4ae651_a405818d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2786,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-19T09:18:08Z",
+      "side": 1,
+      "message": "Sorry I misunderstand your comment. Bring it back.",
+      "parentUuid": "d1cadea4_99927fb0",
       "range": {
         "startLine": 2786,
         "startChar": 11,
