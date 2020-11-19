@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a8a855e_a999c69d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2020-11-19T02:16:23Z",
+      "side": 1,
+      "message": "Sorry for missing the review being assigned to me.\n\nIt looks mostly reasonable to me, but I had a few nit-picks.",
+      "revId": "f1d2b10e4b93b3f9d9886710263bea04c5f5c716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "906aa4a2_d9a39634",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2020-11-19T02:16:23Z",
+      "side": 1,
+      "message": "Minor style issue: wrap at 80 columns",
+      "revId": "f1d2b10e4b93b3f9d9886710263bea04c5f5c716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1821c748_64ad2197",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2020-11-19T02:16:23Z",
+      "side": 1,
+      "message": "Minor style issue: wrap at 80 columns",
+      "revId": "f1d2b10e4b93b3f9d9886710263bea04c5f5c716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff07b4c_8bdad0cc",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2020-11-19T02:16:23Z",
+      "side": 1,
+      "message": "I\u0027d recommend a std::deque\u003cState\u003e -- it\u0027s closer in memory layout to something like Vector.",
+      "revId": "f1d2b10e4b93b3f9d9886710263bea04c5f5c716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1dabc6d_3931ad02",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2020-11-19T02:16:23Z",
+      "side": 1,
+      "message": "Ditto on recommending std::deque instead",
+      "range": {
+        "startLine": 1017,
+        "startChar": 4,
+        "endLine": 1017,
+        "endChar": 13
+      },
+      "revId": "f1d2b10e4b93b3f9d9886710263bea04c5f5c716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
