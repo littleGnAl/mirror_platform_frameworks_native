@@ -52,6 +52,24 @@
       "parentUuid": "b3633a89_e623692f",
       "revId": "8fde87fec6cb5915285e58abbf8dd6867fdbde6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41aca01e_61c90cc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T20:03:16Z",
+      "side": 1,
+      "message": "hmmmm - it should refuse to build even, unless you are using \"m SKIP_ABI_CHECKS\u003dtrue\"",
+      "parentUuid": "fc035ef7_1bfbface",
+      "revId": "8fde87fec6cb5915285e58abbf8dd6867fdbde6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
