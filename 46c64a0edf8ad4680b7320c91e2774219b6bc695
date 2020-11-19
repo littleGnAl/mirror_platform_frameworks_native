@@ -39,6 +39,30 @@
       },
       "revId": "46c64a0edf8ad4680b7320c91e2774219b6bc695",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8959c40d_7eccad1d",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-19T21:19:51Z",
+      "side": 1,
+      "message": "There was a problem with running it on internal that was eventually traced back to a bug in the testing infrastructure. It was set like this because postsubmit tests are not copped, which allowed us to at least have it for AOSP while that bug was worked on. I think it\u0027s been fixed, but I\u0027ll go check.",
+      "parentUuid": "3d63b520_95670de3",
+      "range": {
+        "startLine": 60,
+        "startChar": 15,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "46c64a0edf8ad4680b7320c91e2774219b6bc695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
