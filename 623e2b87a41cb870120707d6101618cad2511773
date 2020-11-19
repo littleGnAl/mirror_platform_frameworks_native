@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "776dccc2_75e4504b",
+        "filename": "libs/vibrator/fuzzer/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-11-19T09:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65a8f6d0_90ee03a1",
+      "revId": "623e2b87a41cb870120707d6101618cad2511773",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e71e87a4_da1f692c",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-18T12:28:20Z",
       "side": 1,
       "message": "Is this the right group? This isn\u0027t a media component.",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 42
+      },
+      "revId": "623e2b87a41cb870120707d6101618cad2511773",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d3c7be_d8a8ac76",
+        "filename": "libs/vibrator/fuzzer/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-11-19T09:46:15Z",
+      "side": 1,
+      "message": "Removing the cc for now. Please let us know if there is an alias that can be included here",
+      "parentUuid": "e71e87a4_da1f692c",
       "range": {
         "startLine": 43,
         "startChar": 13,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0672818d_39ed8a1e",
+        "filename": "libs/vibrator/fuzzer/vibrator_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-11-19T09:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1e8e0c_a86cc509",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 77
+      },
+      "revId": "623e2b87a41cb870120707d6101618cad2511773",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a7bd6c7_1fbfa222",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d66fc0_cf3cdb10",
+        "filename": "libs/vibrator/fuzzer/vibrator_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-11-19T09:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a7bd6c7_1fbfa222",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "623e2b87a41cb870120707d6101618cad2511773",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b26be09b_99a168a7",
@@ -100,6 +190,24 @@
       "writtenOn": "2020-11-18T12:28:20Z",
       "side": 1,
       "message": "If you\u0027re going to test everything in one giant function the please put comments describing what\u0027s being tested. Alternatively, split them up into separate functions with appropriate names.",
+      "revId": "623e2b87a41cb870120707d6101618cad2511773",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a49ee31_43da119c",
+        "filename": "libs/vibrator/fuzzer/vibrator_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-11-19T09:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b26be09b_99a168a7",
       "revId": "623e2b87a41cb870120707d6101618cad2511773",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
