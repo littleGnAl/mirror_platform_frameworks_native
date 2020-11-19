@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5928df97_56ba046a",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-19T19:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdea4a69_5543e2fa",
+      "range": {
+        "startLine": 116,
+        "startChar": 39,
+        "endLine": 116,
+        "endChar": 41
+      },
+      "revId": "ce4da80f57ba461fa9080f3feeca1b8948733007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1f7bcea_575962bd",
@@ -87,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c772d7c5_2eb490ba",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-19T19:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1f7bcea_575962bd",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "ce4da80f57ba461fa9080f3feeca1b8948733007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "242b079a_16e643d7",
@@ -100,6 +148,24 @@
       "writtenOn": "2020-11-19T19:08:27Z",
       "side": 1,
       "message": "great to test it here, but needed in CtsNdkBinderTestCases",
+      "revId": "ce4da80f57ba461fa9080f3feeca1b8948733007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143384bb_95a3936d",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-19T19:31:16Z",
+      "side": 1,
+      "message": "Done: https://android-review.googlesource.com/c/platform/cts/+/1505395",
+      "parentUuid": "242b079a_16e643d7",
       "revId": "ce4da80f57ba461fa9080f3feeca1b8948733007",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

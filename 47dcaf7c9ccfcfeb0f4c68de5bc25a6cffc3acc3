@@ -16,6 +16,24 @@
       "message": "nit: add in this section, with other app-visible APIs",
       "revId": "47dcaf7c9ccfcfeb0f4c68de5bc25a6cffc3acc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0000c2e_549f3a54",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-19T19:31:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "4d2b7a37_46930903",
+      "revId": "47dcaf7c9ccfcfeb0f4c68de5bc25a6cffc3acc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
