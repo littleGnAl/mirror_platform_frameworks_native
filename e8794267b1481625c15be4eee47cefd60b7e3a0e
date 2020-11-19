@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "201e39c0_651d5b8d",
+        "filename": "libs/binder/rust/tests/binderRustNDKInteropTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-19T19:08:10Z",
+      "side": 1,
+      "message": "Do we have a bug on fixing the NDK AIDL backend to associate with local Rust services, i.e. the inverse direction from this CL?",
+      "parentUuid": "50b3be26_fbed89d0",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa26394b_7e56e26e",
         "filename": "libs/binder/rust/tests/binderRustNDKInteropTest.cpp",
         "patchSetId": 2
@@ -340,6 +364,54 @@
       "side": 1,
       "message": "\u003e Is this additional functionality opened up in the rust backend? Since AIDL doesn\u0027t/shouldn\u0027t use it, we could curb that back.\nGone now, a local binder can now only be used from the correct interface due to the new descriptor string check.\n\nI\u0027ve added the AIBinder_Class_getDescriptor API, and use it from Rust now.\n\nStill need to add another CL to the NDK AIDL backend to make fromBinder check the descriptor string if the pointer doesn\u0027t match.",
       "parentUuid": "95ed614f_1548c6ec",
+      "range": {
+        "startLine": 451,
+        "startChar": 54,
+        "endLine": 451,
+        "endChar": 62
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b2c19d_1c1f0664",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-19T19:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba1727b3_ead88b26",
+      "range": {
+        "startLine": 451,
+        "startChar": 54,
+        "endLine": 451,
+        "endChar": 62
+      },
+      "revId": "e8794267b1481625c15be4eee47cefd60b7e3a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eecf205_8efc46e2",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-11-19T19:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba1727b3_ead88b26",
       "range": {
         "startLine": 451,
         "startChar": 54,
