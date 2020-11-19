@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fcc4b2_8e50d135",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T19:34:27Z",
+      "side": 1,
+      "message": "Does this also need NDK prebuilt updates?",
+      "revId": "8fde87fec6cb5915285e58abbf8dd6867fdbde6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
