@@ -70,6 +70,24 @@
       "parentUuid": "fc035ef7_1bfbface",
       "revId": "8fde87fec6cb5915285e58abbf8dd6867fdbde6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b58506d_4ff35ccc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T20:03:40Z",
+      "side": 1,
+      "message": "yeah TH is failing with:\n\n******************************************************\nerror: VNDK library: libbinder_ndk\u0027s ABI has EXTENDING CHANGES Please check compatibility report at: out/soong/.intermediates/frameworks/native/libs/binder/ndk/libbinder_ndk/android_arm64_armv8-a_shared/libbinder_ndk.so.abidiff\n******************************************************\nerror: Please update ABI references with: $ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py --llndk -l libbinder_ndk",
+      "parentUuid": "41aca01e_61c90cc4",
+      "revId": "8fde87fec6cb5915285e58abbf8dd6867fdbde6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
