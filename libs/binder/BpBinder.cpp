@@ -336,8 +336,8 @@ void BpBinder::sendObituary()
     mObitsSent = 1;
     mLock.unlock();
 
-    ALOGV("Reporting death of proxy %p for %zu recipients\n",
-        this, obits ? obits->size() : 0U);
+    ALOGI("Reporting death of proxy %p handle %d for %zu recipients\n",
+        this, mHandle, obits ? obits->size() : 0U);
 
     if (obits != nullptr) {
         const size_t N = obits->size();
