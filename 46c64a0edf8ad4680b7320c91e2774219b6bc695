@@ -87,6 +87,30 @@
       },
       "revId": "46c64a0edf8ad4680b7320c91e2774219b6bc695",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "920e1571_ff6905bf",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-19T21:40:26Z",
+      "side": 1,
+      "message": "It\u0027s fixed actually. Once this CL goes in, either I or sjc@ can move it to presubmit.",
+      "parentUuid": "8f970cfe_4b800c43",
+      "range": {
+        "startLine": 60,
+        "startChar": 15,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "46c64a0edf8ad4680b7320c91e2774219b6bc695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
