@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28d039f4_abac6585",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-19T09:33:17Z",
+      "side": 1,
+      "message": "Remove cl from the topic and chain to be able to land later.",
+      "parentUuid": "1020e502_ba81f704",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "ec5fdfb9abe8ebbee3b0bc873b4aeef6504582e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d44fdb8_df3af9fd",
         "filename": "cmds/bugreport/bugreport.cpp",
         "patchSetId": 14
