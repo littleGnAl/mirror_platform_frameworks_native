@@ -957,6 +957,11 @@ bool Dumpstate::AddTextZipEntry(const std::string& entry_name, const std::string
     return true;
 }
 
+static void DoMmEventsDump() {
+    RunCommand("MM EVENTS DUMP", {"/system/bin/mm_eventsd", "-d"});
+    ds.AddDir("/data/mm_events", true);
+}
+
 static void DoKmsg() {
     struct stat st;
     if (!stat(PSTORE_LAST_KMSG, &st)) {
@@ -1639,6 +1644,8 @@ static Dumpstate::RunStatus dumpstate() {
     ds.AddDir("/data/misc/bluetooth/logs", true);
     /* Dump Nfc NCI logs */
     ds.AddDir("/data/misc/nfc/logs", true);
+
+    DoMmEventsDump();
 
     if (ds.options_->do_screenshot && !ds.do_early_screenshot_) {
         MYLOGI("taking late screenshot\n");
