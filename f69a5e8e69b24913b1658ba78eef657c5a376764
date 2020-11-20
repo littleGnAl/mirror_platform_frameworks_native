@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf71b0d_a1b684eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-11-20T01:24:40Z",
+      "side": 1,
+      "message": "Got it. This depends on aosp/1501916 (system/bt). I\u0027ll run presubmit after aosp/1501916 is merged. aosp/1501916 doesn\u0027t get any attention from reviewers though.",
+      "parentUuid": "b2df5e42_7fd68202",
+      "revId": "f69a5e8e69b24913b1658ba78eef657c5a376764",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9847f365_69cdddde",
