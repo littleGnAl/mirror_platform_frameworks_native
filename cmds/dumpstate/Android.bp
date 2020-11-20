@@ -118,6 +118,7 @@ cc_binary {
         "logcat",
         "lpdump",
         "lpdumpd",
+        "mm_eventsd",
         "procrank",
         "screencap",
         "showmap",
