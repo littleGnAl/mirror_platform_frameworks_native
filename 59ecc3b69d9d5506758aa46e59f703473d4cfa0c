@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6364093_c690bbe4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2020-11-20T21:39:05Z",
+      "side": 1,
+      "message": "I believe this is possible to test by extending the DS4 CTS tests.\n\nWe\u0027ll have to:\n- Send a relative touchpad movement of 0,0 through the DS4. This will create Pointer Controller, show the mouse cursor, and generate a HOVER event (EV1).\n- Send another touchpad movement(s) to move the mouse cursor to a certain location, and store the location of that event (EV2).\n- Enable Pointer Capture and verify that it works, and disable Pointer Capture.\n- Send another relative touchpad movement of 0,0 to show the mouse cursor again and generate a HOVER event (EV3).\n- Verify that the location of EV2 and EV3 are the same.\n\nIf we do that with touchpad capture, we should probably should also do the same with a mouse in MicrosoftSculpttouchTest.",
+      "parentUuid": "ac548cd9_64f15ad1",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "59ecc3b69d9d5506758aa46e59f703473d4cfa0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "25e4869a_531102d8",
