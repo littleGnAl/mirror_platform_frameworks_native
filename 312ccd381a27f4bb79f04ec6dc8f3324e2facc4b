@@ -22,6 +22,30 @@
       },
       "revId": "312ccd381a27f4bb79f04ec6dc8f3324e2facc4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e433151_3a84f759",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1649,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-20T23:33:39Z",
+      "side": 1,
+      "message": "Modified to use RunCommand() instead.",
+      "parentUuid": "5a10af8c_95c8bbc0",
+      "range": {
+        "startLine": 1649,
+        "startChar": 38,
+        "endLine": 1649,
+        "endChar": 49
+      },
+      "revId": "312ccd381a27f4bb79f04ec6dc8f3324e2facc4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
