@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e71bae7_4c808932",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-11-20T09:05:15Z",
+      "side": 1,
+      "message": "```\nNo test results.\nframeworks/native/services/surfaceflinger/tests/unittests/TransactionApplicationTest.cpp:230: Failure\nExpected: (systemTime()) \u003c\u003d (applicationSentTime + s2ns(5)), actual: 226488658120 vs 226488212707\nframeworks/native/services/surfaceflinger/tests/unittests/TransactionApplicationTest.cpp:235: Failure\nExpected equality of these values:\n1\ntransactionQueue.size()\nWhich is: 0\nAddressSanitizer:DEADLYSIGNAL\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n[1m\u003d\u003d6785\u003d\u003dERROR: AddressSanitizer: SEGV on unknown address 0x00000020 (pc 0x64d3607b bp 0xffaa5c08 sp 0xffaa5440 T0)\n[1m\u003d\u003d6785\u003d\u003dThe signal is caused by a READ memory access.\n\u003d\u003d6785\u003d\u003dHint: address points to the zero page.\n#0 0x64d3607b  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x103f07b)\n#1 0x64d342e5  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x103d2e5)\n#2 0x6562a7eb  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x19337eb)\n#3 0x6562dfed  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x1936fed)\n#4 0x65630596  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x1939596)\n#5 0x656670f2  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x19700f2)\n#6 0x65665d9b  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x196ed9b)\n#7 0x6432ef33  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x637f33)\n#8 0xf505a666  (/apex/com.android.runtime/lib/bionic/libc.so+0x50666)\n\nAddressSanitizer can not provide additional info.\nSUMMARY: AddressSanitizer: SEGV (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x103f07b)\n\u003d\u003d6785\u003d\u003dABORTING\n```",
+      "revId": "1d367c55873d51edd312e436b4a18f3b9fcd6937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
