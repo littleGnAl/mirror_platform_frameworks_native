@@ -68,6 +68,7 @@
 #include <android/hardware/dumpstate/1.1/types.h>
 #include <android/hidl/manager/1.0/IServiceManager.h>
 #include <android/os/IIncidentCompanion.h>
+#include <android/system/memory/mm_eventsd/IMmEventsService.h>
 #include <binder/IServiceManager.h>
 #include <cutils/native_handle.h>
 #include <cutils/properties.h>
@@ -1639,6 +1640,20 @@ static Dumpstate::RunStatus dumpstate() {
     ds.AddDir("/data/misc/bluetooth/logs", true);
     /* Dump Nfc NCI logs */
     ds.AddDir("/data/misc/nfc/logs", true);
+
+    // Dump mm events
+    const String16 mmEvents("mm_events_service");
+    sp<android::IBinder> mmEventsService(android::defaultServiceManager()->getService(mmEvents));
+    if (mmEventsService != nullptr) {
+        if(!android::interface_cast<android::system::memory::mm_eventsd::IMmEventsService>(
+                    mmEventsService)->DumpHistory().isOk()) {
+            MYLOGD("Failed to dump mm_events data\n");
+        } else {
+            ds.AddDir("/data/mm_events", true);
+        }
+    } else {
+        MYLOGD("Failed to get the mm_events_service\n");
+    }
 
     if (ds.options_->do_screenshot && !ds.do_early_screenshot_) {
         MYLOGI("taking late screenshot\n");

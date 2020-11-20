@@ -77,6 +77,7 @@ cc_defaults {
     shared_libs: [
         "android.hardware.dumpstate@1.0",
         "android.hardware.dumpstate@1.1",
+        "android.system.memory.mm_eventsd-cpp",
         "libziparchive",
         "libbase",
         "libbinder",
@@ -118,6 +119,7 @@ cc_binary {
         "logcat",
         "lpdump",
         "lpdumpd",
+        "mm_eventsd",
         "procrank",
         "screencap",
         "showmap",
