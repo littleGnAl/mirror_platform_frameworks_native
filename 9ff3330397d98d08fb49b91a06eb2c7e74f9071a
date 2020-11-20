@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a788b8ed_13a1f58e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-20T18:54:49Z",
+      "side": 1,
+      "message": "b/167966510#comment11 has a link to test results (no one really uses the handle API, I\u0027m honestly thinking of making it entirely private)",
+      "revId": "9ff3330397d98d08fb49b91a06eb2c7e74f9071a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
