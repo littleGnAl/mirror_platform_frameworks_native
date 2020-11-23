@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27613183_84614a19",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-23T19:24:06Z",
+      "side": 1,
+      "message": "noting backwards incompatible change in file okay b/c this was added in S.",
+      "revId": "12623df409ab8ada80e344ca852bdbc41736adb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
