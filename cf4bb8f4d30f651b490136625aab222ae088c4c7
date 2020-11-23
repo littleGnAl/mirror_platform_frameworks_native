@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006343809",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1495200?revision\u003d14",
+      "fixSuggestions": [
+        {
+          "fixId": "aabcb6fb_b5047c24",
+          "description": "Change to \"libs/binder/RpcState.cpp\"",
+          "replacements": [
+            {
+              "path": "libs/binder/RpcState.cpp",
+              "range": {
+                "startLine": 257,
+                "startChar": 30,
+                "endLine": 257,
+                "endChar": 37
+              },
+              "replacement": "actually"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c500a284_6e3c8f56",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-23T23:17:23Z",
+      "side": 1,
+      "message": "Common typo found: \"actualy\" -- should it be \"actually\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 257,
+        "startChar": 30,
+        "endLine": 257,
+        "endChar": 37
+      },
+      "revId": "cf4bb8f4d30f651b490136625aab222ae088c4c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006343809",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1495200?revision\u003d14",
+      "fixSuggestions": [
+        {
+          "fixId": "9d74bf71_2cc70d63",
+          "description": "Change to \"libs/binder/include/binder/Parcel.h\"",
+          "replacements": [
+            {
+              "path": "libs/binder/include/binder/Parcel.h",
+              "range": {
+                "startLine": 64,
+                "startChar": 24,
+                "endLine": 64,
+                "endChar": 34
+              },
+              "replacement": "targeting"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "039ff15b_7ecf2e3c",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-23T23:17:23Z",
+      "side": 1,
+      "message": "Common typo found: \"targetting\" -- should it be \"targeting\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 64,
+        "startChar": 24,
+        "endLine": 64,
+        "endChar": 34
+      },
+      "revId": "cf4bb8f4d30f651b490136625aab222ae088c4c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
