@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8459a2f_5f7cd073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-23T18:43:15Z",
+      "side": 1,
+      "message": "As soon as the Cls below this get reviewed/this gets rebased, lgtm.",
+      "revId": "207c475baec20f1f6c6437da2c1a950b128aed77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
