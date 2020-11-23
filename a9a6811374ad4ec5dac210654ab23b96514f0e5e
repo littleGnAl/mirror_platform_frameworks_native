@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e020ef_31530568",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1448822
+      },
+      "writtenOn": "2020-11-23T12:31:08Z",
+      "side": 1,
+      "message": "An upstream CL was causing merge conflicts into internal, should build now.",
+      "revId": "a9a6811374ad4ec5dac210654ab23b96514f0e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
