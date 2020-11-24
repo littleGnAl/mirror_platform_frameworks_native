@@ -5118,7 +5118,7 @@ status_t SurfaceFlinger::onTransact(uint32_t code, const Parcel& data, Parcel* r
                 // the division by w in the fragment shader
                 float4 lastRow(transpose(mClientColorMatrix)[3]);
                 if (any(greaterThan(abs(lastRow - float4{0, 0, 0, 1}), float4{1e-4f}))) {
-                    ALOGE("The color transform's last row must be (0, 0, 0, 1)");
+                    ALOGE("The color transform's last row must be  (0, 0, 0, 1)");
                 }
 
                 updateColorMatrixLocked();
