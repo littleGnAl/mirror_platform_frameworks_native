@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "506068f9_0cb205c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-11-24T00:05:51Z",
+      "side": 1,
+      "message": "No usage yet? what a luck!",
+      "revId": "12623df409ab8ada80e344ca852bdbc41736adb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "27613183_84614a19",
         "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
         "patchSetId": 2
