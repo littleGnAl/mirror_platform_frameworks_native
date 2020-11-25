@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "466784d6_d02b86ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-11-25T06:39:26Z",
+      "side": 1,
+      "message": "auto merge failure. perhaps add \"DO NOT MERGE\" in the subject and merge this one to internal manually if we agreed with the CL.",
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
