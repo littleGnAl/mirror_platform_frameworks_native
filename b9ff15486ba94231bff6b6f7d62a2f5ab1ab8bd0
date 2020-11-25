@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd6f20f_2c9818cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-25T17:44:59Z",
+      "side": 1,
+      "message": "error[E0308]: mismatched types\n   --\u003e frameworks/native/libs/binder/rust/src/binder.rs:218:45\n    |\n218 |             let raw_descriptor: *const i8 \u003d sys::AIBinder_Class_getDescriptor(self.0);\n    |                                 ---------   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `i8`, found `u8`\n    |                                 |\n    |                                 expected due to this\n    |\n    \u003d note: expected raw pointer `*const i8`\n               found raw pointer `*const u8`\n\nerror[E0308]: mismatched types\n   --\u003e frameworks/native/libs/binder/rust/src/binder.rs:219:28\n    |\n219 |             CStr::from_ptr(raw_descriptor).to_str()\n    |                            ^^^^^^^^^^^^^^ expected `u8`, found `i8`\n    |\n    \u003d note: expected raw pointer `*const u8`\n               found raw pointer `*const i8`\n\nerror: aborting due to 2 previous errors\n",
+      "revId": "b9ff15486ba94231bff6b6f7d62a2f5ab1ab8bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
