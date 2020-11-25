@@ -16,6 +16,23 @@
       "message": "auto merge failure. perhaps add \"DO NOT MERGE\" in the subject and merge this one to internal manually if we agreed with the CL.",
       "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e842a46_d696cf3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2020-11-25T08:40:28Z",
+      "side": 1,
+      "message": "LGTM, but over to stoza@# for an Owner-Review-Vote.",
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
