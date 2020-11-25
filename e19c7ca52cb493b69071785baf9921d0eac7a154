@@ -22,6 +22,30 @@
       },
       "revId": "e19c7ca52cb493b69071785baf9921d0eac7a154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b626b04f_8e6551c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-25T19:27:34Z",
+      "side": 1,
+      "message": "The sizes are dependent on the memory pressure the device experiences. (The larger these files the better indicator that there is memory issue).\n\nIn the worst case scenario, where we have extreme memory pressure continuously for 3 minutes immediately before the bug report was taken, it can be ~500KB (Not very likely, unless we have a serious memory issue). Most cases will be much less data.",
+      "parentUuid": "54208ba9_85096112",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "e19c7ca52cb493b69071785baf9921d0eac7a154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
