@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03455390_d235a427",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T09:17:16Z",
+      "side": 1,
+      "message": "I mean I cannot find other functions which use *begin_*.",
+      "parentUuid": "1abc143f_a85354cf",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 14
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7a4d8d6_f8c2722d",
         "filename": "cmds/bugreportz/bugreportz.h",
         "patchSetId": 7
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I guess the filename, if BugreportZ.h/cpp in Windows would conflict to current lower case one. DumpstateClient? It\u0027s similar to ICameraClient.",
       "parentUuid": "c7a4d8d6_f8c2722d",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "192ac981_c6683633",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T09:17:16Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "e30067f6_09783e6e",
       "range": {
         "startLine": 25,
         "startChar": 6,
@@ -190,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9efca4e_cfa08e66",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T09:17:16Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "e585e00f_888f5304",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f78d839_93a5419c",
         "filename": "cmds/bugreportz/bugreportz.h",
         "patchSetId": 7
@@ -248,6 +320,30 @@
       "side": 1,
       "message": "Can it be passed as std::unique_ptr here?",
       "parentUuid": "611f078b_42fb6910",
+      "range": {
+        "startLine": 105,
+        "startChar": 35,
+        "endLine": 105,
+        "endChar": 77
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2520729e_765f25b1",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T09:17:16Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "132d3c40_945685fc",
       "range": {
         "startLine": 105,
         "startChar": 35,
