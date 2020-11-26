@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1abc143f_a85354cf",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-26T08:49:12Z",
+      "side": 1,
+      "message": "The BEGIN message is used here\nhttps://source.corp.google.com/android/packages/modules/adb/client/bugreport.cpp;rcl\u003de70735fb3bb970e984ff455fdba966e2b8336ffc;l\u003d138\nThere is no callback similar to writing the begin message before.",
+      "parentUuid": "e9829f84_be0ea287",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 14
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7a4d8d6_f8c2722d",
         "filename": "cmds/bugreportz/bugreportz.h",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-26T07:38:31Z",
       "side": 1,
       "message": "Per sync, please have it in another header file. How about we call it BugreportZ?",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30067f6_09783e6e",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-26T08:49:12Z",
+      "side": 1,
+      "message": "I guess the filename, if BugreportZ.h/cpp in Windows would conflict to current lower case one. DumpstateClient? It\u0027s similar to ICameraClient.",
+      "parentUuid": "c7a4d8d6_f8c2722d",
       "range": {
         "startLine": 25,
         "startChar": 6,
@@ -118,6 +166,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e585e00f_888f5304",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-26T08:49:12Z",
+      "side": 1,
+      "message": "I pull these two into another class that can be injected to ctor for testing purpose. WDYT?",
+      "parentUuid": "4223321e_596f2c61",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f78d839_93a5419c",
         "filename": "cmds/bugreportz/bugreportz.h",
         "patchSetId": 7
@@ -152,6 +224,30 @@
       "writtenOn": "2020-11-26T07:38:31Z",
       "side": 1,
       "message": "It seems invoked constructor and copy. Could we use reference here?",
+      "range": {
+        "startLine": 105,
+        "startChar": 35,
+        "endLine": 105,
+        "endChar": 77
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "132d3c40_945685fc",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-26T08:49:12Z",
+      "side": 1,
+      "message": "Can it be passed as std::unique_ptr here?",
+      "parentUuid": "611f078b_42fb6910",
       "range": {
         "startLine": 105,
         "startChar": 35,
