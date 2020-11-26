@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9829f84_be0ea287",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T07:38:31Z",
+      "side": 1,
+      "message": "I cannot find the purpose of this variable. Is it necessary?",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 14
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a4d8d6_f8c2722d",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T07:38:31Z",
+      "side": 1,
+      "message": "Per sync, please have it in another header file. How about we call it BugreportZ?",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5beaccd8_0cdbef56",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T07:38:31Z",
+      "side": 1,
+      "message": "Do we need to public this class? Would it be easier we do not use this nested class? Just let DumpstateHelper implements the BnDumpstateListener.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c354322_e49aa307",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T07:38:31Z",
+      "side": 1,
+      "message": "I\u0027d suggest we do not *dup* fd in the default constructor.",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4223321e_596f2c61",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T07:38:31Z",
+      "side": 1,
+      "message": "Is it necessary we use protect for below two functions?",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f78d839_93a5419c",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T07:38:31Z",
+      "side": 1,
+      "message": "nit: too long",
+      "range": {
+        "startLine": 100,
+        "startChar": 100,
+        "endLine": 100,
+        "endChar": 107
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611f078b_42fb6910",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-26T07:38:31Z",
+      "side": 1,
+      "message": "It seems invoked constructor and copy. Could we use reference here?",
+      "range": {
+        "startLine": 105,
+        "startChar": 35,
+        "endLine": 105,
+        "endChar": 77
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
