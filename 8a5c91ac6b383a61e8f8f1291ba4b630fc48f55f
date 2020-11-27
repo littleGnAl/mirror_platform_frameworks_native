@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2016483b_6e64485f",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T06:54:39Z",
+      "side": 1,
+      "message": "nit: how about having the same naming rule with other modules such as dumpstate and dumpsys? \nFRAMEWORK_NATIVE_CMD_DUMPSTATE_CLIENT_H_",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa624b87_b368a1e6",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T06:54:39Z",
+      "side": 1,
+      "message": "Please have name space for this module. I\u0027d suggest android.os.bugreportz.",
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253bbf2f_514a34fb",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T06:54:39Z",
+      "side": 1,
+      "message": "I\u0027d rename to IInjector and move it to DumpstateClient.IInjector. You can reference the pattern in the [1].\n\n[1] http://cs/android/frameworks/base/services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java?l\u003d1004\u0026rcl\u003d3f66848501d8713427fd1a0d626dee5ef233b9e3",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd7cff0_661d3305",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T06:54:39Z",
+      "side": 1,
+      "message": "\u003d default;",
+      "range": {
+        "startLine": 38,
+        "startChar": 32,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e0360a_bbf98287",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T06:54:39Z",
+      "side": 1,
+      "message": "1. DumpstateClient(int fd, IInjector injector) for tests. And having another constructor DumpstateClient(int fd) for bugreportz.\n\n2. Please also have comments for `fd`.",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba379786_8d7815c7",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T06:54:39Z",
+      "side": 1,
+      "message": "I\u0027d rename to Injector and move it to private.",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
