@@ -143,6 +143,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "957e7201_7d3500a7",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-27T04:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "192ac981_c6683633",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5beaccd8_0cdbef56",
@@ -166,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd42614_7c26b37e",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-27T04:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5beaccd8_0cdbef56",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c354322_e49aa307",
@@ -179,6 +227,30 @@
       "writtenOn": "2020-11-26T07:38:31Z",
       "side": 1,
       "message": "I\u0027d suggest we do not *dup* fd in the default constructor.",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3fb10f_97d40052",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-27T04:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c354322_e49aa307",
       "range": {
         "startLine": 51,
         "startChar": 29,
@@ -260,6 +332,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d0b9046_d94045d5",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-27T04:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9efca4e_cfa08e66",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f78d839_93a5419c",
@@ -273,6 +369,30 @@
       "writtenOn": "2020-11-26T07:38:31Z",
       "side": 1,
       "message": "nit: too long",
+      "range": {
+        "startLine": 100,
+        "startChar": 100,
+        "endLine": 100,
+        "endChar": 107
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb21bf3b_ed9dbb95",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-27T04:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f78d839_93a5419c",
       "range": {
         "startLine": 100,
         "startChar": 100,
@@ -344,6 +464,30 @@
       "side": 1,
       "message": "Yes.",
       "parentUuid": "132d3c40_945685fc",
+      "range": {
+        "startLine": 105,
+        "startChar": 35,
+        "endLine": 105,
+        "endChar": 77
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76f8191b_b160c544",
+        "filename": "cmds/bugreportz/bugreportz.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-11-27T04:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2520729e_765f25b1",
       "range": {
         "startLine": 105,
         "startChar": 35,
