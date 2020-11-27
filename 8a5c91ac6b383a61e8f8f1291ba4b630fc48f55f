@@ -112,6 +112,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9425854f_9ddaf9df",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T08:03:27Z",
+      "side": 1,
+      "message": "WaitForXXX is better.",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba379786_8d7815c7",
         "filename": "cmds/bugreportz/DumpstateClient.h",
         "patchSetId": 9
@@ -128,6 +151,98 @@
         "startChar": 10,
         "endLine": 59,
         "endChar": 26
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c031533_be3e4bc8",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T08:03:27Z",
+      "side": 1,
+      "message": "Is it necessary to public ds_?",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 22
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e61908ca_6e3b0950",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T08:03:27Z",
+      "side": 1,
+      "message": "Could we have a order for these private functions and variables? For example, member functions -\u003e static member variables -\u003e member variables",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8553915_184734f4",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T08:03:27Z",
+      "side": 1,
+      "message": "Please have comments for this fd.",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 6
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4b0e59_6178a1c7",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-27T08:03:27Z",
+      "side": 1,
+      "message": "nit: How about WriteProgress?",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 14
       },
       "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
