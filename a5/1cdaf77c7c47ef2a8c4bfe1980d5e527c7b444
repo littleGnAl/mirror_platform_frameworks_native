@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Rahul Sabnis <rahulsabnis@google.com>
+Code-Review+1: Harpreet "Eli" Sangha <eliptus@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Autosubmit+1: Brian Stack <bstack@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 30 Nov 2020 21:24:36 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1504124
+Project: platform/frameworks/native
+Branch: refs/heads/master
