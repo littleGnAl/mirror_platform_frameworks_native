@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5f2f8e75_fcb1ce6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2020-11-30T22:46:13Z",
+      "side": 1,
+      "message": "Closing for now.",
+      "parentUuid": "f6364093_c690bbe4",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "59ecc3b69d9d5506758aa46e59f703473d4cfa0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "25e4869a_531102d8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
