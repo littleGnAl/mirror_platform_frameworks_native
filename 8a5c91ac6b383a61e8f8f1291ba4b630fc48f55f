@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46d9158e_73e7f97d",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-30T02:49:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4cf9945_f18f97d2",
+      "range": {
+        "startLine": 168,
+        "startChar": 23,
+        "endLine": 168,
+        "endChar": 32
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2016483b_6e64485f",
@@ -100,6 +124,30 @@
       "writtenOn": "2020-11-27T06:54:39Z",
       "side": 1,
       "message": "I\u0027d rename to IInjector and move it to DumpstateClient.IInjector. You can reference the pattern in the [1].\n\n[1] http://cs/android/frameworks/base/services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java?l\u003d1004\u0026rcl\u003d3f66848501d8713427fd1a0d626dee5ef233b9e3",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "8a5c91ac6b383a61e8f8f1291ba4b630fc48f55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071660d4_a6a5c320",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-11-30T02:49:29Z",
+      "side": 1,
+      "message": "My bad, there\u0027s no static nested class in c++. No need to move it to DumpstateClient. Per sync in the chat, it\u0027s fine for the naming of IDumpstateFactory.",
+      "parentUuid": "253bbf2f_514a34fb",
       "range": {
         "startLine": 35,
         "startChar": 6,
