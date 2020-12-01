@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16114ae_93139e2d",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-01T04:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03455390_d235a427",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 14
+      },
+      "revId": "2461a4315bb40e9a81d492f9c3e7f2c12857004f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7a4d8d6_f8c2722d",
