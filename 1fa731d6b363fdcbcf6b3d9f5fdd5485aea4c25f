@@ -16,6 +16,149 @@
       "message": "Looks like there a issue detected.\n\n```\nNo test results.\nframeworks/native/services/surfaceflinger/tests/unittests/TransactionApplicationTest.cpp:222: Failure\nExpected: (systemTime()) \u003c\u003d (applicationSentTime + s2ns(5)), actual: 225941571004 vs 225941219633\nframeworks/native/services/surfaceflinger/tests/unittests/TransactionApplicationTest.cpp:227: Failure\nExpected equality of these values:\n1\ntransactionQueue.size()\nWhich is: 0\nAddressSanitizer:DEADLYSIGNAL\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n[1m\u001b[31m\u003d\u003d2556\u003d\u003dERROR: AddressSanitizer: SEGV on unknown address 0x00000020 (pc 0x5f3108fb bp 0xffa5b7c8 sp 0xffa5b060 T0)\n[1m\u001b[0m\u003d\u003d2556\u003d\u003dThe signal is caused by a READ memory access.\n\u003d\u003d2556\u003d\u003dHint: address points to the zero page.\n#0 0x5f3108fb  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0xf198fb)\n#1 0x5f30e8b4  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0xf178b4)\n#2 0x5fc73c17  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x187cc17)\n#3 0x5fc7740c  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x188040c)\n#4 0x5fc79988  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x1882988)\n#5 0x5fcb0692  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x18b9692)\n#6 0x5fcaf33a  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x18b833a)\n#7 0x5e9d89bf  (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0x5e19bf)\n#8 0xf271c043  (/apex/com.android.runtime/lib/bionic/libc.so+0x50043)\n\nAddressSanitizer can not provide additional info.\nSUMMARY: AddressSanitizer: SEGV (/data/nativetest/libsurfaceflinger_unittest/libsurfaceflinger_unittest+0xf198fb)\n\u003d\u003d2556\u003d\u003dABORTING\n```",
       "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf61d0a_4cdf9447",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-12-02T21:29:49Z",
+      "side": 1,
+      "message": "A few comments/questions inline, but I am not the expert in this area. Rob, can you please take a look?",
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da56673e_ebce8fc3",
+        "filename": "services/surfaceflinger/BufferLayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-12-02T21:29:49Z",
+      "side": 1,
+      "message": "I think that we need to set mAvailableFrameNumber to the highest value of the mLocalSyncPoints getFrameNumber() as it indicates which frame numbers we can latch. Rob, what do you think?",
+      "range": {
+        "startLine": 523,
+        "startChar": 4,
+        "endLine": 523,
+        "endChar": 25
+      },
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "307c63fa_e43dad09",
+        "filename": "services/surfaceflinger/BufferQueueLayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-12-02T21:29:49Z",
+      "side": 1,
+      "message": "nit: add this to the fenceSignaled calculation, i.e. \n const bool fenceSignaled \u003d latchUnsignaledBuffers() || mQueueItems[i].mFenceTime-\u003egetSignalTime() !\u003d Fence::SIGNAL_TIME_PENDING;",
+      "range": {
+        "startLine": 186,
+        "startChar": 13,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7add49a_cc7cea43",
+        "filename": "services/surfaceflinger/BufferQueueLayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-12-02T21:29:49Z",
+      "side": 1,
+      "message": "same nit here",
+      "range": {
+        "startLine": 271,
+        "startChar": 17,
+        "endLine": 271,
+        "endChar": 30
+      },
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15123d05_a3e38631",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1979,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-12-02T21:29:49Z",
+      "side": 1,
+      "message": "why do we need to clear the notified frame number here? please add a comment that explains that",
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279d7dcc_54739a13",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3028,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-12-02T21:29:49Z",
+      "side": 1,
+      "message": "can we call clearNotifiedFrameNumber() internally from the Layer when the buffer is latched?",
+      "range": {
+        "startLine": 3028,
+        "startChar": 19,
+        "endLine": 3028,
+        "endChar": 43
+      },
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d733e6_f8243d83",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3364,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2020-12-02T21:29:49Z",
+      "side": 1,
+      "message": "why this chunk was removed?",
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
