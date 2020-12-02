@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d271e84f_3088cc59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-02T23:37:28Z",
+      "side": 1,
+      "message": "This should probably be updated to deque",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "466784d6_d02b86ed",
@@ -31,6 +54,103 @@
       "writtenOn": "2020-11-25T08:40:28Z",
       "side": 1,
       "message": "LGTM, but over to stoza@# for an Owner-Review-Vote.",
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee8e393b_34c6cc00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-02T23:37:28Z",
+      "side": 1,
+      "message": "No complaints about the logic, just some comments about code style stuff. Once we get these resolved, I\u0027ll help with merging internally to resolve the conflicts reported by presubmit.",
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffea0684_17b258d8",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-02T23:37:28Z",
+      "side": 1,
+      "message": "Since this is new code, I think we would generally prefer to use std::chrono primitives, such as std::chrono::steady_clock::{time_point,now}",
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7a79abb_1b2e14f1",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-02T23:37:28Z",
+      "side": 1,
+      "message": "Since we only ever use the default, I might just make it a static constexpr inside the method, which would also let us add:\n\n    using namespace std::chrono_literals;\n    static constexpr std::chrono::nanoseconds LOG_PERIOD \u003d 1s;\n\nWe can always make it parameterizable later if needed\n\n(Same for isTimeout above)",
+      "range": {
+        "startLine": 912,
+        "startChar": 32,
+        "endLine": 912,
+        "endChar": 65
+      },
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0300729_f4515beb",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-02T23:37:28Z",
+      "side": 1,
+      "message": "Nit: please add \u0027const\u0027 where applicable for both methods (getBarrierLayer and isTimeout) and variables. For example:\n\n  const auto now \u003d std::chrono::steady_clock::now();",
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1125df91_4ec0004e",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-02T23:37:28Z",
+      "side": 1,
+      "message": "I would initialize these here rather than in the constructor",
+      "range": {
+        "startLine": 932,
+        "startChar": 0,
+        "endLine": 933,
+        "endChar": 29
+      },
       "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
