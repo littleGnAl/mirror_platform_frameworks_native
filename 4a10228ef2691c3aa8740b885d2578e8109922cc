@@ -233,6 +233,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54c3bf5a_02b2bc7d",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-02T16:05:25Z",
+      "side": 1,
+      "message": "Maybe put it to an init() and have those path have the same date?",
+      "parentUuid": "3cbf8b16_db0d180c",
+      "range": {
+        "startLine": 82,
+        "startChar": 16,
+        "endLine": 82,
+        "endChar": 21
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32fd4467_a2b45c95",
         "filename": "cmds/bugreportz/DumpstateClient.h",
         "patchSetId": 16
@@ -244,6 +268,30 @@
       "writtenOn": "2020-12-02T13:39:07Z",
       "side": 1,
       "message": "Why do we need this?",
+      "range": {
+        "startLine": 84,
+        "startChar": 36,
+        "endLine": 84,
+        "endChar": 55
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e4c3d5_9b747f23",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-02T16:05:25Z",
+      "side": 1,
+      "message": "If we are comply with similar message unable to finish zip before to let user know where to find more information, it should be write to the output when onError. https://cs.android.com/android/platform/superproject/+/master:frameworks/native/cmds/dumpstate/dumpstate.cpp;l\u003d2475;drc\u003d105ad0c90885460f1bf2d7209d9d51580204e1cb",
+      "parentUuid": "32fd4467_a2b45c95",
       "range": {
         "startLine": 84,
         "startChar": 36,
