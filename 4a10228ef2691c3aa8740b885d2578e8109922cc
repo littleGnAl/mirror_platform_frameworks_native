@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2fb70e_83ef6715",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a69f5646_e652ffcd",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "Move to cpp",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20b738cd_cae47ad5",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e617a31a_5c4745f3",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "WaitForBugreport",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8ea8df_f19479d5",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "too long",
+      "range": {
+        "startLine": 54,
+        "startChar": 93,
+        "endLine": 54,
+        "endChar": 101
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c26888_493c9a03",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "the progress",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f471898_f35e83d0",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "Can we move these static functions such as CreateParentDirs, GetBasename, GetLocaltimeString and GetPath to cpp?",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec4c519_092f2d0d",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "too long",
+      "range": {
+        "startLine": 67,
+        "startChar": 78,
+        "endLine": 68,
+        "endChar": 6
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96deb285_37ced91c",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "It\u0027s no need to pass a argument `.zip`, since there\u0027s no other choice here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 40,
+        "endLine": 81,
+        "endChar": 46
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbf8b16_db0d180c",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "Is it necessary to be a member variable?",
+      "range": {
+        "startLine": 82,
+        "startChar": 16,
+        "endLine": 82,
+        "endChar": 21
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32fd4467_a2b45c95",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-02T13:39:07Z",
+      "side": 1,
+      "message": "Why do we need this?",
+      "range": {
+        "startLine": 84,
+        "startChar": 36,
+        "endLine": 84,
+        "endChar": 55
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
