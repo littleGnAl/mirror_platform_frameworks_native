@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe88e3f_044ca709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-03T19:29:49Z",
+      "side": 1,
+      "message": "Stephen - please revert this again once it lands, and we can add in:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1516578\n\nThis test failure is related to rust unions, and it is probably a test bug (?), but this CL is what started triggering it in our infrastructure. Sorry to have to revert.",
+      "revId": "f6b9ad98ee61149f42b6ca0bf84068d4411a92f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
