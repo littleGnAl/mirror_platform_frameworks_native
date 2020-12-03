@@ -273,6 +273,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce39b49f_28b116e2",
+        "filename": "cmds/bugreportz/bugreportz_test.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-03T13:38:19Z",
+      "side": 1,
+      "message": "Is it necessary to use rvalue here?",
+      "range": {
+        "startLine": 157,
+        "startChar": 49,
+        "endLine": 157,
+        "endChar": 58
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06fc3268_095fdf23",
         "filename": "cmds/bugreportz/bugreportz_test.cpp",
         "patchSetId": 19
