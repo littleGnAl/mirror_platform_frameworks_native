@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc5b285_24ac2a16",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-12-03T01:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d35eddd5_54eeb2e1",
+      "range": {
+        "startLine": 26,
+        "startChar": 63,
+        "endLine": 26,
+        "endChar": 81
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71e7f934_5faf66ed",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-26T19:17:50Z",
       "side": 1,
       "message": "why ignore last byte?",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b53a8e_4b548dce",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-12-03T01:03:55Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "71e7f934_5faf66ed",
       "range": {
         "startLine": 36,
         "startChar": 35,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "584c1853_008f1a16",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-12-03T01:03:55Z",
+      "side": 1,
+      "message": "Fixed in the manner other fuzzers in the base CL solve this problem, with a vector of lambda functions.",
+      "parentUuid": "e0a0e089_9683f8c1",
+      "range": {
+        "startLine": 37,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87f6be07_dac95017",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-26T19:17:50Z",
       "side": 1,
       "message": "support negative values",
+      "range": {
+        "startLine": 49,
+        "startChar": 60,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04024c40_33abb428",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-12-03T01:03:55Z",
+      "side": 1,
+      "message": "Removed this case, as moveIndent() simply checks for an overflow, and enforces a minimum-zero indent value.",
+      "parentUuid": "87f6be07_dac95017",
       "range": {
         "startLine": 49,
         "startChar": 60,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "072bf76c_dd039ec1",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-12-03T01:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9508f8db_565d6ffc",
+      "range": {
+        "startLine": 54,
+        "startChar": 31,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a4d13ee_676aec79",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-10-26T19:17:50Z",
       "side": 1,
       "message": "random string?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8612337a_ca8aad58",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-12-03T01:03:55Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "2a4d13ee_676aec79",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31e336b_08a1c7e8",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-12-03T01:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447d97b2_5c79d6fb",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b26c1c90_47350f42",
@@ -185,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ccbd903_3babe9cb",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-12-03T01:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b26c1c90_47350f42",
+      "range": {
+        "startLine": 38,
+        "startChar": 49,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67d450ea_28545690",
@@ -198,6 +390,30 @@
       "writtenOn": "2020-10-26T19:17:50Z",
       "side": 1,
       "message": "Are we sure this won\u0027t hit the intentional fatal logs in this function?\n\n            LOG_FATAL_IF(cur-\u003efree,\n                \"block at offset 0x%08lX of size 0x%08X already freed\",\n                cur-\u003estart*kMemoryAlign, cur-\u003esize*kMemoryAlign);",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "71fb2059f774f0e5a42f19dd6b789dd41249d1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e6b68b0_500ccd3e",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2020-12-03T01:03:55Z",
+      "side": 1,
+      "message": "Added check to prevent this.",
+      "parentUuid": "67d450ea_28545690",
       "range": {
         "startLine": 49,
         "startChar": 24,
