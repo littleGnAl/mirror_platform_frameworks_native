@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78598d04_f364e4ed",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-03T21:58:50Z",
+      "side": 1,
+      "message": "hey - fyi, had a chance to play with this API a bit. Realized that you don\u0027t need a custom function to do it:\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/parcel_fuzzer/random_fd.cpp;l\u003d27;drc\u003d362e4da21fe93e231ae60960ad6dbcdb21930d5a",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "42b2695656254ecec4304918d822e27e44702c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d4cd7c4_a9154cee",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-03T21:58:50Z",
+      "side": 1,
+      "message": "nit: maybe avoid extra header, since these are small files, and it\u0027s easier to read with them combined?",
+      "revId": "42b2695656254ecec4304918d822e27e44702c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5408f8_58bf308b",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-03T21:58:50Z",
+      "side": 1,
+      "message": "use \u0027g\u0027 over \u0027k\u0027 for non-cost data, but this could avoid being global",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "42b2695656254ecec4304918d822e27e44702c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a5acf8_c48c0f20",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-03T21:58:50Z",
+      "side": 1,
+      "message": "bTextOutput (casing)",
+      "range": {
+        "startLine": 37,
+        "startChar": 63,
+        "endLine": 37,
+        "endChar": 76
+      },
+      "revId": "42b2695656254ecec4304918d822e27e44702c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccd9263d_d1d451de",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-03T21:58:50Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "42b2695656254ecec4304918d822e27e44702c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
