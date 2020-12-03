@@ -592,7 +592,9 @@ macro_rules! declare_binder_interface {
                         // pointer.
                         return Ok(Box::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?));
                     }
-                } else if ibinder.associate_class(<$native as $crate::Remotable>::get_class()) {
+                }
+
+                if ibinder.associate_class(<$native as $crate::Remotable>::get_class()) {
                     let service: $crate::Result<$crate::Binder<$native>> =
                         std::convert::TryFrom::try_from(ibinder.clone());
                     if let Ok(service) = service {

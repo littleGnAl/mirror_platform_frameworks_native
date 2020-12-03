@@ -482,4 +482,17 @@ mod tests {
         let _interface: Box<dyn ITestSameDescriptor> = FromIBinder::try_from(service.as_binder())
             .expect("Could not re-interpret service as the ITestSameDescriptor interface");
     }
+
+    /// Test that we can round-trip a rust service through a generic IBinder
+    #[test]
+    fn reassociate_rust_binder() {
+        let service_name = "testing_service";
+        let service_ibinder = BnTest::new_binder(TestService { s: service_name.to_string() })
+            .as_binder();
+
+        let service: Box<dyn ITest> = service_ibinder.into_interface()
+            .expect("Could not reassociate the generic ibinder");
+
+        assert_eq!(service.test().unwrap(), service_name);
+    }
 }
