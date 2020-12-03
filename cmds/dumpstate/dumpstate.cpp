@@ -1777,6 +1777,27 @@ static Dumpstate::RunStatus dumpstate() {
  * with the caller.
  */
 Dumpstate::RunStatus Dumpstate::DumpstateDefaultAfterCritical() {
+    // If a background system trace is happening and is marked as "suitable for
+    // bugreport" (i.e. bugreport_score > 0 in the trace config), this command
+    // will stop it and serialize into
+    // /data/misc/perfetto-traces/bugreport.pftrace . In the (likely) case that
+    // no trace is ongoing, this command is a no-op.
+    // --background is to avoid waiting for the file serialization to complete.
+    //
+    // TODO(before landing): explain that the file itself is not picked up in
+    // the .zip (or re-discuss that). If we want to do that, then we should move
+    // this into the dump_pool_.
+    // TODO(before landing): need some RedirectToDevNull to avoid
+    // shell_data_access to perfetto.te.
+    RunCommand(
+        "SERIALIZE PERFETTO TRACE",
+        {"perfetto", "--save-for-bugreport", "--background"},
+        CommandOptions::WithTimeout(10)
+            .Always()
+            .DropRoot()
+            .RedirectStderr()
+            .Build());
+
     // Capture first logcat early on; useful to take a snapshot before dumpstate logs take over the
     // buffer.
     DoLogcat();
