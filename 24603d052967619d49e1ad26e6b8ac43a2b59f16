@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb656bc_0586103d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-04T04:28:54Z",
+      "side": 1,
+      "message": "mines are minor..",
+      "revId": "24603d052967619d49e1ad26e6b8ac43a2b59f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926ebe94_cd5ecece",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-04T04:28:54Z",
+      "side": 1,
+      "message": "we don\u0027t return an error? perhaps not worth as we don\u0027t handle the case for other functions...",
+      "range": {
+        "startLine": 346,
+        "startChar": 24,
+        "endLine": 346,
+        "endChar": 40
+      },
+      "revId": "24603d052967619d49e1ad26e6b8ac43a2b59f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1048e0a0_fa6d064d",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-04T04:28:54Z",
+      "side": 1,
+      "message": "delete?",
+      "range": {
+        "startLine": 90,
+        "startChar": 35,
+        "endLine": 90,
+        "endChar": 46
+      },
+      "revId": "24603d052967619d49e1ad26e6b8ac43a2b59f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8462e2e6_48623023",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-04T04:28:54Z",
+      "side": 1,
+      "message": "Just for curiosity. Why isn\u0027t this turned on by default, which seems to be the case for hwbinder?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 53
+      },
+      "revId": "24603d052967619d49e1ad26e6b8ac43a2b59f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
