@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d44cf7f_c5e1a691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-12-04T06:08:58Z",
+      "side": 1,
+      "message": "This contains the fix from https://android-review.googlesource.com/c/platform/frameworks/native/+/1516033 which was necessary for aidl_integration_test.\n\nI still need to check b/174755270, which I\u0027ll do as soon as I get a functional laptop again, i.e. later this evening.",
+      "revId": "669deb62b747ec7b82be049fb8fec60108566638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
