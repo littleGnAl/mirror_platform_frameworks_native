@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9969cedf_b2af712b",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-04T04:37:53Z",
+      "side": 1,
+      "message": "why can\u0027t we use `parcel !\u003d nullptr`?",
+      "range": {
+        "startLine": 432,
+        "startChar": 38,
+        "endLine": 432,
+        "endChar": 46
+      },
+      "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8b74cbf_e6247d9b",
         "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2020-12-04T02:24:16Z",
       "side": 1,
       "message": "These weak symbols are required because APEX targeting earlier API levels are built with __ANDROID_API__ 31, but using stubs w/o the required symbols available (if you remove the weak symbol, you get linking errors).\n\nI suspect we really want to be compiling those APEX libraries w/o setting __ANDROD_API__. Is this a KI?",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 5
+      },
+      "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c29467a1_5df18c6d",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-04T04:37:53Z",
+      "side": 1,
+      "message": "In the near future, we should be able to change this (both the if check and the #if conditional) to `__builtin_available(android 30,*)`.\nFor now, this is fine. It would great if you leave a TODO here.",
+      "parentUuid": "c8b74cbf_e6247d9b",
       "range": {
         "startLine": 438,
         "startChar": 0,
