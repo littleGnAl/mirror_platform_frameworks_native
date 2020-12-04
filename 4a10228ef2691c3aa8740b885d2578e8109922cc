@@ -540,6 +540,30 @@
       },
       "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f28c7a_541ea5da",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Discussed offline. Remove it.",
+      "parentUuid": "98e4c3d5_9b747f23",
+      "range": {
+        "startLine": 84,
+        "startChar": 36,
+        "endLine": 84,
+        "endChar": 55
+      },
+      "revId": "4a10228ef2691c3aa8740b885d2578e8109922cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

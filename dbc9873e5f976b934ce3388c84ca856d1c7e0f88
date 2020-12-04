@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f74c1eff_46320f50",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d5460b5_cfbc77f2",
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4469d597_84ef1493",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-03T13:23:39Z",
       "side": 1,
       "message": "No need, we already write progress to the stdout.",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 66
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4653a7cb_f91d0311",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4469d597_84ef1493",
       "range": {
         "startLine": 138,
         "startChar": 4,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c94b3518_b34edf39",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17c7f1a_cd5f8480",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 140,
+        "endChar": 42
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b96b667_a6afa953",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-12-03T13:23:39Z",
       "side": 1,
       "message": "WriteProgress?",
+      "range": {
+        "startLine": 161,
+        "startChar": 8,
+        "endLine": 161,
+        "endChar": 14
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4769c88a_96bbc842",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b96b667_a6afa953",
       "range": {
         "startLine": 161,
         "startChar": 8,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3acc6578_b3b8cb7a",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32f124de_8d721fd3",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 15
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96d00282_ec34c10f",
@@ -123,6 +237,30 @@
       "writtenOn": "2020-12-03T13:23:39Z",
       "side": 1,
       "message": "A getBugreportName function here is better.",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 195,
+        "endChar": 41
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0801d563_0945f18a",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96d00282_ec34c10f",
       "range": {
         "startLine": 183,
         "startChar": 4,
@@ -156,6 +294,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca05c158_40d4a329",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3e8a2ec_bc76077f",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 7
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99584ee4_836e8c4c",
@@ -169,6 +331,30 @@
       "writtenOn": "2020-12-03T13:23:39Z",
       "side": 1,
       "message": "Should we return false if there\u0027s an onError callback from listener?",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 8
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba15602e_28284014",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99584ee4_836e8c4c",
       "range": {
         "startLine": 47,
         "startChar": 4,
@@ -202,6 +388,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caa5897e_686e7d11",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2d0ed9a_d21e64ae",
+      "range": {
+        "startLine": 66,
+        "startChar": 16,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "030e1456_e869f37f",
@@ -225,6 +435,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32e4bae_a99de6b7",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "030e1456_e869f37f",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 67
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9448fa2_e7ebd7da",
@@ -238,6 +472,30 @@
       "writtenOn": "2020-12-03T13:23:39Z",
       "side": 1,
       "message": "Why do we need this lock?",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db09c83_9c3dfc99",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Used in dumpstate test, not here. Remove it.",
+      "parentUuid": "c9448fa2_e7ebd7da",
       "range": {
         "startLine": 84,
         "startChar": 15,
@@ -273,6 +531,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b984e2c_04e00515",
+        "filename": "cmds/bugreportz/bugreportz_test.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "A trick to use a simpler, readable interface without the params we are not interest in tests.\n\nhttps://github.com/google/googletest/blob/master/googlemock/docs/cook_book.md#simplifying-the-interface-without-breaking-existing-code-simplerinterfaces",
+      "parentUuid": "4f6ffc04_fe6cc827",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce39b49f_28b116e2",
         "filename": "cmds/bugreportz/bugreportz_test.cpp",
         "patchSetId": 19
@@ -284,6 +566,30 @@
       "writtenOn": "2020-12-03T13:38:19Z",
       "side": 1,
       "message": "Is it necessary to use rvalue here?",
+      "range": {
+        "startLine": 157,
+        "startChar": 49,
+        "endLine": 157,
+        "endChar": 58
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d420d087_0cd42a42",
+        "filename": "cmds/bugreportz/bugreportz_test.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce39b49f_28b116e2",
       "range": {
         "startLine": 157,
         "startChar": 49,
@@ -317,6 +623,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe1a1a7_ea4bc6f2",
+        "filename": "cmds/bugreportz/bugreportz_test.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06fc3268_095fdf23",
+      "range": {
+        "startLine": 173,
+        "startChar": 29,
+        "endLine": 173,
+        "endChar": 36
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e42273d2_92b75982",
@@ -330,6 +660,30 @@
       "writtenOn": "2020-12-03T13:23:39Z",
       "side": 1,
       "message": "We dup a fd here. But I don\u0027t see close fd. It seems a fd leakage. How about we just pass STDOUT_FILENO to DumpstateClient.",
+      "range": {
+        "startLine": 87,
+        "startChar": 31,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c6ec5d_04ca9122",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-04T12:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e42273d2_92b75982",
       "range": {
         "startLine": 87,
         "startChar": 31,
