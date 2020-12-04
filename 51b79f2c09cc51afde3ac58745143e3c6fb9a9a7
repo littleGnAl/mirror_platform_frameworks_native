@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d1f0cc_690b9110",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T20:49:17Z",
+      "side": 1,
+      "message": "This is whether a parcelable is present (the thing being written to the parcel), not the parcel.",
+      "parentUuid": "9969cedf_b2af712b",
+      "range": {
+        "startLine": 432,
+        "startChar": 38,
+        "endLine": 432,
+        "endChar": 46
+      },
+      "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8b74cbf_e6247d9b",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "In the near future, we should be able to change this (both the if check and the #if conditional) to `__builtin_available(android 30,*)`.\nFor now, this is fine. It would great if you leave a TODO here.",
       "parentUuid": "c8b74cbf_e6247d9b",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 5
+      },
+      "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89126de8_d1bb1f20",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T20:49:17Z",
+      "side": 1,
+      "message": "I\u0027ll refrain from TODO for now, b/c once we have that feature, I suspect we should be looking at all weak symbols, to clean them up.",
+      "parentUuid": "c29467a1_5df18c6d",
       "range": {
         "startLine": 438,
         "startChar": 0,
