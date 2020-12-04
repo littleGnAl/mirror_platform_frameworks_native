@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c881f1c5_ec2841ce",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T19:18:40Z",
+      "side": 1,
+      "message": "This is unreachable (Android malloc aborts when it can\u0027t allocate memory). I\u0027ve been meaning to clean this up in general in libbinder, but preserved for consistency.",
+      "parentUuid": "926ebe94_cd5ecece",
+      "range": {
+        "startLine": 346,
+        "startChar": 24,
+        "endLine": 346,
+        "endChar": 40
+      },
+      "revId": "24603d052967619d49e1ad26e6b8ac43a2b59f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1048e0a0_fa6d064d",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8a163b_4ecbc9fe",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T19:18:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1048e0a0_fa6d064d",
+      "range": {
+        "startLine": 90,
+        "startChar": 35,
+        "endLine": 90,
+        "endChar": 46
+      },
+      "revId": "24603d052967619d49e1ad26e6b8ac43a2b59f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8462e2e6_48623023",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-04T04:28:54Z",
       "side": 1,
       "message": "Just for curiosity. Why isn\u0027t this turned on by default, which seems to be the case for hwbinder?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 53
+      },
+      "revId": "24603d052967619d49e1ad26e6b8ac43a2b59f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868afa90_7130049f",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T19:18:40Z",
+      "side": 1,
+      "message": "Real time processes shouldn\u0027t make arbitrary binder calls on critical paths, and this could result in too much code running at too high of a priority.\n\nEnabling it globally would require some serious perf analysis.",
+      "parentUuid": "8462e2e6_48623023",
       "range": {
         "startLine": 92,
         "startChar": 0,
