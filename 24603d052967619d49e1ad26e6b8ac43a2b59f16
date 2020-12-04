@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d262d0_178fa393",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T22:49:33Z",
+      "side": 1,
+      "message": "*not malloc, but new, on L429, see also b/170916510#comment8",
+      "parentUuid": "c881f1c5_ec2841ce",
+      "range": {
+        "startLine": 346,
+        "startChar": 24,
+        "endLine": 346,
+        "endChar": 40
+      },
+      "revId": "24603d052967619d49e1ad26e6b8ac43a2b59f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1048e0a0_fa6d064d",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Real time processes shouldn\u0027t make arbitrary binder calls on critical paths, and this could result in too much code running at too high of a priority.\n\nEnabling it globally would require some serious perf analysis.",
       "parentUuid": "8462e2e6_48623023",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 53
+      },
+      "revId": "24603d052967619d49e1ad26e6b8ac43a2b59f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe609b75_4858337f",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T22:49:33Z",
+      "side": 1,
+      "message": "(note, going to go ahead and submit this, but if you\u0027re more than curious, we could start a thread/analysis for this)",
+      "parentUuid": "868afa90_7130049f",
       "range": {
         "startLine": 92,
         "startChar": 0,
