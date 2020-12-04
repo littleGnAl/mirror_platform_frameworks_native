@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381e0d55_3706f815",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-12-04T02:14:05Z",
+      "side": 1,
+      "message": "can you clarify what the VDS consumer is? It seems to me from the patch details that reallocation is propagated to a component that holds the producer end",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "57916d8282cb39fe88bf9d680a658d20fcc88c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "141e1258_8914e026",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-12-04T02:14:05Z",
+      "side": 1,
+      "message": "nit: When dequeuing from the source",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "57916d8282cb39fe88bf9d680a658d20fcc88c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b23e4cf_e98f075d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-12-04T02:14:05Z",
+      "side": 1,
+      "message": "nit: is",
+      "range": {
+        "startLine": 10,
+        "startChar": 47,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "57916d8282cb39fe88bf9d680a658d20fcc88c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a8e1035_0abe9fed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-12-04T02:14:05Z",
+      "side": 1,
+      "message": "nit: GLES to render",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "57916d8282cb39fe88bf9d680a658d20fcc88c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
