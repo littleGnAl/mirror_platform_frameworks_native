@@ -669,4 +669,18 @@ AParcel* AParcel_create() {
     return new AParcel(nullptr);
 }
 
+binder_status_t AParcel_readParcelableHeader(const AParcel* parcel, bool* present) {
+    // b/174091815 - this format is frozen by clients targeting API level <= 30.
+    int32_t value;
+    binder_status_t ret = AParcel_readInt32(parcel, &value);
+    if (ret == STATUS_OK) {
+        *present = (value != 0);
+    }
+    return ret;
+}
+
+binder_status_t AParcel_writeParcelableHeader(AParcel* parcel, bool present) {
+    return AParcel_writeInt32(parcel, present ? 1 : 0);
+}
+
 // @END

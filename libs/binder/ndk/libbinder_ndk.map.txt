@@ -125,7 +125,9 @@ LIBBINDER_NDK31 { # introduced=31
     AParcel_appendFrom;
     AParcel_create;
     AParcel_getDataSize;
+    AParcel_readParcelableHeader;
     AParcel_reset;
+    AParcel_writeParcelableHeader;
 };
 
 LIBBINDER_NDK_PLATFORM {
