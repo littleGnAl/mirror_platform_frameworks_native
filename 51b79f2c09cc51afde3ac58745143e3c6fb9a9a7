@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8b74cbf_e6247d9b",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T02:24:16Z",
+      "side": 1,
+      "message": "These weak symbols are required because APEX targeting earlier API levels are built with __ANDROID_API__ 31, but using stubs w/o the required symbols available (if you remove the weak symbol, you get linking errors).\n\nI suspect we really want to be compiling those APEX libraries w/o setting __ANDROD_API__. Is this a KI?",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 5
+      },
+      "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
