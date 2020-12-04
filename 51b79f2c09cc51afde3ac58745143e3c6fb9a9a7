@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e24bf3a8_08602db2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T22:53:50Z",
+      "side": 1,
+      "message": "That code is calling writeParcelable\u0026friends which used to be in C++ headers, but now they delegate some functionality to libbinder_ndk via the added functions.",
+      "parentUuid": "f376f768_03781d63",
+      "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9969cedf_b2af712b",
         "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
         "patchSetId": 1
