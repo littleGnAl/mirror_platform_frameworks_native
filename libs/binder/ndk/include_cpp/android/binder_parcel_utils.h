@@ -421,12 +421,39 @@ static inline binder_status_t AParcel_readVector(
             AParcel_nullableStdVectorStringElementAllocator);
 }
 
+namespace internal {
+
+static inline binder_status_t AParcel_writeParcelableHeaderHelper(AParcel* parcel, bool present) {
+#if __ANDROID_API__ >= 31
+    if (AParcel_writeParcelableHeader != nullptr) {
+        return AParcel_writeParcelableHeader(parcel, present);
+    }
+#endif
+    return AParcel_writeInt32(parcel, present ? 1 : 0);
+}
+
+static inline binder_status_t AParcel_readParcelableHeaderHelper(const AParcel* parcel,
+                                                                 bool* present) {
+#if __ANDROID_API__ >= 31
+    if (AParcel_readParcelableHeader != nullptr) {
+        return AParcel_readParcelableHeader(parcel, present);
+    }
+#endif
+    int32_t header = 0;
+    binder_status_t status = AParcel_readInt32(parcel, &header);
+    *present = header != 0;
+    return status;
+}
+
+}  // namespace internal
+
 /**
  * Convenience API for writing a non-null parcelable.
  */
 template <typename P>
 static inline binder_status_t AParcel_writeParcelable(AParcel* parcel, const P& p) {
-    binder_status_t status = AParcel_writeInt32(parcel, 1);  // non-null
+    binder_status_t status =
+            internal::AParcel_writeParcelableHeaderHelper(parcel, true /*present*/);
     if (status != STATUS_OK) {
         return status;
     }
@@ -438,12 +465,12 @@ static inline binder_status_t AParcel_writeParcelable(AParcel* parcel, const P& 
  */
 template <typename P>
 static inline binder_status_t AParcel_readParcelable(const AParcel* parcel, P* p) {
-    int32_t null;
-    binder_status_t status = AParcel_readInt32(parcel, &null);
+    bool present;
+    binder_status_t status = internal::AParcel_readParcelableHeaderHelper(parcel, &present);
     if (status != STATUS_OK) {
         return status;
     }
-    if (null == 0) {
+    if (!present) {
         return STATUS_UNEXPECTED_NULL;
     }
     return p->readFromParcel(parcel);
@@ -456,9 +483,10 @@ template <typename P>
 static inline binder_status_t AParcel_writeNullableParcelable(AParcel* parcel,
                                                               const std::optional<P>& p) {
     if (p == std::nullopt) {
-        return AParcel_writeInt32(parcel, 0);  // null
+        return internal::AParcel_writeParcelableHeaderHelper(parcel, false /*present*/);
     }
-    binder_status_t status = AParcel_writeInt32(parcel, 1);  // non-null
+    binder_status_t status =
+            internal::AParcel_writeParcelableHeaderHelper(parcel, true /*present*/);
     if (status != STATUS_OK) {
         return status;
     }
@@ -471,12 +499,12 @@ static inline binder_status_t AParcel_writeNullableParcelable(AParcel* parcel,
 template <typename P>
 static inline binder_status_t AParcel_readNullableParcelable(const AParcel* parcel,
                                                              std::optional<P>* p) {
-    int32_t null;
-    binder_status_t status = AParcel_readInt32(parcel, &null);
+    bool present;
+    binder_status_t status = internal::AParcel_readParcelableHeaderHelper(parcel, &present);
     if (status != STATUS_OK) {
         return status;
     }
-    if (null == 0) {
+    if (!present) {
         *p = std::nullopt;
         return STATUS_OK;
     }

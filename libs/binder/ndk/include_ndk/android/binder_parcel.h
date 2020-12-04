@@ -1166,6 +1166,30 @@ binder_status_t AParcel_appendFrom(const AParcel* from, AParcel* to, int32_t sta
  * \return A parcel which is not related to any IBinder objects.
  */
 AParcel* AParcel_create() __INTRODUCED_IN(31);
+
+/**
+ * Reads the header for the parcelable.
+ *
+ * Available since API level 31.
+ *
+ * \param parcel Parcel to read data from
+ * \param parcelPresent Whether a parcel follows.
+ */
+__attribute__((weak)) binder_status_t AParcel_readParcelableHeader(const AParcel* parcel,
+                                                                   bool* present)
+        __INTRODUCED_IN(31);
+
+/**
+ * Writes the header for the parcelable.
+ *
+ * Available since API level 31.
+ *
+ * \param parcel Parcel to read data from
+ * \param parcelPresent Whether a parcel follows.
+ */
+__attribute__((weak)) binder_status_t AParcel_writeParcelableHeader(AParcel* parcel, bool present)
+        __INTRODUCED_IN(31);
+
 #endif  //__ANDROID_API__ >= 31
 __END_DECLS
 
