@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70eed049_a3d703e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T22:36:57Z",
+      "side": 1,
+      "message": "weird - meant to comment this. CtsNdkBinderTestCases already tests these APIs, since it is built against the current API level.",
+      "parentUuid": "bcbc8943_8fe8a024",
+      "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9969cedf_b2af712b",
@@ -153,6 +171,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a2f06c_2793cec5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T22:36:57Z",
+      "side": 1,
+      "message": "Done (at parity with existing APIs)",
+      "parentUuid": "0240bacd_3c9ee17d",
+      "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a660a66_d0123d67",
@@ -170,6 +206,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d0c70b_be09ea08",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T22:36:57Z",
+      "side": 1,
+      "message": "see other thread - because the APEX build system requires it that way in order for things to compile.",
+      "parentUuid": "1a660a66_d0123d67",
+      "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "095fbf43_c1e98f5c",
@@ -183,6 +237,24 @@
       "writtenOn": "2020-12-04T21:28:41Z",
       "side": 1,
       "message": "Same here as the two comments above.",
+      "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef72580_2c15814a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-04T22:36:57Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "095fbf43_c1e98f5c",
       "revId": "51b79f2c09cc51afde3ac58745143e3c6fb9a9a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
