@@ -246,6 +246,21 @@ status_t BpBinder::transact(
 }
 
 // NOLINTNEXTLINE(google-default-arguments)
+status_t BpBinder::transact(
+    uint32_t code, const Parcel& data, ParcelRef* reply, uint32_t flags)
+{
+    // Once a binder has died, it will never come back to life.
+    if (mAlive) {
+        status_t status = IPCThreadState::self()->transact(
+            mHandle, code, data, reply, flags);
+        if (status == DEAD_OBJECT) mAlive = 0;
+        return status;
+    }
+
+    return DEAD_OBJECT;
+}
+
+// NOLINTNEXTLINE(google-default-arguments)
 status_t BpBinder::linkToDeath(
     const sp<DeathRecipient>& recipient, void* cookie, uint32_t flags)
 {

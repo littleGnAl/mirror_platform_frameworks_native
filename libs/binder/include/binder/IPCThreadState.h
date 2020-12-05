@@ -28,6 +28,7 @@ typedef  int  uid_t;
 // ---------------------------------------------------------------------------
 namespace android {
 
+class ParcelRef;
 class IPCThreadState
 {
 public:
@@ -119,6 +120,12 @@ public:
             status_t            transact(int32_t handle,
                                          uint32_t code, const Parcel& data,
                                          Parcel* reply, uint32_t flags);
+
+            // Internal only.
+            // @internal
+            status_t            transact(int32_t handle,
+                                         uint32_t code, const Parcel& data,
+                                         ParcelRef* reply, uint32_t flags);
 
             void                incStrongHandle(int32_t handle, BpBinder *proxy);
             void                decStrongHandle(int32_t handle);
