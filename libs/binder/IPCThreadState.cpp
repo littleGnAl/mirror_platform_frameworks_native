@@ -20,6 +20,7 @@
 
 #include <binder/Binder.h>
 #include <binder/BpBinder.h>
+#include <binder/ParcelRef.h>
 #include <binder/TextOutput.h>
 
 #include <android-base/macros.h>
@@ -654,6 +655,28 @@ void IPCThreadState::stopProcess(bool /*immediate*/)
     mProcess->mDriverFD = -1;
     close(fd);
     //kill(getpid(), SIGKILL);
+}
+
+status_t IPCThreadState::transact(int32_t handle,
+                                  uint32_t code, const Parcel& data,
+                                  ParcelRef* reply, uint32_t flags)
+{
+    if (reply) {
+        // create a temp reference
+        reply->incStrong(mProcess.get());
+    }
+
+    Parcel * const base = reply;
+    const status_t err = transact(handle,
+                                  code, data,
+                                  base, flags);
+
+    if (reply) {
+        // create a temp reference
+        mPostWriteStrongDerefs.push(reply);
+    }
+
+    return err;
 }
 
 status_t IPCThreadState::transact(int32_t handle,
