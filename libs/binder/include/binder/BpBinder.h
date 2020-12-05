@@ -32,6 +32,8 @@ class Stability;
 
 using binder_proxy_limit_callback = void(*)(int);
 
+class ParcelRef;
+
 class BpBinder : public IBinder
 {
 public:
@@ -49,6 +51,14 @@ public:
                                     const Parcel& data,
                                     Parcel* reply,
                                     uint32_t flags = 0) final;
+
+    // Internal only.
+    // @internal
+    // NOLINTNEXTLINE(google-default-arguments)
+            status_t    transact(   uint32_t code,
+                                    const Parcel& data,
+                                    ParcelRef* reply,
+                                    uint32_t flags = 0);
 
     // NOLINTNEXTLINE(google-default-arguments)
     virtual status_t    linkToDeath(const sp<DeathRecipient>& recipient,
