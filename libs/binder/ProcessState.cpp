@@ -289,7 +289,7 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
 
                 Parcel data;
                 status_t status = ipc->transact(
-                        0, IBinder::PING_TRANSACTION, data, nullptr, 0);
+                        0, IBinder::PING_TRANSACTION, data, (Parcel*)nullptr, 0);
 
                 ipc->setCallRestriction(originalCallRestriction);
 
