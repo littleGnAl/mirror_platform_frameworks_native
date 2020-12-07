@@ -547,6 +547,30 @@
       },
       "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe946a7_87e28415",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 2810,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T15:09:51Z",
+      "side": 1,
+      "message": "Enabling `do_progress_updates` will also enable `do_early_screenshot_` not needed by default mode. Adding exception checks to these 2 seems a bit strange.",
+      "parentUuid": "27bfed3e_c4273c05",
+      "range": {
+        "startLine": 2806,
+        "startChar": 4,
+        "endLine": 2810,
+        "endChar": 5
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
