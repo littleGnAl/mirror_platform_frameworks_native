@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3257b48d_21841f78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-12-07T18:20:21Z",
+      "side": 1,
+      "message": "there needs to be direct test coverage of these new additions, it\u0027s not sufficient to be used indirectly by the AIDL generator currently.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "e1644d6b9d78db885474f5384cba1fde92148263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e40b0b53_b8c8c525",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-12-07T18:03:53Z",
       "side": 1,
       "message": "(friendly ping for review)",
+      "revId": "e1644d6b9d78db885474f5384cba1fde92148263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e854845_34bf5b30",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-12-07T18:20:21Z",
+      "side": 1,
+      "message": "what is a parcelable header and why would I use this? The docs here need more detail \u0026 information.",
       "revId": "e1644d6b9d78db885474f5384cba1fde92148263",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
