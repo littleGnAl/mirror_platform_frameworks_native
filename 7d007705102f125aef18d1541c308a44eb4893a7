@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d097dce1_cf297064",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-07T18:37:13Z",
+      "side": 1,
+      "message": "@jeongik - this is different than the C++ backend, because we don\u0027t save mParcelable, and we can\u0027t compare based on that. Is that an intentional difference?",
+      "range": {
+        "startLine": 118,
+        "startChar": 24,
+        "endLine": 118,
+        "endChar": 31
+      },
+      "revId": "7d007705102f125aef18d1541c308a44eb4893a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
