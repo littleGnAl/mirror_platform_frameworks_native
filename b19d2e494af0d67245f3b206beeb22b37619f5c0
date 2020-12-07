@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a0a2cc3c_29545def",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T08:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced29c78_e1d70701",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cc4e853c_3f2619f4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 20
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ec36fd_20da25ff",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T08:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc1333af_81a9dc4c",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e1c9de2_867b3825",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-07T05:15:39Z",
       "side": 1,
       "message": "Could you explain why we need this std::move here?",
+      "range": {
+        "startLine": 204,
+        "startChar": 51,
+        "endLine": 204,
+        "endChar": 64
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5d9077_a5401668",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T08:05:15Z",
+      "side": 1,
+      "message": "Clang-Tidy suggest pass by value and use std::move here.\n\u003e\u003e Parameter \u0027ds\u0027 is passed by value and only copied once; consider moving it to avoid unnecessary copies\n\nI think it\u0027s true generally, but false when testing.",
+      "parentUuid": "2e1c9de2_867b3825",
       "range": {
         "startLine": 204,
         "startChar": 51,
@@ -111,6 +183,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f5348b3_cef29a11",
+        "filename": "cmds/bugreportz/DumpstateClient.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T08:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d24d7739_4152f921",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 102
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c758a73_2287d2a0",
@@ -124,6 +220,30 @@
       "writtenOn": "2020-12-07T03:33:13Z",
       "side": 1,
       "message": "We shall return immediately, if StartBugreport is fail.",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e66397_88368f74",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T08:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c758a73_2287d2a0",
       "range": {
         "startLine": 26,
         "startChar": 8,
@@ -157,6 +277,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e517508_f246a096",
+        "filename": "cmds/bugreportz/bugreportz_test.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T08:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "577e34aa_a963ad26",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 35
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33b1d3f8_b6f09a51",
@@ -170,6 +314,30 @@
       "writtenOn": "2020-12-07T02:47:46Z",
       "side": 1,
       "message": "I thought we shall always stop process when it exits.",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e275fc_83efa855",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T08:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b1d3f8_b6f09a51",
       "range": {
         "startLine": 91,
         "startChar": 12,
@@ -197,6 +365,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4cfc0b3_b15405b6",
+        "filename": "cmds/bugreportz/testDumpstateClient.plantuml",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T08:05:15Z",
+      "side": 1,
+      "message": "Unintented upload. Remove it.",
+      "parentUuid": "1d22d5a1_5efb9bf9",
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "661d2d80_f883e2b8",
@@ -220,6 +406,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea8dc58_a6674a4a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 2785,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T08:05:15Z",
+      "side": 1,
+      "message": "No.\nBut we need a way to call listener_-\u003eonProgress() in UpdateProgress() that is guarded by do_progress_updates.",
+      "parentUuid": "661d2d80_f883e2b8",
+      "range": {
+        "startLine": 2782,
+        "startChar": 4,
+        "endLine": 2785,
+        "endChar": 45
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee2e43d5_e75fadf1",
@@ -233,6 +443,30 @@
       "writtenOn": "2020-12-07T04:42:02Z",
       "side": 1,
       "message": "Since progress 0 can be reported multiple times, is it necessary to have this change here?",
+      "range": {
+        "startLine": 2806,
+        "startChar": 4,
+        "endLine": 2810,
+        "endChar": 5
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "032c0c8f_751fa748",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 2810,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-07T08:05:15Z",
+      "side": 1,
+      "message": "For a quick report like limit mode without this, there is no seperate true BEGIN progress to be received and the first progress received would be the BEGIN message in current implementation. This is not the BEGIN message tend to do and the litener have no callback like onBegin to do that. I think the chioces would be 1) no BEGIN in the litener 2) have a similiar behavior like this change. WDYT?",
+      "parentUuid": "ee2e43d5_e75fadf1",
       "range": {
         "startLine": 2806,
         "startChar": 4,
