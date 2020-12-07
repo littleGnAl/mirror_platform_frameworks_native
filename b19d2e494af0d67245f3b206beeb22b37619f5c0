@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc1333af_81a9dc4c",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T04:20:26Z",
+      "side": 1,
+      "message": "Since we link to death in the StartBugreport, how about unlink the death in the WaitForBugreport?",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d24d7739_4152f921",
         "filename": "cmds/bugreportz/DumpstateClient.h",
         "patchSetId": 20
