@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f21ab39a_5c73318c",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-07T17:45:22Z",
+      "side": 1,
+      "message": "is there a way we can avoid needing separate copies of the transact functions? For instance, maybe we could actually find space inside of \"Parcel\" to store the required data (and avoid the code duplication here)?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "f37ae65f09701033cecde9a2b61f319b780a219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36f078e4_f51ee5e7",
+        "filename": "libs/binder/include/binder/ParcelRef.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-07T17:45:22Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f37ae65f09701033cecde9a2b61f319b780a219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec9877c0_4726d04a",
+        "filename": "libs/binder/include/binder/ParcelRef.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-07T17:45:22Z",
+      "side": 1,
+      "message": "#pragma once",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "f37ae65f09701033cecde9a2b61f319b780a219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
