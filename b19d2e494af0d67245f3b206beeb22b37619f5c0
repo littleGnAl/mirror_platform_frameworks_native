@@ -67,6 +67,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c758a73_2287d2a0",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T03:33:13Z",
+      "side": 1,
+      "message": "We shall return immediately, if StartBugreport is fail.",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577e34aa_a963ad26",
+        "filename": "cmds/bugreportz/bugreportz_test.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T03:33:13Z",
+      "side": 1,
+      "message": "EXPECT_CALL_START_BUGREPOR_ONCE_THEN_DO",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 35
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33b1d3f8_b6f09a51",
         "filename": "cmds/bugreportz/main.cpp",
         "patchSetId": 20
