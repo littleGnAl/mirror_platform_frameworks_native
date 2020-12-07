@@ -553,6 +553,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d165034_322eb3e6",
+        "filename": "cmds/bugreportz/bugreportz_test.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T04:42:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b984e2c_04e00515",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "dbc9873e5f976b934ce3388c84ca856d1c7e0f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce39b49f_28b116e2",

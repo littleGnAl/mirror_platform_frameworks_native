@@ -172,6 +172,52 @@
       "message": "what purpose does it",
       "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661d2d80_f883e2b8",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 2785,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T04:42:02Z",
+      "side": 1,
+      "message": "Is it necessary to have this change?",
+      "range": {
+        "startLine": 2782,
+        "startChar": 4,
+        "endLine": 2785,
+        "endChar": 45
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee2e43d5_e75fadf1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 2810,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T04:42:02Z",
+      "side": 1,
+      "message": "Since progress 0 can be reported multiple times, is it necessary to have this change here?",
+      "range": {
+        "startLine": 2806,
+        "startChar": 4,
+        "endLine": 2810,
+        "endChar": 5
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
