@@ -159,6 +159,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38271d24_1609d8aa",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T13:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff5d9077_a5401668",
+      "range": {
+        "startLine": 204,
+        "startChar": 51,
+        "endLine": 204,
+        "endChar": 64
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d24d7739_4152f921",
@@ -467,6 +491,30 @@
       "side": 1,
       "message": "For a quick report like limit mode without this, there is no seperate true BEGIN progress to be received and the first progress received would be the BEGIN message in current implementation. This is not the BEGIN message tend to do and the litener have no callback like onBegin to do that. I think the chioces would be 1) no BEGIN in the litener 2) have a similiar behavior like this change. WDYT?",
       "parentUuid": "ee2e43d5_e75fadf1",
+      "range": {
+        "startLine": 2806,
+        "startChar": 4,
+        "endLine": 2810,
+        "endChar": 5
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad026dd9_f36ba973",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 2810,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T13:09:31Z",
+      "side": 1,
+      "message": "How about we have `Dumpstate::BugreportMode::BUGREPORT_DEFAULT` enable `options_-\u003edo_progress_updates \u003d true`  in #2541. Then we can move these code inside the #2793.",
+      "parentUuid": "032c0c8f_751fa748",
       "range": {
         "startLine": 2806,
         "startChar": 4,

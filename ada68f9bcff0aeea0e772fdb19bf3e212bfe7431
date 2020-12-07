@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a0683d7_b3f3f325",
+        "filename": "cmds/bugreportz/DumpstateClient.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T13:09:31Z",
+      "side": 1,
+      "message": "status \u003d promise_finish_.get_future().get();\nUnlinkToDeath(ds_, this);\nreturn status;",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 29
+      },
+      "revId": "ada68f9bcff0aeea0e772fdb19bf3e212bfe7431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be1bf7c_565ca1f9",
+        "filename": "cmds/bugreportz/bugreportz_test.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T13:09:31Z",
+      "side": 1,
+      "message": "Why the test name is DropRootUserFail?",
+      "range": {
+        "startLine": 248,
+        "startChar": 28,
+        "endLine": 248,
+        "endChar": 44
+      },
+      "revId": "ada68f9bcff0aeea0e772fdb19bf3e212bfe7431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e32e0cb_caedd1e3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 3928,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-07T13:09:31Z",
+      "side": 1,
+      "message": "Why do we need it?",
+      "range": {
+        "startLine": 3928,
+        "startChar": 39,
+        "endLine": 3928,
+        "endChar": 56
+      },
+      "revId": "ada68f9bcff0aeea0e772fdb19bf3e212bfe7431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
