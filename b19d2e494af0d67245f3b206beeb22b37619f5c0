@@ -613,6 +613,30 @@
       },
       "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03ebba5d_2d7cbe48",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 2810,
+      "author": {
+        "id": 1308157
+      },
+      "writtenOn": "2020-12-08T08:05:50Z",
+      "side": 1,
+      "message": "Discussed offline. The broadcast and do_early_screenshot_ don\u0027t need to check mode and enabling \n do_progress_updates in `SetOptionsFromMode()` works. \n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/842055/ for history reference of broadcast behavior.",
+      "parentUuid": "60713daa_2af990ca",
+      "range": {
+        "startLine": 2806,
+        "startChar": 4,
+        "endLine": 2810,
+        "endChar": 5
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
