@@ -22,6 +22,30 @@
       },
       "revId": "7d007705102f125aef18d1541c308a44eb4893a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c19f121_e530b375",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-08T02:01:00Z",
+      "side": 1,
+      "message": "assuming you filed b/175072152 for this, thanks!",
+      "parentUuid": "d097dce1_cf297064",
+      "range": {
+        "startLine": 118,
+        "startChar": 24,
+        "endLine": 118,
+        "endChar": 31
+      },
+      "revId": "7d007705102f125aef18d1541c308a44eb4893a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
