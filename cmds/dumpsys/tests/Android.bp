@@ -19,4 +19,5 @@ cc_test {
     ],
 
     clang: true,
+    require_root: true,
 }
