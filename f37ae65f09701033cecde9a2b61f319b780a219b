@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77142aaf_65212c52",
+        "filename": "libs/binder/include/binder/ParcelRef.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2020-12-08T14:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36f078e4_f51ee5e7",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f37ae65f09701033cecde9a2b61f319b780a219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec9877c0_4726d04a",
@@ -60,6 +84,30 @@
       "writtenOn": "2020-12-07T17:45:22Z",
       "side": 1,
       "message": "#pragma once",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "f37ae65f09701033cecde9a2b61f319b780a219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f260228_efd0dde1",
+        "filename": "libs/binder/include/binder/ParcelRef.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2020-12-08T14:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec9877c0_4726d04a",
       "range": {
         "startLine": 16,
         "startChar": 0,
