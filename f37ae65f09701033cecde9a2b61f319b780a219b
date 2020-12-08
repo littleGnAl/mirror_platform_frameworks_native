@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66cb2522_2c68bc76",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2020-12-08T16:58:13Z",
+      "side": 1,
+      "message": "another possible alternative : maybe, we can use one bit inside the parameter (uint32_t code) or (uint32_t flags) to pass the related information.  But, it is not completely safe, because we cannot prevent other developers from using values which touching that bit.",
+      "parentUuid": "510d0a9d_5979c686",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "f37ae65f09701033cecde9a2b61f319b780a219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36f078e4_f51ee5e7",
         "filename": "libs/binder/include/binder/ParcelRef.h",
         "patchSetId": 3
