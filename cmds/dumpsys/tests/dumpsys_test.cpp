@@ -22,6 +22,9 @@
 #include <gtest/gtest.h>
 
 #include <android-base/file.h>
+#include <binder/Binder.h>
+#include <binder/IServiceManager.h>
+#include <binder/ProcessState.h>
 #include <serviceutils/PriorityDumper.h>
 #include <utils/String16.h>
 #include <utils/String8.h>
@@ -572,6 +575,35 @@ TEST_F(DumpsysTest, ListServiceWithPid) {
     CallMain({"--pid", "Locksmith"});
 
     AssertOutput(std::to_string(getpid()) + "\n");
+}
+
+// Tests 'dumpsys --thread'
+TEST_F(DumpsysTest, ListAllServicesWithThread) {
+    ExpectListServices({"Locksmith", "Valet"});
+    ExpectCheckService("Locksmith");
+    ExpectCheckService("Valet");
+    android::ProcessState::self()->setThreadPoolMaxThreadCount(2);
+    auto status = android::defaultServiceManager()->addService(String16("Valet"), new android::BBinder);
+    ASSERT_EQ(status, OK);
+    ProcessState::self()->startThreadPool();
+
+    CallMain({"--thread"});
+
+    AssertRunningServices({"Locksmith", "Valet"});
+    AssertOutputContains("0/2");
+}
+
+// Tests 'dumpsys --thread service_name'
+TEST_F(DumpsysTest, ListServiceWithThread) {
+    ExpectCheckService("Locksmith");
+    android::ProcessState::self()->setThreadPoolMaxThreadCount(2);
+    auto status = android::defaultServiceManager()->addService(String16("Locksmith"), new android::BBinder);
+    ASSERT_EQ(status, OK);
+    ProcessState::self()->startThreadPool();
+
+    CallMain({"--thread", "Locksmith"});
+
+    AssertOutput("0/2\n");
 }
 
 TEST_F(DumpsysTest, GetBytesWritten) {
