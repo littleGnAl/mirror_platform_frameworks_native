@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6adc0da5_5a13014a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-08T23:31:08Z",
+      "side": 1,
+      "message": "Updated to point to the internal conflict resolution. Once that lands, I\u0027ll kick off presubmit again so we can get this landed. Thanks for your patience!",
+      "revId": "c83889f3b7d0b5dbdbf448ca9a7adfba55ff2f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

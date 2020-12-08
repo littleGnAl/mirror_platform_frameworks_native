@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0a16bebf_ac921cd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-08T23:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d271e84f_3088cc59",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "466784d6_d02b86ed",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -92,6 +116,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd9213f_925ee490",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-08T23:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffea0684_17b258d8",
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7a79abb_1b2e14f1",
@@ -105,6 +147,30 @@
       "writtenOn": "2020-12-02T23:37:28Z",
       "side": 1,
       "message": "Since we only ever use the default, I might just make it a static constexpr inside the method, which would also let us add:\n\n    using namespace std::chrono_literals;\n    static constexpr std::chrono::nanoseconds LOG_PERIOD \u003d 1s;\n\nWe can always make it parameterizable later if needed\n\n(Same for isTimeout above)",
+      "range": {
+        "startLine": 912,
+        "startChar": 32,
+        "endLine": 912,
+        "endChar": 65
+      },
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bfdf71_3088562f",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-08T23:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7a79abb_1b2e14f1",
       "range": {
         "startLine": 912,
         "startChar": 32,
@@ -132,6 +198,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77449302_8772b362",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-08T23:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0300729_f4515beb",
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1125df91_4ec0004e",
@@ -145,6 +229,30 @@
       "writtenOn": "2020-12-02T23:37:28Z",
       "side": 1,
       "message": "I would initialize these here rather than in the constructor",
+      "range": {
+        "startLine": 932,
+        "startChar": 0,
+        "endLine": 933,
+        "endChar": 29
+      },
+      "revId": "d348a4ff6f5b6c00f2371116f68bca3b077234ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a1e5d1_e3d93098",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-08T23:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1125df91_4ec0004e",
       "range": {
         "startLine": 932,
         "startChar": 0,
