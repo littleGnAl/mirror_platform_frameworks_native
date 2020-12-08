@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "510d0a9d_5979c686",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2020-12-08T16:05:08Z",
+      "side": 1,
+      "message": "I am not sure, if we modifying the class Parcel, it may break the binary-compatibility(or ABI?), which may break all the applications which depending on the NDK?",
+      "parentUuid": "f21ab39a_5c73318c",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "f37ae65f09701033cecde9a2b61f319b780a219b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36f078e4_f51ee5e7",
         "filename": "libs/binder/include/binder/ParcelRef.h",
         "patchSetId": 3
