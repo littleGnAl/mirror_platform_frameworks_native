@@ -46,6 +46,30 @@
       },
       "revId": "7d007705102f125aef18d1541c308a44eb4893a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f137f1a_3a0f74c0",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-12-08T02:07:46Z",
+      "side": 1,
+      "message": "yes, it is an intentional difference. because there isn\u0027t a base class for parcelable in ndk for now, parcelableholder for ndk stores/loads it into/from parcel directly.\n\nbut i\u0027d better check behavior on cpp and java side (b/175072152)",
+      "parentUuid": "d097dce1_cf297064",
+      "range": {
+        "startLine": 118,
+        "startChar": 24,
+        "endLine": 118,
+        "endChar": 31
+      },
+      "revId": "7d007705102f125aef18d1541c308a44eb4893a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
