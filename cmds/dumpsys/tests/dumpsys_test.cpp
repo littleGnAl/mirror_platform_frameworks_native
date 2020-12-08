@@ -574,6 +574,27 @@ TEST_F(DumpsysTest, ListServiceWithPid) {
     AssertOutput(std::to_string(getpid()) + "\n");
 }
 
+// Tests 'dumpsys --thread'
+TEST_F(DumpsysTest, ListAllServicesWithThread) {
+    ExpectListServices({"Locksmith", "Valet"});
+    ExpectCheckService("Locksmith");
+    ExpectCheckService("Valet");
+
+    CallMain({"--thread"});
+
+    AssertRunningServices({"Locksmith", "Valet"});
+    AssertOutputContains("Locksmith");
+}
+
+// Tests 'dumpsys --thread service_name'
+TEST_F(DumpsysTest, ListServiceWithThread) {
+    ExpectCheckService("Locksmith");
+
+    CallMain({"--thread", "Locksmith"});
+
+    AssertOutput("");
+}
+
 TEST_F(DumpsysTest, GetBytesWritten) {
     const char* serviceName = "service2";
     const char* dumpContents = "dump1";

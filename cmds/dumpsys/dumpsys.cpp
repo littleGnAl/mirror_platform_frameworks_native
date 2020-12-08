@@ -29,9 +29,11 @@
 #include <utils/Log.h>
 #include <utils/Vector.h>
 
+#include <fstream>
 #include <iostream>
 #include <fcntl.h>
 #include <getopt.h>
+#include <regex>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -60,13 +62,14 @@ static void usage() {
             "usage: dumpsys\n"
             "         To dump all services.\n"
             "or:\n"
-            "       dumpsys [-t TIMEOUT] [--priority LEVEL] [--pid] [--help | -l | --skip SERVICES "
+            "       dumpsys [-t TIMEOUT] [--priority LEVEL] [--pid] [--thread] [--help | -l | --skip SERVICES "
             "| SERVICE [ARGS]]\n"
             "         --help: shows this help\n"
             "         -l: only list services, do not dump them\n"
             "         -t TIMEOUT_SEC: TIMEOUT to use in seconds instead of default 10 seconds\n"
             "         -T TIMEOUT_MS: TIMEOUT to use in milliseconds instead of default 10 seconds\n"
             "         --pid: dump PID instead of usual dump\n"
+            "         --thread: dump thread usage instead of usual dump\n"
             "         --proto: filter services that support dumping data in proto format. Dumps\n"
             "               will be in proto format.\n"
             "         --priority LEVEL: filter services based on specified priority\n"
@@ -125,7 +128,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
     Type type = Type::DUMP;
     int timeoutArgMs = 10000;
     int priorityFlags = IServiceManager::DUMP_FLAG_PRIORITY_ALL;
-    static struct option longOptions[] = {{"pid", no_argument, 0, 0},
+    static struct option longOptions[] = {{"thread", no_argument, 0, 0},
+                                          {"pid", no_argument, 0, 0},
                                           {"priority", required_argument, 0, 0},
                                           {"proto", no_argument, 0, 0},
                                           {"skip", no_argument, 0, 0},
@@ -163,6 +167,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
                 }
             } else if (!strcmp(longOptions[optionIndex].name, "pid")) {
                 type = Type::PID;
+            } else if (!strcmp(longOptions[optionIndex].name, "thread")) {
+                type = Type::THREAD;
             }
             break;
 
@@ -329,6 +335,72 @@ static status_t dumpPidToFd(const sp<IBinder>& service, const unique_fd& fd) {
      return OK;
 }
 
+static status_t scanBinderContext(pid_t pid,
+        const std::string &contextName,
+        std::function<void(const std::string&)> eachLine) {
+    std::ifstream ifs("/dev/binderfs/binder_logs/proc/" + std::to_string(pid));
+    if (!ifs.is_open()) {
+        ifs.open("/d/binder/proc/" + std::to_string(pid));
+        if (!ifs.is_open()) {
+            return -errno;
+        }
+    }
+    static const std::regex kContextLine("^context (\\w+)$");
+
+    bool isDesiredContext = false;
+    std::string line;
+    std::smatch match;
+    while(getline(ifs, line)) {
+        if (std::regex_search(line, match, kContextLine)) {
+            isDesiredContext = match.str(1) == contextName;
+            continue;
+        }
+        if (!isDesiredContext) {
+            continue;
+        }
+        eachLine(line);
+    }
+    return OK;
+}
+
+static status_t dumpThreadsToFd(const sp<IBinder>& service, const unique_fd& fd) {
+    pid_t pid;
+    status_t status = service->getDebugPid(&pid);
+    if (status != OK) {
+        return status;
+    }
+    std::smatch match;
+    uint32_t threadUsage, threadCount = 0;
+    static const std::regex kThreadPrefix("^\\s*thread \\d+:\\s+l\\s+(\\d)(\\d)");
+    status_t ret = scanBinderContext(pid, "binder", [&](const std::string& line) {
+        if (std::regex_search(line, match, kThreadPrefix)) {
+            // "1" is waiting in binder driver
+            // "2" is poll. It's impossible to tell if these are in use.
+            //     and HIDL default code doesn't use it.
+            bool isInUse = match.str(1) != "1";
+            // "0" is a thread that has called into binder
+            // "1" is looper thread
+            // "2" is main looper thread
+            bool isBinderThread = match.str(2) != "0";
+            if (!isBinderThread) {
+                return;
+            }
+            if (isInUse) {
+                threadUsage++;
+            }
+
+            threadCount++;
+            return;
+        }
+        return;
+    });
+    if (ret != OK) {
+        return ret;
+    }
+    WriteStringToFd(std::to_string(threadUsage) + "/" + std::to_string(threadCount) + "\n", fd.get());
+    return OK;
+}
+
 status_t Dumpsys::startDumpThread(Type type, const String16& serviceName,
                                   const Vector<String16>& args) {
     sp<IBinder> service = sm_->checkService(serviceName);
@@ -358,6 +430,9 @@ status_t Dumpsys::startDumpThread(Type type, const String16& serviceName,
             break;
         case Type::PID:
             err = dumpPidToFd(service, remote_end);
+            break;
+        case Type::THREAD:
+            err = dumpThreadsToFd(service, remote_end);
             break;
         default:
             std::cerr << "Unknown dump type" << static_cast<int>(type) << std::endl;
