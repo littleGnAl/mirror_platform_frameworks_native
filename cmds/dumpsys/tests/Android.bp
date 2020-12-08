@@ -10,6 +10,7 @@ cc_test {
         "libbase",
         "libbinder",
         "libutils",
+        "libbinderdebug",
     ],
 
     static_libs: [
@@ -17,6 +18,4 @@ cc_test {
         "libgmock",
         "libserviceutils",
     ],
-
-    clang: true,
 }
