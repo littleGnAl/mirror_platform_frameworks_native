@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "174ec59d_a551b4de",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 3942,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-08T03:34:52Z",
+      "side": 1,
+      "message": "No need. `options_-\u003edo_progress_updates` shall be true here. You can check #3931.",
+      "range": {
+        "startLine": 3942,
+        "startChar": 8,
+        "endLine": 3942,
+        "endChar": 37
+      },
+      "revId": "c52012d1297ae0b4c6fbd0b4c12b9d7860a641aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

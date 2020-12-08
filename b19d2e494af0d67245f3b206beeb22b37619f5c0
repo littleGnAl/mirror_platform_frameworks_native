@@ -589,6 +589,30 @@
       },
       "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60713daa_2af990ca",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 2810,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-08T03:34:52Z",
+      "side": 1,
+      "message": "We shall have a new mode, such as BUGREPORT_ADB, if BUGREPORT_DEFAULT does not allow to send a broadcast. The reason is in the previous design, we send a BUGREPORT_STARTED broadcast when `adb bugreport` is invoked.\n\nMy idea is:\n1. Have a new mode BUGREPORT_ADB\n2. Have a new option progress_updates_to_adb\n3. Set `options_-\u003edo_progress_updates \u003d true` in #2788.\n4. In #2809, `if (options-\u003eprogress_updates_to_adb \u0026\u0026 listener_ !\u003d nullptr)`\n\nThen we can remove `progress_updates_to_socket` thing, right?",
+      "parentUuid": "cfe946a7_87e28415",
+      "range": {
+        "startLine": 2806,
+        "startChar": 4,
+        "endLine": 2810,
+        "endChar": 5
+      },
+      "revId": "b19d2e494af0d67245f3b206beeb22b37619f5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
