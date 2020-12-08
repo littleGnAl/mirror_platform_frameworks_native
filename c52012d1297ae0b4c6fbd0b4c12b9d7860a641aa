@@ -3,6 +3,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e4add5d_913d0790",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-08T07:47:24Z",
+      "side": 1,
+      "message": "Migrate `adb bugreport` to use bugreport api call",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "c52012d1297ae0b4c6fbd0b4c12b9d7860a641aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76bc0382_0f5c71a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-08T07:47:24Z",
+      "side": 1,
+      "message": "Could you try to kill dumpstate while `adb bugreport` is dumping, and check whether binder died work correctly or not?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "c52012d1297ae0b4c6fbd0b4c12b9d7860a641aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00f33bb1_f911c299",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-08T07:47:24Z",
+      "side": 1,
+      "message": "parallel and the second one is failed as expected",
+      "range": {
+        "startLine": 16,
+        "startChar": 59,
+        "endLine": 16,
+        "endChar": 60
+      },
+      "revId": "c52012d1297ae0b4c6fbd0b4c12b9d7860a641aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d106b11e_abecd1b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-08T07:47:24Z",
+      "side": 1,
+      "message": "It should be bugreports, right?",
+      "range": {
+        "startLine": 18,
+        "startChar": 62,
+        "endLine": 18,
+        "endChar": 77
+      },
+      "revId": "c52012d1297ae0b4c6fbd0b4c12b9d7860a641aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e41c978_8c956956",
+        "filename": "cmds/bugreportz/main.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2020-12-08T07:47:24Z",
+      "side": 1,
+      "message": "We should return fail `if(!sm)`.",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "c52012d1297ae0b4c6fbd0b4c12b9d7860a641aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "174ec59d_a551b4de",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 24
