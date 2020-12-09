@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6969226_49952821",
+        "filename": "libs/binder/rust/sys/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-09T19:47:34Z",
+      "side": 1,
+      "message": "This is why we were not using a crate here in the first place - this is a large chunk of boilerplate code, and someone could easily forget to update it.\n\nIn Rust, that could result in undefined behavior because the enums are \"closed\", e.g. the compiler is allowed to assume that the listed values represent *all* listed values.\n\nIn the long term, the plan was to provide a way to inject a file into the built crate (e.g. the Display and Error implementations).",
+      "revId": "209dc62302f152ef3d8f74ec6e4c89a679e50f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
