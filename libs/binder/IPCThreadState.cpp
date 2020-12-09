@@ -591,6 +591,12 @@ void IPCThreadState::processPostWriteDerefs()
     mPostWriteStrongDerefs.clear();
 }
 
+// Internal only.
+// @internal
+void IPCThreadState::appendPostWriteStrongDeref(RefBase* strongDeref) {
+    mPostWriteStrongDerefs.push(strongDeref);
+}
+
 void IPCThreadState::joinThreadPool(bool isMain)
 {
     LOG_THREADPOOL("**** THREAD %p (PID %d) IS JOINING THE THREAD POOL\n", (void*)pthread_self(), getpid());

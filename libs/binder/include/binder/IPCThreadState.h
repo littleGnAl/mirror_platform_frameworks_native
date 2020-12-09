@@ -28,6 +28,8 @@ typedef  int  uid_t;
 // ---------------------------------------------------------------------------
 namespace android {
 
+class JavaObjectTempRef;
+
 class IPCThreadState
 {
 public:
@@ -162,6 +164,8 @@ public:
             // side.
             static const int32_t kUnsetWorkSource = -1;
 private:
+            friend class JavaObjectTempRef;
+
                                 IPCThreadState();
                                 ~IPCThreadState();
 
@@ -186,6 +190,11 @@ private:
     static  void                freeBuffer(Parcel* parcel,
                                            const uint8_t* data, size_t dataSize,
                                            const binder_size_t* objects, size_t objectsSize);
+
+
+            // Internal only.
+            // @internal
+            void                 appendPostWriteStrongDeref(RefBase* strongDeref);
 
     const   sp<ProcessState>    mProcess;
             Vector<BBinder*>    mPendingStrongDerefs;
