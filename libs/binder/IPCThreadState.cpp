@@ -591,6 +591,24 @@ void IPCThreadState::processPostWriteDerefs()
     mPostWriteStrongDerefs.clear();
 }
 
+void IPCThreadState::processPostWriteCallbacks()
+{
+    for (size_t i = 0; i < mPostWriteCallbacks.size(); i++) {
+        auto &p = mPostWriteCallbacks[i];
+        (p.cb)(p.v1, p.v2);
+    }
+    mPostWriteCallbacks.clear();
+}
+
+void IPCThreadState::appendPostWriteCallback(void (*cb)(void*,void*), void *v1, void *v2)
+{
+    PostWriteCallback pwc;
+    pwc.cb = cb;
+    pwc.v1 = v1;
+    pwc.v2 = v2;
+    mPostWriteCallbacks.push(pwc);
+}
+
 void IPCThreadState::joinThreadPool(bool isMain)
 {
     LOG_THREADPOOL("**** THREAD %p (PID %d) IS JOINING THE THREAD POOL\n", (void*)pthread_self(), getpid());
@@ -1017,6 +1035,7 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
             else {
                 mOut.setDataSize(0);
                 processPostWriteDerefs();
+                processPostWriteCallbacks();
             }
         }
         if (bwr.read_consumed > 0) {

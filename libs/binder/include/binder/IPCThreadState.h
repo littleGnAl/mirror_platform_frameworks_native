@@ -161,6 +161,10 @@ public:
             // This constant needs to be kept in sync with Binder.UNSET_WORKSOURCE from the Java
             // side.
             static const int32_t kUnsetWorkSource = -1;
+            // Internal only.
+            // @internal
+            void                 appendPostWriteCallback(void (*cb)(void*,void*), void *v1, void *v2);
+
 private:
                                 IPCThreadState();
                                 ~IPCThreadState();
@@ -179,6 +183,7 @@ private:
             status_t            executeCommand(int32_t command);
             void                processPendingDerefs();
             void                processPostWriteDerefs();
+            void                processPostWriteCallbacks();
 
             void                clearCaller();
 
@@ -192,6 +197,14 @@ private:
             Vector<RefBase::weakref_type*> mPendingWeakDerefs;
             Vector<RefBase*>    mPostWriteStrongDerefs;
             Vector<RefBase::weakref_type*> mPostWriteWeakDerefs;
+
+            struct PostWriteCallback {
+                void (*cb)(void*,void*);
+                void *v1;
+                void *v2;
+            };
+            Vector<PostWriteCallback> mPostWriteCallbacks;
+
             Parcel              mIn;
             Parcel              mOut;
             status_t            mLastError;
