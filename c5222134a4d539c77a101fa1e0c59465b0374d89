@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe4eb3b5_35e27442",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-12-09T02:27:47Z",
+      "side": 1,
+      "message": "Hi Alec, partners cannot check autosubmit by themsleves ",
+      "revId": "c5222134a4d539c77a101fa1e0c59465b0374d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
