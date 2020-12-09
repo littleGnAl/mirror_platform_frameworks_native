@@ -1818,10 +1818,11 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
 
     pid_t pid = fork();
     if (pid == 0) {
+        SetDex2OatScheduling(boot_complete);
+
         /* child -- drop privileges before continuing */
         drop_capabilities(uid);
 
-        SetDex2OatScheduling(boot_complete);
         if (flock(out_oat.fd(), LOCK_EX | LOCK_NB) != 0) {
             PLOG(ERROR) << "flock(" << out_oat.path() << ") failed";
             _exit(DexoptReturnCodes::kFlock);
