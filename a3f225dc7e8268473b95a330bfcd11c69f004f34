@@ -631,6 +631,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24ed60c4_86a2870e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2020-12-09T19:21:49Z",
+      "side": 1,
+      "message": "Reopening this comment - please add a test, thanks.",
+      "parentUuid": "8e82eafb_bb06cb01",
+      "revId": "a3f225dc7e8268473b95a330bfcd11c69f004f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72367002_26e82733",
         "filename": "libs/renderengine/gl/ProgramCache.cpp",
         "patchSetId": 2
