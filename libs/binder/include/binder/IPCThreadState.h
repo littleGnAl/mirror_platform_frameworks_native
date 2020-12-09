@@ -161,6 +161,11 @@ public:
             // This constant needs to be kept in sync with Binder.UNSET_WORKSOURCE from the Java
             // side.
             static const int32_t kUnsetWorkSource = -1;
+
+            // Internal only.
+            // @internal
+            void                 appendPostWriteStrongDeref(RefBase* strongDeref);
+
 private:
                                 IPCThreadState();
                                 ~IPCThreadState();
