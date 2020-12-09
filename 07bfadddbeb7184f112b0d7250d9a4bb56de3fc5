@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73767df_c6d7429b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-12-09T23:32:02Z",
+      "side": 1,
+      "message": "This code is pretty old. Has this never worked, or there where policy changes over the years that prevent it from taking?",
+      "revId": "07bfadddbeb7184f112b0d7250d9a4bb56de3fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
