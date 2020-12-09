@@ -27,7 +27,7 @@ pub use sys::binder_status_t as status_t;
 /// Low-level status codes from Android `libutils`.
 // All error codes are negative integer values. Derived from the anonymous enum
 // in utils/Errors.h
-pub use sys::android_c_interface_StatusCode as StatusCode;
+pub use sys::StatusCode as StatusCode;
 
 /// A specialized [`Result`](result::Result) for binder operations.
 pub type Result<T> = result::Result<T, StatusCode>;

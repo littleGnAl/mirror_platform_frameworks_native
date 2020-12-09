@@ -22,10 +22,12 @@ rust_library {
     crate_name: "binder_ndk_sys",
     srcs: [
         "sys/lib.rs",
-        ":libbinder_ndk_bindgen",
     ],
     shared_libs: [
         "libbinder_ndk",
+    ],
+    rustlibs: [
+        "libbinder_ndk_bindgen",
     ],
     host_supported: true,
     target: {

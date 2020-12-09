@@ -24,14 +24,38 @@
     improper_ctypes,
     missing_docs
 )]
-use std::error::Error;
+
+use std::error;
 use std::fmt;
 
-include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+pub use binder_ndk_bindgen::*;
 
-impl Error for android_c_interface_StatusCode {}
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
+pub enum StatusCode  {
+    OK = android_c_interface_StatusCode::OK as isize,
+    UNKNOWN_ERROR = android_c_interface_StatusCode::UNKNOWN_ERROR as isize,
+    NO_MEMORY = android_c_interface_StatusCode::NO_MEMORY as isize,
+    INVALID_OPERATION = android_c_interface_StatusCode::INVALID_OPERATION as isize,
+    BAD_VALUE = android_c_interface_StatusCode::BAD_VALUE as isize,
+    BAD_TYPE = android_c_interface_StatusCode::BAD_TYPE as isize,
+    NAME_NOT_FOUND = android_c_interface_StatusCode::NAME_NOT_FOUND as isize,
+    PERMISSION_DENIED = android_c_interface_StatusCode::PERMISSION_DENIED as isize,
+    NO_INIT = android_c_interface_StatusCode::NO_INIT as isize,
+    ALREADY_EXISTS = android_c_interface_StatusCode::ALREADY_EXISTS as isize,
+    DEAD_OBJECT = android_c_interface_StatusCode::DEAD_OBJECT as isize,
+    FAILED_TRANSACTION = android_c_interface_StatusCode::FAILED_TRANSACTION as isize,
+    BAD_INDEX = android_c_interface_StatusCode::BAD_INDEX as isize,
+    NOT_ENOUGH_DATA = android_c_interface_StatusCode::NOT_ENOUGH_DATA as isize,
+    WOULD_BLOCK = android_c_interface_StatusCode::WOULD_BLOCK as isize,
+    TIMED_OUT = android_c_interface_StatusCode::TIMED_OUT as isize,
+    UNKNOWN_TRANSACTION = android_c_interface_StatusCode::UNKNOWN_TRANSACTION as isize,
+    FDS_NOT_ALLOWED = android_c_interface_StatusCode::FDS_NOT_ALLOWED as isize,
+    UNEXPECTED_NULL = android_c_interface_StatusCode::UNEXPECTED_NULL as isize,
+}
 
-impl fmt::Display for android_c_interface_StatusCode {
+impl error::Error for StatusCode {}
+
+impl fmt::Display for StatusCode {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "StatusCode::{:?}", self)
     }
