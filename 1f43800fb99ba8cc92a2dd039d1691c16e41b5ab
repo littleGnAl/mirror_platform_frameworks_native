@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "165610bf_5ab78c68",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-10T23:30:52Z",
+      "side": 1,
+      "message": "nit: consider, say, moving this into a library \u0027libbinderdebug\u0027 (you would have to make it) or similar, to de-dupe code w/ lshal?",
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb12002_0bad563f",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-10T23:30:52Z",
+      "side": 1,
+      "message": "we should include more information here, like: \"Threads in use: 2/4\".",
+      "range": {
+        "startLine": 401,
+        "startChar": 20,
+        "endLine": 401,
+        "endChar": 23
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1102d70d_164fba37",
+        "filename": "cmds/dumpsys/tests/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-10T23:30:52Z",
+      "side": 1,
+      "message": "nit: this is obsolete",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f009869_66127987",
+        "filename": "cmds/dumpsys/tests/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-10T23:30:52Z",
+      "side": 1,
+      "message": "this should be removed, since it\u0027s specified in AndoridTest.xml directly",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e26592f1_6cce44fe",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-10T23:30:52Z",
+      "side": 1,
+      "message": "I would say prefer \u0027dumpsysValet\u0027, but I think if you delete L586..L588, it should work the same way",
+      "range": {
+        "startLine": 587,
+        "startChar": 63,
+        "endLine": 587,
+        "endChar": 68
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba634ed_021d0d9f",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-10T23:30:52Z",
+      "side": 1,
+      "message": "I would expect this to show 0/1 for both, since only one thread should be started (and libbinder starts more threads whenever the pool is almost saturated).\n\nI\u0027m wondering, after deleting L586..L588, will this show 0/1 (this would actually imply a wasteful extra thread start here, but it\u0027s not important)? Also, please test with L585 s/2/10/ or something. The threads are started lazily in userspace, so I would still expect 0/1 or similar.",
+      "range": {
+        "startLine": 594,
+        "startChar": 26,
+        "endLine": 594,
+        "endChar": 29
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46595ba7_25b1564e",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-10T23:30:52Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 26
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d072264c_ba1c24ec",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-10T23:30:52Z",
+      "side": 1,
+      "message": "Instead of duplicating the threadpool starting, you could consider adding it at the end of the file\n\n    int main(int argc, char** argv) {\n        ::testing::InitGoogleTest(\u0026argc, argv);\n        // start threadpool\n        return RUN_ALL_TESTS();\n    }",
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
