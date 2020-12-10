@@ -33,6 +33,24 @@
       "message": "Looks like cuttlefish doesn\u0027t have the cgroup file labeled ?\n\n12-09 19:16:32.131  5170  5170 I auditd  : type\u003d1400 audit(0.0:103): avc: denied { write } for comm\u003d\"Binder:455_3\" name\u003d\"tasks\" dev\u003d\"tmpfs\" ino\u003d18423 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:device:s0 tclass\u003dfile permissive\u003d0\n12-09 19:16:39.903  5580  5580 I auditd  : type\u003d1400 audit(0.0:112): avc: denied { write } for comm\u003d\"Binder:455_3\" name\u003d\"tasks\" dev\u003d\"tmpfs\" ino\u003d18423 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:device:s0 tclass\u003dfile permissive\u003d0\n12-09 19:16:42.183  5623  5623 I auditd  : type\u003d1400 audit(0.0:113): avc: denied { write } for comm\u003d\"Binder:455_3\" name\u003d\"tasks\" dev\u003d\"tmpfs\" ino\u003d18423 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:device:s0 tclass\u003dfile permissive\u003d0",
       "revId": "07bfadddbeb7184f112b0d7250d9a4bb56de3fc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2796b6b1_05b584f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-12-10T02:07:03Z",
+      "side": 1,
+      "message": "I don\u0027t have a device but \n\nfrom https://source.corp.google.com/android/device/google/cuttlefish/shared/config/task_profiles.json;l\u003d1?q\u003dtask_\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fandroid:device%2Fgoogle%2Fcuttlefish%2F\n\nsuspecting one of the cgroup isn\u0027t mounted: blkio,cpuset,cpu",
+      "parentUuid": "c585340c_4d72c4f7",
+      "revId": "07bfadddbeb7184f112b0d7250d9a4bb56de3fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
