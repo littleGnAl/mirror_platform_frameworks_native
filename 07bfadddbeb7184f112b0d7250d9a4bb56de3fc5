@@ -121,6 +121,24 @@
       "message": "Can you add a comment why we need to do this before dropping capabilities?",
       "revId": "07bfadddbeb7184f112b0d7250d9a4bb56de3fc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "034d8042_5735ed83",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-12-10T19:14:41Z",
+      "side": 1,
+      "message": "sure, I added it to the commit message but will do.",
+      "parentUuid": "2449be9a_0822a723",
+      "revId": "07bfadddbeb7184f112b0d7250d9a4bb56de3fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
