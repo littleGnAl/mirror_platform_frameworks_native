@@ -124,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "060a139e_256e67ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-12-10T21:16:07Z",
+      "side": 1,
+      "message": "the issue on cuttlefish is actually a issue in the GKI x86 kernel config, so this affects many x86 devices which run GKI kernel. The kernel fix is posted in https://android-review.googlesource.com/c/kernel/common/+/1523683",
+      "parentUuid": "77bc7cf8_201708bc",
+      "revId": "07bfadddbeb7184f112b0d7250d9a4bb56de3fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2449be9a_0822a723",
@@ -173,6 +191,24 @@
       "side": 1,
       "message": "You say that we need to, but not why.",
       "parentUuid": "034d8042_5735ed83",
+      "revId": "07bfadddbeb7184f112b0d7250d9a4bb56de3fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15aedfce_7e26c7e3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-12-10T21:16:07Z",
+      "side": 1,
+      "message": "the code dropped everything \n\nvoid drop_capabilities(uid_t uid) {\n    if (setgid(uid) !\u003d 0) {\n        PLOG(ERROR) \u003c\u003c \"setgid(\" \u003c\u003c uid \u003c\u003c \") failed in installd during dexopt\";\n        exit(DexoptReturnCodes::kSetGid);\n    }\n    if (setuid(uid) !\u003d 0) {\n        PLOG(ERROR) \u003c\u003c \"setuid(\" \u003c\u003c uid \u003c\u003c \") failed in installd during dexopt\";\n        exit(DexoptReturnCodes::kSetUid);\n    }\n    // drop capabilities\n    struct __user_cap_header_struct capheader;\n    struct __user_cap_data_struct capdata[2];\n    memset(\u0026capheader, 0, sizeof(capheader)); \n    memset(\u0026capdata, 0, sizeof(capdata));\n    capheader.version \u003d _LINUX_CAPABILITY_VERSION_3;\n    if (capset(\u0026capheader, \u0026capdata[0]) \u003c 0) {\n        PLOG(ERROR) \u003c\u003c \"capset failed\";\n        exit(DexoptReturnCodes::kCapSet);\n    }\n}\n\nAnd I think you need CAP_CGROUP for cgroup migration. I didn\u0027t verify it though, busy with tons of other stuff now. But I think it is pretty much due to CAP_CGROUP.",
+      "parentUuid": "c765f64c_ad40582b",
       "revId": "07bfadddbeb7184f112b0d7250d9a4bb56de3fc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
