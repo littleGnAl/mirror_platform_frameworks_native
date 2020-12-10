@@ -16,6 +16,23 @@
       "message": "This code is pretty old. Has this never worked, or there where policy changes over the years that prevent it from taking?",
       "revId": "07bfadddbeb7184f112b0d7250d9a4bb56de3fc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c585340c_4d72c4f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-12-10T02:02:25Z",
+      "side": 1,
+      "message": "Looks like cuttlefish doesn\u0027t have the cgroup file labeled ?\n\n12-09 19:16:32.131  5170  5170 I auditd  : type\u003d1400 audit(0.0:103): avc: denied { write } for comm\u003d\"Binder:455_3\" name\u003d\"tasks\" dev\u003d\"tmpfs\" ino\u003d18423 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:device:s0 tclass\u003dfile permissive\u003d0\n12-09 19:16:39.903  5580  5580 I auditd  : type\u003d1400 audit(0.0:112): avc: denied { write } for comm\u003d\"Binder:455_3\" name\u003d\"tasks\" dev\u003d\"tmpfs\" ino\u003d18423 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:device:s0 tclass\u003dfile permissive\u003d0\n12-09 19:16:42.183  5623  5623 I auditd  : type\u003d1400 audit(0.0:113): avc: denied { write } for comm\u003d\"Binder:455_3\" name\u003d\"tasks\" dev\u003d\"tmpfs\" ino\u003d18423 scontext\u003du:r:installd:s0 tcontext\u003du:object_r:device:s0 tclass\u003dfile permissive\u003d0",
+      "revId": "07bfadddbeb7184f112b0d7250d9a4bb56de3fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
