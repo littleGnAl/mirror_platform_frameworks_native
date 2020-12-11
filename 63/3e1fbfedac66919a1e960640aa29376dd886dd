@@ -1,0 +1,7 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Build-Cop-Override+1: Dario Freni <dariofreni@google.com>
+Submitted-by: Dario Freni <dariofreni@google.com>
+Submitted-at: Fri, 11 Dec 2020 15:22:57 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1525942
+Project: platform/frameworks/native
+Branch: refs/heads/master
