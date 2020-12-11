@@ -63,6 +63,30 @@
       },
       "revId": "c919183ba4fafcf2e92f6f62d25ee930f62bb0bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b6933b_503dbe40",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-12-11T01:43:22Z",
+      "side": 1,
+      "message": "thanks for the clarification.",
+      "parentUuid": "91580c91_c285ba62",
+      "range": {
+        "startLine": 1822,
+        "startChar": 22,
+        "endLine": 1822,
+        "endChar": 31
+      },
+      "revId": "c919183ba4fafcf2e92f6f62d25ee930f62bb0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
