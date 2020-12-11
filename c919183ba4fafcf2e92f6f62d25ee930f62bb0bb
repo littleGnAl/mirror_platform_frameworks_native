@@ -22,6 +22,30 @@
       },
       "revId": "c919183ba4fafcf2e92f6f62d25ee930f62bb0bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91580c91_c285ba62",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-12-11T01:42:03Z",
+      "side": 1,
+      "message": "no, this will fail for all devices.\n\nThe cuttlefish bug is separate, it exposed by this fix actually.\n\nSo here is the explanation in details:\n\nBefore this fix, no cgroup migration, on both x86 and arm64\nAfter this fix, the code will call cgroup migration, but due to the x86 kernel missing the kernel config, cuttlefish is generating error log which caught by tests.",
+      "parentUuid": "1c6083ed_a17ecdee",
+      "range": {
+        "startLine": 1822,
+        "startChar": 22,
+        "endLine": 1822,
+        "endChar": 31
+      },
+      "revId": "c919183ba4fafcf2e92f6f62d25ee930f62bb0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
