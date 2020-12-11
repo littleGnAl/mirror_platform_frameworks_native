@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e16304_36fe6a70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-12-11T17:30:33Z",
+      "side": 1,
+      "message": "Hold for Alistair landing an kerel update with ab/7025790",
+      "revId": "e0dbd9b05cefcd2588654e8e91b9a85386cf5ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
