@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce33a780_a45290bd",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-12-11T01:46:32Z",
+      "side": 1,
+      "message": "just a note, per https://b.corp.google.com/issues/175341073#comment3 this probably won\u0027t ever happen.",
+      "range": {
+        "startLine": 284,
+        "startChar": 12,
+        "endLine": 286,
+        "endChar": 0
+      },
+      "revId": "c919183ba4fafcf2e92f6f62d25ee930f62bb0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c6083ed_a17ecdee",
