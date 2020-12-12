@@ -3,6 +3,144 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02d2f4b6_c7adb486",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-12T00:42:12Z",
+      "side": 1,
+      "message": "nit: extra parens",
+      "range": {
+        "startLine": 208,
+        "startChar": 11,
+        "endLine": 208,
+        "endChar": 12
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8b14b5_5b8c3d33",
+        "filename": "libs/binderdebug/include/binderdebug/BinderDebug.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-12T00:42:12Z",
+      "side": 1,
+      "message": "nit: maybe \"cookie -\u003e processes which hold binder\"\n\nThis could also be std::map\u003cwp\u003cIBinder\u003e, std::vector\u003cpid_t\u003e\u003e but seems like that might be pretty janky",
+      "range": {
+        "startLine": 24,
+        "startChar": 55,
+        "endLine": 24,
+        "endChar": 79
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6a56da_9c4c6d3b",
+        "filename": "libs/binderdebug/include/binderdebug/BinderDebug.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-12T00:42:12Z",
+      "side": 1,
+      "message": "nit: document \u0027binder\u0027 or \u0027hwbinder\u0027 - might even use enum class here (for dumpsys, we\u0027d want \u0027vndbinder\u0027 for the vendor variant, as well)",
+      "range": {
+        "startLine": 29,
+        "startChar": 44,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "125d805d_801b2ace",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-12T00:42:12Z",
+      "side": 1,
+      "message": "it is really strange this is 2, even if we only start w/ one",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e5fd4bc_42e11486",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-12T00:42:12Z",
+      "side": 1,
+      "message": "nit: test with more",
+      "range": {
+        "startLine": 51,
+        "startChar": 63,
+        "endLine": 51,
+        "endChar": 65
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "114a9f56_7dc1c5bf",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-12T00:42:12Z",
+      "side": 1,
+      "message": "nit: needed?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 96
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4ab0d23_0111149a",
         "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
         "patchSetId": 1
@@ -14,6 +152,30 @@
       "writtenOn": "2020-12-12T00:33:42Z",
       "side": 1,
       "message": "this isn\u0027t being compiled or called right now. I\u0027m looking for solutions.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "423984e0_3a6c125e",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-12T00:42:12Z",
+      "side": 1,
+      "message": "prefix `extern \"C\"`",
+      "parentUuid": "c4ab0d23_0111149a",
       "range": {
         "startLine": 48,
         "startChar": 0,
