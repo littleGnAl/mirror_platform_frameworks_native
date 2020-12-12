@@ -50,6 +50,23 @@
       "message": "wait for https://android-review.googlesource.com/q/topic:%222020-12-11-gki-update%22+(status:open%20OR%20status:merged) to land.",
       "revId": "e0dbd9b05cefcd2588654e8e91b9a85386cf5ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8abe224c_73ed045c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293738
+      },
+      "writtenOn": "2020-12-12T22:29:34Z",
+      "side": 1,
+      "message": "Cuttlefish\u0027s kernel has been upgraded, this is safe to land",
+      "revId": "e0dbd9b05cefcd2588654e8e91b9a85386cf5ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
