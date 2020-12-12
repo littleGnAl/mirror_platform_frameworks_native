@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a1a79b9_c7d20936",
+        "filename": "cmds/lshal/ListCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-12T01:34:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02d2f4b6_c7adb486",
+      "range": {
+        "startLine": 208,
+        "startChar": 11,
+        "endLine": 208,
+        "endChar": 12
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af8b14b5_5b8c3d33",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c054bf97_6ec5c6aa",
+        "filename": "libs/binderdebug/include/binderdebug/BinderDebug.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-12T01:34:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8b14b5_5b8c3d33",
+      "range": {
+        "startLine": 24,
+        "startChar": 55,
+        "endLine": 24,
+        "endChar": 79
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad6a56da_9c4c6d3b",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-12T00:42:12Z",
       "side": 1,
       "message": "nit: document \u0027binder\u0027 or \u0027hwbinder\u0027 - might even use enum class here (for dumpsys, we\u0027d want \u0027vndbinder\u0027 for the vendor variant, as well)",
+      "range": {
+        "startLine": 29,
+        "startChar": 44,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "622d9695_bd307199",
+        "filename": "libs/binderdebug/include/binderdebug/BinderDebug.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-12T01:34:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad6a56da_9c4c6d3b",
       "range": {
         "startLine": 29,
         "startChar": 44,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8670a50_c6ad381b",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-12T01:34:11Z",
+      "side": 1,
+      "message": "1 main looper thread and 1 looper thread according to the binderfs log. It looks like we just set the max number of regular looper threads. Setting max to 0 just leaves the main looper thread.",
+      "parentUuid": "125d805d_801b2ace",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e5fd4bc_42e11486",
         "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2020-12-12T00:42:12Z",
       "side": 1,
       "message": "nit: test with more",
+      "range": {
+        "startLine": 51,
+        "startChar": 63,
+        "endLine": 51,
+        "endChar": 65
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d8e816_c25b5b9d",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-12T01:34:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e5fd4bc_42e11486",
       "range": {
         "startLine": 51,
         "startChar": 63,
@@ -129,6 +249,30 @@
       "writtenOn": "2020-12-12T00:42:12Z",
       "side": 1,
       "message": "nit: needed?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 96
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af5d7086_a5997ce5",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-12T01:34:11Z",
+      "side": 1,
+      "message": "I need to addService to get the refPids. But it turns out I do not need it for the threads.",
+      "parentUuid": "114a9f56_7dc1c5bf",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -176,6 +320,30 @@
       "side": 1,
       "message": "prefix `extern \"C\"`",
       "parentUuid": "c4ab0d23_0111149a",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b457cf_6c652369",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-12T01:34:11Z",
+      "side": 1,
+      "message": "Changed to \"using namespace android\" instead of wrapping it all.\nUnfortunately after these changes and cleaning up the test has become flaky. Sometimes threadCount is 0. If I put a sleep(1) between startThreadPool() and RUN_ALL_TESTS() it always passes. :(\nIs there a better way to know when the threads have been started and reported by binder? If not I guess I could retry a few times in the test instead of adding a sleep?\n\nIt\u0027s right on the edge without the sleep... I just swapped startThreadPool and addService and it is far less flaky, but I did hit one case(out of ~15) where threadCount was 1.",
+      "parentUuid": "423984e0_3a6c125e",
       "range": {
         "startLine": 48,
         "startChar": 0,
