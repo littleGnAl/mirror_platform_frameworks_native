@@ -16,6 +16,23 @@
       "message": "Hold for Alistair landing an kerel update with ab/7025790",
       "revId": "e0dbd9b05cefcd2588654e8e91b9a85386cf5ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bd49b9_abcc277e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-12-12T00:45:14Z",
+      "side": 1,
+      "message": "Hi Alistair, I see omg/25953 resolved, any chance, we can kick a new kernel? ",
+      "revId": "e0dbd9b05cefcd2588654e8e91b9a85386cf5ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
