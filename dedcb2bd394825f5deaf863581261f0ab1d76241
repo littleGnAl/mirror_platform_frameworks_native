@@ -448,6 +448,30 @@
       },
       "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6587e6d3_69c65547",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-14T22:15:31Z",
+      "side": 1,
+      "message": "Are you able to remove the service registration though?\n\nI\u0027m thinking that the race is probably waiting for the other thread to hit BR_SPAWN_LOOPER in IPCThreadState::executeCommand. You might log there to confirm.\n\nThen either:\n- switch the test to accept 0/1 or 0/2, saying that the other thread might not be started yet\nOR\n- only start one thread here (declare 0 threads in threadpool)\n\nYou might also reach out to android-binder@ or file a bug, to see why the kernel is so aggressive about starting another thread here. It clearly doesn\u0027t need to, but there might not be a good way for it to know that, since the explicitly started thread in userspace, the kernel might not know it\u0027s actually a reliable looper.",
+      "parentUuid": "93356b42_def9b0bd",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
