@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b3cdb4_4a6229bd",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-14T21:29:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "906aa4a2_d9a39634",
+      "revId": "f1d2b10e4b93b3f9d9886710263bea04c5f5c716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1821c748_64ad2197",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-11-19T02:16:23Z",
       "side": 1,
       "message": "Minor style issue: wrap at 80 columns",
+      "revId": "f1d2b10e4b93b3f9d9886710263bea04c5f5c716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b202bead_855ece89",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-14T21:29:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1821c748_64ad2197",
       "revId": "f1d2b10e4b93b3f9d9886710263bea04c5f5c716",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -69,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb05e2a_8c1a8da6",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-14T21:29:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff07b4c_8bdad0cc",
+      "revId": "f1d2b10e4b93b3f9d9886710263bea04c5f5c716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1dabc6d_3931ad02",
@@ -82,6 +136,30 @@
       "writtenOn": "2020-11-19T02:16:23Z",
       "side": 1,
       "message": "Ditto on recommending std::deque instead",
+      "range": {
+        "startLine": 1017,
+        "startChar": 4,
+        "endLine": 1017,
+        "endChar": 13
+      },
+      "revId": "f1d2b10e4b93b3f9d9886710263bea04c5f5c716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "045468a9_868a0d48",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2020-12-14T21:29:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1dabc6d_3931ad02",
       "range": {
         "startLine": 1017,
         "startChar": 4,
