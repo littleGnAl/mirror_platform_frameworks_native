@@ -213,6 +213,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f639f35_b1dd8f3c",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-14T20:07:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "58ade168_42484859",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e5fd4bc_42e11486",
@@ -392,6 +416,30 @@
       "side": 1,
       "message": "try IPCThreadState::self()-\u003eflushCommands(); (or pinging something + flushCommands)\n\nbtw - \u0027using namespace\u0027 (or even more general \u0027using *\u0027 in any language) considered harmful, because it can block someone from adding code to one of the namespaces (since it would now conflict). The lazy way is so common in Android, there is no hope (I even do it sometimes, I\u0027ll admit), but what you had before was technically much nicer.",
       "parentUuid": "a8b457cf_6c652369",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93356b42_def9b0bd",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-14T20:07:26Z",
+      "side": 1,
+      "message": "Adding the flushCommands() and pingBinder() doesn\u0027t seem to change anything with the threadCount in binderfs. It passes most of the time, but I\u0027ve still seen it fail, reporting 1 thread instead of 2. It might be slightly more reliable with the calls added, but doesn\u0027t fix the problem.\nWhen the startThreadPool() is moved right in front of the RUN_ALL_TESTS(), I see it report 0 threads most of the time.\n\nAny other suggestions?\n\nAlso, thanks for the namespace explanation! I changed it back and used \"extern \"C\" {\" instead.",
+      "parentUuid": "fadff045_19b0c44d",
       "range": {
         "startLine": 48,
         "startChar": 0,

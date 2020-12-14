@@ -22,6 +22,30 @@
       },
       "revId": "97e17d5451a3612c3396cf4fd176fae794b84cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92c03a9_41f0a882",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-14T20:07:26Z",
+      "side": 1,
+      "message": "As far as I can tell, it is needed. It\u0027s the only way that I\u0027m getting the reference in servicemanager for the BinderPid test case.",
+      "parentUuid": "fa9d8128_6ad3da45",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 96
+      },
+      "revId": "97e17d5451a3612c3396cf4fd176fae794b84cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
