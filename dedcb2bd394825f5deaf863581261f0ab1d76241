@@ -472,6 +472,30 @@
       },
       "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881f3930_8db9bd09",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-14T23:12:50Z",
+      "side": 1,
+      "message": "1) No, removing the registration means we have no ref in servicemgr so the first test case fails(no servicemgr pid in refPids).\n\n2) You\u0027re right, it\u0027s a race between handling BR_SPAWN_LOOPER and the test case for that second thread.\n\nThere is only 1 BR_SPAWN_LOOPER event when it reads 2 threads.\nSo this \"main looper\" thread doesn\u0027t seem to be spawned that way.\nIf I set max threads to 0, we never hit the BR_SPAWN_LOOPER case, and we still find 1 \"main looper\" thread(verified with gdb that this is a seperate binder thread)\n\n3) There is another race for the \"main looper\" thread, but the window is much shorter. I can consistently hit it when startThreadPool() is called directly before RUN_ALL_TESTS().\n\nChecking for threadCount \u003e\u003d 1 still fails like 1/100 times in this patchset...",
+      "parentUuid": "6587e6d3_69c65547",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
