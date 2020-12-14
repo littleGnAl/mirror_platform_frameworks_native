@@ -496,6 +496,30 @@
       },
       "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1903d76_c058b5b9",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-14T23:19:09Z",
+      "side": 1,
+      "message": "Looks like the first one is spawned in startThreadPool() as the main looper thread. So the race is between libbinder trying to start the thread and binder reporting it in the /dev/binderfs/ for that proc? Not sure what we can do about that other than waiting for a longer period of time before we try reading.",
+      "parentUuid": "881f3930_8db9bd09",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
