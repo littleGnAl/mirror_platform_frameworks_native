@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d20468c4_0c32238e",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2020-12-14T14:02:47Z",
+      "side": 1,
+      "message": "It would be neater to just create the directory with the right label using setfscreatecon. And then we\u0027d not need create_dir_perms on user_profile_root_file.\n\nBut there doesn\u0027t seem to be selinux_android support for telling me what the label should be.\n\n(The same applies when we create oat directories - see line 2587.",
+      "range": {
+        "startLine": 401,
+        "startChar": 8,
+        "endLine": 401,
+        "endChar": 34
+      },
+      "revId": "b89999d0ba17035a205b93ceaa2ff9d7d03041b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
