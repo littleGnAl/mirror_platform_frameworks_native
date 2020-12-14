@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58ade168_42484859",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-14T18:39:30Z",
+      "side": 1,
+      "message": "oh yeah - libhwbinder is very solid here, but it\u0027s a bit messy. Hopefully this will help expose some intended-to-be single-threaded processes.",
+      "parentUuid": "b8670a50_c6ad381b",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e5fd4bc_42e11486",
         "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
         "patchSetId": 1
@@ -344,6 +368,30 @@
       "side": 1,
       "message": "Changed to \"using namespace android\" instead of wrapping it all.\nUnfortunately after these changes and cleaning up the test has become flaky. Sometimes threadCount is 0. If I put a sleep(1) between startThreadPool() and RUN_ALL_TESTS() it always passes. :(\nIs there a better way to know when the threads have been started and reported by binder? If not I guess I could retry a few times in the test instead of adding a sleep?\n\nIt\u0027s right on the edge without the sleep... I just swapped startThreadPool and addService and it is far less flaky, but I did hit one case(out of ~15) where threadCount was 1.",
       "parentUuid": "423984e0_3a6c125e",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fadff045_19b0c44d",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-14T18:39:30Z",
+      "side": 1,
+      "message": "try IPCThreadState::self()-\u003eflushCommands(); (or pinging something + flushCommands)\n\nbtw - \u0027using namespace\u0027 (or even more general \u0027using *\u0027 in any language) considered harmful, because it can block someone from adding code to one of the namespaces (since it would now conflict). The lazy way is so common in Android, there is no hope (I even do it sometimes, I\u0027ll admit), but what you had before was technically much nicer.",
+      "parentUuid": "a8b457cf_6c652369",
       "range": {
         "startLine": 48,
         "startChar": 0,
