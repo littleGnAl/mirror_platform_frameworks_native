@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c85e64ec_03b6c5f0",
+        "filename": "services/surfaceflinger/BufferLayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2020-12-14T09:49:43Z",
+      "side": 1,
+      "message": "Yes，it\u0027s right. \nmAvailableFrameNumber recorded here is the highest value that can be latched, so we can keep framenumber align between handleTransaction and handlePageFlip.",
+      "parentUuid": "da56673e_ebce8fc3",
+      "range": {
+        "startLine": 523,
+        "startChar": 4,
+        "endLine": 523,
+        "endChar": 25
+      },
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "307c63fa_e43dad09",
         "filename": "services/surfaceflinger/BufferQueueLayer.cpp",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2020-12-02T21:29:49Z",
       "side": 1,
       "message": "nit: add this to the fenceSignaled calculation, i.e. \n const bool fenceSignaled \u003d latchUnsignaledBuffers() || mQueueItems[i].mFenceTime-\u003egetSignalTime() !\u003d Fence::SIGNAL_TIME_PENDING;",
+      "range": {
+        "startLine": 186,
+        "startChar": 13,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb7a0e8_dbef3c83",
+        "filename": "services/surfaceflinger/BufferQueueLayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2020-12-14T09:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "307c63fa_e43dad09",
       "range": {
         "startLine": 186,
         "startChar": 13,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93045e72_bf8e762f",
+        "filename": "services/surfaceflinger/BufferQueueLayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2020-12-14T09:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7add49a_cc7cea43",
+      "range": {
+        "startLine": 271,
+        "startChar": 17,
+        "endLine": 271,
+        "endChar": 30
+      },
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15123d05_a3e38631",
@@ -117,6 +189,24 @@
       "writtenOn": "2020-12-02T21:29:49Z",
       "side": 1,
       "message": "why do we need to clear the notified frame number here? please add a comment that explains that",
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd2c9c0_f3e49067",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1979,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2020-12-14T09:49:43Z",
+      "side": 1,
+      "message": "I worry about that notifyAvailableFrames() is not called in some special case,and then not updated with new value, but the old  mAvailableFrameNumber is used by other place Incorrectly,for example function getFrameNumber() or updateTexImage()?\nOr maybe other unexpected cases happen.\nso we must clear it to avoid unexpected results.",
+      "parentUuid": "15123d05_a3e38631",
       "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -146,6 +236,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bae4e456_0431a497",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3028,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2020-12-14T09:49:43Z",
+      "side": 1,
+      "message": "I can\u0027t find a suitable place of Layer to clear mAvailableFrameNumber, but we can make sure that the value can be cleared in SurfaceFlinger.\ndo you have good suggestiones?",
+      "parentUuid": "279d7dcc_54739a13",
+      "range": {
+        "startLine": 3028,
+        "startChar": 19,
+        "endLine": 3028,
+        "endChar": 43
+      },
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18d733e6_f8243d83",
         "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
         "patchSetId": 2
@@ -157,6 +271,24 @@
       "writtenOn": "2020-12-02T21:29:49Z",
       "side": 1,
       "message": "why this chunk was removed?",
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1af022_afa66af0",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3364,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2020-12-14T09:49:43Z",
+      "side": 1,
+      "message": "Expected present time will affect framenumber, setTransactionState() can happen any time, if it is between handleTransaction and handlepageflip, Expected present time will be updated with new value, the new value maybe lead to handleTransaction and handlepageflip have get different framenumber,then cts fail.\nPlease see the analysis PPT file attached at bugnizer for detail information.",
+      "parentUuid": "18d733e6_f8243d83",
       "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
