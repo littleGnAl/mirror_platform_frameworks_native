@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e322251_016917af",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-15T01:17:27Z",
+      "side": 1,
+      "message": "this breaks some compiles - I could also try aborting (might break some old code), and logging to stderr isn\u0027t so great (because we don\u0027t get it on Android)\n\nAny ideas?",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 85
+      },
+      "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
