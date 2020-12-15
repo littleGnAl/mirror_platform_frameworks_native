@@ -130,7 +130,7 @@ namespace impl {
 /**
  * This baseclass owns a single object, used to make various classes RAII.
  */
-template <typename T, typename R, R (*Destroy)(T), T DEFAULT>
+template <typename T, void (*Destroy)(T), T DEFAULT>
 class ScopedAResource {
    public:
     /**
@@ -198,7 +198,7 @@ class ScopedAResource {
 /**
  * Convenience wrapper. See AParcel.
  */
-class ScopedAParcel : public impl::ScopedAResource<AParcel*, void, AParcel_delete, nullptr> {
+class ScopedAParcel : public impl::ScopedAResource<AParcel*, AParcel_delete, nullptr> {
    public:
     /**
      * Takes ownership of a.
@@ -219,7 +219,7 @@ class ScopedAParcel : public impl::ScopedAResource<AParcel*, void, AParcel_delet
 /**
  * Convenience wrapper. See AStatus.
  */
-class ScopedAStatus : public impl::ScopedAResource<AStatus*, void, AStatus_delete, nullptr> {
+class ScopedAStatus : public impl::ScopedAResource<AStatus*, AStatus_delete, nullptr> {
    public:
     /**
      * Takes ownership of a.
@@ -291,7 +291,7 @@ class ScopedAStatus : public impl::ScopedAResource<AStatus*, void, AStatus_delet
  * Convenience wrapper. See AIBinder_DeathRecipient.
  */
 class ScopedAIBinder_DeathRecipient
-    : public impl::ScopedAResource<AIBinder_DeathRecipient*, void, AIBinder_DeathRecipient_delete,
+    : public impl::ScopedAResource<AIBinder_DeathRecipient*, AIBinder_DeathRecipient_delete,
                                    nullptr> {
    public:
     /**
@@ -308,7 +308,7 @@ class ScopedAIBinder_DeathRecipient
  * Convenience wrapper. See AIBinder_Weak.
  */
 class ScopedAIBinder_Weak
-    : public impl::ScopedAResource<AIBinder_Weak*, void, AIBinder_Weak_delete, nullptr> {
+    : public impl::ScopedAResource<AIBinder_Weak*, AIBinder_Weak_delete, nullptr> {
    public:
     /**
      * Takes ownership of a.
@@ -324,10 +324,29 @@ class ScopedAIBinder_Weak
     SpAIBinder promote() { return SpAIBinder(AIBinder_Weak_promote(get())); }
 };
 
+namespace internal {
+
+static void closeWithError(int fd) {
+    if (fd == -1) return;
+    int ret = close(fd);
+    if (ret != 0) {
+        //        int save = errno;
+        //#ifdef LOG_TAG
+        //        const char* tag = LOG_TAG;
+        //#else
+        //        const char* tag = "ScopedFileDescriptor";
+        //#endif
+        //        __android_log_write(ANDROID_LOG_ERROR, tag,
+        //            ("Could not close FD, errno " + std::to_string(save)).c_str());
+    }
+}
+
+}  // namespace internal
+
 /**
  * Convenience wrapper for a file descriptor.
  */
-class ScopedFileDescriptor : public impl::ScopedAResource<int, int, close, -1> {
+class ScopedFileDescriptor : public impl::ScopedAResource<int, internal::closeWithError, -1> {
    public:
     /**
      * Takes ownership of a.
