@@ -118,6 +118,30 @@
       },
       "revId": "604114d223a32bab35aac7393f5f1770481993c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dde11a2_b5dcac49",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-15T17:09:29Z",
+      "side": 1,
+      "message": "I mean, test WpIBinder at all. It seems to have been added here, without being used, exported, or tested...",
+      "parentUuid": "1969e14a_777d8dc0",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 69
+      },
+      "revId": "604114d223a32bab35aac7393f5f1770481993c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
