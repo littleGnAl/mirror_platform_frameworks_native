@@ -94,6 +94,30 @@
       },
       "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a430c6_8a20c828",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-12-15T17:56:01Z",
+      "side": 1,
+      "message": "This is the header that aidl generated code uses, right? I don\u0027t think it\u0027s a problem to make liblog a requirement.\n\nAlternatively, you can use syslog. The log tag will be way less useful (it\u0027s just `getprogname()`), but it will go to logcat.",
+      "parentUuid": "395cf2bf_5a78a06e",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 85
+      },
+      "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
