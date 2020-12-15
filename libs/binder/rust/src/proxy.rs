@@ -375,6 +375,17 @@ impl DeserializeArray for Option<SpIBinder> {}
 /// interface should be crated with [`declare_binder_interface!`].
 pub struct WpIBinder(*mut sys::AIBinder_Weak);
 
+impl fmt::Debug for WpIBinder {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.pad("WpIBinder")
+    }
+}
+
+/// # Safety
+///
+/// A `WpIBinder` is a handle to a C++ IBinder, which is thread-safe.
+unsafe impl Send for WpIBinder {}
+
 impl WpIBinder {
     /// Create a new weak reference from an object that can be converted into a
     /// raw `AIBinder` pointer.
