@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "671da4c3_469b10c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-12-15T04:53:14Z",
+      "side": 1,
+      "message": "Merge conflict detected by TH.\n\nPerhaps CP this on to internl/master manually and set this one w/ \"Merged-In\"",
+      "revId": "61949f27761ebf75faae1408b472ad34d90ffeb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
