@@ -218,6 +218,23 @@
       },
       "revId": "604114d223a32bab35aac7393f5f1770481993c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0a3b8d6_5f2cbdd0",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2020-12-15T19:14:30Z",
+      "side": 1,
+      "message": "I just realized this is exposing AsNative to the public api, which I don\u0027t want to do. I\u0027d prefer we add a downgrade function to SpIBinder that returns a WpIBinder, and make this method private.",
+      "revId": "604114d223a32bab35aac7393f5f1770481993c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
