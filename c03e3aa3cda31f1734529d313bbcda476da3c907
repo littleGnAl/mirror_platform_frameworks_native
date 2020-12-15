@@ -16,6 +16,23 @@
       "message": "Needed to add test_suites to Android.bp for TEST_MAPPING.",
       "revId": "c03e3aa3cda31f1734529d313bbcda476da3c907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db87d99d_7f3b70ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-12-15T22:18:50Z",
+      "side": 1,
+      "message": "+2 inherited from PS8",
+      "revId": "c03e3aa3cda31f1734529d313bbcda476da3c907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
