@@ -70,6 +70,30 @@
       },
       "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8d9b6e_39538cee",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-15T17:48:48Z",
+      "side": 1,
+      "message": "people who depend on libbinder_ndk don\u0027t always also have a dependency on liblog, at least for the platform build.",
+      "parentUuid": "395cf2bf_5a78a06e",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 85
+      },
+      "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
