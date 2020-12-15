@@ -17,14 +17,14 @@
 use crate::binder::{AsNative, Interface, InterfaceClassMethods, Remotable, TransactionCode};
 use crate::error::{status_result, status_t, Result, StatusCode};
 use crate::parcel::{Parcel, Serialize};
-use crate::proxy::SpIBinder;
+use crate::proxy::{SpIBinder, WpIBinder};
 use crate::sys;
 
 use std::convert::TryFrom;
 use std::ffi::{c_void, CString};
 use std::mem::ManuallyDrop;
 use std::ops::Deref;
-use std::ptr;
+use std::sync::{Arc, Mutex, RwLock, Weak};
 
 /// Rust wrapper around Binder remotable objects.
 ///
@@ -32,14 +32,19 @@ use std::ptr;
 /// `IBinder` interface.
 #[repr(C)]
 pub struct Binder<T: Remotable> {
-    ibinder: *mut sys::AIBinder,
-    rust_object: *mut T,
+    // A weak reference to the IBinder service object
+    weak_ibinder: Mutex<Option<WpIBinder>>,
+
+    // A weak reference to self
+    weak_ref: RwLock<Weak<Self>>,
+
+    rust_object: T,
 }
 
 /// # Safety
 ///
 /// A `Binder<T>` is a pair of unique owning pointers to two values:
-///   * a C++ ABBinder which the C++ API guarantees can be passed between threads
+///   * a C++ wp<IBinder> which the C++ API guarantees can be passed between threads
 ///   * a Rust object which implements `Remotable`; this trait requires `Send + Sync`
 ///
 /// Both pointers are unique (never escape the `Binder<T>` object and are not copied)
@@ -53,22 +58,14 @@ impl<T: Remotable> Binder<T> {
     ///
     /// This moves the `rust_object` into an owned [`Box`] and Binder will
     /// manage its lifetime.
-    pub fn new(rust_object: T) -> Binder<T> {
-        let class = T::get_class();
-        let rust_object = Box::into_raw(Box::new(rust_object));
-        let ibinder = unsafe {
-            // Safety: `AIBinder_new` expects a valid class pointer (which we
-            // initialize via `get_class`), and an arbitrary pointer
-            // argument. The caller owns the returned `AIBinder` pointer, which
-            // is a strong reference to a `BBinder`. This reference should be
-            // decremented via `AIBinder_decStrong` when the reference lifetime
-            // ends.
-            sys::AIBinder_new(class.into(), rust_object as *mut c_void)
-        };
-        Binder {
-            ibinder,
+    pub fn new(rust_object: T) -> Arc<Binder<T>> {
+        let binder = Arc::new(Binder {
+            weak_ibinder: Mutex::new(None),
+            weak_ref: RwLock::new(Weak::new()),
             rust_object,
-        }
+        });
+        *binder.weak_ref.write().unwrap() = Arc::downgrade(&binder);
+        binder
     }
 
     /// Set the extension of a binder interface. This allows a downstream
@@ -144,6 +141,7 @@ impl<T: Remotable> Binder<T> {
     ///        }
     ///        # }
     pub fn set_extension(&mut self, extension: &mut SpIBinder) -> Result<()> {
+        let mut ibinder = self.as_binder().ok_or(StatusCode::DEAD_OBJECT)?;
         let status = unsafe {
             // Safety: `AIBinder_setExtension` expects two valid, mutable
             // `AIBinder` pointers. We are guaranteed that both `self` and
@@ -151,7 +149,7 @@ impl<T: Remotable> Binder<T> {
             // cannot be initialized without a valid
             // pointer. `AIBinder_setExtension` does not take ownership of
             // either parameter.
-            sys::AIBinder_setExtension(self.as_native_mut(), extension.as_native_mut())
+            sys::AIBinder_setExtension(ibinder.as_native_mut(), extension.as_native_mut())
         };
         status_result(status)
     }
@@ -170,16 +168,27 @@ impl<T: Remotable> Interface for Binder<T> {
     /// The resulting `SpIBinder` will hold its own strong reference to this
     /// remotable object, which will prevent the object from being dropped while
     /// the `SpIBinder` is alive.
-    fn as_binder(&self) -> SpIBinder {
-        unsafe {
-            // Safety: `self.ibinder` is guaranteed to always be a valid pointer
-            // to an `AIBinder` by the `Binder` constructor. We are creating a
-            // copy of the `self.ibinder` strong reference, but
-            // `SpIBinder::from_raw` assumes it receives an owned pointer with
-            // its own strong reference. We first increment the reference count,
-            // so that the new `SpIBinder` will be tracked as a new reference.
-            sys::AIBinder_incStrong(self.ibinder);
-            SpIBinder::from_raw(self.ibinder).unwrap()
+    fn as_binder(&self) -> Option<SpIBinder> {
+        let mut weak_ibinder = self.weak_ibinder.lock().expect("Could not lock weak_ibinder");
+        if let Some(weak_ibinder) = &*weak_ibinder {
+            weak_ibinder.promote()
+        } else {
+            let class = T::get_class();
+            // Self is alive, and weak_ref is a reference to self, so it is
+            // trivially upgradeable
+            let strong_ref = self.weak_ref.read().unwrap().upgrade().unwrap();
+            let userdata = Arc::into_raw(strong_ref) as *mut c_void;
+            let mut strong_ibinder = unsafe {
+                // Safety: `AIBinder_new` expects a valid class pointer (which we
+                // initialize via `get_class`), and an arbitrary pointer
+                // argument. The caller owns the returned `AIBinder` pointer, which
+                // is a strong reference to a `BBinder`. This reference should be
+                // decremented via `AIBinder_decStrong` when the reference lifetime
+                // ends.
+                SpIBinder::from_raw(sys::AIBinder_new(class.into(), userdata))?
+            };
+            *weak_ibinder = Some(WpIBinder::new(&mut strong_ibinder));
+            Some(strong_ibinder)
         }
     }
 }
@@ -224,10 +233,11 @@ impl<T: Remotable> InterfaceClassMethods for Binder<T> {
     ///
     /// # Safety
     ///
-    /// Must be called with a valid pointer to a `T` object. After this call,
-    /// the pointer will be invalid and should not be dereferenced.
+    /// Must be called with a valid pointer to a userdata object, which was
+    /// created via Arc<Self>::into_raw. After this call, the pointer will be
+    /// invalid and should not be dereferenced.
     unsafe extern "C" fn on_destroy(object: *mut c_void) {
-        ptr::drop_in_place(object as *mut T)
+        let _ = Arc::from_raw(object as *const Binder<T>);
     }
 
     /// Called whenever a new, local `AIBinder` object is needed of a specific
@@ -246,47 +256,24 @@ impl<T: Remotable> InterfaceClassMethods for Binder<T> {
     }
 }
 
-impl<T: Remotable> Drop for Binder<T> {
-    // This causes C++ to decrease the strong ref count of the `AIBinder`
-    // object. We specifically do not drop the `rust_object` here. When C++
-    // actually destroys the object, it calls `on_destroy` and we can drop the
-    // `rust_object` then.
-    fn drop(&mut self) {
-        unsafe {
-            // Safety: When `self` is dropped, we can no longer access the
-            // reference, so can decrement the reference count. `self.ibinder`
-            // is always a valid `AIBinder` pointer, so is valid to pass to
-            // `AIBinder_decStrong`.
-            sys::AIBinder_decStrong(self.ibinder);
-        }
-    }
-}
-
 impl<T: Remotable> Deref for Binder<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
-        unsafe {
-            // Safety: While `self` is alive, the reference count of the
-            // underlying object is > 0 and therefore `on_destroy` cannot be
-            // called. Therefore while `self` is alive, we know that
-            // `rust_object` is still a valid pointer to a heap allocated object
-            // of type `T`.
-            &*self.rust_object
-        }
+        &self.rust_object
     }
 }
 
 impl<B: Remotable> Serialize for Binder<B> {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
-        parcel.write_binder(Some(&self.as_binder()))
+        parcel.write_binder(self.as_binder().as_ref())
     }
 }
 
 // This implementation is an idiomatic implementation of the C++
 // `IBinder::localBinder` interface if the binder object is a Rust binder
 // service.
-impl<B: Remotable> TryFrom<SpIBinder> for Binder<B> {
+impl<B: Remotable> TryFrom<SpIBinder> for Arc<Binder<B>> {
     type Error = StatusCode;
 
     fn try_from(mut ibinder: SpIBinder) -> Result<Self> {
@@ -299,35 +286,21 @@ impl<B: Remotable> TryFrom<SpIBinder> for Binder<B> {
             // `AIBinder`, which we can safely pass to
             // `AIBinder_getUserData`. `ibinder` retains ownership of the
             // returned pointer.
-            sys::AIBinder_getUserData(ibinder.as_native_mut())
+            sys::AIBinder_getUserData(ibinder.as_native_mut()) as *const Binder<B>
         };
         if userdata.is_null() {
             return Err(StatusCode::UNEXPECTED_NULL);
         }
-        // We are transferring the ownership of the AIBinder into the new Binder
-        // object.
-        let mut ibinder = ManuallyDrop::new(ibinder);
-        Ok(Binder {
-            ibinder: ibinder.as_native_mut(),
-            rust_object: userdata as *mut B,
-        })
-    }
-}
 
-/// # Safety
-///
-/// The constructor for `Binder` guarantees that `self.ibinder` will contain a
-/// valid, non-null pointer to an `AIBinder`, so this implementation is type
-/// safe. `self.ibinder` will remain valid for the entire lifetime of `self`
-/// because we hold a strong reference to the `AIBinder` until `self` is
-/// dropped.
-unsafe impl<B: Remotable> AsNative<sys::AIBinder> for Binder<B> {
-    fn as_native(&self) -> *const sys::AIBinder {
-        self.ibinder
-    }
-
-    fn as_native_mut(&mut self) -> *mut sys::AIBinder {
-        self.ibinder
+        // We must not take ownership of the strong reference in the user data,
+        // as this should be owned by the Binder object itself. Thus we need to
+        // clone and not drop the reconstituted Arc.
+        let strong_ref = unsafe {
+            // Safety: userdata is not null (checked above), and was created in
+            // Interface::as_binder above via Arc::into_raw.
+            ManuallyDrop::new(Arc::from_raw(userdata))
+        };
+        Ok(strong_ref.deref().clone())
     }
 }
 
