@@ -46,6 +46,30 @@
       },
       "revId": "97e17d5451a3612c3396cf4fd176fae794b84cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e051c5_6bb95ca3",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-15T00:56:19Z",
+      "side": 1,
+      "message": "Oh yeah, duh! Of course. nit: You could drop the ping then (and comment the reason for adding the service), but that makes sense.",
+      "parentUuid": "b92c03a9_41f0a882",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 96
+      },
+      "revId": "97e17d5451a3612c3396cf4fd176fae794b84cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

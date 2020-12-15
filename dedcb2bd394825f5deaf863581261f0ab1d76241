@@ -520,6 +520,30 @@
       },
       "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b3bff1_b94ce073",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-15T00:56:19Z",
+      "side": 1,
+      "message": "\u003e There is only 1 BR_SPAWN_LOOPER event when it reads 2 threads.\n\nYeah - that\u0027s expected (since the other thread is spawned directly from startThreadPool, the kernel doesn\u0027t request it).\n\n\u003e There is another race for the \"main looper\" thread, but the window is much shorter.\n\nPerhaps waiting for BC_ENTER_LOOPER from that thread then. One complex thing you could do to fix this is:\n- fork a process when it starts\n- wait on a condition in the main thread (not the threadpool thread, the int main one)\n- the child process sends a binder call to you, which sets the condition and notifies (this call must be handled on the threadpool thread, so it will be guaranteed to start)\n\nAt least, without changing the existing APIs, that is the only way I can think of making sure the thread starts AND has issued BC_ENTER_LOOPER",
+      "parentUuid": "b1903d76_c058b5b9",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "dedcb2bd394825f5deaf863581261f0ab1d76241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
