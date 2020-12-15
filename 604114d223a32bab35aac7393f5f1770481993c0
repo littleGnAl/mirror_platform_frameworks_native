@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9faceba7_df8974b5",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-15T18:55:29Z",
+      "side": 1,
+      "message": "It\u0027s in the email thread, but following this, we should also support typed interface wp\u0027s as well. This is available in libbinder_ndk via std::weak_ptr (so not so clear in the API surface, since it\u0027s under the hood). Is there something similar for the rust backend?",
+      "parentUuid": "18cb33b9_6e307667",
+      "revId": "604114d223a32bab35aac7393f5f1770481993c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a6f48d6_d5bb63b7",
