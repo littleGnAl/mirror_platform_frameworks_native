@@ -118,6 +118,30 @@
       },
       "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6607008_42a253b7",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-15T20:18:39Z",
+      "side": 1,
+      "message": "It\u0027s not a problem from an SDK/NDK perspective, but it means fixing up many things in tree, breaking downstream partners, and requiring an extra library in everyone\u0027s build file. So - syslog is exactly what I was looking for. Thanks!",
+      "parentUuid": "65a430c6_8a20c828",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 85
+      },
+      "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
