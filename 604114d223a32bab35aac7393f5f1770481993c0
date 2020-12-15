@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18cb33b9_6e307667",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2020-12-15T18:48:38Z",
+      "side": 1,
+      "message": "Probably best to just mirror the comment above from SpIBinder (which will get rid of my spelling mistake, too 😊):\n\n    /// This struct encapsulates the generic C++ `wp\u003cIBinder\u003e` class. This wrapper\n    /// is untyped; typed interface access is implemented by the AIDL compiler.",
+      "revId": "604114d223a32bab35aac7393f5f1770481993c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6f48d6_d5bb63b7",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2020-12-15T18:48:38Z",
+      "side": 1,
+      "message": "I\u0027d like to add Clone for WpIBinder, but there isn\u0027t an NDK API to directly duplicate the AIBinder_Weak object or call incWeak, so we would have to promote and create a new weak binder, which isn\u0027t really what we want.",
+      "revId": "604114d223a32bab35aac7393f5f1770481993c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b05d8fb_c34186d1",
         "filename": "libs/binder/rust/src/proxy.rs",
         "patchSetId": 1
@@ -134,6 +168,30 @@
       "side": 1,
       "message": "I mean, test WpIBinder at all. It seems to have been added here, without being used, exported, or tested...",
       "parentUuid": "1969e14a_777d8dc0",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 69
+      },
+      "revId": "604114d223a32bab35aac7393f5f1770481993c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef23ff0_f3219656",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2020-12-15T18:48:38Z",
+      "side": 1,
+      "message": "WpIBinder and death notifications are tested in https://android-review.googlesource.com/c/platform/frameworks/native/+/1315033/ which still hasn\u0027t landed, probably because it was forgotten.\n\n\u003e new+promote should be, yeah. Is that all we\u0027re making a statement about?\n\nRust distinguishes Send, which means we can send this object from one thread to another, and Sync, which means we can concurrently access the same object from multiple threads.\n\nIBinder is thread-safe, i.e. it can be passed from one thread to another. wp\u003c\u003e is fine to share between threads, as it explicitly allows concurrent access from multiple threads to the same underlying object as long as each thread has its own wp\u003c\u003e or sp\u003c\u003e object.",
+      "parentUuid": "1dde11a2_b5dcac49",
       "range": {
         "startLine": 386,
         "startChar": 0,
