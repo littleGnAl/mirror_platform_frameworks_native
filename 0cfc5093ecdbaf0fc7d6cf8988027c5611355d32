@@ -16,6 +16,24 @@
       "message": "Is this going to cause compatibility issues between build-tools 31 and existing NDKs? We\u0027ll have this header shipped with aapt then so maybe not an issue?",
       "revId": "0cfc5093ecdbaf0fc7d6cf8988027c5611355d32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c81a3708_86ce3452",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-15T20:59:48Z",
+      "side": 1,
+      "message": "It\u0027s in the \u0027impl namespace\u0027 (actually maybe I should use impl/internal consistently here...), so no one should be using it (AIDL doesn\u0027t).",
+      "parentUuid": "ca697ca0_694b166f",
+      "revId": "0cfc5093ecdbaf0fc7d6cf8988027c5611355d32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
