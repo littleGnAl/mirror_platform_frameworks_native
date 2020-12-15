@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6584f016_27bb3691",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-15T23:26:01Z",
+      "side": 1,
+      "message": "See comment below; is this Box needed anymore?",
+      "revId": "a8ec79d524771dae409f27e30c9c7de4793873e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df543fcc_fdca9c88",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-15T23:26:01Z",
+      "side": 1,
+      "message": "If userdata is no longer rust_object, then do you need the latter to be *mut T? It could be T instead and embed the Rust object directly inside the Binder.",
+      "revId": "a8ec79d524771dae409f27e30c9c7de4793873e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8c2f77b_a20f2c8b",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-15T23:26:01Z",
+      "side": 1,
+      "message": "If you keep rust_object as *mut T, you\u0027ll need to drop the Box here, I think.",
+      "revId": "a8ec79d524771dae409f27e30c9c7de4793873e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae2be5d_4df9d110",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-15T23:26:01Z",
+      "side": 1,
+      "message": "If you\u0027re trying to call Arc::clone(), you should call it as an associated function and not a method.",
+      "revId": "a8ec79d524771dae409f27e30c9c7de4793873e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
