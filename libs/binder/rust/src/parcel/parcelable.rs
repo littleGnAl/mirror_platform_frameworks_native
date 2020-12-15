@@ -24,6 +24,7 @@ use std::convert::TryInto;
 use std::ffi::c_void;
 use std::os::raw::c_char;
 use std::ptr;
+use std::sync::Arc;
 
 /// A struct whose instances can be written to a [`Parcel`].
 // Might be able to hook this up as a serde backend in the future?
@@ -519,26 +520,26 @@ impl Deserialize for Status {
     }
 }
 
-impl<T: Serialize + ?Sized> Serialize for Box<T> {
+impl<T: Serialize + ?Sized> Serialize for Arc<T> {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
         Serialize::serialize(&**self, parcel)
     }
 }
 
-impl<T: SerializeOption + ?Sized> SerializeOption for Box<T> {
+impl<T: SerializeOption + ?Sized> SerializeOption for Arc<T> {
     fn serialize_option(this: Option<&Self>, parcel: &mut Parcel) -> Result<()> {
         SerializeOption::serialize_option(this.map(|b| &**b), parcel)
     }
 }
 
-impl<T: FromIBinder + ?Sized> Deserialize for Box<T> {
+impl<T: FromIBinder + ?Sized> Deserialize for Arc<T> {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
         let ibinder: SpIBinder = parcel.read()?;
         FromIBinder::try_from(ibinder)
     }
 }
 
-impl<T: FromIBinder + ?Sized> DeserializeOption for Box<T> {
+impl<T: FromIBinder + ?Sized> DeserializeOption for Arc<T> {
     fn deserialize_option(parcel: &Parcel) -> Result<Option<Self>> {
         let ibinder: Option<SpIBinder> = parcel.read()?;
         ibinder.map(FromIBinder::try_from).transpose()

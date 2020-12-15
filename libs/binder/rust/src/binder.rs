@@ -25,6 +25,7 @@ use std::ffi::{c_void, CStr, CString};
 use std::os::raw::c_char;
 use std::os::unix::io::AsRawFd;
 use std::ptr;
+use std::sync::Arc;
 
 /// Binder action to perform.
 ///
@@ -46,7 +47,7 @@ pub type TransactionFlags = u32;
 /// This is equivalent `IInterface` in C++.
 pub trait Interface {
     /// Convert this binder object into a generic [`SpIBinder`] reference.
-    fn as_binder(&self) -> SpIBinder {
+    fn as_binder(&self) -> Option<SpIBinder> {
         panic!("This object was not a Binder object and cannot be converted into an SpIBinder.")
     }
 }
@@ -98,17 +99,17 @@ pub trait IBinder {
     fn is_binder_alive(&self) -> bool;
 
     /// Send a ping transaction to this object
-    fn ping_binder(&mut self) -> Result<()>;
+    fn ping_binder(&self) -> Result<()>;
 
     /// Indicate that the service intends to receive caller security contexts.
     fn set_requesting_sid(&mut self, enable: bool);
 
     /// Dump this object to the given file handle
-    fn dump<F: AsRawFd>(&mut self, fp: &F, args: &[&str]) -> Result<()>;
+    fn dump<F: AsRawFd>(&self, fp: &F, args: &[&str]) -> Result<()>;
 
     /// Get a new interface that exposes additional extension functionality, if
     /// available.
-    fn get_extension(&mut self) -> Result<Option<SpIBinder>>;
+    fn get_extension(&self) -> Result<Option<SpIBinder>>;
 
     /// Perform a generic operation with the object.
     ///
@@ -142,12 +143,12 @@ pub trait IBinder {
     /// binder. You should not try to promote this to a strong reference.
     /// (Nor should you need to, as there is nothing useful you can
     /// directly do with it now that it has passed on.)
-    fn link_to_death(&mut self, recipient: &mut DeathRecipient) -> Result<()>;
+    fn link_to_death(&self, recipient: &mut DeathRecipient) -> Result<()>;
 
     /// Remove a previously registered death notification.
     /// The recipient will no longer be called if this object
     /// dies.
-    fn unlink_to_death(&mut self, recipient: &mut DeathRecipient) -> Result<()>;
+    fn unlink_to_death(&self, recipient: &mut DeathRecipient) -> Result<()>;
 }
 
 /// Opaque reference to the type of a Binder interface.
@@ -346,9 +347,10 @@ pub trait InterfaceClassMethods {
 /// For Binder interface `IFoo`, the following implementation should be made:
 /// ```no_run
 /// # use binder::{FromIBinder, SpIBinder, Result};
+/// # use std::sync::Arc;
 /// # trait IFoo {}
 /// impl FromIBinder for dyn IFoo {
-///     fn try_from(ibinder: SpIBinder) -> Result<Box<Self>> {
+///     fn try_from(ibinder: SpIBinder) -> Result<Arc<Self>> {
 ///         // ...
 ///         # Err(binder::StatusCode::OK)
 ///     }
@@ -359,7 +361,7 @@ pub trait FromIBinder {
     ///
     /// Returns a trait object for the `Self` interface if this object
     /// implements that interface.
-    fn try_from(ibinder: SpIBinder) -> Result<Box<Self>>;
+    fn try_from(ibinder: SpIBinder) -> Result<Arc<Self>>;
 }
 
 /// Trait for transparent Rust wrappers around android C++ native types.
@@ -510,8 +512,8 @@ macro_rules! declare_binder_interface {
         }
 
         impl $crate::Interface for $proxy {
-            fn as_binder(&self) -> $crate::SpIBinder {
-                self.binder.clone()
+            fn as_binder(&self) -> Option<$crate::SpIBinder> {
+                Some(self.binder.clone())
             }
         }
 
@@ -534,7 +536,7 @@ macro_rules! declare_binder_interface {
 
         impl $native {
             /// Create a new binder service.
-            pub fn new_binder<T: $interface + Sync + Send + 'static>(inner: T) -> impl $interface {
+            pub fn new_binder<T: $interface + Sync + Send + 'static>(inner: T) -> std::sync::Arc<dyn $interface> {
                 $crate::Binder::new($native(Box::new(inner)))
             }
         }
@@ -577,7 +579,7 @@ macro_rules! declare_binder_interface {
         }
 
         impl $crate::FromIBinder for dyn $interface {
-            fn try_from(mut ibinder: $crate::SpIBinder) -> $crate::Result<Box<dyn $interface>> {
+            fn try_from(mut ibinder: $crate::SpIBinder) -> $crate::Result<std::sync::Arc<dyn $interface>> {
                 use $crate::AssociateClass;
 
                 let existing_class = ibinder.get_class();
@@ -590,20 +592,20 @@ macro_rules! declare_binder_interface {
                         // associated object as remote, because we can't cast it
                         // into a Rust service object without a matching class
                         // pointer.
-                        return Ok(Box::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?));
+                        return Ok(std::sync::Arc::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?));
                     }
                 }
 
                 if ibinder.associate_class(<$native as $crate::Remotable>::get_class()) {
-                    let service: $crate::Result<$crate::Binder<$native>> =
+                    let service: $crate::Result<std::sync::Arc<$crate::Binder<$native>>> =
                         std::convert::TryFrom::try_from(ibinder.clone());
                     if let Ok(service) = service {
                         // We were able to associate with our expected class and
                         // the service is local.
-                        return Ok(Box::new(service));
+                        return Ok(service);
                     } else {
                         // Service is remote
-                        return Ok(Box::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?));
+                        return Ok(std::sync::Arc::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?));
                     }
                 }
 
@@ -616,14 +618,14 @@ macro_rules! declare_binder_interface {
             $interface: $crate::Interface
         {
             fn serialize(&self, parcel: &mut $crate::parcel::Parcel) -> $crate::Result<()> {
-                let binder = $crate::Interface::as_binder(self);
+                let binder = $crate::Interface::as_binder(self).ok_or(StatusCode::DEAD_OBJECT)?;
                 parcel.write(&binder)
             }
         }
 
         impl $crate::parcel::SerializeOption for dyn $interface + '_ {
             fn serialize_option(this: Option<&Self>, parcel: &mut $crate::parcel::Parcel) -> $crate::Result<()> {
-                parcel.write(&this.map($crate::Interface::as_binder))
+                parcel.write(&this.and_then($crate::Interface::as_binder))
             }
         }
 
@@ -633,11 +635,13 @@ macro_rules! declare_binder_interface {
             }
         }
 
-        // Convert a &dyn $interface to Box<dyn $interface>
+        // Convert a &dyn $interface to Arc<dyn $interface>
         impl std::borrow::ToOwned for dyn $interface {
-            type Owned = Box<dyn $interface>;
+            type Owned = Arc<dyn $interface>;
             fn to_owned(&self) -> Self::Owned {
-                self.as_binder().into_interface()
+                self.as_binder()
+                    .expect(concat!("Binder is dead for interface ", stringify!($interface)))
+                    .into_interface()
                     .expect(concat!("Error cloning interface ", stringify!($interface)))
             }
         }

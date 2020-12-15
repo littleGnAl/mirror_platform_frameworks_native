@@ -31,6 +31,7 @@ use std::ffi::{c_void, CString};
 use std::fmt;
 use std::os::unix::io::AsRawFd;
 use std::ptr;
+use std::sync::Arc;
 
 /// A strong reference to a Binder remote object.
 ///
@@ -85,7 +86,7 @@ impl SpIBinder {
     ///
     /// If this object does not implement the expected interface, the error
     /// `StatusCode::BAD_TYPE` is returned.
-    pub fn into_interface<I: FromIBinder + ?Sized>(self) -> Result<Box<I>> {
+    pub fn into_interface<I: FromIBinder + ?Sized>(self) -> Result<Arc<I>> {
         FromIBinder::try_from(self)
     }
 
@@ -238,24 +239,32 @@ impl<T: AsNative<sys::AIBinder>> IBinder for T {
         }
     }
 
-    fn ping_binder(&mut self) -> Result<()> {
+    fn ping_binder(&self) -> Result<()> {
         let status = unsafe {
             // Safety: `SpIBinder` guarantees that `self` always contains a
             // valid pointer to an `AIBinder`.
             //
+            // IBinder::pingBinder should be thread-safe, so we can safely cast
+            // our immutable reference to a mutable pointer.
+            //
             // This call does not affect ownership of its pointer parameter.
-            sys::AIBinder_ping(self.as_native_mut())
+            sys::AIBinder_ping(self.as_native() as *mut sys::AIBinder)
         };
         status_result(status)
     }
 
     fn set_requesting_sid(&mut self, enable: bool) {
         unsafe {
+            // Safety: `SpIBinder` guarantees that `self` always contains a
+            // valid pointer to an `AIBinder`.
+            //
+            // Note that this method is NOT thread-safe and therefore requires a
+            // mutable reference to self.
             sys::AIBinder_setRequestingSid(self.as_native_mut(), enable)
         };
     }
 
-    fn dump<F: AsRawFd>(&mut self, fp: &F, args: &[&str]) -> Result<()> {
+    fn dump<F: AsRawFd>(&self, fp: &F, args: &[&str]) -> Result<()> {
         let args: Vec<_> = args.iter().map(|a| CString::new(*a).unwrap()).collect();
         let mut arg_ptrs: Vec<_> = args.iter().map(|a| a.as_ptr()).collect();
         let status = unsafe {
@@ -266,11 +275,14 @@ impl<T: AsNative<sys::AIBinder>> IBinder for T {
             // strings that will outlive the call since `args` lives for the
             // whole function scope.
             //
+            // IBinder::dump should be thread-safe, so we can safely cast
+            // our immutable reference to a mutable pointer.
+            //
             // This call does not affect ownership of its binder pointer
             // parameter and does not take ownership of the file or args array
             // parameters.
             sys::AIBinder_dump(
-                self.as_native_mut(),
+                self.as_native() as *mut sys::AIBinder,
                 fp.as_raw_fd(),
                 arg_ptrs.as_mut_ptr(),
                 arg_ptrs.len().try_into().unwrap(),
@@ -279,7 +291,7 @@ impl<T: AsNative<sys::AIBinder>> IBinder for T {
         status_result(status)
     }
 
-    fn get_extension(&mut self) -> Result<Option<SpIBinder>> {
+    fn get_extension(&self) -> Result<Option<SpIBinder>> {
         let mut out = ptr::null_mut();
         let status = unsafe {
             // Safety: `SpIBinder` guarantees that `self` always contains a
@@ -287,9 +299,12 @@ impl<T: AsNative<sys::AIBinder>> IBinder for T {
             // parameter will be either null, or a valid pointer to an
             // `AIBinder`.
             //
+            // IBinder::getExtension should be thread-safe, so we can safely
+            // cast our immutable reference to a mutable pointer.
+            //
             // This call passes ownership of the out pointer to its caller
             // (assuming it is set to a non-null value).
-            sys::AIBinder_getExtension(self.as_native_mut(), &mut out)
+            sys::AIBinder_getExtension(self.as_native() as *mut sys::AIBinder, &mut out)
         };
         let ibinder = unsafe {
             // Safety: The call above guarantees that `out` is either null or a
@@ -302,7 +317,7 @@ impl<T: AsNative<sys::AIBinder>> IBinder for T {
         Ok(ibinder)
     }
 
-    fn link_to_death(&mut self, recipient: &mut DeathRecipient) -> Result<()> {
+    fn link_to_death(&self, recipient: &mut DeathRecipient) -> Result<()> {
         status_result(unsafe {
             // Safety: `SpIBinder` guarantees that `self` always contains a
             // valid pointer to an `AIBinder`. `recipient` can always be
@@ -310,15 +325,18 @@ impl<T: AsNative<sys::AIBinder>> IBinder for T {
             // `AIBinder_DeatRecipient`. Any value is safe to pass as the
             // cookie, although we depend on this value being set by
             // `get_cookie` when the death recipient callback is called.
+            //
+            // IBinder::linkToDeath is thread-safe, so we can safely cast our
+            // immutable reference to a mutable pointer.
             sys::AIBinder_linkToDeath(
-                self.as_native_mut(),
+                self.as_native() as *mut sys::AIBinder,
                 recipient.as_native_mut(),
                 recipient.get_cookie(),
             )
         })
     }
 
-    fn unlink_to_death(&mut self, recipient: &mut DeathRecipient) -> Result<()> {
+    fn unlink_to_death(&self, recipient: &mut DeathRecipient) -> Result<()> {
         status_result(unsafe {
             // Safety: `SpIBinder` guarantees that `self` always contains a
             // valid pointer to an `AIBinder`. `recipient` can always be
@@ -326,8 +344,11 @@ impl<T: AsNative<sys::AIBinder>> IBinder for T {
             // `AIBinder_DeatRecipient`. Any value is safe to pass as the
             // cookie, although we depend on this value being set by
             // `get_cookie` when the death recipient callback is called.
+            //
+            // IBinder::linkToDeath is thread-safe, so we can safely cast our
+            // immutable reference to a mutable pointer.
             sys::AIBinder_unlinkToDeath(
-                self.as_native_mut(),
+                self.as_native() as *mut sys::AIBinder,
                 recipient.as_native_mut(),
                 recipient.get_cookie(),
             )
@@ -397,6 +418,17 @@ impl WpIBinder {
             // to pass to `SpIBinder::from_raw`.
             let ptr = sys::AIBinder_Weak_promote(self.0);
             SpIBinder::from_raw(ptr)
+        }
+    }
+}
+
+impl Drop for WpIBinder {
+    fn drop(&mut self) {
+        unsafe {
+            // Safety: WpIBinder always holds a valid `AIBinder_Weak` pointer,
+            // so we know this pointer is safe to pass to `AIBinder_Weak_delete`
+            // here.
+            sys::AIBinder_Weak_delete(self.0);
         }
     }
 }
@@ -525,7 +557,7 @@ pub fn get_service(name: &str) -> Option<SpIBinder> {
 
 /// Retrieve an existing service for a particular interface, blocking for a few
 /// seconds if it doesn't yet exist.
-pub fn get_interface<T: FromIBinder + ?Sized>(name: &str) -> Result<Box<T>> {
+pub fn get_interface<T: FromIBinder + ?Sized>(name: &str) -> Result<Arc<T>> {
     let service = get_service(name);
     match service {
         Some(service) => FromIBinder::try_from(service),

@@ -20,6 +20,7 @@ use binder::declare_binder_interface;
 use binder::parcel::Parcel;
 use binder::{Binder, IBinder, Interface, SpIBinder, StatusCode, ThreadState, TransactionCode};
 use std::convert::{TryFrom, TryInto};
+use std::sync::Arc;
 
 /// Name of service runner.
 ///
@@ -50,14 +51,15 @@ fn main() -> Result<(), &'static str> {
         let mut service = Binder::new(BnTest(Box::new(TestService {
             s: service_name.clone(),
         })));
-        service.set_requesting_sid(true);
+        Arc::get_mut(&mut service).unwrap().set_requesting_sid(true);
         if let Some(extension_name) = extension_name {
             let extension = BnTest::new_binder(TestService { s: extension_name });
-            service
-                .set_extension(&mut extension.as_binder())
+            Arc::get_mut(&mut service)
+                .expect("Did not have exclusive access to service")
+                .set_extension(&mut extension.as_binder().unwrap())
                 .expect("Could not add extension");
         }
-        binder::add_service(&service_name, service.as_binder())
+        binder::add_service(&service_name, service.as_binder().unwrap())
             .expect("Could not register service");
     }
 
@@ -250,7 +252,7 @@ mod tests {
 
     #[test]
     fn check_services() {
-        let mut sm = binder::get_service("manager").expect("Did not get manager binder service");
+        let sm = binder::get_service("manager").expect("Did not get manager binder service");
         assert!(sm.is_binder_alive());
         assert!(sm.ping_binder().is_ok());
 
@@ -271,7 +273,7 @@ mod tests {
     fn trivial_client() {
         let service_name = "trivial_client_test";
         let _process = ScopedServiceProcess::new(service_name);
-        let test_client: Box<dyn ITest> =
+        let test_client: Arc<dyn ITest> =
             binder::get_interface(service_name).expect("Did not get manager binder service");
         assert_eq!(test_client.test().unwrap(), "trivial_client_test");
     }
@@ -280,7 +282,7 @@ mod tests {
     fn get_selinux_context() {
         let service_name = "get_selinux_context";
         let _process = ScopedServiceProcess::new(service_name);
-        let test_client: Box<dyn ITest> =
+        let test_client: Arc<dyn ITest> =
             binder::get_interface(service_name).expect("Did not get manager binder service");
         let expected_context = unsafe {
             let mut out_ptr = ptr::null_mut();
@@ -401,7 +403,7 @@ mod tests {
         {
             let _process = ScopedServiceProcess::new(service_name);
 
-            let mut remote = binder::get_service(service_name);
+            let remote = binder::get_service(service_name);
             assert!(remote.is_binder_alive());
             remote.ping_binder().expect("Could not ping remote service");
 
@@ -432,7 +434,7 @@ mod tests {
         {
             let _process = ScopedServiceProcess::new(service_name);
 
-            let mut remote = binder::get_service(service_name);
+            let remote = binder::get_service(service_name);
             assert!(remote.is_binder_alive());
 
             let extension = remote
@@ -444,7 +446,7 @@ mod tests {
         {
             let _process = ScopedServiceProcess::new_with_extension(service_name, extension_name);
 
-            let mut remote = binder::get_service(service_name);
+            let remote = binder::get_service(service_name);
             assert!(remote.is_binder_alive());
 
             let maybe_extension = remote
@@ -453,7 +455,7 @@ mod tests {
 
             let extension = maybe_extension.expect("Remote binder did not have an extension");
 
-            let extension: Box<dyn ITest> = FromIBinder::try_from(extension)
+            let extension: Arc<dyn ITest> = FromIBinder::try_from(extension)
                 .expect("Extension could not be converted to the expected interface");
 
             assert_eq!(extension.test().unwrap(), extension_name);
@@ -479,7 +481,8 @@ mod tests {
 
         // This should succeed although we will have to treat the service as
         // remote.
-        let _interface: Box<dyn ITestSameDescriptor> = FromIBinder::try_from(service.as_binder())
+        let ibinder = service.as_binder().unwrap();
+        let _interface: Arc<dyn ITestSameDescriptor> = FromIBinder::try_from(ibinder)
             .expect("Could not re-interpret service as the ITestSameDescriptor interface");
     }
 
@@ -488,9 +491,10 @@ mod tests {
     fn reassociate_rust_binder() {
         let service_name = "testing_service";
         let service_ibinder = BnTest::new_binder(TestService { s: service_name.to_string() })
-            .as_binder();
+            .as_binder()
+            .unwrap();
 
-        let service: Box<dyn ITest> = service_ibinder.into_interface()
+        let service: Arc<dyn ITest> = service_ibinder.into_interface()
             .expect("Could not reassociate the generic ibinder");
 
         assert_eq!(service.test().unwrap(), service_name);
