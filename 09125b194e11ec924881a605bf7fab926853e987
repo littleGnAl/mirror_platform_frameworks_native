@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76d51e3_e8ad2070",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-15T18:17:49Z",
+      "side": 1,
+      "message": "try adding \"IPCThreadState::self()-\u003eflushCommand()\" before the post maybe\n\npretty sure that in the error situation, BC_ENTER_LOOPER/BC_REGISTER_LOOPER isn\u0027t actually flushed to the kernel:\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/IPCThreadState.cpp;l\u003d598;drc\u003d80844f7c91c43c3308d6710de4fa66f3a14adb27\n\n(I\u0027m not even sure if calling Continue twice would hit this, but we could add an extra \u0027talkWithDriver(false)\u0027 in libbinder, after L598 there)",
+      "revId": "09125b194e11ec924881a605bf7fab926853e987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
