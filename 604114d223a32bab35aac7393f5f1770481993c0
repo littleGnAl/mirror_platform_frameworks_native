@@ -46,6 +46,30 @@
       },
       "revId": "604114d223a32bab35aac7393f5f1770481993c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f965856c_88ff0e52",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2020-12-15T16:30:10Z",
+      "side": 1,
+      "message": "This is saying that it is safe to send an instance of AIBinder_Weak (i.e. a wp\u003cAIBinder\u003e) between threads, and so to access whatever it points to from different threads (not concurrently).",
+      "parentUuid": "fe687f33_11a238c9",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 69
+      },
+      "revId": "604114d223a32bab35aac7393f5f1770481993c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
