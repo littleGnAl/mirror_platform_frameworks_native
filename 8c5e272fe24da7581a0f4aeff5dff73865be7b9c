@@ -46,6 +46,30 @@
       },
       "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395cf2bf_5a78a06e",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-12-15T17:46:21Z",
+      "side": 1,
+      "message": "Breaks how?\n\n(also, use `strerror`)",
+      "parentUuid": "3f655054_cd2db743",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 85
+      },
+      "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
