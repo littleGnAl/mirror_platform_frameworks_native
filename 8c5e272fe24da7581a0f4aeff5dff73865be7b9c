@@ -22,6 +22,30 @@
       },
       "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f655054_cd2db743",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-15T01:17:46Z",
+      "side": 1,
+      "message": "(well, besides adding a libbinder_ndk \u0027log\u0027 function)",
+      "parentUuid": "2e322251_016917af",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 85
+      },
+      "revId": "8c5e272fe24da7581a0f4aeff5dff73865be7b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
