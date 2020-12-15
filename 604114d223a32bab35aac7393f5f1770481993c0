@@ -94,6 +94,30 @@
       },
       "revId": "604114d223a32bab35aac7393f5f1770481993c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1969e14a_777d8dc0",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2020-12-15T17:00:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure how we could have a unit test to check thread safety properties. Some kind of stress test might possible, but it seems more like something that you\u0027d want to prove. What we\u0027re doing in the Rust wrapper here is just putting into code part of the API contract of the C API.",
+      "parentUuid": "9124807c_0873ed0d",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 69
+      },
+      "revId": "604114d223a32bab35aac7393f5f1770481993c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
