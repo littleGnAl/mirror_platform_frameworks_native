@@ -70,6 +70,30 @@
       },
       "revId": "97e17d5451a3612c3396cf4fd176fae794b84cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a53867_8a6834aa",
+        "filename": "libs/binderdebug/tests/binderdebug_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-15T18:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38e051c5_6bb95ca3",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 96
+      },
+      "revId": "97e17d5451a3612c3396cf4fd176fae794b84cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
