@@ -46,7 +46,7 @@ pub type TransactionFlags = u32;
 /// This is equivalent `IInterface` in C++.
 pub trait Interface {
     /// Convert this binder object into a generic [`SpIBinder`] reference.
-    fn as_binder(&self) -> SpIBinder {
+    fn as_binder(&self) -> Option<SpIBinder> {
         panic!("This object was not a Binder object and cannot be converted into an SpIBinder.")
     }
 }
@@ -511,7 +511,7 @@ macro_rules! declare_binder_interface {
 
         impl $crate::Interface for $proxy {
             fn as_binder(&self) -> $crate::SpIBinder {
-                self.binder.clone()
+                Some(self.binder.clone())
             }
         }
 
@@ -534,7 +534,7 @@ macro_rules! declare_binder_interface {
 
         impl $native {
             /// Create a new binder service.
-            pub fn new_binder<T: $interface + Sync + Send + 'static>(inner: T) -> impl $interface {
+            pub fn new_binder<T: $interface + Sync + Send + 'static>(inner: T) -> Arc<dyn $interface> {
                 $crate::Binder::new($native(Box::new(inner)))
             }
         }
@@ -616,14 +616,14 @@ macro_rules! declare_binder_interface {
             $interface: $crate::Interface
         {
             fn serialize(&self, parcel: &mut $crate::parcel::Parcel) -> $crate::Result<()> {
-                let binder = $crate::Interface::as_binder(self);
+                let binder = $crate::Interface::as_binder(self).ok_or(StatusCode::DEAD_OBJECT)?;
                 parcel.write(&binder)
             }
         }
 
         impl $crate::parcel::SerializeOption for dyn $interface + '_ {
             fn serialize_option(this: Option<&Self>, parcel: &mut $crate::parcel::Parcel) -> $crate::Result<()> {
-                parcel.write(&this.map($crate::Interface::as_binder))
+                parcel.write(&this.and_then($crate::Interface::as_binder))
             }
         }
 
@@ -637,7 +637,9 @@ macro_rules! declare_binder_interface {
         impl std::borrow::ToOwned for dyn $interface {
             type Owned = Box<dyn $interface>;
             fn to_owned(&self) -> Self::Owned {
-                self.as_binder().into_interface()
+                self.as_binder()
+                    .expect(concat!("Binder is dead for interface ", stringify!($interface)))
+                    .into_interface()
                     .expect(concat!("Error cloning interface ", stringify!($interface)))
             }
         }
