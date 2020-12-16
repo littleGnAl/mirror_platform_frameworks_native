@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46d4dfb_5f202a06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-16T04:55:00Z",
+      "side": 1,
+      "message": "Thanks for answering. This is a great change. In the beginning, I had no idea how this will look like. I now have a much better view/understanding thanks to this. ",
+      "revId": "b12cc365f3a9636bcc0d99c5141c3b8c84a45c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bfd8e72_d9616923",
@@ -73,6 +90,30 @@
       "side": 1,
       "message": "handled on L263 (though - it doesn\u0027t handle queuing/blocking transactions, so that only one oneway call will be received at a time. The synchronization behavior is in a FIXME, in the commit message).",
       "parentUuid": "2f15e15b_c83ac003",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 52
+      },
+      "revId": "b12cc365f3a9636bcc0d99c5141c3b8c84a45c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca5574b_550ed21f",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-16T04:55:00Z",
+      "side": 1,
+      "message": "oh, I can\u0027t believe I didn\u0027t see that line!!!",
+      "parentUuid": "e9bf0704_5b37c523",
       "range": {
         "startLine": 269,
         "startChar": 4,
