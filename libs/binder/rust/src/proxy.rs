@@ -416,6 +416,39 @@ impl WpIBinder {
     }
 }
 
+impl PartialEq for WpIBinder {
+    fn eq(&self, other: &Self) -> bool {
+        ptr::eq(self.0, other.0)
+    }
+}
+
+impl Eq for WpIBinder {}
+
+impl Drop for WpIBinder {
+    fn drop(&mut self) {
+        unsafe {
+            // Safety: WpIBinder always holds a valid `AIBinder_Weak` pointer, so we
+            // know this pointer is safe to pass to `AIBinder_Weak_delete` here.
+            sys::AIBinder_Weak_delete(self.0);
+        }
+    }
+}
+
+/// # Safety
+///
+/// `WpIBinder` always contains a valid pointer to an `AIBinder_Weak`, so we can
+/// trivially extract this pointer here. Care must be taken that the returned
+/// pointer is only dereferenced while the `WpIBinder` is still alive.
+unsafe impl AsNative<sys::AIBinder_Weak> for WpIBinder {
+    fn as_native(&self) -> *const sys::AIBinder_Weak {
+        self.0
+    }
+
+    fn as_native_mut(&mut self) -> *mut sys::AIBinder_Weak {
+        self.0
+    }
+}
+
 /// Rust wrapper around DeathRecipient objects.
 #[repr(C)]
 pub struct DeathRecipient {
