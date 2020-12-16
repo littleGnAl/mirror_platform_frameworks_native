@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bfd8e72_d9616923",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-16T02:33:36Z",
+      "side": 1,
+      "message": "No FIXME here?",
+      "revId": "b12cc365f3a9636bcc0d99c5141c3b8c84a45c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f15e15b_c83ac003",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-16T02:33:36Z",
+      "side": 1,
+      "message": "will we be supporting oneway?",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 52
+      },
+      "revId": "b12cc365f3a9636bcc0d99c5141c3b8c84a45c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7a7aa6_176cecd7",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-16T02:33:36Z",
+      "side": 1,
+      "message": "Yeah, I wondering about this.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "b12cc365f3a9636bcc0d99c5141c3b8c84a45c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
