@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "273b6bc8_45edfd95",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-16T02:51:59Z",
+      "side": 1,
+      "message": "This won\u0027t be included in V1/the same CL. It\u0027ll be a follow-up (assuming we support it).",
+      "parentUuid": "8bfd8e72_d9616923",
+      "revId": "b12cc365f3a9636bcc0d99c5141c3b8c84a45c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f15e15b_c83ac003",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9bf0704_5b37c523",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-16T02:51:59Z",
+      "side": 1,
+      "message": "handled on L263 (though - it doesn\u0027t handle queuing/blocking transactions, so that only one oneway call will be received at a time. The synchronization behavior is in a FIXME, in the commit message).",
+      "parentUuid": "2f15e15b_c83ac003",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 52
+      },
+      "revId": "b12cc365f3a9636bcc0d99c5141c3b8c84a45c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb7a7aa6_176cecd7",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-12-16T02:33:36Z",
       "side": 1,
       "message": "Yeah, I wondering about this.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "b12cc365f3a9636bcc0d99c5141c3b8c84a45c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91b22bf_4a98ded3",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-16T02:51:59Z",
+      "side": 1,
+      "message": "It\u0027ll be much simpler to add than you think - hence the email thread though, because I need to commit to one approach now.",
+      "parentUuid": "cb7a7aa6_176cecd7",
       "range": {
         "startLine": 54,
         "startChar": 4,
