@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1543aa_04b2746c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2020-12-16T21:41:33Z",
+      "side": 1,
+      "message": "Alistair: out of curiosity, do you happen to know how we can change the default display size and density acloud uses for a specific cuttlefish variant? Thanks.",
+      "revId": "1a1378d738424bab77bef2cecc546f619c558e90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
