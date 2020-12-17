@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "368af875_0afd4439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248808
+      },
+      "writtenOn": "2020-12-17T19:06:56Z",
+      "side": 1,
+      "message": "This CL seems to have a merge conflict with TOT, can you please take a look ? ",
+      "revId": "b0b8ec9d344f9e0823b3cdecb055674841c8d525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba42c553_08c07393",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1248808
+      },
+      "writtenOn": "2020-12-17T19:06:56Z",
+      "side": 1,
+      "message": "Style Nit: Maybe fix the line length,",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 102
+      },
+      "revId": "b0b8ec9d344f9e0823b3cdecb055674841c8d525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
