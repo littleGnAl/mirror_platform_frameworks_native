@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+1: Stephen Crane <cranes@google.com>
+Code-Review+2: Steven Moreland <smoreland@google.com>
+Submitted-by: Andrew Walbran <qwandor@google.com>
+Submitted-at: Thu, 17 Dec 2020 10:32:43 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1529305
+Project: platform/frameworks/native
+Branch: refs/heads/master
