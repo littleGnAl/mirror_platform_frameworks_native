@@ -39,6 +39,24 @@
       "message": "I don\u0027t fully understand this code. I just wonder why we have had freeDataNoInit() from the beginning. Was it just to save a few cycles because we know that some of the fields will be overwritten immediately after?",
       "revId": "ceed9bb6f875d8afbd3dbd9ff61f6e61bfd5def5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0f944c_5052be63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-17T18:03:21Z",
+      "side": 1,
+      "message": "Yes, as far as I can tell. Though, hoping maco or ctate could comment/ack? (might fix restartWrite in the same CL as well)",
+      "parentUuid": "bb8f5cd3_d0fb87ed",
+      "revId": "ceed9bb6f875d8afbd3dbd9ff61f6e61bfd5def5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
