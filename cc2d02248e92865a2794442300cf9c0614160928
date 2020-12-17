@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777b27c8_d844cad2",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-17T00:27:11Z",
+      "side": 1,
+      "message": "This will also need changes in the compiler (both \u0026dyn $interface and Box\u003cdyn $interface\u003e) changed to Arc\u003cdyn $interface\u003e, but I\u0027m strongly in favor of this change.",
+      "revId": "cc2d02248e92865a2794442300cf9c0614160928",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b85fc1f_a20b210d",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-17T00:27:11Z",
+      "side": 1,
+      "message": "If we change the auto-generated code to always use Arc\u003cdyn $interface\u003e, this might not be needed. On the other hand, it can be useful (and users might prefer to dereference anyway). It was originally needed because we returned a Box.",
+      "revId": "cc2d02248e92865a2794442300cf9c0614160928",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
