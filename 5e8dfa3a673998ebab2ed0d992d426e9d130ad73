@@ -34,6 +34,24 @@
       "parentUuid": "e327dab7_97d736e6",
       "revId": "5e8dfa3a673998ebab2ed0d992d426e9d130ad73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5946fd69_61ec98a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2020-12-17T21:04:16Z",
+      "side": 1,
+      "message": "That destructor should run (and trigger on_destroy) when the last strong ref drops, regardless of weak references. What we really need to know is that the weak count drops when the WpIBinder is dropped in Rust, which we don\u0027t have visibility into from Rust. We could do this with a combined C++ and Rust test, I guess.",
+      "parentUuid": "b025a997_19106bdc",
+      "revId": "5e8dfa3a673998ebab2ed0d992d426e9d130ad73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
