@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2baad4bb_1d282843",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-17T01:17:12Z",
+      "side": 1,
+      "message": "I noticed this, since in another CL, without this change, the device didn\u0027t boot:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1495200/24..25/libs/binder/Parcel.cpp#2565\n\nI\u0027m not sure if this was the particular reason for the failure, or it could be something else, but this level of initialization of the reply Parcel seems wise, even if it means some extra memory sets (assuming there is no opposition to that).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "ceed9bb6f875d8afbd3dbd9ff61f6e61bfd5def5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
