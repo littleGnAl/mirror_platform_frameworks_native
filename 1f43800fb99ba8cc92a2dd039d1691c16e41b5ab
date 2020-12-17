@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "920c3f27_7eeb7937",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-17T02:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cb12002_0bad563f",
+      "range": {
+        "startLine": 401,
+        "startChar": 20,
+        "endLine": 401,
+        "endChar": 23
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1102d70d_164fba37",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-10T23:30:52Z",
       "side": 1,
       "message": "nit: this is obsolete",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5159d305_f14561e5",
+        "filename": "cmds/dumpsys/tests/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-17T02:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1102d70d_164fba37",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eb45ee7_033faf63",
+        "filename": "cmds/dumpsys/tests/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-17T02:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f009869_66127987",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e26592f1_6cce44fe",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-12-10T23:30:52Z",
       "side": 1,
       "message": "I would say prefer \u0027dumpsysValet\u0027, but I think if you delete L586..L588, it should work the same way",
+      "range": {
+        "startLine": 587,
+        "startChar": 63,
+        "endLine": 587,
+        "endChar": 68
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1ceab0_69069256",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-17T02:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e26592f1_6cce44fe",
       "range": {
         "startLine": 587,
         "startChar": 63,
@@ -135,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "576f4e5b_6313220b",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-17T02:26:18Z",
+      "side": 1,
+      "message": "This was discussed in the libbinderdebug review: https://android-review.googlesource.com/c/platform/frameworks/native/+/1526991\nThe \"main looper\" thread is always spawned with startThreadPool().\nsetThreadPoolMaxThreadCount() just sets the max additional \"looper\" threads.",
+      "parentUuid": "8ba634ed_021d0d9f",
+      "range": {
+        "startLine": 594,
+        "startChar": 26,
+        "endLine": 594,
+        "endChar": 29
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46595ba7_25b1564e",
         "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
         "patchSetId": 3
@@ -146,6 +266,30 @@
       "writtenOn": "2020-12-10T23:30:52Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 26
+      },
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dae23fc_2373c0b1",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-17T02:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46595ba7_25b1564e",
       "range": {
         "startLine": 601,
         "startChar": 0,
@@ -169,6 +313,24 @@
       "writtenOn": "2020-12-10T23:30:52Z",
       "side": 1,
       "message": "Instead of duplicating the threadpool starting, you could consider adding it at the end of the file\n\n    int main(int argc, char** argv) {\n        ::testing::InitGoogleTest(\u0026argc, argv);\n        // start threadpool\n        return RUN_ALL_TESTS();\n    }",
+      "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabed58b_cbb1b088",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-17T02:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d072264c_ba1c24ec",
       "revId": "1f43800fb99ba8cc92a2dd039d1691c16e41b5ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
