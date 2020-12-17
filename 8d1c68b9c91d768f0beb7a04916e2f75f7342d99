@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d8f1f9_3e383c82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-17T21:39:52Z",
+      "side": 1,
+      "message": "Looks like a bunch of unrelated test failures. Not going to bother retrying yet.",
+      "revId": "8d1c68b9c91d768f0beb7a04916e2f75f7342d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1806fb10_c60bfbf1",
@@ -14,6 +31,24 @@
       "writtenOn": "2020-12-17T18:56:44Z",
       "side": 1,
       "message": "maybe nandana would want us to move these tests to the beginning and then drop root, to guard against other changes which accidentally require root elsewhere in the tool?",
+      "revId": "8d1c68b9c91d768f0beb7a04916e2f75f7342d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26396099_169a0a6f",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2020-12-17T21:39:52Z",
+      "side": 1,
+      "message": "That sounds like a pretty good idea. How do I drop root from the tests?",
+      "parentUuid": "1806fb10_c60bfbf1",
       "revId": "8d1c68b9c91d768f0beb7a04916e2f75f7342d99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
