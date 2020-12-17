@@ -42,6 +42,11 @@ interface IPackageManagerNative {
     @utf8InCpp String[] getNamesForUids(in int[] uids);
 
     /**
+    * Returns a list of packages for a uid.
+    */
+    @utf8InCpp String[] getPackagesForUid(in int uid);
+
+    /**
      * Returns the name of the installer (a package) which installed the named
      * package. Preloaded packages return the string "preload". Sideloaded packages
      * return an empty string. Unknown or unknowable are returned as empty strings.
