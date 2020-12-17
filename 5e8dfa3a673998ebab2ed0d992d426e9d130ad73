@@ -16,6 +16,24 @@
       "message": "Without being able to query the AIBinder for its weak ref count, testing this will be hard.",
       "revId": "5e8dfa3a673998ebab2ed0d992d426e9d130ad73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b025a997_19106bdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-17T20:39:14Z",
+      "side": 1,
+      "message": "Check that the destructor of the associated binder object runs?\n\nWe need tests for all the functionality in libbinder_rs in order to reliably maintain it/develop in Androd. All new code in Android needs to have tests. At a minimum, that should be functional correctness checks for WpAIBinder here (should have been added in parent CL, since that\u0027s when the API was exported, but I don\u0027t want to lose this thread).",
+      "parentUuid": "e327dab7_97d736e6",
+      "revId": "5e8dfa3a673998ebab2ed0d992d426e9d130ad73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
