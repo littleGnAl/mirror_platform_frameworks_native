@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9988143a_b8848a0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2020-12-17T12:28:33Z",
+      "side": 1,
+      "message": "What do you propose? This is now just a memory leak fix, so we\u0027d need some kind of memory sanitiser I guess.",
+      "parentUuid": "6da70c7a_d474de2a",
+      "revId": "9de0078ae9937608bae981cd928eaf04f0b466b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "596ba142_69854671",
         "filename": "libs/binder/rust/src/proxy.rs",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-16T17:43:42Z",
       "side": 1,
       "message": "I don\u0027t think this is correct. We can get away with this in SpIBinder because we are holding the pointee of the strong pointer and managing ref counts manually. In the WpIBinder case we are holding a pointer to a AIBinder_Weak struct, which is not unique.\n\nIn fact, without additional help from the NDK API, I don\u0027t see a way we can do equality comparisons of weak ibinders.",
+      "revId": "9de0078ae9937608bae981cd928eaf04f0b466b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39706476_5ba6bf3a",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2020-12-17T12:28:33Z",
+      "side": 1,
+      "message": "I see, that\u0027s a pity. Removed.",
+      "parentUuid": "596ba142_69854671",
       "revId": "9de0078ae9937608bae981cd928eaf04f0b466b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2020-12-16T17:43:42Z",
       "side": 1,
       "message": "Do we need this for anything? It\u0027s internal only, and I don\u0027t see any references to it.",
+      "revId": "9de0078ae9937608bae981cd928eaf04f0b466b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e873fb2_d57d9b0c",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2020-12-17T12:28:33Z",
+      "side": 1,
+      "message": "Maybe not. Removed.",
+      "parentUuid": "6f01cf80_79d1e90e",
       "revId": "9de0078ae9937608bae981cd928eaf04f0b466b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
