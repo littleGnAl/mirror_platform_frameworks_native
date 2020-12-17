@@ -16,6 +16,23 @@
       "message": "failed to boot error, but looks like flake.",
       "revId": "bd370965fe403404492eea1be2156f553dabb022",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2215428_0e55e944",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-17T01:19:33Z",
+      "side": 1,
+      "message": "(friendly ping for +2)",
+      "revId": "bd370965fe403404492eea1be2156f553dabb022",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
