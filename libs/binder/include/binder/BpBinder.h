@@ -37,8 +37,6 @@ class BpBinder : public IBinder
 public:
     static BpBinder*    create(int32_t handle);
 
-    int32_t             handle() const;
-
     virtual const String16&    getInterfaceDescriptor() const;
     virtual bool        isBinderAlive() const;
     virtual status_t    pingBinder();
@@ -109,7 +107,22 @@ public:
         KeyedVector<const void*, entry_t> mObjects;
     };
 
+    class PrivateAccessorForParcel {
+    private:
+        friend BpBinder;
+        friend ::android::Parcel;
+        explicit PrivateAccessorForParcel(const BpBinder* binder) : mBinder(binder) {}
+        int32_t handle() const { return mBinder->handle(); }
+        const BpBinder* mBinder;
+    };
+    const PrivateAccessorForParcel getPrivateAccessorForParcel() const {
+        return PrivateAccessorForParcel(this);
+    }
+
 private:
+    friend PrivateAccessorForParcel;
+
+    int32_t             handle() const;
                         BpBinder(int32_t handle,int32_t trackedUid);
     virtual             ~BpBinder();
     virtual void        onFirstRef();
