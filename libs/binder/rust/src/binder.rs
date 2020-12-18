@@ -16,12 +16,16 @@
 
 //! Trait definitions for binder objects
 
-use crate::error::{status_t, Result};
+use crate::error::{status_t, Result, StatusCode};
 use crate::parcel::Parcel;
-use crate::proxy::{DeathRecipient, SpIBinder};
+use crate::proxy::{DeathRecipient, SpIBinder, WpIBinder};
 use crate::sys;
 
+use std::borrow::Borrow;
 use std::ffi::{c_void, CStr, CString};
+use std::fmt;
+use std::marker::PhantomData;
+use std::ops::Deref;
 use std::os::raw::c_char;
 use std::os::unix::io::AsRawFd;
 use std::ptr;
@@ -230,6 +234,76 @@ impl From<InterfaceClass> for *const sys::AIBinder_Class {
     }
 }
 
+/// Strong reference to a binder object
+pub struct Strong<I: FromIBinder + ?Sized>(Box<I>);
+
+impl<I: FromIBinder + ?Sized> Strong<I> {
+    /// Create a new strong reference to the provided binder object
+    pub fn new(binder: Box<I>) -> Self {
+        Self(binder)
+    }
+
+    /// Construct a new weak reference to this binder
+    pub fn downgrade(this: &Strong<I>) -> Weak<I> {
+        Weak::new(this)
+    }
+}
+
+impl<I: FromIBinder + ?Sized> Clone for Strong<I> {
+    fn clone(&self) -> Self {
+        // Since we hold a strong reference, we should always be able to create
+        // a new strong reference to the same interface type, so try_from()
+        // should never fail here.
+        FromIBinder::try_from(self.0.as_binder()).unwrap()
+    }
+}
+
+impl<I: FromIBinder + ?Sized> Borrow<I> for Strong<I> {
+    fn borrow(&self) -> &I {
+        &self.0
+    }
+}
+
+impl<I: FromIBinder + ?Sized> Deref for Strong<I> {
+    type Target = I;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl<I: FromIBinder + fmt::Debug + ?Sized> fmt::Debug for Strong<I> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        fmt::Debug::fmt(&**self, f)
+    }
+}
+
+/// Weak reference to a binder object
+pub struct Weak<I: FromIBinder + ?Sized> {
+    weak_binder: WpIBinder,
+    interface_type: PhantomData<I>,
+}
+
+impl<I: FromIBinder + ?Sized> Weak<I> {
+    /// Construct a new weak reference from a strong reference
+    fn new(binder: &Strong<I>) -> Weak<I> {
+        let weak_binder = binder.as_binder().downgrade();
+        Weak {
+            weak_binder,
+            interface_type: PhantomData,
+        }
+    }
+
+    /// Upgrade this weak reference to a strong reference if the binder object
+    /// is still alive
+    pub fn upgrade(&self) -> Result<Strong<I>> {
+        self.weak_binder
+            .promote()
+            .ok_or(StatusCode::DEAD_OBJECT)
+            .and_then(FromIBinder::try_from)
+    }
+}
+
 /// Create a function implementing a static getter for an interface class.
 ///
 /// Each binder interface (i.e. local [`Remotable`] service or remote proxy
@@ -354,12 +428,12 @@ pub trait InterfaceClassMethods {
 ///     }
 /// }
 /// ```
-pub trait FromIBinder {
+pub trait FromIBinder: Interface {
     /// Try to interpret a generic Binder object as this interface.
     ///
     /// Returns a trait object for the `Self` interface if this object
     /// implements that interface.
-    fn try_from(ibinder: SpIBinder) -> Result<Box<Self>>;
+    fn try_from(ibinder: SpIBinder) -> Result<Strong<Self>>;
 }
 
 /// Trait for transparent Rust wrappers around android C++ native types.
@@ -534,8 +608,9 @@ macro_rules! declare_binder_interface {
 
         impl $native {
             /// Create a new binder service.
-            pub fn new_binder<T: $interface + Sync + Send + 'static>(inner: T) -> impl $interface {
-                $crate::Binder::new($native(Box::new(inner)))
+            pub fn new_binder<T: $interface + Sync + Send + 'static>(inner: T) -> $crate::Strong<dyn $interface> {
+                let binder = $crate::Binder::new($native(Box::new(inner)));
+                $crate::Strong::new(Box::new(binder))
             }
         }
 
@@ -577,7 +652,7 @@ macro_rules! declare_binder_interface {
         }
 
         impl $crate::FromIBinder for dyn $interface {
-            fn try_from(mut ibinder: $crate::SpIBinder) -> $crate::Result<Box<dyn $interface>> {
+            fn try_from(mut ibinder: $crate::SpIBinder) -> $crate::Result<$crate::Strong<dyn $interface>> {
                 use $crate::AssociateClass;
 
                 let existing_class = ibinder.get_class();
@@ -590,7 +665,7 @@ macro_rules! declare_binder_interface {
                         // associated object as remote, because we can't cast it
                         // into a Rust service object without a matching class
                         // pointer.
-                        return Ok(Box::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?));
+                        return Ok($crate::Strong::new(Box::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?)));
                     }
                 }
 
@@ -600,10 +675,10 @@ macro_rules! declare_binder_interface {
                     if let Ok(service) = service {
                         // We were able to associate with our expected class and
                         // the service is local.
-                        return Ok(Box::new(service));
+                        return Ok($crate::Strong::new(Box::new(service)));
                     } else {
                         // Service is remote
-                        return Ok(Box::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?));
+                        return Ok($crate::Strong::new(Box::new(<$proxy as $crate::Proxy>::from_binder(ibinder)?)));
                     }
                 }
 
@@ -633,9 +708,9 @@ macro_rules! declare_binder_interface {
             }
         }
 
-        // Convert a &dyn $interface to Box<dyn $interface>
+        /// Convert a &dyn $interface to Strong<dyn $interface>
         impl std::borrow::ToOwned for dyn $interface {
-            type Owned = Box<dyn $interface>;
+            type Owned = $crate::Strong<dyn $interface>;
             fn to_owned(&self) -> Self::Owned {
                 self.as_binder().into_interface()
                     .expect(concat!("Error cloning interface ", stringify!($interface)))
