@@ -57,6 +57,24 @@
       "parentUuid": "bb8f5cd3_d0fb87ed",
       "revId": "ceed9bb6f875d8afbd3dbd9ff61f6e61bfd5def5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07311622_e1289286",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-18T01:56:30Z",
+      "side": 1,
+      "message": "yeah - restartWrite avoids doing this in case it can get a realloc instead of clearing the memory. That gets a bit more complicated to refactor w/o performance loss, so I won\u0027t change it.",
+      "parentUuid": "be0f944c_5052be63",
+      "revId": "ceed9bb6f875d8afbd3dbd9ff61f6e61bfd5def5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
