@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf6ae81_59b558fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-18T07:01:34Z",
+      "side": 1,
+      "message": "\u003e frameworks/native/cmds/servicemanager/ServiceManager.cpp:497:77: error: \u0027handle\u0027 is a private member of \u0027android::BpBinder\u0027\n\nLooks like there\u0027s more. Hope there is no vendor component using this...",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "48be2209b4edc4e82ee1c09db3c4a8a349124e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bafe5784_fc5599c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-18T07:01:34Z",
+      "side": 1,
+      "message": "Good idea. You should name this pattern :)",
+      "range": {
+        "startLine": 28,
+        "startChar": 60,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "48be2209b4edc4e82ee1c09db3c4a8a349124e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
