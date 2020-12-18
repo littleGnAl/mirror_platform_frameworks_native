@@ -17,7 +17,7 @@
 //! Rust API for interacting with a remote binder service.
 
 use crate::binder::{
-    AsNative, FromIBinder, IBinder, Interface, InterfaceClass, TransactionCode, TransactionFlags,
+    AsNative, FromIBinder, IBinder, Interface, InterfaceClass, Strong, TransactionCode, TransactionFlags,
 };
 use crate::error::{status_result, Result, StatusCode};
 use crate::parcel::{
@@ -85,7 +85,7 @@ impl SpIBinder {
     ///
     /// If this object does not implement the expected interface, the error
     /// `StatusCode::BAD_TYPE` is returned.
-    pub fn into_interface<I: FromIBinder + ?Sized>(self) -> Result<Box<I>> {
+    pub fn into_interface<I: FromIBinder + Interface + ?Sized>(self) -> Result<Strong<I>> {
         FromIBinder::try_from(self)
     }
 
@@ -550,7 +550,7 @@ pub fn get_service(name: &str) -> Option<SpIBinder> {
 
 /// Retrieve an existing service for a particular interface, blocking for a few
 /// seconds if it doesn't yet exist.
-pub fn get_interface<T: FromIBinder + ?Sized>(name: &str) -> Result<Box<T>> {
+pub fn get_interface<T: FromIBinder + ?Sized>(name: &str) -> Result<Strong<T>> {
     let service = get_service(name);
     match service {
         Some(service) => FromIBinder::try_from(service),
