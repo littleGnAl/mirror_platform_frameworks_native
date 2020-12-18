@@ -69,6 +69,24 @@
       "parentUuid": "cc51b663_edac1113",
       "revId": "8192ab824ddcaf339df972b9f0113d53e0986ae4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50e41bb_e9114bfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-12-18T00:56:12Z",
+      "side": 1,
+      "message": "Hi Pierre,\n\nBy the \"bluetooth controller\" i originally meant a physical bluetooth chip. But you can connect two different devices to the same bluetooth chip, so that one doesn\u0027t make much sense.\n\nI think the usecase where you have an external screen connected, and 2 gamepads, with different games on each screen is reasonable.\n\nIn this situation, I would lean towards distinguishing the controllers by their mac addresses.\n\nI don\u0027t think we should mix it with the \"port\" functionality, though. That sounds like it should be:\n\n1) A separate way to associate controller and display id\n2) Done dynamically\n3) shipped with some UX \"association\" menu to let the user choose.\n\nThe \"UX\" part of it can be pretty generic / simple: for example, when you click a specific input device, you can select \"primary display\", \"external display\", or \"currently focused display\".\n\nChris,\n\nAny thoughts here?",
+      "parentUuid": "09abe3b1_0c820479",
+      "revId": "8192ab824ddcaf339df972b9f0113d53e0986ae4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
