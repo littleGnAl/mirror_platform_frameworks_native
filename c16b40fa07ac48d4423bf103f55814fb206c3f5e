@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2dfbaa57_eca9400d",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-19T11:20:29Z",
+      "side": 1,
+      "message": "Actually, if WpIBinder implements Clone, then Weak can #derive it.",
+      "parentUuid": "6c37b16a_1c79e4ea",
+      "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95cb8f32_047e27b9",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 1
