@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3482f2d8_9cc3f5fa",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-19T02:32:36Z",
+      "side": 1,
+      "message": "AsRef is just as useful, you should implement that too. I was also going to suggest BorrowMut and AsMut but I\u0027m not sure if we ever expose a mutable T.",
+      "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb173459_06ef7644",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 1
@@ -31,6 +48,24 @@
       "writtenOn": "2020-12-19T02:18:11Z",
       "side": 1,
       "message": "Same as above: Debug, Send, other traits.",
+      "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c37b16a_1c79e4ea",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-19T02:32:36Z",
+      "side": 1,
+      "message": "A manual implementation of Clone could be useful too.",
+      "parentUuid": "bb173459_06ef7644",
       "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
