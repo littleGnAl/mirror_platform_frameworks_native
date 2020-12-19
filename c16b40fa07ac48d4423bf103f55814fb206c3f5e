@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5a4d929_cd5a22f4",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-19T11:09:17Z",
+      "side": 1,
+      "message": "If this is the only function you need, you could get rid of Strong and just do this:\n```\nimpl\u003cT: FromIBinder + ?Sized\u003e Box\u003cBinder\u003cT\u003e\u003e {\n    pub fn downgrade(this: \u0026Self) -\u003e Weak\u003cT\u003e {\n        Weak::new(this)\n    }\n}\n```\nor add downgrade() to either FromIBinder (it could just call Weak::new(self)) or Binder\u003cT\u003e.",
+      "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3482f2d8_9cc3f5fa",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 1
@@ -66,6 +83,23 @@
       "side": 1,
       "message": "A manual implementation of Clone could be useful too.",
       "parentUuid": "bb173459_06ef7644",
+      "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95cb8f32_047e27b9",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-19T11:09:17Z",
+      "side": 1,
+      "message": "This might be shorter with .map()s.",
       "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
