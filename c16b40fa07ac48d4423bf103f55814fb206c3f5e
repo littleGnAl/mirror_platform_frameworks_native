@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce134f5a_7515892f",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-19T02:18:11Z",
+      "side": 1,
+      "message": "Send? Maybe add a derive for all the usual traits (Eq, PartialEq, Ord, PartialOrd, Hash) too.",
+      "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb173459_06ef7644",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-12-19T02:18:11Z",
+      "side": 1,
+      "message": "Same as above: Debug, Send, other traits.",
+      "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
