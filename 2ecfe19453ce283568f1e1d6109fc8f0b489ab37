@@ -33,6 +33,24 @@
       "message": "Would you be able to share some context or motiviation for this change? Thanks!",
       "revId": "2ecfe19453ce283568f1e1d6109fc8f0b489ab37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dabea8ed_2a95409c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-12-21T20:15:48Z",
+      "side": 1,
+      "message": "Yes, there\u0027s a little bit on the linked bug, but this new system property is for communicating between the boot animation and other boot sequence processes about the boot progress status. And so just like the bootanim.exit property, that new system property needs to be set / reset in StartPropertySetThread.",
+      "parentUuid": "554b5345_1b3956a5",
+      "revId": "2ecfe19453ce283568f1e1d6109fc8f0b489ab37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
