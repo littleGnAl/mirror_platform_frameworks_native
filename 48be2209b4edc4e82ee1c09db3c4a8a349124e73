@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36277490_dac3405a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-21T21:35:48Z",
+      "side": 1,
+      "message": "Yeah - I forgot about this one. The only real expected usage here is for debugging (to check against binder/state file), but we could add a toString API here for that.\n\nUsing this outside of that, for actual functionality, would be beyond hacky.",
+      "parentUuid": "ecf6ae81_59b558fe",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "48be2209b4edc4e82ee1c09db3c4a8a349124e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bafe5784_fc5599c9",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-18T07:01:34Z",
       "side": 1,
       "message": "Good idea. You should name this pattern :)",
+      "range": {
+        "startLine": 28,
+        "startChar": 60,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "48be2209b4edc4e82ee1c09db3c4a8a349124e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c4d3967_073c9278",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-21T21:35:48Z",
+      "side": 1,
+      "message": "I am sure it\u0027s been done before, but maybe we can call it \"the acquaintance pattern\".",
+      "parentUuid": "bafe5784_fc5599c9",
       "range": {
         "startLine": 28,
         "startChar": 60,
