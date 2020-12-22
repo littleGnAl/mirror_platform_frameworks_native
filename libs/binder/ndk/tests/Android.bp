@@ -64,6 +64,9 @@ cc_test {
         "IBinderNdkUnitTest-cpp",
         "IBinderNdkUnitTest-ndk_platform",
     ],
+    shared_libs: [
+        "libcutils",
+    ],
     test_suites: ["general-tests", "vts"],
     require_root: true,
 }
@@ -85,6 +88,7 @@ cc_test {
         "libbinder",
         "libbinder_ndk",
         "libutils",
+        "libcutils",
     ],
     test_suites: ["general-tests", "vts"],
     require_root: true,
