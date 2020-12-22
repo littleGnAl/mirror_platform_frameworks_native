@@ -196,6 +196,7 @@ cc_test {
         "libbinder",
         "liblog",
         "libutils",
+        "libcutils",
     ],
     static_libs: [
         "binderStabilityTestIface-cpp",
