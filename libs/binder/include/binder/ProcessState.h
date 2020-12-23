@@ -56,7 +56,10 @@ public:
             void                expungeHandle(int32_t handle, IBinder* binder);
 
             void                spawnPooledThread(bool isMain);
-            
+            // whether some thread is expected to be up in this process serving
+            // commands, regardless of whether that thread is started manually,
+            // started by the kernel, or started via polling
+            bool                isThreadExpected();
             status_t            setThreadPoolMaxThreadCount(size_t maxThreads);
             void                giveThreadPoolName();
 
@@ -113,6 +116,12 @@ private:
             // Number of binder threads current executing a command.
             size_t              mExecutingThreadsCount;
             // Maximum number for binder threads allowed for this process.
+            //
+            // Note: this is currently incorrect in a few ways
+            // - it's only relevant if the threadpool is started
+            // - manual callers of joinRpcThreadpool can make this get out of
+            //   sync
+            // - this doesn't take into account polling threads
             size_t              mMaxThreads;
             // Time when thread pool was emptied
             int64_t             mStarvationStartTimeMs;
@@ -122,6 +131,7 @@ private:
             Vector<handle_entry>mHandleToObject;
 
             String8             mRootDir;
+            bool                mThreadExpected;
             bool                mThreadPoolStarted;
     volatile int32_t            mThreadPoolSeq;
 
