@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09faec14_cd11cdf0",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-23T19:48:48Z",
+      "side": 1,
+      "message": "Here - there are other bigger problems. We could fix mMaxThreads to be accurate, but I think this stopgap is really necessary until someone takes the time to do that.",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 36
+      },
+      "revId": "b4ff58f8365198dd1364539c2b2d011972b9ac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72534fbd_d528f1ba",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-23T19:48:48Z",
+      "side": 1,
+      "message": "note - this is not a performance concern here, since I already switched it to use call_once flag (no longer is a mutex take)",
+      "range": {
+        "startLine": 205,
+        "startChar": 22,
+        "endLine": 205,
+        "endChar": 42
+      },
+      "revId": "b4ff58f8365198dd1364539c2b2d011972b9ac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
