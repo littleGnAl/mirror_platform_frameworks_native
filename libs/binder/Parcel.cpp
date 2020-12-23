@@ -201,6 +201,7 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder)
 
     if (binder != nullptr) {
         BBinder *local = binder->localBinder();
+
         if (!local) {
             BpBinder *proxy = binder->remoteBinder();
             if (proxy == nullptr) {

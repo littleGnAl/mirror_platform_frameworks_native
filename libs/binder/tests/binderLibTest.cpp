@@ -419,6 +419,11 @@ TEST_F(BinderLibTest, NopTransactionClear) {
     EXPECT_EQ(NO_ERROR, ret);
 }
 
+TEST_F(BinderLibTest, ThreadExpected) {
+    // always expected to be true, since this test starts a threadpool
+    EXPECT_TRUE(ProcessState::self()->isThreadExpected());
+}
+
 TEST_F(BinderLibTest, Freeze) {
     status_t ret;
     Parcel data, reply, replypid;
@@ -1594,6 +1599,12 @@ int main(int argc, char **argv) {
 
     ::testing::InitGoogleTest(&argc, argv);
     binder_env = AddGlobalTestEnvironment(new BinderLibTestEnv());
+
+    if (ProcessState::self()->isThreadExpected()) {
+        fprintf(stderr, "Thread should not be expected!");
+        abort();
+    }
+
     ProcessState::self()->startThreadPool();
     return RUN_ALL_TESTS();
 }
