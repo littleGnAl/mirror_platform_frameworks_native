@@ -201,6 +201,14 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder)
 
     if (binder != nullptr) {
         BBinder *local = binder->localBinder();
+
+        if (local && !ProcessState::self()->isThreadExpected()) {
+            // best practice is to start a threadpool early. This log may happen
+            // if a threadpool is started immedately after making a call, but
+            // that spam is worth seeing this in deadlock cases.
+            ALOGW("Sending binder out of process, but no threadpool is started. Calls may hang.");
+        }
+
         if (!local) {
             BpBinder *proxy = binder->remoteBinder();
             if (proxy == nullptr) {
