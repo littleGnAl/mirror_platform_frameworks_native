@@ -141,6 +141,10 @@ void ProcessState::startThreadPool()
     if (!mThreadPoolStarted) {
         mThreadPoolStarted = true;
         spawnPooledThread(true);
+
+        // set here, in case it is read before the spawned thread has a chance
+        // to set it
+        mThreadExpected = true;
     }
 }
 
@@ -343,6 +347,10 @@ void ProcessState::spawnPooledThread(bool isMain)
     }
 }
 
+bool ProcessState::isThreadExpected() {
+    return mThreadExpected;
+}
+
 status_t ProcessState::setThreadPoolMaxThreadCount(size_t maxThreads) {
     LOG_ALWAYS_FATAL_IF(mThreadPoolStarted && maxThreads < mMaxThreads,
            "Binder threadpool cannot be shrunk after starting");
@@ -401,6 +409,7 @@ ProcessState::ProcessState(const char *driver)
     , mExecutingThreadsCount(0)
     , mMaxThreads(DEFAULT_MAX_BINDER_THREADS)
     , mStarvationStartTimeMs(0)
+    , mThreadExpected(false)
     , mThreadPoolStarted(false)
     , mThreadPoolSeq(1)
     , mCallRestriction(CallRestriction::NONE)
