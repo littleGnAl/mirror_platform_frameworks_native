@@ -75,6 +75,24 @@
       "parentUuid": "be0f944c_5052be63",
       "revId": "ceed9bb6f875d8afbd3dbd9ff61f6e61bfd5def5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c16cce7_a3ccb8df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-12-23T08:05:16Z",
+      "side": 1,
+      "message": "Yeah I think this was done just to optimize this particular pattern in IPCThreadState.cpp:\n\nParcel buffer;\nbuffer.ipcSetDataReference(\n      reinterpret_cast\u003cconst uint8_t*\u003e(tr.data.ptr.buffer),\n      ...\n               \nI\u0027m not sure whether those cycles are important, but we could have the best of both worlds - introduce a Parcel constructor that takes the setDataReference params for the case above, and then use this change for the other case where the Parcel is passed in by the caller?",
+      "parentUuid": "07311622_e1289286",
+      "revId": "ceed9bb6f875d8afbd3dbd9ff61f6e61bfd5def5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
