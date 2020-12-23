@@ -110,6 +110,24 @@
       "message": "(+2 in case this is blocking your work, I do think this change is correct)",
       "revId": "ceed9bb6f875d8afbd3dbd9ff61f6e61bfd5def5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a496825_31d277dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-23T19:18:40Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m really focusing on the other user of this function here. There are just a lot of things with libbinder that are subtly wrong, and I\u0027m not worried about performance for this (for performance, watching out for lock-takes + heap allocations, and we have binderAllocationLimits now).\n\nThis code is way too complex - and the number of bugs - many of which are serious - which have been discovered over the years are because of sprawling copy pasta special cases which is very prematurely optimized (e.g. libbinder would rather duplicate 30 LOC than remove a heap allocation in certain places). Over time, it\u0027s only gotten worse.\n\nPart of me is hoping this will fix some flakes/subtle issues in certain types of hand-rolled Parcel code.\n\nAs part of doing socket binder, we just can\u0027t have this complexity (and this change shaves off 4-5 LOC). So merging, thanks!",
+      "parentUuid": "6c16cce7_a3ccb8df",
+      "revId": "ceed9bb6f875d8afbd3dbd9ff61f6e61bfd5def5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
