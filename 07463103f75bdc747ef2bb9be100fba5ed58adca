@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8fce16a_2c0c23da",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-23T02:35:54Z",
+      "side": 1,
+      "message": "this code isn\u0027t technically AIDL-specific, but it\u0027s being made that way in b/160624671, so that\u0027s why I\u0027m comfortable with this.",
+      "range": {
+        "startLine": 183,
+        "startChar": 69,
+        "endLine": 183,
+        "endChar": 73
+      },
+      "revId": "07463103f75bdc747ef2bb9be100fba5ed58adca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
