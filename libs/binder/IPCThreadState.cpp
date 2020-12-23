@@ -595,6 +595,8 @@ void IPCThreadState::joinThreadPool(bool isMain)
 {
     LOG_THREADPOOL("**** THREAD %p (PID %d) IS JOINING THE THREAD POOL\n", (void*)pthread_self(), getpid());
 
+    ProcessState::self()->mThreadExpected = true;
+
     mOut.writeInt32(isMain ? BC_ENTER_LOOPER : BC_REGISTER_LOOPER);
 
     status_t result;
@@ -627,6 +629,8 @@ status_t IPCThreadState::setupPolling(int* fd)
     if (mProcess->mDriverFD < 0) {
         return -EBADF;
     }
+
+    ProcessState::self()->mThreadExpected = true;
 
     mOut.writeInt32(BC_ENTER_LOOPER);
     *fd = mProcess->mDriverFD;
