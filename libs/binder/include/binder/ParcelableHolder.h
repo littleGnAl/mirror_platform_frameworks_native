@@ -104,28 +104,22 @@ public:
     Stability getStability() const override { return mStability; }
 
     inline bool operator!=(const ParcelableHolder& rhs) const {
-        return std::tie(mParcelable, mParcelPtr, mStability) !=
-                std::tie(rhs.mParcelable, rhs.mParcelPtr, rhs.mStability);
+        return cmp(rhs) != 0;
     }
     inline bool operator<(const ParcelableHolder& rhs) const {
-        return std::tie(mParcelable, mParcelPtr, mStability) <
-                std::tie(rhs.mParcelable, rhs.mParcelPtr, rhs.mStability);
+        return cmp(rhs) < 0;
     }
     inline bool operator<=(const ParcelableHolder& rhs) const {
-        return std::tie(mParcelable, mParcelPtr, mStability) <=
-                std::tie(rhs.mParcelable, rhs.mParcelPtr, rhs.mStability);
+        return cmp(rhs) <= 0;
     }
     inline bool operator==(const ParcelableHolder& rhs) const {
-        return std::tie(mParcelable, mParcelPtr, mStability) ==
-                std::tie(rhs.mParcelable, rhs.mParcelPtr, rhs.mStability);
+        return cmp(rhs) == 0;
     }
     inline bool operator>(const ParcelableHolder& rhs) const {
-        return std::tie(mParcelable, mParcelPtr, mStability) >
-                std::tie(rhs.mParcelable, rhs.mParcelPtr, rhs.mStability);
+        return cmp(rhs) > 0;
     }
     inline bool operator>=(const ParcelableHolder& rhs) const {
-        return std::tie(mParcelable, mParcelPtr, mStability) >=
-                std::tie(rhs.mParcelable, rhs.mParcelPtr, rhs.mStability);
+        return cmp(rhs) >= 0;
     }
 
 private:
@@ -133,6 +127,23 @@ private:
     mutable std::optional<std::string> mParcelableName;
     mutable std::unique_ptr<Parcel> mParcelPtr;
     Stability mStability;
+
+    inline int cmp(const ParcelableHolder& rhs) const {
+        this->marshall();
+        rhs.marshall();
+        if (mStability == rhs.mStability && mParcelPtr && rhs.mParcelPtr) {
+            return mParcelPtr->compareData(*rhs.mParcelPtr);
+        }
+
+        auto lhsTuple = std::tie(mStability, mParcelPtr);
+        auto rhsTuple = std::tie(rhs.mStability, rhs.mParcelPtr);
+        if (lhsTuple == rhsTuple) {
+            return 0;
+        }
+        return lhsTuple < rhsTuple ? -1 : 1;
+    }
+
+    void marshall() const;
 };
 } // namespace os
 } // namespace android

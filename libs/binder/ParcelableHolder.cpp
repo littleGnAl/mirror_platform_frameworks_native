@@ -91,5 +91,17 @@ status_t ParcelableHolder::readFromParcel(const Parcel* p) {
     p->setDataPosition(dataStartPos + dataSize);
     return OK;
 }
+
+void ParcelableHolder::marshall() const {
+    if (mParcelable) {
+        if (!this->mParcelPtr) {
+            this->mParcelPtr = std::make_unique<Parcel>();
+        }
+        this->mParcelPtr->writeUtf8AsUtf16(this->mParcelableName);
+        this->mParcelable->writeToParcel(this->mParcelPtr.get());
+        this->mParcelable = nullptr;
+        this->mParcelableName = std::nullopt;
+    }
+}
 } // namespace os
 } // namespace android
