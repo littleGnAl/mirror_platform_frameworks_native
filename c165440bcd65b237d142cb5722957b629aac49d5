@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb77e6f1_8ea5626f",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-29T19:24:01Z",
+      "side": 1,
+      "message": "\u003e android::base\n\nlibbinder doesn\u0027t take a libbase dependency (this saves some memory, unless other things in the process use libbase).\n\n\u003e std::tuple\u003c...\u003e\n\nI\u0027m not a fan of this :P, always prefer explicit struct (w/ named types) over tuple:\n\n    struct ParcelableResult { status_t status; std::shared_ptr\u003cT\u003e ret; };\n\n\u003e I am not a fan of out parameter.\n\nHonestly though, it is the binder style (even w/ writeToParcel above). I think it fits here.",
+      "parentUuid": "ce4e8af1_fa40d586",
+      "range": {
+        "startLine": 73,
+        "startChar": 27,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "c165440bcd65b237d142cb5722957b629aac49d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "216679b5_1f673bbe",
         "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
         "patchSetId": 1
