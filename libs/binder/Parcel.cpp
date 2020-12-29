@@ -229,6 +229,8 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder)
             obj.binder = reinterpret_cast<uintptr_t>(local->getWeakRefs());
             obj.cookie = reinterpret_cast<uintptr_t>(local);
         }
+
+        binder->setParceled();
     } else {
         obj.hdr.type = BINDER_TYPE_BINDER;
         obj.binder = 0;

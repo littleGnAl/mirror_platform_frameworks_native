@@ -247,10 +247,19 @@ public:
     virtual BBinder*        localBinder();
     virtual BpBinder*       remoteBinder();
 
+    void setParceled() {
+        mParceled = true;
+    }
+
+    bool wasParceled() {
+        return mParceled;
+    }
+
 protected:
     virtual          ~IBinder();
 
 private:
+    bool mParceled = false;
 };
 
 } // namespace android
