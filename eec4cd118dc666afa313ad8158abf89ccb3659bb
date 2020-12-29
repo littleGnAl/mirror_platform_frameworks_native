@@ -39,6 +39,30 @@
       },
       "revId": "eec4cd118dc666afa313ad8158abf89ccb3659bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "593113d1_076fff4a",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-12-29T05:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85383693_02de4ed2",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "eec4cd118dc666afa313ad8158abf89ccb3659bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
