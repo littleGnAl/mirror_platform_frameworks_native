@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47b85af1_5dea5329",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-29T18:52:33Z",
+      "side": 1,
+      "message": "if mParcelPtr, then this may write an extra copy of the parcelable to the parcel? is it guaranteed to be empty here?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 53
+      },
+      "revId": "a3f3d6da6a27405c5c407e085ec01b052bfc741c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85081098_500071c2",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-29T18:52:33Z",
+      "side": 1,
+      "message": "and at this point, it seems we can no longer read from the parcelable? since this format is different than expected by readFromParcel. How do we get the parcelable back out?",
+      "revId": "a3f3d6da6a27405c5c407e085ec01b052bfc741c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c01b8b_b597452b",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-29T18:52:33Z",
+      "side": 1,
+      "message": "Is it okay for a comparison operator to be non-threadsafe?\n\nnit: see also b/175072152#comment8. this is a really expensive operation",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 23
+      },
+      "revId": "a3f3d6da6a27405c5c407e085ec01b052bfc741c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bffb9d0_7f5534b4",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-29T18:52:33Z",
+      "side": 1,
+      "message": "maybe we didn\u0027t need to marshall the parcels if we are here?",
+      "revId": "a3f3d6da6a27405c5c407e085ec01b052bfc741c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
