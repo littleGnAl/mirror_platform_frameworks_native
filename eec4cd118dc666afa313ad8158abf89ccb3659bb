@@ -16,6 +16,29 @@
       "message": "As Steven said in https://android-review.googlesource.com/c/platform/system/tools/aidl/+/1536143/2..3/tests/aidl_test_client_parcelables.cpp#b376, it looks weird that the order is changed after const function(getParcelable) is called.\nSo, make it be marshalled before comparison.(will apply it to NDK as well)",
       "revId": "eec4cd118dc666afa313ad8158abf89ccb3659bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85383693_02de4ed2",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-29T04:33:27Z",
+      "side": 1,
+      "message": "drop \"this-\u003e\"?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "eec4cd118dc666afa313ad8158abf89ccb3659bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
