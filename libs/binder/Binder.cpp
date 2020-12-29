@@ -266,6 +266,10 @@ bool BBinder::isRequestingSid()
 
 void BBinder::setRequestingSid(bool requestingSid)
 {
+    LOG_ALWAYS_FATAL_IF(wasSent(),
+                        "setRequestingSid() should only be called before binder object "
+                        "is sent to another process");
+
     Extras* e = mExtras.load(std::memory_order_acquire);
 
     if (!e) {
@@ -288,6 +292,10 @@ sp<IBinder> BBinder::getExtension() {
 }
 
 void BBinder::setMinSchedulerPolicy(int policy, int priority) {
+    LOG_ALWAYS_FATAL_IF(wasSent(),
+                        "setMinSchedulerPolicy() should only be called before binder object "
+                        "is sent to another process");
+
     switch (policy) {
     case SCHED_NORMAL:
       LOG_ALWAYS_FATAL_IF(priority < -20 || priority > 19, "Invalid priority for SCHED_NORMAL: %d", priority);
@@ -335,6 +343,10 @@ bool BBinder::isInheritRt() {
 }
 
 void BBinder::setInheritRt(bool inheritRt) {
+    LOG_ALWAYS_FATAL_IF(wasSent(),
+                        "setInheritRt() should only be called before binder object "
+                        "is sent to another process");
+
     Extras* e = mExtras.load(std::memory_order_acquire);
 
     if (!e) {
@@ -354,6 +366,10 @@ pid_t BBinder::getDebugPid() {
 }
 
 void BBinder::setExtension(const sp<IBinder>& extension) {
+    LOG_ALWAYS_FATAL_IF(wasSent(),
+                        "setExtension() should only be called before binder object "
+                        "is sent to another process");
+
     Extras* e = getOrCreateExtras();
     e->mExtension = extension;
 }

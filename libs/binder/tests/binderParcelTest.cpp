@@ -14,16 +14,63 @@
  * limitations under the License.
  */
 
-#include <binder/Parcel.h>
 #include <binder/IPCThreadState.h>
+#include <binder/IServiceManager.h>
+#include <binder/Parcel.h>
 #include <gtest/gtest.h>
 
+using android::BBinder;
+using android::defaultServiceManager;
 using android::IPCThreadState;
+using android::IServiceManager;
 using android::OK;
 using android::Parcel;
+using android::sp;
+using android::status_t;
 using android::String16;
 using android::String8;
-using android::status_t;
+
+
+// Tests operations that shoud NOT be attempted after the binder object
+// has already been sent to another process (after addService() is called)
+class BinderAlreadySentDeathTest : public testing::TestWithParam<const char*> {
+public:
+    void InvalidOperation() {
+        if (kParam == "setRequestingSid") {
+            ASSERT_DEATH({ service_->setRequestingSid(true); }, kDeathMessage);
+        } else if (kParam == "setMinSchedulerPolicy") {
+            ASSERT_DEATH({ service_->setMinSchedulerPolicy(0, 0); }, kDeathMessage);
+        } else if (kParam == "setInheritRt") {
+            ASSERT_DEATH({ service_->setInheritRt(true); }, kDeathMessage);
+        } else if (kParam == "setExtension") {
+            ASSERT_DEATH({ service_->setExtension(nullptr); }, kDeathMessage);
+        }
+    }
+
+    virtual void SetUp() override {
+        service_manager_ = defaultServiceManager();
+        service_ = new BBinder();
+        service_manager_->addService(String16("binder-death-service"), service_);
+    }
+
+    sp<IServiceManager> service_manager_;
+    sp<android::BBinder> service_;
+    const std::string kParam = GetParam();
+    const std::string kDeathMessage = ".*should only be called before binder object is sent.*";
+};
+
+TEST_P(BinderAlreadySentDeathTest, AbortsOnInvalidOperation) {
+    InvalidOperation();
+}
+
+const char* invalid_operations[] = {
+        "setRequestingSid",
+        "setMinSchedulerPolicy",
+        "setInheritRt",
+        "setExtension",
+};
+
+INSTANTIATE_TEST_SUITE_P(, BinderAlreadySentDeathTest, testing::ValuesIn(invalid_operations));
 
 // Tests a second operation results in a parcel at the same location as it
 // started.
