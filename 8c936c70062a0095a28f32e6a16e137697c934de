@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d07531dd_433ffb3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-29T18:39:35Z",
+      "side": 1,
+      "message": "Clarified",
+      "parentUuid": "6f520dc2_b7fcb190",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "8c936c70062a0095a28f32e6a16e137697c934de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "480fbaab_417666db",
@@ -84,6 +108,30 @@
       "writtenOn": "2020-12-29T07:22:16Z",
       "side": 1,
       "message": "I\u0027m not convinced that\u0027s worth it; we frequently get bugs around binder error messages/warnings that are harmless and turn out to be red herrings, and that is also a source of engineering time lost. Seeing 30 of these on boot may confuse folks debugging unrelated startup issues. Is there any way to prevent this - perhaps a timer?\n\nAlternatively, we could pretty easily do this in the driver on the receiving side; if it tries to deliver a transaction but finds there are no threads in the process, it could print a similar message. I\u0027m not entirely sure that would be free of the races you run into here, either, though.",
+      "range": {
+        "startLine": 207,
+        "startChar": 74,
+        "endLine": 208,
+        "endChar": 64
+      },
+      "revId": "8c936c70062a0095a28f32e6a16e137697c934de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efda9eb4_1c2c7bfc",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-29T18:39:35Z",
+      "side": 1,
+      "message": "Yeah - it would hit the same races.\n\nLet me investigate why these extra logs are showing up. Maybe I can fix that code or avoid them.\n\n\u003e Seeing 30 of these on boot may confuse folks debugging unrelated startup issues.\n\nPretty sad this is still the state of things, but diffing startup logs against a base (automatic anomaly detection), I hear is coming soon. Though ultimately, I\u0027m not so worried about this, because not having this log has been known to cost many engineers entire days, which is a much higher cost than some delayed triage.\n\nStill though, agreed, I can try to make this better.",
+      "parentUuid": "ff9c1da5_69086546",
       "range": {
         "startLine": 207,
         "startChar": 74,
