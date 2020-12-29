@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf24495_022804c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-12-29T04:27:57Z",
+      "side": 1,
+      "message": "As Steven said in https://android-review.googlesource.com/c/platform/system/tools/aidl/+/1536143/2..3/tests/aidl_test_client_parcelables.cpp#b376, it looks weird that the order is changed after const function(getParcelable) is called.\nSo, make it be marshalled before comparison.(will apply it to NDK as well)",
+      "revId": "eec4cd118dc666afa313ad8158abf89ccb3659bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
