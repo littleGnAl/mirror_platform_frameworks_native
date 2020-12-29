@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce4e8af1_fa40d586",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-29T04:26:35Z",
+      "side": 1,
+      "message": "I am not a fan of out parameter. Can we use something like android::base::Result\u003cstd::shared_ptr\u003cT\u003e\u003e or android::base::expected\u003cstd::shared_ptr\u003cT\u003e,status_t\u003e, or just std::tuple\u003c...\u003e?",
+      "range": {
+        "startLine": 73,
+        "startChar": 27,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "c165440bcd65b237d142cb5722957b629aac49d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "216679b5_1f673bbe",
         "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
         "patchSetId": 1
