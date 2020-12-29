@@ -266,6 +266,9 @@ bool BBinder::isRequestingSid()
 
 void BBinder::setRequestingSid(bool requestingSid)
 {
+    LOG_ALWAYS_FATAL_IF(wasSent(),
+            "isRequesting binder must be sent before binder is sent to another process");
+
     Extras* e = mExtras.load(std::memory_order_acquire);
 
     if (!e) {

@@ -247,10 +247,19 @@ public:
     virtual BBinder*        localBinder();
     virtual BpBinder*       remoteBinder();
 
+    void setSent() {
+        _sent = true;
+    }
+
+    bool wasSent() {
+        return _sent;
+    }
+
 protected:
     virtual          ~IBinder();
 
 private:
+    bool _sent = false;
 };
 
 } // namespace android
