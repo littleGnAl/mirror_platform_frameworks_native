@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a82485_07abc42b",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-12-30T06:53:37Z",
+      "side": 1,
+      "message": "at this point, mParcelPtr cannot exist(mParcelable and mParcelPtr is in xor relationship)",
+      "parentUuid": "47b85af1_5dea5329",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 53
+      },
+      "revId": "a3f3d6da6a27405c5c407e085ec01b052bfc741c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85081098_500071c2",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-12-29T18:52:33Z",
       "side": 1,
       "message": "and at this point, it seems we can no longer read from the parcelable? since this format is different than expected by readFromParcel. How do we get the parcelable back out?",
+      "revId": "a3f3d6da6a27405c5c407e085ec01b052bfc741c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644653ff_76c1600d",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-12-30T06:53:37Z",
+      "side": 1,
+      "message": "the written data is the same as what readFromParcel writes in line#86.\nBTW, for now, we decided to remove these marshalling code.",
+      "parentUuid": "85081098_500071c2",
       "revId": "a3f3d6da6a27405c5c407e085ec01b052bfc741c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43dd576c_dff93ea4",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-12-30T06:53:37Z",
+      "side": 1,
+      "message": "Instead of marshalling before comparison, Parcelable just compares it address.",
+      "parentUuid": "a9c01b8b_b597452b",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 23
+      },
+      "revId": "a3f3d6da6a27405c5c407e085ec01b052bfc741c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bffb9d0_7f5534b4",
@@ -77,6 +143,24 @@
       "writtenOn": "2020-12-29T18:52:33Z",
       "side": 1,
       "message": "maybe we didn\u0027t need to marshall the parcels if we are here?",
+      "revId": "a3f3d6da6a27405c5c407e085ec01b052bfc741c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6b83e1_a6272c8c",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-12-30T06:53:37Z",
+      "side": 1,
+      "message": "Instead of marshalling before comparison, Parcelable just compares it address.",
+      "parentUuid": "1bffb9d0_7f5534b4",
       "revId": "a3f3d6da6a27405c5c407e085ec01b052bfc741c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
