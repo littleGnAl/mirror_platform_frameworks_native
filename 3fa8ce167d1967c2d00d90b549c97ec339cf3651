@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc13e8b_53f487ce",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-30T19:12:19Z",
+      "side": 1,
+      "message": "nit: I should have mentioned this when we were talking about this, but maybe we should land one CL with a warning and another with \"LOG_ALWAYS_FATAL_IF\" on top of it.\n\nSince - if we have to revert the log-always-fatal stuff, we still want wasSent/wasParceled APIs.",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 23
+      },
+      "revId": "3fa8ce167d1967c2d00d90b549c97ec339cf3651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36058971_9d562c8b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-30T19:12:19Z",
+      "side": 1,
+      "message": "nit: idk why but I think these would be more clear if we said the negative here \"should not be called after a binder object is parceled/sent to another process\"",
+      "range": {
+        "startLine": 270,
+        "startChar": 44,
+        "endLine": 271,
+        "endChar": 51
+      },
+      "revId": "3fa8ce167d1967c2d00d90b549c97ec339cf3651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dad807e_0fd5a0b6",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-30T19:12:19Z",
+      "side": 1,
+      "message": "s/Sent/Parceled/ - that is, avoid teleological name. We are using this as a proxy for a binder being \u0027sent\u0027, but that assumption should be made in Binder.cpp as a heuristic, and if another client of the API wants to, it should be forced to acknowledge making that heuristic by interpreting whether something was parceled as meaning \u0027sent\u0027. Well also, in some sense, the problem here is really the parcel time, since at that point, we can no longer modify the external representation of the binder object copied into the parcel, whether that is actually \u0027sent\u0027 or just temporarily stored.\n\nUsing \u0027sent\u0027 in the error messages, I still think is critical for making logs easier to understand.",
+      "range": {
+        "startLine": 250,
+        "startChar": 12,
+        "endLine": 250,
+        "endChar": 16
+      },
+      "revId": "3fa8ce167d1967c2d00d90b549c97ec339cf3651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf9592f4_b75d729b",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-30T19:12:19Z",
+      "side": 1,
+      "message": "prefer \u0027mParceled\u0027 formatting",
+      "range": {
+        "startLine": 262,
+        "startChar": 9,
+        "endLine": 262,
+        "endChar": 14
+      },
+      "revId": "3fa8ce167d1967c2d00d90b549c97ec339cf3651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51ab20c_2636d5c6",
+        "filename": "libs/binder/tests/binderParcelTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-30T19:12:19Z",
+      "side": 1,
+      "message": "this test will fail on host, should use this instead for the setup:\n\n    sp\u003cIBinder\u003e myBinder \u003d new BBinder();\n    Parcel data;\n    data.writeStrongBinder(myBinder);\n\nIt honestly might still fail on host though, but I think that should be fixable.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "3fa8ce167d1967c2d00d90b549c97ec339cf3651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
