@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ebc9a2a_961d078b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-30T19:32:54Z",
+      "side": 1,
+      "message": "Waiting for Rust review (Matthew/Andrew).",
+      "revId": "7a9418fdbc4c7c2ed8e58bcdf30ebb389cacc569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
