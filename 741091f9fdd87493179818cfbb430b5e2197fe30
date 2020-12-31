@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007009828",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1537923?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "2b05591d_e986617c",
+          "description": "Change to \"services/surfaceflinger/BufferQueueLayer.cpp\"",
+          "replacements": [
+            {
+              "path": "services/surfaceflinger/BufferQueueLayer.cpp",
+              "range": {
+                "startLine": 213,
+                "startChar": 60,
+                "endLine": 213,
+                "endChar": 66
+              },
+              "replacement": "update"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "ba320bb0_07cf9c9c",
+        "filename": "services/surfaceflinger/BufferQueueLayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-31T04:35:34Z",
+      "side": 1,
+      "message": "Common typo found: \"udpate\" -- should it be \"update\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 213,
+        "startChar": 60,
+        "endLine": 213,
+        "endChar": 66
+      },
+      "revId": "741091f9fdd87493179818cfbb430b5e2197fe30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
