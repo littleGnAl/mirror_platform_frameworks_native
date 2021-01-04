@@ -266,7 +266,7 @@ bool BBinder::isRequestingSid()
 
 void BBinder::setRequestingSid(bool requestingSid)
 {
-    ALOGW_IF(wasParceled(),
+    LOG_ALWAYS_FATAL_IF(wasParceled(),
             "setRequestingSid() should not be called after a binder object "
             "is parceled/sent to another process");
 
@@ -292,7 +292,7 @@ sp<IBinder> BBinder::getExtension() {
 }
 
 void BBinder::setMinSchedulerPolicy(int policy, int priority) {
-    ALOGW_IF(wasParceled(),
+    LOG_ALWAYS_FATAL_IF(wasParceled(),
             "setMinSchedulerPolicy() should not be called after a binder object "
             "is parceled/sent to another process");
 
@@ -343,7 +343,7 @@ bool BBinder::isInheritRt() {
 }
 
 void BBinder::setInheritRt(bool inheritRt) {
-    ALOGW_IF(wasParceled(),
+    LOG_ALWAYS_FATAL_IF(wasParceled(),
             "setInheritRt() should not be called after a binder object "
             "is parceled/sent to another process");
 
@@ -366,7 +366,7 @@ pid_t BBinder::getDebugPid() {
 }
 
 void BBinder::setExtension(const sp<IBinder>& extension) {
-    ALOGW_IF(wasParceled(),
+    LOG_ALWAYS_FATAL_IF(wasParceled(),
             "setExtension() should not be called after a binder object "
             "is parceled/sent to another process");
 

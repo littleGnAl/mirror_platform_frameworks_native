@@ -14,16 +14,51 @@
  * limitations under the License.
  */
 
-#include <binder/Parcel.h>
 #include <binder/IPCThreadState.h>
+#include <binder/IServiceManager.h>
+#include <binder/Parcel.h>
 #include <gtest/gtest.h>
 
+using android::BBinder;
+using android::defaultServiceManager;
 using android::IPCThreadState;
+using android::IServiceManager;
 using android::OK;
 using android::Parcel;
+using android::sp;
+using android::status_t;
 using android::String16;
 using android::String8;
-using android::status_t;
+
+// Tests operations that should NOT be attempted after the binder object
+// has already been sent to another process (after addService() is called)
+class BinderAlreadySentDeathTest : public ::testing::Test {
+public:
+    virtual void SetUp() override {
+        mService = new BBinder();
+        defaultServiceManager()->addService(String16("binder-death-service"), mService);
+    }
+
+    sp<android::BBinder> mService;
+    const std::string kDeathMessage =
+            ".*should not be called after a binder object is parceled/sent.*";
+};
+
+TEST_F(BinderAlreadySentDeathTest, AbortsOnSetRequestingSid) {
+    ASSERT_DEATH({ mService->setRequestingSid(true); }, kDeathMessage);
+}
+
+TEST_F(BinderAlreadySentDeathTest, AbortsOnSetMinSchedulerPolicy) {
+    ASSERT_DEATH({ mService->setMinSchedulerPolicy(0, 0); }, kDeathMessage);
+}
+
+TEST_F(BinderAlreadySentDeathTest, AbortsOnSetInheritRt) {
+    ASSERT_DEATH({ mService->setInheritRt(true); }, kDeathMessage);
+}
+
+TEST_F(BinderAlreadySentDeathTest, AbortsOnSetExtension) {
+    ASSERT_DEATH({ mService->setExtension(nullptr); }, kDeathMessage);
+}
 
 // Tests a second operation results in a parcel at the same location as it
 // started.
