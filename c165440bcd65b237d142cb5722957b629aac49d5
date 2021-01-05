@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "253c19af_4181e373",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-01-05T10:17:12Z",
+      "side": 1,
+      "message": "me either, but in the terms of the convention, out param seems to fit here..",
+      "parentUuid": "eb77e6f1_8ea5626f",
+      "range": {
+        "startLine": 73,
+        "startChar": 27,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "c165440bcd65b237d142cb5722957b629aac49d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "216679b5_1f673bbe",
         "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "or perhaps instead s/unique_ptr/optional/. I think this is fine",
       "parentUuid": "216679b5_1f673bbe",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 29
+      },
+      "revId": "c165440bcd65b237d142cb5722957b629aac49d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf62b983_62e72aba",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-01-05T10:17:12Z",
+      "side": 1,
+      "message": "optional sounds good to me. done.\nBTW, for c++ side, shared_ptr looks proper because it holds the data as shared_ptr.",
+      "parentUuid": "0f9108c9_be22d6a1",
       "range": {
         "startLine": 100,
         "startChar": 0,
