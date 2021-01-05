@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8421748_195930f3",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-01-05T14:52:17Z",
+      "side": 0,
+      "message": "Why is WpIBinder being removed from the public interface?",
+      "range": {
+        "startLine": 125,
+        "startChar": 79,
+        "endLine": 125,
+        "endChar": 88
+      },
+      "revId": "f30487a146252d94fe4e42b65f2801933ca41ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
