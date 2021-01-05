@@ -290,6 +290,10 @@ Vector<String16> ServiceManagerShim::listServices(int dumpsysPriority)
 
 sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
 {
+    LOG_ALWAYS_FATAL_IF(!ProcessState::self()->isThreadExpected(),
+                        "waitForService used, but no thread is available. This would cause a hang "
+                        "if the service is not available.");
+
     class Waiter : public android::os::BnServiceCallback {
         Status onRegistration(const std::string& /*name*/,
                               const sp<IBinder>& binder) override {
@@ -348,7 +352,8 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             if (waiter->mBinder != nullptr) return waiter->mBinder;
         }
 
-        ALOGW("Waited one second for %s (is service started? are binder threads started and available?)", name.c_str());
+        ALOGW("Waited one second for %s (is service started? are binder threads available?)",
+              name.c_str());
 
         // Handle race condition for lazy services. Here is what can happen:
         // - the service dies (not processed by init yet).
