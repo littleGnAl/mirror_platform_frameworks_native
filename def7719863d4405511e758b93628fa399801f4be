@@ -16,6 +16,24 @@
       "message": "are we able to use something like address comparison in Java as well?",
       "revId": "def7719863d4405511e758b93628fa399801f4be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021cb4f5_9995de5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-01-05T01:56:14Z",
+      "side": 1,
+      "message": "for equality operation, java\u0027s default equals already uses its address, and for the other comparison, parcelable in java doesn\u0027t inherit Comparable(even there is no option in JavaDerive..)..\n\nBTW should we add Comparable as an option for JavaDerive?",
+      "parentUuid": "99877815_95a9f4e7",
+      "revId": "def7719863d4405511e758b93628fa399801f4be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
