@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c0de03e_95c7f423",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-01-05T14:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bc13e8b_53f487ce",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 23
+      },
+      "revId": "3fa8ce167d1967c2d00d90b549c97ec339cf3651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36058971_9d562c8b",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-30T19:12:19Z",
       "side": 1,
       "message": "nit: idk why but I think these would be more clear if we said the negative here \"should not be called after a binder object is parceled/sent to another process\"",
+      "range": {
+        "startLine": 270,
+        "startChar": 44,
+        "endLine": 271,
+        "endChar": 51
+      },
+      "revId": "3fa8ce167d1967c2d00d90b549c97ec339cf3651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c471268_6a0deff3",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-01-05T14:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36058971_9d562c8b",
       "range": {
         "startLine": 270,
         "startChar": 44,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1660dcf0_79ffbb9f",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-01-05T14:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dad807e_0fd5a0b6",
+      "range": {
+        "startLine": 250,
+        "startChar": 12,
+        "endLine": 250,
+        "endChar": 16
+      },
+      "revId": "3fa8ce167d1967c2d00d90b549c97ec339cf3651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf9592f4_b75d729b",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b681bb5_391dc1cc",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-01-05T14:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf9592f4_b75d729b",
+      "range": {
+        "startLine": 262,
+        "startChar": 9,
+        "endLine": 262,
+        "endChar": 14
+      },
+      "revId": "3fa8ce167d1967c2d00d90b549c97ec339cf3651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e51ab20c_2636d5c6",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-12-30T19:12:19Z",
       "side": 1,
       "message": "this test will fail on host, should use this instead for the setup:\n\n    sp\u003cIBinder\u003e myBinder \u003d new BBinder();\n    Parcel data;\n    data.writeStrongBinder(myBinder);\n\nIt honestly might still fail on host though, but I think that should be fixable.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "3fa8ce167d1967c2d00d90b549c97ec339cf3651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36689676_63c4b91d",
+        "filename": "libs/binder/tests/binderParcelTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-01-05T14:53:36Z",
+      "side": 1,
+      "message": "This passes as is on host.\n\nIf I use the writeStrongBinder(), I get the death but message is empty. Not sure why that is.",
+      "parentUuid": "e51ab20c_2636d5c6",
       "range": {
         "startLine": 38,
         "startChar": 0,
