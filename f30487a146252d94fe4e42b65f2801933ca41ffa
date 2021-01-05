@@ -22,6 +22,30 @@
       },
       "revId": "f30487a146252d94fe4e42b65f2801933ca41ffa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb908051_b75de018",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2021-01-05T23:20:48Z",
+      "side": 0,
+      "message": "I\u0027d like to avoid use of untyped binder objects outside the library. If you still have a use case for WpIBinder after Weak exists, I\u0027d like to extend Weak if possible for you rather than exposing the raw, untyped object. I\u0027d like to deprecate SpIBinder in favor of Strong as well, but I\u0027m not sure we can.",
+      "parentUuid": "d8421748_195930f3",
+      "range": {
+        "startLine": 125,
+        "startChar": 79,
+        "endLine": 125,
+        "endChar": 88
+      },
+      "revId": "f30487a146252d94fe4e42b65f2801933ca41ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
