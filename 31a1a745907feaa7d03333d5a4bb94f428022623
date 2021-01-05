@@ -16,6 +16,24 @@
       "message": "In b/146758432 it was suggested to only do this if `mSidebandStream !\u003d nullptr`. Isn\u0027t that still relevant?",
       "revId": "31a1a745907feaa7d03333d5a4bb94f428022623",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfb2764b_3fb2f8d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-01-05T20:29:05Z",
+      "side": 1,
+      "message": "You probably want a sidebandstream-specific check here, yes. Otherwise this may produce additional GPU work for SurfaceView.",
+      "parentUuid": "d6deb32c_e148b1f1",
+      "revId": "31a1a745907feaa7d03333d5a4bb94f428022623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
