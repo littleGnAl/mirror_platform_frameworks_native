@@ -185,6 +185,9 @@ int main(int argc, char** argv) {
         return server(kP2Id, kP1Id);
     }
 
+    android::ProcessState::self()->setThreadPoolMaxThreadCount(1);
+    android::ProcessState::self()->startThreadPool();
+
     android::waitForService<IAidlStuff>(String16(id2name(kP1Id).c_str()));
     android::hardware::details::waitForHwService(IHidlStuff::descriptor, id2name(kP1Id).c_str());
     android::waitForService<IAidlStuff>(String16(id2name(kP2Id).c_str()));
