@@ -140,6 +140,30 @@
       },
       "revId": "8c936c70062a0095a28f32e6a16e137697c934de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "903ef4a8_7abc67b4",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-05T23:50:28Z",
+      "side": 1,
+      "message": "I can\u0027t find a way to make this better, and the cause of these logs is actually good code, this style:\n\n    ... defaultServiceManger()-\u003eaddService(...);\n    IPCThreadState::self()-\u003ejoinThreadPool();\n\nSo, removed the log, and targetting a different case using this in http://aosp/1539171",
+      "parentUuid": "efda9eb4_1c2c7bfc",
+      "range": {
+        "startLine": 207,
+        "startChar": 74,
+        "endLine": 208,
+        "endChar": 64
+      },
+      "revId": "8c936c70062a0095a28f32e6a16e137697c934de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
