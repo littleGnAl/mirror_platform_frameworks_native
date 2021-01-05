@@ -51,6 +51,24 @@
       "parentUuid": "554b5345_1b3956a5",
       "revId": "2ecfe19453ce283568f1e1d6109fc8f0b489ab37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1674e46f_e529a350",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-01-05T15:07:14Z",
+      "side": 1,
+      "message": "New 2021 ping, happy new year :)",
+      "parentUuid": "dabea8ed_2a95409c",
+      "revId": "2ecfe19453ce283568f1e1d6109fc8f0b489ab37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
