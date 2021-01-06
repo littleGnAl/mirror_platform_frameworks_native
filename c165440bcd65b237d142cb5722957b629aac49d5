@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f894aff4_2a3df1d6",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-01-06T01:10:07Z",
+      "side": 1,
+      "message": "resolved.",
+      "parentUuid": "253c19af_4181e373",
+      "range": {
+        "startLine": 73,
+        "startChar": 27,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "c165440bcd65b237d142cb5722957b629aac49d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "216679b5_1f673bbe",
