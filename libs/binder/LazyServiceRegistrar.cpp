@@ -29,16 +29,12 @@ namespace internal {
 
 using AidlServiceManager = android::os::IServiceManager;
 
-class ClientCounterCallback : public ::android::os::BnClientCallback {
+class ClientCounterCallbackImpl : public ::android::os::BnClientCallback {
 public:
-    ClientCounterCallback() : mNumConnectedServices(0), mForcePersist(false) {}
+    ClientCounterCallbackImpl() : mNumConnectedServices(0), mForcePersist(false) {}
 
     bool registerService(const sp<IBinder>& service, const std::string& name,
                          bool allowIsolated, int dumpFlags);
-
-    /**
-     * Set a flag to prevent services from automatically shutting down
-     */
     void forcePersist(bool persist);
 
 protected:
@@ -75,7 +71,23 @@ private:
     bool mForcePersist;
 };
 
-bool ClientCounterCallback::registerService(const sp<IBinder>& service, const std::string& name,
+class ClientCounterCallback {
+public:
+    ClientCounterCallback();
+
+    bool registerService(const sp<IBinder>& service, const std::string& name,
+                                            bool allowIsolated, int dumpFlags);
+
+    /**
+     * Set a flag to prevent services from automatically shutting down
+     */
+    void forcePersist(bool persist);
+
+private:
+    sp<ClientCounterCallbackImpl> mImpl;
+};
+
+bool ClientCounterCallbackImpl::registerService(const sp<IBinder>& service, const std::string& name,
                                             bool allowIsolated, int dumpFlags) {
     auto manager = interface_cast<AidlServiceManager>(asBinder(defaultServiceManager()));
 
@@ -105,6 +117,7 @@ bool ClientCounterCallback::registerService(const sp<IBinder>& service, const st
     return true;
 }
 
+<<<<<<< HEAD   (dad360 Merge "ParcelableHolder uses its address for comparison")
 std::map<std::string, ClientCounterCallback::Service>::iterator ClientCounterCallback::assertRegisteredService(const sp<IBinder>& service) {
     LOG_ALWAYS_FATAL_IF(service == nullptr, "Got onClients callback for null service");
     for (auto it = mRegisteredServices.begin(); it != mRegisteredServices.end(); ++it) {
@@ -118,6 +131,9 @@ std::map<std::string, ClientCounterCallback::Service>::iterator ClientCounterCal
 }
 
 void ClientCounterCallback::forcePersist(bool persist) {
+=======
+void ClientCounterCallbackImpl::forcePersist(bool persist) {
+>>>>>>> BRANCH (f76b5e Merge cherrypicks of [13083486, 13083716, 13083431, 13083573)
     mForcePersist = persist;
     if(!mForcePersist) {
         // Attempt a shutdown in case the number of clients hit 0 while the flag was on
@@ -129,6 +145,7 @@ void ClientCounterCallback::forcePersist(bool persist) {
  * onClients is oneway, so no need to worry about multi-threading. Note that this means multiple
  * invocations could occur on different threads however.
  */
+<<<<<<< HEAD   (dad360 Merge "ParcelableHolder uses its address for comparison")
 Status ClientCounterCallback::onClients(const sp<IBinder>& service, bool clients) {
     auto & [name, registered] = *assertRegisteredService(service);
     if (registered.clients == clients) {
@@ -145,6 +162,13 @@ Status ClientCounterCallback::onClients(const sp<IBinder>& service, bool clients
              if (registered.clients) numWithClients++;
          }
          mNumConnectedServices = numWithClients;
+=======
+Status ClientCounterCallbackImpl::onClients(const sp<IBinder>& service, bool clients) {
+    if (clients) {
+        mNumConnectedServices++;
+    } else {
+        mNumConnectedServices--;
+>>>>>>> BRANCH (f76b5e Merge cherrypicks of [13083486, 13083716, 13083431, 13083573)
     }
 
     ALOGI("Process has %zu (of %zu available) client(s) in use after notification %s has clients: %d",
@@ -154,7 +178,7 @@ Status ClientCounterCallback::onClients(const sp<IBinder>& service, bool clients
     return Status::ok();
 }
 
-void ClientCounterCallback::tryShutdown() {
+void ClientCounterCallbackImpl::tryShutdown() {
     if(mNumConnectedServices > 0) {
         // Should only shut down if there are no clients
         return;
@@ -174,7 +198,6 @@ void ClientCounterCallback::tryShutdown() {
         auto& entry = (*unRegisterIt);
 
         bool success = manager->tryUnregisterService(entry.first, entry.second.service).isOk();
-
 
         if (!success) {
             ALOGI("Failed to unregister service %s", entry.first.c_str());
@@ -198,6 +221,19 @@ void ClientCounterCallback::tryShutdown() {
             ALOGE("Bad state: could not re-register services");
         }
     }
+}
+
+ClientCounterCallback::ClientCounterCallback() {
+      mImpl = new ClientCounterCallbackImpl();
+}
+
+bool ClientCounterCallback::registerService(const sp<IBinder>& service, const std::string& name,
+                                            bool allowIsolated, int dumpFlags) {
+    return mImpl->registerService(service, name, allowIsolated, dumpFlags);
+}
+
+void ClientCounterCallback::forcePersist(bool persist) {
+    mImpl->forcePersist(persist);
 }
 
 }  // namespace internal
