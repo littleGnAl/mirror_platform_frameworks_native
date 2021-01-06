@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84524f2b_942c2f0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-06T02:07:19Z",
+      "side": 1,
+      "message": "Request for ORV +1. This is a trivial change that replaces `vendor_available: false` with `private: true` property to avoid giving a special meaning to a property with `false` value. (b/175768895)\n\nIt does not change any behavior.",
+      "revId": "0b9bc015a91a7648306eed69c6aa6fdd6c37eacf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
