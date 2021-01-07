@@ -70,6 +70,30 @@
       },
       "revId": "f30487a146252d94fe4e42b65f2801933ca41ffa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5311d5_d72766fd",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-07T19:38:06Z",
+      "side": 0,
+      "message": "\u003e I\u0027d like to avoid use of untyped binder objects outside the library\n\nI agree with the sentiments, but it is necessary because sometimes you are in a generic context (or sometimes you only need a raw binder, for the base methods on it, w/o custom methods added in an interface).",
+      "parentUuid": "51a44ad0_9eeefbf6",
+      "range": {
+        "startLine": 125,
+        "startChar": 79,
+        "endLine": 125,
+        "endChar": 88
+      },
+      "revId": "f30487a146252d94fe4e42b65f2801933ca41ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
