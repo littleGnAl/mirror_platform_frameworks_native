@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aafe8f3e_22a3f16c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2168,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-07T22:42:14Z",
+      "side": 1,
+      "message": "explain _why_ rather than what? (the \"what\" is visible from the following lines. i think the story about \"before S ... but in S and later ...\" is probably the more useful comment here?)",
+      "revId": "6184ba657f572f48319839f266bac78dd8b77163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9831c9_917c481b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2279,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-07T22:42:14Z",
+      "side": 1,
+      "message": "i don\u0027t think this comment adds anything that isn\u0027t visible from the code itself. is there anything worth saying that isn\u0027t already in the code, or should this just be deleted?",
+      "revId": "6184ba657f572f48319839f266bac78dd8b77163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
