@@ -16,6 +16,29 @@
       "message": "Ray,\nThese CLs are now rebased and validated on aosp/master.\nCan you please take another look?\nThanks.",
       "revId": "ab2be951f694e063a915118b94191cdd81a7c15c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c544eafc_105db38e",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-07T16:38:17Z",
+      "side": 1,
+      "message": "are these better as something like\nconstexpr int kHdrstaticinfo_type1_size \u003d sizeof() + 1;\n\nthan as macros?",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 67
+      },
+      "revId": "ab2be951f694e063a915118b94191cdd81a7c15c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
