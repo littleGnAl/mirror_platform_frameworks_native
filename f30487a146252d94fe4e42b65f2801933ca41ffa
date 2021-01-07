@@ -46,6 +46,30 @@
       },
       "revId": "f30487a146252d94fe4e42b65f2801933ca41ffa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51a44ad0_9eeefbf6",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-01-07T11:08:52Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "bb908051_b75de018",
+      "range": {
+        "startLine": 125,
+        "startChar": 79,
+        "endLine": 125,
+        "endChar": 88
+      },
+      "revId": "f30487a146252d94fe4e42b65f2801933ca41ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
