@@ -39,6 +39,7 @@ cc_test {
     shared_libs: [
         "libbinder",
         "libbinder_ndk",
+        "libcutils",
     ],
     static_libs: [
         "IBinderRustNdkInteropTest-ndk_platform",
