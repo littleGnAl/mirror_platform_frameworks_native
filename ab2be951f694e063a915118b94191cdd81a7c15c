@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ac5afb_a6f4dfe6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-07T06:00:32Z",
+      "side": 1,
+      "message": "Ray,\nThese CLs are now rebased and validated on aosp/master.\nCan you please take another look?\nThanks.",
+      "revId": "ab2be951f694e063a915118b94191cdd81a7c15c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
