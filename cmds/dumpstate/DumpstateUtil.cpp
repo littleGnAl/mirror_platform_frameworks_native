@@ -124,6 +124,11 @@ CommandOptions::CommandOptionsBuilder& CommandOptions::CommandOptionsBuilder::Re
     return *this;
 }
 
+CommandOptions::CommandOptionsBuilder& CommandOptions::CommandOptionsBuilder::CloseAllFileDescriptors() {
+    values.close_all_fds_ = true;
+    return *this;
+}
+
 CommandOptions::CommandOptionsBuilder& CommandOptions::CommandOptionsBuilder::Log(
     const std::string& message) {
     values.logging_message_ = message;
@@ -137,6 +142,7 @@ CommandOptions CommandOptions::CommandOptionsBuilder::Build() {
 CommandOptions::CommandOptionsValues::CommandOptionsValues(int64_t timeout_ms)
     : timeout_ms_(timeout_ms),
       always_(false),
+      close_all_fds_(false),
       account_mode_(DONT_DROP_ROOT),
       output_mode_(NORMAL_OUTPUT),
       logging_message_("") {
@@ -155,6 +161,10 @@ int64_t CommandOptions::TimeoutInMs() const {
 
 bool CommandOptions::Always() const {
     return values.always_;
+}
+
+bool CommandOptions::ShouldCloseAllFileDescriptors() const {
+    return values.close_all_fds_;
 }
 
 PrivilegeMode CommandOptions::PrivilegeMode() const {
@@ -277,7 +287,8 @@ int RunCommandToFd(int fd, const std::string& title, const std::vector<std::stri
         MYLOGI(logging_message.c_str(), command_string.c_str());
     }
 
-    bool silent = (options.OutputMode() == REDIRECT_TO_STDERR);
+    bool silent = (options.OutputMode() == REDIRECT_TO_STDERR ||
+                   options.ShouldCloseAllFileDescriptors());
     bool redirecting_to_fd = STDOUT_FILENO != fd;
 
     if (PropertiesHelper::IsDryRun() && !options.Always()) {
@@ -314,7 +325,24 @@ int RunCommandToFd(int fd, const std::string& title, const std::vector<std::stri
             return -1;
         }
 
-        if (silent) {
+        if (options.ShouldCloseAllFileDescriptors()) {
+            int devnull_fd = TEMP_FAILURE_RETRY(open("/dev/null", O_RDONLY));
+            TEMP_FAILURE_RETRY(dup2(devnull_fd, STDIN_FILENO));
+            close(devnull_fd);
+            devnull_fd = TEMP_FAILURE_RETRY(open("/dev/null", O_WRONLY));
+            TEMP_FAILURE_RETRY(dup2(devnull_fd, STDOUT_FILENO));
+            TEMP_FAILURE_RETRY(dup2(devnull_fd, STDERR_FILENO));
+            close(devnull_fd);
+            // This is to avoid leaking FDs that, accidentally, have not been
+            // marked as O_CLOEXEC. Leaking FDs across exec can cause failures
+            // when execing a process that has a SELinux auto_trans rule.
+            // Here we assume that the dumpstate process didn't open more than
+            // 1000 FDs. In theory we could iterate through entries
+            // /proc/self/fd/, but doing that in a fork-safe way is too complex
+            // (opendir()/readdir() allocate and hence are not fork-safe).
+            for (int i = 0; i < 1000; i++)
+                close(i);
+        } else if (silent) {
             // Redirects stdout to stderr
             TEMP_FAILURE_RETRY(dup2(STDERR_FILENO, STDOUT_FILENO));
         } else if (redirecting_to_fd) {
