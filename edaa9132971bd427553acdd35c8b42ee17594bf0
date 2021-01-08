@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7cbf63f_3d27789a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2021-01-08T03:57:04Z",
+      "side": 1,
+      "message": "Hi Dan, as MTK has no permission to check autosubmit on aosp/master. Is it okay to merge this one?",
+      "revId": "edaa9132971bd427553acdd35c8b42ee17594bf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
