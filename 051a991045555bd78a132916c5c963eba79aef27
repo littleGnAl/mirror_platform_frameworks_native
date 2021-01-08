@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada099f2_b173c76d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-08T15:59:13Z",
+      "side": 1,
+      "message": "Thanks for the review. replies inline",
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e9e759c_7f7f425c",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-01-08T15:46:26Z",
       "side": 1,
       "message": "I\u0027m a little lost here..\n\nI understand wanting to handle O_CLOEXEC here, but how do we know we are done with the fds? \n\nAlso possibly a more naive question, what if dumpstate had not opened these fds?",
+      "range": {
+        "startLine": 330,
+        "startChar": 11,
+        "endLine": 345,
+        "endChar": 25
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f4a3103_b9e06737",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-08T15:59:13Z",
+      "side": 1,
+      "message": "There are two parts here:\n\u003e  but how do we know we are done with the fds? \n\nWe don\u0027t really, we just assume that it\u0027s unlinkely dumpstate (or anything else) will open more than 1000 fds. 1000 is quite arbitrary here but I need to pick a number.\n\n\u003eAlso possibly a more naive question, what if dumpstate had not opened these fds?\n\nclose() will vail with EBADF, signalling that FD number was never open. effectively is a no-op. As I wrote in the comment, there is a cleaner way to do this by iterating through the /proc/self/fd, but not in a fork()-ed context, because that way allocates.\nThis is what many other projects do in a similar context, e.g.:\nhttps://cs.android.com/search?q\u003dfork%5C(%20%5Cbfor%5Cs*%5C(.*%5Cn%5Cs*close%5C(%20%20pcre:yes%20case:yes",
+      "parentUuid": "3e9e759c_7f7f425c",
       "range": {
         "startLine": 330,
         "startChar": 11,
@@ -83,6 +124,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ab7d2f2_867c237b",
+        "filename": "cmds/dumpstate/DumpstateUtil.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-08T15:59:13Z",
+      "side": 1,
+      "message": "Yes this effectively overrides any redirection. It doesn\u0027t make sense to Redirect() and CloseAllFileDescriptors()",
+      "parentUuid": "006f0ffa_3a05e5e4",
+      "range": {
+        "startLine": 116,
+        "startChar": 75,
+        "endLine": 117,
+        "endChar": 69
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "179a91f3_f7eb3489",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 4
@@ -94,6 +159,30 @@
       "writtenOn": "2021-01-08T15:46:26Z",
       "side": 1,
       "message": "does trace file have timestamp inside the content? just in case we are picking up an older trace file - will the reader of the bugreport be able to tell it\u0027s old?",
+      "range": {
+        "startLine": 1065,
+        "startChar": 13,
+        "endLine": 1065,
+        "endChar": 30
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6905ff36_8f58ab91",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-08T15:59:13Z",
+      "side": 1,
+      "message": "dumpstate unlinks the trace at the end, so this should be unlikely.\neven if somehow we end up picking up a stale file (e.g. some previous dumpstate crashed), traces are all timestamped and will become obvious to who opens the file that the times don\u0027t match (also betterbug on its own checks the file timestamp of the trace, yes)",
+      "parentUuid": "179a91f3_f7eb3489",
       "range": {
         "startLine": 1065,
         "startChar": 13,
@@ -127,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8dcedfd_ec20a2bd",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-08T15:59:13Z",
+      "side": 1,
+      "message": "Yes (See definition in the same file, does an unlink at the end)",
+      "parentUuid": "32a0b000_a52973d2",
+      "range": {
+        "startLine": 1069,
+        "startChar": 7,
+        "endLine": 1069,
+        "endChar": 43
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d7dea08_4e1a52c2",
@@ -150,6 +263,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b590cf7_6c013c0e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-08T15:59:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d7dea08_4e1a52c2",
+      "range": {
+        "startLine": 1070,
+        "startChar": 4,
+        "endLine": 1070,
+        "endChar": 8
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ef1778c_087b4b84",
@@ -163,6 +300,30 @@
       "writtenOn": "2021-01-08T15:46:26Z",
       "side": 1,
       "message": "I don\u0027t think this is a particularly long running task - it is just copying a file that already exists into a zip file right? If so we don\u0027t need to use the pool necessarily. How big are the trace files typically?",
+      "range": {
+        "startLine": 1597,
+        "startChar": 0,
+        "endLine": 1597,
+        "endChar": 77
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39039d9_fe01867b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-08T15:59:13Z",
+      "side": 1,
+      "message": "Yeah correct. FIle is around some MB, I don\u0027t think deferring it is a major deal. I mainly did it to stay consistent with the other things that call EnqueueAddZipEntryAndCleanupIfNeeded, but can put it inline here if you are fine.",
+      "parentUuid": "1ef1778c_087b4b84",
       "range": {
         "startLine": 1597,
         "startChar": 0,
