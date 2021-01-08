@@ -71,6 +71,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5097627_5723bdc2",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T18:32:04Z",
+      "side": 1,
+      "message": "can we rename to ShouldCloseAllFileDescriptorsOnExec or something like that, parallel to O_CLOEXEC?",
+      "range": {
+        "startLine": 329,
+        "startChar": 20,
+        "endLine": 329,
+        "endChar": 49
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e9e759c_7f7f425c",
         "filename": "cmds/dumpstate/DumpstateUtil.cpp",
         "patchSetId": 4
@@ -154,6 +177,30 @@
       "side": 1,
       "message": "oh but here we are not in dumpstate anymore, we are in the forked child process (in the pid\u003d\u003d0 part of the branch). At this point this is a copy of dumpstate, where the FD table has been snapshotted, which is about to transition into a new process image with the exec() below.\nThere are no threads here and anything else that dumpstate does concurrently is irrelevant reached the fork() point.",
       "parentUuid": "2a36abf9_65d0bcba",
+      "range": {
+        "startLine": 330,
+        "startChar": 11,
+        "endLine": 345,
+        "endChar": 25
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41750e7_2e87e873",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T18:32:04Z",
+      "side": 1,
+      "message": "got it, thanks for the explanation.\n\nApparently there is a clang-tidy linter that can catch fd leaks over forking - we should look into enabling it. +Gavin",
+      "parentUuid": "cc45c3cd_0e2cd56d",
       "range": {
         "startLine": 330,
         "startChar": 11,
