@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc5b4a6_afcafa31",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-08T21:18:34Z",
+      "side": 1,
+      "message": "prefer c++ style cast",
+      "range": {
+        "startLine": 1491,
+        "startChar": 12,
+        "endLine": 1491,
+        "endChar": 20
+      },
+      "revId": "dd8fbec50f618965ffbbbc0cb88bae6f1da5a4f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6558b4_d1897cd0",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-08T21:18:34Z",
+      "side": 1,
+      "message": "prefer BAD_VALUE perhaps? This would lead to NullPointeException in Java for instance, which doesn\u0027t necessarily make sense",
+      "range": {
+        "startLine": 1497,
+        "startChar": 19,
+        "endLine": 1497,
+        "endChar": 34
+      },
+      "revId": "dd8fbec50f618965ffbbbc0cb88bae6f1da5a4f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
