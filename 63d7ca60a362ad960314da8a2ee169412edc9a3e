@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c769c1_883ad46e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-08T02:58:50Z",
+      "side": 1,
+      "message": "uploading for gerrit save, still need to generate/upload prebuilt updates.",
+      "revId": "63d7ca60a362ad960314da8a2ee169412edc9a3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
