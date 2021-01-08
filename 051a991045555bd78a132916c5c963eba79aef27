@@ -33,6 +33,144 @@
       "message": "+Colin FYI",
       "revId": "051a991045555bd78a132916c5c963eba79aef27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e9e759c_7f7f425c",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T15:46:26Z",
+      "side": 1,
+      "message": "I\u0027m a little lost here..\n\nI understand wanting to handle O_CLOEXEC here, but how do we know we are done with the fds? \n\nAlso possibly a more naive question, what if dumpstate had not opened these fds?",
+      "range": {
+        "startLine": 330,
+        "startChar": 11,
+        "endLine": 345,
+        "endChar": 25
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006f0ffa_3a05e5e4",
+        "filename": "cmds/dumpstate/DumpstateUtil.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T15:46:26Z",
+      "side": 1,
+      "message": "won\u0027t this affect the currently in progress stdio redirections?",
+      "range": {
+        "startLine": 116,
+        "startChar": 75,
+        "endLine": 117,
+        "endChar": 69
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179a91f3_f7eb3489",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T15:46:26Z",
+      "side": 1,
+      "message": "does trace file have timestamp inside the content? just in case we are picking up an older trace file - will the reader of the bugreport be able to tell it\u0027s old?",
+      "range": {
+        "startLine": 1065,
+        "startChar": 13,
+        "endLine": 1065,
+        "endChar": 30
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a0b000_a52973d2",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T15:46:26Z",
+      "side": 1,
+      "message": "does it remove the tmp trace file too?",
+      "range": {
+        "startLine": 1069,
+        "startChar": 7,
+        "endLine": 1069,
+        "endChar": 43
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7dea08_4e1a52c2",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T15:46:26Z",
+      "side": 1,
+      "message": "nit: 8 spaces",
+      "range": {
+        "startLine": 1070,
+        "startChar": 4,
+        "endLine": 1070,
+        "endChar": 8
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef1778c_087b4b84",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T15:46:26Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a particularly long running task - it is just copying a file that already exists into a zip file right? If so we don\u0027t need to use the pool necessarily. How big are the trace files typically?",
+      "range": {
+        "startLine": 1597,
+        "startChar": 0,
+        "endLine": 1597,
+        "endChar": 77
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
