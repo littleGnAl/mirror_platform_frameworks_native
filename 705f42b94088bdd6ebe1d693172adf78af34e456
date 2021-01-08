@@ -1,0 +1,108 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007146321",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1512817?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "580d7394_f29f04af",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-08T18:14:09Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 101
+      },
+      "revId": "705f42b94088bdd6ebe1d693172adf78af34e456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007146321",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1512817?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "825850e9_64f8d74e",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-08T18:14:09Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 121
+      },
+      "revId": "705f42b94088bdd6ebe1d693172adf78af34e456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007146321",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1512817?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "889f4362_152a4519",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-08T18:14:09Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 120
+      },
+      "revId": "705f42b94088bdd6ebe1d693172adf78af34e456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007146321",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1512817?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a9d38b47_7cf7691d",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-08T18:14:09Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 102
+      },
+      "revId": "705f42b94088bdd6ebe1d693172adf78af34e456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
