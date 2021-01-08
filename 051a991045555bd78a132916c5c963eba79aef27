@@ -142,6 +142,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc45c3cd_0e2cd56d",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-08T18:03:11Z",
+      "side": 1,
+      "message": "oh but here we are not in dumpstate anymore, we are in the forked child process (in the pid\u003d\u003d0 part of the branch). At this point this is a copy of dumpstate, where the FD table has been snapshotted, which is about to transition into a new process image with the exec() below.\nThere are no threads here and anything else that dumpstate does concurrently is irrelevant reached the fork() point.",
+      "parentUuid": "2a36abf9_65d0bcba",
+      "range": {
+        "startLine": 330,
+        "startChar": 11,
+        "endLine": 345,
+        "endChar": 25
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "006f0ffa_3a05e5e4",
         "filename": "cmds/dumpstate/DumpstateUtil.h",
         "patchSetId": 4
@@ -389,6 +413,30 @@
       "side": 1,
       "message": "I think you can follow the example in AddAnrTraceDir()",
       "parentUuid": "f39039d9_fe01867b",
+      "range": {
+        "startLine": 1597,
+        "startChar": 0,
+        "endLine": 1597,
+        "endChar": 77
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4a4b7a7_e3f014f8",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-08T18:03:11Z",
+      "side": 1,
+      "message": "kk will do in the next PS",
+      "parentUuid": "2dd1b130_1dfb17f3",
       "range": {
         "startLine": 1597,
         "startChar": 0,
