@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e7779fa_f047439e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2168,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-01-08T05:42:52Z",
+      "side": 1,
+      "message": "Ah yes, sorry, I have now fixed the comment with a better explanation. Thanks Elliott!",
+      "parentUuid": "aafe8f3e_22a3f16c",
+      "revId": "6184ba657f572f48319839f266bac78dd8b77163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d9831c9_917c481b",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-07T22:42:14Z",
       "side": 1,
       "message": "i don\u0027t think this comment adds anything that isn\u0027t visible from the code itself. is there anything worth saying that isn\u0027t already in the code, or should this just be deleted?",
+      "revId": "6184ba657f572f48319839f266bac78dd8b77163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103808d2_cb0bd180",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2279,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-01-08T05:42:52Z",
+      "side": 1,
+      "message": "Deleted it!",
+      "parentUuid": "8d9831c9_917c481b",
       "revId": "6184ba657f572f48319839f266bac78dd8b77163",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
