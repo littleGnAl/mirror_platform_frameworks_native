@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24647a80_18674915",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2021-01-08T00:14:25Z",
+      "side": 1,
+      "message": "Hi Marin! This looks *almost* identical to the internal fix you submitted back in June in http://ag/11959780\n\nI think the best course of action is for you (Marin) to cherry-pick your fix to AOSP master so that it really is identical.\n\nWDYT\n\n",
+      "revId": "9b6e58a88cdde95b1f533022744b45e8dd48532d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
