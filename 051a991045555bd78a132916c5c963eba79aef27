@@ -52,6 +52,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c922aac3_64c82d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T17:59:13Z",
+      "side": 1,
+      "message": "+rhedjao for a look",
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e9e759c_7f7f425c",
@@ -89,6 +106,30 @@
       "side": 1,
       "message": "There are two parts here:\n\u003e  but how do we know we are done with the fds? \n\nWe don\u0027t really, we just assume that it\u0027s unlinkely dumpstate (or anything else) will open more than 1000 fds. 1000 is quite arbitrary here but I need to pick a number.\n\n\u003eAlso possibly a more naive question, what if dumpstate had not opened these fds?\n\nclose() will vail with EBADF, signalling that FD number was never open. effectively is a no-op. As I wrote in the comment, there is a cleaner way to do this by iterating through the /proc/self/fd, but not in a fork()-ed context, because that way allocates.\nThis is what many other projects do in a similar context, e.g.:\nhttps://cs.android.com/search?q\u003dfork%5C(%20%5Cbfor%5Cs*%5C(.*%5Cn%5Cs*close%5C(%20%20pcre:yes%20case:yes",
       "parentUuid": "3e9e759c_7f7f425c",
+      "range": {
+        "startLine": 330,
+        "startChar": 11,
+        "endLine": 345,
+        "endChar": 25
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a36abf9_65d0bcba",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T17:59:13Z",
+      "side": 1,
+      "message": "\u003e We don\u0027t really, we just assume that it\u0027s unlinkely dumpstate (or anything else) will open more than 1000 fds. 1000 is quite arbitrary here but I need to pick a number.\n\nI meant that how do we know dumpstate is not finished with these fds that are being closed? We have a lot of parallel tasks working here, so is it not possible this could close fds still in use?",
+      "parentUuid": "6f4a3103_b9e06737",
       "range": {
         "startLine": 330,
         "startChar": 11,
@@ -324,6 +365,30 @@
       "side": 1,
       "message": "Yeah correct. FIle is around some MB, I don\u0027t think deferring it is a major deal. I mainly did it to stay consistent with the other things that call EnqueueAddZipEntryAndCleanupIfNeeded, but can put it inline here if you are fine.",
       "parentUuid": "1ef1778c_087b4b84",
+      "range": {
+        "startLine": 1597,
+        "startChar": 0,
+        "endLine": 1597,
+        "endChar": 77
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd1b130_1dfb17f3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-08T17:59:13Z",
+      "side": 1,
+      "message": "I think you can follow the example in AddAnrTraceDir()",
+      "parentUuid": "f39039d9_fe01867b",
       "range": {
         "startLine": 1597,
         "startChar": 0,
