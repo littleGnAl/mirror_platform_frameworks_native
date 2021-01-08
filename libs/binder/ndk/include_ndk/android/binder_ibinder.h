@@ -657,6 +657,44 @@ binder_status_t AIBinder_setExtension(AIBinder* binder, AIBinder* ext) __INTRODU
  */
 const char* AIBinder_Class_getDescriptor(const AIBinder_Class* clazz) __INTRODUCED_IN(31);
 
+/**
+ * Whether AIBinder is lt another.
+ *
+ * Available since API level 31.
+ *
+ * \param lhs comparison object
+ * \param rhs comparison object
+ *
+ * \return whether "lhs < rhs" is true
+ */
+bool AIBinder_lt(const AIBinder* lhs, const AIBinder* rhs);
+
+/**
+ * Clone an AIBinder. Useful because even if a weak binder promotes to a null
+ * value, after further binder transactions, it may no longer promote to a null
+ * value.
+ *
+ * Available since API level 31.
+ *
+ * \param weak Object to clone
+ *
+ * \return clone of the input parameter. This must be deleted with
+ * AIBinder_Weak_delete.
+ */
+AIBinder_Weak* AIBinder_Weak_clone(const AIBinder_Weak* weak);
+
+/**
+ * Whether AIBinder_Weak is lt another.
+ *
+ * Available since API level 31.
+ *
+ * \param lhs comparison object
+ * \param rhs comparison object
+ *
+ * \return whether "lhs < rhs" is true
+ */
+bool AIBinder_Weak_lt(const AIBinder_Weak* lhs, const AIBinder_Weak* rhs);
+
 #endif  //__ANDROID_API__ >= 31
 
 __END_DECLS
