@@ -122,6 +122,8 @@ LIBBINDER_NDK31 { # introduced=31
     AServiceManager_waitForService; # apex llndk
 
     AIBinder_Class_getDescriptor;
+    AIBinder_Weak_clone;
+    AIBinder_Weak_lt;
     AParcel_appendFrom;
     AParcel_create;
     AParcel_getDataSize;
