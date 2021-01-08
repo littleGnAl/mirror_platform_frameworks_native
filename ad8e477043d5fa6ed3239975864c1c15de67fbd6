@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007153102",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1543984?revision\u003d4",
+      "fixSuggestions": [
+        {
+          "fixId": "38ad6d11_76c53a7c",
+          "description": "Change to \"libs/binder/ndk/include_ndk/android/binder_ibinder.h\"",
+          "replacements": [
+            {
+              "path": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+              "range": {
+                "startLine": 690,
+                "startChar": 44,
+                "endLine": 690,
+                "endChar": 53
+              },
+              "replacement": "parameter"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "10eda2aa_60dc45b8",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-08T22:00:12Z",
+      "side": 1,
+      "message": "Common typo found: \"paramater\" -- should it be \"parameter\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 690,
+        "startChar": 44,
+        "endLine": 690,
+        "endChar": 53
+      },
+      "revId": "ad8e477043d5fa6ed3239975864c1c15de67fbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
