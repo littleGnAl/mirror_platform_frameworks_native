@@ -20,6 +20,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7d6b49a_6b2a0da1",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-08T21:01:17Z",
+      "side": 1,
+      "message": "What happens if either of these are null.",
+      "revId": "38c49237877841c13e7d39582fe560d423de82aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78bdb054_2755fcc5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-08T21:01:17Z",
+      "side": 1,
+      "message": "Can this be null?",
+      "revId": "38c49237877841c13e7d39582fe560d423de82aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ecbf936_9dc99032",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-08T21:01:17Z",
+      "side": 1,
+      "message": "Can this return null?",
+      "revId": "38c49237877841c13e7d39582fe560d423de82aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e2b49ac_f84943f1",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 3
