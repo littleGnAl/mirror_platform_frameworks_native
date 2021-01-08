@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d113a308_2ec28475",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-08T20:56:44Z",
+      "side": 1,
+      "message": "\"less than\"\n\nDefine how aibinders are ordered.",
+      "revId": "38c49237877841c13e7d39582fe560d423de82aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2b49ac_f84943f1",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-08T20:56:44Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "38c49237877841c13e7d39582fe560d423de82aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
