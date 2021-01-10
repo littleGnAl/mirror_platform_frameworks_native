@@ -73,6 +73,7 @@
 #include <cutils/properties.h>
 #include <cutils/sockets.h>
 #include <debuggerd/client.h>
+#include <dmabufstat/dmabufstat.h>
 #include <dumpsys.h>
 #include <dumputils/dump_utils.h>
 #include <hardware_legacy/power.h>
@@ -1449,6 +1450,53 @@ static void DumpExternalFragmentationInfo() {
     printf("\n");
 }
 
+static void DumpDmabufInfo() {
+    android::dmabufstats::DmabufStats stats;
+
+    getDmabufSysfsStats(stats);
+    auto buffer_stats = stats.getBufferStats();
+    auto exporter_stats = stats.getExporterStats();
+    auto importer_stats = stats.getImporterStats();
+
+    printf("\n\n----------------------- DMA-BUF per-buffer stats -----------------------\n");
+    printf("    Dmabuf Inode |            Size |      Exporter    |       MMap Count |\n");
+    for (auto buf: buffer_stats) {
+        printf("%16u |%16u | %16s | %16u\n", buf.inode, buf.size, buf.exp_name.c_str(),
+               buf.mmap_count);
+    }
+
+    printf("\n\n----------------------- DMA-BUF attachment stats -----------------------\n");
+    printf("    Dmabuf Inode | Attachment(Map Count)\n");
+    for (auto buf: buffer_stats) {
+        printf("%16u", buf.inode);
+
+        if (buf.attachments.empty()) {
+            printf("      None\n");
+            continue;
+        }
+
+        for (auto attachment: buf.attachments)
+            printf ("%20s(%u) ", attachment.device.c_str(), attachment.map_count);
+        printf("\n");
+    }
+
+    printf("\n\n----------------------- DMA-BUF exporter stats -----------------------\n");
+    printf("      Exporter Name             | Total Count |     Total Size(bytes) |\n");
+    for (auto it : exporter_stats) {
+        printf ("%32s| %12u| %16u\n", it.first.c_str(), it.second.buffer_count, it.second.size);
+    }
+
+    printf("\n\n---------------------- DMA-BUF per-device stats ----------------------\n");
+    printf("         Device                 | Total Count |     Total Size(bytes) |\n");
+    for (auto it : importer_stats) {
+        printf ("%32s | %12u| %16u\n", it.first.c_str(), it.second.buffer_count, it.second.size);
+    }
+
+    printf("\n\n------------------------ DMA-BUF total stats ------------------------\n");
+    printf ("Total DMA-BUF count: %u, Total DMA-BUF size: %zu\n", stats.getTotalCount(),
+            stats.getTotalSize());
+}
+
 static void DumpstateLimitedOnly() {
     // Trimmed-down version of dumpstate to only include a whitelisted
     // set of logs (system log, event log, and system server / system app
@@ -1598,7 +1646,7 @@ static Dumpstate::RunStatus dumpstate() {
     DumpFile("PAGETYPEINFO", "/proc/pagetypeinfo");
     DumpFile("BUDDYINFO", "/proc/buddyinfo");
     DumpExternalFragmentationInfo();
-
+    DumpDmabufInfo();
     DumpFile("KERNEL WAKE SOURCES", "/d/wakeup_sources");
     DumpFile("KERNEL CPUFREQ", "/sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state");
 
