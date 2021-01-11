@@ -539,6 +539,29 @@
       },
       "revId": "051a991045555bd78a132916c5c963eba79aef27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a685dca7_6dc0459c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2888,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2021-01-11T06:04:40Z",
+      "side": 1,
+      "message": "Could we move this call into the #DumpstateDefaultAfterCritical or #dumpstate()? IIUC, it may trigger the system trace serialization which is not necessary for cases of telephony, wifionly and limited_only modes.",
+      "range": {
+        "startLine": 2888,
+        "startChar": 4,
+        "endLine": 2888,
+        "endChar": 28
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
