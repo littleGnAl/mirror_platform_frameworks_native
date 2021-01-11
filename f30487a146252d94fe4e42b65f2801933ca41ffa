@@ -94,6 +94,30 @@
       },
       "revId": "f30487a146252d94fe4e42b65f2801933ca41ffa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e595643_a601bf7e",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-11T20:37:41Z",
+      "side": 0,
+      "message": "+1 to keeping the untyped version available, but discouraging its use.",
+      "parentUuid": "cd5311d5_d72766fd",
+      "range": {
+        "startLine": 125,
+        "startChar": 79,
+        "endLine": 125,
+        "endChar": 88
+      },
+      "revId": "f30487a146252d94fe4e42b65f2801933ca41ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
