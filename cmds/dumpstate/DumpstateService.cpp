@@ -25,6 +25,7 @@
 
 #include "DumpstateInternal.h"
 
+using android::os::dumpstate::PropertiesHelper;
 using android::base::StringPrintf;
 
 namespace android {
@@ -55,6 +56,7 @@ static binder::Status exception(uint32_t code, const std::string& msg) {
 
 [[noreturn]] static void signalErrorAndExit(sp<IDumpstateListener> listener, int error_code) {
     listener->onError(error_code);
+    PropertiesHelper::SetDumpstateFailedProperty();
     exit(0);
 }
 

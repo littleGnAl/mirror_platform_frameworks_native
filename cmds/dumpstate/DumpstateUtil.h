@@ -183,6 +183,11 @@ class PropertiesHelper {
      */
     static bool IsParallelRun();
 
+    /*
+     * Sets 'dumpstate.exited_with_error' to true.
+     */
+    static void SetDumpstateFailedProperty();
+
   private:
     static std::string build_type_;
     static int dry_run_;

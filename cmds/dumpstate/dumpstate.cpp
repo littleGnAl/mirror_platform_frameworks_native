@@ -2634,6 +2634,11 @@ void Dumpstate::Initialize() {
     android::base::SetProperty(PROPERTY_LAST_ID, std::to_string(last_id));
 }
 
+void Dumpstate::SendErrorToDumpstateListener(int error_code) {
+    PropertiesHelper::SetDumpstateFailedProperty();
+    listener_->onError(error_code);
+}
+
 Dumpstate::RunStatus Dumpstate::Run(int32_t calling_uid, const std::string& calling_package) {
     Dumpstate::RunStatus status = RunInternal(calling_uid, calling_package);
     if (listener_ != nullptr) {
@@ -2644,16 +2649,18 @@ Dumpstate::RunStatus Dumpstate::Run(int32_t calling_uid, const std::string& call
             case Dumpstate::RunStatus::HELP:
                 break;
             case Dumpstate::RunStatus::INVALID_INPUT:
-                listener_->onError(IDumpstateListener::BUGREPORT_ERROR_INVALID_INPUT);
+                SendErrorToDumpstateListener(IDumpstateListener::BUGREPORT_ERROR_INVALID_INPUT);
                 break;
             case Dumpstate::RunStatus::ERROR:
-                listener_->onError(IDumpstateListener::BUGREPORT_ERROR_RUNTIME_ERROR);
+                SendErrorToDumpstateListener(IDumpstateListener::BUGREPORT_ERROR_RUNTIME_ERROR);
                 break;
             case Dumpstate::RunStatus::USER_CONSENT_DENIED:
-                listener_->onError(IDumpstateListener::BUGREPORT_ERROR_USER_DENIED_CONSENT);
+                SendErrorToDumpstateListener(
+                    IDumpstateListener::BUGREPORT_ERROR_USER_DENIED_CONSENT);
                 break;
             case Dumpstate::RunStatus::USER_CONSENT_TIMED_OUT:
-                listener_->onError(IDumpstateListener::BUGREPORT_ERROR_USER_CONSENT_TIMED_OUT);
+                SendErrorToDumpstateListener(
+                    IDumpstateListener::BUGREPORT_ERROR_USER_CONSENT_TIMED_OUT);
                 break;
         }
     }

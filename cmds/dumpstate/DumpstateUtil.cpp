@@ -211,6 +211,10 @@ bool PropertiesHelper::IsParallelRun() {
     return parallel_run_ == 1;
 }
 
+void PropertiesHelper::SetDumpstateFailedProperty() {
+    android::base::SetProperty("dumpstate.exited_with_error", "1");
+}
+
 int DumpFileToFd(int out_fd, const std::string& title, const std::string& path) {
     android::base::unique_fd fd(TEMP_FAILURE_RETRY(open(path.c_str(), O_RDONLY | O_NONBLOCK | O_CLOEXEC)));
     if (fd.get() < 0) {

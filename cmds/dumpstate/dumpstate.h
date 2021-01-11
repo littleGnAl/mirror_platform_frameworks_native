@@ -562,6 +562,10 @@ class Dumpstate {
     // called by Shell.
     RunStatus CopyBugreportIfUserConsented(int32_t calling_uid);
 
+    // Calls the listener's onError method with the given error code, and sets a property to
+    // indicate that the bugreport failed.
+    void SendErrorToDumpstateListener(int error_code);
+
     std::function<int(const char *)> open_socket_fn_;
 
     // Used by GetInstance() only.
