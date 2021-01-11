@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8929e10_856baa2f",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2021-01-11T23:28:55Z",
+      "side": 1,
+      "message": "Rc::downgrade() and Arc::downgrade() have this exact name and signature, including using this instead of self to make it an associated function (https://doc.rust-lang.org/std/rc/struct.Rc.html#method.downgrade).\n\nI don\u0027t know why they went with an associated function instead of a method.",
+      "parentUuid": "4b8d42b0_c1652566",
+      "range": {
+        "startLine": 247,
+        "startChar": 21,
+        "endLine": 247,
+        "endChar": 37
+      },
+      "revId": "049899ab6abd73b120f937956988c331b980fddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9271182_243e677e",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 4
