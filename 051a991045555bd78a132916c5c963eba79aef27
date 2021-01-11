@@ -586,6 +586,30 @@
       },
       "revId": "051a991045555bd78a132916c5c963eba79aef27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3c2d84_759a60b8",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2888,
+      "author": {
+        "id": 1810984
+      },
+      "writtenOn": "2021-01-11T09:27:29Z",
+      "side": 1,
+      "message": "Hi Rhed:\n\u003e Could we move this call into the #DumpstateDefaultAfterCritical or #dumpstate()? \nNo, I think we need to add this call(MaybeSnapshotSystemTrace) before onUiIntensiveBugreportDumpsFinished,\nbecause in current design(go/BB-Tracing-S), \ncaller(Better Bug client) checks if there is available trace in bugreport.zip by the system trace snapshot\u0027s mtime\nwhen caller(Better Bug client) receives the INTENT_UI_INTENSIVE_BUGREPORT_DUMPS_FINISHED intent via dumpstate#onUiIntensiveBugreportDumpsFinished.\n// Detail is in below link\nhttps://screenshot.googleplex.com/tpmaaeesfxGJysB\n\n\u003e IIUC, it may trigger the system trace serialization which is not necessary for cases of telephony, wifionly and limited_only modes.\nIs it possible for resolving your concern by adding if statement for MaybeSnapshotSystemTrace like:\nif (!is_dumpstate_restricted) {\n   MaybeSnapshotSystemTrace();\n}\n？",
+      "parentUuid": "dfadd726_80063a48",
+      "range": {
+        "startLine": 2888,
+        "startChar": 4,
+        "endLine": 2888,
+        "endChar": 28
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
