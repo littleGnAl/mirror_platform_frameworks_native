@@ -562,6 +562,30 @@
       },
       "revId": "051a991045555bd78a132916c5c963eba79aef27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfadd726_80063a48",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2888,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-11T07:59:36Z",
+      "side": 1,
+      "message": "I\u0027ll leave to you and changpa@ to agree on a place here. changpa is the one who explicitly asked to do this before onUiIntensiveBugreportDumpsFinished for some betterbug-related reason.\nFrom my viewpoint any place which is early enough works, so the trace buffer doesn\u0027t get clobbered with too much dumpstate activity.",
+      "parentUuid": "a685dca7_6dc0459c",
+      "range": {
+        "startLine": 2888,
+        "startChar": 4,
+        "endLine": 2888,
+        "endChar": 28
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
