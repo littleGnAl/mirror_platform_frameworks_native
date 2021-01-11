@@ -174,6 +174,7 @@ void add_mountinfo();
 #define SNAPSHOTCTL_LOG_DIR "/data/misc/snapshotctl_log"
 #define LINKERCONFIG_DIR "/linkerconfig"
 #define PACKAGE_DEX_USE_LIST "/data/system/package-dex-usage.list"
+#define SYSTEM_TRACE_SNAPSHOT "/data/misc/perfetto-traces/bugreport/systrace.pftrace"
 
 // TODO(narayan): Since this information has to be kept in sync
 // with tombstoned, we should just put it in a common header.
@@ -1052,6 +1053,23 @@ static void DumpIncidentReport() {
     }
 }
 
+static void MaybeAddSystemTraceToZip() {
+    // This function copies into the .zip the system trace that was snapshotted
+    // by the early call to MaybeSnapshotSystemTrace(), if any background
+    // tracing was happening.
+    if (!ds.IsZipping()) {
+        MYLOGD("Not dumping system trace because it's not a zipped bugreport\n");
+        return;
+     }
+     if (!ds.has_system_trace_) {
+        MYLOGD("Not dumping system trace because no background trace was available\n");
+        return;
+     }
+    ds.EnqueueAddZipEntryAndCleanupIfNeeded(
+            ZIP_ROOT_DIR + SYSTEM_TRACE_SNAPSHOT,
+            SYSTEM_TRACE_SNAPSHOT);
+}
+
 static void DumpVisibleWindowViews() {
     if (!ds.IsZipping()) {
         MYLOGD("Not dumping visible views because it's not a zipped bugreport\n");
@@ -1647,6 +1665,8 @@ static Dumpstate::RunStatus dumpstate() {
     }
 
     AddAnrTraceFiles();
+
+    MaybeAddSystemTraceToZip();
 
     // NOTE: tombstones are always added as separate entries in the zip archive
     // and are not interspersed with the main report.
@@ -2865,6 +2885,13 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         RunDumpsysCritical();
     }
     MaybeTakeEarlyScreenshot();
+
+    if (!is_dumpstate_restricted) {
+        // Snapshot the system trace now (if running) to avoid that dumpstate's
+        // own activity pushes out interesting data from the trace ring buffer.
+        // The trace file is added to the zip by MaybeAddSystemTraceToZip().
+        MaybeSnapshotSystemTrace();
+    }
     onUiIntensiveBugreportDumpsFinished(calling_uid);
     MaybeCheckUserConsent(calling_uid, calling_package);
     if (options_->telephony_only) {
@@ -2953,6 +2980,25 @@ void Dumpstate::MaybeTakeEarlyScreenshot() {
     }
 
     TakeScreenshot();
+}
+
+void Dumpstate::MaybeSnapshotSystemTrace() {
+    // If a background system trace is happening and is marked as "suitable for
+    // bugreport" (i.e. bugreport_score > 0 in the trace config), this command
+    // will stop it and serialize into SYSTEM_TRACE_SNAPSHOT. In the (likely)
+    // case that no trace is ongoing, this command is a no-op.
+    // TODO(before landing): need some RedirectToDevNull to avoid
+    // shell_data_access to perfetto.te.
+    int res = RunCommand(
+        "SERIALIZE PERFETTO TRACE",
+        {"perfetto", "--save-for-bugreport"},
+        CommandOptions::WithTimeout(10)
+            .DropRoot()
+            .CloseAllFileDescriptorsOnExec()
+            .Build());
+    has_system_trace_ = res == 0;
+    // MaybeAddSystemTraceToZip() will take care of copying the trace in the zip
+    // file in the later stages.
 }
 
 void Dumpstate::onUiIntensiveBugreportDumpsFinished(int32_t calling_uid) {
