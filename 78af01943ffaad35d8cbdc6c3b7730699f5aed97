@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e93a2906_4f649bbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-12T17:59:38Z",
+      "side": 1,
+      "message": "this CL appears to both include and exclude checks. Can you be more specific about what this CL is doing?\n\nSpecifically - it no longer catches all tidy checks, implying that if a new reasonable category of checks is added, we would have to know this and add them. However, this isn\u0027t expected. If we keep \u0027*\u0027 and exclude any problematic checks in the future, we will be guaranteed to take advantage of all new checks and have a mechanism which tells us of bad new checks.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "621ce6bc_c6806628",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-12T17:59:38Z",
+      "side": 1,
+      "message": "+1 for this",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27bd43c5_bdc3ff96",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-12T17:59:38Z",
+      "side": 1,
+      "message": "this is too verbose. Could we use something like cc_defaults if we need \"standard detailed tidy checks\"",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 75
+      },
+      "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
