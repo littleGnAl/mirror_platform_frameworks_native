@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "191cc8fa_8194c210",
         "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
@@ -20,10 +21,10 @@
         "endChar": 73
       },
       "revId": "1505119182c46bce551e63fed3e585ec80a13ca0",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "19d66519_80c61985",
         "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
@@ -44,8 +45,31 @@
         "endChar": 73
       },
       "revId": "1505119182c46bce551e63fed3e585ec80a13ca0",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac64d10_237a7861",
+        "filename": "headers/media_plugin/media/hardware/VideoAPI.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-12T19:57:46Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has code-review +2.",
+      "parentUuid": "19d66519_80c61985",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 73
+      },
+      "revId": "1505119182c46bce551e63fed3e585ec80a13ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
