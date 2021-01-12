@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "870171c6_de6afbec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-01-12T18:32:42Z",
+      "side": 1,
+      "message": "We\u0027re not going to allow the use of `*` in much the same way that we don\u0027t let allow the use of `-Weverything`. These are not intended for production use, and while you can use them to see new areas for improving your code, adding them to the default build is a no-go. If you want to test your particular code with new checks, you need to set up and maintain your own separate build (automated or manual) to do so. Otherwise, every compiler update causes issues as newer (usually overly stringent) checks force us to have to fix your not-actually-broken code.",
+      "parentUuid": "e93a2906_4f649bbb",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "621ce6bc_c6806628",
