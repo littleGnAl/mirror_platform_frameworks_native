@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "67e61376_d3d98767",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-01-12T20:26:09Z",
+      "side": 1,
+      "message": "Please take a look of the patchset 2. Now it should contain only the selected check groups, minus known warnings of specific checks in each group.\nYes, the principle is that we could use wildcard \"*\" to include all tidy checks in default to get more warnings, but should not use \"*\" to treat all new checks as errors. Or the global build will break very easily whenever a new check is enabled.",
+      "parentUuid": "870171c6_de6afbec",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "621ce6bc_c6806628",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "writtenOn": "2021-01-12T17:59:38Z",
       "side": 1,
       "message": "this is too verbose. Could we use something like cc_defaults if we need \"standard detailed tidy checks\"",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 75
+      },
+      "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c338888_c44ff85a",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-01-12T20:26:09Z",
+      "side": 1,
+      "message": "I\u0027m testing the selected checks first. It seems each module still have different allowed warnings, so the tidy_checks_as_errors lists are not identical. I think the module owners will then remove each non-error warnings one-by-one in each list.",
+      "parentUuid": "27bd43c5_bdc3ff96",
       "range": {
         "startLine": 184,
         "startChar": 0,
