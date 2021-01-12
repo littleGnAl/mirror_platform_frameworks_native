@@ -51,6 +51,24 @@
       "message": "seems like it would be better to reuse what we have in the zygote instead? (which is basically the readdir() solution, but doing that before the fork(), and with an abort if it catches anything so we actually have clean code in the steady state. yes, there\u0027s a potential race, but we\u0027ll win it often enough [and this alternative isn\u0027t right all the time either].)",
       "revId": "78e450c03810cb463483cb7dc618578150530657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c2af514_638db9e9",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-12T17:04:53Z",
+      "side": 1,
+      "message": "The timing race doesn\u0027t worry me. I agree it\u0027s  rare enough (although it\u0027s more binary, more runtime and more code to reason about and maintain). But fine to switch to that. \n\nI personally worry a bit more about the abort(). I am all for \"fail fast\" but not in \"leaf\" binary like dumpstate. Here\u0027s my objection to the abort:\n- If that happens in the zygote that generates a very user-visible bug, people will file a bug.\n- If it happens in dumpstate, extremely few people will notice, very few will report it, as it will just happen to fail the bugreport. There is imho more risk that, if a CLOEXEC bug sneaks in, it will stay there, break bug reports. THe risk is that somebody finds out only too late, when the ship (Android) has sailed.\n\nBut if you folks feel you want a fail-fast and buy the future risk I am fine as well. This is the sort of call owners should make.",
+      "parentUuid": "7d6f6576_0c88efed",
+      "revId": "78e450c03810cb463483cb7dc618578150530657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
