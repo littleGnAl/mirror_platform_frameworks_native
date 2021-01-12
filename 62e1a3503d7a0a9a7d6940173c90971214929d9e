@@ -16,6 +16,24 @@
       "message": "thanks for the fix. could we write a test for this? should be easy to catch all the begin and end tags and make sure they are non-overlapping.",
       "revId": "62e1a3503d7a0a9a7d6940173c90971214929d9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d18e316d_94d622af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2021-01-12T09:15:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "751eec1e_c5ef1d90",
+      "revId": "62e1a3503d7a0a9a7d6940173c90971214929d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
