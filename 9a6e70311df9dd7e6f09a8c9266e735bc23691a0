@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4177ca4_10aa5c1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-12T15:29:00Z",
+      "side": 1,
+      "message": "I think this is ready to go in once we resolve the SpIBinder/WpIBinder issue.\n\nI think we should keep both for now. If we\u0027re going to remove one, I think we need to remove both, which currently would require modification to the Keystore code, and so should probably be done in a separate change.",
+      "revId": "9a6e70311df9dd7e6f09a8c9266e735bc23691a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

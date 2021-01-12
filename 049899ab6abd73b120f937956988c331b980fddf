@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "435a0b58_79b06f3d",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-12T15:29:00Z",
+      "side": 1,
+      "message": "This is to avoid collisions with methods implemented directly on the target of the deref type, e.g. if you have Rc\u003cT\u003e, and T has a `.downgrade` method, they don\u0027t want to collide. I suppose the same logic applies for binder interfaces.",
+      "parentUuid": "c8929e10_856baa2f",
+      "range": {
+        "startLine": 247,
+        "startChar": 21,
+        "endLine": 247,
+        "endChar": 37
+      },
+      "revId": "049899ab6abd73b120f937956988c331b980fddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9271182_243e677e",
@@ -101,6 +125,30 @@
       "writtenOn": "2021-01-11T20:37:41Z",
       "side": 1,
       "message": "Self",
+      "range": {
+        "startLine": 295,
+        "startChar": 34,
+        "endLine": 295,
+        "endChar": 41
+      },
+      "revId": "049899ab6abd73b120f937956988c331b980fddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ebb844b_b498a7d0",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-12T15:29:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2dd474d2_91df5196",
       "range": {
         "startLine": 295,
         "startChar": 34,
