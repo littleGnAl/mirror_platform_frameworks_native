@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b3d67f_1db060ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-12T02:35:53Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "d6f62564e712755d1213cc55264b37bf93bc3322",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d8b550_468bc3c8",
+        "filename": "libs/binder/tests/binderClearBufTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-12T02:35:53Z",
+      "side": 1,
+      "message": "A dumb question: is it this call which tells kernel to clear the buffer?",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 48
+      },
+      "revId": "d6f62564e712755d1213cc55264b37bf93bc3322",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
