@@ -34,6 +34,23 @@
       "parentUuid": "ff79a30d_afbc26b0",
       "revId": "78e450c03810cb463483cb7dc618578150530657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6f6576_0c88efed",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-12T16:51:56Z",
+      "side": 1,
+      "message": "seems like it would be better to reuse what we have in the zygote instead? (which is basically the readdir() solution, but doing that before the fork(), and with an abort if it catches anything so we actually have clean code in the steady state. yes, there\u0027s a potential race, but we\u0027ll win it often enough [and this alternative isn\u0027t right all the time either].)",
+      "revId": "78e450c03810cb463483cb7dc618578150530657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
