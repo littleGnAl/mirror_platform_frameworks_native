@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a25b310_7b42de21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-12T17:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03b3d67f_1db060ff",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "d6f62564e712755d1213cc55264b37bf93bc3322",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72d8b550_468bc3c8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-12T02:35:53Z",
       "side": 1,
       "message": "A dumb question: is it this call which tells kernel to clear the buffer?",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 48
+      },
+      "revId": "d6f62564e712755d1213cc55264b37bf93bc3322",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6488727_0cc1a19e",
+        "filename": "libs/binder/tests/binderClearBufTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-12T17:44:42Z",
+      "side": 1,
+      "message": "L81 makes the request (FLAG_CLEAR_BUF). This call just makes sure we talk w/ the kernel, so that anything it has queued or we have queued in userspace will be processed.\n\nActually, the fact that this is needed is b/139697085, and there is a WIP fix here:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/541059/\n\nI\u0027ve added a note on the bug to remove this. Perhaps this will be enough motivation to finally land that in S.",
+      "parentUuid": "72d8b550_468bc3c8",
       "range": {
         "startLine": 86,
         "startChar": 7,
