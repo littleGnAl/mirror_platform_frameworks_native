@@ -140,6 +140,30 @@
       },
       "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52259d61_2ae281af",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-12T23:54:46Z",
+      "side": 1,
+      "message": "Is there any way we can guarantee that we can find out and get all new checks added in here, and enable them appropriately?\n\nYou are right that we save work, but without a way to take advantage of new tidy checks, there is no automatic process or chain of notifications which ensures that we use tidy checks as advantageously as possible? Is there a way we can make sure we aren\u0027t missing any important ones?\n\nYou are adding many things here of the form: \"asdf-*\". I wonder, if we did the opposite approach (of a wildcard), how many things of the form \"-asdf-*\" do we need (I just don\u0027t know how valuable this trade is)?",
+      "parentUuid": "0c338888_c44ff85a",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 75
+      },
+      "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
