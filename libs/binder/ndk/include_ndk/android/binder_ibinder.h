@@ -705,7 +705,17 @@ AIBinder_Weak* AIBinder_Weak_clone(const AIBinder_Weak* weak);
  * addresses and are also guaranteed to have a per-process-unique ordering. That
  * is, even though multiple AIBinder* instances may happen to be allocated at
  * the same underlying address, this function will still correctly distinguish
- * that these are weak pointers to different binder objects.
+ * that these are weak pointers to different binder objects. For instance:
+ *
+ *     AIBinder* a = ...; // imagine this has address 0x8
+ *     AIBinder_Weak* bWeak = AIBinder_Weak_new(a);
+ *     AIBinder_decStrong(a); // a may be deleted, if this is the last reference
+ *     AIBinder* b = ...; // imagine this has address 0x8 (same address as b)
+ *     AIBinder_Weak* cWeak = AIBinder_Weak_new(b);
+ *
+ * Then when a/b are compared with other binders, their order will be preserved,
+ * and it will either be the case that AIBinder_Weak_lt(a, b) OR
+ * AIBinder_Weak_lt(b, a), but not both.
  *
  * Unlike AIBinder*, the AIBinder_Weak* addresses themselves have nothing to do
  * with the underlying binder.
