@@ -50,6 +50,24 @@
       "message": "The docs for AIBinder_Weak_lt are going to be impossible to understand for someone that doesn\u0027t have a deep knowledge of RefBase, I think. Maybe that\u0027s okay, but probably worth at least pointing to the docs that explain (I think there are some on RefBase itself) and/or giving a more concrete example scenario where this kind of thing can happen.\n\nAPI shape LGTM though.",
       "revId": "c70e01210cc512b33126d1e32c8fda1ab60643ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c27ec5_f1b8315d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-12T23:28:49Z",
+      "side": 1,
+      "message": "thanks Michael. I\u0027ll follow-up to add an example, but merging now to unblock",
+      "parentUuid": "8e56a26a_af04f9ad",
+      "revId": "c70e01210cc512b33126d1e32c8fda1ab60643ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
