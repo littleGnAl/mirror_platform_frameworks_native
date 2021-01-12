@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fa81718_020fc8fc",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-12T15:50:21Z",
+      "side": 1,
+      "message": "Adding more impls can be done as a follow-on change, but I would advocate for not adding anything that limits which interfaces can reside in a Strong pointer.\n\nI think there\u0027s also an `lt` operation in C++ either there or coming down the pipe, which could let us get Eq, PartialEq, Ord, PartialOrd, but I don\u0027t *think* there\u0027s a way to hash them (though maybe smoreland@ knows more)",
+      "parentUuid": "1c650849_6701c49c",
+      "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5a4d929_cd5a22f4",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 1
