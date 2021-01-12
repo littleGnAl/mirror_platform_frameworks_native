@@ -65,7 +65,7 @@ bool VSyncPredictor::validate(nsecs_t timestamp) const {
 
     auto const aValidTimestamp = mTimestamps[mLastTimestampIndex];
     auto const percent = (timestamp - aValidTimestamp) % mIdealPeriod * kMaxPercent / mIdealPeriod;
-    return percent < kOutlierTolerancePercent || percent > (kMaxPercent - kOutlierTolerancePercent);
+    return percent >= 0 && (percent < kOutlierTolerancePercent || percent > (kMaxPercent - kOutlierTolerancePercent));
 }
 
 nsecs_t VSyncPredictor::currentPeriod() const {
