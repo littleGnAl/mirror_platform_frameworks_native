@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d1ab9b8_2c7538c1",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2021-01-12T20:59:46Z",
+      "side": 1,
+      "message": "That makes perfect sense, since Rc implements Deref. That got me wondering if all of Rc\u0027s methods are associated functions, so I checked and they are.",
+      "parentUuid": "435a0b58_79b06f3d",
+      "range": {
+        "startLine": 247,
+        "startChar": 21,
+        "endLine": 247,
+        "endChar": 37
+      },
+      "revId": "049899ab6abd73b120f937956988c331b980fddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9271182_243e677e",
