@@ -68,6 +68,24 @@
       "parentUuid": "8e56a26a_af04f9ad",
       "revId": "c70e01210cc512b33126d1e32c8fda1ab60643ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "139d83fb_bef1bfec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-12T23:37:35Z",
+      "side": 1,
+      "message": "-\u003e https://android-review.googlesource.com/c/platform/frameworks/native/+/1549016",
+      "parentUuid": "c1c27ec5_f1b8315d",
+      "revId": "c70e01210cc512b33126d1e32c8fda1ab60643ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
