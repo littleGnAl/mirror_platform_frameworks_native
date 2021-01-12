@@ -16,6 +16,23 @@
       "message": "This should work for what we need in Rust, thanks.",
       "revId": "c70e01210cc512b33126d1e32c8fda1ab60643ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b8847b_eb018390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-12T21:19:28Z",
+      "side": 1,
+      "message": "michaelwr: Can you review the docs for clarity? I know next to nothing about binder so I can\u0027t usefully review this.",
+      "revId": "c70e01210cc512b33126d1e32c8fda1ab60643ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
