@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a490d3c_b0cd4bee",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-12T06:06:51Z",
+      "side": 1,
+      "message": "Moved to using this method.",
+      "parentUuid": "78598d04_f364e4ed",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "42b2695656254ecec4304918d822e27e44702c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d4cd7c4_a9154cee",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ebcc25e_cba7b334",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-12T06:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d4cd7c4_a9154cee",
+      "revId": "42b2695656254ecec4304918d822e27e44702c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac5408f8_58bf308b",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-12-03T21:58:50Z",
       "side": 1,
       "message": "use \u0027g\u0027 over \u0027k\u0027 for non-cost data, but this could avoid being global",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "42b2695656254ecec4304918d822e27e44702c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d084314b_f4e969fe",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-12T06:06:51Z",
+      "side": 1,
+      "message": "With the change to the function structure \u0026 combining of header into the main file, we moved this to be a non-global variable in the main fuzz function.",
+      "parentUuid": "ac5408f8_58bf308b",
       "range": {
         "startLine": 26,
         "startChar": 14,
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "512ac59d_243320d7",
+        "filename": "libs/binder/tests/fuzzers/BufferedTextOutputFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-12T06:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a5acf8_c48c0f20",
+      "range": {
+        "startLine": 37,
+        "startChar": 63,
+        "endLine": 37,
+        "endChar": 76
+      },
+      "revId": "42b2695656254ecec4304918d822e27e44702c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccd9263d_d1d451de",
@@ -100,6 +190,30 @@
       "writtenOn": "2020-12-03T21:58:50Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "42b2695656254ecec4304918d822e27e44702c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f71f48_18e390f3",
+        "filename": "libs/binder/tests/fuzzers/MemoryDealerFuzzFunctions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-12T06:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccd9263d_d1d451de",
       "range": {
         "startLine": 31,
         "startChar": 34,
