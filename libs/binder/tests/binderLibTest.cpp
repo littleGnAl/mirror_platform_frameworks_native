@@ -21,6 +21,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <thread>
 
 #include <gtest/gtest.h>
 
@@ -28,6 +29,7 @@
 #include <binder/IBinder.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
+#include <binder/ParcelRef.h>
 
 #include <private/binder/binder_module.h>
 #include <linux/sched.h>
@@ -907,6 +909,30 @@ TEST_F(BinderLibTest, FreedBinder) {
          */
         strong->handle = oldHandle;
     }
+}
+
+TEST_F(BinderLibTest, ParcelAllocatedOnAnotherThread) {
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+
+    Parcel data;
+    sp<ParcelRef> reply = ParcelRef::create();
+    IPCThreadState::self()->createTransactionReference(reply.get());
+    ASSERT_EQ(NO_ERROR, server->transact(BINDER_LIB_TEST_CREATE_BINDER_TRANSACTION,
+                                         data,
+                                         reply.get()));
+
+    // we have sp to binder, but it is not actually acquired by kernel
+    sp<IBinder> binder = reply->readStrongBinder();
+
+    std::thread([&] {
+        // BC_ACQUIRE on original thread should happen before this
+        reply = nullptr;
+        IPCThreadState::self()->flushCommands();
+    }).join();
+
+    ASSERT_NE(nullptr, binder);
+    ASSERT_EQ(NO_ERROR, binder->pingBinder());
 }
 
 TEST_F(BinderLibTest, CheckNoHeaderMappedInUser) {
