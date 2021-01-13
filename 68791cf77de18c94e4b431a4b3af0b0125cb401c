@@ -88,6 +88,24 @@
       "parentUuid": "c76bc864_f0e58c83",
       "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cca0c51f_23327645",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-13T22:50:18Z",
+      "side": 1,
+      "message": "\u003e 1 doesn\u0027t require ordering, just an equality operator.\n\nYep, but I chose a single, more generic API, which allows even more things to be done. I\u0027m sure you would agree that we don\u0027t want multiple APIs where one API can be derived from another (w/o imparting additional semantics on another, and where the performance impact is negligible), so perhaps it wasn\u0027t so relevant for me to bring the example of \u0027equality\u0027 up.\n\n\u003e Why use std::map instead of std::unordered_map when your keys have no meaningful ordering?\n\nWell - I hope this doesn\u0027t distract from the main point - std::map (red-black trees, maybe binary search trees, etc..) is just an example of a data structure which requires a total ordering existing/comparison operator (note - these are not the same things, and this is also documented in the standard for std::map). Sure, the last (\"max\") element in a sorted array of binders according to this function is not actually the meaningfully maximum element, but this function gives you the ability to deterministically compare two binder. If one binder compared beforehand in a certain way to another binder, it\u0027ll continue to. The intuition is, this determinism means that a carefully placed binder object in memory combined with this function imbues an algorithm with information based on what it had done in a previous case, which would otherwise have to be stored in a different way. This is an additional tool in the algorithm\u0027s belt, and so it isn\u0027t surprising it finds advantageous use.\n\nBut to answer your question, std::unordered_map and std::map have very different properties in terms of performance and memory use. They make different types of allocations, at different times, and no blanket statement is possible to explain why one should be used instead of the other. Sure std::map has some functionality that wouldn\u0027t make sense to use with this (again, relying on the last iterated element to be the max), but this is only one consequence of the data structure\u0027s design, and others can be useful in other situations.\n\nIronically, std::unordered_map can\u0027t be used with AIBinder_Weak using these APIs and documentation alone. Though - support for such a fringe feature, I find feasible following a feature request.",
+      "parentUuid": "cfe59437_50ac2e2b",
+      "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
