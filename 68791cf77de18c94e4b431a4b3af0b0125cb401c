@@ -34,6 +34,24 @@
       "parentUuid": "e1465837_f8b88e9c",
       "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453e351f_213fed73",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-13T21:07:05Z",
+      "side": 1,
+      "message": "No, that actually is my question: why would I want to order these things that have no meaningful ordering? I\u0027m assuming this API isn\u0027t coming out of thin air. What\u0027s the motivation for making these sortable? Why might an NDK user want to use this API? It\u0027s not clear from the documentation what this API actually enables in an app.",
+      "parentUuid": "7f991b04_f3297de4",
+      "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
