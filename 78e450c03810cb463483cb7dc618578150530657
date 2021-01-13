@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39632192_37a64039",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-13T15:30:40Z",
+      "side": 1,
+      "message": "If dumpstate crashes, if the bugreport is triggered from power button, or from betterbug, the caller should notice it, because the death recipient should trigger on the other side and the api client will get an error. I think \"adb bugreport\" should also catch aborts of the other side of the socket, but if it does not, it can cause annoying timeouts on  adb shell, which isn\u0027t ideal. We also have presubmit tests etc for bugreports now, so I\u0027m ok with being cautious and following enh@\u0027s suggestion",
+      "parentUuid": "2c2af514_638db9e9",
+      "revId": "78e450c03810cb463483cb7dc618578150530657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be7b377c_555ebe2f",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 5
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "In the case I tested is hundreds of ms. But if the system is in some sad state, we shouldn\u0027t lose the trace.\nEffectively this does a open() + write(src\u003din_memory_ring_buffer), which is typically few MB. \n\nWe can\u0027t enqueue this because the trace needs to be snapshotted early, otherwise that becomes the \"trace of dumpstate\" rather than \"the trace of the system just before dumpstat was invoked\"",
       "parentUuid": "be7b377c_555ebe2f",
+      "range": {
+        "startLine": 2992,
+        "startChar": 2,
+        "endLine": 2992,
+        "endChar": 25
+      },
+      "revId": "78e450c03810cb463483cb7dc618578150530657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c6369c_19480bab",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2992,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-13T15:30:40Z",
+      "side": 1,
+      "message": "let\u0027s add a comment saying this should not be enqueued so that a future maintainer won\u0027t be temped\n\n(I also wonder if DUMP_TRACES_TASK should not be enqueued by that logic - Rhed?)",
+      "parentUuid": "1adfa5ae_275d40c7",
       "range": {
         "startLine": 2992,
         "startChar": 2,
