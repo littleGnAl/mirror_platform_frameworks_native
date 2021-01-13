@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "484d0575_fe3f30b9",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-01-13T00:31:35Z",
+      "side": 1,
+      "message": "or more specifically, isn\u0027t equality more useful than ordering? why can i sort this but not see if it\u0027s the same?",
+      "parentUuid": "e44ba259_dfeb9851",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 59
+      },
+      "revId": "41de23982255e47371b0a93527a0b7cc59259fb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac9aa98_0604253e",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 6
