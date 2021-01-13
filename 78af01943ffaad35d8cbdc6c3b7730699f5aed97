@@ -164,6 +164,30 @@
       },
       "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd16ba52_a65937ba",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-01-13T00:15:38Z",
+      "side": 1,
+      "message": "In aosp/1546617, I am changing the default global tidy check list from \"disable all and enable known good checks\" to \"enable all and disable known noisy checks\". The new setting is what we use in nightly builds to find all new checks. We did find new tidy check groups like altera-* as soon as we upgrade AOSP prebuilt clang-tidy and then decide if we want to disable it or fix new warnings.\n\nAs long as in a project local .bp file, there is no \"-*\" to disable all checks, new checks will appear as a warning. As usual, project .bp files can enable/disable more checks. Only \"*\" is not good to include in the tidy_checks_as_errors list.\n\nAt https://clang.llvm.org/extra/clang-tidy/checks/list.html, we can see every group and every check. We are seeing more new and noisy groups added every year, e.g, altera-*, modernize-*, llvmlibc-*. The non-noisy groups are stable and becoming the minority. So, for tidy_checks_as_errors, it\u0027s easier to enumerate them instead of the other new/noisy groups.",
+      "parentUuid": "52259d61_2ae281af",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 75
+      },
+      "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
