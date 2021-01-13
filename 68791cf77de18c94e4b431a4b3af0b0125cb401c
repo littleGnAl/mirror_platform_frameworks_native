@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1465837_f8b88e9c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-13T00:29:21Z",
+      "side": 1,
+      "message": "I think the thing that\u0027s missing is *why* the ordering of these addresses is interesting.",
+      "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
