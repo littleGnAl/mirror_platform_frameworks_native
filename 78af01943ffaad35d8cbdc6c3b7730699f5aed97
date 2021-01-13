@@ -188,6 +188,30 @@
       },
       "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d7bac4_1624ac67",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-13T02:33:57Z",
+      "side": 1,
+      "message": "Thanks for the detailed explanation.\n\n\u003e new checks will appear as a warning\n\nAha! I was missing this detail. That is the signal I was looking for.",
+      "parentUuid": "dd16ba52_a65937ba",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 75
+      },
+      "revId": "78af01943ffaad35d8cbdc6c3b7730699f5aed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
