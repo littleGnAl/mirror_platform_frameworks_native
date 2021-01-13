@@ -16,6 +16,24 @@
       "message": "WOAH - this wasn\u0027t used?",
       "revId": "d0ec00d095d776744b61b875a4be37f123c41ecc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1892e80_3f1e3481",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1122473
+      },
+      "writtenOn": "2021-01-13T22:33:19Z",
+      "side": 1,
+      "message": "Yeah, we already cleaned up all the implementations about this last year. But left the interface alive.",
+      "parentUuid": "bdddc796_832138d1",
+      "revId": "d0ec00d095d776744b61b875a4be37f123c41ecc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
