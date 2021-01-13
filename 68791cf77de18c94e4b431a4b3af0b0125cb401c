@@ -70,6 +70,24 @@
       "parentUuid": "453e351f_213fed73",
       "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe59437_50ac2e2b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-13T22:09:35Z",
+      "side": 1,
+      "message": "1 doesn\u0027t require ordering, just an equality operator.\n\nWhy use std::map instead of std::unordered_map when your keys have no meaningful ordering?",
+      "parentUuid": "c76bc864_f0e58c83",
+      "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
