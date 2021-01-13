@@ -16,6 +16,29 @@
       "message": "Needs review by OWNERS",
       "revId": "e672b875c07a05800af6eade04fbd2bd283c81b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae685d5e_8184058d",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-13T19:26:17Z",
+      "side": 1,
+      "message": "I suppose this makes sense, but would an abort work here equally as well? (and anyway, it seems unrelated)\n\nIf we ever hit this point, then either:\n- if someone is planning on registering a service, they can simply avoid calling this function, since this is the default\n- if someone isn\u0027t planning on registering a service, then this is an error state because they have made some configuration for a lazy service, but it won\u0027t shutdown or ever get a notification to (abort would be useful to point out this mistake)",
+      "range": {
+        "startLine": 142,
+        "startChar": 23,
+        "endLine": 142,
+        "endChar": 53
+      },
+      "revId": "e672b875c07a05800af6eade04fbd2bd283c81b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
