@@ -52,6 +52,24 @@
       "parentUuid": "7f991b04_f3297de4",
       "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c76bc864_f0e58c83",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-13T21:57:30Z",
+      "side": 1,
+      "message": "Ordering enables certain types of algorithms/data structures. Examples:\n1. you can compute equality\n2. this enables these to be used as keys in a std::map.",
+      "parentUuid": "453e351f_213fed73",
+      "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
