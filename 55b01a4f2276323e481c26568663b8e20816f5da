@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19125e2_7bf2cfa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-13T19:06:59Z",
+      "side": 1,
+      "message": "The presubmit results imply this causes an ABI change. Re-running, since that is a surprising result, and it could (?) also be explained by other things such as a split topic.",
+      "revId": "55b01a4f2276323e481c26568663b8e20816f5da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
