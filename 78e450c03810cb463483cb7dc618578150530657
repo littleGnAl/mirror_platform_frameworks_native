@@ -36,6 +36,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ceac55_ba314f39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-13T13:05:28Z",
+      "side": 1,
+      "message": "r",
+      "revId": "78e450c03810cb463483cb7dc618578150530657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d6f6576_0c88efed",
@@ -67,6 +84,29 @@
       "side": 1,
       "message": "The timing race doesn\u0027t worry me. I agree it\u0027s  rare enough (although it\u0027s more binary, more runtime and more code to reason about and maintain). But fine to switch to that. \n\nI personally worry a bit more about the abort(). I am all for \"fail fast\" but not in \"leaf\" binary like dumpstate. Here\u0027s my objection to the abort:\n- If that happens in the zygote that generates a very user-visible bug, people will file a bug.\n- If it happens in dumpstate, extremely few people will notice, very few will report it, as it will just happen to fail the bugreport. There is imho more risk that, if a CLOEXEC bug sneaks in, it will stay there, break bug reports. THe risk is that somebody finds out only too late, when the ship (Android) has sailed.\n\nBut if you folks feel you want a fail-fast and buy the future risk I am fine as well. This is the sort of call owners should make.",
       "parentUuid": "7d6f6576_0c88efed",
+      "revId": "78e450c03810cb463483cb7dc618578150530657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be7b377c_555ebe2f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2992,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-13T13:05:28Z",
+      "side": 1,
+      "message": "how much time does this typically take? if it is closer to 10s, this is the thing that need to be enqueued.",
+      "range": {
+        "startLine": 2992,
+        "startChar": 2,
+        "endLine": 2992,
+        "endChar": 25
+      },
       "revId": "78e450c03810cb463483cb7dc618578150530657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

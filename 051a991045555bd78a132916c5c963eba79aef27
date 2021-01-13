@@ -663,6 +663,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6fad8a7_0ce66e5b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-13T13:05:28Z",
+      "side": 1,
+      "message": "I meant that you can just use ds.AddZipEntry(ZIP_ROOT_DIR ..\n\nenqueuing in dump pool is needed only for long running dumps, which at this point, this is not",
+      "parentUuid": "e8f843c0_b3369bc8",
+      "range": {
+        "startLine": 1597,
+        "startChar": 0,
+        "endLine": 1597,
+        "endChar": 77
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a685dca7_6dc0459c",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 4
