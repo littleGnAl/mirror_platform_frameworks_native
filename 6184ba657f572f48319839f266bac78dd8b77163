@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a81074c8_7f20aea7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2168,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-01-13T04:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e7779fa_f047439e",
+      "revId": "6184ba657f572f48319839f266bac78dd8b77163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d9831c9_917c481b",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Deleted it!",
       "parentUuid": "8d9831c9_917c481b",
+      "revId": "6184ba657f572f48319839f266bac78dd8b77163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9087aa_773aa5b3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2279,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-01-13T04:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103808d2_cb0bd180",
       "revId": "6184ba657f572f48319839f266bac78dd8b77163",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
