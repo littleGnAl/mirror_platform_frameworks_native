@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "4bfcbb7d_d030281e",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Added additional patchset to match changes suggested in 1367017 (standardize naming of FuzzedDataProvider object)",
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f06eb095_fa264a49",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
@@ -37,10 +38,34 @@
         "endChar": 54
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d25138_f9355a5b",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This test class was cleaned up in the followup CL, and now exists in the FuzzContainer templated class.",
+      "parentUuid": "f06eb095_fa264a49",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "507213bc_4551e288",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
@@ -60,10 +85,34 @@
         "endChar": 60
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d8ae71_41c9e76e",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This test class was cleaned up in the followup CL, and now exists in the FuzzContainer templated class.",
+      "parentUuid": "507213bc_4551e288",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 60
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3af82f10_f18e57e1",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
@@ -83,10 +132,34 @@
         "endChar": 27
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56ef346_bc851d21",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This test class was cleaned up in the followup CL, and now exists in the FuzzContainer templated class.",
+      "parentUuid": "3af82f10_f18e57e1",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "b25e3b6f_1366b1ed",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
@@ -106,10 +179,34 @@
         "endChar": 43
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9af3d15c_0b519170",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This test class was cleaned up in the followup CL, and now exists in the FuzzContainer templated class.",
+      "parentUuid": "b25e3b6f_1366b1ed",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "11178766_f775f194",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
@@ -129,10 +226,34 @@
         "endChar": 68
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbee161b_3a6ad6bf",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This test class was cleaned up in the followup CL, and now exists in the FuzzContainer templated class.",
+      "parentUuid": "11178766_f775f194",
+      "range": {
+        "startLine": 29,
+        "startChar": 43,
+        "endLine": 29,
+        "endChar": 68
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "cc0bc40c_677e0c7c",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
@@ -152,10 +273,34 @@
         "endChar": 44
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfbc5316_dad88e1f",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This test class was cleaned up in the followup CL, and now exists in the FuzzContainer templated class.",
+      "parentUuid": "cc0bc40c_677e0c7c",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 44
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "cb0ca4aa_7ce680bf",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
@@ -175,10 +320,34 @@
         "endChar": 26
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd97c331_02890bd0",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/CursorMapperHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "cb0ca4aa_7ce680bf",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "bf34fa43_0a107ab2",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
@@ -198,10 +367,34 @@
         "endChar": 83
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e3d70e0_a993d055",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "Cleaned up in rewrite, no longer using test class functions (commented or not).",
+      "parentUuid": "bf34fa43_0a107ab2",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 83
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "c99a13c1_9744cb4f",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
@@ -221,10 +414,34 @@
         "endChar": 91
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "594cc0e8_a66df600",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "Cleaned up in rewrite, no longer using test class functions (commented or not).",
+      "parentUuid": "c99a13c1_9744cb4f",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 91
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "b2fda3fc_8bb459d2",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
@@ -244,10 +461,34 @@
         "endChar": 38
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2335a36a_e1a2da37",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "Cleaned up in rewrite, no longer using test class functions (commented or not).",
+      "parentUuid": "b2fda3fc_8bb459d2",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 38
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "36e7acc9_eccfe9d3",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
@@ -267,10 +508,34 @@
         "endChar": 27
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb2b75b_741c9a97",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputMapperTest.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "Cleaned up in rewrite, no longer using test class functions.",
+      "parentUuid": "36e7acc9_eccfe9d3",
+      "range": {
+        "startLine": 117,
+        "startChar": 17,
+        "endLine": 117,
+        "endChar": 27
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "7f742c8a_f3083524",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
@@ -290,10 +555,34 @@
         "endChar": 12
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8521412_fe2ed2f4",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "Cleaned up in rewrite to avoid the use of reused test classes \u0026 most consts",
+      "parentUuid": "7f742c8a_f3083524",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "816f8b8f_3348cfaf",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
@@ -313,10 +602,34 @@
         "endChar": 29
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5836bcdc_ad528a41",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This was a holdover from the copy from general test classes, and went unused. Removed in rewrite.",
+      "parentUuid": "816f8b8f_3348cfaf",
+      "range": {
+        "startLine": 32,
+        "startChar": 20,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "5744ac2b_57e7af40",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
@@ -336,10 +649,34 @@
         "endChar": 31
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad8fcd12_488d6f60",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "Cleaned up in rewrite to avoid the use of reused test classes. This function now exists in MapperHelpers.h, and is an override as requested.",
+      "parentUuid": "5744ac2b_57e7af40",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "daebd3cd_2dcf180e",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
@@ -359,10 +696,34 @@
         "endChar": 86
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac383f1c_79b61090",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This was an unused holdover in using the existing test classes. Removed in rewrite.",
+      "parentUuid": "daebd3cd_2dcf180e",
+      "range": {
+        "startLine": 88,
+        "startChar": 71,
+        "endLine": 88,
+        "endChar": 86
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "203c2a26_c2c59118",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
@@ -382,10 +743,34 @@
         "endChar": 35
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6f18a1_7b9b9f1f",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This was a holdover in using the existing test classes. Opted to define as an empty function in rewrite.",
+      "parentUuid": "203c2a26_c2c59118",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "d902f9ba_bef638ea",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
@@ -405,10 +790,34 @@
         "endChar": 46
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f619656f_9aff6447",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "(This function is now in MapperHelpers.h)\n\nFor the rewrite we opted to include param names rather than omit. Is it still preferred to comment out unused names?",
+      "parentUuid": "d902f9ba_bef638ea",
+      "range": {
+        "startLine": 114,
+        "startChar": 26,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "fd5d70ad_5d4c3e3f",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
@@ -428,10 +837,34 @@
         "endChar": 29
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f314f94b_e5f95d0e",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This is an override for the existing InputReaderPolicyInterface function:\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/services/inputflinger/include/InputReaderBase.h;drc\u003d7a376674ad3b25ca99f28833a310f1b5d4703f8e;l\u003d354\n\nDid explicitly label it an override in rewrite, though.",
+      "parentUuid": "fd5d70ad_5d4c3e3f",
+      "range": {
+        "startLine": 202,
+        "startChar": 4,
+        "endLine": 202,
+        "endChar": 29
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "d6d5beb6_75ded0bb",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
@@ -451,10 +884,34 @@
         "endChar": 64
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "245cc0d7_632138f7",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "This is an override for the existing InputReaderPolicyInterface function. Did explicitly label it an override in rewrite, though.",
+      "parentUuid": "d6d5beb6_75ded0bb",
+      "range": {
+        "startLine": 242,
+        "startChar": 40,
+        "endLine": 242,
+        "endChar": 64
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "4e35a76b_d4b96a98",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
@@ -474,8 +931,31 @@
         "endChar": 43
       },
       "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f537e1_e913e9e9",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:45:48Z",
+      "side": 1,
+      "message": "We rewrote to not use copied out test classes, so I believe this should be resolved.",
+      "parentUuid": "4e35a76b_d4b96a98",
+      "range": {
+        "startLine": 296,
+        "startChar": 4,
+        "endLine": 296,
+        "endChar": 43
+      },
+      "revId": "8b9051c382e4863cc92bb14395136add17e1a717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
