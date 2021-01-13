@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "4ec19841_9247e72b",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Added additional patchset to match changes suggested in 1367017 (standardize naming of FuzzedDataProvider object)",
       "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ab69b41f_1762c829",
         "filename": "services/inputflinger/tests/fuzzers/TestInputListenerLibrary/TestInputListener.cpp",
@@ -37,10 +38,34 @@
         "endChar": 1
       },
       "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3656f6fa_58d25888",
+        "filename": "services/inputflinger/tests/fuzzers/TestInputListenerLibrary/TestInputListener.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:46:16Z",
+      "side": 1,
+      "message": "Done in rewrite.",
+      "parentUuid": "ab69b41f_1762c829",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 1
+      },
+      "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "099f8613_ecea0fd1",
         "filename": "services/inputflinger/tests/fuzzers/TestInputListenerLibrary/TestInputListener.h",
@@ -54,10 +79,28 @@
       "side": 1,
       "message": "same, lets move it to the place where it was originally introduced",
       "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1082dcd7_eb0d902b",
+        "filename": "services/inputflinger/tests/fuzzers/TestInputListenerLibrary/TestInputListener.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:46:16Z",
+      "side": 1,
+      "message": "Done in rewrite.",
+      "parentUuid": "099f8613_ecea0fd1",
+      "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "8089f0ef_cc807236",
         "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
@@ -71,10 +114,28 @@
       "side": 1,
       "message": "Can these changes be moved to the patch where this file is first introduced?",
       "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec802e4_a9855f78",
+        "filename": "services/inputflinger/tests/fuzzers/commonHeaders/InputReaderHelperClasses.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:46:16Z",
+      "side": 1,
+      "message": "Done in rewrite.",
+      "parentUuid": "8089f0ef_cc807236",
+      "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "a91fdefc_1e2b00ea",
         "filename": "services/inputflinger/tests/fuzzers/readers/InputReaderDeviceFuzzer.cpp",
@@ -94,10 +155,34 @@
         "endChar": 37
       },
       "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe5fb40_76755f51",
+        "filename": "services/inputflinger/tests/fuzzers/readers/InputReaderDeviceFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:46:16Z",
+      "side": 1,
+      "message": "Done in rewrite.",
+      "parentUuid": "a91fdefc_1e2b00ea",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 37
+      },
+      "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "d0638696_e4bea5c1",
         "filename": "services/inputflinger/tests/fuzzers/readers/InputReaderDeviceFuzzer2.cpp",
@@ -111,8 +196,25 @@
       "side": 1,
       "message": "Please add a comment somewhere explaining why we have both \"InputReaderDeviceFuzzer\" and \"InputReaderDeviceFuzzer2\" and what is the difference or maybe just make their names more descriptive?",
       "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b5d7def_ef014656",
+        "filename": "services/inputflinger/tests/fuzzers/readers/InputReaderDeviceFuzzer2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-01-13T01:46:16Z",
+      "side": 1,
+      "message": "Originally this was due to how these fuzzers were created (adapting existing test cases). However, we\u0027ve since rewritten them to be a bit easier to parse, and in doing so have combined the two input reader fuzzers.",
+      "parentUuid": "d0638696_e4bea5c1",
+      "revId": "ff73db63c149c2d9994c458504e991f9897125ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
