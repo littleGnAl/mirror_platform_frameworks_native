@@ -109,6 +109,30 @@
       },
       "revId": "78e450c03810cb463483cb7dc618578150530657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1adfa5ae_275d40c7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2992,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-13T13:19:01Z",
+      "side": 1,
+      "message": "In the case I tested is hundreds of ms. But if the system is in some sad state, we shouldn\u0027t lose the trace.\nEffectively this does a open() + write(src\u003din_memory_ring_buffer), which is typically few MB. \n\nWe can\u0027t enqueue this because the trace needs to be snapshotted early, otherwise that becomes the \"trace of dumpstate\" rather than \"the trace of the system just before dumpstat was invoked\"",
+      "parentUuid": "be7b377c_555ebe2f",
+      "range": {
+        "startLine": 2992,
+        "startChar": 2,
+        "endLine": 2992,
+        "endChar": 25
+      },
+      "revId": "78e450c03810cb463483cb7dc618578150530657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
