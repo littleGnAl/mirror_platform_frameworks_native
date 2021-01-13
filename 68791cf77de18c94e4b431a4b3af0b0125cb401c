@@ -16,6 +16,24 @@
       "message": "I think the thing that\u0027s missing is *why* the ordering of these addresses is interesting.",
       "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f991b04_f3297de4",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-13T01:19:24Z",
+      "side": 1,
+      "message": "I think we agree that being able to compare objects (even if this sorting order doesn\u0027t correspond to something important) is very useful.\n\nL697-L699 starts off by saying that this is an extension of AIBinder_lt.\nHowever, this can\u0027t be a full explanation since weak binders don\u0027t have to be promotable. In other words, this function might be passed two separate binder objects which could never be passed into AIBinder_lt. So the question remains, how does this function handle this case? I attempt to answer this in L701-L718.\n\nThe answer is:\n- if they\u0027re at the same address, we declare we handle this (now honestly much too verbose by this example, since it really is a detail)\n- \"even though multiple AIBinder* instances may happen to be allocated at the same address\": otherwise it\u0027s obvious that when two AIBinder* objects are at different addresses, there is no reason they should be the same, since we handle this even when they are at the same address\n\nDo you have any specific suggestion? I can also give it another whirl.",
+      "parentUuid": "e1465837_f8b88e9c",
+      "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
