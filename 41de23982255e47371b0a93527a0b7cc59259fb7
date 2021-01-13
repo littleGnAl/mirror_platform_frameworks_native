@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbc92a35_1bb6ab4e",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-13T02:31:18Z",
+      "side": 1,
+      "message": "The fun answer is: why does std::map require operator\u003c to be implemented (or more generally its key_compare is a binary operation), but it supports looking up specific elements, and people consider it to be useful?\n\nPerhaps this deserves more examples, but the C++ standards committee used this terminology first: https://en.cppreference.com/w/cpp/concepts/totally_ordered\n\nSpecifically, since I say \u0027total ordering\u0027, this implies that if !AIBinder_lt(a, b) \u0026\u0026 !AIBinder_lt(b, a)), then a and b are the same binder object.",
+      "parentUuid": "484d0575_fe3f30b9",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 59
+      },
+      "revId": "41de23982255e47371b0a93527a0b7cc59259fb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac9aa98_0604253e",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 6
