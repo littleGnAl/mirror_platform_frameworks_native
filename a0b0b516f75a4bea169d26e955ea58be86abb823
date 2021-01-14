@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e530746_fb06fba0",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-14T17:21:45Z",
+      "side": 1,
+      "message": "also - sorry I did not look at this thoroughly before. If you want, I\u0027m assuming that the topic can be removed and this can land independently? I can help finish this CL out, if you want.",
+      "parentUuid": "e390b3b5_65f6916c",
+      "range": {
+        "startLine": 234,
+        "startChar": 8,
+        "endLine": 234,
+        "endChar": 63
+      },
+      "revId": "a0b0b516f75a4bea169d26e955ea58be86abb823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6f59ba42_e551159a",
