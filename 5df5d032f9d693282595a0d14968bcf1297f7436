@@ -22,6 +22,30 @@
       },
       "revId": "5df5d032f9d693282595a0d14968bcf1297f7436",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5033a450_7ef3f1fc",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-14T14:15:59Z",
+      "side": 1,
+      "message": "Correct. ack.",
+      "parentUuid": "c984ca9f_74a121b0",
+      "range": {
+        "startLine": 1066,
+        "startChar": 0,
+        "endLine": 1067,
+        "endChar": 15
+      },
+      "revId": "5df5d032f9d693282595a0d14968bcf1297f7436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

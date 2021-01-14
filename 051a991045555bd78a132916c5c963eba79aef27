@@ -685,6 +685,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0a2d9d1_d74ea529",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-14T14:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6fad8a7_0ce66e5b",
+      "range": {
+        "startLine": 1597,
+        "startChar": 0,
+        "endLine": 1597,
+        "endChar": 77
+      },
+      "revId": "051a991045555bd78a132916c5c963eba79aef27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a685dca7_6dc0459c",
