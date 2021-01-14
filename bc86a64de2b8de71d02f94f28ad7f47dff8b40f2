@@ -22,6 +22,30 @@
       },
       "revId": "bc86a64de2b8de71d02f94f28ad7f47dff8b40f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc6aa43_5b239d74",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2021-01-14T14:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17a92749_a5ee346c",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 43
+      },
+      "revId": "bc86a64de2b8de71d02f94f28ad7f47dff8b40f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
