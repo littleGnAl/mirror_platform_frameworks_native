@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e59d14e_01e4e1b2",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-14T17:20:23Z",
+      "side": 1,
+      "message": "In this case, I think we could return a simpler description, otherwise it\u0027ll be useless (I can take over the CL if you want)",
+      "range": {
+        "startLine": 268,
+        "startChar": 15,
+        "endLine": 268,
+        "endChar": 33
+      },
+      "revId": "e886cfddf915cd82c2767ea11212b2372108ef15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f6c635_ecb039fc",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-14T17:20:23Z",
+      "side": 1,
+      "message": "This is of course a great thing since we no longer need the weak symbol, but it is unfortunate because while before, the code was very clear, it would be easy to mistype the version on L249.\n\nI wonder if it is possible, or if there is any plan, that the INTRODUCED_IN macro could save data, so that we could say:\n\n  if (__android_has_ndk(AIBinder_Class_setHandleShellCommand)) {\n     AIBinder_Class_setHandleShellCommand(...\n  }\n\nThe only way I can think of to do this would be to change the way the APIs are created, to something like:\n\n    ANDROID_NDK_API(30, AIBinder_Class_setHandleShellCommand);\n\nThis would also give us the ability to test that the mapping file was correct (or to generate it from the code).\n\nWDYT?",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 5
+      },
+      "revId": "e886cfddf915cd82c2767ea11212b2372108ef15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e789abf_d6074d63",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-14T17:20:23Z",
+      "side": 1,
+      "message": "for this class, I wonder if we should assert it in the constructor, since everything relies on it? Would that be okay?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "e886cfddf915cd82c2767ea11212b2372108ef15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

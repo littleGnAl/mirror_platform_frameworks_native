@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfd7a5da_d8ae5bf3",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-14T17:20:23Z",
+      "side": 0,
+      "message": "do we have any convention, so that developers previously relying on these preprocessor #ifs to ensure their code would run on old devices, will know to use builtin available?\n\nFor instance, do we have a lint, saying that min API 30 devices shouldn\u0027t use these APIs?",
+      "revId": "38effc4ffd41ebd939ec290cba98fd3b4b34e963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
