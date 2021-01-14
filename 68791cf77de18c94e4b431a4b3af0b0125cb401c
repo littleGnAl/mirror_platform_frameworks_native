@@ -106,6 +106,24 @@
       "parentUuid": "cfe59437_50ac2e2b",
       "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6959a9_bfb19845",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-14T00:43:45Z",
+      "side": 1,
+      "message": "The docs should say things like \"this ordering is meaningless and only serves to allow storage in containers which require ordering such as binary trees\" or similar. This still seems like a really strange API to me as opposed to just an isEqual since the types have no meaningful ordering, but \"because C++ data structures are weird\" sounds plausible. I don\u0027t know the language well enough to judge that.",
+      "parentUuid": "cca0c51f_23327645",
+      "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
