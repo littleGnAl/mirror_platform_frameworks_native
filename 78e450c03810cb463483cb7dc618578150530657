@@ -175,6 +175,30 @@
       },
       "revId": "78e450c03810cb463483cb7dc618578150530657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c92295_29791f6e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2992,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2021-01-14T06:11:30Z",
+      "side": 1,
+      "message": "\u003e (I also wonder if DUMP_TRACES_TASK should not be enqueued by that logic - Rhed?)\n\nIMHO, I think the impact is very slight we enqueued the `dump traces` into a parallel thread.\n\nDump traces collects traces of java processes and some native processes. Looks into the tasks which are parallel running with `dump traces`, they are collecting dump fds, adding files to zip, dumping mount info and files, running commands such as `iptables`, `lpdump`, `qsid`, `ip`, \u0027ss\u0027, `iotop`, and `dmabuf`. They are irrelevant to targets of `dump traces`. I think it\u0027s fine we keep having `dump traces` parallel running.",
+      "parentUuid": "a4c6369c_19480bab",
+      "range": {
+        "startLine": 2992,
+        "startChar": 2,
+        "endLine": 2992,
+        "endChar": 25
+      },
+      "revId": "78e450c03810cb463483cb7dc618578150530657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
