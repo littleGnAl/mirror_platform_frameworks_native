@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "077c9d76_233a8105",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-14T11:57:32Z",
+      "side": 1,
+      "message": "So, I have an update on this.\nI wrote some code that dumps out the FD table at the point when that early MaybeSnapshotSystemTrace() is called. There are too many FD open (binder, pipes and more):\n1. The zip file itself is not OCLOEXEC (but that\u0027 easy to fix).\n2. There is a big deal of sockets and pipes being opened. by looking at lsof, one is inherited from adbd, one has something to do with lshal. Can\u0027t tell all of them because they are very short lived.\n3. The list of FDs is non-reproducible. the pipes sometimes show up, sometimes don\u0027t.\n3. non-cloexec sockets don\u0027t just come from open_socket() in dumpstate.cc, because that one marks the file as O_CLOEXEC. They must come form the various other includes of dumpstate.\n4. I don\u0027t think this is fixable in a reliable way. Even figuring out where they all come from would take days, and given they come and go it will likely break 1h after I we land this.\n\nRun 1:\n\nListing FDs\nFD:3 CLOEXEC\u003d1, dst\u003dsocket:[43654]\nFD:3 CLOEXEC\u003d1, dst\u003dsocket:[43654]\nFD:4 CLOEXEC\u003d1, dst\u003d/sys/kernel/tracing/trace_marker\nFD:4 CLOEXEC\u003d1, dst\u003d/sys/kernel/tracing/trace_marker\nFD:5 CLOEXEC\u003d1, dst\u003d/dev/binderfs/hwbinder\nFD:5 CLOEXEC\u003d1, dst\u003d/dev/binderfs/hwbinder\nFD:6 CLOEXEC\u003d0, dst\u003d/data/user_de/0/com.android.shell/files/bugreports/bugreport-cf_x86_phone-MASTER-2021-01-14-11-32-36.zip\nFD:6 CLOEXEC\u003d0, dst\u003d/data/user_de/0/com.android.shell/files/bugreports/bugreport-cf_x86_phone-MASTER-2021-01-14-11-32-36.zip\nFD:7 CLOEXEC\u003d0, dst\u003dsocket:[33731]\nFD:7 CLOEXEC\u003d0, dst\u003dsocket:[33731]\nFD:8 CLOEXEC\u003d0, dst\u003dsocket:[33729]\nFD:8 CLOEXEC\u003d0, dst\u003dsocket:[33729]\nFD:9 CLOEXEC\u003d1, dst\u003d/dev/binderfs/binder\nFD:9 CLOEXEC\u003d1, dst\u003d/dev/binderfs/binder\nFD:10 CLOEXEC\u003d1, dst\u003d/proc/2433/fd\nFD:10 CLOEXEC\u003d1, dst\u003d/proc/2433/fd\nFD:11 CLOEXEC\u003d0, dst\u003dsocket:[31174]\nFD:11 CLOEXEC\u003d0, dst\u003dsocket:[31174]\nFD:12 CLOEXEC\u003d0, dst\u003dpipe:[44007]\nFD:12 CLOEXEC\u003d0, dst\u003dpipe:[44007]\n\nRun 2:\nListing FDs\nFD:3 CLOEXEC\u003d1, dst\u003dsocket:[559928]\nFD:3 CLOEXEC\u003d1, dst\u003dsocket:[559928]\nFD:4 CLOEXEC\u003d1, dst\u003d/sys/kernel/tracing/trace_marker\nFD:4 CLOEXEC\u003d1, dst\u003d/sys/kernel/tracing/trace_marker\nFD:3 CLOEXEC\u003d1, dst\u003dsocket:[559928]\nFD:3 CLOEXEC\u003d1, dst\u003dsocket:[559928]\nFD:5 CLOEXEC\u003d1, dst\u003d/dev/binderfs/hwbinder\nFD:5 CLOEXEC\u003d1, dst\u003d/dev/binderfs/hwbinder\nFD:4 CLOEXEC\u003d1, dst\u003d/sys/kernel/tracing/trace_marker\nFD:4 CLOEXEC\u003d1, dst\u003d/sys/kernel/tracing/trace_marker\nFD:6 CLOEXEC\u003d0, dst\u003d/data/user_de/0/com.android.shell/files/bugreports/bugreport-cf_x86_phone-MASTER-2021-01-14-11-52-19.zip\nFD:6 CLOEXEC\u003d0, dst\u003d/data/user_de/0/com.android.shell/files/bugreports/bugreport-cf_x86_phone-MASTER-2021-01-14-11-52-19.zip\nFD:5 CLOEXEC\u003d1, dst\u003d/dev/binderfs/hwbinder\nFD:5 CLOEXEC\u003d1, dst\u003d/dev/binderfs/hwbinder\nFD:7 CLOEXEC\u003d0, dst\u003dsocket:[559897]\nFD:7 CLOEXEC\u003d0, dst\u003dsocket:[559897]\nFD:6 CLOEXEC\u003d0, dst\u003d/data/user_de/0/com.android.shell/files/bugreports/bugreport-cf_x86_phone-MASTER-2021-01-14-11-52-19.zip\nFD:6 CLOEXEC\u003d0, dst\u003d/data/user_de/0/com.android.shell/files/bugreports/bugreport-cf_x86_phone-MASTER-2021-01-14-11-52-19.zip\nFD:8 CLOEXEC\u003d0, dst\u003dsocket:[559895]\nFD:8 CLOEXEC\u003d0, dst\u003dsocket:[559895]\nFD:7 CLOEXEC\u003d0, dst\u003dsocket:[559897]\nFD:7 CLOEXEC\u003d0, dst\u003dsocket:[559897]\nFD:9 CLOEXEC\u003d1, dst\u003d/dev/binderfs/binder\nFD:9 CLOEXEC\u003d1, dst\u003d/dev/binderfs/binder\nFD:8 CLOEXEC\u003d0, dst\u003dsocket:[559895]\nFD:8 CLOEXEC\u003d0, dst\u003dsocket:[559895]\nFD:10 CLOEXEC\u003d1, dst\u003d/proc/21306/fd\nFD:9 CLOEXEC\u003d1, dst\u003d/dev/binderfs/binder\nFD:10 CLOEXEC\u003d1, dst\u003d/proc/21306/fd\nFD:9 CLOEXEC\u003d1, dst\u003d/dev/binderfs/binder\nFD:10 CLOEXEC\u003d1, dst\u003d/proc/21329/fd\nFD:10 CLOEXEC\u003d1, dst\u003d/proc/21329/fd\nFD:11 CLOEXEC\u003d0, dst\u003dsocket:[31174]\nFD:11 CLOEXEC\u003d0, dst\u003dsocket:[31174]\nFD:11 CLOEXEC\u003d0, dst\u003dsocket:[31174]\nFD:11 CLOEXEC\u003d0, dst\u003dsocket:[31174]",
+      "parentUuid": "2996ac7d_08b23c24",
+      "revId": "78e450c03810cb463483cb7dc618578150530657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be7b377c_555ebe2f",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 5
@@ -233,6 +251,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "96c92295_29791f6e",
+      "range": {
+        "startLine": 2992,
+        "startChar": 2,
+        "endLine": 2992,
+        "endChar": 25
+      },
+      "revId": "78e450c03810cb463483cb7dc618578150530657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7441d12a_99155725",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2992,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-14T11:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c478451_36023401",
       "range": {
         "startLine": 2992,
         "startChar": 2,
