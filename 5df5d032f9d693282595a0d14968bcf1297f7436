@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c984ca9f_74a121b0",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-14T14:11:37Z",
+      "side": 1,
+      "message": "this is spammy, because in 99% of bugreports there isn\u0027t going to be a trace. let\u0027s remove?",
+      "range": {
+        "startLine": 1066,
+        "startChar": 0,
+        "endLine": 1067,
+        "endChar": 15
+      },
+      "revId": "5df5d032f9d693282595a0d14968bcf1297f7436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
