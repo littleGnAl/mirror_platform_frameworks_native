@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38f3f931_a1c93d86",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T18:27:45Z",
+      "side": 1,
+      "message": "Thanks for saying that you can take over that part. But I am not sure if this CL can be submitted independently from other CLs in the same topic. How about landing this first and implement the fallback behavior in a follow-up CL?",
+      "parentUuid": "7e59d14e_01e4e1b2",
+      "range": {
+        "startLine": 268,
+        "startChar": 15,
+        "endLine": 268,
+        "endChar": 33
+      },
+      "revId": "e886cfddf915cd82c2767ea11212b2372108ef15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7f6c635_ecb039fc",
         "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
         "patchSetId": 6
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c377185_97f5b2bd",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T18:27:45Z",
+      "side": 1,
+      "message": "\u003e we no longer need the weak symbol\n\nThe symbol IS still weak if your min_sdk_version \u003c 30. It becomes strong otherwise.\n\n\u003e it would be easy to mistype the version on L249\n\nNo. If you type a number less than 30 (like 29, 28, ...) the compiler complains. See https://docs.google.com/document/d/14Y9Vfrh2XuQTns8fLbL9PdRDz0sHOs6Ieflijiqvebo/edit#bookmark\u003did.ks6php8yyuqb\n\n\u003e ANDROID_NDK_API\n\nThe bionic team was against adding more abstraction to this. See the discussion in the doc.",
+      "parentUuid": "d7f6c635_ecb039fc",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 5
+      },
+      "revId": "e886cfddf915cd82c2767ea11212b2372108ef15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e789abf_d6074d63",
         "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
         "patchSetId": 6
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-14T17:20:23Z",
       "side": 1,
       "message": "for this class, I wonder if we should assert it in the constructor, since everything relies on it? Would that be okay?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "e886cfddf915cd82c2767ea11212b2372108ef15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53469934_4a1c9017",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T18:27:45Z",
+      "side": 1,
+      "message": "The compiler is dump in that perspective. \n\n```\nif (__builtin_available(android 31, *)) {\n    // lots of code here\n    // and then ...\n    api_that_is_available_only_on_s();\n}\n```\n\nCompiler doesn\u0027t accept the above as valid guard.",
+      "parentUuid": "5e789abf_d6074d63",
       "range": {
         "startLine": 54,
         "startChar": 0,

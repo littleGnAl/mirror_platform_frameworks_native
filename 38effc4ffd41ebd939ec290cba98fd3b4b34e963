@@ -16,6 +16,24 @@
       "message": "do we have any convention, so that developers previously relying on these preprocessor #ifs to ensure their code would run on old devices, will know to use builtin available?\n\nFor instance, do we have a lint, saying that min API 30 devices shouldn\u0027t use these APIs?",
       "revId": "38effc4ffd41ebd939ec290cba98fd3b4b34e963",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ea4e40_897218f5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T18:27:45Z",
+      "side": 0,
+      "message": "With \"-Wunguarded-availability\" (which will be enabled by default, see https://android-review.googlesource.com/c/platform/build/soong/+/1425589), compiler gives you a friendly error message. For example\n\n```\n\u0027foo\u0027 has been marked as being introduced in Android 10 here, but the deployment target is Android 8.0.0\nenclose \u0027foo\u0027 in a __builtin_available check to silence this warning\n```",
+      "parentUuid": "cfd7a5da_d8ae5bf3",
+      "revId": "38effc4ffd41ebd939ec290cba98fd3b4b34e963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
