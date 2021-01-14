@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b84567f_3ff1497c",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2021-01-14T23:49:06Z",
+      "side": 1,
+      "message": "I impl\u0027d Eq, PartialEq, Ord, and PartialOrd.",
+      "parentUuid": "3fa81718_020fc8fc",
+      "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5a4d929_cd5a22f4",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "It\u0027s not necessarily a Binder\u003cT\u003e (that should be Box\u003cT\u003e in your example). I wanted to make the newtype to make it clear that you\u0027re dealing with a strong binder pointer here, as it\u0027s symmetric with Weak\u003cI\u003e.\n\nBesides, we can\u0027t override Clone on Box\u003cI\u003e, which we want to do here.",
       "parentUuid": "a5a4d929_cd5a22f4",
+      "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "777fad99_63af89bb",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2021-01-14T23:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6214aba_52b8948b",
       "revId": "c16b40fa07ac48d4423bf103f55814fb206c3f5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
