@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22f7baaf_a185d188",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2021-01-15T12:36:12Z",
+      "side": 1,
+      "message": "Sorry, but can we restore the example as well? I think explaining this part is orthogonal to explaining why we provide ordering at all.",
+      "range": {
+        "startLine": 710,
+        "startChar": 0,
+        "endLine": 714,
+        "endChar": 51
+      },
+      "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1465837_f8b88e9c",
         "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
         "patchSetId": 2
