@@ -137,6 +137,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5f24ae_bde8d02f",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1650665
+      },
+      "writtenOn": "2021-01-15T22:17:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "662fd2b4_0891e7b6",
+      "range": {
+        "startLine": 142,
+        "startChar": 23,
+        "endLine": 142,
+        "endChar": 53
+      },
+      "revId": "e672b875c07a05800af6eade04fbd2bd283c81b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "360e65e7_7ccf3cef",
@@ -198,6 +222,30 @@
       "side": 1,
       "message": "Sorry - yes, this is a cherry-pick. Approving.\n\nThen, perhaps do a delta on top of this, which should land cleanly on AOSP (hopefully). Do you know of any use for this parameter? I feel it is more dangerous than useful.",
       "parentUuid": "f9065b01_51031b0a",
+      "range": {
+        "startLine": 76,
+        "startChar": 66,
+        "endLine": 76,
+        "endChar": 69
+      },
+      "revId": "e672b875c07a05800af6eade04fbd2bd283c81b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d5a312_9d27f532",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1650665
+      },
+      "writtenOn": "2021-01-15T22:17:04Z",
+      "side": 1,
+      "message": "Sounds good, I\u0027ll push another patch on top of this.",
+      "parentUuid": "8ff9b3ae_762a7389",
       "range": {
         "startLine": 76,
         "startChar": 66,
