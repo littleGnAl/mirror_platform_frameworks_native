@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "662fd2b4_0891e7b6",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-15T21:33:41Z",
+      "side": 1,
+      "message": "I meant, removing it, in the case we also don\u0027t share the update for ever case that the number of active clients changes.",
+      "parentUuid": "996e0076_17cbe338",
+      "range": {
+        "startLine": 142,
+        "startChar": 23,
+        "endLine": 142,
+        "endChar": 53
+      },
+      "revId": "e672b875c07a05800af6eade04fbd2bd283c81b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "360e65e7_7ccf3cef",
         "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
         "patchSetId": 3
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "Would you prefer to have just a bool here telling if there are/aren\u0027t services with clients?\n\nIt would require the following changes:\n\n* Modify ag/12599701\n* Modify ag/13308435 and ag/13307999 (since unit test in this patch would need to be changed)\n* Possibly modify the corresponding HIDL change for consistency (aosp/q/topic:%22lazy_hal_shutdown%22+status:merged)",
       "parentUuid": "360e65e7_7ccf3cef",
+      "range": {
+        "startLine": 76,
+        "startChar": 66,
+        "endLine": 76,
+        "endChar": 69
+      },
+      "revId": "e672b875c07a05800af6eade04fbd2bd283c81b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff9b3ae_762a7389",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-15T21:33:41Z",
+      "side": 1,
+      "message": "Sorry - yes, this is a cherry-pick. Approving.\n\nThen, perhaps do a delta on top of this, which should land cleanly on AOSP (hopefully). Do you know of any use for this parameter? I feel it is more dangerous than useful.",
+      "parentUuid": "f9065b01_51031b0a",
       "range": {
         "startLine": 76,
         "startChar": 66,
