@@ -124,6 +124,24 @@
       "parentUuid": "cca0c51f_23327645",
       "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ef9542_043c4f3c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-15T01:48:40Z",
+      "side": 1,
+      "message": "I\u0027ve tried to clarify docs according to this thread \u0026 will talk offline.",
+      "parentUuid": "5b6959a9_bfb19845",
+      "revId": "68791cf77de18c94e4b431a4b3af0b0125cb401c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
