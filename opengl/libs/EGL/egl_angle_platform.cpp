@@ -25,15 +25,16 @@
 #pragma GCC diagnostic pop
 
 #include <android/dlext.h>
-#include <dlfcn.h>
+#include <cutils/properties.h>
 #include <graphicsenv/GraphicsEnv.h>
-#include <time.h>
 #include <log/log.h>
 #include <vndksupport/linker.h>
 
+#include <dlfcn.h>
+#include <time.h>
+
 namespace angle {
 
-constexpr char kAngleEs2Lib[] = "libGLESv2_angle.so";
 constexpr int kAngleDlFlags = RTLD_LOCAL | RTLD_NOW;
 
 static GetDisplayPlatformFunc angleGetDisplayPlatform = nullptr;
@@ -107,18 +108,31 @@ bool initializeAnglePlatform(EGLDisplay dpy) {
     android_namespace_t* ns = android::GraphicsEnv::getInstance().getAngleNamespace();
     void* so = nullptr;
     if (ns) {
+        constexpr char kAngleEs2Lib[] = "libGLESv2_angle.so";
         const android_dlextinfo dlextinfo = {
                 .flags = ANDROID_DLEXT_USE_NAMESPACE,
                 .library_namespace = ns,
         };
         so = android_dlopen_ext(kAngleEs2Lib, kAngleDlFlags, &dlextinfo);
+        if (!so) {
+            ALOGE("%s failed to dlopen %s!", __FUNCTION__, kAngleEs2Lib);
+            return false;
+        }
     } else {
         // If we are here, ANGLE is loaded as built-in gl driver in the sphal.
-        so = android_load_sphal_library(kAngleEs2Lib, kAngleDlFlags);
-    }
-    if (!so) {
-        ALOGE("%s failed to dlopen %s!", __FUNCTION__, kAngleEs2Lib);
-        return false;
+        // Get the ANGLE library filename
+        char angleEs2LibName[PROPERTY_VALUE_MAX] = {};
+        int prop_len = property_get("ro.gfx.angle.builtin.name", angleEs2LibName, nullptr);
+        if (prop_len < 0 || prop_len >= PROPERTY_VALUE_MAX || strlen(angleEs2LibName) == 0) {
+            ALOGE("%s failed to get valid ANGLE library filename!", __FUNCTION__);
+            return false;
+        }
+
+        so = android_load_sphal_library(angleEs2LibName, kAngleDlFlags);
+        if (!so) {
+            ALOGE("%s failed to dlopen %s!", __FUNCTION__, angleEs2LibName);
+            return false;
+        }
     }
 
     angleGetDisplayPlatform =
