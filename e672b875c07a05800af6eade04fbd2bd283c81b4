@@ -63,6 +63,53 @@
       },
       "revId": "e672b875c07a05800af6eade04fbd2bd283c81b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83a3d88_43a6fbc9",
+        "filename": "libs/binder/LazyServiceRegistrar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-15T02:20:48Z",
+      "side": 1,
+      "message": "Sorry - I understand now - the callback here gets called whenever there is any change in the number of connected services. This extra check is preventing L187..L190 from being executed.\n\nMaybe we can keep the mNumConnectedServices check above the call to mActiveServicesCountCallback, then we only hvae the check once (not here and L195).",
+      "parentUuid": "7f77a99f_c166e8f1",
+      "range": {
+        "startLine": 142,
+        "startChar": 23,
+        "endLine": 142,
+        "endChar": 53
+      },
+      "revId": "e672b875c07a05800af6eade04fbd2bd283c81b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "360e65e7_7ccf3cef",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-15T02:20:48Z",
+      "side": 1,
+      "message": "why is this integer useful? and if we need it, should we prefer size_t (to match mNumConnectedServices)?\n\nThe motivation behind \u0027onClients\u0027 returning a binder is so you know which binder is shutting down (and can potentially clear resources associated with that particular binder).\n\nIn this case, we know how many binders are shutdown, but I don\u0027t know how having 3 or 2 would be useful here (only 0 seems useful).",
+      "range": {
+        "startLine": 76,
+        "startChar": 66,
+        "endLine": 76,
+        "endChar": 69
+      },
+      "revId": "e672b875c07a05800af6eade04fbd2bd283c81b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
