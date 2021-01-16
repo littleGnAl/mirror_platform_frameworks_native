@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23618066_2d688387",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-16T02:52:38Z",
+      "side": 1,
+      "message": "This API isn\u0027t actually used from multiple threads currently (and I hope it is ripped out before we use it in that way), but I didn\u0027t want to add a new restriction to the API, which would require new documentation or break users in the future.",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 35
+      },
+      "revId": "c648a765dc0e3008db62a368df3ea7592d4c2452",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b3e0178_c0b0d6d0",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-16T02:52:38Z",
+      "side": 1,
+      "message": "At this point - before this patch, if mWaitingForThreads was 0, nothing would have received the broadcast.",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 47
+      },
+      "revId": "c648a765dc0e3008db62a368df3ea7592d4c2452",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
