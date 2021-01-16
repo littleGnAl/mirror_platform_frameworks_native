@@ -2162,9 +2162,15 @@ void Dumpstate::DumpstateBoard(int out_fd) {
      * after invoking dumpstateBoard_* methods. This is to enable debug builds
      * to not have debugfs mounted during runtime. It will also ensure that
      * debugfs is only accessed by the dumpstate HAL.
+     *
+     * Vendors can also make this capability available on pre-S launching
+     * devices by setting the property debug.mount_debugfs true in their
+     * device.mk files.
      */
     auto api_level = android::base::GetIntProperty("ro.product.first_api_level", 0);
-    bool mount_debugfs = !PropertiesHelper::IsUserBuild() && api_level >= 31;
+    auto api_level_override = android::base::GetBoolProperty("debug.mount_debugfs", false);
+    bool mount_debugfs = !PropertiesHelper::IsUserBuild() &&
+            ((api_level >= 31) || api_level_override);
 
     if (mount_debugfs) {
         RunCommand("mount debugfs", {"mount", "-t", "debugfs", "debugfs", "/sys/kernel/debug"},
