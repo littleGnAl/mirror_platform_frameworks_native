@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b18b3e_14e21529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2021-01-17T12:19:19Z",
+      "side": 1,
+      "message": "Jie, you need to trigger Autosubmit+1",
+      "revId": "d01e58d5dc110869a8a168b322c5f5d4785d60c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
