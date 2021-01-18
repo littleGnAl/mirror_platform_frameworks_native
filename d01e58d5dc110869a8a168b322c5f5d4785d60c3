@@ -16,6 +16,24 @@
       "message": "Jie, you need to trigger Autosubmit+1",
       "revId": "d01e58d5dc110869a8a168b322c5f5d4785d60c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20ff3fd_a20db8c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1728502
+      },
+      "writtenOn": "2021-01-18T08:05:54Z",
+      "side": 1,
+      "message": "hi, robin, I have no permission to access the result of presubmit-verified. Can you tell me the specific fail information? Thanks",
+      "parentUuid": "05b18b3e_14e21529",
+      "revId": "d01e58d5dc110869a8a168b322c5f5d4785d60c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
