@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cbf392b_d3642c27",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-18T20:21:27Z",
+      "side": 1,
+      "message": "why not doing this just after the others (the main trace instance?)\nI am not sure when post-fs-data happens, but I\u0027d be consistent and do everything at the same time?",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 15
+      },
+      "revId": "0208cbe61f2d2ed4fe635e09fe91aae09593df4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9628d59_889f4d21",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-18T20:21:27Z",
+      "side": 1,
+      "message": "given that you have a nice doc I\u0027d link it here. The fact that is internal is imho not a big deal. Better a link accessible to 50% of the people than no link.",
+      "revId": "0208cbe61f2d2ed4fe635e09fe91aae09593df4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27fb9535_f9fd35be",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-18T20:21:27Z",
+      "side": 1,
+      "message": "FYI I sent a mail to check if we still need both paths. debugfs should be gone for tracing, but I am not sure whether we still need to support for old devices.",
+      "range": {
+        "startLine": 233,
+        "startChar": 22,
+        "endLine": 233,
+        "endChar": 27
+      },
+      "revId": "0208cbe61f2d2ed4fe635e09fe91aae09593df4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
