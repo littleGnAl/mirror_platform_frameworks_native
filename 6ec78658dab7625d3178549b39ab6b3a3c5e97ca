@@ -87,6 +87,24 @@
       "parentUuid": "a0f7b8f9_73c41108",
       "revId": "6ec78658dab7625d3178549b39ab6b3a3c5e97ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6527f4c_0fdb1916",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-19T21:54:10Z",
+      "side": 1,
+      "message": "Ah, hadn\u0027t noticed that removal. Yeah, this is fine then.",
+      "parentUuid": "854c127e_63be900f",
+      "revId": "6ec78658dab7625d3178549b39ab6b3a3c5e97ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
