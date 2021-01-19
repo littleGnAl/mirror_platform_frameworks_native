@@ -51,6 +51,24 @@
       "parentUuid": "310cf9a1_1d019461",
       "revId": "6ec78658dab7625d3178549b39ab6b3a3c5e97ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f7b8f9_73c41108",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-19T20:58:20Z",
+      "side": 1,
+      "message": "Missing what is to me the most important part: \"This ordering has no inherent meaning\".\n\nThe reason this review took so long is that this was non-obvious to me. \"Why does the address order matter?\" is a question people reading this are going to have.",
+      "parentUuid": "f62c6dfe_38bfcfe3",
+      "revId": "6ec78658dab7625d3178549b39ab6b3a3c5e97ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
