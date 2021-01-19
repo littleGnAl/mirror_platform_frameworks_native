@@ -69,6 +69,24 @@
       "parentUuid": "f62c6dfe_38bfcfe3",
       "revId": "6ec78658dab7625d3178549b39ab6b3a3c5e97ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854c127e_63be900f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-19T21:53:10Z",
+      "side": 1,
+      "message": "I did remove the explanation of how the order was created (no longer mentions the address), and this now explains how it can be used.\n\nWhat else is missing?",
+      "parentUuid": "a0f7b8f9_73c41108",
+      "revId": "6ec78658dab7625d3178549b39ab6b3a3c5e97ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
