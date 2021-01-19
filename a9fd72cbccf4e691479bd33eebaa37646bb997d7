@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0e8cfa_6e2001b4",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-19T19:33:20Z",
+      "side": 1,
+      "message": "peanut-gallery question... should this be an executable that lives with libdmabufinfo that dumpstate just calls out to? so all the dma buffer code is over in your directory and dumpstate just has single line calling it (and no build dependencies)?",
+      "revId": "a9fd72cbccf4e691479bd33eebaa37646bb997d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
