@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f0d6539_c767f59a",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-19T18:28:05Z",
+      "side": 1,
+      "message": "and can avoid it in C++",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 595,
+        "endChar": 12
+      },
+      "revId": "e52cf594cb3c84a6ba8231dc067fefeff377409c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ef32d08_47eec3ca",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-19T18:28:05Z",
+      "side": 1,
+      "message": "we probably want a real comment here",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 24
+      },
+      "revId": "e52cf594cb3c84a6ba8231dc067fefeff377409c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd78db1_c5c377e0",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-19T18:28:05Z",
+      "side": 1,
+      "message": "nit: maybe \u0027createTransactionReference\u0027",
+      "range": {
+        "startLine": 167,
+        "startChar": 33,
+        "endLine": 167,
+        "endChar": 53
+      },
+      "revId": "e52cf594cb3c84a6ba8231dc067fefeff377409c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
