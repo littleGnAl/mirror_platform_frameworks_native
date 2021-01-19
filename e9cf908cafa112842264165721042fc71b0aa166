@@ -16,6 +16,24 @@
       "message": "The Presubmit-Verified error is flaky infrastructure on our side, unrelated test. Hopefully the next run should pass.\n\nAlec, the whitespace change in PS3 removed your +2. You\u0027ll need to +2 it again.",
       "revId": "e9cf908cafa112842264165721042fc71b0aa166",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f4c7c8e_f26a09b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1728502
+      },
+      "writtenOn": "2021-01-19T09:13:35Z",
+      "side": 1,
+      "message": "hi, robin, the presubmit-verified fail.\nI have no permission to access the result of presubmit-verified. Can you tell me the specific fail information? Thanks",
+      "parentUuid": "f71682a7_f69c3f8d",
+      "revId": "e9cf908cafa112842264165721042fc71b0aa166",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
