@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6729c0c4_db88c710",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-01-20T21:07:04Z",
+      "side": 1,
+      "message": "LGTM with Only one q: what happens if the kernel doen",
+      "revId": "46025dd8aa49c9843b6b4b85bd92558b1cd9dacc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
