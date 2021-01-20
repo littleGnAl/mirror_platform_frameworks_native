@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a958fe_aeb7022c",
+        "filename": "data/etc/android.hardware.keymint.limited_use_key.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1798566
+      },
+      "writtenOn": "2021-01-20T07:47:53Z",
+      "side": 1,
+      "message": "Say \"max usage count\" instead of \"number of the count\"?",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "cad8f51d710864f62a47b3610da15c892b9d70f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c4869fa_ccc09efa",
+        "filename": "data/etc/android.hardware.keymint.single_use_key.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1798566
+      },
+      "writtenOn": "2021-01-20T07:47:53Z",
+      "side": 1,
+      "message": "\"count\" -\u003e \"max usage count\"?",
+      "range": {
+        "startLine": 18,
+        "startChar": 22,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "cad8f51d710864f62a47b3610da15c892b9d70f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
