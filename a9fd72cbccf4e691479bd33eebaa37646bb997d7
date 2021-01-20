@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e95a440_2c5cef2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-01-20T18:47:53Z",
+      "side": 1,
+      "message": "Hi Nandana, it does not seem to affect the size of bugreport.zip on cuttlefish. Its size seems to vary from run to run though making it hard to do the measurement(since at times, the size of the zip file without these stats would be higher than the size of the zip file with the stats). Please feel free to let me know if there is a different way in which you would like me to do the measurements. Thanks!",
+      "parentUuid": "08f78ce4_4cdc903b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "a9fd72cbccf4e691479bd33eebaa37646bb997d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e0e8cfa_6e2001b4",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 5
@@ -61,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e74bf112_07f98046",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-01-20T18:47:53Z",
+      "side": 1,
+      "message": "SGTM, I moved it into the dmabuf_dump tool!",
+      "parentUuid": "f71043f8_acb1f4bf",
+      "revId": "a9fd72cbccf4e691479bd33eebaa37646bb997d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cb56d7e_d985c75b",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 5
@@ -72,6 +114,30 @@
       "writtenOn": "2021-01-20T10:09:33Z",
       "side": 1,
       "message": "const ref?",
+      "range": {
+        "startLine": 1493,
+        "startChar": 9,
+        "endLine": 1493,
+        "endChar": 13
+      },
+      "revId": "a9fd72cbccf4e691479bd33eebaa37646bb997d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea3d27d_78773ba1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1493,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-01-20T18:47:53Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "1cb56d7e_d985c75b",
       "range": {
         "startLine": 1493,
         "startChar": 9,
