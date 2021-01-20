@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1db985d7_8d5221be",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2021-01-20T15:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f0d6539_c767f59a",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 595,
+        "endChar": 12
+      },
+      "revId": "e52cf594cb3c84a6ba8231dc067fefeff377409c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ef32d08_47eec3ca",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45d6f847_061fe93d",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2021-01-20T15:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ef32d08_47eec3ca",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 24
+      },
+      "revId": "e52cf594cb3c84a6ba8231dc067fefeff377409c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcd78db1_c5c377e0",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-19T18:28:05Z",
       "side": 1,
       "message": "nit: maybe \u0027createTransactionReference\u0027",
+      "range": {
+        "startLine": 167,
+        "startChar": 33,
+        "endLine": 167,
+        "endChar": 53
+      },
+      "revId": "e52cf594cb3c84a6ba8231dc067fefeff377409c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b90285_8a660bb8",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2021-01-20T15:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd78db1_c5c377e0",
       "range": {
         "startLine": 167,
         "startChar": 33,
