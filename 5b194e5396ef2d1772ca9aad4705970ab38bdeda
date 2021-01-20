@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17bdab40_f5685402",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562821
+      },
+      "writtenOn": "2021-01-20T03:28:08Z",
+      "side": 1,
+      "message": "Cherry-picking the master CLs onto AOSP since AOSP is the source of truth for GpuMem.",
+      "revId": "5b194e5396ef2d1772ca9aad4705970ab38bdeda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
