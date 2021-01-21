@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4f315f6_4b3d874c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-21T08:49:54Z",
+      "side": 1,
+      "message": "Just looking for info on if this is order of 100s of KB or MB. I syspect the former, or even bytes, but since there\u0027s some iteration involved I\u0027m not sure.\n\n\nThis info helps us keep track of sudden leaps in bugreport size",
+      "parentUuid": "9e95a440_2c5cef2d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "a9fd72cbccf4e691479bd33eebaa37646bb997d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e0e8cfa_6e2001b4",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 5
