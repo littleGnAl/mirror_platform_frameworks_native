@@ -143,6 +143,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba397f4f_0ed14e20",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-21T22:21:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "644f2a9c_c14809c6",
+      "range": {
+        "startLine": 247,
+        "startChar": 21,
+        "endLine": 247,
+        "endChar": 37
+      },
+      "revId": "049899ab6abd73b120f937956988c331b980fddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9271182_243e677e",
@@ -156,6 +180,24 @@
       "writtenOn": "2021-01-11T20:37:41Z",
       "side": 1,
       "message": "impl Clone via `AIBinder_Weak_Clone` off https://android-review.googlesource.com/c/platform/frameworks/native/+/1543984 ? Could be done in a followup change if this is ready to land before that.",
+      "revId": "049899ab6abd73b120f937956988c331b980fddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "961f8c0a_d1f924bb",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-21T22:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9271182_243e677e",
       "revId": "049899ab6abd73b120f937956988c331b980fddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
