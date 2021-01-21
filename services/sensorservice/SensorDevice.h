@@ -190,6 +190,11 @@ private:
          * @return The number of active clients of this sensor.
          */
         int numActiveClients() const;
+
+        /**
+         * @return The number of not gone (active or idle) clients of this sensor.
+         */
+        int numUndeadClients() const;
     };
     DefaultKeyedVector<int, Info> mActivationCount;
 
@@ -206,6 +211,10 @@ private:
 
         // Sensors are restricted for all clients.
         DISABLED_REASON_SERVICE_RESTRICTED,
+
+        // UID becomes gone (e.g. app goes to stop).
+        DISABLED_REASON_UID_GONE,
+
         DISABLED_REASON_MAX,
     };
 
@@ -258,6 +267,8 @@ private:
 
     bool isClientDisabled(void* ident) const;
     bool isClientDisabledLocked(void* ident) const;
+    bool isClientIdleLocked(void* ident);
+    bool isClientGoneLocked(void* ident);
     std::vector<void *> getDisabledClientsLocked() const;
 
     bool clientHasNoAccessLocked(void* ident) const;
