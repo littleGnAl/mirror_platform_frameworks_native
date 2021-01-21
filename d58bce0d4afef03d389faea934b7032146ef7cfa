@@ -1,0 +1,108 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007490046",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1357925?revision\u003d10",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c906965a_24265d67",
+        "filename": "libs/binder/rust/tests/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-21T23:04:11Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 108,
+        "endChar": 20
+      },
+      "revId": "d58bce0d4afef03d389faea934b7032146ef7cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007490046",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1357925?revision\u003d10",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "db49e3c2_28dbd1a3",
+        "filename": "libs/binder/rust/tests/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-21T23:04:11Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 109,
+        "startChar": 11,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "d58bce0d4afef03d389faea934b7032146ef7cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007490046",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1357925?revision\u003d10",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "bba47150_13f7fc98",
+        "filename": "libs/binder/rust/tests/serialization.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-21T23:04:11Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 105
+      },
+      "revId": "d58bce0d4afef03d389faea934b7032146ef7cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007490046",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1357925?revision\u003d10",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f1745901_2a098489",
+        "filename": "libs/binder/rust/tests/serialization.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-21T23:04:11Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 105
+      },
+      "revId": "d58bce0d4afef03d389faea934b7032146ef7cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
