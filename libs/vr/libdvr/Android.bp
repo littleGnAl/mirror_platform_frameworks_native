@@ -17,6 +17,12 @@ cc_library_headers {
     name: "libdvr_headers",
     export_include_dirs: ["include"],
     vendor_available: true,
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.media",
+        "com.android.media.swcodec",
+    ],
+    min_sdk_version: "29",
 }
 
 cc_library_headers {
@@ -74,6 +80,7 @@ shared_libs = [
 
 cc_library_shared {
     name: "libdvr.google",
+    system_ext_specific: true,
     owner: "google",
     cflags: cflags,
     header_libs: ["libdvr_headers"],

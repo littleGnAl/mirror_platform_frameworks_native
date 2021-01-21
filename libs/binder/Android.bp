@@ -17,6 +17,8 @@ cc_library_headers {
     export_include_dirs: ["include"],
     vendor_available: true,
     host_supported: true,
+    // TODO(b/153609531): remove when no longer needed.
+    native_bridge_supported: true,
 
     header_libs: [
         "libbase_headers",
@@ -29,6 +31,11 @@ cc_library_headers {
         "libutils_headers",
     ],
     min_sdk_version: "29",
+    target: {
+        darwin: {
+            enabled: false,
+        },
+    },
 }
 
 // These interfaces are android-specific implementation unrelated to binder
@@ -62,6 +69,8 @@ cc_library {
     },
     double_loadable: true,
     host_supported: true,
+    // TODO(b/153609531): remove when no longer needed.
+    native_bridge_supported: true,
 
     // TODO(b/31559095): get headers from bionic on host
     include_dirs: [
@@ -74,7 +83,7 @@ cc_library {
     // or dessert updates. Instead, apex users should use libbinder_ndk.
     apex_available: [
         "//apex_available:platform",
-        // TODO(b/139016109) remove these three
+        // TODO(b/166468760) remove these three
         "com.android.media.swcodec",
         "test_com.android.media.swcodec",
     ],
@@ -95,6 +104,7 @@ cc_library {
         "MemoryDealer.cpp",
         "MemoryHeapBase.cpp",
         "Parcel.cpp",
+        "ParcelableHolder.cpp",
         "ParcelFileDescriptor.cpp",
         "PersistableBundle.cpp",
         "ProcessState.cpp",
@@ -102,6 +112,7 @@ cc_library {
         "Stability.cpp",
         "Status.cpp",
         "TextOutput.cpp",
+        "Utils.cpp",
         ":libbinder_aidl",
     ],
 
@@ -117,17 +128,26 @@ cc_library {
         vendor: {
             exclude_srcs: libbinder_device_interface_sources,
         },
+        darwin: {
+            enabled: false,
+        },
     },
 
     aidl: {
         export_aidl_headers: true,
     },
 
+    // TODO(b/142684679): for com.android.media which is compiled
+    // as vendor and used as system code.
+    use_apex_name_macro: true,
+
     cflags: [
         "-Wall",
         "-Wextra",
+        "-Wextra-semi",
         "-Werror",
         "-Wzero-as-null-pointer-constant",
+        "-DANDROID_BASE_UNIQUE_FD_DISABLE_IMPLICIT_CONVERSION",
     ],
     product_variables: {
         binder32bit: {
@@ -154,13 +174,43 @@ cc_library {
         misc_undefined: ["integer"],
     },
     min_sdk_version: "29",
+
+    tidy: true,
+    tidy_flags: [
+        // Only check our headers
+        "--header-filter=^.*frameworks/native/libs/binder/.*.h$",
+    ],
+    tidy_checks_as_errors: [
+        // Explicitly list the checks that should not occur in this module.
+        "abseil-*",
+        "android-*",
+        "bugprone-*",
+        "cert-*",
+        "clang-analyzer-*",
+        "-clang-analyzer-core.CallAndMessage",
+        "-clang-analyzer-core.uninitialized.Assign",
+        "-clang-analyzer-unix.Malloc",
+        "-clang-analyzer-deadcode.DeadStores",
+        "-clang-analyzer-optin.cplusplus.UninitializedObject",
+        "google-*",
+        "-google-readability-*",
+        "-google-runtime-references",
+        "misc-*",
+        "-misc-no-recursion",
+        "-misc-redundant-expression",
+        "-misc-unused-using-decls",
+        "performance*",
+        "portability*",
+    ],
 }
 
 // AIDL interface between libbinder and framework.jar
 filegroup {
     name: "libbinder_aidl",
     srcs: [
+        "aidl/android/content/pm/IPackageChangeObserver.aidl",
         "aidl/android/content/pm/IPackageManagerNative.aidl",
+        "aidl/android/content/pm/PackageChangeEvent.aidl",
         "aidl/android/os/IClientCallback.aidl",
         "aidl/android/os/IServiceCallback.aidl",
         "aidl/android/os/IServiceManager.aidl",

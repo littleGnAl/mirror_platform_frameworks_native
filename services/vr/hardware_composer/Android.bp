@@ -1,6 +1,8 @@
 cc_library_shared {
     name: "libvr_hwc-hal",
 
+    system_ext_specific: true,
+
     srcs: [
         "impl/vr_hwc.cpp",
         "impl/vr_composer_client.cpp",
@@ -12,10 +14,14 @@ cc_library_shared {
     ],
 
     shared_libs: [
-        "android.frameworks.vr.composer@1.0",
+        "android.frameworks.vr.composer@2.0",
         "android.hardware.graphics.composer@2.1",
+        "android.hardware.graphics.composer@2.2",
+        "android.hardware.graphics.composer@2.3",
+        "android.hardware.graphics.composer@2.1-resources",
         "android.hardware.graphics.mapper@2.0",
         "android.hardware.graphics.mapper@3.0",
+        "android.hardware.graphics.mapper@4.0",
         "libbase",
         "libbufferhubqueue",
         "libbinder",
@@ -32,11 +38,11 @@ cc_library_shared {
 
     header_libs: [
         "android.hardware.graphics.composer@2.1-command-buffer",
-        "android.hardware.graphics.composer@2.1-hal",
+        "android.hardware.graphics.composer@2.3-hal",
     ],
 
     export_header_lib_headers: [
-        "android.hardware.graphics.composer@2.1-hal",
+        "android.hardware.graphics.composer@2.3-hal",
     ],
 
     export_static_lib_headers: [
@@ -44,8 +50,10 @@ cc_library_shared {
     ],
 
     export_shared_lib_headers: [
-        "android.frameworks.vr.composer@1.0",
+        "android.frameworks.vr.composer@2.0",
         "android.hardware.graphics.composer@2.1",
+        "android.hardware.graphics.composer@2.2",
+        "android.hardware.graphics.composer@2.3",
     ],
 
     export_include_dirs: ["."],
@@ -91,6 +99,7 @@ cc_library_static {
 
 cc_binary {
     name: "vr_hwc",
+    system_ext_specific: true,
     vintf_fragments: ["manifest_vr_hwc.xml"],
     srcs: [
         "vr_hardware_composer_service.cpp",
@@ -102,8 +111,8 @@ cc_binary {
         "libvr_hwc-binder",
     ],
     shared_libs: [
-        "android.frameworks.vr.composer@1.0",
-        "android.hardware.graphics.composer@2.1",
+        "android.frameworks.vr.composer@2.0",
+        "android.hardware.graphics.composer@2.3",
         "libbase",
         "libbinder",
         "liblog",

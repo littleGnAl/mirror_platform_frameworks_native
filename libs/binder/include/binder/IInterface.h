@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-//
-#ifndef ANDROID_IINTERFACE_H
-#define ANDROID_IINTERFACE_H
+#pragma once
 
 #include <binder/Binder.h>
 
@@ -259,7 +257,6 @@ constexpr const char* const kManualInterfaces[] = {
   "android.media.IDrmClient",
   "android.media.IEffect",
   "android.media.IEffectClient",
-  "android.media.IMediaAnalyticsService",
   "android.media.IMediaCodecList",
   "android.media.IMediaDrmService",
   "android.media.IMediaExtractor",
@@ -268,6 +265,7 @@ constexpr const char* const kManualInterfaces[] = {
   "android.media.IMediaHTTPService",
   "android.media.IMediaLogService",
   "android.media.IMediaMetadataRetriever",
+  "android.media.IMediaMetricsService",
   "android.media.IMediaPlayer",
   "android.media.IMediaPlayerClient",
   "android.media.IMediaPlayerService",
@@ -335,5 +333,3 @@ constexpr bool allowedManualInterface(const char* name) {
 
 } // namespace internal
 } // namespace android
-
-#endif // ANDROID_IINTERFACE_H

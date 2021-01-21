@@ -39,11 +39,11 @@ public:
         data.writeInterfaceToken(IAppOpsCallback::getInterfaceDescriptor());
         data.writeInt32(op);
         data.writeString16(packageName);
-        remote()->transact(OP_CHANGED_TRANSACTION, data, &reply);
+        remote()->transact(OP_CHANGED_TRANSACTION, data, &reply, IBinder::FLAG_ONEWAY);
     }
 };
 
-IMPLEMENT_META_INTERFACE(AppOpsCallback, "com.android.internal.app.IAppOpsCallback");
+IMPLEMENT_META_INTERFACE(AppOpsCallback, "com.android.internal.app.IAppOpsCallback")
 
 // ----------------------------------------------------------------------
 
@@ -58,7 +58,6 @@ status_t BnAppOpsCallback::onTransact(
             String16 packageName;
             (void)data.readString16(&packageName);
             opChanged(op, packageName);
-            reply->writeNoException();
             return NO_ERROR;
         } break;
         default:

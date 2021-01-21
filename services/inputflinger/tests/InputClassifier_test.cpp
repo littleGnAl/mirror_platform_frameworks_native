@@ -41,12 +41,15 @@ static NotifyMotionArgs generateBasicMotionArgs() {
     coords.setAxisValue(AMOTION_EVENT_AXIS_X, 1);
     coords.setAxisValue(AMOTION_EVENT_AXIS_Y, 1);
     static constexpr nsecs_t downTime = 2;
-    NotifyMotionArgs motionArgs(1/*sequenceNum*/, downTime/*eventTime*/, 3/*deviceId*/,
-            AINPUT_SOURCE_ANY, ADISPLAY_ID_DEFAULT, 4/*policyFlags*/, AMOTION_EVENT_ACTION_DOWN,
-            0/*actionButton*/, 0/*flags*/, AMETA_NONE, 0/*buttonState*/, MotionClassification::NONE,
-            AMOTION_EVENT_EDGE_FLAG_NONE, 5/*deviceTimestamp*/,
-            1/*pointerCount*/, &properties, &coords, 0/*xPrecision*/, 0/*yPrecision*/,
-            downTime, {}/*videoFrames*/);
+    NotifyMotionArgs motionArgs(1 /*sequenceNum*/, downTime /*eventTime*/, 3 /*deviceId*/,
+                                AINPUT_SOURCE_ANY, ADISPLAY_ID_DEFAULT, 4 /*policyFlags*/,
+                                AMOTION_EVENT_ACTION_DOWN, 0 /*actionButton*/, 0 /*flags*/,
+                                AMETA_NONE, 0 /*buttonState*/, MotionClassification::NONE,
+                                AMOTION_EVENT_EDGE_FLAG_NONE, 1 /*pointerCount*/, &properties,
+                                &coords, 0 /*xPrecision*/, 0 /*yPrecision*/,
+                                AMOTION_EVENT_INVALID_CURSOR_POSITION,
+                                AMOTION_EVENT_INVALID_CURSOR_POSITION, downTime,
+                                {} /*videoFrames*/);
     return motionArgs;
 }
 
@@ -130,6 +133,28 @@ TEST_F(InputClassifierTest, SendToNextStage_NotifyDeviceResetArgs) {
     NotifyDeviceResetArgs outArgs;
     ASSERT_NO_FATAL_FAILURE(mTestListener->assertNotifyDeviceResetWasCalled(&outArgs));
     ASSERT_EQ(args, outArgs);
+}
+
+TEST_F(InputClassifierTest, SetMotionClassifier_Enabled) {
+    mClassifier->setMotionClassifierEnabled(true);
+}
+
+TEST_F(InputClassifierTest, SetMotionClassifier_Disabled) {
+    mClassifier->setMotionClassifierEnabled(false);
+}
+
+/**
+ * Try to break it by calling setMotionClassifierEnabled multiple times.
+ */
+TEST_F(InputClassifierTest, SetMotionClassifier_Multiple) {
+    mClassifier->setMotionClassifierEnabled(true);
+    mClassifier->setMotionClassifierEnabled(true);
+    mClassifier->setMotionClassifierEnabled(true);
+    mClassifier->setMotionClassifierEnabled(false);
+    mClassifier->setMotionClassifierEnabled(false);
+    mClassifier->setMotionClassifierEnabled(true);
+    mClassifier->setMotionClassifierEnabled(true);
+    mClassifier->setMotionClassifierEnabled(true);
 }
 
 /**
