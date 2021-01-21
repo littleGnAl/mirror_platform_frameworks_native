@@ -78,6 +78,7 @@ public:
     enum UidState {
       UID_STATE_ACTIVE = 0,
       UID_STATE_IDLE,
+      UID_STATE_GONE,
     };
 
     void cleanupConnection(SensorEventConnection* connection);

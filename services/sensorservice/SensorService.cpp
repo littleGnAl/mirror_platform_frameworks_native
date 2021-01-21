@@ -1936,6 +1936,11 @@ void SensorService::UidPolicy::unregisterSelf() {
 
 void SensorService::UidPolicy::onUidGone(__unused uid_t uid, __unused bool disabled) {
     onUidIdle(uid, disabled);
+
+    sp<SensorService> service = mService.promote();
+    if (service != nullptr) {
+        service->onUidStateChanged(uid, UID_STATE_GONE);
+    }
 }
 
 void SensorService::UidPolicy::onUidActive(uid_t uid) {

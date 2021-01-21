@@ -861,6 +861,16 @@ bool SensorDevice::isClientDisabledLocked(void* ident) const {
     return mDisabledClients.count(ident) > 0;
 }
 
+bool SensorDevice::isClientIdleLocked(void* ident) {
+    uint8_t reasonMask = 1 << DisabledReason::DISABLED_REASON_UID_IDLE;
+    return (mDisabledClients.count(ident) > 0) && ((mDisabledClients[ident] & reasonMask) == reasonMask);
+}
+
+bool SensorDevice::isClientGoneLocked(void* ident) {
+    uint8_t reasonMask = 1 << DisabledReason::DISABLED_REASON_UID_GONE;
+    return (mDisabledClients.count(ident) > 0) && ((mDisabledClients[ident] & reasonMask) == reasonMask);
+}
+
 std::vector<void *> SensorDevice::getDisabledClientsLocked() const {
     std::vector<void *> vec;
     for (const auto& it : mDisabledClients) {
@@ -887,8 +897,12 @@ void SensorDevice::setUidStateForConnection(void* ident, SensorService::UidState
     Mutex::Autolock _l(mLock);
     if (state == SensorService::UID_STATE_ACTIVE) {
         removeDisabledReasonForIdentLocked(ident, DisabledReason::DISABLED_REASON_UID_IDLE);
+        removeDisabledReasonForIdentLocked(ident, DisabledReason::DISABLED_REASON_UID_GONE);
     } else {
         addDisabledReasonForIdentLocked(ident, DisabledReason::DISABLED_REASON_UID_IDLE);
+        if (state == SensorService::UID_STATE_GONE) {
+            addDisabledReasonForIdentLocked(ident, DisabledReason::DISABLED_REASON_UID_GONE);
+        }
     }
 
     for (size_t i = 0; i< mActivationCount.size(); ++i) {
@@ -899,6 +913,23 @@ void SensorDevice::setUidStateForConnection(void* ident, SensorService::UidState
             updateBatchParamsLocked(handle, info);
             bool disable = info.numActiveClients() == 0 && info.isActive;
             bool enable = info.numActiveClients() > 0 && !info.isActive;
+
+            int sensorType = -1;
+            for (size_t j = 0; j < mSensorList.size(); j++) {
+              if (handle == mSensorList[j].handle) {
+                sensorType = mSensorList[j].type;
+                break;
+              }
+            }
+            if (sensorType == static_cast<int>(SensorType::STEP_COUNTER)) {
+                // For step counter,
+                // active the sensor when any client not gone
+                // deactive the sensor when all clents gone
+                disable = info.numUndeadClients() == 0 && info.isActive;
+                enable = info.numUndeadClients() > 0 && !info.isActive;
+                ALOGD("<<<STEP_COUNTER>>> setUidStateForConnection(), to_disable_hardware = %s, to_enable_hardware = %s",
+                    disable?"true":"false", enable?"true":"false");
+            }
 
             if ((enable || disable) &&
                 doActivateHardwareLocked(handle, enable) == NO_ERROR) {
@@ -1096,6 +1127,33 @@ int SensorDevice::Info::numActiveClients() const {
         }
     }
     return num;
+}
+
+int SensorDevice::Info::numUndeadClients() const {
+    SensorDevice& device(SensorDevice::getInstance());
+    int numUndead = 0;
+    int numActive = 0;
+    int numIdle = 0;
+    int numGone = 0;
+
+    for (size_t i = 0; i < batchParams.size(); ++i) {
+        if (!device.isClientDisabledLocked(batchParams.keyAt(i))) {
+            ++numActive;
+        }
+        if (device.isClientIdleLocked(batchParams.keyAt(i))) {
+            ++numIdle;
+        }
+         if (device.isClientGoneLocked(batchParams.keyAt(i))) {
+            ++numGone;
+        }
+    }
+
+    numUndead = numActive + (numIdle - numGone);
+
+    ALOGD("<<<STEP_COUNTER>>> numUndeadClients(), numActive = %d, numIdle = %d, numGone = %d, return numUndead = %d",
+        numActive, numIdle, numGone, numUndead);
+
+    return numUndead;
 }
 
 status_t SensorDevice::Info::setBatchParamsForIdent(void* ident, int,
