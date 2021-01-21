@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "007aaa15_5a30dfdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2021-01-21T23:51:11Z",
+      "side": 1,
+      "message": "Added a couple tests and realized that deriving Ord, Eq, etc. was not what we wanted because it only derives if the generic I implements those traits.",
+      "revId": "a2f3d88da0e494487e6dc4e76c0687d0c3a1faee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
