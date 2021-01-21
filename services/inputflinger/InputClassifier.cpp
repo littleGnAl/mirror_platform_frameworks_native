@@ -27,7 +27,6 @@
 #if defined(__linux__)
     #include <pthread.h>
 #endif
-#include <server_configurable_flags/get_flags.h>
 #include <unordered_set>
 
 #include <android/hardware/input/classifier/1.0/IInputClassifier.h>
@@ -45,11 +44,6 @@ using android::hardware::Return;
 using namespace android::hardware::input;
 
 namespace android {
-
-// Category (=namespace) name for the input settings that are applied at boot time
-static const char* INPUT_NATIVE_BOOT = "input_native_boot";
-// Feature flag name for the deep press feature
-static const char* DEEP_PRESS_ENABLED = "deep_press_enabled";
 
 //Max number of elements to store in mEvents.
 static constexpr size_t MAX_EVENTS = 5;
@@ -76,20 +70,6 @@ static MotionClassification getMotionClassification(common::V1_0::Classification
 static bool isTouchEvent(const NotifyMotionArgs& args) {
     return args.source == AINPUT_SOURCE_TOUCHPAD || args.source == AINPUT_SOURCE_TOUCHSCREEN;
 }
-
-// Check if the "deep touch" feature is on.
-static bool deepPressEnabled() {
-    std::string flag_value = server_configurable_flags::GetServerConfigurableFlag(
-            INPUT_NATIVE_BOOT, DEEP_PRESS_ENABLED, "true");
-    std::transform(flag_value.begin(), flag_value.end(), flag_value.begin(), ::tolower);
-    if (flag_value == "1" || flag_value == "true") {
-        ALOGI("Deep press feature enabled.");
-        return true;
-    }
-    ALOGI("Deep press feature is not enabled.");
-    return false;
-}
-
 
 // --- ClassifierEvent ---
 
@@ -157,12 +137,6 @@ MotionClassifier::MotionClassifier(
 
 std::unique_ptr<MotionClassifierInterface> MotionClassifier::create(
         sp<android::hardware::hidl_death_recipient> deathRecipient) {
-    if (!deepPressEnabled()) {
-        // If feature is not enabled, MotionClassifier should stay null to avoid unnecessary work.
-        // When MotionClassifier is null, InputClassifier will forward all events
-        // to the next InputListener, unmodified.
-        return nullptr;
-    }
     sp<android::hardware::input::classifier::V1_0::IInputClassifier> service =
             classifier::V1_0::IInputClassifier::getService();
     if (!service) {
@@ -217,7 +191,7 @@ void MotionClassifier::processEvents() {
             case ClassifierEventType::DEVICE_RESET: {
                 const int32_t deviceId = *(event.getDeviceId());
                 halResponseOk = mService->resetDevice(deviceId).isOk();
-                setClassification(deviceId, MotionClassification::NONE);
+                clearDeviceState(deviceId);
                 break;
             }
             case ClassifierEventType::HAL_RESET: {
@@ -243,7 +217,7 @@ void MotionClassifier::enqueueEvent(ClassifierEvent&& event) {
     bool eventAdded = mEvents.push(std::move(event));
     if (!eventAdded) {
         // If the queue is full, suspect the HAL is slow in processing the events.
-        ALOGE("Dropped event with eventTime %" PRId64, event.args->eventTime);
+        ALOGE("Could not add the event to the queue. Resetting");
         reset();
     }
 }
@@ -286,6 +260,12 @@ void MotionClassifier::updateLastDownTime(int32_t deviceId, nsecs_t downTime) {
     std::scoped_lock lock(mLock);
     mLastDownTimes[deviceId] = downTime;
     mClassifications[deviceId] = MotionClassification::NONE;
+}
+
+void MotionClassifier::clearDeviceState(int32_t deviceId) {
+    std::scoped_lock lock(mLock);
+    mClassifications.erase(deviceId);
+    mLastDownTimes.erase(deviceId);
 }
 
 MotionClassification MotionClassifier::classify(const NotifyMotionArgs& args) {
@@ -366,14 +346,25 @@ void InputClassifier::HalDeathRecipient::serviceDied(
 // --- InputClassifier ---
 
 InputClassifier::InputClassifier(const sp<InputListenerInterface>& listener)
-      : mListener(listener), mHalDeathRecipient(new HalDeathRecipient(*this)) {
-    mInitializeMotionClassifierThread = std::thread(
-            [this] { setMotionClassifier(MotionClassifier::create(mHalDeathRecipient)); });
+      : mListener(listener), mHalDeathRecipient(new HalDeathRecipient(*this)) {}
+
+void InputClassifier::setMotionClassifierEnabled(bool enabled) {
+    if (enabled) {
+        ALOGI("Enabling motion classifier");
+        if (mInitializeMotionClassifierThread.joinable()) {
+            mInitializeMotionClassifierThread.join();
+        }
+        mInitializeMotionClassifierThread = std::thread(
+                [this] { setMotionClassifier(MotionClassifier::create(mHalDeathRecipient)); });
 #if defined(__linux__)
-    // Set the thread name for debugging
-    pthread_setname_np(mInitializeMotionClassifierThread.native_handle(),
-                       "Create MotionClassifier");
+        // Set the thread name for debugging
+        pthread_setname_np(mInitializeMotionClassifierThread.native_handle(),
+                           "Create MotionClassifier");
 #endif
+    } else {
+        ALOGI("Disabling motion classifier");
+        setMotionClassifier(nullptr);
+    }
 }
 
 void InputClassifier::notifyConfigurationChanged(const NotifyConfigurationChangedArgs* args) {
@@ -423,7 +414,6 @@ void InputClassifier::setMotionClassifier(
 void InputClassifier::dump(std::string& dump) {
     std::scoped_lock lock(mLock);
     dump += "Input Classifier State:\n";
-
     dump += INDENT1 "Motion Classifier:\n";
     if (mMotionClassifier) {
         mMotionClassifier->dump(dump);
@@ -434,7 +424,9 @@ void InputClassifier::dump(std::string& dump) {
 }
 
 InputClassifier::~InputClassifier() {
-    mInitializeMotionClassifierThread.join();
+    if (mInitializeMotionClassifierThread.joinable()) {
+        mInitializeMotionClassifierThread.join();
+    }
 }
 
 } // namespace android
