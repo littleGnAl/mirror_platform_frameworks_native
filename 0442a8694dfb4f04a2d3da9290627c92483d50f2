@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e2f975_dbd05b0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-21T17:14:49Z",
+      "side": 1,
+      "message": "Will watch for breakages today. Given b/139697085#comment11, going ahead w/ merge.",
+      "revId": "0442a8694dfb4f04a2d3da9290627c92483d50f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

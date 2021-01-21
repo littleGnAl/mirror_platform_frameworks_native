@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "ffef84ae_682941c7",
         "filename": "libs/binder/IPCThreadState.cpp",
@@ -20,10 +21,10 @@
         "endChar": 59
       },
       "revId": "e61924575358399a1c618498bd5a329fad75b348",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "290fb645_89d74b19",
         "filename": "libs/binder/IPCThreadState.cpp",
@@ -44,10 +45,34 @@
         "endChar": 59
       },
       "revId": "e61924575358399a1c618498bd5a329fad75b348",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be243a1d_46f86055",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-21T17:14:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "290fb645_89d74b19",
+      "range": {
+        "startLine": 417,
+        "startChar": 45,
+        "endLine": 417,
+        "endChar": 59
+      },
+      "revId": "e61924575358399a1c618498bd5a329fad75b348",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "aef22741_3b834514",
         "filename": "libs/binder/include/binder/IPCThreadState.h",
@@ -67,10 +92,10 @@
         "endChar": 42
       },
       "revId": "e61924575358399a1c618498bd5a329fad75b348",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "30741186_26aa7ce1",
         "filename": "libs/binder/include/binder/IPCThreadState.h",
@@ -91,8 +116,31 @@
         "endChar": 42
       },
       "revId": "e61924575358399a1c618498bd5a329fad75b348",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4476e67b_a5b74568",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-21T17:14:49Z",
+      "side": 1,
+      "message": "(also consistent w/ libhwbinder)",
+      "parentUuid": "30741186_26aa7ce1",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 42
+      },
+      "revId": "e61924575358399a1c618498bd5a329fad75b348",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

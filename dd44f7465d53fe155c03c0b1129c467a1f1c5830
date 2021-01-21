@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "345114ed_1482884b",
         "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
@@ -20,10 +21,10 @@
         "endChar": 13
       },
       "revId": "dd44f7465d53fe155c03c0b1129c467a1f1c5830",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "6015a321_b5da809a",
         "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
@@ -44,8 +45,31 @@
         "endChar": 13
       },
       "revId": "dd44f7465d53fe155c03c0b1129c467a1f1c5830",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1915a78a_95367fa4",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-21T17:14:49Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "6015a321_b5da809a",
+      "range": {
+        "startLine": 263,
+        "startChar": 11,
+        "endLine": 263,
+        "endChar": 13
+      },
+      "revId": "dd44f7465d53fe155c03c0b1129c467a1f1c5830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
