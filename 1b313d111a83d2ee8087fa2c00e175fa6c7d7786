@@ -1,0 +1,108 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007474181",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556158?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5d2f6293_c0682056",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-21T13:35:45Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 866,
+        "startChar": 0,
+        "endLine": 866,
+        "endChar": 105
+      },
+      "revId": "1b313d111a83d2ee8087fa2c00e175fa6c7d7786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007474181",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556158?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9c7b6052_723efb7e",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-21T13:35:45Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 871,
+        "startChar": 0,
+        "endLine": 871,
+        "endChar": 105
+      },
+      "revId": "1b313d111a83d2ee8087fa2c00e175fa6c7d7786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007474181",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556158?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "726cbeba_d3875aa9",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-21T13:35:45Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 930,
+        "startChar": 0,
+        "endLine": 930,
+        "endChar": 121
+      },
+      "revId": "1b313d111a83d2ee8087fa2c00e175fa6c7d7786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007474181",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556158?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ffa90b25_9b8b8edf",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-21T13:35:45Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 1153,
+        "startChar": 0,
+        "endLine": 1153,
+        "endChar": 117
+      },
+      "revId": "1b313d111a83d2ee8087fa2c00e175fa6c7d7786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
