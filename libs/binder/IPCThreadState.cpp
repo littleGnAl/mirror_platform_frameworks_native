@@ -845,7 +845,8 @@ IPCThreadState::IPCThreadState()
       mIsLooper(false),
       mStrictModePolicy(0),
       mLastTransactionBinderFlags(0),
-      mCallRestriction(mProcess->mCallRestriction)
+      mCallRestriction(mProcess->mCallRestriction),
+      mNativeTid(-1)
 {
     pthread_setspecific(gTLS, this);
     clearCaller();
@@ -1424,6 +1425,14 @@ void IPCThreadState::freeBuffer(Parcel* parcel, const uint8_t* data,
     state->mOut.writeInt32(BC_FREE_BUFFER);
     state->mOut.writePointer((uintptr_t)data);
     state->flushIfNeeded();
+}
+
+pid_t IPCThreadState::getNativeTid()
+{
+    if (mNativeTid == -1) {
+        mNativeTid = gettid();
+    }
+    return mNativeTid;
 }
 
 } // namespace android
