@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75b1a62d_3591279d",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-22T19:59:57Z",
+      "side": 1,
+      "message": "Very much a nit: I don\u0027t think the newline here needed to be added.",
+      "revId": "3ba4d8b97f494d380203eb27abbc346fa20c625a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e9d64ab_4b426f1a",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-22T19:59:57Z",
+      "side": 1,
+      "message": "Specifically, this is only safe because MaybeUninit is #[repr(transparent)], which might be good to add to the docs here.",
+      "revId": "3ba4d8b97f494d380203eb27abbc346fa20c625a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
