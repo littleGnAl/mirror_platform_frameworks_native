@@ -13,6 +13,10 @@
 // limitations under the License.
 
 // Default flags to be used throughout all libraries in inputflinger.
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 cc_defaults {
     name: "inputflinger_defaults",
     cflags: [

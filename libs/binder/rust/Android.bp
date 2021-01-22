@@ -1,3 +1,7 @@
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 rust_library {
     name: "libbinder_rs",
     crate_name: "binder",

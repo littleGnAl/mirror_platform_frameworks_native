@@ -1,3 +1,7 @@
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 cc_library_shared {
     name: "libsensorservicehidl",
     srcs: [

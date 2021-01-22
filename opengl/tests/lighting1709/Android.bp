@@ -1,3 +1,7 @@
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 android_test {
     name: "LightingTest",
     srcs: ["**/*.java"],

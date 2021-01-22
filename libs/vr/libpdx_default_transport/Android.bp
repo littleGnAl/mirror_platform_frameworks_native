@@ -1,3 +1,7 @@
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 cc_defaults {
     name: "pdx_default_transport_compiler_defaults",
     clang: true,
@@ -75,4 +79,3 @@ cc_binary {
         "libpdx_default_transport",
     ],
 }
-

@@ -14,6 +14,10 @@
 
 // Build unit tests.
 
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 cc_test {
     name: "prioritydumper_test",
     test_suites: ["device-tests"],

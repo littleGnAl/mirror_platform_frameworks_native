@@ -1,3 +1,7 @@
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 cc_library {
     name: "libtimeinstate",
     srcs: ["cputimeinstate.cpp"],
@@ -35,4 +39,3 @@ cc_test {
     ],
     require_root: true,
 }
-

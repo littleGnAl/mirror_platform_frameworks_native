@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+package {
+    default_applicable_licenses: ["frameworks_native_libs_ui_license"],
+}
+
 cc_defaults {
     name: "libui_tools_default",
     clang_cflags: [

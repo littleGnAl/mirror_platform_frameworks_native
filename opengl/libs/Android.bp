@@ -1,4 +1,8 @@
 // Build the ETC1 library
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 cc_library {
     name: "libETC1",
     srcs: ["ETC1/etc1.cpp"],

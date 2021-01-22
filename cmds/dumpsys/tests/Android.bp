@@ -1,4 +1,8 @@
 // Build the unit tests for dumpsys
+package {
+    default_applicable_licenses: ["frameworks_native_cmds_dumpsys_license"],
+}
+
 cc_test {
     name: "dumpsys_test",
     test_suites: ["device-tests"],

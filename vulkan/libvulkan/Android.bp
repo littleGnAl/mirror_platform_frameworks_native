@@ -13,6 +13,10 @@
 // limitations under the License.
 
 // Headers module is in external/vulkan-headers/Android.bp.
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 ndk_library {
     name: "libvulkan",
     symbol_file: "libvulkan.map.txt",

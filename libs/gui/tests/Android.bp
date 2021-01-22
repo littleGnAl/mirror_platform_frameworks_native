@@ -2,6 +2,10 @@
 
 // Build the binary to $(TARGET_OUT_DATA_NATIVE_TESTS)/$(LOCAL_MODULE)
 // to integrate with auto-test framework.
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 cc_test {
     name: "libgui_test",
     test_suites: ["device-tests"],

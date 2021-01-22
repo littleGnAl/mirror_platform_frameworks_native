@@ -2,6 +2,10 @@
 
 // Touchpad implementation.
 
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 src = [
     "EvdevInjector.cpp",
     "VirtualTouchpadEvdev.cpp",

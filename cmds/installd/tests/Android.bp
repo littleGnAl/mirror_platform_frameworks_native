@@ -1,4 +1,8 @@
 // Build the unit tests for installd
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 cc_test {
     name: "installd_utils_test",
     test_suites: ["device-tests"],
@@ -157,4 +161,3 @@ cc_test {
         "libotapreoptparameters"
     ],
 }
-
