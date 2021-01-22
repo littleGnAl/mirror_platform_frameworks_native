@@ -256,7 +256,7 @@ std::optional<std::vector<std::vector<uint64_t>>> getUidCpuFreqTimes(uint32_t ui
 
     std::vector<tis_val_t> vals(gNCpus);
     time_key_t key = {.uid = uid};
-    for (uint32_t i = 0; i <= (maxFreqCount - 1) / FREQS_PER_ENTRY; ++i) {
+    for (uint32_t i = 0; maxFreqCount && i <= (maxFreqCount - 1) / FREQS_PER_ENTRY; ++i) {
         key.bucket = i;
         if (findMapEntry(gTisMapFd, &key, vals.data())) {
             if (errno != ENOENT || getFirstMapKey(gTisMapFd, &key)) return {};
@@ -492,7 +492,8 @@ bool clearUidTimes(uint32_t uid) {
 
     tis_val_t zeros = {0};
     std::vector<tis_val_t> vals(gNCpus, zeros);
-    for (key.bucket = 0; key.bucket <= (maxFreqCount - 1) / FREQS_PER_ENTRY; ++key.bucket) {
+    for (key.bucket = 0; maxFreqCount && key.bucket <= (maxFreqCount - 1) / FREQS_PER_ENTRY;
+         ++key.bucket) {
         if (writeToMapEntry(gTisMapFd, &key, vals.data(), BPF_EXIST) && errno != ENOENT)
             return false;
         if (deleteMapEntry(gTisMapFd, &key) && errno != ENOENT) return false;
@@ -575,7 +576,8 @@ getAggregatedTaskCpuFreqTimes(pid_t tgid, const std::vector<uint16_t> &aggregati
         map.emplace(aggregationKey, mapFormat);
 
         aggregated_task_tis_key_t key{.tgid = tgid, .aggregation_key = aggregationKey};
-        for (key.bucket = 0; key.bucket <= (maxFreqCount - 1) / FREQS_PER_ENTRY; ++key.bucket) {
+        for (key.bucket = 0; maxFreqCount && key.bucket <= (maxFreqCount - 1) / FREQS_PER_ENTRY;
+             ++key.bucket) {
             if (findMapEntry(gPidTisMapFd, &key, vals.data()) != 0) {
                 if (errno != ENOENT) {
                     return {};
