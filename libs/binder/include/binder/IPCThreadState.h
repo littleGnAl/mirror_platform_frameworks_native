@@ -162,6 +162,11 @@ public:
             // This constant needs to be kept in sync with Binder.UNSET_WORKSOURCE from the Java
             // side.
             static const int32_t kUnsetWorkSource = -1;
+
+            /**
+             * Returns the native TID of this thread.
+             */
+            pid_t               getNativeTid();
 private:
                                 IPCThreadState();
                                 ~IPCThreadState();
@@ -209,6 +214,7 @@ private:
             int32_t             mStrictModePolicy;
             int32_t             mLastTransactionBinderFlags;
             CallRestriction     mCallRestriction;
+            pid_t               mNativeTid;
 };
 
 } // namespace android
