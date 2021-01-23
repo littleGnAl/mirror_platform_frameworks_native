@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59eaeb19_e70c4ce4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-01-23T06:20:50Z",
+      "side": 1,
+      "message": "Thanks Nandana, I measured and averaged the size differences over a few cycles. There is still some variability but the bugreport.zip size seems to increase by 26KB on average. I have added the same to the commit message!",
+      "parentUuid": "e4f315f6_4b3d874c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "a9fd72cbccf4e691479bd33eebaa37646bb997d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e0e8cfa_6e2001b4",
         "filename": "cmds/dumpstate/dumpstate.cpp",
         "patchSetId": 5
