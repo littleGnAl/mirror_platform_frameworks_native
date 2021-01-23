@@ -130,6 +130,7 @@ cc_library_static {
     ],
     export_include_dirs: ["EGL"],
     sanitize:  { address: true },
+    vendor_available: true,
 }
 
 cc_library_shared {
