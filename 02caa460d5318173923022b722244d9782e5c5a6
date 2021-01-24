@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007556392",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1520815?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "babf1a89_1663a487",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-24T06:50:24Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 102
+      },
+      "revId": "02caa460d5318173923022b722244d9782e5c5a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
