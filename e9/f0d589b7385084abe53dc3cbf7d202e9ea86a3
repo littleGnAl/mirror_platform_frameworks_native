@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Autosubmit+1: Alistair Delva <adelva@google.com>
+Code-Review+2: Hung-ying Tyan <tyanh@google.com>
+DrNo-Review+1: Hung-ying Tyan <tyanh@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 25 Jan 2021 16:48:24 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1559413
+Project: platform/frameworks/native
+Branch: refs/heads/android10-gsi
