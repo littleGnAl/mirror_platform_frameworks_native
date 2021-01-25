@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec5abd15_dab9ecc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-25T21:37:58Z",
+      "side": 1,
+      "message": "The failure is in the AIDL unit test:\n\nFAILED: out/soong/.intermediates/system/tools/aidl/aidl-golden-test-build-hook-gen/gen/TODO_b_37575883.cpp\nrm -rf out/soong/.intermediates/system/tools/aidl/aidl-golden-test-build-hook-gen/gen \u0026\u0026 out/soong/host/linux-x86/bin/sbox --sandbox-path out/soong/.temp --manifest out/soong/.intermediates/system/tools/aidl/aidl-golden-test-build-hook-gen/genrule.sbox.textproto\ndiff -r ./out/soong/.intermediates/system/tools/aidl/aidl-test-interface-rust-source/gen/android/aidl/tests/ITestService.rs ./system/tools/aidl/tests/golden_output/aidl-test-interface-rust-source/gen/android/aidl/tests/ITestService.rs\n38c38\n\u003c   fn GetOtherTestService(\u0026self, _arg_name: \u0026str) -\u003e binder::public_api::Result\u003cbinder::Strong\u003cdyn crate::mangled::_7_android_4_aidl_5_tests_14_INamedCallback\u003e\u003e;\n---\n\u003e   fn GetOtherTestService(\u0026self, _arg_name: \u0026str) -\u003e binder::public_api::Result\u003cBox\u003cdyn crate::mangled::_7_android_4_aidl_5_tests_14_INamedCallback\u003e\u003e;\n58c58\n\u003c   fn GetCallback(\u0026self, _arg_return_null: bool) -\u003e binder::public_api::Result\u003cOption\u003cbinder::Strong\u003cdyn crate::mangled::_7_android_4_aidl_5_tests_14_INamedCallback\u003e\u003e\u003e;\n---\n\u003e   fn GetCallback(\u0026self, _arg_return_null: bool) -\u003e binder::public_api::Result\u003cOption\u003cBox\u003cdyn crate::mangled::_7_android_4_aidl_5_tests_14_INamedCallback\u003e\u003e\u003e;\n60,61c60,61\n\u003c   fn GetOldNameInterface(\u0026self) -\u003e binder::public_api::Result\u003cbinder::Strong\u003cdyn crate::mangled::_7_android_4_aidl_5_tests_8_IOldName\u003e\u003e;\n\u003c   fn GetNewNameInterface(\u0026self) -\u003e binder::public_api::Result\u003cbinder::Strong\u003cdyn crate::mangled::_7_android_4_aidl_5_tests_8_INewName\u003e\u003e;\n---\n\u003e   fn GetOldNameInterface(\u0026self) -\u003e binder::public_api::Result\u003cBox\u003cdyn crate::mangled::_7_android_4_aidl_5_tests_8_IOldName\u003e\u003e;\n\u003e   fn GetNewNameInterface(\u0026self) -\u003e binder::public_api::Result\u003cBox\u003cdyn crate::mangled::_7_android_4_aidl_5_tests_8_INewName\u003e\u003e;\nERROR: The AIDL compiler is outputting files in an unknown way.\nERROR: to accept these changes, please run:\nERROR:     $ANDROID_BUILD_TOP/system/tools/aidl/tests/golden_test.sh update",
+      "revId": "fc7b7bac348d5be5c616de4f092f5d5a31cda51d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
