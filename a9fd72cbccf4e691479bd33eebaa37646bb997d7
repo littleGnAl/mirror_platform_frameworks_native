@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7156281a_a9536db7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-01-25T09:56:11Z",
+      "side": 1,
+      "message": "thanks for doing this",
+      "parentUuid": "59eaeb19_e70c4ce4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "a9fd72cbccf4e691479bd33eebaa37646bb997d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e0e8cfa_6e2001b4",
