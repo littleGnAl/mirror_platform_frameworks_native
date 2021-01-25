@@ -297,10 +297,10 @@ TEST_F(DumpOptionsTest, InitializeWearBugReport) {
     EXPECT_FALSE(options_.limited_only);
 }
 
-TEST_F(DumpOptionsTest, InitializeTelephonyBugReport) {
-    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_TELEPHONY, fd, fd, false);
+TEST_F(DumpOptionsTest, InitializeConnectivityBugReport) {
+    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_CONNECTIVITY, fd, fd, false);
     EXPECT_FALSE(options_.do_screenshot);
-    EXPECT_TRUE(options_.telephony_only);
+    EXPECT_TRUE(options_.connectivity_only);
     EXPECT_TRUE(options_.do_progress_updates);
     EXPECT_EQ(options_.dumpstate_hal_mode, DumpstateMode::CONNECTIVITY);
 

@@ -40,8 +40,8 @@ interface IDumpstate {
     // Bugreport triggered on a wear device.
     const int BUGREPORT_MODE_WEAR = 3;
 
-    // Bugreport limited to only telephony info.
-    const int BUGREPORT_MODE_TELEPHONY = 4;
+    // Bugreport limited to only telephony/wifi/core networking info.
+    const int BUGREPORT_MODE_CONNECTIVITY = 4;
 
     // Bugreport limited to only wifi info.
     const int BUGREPORT_MODE_WIFI = 5;

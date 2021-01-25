@@ -146,11 +146,11 @@ typedef Dumpstate::ConsentCallback::ConsentResult UserConsentResult;
 static char cmdline_buf[16384] = "(unknown)";
 static const char *dump_traces_path = nullptr;
 static const uint64_t USER_CONSENT_TIMEOUT_MS = 30 * 1000;
-// Because telephony reports are significantly faster to collect (< 10 seconds vs. > 2 minutes),
+// Because connectivity reports are significantly faster to collect (<30 seconds vs. >2 minutes),
 // it's often the case that they time out far too quickly for consent with such a hefty dialog for
-// the user to read. For telephony reports only, we increase the default timeout to 2 minutes to
+// the user to read. For connectivity reports only, we increase the default timeout to 2 minutes to
 // roughly match full reports' durations.
-static const uint64_t TELEPHONY_REPORT_USER_CONSENT_TIMEOUT_MS = 2 * 60 * 1000;
+static const uint64_t CONNECTIVITY_REPORT_USER_CONSENT_TIMEOUT_MS = 2 * 60 * 1000;
 
 // TODO: variables and functions below should be part of dumpstate object
 
@@ -1872,18 +1872,18 @@ Dumpstate::RunStatus Dumpstate::DumpstateDefaultAfterCritical() {
     return status;
 }
 
-// Common states for telephony and wifi which are needed to be collected before
+// Common states for connectivity and wifi which are needed to be collected before
 // dumpstate drop the root user.
 static void DumpstateRadioAsRoot() {
     DumpIpTablesAsRoot();
     ds.AddDir(LOGPERSIST_DATA_DIR, false);
 }
 
-// This method collects common dumpsys for telephony and wifi. Typically, wifi
-// reports are fine to include all information, but telephony reports on user
-// builds need to strip some content (see DumpstateTelephonyOnly).
+// This method collects common dumpsys for connectivity and wifi. Typically, wifi
+// reports are fine to include all information, but connectivity reports on user
+// builds need to strip some content (see DumpstateConnectivityOnly).
 static void DumpstateRadioCommon(bool include_sensitive_info = true) {
-    // We need to be picky about some stuff for telephony reports on user builds.
+    // We need to be picky about some stuff for connectivity reports on user builds.
     if (!include_sensitive_info) {
         // Only dump the radio log buffer (other buffers and dumps contain too much unrelated info).
         DoRadioLogcat();
@@ -1914,14 +1914,12 @@ static void DumpstateRadioCommon(bool include_sensitive_info = true) {
                CommandOptions::WithTimeout(10).Build());
 }
 
-// We use "telephony" here for legacy reasons, though this now really means "connectivity" (cellular
-// + wifi + networking). This method collects dumpsys for connectivity debugging only. General rules
-// for what can be included on user builds: all reported information MUST directly relate to
-// connectivity debugging or customer support and MUST NOT contain unrelated personally identifiable
-// information. This information MUST NOT identify user-installed packages (UIDs are OK, package
-// names are not), and MUST NOT contain logs of user application traffic.
-// TODO(b/148168577) rename this and other related fields/methods to "connectivity" instead.
-static void DumpstateTelephonyOnly(const std::string& calling_package) {
+// This method collects dumpsys for connectivity debugging only. General rules for what can be
+// included on user builds: all reported information MUST directly relate to connectivity debugging
+// or customer support and MUST NOT contain unrelated personally identifiable information. This
+// information MUST NOT identify user-installed packages (UIDs are OK, package names are not), and
+// MUST NOT contain logs of user application traffic.
+static void DumpstateConnectivityOnly(const std::string& calling_package) {
     DurationReporter duration_reporter("DUMPSTATE");
 
     const CommandOptions DUMPSYS_COMPONENTS_OPTIONS = CommandOptions::WithTimeout(60).Build();
@@ -2445,7 +2443,8 @@ static bool PrepareToWriteToFile() {
     strftime(date, sizeof(date), "%Y-%m-%d-%H-%M-%S", localtime(&ds.now_));
     ds.name_ = date;
 
-    if (ds.options_->telephony_only) {
+    if (ds.options_->connectivity_only) {
+        // TODO(b/148168577) change report files to be "*-connectivity*.zip"
         ds.base_name_ += "-telephony";
     } else if (ds.options_->wifi_only) {
         ds.base_name_ += "-wifi";
@@ -2524,8 +2523,8 @@ static inline const char* ModeToString(Dumpstate::BugreportMode mode) {
             return "BUGREPORT_REMOTE";
         case Dumpstate::BugreportMode::BUGREPORT_WEAR:
             return "BUGREPORT_WEAR";
-        case Dumpstate::BugreportMode::BUGREPORT_TELEPHONY:
-            return "BUGREPORT_TELEPHONY";
+        case Dumpstate::BugreportMode::BUGREPORT_CONNECTIVITY:
+            return "BUGREPORT_CONNECTIVITY";
         case Dumpstate::BugreportMode::BUGREPORT_WIFI:
             return "BUGREPORT_WIFI";
         case Dumpstate::BugreportMode::BUGREPORT_DEFAULT:
@@ -2560,9 +2559,8 @@ static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOpt
             options->do_screenshot = is_screenshot_requested;
             options->dumpstate_hal_mode = DumpstateMode::WEAR;
             break;
-        // TODO(b/148168577) rename TELEPHONY everywhere to CONNECTIVITY.
-        case Dumpstate::BugreportMode::BUGREPORT_TELEPHONY:
-            options->telephony_only = true;
+        case Dumpstate::BugreportMode::BUGREPORT_CONNECTIVITY:
+            options->connectivity_only = true;
             options->do_progress_updates = true;
             options->do_screenshot = false;
             options->dumpstate_hal_mode = DumpstateMode::CONNECTIVITY;
@@ -2580,12 +2578,12 @@ static void SetOptionsFromMode(Dumpstate::BugreportMode mode, Dumpstate::DumpOpt
 static void LogDumpOptions(const Dumpstate::DumpOptions& options) {
     MYLOGI(
         "do_vibrate: %d stream_to_socket: %d progress_updates_to_socket: %d do_screenshot: %d "
-        "is_remote_mode: %d show_header_only: %d telephony_only: %d "
+        "is_remote_mode: %d show_header_only: %d connectivity_only: %d "
         "wifi_only: %d do_progress_updates: %d fd: %d bugreport_mode: %s dumpstate_hal_mode: %s "
         "limited_only: %d args: %s\n",
         options.do_vibrate, options.stream_to_socket, options.progress_updates_to_socket,
         options.do_screenshot, options.is_remote_mode, options.show_header_only,
-        options.telephony_only, options.wifi_only,
+        options.connectivity_only, options.wifi_only,
         options.do_progress_updates, options.bugreport_fd.get(), options.bugreport_mode.c_str(),
         toString(options.dumpstate_hal_mode).c_str(), options.limited_only, options.args.c_str());
 }
@@ -2822,7 +2820,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         return ERROR;
     }
 
-    // Interactive, wear & telephony modes are default to true.
+    // Interactive, wear & connectivity modes are default to true.
     // and may enable from cli option or when using control socket
     if (options_->do_progress_updates) {
         // clang-format off
@@ -2897,7 +2895,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     // duration is logged into MYLOG instead.
     PrintHeader();
 
-    bool is_dumpstate_restricted = options_->telephony_only
+    bool is_dumpstate_restricted = options_->connectivity_only
                                    || options_->wifi_only
                                    || options_->limited_only;
     if (!is_dumpstate_restricted) {
@@ -2914,8 +2912,8 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     }
     onUiIntensiveBugreportDumpsFinished(calling_uid);
     MaybeCheckUserConsent(calling_uid, calling_package);
-    if (options_->telephony_only) {
-        DumpstateTelephonyOnly(calling_package);
+    if (options_->connectivity_only) {
+        DumpstateConnectivityOnly(calling_package);
     } else if (options_->wifi_only) {
         DumpstateWifiOnly();
     } else if (options_->limited_only) {
@@ -3122,11 +3120,12 @@ Dumpstate::RunStatus Dumpstate::CopyBugreportIfUserConsented(int32_t calling_uid
     if (consent_result == UserConsentResult::UNAVAILABLE) {
         // User has not responded yet.
         uint64_t elapsed_ms = consent_callback_->getElapsedTimeMs();
-        // Telephony is a fast report type, particularly on user builds where information may be
+        // Connectivity is a fast report type, particularly on user builds where information may be
         // more aggressively limited. To give the user time to read the consent dialog, increase the
         // timeout.
-        uint64_t timeout_ms = options_->telephony_only ? TELEPHONY_REPORT_USER_CONSENT_TIMEOUT_MS
-                                                       : USER_CONSENT_TIMEOUT_MS;
+        uint64_t timeout_ms = options_->connectivity_only
+                                  ? CONNECTIVITY_REPORT_USER_CONSENT_TIMEOUT_MS
+                                  : USER_CONSENT_TIMEOUT_MS;
         if (elapsed_ms < timeout_ms) {
             uint delay_seconds = (timeout_ms - elapsed_ms) / 1000;
             MYLOGD("Did not receive user consent yet; going to wait for %d seconds", delay_seconds);

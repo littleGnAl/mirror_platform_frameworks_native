@@ -209,7 +209,7 @@ class Dumpstate {
         BUGREPORT_INTERACTIVE = android::os::IDumpstate::BUGREPORT_MODE_INTERACTIVE,
         BUGREPORT_REMOTE = android::os::IDumpstate::BUGREPORT_MODE_REMOTE,
         BUGREPORT_WEAR = android::os::IDumpstate::BUGREPORT_MODE_WEAR,
-        BUGREPORT_TELEPHONY = android::os::IDumpstate::BUGREPORT_MODE_TELEPHONY,
+        BUGREPORT_CONNECTIVITY = android::os::IDumpstate::BUGREPORT_MODE_CONNECTIVITY,
         BUGREPORT_WIFI = android::os::IDumpstate::BUGREPORT_MODE_WIFI,
         BUGREPORT_DEFAULT = android::os::IDumpstate::BUGREPORT_MODE_DEFAULT
     };
@@ -399,7 +399,7 @@ class Dumpstate {
         bool is_screenshot_copied = false;
         bool is_remote_mode = false;
         bool show_header_only = false;
-        bool telephony_only = false;
+        bool connectivity_only = false;
         bool wifi_only = false;
         // Trimmed-down version of dumpstate to only include whitelisted logs.
         bool limited_only = false;
