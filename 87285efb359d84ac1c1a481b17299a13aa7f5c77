@@ -16,6 +16,40 @@
       "message": "Solves my problem, no obvious negative effect.",
       "revId": "87285efb359d84ac1c1a481b17299a13aa7f5c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65372069_81aa41de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-01-26T19:26:23Z",
+      "side": 1,
+      "message": "Thanks for contributing to AOSP! I posted a comment inline.",
+      "revId": "87285efb359d84ac1c1a481b17299a13aa7f5c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3695a3_795656b8",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-01-26T19:26:23Z",
+      "side": 1,
+      "message": "I don\u0027t think that we need to store another timestamp here, we can use the mExpectedPresentTime value before we update it as the lastExpectedPresentTime, as it is indeed the last one calculated. Is there a reason why you would cache the expectedVSyncTime instead?",
+      "revId": "87285efb359d84ac1c1a481b17299a13aa7f5c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
