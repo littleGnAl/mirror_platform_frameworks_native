@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db56621c_c112a1a8",
+        "filename": "libs/cputimeinstate/cputimeinstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2021-01-26T01:59:38Z",
+      "side": 1,
+      "message": "Why doesn\u0027t this existing check prevent the underflow by causing initGlobals() to fail? Do the affected emulators not have policy files at all? If that\u0027s the case it could be good to return false on line 101 in the ret \u003d\u003d 0 case as well.",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 23
+      },
+      "revId": "41520bf7773ed3682e75e9d54ff103c73c47fd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e07414e_f915a474",
+        "filename": "libs/cputimeinstate/cputimeinstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2021-01-26T01:59:38Z",
+      "side": 1,
+      "message": "Could this check be moved to before the loop and return {} when maxFreqCount\u003d\u003d0? Since this is really a case of these stats not being supported at all on a device rather than being supported but having no data recorded. (Same goes for the checks added to other functions below as well, I think)",
+      "range": {
+        "startLine": 259,
+        "startChar": 25,
+        "endLine": 259,
+        "endChar": 37
+      },
+      "revId": "41520bf7773ed3682e75e9d54ff103c73c47fd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
