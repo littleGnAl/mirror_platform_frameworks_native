@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "211596bd_8eba9f71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-26T22:25:56Z",
+      "side": 1,
+      "message": "That\u0027s how gerrit does \"mailing lists\" iirc.",
+      "parentUuid": "a1e2b198_6df26128",
+      "revId": "5459da09698f5b2c77c2d7f4944f8253987fff51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "966654d1_a4eb8e25",
