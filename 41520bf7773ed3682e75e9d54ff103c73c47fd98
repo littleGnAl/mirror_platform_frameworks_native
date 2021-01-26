@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c53be5cb_6d089ca1",
+        "filename": "libs/cputimeinstate/cputimeinstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2021-01-26T19:20:54Z",
+      "side": 1,
+      "message": "Yes, on the affected emulators (FVP and QEMU) /sys/devices/system/cpu/cpufreq is an empty directory. It seems like adding the check for 0 would be sufficient to avoid the underflow, so I\u0027ll do that instead.",
+      "parentUuid": "db56621c_c112a1a8",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 23
+      },
+      "revId": "41520bf7773ed3682e75e9d54ff103c73c47fd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e07414e_f915a474",
         "filename": "libs/cputimeinstate/cputimeinstate.cpp",
         "patchSetId": 1
