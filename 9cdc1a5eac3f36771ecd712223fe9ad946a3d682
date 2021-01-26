@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5eb11be_d3cd46de",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-26T01:37:19Z",
+      "side": 1,
+      "message": "why wouldn\u0027t you set this in the constructor instead, if you believe it\u0027s being called often enough to matter?",
+      "revId": "9cdc1a5eac3f36771ecd712223fe9ad946a3d682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58518629_23b31327",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-26T01:37:19Z",
+      "side": 1,
+      "message": "note that this is broken on macOS if you need to build/run there?",
+      "revId": "9cdc1a5eac3f36771ecd712223fe9ad946a3d682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2d7bc02_17a13d6a",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-26T01:37:19Z",
+      "side": 1,
+      "message": "can you guarantee that you don\u0027t get called from weird places involving fork() or clone()? if not, you shouldn\u0027t be doing your own tid caching...",
+      "revId": "9cdc1a5eac3f36771ecd712223fe9ad946a3d682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
