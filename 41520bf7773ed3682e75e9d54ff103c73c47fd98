@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e71962c_0412a388",
+        "filename": "libs/cputimeinstate/cputimeinstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2021-01-26T20:13:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c53be5cb_6d089ca1",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 23
+      },
+      "revId": "41520bf7773ed3682e75e9d54ff103c73c47fd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e07414e_f915a474",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-01-26T01:59:38Z",
       "side": 1,
       "message": "Could this check be moved to before the loop and return {} when maxFreqCount\u003d\u003d0? Since this is really a case of these stats not being supported at all on a device rather than being supported but having no data recorded. (Same goes for the checks added to other functions below as well, I think)",
+      "range": {
+        "startLine": 259,
+        "startChar": 25,
+        "endLine": 259,
+        "endChar": 37
+      },
+      "revId": "41520bf7773ed3682e75e9d54ff103c73c47fd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "497d20cd_8635efb2",
+        "filename": "libs/cputimeinstate/cputimeinstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2021-01-26T20:13:19Z",
+      "side": 1,
+      "message": "Moot",
+      "parentUuid": "2e07414e_f915a474",
       "range": {
         "startLine": 259,
         "startChar": 25,
