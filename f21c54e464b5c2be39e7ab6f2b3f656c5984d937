@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20019d34_3dc1dca1",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-01-26T00:37:08Z",
+      "side": 1,
+      "message": "Moved mm events to post-fs-data to avoid some selinux issues caused by init.insmod.sh. This is ok since late-init triggers post-fs-data which happens before the traced_probes (class late_start) is started.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 15
+      },
+      "revId": "f21c54e464b5c2be39e7ab6f2b3f656c5984d937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
