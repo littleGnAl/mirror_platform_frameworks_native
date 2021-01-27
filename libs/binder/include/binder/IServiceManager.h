@@ -20,6 +20,8 @@
 #include <utils/Vector.h>
 #include <utils/String16.h>
 
+#include <mutex>
+
 namespace android {
 
 // ----------------------------------------------------------------------
@@ -99,6 +101,9 @@ public:
      * Get all instances of a service as declared in the VINTF manifest
      */
     virtual Vector<String16> getDeclaredInstances(const String16& interface) = 0;
+
+    std::mutex a;
+    bool b GUARDED_BY(a);
 };
 
 sp<IServiceManager> defaultServiceManager();

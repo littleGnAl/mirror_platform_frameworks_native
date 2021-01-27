@@ -146,6 +146,7 @@ cc_library {
         "-Wextra",
         "-Wextra-semi",
         "-Werror",
+        "-Wthread-safety",
         "-Wzero-as-null-pointer-constant",
         "-DANDROID_BASE_UNIQUE_FD_DISABLE_IMPLICIT_CONVERSION",
     ],

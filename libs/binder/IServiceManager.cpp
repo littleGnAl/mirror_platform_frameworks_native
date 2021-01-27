@@ -302,9 +302,10 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             return Status::ok();
         }
     public:
-        sp<IBinder> mBinder;
         std::mutex mMutex;
         std::condition_variable mCv;
+        std::string a GUARDED_BY(mMutex);
+        sp<IBinder> mBinder;
     };
 
     // Simple RAII object to ensure a function call immediately before going out of scope
