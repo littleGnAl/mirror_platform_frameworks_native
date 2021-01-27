@@ -81,6 +81,30 @@
       },
       "revId": "5459da09698f5b2c77c2d7f4944f8253987fff51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3feea0c4_5bf12782",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1650665
+      },
+      "writtenOn": "2021-01-27T21:49:04Z",
+      "side": 1,
+      "message": "I thought that was the case, but after reading:\nhttp://shortn/_yfxiw80xmN\nit looks like a cherry pick may not be required.",
+      "parentUuid": "af16469b_63146ac1",
+      "range": {
+        "startLine": 102,
+        "startChar": 60,
+        "endLine": 102,
+        "endChar": 80
+      },
+      "revId": "5459da09698f5b2c77c2d7f4944f8253987fff51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
