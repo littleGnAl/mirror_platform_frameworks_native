@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c6fdb2d_73cdd0b5",
+        "filename": "cmds/dumpstate/tests/dumpstate_smoke_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1448822
+      },
+      "writtenOn": "2021-01-27T11:53:41Z",
+      "side": 1,
+      "message": "Could you add a comment explaining why this should only be checked on non-user builds?",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 41
+      },
+      "revId": "bb088c399519349c7dfc1635a166faa60b7fddab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
