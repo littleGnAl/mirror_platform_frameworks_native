@@ -86,6 +86,24 @@
       "parentUuid": "18277501_50f8d14f",
       "revId": "87285efb359d84ac1c1a481b17299a13aa7f5c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e613fab6_fd12ffe8",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1041495
+      },
+      "writtenOn": "2021-01-28T07:49:55Z",
+      "side": 1,
+      "message": "No, that would break \"PrevFrameMissed\" detection. Unless you no longer want to count delays in *starting* a frame.",
+      "parentUuid": "2e6e190f_275ec84c",
+      "revId": "87285efb359d84ac1c1a481b17299a13aa7f5c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
