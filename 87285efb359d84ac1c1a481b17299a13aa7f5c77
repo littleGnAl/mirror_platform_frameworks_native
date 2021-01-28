@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "518f0408_93f4fbdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-01-28T20:07:59Z",
+      "side": 1,
+      "message": "I\u0027ll merge the CL internally to avoid a merge conflict and then we can merge it to AOSP.",
+      "revId": "87285efb359d84ac1c1a481b17299a13aa7f5c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea3695a3_795656b8",
@@ -102,6 +119,24 @@
       "side": 1,
       "message": "No, that would break \"PrevFrameMissed\" detection. Unless you no longer want to count delays in *starting* a frame.",
       "parentUuid": "2e6e190f_275ec84c",
+      "revId": "87285efb359d84ac1c1a481b17299a13aa7f5c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc85303_0af3f942",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-01-28T20:07:59Z",
+      "side": 1,
+      "message": "Oh yeah that makes sense.",
+      "parentUuid": "e613fab6_fd12ffe8",
       "revId": "87285efb359d84ac1c1a481b17299a13aa7f5c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
