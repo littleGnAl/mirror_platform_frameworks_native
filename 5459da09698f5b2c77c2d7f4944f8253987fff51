@@ -194,6 +194,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c977b7a3_587f60e2",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1650665
+      },
+      "writtenOn": "2021-02-01T20:40:07Z",
+      "side": 1,
+      "message": "This is meant to unregister all services just before shutting down, and it\u0027s what libbinder does in case of dynamic services. It also keeps track of which services failed to unregister (if any).",
+      "parentUuid": "6e751fc9_30337d2f",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 57
+      },
+      "revId": "5459da09698f5b2c77c2d7f4944f8253987fff51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a34abd10_1490636d",
@@ -207,6 +231,30 @@
       "writtenOn": "2021-02-01T20:18:07Z",
       "side": 1,
       "message": "if unregister fails why would reregister work?\n\nDoes this need a new method or can just calling registerService() again just do this?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 65
+      },
+      "revId": "5459da09698f5b2c77c2d7f4944f8253987fff51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac189683_dd33b571",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1650665
+      },
+      "writtenOn": "2021-02-01T20:40:07Z",
+      "side": 1,
+      "message": "We don\u0027t reregister the one that failed (those are still registered), but the ones that were successfully unregistered. As I mentioned in the previous comment, tryUnregister keeps track of what has been unregistered.\nEven in this case, this is the same logic already used in libbinder to shutdown lazy services and it\u0027s exposed here to allow custom actions on shutdown.",
+      "parentUuid": "a34abd10_1490636d",
       "range": {
         "startLine": 140,
         "startChar": 0,
