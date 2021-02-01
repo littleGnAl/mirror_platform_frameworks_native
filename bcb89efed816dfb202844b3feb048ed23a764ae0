@@ -70,6 +70,30 @@
       },
       "revId": "bcb89efed816dfb202844b3feb048ed23a764ae0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b2aa8d_dca88db4",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-02-01T23:32:10Z",
+      "side": 0,
+      "message": "We never generate asserts in AIDL. This has nothing to do with user code. These are just the asserts in this test case that are being caught and turned into a failure. The basic issue is that we have two different test frameworks, gtest and rust. When I switched the driver to gtest instead of rust, I didn\u0027t want to replace all the existing asserts in the test on the rust side so I caught the unwinds instead.\n\nI\u0027ll replace the assert macros in this test with a macro that prints the locations and returns failure instead.",
+      "parentUuid": "2f59b9a8_847dc93e",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 5
+      },
+      "revId": "bcb89efed816dfb202844b3feb048ed23a764ae0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
