@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2adbc99c_190b4171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-01T22:54:52Z",
+      "side": 1,
+      "message": "Steven, as discussed here is a proposed implementation for the generic / template type reads and writes for Parcel.  Please let me know what you think, thanks!",
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
