@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df4edb8_e77ebc84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-01T20:52:37Z",
+      "side": 1,
+      "message": "presubmit breakage is b/178577888 - may bypass",
+      "revId": "af845fd8081370c7d470791f319ca9c83ab82504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
