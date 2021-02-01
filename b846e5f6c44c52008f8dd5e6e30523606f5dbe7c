@@ -16,6 +16,29 @@
       "message": "Some code to test the speed of bulk parceling.",
       "revId": "b846e5f6c44c52008f8dd5e6e30523606f5dbe7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af3a84e_e411f382",
+        "filename": "libs/binder/tests/binderParcelBenchmark.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-01T23:29:54Z",
+      "side": 1,
+      "message": "An extra copy should definitely never have been happening before - even if it was iterating over these fields (was it?). So what\u0027s the idea of doing it here? Is it because when we receive binder transactions, we are making an allocation, so this approximates that?",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "b846e5f6c44c52008f8dd5e6e30523606f5dbe7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
