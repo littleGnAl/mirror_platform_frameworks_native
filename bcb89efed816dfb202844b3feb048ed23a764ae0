@@ -46,6 +46,30 @@
       },
       "revId": "bcb89efed816dfb202844b3feb048ed23a764ae0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f59b9a8_847dc93e",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-02-01T22:59:45Z",
+      "side": 0,
+      "message": "There is - actual `assert!` or `assert_eq!` which may occur in the generated AIDL or in some of the binder code will trigger a `panic!`. This will not currently be propagated as an error code, as the server process will be taken down. This code would have converted asserts triggered in the binder server into error codes. Unfortunately, this would also have been true of asserts in *user* code, which likely should have been taking the process down before too.\n\nThat bug is intended to track the replacement of those functions in the binder code or AIDL code with ones which return early with an error rather than panicking.",
+      "parentUuid": "62f2326d_3762f0fa",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 5
+      },
+      "revId": "bcb89efed816dfb202844b3feb048ed23a764ae0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
