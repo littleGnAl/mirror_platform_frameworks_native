@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53cd228a_3900d4bb",
+        "filename": "libs/binder/tests/binderParcelBenchmark.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T01:34:51Z",
+      "side": 1,
+      "message": "nit: you could also use a pointer to a Parcel method, for these, to avoid needing templating",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "b846e5f6c44c52008f8dd5e6e30523606f5dbe7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4af3a84e_e411f382",
         "filename": "libs/binder/tests/binderParcelBenchmark.cpp",
         "patchSetId": 1
@@ -55,6 +78,30 @@
       "side": 1,
       "message": "Yes, you are right - this is not a general concern. This is for creating a std::vector argument to deliver through the AIDL interface (if the data wasn\u0027t in vector format already).  Of some concern for our internal media logging, but is not a general concern.\n\nAs you point out, perhaps the vector allocation on the receiving Binder transaction is more general to track.",
       "parentUuid": "4af3a84e_e411f382",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "b846e5f6c44c52008f8dd5e6e30523606f5dbe7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "787b1103_e6f33016",
+        "filename": "libs/binder/tests/binderParcelBenchmark.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T01:34:51Z",
+      "side": 1,
+      "message": "yeah - that would be binderThroughputTest, but it\u0027s a bit out of date/messy and tests limited things.\n\nMaybe we could avoid the extra allocation case here? I think in general, people should be using std::vector if they are going to call these parceling methods. If they aren\u0027t doing this, and they can\u0027t convert to use this type, we should investigate some other strategy before making allocations like this",
+      "parentUuid": "5a5345dd_cf7f88b5",
       "range": {
         "startLine": 78,
         "startChar": 30,
