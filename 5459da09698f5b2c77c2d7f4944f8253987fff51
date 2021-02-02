@@ -171,6 +171,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caf1fa33_1cd0214c",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1650665
+      },
+      "writtenOn": "2021-02-02T03:01:08Z",
+      "side": 1,
+      "message": "Similar, but not exactly the same.\nSetting force persist to false will also initiate a shutdown attempt (if all services have no clients).\nI think this API should have been exposed along with all the other that deal with lazy services. I believe this was somehow missed since the corresponding (non stable AIDL) method was added to solve a specific problem that surfaced after the bulk of the code was committed.",
+      "parentUuid": "8c297272_a4b156c2",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 45
+      },
+      "revId": "5459da09698f5b2c77c2d7f4944f8253987fff51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e751fc9_30337d2f",
