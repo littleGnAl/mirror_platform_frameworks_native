@@ -16,6 +16,276 @@
       "message": "Steven, as discussed here is a proposed implementation for the generic / template type reads and writes for Parcel.  Please let me know what you think, thanks!",
       "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8eda6b4_b606863f",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "IInterface (will only be derived from binder in the local case)",
+      "range": {
+        "startLine": 392,
+        "startChar": 36,
+        "endLine": 392,
+        "endChar": 43
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0490c655_a8d09417",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "remove (implicit here)",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 11
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19dd2e83_d29413fd",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "this should be considered an implementation detail (though I\u0027m not sure if we could ever actually change it). Do you still think we should document it explicitly here?",
+      "range": {
+        "startLine": 610,
+        "startChar": 0,
+        "endLine": 611,
+        "endChar": 64
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7523b78b_4faf942d",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be exposed now (writeCharVector is in .cpp now, and so prebuilts should even freeze it. Fixing this should only be changes in frameworks.jar/libbinder/libbinder_ndk).",
+      "range": {
+        "startLine": 643,
+        "startChar": 0,
+        "endLine": 644,
+        "endChar": 52
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6450289_99a01db1",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "woah! I never noticed we have shared_ptr before. :/\n\nAll the std::unique_ptr functions are marked as deprecated, w/ the idea to eventually remove them. Do you think this usecase is that important? If someone has a unique_ptr/shared_ptr to a vector, they are already costing an extra allocation, and there are alternatives to make std::optional work w/ shared ownership (aside - std::optional_view in the standard library would probably be a bit much).\n\nI was thinking we could recommend against shared_ptr/unique_ptr and avoid supporting it in the new APIs? AIDL will likely never support this (it\u0027s too messy to come up with a way to tell AIDL to select a type for a specific client in a specific backend).",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 671,
+        "endChar": 80
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a24dfc4_ca968c08",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "yeah nice to have this w/ recursive decent (now we just need SDK/libbinder_ndk/libbinder_rs support)",
+      "range": {
+        "startLine": 692,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 63
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719b5c43_1534257b",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "nit: comments like this prone to being out of date if it is every supported?",
+      "range": {
+        "startLine": 707,
+        "startChar": 42,
+        "endLine": 707,
+        "endChar": 73
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f55fa9f_1d6ac6e8",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "can we make these private or move them to, say, libutils TypeHelpers.h?\n\nI know of at least one other place that uses this stuff which could be combined:\nhttp://cs/android/system/tools/aidl/aidl_language.h?l\u003d56\u0026rcl\u003da9ec409eb60019ed9feca16955248079600ef15f",
+      "range": {
+        "startLine": 721,
+        "startChar": 0,
+        "endLine": 739,
+        "endChar": 59
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54bb831_ae0abd31",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "can we make this private?",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 753,
+        "endChar": 96
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa400b96_e5059e84",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "can we use overloading here instead? (I think in most cases, it would help readability/avoid some nesting, though in a couple of cases, e.g. for handling shared_ptr+unique_ptr it might lead to extra code, still see extra comments)",
+      "range": {
+        "startLine": 812,
+        "startChar": 0,
+        "endLine": 814,
+        "endChar": 62
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80fb21c_b5066d63",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "What does this do to the binary sizes on disk, out of curiosity?\n\nThe other flip side is that by moving these to the headers, callers of these methods, we have the wire protocol frozen (I believe this is the motivation of making all the parcel read/write vector methods in .cpp before, so that they could be changed in the future).\n\nWhat all are we exposing in the header here/should we make these functions private to avoid exposing more?",
+      "range": {
+        "startLine": 875,
+        "startChar": 0,
+        "endLine": 875,
+        "endChar": 96
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65ea9ed7_6b7702f8",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T00:34:43Z",
+      "side": 1,
+      "message": "might as well add std::no_throw (with null check), even if it wasn\u0027t there before",
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
