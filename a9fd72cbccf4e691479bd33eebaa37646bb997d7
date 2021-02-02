@@ -173,6 +173,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "209ac509_46b865cb",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-02-02T18:31:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e74bf112_07f98046",
+      "revId": "a9fd72cbccf4e691479bd33eebaa37646bb997d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cb56d7e_d985c75b",
@@ -210,6 +228,30 @@
       "side": 1,
       "message": "Done!",
       "parentUuid": "1cb56d7e_d985c75b",
+      "range": {
+        "startLine": 1493,
+        "startChar": 9,
+        "endLine": 1493,
+        "endChar": 13
+      },
+      "revId": "a9fd72cbccf4e691479bd33eebaa37646bb997d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1058d9_62209d0c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1493,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-02-02T18:31:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea3d27d_78773ba1",
       "range": {
         "startLine": 1493,
         "startChar": 9,
