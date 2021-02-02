@@ -16,6 +16,29 @@
       "message": "Update feature files according to the comment on aosp/1552315",
       "revId": "fe575b4b944e99410be61390e0abbdb07e72469a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d255d0_5422eafe",
+        "filename": "data/etc/android.hardware.keystore.limited_use_key.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-02-02T15:32:19Z",
+      "side": 1,
+      "message": "I\u0027d recommend only listing one feature per file, and having the OEM clearly include both files when they want to support both features.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "fe575b4b944e99410be61390e0abbdb07e72469a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
