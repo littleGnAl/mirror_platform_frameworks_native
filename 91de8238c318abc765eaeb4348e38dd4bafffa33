@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6effde7_c0832cea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-02T23:15:28Z",
+      "side": 1,
+      "message": "running presubmit actually b/c locally lshal is broken for me:\nCANNOT LINK EXECUTABLE \"lshal\": \"/system/lib64/libbinderdebug.so\" has bad ELF magic: 18000000\n\nNeed to sync to see if this is just an old issue.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "91de8238c318abc765eaeb4348e38dd4bafffa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
