@@ -16,6 +16,24 @@
       "message": "Need anything more from me here?\n\n(and whoops, I removed your patchset annotation by accident...)",
       "revId": "69946c08db07200ceed063bb02263ca902d1fb12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f1d9a7_a1ed930a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-02-02T00:49:39Z",
+      "side": 1,
+      "message": "No, I\u0027ll follow up on merging this change",
+      "parentUuid": "0b1866f1_801ad587",
+      "revId": "69946c08db07200ceed063bb02263ca902d1fb12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
