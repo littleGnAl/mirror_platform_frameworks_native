@@ -39,6 +39,30 @@
       },
       "revId": "fe575b4b944e99410be61390e0abbdb07e72469a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e84432_ee7a007e",
+        "filename": "data/etc/android.hardware.keystore.limited_use_key.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1801328
+      },
+      "writtenOn": "2021-02-02T15:42:12Z",
+      "side": 1,
+      "message": "Got it, removed single use key feature now, thanks 😄",
+      "parentUuid": "f6d255d0_5422eafe",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "fe575b4b944e99410be61390e0abbdb07e72469a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
