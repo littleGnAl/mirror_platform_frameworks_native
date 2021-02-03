@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d617da_94b0c6cb",
+        "filename": "libs/binder/tests/binderParcelBenchmark.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-03T00:26:32Z",
+      "side": 1,
+      "message": "Ack. i kept this as a template for parallel form for the writeData / readData tests (see subsequent CL).",
+      "parentUuid": "53cd228a_3900d4bb",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "b846e5f6c44c52008f8dd5e6e30523606f5dbe7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4af3a84e_e411f382",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "yeah - that would be binderThroughputTest, but it\u0027s a bit out of date/messy and tests limited things.\n\nMaybe we could avoid the extra allocation case here? I think in general, people should be using std::vector if they are going to call these parceling methods. If they aren\u0027t doing this, and they can\u0027t convert to use this type, we should investigate some other strategy before making allocations like this",
       "parentUuid": "5a5345dd_cf7f88b5",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "b846e5f6c44c52008f8dd5e6e30523606f5dbe7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f06cf58_25f734cc",
+        "filename": "libs/binder/tests/binderParcelBenchmark.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-03T00:26:32Z",
+      "side": 1,
+      "message": "Sounds good, I\u0027ll remove the benchmark.",
+      "parentUuid": "787b1103_e6f33016",
       "range": {
         "startLine": 78,
         "startChar": 30,
