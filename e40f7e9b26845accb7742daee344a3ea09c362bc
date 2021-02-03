@@ -598,6 +598,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55954590_cda58e40",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-03T00:52:46Z",
+      "side": 1,
+      "message": "1) As for binary size cost, the libbinder.so goes down slightly ~12KB.\n\nBefore:\n$ adb shell ls -l /system/lib/libbinder.so\n-rw-r--r-- 1 root root 489160 2021-02-02 21:43 /system/lib/libbinder.so\n$ adb shell ls -l /system/lib64/libbinder.so\n-rw-r--r-- 1 root root 701672 2021-02-02 21:44 /system/lib64/libbinder.so\n\nAfter (with templates):\n$ adb shell ls -l /system/lib/libbinder.so\n-rw-r--r-- 1 root root 476312 2021-02-03 00:07 /system/lib/libbinder.so\n$ adb shell ls -l /system/lib64/libbinder.so\n-rw-r--r-- 1 root root 689608 2021-02-03 00:07 /system/lib64/libbinder.so\n\n\n2) The executable size increases very slightly maybe on average 30 bytes.\n\nBefore:\n$ adb shell ls -lr /data/nativetest/binder*\n-rwxrwxrwx 1 root root 23684 2021-02-02 23:18 binderThroughputTest\n-rwxrwxrwx 1 root root 231704 2021-02-02 23:18 binderTextOutputTest\n-rwxrwxrwx 1 root root 206392 2021-02-02 23:18 binderStabilityTest\n-rwxrwxrwx 1 root root 225708 2021-02-02 23:18 binderSafeInterfaceTest\n-rwxrwxrwx 1 root root 189088 2021-02-02 23:18 binderParcelTest\n-rwxrwxrwx 1 root root 244128 2021-02-02 23:18 binderLibTest_IPC_32\n-rwxrwxrwx 1 root root 244816 2021-02-02 23:18 binderLibTest\n-rwxrwxrwx 1 root root 176520 2021-01-31 20:15 binderDriverInterfaceTest_IPC_32\n-rwxrwxrwx 1 root root 177248 2021-01-31 20:15 binderDriverInterfaceTest\n-rwxrwxrwx 1 root root 172188 2021-02-02 23:18 binderClearBufTest\n-rwxrwxrwx 1 root root 170404 2021-02-02 23:18 binderAllocationLimits\n\nAfter (with templates):\n$ adb shell ls -lr /data/nativetest/binder*\n-rwxrwxrwx 1 root root 23684 2021-02-03 00:07 binderThroughputTest\n-rwxrwxrwx 1 root root 231684 2021-02-03 00:07 binderTextOutputTest\n-rwxrwxrwx 1 root root 206424 2021-02-03 00:07 binderStabilityTest\n-rwxrwxrwx 1 root root 225848 2021-02-03 00:07 binderSafeInterfaceTest\n-rwxrwxrwx 1 root root 199512 2021-02-03 00:07 binderParcelTest (** Added new tests)\n-rwxrwxrwx 1 root root 244144 2021-02-03 00:07 binderLibTest_IPC_32\n-rwxrwxrwx 1 root root 244808 2021-02-03 00:07 binderLibTest\n-rwxrwxrwx 1 root root 176520 2021-01-31 20:15 binderDriverInterfaceTest_IPC_32\n-rwxrwxrwx 1 root root 177248 2021-01-31 20:15 binderDriverInterfaceTest\n-rwxrwxrwx 1 root root 172184 2021-02-03 00:07 binderClearBufTest\n-rwxrwxrwx 1 root root 170468 2021-02-03 00:07 binderAllocationLimits",
+      "parentUuid": "d067a2a7_c3086ce4",
+      "range": {
+        "startLine": 875,
+        "startChar": 0,
+        "endLine": 875,
+        "endChar": 96
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65ea9ed7_6b7702f8",
