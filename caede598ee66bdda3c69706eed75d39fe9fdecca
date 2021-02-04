@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f211c2c0_5d23b3d2",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-04T20:52:40Z",
+      "side": 1,
+      "message": "also - we can remove these on the internal branches. Please follow-up in the S development branch, thanks!",
+      "range": {
+        "startLine": 146,
+        "startChar": 36,
+        "endLine": 150,
+        "endChar": 41
+      },
+      "revId": "caede598ee66bdda3c69706eed75d39fe9fdecca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
