@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a60113_efa7402f",
+        "filename": "libs/gui/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2021-02-04T20:52:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b799c48_53ec2f1e",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 7
+      },
+      "revId": "bd109b174e84d45e110e9fea7ecf27bccc3c5119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4397ac5d_a732b605",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-04T20:48:49Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 7
+      },
+      "revId": "bd109b174e84d45e110e9fea7ecf27bccc3c5119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e4d2e95_9a97668c",
+        "filename": "services/surfaceflinger/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2021-02-04T20:52:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4397ac5d_a732b605",
       "range": {
         "startLine": 2,
         "startChar": 0,
