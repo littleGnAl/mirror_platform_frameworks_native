@@ -117,6 +117,30 @@
       },
       "revId": "640e72fc1b88c0649cebbb0437d6fda3f881850c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1982c2_e37c8b1b",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-02-04T03:00:41Z",
+      "side": 1,
+      "message": "Moved the new header to include_cpp instead of brand-new include_platform_shared.",
+      "parentUuid": "db6e10e1_cadb92ae",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 1
+      },
+      "revId": "640e72fc1b88c0649cebbb0437d6fda3f881850c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
