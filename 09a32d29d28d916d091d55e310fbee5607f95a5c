@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e2344e_c46c0054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1246679
+      },
+      "writtenOn": "2021-02-04T00:33:47Z",
+      "side": 1,
+      "message": "lgtm, so can +2. strange, I don\u0027t have BCO on aosp",
+      "revId": "09a32d29d28d916d091d55e310fbee5607f95a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
