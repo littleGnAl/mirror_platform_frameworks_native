@@ -34,6 +34,24 @@
       "parentUuid": "e264adc7_807bd2fb",
       "revId": "84f3cccb35825f1588aa263b36cafd26434df9a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e610f22_0049781c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-04T00:31:51Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/native/+/1573920 is the cherrypick if you prefer that.\n\n(we can remove all the #defines of __ANDROID_API__ when all the dust has settled, but for now i\u0027m trying to get AOSP master, sc-dev and internal master all in sync.)",
+      "parentUuid": "b7623937_0da6ce00",
+      "revId": "84f3cccb35825f1588aa263b36cafd26434df9a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
