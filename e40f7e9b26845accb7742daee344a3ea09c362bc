@@ -225,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45aaa5e5_28e5e7dc",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-04T00:41:33Z",
+      "side": 1,
+      "message": "\u003e in case someone tries to manually write data in the Parcel.\n\nwe want to encourage people to never do this, at least in general, for security reasons. It\u0027s quite errorprone",
+      "parentUuid": "14a342d2_f88eef13",
+      "range": {
+        "startLine": 610,
+        "startChar": 0,
+        "endLine": 611,
+        "endChar": 64
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7523b78b_4faf942d",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 1
@@ -307,6 +331,30 @@
       "side": 1,
       "message": "For the client side: unique_ptr and shared_ptr would be faster for large or complex objects if the data is already stored that way because one can use them as-is without another copy. It is common to have larger objects stored that way. For smaller objects or if you needed to copy in, std::optional is faster because one saves a malloc / free and often this could be theoretically allocated on the stack.\n\nFor the server side, I think it is a wash IF the object can be moved from the std::optional to a local variable or another unique/shared ptr. \n\nTBH, I think most folks don\u0027t use std::optional, preferring a unique_ptr or shared_ptr.\n\nAs for AIDL, it would be possible to add annotations such as @UniquePointer, @SharedPointer, which would be used only for C++ back end.  It may not be worth the complexity now, but could be revisited later.\n\nLet me know if you want to recommend against this here.",
       "parentUuid": "e6450289_99a01db1",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 671,
+        "endChar": 80
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "211ff5db_71669d65",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-04T00:41:33Z",
+      "side": 1,
+      "message": "\u003e if the data is already stored that way\n\nYeah - in order to use AIDL, this has to be changed. I don\u0027t think it should be too bad in general (for shared_ptr it could be a little more complicated).\n\n\u003e TBH, I think most folks don\u0027t use std::optional, preferring a unique_ptr or shared_ptr.\n\nA big reason is because std::optional is newer. In many cases, it also costs an extra heap allocation.\n\n\u003e  it would be possible to add annotations such as @UniquePointer, @SharedPointer, which would be used only for C++ back end.\n\nThis should really be a client-specific setting, not an interface-specific setting.",
+      "parentUuid": "c2e83c67_6603323e",
       "range": {
         "startLine": 669,
         "startChar": 0,
@@ -553,6 +601,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "270dad60_f5712394",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-04T00:41:33Z",
+      "side": 1,
+      "message": "Yes, please do so. I think it\u0027ll make the code more readable (but I trust your judgement). This is part of the reason I was hoping we could drop unique_ptr/shared_ptr.",
+      "parentUuid": "38bdeb03_b6a0c39c",
+      "range": {
+        "startLine": 812,
+        "startChar": 0,
+        "endLine": 814,
+        "endChar": 62
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d80fb21c_b5066d63",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 1
@@ -612,6 +684,30 @@
       "side": 1,
       "message": "1) As for binary size cost, the libbinder.so goes down slightly ~12KB.\n\nBefore:\n$ adb shell ls -l /system/lib/libbinder.so\n-rw-r--r-- 1 root root 489160 2021-02-02 21:43 /system/lib/libbinder.so\n$ adb shell ls -l /system/lib64/libbinder.so\n-rw-r--r-- 1 root root 701672 2021-02-02 21:44 /system/lib64/libbinder.so\n\nAfter (with templates):\n$ adb shell ls -l /system/lib/libbinder.so\n-rw-r--r-- 1 root root 476312 2021-02-03 00:07 /system/lib/libbinder.so\n$ adb shell ls -l /system/lib64/libbinder.so\n-rw-r--r-- 1 root root 689608 2021-02-03 00:07 /system/lib64/libbinder.so\n\n\n2) The executable size increases very slightly maybe on average 30 bytes.\n\nBefore:\n$ adb shell ls -lr /data/nativetest/binder*\n-rwxrwxrwx 1 root root 23684 2021-02-02 23:18 binderThroughputTest\n-rwxrwxrwx 1 root root 231704 2021-02-02 23:18 binderTextOutputTest\n-rwxrwxrwx 1 root root 206392 2021-02-02 23:18 binderStabilityTest\n-rwxrwxrwx 1 root root 225708 2021-02-02 23:18 binderSafeInterfaceTest\n-rwxrwxrwx 1 root root 189088 2021-02-02 23:18 binderParcelTest\n-rwxrwxrwx 1 root root 244128 2021-02-02 23:18 binderLibTest_IPC_32\n-rwxrwxrwx 1 root root 244816 2021-02-02 23:18 binderLibTest\n-rwxrwxrwx 1 root root 176520 2021-01-31 20:15 binderDriverInterfaceTest_IPC_32\n-rwxrwxrwx 1 root root 177248 2021-01-31 20:15 binderDriverInterfaceTest\n-rwxrwxrwx 1 root root 172188 2021-02-02 23:18 binderClearBufTest\n-rwxrwxrwx 1 root root 170404 2021-02-02 23:18 binderAllocationLimits\n\nAfter (with templates):\n$ adb shell ls -lr /data/nativetest/binder*\n-rwxrwxrwx 1 root root 23684 2021-02-03 00:07 binderThroughputTest\n-rwxrwxrwx 1 root root 231684 2021-02-03 00:07 binderTextOutputTest\n-rwxrwxrwx 1 root root 206424 2021-02-03 00:07 binderStabilityTest\n-rwxrwxrwx 1 root root 225848 2021-02-03 00:07 binderSafeInterfaceTest\n-rwxrwxrwx 1 root root 199512 2021-02-03 00:07 binderParcelTest (** Added new tests)\n-rwxrwxrwx 1 root root 244144 2021-02-03 00:07 binderLibTest_IPC_32\n-rwxrwxrwx 1 root root 244808 2021-02-03 00:07 binderLibTest\n-rwxrwxrwx 1 root root 176520 2021-01-31 20:15 binderDriverInterfaceTest_IPC_32\n-rwxrwxrwx 1 root root 177248 2021-01-31 20:15 binderDriverInterfaceTest\n-rwxrwxrwx 1 root root 172184 2021-02-03 00:07 binderClearBufTest\n-rwxrwxrwx 1 root root 170468 2021-02-03 00:07 binderAllocationLimits",
       "parentUuid": "d067a2a7_c3086ce4",
+      "range": {
+        "startLine": 875,
+        "startChar": 0,
+        "endLine": 875,
+        "endChar": 96
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf56eb8_7640cd14",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-04T00:41:33Z",
+      "side": 1,
+      "message": "nice!",
+      "parentUuid": "55954590_cda58e40",
       "range": {
         "startLine": 875,
         "startChar": 0,
