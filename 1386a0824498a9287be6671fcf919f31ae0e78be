@@ -16,6 +16,24 @@
       "message": "these should be on libbinder_headers above, I think. Otherwise there could be some broken compiles (if not now, in the future)",
       "revId": "1386a0824498a9287be6671fcf919f31ae0e78be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c6010b_0545a137",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-02-04T02:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2c6d35_48eaa097",
+      "revId": "1386a0824498a9287be6671fcf919f31ae0e78be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
