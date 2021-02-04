@@ -162,10 +162,12 @@ cc_library {
     ],
 
     header_libs: [
+        "libbinder_headers_platform_shared",
         "libbinder_headers",
     ],
 
     export_header_lib_headers: [
+        "libbinder_headers_platform_shared",
         "libbinder_headers",
     ],
 
