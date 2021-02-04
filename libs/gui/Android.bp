@@ -11,6 +11,14 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+package {
+// http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // the below license kinds from "frameworks_native_license":
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
 cc_library_headers {
     name: "libgui_headers",
     vendor_available: true,
