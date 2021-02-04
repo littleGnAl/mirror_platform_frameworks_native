@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25795208_a0e7e644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-04T17:16:03Z",
+      "side": 1,
+      "message": "I don\u0027t see any problem with this, but I don\u0027t know installd very well so leaving +2 to Calin.",
+      "revId": "dc413663092513d847547f07ea76a06b38ce6af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
