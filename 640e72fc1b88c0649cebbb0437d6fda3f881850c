@@ -93,6 +93,30 @@
       },
       "revId": "640e72fc1b88c0649cebbb0437d6fda3f881850c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6e10e1_cadb92ae",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-04T02:43:08Z",
+      "side": 1,
+      "message": "Yeah - I think we should start doing more things like that as well. Not everything is relevant necessarily (parcel/binder stuff), but I don\u0027t think it hurts.",
+      "parentUuid": "82961bf3_123f3953",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 1
+      },
+      "revId": "640e72fc1b88c0649cebbb0437d6fda3f881850c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
