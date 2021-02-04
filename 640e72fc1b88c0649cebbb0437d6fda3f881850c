@@ -22,6 +22,29 @@
       },
       "revId": "640e72fc1b88c0649cebbb0437d6fda3f881850c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3d6f1b_05a608d1",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-04T02:14:32Z",
+      "side": 1,
+      "message": "also - I think these should belong in the same category of include_cpp (so development/build/sdk.atree would need to be updated)\n\nFor this reason, I wonder if it would make sense to put these headers in include_cpp and export all of those headers from libbinder",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 1
+      },
+      "revId": "640e72fc1b88c0649cebbb0437d6fda3f881850c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
