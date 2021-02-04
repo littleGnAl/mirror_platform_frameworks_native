@@ -69,6 +69,30 @@
       },
       "revId": "640e72fc1b88c0649cebbb0437d6fda3f881850c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82961bf3_123f3953",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-02-04T02:28:01Z",
+      "side": 1,
+      "message": "Is every header in include_cpp relevant to libbinder clients?\n\nbtw, I found that enum_range is duplicated in both places(include/binder/Enum.h, ndk/include_cpp/android/binder_enum.h). We can probably dedup it as well.",
+      "parentUuid": "9b3d6f1b_05a608d1",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 1
+      },
+      "revId": "640e72fc1b88c0649cebbb0437d6fda3f881850c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
