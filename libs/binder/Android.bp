@@ -163,10 +163,12 @@ cc_library {
 
     header_libs: [
         "libbinder_headers",
+        "libbinder_headers_platform_shared",
     ],
 
     export_header_lib_headers: [
         "libbinder_headers",
+        "libbinder_headers_platform_shared",
     ],
 
     clang: true,

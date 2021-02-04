@@ -44,6 +44,7 @@ cc_library {
         "include_cpp",
         "include_ndk",
         "include_platform",
+        "include_platform_shared",
     ],
 
     cflags: [
@@ -129,6 +130,31 @@ cc_library {
     ],
 }
 
+cc_library_headers {
+    name: "libbinder_headers_platform_shared",
+    export_include_dirs: ["include_platform_shared"],
+    vendor_available: true,
+    host_supported: true,
+    // TODO(b/153609531): remove when no longer needed.
+    native_bridge_supported: true,
+    target: {
+        darwin: {
+            enabled: false,
+        },
+    },
+    min_sdk_version: "29",
+}
+
+ndk_headers {
+    name: "libbinder_headers_platform_shared_ndk",
+    from: "include_platform_shared/android",
+    to: "android",
+    srcs: [
+        "include_platform_shared/android/*.h",
+    ],
+    license: "NOTICE",
+}
+
 ndk_headers {
     name: "libbinder_ndk_headers",
     from: "include_ndk/android",
@@ -163,5 +189,6 @@ llndk_library {
         "include_cpp",
         "include_ndk",
         "include_platform",
+        "include_platform_shared",
     ],
 }
