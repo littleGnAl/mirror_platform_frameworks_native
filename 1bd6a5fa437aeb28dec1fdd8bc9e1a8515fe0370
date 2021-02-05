@@ -16,6 +16,144 @@
       "message": "Hi Reviewers, this has been pending review for two weeks. Could you please take a look?",
       "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a1f556_b195ae17",
+        "filename": "services/inputflinger/tests/fuzzers/CursorInputFuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-02-05T05:36:31Z",
+      "side": 1,
+      "message": "nit: only capture needed. [\u0026fuzzer]\nSame for other instance below.",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703cd347_ca802a00",
+        "filename": "services/inputflinger/tests/fuzzers/FuzzContainer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-02-05T05:36:31Z",
+      "side": 1,
+      "message": "nit: mEventId",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fbac405_a8865dd4",
+        "filename": "services/inputflinger/tests/fuzzers/FuzzContainer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-02-05T05:36:31Z",
+      "side": 1,
+      "message": "nit:  add parameter name in comment: 16 /* ??? */",
+      "range": {
+        "startLine": 40,
+        "startChar": 64,
+        "endLine": 40,
+        "endChar": 66
+      },
+      "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a43613_cbb7aaa1",
+        "filename": "services/inputflinger/tests/fuzzers/FuzzContainer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-02-05T05:36:31Z",
+      "side": 1,
+      "message": "nit: Add parameter name in /* */",
+      "range": {
+        "startLine": 42,
+        "startChar": 64,
+        "endLine": 42,
+        "endChar": 68
+      },
+      "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5f5cb8_31d35e81",
+        "filename": "services/inputflinger/tests/fuzzers/KeyboardInputFuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-02-05T05:36:31Z",
+      "side": 1,
+      "message": "nit: This can be unique_ptr, and use std::move() to move to FuzzContainer().",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd6bd4b_a8eee90a",
+        "filename": "services/inputflinger/tests/fuzzers/SwitchInputFuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-02-05T05:36:31Z",
+      "side": 1,
+      "message": "What if remianing_bytes() went down to 0 at here?",
+      "range": {
+        "startLine": 41,
+        "startChar": 38,
+        "endLine": 41,
+        "endChar": 70
+      },
+      "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
