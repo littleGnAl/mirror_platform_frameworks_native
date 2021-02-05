@@ -135,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b70259f0_05d6f931",
+        "filename": "services/inputflinger/tests/fuzzers/FuzzContainer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-02-05T21:04:35Z",
+      "side": 1,
+      "message": "The first occurrence should be fine.",
+      "parentUuid": "16138799_8faa985a",
+      "range": {
+        "startLine": 40,
+        "startChar": 64,
+        "endLine": 40,
+        "endChar": 66
+      },
+      "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18a43613_cbb7aaa1",
@@ -218,6 +242,30 @@
       "side": 1,
       "message": "If FuzzedDataProvider runs out of bytes in its buffer at any point, it will return \u00270\u0027 values on all followup calls. InRange functions will return the minimum value specified, and string functions will return empty strings.",
       "parentUuid": "dcd6bd4b_a8eee90a",
+      "range": {
+        "startLine": 41,
+        "startChar": 38,
+        "endLine": 41,
+        "endChar": 70
+      },
+      "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b83dfcc_53b6acc3",
+        "filename": "services/inputflinger/tests/fuzzers/SwitchInputFuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-02-05T21:04:35Z",
+      "side": 1,
+      "message": "Got it, as long as it won\u0027t throw error should be fine.",
+      "parentUuid": "0d038e96_aeccef0e",
       "range": {
         "startLine": 41,
         "startChar": 38,
