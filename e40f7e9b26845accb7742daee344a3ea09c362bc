@@ -247,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "549586b1_23150359",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-05T19:52:17Z",
+      "side": 1,
+      "message": "true, manually doing anything with Parcel i think is discouraged by difficulty.",
+      "parentUuid": "45aaa5e5_28e5e7dc",
+      "range": {
+        "startLine": 610,
+        "startChar": 0,
+        "endLine": 611,
+        "endChar": 64
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7523b78b_4faf942d",
@@ -355,6 +379,30 @@
       "side": 1,
       "message": "\u003e if the data is already stored that way\n\nYeah - in order to use AIDL, this has to be changed. I don\u0027t think it should be too bad in general (for shared_ptr it could be a little more complicated).\n\n\u003e TBH, I think most folks don\u0027t use std::optional, preferring a unique_ptr or shared_ptr.\n\nA big reason is because std::optional is newer. In many cases, it also costs an extra heap allocation.\n\n\u003e  it would be possible to add annotations such as @UniquePointer, @SharedPointer, which would be used only for C++ back end.\n\nThis should really be a client-specific setting, not an interface-specific setting.",
       "parentUuid": "c2e83c67_6603323e",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 671,
+        "endChar": 80
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bbb94d3_8434fb31",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-05T19:52:17Z",
+      "side": 1,
+      "message": "Yeah, shared_ptr gives the ownership angle missing from optional.\n\nstd::optional\u003cT\u003e is like std::variant\u003cstd::monostate, T\u003e in size and behavior. The default implementation is to put the object T as a member variable value.\n\nunique_ptr is a bit more flexible than optional dealing with classes which aren\u0027t moveable, e.g. classes containing mutexes.  In fact, one can put the mutex member of a class into a unique_ptr to make the owning class moveable, etc.",
+      "parentUuid": "211ff5db_71669d65",
       "range": {
         "startLine": 669,
         "startChar": 0,
@@ -613,6 +661,30 @@
       "side": 1,
       "message": "Yes, please do so. I think it\u0027ll make the code more readable (but I trust your judgement). This is part of the reason I was hoping we could drop unique_ptr/shared_ptr.",
       "parentUuid": "38bdeb03_b6a0c39c",
+      "range": {
+        "startLine": 812,
+        "startChar": 0,
+        "endLine": 814,
+        "endChar": 62
+      },
+      "revId": "e40f7e9b26845accb7742daee344a3ea09c362bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea6bdd2_e45895f3",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-05T19:52:17Z",
+      "side": 1,
+      "message": "In this CL, I went with private helper functions to break up this large method. Please let me know what you think, thanks!",
+      "parentUuid": "270dad60_f5712394",
       "range": {
         "startLine": 812,
         "startChar": 0,
