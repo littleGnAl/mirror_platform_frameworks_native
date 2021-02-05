@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "942e1d5e_54b9b4dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-05T19:54:55Z",
+      "side": 1,
+      "message": "Here\u0027s an alternative CL which uses template overloading.  I uploaded this as a different approach to https://android-review.googlesource.com/c/platform/frameworks/native/+/1564604, but probably isn\u0027t as readable.",
+      "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
