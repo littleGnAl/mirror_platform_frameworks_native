@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cad6912c_a1425c39",
+        "filename": "services/inputflinger/tests/fuzzers/FuzzContainer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-02-05T17:42:02Z",
+      "side": 1,
+      "message": "Is it preferred that this change is made on all instances of FuzzedDataProvider functions, or only their first occurrence in a file?",
+      "parentUuid": "2fbac405_a8865dd4",
+      "range": {
+        "startLine": 40,
+        "startChar": 64,
+        "endLine": 40,
+        "endChar": 66
+      },
+      "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18a43613_cbb7aaa1",
         "filename": "services/inputflinger/tests/fuzzers/FuzzContainer.h",
         "patchSetId": 5
@@ -146,6 +170,30 @@
       "writtenOn": "2021-02-05T05:36:31Z",
       "side": 1,
       "message": "What if remianing_bytes() went down to 0 at here?",
+      "range": {
+        "startLine": 41,
+        "startChar": 38,
+        "endLine": 41,
+        "endChar": 70
+      },
+      "revId": "1bd6a5fa437aeb28dec1fdd8bc9e1a8515fe0370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d038e96_aeccef0e",
+        "filename": "services/inputflinger/tests/fuzzers/SwitchInputFuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1680610
+      },
+      "writtenOn": "2021-02-05T17:42:02Z",
+      "side": 1,
+      "message": "If FuzzedDataProvider runs out of bytes in its buffer at any point, it will return \u00270\u0027 values on all followup calls. InRange functions will return the minimum value specified, and string functions will return empty strings.",
+      "parentUuid": "dcd6bd4b_a8eee90a",
       "range": {
         "startLine": 41,
         "startChar": 38,
