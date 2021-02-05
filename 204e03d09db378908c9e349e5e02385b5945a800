@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2402c232_5a360a01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-02-05T15:49:53Z",
+      "side": 1,
+      "message": "Dan and Chris, can you review this CL? it is aosp-side change of ag/13417767.",
+      "revId": "204e03d09db378908c9e349e5e02385b5945a800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
