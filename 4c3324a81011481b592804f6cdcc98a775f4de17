@@ -63,6 +63,30 @@
       },
       "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0773f7b7_21cbe716",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-06T02:41:08Z",
+      "side": 1,
+      "message": "Yeah - the precedence rules for which function get picked get really tricky, but I think this kind of thing should be acceptable:\n\n    void readData(int32_t* a);\n    template \u003ctypename T\u003e\n    void readData(std::vector\u003cT\u003e* a);\n\nSince it\u0027s still very clear how a call will get directed. For the pointer types, you write 3 delegation functions, to a templated implementation.\n\nThough - template specialization works just as well (since we don\u0027t support every type, I wonder if the errors here when you use the wrong function aren\u0027t as nice)",
+      "parentUuid": "364e9058_6fad5a3e",
+      "range": {
+        "startLine": 1032,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 5
+      },
+      "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
