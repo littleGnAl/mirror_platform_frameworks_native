@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0e37916_3c315f83",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-06T00:43:48Z",
+      "side": 1,
+      "message": "thanks - I do think it\u0027s more readable, even if a bit more lines, and people less familiar with C++ templates could understand. I left one comment there. If you want to proceed with that, maybe upload it over this (or abandon this change)?",
+      "parentUuid": "c02cc1bf_61593479",
+      "range": {
+        "startLine": 763,
+        "startChar": 4,
+        "endLine": 763,
+        "endChar": 13
+      },
+      "revId": "e6bd840ff14fb6b910e5e06de414ce976882367c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "145c9709_909275f3",
