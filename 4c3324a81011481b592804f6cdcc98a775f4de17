@@ -39,6 +39,30 @@
       },
       "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "364e9058_6fad5a3e",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-06T01:03:59Z",
+      "side": 1,
+      "message": "Yes, good point, that would be shorter. But I thought it best not to mix function overloading and template specialization/overloading so we can explicitly specify the template type - that allows the following code:\n\nreadData\u003cT\u003e(t)\nreadData\u003cstd::string\u003e(str)\n\nthen all the readData methods ought to be templated.   Maybe I can use template specialization instead - that might be more compact.  Let me consider that next.",
+      "parentUuid": "9d0b20bb_79089835",
+      "range": {
+        "startLine": 1032,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 5
+      },
+      "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
