@@ -16,6 +16,29 @@
       "message": "Here\u0027s an alternative CL which uses template overloading.  I uploaded this as a different approach to https://android-review.googlesource.com/c/platform/frameworks/native/+/1564604, but probably isn\u0027t as readable.",
       "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d0b20bb_79089835",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-06T00:42:26Z",
+      "side": 1,
+      "message": "These should be able to be regular overloading, right (no templates needed, same in other places)?\n\n    status_t readData(std::string* str) const { return readUtf8FromUtf16(t); }",
+      "range": {
+        "startLine": 1032,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 5
+      },
+      "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
