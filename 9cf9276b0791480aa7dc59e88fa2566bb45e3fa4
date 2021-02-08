@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e32680_f6fc409b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1650665
+      },
+      "writtenOn": "2021-02-08T22:57:30Z",
+      "side": 1,
+      "message": "Blocked by an automerger configuration issue that cause presubmit to fail. b/179403179",
+      "revId": "9cf9276b0791480aa7dc59e88fa2566bb45e3fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
