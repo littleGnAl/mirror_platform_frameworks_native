@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "039372db_c1856f78",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-08T07:25:14Z",
+      "side": 1,
+      "message": "Andy, can it be worked around by using enable_if on a non-type parameter?\n\ntemplate\u003ctypename T, std::enable_if_t\u003cCONDITION_X, bool\u003e \u003d true\u003e\nstatus_t writeData(...) {...}\n\ntemplate\u003ctypename T, std::enable_if_t\u003cCONDITION_Y, bool\u003e \u003d true\u003e\nstatus_t writeData(...) {...}",
+      "parentUuid": "f0e37916_3c315f83",
+      "range": {
+        "startLine": 763,
+        "startChar": 4,
+        "endLine": 763,
+        "endChar": 13
+      },
+      "revId": "e6bd840ff14fb6b910e5e06de414ce976882367c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "145c9709_909275f3",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 2
