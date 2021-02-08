@@ -111,6 +111,30 @@
       },
       "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d65d37f_c20220f0",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-08T23:42:35Z",
+      "side": 1,
+      "message": "Based on how these are used (reading/writing from arguments of the desired types or from fields), is this really an issue?",
+      "parentUuid": "fca2caaf_26ccaa3f",
+      "range": {
+        "startLine": 1032,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 5
+      },
+      "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
