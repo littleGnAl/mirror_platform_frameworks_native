@@ -16,6 +16,24 @@
       "message": "whhheeeeeeeeeeeeeeeeeeeeeeeeeeeeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!",
       "revId": "17049435173cc5329e9c26427ad565eafafc530d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c43c69ed_ff8bc1bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-08T18:28:28Z",
+      "side": 1,
+      "message": "one thing that\u0027s a little interesting is that the build breaks if i also remove your -D__ANDROID_API__ --- i suspect that\u0027s some unintended host/device confusion. i\u0027ll try to come back for those, but if you want to have a look in the meantime...",
+      "parentUuid": "ce3ab283_d83f2749",
+      "revId": "17049435173cc5329e9c26427ad565eafafc530d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
