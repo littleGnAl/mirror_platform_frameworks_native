@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7aaec52_dfbbbd44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-02-08T18:36:18Z",
+      "side": 1,
+      "message": "Hello,\nCan you please file a bug for surfaceflinger component (component\u003d25423) so we could track and discuss this change?\n\nThanks.",
+      "revId": "402789718f445004ccd65c507fa532446b26ca51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
