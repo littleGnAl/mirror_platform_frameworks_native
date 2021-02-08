@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc8b0aa_d274c74f",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-08T18:59:44Z",
+      "side": 1,
+      "message": "Yes, that should work according to case #4\n\nhttps://en.cppreference.com/w/cpp/types/enable_if\n\n  template \u003ctypename T, typename std::enable_if_t\u003cCONDITION_X, bool\u003e \u003d true\u003e\n  status_t writeData(...) {...}\n\nsuccessful substitution (SFINAE) goes to\n\n  template \u003ctypename T, typename bool \u003d true\u003e\n  status_t writeData(...) {...}\n\nthe other case #5\n\n  template \u003ctypename T, typename \u003d typename std::enable_if_t\u003c....\u003e\u003e\n  status_t writeData(...)\n\nwith successful substitution goes to\n\n  template \u003ctypename T, typename \u003d void\u003e\n  status_t writeData(...) {...}\n\nwhich omitting the actual typename \"name\" (e.g. T) I believe causes issues.  The rationale seems somewhat obscure and I confess I don\u0027t understand the particulars. A similar construct is the following method without a variable name - odd but nonetheless valid:\n\n  int square(int x, int \u003d 3) { return x * x; }\n\n\nIf we had something like C++20 concepts, we would write something like:\n\nhttps://en.cppreference.com/w/cpp/language/constraints\n\n  template \u003cclass T\u003e\n  concept Float \u003d std::is_same_v\u003cT, float\u003e;\n\n  template\u003cFloat T\u003e\n  status_t writeData(const T\u0026 t);\n\nwhich is more clear.",
+      "parentUuid": "f0e37916_3c315f83",
+      "range": {
+        "startLine": 763,
+        "startChar": 4,
+        "endLine": 763,
+        "endChar": 13
+      },
+      "revId": "e6bd840ff14fb6b910e5e06de414ce976882367c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "145c9709_909275f3",
