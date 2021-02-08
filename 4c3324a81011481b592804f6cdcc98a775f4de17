@@ -87,6 +87,30 @@
       },
       "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca2caaf_26ccaa3f",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-08T19:02:09Z",
+      "side": 1,
+      "message": "I was checking if I could make template specialization work here, but it seems maybe C++20 concepts is really what we need to have.\n\nThe reason I avoided mixing function overloading with template overloading is that if you declare\n\n  // functional overloading\n  writeData(const int\u0026 float) { ... }   // const int\u0026 and int should be optimized to the same by the compiler.\n\nyou can\u0027t write something like\n\n#1\n  writeData\u003cfloat\u003e(10);   // writes as 10.f instead of (int32_t)10.\n\n#2\n  int i \u003d 20;\n  writeData\u003cfloat\u003e(i);  // writes i as a float.\n\nyou would have to write either\n\n  writeData(10.f);\n  writeData(static_cast\u003cfloat\u003e(i)) // this is necessary for functional overloading.\n\nwhich is a bit more non-intuitive.  I think forcing the type by func\u003cType\u003e is more idiomatic, hence the preference to go to the template overload only.",
+      "parentUuid": "0773f7b7_21cbe716",
+      "range": {
+        "startLine": 1032,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 5
+      },
+      "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
