@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60acf851_1044c556",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-09T14:24:00Z",
+      "side": 1,
+      "message": "The same comment that I made in aosp/1564604. Enabling via the return type doesn\u0027t look good for readability.\n\ntemplate \u003ctypename T, typename std::enable_if_t\u003cstd::is_same_v\u003cT, bool\u003e, bool\u003e \u003d true\u003e\nstatus_t writeData(const T\u0026 t) {...}\n\n\nWe could even simplify this by having a macro.\n\nENABLE_IF(std::is_same_v\u003cT, bool\u003e)\nstatus_t writeData(const T\u0026 t) {...}",
+      "range": {
+        "startLine": 796,
+        "startChar": 44,
+        "endLine": 797,
+        "endChar": 13
+      },
+      "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d0b20bb_79089835",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 1
