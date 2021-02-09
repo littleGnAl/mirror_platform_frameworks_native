@@ -135,6 +135,30 @@
       },
       "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "653d2373_10fa5d38",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-09T00:14:45Z",
+      "side": 1,
+      "message": "Per discussion with Steven, will move some methods to functional overloading when possible and make the current implementation private for now.  Only the existing APIs can call into it.  Please wait for the next PS. Thanks!",
+      "parentUuid": "4d65d37f_c20220f0",
+      "range": {
+        "startLine": 1032,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 5
+      },
+      "revId": "4c3324a81011481b592804f6cdcc98a775f4de17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
