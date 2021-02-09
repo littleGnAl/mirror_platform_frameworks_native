@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30546dc8_3c2ec3bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-02-09T21:54:12Z",
+      "side": 1,
+      "message": "Talked to Hamzeh.\nWe will merge these into aosp only for now. We will work on porting these to master after IC complete deadlines",
+      "revId": "7c58e6569790cd8c42fe6107b2e1ecf460a83ca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
