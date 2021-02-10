@@ -56,6 +56,30 @@
       },
       "revId": "49198cf711d05055b7f72a252205707a155b80cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8476395e_a46b23b8",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-10T19:58:51Z",
+      "side": 1,
+      "message": "Good comment, yes, it does.  In this case, I felt it better to make T be the complete type of the first function parameter, see the comment on line 847.  This allows future code to write\n\ntemplate \u003ctypename T\u003e\nwriteData\u003cT\u003e(const T\u0026 t) // where T is actually the type of t.\n\nI think the benefits would be eventually unifying to a consistent template representation, so we can do writeData\u003cint\u003e, writeData\u003cfloat\u003e, writeData\u003csp\u003cIBinder\u003e\u003e, etc. and know that first template parameter corresponds to the type of the first function parameter (say in the C++20 timeframe).  So this would be a benefit in caller code clarity.",
+      "parentUuid": "a33c5657_e59f13c8",
+      "range": {
+        "startLine": 857,
+        "startChar": 0,
+        "endLine": 861,
+        "endChar": 5
+      },
+      "revId": "49198cf711d05055b7f72a252205707a155b80cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
