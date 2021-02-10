@@ -80,6 +80,30 @@
       },
       "revId": "49198cf711d05055b7f72a252205707a155b80cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "396887aa_b0cb7e7c",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-10T20:49:45Z",
+      "side": 1,
+      "message": "Hmm, I mean, this is always an option, but in the current case, we are taking complexity to support something we aren\u0027t necessarily using. It might still be worth it for readability now. Anyway - I\u0027m okay either way",
+      "parentUuid": "8476395e_a46b23b8",
+      "range": {
+        "startLine": 857,
+        "startChar": 0,
+        "endLine": 861,
+        "endChar": 5
+      },
+      "revId": "49198cf711d05055b7f72a252205707a155b80cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
