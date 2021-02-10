@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a46de5_f0d39d6a",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-10T17:25:54Z",
+      "side": 1,
+      "message": "I can actually merge this if I do it conditionally on whether the descriptor is already cached. Hence, not abandoning to let this CL serve as a reminder.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 62
+      },
+      "revId": "6cbcd4e8e3a75a7a30e88e8ca4b53997a86e4b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
