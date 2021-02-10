@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "683c98a4_467510f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-10T22:15:49Z",
+      "side": 1,
+      "message": "Thanks everyone for the review and discussions!",
+      "revId": "49198cf711d05055b7f72a252205707a155b80cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a33c5657_e59f13c8",
@@ -96,6 +113,30 @@
       "side": 1,
       "message": "Hmm, I mean, this is always an option, but in the current case, we are taking complexity to support something we aren\u0027t necessarily using. It might still be worth it for readability now. Anyway - I\u0027m okay either way",
       "parentUuid": "8476395e_a46b23b8",
+      "range": {
+        "startLine": 857,
+        "startChar": 0,
+        "endLine": 861,
+        "endChar": 5
+      },
+      "revId": "49198cf711d05055b7f72a252205707a155b80cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa50e02b_c15d6efc",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-10T22:15:49Z",
+      "side": 1,
+      "message": "Great thanks, yeah, there are pros and cons - I also see both sides here.  Let\u0027s land this for now as there is no strong preference.",
+      "parentUuid": "396887aa_b0cb7e7c",
       "range": {
         "startLine": 857,
         "startChar": 0,
