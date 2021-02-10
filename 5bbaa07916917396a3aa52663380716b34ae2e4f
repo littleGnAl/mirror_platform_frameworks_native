@@ -16,6 +16,46 @@
       "message": "Updated to reflect comments.  I removed a few tests because readData and writeData are private.  Please let me know if there are other changes you would like.",
       "revId": "5bbaa07916917396a3aa52663380716b34ae2e4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84fd0c40_14a1d980",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-10T01:34:22Z",
+      "side": 1,
+      "message": "hold on, one minor edit pending.",
+      "revId": "5bbaa07916917396a3aa52663380716b34ae2e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e9db272_395f9701",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-10T01:34:22Z",
+      "side": 1,
+      "message": "let me make this CT \u003d container type.",
+      "range": {
+        "startLine": 997,
+        "startChar": 22,
+        "endLine": 997,
+        "endChar": 25
+      },
+      "revId": "5bbaa07916917396a3aa52663380716b34ae2e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
