@@ -156,6 +156,8 @@ binder_exception_t PruneException(int32_t exception) {
             return EX_PARCELABLE;
         case Status::EX_TRANSACTION_FAILED:
             return EX_TRANSACTION_FAILED;
+        case Status::EX_REMOTE:
+            return EX_REMOTE;
 
         default:
             LOG(WARNING) << __func__ << ": Unknown binder exception (" << exception
