@@ -78,6 +78,7 @@ std::string Status::exceptionToString(int32_t exceptionCode) {
         EXCEPTION_TO_CASE(EX_PARCELABLE)
         EXCEPTION_TO_CASE(EX_HAS_REPLY_HEADER)
         EXCEPTION_TO_CASE(EX_TRANSACTION_FAILED)
+        EXCEPTION_TO_CASE(EX_UNKNOWN)
         #undef EXCEPTION_TO_CASE
         default: return std::to_string(exceptionCode);
     }

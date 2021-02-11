@@ -65,6 +65,7 @@ public:
         EX_UNSUPPORTED_OPERATION = -7,
         EX_SERVICE_SPECIFIC = -8,
         EX_PARCELABLE = -9,
+        EX_UNKNOWN = -10,
 
         // This is special and Java specific; see Parcel.java.
         EX_HAS_REPLY_HEADER = -128,
