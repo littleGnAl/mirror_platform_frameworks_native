@@ -28,6 +28,8 @@
 
 #include <codecvt>
 #include <locale>
+#include <memory>
+#include <optional>
 #include <sstream>
 #include <string>
 #include <type_traits>
@@ -80,11 +82,28 @@ class HasToStringFunction {
     enum { value = decltype(_test<_T>(0))::value };
 };
 
-// Truthy if _T is like a pointer
+template <typename T, template <typename...> typename U>
+struct IsInstantiationOf : std::false_type {};
+
+template <template <typename...> typename U, typename... Args>
+struct IsInstantiationOf<U<Args...>, U> : std::true_type {};
+
+// Truthy if _T is like a pointer: one of sp/optional/shared_ptr
 template <typename _T>
 class IsPointerLike {
     template <typename _U>
-    static auto _test(int) -> decltype(!std::declval<_U>(), *std::declval<_U>(), std::true_type());
+    static std::enable_if_t<
+#ifdef HAS_CPP_INTERFACE
+            IsInstantiationOf<_U, sp>::value ||  // for IBinder and interface types in the C++
+                                                 // backend
+#endif
+                    IsInstantiationOf<_U, std::optional>::value ||  // for @nullable types in the
+                                                                    // C++/NDK backends
+                    IsInstantiationOf<_U, std::shared_ptr>::value,  // for interface types in the
+                                                                    // NDK backends
+
+            std::true_type>
+    _test(int);
     template <typename _U>
     static std::false_type _test(...);
 
@@ -148,6 +167,11 @@ std::string ToString(const _T& t) {
         out << t;
         return out.str();
 #endif
+    } else if constexpr (details::IsPointerLike<_T>::value) {
+        if (!t) return "(null)";
+        std::stringstream out;
+        out << ToString(*t);
+        return out.str();
     } else if constexpr (details::HasToStringMethod<_T>::value) {
         return t.toString();
     } else if constexpr (details::HasToStringFunction<_T>::value) {
@@ -167,11 +191,6 @@ std::string ToString(const _T& t) {
             out << ToString<typename _T::value_type>(e);
         }
         out << "]";
-        return out.str();
-    } else if constexpr (details::IsPointerLike<_T>::value) {
-        if (!t) return "(null)";
-        std::stringstream out;
-        out << ToString(*t);
         return out.str();
     } else {
         return "{no toString() implemented}";
