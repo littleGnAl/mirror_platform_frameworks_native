@@ -133,6 +133,13 @@ public:
         data.writeString16(message);
         return remote()->transact(CRASH, data, &reply, 0);
     }
+
+    virtual status_t endQuiescent()
+    {
+        Parcel data, reply;
+        data.writeInterfaceToken(IPowerManager::getInterfaceDescriptor());
+        return remote()->transact(END_QUIESCENT, data, &reply, IBinder::FLAG_ONEWAY);
+    }
 };
 
 IMPLEMENT_META_INTERFACE(PowerManager, "android.os.IPowerManager");

@@ -50,6 +50,7 @@ public:
         REBOOT_SAFE_MODE             = IBinder::FIRST_CALL_TRANSACTION + 22,
         SHUTDOWN                     = IBinder::FIRST_CALL_TRANSACTION + 23,
         CRASH                        = IBinder::FIRST_CALL_TRANSACTION + 24,
+        END_QUIESCENT                = IBinder::FIRST_CALL_TRANSACTION + 41,
     };
 
     DECLARE_META_INTERFACE(PowerManager)
@@ -69,6 +70,7 @@ public:
     virtual status_t reboot(bool confirm, const String16& reason, bool wait) = 0;
     virtual status_t shutdown(bool confirm, const String16& reason, bool wait) = 0;
     virtual status_t crash(const String16& message) = 0;
+    virtual status_t endQuiescent() = 0;
 };
 
 // ----------------------------------------------------------------------------
