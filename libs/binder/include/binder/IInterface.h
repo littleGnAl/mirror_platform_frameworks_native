@@ -92,7 +92,7 @@ protected:
 };
 
 // ----------------------------------------------------------------------
-
+//此处宏定义在展开后会生成BpServiceManager相关代码
 #define DECLARE_META_INTERFACE(INTERFACE)                               \
 public:                                                                 \
     static const ::android::String16 descriptor;                        \
@@ -111,7 +111,7 @@ public:                                                                 \
 #define __IINTF_CONCAT(x, y) (x ## y)
 
 #ifndef DO_NOT_CHECK_MANUAL_BINDER_INTERFACES
-
+// 此处宏定义在展开后会生成BpServiceManager相关代码
 #define IMPLEMENT_META_INTERFACE(INTERFACE, NAME)                       \
     static_assert(internal::allowedManualInterface(NAME),               \
                   "b/64223827: Manually written binder interfaces are " \
