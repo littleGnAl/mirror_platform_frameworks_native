@@ -90,7 +90,9 @@ private:
 
 sp<IServiceManager> defaultServiceManager()
 {
-    std::call_once(gSmOnce, []() {
+    // 此处为C++中的单例实现，保证多线程只会有一个执行，并且只调用一次
+    // 第一次调用时sm为null，对其进行初始化
+    std::call_once(gSmOnce, []() { 
         sp<AidlServiceManager> sm = nullptr;
         while (sm == nullptr) {
             sm = interface_cast<AidlServiceManager>(ProcessState::self()->getContextObject(nullptr));
@@ -102,7 +104,7 @@ sp<IServiceManager> defaultServiceManager()
 
         gDefaultServiceManager = new ServiceManagerShim(sm);
     });
-
+    // 除第一次调用初始化外，其他调用都直接返回gDefaultServiceManager对象（IServiceManager的强引用对象）
     return gDefaultServiceManager;
 }
 
@@ -255,7 +257,8 @@ sp<IBinder> ServiceManagerShim::checkService(const String16& name) const
 status_t ServiceManagerShim::addService(const String16& name, const sp<IBinder>& service,
                                         bool allowIsolated, int dumpsysPriority)
 {
-    Status status = mTheRealServiceManager->addService(
+    //此处ServiceManagerShim需要委派给其内部的引用对应sm，即AIDLServiceManager进行调用执行
+    Status status = mTheRealServiceManager->addService( 
         String8(name).c_str(), service, allowIsolated, dumpsysPriority);
     return status.exceptionCode();
 }
