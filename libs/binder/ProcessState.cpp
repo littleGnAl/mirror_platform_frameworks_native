@@ -40,13 +40,13 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define BINDER_VM_SIZE ((1 * 1024 * 1024) - sysconf(_SC_PAGE_SIZE) * 2)
+#define BINDER_VM_SIZE ((1 * 1024 * 1024) - sysconf(_SC_PAGE_SIZE) * 2)  //给binder申请1M的内存空间
 #define DEFAULT_MAX_BINDER_THREADS 15
 
 #ifdef __ANDROID_VNDK__
 const char* kDefaultDriver = "/dev/vndbinder";
 #else
-const char* kDefaultDriver = "/dev/binder";
+const char* kDefaultDriver = "/dev/binder"; //默认的binder设备
 #endif
 
 // -------------------------------------------------------------------------
@@ -110,7 +110,7 @@ sp<ProcessState> ProcessState::selfOrNull()
 
 sp<IBinder> ProcessState::getContextObject(const sp<IBinder>& /*caller*/)
 {
-    sp<IBinder> context = getStrongProxyForHandle(0);
+    sp<IBinder> context = getStrongProxyForHandle(0); //获取0号handle的对应的bpBinder
 
     if (context == nullptr) {
        ALOGW("Not able to get context object on %s.", mDriverName.c_str());
@@ -149,6 +149,7 @@ bool ProcessState::becomeContextManager(context_check_func checkFunc, void* user
         android_errorWriteLog(0x534e4554, "121035042");
 
         int dummy = 0;
+        //直接使用系统调用ioctl跟binder驱动交互，使之成为真正的管理类
         result = ioctl(mDriverFD, BINDER_SET_CONTEXT_MGR, &dummy);
     }
 
@@ -225,15 +226,16 @@ void ProcessState::setCallRestriction(CallRestriction restriction) {
 
 ProcessState::handle_entry* ProcessState::lookupHandleLocked(int32_t handle)
 {
-    const size_t N=mHandleToObject.size();
-    if (N <= (size_t)handle) {
+    const size_t N=mHandleToObject.size(); //遍历mHandleToObject数组
+    if (N <= (size_t)handle) {//如果handle值大于数组大小，则执行插入操作
         handle_entry e;
         e.binder = nullptr;
         e.refs = nullptr;
         status_t err = mHandleToObject.insertAt(e, N, handle+1-N);
         if (err < NO_ERROR) return nullptr;
     }
-    return &mHandleToObject.editItemAt(handle);
+    //否则直接根据对应的handle找到vetor中对应的元素，即handle_entry对象
+    return &mHandleToObject.editItemAt(handle); 
 }
 
 sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
@@ -241,7 +243,7 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
     sp<IBinder> result;
 
     AutoMutex _l(mLock);
-
+    //内部使用vector存储handleEntity,即通过handle值查找Ibinder对象
     handle_entry* e = lookupHandleLocked(handle);
 
     if (e != nullptr) {
@@ -274,15 +276,16 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
                 // a driver API to get a handle to the context manager with
                 // proper reference counting.
 
-                Parcel data;
+                Parcel data; //数据的容器
+                //IPCThreadState是真正跨进程传递数据的类，调用transact(）进行数据传递
                 status_t status = IPCThreadState::self()->transact(
                         0, IBinder::PING_TRANSACTION, data, nullptr, 0);
                 if (status == DEAD_OBJECT)
                    return nullptr;
             }
 
-            b = BpBinder::create(handle);
-            e->binder = b;
+            b = BpBinder::create(handle);//根据handle值创建对应的BpBinder,即BinderProxy对象
+            e->binder = b; //将bpBinder设置给proxyHandle
             if (b) e->refs = b->getWeakRefs();
             result = b;
         } else {
@@ -346,12 +349,12 @@ String8 ProcessState::getDriverName() {
     return mDriverName;
 }
 
-static int open_driver(const char *driver)
+static int open_driver(const char *driver) // *driver = "/dev/binder"
 {
-    int fd = open(driver, O_RDWR | O_CLOEXEC);
+    int fd = open(driver, O_RDWR | O_CLOEXEC); //打开driver驱动设备
     if (fd >= 0) {
         int vers = 0;
-        status_t result = ioctl(fd, BINDER_VERSION, &vers);
+        status_t result = ioctl(fd, BINDER_VERSION, &vers); //使用系统调用ioctl获取binder的state信息
         if (result == -1) {
             ALOGE("Binder ioctl to obtain version failed: %s", strerror(errno));
             close(fd);
@@ -364,7 +367,7 @@ static int open_driver(const char *driver)
             fd = -1;
         }
         size_t maxThreads = DEFAULT_MAX_BINDER_THREADS;
-        result = ioctl(fd, BINDER_SET_MAX_THREADS, &maxThreads);
+        result = ioctl(fd, BINDER_SET_MAX_THREADS, &maxThreads); //binder默认最大线程数是15，为什么要限制线程数？
         if (result == -1) {
             ALOGE("Binder ioctl to set max threads failed: %s", strerror(errno));
         }
@@ -374,9 +377,9 @@ static int open_driver(const char *driver)
     return fd;
 }
 
-ProcessState::ProcessState(const char *driver)
+ProcessState::ProcessState(const char *driver) //ProcessState构造函数
     : mDriverName(String8(driver))
-    , mDriverFD(open_driver(driver))
+    , mDriverFD(open_driver(driver)) //与binder驱动交互，初始化binder驱动
     , mVMStart(MAP_FAILED)
     , mThreadCountLock(PTHREAD_MUTEX_INITIALIZER)
     , mThreadCountDecrement(PTHREAD_COND_INITIALIZER)
@@ -397,7 +400,8 @@ ProcessState::ProcessState(const char *driver)
 
     if (mDriverFD >= 0) {
         // mmap the binder, providing a chunk of virtual address space to receive transactions.
-        mVMStart = mmap(nullptr, BINDER_VM_SIZE, PROT_READ, MAP_PRIVATE | MAP_NORESERVE, mDriverFD, 0);
+        //为binder申请1M大小的内存空间
+        mVMStart = mmap(nullptr, BINDER_VM_SIZE, PROT_READ, MAP_PRIVATE | MAP_NORESERVE, mDriverFD, 0); 
         if (mVMStart == MAP_FAILED) {
             // *sigh*
             ALOGE("Using %s failed: unable to mmap transaction memory.\n", mDriverName.c_str());
