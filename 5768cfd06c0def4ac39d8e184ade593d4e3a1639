@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008181775",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1589671?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7e14e359_61ca5ff9",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-16T07:47:46Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 104
+      },
+      "revId": "5768cfd06c0def4ac39d8e184ade593d4e3a1639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008181775",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1589671?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "427c3561_fb5af5ba",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-16T07:47:46Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 401,
+        "startChar": 103,
+        "endLine": 401,
+        "endChar": 104
+      },
+      "revId": "5768cfd06c0def4ac39d8e184ade593d4e3a1639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
