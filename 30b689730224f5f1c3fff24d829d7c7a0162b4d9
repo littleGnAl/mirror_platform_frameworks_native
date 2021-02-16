@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008182164",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1589671?revision\u003d6",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8f8b99c7_d27604e0",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-16T08:19:11Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 237,
+        "startChar": 47,
+        "endLine": 237,
+        "endChar": 48
+      },
+      "revId": "30b689730224f5f1c3fff24d829d7c7a0162b4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008182164",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1589671?revision\u003d6",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "447c83e4_cc0da088",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-16T08:19:11Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 402,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 104
+      },
+      "revId": "30b689730224f5f1c3fff24d829d7c7a0162b4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008182164",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1589671?revision\u003d6",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ed3e457f_b3ede3d2",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-16T08:19:11Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 402,
+        "startChar": 103,
+        "endLine": 402,
+        "endChar": 104
+      },
+      "revId": "30b689730224f5f1c3fff24d829d7c7a0162b4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
