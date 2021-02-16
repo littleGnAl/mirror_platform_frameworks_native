@@ -44,6 +44,8 @@ protected:
  * return a proxy to the interface without checking the interface descriptor.
  * This means that subsequent calls may fail with BAD_TYPE.
  */
+// 以上的代码注释已经讲的比较清楚了，此处将INTERFACE进行宏展开，并将IBinder对象作为参数，封装为BpServiceManager
+//或BnServiceManager
 template<typename INTERFACE>
 inline sp<INTERFACE> interface_cast(const sp<IBinder>& obj)
 {
@@ -92,7 +94,7 @@ protected:
 };
 
 // ----------------------------------------------------------------------
-
+//此处宏定义在展开后会生成BpServiceManager相关代码
 #define DECLARE_META_INTERFACE(INTERFACE)                               \
 public:                                                                 \
     static const ::android::String16 descriptor;                        \
@@ -111,7 +113,7 @@ public:                                                                 \
 #define __IINTF_CONCAT(x, y) (x ## y)
 
 #ifndef DO_NOT_CHECK_MANUAL_BINDER_INTERFACES
-
+// 此处宏定义在展开后会生成BpServiceManager相关代码
 #define IMPLEMENT_META_INTERFACE(INTERFACE, NAME)                       \
     static_assert(internal::allowedManualInterface(NAME),               \
                   "b/64223827: Manually written binder interfaces are " \
