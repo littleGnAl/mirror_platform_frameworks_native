@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a10b4a_1d82945e",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-16T23:45:04Z",
+      "side": 1,
+      "message": "What is this shadowing and should that be an error? Is there any reason to use the same name?",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "1729e90887264a30f668bf3bfb5bb5b255d0a7fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c35fcbd_62e0cc4a",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-16T23:45:04Z",
+      "side": 1,
+      "message": "do we need the assertion here, actually? and I\u0027m curious, should we also test if there is an abort? (TEST_DIE?)",
+      "revId": "1729e90887264a30f668bf3bfb5bb5b255d0a7fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
