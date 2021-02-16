@@ -40,13 +40,13 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define BINDER_VM_SIZE ((1 * 1024 * 1024) - sysconf(_SC_PAGE_SIZE) * 2)
+#define BINDER_VM_SIZE ((1 * 1024 * 1024) - sysconf(_SC_PAGE_SIZE) * 2)  //给binder申请1M的内存空间
 #define DEFAULT_MAX_BINDER_THREADS 15
 
 #ifdef __ANDROID_VNDK__
 const char* kDefaultDriver = "/dev/vndbinder";
 #else
-const char* kDefaultDriver = "/dev/binder";
+const char* kDefaultDriver = "/dev/binder"; //默认的binder设备
 #endif
 
 // -------------------------------------------------------------------------
