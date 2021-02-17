@@ -1,0 +1,99 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008207616",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1591512?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "6f19ceb8_dceda823",
+          "description": "Change to \"libs/binder/IPCThreadState.cpp\"",
+          "replacements": [
+            {
+              "path": "libs/binder/IPCThreadState.cpp",
+              "range": {
+                "startLine": 291,
+                "startChar": 88,
+                "endLine": 291,
+                "endChar": 95
+              },
+              "replacement": "Storage"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "8e84abd0_eccff8a5",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T02:29:28Z",
+      "side": 1,
+      "message": "Common typo found: \"Stroage\" -- should it be \"Storage\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 291,
+        "startChar": 88,
+        "endLine": 291,
+        "endChar": 95
+      },
+      "revId": "b65f2353aa27c8085d52e5eaf05aab830a6e0311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008207617",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1591512?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "24b624c0_aa0df097",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T02:29:28Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 706,
+        "startChar": 83,
+        "endLine": 706,
+        "endChar": 84
+      },
+      "revId": "b65f2353aa27c8085d52e5eaf05aab830a6e0311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008207617",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1591512?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5425bda3_1f4d4c1d",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T02:29:28Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 877,
+        "startChar": 2,
+        "endLine": 877,
+        "endChar": 3
+      },
+      "revId": "b65f2353aa27c8085d52e5eaf05aab830a6e0311",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
