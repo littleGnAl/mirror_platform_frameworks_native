@@ -245,6 +245,8 @@ Status ServiceManager::addService(const std::string& name, const sp<IBinder>& bi
     }
 
     // Overwrite the old service if it exists
+    // 创建Manager对应的service完成自注册逻辑，成为管理者
+    // mNameToService是map集合对象，用来注册和查询系统服务
     mNameToService[name] = Service {
         .binder = binder,
         .allowIsolated = allowIsolated,
