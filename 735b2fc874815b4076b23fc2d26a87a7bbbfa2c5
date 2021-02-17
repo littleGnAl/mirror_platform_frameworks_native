@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008212967",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1589671?revision\u003d8",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c5b312a8_f2982a64",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T07:12:03Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 238,
+        "startChar": 47,
+        "endLine": 238,
+        "endChar": 48
+      },
+      "revId": "735b2fc874815b4076b23fc2d26a87a7bbbfa2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008212967",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1589671?revision\u003d8",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9cff1bd0_8b96260d",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T07:12:03Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 404,
+        "startChar": 103,
+        "endLine": 404,
+        "endChar": 104
+      },
+      "revId": "735b2fc874815b4076b23fc2d26a87a7bbbfa2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008212967",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1589671?revision\u003d8",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d5963018_4a025312",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T07:12:03Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 104
+      },
+      "revId": "735b2fc874815b4076b23fc2d26a87a7bbbfa2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
