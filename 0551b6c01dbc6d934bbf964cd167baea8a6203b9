@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587b9b45_3ed587e6",
+        "filename": "data/etc/android.hardware.keystore.app_attest_key.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115498
+      },
+      "writtenOn": "2021-02-17T11:06:34Z",
+      "side": 1,
+      "message": "Nit: 2021",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "0551b6c01dbc6d934bbf964cd167baea8a6203b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19303970_8ecfd094",
+        "filename": "data/etc/android.hardware.keystore.app_attest_key.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115498
+      },
+      "writtenOn": "2021-02-17T11:06:34Z",
+      "side": 1,
+      "message": "Nit: attestation",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "0551b6c01dbc6d934bbf964cd167baea8a6203b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
