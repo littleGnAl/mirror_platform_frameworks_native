@@ -210,7 +210,8 @@ status_t BpBinder::dump(int fd, const Vector<String16>& args)
 }
 
 // NOLINTNEXTLINE(google-default-arguments)
-status_t BpBinder::transact(
+//与Binder设备通信的函数，函数中真正负责与binder通信的是IPCThreadState的transact（）函数
+status_t BpBinder::transact( 
     uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
 {
     // Once a binder has died, it will never come back to life.
@@ -234,7 +235,7 @@ status_t BpBinder::transact(
                 return BAD_TYPE;
             }
         }
-
+        //真正与binder驱动设备通信的函数
         status_t status = IPCThreadState::self()->transact(
             mHandle, code, data, reply, flags);
         if (status == DEAD_OBJECT) mAlive = 0;
