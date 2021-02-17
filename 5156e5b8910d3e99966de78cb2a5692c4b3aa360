@@ -22,6 +22,30 @@
       },
       "revId": "5156e5b8910d3e99966de78cb2a5692c4b3aa360",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e253a2aa_da2f4cd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-02-17T00:57:11Z",
+      "side": 1,
+      "message": "Ack. This is a build-time issue, so it would require some build configuration for testing.",
+      "parentUuid": "cbabee93_0732e56e",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "5156e5b8910d3e99966de78cb2a5692c4b3aa360",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
