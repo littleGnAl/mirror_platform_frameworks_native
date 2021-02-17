@@ -186,6 +186,9 @@ static const std::string TOMBSTONE_FILE_PREFIX = "tombstone_";
 static const std::string ANR_DIR = "/data/anr/";
 static const std::string ANR_FILE_PREFIX = "anr_";
 
+// Directory to store temporary ANR traces in.
+static const std::string ANR_TEMP_DIR = "/data/anr/dumpstate";
+
 // TODO: temporary variables and functions used during C++ refactoring
 
 #define RETURN_IF_USER_DENIED_CONSENT()                                                        \
@@ -2059,10 +2062,24 @@ static void DumpstateWifiOnly() {
 }
 
 Dumpstate::RunStatus Dumpstate::DumpTraces(const char** path) {
-    const std::string temp_file_pattern = "/data/anr/dumptrace_XXXXXX";
+    const std::string temp_file_pattern = "/data/anr/dumpstate/dumptrace_XXXXXX";
     const size_t buf_size = temp_file_pattern.length() + 1;
     std::unique_ptr<char[]> file_name_buf(new char[buf_size]);
     memcpy(file_name_buf.get(), temp_file_pattern.c_str(), buf_size);
+
+    // Create directory for storing temporary trace dumps.
+    if (mkdir(ANR_TEMP_DIR.c_str(), 0777) != 0) {
+        if (errno != EEXIST) {
+            MYLOGE("Could not mkdir %s: %s", ANR_TEMP_DIR.c_str(), strerror(errno));
+            return RunStatus::OK;
+        }
+    }
+
+    // Explicitly set permissions in case umask is not set to 0.
+    if (chmod(ANR_TEMP_DIR.c_str(), 0777) != 0) {
+        MYLOGE("Could not chmod %s: %s", ANR_TEMP_DIR.c_str(), strerror(errno));
+        return RunStatus::OK;
+    }
 
     // Create a new, empty file to receive all trace dumps.
     //
