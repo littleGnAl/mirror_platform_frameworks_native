@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f7a6152_672bfc9a",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-17T00:32:11Z",
+      "side": 1,
+      "message": "I mean - it should return a DEAD_OBJECT error, which should:\n- cause the test case to fail (since it would be expecting \u0027okay\u0027 or a different error)\n- have assertions in logs\n\nNo real complaint though, about switching to this style, since it should produce easier to read errors.",
+      "parentUuid": "26e3f498_8b7d1d4a",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "1729e90887264a30f668bf3bfb5bb5b255d0a7fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c35fcbd_62e0cc4a",
         "filename": "libs/binder/rust/tests/serialization.rs",
         "patchSetId": 1
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "I\u0027m testing that assert failures propagate back to C++ here, since all other asserts should pass. This is just a sanity check since it failed to propagate when I was initially developing these tests and I wanted to make sure that wouldn\u0027t ever happen.\n\nWe can\u0027t actually catch and return a proper error to C++ if there is a panic. I used to do that, but we changed the build system to build Rust with panic\u003dabort rather than unwind, so there is no opportunity to recover.",
       "parentUuid": "3c35fcbd_62e0cc4a",
+      "revId": "1729e90887264a30f668bf3bfb5bb5b255d0a7fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca3a294_fc33ca6a",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-17T00:32:11Z",
+      "side": 1,
+      "message": "Yeah - but we should make sure the binder driver can handle this case as well and we should test it (nothing should break here for Rust, but still). If the process dies, we should still get an error back",
+      "parentUuid": "58f2ae33_90993332",
       "revId": "1729e90887264a30f668bf3bfb5bb5b255d0a7fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
