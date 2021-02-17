@@ -288,7 +288,7 @@ IPCThreadState* IPCThreadState::self()
 {
     if (gHaveTLS.load(std::memory_order_acquire)) {
 restart:
-        const pthread_key_t k = gTLS;
+        const pthread_key_t k = gTLS; //此处k为线程本地存储变量（ThreadLocalStorage）
         IPCThreadState* st = (IPCThreadState*)pthread_getspecific(k);
         if (st) return st;
         return new IPCThreadState;
@@ -702,7 +702,8 @@ status_t IPCThreadState::transact(int32_t handle,
 
     LOG_ONEWAY(">>>> SEND from pid %d uid %d %s", getpid(), getuid(),
         (flags & TF_ONE_WAY) == 0 ? "READ REPLY" : "ONE WAY");
-    err = writeTransactionData(BC_TRANSACTION, flags, handle, code, data, nullptr);
+    //将数据写入到out中，BC_TRANSACTION为请求码,BR_TRANSACTION为响应码
+    err = writeTransactionData(BC_TRANSACTION, flags, handle, code, data, nullptr); 
 
     if (err != NO_ERROR) {
         if (reply) reply->setError(err);
@@ -853,10 +854,10 @@ IPCThreadState::IPCThreadState()
       mLastTransactionBinderFlags(0),
       mCallRestriction(mProcess->mCallRestriction)
 {
-    pthread_setspecific(gTLS, this);
+    pthread_setspecific(gTLS, this); //初始化线程本地变量gTLS
     clearCaller();
-    mIn.setDataCapacity(256);
-    mOut.setDataCapacity(256);
+    mIn.setDataCapacity(256); //Parcel数据容器，用来接收数据，初始化缓冲大小为256
+    mOut.setDataCapacity(256); //Parcel数据容器，用来发送数据，初始化缓冲大小为256
 }
 
 IPCThreadState::~IPCThreadState()
@@ -872,18 +873,21 @@ status_t IPCThreadState::sendReply(const Parcel& reply, uint32_t flags)
 
     return waitForResponse(nullptr, nullptr);
 }
-
+/**
+** 
+**/
 status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
 {
     uint32_t cmd;
     int32_t err;
 
     while (1) {
+        // talkWithDriver是真正将out写入到binder驱动的函数
         if ((err=talkWithDriver()) < NO_ERROR) break;
         err = mIn.errorCheck();
         if (err < NO_ERROR) break;
         if (mIn.dataAvail() == 0) continue;
-
+        // 从in中读取binder驱动的响应码
         cmd = (uint32_t)mIn.readInt32();
 
         IF_LOG_COMMANDS() {
@@ -952,7 +956,7 @@ status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
             goto finish;
 
         default:
-            err = executeCommand(cmd);
+            err = executeCommand(cmd);//根据响应码处理各种状态
             if (err != NO_ERROR) goto finish;
             break;
         }
@@ -985,7 +989,7 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
     const size_t outAvail = (!doReceive || needRead) ? mOut.dataSize() : 0;
 
     bwr.write_size = outAvail;
-    bwr.write_buffer = (uintptr_t)mOut.data();
+    bwr.write_buffer = (uintptr_t)mOut.data(); //将out数据指向write_buffer
 
     // This is what we'll read.
     if (doReceive && needRead) {
@@ -1021,6 +1025,7 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
             alog << "About to read/write, write size = " << mOut.dataSize() << endl;
         }
 #if defined(__ANDROID__)
+        //通过ioctl系统调用将bwr数据写入binder驱动
         if (ioctl(mProcess->mDriverFD, BINDER_WRITE_READ, &bwr) >= 0)
             err = NO_ERROR;
         else
@@ -1074,7 +1079,9 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
 
     return err;
 }
-
+/**
+* 将数据写入到out中，但并未真正与binder驱动交互
+**/
 status_t IPCThreadState::writeTransactionData(int32_t cmd, uint32_t binderFlags,
     int32_t handle, uint32_t code, const Parcel& data, status_t* statusBuffer)
 {
@@ -1106,7 +1113,7 @@ status_t IPCThreadState::writeTransactionData(int32_t cmd, uint32_t binderFlags,
     }
 
     mOut.writeInt32(cmd);
-    mOut.write(&tr, sizeof(tr));
+    mOut.write(&tr, sizeof(tr)); //写入数据到out中
 
     return NO_ERROR;
 }
