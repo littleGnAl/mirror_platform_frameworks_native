@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d0e3fd1_6d329fa9",
+        "filename": "data/etc/android.hardware.keystore.app_attest_key.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1043663
+      },
+      "writtenOn": "2021-02-17T13:41:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587b9b45_3ed587e6",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "0551b6c01dbc6d934bbf964cd167baea8a6203b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19303970_8ecfd094",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-17T11:06:34Z",
       "side": 1,
       "message": "Nit: attestation",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "0551b6c01dbc6d934bbf964cd167baea8a6203b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d632038_5360abe8",
+        "filename": "data/etc/android.hardware.keystore.app_attest_key.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1043663
+      },
+      "writtenOn": "2021-02-17T13:41:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19303970_8ecfd094",
       "range": {
         "startLine": 17,
         "startChar": 42,
