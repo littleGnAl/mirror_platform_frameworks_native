@@ -114,26 +114,27 @@ int main(int argc, char** argv) {
         LOG(FATAL) << "usage: " << argv[0] << " [binder driver]";
     }
 
-    const char* driver = argc == 2 ? argv[1] : "/dev/binder";
-
-    sp<ProcessState> ps = ProcessState::initWithDriver(driver);
-    ps->setThreadPoolMaxThreadCount(0);
+    const char* driver = argc == 2 ? argv[1] : "/dev/binder";/
+    //创建ProcessState，打开驱动设备，通过mmap创建1M大小的内存空间与binder驱动设备通信
+    sp<ProcessState> ps = ProcessState::initWithDriver(driver); 
+    ps->setThreadPoolMaxThreadCount(0);//线程池最大线程数为0？应该是不需要额外创建线程
     ps->setCallRestriction(ProcessState::CallRestriction::FATAL_IF_NOT_ONEWAY);
-
+    //创建ServiceManager的强引用对象
     sp<ServiceManager> manager = new ServiceManager(std::make_unique<Access>());
     if (!manager->addService("manager", manager, false /*allowIsolated*/, IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT).isOk()) {
         LOG(ERROR) << "Could not self register servicemanager";
     }
-
+    //the_context_object即BbBinder对象，也就是ServiceManager代表的BbBinder对象
     IPCThreadState::self()->setTheContextObject(manager);
     ps->becomeContextManager();
-
+    //创建Looper对象
     sp<Looper> looper = Looper::prepare(false /*allowNonCallbacks*/);
 
     BinderCallback::setupTo(looper);
     ClientCallbackCallback::setupTo(looper, manager);
-
+    //进入Loop循环中
     while(true) {
+        //取消息进行处理
         looper->pollAll(-1);
     }
 
