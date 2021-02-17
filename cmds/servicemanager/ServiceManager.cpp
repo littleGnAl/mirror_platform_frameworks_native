@@ -209,7 +209,9 @@ bool isValidServiceName(const std::string& name) {
 
     return true;
 }
-
+/**
+* 此处是业务层的addService，用来找到serviceName对应的Service，并阻止应用层服务注册
+**/
 Status ServiceManager::addService(const std::string& name, const sp<IBinder>& binder, bool allowIsolated, int32_t dumpPriority) {
     auto ctx = mAccess->getCallingContext();
 
