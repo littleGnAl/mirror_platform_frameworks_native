@@ -22,6 +22,30 @@
       },
       "revId": "6cbcd4e8e3a75a7a30e88e8ca4b53997a86e4b99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca34cc2_ba5755b4",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-18T22:07:18Z",
+      "side": 1,
+      "message": "nah - we are doing an IPC here anyway - so we might as well do one.\n\nNote - this is a recursive call, guarded by L223.",
+      "parentUuid": "e3a46de5_f0d39d6a",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 62
+      },
+      "revId": "6cbcd4e8e3a75a7a30e88e8ca4b53997a86e4b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
