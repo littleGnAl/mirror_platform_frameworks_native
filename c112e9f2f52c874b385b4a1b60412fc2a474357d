@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "726703c8_4887d68b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2065,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-02-18T10:00:58Z",
+      "side": 1,
+      "message": "I can think of a few alternatives which I think are better. wdyt?\n\n1) write this tmp file into /bugreports/tmp\n\n2) use enqueueTaskWithFd for DumpTraces. Rhed may remember why we could not change DumpTraces to use the fd method. Maybe something to do with the case when parallel runs are turned off?",
+      "range": {
+        "startLine": 2065,
+        "startChar": 22,
+        "endLine": 2065,
+        "endChar": 39
+      },
+      "revId": "c112e9f2f52c874b385b4a1b60412fc2a474357d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
