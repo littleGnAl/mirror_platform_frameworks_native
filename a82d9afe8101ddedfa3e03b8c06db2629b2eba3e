@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5f3cbd_cc347659",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-18T22:00:46Z",
+      "side": 1,
+      "message": "I keep on needing this (see justification of \"DO NOT SUBMIT\" -\u003e submitting in commit message).",
+      "revId": "a82d9afe8101ddedfa3e03b8c06db2629b2eba3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
