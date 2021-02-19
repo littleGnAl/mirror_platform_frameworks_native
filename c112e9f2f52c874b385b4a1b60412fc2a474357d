@@ -22,6 +22,30 @@
       },
       "revId": "c112e9f2f52c874b385b4a1b60412fc2a474357d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e61c30_10546a85",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2065,
+      "author": {
+        "id": 1371409
+      },
+      "writtenOn": "2021-02-19T07:25:58Z",
+      "side": 1,
+      "message": "\u003e Maybe something to do with the case when parallel runs are turned off?\n1. Yes, we still need to create a tmp file for the turned off case.\n2. `waitForTask` only supports to dump results to a specified out_fd. In this case, we still need to create a tmp file for that out_fd. Or, we need a new `waitForTask` to return the file name of tmp file using in the DumpPool.",
+      "parentUuid": "726703c8_4887d68b",
+      "range": {
+        "startLine": 2065,
+        "startChar": 22,
+        "endLine": 2065,
+        "endChar": 39
+      },
+      "revId": "c112e9f2f52c874b385b4a1b60412fc2a474357d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
