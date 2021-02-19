@@ -33,6 +33,7 @@
 #include <unordered_set>
 #include <utility>
 
+#include <android-base/properties.h>
 #include <android-base/strings.h>
 #include <cutils/properties.h>
 #include <log/log.h>
@@ -134,7 +135,7 @@ class OverrideLayerNames {
         // If no layers specified via Settings, check legacy properties
         if (implicit_layers_.count <= 0) {
             ParseDebugVulkanLayers();
-            property_list(ParseDebugVulkanLayer, this);
+            ParseDebugVulkanLayer();
 
             // sort by priorities
             auto& arr = implicit_layers_;
@@ -181,30 +182,22 @@ class OverrideLayerNames {
             AddImplicitLayer(prio, p, strlen(p));
     }
 
-    static void ParseDebugVulkanLayer(const char* key,
-                                      const char* val,
-                                      void* user_data) {
+    void ParseDebugVulkanLayer() {
         static const char prefix[] = "debug.vulkan.layer.";
-        const size_t prefix_len = sizeof(prefix) - 1;
 
-        if (strncmp(key, prefix, prefix_len) || val[0] == '\0')
-            return;
-        key += prefix_len;
+        int priority = 1;
+        while (true) {
+            const std::string prop_key =
+                std::string(prefix) + std::to_string(priority);
+            const std::string prop_val =
+                android::base::GetProperty(prop_key, "");
+            if (prop_val.empty())
+                return;
 
-        // debug.vulkan.layer.<priority>
-        int priority = -1;
-        if (key[0] >= '0' && key[0] <= '9')
-            priority = atoi(key);
+            AddImplicitLayer(priority, prop_val.c_str(), prop_val.length());
 
-        if (priority < 0) {
-            ALOGW("Ignored implicit layer %s with invalid priority %s", val,
-                  key);
-            return;
+            ++priority;
         }
-
-        OverrideLayerNames& override_layers =
-            *reinterpret_cast<OverrideLayerNames*>(user_data);
-        override_layers.AddImplicitLayer(priority, val, strlen(val));
     }
 
     void AddImplicitLayer(int priority, const char* name, size_t len) {
