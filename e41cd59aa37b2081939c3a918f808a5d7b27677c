@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2195bd80_05802ce6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2021-02-19T18:55:51Z",
+      "side": 1,
+      "message": "Chatted with Yi offline, this patch won\u0027t take affect before the profile is checked in",
+      "revId": "e41cd59aa37b2081939c3a918f808a5d7b27677c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
