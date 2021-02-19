@@ -16,6 +16,24 @@
       "message": "Do we have a conformance suite we could add tests for this to? Even if it\u0027s just ensures it returns a non-negative value would be better than nothing.",
       "revId": "d687f33dfa7530adc43e8e0114f6f801811b5dd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "999ada4c_e3c7466c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-19T22:43:24Z",
+      "side": 1,
+      "message": "libbinder_ndk_unit_test is in VTS for this reason (though perhaps I should s/unit/platform/ since it\u0027s really testing the API)",
+      "parentUuid": "68f60f76_b37a131c",
+      "revId": "d687f33dfa7530adc43e8e0114f6f801811b5dd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
