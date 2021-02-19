@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Ready+1: Elliott Hughes <enh@google.com>
+Code-Review+2: Jeff Sharkey <jsharkey@google.com>
+Bypass-Presubmit+1: Jeff Sharkey <jsharkey@google.com>
+Submitted-by: Jeff Sharkey <jsharkey@google.com>
+Submitted-at: Fri, 19 Feb 2021 23:31:27 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1597251
+Project: platform/frameworks/native
+Branch: refs/heads/master
