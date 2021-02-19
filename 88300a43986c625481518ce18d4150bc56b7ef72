@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64adc30a_d8a29948",
+        "filename": "vulkan/libvulkan/api.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1561731
+      },
+      "writtenOn": "2021-02-19T21:01:30Z",
+      "side": 1,
+      "message": "This assumes sequential properties (no gaps) starting at 1. Anyone aware of examples with gaps or not starting at 1? Should we scan some fixed range [1,10] and then do sequential afterwards?",
+      "range": {
+        "startLine": 190,
+        "startChar": 8,
+        "endLine": 190,
+        "endChar": 22
+      },
+      "revId": "88300a43986c625481518ce18d4150bc56b7ef72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
