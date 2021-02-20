@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "821bf681_b97f02a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042793
+      },
+      "writtenOn": "2021-02-20T01:39:14Z",
+      "side": 1,
+      "message": "PTAL?\n\nThis is a preparation to fix Bug 177462676.  I\u0027ve uploaded this CL to AOSP as the lint says AOSP master is the development branch of dumpstate.\n\nFor the corresponding CL in WMS, please check I887ae6941b4844a606675b447f67ecee88d7f192.",
+      "revId": "b2338d7829395d6125bd6ff4057a63bb60ca37a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
