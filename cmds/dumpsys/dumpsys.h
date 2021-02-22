@@ -103,9 +103,10 @@ class Dumpsys {
      * @param fd file descriptor to write data
      * @param serviceName
      * @param elapsedDuration duration of dump
+     * @param useUtc
      */
     void writeDumpFooter(int fd, const String16& serviceName,
-                         const std::chrono::duration<double>& elapsedDuration) const;
+                         const std::chrono::duration<double>& elapsedDuration, bool useUtc) const;
 
     /**
      * Terminates dump thread.

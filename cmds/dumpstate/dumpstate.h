@@ -259,6 +259,20 @@ class Dumpstate {
                     long dumpsys_timeout_ms = 0, int out_fd = STDOUT_FILENO);
 
     /*
+     * Runs `logcat` with the given arguments, automatically setting its
+     * timestamp format (`-v UTC `argument) according to the command options.
+     *
+     * |title| description of the command printed on `stdout` (or empty to skip
+     * description).
+     * |logcat_args| `logcat` arguments (except `-v UTC`).
+     * |options| optional argument defining the command's behavior.
+     */
+    void RunLogcat(const std::string& title, const std::vector<std::string>& logcat_args,
+                   const android::os::dumpstate::CommandOptions& options =
+                       android::os::dumpstate::CommandOptions::DEFAULT,
+                   bool verbose_duration = false);
+
+    /*
      * Prints the contents of a file.
      *
      * |title| description of the command printed on `stdout` (or empty to skip
@@ -266,6 +280,11 @@ class Dumpstate {
      * |path| location of the file to be dumped.
      */
     int DumpFile(const std::string& title, const std::string& path);
+
+    /*
+     * Returns whether UTC or local time should be used.
+     */
+    bool ShouldUseUTC() const;
 
     /*
      * Adds a new entry to the existing zip file.
@@ -403,6 +422,7 @@ class Dumpstate {
         bool wifi_only = false;
         // Trimmed-down version of dumpstate to only include whitelisted logs.
         bool limited_only = false;
+        bool use_utc = false;
         // Whether progress updates should be published.
         bool do_progress_updates = false;
         // The mode we'll use when calling IDumpstateDevice::dumpstateBoard.

@@ -61,15 +61,15 @@ static void usage() {
             "usage: dumpsys\n"
             "         To dump all services.\n"
             "or:\n"
-            "       dumpsys [-t TIMEOUT] [--priority LEVEL] [--pid] [--thread] [--help | -l | "
-            "--skip SERVICES "
-            "| SERVICE [ARGS]]\n"
+            "       dumpsys [-t TIMEOUT] [--priority LEVEL] [--pid] [--thread] [--utc] "
+            "[--help | -l | --skip SERVICES | SERVICE [ARGS]]\n"
             "         --help: shows this help\n"
             "         -l: only list services, do not dump them\n"
             "         -t TIMEOUT_SEC: TIMEOUT to use in seconds instead of default 10 seconds\n"
             "         -T TIMEOUT_MS: TIMEOUT to use in milliseconds instead of default 10 seconds\n"
             "         --pid: dump PID instead of usual dump\n"
             "         --thread: dump thread usage instead of usual dump\n"
+            "         --utc: dump timestamps with UTC and ISO 8601 instead of local time\n"
             "         --proto: filter services that support dumping data in proto format. Dumps\n"
             "               will be in proto format.\n"
             "         --priority LEVEL: filter services based on specified priority\n"
@@ -128,11 +128,13 @@ int Dumpsys::main(int argc, char* const argv[]) {
     Type type = Type::DUMP;
     int timeoutArgMs = 10000;
     int priorityFlags = IServiceManager::DUMP_FLAG_PRIORITY_ALL;
+    bool useUtc = false;
     static struct option longOptions[] = {{"thread", no_argument, 0, 0},
                                           {"pid", no_argument, 0, 0},
                                           {"priority", required_argument, 0, 0},
                                           {"proto", no_argument, 0, 0},
                                           {"skip", no_argument, 0, 0},
+                                          {"utc", no_argument, 0, 0},
                                           {"help", no_argument, 0, 0},
                                           {0, 0, 0, 0}};
 
@@ -169,6 +171,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
                 type = Type::PID;
             } else if (!strcmp(longOptions[optionIndex].name, "thread")) {
                 type = Type::THREAD;
+            } else if (!strcmp(longOptions[optionIndex].name, "utc")) {
+                useUtc = true;
             }
             break;
 
@@ -277,7 +281,7 @@ int Dumpsys::main(int argc, char* const argv[]) {
             }
 
             if (addSeparator) {
-                writeDumpFooter(STDOUT_FILENO, serviceName, elapsedDuration);
+                writeDumpFooter(STDOUT_FILENO, serviceName, elapsedDuration, useUtc);
             }
             bool dumpComplete = (status == OK);
             stopDumpThread(dumpComplete);
@@ -491,13 +495,20 @@ status_t Dumpsys::writeDump(int fd, const String16& serviceName, std::chrono::mi
 }
 
 void Dumpsys::writeDumpFooter(int fd, const String16& serviceName,
-                              const std::chrono::duration<double>& elapsedDuration) const {
+                              const std::chrono::duration<double>& elapsedDuration,
+                              bool useUtc) const {
     using std::chrono::system_clock;
     const auto finish = system_clock::to_time_t(system_clock::now());
-    std::tm finish_tm;
-    localtime_r(&finish, &finish_tm);
     std::stringstream oss;
-    oss << std::put_time(&finish_tm, "%Y-%m-%d %H:%M:%S");
+    if (useUtc) {
+        std::tm finish_tm;
+        gmtime_r(&finish, &finish_tm);
+        oss << std::put_time(&finish_tm, "%FT%TZ");
+    } else {
+        std::tm finish_tm;
+        localtime_r(&finish, &finish_tm);
+        oss << std::put_time(&finish_tm, "%Y-%m-%d %H:%M:%S");
+    }
     std::string msg =
         StringPrintf("--------- %.3fs was the duration of dumpsys %s, ending at: %s\n",
                      elapsedDuration.count(), String8(serviceName).string(), oss.str().c_str());

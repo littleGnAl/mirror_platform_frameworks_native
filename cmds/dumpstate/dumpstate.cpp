@@ -345,8 +345,16 @@ static void RunDumpsys(const std::string& title, const std::vector<std::string>&
                        int out_fd) {
     return ds.RunDumpsys(title, dumpsysArgs, Dumpstate::DEFAULT_DUMPSYS, 0, out_fd);
 }
+static void RunLogcat(const std::string& title, const std::vector<std::string>& logcatArgs,
+                      const CommandOptions& options = CommandOptions::DEFAULT,
+                      bool verbose_duration = false) {
+    return ds.RunLogcat(title, logcatArgs, options, verbose_duration);
+}
 static int DumpFile(const std::string& title, const std::string& path) {
     return ds.DumpFile(title, path);
+}
+static bool ShouldUseUTC() {
+    return ds.ShouldUseUTC();
 }
 
 // Relative directory (inside the zip) for all files copied as-is into the bugreport.
@@ -776,7 +784,11 @@ void Dumpstate::PrintHeader() const {
     radio = android::base::GetProperty("gsm.version.baseband", "(unknown)");
     bootloader = android::base::GetProperty("ro.bootloader", "(unknown)");
     network = android::base::GetProperty("gsm.operator.alpha", "(unknown)");
-    strftime(date, sizeof(date), "%Y-%m-%d %H:%M:%S", localtime(&now_));
+    if (options_->use_utc) {
+        strftime(date, sizeof(date), "%FT%T%z", gmtime(&now_));
+    } else {
+        strftime(date, sizeof(date), "%Y-%m-%d %H:%M:%S", localtime(&now_));
+    }
 
     printf("========================================================\n");
     printf("== dumpstate: %s\n", date);
@@ -979,28 +991,31 @@ static void DoKmsg() {
 
 static void DoKernelLogcat() {
     unsigned long timeout_ms = logcat_timeout({"kernel"});
-    RunCommand(
+    RunLogcat(
         "KERNEL LOG",
-        {"logcat", "-b", "kernel", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        {"-b", "kernel", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build());
 }
 
 static void DoSystemLogcat(time_t since) {
     char since_str[80];
-    strftime(since_str, sizeof(since_str), "%Y-%m-%d %H:%M:%S.000", localtime(&since));
+    if (ShouldUseUTC()) {
+        strftime(since_str, sizeof(since_str), "%FT%T.000%z", gmtime(&since));
+    } else {
+        strftime(since_str, sizeof(since_str), "%Y-%m-%d %H:%M:%S.000", localtime(&since));
+    }
 
     unsigned long timeout_ms = logcat_timeout({"main", "system", "crash"});
-    RunCommand("SYSTEM LOG",
-               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v", "-T",
-                since_str},
-               CommandOptions::WithTimeoutInMs(timeout_ms).Build());
+    RunLogcat("SYSTEM LOG",
+              {"-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v", "-T", since_str},
+              CommandOptions::WithTimeoutInMs(timeout_ms).Build());
 }
 
 static void DoRadioLogcat() {
     unsigned long timeout_ms = logcat_timeout({"radio"});
-    RunCommand(
+    RunLogcat(
         "RADIO LOG",
-        {"logcat", "-b", "radio", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        {"-b", "radio", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
 }
 
@@ -1009,26 +1024,25 @@ static void DoLogcat() {
     // DumpFile("EVENT LOG TAGS", "/etc/event-log-tags");
     // calculate timeout
     timeout_ms = logcat_timeout({"main", "system", "crash"});
-    RunCommand("SYSTEM LOG",
-               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
-               CommandOptions::WithTimeoutInMs(timeout_ms).Build());
+    RunLogcat("SYSTEM LOG", {"-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+              CommandOptions::WithTimeoutInMs(timeout_ms).Build());
     timeout_ms = logcat_timeout({"events"});
-    RunCommand(
+    RunLogcat(
         "EVENT LOG",
-        {"logcat", "-b", "events", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        {"-b", "events", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
     timeout_ms = logcat_timeout({"stats"});
-    RunCommand(
+    RunLogcat(
         "STATS LOG",
-        {"logcat", "-b", "stats", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        {"-b", "stats", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
     DoRadioLogcat();
 
-    RunCommand("LOG STATISTICS", {"logcat", "-b", "all", "-S"});
+    RunLogcat("LOG STATISTICS", {"-b", "all", "-S"});
 
     /* kernels must set CONFIG_PSTORE_PMSG, slice up pstore with device tree */
-    RunCommand("LAST LOGCAT", {"logcat", "-L", "-b", "all", "-v", "threadtime", "-v", "printable",
-                               "-v", "uid", "-d", "*:v"});
+    RunLogcat("LAST LOGCAT",
+              {"-L", "-b", "all", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"});
 }
 
 static void DumpIncidentReport() {
@@ -1242,7 +1256,7 @@ static Dumpstate::RunStatus RunDumpsysTextByPriority(const std::string& title, i
             std::chrono::duration<double> elapsed_seconds;
             status = dumpsys.writeDump(STDOUT_FILENO, service, service_timeout,
                                        /* as_proto = */ false, elapsed_seconds, bytes_written);
-            dumpsys.writeDumpFooter(STDOUT_FILENO, service, elapsed_seconds);
+            dumpsys.writeDumpFooter(STDOUT_FILENO, service, elapsed_seconds, ShouldUseUTC());
             bool dump_complete = (status == OK);
             dumpsys.stopDumpThread(dump_complete);
         }
@@ -1477,13 +1491,12 @@ static void DumpstateLimitedOnly() {
     unsigned long timeout_ms;
     // calculate timeout
     timeout_ms = logcat_timeout({"main", "system", "crash"});
-    RunCommand("SYSTEM LOG",
-               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
-               CommandOptions::WithTimeoutInMs(timeout_ms).Build());
+    RunLogcat("SYSTEM LOG", {"-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+              CommandOptions::WithTimeoutInMs(timeout_ms).Build());
     timeout_ms = logcat_timeout({"events"});
-    RunCommand(
+    RunLogcat(
         "EVENT LOG",
-        {"logcat", "-b", "events", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        {"-b", "events", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build());
 
     printf("========================================================\n");
@@ -2338,7 +2351,7 @@ void Dumpstate::DumpstateBoard(int out_fd) {
 static void ShowUsage() {
     fprintf(stderr,
             "usage: dumpstate [-h] [-b soundfile] [-e soundfile] [-o directory] [-p] "
-            "[-s] [-S] [-q] [-P] [-R] [-L] [-V version]\n"
+            "[-s] [-S] [-q] [-P] [-R] [-u] [-L] [-V version]\n"
             "  -h: display this help message\n"
             "  -b: play sound file instead of vibrate, at beginning of job\n"
             "  -e: play sound file instead of vibrate, at end of job\n"
@@ -2350,6 +2363,7 @@ static void ShowUsage() {
             "  -P: send broadcast when started and do progress updates\n"
             "  -R: take bugreport in remote mode (shouldn't be used with -P)\n"
             "  -w: start binder service and make it wait for a call to startBugreport\n"
+            "  -u: use UTC and ISO 8601 for timestamps\n"
             "  -L: output limited information that is safe for submission in feedback reports\n"
             "  -v: prints the dumpstate header and exit\n");
 }
@@ -2370,7 +2384,11 @@ bool Dumpstate::FinishZipFile() {
     // Final timestamp
     char date[80];
     time_t the_real_now_please_stand_up = time(nullptr);
-    strftime(date, sizeof(date), "%Y/%m/%d %H:%M:%S", localtime(&the_real_now_please_stand_up));
+    if (options_->use_utc) {
+        strftime(date, sizeof(date), "%FT%T%z", gmtime(&the_real_now_please_stand_up));
+    } else {
+        strftime(date, sizeof(date), "%Y/%m/%d %H:%M:%S", localtime(&the_real_now_please_stand_up));
+    }
     MYLOGD("dumpstate id %d finished around %s (%ld s)\n", ds.id_, date,
            the_real_now_please_stand_up - ds.now_);
 
@@ -2456,7 +2474,11 @@ static bool PrepareToWriteToFile() {
     std::string device_name = android::base::GetProperty("ro.product.name", "UNKNOWN_DEVICE");
     ds.base_name_ = StringPrintf("bugreport-%s-%s", device_name.c_str(), build_id.c_str());
     char date[80];
-    strftime(date, sizeof(date), "%Y-%m-%d-%H-%M-%S", localtime(&ds.now_));
+    if (ShouldUseUTC()) {
+        strftime(date, sizeof(date), "%FT%T%z", gmtime(&ds.now_));
+    } else {
+        strftime(date, sizeof(date), "%Y-%m-%d-%H-%M-%S", gmtime(&ds.now_));
+    }
     ds.name_ = date;
 
     if (ds.options_->telephony_only) {
@@ -2618,7 +2640,7 @@ void Dumpstate::DumpOptions::Initialize(BugreportMode bugreport_mode,
 Dumpstate::RunStatus Dumpstate::DumpOptions::Initialize(int argc, char* argv[]) {
     RunStatus status = RunStatus::OK;
     int c;
-    while ((c = getopt(argc, argv, "dho:svqzpLPBRSV:w")) != -1) {
+    while ((c = getopt(argc, argv, "dho:svqzpuLPBRSV:w")) != -1) {
         switch (c) {
             // clang-format off
             case 'o': out_dir = optarg;              break;
@@ -2630,6 +2652,7 @@ Dumpstate::RunStatus Dumpstate::DumpOptions::Initialize(int argc, char* argv[]) 
             case 'P': do_progress_updates = true;    break;
             case 'R': is_remote_mode = true;         break;
             case 'L': limited_only = true;           break;
+            case 'u': use_utc = true;                break;
             case 'V':
             case 'd':
             case 'z':
@@ -3748,6 +3771,10 @@ int Dumpstate::DumpFile(const std::string& title, const std::string& path) {
     return status;
 }
 
+bool Dumpstate::ShouldUseUTC() const {
+    return options_->use_utc;
+}
+
 int read_file_as_long(const char *path, long int *output) {
     int fd = TEMP_FAILURE_RETRY(open(path, O_RDONLY | O_NONBLOCK | O_CLOEXEC));
     if (fd < 0) {
@@ -3879,6 +3906,17 @@ void Dumpstate::RunDumpsys(const std::string& title, const std::vector<std::stri
     std::vector<std::string> dumpsys = {"/system/bin/dumpsys", "-T", std::to_string(timeout_ms)};
     dumpsys.insert(dumpsys.end(), dumpsys_args.begin(), dumpsys_args.end());
     RunCommand(title, dumpsys, options, false, out_fd);
+}
+
+void Dumpstate::RunLogcat(const std::string& title, const std::vector<std::string>& logcat_args,
+                          const CommandOptions& options, bool verbose_duration) {
+    std::vector<std::string> logcat = {"/system/bin/logcat"};
+    if (options_->use_utc) {
+        logcat.push_back("-v");
+        logcat.push_back("UTC");
+    }
+    logcat.insert(logcat.end(), logcat_args.begin(), logcat_args.end());
+    RunCommand(title, logcat, options, verbose_duration);
 }
 
 static int open_socket(const char* service) {

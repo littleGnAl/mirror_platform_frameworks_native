@@ -606,6 +606,19 @@ TEST_F(DumpsysTest, ListServiceWithThread) {
     AssertOutputFormat(format);
 }
 
+// Tests 'dumpsys --utc'
+TEST_F(DumpsysTest, ShowTimestampsWithUTC) {
+    ExpectListServices({"Locksmith", "Valet"});
+    ExpectCheckService("Locksmith");
+    ExpectCheckService("Valet");
+
+    CallMain({"--utc"});
+
+    // const std::string format("[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z");
+    const std::string format("(.|\n)*:[0-9][0-9]Z.*");
+    AssertOutputFormat(format);
+}
+
 TEST_F(DumpsysTest, GetBytesWritten) {
     const char* serviceName = "service2";
     const char* dumpContents = "dump1";
