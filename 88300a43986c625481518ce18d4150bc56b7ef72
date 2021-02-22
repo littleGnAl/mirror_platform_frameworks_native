@@ -190,6 +190,30 @@
       },
       "revId": "88300a43986c625481518ce18d4150bc56b7ef72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f4e35f_eb9b6992",
+        "filename": "vulkan/libvulkan/api.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1293738
+      },
+      "writtenOn": "2021-02-22T18:22:52Z",
+      "side": 1,
+      "message": "So, how many layers? 20? 100? The old behavior of \"unlimited\" isn\u0027t feasible.\n\nI think reading debug.* properties is not limited by sepolicy, it was just reading other properties (which is what property_list() was doing) which is broken.",
+      "parentUuid": "b576fb83_8f79dc56",
+      "range": {
+        "startLine": 190,
+        "startChar": 8,
+        "endLine": 190,
+        "endChar": 22
+      },
+      "revId": "88300a43986c625481518ce18d4150bc56b7ef72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
