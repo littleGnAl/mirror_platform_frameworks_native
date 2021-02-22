@@ -94,6 +94,30 @@
       },
       "revId": "88300a43986c625481518ce18d4150bc56b7ef72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a1476d_76642f91",
+        "filename": "vulkan/libvulkan/api.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1097542
+      },
+      "writtenOn": "2021-02-22T17:49:14Z",
+      "side": 1,
+      "message": "Good point, it is already gated at 1 through 9.  No need for a log message in that case.",
+      "parentUuid": "89900d64_b60ab845",
+      "range": {
+        "startLine": 190,
+        "startChar": 8,
+        "endLine": 190,
+        "endChar": 22
+      },
+      "revId": "88300a43986c625481518ce18d4150bc56b7ef72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
