@@ -34,6 +34,24 @@
       "parentUuid": "191d0f4e_3a298343",
       "revId": "fb6fcbde8e18c9e60b5432f3dc826385323cf48b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9452a70_894001ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-22T23:15:54Z",
+      "side": 1,
+      "message": "The target exists in internal master, in the same location. There must be some other issue?",
+      "parentUuid": "f4c2b91f_b8b8c8df",
+      "revId": "fb6fcbde8e18c9e60b5432f3dc826385323cf48b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
