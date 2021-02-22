@@ -776,7 +776,7 @@ void Dumpstate::PrintHeader() const {
     radio = android::base::GetProperty("gsm.version.baseband", "(unknown)");
     bootloader = android::base::GetProperty("ro.bootloader", "(unknown)");
     network = android::base::GetProperty("gsm.operator.alpha", "(unknown)");
-    strftime(date, sizeof(date), "%Y-%m-%d %H:%M:%S", localtime(&now_));
+    strftime(date, sizeof(date), "%FT%T%z", gmtime(&now_));
 
     printf("========================================================\n");
     printf("== dumpstate: %s\n", date);
@@ -978,17 +978,17 @@ static void DoKernelLogcat() {
     unsigned long timeout_ms = logcat_timeout({"kernel"});
     RunCommand(
         "KERNEL LOG",
-        {"logcat", "-b", "kernel", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        {"logcat", "-b", "kernel", "-v", "threadtime", "-v", "printable", "-v", "uid", "-v", "UTC", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build());
 }
 
 static void DoSystemLogcat(time_t since) {
     char since_str[80];
-    strftime(since_str, sizeof(since_str), "%Y-%m-%d %H:%M:%S.000", localtime(&since));
+    strftime(since_str, sizeof(since_str), "%FT%T.000%z", gmtime(&since));
 
     unsigned long timeout_ms = logcat_timeout({"main", "system", "crash"});
     RunCommand("SYSTEM LOG",
-               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v", "-T",
+               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-v", "UTC", "-d", "*:v", "-T",
                 since_str},
                CommandOptions::WithTimeoutInMs(timeout_ms).Build());
 }
@@ -997,7 +997,7 @@ static void DoRadioLogcat() {
     unsigned long timeout_ms = logcat_timeout({"radio"});
     RunCommand(
         "RADIO LOG",
-        {"logcat", "-b", "radio", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        {"logcat", "-b", "radio", "-v", "threadtime", "-v", "printable", "-v", "uid", "-v", "UTC", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
 }
 
@@ -1007,17 +1007,17 @@ static void DoLogcat() {
     // calculate timeout
     timeout_ms = logcat_timeout({"main", "system", "crash"});
     RunCommand("SYSTEM LOG",
-               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-v", "UTC", "-d", "*:v"},
                CommandOptions::WithTimeoutInMs(timeout_ms).Build());
     timeout_ms = logcat_timeout({"events"});
     RunCommand(
         "EVENT LOG",
-        {"logcat", "-b", "events", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        {"logcat", "-b", "events", "-v", "threadtime", "-v", "printable", "-v", "uid", "-v", "UTC", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
     timeout_ms = logcat_timeout({"stats"});
     RunCommand(
         "STATS LOG",
-        {"logcat", "-b", "stats", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        {"logcat", "-b", "stats", "-v", "threadtime", "-v", "printable", "-v", "uid", "-v", "UTC", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
     DoRadioLogcat();
 
@@ -1025,7 +1025,7 @@ static void DoLogcat() {
 
     /* kernels must set CONFIG_PSTORE_PMSG, slice up pstore with device tree */
     RunCommand("LAST LOGCAT", {"logcat", "-L", "-b", "all", "-v", "threadtime", "-v", "printable",
-                               "-v", "uid", "-d", "*:v"});
+                               "-v", "uid", "-v", "UTC", "-d", "*:v"});
 }
 
 static void DumpIncidentReport() {
@@ -1479,12 +1479,12 @@ static void DumpstateLimitedOnly() {
     // calculate timeout
     timeout_ms = logcat_timeout({"main", "system", "crash"});
     RunCommand("SYSTEM LOG",
-               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-v", "UTC", "-d", "*:v"},
                CommandOptions::WithTimeoutInMs(timeout_ms).Build());
     timeout_ms = logcat_timeout({"events"});
     RunCommand(
         "EVENT LOG",
-        {"logcat", "-b", "events", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        {"logcat", "-b", "events", "-v", "threadtime", "-v", "printable", "-v", "uid", "-v", "UTC", "-d", "*:v"},
         CommandOptions::WithTimeoutInMs(timeout_ms).Build());
 
     printf("========================================================\n");
@@ -2356,7 +2356,7 @@ bool Dumpstate::FinishZipFile() {
     // Final timestamp
     char date[80];
     time_t the_real_now_please_stand_up = time(nullptr);
-    strftime(date, sizeof(date), "%Y/%m/%d %H:%M:%S", localtime(&the_real_now_please_stand_up));
+    strftime(date, sizeof(date), "%FT%T%z", gmtime(&the_real_now_please_stand_up));
     MYLOGD("dumpstate id %d finished around %s (%ld s)\n", ds.id_, date,
            the_real_now_please_stand_up - ds.now_);
 
@@ -2442,7 +2442,7 @@ static bool PrepareToWriteToFile() {
     std::string device_name = android::base::GetProperty("ro.product.name", "UNKNOWN_DEVICE");
     ds.base_name_ = StringPrintf("bugreport-%s-%s", device_name.c_str(), build_id.c_str());
     char date[80];
-    strftime(date, sizeof(date), "%Y-%m-%d-%H-%M-%S", localtime(&ds.now_));
+    strftime(date, sizeof(date), "%Y-%m-%d-%H-%M-%S", gmtime(&ds.now_));
     ds.name_ = date;
 
     if (ds.options_->telephony_only) {

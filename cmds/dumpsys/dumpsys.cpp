@@ -469,9 +469,9 @@ void Dumpsys::writeDumpFooter(int fd, const String16& serviceName,
     using std::chrono::system_clock;
     const auto finish = system_clock::to_time_t(system_clock::now());
     std::tm finish_tm;
-    localtime_r(&finish, &finish_tm);
+    gmtime_r(&finish, &finish_tm);
     std::stringstream oss;
-    oss << std::put_time(&finish_tm, "%Y-%m-%d %H:%M:%S");
+    oss << std::put_time(&finish_tm, "%FT%TZ");
     std::string msg =
         StringPrintf("--------- %.3fs was the duration of dumpsys %s, ending at: %s\n",
                      elapsedDuration.count(), String8(serviceName).string(), oss.str().c_str());
