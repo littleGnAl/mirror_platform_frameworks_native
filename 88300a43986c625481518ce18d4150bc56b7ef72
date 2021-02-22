@@ -22,6 +22,30 @@
       },
       "revId": "88300a43986c625481518ce18d4150bc56b7ef72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071fbf78_38ff26cf",
+        "filename": "vulkan/libvulkan/api.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1097542
+      },
+      "writtenOn": "2021-02-22T16:56:23Z",
+      "side": 1,
+      "message": "I don\u0027t have visibility into whether folks are using disjoint sets.  But since it used to work, I like the idea of scanning a fixed range, just in case they are, with an accompanying (one time) LOG message stating as much.\n\n+zzyiwei for his thoughts.",
+      "parentUuid": "64adc30a_d8a29948",
+      "range": {
+        "startLine": 190,
+        "startChar": 8,
+        "endLine": 190,
+        "endChar": 22
+      },
+      "revId": "88300a43986c625481518ce18d4150bc56b7ef72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
