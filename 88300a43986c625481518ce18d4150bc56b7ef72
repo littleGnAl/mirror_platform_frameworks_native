@@ -46,6 +46,30 @@
       },
       "revId": "88300a43986c625481518ce18d4150bc56b7ef72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb94a6ce_e8fbe7cc",
+        "filename": "vulkan/libvulkan/api.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-02-22T17:41:24Z",
+      "side": 1,
+      "message": "It\u0027s possible for folks to use discrete priorities. They can initially use sequential, but customize in script to silence certain layers in between.\n\nI\u0027d agree with Cody on the idea of scanning for a fixed range as a trade off here. Practically I\u0027ve never seen using more than 10 layers...(validation layers nowadays also unifies into one big layer). if the penalty of checking a non-exist prop is trivial enough, we can check a bit more here, otherwise 0~9 is fine from my pov. Proper comments need to be made here for this \"behavior change\".",
+      "parentUuid": "071fbf78_38ff26cf",
+      "range": {
+        "startLine": 190,
+        "startChar": 8,
+        "endLine": 190,
+        "endChar": 22
+      },
+      "revId": "88300a43986c625481518ce18d4150bc56b7ef72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
