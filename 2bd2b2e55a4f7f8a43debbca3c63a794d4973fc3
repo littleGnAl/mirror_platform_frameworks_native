@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1887a6_33f736d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-23T05:33:36Z",
+      "side": 1,
+      "message": "I will self approve as this is a trivial change and I have waited too long.",
+      "revId": "2bd2b2e55a4f7f8a43debbca3c63a794d4973fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
