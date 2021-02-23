@@ -70,6 +70,24 @@
       "parentUuid": "b9452a70_894001ed",
       "revId": "fb6fcbde8e18c9e60b5432f3dc826385323cf48b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e895e641_894995c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2021-02-23T02:49:59Z",
+      "side": 1,
+      "message": "Ok Colin, answered. it was my own mistake, seems git_master was way slower to merge than i expected.\n\nit ran properly in the latest TH run:\nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI41200007632026722\u0026redirect\u003dhttp%3A%2F%2Fsponge2%2Fad6ee584-f1ef-48f3-97ae-633cd9b566f2\u0026testResultId\u003dTR69817857763570992",
+      "parentUuid": "a13553cd_b90da349",
+      "revId": "fb6fcbde8e18c9e60b5432f3dc826385323cf48b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
