@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9469323_f494c16c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2021-02-23T12:45:33Z",
+      "side": 1,
+      "message": "CP 1/2 for atrace.rc in aosp",
+      "revId": "893507a0025244245b2fa68054e200e0a43e2c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
