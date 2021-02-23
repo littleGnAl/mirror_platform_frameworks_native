@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84de1eb8_9a0881f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-02-23T18:30:20Z",
+      "side": 1,
+      "message": "stoza@ was already removed from OWNERS in aosp/1575981. You\u0027ll probably need to rebase.",
+      "revId": "fdfb3c5813dad78bc540b48224ed3449dbc7f856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
