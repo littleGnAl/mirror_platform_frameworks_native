@@ -88,6 +88,24 @@
       "parentUuid": "a13553cd_b90da349",
       "revId": "fb6fcbde8e18c9e60b5432f3dc826385323cf48b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02ed20eb_7fd42702",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-23T19:26:33Z",
+      "side": 1,
+      "message": "Thank you for looking into it! That automerger cherry-pick flow! btw b/135298384 is essentially for this same issue, though closed as obsolete, since it would require reworking many many many things in our infra.",
+      "parentUuid": "e895e641_894995c9",
+      "revId": "fb6fcbde8e18c9e60b5432f3dc826385323cf48b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
