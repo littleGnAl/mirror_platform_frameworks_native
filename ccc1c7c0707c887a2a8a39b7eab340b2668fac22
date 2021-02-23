@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cb5a3bc_64222577",
+        "filename": "libs/gui/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-02-23T19:01:01Z",
+      "side": 1,
+      "message": "what does this do?",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 23
+      },
+      "revId": "ccc1c7c0707c887a2a8a39b7eab340b2668fac22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
