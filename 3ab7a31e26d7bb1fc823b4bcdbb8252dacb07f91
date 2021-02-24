@@ -16,6 +16,24 @@
       "message": "After conversation with smoreland@, we should probably wait on committing a benchmark until criterion is available. We can whip up a simple other binary for what we were going to use this for.",
       "revId": "3ab7a31e26d7bb1fc823b4bcdbb8252dacb07f91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae083c4_0515abf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2021-02-24T17:34:30Z",
+      "side": 1,
+      "message": "Ok, but criterion results may not be 1 to 1 comparable against the original C++ version of this benchmark, which was my goal here. That\u0027s why I went out of my way to call the same libc API directly to get timing, because the proper Rust API has lock contention.",
+      "parentUuid": "f9534bbb_94b8b166",
+      "revId": "3ab7a31e26d7bb1fc823b4bcdbb8252dacb07f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
