@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9216daa9_65ad2bfd",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-02-24T01:37:26Z",
+      "side": 1,
+      "message": "The other binder rust tests do use separate processes, but I didn\u0027t think the extra complexity was worthwhile for this test considering that it is purely testing serialization. I can revisit that if it really is worth doing.",
+      "parentUuid": "7d9218e2_cdb26896",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "1729e90887264a30f668bf3bfb5bb5b255d0a7fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c35fcbd_62e0cc4a",
         "filename": "libs/binder/rust/tests/serialization.rs",
         "patchSetId": 1
