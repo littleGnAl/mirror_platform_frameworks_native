@@ -1,0 +1,12 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Sumir Kataria <sumir@google.com>
+Code-Review+2: John Reck <jreck@google.com>
+Code-Review+2: Alec Mouri <alecmouri@google.com>
+Bypass-Presubmit+1: Yi Kong <yikong@google.com>
+Submitted-by: Yi Kong <yikong@google.com>
+Submitted-at: Wed, 24 Feb 2021 05:10:41 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/frameworks/native/+/1601373
+Project: platform/frameworks/native
+Branch: refs/heads/master
