@@ -16,6 +16,23 @@
       "message": "Please tell me if we should make new options instead of changing the default behavior.",
       "revId": "c6b45ccdf9c47f85a9d10720878ab6190c57dae5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "862a90ee_d67b2f78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-02-24T09:20:34Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is a good change. \n1) The bugreport file names are in local time and the logs should be easily comparable to the file name to understand when the problematic event for which the current bugreport is being taken happened\n2) there are dumpsys tests somewhere, which may break\n3) there are tools that parse this logs like go/abt and others and I cannot assert off the top of my head that this is a safe change",
+      "revId": "c6b45ccdf9c47f85a9d10720878ab6190c57dae5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
