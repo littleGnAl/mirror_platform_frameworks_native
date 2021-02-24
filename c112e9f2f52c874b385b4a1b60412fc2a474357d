@@ -46,6 +46,30 @@
       },
       "revId": "c112e9f2f52c874b385b4a1b60412fc2a474357d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a73a93_f22ad55d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2065,
+      "author": {
+        "id": 1448822
+      },
+      "writtenOn": "2021-02-24T23:58:12Z",
+      "side": 1,
+      "message": "Done. Moved to internal directory instead",
+      "parentUuid": "66e61c30_10546a85",
+      "range": {
+        "startLine": 2065,
+        "startChar": 22,
+        "endLine": 2065,
+        "endChar": 39
+      },
+      "revId": "c112e9f2f52c874b385b4a1b60412fc2a474357d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
