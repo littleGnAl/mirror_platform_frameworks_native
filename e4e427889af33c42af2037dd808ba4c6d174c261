@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06806b77_6dd1182f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-02-25T00:31:17Z",
+      "side": 1,
+      "message": "Should probably add a \"Bug:\" tag.",
+      "revId": "e4e427889af33c42af2037dd808ba4c6d174c261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc74f4c_64b7d585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-02-25T00:31:17Z",
+      "side": 1,
+      "message": "LGTM since it matches ANGLEGetDisplayPlatform above.",
+      "revId": "e4e427889af33c42af2037dd808ba4c6d174c261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
