@@ -33,6 +33,23 @@
       "message": "LGTM since it matches ANGLEGetDisplayPlatform above.",
       "revId": "e4e427889af33c42af2037dd808ba4c6d174c261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c806624_5f4a08a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-02-25T00:46:08Z",
+      "side": 1,
+      "message": "Ah...conflict was introduced by my prior huge refactoring http://ag/12368531. You\u0027d have to resolve on sc-dev first.",
+      "revId": "e4e427889af33c42af2037dd808ba4c6d174c261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
