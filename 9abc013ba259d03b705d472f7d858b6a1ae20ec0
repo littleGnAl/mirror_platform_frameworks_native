@@ -16,6 +16,24 @@
       "message": "Hi, sorry, it seems my comment on the bug got lost or didn\u0027t make it to the author.\n\nCan you help me understand why this is suddenly became an issue? This code has been working for a long time without changing much. I\u0027m worried its actually something else that change or broke and we are covering over it.",
       "revId": "9abc013ba259d03b705d472f7d858b6a1ae20ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5d250f_194ecbc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2021-02-25T02:43:09Z",
+      "side": 1,
+      "message": "Can you help me understand why this is suddenly became an issue?\nAnswer:\nIt became an issue since we have high frame rate project, for example 90hz or 120hz project.\nThere is no this issue on our 60hz project.\nBefore Android Q, we have only 60hz project, so wo we don\u0027t have this issue.\nBut since Android Q, we have high frame rate project, this issue became.\n\nQuestion:\nThis code has been working for a long time without changing much.\nAnswer:\nBesides, some code is changed on Android R, for example below code, It leads to new problem.\n    // Expected present time is computed and cached on invalidate, so it may be stale.\n    if (!pendingTransactions) {\n        mExpectedPresentTime \u003d calculateExpectedPresentTime(systemTime());\n    }",
+      "parentUuid": "bf5647c4_037c4614",
+      "revId": "9abc013ba259d03b705d472f7d858b6a1ae20ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
