@@ -68,6 +68,24 @@
       "parentUuid": "862a90ee_d67b2f78",
       "revId": "c6b45ccdf9c47f85a9d10720878ab6190c57dae5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a1e4fe0_5ebbc7fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067793
+      },
+      "writtenOn": "2021-02-25T23:55:17Z",
+      "side": 1,
+      "message": "Please take a look at an example: ag/11550006",
+      "parentUuid": "d385cccd_31f9b6db",
+      "revId": "c6b45ccdf9c47f85a9d10720878ab6190c57dae5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
