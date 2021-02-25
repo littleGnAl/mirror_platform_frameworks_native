@@ -50,6 +50,24 @@
       "message": "Hi,\n\nI think there\u0027s downstream tools that probably depend on the current behavior, might need some investigation before making this change.",
       "revId": "c6b45ccdf9c47f85a9d10720878ab6190c57dae5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d385cccd_31f9b6db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1715425
+      },
+      "writtenOn": "2021-02-25T04:45:14Z",
+      "side": 1,
+      "message": "Then, how about adding this as a new option like \"--utc\" while keeping the default behavior?",
+      "parentUuid": "862a90ee_d67b2f78",
+      "revId": "c6b45ccdf9c47f85a9d10720878ab6190c57dae5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
