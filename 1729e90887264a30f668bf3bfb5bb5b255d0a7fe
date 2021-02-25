@@ -237,6 +237,24 @@
       "parentUuid": "aca3a294_fc33ca6a",
       "revId": "1729e90887264a30f668bf3bfb5bb5b255d0a7fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5486c1b_bdf3488f",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-25T01:29:08Z",
+      "side": 1,
+      "message": "That is if it\u0027s it\u0027s in the same process, yeah. For testing another process though - let it crash as-is",
+      "parentUuid": "65a68cc0_7a6135ec",
+      "revId": "1729e90887264a30f668bf3bfb5bb5b255d0a7fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
