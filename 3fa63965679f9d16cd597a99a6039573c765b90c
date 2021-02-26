@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2cd970c_d1a284a9",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-02-26T11:21:56Z",
+      "side": 0,
+      "message": "thanks!. seems like some policies in system/sepolicy/public/dumpstate.te can also be now removed",
+      "range": {
+        "startLine": 1211,
+        "startChar": 1,
+        "endLine": 1214,
+        "endChar": 65
+      },
+      "revId": "3fa63965679f9d16cd597a99a6039573c765b90c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
