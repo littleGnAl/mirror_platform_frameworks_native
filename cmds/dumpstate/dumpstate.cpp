@@ -2911,6 +2911,9 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         // own activity pushes out interesting data from the trace ring buffer.
         // The trace file is added to the zip by MaybeAddSystemTraceToZip().
         MaybeSnapshotSystemTrace();
+
+        // Also take wintrace snapshot if necessary.
+        MaybeSnapshotWinTrace();
     }
     onUiIntensiveBugreportDumpsFinished(calling_uid);
     MaybeCheckUserConsent(calling_uid, calling_package);
@@ -3020,6 +3023,14 @@ void Dumpstate::MaybeSnapshotSystemTrace() {
     has_system_trace_ = res == 0;
     // MaybeAddSystemTraceToZip() will take care of copying the trace in the zip
     // file in the later stages.
+}
+
+void Dumpstate::MaybeSnapshotWinTrace() {
+    RunCommand(
+        // Empty name because it's not intended to be classified as a bugreport section.
+        // Actual tracing files can be found in "/data/misc/wmtrace" on the device.
+        "", {"cmd", "window", "tracing", "save-for-bugreport"},
+        CommandOptions::WithTimeout(10).Always().DropRoot().RedirectStderr().Build());
 }
 
 void Dumpstate::onUiIntensiveBugreportDumpsFinished(int32_t calling_uid) {
