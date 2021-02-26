@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008507789",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1610953?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "4dd635e6_ce379761",
+          "description": "Change to \"libs/binder/rust/src/binder.rs\"",
+          "replacements": [
+            {
+              "path": "libs/binder/rust/src/binder.rs",
+              "range": {
+                "startLine": 65,
+                "startChar": 27,
+                "endLine": 65,
+                "endChar": 35
+              },
+              "replacement": "visible"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "edf14ce1_39cb666f",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-26T22:53:50Z",
+      "side": 1,
+      "message": "Common typo found: \"visibile\" -- should it be \"visible\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 65,
+        "startChar": 27,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "d20a21344ab11357cb5b6e2c42dd6997f5b2e55a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
