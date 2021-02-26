@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ce3b09_d46930fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-02-26T15:28:02Z",
+      "side": 1,
+      "message": "how big are these extra files for currently active traces? can you confirm you need both these and dumpsys critical output?",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0650584c_08fb1590",
@@ -31,6 +54,29 @@
       "writtenOn": "2021-02-24T19:43:41Z",
       "side": 1,
       "message": "I\u0027ll defer to the more local dumpstate OWNERS; likely nandana?",
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c9b4ef_18d629ea",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3030,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-02-26T15:28:02Z",
+      "side": 1,
+      "message": "a comment about where to find the output would be useful. wm_trace.pb in zip file?",
+      "range": {
+        "startLine": 3030,
+        "startChar": 15,
+        "endLine": 3030,
+        "endChar": 16
+      },
       "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
