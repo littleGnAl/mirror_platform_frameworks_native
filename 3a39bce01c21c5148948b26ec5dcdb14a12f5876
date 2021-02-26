@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "da15c01b_d941493c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1042793
+      },
+      "writtenOn": "2021-02-26T17:39:02Z",
+      "side": 1,
+      "message": "\u003e how big are these extra files for currently active traces?\n\nFor wm_trace.pb, it has runtime-configurable size limit, which is configured to be 2 MB by default here.\nhttps://cs.android.com/android/_/android/platform/frameworks/base/+/eaf3fd59ff13c97ffec994d3cd1eafe96e0472fb:services/core/java/com/android/server/wm/WindowTracing.java;l\u003d55;bpv\u003d0;bpt\u003d0\n\nFor wm_log.pb, it has fixed size limit, which is configured to be 1 MB here.\nhttps://source.corp.google.com/h/googleplex-android/platform/frameworks/base/+/d10f62af641dfcba895de231a978b40d66a0f5de:core/java/com/android/internal/protolog/ProtoLogImpl.java;l\u003d30;bpv\u003d0;bpt\u003d0\n\nNote that this CL does not increase bugreport size in practice.  These files are already included in bugreports since the following commit.\nhttps://cs.android.com/android/_/android/platform/frameworks/base/+/9e2604688d4c64ea95128f9d8b3b08da508532dd\n\nThe goal of this CL to change the code path with keeping these files to be included in bugreport.\n\nnatanieljr@ and roosa@: Please correct me if I misunderstood something.\n\n\u003e can you confirm you need both these and dumpsys critical output?\n\nYes, I can confirm that both are necessary.\nvishnun@ and natanieljr@: Please correct me if I misunderstood something.",
+      "parentUuid": "79ce3b09_d46930fb",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0650584c_08fb1590",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-26T15:28:02Z",
       "side": 1,
       "message": "a comment about where to find the output would be useful. wm_trace.pb in zip file?",
+      "range": {
+        "startLine": 3030,
+        "startChar": 15,
+        "endLine": 3030,
+        "endChar": 16
+      },
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83572ccc_92114c00",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3030,
+      "author": {
+        "id": 1042793
+      },
+      "writtenOn": "2021-02-26T17:39:02Z",
+      "side": 1,
+      "message": "Nice suggestion.  Done.",
+      "parentUuid": "03c9b4ef_18d629ea",
       "range": {
         "startLine": 3030,
         "startChar": 15,
