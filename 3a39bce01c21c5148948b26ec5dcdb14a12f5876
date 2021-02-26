@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5523747a_e2426bae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2021-02-26T18:49:59Z",
+      "side": 1,
+      "message": "\u003e how big are these extra files for currently active traces?\nThat\u0027s correct. They were previously added as part of the critical dump. But Yohei\u0027s change makes this explicit and clear. Also the traces are only available if they were triggered to run by the user.\n\n\u003e can you confirm you need both these and dumpsys critical output?\n\nYes they are both needed. The critical output is a snapshot but it contains a more details that the trace.",
+      "parentUuid": "da15c01b_d941493c",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0650584c_08fb1590",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
