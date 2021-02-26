@@ -107,8 +107,8 @@ use binder_ndk_sys as sys;
 pub mod parcel;
 
 pub use crate::binder::{
-    FromIBinder, IBinder, Interface, InterfaceClass, Remotable, Strong, TransactionCode,
-    TransactionFlags, Weak,
+    FromIBinder, IBinder, Interface, InterfaceClass, Remotable, Stability, Strong,
+    TransactionCode, TransactionFlags, Weak,
 };
 pub use error::{status_t, ExceptionCode, Result, Status, StatusCode};
 pub use native::add_service;
