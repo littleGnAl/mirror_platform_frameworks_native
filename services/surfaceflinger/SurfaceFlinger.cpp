@@ -1974,6 +1974,8 @@ void SurfaceFlinger::onMessageRefresh() {
 
     postFrame();
     postComposition();
+    mClientColorMatrix = mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                              vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     const bool prevFrameHadDeviceComposition = mHadDeviceComposition;
 
@@ -6205,5 +6207,5 @@ void SurfaceFlinger::enableRefreshRateOverlay(bool enable) {
 #error "don't include gl2/gl2.h in this file"
 #endif
 
-// TODO(b/129481165): remove the #pragma below and fix conversion issues
+// TODO(b/129481165): remove the #pragma below and fix conversion issue
 #pragma clang diagnostic pop // ignored "-Wconversion"
