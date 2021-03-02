@@ -86,6 +86,24 @@
       "parentUuid": "d385cccd_31f9b6db",
       "revId": "c6b45ccdf9c47f85a9d10720878ab6190c57dae5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe562c2_2ea4a4f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-03-02T09:05:04Z",
+      "side": 1,
+      "message": "yeah -utc would be ok with me if it proves to non-invasive.",
+      "parentUuid": "9a1e4fe0_5ebbc7fe",
+      "revId": "c6b45ccdf9c47f85a9d10720878ab6190c57dae5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
