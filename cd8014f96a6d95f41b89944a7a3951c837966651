@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd716d37_6ae2486d",
+        "filename": "vulkan/vkjson/vkjson.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-03-02T05:29:39Z",
+      "side": 1,
+      "message": "Below would be more preferred:\nif (!reader-\u003eparse(json.data(), json.data() + json.size(), \u0026object, errors)) {",
+      "revId": "cd8014f96a6d95f41b89944a7a3951c837966651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
