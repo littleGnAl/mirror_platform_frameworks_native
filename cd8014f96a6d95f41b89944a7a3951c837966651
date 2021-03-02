@@ -16,6 +16,24 @@
       "message": "Below would be more preferred:\nif (!reader-\u003eparse(json.data(), json.data() + json.size(), \u0026object, errors)) {",
       "revId": "cd8014f96a6d95f41b89944a7a3951c837966651",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b31568f_78d27a01",
+        "filename": "vulkan/vkjson/vkjson.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1307957
+      },
+      "writtenOn": "2021-03-02T19:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd716d37_6ae2486d",
+      "revId": "cd8014f96a6d95f41b89944a7a3951c837966651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
