@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "61073678_0a85cfee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-03-02T09:00:31Z",
+      "side": 1,
+      "message": "Sorry I\u0027m missing how it\u0027s not adding to the bugreport overall size. Is it being subtracted from WMS\u0027s dump? \"Yes, I can confirm that both are necessary.\" indicates that it\u0027s not being subtracted.\n\nI\u0027m asking because it would be good to add to track increases in byte size and usually we add them to commit messages.",
+      "parentUuid": "5523747a_e2426bae",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0650584c_08fb1590",
@@ -143,6 +167,30 @@
       "side": 1,
       "message": "Nice suggestion.  Done.",
       "parentUuid": "03c9b4ef_18d629ea",
+      "range": {
+        "startLine": 3030,
+        "startChar": 15,
+        "endLine": 3030,
+        "endChar": 16
+      },
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c804e390_01d94af7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3030,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-03-02T09:00:31Z",
+      "side": 1,
+      "message": "it\u0027s more useful to say where in the zip file to find the protos.",
+      "parentUuid": "83572ccc_92114c00",
       "range": {
         "startLine": 3030,
         "startChar": 15,
