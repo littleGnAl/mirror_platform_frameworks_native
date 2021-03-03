@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67052c70_e9da01f3",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-03-03T19:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f22339e_9b5b320f",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "2632973dc8897f9ea3b0399f3a44598b7b1e1267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d531fd66_38a8a5c0",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-03T04:50:35Z",
       "side": 1,
       "message": "group them together(should be handled by clang-format)",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "2632973dc8897f9ea3b0399f3a44598b7b1e1267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c062d6db_e4b3ca7f",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-03-03T19:44:25Z",
+      "side": 1,
+      "message": "Done.\n\nrepo upload didn\u0027t flag anything though, which seems weird.",
+      "parentUuid": "d531fd66_38a8a5c0",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -98,6 +146,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52601a69_110500a4",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-03-03T19:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ee4f73b_1b980dcd",
+      "revId": "2632973dc8897f9ea3b0399f3a44598b7b1e1267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48b3a299_9632d318",
@@ -111,6 +177,30 @@
       "writtenOn": "2021-03-03T04:50:35Z",
       "side": 1,
       "message": "\"libGLESv2_\" + angleEs2LibSuffix + \".so\";\n\nandroid::base::GetProperty gives you std::string back.",
+      "range": {
+        "startLine": 132,
+        "startChar": 38,
+        "endLine": 134,
+        "endChar": 38
+      },
+      "revId": "2632973dc8897f9ea3b0399f3a44598b7b1e1267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17df9ce_9d210eb3",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-03-03T19:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48b3a299_9632d318",
       "range": {
         "startLine": 132,
         "startChar": 38,

@@ -22,6 +22,30 @@
       },
       "revId": "e9b81a40004a1996f57976d30b99749abcf89580",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e38fd5_b47cb8b3",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-03-03T19:44:25Z",
+      "side": 0,
+      "message": "Ah, good catch.   I didn\u0027t hit any conflicts with repo, but updating with repo also seems to do something unexpected most times anyway.",
+      "parentUuid": "bb059969_616806df",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "e9b81a40004a1996f57976d30b99749abcf89580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
