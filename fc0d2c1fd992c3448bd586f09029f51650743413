@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "587b6f37_83550e1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-03-03T22:05:22Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the behavior is if I +2 this WRT autosubmit since I\u0027m the last uploader. I\u0027ll just leave it +1 to wait for someone else.\n\nPTAL",
+      "revId": "fc0d2c1fd992c3448bd586f09029f51650743413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
