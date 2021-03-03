@@ -24,11 +24,17 @@
 namespace android {
 namespace installd {
 
-bool ParseFile(const std::string& strFile, std::function<bool (const std::string&)> parse) {
+enum class ParseResult {
+  kSuccess,
+  kNoFile,
+  kBadLine,
+};
+
+ParseResult ParseFile(const std::string& strFile, std::function<bool (const std::string&)> parse) {
     std::ifstream input_stream(strFile);
 
     if (!input_stream.is_open()) {
-        return false;
+        return ParseResult::kNoFile;
     }
 
     while (!input_stream.eof()) {
@@ -47,11 +53,11 @@ bool ParseFile(const std::string& strFile, std::function<bool (const std::string
         }
 
         if (!parse(line)) {
-            return false;
+            return ParseResult::kBadLine;
         }
     }
 
-    return true;
+    return ParseResult::kSuccess;
 }
 
 }  // namespace installd

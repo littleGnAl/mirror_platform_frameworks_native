@@ -180,8 +180,12 @@ private:
         };
 
         for (size_t i = 0; i < arraysize(kPropertyFiles); ++i) {
-            if (!system_properties_.Load(kPropertyFiles[i])) {
+            // Ignore missing files!
+            ParseResult res = system_properties_.Load(kPropertyFiles[i]);
+            if (res == ParseResult::kBadLine) {
                 return false;
+            } else if (res == ParseResult::kNoFile) {
+                LOG(ERROR) << "Could not find property file " << kPropertyFiles[i];
             }
         }
 
@@ -194,7 +198,7 @@ private:
         // For simplicity, don't respect string quotation. The values we are interested in can be
         // encoded without them.
         std::regex export_regex("\\s*export\\s+(\\S+)\\s+(\\S+)");
-        bool parse_result = ParseFile("/init.environ.rc", [&](const std::string& line) {
+        ParseResult parse_result = ParseFile("/init.environ.rc", [&](const std::string& line) {
             std::smatch export_match;
             if (!std::regex_match(line, export_match, export_regex)) {
                 return true;
@@ -211,7 +215,7 @@ private:
 
             return true;
         });
-        if (!parse_result) {
+        if (parse_result != ParseResult::kSuccess) {
             return false;
         }
 

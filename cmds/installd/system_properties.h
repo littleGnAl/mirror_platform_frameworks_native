@@ -22,6 +22,7 @@
 #include <unordered_map>
 
 #include <file_parsing.h>
+#include <android-base/logging.h>
 
 namespace android {
 namespace installd {
@@ -29,7 +30,7 @@ namespace installd {
 // Helper class to read system properties into and manage as a string->string map.
 class SystemProperties {
  public:
-    bool Load(const std::string& strFile) {
+    ParseResult Load(const std::string& strFile) {
         return ParseFile(strFile, [&](const std::string& line) {
             size_t equals_pos = line.find('=');
             if (equals_pos == std::string::npos || equals_pos == 0) {
@@ -52,6 +53,8 @@ class SystemProperties {
         auto it = properties_.find(key);
         if (it != properties_.end()) {
             return &it->second;
+        } else {
+            LOG(ERROR) << "Failed to find property " << key;
         }
         return nullptr;
     }
