@@ -39,6 +39,30 @@
       },
       "revId": "f8526e8a2c34709c120adb3a6c6a6f650f1a1133",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17837512_8987275d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3028,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2021-03-03T14:19:47Z",
+      "side": 1,
+      "message": "Yes, and this should be commented on, as well as what function actually adds the traces to the zip. (similar to the function above)",
+      "parentUuid": "53e00713_c9b0dceb",
+      "range": {
+        "startLine": 3028,
+        "startChar": 16,
+        "endLine": 3028,
+        "endChar": 37
+      },
+      "revId": "f8526e8a2c34709c120adb3a6c6a6f650f1a1133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

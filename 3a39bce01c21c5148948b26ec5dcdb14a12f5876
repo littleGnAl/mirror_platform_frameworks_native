@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0cb3fae_80ae3cb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2021-03-03T14:19:47Z",
+      "side": 1,
+      "message": "We already snapshotted the trace (if it was running) before this CL, we just did it during `dumpsys window` instead of dumpstate doing it directly.\n\nThis CL should functionally be a no-op.",
+      "parentUuid": "61073678_0a85cfee",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0650584c_08fb1590",
