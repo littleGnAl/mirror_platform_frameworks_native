@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d74013_b0d9f78b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1097542
+      },
+      "writtenOn": "2021-03-03T18:16:57Z",
+      "side": 1,
+      "message": "LGTM (along with the plan) with Yiwei\u0027s comments handled.",
+      "revId": "2632973dc8897f9ea3b0399f3a44598b7b1e1267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f22339e_9b5b320f",
