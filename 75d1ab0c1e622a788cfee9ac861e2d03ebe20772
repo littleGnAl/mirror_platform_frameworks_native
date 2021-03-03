@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5beb9a6_eb91a82b",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-03-03T22:02:08Z",
+      "side": 1,
+      "message": "Hmmm, probably you still have to resolve on sc-dev first due to the merge conflict",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "75d1ab0c1e622a788cfee9ac861e2d03ebe20772",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
