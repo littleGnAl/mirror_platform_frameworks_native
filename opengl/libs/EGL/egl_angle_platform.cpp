@@ -25,15 +25,16 @@
 #pragma GCC diagnostic pop
 
 #include <android/dlext.h>
-#include <dlfcn.h>
+#include <cutils/properties.h>
 #include <graphicsenv/GraphicsEnv.h>
-#include <time.h>
 #include <log/log.h>
 #include <vndksupport/linker.h>
 
+#include <dlfcn.h>
+#include <time.h>
+
 namespace angle {
 
-constexpr char kAngleEs2Lib[] = "libGLESv2_angle.so";
 constexpr int kAngleDlFlags = RTLD_LOCAL | RTLD_NOW;
 
 static GetDisplayPlatformFunc angleGetDisplayPlatform = nullptr;
@@ -107,18 +108,35 @@ bool initializeAnglePlatform(EGLDisplay dpy) {
     android_namespace_t* ns = android::GraphicsEnv::getInstance().getAngleNamespace();
     void* so = nullptr;
     if (ns) {
+        // Loading from an APK, so hard-code the suffix to "_angle".
+        constexpr char kAngleEs2Lib[] = "libGLESv2_angle.so";
         const android_dlextinfo dlextinfo = {
                 .flags = ANDROID_DLEXT_USE_NAMESPACE,
                 .library_namespace = ns,
         };
         so = android_dlopen_ext(kAngleEs2Lib, kAngleDlFlags, &dlextinfo);
+        if (!so) {
+            ALOGE("%s failed to dlopen %s!", __FUNCTION__, kAngleEs2Lib);
+            return false;
+        }
     } else {
         // If we are here, ANGLE is loaded as built-in gl driver in the sphal.
-        so = android_load_sphal_library(kAngleEs2Lib, kAngleDlFlags);
-    }
-    if (!so) {
-        ALOGE("%s failed to dlopen %s!", __FUNCTION__, kAngleEs2Lib);
-        return false;
+        // Get the specified ANGLE library filename suffix.
+        char angleEs2LibSuffix[PROPERTY_VALUE_MAX] = {};
+        int prop_len = property_get("ro.hardware.egl", angleEs2LibSuffix, nullptr);
+        if (prop_len < 0 || prop_len >= PROPERTY_VALUE_MAX || strlen(angleEs2LibSuffix) == 0) {
+            ALOGE("%s failed to get valid ANGLE library filename suffix!", __FUNCTION__);
+            return false;
+        }
+
+        std::string angleEs2LibName = "libGLESv2_";
+        angleEs2LibName.append(angleEs2LibSuffix);
+        angleEs2LibName.append(".so");
+        so = android_load_sphal_library(angleEs2LibName.c_str(), kAngleDlFlags);
+        if (!so) {
+            ALOGE("%s failed to dlopen %s!", __FUNCTION__, angleEs2LibName.c_str());
+            return false;
+        }
     }
 
     angleGetDisplayPlatform =
