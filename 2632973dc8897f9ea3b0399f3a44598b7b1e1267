@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1a4172c_c54e0743",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-03-03T04:50:35Z",
+      "side": 1,
+      "message": "The logic LGTM! just nits to fix",
+      "revId": "2632973dc8897f9ea3b0399f3a44598b7b1e1267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f22339e_9b5b320f",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-03-03T04:50:35Z",
+      "side": 1,
+      "message": "Let\u0027s use #include \u003candroid-base/properties.h\u003e instead, and use android::base::GetProperty below accordingly.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "2632973dc8897f9ea3b0399f3a44598b7b1e1267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d531fd66_38a8a5c0",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-03-03T04:50:35Z",
+      "side": 1,
+      "message": "group them together(should be handled by clang-format)",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "2632973dc8897f9ea3b0399f3a44598b7b1e1267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee4f73b_1b980dcd",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-03-03T04:50:35Z",
+      "side": 1,
+      "message": "include dlerror() if you want to log android_dlopen_ext:\nALOGE(\"%s failed to dlopen %s: %s!\", __FUNCTION__, kAngleEs2Lib, dlerror());\n\nNo need for android_load_sphal_library below, which logs the dlerror internally.",
+      "revId": "2632973dc8897f9ea3b0399f3a44598b7b1e1267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b3a299_9632d318",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-03-03T04:50:35Z",
+      "side": 1,
+      "message": "\"libGLESv2_\" + angleEs2LibSuffix + \".so\";\n\nandroid::base::GetProperty gives you std::string back.",
+      "range": {
+        "startLine": 132,
+        "startChar": 38,
+        "endLine": 134,
+        "endChar": 38
+      },
+      "revId": "2632973dc8897f9ea3b0399f3a44598b7b1e1267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

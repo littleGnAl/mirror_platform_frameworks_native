@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb059969_616806df",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-03-03T04:50:35Z",
+      "side": 0,
+      "message": "The conflict came from an internal clean up which fixed this include order. You\u0027d have to resolve internally first.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "e9b81a40004a1996f57976d30b99749abcf89580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
