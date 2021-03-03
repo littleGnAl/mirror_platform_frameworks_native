@@ -328,6 +328,7 @@ static const InputEventLabel KEYCODES[] = {
     DEFINE_KEYCODE(THUMBS_UP),
     DEFINE_KEYCODE(THUMBS_DOWN),
     DEFINE_KEYCODE(PROFILE_SWITCH),
+    DEFINE_KEYCODE(MOUSE_KEY),
 
     { nullptr, 0 }
 };

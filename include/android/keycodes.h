@@ -776,8 +776,9 @@ enum {
     AKEYCODE_THUMBS_DOWN = 287,
     /** Used to switch current account that is consuming content.
      * May be consumed by system to switch current viewer profile. */
-    AKEYCODE_PROFILE_SWITCH = 288
-
+    AKEYCODE_PROFILE_SWITCH = 288,
+    /** Key code constant: Turn on the switch of the remote control mouse. */
+    AKEYCODE_MOUSE_KEY = 4558
     // NOTE: If you add a new keycode here you must also add it to several other files.
     //       Refer to frameworks/base/core/java/android/view/KeyEvent.java for the full list.
 };
