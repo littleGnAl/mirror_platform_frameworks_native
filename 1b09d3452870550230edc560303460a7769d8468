@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eefebc3_e1c3957d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-04T03:10:54Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027d like Kiyoung who\u0027s author of linkerconfig to take the final look.",
+      "revId": "1b09d3452870550230edc560303460a7769d8468",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "138a4d66_8a71b204",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-04T03:10:54Z",
+      "side": 1,
+      "message": "nit: no need here",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "1b09d3452870550230edc560303460a7769d8468",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
