@@ -94,6 +94,30 @@
       },
       "revId": "75d1ab0c1e622a788cfee9ac861e2d03ebe20772",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0646f8_1e64f22c",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-03-04T18:15:26Z",
+      "side": 1,
+      "message": "CPs are supposed to have the same Change-Ids with the original CL if they are kinda clean. It\u0027s completely fine Merged-In and Change-Id are the same as well. e.g. http://aosp/1472011 and the other CLs in the chain.",
+      "parentUuid": "6dfc66b3_5b999b88",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "75d1ab0c1e622a788cfee9ac861e2d03ebe20772",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
