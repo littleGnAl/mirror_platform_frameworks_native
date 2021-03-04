@@ -70,6 +70,30 @@
       },
       "revId": "75d1ab0c1e622a788cfee9ac861e2d03ebe20772",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dfc66b3_5b999b88",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-03-04T17:55:58Z",
+      "side": 1,
+      "message": "Yup, done.\n\nUnfortunately, I had to re-upload the sc-dev CL, since they had matching Change-Ids since I did a normal CP from here into sc-dev.   Sorry for the double review.",
+      "parentUuid": "c6444321_4eaba065",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "75d1ab0c1e622a788cfee9ac861e2d03ebe20772",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
