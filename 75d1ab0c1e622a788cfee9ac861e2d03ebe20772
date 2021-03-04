@@ -22,6 +22,30 @@
       },
       "revId": "75d1ab0c1e622a788cfee9ac861e2d03ebe20772",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8caa46_153f8772",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-03-04T03:20:12Z",
+      "side": 1,
+      "message": "Done:\nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/13766734",
+      "parentUuid": "b5beb9a6_eb91a82b",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "75d1ab0c1e622a788cfee9ac861e2d03ebe20772",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
