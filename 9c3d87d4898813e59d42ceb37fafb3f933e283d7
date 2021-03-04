@@ -16,6 +16,29 @@
       "message": "This works. Now the failure is missing .so dependencies",
       "revId": "9c3d87d4898813e59d42ceb37fafb3f933e283d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e52a4ad7_60701365",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-04T03:08:00Z",
+      "side": 1,
+      "message": "I didn\u0027t know this...",
+      "range": {
+        "startLine": 198,
+        "startChar": 44,
+        "endLine": 199,
+        "endChar": 39
+      },
+      "revId": "9c3d87d4898813e59d42ceb37fafb3f933e283d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
