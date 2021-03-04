@@ -17,7 +17,8 @@
 //! Rust API for interacting with a remote binder service.
 
 use crate::binder::{
-    AsNative, FromIBinder, IBinder, Interface, InterfaceClass, Strong, TransactionCode, TransactionFlags,
+    AsNative, FromIBinder, IBinder, IBinderTransact, Interface, InterfaceClass, Strong,
+    TransactionCode, TransactionFlags,
 };
 use crate::error::{status_result, Result, StatusCode};
 use crate::parcel::{
@@ -26,8 +27,8 @@ use crate::parcel::{
 };
 use crate::sys;
 
-use std::convert::TryInto;
 use std::cmp::Ordering;
+use std::convert::TryInto;
 use std::ffi::{c_void, CString};
 use std::fmt;
 use std::os::unix::io::AsRawFd;
@@ -211,7 +212,7 @@ impl Drop for SpIBinder {
     }
 }
 
-impl<T: AsNative<sys::AIBinder>> IBinder for T {
+impl<T: AsNative<sys::AIBinder>> IBinderTransact for T {
     /// Perform a binder transaction
     fn transact<F: FnOnce(&mut Parcel) -> Result<()>>(
         &self,
@@ -277,7 +278,9 @@ impl<T: AsNative<sys::AIBinder>> IBinder for T {
             Parcel::owned(reply).ok_or(StatusCode::UNEXPECTED_NULL)
         }
     }
+}
 
+impl<T: AsNative<sys::AIBinder>> IBinder for T {
     fn is_binder_alive(&self) -> bool {
         unsafe {
             // Safety: `SpIBinder` guarantees that `self` always contains a
@@ -300,9 +303,7 @@ impl<T: AsNative<sys::AIBinder>> IBinder for T {
     }
 
     fn set_requesting_sid(&mut self, enable: bool) {
-        unsafe {
-            sys::AIBinder_setRequestingSid(self.as_native_mut(), enable)
-        };
+        unsafe { sys::AIBinder_setRequestingSid(self.as_native_mut(), enable) };
     }
 
     fn dump<F: AsRawFd>(&mut self, fp: &F, args: &[&str]) -> Result<()> {
@@ -472,7 +473,10 @@ impl Clone for WpIBinder {
             // WpIBinder object from it.
             sys::AIBinder_Weak_clone(self.0)
         };
-        assert!(!ptr.is_null(), "Unexpected null pointer from AIBinder_Weak_clone");
+        assert!(
+            !ptr.is_null(),
+            "Unexpected null pointer from AIBinder_Weak_clone"
+        );
         Self(ptr)
     }
 }

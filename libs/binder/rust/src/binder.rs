@@ -33,13 +33,13 @@ use std::ptr;
 
 /// Binder action to perform.
 ///
-/// This must be a number between [`IBinder::FIRST_CALL_TRANSACTION`] and
-/// [`IBinder::LAST_CALL_TRANSACTION`].
+/// This must be a number between [`FIRST_CALL_TRANSACTION`] and
+/// [`LAST_CALL_TRANSACTION`].
 pub type TransactionCode = u32;
 
 /// Additional operation flags.
 ///
-/// `IBinder::FLAG_*` values.
+/// `FLAG_*` values.
 pub type TransactionFlags = u32;
 
 /// Super-trait for Binder interfaces.
@@ -85,20 +85,21 @@ pub trait Remotable: Send + Sync {
     fn get_class() -> InterfaceClass;
 }
 
+/// First transaction code available for user commands (inclusive)
+pub const FIRST_CALL_TRANSACTION: TransactionCode = sys::FIRST_CALL_TRANSACTION;
+/// Last transaction code available for user commands (inclusive)
+pub const LAST_CALL_TRANSACTION: TransactionCode = sys::LAST_CALL_TRANSACTION;
+
+/// Corresponds to TF_ONE_WAY -- an asynchronous call.
+pub const FLAG_ONEWAY: TransactionFlags = sys::FLAG_ONEWAY;
+/// Corresponds to TF_CLEAR_BUF -- clear transaction buffers after call is made.
+pub const FLAG_CLEAR_BUF: TransactionFlags = sys::FLAG_CLEAR_BUF;
+
 /// Interface of binder local or remote objects.
 ///
-/// This trait corresponds to the interface of the C++ `IBinder` class.
+/// This trait corresponds to the parts of the interface of the C++ `IBinder`
+/// class which are public.
 pub trait IBinder {
-    /// First transaction code available for user commands (inclusive)
-    const FIRST_CALL_TRANSACTION: TransactionCode = sys::FIRST_CALL_TRANSACTION;
-    /// Last transaction code available for user commands (inclusive)
-    const LAST_CALL_TRANSACTION: TransactionCode = sys::LAST_CALL_TRANSACTION;
-
-    /// Corresponds to TF_ONE_WAY -- an asynchronous call.
-    const FLAG_ONEWAY: TransactionFlags = sys::FLAG_ONEWAY;
-    /// Corresponds to TF_CLEAR_BUF -- clear transaction buffers after call is made.
-    const FLAG_CLEAR_BUF: TransactionFlags = sys::FLAG_CLEAR_BUF;
-
     /// Is this object still alive?
     fn is_binder_alive(&self) -> bool;
 
@@ -114,21 +115,6 @@ pub trait IBinder {
     /// Get a new interface that exposes additional extension functionality, if
     /// available.
     fn get_extension(&mut self) -> Result<Option<SpIBinder>>;
-
-    /// Perform a generic operation with the object.
-    ///
-    /// # Arguments
-    /// * `code` - Transaction code for the operation
-    /// * `data` - [`Parcel`] with input data
-    /// * `reply` - Optional [`Parcel`] for reply data
-    /// * `flags` - Transaction flags, e.g. marking the transaction as
-    /// asynchronous ([`FLAG_ONEWAY`](IBinder::FLAG_ONEWAY))
-    fn transact<F: FnOnce(&mut Parcel) -> Result<()>>(
-        &self,
-        code: TransactionCode,
-        flags: TransactionFlags,
-        input_callback: F,
-    ) -> Result<Parcel>;
 
     /// Register the recipient for a notification if this binder
     /// goes away. If this binder object unexpectedly goes away
@@ -153,6 +139,28 @@ pub trait IBinder {
     /// The recipient will no longer be called if this object
     /// dies.
     fn unlink_to_death(&mut self, recipient: &mut DeathRecipient) -> Result<()>;
+}
+
+/// Internal interface of binder local or remote objects for making
+/// transactions.
+///
+/// This trait corresponds to the parts of the interface of the C++ `IBinder`
+/// class which are internal implementation details.
+pub trait IBinderTransact: IBinder {
+    /// Perform a generic operation with the object.
+    ///
+    /// # Arguments
+    /// * `code` - Transaction code for the operation
+    /// * `data` - [`Parcel`] with input data
+    /// * `reply` - Optional [`Parcel`] for reply data
+    /// * `flags` - Transaction flags, e.g. marking the transaction as
+    ///   asynchronous ([`FLAG_ONEWAY`](FLAG_ONEWAY))
+    fn transact<F: FnOnce(&mut Parcel) -> Result<()>>(
+        &self,
+        code: TransactionCode,
+        flags: TransactionFlags,
+        input_callback: F,
+    ) -> Result<Parcel>;
 }
 
 /// Opaque reference to the type of a Binder interface.
@@ -222,7 +230,8 @@ impl InterfaceClass {
             // the number of u16 elements before the null terminator.
 
             let raw_descriptor: *const c_char = sys::AIBinder_Class_getDescriptor(self.0);
-            CStr::from_ptr(raw_descriptor).to_str()
+            CStr::from_ptr(raw_descriptor)
+                .to_str()
                 .expect("Expected valid UTF-8 string from AIBinder_Class_getDescriptor")
                 .into()
         }
