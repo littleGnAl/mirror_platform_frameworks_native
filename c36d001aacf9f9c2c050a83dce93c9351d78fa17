@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70dd7049_c68f1660",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-03-04T00:40:26Z",
+      "side": 1,
+      "message": "This still does not fix the dexopt problem completely since the BCP environment variables have also moved. This is good though AFAICT",
+      "revId": "c36d001aacf9f9c2c050a83dce93c9351d78fa17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
