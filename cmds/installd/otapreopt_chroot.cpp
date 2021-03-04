@@ -20,6 +20,7 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 
+#include <fstream>
 #include <sstream>
 
 #include <android-base/logging.h>
@@ -29,8 +30,11 @@
 #include <selinux/android.h>
 
 #include <apex_file_repository.h>
+#include <apex_constants.h>
 #include <apexd.h>
 
+#include "android-base/file.h"
+#include "android-base/unique_fd.h"
 #include "installd_constants.h"
 #include "otapreopt_utils.h"
 
@@ -74,7 +78,23 @@ static std::vector<apex::ApexFile> ActivateApexPackages() {
         // Cast call to void to suppress warn_unused_result.
         static_cast<void>(apex::ScanPackagesDirAndActivate(dir.c_str()));
     }
-    return apex::GetActivePackages();
+
+    // Setup the apex-info-list.xml file
+    const std::string apex_info_file = std::string(apex::kApexRoot) + "/" + apex::kApexInfoList;
+    std::fstream xml(apex_info_file.c_str(), std::ios::out | std::ios::trunc);
+    if (!xml.is_open()) {
+        PLOG(ERROR) << "Failed to open " << apex_info_file;
+        exit(216);
+    }
+
+    // we do not care about inactive apexs
+    std::vector<apex::ApexFile> apex_files(apex::GetActivePackages());
+    std::vector<apex::ApexFile> inactive;
+    apex::CollectApexInfoList(xml, apex_files, inactive);
+    xml.flush();
+    xml.close();
+
+    return apex_files;
 }
 
 static void DeactivateApexPackages(const std::vector<apex::ApexFile>& active_packages) {
