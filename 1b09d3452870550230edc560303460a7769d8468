@@ -39,6 +39,30 @@
       },
       "revId": "1b09d3452870550230edc560303460a7769d8468",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab339bb2_4e8904a6",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-03-04T03:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "138a4d66_8a71b204",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "1b09d3452870550230edc560303460a7769d8468",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
