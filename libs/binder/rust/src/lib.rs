@@ -123,8 +123,8 @@ pub mod public_api {
     pub use super::parcel::ParcelFileDescriptor;
     pub use super::{add_service, get_interface};
     pub use super::{
-        ExceptionCode, Interface, ProcessState, SpIBinder, Status, StatusCode, Strong, ThreadState,
-        Weak, WpIBinder,
+        DeathRecipient, ExceptionCode, IBinder, Interface, ProcessState, SpIBinder, Status,
+        StatusCode, Strong, ThreadState, Weak, WpIBinder,
     };
 
     /// Binder result containing a [`Status`] on error.
