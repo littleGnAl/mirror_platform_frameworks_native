@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a25ea3a_2e721428",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-05T18:50:41Z",
+      "side": 1,
+      "message": "why reformat the one but not the other? unrelated change?",
+      "range": {
+        "startLine": 81,
+        "startChar": 65,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "ef43b90bbb39abfba76a616018fc641170fd66c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
