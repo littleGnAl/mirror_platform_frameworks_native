@@ -22,6 +22,30 @@
       },
       "revId": "d559f5e08fa2b7aeafb6af13aae9bd305066b356",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4725e9be_c4b45d80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-03-05T11:48:28Z",
+      "side": 1,
+      "message": "Yes, in https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/rust/tests/integration.rs.",
+      "parentUuid": "64eef978_13525ec7",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "d559f5e08fa2b7aeafb6af13aae9bd305066b356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
