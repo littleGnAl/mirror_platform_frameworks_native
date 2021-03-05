@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "869ffe62_64e8c3cd",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-03-05T22:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20ac3575_b8d5352e",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "c7be3faf34ce7ac38fa72f5e5ea90725846b8fb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9618ad7_f50875e8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-05T02:04:11Z",
       "side": 1,
       "message": "This is generated as a side effect of this function. It would be better if we have a separate function that does this and returns the path to the xml file.\n\nWe call the function after ActivateApexPackages(), and remove the file after the call to DeactivateApexPackages()",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "c7be3faf34ce7ac38fa72f5e5ea90725846b8fb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03813edc_ae179d71",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-03-05T22:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9618ad7_f50875e8",
       "range": {
         "startLine": 82,
         "startChar": 0,
