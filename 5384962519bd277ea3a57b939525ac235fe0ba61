@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5d676b_c957daec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-03-06T01:00:29Z",
+      "side": 1,
+      "message": "Looks like auto-merger is super blocked...if you want this change in earlier, I\u0027d suggest you go ahead pick to internal master manually this time.",
+      "revId": "5384962519bd277ea3a57b939525ac235fe0ba61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
