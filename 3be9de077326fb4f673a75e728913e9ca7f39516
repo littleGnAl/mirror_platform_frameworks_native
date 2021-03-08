@@ -16,6 +16,24 @@
       "message": "well - needs Rust review.\n\nIs there no keystore change needed with this?",
       "revId": "3be9de077326fb4f673a75e728913e9ca7f39516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09bf606e_39ac8952",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-08T20:31:53Z",
+      "side": 1,
+      "message": "I\u0027m doing a fresh build after syncing right now, but keystore2 built fine without modification last I checked.",
+      "parentUuid": "2a9fd503_177eb972",
+      "revId": "3be9de077326fb4f673a75e728913e9ca7f39516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
