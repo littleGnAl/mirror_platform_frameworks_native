@@ -46,6 +46,30 @@
       },
       "revId": "ef43b90bbb39abfba76a616018fc641170fd66c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4217bc20_1e40679d",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-03-08T16:31:24Z",
+      "side": 1,
+      "message": "Right, I didn\u0027t touch this, it was just the autoformatter.",
+      "parentUuid": "cb005222_c0ac24e7",
+      "range": {
+        "startLine": 81,
+        "startChar": 65,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "ef43b90bbb39abfba76a616018fc641170fd66c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
