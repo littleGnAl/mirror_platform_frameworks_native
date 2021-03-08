@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008756924",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1620943?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d60022b8_37054974",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-08T09:28:43Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nwaiver\n",
+      "range": {
+        "startLine": 18,
+        "startChar": 43,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "83f9d3fbb1e65b47c450bdc4910187ead37aa1cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
