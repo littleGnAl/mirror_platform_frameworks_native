@@ -22,6 +22,30 @@
       },
       "revId": "ef43b90bbb39abfba76a616018fc641170fd66c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb005222_c0ac24e7",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-03-08T16:29:22Z",
+      "side": 1,
+      "message": "My guess is that the autoformatting line threshold changed (since you can see on the left, UNSUPPORTED_OPERATION is a *little* longer than NETWORK_MAIN_THREAD) but I didn\u0027t think we changed that since this was written...",
+      "parentUuid": "5a25ea3a_2e721428",
+      "range": {
+        "startLine": 81,
+        "startChar": 65,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "ef43b90bbb39abfba76a616018fc641170fd66c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
