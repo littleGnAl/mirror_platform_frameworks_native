@@ -63,6 +63,24 @@
       "message": "Exporting DeathRecipient is fine, but I think we were trying to avoid exporting IBinder directly since it gives access to implementation details.\n\nDo you think there\u0027s another less internal place that we could re-expose the `link_to_death` and `unlink_to_death` methods?",
       "revId": "d559f5e08fa2b7aeafb6af13aae9bd305066b356",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fabde6a1_b81b27f5",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-03-08T12:20:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure where else it would go. Some of the other methods on `IBinder`, like `is_binder_alive` and `ping_binder` also seems like they should be exposed to clients. And possibly `set_requesting_sid`?\n\nWhat do you actually want to avoid exposing to clients? Just `transact`?",
+      "parentUuid": "1e31873a_3f9ea97a",
+      "revId": "d559f5e08fa2b7aeafb6af13aae9bd305066b356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
