@@ -81,6 +81,24 @@
       "parentUuid": "1e31873a_3f9ea97a",
       "revId": "d559f5e08fa2b7aeafb6af13aae9bd305066b356",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e7dbfbb_e34c1243",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-08T18:55:19Z",
+      "side": 1,
+      "message": "We want to avoid exposing transact and the transaction codes \u0026 flags, particularly. We could add wrappers around any methods we want to make public (e.g. link_to_death) to Strong, which will allow easy access for users. Interface already includes `as_binder()`, allowing us to get a raw IBinder object for these wrappers.",
+      "parentUuid": "fabde6a1_b81b27f5",
+      "revId": "d559f5e08fa2b7aeafb6af13aae9bd305066b356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
