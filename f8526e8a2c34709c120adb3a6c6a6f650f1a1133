@@ -63,6 +63,30 @@
       },
       "revId": "f8526e8a2c34709c120adb3a6c6a6f650f1a1133",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "580b0b9e_4d3c6c7d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3028,
+      "author": {
+        "id": 1042793
+      },
+      "writtenOn": "2021-03-08T18:29:09Z",
+      "side": 1,
+      "message": "Like perfetto, WinScope is also something we can dynamically enable/disable by both programmatically and manually.\n\nTo deal with this unique nature, I think Maybe* style abstraction works well like MaybeSnapshotSystemTrace().",
+      "parentUuid": "17837512_8987275d",
+      "range": {
+        "startLine": 3028,
+        "startChar": 16,
+        "endLine": 3028,
+        "endChar": 37
+      },
+      "revId": "f8526e8a2c34709c120adb3a6c6a6f650f1a1133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

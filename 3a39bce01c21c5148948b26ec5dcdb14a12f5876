@@ -122,6 +122,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a847357f_d1df7ed8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1042793
+      },
+      "writtenOn": "2021-03-08T18:29:09Z",
+      "side": 1,
+      "message": "As Adrian commented, roughly up to 3MB size increase (in uncompressed state) has already been there since 2019-02-28, when the following CL got submitted.\n\nhttps://cs.android.com/android/_/android/platform/frameworks/base/+/9e2604688d4c64ea95128f9d8b3b08da508532dd\n\nThis CL only aims to move the way to trigger the above mechanism.",
+      "parentUuid": "b0cb3fae_80ae3cb5",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0650584c_08fb1590",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -215,6 +239,30 @@
       "side": 1,
       "message": "it\u0027s more useful to say where in the zip file to find the protos.",
       "parentUuid": "83572ccc_92114c00",
+      "range": {
+        "startLine": 3030,
+        "startChar": 15,
+        "endLine": 3030,
+        "endChar": 16
+      },
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01df8df_a8d71184",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3030,
+      "author": {
+        "id": 1042793
+      },
+      "writtenOn": "2021-03-08T18:29:09Z",
+      "side": 1,
+      "message": "Tried to make it clear in the commit message.  Does it look good to you?",
+      "parentUuid": "c804e390_01d94af7",
       "range": {
         "startLine": 3030,
         "startChar": 15,
