@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b7f2e6_8512227d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-08T21:45:55Z",
+      "side": 1,
+      "message": "I think we\u0027ve been trying to err on the side of exposing too little rather than too much in the public API. Unless you\u0027re sure that users will need all of this functionality, I\u0027d prefer to just expose the minimum you need (link_to_death?).",
+      "revId": "29455ad239ae3d5dff307c78e98389eaaebe49b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c93852a_962f87bc",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-08T21:45:55Z",
+      "side": 1,
+      "message": "If we expose this we need to add to the doc comment. The NDK doc comment has a lot more detail about how this API doesn\u0027t actually do what one might think it should (i.e. the result is cached from the last transaction).",
+      "revId": "29455ad239ae3d5dff307c78e98389eaaebe49b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3143430_de93df1e",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-08T21:45:55Z",
+      "side": 1,
+      "message": "This API is dangerous. It is only valid for local services and is not thread-safe, so I was hoping to not expose it. If this is needed, we should make a safe way to create a service that receives security contexts. (b/178852354)",
+      "revId": "29455ad239ae3d5dff307c78e98389eaaebe49b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e2c6aa_958e1dd3",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-08T21:45:55Z",
+      "side": 1,
+      "message": "Do we really need to expose this?",
+      "revId": "29455ad239ae3d5dff307c78e98389eaaebe49b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745d66b3_feba30bd",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-08T21:45:55Z",
+      "side": 1,
+      "message": "@smoreland do we want to expose extension functionality? It was my understanding that that is deprecated with AIDL?",
+      "revId": "29455ad239ae3d5dff307c78e98389eaaebe49b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d781795_656479df",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-08T21:45:55Z",
+      "side": 1,
+      "message": "This doc comment was copied from IBinder in C++ but is currently inaccurate for our implementation. There\u0027s an open bug (176491050) on this, which I would ideally like to resolve before exposing this API. Now that we\u0027ve landed public API support for weak binder objects I can go ahead and implement providing that to the callback, if we need it.",
+      "revId": "29455ad239ae3d5dff307c78e98389eaaebe49b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
