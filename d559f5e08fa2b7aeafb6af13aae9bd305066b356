@@ -99,6 +99,24 @@
       "parentUuid": "fabde6a1_b81b27f5",
       "revId": "d559f5e08fa2b7aeafb6af13aae9bd305066b356",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aabb46a9_6f6bb406",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-03-08T20:38:54Z",
+      "side": 1,
+      "message": "The transaction codes and flags don\u0027t need to be on `IBinder`, as far as I can see: they are just constants, and not overridden by any implementation of `IBinder`. I think that just leaves the `transact` method, which could be split off to a separate trait. I\u0027ve done this now, see what you think.",
+      "parentUuid": "4e7dbfbb_e34c1243",
+      "revId": "d559f5e08fa2b7aeafb6af13aae9bd305066b356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
