@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8c2f557_c752c835",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-08T21:49:01Z",
+      "side": 1,
+      "message": "The AIDL backend will need to be updated for this, as it assumes these are available in `SpIBinder`. Why not move them to IBinderTransact (assuming we keep that)?",
+      "revId": "29455ad239ae3d5dff307c78e98389eaaebe49b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c93852a_962f87bc",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 3
