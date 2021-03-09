@@ -16,6 +16,24 @@
       "message": "We don\u0027t really need to stick to the IBinder interface and name here, since we\u0027re just exposing death notifications for now. We could name this DeathNotifier or something like that? I\u0027m fine either way, really.",
       "revId": "12400d8fa2e0fe3777d93f106dd02212f645eea8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42eaabc5_52d6a6df",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-03-09T17:39:53Z",
+      "side": 1,
+      "message": "I guess it depends whether we are likely to add other methods to it in future, such as the safe version of set_requesting_sid.",
+      "parentUuid": "ea50ab1f_aec8d358",
+      "revId": "12400d8fa2e0fe3777d93f106dd02212f645eea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
