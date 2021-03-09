@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "120a0230_cf7c0509",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-03-09T16:19:00Z",
+      "side": 0,
+      "message": "Orion, if I\u0027m not mistaken you added this clean up here.\n\nCould you take a look as well?",
+      "range": {
+        "startLine": 352,
+        "startChar": 8,
+        "endLine": 353,
+        "endChar": 33
+      },
+      "revId": "cf7e6de6a15cab53dc73db66999c0d32705896cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
