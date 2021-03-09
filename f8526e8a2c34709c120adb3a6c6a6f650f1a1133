@@ -87,6 +87,30 @@
       },
       "revId": "f8526e8a2c34709c120adb3a6c6a6f650f1a1133",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482f4fdb_619c2c26",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3028,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-03-09T10:13:04Z",
+      "side": 1,
+      "message": "Thanks for explaining. Let\u0027s add comments similar to this maybe around line 2915:\n\nIf a winscope trace is running, snapshot it now. It will be pulled into bugreport later from WMTRACE_DATA_DIR",
+      "parentUuid": "580b0b9e_4d3c6c7d",
+      "range": {
+        "startLine": 3028,
+        "startChar": 16,
+        "endLine": 3028,
+        "endChar": 37
+      },
+      "revId": "f8526e8a2c34709c120adb3a6c6a6f650f1a1133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
