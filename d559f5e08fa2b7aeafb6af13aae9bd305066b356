@@ -117,6 +117,24 @@
       "parentUuid": "4e7dbfbb_e34c1243",
       "revId": "d559f5e08fa2b7aeafb6af13aae9bd305066b356",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e5d652_cb1d8648",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-09T17:32:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aabb46a9_6f6bb406",
+      "revId": "d559f5e08fa2b7aeafb6af13aae9bd305066b356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
