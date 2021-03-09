@@ -271,6 +271,30 @@
       },
       "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8720eb67_e5e458e5",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3030,
+      "author": {
+        "id": 1042793
+      },
+      "writtenOn": "2021-03-09T16:07:49Z",
+      "side": 1,
+      "message": "(marking as resolved. let me know if you have any remaining concern).",
+      "parentUuid": "a01df8df_a8d71184",
+      "range": {
+        "startLine": 3030,
+        "startChar": 15,
+        "endLine": 3030,
+        "endChar": 16
+      },
+      "revId": "3a39bce01c21c5148948b26ec5dcdb14a12f5876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
