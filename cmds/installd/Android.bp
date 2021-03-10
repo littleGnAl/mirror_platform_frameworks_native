@@ -189,9 +189,12 @@ cc_binary {
         "liblog",
         "libutils",
     ],
-    static_libs: [
-        "libapexd",
+    required: [
+      "apexd"
     ],
+    // static_libs: [
+    //     "libapexd",
+    // ],
 }
 
 filegroup {
