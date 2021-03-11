@@ -87,6 +87,24 @@
       "message": "approving for TH",
       "revId": "3be9de077326fb4f673a75e728913e9ca7f39516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebca1bfd_6080eea0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2021-03-11T01:55:55Z",
+      "side": 1,
+      "message": "Looks like keystore2 does not start by default and the tests I ran didn\u0027t trigger it. I\u0027ve now added the necessary manifest change to fix keystore2.",
+      "parentUuid": "215d410f_867465f7",
+      "revId": "3be9de077326fb4f673a75e728913e9ca7f39516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
