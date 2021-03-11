@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9acd7422_5d49dab1",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-11T23:51:52Z",
+      "side": 1,
+      "message": "btw - is this ever tested or verified to work in Rust?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 65
+      },
+      "revId": "12400d8fa2e0fe3777d93f106dd02212f645eea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea50ab1f_aec8d358",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 6
