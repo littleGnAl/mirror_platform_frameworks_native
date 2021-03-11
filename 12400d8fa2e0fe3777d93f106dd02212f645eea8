@@ -34,6 +34,24 @@
       "parentUuid": "ea50ab1f_aec8d358",
       "revId": "12400d8fa2e0fe3777d93f106dd02212f645eea8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935ebeb9_890461cc",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-03-11T18:45:07Z",
+      "side": 1,
+      "message": "Sure, I\u0027m fine with keeping it like this. If we want to add more later, there\u0027s a place - if we don\u0027t, no harm.",
+      "parentUuid": "42eaabc5_52d6a6df",
+      "revId": "12400d8fa2e0fe3777d93f106dd02212f645eea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
