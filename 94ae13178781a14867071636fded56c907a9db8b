@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd95c028_7b18bb27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175853
+      },
+      "writtenOn": "2021-03-11T17:44:31Z",
+      "side": 1,
+      "message": "Hi,\n\nThank you for your contribution. We have reviewed your CL and it looks good.\n\nThanks,\nArthur",
+      "revId": "94ae13178781a14867071636fded56c907a9db8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
