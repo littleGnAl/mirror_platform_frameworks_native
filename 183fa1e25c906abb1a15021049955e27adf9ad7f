@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b6573a0_013c384c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1082514
+      },
+      "writtenOn": "2021-03-12T01:46:24Z",
+      "side": 1,
+      "message": "Adding DO NOT MERGE to skip automerge to master. In master the code is very different and we shouldn\u0027t have this issue.",
+      "revId": "183fa1e25c906abb1a15021049955e27adf9ad7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
