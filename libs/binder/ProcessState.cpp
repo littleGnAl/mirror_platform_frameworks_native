@@ -356,6 +356,14 @@ status_t ProcessState::setThreadPoolMaxThreadCount(size_t maxThreads) {
     return result;
 }
 
+status_t ProcessState::toggleOnewaySpamDetection(bool enable) {
+    if (ioctl(mDriverFD, BINDER_TOGGLE_ONEWAY_SPAM_DETECTION, enable) == -1) {
+        ALOGE("Binder ioctl to toggle oneway spam detection failed: %s", strerror(errno));
+        return -errno;
+    }
+    return NO_ERROR;
+}
+
 void ProcessState::giveThreadPoolName() {
     androidSetThreadName( makeBinderThreadName().string() );
 }
@@ -386,6 +394,7 @@ static int open_driver(const char *driver)
         if (result == -1) {
             ALOGE("Binder ioctl to set max threads failed: %s", strerror(errno));
         }
+        ProcessState::toggleOnewaySpamDetection(true);
     } else {
         ALOGW("Opening '%s' failed: %s\n", driver, strerror(errno));
     }
