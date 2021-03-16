@@ -386,6 +386,10 @@ static int open_driver(const char *driver)
         if (result == -1) {
             ALOGE("Binder ioctl to set max threads failed: %s", strerror(errno));
         }
+        result = ioctl(fd, BINDER_ENABLE_ONEWAY_SPAM_DETECT, 0);
+        if (result != 0){
+            ALOGE("Binder ioctl to enable oneway soam detect failed: %s", strerror(errno));
+        }
     } else {
         ALOGW("Opening '%s' failed: %s\n", driver, strerror(errno));
     }
