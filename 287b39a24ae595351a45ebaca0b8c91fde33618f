@@ -16,6 +16,212 @@
       "message": "Hello - I have tried to keep this CL small, and that is why it is missing many features, but this is (besides a few minor FIXMEs - which I expect to be perhaps impacted by review comments) a certifiable MVP. Please leave your comments here (I\u0027ll also request for some reviewers on the binder mailing list).",
       "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c2ed525_2530c517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 62
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-16T04:57:05Z",
+      "side": 1,
+      "message": "Mines are mostly nits. I haven\u0027t read RpcState.h/cpp.",
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e3dd73_bf4b3542",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-16T04:57:05Z",
+      "side": 1,
+      "message": "can you static_assert that isRpcBinder() \u003d\u003d true?",
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9433830_2083c557",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-16T04:57:05Z",
+      "side": 1,
+      "message": "here as well.",
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3ca774_623c5d00",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-16T04:57:05Z",
+      "side": 1,
+      "message": "and assert the opposite",
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6227ef0_b7f093cc",
+        "filename": "libs/binder/Debug.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-16T04:57:05Z",
+      "side": 1,
+      "message": "You might not need this",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c9b708_38eb825f",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-16T04:57:05Z",
+      "side": 1,
+      "message": "nit: wrong indent",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 15
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6430cc_a460a2d2",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-16T04:57:05Z",
+      "side": 1,
+      "message": "I found this surprising because throughout the code Binder !\u003d Rpc. Perhaps you might want to rename this to \u0027markFor\u0027",
+      "range": {
+        "startLine": 561,
+        "startChar": 8,
+        "endLine": 561,
+        "endChar": 18
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc679c4_cd41e7dc",
+        "filename": "libs/binder/RpcAddress.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-16T04:57:05Z",
+      "side": 1,
+      "message": "this doesn\u0027t guarantee uniqueness, does it?",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8403b3b_ea74c1f1",
+        "filename": "libs/binder/RpcWireFormat.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-16T04:57:05Z",
+      "side": 1,
+      "message": "Will you going to have a version number field so that you can extend the wire protocol?",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffdf376_d61d2ce6",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-16T04:57:05Z",
+      "side": 1,
+      "message": "rename to binderHandle?",
+      "range": {
+        "startLine": 156,
+        "startChar": 29,
+        "endLine": 156,
+        "endChar": 35
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
