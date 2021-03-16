@@ -16,6 +16,24 @@
       "message": "This is now failing\n\u003e vts_treble_vintf_framework_test.FrameworkManifest/SingleManifestTest#ManifestAidlHalsServed/0\n\nThe HAL isn\u0027t being served...",
       "revId": "dc1dca936efd9ae245fdc9f305e240d5b6e4808e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e1f198_494a81ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2021-03-16T04:05:12Z",
+      "side": 1,
+      "message": "Keystore2 is not started by default yet, so it\u0027s not going to be served. Is there a way we can ignore this interface? Briefly looking at the test I don\u0027t see an easy way. Can we start the service just for this test?\n\n@Janis, why isn\u0027t keystore2 starting on boot? Would it be easier to just start it?",
+      "parentUuid": "022239c5_9778b2b0",
+      "revId": "dc1dca936efd9ae245fdc9f305e240d5b6e4808e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
