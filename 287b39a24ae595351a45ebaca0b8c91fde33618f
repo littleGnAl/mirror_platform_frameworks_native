@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc64b2e3_63f51e80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 62
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-16T03:30:46Z",
+      "side": 1,
+      "message": "Hello - I have tried to keep this CL small, and that is why it is missing many features, but this is (besides a few minor FIXMEs - which I expect to be perhaps impacted by review comments) a certifiable MVP. Please leave your comments here (I\u0027ll also request for some reviewers on the binder mailing list).",
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
