@@ -281,6 +281,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2685f7c8_1095dba9",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-19T04:11:58Z",
+      "side": 1,
+      "message": "Yeah, I know. We have had (1) IBinder over binder driver and now we are adding (2) IBinder over socket. The term \u0027binder\u0027 has slight ambiguity in it. Anyway, I feel fine with this name too as I am reading the same code again and again 😊",
+      "parentUuid": "f9f88fc3_d7e26385",
+      "range": {
+        "startLine": 561,
+        "startChar": 8,
+        "endLine": 561,
+        "endChar": 18
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc679c4_cd41e7dc",
