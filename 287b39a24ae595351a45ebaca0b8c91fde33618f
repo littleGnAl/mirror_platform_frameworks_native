@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c994db69_f7bf4e49",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-19T01:22:00Z",
+      "side": 1,
+      "message": "We can\u0027t static_assert since isRpcBinder isn\u0027t a constexpr, but std::get does check and through an exception if the wrong type is retrieved.\n\nIt would be nice if we exposed std::variant and used visit so that anyone who retrieved this data would be forced to retrieve this, but it\u0027s a bit expensive.",
+      "parentUuid": "e6e3dd73_bf4b3542",
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9433830_2083c557",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-03-16T04:57:05Z",
       "side": 1,
       "message": "here as well.",
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c2bb760_a4aba1a3",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-19T01:22:00Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "a9433830_2083c557",
       "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +122,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa9b35f_a5f96167",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-19T01:22:00Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "8d3ca774_623c5d00",
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6227ef0_b7f093cc",
@@ -99,6 +153,30 @@
       "writtenOn": "2021-03-16T04:57:05Z",
       "side": 1,
       "message": "You might not need this",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e3ed2b8_9f3d1b15",
+        "filename": "libs/binder/Debug.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-19T01:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6227ef0_b7f093cc",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -132,6 +210,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb8c81a3_90bdcb6c",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-19T01:22:00Z",
+      "side": 1,
+      "message": "I swear I\u0027m going to format this whole library this year... thanks",
+      "parentUuid": "b6c9b708_38eb825f",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 15
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a6430cc_a460a2d2",
@@ -145,6 +247,30 @@
       "writtenOn": "2021-03-16T04:57:05Z",
       "side": 1,
       "message": "I found this surprising because throughout the code Binder !\u003d Rpc. Perhaps you might want to rename this to \u0027markFor\u0027",
+      "range": {
+        "startLine": 561,
+        "startChar": 8,
+        "endLine": 561,
+        "endChar": 18
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f88fc3_d7e26385",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-19T01:22:00Z",
+      "side": 1,
+      "message": "\u0027markForBinder\u0027 means \u0027mark for IBinder\u0027. I have this API generically since the C++/Java/NDK code all needs to call into it, and we can use it for other things if we wanted.\n\nHere are some other things we might consider doing:\n- enforce writeInterfaceToken writes a token consistent with this binder\n- support a 3rd type of binder (not kernel binder, not RPC binder, but something else)\n\nI could go for overloading for these two functions, sure, but it is the type name.",
+      "parentUuid": "4a6430cc_a460a2d2",
       "range": {
         "startLine": 561,
         "startChar": 8,
@@ -178,6 +304,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd791c39_487a4852",
+        "filename": "libs/binder/RpcAddress.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-19T01:22:00Z",
+      "side": 1,
+      "message": "Nope - b/182939933 is filed for this. I guess I could have assigned the first bit to server/client, but depending on what we do, we could even replace the address with a single integer.",
+      "parentUuid": "5dc679c4_cd41e7dc",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8403b3b_ea74c1f1",
@@ -201,6 +351,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7707315a_c44bb219",
+        "filename": "libs/binder/RpcWireFormat.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-19T01:22:00Z",
+      "side": 1,
+      "message": "Yes - b/182938972 is filed for this (this would be a pretty big feature in terms of LOC \u0026 tests, hence separate).",
+      "parentUuid": "e8403b3b_ea74c1f1",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ffdf376_d61d2ce6",
@@ -214,6 +388,30 @@
       "writtenOn": "2021-03-16T04:57:05Z",
       "side": 1,
       "message": "rename to binderHandle?",
+      "range": {
+        "startLine": 156,
+        "startChar": 29,
+        "endLine": 156,
+        "endChar": 35
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4468e4a1_b22f8719",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-19T01:22:00Z",
+      "side": 1,
+      "message": "good idea, yeah, done for address-\u003erpcAddress and connection-\u003erpcConnection as well",
+      "parentUuid": "4ffdf376_d61d2ce6",
       "range": {
         "startLine": 156,
         "startChar": 29,
