@@ -305,6 +305,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cccca700_0fca74af",
+        "filename": "libs/binder/RpcAddress.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-20T01:03:20Z",
+      "side": 1,
+      "message": "Are we not allowed to use libbase? even a static one?",
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc679c4_cd41e7dc",
@@ -341,6 +358,30 @@
       "writtenOn": "2021-03-19T01:22:00Z",
       "side": 1,
       "message": "Nope - b/182939933 is filed for this. I guess I could have assigned the first bit to server/client, but depending on what we do, we could even replace the address with a single integer.",
+      "parentUuid": "5dc679c4_cd41e7dc",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "146b878b_66dd3018",
+        "filename": "libs/binder/RpcAddress.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-20T01:03:20Z",
+      "side": 1,
+      "message": "Maybe we want 64 bits?",
       "parentUuid": "5dc679c4_cd41e7dc",
       "range": {
         "startLine": 56,

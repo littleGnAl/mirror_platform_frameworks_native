@@ -1,0 +1,183 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1c27bd_6782b072",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 63
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-20T01:03:20Z",
+      "side": 1,
+      "message": "I am half way done in reviewing this change",
+      "revId": "87618f55e3bf362e28001931c4589638a56e57f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d2be15_890e6d4a",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 63
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-20T01:03:20Z",
+      "side": 1,
+      "message": "You want CC_UNLIKELY?",
+      "range": {
+        "startLine": 296,
+        "startChar": 8,
+        "endLine": 296,
+        "endChar": 19
+      },
+      "revId": "87618f55e3bf362e28001931c4589638a56e57f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15440ee4_e3a1c99c",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 63
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-20T01:03:20Z",
+      "side": 1,
+      "message": "You want CC_UNLIKELY?",
+      "range": {
+        "startLine": 334,
+        "startChar": 8,
+        "endLine": 334,
+        "endChar": 19
+      },
+      "revId": "87618f55e3bf362e28001931c4589638a56e57f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f867420_8d0957ab",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 63
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-20T01:03:20Z",
+      "side": 1,
+      "message": "\u003e Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nnit: Please fix.",
+      "parentUuid": "a9cd2170_590d38af",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 104
+      },
+      "revId": "87618f55e3bf362e28001931c4589638a56e57f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4913340e_24e1694a",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 63
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-20T01:03:20Z",
+      "side": 1,
+      "message": "I smell potential memory leak here :)\n\nSo what happens if connection is lost, or one side crashes? Can the other side properly decStrong accordingly?",
+      "range": {
+        "startLine": 484,
+        "startChar": 31,
+        "endLine": 484,
+        "endChar": 44
+      },
+      "revId": "87618f55e3bf362e28001931c4589638a56e57f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d34485c_6ffb3310",
+        "filename": "libs/binder/Debug.cpp",
+        "patchSetId": 63
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-20T01:03:20Z",
+      "side": 1,
+      "message": "do we allocate this memory on the stack?\n\nEDIT: it looks like the compiler is smart enough so that it is directly read from .text",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "87618f55e3bf362e28001931c4589638a56e57f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fca2907_17db831b",
+        "filename": "libs/binder/include/binder/RpcAddress.h",
+        "patchSetId": 63
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-20T01:03:20Z",
+      "side": 1,
+      "message": "get?",
+      "range": {
+        "startLine": 57,
+        "startChar": 26,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "87618f55e3bf362e28001931c4589638a56e57f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d57657e_3851f62d",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 63
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-20T01:03:20Z",
+      "side": 1,
+      "message": "What\u0027s RAAI",
+      "range": {
+        "startLine": 112,
+        "startChar": 7,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "87618f55e3bf362e28001931c4589638a56e57f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
