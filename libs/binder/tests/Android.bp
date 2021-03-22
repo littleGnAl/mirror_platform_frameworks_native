@@ -113,8 +113,8 @@ cc_test {
         "IBinderRpcTest.aidl",
         "binderRpcTest.cpp",
     ],
+    static_libs: ["libbinder"],
     shared_libs: [
-        "libbinder",
         "libbase",
         "libutils",
         "libcutils",
