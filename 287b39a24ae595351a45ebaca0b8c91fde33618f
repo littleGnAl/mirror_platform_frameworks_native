@@ -322,6 +322,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03d20d97_2ff4ab97",
+        "filename": "libs/binder/RpcAddress.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-22T23:12:36Z",
+      "side": 1,
+      "message": "Eh, I mean we could do that, I suppose, but this code will be deleted in b/182939933",
+      "parentUuid": "cccca700_0fca74af",
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc679c4_cd41e7dc",
@@ -383,6 +401,30 @@
       "side": 1,
       "message": "Maybe we want 64 bits?",
       "parentUuid": "5dc679c4_cd41e7dc",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "287b39a24ae595351a45ebaca0b8c91fde33618f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed73089f_a3675327",
+        "filename": "libs/binder/RpcAddress.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-22T23:12:36Z",
+      "side": 1,
+      "message": "sizeof(RpcWireAddress) is 256 bit/32 bytes. This size is chosen anticipating that we will use sha256 for these addresses, but I\u0027m not sure yet if we\u0027ll need it.\n\n(it really all depends on if we want to use transitive binders)",
+      "parentUuid": "146b878b_66dd3018",
       "range": {
         "startLine": 56,
         "startChar": 4,
