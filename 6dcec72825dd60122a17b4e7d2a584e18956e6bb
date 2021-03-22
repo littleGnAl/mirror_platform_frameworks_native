@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41028263_68d479bb",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-22T21:04:44Z",
+      "side": 1,
+      "message": "this should have a warning/error\n\nCan you add an explicit \u0027[[fallthrough]];\u0027?",
+      "revId": "6dcec72825dd60122a17b4e7d2a584e18956e6bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

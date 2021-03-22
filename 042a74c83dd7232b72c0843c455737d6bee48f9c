@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535bffc5_3a48e85a",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-22T21:04:44Z",
+      "side": 1,
+      "message": "prefer boolean argument over two functions w/ copied internals?",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 1
+      },
+      "revId": "042a74c83dd7232b72c0843c455737d6bee48f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dffd9d6_35ded684",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-22T21:04:44Z",
+      "side": 1,
+      "message": "call the function?",
+      "range": {
+        "startLine": 405,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 9
+      },
+      "revId": "042a74c83dd7232b72c0843c455737d6bee48f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
