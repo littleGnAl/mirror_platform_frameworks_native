@@ -98,10 +98,20 @@ cc_library {
 
     target: {
         android: {
-            // Only one copy of this library on an Android device
-            static: {
-                enabled: false,
-            },
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
+            // FIXME DO NOT SUBMIT
         },
         linux: {
             version_script: "libbinder_ndk.map.txt",
