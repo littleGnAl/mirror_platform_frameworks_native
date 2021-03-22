@@ -37,7 +37,11 @@ cc_test {
     srcs: ["binderDriverInterfaceTest.cpp"],
     header_libs: ["libbinder_headers"],
     compile_multilib: "32",
-    multilib: { lib32: { suffix: "" } },
+    multilib: {
+        lib32: {
+            suffix: "",
+        },
+    },
     cflags: ["-DBINDER_IPC_32BIT=1"],
     test_suites: ["vts"],
 }
@@ -52,7 +56,10 @@ cc_test {
     },
     header_libs: ["libbinder_headers"],
     srcs: ["binderDriverInterfaceTest.cpp"],
-    test_suites: ["device-tests", "vts"],
+    test_suites: [
+        "device-tests",
+        "vts",
+    ],
 }
 
 cc_test {
@@ -68,7 +75,11 @@ cc_test {
         "libgmock",
     ],
     compile_multilib: "32",
-    multilib: { lib32: { suffix: "" } },
+    multilib: {
+        lib32: {
+            suffix: "",
+        },
+    },
     cflags: ["-DBINDER_IPC_32BIT=1"],
     test_suites: ["vts"],
     require_root: true,
@@ -148,14 +159,15 @@ cc_test {
         "binderRpcTest.cpp",
     ],
     shared_libs: [
-        "libbinder",
-        "libbinder_ndk",
+        "libandroid_runtime_lazy",
         "libbase",
-        "libutils",
         "libcutils",
         "liblog",
+        "libutils",
     ],
     static_libs: [
+        "libbinder",
+        "libbinder_ndk",
         "binderRpcTestIface-cpp",
         "binderRpcTestIface-ndk_platform",
     ],
@@ -242,7 +254,10 @@ cc_test {
         "liblog",
         "libutils",
     ],
-    test_suites: ["device-tests", "vts"],
+    test_suites: [
+        "device-tests",
+        "vts",
+    ],
     require_root: true,
 }
 
@@ -296,7 +311,10 @@ cc_test {
         "binderStabilityTestIface-ndk_platform",
     ],
 
-    test_suites: ["device-tests", "vts"],
+    test_suites: [
+        "device-tests",
+        "vts",
+    ],
     require_root: true,
 }
 

@@ -133,10 +133,22 @@ cc_library {
         android: {
             srcs: libbinder_device_interface_sources,
 
-            // NOT static to keep the wire protocol unfrozen
-            static: {
-                enabled: false,
-            },
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
+            // DO NOT SUBMIT
         },
         vendor: {
             exclude_srcs: libbinder_device_interface_sources + libbinder_no_vendor_interface_sources,
