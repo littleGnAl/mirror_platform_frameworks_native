@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4b320b_b0333d29",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1862735
+      },
+      "writtenOn": "2021-03-23T03:35:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "535bffc5_3a48e85a",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 1
+      },
+      "revId": "042a74c83dd7232b72c0843c455737d6bee48f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dffd9d6_35ded684",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-22T21:04:44Z",
       "side": 1,
       "message": "call the function?",
+      "range": {
+        "startLine": 405,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 9
+      },
+      "revId": "042a74c83dd7232b72c0843c455737d6bee48f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54fd7a44_c7f9675d",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1862735
+      },
+      "writtenOn": "2021-03-23T03:35:47Z",
+      "side": 1,
+      "message": "It\u0027s OK if this function be static. Done",
+      "parentUuid": "5dffd9d6_35ded684",
       "range": {
         "startLine": 405,
         "startChar": 0,
