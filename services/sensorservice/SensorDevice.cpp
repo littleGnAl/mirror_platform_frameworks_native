@@ -900,9 +900,22 @@ void SensorDevice::setUidStateForConnection(void* ident, SensorService::UidState
             bool disable = info.numActiveClients() == 0 && info.isActive;
             bool enable = info.numActiveClients() > 0 && !info.isActive;
 
-            if ((enable || disable) &&
-                doActivateHardwareLocked(handle, enable) == NO_ERROR) {
-                info.isActive = enable;
+            bool isNonWakeupStepCounter = false;
+            for (size_t i = 0; i < mSensorList.size(); i++) {
+                if (handle == mSensorList[i].handle && mSensorList[i].type == SENSOR_TYPE_STEP_COUNTER) {
+                    ALOGW("setUidStateForConnection, has step counter!!");
+                    if ((mSensorList[i].flags & SENSOR_FLAG_WAKE_UP) == 0) {
+                        ALOGW("setUidStateForConnection, step counter is non-wakeup");
+                        isNonWakeupStepCounter = true;
+                        break;
+                    }
+                }
+            }
+            if (!isNonWakeupStepCounter) {
+                if ((enable || disable) &&
+                    doActivateHardwareLocked(handle, enable) == NO_ERROR) {
+                    info.isActive = enable;
+                }
             }
         }
     }
