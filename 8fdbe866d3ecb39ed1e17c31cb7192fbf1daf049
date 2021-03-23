@@ -20,6 +20,75 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "058791d8_831b525c",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-23T23:44:42Z",
+      "side": 1,
+      "message": "nit: this can move to L208?",
+      "range": {
+        "startLine": 211,
+        "startChar": 4,
+        "endLine": 211,
+        "endChar": 41
+      },
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873fe11d_2da88712",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-23T23:44:42Z",
+      "side": 1,
+      "message": "TEMP_FAILURE_RETRY",
+      "range": {
+        "startLine": 101,
+        "startChar": 15,
+        "endLine": 101,
+        "endChar": 22
+      },
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7ae4d7_9243b576",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-23T23:44:42Z",
+      "side": 1,
+      "message": "nit: I think it is okay to drop \u0026\u0026 here",
+      "range": {
+        "startLine": 173,
+        "startChar": 45,
+        "endLine": 173,
+        "endChar": 47
+      },
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5d308d92_4d301ef0",
         "filename": "libs/binder/RpcServer.cpp",
         "patchSetId": 65
@@ -31,6 +100,52 @@
       "writtenOn": "2021-03-23T01:08:33Z",
       "side": 1,
       "message": "nit: no empty line here? Maybe IncludeBlocks: Preserve in clang-format?",
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d800961_94d4816c",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-23T23:44:42Z",
+      "side": 1,
+      "message": "nit: auto\u0026\u0026 [it, inserted] \u003d mNodeForAddress.emplace(RpcAddress::unique(), BinderNode{...});",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 36
+      },
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48179c5_ce3d35a2",
+        "filename": "libs/binder/RpcWireFormat.h",
+        "patchSetId": 65
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-23T23:44:42Z",
+      "side": 1,
+      "message": "nit: \u003d 0 explicitly?\n\nsince this is the \"wire format\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 25
+      },
       "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
