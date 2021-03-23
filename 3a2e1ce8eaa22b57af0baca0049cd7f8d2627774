@@ -16,6 +16,23 @@
       "message": "friendly ping :) ",
       "revId": "3a2e1ce8eaa22b57af0baca0049cd7f8d2627774",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08d71ab5_5760d495",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1073546
+      },
+      "writtenOn": "2021-03-23T17:42:49Z",
+      "side": 1,
+      "message": "Neither Valerie or I work on Android any more. Adding some other folks.",
+      "revId": "3a2e1ce8eaa22b57af0baca0049cd7f8d2627774",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
