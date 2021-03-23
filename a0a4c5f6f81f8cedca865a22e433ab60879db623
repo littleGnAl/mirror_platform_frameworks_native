@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43067c30_77f2875c",
+        "filename": "libs/binder/Stability.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-23T05:26:15Z",
+      "side": 1,
+      "message": "It might be nicer if the downgrade event is logged.",
+      "revId": "a0a4c5f6f81f8cedca865a22e433ab60879db623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
