@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b8d8e9_9b718f68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 65
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-23T01:08:33Z",
+      "side": 1,
+      "message": "I still haven\u0027t got time to look at the other half of the CL...",
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d308d92_4d301ef0",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-23T01:08:33Z",
+      "side": 1,
+      "message": "nit: no empty line here? Maybe IncludeBlocks: Preserve in clang-format?",
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -209,6 +209,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bd7eb94f_c826b1c2",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 63
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-23T01:08:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e63f8043_097246a6",
+      "range": {
+        "startLine": 484,
+        "startChar": 31,
+        "endLine": 484,
+        "endChar": 44
+      },
+      "revId": "87618f55e3bf362e28001931c4589638a56e57f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6d34485c_6ffb3310",
         "filename": "libs/binder/Debug.cpp",
         "patchSetId": 63
@@ -291,6 +315,30 @@
       "side": 1,
       "message": "Nah - \u0027view\u0027 means basically the same thing as \u0027get\u0027 here, but it is more explicit about the lifetime. Like how string_view is a temporary reference to the string, this is trying to tell whoever is reading the code using this, holding onto the value would be a problem.",
       "parentUuid": "5fca2907_17db831b",
+      "range": {
+        "startLine": 57,
+        "startChar": 26,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "87618f55e3bf362e28001931c4589638a56e57f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a30f3d_5c057e94",
+        "filename": "libs/binder/include/binder/RpcAddress.h",
+        "patchSetId": 63
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-03-23T01:08:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c9021efc_a3a27a5c",
       "range": {
         "startLine": 57,
         "startChar": 26,
