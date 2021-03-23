@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63cd3ab8_b45bd8b4",
+        "filename": "libs/binder/Stability.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-03-23T15:41:43Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "a0a4c5f6f81f8cedca865a22e433ab60879db623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43067c30_77f2875c",
