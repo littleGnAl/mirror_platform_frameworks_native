@@ -39,6 +39,24 @@
       "message": "It might be nicer if the downgrade event is logged.",
       "revId": "a0a4c5f6f81f8cedca865a22e433ab60879db623",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "650ed2d6_1094b067",
+        "filename": "libs/binder/Stability.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T17:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43067c30_77f2875c",
+      "revId": "a0a4c5f6f81f8cedca865a22e433ab60879db623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

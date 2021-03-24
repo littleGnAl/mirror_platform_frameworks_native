@@ -22,6 +22,30 @@
       },
       "revId": "e35fef3e9f9c93d91b896d83f1e028acb21d4334",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da540bf_9bd3871d",
+        "filename": "libs/binder/Stability.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T17:21:15Z",
+      "side": 1,
+      "message": "This log might also happen when a downgrade is allowed but someone tries to upgrade the stability (even though this private function isn\u0027t currently called with those arguments). I didn\u0027t want to split this into two cases.",
+      "parentUuid": "19dbf2f9_461c12de",
+      "range": {
+        "startLine": 153,
+        "startChar": 18,
+        "endLine": 153,
+        "endChar": 78
+      },
+      "revId": "e35fef3e9f9c93d91b896d83f1e028acb21d4334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
