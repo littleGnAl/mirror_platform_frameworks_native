@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19dbf2f9_461c12de",
+        "filename": "libs/binder/Stability.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-03-24T15:01:51Z",
+      "side": 1,
+      "message": "nit: Should we add something like \".. and is not allowed to be downgraded\"?",
+      "range": {
+        "startLine": 153,
+        "startChar": 18,
+        "endLine": 153,
+        "endChar": 78
+      },
+      "revId": "e35fef3e9f9c93d91b896d83f1e028acb21d4334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
