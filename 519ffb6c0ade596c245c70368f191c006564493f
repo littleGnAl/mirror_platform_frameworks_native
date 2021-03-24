@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c075de_136df087",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1862735
+      },
+      "writtenOn": "2021-03-24T01:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7a3c09b_b6847644",
+      "range": {
+        "startLine": 360,
+        "startChar": 32,
+        "endLine": 360,
+        "endChar": 39
+      },
+      "revId": "519ffb6c0ade596c245c70368f191c006564493f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "540d50ec_cd4653c8",
@@ -70,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23141025_0cc1abb1",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1862735
+      },
+      "writtenOn": "2021-03-24T01:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "540d50ec_cd4653c8",
+      "range": {
+        "startLine": 361,
+        "startChar": 31,
+        "endLine": 361,
+        "endChar": 37
+      },
+      "revId": "519ffb6c0ade596c245c70368f191c006564493f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e295c5ec_bc39b0f3",
@@ -83,6 +131,30 @@
       "writtenOn": "2021-03-24T00:45:21Z",
       "side": 1,
       "message": "toggle implies that the existing value will become the opposite value. We should call this something like `enableOnewaySpamDetection` or `setOnewaySpamDetection`",
+      "range": {
+        "startLine": 61,
+        "startChar": 32,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "519ffb6c0ade596c245c70368f191c006564493f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae3f96e4_93700ff2",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1862735
+      },
+      "writtenOn": "2021-03-24T01:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e295c5ec_bc39b0f3",
       "range": {
         "startLine": 61,
         "startChar": 32,
