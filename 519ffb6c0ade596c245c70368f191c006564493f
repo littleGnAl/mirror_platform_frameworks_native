@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04a1c7e_42d0fd02",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:45:21Z",
+      "side": 1,
+      "message": "yeah, added here",
+      "range": {
+        "startLine": 900,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 28
+      },
+      "revId": "519ffb6c0ade596c245c70368f191c006564493f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a3c09b_b6847644",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:45:21Z",
+      "side": 1,
+      "message": "same here - can we go back to the original name?",
+      "range": {
+        "startLine": 360,
+        "startChar": 32,
+        "endLine": 360,
+        "endChar": 39
+      },
+      "revId": "519ffb6c0ade596c245c70368f191c006564493f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540d50ec_cd4653c8",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:45:21Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 361,
+        "startChar": 31,
+        "endLine": 361,
+        "endChar": 37
+      },
+      "revId": "519ffb6c0ade596c245c70368f191c006564493f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e295c5ec_bc39b0f3",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:45:21Z",
+      "side": 1,
+      "message": "toggle implies that the existing value will become the opposite value. We should call this something like `enableOnewaySpamDetection` or `setOnewaySpamDetection`",
+      "range": {
+        "startLine": 61,
+        "startChar": 32,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "519ffb6c0ade596c245c70368f191c006564493f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
