@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d58fc25_4664772a",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T01:54:58Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "058791d8_831b525c",
+      "range": {
+        "startLine": 211,
+        "startChar": 4,
+        "endLine": 211,
+        "endChar": 41
+      },
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "873fe11d_2da88712",
@@ -66,6 +90,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c7060b45_eabe9462",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T01:54:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "873fe11d_2da88712",
+      "range": {
+        "startLine": 101,
+        "startChar": 15,
+        "endLine": 101,
+        "endChar": 22
+      },
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5c7ae4d7_9243b576",
         "filename": "libs/binder/RpcConnection.cpp",
         "patchSetId": 65
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-23T23:44:42Z",
       "side": 1,
       "message": "nit: I think it is okay to drop \u0026\u0026 here",
+      "range": {
+        "startLine": 173,
+        "startChar": 45,
+        "endLine": 173,
+        "endChar": 47
+      },
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e9c4ea_eba5ba59",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T01:54:58Z",
+      "side": 1,
+      "message": "I usually still keep it these days because I think it shows the ownership more clearly (if people aren\u0027t familiar with the type).",
+      "parentUuid": "5c7ae4d7_9243b576",
       "range": {
         "startLine": 173,
         "startChar": 45,
@@ -129,6 +201,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2fcbcbc1_03521e75",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T01:54:58Z",
+      "side": 1,
+      "message": "nice!",
+      "parentUuid": "2d800961_94d4816c",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 36
+      },
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e48179c5_ce3d35a2",
         "filename": "libs/binder/RpcWireFormat.h",
         "patchSetId": 65
@@ -140,6 +236,30 @@
       "writtenOn": "2021-03-23T23:44:42Z",
       "side": 1,
       "message": "nit: \u003d 0 explicitly?\n\nsince this is the \"wire format\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "8fdbe866d3ecb39ed1e17c31cb7192fbf1daf049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1d0122_f8bc122c",
+        "filename": "libs/binder/RpcWireFormat.h",
+        "patchSetId": 65
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T01:54:58Z",
+      "side": 1,
+      "message": "done - b/182938972 is also for testing its stability",
+      "parentUuid": "e48179c5_ce3d35a2",
       "range": {
         "startLine": 27,
         "startChar": 24,
