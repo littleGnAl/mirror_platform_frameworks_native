@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d48849fb_c6e7f289",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1862735
+      },
+      "writtenOn": "2021-03-24T09:31:03Z",
+      "side": 1,
+      "message": "Not call function here as we couldn\u0027t call member function inside static function. And seem we\u0027d better declare enableOnewaySpamDetection non-static because we need mDriverFD field.\n\nProcessState::Self()-\u003emDriverFD isn\u0027t elegent in enableOnewaySpamDetection.",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 9
+      },
+      "revId": "d589c3da8cbb4b6818d6a8c13c2b89d087d926fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
