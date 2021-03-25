@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ab0294_51753633",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:47:20Z",
+      "side": 1,
+      "message": "lgtm - as soon as upstream kernel patch approved, we can merge this here",
+      "revId": "d589c3da8cbb4b6818d6a8c13c2b89d087d926fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d48849fb_c6e7f289",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-03-24T09:31:03Z",
       "side": 1,
       "message": "Not call function here as we couldn\u0027t call member function inside static function. And seem we\u0027d better declare enableOnewaySpamDetection non-static because we need mDriverFD field.\n\nProcessState::Self()-\u003emDriverFD isn\u0027t elegent in enableOnewaySpamDetection.",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 9
+      },
+      "revId": "d589c3da8cbb4b6818d6a8c13c2b89d087d926fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "806b3914_18e4e58f",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:47:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d48849fb_c6e7f289",
       "range": {
         "startLine": 397,
         "startChar": 0,
