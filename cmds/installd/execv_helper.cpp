@@ -22,6 +22,7 @@
 
 #include <string>
 
+#include <android-base/strings.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 
@@ -38,9 +39,13 @@ void ExecVHelper::PrepareArgs(const std::string& bin) {
     CHECK(args_[0].empty());
     args_[0] = bin;
     // Write char* into array.
+    for (const std::string& arg : prefix_args_) {
+        argv_.push_back(arg.c_str());
+    }
     for (const std::string& arg : args_) {
         argv_.push_back(arg.c_str());
     }
+    LOG(ERROR) << "dexopt args: " << ::android::base::Join(argv_, ' ');
     argv_.push_back(nullptr);  // Add null terminator.
 }
 
@@ -53,6 +58,12 @@ void ExecVHelper::Exec(int exit_code) {
 void ExecVHelper::AddArg(const std::string& arg) {
     if (!arg.empty()) {
         args_.push_back(arg);
+    }
+}
+
+void ExecVHelper::AddPrefixArg(const std::string& arg) {
+    if (!arg.empty()) {
+        prefix_args_.push_back(arg);
     }
 }
 

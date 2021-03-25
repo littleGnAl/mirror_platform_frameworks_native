@@ -41,7 +41,11 @@ class ExecVHelper {
     // Add a runtime arg if it's not empty.
     void AddRuntimeArg(const std::string& arg);
 
+    void AddPrefixArg(const std::string& arg);
+
   protected:
+    std::vector<std::string> prefix_args_;
+
     // Holder arrays for backing arg storage.
     std::vector<std::string> args_;
 

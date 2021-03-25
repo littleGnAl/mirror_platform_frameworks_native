@@ -1806,7 +1806,8 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
         SetDex2OatScheduling(boot_complete);
 
         /* child -- drop privileges before continuing */
-        drop_capabilities(uid);
+        // FIXME handle properly
+        //drop_capabilities(uid);
 
         if (flock(out_oat.fd(), LOCK_EX | LOCK_NB) != 0) {
             PLOG(ERROR) << "flock(" << out_oat.path() << ") failed";

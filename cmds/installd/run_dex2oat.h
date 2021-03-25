@@ -18,6 +18,7 @@
 #define ANDROID_INSTALLD_RUN_DEX2OAT_H
 
 #include <memory>
+#include <set>
 #include <string>
 
 #include "execv_helper.h"
@@ -82,6 +83,16 @@ class RunDex2Oat {
     virtual bool GetBoolProperty(const std::string& key, bool default_value);
 
   private:
+    void AnnotateFdAsReadonly(int fd) {
+      if (fd >= 0)
+        ro_fds_.insert(fd);
+    }
+
+    void AnnotateFdAsReadWrite(int fd) {
+      if (fd >= 0)
+        rw_fds_.insert(fd);
+    }
+
     void AddArg(const std::string& arg);
     void AddRuntimeArg(const std::string& arg);
 
@@ -96,6 +107,8 @@ class RunDex2Oat {
 
     const std::string dex2oat_bin_;
     ExecVHelper* execv_helper_;  // not owned
+    std::set<int> ro_fds_;
+    std::set<int> rw_fds_;
 };
 
 }  // namespace installd

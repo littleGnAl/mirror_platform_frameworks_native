@@ -107,6 +107,20 @@ void RunDex2Oat::Initialize(const UniqueFile& output_oat,
         AddArg(*it);
     }
 
+    auto ro_arg = "--in-fd=" + base::Join(ro_fds_, ',');
+    auto rw_arg = "--out-fd=" + base::Join(rw_fds_, ',');
+
+    if (GetBoolProperty("dalvik.vm.compos", false)) {
+      LOG(ERROR) << "COMPOS!";
+      execv_helper_->AddPrefixArg("/system/bin/pvm_exec");
+      execv_helper_->AddPrefixArg("--debug");
+      execv_helper_->AddPrefixArg(ro_arg);
+      execv_helper_->AddPrefixArg(rw_arg);
+      execv_helper_->AddPrefixArg("--");
+    } else {
+      LOG(ERROR) << "NO COMPOS!";
+    }
+
     execv_helper_->PrepareArgs(dex2oat_bin_);
 }
 
@@ -142,19 +156,27 @@ void RunDex2Oat::PrepareInputFileFlags(const UniqueFile& output_oat,
     AddArg(StringPrintf("--oat-location=%s", output_oat.path().c_str()));
     AddArg(StringPrintf("--input-vdex-fd=%d", input_vdex.fd()));
     AddArg(StringPrintf("--output-vdex-fd=%d", output_vdex.fd()));
+    AnnotateFdAsReadonly(input_dex.fd());
+    AnnotateFdAsReadonly(input_vdex.fd());
+    AnnotateFdAsReadWrite(output_oat.fd());
+    AnnotateFdAsReadWrite(output_vdex.fd());
 
     if (output_image.fd() >= 0) {
         AddArg(StringPrintf("--app-image-fd=%d", output_image.fd()));
         AddArg(MapPropertyToArg("dalvik.vm.appimageformat", "--image-format=%s"));
+        AnnotateFdAsReadWrite(output_image.fd());
     }
     if (dex_metadata.fd() > -1) {
         AddArg("--dm-fd=" + std::to_string(dex_metadata.fd()));
+        AnnotateFdAsReadonly(dex_metadata.fd());
     }
     if (profile.fd() != -1) {
         AddArg(StringPrintf("--profile-file-fd=%d", profile.fd()));
+        AnnotateFdAsReadonly(profile.fd());
     }
     if (swap_fd >= 0) {
         AddArg(StringPrintf("--swap-fd=%d", swap_fd));
+        AnnotateFdAsReadWrite(swap_fd);
     }
 
     // Get the directory of the apk to pass as a base classpath directory.
@@ -172,6 +194,8 @@ void RunDex2Oat::PrepareInputFileFlags(const UniqueFile& output_oat,
         if (!class_loader_context_fds.empty()) {
             AddArg(StringPrintf("--class-loader-context-fds=%s",
                                 class_loader_context_fds.c_str()));
+            // TODO how to test compilation of a secondary dex?
+            // AnnotateFdAsReadonly(fd);
         }
     }
 }
