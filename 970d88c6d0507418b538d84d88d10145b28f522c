@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50434b68_a0ae7d1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2021-03-25T15:16:07Z",
+      "side": 1,
+      "message": "lgtm in general, but i think you are using the wrong buffer here. left a comment.\n\nFWIW, this is not an issue in S since we are deprecating BQL. ",
+      "revId": "970d88c6d0507418b538d84d88d10145b28f522c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6960f664_78afc6ac",
+        "filename": "services/surfaceflinger/BufferLayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2021-03-25T15:16:07Z",
+      "side": 1,
+      "message": "Should be using mBufferInfo.mBuffer here instead of s.buffer. For BQL, the layer drawing state does not store the buffer.",
+      "range": {
+        "startLine": 861,
+        "startChar": 29,
+        "endLine": 861,
+        "endChar": 35
+      },
+      "revId": "970d88c6d0507418b538d84d88d10145b28f522c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
