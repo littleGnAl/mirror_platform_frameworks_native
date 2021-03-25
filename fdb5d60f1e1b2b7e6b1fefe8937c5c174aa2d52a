@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88e71240_f281cfa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:12:56Z",
+      "side": 1,
+      "message": "friendly ping for NDK-API-Review",
+      "revId": "fdb5d60f1e1b2b7e6b1fefe8937c5c174aa2d52a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
