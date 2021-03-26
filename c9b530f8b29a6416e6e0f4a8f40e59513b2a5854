@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca97046a_e627aa02",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2021-03-26T00:31:29Z",
+      "side": 1,
+      "message": "This isn\u0027t really true, since using this for a binder owned by itself is fine, which is what the media module does.\n\nSomething like \"This must be used only to access stable AIDL services, or binder services owned by the apex itself. Do not use it to access non-stable AIDL services across module boundaries.\"?",
+      "revId": "c9b530f8b29a6416e6e0f4a8f40e59513b2a5854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
