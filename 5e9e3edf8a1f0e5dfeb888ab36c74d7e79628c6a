@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "696e6565_e015eaf4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2021-03-29T16:03:55Z",
+      "side": 1,
+      "message": "Looks like this is a straightforward cherry-pick. Curious why we have a DO NOT MERGE instead of Merged-In: tag. Also can we use the existing change-id of the original commit?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "5e9e3edf8a1f0e5dfeb888ab36c74d7e79628c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2fd16e85_6e4c1236",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-03-29T15:11:00Z",
       "side": 1,
       "message": "Verified on Cuttlefish with \n\natest CtsUiRenderingTestCases:android.uirendering.cts.testclasses.SurfaceViewTests#testMovingWhiteSurfaceView --iterations\u003d20",
+      "revId": "5e9e3edf8a1f0e5dfeb888ab36c74d7e79628c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d01559_01be334a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2021-03-29T16:03:55Z",
+      "side": 1,
+      "message": "curious why this is not a cherry-pick ",
       "revId": "5e9e3edf8a1f0e5dfeb888ab36c74d7e79628c6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
