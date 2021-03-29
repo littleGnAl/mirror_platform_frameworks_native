@@ -22,6 +22,30 @@
       },
       "revId": "53e9438259f79e16f0079f0fccd791709d004c95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c458c8_8e54c1ff",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-03-29T20:12:52Z",
+      "side": 1,
+      "message": "resolved by changes to apexd",
+      "parentUuid": "a8e36669_c82e45ca",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "53e9438259f79e16f0079f0fccd791709d004c95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
