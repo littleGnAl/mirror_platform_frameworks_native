@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3023c8cf_27213d1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2021-03-29T22:10:12Z",
+      "side": 1,
+      "message": "Ah I see. Changing the change-id is fine but I recommend replacing DO NOT MERGE  with a Merged-In:\u003coriginal change id\u003e. Some relevant docs go/repo#android-automerger-hints",
+      "parentUuid": "1e4eaa19_c623a0b9",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "5e9e3edf8a1f0e5dfeb888ab36c74d7e79628c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2fd16e85_6e4c1236",
