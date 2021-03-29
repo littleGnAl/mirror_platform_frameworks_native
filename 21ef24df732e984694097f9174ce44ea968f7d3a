@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f66f0f81_900e2c65",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-29T18:03:11Z",
+      "side": 1,
+      "message": "Done -\u003e http://aosp/1656231",
+      "parentUuid": "4edf88bf_ba914bb4",
+      "range": {
+        "startLine": 29,
+        "startChar": 60,
+        "endLine": 29,
+        "endChar": 66
+      },
+      "revId": "21ef24df732e984694097f9174ce44ea968f7d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfc4ee81_d9f602a3",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-03-29T17:22:36Z",
       "side": 1,
       "message": "Why not add to this API? Is this not exposed?",
+      "revId": "21ef24df732e984694097f9174ce44ea968f7d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b23ea7_3e64048a",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-29T18:03:11Z",
+      "side": 1,
+      "message": "Correct, this is not available to APEXes.",
+      "parentUuid": "dfc4ee81_d9f602a3",
       "revId": "21ef24df732e984694097f9174ce44ea968f7d3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -75,6 +117,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faee9d3d_0d572fb8",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-29T18:03:11Z",
+      "side": 1,
+      "message": "This returns true for *Treble) stable services only.",
+      "parentUuid": "7a840a29_58565635",
+      "revId": "21ef24df732e984694097f9174ce44ea968f7d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8d0eb16_2dced750",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-03-29T17:22:36Z",
       "side": 1,
       "message": "Same, if this is exposed to modules, then mainline modules shouldn\u0027t use it to check services owned by other components.",
+      "revId": "21ef24df732e984694097f9174ce44ea968f7d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d892537a_245feb4c",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-29T18:03:11Z",
+      "side": 1,
+      "message": "This tells you which services are (Treble-level) stable.",
+      "parentUuid": "a8d0eb16_2dced750",
       "revId": "21ef24df732e984694097f9174ce44ea968f7d3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
