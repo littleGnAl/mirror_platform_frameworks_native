@@ -120,23 +120,6 @@ void RunDex2Oat::PrepareBootImageAndBootClasspathFlags(bool use_jitzygote_image)
         boot_image = MapPropertyToArg("dalvik.vm.boot-image", "--boot-image=%s");
     }
     AddArg(boot_image);
-
-    // If DEX2OATBOOTCLASSPATH is not in the environment, dex2oat is going to query
-    // BOOTCLASSPATH.
-    char* dex2oat_bootclasspath = getenv("DEX2OATBOOTCLASSPATH");
-    if (dex2oat_bootclasspath != nullptr) {
-        AddRuntimeArg(StringPrintf("-Xbootclasspath:%s", dex2oat_bootclasspath));
-    }
-
-    std::string updatable_bcp_packages =
-            MapPropertyToArg("dalvik.vm.dex2oat-updatable-bcp-packages-file",
-                             "--updatable-bcp-packages-file=%s");
-    if (updatable_bcp_packages.empty()) {
-        // Make dex2oat fail by providing non-existent file name.
-        updatable_bcp_packages =
-                "--updatable-bcp-packages-file=/nonx/updatable-bcp-packages.txt";
-    }
-    AddArg(updatable_bcp_packages);
 }
 
 void RunDex2Oat::PrepareInputFileFlags(const UniqueFile& output_oat,
