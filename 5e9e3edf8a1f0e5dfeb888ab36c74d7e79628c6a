@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e4eaa19_c623a0b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1084468
+      },
+      "writtenOn": "2021-03-29T17:07:20Z",
+      "side": 1,
+      "message": "This is what I get on a freshly synched AOSP repo when cherry-picking ag/12947725:\n\n$ git fetch sso://googleplex-android/platform/frameworks/native refs/changes/25/12947725/3 \u0026\u0026 git cherry-pick FETCH_HEAD\nFrom sso://googleplex-android/platform/frameworks/native\n * branch                refs/changes/25/12947725/3 -\u003e FETCH_HEAD\nAuto-merging services/surfaceflinger/BufferStateLayer.h\nAuto-merging services/surfaceflinger/BufferStateLayer.cpp\nAuto-merging services/surfaceflinger/BufferLayer.h\nCONFLICT (content): Merge conflict in services/surfaceflinger/BufferLayer.h\nAuto-merging services/surfaceflinger/BufferLayer.cpp\nerror: could not apply e7f79c51e... Check if the buffer is actually being scaled instead of only checking scaling mode\nhint: after resolving the conflicts, mark the corrected paths\nhint: with \u0027git add \u003cpaths\u003e\u0027 or \u0027git rm \u003cpaths\u003e\u0027\nhint: and commit the result with \u0027git commit\u0027\n\nIt appears to mainly be caused by ag/12429032, but when I try cherry-picking that (first), it also causes merge conflicts.\n\nHappy to use the same Change-Id as ag/12947725 here, but wouldn\u0027t that cause confusion when it\u0027s not a clean cherry-pick?",
+      "parentUuid": "696e6565_e015eaf4",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "5e9e3edf8a1f0e5dfeb888ab36c74d7e79628c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2fd16e85_6e4c1236",
