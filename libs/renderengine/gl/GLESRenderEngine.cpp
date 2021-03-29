@@ -980,6 +980,10 @@ bool GLESRenderEngine::useProtectedContext(bool useProtectedContext) {
     if (useProtectedContext && mProtectedEGLContext == EGL_NO_CONTEXT) {
         return false;
     }
+
+    unbindFrameBuffer(mDrawingBuffer.get());
+    mDrawingBuffer = createFramebuffer();
+
     const EGLSurface surface = useProtectedContext ? mProtectedStubSurface : mStubSurface;
     const EGLContext context = useProtectedContext ? mProtectedEGLContext : mEGLContext;
     const bool success = eglMakeCurrent(mEGLDisplay, surface, surface, context) == EGL_TRUE;
