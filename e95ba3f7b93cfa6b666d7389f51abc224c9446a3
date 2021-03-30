@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed57ec2_c647e04b",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-30T11:07:52Z",
+      "side": 0,
+      "message": "This may be a relevant comment and it\u0027s tied to the function name. If we\u0027re dropping the comment, maybe we should rename the function as well?",
+      "range": {
+        "startLine": 124,
+        "startChar": 58,
+        "endLine": 125,
+        "endChar": 21
+      },
+      "revId": "e95ba3f7b93cfa6b666d7389f51abc224c9446a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
