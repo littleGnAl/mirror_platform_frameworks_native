@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "204256b0_34812bfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-30T00:51:53Z",
+      "side": 1,
+      "message": "(friendly ping for another +2 - lost it in dirty rebase)",
+      "revId": "a8ad32b70701202dc5f336f6dfcb06114727835d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
