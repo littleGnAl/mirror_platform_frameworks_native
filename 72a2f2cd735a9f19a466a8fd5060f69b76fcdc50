@@ -22,6 +22,76 @@
       },
       "revId": "72a2f2cd735a9f19a466a8fd5060f69b76fcdc50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f40ad1_d0770762",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-30T01:08:33Z",
+      "side": 1,
+      "message": "I don\u0027t know if there\u0027s a standard implementation, but this looks fine to me.",
+      "parentUuid": "933da583_45cfce4d",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "72a2f2cd735a9f19a466a8fd5060f69b76fcdc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611f8b9a_f24954a6",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-30T01:08:33Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be VMADDR_CID_ANY?",
+      "range": {
+        "startLine": 97,
+        "startChar": 34,
+        "endLine": 97,
+        "endChar": 49
+      },
+      "revId": "72a2f2cd735a9f19a466a8fd5060f69b76fcdc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce5b15b_fe72ec67",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-30T01:08:33Z",
+      "side": 1,
+      "message": "I would rather define a class that abstracts sockaddr. Then this could be a member function of the subclass of the abstract class.",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 64
+      },
+      "revId": "72a2f2cd735a9f19a466a8fd5060f69b76fcdc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
