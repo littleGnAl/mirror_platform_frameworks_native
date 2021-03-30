@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ca59a9ee_a2da4f9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1084468
+      },
+      "writtenOn": "2021-03-30T04:20:40Z",
+      "side": 1,
+      "message": "Done. Thanks for the pointers!",
+      "parentUuid": "3023c8cf_27213d1a",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "5e9e3edf8a1f0e5dfeb888ab36c74d7e79628c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2fd16e85_6e4c1236",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
