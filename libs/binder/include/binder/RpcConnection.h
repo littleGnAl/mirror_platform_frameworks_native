@@ -62,6 +62,16 @@ public:
     [[nodiscard]] bool addUnixDomainClient(const char* path);
 
     /**
+     * Creates an RPC server at the current port.
+     */
+    [[nodiscard]] bool setupVsockServer(unsigned int port);
+
+    /**
+     * Connects to an RPC server at the CVD & port.
+     */
+    [[nodiscard]] bool addVsockClient(unsigned int cvd, unsigned int port);
+
+    /**
      * Query the other side of the connection for the root object hosted by that
      * process's RpcServer (if one exists)
      */
@@ -88,8 +98,11 @@ public:
 private:
     RpcConnection();
 
-    void addServer(base::unique_fd&& fd);
-    void addClient(base::unique_fd&& fd);
+    bool addServer(struct sockaddr* addr, size_t addrSize,
+                   std::string (*addrToString)(struct sockaddr*));
+    bool addClient(struct sockaddr* addr, size_t addrSize,
+                   std::string (*addrToString)(struct sockaddr*));
+    void assignServerToThisThread(base::unique_fd&& fd);
 
     struct ConnectionSocket : public RefBase {
         base::unique_fd fd;
