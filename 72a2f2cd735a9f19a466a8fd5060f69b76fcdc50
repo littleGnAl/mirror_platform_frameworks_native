@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933da583_45cfce4d",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-30T00:45:29Z",
+      "side": 1,
+      "message": "any thoughts about a better way to dump sockaddr? Do you know of any good implementation in the platform?",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "72a2f2cd735a9f19a466a8fd5060f69b76fcdc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
