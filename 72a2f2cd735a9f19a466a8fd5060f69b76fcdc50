@@ -92,6 +92,30 @@
       },
       "revId": "72a2f2cd735a9f19a466a8fd5060f69b76fcdc50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e45f5822_60c07d4d",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-30T01:51:24Z",
+      "side": 1,
+      "message": "I felt like the overhead of a class didn\u0027t make sense when the data members already exist and it\u0027s only one function, though it\u0027s about at the limit. Do you feel strongly about this?",
+      "parentUuid": "7ce5b15b_fe72ec67",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 64
+      },
+      "revId": "72a2f2cd735a9f19a466a8fd5060f69b76fcdc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
