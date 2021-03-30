@@ -20,10 +20,12 @@
 
 #include <binder/Parcel.h>
 #include <binder/Stability.h>
+#include <utils/String8.h>
 
 #include "RpcState.h"
 #include "RpcWireFormat.h"
 
+#include <linux/vm_sockets.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/un.h>
@@ -50,15 +52,15 @@ sp<RpcConnection> RpcConnection::make() {
     return new RpcConnection;
 }
 
+static std::string unixDomainSocketToString(struct sockaddr* addr) {
+    LOG_ALWAYS_FATAL_IF(addr->sa_family != AF_UNIX);
+    struct sockaddr_un* unAddr = reinterpret_cast<struct sockaddr_un*>(addr);
+    return String8::format("path '%.*s'", static_cast<int>(sizeof(unAddr->sun_path)),
+                           unAddr->sun_path)
+            .c_str();
+}
+
 bool RpcConnection::setupUnixDomainServer(const char* path) {
-    LOG_ALWAYS_FATAL_IF(mServer.get() != -1, "Only supports one server now");
-
-    unique_fd serverFd(TEMP_FAILURE_RETRY(socket(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0)));
-    if (serverFd == -1) {
-        ALOGE("Could not create socket at %s: %s", path, strerror(errno));
-        return false;
-    }
-
     struct sockaddr_un addr = {
             .sun_family = AF_UNIX,
     };
@@ -67,29 +69,10 @@ bool RpcConnection::setupUnixDomainServer(const char* path) {
     LOG_ALWAYS_FATAL_IF(pathLen > sizeof(addr.sun_path), "%u", pathLen);
     memcpy(addr.sun_path, path, pathLen);
 
-    if (0 != TEMP_FAILURE_RETRY(bind(serverFd.get(), (struct sockaddr*)&addr, sizeof(addr)))) {
-        ALOGE("Could not bind socket at %s: %s", path, strerror(errno));
-        return false;
-    }
-
-    if (0 != TEMP_FAILURE_RETRY(listen(serverFd.get(), 1 /*backlog*/))) {
-        ALOGE("Could not listen socket at %s: %s", path, strerror(errno));
-        return false;
-    }
-
-    mServer = std::move(serverFd);
-    return true;
+    return addServer((struct sockaddr*)&addr, sizeof(addr), &unixDomainSocketToString);
 }
 
 bool RpcConnection::addUnixDomainClient(const char* path) {
-    LOG_RPC_DETAIL("Connecting on path: %s", path);
-
-    unique_fd serverFd(TEMP_FAILURE_RETRY(socket(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0)));
-    if (serverFd == -1) {
-        ALOGE("Could not create socket at %s: %s", path, strerror(errno));
-        return false;
-    }
-
     struct sockaddr_un addr = {
             .sun_family = AF_UNIX,
     };
@@ -98,15 +81,36 @@ bool RpcConnection::addUnixDomainClient(const char* path) {
     LOG_ALWAYS_FATAL_IF(pathLen > sizeof(addr.sun_path), "%u", pathLen);
     memcpy(addr.sun_path, path, pathLen);
 
-    if (0 != TEMP_FAILURE_RETRY(connect(serverFd.get(), (struct sockaddr*)&addr, sizeof(addr)))) {
-        ALOGE("Could not connect socket at %s: %s", path, strerror(errno));
-        return false;
-    }
+    LOG_RPC_DETAIL("Connecting on path: %s", path);
 
-    LOG_RPC_DETAIL("Unix domain client with fd %d", serverFd.get());
+    return addClient((struct sockaddr*)&addr, sizeof(addr), &unixDomainSocketToString);
+}
 
-    addClient(std::move(serverFd));
-    return true;
+static std::string vsockSocketToString(struct sockaddr* addr) {
+    LOG_ALWAYS_FATAL_IF(addr->sa_family != AF_VSOCK);
+    struct sockaddr_vm* vmAddr = reinterpret_cast<struct sockaddr_vm*>(addr);
+    return String8::format("cid %du port %du", vmAddr->svm_cid, vmAddr->svm_port).c_str();
+}
+
+bool RpcConnection::setupVsockServer(unsigned int port) {
+    // realizing value w/ this type at compile time to avoid ubsan abort
+    constexpr unsigned int kAny = VMADDR_PORT_ANY;
+
+    struct sockaddr_vm addr = {
+            .svm_family = AF_VSOCK,
+            .svm_port = port,
+            .svm_cid = kAny,
+    };
+    return addServer((struct sockaddr*)&addr, sizeof(addr), &vsockSocketToString);
+}
+
+bool RpcConnection::addVsockClient(unsigned int cvd, unsigned int port) {
+    struct sockaddr_vm addr = {
+            .svm_family = AF_VSOCK,
+            .svm_port = port,
+            .svm_cid = cvd,
+    };
+    return addClient((struct sockaddr*)&addr, sizeof(addr), &vsockSocketToString);
 }
 
 sp<IBinder> RpcConnection::getRootObject() {
@@ -144,7 +148,7 @@ void RpcConnection::join() {
 
         LOG_RPC_DETAIL("accept4 on fd %d yields fd %d", mServer.get(), clientFd.get());
 
-        addServer(std::move(clientFd));
+        assignServerToThisThread(std::move(clientFd));
     }
 
     // We may not use the connection we just established (two threads might
@@ -170,14 +174,60 @@ wp<RpcServer> RpcConnection::server() {
     return mForServer;
 }
 
-void RpcConnection::addClient(base::unique_fd&& fd) {
-    std::lock_guard<std::mutex> _l(mSocketMutex);
-    sp<ConnectionSocket> connection = new ConnectionSocket();
-    connection->fd = std::move(fd);
-    mClients.push_back(connection);
+bool RpcConnection::addServer(struct sockaddr* addr, size_t addrSize,
+                              std::string (*addrToString)(struct sockaddr*)) {
+    LOG_ALWAYS_FATAL_IF(mServer.get() != -1, "Each RpcConnection can only have one server.");
+
+    unique_fd serverFd(TEMP_FAILURE_RETRY(socket(addr->sa_family, SOCK_STREAM | SOCK_CLOEXEC, 0)));
+    if (serverFd == -1) {
+        ALOGE("Could not create socket: %s", strerror(errno));
+        return false;
+    }
+
+    if (0 != TEMP_FAILURE_RETRY(bind(serverFd.get(), addr, addrSize))) {
+        int savedErrno = errno;
+        ALOGE("Could not bind socket at %s: %s", addrToString(addr).c_str(), strerror(savedErrno));
+        return false;
+    }
+
+    if (0 != TEMP_FAILURE_RETRY(listen(serverFd.get(), 1 /*backlog*/))) {
+        int savedErrno = errno;
+        ALOGE("Could not listen socket at %s: %s", addrToString(addr).c_str(),
+              strerror(savedErrno));
+        return false;
+    }
+
+    mServer = std::move(serverFd);
+    return true;
 }
 
-void RpcConnection::addServer(base::unique_fd&& fd) {
+bool RpcConnection::addClient(struct sockaddr* addr, size_t addrSize,
+                              std::string (*addrToString)(struct sockaddr*)) {
+    unique_fd serverFd(TEMP_FAILURE_RETRY(socket(addr->sa_family, SOCK_STREAM | SOCK_CLOEXEC, 0)));
+    if (serverFd == -1) {
+        int savedErrno = errno;
+        ALOGE("Could not create socket at %s: %s", addrToString(addr).c_str(),
+              strerror(savedErrno));
+        return false;
+    }
+
+    if (0 != TEMP_FAILURE_RETRY(connect(serverFd.get(), addr, addrSize))) {
+        int savedErrno = errno;
+        ALOGE("Could not connect socket at %s: %s", addrToString(addr).c_str(),
+              strerror(savedErrno));
+        return false;
+    }
+
+    LOG_RPC_DETAIL("Socket at %s client with fd %d", addrToString(addr).c_str(), serverFd.get());
+
+    std::lock_guard<std::mutex> _l(mSocketMutex);
+    sp<ConnectionSocket> connection = new ConnectionSocket();
+    connection->fd = std::move(serverFd);
+    mClients.push_back(connection);
+    return true;
+}
+
+void RpcConnection::assignServerToThisThread(base::unique_fd&& fd) {
     std::lock_guard<std::mutex> _l(mSocketMutex);
     sp<ConnectionSocket> connection = new ConnectionSocket();
     connection->fd = std::move(fd);
