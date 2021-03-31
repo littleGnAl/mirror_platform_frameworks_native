@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5091206f_fbb8573b",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T01:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4f40ad1_d0770762",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "72a2f2cd735a9f19a466a8fd5060f69b76fcdc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "611f8b9a_f24954a6",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-03-30T01:08:33Z",
       "side": 1,
       "message": "shouldn\u0027t this be VMADDR_CID_ANY?",
+      "range": {
+        "startLine": 97,
+        "startChar": 34,
+        "endLine": 97,
+        "endChar": 49
+      },
+      "revId": "72a2f2cd735a9f19a466a8fd5060f69b76fcdc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28da0661_d2a994a9",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T01:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "611f8b9a_f24954a6",
       "range": {
         "startLine": 97,
         "startChar": 34,
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "Not strong at this moment. I feel okay with making it as a future refactoring. \n\nI don\u0027t understand about the overhead though. I was expecting something like this.\n\n```\nclass Socket {\n public:\n  int bindAndListen() { // missing error handling\n    int fd \u003d socket(addr()-\u003eaf_family, SOCK_STREAM | SOCK_CLOEXEC, 0);\n    bind(fd, addr(), addrSize());\n    listen(fd);\n    return fd;\n  }\n  int connect() { // missing error handling\n    int fd \u003d socket(addr()-\u003eaf_family, SOCK_STREAM | SOCK_CLOEXEC, 0);\n    connect(fd, addr(), addrSize());\n    return fd;\n  }\n  virtual std::string toString() \u003d 0;\n protected:\n  virtual const struct sockaddr* addr() \u003d 0;\n  virtual const size_t addrSize() \u003d 0;\n};\n\nclass UnixSocket : public Socket {\n public:\n  UnixSocket(const char* path) {\n    addr_.af_family \u003d AF_UNIX;\n    memcpy(addr_.sunpath, ...);\n  };\n  std::string toString() {...}\n protected:\n  const struct sockaddr* addr() { \n    return reinterpret_cast\u003cstruct sockaddr*\u003e(\u0026addr_);\n  }\n  const size_t addrSize() { return sizeof(addr_); }\n private:\n  struct sockaddr_un addr_;\n};\n    \nclass VirtualSocket : public Socket {\n  // similarly\n}\n```\n\nThen we don\u0027t need to extend RpcConnection for different socket types.",
       "parentUuid": "e45f5822_60c07d4d",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 64
+      },
+      "revId": "72a2f2cd735a9f19a466a8fd5060f69b76fcdc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52bc9bc5_eaa2b8d3",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T01:01:33Z",
+      "side": 1,
+      "message": "I\u0027ve moved closer to this and avoid some reinterpret_cast, but avoided abstracting bindAndListen/connect. Also, I\u0027m not exposing APIs to use arbitrarily socket types yet. It isn\u0027t clear to me if we should support arbitrary types of sockets, since they have slightly different characteristics.\n\nEither way, maybe I can follow it up.",
+      "parentUuid": "df3a890c_5cc2f066",
       "range": {
         "startLine": 102,
         "startChar": 19,

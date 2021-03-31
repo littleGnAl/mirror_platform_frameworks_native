@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c19d4f6_d34303d1",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T01:01:33Z",
+      "side": 1,
+      "message": "adb/cuttlefish have some hacks here to make AF_VSOCK available w/ glibc, but it doesn\u0027t play nicely with libbinder\u0027s mismash of bionic/glibc. Since we don\u0027t need vsock on host, I didn\u0027t try to make it work.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "ade148cc7d87c4197484a70aba76b14fa4548d43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
