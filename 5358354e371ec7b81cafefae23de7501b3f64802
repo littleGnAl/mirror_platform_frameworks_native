@@ -51,6 +51,24 @@
       "message": "__ANDROID__ ?",
       "revId": "5358354e371ec7b81cafefae23de7501b3f64802",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8286f6e1_52290759",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T01:47:05Z",
+      "side": 1,
+      "message": "it\u0027s because glibc doesn\u0027t have vsock headers. This will actually work on host, if we had a custom vm_sockets.h (adb/cuttlefish do this).",
+      "parentUuid": "a6335ca9_36634238",
+      "revId": "5358354e371ec7b81cafefae23de7501b3f64802",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
