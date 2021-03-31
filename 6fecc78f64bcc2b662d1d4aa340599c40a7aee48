@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cfccec7_9f2e070e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T20:34:37Z",
+      "side": 1,
+      "message": "Great! Can you also add a test of this in binderStabilityTest? Please then add android-ndk-api-council group to the review",
+      "revId": "6fecc78f64bcc2b662d1d4aa340599c40a7aee48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "924a6464_b846ef30",
+        "filename": "libs/binder/ndk/stability.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T20:34:37Z",
+      "side": 1,
+      "message": "nit: copy explanation for out-of-the-ordinary \u0027extern \"C\"\u0027 below",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 82
+      },
+      "revId": "6fecc78f64bcc2b662d1d4aa340599c40a7aee48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a88880_ed449060",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T20:34:37Z",
+      "side": 0,
+      "message": "these will need to be added here instead",
+      "revId": "78a58c8af4458905bc5b644207a5badd315cc775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
