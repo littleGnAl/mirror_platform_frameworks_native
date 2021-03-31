@@ -45,6 +45,15 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
     AIBinder_markVendorStability(binder);
 }
 
+/**
+ * This interface has the stability of the vendor image.
+ */
+void AIBinder_forceVendorDowngradeCompilationUnit(AIBinder* binder);
+
+static inline void AIBinder_forceDowngradeCompilationUnit(AIBinder* binder) {
+    AIBinder_forceVendorDowngradeCompilationUnit(binder);
+}
+
 #else  // defined(__ANDROID_VENDOR__)
 
 enum {
@@ -60,6 +69,17 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
     if (AIBinder_markSystemStability == nullptr) return;
 
     AIBinder_markSystemStability(binder);
+}
+
+/**
+ * This interface has the stability of the system image.
+ */
+__attribute__((weak)) void AIBinder_forceSystemDowngradeCompilationUnit(AIBinder* binder);
+
+static inline void AIBinder_forceDowngradeCompilationUnit(AIBinder* binder) {
+    if (AIBinder_forceSystemDowngradeCompilationUnit == nullptr) return;
+
+    AIBinder_forceSystemDowngradeCompilationUnit(binder);
 }
 
 #endif  // defined(__ANDROID_VENDOR__)
