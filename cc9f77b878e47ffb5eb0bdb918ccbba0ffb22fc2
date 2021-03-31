@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0183abb5_11b25fa0",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T01:57:02Z",
+      "side": 1,
+      "message": "justifying this since BpBinder should is OBJECT_LIFETIME_WEAK",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 56
+      },
+      "revId": "cc9f77b878e47ffb5eb0bdb918ccbba0ffb22fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
