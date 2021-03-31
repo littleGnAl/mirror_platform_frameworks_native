@@ -22,6 +22,30 @@
       },
       "revId": "00a2b1f4973885eb7c5d477103914c697c961b2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b1c5f8_316eb1bd",
+        "filename": "cmds/dumpsys/tests/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-03-31T18:47:15Z",
+      "side": 0,
+      "message": "Yes. Patchset 3 - smoreland@ said \"nit: this is obsolete\".",
+      "parentUuid": "4adc71fd_5841a04f",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "00a2b1f4973885eb7c5d477103914c697c961b2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

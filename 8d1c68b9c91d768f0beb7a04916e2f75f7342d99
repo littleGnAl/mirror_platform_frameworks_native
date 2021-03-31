@@ -87,6 +87,24 @@
       "parentUuid": "3ae16674_be154b5f",
       "revId": "8d1c68b9c91d768f0beb7a04916e2f75f7342d99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f235e8_55cd2ae8",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-03-31T18:47:15Z",
+      "side": 1,
+      "message": "I just removed the root requirement.\nThe test is now just running the command and expecting the output to be the expected root output OR the expected non-root output.\nWith root enabled, we get the \"Threads...\" string for each service, without it we get nothing at all in that place.\n\nlibbinderdebug_test verifies the number of threads with root required.",
+      "parentUuid": "802cc5b9_b194d4c9",
+      "revId": "8d1c68b9c91d768f0beb7a04916e2f75f7342d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
