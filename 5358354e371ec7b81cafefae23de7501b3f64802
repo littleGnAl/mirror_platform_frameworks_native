@@ -34,6 +34,23 @@
       "parentUuid": "53f2160b_4cf5974c",
       "revId": "5358354e371ec7b81cafefae23de7501b3f64802",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6335ca9_36634238",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-31T01:32:26Z",
+      "side": 1,
+      "message": "__ANDROID__ ?",
+      "revId": "5358354e371ec7b81cafefae23de7501b3f64802",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
