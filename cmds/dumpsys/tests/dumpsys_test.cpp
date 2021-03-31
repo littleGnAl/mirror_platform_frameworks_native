@@ -50,6 +50,102 @@ using ::testing::internal::CaptureStdout;
 using ::testing::internal::GetCapturedStderr;
 using ::testing::internal::GetCapturedStdout;
 
+// FIXME remove the droproot stuff
+#include <grp.h>
+#include <pwd.h>
+#include <sys/capability.h>
+#include <sys/prctl.h>
+// Switches to non-root user and group.
+bool DropRootUser() {
+    struct group* grp = getgrnam("shell");
+    gid_t shell_gid = grp != nullptr ? grp->gr_gid : 0;
+    struct passwd* pwd = getpwnam("shell");
+    uid_t shell_uid = pwd != nullptr ? pwd->pw_uid : 0;
+
+    if (!shell_gid || !shell_uid) {
+        //MYLOGE("Unable to get AID_SHELL: %s\n", strerror(errno));
+        return false;
+    }
+
+    if (getgid() == shell_gid && getuid() == shell_uid) {
+        //MYLOGD("drop_root_user(): already running as Shell\n");
+        // FIXME change back to true after testing - just want to catch this in the assert
+        return true;
+    }
+    /* ensure we will keep capabilities when we drop root */
+    if (prctl(PR_SET_KEEPCAPS, 1) < 0) {
+        //MYLOGE("prctl(PR_SET_KEEPCAPS) failed: %s\n", strerror(errno));
+        return false;
+    }
+
+    static const std::vector<std::string> group_names{
+        "log", "sdcard_r", "sdcard_rw", "mount", "inet", "net_bw_stats",
+            "readproc", "bluetooth", "wakelock", "nfc"};
+    std::vector<gid_t> groups(group_names.size(), 0);
+    for (size_t i = 0; i < group_names.size(); ++i) {
+        grp = getgrnam(group_names[i].c_str());
+        groups[i] = grp != nullptr ? grp->gr_gid : 0;
+        if (groups[i] == 0) {
+            //MYLOGE("Unable to get required gid '%s': %s\n", group_names[i].c_str(),
+            //       strerror(errno));
+            return false;
+        }
+    }
+
+    if (setgroups(groups.size(), groups.data()) != 0) {
+        //MYLOGE("Unable to setgroups, aborting: %s\n", strerror(errno));
+        return false;
+    }
+    if (setgid(shell_gid) != 0) {
+        //MYLOGE("Unable to setgid, aborting: %s\n", strerror(errno));
+        return false;
+    }
+    if (setuid(shell_uid) != 0) {
+        //MYLOGE("Unable to setuid, aborting: %s\n", strerror(errno));
+        return false;
+    }
+
+    struct __user_cap_header_struct capheader;
+    struct __user_cap_data_struct capdata[2];
+    memset(&capheader, 0, sizeof(capheader));
+    memset(&capdata, 0, sizeof(capdata));
+    capheader.version = _LINUX_CAPABILITY_VERSION_3;
+    capheader.pid = 0;
+
+    if (capget(&capheader, &capdata[0]) != 0) {
+        //MYLOGE("capget failed: %s\n", strerror(errno));
+        return false;
+    }
+
+    const uint32_t cap_syslog_mask = CAP_TO_MASK(CAP_SYSLOG);
+    const uint32_t cap_syslog_index = CAP_TO_INDEX(CAP_SYSLOG);
+    bool has_cap_syslog = (capdata[cap_syslog_index].effective & cap_syslog_mask) != 0;
+
+    memset(&capdata, 0, sizeof(capdata));
+    if (has_cap_syslog) {
+        // Only attempt to keep CAP_SYSLOG if it was present to begin with.
+        capdata[cap_syslog_index].permitted |= cap_syslog_mask;
+        capdata[cap_syslog_index].effective |= cap_syslog_mask;
+    }
+
+    const uint32_t cap_block_suspend_mask = CAP_TO_MASK(CAP_BLOCK_SUSPEND);
+    const uint32_t cap_block_suspend_index = CAP_TO_INDEX(CAP_BLOCK_SUSPEND);
+    capdata[cap_block_suspend_index].permitted |= cap_block_suspend_mask;
+    capdata[cap_block_suspend_index].effective |= cap_block_suspend_mask;
+
+    if (capset(&capheader, &capdata[0]) != 0) {
+        //MYLOGE("capset({%#x, %#x}) failed: %s\n", capdata[0].effective,
+        //       capdata[1].effective, strerror(errno));
+        return false;
+    }
+    if (shell_uid != getuid()) {
+        return false;
+    }
+
+    return true;
+}
+
+
 class ServiceManagerMock : public IServiceManager {
   public:
     MOCK_CONST_METHOD1(getService, sp<IBinder>(const String16&));
@@ -597,6 +693,7 @@ TEST_F(DumpsysTest, ListAllServicesWithThread) {
 
 // Tests 'dumpsys --thread service_name'
 TEST_F(DumpsysTest, ListServiceWithThread) {
+    ASSERT_TRUE(DropRootUser());
     ExpectCheckService("Locksmith");
 
     CallMain({"--thread", "Locksmith"});
