@@ -43,3 +43,11 @@ void AIBinder_markSystemStability(AIBinder* binder) {
 void AIBinder_markVintfStability(AIBinder* binder) {
     Stability::markVintf(binder->getBinder().get());
 }
+
+extern "C" void AIBinder_forceVendorDowngradeCompilationUnit(AIBinder* binder) {
+    Stability::forceDowngradeCompilationUnit(binder->getBinder().get());
+}
+
+void AIBinder_forceSystemDowngradeCompilationUnit(AIBinder* binder) {
+    Stability::forceDowngradeCompilationUnit(binder->getBinder().get());
+}
