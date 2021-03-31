@@ -46,6 +46,30 @@
       },
       "revId": "00a2b1f4973885eb7c5d477103914c697c961b2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e691d886_66d33c1e",
+        "filename": "cmds/dumpsys/tests/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T20:39:53Z",
+      "side": 0,
+      "message": "Yup! It hasn\u0027t done anything for years.\n\nI\u0027m all in favor of doing small cleanup like this when touching build files - the alternative of another CL w/ our TH system is too expensive. Though it\u0027s probably best to do cleanups separately (e.g. if this gets reverted, then we\u0027d want to reapply the cleanup), Android makes it really painful to do. So - cleaning up adjacent lines, why not, right?",
+      "parentUuid": "78b1c5f8_316eb1bd",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "00a2b1f4973885eb7c5d477103914c697c961b2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
