@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e638a47e_9de7f8cc",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T01:56:16Z",
+      "side": 1,
+      "message": "Same as parent CL - this will work on host (well, I\u0027m actually not sure about the required permissions to pass the test - it depends on the environment, but it would)",
+      "parentUuid": "50438278_e3a0ef68",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "5c94c2b0f24cd6c8e39609a7af66ecb3c94bfe2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "59003eec_6d0f4340",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Why don\u0027t you just use mktemp or std::tempfile?",
       "parentUuid": "59003eec_6d0f4340",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 12
+      },
+      "revId": "5c94c2b0f24cd6c8e39609a7af66ecb3c94bfe2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef35530_bd8edac3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T01:56:16Z",
+      "side": 1,
+      "message": "well, that would fix the id++ part, but it\u0027s fine since we only need to create them in one process for this test.\n\nFor /tmp/ vs /dev/, I couldn\u0027t think of a specific file which is available on host and device. mktemp would need to know which to use anyway, and it looks racey. std::tempfile doesn\u0027t expose the file name directly, so it would be more loc",
+      "parentUuid": "974f3f82_b7231596",
       "range": {
         "startLine": 193,
         "startChar": 0,
