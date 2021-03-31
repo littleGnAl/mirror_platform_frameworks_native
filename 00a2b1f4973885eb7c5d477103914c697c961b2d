@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4adc71fd_5841a04f",
+        "filename": "cmds/dumpsys/tests/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-03-31T08:59:28Z",
+      "side": 0,
+      "message": "did you mean to remove this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "00a2b1f4973885eb7c5d477103914c697c961b2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

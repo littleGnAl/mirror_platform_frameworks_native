@@ -69,6 +69,24 @@
       "parentUuid": "26396099_169a0a6f",
       "revId": "8d1c68b9c91d768f0beb7a04916e2f75f7342d99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "802cc5b9_b194d4c9",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-03-31T08:59:28Z",
+      "side": 1,
+      "message": "good point.",
+      "parentUuid": "3ae16674_be154b5f",
+      "revId": "8d1c68b9c91d768f0beb7a04916e2f75f7342d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
