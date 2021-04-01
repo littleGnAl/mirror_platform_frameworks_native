@@ -33,6 +33,24 @@
       "message": "KIs\n- sf test - b/170341496 - actually parent TH run landed w/ this\n- camera - b/184267998",
       "revId": "c163595f8601b6464dc6dd2185bc5f5e479f856b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1969fbaf_0c73efc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-01T20:46:08Z",
+      "side": 1,
+      "message": "*landed with this fixed",
+      "parentUuid": "37e59958_21768d99",
+      "revId": "c163595f8601b6464dc6dd2185bc5f5e479f856b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
