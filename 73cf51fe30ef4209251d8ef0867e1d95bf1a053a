@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1277ff8_52e859c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010674
+      },
+      "writtenOn": "2021-04-01T17:55:25Z",
+      "side": 1,
+      "message": "You need to land this on master first and then we can discuss how we can cherry-pick to automotive branches.\n\nThe change seems simple and innocent enough, but I did not deep dive into why we have to introduce it. ",
+      "revId": "73cf51fe30ef4209251d8ef0867e1d95bf1a053a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
