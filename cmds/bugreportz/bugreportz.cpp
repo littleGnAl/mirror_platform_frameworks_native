@@ -29,6 +29,7 @@
 
 static constexpr char BEGIN_PREFIX[] = "BEGIN:";
 static constexpr char PROGRESS_PREFIX[] = "PROGRESS:";
+static constexpr char OK_PREFIX[] = "OK:";
 
 static void write_line(const std::string& line, bool show_progress) {
     if (line.empty()) return;
@@ -64,6 +65,9 @@ int bugreportz(int s, bool show_progress) {
             line.append(1, c);
             if (c == '\n') {
                 write_line(line, show_progress);
+                if (android::base::StartsWith(line, OK_PREFIX)) {
+                  return EXIT_SUCCESS;
+                }
                 line.clear();
             }
         }
