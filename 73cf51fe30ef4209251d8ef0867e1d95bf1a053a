@@ -16,6 +16,24 @@
       "message": "You need to land this on master first and then we can discuss how we can cherry-pick to automotive branches.\n\nThe change seems simple and innocent enough, but I did not deep dive into why we have to introduce it. ",
       "revId": "73cf51fe30ef4209251d8ef0867e1d95bf1a053a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f883c2d6_6e01c6d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299481
+      },
+      "writtenOn": "2021-04-01T20:17:37Z",
+      "side": 1,
+      "message": "I couldn\u0027t push it to internal branches; it says the repo is in AOSP and the change must be pushed to AOSP.\n\nShould we try for push into internal master?",
+      "parentUuid": "d1277ff8_52e859c9",
+      "revId": "73cf51fe30ef4209251d8ef0867e1d95bf1a053a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
