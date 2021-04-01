@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f52942be_cf68e60a",
+        "filename": "services/memtrackproxy/MemtrackProxy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-04-01T04:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4cae294_11be0cda",
+      "range": {
+        "startLine": 67,
+        "startChar": 44,
+        "endLine": 67,
+        "endChar": 45
+      },
+      "revId": "ba8ebc4d5213d53a9841527c1b3982c06fea2043",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e10f3f2b_d7d29325",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c34faea_f65d90e6",
+        "filename": "services/memtrackproxy/MemtrackProxy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-04-01T04:54:59Z",
+      "side": 1,
+      "message": "Ack. Variables not required. I had used variables to avoid clang-format breaking the strings too much for easier grepping",
+      "parentUuid": "e10f3f2b_d7d29325",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "ba8ebc4d5213d53a9841527c1b3982c06fea2043",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5e4e0be_60501250",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-03-30T22:27:16Z",
       "side": 1,
       "message": "aha - it\u0027s here. Can we avoid exposing this to vendor/leave it as an implementation detail? Posted related note on frameworks/base topic",
+      "revId": "ba8ebc4d5213d53a9841527c1b3982c06fea2043",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ac0f59_4569f394",
+        "filename": "services/memtrackproxy/memtrack-proxy.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-04-01T04:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5e4e0be_60501250",
       "revId": "ba8ebc4d5213d53a9841527c1b3982c06fea2043",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
