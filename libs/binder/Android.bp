@@ -129,7 +129,6 @@ cc_library {
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 5
                 "libprocessinfo_aidl",
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 6
-                "libipprefix_aidl",
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 7
                 "libpackagemanagernative_aidl",
             ],
@@ -155,7 +154,6 @@ cc_library {
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 5
                 "libprocessinfo_aidl",
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 6
-                "libipprefix_aidl",
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 7
                 "libpackagemanagernative_aidl",
             ],
@@ -371,18 +369,6 @@ cc_library_static {
 }
 
 // MERGE BREAK 6 - TODO(b/183654927)
-
-// TODO(b/183654927): move headers and remove from libbinder
-cc_library_static {
-    name: "libipprefix_aidl",
-    host_supported: true,
-    native_bridge_supported: true,
-    header_libs: ["libbinder_headers"],
-    srcs: [
-        "IpPrefix.cpp",
-    ],
-}
-
 // MERGE BREAK 7 - TODO(b/183654927)
 
 // TODO(b/183654927): move headers and remove from libbinder
