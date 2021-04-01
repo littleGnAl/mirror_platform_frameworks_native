@@ -16,6 +16,23 @@
       "message": "Self-+2 for unchanged CL which was reverted due to it happening to be submitted together with an actually problematic CL",
       "revId": "c163595f8601b6464dc6dd2185bc5f5e479f856b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37e59958_21768d99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-01T20:45:56Z",
+      "side": 1,
+      "message": "KIs\n- sf test - b/170341496 - actually parent TH run landed w/ this\n- camera - b/184267998",
+      "revId": "c163595f8601b6464dc6dd2185bc5f5e479f856b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
