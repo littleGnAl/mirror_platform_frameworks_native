@@ -16,6 +16,24 @@
       "message": "these will need to be added here instead",
       "revId": "78a58c8af4458905bc5b644207a5badd315cc775",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf3019f_0c19ebf9",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-04-01T00:40:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "e9a88880_ed449060",
+      "revId": "78a58c8af4458905bc5b644207a5badd315cc775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
