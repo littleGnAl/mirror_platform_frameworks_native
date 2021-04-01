@@ -54,28 +54,6 @@ cc_library_headers {
     },
 }
 
-// These interfaces are android-specific implementation unrelated to binder
-// transport itself and should be moved to AIDL or in domain-specific libs.
-//
-// Currently, these are only on system android (not vendor, not host)
-// TODO(b/183654927) - move these into separate libraries
-libbinder_device_interface_sources = [
-    "ActivityManager.cpp",
-    "AppOpsManager.cpp",
-    "IActivityManager.cpp",
-    "IAppOpsCallback.cpp",
-    "IAppOpsService.cpp",
-    "IMediaResourceMonitor.cpp",
-    "IPermissionController.cpp",
-    "IProcessInfoService.cpp",
-    "IUidObserver.cpp",
-    "PermissionCache.cpp",
-    "PermissionController.cpp",
-    "ProcessInfoService.cpp",
-    "IpPrefix.cpp",
-    ":activity_manager_procstate_aidl",
-]
-
 cc_library {
     name: "libbinder",
 
@@ -134,13 +112,30 @@ cc_library {
         "Status.cpp",
         "TextOutput.cpp",
         "Utils.cpp",
-        ":packagemanager_aidl",
         ":libbinder_aidl",
     ],
 
     target: {
         android: {
-            srcs: libbinder_device_interface_sources,
+            whole_static_libs: [
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 1
+                "libactivitymanager_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 2
+                "libappops_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 3
+                "libmediaresourcemonitor_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 4
+                "libpermissioncontroller_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 5
+                "libprocessinfo_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 6
+                "libipprefix_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 7
+                "libpackagemanagernative_aidl",
+            ],
+            export_static_lib_headers: [
+                "libpackagemanagernative_aidl",
+            ],
 
             // NOT static to keep the wire protocol unfrozen
             static: {
@@ -148,7 +143,22 @@ cc_library {
             },
         },
         vendor: {
-            exclude_srcs: libbinder_device_interface_sources,
+            exclude_static_libs: [
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 1
+                "libactivitymanager_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 2
+                "libappops_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 3
+                "libmediaresourcemonitor_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 4
+                "libpermissioncontroller_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 5
+                "libprocessinfo_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 6
+                "libipprefix_aidl",
+                // TODO(b/183654927) remove from libbinder - MERGE BREAK 7
+                "libpackagemanagernative_aidl",
+            ],
         },
         darwin: {
             enabled: false,
@@ -284,5 +294,107 @@ cc_library {
     shared_libs: [
         "libbinder",
         "libutils",
+    ],
+}
+
+// MERGE BREAK 1 - TODO(b/183654927)
+
+// TODO(b/183654927): move headers and remove from libbinder
+cc_library_static {
+    name: "libactivitymanager_aidl",
+    host_supported: true,
+    native_bridge_supported: true,
+    header_libs: ["libbinder_headers"],
+    srcs: [
+        ":activity_manager_procstate_aidl",
+        "ActivityManager.cpp",
+        "IActivityManager.cpp",
+        "IUidObserver.cpp",
+    ],
+}
+
+// MERGE BREAK 2 - TODO(b/183654927)
+
+// TODO(b/183654927): move headers and remove from libbinder
+cc_library_static {
+    name: "libappops_aidl",
+    host_supported: true,
+    native_bridge_supported: true,
+    header_libs: ["libbinder_headers"],
+    srcs: [
+        "AppOpsManager.cpp",
+        "IAppOpsCallback.cpp",
+        "IAppOpsService.cpp",
+    ],
+}
+
+// MERGE BREAK 3 - TODO(b/183654927)
+
+// TODO(b/183654927): move headers and remove from libbinder
+cc_library_static {
+    name: "libmediaresourcemonitor_aidl",
+    host_supported: true,
+    native_bridge_supported: true,
+    header_libs: ["libbinder_headers"],
+    srcs: [
+        "IMediaResourceMonitor.cpp",
+    ],
+}
+
+// MERGE BREAK 4 - TODO(b/183654927)
+
+// TODO(b/183654927): move headers and remove from libbinder
+cc_library_static {
+    name: "libpermissioncontroller_aidl",
+    host_supported: true,
+    native_bridge_supported: true,
+    header_libs: ["libbinder_headers"],
+    srcs: [
+        "IPermissionController.cpp",
+        "PermissionCache.cpp",
+        "PermissionController.cpp",
+    ],
+}
+
+// MERGE BREAK 5 - TODO(b/183654927)
+
+// TODO(b/183654927): move headers and remove from libbinder
+cc_library_static {
+    name: "libprocessinfo_aidl",
+    host_supported: true,
+    native_bridge_supported: true,
+    header_libs: ["libbinder_headers"],
+    srcs: [
+        "IProcessInfoService.cpp",
+        "ProcessInfoService.cpp",
+    ],
+}
+
+// MERGE BREAK 6 - TODO(b/183654927)
+
+// TODO(b/183654927): move headers and remove from libbinder
+cc_library_static {
+    name: "libipprefix_aidl",
+    host_supported: true,
+    native_bridge_supported: true,
+    header_libs: ["libbinder_headers"],
+    srcs: [
+        "IpPrefix.cpp",
+    ],
+}
+
+// MERGE BREAK 7 - TODO(b/183654927)
+
+// TODO(b/183654927): move headers and remove from libbinder
+cc_library_static {
+    name: "libpackagemanagernative_aidl",
+    host_supported: true,
+    native_bridge_supported: true,
+    header_libs: ["libbinder_headers"],
+    aidl: {
+        export_aidl_headers: true,
+    },
+    srcs: [
+        ":packagemanager_aidl",
     ],
 }
