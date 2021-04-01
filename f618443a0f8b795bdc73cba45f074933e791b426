@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de87ab7_5b0ca61c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2021-04-01T08:55:40Z",
+      "side": 1,
+      "message": "Sepolicy CL is added. Can we merge the topic?",
+      "revId": "f618443a0f8b795bdc73cba45f074933e791b426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
