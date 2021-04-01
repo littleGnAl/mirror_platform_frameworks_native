@@ -123,7 +123,6 @@ cc_library {
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 2
                 "libappops_aidl",
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 3
-                "libmediaresourcemonitor_aidl",
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 4
                 "libpermissioncontroller_aidl",
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 5
@@ -149,7 +148,6 @@ cc_library {
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 2
                 "libappops_aidl",
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 3
-                "libmediaresourcemonitor_aidl",
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 4
                 "libpermissioncontroller_aidl",
                 // TODO(b/183654927) remove from libbinder - MERGE BREAK 5
@@ -329,18 +327,6 @@ cc_library_static {
 }
 
 // MERGE BREAK 3 - TODO(b/183654927)
-
-// TODO(b/183654927): move headers and remove from libbinder
-cc_library_static {
-    name: "libmediaresourcemonitor_aidl",
-    host_supported: true,
-    native_bridge_supported: true,
-    header_libs: ["libbinder_headers"],
-    srcs: [
-        "IMediaResourceMonitor.cpp",
-    ],
-}
-
 // MERGE BREAK 4 - TODO(b/183654927)
 
 // TODO(b/183654927): move headers and remove from libbinder
