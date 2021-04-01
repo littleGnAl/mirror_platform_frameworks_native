@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6786f80b_6d0777c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-01T16:24:33Z",
+      "side": 1,
+      "message": "Self-+2 for unchanged CL which was reverted due to it happening to be submitted together with an actually problematic CL",
+      "revId": "c163595f8601b6464dc6dd2185bc5f5e479f856b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
