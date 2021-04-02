@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0a153d_c955b8c5",
+        "filename": "services/memtrackproxy/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T00:16:21Z",
+      "side": 1,
+      "message": "yeah, maybe prefer static_lib on this - since it\u0027s so small (or even move the code here)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 50
+      },
+      "revId": "e3435ee012b5d2e65809957e52592f93859732c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
