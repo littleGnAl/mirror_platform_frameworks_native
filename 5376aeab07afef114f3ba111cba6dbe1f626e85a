@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fbd965b_ab951ea9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2021-04-02T16:03:26Z",
+      "side": 1,
+      "message": "Please also run bugreportz_test to make sure it doesn\u0027t breeak (and add a new test to cover this scenario).",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "5376aeab07afef114f3ba111cba6dbe1f626e85a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
