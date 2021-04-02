@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27d2edd9_0ec2eeb9",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-02T16:42:29Z",
+      "side": 1,
+      "message": "Surely a given library already knows if it\u0027s vendor or apex? Who is calling this that doesn\u0027t know that, and why are they unable to do the same ifdef check anyway?",
+      "parentUuid": "02fd3b89_d60d7946",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 57
+      },
+      "revId": "72b4b7cc04c5e87b57d61d1fd74a23bc228fd9c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97e02cfd_53481d05",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 3
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "same",
       "parentUuid": "97e02cfd_53481d05",
+      "range": {
+        "startLine": 77,
+        "startChar": 27,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "72b4b7cc04c5e87b57d61d1fd74a23bc228fd9c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4634c555_f05e12d3",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-02T16:42:29Z",
+      "side": 1,
+      "message": "This still needs resolution - I think you responded to the wrong comment?",
+      "parentUuid": "cee494ee_3b7a968d",
       "range": {
         "startLine": 77,
         "startChar": 27,
