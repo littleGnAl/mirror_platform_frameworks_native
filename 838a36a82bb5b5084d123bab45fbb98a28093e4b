@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "74239f5d_c6c267b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T23:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f6c0f6a_e5f387b5",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "838a36a82bb5b5084d123bab45fbb98a28093e4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "34e23ca8_d56eb51a",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-02T22:47:43Z",
       "side": 1,
       "message": "nit: what about do_nothing_cleanup if that\u0027s all it is for?",
+      "range": {
+        "startLine": 430,
+        "startChar": 12,
+        "endLine": 430,
+        "endChar": 39
+      },
+      "revId": "838a36a82bb5b5084d123bab45fbb98a28093e4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dfaaadb_8c769437",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T23:43:32Z",
+      "side": 1,
+      "message": "I actually did have it originally, but I felt it\u0027s a self-contradictory.",
+      "parentUuid": "34e23ca8_d56eb51a",
       "range": {
         "startLine": 430,
         "startChar": 12,
