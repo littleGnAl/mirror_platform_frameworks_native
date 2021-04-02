@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d4d93c_cddad6dc",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T21:11:55Z",
+      "side": 1,
+      "message": "can you move this up above the two APIs above?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "8b8029151899d012f80add3f55f38f5f7f20bd01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d06a0a6_537cae0b",
+        "filename": "libs/binder/tests/binderStabilityTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T21:11:55Z",
+      "side": 1,
+      "message": "since I already missed it in review, and you caught it, could you add a teset similar to this here?\n\n- have a vintf binder\n- downgrade it to vendor\n- check to make sure gotUserTransaction would be false\n\nFeel free to do it separately or file a bug on me.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 1
+      },
+      "revId": "8b8029151899d012f80add3f55f38f5f7f20bd01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
