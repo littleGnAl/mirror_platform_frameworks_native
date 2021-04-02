@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0a9380_076c9ec0",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-04-02T20:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d6b7c2a_94752ca5",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "72b4b7cc04c5e87b57d61d1fd74a23bc228fd9c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4eb6d6b7_84229239",
@@ -310,6 +334,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdef1daa_78cd30df",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-04-02T20:25:24Z",
+      "side": 1,
+      "message": "Added documentation",
+      "parentUuid": "4634c555_f05e12d3",
+      "range": {
+        "startLine": 77,
+        "startChar": 27,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "72b4b7cc04c5e87b57d61d1fd74a23bc228fd9c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2724e24_e24a4e36",
@@ -347,6 +395,30 @@
       "side": 1,
       "message": "From discussion with Steven, we don\u0027t need this weak linage here. I will remove this.",
       "parentUuid": "d2724e24_e24a4e36",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 72
+      },
+      "revId": "72b4b7cc04c5e87b57d61d1fd74a23bc228fd9c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a058035_9ec9adc9",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-04-02T20:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34f46792_e3451742",
       "range": {
         "startLine": 80,
         "startChar": 4,
