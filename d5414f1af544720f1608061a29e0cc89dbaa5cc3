@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "34521b46_2b52fb14",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-02T23:58:04Z",
+      "side": 1,
+      "message": "So IIUC, it is okay to markForRpc if \"some data has been written\" (mData !\u003d nullptr) AND \"the parcel is not yet set in stone\" (mOwner \u003d\u003d nullptr, aka we may write more data to the parcel later)? \n\nFirst, why is it okay to markForRpc() in the middle of writing data?\n\nSecond, why is it not okay to call markForBinder() in such cases?",
+      "parentUuid": "0378b3a8_1a5cc3f1",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 66
+      },
+      "revId": "d5414f1af544720f1608061a29e0cc89dbaa5cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "265da7f5_d65f351d",
