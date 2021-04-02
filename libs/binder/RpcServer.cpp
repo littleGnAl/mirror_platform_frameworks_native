@@ -36,7 +36,7 @@ RpcServer::RpcServer() {}
 RpcServer::~RpcServer() {}
 
 sp<RpcServer> RpcServer::make() {
-    return new RpcServer;
+    return sp<RpcServer>::make();
 }
 
 void RpcServer::iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction() {
