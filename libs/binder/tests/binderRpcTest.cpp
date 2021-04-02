@@ -41,6 +41,14 @@
 
 namespace android {
 
+TEST(BinderRpcParcel, EntireParcelFormatted) {
+    Parcel p;
+    p.writeInt32(3);
+
+    EXPECT_DEATH(p.markForBinder(sp<BBinder>::make()), "");
+    EXPECT_DEATH(p.markForRpc(sp<RpcConnection>::make()), "");
+}
+
 using android::binder::Status;
 
 #define EXPECT_OK(status)                 \
