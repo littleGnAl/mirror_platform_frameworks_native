@@ -51,6 +51,17 @@ TEST(BinderRpcParcel, EntireParcelFormatted) {
     EXPECT_DEATH(p.markForBinder(sp<BBinder>::make()), "");
 }
 
+TEST(BinderRpcParcel, AppendSeparateFormats) {
+    Parcel p1;
+    p1.markForRpc(sp<RpcConnection>::make());
+    p1.writeInt32(3);
+
+    Parcel p2;
+
+    EXPECT_EQ(BAD_TYPE, p1.appendFrom(&p2, 0, p2.dataSize()));
+    EXPECT_EQ(BAD_TYPE, p2.appendFrom(&p1, 0, p1.dataSize()));
+}
+
 using android::binder::Status;
 
 #define EXPECT_OK(status)                 \
