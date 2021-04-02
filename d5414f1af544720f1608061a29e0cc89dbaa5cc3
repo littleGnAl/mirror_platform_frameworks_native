@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "51968fc8_cad6dfc2",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T23:29:22Z",
+      "side": 1,
+      "message": "I didn\u0027t update the comment, done.\n\nIf mData is null, then nothing has been written yet.\nIf mOwner is not null, then it\u0027s expected the entirety of the parcel is set in stone (note specifically Parcel::restartWrite clears the parcel if you try to write to one with an owner - though this should probably be an abort).",
+      "parentUuid": "d52e4719_2d7eb22f",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 66
+      },
+      "revId": "d5414f1af544720f1608061a29e0cc89dbaa5cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "265da7f5_d65f351d",
         "filename": "libs/binder/include/binder/RpcConnection.h",
         "patchSetId": 1
