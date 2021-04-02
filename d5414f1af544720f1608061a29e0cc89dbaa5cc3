@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52e4719_2d7eb22f",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-04-02T22:53:22Z",
+      "side": 1,
+      "message": "question: why is ok to mark for RPC after data is written(or pointer assigned) when there is a cleanup function assigned here? Why is it not ok for mark for binder?",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 66
+      },
+      "revId": "d5414f1af544720f1608061a29e0cc89dbaa5cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
