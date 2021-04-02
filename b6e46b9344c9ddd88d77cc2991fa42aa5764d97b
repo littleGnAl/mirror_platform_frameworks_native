@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f859246c_e501baaa",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T03:32:32Z",
+      "side": 1,
+      "message": "oops- thanks",
+      "parentUuid": "76abbbb9_98eda008",
+      "revId": "b6e46b9344c9ddd88d77cc2991fa42aa5764d97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87078267_10a36741",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-04-02T03:30:54Z",
       "side": 1,
       "message": "I can\u0027t find this either",
+      "range": {
+        "startLine": 243,
+        "startChar": 48,
+        "endLine": 243,
+        "endChar": 69
+      },
+      "revId": "b6e46b9344c9ddd88d77cc2991fa42aa5764d97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b49aa10_d222a525",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T03:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87078267_10a36741",
       "range": {
         "startLine": 243,
         "startChar": 48,
