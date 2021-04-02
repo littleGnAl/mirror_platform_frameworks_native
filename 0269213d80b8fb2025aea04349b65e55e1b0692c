@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a8b1e1_f96c2124",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2021-04-02T20:18:40Z",
+      "side": 1,
+      "message": "nit: remove b/ from the list. In fact, I\u0027d just use \"the behavior this CL is fixing\", as the bug number is mentioned below...",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "0269213d80b8fb2025aea04349b65e55e1b0692c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
