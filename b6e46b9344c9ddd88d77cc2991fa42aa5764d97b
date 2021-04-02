@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f9545ac_f300152c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-02T03:30:54Z",
+      "side": 1,
+      "message": "Looks like you missed to include another change in the topic?",
+      "revId": "b6e46b9344c9ddd88d77cc2991fa42aa5764d97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76abbbb9_98eda008",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-02T03:30:54Z",
+      "side": 1,
+      "message": "Where is the refbase change?",
+      "revId": "b6e46b9344c9ddd88d77cc2991fa42aa5764d97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87078267_10a36741",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-02T03:30:54Z",
+      "side": 1,
+      "message": "I can\u0027t find this either",
+      "range": {
+        "startLine": 243,
+        "startChar": 48,
+        "endLine": 243,
+        "endChar": 69
+      },
+      "revId": "b6e46b9344c9ddd88d77cc2991fa42aa5764d97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
