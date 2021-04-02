@@ -293,7 +293,8 @@ status_t Parcel::unflattenBinder(sp<IBinder>* out) const
     if (flat) {
         switch (flat->hdr.type) {
             case BINDER_TYPE_BINDER: {
-                sp<IBinder> binder = reinterpret_cast<IBinder*>(flat->cookie);
+                sp<IBinder> binder =
+                        sp<IBinder>::fromExisting(reinterpret_cast<IBinder*>(flat->cookie));
                 return finishUnflattenBinder(binder, out);
             }
             case BINDER_TYPE_HANDLE: {
@@ -560,6 +561,10 @@ void Parcel::markForBinder(const sp<IBinder>& binder) {
     if (binder && binder->remoteBinder() && binder->remoteBinder()->isRpcBinder()) {
         markForRpc(binder->remoteBinder()->getPrivateAccessorForId().rpcConnection());
     }
+}
+
+void Parcel::markForBinder(IBinder* binder) {
+    markForBinder(sp<IBinder>::fromExisting(binder));
 }
 
 void Parcel::markForRpc(const sp<RpcConnection>& connection) {

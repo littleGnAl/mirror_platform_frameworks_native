@@ -101,6 +101,9 @@ public:
     // is for an RPC transaction).
     void markForBinder(const sp<IBinder>& binder);
 
+    // Convenience API for markForBinder which asserts a binder is owned.
+    void markForBinder(IBinder* binder);
+
     // Whether this Parcel is written for RPC transactions (after calls to
     // markForBinder or markForRpc).
     bool isForRpc() const;
