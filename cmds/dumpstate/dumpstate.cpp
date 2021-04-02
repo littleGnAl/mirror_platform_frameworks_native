@@ -2174,14 +2174,13 @@ void Dumpstate::DumpstateBoard(int out_fd) {
     }
 
     /*
-     * mount debugfs for non-user builds which launch with S and unmount it
-     * after invoking dumpstateBoard_* methods. This is to enable debug builds
-     * to not have debugfs mounted during runtime. It will also ensure that
-     * debugfs is only accessed by the dumpstate HAL.
+     * mount debugfs for non-user builds with ro.product.enforce_debugfs_restrictions
+     * set to true and unmount it after invoking dumpstateBoard_* methods.
+     * This is to enable debug builds to not have debugfs mounted during runtime.
+     * It will also ensure that debugfs is only accessed by the dumpstate HAL.
      */
-    auto api_level = android::base::GetIntProperty("ro.product.first_api_level", 0);
-    bool mount_debugfs = !PropertiesHelper::IsUserBuild() && api_level >= 31;
-
+    auto mount_debugfs =
+        android::base::GetBoolProperty("ro.product.enforce_debugfs_restrictions", false);
     if (mount_debugfs) {
         RunCommand("mount debugfs", {"mount", "-t", "debugfs", "debugfs", "/sys/kernel/debug"},
                    AS_ROOT_20);
