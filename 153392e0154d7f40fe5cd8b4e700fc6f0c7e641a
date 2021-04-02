@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afeffad4_364f8c98",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T03:18:42Z",
+      "side": 1,
+      "message": "\u003e Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\n-\u003e auto format at https://android-review.googlesource.com/c/platform/frameworks/native/+/1663088",
+      "parentUuid": "6d800331_c2c3f252",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 122
+      },
+      "revId": "153392e0154d7f40fe5cd8b4e700fc6f0c7e641a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
