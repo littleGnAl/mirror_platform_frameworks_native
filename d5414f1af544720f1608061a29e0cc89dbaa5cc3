@@ -93,6 +93,30 @@
       },
       "revId": "d5414f1af544720f1608061a29e0cc89dbaa5cc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe02444d_63e87a11",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T23:30:38Z",
+      "side": 1,
+      "message": "for sp::make.\n\nSee also:\ndocs added today - https://android-review.googlesource.com/c/platform/system/core/+/1663182\nseriously cool thing finally getting enabled that this supports - https://android-review.googlesource.com/c/platform/system/core/+/1660499",
+      "parentUuid": "265da7f5_d65f351d",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 29
+      },
+      "revId": "d5414f1af544720f1608061a29e0cc89dbaa5cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
