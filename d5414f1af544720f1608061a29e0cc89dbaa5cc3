@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0378b3a8_1a5cc3f1",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T23:49:41Z",
+      "side": 1,
+      "message": "In my comment above, you can consider it describing \"the two cases A or B where the situation is okay\":\n\nlog fatal if (mData !\u003d nullptr \u0026\u0026 mOwner \u003d\u003d nullptr)\n\n\u003c-\u003e\n\nokay if (mData \u003d\u003d nullptr || mOwner !\u003d nullptr)",
+      "parentUuid": "9fb374b3_7444f6aa",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 66
+      },
+      "revId": "d5414f1af544720f1608061a29e0cc89dbaa5cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "265da7f5_d65f351d",
