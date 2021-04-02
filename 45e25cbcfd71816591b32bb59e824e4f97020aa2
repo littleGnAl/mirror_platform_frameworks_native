@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a84a18d0_7e79c501",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T18:20:05Z",
+      "side": 1,
+      "message": "lifting self-+2 from Jiyong for near-trivial rebase (uncouple with removal of IpPrefix.cpp)",
+      "revId": "45e25cbcfd71816591b32bb59e824e4f97020aa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
