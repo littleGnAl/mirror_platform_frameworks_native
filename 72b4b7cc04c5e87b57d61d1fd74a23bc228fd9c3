@@ -215,6 +215,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "598e1224_b39ef28e",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-02T16:54:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4d6bbd67_0cdc30a5",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 57
+      },
+      "revId": "72b4b7cc04c5e87b57d61d1fd74a23bc228fd9c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97e02cfd_53481d05",
