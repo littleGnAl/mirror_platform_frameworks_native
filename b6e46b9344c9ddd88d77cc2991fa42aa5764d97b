@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c55f4b0b_21a09a1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-02T03:34:46Z",
+      "side": 1,
+      "message": "Thanks. I didn\u0027t read the other change thoroughly, but assuming it will get accepted, this change LGTM.",
+      "revId": "b6e46b9344c9ddd88d77cc2991fa42aa5764d97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76abbbb9_98eda008",
