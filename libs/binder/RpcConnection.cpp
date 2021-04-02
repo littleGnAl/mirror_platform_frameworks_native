@@ -41,7 +41,6 @@ extern "C" pid_t gettid();
 namespace android {
 
 using base::unique_fd;
-
 RpcConnection::SocketAddress::~SocketAddress() {}
 
 RpcConnection::RpcConnection() {
@@ -54,7 +53,7 @@ RpcConnection::~RpcConnection() {
 }
 
 sp<RpcConnection> RpcConnection::make() {
-    return new RpcConnection;
+    return sp<RpcConnection>::make();
 }
 
 class UnixSocketAddress : public RpcConnection::SocketAddress {

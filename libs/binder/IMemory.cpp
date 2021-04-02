@@ -68,7 +68,7 @@ private:
     // TODO: Reimplemement based on standard C++ container?
 };
 
-static sp<HeapCache> gHeapCache = new HeapCache();
+static sp<HeapCache> gHeapCache = sp<HeapCache>::make();
 
 /******************************************************************************/
 
