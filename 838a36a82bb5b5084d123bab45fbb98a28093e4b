@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f6c0f6a_e5f387b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-04-02T22:47:43Z",
+      "side": 1,
+      "message": "missing some text here",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "838a36a82bb5b5084d123bab45fbb98a28093e4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34e23ca8_d56eb51a",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-04-02T22:47:43Z",
+      "side": 1,
+      "message": "nit: what about do_nothing_cleanup if that\u0027s all it is for?",
+      "range": {
+        "startLine": 430,
+        "startChar": 12,
+        "endLine": 430,
+        "endChar": 39
+      },
+      "revId": "838a36a82bb5b5084d123bab45fbb98a28093e4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
