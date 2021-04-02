@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3564ac9d_0aa38d26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T00:10:14Z",
+      "side": 1,
+      "message": "well... actually --- maybe I won\u0027t do this given complexity of adding this to swcodec APEX only on AOSP and apex_available everywhere",
+      "revId": "17ec1a4997c0b8069634356f930fd8da509f1e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
