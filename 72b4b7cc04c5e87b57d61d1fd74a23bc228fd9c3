@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1388abf1_f25fcae7",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-02T16:44:47Z",
+      "side": 1,
+      "message": "Stable, exported methods shouldn\u0027t point to internal ones for their documentation. Copy the docs over here instead, since this behavior must be permanent \u0026 reliable.\n\nCompilationUnit sounds more like a static library or .obj file to me. If in Stability.cpp it just refers to system/vendor image, then I think that\u0027s already captured by the \"Vendor\" and \"System\" parts of the method name \u0026 CompilationUnit can be removed?",
+      "parentUuid": "0c92cd7a_5ba2dcfa",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "72b4b7cc04c5e87b57d61d1fd74a23bc228fd9c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4eb6d6b7_84229239",
         "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
         "patchSetId": 3
