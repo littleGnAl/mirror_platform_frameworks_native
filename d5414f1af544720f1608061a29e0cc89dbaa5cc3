@@ -218,6 +218,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c62aad8b_1756ae18",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-03T00:46:36Z",
+      "side": 1,
+      "message": "So - PS4 marks markForRpc as private (all existing users happen to be friend classes with Parcel now). I\u0027m not sure why I didn\u0027t do this before, but this addresses the problem where a client might mark a reply parcel as RPC-format before reading from it (and accidentally freeze part of the wire format that we don\u0027t want it to).\n\nTo summarize the long above thread (which is partially me thinking):\n- paragraph 2 justifies defensiveness of this CL\n- paragraph 3 explains why we have markForBinder as an API, instead of having both markForRpc + IBinder::getConnection\n- paragraph 4 does a case analysis on when markForBinder/markForRpc would be unsafe to use (but it is much simpler after PS4 - markForBinder can be used in precisely one place now, and that\u0027s precisely the place where we want it. markForRpc uses are internal to libbinder, so we retain full control).",
+      "parentUuid": "e81b1c58_10e16530",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 66
+      },
+      "revId": "d5414f1af544720f1608061a29e0cc89dbaa5cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "265da7f5_d65f351d",
         "filename": "libs/binder/include/binder/RpcConnection.h",
         "patchSetId": 1
