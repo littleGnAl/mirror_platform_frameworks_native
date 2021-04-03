@@ -168,6 +168,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a609fb1_ba66a65d",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-03T00:01:51Z",
+      "side": 1,
+      "message": "IIUC:\n\nIf mData is null, then nothing has been written yet. So it is okay to markForRpc(). (This is the same as markForBinder()).\nBut even if mData is not null, i.e. something has been written, as long as mOwner is not null (aka the whole parcel is set in stone), then it is okay to markForRpc(), too.\n\nSo for markForBinder(), we can do: markForBinder() then write data. \n\nFor markForRpc(), we can do one of the following:\n- write data then markForRpc\n- markForRpc then write data\n\nIs that right?",
+      "parentUuid": "c38e03b9_88d806ca",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 66
+      },
+      "revId": "d5414f1af544720f1608061a29e0cc89dbaa5cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "265da7f5_d65f351d",
