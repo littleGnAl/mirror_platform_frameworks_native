@@ -192,6 +192,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e81b1c58_10e16530",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-03T00:37:50Z",
+      "side": 1,
+      "message": "\u003e write data then markForRpc\n\nThis doesn\u0027t happen. mOwner is non-null when we receive IPC data from another process, so it isn\u0027t writing data, but it\u0027s marking data that is known to have a specific format.\n\nOkay, so yes, it\u0027s weird that markForBinder is more restrictive than markForRpc and also markForBinder delegates to markForRpc. The reason is that right now - it really doesn\u0027t matter if someone calls markForBinder or markForRpc. In fact, for functionality, I could have just added markForRpc. The check is as restrictive as the current implementation needs, not less restrictive even if this would technically be safe. This defensive style might be overkill for normal APIs, but in this case, the only places that would ever correctly start calling markForBinder where mOwner is not null are places which also call (private) setIpcDataReference. If these functions are called elsewhere, it would be incorrect. So - it acts as a defensive check of my understanding of the code. If in the future, Parcel needs more information from the binder (instead of just the connection), then this might change, and we could safely open up the check in markForBinder. Specifically, I haven\u0027t thought enough about what is needed for b/182938972. Until then, I\u0027d rather have the defensive style bite me or us (potentially one build cycle, ~30s to 1m cost, until we realize we need to expand the check) rather than risk some arbitrary user of Parcel to call the wrong API at the wrong time.\n\nNow, the reason why I didn\u0027t just add markForRpc and also added markForBinder (I said it doesn\u0027t matter which is called) is to be forwards compatible. After the markSensitive API was added in Android S, I realized that we have no way to control the Parcel format based on binder options. If we already had markForBinder when that API was added, then this sensitivity could have been encoded on the binder object itself, and we could have avoided needing to add APIs both on IBinder and on Parcel in 4 backends (instead, we would have needed only an API for IBinder per backend, and one piece of code in markForBinder). Currently markForRpc is only called internally (I\u0027ll take a note to mark it private or protected). Where is package private when you need it, C++!?\n\nBtw - yes, I\u0027m also aware that the Parcel mConnection object and these checks would be stronger if they were trinary (that is, if we kept track of the format as undeclared/definitely RPC/definitely binder). Currently, poorly written client code might call markForRpc/markForBinder on a reply Parcel in client code or on a data Parcel when overriding BBinder onTransact without aborting. However, because sizeof(Parcel) is frozen - which makes working on this object exceedingly taxing - I have neglected to do it. Though - it\u0027s not really important. There is no error which would encourage people to call these functions there. In the transact case, they would receive different runtime errors when something failed to parse (in the reply case - this would be another reason to mark markForRpc as private). So, this CL only prevents a different problem: where the data written at the beginning of the Parcel - specifically for a handwritten binder interface not using writeInterfaceToken (where the format is already diverged) - may be using the same format for RPC and regular binder, so that when we one day want to change the binder wire protocol without breaking RPC, we would be prevented to by some code adding \u0027markForRpc\u0027 immediately before transact as opposed to immediately after creating/obtaining the parcel).",
+      "parentUuid": "8a609fb1_ba66a65d",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 66
+      },
+      "revId": "d5414f1af544720f1608061a29e0cc89dbaa5cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "265da7f5_d65f351d",
