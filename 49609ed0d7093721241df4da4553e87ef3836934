@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6201e026_7829f5f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-04-04T05:39:00Z",
+      "side": 1,
+      "message": "Kick presubmit again as the merge conflict has been resolved internally.",
+      "revId": "49609ed0d7093721241df4da4553e87ef3836934",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
