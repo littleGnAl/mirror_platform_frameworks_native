@@ -70,6 +70,30 @@
       },
       "revId": "9d9845d957466aa64b2ef0e708f76cee543067d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1232606a_cb6a53e3",
+        "filename": "services/sensorservice/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-05T23:37:30Z",
+      "side": 1,
+      "message": "Sorry, yeah, or rather than it\u0027s because all of the clients of this library use libbinder, so they already have the headers.\n\nThis is the include that requires adding this:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/services/sensorservice/SensorService.h;l\u003d26;drc\u003d07eb42170b8cd3934dbde3379503d1d5dffd92e1",
+      "parentUuid": "b73f98d0_734e9243",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "9d9845d957466aa64b2ef0e708f76cee543067d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
