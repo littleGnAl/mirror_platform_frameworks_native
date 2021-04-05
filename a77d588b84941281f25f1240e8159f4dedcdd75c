@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1db38b19_16524587",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-04-05T20:54:44Z",
+      "side": 1,
+      "message": "is this intentional?",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 1
+      },
+      "revId": "a77d588b84941281f25f1240e8159f4dedcdd75c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
