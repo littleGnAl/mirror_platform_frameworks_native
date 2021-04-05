@@ -82,6 +82,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb0166b_95525fe6",
+        "filename": "services/surfaceflinger/BufferLayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-04-05T22:30:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c85e64ec_03b6c5f0",
+      "range": {
+        "startLine": 523,
+        "startChar": 4,
+        "endLine": 523,
+        "endChar": 25
+      },
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "307c63fa_e43dad09",
@@ -211,6 +235,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daf2f8e1_ef575cf3",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1979,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-04-05T22:30:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7dd2c9c0_f3e49067",
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "279d7dcc_54739a13",
@@ -258,6 +300,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4346263c_845eb915",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3028,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-04-05T22:30:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bae4e456_0431a497",
+      "range": {
+        "startLine": 3028,
+        "startChar": 19,
+        "endLine": 3028,
+        "endChar": 43
+      },
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18d733e6_f8243d83",
@@ -289,6 +355,24 @@
       "side": 1,
       "message": "Expected present time will affect framenumber, setTransactionState() can happen any time, if it is between handleTransaction and handlepageflip, Expected present time will be updated with new value, the new value maybe lead to handleTransaction and handlepageflip have get different framenumber,then cts fail.\nPlease see the analysis PPT file attached at bugnizer for detail information.",
       "parentUuid": "18d733e6_f8243d83",
+      "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55b25222_b4b2ffa2",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3364,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-04-05T22:30:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac1af022_afa66af0",
       "revId": "1fa731d6b363fdcbcf6b3d9f5fdd5485aea4c25f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
