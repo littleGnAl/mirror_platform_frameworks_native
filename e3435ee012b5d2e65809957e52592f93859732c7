@@ -22,6 +22,30 @@
       },
       "revId": "e3435ee012b5d2e65809957e52592f93859732c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22733c26_25e72431",
+        "filename": "services/memtrackproxy/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-04-05T14:45:48Z",
+      "side": 1,
+      "message": "Moved code here",
+      "parentUuid": "3c0a153d_c955b8c5",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 50
+      },
+      "revId": "e3435ee012b5d2e65809957e52592f93859732c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
