@@ -22,6 +22,30 @@
       },
       "revId": "9d9845d957466aa64b2ef0e708f76cee543067d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a62e08_cb77d265",
+        "filename": "services/sensorservice/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-05T23:27:36Z",
+      "side": 1,
+      "message": "It\u0027s because this is a core variant thing, so it still gets libbinder headers from global.go. This uses binder/IUidObserver.h in a header",
+      "parentUuid": "9caa0ae2_58f94089",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "9d9845d957466aa64b2ef0e708f76cee543067d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
