@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "200d000a_c8c3cb32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-05T17:05:46Z",
+      "side": 1,
+      "message": "The build failure seems like it\u0027s from a split topic/automerger issue.",
+      "revId": "f4456b9bc6cfce3a8ddf12e7c9b3bcf18d69b055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
