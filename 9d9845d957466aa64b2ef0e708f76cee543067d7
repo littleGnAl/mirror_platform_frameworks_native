@@ -46,6 +46,30 @@
       },
       "revId": "9d9845d957466aa64b2ef0e708f76cee543067d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73f98d0_734e9243",
+        "filename": "services/sensorservice/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-05T23:34:52Z",
+      "side": 1,
+      "message": "Are you referring to `frameworks/native/include` that global.go adds? That directory has \"some\" of the binder headers, but doesn\u0027t have IUidObserver.h.",
+      "parentUuid": "41a62e08_cb77d265",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "9d9845d957466aa64b2ef0e708f76cee543067d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
