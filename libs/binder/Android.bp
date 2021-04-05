@@ -61,15 +61,17 @@ cc_library_headers {
 // TODO(b/183654927) - move these into separate libraries
 libbinder_device_interface_sources = [
     "ActivityManager.cpp",
-    "AppOpsManager.cpp",
     "IActivityManager.cpp",
+    "IUidObserver.cpp",
+    ":activity_manager_procstate_aidl",
+
+    "AppOpsManager.cpp",
     "IAppOpsCallback.cpp",
     "IAppOpsService.cpp",
+
     "IPermissionController.cpp",
-    "IUidObserver.cpp",
     "PermissionCache.cpp",
     "PermissionController.cpp",
-    ":activity_manager_procstate_aidl",
 ]
 
 cc_library {
@@ -290,6 +292,17 @@ cc_library {
         "ProcessInfoService.cpp",
     ],
     export_include_dirs: ["include_processinfo"],
+    shared_libs: [
+        "libbinder",
+        "libutils",
+        "liblog",
+    ],
+}
+
+// TODO(b/183654927): initially empty lib to work around some merge conflicts
+cc_library {
+    name: "libactivitymanager_aidl",
+    srcs: [],
     shared_libs: [
         "libbinder",
         "libutils",
