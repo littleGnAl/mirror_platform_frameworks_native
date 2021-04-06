@@ -16,6 +16,23 @@
       "message": "Adding DO NOT MERGE to skip automerge to master. In master the code is very different and we shouldn\u0027t have this issue.",
       "revId": "183fa1e25c906abb1a15021049955e27adf9ad7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "412340a6_ea733f74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2021-04-06T00:05:18Z",
+      "side": 1,
+      "message": "This change is breaking TransactionApplicationTest\n\nframeworks/native/services/surfaceflinger/tests/unittests/TransactionApplicationTest.cpp:222: Failure\nExpected: (systemTime()) \u003c\u003d (applicationSentTime + s2ns(5)), actual: 258541516188 vs 258541040957\nframeworks/native/services/surfaceflinger/tests/unittests/TransactionApplicationTest.cpp:227: Failure\nExpected equality of these values:\n1\ntransactionQueue.size()\nWhich is: 0\nAddressSanitizer:DEADLYSIGNAL\n",
+      "revId": "183fa1e25c906abb1a15021049955e27adf9ad7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
