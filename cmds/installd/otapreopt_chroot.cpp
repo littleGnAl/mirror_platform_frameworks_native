@@ -27,6 +27,7 @@
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/macros.h>
+#include <android-base/scopeguard.h>
 #include <android-base/stringprintf.h>
 #include <android-base/unique_fd.h>
 #include <libdm/dm.h>
@@ -235,6 +236,16 @@ static int otapreopt_chroot(const int argc, char **arg) {
     // the ART APEX, as it is required by otapreopt to run dex2oat.
     ActivateApexPackages();
 
+    auto cleanup = android::base::make_scope_guard([](){
+        // Call apexd --unmount-all to free up loop and dm block devices, so that we can re-use
+        // them during the next invocation.
+        std::vector<std::string> apexd_cmd{"/system/bin/apexd", "--unmount-all"};
+        std::string apexd_error_msg;
+        bool exec_result = Exec(apexd_cmd, &apexd_error_msg);
+        if (!exec_result) {
+            PLOG(ERROR) << "Running /system/bin/apexd --unmount-all failed: " << apexd_error_msg;
+        }
+    });
     // Check that an ART APEX has been activated; clean up and exit
     // early otherwise.
     static constexpr const std::string_view kRequiredApexs[] = {
