@@ -22,6 +22,30 @@
       },
       "revId": "d164af7bcabeb1ee838e647635443058018fc8a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a92ddec_9923b4a5",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2021-04-07T17:08:12Z",
+      "side": 1,
+      "message": "I\u0027ve realized that d-tor actually is not called when exit is called. Instead we are now registering our own atexit handle to make sure we clean things up if something goes wrong.",
+      "parentUuid": "d95d81fb_09fa903b",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 0
+      },
+      "revId": "d164af7bcabeb1ee838e647635443058018fc8a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
