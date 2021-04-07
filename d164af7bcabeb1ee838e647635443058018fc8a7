@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95d81fb_09fa903b",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-04-07T16:03:20Z",
+      "side": 1,
+      "message": "nit: mention that \u0027exit\u0027s will be handled and how.\n\nPossibly also put in a TODO to avoid using \u0027exit()\u0027.",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 0
+      },
+      "revId": "d164af7bcabeb1ee838e647635443058018fc8a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
