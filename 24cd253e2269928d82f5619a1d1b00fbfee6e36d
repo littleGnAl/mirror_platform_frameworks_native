@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8f533a_1256fbf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-04-08T11:58:48Z",
+      "side": 1,
+      "message": "can you repro this in master? I wonder if you are hitting 140713872 which was solved by https://r.android.com/1121044 in R, since the bug is reported on Q.\n\nThis change is still ok to do, but would be good to fix commit message if the suggestion makes sense",
+      "revId": "24cd253e2269928d82f5619a1d1b00fbfee6e36d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b3c6fc0_f6ed18a4",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-04-08T11:58:48Z",
+      "side": 1,
+      "message": "it may be better to break here?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "24cd253e2269928d82f5619a1d1b00fbfee6e36d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
