@@ -732,7 +732,7 @@ int open_socket(const char *service) {
 
     struct sockaddr addr;
     socklen_t alen = sizeof(addr);
-    int fd = accept(s, &addr, &alen);
+    int fd = accept4(s, &addr, &alen, SOCK_CLOEXEC);
     if (fd < 0) {
         MYLOGE("accept(control socket): %s\n", strerror(errno));
         return -1;
