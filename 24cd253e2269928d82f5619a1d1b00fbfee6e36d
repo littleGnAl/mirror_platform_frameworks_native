@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f490e0_99c76c83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299481
+      },
+      "writtenOn": "2021-04-08T18:02:18Z",
+      "side": 1,
+      "message": "Thanks everyone for reviewing this.\n\nNandana recommended re-using aosp/1121044 - which fixes the issue but was not backported to Qt.\n\nWe decided to cherry-pick it to internal qt-car-dev, as it\u0027s not a security issue and will be hard to land on regular qt-dev.",
+      "revId": "24cd253e2269928d82f5619a1d1b00fbfee6e36d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b3c6fc0_f6ed18a4",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-04-08T11:58:48Z",
       "side": 1,
       "message": "it may be better to break here?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "24cd253e2269928d82f5619a1d1b00fbfee6e36d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b6adcc0_352ca1e9",
+        "filename": "cmds/bugreportz/bugreportz.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1299481
+      },
+      "writtenOn": "2021-04-08T18:02:18Z",
+      "side": 1,
+      "message": "break won\u0027t work, because it exists the for loop, we will have to add one more check in the while loop too.",
+      "parentUuid": "6b3c6fc0_f6ed18a4",
       "range": {
         "startLine": 68,
         "startChar": 0,
