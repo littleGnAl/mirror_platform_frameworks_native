@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd381cd9_3ec7d5d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-08T16:44:12Z",
+      "side": 1,
+      "message": "seems like a flaky fingerprints test + a ToT breakage",
+      "revId": "710ad48ec7cb53982b8d390ee94d7863351abedc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
