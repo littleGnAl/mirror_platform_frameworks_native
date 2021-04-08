@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9024d864_0cec23c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299481
+      },
+      "writtenOn": "2021-04-08T17:03:07Z",
+      "side": 1,
+      "message": "Nandana suggested different fix, seems like there was an issue with in dumpstate.cpp. This fix solves our problem",
+      "revId": "bf7935f5d7f3e385dd4bba4652c88a42b6c1529b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
