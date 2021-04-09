@@ -186,7 +186,8 @@ std::optional<compositionengine::LayerFE::LayerSettings> BufferLayer::prepareCli
         }
     }
     bool blackOutLayer = (isProtected() && !targetSettings.supportsProtectedContent) ||
-            (isSecure() && !targetSettings.isSecure);
+            (isSecure() && !targetSettings.isSecure) ||
+            (isProtected() && !targetSettings.isSecure);
     compositionengine::LayerFE::LayerSettings& layer = *result;
     if (blackOutLayer) {
         prepareClearClientComposition(layer, true /* blackout */);
