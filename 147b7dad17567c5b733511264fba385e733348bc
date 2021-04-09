@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97e359e7_4d5e523f",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-09T20:08:17Z",
+      "side": 1,
+      "message": "instead of a raw perform call consider instead ANativeWindow_setDequeueTimeout(window, -1);",
+      "revId": "147b7dad17567c5b733511264fba385e733348bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
