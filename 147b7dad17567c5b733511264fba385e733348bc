@@ -16,6 +16,24 @@
       "message": "instead of a raw perform call consider instead ANativeWindow_setDequeueTimeout(window, -1);",
       "revId": "147b7dad17567c5b733511264fba385e733348bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc1c4d3f_50c44a80",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-04-09T22:00:12Z",
+      "side": 1,
+      "message": "Using ANativeWindow_setDequeueTimeout feels like secretly hiding the problem.\n\nI\u0027d prefer a deeper fix to reset the dequeue timeout in BufferQueueProducer::disconnect(...). So that we can avoid an unnecessary binder call here.",
+      "parentUuid": "97e359e7_4d5e523f",
+      "revId": "147b7dad17567c5b733511264fba385e733348bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
