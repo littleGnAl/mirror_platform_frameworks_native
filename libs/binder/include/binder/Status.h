@@ -91,9 +91,9 @@ public:
     static Status fromExceptionCode(int32_t exceptionCode,
                                     const char* message);
 
-    // warning: this is still considered an error if it is constructed with a
-    // zero value error code. Please use Status::ok() instead and avoid zero
-    // error codes
+    // warning: use non-zero error codes or this will abort
+    // TODO(b/185131910): convert this to a success value once we are sure no
+    // existing code constucts '0' errors
     static Status fromServiceSpecificError(int32_t serviceSpecificErrorCode);
     static Status fromServiceSpecificError(int32_t serviceSpecificErrorCode,
                                            const String8& message);

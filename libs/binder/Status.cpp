@@ -50,7 +50,8 @@ Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode) {
 Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode,
                                         const String8& message) {
     if (serviceSpecificErrorCode == 0) {
-        ALOGW("ServiceSpecificException (EX_SERVICE_SPECIFIC) constructed with zero error code");
+        LOG_ALWAYS_FATAL(
+                "ServiceSpecificException (EX_SERVICE_SPECIFIC) constructed with zero error code");
     }
     return Status(EX_SERVICE_SPECIFIC, serviceSpecificErrorCode, message);
 }
