@@ -70,6 +70,24 @@
       "parentUuid": "49073259_14cf4e76",
       "revId": "147b7dad17567c5b733511264fba385e733348bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e61b4bb_e695b76a",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-04-12T16:16:03Z",
+      "side": 1,
+      "message": "Vulkan swapchain relies system window header, thus it\u0027s preferred to align with all other native window bits in the loader. I personally have a fixed feeling over combining the ndk api with the internal system way of using native window api, although they are identical. Besides, adding an explicit cast help later remind folks of the same(which is as compared to \"hiding the problem\").\n\nI\u0027d encourage folks to do the deeper fix.",
+      "parentUuid": "2601cd5a_9f5dac99",
+      "revId": "147b7dad17567c5b733511264fba385e733348bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
