@@ -52,6 +52,24 @@
       "parentUuid": "bc1c4d3f_50c44a80",
       "revId": "147b7dad17567c5b733511264fba385e733348bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2601cd5a_9f5dac99",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-12T16:09:04Z",
+      "side": 1,
+      "message": "ANativeWindow_setDequeueTimeout is literally window-\u003eperform(window, NATIVE_WINDOW_SET_DEQUEUE_TIMEOUT, timeout). It\u0027s identical to this, just the stable API entrypoint. I\u0027m not sure how that would be \"hiding the problem\" but this isn\u0027t?\n\nhttps://source.corp.google.com/android/frameworks/native/libs/nativewindow/ANativeWindow.cpp;rcl\u003d324197382dbd77a5263e073a1786da307db64913;l\u003d318",
+      "parentUuid": "49073259_14cf4e76",
+      "revId": "147b7dad17567c5b733511264fba385e733348bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
