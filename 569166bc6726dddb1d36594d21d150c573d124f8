@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009824875",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1673455?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "23f77da6_e69b519a",
+          "description": "Change to \"libs/binder/include/binder/Status.h\"",
+          "replacements": [
+            {
+              "path": "libs/binder/include/binder/Status.h",
+              "range": {
+                "startLine": 96,
+                "startChar": 21,
+                "endLine": 96,
+                "endChar": 30
+              },
+              "replacement": "constructs"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "3bf9a9b0_c4b472fd",
+        "filename": "libs/binder/include/binder/Status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-12T23:24:48Z",
+      "side": 1,
+      "message": "Common typo found: \"constucts\" -- should it be \"constructs\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "569166bc6726dddb1d36594d21d150c573d124f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
