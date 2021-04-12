@@ -34,6 +34,24 @@
       "parentUuid": "97e359e7_4d5e523f",
       "revId": "147b7dad17567c5b733511264fba385e733348bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49073259_14cf4e76",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1084468
+      },
+      "writtenOn": "2021-04-12T15:16:53Z",
+      "side": 1,
+      "message": "I\u0027ve filed b/185118790 for follow-up.",
+      "parentUuid": "bc1c4d3f_50c44a80",
+      "revId": "147b7dad17567c5b733511264fba385e733348bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
