@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a003c6_f7930ade",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1084468
+      },
+      "writtenOn": "2021-04-12T18:49:22Z",
+      "side": 1,
+      "message": "I\u0027m not sure if special-casing for ANGLE is the best approach. Nothing prevents others from using an OpenGL-on-Vulkan implementation, so where lies the difference in responsibilities? Anyway, probably good to keep things symmetric and avoid the log spam until a more elegant solution is reached.",
+      "revId": "4160a01aab660d24b90a5c693e8229109a443912",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
