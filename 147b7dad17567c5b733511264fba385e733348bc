@@ -88,6 +88,24 @@
       "parentUuid": "2601cd5a_9f5dac99",
       "revId": "147b7dad17567c5b733511264fba385e733348bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ccbb96_aca78260",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-12T16:18:46Z",
+      "side": 1,
+      "message": "raw calls to perform are error prone, as this indicates. As such, the fix should be to not use the raw vararg method when there\u0027s a proper alternative. window-\u003eperform is not an API to anyone, it\u0027s an implementation detail.",
+      "parentUuid": "0e61b4bb_e695b76a",
+      "revId": "147b7dad17567c5b733511264fba385e733348bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
