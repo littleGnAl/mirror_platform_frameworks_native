@@ -106,6 +106,24 @@
       "parentUuid": "0e61b4bb_e695b76a",
       "revId": "147b7dad17567c5b733511264fba385e733348bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7981cdb8_6fc44a57",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2021-04-12T16:32:38Z",
+      "side": 1,
+      "message": "afaik, there\u0027re still several private ones not having any ANativeWindow_* correspondence. I\u0027d be happy to see we indeed eventually move \"window-\u003eperform\" to implementation details. Previously I have been fighting hard from a larger scope: http://b/170122824, which I\u0027d also wish folks with strong willings can take on and push to fix(it\u0027s a dependency for us to move \"window-\u003eperform\" away).",
+      "parentUuid": "d2ccbb96_aca78260",
+      "revId": "147b7dad17567c5b733511264fba385e733348bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
