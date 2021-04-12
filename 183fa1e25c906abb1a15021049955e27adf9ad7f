@@ -33,6 +33,23 @@
       "message": "This change is breaking TransactionApplicationTest\n\nframeworks/native/services/surfaceflinger/tests/unittests/TransactionApplicationTest.cpp:222: Failure\nExpected: (systemTime()) \u003c\u003d (applicationSentTime + s2ns(5)), actual: 258541516188 vs 258541040957\nframeworks/native/services/surfaceflinger/tests/unittests/TransactionApplicationTest.cpp:227: Failure\nExpected equality of these values:\n1\ntransactionQueue.size()\nWhich is: 0\nAddressSanitizer:DEADLYSIGNAL\n",
       "revId": "183fa1e25c906abb1a15021049955e27adf9ad7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d0cbbbb_c90c44c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1082514
+      },
+      "writtenOn": "2021-04-12T21:28:05Z",
+      "side": 1,
+      "message": "Can Mediatek please research the test failure?",
+      "revId": "183fa1e25c906abb1a15021049955e27adf9ad7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
