@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure if special-casing for ANGLE is the best approach. Nothing prevents others from using an OpenGL-on-Vulkan implementation, so where lies the difference in responsibilities? Anyway, probably good to keep things symmetric and avoid the log spam until a more elegant solution is reached.",
       "revId": "4160a01aab660d24b90a5c693e8229109a443912",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c667ef_8ff50cd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561731
+      },
+      "writtenOn": "2021-04-12T18:59:28Z",
+      "side": 1,
+      "message": "Ack about special casing. There are already several \"!cnx-\u003euseAngle\" within frameworks/native/opengl/libs/EGL protecting the native_window_* calls and this change is just adding one that seems to have been missed to handle: \n\nW libEGL  : EGLNativeWindowType 0x7c1b3f698d80 disconnect failed",
+      "parentUuid": "f6a003c6_f7930ade",
+      "revId": "4160a01aab660d24b90a5c693e8229109a443912",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
