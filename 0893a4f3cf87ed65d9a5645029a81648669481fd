@@ -70,6 +70,24 @@
       "parentUuid": "78cc9380_cd69714d",
       "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1be2b5d7_47b4ad3f",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-04-13T23:09:44Z",
+      "side": 1,
+      "message": "We can if you really want to, but I think the right place to put this is on the native Binder struct and call it during object construction. That\u0027s still a bit of a compromise, but then you can\u0027t easily misuse the API.",
+      "parentUuid": "1a42a992_ab54b0ac",
+      "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
