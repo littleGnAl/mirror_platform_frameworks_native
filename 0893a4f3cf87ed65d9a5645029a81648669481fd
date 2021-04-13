@@ -106,6 +106,24 @@
       "parentUuid": "1be2b5d7_47b4ad3f",
       "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4053206_cb8f7538",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-04-13T23:42:55Z",
+      "side": 1,
+      "message": "I was thinking of adding a sibling to https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/rust/src/binder.rs;l\u003d733?q\u003dnew_binder i.e. new_binder_requesting_sid() that calls binder.set_requesting_sid() implemented in https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/rust/src/native.rs;l\u003d51\n\nIt still requires the client to call the right constructor, but that\u0027s no worse than calling it after construction.",
+      "parentUuid": "95f4936f_8e1add75",
+      "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
