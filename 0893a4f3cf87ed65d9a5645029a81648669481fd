@@ -88,6 +88,24 @@
       "parentUuid": "1a42a992_ab54b0ac",
       "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f4936f_8e1add75",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-13T23:26:30Z",
+      "side": 1,
+      "message": "In C++ (and in the C++ helper libraries associated with the NDK backend), the constructors would have to be piped through multiple different classes. Though also, C++ constructors aren\u0027t very explicit (we lose the tag \u0027setRequestingSid\u0027 - it would have to be, say, a type tag, which isn\u0027t very standard). We can\u0027t use static functions since subclasses really need to delegate to the parent class constructors. I\u0027m really at a loss for how to do it in a cleaner way here, and the problem isn\u0027t big: the mistake people usually make is calling this API after registering a service with service manager instead of before - an abort would always catch this. I\u0027ve really wanted to use the clang capabilities introduced for thread safety analysis to fix this kind of issue (have compiler enforce object state, without requiring any changes to the ABI). However, I haven\u0027t had a chance :(\n\nTypefulness (constructor or builder pattern here) would certainly make the problem go away. If there is an easy way to do it in the Rust layer, maybe you can share a little more detail? what do you mean by \u0027native Binder struct\u0027? I\u0027m all for fixing things here if we can.",
+      "parentUuid": "1be2b5d7_47b4ad3f",
+      "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
