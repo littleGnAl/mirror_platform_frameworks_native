@@ -52,6 +52,24 @@
       "parentUuid": "d93d0aca_ae0ceb47",
       "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a42a992_ab54b0ac",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-13T20:54:26Z",
+      "side": 1,
+      "message": "so fwiw - this will be safe if it is called later from a memory management perspective (setting a bool), but it won\u0027t be read by anything. b/166282674 is filed in order to convert this \"do nothing\" case into an abort. Perhaps we can take this CL as-is?",
+      "parentUuid": "78cc9380_cd69714d",
+      "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
