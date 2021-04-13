@@ -16,6 +16,24 @@
       "message": "This function must be called only on a local binder and before that binder has been sent to another process. It is also not thread safe, while our Strong\u003cdyn Interface\u003e currently would be.\n\nI think we should at least only implement this on Binder\u003c\u003e (a local binder object). However, that would prevent calling this method on local Binder objects created, e.g. in the C NDK outside of Rust. Is this ok?\n\nRegardless, this method should be unsafe if we\u0027re going to expose it arbitrarily as it is not thread-safe and we want the rest of the API to be thread-safe.",
       "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d93d0aca_ae0ceb47",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-13T17:16:57Z",
+      "side": 1,
+      "message": "Do you have a specific suggestion for how to expose this?\n\n\u003e with_calling_sid\n\nI must have missed this in review, but this function doesn\u0027t work without this.\n\n    /// Implementations of `check_permission` should use the given CStr\n    /// argument as context for selinux permission checks. If `None` is\n    /// given, the implementation should fall back to using the PID\n    /// instead.\n\nThese docs also need updated. It\u0027s unsafe to rely on PID because of TOCTOU problems. They should also be amended to include information about calling set_requesting_sid. Can you also update this?\n\n\nBtw - I notice we could have caught all of this if the binder rust integration tests did use internal APIs like IBinderInternal. Is there any reason we have this dependency? or something else I\u0027m missing?",
+      "parentUuid": "6a15b03e_b095dd57",
+      "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
