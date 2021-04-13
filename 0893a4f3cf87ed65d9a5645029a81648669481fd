@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a15b03e_b095dd57",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-04-13T17:09:38Z",
+      "side": 1,
+      "message": "This function must be called only on a local binder and before that binder has been sent to another process. It is also not thread safe, while our Strong\u003cdyn Interface\u003e currently would be.\n\nI think we should at least only implement this on Binder\u003c\u003e (a local binder object). However, that would prevent calling this method on local Binder objects created, e.g. in the C NDK outside of Rust. Is this ok?\n\nRegardless, this method should be unsafe if we\u0027re going to expose it arbitrarily as it is not thread-safe and we want the rest of the API to be thread-safe.",
+      "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
