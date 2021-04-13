@@ -34,6 +34,24 @@
       "parentUuid": "6a15b03e_b095dd57",
       "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78cc9380_cd69714d",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-04-13T20:47:31Z",
+      "side": 1,
+      "message": "I don\u0027t have a great suggestion on how to expose this, which is why I hadn\u0027t done it yet. We could make it a method on the local native::Binder\u003c\u003e object, and provide a method on Strong\u003c\u003e to retrieve the local binder. But that still only handles half of this. Ideally, instead I would like to do this during object creation, which would require adding a new interface in the AIDL generated code for creating a new service with setRequestingSid set.",
+      "parentUuid": "d93d0aca_ae0ceb47",
+      "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
