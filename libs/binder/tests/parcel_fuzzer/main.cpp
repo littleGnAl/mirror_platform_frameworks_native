@@ -23,6 +23,7 @@
 #include <iostream>
 
 #include <android-base/logging.h>
+#include <binder/RpcConnection.h>
 #include <fuzzbinder/random_parcel.h>
 #include <fuzzer/FuzzedDataProvider.h>
 
@@ -32,6 +33,7 @@
 #include <sys/time.h>
 
 using android::fillRandomParcel;
+using android::sp;
 
 void fillRandomParcel(::android::hardware::Parcel* p, FuzzedDataProvider&& provider) {
     // TODO: functionality to create random parcels for libhwbinder parcels
@@ -56,7 +58,16 @@ void doFuzz(const char* backend, const std::vector<ParcelRead<P>>& reads,
             provider.ConsumeIntegralInRange<size_t>(0, maxInstructions));
 
     P p;
-    fillRandomParcel(&p, std::move(provider));
+    if constexpr (std::is_same_v<P, android::Parcel>) {
+        if (provider.ConsumeBool()) {
+            p.markForRpc(sp<android::RpcConnection>::make());
+            fillRandomParcelData(&p, std::move(provider));
+        } else {
+            fillRandomParcel(&p, std::move(provider));
+        }
+    } else {
+        fillRandomParcel(&p, std::move(provider));
+    }
 
     // since we are only using a byte to index
     CHECK(reads.size() <= 255) << reads.size();
