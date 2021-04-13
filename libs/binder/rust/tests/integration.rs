@@ -19,7 +19,7 @@
 use binder::declare_binder_interface;
 use binder::parcel::Parcel;
 use binder::{
-    Binder, IBinderInternal, Interface, StatusCode, ThreadState, TransactionCode,
+    Binder, IBinder, IBinderInternal, Interface, StatusCode, ThreadState, TransactionCode,
     FIRST_CALL_TRANSACTION,
 };
 use std::convert::{TryFrom, TryInto};
