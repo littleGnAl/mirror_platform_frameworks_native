@@ -124,6 +124,24 @@
       "parentUuid": "95f4936f_8e1add75",
       "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ddacfa_5394af9c",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-13T23:52:50Z",
+      "side": 1,
+      "message": "We\u0027d also want stuff for setExtension, setMinSchedulerPolicy, and any other feature we add in the future. For that reason, I do think a builder pattern or a structure as an argument w/ optional fields might be more flexible.\n\nWould any of these options be easy to use for AIDL users of libbinder_rs? How would they use it?",
+      "parentUuid": "a4053206_cb8f7538",
+      "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
