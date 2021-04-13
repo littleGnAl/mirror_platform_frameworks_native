@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0929e354_ebab5ceb",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-13T22:51:03Z",
+      "side": 1,
+      "message": "there is a risk someone will call this when they shouldn\u0027t, but it\u0027s not any more significant than any other bad thing that could be done w/ C++ APIs. Leaving here since several testing use cases are opened up w/ the new RpcConnection API.",
+      "revId": "e2d97e19219040f3ea69c63f45f6f61e5c062498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91de179_bbe5471e",
+        "filename": "libs/binder/tests/parcel_fuzzer/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-13T22:51:03Z",
+      "side": 1,
+      "message": "perhaps it\u0027s a bit heavy handed, but this aborts if objects are read when the parcel is in the wrong format. The RPC code never sets objects, and no other code should be setting the format.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 58
+      },
+      "revId": "e2d97e19219040f3ea69c63f45f6f61e5c062498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
