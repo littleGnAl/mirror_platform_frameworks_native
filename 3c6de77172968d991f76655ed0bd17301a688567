@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d43e66_e0bebd9f",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-14T23:23:54Z",
+      "side": 1,
+      "message": "The actual assignment happens at L169, and currently for the code, this may race with multiple threads (since the lock in assignServerToThisThread is taken separately from the one in ExclusiveSocket).",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 87
+      },
+      "revId": "3c6de77172968d991f76655ed0bd17301a688567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a16b0acf_03dc01e9",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-14T23:23:54Z",
+      "side": 1,
+      "message": "so sometimes, this will drop a different server than we are actually using with L169. Try adding a check that the removed thread object is the same as the one selected by the ExclusiveSocket - I would expect it to fail on binderRpcTest frequently.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 49
+      },
+      "revId": "3c6de77172968d991f76655ed0bd17301a688567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b195eea2_debe47ee",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-14T23:23:54Z",
+      "side": 1,
+      "message": "you might want to sync, given large change https://android-review.googlesource.com/c/platform/frameworks/native/+/1664341",
+      "range": {
+        "startLine": 243,
+        "startChar": 37,
+        "endLine": 243,
+        "endChar": 61
+      },
+      "revId": "3c6de77172968d991f76655ed0bd17301a688567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8103312f_5d8ebd88",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-14T23:23:54Z",
+      "side": 1,
+      "message": "FYI this will conflict with https://android-review.googlesource.com/c/platform/frameworks/native/+/1673557",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 72
+      },
+      "revId": "3c6de77172968d991f76655ed0bd17301a688567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
