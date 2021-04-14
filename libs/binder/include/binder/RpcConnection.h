@@ -74,6 +74,16 @@ public:
 #endif // __BIONIC__
 
     /**
+     * Creates an RPC server at the current port.
+     */
+    [[nodiscard]] bool setupInetServer(unsigned int port);
+
+    /**
+     * Connects to an RPC server at the given address and port.
+     */
+    [[nodiscard]] bool addInetClient(const char* addr, unsigned int port);
+
+    /**
      * Query the other side of the connection for the root object hosted by that
      * process's RpcServer (if one exists)
      */
@@ -84,8 +94,7 @@ public:
     [[nodiscard]] status_t sendDecStrong(const RpcAddress& address);
 
     /**
-     * Adds a server thread accepting connections. Must be called after
-     * setup*Server. Upon return, drop the server.
+     * Accepts a new connection, handle it until client disconnects, and repeat.
      */
     void join();
 
@@ -111,6 +120,12 @@ private:
 
     bool addServer(const SocketAddress& address);
     bool addClient(const SocketAddress& address);
+
+    /**
+     * Adds a server thread accepting connections. Must be called after
+     * setup*Server. Upon return, drop the server.
+     */
+    void acceptAndHandleConnection();
 
     struct ConnectionSocket : public RefBase {
         base::unique_fd fd;
