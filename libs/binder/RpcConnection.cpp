@@ -20,7 +20,8 @@
 
 #include <binder/Parcel.h>
 #include <binder/Stability.h>
-#include <utils/String8.h>
+
+#include <algorithm>
 
 #include "RpcState.h"
 #include "RpcWireFormat.h"
@@ -137,8 +138,14 @@ status_t RpcConnection::sendDecStrong(const RpcAddress& address) {
     return state()->sendDecStrong(socket.fd(), address);
 }
 
+static inline std::string optionalPidToString(std::optional<pid_t> pid) {
+    if (!pid.has_value()) return "(nullopt)";
+    return std::to_string(pid.value());
+}
+
 void RpcConnection::join() {
     // establish a connection
+    sp<ConnectionSocket> serverForThisThread;
     {
         unique_fd clientFd(
                 TEMP_FAILURE_RETRY(accept4(mServer.get(), nullptr, 0 /*length*/, SOCK_CLOEXEC)));
@@ -151,7 +158,9 @@ void RpcConnection::join() {
 
         LOG_RPC_DETAIL("accept4 on fd %d yields fd %d", mServer.get(), clientFd.get());
 
-        assignServerToThisThread(std::move(clientFd));
+        serverForThisThread = assignServerToThisThread(std::move(clientFd));
+        LOG_RPC_DETAIL("Assigning server %p to thread %s", serverForThisThread.get(),
+                       optionalPidToString(serverForThisThread->exclusiveTid).c_str());
     }
 
     // We may not use the connection we just established (two threads might
@@ -164,9 +173,11 @@ void RpcConnection::join() {
 
         if (error != OK) {
             ALOGI("Binder socket thread closing w/ status %s", statusToString(error).c_str());
-            return;
+            break;
         }
     }
+
+    dropServerForThisThread(serverForThisThread);
 }
 
 void RpcConnection::setForServer(const wp<RpcServer>& server) {
@@ -227,11 +238,17 @@ bool RpcConnection::addClient(const SocketAddress& addr) {
     return true;
 }
 
-void RpcConnection::assignServerToThisThread(base::unique_fd&& fd) {
+sp<RpcConnection::ConnectionSocket> RpcConnection::assignServerToThisThread(base::unique_fd&& fd) {
     std::lock_guard<std::mutex> _l(mSocketMutex);
     sp<ConnectionSocket> connection = new ConnectionSocket();
     connection->fd = std::move(fd);
     mServers.push_back(connection);
+    return connection;
+}
+
+void RpcConnection::dropServerForThisThread(const sp<ConnectionSocket>& connection) {
+    std::lock_guard<std::mutex> _l(mSocketMutex);
+    mServers.erase(std::remove(mServers.begin(), mServers.end(), connection), mServers.end());
 }
 
 RpcConnection::ExclusiveSocket::ExclusiveSocket(const sp<RpcConnection>& connection, SocketUse use)
