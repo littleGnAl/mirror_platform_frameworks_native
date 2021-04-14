@@ -300,6 +300,30 @@
       },
       "revId": "7a8e5eb7654625af1984d1c77462533d6adf1731",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a4e3b1e_5911920e",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-14T18:26:51Z",
+      "side": 1,
+      "message": "why is this? Would we ever want to specify \"::1\" (and should we use that now?)? How or would we ever want to set this up on a different network interface?",
+      "parentUuid": "bc95233e_a14cf648",
+      "range": {
+        "startLine": 174,
+        "startChar": 63,
+        "endLine": 174,
+        "endChar": 74
+      },
+      "revId": "7a8e5eb7654625af1984d1c77462533d6adf1731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
