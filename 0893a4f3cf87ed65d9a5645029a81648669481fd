@@ -142,6 +142,24 @@
       "parentUuid": "a4053206_cb8f7538",
       "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400387b0_b81b99d2",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-04-14T00:00:57Z",
+      "side": 1,
+      "message": "The new_binder() call I linked is what is exposed by AIDL. We could certainly add new constructor with a struct param for extra features that the user can pass. The code from a users perspective would be something like:\n\n    let features \u003d BinderFeatures {\n      setRequestingSid: true,\n      ..BinderFeatures::default()\n    };\n    let foo \u003d BnFoo::new_binder_with_features(..., features);\n\nWe could also add BinderFeatures::setRequestingSid() as a shortcut to construct an object containing a single feature.",
+      "parentUuid": "10ddacfa_5394af9c",
+      "revId": "0893a4f3cf87ed65d9a5645029a81648669481fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
