@@ -93,6 +93,30 @@
       },
       "revId": "29c2d47692befb487b617dccf148845214f7dc79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38eec877_69b6372d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2021-04-14T17:39:11Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/+/master:frameworks/native/cmds/dumpstate/dumpstate.cpp;l\u003d1691;drc\u003d51101604cb4f50e088f15daa06c2f0bd62a532d3 this code in dumpstate captures all properties from the device.\n\nThe output should be in the \"------ SYSTEM PROPERTIES (getprop) ------\" part of bugreport.",
+      "parentUuid": "6638c0e3_2b8340fb",
+      "range": {
+        "startLine": 797,
+        "startChar": 11,
+        "endLine": 797,
+        "endChar": 72
+      },
+      "revId": "29c2d47692befb487b617dccf148845214f7dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
