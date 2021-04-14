@@ -18,17 +18,18 @@
 
 #include <binder/RpcConnection.h>
 
-#include <binder/Parcel.h>
-#include <binder/Stability.h>
-#include <utils/String8.h>
-
-#include "RpcState.h"
-#include "RpcWireFormat.h"
-
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/un.h>
 #include <unistd.h>
+
+#include <binder/Parcel.h>
+#include <binder/Stability.h>
+#include <utils/String8.h>
+
+#include "InetSocketAddressList.h"
+#include "RpcState.h"
+#include "RpcWireFormat.h"
 
 #ifdef __GLIBC__
 extern "C" pid_t gettid();
@@ -119,6 +120,20 @@ bool RpcConnection::addVsockClient(unsigned int cid, unsigned int port) {
 }
 
 #endif // __BIONIC__
+
+bool RpcConnection::setupInetServer(unsigned int port) {
+    for (const auto& sockaddr : InetSocketAddressList::GetAddrInfo("127.0.0.1", port)) {
+        if (addServer(sockaddr)) return true;
+    }
+    return false;
+}
+
+bool RpcConnection::addInetClient(const char* addr, unsigned int port) {
+    for (const auto& sockaddr : InetSocketAddressList::GetAddrInfo(addr, port)) {
+        if (addClient(sockaddr)) return true;
+    }
+    return false;
+}
 
 bool RpcConnection::addNullDebuggingClient() {
     unique_fd serverFd(TEMP_FAILURE_RETRY(open("/dev/null", O_WRONLY | O_CLOEXEC)));
