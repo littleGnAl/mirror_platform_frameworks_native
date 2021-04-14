@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ea9243_e383ba68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-04-14T18:32:21Z",
+      "side": 1,
+      "message": "The Patch LGTM, Alec can you please take a look as well?",
+      "revId": "b391c214ba966e75bfacd5ad006475ae50970ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b18de48a_4c599779",
+        "filename": "services/surfaceflinger/BufferLayer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-04-14T18:32:21Z",
+      "side": 1,
+      "message": "nit: more readable:\n (isSecure() || isProtected()) \u0026\u0026 !targetSettings.isSecure",
+      "revId": "b391c214ba966e75bfacd5ad006475ae50970ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
