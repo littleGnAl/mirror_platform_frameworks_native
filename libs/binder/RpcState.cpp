@@ -87,6 +87,8 @@ status_t RpcState::onBinderLeaving(const sp<RpcConnection>& connection, const sp
     // TODO(b/182939933): better organization could avoid needing this log
     LOG_ALWAYS_FATAL_IF(!inserted);
 
+    LOG_RPC_DETAIL("onBinderLeaving: added binder %p", binder.get());
+
     *outAddress = it->first;
     return OK;
 }
@@ -119,6 +121,9 @@ sp<IBinder> RpcState::onBinderEntering(const sp<RpcConnection>& connection,
     sp<IBinder> binder = BpBinder::create(connection, it->first);
     it->second.binder = binder;
     it->second.timesRecd = 1;
+
+    LOG_RPC_DETAIL("onBinderEntering: added binder %p", binder.get());
+
     return binder;
 }
 
@@ -370,6 +375,8 @@ status_t RpcState::sendDecStrong(const base::unique_fd& fd, const RpcAddress& ad
 
         it->second.timesRecd--;
         if (it->second.timesRecd == 0 && it->second.timesSent == 0) {
+            LOG_RPC_DETAIL("sendDecStrong: erasing binder %p", it->second.binder.unsafe_get());
+
             mNodeForAddress.erase(it);
         }
     }
@@ -664,6 +671,8 @@ status_t RpcState::processDecStrong(const base::unique_fd& fd, const RpcWireHead
         it->second.sentRef = nullptr;
 
         if (it->second.timesRecd == 0) {
+            LOG_RPC_DETAIL("processDecStrong erasing binder %p", it->second.binder.unsafe_get());
+
             mNodeForAddress.erase(it);
         }
     }
