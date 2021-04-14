@@ -85,7 +85,7 @@ public:
 
     /**
      * Adds a server thread accepting connections. Must be called after
-     * setup*Server.
+     * setup*Server. Upon return, drop the server.
      */
     void join();
 
@@ -111,7 +111,6 @@ private:
 
     bool addServer(const SocketAddress& address);
     bool addClient(const SocketAddress& address);
-    void assignServerToThisThread(base::unique_fd&& fd);
 
     struct ConnectionSocket : public RefBase {
         base::unique_fd fd;
@@ -120,6 +119,9 @@ private:
         // or receive transactions.
         std::optional<pid_t> exclusiveTid;
     };
+
+    sp<ConnectionSocket> assignServerToThisThread(base::unique_fd&& fd);
+    void dropServerForThisThread(const sp<ConnectionSocket>& connection);
 
     enum class SocketUse {
         CLIENT,
