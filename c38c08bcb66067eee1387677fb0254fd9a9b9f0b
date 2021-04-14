@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2431bf1_70241c21",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2021-04-14T21:06:41Z",
+      "side": 1,
+      "message": "If you\u0027re going to make another change to this file, would be nice to fix this at the same time 😊",
+      "parentUuid": "6e4b9436_be8c8f70",
+      "range": {
+        "startLine": 176,
+        "startChar": 3,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "c38c08bcb66067eee1387677fb0254fd9a9b9f0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd6187d4_2356d023",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2021-04-14T21:06:41Z",
+      "side": 1,
+      "message": "nit: AIBinder_Class_define?",
+      "range": {
+        "startLine": 650,
+        "startChar": 3,
+        "endLine": 650,
+        "endChar": 21
+      },
+      "revId": "c38c08bcb66067eee1387677fb0254fd9a9b9f0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
