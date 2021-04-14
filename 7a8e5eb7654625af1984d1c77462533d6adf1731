@@ -324,6 +324,30 @@
       },
       "revId": "7a8e5eb7654625af1984d1c77462533d6adf1731",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539cd70e_301ca807",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-14T23:09:42Z",
+      "side": 1,
+      "message": "\u003e why is this?\n\nBecause we want the server on the device (i.e. the dispatcher) to bind() to a device port, and let clients to connect() to it. I don\u0027t see a use case for binding to ports other than the localhost.\n\n::1 should also work, but I haven\u0027t tried.\n\n\u003e How or would we ever want to set this up on a different network interface?\n\nDo you mean IPv4 vs. v6? If so, I don\u0027t have an answer for that, honestly. For host-device binder communication, this doesn\u0027t matter, so I\u0027d like to leave it like this for now.\n\nIf you mean other AF_* (e.g. AF_BLUETOOTH) then we should have a different RpcConnection::setup*Server/add*Client, right?",
+      "parentUuid": "6a4e3b1e_5911920e",
+      "range": {
+        "startLine": 174,
+        "startChar": 63,
+        "endLine": 174,
+        "endChar": 74
+      },
+      "revId": "7a8e5eb7654625af1984d1c77462533d6adf1731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
