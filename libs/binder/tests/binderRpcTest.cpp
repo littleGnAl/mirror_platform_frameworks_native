@@ -499,6 +499,7 @@ TEST_P(BinderRpc, SendAndGetResultBackBig) {
 }
 
 TEST_P(BinderRpc, CallMeBack) {
+    SKIP_FOR_ADB_CLIENT(); // FIXME
     auto proc = createRpcTestSocketServerProcess(1);
 
     int32_t pingResult;
@@ -509,6 +510,7 @@ TEST_P(BinderRpc, CallMeBack) {
 }
 
 TEST_P(BinderRpc, RepeatBinder) {
+    SKIP_FOR_ADB_CLIENT(); // FIXME
     auto proc = createRpcTestSocketServerProcess(1);
 
     sp<IBinder> inBinder = new MyBinderRpcSession("foo");
@@ -531,6 +533,7 @@ TEST_P(BinderRpc, RepeatBinder) {
 }
 
 TEST_P(BinderRpc, RepeatTheirBinder) {
+    SKIP_FOR_ADB_CLIENT(); // FIXME
     auto proc = createRpcTestSocketServerProcess(1);
 
     sp<IBinderRpcSession> session;
@@ -563,6 +566,7 @@ TEST_P(BinderRpc, RepeatBinderNull) {
 }
 
 TEST_P(BinderRpc, HoldBinder) {
+    SKIP_FOR_ADB_CLIENT(); // FIXME
     auto proc = createRpcTestSocketServerProcess(1);
 
     IBinder* ptr = nullptr;
@@ -589,6 +593,7 @@ TEST_P(BinderRpc, HoldBinder) {
 // aren't supported.
 
 TEST_P(BinderRpc, CannotMixBindersBetweenUnrelatedSocketConnections) {
+    SKIP_FOR_ADB_CLIENT(); // FIXME
     auto proc1 = createRpcTestSocketServerProcess(1);
     auto proc2 = createRpcTestSocketServerProcess(1);
 
@@ -618,6 +623,7 @@ TEST_P(BinderRpc, CannotSendSocketBinderOverRegularBinder) {
 // END TESTS FOR LIMITATIONS OF SOCKET BINDER
 
 TEST_P(BinderRpc, RepeatRootObject) {
+    SKIP_FOR_ADB_CLIENT(); // FIXME
     auto proc = createRpcTestSocketServerProcess(1);
 
     sp<IBinder> outBinder;
@@ -626,6 +632,7 @@ TEST_P(BinderRpc, RepeatRootObject) {
 }
 
 TEST_P(BinderRpc, NestedTransactions) {
+    SKIP_FOR_ADB_CLIENT(); // FIXME
     auto proc = createRpcTestSocketServerProcess(1);
 
     auto nastyNester = sp<MyBinderRpcTest>::make();
@@ -785,6 +792,7 @@ TEST_P(BinderRpc, ThreadPoolOverSaturated) {
 }
 
 TEST_P(BinderRpc, ThreadingStressTest) {
+    SKIP_FOR_ADB_CLIENT(); // FIXME
     constexpr size_t kNumClientThreads = 10;
     constexpr size_t kNumServerThreads = 10;
     constexpr size_t kNumCalls = 100;
@@ -821,6 +829,7 @@ TEST_P(BinderRpc, OnewayCallDoesNotWait) {
 }
 
 TEST_P(BinderRpc, OnewayCallQueueing) {
+    SKIP_FOR_ADB_CLIENT(); // FIXME
     constexpr size_t kNumSleeps = 10;
     constexpr size_t kNumExtraServerThreads = 4;
     constexpr size_t kSleepMs = 50;
@@ -845,6 +854,7 @@ TEST_P(BinderRpc, OnewayCallQueueing) {
 }
 
 TEST_P(BinderRpc, Die) {
+    SKIP_FOR_ADB_CLIENT(); // FIXME
     for (bool doDeathCleanup : {true, false}) {
         auto proc = createRpcTestSocketServerProcess(1);
 
