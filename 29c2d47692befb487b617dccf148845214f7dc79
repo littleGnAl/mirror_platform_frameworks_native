@@ -141,6 +141,30 @@
       },
       "revId": "29c2d47692befb487b617dccf148845214f7dc79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41707a2c_162ffc9b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-14T17:45:36Z",
+      "side": 1,
+      "message": "doh! I typo\u0027d my property name in my search :(. I found it now, thanks. I think it would be good to put it up here anyway, to make it easily available. I don\u0027t expect most people (app developers) to know this is implemented by properties or what their names are. If you\u0027re not against this, I\u0027m resolving this comment.",
+      "parentUuid": "8cee27b0_f06ff802",
+      "range": {
+        "startLine": 797,
+        "startChar": 11,
+        "endLine": 797,
+        "endChar": 72
+      },
+      "revId": "29c2d47692befb487b617dccf148845214f7dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
