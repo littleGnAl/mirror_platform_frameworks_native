@@ -69,6 +69,30 @@
       },
       "revId": "29c2d47692befb487b617dccf148845214f7dc79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6638c0e3_2b8340fb",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-14T17:33:15Z",
+      "side": 1,
+      "message": "\u003e I think bugreport already contains all properties, so conceptually we already can get this information.\n\nI don\u0027t think this is true. If it is, I don\u0027t know where they are.\n\n\u003e would it make more sense to print this in sdkextension dumpstate?\n\nsdkextension doesn\u0027t have a dumpstate, it isn\u0027t something that is running continuously.",
+      "parentUuid": "5a3fd31b_ee9b755d",
+      "range": {
+        "startLine": 797,
+        "startChar": 11,
+        "endLine": 797,
+        "endChar": 72
+      },
+      "revId": "29c2d47692befb487b617dccf148845214f7dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
