@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a40c11_84c47c17",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-04-14T17:24:10Z",
+      "side": 1,
+      "message": "should this be SDK extension versions, or Build extension versions?",
+      "range": {
+        "startLine": 796,
+        "startChar": 12,
+        "endLine": 796,
+        "endChar": 21
+      },
+      "revId": "29c2d47692befb487b617dccf148845214f7dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
