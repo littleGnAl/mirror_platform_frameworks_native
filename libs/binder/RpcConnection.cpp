@@ -181,7 +181,10 @@ bool RpcConnection::setupInetServer(unsigned int port) {
 
 bool RpcConnection::addInetClient(const char* addr, unsigned int port) {
     for (const auto& sockaddr : InetSocketAddress::GetAddrInfo(addr, port)) { // NOLINT
-        if (addClient(sockaddr)) return true;
+        if (addClient(sockaddr)) {
+            LOG_RPC_DETAIL("Connected to %s:%d", addr, port);
+            return true;
+        }
     }
     return false;
 }
