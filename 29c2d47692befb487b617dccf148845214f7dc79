@@ -22,6 +22,30 @@
       },
       "revId": "29c2d47692befb487b617dccf148845214f7dc79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4913b3b_cec38190",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-14T17:25:48Z",
+      "side": 1,
+      "message": "Yeah SDK extension versions makes sense. Done",
+      "parentUuid": "96a40c11_84c47c17",
+      "range": {
+        "startLine": 796,
+        "startChar": 12,
+        "endLine": 796,
+        "endChar": 21
+      },
+      "revId": "29c2d47692befb487b617dccf148845214f7dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
