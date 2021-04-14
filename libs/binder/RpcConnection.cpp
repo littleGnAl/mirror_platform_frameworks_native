@@ -144,6 +144,10 @@ static inline std::string optionalPidToString(std::optional<pid_t> pid) {
 }
 
 void RpcConnection::join() {
+    while (true) acceptAndHandleConnection();
+}
+
+void RpcConnection::acceptAndHandleConnection() {
     // establish a connection
     sp<ConnectionSocket> serverForThisThread;
     {
