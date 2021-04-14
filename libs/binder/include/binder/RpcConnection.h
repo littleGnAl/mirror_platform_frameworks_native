@@ -74,6 +74,16 @@ public:
 #endif // __BIONIC__
 
     /**
+     * Creates an RPC server at the current port.
+     */
+    [[nodiscard]] bool setupInetServer(unsigned int port);
+
+    /**
+     * Connects to an RPC server at the given address and port.
+     */
+    [[nodiscard]] bool addInetClient(const char* addr, unsigned int port);
+
+    /**
      * Query the other side of the connection for the root object hosted by that
      * process's RpcServer (if one exists)
      */
