@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c22c8278_f726ce7e",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-14T23:25:55Z",
+      "side": 1,
+      "message": "nice! You can see the retry loop I was using in tests. Though, this could be a little heavy weight.\n\nIn general, we should expect that external code is able to guarantee the socket creation order. For instance, if we ever actually used unix domain sockets for this, we\u0027d want init to create the sockets before starting processes.\n\nIf we do have this, can we do something event-based or make sure we don\u0027t spinloop the CPU (maybe by adding a small delay in the loop)",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "89b748f4c7b561540acf3f03f4d1beba043d7170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
