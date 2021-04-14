@@ -31,13 +31,18 @@
 #include <chrono>
 #include <cstdlib>
 #include <iostream>
+#include <optional>
 #include <thread>
 
 #ifdef __BIONIC__
 #include <linux/vm_sockets.h>
 #endif //__BIONIC__
 
+#include <android-base/logging.h>
+#include <android-base/parseint.h>
+#include <getopt.h>
 #include <sys/prctl.h>
+#include <sysexits.h>
 #include <unistd.h>
 
 #include "../RpcState.h" // for debugging
@@ -58,6 +63,8 @@ using android::binder::Status;
         Status stat = (status);           \
         EXPECT_TRUE(stat.isOk()) << stat; \
     } while (false)
+
+static std::optional<unsigned int> gClientPort;
 
 class MyBinderRpcSession : public BnBinderRpcSession {
 public:
@@ -281,22 +288,24 @@ static inline std::string PrintSocketType(const testing::TestParamInfo<SocketTyp
 }
 class BinderRpc : public ::testing::TestWithParam<SocketType> {
 public:
+    void SetUp() override {
+        if (gClientPort.has_value() && GetParam() != SocketType::INET) {
+            GTEST_SKIP() << "--client is set, only testing inet sockets.";
+        }
+    }
     // This creates a new process serving an interface on a certain number of
     // threads.
-    ProcessConnection createRpcTestSocketServerProcess(
+    static ProcessConnection createRpcTestSocketServerProcess(
             size_t numThreads,
-            const std::function<void(const sp<RpcServer>&, const sp<RpcConnection>&)>& configure) {
+            const std::function<void(const sp<RpcServer>&, const sp<RpcConnection>&)>& configure,
+            SocketType socketType, unsigned int port) {
         CHECK_GT(numThreads, 0);
-
-        SocketType socketType = GetParam();
-
         std::string addr = allocateSocketAddress();
         unlink(addr.c_str());
-        static unsigned int port = 3456;
-        port++;
 
         auto ret = ProcessConnection{
                 .host = Process([&] {
+                    if (gClientPort.has_value()) return;
                     sp<RpcServer> server = RpcServer::make();
 
                     server->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
@@ -334,6 +343,7 @@ public:
         };
 
         // create remainder of connections
+        unsigned int clientPort = gClientPort.value_or(port);
         for (size_t i = 0; i < numThreads; i++) {
             for (size_t tries = 0; tries < 5; tries++) {
                 usleep(10000);
@@ -343,11 +353,12 @@ public:
                         break;
 #ifdef __BIONIC__
                     case SocketType::VSOCK:
-                        if (ret.connection->addVsockClient(VMADDR_CID_LOCAL, port)) goto success;
+                        if (ret.connection->addVsockClient(VMADDR_CID_LOCAL, clientPort))
+                            goto success;
                         break;
 #endif // __BIONIC__
                     case SocketType::INET:
-                        if (ret.connection->addInetClient("127.0.0.1", port)) goto success;
+                        if (ret.connection->addInetClient("127.0.0.1", clientPort)) goto success;
                         break;
                     default:
                         LOG_ALWAYS_FATAL("Unknown socket type");
@@ -362,16 +373,20 @@ public:
     }
 
     BinderRpcTestProcessConnection createRpcTestSocketServerProcess(size_t numThreads) {
+        return createRpcTestSocketServerProcess(numThreads, GetParam(), newPort());
+    }
+    static BinderRpcTestProcessConnection createRpcTestSocketServerProcess(size_t numThreads,
+                                                                           SocketType socketType,
+                                                                           unsigned int port) {
         BinderRpcTestProcessConnection ret{
-                .proc = createRpcTestSocketServerProcess(numThreads,
-                                                         [&](const sp<RpcServer>& server,
-                                                             const sp<RpcConnection>& connection) {
-                                                             sp<MyBinderRpcTest> service =
-                                                                     new MyBinderRpcTest;
-                                                             server->setRootObject(service);
-                                                             service->connection =
-                                                                     connection; // for testing only
-                                                         }),
+                .proc = createRpcTestSocketServerProcess(
+                        numThreads,
+                        [&](const sp<RpcServer>& server, const sp<RpcConnection>& connection) {
+                            sp<MyBinderRpcTest> service = new MyBinderRpcTest;
+                            server->setRootObject(service);
+                            service->connection = connection; // for testing only
+                        },
+                        socketType, port),
         };
 
         ret.rootBinder = ret.proc.rootBinder;
@@ -379,15 +394,24 @@ public:
 
         return ret;
     }
+    static unsigned int newPort() {
+        sPort++;
+        return sPort;
+    }
+
+private:
+    static unsigned int sPort;
 };
+unsigned int BinderRpc::sPort = 3456;
 
 TEST_P(BinderRpc, RootObjectIsNull) {
-    auto proc = createRpcTestSocketServerProcess(1,
-                                                 [](const sp<RpcServer>& server,
-                                                    const sp<RpcConnection>&) {
-                                                     // this is the default, but to be explicit
-                                                     server->setRootObject(nullptr);
-                                                 });
+    auto proc = createRpcTestSocketServerProcess(
+            1,
+            [](const sp<RpcServer>& server, const sp<RpcConnection>&) {
+                // this is the default, but to be explicit
+                server->setRootObject(nullptr);
+            },
+            GetParam(), newPort());
 
     // retrieved by getRootObject when process is created above
     EXPECT_EQ(nullptr, proc.rootBinder);
@@ -877,8 +901,54 @@ INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
 
 } // namespace android
 
+namespace {
+int doAdbTest(int argc, char** argv) {
+    unsigned int serverPort = 0;
+    unsigned int clientPort = 0;
+    unsigned int timeout = 5 * 60;
+    static struct option long_options[] = {{"server", required_argument, 0, 's'},
+                                           {"client", required_argument, 0, 'c'},
+                                           {"timeout", required_argument, 0, 't'},
+                                           {0, 0, 0, 0}};
+    int c;
+    while ((c = getopt_long(argc, argv, "s:c:t:", long_options, NULL)) != -1) {
+        switch (c) {
+            case 's':
+                CHECK(android::base::ParseUint(optarg, &serverPort));
+                break;
+            case 'c':
+                CHECK(android::base::ParseUint(optarg, &clientPort));
+                android::gClientPort = clientPort;
+                break;
+            case 't':
+                CHECK(android::base::ParseUint(optarg, &timeout));
+                break;
+            default:
+                break;
+        }
+    }
+    CHECK(serverPort == 0 || clientPort == 0) << "Only one of --server or --client can be set.";
+    if (serverPort != 0) {
+        android::base::SetMinimumLogSeverity(android::base::LogSeverity::INFO);
+        auto server =
+                android::BinderRpc::createRpcTestSocketServerProcess(10, android::SocketType::INET,
+                                                                     serverPort);
+        LOG(INFO) << "Server set up at port " << serverPort << ", sleeping for " << timeout << "s";
+        sleep(timeout);
+        return EX_SOFTWARE;
+    }
+    if (clientPort != 0) {
+        android::base::SetMinimumLogSeverity(android::base::LogSeverity::INFO);
+    }
+    return EX_OK;
+}
+} // namespace
+
 int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
     android::base::InitLogging(argv, android::base::StderrLogger, android::base::DefaultAborter);
+
+    auto adbTestRes = doAdbTest(argc, argv);
+    if (0 != adbTestRes) return adbTestRes;
+    ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
