@@ -208,6 +208,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5259b3a2_ee3c23df",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-14T18:06:12Z",
+      "side": 1,
+      "message": "This is the empty vector, but I still need to initialize the free function for the unique_ptr",
+      "parentUuid": "8d2435c8_4700e349",
+      "range": {
+        "startLine": 149,
+        "startChar": 37,
+        "endLine": 149,
+        "endChar": 53
+      },
+      "revId": "7a8e5eb7654625af1984d1c77462533d6adf1731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71ee49ce_2d5595e9",
@@ -244,6 +268,30 @@
       "writtenOn": "2021-04-14T18:01:46Z",
       "side": 1,
       "message": "should this be an argument?",
+      "range": {
+        "startLine": 174,
+        "startChar": 63,
+        "endLine": 174,
+        "endChar": 74
+      },
+      "revId": "7a8e5eb7654625af1984d1c77462533d6adf1731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc95233e_a14cf648",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-14T18:06:12Z",
+      "side": 1,
+      "message": "No. You should always only set up a server on a local port.",
+      "parentUuid": "392b2b26_f142ad79",
       "range": {
         "startLine": 174,
         "startChar": 63,
