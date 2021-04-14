@@ -115,7 +115,9 @@ public:
             std::cout << "Received null binder!" << std::endl;
             return Status::fromExceptionCode(Status::EX_NULL_POINTER);
         }
+        LOG(INFO) << "pingMe: pinging binder " << binder.get();
         *out = binder->pingBinder();
+        LOG(INFO) << "pingMe: pinged binder " << binder.get();
         return Status::ok();
     }
     Status repeatBinder(const sp<IBinder>& binder, sp<IBinder>* out) override {
