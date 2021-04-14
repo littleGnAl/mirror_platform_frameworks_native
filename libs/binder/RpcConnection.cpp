@@ -16,10 +16,17 @@
 
 #define LOG_TAG "RpcConnection"
 
-#include <binder/RpcConnection.h>
-
+#include <arpa/inet.h>
 #include <binder/Parcel.h>
+#include <binder/RpcConnection.h>
 #include <binder/Stability.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <unistd.h>
+#include <utils/String8.h>
 
 #include <algorithm>
 
@@ -27,11 +34,6 @@
 
 #include "RpcState.h"
 #include "RpcWireFormat.h"
-
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <sys/un.h>
-#include <unistd.h>
 
 #ifdef __GLIBC__
 extern "C" pid_t gettid();
@@ -121,6 +123,70 @@ bool RpcConnection::addVsockClient(unsigned int cid, unsigned int port) {
 }
 
 #endif // __BIONIC__
+
+class InetSocketAddress : public RpcConnection::SocketAddress {
+public:
+    [[nodiscard]] std::string toString() const override { return mDesc; }
+    [[nodiscard]] const sockaddr* addr() const override { return mAddr; }
+    [[nodiscard]] size_t addrSize() const override { return mSize; }
+
+    using AddrInfo = std::unique_ptr<struct addrinfo, decltype(&freeaddrinfo)>;
+    struct GetAddrInfoResult : std::vector<InetSocketAddress> {
+        explicit GetAddrInfoResult(AddrInfo addrInfo) : mAddrInfo(std::move(addrInfo)) {}
+
+    private:
+        friend InetSocketAddress;
+        AddrInfo mAddrInfo;
+    };
+    static GetAddrInfoResult GetAddrInfo(const char* addr, unsigned int port) {
+        struct addrinfo hint;
+        memset(&hint, 0, sizeof(hint));
+        hint.ai_family = AF_UNSPEC;
+        hint.ai_socktype = SOCK_STREAM;
+        hint.ai_protocol = 0;
+        hint.ai_flags = 0;
+
+        struct addrinfo* ai_start = nullptr;
+        int rc = getaddrinfo(addr, std::to_string(port).data(), &hint, &ai_start);
+        if (0 != rc) {
+            ALOGE("Unable to resolve %s:%u: %s", addr, port, gai_strerror(rc));
+            return GetAddrInfoResult(AddrInfo(nullptr, &freeaddrinfo));
+        }
+        if (ai_start == nullptr) {
+            ALOGE("Unable to resolve %s:%u: getaddrinfo returns null", addr, port);
+            return GetAddrInfoResult(AddrInfo(nullptr, &freeaddrinfo));
+        }
+
+        GetAddrInfoResult ret(AddrInfo(ai_start, &freeaddrinfo));
+        for (struct addrinfo* ai = ai_start; ai != nullptr; ai = ai->ai_next) {
+            auto desc = String8::format("%s:%u", addr, port);
+            ret.emplace_back(InetSocketAddress(ai->ai_addr, ai->ai_addrlen, desc.string()));
+        }
+        return ret;
+    }
+
+private:
+    InetSocketAddress(const sockaddr* addr, size_t size, std::string desc)
+          : mAddr(addr), mSize(size), mDesc(std::move(desc)) {}
+
+    const sockaddr* mAddr;
+    size_t mSize;
+    std::string mDesc;
+};
+
+bool RpcConnection::setupInetServer(unsigned int port) {
+    for (const auto& sockaddr : InetSocketAddress::GetAddrInfo("127.0.0.1", port)) { // NOLINT
+        if (addServer(sockaddr)) return true;
+    }
+    return false;
+}
+
+bool RpcConnection::addInetClient(const char* addr, unsigned int port) {
+    for (const auto& sockaddr : InetSocketAddress::GetAddrInfo(addr, port)) { // NOLINT
+        if (addClient(sockaddr)) return true;
+    }
+    return false;
+}
 
 sp<IBinder> RpcConnection::getRootObject() {
     ExclusiveSocket socket(sp<RpcConnection>::fromExisting(this), SocketUse::CLIENT);
