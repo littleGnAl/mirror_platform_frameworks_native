@@ -22,6 +22,30 @@
       },
       "revId": "89b748f4c7b561540acf3f03f4d1beba043d7170",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d433e02_560fefd3",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-15T00:00:10Z",
+      "side": 1,
+      "message": "accept4() should block until it sees an incoming connection, so this shouldn\u0027t be a spin loop. I can poll() at L153 to ensure.\n\nThough, looking at the tests, I notice that on the server side, we have multiple threads running join() simultaneously. Shouldn\u0027t there be only one thread accept4()-ing at a time? Do we just assume that only one thread wakes up at a time?",
+      "parentUuid": "c22c8278_f726ce7e",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "89b748f4c7b561540acf3f03f4d1beba043d7170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
