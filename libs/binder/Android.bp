@@ -109,6 +109,7 @@ cc_library {
         "IResultReceiver.cpp",
         "IServiceManager.cpp",
         "IShellCallback.cpp",
+        "InetSocketAddressList.cpp",
         "LazyServiceRegistrar.cpp",
         "MemoryBase.cpp",
         "MemoryDealer.cpp",
