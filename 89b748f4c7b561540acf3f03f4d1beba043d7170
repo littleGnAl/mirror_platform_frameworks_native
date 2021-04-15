@@ -118,6 +118,30 @@
       },
       "revId": "89b748f4c7b561540acf3f03f4d1beba043d7170",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4dae2e_a0ce5e95",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-15T00:36:52Z",
+      "side": 1,
+      "message": "Wait - I was confused. I\u0027ll fix this up in b/185167543 as well. The current usage is weird, because the existing test is creating fixed numbers of threads and accepting from multiple of them.",
+      "parentUuid": "c2f53549_4419c55f",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "89b748f4c7b561540acf3f03f4d1beba043d7170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
