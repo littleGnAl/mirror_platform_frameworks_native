@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "861d24aa_edd52232",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-15T00:16:11Z",
+      "side": 1,
+      "message": "I mean \"connection-\u003eexclusiveTid \u003d gettid()\" in assignServerToThisThread would fix the race discussed in PS3 L166-168.\n\n\u003e use tid as the identifier to look up the object to remove? \n\nThere is no need to look it up since ExclusiveSocket keeps it in mSocket. That is one this thread is using.",
+      "parentUuid": "a7137487_ae539c22",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 49
+      },
+      "revId": "3c6de77172968d991f76655ed0bd17301a688567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b195eea2_debe47ee",
         "filename": "libs/binder/RpcConnection.cpp",
         "patchSetId": 3
