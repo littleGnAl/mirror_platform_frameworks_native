@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7137487_ae539c22",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-15T00:11:25Z",
+      "side": 1,
+      "message": "This needs to be fixed. Without this, the server thread continues to read data from a dead fd after the client disconnects, because of the behavior of ExclusiveSocket.\n\n\u003e Maybe the easiest way to fix this would be to set the value of the optional TID inside of the assignServerToThisThread.\n\nAre you suggesting to use tid as the identifier to look up the object to remove? I can do that.",
+      "parentUuid": "2824ddb9_e9bebbb2",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 49
+      },
+      "revId": "3c6de77172968d991f76655ed0bd17301a688567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b195eea2_debe47ee",
         "filename": "libs/binder/RpcConnection.cpp",
         "patchSetId": 3
