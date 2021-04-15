@@ -808,7 +808,7 @@ public:
     // SurfaceFlinger to complete a transaction.
     void commitChildList();
     int32_t getZ(LayerVector::StateSet stateSet) const;
-    virtual void pushPendingState();
+    virtual void pushPendingState(bool syncPointExisted = false);
 
     /**
      * Returns active buffer size in the correct orientation. Buffer size is determined by undoing
