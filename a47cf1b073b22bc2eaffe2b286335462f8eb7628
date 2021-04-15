@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59409aa1_d50e48dd",
+        "filename": "libs/binder/.clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-15T21:45:12Z",
+      "side": 1,
+      "message": "any thought to add this in frameworks/native/.clang-format instead? This is one of the things pretty common in Android",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "a47cf1b073b22bc2eaffe2b286335462f8eb7628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
