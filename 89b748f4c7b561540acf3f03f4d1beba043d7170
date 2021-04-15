@@ -46,6 +46,30 @@
       },
       "revId": "89b748f4c7b561540acf3f03f4d1beba043d7170",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac57298_13c7253f",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-15T00:08:33Z",
+      "side": 1,
+      "message": "b/185167543 is for this issue. I\u0027m waiting on some feedback from dbrazdil@ from his usage in https://android-review.googlesource.com/c/platform/packages/modules/Virtualization/+/1664386\n\nThe way kernel binder does this is by dynamically adding threads when they are needed. I dislike this already because it\u0027s lazy - new threads (up to 15 by default) will be created as they are needed. In the socket context, it\u0027s even worse because in order to get a new thread, whenever we are about to use all of the available sockets inside of ExclusiveSocket and we can request the creation of a new thread before making a call.\n\nSo, I started with the simplest option, and also the fastest option (assuming that all threads will be used).\n\nMy plan is:\n- wait for David\u0027s response\n- add an API to abstract away creating a client with X threads\n- add an API for a client to connect with X threads\n- follow-up and close b/185167543 with either a decision to dynamically create threads, or making this an option in the wire protocol",
+      "parentUuid": "2d433e02_560fefd3",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "89b748f4c7b561540acf3f03f4d1beba043d7170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
