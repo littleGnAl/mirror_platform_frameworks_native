@@ -771,7 +771,7 @@ bool Layer::isSecure() const {
 // transaction
 // ----------------------------------------------------------------------------
 
-void Layer::pushPendingState() {
+void Layer::pushPendingState(bool syncPointExisted) {
     if (!mCurrentState.modified) {
         return;
     }
@@ -790,26 +790,37 @@ void Layer::pushPendingState() {
             // to be applied as per normal (no synchronization).
             mCurrentState.barrierLayer_legacy = nullptr;
         } else {
-            auto syncPoint = std::make_shared<SyncPoint>(mCurrentState.frameNumber_legacy,
-                                                         this,
-                                                         barrierLayer);
-            if (barrierLayer->addSyncPoint(syncPoint)) {
-                std::stringstream ss;
-                ss << "Adding sync point " << mCurrentState.frameNumber_legacy;
-                ATRACE_NAME(ss.str().c_str());
-                mRemoteSyncPoints.push_back(std::move(syncPoint));
-            } else {
-                // We already missed the frame we're supposed to synchronize
-                // on, so go ahead and apply the state update
-                mCurrentState.barrierLayer_legacy = nullptr;
-            }
+             if (!syncPointExisted) {
+                 auto syncPoint = std::make_shared<SyncPoint>(mCurrentState.frameNumber_legacy,
+                                                              this,
+                                                              barrierLayer);
+                 if (barrierLayer->addSyncPoint(syncPoint)) {
+                     std::stringstream ss;
+                     ss << "Adding sync point " << mCurrentState.frameNumber_legacy;
+                     ATRACE_NAME(ss.str().c_str());
+                     mRemoteSyncPoints.push_back(std::move(syncPoint));
+                 } else {
+                     // We already missed the frame we're supposed to synchronize
+                     // on, so go ahead and apply the state update
+                     mCurrentState.barrierLayer_legacy = nullptr;
+                 }
+             } else {
+                 ALOGE("[%s] sync point existed", getDebugName());
+             }
         }
 
         // Wake us up to check if the frame has been received
         setTransactionFlags(eTransactionNeeded);
         mFlinger->setTransactionFlags(eTraversalNeeded);
     }
-    mPendingStates.push_back(mCurrentState);
+
+    if (syncPointExisted) {
+        mPendingStates.pop_back();
+        mPendingStates.push_back(mCurrentState);
+    } else {
+        mPendingStates.push_back(mCurrentState);
+    }
+
     ATRACE_INT(mTransactionName.c_str(), mPendingStates.size());
 }
 
@@ -1445,11 +1456,19 @@ Layer::FrameRate Layer::getFrameRateForLayerTree() const {
 
 void Layer::deferTransactionUntil_legacy(const sp<Layer>& barrierLayer, uint64_t frameNumber) {
     ATRACE_CALL();
+    bool syncPointExisted = false;
     if (mLayerDetached) {
         // If the layer is detached, then we don't defer this transaction since we will not
         // commit the pending state while the layer is detached. Adding sync points may cause
         // the barrier layer to wait for the states to be committed before dequeuing a buffer.
         return;
+    }
+
+    if (!mRemoteSyncPoints.empty()) {
+        if (mRemoteSyncPoints.back()->getFrameNumber() == frameNumber) {
+           ALOGE("%s frameNumber:%" PRIu64 " sync point existed", getDebugName(), frameNumber);
+           syncPointExisted = true;
+        }
     }
 
     mCurrentState.barrierLayer_legacy = barrierLayer;
