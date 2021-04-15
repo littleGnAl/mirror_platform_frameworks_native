@@ -142,6 +142,30 @@
       },
       "revId": "89b748f4c7b561540acf3f03f4d1beba043d7170",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a54ac6e0_5a2d2178",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-15T00:46:08Z",
+      "side": 1,
+      "message": "The inet implementation CL:1675165 can go on its own.\n\nAll other CLs (CL:1676189, CL:1676190) are my attempts to split binderRpcTest into two processes and still make it pass.\n\nThen the Java (I know, I can change it to system() in the future) test CL:1675166 relies on the fact that the test can be split into two processes. It is supposed to run the server on the device, set up adb forward, then run the client test on host.\n\nThat\u0027s why I say the test CL:1675166 is blocked.",
+      "parentUuid": "2b4dae2e_a0ce5e95",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "89b748f4c7b561540acf3f03f4d1beba043d7170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
