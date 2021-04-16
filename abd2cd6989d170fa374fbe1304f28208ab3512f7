@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb271735_98e5cc4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-04-16T23:03:11Z",
+      "side": 1,
+      "message": "There is a merge conflict with the internal branch, so I would merge this change first to the internal branch in ag/14216887",
+      "revId": "abd2cd6989d170fa374fbe1304f28208ab3512f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
