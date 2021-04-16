@@ -22,6 +22,30 @@
       },
       "revId": "a47cf1b073b22bc2eaffe2b286335462f8eb7628",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c09fb26_dba54350",
+        "filename": "libs/binder/.clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-16T01:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59409aa1_d50e48dd",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "a47cf1b073b22bc2eaffe2b286335462f8eb7628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
