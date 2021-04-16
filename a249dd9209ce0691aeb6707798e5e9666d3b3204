@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24685b4b_44898b5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1862735
+      },
+      "writtenOn": "2021-04-16T08:44:36Z",
+      "side": 1,
+      "message": "Hi Steven \u0026 Martijn,\n\nThe kernel changes related to this feature already merged in maintainer tree stable branch, and preparing to lands in upstream. Could you please help land this userspace changes in AOSP master in parallel? Thanks!\n\nBTW, is it possible to land this userspace changes in sc-dev (Android 12)? Thanks!",
+      "revId": "a249dd9209ce0691aeb6707798e5e9666d3b3204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
