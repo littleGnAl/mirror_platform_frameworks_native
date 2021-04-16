@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eac0470_f2968e78",
+        "filename": "libs/binder/InetSocketAddressList.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-16T21:12:01Z",
+      "side": 1,
+      "message": "This is still a lot of extra code (and a test) which need to be maintained in order to convert the C API linked list into an iterable type. I agree the iterable API is nicer, but it\u0027s a lot to maintain for something that is internal and is only used twice (for client + server).\n\nGeneralizing RpcConnection::SocketAddress slightly more might be worth it so that all of our addresses are maintained in the same way, but instead of InetSocketAddressList, what would happen if we returned std::unique_ptr\u003caddrinfo, decltype(\u0026freeaddrinfo)\u003e? Is there something else I\u0027m missing? I can look at this in detail if you want.",
+      "revId": "0a73ce86d5b7ab22e4657deb0685e3860423ad78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
