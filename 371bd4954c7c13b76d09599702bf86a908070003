@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9533f149_60876ccb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-19T20:45:29Z",
+      "side": 1,
+      "message": "Thank you Yifan!",
+      "revId": "371bd4954c7c13b76d09599702bf86a908070003",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6de8ef_3a979e93",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-19T20:45:29Z",
+      "side": 1,
+      "message": "nit: aiStart (everywhere) since libbinder uses camelcase",
+      "range": {
+        "startLine": 152,
+        "startChar": 14,
+        "endLine": 152,
+        "endChar": 22
+      },
+      "revId": "371bd4954c7c13b76d09599702bf86a908070003",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29acb49_8a615ce5",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-19T20:45:29Z",
+      "side": 1,
+      "message": "nit: you could std::move the String8 there - right now it\u0027s a bit hidden if this SocketAddressImpl is kept around and the String8 isn\u0027t.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 56
+      },
+      "revId": "371bd4954c7c13b76d09599702bf86a908070003",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
