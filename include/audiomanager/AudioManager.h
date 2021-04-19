@@ -28,6 +28,7 @@ typedef enum {
     PLAYER_TYPE_AAUDIO = 13,
     PLAYER_TYPE_HW_SOURCE = 14,
     PLAYER_TYPE_EXTERNAL_PROXY = 15,
+    PLAYER_TYPE_HW_SOURCE_SW_BRIDGE = 16,
 } player_type_t;
 
 typedef enum {

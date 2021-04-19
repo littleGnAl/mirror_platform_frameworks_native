@@ -35,13 +35,15 @@ public:
     {
     }
 
-    virtual audio_unique_id_t trackPlayer(player_type_t playerType, audio_usage_t usage,
-            audio_content_type_t content, const sp<IBinder>& player) {
+    virtual audio_unique_id_t trackPlayer(player_type_t playerType, uid_t appUid,
+            audio_usage_t usage, audio_content_type_t content, const sp<IBinder>& player) {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioManager::getInterfaceDescriptor());
         data.writeInt32(1); // non-null PlayerIdCard parcelable
         // marshall PlayerIdCard data
         data.writeInt32((int32_t) playerType);
+        //   write APP UID
+        data.writeInt32((int32_t) (appUid > 0 ? appUid : -10000));
         //   write attributes of PlayerIdCard
         data.writeInt32((int32_t) usage);
         data.writeInt32((int32_t) content);
