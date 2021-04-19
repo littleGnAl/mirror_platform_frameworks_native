@@ -62,6 +62,30 @@
       },
       "revId": "371bd4954c7c13b76d09599702bf86a908070003",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d0542e_31ee6a86",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-19T20:55:04Z",
+      "side": 1,
+      "message": "No, the string is re-used for multiple SocketAddressImpl\u0027s.\n\nI could create one SocketAddressImpl and modify its fields in the for loop, though, then I can move the String8 into SocketAddressImpl",
+      "parentUuid": "d29acb49_8a615ce5",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 56
+      },
+      "revId": "371bd4954c7c13b76d09599702bf86a908070003",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
