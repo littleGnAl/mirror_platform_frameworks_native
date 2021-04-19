@@ -86,6 +86,30 @@
       },
       "revId": "371bd4954c7c13b76d09599702bf86a908070003",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13966084_36edd855",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-19T21:05:57Z",
+      "side": 1,
+      "message": "Also, String8 doesn\u0027t have String8(String8\u0026\u0026) constructor.",
+      "parentUuid": "79d0542e_31ee6a86",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 56
+      },
+      "revId": "371bd4954c7c13b76d09599702bf86a908070003",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
