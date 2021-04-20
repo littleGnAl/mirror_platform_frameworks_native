@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62980d9b_0dfa915d",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-20T01:08:59Z",
+      "side": 1,
+      "message": "btw, the other benefit of this is that it will detect if someone sets up a server but doesn\u0027t properly call join",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 91
+      },
+      "revId": "13cde49d597541ff2bc368b9e0e37b99567f4a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
