@@ -117,6 +117,30 @@
       },
       "revId": "13cde49d597541ff2bc368b9e0e37b99567f4a5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "502e59c6_f075e8a5",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-20T17:21:40Z",
+      "side": 1,
+      "message": "Done, but FWIW:\n- Even if we added another \u0027bad state\u0027 log, the line number would still be enough because our build numbers encode the list of changes that are in a build, and we can recover that list, so if we really needed to look at it, it\u0027s relevant.\n- I didn\u0027t add any information about the socket itself because this is an abort on a failure to remove a C++ object from a std::vector of C++ objects, and I\u0027m not sure how relevant this could be.\n\nIf this triggers, right now, it essentially has to be because of memory corruption :(",
+      "parentUuid": "846c9ee1_e3f5cb3c",
+      "range": {
+        "startLine": 186,
+        "startChar": 54,
+        "endLine": 186,
+        "endChar": 63
+      },
+      "revId": "13cde49d597541ff2bc368b9e0e37b99567f4a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
