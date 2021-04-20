@@ -93,6 +93,30 @@
       },
       "revId": "13cde49d597541ff2bc368b9e0e37b99567f4a5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "846c9ee1_e3f5cb3c",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-20T02:59:55Z",
+      "side": 1,
+      "message": "Can you print some information about the \u0027socket\u0027?",
+      "parentUuid": "dff9b4b7_d2351bb0",
+      "range": {
+        "startLine": 186,
+        "startChar": 54,
+        "endLine": 186,
+        "endChar": 63
+      },
+      "revId": "13cde49d597541ff2bc368b9e0e37b99567f4a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
