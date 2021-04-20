@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71db5457_6617eb70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-04-20T15:41:46Z",
+      "side": 1,
+      "message": "Flaky AirbrushThermalTest failure.\nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI00300008500096674\u0026testResultId\u003dTR30221119293372877",
+      "revId": "cfeeda477dc1d4d63a5488358cf2ccce2b487117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
