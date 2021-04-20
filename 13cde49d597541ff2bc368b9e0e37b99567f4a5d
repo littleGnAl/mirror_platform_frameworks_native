@@ -22,6 +22,29 @@
       },
       "revId": "13cde49d597541ff2bc368b9e0e37b99567f4a5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0837b8a_77e70500",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-04-20T01:09:24Z",
+      "side": 1,
+      "message": "nit: something more detailed?",
+      "range": {
+        "startLine": 186,
+        "startChar": 54,
+        "endLine": 186,
+        "endChar": 63
+      },
+      "revId": "13cde49d597541ff2bc368b9e0e37b99567f4a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
