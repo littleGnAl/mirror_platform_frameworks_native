@@ -45,6 +45,30 @@
       },
       "revId": "13cde49d597541ff2bc368b9e0e37b99567f4a5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38883382_eba3732b",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-20T01:25:00Z",
+      "side": 1,
+      "message": "it does include the line number (this is just paired with assignServerToThisThread). Will update if there\u0027s anything else",
+      "parentUuid": "a0837b8a_77e70500",
+      "range": {
+        "startLine": 186,
+        "startChar": 54,
+        "endLine": 186,
+        "endChar": 63
+      },
+      "revId": "13cde49d597541ff2bc368b9e0e37b99567f4a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
