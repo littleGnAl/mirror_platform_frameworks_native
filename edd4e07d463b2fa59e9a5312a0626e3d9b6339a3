@@ -63,6 +63,30 @@
       },
       "revId": "edd4e07d463b2fa59e9a5312a0626e3d9b6339a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85917bce_67f97e05",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1125923
+      },
+      "writtenOn": "2021-04-21T19:10:24Z",
+      "side": 1,
+      "message": "Ack\n\nI also tested this locally, and it works in the NNAPI runtime. It looks like each call to AServiceManager_isUpdatableViaApex takes ~150us on aosp_cf_x86_64_phone-userdebug, which is very reasonable.",
+      "parentUuid": "2c4e46d6_5ea7a531",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "edd4e07d463b2fa59e9a5312a0626e3d9b6339a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
