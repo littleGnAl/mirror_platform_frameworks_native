@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49d9642_e5505119",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1125923
+      },
+      "writtenOn": "2021-04-21T17:46:13Z",
+      "side": 1,
+      "message": "This API call is exactly what the NNAPI runtime needs (thanks!). Does anyone need the functionality to also query the name of the apex module that is updating the interface? Or should that functionality just be added in the future if/when it\u0027s needed?",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "edd4e07d463b2fa59e9a5312a0626e3d9b6339a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
