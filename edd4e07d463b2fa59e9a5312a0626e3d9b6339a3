@@ -22,6 +22,30 @@
       },
       "revId": "edd4e07d463b2fa59e9a5312a0626e3d9b6339a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4e46d6_5ea7a531",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-21T17:52:11Z",
+      "side": 1,
+      "message": "I didn\u0027t want to expose the name of APEX packages as an API.",
+      "parentUuid": "e49d9642_e5505119",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "edd4e07d463b2fa59e9a5312a0626e3d9b6339a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
