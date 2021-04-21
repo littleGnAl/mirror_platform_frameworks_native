@@ -16,6 +16,29 @@
       "message": "did ABI update stuff change?",
       "revId": "b00189a99cc11f73fb6587bbb7b01d8d7d1bbdae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105b52ae_dc921274",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-21T00:51:59Z",
+      "side": 1,
+      "message": "Did you mean?\n\n  \\param instance ...\n\n  \\returns whether ...",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 53
+      },
+      "revId": "b00189a99cc11f73fb6587bbb7b01d8d7d1bbdae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
