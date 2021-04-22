@@ -94,6 +94,8 @@ public:
 
     pid_t               getDebugPid();
 
+    void configureRpcClient(uint32_t maxRpcThreads);
+
 protected:
     virtual             ~BBinder();
 

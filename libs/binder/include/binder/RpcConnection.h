@@ -108,6 +108,11 @@ public:
      */
     void join();
 
+    /**
+     * Same as join(), but read / write data on the given fd.
+     */
+    void join(android::base::unique_fd clientFd);
+
     ~RpcConnection();
 
     void setForServer(const wp<RpcServer>& server);
