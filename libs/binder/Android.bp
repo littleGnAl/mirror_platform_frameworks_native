@@ -115,6 +115,7 @@ cc_library {
         "PersistableBundle.cpp",
         "ProcessState.cpp",
         "RpcAddress.cpp",
+        "RpcDevJoinThread.cpp",
         "RpcSession.cpp",
         "RpcServer.cpp",
         "RpcState.cpp",
@@ -164,6 +165,10 @@ cc_library {
     product_variables: {
         binder32bit: {
             cflags: ["-DBINDER_IPC_32BIT=1"],
+        },
+
+        debuggable: {
+            cflags: ["-DBINDER_RPC_DEV_SERVERS"],
         },
     },
 

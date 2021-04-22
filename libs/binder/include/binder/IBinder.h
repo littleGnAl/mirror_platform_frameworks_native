@@ -60,6 +60,8 @@ public:
         SYSPROPS_TRANSACTION = B_PACK_CHARS('_', 'S', 'P', 'R'),
         EXTENSION_TRANSACTION = B_PACK_CHARS('_', 'E', 'X', 'T'),
         DEBUG_PID_TRANSACTION = B_PACK_CHARS('_', 'P', 'I', 'D'),
+        SET_RPC_CLIENT_TRANSACTION = B_PACK_CHARS('_', 'R', 'C', 'L'),
+        SET_RPC_MAX_THREADS_TRANSACTION = B_PACK_CHARS('_', 'R', 'M', 'T'),
 
         // See android.os.IBinder.TWEET_TRANSACTION
         // Most importantly, messages can be anything not exceeding 130 UTF-8
@@ -151,6 +153,35 @@ public:
      * Dump PID for a binder, for debugging.
      */
     status_t                getDebugPid(pid_t* outPid);
+
+    /**
+     * Set the RPC client fd to this binder service.
+     *
+     * When this is called on a binder service, the service:
+     * 1. sets up RPC server
+     * 2. spawns 1 new thread that calls RpcServer::join()
+     *    - join() spawns 1 new thread that accept() connections; see RpcServer
+     *
+     * addRpcClient() may only be called once.
+     * TODO(b/182914638): If allow to shut down the client, addRpcClient can be called repeatedly.
+     */
+    [[nodiscard]] status_t setRpcClient(android::base::unique_fd socketFd);
+
+    /**
+     * Configure the max number of threads that can be spawned to handle
+     * new RPC clients. Requires addRpcClient() to be previously called so that an RPC client
+     * exists.
+     *
+     * |maxRpcThreads| must be positive because RPC is useless without threads.
+     *
+     * setMaxRpcThreads() may be called multiple times to adjust the thread pool size; see
+     * RpcServer::setMaxThreads().
+     *
+     * Note: A thread is spawned for each accept()'ed fd, which may call into functions of the
+     * interface freely. See RpcServer::join(). To avoid such race conditions, implement the service
+     * functions with multithreading support.
+     */
+    [[nodiscard]] status_t setRpcMaxThreads(uint32_t maxRpcThreads);
 
     // NOLINTNEXTLINE(google-default-arguments)
     virtual status_t        transact(   uint32_t code,
