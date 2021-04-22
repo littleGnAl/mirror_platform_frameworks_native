@@ -60,6 +60,7 @@ public:
         SYSPROPS_TRANSACTION = B_PACK_CHARS('_', 'S', 'P', 'R'),
         EXTENSION_TRANSACTION = B_PACK_CHARS('_', 'E', 'X', 'T'),
         DEBUG_PID_TRANSACTION = B_PACK_CHARS('_', 'P', 'I', 'D'),
+        CONFIGURE_RPC_SERVER_TRANSACTION = B_PACK_CHARS('_', 'R', 'P', 'C'),
 
         // See android.os.IBinder.TWEET_TRANSACTION
         // Most importantly, messages can be anything not exceeding 130 UTF-8
@@ -151,6 +152,30 @@ public:
      * Dump PID for a binder, for debugging.
      */
     status_t                getDebugPid(pid_t* outPid);
+
+    /**
+     * Configure the max number of threads that can be spawned to handle
+     * new RPC clients via addRpcClient. If not configured, no RPC clients can be added.
+     *
+     * |maxRpcThreads| must be positive because RPC requires multithreading.
+     *
+     * configureRpcServer() may be called multiple times. If it has never been successfully
+     * configured, |socketFd| must be a valid FD. After the first successful call to
+     * configureRpcServer(), |socketFd| must be an invalid FD.
+     *
+     * When this is called on a binder service,
+     * 1. If it has never been successfully configured:
+     *   1. sets up RpcServer
+     *   2. calls RpcServer::setMaxThreads(maxRpcThreads)
+     *   3. spawns one thread to call RpcServer::join()
+     * 2. Otherwise, it calls RpcServer::setMaxThreads(maxRpcThreads) directly
+     *
+     * A thread is spawned for each accept()'ed fd, which may call into functions of the interface
+     * freely. See RpcServer::join(). To avoid such race conditions, implement the service functions
+     * with multithreading support.
+     */
+    [[nodiscard]] status_t configureRpcServer(uint32_t maxRpcThreads,
+                                              android::base::unique_fd socketFd);
 
     // NOLINTNEXTLINE(google-default-arguments)
     virtual status_t        transact(   uint32_t code,
