@@ -84,6 +84,8 @@ public:
     // before any threads are spawned.
     void setCallRestriction(CallRestriction restriction);
 
+    size_t getThreadPoolMaxThreadCount() const;
+
 private:
     static sp<ProcessState> init(const char* defaultDriver, bool requireDefault);
 
