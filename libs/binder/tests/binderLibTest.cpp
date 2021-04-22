@@ -21,20 +21,28 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include <chrono>
 #include <thread>
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include <android-base/properties.h>
+#include <android-base/unique_fd.h>
 #include <binder/Binder.h>
 #include <binder/IBinder.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <binder/ParcelRef.h>
+#include <binder/RpcServer.h>
+#include <binder/RpcSession.h>
 
 #include <linux/sched.h>
 #include <sys/epoll.h>
 #include <sys/prctl.h>
+#include <sys/socket.h>
+#include <sys/un.h>
 
 #include "../binder_module.h"
 #include "binderAbiHelper.h"
@@ -42,6 +50,7 @@
 #define ARRAY_SIZE(array) (sizeof array / sizeof array[0])
 
 using namespace android;
+using namespace std::chrono_literals;
 using testing::Not;
 
 // e.g. EXPECT_THAT(expr, StatusEq(OK)) << "additional message";
@@ -97,6 +106,7 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_ECHO_VECTOR,
     BINDER_LIB_TEST_REJECT_BUF,
     BINDER_LIB_TEST_CAN_GET_SID,
+    BINDER_LIB_TEST_USLEEP,
 };
 
 pid_t start_server_process(int arg2, bool usePoll = false)
@@ -1165,6 +1175,109 @@ TEST_F(BinderLibTest, GotSid) {
     EXPECT_THAT(server->transact(BINDER_LIB_TEST_CAN_GET_SID, data, nullptr), StatusEq(OK));
 }
 
+class BinderLibRpcTest : public BinderLibTest {
+public:
+    void SetUp() override {
+        if (!base::GetBoolProperty("ro.debuggable", false)) {
+            GTEST_SKIP() << "Binder RPC is only enabled on debuggable builds, skipping test on "
+                            "non-debuggable builds.";
+        }
+        BinderLibTest::SetUp();
+    }
+};
+
+TEST_F(BinderLibRpcTest, LocalAddRpcClientNoThreads) {
+    sp<IBinder> binder = sp<BBinder>::make();
+    ASSERT_TRUE(binder != nullptr);
+    auto sink = android::base::unique_fd(TEMP_FAILURE_RETRY(open("/dev/null", O_RDWR)));
+    EXPECT_THAT(binder->configureRpcServer(0, std::move(sink)), StatusEq(BAD_VALUE));
+}
+
+TEST_F(BinderLibRpcTest, RemoteAddRpcClientNoThreads) {
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+    auto sink = android::base::unique_fd(TEMP_FAILURE_RETRY(open("/dev/null", O_RDWR)));
+    EXPECT_THAT(server->configureRpcServer(0, std::move(sink)), StatusEq(BAD_VALUE));
+}
+
+TEST_F(BinderLibRpcTest, LocalAddRpcClientNoFd) {
+    sp<IBinder> binder = sp<BBinder>::make();
+    ASSERT_TRUE(binder != nullptr);
+    EXPECT_THAT(binder->configureRpcServer(1, android::base::unique_fd()), StatusEq(BAD_VALUE));
+}
+
+TEST_F(BinderLibRpcTest, RemoteAddRpcClientNoFd) {
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+    EXPECT_THAT(server->configureRpcServer(1, android::base::unique_fd()), StatusEq(BAD_VALUE));
+}
+
+class BinderLibRpcTestP : public BinderLibRpcTest, public testing::WithParamInterface<uint32_t> {};
+
+TEST_P(BinderLibRpcTestP, RpcClient) {
+    const auto numThreads = GetParam();
+
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+
+    unsigned int port = 0;
+    // Fake servicedispatcher.
+    {
+        auto rpcServer = RpcServer::make();
+        rpcServer->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
+        ASSERT_NE(nullptr, rpcServer);
+        ASSERT_TRUE(rpcServer->setupInetServer(0, &port));
+        auto socket = rpcServer->releaseServer();
+        ASSERT_TRUE(socket.ok());
+        ASSERT_THAT(server->configureRpcServer(numThreads, std::move(socket)), StatusEq(OK));
+    }
+
+    auto getId = [](sp<IBinder> server) {
+        Parcel data, reply;
+        data.markForBinder(server);
+        const char *name = data.isForRpc() ? "RPC" : "binder";
+        EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_ID_TRANSACTION, data, &reply),
+                    StatusEq(OK))
+                << "for " << name << " server";
+        int32_t result = 0;
+        EXPECT_THAT(reply.readInt32(&result), StatusEq(OK)) << "for " << name << " server";
+        return result;
+    };
+    auto callUsleep = [](sp<IBinder> server, uint64_t us) {
+        Parcel data, reply;
+        data.markForBinder(server);
+        const char *name = data.isForRpc() ? "RPC" : "binder";
+        EXPECT_THAT(data.writeUint64(us), StatusEq(OK));
+        EXPECT_THAT(server->transact(BINDER_LIB_TEST_USLEEP, data, &reply), StatusEq(OK))
+                << "for " << name << " server";
+    };
+
+    auto serverId = getId(server);
+    auto threadFn = [&](size_t threadNum) {
+        usleep(threadNum * 50 * 1000); // threadNum * 50ms. Need this to avoid SYN flooding.
+        auto rpcSession = RpcSession::make();
+        ASSERT_TRUE(rpcSession->setupInetClient("127.0.0.1", port));
+        auto rpcServerBinder = rpcSession->getRootObject();
+        ASSERT_NE(nullptr, rpcServerBinder);
+
+        EXPECT_EQ(OK, rpcServerBinder->pingBinder());
+
+        // Check that |rpcServerBinder| and |server| points to the same service.
+        EXPECT_EQ(serverId, getId(rpcServerBinder));
+
+        // Occupy the server thread. The server should still have enough threads to handle
+        // other connections.
+        // (numThreads - threadNum) * 100ms
+        callUsleep(rpcServerBinder, (numThreads - threadNum) * 100 * 1000);
+    };
+    std::vector<std::thread> threads;
+    for (size_t i = 0; i < numThreads; ++i) threads.emplace_back(std::bind(threadFn, i));
+    for (auto &t : threads) t.join();
+}
+
+INSTANTIATE_TEST_CASE_P(BinderLibRpcTest, BinderLibRpcTestP, testing::Range(1u, 10u),
+                        testing::PrintToStringParamName());
+
 class BinderLibTestService : public BBinder
 {
     public:
@@ -1469,6 +1582,12 @@ class BinderLibTestService : public BBinder
             }
             case BINDER_LIB_TEST_CAN_GET_SID: {
                 return IPCThreadState::self()->getCallingSid() == nullptr ? BAD_VALUE : NO_ERROR;
+            }
+            case BINDER_LIB_TEST_USLEEP: {
+                uint64_t us;
+                if (status_t status = data.readUint64(&us); status != NO_ERROR) return status;
+                usleep(us);
+                return NO_ERROR;
             }
             default:
                 return UNKNOWN_TRANSACTION;
