@@ -125,57 +125,66 @@ sp<IBinder> RpcServer::getRootObject() {
 
 void RpcServer::join() {
     LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
+    while (true) {
+        unique_fd clientFd = accept();
+        if (!clientFd.ok()) continue;
 
-    std::vector<std::thread> pool;
+        (void)handleAcceptedFd(std::move(clientFd));
+    }
+}
+
+unique_fd RpcServer::accept() {
+    LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
     {
         std::lock_guard<std::mutex> _l(mLock);
-        LOG_ALWAYS_FATAL_IF(mServer.get() == -1, "RpcServer must be setup to join.");
+        LOG_ALWAYS_FATAL_IF(!mServer.ok(), "RpcServer must be setup to join.");
     }
+    unique_fd clientFd(
+            TEMP_FAILURE_RETRY(accept4(mServer.get(), nullptr, nullptr /*length*/, SOCK_CLOEXEC)));
 
-    while (true) {
-        unique_fd clientFd(TEMP_FAILURE_RETRY(
-                accept4(mServer.get(), nullptr, nullptr /*length*/, SOCK_CLOEXEC)));
-
-        if (clientFd < 0) {
-            ALOGE("Could not accept4 socket: %s", strerror(errno));
-            continue;
-        }
+    if (!clientFd.ok()) {
+        ALOGE("Could not accept4 socket: %s", strerror(errno));
+    } else {
         LOG_RPC_DETAIL("accept4 on fd %d yields fd %d", mServer.get(), clientFd.get());
-
-        // TODO(b/183988761): cannot trust this simple ID, should not block this
-        // thread
-        LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
-        int32_t id;
-        if (sizeof(id) != read(clientFd.get(), &id, sizeof(id))) {
-            ALOGE("Could not read ID from fd %d", clientFd.get());
-            continue;
-        }
-
-        {
-            std::lock_guard<std::mutex> _l(mLock);
-
-            sp<RpcSession> session;
-            if (id == RPC_SESSION_ID_NEW) {
-                // new client!
-                LOG_ALWAYS_FATAL_IF(mSessionIdCounter >= INT32_MAX, "Out of session IDs");
-                mSessionIdCounter++;
-
-                session = RpcSession::make();
-                session->setForServer(wp<RpcServer>::fromExisting(this), mSessionIdCounter);
-
-                mSessions[mSessionIdCounter] = session;
-            } else {
-                auto it = mSessions.find(id);
-                if (it == mSessions.end()) {
-                    ALOGE("Cannot add thread, no record of session with ID %d", id);
-                    continue;
-                }
-                session = it->second;
-            }
-
-            session->startThread(std::move(clientFd));
-        }
     }
+    return clientFd;
+}
+
+status_t RpcServer::handleAcceptedFd(unique_fd&& clientFd) {
+    // TODO(b/183988761): cannot trust this simple ID, should not block this thread
+    LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
+    int32_t id;
+    if (sizeof(id) != read(clientFd.get(), &id, sizeof(id))) {
+        int saved_errno = errno;
+        ALOGE("Could not read ID from fd %d: %s", clientFd.get(), strerror(saved_errno));
+        return BAD_VALUE;
+    }
+
+    {
+        std::lock_guard<std::mutex> _l(mLock);
+
+        sp<RpcSession> session;
+        if (id == RPC_SESSION_ID_NEW) {
+            // new client!
+            LOG_ALWAYS_FATAL_IF(mSessionIdCounter >= INT32_MAX, "Out of session IDs");
+            mSessionIdCounter++;
+
+            session = RpcSession::make();
+            session->setForServer(wp<RpcServer>::fromExisting(this), mSessionIdCounter);
+
+            mSessions[mSessionIdCounter] = session;
+        } else {
+            auto it = mSessions.find(id);
+            if (it == mSessions.end()) {
+                ALOGE("Cannot add thread, no record of session with ID %d", id);
+                return NAME_NOT_FOUND;
+            }
+            session = it->second;
+        }
+
+        session->startThread(std::move(clientFd));
+    }
+    return OK;
 }
 
 std::vector<sp<RpcSession>> RpcServer::listSessions() {
