@@ -106,7 +106,16 @@ public:
      *
      * TODO(b/185167543): way to shut down?
      */
-    void join();
+    [[noreturn]] void join();
+
+    /**
+     * accept() one connection and return the accepted client fd.
+     *
+     * The caller is responsible for handling the request in the fd.
+     */
+    android::base::unique_fd accept();
+
+    [[nodiscard]] status_t handleAcceptedFd(android::base::unique_fd&& clientFd);
 
     /**
      * For debugging!
