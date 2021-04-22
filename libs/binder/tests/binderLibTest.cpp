@@ -21,20 +21,28 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include <chrono>
 #include <thread>
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include <android-base/properties.h>
+#include <android-base/unique_fd.h>
 #include <binder/Binder.h>
 #include <binder/IBinder.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <binder/ParcelRef.h>
+#include <binder/RpcServer.h>
+#include <binder/RpcSession.h>
 
 #include <linux/sched.h>
 #include <sys/epoll.h>
 #include <sys/prctl.h>
+#include <sys/socket.h>
+#include <sys/un.h>
 
 #include "../binder_module.h"
 #include "binderAbiHelper.h"
@@ -42,6 +50,7 @@
 #define ARRAY_SIZE(array) (sizeof array / sizeof array[0])
 
 using namespace android;
+using namespace std::chrono_literals;
 using testing::Not;
 
 // e.g. EXPECT_THAT(expr, StatusEq(OK)) << "additional message";
@@ -1164,6 +1173,80 @@ TEST_F(BinderLibTest, GotSid) {
     Parcel data;
     EXPECT_THAT(server->transact(BINDER_LIB_TEST_CAN_GET_SID, data, nullptr), StatusEq(OK));
 }
+
+class BinderLibRpcTest : public BinderLibTest {
+public:
+    void SetUp() override {
+        if (!base::GetBoolProperty("ro.debuggable", false)) {
+            GTEST_SKIP() << "Binder RPC is only enabled on debuggable builds, skipping test on "
+                            "non-debuggable builds.";
+        }
+        BinderLibTest::SetUp();
+    }
+};
+
+TEST_F(BinderLibRpcTest, LocalAddRpcClientNoThreads) {
+    sp<IBinder> binder = sp<BBinder>::make();
+    ASSERT_TRUE(binder != nullptr);
+    auto sink = android::base::unique_fd(TEMP_FAILURE_RETRY(open("/dev/null", O_RDWR)));
+    EXPECT_THAT(binder->configureRpcServer(0, std::move(sink)), StatusEq(BAD_VALUE));
+}
+
+TEST_F(BinderLibRpcTest, RemoteAddRpcClientNoThreads) {
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+    auto sink = android::base::unique_fd(TEMP_FAILURE_RETRY(open("/dev/null", O_RDWR)));
+    EXPECT_THAT(server->configureRpcServer(0, std::move(sink)), StatusEq(BAD_VALUE));
+}
+
+TEST_F(BinderLibRpcTest, LocalAddRpcClientNoFd) {
+    sp<IBinder> binder = sp<BBinder>::make();
+    ASSERT_TRUE(binder != nullptr);
+    EXPECT_THAT(binder->configureRpcServer(1, android::base::unique_fd()), StatusEq(BAD_VALUE));
+}
+
+TEST_F(BinderLibRpcTest, RemoteAddRpcClientNoFd) {
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+    EXPECT_THAT(server->configureRpcServer(1, android::base::unique_fd()), StatusEq(BAD_VALUE));
+}
+
+TEST_F(BinderLibRpcTest, RpcClient) {
+    constexpr uint32_t maxThreads = 1;
+
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+
+    unsigned int port = 0;
+    // Fake servicedispatcher.
+    {
+        auto socket = RpcServer::setupInetSocket(0, &port);
+        ASSERT_TRUE(socket.ok());
+        ASSERT_THAT(server->configureRpcServer(maxThreads, std::move(socket)), StatusEq(OK));
+    }
+
+    auto rpcSession = RpcSession::make();
+    ASSERT_TRUE(rpcSession->setupInetClient("127.0.0.1", port));
+    auto rpcServerBinder = rpcSession->getRootObject();
+    ASSERT_NE(nullptr, rpcServerBinder);
+
+    EXPECT_EQ(OK, rpcServerBinder->pingBinder());
+
+    // Check that |rpcServerBinder| and |server| points to the same service.
+    auto getId = [](sp<IBinder> server) {
+        Parcel data, reply;
+        data.markForBinder(server);
+        const char *name = data.isForRpc() ? "RPC" : "binder";
+        EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_ID_TRANSACTION, data, &reply),
+                    StatusEq(OK))
+                << "for " << name << " server";
+        int32_t result = 0;
+        EXPECT_THAT(reply.readInt32(&result), StatusEq(OK)) << "for " << name << " server";
+        return result;
+    };
+    EXPECT_EQ(getId(server), getId(rpcServerBinder));
+}
+// FIXME more tests!
 
 class BinderLibTestService : public BBinder
 {
