@@ -72,6 +72,13 @@ static const std::vector<std::function<void(FuzzedDataProvider*, const sp<BBinde
                               },
                               [](FuzzedDataProvider*, const sp<BBinder>& bbinder) -> void {
                                   bbinder->getDebugPid();
+                              },
+                              [](FuzzedDataProvider*, const sp<BBinder>& bbinder) -> void {
+                                  (void)bbinder->setRpcClient(android::base::unique_fd());
+                              },
+                              [](FuzzedDataProvider* fdp, const sp<BBinder>& bbinder) -> void {
+                                  auto rpcMaxThreads = fdp->ConsumeIntegralInRange<uint32_t>(0, 20);
+                                  (void)bbinder->setRpcMaxThreads(rpcMaxThreads);
                               }};
 
 } // namespace android
