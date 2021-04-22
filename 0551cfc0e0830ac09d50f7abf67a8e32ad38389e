@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f188c78f_d8f3c3f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-04-22T02:32:01Z",
+      "side": 1,
+      "message": "This seems reasonable since the option just doesn\u0027t work, but does atrace (and downstream tools like catapult and perfetto) actually understand the graph format? If it doesn\u0027t, then -k will still effectively be broken.",
+      "revId": "0551cfc0e0830ac09d50f7abf67a8e32ad38389e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
