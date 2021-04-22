@@ -27,6 +27,8 @@
 #include <linux/sched.h>
 #include <stdio.h>
 
+#include "RpcExtras.h"
+
 namespace android {
 
 // ---------------------------------------------------------------------------
@@ -126,6 +128,22 @@ status_t IBinder::getDebugPid(pid_t* out) {
     return OK;
 }
 
+void IBinder::configureRpcClient(uint32_t maxRpcThreads) {
+    BBinder* local = this->localBinder();
+    LOG_ALWAYS_FATAL_IF(local == nullptr, "configureRpcClient is only allowed on local binder");
+    local->BBinder::configureRpcClient(maxRpcThreads);
+}
+
+status_t IBinder::addRpcClient(android::base::borrowed_fd clientFd) {
+    BpBinder* proxy = this->remoteBinder();
+    LOG_ALWAYS_FATAL_IF(proxy == nullptr, "addRpcClient is only allowed on remote binder");
+
+    Parcel data;
+    Parcel reply;
+    if (status_t status = data.writeFileDescriptor(clientFd.get()); status != OK) return status;
+    return transact(ADD_RPC_CLIENT_TRANSACTION, data, &reply);
+}
+
 // ---------------------------------------------------------------------------
 
 class BBinder::Extras
@@ -137,6 +155,7 @@ public:
     sp<IBinder> mExtension;
     int mPolicy = SCHED_NORMAL;
     int mPriority = 0;
+    std::unique_ptr<RpcExtras> mRpc;
 
     // for below objects
     Mutex mLock;
@@ -358,6 +377,13 @@ void BBinder::setExtension(const sp<IBinder>& extension) {
     e->mExtension = extension;
 }
 
+void BBinder::configureRpcClient(uint32_t maxRpcThreads) {
+    Extras* e = getOrCreateExtras();
+    LOG_ALWAYS_FATAL_IF(e->mRpc != nullptr, "Already configured");
+    e->mRpc = std::make_unique<RpcExtras>();
+    e->mRpc->configure(sp<BBinder>::fromExisting(this), maxRpcThreads);
+}
+
 BBinder::~BBinder()
 {
     Extras* e = mExtras.load(std::memory_order_relaxed);
@@ -414,6 +440,14 @@ status_t BBinder::onTransact(
         case SYSPROPS_TRANSACTION: {
             report_sysprop_change();
             return NO_ERROR;
+        }
+
+        case ADD_RPC_CLIENT_TRANSACTION: {
+            android::base::unique_fd clientFd;
+            if (auto status = data.readUniqueFileDescriptor(&clientFd); status != OK) return status;
+            Extras* extras = getOrCreateExtras();
+            if (extras->mRpc == nullptr) return NO_INIT;
+            return extras->mRpc->addClient(std::move(clientFd));
         }
 
         default:

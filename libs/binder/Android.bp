@@ -116,6 +116,7 @@ cc_library {
         "ProcessState.cpp",
         "RpcAddress.cpp",
         "RpcConnection.cpp",
+        "RpcExtras.cpp",
         "RpcServer.cpp",
         "RpcState.cpp",
         "Static.cpp",
