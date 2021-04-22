@@ -60,8 +60,12 @@ cc_test {
     defaults: ["binder_test_defaults"],
     srcs: ["binderLibTest.cpp"],
     shared_libs: [
+        "libbase",
         "libbinder",
         "libutils",
+    ],
+    static_libs: [
+        "libgmock",
     ],
     compile_multilib: "32",
     multilib: { lib32: { suffix: "" } },
@@ -98,8 +102,12 @@ cc_test {
 
     srcs: ["binderLibTest.cpp"],
     shared_libs: [
+        "libbase",
         "libbinder",
         "libutils",
+    ],
+    static_libs: [
+        "libgmock",
     ],
     test_suites: ["device-tests", "vts"],
     require_root: true,

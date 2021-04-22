@@ -17,12 +17,15 @@
 #include <binder/Binder.h>
 
 #include <atomic>
-#include <utils/misc.h>
+
+#include <android-base/unique_fd.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
 #include <binder/IResultReceiver.h>
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
+#include <binder/RpcServer.h>
+#include <utils/misc.h>
 
 #include <linux/sched.h>
 #include <stdio.h>
@@ -37,6 +40,12 @@ static_assert(sizeof(BBinder) == 40);
 #else
 static_assert(sizeof(IBinder) == 12);
 static_assert(sizeof(BBinder) == 20);
+#endif
+
+#ifdef BINDER_RPC
+constexpr const bool kEnableRpc = true;
+#else
+constexpr const bool kEnableRpc = false;
 #endif
 
 // ---------------------------------------------------------------------------
@@ -136,6 +145,36 @@ status_t IBinder::getDebugPid(pid_t* out) {
     return OK;
 }
 
+void IBinder::configureRpcServer(uint32_t maxRpcThreads) {
+    LOG_ALWAYS_FATAL_IF(!kEnableRpc, "RPC is not enabled!");
+    BBinder* local = this->localBinder();
+    LOG_ALWAYS_FATAL_IF(local == nullptr, "configureRpcServer is only allowed on local binder");
+    local->BBinder::configureRpcServer(maxRpcThreads);
+}
+
+status_t IBinder::addRpcClient(android::base::unique_fd clientFd) {
+    if constexpr (!kEnableRpc) {
+        return INVALID_OPERATION;
+    }
+
+    if (!clientFd.ok()) return BAD_VALUE;
+
+    BBinder* local = this->localBinder();
+    if (local != nullptr) {
+        return local->BBinder::addRpcClient(std::move(clientFd));
+    }
+
+    BpBinder* proxy = this->remoteBinder();
+    LOG_ALWAYS_FATAL_IF(proxy == nullptr, "addRpcClient is only allowed on remote binder");
+
+    Parcel data;
+    Parcel reply;
+    // writeUniqueFileDescriptor currently makes an unnecessary dup().
+    status_t status = data.writeFileDescriptor(clientFd.release(), true /* own */);
+    if (status != OK) return status;
+    return transact(ADD_RPC_CLIENT_TRANSACTION, data, &reply);
+}
+
 // ---------------------------------------------------------------------------
 
 class BBinder::Extras
@@ -147,6 +186,7 @@ public:
     sp<IBinder> mExtension;
     int mPolicy = SCHED_NORMAL;
     int mPriority = 0;
+    sp<RpcServer> mRpcServer = nullptr;
 
     // for below objects
     Mutex mLock;
@@ -199,6 +239,14 @@ status_t BBinder::transact(
         case DEBUG_PID_TRANSACTION:
             err = reply->writeInt32(getDebugPid());
             break;
+        case ADD_RPC_CLIENT_TRANSACTION: {
+            if constexpr (!kEnableRpc) {
+                return INVALID_OPERATION;
+            }
+            android::base::unique_fd clientFd;
+            if (auto status = data.readUniqueFileDescriptor(&clientFd); status != OK) return status;
+            return addRpcClient(std::move(clientFd));
+        }
         default:
             err = onTransact(code, data, reply, flags);
             break;
@@ -366,6 +414,26 @@ pid_t BBinder::getDebugPid() {
 void BBinder::setExtension(const sp<IBinder>& extension) {
     Extras* e = getOrCreateExtras();
     e->mExtension = extension;
+}
+
+void BBinder::configureRpcServer(uint32_t maxRpcThreads) {
+    LOG_ALWAYS_FATAL_IF(!kEnableRpc, "RPC is not enabled!");
+    Extras* e = getOrCreateExtras();
+    LOG_ALWAYS_FATAL_IF(e->mRpcServer != nullptr, "Already configured");
+    e->mRpcServer = RpcServer::make();
+    e->mRpcServer->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
+    e->mRpcServer->setRootObjectWeak(wp<BBinder>::fromExisting(this));
+    e->mRpcServer->setMaxThreads(maxRpcThreads);
+}
+
+status_t BBinder::addRpcClient(android::base::unique_fd clientFd) {
+    if constexpr (!kEnableRpc) {
+        return INVALID_OPERATION;
+    }
+    if (!clientFd.ok()) return BAD_VALUE;
+    Extras* extras = getOrCreateExtras();
+    if (extras->mRpcServer == nullptr) return NO_INIT;
+    return extras->mRpcServer->handleAcceptedFd(std::move(clientFd));
 }
 
 BBinder::~BBinder()

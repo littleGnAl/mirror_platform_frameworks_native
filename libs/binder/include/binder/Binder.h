@@ -94,6 +94,9 @@ public:
 
     pid_t               getDebugPid();
 
+    void configureRpcServer(uint32_t maxRpcThreads);
+    status_t addRpcClient(android::base::unique_fd clientFd);
+
 protected:
     virtual             ~BBinder();
 
