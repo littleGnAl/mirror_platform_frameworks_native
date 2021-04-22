@@ -17,15 +17,22 @@
 #include <binder/Binder.h>
 
 #include <atomic>
-#include <utils/misc.h>
+
+#include <android-base/unique_fd.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
 #include <binder/IResultReceiver.h>
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
+#include <binder/RpcServer.h>
+#include <utils/misc.h>
 
+#include <inttypes.h>
 #include <linux/sched.h>
 #include <stdio.h>
+
+#include "RpcJoinThread.h"
+#include "RpcState.h"
 
 namespace android {
 
@@ -37,6 +44,12 @@ static_assert(sizeof(BBinder) == 40);
 #else
 static_assert(sizeof(IBinder) == 12);
 static_assert(sizeof(BBinder) == 20);
+#endif
+
+#ifdef BINDER_RPC_DEV_SERVERS
+constexpr const bool kEnableRpcDevServers = true;
+#else
+constexpr const bool kEnableRpcDevServers = false;
 #endif
 
 // ---------------------------------------------------------------------------
@@ -136,6 +149,33 @@ status_t IBinder::getDebugPid(pid_t* out) {
     return OK;
 }
 
+status_t IBinder::configureRpcServer(uint32_t maxRpcThreads, android::base::unique_fd socketFd) {
+    if constexpr (!kEnableRpcDevServers) {
+        ALOGW("addRpcClient disallowed because RPC is not enabled");
+        return INVALID_OPERATION;
+    }
+
+    BBinder* local = this->localBinder();
+    if (local != nullptr) {
+        return local->BBinder::configureRpcServer(maxRpcThreads, std::move(socketFd));
+    }
+
+    BpBinder* proxy = this->remoteBinder();
+    LOG_ALWAYS_FATAL_IF(proxy == nullptr, "addRpcClient is only allowed on remote binder");
+
+    Parcel data;
+    Parcel reply;
+    status_t status;
+    if (status = data.writeUint32(maxRpcThreads); status != OK) return status;
+    if (status = data.writeBool(socketFd.ok()); status != OK) return status;
+    if (socketFd.ok()) {
+        // writeUniqueFileDescriptor currently makes an unnecessary dup().
+        status = data.writeFileDescriptor(socketFd.release(), true /* own */);
+        if (status != OK) return status;
+    }
+    return transact(CONFIGURE_RPC_SERVER_TRANSACTION, data, &reply);
+}
+
 // ---------------------------------------------------------------------------
 
 class BBinder::Extras
@@ -150,6 +190,7 @@ public:
 
     // for below objects
     Mutex mLock;
+    std::unique_ptr<RpcJoinThread> mRpcJoinThread;
     BpBinder::ObjectManager mObjects;
 };
 
@@ -199,6 +240,10 @@ status_t BBinder::transact(
         case DEBUG_PID_TRANSACTION:
             err = reply->writeInt32(getDebugPid());
             break;
+        case CONFIGURE_RPC_SERVER_TRANSACTION: {
+            err = configureRpcServer(data);
+            break;
+        }
         default:
             err = onTransact(code, data, reply, flags);
             break;
@@ -366,6 +411,54 @@ pid_t BBinder::getDebugPid() {
 void BBinder::setExtension(const sp<IBinder>& extension) {
     Extras* e = getOrCreateExtras();
     e->mExtension = extension;
+}
+
+status_t BBinder::configureRpcServer(const Parcel& data) {
+    if constexpr (!kEnableRpcDevServers) {
+        ALOGW("configureRpcServer disallowed because RPC is not enabled");
+        return INVALID_OPERATION;
+    }
+    status_t status;
+    uint32_t maxRpcThreads;
+    bool hasSocketFd;
+    android::base::unique_fd clientFd;
+
+    if (status = data.readUint32(&maxRpcThreads); status != OK) return status;
+    if (status = data.readBool(&hasSocketFd); status != OK) return status;
+    if (hasSocketFd) {
+        if (status = data.readUniqueFileDescriptor(&clientFd); status != OK) return status;
+    }
+
+    return configureRpcServer(maxRpcThreads, std::move(clientFd));
+}
+
+status_t BBinder::configureRpcServer(uint32_t maxRpcThreads, android::base::unique_fd socketFd) {
+    if constexpr (!kEnableRpcDevServers) {
+        ALOGW("configureRpcServer disallowed because RPC is not enabled");
+        return INVALID_OPERATION;
+    }
+    if (maxRpcThreads == 0) {
+        ALOGE("configureRpcServer() with zero threads is not allowed.");
+        return BAD_VALUE;
+    }
+
+    Extras* e = getOrCreateExtras();
+    AutoMutex _l(e->mLock);
+    if (e->mRpcJoinThread == nullptr) {
+        auto joinThread = std::make_unique<RpcJoinThread>();
+        auto status = joinThread->initialize(sp<BBinder>::fromExisting(this), maxRpcThreads,
+                                             std::move(socketFd));
+        if (status != OK) return status;
+        e->mRpcJoinThread = std::move(joinThread);
+        return OK;
+    }
+
+    if (socketFd.ok()) {
+        ALOGE("%s: socket already set up, should not provide another one", __PRETTY_FUNCTION__);
+        return BAD_VALUE;
+    }
+    e->mRpcJoinThread->setMaxThreads(maxRpcThreads);
+    return OK;
 }
 
 BBinder::~BBinder()
