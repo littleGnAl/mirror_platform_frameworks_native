@@ -17,15 +17,19 @@
 #include <binder/Binder.h>
 
 #include <atomic>
-#include <utils/misc.h>
+
+#include <android-base/unique_fd.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
 #include <binder/IResultReceiver.h>
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
+#include <utils/misc.h>
 
 #include <linux/sched.h>
 #include <stdio.h>
+
+#include "RpcExtras.h"
 
 namespace android {
 
@@ -126,6 +130,29 @@ status_t IBinder::getDebugPid(pid_t* out) {
     return OK;
 }
 
+void IBinder::configureRpcServer(uint32_t maxRpcThreads) {
+    BBinder* local = this->localBinder();
+    LOG_ALWAYS_FATAL_IF(local == nullptr, "configureRpcServer is only allowed on local binder");
+    local->BBinder::configureRpcServer(maxRpcThreads);
+}
+
+status_t IBinder::addRpcClient(android::base::unique_fd clientFd) {
+    BBinder* local = this->localBinder();
+    if (local != nullptr) {
+        return local->BBinder::addRpcClient(std::move(clientFd));
+    }
+
+    BpBinder* proxy = this->remoteBinder();
+    LOG_ALWAYS_FATAL_IF(proxy == nullptr, "addRpcClient is only allowed on remote binder");
+
+    Parcel data;
+    Parcel reply;
+    // writeUniqueFileDescriptor currently makes an unnecessary dup().
+    status_t status = data.writeFileDescriptor(clientFd.release(), true /* own */);
+    if (status != OK) return status;
+    return transact(ADD_RPC_CLIENT_TRANSACTION, data, &reply);
+}
+
 // ---------------------------------------------------------------------------
 
 class BBinder::Extras
@@ -137,6 +164,7 @@ public:
     sp<IBinder> mExtension;
     int mPolicy = SCHED_NORMAL;
     int mPriority = 0;
+    std::unique_ptr<RpcExtras> mRpc;
 
     // for below objects
     Mutex mLock;
@@ -358,6 +386,19 @@ void BBinder::setExtension(const sp<IBinder>& extension) {
     e->mExtension = extension;
 }
 
+void BBinder::configureRpcServer(uint32_t maxRpcThreads) {
+    Extras* e = getOrCreateExtras();
+    LOG_ALWAYS_FATAL_IF(e->mRpc != nullptr, "Already configured");
+    e->mRpc = std::make_unique<RpcExtras>();
+    e->mRpc->configure(sp<BBinder>::fromExisting(this), maxRpcThreads);
+}
+
+status_t BBinder::addRpcClient(android::base::unique_fd clientFd) {
+    Extras* extras = getOrCreateExtras();
+    if (extras->mRpc == nullptr) return NO_INIT;
+    return extras->mRpc->addClient(std::move(clientFd));
+}
+
 BBinder::~BBinder()
 {
     Extras* e = mExtras.load(std::memory_order_relaxed);
@@ -414,6 +455,12 @@ status_t BBinder::onTransact(
         case SYSPROPS_TRANSACTION: {
             report_sysprop_change();
             return NO_ERROR;
+        }
+
+        case ADD_RPC_CLIENT_TRANSACTION: {
+            android::base::unique_fd clientFd;
+            if (auto status = data.readUniqueFileDescriptor(&clientFd); status != OK) return status;
+            return addRpcClient(std::move(clientFd));
         }
 
         default:

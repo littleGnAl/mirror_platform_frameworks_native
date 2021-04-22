@@ -226,6 +226,12 @@ status_t RpcConnection::sendDecStrong(const RpcAddress& address) {
 }
 
 void RpcConnection::join() {
+    auto clientFd = accept();
+    if (!clientFd.ok()) return;
+    join(std::move(clientFd));
+}
+
+android::base::unique_fd RpcConnection::accept() {
     // TODO(b/185167543): do this dynamically, instead of from a static number
     // of threads
     unique_fd clientFd(
@@ -234,11 +240,14 @@ void RpcConnection::join() {
         // If this log becomes confusing, should save more state from setupUnixDomainServer
         // in order to output here.
         ALOGE("Could not accept4 socket: %s", strerror(errno));
-        return;
+        return unique_fd();
     }
 
     LOG_RPC_DETAIL("accept4 on fd %d yields fd %d", mServer.get(), clientFd.get());
+    return clientFd;
+}
 
+void RpcConnection::join(android::base::unique_fd&& clientFd) {
     // must be registered to allow arbitrary client code executing commands to
     // be able to do nested calls (we can't only read from it)
     sp<ConnectionSocket> socket = assignServerToThisThread(std::move(clientFd));

@@ -105,8 +105,20 @@ public:
     /**
      * Adds a server thread accepting connections. Must be called after
      * setup*Server.
+     *
+     * This is the same as calling accept() then join(...) on the accepted fd.
      */
     void join();
+
+    /**
+     * accept() one connection and return the accepted client fd.
+     */
+    android::base::unique_fd accept();
+
+    /**
+     * Same as join(), but read / write data on the given fd.
+     */
+    void join(android::base::unique_fd&& clientFd);
 
     ~RpcConnection();
 

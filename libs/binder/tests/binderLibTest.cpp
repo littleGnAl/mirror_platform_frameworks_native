@@ -21,26 +21,34 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include <chrono>
 #include <thread>
 
 #include <gtest/gtest.h>
 
+#include <android-base/unique_fd.h>
 #include <binder/Binder.h>
 #include <binder/IBinder.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <binder/ParcelRef.h>
+#include <binder/RpcConnection.h>
+#include <binder/RpcServer.h>
 
-#include <private/binder/binder_module.h>
 #include <linux/sched.h>
+#include <private/binder/binder_module.h>
 #include <sys/epoll.h>
 #include <sys/prctl.h>
+#include <sys/socket.h>
+#include <sys/un.h>
 
 #include "binderAbiHelper.h"
 
 #define ARRAY_SIZE(array) (sizeof array / sizeof array[0])
 
 using namespace android;
+using namespace std::chrono_literals;
 
 static ::testing::AssertionResult IsPageAligned(void *buf) {
     if (((unsigned long)buf & ((unsigned long)PAGE_SIZE - 1)) == 0)
@@ -89,6 +97,7 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_ECHO_VECTOR,
     BINDER_LIB_TEST_REJECT_BUF,
     BINDER_LIB_TEST_CAN_GET_SID,
+    BINDER_LIB_TEST_CONFIGURE_RPC_CLIENT,
 };
 
 pid_t start_server_process(int arg2, bool usePoll = false)
@@ -1201,6 +1210,101 @@ TEST_F(BinderLibTest, GotSid) {
     EXPECT_EQ(OK, ret);
 }
 
+TEST_F(BinderLibTest, LocalAddRpcClientWithoutConfigure) {
+    sp<IBinder> binder = sp<BBinder>::make();
+    ASSERT_TRUE(binder != nullptr);
+    auto sink = android::base::unique_fd(TEMP_FAILURE_RETRY(open("/dev/null", O_RDWR)));
+    EXPECT_EQ(NO_INIT, binder->addRpcClient(std::move(sink)));
+}
+
+TEST_F(BinderLibTest, RemoteAddRpcClientWithoutConfigure) {
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+    auto sink = android::base::unique_fd(TEMP_FAILURE_RETRY(open("/dev/null", O_RDWR)));
+    EXPECT_EQ(NO_INIT, server->addRpcClient(std::move(sink)));
+}
+
+TEST_F(BinderLibTest, LocalAddRpcClientNoFd) {
+    sp<IBinder> binder = sp<BBinder>::make();
+    ASSERT_TRUE(binder != nullptr);
+    EXPECT_EQ(BAD_VALUE, binder->addRpcClient(android::base::unique_fd()));
+}
+
+TEST_F(BinderLibTest, RemoteAddRpcClientNoFd) {
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+    EXPECT_EQ(BAD_VALUE, server->addRpcClient(android::base::unique_fd()));
+}
+
+TEST_F(BinderLibTest, RpcClient) {
+    sp<IBinder> server = addServer();
+    ASSERT_TRUE(server != nullptr);
+
+    {
+        Parcel data;
+        data.writeUint32(1);
+        status_t ret = server->transact(BINDER_LIB_TEST_CONFIGURE_RPC_CLIENT, data, nullptr);
+        ASSERT_EQ(OK, ret) << statusToString(ret);
+    }
+
+    const int port = 3456;
+    std::mutex mutex;
+    std::condition_variable cv;
+    bool dispatcherListening = false;
+    bool dispatcherDone = false;
+
+    // Fake servicedispatcher.
+    std::thread([&]() {
+        auto rpcServer = RpcServer::make();
+        rpcServer->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
+        auto rpcConnection = rpcServer->addClientConnection();
+        ASSERT_TRUE(rpcConnection->setupInetServer(port));
+        {
+            std::unique_lock<std::mutex> lock(mutex);
+            dispatcherListening = true;
+        }
+        cv.notify_all();
+        auto accepted = rpcConnection->accept();
+        ASSERT_TRUE(accepted.ok());
+        auto status = server->addRpcClient(accepted);
+        ASSERT_EQ(OK, status) << statusToString(status);
+        {
+            std::unique_lock<std::mutex> lock(mutex);
+            dispatcherDone = true;
+        }
+        cv.notify_all();
+    }).detach(); // If any errors in the thread, don't block other tests.
+
+    {
+        std::unique_lock<std::mutex> lock(mutex);
+        ASSERT_TRUE(cv.wait_for(lock, 3s, [&]() { return dispatcherListening; }));
+    }
+    auto rpcConnection = RpcConnection::make();
+    ASSERT_TRUE(rpcConnection->addInetClient("127.0.0.1", port));
+    {
+        std::unique_lock<std::mutex> lock(mutex);
+        ASSERT_TRUE(cv.wait_for(lock, 3s, [&]() { return dispatcherDone; }));
+    }
+    auto rpcServer = rpcConnection->getRootObject();
+    ASSERT_NE(nullptr, rpcServer);
+
+    EXPECT_EQ(OK, rpcServer->pingBinder());
+
+    auto getId = [](sp<IBinder> server) {
+        Parcel data, reply;
+        data.markForBinder(server);
+        const char *name = data.isForRpc() ? "RPC" : "binder";
+        auto ret = server->transact(BINDER_LIB_TEST_GET_ID_TRANSACTION, data, &reply);
+        EXPECT_EQ(OK, ret) << statusToString(ret) << ", for " << name << " server";
+        int32_t result = 0;
+        ret = reply.readInt32(&result);
+        EXPECT_EQ(OK, ret) << statusToString(ret) << ", for " << name << " server";
+        return result;
+    };
+    EXPECT_EQ(getId(server), getId(rpcServer));
+    sleep(10);
+}
+
 class BinderLibTestService : public BBinder
 {
     public:
@@ -1505,6 +1609,12 @@ class BinderLibTestService : public BBinder
             }
             case BINDER_LIB_TEST_CAN_GET_SID: {
                 return IPCThreadState::self()->getCallingSid() == nullptr ? BAD_VALUE : NO_ERROR;
+            }
+            case BINDER_LIB_TEST_CONFIGURE_RPC_CLIENT: {
+                uint32_t maxThreads;
+                if (auto status = data.readUint32(&maxThreads); status != OK) return status;
+                configureRpcServer(maxThreads);
+                return OK;
             }
             default:
                 return UNKNOWN_TRANSACTION;
