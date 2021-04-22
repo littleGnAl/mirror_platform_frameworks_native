@@ -17,15 +17,24 @@
 #include <binder/Binder.h>
 
 #include <atomic>
-#include <utils/misc.h>
+#include <map>
+#include <memory>
+#include <thread>
+
+#include <android-base/unique_fd.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
 #include <binder/IResultReceiver.h>
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
+#include <binder/RpcServer.h>
+#include <utils/misc.h>
 
+#include <inttypes.h>
 #include <linux/sched.h>
 #include <stdio.h>
+
+#include "RpcState.h"
 
 namespace android {
 
@@ -126,7 +135,59 @@ status_t IBinder::getDebugPid(pid_t* out) {
     return OK;
 }
 
+void IBinder::configureRpcClient(uint32_t maxRpcThreads) {
+    BBinder* local = this->localBinder();
+    LOG_ALWAYS_FATAL_IF(local == nullptr, "configureRpcClient is only allowed on local binder");
+    local->BBinder::configureRpcClient(maxRpcThreads);
+}
+
+status_t IBinder::addRpcClient(android::base::borrowed_fd clientFd) {
+    BpBinder* proxy = this->remoteBinder();
+    LOG_ALWAYS_FATAL_IF(proxy == nullptr, "addRpcClient is only allowed on remote binder");
+
+    Parcel data;
+    Parcel reply;
+    if (status_t status = data.writeFileDescriptor(clientFd.get()); status != OK) return status;
+    return transact(ADD_RPC_CLIENT_TRANSACTION, data, &reply);
+}
+
 // ---------------------------------------------------------------------------
+
+class RpcExtras {
+public:
+    void setMaxThreads(uint32_t maxThreads);
+    status_t addClient(const sp<IBinder>& rootObject, android::base::unique_fd&& clientFd);
+    ~RpcExtras();
+
+private:
+    class RpcConnectionThread;
+    using ThreadMap = std::map<RpcConnectionThread*, std::unique_ptr<RpcConnectionThread>>;
+    void onThreadTerminate(RpcConnectionThread* thread);
+    // for below objects
+    Mutex mLock;
+    uint32_t mMaxThreads;
+    // RpcConnectionThread holds RpcConnection, which holds RpcServer, so we hold a weak
+    // pointer to RpcServer to ensure it is teared down when all connections are terminated.
+    wp<RpcServer> mServer;
+    // Use a map to allow erasing by raw pointer.
+    ThreadMap mThreads;
+};
+
+class RpcExtras::RpcConnectionThread {
+public:
+    RpcConnectionThread(sp<RpcConnection>&& connection, android::base::unique_fd&& clientFd,
+                        RpcExtras* extras)
+          : mConnection(std::move(connection)), mClientFd(std::move(clientFd)), mExtras(extras) {}
+    // Joins the thread if it is still running.
+    ~RpcConnectionThread();
+    void start();
+
+private:
+    sp<RpcConnection> mConnection;
+    android::base::unique_fd mClientFd;
+    RpcExtras* mExtras;
+    std::unique_ptr<std::thread> mThread;
+};
 
 class BBinder::Extras
 {
@@ -137,6 +198,7 @@ public:
     sp<IBinder> mExtension;
     int mPolicy = SCHED_NORMAL;
     int mPriority = 0;
+    std::unique_ptr<RpcExtras> mRpc = std::make_unique<RpcExtras>();
 
     // for below objects
     Mutex mLock;
@@ -358,6 +420,11 @@ void BBinder::setExtension(const sp<IBinder>& extension) {
     e->mExtension = extension;
 }
 
+void BBinder::configureRpcClient(uint32_t maxRpcThreads) {
+    Extras* e = getOrCreateExtras();
+    e->mRpc->setMaxThreads(maxRpcThreads);
+}
+
 BBinder::~BBinder()
 {
     Extras* e = mExtras.load(std::memory_order_relaxed);
@@ -414,6 +481,13 @@ status_t BBinder::onTransact(
         case SYSPROPS_TRANSACTION: {
             report_sysprop_change();
             return NO_ERROR;
+        }
+
+        case ADD_RPC_CLIENT_TRANSACTION: {
+            android::base::unique_fd clientFd;
+            if (auto status = data.readUniqueFileDescriptor(&clientFd); status != OK) return status;
+            return getOrCreateExtras()->mRpc->addClient(sp<BBinder>::fromExisting(this),
+                                                        std::move(clientFd));
         }
 
         default:
@@ -485,6 +559,73 @@ void BpRefBase::onLastStrongRef(const void* /*id*/)
 bool BpRefBase::onIncStrongAttempted(uint32_t /*flags*/, const void* /*id*/)
 {
     return mRemote ? mRefs->attemptIncStrong(this) : false;
+}
+
+// ---------------------------------------------------------------------------
+
+void RpcExtras::setMaxThreads(uint32_t maxThreads) {
+    AutoMutex _l(mLock);
+    mMaxThreads = maxThreads;
+}
+
+status_t RpcExtras::addClient(const sp<IBinder>& rootObject, android::base::unique_fd&& clientFd) {
+    AutoMutex _l(mLock);
+    if (mThreads.size() >= mMaxThreads) {
+        LOG_RPC_DETAIL("RpcExtras::addClient: rejecting because existing %zu >= max %" PRIu32,
+              mThreads.size(), mMaxThreads);
+        return NO_INIT;
+    }
+    auto serverSp = mServer.promote();
+    if (serverSp == nullptr) {
+        serverSp = RpcServer::make();
+        serverSp->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
+        serverSp->setRootObject(rootObject);
+        mServer = serverSp;
+    }
+    auto conn = serverSp->addClientConnection();
+    auto thread = std::make_unique<RpcConnectionThread>(std::move(conn), std::move(clientFd), this);
+    auto threadPtr = thread.get();
+    auto [it, inserted] = mThreads.emplace(threadPtr, std::move(thread));
+    LOG_ALWAYS_FATAL_IF(!inserted);
+    LOG_RPC_DETAIL("RpcExtras::addClient: starting handler thread. #threads = %zu",
+                   mThreads.size());
+    threadPtr->start();
+    return NO_ERROR;
+}
+
+void RpcExtras::onThreadTerminate(RpcConnectionThread* thread) {
+    AutoMutex _l(mLock);
+    mThreads.erase(thread);
+    LOG_RPC_DETAIL("RpcExtras: Deleted RPC client handler thread. #threads = %zu", mThreads.size());
+}
+
+RpcExtras::~RpcExtras() {
+    ThreadMap threadsCopy;
+    {
+        AutoMutex _l(mLock);
+        threadsCopy = std::move(mThreads);
+    }
+    // ~ThreadMap calls ~RpcConnectionThread on each individual thread, which joins the threads.
+    // mLock is not held to avoid deadlock in onThreadTerminate. The side effect is that the thread
+    // count in the log message in onThreadTerminate would be incorrect, but that's okay.
+}
+
+void RpcExtras::RpcConnectionThread::start() {
+    LOG_ALWAYS_FATAL_IF(mThread != nullptr);
+    mThread = std::make_unique<std::thread>([this] {
+        LOG_RPC_DETAIL("RpcConnectionThread: handler thread starts handling transactions");
+        mConnection->join(std::move(mClientFd));
+        LOG_RPC_DETAIL("RpcConnectionThread: connection lost, terminating handler thread");
+        mExtras->onThreadTerminate(this);
+    });
+}
+
+RpcExtras::RpcConnectionThread::~RpcConnectionThread() {
+    if (mThread != nullptr && mThread->joinable()) {
+        LOG_RPC_DETAIL("~RpcConnectionThread: joining the handler thread...");
+        mThread->join();
+        LOG_RPC_DETAIL("~RpcConnectionThread: handler thread exited, destroying");
+    }
 }
 
 // ---------------------------------------------------------------------------

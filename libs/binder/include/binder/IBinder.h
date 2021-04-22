@@ -31,6 +31,10 @@
 // ---------------------------------------------------------------------------
 namespace android {
 
+namespace base {
+struct borrowed_fd;
+} // namespace base
+
 class BBinder;
 class BpBinder;
 class IInterface;
@@ -59,6 +63,7 @@ public:
         SYSPROPS_TRANSACTION    = B_PACK_CHARS('_', 'S', 'P', 'R'),
         EXTENSION_TRANSACTION   = B_PACK_CHARS('_', 'E', 'X', 'T'),
         DEBUG_PID_TRANSACTION   = B_PACK_CHARS('_', 'P', 'I', 'D'),
+        ADD_RPC_CLIENT_TRANSACTION = B_PACK_CHARS('_', 'R', 'P', 'C'),
 
         // See android.os.IBinder.TWEET_TRANSACTION
         // Most importantly, messages can be anything not exceeding 130 UTF-8
@@ -150,6 +155,39 @@ public:
      * Dump PID for a binder, for debugging.
      */
     status_t                getDebugPid(pid_t* outPid);
+
+    /**
+     * Configure the max number of threads that can be spawned to handle
+     * new RPC clients via addRpcClient. If not configured, it is 0, meaning
+     * that no RPC clients can be added via addRpcClient.
+     *
+     * This should only be called during set up in the main thread.
+     *
+     * This won't terminate any existing RPC handler threads that has already
+     * been started
+     */
+    void configureRpcClient(uint32_t maxRpcThreads);
+
+    /**
+     * Add a client fd to this binder service.
+     *
+     * This function is only useful after the service calls configureRpcClient
+     * with more than 0 RPC threads.
+     *
+     * When this is called on a binder service, the service:
+     * 1. sets up RPC server, if not already
+     * 2. dup(clientFd) and take ownership
+     * 3. spawns a new thread (if not exceeding RPC thread count)
+     * 4. polls transactions from the owned fd in step 2
+     * 5. on DEAD_OBJECT (See RpcState), thread exits.
+     *
+     * addRpcClient() may be called multiple times. A thread is
+     * spawned for each added fd, which may call into functions of the interface
+     * freely. To avoid such race conditions, do one of the following:
+     * - configureRpcClient(0) to disable RPC calls (this is the default)
+     * - OR implement the service functions with multithreading.
+     */
+    status_t addRpcClient(android::base::borrowed_fd clientFd);
 
     // NOLINTNEXTLINE(google-default-arguments)
     virtual status_t        transact(   uint32_t code,
