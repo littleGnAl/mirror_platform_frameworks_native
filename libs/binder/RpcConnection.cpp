@@ -239,6 +239,10 @@ void RpcConnection::join() {
 
     LOG_RPC_DETAIL("accept4 on fd %d yields fd %d", mServer.get(), clientFd.get());
 
+    join(std::move(clientFd));
+}
+
+void RpcConnection::join(android::base::unique_fd clientFd) {
     // must be registered to allow arbitrary client code executing commands to
     // be able to do nested calls (we can't only read from it)
     sp<ConnectionSocket> socket = assignServerToThisThread(std::move(clientFd));
