@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000010190828",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1683951?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "1123e6a5_4f5a4ac4",
+          "description": "Change to \"libs/binder/RpcExtras.h\"",
+          "replacements": [
+            {
+              "path": "libs/binder/RpcExtras.h",
+              "range": {
+                "startLine": 36,
+                "startChar": 37,
+                "endLine": 36,
+                "endChar": 47
+              },
+              "replacement": "transferred"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "0d407260_e89d8e38",
+        "filename": "libs/binder/RpcExtras.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-23T06:04:58Z",
+      "side": 1,
+      "message": "Common typo found: \"transfered\" -- should it be \"transferred\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
