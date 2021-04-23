@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c328152c_27e25da7",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T20:26:45Z",
+      "side": 1,
+      "message": "Ack, will do",
+      "parentUuid": "1092f0ca_2c776046",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 91
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10c2d477_5a676ee4",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 5
@@ -121,6 +145,24 @@
       "side": 1,
       "message": "I need to finish fixing this bug for that, but in that case L448 has a race where it might create two objects if this isn\u0027t already configured.\n\nNote - we want to be able to use this without having to update device code, and we can\u0027t create extras on all binders (it would cost too much memory - all this data needs to have careful defaults)",
       "parentUuid": "08a35acf_902908e8",
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610a7cc4_8f4b5029",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T20:26:45Z",
+      "side": 1,
+      "message": "re L448: I thought getOrCreateExtras is atomic? Did I understand it incorrectly?\n\nMaybe I should be using a new function getExtras() that ensures it won\u0027t create one?\n\n\u003e we can\u0027t create extras on all binders\n\nAre you suggesting that I shouldn\u0027t be using extras? What\u0027s the alternative?",
+      "parentUuid": "e956f8f0_17d7899e",
       "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
