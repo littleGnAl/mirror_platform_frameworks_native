@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fd05ab2_7a389309",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "No, but I don\u0027t see how this can be useful for local binders, so I hide this API for local binders.",
+      "parentUuid": "8ecc8488_906c85d1",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 91
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10c2d477_5a676ee4",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 5
@@ -37,6 +61,24 @@
       "writtenOn": "2021-04-23T17:18:03Z",
       "side": 1,
       "message": "this is configured after the object is sent out, so it should be added here and managed by the lock (see b/166282674 for additional context on the above items). Otherwise, the below code might create multiple copies of this object.\n\nBtw - this might be a good time to add \u0027-Wthread-safety\u0027 + add annotations to this mutex.",
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a35acf_902908e8",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "\u003e this is configured after the object is sent out\n\nIt should actually be configured before the object is sent out, see comments in IBinder. I didn\u0027t prevent it to be configured after the object is sent out, though, because I don\u0027t know how to detect. Any suggestions?",
+      "parentUuid": "10c2d477_5a676ee4",
       "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95451831_cbaa47c7",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "Ack will do",
+      "parentUuid": "210097a0_cbb371db",
+      "range": {
+        "startLine": 380,
+        "startChar": 14,
+        "endLine": 380,
+        "endChar": 32
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc90e10b_0fe96398",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 5
@@ -77,6 +143,30 @@
       "writtenOn": "2021-04-23T17:18:03Z",
       "side": 1,
       "message": "this transaction should be limited to userdebug/eng builds (also now that this is working, please schedule security review ASAP)",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 42
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f0bf8a6_950789fc",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "cc90e10b_0fe96398",
       "range": {
         "startLine": 445,
         "startChar": 0,
@@ -135,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7120ac1c_f86c401e",
+        "filename": "libs/binder/RpcExtras.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "I\u0027ll wait for your work to finish.\n\nBTW, right now it belongs to BBinder. I just put it in a different header file because Binder.cpp is too big already.",
+      "parentUuid": "b7f9c45c_199e1352",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "569c29c8_2faa3ca2",
         "filename": "libs/binder/include/binder/IBinder.h",
         "patchSetId": 5
@@ -146,6 +260,30 @@
       "writtenOn": "2021-04-23T17:18:03Z",
       "side": 1,
       "message": "This means that we require everyone to set this manually, but that will make it impossible to debug some processes using this.\n\nCan we make this part of the binder transaction?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "360271b4_d390fa5a",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "If it is not called then this service do not open up any RPC abilities. My intention is that we can ask services opt-in.\n\nFor example, some services aren\u0027t designed to be thread-safe (e.g. health service) But this (when set to \u003e\u003d 1) will always spawn new threads and call into the service.\n\nSome services may be so sensitive that we don\u0027t want to open up RPC at all; though, we limit this to be userdebug only, so it should be fine.\n\nAlso, this is intended to mimic setThreadPoolMaxThreadCount() (I thought it was called configureSomething() in libhwbinder). So I say the service itself should configure this.\n\nThat\u0027s why I ask services to voluntarily opt-in, instead of opening up a binder transaction for servicedispatcher to force a service to open up RPC abilities.",
+      "parentUuid": "569c29c8_2faa3ca2",
       "range": {
         "startLine": 164,
         "startChar": 0,
@@ -181,6 +319,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c80983a_66e3776a",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "But if the client have an FD that is not owned, then the client needs to dup it. Right?\n\nI am okay to switch to unique_fd\u0026\u0026 here. I just want to confirm.",
+      "parentUuid": "dd13578a_28489767",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f010c3a_8a286bce",
         "filename": "libs/binder/include/binder/RpcConnection.h",
         "patchSetId": 5
@@ -192,6 +354,30 @@
       "writtenOn": "2021-04-23T17:18:03Z",
       "side": 1,
       "message": "mServer",
+      "range": {
+        "startLine": 109,
+        "startChar": 66,
+        "endLine": 109,
+        "endChar": 74
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9792388c_db62643c",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "no, it is the accepted fd. This is mostly equivalent to\n\n```\nint accepted \u003d accept(mServer);\njoin(accepted);\n```",
+      "parentUuid": "2f010c3a_8a286bce",
       "range": {
         "startLine": 109,
         "startChar": 66,
@@ -227,6 +413,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "375ed549_a2252aeb",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "I\u0027ll wait for your thread work to finish before I redesign this.\n\nI didn\u0027t add `setupExternalServer(unique_fd\u0026\u0026)` because in our design, the mServer FD is owned by servicedispatcher. servicedispatcher sends the accepted FD to the service. So the service doesn\u0027t know about mServer at all. \n\nSee the test in binderLibTest.\n\nI\u0027ll mark this as WIP. I am happy to rework this once you finish the thread work.",
+      "parentUuid": "a398cb70_2e1652f4",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 51
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1f66b5d_5d5f7b55",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 5
@@ -238,6 +448,30 @@
       "writtenOn": "2021-04-23T17:18:03Z",
       "side": 1,
       "message": "you\u0027ll write it as a library so we only have one copy of this code, right?",
+      "range": {
+        "startLine": 1229,
+        "startChar": 0,
+        "endLine": 1229,
+        "endChar": 30
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f03f8f2_22c45aa9",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "yeah, once I have the real servicedispatcher I can use the code there.\n\nI\u0027ll put it in a separate CL though.",
+      "parentUuid": "a1f66b5d_5d5f7b55",
       "range": {
         "startLine": 1229,
         "startChar": 0,
@@ -273,6 +507,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95877d15_8d012a46",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "Exactly!\n\nThat\u0027s why I didn\u0027t add RpcConnection::setupExternalServer()",
+      "parentUuid": "d3a964de_cb2be3ef",
+      "range": {
+        "startLine": 1240,
+        "startChar": 0,
+        "endLine": 1240,
+        "endChar": 48
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3afadffa_82ff8781",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 5
@@ -284,6 +542,24 @@
       "writtenOn": "2021-04-23T17:18:03Z",
       "side": 1,
       "message": "the tests below could hang/fail, right?",
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf311d0c_f80bd3c5",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T19:33:56Z",
+      "side": 1,
+      "message": "L1251~1275? \n\nAll wait_for() functions have a timeout, so it should fail instead of hanging.\n\nHowever, if things go wrong:\n\n- The main thread will continue on other tests. L1253 and L1259 won\u0027t hang.\n- The thread is detached so that it won\u0027t hang at L1276\n\nNow that I look at this code, there are still a few places where it could hang. At L1261 / L1264 / L1270 where there\u0027s a binder transaction going on, it can hang at recv(). \n\nMaybe I should put the client code to a new detached thread as well?",
+      "parentUuid": "3afadffa_82ff8781",
       "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
