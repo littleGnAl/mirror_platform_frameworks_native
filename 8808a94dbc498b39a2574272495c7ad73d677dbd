@@ -637,6 +637,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6606d82f_e9f4cef0",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T22:46:04Z",
+      "side": 1,
+      "message": "Sorry scratch my last comment. I understand now.",
+      "parentUuid": "1a8281ea_7b765927",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f010c3a_8a286bce",
         "filename": "libs/binder/include/binder/RpcConnection.h",
         "patchSetId": 5
