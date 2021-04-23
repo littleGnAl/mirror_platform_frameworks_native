@@ -3,6 +3,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ecc8488_906c85d1",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "do we need this limitation?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 91
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c2d477_5a676ee4",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "this is configured after the object is sent out, so it should be added here and managed by the lock (see b/166282674 for additional context on the above items). Otherwise, the below code might create multiple copies of this object.\n\nBtw - this might be a good time to add \u0027-Wthread-safety\u0027 + add annotations to this mutex.",
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210097a0_cbb371db",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "we say add client because a process is requesting itself to be added as a new client, but we are configuring a server",
+      "range": {
+        "startLine": 380,
+        "startChar": 14,
+        "endLine": 380,
+        "endChar": 32
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc90e10b_0fe96398",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "this transaction should be limited to userdebug/eng builds (also now that this is working, please schedule security review ASAP)",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 42
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d49dc610_80bac3d9",
         "filename": "libs/binder/RpcExtras.h",
         "patchSetId": 5
@@ -20,6 +106,184 @@
         "endLine": 30,
         "endChar": 17
       },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f9c45c_199e1352",
+        "filename": "libs/binder/RpcExtras.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "This object is doing what RpcServer/RpcConnection should do after b/185167543. Can you integrate the logic there or move it to IBinder (or ack me removing this class when I finish that bug)? I am hoping to get a chance today.",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569c29c8_2faa3ca2",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "This means that we require everyone to set this manually, but that will make it impossible to debug some processes using this.\n\nCan we make this part of the binder transaction?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd13578a_28489767",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "given that we do this, this API should actually take unique_fd. This way, if you already have an FD owned which you don\u0027t need anymore, you can transfer it and save the extra dupe",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f010c3a_8a286bce",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "mServer",
+      "range": {
+        "startLine": 109,
+        "startChar": 66,
+        "endLine": 109,
+        "endChar": 74
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a398cb70_2e1652f4",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "I hesitate to add an actual accept since we\u0027ll want to add a standard way to do this and manage threads in b/185167543.\n\nWould you consider \u0027setupExternalServer(unique_fd\u0026\u0026)\u0027 which sets the mServer object like the other APIs do? I know we\u0027re accepting a connection below and passing it through, so that we need this. However, in that case, I\u0027m not sure how we could dynamically add more threads.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 51
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1f66b5d_5d5f7b55",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "you\u0027ll write it as a library so we only have one copy of this code, right?",
+      "range": {
+        "startLine": 1229,
+        "startChar": 0,
+        "endLine": 1229,
+        "endChar": 30
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3a964de_cb2be3ef",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "wait, we can accept a connection in one process and then pass it to another? cool",
+      "range": {
+        "startLine": 1240,
+        "startChar": 0,
+        "endLine": 1240,
+        "endChar": 48
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3afadffa_82ff8781",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T17:18:03Z",
+      "side": 1,
+      "message": "the tests below could hang/fail, right?",
       "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
