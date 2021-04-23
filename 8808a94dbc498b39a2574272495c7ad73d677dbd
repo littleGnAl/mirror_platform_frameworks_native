@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1092f0ca_2c776046",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T19:46:59Z",
+      "side": 1,
+      "message": "It\u0027s pretty standard for these functions (and it would be the default in the test). We definitely don\u0027t need it for this usecase, but you might consider it, for instance, if the servicedispatcher binary ever registered its own interface.",
+      "parentUuid": "4fd05ab2_7a389309",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 91
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10c2d477_5a676ee4",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 5
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "\u003e this is configured after the object is sent out\n\nIt should actually be configured before the object is sent out, see comments in IBinder. I didn\u0027t prevent it to be configured after the object is sent out, though, because I don\u0027t know how to detect. Any suggestions?",
       "parentUuid": "10c2d477_5a676ee4",
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e956f8f0_17d7899e",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T19:46:59Z",
+      "side": 1,
+      "message": "I need to finish fixing this bug for that, but in that case L448 has a race where it might create two objects if this isn\u0027t already configured.\n\nNote - we want to be able to use this without having to update device code, and we can\u0027t create extras on all binders (it would cost too much memory - all this data needs to have careful defaults)",
+      "parentUuid": "08a35acf_902908e8",
       "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -249,6 +291,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03051a1d_e3b76cbd",
+        "filename": "libs/binder/RpcExtras.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T19:46:59Z",
+      "side": 1,
+      "message": "I do think we should try to get to the point where we have RpcServer there though. Anything you\u0027d want to do here, we\u0027d also want to do for RpcServer, but okay, sg.",
+      "parentUuid": "7120ac1c_f86c401e",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "569c29c8_2faa3ca2",
         "filename": "libs/binder/include/binder/IBinder.h",
         "patchSetId": 5
@@ -284,6 +350,30 @@
       "side": 1,
       "message": "If it is not called then this service do not open up any RPC abilities. My intention is that we can ask services opt-in.\n\nFor example, some services aren\u0027t designed to be thread-safe (e.g. health service) But this (when set to \u003e\u003d 1) will always spawn new threads and call into the service.\n\nSome services may be so sensitive that we don\u0027t want to open up RPC at all; though, we limit this to be userdebug only, so it should be fine.\n\nAlso, this is intended to mimic setThreadPoolMaxThreadCount() (I thought it was called configureSomething() in libhwbinder). So I say the service itself should configure this.\n\nThat\u0027s why I ask services to voluntarily opt-in, instead of opening up a binder transaction for servicedispatcher to force a service to open up RPC abilities.",
       "parentUuid": "569c29c8_2faa3ca2",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "527dc432_6f6344ad",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T19:46:59Z",
+      "side": 1,
+      "message": "No one will use this if they need to manually update things, and ultimately we intend this route as a debug tool (maybe also add \u0027Debug\u0027 into these function names? \u0027addDebugRpcClient\u0027 etc...), and this needs to be guarded with root.\n\nFor phase II, I 100% agree with you.\n\nConsider perhaps:\n\n    addRpcClient(fd, bool force)\n\nIn BBinder:\n\n    addRpcClient() ..\n        if (!force \u0026\u0026 isSingleThreaded...) error \"unsafe threading, force?\"",
+      "parentUuid": "360271b4_d390fa5a",
       "range": {
         "startLine": 164,
         "startChar": 0,
@@ -343,6 +433,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3aab58d5_b87a017c",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T19:46:59Z",
+      "side": 1,
+      "message": "yeah, but that way, the client can only dup if it\u0027s needed\n\nfeel free to also use \u0027unique_fd\u0027 over \u0027unique_fd\u0026\u0026\u0027 I\u0027m thinking about switching libbinder to reflect your code review comment. The future is awesome",
+      "parentUuid": "1c80983a_66e3776a",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f010c3a_8a286bce",
         "filename": "libs/binder/include/binder/RpcConnection.h",
         "patchSetId": 5
@@ -378,6 +492,30 @@
       "side": 1,
       "message": "no, it is the accepted fd. This is mostly equivalent to\n\n```\nint accepted \u003d accept(mServer);\njoin(accepted);\n```",
       "parentUuid": "2f010c3a_8a286bce",
+      "range": {
+        "startLine": 109,
+        "startChar": 66,
+        "endLine": 109,
+        "endChar": 74
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a34d58_39365744",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T19:46:59Z",
+      "side": 1,
+      "message": "oops, sorry I misunderstood the setup when I made this comment.",
+      "parentUuid": "9792388c_db62643c",
       "range": {
         "startLine": 109,
         "startChar": 66,
@@ -425,6 +563,30 @@
       "side": 1,
       "message": "I\u0027ll wait for your thread work to finish before I redesign this.\n\nI didn\u0027t add `setupExternalServer(unique_fd\u0026\u0026)` because in our design, the mServer FD is owned by servicedispatcher. servicedispatcher sends the accepted FD to the service. So the service doesn\u0027t know about mServer at all. \n\nSee the test in binderLibTest.\n\nI\u0027ll mark this as WIP. I am happy to rework this once you finish the thread work.",
       "parentUuid": "a398cb70_2e1652f4",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 51
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "450ec897_246586af",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T19:46:59Z",
+      "side": 1,
+      "message": "okay, perfect",
+      "parentUuid": "375ed549_a2252aeb",
       "range": {
         "startLine": 112,
         "startChar": 0,
@@ -560,6 +722,24 @@
       "side": 1,
       "message": "L1251~1275? \n\nAll wait_for() functions have a timeout, so it should fail instead of hanging.\n\nHowever, if things go wrong:\n\n- The main thread will continue on other tests. L1253 and L1259 won\u0027t hang.\n- The thread is detached so that it won\u0027t hang at L1276\n\nNow that I look at this code, there are still a few places where it could hang. At L1261 / L1264 / L1270 where there\u0027s a binder transaction going on, it can hang at recv(). \n\nMaybe I should put the client code to a new detached thread as well?",
       "parentUuid": "3afadffa_82ff8781",
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30230715_17a39394",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-23T19:46:59Z",
+      "side": 1,
+      "message": "I also need to add logic to allow a call to timeout in RPC binder (and actually in regular binder too, b/175164639). Feel free to look at doing this",
+      "parentUuid": "cf311d0c_f80bd3c5",
       "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
