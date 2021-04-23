@@ -357,6 +357,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8932b06b_0664f2c9",
+        "filename": "libs/binder/RpcExtras.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T20:33:52Z",
+      "side": 1,
+      "message": "I am totally supportive in integrating this into RpcServer. Right now this class is just a wrapper over RpcServer.\n\nI\u0027ll wait for your work to finish. Right now, my thread pool implementation here is wrong, and the process crashes 😄. Once you finished adding it to RpcServer, I\u0027ll purge most of this code.",
+      "parentUuid": "03051a1d_e3b76cbd",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "569c29c8_2faa3ca2",
         "filename": "libs/binder/include/binder/IBinder.h",
         "patchSetId": 5
@@ -428,6 +452,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55516652_efb81a3d",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T20:33:52Z",
+      "side": 1,
+      "message": "wait -- I can detect if the current process is single threaded or not?\n\nYou mean, by looking into the number of binder threads configured?",
+      "parentUuid": "527dc432_6f6344ad",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd13578a_28489767",
         "filename": "libs/binder/include/binder/IBinder.h",
         "patchSetId": 5
@@ -487,6 +535,30 @@
       "side": 1,
       "message": "yeah, but that way, the client can only dup if it\u0027s needed\n\nfeel free to also use \u0027unique_fd\u0027 over \u0027unique_fd\u0026\u0026\u0027 I\u0027m thinking about switching libbinder to reflect your code review comment. The future is awesome",
       "parentUuid": "1c80983a_66e3776a",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a00d3c_cc7ab7ba",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-23T20:33:52Z",
+      "side": 1,
+      "message": "Ack.\n\nI forgot -- what code review comment? using unique_fd should be the exact same as unique_fd\u0026\u0026. The former saves two characters though.",
+      "parentUuid": "3aab58d5_b87a017c",
       "range": {
         "startLine": 177,
         "startChar": 0,
