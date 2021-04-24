@@ -19,6 +19,7 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
+#include <thread>
 #include <vector>
 
 #include <binder/Parcel.h>
@@ -43,6 +44,31 @@ void RpcServer::iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction() 
     mAgreedExperimental = true;
 }
 
+void RpcServer::setMaxThreads(size_t threads) {
+    LOG_ALWAYS_FATAL_IF(threads <= 0, "RpcServer is useless without threads");
+    {
+        // this lock should only ever be needed in the error case
+        std::lock_guard<std::mutex> _l(mLock);
+        LOG_ALWAYS_FATAL_IF(mConnections.size() > 0,
+                            "Must specify max threads before creating a connection");
+    }
+    mMaxThreads = threads;
+}
+
+size_t RpcServer::getMaxThreads() {
+    return mMaxThreads;
+}
+
+void RpcServer::setRootObject(const sp<IBinder>& binder) {
+    std::lock_guard<std::mutex> _l(mLock);
+    mRootObject = binder;
+}
+
+sp<IBinder> RpcServer::getRootObject() {
+    std::lock_guard<std::mutex> _l(mLock);
+    return mRootObject;
+}
+
 sp<RpcConnection> RpcServer::addClientConnection() {
     LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
 
@@ -55,14 +81,18 @@ sp<RpcConnection> RpcServer::addClientConnection() {
     return connection;
 }
 
-void RpcServer::setRootObject(const sp<IBinder>& binder) {
-    std::lock_guard<std::mutex> _l(mLock);
-    mRootObject = binder;
-}
-
-sp<IBinder> RpcServer::getRootObject() {
-    std::lock_guard<std::mutex> _l(mLock);
-    return mRootObject;
+void RpcServer::join() {
+    std::vector<std::thread> pool;
+    {
+        std::lock_guard<std::mutex> _l(mLock);
+        for (const sp<RpcConnection>& connection : mConnections) {
+            for (size_t i = 0; i < mMaxThreads; i++) {
+                pool.push_back(std::thread([=] { connection->join(); }));
+            }
+        }
+    }
+    // FIXME: wastes thread to call join
+    for (auto& t : pool) t.join();
 }
 
 } // namespace android
