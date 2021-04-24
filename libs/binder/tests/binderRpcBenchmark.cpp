@@ -132,7 +132,7 @@ int main(int argc, char** argv) {
 
     for (size_t tries = 0; tries < 5; tries++) {
         usleep(10000);
-        if (gConnection->addUnixDomainClient(addr.c_str())) goto success;
+        if (gConnection->setupUnixDomainClient(addr.c_str())) goto success;
     }
     LOG(FATAL) << "Could not connect.";
 success:
