@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000010215890",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1683484?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "407cce70_07c781ef",
+          "description": "Change to \"libs/binder/include/binder/RpcConnection.h\"",
+          "replacements": [
+            {
+              "path": "libs/binder/include/binder/RpcConnection.h",
+              "range": {
+                "startLine": 103,
+                "startChar": 60,
+                "endLine": 103,
+                "endChar": 70
+              },
+              "replacement": "synchronous"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "bc31ff20_822d68ce",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-24T01:59:29Z",
+      "side": 1,
+      "message": "Common typo found: \"syncronous\" -- should it be \"synchronous\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 103,
+        "startChar": 60,
+        "endLine": 103,
+        "endChar": 70
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
