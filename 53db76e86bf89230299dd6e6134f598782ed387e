@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4f508d_aa78ee2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-24T02:46:43Z",
+      "side": 1,
+      "message": "I didn\u0027t look at the details. Here\u0027s some nit comments.",
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "955c35f8_b68acc27",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-24T02:46:43Z",
+      "side": 1,
+      "message": "nit: can\u0027t be \u003c because size_t",
+      "range": {
+        "startLine": 48,
+        "startChar": 32,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6290ef3d_a918b3ea",
@@ -19,6 +59,52 @@
         "startChar": 0,
         "endLine": 17,
         "endChar": 18
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca7d12f_2bca4357",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-24T02:46:43Z",
+      "side": 1,
+      "message": "Does readInt32 return 0 or a negative number if there\u0027s an error in the parcel?",
+      "range": {
+        "startLine": 265,
+        "startChar": 16,
+        "endLine": 265,
+        "endChar": 17
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c87c8e_70dd051a",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-24T02:46:43Z",
+      "side": 1,
+      "message": "We can\u0027t have multiple client per connection any more? \n\nI actually think this is a good idea",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 28
       },
       "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
