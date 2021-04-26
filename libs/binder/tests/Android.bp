@@ -49,7 +49,7 @@ cc_test {
             cflags: ["-DBINDER_IPC_32BIT=1"],
         },
     },
-
+    header_libs: ["libbinder_headers"],
     srcs: ["binderDriverInterfaceTest.cpp"],
     test_suites: ["device-tests", "vts"],
 }
