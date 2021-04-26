@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bddc1603_d5120455",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-26T23:40:43Z",
+      "side": 1,
+      "message": "I named it SocketAddressImpl because it just returns fields in its getter functions. Now that it includes an inet address and port as well, it makes sense to rename.",
+      "revId": "d8996dfb677abe8ef9f9e0a51536f4b5753ae22e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
