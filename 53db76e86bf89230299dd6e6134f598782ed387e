@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "585b01dc_eae6e542",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-26T16:19:37Z",
+      "side": 1,
+      "message": "I always do this intentionally. Some ideas:\n- locality: you don\u0027t need to look at the type of \u0027threads\u0027 in order to understand what would happen for negative values. If you see \u0027\u003d\u003d\u0027, you need to take an extra second to think \u0027what if it is negative?\u0027\n- resiliency: the code wouldn\u0027t require rewriting if \u0027size_t\u0027 is changed to a signed type. If we wanted, \u00270\u0027 can be changed to \u00271\u0027 and the requirement would still be meaningful.",
+      "parentUuid": "955c35f8_b68acc27",
+      "range": {
+        "startLine": 48,
+        "startChar": 32,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6290ef3d_a918b3ea",
@@ -87,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e6ef17_3905c986",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-26T16:19:37Z",
+      "side": 1,
+      "message": "unresolve (this should probably be \u0027\u003c\u003d\u0027)",
+      "parentUuid": "3ca7d12f_2bca4357",
+      "range": {
+        "startLine": 265,
+        "startChar": 16,
+        "endLine": 265,
+        "endChar": 17
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "94c87c8e_70dd051a",
@@ -100,6 +148,30 @@
       "writtenOn": "2021-04-24T02:46:43Z",
       "side": 1,
       "message": "We can\u0027t have multiple client per connection any more? \n\nI actually think this is a good idea",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fa1ea5b_9408d45a",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-26T16:19:37Z",
+      "side": 1,
+      "message": "Yeah, this was always my plan, but now the APIs reflect this.",
+      "parentUuid": "94c87c8e_70dd051a",
       "range": {
         "startLine": 62,
         "startChar": 23,
