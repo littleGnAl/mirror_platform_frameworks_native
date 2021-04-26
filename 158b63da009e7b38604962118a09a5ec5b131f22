@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9654c6c_df616ecd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-26T23:02:52Z",
+      "side": 1,
+      "message": "Yifan, we might actually not need this yet, I might go with something simpler in the short term than a generic way to make a list of sockets, but wdyt?",
+      "revId": "158b63da009e7b38604962118a09a5ec5b131f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
