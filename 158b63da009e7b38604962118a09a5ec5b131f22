@@ -16,6 +16,29 @@
       "message": "Yifan, we might actually not need this yet, I might go with something simpler in the short term than a generic way to make a list of sockets, but wdyt?",
       "revId": "158b63da009e7b38604962118a09a5ec5b131f22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7092fbd5_1cb7fda6",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-26T23:05:33Z",
+      "side": 1,
+      "message": "nit: constexpr const char*? though I know the compiler should be smart enough to optimize this out...",
+      "range": {
+        "startLine": 170,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 9
+      },
+      "revId": "158b63da009e7b38604962118a09a5ec5b131f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
