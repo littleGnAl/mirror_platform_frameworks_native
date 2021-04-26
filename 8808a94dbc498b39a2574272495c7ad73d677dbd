@@ -709,6 +709,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daca8dbf_3833bc86",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-26T18:47:04Z",
+      "side": 1,
+      "message": "I wonder if another option could be doing this in the unique fd header:\n\n   using unique_fd \u003d unique_fd_impl\u003cDefaultCloser\u003e;\n\n-\u003e\n\n   class unique_fd : public unique_fd_impl\u003cDefaultCloser\u003e {};\n\nThat way, it\u0027s easier to forward declare unique_fd (though I\u0027m not sure if it would be a safe change from an ABI perspective or if the compiler would always optimize stuff out). Or maybe ask enh?",
+      "parentUuid": "eef38752_ef81c6e3",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f010c3a_8a286bce",
         "filename": "libs/binder/include/binder/RpcConnection.h",
         "patchSetId": 5
