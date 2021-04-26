@@ -22,6 +22,30 @@
       },
       "revId": "10b2a932be1cf99e7527bf0eeb646fb8134a67f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6db51c1_4f34a0fa",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-04-26T14:50:56Z",
+      "side": 1,
+      "message": "mmm I don\u0027t know about provable, but signal handlers shouldn\u0027t take locks (because they run async), so I think this achieves what we want. It\u0027s what vold also uses post-fork. We could make a more explicit post-fork LOG variant if you prefer that.",
+      "parentUuid": "e41dd639_98465198",
+      "range": {
+        "startLine": 731,
+        "startChar": 16,
+        "endLine": 731,
+        "endChar": 37
+      },
+      "revId": "10b2a932be1cf99e7527bf0eeb646fb8134a67f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
