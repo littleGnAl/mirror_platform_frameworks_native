@@ -685,6 +685,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eef38752_ef81c6e3",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-26T18:21:06Z",
+      "side": 1,
+      "message": "The use of unique_fd in IBinder.h requires b/186266747.",
+      "parentUuid": "6606d82f_e9f4cef0",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f010c3a_8a286bce",
         "filename": "libs/binder/include/binder/RpcConnection.h",
         "patchSetId": 5
