@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e41dd639_98465198",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2021-04-26T14:39:12Z",
+      "side": 1,
+      "message": "this was designed for signal handlers, originally -- is this provably safe post fork as well ?",
+      "range": {
+        "startLine": 731,
+        "startChar": 16,
+        "endLine": 731,
+        "endChar": 37
+      },
+      "revId": "10b2a932be1cf99e7527bf0eeb646fb8134a67f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
