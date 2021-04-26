@@ -733,6 +733,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39f8656c_faf6d100",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-26T19:42:23Z",
+      "side": 1,
+      "message": "Good idea! CL:1686819\n\n\u003e a safe change from an ABI perspective\n\nDo we freeze the ABI for libbase headers?",
+      "parentUuid": "daca8dbf_3833bc86",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f010c3a_8a286bce",
         "filename": "libs/binder/include/binder/RpcConnection.h",
         "patchSetId": 5
