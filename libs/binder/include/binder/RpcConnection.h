@@ -122,6 +122,13 @@ public:
         virtual std::string toString() const = 0;
         virtual const sockaddr* addr() const = 0;
         virtual size_t addrSize() const = 0;
+
+        // if resolution of this address requires looking up some information
+        virtual bool init() { return true; }
+
+        // if there are multiple sockaddr* associated with this address, move to
+        // the next one, return false if there are no more
+        virtual bool next() { return false; }
     };
 
 private:
@@ -139,8 +146,8 @@ private:
         std::optional<pid_t> exclusiveTid;
     };
 
-    bool setupSocketServer(const SocketAddress& address);
-    bool setupSocketClient(const SocketAddress& address);
+    bool setupSocketServer(SocketAddress&& address);
+    bool setupSocketClient(SocketAddress&& address);
     void addClient(base::unique_fd&& fd);
     sp<ConnectionSocket> assignServerToThisThread(base::unique_fd&& fd);
     bool removeServerSocket(const sp<ConnectionSocket>& socket);
