@@ -74,9 +74,15 @@ public:
 #endif // __BIONIC__
 
     /**
-     * Creates an RPC server at the current port.
+     * Creates an RPC server at the current port using IPv4.
+     *
+     * TODO(b/182914638): IPv6 support
+     *
+     * Set |port| to 0 to pick an ephemeral port; see discussion of
+     * /proc/sys/net/ipv4/ip_local_port_range in ip(7). In this case, |assignedPort|
+     * will be set to the picked port number, if it is not null.
      */
-    [[nodiscard]] bool setupInetServer(unsigned int port);
+    [[nodiscard]] bool setupInetServer(unsigned int port, unsigned int* assignedPort);
 
     /**
      * Connects to an RPC server at the given address and port.
@@ -136,7 +142,7 @@ private:
         std::optional<pid_t> exclusiveTid;
     };
 
-    bool setupSocketServer(const SocketAddress& address);
+    static base::unique_fd setupSocketServer(const SocketAddress& address);
     bool addSocketClient(const SocketAddress& address);
     void addClient(base::unique_fd&& fd);
     sp<ConnectionSocket> assignServerToThisThread(base::unique_fd&& fd);
