@@ -90,6 +90,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a4ebaf66_64f240c3",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T00:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6290ef3d_a918b3ea",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3ca7d12f_2bca4357",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 1
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "unresolve (this should probably be \u0027\u003c\u003d\u0027)",
       "parentUuid": "3ca7d12f_2bca4357",
+      "range": {
+        "startLine": 265,
+        "startChar": 16,
+        "endLine": 265,
+        "endChar": 17
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88aad916_b763c3af",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T00:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4e6ef17_3905c986",
       "range": {
         "startLine": 265,
         "startChar": 16,
@@ -205,6 +253,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62771ec_fd922c38",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T00:42:11Z",
+      "side": 1,
+      "message": "It\u0027s different because this adds a single client whereas the others are more involved. For instance, you could call setupInetClient and then say addNullDebuggingClient, and this would cause an extra thread to appear, but which would deadlock/hang when you use it.",
+      "parentUuid": "3c62aed5_a5f8b6f5",
+      "range": {
+        "startLine": 93,
+        "startChar": 23,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6643005d_8565338c",
@@ -219,6 +291,30 @@
       "side": 1,
       "message": "\u003e Common typo found: \"syncronous\" -- should it be \"synchronous\"?\n\u003e Note: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.\n\nPlease fix.",
       "parentUuid": "bc31ff20_822d68ce",
+      "range": {
+        "startLine": 103,
+        "startChar": 60,
+        "endLine": 103,
+        "endChar": 70
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a06c9c9_c8acf053",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T00:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6643005d_8565338c",
       "range": {
         "startLine": 103,
         "startChar": 60,
@@ -252,6 +348,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb5d6545_11f6e3f8",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T00:42:11Z",
+      "side": 1,
+      "message": "it\u0027s still accurate",
+      "parentUuid": "023de28b_e5cb2976",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 35
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55dc34da_fdd0f5f4",
@@ -265,6 +385,30 @@
       "writtenOn": "2021-04-26T23:43:28Z",
       "side": 1,
       "message": "we will just need one of these now, right?",
+      "range": {
+        "startLine": 199,
+        "startChar": 38,
+        "endLine": 199,
+        "endChar": 46
+      },
+      "revId": "53db76e86bf89230299dd6e6134f598782ed387e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65941866_200880ba",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T00:42:11Z",
+      "side": 1,
+      "message": "No, these are still added per-thread. In the current patchset, they are added recursively, but it\u0027s a bit of a mess because I was thinking this CL was causing b/186468965. Will fix everything up now.",
+      "parentUuid": "55dc34da_fdd0f5f4",
       "range": {
         "startLine": 199,
         "startChar": 38,
