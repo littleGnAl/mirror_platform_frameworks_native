@@ -19,6 +19,7 @@
 #include <binder/RpcConnection.h>
 
 #include <arpa/inet.h>
+#include <inttypes.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
@@ -166,14 +167,14 @@ AddrInfo GetAddrInfo(const char* addr, unsigned int port) {
     return AddrInfo(aiStart, &freeaddrinfo);
 }
 
-bool RpcConnection::setupInetServer(unsigned int port) {
+bool RpcConnection::setupInetServer(unsigned int port, unsigned int* assignedPort) {
     const char* kAddr = "127.0.0.1";
 
     auto aiStart = GetAddrInfo(kAddr, port);
     if (aiStart == nullptr) return false;
     for (auto ai = aiStart.get(); ai != nullptr; ai = ai->ai_next) {
         InetSocketAddress socketAddress(ai->ai_addr, ai->ai_addrlen, kAddr, port);
-        if (setupSocketServer(socketAddress)) return true;
+        if (setupSocketServer(socketAddress, assignedPort)) return true;
     }
     ALOGE("None of the socket address resolved for %s:%u can be set up as inet server.", kAddr,
           port);
@@ -262,7 +263,7 @@ wp<RpcServer> RpcConnection::server() {
     return mForServer;
 }
 
-bool RpcConnection::setupSocketServer(const SocketAddress& addr) {
+bool RpcConnection::setupSocketServer(const SocketAddress& addr, unsigned int* assignedPort) {
     LOG_ALWAYS_FATAL_IF(mServer.get() != -1, "Each RpcConnection can only have one server.");
 
     unique_fd serverFd(
@@ -282,6 +283,25 @@ bool RpcConnection::setupSocketServer(const SocketAddress& addr) {
         int savedErrno = errno;
         ALOGE("Could not listen socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));
         return false;
+    }
+
+    if (assignedPort != nullptr) {
+        if (addr.addr()->sa_family == AF_INET) {
+            sockaddr_in outAddr{};
+            auto* outAddrPtr = reinterpret_cast<sockaddr*>(&outAddr);
+            socklen_t outAddrLen = sizeof(outAddr);
+            if (0 != getsockname(serverFd.get(), outAddrPtr, &outAddrLen)) {
+                int savedErrno = errno;
+                ALOGE("Could not getsockname at %s: %s", addr.toString().c_str(),
+                      strerror(savedErrno));
+                return false;
+            }
+            *assignedPort = ntohs(outAddr.sin_port);
+        } else {
+            *assignedPort = 0;
+            uint16_t family = addr.addr()->sa_family;
+            ALOGW("Cannot infer port number from sa_family %" PRIu16, family);
+        }
     }
 
     mServer = std::move(serverFd);
