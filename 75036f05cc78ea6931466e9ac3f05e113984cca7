@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27aa801_9fb83604",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T16:47:46Z",
+      "side": 1,
+      "message": "can you move this logic inside SocketAddress?",
+      "range": {
+        "startLine": 289,
+        "startChar": 38,
+        "endLine": 289,
+        "endChar": 45
+      },
+      "revId": "75036f05cc78ea6931466e9ac3f05e113984cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "798a5864_58262e52",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T16:47:46Z",
+      "side": 1,
+      "message": "nit: extra variable?",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 69
+      },
+      "revId": "75036f05cc78ea6931466e9ac3f05e113984cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc5071c_45285997",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T16:47:46Z",
+      "side": 1,
+      "message": "err, or this should work on all the socket types, right? I think we should be able to also fill in the port inside of SocketAddress if we use VMADDR_PORT_ANY, for instance. If SocketAddress is non-const, and you use the addr there as the out address, shouldn\u0027t we always get more info?",
+      "range": {
+        "startLine": 293,
+        "startChar": 21,
+        "endLine": 293,
+        "endChar": 32
+      },
+      "revId": "75036f05cc78ea6931466e9ac3f05e113984cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12bf2f66_8686ef94",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T16:47:46Z",
+      "side": 1,
+      "message": "if you avoid the family check or remove the address logic, maybe this branch will go away, but otherwise, should this be a hard error since we only call this function w/o nullptr when sa_family is AF_INET?",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 78
+      },
+      "revId": "75036f05cc78ea6931466e9ac3f05e113984cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ac243d_efaf6e6f",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T16:47:46Z",
+      "side": 1,
+      "message": "can we avoid defaults?",
+      "range": {
+        "startLine": 145,
+        "startChar": 83,
+        "endLine": 145,
+        "endChar": 93
+      },
+      "revId": "75036f05cc78ea6931466e9ac3f05e113984cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
