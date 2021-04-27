@@ -258,6 +258,18 @@ enum class SocketType {
 #endif // __BIONIC__
     INET,
 };
+
+template <typename Fn>
+void setupServer(Fn fn, const sp<RpcConnection>& connection, int* startPort) {
+    const int kNumPortsSearchedBeforeGivingUp = 10;
+    for (int trial = 0; trial < kNumPortsSearchedBeforeGivingUp; trial++, (*startPort)++) {
+        android::base::Result<void> result = std::invoke(fn, connection, *startPort);
+        if (result.ok()) return;
+        LOG(result.error().code() == EADDRINUSE ? ERROR : FATAL) << result.error();
+    }
+    LOG(FATAL) << "Can't find any free ports, giving up @ end port " << *startPort;
+}
+
 static inline std::string PrintSocketType(const testing::TestParamInfo<SocketType>& info) {
     switch (info.param) {
         case SocketType::UNIX:
@@ -304,11 +316,11 @@ public:
                             break;
 #ifdef __BIONIC__
                         case SocketType::VSOCK:
-                            CHECK_RESULT_OK(connection->setupVsockServer(port));
+                            setupServer(&RpcConnection::setupVsockServer, connection, &port);
                             break;
 #endif // __BIONIC__
                         case SocketType::INET:
-                            CHECK_RESULT_OK(connection->setupInetServer(port));
+                            setupServer(&RpcConnection::setupInetServer, connection, &port);
                             break;
                         default:
                             LOG_ALWAYS_FATAL("Unknown socket type");
