@@ -19,6 +19,7 @@
 #include <binder/RpcConnection.h>
 
 #include <arpa/inet.h>
+#include <inttypes.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
@@ -45,8 +46,54 @@ extern "C" pid_t gettid();
 
 namespace android {
 
+using base::borrowed_fd;
 using base::unique_fd;
 using AddrInfo = std::unique_ptr<addrinfo, decltype(&freeaddrinfo)>;
+
+namespace {
+bool checkSockaddrSize(const char* name, size_t actual, size_t expected) {
+    if (actual >= expected) return true;
+    ALOGW("getSockaddrPort: family is %s but size is %zu < %zu", name, actual, expected);
+    return false;
+}
+
+// Get the port number of |storage| for certain families. Requires storage->sa_family to be
+// set to a known family; otherwise, return nullopt.
+std::optional<unsigned int> getSockaddrPort(const sockaddr* storage, socklen_t len) {
+    switch (storage->sa_family) {
+        case AF_INET: {
+            if (!checkSockaddrSize("INET", len, sizeof(sockaddr_in))) return std::nullopt;
+            auto inetStorage = reinterpret_cast<const sockaddr_in*>(storage);
+            return ntohs(inetStorage->sin_port);
+        }
+        default: {
+            uint16_t family = storage->sa_family;
+            ALOGW("Don't know how to infer port for family %" PRIu16, family);
+            return std::nullopt;
+        }
+    }
+}
+
+std::optional<unsigned int> getSocketPort(borrowed_fd socketfd,
+                                          const RpcConnection::SocketAddress& socketAddress) {
+    sockaddr_storage storage{};
+    socklen_t len = sizeof(storage);
+    auto storagePtr = reinterpret_cast<sockaddr*>(&storage);
+    if (0 != getsockname(socketfd.get(), storagePtr, &len)) {
+        int savedErrno = errno;
+        ALOGE("Could not getsockname at %s: %s", socketAddress.toString().c_str(),
+              strerror(savedErrno));
+        return std::nullopt;
+    }
+
+    // getsockname does not fill in family, but getSockaddrPort() needs it.
+    if (storage.ss_family == AF_UNSPEC) {
+        storage.ss_family = socketAddress.addr()->sa_family;
+    }
+    return getSockaddrPort(storagePtr, len);
+}
+
+} // namespace
 
 RpcConnection::SocketAddress::~SocketAddress() {}
 
@@ -89,7 +136,9 @@ private:
 };
 
 bool RpcConnection::setupUnixDomainServer(const char* path) {
-    return setupSocketServer(UnixSocketAddress(path));
+    LOG_ALWAYS_FATAL_IF(mServer.get() != -1, "Each RpcConnection can only have one server.");
+    mServer = setupSocketServer(UnixSocketAddress(path));
+    return mServer.ok();
 }
 
 bool RpcConnection::addUnixDomainClient(const char* path) {
@@ -121,7 +170,9 @@ bool RpcConnection::setupVsockServer(unsigned int port) {
     // realizing value w/ this type at compile time to avoid ubsan abort
     constexpr unsigned int kAnyCid = VMADDR_CID_ANY;
 
-    return setupSocketServer(VsockSocketAddress(kAnyCid, port));
+    LOG_ALWAYS_FATAL_IF(mServer.get() != -1, "Each RpcConnection can only have one server.");
+    mServer = setupSocketServer(VsockSocketAddress(kAnyCid, port));
+    return mServer.ok();
 }
 
 bool RpcConnection::addVsockClient(unsigned int cid, unsigned int port) {
@@ -166,14 +217,31 @@ AddrInfo GetAddrInfo(const char* addr, unsigned int port) {
     return AddrInfo(aiStart, &freeaddrinfo);
 }
 
-bool RpcConnection::setupInetServer(unsigned int port) {
+bool RpcConnection::setupInetServer(unsigned int port, unsigned int* assignedPort) {
+    LOG_ALWAYS_FATAL_IF(mServer.get() != -1, "Each RpcConnection can only have one server.");
+
     const char* kAddr = "127.0.0.1";
 
+    if (assignedPort != nullptr) *assignedPort = 0;
     auto aiStart = GetAddrInfo(kAddr, port);
     if (aiStart == nullptr) return false;
     for (auto ai = aiStart.get(); ai != nullptr; ai = ai->ai_next) {
         InetSocketAddress socketAddress(ai->ai_addr, ai->ai_addrlen, kAddr, port);
-        if (setupSocketServer(socketAddress)) return true;
+        auto server = setupSocketServer(socketAddress);
+        if (!server.ok()) {
+            continue;
+        }
+        auto realPort = getSocketPort(server, socketAddress);
+        LOG_ALWAYS_FATAL_IF(!realPort.has_value(), "Unable to get port number after setting up %s",
+                            socketAddress.toString().c_str());
+        LOG_ALWAYS_FATAL_IF(port != 0 && *realPort != port,
+                            "Reqesting inet server on %s but it is set up on %u.",
+                            socketAddress.toString().c_str(), *realPort);
+        if (assignedPort != nullptr) {
+            *assignedPort = *realPort;
+        }
+        mServer = std::move(server);
+        return true;
     }
     ALOGE("None of the socket address resolved for %s:%u can be set up as inet server.", kAddr,
           port);
@@ -262,30 +330,26 @@ wp<RpcServer> RpcConnection::server() {
     return mForServer;
 }
 
-bool RpcConnection::setupSocketServer(const SocketAddress& addr) {
-    LOG_ALWAYS_FATAL_IF(mServer.get() != -1, "Each RpcConnection can only have one server.");
-
+base::unique_fd RpcConnection::setupSocketServer(const SocketAddress& addr) {
     unique_fd serverFd(
             TEMP_FAILURE_RETRY(socket(addr.addr()->sa_family, SOCK_STREAM | SOCK_CLOEXEC, 0)));
     if (serverFd == -1) {
         ALOGE("Could not create socket: %s", strerror(errno));
-        return false;
+        return unique_fd();
     }
 
     if (0 != TEMP_FAILURE_RETRY(bind(serverFd.get(), addr.addr(), addr.addrSize()))) {
         int savedErrno = errno;
         ALOGE("Could not bind socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));
-        return false;
+        return unique_fd();
     }
 
     if (0 != TEMP_FAILURE_RETRY(listen(serverFd.get(), 1 /*backlog*/))) {
         int savedErrno = errno;
         ALOGE("Could not listen socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));
-        return false;
+        return unique_fd();
     }
-
-    mServer = std::move(serverFd);
-    return true;
+    return serverFd;
 }
 
 bool RpcConnection::addSocketClient(const SocketAddress& addr) {
