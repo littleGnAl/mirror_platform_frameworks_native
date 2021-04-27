@@ -308,7 +308,7 @@ public:
                             break;
 #endif // __BIONIC__
                         case SocketType::INET:
-                            CHECK(connection->setupInetServer(port));
+                            CHECK(connection->setupInetServer(0));
                             break;
                         default:
                             LOG_ALWAYS_FATAL("Unknown socket type");
