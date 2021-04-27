@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "06987de9_76c73b82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-27T07:13:04Z",
+      "side": 1,
+      "message": "Hmm, how can a service know how many clients it has to serve? What if the number of clients are unknown (which should be the usual case)?\n\nIf my understanding is correct, with the current implementation, the first client that connects to this server takes all the three connections (and three threads). The next client can\u0027t make any connection unless the server added another RpcConnection priori.\n\nI wish we have the following programming model:\n\n1) a server listens on a specific address (e.g. localhost:3000). That address becomes an identity of the server.\n\n2) the server initially has a single thread that is blocked on accept()\n\n3) a thread in a client connects to the address. Then server creates a new thread to serve the connection. The main thread then does accept() again.\n\n4) another thread in the same client (or another in a different client) connects to the address. The request is served the same way as (3) until the server reaches the max thread.\n\n5) a thread in a client is destroyed (or perhaps the entire client is killed). This closes the existing connections and allows the server to accept new connections.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8d0c9494_8eda82ce",
@@ -36,6 +59,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6702f4f_993a664a",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-27T07:13:04Z",
+      "side": 1,
+      "message": "Can we cache this, given that setMaxThreads can be called after a connection is made?",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 98
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2e546025_6c783607",
@@ -54,6 +100,53 @@
         "startChar": 0,
         "endLine": 307,
         "endChar": 30
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3862022_cc2c5f9a",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-27T07:13:04Z",
+      "side": 1,
+      "message": "I think, ideally, the client should have direct control over the behavior; They could request to lazily add connections, or create all connections knowing that the client will be having simultaneous calls to the server.",
+      "parentUuid": "2e546025_6c783607",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 30
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba67f35_4277ebb5",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-27T07:13:04Z",
+      "side": 1,
+      "message": "This looks odd to me. These mMaxThreads are blocking on accept() with the same socket address. If, for some reason, a connection is closed, we permanently lose the thread serving the connection. \n\nWe can have one thread doing the accept() and forking a new thread (up to mMaxThreads) to handle the new connection.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 13
       },
       "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
