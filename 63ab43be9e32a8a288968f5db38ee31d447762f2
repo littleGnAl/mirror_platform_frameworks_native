@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e5e8b2_e0600a46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-27T23:39:59Z",
+      "side": 1,
+      "message": "Other than the dynamically allocated threads, I think the rest of the CL is good. I have the same concern that Jiyong has.\n\nOne naive design I can think of is:\n- Only bind() once, with backlock \u003d\u003d # of max threads\n- Have one single thread that is dedicated to accept4(). Once it gets a new fd, spawns a new thread to handle it. \n\nBased on that we should be able to apply the optimizations like not wasting the main thread, tearing down threads when it is necessary, etc.",
+      "revId": "63ab43be9e32a8a288968f5db38ee31d447762f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce4877f9_6078dfcb",
