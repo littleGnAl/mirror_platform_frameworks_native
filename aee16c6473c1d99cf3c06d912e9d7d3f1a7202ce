@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9051ca7e_76d1be10",
+        "filename": "cmds/installd/file_parsing.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-04-27T08:07:23Z",
+      "side": 1,
+      "message": "str_file",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 39
+      },
+      "revId": "aee16c6473c1d99cf3c06d912e9d7d3f1a7202ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
