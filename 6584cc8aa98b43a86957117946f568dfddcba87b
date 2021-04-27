@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9511f283_fa285cb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T17:35:09Z",
+      "side": 1,
+      "message": "\u003e Hmm, how can a service know how many clients it has to serve? What if the number of clients are unknown (which should be the usual case)?\n\nThis is probably the next thing I\u0027ll implement here (this is mentioned under \u0027future considerations\u0027 in the commit message), but it\u0027s probably the next thing I\u0027ll implement. It\u0027s also the next thing Yifan needs to continue working.\n\n\u003e with the current implementation\n\nYeah. Please ignore the RpcServer code details. That is copying the existing behavior from the tests which we need, but it\u0027ll be improved next. I wanted to get the API/port setups correctly, since that\u0027s what affects the APIs for clients.\n\n\u003e I wish we have the following programming model:\n\nLet me preface this by saying that what you describe is great, and if we were designing this from scratch (well we\u0027d probably use protobuf directly or similar), but if we were designing this from scratch, I really like these ideas. However, my goal in this design is copying the binder behavior.\n\n\u003e 1) a server listens on a specific address (e.g. localhost:3000). That address becomes an identity of the server.\n\nThe reason why we need a separate address per port now is that we need a way to distinguish between different clients. Right now, we separate the RpcState data per client (so each RpcConnection object should correspond to one client). This is the easiest way to do it. Though, if we want to combine ports, we might be able to add an API like \u0027addClientId\u0027 so that a client can get a cryptographically secure token it can use to setup new threads. The important thing is that the server can make sure it has a way to group sockets together, by client.\n\n2/3/4\n\nThese can be done under the current API. I\u0027m only creating all the threads from the start for convenience.\n\n5) a thread in a client is destroyed (or perhaps the entire client is killed). This closes the existing connections and allows the server to accept new connections.\n\nYeah, so this should still be possible after I make addClientConnection work after the startup time. Currently this is hanled via RpcConnection::terminate. I definitely agree this is the next thing that needs to be done, but yeah just wanted to finalize the APIs separately so that Yifan/David are unblocked.",
+      "parentUuid": "06987de9_76c73b82",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8d0c9494_8eda82ce",
@@ -84,6 +108,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a01e67c4_2cfe440e",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T17:35:09Z",
+      "side": 1,
+      "message": "Will do when I follow up to switch this to dynamically add additional threads.",
+      "parentUuid": "b6702f4f_993a664a",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 98
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2e546025_6c783607",
         "filename": "libs/binder/RpcConnection.cpp",
         "patchSetId": 3
@@ -129,6 +177,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c20da0_542aafdd",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T17:35:09Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what this TODO is for. Right now, it creates all the connections, and the behavior will be the same to the client. However, all this dynamic behavior can be handled below this API. We won\u0027t expose it at the binder level because kernel binder doesn\u0027t support this.",
+      "parentUuid": "b3862022_cc2c5f9a",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 30
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba67f35_4277ebb5",
@@ -147,6 +219,53 @@
         "startChar": 0,
         "endLine": 94,
         "endChar": 13
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716bbd11_6cd76885",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T17:35:09Z",
+      "side": 1,
+      "message": "Okay, I would like to do this in a follow-up, but there are essentially two options we\u0027re discussing here:\n\n- one is whether multiple different clients connect to the same port. Let\u0027s talk about this separately - I\u0027ll ping you when you\u0027re up in your timezone. I\u0027ll know more after the pkvm security chat tomorrow. Though it might change the APIs somewhat, I think this is still an improvement because we have a single \u0027call client call\u0027 now instead of multiple.\n\n- one is whether these are created lazily/dynamically, and I want to do this (the main reason is currently we allow the server to tell us how many threads we should spawn which is bad). The point of this CL is that it moves the logic to setup the threadpools from the client/server below these APIs.",
+      "parentUuid": "eba67f35_4277ebb5",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6626b130_2120516b",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T17:35:09Z",
+      "side": 1,
+      "message": "note - Jiyong, will definitely work on this next",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 82
       },
       "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
