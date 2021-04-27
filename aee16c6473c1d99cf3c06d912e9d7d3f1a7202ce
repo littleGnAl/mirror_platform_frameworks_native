@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "153a0a83_e6251b43",
+        "filename": "cmds/installd/file_parsing.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-04-27T15:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9051ca7e_76d1be10",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 39
+      },
+      "revId": "aee16c6473c1d99cf3c06d912e9d7d3f1a7202ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf60dfe9_4c844278",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-27T15:36:08Z",
       "side": 1,
       "message": "FYI, this file doesn\u0027t exist at ToT anymore, assuming ParseFiles handles that.",
+      "range": {
+        "startLine": 230,
+        "startChar": 36,
+        "endLine": 230,
+        "endChar": 52
+      },
+      "revId": "aee16c6473c1d99cf3c06d912e9d7d3f1a7202ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e91f399a_2057f623",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-04-27T15:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf60dfe9_4c844278",
       "range": {
         "startLine": 230,
         "startChar": 36,
