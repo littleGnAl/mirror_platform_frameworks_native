@@ -51,6 +51,29 @@
       "parentUuid": "37e59958_21768d99",
       "revId": "c163595f8601b6464dc6dd2185bc5f5e479f856b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0083ad9e_fa2fee08",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-27T01:43:48Z",
+      "side": 1,
+      "message": "nullptr\n\nhttps://linux.die.net/man/2/accept4",
+      "range": {
+        "startLine": 144,
+        "startChar": 67,
+        "endLine": 144,
+        "endChar": 70
+      },
+      "revId": "c163595f8601b6464dc6dd2185bc5f5e479f856b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
