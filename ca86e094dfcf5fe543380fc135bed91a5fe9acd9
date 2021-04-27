@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7294723e_f0f24443",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-27T03:58:02Z",
+      "side": 1,
+      "message": "note: sa_family is unsigned short, but clang-tidy tells me to use uint16_t instead",
+      "range": {
+        "startLine": 302,
+        "startChar": 12,
+        "endLine": 302,
+        "endChar": 20
+      },
+      "revId": "ca86e094dfcf5fe543380fc135bed91a5fe9acd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
