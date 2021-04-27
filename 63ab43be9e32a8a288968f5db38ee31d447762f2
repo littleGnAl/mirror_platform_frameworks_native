@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4877f9_6078dfcb",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T17:47:31Z",
+      "side": 1,
+      "message": "jiyong/david/yifan, please also mention if you know how to fix this race. It seems that we might always have the case where the server isn\u0027t currently inside of accept4. I need to look into it more, but it\u0027s certainly STOPSHIP",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 26
+      },
+      "revId": "63ab43be9e32a8a288968f5db38ee31d447762f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
