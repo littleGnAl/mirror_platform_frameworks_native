@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a06d787_0081f547",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T22:45:42Z",
+      "side": 1,
+      "message": "The right type should already be created inside of SocketAddress, right?",
+      "parentUuid": "898814f9_407c7986",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 78
+      },
+      "revId": "75036f05cc78ea6931466e9ac3f05e113984cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99ac243d_efaf6e6f",
         "filename": "libs/binder/include/binder/RpcConnection.h",
         "patchSetId": 4
