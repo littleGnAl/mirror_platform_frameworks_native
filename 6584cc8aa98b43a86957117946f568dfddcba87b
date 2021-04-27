@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e546025_6c783607",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T00:44:47Z",
+      "side": 1,
+      "message": "especially since otherwise, we risk creating a really big vector here.",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 30
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
