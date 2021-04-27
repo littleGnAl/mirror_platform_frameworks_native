@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "005cf875_a89883b9",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T16:50:07Z",
+      "side": 1,
+      "message": "and if you move the address detection to work on any socket type, and it works on vsock as well, it seems like you could drop this as well and use the same logic as the inet port?",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 20
+      },
+      "revId": "89ac0f9d7dfee84c779dee1d7e5113c8e80771cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
