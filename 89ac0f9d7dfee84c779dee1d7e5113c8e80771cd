@@ -22,6 +22,30 @@
       },
       "revId": "89ac0f9d7dfee84c779dee1d7e5113c8e80771cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0be9a17_c53a028b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-27T21:17:55Z",
+      "side": 1,
+      "message": "Only for inet:\nhttps://man7.org/linux/man-pages/man2/bind.2.html",
+      "parentUuid": "005cf875_a89883b9",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 20
+      },
+      "revId": "89ac0f9d7dfee84c779dee1d7e5113c8e80771cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
