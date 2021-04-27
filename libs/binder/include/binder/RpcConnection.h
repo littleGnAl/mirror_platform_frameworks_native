@@ -15,6 +15,7 @@
  */
 #pragma once
 
+#include <android-base/result.h>
 #include <android-base/unique_fd.h>
 #include <binder/IBinder.h>
 #include <binder/RpcAddress.h>
@@ -52,8 +53,10 @@ public:
      *
      * This should be called once, and then a call should be made to join per
      * connection thread.
+     *
+     * On failure, result code is errno, or 0 on errors that can't be represented by an errno.
      */
-    [[nodiscard]] bool setupUnixDomainServer(const char* path);
+    [[nodiscard]] android::base::Result<void> setupUnixDomainServer(const char* path);
 
     /**
      * This should be called once per thread, matching 'join' in the remote
@@ -64,8 +67,10 @@ public:
 #ifdef __BIONIC__
     /**
      * Creates an RPC server at the current port.
+     *
+     * On failure, result code is errno, or 0 on errors that can't be represented by an errno.
      */
-    [[nodiscard]] bool setupVsockServer(unsigned int port);
+    [[nodiscard]] android::base::Result<void> setupVsockServer(unsigned int port);
 
     /**
      * Connects to an RPC server at the CVD & port.
@@ -75,8 +80,10 @@ public:
 
     /**
      * Creates an RPC server at the current port.
+     *
+     * On failure, result code is errno, or 0 on errors that can't be represented by an errno.
      */
-    [[nodiscard]] bool setupInetServer(unsigned int port);
+    [[nodiscard]] android::base::Result<void> setupInetServer(unsigned int port);
 
     /**
      * Connects to an RPC server at the given address and port.
@@ -136,7 +143,7 @@ private:
         std::optional<pid_t> exclusiveTid;
     };
 
-    bool setupSocketServer(const SocketAddress& address);
+    android::base::Result<void> setupSocketServer(const SocketAddress& address);
     bool addSocketClient(const SocketAddress& address);
     void addClient(base::unique_fd&& fd);
     sp<ConnectionSocket> assignServerToThisThread(base::unique_fd&& fd);

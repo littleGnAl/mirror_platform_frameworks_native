@@ -88,7 +88,7 @@ private:
     sockaddr_un mAddr;
 };
 
-bool RpcConnection::setupUnixDomainServer(const char* path) {
+android::base::Result<void> RpcConnection::setupUnixDomainServer(const char* path) {
     return setupSocketServer(UnixSocketAddress(path));
 }
 
@@ -117,7 +117,7 @@ private:
     sockaddr_vm mAddr;
 };
 
-bool RpcConnection::setupVsockServer(unsigned int port) {
+android::base::Result<void> RpcConnection::setupVsockServer(unsigned int port) {
     // realizing value w/ this type at compile time to avoid ubsan abort
     constexpr unsigned int kAnyCid = VMADDR_CID_ANY;
 
@@ -147,7 +147,7 @@ private:
     unsigned int mPort;
 };
 
-AddrInfo GetAddrInfo(const char* addr, unsigned int port) {
+android::base::Result<AddrInfo> GetAddrInfo(const char* addr, unsigned int port) {
     addrinfo hint{
             .ai_flags = 0,
             .ai_family = AF_UNSPEC,
@@ -156,34 +156,40 @@ AddrInfo GetAddrInfo(const char* addr, unsigned int port) {
     };
     addrinfo* aiStart = nullptr;
     if (int rc = getaddrinfo(addr, std::to_string(port).data(), &hint, &aiStart); 0 != rc) {
-        ALOGE("Unable to resolve %s:%u: %s", addr, port, gai_strerror(rc));
-        return AddrInfo(nullptr, nullptr);
+        return android::base::Error()
+                << "Unable to resolve " << addr << ":" << port << ": " << gai_strerror(rc);
     }
     if (aiStart == nullptr) {
-        ALOGE("Unable to resolve %s:%u: getaddrinfo returns null", addr, port);
-        return AddrInfo(nullptr, nullptr);
+        return android::base::Error()
+                << "Unable to resolve " << addr << ":" << port << ": getaddrinfo returns null";
     }
     return AddrInfo(aiStart, &freeaddrinfo);
 }
 
-bool RpcConnection::setupInetServer(unsigned int port) {
+android::base::Result<void> RpcConnection::setupInetServer(unsigned int port) {
     const char* kAddr = "127.0.0.1";
 
     auto aiStart = GetAddrInfo(kAddr, port);
-    if (aiStart == nullptr) return false;
-    for (auto ai = aiStart.get(); ai != nullptr; ai = ai->ai_next) {
+    if (!aiStart.ok()) return aiStart.error();
+    android::base::Result<void> firstResult;
+    for (auto ai = aiStart->get(); ai != nullptr; ai = ai->ai_next) {
         InetSocketAddress socketAddress(ai->ai_addr, ai->ai_addrlen, kAddr, port);
-        if (setupSocketServer(socketAddress)) return true;
+        auto res = setupSocketServer(socketAddress);
+        if (res.ok()) return {};
+        ALOGE("setupInetServer: failed for 1 addr, trying next: %s", res.error().message().c_str());
+
+        if (firstResult.ok()) firstResult = res;
     }
     ALOGE("None of the socket address resolved for %s:%u can be set up as inet server.", kAddr,
           port);
-    return false;
+    if (firstResult.ok()) return android::base::Error() << "Unknown error for 127.0.0.1:" << port;
+    return firstResult;
 }
 
 bool RpcConnection::addInetClient(const char* addr, unsigned int port) {
     auto aiStart = GetAddrInfo(addr, port);
-    if (aiStart == nullptr) return false;
-    for (auto ai = aiStart.get(); ai != nullptr; ai = ai->ai_next) {
+    if (!aiStart.ok()) return false;
+    for (auto ai = aiStart->get(); ai != nullptr; ai = ai->ai_next) {
         InetSocketAddress socketAddress(ai->ai_addr, ai->ai_addrlen, addr, port);
         if (addSocketClient(socketAddress)) return true;
     }
@@ -262,30 +268,25 @@ wp<RpcServer> RpcConnection::server() {
     return mForServer;
 }
 
-bool RpcConnection::setupSocketServer(const SocketAddress& addr) {
+android::base::Result<void> RpcConnection::setupSocketServer(const SocketAddress& addr) {
     LOG_ALWAYS_FATAL_IF(mServer.get() != -1, "Each RpcConnection can only have one server.");
 
     unique_fd serverFd(
             TEMP_FAILURE_RETRY(socket(addr.addr()->sa_family, SOCK_STREAM | SOCK_CLOEXEC, 0)));
     if (serverFd == -1) {
-        ALOGE("Could not create socket: %s", strerror(errno));
-        return false;
+        return android::base::ErrnoError() << "Could not create socket for " << addr.toString();
     }
 
     if (0 != TEMP_FAILURE_RETRY(bind(serverFd.get(), addr.addr(), addr.addrSize()))) {
-        int savedErrno = errno;
-        ALOGE("Could not bind socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));
-        return false;
+        return android::base::ErrnoError() << "Could not bind socket at " << addr.toString();
     }
 
     if (0 != TEMP_FAILURE_RETRY(listen(serverFd.get(), 1 /*backlog*/))) {
-        int savedErrno = errno;
-        ALOGE("Could not listen socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));
-        return false;
+        return android::base::ErrnoError() << "Could not listen socket at " << addr.toString();
     }
 
     mServer = std::move(serverFd);
-    return true;
+    return {};
 }
 
 bool RpcConnection::addSocketClient(const SocketAddress& addr) {

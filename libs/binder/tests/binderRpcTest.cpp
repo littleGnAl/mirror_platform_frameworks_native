@@ -300,15 +300,15 @@ public:
 
                     switch (socketType) {
                         case SocketType::UNIX:
-                            CHECK(connection->setupUnixDomainServer(addr.c_str())) << addr;
+                            CHECK_RESULT_OK(connection->setupUnixDomainServer(addr.c_str()));
                             break;
 #ifdef __BIONIC__
                         case SocketType::VSOCK:
-                            CHECK(connection->setupVsockServer(port));
+                            CHECK_RESULT_OK(connection->setupVsockServer(port));
                             break;
 #endif // __BIONIC__
                         case SocketType::INET:
-                            CHECK(connection->setupInetServer(port));
+                            CHECK_RESULT_OK(connection->setupInetServer(port));
                             break;
                         default:
                             LOG_ALWAYS_FATAL("Unknown socket type");
