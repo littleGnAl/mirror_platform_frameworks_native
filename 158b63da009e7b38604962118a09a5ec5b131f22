@@ -39,6 +39,30 @@
       },
       "revId": "158b63da009e7b38604962118a09a5ec5b131f22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b7cc180_49f4d771",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T00:48:41Z",
+      "side": 1,
+      "message": "This value is used at runtime. It needs to be in .ro.data or similar.",
+      "parentUuid": "7092fbd5_1cb7fda6",
+      "range": {
+        "startLine": 170,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 9
+      },
+      "revId": "158b63da009e7b38604962118a09a5ec5b131f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
