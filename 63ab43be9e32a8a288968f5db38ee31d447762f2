@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6712b117_2d9bfb27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-28T02:12:49Z",
+      "side": 1,
+      "message": "Yeah, so there are two possibilities here, hoping to talk to you/Jiyong about it this week.\n\n- accept4 per server (shared between clients) - also need to figure out a way for the server to separate and detect different clients. Will hopefully be able to say what this would look like after a security review tomorrow.\n- accept4 per client - this is definitely the POR to follow this up\n\nI would already have CLs on top of this, but blocked on something unrelated. Personally, I\u0027m happy to merge this now and do follow-ups, but will also start adding CLs on top, hopefully soon.",
+      "parentUuid": "7d46ec86_37bad6d2",
+      "revId": "63ab43be9e32a8a288968f5db38ee31d447762f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce4877f9_6078dfcb",
