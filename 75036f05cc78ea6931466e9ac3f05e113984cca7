@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e48606_4ccaa6da",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T00:58:35Z",
+      "side": 1,
+      "message": "See if it looks better now. I use sockaddr_storage instead.",
+      "parentUuid": "c27aa801_9fb83604",
+      "range": {
+        "startLine": 289,
+        "startChar": 38,
+        "endLine": 289,
+        "endChar": 45
+      },
+      "revId": "75036f05cc78ea6931466e9ac3f05e113984cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "798a5864_58262e52",
@@ -142,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c3aae6_23d97bc3",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T00:58:35Z",
+      "side": 1,
+      "message": "Not InetSocketAddress, which is a borrowed sockaddr* from getaddrinfo().\n\nSee if it looks better now. I made it generic so that when we want to use VMADDR_PORT_ANY for vsock, just specify a non-null outSockAddr / outSockLen to call getsockname for vsock as well.",
+      "parentUuid": "9d36e08a_54345836",
+      "range": {
+        "startLine": 293,
+        "startChar": 21,
+        "endLine": 293,
+        "endChar": 32
+      },
+      "revId": "75036f05cc78ea6931466e9ac3f05e113984cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12bf2f66_8686ef94",
@@ -213,6 +261,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f02a44a_d206bf9b",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T00:58:35Z",
+      "side": 1,
+      "message": "See previous comment",
+      "parentUuid": "1a06d787_0081f547",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 78
+      },
+      "revId": "75036f05cc78ea6931466e9ac3f05e113984cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99ac243d_efaf6e6f",
@@ -226,6 +298,30 @@
       "writtenOn": "2021-04-27T16:47:46Z",
       "side": 1,
       "message": "can we avoid defaults?",
+      "range": {
+        "startLine": 145,
+        "startChar": 83,
+        "endLine": 145,
+        "endChar": 93
+      },
+      "revId": "75036f05cc78ea6931466e9ac3f05e113984cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e306d74_1f766384",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T00:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99ac243d_efaf6e6f",
       "range": {
         "startLine": 145,
         "startChar": 83,
