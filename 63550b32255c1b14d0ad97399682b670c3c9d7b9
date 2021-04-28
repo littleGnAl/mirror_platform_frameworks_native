@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ac9ad6_2caec939",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T02:22:05Z",
+      "side": 1,
+      "message": "I moved it to setupInetServer",
+      "parentUuid": "355cfb85_5661e5bc",
+      "range": {
+        "startLine": 206,
+        "startChar": 8,
+        "endLine": 206,
+        "endChar": 24
+      },
+      "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68b30dc6_97f91b7c",
@@ -85,6 +109,30 @@
       "writtenOn": "2021-04-28T01:27:33Z",
       "side": 1,
       "message": "this should be a hard error (we should always know how to handle the sockets we set up)",
+      "range": {
+        "startLine": 211,
+        "startChar": 60,
+        "endLine": 211,
+        "endChar": 73
+      },
+      "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1342cae_597da25a",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T02:22:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68b30dc6_97f91b7c",
       "range": {
         "startLine": 211,
         "startChar": 60,
@@ -112,6 +160,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22268daf_2782029a",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T02:22:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e09205_d81150b2",
+      "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d293b8ba_7157e09d",
@@ -125,6 +191,30 @@
       "writtenOn": "2021-04-28T01:27:33Z",
       "side": 1,
       "message": "we have all of this functionality which is only used for one caller of setupSocketServer, and here it is working on a specific fd. It makes me feel like this should be in a separate function. WDYT?",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 33
+      },
+      "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3020813_23e98f9d",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T02:22:05Z",
+      "side": 1,
+      "message": "I moved it to setupInetServer",
+      "parentUuid": "d293b8ba_7157e09d",
       "range": {
         "startLine": 325,
         "startChar": 0,
