@@ -116,6 +116,30 @@
       },
       "revId": "63ab43be9e32a8a288968f5db38ee31d447762f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2868bca4_06da82c9",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T03:30:00Z",
+      "side": 1,
+      "message": "I think about this a bit more. \n\nWhy does the client need to know how many threads the server can handle? And why does the client need to connect() the exact number of times as the number of threads in the server?\n\nFor example, the server can have 5 threads (meaning that it can handle 5 clients), and there can be 5 separate clients from different processes. A server should be able to handle clients from different places.\n\nI think it makes more sense if we delete setupSocketClient and rename setupOneSocketSclient to setupSocketClient.",
+      "parentUuid": "969bf3df_0d75d0e0",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 26
+      },
+      "revId": "63ab43be9e32a8a288968f5db38ee31d447762f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
