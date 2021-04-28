@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1658a005_be49b04f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1086703
+      },
+      "writtenOn": "2021-04-28T19:05:25Z",
+      "side": 1,
+      "message": "The internal conflict resolution CL has merged. Retrying presubmit.",
+      "revId": "a005572a1b0f4e2c6416974cb9f3c1701404f428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
