@@ -22,6 +22,30 @@
       },
       "revId": "b00ff661e809f67b51dc93ae58f66647cd84f620",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a47179ea_88f7567e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T02:30:03Z",
+      "side": 1,
+      "message": "nah I\u0027d like to split them. One CL should focus on one change",
+      "parentUuid": "52eace86_a4ecbdf3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "b00ff661e809f67b51dc93ae58f66647cd84f620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
