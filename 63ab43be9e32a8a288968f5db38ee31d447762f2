@@ -157,6 +157,30 @@
       },
       "revId": "63ab43be9e32a8a288968f5db38ee31d447762f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20b2fe9_72f81b42",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-28T21:12:37Z",
+      "side": 1,
+      "message": "\u003e Why does the client need to know how many threads the server can handle?\n\nIt needs to know how many sockets it can make calls on simultaneously, since the client needs to handle dispatching calls (binder clients don\u0027t need to worry about this since the kernel handles this, but we don\u0027t have that here).\n\n\u003e why does the client need to connect() the exact number of times as the number of threads in the server?\n\nThis is to easily implement this API, and is the next thing I\u0027m planning on fixing (making this dynamic). This will be needed in general so that for N threads, the client can make up to N synchronous calls (that might also be handling nested calls at the same time) at the same time.\n\n\u003e A server should be able to handle clients from different places.\n\nYeah, the other change I need to add is to allow addClientConnection to be called later and also reuse the same threads to handle calls on the server side. See the doc I tagged you in today for a discussion on how to have all the clients share the port. At that point, additional server configuration could be handled by RpcServer directly.\n\n\u003e  if we delete setupSocketClient and rename setupOneSocketSclient to setupSocketClient.\n\nNo, this encapsulates the behavior that we need to simulate binder threadpools. The logic to set this up needs to be underneath the libbinder APIs so that the same code can transparently use regular or RPC binder.",
+      "parentUuid": "2868bca4_06da82c9",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 26
+      },
+      "revId": "63ab43be9e32a8a288968f5db38ee31d447762f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
