@@ -1345,7 +1345,7 @@ static Dumpstate::RunStatus RunDumpsysHigh() {
     // high priority. Reduce timeout once they are able to dump in a shorter time or
     // moved to a parallel task.
     RunDumpsysText("DUMPSYS HIGH", IServiceManager::DUMP_FLAG_PRIORITY_HIGH,
-                   /* timeout= */ 90s, /* service_timeout= */ 30s);
+                   /* timeout= */ 90s, /* service_timeout= */ 60s);
 
     RETURN_IF_USER_DENIED_CONSENT();
 
