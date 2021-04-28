@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "355cfb85_5661e5bc",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T01:32:37Z",
+      "side": 1,
+      "message": "I thought you want to do this for vsock as well, so I put the logic of calling getsockname in setupSocketServer.\n\nThough, I am not sure after you use VMADDR_PORT_ANY, you can get the port number via getsockname or not.",
+      "parentUuid": "b7b944db_d08842df",
+      "range": {
+        "startLine": 206,
+        "startChar": 8,
+        "endLine": 206,
+        "endChar": 24
+      },
+      "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68b30dc6_97f91b7c",
         "filename": "libs/binder/RpcConnection.cpp",
         "patchSetId": 5
