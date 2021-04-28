@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "123a225c_1cb689fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-28T17:23:38Z",
+      "side": 1,
+      "message": "I added you both to the notes today where we were talking about how to setup this handshake. Once we have a consensus there, we\u0027ll implement something. Currently, I\u0027m leaning towards full TLS, but we\u0027ll see.\n\nFor getCalling* I have some notes locally, but filed b/186647790 to make sure it\u0027s not forgotten",
+      "parentUuid": "6e69b0a3_697eebb9",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8d0c9494_8eda82ce",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
