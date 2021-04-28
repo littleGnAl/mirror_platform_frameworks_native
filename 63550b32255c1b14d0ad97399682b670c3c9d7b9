@@ -22,6 +22,93 @@
       },
       "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b944db_d08842df",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-28T01:27:33Z",
+      "side": 1,
+      "message": "Do we need all of this to provide this functionality? It occurs to me, the laziest way to do this CL might be this here: \n\n    if (!setupSocketServer(socketAddress)) continue;\n    if (assignedPort !\u003d nullptr) {\n        sockaddr_in outAddr;\n        if (0 !\u003d getsockname(serverFd.get(), \u0026outAddr, sizeof(outAddr)) ...\n        *assignedPort \u003d outAddr-\u003esin_port;\n    }\n\nAll of the code here is doing work to make this happen (in 3 different places), but we don\u0027t get any additional functionality. Consider the YAGNI principle or rule of 3s for abstraction layers. Since we\u0027re only supporting it for inet, we can do a small amount of things. If we do it for vsock as well (or allow you to query the unix domain socket address etc..), then we should add an abstraction layer. It would be easy to make a new abstraction layer then than to have to refactor the existing one.",
+      "parentUuid": "4ab6d4c3_d52f1814",
+      "range": {
+        "startLine": 206,
+        "startChar": 8,
+        "endLine": 206,
+        "endChar": 24
+      },
+      "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68b30dc6_97f91b7c",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-28T01:27:33Z",
+      "side": 1,
+      "message": "this should be a hard error (we should always know how to handle the sockets we set up)",
+      "range": {
+        "startLine": 211,
+        "startChar": 60,
+        "endLine": 211,
+        "endChar": 73
+      },
+      "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e09205_d81150b2",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-28T01:27:33Z",
+      "side": 1,
+      "message": "should we CHECK if port !\u003d 0, then assignedPort should be the same as port?",
+      "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d293b8ba_7157e09d",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-28T01:27:33Z",
+      "side": 1,
+      "message": "we have all of this functionality which is only used for one caller of setupSocketServer, and here it is working on a specific fd. It makes me feel like this should be in a separate function. WDYT?",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 33
+      },
+      "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
