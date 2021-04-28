@@ -92,6 +92,30 @@
       },
       "revId": "63ab43be9e32a8a288968f5db38ee31d447762f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "969bf3df_0d75d0e0",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T02:39:58Z",
+      "side": 1,
+      "message": "Do I understand the problem correctly?\n\n- Client calls connect();\n- server unblocks from accept(), dispatching the fd to some handler\n- If any client calls connect() during this time, the server won\u0027t be able to respond because it is not accept()-ing\n- server finishes dispatching the fd, call into accept() again\n\nThe problem is #3 right? That\u0027s why you need the 5 trials?\n\nIf that\u0027s the case, I think this is unavoidable.",
+      "parentUuid": "ce4877f9_6078dfcb",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 26
+      },
+      "revId": "63ab43be9e32a8a288968f5db38ee31d447762f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
