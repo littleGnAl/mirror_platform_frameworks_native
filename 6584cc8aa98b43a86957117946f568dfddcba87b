@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "20989128_87d5dc0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-28T12:39:11Z",
+      "side": 1,
+      "message": "\u003e The reason why we need a separate address per port now is that we need a way to distinguish between different clients.\n\nI must be missing something, but could you explain why the server has to be able to tell if two TCP connections are from the same client (process) or not?\n\nIs that perhaps to have a remote equivalent of getCallingPid() and friends? If so, I think that the client should generate a pub/priv key pair, sign its identity (which could be \u003cip,pid\u003e or could even be a random number), send the signed certificate to the server when the connection is first made. Server then challenges the client by encrypting a random number using the public key that the client has sent. If client answers with the same random number (by decrypting the challenge using its private key), the server can trust the identity that the client has sent. This is similar to the TLS client authentication.\n\nThe initial version of this handshaking process can be implemented by letting the server always trust the client\u0027s identity without challenging it. Later, we could fill the missing steps.",
+      "parentUuid": "9511f283_fa285cb7",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "6584cc8aa98b43a86957117946f568dfddcba87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8d0c9494_8eda82ce",
