@@ -70,6 +70,30 @@
       },
       "revId": "89ac0f9d7dfee84c779dee1d7e5113c8e80771cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21f76beb_e682f614",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T00:55:46Z",
+      "side": 1,
+      "message": "EADDRINUSE\n              (Internet domain sockets) The port number was specified as\n              zero in the socket address structure, but, upon attempting\n              to bind to an ephemeral port, it was determined that all\n              port numbers in the ephemeral port range are currently in\n              use.  See the discussion of\n              /proc/sys/net/ipv4/ip_local_port_range ip(7).\n\nSo port \u003d\u003d 0 means pick any ephemeral port for inet, but not necessary for vsock.\n\nLet\u0027s use VMADDR_PORT_ANY in a follow up CL.",
+      "parentUuid": "35caf34b_7406d004",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 20
+      },
+      "revId": "89ac0f9d7dfee84c779dee1d7e5113c8e80771cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
