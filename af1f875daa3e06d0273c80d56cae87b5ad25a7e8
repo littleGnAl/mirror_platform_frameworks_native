@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000010296121",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1687432?revision\u003d6",
+      "fixSuggestions": [
+        {
+          "fixId": "c0c44d3b_9f98691b",
+          "description": "Change to \"libs/binder/RpcConnection.cpp\"",
+          "replacements": [
+            {
+              "path": "libs/binder/RpcConnection.cpp",
+              "range": {
+                "startLine": 238,
+                "startChar": 29,
+                "endLine": 238,
+                "endChar": 38
+              },
+              "replacement": "Requesting"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "54afe7c6_18a9f16d",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-28T02:21:41Z",
+      "side": 1,
+      "message": "Common typo found: \"Reqesting\" -- should it be \"Requesting\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 238,
+        "startChar": 29,
+        "endLine": 238,
+        "endChar": 38
+      },
+      "revId": "af1f875daa3e06d0273c80d56cae87b5ad25a7e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
