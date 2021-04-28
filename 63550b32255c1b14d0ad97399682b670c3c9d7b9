@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab6d4c3_d52f1814",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-28T00:59:45Z",
+      "side": 1,
+      "message": "note: using sockaddr_storage not sockaddr_in because we might want to tweak L199~L202 to support IPv6 in the future",
+      "range": {
+        "startLine": 206,
+        "startChar": 8,
+        "endLine": 206,
+        "endChar": 24
+      },
+      "revId": "63550b32255c1b14d0ad97399682b670c3c9d7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
