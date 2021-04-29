@@ -16,6 +16,23 @@
       "message": "TH is failing because missing ag/14315937; I\u0027ll need to get that in first.",
       "revId": "800bb2942d6a5c810aa6b95e9156c420e56d27a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6259409c_cee3c8bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-29T22:04:44Z",
+      "side": 1,
+      "message": "Internal CL is in, retrying",
+      "revId": "800bb2942d6a5c810aa6b95e9156c420e56d27a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
