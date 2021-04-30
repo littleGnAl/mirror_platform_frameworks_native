@@ -39,6 +39,30 @@
       },
       "revId": "866c0dfc85f5d6e2d893195ca747a41ad7148b66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6919075e_5f241e48",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2021-04-30T15:38:46Z",
+      "side": 1,
+      "message": "Thanks for the feedback. I\u0027ll copy it into the bug and let\u0027s discuss it there. This seems like a longer conversation.",
+      "parentUuid": "8a792e39_c53eea30",
+      "range": {
+        "startLine": 1348,
+        "startChar": 62,
+        "endLine": 1348,
+        "endChar": 64
+      },
+      "revId": "866c0dfc85f5d6e2d893195ca747a41ad7148b66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
