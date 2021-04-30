@@ -16,6 +16,29 @@
       "message": "Can I please get an Owner to review?",
       "revId": "866c0dfc85f5d6e2d893195ca747a41ad7148b66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a792e39_c53eea30",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-04-30T07:57:22Z",
+      "side": 1,
+      "message": "no problem in increasing the timeout for meminfo, but increasing it for all high services can cause bugreports to take a long time when the device is broken in some ways. For eg if you take a bugreport on a device that\u0027s sluggish, because it\u0027s sluggish, then nearly all services will timeout and bugreports end up taking way too long. Also it eats into the timeout for the overall dump, which is only 90s, ending up not dumping services which was legit dumps.\n\nI don\u0027t think it\u0027s very easy to increase timeout just for meminfo service..But can the meminfo service dump be made faster?\n\nCritical services are dumped with 500ms service timeout, and normal with 10s. 60s for high seems too much in comparison",
+      "range": {
+        "startLine": 1348,
+        "startChar": 62,
+        "endLine": 1348,
+        "endChar": 64
+      },
+      "revId": "866c0dfc85f5d6e2d893195ca747a41ad7148b66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
