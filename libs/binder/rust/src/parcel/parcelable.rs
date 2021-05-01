@@ -39,6 +39,13 @@ pub trait Serialize {
 pub trait Deserialize: Sized {
     /// Deserialize an instance from the given [`Parcel`].
     fn deserialize(parcel: &Parcel) -> Result<Self>;
+
+    /// Deserialize an instance from the given [`Parcel`] on top
+    /// of the current object, overwriting the old value.
+    fn deserialize_in_place(&mut self, parcel: &Parcel) -> Result<()> {
+        *self = Self::deserialize(parcel)?;
+        Ok(())
+    }
 }
 
 /// Helper trait for types that can be serialized as arrays.
@@ -183,6 +190,12 @@ pub trait DeserializeOption: Deserialize {
         } else {
             parcel.read().map(Some)
         }
+    }
+
+    /// Deserialize an Option of this type from the given [`Parcel`] in place.
+    fn deserialize_option_in_place(this: &mut Option<Self>, parcel: &Parcel) -> Result<()> {
+        *this = Self::deserialize_option(parcel)?;
+        Ok(())
     }
 }
 
@@ -676,6 +689,75 @@ impl<T: SerializeOption> Serialize for Option<T> {
 impl<T: DeserializeOption> Deserialize for Option<T> {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
         DeserializeOption::deserialize_option(parcel)
+    }
+
+    fn deserialize_in_place(&mut self, parcel: &Parcel) -> Result<()> {
+        DeserializeOption::deserialize_option_in_place(self, parcel)
+    }
+}
+
+/// Implement `Deserialize` trait and friends for a parcelable
+///
+/// This is an internal macro used by the AIDL compiler to implement
+/// `Deserialize`, `DeserializeArray` and `DeserializeOption` for
+/// structured parcelables. The target type must implement a
+/// `deserialize_parcelable` method with the following signature:
+/// ```no_run
+/// fn deserialize_parcelable(
+///     &mut self,
+///     parcel: &binder::parcel::Parcelable,
+/// ) -> binder::Result<()> {
+///     // ...
+/// }
+/// ```
+#[macro_export]
+macro_rules! impl_deserialize_for_parcelable {
+    ($parcelable:ident) => {
+        impl $crate::parcel::Deserialize for $parcelable {
+            fn deserialize(
+                parcel: &$crate::parcel::Parcel,
+            ) -> $crate::Result<Self> {
+                $crate::parcel::DeserializeOption::deserialize_option(parcel)
+                    .transpose()
+                    .unwrap_or(Err($crate::StatusCode::UNEXPECTED_NULL))
+            }
+            fn deserialize_in_place(
+                &mut self,
+                parcel: &$crate::parcel::Parcel,
+            ) -> $crate::Result<()> {
+                let status: i32 = parcel.read()?;
+                if status == 0 {
+                    Err($crate::StatusCode::UNEXPECTED_NULL)
+                } else {
+                    self.deserialize_parcelable(parcel)
+                }
+            }
+        }
+
+        impl $crate::parcel::DeserializeArray for $parcelable {}
+
+        impl $crate::parcel::DeserializeOption for $parcelable {
+            fn deserialize_option(
+                parcel: &$crate::parcel::Parcel,
+            ) -> $crate::Result<Option<Self>> {
+                let mut result = None;
+                Self::deserialize_option_in_place(&mut result, parcel)?;
+                Ok(result)
+            }
+            fn deserialize_option_in_place(
+                this: &mut Option<Self>,
+                parcel: &$crate::parcel::Parcel,
+            ) -> $crate::Result<()> {
+                let status: i32 = parcel.read()?;
+                if status == 0 {
+                    *this = None;
+                    Ok(())
+                } else {
+                    this.get_or_insert_with(Self::default)
+                        .deserialize_parcelable(parcel)
+                }
+            }
+        }
     }
 }
 
