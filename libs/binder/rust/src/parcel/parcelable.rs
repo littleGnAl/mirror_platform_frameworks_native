@@ -39,6 +39,13 @@ pub trait Serialize {
 pub trait Deserialize: Sized {
     /// Deserialize an instance from the given [`Parcel`].
     fn deserialize(parcel: &Parcel) -> Result<Self>;
+
+    /// Deserialize an instance from the given [`Parcel`] on top
+    /// of the current object, overwriting the old value.
+    fn deserialize_in_place(&mut self, parcel: &Parcel) -> Result<()> {
+        *self = Self::deserialize(parcel)?;
+        Ok(())
+    }
 }
 
 /// Helper trait for types that can be serialized as arrays.
@@ -183,6 +190,12 @@ pub trait DeserializeOption: Deserialize {
         } else {
             parcel.read().map(Some)
         }
+    }
+
+    /// Deserialize an Option of this type from the given [`Parcel`] in place.
+    fn deserialize_option_in_place(this: &mut Option<Self>, parcel: &Parcel) -> Result<()> {
+        *this = Self::deserialize_option(parcel)?;
+        Ok(())
     }
 }
 
@@ -676,6 +689,10 @@ impl<T: SerializeOption> Serialize for Option<T> {
 impl<T: DeserializeOption> Deserialize for Option<T> {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
         DeserializeOption::deserialize_option(parcel)
+    }
+
+    fn deserialize_in_place(&mut self, parcel: &Parcel) -> Result<()> {
+        DeserializeOption::deserialize_option_in_place(self, parcel)
     }
 }
 

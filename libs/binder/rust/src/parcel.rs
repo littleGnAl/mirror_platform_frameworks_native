@@ -219,6 +219,12 @@ impl Parcel {
         D::deserialize(self)
     }
 
+    /// Attempt to read a type that implements [`Deserialize`] from this
+    /// `Parcel` in place, overwriting the old value.
+    pub fn read_in_place<D: Deserialize>(&self, x: &mut D) -> Result<()> {
+        x.deserialize_in_place(self)
+    }
+
     /// Read a vector size from the `Parcel` and resize the given output vector
     /// to be correctly sized for that amount of data.
     ///
