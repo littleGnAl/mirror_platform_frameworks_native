@@ -33,6 +33,24 @@
       "message": "```\nLOG_ALWAYS_FATAL_IF(socketAddress.addr()-\u003esa_family \u003d\u003d AF_INET)\n```\nHere? Otherwise, L182 / L184 you can\u0027t be sure the struct is an sockaddr_in. sizeof() check at L190 isn\u0027t sufficient since you could have another struct type of the same size.",
       "revId": "22b36166563c65bb752975d348c8a13736a3d525",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31f6e3d_9d86e538",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-03T18:18:03Z",
+      "side": 1,
+      "message": "Done, thanks",
+      "parentUuid": "c30c9895_cb064397",
+      "revId": "22b36166563c65bb752975d348c8a13736a3d525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
