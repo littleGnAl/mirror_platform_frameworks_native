@@ -49,6 +49,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a58416f3_7c5d5456",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-03T19:10:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "82a7e04b_cf6056bd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "581b3bf853430add1b0da00fd7cb075627c4d6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a9472bb1_ac4cc910",
         "filename": "libs/binder/RpcServer.cpp",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "writtenOn": "2021-05-03T19:02:41Z",
       "side": 1,
       "message": "nit: maybe set value of RPC_CONNECTION_ID_NEW to be a negative number, or add some comments here?\n\nIt takes me 30 seconds to realize that because L157 is before L159~162, IDs always start with 1, so id\u003d0 can be reserved for \"new\". If mConnectionIdCounter is incremented after it is used, then id\u003d0 has two conflicted meanings.\n\nAlso, just to confirm that I understand the code correctly, we could have remove the mConnectionIdCounter member variable, and infer it here like this:\n\n```\nauto last \u003d mConnections.empty() ? 0 : mConnections.cbegin()-\u003efirst;\nauto connectionIdCounter \u003d last + 1;\n```\n\nRight? I know this is even harder to understand, so I am not recommending you to do this.",
+      "range": {
+        "startLine": 154,
+        "startChar": 22,
+        "endLine": 154,
+        "endChar": 43
+      },
+      "revId": "581b3bf853430add1b0da00fd7cb075627c4d6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac2c9ddf_8406aced",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-03T19:10:36Z",
+      "side": 1,
+      "message": "For RPC_CONNECTION_ID_NEW - I was being too clever there. Changed to -1, but do keep in mind this is placeholder code to get the APIs in the place they need to be. The real client ID will have to be based on the TLS certificate of the client or cryptographically long.\n\nWe shouldn\u0027t infer the ID because it should be possible to remove connections (I\u0027ll also make it so that when an RPC connection closes, it will drop itself from the server). I\u0027ll do this in a separate CL, since it should come with even more tests.",
+      "parentUuid": "a9472bb1_ac4cc910",
       "range": {
         "startLine": 154,
         "startChar": 22,
