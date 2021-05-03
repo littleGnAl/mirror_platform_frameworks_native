@@ -57,6 +57,30 @@
       },
       "revId": "7546ed39e482e4c509d449a2e0516d554a102b96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40addfd_12c2cdb5",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-03T18:26:20Z",
+      "side": 1,
+      "message": "According to the C++ standard, yes, but this is defined on all real hardware. This is also already a common pattern in libbinder. It\u0027ll either be read as a \u00270\u0027 or \u00271\u0027. If a race or bug causes it to be read as \u00270\u0027, then adding a lock won\u0027t help detect any problem :(",
+      "parentUuid": "2d016041_fd5040a3",
+      "range": {
+        "startLine": 103,
+        "startChar": 24,
+        "endLine": 103,
+        "endChar": 32
+      },
+      "revId": "7546ed39e482e4c509d449a2e0516d554a102b96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
