@@ -24,6 +24,7 @@
 #include <string_view>
 
 #include <binder/Parcel.h>
+#include <binder/RpcServer.h>
 #include <binder/Stability.h>
 #include <utils/String8.h>
 
@@ -87,8 +88,7 @@ bool RpcConnection::addNullDebuggingClient() {
         return false;
     }
 
-    addClient(std::move(serverFd));
-    return true;
+    return addClient(std::move(serverFd));
 }
 
 sp<IBinder> RpcConnection::getRootObject() {
@@ -99,6 +99,23 @@ sp<IBinder> RpcConnection::getRootObject() {
 status_t RpcConnection::getMaxThreads(size_t* maxThreads) {
     ExclusiveSocket socket(sp<RpcConnection>::fromExisting(this), SocketUse::CLIENT);
     return state()->getMaxThreads(socket.fd(), sp<RpcConnection>::fromExisting(this), maxThreads);
+}
+
+void RpcConnection::terminate() {
+    {
+        std::lock_guard<std::mutex> _l(mSocketMutex);
+        if (mTerminated) return;
+        // this is separate from RpcState termination since RpcState
+        // termination might happen independently and also needs to call
+        // destructors which may call into this
+        mTerminated = true;
+    }
+
+    // FIXME: force existing server threads to terminate
+
+    sp<RpcServer> server = mForServer.promote();
+    server->onConnectionTerminating(sp<RpcConnection>::fromExisting(this));
+    mState->terminate();
 }
 
 status_t RpcConnection::transact(const RpcAddress& address, uint32_t code, const Parcel& data,
@@ -135,6 +152,10 @@ status_t RpcConnection::readId() {
 
 void RpcConnection::startThread(unique_fd client) {
     std::lock_guard<std::mutex> _l(mSocketMutex);
+    if (mTerminated) {
+        ALOGW("Can't add new server thread to terminated RpcConnection");
+        return;
+    }
     sp<RpcConnection> holdThis = sp<RpcConnection>::fromExisting(this);
     int fd = client.release();
     auto thread = std::thread([=] {
@@ -152,6 +173,7 @@ void RpcConnection::join(unique_fd client) {
     // must be registered to allow arbitrary client code executing commands to
     // be able to do nested calls (we can't only read from it)
     sp<ConnectionSocket> socket = assignServerToThisThread(std::move(client));
+    if (socket == nullptr) return;
 
     while (true) {
         status_t error =
@@ -233,15 +255,19 @@ bool RpcConnection::setupOneSocketClient(const RpcSocketAddress& addr, int32_t i
 
     LOG_RPC_DETAIL("Socket at %s client with fd %d", addr.toString().c_str(), serverFd.get());
 
-    addClient(std::move(serverFd));
-    return true;
+    return addClient(std::move(serverFd));
 }
 
-void RpcConnection::addClient(unique_fd fd) {
+bool RpcConnection::addClient(unique_fd fd) {
     std::lock_guard<std::mutex> _l(mSocketMutex);
+    if (mTerminated) {
+        ALOGW("Can't add client to terminated RpcConnection");
+        return false;
+    }
     sp<ConnectionSocket> connection = sp<ConnectionSocket>::make();
     connection->fd = std::move(fd);
     mClients.push_back(connection);
+    return true;
 }
 
 void RpcConnection::setForServer(const wp<RpcServer>& server, int32_t connectionId) {
@@ -251,6 +277,10 @@ void RpcConnection::setForServer(const wp<RpcServer>& server, int32_t connection
 
 sp<RpcConnection::ConnectionSocket> RpcConnection::assignServerToThisThread(unique_fd fd) {
     std::lock_guard<std::mutex> _l(mSocketMutex);
+    if (mTerminated) {
+        ALOGW("Can't assign server thread after terminated RpcConnection");
+        return nullptr;
+    }
     sp<ConnectionSocket> connection = sp<ConnectionSocket>::make();
     connection->fd = std::move(fd);
     connection->exclusiveTid = gettid();
@@ -260,10 +290,20 @@ sp<RpcConnection::ConnectionSocket> RpcConnection::assignServerToThisThread(uniq
 }
 
 bool RpcConnection::removeServerSocket(const sp<ConnectionSocket>& socket) {
-    std::lock_guard<std::mutex> _l(mSocketMutex);
-    if (auto it = std::find(mServers.begin(), mServers.end(), socket); it != mServers.end()) {
-        mServers.erase(it);
-        return true;
+    bool last = false;
+
+    {
+        std::lock_guard<std::mutex> _l(mSocketMutex);
+        if (auto it = std::find(mServers.begin(), mServers.end(), socket); it != mServers.end()) {
+            mServers.erase(it);
+            return true;
+        }
+        if (mServers.size() == 0) {
+            last = true;
+        }
+    }
+    if (last) {
+        terminate();
     }
     return false;
 }
