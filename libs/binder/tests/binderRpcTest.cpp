@@ -444,6 +444,31 @@ TEST_P(BinderRpc, MultipleConnections) {
     }
 }
 
+TEST_P(BinderRpc, TerminateConnections) {
+    constexpr size_t kNumConnections = 5;
+    auto proc = createRpcTestSocketServerProcess(1 /*threads*/, kNumConnections);
+    proc.expectInvalid = true;
+    ASSERT_EQ(proc.proc.connections.size(), 5);
+
+    // leave first connection alive
+    for (size_t i = 1; i < kNumConnections; i++) {
+        auto& info = proc.proc.connections.at(i);
+        EXPECT_EQ(OK, info.root->pingBinder()); // it workie!
+        info.connection->terminate();
+        EXPECT_EQ(DEAD_OBJECT, info.root->pingBinder()); // no workie!
+    }
+
+    // first connection is still alive
+    EXPECT_EQ(OK, proc.rootBinder->pingBinder());
+
+    std::vector<int32_t> remoteCounts;
+    EXPECT_OK(proc.rootIface->countBinders(&remoteCounts));
+
+    // FIXME - gmock + way to flush connections?
+    // ASSERT_EQ(1, remoteCounts.size());
+    // EXPECT_EQ(1, remoteCounts[0]);
+}
+
 TEST_P(BinderRpc, TransactionsMustBeMarkedRpc) {
     auto proc = createRpcTestSocketServerProcess(1);
     Parcel data;

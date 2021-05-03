@@ -169,6 +169,7 @@ void RpcState::terminate() {
 
     {
         std::lock_guard<std::mutex> _l(mNodeMutex);
+        if (mTerminated) return;
         mTerminated = true;
         for (auto& [address, node] : mNodeForAddress) {
             sp<IBinder> binder = node.binder.promote();
