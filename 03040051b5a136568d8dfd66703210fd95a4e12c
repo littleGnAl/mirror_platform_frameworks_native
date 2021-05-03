@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e45fb94b_f915516d",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-03T21:28:25Z",
+      "side": 1,
+      "message": "This is avoiding the check that was causing this test to be flaky.\n\nIf this becomes a bigger issue, the easiest path forward is:\n- hold onto a list of the root binders, instead of the first\n- have countBinders return int[] with counts per connection\n- ensure this list is all \u00271\u0027 and has the same number of entries as # of expected connections",
+      "range": {
+        "startLine": 594,
+        "startChar": 0,
+        "endLine": 596,
+        "endChar": 35
+      },
+      "revId": "03040051b5a136568d8dfd66703210fd95a4e12c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
