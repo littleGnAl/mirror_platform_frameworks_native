@@ -84,6 +84,11 @@ public:
      */
     status_t getMaxThreads(size_t* maxThreads);
 
+    /**
+     * Cleans up all state associated with this. Stops all server threads.
+     */
+    void terminate();
+
     [[nodiscard]] status_t transact(const RpcAddress& address, uint32_t code, const Parcel& data,
                                     Parcel* reply, uint32_t flags);
     [[nodiscard]] status_t sendDecStrong(const RpcAddress& address);
@@ -128,7 +133,7 @@ private:
 
     bool setupSocketClient(const RpcSocketAddress& address);
     bool setupOneSocketClient(const RpcSocketAddress& address, int32_t connectionId);
-    void addClient(base::unique_fd fd);
+    bool addClient(base::unique_fd fd);
     void setForServer(const wp<RpcServer>& server, int32_t connectionId);
     sp<ConnectionSocket> assignServerToThisThread(base::unique_fd fd);
     bool removeServerSocket(const sp<ConnectionSocket>& socket);
@@ -194,6 +199,7 @@ private:
     // TODO(b/185167543): allow sharing between different connections in a
     // process? (or combine with mServers)
     std::map<std::thread::id, std::thread> mThreads;
+    bool mTerminated = false;
 };
 
 } // namespace android

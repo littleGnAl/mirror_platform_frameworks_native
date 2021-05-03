@@ -212,4 +212,16 @@ bool RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
     return true;
 }
 
+void RpcServer::onConnectionTerminating(const sp<RpcConnection>& connection) {
+    auto id = connection->mId;
+    LOG_ALWAYS_FATAL_IF(id == std::nullopt, "Server connections must be initialized with ID");
+    LOG_RPC_DETAIL("Dropping connection %d", *id);
+
+    std::lock_guard<std::mutex> _l(mLock);
+    auto it = mConnections.find(*id);
+    LOG_ALWAYS_FATAL_IF(it == mConnections.end(), "Bad state, unknown connection id %d", *id);
+    LOG_ALWAYS_FATAL_IF(it->second != connection, "Bad state, connection has id mismatch %d", *id);
+    (void)mConnections.erase(it);
+}
+
 } // namespace android

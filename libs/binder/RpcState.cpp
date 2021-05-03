@@ -169,6 +169,7 @@ void RpcState::terminate() {
 
     {
         std::lock_guard<std::mutex> _l(mNodeMutex);
+        if (mTerminated) return;
         mTerminated = true;
         for (auto& [address, node] : mNodeForAddress) {
             sp<IBinder> binder = node.binder.promote();
@@ -584,6 +585,9 @@ status_t RpcState::processTransactInternal(const base::unique_fd& fd,
                         int32_t id = connection->getPrivateAccessorForId().get().value();
                         replyStatus = reply.writeInt32(id);
                         break;
+                    }
+                    case RPC_SPECIAL_TRANSACT_EXIT_LOOPER: {
+                        return -ECANCELED;
                     }
                     default: {
                         replyStatus = UNKNOWN_TRANSACTION;
