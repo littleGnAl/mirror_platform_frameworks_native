@@ -82,7 +82,6 @@ public:
     size_t countBinders();
     void dump();
 
-private:
     /**
      * Called when reading or writing data to a connection fails to clean up
      * data associated with the connection in order to cleanup binders.
@@ -101,6 +100,7 @@ private:
      */
     void terminate();
 
+private:
     [[nodiscard]] bool rpcSend(const base::unique_fd& fd, const char* what, const void* data,
                                size_t size);
     [[nodiscard]] bool rpcRec(const base::unique_fd& fd, const char* what, void* data, size_t size);

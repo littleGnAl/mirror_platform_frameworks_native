@@ -109,6 +109,10 @@ public:
 
     ~RpcServer();
 
+    // internal use only
+
+    void onConnectionTerminating(const sp<RpcConnection>& connection);
+
 private:
     friend sp<RpcServer>;
     RpcServer();
