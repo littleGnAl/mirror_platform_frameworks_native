@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee1bfa8_4e33f4fd",
+        "filename": "libs/binder/RpcConnection.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-03T19:02:41Z",
+      "side": 1,
+      "message": "nit: \n\n```\nstd::thread thread(\n```\n\n```\nauto thread \u003d std::thread(\n```",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 140,
+        "endChar": 37
+      },
+      "revId": "581b3bf853430add1b0da00fd7cb075627c4d6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a7e04b_cf6056bd",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-03T19:02:41Z",
+      "side": 1,
+      "message": "not needed?\n\nIf needed, move after L21?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "581b3bf853430add1b0da00fd7cb075627c4d6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9472bb1_ac4cc910",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-03T19:02:41Z",
+      "side": 1,
+      "message": "nit: maybe set value of RPC_CONNECTION_ID_NEW to be a negative number, or add some comments here?\n\nIt takes me 30 seconds to realize that because L157 is before L159~162, IDs always start with 1, so id\u003d0 can be reserved for \"new\". If mConnectionIdCounter is incremented after it is used, then id\u003d0 has two conflicted meanings.\n\nAlso, just to confirm that I understand the code correctly, we could have remove the mConnectionIdCounter member variable, and infer it here like this:\n\n```\nauto last \u003d mConnections.empty() ? 0 : mConnections.cbegin()-\u003efirst;\nauto connectionIdCounter \u003d last + 1;\n```\n\nRight? I know this is even harder to understand, so I am not recommending you to do this.",
+      "range": {
+        "startLine": 154,
+        "startChar": 22,
+        "endLine": 154,
+        "endChar": 43
+      },
+      "revId": "581b3bf853430add1b0da00fd7cb075627c4d6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
