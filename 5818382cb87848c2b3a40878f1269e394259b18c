@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616f3475_f52a8a5a",
+        "filename": "libs/binder/RpcSocketAddress.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-03T16:26:40Z",
+      "side": 1,
+      "message": "nit: do you want [[no_discard]] on these methods in all the classes like they are in InetSocketAddress?",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "5818382cb87848c2b3a40878f1269e394259b18c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
