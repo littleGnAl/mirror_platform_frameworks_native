@@ -22,6 +22,30 @@
       },
       "revId": "5818382cb87848c2b3a40878f1269e394259b18c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e7c85b_c9a6c20c",
+        "filename": "libs/binder/RpcSocketAddress.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-03T16:33:04Z",
+      "side": 1,
+      "message": "It\u0027s not really important on these methods (except I think it should be the default in programming languages), but no, just not super critical (for instance, you might save an allocation if someone accidentally calls toString), moving code here. Probably good to use it more.",
+      "parentUuid": "616f3475_f52a8a5a",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "5818382cb87848c2b3a40878f1269e394259b18c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
