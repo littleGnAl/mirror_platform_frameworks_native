@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbcf534_1fcd8b77",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-03T18:30:32Z",
+      "side": 1,
+      "message": "This is a public class. Add some comments?",
+      "revId": "7c5e6c2d4f6efc0887812bb7888a55aab3df23fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd9bc1fb_6b6ea47f",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-03T18:30:32Z",
+      "side": 1,
+      "message": "Same here; add some comments.\n\nThis also requires the client to extend the lifetime of PrivateAccessorForId to be longer than this RpcConnection. Maybe use sp\u003cRpcConnection\u003e in L104?\n\nOr just put a comment to explain what the client must do?",
+      "revId": "7c5e6c2d4f6efc0887812bb7888a55aab3df23fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
