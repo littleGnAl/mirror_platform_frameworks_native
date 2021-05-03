@@ -33,6 +33,24 @@
       "message": "Same here; add some comments.\n\nThis also requires the client to extend the lifetime of PrivateAccessorForId to be longer than this RpcConnection. Maybe use sp\u003cRpcConnection\u003e in L104?\n\nOr just put a comment to explain what the client must do?",
       "revId": "7c5e6c2d4f6efc0887812bb7888a55aab3df23fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "244fe94b_5803813b",
+        "filename": "libs/binder/include/binder/RpcConnection.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-03T21:19:31Z",
+      "side": 1,
+      "message": "This is a pattern used here a bit as an alternative to \u0027friend\u0027. Notice no one can actually use the ID here. Someone could instantiate the private accessor, but they could never use it for anything (so even if RpcConnection is freed, it couldn\u0027t lead to UAF from external users). sp\u003cRpcConnection\u003e or const\u0026 is intentionally not used w/ this pattern in order to avoid any possible overhead (client may not always have a sp\u003c\u003e already constructed).",
+      "parentUuid": "cd9bc1fb_6b6ea47f",
+      "revId": "7c5e6c2d4f6efc0887812bb7888a55aab3df23fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
