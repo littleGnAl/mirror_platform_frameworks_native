@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e18166_76b43c95",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-05-04T19:32:49Z",
+      "side": 1,
+      "message": "I don\u0027t love the _in_place nomenclature for what this is, since it makes it seem (to me at least) like this is about space or performance, when really it\u0027s about deserializing using a set of defaults.\n\nMaybe read_with_default?\n\nI\u0027m not going to come down hard on the name, but you at least need to document this in the doc comment above. If I hadn\u0027t talked to you, I would have expected that `*foo \u003d x.read()` and `x.read_in_place(foo)` would have identical results based on the documentation.",
+      "revId": "9b6e3f1045fcaed2205702aa268c75f13f889136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e354905d_56c12f5b",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-05-04T19:32:49Z",
+      "side": 1,
+      "message": "Again, be clear that it may not overwrite the *entire* old value.",
+      "revId": "9b6e3f1045fcaed2205702aa268c75f13f889136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23577775_a9a091f1",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-05-04T19:32:49Z",
+      "side": 1,
+      "message": "As above.",
+      "revId": "9b6e3f1045fcaed2205702aa268c75f13f889136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
