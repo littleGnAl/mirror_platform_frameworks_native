@@ -60,13 +60,9 @@ bool RpcConnection::setupUnixDomainClient(const char* path) {
     return setupSocketClient(UnixSocketAddress(path));
 }
 
-#ifdef __BIONIC__
-
 bool RpcConnection::setupVsockClient(unsigned int cid, unsigned int port) {
     return setupSocketClient(VsockSocketAddress(cid, port));
 }
-
-#endif // __BIONIC__
 
 bool RpcConnection::setupInetClient(const char* addr, unsigned int port) {
     auto aiStart = InetSocketAddress::getAddrInfo(addr, port);
