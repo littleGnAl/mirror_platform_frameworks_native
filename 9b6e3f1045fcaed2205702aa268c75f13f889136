@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6390202c_f5018e0a",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-04T19:41:10Z",
+      "side": 1,
+      "message": "It\u0027s actually the opposite of read_with_default, since it actually ignores fields instead of overwriting them with defaults.\n\nHow about read_partial? That\u0027s not entirely accurate either, but it gets closer. Or read_without_defaults? In any case, I\u0027m totally open to picking a better name for this.",
+      "parentUuid": "57e18166_76b43c95",
+      "revId": "9b6e3f1045fcaed2205702aa268c75f13f889136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e354905d_56c12f5b",
         "filename": "libs/binder/rust/src/parcel/parcelable.rs",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-04T19:32:49Z",
       "side": 1,
       "message": "Again, be clear that it may not overwrite the *entire* old value.",
+      "revId": "9b6e3f1045fcaed2205702aa268c75f13f889136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39762fac_57aaaa73",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-04T19:41:10Z",
+      "side": 1,
+      "message": "It may or may not overwrite the entire value, depending on what\u0027s in the parcel. For a parcelable, if the remote side sent the same version we have then all the fields will be there and get deserialized.\n\nThis might get cleared up if we find a better name than \"deserialize_in_place\".",
+      "parentUuid": "e354905d_56c12f5b",
       "revId": "9b6e3f1045fcaed2205702aa268c75f13f889136",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
