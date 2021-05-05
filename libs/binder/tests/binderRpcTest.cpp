@@ -923,10 +923,7 @@ TEST_P(BinderRpc, Fds) {
 INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
                         ::testing::ValuesIn({
                                 SocketType::UNIX,
-// TODO(b/185269356): working on host
-#ifndef __BIONIC__
                                 SocketType::VSOCK,
-#endif
                                 SocketType::INET,
                         }),
                         PrintSocketType);
