@@ -532,6 +532,10 @@ pid_t AIBinder_getCallingPid() {
     return ::android::IPCThreadState::self()->getCallingPid();
 }
 
+void AIBinder_addCheckedPermission(const String16& permission) {
+    ::android::IPCThreadState::self()->addCheckedPermission(permission);
+}
+
 void AIBinder_incStrong(AIBinder* binder) {
     if (binder == nullptr) {
         return;

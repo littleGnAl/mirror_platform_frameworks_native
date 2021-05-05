@@ -23,6 +23,7 @@
 #include <binder/TextOutput.h>
 
 #include <android-base/macros.h>
+#include <android-base/strings.h>
 #include <cutils/sched_policy.h>
 #include <utils/CallStack.h>
 #include <utils/Log.h>
@@ -326,6 +327,12 @@ IPCThreadState* IPCThreadState::selfOrNull()
     }
     return nullptr;
 }
+
+void IPCThreadState::addCheckedPermission(const String16& permission)
+{
+    mCheckedPermissions.push_back(permission);
+}
+
 
 void IPCThreadState::shutdown()
 {
@@ -1267,13 +1274,15 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
                     << ", offsets addr="
                     << reinterpret_cast<const size_t*>(tr.data.ptr.offsets) << endl;
             }
+            String16 target;
             if (tr.target.ptr) {
                 // We only have a weak reference on the target object, so we must first try to
                 // safely acquire a strong reference before doing anything else with it.
                 if (reinterpret_cast<RefBase::weakref_type*>(
                         tr.target.ptr)->attemptIncStrong(this)) {
-                    error = reinterpret_cast<BBinder*>(tr.cookie)->transact(tr.code, buffer,
-                            &reply, tr.flags);
+                    auto ptr = reinterpret_cast<BBinder*>(tr.cookie);
+                    error = ptr->transact(tr.code, buffer, &reply, tr.flags);
+                    target = String16(ptr->getInterfaceDescriptor());
                     reinterpret_cast<BBinder*>(tr.cookie)->decStrong(this);
                 } else {
                     error = UNKNOWN_TRANSACTION;
@@ -1312,6 +1321,13 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
                 }
                 LOG_ONEWAY("NOT sending reply to %d!", mCallingPid);
             }
+
+            alog << "TRANSACTION from pid=" << mCallingPid
+                 << " target=" << target
+                 << ":" << TypeCode(tr.code)
+                 << " perms=" << ::android::base::Join(mCheckedPermissions, ',')
+                 << endl;
+            mCheckedPermissions.clear();
 
             mServingStackPointer = origServingStackPointer;
             mCallingPid = origPid;
