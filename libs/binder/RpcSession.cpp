@@ -196,11 +196,8 @@ bool RpcSession::setupSocketClient(const RpcSocketAddress& addr) {
 
     // we've already setup one client
     for (size_t i = 0; i + 1 < numThreadsAvailable; i++) {
-        // TODO(b/185167543): avoid race w/ accept4 not being called on server
-        for (size_t tries = 0; tries < 5; tries++) {
-            if (setupOneSocketClient(addr, mId.value())) break;
-            usleep(10000);
-        }
+        // TODO(b/185167543): shutdown existing connections?
+        if (!setupOneSocketClient(addr, mId.value())) return false;
     }
 
     return true;
