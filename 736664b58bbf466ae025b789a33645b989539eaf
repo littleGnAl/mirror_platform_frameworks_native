@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4a88f1_433a5c1c",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-05T14:12:35Z",
+      "side": 1,
+      "message": "This is not urgent, but calling this \u0027connection\u0027 seems to be incorrect to me. For each loop, a new TCP connection is made. However, in this code, a \u0027RpcConnection\u0027 is a different concept that abstracts a multi-threaded client-server pair. An RpcConnection can be associated with multiple TCP connections and that confused me a lot.",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "736664b58bbf466ae025b789a33645b989539eaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3bc092e_e8af334c",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-05T14:12:35Z",
+      "side": 1,
+      "message": "Yes, this is what I imagined.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 5
+      },
+      "revId": "736664b58bbf466ae025b789a33645b989539eaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
