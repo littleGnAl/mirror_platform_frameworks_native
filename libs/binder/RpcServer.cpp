@@ -167,6 +167,9 @@ void RpcServer::join() {
 
             session->startThread(std::move(clientFd));
         }
+
+        // FIXME
+        break;
     }
 }
 
