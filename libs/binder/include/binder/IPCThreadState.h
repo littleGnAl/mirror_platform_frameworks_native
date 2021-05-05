@@ -19,6 +19,7 @@
 #include <utils/Errors.h>
 #include <binder/Parcel.h>
 #include <binder/ProcessState.h>
+#include <utils/String16.h>
 #include <utils/Vector.h>
 
 #if defined(_WIN32)
@@ -113,6 +114,7 @@ public:
             bool                flushIfNeeded();
 
             void                joinThreadPool(bool isMain = true);
+            void                addCheckedPermission(const String16& permission);
             
             // Stop the local process.
             void                stopProcess(bool immediate = true);
@@ -199,6 +201,7 @@ private:
             Vector<RefBase::weakref_type*> mPendingWeakDerefs;
             Vector<RefBase*>    mPostWriteStrongDerefs;
             Vector<RefBase::weakref_type*> mPostWriteWeakDerefs;
+            Vector<String16>      mCheckedPermissions;
             Parcel              mIn;
             Parcel              mOut;
             status_t            mLastError;

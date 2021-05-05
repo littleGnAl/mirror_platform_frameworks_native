@@ -23,6 +23,7 @@
 #include <binder/TextOutput.h>
 
 #include <android-base/macros.h>
+#include <android-base/strings.h>
 #include <cutils/sched_policy.h>
 #include <utils/CallStack.h>
 #include <utils/Log.h>
@@ -326,6 +327,12 @@ IPCThreadState* IPCThreadState::selfOrNull()
     }
     return nullptr;
 }
+
+void IPCThreadState::addCheckedPermission(const String16& permission)
+{
+    mCheckedPermissions.push_back(permission);
+}
+
 
 void IPCThreadState::shutdown()
 {
@@ -1240,6 +1247,7 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             const int32_t origTransactionBinderFlags = mLastTransactionBinderFlags;
             const int32_t origWorkSource = mWorkSource;
             const bool origPropagateWorkSet = mPropagateWorkSource;
+            Vector<String16> origCheckedPermissions(mCheckedPermissions);
             // Calling work source will be set by Parcel#enforceInterface. Parcel#enforceInterface
             // is only guaranteed to be called for AIDL-generated stubs so we reset the work source
             // here to never propagate it.
@@ -1250,6 +1258,7 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             mCallingSid = reinterpret_cast<const char*>(tr_secctx.secctx);
             mCallingUid = tr.sender_euid;
             mLastTransactionBinderFlags = tr.flags;
+            mCheckedPermissions.clear();
 
             // ALOGI(">>>> TRANSACT from pid %d sid %s uid %d\n", mCallingPid,
             //    (mCallingSid ? mCallingSid : "<N/A>"), mCallingUid);
@@ -1267,13 +1276,15 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
                     << ", offsets addr="
                     << reinterpret_cast<const size_t*>(tr.data.ptr.offsets) << endl;
             }
+            String16 target;
             if (tr.target.ptr) {
                 // We only have a weak reference on the target object, so we must first try to
                 // safely acquire a strong reference before doing anything else with it.
                 if (reinterpret_cast<RefBase::weakref_type*>(
                         tr.target.ptr)->attemptIncStrong(this)) {
-                    error = reinterpret_cast<BBinder*>(tr.cookie)->transact(tr.code, buffer,
-                            &reply, tr.flags);
+                    auto ptr = reinterpret_cast<BBinder*>(tr.cookie);
+                    error = ptr->transact(tr.code, buffer, &reply, tr.flags);
+                    target = String16(ptr->getInterfaceDescriptor());
                     reinterpret_cast<BBinder*>(tr.cookie)->decStrong(this);
                 } else {
                     error = UNKNOWN_TRANSACTION;
@@ -1313,6 +1324,14 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
                 LOG_ONEWAY("NOT sending reply to %d!", mCallingPid);
             }
 
+            alog << "TRANSACTION from pid=" << mCallingPid
+                 << " target=" << target
+                 << ":" << TypeCode(tr.code)
+                 << " perms=" << ::android::base::Join(mCheckedPermissions, ',')
+                 << endl;
+
+            mCheckedPermissions.clear();
+            mCheckedPermissions.insertVectorAt(origCheckedPermissions, 0);
             mServingStackPointer = origServingStackPointer;
             mCallingPid = origPid;
             mCallingSid = origSid;
