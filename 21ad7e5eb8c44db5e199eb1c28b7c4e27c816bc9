@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "145e100e_03b41fce",
+        "filename": "libs/binder/tests/IBinderRpcTest.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-05T18:07:19Z",
+      "side": 1,
+      "message": "haha well there is the interface-level session and the transport-level session.",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "21ad7e5eb8c44db5e199eb1c28b7c4e27c816bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
