@@ -141,6 +141,9 @@ void RpcServer::join() {
                                 std::move(sp<RpcServer>::fromExisting(this)), std::move(clientFd));
             mConnectingThreads[thread.get_id()] = std::move(thread);
         }
+
+        // FIXME
+        break;
     }
 }
 
