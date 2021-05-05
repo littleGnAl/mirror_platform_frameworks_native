@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5d661a_26c0a9f3",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-05T17:09:03Z",
+      "side": 1,
+      "message": "Any suggested name? I better change it quick. For instance \"RpcConnectionBundle\" seems too long. I could comment this difference.",
+      "parentUuid": "1c4a88f1_433a5c1c",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "736664b58bbf466ae025b789a33645b989539eaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f3bc092e_e8af334c",
