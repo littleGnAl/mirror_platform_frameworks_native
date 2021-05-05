@@ -112,7 +112,7 @@ public:
 
     void onSessionTerminating(const sp<RpcSession>& session);
 
-private:
+    // FIXME private:
     friend sp<RpcServer>;
     RpcServer();
 
