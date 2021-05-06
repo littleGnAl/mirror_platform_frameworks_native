@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6cbe466_3b33c1d5",
+        "filename": "libs/binder/vm_sockets.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-06T00:08:31Z",
+      "side": 1,
+      "message": "Perhaps you already said it, but I forgot the reason why we can\u0027t force using bionic on host.",
+      "revId": "a8a0c91bff2b43c02ddb2b2cf656cff8b0af16d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
