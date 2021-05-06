@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd20a13_3c53403f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-06T00:18:54Z",
+      "side": 1,
+      "message": "A nit on naming, which can be addressed in a separate change. This change itself looks fine to me.",
+      "revId": "ee78e760a7727947b02972af548c71b2f38019e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11449d80_6d0c18c0",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-06T00:18:54Z",
+      "side": 1,
+      "message": "This and the mServers below caused some confusion to me.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "ee78e760a7727947b02972af548c71b2f38019e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb7771c4_2417938f",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-06T00:18:54Z",
+      "side": 1,
+      "message": "Perhaps mClientConnections and mServerConnections.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 44
+      },
+      "revId": "ee78e760a7727947b02972af548c71b2f38019e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
