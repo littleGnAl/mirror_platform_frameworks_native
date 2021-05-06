@@ -22,6 +22,30 @@
       },
       "revId": "e8393349fe438e65babd434f0a37c976ef0ff3ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b712f476_99e451ce",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-06T00:30:59Z",
+      "side": 1,
+      "message": "It might just be a lot of code, and I wasn\u0027t sure how clean it would be to handle the error cases. Do you know any allocator that does this in Android?",
+      "parentUuid": "4920ce6f_3f6a0c82",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "e8393349fe438e65babd434f0a37c976ef0ff3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
