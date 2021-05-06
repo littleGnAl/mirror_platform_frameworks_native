@@ -52,6 +52,24 @@
       "parentUuid": "43cfdb89_9efbd602",
       "revId": "a8a0c91bff2b43c02ddb2b2cf656cff8b0af16d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0265ad5b_edc57005",
+        "filename": "libs/binder/vm_sockets.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-06T00:57:40Z",
+      "side": 1,
+      "message": "If you can report the problem(s) you hit when you try to build this for linux_bionic, I can look into it and will be happy to fix it.",
+      "parentUuid": "90e282c9_7848bd02",
+      "revId": "a8a0c91bff2b43c02ddb2b2cf656cff8b0af16d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
