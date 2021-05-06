@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a3da09_d0c712d6",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-06T00:17:58Z",
+      "side": 1,
+      "message": "this happens a lot for vsock - why TH was failing on this CL",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 38
+      },
+      "revId": "85ff24a4c6725f35d5fd66cd490101f88b6efcd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
