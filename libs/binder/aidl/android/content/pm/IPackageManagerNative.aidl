@@ -101,4 +101,9 @@ interface IPackageManagerNative {
      * This does nothing if this observer was not already registered.
      */
     void unregisterPackageChangeObserver(in IPackageChangeObserver observer);
+
+    /**
+     * Returns the source directory of the named package.
+     */
+    @utf8InCpp String getAppInfoSourceDir(in @utf8InCpp String packageName);
 }
