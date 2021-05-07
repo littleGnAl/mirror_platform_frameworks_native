@@ -16,6 +16,24 @@
       "message": "I noticed android12 ( also android13-5.10 ) kernels are missing kernel side support, shouldn\u0027t it be backported?\nIt\u0027s quite spammy at the moment",
       "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a56887c_65ceea88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1868486
+      },
+      "writtenOn": "2021-05-07T02:17:44Z",
+      "side": 1,
+      "message": "Hi Luca,\n\nThe kernel changes are on the way to android12-5.10, maybe few days it will get merged. Please refer to aosp/1675661, thanks!",
+      "parentUuid": "e0147bf7_416ef0af",
+      "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
