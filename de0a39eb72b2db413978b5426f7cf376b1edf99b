@@ -34,6 +34,24 @@
       "parentUuid": "e0147bf7_416ef0af",
       "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ef4478_d322dd4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2021-05-07T08:17:55Z",
+      "side": 1,
+      "message": "Thanks, somehow my Gerrit query failed.",
+      "parentUuid": "1a56887c_65ceea88",
+      "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
