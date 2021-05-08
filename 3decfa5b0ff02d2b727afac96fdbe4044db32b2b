@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ac232e_1edb83d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-08T06:00:10Z",
+      "side": 1,
+      "message": "Note: this is needed in\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1683951/9/libs/binder/Binder.cpp#425",
+      "revId": "3decfa5b0ff02d2b727afac96fdbe4044db32b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
