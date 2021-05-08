@@ -108,11 +108,19 @@ size_t RpcServer::getMaxThreads() {
 void RpcServer::setRootObject(const sp<IBinder>& binder) {
     std::lock_guard<std::mutex> _l(mLock);
     mRootObject = binder;
+    mRootObjectWeak.clear();
+}
+
+void RpcServer::setRootObjectWeak(const wp<IBinder>& binder) {
+    std::lock_guard<std::mutex> _l(mLock);
+    mRootObject.clear();
+    mRootObjectWeak = binder;
 }
 
 sp<IBinder> RpcServer::getRootObject() {
     std::lock_guard<std::mutex> _l(mLock);
-    return mRootObject;
+    if (mRootObject != nullptr) return mRootObject;
+    return mRootObjectWeak.promote();
 }
 
 void RpcServer::join() {
