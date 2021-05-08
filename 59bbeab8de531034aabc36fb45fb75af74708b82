@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf5ac0f_eabcb73b",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-08T05:54:28Z",
+      "side": 1,
+      "message": "This (continuing discussion in PS5, RpcConnection.h)\n\nI split join() into two helper function like this. See implementation too.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 81
+      },
+      "revId": "59bbeab8de531034aabc36fb45fb75af74708b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b0eb364_7c43ce0b",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-08T05:54:28Z",
+      "side": 0,
+      "message": "Seems unused, so I deleted it.",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 133,
+        "endChar": 34
+      },
+      "revId": "2d60ecf359d554e0e7d0a5dacd2c974a0778de02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
