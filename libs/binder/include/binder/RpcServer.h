@@ -91,8 +91,14 @@ public:
     /**
      * The root object can be retrieved by any client, without any
      * authentication. TODO(b/183988761)
+     *
+     * Holds a strong reference to the root object.
      */
     void setRootObject(const sp<IBinder>& binder);
+    /**
+     * Holds a weak reference to the root object.
+     */
+    void setRootObjectWeak(const wp<IBinder>& binder);
     sp<IBinder> getRootObject();
 
     /**
@@ -122,6 +128,7 @@ private:
 
     std::mutex mLock; // for below
     sp<IBinder> mRootObject;
+    wp<IBinder> mRootObjectWeak;
     std::map<int32_t, sp<RpcSession>> mSessions;
     int32_t mSessionIdCounter = 0;
 };
