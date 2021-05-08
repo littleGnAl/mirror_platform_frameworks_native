@@ -1178,6 +1178,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a6e5e7b_5ddd9e56",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-08T05:59:13Z",
+      "side": 1,
+      "message": "Resolving for now",
+      "parentUuid": "7f03f8f2_22c45aa9",
+      "range": {
+        "startLine": 1229,
+        "startChar": 0,
+        "endLine": 1229,
+        "endChar": 30
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3a964de_cb2be3ef",
@@ -1215,6 +1239,30 @@
       "side": 1,
       "message": "Exactly!\n\nThat\u0027s why I didn\u0027t add RpcConnection::setupExternalServer()",
       "parentUuid": "d3a964de_cb2be3ef",
+      "range": {
+        "startLine": 1240,
+        "startChar": 0,
+        "endLine": 1240,
+        "endChar": 48
+      },
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5095ff2f_31e4f8b4",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-08T05:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95877d15_8d012a46",
       "range": {
         "startLine": 1240,
         "startChar": 0,
@@ -1274,6 +1322,24 @@
       "side": 1,
       "message": "I also need to add logic to allow a call to timeout in RPC binder (and actually in regular binder too, b/175164639). Feel free to look at doing this",
       "parentUuid": "cf311d0c_f80bd3c5",
+      "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b882fe_9f6d973a",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-08T05:59:13Z",
+      "side": 1,
+      "message": "Can this be resolved for now?",
+      "parentUuid": "30230715_17a39394",
       "revId": "8808a94dbc498b39a2574272495c7ad73d677dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
