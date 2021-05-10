@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71067653_ef4f43e1",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T17:23:49Z",
+      "side": 1,
+      "message": "This will be incorrect in the case of nested transactions (unfortunately only really internal ref for this now I think go/binder-ipc - but basically multiple transactions on the same thread may be executing \u0027transact\u0027 above and permissions will be the union of all of them, and then after a nested call returns, checked permissions during a call will be removed, so it\u0027ll appear as none were checked).",
+      "range": {
+        "startLine": 1330,
+        "startChar": 0,
+        "endLine": 1330,
+        "endChar": 40
+      },
+      "revId": "bb75e26e463d577d5a20edc18b062b2c7b18f288",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
