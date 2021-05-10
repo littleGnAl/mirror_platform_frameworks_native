@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03d6fb4_4af1b03c",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:54:05Z",
+      "side": 1,
+      "message": "btw for performance (though it still probably wouldn\u0027t be enough b/c of all the heap allocations we\u0027re getting for these anyway), you will want to use std::move for this and L1334 - that way nested calls don\u0027t cost more allocations.",
+      "range": {
+        "startLine": 1250,
+        "startChar": 0,
+        "endLine": 1250,
+        "endChar": 73
+      },
+      "revId": "8d1ac8df864b2b6375f7e1206f3ec98515a53e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a8dd1f_c2154a04",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1287,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:54:05Z",
+      "side": 1,
+      "message": "we also couldn\u0027t keep this for performance/memory",
+      "range": {
+        "startLine": 1287,
+        "startChar": 0,
+        "endLine": 1287,
+        "endChar": 69
+      },
+      "revId": "8d1ac8df864b2b6375f7e1206f3ec98515a53e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
