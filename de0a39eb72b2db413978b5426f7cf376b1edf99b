@@ -106,6 +106,24 @@
       "parentUuid": "da4fb75c_b3574053",
       "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff0784e0_a00e5b87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2021-05-10T21:25:47Z",
+      "side": 1,
+      "message": "I sent a patch to upstream to _fix_ the errno returned by this ioctl, so that now only unsupported ioctl would return EAVAIL ( before it was also returning this errno in case it failed this specific ioctl ).\nYou can check this to easily map supported features without checking kernel version ( that would also break the backported usecase ), or as you said, add an interface to query supported functionality, but will also require more backports.",
+      "parentUuid": "f1f50b89_9c0dbc9d",
+      "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
