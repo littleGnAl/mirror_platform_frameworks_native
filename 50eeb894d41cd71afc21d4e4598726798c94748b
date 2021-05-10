@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b27831c1_a48a4681",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-05-10T10:21:20Z",
+      "side": 1,
+      "message": "could you add to the commit message how many extra bytes this typically adds?",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "50eeb894d41cd71afc21d4e4598726798c94748b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31193bea_62a810b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-05-10T10:21:20Z",
+      "side": 1,
+      "message": "test?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 3
+      },
+      "revId": "50eeb894d41cd71afc21d4e4598726798c94748b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
