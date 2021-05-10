@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf20de0_d404309e",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "can you use something else for this flag - like \"BINDER_RPC_DEV_SERVERS\" since \"Binder RPC\" is the generic term for binder over sockets, which is enabled with or without this flag?",
+      "range": {
+        "startLine": 170,
+        "startChar": 31,
+        "endLine": 170,
+        "endChar": 34
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93958818_b91d8973",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "nit: log? (same below)",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 33
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4ca9e52_7b4a3f47",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "unneeded - this duplicates logic when addRpcClient is called, either here or in the other process. We don\u0027t really need the extra check to save the IPC, and we could allow empty FD later",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 41
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e0db7c_597b35f9",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "return error (otherwise you can use this to crash this)",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 72
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e8d0fe_8ddce43c",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "should hold e-\u003emLock",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 48
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e841c8e_52092dc2",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "since we pass a single already-accepted FD here, it will be impossible to add new threads/clients.\n\nI\u0027m curious, have you thought about having something like \u0027setupServer\u0027 which takes an FD, and then s/addRpcClient/addRpcServer/ would start listening to connections on a suggested port? You could have \u0027RpcServer::setForSocket(unique_fd)\u0027",
+      "range": {
+        "startLine": 436,
+        "startChar": 31,
+        "endLine": 436,
+        "endChar": 47
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f77f7dc_05277f34",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "same, hold lock",
+      "range": {
+        "startLine": 435,
+        "startChar": 4,
+        "endLine": 436,
+        "endChar": 69
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf4fe9f9_95b8770d",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "can be removed since you have it in accept below",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 53
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75966975_3181a144",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "E",
+      "range": {
+        "startLine": 162,
+        "startChar": 17,
+        "endLine": 162,
+        "endChar": 19
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caaf211d_7cf3b35e",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "btw - can you add these new functions to BinderFuzz.cpp?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d78a5fe5_2e13c627",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "this name will be slightly confusing compared with IPCThreadState::handlePolledCommands since they are very different.\n\nCan you add docs on both of these?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 81
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729cc748_47f0e346",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "nit: does this belong on the parent CL?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 6
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7803410d_726b269c",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-10T18:10:55Z",
+      "side": 1,
+      "message": "can you try an example which uses multiple threads?",
+      "range": {
+        "startLine": 1271,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 87
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
