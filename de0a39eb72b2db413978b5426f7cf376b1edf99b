@@ -142,6 +142,24 @@
       "parentUuid": "ff0784e0_a00e5b87",
       "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe6ecf0_3fe05e26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2021-05-10T23:04:31Z",
+      "side": 1,
+      "message": "I wrote a little helper to \"hide\" away these warnings, but it\u0027s of no use as every process loads its own libbinder so I can\u0027t have a global \"map\".\nEither we somehow store a global information about the supported ioctls ( and I start to think an ioctl itself would be the best... ) or we live with the spam\n\nsnip: https://gist.github.com/luca020400/7f61f430bb9a9f0a7d5d707f3fed6dcf",
+      "parentUuid": "cc566add_42007366",
+      "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
