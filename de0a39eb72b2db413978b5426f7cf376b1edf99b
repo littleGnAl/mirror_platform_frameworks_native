@@ -70,6 +70,24 @@
       "parentUuid": "b3ef4478_d322dd4a",
       "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4fb75c_b3574053",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2021-05-10T21:11:43Z",
+      "side": 1,
+      "message": "Yeah I should\u0027ve figured out you were waiting for the next KMI interface freeze before asking, sorry ^^\nI see the new kernels are under review now, so no more spam on your side ( hopefully ) 😊\n\nBut it doesn\u0027t look like \u003c5.4 will get it, so maybe it\u0027s worth adding a static check if it\u0027s supported and skip following ioctls?",
+      "parentUuid": "e55ac75d_f380709a",
+      "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
