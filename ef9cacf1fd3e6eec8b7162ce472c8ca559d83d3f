@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb6ed60_dad8c9c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-11T00:01:02Z",
+      "side": 1,
+      "message": "Yifan, since I think you will no longer need to be modifying this function in your CL (see comments), removing in a separate CL",
+      "revId": "ef9cacf1fd3e6eec8b7162ce472c8ca559d83d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
