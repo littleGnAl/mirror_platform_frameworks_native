@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9487ce0b_713685c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-11T17:04:03Z",
+      "side": 1,
+      "message": "FWIW - I do kind of like this because it\u0027s much closer to reality/how code would be written. I really wish we could have \u0027status_t\u0027 as a type separate from \u0027int32_t\u0027 so that we could automatically print the right representation, but C++ typedefs are just silly renames 😞\n\nSo, I guess I really wish we had:\n\nstruct status_t { int32_t value; };\n\nThen we could really overload this, but alas we are stuck w/ the complicated matcher format :(\n\nAnyway, thanks for making the error better!",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "f911ddbaaca93b0dfe6e281e32e930b7c9f857e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
