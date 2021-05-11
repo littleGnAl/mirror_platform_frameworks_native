@@ -168,11 +168,12 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
     // TODO(b/183988761): cannot trust this simple ID
     LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
     bool idValid = true;
-    int32_t id;
-    if (sizeof(id) != read(clientFd.get(), &id, sizeof(id))) {
+    RpcConnectionHeader header;
+    if (sizeof(header) != read(clientFd.get(), &header, sizeof(header))) {
         ALOGE("Could not read ID from fd %d", clientFd.get());
         idValid = false;
     }
+    bool reverse = header.options & RPC_CONNECTION_OPTION_REVERSE;
 
     std::thread thisThread;
     sp<RpcSession> session;
@@ -190,7 +191,12 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             return;
         }
 
-        if (id == RPC_SESSION_ID_NEW) {
+        if (header.sessionId == RPC_SESSION_ID_NEW) {
+            if (reverse) {
+                ALOGE("Cannot create a new session with a reverse connection, would leak");
+                return;
+            }
+
             LOG_ALWAYS_FATAL_IF(mSessionIdCounter >= INT32_MAX, "Out of session IDs");
             mSessionIdCounter++;
 
@@ -199,12 +205,17 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
 
             mSessions[mSessionIdCounter] = session;
         } else {
-            auto it = mSessions.find(id);
+            auto it = mSessions.find(header.sessionId);
             if (it == mSessions.end()) {
-                ALOGE("Cannot add thread, no record of session with ID %d", id);
+                ALOGE("Cannot add thread, no record of session with ID %d", header.sessionId);
                 return;
             }
             session = it->second;
+        }
+
+        if (reverse) {
+            session->addClientConnection(std::move(clientFd));
+            return;
         }
 
         detachGuard.Disable();
