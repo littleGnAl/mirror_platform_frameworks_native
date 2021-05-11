@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1cf31f9b_9541510e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-11T00:48:55Z",
+      "side": 1,
+      "message": "right now, there is no way for a client to handle a callback unless it is a nested transaction.",
+      "parentUuid": "f1d8a583_6fe9a780",
+      "range": {
+        "startLine": 11,
+        "startChar": 54,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "8193c1884c68c6355d662a4e9f8af679174b9b3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2bd43961_fde7160a",
         "filename": "libs/binder/RpcServer.cpp",
         "patchSetId": 1
