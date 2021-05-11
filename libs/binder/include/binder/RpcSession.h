@@ -154,13 +154,14 @@ private:
         std::optional<pid_t> exclusiveTid;
     };
 
-    bool setupSocketClient(const RpcSocketAddress& address);
-    bool setupOneSocketClient(const RpcSocketAddress& address, int32_t sessionId);
-    bool addClientConnection(base::unique_fd fd);
+    [[nodiscard]] bool setupSocketClient(const RpcSocketAddress& address);
+    [[nodiscard]] bool setupOneSocketConnection(const RpcSocketAddress& address, int32_t sessionId,
+                                                bool server);
+    [[nodiscard]] bool addClientConnection(base::unique_fd fd);
     void setForServer(const wp<RpcServer>& server, int32_t sessionId,
                       const std::shared_ptr<FdTrigger>& shutdownTrigger);
     sp<RpcConnection> assignServerToThisThread(base::unique_fd fd);
-    bool removeServerConnection(const sp<RpcConnection>& connection);
+    [[nodiscard]] bool removeServerConnection(const sp<RpcConnection>& connection);
 
     enum class ConnectionUse {
         CLIENT,
