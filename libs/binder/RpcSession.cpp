@@ -59,6 +59,17 @@ sp<RpcSession> RpcSession::make() {
     return sp<RpcSession>::make();
 }
 
+void RpcSession::setMaxReverseConnections(size_t connections) {
+    {
+        std::lock_guard<std::mutex> _l(mMutex);
+        LOG_ALWAYS_FATAL_IF(mClientConnections.size() != 0,
+                            "Must setup reverse connections before setting up client connections, "
+                            "but already has %zu clients",
+                            mClientConnections.size());
+    }
+    mMaxReverseConnections = connections;
+}
+
 bool RpcSession::setupUnixDomainClient(const char* path) {
     return setupSocketClient(UnixSocketAddress(path));
 }
@@ -97,6 +108,19 @@ sp<IBinder> RpcSession::getRootObject() {
 status_t RpcSession::getRemoteMaxThreads(size_t* maxThreads) {
     ExclusiveConnection connection(sp<RpcSession>::fromExisting(this), ConnectionUse::CLIENT);
     return state()->getMaxThreads(connection.fd(), sp<RpcSession>::fromExisting(this), maxThreads);
+}
+
+bool RpcSession::shutdown() {
+    std::unique_lock<std::mutex> _l;
+    LOG_ALWAYS_FATAL_IF(mForServer.promote() != nullptr, "Can only shut down client session");
+
+    if (mShutdownTrigger != nullptr) {
+        mShutdownTrigger->trigger();
+        return true;
+    }
+
+    // FIXME
+    return false;
 }
 
 status_t RpcSession::transact(const sp<IBinder>& binder, uint32_t code, const Parcel& data,
@@ -251,7 +275,7 @@ bool RpcSession::setupSocketClient(const RpcSocketAddress& addr) {
                             mClientConnections.size());
     }
 
-    if (!setupOneSocketClient(addr, RPC_SESSION_ID_NEW)) return false;
+    if (!setupOneSocketConnection(addr, RPC_SESSION_ID_NEW, false /*reverse*/)) return false;
 
     // TODO(b/185167543): we should add additional sessions dynamically
     // instead of all at once.
@@ -272,13 +296,23 @@ bool RpcSession::setupSocketClient(const RpcSocketAddress& addr) {
     // we've already setup one client
     for (size_t i = 0; i + 1 < numThreadsAvailable; i++) {
         // TODO(b/185167543): shutdown existing connections?
-        if (!setupOneSocketClient(addr, mId.value())) return false;
+        if (!setupOneSocketConnection(addr, mId.value(), false /*reverse*/)) return false;
+    }
+
+    // TODO(b/185167543): we should add additional sessions dynamically
+    // instead of all at once - the other side should be responsible for setting
+    // up additional connections. We need to create at least one (unless 0 are
+    // requested to be set) in order to allow the other side to reliably make
+    // any requests at all.
+
+    for (size_t i = 0; i < mMaxReverseConnections; i++) {
+        if (!setupOneSocketConnection(addr, mId.value(), true /*reverse*/)) return false;
     }
 
     return true;
 }
 
-bool RpcSession::setupOneSocketClient(const RpcSocketAddress& addr, int32_t id) {
+bool RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr, int32_t id, bool reverse) {
     for (size_t tries = 0; tries < 5; tries++) {
         if (tries > 0) usleep(10000);
 
@@ -302,16 +336,53 @@ bool RpcSession::setupOneSocketClient(const RpcSocketAddress& addr, int32_t id) 
             return false;
         }
 
-        if (sizeof(id) != TEMP_FAILURE_RETRY(write(serverFd.get(), &id, sizeof(id)))) {
+        RpcConnectionHeader header{
+                .sessionId = id,
+        };
+        if (reverse) header.options |= RPC_CONNECTION_OPTION_REVERSE;
+
+        if (sizeof(header) != TEMP_FAILURE_RETRY(write(serverFd.get(), &header, sizeof(header)))) {
             int savedErrno = errno;
-            ALOGE("Could not write id to socket at %s: %s", addr.toString().c_str(),
+            ALOGE("Could not write connection header to socket at %s: %s", addr.toString().c_str(),
                   strerror(savedErrno));
             return false;
         }
 
         LOG_RPC_DETAIL("Socket at %s client with fd %d", addr.toString().c_str(), serverFd.get());
 
-        return addClientConnection(std::move(serverFd));
+        // FIXME: duplicated
+        if (mShutdownTrigger == nullptr) {
+            mShutdownTrigger = FdTrigger::make();
+            if (mShutdownTrigger == nullptr) return false;
+        }
+
+        if (reverse) {
+            std::mutex mutex;
+            std::condition_variable joinCv;
+            std::unique_lock<std::mutex> lock(mutex);
+            std::thread thread;
+            sp<RpcSession> thiz = sp<RpcSession>::fromExisting(this);
+            bool ownershipTransferred = false;
+            thread = std::thread([&]() {
+                std::unique_lock<std::mutex> threadLock(mutex);
+                unique_fd fd = std::move(serverFd);
+                // NOLINTNEXTLINE(performance-unnecessary-copy-initialization)
+                sp<RpcSession> session = thiz;
+                session->preJoin(std::move(thread));
+                ownershipTransferred = true;
+                joinCv.notify_one();
+
+                threadLock.unlock();
+                // do not use & vars below
+
+                session->join(std::move(fd));
+            });
+            joinCv.wait(lock, [&] { return ownershipTransferred; });
+            LOG_ALWAYS_FATAL_IF(!ownershipTransferred);
+            return true;
+        } else {
+            return addClientConnection(std::move(serverFd));
+        }
     }
 
     ALOGE("Ran out of retries to connect to %s", addr.toString().c_str());
@@ -418,6 +489,8 @@ RpcSession::ExclusiveConnection::ExclusiveConnection(const sp<RpcSession>& sessi
             break;
         }
 
+        // TODO(b/185167543): this should return an error, rather than crash a
+        // server
         // in regular binder, this would usually be a deadlock :)
         LOG_ALWAYS_FATAL_IF(mSession->mClientConnections.size() == 0,
                             "Not a client of any session. You must create a session to an "
