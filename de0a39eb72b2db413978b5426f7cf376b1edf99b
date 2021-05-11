@@ -160,6 +160,23 @@
       "parentUuid": "cc566add_42007366",
       "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e43fd67_f4c3c37e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1862735
+      },
+      "writtenOn": "2021-05-11T02:24:41Z",
+      "side": 1,
+      "message": "\u003e To be fair though - I have gotten maybe a dozen bugs assigned to me in the internal system, because people thought this might be an important error :/ hoping this can be merged soon as well!\n\n😄Sorry to make this an \"error\" logging... Do you think we should print nothing if kernel not supported? Or this patch is enough? Thanks!",
+      "revId": "de0a39eb72b2db413978b5426f7cf376b1edf99b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
