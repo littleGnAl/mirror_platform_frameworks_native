@@ -304,6 +304,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f513a444_72717e0a",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-11T17:22:46Z",
+      "side": 1,
+      "message": "Sorry, see the \"since we pass a single already-accepted FD here, it will be impossible to add new threads/clients.\" comment first. I think you may find you don\u0027t need this method at all (and instead need something like \u0027RpcServer::release\u0027). Though, if you do need it, maybe spawnLooperForAcceptedFd?",
+      "parentUuid": "e7a0f9a2_6cb01333",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 81
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "729cc748_47f0e346",
         "filename": "libs/binder/tests/Android.bp",
         "patchSetId": 9
