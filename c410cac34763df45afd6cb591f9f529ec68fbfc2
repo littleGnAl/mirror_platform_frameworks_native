@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a3dcc51_ec8fa76b",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-11T16:53:43Z",
+      "side": 1,
+      "message": "Sure, will do",
+      "parentUuid": "bbf20de0_d404309e",
+      "range": {
+        "startLine": 170,
+        "startChar": 31,
+        "endLine": 170,
+        "endChar": 34
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93958818_b91d8973",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 9
@@ -256,6 +280,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7a0f9a2_6cb01333",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-11T16:53:43Z",
+      "side": 1,
+      "message": "Sure.\n\nI am also happy to rename it if you have some other name to suggest.",
+      "parentUuid": "d78a5fe5_2e13c627",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 81
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "729cc748_47f0e346",
         "filename": "libs/binder/tests/Android.bp",
         "patchSetId": 9
@@ -267,6 +315,30 @@
       "writtenOn": "2021-05-10T18:10:55Z",
       "side": 1,
       "message": "nit: does this belong on the parent CL?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 6
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67989ccf_9dfc32c5",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-11T16:53:43Z",
+      "side": 1,
+      "message": "Done, please +2 1700335 again",
+      "parentUuid": "729cc748_47f0e346",
       "range": {
         "startLine": 67,
         "startChar": 0,
