@@ -239,15 +239,16 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
     // It must be set before this thread is started
     LOG_ALWAYS_FATAL_IF(server->mShutdownTrigger == nullptr);
 
-    int32_t id;
-    status_t status =
-            server->mShutdownTrigger->interruptableReadFully(clientFd.get(), &id, sizeof(id));
+    RpcConnectionHeader header;
+    status_t status = server->mShutdownTrigger->interruptableReadFully(clientFd.get(), &header,
+                                                                       sizeof(header));
     bool idValid = status == OK;
     if (!idValid) {
         ALOGE("Failed to read ID for client connecting to RPC server: %s",
               statusToString(status).c_str());
         // still need to cleanup before we can return
     }
+    bool reverse = header.options & RPC_CONNECTION_OPTION_REVERSE;
 
     std::thread thisThread;
     sp<RpcSession> session;
@@ -269,7 +270,12 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             return;
         }
 
-        if (id == RPC_SESSION_ID_NEW) {
+        if (header.sessionId == RPC_SESSION_ID_NEW) {
+            if (reverse) {
+                ALOGE("Cannot create a new session with a reverse connection, would leak");
+                return;
+            }
+
             LOG_ALWAYS_FATAL_IF(server->mSessionIdCounter >= INT32_MAX, "Out of session IDs");
             server->mSessionIdCounter++;
 
@@ -279,12 +285,17 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
 
             server->mSessions[server->mSessionIdCounter] = session;
         } else {
-            auto it = server->mSessions.find(id);
+            auto it = server->mSessions.find(header.sessionId);
             if (it == server->mSessions.end()) {
-                ALOGE("Cannot add thread, no record of session with ID %d", id);
+                ALOGE("Cannot add thread, no record of session with ID %d", header.sessionId);
                 return;
             }
             session = it->second;
+        }
+
+        if (reverse) {
+            session->addClientConnection(std::move(clientFd));
+            return;
         }
 
         detachGuard.Disable();
