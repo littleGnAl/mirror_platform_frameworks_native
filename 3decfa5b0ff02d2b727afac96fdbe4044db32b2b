@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a242c99a_f8cc8cf4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-11T16:56:04Z",
+      "side": 1,
+      "message": "Yeah, it is the next CL:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1683951/10/libs/binder/Binder.cpp#425",
+      "parentUuid": "2ff3f075_7d508ba3",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "3decfa5b0ff02d2b727afac96fdbe4044db32b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afb70d54_31a9839c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-10T17:50:48Z",
       "side": 1,
       "message": "can you add some test cases for this behavior (that for instance, you can\u0027t set both)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "3decfa5b0ff02d2b727afac96fdbe4044db32b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef1f1186_fb9dae3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-11T16:56:04Z",
+      "side": 1,
+      "message": "Sure, will do!",
+      "parentUuid": "afb70d54_31a9839c",
       "range": {
         "startLine": 13,
         "startChar": 0,
