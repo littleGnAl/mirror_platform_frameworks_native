@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ee295e_bbd5dc8d",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-11T00:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39762fac_57aaaa73",
+      "revId": "9b6e3f1045fcaed2205702aa268c75f13f889136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23577775_a9a091f1",
@@ -84,6 +102,24 @@
       "writtenOn": "2021-05-04T19:32:49Z",
       "side": 1,
       "message": "As above.",
+      "revId": "9b6e3f1045fcaed2205702aa268c75f13f889136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b4a996_6b314a5d",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-11T00:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23577775_a9a091f1",
       "revId": "9b6e3f1045fcaed2205702aa268c75f13f889136",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
