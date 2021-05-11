@@ -47,6 +47,15 @@ public:
     static sp<RpcSession> make();
 
     /**
+     * Set the maximum number of reverse connections allowed to be made (for
+     * things like callbacks). By default, this is 0. This must be called before
+     * setting up this connection as a client.
+     *
+     * TODO(b/185167543): start these dynamically
+     */
+    void setMaxReverseConnections(size_t connections);
+
+    /**
      * This should be called once per thread, matching 'join' in the remote
      * process.
      */
@@ -82,6 +91,12 @@ public:
      * it supports (maximum number of concurrent non-nested synchronous transactions)
      */
     status_t getRemoteMaxThreads(size_t* maxThreads);
+
+    /**
+     * Shuts down the service. Only works for client sessions (server-side
+     * sessions currenlty only support shutting down the entire server).
+     */
+    [[nodiscard]] bool shutdown();
 
     [[nodiscard]] status_t transact(const sp<IBinder>& binder, uint32_t code, const Parcel& data,
                                     Parcel* reply, uint32_t flags);
@@ -154,13 +169,14 @@ private:
         std::optional<pid_t> exclusiveTid;
     };
 
-    bool setupSocketClient(const RpcSocketAddress& address);
-    bool setupOneSocketClient(const RpcSocketAddress& address, int32_t sessionId);
-    bool addClientConnection(base::unique_fd fd);
+    [[nodiscard]] bool setupSocketClient(const RpcSocketAddress& address);
+    [[nodiscard]] bool setupOneSocketConnection(const RpcSocketAddress& address, int32_t sessionId,
+                                                bool server);
+    [[nodiscard]] bool addClientConnection(base::unique_fd fd);
     void setForServer(const wp<RpcServer>& server, int32_t sessionId,
                       const std::shared_ptr<FdTrigger>& shutdownTrigger);
     sp<RpcConnection> assignServerToThisThread(base::unique_fd fd);
-    bool removeServerConnection(const sp<RpcConnection>& connection);
+    [[nodiscard]] bool removeServerConnection(const sp<RpcConnection>& connection);
 
     enum class ConnectionUse {
         CLIENT,
@@ -214,6 +230,8 @@ private:
     std::unique_ptr<RpcState> mState;
 
     std::mutex mMutex; // for all below
+
+    size_t mMaxReverseConnections = 0;
 
     std::condition_variable mAvailableConnectionCv; // for mWaitingThreads
     size_t mWaitingThreads = 0;
