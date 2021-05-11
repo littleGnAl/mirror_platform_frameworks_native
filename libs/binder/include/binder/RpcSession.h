@@ -127,7 +127,7 @@ private:
     };
 
     bool setupSocketClient(const RpcSocketAddress& address);
-    bool setupOneSocketClient(const RpcSocketAddress& address, int32_t sessionId);
+    bool setupOneSocketConnection(const RpcSocketAddress& address, int32_t sessionId, bool server);
     void addClientConnection(base::unique_fd fd);
     void setForServer(const wp<RpcServer>& server, int32_t sessionId);
     sp<RpcConnection> assignServerToThisThread(base::unique_fd fd);

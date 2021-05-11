@@ -137,17 +137,23 @@ void RpcServer::join() {
         // TODO(b/183988761): cannot trust this simple ID, should not block this
         // thread
         LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
-        int32_t id;
-        if (sizeof(id) != read(clientFd.get(), &id, sizeof(id))) {
+        RpcConnectionHeader header;
+        if (sizeof(header) != read(clientFd.get(), &header, sizeof(header))) {
             ALOGE("Could not read ID from fd %d", clientFd.get());
             continue;
         }
+        bool reverse = header.options & RPC_CONNECTION_OPTION_REVERSE;
 
         {
             std::lock_guard<std::mutex> _l(mLock);
 
             sp<RpcSession> session;
-            if (id == RPC_SESSION_ID_NEW) {
+            if (header.sessionId == RPC_SESSION_ID_NEW) {
+                if (reverse) {
+                    ALOGE("Cannot create a new session with a reverse connection, would leak");
+                    continue;
+                }
+
                 // new client!
                 LOG_ALWAYS_FATAL_IF(mSessionIdCounter >= INT32_MAX, "Out of session IDs");
                 mSessionIdCounter++;
@@ -157,15 +163,19 @@ void RpcServer::join() {
 
                 mSessions[mSessionIdCounter] = session;
             } else {
-                auto it = mSessions.find(id);
+                auto it = mSessions.find(header.sessionId);
                 if (it == mSessions.end()) {
-                    ALOGE("Cannot add thread, no record of session with ID %d", id);
+                    ALOGE("Cannot add thread, no record of session with ID %d", header.sessionId);
                     continue;
                 }
                 session = it->second;
             }
 
-            session->startThread(std::move(clientFd));
+            if (reverse) {
+                session->addClientConnection(std::move(clientFd));
+            } else {
+                session->startThread(std::move(clientFd));
+            }
         }
     }
 }
