@@ -82,6 +82,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7fa0638_b24c6b10",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-11T02:35:03Z",
+      "side": 1,
+      "message": "-\u003e https://android-review.googlesource.com/c/platform/frameworks/native/+/1702017",
+      "parentUuid": "4e4ee7d6_25e39326",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "ee78e760a7727947b02972af548c71b2f38019e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb7771c4_2417938f",
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "will follow-up",
       "parentUuid": "fb7771c4_2417938f",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 44
+      },
+      "revId": "ee78e760a7727947b02972af548c71b2f38019e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5293cc5c_79726c02",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-11T02:35:03Z",
+      "side": 1,
+      "message": "-\u003e https://android-review.googlesource.com/c/platform/frameworks/native/+/1702017",
+      "parentUuid": "88fc4f6f_7198aa9b",
       "range": {
         "startLine": 192,
         "startChar": 0,
