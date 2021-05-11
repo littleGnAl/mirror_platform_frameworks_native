@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1d8a583_6fe9a780",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-11T00:45:54Z",
+      "side": 1,
+      "message": "I don\u0027t understand what this means.",
+      "range": {
+        "startLine": 11,
+        "startChar": 54,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "8193c1884c68c6355d662a4e9f8af679174b9b3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd43961_fde7160a",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-11T00:45:54Z",
+      "side": 1,
+      "message": "Right. The identification should be done by this thread.",
+      "range": {
+        "startLine": 172,
+        "startChar": 12,
+        "endLine": 172,
+        "endChar": 54
+      },
+      "revId": "8193c1884c68c6355d662a4e9f8af679174b9b3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
