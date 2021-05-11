@@ -188,6 +188,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83fc3447_2d0cb22a",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-11T17:36:32Z",
+      "side": 1,
+      "message": "Yes I have considered this idea. Just to confirm, the fd passed to setForSocket() is the one generated from socket(), not accept(), right? So:\n\n- servicedispatcher creates socket() fd, calls listen() on it, then pass it to individual service and exit\n- service accept()s new connection\n\nI do not object this idea. I didn\u0027t choose it because I used to have a long-running servicedispatcher daemon in my design.\n\nI\u0027ll change to this one.",
+      "parentUuid": "4e841c8e_52092dc2",
+      "range": {
+        "startLine": 436,
+        "startChar": 31,
+        "endLine": 436,
+        "endChar": 47
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf4fe9f9_95b8770d",
         "filename": "libs/binder/RpcServer.cpp",
         "patchSetId": 9
