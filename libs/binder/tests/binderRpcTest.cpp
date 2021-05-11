@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <BnBinderRpcCallback.h>
 #include <BnBinderRpcSession.h>
 #include <BnBinderRpcTest.h>
 #include <aidl/IBinderRpcTest.h>
@@ -33,6 +34,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <thread>
+#include <type_traits>
 
 #ifdef __BIONIC__
 #include <linux/vm_sockets.h>
@@ -75,6 +77,22 @@ private:
     std::string mName;
 };
 std::atomic<int32_t> MyBinderRpcSession::gNum;
+
+class MyBinderRpcCallback : public BnBinderRpcCallback {
+    Status sendCallback(const std::string& value) {
+        std::unique_lock _l(mMutex);
+        mValues.push_back(value);
+        _l.unlock();
+        mCv.notify_one();
+        return Status::ok();
+    }
+    Status sendOnewayCallback(const std::string& value) { return sendCallback(value); }
+
+public:
+    std::mutex mMutex;
+    std::condition_variable mCv;
+    std::vector<std::string> mValues;
+};
 
 class MyBinderRpcTest : public BnBinderRpcTest {
 public:
@@ -172,6 +190,24 @@ public:
         // into BpBinder, as nothing is changed at the higher levels
         // (IInterface) which result in this behavior.
         return sleepMs(ms);
+    }
+
+    Status doCallback(const sp<IBinderRpcCallback>& callback, bool oneway, bool delayed,
+                      const std::string& value) override {
+        if (callback == nullptr) {
+            return Status::fromExceptionCode(Status::EX_NULL_POINTER);
+        }
+
+        if (delayed) {
+            std::thread([=]() { (void)doCallback(callback, oneway, false, value); });
+            return Status::ok();
+        }
+
+        if (oneway) {
+            return callback->sendOnewayCallback(value);
+        }
+
+        return callback->sendCallback(value);
     }
 
     Status die(bool cleanup) override {
@@ -866,6 +902,33 @@ TEST_P(BinderRpc, OnewayCallQueueing) {
     size_t epochMsAfter = epochMillis();
 
     EXPECT_GT(epochMsAfter, epochMsBefore + kSleepMs * kNumSleeps);
+}
+
+TEST_P(BinderRpc, Callbacks) {
+    const static std::string kTestString = "good afternoon!";
+
+    for (bool oneway : {true, false}) {
+        for (bool delayed : {true, false}) {
+            // FIXME(b/185167543): client should have a thread handling
+            // non-nested transactions
+            if (delayed == true) continue;
+            if (oneway == true) continue;
+
+            auto proc = createRpcTestSocketServerProcess(1);
+            auto cb = sp<MyBinderRpcCallback>::make();
+
+            EXPECT_OK(proc.rootIface->doCallback(cb, oneway, delayed, kTestString));
+
+            using std::literals::chrono_literals::operator""s;
+            std::unique_lock<std::mutex> _l(cb->mMutex);
+            cb->mCv.wait_for(_l, 1s, [&] { return !cb->mValues.empty(); });
+
+            EXPECT_EQ(cb->mValues.size(), 1) << "oneway: " << oneway << "delayed: " << delayed;
+            if (cb->mValues.empty()) continue;
+            EXPECT_EQ(cb->mValues.at(0), kTestString)
+                    << "oneway: " << oneway << "delayed: " << delayed;
+        }
+    }
 }
 
 TEST_P(BinderRpc, Die) {
