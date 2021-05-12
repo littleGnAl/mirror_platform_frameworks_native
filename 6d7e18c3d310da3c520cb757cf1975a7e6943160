@@ -140,6 +140,30 @@
       },
       "revId": "6d7e18c3d310da3c520cb757cf1975a7e6943160",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "688cd47a_f6f2c516",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-12T22:52:50Z",
+      "side": 1,
+      "message": "Oh I see what you mean. I don\u0027t think we can loop over tuples. Also, explicitly repeating the block allow me to see the error line number without appending additional error messages.",
+      "parentUuid": "7764d798_942a930a",
+      "range": {
+        "startLine": 949,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 75
+      },
+      "revId": "6d7e18c3d310da3c520cb757cf1975a7e6943160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
