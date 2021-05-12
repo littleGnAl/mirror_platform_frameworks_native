@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c9f869_5ac66a7f",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-12T22:48:41Z",
+      "side": 1,
+      "message": "```\nisStrong ? \u0026RpcServer::setRootObject : \u0026RpcServer::setRootObjectWeak\n```\nThis doesn\u0027t compile because setRootObject and setRootObjectWeak don\u0027t have the same type. That\u0027s why I need to cast them to SetFn.",
+      "parentUuid": "df137323_f7802c94",
+      "range": {
+        "startLine": 937,
+        "startChar": 15,
+        "endLine": 937,
+        "endChar": 98
+      },
+      "revId": "6d7e18c3d310da3c520cb757cf1975a7e6943160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fa1e58a_856fbb97",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-05-12T22:42:34Z",
       "side": 1,
       "message": "nit: this is a repeated block, but I wonder would this work: for (bool isStrong : GetParam()). It\u0027s really not important in this case, but we could run it an arbitrary number of times.",
+      "range": {
+        "startLine": 949,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 75
+      },
+      "revId": "6d7e18c3d310da3c520cb757cf1975a7e6943160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7764d798_942a930a",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-12T22:48:41Z",
+      "side": 1,
+      "message": "I explicitly repeat this block in in the same test so that I can test that RpcServer::getRootObject() doesn\u0027t return a previously-set object (i.e. binder1).\n\nThat\u0027s why the parameter is Bool x Bool, not just Bool.",
+      "parentUuid": "714408d6_12f0469b",
       "range": {
         "startLine": 949,
         "startChar": 0,
