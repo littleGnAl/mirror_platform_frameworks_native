@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df137323_f7802c94",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-12T22:42:34Z",
+      "side": 1,
+      "message": "nit: \"a ? b(c) : b(d)\" -\u003e \"b(a ? c : d)\"\n\nThough, in this case, you don\u0027t need the std::function objects at all, could be if you wanted to use member function pointers:\n\n    auto setRootObject \u003d [](bool isStrong) {\n        return isStrong ? \u0026RpcServer::setRootObject : \u0026RpcServer::setRootObjectWeak;\n    };",
+      "range": {
+        "startLine": 937,
+        "startChar": 15,
+        "endLine": 937,
+        "endChar": 98
+      },
+      "revId": "6d7e18c3d310da3c520cb757cf1975a7e6943160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa1e58a_856fbb97",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-12T22:42:34Z",
+      "side": 1,
+      "message": "nit: sp\u003cMyBinderRpcTest\u003e::make(), but actually prefer sp\u003cBBinder\u003e::make() since this doesn\u0027t need the special type",
+      "range": {
+        "startLine": 942,
+        "startChar": 26,
+        "endLine": 942,
+        "endChar": 46
+      },
+      "revId": "6d7e18c3d310da3c520cb757cf1975a7e6943160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714408d6_12f0469b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-12T22:42:34Z",
+      "side": 1,
+      "message": "nit: this is a repeated block, but I wonder would this work: for (bool isStrong : GetParam()). It\u0027s really not important in this case, but we could run it an arbitrary number of times.",
+      "range": {
+        "startLine": 949,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 75
+      },
+      "revId": "6d7e18c3d310da3c520cb757cf1975a7e6943160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
