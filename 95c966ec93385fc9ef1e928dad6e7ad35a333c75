@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1dfcdb_859c5013",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-12T21:54:15Z",
+      "side": 1,
+      "message": "It\u0027s an error to call setup multiple times. Even if we take the lock, if there is an error, there are possibilities:\n a. the value is torn, in which case, we won\u0027t get the abort\n b. the value is not torn, in which case:\n  1. it\u0027ll be -1 (abort hit, correctly detecting race)\n  2. it\u0027ll be updated (no hit an abort)\n\nWith the lock, (a) is no longer a possibility (and will usually be transformed into b.2 since getting the lock would wait until after the value is fully written). So, we still race between b.1 and b.2. So we still only conditionally detect the failure. No better guarantees.\n\nSo I didn\u0027t want to take a lock (an extra time) in the loop.",
+      "parentUuid": "dc1f2acc_f74fa673",
+      "range": {
+        "startLine": 126,
+        "startChar": 24,
+        "endLine": 126,
+        "endChar": 43
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "422b1284_5c62154b",
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc2ce3ad_e0c8036c",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-12T21:54:15Z",
+      "side": 1,
+      "message": "Yeah, you said that, but it didn\u0027t use to be the case (at least in the cloud instance running these) or do you mean locally? Did this default really get changed without a survey of all existing HALs or does that only affect local runs? For instance, I\u0027ve seen a lot of larger inputs to the aidl fuzzer before and we never set this option.",
+      "parentUuid": "0e7fadfb_80a4d001",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "351264ce_eadb720e",
         "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
         "patchSetId": 9
@@ -83,6 +131,30 @@
       "writtenOn": "2021-05-12T21:41:01Z",
       "side": 1,
       "message": "is this worth keeping until b/182938024 is resolved?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adfefb4b_e45a9df3",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-12T21:54:15Z",
+      "side": 1,
+      "message": "Notice \"#if 0\" right?\n\neven after then, I think I\u0027d keep it for convenience, since otherwise, you are trying to guess to write 0xfffffffff to do anything at all. For local development, this takes a long time.",
+      "parentUuid": "351264ce_eadb720e",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -116,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6607b83f_a33e4d3d",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-12T21:54:15Z",
+      "side": 1,
+      "message": "The fuzzer engine itself sometimes allocates memory and that shouldn\u0027t fail even if the test allocates a lot.\n\nThe other thing this (and binder_parcel_fuzzer where I originally was working on this) needs is for the memory limit to be reset in the signal handler for the same reason, but I haven\u0027t really had a chance to look into that, and it doesn\u0027t hurt too much.",
+      "parentUuid": "7afeefef_48ca6c16",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 41
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6abf344a_88ded0d1",
@@ -129,6 +225,30 @@
       "writtenOn": "2021-05-12T21:41:01Z",
       "side": 1,
       "message": "why the sleep here?",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 15
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b368a5_f959b3df",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-12T21:54:15Z",
+      "side": 1,
+      "message": "It\u0027s because this test starts a lot of threads in a loop. The std::thread constructor was aborting a lot because of being out of resources. Actually, maybe I should go ahead and rewrite the code to use different thread APIs first b/c -fno-exceptions :)",
+      "parentUuid": "6abf344a_88ded0d1",
       "range": {
         "startLine": 120,
         "startChar": 4,
