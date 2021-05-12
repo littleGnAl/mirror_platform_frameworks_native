@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb96b372_1681657e",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-12T22:04:21Z",
+      "side": 1,
+      "message": "I\u0027ve only seen the message locally, so the infra might be passing in some larger value by default. Seeing the larger inputs in the aidl fuzzer sounds like good enough evidence to assume it\u0027s ok.",
+      "parentUuid": "ff07da28_cbc18b88",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "351264ce_eadb720e",
