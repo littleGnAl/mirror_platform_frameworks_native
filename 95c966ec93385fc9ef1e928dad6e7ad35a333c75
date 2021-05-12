@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc1f2acc_f74fa673",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-12T21:41:01Z",
+      "side": 1,
+      "message": "no longer need to grab mLock? It\u0027s still taken for this check in setupSocketServer.",
+      "range": {
+        "startLine": 126,
+        "startChar": 24,
+        "endLine": 126,
+        "endChar": 43
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "422b1284_5c62154b",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-12T21:41:01Z",
+      "side": 1,
+      "message": "not used?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7fadfb_80a4d001",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-12T21:41:01Z",
+      "side": 1,
+      "message": "why this limitation and nothing in libfuzzer_options? I think you have to pass in max_len\u003dsomething for it to get close.",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "351264ce_eadb720e",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-12T21:41:01Z",
+      "side": 1,
+      "message": "is this worth keeping until b/182938024 is resolved?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7afeefef_48ca6c16",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-12T21:41:01Z",
+      "side": 1,
+      "message": "why set the memory limit again on the way out?",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 41
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6abf344a_88ded0d1",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-12T21:41:01Z",
+      "side": 1,
+      "message": "why the sleep here?",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 15
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
