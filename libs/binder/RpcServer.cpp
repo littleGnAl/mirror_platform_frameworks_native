@@ -157,10 +157,11 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
 
     // TODO(b/183988761): cannot trust this simple ID
     LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
+    bool idValid = true;
     int32_t id;
     if (sizeof(id) != read(clientFd.get(), &id, sizeof(id))) {
         ALOGE("Could not read ID from fd %d", clientFd.get());
-        return;
+        idValid = false;
     }
 
     std::thread thisThread;
@@ -174,6 +175,11 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
         thisThread = std::move(threadId->second);
         mConnectingThreads.erase(threadId);
 
+        if (!idValid) {
+            thisThread.detach();
+            return;
+        }
+
         if (id == RPC_SESSION_ID_NEW) {
             LOG_ALWAYS_FATAL_IF(mSessionIdCounter >= INT32_MAX, "Out of session IDs");
             mSessionIdCounter++;
@@ -186,10 +192,13 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             auto it = mSessions.find(id);
             if (it == mSessions.end()) {
                 ALOGE("Cannot add thread, no record of session with ID %d", id);
+                thisThread.detach();
                 return;
             }
             session = it->second;
         }
+
+        session->preJoin(std::move(thisThread));
     }
 
     // avoid strong cycle
@@ -199,7 +208,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
     // DO NOT ACCESS MEMBER VARIABLES BELOW
     //
 
-    session->join(std::move(thisThread), std::move(clientFd));
+    session->join(std::move(clientFd));
 }
 
 bool RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
