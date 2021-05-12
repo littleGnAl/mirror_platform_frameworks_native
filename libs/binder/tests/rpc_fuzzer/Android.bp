@@ -18,23 +18,17 @@ cc_fuzz {
     srcs: [
         "main.cpp",
     ],
+    shared_libs: [
+ "libcgrouprc",
+    ],
     static_libs: [
+    "libprocessgroup",
         "libbase",
         "libcutils",
+        "libjsoncpp",
         "liblog",
         "libutils",
+        "libbinder",
     ],
-
-    target: {
-        android: {
-            shared_libs: [
-                "libbinder",
-            ],
-        },
-        host: {
-            static_libs: [
-                "libbinder",
-            ],
-        },
-    },
+    target: { android: { shared_libs: ["libvndksupport"], }, },
 }
