@@ -242,6 +242,7 @@ static const TracingCategory k_categories[] = {
         { OPT,      "events/kmem/ion_heap_grow/enable" },
         { OPT,      "events/kmem/ion_heap_shrink/enable" },
         { OPT,      "events/ion/ion_stat/enable" },
+        { OPT,      "events/fastrpc/fastrpc_dma_stat/enable" },
     } },
     { "thermal",  "Thermal event", 0, {
         { REQ,      "events/thermal/thermal_temperature/enable" },
