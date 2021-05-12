@@ -186,9 +186,6 @@ impl Parcel {
 
     /// Move the current read/write position in the parcel.
     ///
-    /// The new position must be a position previously returned by
-    /// `self.get_data_position()`.
-    ///
     /// # Safety
     ///
     /// This method is safe if `pos` is less than the current size of the parcel
@@ -224,6 +221,55 @@ impl Parcel {
     /// partially or completely, depending on the available data.
     pub fn read_in_place<D: Deserialize>(&self, x: &mut D) -> Result<()> {
         x.deserialize_in_place(self)
+    }
+
+    /// Safely read a sized parcelable.
+    ///
+    /// Read the size of a parcelable, compute the end position
+    /// of that parcelable, then call a closure with that computed position
+    /// so the closure can perform a series of reads until it reaches
+    /// the end. The closure is responsible for calling
+    /// [`Parcel::get_data_position`] to get the current position
+    /// before every read, at least until Rust gets coroutines.
+    /// After the closure returns, skip to the end of the current
+    /// parcelable regardless of how much the closure has read.
+    ///
+    /// # Examples
+    ///
+    /// ```no_run
+    /// let mut parcelable = Default::default();
+    /// parcel.with_sized_parcelable(|end_pos| {
+    ///     if parcel.get_data_position() < end_pos {
+    ///         parcelable.a = parcel.read()?;
+    ///     }
+    ///     if parcel.get_data_position() < end_pos {
+    ///         parcelable.b = parcel.read()?;
+    ///     }
+    ///     Ok(())
+    /// });
+    /// ```
+    ///
+    pub fn with_sized_parcelable<F>(&self, mut f: F) -> Result<()>
+    where
+        F: FnMut(i32) -> Result<()>
+    {
+        let start = self.get_data_position();
+        let parcelable_size: i32 = self.read()?;
+        if parcelable_size < 0 {
+            return Err(StatusCode::BAD_VALUE);
+        }
+
+        let end = start.checked_add(parcelable_size)
+            .ok_or(StatusCode::BAD_VALUE)?;
+        f(end)?;
+
+        // Advance the data position to the actual end,
+        // in case the closure read less data than was available
+        unsafe {
+            self.set_data_position(end)?;
+        }
+
+        Ok(())
     }
 
     /// Read a vector size from the `Parcel` and resize the given output vector
