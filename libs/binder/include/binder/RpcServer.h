@@ -87,6 +87,11 @@ public:
      */
     void setupExternalServer(base::unique_fd socketFd);
 
+    /**
+     * If setup*Server has been successful, return true. Otherwise return false.
+     */
+    [[nodiscard]] bool hasServer();
+
     void iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
 
     /**
