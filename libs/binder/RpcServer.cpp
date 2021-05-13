@@ -135,10 +135,7 @@ sp<IBinder> RpcServer::getRootObject() {
 
 void RpcServer::join() {
     LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
-    {
-        std::lock_guard<std::mutex> _l(mLock);
-        LOG_ALWAYS_FATAL_IF(mServer.get() == -1, "RpcServer must be setup to join.");
-    }
+    LOG_ALWAYS_FATAL_IF(!hasServer(), "RpcServer must be setup to join.");
 
     while (true) {
         unique_fd clientFd(TEMP_FAILURE_RETRY(
@@ -268,6 +265,11 @@ void RpcServer::onSessionTerminating(const sp<RpcSession>& session) {
     LOG_ALWAYS_FATAL_IF(it == mSessions.end(), "Bad state, unknown session id %d", *id);
     LOG_ALWAYS_FATAL_IF(it->second != session, "Bad state, session has id mismatch %d", *id);
     (void)mSessions.erase(it);
+}
+
+bool RpcServer::hasServer() {
+    std::lock_guard<std::mutex> _l(mLock);
+    return mServer.ok();
 }
 
 } // namespace android
