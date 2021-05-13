@@ -59,6 +59,53 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47214e2_9f29e6e0",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T16:01:41Z",
+      "side": 1,
+      "message": "not a comment - resolved",
+      "parentUuid": "dd0d0113_a0aac0cc",
+      "range": {
+        "startLine": 205,
+        "startChar": 22,
+        "endLine": 205,
+        "endChar": 26
+      },
+      "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb61bfa_6dbb7e7c",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T16:01:41Z",
+      "side": 1,
+      "message": "nit: Trigger or similar? It\u0027s not really used as a pipe",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "579a4c11_6875fdd4",
@@ -72,6 +119,30 @@
       "writtenOn": "2021-05-13T15:59:44Z",
       "side": 1,
       "message": "Can we leave the pipe as an internal implementation detail? (always create it?)",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f20744f0_8a135367",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T16:01:41Z",
+      "side": 1,
+      "message": "Actually you know what - this is fine - it allows someone to use the same pipe with multiple connections",
+      "parentUuid": "579a4c11_6875fdd4",
       "range": {
         "startLine": 134,
         "startChar": 1,
