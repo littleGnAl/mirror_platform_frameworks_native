@@ -16,18 +16,20 @@
 
 #define LOG_TAG "RpcServer"
 
+#include <poll.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 
 #include <thread>
 #include <vector>
 
+#include <android-base/macros.h>
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
 #include <log/log.h>
-#include "RpcState.h"
 
 #include "RpcSocketAddress.h"
+#include "RpcState.h"
 #include "RpcWireFormat.h"
 
 namespace android {
@@ -133,11 +135,38 @@ sp<IBinder> RpcServer::getRootObject() {
     return ret;
 }
 
-void RpcServer::join() {
+std::unique_ptr<RpcServer::Pipe> RpcServer::Pipe::make() {
+    auto ret = std::make_unique<RpcServer::Pipe>();
+    if (!android::base::Pipe(&ret->mRead, &ret->mWrite)) return nullptr;
+    return ret;
+}
+
+void RpcServer::Pipe::shutDown() {
+    mWrite.reset();
+}
+
+void RpcServer::join(Pipe* pipe) {
     LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
     LOG_ALWAYS_FATAL_IF(!hasServer(), "RpcServer must be setup to join.");
 
     while (true) {
+        if (pipe != nullptr) {
+            pollfd pfd[]{{.fd = mServer.get(), .events = POLLIN, .revents = 0},
+                         {.fd = pipe->mRead.get(), .events = POLLHUP, .revents = 0}};
+            int ret = TEMP_FAILURE_RETRY(poll(pfd, arraysize(pfd), -1));
+            if (ret < 0) {
+                ALOGE("Could not poll socket: %s", strerror(errno));
+                continue;
+            }
+            if (ret == 0) {
+                continue;
+            }
+            if (pfd[1].revents & POLLHUP) {
+                LOG_RPC_DETAIL("join() exiting because shutdownFd has data to read.");
+                break; // NOLINT
+            }
+        }
+
         unique_fd clientFd(TEMP_FAILURE_RETRY(
                 accept4(mServer.get(), nullptr, nullptr /*length*/, SOCK_CLOEXEC)));
 
