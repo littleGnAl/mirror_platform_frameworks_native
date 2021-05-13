@@ -16,6 +16,70 @@
       "message": "This needs more tests",
       "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1a0d2e8_d1339474",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T15:59:44Z",
+      "side": 1,
+      "message": "hey, this is very similar to what I was going to work on today! :) now I don\u0027t need to.\n\nTwo cases where I have tests that can work with this:\n- avoid creating acceptOne, we can tell it to shutdown: https://android-review.googlesource.com/c/platform/frameworks/native/+/1698087/11/libs/binder/tests/rpc_fuzzer/main.cpp#82\n- shutting down all connections (incl others are needed here)\n\nDo you want to do the other comments, and then I can rebase the fuzzer on top of this?",
+      "parentUuid": "6cdde283_e36a4116",
+      "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd0d0113_a0aac0cc",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T15:59:44Z",
+      "side": 1,
+      "message": "We\u0027ll also need to pass the pipe into this read, also RpcState reads (and client sessions will also need to create it for the reverse connections state). Maybe best to leave it for later though?",
+      "range": {
+        "startLine": 205,
+        "startChar": 22,
+        "endLine": 205,
+        "endChar": 26
+      },
+      "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "579a4c11_6875fdd4",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T15:59:44Z",
+      "side": 1,
+      "message": "Can we leave the pipe as an internal implementation detail? (always create it?)",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
