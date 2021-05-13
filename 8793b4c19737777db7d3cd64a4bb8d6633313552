@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2635da5_ac9141fb",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-13T00:03:40Z",
+      "side": 1,
+      "message": "nit: \"avoid allocating too much data\" or something",
+      "range": {
+        "startLine": 188,
+        "startChar": 42,
+        "endLine": 189,
+        "endChar": 15
+      },
+      "revId": "8793b4c19737777db7d3cd64a4bb8d6633313552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9954ca8_60fa6639",
@@ -19,6 +42,29 @@
         "startChar": 49,
         "endLine": 196,
         "endChar": 67
+      },
+      "revId": "8793b4c19737777db7d3cd64a4bb8d6633313552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebcc6b70_409f67ba",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-13T00:03:40Z",
+      "side": 1,
+      "message": "100,000,000 bytes. That\u0027s about 100MB, or am I just totally missing something...\nAre there unit tests that you could add?",
+      "range": {
+        "startLine": 196,
+        "startChar": 49,
+        "endLine": 196,
+        "endChar": 66
       },
       "revId": "8793b4c19737777db7d3cd64a4bb8d6633313552",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
