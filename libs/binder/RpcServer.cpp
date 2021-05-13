@@ -276,4 +276,19 @@ bool RpcServer::hasServer() {
     return mServer.ok();
 }
 
+unique_fd RpcServer::releaseServer() {
+    std::lock_guard<std::mutex> _l(mLock);
+    return std::move(mServer);
+}
+
+bool RpcServer::setupExternalServer(base::unique_fd serverFd) {
+    std::lock_guard<std::mutex> _l(mLock);
+    if (mServer.ok()) {
+        ALOGE("Each RpcServer can only have one server.");
+        return false;
+    }
+    mServer = std::move(serverFd);
+    return true;
+}
+
 } // namespace android
