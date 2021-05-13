@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2dc9174_90236be1",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-13T03:51:55Z",
+      "side": 1,
+      "message": "I\u0027m open to bikeshedding the name, since the closure actually takes the end position and not the parcelable.",
+      "revId": "6d61c0c54c312efa0fe925b221c33c49e45d3b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
