@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "260cf7a2_57d3135e",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T05:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a3dcc51_ec8fa76b",
+      "range": {
+        "startLine": 170,
+        "startChar": 31,
+        "endLine": 170,
+        "endChar": 34
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93958818_b91d8973",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-05-10T18:10:55Z",
       "side": 1,
       "message": "nit: log? (same below)",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 33
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e767635_bd6475b4",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T05:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93958818_b91d8973",
       "range": {
         "startLine": 157,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed83fb1f_b7ae2213",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T05:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4ca9e52_7b4a3f47",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 41
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7e0db7c_597b35f9",
@@ -117,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6bf989_196f4ede",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T05:53:20Z",
+      "side": 1,
+      "message": "I\u0027ve changed the design, so this no longer applies. PTAL at new patchset.",
+      "parentUuid": "d7e0db7c_597b35f9",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 72
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41e8d0fe_8ddce43c",
@@ -130,6 +226,30 @@
       "writtenOn": "2021-05-10T18:10:55Z",
       "side": 1,
       "message": "should hold e-\u003emLock",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 48
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c234da8d_372a941e",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T05:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41e8d0fe_8ddce43c",
       "range": {
         "startLine": 421,
         "startChar": 0,
@@ -210,6 +330,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e681a3_b8a4fae2",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T05:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83fc3447_2d0cb22a",
+      "range": {
+        "startLine": 436,
+        "startChar": 31,
+        "endLine": 436,
+        "endChar": 47
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9acb0fc5_2a285b14",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T05:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f77f7dc_05277f34",
+      "range": {
+        "startLine": 435,
+        "startChar": 4,
+        "endLine": 436,
+        "endChar": 69
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf4fe9f9_95b8770d",
@@ -233,6 +401,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "658eb4ec_631de7ec",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T05:53:20Z",
+      "side": 1,
+      "message": "No longer applies",
+      "parentUuid": "cf4fe9f9_95b8770d",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 53
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75966975_3181a144",
@@ -246,6 +438,30 @@
       "writtenOn": "2021-05-10T18:10:55Z",
       "side": 1,
       "message": "E",
+      "range": {
+        "startLine": 162,
+        "startChar": 17,
+        "endLine": 162,
+        "endChar": 19
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d74395e2_8536e3c1",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T05:53:20Z",
+      "side": 1,
+      "message": "No longer applies",
+      "parentUuid": "75966975_3181a144",
       "range": {
         "startLine": 162,
         "startChar": 17,
@@ -340,6 +556,30 @@
       "side": 1,
       "message": "Sorry, see the \"since we pass a single already-accepted FD here, it will be impossible to add new threads/clients.\" comment first. I think you may find you don\u0027t need this method at all (and instead need something like \u0027RpcServer::release\u0027). Though, if you do need it, maybe spawnLooperForAcceptedFd?",
       "parentUuid": "e7a0f9a2_6cb01333",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 81
+      },
+      "revId": "c410cac34763df45afd6cb591f9f529ec68fbfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1cc16f_e3b6b8b6",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T05:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f513a444_72717e0a",
       "range": {
         "startLine": 118,
         "startChar": 0,
