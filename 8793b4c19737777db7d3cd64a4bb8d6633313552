@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae369759_b97092ab",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T00:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2635da5_ac9141fb",
+      "range": {
+        "startLine": 188,
+        "startChar": 42,
+        "endLine": 189,
+        "endChar": 15
+      },
+      "revId": "8793b4c19737777db7d3cd64a4bb8d6633313552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9954ca8_60fa6639",
@@ -82,6 +106,54 @@
         "startChar": 49,
         "endLine": 196,
         "endChar": 66
+      },
+      "revId": "8793b4c19737777db7d3cd64a4bb8d6633313552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "955b2885_3591ad64",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T00:48:58Z",
+      "side": 1,
+      "message": "Thanks for the catch. Nice.\n\nI mean, I\u0027m not really sure of a test other than maybe sending regular binder transactions to a process then making sure 10 100KB transactions fail, then using the same code to send 99KB transactions which pass and 100KB which fail. Though, this feels like a really complicated way to make sure numbers in two different files line up. Feels like overfitting.\n\nThe fuzzer doesn\u0027t catch this now, but it would catch it once we started allowing additional clients there (since 1GB of memory is the max for the rlimit set there). Planning on adding that after the limited fuzzer soaks for a few days.",
+      "parentUuid": "ebcc6b70_409f67ba",
+      "range": {
+        "startLine": 196,
+        "startChar": 49,
+        "endLine": 196,
+        "endChar": 66
+      },
+      "revId": "8793b4c19737777db7d3cd64a4bb8d6633313552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "972b76f3_25da9dd2",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T00:48:58Z",
+      "side": 1,
+      "message": "Done (thanks! oops - longer response to Devin\u0027s).",
+      "parentUuid": "c9954ca8_60fa6639",
+      "range": {
+        "startLine": 196,
+        "startChar": 49,
+        "endLine": 196,
+        "endChar": 67
       },
       "revId": "8793b4c19737777db7d3cd64a4bb8d6633313552",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
