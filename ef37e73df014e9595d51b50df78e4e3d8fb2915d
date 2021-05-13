@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b1e873_4d911523",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T07:30:16Z",
+      "side": 1,
+      "message": "Steven, because the service is now responsible for the socket() fd, not the accept()-ed fd, the service can no longer know when to shutdown the server.\n\nIn addition, this means that once servicedispatcher sets up the socket fd and call configureRpcServer(), this service can not be configured to listen to another port.\n\nAny suggestions? Some solutions I can think of:\n\n- add another function to IBinder that terminates the RPC thread pool and deletes the RpcServer object\n- If poll() / accept4() reaches some time out, RpcServer::join() will stop joining.\n\netc.",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 5
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
