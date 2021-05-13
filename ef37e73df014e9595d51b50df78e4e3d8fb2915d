@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42dc1fb9_ba56e175",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-13T23:50:33Z",
+      "side": 1,
+      "message": "There\u0027s another decision to make. How should the host tell the service to terminate the thread pool? Some options:\n\n- call servicedispatcher again after the host finishes using it\n- keep the servicedispatcher alive until the host is done with using the service. If adb shell disconnects, servicedispatcher dies, and the service can somehow detect this and terminates the thread pool. This can be done by servicedispatcher sending a pipe() fd to the service and ask the service to monitor it.",
+      "parentUuid": "1ba32e33_4e8af79b",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 5
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e51139f2_8c81dd34",
         "filename": "libs/binder/RpcJoinThread.cpp",
         "patchSetId": 15
