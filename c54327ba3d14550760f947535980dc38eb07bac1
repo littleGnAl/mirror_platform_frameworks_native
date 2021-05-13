@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40663877_51099e3c",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-13T06:05:08Z",
+      "side": 1,
+      "message": "nit: wrapping thradThread with scope_guard might be nicer.",
+      "range": {
+        "startLine": 179,
+        "startChar": 12,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "c54327ba3d14550760f947535980dc38eb07bac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
