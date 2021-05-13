@@ -46,6 +46,144 @@
       },
       "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51139f2_8c81dd34",
+        "filename": "libs/binder/RpcJoinThread.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T16:27:06Z",
+      "side": 1,
+      "message": "should there also be a command on binders to shutdown their server threads?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b8dcc4_3efcc659",
+        "filename": "libs/binder/RpcJoinThread.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T16:27:06Z",
+      "side": 1,
+      "message": "can we avoid this class in a separate file? or rename to RpcDevJoinThread, so it\u0027s specific to this use? Most people running an RpcServer should be creating their own thread (and it\u0027s internal). We want to prevent too much logic getting added here.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e39b19_8ff8abb5",
+        "filename": "libs/binder/RpcJoinThread.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T16:27:06Z",
+      "side": 1,
+      "message": "prefer to expose RpcServer object rather than this? that will be easier to use elsewhere?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e474758_a74a3363",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T16:27:06Z",
+      "side": 1,
+      "message": "should we pull the thread count from ProcessState?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 76
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f1cbd7_5a3d0ad2",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T16:27:06Z",
+      "side": 1,
+      "message": "you can remove this (sounds like 1 thread isn\u0027t okay)",
+      "range": {
+        "startLine": 160,
+        "startChar": 40,
+        "endLine": 160,
+        "endChar": 75
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0c4b10_1a001f63",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T16:27:06Z",
+      "side": 1,
+      "message": "what would the second calls do? should we have separate calls?",
+      "range": {
+        "startLine": 163,
+        "startChar": 50,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
