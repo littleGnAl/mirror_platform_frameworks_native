@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4277bcf0_66ad01ac",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T00:09:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "422b1284_5c62154b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e7fadfb_80a4d001",
@@ -297,6 +321,30 @@
       "side": 1,
       "message": "It\u0027s because this test starts a lot of threads in a loop. The std::thread constructor was aborting a lot because of being out of resources. Actually, maybe I should go ahead and rewrite the code to use different thread APIs first b/c -fno-exceptions :)",
       "parentUuid": "6abf344a_88ded0d1",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 15
+      },
+      "revId": "95c966ec93385fc9ef1e928dad6e7ad35a333c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd7d214_bf629eec",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T00:09:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67b368a5_f959b3df",
       "range": {
         "startLine": 120,
         "startChar": 4,
