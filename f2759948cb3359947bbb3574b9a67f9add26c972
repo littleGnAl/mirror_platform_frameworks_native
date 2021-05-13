@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3127cd_1e6c5bf6",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-13T05:33:11Z",
+      "side": 0,
+      "message": "This is gone. Is that okay and intentional?",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 46
+      },
+      "revId": "f2759948cb3359947bbb3574b9a67f9add26c972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
