@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9954ca8_60fa6639",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-13T00:02:52Z",
+      "side": 1,
+      "message": "isn\u0027t this 100MB, not 100KB?",
+      "range": {
+        "startLine": 196,
+        "startChar": 49,
+        "endLine": 196,
+        "endChar": 67
+      },
+      "revId": "8793b4c19737777db7d3cd64a4bb8d6633313552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
