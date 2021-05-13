@@ -151,6 +151,30 @@
       },
       "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a6b13e_01c63b61",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T16:49:30Z",
+      "side": 1,
+      "message": "Sorry for the back and forth, I was about to take this, but I think we should have RpcServer::shutdown, since this will also need to shut down each of the sessions and also wait for any pending transactions to finish.",
+      "parentUuid": "f20744f0_8a135367",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
