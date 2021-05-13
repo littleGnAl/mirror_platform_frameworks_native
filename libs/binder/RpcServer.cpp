@@ -56,26 +56,27 @@ bool RpcServer::setupVsockServer(unsigned int port) {
     return setupSocketServer(VsockSocketAddress(kAnyCid, port));
 }
 
-bool RpcServer::setupInetServer(unsigned int port, unsigned int* assignedPort) {
+unique_fd RpcServer::setupInetSocket(unsigned int port, unsigned int* assignedPort) {
     const char* kAddr = "127.0.0.1";
 
     if (assignedPort != nullptr) *assignedPort = 0;
     auto aiStart = InetSocketAddress::getAddrInfo(kAddr, port);
-    if (aiStart == nullptr) return false;
+    if (aiStart == nullptr) return unique_fd();
     for (auto ai = aiStart.get(); ai != nullptr; ai = ai->ai_next) {
         InetSocketAddress socketAddress(ai->ai_addr, ai->ai_addrlen, kAddr, port);
-        if (!setupSocketServer(socketAddress)) {
+        auto socket = setupSocketFd(socketAddress);
+        if (!socket.ok()) {
             continue;
         }
 
         LOG_ALWAYS_FATAL_IF(socketAddress.addr()->sa_family != AF_INET, "expecting inet");
         sockaddr_in addr{};
         socklen_t len = sizeof(addr);
-        if (0 != getsockname(mServer.get(), reinterpret_cast<sockaddr*>(&addr), &len)) {
+        if (0 != getsockname(socket.get(), reinterpret_cast<sockaddr*>(&addr), &len)) {
             int savedErrno = errno;
             ALOGE("Could not getsockname at %s: %s", socketAddress.toString().c_str(),
                   strerror(savedErrno));
-            return false;
+            return unique_fd();
         }
         LOG_ALWAYS_FATAL_IF(len != sizeof(addr), "Wrong socket type: len %zu vs len %zu",
                             static_cast<size_t>(len), sizeof(addr));
@@ -88,11 +89,19 @@ bool RpcServer::setupInetServer(unsigned int port, unsigned int* assignedPort) {
             *assignedPort = realPort;
         }
 
-        return true;
+        return socket;
     }
     ALOGE("None of the socket address resolved for %s:%u can be set up as inet server.", kAddr,
           port);
-    return false;
+    return unique_fd();
+}
+
+bool RpcServer::setupInetServer(unsigned int port, unsigned int* assignedPort) {
+    return setSocketServer(setupInetSocket(port, assignedPort));
+}
+
+void RpcServer::setupExternalServer(base::unique_fd socketFd) {
+    (void)setSocketServer(std::move(socketFd));
 }
 
 void RpcServer::setMaxThreads(size_t threads) {
@@ -200,36 +209,41 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
 }
 
 bool RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
-    LOG_RPC_DETAIL("Setting up socket server %s", addr.toString().c_str());
+    return setSocketServer(setupSocketFd(addr));
+}
 
-    {
-        std::lock_guard<std::mutex> _l(mLock);
-        LOG_ALWAYS_FATAL_IF(mServer.get() != -1, "Each RpcServer can only have one server.");
-    }
+bool RpcServer::setSocketServer(android::base::unique_fd socketFd) {
+    std::lock_guard<std::mutex> _l(mLock);
+    LOG_ALWAYS_FATAL_IF(mServer.get() != -1, "Each RpcServer can only have one server.");
+    mServer = std::move(socketFd);
+    return mServer.ok();
+}
+
+unique_fd RpcServer::setupSocketFd(const RpcSocketAddress& addr) {
+    LOG_RPC_DETAIL("Setting up socket server %s", addr.toString().c_str());
 
     unique_fd serverFd(
             TEMP_FAILURE_RETRY(socket(addr.addr()->sa_family, SOCK_STREAM | SOCK_CLOEXEC, 0)));
     if (serverFd == -1) {
         ALOGE("Could not create socket: %s", strerror(errno));
-        return false;
+        return unique_fd();
     }
 
     if (0 != TEMP_FAILURE_RETRY(bind(serverFd.get(), addr.addr(), addr.addrSize()))) {
         int savedErrno = errno;
         ALOGE("Could not bind socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));
-        return false;
+        return unique_fd();
     }
 
     if (0 != TEMP_FAILURE_RETRY(listen(serverFd.get(), 1 /*backlog*/))) {
         int savedErrno = errno;
         ALOGE("Could not listen socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));
-        return false;
+        return unique_fd();
     }
 
     LOG_RPC_DETAIL("Successfully setup socket server %s", addr.toString().c_str());
 
-    mServer = std::move(serverFd);
-    return true;
+    return serverFd;
 }
 
 void RpcServer::onSessionTerminating(const sp<RpcSession>& session) {

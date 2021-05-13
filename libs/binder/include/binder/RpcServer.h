@@ -79,6 +79,19 @@ public:
      */
     [[nodiscard]] bool hasServer();
 
+    /**
+     * See setupInetServer. Returns the socket FD.
+     */
+    [[nodiscard]] static base::unique_fd setupInetSocket(unsigned int port,
+                                                         unsigned int* assignedPort);
+
+    /**
+     * Set up server using an external socket FD.
+     *
+     * The FD should be created by e.g. setupInetSocket().
+     */
+    void setupExternalServer(base::unique_fd socketFd);
+
     void iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
 
     /**
@@ -122,14 +135,18 @@ private:
     RpcServer();
 
     void establishConnection(sp<RpcServer>&& session, base::unique_fd clientFd);
+    static base::unique_fd setupSocketFd(const RpcSocketAddress& address);
     bool setupSocketServer(const RpcSocketAddress& address);
+    bool setSocketServer(base::unique_fd socketFd);
 
     bool mAgreedExperimental = false;
     bool mStarted = false; // TODO(b/185167543): support dynamically added clients
     size_t mMaxThreads = 1;
-    base::unique_fd mServer; // socket we are accepting sessions on
 
     std::mutex mLock; // for below
+    // socket we are accepting sessions on. Once set, it will never be reset. So it is safe to get
+    // without mLock once we ensure mServer.ok().
+    base::unique_fd mServer;
     std::map<std::thread::id, std::thread> mConnectingThreads;
     sp<IBinder> mRootObject;
     std::map<int32_t, sp<RpcSession>> mSessions;
