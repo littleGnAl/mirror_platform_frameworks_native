@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c573a3b2_ae4d7d2d",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T23:55:55Z",
+      "side": 1,
+      "message": "RpcSession-\u003eshutdown should do it. We could also potentially attach this to the root object lifetime.\n\nThe API might look like (you could add in binder/ServiceManagement.h):\n\n     /**\n      * WARNING: debug build only, not user! Will return nullptr!\n      *\n      * If non-null, the root object of the session will be the service.\n      */\n     sp\u003cRpcSession\u003e getDebugDeviceRpcConnection(const std::string\u0026 serviceName);\n\nOpen question: how to handle multiple simultaneous calls to the API",
+      "parentUuid": "42dc1fb9_ba56e175",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 5
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e51139f2_8c81dd34",
         "filename": "libs/binder/RpcJoinThread.cpp",
         "patchSetId": 15
