@@ -16,6 +16,29 @@
       "message": "Hi Peiyong or Alec, could you PTAL the suggested CL from MTK? Thanks.",
       "revId": "e9f59e02e74cdf75660621ba855d84729541c203",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912ef68e_65fc0c5a",
+        "filename": "libs/renderengine/gl/GLESRenderEngine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-05-13T00:46:36Z",
+      "side": 1,
+      "message": "this will delete and regenerate the underlying texture and framebuffer, which can be slow.\n\ncan mDrawingBuffer-\u003eallocateBuffers(1, 1, mPlaceholderDrawBuffer); be done instead? typically i think that would be more efficient.",
+      "range": {
+        "startLine": 985,
+        "startChar": 21,
+        "endLine": 985,
+        "endChar": 38
+      },
+      "revId": "e9f59e02e74cdf75660621ba855d84729541c203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
