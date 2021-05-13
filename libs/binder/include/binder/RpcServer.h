@@ -21,6 +21,7 @@
 #include <utils/Errors.h>
 #include <utils/RefBase.h>
 
+#include <functional>
 #include <mutex>
 #include <thread>
 
@@ -116,12 +117,22 @@ public:
     void setRootObjectWeak(const wp<IBinder>& binder);
     sp<IBinder> getRootObject();
 
+    struct Pipe {
+        static std::unique_ptr<Pipe> make();
+        void shutDown();
+
+    private:
+        friend class RpcServer;
+        base::unique_fd mWrite, mRead;
+    };
+
     /**
      * You must have at least one client session before calling this.
      *
-     * TODO(b/185167543): way to shut down?
+     * If a client needs to actively terminate join, set up |pipe|. When caller calls
+     * pipe->shutDown() in a separate thread, join() stops.
      */
-    void join();
+    void join(Pipe* pipe = nullptr);
 
     /**
      * Accept one connection on this server. You must have at least one client
@@ -147,6 +158,7 @@ private:
 
     void establishConnection(sp<RpcServer>&& session, base::unique_fd clientFd);
     bool setupSocketServer(const RpcSocketAddress& address);
+    [[nodiscard]] bool acceptOneNoCheck();
 
     bool mAgreedExperimental = false;
     bool mStarted = false; // TODO(b/185167543): support dynamically added clients
