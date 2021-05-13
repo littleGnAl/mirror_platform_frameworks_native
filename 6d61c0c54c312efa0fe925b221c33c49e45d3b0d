@@ -16,6 +16,24 @@
       "message": "I\u0027m open to bikeshedding the name, since the closure actually takes the end position and not the parcelable.",
       "revId": "6d61c0c54c312efa0fe925b221c33c49e45d3b0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3309bfa_05605454",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-05-13T04:47:54Z",
+      "side": 1,
+      "message": "Here\u0027s my 2c. I think sized_write is the counterpart. then what about `sized_read` and then pass \"ReadableSubParcel(?)\" to the closure so that it can call \"dataAvail()\" instead of \"endpos\". \n\n  parcel.sized_read(|subparcel| {\n    if parcel.dataAvail() \u003e 0 {\n      parcelable.a \u003d subparcel.read()\n  ..\n\nOh, I just found that NDK doesn\u0027t have \"dataAvail\" yet. ;-) (dataAvail \u003d dataSize - dataPosition, though)\n\n(Steven, what do you think about adding \"AParcel_dataAvail()\"? I think it should be a utility inline function, not an API, because b/187547405 might need this and mainline modules should run on older platforms.)",
+      "parentUuid": "a2dc9174_90236be1",
+      "revId": "6d61c0c54c312efa0fe925b221c33c49e45d3b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
