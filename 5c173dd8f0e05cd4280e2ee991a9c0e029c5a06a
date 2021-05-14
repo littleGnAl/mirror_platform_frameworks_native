@@ -22,6 +22,30 @@
       },
       "revId": "5c173dd8f0e05cd4280e2ee991a9c0e029c5a06a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f2e96a_d51920c0",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T02:36:55Z",
+      "side": 1,
+      "message": "Done, I resolved the conflict.\n\nNote that shutdown() has nothing to do with acceptOne() as it is right now, so it is poll()ed in the join() loop, not in acceptOne().",
+      "parentUuid": "004569ea_42d5950f",
+      "range": {
+        "startLine": 146,
+        "startChar": 10,
+        "endLine": 146,
+        "endChar": 11
+      },
+      "revId": "5c173dd8f0e05cd4280e2ee991a9c0e029c5a06a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
