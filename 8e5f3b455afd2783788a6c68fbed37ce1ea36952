@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc44b97_5bd5fa44",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-14T07:52:06Z",
+      "side": 1,
+      "message": "We don\u0027t pass this IPCThreadState object across threads, right?",
+      "range": {
+        "startLine": 398,
+        "startChar": 59,
+        "endLine": 398,
+        "endChar": 60
+      },
+      "revId": "8e5f3b455afd2783788a6c68fbed37ce1ea36952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e43d72_eaa91e40",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-14T07:52:06Z",
+      "side": 1,
+      "message": "nit: consistent indent",
+      "range": {
+        "startLine": 232,
+        "startChar": 20,
+        "endLine": 232,
+        "endChar": 21
+      },
+      "revId": "8e5f3b455afd2783788a6c68fbed37ce1ea36952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
