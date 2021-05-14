@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7212c4dd_87bdde3b",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T20:42:58Z",
+      "side": 1,
+      "message": "idc",
+      "parentUuid": "31605920_59a378c6",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 101
+      },
+      "revId": "3fbe225b20c788107d21fb05b0b0579c6650774b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
