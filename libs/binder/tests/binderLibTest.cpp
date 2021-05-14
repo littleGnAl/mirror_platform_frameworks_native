@@ -610,7 +610,7 @@ TEST_F(BinderLibTest, NoBinderCallContextGuard) {
     IPCThreadState::SpGuard *origGuard = IPCThreadState::self()->pushGetCallingSpGuard(&spGuard);
 
     // yes, this test uses threads, but it's careful and uses fork in addServer
-    EXPECT_DEATH({ IPCThreadState::self()->getCallingPid(); },
+    EXPECT_DEATH({ (void)IPCThreadState::self()->getCallingPid(); },
                  "In context NoBinderCallContext, getCallingPid does not make sense.");
 
     IPCThreadState::self()->restoreGetCallingSpGuard(origGuard);
