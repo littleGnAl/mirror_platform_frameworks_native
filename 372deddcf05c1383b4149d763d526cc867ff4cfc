@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "667c823b_a8c269d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2021-05-14T15:47:08Z",
+      "side": 1,
+      "message": "Boot health shouldn\u0027t be impacted by OWNERS files... Re-running presubmit.",
+      "revId": "372deddcf05c1383b4149d763d526cc867ff4cfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
