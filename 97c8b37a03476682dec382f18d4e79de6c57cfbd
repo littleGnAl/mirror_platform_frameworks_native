@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c709b054_48997ba3",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T00:59:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b1d5cf_8a2571ce",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "97c8b37a03476682dec382f18d4e79de6c57cfbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "944ea5cd_b396005a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-13T15:58:23Z",
       "side": 1,
       "message": "[[nodiscard]] bool (add error return?)",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 8
+      },
+      "revId": "97c8b37a03476682dec382f18d4e79de6c57cfbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9591b319_c04c0033",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T00:59:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "944ea5cd_b396005a",
       "range": {
         "startLine": 88,
         "startChar": 4,
