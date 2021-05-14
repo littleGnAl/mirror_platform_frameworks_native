@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d3f59c1_12c83938",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T01:00:40Z",
+      "side": 1,
+      "message": "This used to be resolved in an old patchset of a parent CL:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1705663/4\n\nThat parent CL is using a different approach, so I put the fix to a new CL.",
+      "revId": "1596baab096fe8d057c79b2701364dc215866d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
