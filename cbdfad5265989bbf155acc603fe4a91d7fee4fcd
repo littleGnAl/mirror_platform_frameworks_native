@@ -94,6 +94,30 @@
       },
       "revId": "cbdfad5265989bbf155acc603fe4a91d7fee4fcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e721ed11_79452758",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-14T02:32:33Z",
+      "side": 1,
+      "message": "My point was that calling `forcePersist(false)` is not guaranteed; people don\u0027t read documents.\n\nIf a certain task didn\u0027t finish within the duration of time that was initially estimated, the service could extend the duration by calling the function again. We could perhaps add a callback interface which is called just before the service is about to be killed. Then the service implementer can do something like extending the duration in the callback function. This will make having a truly persistent (but lazily starting) service much harder to implement, which I think is a good thing.",
+      "parentUuid": "cf1b904a_dd055006",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 70
+      },
+      "revId": "cbdfad5265989bbf155acc603fe4a91d7fee4fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
