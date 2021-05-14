@@ -34,6 +34,24 @@
       "parentUuid": "a2dc9174_90236be1",
       "revId": "6d61c0c54c312efa0fe925b221c33c49e45d3b0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcab4202_e29c584a",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-14T05:55:35Z",
+      "side": 1,
+      "message": "I just added a \"has_more_data\" method to ReadableSubParcel.",
+      "parentUuid": "d3309bfa_05605454",
+      "revId": "6d61c0c54c312efa0fe925b221c33c49e45d3b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
