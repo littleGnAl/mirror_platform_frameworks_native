@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "202907d4_cfc9de0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T21:13:08Z",
+      "side": 1,
+      "message": "yeah, I think it\u0027s all good advice. Will fix if there is anything that\u0027s critical to fix or if TH fails, otherwise will keep in mind next time I touch this.",
+      "parentUuid": "d023aeb7_b81b0423",
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9287fcd8_4d4cfe68",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-05-14T21:02:30Z",
       "side": 1,
       "message": "nit: a client abort would be ok but isn\u0027t this a server side abort?  would prefer to return NO_MEMORY here.",
+      "range": {
+        "startLine": 1473,
+        "startChar": 4,
+        "endLine": 1473,
+        "endChar": 23
+      },
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f8dfa0_1b12a045",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T21:13:08Z",
+      "side": 1,
+      "message": "this is for elmSize (sizeof(T)). This abort won\u0027t happen dynamically, but it indicates a problem in the server side. I\u0027m adding it to justify the cast later.",
+      "parentUuid": "9287fcd8_4d4cfe68",
       "range": {
         "startLine": 1473,
         "startChar": 4,
@@ -113,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37d771ba_0d9010b6",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T21:13:08Z",
+      "side": 1,
+      "message": "You mean use __builtin_mul_overflow_p instead? I\u0027m on the fence.",
+      "parentUuid": "48d8a65f_3f4dc7ba",
+      "range": {
+        "startLine": 1479,
+        "startChar": 32,
+        "endLine": 1479,
+        "endChar": 33
+      },
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffd6a75e_59dcd958",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 1
@@ -147,6 +213,30 @@
       "writtenOn": "2021-05-14T21:02:30Z",
       "side": 1,
       "message": "nit: why not just \u003e?  it seems by the naming that \u003d\u003d max would be permitted.",
+      "range": {
+        "startLine": 1485,
+        "startChar": 23,
+        "endLine": 1485,
+        "endChar": 25
+      },
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d23a2d7_d32baca9",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T21:13:08Z",
+      "side": 1,
+      "message": "I thought about this when typing it and decided if the size is exactly 1MB it deserves to fail (there always be a status header for the parcel so in reality a single transaction is limited to be slightly larger than the total transaction size).\n\nThat being said, the largest transactions in practice are ~300KB",
+      "parentUuid": "154653ec_3f482d26",
       "range": {
         "startLine": 1485,
         "startChar": 23,
