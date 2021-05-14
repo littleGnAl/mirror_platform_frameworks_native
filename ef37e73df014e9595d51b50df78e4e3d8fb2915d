@@ -381,6 +381,30 @@
       },
       "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95c126f_60bdb1a0",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T04:12:33Z",
+      "side": 1,
+      "message": "Reducing threads might be a problem (I suppose we could handle it though in this code - it\u0027s trickier in the binder driver b/c of a \"bug\" it would need a kernel change). Though, currently, only the initial value can be set.",
+      "parentUuid": "ffbf45e6_f68f4ae7",
+      "range": {
+        "startLine": 163,
+        "startChar": 50,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b06ac9a_e19b51c3",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T04:12:33Z",
+      "side": 1,
+      "message": "hmm - seems like we might be calling addServer a lot more than is needed in this test.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 50
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6817c04_0908de0e",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T04:12:33Z",
+      "side": 1,
+      "message": "we already have a few places calling this, instead of a lambda below, consider adding a static function on the server class (or a static function above?)",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 21
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83cd320_a144b81e",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T04:12:33Z",
+      "side": 1,
+      "message": "Check to make sure it fails on user builds",
+      "range": {
+        "startLine": 1182,
+        "startChar": 0,
+        "endLine": 1182,
+        "endChar": 96
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ddcee9d_210803a9",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T04:12:33Z",
+      "side": 1,
+      "message": "how do we know this doesn\u0027t fail because it is listening to /dev/null? if we want to use this, can we have a check that succeeds with /dev/null?",
+      "range": {
+        "startLine": 1192,
+        "startChar": 0,
+        "endLine": 1192,
+        "endChar": 88
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe50941_56925f38",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T04:12:33Z",
+      "side": 1,
+      "message": "the below test could also work on a local and remote binder. Maybe make this parameterized on the binder type?",
+      "range": {
+        "startLine": 1203,
+        "startChar": 0,
+        "endLine": 1214,
+        "endChar": 0
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ac0052_7d5e4448",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T04:12:33Z",
+      "side": 1,
+      "message": "do you still need this after https://android-review.googlesource.com/c/platform/frameworks/native/+/1704016?",
+      "range": {
+        "startLine": 1257,
+        "startChar": 0,
+        "endLine": 1257,
+        "endChar": 92
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adcd835f_06bc26d9",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T04:12:33Z",
+      "side": 1,
+      "message": "even if they aren\u0027t occupied, this call will still be queued to handle later, and the test will still pass. Consider for instance taking a lock in each thread, calling usleep 500ms as a oneway call, and then an \u0027unlock call\u0027 should take \u003e 500ms (that gives you the exact bounds on the threadpool size)",
+      "range": {
+        "startLine": 1268,
+        "startChar": 0,
+        "endLine": 1270,
+        "endChar": 43
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0470e558_b8e5e672",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1383,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T04:12:33Z",
+      "side": 1,
+      "message": "nit: we already have this transaction, maybe reuse it for the new sleep transaction?",
+      "range": {
+        "startLine": 1381,
+        "startChar": 0,
+        "endLine": 1383,
+        "endChar": 32
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
