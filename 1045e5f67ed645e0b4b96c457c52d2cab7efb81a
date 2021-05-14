@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e338a4_14d708fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T02:32:10Z",
+      "side": 1,
+      "message": "I\u0027ve addressed all your comments.\n\nAs we discussed offline, I\u0027ll leave the work to allow shutdown on the thread pool to you. Right now, shutdown() only terminates join().",
+      "revId": "1045e5f67ed645e0b4b96c457c52d2cab7efb81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

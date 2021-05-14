@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "689038da_fe3a7d26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T02:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a0d2e8_d1339474",
+      "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd0d0113_a0aac0cc",
@@ -96,6 +114,30 @@
       "writtenOn": "2021-05-13T16:01:41Z",
       "side": 1,
       "message": "nit: Trigger or similar? It\u0027s not really used as a pipe",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13bb84f3_9e11a013",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T02:32:10Z",
+      "side": 1,
+      "message": "It is called FdTrigger now",
+      "parentUuid": "ddb61bfa_6dbb7e7c",
       "range": {
         "startLine": 122,
         "startChar": 11,
@@ -167,6 +209,30 @@
       "side": 1,
       "message": "Sorry for the back and forth, I was about to take this, but I think we should have RpcServer::shutdown, since this will also need to shut down each of the sessions and also wait for any pending transactions to finish.",
       "parentUuid": "f20744f0_8a135367",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "198f7f81b4984d330ea01383f1bbeb24430800eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcc9b7a_7abccfd1",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T02:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a6b13e_01c63b61",
       "range": {
         "startLine": 134,
         "startChar": 1,
