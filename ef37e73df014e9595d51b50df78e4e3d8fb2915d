@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f2f1295_8cbd94f9",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T03:23:16Z",
+      "side": 1,
+      "message": "How do I get caller information?",
+      "parentUuid": "ddfe188e_3bd9e394",
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3b1e873_4d911523",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 15
@@ -139,6 +157,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9526e5c1_a77fb531",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T03:23:16Z",
+      "side": 1,
+      "message": "This still needs work, but I think it can be in a follow-up CL.",
+      "parentUuid": "c573a3b2_ae4d7d2d",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 5
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e51139f2_8c81dd34",
         "filename": "libs/binder/RpcJoinThread.cpp",
         "patchSetId": 15
@@ -150,6 +192,30 @@
       "writtenOn": "2021-05-13T16:27:06Z",
       "side": 1,
       "message": "should there also be a command on binders to shutdown their server threads?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8626fef_e8c02b00",
+        "filename": "libs/binder/RpcJoinThread.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T03:23:16Z",
+      "side": 1,
+      "message": "Yes -- maybe in a follow up CL?",
+      "parentUuid": "e51139f2_8c81dd34",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -265,6 +331,30 @@
       "writtenOn": "2021-05-13T16:27:06Z",
       "side": 1,
       "message": "what would the second calls do? should we have separate calls?",
+      "range": {
+        "startLine": 163,
+        "startChar": 50,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffbf45e6_f68f4ae7",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-14T03:23:16Z",
+      "side": 1,
+      "message": "If the client needs more / less threads after it is configured, it is still possible to adjust this number.\n\nI am okay with having separate calls.",
+      "parentUuid": "8a0c4b10_1a001f63",
       "range": {
         "startLine": 163,
         "startChar": 50,
