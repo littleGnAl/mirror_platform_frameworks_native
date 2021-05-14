@@ -63,6 +63,8 @@ libbinder_device_interface_sources = [
     "IPermissionController.cpp",
     "PermissionCache.cpp",
     "PermissionController.cpp",
+
+    ":packagemanager_aidl",
 ]
 
 cc_library {
@@ -123,7 +125,6 @@ cc_library {
         "Status.cpp",
         "TextOutput.cpp",
         "Utils.cpp",
-        ":packagemanager_aidl",
         ":libbinder_aidl",
     ],
 
