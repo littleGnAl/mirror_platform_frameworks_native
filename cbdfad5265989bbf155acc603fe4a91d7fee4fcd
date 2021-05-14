@@ -70,6 +70,30 @@
       },
       "revId": "cbdfad5265989bbf155acc603fe4a91d7fee4fcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf1b904a_dd055006",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T02:18:12Z",
+      "side": 1,
+      "message": "I mean - me too. By \u0027short lived\u0027 I meant temporary, even if it\u0027s for a long amount of time. This is reflected in the documentation here.\n\nerr - but also errorprone. apexd for instance needs to be up until certain tasks are completed. This isn\u0027t just for availability is it?",
+      "parentUuid": "b7dc2af2_7401f168",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 70
+      },
+      "revId": "cbdfad5265989bbf155acc603fe4a91d7fee4fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
