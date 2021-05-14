@@ -22,6 +22,30 @@
       },
       "revId": "cbdfad5265989bbf155acc603fe4a91d7fee4fcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b0d7640_06151ee1",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T02:05:19Z",
+      "side": 1,
+      "message": "Please see \"PSA: lazy services should be short lived - we need to avoid only doing late start\". Essentially, using lazy services for services which don\u0027t shut down mean that services will be started late (e.g. when an app uses a certain use case) and will essentially leak. We want services to be started at boot OR have temporary lifetimes.",
+      "parentUuid": "7647a2e7_da7bcd1c",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 70
+      },
+      "revId": "cbdfad5265989bbf155acc603fe4a91d7fee4fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
