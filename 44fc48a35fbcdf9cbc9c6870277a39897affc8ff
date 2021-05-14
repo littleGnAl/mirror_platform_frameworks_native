@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05158cc0_0693b05d",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-14T20:03:47Z",
+      "side": 1,
+      "message": "this is also an approximation because something might be more bytes than it is on the parcel. This won\u0027t be important for AIDL generated structures, but it could be important for some other structures. That might be one reason to target this change for T.",
+      "range": {
+        "startLine": 1475,
+        "startChar": 7,
+        "endLine": 1475,
+        "endChar": 20
+      },
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
