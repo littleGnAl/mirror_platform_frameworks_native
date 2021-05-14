@@ -3,6 +3,46 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d023aeb7_b81b0423",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-14T21:02:30Z",
+      "side": 1,
+      "message": "looks like a good check, some thoughts, feel free to ignore.",
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9287fcd8_4d4cfe68",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-14T21:02:30Z",
+      "side": 1,
+      "message": "nit: a client abort would be ok but isn\u0027t this a server side abort?  would prefer to return NO_MEMORY here.",
+      "range": {
+        "startLine": 1473,
+        "startChar": 4,
+        "endLine": 1473,
+        "endChar": 23
+      },
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "05158cc0_0693b05d",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 1
@@ -19,6 +59,99 @@
         "startChar": 7,
         "endLine": 1475,
         "endChar": 20
+      },
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbadf946_d791971b",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-14T21:02:30Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be the minimum element size (as written to binder)?  in any case, for large data, perhaps something like shared memory/MemoryDealer should be used.",
+      "parentUuid": "05158cc0_0693b05d",
+      "range": {
+        "startLine": 1475,
+        "startChar": 7,
+        "endLine": 1475,
+        "endChar": 20
+      },
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d8a65f_3f4dc7ba",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-14T21:02:30Z",
+      "side": 1,
+      "message": "nit: this could be safely cast to int32_t since you check on line 1473, then the builtin function implementation could get simpler.",
+      "range": {
+        "startLine": 1479,
+        "startChar": 32,
+        "endLine": 1479,
+        "endChar": 33
+      },
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd6a75e_59dcd958",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-14T21:02:30Z",
+      "side": 1,
+      "message": "nit: perhaps expose BINDER_VM_SIZE and use that instead?\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/ProcessState.cpp;drc\u003d6ba5a259faf092d127a1f417d5bfe389f2236198;l\u003d44",
+      "range": {
+        "startLine": 1483,
+        "startChar": 22,
+        "endLine": 1483,
+        "endChar": 40
+      },
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "154653ec_3f482d26",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-14T21:02:30Z",
+      "side": 1,
+      "message": "nit: why not just \u003e?  it seems by the naming that \u003d\u003d max would be permitted.",
+      "range": {
+        "startLine": 1485,
+        "startChar": 23,
+        "endLine": 1485,
+        "endChar": 25
       },
       "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
