@@ -245,6 +245,30 @@
       },
       "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4496bd5d_4f1edc99",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-14T21:29:33Z",
+      "side": 1,
+      "message": "the ndk code :-)\n\n    if (size \u003e 1000000) return STATUS_NO_MEMORY;",
+      "parentUuid": "2d23a2d7_d32baca9",
+      "range": {
+        "startLine": 1485,
+        "startChar": 23,
+        "endLine": 1485,
+        "endChar": 25
+      },
+      "revId": "44fc48a35fbcdf9cbc9c6870277a39897affc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
