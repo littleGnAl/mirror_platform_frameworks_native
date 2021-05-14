@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61b244d0_8a5959bb",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-14T22:41:04Z",
+      "side": 1,
+      "message": "I realized Clone has this same pair of functions, and they\u0027re named clone/clone_from. How about doing the same here with read/read_from?",
+      "parentUuid": "6390202c_f5018e0a",
+      "revId": "9b6e3f1045fcaed2205702aa268c75f13f889136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e354905d_56c12f5b",
         "filename": "libs/binder/rust/src/parcel/parcelable.rs",
         "patchSetId": 1
