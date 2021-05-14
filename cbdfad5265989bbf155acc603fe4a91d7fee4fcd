@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7647a2e7_da7bcd1c",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-14T01:41:58Z",
+      "side": 1,
+      "message": "Hmm, but this means that the caller has to explicitly start the service before calling getService, which is annoying and also easy to forget. What is the benefit of using ctl.start compared to registering it as a lazy service?",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 70
+      },
+      "revId": "cbdfad5265989bbf155acc603fe4a91d7fee4fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
