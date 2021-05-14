@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d09aa4a_4556b4cb",
+        "filename": "cmds/bugreport/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-05-14T13:03:46Z",
+      "side": 1,
+      "message": "suggest adding to top of the file - works for relevance as well as for alphanumeric order 😊",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 12
+      },
+      "revId": "b3bb951c340fcdf69c9b73f5c0e16285241c2d92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
