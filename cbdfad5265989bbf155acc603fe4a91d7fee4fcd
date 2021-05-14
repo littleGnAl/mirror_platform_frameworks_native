@@ -46,6 +46,30 @@
       },
       "revId": "cbdfad5265989bbf155acc603fe4a91d7fee4fcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7dc2af2_7401f168",
+        "filename": "libs/binder/include/binder/LazyServiceRegistrar.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-14T02:14:42Z",
+      "side": 1,
+      "message": "Yeah, I saw the PSA, but I seem to agree with what Greg said.\n\nPerhaps we might want to remove this function, and instead add a new function like `keepAliveFor(duration t)` (which should definitely have a maximum allowed duration).\n\nThat\u0027s out of scope of this CL.",
+      "parentUuid": "9b0d7640_06151ee1",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 70
+      },
+      "revId": "cbdfad5265989bbf155acc603fe4a91d7fee4fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
