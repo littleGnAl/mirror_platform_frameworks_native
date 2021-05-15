@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0179995b_00abd988",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-15T02:00:26Z",
+      "side": 1,
+      "message": "I rewrote your change 3-4 times actually trying different things, and then I realized, I really need to start handling the sessions before I do that, but I made the change so that shutdown is synchronous (we could add a callback later), but the point is, for sessions, we\u0027ll need to wait for all of the existing commands to process. We\u0027ll probably also want multiple shutdown levels at that point (either \u0027handle pending transactions and shutdown\u0027 VS \u0027shutdown and cancel existing transations\u0027). So maybe I should have just +2\u0027d and merged your change. I did make a couple of other minor changes, but yeah - if you\u0027re okay with it, please also +2 and merge.",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 0
+      },
+      "revId": "7a650a6847484c5011b9699522833ebc985b04a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f73ad39_d9415d25",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-15T02:00:26Z",
+      "side": 1,
+      "message": "and the reason for moving this here is so that you can\u0027t call \u0027join\u0027 while you\u0027re waiting for the server to shutdown.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "7a650a6847484c5011b9699522833ebc985b04a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

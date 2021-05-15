@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a2e3bc_4c115e6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-15T02:00:26Z",
+      "side": 1,
+      "message": "I used to say this because I meant I am taking a pass (passing on), not running the tests. :) Now I say \u0027N/A\u0027, but please do say the test (or the exact command you run)",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "9fa561882fb6f4f0c77a78c0ee3c05d12e443c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb50478_ba78facf",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-15T02:00:26Z",
+      "side": 1,
+      "message": "nit: I would say normally avoid this class (unless it\u0027s moved into libbase). It\u0027s fine to use the condition variables directly",
+      "range": {
+        "startLine": 995,
+        "startChar": 0,
+        "endLine": 1015,
+        "endChar": 2
+      },
+      "revId": "9fa561882fb6f4f0c77a78c0ee3c05d12e443c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ab5543_cbbb72b9",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-15T02:00:26Z",
+      "side": 1,
+      "message": "this should be working across all socket types, but I might wait until I implement shutdown for sessions to do it. I looked at s/Process/ExecutionContext/ so that it could optionally be a thread, but it\u0027s a bit heavy weight. I might try to make the pipe work across all of the types first, so that we can have one copy of code that creates the server. At that point, we can also avoid server-\u003eshutdown() wait loop because we can communicate with the server (after you talk to it, you know it\u0027s up).",
+      "range": {
+        "startLine": 1017,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 1
+      },
+      "revId": "9fa561882fb6f4f0c77a78c0ee3c05d12e443c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
