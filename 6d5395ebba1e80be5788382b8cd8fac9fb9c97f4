@@ -16,6 +16,24 @@
       "message": "Removed iffy GTEST_DEATH based b/c of hwasan failure when running this test. b/186647790#comment4, otherwise will look deeper.",
       "revId": "6d5395ebba1e80be5788382b8cd8fac9fb9c97f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8ec64d_be051dc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-16T23:45:20Z",
+      "side": 1,
+      "message": "Ack, but https://b.corp.google.com/issues/186647790#comment5 still shows tests failures on 64-bit variant. Is that a KI or unrelated with this change?",
+      "parentUuid": "0502d5d3_4c8ee4a9",
+      "revId": "6d5395ebba1e80be5788382b8cd8fac9fb9c97f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
