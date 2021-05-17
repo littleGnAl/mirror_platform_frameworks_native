@@ -16,6 +16,24 @@
       "message": "nit: Keep this line\n\n```\nLOG_ALWAYS_FATAL_IF(mJoinShutdownTrigger \u003d\u003d nullptr, \"Cannot create join signaler\");\n```\n\n? FdTrigger::make() can return nullptr if pipe() fails.",
       "revId": "0d4808432e59a0ecf346f61167562fd920774012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f29f7925_4f8608f2",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-17T23:26:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1759fd30_b6a0c6ea",
+      "revId": "0d4808432e59a0ecf346f61167562fd920774012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
