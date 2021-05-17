@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dfdc773_e71c3ed1",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-17T19:54:24Z",
+      "side": 1,
+      "message": "also, I need shared_ptr on all three of std::mutex / std::condition_variable / bool if I don\u0027t have this class; see L1023~1027",
+      "parentUuid": "d8452bce_7317a2ab",
+      "range": {
+        "startLine": 995,
+        "startChar": 0,
+        "endLine": 1015,
+        "endChar": 2
+      },
+      "revId": "9fa561882fb6f4f0c77a78c0ee3c05d12e443c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33ab5543_cbbb72b9",
