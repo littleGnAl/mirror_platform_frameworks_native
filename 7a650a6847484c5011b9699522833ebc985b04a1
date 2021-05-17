@@ -93,6 +93,30 @@
       },
       "revId": "7a650a6847484c5011b9699522833ebc985b04a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24658283_0acd2967",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-17T23:32:51Z",
+      "side": 1,
+      "message": "Idk why I couldn\u0027t put into words exactly why I was doing this. The reason to do this is because if you don\u0027t do this, there is no way to know when the shutdown actually ends. This is the indication that you can call join again. Otherwise, after calling shutdown, there isn\u0027t a signal for when you can call join again. but yeah you know :)",
+      "parentUuid": "84ee2005_cd7b3b56",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "7a650a6847484c5011b9699522833ebc985b04a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
