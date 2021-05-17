@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8452bce_7317a2ab",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-17T19:52:25Z",
+      "side": 1,
+      "message": "I created this class so that the test is more readable.",
+      "parentUuid": "8cb50478_ba78facf",
+      "range": {
+        "startLine": 995,
+        "startChar": 0,
+        "endLine": 1015,
+        "endChar": 2
+      },
+      "revId": "9fa561882fb6f4f0c77a78c0ee3c05d12e443c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33ab5543_cbbb72b9",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-05-15T02:00:26Z",
       "side": 1,
       "message": "this should be working across all socket types, but I might wait until I implement shutdown for sessions to do it. I looked at s/Process/ExecutionContext/ so that it could optionally be a thread, but it\u0027s a bit heavy weight. I might try to make the pipe work across all of the types first, so that we can have one copy of code that creates the server. At that point, we can also avoid server-\u003eshutdown() wait loop because we can communicate with the server (after you talk to it, you know it\u0027s up).",
+      "range": {
+        "startLine": 1017,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 1
+      },
+      "revId": "9fa561882fb6f4f0c77a78c0ee3c05d12e443c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5389d11_3eb9f7aa",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-17T19:52:25Z",
+      "side": 1,
+      "message": "Ack. I put it outside of BinderRpcTest because it doesn\u0027t play well with the SetUp() function. I agree that it should work for other socket types too.",
+      "parentUuid": "33ab5543_cbbb72b9",
       "range": {
         "startLine": 1017,
         "startChar": 0,
