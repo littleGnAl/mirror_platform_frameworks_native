@@ -16,6 +16,23 @@
       "message": "btw - Yifan, for the binderRpcTest failure, see b/186661301. I\u0027m not sure if it was just introduced or fixed in the infra, so retrying",
       "revId": "81b0c4522f1f1c16c0156d2a3a520a4f05e941b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06d2336_8df4637f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-18T16:50:18Z",
+      "side": 1,
+      "message": "note revert in b/186661301, should pass now",
+      "revId": "81b0c4522f1f1c16c0156d2a3a520a4f05e941b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
