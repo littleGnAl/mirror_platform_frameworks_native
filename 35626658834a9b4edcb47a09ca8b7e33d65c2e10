@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "202f4625_0b442c50",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-18T16:56:17Z",
+      "side": 1,
+      "message": "nit: add some more spaces for formatting?",
+      "range": {
+        "startLine": 236,
+        "startChar": 26,
+        "endLine": 236,
+        "endChar": 27
+      },
+      "revId": "35626658834a9b4edcb47a09ca8b7e33d65c2e10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
