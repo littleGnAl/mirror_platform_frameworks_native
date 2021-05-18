@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bbe12c5_6d51e0f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-05-18T23:49:13Z",
+      "side": 1,
+      "message": "Cherry-pick to sc-dev too please",
+      "revId": "6a026a21fd23cc98836bdb411a81ee501e8f25f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
