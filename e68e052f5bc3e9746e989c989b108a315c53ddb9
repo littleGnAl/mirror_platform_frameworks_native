@@ -16,6 +16,23 @@
       "message": "For Android T.",
       "revId": "e68e052f5bc3e9746e989c989b108a315c53ddb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97992d3_13f79baa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-18T22:11:13Z",
+      "side": 1,
+      "message": "I was not able to reproduce this build failure locally. Retrying in case this was a temporary build issue.",
+      "revId": "e68e052f5bc3e9746e989c989b108a315c53ddb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
