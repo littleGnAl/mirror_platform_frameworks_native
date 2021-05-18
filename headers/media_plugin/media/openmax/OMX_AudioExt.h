@@ -136,6 +136,28 @@ typedef struct OMX_AUDIO_CONFIG_ANDROID_AUDIOPRESENTATION {
     OMX_S32 nProgramId;            /**< program id */
 } OMX_AUDIO_CONFIG_ANDROID_AUDIOPRESENTATION;
 
+/** ADPCM type */
+typedef enum OMX_AUDIO_ANDROID_ADPCMTYPE{
+    OMX_AUDIO_Android_ADPCMModeMS = 0,    /**ADPCM-MS*/
+    OMX_AUDIO_Android_ADPCMModeIMA,       /**ADPCM-IMA*/
+    OMX_AUDIO_Android_ADPCMModeMax = 0x7FFFFFFF
+} OMX_AUDIO_ANDROID_ADPCMTYPE;
+
+/** ADPCM stream format parameters */
+typedef struct OMX_AUDIO_PARAM_ANDROID_ADPCMTYPE {
+    OMX_U32 nSize;              /**< size of the structure in bytes */
+    OMX_VERSIONTYPE nVersion;   /**< OMX specification version information */
+    OMX_U32 nPortIndex;         /**< port that this structure applies to */
+    OMX_U32 nChannels;          /**< Number of channels in the data stream (not
+                                     necessarily the same as the number of channels
+                                     to be rendered. */
+    OMX_U32 nBitsPerSample;     /**< Number of bits in each sample */
+    OMX_U32 nSampleRate;        /**< Sampling rate of the source data.  Use 0 for
+                                    variable or unknown sampling rate. */
+    OMX_U32 nBlockAlign;        /**< is the block alignment, or block size, in bytes of the audio codec */
+    OMX_AUDIO_ANDROID_ADPCMTYPE eADPCMType; /**< ADPCM type enumeration */
+} OMX_AUDIO_PARAM_ANDROID_ADPCMTYPE;
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
