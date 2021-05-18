@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a467e14_b315f307",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-18T16:33:23Z",
+      "side": 1,
+      "message": "what changes to allow this the second time around?",
+      "range": {
+        "startLine": 905,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 41
+      },
+      "revId": "d73020787e8730575b91bb010f0895571887970b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
