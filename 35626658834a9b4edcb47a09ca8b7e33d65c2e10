@@ -22,6 +22,30 @@
       },
       "revId": "35626658834a9b4edcb47a09ca8b7e33d65c2e10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a84e13_ba63faff",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-18T17:17:10Z",
+      "side": 1,
+      "message": "this code is being incrementally clang-formatted now",
+      "parentUuid": "202f4625_0b442c50",
+      "range": {
+        "startLine": 236,
+        "startChar": 26,
+        "endLine": 236,
+        "endChar": 27
+      },
+      "revId": "35626658834a9b4edcb47a09ca8b7e33d65c2e10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
