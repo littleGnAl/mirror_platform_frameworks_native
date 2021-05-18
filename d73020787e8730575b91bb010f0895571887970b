@@ -70,6 +70,30 @@
       },
       "revId": "d73020787e8730575b91bb010f0895571887970b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf27c955_7973d7da",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-18T17:16:52Z",
+      "side": 1,
+      "message": "The allocation is done by the call to the code which shouldn\u0027t be called (\"IPCThreadState::self()\"). Once the thread calls this, the selfOrNull call inside of the Rpc infrastructure will return the allocated object, and it will be able to install the guard.",
+      "parentUuid": "074e7315_71f6967f",
+      "range": {
+        "startLine": 905,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 41
+      },
+      "revId": "d73020787e8730575b91bb010f0895571887970b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
