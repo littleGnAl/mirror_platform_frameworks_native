@@ -46,6 +46,30 @@
       },
       "revId": "d73020787e8730575b91bb010f0895571887970b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074e7315_71f6967f",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-18T17:04:39Z",
+      "side": 1,
+      "message": "I was wondering how the second time avoids the extra allocation, or what changes to make it not care.",
+      "parentUuid": "a5553a8d_025d0771",
+      "range": {
+        "startLine": 905,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 41
+      },
+      "revId": "d73020787e8730575b91bb010f0895571887970b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
