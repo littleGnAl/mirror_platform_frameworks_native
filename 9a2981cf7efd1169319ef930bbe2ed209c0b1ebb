@@ -16,6 +16,24 @@
       "message": "This codebase usually requires a lot of backports for security fixes. Any thought to continue incrementally formatting it for that + git blame? I mean, if we are going to format libbinder in Android S, I\u0027d like to format all of it, but maybe we should discuss on android-binder@ first since we\u0027re not the only people who would have to deal with it.",
       "revId": "9a2981cf7efd1169319ef930bbe2ed209c0b1ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8acf372_b57df85e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T20:08:16Z",
+      "side": 1,
+      "message": "\u003e incrementally formatting it\n\nThe problem is when I do:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1683951/27/libs/binder/include/binder/ProcessState.h\n\nThe result is:\n\n```\n-    size_t getThreadPoolMaxThreadCount() const;\n+            size_t getThreadPoolMaxThreadCount() const;\n \n-private:\n-    static  sp\u003cProcessState\u003e    init(const char *defaultDriver, bool requireDefault);\n+        private:\n+            static sp\u003cProcessState\u003e init(const char* defaultDriver, bool requireDefault);\n \n-    friend class IPCThreadState;\n-    friend class sp\u003cProcessState\u003e;\n+            friend class IPCThreadState;\n+            friend class sp\u003cProcessState\u003e;\n```\n\nIt indents the \"private:\" line and a few lines below it incorrectly.\n\nDo you want me to just ignore the format change and force upload?",
+      "parentUuid": "ac1103cc_d1241979",
+      "revId": "9a2981cf7efd1169319ef930bbe2ed209c0b1ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
