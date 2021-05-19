@@ -50,6 +50,7 @@ typedef enum OMX_AUDIO_CODINGEXTTYPE {
     OMX_AUDIO_CodingAndroidEAC3,        /**< EAC3 encoded data */
     OMX_AUDIO_CodingAndroidAC4,         /**< AC4 encoded data */
     OMX_AUDIO_CodingAndroidDTS,         /**< DTS encoded data */
+    OMX_AUDIO_CodingAndroidAPE,         /**< APE encoded data */
 } OMX_AUDIO_CODINGEXTTYPE;
 
 typedef struct OMX_AUDIO_PARAM_ANDROID_AC3TYPE {
@@ -145,6 +146,24 @@ typedef struct OMX_AUDIO_CONFIG_ANDROID_AUDIOPRESENTATION {
     OMX_S32 nPresentationId;       /**< presentation id */
     OMX_S32 nProgramId;            /**< program id */
 } OMX_AUDIO_CONFIG_ANDROID_AUDIOPRESENTATION;
+
+typedef struct OMX_AUDIO_PARAM_ANDROID_APETYPE {
+    OMX_U32 nSize;                 /**< size of the structure in bytes */
+    OMX_VERSIONTYPE nVersion;      /**< OMX specification version information */
+    OMX_U32 nPortIndex;            /**< port that this structure applies to */
+    OMX_U32 nChannels;             /**< Number of channels */
+    OMX_U32 nSampleRate;           /**< Sampling rate of the source data.  Use 0 for
+                                        variable or unknown sampling rate. */
+    OMX_U32 nBitRate;              /**< Bit rate of the input data.  Use 0 for variable
+                                        rate or unknown bit rates */
+    OMX_U16 nCompressionType;      /**< Compression level, e.g. 1000(fast), 2000(normal), etc*/
+    OMX_U16 nBitsPerCodedSample;   /**< Bit per sample */
+    OMX_U32 nBlocksPerFrame;       /**< Block per frame */
+    OMX_U32 nFinalFrameBlocks;     /**< Block in final frame */
+    OMX_U32 nTotalFrames;          /**< Number of total frames */
+    OMX_S32 nSourceBufferSize;     /**< Buffer size of the input data */
+    OMX_S16 nFileVersion;          /**< Version of the APE file */
+} OMX_AUDIO_PARAM_ANDROID_APETYPE;
 
 /** ADPCM type */
 typedef enum OMX_AUDIO_ANDROID_ADPCMTYPE{
