@@ -104,6 +104,24 @@
       "parentUuid": "387a3b70_1c100df2",
       "revId": "e68e052f5bc3e9746e989c989b108a315c53ddb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc8c336_a28e8bac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2021-05-19T20:27:20Z",
+      "side": 1,
+      "message": "That\u0027s really strange. Test config (binderRpcTest/binderRpcTest.config) is never stored under individual architecture. It\u0027s always directly under test module. \nIs there a way to reproduce it? I tried on master branch, so far I can\u0027t reproduce the issue.",
+      "parentUuid": "75cdb767_ca1eb9fa",
+      "revId": "e68e052f5bc3e9746e989c989b108a315c53ddb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
