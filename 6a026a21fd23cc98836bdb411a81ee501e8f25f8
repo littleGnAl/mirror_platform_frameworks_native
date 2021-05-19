@@ -34,6 +34,46 @@
       "parentUuid": "5bbe12c5_6d51e0f2",
       "revId": "6a026a21fd23cc98836bdb411a81ee501e8f25f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba76115c_2b70794c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1879856
+      },
+      "writtenOn": "2021-05-19T00:31:56Z",
+      "side": 1,
+      "message": "Maybe we can also add some brief explanation in https://developer.android.com/reference/android/os/Parcel#enforceInterface(java.lang.String) ? The API currently has no description",
+      "revId": "6a026a21fd23cc98836bdb411a81ee501e8f25f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a363a965_25a4bfa4",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1879856
+      },
+      "writtenOn": "2021-05-19T00:31:56Z",
+      "side": 1,
+      "message": "Maybe add explanation of how to parse such header in Java?\n\nSince it may add \"debugging or other information\", it is not clear if Java\u0027s android.os.Parcel#enforceInterface will handle those \"debugging or other information\" or not",
+      "range": {
+        "startLine": 461,
+        "startChar": 74,
+        "endLine": 463,
+        "endChar": 62
+      },
+      "revId": "6a026a21fd23cc98836bdb411a81ee501e8f25f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
