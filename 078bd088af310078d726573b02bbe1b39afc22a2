@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36ee27c8_dc5f09f4",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "For tests it is ~BBinder. There\u0027s no explicit shutdown() method at this moment. I plan to add it in a follow up CL.",
+      "parentUuid": "e02c9d4c_4c116981",
+      "range": {
+        "startLine": 154,
+        "startChar": 18,
+        "endLine": 154,
+        "endChar": 30
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95849cb4_d394d95d",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 27
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-19T20:51:39Z",
       "side": 1,
       "message": "this message is obsolete by L160-163, but it should still be unreachable. Maybe \"binder object must be local or remote\"",
+      "range": {
+        "startLine": 166,
+        "startChar": 42,
+        "endLine": 166,
+        "endChar": 89
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5b09fd_225adea2",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95849cb4_d394d95d",
       "range": {
         "startLine": 166,
         "startChar": 42,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "393b93a8_b29cf614",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "1. If there\u0027s no binder transaction, then it should be fine to run setRpc* because this is the local process.\n\n2. Note, this is setRpc*(Parcel), which is only invoked in transact() (L264~270). So I assume this involves a binder transaction. I know a local process can still execute transact() directly since it is a public API, but note #1.",
+      "parentUuid": "0cbb9fd0_75eed3c5",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 56
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0afae3d6_5db50424",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 27
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-19T20:51:39Z",
       "side": 1,
       "message": "INVALID_OPERATION?",
+      "range": {
+        "startLine": 479,
+        "startChar": 15,
+        "endLine": 479,
+        "endChar": 22
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc9c1a40_1864ee40",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0afae3d6_5db50424",
       "range": {
         "startLine": 479,
         "startChar": 15,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02dba15f_c54611c1",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "I\u0027ll follow-up. \n\nOriginally, I intentionally only support one of this because once servicedispatcher has set up a port, then multiple calls from host may use the same port to communicate with the device. But since each RpcServer only supports a certain amount of threads, the two host applications will need to share the same thread pool, which seems not ideal.\n\nI want to do this in a follow up because, with multiple RpcServer\u0027s, setRpcMaxThreads will need to also specify which RpcServer the host wants to set. So, let me just support one RpcServer for now, and change it to a list in a follow up CL.",
+      "parentUuid": "a0a0998c_9f65b2b1",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 5
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2297e763_02d80cb2",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-05-19T20:51:39Z",
       "side": 1,
       "message": "nit: LowerBound?",
+      "range": {
+        "startLine": 362,
+        "startChar": 47,
+        "endLine": 362,
+        "endChar": 48
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26eeb22_a639440e",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "What? Isn\u0027t this the higher bound?\n\nAlso, I named this function according to setThreadPoolMaxThreadCount.",
+      "parentUuid": "2297e763_02d80cb2",
       "range": {
         "startLine": 362,
         "startChar": 47,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c27508a_5611c18f",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "950d448b_4a53e3be",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 23
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e580c4f9_68a9ed0f",
@@ -179,6 +347,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fbbe622_66cbb44d",
+        "filename": "libs/binder/RpcDevJoinThread.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "This class is RpcServer + a std::thread that runs RpcServer::join().",
+      "parentUuid": "e580c4f9_68a9ed0f",
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b2c7b2c_11c6b066",
@@ -192,6 +378,30 @@
       "writtenOn": "2021-05-19T20:51:39Z",
       "side": 1,
       "message": "RpcServer::shutdown will wait for this to happen, so you could consider either moving ownership of the join thread into RpcServer (optionally, so it could do this) or I think detaching the thread on L35 should be fully equivalent?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "390588e4_d8acc3c1",
+        "filename": "libs/binder/RpcDevJoinThread.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "I know. I don\u0027t like detaching threads because it would appear that there\u0027s a leak of threads. I would rather spend these extra lines of code to ensure that the thread goes away.",
+      "parentUuid": "0b2c7b2c_11c6b066",
       "range": {
         "startLine": 62,
         "startChar": 0,
@@ -248,6 +458,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3302f0c_1c82d113",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "This is more than a macro, so I would not change ASSERT_RESULT_OK. If this were to be moved to libbase, it should be in a different header (maybe android-base/result-gtest.h).\n\nI think the name is pretty straight forward though. This\n\n```\nEXPECT_THAT(result, ResultHasValue(AnyOf(X, Y)))\n```\n\nis shorter than\n\n```\nASSERT_RESULT_OK(result);\nEXPECT_THAT(result.value(), AnyOf(X, Y));\n```\n\nI also don\u0027t like ASSERT_RESULT_OK because you can\u0027t append custom messages to it. (Though, I did use it once below)",
+      "parentUuid": "2e861129_c0f25aef",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 1
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3687c426_4f830f15",
@@ -261,6 +495,30 @@
       "writtenOn": "2021-05-19T20:51:39Z",
       "side": 1,
       "message": "most of the tests here use the full class, even if they don\u0027t use all the functionality here. Is there any reason to split this class into two types?",
+      "range": {
+        "startLine": 1259,
+        "startChar": 0,
+        "endLine": 1288,
+        "endChar": 0
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9009a61f_0c698c1a",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:54:48Z",
+      "side": 1,
+      "message": "Yes:\n\n1. ~BinderLibTestService() calls exit()\n2. BinderLibTestService::transact() calls getCallingUid(), which I haven\u0027t resolved properly for RPC yet. So I need this class to work around it.",
+      "parentUuid": "3687c426_4f830f15",
       "range": {
         "startLine": 1259,
         "startChar": 0,
