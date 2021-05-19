@@ -33,6 +33,23 @@
       "message": "I was not able to reproduce this build failure locally. Retrying in case this was a temporary build issue.",
       "revId": "e68e052f5bc3e9746e989c989b108a315c53ddb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5040830_9fe5c469",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T18:21:12Z",
+      "side": 1,
+      "message": "Colin, there is a build system bug here, in create-suite-dependencies:\n\nbuild/make/core/base_rules.mk:850: error: overriding commands for target `out/host/linux-x86/vts/android-vts/testcases/binderRpcTest/binderRpcTest.config\u0027, previously defined at build/make/core/base_rules.mk:850\n\nThere are several other VTS tests w/ host + general-tests + vts, so I figure it must be an incremental build issue? but I haven\u0027t looked into it more. Can you fix it by eye? :) otherwise, I\u0027ll look into it soooooon",
+      "revId": "e68e052f5bc3e9746e989c989b108a315c53ddb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
