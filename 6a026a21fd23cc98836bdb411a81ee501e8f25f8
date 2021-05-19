@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e236841_6a9c209a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T00:47:23Z",
+      "side": 1,
+      "message": "I\u0027ve uploaded a CL (though internally, so will follow-up with c/p to AOSP)",
+      "parentUuid": "ba76115c_2b70794c",
+      "revId": "6a026a21fd23cc98836bdb411a81ee501e8f25f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a363a965_25a4bfa4",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-05-19T00:31:56Z",
       "side": 1,
       "message": "Maybe add explanation of how to parse such header in Java?\n\nSince it may add \"debugging or other information\", it is not clear if Java\u0027s android.os.Parcel#enforceInterface will handle those \"debugging or other information\" or not",
+      "range": {
+        "startLine": 461,
+        "startChar": 74,
+        "endLine": 463,
+        "endChar": 62
+      },
+      "revId": "6a026a21fd23cc98836bdb411a81ee501e8f25f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d3a52fa_a01f3bb8",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T00:47:23Z",
+      "side": 1,
+      "message": "Yeah, it does mean that this is what writeInterfaceToken does. It also must be this way, since the client can\u0027t be responsible for optionally including some implementation detail here.\n\nSince this just missed the merge and cherry-pick and the second sentence clarifies it is the \"contents of **this header**\", I will hold off on adding more details for now.",
+      "parentUuid": "a363a965_25a4bfa4",
       "range": {
         "startLine": 461,
         "startChar": 74,
