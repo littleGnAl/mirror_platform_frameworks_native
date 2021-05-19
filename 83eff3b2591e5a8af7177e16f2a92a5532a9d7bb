@@ -22,6 +22,30 @@
       },
       "revId": "83eff3b2591e5a8af7177e16f2a92a5532a9d7bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f188a57d_228dc2ae",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 1369,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T04:35:04Z",
+      "side": 1,
+      "message": "Done; I worked around this by creating a different service: `BinderLibTestServiceBase`.",
+      "parentUuid": "15f4da3b_8c609ad8",
+      "range": {
+        "startLine": 1369,
+        "startChar": 55,
+        "endLine": 1369,
+        "endChar": 68
+      },
+      "revId": "83eff3b2591e5a8af7177e16f2a92a5532a9d7bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
