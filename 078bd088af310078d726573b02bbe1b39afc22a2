@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8dbe580d_d11bc27f",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:56:48Z",
+      "side": 1,
+      "message": "If this is okay with you, please resolve this comment.",
+      "parentUuid": "36ee27c8_dc5f09f4",
+      "range": {
+        "startLine": 154,
+        "startChar": 18,
+        "endLine": 154,
+        "endChar": 30
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95849cb4_d394d95d",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 27
