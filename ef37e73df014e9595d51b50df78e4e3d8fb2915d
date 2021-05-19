@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8e4eb24_9d31a4ce",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "But in the local process, wouldn\u0027t IPCThreadState::self() creates IPCThreadState when it is not needed?\n\nHow do I know whether the call is from remote or local? Maybe I should check in L421 instead because that\u0027s what transact() will call?\n\nEDIT: Done (in setRpcMaxThreads(Parcel) and setRpcClient(Parcel)), PTAL",
+      "parentUuid": "042a0e68_e6f95bd2",
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3b1e873_4d911523",
@@ -197,6 +215,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1a1f47_ee1ecbba",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9526e5c1_a77fb531",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 5
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e51139f2_8c81dd34",
@@ -244,6 +286,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a73117_b8ba31e8",
+        "filename": "libs/binder/RpcJoinThread.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Resolving because we want to do this in a follow up CL.",
+      "parentUuid": "a8626fef_e8c02b00",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21b8dcc4_3efcc659",
@@ -267,6 +333,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1a40d2_5b094501",
+        "filename": "libs/binder/RpcJoinThread.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b8dcc4_3efcc659",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88e39b19_8ff8abb5",
@@ -280,6 +370,30 @@
       "writtenOn": "2021-05-13T16:27:06Z",
       "side": 1,
       "message": "prefer to expose RpcServer object rather than this? that will be easier to use elsewhere?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce6772b_17b217a8",
+        "filename": "libs/binder/RpcJoinThread.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e39b19_8ff8abb5",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -331,6 +445,54 @@
         "startChar": 40,
         "endLine": 160,
         "endChar": 75
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dab8242a_08fc9ba5",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2f1cbd7_5a3d0ad2",
+      "range": {
+        "startLine": 160,
+        "startChar": 40,
+        "endLine": 160,
+        "endChar": 75
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02821a4d_171ad9ab",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e474758_a74a3363",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 76
       },
       "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -397,6 +559,30 @@
       "side": 1,
       "message": "Reducing threads might be a problem (I suppose we could handle it though in this code - it\u0027s trickier in the binder driver b/c of a \"bug\" it would need a kernel change). Though, currently, only the initial value can be set.",
       "parentUuid": "ffbf45e6_f68f4ae7",
+      "range": {
+        "startLine": 163,
+        "startChar": 50,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "ef37e73df014e9595d51b50df78e4e3d8fb2915d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b9d019_032b17f7",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b95c126f_60bdb1a0",
       "range": {
         "startLine": 163,
         "startChar": 50,

@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d1f2fd_67cb926b",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "I created a smaller BinderLibTestServiceBase. PTAL.",
+      "parentUuid": "5b06ac9a_e19b51c3",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 50
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6817c04_0908de0e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-14T04:12:33Z",
       "side": 1,
       "message": "we already have a few places calling this, instead of a lambda below, consider adding a static function on the server class (or a static function above?)",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 21
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70c93637_192f574d",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6817c04_0908de0e",
       "range": {
         "startLine": 489,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23c1acf3_92b192ad",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Even if `ro.debuggable` is NOT set, we don\u0027t know if libbinder is compiled with user builds or not. Note that this is in the test, so it needs to check for a runtime property.\n\nI think we can have a userdebug build with ro.debuggable unset.",
+      "parentUuid": "a83cd320_a144b81e",
+      "range": {
+        "startLine": 1182,
+        "startChar": 0,
+        "endLine": 1182,
+        "endChar": 96
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ddcee9d_210803a9",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f517364_607f3ed3",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Done, switch to a real socket",
+      "parentUuid": "0ddcee9d_210803a9",
+      "range": {
+        "startLine": 1192,
+        "startChar": 0,
+        "endLine": 1192,
+        "endChar": 88
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbe50941_56925f38",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-05-14T04:12:33Z",
       "side": 1,
       "message": "the below test could also work on a local and remote binder. Maybe make this parameterized on the binder type?",
+      "range": {
+        "startLine": 1203,
+        "startChar": 0,
+        "endLine": 1214,
+        "endChar": 0
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "608fdfa9_8e52a06e",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbe50941_56925f38",
       "range": {
         "startLine": 1203,
         "startChar": 0,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b8a205d_f08b7730",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Not sure, let me try to remove it.",
+      "parentUuid": "b1ac0052_7d5e4448",
+      "range": {
+        "startLine": 1257,
+        "startChar": 0,
+        "endLine": 1257,
+        "endChar": 92
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adcd835f_06bc26d9",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 20
@@ -152,6 +296,30 @@
       "writtenOn": "2021-05-14T04:12:33Z",
       "side": 1,
       "message": "even if they aren\u0027t occupied, this call will still be queued to handle later, and the test will still pass. Consider for instance taking a lock in each thread, calling usleep 500ms as a oneway call, and then an \u0027unlock call\u0027 should take \u003e 500ms (that gives you the exact bounds on the threadpool size)",
+      "range": {
+        "startLine": 1268,
+        "startChar": 0,
+        "endLine": 1270,
+        "endChar": 43
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2884114_1ce8bb4c",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "I explicitly occupy the thread to test that even when the threads are occupied, I still have enough test. So this is intentional.\n\nLet me know if you think otherwise.",
+      "parentUuid": "adcd835f_06bc26d9",
       "range": {
         "startLine": 1268,
         "startChar": 0,
@@ -175,6 +343,30 @@
       "writtenOn": "2021-05-14T04:12:33Z",
       "side": 1,
       "message": "nit: we already have this transaction, maybe reuse it for the new sleep transaction?",
+      "range": {
+        "startLine": 1381,
+        "startChar": 0,
+        "endLine": 1383,
+        "endChar": 32
+      },
+      "revId": "4e1a5fc927bf7f5490bff40451e1c1693a486fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93527fdf_a760fc39",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1383,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T02:58:12Z",
+      "side": 1,
+      "message": "Ack; it is a bit different because the new sleep transaction sleeps for a variable amount of time.",
+      "parentUuid": "0470e558_b8e5e672",
       "range": {
         "startLine": 1381,
         "startChar": 0,
