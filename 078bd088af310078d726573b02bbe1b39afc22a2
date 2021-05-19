@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02c9d4c_4c116981",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "what is the path to cleanup/close this btw?",
+      "range": {
+        "startLine": 154,
+        "startChar": 18,
+        "endLine": 154,
+        "endChar": 30
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95849cb4_d394d95d",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "this message is obsolete by L160-163, but it should still be unreachable. Maybe \"binder object must be local or remote\"",
+      "range": {
+        "startLine": 166,
+        "startChar": 42,
+        "endLine": 166,
+        "endChar": 89
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cbb9fd0_75eed3c5",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "Note, AID_ROOT is 0 and getCallingUid will also return 0 if it is called w/o a binder transaction being in place. You could use \"checkContextIsBinderForUse(__func__)\" to abort for this local case to be extra careful, but it\u0027s potentially messy",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 56
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0afae3d6_5db50424",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "INVALID_OPERATION?",
+      "range": {
+        "startLine": 479,
+        "startChar": 15,
+        "endLine": 479,
+        "endChar": 22
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a0998c_9f65b2b1",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "nit: support a list of these? (or follow-up). Otherwise, multiple simultaneous calls from host might fail?",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 5
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2297e763_02d80cb2",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "nit: LowerBound?",
+      "range": {
+        "startLine": 362,
+        "startChar": 47,
+        "endLine": 362,
+        "endChar": 48
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "950d448b_4a53e3be",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "There are some subtle things here, maybe consider:\n\n    // may actually be one more than this, if join is called\n    if (mThreadPoolStarted) return mMaxThreads;\n\n    // must not be initialized or maybe has poll thread setup, we\n    // currently don\u0027t track this in libbinder\n    return 0;",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 23
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e580c4f9_68a9ed0f",
+        "filename": "libs/binder/RpcDevJoinThread.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "What does this class do that RpcServer doesn\u0027t do?",
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2c7b2c_11c6b066",
+        "filename": "libs/binder/RpcDevJoinThread.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "RpcServer::shutdown will wait for this to happen, so you could consider either moving ownership of the join thread into RpcServer (optionally, so it could do this) or I think detaching the thread on L35 should be fully equivalent?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5b8f7ea_487c65a0",
+        "filename": "libs/binder/RpcDevJoinThread.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "\"will request stop and join\" - since we won\u0027t terminate the thread",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e861129_c0f25aef",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "nit: Should we use libbase functions like ASSERT_RESULT_OK or add more there? This adds some complexity that is specific to understanding this test",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 1
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3687c426_4f830f15",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:51:39Z",
+      "side": 1,
+      "message": "most of the tests here use the full class, even if they don\u0027t use all the functionality here. Is there any reason to split this class into two types?",
+      "range": {
+        "startLine": 1259,
+        "startChar": 0,
+        "endLine": 1288,
+        "endChar": 0
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
