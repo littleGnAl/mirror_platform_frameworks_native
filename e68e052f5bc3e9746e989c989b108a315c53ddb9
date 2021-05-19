@@ -68,6 +68,24 @@
       "parentUuid": "f5040830_9fe5c469",
       "revId": "e68e052f5bc3e9746e989c989b108a315c53ddb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387a3b70_1c100df2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2021-05-19T18:31:40Z",
+      "side": 1,
+      "message": "vts does have per-arch output in packaging:\nvts/android-vts/testcases/VtsHalNfcV1_0TargetTest/arm64\nvts/android-vts/testcases/VtsHalNfcV1_0TargetTest/arm64/VtsHalNfcV1_0TargetTest\nvts/android-vts/testcases/VtsHalNfcV1_0TargetTest/arm\nvts/android-vts/testcases/VtsHalNfcV1_0TargetTest/arm/VtsHalNfcV1_0TargetTest\n\nThere might be some other issue?",
+      "parentUuid": "4b1095f1_586c64f6",
+      "revId": "e68e052f5bc3e9746e989c989b108a315c53ddb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
