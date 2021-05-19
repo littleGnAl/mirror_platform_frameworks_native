@@ -39,6 +39,12 @@ extern "C" {
  * for this header file to compile successfully
  */
 #include <OMX_Core.h>
+#include <OMX_Video.h>
+
+typedef enum OMX_VIDEO_CODINGEXTTYPE {
+    OMX_VIDEO_CodingExtUnused = OMX_VIDEO_CodingVendorStartUnused + 0x00100000,
+    OMX_VIDEO_CodingVP6,        /**< VP6 encoded data */
+} OMX_VIDEO_CODINGEXTTYPE;
 
 /** NALU Formats */
 typedef enum OMX_NALUFORMATSTYPE {
