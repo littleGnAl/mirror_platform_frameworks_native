@@ -34,6 +34,24 @@
       "parentUuid": "ac1103cc_d1241979",
       "revId": "9a2981cf7efd1169319ef930bbe2ed209c0b1ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a60745_aa55f863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T20:09:04Z",
+      "side": 1,
+      "message": "Or, I can add #clang-format off at the beginning and #clang-format on at the end.",
+      "parentUuid": "f8acf372_b57df85e",
+      "revId": "9a2981cf7efd1169319ef930bbe2ed209c0b1ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
