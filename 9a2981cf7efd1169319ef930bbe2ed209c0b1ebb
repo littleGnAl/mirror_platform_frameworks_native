@@ -69,6 +69,24 @@
       "message": "So - this is happening, and we might as well do all the files in S. I\u0027m tired of manually formatting things 😊",
       "revId": "9a2981cf7efd1169319ef930bbe2ed209c0b1ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7c9e66_09c9a2c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T20:59:10Z",
+      "side": 1,
+      "message": "no - definitely don\u0027t use clang-format. If clang-format formats something wrong while incrementally formatting things, prefer to fix it the right way.\n\nSince you\u0027re signing up to do this, please file a bug or format the rest of the code here.",
+      "parentUuid": "10a60745_aa55f863",
+      "revId": "9a2981cf7efd1169319ef930bbe2ed209c0b1ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
