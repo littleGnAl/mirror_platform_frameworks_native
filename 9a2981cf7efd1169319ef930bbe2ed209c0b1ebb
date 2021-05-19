@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1103cc_d1241979",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T18:24:57Z",
+      "side": 1,
+      "message": "This codebase usually requires a lot of backports for security fixes. Any thought to continue incrementally formatting it for that + git blame? I mean, if we are going to format libbinder in Android S, I\u0027d like to format all of it, but maybe we should discuss on android-binder@ first since we\u0027re not the only people who would have to deal with it.",
+      "revId": "9a2981cf7efd1169319ef930bbe2ed209c0b1ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
