@@ -435,6 +435,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e397d57_8007f544",
+        "filename": "libs/binder/RpcDevJoinThread.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T21:55:39Z",
+      "side": 1,
+      "message": "This terminates the execution of RpcServer::join(). Let me clarify.",
+      "parentUuid": "b5b8f7ea_487c65a0",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e861129_c0f25aef",
