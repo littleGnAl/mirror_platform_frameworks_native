@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92e6ba9_97f415a8",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:54:55Z",
+      "side": 1,
+      "message": "check if mJoinThread exists here as well?",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 46
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce0299b_c4c68315",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:54:55Z",
+      "side": 1,
+      "message": "nit: Do we need this long of an explanation? \"if we own the join thread, explicitly destruct it\"",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 231,
+        "endChar": 78
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50f76a4_bfc1edd3",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:54:55Z",
+      "side": 1,
+      "message": "We should know whether it\u0027s joinable or not (if the thread exists and it\u0027s not shutdown, it should always be initialized, right?) so we should be able to call join unconditionally? If that assumption changes, we shouldn\u0027t silently ignore it",
+      "range": {
+        "startLine": 232,
+        "startChar": 29,
+        "endLine": 232,
+        "endChar": 52
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1defaa49_d124e3ee",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:54:55Z",
+      "side": 1,
+      "message": "we allow join to shutdown again? I tried to keep this behavior because I thought you intended it originally",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 69
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe72b7ba_b92212bc",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:54:55Z",
+      "side": 1,
+      "message": "nit: adjacent to mJoinThread var as well?",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 36
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
