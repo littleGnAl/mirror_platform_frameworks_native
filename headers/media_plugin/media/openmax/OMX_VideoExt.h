@@ -46,6 +46,11 @@ typedef enum OMX_VIDEO_CODINGEXTTYPE {
     OMX_VIDEO_CodingVP6,        /**< VP6 encoded data */
     OMX_VIDEO_CodingAVS,        /**< AVS encoded data */
     OMX_VIDEO_CodingAVS2,       /**< AVS2 encoded data */
+    OMX_VIDEO_CodingDIVX311,    /**< DIVX311 encoded data */
+    OMX_VIDEO_CodingDIVX412,    /**< DIVX412 encoded data */
+    OMX_VIDEO_CodingDIVX5,      /**< DIVX5 encoded data */
+    OMX_VIDEO_CodingDIVXAVC,    /**< DIVX AVC encoded data */
+    OMX_VIDEO_CodingDIVXHEVC,   /**< DIVX HEVC encoded data */
 } OMX_VIDEO_CODINGEXTTYPE;
 
 /** NALU Formats */
