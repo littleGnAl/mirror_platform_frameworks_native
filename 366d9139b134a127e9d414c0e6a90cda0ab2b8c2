@@ -39,6 +39,30 @@
       },
       "revId": "366d9139b134a127e9d414c0e6a90cda0ab2b8c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6b2ec8_fe6dc85e",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-05-19T07:09:29Z",
+      "side": 1,
+      "message": "Yeah, a way to do that might be to prevent processPostWriteDerefs() itself from becoming re-entrant, an issuing a flush at the end of that function. But getting this in first sounds ok.",
+      "parentUuid": "84e0b0ff_aa21fe94",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 20
+      },
+      "revId": "366d9139b134a127e9d414c0e6a90cda0ab2b8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
