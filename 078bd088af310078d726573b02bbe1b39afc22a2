@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b4f3b2_00f0430b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-19T23:39:44Z",
+      "side": 1,
+      "message": "Cool. Do you still want me to add a way to clear the RpcServer in a follow up CL? If we want to do this, here are a few ways I can think of:\n\nOne way to do this is to add a new function. \n\nAnother way is that setRpcClient() always replaces the existing RpcServer, and if setRpcClient() is called on a -1 fd, clears the RpcServer.\n\nA third way is to keep a list of RpcServer. For each added RpcServer, IBinder::addRpcClient() returns a callback binder object. If a client calls a certain function on that binder object, the corresponding RpcServer is dropped.",
+      "parentUuid": "f9ade1b1_ab3627e0",
+      "range": {
+        "startLine": 154,
+        "startChar": 18,
+        "endLine": 154,
+        "endChar": 30
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95849cb4_d394d95d",
