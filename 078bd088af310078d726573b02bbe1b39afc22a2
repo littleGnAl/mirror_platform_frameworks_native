@@ -238,6 +238,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3efb6e17_2c6719d9",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:48:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "393b93a8_b29cf614",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 56
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0afae3d6_5db50424",
@@ -369,6 +393,30 @@
       "side": 1,
       "message": "What? Isn\u0027t this the higher bound?\n\nAlso, I named this function according to setThreadPoolMaxThreadCount.",
       "parentUuid": "2297e763_02d80cb2",
+      "range": {
+        "startLine": 362,
+        "startChar": 47,
+        "endLine": 362,
+        "endChar": 48
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5a2a65_f41ff0fc",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:48:33Z",
+      "side": 1,
+      "message": "No, this is a lower bound. That function is telling the kernel how many it can start, but it\u0027s different than libhwbinder. For libbinder, when you join, it adds one on top of this (I believe - at least in some cases it will).\n\nWe really need tests for all of the libbinder thread functions, and checks to make sure the number is computed correctly (and perhaps removing some duplicated internal variables), but that\u0027s another story",
+      "parentUuid": "d26eeb22_a639440e",
       "range": {
         "startLine": 362,
         "startChar": 47,
@@ -639,6 +687,30 @@
       "side": 1,
       "message": "Yes:\n\n1. ~BinderLibTestService() calls exit()\n2. BinderLibTestService::transact() calls getCallingUid(), which I haven\u0027t resolved properly for RPC yet. So I need this class to work around it.",
       "parentUuid": "3687c426_4f830f15",
+      "range": {
+        "startLine": 1259,
+        "startChar": 0,
+        "endLine": 1288,
+        "endChar": 0
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ad177ab_7d4b29ec",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:48:33Z",
+      "side": 1,
+      "message": "\u003e  ~BinderLibTestService() calls exit()\n\nThis shouldn\u0027t actually be hit normally. Can we remove this line? Given that the child process has this, it\u0027ll always be cleaned up:\n\n    prctl(PR_SET_PDEATHSIG, SIGHUP);\n\n\u003e  calls getCallingUid(), which I haven\u0027t resolved properly for RPC yet. So I need this class to work around it.\n\ndo you want to resolve that under the CL? or can you make sure to recombine them later? This test is already really complicated",
+      "parentUuid": "9009a61f_0c698c1a",
       "range": {
         "startLine": 1259,
         "startChar": 0,

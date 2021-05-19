@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "242c3832_fdac4569",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:48:33Z",
+      "side": 1,
+      "message": "Add happy path logs in these situations as well, we want to make sure it\u0027s very visible that these are being used (also add logs in the client as well and in stdout).",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 80
+      },
+      "revId": "2270b5ea1d3c1c139c2bac253d20a06d572b9e66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f52d1aa3_9a303e1f",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:48:33Z",
+      "side": 1,
+      "message": "nit: maybe file a bug for this? You may want to add support to share the threadpools?",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 5
+      },
+      "revId": "2270b5ea1d3c1c139c2bac253d20a06d572b9e66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aad53999_b00991e8",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:48:33Z",
+      "side": 1,
+      "message": "document for testing/userdebug only, maybe add \u0027Debug\u0027 into these function names?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 99
+      },
+      "revId": "2270b5ea1d3c1c139c2bac253d20a06d572b9e66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8294333_eec96cd0",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:48:33Z",
+      "side": 1,
+      "message": "document that this can only be used on debug builds",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 52
+      },
+      "revId": "2270b5ea1d3c1c139c2bac253d20a06d572b9e66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3d9930_18faa4d7",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:48:33Z",
+      "side": 1,
+      "message": "can you add docs here that explain that more threads may be allowed (it is a lower bound)?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 47
+      },
+      "revId": "2270b5ea1d3c1c139c2bac253d20a06d572b9e66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
