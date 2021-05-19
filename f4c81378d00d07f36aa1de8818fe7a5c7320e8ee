@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48992b7f_fd60eed6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T18:28:21Z",
+      "side": 1,
+      "message": "PS4 is merge conflict resolution + application of incremental clang-format from the preupload script here",
+      "revId": "f4c81378d00d07f36aa1de8818fe7a5c7320e8ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
