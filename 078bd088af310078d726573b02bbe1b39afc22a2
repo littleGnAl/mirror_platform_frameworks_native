@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ade1b1_ab3627e0",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-19T23:35:27Z",
+      "side": 1,
+      "message": "I think it should be okay. I added https://android-review.googlesource.com/c/platform/frameworks/native/+/1712595 to automatically catch some potential issues like this, but as long as there is no circular dependency, there won\u0027t be a leak.",
+      "parentUuid": "8dbe580d_d11bc27f",
+      "range": {
+        "startLine": 154,
+        "startChar": 18,
+        "endLine": 154,
+        "endChar": 30
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95849cb4_d394d95d",
