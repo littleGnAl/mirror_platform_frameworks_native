@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43cd516e_f3839adb",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-20T22:40:32Z",
+      "side": 1,
+      "message": "-\u003e b/188834514",
+      "revId": "80a8bd76ba9512c54a1db87be105aa424efcb626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
