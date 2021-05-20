@@ -237,6 +237,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b987f55c_ea08cb8f",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-20T19:40:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56f8bfdf_44edaa2b",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 69
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe72b7ba_b92212bc",
