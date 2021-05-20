@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6834581_555b1372",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-20T00:12:34Z",
+      "side": 1,
+      "message": "err - I see. If someone calls start and join, they will hit these cases anyway.",
+      "parentUuid": "264181cb_6dbaa537",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 46
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cce0299b_c4c68315",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "This is for L150. I want to make sure the client does NOT do\n\n```\nserver-\u003estart();\nserver-\u003eshutdown();\nserver-\u003estart(); // bad\n```\n\nLet me know if you want to allow this behavior. I am fine either way.",
       "parentUuid": "1defaa49_d124e3ee",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 69
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f8bfdf_44edaa2b",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-20T00:12:34Z",
+      "side": 1,
+      "message": "Why not? Everything else here allows this? I mean, I think it\u0027s silly, but we should either allow it for join and start, or we should simplify the code everywhere and disallow it for both. I have coded both approaches, and I went back to doing what you did with join (supporting it).",
+      "parentUuid": "244a2568_4c96f41a",
       "range": {
         "startLine": 234,
         "startChar": 0,
