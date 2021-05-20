@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23661c31_580c973b",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-20T01:27:39Z",
+      "side": 1,
+      "message": "oh no - why did I make that comment. This will conflict. Maybe we should save nits in a doc and go for minimal CLs to avoid problems like this.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 36
+      },
+      "revId": "e47511f808818fca08962fa268700ca3d31224a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
