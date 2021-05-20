@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c0061d3a_b9b1afef",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-20T19:44:40Z",
+      "side": 1,
+      "message": "will do it if we end up needing to distinguish between these two cases. For now - false \u003d\u003e unrecoverable problem or requested to shutdown",
+      "parentUuid": "804deb53_407da109",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 4
+      },
+      "revId": "4ec3c43c8a9f16f90ab5830c4aa1e238a0c248cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6ad7203f_e9ed91a0",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-20T19:35:53Z",
       "side": 1,
       "message": "nit: \n\nOh no! I forgot to monitor POLLHUP here. If the remote closes the fd, I am not sure if this will bail.\n\nCan you follow up to fix it? Otherwise I\u0027ll do it",
+      "range": {
+        "startLine": 130,
+        "startChar": 48,
+        "endLine": 130,
+        "endChar": 54
+      },
+      "revId": "4ec3c43c8a9f16f90ab5830c4aa1e238a0c248cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7938f519_2f37ba97",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-20T19:44:40Z",
+      "side": 1,
+      "message": "The fuzzer should catch this. I was debugging some hangs in the \u0027shutdown connection threads\u0027 CL above this that might be related. Will look into this.",
+      "parentUuid": "6ad7203f_e9ed91a0",
       "range": {
         "startLine": 130,
         "startChar": 48,
