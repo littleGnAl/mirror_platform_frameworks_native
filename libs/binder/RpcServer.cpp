@@ -136,6 +136,7 @@ void RpcServer::join() {
         mJoinThreadRunning = true;
         mShutdownTrigger = RpcSession::FdTrigger::make();
         LOG_ALWAYS_FATAL_IF(mShutdownTrigger == nullptr, "Cannot create join signaler");
+        ALOGE("FIXME: RpcServer::join initializing mShutdownTrigger");
     }
 
     while (mShutdownTrigger->triggerablePollRead(mServer)) {
@@ -173,11 +174,20 @@ bool RpcServer::acceptOne() {
 bool RpcServer::shutdown() {
     LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
     std::unique_lock<std::mutex> _l(mLock);
-    if (mShutdownTrigger == nullptr) return false;
+    if (mShutdownTrigger == nullptr) {
+        LOG_RPC_DETAIL("Cannot shutdown. No shutdown trigger installed.");
+        return false;
+    }
 
     mShutdownTrigger->trigger();
-    while (mJoinThreadRunning) mShutdownCv.wait(_l);
+    while (mJoinThreadRunning || !mConnectingThreads.empty()) {
+        ALOGE("Waiting for RpcServer to shut down. Join thread running: %d, Connecting threads: "
+              "%zu",
+              mJoinThreadRunning, mConnectingThreads.size());
+        mShutdownCv.wait(_l);
+    }
 
+    ALOGE("FIXME: RpcServer::shutdown setting mShutdownTrigger to nullptr");
     mShutdownTrigger = nullptr;
     return true;
 }
@@ -202,17 +212,30 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
 
     // TODO(b/183988761): cannot trust this simple ID
     LOG_ALWAYS_FATAL_IF(!mAgreedExperimental, "no!");
-    bool idValid = true;
+
+    bool idValid = false;
     int32_t id;
-    if (sizeof(id) != read(clientFd.get(), &id, sizeof(id))) {
-        ALOGE("Could not read ID from fd %d", clientFd.get());
-        idValid = false;
+
+    // mShutdownTrigger can only be cleared once connection threads have joined.
+    // It must be set before this thread is started
+    LOG_ALWAYS_FATAL_IF(server->mShutdownTrigger == nullptr);
+
+    if (server->mShutdownTrigger->triggerablePollRead(clientFd)) {
+        if (sizeof(id) !=
+            TEMP_FAILURE_RETRY(recv(clientFd.get(), &id, sizeof(id), MSG_WAITALL | MSG_NOSIGNAL))) {
+            ALOGE("Could not read ID from fd %d", clientFd.get());
+            idValid = false;
+        } else {
+            idValid = true;
+        }
+    } else {
+        ALOGE("Connecting thread shutting down FIXME %p", server->mShutdownTrigger.get());
     }
 
     std::thread thisThread;
     sp<RpcSession> session;
     {
-        std::lock_guard<std::mutex> _l(mLock);
+        std::unique_lock<std::mutex> _l(server->mLock);
 
         auto threadId = mConnectingThreads.find(std::this_thread::get_id());
         LOG_ALWAYS_FATAL_IF(threadId == mConnectingThreads.end(),
@@ -222,6 +245,8 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
         mConnectingThreads.erase(threadId);
 
         if (!idValid) {
+            _l.unlock();
+            server->mShutdownCv.notify_all();
             return;
         }
 
