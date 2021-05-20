@@ -16,6 +16,23 @@
       "message": "PTAL\n\nI don\u0027t know if we\u0027ll ever use libfeature_support_angle.so in the future, so I\u0027m leaving the code to load the library in for now so it can be re-enabled easily.   I don\u0027t know if it\u0027s worth the effort of trying to get libfeature_support_angle.so to build again (it may be a simple fix), since I\u0027m not sure if we\u0027ll ever want/need it in the future anyway and the APK size reduction is a nice benefit too.\n\nLet me know what you guys think.",
       "revId": "f68f5e898388650a0e8f2a03833342ded74a3d6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ae7f92_e5e20779",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2021-05-20T21:10:59Z",
+      "side": 1,
+      "message": "Is this just temporary? I see a TODO, just want to make sure I understand correctly. If it\u0027s going to exist for quite some time then we need to pick to our internal dev branch",
+      "revId": "f68f5e898388650a0e8f2a03833342ded74a3d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
