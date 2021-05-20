@@ -51,6 +51,29 @@
       "parentUuid": "b3ae7f92_e5e20779",
       "revId": "f68f5e898388650a0e8f2a03833342ded74a3d6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74900a1d_b5802623",
+        "filename": "libs/graphicsenv/GraphicsEnv.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1097542
+      },
+      "writtenOn": "2021-05-20T22:10:58Z",
+      "side": 1,
+      "message": "It looks like this will turn on ANGLE if mAngleDeveloperOptIn is set to *anything* other than \"native\" or \"angle\".  I would guess we just remove the \"else\" altogether and leave it as NO unless explicitly set to \"angle\".\n\nFor cleanliness, we can just remove use of the feature_support library entirely until (if and when) it gets brought back online.  It seems like Phenotype can fully replace it?",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 24
+      },
+      "revId": "f68f5e898388650a0e8f2a03833342ded74a3d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
