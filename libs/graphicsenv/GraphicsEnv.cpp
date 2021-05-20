@@ -453,6 +453,11 @@ void GraphicsEnv::updateUseAngle() {
         ALOGV("User set \"Developer Options\" to force the use of Native");
         mUseAngle = NO;
     } else {
+        // TODO(b/188822934): Re-enable loading libfeature_support_angle.so when added it's back to
+        // the ANGLE build.
+        mUseAngle = YES;
+        return;
+
         // The "Developer Options" value wasn't set to force the use of ANGLE.  Need to temporarily
         // load ANGLE and call the updatable opt-in/out logic:
         void* featureSo = loadLibrary("feature_support");
