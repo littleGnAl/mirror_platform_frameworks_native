@@ -122,6 +122,24 @@
       "parentUuid": "75cdb767_ca1eb9fa",
       "revId": "e68e052f5bc3e9746e989c989b108a315c53ddb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3629cb8_778d536d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-20T22:42:51Z",
+      "side": 1,
+      "message": "Aha! Was able to reproduce with this actually:\n\n    m TARGET_PRODUCT\u003daosp_arm64 TARGET_BUILD_VARIANT\u003duserdebug droid dist platform_tests\n\nThough I realized, we don\u0027t want the host test actually in VTS, so I am moving the VTS addition inside of target (the host test is just for convenience).\n\nDo you want a bug for this?",
+      "parentUuid": "8bc8c336_a28e8bac",
+      "revId": "e68e052f5bc3e9746e989c989b108a315c53ddb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
