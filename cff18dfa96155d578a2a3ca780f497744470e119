@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "264181cb_6dbaa537",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-20T00:04:28Z",
+      "side": 1,
+      "message": "mJoinThread does not necessary exist here. join() is a public API that a caller can call directly to save a thread.\n\nDo you want me to hide join()?",
+      "parentUuid": "e92e6ba9_97f415a8",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 46
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cce0299b_c4c68315",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-19T23:54:55Z",
       "side": 1,
       "message": "nit: Do we need this long of an explanation? \"if we own the join thread, explicitly destruct it\"",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 231,
+        "endChar": 78
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5056af3_27077e22",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-20T00:04:28Z",
+      "side": 1,
+      "message": "I add this comment because you asked about why it needs to be joined:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1683951/27..33/libs/binder/RpcDevJoinThread.cpp#b66\n\nAlso, I am not destructing the thread, just joining it.",
+      "parentUuid": "cce0299b_c4c68315",
       "range": {
         "startLine": 226,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b672120_ffe56e66",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-20T00:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b50f76a4_bfc1edd3",
+      "range": {
+        "startLine": 232,
+        "startChar": 29,
+        "endLine": 232,
+        "endChar": 52
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1defaa49_d124e3ee",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "244a2568_4c96f41a",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-20T00:04:28Z",
+      "side": 1,
+      "message": "This is for L150. I want to make sure the client does NOT do\n\n```\nserver-\u003estart();\nserver-\u003eshutdown();\nserver-\u003estart(); // bad\n```\n\nLet me know if you want to allow this behavior. I am fine either way.",
+      "parentUuid": "1defaa49_d124e3ee",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 69
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe72b7ba_b92212bc",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-05-19T23:54:55Z",
       "side": 1,
       "message": "nit: adjacent to mJoinThread var as well?",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 36
+      },
+      "revId": "cff18dfa96155d578a2a3ca780f497744470e119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94013f45_f1eafb9e",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-20T00:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe72b7ba_b92212bc",
       "range": {
         "startLine": 196,
         "startChar": 0,
