@@ -427,6 +427,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa875e3_930565f7",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-20T22:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c5a2a65_f41ff0fc",
+      "range": {
+        "startLine": 362,
+        "startChar": 47,
+        "endLine": 362,
+        "endChar": 48
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "950d448b_4a53e3be",
@@ -711,6 +735,30 @@
       "side": 1,
       "message": "\u003e  ~BinderLibTestService() calls exit()\n\nThis shouldn\u0027t actually be hit normally. Can we remove this line? Given that the child process has this, it\u0027ll always be cleaned up:\n\n    prctl(PR_SET_PDEATHSIG, SIGHUP);\n\n\u003e  calls getCallingUid(), which I haven\u0027t resolved properly for RPC yet. So I need this class to work around it.\n\ndo you want to resolve that under the CL? or can you make sure to recombine them later? This test is already really complicated",
       "parentUuid": "9009a61f_0c698c1a",
+      "range": {
+        "startLine": 1259,
+        "startChar": 0,
+        "endLine": 1288,
+        "endChar": 0
+      },
+      "revId": "078bd088af310078d726573b02bbe1b39afc22a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "796c6255_8b428257",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-05-20T22:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ad177ab_7d4b29ec",
       "range": {
         "startLine": 1259,
         "startChar": 0,
