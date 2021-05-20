@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "554fe6d9_77b007d3",
+        "filename": "libs/binder/tests/unit_fuzzers/StabilityFuzzFunctions.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-05-20T20:54:39Z",
+      "side": 1,
+      "message": "I think the \"tag\" arg needs to be dropped.",
+      "range": {
+        "startLine": 48,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 73
+      },
+      "revId": "2a0cf7467391454de8111d9529ce629693ca9504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
