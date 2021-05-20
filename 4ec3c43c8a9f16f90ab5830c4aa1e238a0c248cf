@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61c96c7a_bc9d75d0",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-20T01:29:04Z",
+      "side": 1,
+      "message": "I\u0027m not super happy with this - maybe should be fatal or return false. I haven\u0027t seen thee error, but this preserves it. Maybe will wait to land this CL until the connection threads issue is fixed.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 57
+      },
+      "revId": "4ec3c43c8a9f16f90ab5830c4aa1e238a0c248cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
