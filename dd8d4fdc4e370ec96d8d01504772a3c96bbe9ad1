@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30a0d30_4bad5063",
+        "filename": "services/inputflinger/tests/InputDispatcher_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1726,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2021-05-21T17:52:32Z",
+      "side": 1,
+      "message": "I think we should also add a test case in InputDispatcherKeyRepeatTest for this.",
+      "range": {
+        "startLine": 1726,
+        "startChar": 6,
+        "endLine": 1726,
+        "endChar": 34
+      },
+      "revId": "dd8d4fdc4e370ec96d8d01504772a3c96bbe9ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
