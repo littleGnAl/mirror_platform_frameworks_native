@@ -70,6 +70,24 @@
       "parentUuid": "ac3a1bfd_b6957b4d",
       "revId": "5000615e8959f3386cb44d4739de7e7396ad005e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9c0fcf_92daf56c",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-05-21T21:25:06Z",
+      "side": 0,
+      "message": "I think he\u0027s poking at this because I commented that:\nhttps://android-review.googlesource.com/c/platform/system/tools/aidl/+/1688277/2/generate_rust.cpp#586\nintroduced `unsafe` code into the generated code, which we were trying to avoid in order to maintain readability of the tricky parts.\n\nIn this case, it looks like our existing change makes the same error I was pointing out here - it computes a new data position by offset, then sets it.",
+      "parentUuid": "7284472b_5198d137",
+      "revId": "5000615e8959f3386cb44d4739de7e7396ad005e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
