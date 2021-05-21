@@ -16,6 +16,24 @@
       "message": "How do we validate that end doesn\u0027t go past the end of the parcel?",
       "revId": "22141fef88cbaa01da5d698decae0b4bcd0411e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3eefc3_76b58438",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-21T20:29:13Z",
+      "side": 1,
+      "message": "We currently don\u0027t,  but that\u0027s a good point. I\u0027ll add a wrapper to AParcel_getDataSize and call it from here.",
+      "parentUuid": "a8fa6c00_a39fcc00",
+      "revId": "22141fef88cbaa01da5d698decae0b4bcd0411e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
