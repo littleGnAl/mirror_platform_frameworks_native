@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4bf8fade_06cf8b58",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-21T17:36:38Z",
+      "side": 1,
+      "message": "will follow-up, to save a TH run, yeah",
+      "parentUuid": "8cca08ff_01493161",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 9
+      },
+      "revId": "9d11b9238d21eb09b978927ff6c4460d4f01be42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f4c5e8da_6a6c0eaf",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "writtenOn": "2021-05-21T16:50:13Z",
       "side": 1,
       "message": "e.g. if you are going to replace this with interruptibleRecv, you might want the one that doesn\u0027t read fully |size| bytes.",
+      "range": {
+        "startLine": 239,
+        "startChar": 38,
+        "endLine": 239,
+        "endChar": 42
+      },
+      "revId": "9d11b9238d21eb09b978927ff6c4460d4f01be42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae108adb_72172030",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-21T17:36:38Z",
+      "side": 1,
+      "message": "Hmmm? We do want this to read fully, like MSG_WAITALL does",
+      "parentUuid": "54fac8c2_06bce604",
       "range": {
         "startLine": 239,
         "startChar": 38,
