@@ -34,6 +34,24 @@
       "parentUuid": "4da1f53f_924a0a06",
       "revId": "5000615e8959f3386cb44d4739de7e7396ad005e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3a1bfd_b6957b4d",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-05-21T20:32:13Z",
+      "side": 0,
+      "message": "I think the answer may be no, because this may be in order to allow for scatter-gather parcel IO, in which case doing arithmetic on the offset may not work.\n\nsmoreland@ to confirm?",
+      "parentUuid": "1a0b651f_bf0f2ceb",
+      "revId": "5000615e8959f3386cb44d4739de7e7396ad005e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
