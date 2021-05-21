@@ -88,6 +88,24 @@
       "parentUuid": "7284472b_5198d137",
       "revId": "5000615e8959f3386cb44d4739de7e7396ad005e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb84fe6_7ca3984d",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-21T23:45:04Z",
+      "side": 0,
+      "message": "The NDK backend does the same thing: https://android.googlesource.com/platform/system/tools/aidl/+/refs/heads/master/generate_ndk.cpp#1106",
+      "parentUuid": "ff9c0fcf_92daf56c",
+      "revId": "5000615e8959f3386cb44d4739de7e7396ad005e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
