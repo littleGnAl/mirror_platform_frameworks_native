@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da1f53f_924a0a06",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-05-21T19:32:11Z",
+      "side": 0,
+      "message": "Don\u0027t delete this. It is required by the underlying implementation:\n\nhttps://developer.android.com/ndk/reference/group/ndk-binder?hl\u003dzh-cn#group___ndk_binder_1ga07c7097b2549ef514675ec52617d30d1",
+      "revId": "5000615e8959f3386cb44d4739de7e7396ad005e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

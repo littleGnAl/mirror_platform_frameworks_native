@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8fa6c00_a39fcc00",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-05-21T19:32:11Z",
+      "side": 1,
+      "message": "How do we validate that end doesn\u0027t go past the end of the parcel?",
+      "revId": "22141fef88cbaa01da5d698decae0b4bcd0411e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
