@@ -314,14 +314,25 @@ bool RpcSession::setupOneSocketClient(const RpcSocketAddress& addr, int32_t id) 
 
 void RpcSession::addClientConnection(unique_fd fd) {
     std::lock_guard<std::mutex> _l(mMutex);
+
+    if (mShutdownTrigger == nullptr) {
+        mShutdownTrigger = FdTrigger::make();
+    }
+
     sp<RpcConnection> session = sp<RpcConnection>::make();
     session->fd = std::move(fd);
     mClientConnections.push_back(session);
 }
 
-void RpcSession::setForServer(const wp<RpcServer>& server, int32_t sessionId) {
+void RpcSession::setForServer(const wp<RpcServer>& server, int32_t sessionId,
+                              const std::shared_ptr<FdTrigger>& shutdownTrigger) {
+    LOG_ALWAYS_FATAL_IF(mForServer.unsafe_get() != nullptr);
+    LOG_ALWAYS_FATAL_IF(mShutdownTrigger != nullptr);
+    LOG_ALWAYS_FATAL_IF(shutdownTrigger == nullptr);
+
     mId = sessionId;
     mForServer = server;
+    mShutdownTrigger = shutdownTrigger;
 }
 
 sp<RpcSession::RpcConnection> RpcSession::assignServerToThisThread(unique_fd fd) {

@@ -278,7 +278,8 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             server->mSessionIdCounter++;
 
             session = RpcSession::make();
-            session->setForServer(wp<RpcServer>(server), server->mSessionIdCounter);
+            session->setForServer(wp<RpcServer>(server), server->mSessionIdCounter,
+                                  server->mShutdownTrigger);
 
             server->mSessions[server->mSessionIdCounter] = session;
         } else {
