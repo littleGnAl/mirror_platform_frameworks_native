@@ -16,6 +16,24 @@
       "message": "NOT_ENOUGH_DATA or BAD_VALUE?",
       "revId": "4e2a5dd62c91ef2483ba0eb52b2d96ea618f6573",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "502f220e_51b913a8",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-22T02:54:06Z",
+      "side": 1,
+      "message": "I changed it to BAD_VALUE for consistency with ParcelableHolder, but I\u0027m still wondering if NOT_ENOUGH_DATA would make more sense.",
+      "parentUuid": "52ba0339_3bf03051",
+      "revId": "4e2a5dd62c91ef2483ba0eb52b2d96ea618f6573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
