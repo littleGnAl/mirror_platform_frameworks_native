@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "120f9963_2450a56e",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-22T07:07:22Z",
+      "side": 1,
+      "message": "I didn\u0027t know that status_t supports all error numbers.\n\nhttps://source.corp.google.com/android/system/core/libutils/Errors.cpp;rcl\u003dba8289894e8706550d6babf81d11b6c4779fdaa4;l\u003d48",
+      "range": {
+        "startLine": 134,
+        "startChar": 19,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "2b4f380c6548b8c146962eab8bc070e6c3647dc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
