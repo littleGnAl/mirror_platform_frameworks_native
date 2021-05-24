@@ -51,6 +51,23 @@
       "parentUuid": "532163c2_48c35ff0",
       "revId": "e5a6a878342978f13ba5c174c1dfb337173e1939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2253797_786b9dfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-05-24T22:39:09Z",
+      "side": 1,
+      "message": "Carrying forward nandana@ CR+2 across trivial diffs",
+      "revId": "e5a6a878342978f13ba5c174c1dfb337173e1939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
