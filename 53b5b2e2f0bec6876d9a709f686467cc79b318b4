@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87313246_b0d18f04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2021-05-24T17:40:04Z",
+      "side": 1,
+      "message": "LGTM.\n\nSiarhei, Michael, PTAL?",
+      "revId": "53b5b2e2f0bec6876d9a709f686467cc79b318b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
