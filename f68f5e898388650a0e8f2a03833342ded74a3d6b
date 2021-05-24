@@ -116,6 +116,30 @@
       },
       "revId": "f68f5e898388650a0e8f2a03833342ded74a3d6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74eb9c0e_3146a5bc",
+        "filename": "libs/graphicsenv/GraphicsEnv.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-05-24T14:54:56Z",
+      "side": 1,
+      "message": "CLs that remove libfeature_support_angle.so:\n\nhttps://googleplex-android-review.git.corp.google.com/q/topic:removeLibFeatureSupport\n\nIt\u0027s in goog/master due to merge conflicts in some of the framework files.",
+      "parentUuid": "f72bd7d5_081e2178",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 24
+      },
+      "revId": "f68f5e898388650a0e8f2a03833342ded74a3d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
