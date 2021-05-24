@@ -16,6 +16,29 @@
       "message": "LGTM.\n\nSiarhei, Michael, PTAL?",
       "revId": "53b5b2e2f0bec6876d9a709f686467cc79b318b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d74359_6c890308",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-05-24T19:49:01Z",
+      "side": 1,
+      "message": "there\u0027s a build error on git_master caused by ag/9550823\n\nI will check if I can cherry-pick that CL into aosp. If not, I will have to bring this patch manually into master, and then specify merged-in here",
+      "range": {
+        "startLine": 1103,
+        "startChar": 54,
+        "endLine": 1103,
+        "endChar": 69
+      },
+      "revId": "53b5b2e2f0bec6876d9a709f686467cc79b318b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
