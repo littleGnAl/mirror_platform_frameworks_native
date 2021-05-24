@@ -22,6 +22,30 @@
       },
       "revId": "2b4f380c6548b8c146962eab8bc070e6c3647dc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc8fd00_852f0a69",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-24T17:44:10Z",
+      "side": 1,
+      "message": ":) I wrote that toString function relatively recently actually. A lot of older code tends to use status_t as -errno, including libbinder. I am a bit mixed on it, especially as an API, for the same reasons errno is annoying: error codes can conflict - though I checked ECANCELED is not returned from poll).\nThe important cases are documented in the test (we actually care to return DEAD_OBJECT).\n\nI actually have some TODO items related to this:\n- move RpcState rpcSend/rpcRec and functions which call these to return status_t instead of bool\n- add more tests for expected error codes for important situations where users might rely on the meaning of the error code.",
+      "parentUuid": "120f9963_2450a56e",
+      "range": {
+        "startLine": 134,
+        "startChar": 19,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "2b4f380c6548b8c146962eab8bc070e6c3647dc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
