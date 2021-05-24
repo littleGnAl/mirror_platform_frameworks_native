@@ -34,6 +34,24 @@
       "parentUuid": "52ba0339_3bf03051",
       "revId": "4e2a5dd62c91ef2483ba0eb52b2d96ea618f6573",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "840ea842_553b43fb",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-05-24T01:26:04Z",
+      "side": 1,
+      "message": "IIRC, this condition is not checked in any other backends, so this is a new thing. And NOT_ENOUGH_DATA sounds good to me. BTW, when we try to read any data beyond the parcel\u0027s size, it returns NOT_ENOUGH_DATA. So this might be extra check in that matter.",
+      "parentUuid": "502f220e_51b913a8",
+      "revId": "4e2a5dd62c91ef2483ba0eb52b2d96ea618f6573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
