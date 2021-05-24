@@ -194,6 +194,9 @@ public:
             _exit(1);
         }
     }
+
+    Status dieAsync(bool cleanup) override { return die(cleanup); }
+
     Status useKernelBinderCallingId() override {
         // this is WRONG! It does not make sense when using RPC binder, and
         // because it is SO wrong, and so much code calls this, it should abort!
@@ -229,7 +232,7 @@ public:
     }
     ~Process() {
         if (mPid != 0) {
-            kill(mPid, SIGKILL);
+            waitpid(mPid, nullptr, 0);
         }
     }
     Pipe* getPipe() { return &mPipe; }
@@ -302,6 +305,8 @@ struct BinderRpcTestProcessSession {
             for (auto remoteCount : remoteCounts) {
                 EXPECT_EQ(remoteCount, 1);
             }
+
+            EXPECT_OK(rootIface->dieAsync(false));
         }
 
         rootIface = nullptr;
@@ -423,15 +428,6 @@ public:
         return ret;
     }
 };
-
-TEST_P(BinderRpc, RootObjectIsNull) {
-    auto proc = createRpcTestSocketServerProcess(1, 1, [](const sp<RpcServer>& server) {
-        // this is the default, but to be explicit
-        server->setRootObject(nullptr);
-    });
-
-    EXPECT_EQ(nullptr, proc.sessions.at(0).root);
-}
 
 TEST_P(BinderRpc, Ping) {
     auto proc = createRpcTestSocketServerProcess(1);
