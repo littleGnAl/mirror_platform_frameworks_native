@@ -33,6 +33,47 @@
       "message": "I don\u0027t fully understand this change. Yifan should take a look.",
       "revId": "ee3f46696a906c2a06443e5eb4501c44ada9f9a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7992d803_e05d8f2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-24T17:54:12Z",
+      "side": 1,
+      "message": "it is fuzzed :)",
+      "parentUuid": "6ec434e7_66d21d39",
+      "revId": "ee3f46696a906c2a06443e5eb4501c44ada9f9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "017e25b8_da45b6f6",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-24T17:54:12Z",
+      "side": 1,
+      "message": "this should return a failure if it can\u0027t be made (nullptr), though that might also be a good test of the fuzzer. I\u0027ve taken note",
+      "range": {
+        "startLine": 326,
+        "startChar": 8,
+        "endLine": 326,
+        "endChar": 24
+      },
+      "revId": "ee3f46696a906c2a06443e5eb4501c44ada9f9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
