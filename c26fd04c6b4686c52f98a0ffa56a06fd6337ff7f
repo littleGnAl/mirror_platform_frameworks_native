@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000011131003",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1702014?revision\u003d8",
+      "fixSuggestions": [
+        {
+          "fixId": "55b8ddf7_9e30dc9b",
+          "description": "Change to \"libs/binder/include/binder/RpcSession.h\"",
+          "replacements": [
+            {
+              "path": "libs/binder/include/binder/RpcSession.h",
+              "range": {
+                "startLine": 97,
+                "startChar": 16,
+                "endLine": 97,
+                "endChar": 25
+              },
+              "replacement": "currently"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "f062009f_3ec248e5",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-05-25T03:33:36Z",
+      "side": 1,
+      "message": "Common typo found: \"currenlty\" -- should it be \"currently\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 25
+      },
+      "revId": "c26fd04c6b4686c52f98a0ffa56a06fd6337ff7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
