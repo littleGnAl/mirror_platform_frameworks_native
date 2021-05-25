@@ -106,6 +106,24 @@
       "parentUuid": "ff9c0fcf_92daf56c",
       "revId": "5000615e8959f3386cb44d4739de7e7396ad005e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99571923_1403a1d4",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-05-25T20:32:26Z",
+      "side": 0,
+      "message": "I see smoreland +1\u0027d it after this thread, so I\u0027ll take that to mean offsets are allowed.",
+      "parentUuid": "bfb84fe6_7ca3984d",
+      "revId": "5000615e8959f3386cb44d4739de7e7396ad005e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
