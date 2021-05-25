@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c1022521_bcbc1049",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-25T01:09:57Z",
+      "side": 1,
+      "message": "and should probably turn this into a fatal error. It\u0027ll never happen, but it still sends out a ref now",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 5
+      },
+      "revId": "581f424d72c87e443a41ed810a5e8404b863fffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e1cfeba7_de147936",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 1
@@ -42,6 +65,29 @@
         "startChar": 0,
         "endLine": 696,
         "endChar": 83
+      },
+      "revId": "581f424d72c87e443a41ed810a5e8404b863fffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f96e225_c0345b3a",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-25T01:09:57Z",
+      "side": 1,
+      "message": "Will need to make sure this can actually be a tail call as well (pending b/182940634)",
+      "range": {
+        "startLine": 136,
+        "startChar": 51,
+        "endLine": 136,
+        "endChar": 74
       },
       "revId": "581f424d72c87e443a41ed810a5e8404b863fffd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
