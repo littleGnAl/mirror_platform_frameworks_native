@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ff76eaf_b4dda135",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-25T02:27:07Z",
+      "side": 1,
+      "message": "I added other comments here. See documentation at http://aosp/1716634. WDYT? We could support this, just don\u0027t necessarily need to right now. If you think it\u0027s important, I\u0027m happy to add it (I figure manually shutting down the server will generally never happen, always prefer to let linux clean it up. However, we need it for the tests, and for Yifan\u0027s project)",
+      "parentUuid": "9f639315_302a3f20",
+      "range": {
+        "startLine": 203,
+        "startChar": 8,
+        "endLine": 203,
+        "endChar": 25
+      },
+      "revId": "dc73f329e8dcb9132fac7d5cceca5001c70e8ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22c1ca6f_1dd57cab",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-25T02:23:45Z",
       "side": 1,
       "message": "So, doesn\u0027t this guarantee that the shutdown was actually done?",
+      "range": {
+        "startLine": 206,
+        "startChar": 15,
+        "endLine": 206,
+        "endChar": 28
+      },
+      "revId": "dc73f329e8dcb9132fac7d5cceca5001c70e8ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "620ad4fa_37110b5a",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-25T02:27:07Z",
+      "side": 1,
+      "message": "it is guaranteeing that it\u0027s scheduled for now.",
+      "parentUuid": "22c1ca6f_1dd57cab",
       "range": {
         "startLine": 206,
         "startChar": 15,
