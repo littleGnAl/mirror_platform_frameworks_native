@@ -370,7 +370,7 @@ size_t ProcessState::getThreadPoolMaxThreadCount() const {
 status_t ProcessState::enableOnewaySpamDetection(bool enable) {
     uint32_t enableDetection = enable ? 1 : 0;
     if (ioctl(mDriverFD, BINDER_ENABLE_ONEWAY_SPAM_DETECTION, &enableDetection) == -1) {
-        ALOGI("Binder ioctl to enable oneway spam detection failed: %s", strerror(errno));
+        ALOGD("Binder ioctl to enable oneway spam detection failed: %s", strerror(errno));
         return -errno;
     }
     return NO_ERROR;
