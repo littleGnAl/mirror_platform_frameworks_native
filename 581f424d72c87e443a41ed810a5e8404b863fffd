@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1cfeba7_de147936",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-25T01:07:54Z",
+      "side": 1,
+      "message": "this is taking a lock twice in certain cases, but it seemed like it might get too complicated breaking onBinderEntering apart. I\u0027ll optimize that if it becomes a problem later.",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 55
+      },
+      "revId": "581f424d72c87e443a41ed810a5e8404b863fffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e29f177_7bf6e17e",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-25T01:07:54Z",
+      "side": 1,
+      "message": "don\u0027t even get me started on how broken C++ const is. For instance, I could move both of these pieces of data into a shared_ptr (which has `T* get() const` mind you!) and avoid the const_cast w/ an extra heap allocations, but operator\u003c would be just as risky... :)",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 696,
+        "endChar": 83
+      },
+      "revId": "581f424d72c87e443a41ed810a5e8404b863fffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9f0452b_8566ec0d",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-25T01:07:54Z",
+      "side": 1,
+      "message": "this is something I want to improve more, but in another CL. Basically, right now, as long as you use binder threads, they will gradually drop refs, but there will always be some pending decrefs on the threads. This is on my TODO list after we support reverse connections (https://android-review.googlesource.com/c/platform/frameworks/native/+/1702014). That is, we could decide to always decrement these on the other threadpool.",
+      "range": {
+        "startLine": 879,
+        "startChar": 0,
+        "endLine": 879,
+        "endChar": 74
+      },
+      "revId": "581f424d72c87e443a41ed810a5e8404b863fffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
