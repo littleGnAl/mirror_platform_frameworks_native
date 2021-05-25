@@ -52,6 +52,24 @@
       "parentUuid": "502f220e_51b913a8",
       "revId": "4e2a5dd62c91ef2483ba0eb52b2d96ea618f6573",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6086e700_6c640d26",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-05-25T02:01:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840ea842_553b43fb",
+      "revId": "4e2a5dd62c91ef2483ba0eb52b2d96ea618f6573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
