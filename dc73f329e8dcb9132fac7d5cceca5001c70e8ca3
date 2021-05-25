@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c3a669f_256b0e4f",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-25T02:08:47Z",
+      "side": 1,
+      "message": "documented potential gotcha in https://android-review.googlesource.com/c/platform/frameworks/native/+/1716634",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 45
+      },
+      "revId": "dc73f329e8dcb9132fac7d5cceca5001c70e8ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
