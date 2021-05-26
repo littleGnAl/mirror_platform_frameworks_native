@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c08e87b9_949c6367",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1879320
+      },
+      "writtenOn": "2021-05-26T02:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69387e48_630a4411",
+      "revId": "53b5b2e2f0bec6876d9a709f686467cc79b318b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "495c2bab_402463d6",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-26T00:45:56Z",
       "side": 1,
       "message": "add:\n\nMerged-In: Ic0e37d1e1e447d4965f3fbb479e0eca7c726a6ab",
+      "revId": "53b5b2e2f0bec6876d9a709f686467cc79b318b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "349039c0_4b3a21ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1879320
+      },
+      "writtenOn": "2021-05-26T02:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "495c2bab_402463d6",
       "revId": "53b5b2e2f0bec6876d9a709f686467cc79b318b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -112,6 +148,30 @@
       "writtenOn": "2021-05-26T00:45:56Z",
       "side": 1,
       "message": "did you get any preupload hook warnings here? this can all fit onto 1 line",
+      "range": {
+        "startLine": 1102,
+        "startChar": 8,
+        "endLine": 1103,
+        "endChar": 70
+      },
+      "revId": "53b5b2e2f0bec6876d9a709f686467cc79b318b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49daf05b_4db67c79",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1879320
+      },
+      "writtenOn": "2021-05-26T02:44:23Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "e5a26759_034dd4d9",
       "range": {
         "startLine": 1102,
         "startChar": 8,
