@@ -22,6 +22,30 @@
       },
       "revId": "60762093b7530f31aa55cb1e30a82e7da3d15758",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "378c2e5b_8ec98620",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-01T22:25:48Z",
+      "side": 1,
+      "message": "The reason is because in certain situations, the other side may hang up (e.g. when faced by a bad client).",
+      "parentUuid": "af330bfd_26c52070",
+      "range": {
+        "startLine": 94,
+        "startChar": 22,
+        "endLine": 94,
+        "endChar": 37
+      },
+      "revId": "60762093b7530f31aa55cb1e30a82e7da3d15758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
