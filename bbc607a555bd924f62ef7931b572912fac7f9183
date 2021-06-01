@@ -70,6 +70,30 @@
       },
       "revId": "bbc607a555bd924f62ef7931b572912fac7f9183",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f356c52f_ad24c03a",
+        "filename": "libs/binder/include/binder/BinderService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-01T23:27:55Z",
+      "side": 1,
+      "message": "It would add \u003e100 build error lines now. If I have a chance to clean up most of them, I will.",
+      "parentUuid": "04d18281_99a2eb20",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "bbc607a555bd924f62ef7931b572912fac7f9183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
