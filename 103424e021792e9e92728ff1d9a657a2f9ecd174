@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da054b7d_9d0c76d3",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-06-02T21:37:21Z",
+      "side": 1,
+      "message": "nit: do you need this extra variable?",
+      "range": {
+        "startLine": 636,
+        "startChar": 20,
+        "endLine": 636,
+        "endChar": 30
+      },
+      "revId": "103424e021792e9e92728ff1d9a657a2f9ecd174",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
