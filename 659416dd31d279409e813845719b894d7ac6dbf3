@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55674144_3d1b3d98",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-02T01:49:37Z",
+      "side": 1,
+      "message": "nit: int32_t id \u003d header.sessionId; to be consistent with the \u0027reverse\u0027 above.",
+      "revId": "659416dd31d279409e813845719b894d7ac6dbf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d8bf03_3dae5583",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-02T01:49:37Z",
+      "side": 1,
+      "message": "Hmm, why do we delete this string reference?",
+      "revId": "659416dd31d279409e813845719b894d7ac6dbf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54ac52b_ff52c895",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-02T01:49:37Z",
+      "side": 1,
+      "message": "Perhaps not in this CL, but can this be made automatic?",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 73
+      },
+      "revId": "659416dd31d279409e813845719b894d7ac6dbf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42fb3c9d_43d23c4b",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-02T01:49:37Z",
+      "side": 1,
+      "message": "Just for curiosity: why is this change needed?",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 71
+      },
+      "revId": "659416dd31d279409e813845719b894d7ac6dbf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "638e3734_e99f2516",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-02T01:49:37Z",
+      "side": 1,
+      "message": "nit: I would make a function that returns either mForServer or mShutdownListener.",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 36
+      },
+      "revId": "659416dd31d279409e813845719b894d7ac6dbf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
