@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3cce555_3c1ae7c6",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-02T02:30:50Z",
+      "side": 1,
+      "message": "I don\u0027t want to create an alias for a variable, but I have the boolean since it represents a derived value from a field.",
+      "parentUuid": "55674144_3d1b3d98",
+      "revId": "659416dd31d279409e813845719b894d7ac6dbf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26d8bf03_3dae5583",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1775fc27_d2fa84f7",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-02T02:30:50Z",
+      "side": 1,
+      "message": "Largely for testing, but also arguably for more deterministic memory. Without this, the decStrong on the session will occur some random time when it is scheduled after this callback below. By moving it here, we guarantee that when onSessionServerThreadEnded happens, there is no longer anything owning the RpcSession object. This way, when the test checks that there is no leak of this object, it can pass without any delay.",
+      "parentUuid": "26d8bf03_3dae5583",
+      "revId": "659416dd31d279409e813845719b894d7ac6dbf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d54ac52b_ff52c895",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-06-02T01:49:37Z",
       "side": 1,
       "message": "Perhaps not in this CL, but can this be made automatic?",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 73
+      },
+      "revId": "659416dd31d279409e813845719b894d7ac6dbf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e75838f4_cb6acd56",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-02T02:30:50Z",
+      "side": 1,
+      "message": "Yeah, it would involve an extra object (or maybe adding a new API to refbase) or some other organization. The difficulty is that you basically want to ignore the strong refs from the join threadpool, but this threadpool actually does need strong refs (since it might be deeply nested doing something that is using a strong ref that will unwind when a shutdown happens).\n\nI have taken a note, and I\u0027ll attempt this soon as a follow-up.",
+      "parentUuid": "d54ac52b_ff52c895",
       "range": {
         "startLine": 54,
         "startChar": 7,
@@ -81,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f4b133_a01c49c6",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-02T02:30:50Z",
+      "side": 1,
+      "message": "It\u0027s so that the join thread can drop the reference to the session before making a callback.",
+      "parentUuid": "42fb3c9d_43d23c4b",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 71
+      },
+      "revId": "659416dd31d279409e813845719b894d7ac6dbf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "638e3734_e99f2516",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-06-02T01:49:37Z",
       "side": 1,
       "message": "nit: I would make a function that returns either mForServer or mShutdownListener.",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 36
+      },
+      "revId": "659416dd31d279409e813845719b894d7ac6dbf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca98b7b_5cf6fb0b",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-02T02:30:50Z",
+      "side": 1,
+      "message": "i started this refactor, and then I realized the reason why it\u0027s separate is that RpcServer inherits privately from EventListener. So, RpcSession can\u0027t do this cast (I never knew before that the friend designation isn\u0027t enough to let you cast to a private base class).",
+      "parentUuid": "638e3734_e99f2516",
       "range": {
         "startLine": 249,
         "startChar": 4,
