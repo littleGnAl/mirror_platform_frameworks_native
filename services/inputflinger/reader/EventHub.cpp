@@ -118,6 +118,19 @@ static bool isV4lScanningEnabled() {
     return property_get_bool("ro.input.video_enabled", true /* default_value */);
 }
 
+/**
+ * Returns true if input devices are present, i.e. /dev/input directory is created.
+ *
+ * The system property ro.input.enabled can be used to control whether
+ * EventHub scans and opens devices.
+ *
+ * Setting this to false can be useful in booting development platforms that
+ * don't have any input devices, hence don't have /dev/input directory formed.
+ */
+static bool isInputEnabled() {
+    return property_get_bool("ro.input.enabled", true /* default_value */);
+}
+
 static nsecs_t processEventTimestamp(const struct input_event& event) {
     // Use the time specified in the event instead of the current time
     // so that downstream code can get more accurate estimates of
@@ -298,9 +311,11 @@ EventHub::EventHub(void)
     LOG_ALWAYS_FATAL_IF(mEpollFd < 0, "Could not create epoll instance: %s", strerror(errno));
 
     mINotifyFd = inotify_init();
-    mInputWd = inotify_add_watch(mINotifyFd, DEVICE_PATH, IN_DELETE | IN_CREATE);
-    LOG_ALWAYS_FATAL_IF(mInputWd < 0, "Could not register INotify for %s: %s", DEVICE_PATH,
-                        strerror(errno));
+    if (isInputEnabled()) {
+        mInputWd = inotify_add_watch(mINotifyFd, DEVICE_PATH, IN_DELETE | IN_CREATE);
+        LOG_ALWAYS_FATAL_IF(mInputWd < 0, "Could not register INotify for %s: %s", DEVICE_PATH,
+                            strerror(errno));
+    }
     if (isV4lScanningEnabled()) {
         mVideoWd = inotify_add_watch(mINotifyFd, VIDEO_DEVICE_PATH, IN_DELETE | IN_CREATE);
         LOG_ALWAYS_FATAL_IF(mVideoWd < 0, "Could not register INotify for %s: %s",
@@ -1109,9 +1124,12 @@ void EventHub::wake() {
 }
 
 void EventHub::scanDevicesLocked() {
-    status_t result = scanDirLocked(DEVICE_PATH);
-    if (result < 0) {
-        ALOGE("scan dir failed for %s", DEVICE_PATH);
+    status_t result;
+    if (isInputEnabled()) {
+        result = scanDirLocked(DEVICE_PATH);
+        if (result < 0) {
+            ALOGE("scan dir failed for %s", DEVICE_PATH);
+        }
     }
     if (isV4lScanningEnabled()) {
         result = scanVideoDirLocked(VIDEO_DEVICE_PATH);
