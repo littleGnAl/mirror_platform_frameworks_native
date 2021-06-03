@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "218dd435_063936a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-03T23:16:06Z",
+      "side": 1,
+      "message": "anonymous structs are a GNU extension hmmm",
+      "revId": "d67c8e89d2589866f509640bfbac3799c1eca4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
