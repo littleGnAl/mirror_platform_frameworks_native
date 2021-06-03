@@ -120,8 +120,11 @@ private:
 
     friend ::android::internal::Stability;
     union {
-        int32_t mStability;
-        void* mReserved0;
+        struct {
+            int16_t mStability;
+            int16_t mReserved0;
+        };
+        void* mReserved1;
     };
 };
 
