@@ -292,15 +292,25 @@ EventHub::EventHub(void)
         mPendingEventCount(0),
         mPendingEventIndex(0),
         mPendingINotify(false) {
+
+    std::error_code errorCode;
     ensureProcessCanBlockSuspend();
 
     mEpollFd = epoll_create1(EPOLL_CLOEXEC);
     LOG_ALWAYS_FATAL_IF(mEpollFd < 0, "Could not create epoll instance: %s", strerror(errno));
 
     mINotifyFd = inotify_init();
-    mInputWd = inotify_add_watch(mINotifyFd, DEVICE_PATH, IN_DELETE | IN_CREATE);
-    LOG_ALWAYS_FATAL_IF(mInputWd < 0, "Could not register INotify for %s: %s", DEVICE_PATH,
-                        strerror(errno));
+    if (std::filesystem::exists(DEVICE_PATH, errorCode)) {
+        mInputWd = inotify_add_watch(mINotifyFd, DEVICE_PATH, IN_DELETE | IN_CREATE);
+        LOG_ALWAYS_FATAL_IF(mInputWd < 0, "Could not register INotify for %s: %s", DEVICE_PATH,
+                            strerror(errno));
+    } else {
+        if (errorCode) {
+            ALOGW("Could not run filesystem::exists() due to error %d : %s.", errorCode.value(),
+                  errorCode.message().c_str());
+        }
+    }
+
     if (isV4lScanningEnabled()) {
         mVideoWd = inotify_add_watch(mINotifyFd, VIDEO_DEVICE_PATH, IN_DELETE | IN_CREATE);
         LOG_ALWAYS_FATAL_IF(mVideoWd < 0, "Could not register INotify for %s: %s",
@@ -1109,9 +1119,19 @@ void EventHub::wake() {
 }
 
 void EventHub::scanDevicesLocked() {
-    status_t result = scanDirLocked(DEVICE_PATH);
-    if (result < 0) {
-        ALOGE("scan dir failed for %s", DEVICE_PATH);
+    status_t result;
+    std::error_code errorCode;
+
+    if (std::filesystem::exists(DEVICE_PATH, errorCode)) {
+        result = scanDirLocked(DEVICE_PATH);
+        if (result < 0) {
+            ALOGE("scan dir failed for %s", DEVICE_PATH);
+        }
+    } else {
+        if (errorCode) {
+            ALOGW("Could not run filesystem::exists() due to error %d : %s.", errorCode.value(),
+                  errorCode.message().c_str());
+        }
     }
     if (isV4lScanningEnabled()) {
         result = scanVideoDirLocked(VIDEO_DEVICE_PATH);
@@ -1851,6 +1871,10 @@ status_t EventHub::readNotifyLocked() {
                         ALOGI("Removing video device '%s' due to inotify event", filename.c_str());
                         closeVideoDeviceByPathLocked(filename);
                     }
+                } else if (event->name == "input") {
+                    mInputWd = inotify_add_watch(mINotifyFd, DEVICE_PATH, IN_DELETE | IN_CREATE);
+                    LOG_ALWAYS_FATAL_IF(mInputWd < 0, "Could not register INotify for %s: %s", DEVICE_PATH,
+                                        strerror(errno));
                 }
             } else {
                 LOG_ALWAYS_FATAL("Unexpected inotify event, wd = %i", event->wd);
