@@ -1,0 +1,7 @@
+LIBBINDER_RPC_UNSTABLE_SHIM {
+  global:
+    RunRpcServer; # apex
+    RpcClient; # apex
+  local:
+    *;
+};
