@@ -426,6 +426,8 @@ private:
     status_t mapLed(Device* device, int32_t led, int32_t* outScanCode) const;
     void setLedStateLocked(Device* device, int32_t led, bool on);
 
+    void addDeviceInotify();
+
     // Protect all internal state.
     mutable Mutex mLock;
 
@@ -466,7 +468,7 @@ private:
     int mWakeWritePipeFd;
 
     int mInputWd;
-    int mVideoWd;
+    int mDevWd;
 
     // Maximum number of signalled FDs to handle at a time.
     static const int EPOLL_MAX_EVENTS = 16;
