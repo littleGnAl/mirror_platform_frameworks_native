@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b627e36c_c3756725",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-03T20:19:27Z",
+      "side": 1,
+      "message": "c",
+      "revId": "6195ca0348efeb6bf19b4ae1cd6f38383fff2117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1c3866_0f22fbe6",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-03T20:19:27Z",
+      "side": 1,
+      "message": "or, if it is configured as a dynamic service, start it if it isn\u0027t started",
+      "range": {
+        "startLine": 656,
+        "startChar": 37,
+        "endLine": 656,
+        "endChar": 70
+      },
+      "revId": "6195ca0348efeb6bf19b4ae1cd6f38383fff2117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9379222f_f4bc2f5b",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-03T20:19:27Z",
+      "side": 1,
+      "message": "😊",
+      "range": {
+        "startLine": 279,
+        "startChar": 38,
+        "endLine": 279,
+        "endChar": 45
+      },
+      "revId": "6195ca0348efeb6bf19b4ae1cd6f38383fff2117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
