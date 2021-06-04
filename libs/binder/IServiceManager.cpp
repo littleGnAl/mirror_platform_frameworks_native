@@ -35,6 +35,8 @@
 
 #ifdef __ANDROID__
 #include <cutils/properties.h>
+#else
+#include "ServiceManagerHost.h"
 #endif
 
 #include "Static.h"
@@ -103,8 +105,7 @@ static inline sp<AidlServiceManager> createDefaultAidlServiceManager() {
 }
 #else
 static inline sp<AidlServiceManager> createDefaultAidlServiceManager() {
-    // TODO(b/185909244) impelement this
-    LOG_ALWAYS_FATAL("Not implemented.");
+    return sp<ServiceManagerHost>::make();
 }
 #endif
 
