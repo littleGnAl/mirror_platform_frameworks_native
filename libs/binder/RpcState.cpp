@@ -627,6 +627,24 @@ status_t RpcState::processTransactInternal(const base::unique_fd& fd, const sp<R
                 });
                 LOG_RPC_DETAIL("Enqueuing %" PRId64 " on %s", transaction->asyncNumber,
                                addr.toString().c_str());
+
+                size_t numPending = it->second.asyncTodo.size();
+                constexpr size_t kArbitraryOnewayCallTerminateLevel = 10000;
+                constexpr size_t kArbitraryOnewayCallWarnLevel = 1000;
+                constexpr size_t kArbitraryOnewayCallWarnPer = 100;
+
+                if (numPending >= kArbitraryOnewayCallWarnLevel) {
+                    if (numPending >= kArbitraryOnewayCallTerminateLevel) {
+                        ALOGE("WARNING: %zu pending oneway transactions. Terminating!", numPending);
+                        terminate();
+                        return FAILED_TRANSACTION;
+                    }
+
+                    if (numPending % kArbitraryOnewayCallWarnPer == 0) {
+                        ALOGW("Warning: many oneway transactions built up on %p (%zu)",
+                              target.get(), numPending);
+                    }
+                }
                 return OK;
             }
         }
