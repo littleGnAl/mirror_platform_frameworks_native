@@ -16,6 +16,10 @@
       "name": "binderDriverInterfaceTest"
     },
     {
+      "name": "binderHostDeviceTest",
+      "host": true
+    },
+    {
       "name": "binderTextOutputTest"
     },
     {
