@@ -629,9 +629,9 @@ status_t RpcState::processTransactInternal(const base::unique_fd& fd, const sp<R
                                addr.toString().c_str());
 
                 size_t numPending = it->second.asyncTodo.size();
-                constexpr size_t kArbitraryOnewayCallTerminateLevel = 10000;
-                constexpr size_t kArbitraryOnewayCallWarnLevel = 1000;
-                constexpr size_t kArbitraryOnewayCallWarnPer = 100;
+                constexpr size_t kArbitraryOnewayCallTerminateLevel = 100;
+                constexpr size_t kArbitraryOnewayCallWarnLevel = 10;
+                constexpr size_t kArbitraryOnewayCallWarnPer = 1;
 
                 if (numPending >= kArbitraryOnewayCallWarnLevel) {
                     if (numPending >= kArbitraryOnewayCallTerminateLevel) {
