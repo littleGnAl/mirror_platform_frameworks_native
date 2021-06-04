@@ -121,6 +121,7 @@ cc_library {
         "RpcSession.cpp",
         "RpcServer.cpp",
         "RpcState.cpp",
+        "ServiceManagerHost.cpp",
         "Static.cpp",
         "Stability.cpp",
         "Status.cpp",
