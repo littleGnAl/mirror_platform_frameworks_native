@@ -35,6 +35,8 @@
 
 #ifdef __ANDROID__
 #include <cutils/properties.h>
+#else
+#include "ServiceManagerHostResources.h"
 #endif
 
 #include "Static.h"
@@ -91,6 +93,7 @@ private:
 [[clang::no_destroy]] static std::once_flag gSmOnce;
 [[clang::no_destroy]] static sp<IServiceManager> gDefaultServiceManager;
 
+#ifdef __ANDROID__
 sp<IServiceManager> defaultServiceManager()
 {
     std::call_once(gSmOnce, []() {
@@ -108,6 +111,30 @@ sp<IServiceManager> defaultServiceManager()
 
     return gDefaultServiceManager;
 }
+#else
+// On host, defaultServiceManager() returns a handle of the servicemanager on the device,
+// communicated via adb. If there are no device available, this call blocks until it becomes
+// available.
+sp<IServiceManager> defaultServiceManager() {
+    static ServiceManagerHostResources gHostResources;
+    std::call_once(gSmOnce, []() {
+        std::optional<ServiceManagerHostResources> hostResources;
+        while (!hostResources.has_value()) {
+            hostResources = std::move(ServiceManagerHostResources::create());
+            if (hostResources->impl() == nullptr) {
+                ALOGE("defaultServiceManager() cannot create, waiting 1s");
+                hostResources.reset();
+                sleep(1);
+            }
+        }
+
+        gHostResources = std::move(*hostResources);
+        gDefaultServiceManager = sp<ServiceManagerShim>::make(gHostResources.impl());
+    });
+
+    return gDefaultServiceManager;
+}
+#endif
 
 void setDefaultServiceManager(const sp<IServiceManager>& sm) {
     bool called = false;
