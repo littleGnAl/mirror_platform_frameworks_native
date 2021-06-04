@@ -35,6 +35,8 @@
 
 #ifdef __ANDROID__
 #include <cutils/properties.h>
+#else
+#include "ServiceManagerHost.h"
 #endif
 
 #include "Static.h"
@@ -84,12 +86,24 @@ public:
     IBinder* onAsBinder() override {
         return IInterface::asBinder(mTheRealServiceManager).get();
     }
-private:
+
+protected:
     sp<AidlServiceManager> mTheRealServiceManager;
+
+    // When implementing ServiceManagerShim, use realGetService instead of
+    // mTheRealServiceManager->getService so that it can be overridden in ServiceManagerHostShim.
+    virtual Status realGetService(const std::string& name, sp<IBinder>* _aidl_return) {
+        return mTheRealServiceManager->getService(name, _aidl_return);
+    }
 };
 
 [[clang::no_destroy]] static std::once_flag gSmOnce;
+
+#ifdef __ANDROID__
 [[clang::no_destroy]] static sp<IServiceManager> gDefaultServiceManager;
+#else
+static sp<IServiceManager> gDefaultServiceManager;
+#endif
 
 sp<IServiceManager> defaultServiceManager()
 {
@@ -319,7 +333,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
     const std::string name = String8(name16).c_str();
 
     sp<IBinder> out;
-    if (Status status = mTheRealServiceManager->getService(name, &out); !status.isOk()) {
+    if (Status status = realGetService(name, &out); !status.isOk()) {
         ALOGW("Failed to getService in waitForService for %s: %s", name.c_str(),
               status.toString8().c_str());
         return nullptr;
@@ -363,7 +377,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
         // - init gets death signal, but doesn't know it needs to restart
         //   the service
         // - we need to request service again to get it to start
-        if (Status status = mTheRealServiceManager->getService(name, &out); !status.isOk()) {
+        if (Status status = realGetService(name, &out); !status.isOk()) {
             ALOGW("Failed to getService in waitForService on later try for %s: %s", name.c_str(),
                   status.toString8().c_str());
             return nullptr;
@@ -411,5 +425,38 @@ std::optional<String16> ServiceManagerShim::updatableViaApex(const String16& nam
     }
     return declared ? std::optional<String16>(String16(declared.value().c_str())) : std::nullopt;
 }
+
+#ifndef __ANDROID__
+class ServiceManagerHostShim : public ServiceManagerShim {
+public:
+    using ServiceManagerShim::ServiceManagerShim;
+    // ServiceManagerShim::getService is based on checkService, so no need to override it.
+    sp<IBinder> checkService(const String16& name) const override {
+        return getDeviceService(
+                {"adb", "shell", "/system/bin/servicedispatcher", String8(name).c_str()});
+    }
+
+protected:
+    // Override realGetService for ServiceManagerShim::waitForService.
+    Status realGetService(const std::string& name, sp<IBinder>* _aidl_return) {
+        *_aidl_return =
+                getDeviceService({"adb", "shell", "/system/bin/servicedispatcher", "-g", name});
+        return Status::ok();
+    }
+};
+sp<IServiceManager> createRpcDelegateServiceManager() {
+    auto binder = getDeviceService({"adb", "shell", "/system/bin/servicedispatcher", "manager"});
+    if (binder == nullptr) {
+        ALOGE("getDeviceService(\"manager\") returns null");
+        return nullptr;
+    }
+    auto interface = AidlServiceManager::asInterface(binder);
+    if (interface == nullptr) {
+        ALOGE("getDeviceService(\"manager\") returns non service manager");
+        return nullptr;
+    }
+    return sp<ServiceManagerHostShim>::make(interface);
+}
+#endif
 
 } // namespace android
