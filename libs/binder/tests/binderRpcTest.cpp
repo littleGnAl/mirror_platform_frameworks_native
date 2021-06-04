@@ -941,6 +941,33 @@ TEST_P(BinderRpc, OnewayCallQueueing) {
     for (auto& t : threads) t.join();
 }
 
+TEST_P(BinderRpc, OnewayCallExhaustion) {
+    constexpr size_t kNumClients = 2;
+    constexpr size_t kVeryLongMs = 1000000000;
+
+    auto proc = createRpcTestSocketServerProcess(kNumClients /*threads*/, 2 /*sessions*/);
+
+    // Build up oneway calls on the second session to make sure it terminates
+    // and shuts down. The first session should be unaffected (proc destructor
+    // checks the first session).
+    auto iface = interface_cast<IBinderRpcTest>(proc.proc.sessions.at(1).root);
+
+    std::vector<std::thread> threads;
+    for (size_t i = 0; i < kNumClients; i++) {
+        // one of these threads will get stuck queueing a transaction once the
+        // socket fills up, the other will be able to fill up transactions on
+        // this object
+        threads.push_back(std::thread([&] {
+            while (iface->sleepMsAsync(kVeryLongMs).isOk()) {
+            }
+        }));
+    }
+    for (auto& t : threads) t.join();
+
+    Status status = iface->sleepMsAsync(kVeryLongMs);
+    EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
+}
+
 TEST_P(BinderRpc, Callbacks) {
     const static std::string kTestString = "good afternoon!";
 
