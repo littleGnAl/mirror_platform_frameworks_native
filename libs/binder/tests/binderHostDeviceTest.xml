@@ -14,11 +14,15 @@
     limitations under the License.
 -->
 <configuration description="Config for binderHostDeviceTest">
+    <option name="test-suite-tag" value="apct" />
+    <option name="test-suite-tag" value="apct-native" />
+
     <target_preparer class="com.android.tradefed.targetprep.RootTargetPreparer"/>
     <!-- TODO(b/182914638): add servicedispatcher to PRODUCT_PACKAGES_DEBUG. -->
     <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
-        <option name="cleanup" value="true" />
-        <option name="push" value="servicedispatcher->/data/local/tmp/servicedispatcher" />
+        <!-- TODO cleanup -->
+        <option name="cleanup" value="false" />
+        <option name="push-file" key="servicedispatcher" value="/data/local/tmp/servicedispatcher" />
     </target_preparer>
     <test class="com.android.tradefed.testtype.HostGTest" >
         <option name="module-name" value="binderHostDeviceTest" />

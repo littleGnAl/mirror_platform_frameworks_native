@@ -327,3 +327,22 @@ cc_benchmark {
         "libutils",
     ],
 }
+
+cc_test_host {
+    name: "binderHostDeviceTest",
+    defaults: ["binder_test_defaults"],
+    srcs: ["binderHostDeviceTest.cpp"],
+    test_suites: ["general-tests"],
+    test_config: "binderHostDeviceTest.xml",
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "liblog",
+    ],
+    static_libs: [
+        "libgmock",
+    ],
+    target_required: [
+        "servicedispatcher",
+    ],
+}
