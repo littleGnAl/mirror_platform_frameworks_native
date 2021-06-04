@@ -88,21 +88,33 @@ private:
     sp<AidlServiceManager> mTheRealServiceManager;
 };
 
+#ifdef __ANDROID__
+static inline sp<AidlServiceManager> createDefaultAidlServiceManager() {
+    sp<AidlServiceManager> sm = nullptr;
+    while (sm == nullptr) {
+        sm = interface_cast<AidlServiceManager>(ProcessState::self()->getContextObject(nullptr));
+        if (sm == nullptr) {
+            ALOGE("Waiting 1s on context object on %s.",
+                  ProcessState::self()->getDriverName().c_str());
+            sleep(1);
+        }
+    }
+    return sm;
+}
+#else
+static inline sp<AidlServiceManager> createDefaultAidlServiceManager() {
+    // TODO(b/185909244) impelement this
+    LOG_ALWAYS_FATAL("Not implemented.");
+}
+#endif
+
 [[clang::no_destroy]] static std::once_flag gSmOnce;
 [[clang::no_destroy]] static sp<IServiceManager> gDefaultServiceManager;
 
 sp<IServiceManager> defaultServiceManager()
 {
     std::call_once(gSmOnce, []() {
-        sp<AidlServiceManager> sm = nullptr;
-        while (sm == nullptr) {
-            sm = interface_cast<AidlServiceManager>(ProcessState::self()->getContextObject(nullptr));
-            if (sm == nullptr) {
-                ALOGE("Waiting 1s on context object on %s.", ProcessState::self()->getDriverName().c_str());
-                sleep(1);
-            }
-        }
-
+        sp<AidlServiceManager> sm = createDefaultAidlServiceManager();
         gDefaultServiceManager = sp<ServiceManagerShim>::make(sm);
     });
 
