@@ -35,6 +35,8 @@
 
 #ifdef __ANDROID__
 #include <cutils/properties.h>
+#else
+#include "ServiceManagerHost.h"
 #endif
 
 #include "Static.h"
@@ -84,12 +86,18 @@ public:
     IBinder* onAsBinder() override {
         return IInterface::asBinder(mTheRealServiceManager).get();
     }
-private:
+
+protected:
     sp<AidlServiceManager> mTheRealServiceManager;
 };
 
 [[clang::no_destroy]] static std::once_flag gSmOnce;
+
+#ifdef __ANDROID__
 [[clang::no_destroy]] static sp<IServiceManager> gDefaultServiceManager;
+#else
+static sp<IServiceManager> gDefaultServiceManager;
+#endif
 
 sp<IServiceManager> defaultServiceManager()
 {
@@ -411,5 +419,33 @@ std::optional<String16> ServiceManagerShim::updatableViaApex(const String16& nam
     }
     return declared ? std::optional<String16>(String16(declared.value().c_str())) : std::nullopt;
 }
+
+#ifndef __ANDROID__
+class ServiceManagerHostShim : public ServiceManagerShim {
+public:
+    using ServiceManagerShim::ServiceManagerShim;
+    sp<IBinder> getService(const String16& name) const override {
+        return getDeviceService(
+                {"adb", "shell", "/system/bin/servicedispatcher", "-g", String8(name).c_str()});
+    }
+    sp<IBinder> checkService(const String16& name) const override {
+        return getDeviceService(
+                {"adb", "shell", "/system/bin/servicedispatcher", String8(name).c_str()});
+    }
+};
+sp<IServiceManager> createRpcDelegateServiceManager() {
+    auto binder = getDeviceService({"adb", "shell", "/system/bin/servicedispatcher", "manager"});
+    if (binder == nullptr) {
+        ALOGE("getDeviceService(\"manager\") returns null");
+        return nullptr;
+    }
+    auto interface = AidlServiceManager::asInterface(binder);
+    if (interface == nullptr) {
+        ALOGE("getDeviceService(\"manager\") returns non service manager");
+        return nullptr;
+    }
+    return sp<ServiceManagerHostShim>::make(interface);
+}
+#endif
 
 } // namespace android
