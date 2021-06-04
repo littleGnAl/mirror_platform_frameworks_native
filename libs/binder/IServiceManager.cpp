@@ -91,7 +91,7 @@ protected:
     sp<AidlServiceManager> mTheRealServiceManager;
 
     // When implementing ServiceManagerShim, use realGetService instead of
-    // mTheRealServiceManager->getService so that it can be overridden in ServiceManagerHostShim.
+    // mTheRealServiceManager->getService so that it can be overridden in ServiceManagerHost.
     virtual Status realGetService(const std::string& name, sp<IBinder>* _aidl_return) {
         return mTheRealServiceManager->getService(name, _aidl_return);
     }
