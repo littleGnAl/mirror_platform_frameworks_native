@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f181acfa_04ef297b",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-06-04T11:04:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc1c3866_0f22fbe6",
+      "range": {
+        "startLine": 656,
+        "startChar": 37,
+        "endLine": 656,
+        "endChar": 70
+      },
+      "revId": "6195ca0348efeb6bf19b4ae1cd6f38383fff2117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9379222f_f4bc2f5b",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-03T20:19:27Z",
       "side": 1,
       "message": "😊",
+      "range": {
+        "startLine": 279,
+        "startChar": 38,
+        "endLine": 279,
+        "endChar": 45
+      },
+      "revId": "6195ca0348efeb6bf19b4ae1cd6f38383fff2117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a57d6fd8_9ee620e2",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-06-04T11:04:29Z",
+      "side": 1,
+      "message": "This is just a copy of the test above, using `wait_for_*` rather than `get_*`.",
+      "parentUuid": "9379222f_f4bc2f5b",
       "range": {
         "startLine": 279,
         "startChar": 38,
