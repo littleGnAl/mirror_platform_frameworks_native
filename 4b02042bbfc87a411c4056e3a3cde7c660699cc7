@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31268e79_8478cda0",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-05T00:17:35Z",
+      "side": 1,
+      "message": "Note: I haven\u0027t figure out the proper SELinux rules for this yet.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 5
+      },
+      "revId": "4b02042bbfc87a411c4056e3a3cde7c660699cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
