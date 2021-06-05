@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000011465482",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1728612?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "b43b208c_9c1499e5",
+          "description": "Change to \"libs/binder/IServiceManager.cpp\"",
+          "replacements": [
+            {
+              "path": "libs/binder/IServiceManager.cpp",
+              "range": {
+                "startLine": 106,
+                "startChar": 25,
+                "endLine": 106,
+                "endChar": 35
+              },
+              "replacement": "implement"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "6f758f59_88d062f0",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-06-05T00:15:25Z",
+      "side": 1,
+      "message": "Common typo found: \"impelement\" -- should it be \"implement\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 106,
+        "startChar": 25,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "32cd647865b4d7f6418bf0bab7111d26014c08f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
