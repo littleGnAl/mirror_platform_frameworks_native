@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "accb7ae4_16789a06",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T23:07:03Z",
+      "side": 1,
+      "message": "Curious - which output was getting messed up here? Should it be flushing/using std::endl instead?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 36
+      },
+      "revId": "b45d9733b0a3514ac22d98cf87dbef6073ff5bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad84b2fa_62f27550",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T23:07:03Z",
+      "side": 1,
+      "message": "std::endl includes std::flush",
+      "range": {
+        "startLine": 101,
+        "startChar": 71,
+        "endLine": 101,
+        "endChar": 94
+      },
+      "revId": "b45d9733b0a3514ac22d98cf87dbef6073ff5bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
