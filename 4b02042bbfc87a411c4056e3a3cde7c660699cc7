@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e1f1e7_b8fa8937",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T17:58:24Z",
+      "side": 1,
+      "message": "it\u0027s really easy to forget to std::move these and do a copy. I thought the C++17 style should only be used for things which won\u0027t be copied generally?",
+      "range": {
+        "startLine": 86,
+        "startChar": 30,
+        "endLine": 86,
+        "endChar": 54
+      },
+      "revId": "4b02042bbfc87a411c4056e3a3cde7c660699cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "31268e79_8478cda0",
@@ -14,6 +37,30 @@
       "writtenOn": "2021-06-05T00:17:35Z",
       "side": 1,
       "message": "Note: I haven\u0027t figure out the proper SELinux rules for this yet.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 5
+      },
+      "revId": "4b02042bbfc87a411c4056e3a3cde7c660699cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ab3aa4_37bda49f",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T17:58:24Z",
+      "side": 1,
+      "message": "Will you investigate before merging? It could change the approach needed",
+      "parentUuid": "31268e79_8478cda0",
       "range": {
         "startLine": 132,
         "startChar": 0,
