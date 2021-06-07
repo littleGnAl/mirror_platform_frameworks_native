@@ -39,6 +39,30 @@
       },
       "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1285bac_4915b719",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T19:39:56Z",
+      "side": 1,
+      "message": "I think this is intentional? If the service is not started then we do want to start the lazy service, right?",
+      "parentUuid": "a06bf652_702370a3",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
