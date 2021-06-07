@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "251da7de_032d5adb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T19:38:20Z",
+      "side": 1,
+      "message": "c",
+      "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06bf652_702370a3",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T19:38:20Z",
+      "side": 1,
+      "message": "also - this will do a sleep/wait loop. We probably want to use \u0027checkService\u0027 to get an already started service.",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
