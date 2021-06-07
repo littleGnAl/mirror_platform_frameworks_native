@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de1f97f6_c2286386",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T22:55:21Z",
+      "side": 1,
+      "message": "another command to servicedispatcher will be added, but not in this CL. \n\nThis is tracked in b/182914638#comment9.\n\nResolving",
+      "parentUuid": "4e75e026_8b22f1f7",
+      "range": {
+        "startLine": 76,
+        "startChar": 26,
+        "endLine": 76,
+        "endChar": 43
+      },
+      "revId": "a5ca02028581e12cf9e74fc1e257a62685f60af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4453658d_fa43f23e",

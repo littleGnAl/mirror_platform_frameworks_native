@@ -137,6 +137,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f7e034_76367e69",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T22:55:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daab1832_45d406f3",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc9abce9_549e2659",
@@ -198,6 +222,30 @@
       "side": 1,
       "message": "Oh you are right. I\u0027ll fix this.",
       "parentUuid": "e98737d3_cea451f8",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 15
+      },
+      "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fede13e_55b94f93",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T22:55:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bdbadd8_ec66d1a0",
       "range": {
         "startLine": 116,
         "startChar": 8,
