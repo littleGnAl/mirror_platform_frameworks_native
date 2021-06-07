@@ -63,6 +63,30 @@
       },
       "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1534a6_4a75f801",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T19:43:57Z",
+      "side": 1,
+      "message": "Welllllllll. There might not always be a lazy service. We\u0027ll actually want a few different APIs here. getService is dangerous to use with lazy services, since it\u0027ll still return nullptr if the lazy service has some delay. waitForService should be used with to use instead.\n\nOn host, when you call \u0027checkService\u0027 we\u0027ll want to checkService on the device. When we call \u0027getService\u0027 we\u0027ll want to getService on the device etc...",
+      "parentUuid": "e1285bac_4915b719",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
