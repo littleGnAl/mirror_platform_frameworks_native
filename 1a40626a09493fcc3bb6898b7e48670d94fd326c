@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daab1832_45d406f3",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T20:05:09Z",
+      "side": 1,
+      "message": "How many getService-related commands are there as of now? getService / checkService are the only two, right?\n\nIf so I\u0027ll add an extra argument to distinguish getService and checkService.",
+      "parentUuid": "ec1534a6_4a75f801",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc9abce9_549e2659",
         "filename": "libs/binder/servicedispatcher.cpp",
         "patchSetId": 7
@@ -102,6 +126,30 @@
       "writtenOn": "2021-06-07T19:51:27Z",
       "side": 1,
       "message": "this is WARNING, but L98 will hide it from stdio, right? we want to see it directly",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 15
+      },
+      "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e98737d3_cea451f8",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T20:05:09Z",
+      "side": 1,
+      "message": "No. LOG(WARNING) goes to stderr.",
+      "parentUuid": "fc9abce9_549e2659",
       "range": {
         "startLine": 116,
         "startChar": 8,
