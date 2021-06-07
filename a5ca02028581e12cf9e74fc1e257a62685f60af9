@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "472bd352_976136c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T17:53:08Z",
+      "side": 1,
+      "message": "a",
+      "revId": "a5ca02028581e12cf9e74fc1e257a62685f60af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4453658d_fa43f23e",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T17:53:08Z",
+      "side": 1,
+      "message": "leftover?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 35
+      },
+      "revId": "a5ca02028581e12cf9e74fc1e257a62685f60af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e14e38c_f6d49b7a",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T17:53:08Z",
+      "side": 1,
+      "message": "nit: do we really need this?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "a5ca02028581e12cf9e74fc1e257a62685f60af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5973c920_d424c4ed",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T17:53:08Z",
+      "side": 1,
+      "message": "will this always print a warning that this feature is userdebug only? I still think we should want to warn about this (at least for now)",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "a5ca02028581e12cf9e74fc1e257a62685f60af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d5f1266_efcb4463",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T17:53:08Z",
+      "side": 1,
+      "message": "This should always fail from the service itself. This seems like a nice optimization, but we should see the same behavior even if we remove this line, right?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "a5ca02028581e12cf9e74fc1e257a62685f60af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e78d4c1_43d8cf0f",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T17:53:08Z",
+      "side": 1,
+      "message": "we should default 1, yeah? (or document default in Usage)",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "a5ca02028581e12cf9e74fc1e257a62685f60af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e772b27_709535a1",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-07T17:53:08Z",
+      "side": 1,
+      "message": "nit: this is fine/right, but I\u0027m curious, is there any reason to prefer this style over:\n\nif (optind + 1 !\u003d argc) return Usage(argv[0]);\nauto name \u003d argv[optind];",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 45
+      },
+      "revId": "a5ca02028581e12cf9e74fc1e257a62685f60af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
